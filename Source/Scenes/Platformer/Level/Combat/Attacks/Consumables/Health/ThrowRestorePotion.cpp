@@ -34,7 +34,7 @@ ThrowRestorePotion::~ThrowRestorePotion()
 {
 }
 
-PlatformerAttack* ThrowRestorePotion::clone()
+PlatformerAttack* ThrowRestorePotion::cloneInternal()
 {
 	return ThrowRestorePotion::create();
 }

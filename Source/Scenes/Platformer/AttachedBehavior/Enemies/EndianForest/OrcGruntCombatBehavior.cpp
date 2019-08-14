@@ -51,5 +51,10 @@ void OrcGruntCombatBehavior::onLoad()
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
 	}
 
-	this->entity->getInventory()->forceInsert(RestorePotion::create());
+	Inventory* inventory = this->entity->getInventory();
+
+	if (inventory != nullptr)
+	{
+		inventory->forceInsert(RestorePotion::create());
+	}
 }

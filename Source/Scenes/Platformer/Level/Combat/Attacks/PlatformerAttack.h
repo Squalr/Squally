@@ -18,8 +18,9 @@ public:
 		ProjectileBuffSpeed,
 	};
 
-	virtual PlatformerAttack* clone() = 0;
+	PlatformerAttack* clone();
 	virtual LocalizedString* getString() = 0;
+	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();
 	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onAttackComplete);
@@ -53,6 +54,7 @@ private:
 	typedef SmartNode super;
 
 	void replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile);
+	virtual PlatformerAttack* cloneInternal() = 0;
 
 	float priority;
 	AttackType attackType;
@@ -60,4 +62,6 @@ private:
 	int baseDamageOrHealingMin;
 	int baseDamageOrHealingMax;
 	int specialCost;
+
+	std::vector<std::function<void()>> attackCompleteCallbacks;
 };

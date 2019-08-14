@@ -132,7 +132,10 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 {
 	if (item == nullptr)
 	{
-		onRemove(nullptr);
+		if (onRemove != nullptr)
+		{
+			onRemove(nullptr);
+		}
 
 		return;
 	}
@@ -146,8 +149,8 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 
 		return;
 	}
-
-	Item* returnItem = item->clone();
+	
+	Item* returnItem = onRemove == nullptr ? nullptr : item->clone();
 
 	this->removeChild(item);
 	this->items.erase(std::remove(this->items.begin(), this->items.end(), item), this->items.end());
@@ -157,7 +160,10 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 		this->save();
 	}
 
-	onRemove(returnItem);
+	if (onRemove != nullptr)
+	{
+		onRemove(returnItem);
+	}
 }
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)

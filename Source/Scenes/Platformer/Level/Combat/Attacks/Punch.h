@@ -9,7 +9,6 @@ class Punch : public PlatformerAttack
 public:
 	static Punch* create(float attackDuration, float recoverDuration);
 
-	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
@@ -22,6 +21,8 @@ protected:
 
 private:
 	typedef PlatformerAttack super;
+	
+	PlatformerAttack* cloneInternal() override;
 
 	Sound* punchSound;
 };

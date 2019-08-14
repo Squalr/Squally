@@ -58,8 +58,3 @@ std::string ManaPotion::getSerializationKey()
 {
 	return ManaPotion::SaveKeyManaPotion;
 }
-
-Consumable::ConsumableType ManaPotion::getConsumableType()
-{
-	return ConsumableType::Buff;
-}

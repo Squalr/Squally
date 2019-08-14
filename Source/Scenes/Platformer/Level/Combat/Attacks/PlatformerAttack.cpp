@@ -24,6 +24,24 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->specialCost = specialCost;
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
+	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
+}
+
+PlatformerAttack* PlatformerAttack::clone()
+{
+	PlatformerAttack* attack = this->cloneInternal();
+
+	if (attack != nullptr)
+	{
+
+	}
+
+	return attack;
+}
+
+void PlatformerAttack::registerAttackCompleteCallback(std::function<void()> callback)
+{
+	this->attackCompleteCallbacks.push_back(callback);
 }
 
 std::string PlatformerAttack::getAttackAnimation()
@@ -102,6 +120,10 @@ void PlatformerAttack::generateProjectiles(PlatformerEntity* owner, PlatformerEn
 
 void PlatformerAttack::onAttackEnd()
 {
+	for (auto it = this->attackCompleteCallbacks.begin(); it != this->attackCompleteCallbacks.end(); it++)
+	{
+		(*it)();
+	}
 }
 
 void PlatformerAttack::onCleanup()

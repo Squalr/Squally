@@ -309,9 +309,6 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 
 void ChoicesMenu::buildAttackList()
 {
-	const float AngleDelta = float(M_PI) / 6.0f;
-	float currentAngle = 0.0f;
-
 	this->attackListNodes.clear();
 	this->attackListNode->removeAllChildren();
 
@@ -319,6 +316,7 @@ void ChoicesMenu::buildAttackList()
 	{
 		return;
 	}
+
 	PlatformerEntity* entity = this->selectedEntry->getEntity();
 
 	if (entity == nullptr)
@@ -335,6 +333,43 @@ void ChoicesMenu::buildAttackList()
 
 	std::vector<PlatformerAttack*> attacks = attackBehavior->getAttacks();
 
+	this->buildAttackList(this->attackListNode, &this->attackListNodes, attacks, UIResources::Combat_AttackCircle);
+}
+
+void ChoicesMenu::buildItemList()
+{
+	this->itemListNodes.clear();
+	this->itemListNode->removeAllChildren();
+
+	if (this->selectedEntry == nullptr)
+	{
+		return;
+	}
+	
+	PlatformerEntity* entity = this->selectedEntry->getEntity();
+
+	if (entity == nullptr)
+	{
+		return;
+	}
+
+	EntityAttackBehavior* attackBehavior = entity->getAttachedBehavior<EntityAttackBehavior>();
+
+	if (attackBehavior == nullptr)
+	{
+		return;
+	}
+
+	std::vector<PlatformerAttack*> attacks = attackBehavior->getAvailableConsumables();
+
+	this->buildAttackList(this->itemListNode, &this->itemListNodes, attacks, UIResources::Combat_ItemsCircle);
+}
+	
+void ChoicesMenu::buildAttackList(Node* nodeRef, std::vector<ClickableTextNode*>* listRef, std::vector<PlatformerAttack*> attacks, std::string backgroundResource)
+{
+	const float AngleDelta = float(M_PI) / 6.0f;
+	float currentAngle = 0.0f;
+	
 	for (auto it = attacks.begin(); it != attacks.end(); it++)
 	{
 		PlatformerAttack* attack = *it;
@@ -347,96 +382,42 @@ void ChoicesMenu::buildAttackList()
 		attackLabelSelected->enableOutline(Color4B::BLACK, 2);
 		attackLabelSelected->setTextColor(Color4B::YELLOW);
 
-		ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, UIResources::Combat_AttackCircle, UIResources::Combat_AttackCircle);
+		ClickableTextNode* node = ClickableTextNode::create(attackLabel, attackLabelSelected, backgroundResource, backgroundResource);
 
 		node->setTextOffset(Vec2(48.0f, 0.0f));
 		node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
 		node->addChild(Sprite::create(attack->getIconResource()));
 
 		node->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-		{
+		{	
 			this->selectedEntry->stageCast(attack);
 
-			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
+			switch (attack->getAttackType())
+			{
+				case PlatformerAttack::AttackType::Healing:
+				case PlatformerAttack::AttackType::ProjectileHealing:
+				case PlatformerAttack::AttackType::ProjectileBuffSpeed:
+				{
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, this->selectedEntry));
+					break;
+				}
+				case PlatformerAttack::AttackType::Damage:
+				case PlatformerAttack::AttackType::ProjectileDamage:
+				{
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
+					break;
+				}
+				default:
+				{
+					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, this->selectedEntry));
+					break;
+				}
+			}
 		});
 
 		currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
 
-		this->attackListNodes.push_back(node);
-		this->attackListNode->addChild(node);
-	}
-}
-
-void ChoicesMenu::buildItemList()
-{
-	const float AngleDelta = float(M_PI) / 6.0f;
-	float currentAngle = 0.0f;
-
-	this->itemListNodes.clear();
-	this->itemListNode->removeAllChildren();
-
-	if (this->selectedEntry != nullptr)
-	{
-		PlatformerEntity* entity = this->selectedEntry->getEntity();
-
-		if (entity != nullptr)
-		{
-			Inventory* inventory = entity->getInventory();
-			
-			if (inventory != nullptr)
-			{
-				std::vector<Consumable*> items = inventory->getItemsOfType<Consumable>();
-
-				for (auto it = items.begin(); it != items.end(); it++)
-				{
-					Consumable* item = *it;
-					LocalizedLabel* itemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, item->getString());
-					LocalizedLabel* itemLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, item->getString());
-
-					itemLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-					itemLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-					itemLabel->enableOutline(Color4B::BLACK, 2);
-					itemLabelSelected->enableOutline(Color4B::BLACK, 2);
-					itemLabelSelected->setTextColor(Color4B::YELLOW);
-
-					ClickableTextNode* node = ClickableTextNode::create(itemLabel, itemLabelSelected, UIResources::Combat_ItemsCircle, UIResources::Combat_ItemsCircle);
-
-					node->setTextOffset(Vec2(48.0f, 0.0f));
-					node->setPosition(Vec2(ChoicesMenu::OuterChoicesRadius * std::cos(currentAngle), ChoicesMenu::OuterChoicesRadius * std::sin(currentAngle)));
-					node->addChild(Sprite::create(item->getIconResource()));
-
-					node->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-					{
-						this->selectedEntry->stageCast(item->createAssociatedAttack());
-
-						switch (item->getConsumableType())
-						{
-							default:
-							case Consumable::ConsumableType::Buff:
-							{
-								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, this->selectedEntry));
-								break;
-							}
-							case Consumable::ConsumableType::Debuff:
-							{
-								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, this->selectedEntry));
-								break;
-							}
-							case Consumable::ConsumableType::Either:
-							{
-								CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, this->selectedEntry));
-								break;
-							}
-						}
-					});
-
-					currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
-
-					this->itemListNodes.push_back(node);
-					this->itemListNode->addChild(node);
-				}
-			}
-		}
-
+		listRef->push_back(node);
+		nodeRef->addChild(node);
 	}
 }

@@ -58,8 +58,3 @@ std::string RestorePotion::getSerializationKey()
 {
 	return RestorePotion::SaveKeyRestorePotion;
 }
-
-Consumable::ConsumableType RestorePotion::getConsumableType()
-{
-	return ConsumableType::Buff;
-}

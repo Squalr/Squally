@@ -9,7 +9,6 @@ class ThrowRestorePotion : public PlatformerAttack
 public:
 	static ThrowRestorePotion* create();
 
-	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
@@ -23,6 +22,8 @@ protected:
 
 private:
 	typedef PlatformerAttack super;
+	
+	PlatformerAttack* cloneInternal() override;
 
 	Sound* throwSound;
 };

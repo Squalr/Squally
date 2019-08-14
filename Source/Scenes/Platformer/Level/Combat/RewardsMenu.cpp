@@ -116,11 +116,11 @@ void RewardsMenu::loadRewards()
 	int index = 0;
 	int totalExpGain = 0;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
-		totalExpGain += StatsTables::getKillExp(entity);
+		totalExpGain += StatsTables::getKillExp(enemy);
 
-		std::vector<Item*> items = entity->getInventory()->getItems();
+		std::vector<Item*> items = enemy->getDropInventory()->getItems();
 
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{

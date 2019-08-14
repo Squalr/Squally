@@ -8,15 +8,7 @@ class PlatformerAttack;
 class Consumable : public Item
 {
 public:
-	enum ConsumableType
-	{
-		Buff,
-		Debuff,
-		Either
-	};
-
 	virtual PlatformerAttack* createAssociatedAttack() = 0;
-	virtual ConsumableType getConsumableType() = 0;
 
 protected:
 	Consumable(CurrencyInventory* cost);

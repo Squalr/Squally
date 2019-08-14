@@ -15,7 +15,6 @@ public:
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
-	ConsumableType getConsumableType() override;
 
 	static const std::string SaveKeyRestorePotion;
 

@@ -9,7 +9,7 @@ class ThrowSpeedRune : public PlatformerAttack
 public:
 	static ThrowSpeedRune* create();
 
-	PlatformerAttack* clone() override;
+	PlatformerAttack* cloneInternal() override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;

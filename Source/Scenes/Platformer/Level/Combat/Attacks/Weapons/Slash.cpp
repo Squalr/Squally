@@ -29,7 +29,7 @@ Slash::Slash(float attackDuration, float recoverDuration) : super(AttackType::Da
 	this->addChild(this->hitSound);
 }
 
-PlatformerAttack* Slash::clone()
+PlatformerAttack* Slash::cloneInternal()
 {
 	return Slash::create(this->getAttackDuration(), this->getRecoverDuration());
 }

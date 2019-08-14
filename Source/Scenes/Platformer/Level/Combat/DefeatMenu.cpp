@@ -19,7 +19,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Combat/Defeat.h"
-#include "Strings/Menus/Leave.h"
+#include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
 
@@ -37,19 +37,19 @@ DefeatMenu::DefeatMenu()
 	this->defeatBanner = Sprite::create(UIResources::Combat_DefeatMenu);
 	this->defeatLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Defeat::create());
 
-	LocalizedLabel*	okayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
-	LocalizedLabel*	okayLabelHover = okayLabel->clone();
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	okayLabel->enableOutline(Color4B::BLACK, 2);
-	okayLabelHover->enableOutline(Color4B::BLACK, 2);
+	returnLabel->enableOutline(Color4B::BLACK, 2);
+	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 
-	this->okayButton = ClickableTextNode::create(okayLabel, okayLabelHover, Sprite::create(UIResources::Menus_Buttons_GenericButton), Sprite::create(UIResources::Menus_Buttons_GenericButtonHover));
+	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
 	this->defeatLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->addChild(this->defeatBanner);
 	this->addChild(this->defeatLabel);
-	this->addChild(this->okayButton);
+	this->addChild(this->returnButton);
 }
 
 DefeatMenu::~DefeatMenu()
@@ -67,16 +67,16 @@ void DefeatMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->defeatBanner->setPositionY(256.0f);
-	this->defeatLabel->setPositionY(256.0f - 96.0f);
-	this->okayButton->setPositionY(-128.0f);
+	this->defeatBanner->setPosition(Vec2(0.0f, 0.0f));
+	this->defeatLabel->setPosition(Vec2(0.0f, 176.0f));
+	this->returnButton->setPosition(Vec2(16.0f, -160.0f));
 }
 
 void DefeatMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->okayButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});

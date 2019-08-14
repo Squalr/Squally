@@ -34,7 +34,7 @@ ThrowHealthPotion::~ThrowHealthPotion()
 {
 }
 
-PlatformerAttack* ThrowHealthPotion::clone()
+PlatformerAttack* ThrowHealthPotion::cloneInternal()
 {
 	return ThrowHealthPotion::create();
 }

@@ -58,8 +58,3 @@ std::string HealthPotion::getSerializationKey()
 {
 	return HealthPotion::SaveKeyHealthPotion;
 }
-
-Consumable::ConsumableType HealthPotion::getConsumableType()
-{
-	return ConsumableType::Buff;
-}

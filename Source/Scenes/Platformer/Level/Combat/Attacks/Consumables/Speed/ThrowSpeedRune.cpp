@@ -34,7 +34,7 @@ ThrowSpeedRune::~ThrowSpeedRune()
 {
 }
 
-PlatformerAttack* ThrowSpeedRune::clone()
+PlatformerAttack* ThrowSpeedRune::cloneInternal()
 {
 	return ThrowSpeedRune::create();
 }

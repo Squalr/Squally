@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class PlatformerAttack;
 class TimelineEntry;
 
 class ChoicesMenu : public SmartNode
@@ -33,6 +34,7 @@ private:
 	void setSelectedEntry(TimelineEntry* selectedEntry);
 	void buildAttackList();
 	void buildItemList();
+	void buildAttackList(cocos2d::Node* nodeRef, std::vector<ClickableTextNode*>* listRef, std::vector<PlatformerAttack*> attacks, std::string backgroundResource);
 
 	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
 

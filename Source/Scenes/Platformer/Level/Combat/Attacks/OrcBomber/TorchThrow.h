@@ -7,7 +7,6 @@ class TorchThrow : public PlatformerAttack
 public:
 	static TorchThrow* create(float attackDuration, float recoverDuration);
 
-	PlatformerAttack* clone() override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
@@ -20,4 +19,6 @@ protected:
 
 private:
 	typedef PlatformerAttack super;
+	
+	PlatformerAttack* cloneInternal() override;
 };

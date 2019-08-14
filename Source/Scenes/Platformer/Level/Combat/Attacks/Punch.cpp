@@ -27,7 +27,7 @@ Punch::Punch(float attackDuration, float recoverDuration) : super(AttackType::Da
 	this->addChild(this->punchSound);
 }
 
-PlatformerAttack* Punch::clone()
+PlatformerAttack* Punch::cloneInternal()
 {
 	return Punch::create(this->getAttackDuration(), this->getRecoverDuration());
 }

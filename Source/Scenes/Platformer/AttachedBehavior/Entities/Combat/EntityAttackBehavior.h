@@ -12,6 +12,7 @@ public:
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
+	std::vector<PlatformerAttack*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
 
 	static const std::string MapKeyAttachedBehavior;
@@ -27,7 +28,14 @@ private:
 	typedef AttachedBehavior super;
 
 	void buildEquipmentAttacks();
+	void rebuildConsumables();
 
 	PlatformerEntity* entity;
+	cocos2d::Node* attacksNode;
+	cocos2d::Node* consumablessNode;
+
+	bool consumablesStale;
+
 	std::vector<PlatformerAttack*> registeredAttacks;
+	std::vector<PlatformerAttack*> registeredConsumables;
 };

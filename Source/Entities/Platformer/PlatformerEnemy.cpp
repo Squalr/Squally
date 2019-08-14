@@ -44,6 +44,9 @@ PlatformerEnemy::PlatformerEnemy(
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
 	this->iouTable = std::tuple<int, int>();
+	this->dropInventory = Inventory::create();
+
+	this->addChild(this->dropInventory);
 }
 
 PlatformerEnemy::~PlatformerEnemy()
@@ -93,6 +96,11 @@ std::string PlatformerEnemy::getBattleBehavior()
 	return this->battleBehavior;
 }
 
+Inventory* PlatformerEnemy::getDropInventory()
+{
+	return this->dropInventory;
+}
+
 void PlatformerEnemy::onObjectStateLoaded()
 {
 	super::onObjectStateLoaded();
@@ -111,7 +119,7 @@ void PlatformerEnemy::buildDropInventory()
 		{
 			PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(std::get<0>(*it), [=](Item* item)
 			{
-				this->getInventory()->forceInsert(item);
+				this->dropInventory->forceInsert(item);
 			}));
 		}
 	}

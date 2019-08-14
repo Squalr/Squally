@@ -8,12 +8,15 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
+class Inventory;
+
 // Base class for enemies
 class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
 	std::string getBattleBehavior();
+	Inventory* getDropInventory();
 
 	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
@@ -44,6 +47,8 @@ protected:
 private:
 	typedef PlatformerEntity super;
 	friend class EnemyHealthBehavior;
+
+	Inventory* dropInventory;
 
 	void buildDropInventory();
 	void buildIOUDrop();

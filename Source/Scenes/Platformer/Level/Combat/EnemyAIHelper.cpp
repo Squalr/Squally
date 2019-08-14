@@ -114,10 +114,16 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 	// PHASE 1: Check if available heal target / heal spell
 	EntityAttackBehavior* attackBehavior = attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
 	std::vector<PlatformerAttack*> attackList = attackBehavior->getAvailableAttacks();
+	std::vector<PlatformerAttack*> consumablesList = attackBehavior->getAvailableConsumables();
 	PlatformerAttack* attack = nullptr;
 	bool hasWeakAlly = false;
 	float selectedAttackPriority = -1.0f;
 	const float WeakPercentage = 0.5f;
+
+	for (auto it = consumablesList.begin(); it != consumablesList.end(); it++)
+	{
+		attackList.push_back(*it);
+	}
 
 	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{

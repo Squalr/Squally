@@ -29,7 +29,7 @@ TorchThrow::~TorchThrow()
 {
 }
 
-PlatformerAttack* TorchThrow::clone()
+PlatformerAttack* TorchThrow::cloneInternal()
 {
 	return TorchThrow::create(this->getAttackDuration(), this->getRecoverDuration());
 }

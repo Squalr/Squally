@@ -58,8 +58,3 @@ std::string SpeedRune::getSerializationKey()
 {
 	return SpeedRune::SaveKeySpeedRune;
 }
-
-Consumable::ConsumableType SpeedRune::getConsumableType()
-{
-	return ConsumableType::Buff;
-}

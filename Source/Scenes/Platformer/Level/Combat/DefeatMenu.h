@@ -30,5 +30,5 @@ private:
 
 	cocos2d::Sprite* defeatBanner;
 	LocalizedLabel* defeatLabel;
-	ClickableTextNode* okayButton;
+	ClickableTextNode* returnButton;
 };
