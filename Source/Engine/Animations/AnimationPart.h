@@ -31,6 +31,7 @@ public:
 	void restoreOffset();
 	void setOpacity(GLubyte opacity) override;
 	void setVisible(bool visible) override;
+	void updateTrackedAttributes();
 
 	GLubyte getOpacity() const override;
 
@@ -44,11 +45,12 @@ private:
 	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;
-	void updateTrackedAttributes();
 
 	std::string originalPath;
 	cocos2d::Sprite* ghostSprite;
 	std::vector<cocos2d::Node*> trackedObjects;
 	SpriterEngine::UniversalObjectInterface* spriterAnimationPart;
+	SpriterEngine::EntityInstance* entity;
 	float rotation;
+	std::string lastKnownAnim;
 };

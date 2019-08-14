@@ -79,6 +79,12 @@ void SquallyWeaponCollisionBehavior::onLoad()
 void SquallyWeaponCollisionBehavior::onWeaponChange()
 {
 	EntityWeaponCollisionBehavior* weaponBehavior = this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>();
+
+	if (weaponBehavior == nullptr)
+	{
+		return;
+	}
+
 	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
 
 	if (weapon != nullptr)

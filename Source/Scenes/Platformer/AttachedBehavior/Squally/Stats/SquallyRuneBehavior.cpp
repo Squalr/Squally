@@ -54,7 +54,10 @@ void SquallyRuneBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
-		this->entityRuneBehavior->tryUseRune();
+		if (this->entityRuneBehavior != nullptr)
+		{
+			this->entityRuneBehavior->tryUseRune();
+		}
 		
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
 	}));
@@ -67,28 +70,34 @@ void SquallyRuneBehavior::onLoad()
 
 		HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
 		
-		if (queryArgs.hackerModeAllowed && this->entityRuneBehavior->tryUseRune())
+		if (queryArgs.hackerModeAllowed && (this->entityRuneBehavior == nullptr || this->entityRuneBehavior->tryUseRune()))
 		{
 			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
 		}
 	});
 
-	ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
-
-	for (int index = 0; index < std::min((int)cooldowns.size(), EntityRuneBehavior::MaxRunes); index++)
+	if (this->entityRuneBehavior != nullptr)
 	{
-		this->entityRuneBehavior->setRuneCooldown(index, cooldowns[index].asFloat());
+		ValueVector cooldowns = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyRuneCooldowns, Value(ValueVector())).asValueVector();
+		
+		for (int index = 0; index < std::min((int)cooldowns.size(), EntityRuneBehavior::MaxRunes); index++)
+		{
+			this->entityRuneBehavior->setRuneCooldown(index, cooldowns[index].asFloat());
+		}
 	}
 }
 
 void SquallyRuneBehavior::saveState()
 {
-	ValueVector cooldowns = ValueVector();
-
-	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
+	if (this->entityRuneBehavior != nullptr)
 	{
-		cooldowns.push_back(Value(this->entityRuneBehavior->getRuneCooldown(index)));
-	}
+		ValueVector cooldowns = ValueVector();
 
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
+		for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
+		{
+			cooldowns.push_back(Value(this->entityRuneBehavior->getRuneCooldown(index)));
+		}
+
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
+	}
 }

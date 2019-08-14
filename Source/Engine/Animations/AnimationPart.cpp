@@ -25,9 +25,11 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
 	this->trackedObjects = std::vector<Node*>();
-	this->spriterAnimationPart = entity->getObjectInstance(partName);
+	this->entity = entity;
+	this->spriterAnimationPart = this->entity->getObjectInstance(partName);
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 	this->originalPath = "";
+	this->lastKnownAnim = "";
 
 	if (this->ghostSprite != nullptr)
 	{
@@ -61,11 +63,14 @@ void AnimationPart::onEnter()
 void AnimationPart::update(float dt)
 {
 	super::update(dt);
+
 	this->updateTrackedAttributes();
 }
 
 void AnimationPart::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags)
 {
+	this->updateTrackedAttributes();
+
 	super::visit(renderer, parentTransform, parentFlags);
 }
 
@@ -153,8 +158,6 @@ void AnimationPart::setRotation(float rotation)
 	{
 		this->spriterAnimationPart->setAngle(rotation / 180.0f * M_PI);
 	}
-
-	this->updateTrackedAttributes();
 }
 
 void AnimationPart::setOffset(Vec2 offset)
@@ -208,7 +211,6 @@ void AnimationPart::updateTrackedAttributes()
 	{
 		return;
 	}
-
 	SmartAnimationNode* parent = dynamic_cast<SmartAnimationNode*>(this->getParent());
 	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
 
@@ -222,14 +224,18 @@ void AnimationPart::updateTrackedAttributes()
 		}
 	}
 
-	Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
-	Vec3 thisCords = GameUtils::getWorldCoords3D(this);
-	Vec3 delta = thisCords - spriteCoords;
+	const Vec3 spriteCoords = GameUtils::getWorldCoords3D(this->ghostSprite);
+	const Vec3 thisCords = GameUtils::getWorldCoords3D(this);
+	const Vec3 delta = thisCords - spriteCoords;
+
+	const float angle = float(this->spriterAnimationPart->getAngle());
+	const Vec2 position = Vec2(float(this->spriterAnimationPart->getPosition().x), -float(this->spriterAnimationPart->getPosition().y));
+	const Vec2 anchor = Vec2(float(this->spriterAnimationPart->getPivot().x), float(this->spriterAnimationPart->getPivot().y));
 
 	// In order to make the game think that this AnimationPart class is the Spriter object, we need to keep certain things in sync
-	super::setRotation(float(this->spriterAnimationPart->getAngle()) * 180.0f / float(M_PI));
-	super::setPosition(Vec2(float(this->spriterAnimationPart->getPosition().x), -float(this->spriterAnimationPart->getPosition().y)) - Vec2(delta.x, delta.y));
-	super::setAnchorPoint(Vec2(float(this->spriterAnimationPart->getPivot().x), float(this->spriterAnimationPart->getPivot().y)));
+	super::setRotation(angle * 180.0f / float(M_PI));
+	super::setPosition(position - Vec2(delta.x, delta.y));
+	super::setAnchorPoint(anchor);
 
 	this->ghostSprite->setPosition(Vec2::ZERO);
 }
