@@ -52,7 +52,7 @@ void SquallyRuneBehavior::onLoad()
 		this->saveState();
 	}));
 
-	this->addEventListener(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
 		this->entityRuneBehavior->tryUseRune();
 		

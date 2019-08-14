@@ -1,4 +1,5 @@
 #pragma once
+#include "Scenes/Platformer/AttachedBehavior/Combat/RestorePotionTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Enemies/EnemyAttachedBehavior.h"

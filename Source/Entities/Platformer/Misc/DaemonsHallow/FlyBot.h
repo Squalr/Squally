@@ -35,10 +35,7 @@ private:
 	void onEnter() override;
 	void initializeListeners() override;
 	void runEndOfDemoEvent();
-	void runRestorePotionTutorial();
 	void runSquallyTrappedEvent();
-
-	bool hasRunTutorialEvent;
 
 	static const std::string EventEndOfDemo;
 	static const std::string EventSquallyTrapped;

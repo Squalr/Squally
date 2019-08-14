@@ -122,9 +122,9 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
 		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
 
-		if (std::round(float(health) / float(maxHealth)) <= WeakPercentage)
+		if (maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
 		{
 			hasWeakAlly = true;
 		}

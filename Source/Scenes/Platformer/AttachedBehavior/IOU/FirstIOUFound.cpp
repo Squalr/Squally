@@ -8,7 +8,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/NotificationEvents.h"

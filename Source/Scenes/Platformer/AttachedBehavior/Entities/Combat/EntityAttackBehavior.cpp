@@ -7,6 +7,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -58,8 +59,7 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 	for (auto it = this->attacks.begin(); it != this->attacks.end(); it++)
 	{
-		// TODO: Broken until attacks abstracted into their own behavior
-		// if ((*it)->getSpecialCost() <= this->getMana())
+		if ((*it)->getSpecialCost() <= this->getStateOrDefaultInt(StateKeys::Mana, 0))
 		{
 			availableAttacks.push_back(*it);
 		}

@@ -33,10 +33,8 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
-#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
 
 #include "Strings/Dialogue/EndOfDemo.h"
-#include "Strings/Dialogue/Story/Intro/HackerModeCombat.h"
 #include "Strings/Dialogue/Story/Intro/SquallyTrapped.h"
 
 const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
@@ -67,7 +65,6 @@ FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
 {
 	this->hexusOpponentData = FlyBot::getHexusOpponentData();
 
-	this->hasRunTutorialEvent = false;
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
 	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
 	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
@@ -111,11 +108,6 @@ void FlyBot::initializeListeners()
 			this->runSquallyTrappedEvent();
 		});
 	}
-
-	this->listenForMapEvent(RestoreHealth::EventShowRestorePotionTutorial, [=](ValueMap args)
-	{
-		this->runRestorePotionTutorial();
-	});
 }
 
 void FlyBot::runEndOfDemoEvent()
@@ -128,46 +120,6 @@ void FlyBot::runEndOfDemoEvent()
 		CallFunc::create([=]()
 		{
 			this->speechBubble->runDialogue(Strings::Dialogue_EndOfDemo::create());
-		}),
-		nullptr
-	));
-}
-
-void FlyBot::runRestorePotionTutorial()
-{
-	if (this->hasRunTutorialEvent)
-	{
-		return;
-	}
-
-	this->hasRunTutorialEvent = true;
-
-	static const float TutorialDelay = 1.5f;
-
-	this->runAction(Sequence::create(
-		DelayTime::create(TutorialDelay),
-		CallFunc::create([=]()
-		{
-			HackableEvents::TriggerAllowHackerMode();
-			HackableEvents::TriggerForceHackerModeEnable();
-			GameUtils::resume(this);
-
-			this->runAction(Sequence::create(
-				CallFunc::create([=]()
-				{
-					this->droidChatterSound->play();
-				}),
-				CallFunc::create([=]()
-				{
-					this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
-				}),
-				DelayTime::create(4.0f),
-				CallFunc::create([=]()
-				{
-					this->speechBubble->hideDialogue();
-				}),
-				nullptr
-			));
 		}),
 		nullptr
 	));
