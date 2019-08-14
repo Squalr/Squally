@@ -104,7 +104,7 @@ void DeveloperScene::initializeListeners()
 	});
 }
 
-ClickableTextNode* DeveloperScene::buildDebugButton(std::string mapResource, std::vector<std::string> mapArgs)
+ClickableTextNode* DeveloperScene::buildDebugButton(std::string mapResource)
 {
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, ConstantString::create(mapResource));
 	LocalizedLabel* labelSelected = label->clone();
@@ -120,7 +120,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string mapResource, std
 
 		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-		PlatformerMap* map = PlatformerMap::create(mapResource, mapArgs);
+		PlatformerMap* map = PlatformerMap::create(mapResource);
 
 		NavigationEvents::LoadScene(map);
 	});

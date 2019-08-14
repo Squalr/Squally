@@ -95,10 +95,10 @@ void SquallyShip::onEnter()
 
 	CameraTrackingData trackingData = CameraTrackingData(
 		this->ship,
+		Vec2(0.0f, 512.0f),
 		Vec2(0.0f, 0.0f),
 		CameraTrackingData::CameraScrollType::Rectangle,
-		Vec2(1.0f, 1.0f),
-		Vec2(0.0f, 512.0f)
+		Vec2(1.0f, 1.0f)
 	);
 
 	GameCamera::getInstance()->setTarget(trackingData);

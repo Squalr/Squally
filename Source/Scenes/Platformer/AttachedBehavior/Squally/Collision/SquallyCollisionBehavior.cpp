@@ -68,7 +68,6 @@ void SquallyCollisionBehavior::onLoad()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
 	{
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
-		this->squally->saveState();
 	}));
 
 	if (collisionBehavior != nullptr)

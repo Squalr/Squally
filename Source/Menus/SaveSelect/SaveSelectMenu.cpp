@@ -243,15 +243,8 @@ void SaveSelectMenu::loadSave()
 {
 	bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
 	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Intro)).asString();
-	ValueVector mapArgsVector = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMapArgs, Value(ValueVector())).asValueVector();
-	std::vector<std::string> mapArgs = std::vector<std::string>();
-
-	for (auto it = mapArgsVector.begin(); it != mapArgsVector.end(); it++)
-	{
-		mapArgs.push_back((*it).asString());
-	}
-
-	PlatformerMap* map = PlatformerMap::create(mapFile, mapArgs);
+	
+	PlatformerMap* map = PlatformerMap::create(mapFile);
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }

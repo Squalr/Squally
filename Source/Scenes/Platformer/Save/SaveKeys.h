@@ -6,7 +6,6 @@ class SaveKeys
 {
 public:
 	static const std::string SaveKeyMap;
-	static const std::string SaveKeyMapArgs;
 	static const std::string SaveKeyEventTriggeredPrefix;
 	static const std::string SaveKeySquallyHealth;
 	static const std::string SaveKeySquallyMana;

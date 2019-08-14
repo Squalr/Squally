@@ -27,4 +27,6 @@ private:
 	typedef EntityMovementBehavior super;
 
 	Squally* squally;
+
+	bool isDisposing;
 };

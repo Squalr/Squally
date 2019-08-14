@@ -14,11 +14,9 @@ class PartyMenu;
 class PlatformerMap : public MapBase
 {
 public:
-	static PlatformerMap* create(std::string mapResource, std::vector<std::string> mapArgs, std::string transition = "");
+	static PlatformerMap* create(std::string mapResource, std::string transition = "");
 
-	void loadMap(std::string mapResource, std::vector<std::string> args) override;
-
-	static const std::string MapArgClearSavedPosition;
+	void loadMap(std::string mapResource) override;
 
 protected:
 	PlatformerMap(std::string transition = "");

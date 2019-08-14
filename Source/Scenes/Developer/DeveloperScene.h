@@ -23,7 +23,7 @@ private:
 	ScrollPane* scrollPane;
 	std::vector<ClickableTextNode*> chapterList;
 
-	ClickableTextNode* buildDebugButton(std::string mapResource, std::vector<std::string> mapArgs = { });
+	ClickableTextNode* buildDebugButton(std::string mapResource);
 
 	static DeveloperScene* instance;
 };

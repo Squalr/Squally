@@ -7,6 +7,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
 const std::string PlatformerEvents::EventWarpToLocation = "EVENT_WARP_TO_LOCATION";
+const std::string PlatformerEvents::EventBeforePlatformerMapChange = "EVENT_BEFORE_PLATFORMER_MAP_CHANGE";
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
 const std::string PlatformerEvents::EventQueryMapArgs = "EVENT_QUERY_MAP_ARGS";
@@ -29,6 +30,13 @@ void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventWarpToLocation,
 		&args
+	);
+}
+
+void PlatformerEvents::TriggerBeforePlatformerMapChange()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventBeforePlatformerMapChange
 	);
 }
 

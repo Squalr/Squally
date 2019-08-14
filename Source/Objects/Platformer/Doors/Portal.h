@@ -17,7 +17,6 @@ public:
 	void setRequiresInteraction(bool requiresInteraction);
 
 	static const std::string MapKeyPortal;
-	static const std::string MapKeyPortalArgs;
 	static const std::string MapKeyPortalMap;
 	static const std::string MapKeyPortalTransition;
 
@@ -46,5 +45,4 @@ private:
 	bool isLocked;
 	std::string transition;
 	std::string mapFile;
-	std::vector<std::string> mapArgs;
 };

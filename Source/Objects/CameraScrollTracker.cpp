@@ -65,10 +65,10 @@ void CameraScrollTracker::onEnterTransitionDidFinish()
 
 	CameraTrackingData trackingData = CameraTrackingData(
 		this->trackTarget,
+		Vec2::ZERO,
 		CameraTrackingData::DefaultCameraOffset,
 		CameraTrackingData::CameraScrollType::Rectangle,
 		CameraTrackingData::DefaultCameraFollowSpeed,
-		Vec2::ZERO,
 		this->zoom
 	);
 

@@ -66,7 +66,7 @@ void MapNode::initializeListeners()
 
 void MapNode::onNodeClick()
 {
-	PlatformerMap* map = PlatformerMap::create(this->nodeMapFile, { PlatformerMap::MapArgClearSavedPosition });
+	PlatformerMap* map = PlatformerMap::create(this->nodeMapFile);
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }

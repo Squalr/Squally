@@ -39,12 +39,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onHackerModeEnable(int eq) override;
-	void saveState();
-	void loadSaveState();
 	void runEyeBlinkLoop();
 	void spawnHelper();
-
-	cocos2d::Node* cameraTrackTarget;
 
 	static const float SquallyScale;
 };

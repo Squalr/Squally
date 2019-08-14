@@ -60,10 +60,10 @@ void CameraFocus::onEnterTransitionDidFinish()
 
 	CameraTrackingData trackingData = CameraTrackingData(
 		this,
+		Vec2::ZERO,
 		this->scrollBounds,
 		scrollTypeValue,
 		this->scrollSpeed,
-		Vec2::ZERO,
 		this->zoom
 	);
 

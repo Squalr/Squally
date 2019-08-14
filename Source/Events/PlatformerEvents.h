@@ -13,6 +13,7 @@ class PlatformerEvents
 public:
 	static const std::string EventSpawnToTransitionLocation;
 	static const std::string EventWarpToLocation;
+	static const std::string EventBeforePlatformerMapChange;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
 	static const std::string EventQueryMapArgs;
@@ -78,6 +79,7 @@ public:
 
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
+	static void TriggerBeforePlatformerMapChange();
 	static void TriggerCinematicHijack();
 	static void TriggerCinematicRestore();
 	static void TriggerQueryMapArgs(QueryMapArgsArgs args);

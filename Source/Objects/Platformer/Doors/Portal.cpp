@@ -10,6 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -19,7 +20,6 @@
 using namespace cocos2d;
 
 const std::string Portal::MapKeyPortal = "portal";
-const std::string Portal::MapKeyPortalArgs = "args";
 const std::string Portal::MapKeyPortalTransition = "transition";
 const std::string Portal::MapKeyPortalMap = "map";
 
@@ -40,13 +40,10 @@ Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initPro
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->wasTripped = false;
 	this->canInteract = false;
-	this->mapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalArgs, Value("")).asString(), ", ");
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->isLocked = !this->mapEvent.empty();
 	this->requiresInteraction = true;
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
-
-	this->mapArgs.push_back(PlatformerMap::MapArgClearSavedPosition);
 
 	this->portalCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
@@ -175,7 +172,6 @@ void Portal::loadMap()
 	if (!this->wasTripped)
 	{
 		this->wasTripped = true;
-		PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->mapArgs, this->transition);
 
 		// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
 		// (not sure why, changing to a combat map is fine)
@@ -183,6 +179,8 @@ void Portal::loadMap()
 			DelayTime::create(0.1f),
 			CallFunc::create([=]()
 			{
+				PlatformerEvents::TriggerBeforePlatformerMapChange();
+				PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
 				NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 			}),
 			nullptr

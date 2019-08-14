@@ -227,15 +227,8 @@ void MapBase::onMouseWheelScroll(EventMouse* event)
 	}
 }
 
-std::vector<std::string> MapBase::getMapArgs()
+void MapBase::loadMap(std::string mapResource)
 {
-	return this->mapArgs;
-}
-
-void MapBase::loadMap(std::string mapResource, std::vector<std::string> args)
-{
-	this->mapArgs = args;
-	
 	if (this->map != nullptr)
 	{
 		this->mapNode->removeChild(this->map);

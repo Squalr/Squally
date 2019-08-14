@@ -534,6 +534,6 @@ void GameCamera::setCameraPositionToTrackedTarget()
 
 		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
 
-		this->setCameraPosition(targetPosition);
+		this->setCameraPosition(targetPosition, true);
 	}
 }

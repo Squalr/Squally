@@ -12,10 +12,10 @@ CameraTrackingData::CameraTrackingData()
 }
 
 CameraTrackingData::CameraTrackingData(cocos2d::Node* target,
+	cocos2d::Vec2 trackOffset,
 	cocos2d::Vec2 scrollOffset,
 	CameraScrollType scrollType,
 	cocos2d::Vec2 followSpeed,
-	cocos2d::Vec2 trackOffset,
 	float zoom,
 	std::function<cocos2d::Vec2()> customPositionFunction)
 {

@@ -63,11 +63,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	SaveKeys::SaveKeySquallyEquipment,
 	SaveKeys::SaveKeySquallyCurrencyInventory)
 {
-	this->cameraTrackTarget = Node::create();
-
 	this->registerHackables();
-
-	this->addChild(this->cameraTrackTarget);
 }
 
 Squally::~Squally()
@@ -78,10 +74,8 @@ void Squally::onEnter()
 {
 	super::onEnter();
 
-	this->loadSaveState();
-
 	// Request camera track player
-	CameraTrackingData trackingData = CameraTrackingData(this->cameraTrackTarget, Vec2(128.0f, 96.0f));
+	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(0.0f, 128.0f), Vec2(128.0f, 96.0f));
 	GameCamera::getInstance()->setTarget(trackingData, true);
 }
 
@@ -96,8 +90,6 @@ void Squally::onEnterTransitionDidFinish()
 void Squally::initializePositions()
 {
 	super::initializePositions();
-
-	this->cameraTrackTarget->setPosition(Vec2(0.0f, 128.0f));
 }
 
 void Squally::initializeListeners()
@@ -107,11 +99,6 @@ void Squally::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
-	{
-		this->saveState();
 	}));
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocation, [=](EventCustom* eventCustom)
@@ -163,21 +150,4 @@ void Squally::performSwimAnimation()
 void Squally::onHackerModeEnable(int eq)
 {
 	super::onHackerModeEnable(eq);
-}
-
-void Squally::saveState()
-{
-}
-
-void Squally::loadSaveState()
-{
-	/*
-	this->setPosition(Vec2(
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->getPositionX())).asFloat(),
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->getPositionY())).asFloat()
-	));
-	*/
-
-	// Save new defaults
-	this->saveState();
 }

@@ -107,7 +107,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 
-	this->loadMap(levelFile, mapArgs);
+	this->loadMap(levelFile);
 }
 
 CombatMap::~CombatMap()

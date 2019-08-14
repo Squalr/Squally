@@ -26,9 +26,7 @@ class HackerModeHud;
 class MapBase : public GlobalScene
 {
 public:
-	virtual void loadMap(std::string mapResource, std::vector<std::string> args = { });
-
-	std::vector<std::string> getMapArgs();
+	virtual void loadMap(std::string mapResource);
 
 protected:
 	MapBase(bool useIngameMenu, bool allowHackerMode);

@@ -40,21 +40,13 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerMap::MapArgClearSavedPosition = "ARGS_CLEAR_SAVED_POSITION";
-
-PlatformerMap* PlatformerMap::create(std::string mapResource, std::vector<std::string> mapArgs, std::string transition)
+PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transition)
 {
 	PlatformerMap* instance = new PlatformerMap(transition);
 
 	instance->autorelease();
 
-	if (std::find(mapArgs.begin(), mapArgs.end(), PlatformerMap::MapArgClearSavedPosition) != mapArgs.end())
-	{
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	}
-
-	instance->loadMap(mapResource, mapArgs);
+	instance->loadMap(mapResource);
 
 	return instance;
 }
@@ -257,21 +249,13 @@ void PlatformerMap::update(float dt)
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
-void PlatformerMap::loadMap(std::string mapResource, std::vector<std::string> args)
+void PlatformerMap::loadMap(std::string mapResource)
 {
-	ValueVector argsVector = ValueVector();
-
-	for (auto it = args.begin(); it != args.end(); it++)
-	{
-		argsVector.push_back(Value(*it));
-	}
-
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeyMap, Value(mapResource) },
-		{ SaveKeys::SaveKeyMapArgs, Value(argsVector) }
 	});
 
-	super::loadMap(mapResource, args);
+	super::loadMap(mapResource);
 }
 
 Cipher* PlatformerMap::getCipherInstance()

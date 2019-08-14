@@ -29,10 +29,10 @@ public:
 	CameraTrackingData();
 	CameraTrackingData(
 		cocos2d::Node* target,
+		cocos2d::Vec2 trackOffset = cocos2d::Vec2::ZERO,
 		cocos2d::Vec2 scrollOffset = CameraTrackingData::DefaultCameraOffset,
 		CameraScrollType scrollType = CameraScrollType::Rectangle,
 		cocos2d::Vec2 followSpeed = CameraTrackingData::DefaultCameraFollowSpeed,
-		cocos2d::Vec2 trackOffset = cocos2d::Vec2::ZERO,
 		float zoom = 1.0f,
 		std::function<cocos2d::Vec2()> customPositionFunction = nullptr
 	);
