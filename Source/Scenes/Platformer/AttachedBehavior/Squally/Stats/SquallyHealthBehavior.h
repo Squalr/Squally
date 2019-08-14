@@ -7,12 +7,12 @@ class Squally;
 class SquallyHealthBehavior : public AttachedBehavior
 {
 public:
-	static SquallyHealthBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyHealthBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyHealthBehavior(GameObject* owner);
 	~SquallyHealthBehavior();
 
 	void onLoad() override;

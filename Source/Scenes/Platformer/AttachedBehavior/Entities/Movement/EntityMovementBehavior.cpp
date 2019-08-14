@@ -20,16 +20,16 @@ const float EntityMovementBehavior::MoveAcceleration = 5800.0f;
 const Vec2 EntityMovementBehavior::SwimAcceleration = Vec2(8000.0f, 420.0f);
 const float EntityMovementBehavior::JumpVelocity = 7680.0f;
 
-EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 {
-	EntityMovementBehavior* instance = new EntityMovementBehavior(owner, attachedBehaviorArgs);
+	EntityMovementBehavior* instance = new EntityMovementBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityMovementBehavior::EntityMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

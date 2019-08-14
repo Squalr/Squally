@@ -32,7 +32,6 @@ const std::string GameObject::MapKeyQuest = "quest";
 const std::string GameObject::MapKeyQuestLine = "quest-line";
 const std::string GameObject::MapKeyQuestTag = "quest-tag";
 const std::string GameObject::MapKeyAttachedBehavior = "attached-behavior";
-const std::string GameObject::MapKeyAttachedBehaviorArgs = "attached-behavior-args";
 const std::string GameObject::MapKeyArgs = "args";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";

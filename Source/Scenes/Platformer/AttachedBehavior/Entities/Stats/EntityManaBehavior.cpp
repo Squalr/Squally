@@ -15,16 +15,16 @@
 
 using namespace cocos2d;
 
-EntityManaBehavior* EntityManaBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityManaBehavior* EntityManaBehavior::create(GameObject* owner)
 {
-	EntityManaBehavior* instance = new EntityManaBehavior(owner, attachedBehaviorArgs);
+	EntityManaBehavior* instance = new EntityManaBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityManaBehavior::EntityManaBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityManaBehavior::EntityManaBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

@@ -21,16 +21,16 @@ using namespace cocos2d;
 
 const std::string FirstIOUFound::MapKeyAttachedBehavior = "first-iou-found";
 
-FirstIOUFound* FirstIOUFound::create(GameObject* owner, std::string attachedBehaviorArgs)
+FirstIOUFound* FirstIOUFound::create(GameObject* owner)
 {
-	FirstIOUFound* instance = new FirstIOUFound(owner, attachedBehaviorArgs);
+	FirstIOUFound* instance = new FirstIOUFound(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirstIOUFound::FirstIOUFound(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+FirstIOUFound::FirstIOUFound(GameObject* owner) : super(owner)
 {
 	this->iou = static_cast<IOU*>(owner);
 

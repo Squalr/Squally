@@ -14,16 +14,16 @@ using namespace cocos2d;
 
 const std::string EntityCollisionBehavior::MapKeyAttachedBehavior = "entity-collisions";
 
-EntityCollisionBehavior* EntityCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityCollisionBehavior* EntityCollisionBehavior::create(GameObject* owner)
 {
-	EntityCollisionBehavior* instance = new EntityCollisionBehavior(owner, attachedBehaviorArgs);
+	EntityCollisionBehavior* instance = new EntityCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

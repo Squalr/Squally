@@ -156,7 +156,7 @@ void SquallyShip::initializeListeners()
 			));
 
 			squally->setPosition(crashCoords);
-			squally->attachBehavior(SquallyBehaviorGroup::create(squally, ""));
+			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
 			GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 			this->shipCollision->setPhysicsEnabled(false);

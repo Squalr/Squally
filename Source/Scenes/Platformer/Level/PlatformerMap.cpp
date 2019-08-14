@@ -149,11 +149,15 @@ void PlatformerMap::initializeListeners()
 		{
 			CombatMap* combatMap = CombatMap::create(
 				args->enemy->getBattleMapResource(),
-				args->enemy->getBattleMapArgs(),
 				args->firstStrike,
 				args->enemy->getUniqueIdentifier(),
-				{ Squally::MapKeySqually, SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString() },
-				args->enemy->getCombatEntityList()
+				{
+					CombatMap::CombatData(Squally::MapKeySqually, ""),
+					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString(), ""),
+		 		},
+				{ 
+					CombatMap::CombatData(args->enemy->getEntityName(), args->enemy->getBattleBehavior()),
+				}
 			);
 
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));

@@ -8,12 +8,12 @@ class Squally;
 class SquallyRuneBehavior : public AttachedBehavior
 {
 public:
-	static SquallyRuneBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyRuneBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyRuneBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyRuneBehavior(GameObject* owner);
 	~SquallyRuneBehavior();
 
 	void onLoad() override;

@@ -8,18 +8,18 @@ using namespace cocos2d;
 
 const std::string NpcBehaviorGroup::MapKeyAttachedBehavior = "npc";
 
-NpcBehaviorGroup* NpcBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
+NpcBehaviorGroup* NpcBehaviorGroup::create(GameObject* owner)
 {
-	NpcBehaviorGroup* instance = new NpcBehaviorGroup(owner, attachedBehaviorArgs);
+	NpcBehaviorGroup* instance = new NpcBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-NpcBehaviorGroup::NpcBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
-	NpcCollisionBehavior::create(owner, attachedBehaviorArgs),
-	EntityBehaviorGroup::create(owner, attachedBehaviorArgs),
+NpcBehaviorGroup::NpcBehaviorGroup(GameObject* owner) : super(owner, {
+	NpcCollisionBehavior::create(owner),
+	EntityBehaviorGroup::create(owner),
 	})
 {
 }

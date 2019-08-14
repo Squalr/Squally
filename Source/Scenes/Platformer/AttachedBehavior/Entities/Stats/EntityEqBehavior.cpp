@@ -15,16 +15,16 @@ using namespace cocos2d;
 
 const int EntityEqBehavior::DefaultEq = 1;
 
-EntityEqBehavior* EntityEqBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityEqBehavior* EntityEqBehavior::create(GameObject* owner)
 {
-	EntityEqBehavior* instance = new EntityEqBehavior(owner, attachedBehaviorArgs);
+	EntityEqBehavior* instance = new EntityEqBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityEqBehavior::EntityEqBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityEqBehavior::EntityEqBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

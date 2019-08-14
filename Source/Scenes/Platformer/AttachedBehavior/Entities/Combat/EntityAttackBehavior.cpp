@@ -14,16 +14,16 @@ using namespace cocos2d;
 
 const std::string EntityAttackBehavior::MapKeyAttachedBehavior = "entity-attacks";
 
-EntityAttackBehavior* EntityAttackBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityAttackBehavior* EntityAttackBehavior::create(GameObject* owner)
 {
-	EntityAttackBehavior* instance = new EntityAttackBehavior(owner, attachedBehaviorArgs);
+	EntityAttackBehavior* instance = new EntityAttackBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityAttackBehavior::EntityAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

@@ -19,16 +19,16 @@ const float EntityMovementCollisionBehavior::WallDetectorSize = 64.0f;
 const float EntityMovementCollisionBehavior::WaterJumpVelocity = 7680.0f;
 const float EntityMovementCollisionBehavior::SwimVerticalDrag = 0.93f;
 
-EntityMovementCollisionBehavior* EntityMovementCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityMovementCollisionBehavior* EntityMovementCollisionBehavior::create(GameObject* owner)
 {
-	EntityMovementCollisionBehavior* instance = new EntityMovementCollisionBehavior(owner, attachedBehaviorArgs);
+	EntityMovementCollisionBehavior* instance = new EntityMovementCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->movementCollision = nullptr;

@@ -18,11 +18,8 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::MapKeyBattleArgs = "battle-args";
+const std::string PlatformerEnemy::MapKeyBattleAttachedBehavior = "battle-behavior";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
-const std::string PlatformerEnemy::MapKeyEnemy1 = "enemy-1";
-const std::string PlatformerEnemy::MapKeyEnemy2 = "enemy-2";
-const std::string PlatformerEnemy::MapKeyAlly3 = "ally-3";
 
 PlatformerEnemy::PlatformerEnemy(
 	ValueMap& properties,
@@ -43,27 +40,10 @@ PlatformerEnemy::PlatformerEnemy(
 		collisionOffset,
 		hoverHeight)
 {
-	this->combatEntityList = std::vector<std::string>();
-	this->battleMapArgs = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleArgs, Value("")).asString(), ", ");
+	this->battleBehavior = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleAttachedBehavior, Value("")).asString();
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
 	this->iouTable = std::tuple<int, int>();
-	this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyName).asString());
-
-	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyEnemy1))
-	{
-		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyEnemy1).asString());
-	}
-
-	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyEnemy2))
-	{
-		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyEnemy2).asString());
-	}
-
-	if (GameUtils::keyExists(this->properties, PlatformerEnemy::MapKeyAlly3))
-	{
-		this->combatEntityList.push_back(this->properties.at(PlatformerEnemy::MapKeyAlly3).asString());
-	}
 }
 
 PlatformerEnemy::~PlatformerEnemy()
@@ -108,14 +88,9 @@ std::string PlatformerEnemy::getBattleMapResource()
 	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
 }
 
-std::vector<std::string> PlatformerEnemy::getBattleMapArgs()
+std::string PlatformerEnemy::getBattleBehavior()
 {
-	return this->battleMapArgs;
-}
-
-std::vector<std::string> PlatformerEnemy::getCombatEntityList()
-{
-	return this->combatEntityList;
+	return this->battleBehavior;
 }
 
 void PlatformerEnemy::onObjectStateLoaded()

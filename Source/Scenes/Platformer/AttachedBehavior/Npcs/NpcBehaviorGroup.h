@@ -12,12 +12,12 @@ class Squally;
 class NpcBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static NpcBehaviorGroup* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static NpcBehaviorGroup* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	NpcBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs);
+	NpcBehaviorGroup(GameObject* owner);
 	~NpcBehaviorGroup();
 
 	void onLoad() override;

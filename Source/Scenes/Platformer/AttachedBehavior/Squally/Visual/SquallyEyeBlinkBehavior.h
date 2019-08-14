@@ -13,12 +13,12 @@ class SmartAnimationSequenceNode;
 class SquallyEyeBlinkBehavior : public AttachedBehavior
 {
 public:
-	static SquallyEyeBlinkBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyEyeBlinkBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyEyeBlinkBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyEyeBlinkBehavior(GameObject* owner);
 	~SquallyEyeBlinkBehavior();
 
 	void onLoad() override;

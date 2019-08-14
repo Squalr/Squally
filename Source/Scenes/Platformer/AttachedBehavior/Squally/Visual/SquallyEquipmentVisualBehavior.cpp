@@ -25,16 +25,16 @@ using namespace cocos2d;
 
 const std::string SquallyEquipmentVisualBehavior::MapKeyAttachedBehavior = "squally-equipment-visuals";
 
-SquallyEquipmentVisualBehavior* SquallyEquipmentVisualBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyEquipmentVisualBehavior* SquallyEquipmentVisualBehavior::create(GameObject* owner)
 {
-	SquallyEquipmentVisualBehavior* instance = new SquallyEquipmentVisualBehavior(owner, attachedBehaviorArgs);
+	SquallyEquipmentVisualBehavior* instance = new SquallyEquipmentVisualBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyEquipmentVisualBehavior::SquallyEquipmentVisualBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyEquipmentVisualBehavior::SquallyEquipmentVisualBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 

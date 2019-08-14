@@ -8,7 +8,7 @@ class PlatformerEntity;
 class EntitySelectionBehavior : public AttachedBehavior
 {
 public:
-	static EntitySelectionBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntitySelectionBehavior* create(GameObject* owner);
 	
 	void setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver);
 	void clearEntityClickCallbacks();
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntitySelectionBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntitySelectionBehavior(GameObject* owner);
 	~EntitySelectionBehavior();
 
 	void initializePositions() override;

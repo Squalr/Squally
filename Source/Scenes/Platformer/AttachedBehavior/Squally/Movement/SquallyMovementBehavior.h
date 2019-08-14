@@ -12,12 +12,12 @@ class Squally;
 class SquallyMovementBehavior : public EntityMovementBehavior
 {
 public:
-	static SquallyMovementBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyMovementBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyMovementBehavior(GameObject* owner);
 	~SquallyMovementBehavior();
 
 	void update(float dt) override;

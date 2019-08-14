@@ -3,18 +3,18 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerAttack;
-class PlatformerEntity;
+class PlatformerEnemy;
 
-class SquallyAttackBehavior : public AttachedBehavior
+class OrcGruntCombatBehavior : public AttachedBehavior
 {
 public:
-	static SquallyAttackBehavior* create(GameObject* owner);
+	static OrcGruntCombatBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyAttackBehavior(GameObject* owner);
-	~SquallyAttackBehavior();
+	OrcGruntCombatBehavior(GameObject* owner);
+	~OrcGruntCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
@@ -22,5 +22,5 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	PlatformerEntity* entity;
+	PlatformerEnemy* entity;
 };

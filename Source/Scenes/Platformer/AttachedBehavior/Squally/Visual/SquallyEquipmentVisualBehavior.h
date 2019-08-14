@@ -13,12 +13,12 @@ class Squally;
 class SquallyEquipmentVisualBehavior : public AttachedBehavior
 {
 public:
-	static SquallyEquipmentVisualBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyEquipmentVisualBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyEquipmentVisualBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyEquipmentVisualBehavior(GameObject* owner);
 	~SquallyEquipmentVisualBehavior();
 
 	void onLoad() override;

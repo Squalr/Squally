@@ -12,7 +12,7 @@ class PlatformerEntity;
 class EntityOutOfCombatAttackBehavior : public AttachedBehavior
 {
 protected:
-	EntityOutOfCombatAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityOutOfCombatAttackBehavior(GameObject* owner);
 	~EntityOutOfCombatAttackBehavior();
 
 	void initializePositions() override;

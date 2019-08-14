@@ -13,7 +13,7 @@ class PlatformerEntity;
 class EntityMovementCollisionBehavior : public AttachedBehavior
 {
 public:
-	static EntityMovementCollisionBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityMovementCollisionBehavior* create(GameObject* owner);
 
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -25,7 +25,7 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityMovementCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityMovementCollisionBehavior(GameObject* owner);
 	~EntityMovementCollisionBehavior();
 
 	void onLoad() override;

@@ -29,16 +29,16 @@ const std::string SquallyIsAliveHackBehavior::MapKeyAttachedBehavior = "squally-
 const std::string SquallyIsAliveHackBehavior::IdentifierIsAlive = "is-alive";
 const std::string SquallyIsAliveHackBehavior::EventSquallyTrapped = "event-squally-trapped";
 
-SquallyIsAliveHackBehavior* SquallyIsAliveHackBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyIsAliveHackBehavior* SquallyIsAliveHackBehavior::create(GameObject* owner)
 {
-	SquallyIsAliveHackBehavior* instance = new SquallyIsAliveHackBehavior(owner, attachedBehaviorArgs);
+	SquallyIsAliveHackBehavior* instance = new SquallyIsAliveHackBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 

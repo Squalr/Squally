@@ -13,7 +13,7 @@ class PlatformerEntity;
 class EntityEqBehavior : public AttachedBehavior
 {
 public:
-	static EntityEqBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityEqBehavior* create(GameObject* owner);
 
 	void setEq(int eq);
 	int getEq();
@@ -24,7 +24,7 @@ public:
 	static const int DefaultEq;
 
 protected:
-	EntityEqBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityEqBehavior(GameObject* owner);
 	~EntityEqBehavior();
 
 	void onLoad() override;

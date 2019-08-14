@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "Engine/Hackables/HackableObject.h"
@@ -5,12 +6,10 @@
 class AttachedBehavior : public HackableObject
 {
 public:
-	std::string getAttachedBehaviorArgs();
-	
 	bool isInvalidated();
 
 protected:
-	AttachedBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	AttachedBehavior(GameObject* owner);
 	~AttachedBehavior();
 
 	void initializeListeners() override;
@@ -26,7 +25,6 @@ private:
 	void updateState();
 
 	GameObject* owner;
-	std::string attachedBehaviorArgs;
 	bool invalidated;
 };
 

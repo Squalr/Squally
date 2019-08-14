@@ -13,16 +13,16 @@ using namespace cocos2d;
 
 const std::string EntitySelectionBehavior::MapKeyAttachedBehavior = "entity-selection";
 
-EntitySelectionBehavior* EntitySelectionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntitySelectionBehavior* EntitySelectionBehavior::create(GameObject* owner)
 {
-	EntitySelectionBehavior* instance = new EntitySelectionBehavior(owner, attachedBehaviorArgs);
+	EntitySelectionBehavior* instance = new EntitySelectionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntitySelectionBehavior::EntitySelectionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

@@ -19,16 +19,16 @@ using namespace cocos2d;
 const int EntityRuneBehavior::MaxRunes = 3;
 const float EntityRuneBehavior::RuneCooldown = 24.0f;
 
-EntityRuneBehavior* EntityRuneBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityRuneBehavior* EntityRuneBehavior::create(GameObject* owner)
 {
-	EntityRuneBehavior* instance = new EntityRuneBehavior(owner, attachedBehaviorArgs);
+	EntityRuneBehavior* instance = new EntityRuneBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityRuneBehavior::EntityRuneBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityRuneBehavior::EntityRuneBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

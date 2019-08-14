@@ -13,16 +13,16 @@ using namespace cocos2d;
 
 const std::string SquallyMovementBehavior::MapKeyAttachedBehavior = "squally-movements";
 
-SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 {
-	SquallyMovementBehavior* instance = new SquallyMovementBehavior(owner, attachedBehaviorArgs);
+	SquallyMovementBehavior* instance = new SquallyMovementBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 

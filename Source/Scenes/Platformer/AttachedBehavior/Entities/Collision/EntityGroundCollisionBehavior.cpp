@@ -17,16 +17,16 @@ const float EntityGroundCollisionBehavior::GroundCollisionPadding = 28.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = -4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
 
-EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner)
 {
-	EntityGroundCollisionBehavior* instance = new EntityGroundCollisionBehavior(owner, attachedBehaviorArgs);
+	EntityGroundCollisionBehavior* instance = new EntityGroundCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

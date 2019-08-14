@@ -7,12 +7,12 @@ class Squally;
 class SquallyEqBehavior : public AttachedBehavior
 {
 public:
-	static SquallyEqBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyEqBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyEqBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyEqBehavior(GameObject* owner);
 	~SquallyEqBehavior();
 
 	void onLoad() override;

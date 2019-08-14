@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string SquallyEyeBlinkBehavior::MapKeyAttachedBehavior = "squally-equipment-visuals";
 
-SquallyEyeBlinkBehavior* SquallyEyeBlinkBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyEyeBlinkBehavior* SquallyEyeBlinkBehavior::create(GameObject* owner)
 {
-	SquallyEyeBlinkBehavior* instance = new SquallyEyeBlinkBehavior(owner, attachedBehaviorArgs);
+	SquallyEyeBlinkBehavior* instance = new SquallyEyeBlinkBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyEyeBlinkBehavior::SquallyEyeBlinkBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyEyeBlinkBehavior::SquallyEyeBlinkBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 

@@ -13,16 +13,16 @@ using namespace cocos2d;
 
 const std::string NpcCollisionBehavior::MapKeyAttachedBehavior = "npc-collisions";
 
-NpcCollisionBehavior* NpcCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+NpcCollisionBehavior* NpcCollisionBehavior::create(GameObject* owner)
 {
-	NpcCollisionBehavior* instance = new NpcCollisionBehavior(owner, attachedBehaviorArgs);
+	NpcCollisionBehavior* instance = new NpcCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-NpcCollisionBehavior::NpcCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+NpcCollisionBehavior::NpcCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->npc = static_cast<NpcBase*>(owner);
 

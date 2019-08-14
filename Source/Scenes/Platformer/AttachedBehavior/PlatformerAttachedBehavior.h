@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDebugBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Enemies/EnemyAttachedBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/NpcBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/NpcCollisionBehavior.h"

@@ -18,10 +18,9 @@ public:
 	{
 		GameObject* owner;
 		std::string attachedBehavior;
-		std::string attachedBehaviorArgs;
 
-		AttachedBehaviorDeserializationRequestArgs(GameObject* owner, std::string attachedBehavior, std::string attachedBehaviorArgs):
-			owner(owner), attachedBehavior(attachedBehavior), attachedBehaviorArgs(attachedBehaviorArgs)
+		AttachedBehaviorDeserializationRequestArgs(GameObject* owner, std::string attachedBehavior):
+			owner(owner), attachedBehavior(attachedBehavior)
 		{
 		}
 	};
@@ -32,7 +31,7 @@ protected:
 	AttachedBehaviorDeserializer();
 	~AttachedBehaviorDeserializer();
 
-	std::map<std::string, std::function<AttachedBehavior*(GameObject* owner, std::string)>> attachedBehaviorDeserializers;
+	std::map<std::string, std::function<AttachedBehavior*(GameObject* owner)>> attachedBehaviorDeserializers;
 
 private:
 	typedef PropertyDeserializer super;

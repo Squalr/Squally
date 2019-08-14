@@ -41,37 +41,22 @@
 
 using namespace cocos2d;
 
-const std::string CombatMap::MapKeyPropertyDisableHackerMode = "hacker-mode-disabled";
-const std::string CombatMap::MapKeyPropertyFirstStrike = "first-strike";
-const std::string CombatMap::MapKeyPropertyNoDefend = "no-defend";
-const std::string CombatMap::MapKeyPropertyNoItems = "no-items";
-const std::string CombatMap::MapKeyPropertyForceLevel2 = "force-level-2";
-
-CombatMap* CombatMap::create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
-		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes)
+CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
+	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
 {
-	CombatMap* instance = new CombatMap(levelFile, mapArgs, playerFirstStrike, enemyIdentifier, playerTypes, enemyTypes);
+	CombatMap* instance = new CombatMap(levelFile, playerFirstStrike, enemyIdentifier, playerData, enemyData);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
-		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes) : super(true, true)
+CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
+	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
 	if (!super::init())
 	{
 		throw std::uncaught_exception();
-	}
-
-	bool noItems = GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyNoItems);
-	bool noDefend = GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyNoDefend);
-
-	// Check for forced first-strike advantage (ie in tutorials)
-	if (GameUtils::hasArg(mapArgs, CombatMap::MapKeyPropertyFirstStrike))
-	{
-		playerFirstStrike = true;
 	}
 
 	this->collectablesMenu = CollectablesMenu::create();
@@ -80,7 +65,7 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->inventoryMenu = InventoryMenu::create();
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
-	this->choicesMenu = ChoicesMenu::create(noItems, noDefend);
+	this->choicesMenu = ChoicesMenu::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
@@ -88,6 +73,8 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
 	this->notificationHud = NotificationHud::create();
+	this->playerData = playerData;
+	this->enemyData = enemyData;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -121,7 +108,6 @@ CombatMap::CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bo
 	this->topMenuHud->addChild(this->inventoryMenu);
 
 	this->loadMap(levelFile, mapArgs);
-	this->setEntityKeys(playerTypes, enemyTypes);
 }
 
 CombatMap::~CombatMap()
@@ -194,12 +180,6 @@ void CombatMap::initializeListeners()
 
 		int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(0)).asInt();
 		int squallyExp = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt();
-
-		// Check for special keys to prevent progression soft-locks
-		if (GameUtils::hasArg(this->mapArgs, CombatMap::MapKeyPropertyForceLevel2))
-		{
-			expGain = std::max(expGain, StatsTables::getExpNeededUntilLevel(squallyEq, squallyExp, 2));
-		}
 
 		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
 		// both the gain and the animations in one step
@@ -317,34 +297,16 @@ void CombatMap::initializeListeners()
 	});
 }
 
-void CombatMap::loadMap(std::string mapResource, std::vector<std::string> args)
-{
-	super::loadMap(mapResource, args);
-
-	if (std::find(mapArgs.begin(), mapArgs.end(), CombatMap::MapKeyPropertyDisableHackerMode) != mapArgs.end())
-	{
-		this->allowHackerMode = false;
-	}
-}
-
-void CombatMap::setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys)
-{
-	this->playerEntityKeys = playerEntityKeys;
-	this->enemyEntityKeys = enemyEntityKeys;
-}
-
 void CombatMap::spawnEntities()
 {
 	// Deserialize all enemies
 	{
-		int index = 1;
-
-		for (auto it = enemyEntityKeys.begin(); it != enemyEntityKeys.end(); it++)
+		for (int index = 0; index < this->enemyData.size(); index++)
 		{
 			ValueMap valueMap = ValueMap();
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
-			valueMap[GameObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -353,28 +315,24 @@ void CombatMap::spawnEntities()
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity, ""));
+					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
 			);
 
 			this->platformerEntityDeserializer->deserialize(&args);
-
-			index++;
 		}
 	}
 
 	// Deserialize players team
 	{
-		int index = 1;
-
-		for (auto it = playerEntityKeys.begin(); it != playerEntityKeys.end(); it++)
+		for (int index = 0; index < this->playerData.size(); index++)
 		{
 			ValueMap valueMap = ValueMap();
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
-			valueMap[GameObject::MapKeyName] = Value(*it);
+			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
@@ -382,15 +340,13 @@ void CombatMap::spawnEntities()
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 					
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity, ""));
+					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
 				}
 			);
 
 			this->platformerEntityDeserializer->deserialize(&args);
-
-			index++;
 		}
 	}
 

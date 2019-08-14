@@ -9,7 +9,7 @@ class AttachedBehaviorGroup : public AttachedBehavior
 public:
 
 protected:
-	AttachedBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs, std::vector<AttachedBehavior*> attachedBehavior);
+	AttachedBehaviorGroup(GameObject* owner, std::vector<AttachedBehavior*> attachedBehavior);
 	~AttachedBehaviorGroup();
 
 private:

@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EntityDebugBehavior::MapKeyAttachedBehavior = "entity-debug";
 
-EntityDebugBehavior* EntityDebugBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityDebugBehavior* EntityDebugBehavior::create(GameObject* owner)
 {
-	EntityDebugBehavior* instance = new EntityDebugBehavior(owner, attachedBehaviorArgs);
+	EntityDebugBehavior* instance = new EntityDebugBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityDebugBehavior::EntityDebugBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityDebugBehavior::EntityDebugBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);

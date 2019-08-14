@@ -19,16 +19,16 @@ using namespace cocos2d;
 
 const std::string SquallyHealthBehavior::MapKeyAttachedBehavior = "squally-health";
 
-SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner)
 {
-	SquallyHealthBehavior* instance = new SquallyHealthBehavior(owner, attachedBehaviorArgs);
+	SquallyHealthBehavior* instance = new SquallyHealthBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->spawnCoords = Vec2::ZERO;

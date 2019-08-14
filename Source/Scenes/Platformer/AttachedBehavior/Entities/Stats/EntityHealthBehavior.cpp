@@ -18,16 +18,16 @@
 
 using namespace cocos2d;
 
-EntityHealthBehavior* EntityHealthBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityHealthBehavior* EntityHealthBehavior::create(GameObject* owner)
 {
-	EntityHealthBehavior* instance = new EntityHealthBehavior(owner, attachedBehaviorArgs);
+	EntityHealthBehavior* instance = new EntityHealthBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityHealthBehavior::EntityHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityHealthBehavior::EntityHealthBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

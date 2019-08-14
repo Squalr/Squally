@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string SquallyWeaponCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
 
-SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObject* owner)
 {
-	SquallyWeaponCollisionBehavior* instance = new SquallyWeaponCollisionBehavior(owner, attachedBehaviorArgs);
+	SquallyWeaponCollisionBehavior* instance = new SquallyWeaponCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyWeaponCollisionBehavior::SquallyWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 

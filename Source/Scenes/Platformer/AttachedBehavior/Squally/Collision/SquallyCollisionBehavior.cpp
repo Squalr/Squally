@@ -25,16 +25,16 @@ using namespace cocos2d;
 const std::string SquallyCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
 const float SquallyCollisionBehavior::DefaultNoCombatDuration = 2.0f;
 
-SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)
 {
-	SquallyCollisionBehavior* instance = new SquallyCollisionBehavior(owner, attachedBehaviorArgs);
+	SquallyCollisionBehavior* instance = new SquallyCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;

@@ -7,7 +7,7 @@ class PlatformerEntity;
 class EntityManaBehavior : public AttachedBehavior
 {
 public:
-	static EntityManaBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityManaBehavior* create(GameObject* owner);
 
 	int getMana();
 	void addMana(int manaDelta);
@@ -15,7 +15,7 @@ public:
 	int getMaxMana();
 
 protected:
-	EntityManaBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityManaBehavior(GameObject* owner);
 	~EntityManaBehavior();
 
 	void onLoad() override;

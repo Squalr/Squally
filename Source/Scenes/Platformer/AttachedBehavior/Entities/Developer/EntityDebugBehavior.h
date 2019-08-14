@@ -13,12 +13,12 @@ class PlatformerEntity;
 class EntityDebugBehavior : public AttachedBehavior
 {
 public:
-	static EntityDebugBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityDebugBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityDebugBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityDebugBehavior(GameObject* owner);
 	~EntityDebugBehavior();
 
 	void initializePositions() override;

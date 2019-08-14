@@ -20,14 +20,20 @@ class Timeline;
 class CombatMap : public MapBase
 {
 public:
-	static CombatMap* create(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
-		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes);
+	struct CombatData
+	{
+		std::string entityType;
+		std::string battleBehavior;
 
-	void loadMap(std::string mapResource, std::vector<std::string> args = { }) override;
+		CombatData(std::string entityType, std::string battleBehavior) : entityType(entityType), battleBehavior(battleBehavior) { }
+	};
+
+	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
+		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 
 protected:
-	CombatMap(std::string levelFile, std::vector<std::string> mapArgs, bool playerFirstStrike,
-		std::string enemyIdentifier, std::vector<std::string> playerTypes, std::vector<std::string> enemyTypes);
+	CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
+		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 	~CombatMap();
 
 private:
@@ -36,7 +42,6 @@ private:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void setEntityKeys(std::vector<std::string> playerEntityKeys, std::vector<std::string> enemyEntityKeys);
 	void spawnEntities();
 
 	CollectablesMenu* collectablesMenu;
@@ -54,15 +59,9 @@ private:
 	EnemyAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
 
-	std::vector<std::string> playerEntityKeys;
-	std::vector<std::string> enemyEntityKeys;
+	std::vector<CombatData> playerData;
+	std::vector<CombatData> enemyData;
 	std::string enemyIdentifier;
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
-
-	static const std::string MapKeyPropertyDisableHackerMode;
-	static const std::string MapKeyPropertyFirstStrike;
-	static const std::string MapKeyPropertyNoDefend;
-	static const std::string MapKeyPropertyNoItems;
-	static const std::string MapKeyPropertyForceLevel2;
 };

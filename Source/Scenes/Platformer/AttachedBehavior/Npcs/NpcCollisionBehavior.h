@@ -12,12 +12,12 @@ class NpcBase;
 class NpcCollisionBehavior : public AttachedBehavior
 {
 public:
-	static NpcCollisionBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static NpcCollisionBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	NpcCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	NpcCollisionBehavior(GameObject* owner);
 	~NpcCollisionBehavior();
 
 	void onLoad() override;

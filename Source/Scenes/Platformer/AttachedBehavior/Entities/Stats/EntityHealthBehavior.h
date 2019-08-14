@@ -13,10 +13,10 @@ class PlatformerEntity;
 class EntityHealthBehavior : public AttachedBehavior
 {
 public:
-	static EntityHealthBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityHealthBehavior* create(GameObject* owner);
 
 protected:
-	EntityHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityHealthBehavior(GameObject* owner);
 	~EntityHealthBehavior();
 
 	void onLoad() override;

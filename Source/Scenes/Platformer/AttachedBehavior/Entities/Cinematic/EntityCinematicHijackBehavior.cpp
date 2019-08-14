@@ -14,16 +14,16 @@ using namespace cocos2d;
 
 const std::string EntityCinematicHijackBehavior::MapKeyAttachedBehavior = "entity-cinematic-hijack";
 
-EntityCinematicHijackBehavior* EntityCinematicHijackBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityCinematicHijackBehavior* EntityCinematicHijackBehavior::create(GameObject* owner)
 {
-	EntityCinematicHijackBehavior* instance = new EntityCinematicHijackBehavior(owner, attachedBehaviorArgs);
+	EntityCinematicHijackBehavior* instance = new EntityCinematicHijackBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityCinematicHijackBehavior::EntityCinematicHijackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityCinematicHijackBehavior::EntityCinematicHijackBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

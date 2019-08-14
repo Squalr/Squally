@@ -15,25 +15,25 @@ using namespace cocos2d;
 
 const std::string SquallyBehaviorGroup::MapKeyAttachedBehavior = "squally";
 
-SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner)
 {
-	SquallyBehaviorGroup* instance = new SquallyBehaviorGroup(owner, attachedBehaviorArgs);
+	SquallyBehaviorGroup* instance = new SquallyBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
-	EntityBehaviorGroup::create(owner, attachedBehaviorArgs),
-	SquallyCollisionBehavior::create(owner, attachedBehaviorArgs),
-	SquallyWeaponCollisionBehavior::create(owner, attachedBehaviorArgs),
-	SquallyEquipmentVisualBehavior::create(owner, attachedBehaviorArgs),
-	SquallyEyeBlinkBehavior::create(owner, attachedBehaviorArgs),
-	SquallyIsAliveHackBehavior::create(owner, attachedBehaviorArgs),
-	SquallyMovementBehavior::create(owner, attachedBehaviorArgs),
-	SquallyOutOfCombatAttackBehavior::create(owner, attachedBehaviorArgs),
-	SquallyStatsBehaviorGroup::create(owner, attachedBehaviorArgs),
+SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
+	EntityBehaviorGroup::create(owner),
+	SquallyCollisionBehavior::create(owner),
+	SquallyWeaponCollisionBehavior::create(owner),
+	SquallyEquipmentVisualBehavior::create(owner),
+	SquallyEyeBlinkBehavior::create(owner),
+	SquallyIsAliveHackBehavior::create(owner),
+	SquallyMovementBehavior::create(owner),
+	SquallyOutOfCombatAttackBehavior::create(owner),
+	SquallyStatsBehaviorGroup::create(owner),
 	})
 {
 }

@@ -12,12 +12,12 @@ class Squally;
 class SquallyOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 {
 public:
-	static SquallyOutOfCombatAttackBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static SquallyOutOfCombatAttackBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyOutOfCombatAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	SquallyOutOfCombatAttackBehavior(GameObject* owner);
 	~SquallyOutOfCombatAttackBehavior();
 
 	void onLoad() override;

@@ -13,14 +13,10 @@ class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
-	std::vector<std::string> getBattleMapArgs();
-	std::vector<std::string> getCombatEntityList();
+	std::string getBattleBehavior();
 
-	static const std::string MapKeyBattleArgs;
+	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
-	static const std::string MapKeyEnemy1;
-	static const std::string MapKeyEnemy2;
-	static const std::string MapKeyAlly3;
 
 protected:
 	PlatformerEnemy(cocos2d::ValueMap& properties,
@@ -41,8 +37,7 @@ protected:
 	std::tuple<std::string, float> createDrop(std::string itemKey, float probability);
 
 	std::string battleMapResource;
-	std::vector<std::string> battleMapArgs;
-	std::vector<std::string> combatEntityList;
+	std::string battleBehavior;
 	std::vector<std::tuple<std::string, float>> dropTable;
 	std::tuple<int, int> iouTable;
 

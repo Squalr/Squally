@@ -15,16 +15,16 @@ using namespace cocos2d;
 	
 const std::string SquallyAttackBehavior::MapKeyAttachedBehavior = "entity-attacks";
 
-SquallyAttackBehavior* SquallyAttackBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyAttackBehavior* SquallyAttackBehavior::create(GameObject* owner)
 {
-	SquallyAttackBehavior* instance = new SquallyAttackBehavior(owner, attachedBehaviorArgs);
+	SquallyAttackBehavior* instance = new SquallyAttackBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyAttackBehavior::SquallyAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+SquallyAttackBehavior::SquallyAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -46,5 +46,8 @@ void SquallyAttackBehavior::onLoad()
 {
 	EntityAttackBehavior* attackBehavior = this->entity->getAttachedBehavior<EntityAttackBehavior>();
 	
-	attackBehavior->registerAttack(Punch::create(0.4f, 0.5f));
+	if (attackBehavior != nullptr)
+	{
+		attackBehavior->registerAttack(Punch::create(0.4f, 0.5f));
+	}
 }

@@ -13,14 +13,14 @@ class PlatformerEntity;
 class EntityCollisionBehavior : public AttachedBehavior
 {
 public:
-	static EntityCollisionBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityCollisionBehavior* create(GameObject* owner);
 	
 	CollisionObject* entityCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityCollisionBehavior(GameObject* owner);
 	~EntityCollisionBehavior();
 
 	void onLoad() override;

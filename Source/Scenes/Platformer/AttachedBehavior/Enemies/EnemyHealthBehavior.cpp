@@ -19,16 +19,16 @@ using namespace cocos2d;
 const std::string EnemyHealthBehavior::MapKeyAttachedBehavior = "enemy-health";
 const std::string EnemyHealthBehavior::SaveKeyIsDead = "is-dead";
 
-EnemyHealthBehavior* EnemyHealthBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EnemyHealthBehavior* EnemyHealthBehavior::create(GameObject* owner)
 {
-	EnemyHealthBehavior* instance = new EnemyHealthBehavior(owner, attachedBehaviorArgs);
+	EnemyHealthBehavior* instance = new EnemyHealthBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EnemyHealthBehavior::EnemyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EnemyHealthBehavior::EnemyHealthBehavior(GameObject* owner) : super(owner)
 {
 }
 

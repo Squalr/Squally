@@ -8,7 +8,7 @@ class PlatformerEntity;
 class EntityAttackBehavior : public AttachedBehavior
 {
 public:
-	static EntityAttackBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityAttackBehavior* create(GameObject* owner);
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
@@ -18,7 +18,7 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityAttackBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityAttackBehavior(GameObject* owner);
 	~EntityAttackBehavior();
 
 	void initializePositions() override;

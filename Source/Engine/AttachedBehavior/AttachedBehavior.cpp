@@ -8,9 +8,8 @@
 
 using namespace cocos2d;
 
-AttachedBehavior::AttachedBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super()
+AttachedBehavior::AttachedBehavior(GameObject* owner) : super()
 {
-	this->attachedBehaviorArgs = attachedBehaviorArgs;
 	this->owner = owner;
 
 	if (this->owner == nullptr)
@@ -52,11 +51,6 @@ void AttachedBehavior::listenForStateWrite(std::string key, std::function<void(c
 			onWrite(args->value);
 		}
 	}));
-}
-
-std::string AttachedBehavior::getAttachedBehaviorArgs()
-{
-	return this->attachedBehaviorArgs;
 }
 
 void AttachedBehavior::invalidate()

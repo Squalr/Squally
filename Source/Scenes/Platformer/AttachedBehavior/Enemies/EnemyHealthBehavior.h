@@ -7,13 +7,13 @@ class PlatformerEntity;
 class EnemyHealthBehavior : public AttachedBehavior
 {
 public:
-	static EnemyHealthBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EnemyHealthBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 	static const std::string SaveKeyIsDead;
 
 protected:
-	EnemyHealthBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EnemyHealthBehavior(GameObject* owner);
 	~EnemyHealthBehavior();
 
 	void onLoad() override;

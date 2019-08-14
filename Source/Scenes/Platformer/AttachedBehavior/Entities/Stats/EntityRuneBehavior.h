@@ -13,7 +13,7 @@ class PlatformerEntity;
 class EntityRuneBehavior : public AttachedBehavior
 {
 public:
-	static EntityRuneBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityRuneBehavior* create(GameObject* owner);
 
 	int getAvailableRunes();
 	bool tryUseRune();
@@ -24,7 +24,7 @@ public:
 	static const float RuneCooldown;
 
 protected:
-	EntityRuneBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityRuneBehavior(GameObject* owner);
 	~EntityRuneBehavior();
 
 	void onLoad() override;

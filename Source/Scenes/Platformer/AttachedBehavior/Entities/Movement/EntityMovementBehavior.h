@@ -7,7 +7,7 @@ class PlatformerEntity;
 class EntityMovementBehavior : public AttachedBehavior
 {
 public:
-	static EntityMovementBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityMovementBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 	static const float MoveAcceleration;
@@ -15,7 +15,7 @@ public:
 	static const float JumpVelocity;
 
 protected:
-	EntityMovementBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityMovementBehavior(GameObject* owner);
 	~EntityMovementBehavior();
 
 	void onLoad() override;

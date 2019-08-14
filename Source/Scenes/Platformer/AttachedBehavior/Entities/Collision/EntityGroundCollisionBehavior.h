@@ -13,7 +13,7 @@ class PlatformerEntity;
 class EntityGroundCollisionBehavior : public AttachedBehavior
 {
 public:
-	static EntityGroundCollisionBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityGroundCollisionBehavior* create(GameObject* owner);
 
 	bool isOnGround();
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
@@ -21,7 +21,7 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityGroundCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityGroundCollisionBehavior(GameObject* owner);
 	~EntityGroundCollisionBehavior();
 
 	void onLoad() override;

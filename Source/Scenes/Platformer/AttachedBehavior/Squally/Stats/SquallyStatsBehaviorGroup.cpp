@@ -10,20 +10,20 @@ using namespace cocos2d;
 
 const std::string SquallyStatsBehaviorGroup::MapKeyAttachedBehavior = "squally-stats";
 
-SquallyStatsBehaviorGroup* SquallyStatsBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
+SquallyStatsBehaviorGroup* SquallyStatsBehaviorGroup::create(GameObject* owner)
 {
-	SquallyStatsBehaviorGroup* instance = new SquallyStatsBehaviorGroup(owner, attachedBehaviorArgs);
+	SquallyStatsBehaviorGroup* instance = new SquallyStatsBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyStatsBehaviorGroup::SquallyStatsBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
-	SquallyEqBehavior::create(owner, attachedBehaviorArgs),
-	SquallyHealthBehavior::create(owner, attachedBehaviorArgs),
-	SquallyManaBehavior::create(owner, attachedBehaviorArgs),
-	SquallyRuneBehavior::create(owner, attachedBehaviorArgs),
+SquallyStatsBehaviorGroup::SquallyStatsBehaviorGroup(GameObject* owner) : super(owner, {
+	SquallyEqBehavior::create(owner),
+	SquallyHealthBehavior::create(owner),
+	SquallyManaBehavior::create(owner),
+	SquallyRuneBehavior::create(owner),
 	})
 {
 }

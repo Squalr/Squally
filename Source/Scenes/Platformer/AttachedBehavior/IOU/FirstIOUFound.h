@@ -12,12 +12,12 @@ class IOU;
 class FirstIOUFound : public AttachedBehavior
 {
 public:
-	static FirstIOUFound* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static FirstIOUFound* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FirstIOUFound(GameObject* owner, std::string attachedBehaviorArgs);
+	FirstIOUFound(GameObject* owner);
 	~FirstIOUFound();
 
 	void onLoad() override;

@@ -12,12 +12,12 @@ class Squally;
 class EntityCollisionBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static EntityCollisionBehaviorGroup* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityCollisionBehaviorGroup* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityCollisionBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityCollisionBehaviorGroup(GameObject* owner);
 	~EntityCollisionBehaviorGroup();
 
 	void onLoad() override;

@@ -21,16 +21,16 @@ using namespace cocos2d;
 const std::string EntityWeaponCollisionBehavior::MapKeyAttachedBehavior = "entity-weapon-collisions";
 const Size EntityWeaponCollisionBehavior::DefaultWeaponSize = Size(64.0f, 128.0f);
 
-EntityWeaponCollisionBehavior* EntityWeaponCollisionBehavior::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityWeaponCollisionBehavior* EntityWeaponCollisionBehavior::create(GameObject* owner)
 {
-	EntityWeaponCollisionBehavior* instance = new EntityWeaponCollisionBehavior(owner, attachedBehaviorArgs);
+	EntityWeaponCollisionBehavior* instance = new EntityWeaponCollisionBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs)
+EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

@@ -7,12 +7,12 @@ class PlatformerEntity;
 class EntityCinematicHijackBehavior : public AttachedBehavior
 {
 public:
-	static EntityCinematicHijackBehavior* create(GameObject* owner, std::string attachedBehaviorArgs);
+	static EntityCinematicHijackBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityCinematicHijackBehavior(GameObject* owner, std::string attachedBehaviorArgs);
+	EntityCinematicHijackBehavior(GameObject* owner);
 	~EntityCinematicHijackBehavior();
 
 	void onLoad() override;

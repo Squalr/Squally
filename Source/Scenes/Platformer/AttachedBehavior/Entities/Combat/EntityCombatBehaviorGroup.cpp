@@ -10,19 +10,19 @@ using namespace cocos2d;
 
 const std::string EntityCombatBehaviorGroup::MapKeyAttachedBehavior = "entity-collisions";
 
-EntityCombatBehaviorGroup* EntityCombatBehaviorGroup::create(GameObject* owner, std::string attachedBehaviorArgs)
+EntityCombatBehaviorGroup* EntityCombatBehaviorGroup::create(GameObject* owner)
 {
-	EntityCombatBehaviorGroup* instance = new EntityCombatBehaviorGroup(owner, attachedBehaviorArgs);
+	EntityCombatBehaviorGroup* instance = new EntityCombatBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner, std::string attachedBehaviorArgs) : super(owner, attachedBehaviorArgs, {
-	EntitySelectionBehavior::create(owner, attachedBehaviorArgs),
-	EntityDebugBehavior::create(owner, attachedBehaviorArgs),
-	EntityStatsBehaviorGroup::create(owner, attachedBehaviorArgs),
+EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(owner, {
+	EntitySelectionBehavior::create(owner),
+	EntityDebugBehavior::create(owner),
+	EntityStatsBehaviorGroup::create(owner),
 	})
 {
 }
