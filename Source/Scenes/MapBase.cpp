@@ -147,6 +147,16 @@ void MapBase::initializeListeners()
 		this->allowHackerMode = false;
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventQueryHackerModeAllowed, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::HackerModeQueryArgs* args = static_cast<HackableEvents::HackerModeQueryArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->hackerModeAllowed = this->allowHackerMode;
+		}
+	}));
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isFocused(this))

@@ -62,8 +62,12 @@ void SquallyRuneBehavior::onLoad()
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
 	{
 		args->handle();
+
+		HackableEvents::HackerModeQueryArgs queryArgs = HackableEvents::HackerModeQueryArgs();
+
+		HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
 		
-		if (this->entityRuneBehavior->tryUseRune())
+		if (queryArgs.hackerModeAllowed && this->entityRuneBehavior->tryUseRune())
 		{
 			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
 		}

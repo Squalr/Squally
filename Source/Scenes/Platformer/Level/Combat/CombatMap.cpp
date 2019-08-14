@@ -95,9 +95,9 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
+	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
-	this->hud->addChild(this->combatHud);
 	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);

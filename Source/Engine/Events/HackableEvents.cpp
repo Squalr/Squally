@@ -11,6 +11,7 @@ const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENAB
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
 const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
 const std::string HackableEvents::EventDisallowHackerMode = "EVENT_DISALLOW_HACKER_MODE";
+const std::string HackableEvents::EventQueryHackerModeAllowed = "EVENT_QUERY_HACKER_MODE";
 const std::string HackableEvents::EventHackableObjectOpen = "EVENT_OPEN_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
@@ -61,6 +62,14 @@ void HackableEvents::TriggerDisallowHackerMode()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventDisallowHackerMode
+	);
+}
+
+void HackableEvents::TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventQueryHackerModeAllowed,
+		args
 	);
 }
 

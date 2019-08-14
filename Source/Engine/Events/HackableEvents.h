@@ -16,6 +16,7 @@ public:
 	static const std::string EventHackerModeDisable;
 	static const std::string EventAllowHackerMode;
 	static const std::string EventDisallowHackerMode;
+	static const std::string EventQueryHackerModeAllowed;
 	static const std::string EventHackableObjectOpen;
 	static const std::string EventHackableObjectClose;
 	static const std::string EventHackableAttributeEdit;
@@ -57,6 +58,15 @@ public:
 		}
 	};
 
+	struct HackerModeQueryArgs
+	{
+		bool hackerModeAllowed;
+
+		HackerModeQueryArgs() : hackerModeAllowed(false)
+		{
+		}
+	};
+
 	struct OpenLexiconPageArgs
 	{
 		std::string pageIdentifier;
@@ -72,6 +82,7 @@ public:
 	static void TriggerHackerModeDisable();
 	static void TriggerAllowHackerMode();
 	static void TriggerDisallowHackerMode();
+	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
 	static void TriggerCloseHackable();
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
