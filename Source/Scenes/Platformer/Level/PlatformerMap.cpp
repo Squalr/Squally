@@ -16,7 +16,6 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -146,7 +145,7 @@ void PlatformerMap::initializeListeners()
 				args->enemy->getUniqueIdentifier(),
 				{
 					CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior),
-					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value(FlyBot::MapKeyFlyBot)).asString(), ""),
+					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString(), ""),
 		 		},
 				{ 
 					CombatMap::CombatData(args->enemy->getEntityName(), args->enemy->getBattleBehavior()),

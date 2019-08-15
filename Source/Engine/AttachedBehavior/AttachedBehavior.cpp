@@ -11,6 +11,7 @@ using namespace cocos2d;
 AttachedBehavior::AttachedBehavior(GameObject* owner) : super()
 {
 	this->owner = owner;
+	this->invalidated = false;
 
 	if (this->owner == nullptr)
 	{
@@ -20,7 +21,6 @@ AttachedBehavior::AttachedBehavior(GameObject* owner) : super()
 
 AttachedBehavior::~AttachedBehavior()
 {
-	this->invalidated = false;
 }
 
 void AttachedBehavior::onEnterTransitionDidFinish()

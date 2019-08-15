@@ -13,6 +13,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
+#include "Engine/Konami/KSequence.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -61,6 +62,21 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
+	this->skipSequence = KSequence::create(
+	{
+		EventKeyboard::KeyCode::KEY_S,
+		EventKeyboard::KeyCode::KEY_W,
+		EventKeyboard::KeyCode::KEY_A,
+		EventKeyboard::KeyCode::KEY_G,
+		EventKeyboard::KeyCode::KEY_L,
+		EventKeyboard::KeyCode::KEY_O,
+		EventKeyboard::KeyCode::KEY_R,
+		EventKeyboard::KeyCode::KEY_D,
+	}, [=]()
+	{
+		this->onCrash();
+	});
+
 	this->smokeAnimation->setRotation(-45.0f);
 	this->shipFireAnimation->setRotation(-45.0f);
 	this->ship->setFlippedX(true);
@@ -83,6 +99,7 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 	this->addChild(this->thrusterSound);
 	this->addChild(this->enterAtmosphereSound);
 	this->addChild(this->crashSound);
+	this->addChild(this->skipSequence);
 }
 
 SquallyShip::~SquallyShip()
@@ -138,42 +155,7 @@ void SquallyShip::initializeListeners()
 
 	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
 	{
-		if (!this->hasCrashed)
-		{
-			this->hasCrashed = true;
-
-			Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
-			Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
-			Squally* squally = Squally::create();
-			
-			squally->setState(StateKeys::Health, Value(1));
-
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-				this->ship,
-				squally,
-				ObjectEvents::SpawnMethod::Above,
-				ObjectEvents::PositionMode::Discard
-			));
-
-			squally->setPosition(crashCoords);
-			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
-			GameCamera::getInstance()->setCameraPosition(cameraCoords);
-
-			this->shipCollision->setPhysicsEnabled(false);
-			this->ship->setVisible(false);
-			
-			this->smokeAnimation->stopAnimation();
-			this->shipFireAnimation->stopAnimation();
-			this->fireAnimation->stopAnimation();
-			this->thrustAnimation->stopAnimation();
-			this->explodeAnimation->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
-			this->groundFireAnimation->playAnimationRepeat(FXResources::FlameBig_FlameBig_0000, 0.05f);
-			this->groundFireSmallAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.05f);
-
-			this->thrusterSound->stop();
-			this->crashSound->play();
-			this->fireSound->play(true);
-		}
+		this->onCrash();
 
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
@@ -206,4 +188,46 @@ Vec2 SquallyShip::getButtonOffset()
 void SquallyShip::registerHackables()
 {
 	super::registerHackables();
+}
+
+void SquallyShip::onCrash()
+{
+	if (this->hasCrashed)
+	{
+		return;
+	}
+
+	this->hasCrashed = true;
+
+	Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
+	Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
+	Squally* squally = Squally::create();
+	
+	squally->setState(StateKeys::Health, Value(1));
+
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		this->ship,
+		squally,
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Discard
+	));
+
+	squally->setPosition(crashCoords);
+	squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+	GameCamera::getInstance()->setCameraPosition(cameraCoords);
+
+	this->shipCollision->setPhysicsEnabled(false);
+	this->ship->setVisible(false);
+	
+	this->smokeAnimation->stopAnimation();
+	this->shipFireAnimation->stopAnimation();
+	this->fireAnimation->stopAnimation();
+	this->thrustAnimation->stopAnimation();
+	this->explodeAnimation->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
+	this->groundFireAnimation->playAnimationRepeat(FXResources::FlameBig_FlameBig_0000, 0.05f);
+	this->groundFireSmallAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.05f);
+
+	this->thrusterSound->stop();
+	this->crashSound->play();
+	this->fireSound->play(true);
 }

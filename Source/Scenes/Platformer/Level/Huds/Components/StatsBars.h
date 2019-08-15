@@ -33,6 +33,11 @@ private:
 
 	PlatformerEntity* target;
 
+	int cachedMana;
+	int cachedMaxMana;
+	int cachedHealth;
+	int cachedMaxHealth;
+
 	bool isFrameOnLeft;
 	cocos2d::Sprite* frame;
 	cocos2d::Sprite* emblemGlow;

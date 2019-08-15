@@ -312,9 +312,9 @@ void CombatMap::spawnEntities()
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
-				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
+				[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
 				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
 
 					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
 

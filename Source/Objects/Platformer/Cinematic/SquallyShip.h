@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class KSequence;
 class SmartAnimationSequenceNode;
 class Sound;
 
@@ -34,6 +35,8 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void onCrash();
+
 	bool hasCrashed;
 	float flightTime;
 
@@ -48,6 +51,7 @@ private:
 	SmartAnimationSequenceNode* fireRingAnimation;
 	SmartAnimationSequenceNode* groundFireAnimation;
 	SmartAnimationSequenceNode* groundFireSmallAnimation;
+	KSequence* skipSequence;
 
 	Sound* thrusterSound;
 	Sound* enterAtmosphereSound;

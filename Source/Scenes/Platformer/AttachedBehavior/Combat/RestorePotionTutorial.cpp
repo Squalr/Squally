@@ -14,7 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"

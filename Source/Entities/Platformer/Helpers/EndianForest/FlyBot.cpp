@@ -37,14 +37,14 @@
 #include "Strings/Dialogue/EndOfDemo.h"
 #include "Strings/Dialogue/Story/Intro/SquallyTrapped.h"
 
-const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
-const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
-
 using namespace cocos2d;
 
 const std::string FlyBot::MapKeyFlyBot = "fly-bot";
 HexusOpponentData* FlyBot::HexusOpponentDataInstance = nullptr;
+
 const std::string FlyBot::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FLY_BOT";
+const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
+const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
 
 FlyBot* FlyBot::deserialize(ValueMap& initProperties)
 {

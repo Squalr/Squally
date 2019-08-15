@@ -12,8 +12,8 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
+#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
 #include "Events/PlatformerEvents.h"
-#include "Entities/Platformer/Misc/DaemonsHallow/FlyBot.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
 #include "Strings/Dialogue/Story/Intro/OgreSpotted.h"

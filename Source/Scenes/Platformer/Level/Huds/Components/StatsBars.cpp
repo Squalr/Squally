@@ -49,6 +49,10 @@ StatsBars::StatsBars(bool isFrameOnLeft)
 	this->manaDenominator = ConstantString::create("-");
 	this->eqDisplay = EqDisplay::create();
 	this->runeBar = RuneBar::create();
+	this->cachedMana = -1;
+	this->cachedMaxMana = -1;
+	this->cachedHealth = -1;
+	this->cachedMaxHealth = -1;
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
 	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });
@@ -126,17 +130,30 @@ void StatsBars::update(float dt)
 
 	int health = this->target->getStateOrDefaultInt(StateKeys::Health, 0);
 	int maxHealth = this->target->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-	float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
-	this->healthNumerator->setString(std::to_string(health));
-	this->healthDenominator->setString(std::to_string(maxHealth));
-	this->healthBar->setProgress(healthPercent);
-
 	int mana = this->target->getStateOrDefaultInt(StateKeys::Mana, 0);
 	int maxMana = this->target->getStateOrDefaultInt(StateKeys::MaxMana, 0);
-	float manaPercent = MathUtils::clamp((float)mana / (maxMana == 0 ? 1.0f : (float)maxMana), 0.0f, 1.0f);
-	this->manaNumerator->setString(std::to_string(mana));
-	this->manaDenominator->setString(std::to_string(maxMana));
-	this->manaBar->setProgress(manaPercent);
+
+	if (this->cachedHealth != health || this->cachedMaxHealth != maxHealth)
+	{
+		float healthPercent = MathUtils::clamp((float)health / (maxHealth == 0 ? 1.0f : (float)maxHealth), 0.0f, 1.0f);
+		this->healthNumerator->setString(std::to_string(health));
+		this->healthDenominator->setString(std::to_string(maxHealth));
+		this->healthBar->setProgress(healthPercent);
+
+		this->cachedHealth = health;
+		this->cachedMaxHealth = maxHealth;
+	}
+
+	if (this->cachedMana != mana || this->cachedMaxMana != maxMana)
+	{
+		float manaPercent = MathUtils::clamp((float)mana / (maxMana == 0 ? 1.0f : (float)maxMana), 0.0f, 1.0f);
+		this->manaNumerator->setString(std::to_string(mana));
+		this->manaDenominator->setString(std::to_string(maxMana));
+		this->manaBar->setProgress(manaPercent);
+
+		this->cachedMana = mana;
+		this->cachedMaxMana = maxMana;
+	}
 }
 
 void StatsBars::setStatsTarget(PlatformerEntity* target)
