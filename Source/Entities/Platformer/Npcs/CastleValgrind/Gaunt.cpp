@@ -29,7 +29,7 @@ Gaunt* Gaunt::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Gaunt::Gaunt(ValueMap& initProperties) : NpcBase(initProperties,
+Gaunt::Gaunt(ValueMap& initProperties) : super(initProperties,
 	Gaunt::MapKeyGaunt,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Animations,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Emblem,

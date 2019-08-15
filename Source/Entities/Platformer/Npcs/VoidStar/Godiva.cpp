@@ -29,7 +29,7 @@ Godiva* Godiva::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Godiva::Godiva(ValueMap& initProperties) : NpcBase(initProperties,
+Godiva::Godiva(ValueMap& initProperties) : super(initProperties,
 	Godiva::MapKeyGodiva,
 	EntityResources::Npcs_VoidStar_Godiva_Animations,
 	EntityResources::Npcs_VoidStar_Godiva_Emblem,

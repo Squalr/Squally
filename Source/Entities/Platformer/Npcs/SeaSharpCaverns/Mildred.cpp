@@ -29,7 +29,7 @@ Mildred* Mildred::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Mildred::Mildred(ValueMap& initProperties) : NpcBase(initProperties,
+Mildred::Mildred(ValueMap& initProperties) : super(initProperties,
 	Mildred::MapKeyMildred,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,

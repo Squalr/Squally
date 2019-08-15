@@ -29,7 +29,7 @@ Thion* Thion::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Thion::Thion(ValueMap& initProperties) : NpcBase(initProperties,
+Thion::Thion(ValueMap& initProperties) : super(initProperties,
 	Thion::MapKeyThion,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,

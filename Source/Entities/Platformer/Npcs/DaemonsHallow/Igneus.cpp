@@ -29,7 +29,7 @@ Igneus* Igneus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Igneus::Igneus(ValueMap& initProperties) : NpcBase(initProperties,
+Igneus::Igneus(ValueMap& initProperties) : super(initProperties,
 	Igneus::MapKeyIgneus,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,

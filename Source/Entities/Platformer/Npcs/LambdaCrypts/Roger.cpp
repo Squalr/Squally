@@ -29,7 +29,7 @@ Roger* Roger::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Roger::Roger(ValueMap& initProperties) : NpcBase(initProperties,
+Roger::Roger(ValueMap& initProperties) : super(initProperties,
 	Roger::MapKeyRoger,
 	EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,

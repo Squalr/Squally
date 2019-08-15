@@ -29,7 +29,7 @@ Griffin* Griffin::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Griffin::Griffin(ValueMap& initProperties) : NpcBase(initProperties,
+Griffin::Griffin(ValueMap& initProperties) : super(initProperties,
 	Griffin::MapKeyGriffin,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,

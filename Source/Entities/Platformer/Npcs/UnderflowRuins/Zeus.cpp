@@ -29,7 +29,7 @@ Zeus* Zeus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Zeus::Zeus(ValueMap& initProperties) : NpcBase(initProperties,
+Zeus::Zeus(ValueMap& initProperties) : super(initProperties,
 	Zeus::MapKeyZeus,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,

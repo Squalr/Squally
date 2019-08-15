@@ -29,7 +29,7 @@ Hera* Hera::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Hera::Hera(ValueMap& initProperties) : NpcBase(initProperties,
+Hera::Hera(ValueMap& initProperties) : super(initProperties,
 	Hera::MapKeyHera,
 	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,

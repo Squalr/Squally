@@ -29,7 +29,7 @@ Sarude* Sarude::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Sarude::Sarude(ValueMap& initProperties) : NpcBase(initProperties,
+Sarude::Sarude(ValueMap& initProperties) : super(initProperties,
 	Sarude::MapKeySarude,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,

@@ -29,7 +29,7 @@ Cookie* Cookie::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Cookie::Cookie(ValueMap& initProperties) : NpcBase(initProperties,
+Cookie::Cookie(ValueMap& initProperties) : super(initProperties,
 	Cookie::MapKeyCookie,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,

@@ -29,7 +29,7 @@ Ara* Ara::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ara::Ara(ValueMap& initProperties) : NpcBase(initProperties,
+Ara::Ara(ValueMap& initProperties) : super(initProperties,
 	Ara::MapKeyAra,
 	EntityResources::Npcs_EndianForest_Ara_Animations,
 	EntityResources::Npcs_EndianForest_Ara_Emblem,

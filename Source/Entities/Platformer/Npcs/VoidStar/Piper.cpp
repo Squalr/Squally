@@ -29,7 +29,7 @@ Piper* Piper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Piper::Piper(ValueMap& initProperties) : NpcBase(initProperties,
+Piper::Piper(ValueMap& initProperties) : super(initProperties,
 	Piper::MapKeyPiper,
 	EntityResources::Npcs_VoidStar_Piper_Animations,
 	EntityResources::Npcs_VoidStar_Piper_Emblem,

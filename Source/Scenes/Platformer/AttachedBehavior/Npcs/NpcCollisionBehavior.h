@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class NpcBase;
+class PlatformerFriendly;
 
 class NpcCollisionBehavior : public AttachedBehavior
 {
@@ -25,5 +25,5 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	NpcBase* npc;
+	PlatformerFriendly* npc;
 };

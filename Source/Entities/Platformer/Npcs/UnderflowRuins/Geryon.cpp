@@ -29,7 +29,7 @@ Geryon* Geryon::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Geryon::Geryon(ValueMap& initProperties) : NpcBase(initProperties,
+Geryon::Geryon(ValueMap& initProperties) : super(initProperties,
 	Geryon::MapKeyGeryon,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,

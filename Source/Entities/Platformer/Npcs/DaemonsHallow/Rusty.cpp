@@ -29,7 +29,7 @@ Rusty* Rusty::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Rusty::Rusty(ValueMap& initProperties) : NpcBase(initProperties,
+Rusty::Rusty(ValueMap& initProperties) : super(initProperties,
 	Rusty::MapKeyRusty,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,

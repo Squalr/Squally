@@ -29,7 +29,7 @@ Dudly* Dudly::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Dudly::Dudly(ValueMap& initProperties) : NpcBase(initProperties,
+Dudly::Dudly(ValueMap& initProperties) : super(initProperties,
 	Dudly::MapKeyDudly,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,

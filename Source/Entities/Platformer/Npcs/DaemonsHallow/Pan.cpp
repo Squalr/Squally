@@ -29,7 +29,7 @@ Pan* Pan::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Pan::Pan(ValueMap& initProperties) : NpcBase(initProperties,
+Pan::Pan(ValueMap& initProperties) : super(initProperties,
 	Pan::MapKeyPan,
 	EntityResources::Npcs_DaemonsHallow_Pan_Animations,
 	EntityResources::Npcs_DaemonsHallow_Pan_Emblem,

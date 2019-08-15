@@ -29,7 +29,7 @@ Garrick* Garrick::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Garrick::Garrick(ValueMap& initProperties) : NpcBase(initProperties,
+Garrick::Garrick(ValueMap& initProperties) : super(initProperties,
 	Garrick::MapKeyGarrick,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,

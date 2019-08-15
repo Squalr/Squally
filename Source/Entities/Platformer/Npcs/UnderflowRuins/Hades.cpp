@@ -29,7 +29,7 @@ Hades* Hades::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Hades::Hades(ValueMap& initProperties) : NpcBase(initProperties,
+Hades::Hades(ValueMap& initProperties) : super(initProperties,
 	Hades::MapKeyHades,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,

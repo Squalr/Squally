@@ -3,7 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
-#include "Entities/Platformer/NpcBase.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -24,7 +24,7 @@ NpcCollisionBehavior* NpcCollisionBehavior::create(GameObject* owner)
 
 NpcCollisionBehavior::NpcCollisionBehavior(GameObject* owner) : super(owner)
 {
-	this->npc = dynamic_cast<NpcBase*>(owner);
+	this->npc = dynamic_cast<PlatformerFriendly*>(owner);
 
 	if (this->npc == nullptr)
 	{

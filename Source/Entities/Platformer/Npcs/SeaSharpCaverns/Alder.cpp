@@ -29,7 +29,7 @@ Alder* Alder::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Alder::Alder(ValueMap& initProperties) : NpcBase(initProperties,
+Alder::Alder(ValueMap& initProperties) : super(initProperties,
 	Alder::MapKeyAlder,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,

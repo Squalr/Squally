@@ -29,7 +29,7 @@ Ares* Ares::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ares::Ares(ValueMap& initProperties) : NpcBase(initProperties,
+Ares::Ares(ValueMap& initProperties) : super(initProperties,
 	Ares::MapKeyAres,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,

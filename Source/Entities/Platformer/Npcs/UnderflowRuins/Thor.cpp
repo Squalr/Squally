@@ -29,7 +29,7 @@ Thor* Thor::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Thor::Thor(ValueMap& initProperties) : NpcBase(initProperties,
+Thor::Thor(ValueMap& initProperties) : super(initProperties,
 	Thor::MapKeyThor,
 	EntityResources::Npcs_UnderflowRuins_Thor_Animations,
 	EntityResources::Npcs_UnderflowRuins_Thor_Emblem,

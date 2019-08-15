@@ -29,7 +29,7 @@ Mara* Mara::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Mara::Mara(ValueMap& initProperties) : NpcBase(initProperties,
+Mara::Mara(ValueMap& initProperties) : super(initProperties,
 	Mara::MapKeyMara,
 	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,

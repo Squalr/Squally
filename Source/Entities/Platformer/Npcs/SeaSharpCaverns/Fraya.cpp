@@ -29,7 +29,7 @@ Fraya* Fraya::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Fraya::Fraya(ValueMap& initProperties) : NpcBase(initProperties,
+Fraya::Fraya(ValueMap& initProperties) : super(initProperties,
 	Fraya::MapKeyFraya,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,

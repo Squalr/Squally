@@ -29,7 +29,7 @@ Thatcher* Thatcher::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Thatcher::Thatcher(ValueMap& initProperties) : NpcBase(initProperties,
+Thatcher::Thatcher(ValueMap& initProperties) : super(initProperties,
 	Thatcher::MapKeyThatcher,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Emblem,

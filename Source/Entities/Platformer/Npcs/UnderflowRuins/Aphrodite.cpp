@@ -29,7 +29,7 @@ Aphrodite* Aphrodite::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Aphrodite::Aphrodite(ValueMap& initProperties) : NpcBase(initProperties,
+Aphrodite::Aphrodite(ValueMap& initProperties) : super(initProperties,
 	Aphrodite::MapKeyAphrodite,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,

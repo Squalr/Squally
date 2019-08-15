@@ -29,7 +29,7 @@ Chiron* Chiron::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Chiron::Chiron(ValueMap& initProperties) : NpcBase(initProperties,
+Chiron::Chiron(ValueMap& initProperties) : super(initProperties,
 	Chiron::MapKeyChiron,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,

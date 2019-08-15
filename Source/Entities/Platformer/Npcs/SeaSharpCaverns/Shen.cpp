@@ -29,7 +29,7 @@ Shen* Shen::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Shen::Shen(ValueMap& initProperties) : NpcBase(initProperties,
+Shen::Shen(ValueMap& initProperties) : super(initProperties,
 	Shen::MapKeyShen,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,

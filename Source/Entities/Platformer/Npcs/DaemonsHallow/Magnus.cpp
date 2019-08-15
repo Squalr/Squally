@@ -29,7 +29,7 @@ Magnus* Magnus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Magnus::Magnus(ValueMap& initProperties) : NpcBase(initProperties,
+Magnus::Magnus(ValueMap& initProperties) : super(initProperties,
 	Magnus::MapKeyMagnus,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Emblem,

@@ -29,7 +29,7 @@ Mabel* Mabel::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Mabel::Mabel(ValueMap& initProperties) : NpcBase(initProperties,
+Mabel::Mabel(ValueMap& initProperties) : super(initProperties,
 	Mabel::MapKeyMabel,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,

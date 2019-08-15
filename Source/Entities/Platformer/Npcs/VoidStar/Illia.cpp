@@ -29,7 +29,7 @@ Illia* Illia::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Illia::Illia(ValueMap& initProperties) : NpcBase(initProperties,
+Illia::Illia(ValueMap& initProperties) : super(initProperties,
 	Illia::MapKeyIllia,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,

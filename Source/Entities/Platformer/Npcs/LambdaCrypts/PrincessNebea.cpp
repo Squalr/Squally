@@ -29,7 +29,7 @@ PrincessNebea* PrincessNebea::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-PrincessNebea::PrincessNebea(ValueMap& initProperties) : NpcBase(initProperties,
+PrincessNebea::PrincessNebea(ValueMap& initProperties) : super(initProperties,
 	PrincessNebea::MapKeyPrincessNebea,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,

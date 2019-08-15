@@ -29,7 +29,7 @@ KingRedsong* KingRedsong::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-KingRedsong::KingRedsong(ValueMap& initProperties) : NpcBase(initProperties,
+KingRedsong::KingRedsong(ValueMap& initProperties) : super(initProperties,
 	KingRedsong::MapKeyKingRedsong,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,

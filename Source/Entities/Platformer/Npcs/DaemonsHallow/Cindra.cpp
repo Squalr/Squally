@@ -29,7 +29,7 @@ Cindra* Cindra::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Cindra::Cindra(ValueMap& initProperties) : NpcBase(initProperties,
+Cindra::Cindra(ValueMap& initProperties) : super(initProperties,
 	Cindra::MapKeyCindra,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,

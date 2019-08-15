@@ -29,7 +29,7 @@ Rupert* Rupert::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Rupert::Rupert(ValueMap& initProperties) : NpcBase(initProperties,
+Rupert::Rupert(ValueMap& initProperties) : super(initProperties,
 	Rupert::MapKeyRupert,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,

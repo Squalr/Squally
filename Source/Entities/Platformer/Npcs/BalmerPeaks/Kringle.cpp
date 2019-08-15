@@ -29,7 +29,7 @@ Kringle* Kringle::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Kringle::Kringle(ValueMap& initProperties) : NpcBase(initProperties,
+Kringle::Kringle(ValueMap& initProperties) : super(initProperties,
 	Kringle::MapKeyKringle,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,

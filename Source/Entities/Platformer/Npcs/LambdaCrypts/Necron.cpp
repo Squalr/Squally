@@ -29,7 +29,7 @@ Necron* Necron::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Necron::Necron(ValueMap& initProperties) : NpcBase(initProperties,
+Necron::Necron(ValueMap& initProperties) : super(initProperties,
 	Necron::MapKeyNecron,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,

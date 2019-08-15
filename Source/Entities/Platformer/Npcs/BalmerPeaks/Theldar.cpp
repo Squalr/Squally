@@ -29,7 +29,7 @@ Theldar* Theldar::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Theldar::Theldar(ValueMap& initProperties) : NpcBase(initProperties,
+Theldar::Theldar(ValueMap& initProperties) : super(initProperties,
 	Theldar::MapKeyTheldar,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,

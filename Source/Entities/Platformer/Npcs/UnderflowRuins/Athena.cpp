@@ -29,7 +29,7 @@ Athena* Athena::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Athena::Athena(ValueMap& initProperties) : NpcBase(initProperties,
+Athena::Athena(ValueMap& initProperties) : super(initProperties,
 	Athena::MapKeyAthena,
 	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,

@@ -29,7 +29,7 @@ Bodom* Bodom::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Bodom::Bodom(ValueMap& initProperties) : NpcBase(initProperties,
+Bodom::Bodom(ValueMap& initProperties) : super(initProperties,
 	Bodom::MapKeyBodom,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,

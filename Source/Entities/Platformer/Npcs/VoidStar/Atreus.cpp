@@ -29,7 +29,7 @@ Atreus* Atreus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Atreus::Atreus(ValueMap& initProperties) : NpcBase(initProperties,
+Atreus::Atreus(ValueMap& initProperties) : super(initProperties,
 	Atreus::MapKeyAtreus,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,

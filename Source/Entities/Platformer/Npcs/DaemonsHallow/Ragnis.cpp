@@ -29,7 +29,7 @@ Ragnis* Ragnis::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ragnis::Ragnis(ValueMap& initProperties) : NpcBase(initProperties,
+Ragnis::Ragnis(ValueMap& initProperties) : super(initProperties,
 	Ragnis::MapKeyRagnis,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,

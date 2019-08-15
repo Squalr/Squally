@@ -29,7 +29,7 @@ Tinsel* Tinsel::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Tinsel::Tinsel(ValueMap& initProperties) : NpcBase(initProperties,
+Tinsel::Tinsel(ValueMap& initProperties) : super(initProperties,
 	Tinsel::MapKeyTinsel,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,

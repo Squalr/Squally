@@ -29,7 +29,7 @@ Appolo* Appolo::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Appolo::Appolo(ValueMap& initProperties) : NpcBase(initProperties,
+Appolo::Appolo(ValueMap& initProperties) : super(initProperties,
 	Appolo::MapKeyAppolo,
 	EntityResources::Npcs_EndianForest_Appolo_Animations,
 	EntityResources::Npcs_EndianForest_Appolo_Emblem,

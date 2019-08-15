@@ -29,7 +29,7 @@ Burch* Burch::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Burch::Burch(ValueMap& initProperties) : NpcBase(initProperties,
+Burch::Burch(ValueMap& initProperties) : super(initProperties,
 	Burch::MapKeyBurch,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,

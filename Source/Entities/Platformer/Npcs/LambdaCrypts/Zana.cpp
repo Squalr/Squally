@@ -29,7 +29,7 @@ Zana* Zana::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Zana::Zana(ValueMap& initProperties) : NpcBase(initProperties,
+Zana::Zana(ValueMap& initProperties) : super(initProperties,
 	Zana::MapKeyZana,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,

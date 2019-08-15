@@ -29,7 +29,7 @@ Celeste* Celeste::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Celeste::Celeste(ValueMap& initProperties) : NpcBase(initProperties,
+Celeste::Celeste(ValueMap& initProperties) : super(initProperties,
 	Celeste::MapKeyCeleste,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Emblem,

@@ -29,7 +29,7 @@ Finch* Finch::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Finch::Finch(ValueMap& initProperties) : NpcBase(initProperties,
+Finch::Finch(ValueMap& initProperties) : super(initProperties,
 	Finch::MapKeyFinch,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,

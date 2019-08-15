@@ -29,7 +29,7 @@ Leroy* Leroy::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Leroy::Leroy(ValueMap& initProperties) : NpcBase(initProperties,
+Leroy::Leroy(ValueMap& initProperties) : super(initProperties,
 	Leroy::MapKeyLeroy,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,

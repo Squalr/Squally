@@ -29,7 +29,7 @@ KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-KingRedsongSlime::KingRedsongSlime(ValueMap& initProperties) : NpcBase(initProperties,
+KingRedsongSlime::KingRedsongSlime(ValueMap& initProperties) : super(initProperties,
 	KingRedsongSlime::MapKeyKingRedsongSlime,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,

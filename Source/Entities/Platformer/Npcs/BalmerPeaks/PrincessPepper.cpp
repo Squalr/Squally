@@ -29,7 +29,7 @@ PrincessPepper* PrincessPepper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-PrincessPepper::PrincessPepper(ValueMap& initProperties) : NpcBase(initProperties,
+PrincessPepper::PrincessPepper(ValueMap& initProperties) : super(initProperties,
 	PrincessPepper::MapKeyPrincessPepper,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,

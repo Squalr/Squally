@@ -29,7 +29,7 @@ Drak* Drak::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Drak::Drak(ValueMap& initProperties) : NpcBase(initProperties,
+Drak::Drak(ValueMap& initProperties) : super(initProperties,
 	Drak::MapKeyDrak,
 	EntityResources::Npcs_DaemonsHallow_Drak_Animations,
 	EntityResources::Npcs_DaemonsHallow_Drak_Emblem,

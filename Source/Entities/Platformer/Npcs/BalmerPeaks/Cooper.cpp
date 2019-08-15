@@ -29,7 +29,7 @@ Cooper* Cooper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Cooper::Cooper(ValueMap& initProperties) : NpcBase(initProperties,
+Cooper::Cooper(ValueMap& initProperties) : super(initProperties,
 	Cooper::MapKeyCooper,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Emblem,

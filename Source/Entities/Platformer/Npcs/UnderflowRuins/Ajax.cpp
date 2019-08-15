@@ -29,7 +29,7 @@ Ajax* Ajax::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ajax::Ajax(ValueMap& initProperties) : NpcBase(initProperties,
+Ajax::Ajax(ValueMap& initProperties) : super(initProperties,
 	Ajax::MapKeyAjax,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,

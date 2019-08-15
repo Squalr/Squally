@@ -29,7 +29,7 @@ Irmik* Irmik::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Irmik::Irmik(ValueMap& initProperties) : NpcBase(initProperties,
+Irmik::Irmik(ValueMap& initProperties) : super(initProperties,
 	Irmik::MapKeyIrmik,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Emblem,

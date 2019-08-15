@@ -29,7 +29,7 @@ Minos* Minos::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Minos::Minos(ValueMap& initProperties) : NpcBase(initProperties,
+Minos::Minos(ValueMap& initProperties) : super(initProperties,
 	Minos::MapKeyMinos,
 	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,

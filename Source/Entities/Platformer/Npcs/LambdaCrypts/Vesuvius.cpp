@@ -29,7 +29,7 @@ Vesuvius* Vesuvius::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Vesuvius::Vesuvius(ValueMap& initProperties) : NpcBase(initProperties,
+Vesuvius::Vesuvius(ValueMap& initProperties) : super(initProperties,
 	Vesuvius::MapKeyVesuvius,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Animations,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Emblem,

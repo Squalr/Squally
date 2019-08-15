@@ -29,7 +29,7 @@ Olive* Olive::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Olive::Olive(ValueMap& initProperties) : NpcBase(initProperties,
+Olive::Olive(ValueMap& initProperties) : super(initProperties,
 	Olive::MapKeyOlive,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,

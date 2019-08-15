@@ -29,7 +29,7 @@ QueenElise* QueenElise::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-QueenElise::QueenElise(ValueMap& initProperties) : NpcBase(initProperties,
+QueenElise::QueenElise(ValueMap& initProperties) : super(initProperties,
 	QueenElise::MapKeyQueenElise,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,

@@ -29,7 +29,7 @@ Brine* Brine::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Brine::Brine(ValueMap& initProperties) : NpcBase(initProperties,
+Brine::Brine(ValueMap& initProperties) : super(initProperties,
 	Brine::MapKeyBrine,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,

@@ -29,7 +29,7 @@ Bonnie* Bonnie::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Bonnie::Bonnie(ValueMap& initProperties) : NpcBase(initProperties,
+Bonnie::Bonnie(ValueMap& initProperties) : super(initProperties,
 	Bonnie::MapKeyBonnie,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Emblem,

@@ -29,7 +29,7 @@ PrincessMittens* PrincessMittens::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-PrincessMittens::PrincessMittens(ValueMap& initProperties) : NpcBase(initProperties,
+PrincessMittens::PrincessMittens(ValueMap& initProperties) : super(initProperties,
 	PrincessMittens::MapKeyPrincessMittens,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,

@@ -29,7 +29,7 @@ Angel* Angel::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Angel::Angel(ValueMap& initProperties) : NpcBase(initProperties,
+Angel::Angel(ValueMap& initProperties) : super(initProperties,
 	Angel::MapKeyAngel,
 	EntityResources::Npcs_UnderflowRuins_Angel_Animations,
 	EntityResources::Npcs_UnderflowRuins_Angel_Emblem,

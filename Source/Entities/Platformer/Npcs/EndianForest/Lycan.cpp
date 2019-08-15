@@ -29,7 +29,7 @@ Lycan* Lycan::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Lycan::Lycan(ValueMap& initProperties) : NpcBase(initProperties,
+Lycan::Lycan(ValueMap& initProperties) : super(initProperties,
 	Lycan::MapKeyLycan,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,

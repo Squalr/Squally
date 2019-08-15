@@ -29,7 +29,7 @@ Cypress* Cypress::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Cypress::Cypress(ValueMap& initProperties) : NpcBase(initProperties,
+Cypress::Cypress(ValueMap& initProperties) : super(initProperties,
 	Cypress::MapKeyCypress,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,

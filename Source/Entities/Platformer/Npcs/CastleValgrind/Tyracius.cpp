@@ -29,7 +29,7 @@ Tyracius* Tyracius::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Tyracius::Tyracius(ValueMap& initProperties) : NpcBase(initProperties,
+Tyracius::Tyracius(ValueMap& initProperties) : super(initProperties,
 	Tyracius::MapKeyTyracius,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,

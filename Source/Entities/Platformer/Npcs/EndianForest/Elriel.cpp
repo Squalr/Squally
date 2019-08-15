@@ -29,7 +29,7 @@ Elriel* Elriel::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Elriel::Elriel(ValueMap& initProperties) : NpcBase(initProperties,
+Elriel::Elriel(ValueMap& initProperties) : super(initProperties,
 	Elriel::MapKeyElriel,
 	EntityResources::Npcs_EndianForest_Elriel_Animations,
 	EntityResources::Npcs_EndianForest_Elriel_Emblem,

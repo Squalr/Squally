@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/NpcBase.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class HexusOpponentData;
 
-class Cookie : public NpcBase
+class Cookie : public PlatformerFriendly
 {
 public:
 	static Cookie* deserialize(cocos2d::ValueMap& initProperties);
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyCookie;
 
 private:
-	typedef NpcBase super;
+	typedef PlatformerFriendly super;
 	Cookie(cocos2d::ValueMap& initProperties);
 	~Cookie();
 

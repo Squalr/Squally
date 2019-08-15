@@ -29,7 +29,7 @@ Leopold* Leopold::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Leopold::Leopold(ValueMap& initProperties) : NpcBase(initProperties,
+Leopold::Leopold(ValueMap& initProperties) : super(initProperties,
 	Leopold::MapKeyLeopold,
 	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
 	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,

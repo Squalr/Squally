@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/NpcBase.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class HexusOpponentData;
 
-class Elric : public NpcBase
+class Elric : public PlatformerFriendly
 {
 public:
 	static Elric* deserialize(cocos2d::ValueMap& initProperties);
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyElric;
 
 private:
-	typedef NpcBase super;
+	typedef PlatformerFriendly super;
 	Elric(cocos2d::ValueMap& initProperties);
 	~Elric();
 

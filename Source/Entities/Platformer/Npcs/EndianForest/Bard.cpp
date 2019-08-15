@@ -29,7 +29,7 @@ Bard* Bard::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Bard::Bard(ValueMap& initProperties) : NpcBase(initProperties,
+Bard::Bard(ValueMap& initProperties) : super(initProperties,
 	Bard::MapKeyBard,
 	EntityResources::Npcs_EndianForest_Bard_Animations,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,

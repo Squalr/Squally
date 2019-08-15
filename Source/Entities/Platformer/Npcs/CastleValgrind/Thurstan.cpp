@@ -29,7 +29,7 @@ Thurstan* Thurstan::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Thurstan::Thurstan(ValueMap& initProperties) : NpcBase(initProperties,
+Thurstan::Thurstan(ValueMap& initProperties) : super(initProperties,
 	Thurstan::MapKeyThurstan,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,

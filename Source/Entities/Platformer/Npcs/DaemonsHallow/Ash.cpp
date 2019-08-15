@@ -29,7 +29,7 @@ Ash* Ash::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ash::Ash(ValueMap& initProperties) : NpcBase(initProperties,
+Ash::Ash(ValueMap& initProperties) : super(initProperties,
 	Ash::MapKeyAsh,
 	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,

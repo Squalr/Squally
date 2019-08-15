@@ -29,7 +29,7 @@ PrincessOpal* PrincessOpal::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-PrincessOpal::PrincessOpal(ValueMap& initProperties) : NpcBase(initProperties,
+PrincessOpal::PrincessOpal(ValueMap& initProperties) : super(initProperties,
 	PrincessOpal::MapKeyPrincessOpal,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,

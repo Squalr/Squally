@@ -29,7 +29,7 @@ Matu* Matu::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Matu::Matu(ValueMap& initProperties) : NpcBase(initProperties,
+Matu::Matu(ValueMap& initProperties) : super(initProperties,
 	Matu::MapKeyMatu,
 	EntityResources::Npcs_EndianForest_Matu_Animations,
 	EntityResources::Npcs_EndianForest_Matu_Emblem,

@@ -29,7 +29,7 @@ Ysara* Ysara::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ysara::Ysara(ValueMap& initProperties) : NpcBase(initProperties,
+Ysara::Ysara(ValueMap& initProperties) : super(initProperties,
 	Ysara::MapKeyYsara,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,

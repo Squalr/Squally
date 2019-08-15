@@ -29,7 +29,7 @@ Lucifer* Lucifer::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Lucifer::Lucifer(ValueMap& initProperties) : NpcBase(initProperties,
+Lucifer::Lucifer(ValueMap& initProperties) : super(initProperties,
 	Lucifer::MapKeyLucifer,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,

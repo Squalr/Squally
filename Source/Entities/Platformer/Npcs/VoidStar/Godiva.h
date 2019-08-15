@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/NpcBase.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class HexusOpponentData;
 
-class Godiva : public NpcBase
+class Godiva : public PlatformerFriendly
 {
 public:
 	static Godiva* deserialize(cocos2d::ValueMap& initProperties);
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyGodiva;
 
 private:
-	typedef NpcBase super;
+	typedef PlatformerFriendly super;
 	Godiva(cocos2d::ValueMap& initProperties);
 	~Godiva();
 

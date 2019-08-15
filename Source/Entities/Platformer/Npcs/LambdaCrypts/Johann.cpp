@@ -29,7 +29,7 @@ Johann* Johann::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Johann::Johann(ValueMap& initProperties) : NpcBase(initProperties,
+Johann::Johann(ValueMap& initProperties) : super(initProperties,
 	Johann::MapKeyJohann,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,

@@ -29,7 +29,7 @@ Viper* Viper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Viper::Viper(ValueMap& initProperties) : NpcBase(initProperties,
+Viper::Viper(ValueMap& initProperties) : super(initProperties,
 	Viper::MapKeyViper,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,

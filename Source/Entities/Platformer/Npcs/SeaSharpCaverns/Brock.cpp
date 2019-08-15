@@ -29,7 +29,7 @@ Brock* Brock::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Brock::Brock(ValueMap& initProperties) : NpcBase(initProperties,
+Brock::Brock(ValueMap& initProperties) : super(initProperties,
 	Brock::MapKeyBrock,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,

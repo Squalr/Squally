@@ -29,7 +29,7 @@ Horus* Horus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Horus::Horus(ValueMap& initProperties) : NpcBase(initProperties,
+Horus::Horus(ValueMap& initProperties) : super(initProperties,
 	Horus::MapKeyHorus,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,

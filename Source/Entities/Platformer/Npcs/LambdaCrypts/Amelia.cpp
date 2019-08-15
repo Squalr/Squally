@@ -29,7 +29,7 @@ Amelia* Amelia::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Amelia::Amelia(ValueMap& initProperties) : NpcBase(initProperties,
+Amelia::Amelia(ValueMap& initProperties) : super(initProperties,
 	Amelia::MapKeyAmelia,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Emblem,

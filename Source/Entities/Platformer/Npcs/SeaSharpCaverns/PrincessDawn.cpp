@@ -29,7 +29,7 @@ PrincessDawn* PrincessDawn::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-PrincessDawn::PrincessDawn(ValueMap& initProperties) : NpcBase(initProperties,
+PrincessDawn::PrincessDawn(ValueMap& initProperties) : super(initProperties,
 	PrincessDawn::MapKeyPrincessDawn,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,

@@ -29,7 +29,7 @@ Bancroft* Bancroft::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Bancroft::Bancroft(ValueMap& initProperties) : NpcBase(initProperties,
+Bancroft::Bancroft(ValueMap& initProperties) : super(initProperties,
 	Bancroft::MapKeyBancroft,
 	EntityResources::Npcs_VoidStar_Bancroft_Animations,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,

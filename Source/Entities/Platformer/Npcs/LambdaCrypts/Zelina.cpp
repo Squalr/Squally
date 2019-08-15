@@ -29,7 +29,7 @@ Zelina* Zelina::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Zelina::Zelina(ValueMap& initProperties) : NpcBase(initProperties,
+Zelina::Zelina(ValueMap& initProperties) : super(initProperties,
 	Zelina::MapKeyZelina,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,

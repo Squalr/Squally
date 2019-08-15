@@ -29,7 +29,7 @@ Polyphemus* Polyphemus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Polyphemus::Polyphemus(ValueMap& initProperties) : NpcBase(initProperties,
+Polyphemus::Polyphemus(ValueMap& initProperties) : super(initProperties,
 	Polyphemus::MapKeyPolyphemus,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,

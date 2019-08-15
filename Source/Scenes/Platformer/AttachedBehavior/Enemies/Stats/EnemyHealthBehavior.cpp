@@ -44,12 +44,6 @@ EnemyHealthBehavior::~EnemyHealthBehavior()
 
 void EnemyHealthBehavior::onLoad()
 {
-	if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
-	{
-		this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
-		this->entity->setState(StateKeys::IsAlive, Value(false));
-	}
-
 	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{
 		if (!value.asBool())
@@ -62,6 +56,12 @@ void EnemyHealthBehavior::onLoad()
 
 		this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
 	});
+
+	if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
+	{
+		this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
+		this->entity->setState(StateKeys::IsAlive, Value(false));
+	}
 }
 
 void EnemyHealthBehavior::saveState()

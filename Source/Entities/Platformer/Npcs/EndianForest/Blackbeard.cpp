@@ -29,7 +29,7 @@ Blackbeard* Blackbeard::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Blackbeard::Blackbeard(ValueMap& initProperties) : NpcBase(initProperties,
+Blackbeard::Blackbeard(ValueMap& initProperties) : super(initProperties,
 	Blackbeard::MapKeyBlackbeard,
 	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,

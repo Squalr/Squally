@@ -29,7 +29,7 @@ Ursula* Ursula::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ursula::Ursula(ValueMap& initProperties) : NpcBase(initProperties,
+Ursula::Ursula(ValueMap& initProperties) : super(initProperties,
 	Ursula::MapKeyUrsula,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,

@@ -29,7 +29,7 @@ Toben* Toben::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Toben::Toben(ValueMap& initProperties) : NpcBase(initProperties,
+Toben::Toben(ValueMap& initProperties) : super(initProperties,
 	Toben::MapKeyToben,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,

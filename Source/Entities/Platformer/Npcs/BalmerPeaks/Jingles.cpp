@@ -29,7 +29,7 @@ Jingles* Jingles::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Jingles::Jingles(ValueMap& initProperties) : NpcBase(initProperties,
+Jingles::Jingles(ValueMap& initProperties) : super(initProperties,
 	Jingles::MapKeyJingles,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,

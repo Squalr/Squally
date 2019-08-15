@@ -29,7 +29,7 @@ Raven* Raven::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Raven::Raven(ValueMap& initProperties) : NpcBase(initProperties,
+Raven::Raven(ValueMap& initProperties) : super(initProperties,
 	Raven::MapKeyRaven,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,

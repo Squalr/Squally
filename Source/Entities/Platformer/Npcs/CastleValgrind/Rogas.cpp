@@ -29,7 +29,7 @@ Rogas* Rogas::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Rogas::Rogas(ValueMap& initProperties) : NpcBase(initProperties,
+Rogas::Rogas(ValueMap& initProperties) : super(initProperties,
 	Rogas::MapKeyRogas,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,

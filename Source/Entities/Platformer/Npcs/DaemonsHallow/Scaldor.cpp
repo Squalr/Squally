@@ -29,7 +29,7 @@ Scaldor* Scaldor::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Scaldor::Scaldor(ValueMap& initProperties) : NpcBase(initProperties,
+Scaldor::Scaldor(ValueMap& initProperties) : super(initProperties,
 	Scaldor::MapKeyScaldor,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,

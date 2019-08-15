@@ -29,7 +29,7 @@ Raka* Raka::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Raka::Raka(ValueMap& initProperties) : NpcBase(initProperties,
+Raka::Raka(ValueMap& initProperties) : super(initProperties,
 	Raka::MapKeyRaka,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,

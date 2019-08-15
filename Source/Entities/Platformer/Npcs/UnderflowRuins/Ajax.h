@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/NpcBase.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class HexusOpponentData;
 
-class Ajax : public NpcBase
+class Ajax : public PlatformerFriendly
 {
 public:
 	static Ajax* deserialize(cocos2d::ValueMap& initProperties);
@@ -16,7 +16,7 @@ public:
 	static const std::string MapKeyAjax;
 
 private:
-	typedef NpcBase super;
+	typedef PlatformerFriendly super;
 	Ajax(cocos2d::ValueMap& initProperties);
 	~Ajax();
 

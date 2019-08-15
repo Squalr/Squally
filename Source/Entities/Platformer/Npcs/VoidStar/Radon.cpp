@@ -29,7 +29,7 @@ Radon* Radon::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Radon::Radon(ValueMap& initProperties) : NpcBase(initProperties,
+Radon::Radon(ValueMap& initProperties) : super(initProperties,
 	Radon::MapKeyRadon,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
 	EntityResources::Npcs_VoidStar_Radon_Emblem,

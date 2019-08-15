@@ -29,7 +29,7 @@ QueenLiana* QueenLiana::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-QueenLiana::QueenLiana(ValueMap& initProperties) : NpcBase(initProperties,
+QueenLiana::QueenLiana(ValueMap& initProperties) : super(initProperties,
 	QueenLiana::MapKeyQueenLiana,
 	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,

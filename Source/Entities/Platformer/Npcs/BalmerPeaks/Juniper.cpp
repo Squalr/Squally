@@ -29,7 +29,7 @@ Juniper* Juniper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Juniper::Juniper(ValueMap& initProperties) : NpcBase(initProperties,
+Juniper::Juniper(ValueMap& initProperties) : super(initProperties,
 	Juniper::MapKeyJuniper,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,

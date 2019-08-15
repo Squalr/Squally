@@ -29,7 +29,7 @@ Azmus* Azmus::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Azmus::Azmus(ValueMap& initProperties) : NpcBase(initProperties,
+Azmus::Azmus(ValueMap& initProperties) : super(initProperties,
 	Azmus::MapKeyAzmus,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,

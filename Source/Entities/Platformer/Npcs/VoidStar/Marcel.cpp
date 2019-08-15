@@ -29,7 +29,7 @@ Marcel* Marcel::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Marcel::Marcel(ValueMap& initProperties) : NpcBase(initProperties,
+Marcel::Marcel(ValueMap& initProperties) : super(initProperties,
 	Marcel::MapKeyMarcel,
 	EntityResources::Npcs_VoidStar_Marcel_Animations,
 	EntityResources::Npcs_VoidStar_Marcel_Emblem,

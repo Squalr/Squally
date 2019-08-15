@@ -29,7 +29,7 @@ Xenon* Xenon::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Xenon::Xenon(ValueMap& initProperties) : NpcBase(initProperties,
+Xenon::Xenon(ValueMap& initProperties) : super(initProperties,
 	Xenon::MapKeyXenon,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,

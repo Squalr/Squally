@@ -29,7 +29,7 @@ Cleopatra* Cleopatra::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Cleopatra::Cleopatra(ValueMap& initProperties) : NpcBase(initProperties,
+Cleopatra::Cleopatra(ValueMap& initProperties) : super(initProperties,
 	Cleopatra::MapKeyCleopatra,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,

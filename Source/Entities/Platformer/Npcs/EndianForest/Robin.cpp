@@ -29,7 +29,7 @@ Robin* Robin::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Robin::Robin(ValueMap& initProperties) : NpcBase(initProperties,
+Robin::Robin(ValueMap& initProperties) : super(initProperties,
 	Robin::MapKeyRobin,
 	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,

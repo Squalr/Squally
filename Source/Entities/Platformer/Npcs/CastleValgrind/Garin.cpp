@@ -29,7 +29,7 @@ Garin* Garin::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Garin::Garin(ValueMap& initProperties) : NpcBase(initProperties,
+Garin::Garin(ValueMap& initProperties) : super(initProperties,
 	Garin::MapKeyGarin,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,

@@ -29,7 +29,7 @@ Ralston* Ralston::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Ralston::Ralston(ValueMap& initProperties) : NpcBase(initProperties,
+Ralston::Ralston(ValueMap& initProperties) : super(initProperties,
 	Ralston::MapKeyRalston,
 	EntityResources::Npcs_VoidStar_Ralston_Animations,
 	EntityResources::Npcs_VoidStar_Ralston_Emblem,

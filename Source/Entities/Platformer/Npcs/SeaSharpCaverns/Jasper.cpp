@@ -29,7 +29,7 @@ Jasper* Jasper::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Jasper::Jasper(ValueMap& initProperties) : NpcBase(initProperties,
+Jasper::Jasper(ValueMap& initProperties) : super(initProperties,
 	Jasper::MapKeyJasper,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,

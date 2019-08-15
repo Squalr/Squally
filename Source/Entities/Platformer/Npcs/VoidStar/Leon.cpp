@@ -29,7 +29,7 @@ Leon* Leon::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Leon::Leon(ValueMap& initProperties) : NpcBase(initProperties,
+Leon::Leon(ValueMap& initProperties) : super(initProperties,
 	Leon::MapKeyLeon,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,

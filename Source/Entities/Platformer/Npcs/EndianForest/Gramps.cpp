@@ -29,7 +29,7 @@ Gramps* Gramps::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Gramps::Gramps(ValueMap& initProperties) : NpcBase(initProperties,
+Gramps::Gramps(ValueMap& initProperties) : super(initProperties,
 	Gramps::MapKeyGramps,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,

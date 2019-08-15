@@ -29,7 +29,7 @@ Nessie* Nessie::deserialize(ValueMap& initProperties)
 	return instance;
 }
 
-Nessie::Nessie(ValueMap& initProperties) : NpcBase(initProperties,
+Nessie::Nessie(ValueMap& initProperties) : super(initProperties,
 	Nessie::MapKeyNessie,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,
