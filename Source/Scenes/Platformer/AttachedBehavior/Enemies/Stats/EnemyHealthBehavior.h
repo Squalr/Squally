@@ -2,7 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class PlatformerEntity;
+class PlatformerEnemy;
 
 class EnemyHealthBehavior : public AttachedBehavior
 {
@@ -22,4 +22,6 @@ private:
 	typedef AttachedBehavior super;
 	
 	void saveState();
+
+	PlatformerEnemy* entity;
 };

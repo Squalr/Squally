@@ -55,25 +55,13 @@ void EntityHealthBehavior::onLoad()
 
 	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{
-		if (!value.asBool())
-		{
-			this->kill();
-		}
-		else
-		{
-			this->revive();
-		}
-	});
-
-	this->listenForStateWrite(StateKeys::IsDead, [=](Value value)
-	{
 		if (value.asBool())
 		{
-			this->kill();
+			this->revive();
 		}
 		else
 		{
-			this->revive();
+			this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
 		}
 	});
 }
@@ -98,7 +86,6 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 	health = MathUtils::clamp(health, 0, this->entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
 	this->entity->setState(StateKeys::Health, Value(health), false);
 	this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), false);
-	this->entity->setState(StateKeys::IsDead, Value(this->isDead()), false);
 
 	if (this->entity != nullptr && this->entity->getStateOrDefaultInt(StateKeys::Health, 0) <= 0)
 	{
@@ -114,6 +101,7 @@ int EntityHealthBehavior::getMaxHealth()
 void EntityHealthBehavior::kill(bool loadDeadAnim)
 {
 	this->setHealth(0, false);
+	this->entity->clearState(StateKeys::SkipDeathAnimation);
 
 	if (loadDeadAnim && this->entity != nullptr)
 	{

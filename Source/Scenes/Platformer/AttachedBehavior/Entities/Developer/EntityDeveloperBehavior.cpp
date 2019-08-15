@@ -1,4 +1,4 @@
-#include "EntityDebugBehavior.h"
+#include "EntityDeveloperBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
@@ -15,18 +15,18 @@
 
 using namespace cocos2d;
 
-const std::string EntityDebugBehavior::MapKeyAttachedBehavior = "entity-debug";
+const std::string EntityDeveloperBehavior::MapKeyAttachedBehavior = "entity-debug";
 
-EntityDebugBehavior* EntityDebugBehavior::create(GameObject* owner)
+EntityDeveloperBehavior* EntityDeveloperBehavior::create(GameObject* owner)
 {
-	EntityDebugBehavior* instance = new EntityDebugBehavior(owner);
+	EntityDeveloperBehavior* instance = new EntityDeveloperBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityDebugBehavior::EntityDebugBehavior(GameObject* owner) : super(owner)
+EntityDeveloperBehavior::EntityDeveloperBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->resurrectButton = ClickableNode::create(UIResources::Menus_Icons_Heart, UIResources::Menus_Icons_Heart);
@@ -44,11 +44,11 @@ EntityDebugBehavior::EntityDebugBehavior(GameObject* owner) : super(owner)
 	this->addChild(this->killButton);
 }
 
-EntityDebugBehavior::~EntityDebugBehavior()
+EntityDeveloperBehavior::~EntityDeveloperBehavior()
 {
 }
 
-void EntityDebugBehavior::initializePositions()
+void EntityDeveloperBehavior::initializePositions()
 {
 	super::initializePositions();
 	
@@ -56,7 +56,7 @@ void EntityDebugBehavior::initializePositions()
 	this->resurrectButton->setPosition(Vec2(64.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
 }
 
-void EntityDebugBehavior::onDeveloperModeEnable()
+void EntityDeveloperBehavior::onDeveloperModeEnable()
 {
 	super::onDeveloperModeEnable();
 
@@ -64,7 +64,7 @@ void EntityDebugBehavior::onDeveloperModeEnable()
 	this->killButton->setVisible(true);
 }
 
-void EntityDebugBehavior::onDeveloperModeDisable()
+void EntityDeveloperBehavior::onDeveloperModeDisable()
 {
 	super::onDeveloperModeDisable();
 
@@ -72,7 +72,7 @@ void EntityDebugBehavior::onDeveloperModeDisable()
 	this->killButton->setVisible(false);
 }
 
-void EntityDebugBehavior::onLoad()
+void EntityDeveloperBehavior::onLoad()
 {
 	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{

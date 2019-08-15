@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntitySelectionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDebugBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 
 using namespace cocos2d;
@@ -23,7 +23,7 @@ EntityCombatBehaviorGroup* EntityCombatBehaviorGroup::create(GameObject* owner)
 EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityAttackBehavior::create(owner),
 	EntitySelectionBehavior::create(owner),
-	EntityDebugBehavior::create(owner),
+	EntityDeveloperBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
 	})
 {

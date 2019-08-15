@@ -7,7 +7,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -30,6 +30,12 @@ EnemyHealthBehavior* EnemyHealthBehavior::create(GameObject* owner)
 
 EnemyHealthBehavior::EnemyHealthBehavior(GameObject* owner) : super(owner)
 {
+	this->entity = dynamic_cast<PlatformerEnemy*>(owner);
+
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 EnemyHealthBehavior::~EnemyHealthBehavior()
@@ -38,40 +44,26 @@ EnemyHealthBehavior::~EnemyHealthBehavior()
 
 void EnemyHealthBehavior::onLoad()
 {
-	/*
 	if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
 	{
-		this->kill(true);
-
-		if (!this->mapEvent.empty())
-		{
-			ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-		}
+		this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
+		this->entity->setState(StateKeys::IsAlive, Value(false));
 	}
-	*/
+
+	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (!value.asBool())
+		{
+			if (!this->entity->mapEvent.empty())
+			{
+				ObjectEvents::TriggerBroadCastMapObjectState(this->entity->mapEvent, ValueMap());
+			}
+		}
+
+		this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
+	});
 }
 
 void EnemyHealthBehavior::saveState()
 {
 }
-
-/*
-void EnemyHealthBehavior::kill(bool loadDeadAnim)
-{
-	super::kill(loadDeadAnim);
-
-	if (!this->entity->getMapEvent().empty())
-	{
-		ObjectEvents::TriggerBroadCastMapObjectState(this->mapEvent, ValueMap());
-	}
-
-	this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(true));
-}
-
-void EnemyHealthBehavior::revive()
-{
-	super::revive();
-
-	this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(false));
-}
-*/

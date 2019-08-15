@@ -10,16 +10,16 @@ namespace cocos2d
 class ClickableNode;
 class PlatformerEntity;
 
-class EntityDebugBehavior : public AttachedBehavior
+class EntityDeveloperBehavior : public AttachedBehavior
 {
 public:
-	static EntityDebugBehavior* create(GameObject* owner);
+	static EntityDeveloperBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityDebugBehavior(GameObject* owner);
-	~EntityDebugBehavior();
+	EntityDeveloperBehavior(GameObject* owner);
+	~EntityDeveloperBehavior();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable() override;

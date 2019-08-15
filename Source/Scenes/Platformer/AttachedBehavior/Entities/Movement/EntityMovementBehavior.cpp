@@ -67,7 +67,7 @@ void EntityMovementBehavior::update(float dt)
 		return;
 	}
 
-	if (this->entity->getStateOrDefaultBool(StateKeys::IsDead, false))
+	if (!this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		this->movement = Vec2::ZERO;
 	}

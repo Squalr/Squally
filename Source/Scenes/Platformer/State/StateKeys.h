@@ -9,7 +9,7 @@ public:
 	static const std::string EqExperience;
 	static const std::string RuneCooldowns;
 	static const std::string IsAlive;
-	static const std::string IsDead;
+	static const std::string SkipDeathAnimation;
 	static const std::string Health;
 	static const std::string MaxHealth;
 	static const std::string Mana;

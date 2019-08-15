@@ -62,7 +62,7 @@ void SquallyWeaponCollisionBehavior::onLoad()
 	{
 		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsDead, true))
+			if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				return CollisionObject::CollisionResult::DoNothing;
 			}

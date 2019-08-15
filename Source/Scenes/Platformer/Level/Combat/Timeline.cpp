@@ -171,12 +171,12 @@ void Timeline::checkCombatComplete()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		allEnemiesDead &= entity->getStateOrDefaultBool(StateKeys::IsDead, false);
+		allEnemiesDead &= !entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		allPlayersDead &= entity->getStateOrDefaultBool(StateKeys::IsDead, false);
+		allPlayersDead &= !entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
 	}));
 
 	if (allEnemiesDead)
