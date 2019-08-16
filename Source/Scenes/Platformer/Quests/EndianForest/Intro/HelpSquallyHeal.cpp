@@ -34,7 +34,7 @@ HelpSquallyHeal* HelpSquallyHeal::create(GameObject* owner, QuestLine* questLine
 HelpSquallyHeal::HelpSquallyHeal(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, HelpSquallyHeal::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = dynamic_cast<FlyBot*>(owner);
+	this->flyBot = nullptr;
 }
 
 HelpSquallyHeal::~HelpSquallyHeal()
@@ -43,18 +43,7 @@ HelpSquallyHeal::~HelpSquallyHeal()
 
 void HelpSquallyHeal::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
-
-	if (!this->isActive())
-	{
-		if (this->flyBot != nullptr)
-		{
-			this->flyBot->setVisible(false);
-		}
-	}
+	this->scheduleUpdate();
 }
 
 void HelpSquallyHeal::onActivate(bool isActiveThroughSkippable)
@@ -74,10 +63,18 @@ void HelpSquallyHeal::onComplete()
 void HelpSquallyHeal::onSkipped()
 {
 	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
+}
+
+void HelpSquallyHeal::update(float dt)
+{
+	super::update(dt);
+
+	if (this->flyBot == nullptr)
 	{
-		this->flyBot->setVisible(false);
+		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
+		{
+			this->flyBot = flyBot;
+		}));
 	}
 }
 
@@ -89,24 +86,6 @@ void HelpSquallyHeal::runCinematicSequence()
 	}
 
 	this->hasRunEvent = true;
-
-	Vec2 positionA = Vec2::ZERO;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
-	{
-		switch(cinematicMarker->getId())
-		{
-			case 0:
-			{
-				positionA = cinematicMarker->getPosition();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}));
 
 	if (this->flyBot != nullptr)
 	{
@@ -126,12 +105,6 @@ void HelpSquallyHeal::runCinematicSequence()
 			{
 				PlatformerEvents::TriggerCinematicRestore();
 				this->flyBot->speechBubble->hideDialogue();
-			}),
-			DelayTime::create(1.0f),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
-			CallFunc::create([=]()
-			{
-				this->flyBot->setVisible(false);
 			}),
 			nullptr
 		));

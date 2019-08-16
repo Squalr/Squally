@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string HelperEvents::EventChangeHelper = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
+const std::string HelperEvents::EventChangeHelper = "EVENT_CHANGE_HELPER";
 
 void HelperEvents::TriggerChangeHelper(ChangeHelperArgs args)
 {

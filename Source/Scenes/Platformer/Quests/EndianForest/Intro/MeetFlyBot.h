@@ -20,6 +20,7 @@ protected:
 	void onActivate(bool isActiveThroughSkippable) override;
 	void onComplete() override;
 	void onSkipped() override;
+	void update(float dt) override;
 
 private:
 	typedef QuestTask super;

@@ -140,7 +140,7 @@ void SquallyShip::initializePositions()
 	super::initializePositions();
 
 	this->lightningStrike->setPosition(Vec2(-32.0f, 420.0f));
-	this->smokeAnimation->setPosition(Vec2(-96.0f, 0.0f));
+	this->smokeAnimation->setPosition(Vec2(-64.0f, 16.0f));
 	this->shipFireAnimation->setPosition(Vec2(-64.0f, 48.0f));
 	this->fireAnimation->setPosition(Vec2(112.0f, 32.0f));
 	this->fireRingAnimation->setPosition(Vec2(0.0f, 32.0f));

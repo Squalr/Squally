@@ -34,7 +34,7 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
-	this->flyBot = dynamic_cast<FlyBot*>(owner);
+	this->flyBot = nullptr;
 }
 
 TeachHackerMode::~TeachHackerMode()
@@ -43,18 +43,7 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
-	
-	if (!this->isActive())
-	{
-		if (this->flyBot != nullptr)
-		{
-			this->flyBot->setVisible(false);
-		}
-	}
+	this->scheduleUpdate();
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
@@ -74,10 +63,18 @@ void TeachHackerMode::onComplete()
 void TeachHackerMode::onSkipped()
 {
 	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
+}
+
+void TeachHackerMode::update(float dt)
+{
+	super::update(dt);
+
+	if (this->flyBot == nullptr)
 	{
-		this->flyBot->setVisible(false);
+		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
+		{
+			this->flyBot = flyBot;
+		}));
 	}
 }
 
@@ -89,23 +86,6 @@ void TeachHackerMode::runCinematicSequence()
 	}
 	
 	this->hasRunEvent = true;
-	Vec2 positionB = Vec2::ZERO;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
-	{
-		switch(cinematicMarker->getId())
-		{
-			case 1:
-			{
-				positionB = cinematicMarker->getPosition();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}));
 
 	if (this->flyBot != nullptr)
 	{
@@ -125,12 +105,6 @@ void TeachHackerMode::runCinematicSequence()
 			{
 				PlatformerEvents::TriggerCinematicRestore();
 				this->flyBot->speechBubble->hideDialogue();
-			}),
-			DelayTime::create(1.0f),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
-			CallFunc::create([=]()
-			{
-				this->flyBot->setVisible(false);
 			}),
 			nullptr
 		));

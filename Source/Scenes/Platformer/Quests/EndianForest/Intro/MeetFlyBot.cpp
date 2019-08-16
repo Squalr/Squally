@@ -13,6 +13,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
@@ -75,10 +76,18 @@ void MeetFlyBot::onComplete()
 void MeetFlyBot::onSkipped()
 {
 	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
+}
+
+void MeetFlyBot::update(float dt)
+{
+	super::update(dt);
+
+	if (this->flyBot == nullptr)
 	{
-		this->flyBot->setVisible(false);
+		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
+		{
+			this->flyBot = flyBot;
+		}));
 	}
 }
 
@@ -91,7 +100,6 @@ void MeetFlyBot::runCinematicSequence()
 	
 	this->hasRunEvent = true;
 	Vec2 positionA = Vec2::ZERO;
-	Vec2 positionB = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
@@ -100,11 +108,6 @@ void MeetFlyBot::runCinematicSequence()
 			case 0:
 			{
 				positionA = cinematicMarker->getPosition();
-				break;
-			}
-			case 1:
-			{
-				positionB = cinematicMarker->getPosition();
 				break;
 			}
 			default:
@@ -148,14 +151,22 @@ void MeetFlyBot::runCinematicSequence()
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{
-				PlatformerEvents::TriggerCinematicRestore();
+				Vec2 positionB = Vec2::ZERO;
+
+				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
+				{
+					positionB = squally->getPosition();
+				}));
+
+				this->flyBot->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{
 				this->flyBot->setVisible(false);
 
 				HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(FlyBot::MapKeyFlyBot));
+				PlatformerEvents::TriggerCinematicRestore();
 
 				this->complete();
 			}),
