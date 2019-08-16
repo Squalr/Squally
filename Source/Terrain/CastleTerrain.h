@@ -5,13 +5,13 @@
 class CastleTerrain : public TerrainObject
 {
 public:
-	static CastleTerrain* create(cocos2d::ValueMap& initProperties);
+	static CastleTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeCastle;
 
 private:
 	typedef TerrainObject super;
 	
-	CastleTerrain(cocos2d::ValueMap& initProperties);
+	CastleTerrain(cocos2d::ValueMap& properties);
 	~CastleTerrain();
 };

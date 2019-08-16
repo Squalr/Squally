@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Mystic : public PlatformerEnemy
 {
 public:
-	static Mystic* deserialize(cocos2d::ValueMap& initProperties);
+	static Mystic* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Mystic(cocos2d::ValueMap& initProperties);
+	Mystic(cocos2d::ValueMap& properties);
 	~Mystic();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

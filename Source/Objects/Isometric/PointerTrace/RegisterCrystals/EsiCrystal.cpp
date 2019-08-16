@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EsiCrystal::MapKeyEsiCrystal = "esi-crystal";
 
-EsiCrystal* EsiCrystal::create(ValueMap& initProperties)
+EsiCrystal* EsiCrystal::create(ValueMap& properties)
 {
-	EsiCrystal* instance = new EsiCrystal(initProperties);
+	EsiCrystal* instance = new EsiCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EsiCrystal::EsiCrystal(ValueMap& initProperties) : super(initProperties)
+EsiCrystal::EsiCrystal(ValueMap& properties) : super(properties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EsiCrystal);
 	

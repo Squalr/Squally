@@ -10,16 +10,16 @@ using namespace cocos2d;
 const std::string IsometricBall::MapKeyBall = "ball";
 const float IsometricBall::MovementSpeed = 0.2f;
 
-IsometricBall* IsometricBall::deserialize(ValueMap& initProperties)
+IsometricBall* IsometricBall::deserialize(ValueMap& properties)
 {
-	IsometricBall* instance = new IsometricBall(initProperties);
+	IsometricBall* instance = new IsometricBall(properties);
 
 	instance->autorelease();
 	
 	return instance;
 }
 
-IsometricBall::IsometricBall(ValueMap& initProperties) : super(initProperties,
+IsometricBall::IsometricBall(ValueMap& properties) : super(properties,
 	IsometricEntityResources::SquallBall_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))

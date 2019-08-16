@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ara : public PlatformerFriendly
 {
 public:
-	static Ara* deserialize(cocos2d::ValueMap& initProperties);
+	static Ara* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ara(cocos2d::ValueMap& initProperties);
+	Ara(cocos2d::ValueMap& properties);
 	~Ara();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

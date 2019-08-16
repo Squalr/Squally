@@ -14,7 +14,7 @@ class CagedAnimal : public BreakableCage
 public:
 
 protected:
-	CagedAnimal(cocos2d::ValueMap& initProperties, std::string saveKey);
+	CagedAnimal(cocos2d::ValueMap& properties, std::string saveKey);
 	~CagedAnimal();
 
 	void onEnter() override;

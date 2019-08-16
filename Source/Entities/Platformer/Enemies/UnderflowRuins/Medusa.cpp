@@ -20,16 +20,16 @@ const std::string Medusa::MapKeyMedusa = "medusa";
 HexusOpponentData* Medusa::HexusOpponentDataInstance = nullptr;
 const std::string Medusa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MEDUSA";
 
-Medusa* Medusa::deserialize(ValueMap& initProperties)
+Medusa* Medusa::deserialize(ValueMap& properties)
 {
-	Medusa* instance = new Medusa(initProperties);
+	Medusa* instance = new Medusa(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Medusa::Medusa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Medusa::Medusa(ValueMap& properties) : PlatformerEnemy(properties,
 	Medusa::MapKeyMedusa,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,

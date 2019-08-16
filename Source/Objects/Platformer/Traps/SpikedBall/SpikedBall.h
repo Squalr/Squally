@@ -13,12 +13,12 @@ class HackableData;
 class SpikedBall : public HackableObject
 {
 public:
-	static SpikedBall* create(cocos2d::ValueMap& initProperties);
+	static SpikedBall* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeySpikedBall;
 
 protected:
-	SpikedBall(cocos2d::ValueMap& initProperties);
+	SpikedBall(cocos2d::ValueMap& properties);
 	virtual ~SpikedBall();
 
 	void onEnter() override;

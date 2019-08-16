@@ -15,12 +15,12 @@ class SmartAnimationSequenceNode;
 class Laser : public HackableObject
 {
 public:
-	static Laser* create(cocos2d::ValueMap& initProperties);
+	static Laser* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyLaser;
 
 protected:
-	Laser(cocos2d::ValueMap& initProperties);
+	Laser(cocos2d::ValueMap& properties);
 	virtual ~Laser();
 
 	void onEnter() override;

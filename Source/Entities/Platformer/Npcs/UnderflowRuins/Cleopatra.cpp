@@ -20,16 +20,16 @@ const std::string Cleopatra::MapKeyCleopatra = "cleopatra";
 HexusOpponentData* Cleopatra::HexusOpponentDataInstance = nullptr;
 const std::string Cleopatra::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CLEOPATRA";
 
-Cleopatra* Cleopatra::deserialize(ValueMap& initProperties)
+Cleopatra* Cleopatra::deserialize(ValueMap& properties)
 {
-	Cleopatra* instance = new Cleopatra(initProperties);
+	Cleopatra* instance = new Cleopatra(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cleopatra::Cleopatra(ValueMap& initProperties) : super(initProperties,
+Cleopatra::Cleopatra(ValueMap& properties) : super(properties,
 	Cleopatra::MapKeyCleopatra,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,

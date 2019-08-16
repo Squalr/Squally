@@ -5,13 +5,13 @@
 class ShopPoolMinos : public ShopPool
 {
 public:
-	static ShopPoolMinos* create(cocos2d::ValueMap& initProperties);
+	static ShopPoolMinos* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyShopPoolMinos;
 	static const std::string PoolName;
 
 protected:
-	ShopPoolMinos(cocos2d::ValueMap& initProperties);
+	ShopPoolMinos(cocos2d::ValueMap& properties);
 	~ShopPoolMinos();
 	void onEnter() override;
 	void initializePositions() override;

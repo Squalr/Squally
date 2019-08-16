@@ -20,16 +20,16 @@ const std::string Azmus::MapKeyAzmus = "azmus";
 HexusOpponentData* Azmus::HexusOpponentDataInstance = nullptr;
 const std::string Azmus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AZMUS";
 
-Azmus* Azmus::deserialize(ValueMap& initProperties)
+Azmus* Azmus::deserialize(ValueMap& properties)
 {
-	Azmus* instance = new Azmus(initProperties);
+	Azmus* instance = new Azmus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Azmus::Azmus(ValueMap& initProperties) : super(initProperties,
+Azmus::Azmus(ValueMap& properties) : super(properties,
 	Azmus::MapKeyAzmus,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,

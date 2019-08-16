@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Professor : public PlatformerEntity
 {
 public:
-	static Professor* deserialize(cocos2d::ValueMap& initProperties);
+	static Professor* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Professor(cocos2d::ValueMap& initProperties);
+	Professor(cocos2d::ValueMap& properties);
 	~Professor();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

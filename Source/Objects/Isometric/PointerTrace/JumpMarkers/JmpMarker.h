@@ -13,7 +13,7 @@ class LocalizedLabel;
 class JmpMarker : public GridObject
 {
 protected:
-	JmpMarker(cocos2d::ValueMap& initProperties);
+	JmpMarker(cocos2d::ValueMap& properties);
 	~JmpMarker();
 
 	void onEnter() override;

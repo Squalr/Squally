@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string EspPtrJmp::MapKeyEspPtrJmp = "[esp]-jmp";
 
-EspPtrJmp* EspPtrJmp::create(ValueMap& initProperties)
+EspPtrJmp* EspPtrJmp::create(ValueMap& properties)
 {
-	EspPtrJmp* instance = new EspPtrJmp(initProperties);
+	EspPtrJmp* instance = new EspPtrJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EspPtrJmp::EspPtrJmp(ValueMap& initProperties) : super(initProperties)
+EspPtrJmp::EspPtrJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspPtrJmp);
 	

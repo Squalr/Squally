@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Xenon : public PlatformerFriendly
 {
 public:
-	static Xenon* deserialize(cocos2d::ValueMap& initProperties);
+	static Xenon* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Xenon(cocos2d::ValueMap& initProperties);
+	Xenon(cocos2d::ValueMap& properties);
 	~Xenon();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

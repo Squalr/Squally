@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Aphrodite : public PlatformerFriendly
 {
 public:
-	static Aphrodite* deserialize(cocos2d::ValueMap& initProperties);
+	static Aphrodite* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Aphrodite(cocos2d::ValueMap& initProperties);
+	Aphrodite(cocos2d::ValueMap& properties);
 	~Aphrodite();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

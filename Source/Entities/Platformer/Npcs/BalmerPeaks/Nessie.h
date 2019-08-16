@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Nessie : public PlatformerFriendly
 {
 public:
-	static Nessie* deserialize(cocos2d::ValueMap& initProperties);
+	static Nessie* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Nessie(cocos2d::ValueMap& initProperties);
+	Nessie(cocos2d::ValueMap& properties);
 	~Nessie();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

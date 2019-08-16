@@ -20,16 +20,16 @@ const std::string SkeletalBaron::MapKeySkeletalBaron = "skeletal-baron";
 HexusOpponentData* SkeletalBaron::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalBaron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_BARON";
 
-SkeletalBaron* SkeletalBaron::deserialize(ValueMap& initProperties)
+SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 {
-	SkeletalBaron* instance = new SkeletalBaron(initProperties);
+	SkeletalBaron* instance = new SkeletalBaron(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalBaron::SkeletalBaron(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalBaron::SkeletalBaron(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalBaron::MapKeySkeletalBaron,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,

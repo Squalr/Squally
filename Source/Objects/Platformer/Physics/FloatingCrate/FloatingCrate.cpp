@@ -31,16 +31,16 @@ using namespace cocos2d;
 
 const std::string FloatingCrate::MapKeyFloatingCrate = "floating-crate";
 
-FloatingCrate* FloatingCrate::create(ValueMap& initProperties)
+FloatingCrate* FloatingCrate::create(ValueMap& properties)
 {
-	FloatingCrate* instance = new FloatingCrate(initProperties);
+	FloatingCrate* instance = new FloatingCrate(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-FloatingCrate::FloatingCrate(ValueMap& initProperties) : super(initProperties)
+FloatingCrate::FloatingCrate(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
 	this->collision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, false, true);

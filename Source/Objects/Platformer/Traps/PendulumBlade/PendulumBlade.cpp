@@ -35,16 +35,16 @@ const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
 const float PendulumBlade::MinAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle - 45.0f, 0.0f, 360.0f);
 const float PendulumBlade::MaxAngle = MathUtils::wrappingNormalize(PendulumBlade::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
-PendulumBlade* PendulumBlade::create(ValueMap& initProperties)
+PendulumBlade* PendulumBlade::create(ValueMap& properties)
 {
-	PendulumBlade* instance = new PendulumBlade(initProperties);
+	PendulumBlade* instance = new PendulumBlade(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PendulumBlade::PendulumBlade(ValueMap& initProperties) : super(initProperties)
+PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 {
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();

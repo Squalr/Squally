@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Gramps : public PlatformerFriendly
 {
 public:
-	static Gramps* deserialize(cocos2d::ValueMap& initProperties);
+	static Gramps* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Gramps(cocos2d::ValueMap& initProperties);
+	Gramps(cocos2d::ValueMap& properties);
 	~Gramps();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

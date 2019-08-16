@@ -15,12 +15,12 @@ class Sound;
 class Ship : public HackableObject
 {
 public:
-	static Ship* create(cocos2d::ValueMap& initProperties);
+	static Ship* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyShip;
 
 protected:
-	Ship(cocos2d::ValueMap& initProperties);
+	Ship(cocos2d::ValueMap& properties);
 	virtual ~Ship();
 
 	void onEnter() override;

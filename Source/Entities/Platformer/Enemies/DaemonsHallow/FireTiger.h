@@ -8,7 +8,7 @@ class HexusOpponentData;
 class FireTiger : public PlatformerEnemy
 {
 public:
-	static FireTiger* deserialize(cocos2d::ValueMap& initProperties);
+	static FireTiger* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	FireTiger(cocos2d::ValueMap& initProperties);
+	FireTiger(cocos2d::ValueMap& properties);
 	~FireTiger();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

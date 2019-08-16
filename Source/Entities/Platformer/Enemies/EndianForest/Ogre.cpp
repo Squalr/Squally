@@ -20,16 +20,16 @@ const std::string Ogre::MapKeyOgre = "ogre";
 HexusOpponentData* Ogre::HexusOpponentDataInstance = nullptr;
 const std::string Ogre::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OGRE";
 
-Ogre* Ogre::deserialize(ValueMap& initProperties)
+Ogre* Ogre::deserialize(ValueMap& properties)
 {
-	Ogre* instance = new Ogre(initProperties);
+	Ogre* instance = new Ogre(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ogre::Ogre(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Ogre::Ogre(ValueMap& properties) : PlatformerEnemy(properties,
 	Ogre::MapKeyOgre,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,

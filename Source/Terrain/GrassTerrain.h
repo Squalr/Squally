@@ -5,13 +5,13 @@
 class GrassTerrain : public TerrainObject
 {
 public:
-	static GrassTerrain* create(cocos2d::ValueMap& initProperties);
+	static GrassTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeGrass;
 
 private:
 	typedef TerrainObject super;
-	GrassTerrain(cocos2d::ValueMap& initProperties);
+	GrassTerrain(cocos2d::ValueMap& properties);
 	~GrassTerrain();
 
 	static GrassTerrain* instance;

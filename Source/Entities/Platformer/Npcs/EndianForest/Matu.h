@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Matu : public PlatformerFriendly
 {
 public:
-	static Matu* deserialize(cocos2d::ValueMap& initProperties);
+	static Matu* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Matu(cocos2d::ValueMap& initProperties);
+	Matu(cocos2d::ValueMap& properties);
 	~Matu();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

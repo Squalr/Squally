@@ -20,16 +20,16 @@ const std::string Minos::MapKeyMinos = "minos";
 HexusOpponentData* Minos::HexusOpponentDataInstance = nullptr;
 const std::string Minos::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOS";
 
-Minos* Minos::deserialize(ValueMap& initProperties)
+Minos* Minos::deserialize(ValueMap& properties)
 {
-	Minos* instance = new Minos(initProperties);
+	Minos* instance = new Minos(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Minos::Minos(ValueMap& initProperties) : super(initProperties,
+Minos::Minos(ValueMap& properties) : super(properties,
 	Minos::MapKeyMinos,
 	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,

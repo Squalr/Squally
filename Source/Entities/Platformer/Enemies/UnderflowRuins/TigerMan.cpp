@@ -20,16 +20,16 @@ const std::string TigerMan::MapKeyTigerMan = "tiger-man";
 HexusOpponentData* TigerMan::HexusOpponentDataInstance = nullptr;
 const std::string TigerMan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIGER_MAN";
 
-TigerMan* TigerMan::deserialize(ValueMap& initProperties)
+TigerMan* TigerMan::deserialize(ValueMap& properties)
 {
-	TigerMan* instance = new TigerMan(initProperties);
+	TigerMan* instance = new TigerMan(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TigerMan::TigerMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+TigerMan::TigerMan(ValueMap& properties) : PlatformerEnemy(properties,
 	TigerMan::MapKeyTigerMan,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,

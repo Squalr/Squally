@@ -10,7 +10,7 @@ class InteractMenu;
 class Chest : public GameObject
 {
 public:
-	static Chest* create(cocos2d::ValueMap& initProperties);
+	static Chest* create(cocos2d::ValueMap& properties);
 
 	virtual void open();
 	virtual void close();
@@ -19,7 +19,7 @@ public:
 
 private:
 	typedef GameObject super;
-	Chest(cocos2d::ValueMap& initProperties);
+	Chest(cocos2d::ValueMap& properties);
 	virtual ~Chest();
 
 	void onEnter() override;

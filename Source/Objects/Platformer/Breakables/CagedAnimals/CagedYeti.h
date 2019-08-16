@@ -10,12 +10,12 @@ namespace cocos2d
 class CagedYeti : public CagedAnimal
 {
 public:
-	static CagedYeti* create(cocos2d::ValueMap& initProperties);
+	static CagedYeti* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCagedYeti;
 
 protected:
-	CagedYeti(cocos2d::ValueMap& initProperties);
+	CagedYeti(cocos2d::ValueMap& properties);
 	~CagedYeti();
 
 	void initializePositions() override;

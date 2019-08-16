@@ -20,16 +20,16 @@ const std::string FireTiger::MapKeyFireTiger = "fire-tiger";
 HexusOpponentData* FireTiger::HexusOpponentDataInstance = nullptr;
 const std::string FireTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_TIGER";
 
-FireTiger* FireTiger::deserialize(ValueMap& initProperties)
+FireTiger* FireTiger::deserialize(ValueMap& properties)
 {
-	FireTiger* instance = new FireTiger(initProperties);
+	FireTiger* instance = new FireTiger(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FireTiger::FireTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+FireTiger::FireTiger(ValueMap& properties) : PlatformerEnemy(properties,
 	FireTiger::MapKeyFireTiger,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,

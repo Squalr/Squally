@@ -20,16 +20,16 @@ const std::string Kringle::MapKeyKringle = "kringle";
 HexusOpponentData* Kringle::HexusOpponentDataInstance = nullptr;
 const std::string Kringle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRINGLE";
 
-Kringle* Kringle::deserialize(ValueMap& initProperties)
+Kringle* Kringle::deserialize(ValueMap& properties)
 {
-	Kringle* instance = new Kringle(initProperties);
+	Kringle* instance = new Kringle(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Kringle::Kringle(ValueMap& initProperties) : super(initProperties,
+Kringle::Kringle(ValueMap& properties) : super(properties,
 	Kringle::MapKeyKringle,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,

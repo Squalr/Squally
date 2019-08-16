@@ -20,16 +20,16 @@ const std::string Shen::MapKeyShen = "shen";
 HexusOpponentData* Shen::HexusOpponentDataInstance = nullptr;
 const std::string Shen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHEN";
 
-Shen* Shen::deserialize(ValueMap& initProperties)
+Shen* Shen::deserialize(ValueMap& properties)
 {
-	Shen* instance = new Shen(initProperties);
+	Shen* instance = new Shen(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Shen::Shen(ValueMap& initProperties) : super(initProperties,
+Shen::Shen(ValueMap& properties) : super(properties,
 	Shen::MapKeyShen,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,

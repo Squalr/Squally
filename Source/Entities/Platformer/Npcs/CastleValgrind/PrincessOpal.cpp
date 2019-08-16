@@ -20,16 +20,16 @@ const std::string PrincessOpal::MapKeyPrincessOpal = "princess-opal";
 HexusOpponentData* PrincessOpal::HexusOpponentDataInstance = nullptr;
 const std::string PrincessOpal::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_OPAL";
 
-PrincessOpal* PrincessOpal::deserialize(ValueMap& initProperties)
+PrincessOpal* PrincessOpal::deserialize(ValueMap& properties)
 {
-	PrincessOpal* instance = new PrincessOpal(initProperties);
+	PrincessOpal* instance = new PrincessOpal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessOpal::PrincessOpal(ValueMap& initProperties) : super(initProperties,
+PrincessOpal::PrincessOpal(ValueMap& properties) : super(properties,
 	PrincessOpal::MapKeyPrincessOpal,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,

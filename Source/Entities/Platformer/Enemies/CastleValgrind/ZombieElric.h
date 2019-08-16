@@ -8,7 +8,7 @@ class HexusOpponentData;
 class ZombieElric : public PlatformerEnemy
 {
 public:
-	static ZombieElric* deserialize(cocos2d::ValueMap& initProperties);
+	static ZombieElric* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	ZombieElric(cocos2d::ValueMap& initProperties);
+	ZombieElric(cocos2d::ValueMap& properties);
 	~ZombieElric();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

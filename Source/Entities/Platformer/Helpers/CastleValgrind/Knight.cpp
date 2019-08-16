@@ -20,16 +20,16 @@ const std::string Knight::MapKeyKnight = "knight";
 HexusOpponentData* Knight::HexusOpponentDataInstance = nullptr;
 const std::string Knight::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KNIGHT";
 
-Knight* Knight::deserialize(ValueMap& initProperties)
+Knight* Knight::deserialize(ValueMap& properties)
 {
-	Knight* instance = new Knight(initProperties);
+	Knight* instance = new Knight(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Knight::Knight(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Knight::Knight(ValueMap& properties) : PlatformerEntity(properties,
 	Knight::MapKeyKnight,
 	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,

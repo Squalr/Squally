@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EsiInitializer::MapKeyEsiInitializer = "esi";
 
-EsiInitializer* EsiInitializer::create(ValueMap& initProperties)
+EsiInitializer* EsiInitializer::create(ValueMap& properties)
 {
-	EsiInitializer* instance = new EsiInitializer(initProperties);
+	EsiInitializer* instance = new EsiInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EsiInitializer::EsiInitializer(ValueMap& initProperties) : super(initProperties)
+EsiInitializer::EsiInitializer(ValueMap& properties) : super(properties)
 {
 }
 

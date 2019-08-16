@@ -19,16 +19,16 @@ const std::string ReanimatedFighter::MapKeyReanimatedFighter = "reanimated-fight
 HexusOpponentData* ReanimatedFighter::HexusOpponentDataInstance = nullptr;
 const std::string ReanimatedFighter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_FIGHTER";
 
-ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& initProperties)
+ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 {
-	ReanimatedFighter* instance = new ReanimatedFighter(initProperties);
+	ReanimatedFighter* instance = new ReanimatedFighter(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ReanimatedFighter::ReanimatedFighter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : PlatformerEnemy(properties,
 	ReanimatedFighter::MapKeyReanimatedFighter,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,

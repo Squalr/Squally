@@ -20,16 +20,16 @@ const std::string KingRedsongSlime::MapKeyKingRedsongSlime = "king-redsong-slime
 HexusOpponentData* KingRedsongSlime::HexusOpponentDataInstance = nullptr;
 const std::string KingRedsongSlime::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_REDSONG_SLIME";
 
-KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& initProperties)
+KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& properties)
 {
-	KingRedsongSlime* instance = new KingRedsongSlime(initProperties);
+	KingRedsongSlime* instance = new KingRedsongSlime(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-KingRedsongSlime::KingRedsongSlime(ValueMap& initProperties) : super(initProperties,
+KingRedsongSlime::KingRedsongSlime(ValueMap& properties) : super(properties,
 	KingRedsongSlime::MapKeyKingRedsongSlime,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,

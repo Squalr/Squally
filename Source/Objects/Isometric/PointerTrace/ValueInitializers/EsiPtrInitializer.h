@@ -5,7 +5,7 @@
 class EsiPtrInitializer : public PtrInitializerBase
 {
 public:
-	static EsiPtrInitializer* create(cocos2d::ValueMap& initProperties);
+	static EsiPtrInitializer* create(cocos2d::ValueMap& properties);
 
 	void setGridIndex(int gridIndex) override;
 
@@ -13,7 +13,7 @@ public:
 	static const std::string MapKeyEsiPtrInitializer;
 
 protected:
-	EsiPtrInitializer(cocos2d::ValueMap& initProperties);
+	EsiPtrInitializer(cocos2d::ValueMap& properties);
 	~EsiPtrInitializer();
 
 private:

@@ -20,16 +20,16 @@ const std::string Illia::MapKeyIllia = "illia";
 HexusOpponentData* Illia::HexusOpponentDataInstance = nullptr;
 const std::string Illia::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ILLIA";
 
-Illia* Illia::deserialize(ValueMap& initProperties)
+Illia* Illia::deserialize(ValueMap& properties)
 {
-	Illia* instance = new Illia(initProperties);
+	Illia* instance = new Illia(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Illia::Illia(ValueMap& initProperties) : super(initProperties,
+Illia::Illia(ValueMap& properties) : super(properties,
 	Illia::MapKeyIllia,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,

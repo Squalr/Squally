@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EaxCrystal::MapKeyEaxCrystal = "eax-crystal";
 
-EaxCrystal* EaxCrystal::create(ValueMap& initProperties)
+EaxCrystal* EaxCrystal::create(ValueMap& properties)
 {
-	EaxCrystal* instance = new EaxCrystal(initProperties);
+	EaxCrystal* instance = new EaxCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EaxCrystal::EaxCrystal(ValueMap& initProperties) : super(initProperties)
+EaxCrystal::EaxCrystal(ValueMap& properties) : super(properties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxCrystal);
 	

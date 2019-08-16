@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedSkunk::MapKeyCagedSkunk = "caged-skunk";
 
-CagedSkunk* CagedSkunk::create(ValueMap& initProperties)
+CagedSkunk* CagedSkunk::create(ValueMap& properties)
 {
-	CagedSkunk* instance = new CagedSkunk(initProperties);
+	CagedSkunk* instance = new CagedSkunk(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedSkunk::CagedSkunk(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalSkunk)
+CagedSkunk::CagedSkunk(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalSkunk)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Skunk);
 

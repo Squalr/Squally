@@ -20,16 +20,16 @@ const std::string ReanimatedPig::MapKeyReanimatedPig = "reanimated-pig";
 HexusOpponentData* ReanimatedPig::HexusOpponentDataInstance = nullptr;
 const std::string ReanimatedPig::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_PIG";
 
-ReanimatedPig* ReanimatedPig::deserialize(ValueMap& initProperties)
+ReanimatedPig* ReanimatedPig::deserialize(ValueMap& properties)
 {
-	ReanimatedPig* instance = new ReanimatedPig(initProperties);
+	ReanimatedPig* instance = new ReanimatedPig(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ReanimatedPig::ReanimatedPig(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ReanimatedPig::ReanimatedPig(ValueMap& properties) : PlatformerEnemy(properties,
 	ReanimatedPig::MapKeyReanimatedPig,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,

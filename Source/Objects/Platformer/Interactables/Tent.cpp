@@ -31,16 +31,16 @@ using namespace cocos2d;
 
 const std::string Tent::MapKeyTent = "tent";
 
-Tent* Tent::create(ValueMap& initProperties)
+Tent* Tent::create(ValueMap& properties)
 {
-	Tent* instance = new Tent(initProperties);
+	Tent* instance = new Tent(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tent::Tent(ValueMap& initProperties) : super(initProperties)
+Tent::Tent(ValueMap& properties) : super(properties)
 {
 	this->tentBack = Sprite::create(ObjectResources::Interactive_TentBack);
 	this->healAnimation = SmartAnimationSequenceNode::create();

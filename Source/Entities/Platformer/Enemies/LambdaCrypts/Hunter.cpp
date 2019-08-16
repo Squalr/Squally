@@ -20,16 +20,16 @@ const std::string Hunter::MapKeyHunter = "hunter";
 HexusOpponentData* Hunter::HexusOpponentDataInstance = nullptr;
 const std::string Hunter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HUNTER";
 
-Hunter* Hunter::deserialize(ValueMap& initProperties)
+Hunter* Hunter::deserialize(ValueMap& properties)
 {
-	Hunter* instance = new Hunter(initProperties);
+	Hunter* instance = new Hunter(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Hunter::Hunter(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Hunter::Hunter(ValueMap& properties) : PlatformerEnemy(properties,
 	Hunter::MapKeyHunter,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,

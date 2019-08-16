@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string WoodTerrain::MapKeyTerrainTypeWood = "wood";
 
-WoodTerrain* WoodTerrain::create(ValueMap& initProperties)
+WoodTerrain* WoodTerrain::create(ValueMap& properties)
 {
-	WoodTerrain* instance = new WoodTerrain(initProperties);
+	WoodTerrain* instance = new WoodTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WoodTerrain::WoodTerrain(ValueMap& initProperties) : super(
-	initProperties,
+WoodTerrain::WoodTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		WoodTerrain::MapKeyTerrainTypeWood,

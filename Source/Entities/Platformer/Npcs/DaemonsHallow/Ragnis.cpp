@@ -20,16 +20,16 @@ const std::string Ragnis::MapKeyRagnis = "ragnis";
 HexusOpponentData* Ragnis::HexusOpponentDataInstance = nullptr;
 const std::string Ragnis::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAGNIS";
 
-Ragnis* Ragnis::deserialize(ValueMap& initProperties)
+Ragnis* Ragnis::deserialize(ValueMap& properties)
 {
-	Ragnis* instance = new Ragnis(initProperties);
+	Ragnis* instance = new Ragnis(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ragnis::Ragnis(ValueMap& initProperties) : super(initProperties,
+Ragnis::Ragnis(ValueMap& properties) : super(properties,
 	Ragnis::MapKeyRagnis,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,

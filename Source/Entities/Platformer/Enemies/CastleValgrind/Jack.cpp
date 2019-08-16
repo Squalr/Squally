@@ -20,16 +20,16 @@ const std::string Jack::MapKeyJack = "jack";
 HexusOpponentData* Jack::HexusOpponentDataInstance = nullptr;
 const std::string Jack::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JACK";
 
-Jack* Jack::deserialize(ValueMap& initProperties)
+Jack* Jack::deserialize(ValueMap& properties)
 {
-	Jack* instance = new Jack(initProperties);
+	Jack* instance = new Jack(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Jack::Jack(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Jack::Jack(ValueMap& properties) : PlatformerEnemy(properties,
 	Jack::MapKeyJack,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,

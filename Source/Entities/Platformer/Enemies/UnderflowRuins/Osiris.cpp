@@ -20,16 +20,16 @@ const std::string Osiris::MapKeyOsiris = "osiris";
 HexusOpponentData* Osiris::HexusOpponentDataInstance = nullptr;
 const std::string Osiris::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OSIRIS";
 
-Osiris* Osiris::deserialize(ValueMap& initProperties)
+Osiris* Osiris::deserialize(ValueMap& properties)
 {
-	Osiris* instance = new Osiris(initProperties);
+	Osiris* instance = new Osiris(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Osiris::Osiris(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Osiris::Osiris(ValueMap& properties) : PlatformerEnemy(properties,
 	Osiris::MapKeyOsiris,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,

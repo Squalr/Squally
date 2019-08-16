@@ -25,18 +25,18 @@ const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 
-CollisionObject* CollisionObject::create(const ValueMap& initProperties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
-	CollisionObject* instance = new CollisionObject(initProperties, physicsBody, collisionType, isDynamic, canRotate);
+	CollisionObject* instance = new CollisionObject(properties, physicsBody, collisionType, isDynamic, canRotate);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(const ValueMap& initProperties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
 {
-	CollisionObject* instance = CollisionObject::create(initProperties, physicsBody, (CollisionType)0, isDynamic, canRotate);
+	CollisionObject* instance = CollisionObject::create(properties, physicsBody, (CollisionType)0, isDynamic, canRotate);
 
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
 	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(collisionName, instance));
@@ -58,13 +58,13 @@ CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, std:
 	return CollisionObject::create(valueMap, physicsBody, collisionName, isDynamic, canRotate);
 }
 
-CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
-	CollisionObject(initProperties, initPhysicsBody, (CollisionType)0, isDynamic, canRotate)
+CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPhysicsBody, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
+	CollisionObject(properties, initPhysicsBody, (CollisionType)0, isDynamic, canRotate)
 {
 }
 
-CollisionObject::CollisionObject(const ValueMap& initProperties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
-	super(initProperties)
+CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPhysicsBody, CollisionType collisionType, bool isDynamic, bool canRotate) :
+	super(properties)
 {
 	this->physicsBody = initPhysicsBody;
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();

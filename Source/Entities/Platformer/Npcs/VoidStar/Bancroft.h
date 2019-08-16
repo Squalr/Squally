@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Bancroft : public PlatformerFriendly
 {
 public:
-	static Bancroft* deserialize(cocos2d::ValueMap& initProperties);
+	static Bancroft* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Bancroft(cocos2d::ValueMap& initProperties);
+	Bancroft(cocos2d::ValueMap& properties);
 	~Bancroft();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

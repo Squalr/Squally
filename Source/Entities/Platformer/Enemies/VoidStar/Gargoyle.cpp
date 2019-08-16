@@ -20,16 +20,16 @@ const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
 HexusOpponentData* Gargoyle::HexusOpponentDataInstance = nullptr;
 const std::string Gargoyle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARGOYLE";
 
-Gargoyle* Gargoyle::deserialize(ValueMap& initProperties)
+Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 {
-	Gargoyle* instance = new Gargoyle(initProperties);
+	Gargoyle* instance = new Gargoyle(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gargoyle::Gargoyle(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Gargoyle::Gargoyle(ValueMap& properties) : PlatformerEnemy(properties,
 	Gargoyle::MapKeyGargoyle,
 	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,

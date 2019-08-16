@@ -20,16 +20,16 @@ const std::string Aphrodite::MapKeyAphrodite = "aphrodite";
 HexusOpponentData* Aphrodite::HexusOpponentDataInstance = nullptr;
 const std::string Aphrodite::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APHRODITE";
 
-Aphrodite* Aphrodite::deserialize(ValueMap& initProperties)
+Aphrodite* Aphrodite::deserialize(ValueMap& properties)
 {
-	Aphrodite* instance = new Aphrodite(initProperties);
+	Aphrodite* instance = new Aphrodite(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Aphrodite::Aphrodite(ValueMap& initProperties) : super(initProperties,
+Aphrodite::Aphrodite(ValueMap& properties) : super(properties,
 	Aphrodite::MapKeyAphrodite,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,

@@ -20,16 +20,16 @@ const std::string GoblinElf::MapKeyGoblinElf = "goblin-elf";
 HexusOpponentData* GoblinElf::HexusOpponentDataInstance = nullptr;
 const std::string GoblinElf::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_ELF";
 
-GoblinElf* GoblinElf::deserialize(ValueMap& initProperties)
+GoblinElf* GoblinElf::deserialize(ValueMap& properties)
 {
-	GoblinElf* instance = new GoblinElf(initProperties);
+	GoblinElf* instance = new GoblinElf(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinElf::GoblinElf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+GoblinElf::GoblinElf(ValueMap& properties) : PlatformerEnemy(properties,
 	GoblinElf::MapKeyGoblinElf,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,

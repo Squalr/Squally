@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Amelia : public PlatformerFriendly
 {
 public:
-	static Amelia* deserialize(cocos2d::ValueMap& initProperties);
+	static Amelia* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Amelia(cocos2d::ValueMap& initProperties);
+	Amelia(cocos2d::ValueMap& properties);
 	~Amelia();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

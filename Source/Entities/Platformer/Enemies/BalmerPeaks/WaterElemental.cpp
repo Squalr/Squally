@@ -20,16 +20,16 @@ const std::string WaterElemental::MapKeyWaterElemental = "water-elemental";
 HexusOpponentData* WaterElemental::HexusOpponentDataInstance = nullptr;
 const std::string WaterElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WATER_ELEMENTAL";
 
-WaterElemental* WaterElemental::deserialize(ValueMap& initProperties)
+WaterElemental* WaterElemental::deserialize(ValueMap& properties)
 {
-	WaterElemental* instance = new WaterElemental(initProperties);
+	WaterElemental* instance = new WaterElemental(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WaterElemental::WaterElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+WaterElemental::WaterElemental(ValueMap& properties) : PlatformerEnemy(properties,
 	WaterElemental::MapKeyWaterElemental,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,

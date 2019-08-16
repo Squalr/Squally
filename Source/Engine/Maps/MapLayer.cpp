@@ -17,9 +17,9 @@ const std::string MapLayer::MapKeyPropertyDepth = "depth";
 const std::string MapLayer::MapKeyPropertyIsHackable = "is-hackable";
 const std::string MapLayer::MapKeyPropertyIsElevateTarget = "is-elevate-target";
 
-MapLayer* MapLayer::create(const ValueMap& initProperties, std::string name, std::string type, const std::vector<GameObject*>& objects)
+MapLayer* MapLayer::create(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects)
 {
-	MapLayer* instance = new MapLayer(initProperties, name, type, objects);
+	MapLayer* instance = new MapLayer(properties, name, type, objects);
 
 	instance->autorelease();
 
@@ -30,15 +30,15 @@ MapLayer::MapLayer()
 {
 }
 
-MapLayer::MapLayer(const ValueMap& initProperties, std::string name, std::string type) : MapLayer(initProperties, name, type, std::vector<GameObject*>())
+MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string type) : MapLayer(properties, name, type, std::vector<GameObject*>())
 {
 }
 
-MapLayer::MapLayer(const ValueMap& initProperties, std::string name, std::string type, const std::vector<GameObject*>& objects)
+MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects)
 {
 	this->layerName = name;
 	this->layerType = type;
-	this->properties = initProperties;
+	this->properties = properties;
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyDepth, Value(0.0f)).asFloat());
 

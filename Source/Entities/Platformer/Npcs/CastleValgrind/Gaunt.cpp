@@ -20,16 +20,16 @@ const std::string Gaunt::MapKeyGaunt = "gaunt";
 HexusOpponentData* Gaunt::HexusOpponentDataInstance = nullptr;
 const std::string Gaunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GAUNT";
 
-Gaunt* Gaunt::deserialize(ValueMap& initProperties)
+Gaunt* Gaunt::deserialize(ValueMap& properties)
 {
-	Gaunt* instance = new Gaunt(initProperties);
+	Gaunt* instance = new Gaunt(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gaunt::Gaunt(ValueMap& initProperties) : super(initProperties,
+Gaunt::Gaunt(ValueMap& properties) : super(properties,
 	Gaunt::MapKeyGaunt,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Animations,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Emblem,

@@ -10,12 +10,12 @@ namespace cocos2d
 class CagedGiraffe : public CagedAnimal
 {
 public:
-	static CagedGiraffe* create(cocos2d::ValueMap& initProperties);
+	static CagedGiraffe* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCagedGiraffe;
 
 protected:
-	CagedGiraffe(cocos2d::ValueMap& initProperties);
+	CagedGiraffe(cocos2d::ValueMap& properties);
 	~CagedGiraffe();
 
 	void initializePositions() override;

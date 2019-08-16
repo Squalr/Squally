@@ -6,7 +6,7 @@ class Hud;
 class Background : public MapLayer
 {
 public:
-	static Background* create(cocos2d::ValueMap& initProperties, std::string name, cocos2d::Node* child);
+	static Background* create(cocos2d::ValueMap& properties, std::string name, cocos2d::Node* child);
 
 	static const std::string MapKeyBackgroundType;
 

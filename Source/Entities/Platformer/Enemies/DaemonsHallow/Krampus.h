@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Krampus : public PlatformerEnemy
 {
 public:
-	static Krampus* deserialize(cocos2d::ValueMap& initProperties);
+	static Krampus* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Krampus(cocos2d::ValueMap& initProperties);
+	Krampus(cocos2d::ValueMap& properties);
 	~Krampus();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

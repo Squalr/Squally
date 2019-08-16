@@ -13,16 +13,16 @@ const std::vector<std::string> EspPtrInitializer::MapKeyEspPtrInitializerBases =
 };
 const std::string EspPtrInitializer::MapKeyEspPtrInitializer = "[esp]";
 
-EspPtrInitializer* EspPtrInitializer::create(ValueMap& initProperties)
+EspPtrInitializer* EspPtrInitializer::create(ValueMap& properties)
 {
-	EspPtrInitializer* instance = new EspPtrInitializer(initProperties);
+	EspPtrInitializer* instance = new EspPtrInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EspPtrInitializer::EspPtrInitializer(ValueMap& initProperties) : super(initProperties)
+EspPtrInitializer::EspPtrInitializer(ValueMap& properties) : super(properties)
 {
 }
 

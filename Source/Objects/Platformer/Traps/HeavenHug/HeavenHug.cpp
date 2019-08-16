@@ -30,16 +30,16 @@ using namespace cocos2d;
 const std::string HeavenHug::MapKeyHeavenHug = "heaven-hug";
 const float HeavenHug::SpeedPer480Px = 2.0f;
 
-HeavenHug* HeavenHug::create(ValueMap& initProperties)
+HeavenHug* HeavenHug::create(ValueMap& properties)
 {
-	HeavenHug* instance = new HeavenHug(initProperties);
+	HeavenHug* instance = new HeavenHug(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HeavenHug::HeavenHug(ValueMap& initProperties) : super(initProperties)
+HeavenHug::HeavenHug(ValueMap& properties) : super(properties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);

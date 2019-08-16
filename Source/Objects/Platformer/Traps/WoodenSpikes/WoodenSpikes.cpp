@@ -26,16 +26,16 @@ using namespace cocos2d;
 const std::string WoodenSpikes::MapKeyWoodenSpikes = "wooden-spikes";
 const Vec2 WoodenSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
-WoodenSpikes* WoodenSpikes::create(ValueMap& initProperties)
+WoodenSpikes* WoodenSpikes::create(ValueMap& properties)
 {
-	WoodenSpikes* instance = new WoodenSpikes(initProperties);
+	WoodenSpikes* instance = new WoodenSpikes(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WoodenSpikes::WoodenSpikes(ValueMap& initProperties) : super(initProperties)
+WoodenSpikes::WoodenSpikes(ValueMap& properties) : super(properties)
 {
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;

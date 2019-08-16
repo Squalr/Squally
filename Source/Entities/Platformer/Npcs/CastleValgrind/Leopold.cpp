@@ -20,16 +20,16 @@ const std::string Leopold::MapKeyLeopold = "leopold";
 HexusOpponentData* Leopold::HexusOpponentDataInstance = nullptr;
 const std::string Leopold::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEOPOLD";
 
-Leopold* Leopold::deserialize(ValueMap& initProperties)
+Leopold* Leopold::deserialize(ValueMap& properties)
 {
-	Leopold* instance = new Leopold(initProperties);
+	Leopold* instance = new Leopold(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Leopold::Leopold(ValueMap& initProperties) : super(initProperties,
+Leopold::Leopold(ValueMap& properties) : super(properties,
 	Leopold::MapKeyLeopold,
 	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
 	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,

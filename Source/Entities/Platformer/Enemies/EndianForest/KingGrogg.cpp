@@ -20,16 +20,16 @@ const std::string KingGrogg::MapKeyKingGrogg = "king-grogg";
 HexusOpponentData* KingGrogg::HexusOpponentDataInstance = nullptr;
 const std::string KingGrogg::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_GROGG";
 
-KingGrogg* KingGrogg::deserialize(ValueMap& initProperties)
+KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 {
-	KingGrogg* instance = new KingGrogg(initProperties);
+	KingGrogg* instance = new KingGrogg(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-KingGrogg::KingGrogg(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+KingGrogg::KingGrogg(ValueMap& properties) : PlatformerEnemy(properties,
 	KingGrogg::MapKeyKingGrogg,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,

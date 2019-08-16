@@ -14,14 +14,14 @@ class CollisionObject;
 class Catapult : public HackableObject
 {
 public:
-	static Catapult* create(cocos2d::ValueMap& initProperties);
+	static Catapult* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCatapult;
 
 	void launchCatapult();
 
 protected:
-	Catapult(cocos2d::ValueMap& initProperties);
+	Catapult(cocos2d::ValueMap& properties);
 	virtual ~Catapult();
 
 	void onEnter() override;

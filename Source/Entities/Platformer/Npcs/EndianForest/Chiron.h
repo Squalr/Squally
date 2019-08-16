@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Chiron : public PlatformerFriendly
 {
 public:
-	static Chiron* deserialize(cocos2d::ValueMap& initProperties);
+	static Chiron* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Chiron(cocos2d::ValueMap& initProperties);
+	Chiron(cocos2d::ValueMap& properties);
 	~Chiron();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

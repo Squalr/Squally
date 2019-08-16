@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Piper : public PlatformerFriendly
 {
 public:
-	static Piper* deserialize(cocos2d::ValueMap& initProperties);
+	static Piper* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Piper(cocos2d::ValueMap& initProperties);
+	Piper(cocos2d::ValueMap& properties);
 	~Piper();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

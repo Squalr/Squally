@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ghost : public PlatformerEntity
 {
 public:
-	static Ghost* deserialize(cocos2d::ValueMap& initProperties);
+	static Ghost* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Ghost(cocos2d::ValueMap& initProperties);
+	Ghost(cocos2d::ValueMap& properties);
 	~Ghost();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

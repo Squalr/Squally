@@ -90,7 +90,7 @@ public:
 
 protected:
 	GameObject();
-	GameObject(const cocos2d::ValueMap& initProperties);
+	GameObject(const cocos2d::ValueMap& properties);
 	virtual ~GameObject();
 	
 	void onEnter() override;

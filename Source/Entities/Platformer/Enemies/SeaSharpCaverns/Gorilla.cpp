@@ -20,16 +20,16 @@ const std::string Gorilla::MapKeyGorilla = "gorilla";
 HexusOpponentData* Gorilla::HexusOpponentDataInstance = nullptr;
 const std::string Gorilla::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GORILLA";
 
-Gorilla* Gorilla::deserialize(ValueMap& initProperties)
+Gorilla* Gorilla::deserialize(ValueMap& properties)
 {
-	Gorilla* instance = new Gorilla(initProperties);
+	Gorilla* instance = new Gorilla(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gorilla::Gorilla(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Gorilla::Gorilla(ValueMap& properties) : PlatformerEnemy(properties,
 	Gorilla::MapKeyGorilla,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Emblem,

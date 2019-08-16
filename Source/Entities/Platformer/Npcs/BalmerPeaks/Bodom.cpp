@@ -20,16 +20,16 @@ const std::string Bodom::MapKeyBodom = "bodom";
 HexusOpponentData* Bodom::HexusOpponentDataInstance = nullptr;
 const std::string Bodom::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BODOM";
 
-Bodom* Bodom::deserialize(ValueMap& initProperties)
+Bodom* Bodom::deserialize(ValueMap& properties)
 {
-	Bodom* instance = new Bodom(initProperties);
+	Bodom* instance = new Bodom(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Bodom::Bodom(ValueMap& initProperties) : super(initProperties,
+Bodom::Bodom(ValueMap& properties) : super(properties,
 	Bodom::MapKeyBodom,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,

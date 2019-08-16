@@ -20,16 +20,16 @@ const std::string ZombieElric::MapKeyZombieElric = "zombie-elric";
 HexusOpponentData* ZombieElric::HexusOpponentDataInstance = nullptr;
 const std::string ZombieElric::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZOMBIE_ELRIC";
 
-ZombieElric* ZombieElric::deserialize(ValueMap& initProperties)
+ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 {
-	ZombieElric* instance = new ZombieElric(initProperties);
+	ZombieElric* instance = new ZombieElric(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ZombieElric::ZombieElric(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ZombieElric::ZombieElric(ValueMap& properties) : PlatformerEnemy(properties,
 	ZombieElric::MapKeyZombieElric,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,

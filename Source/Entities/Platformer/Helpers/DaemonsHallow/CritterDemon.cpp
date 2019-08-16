@@ -20,16 +20,16 @@ const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
 HexusOpponentData* CritterDemon::HexusOpponentDataInstance = nullptr;
 const std::string CritterDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRITTER_DEMON";
 
-CritterDemon* CritterDemon::deserialize(ValueMap& initProperties)
+CritterDemon* CritterDemon::deserialize(ValueMap& properties)
 {
-	CritterDemon* instance = new CritterDemon(initProperties);
+	CritterDemon* instance = new CritterDemon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CritterDemon::CritterDemon(ValueMap& initProperties) : PlatformerEntity(initProperties,
+CritterDemon::CritterDemon(ValueMap& properties) : PlatformerEntity(properties,
 	CritterDemon::MapKeyCritterDemon,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,

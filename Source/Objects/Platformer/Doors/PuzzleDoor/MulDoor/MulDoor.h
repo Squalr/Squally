@@ -16,12 +16,12 @@ class SmartAnimationSequenceNode;
 class MulDoor : public PuzzleDoorBase
 {
 public:
-	static MulDoor* create(cocos2d::ValueMap& initProperties);
+	static MulDoor* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyMulDoor;
 
 protected:
-	MulDoor(cocos2d::ValueMap& initProperties);
+	MulDoor(cocos2d::ValueMap& properties);
 	virtual ~MulDoor();
 
 	void registerHackables() override;

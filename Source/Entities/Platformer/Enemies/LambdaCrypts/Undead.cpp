@@ -20,16 +20,16 @@ const std::string Undead::MapKeyUndead = "undead";
 HexusOpponentData* Undead::HexusOpponentDataInstance = nullptr;
 const std::string Undead::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_UNDEAD";
 
-Undead* Undead::deserialize(ValueMap& initProperties)
+Undead* Undead::deserialize(ValueMap& properties)
 {
-	Undead* instance = new Undead(initProperties);
+	Undead* instance = new Undead(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Undead::Undead(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Undead::Undead(ValueMap& properties) : PlatformerEnemy(properties,
 	Undead::MapKeyUndead,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,

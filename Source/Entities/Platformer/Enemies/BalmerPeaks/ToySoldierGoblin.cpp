@@ -20,16 +20,16 @@ const std::string ToySoldierGoblin::MapKeyToySoldierGoblin = "toy-soldier-goblin
 HexusOpponentData* ToySoldierGoblin::HexusOpponentDataInstance = nullptr;
 const std::string ToySoldierGoblin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOY_SOLDIER_GOBLIN";
 
-ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& initProperties)
+ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& properties)
 {
-	ToySoldierGoblin* instance = new ToySoldierGoblin(initProperties);
+	ToySoldierGoblin* instance = new ToySoldierGoblin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ToySoldierGoblin::ToySoldierGoblin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : PlatformerEnemy(properties,
 	ToySoldierGoblin::MapKeyToySoldierGoblin,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,

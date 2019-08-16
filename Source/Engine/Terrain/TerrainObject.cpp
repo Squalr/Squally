@@ -36,7 +36,7 @@ const float TerrainObject::HollowDistance = 144.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
 const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
 
-TerrainObject::TerrainObject(ValueMap& initProperties, TerrainData terrainData) : super(initProperties)
+TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : super(properties)
 {
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();

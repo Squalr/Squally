@@ -20,16 +20,16 @@ const std::string Viking::MapKeyViking = "viking";
 HexusOpponentData* Viking::HexusOpponentDataInstance = nullptr;
 const std::string Viking::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIKING";
 
-Viking* Viking::deserialize(ValueMap& initProperties)
+Viking* Viking::deserialize(ValueMap& properties)
 {
-	Viking* instance = new Viking(initProperties);
+	Viking* instance = new Viking(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Viking::Viking(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Viking::Viking(ValueMap& properties) : PlatformerEnemy(properties,
 	Viking::MapKeyViking,
 	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,

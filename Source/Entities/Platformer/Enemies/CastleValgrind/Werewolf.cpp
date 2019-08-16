@@ -20,16 +20,16 @@ const std::string Werewolf::MapKeyWerewolf = "werewolf";
 HexusOpponentData* Werewolf::HexusOpponentDataInstance = nullptr;
 const std::string Werewolf::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WEREWOLF";
 
-Werewolf* Werewolf::deserialize(ValueMap& initProperties)
+Werewolf* Werewolf::deserialize(ValueMap& properties)
 {
-	Werewolf* instance = new Werewolf(initProperties);
+	Werewolf* instance = new Werewolf(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Werewolf::Werewolf(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Werewolf::Werewolf(ValueMap& properties) : PlatformerEnemy(properties,
 	Werewolf::MapKeyWerewolf,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,

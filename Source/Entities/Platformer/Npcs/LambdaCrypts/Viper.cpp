@@ -20,16 +20,16 @@ const std::string Viper::MapKeyViper = "viper";
 HexusOpponentData* Viper::HexusOpponentDataInstance = nullptr;
 const std::string Viper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIPER";
 
-Viper* Viper::deserialize(ValueMap& initProperties)
+Viper* Viper::deserialize(ValueMap& properties)
 {
-	Viper* instance = new Viper(initProperties);
+	Viper* instance = new Viper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Viper::Viper(ValueMap& initProperties) : super(initProperties,
+Viper::Viper(ValueMap& properties) : super(properties,
 	Viper::MapKeyViper,
 	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,

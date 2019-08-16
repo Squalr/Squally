@@ -19,16 +19,16 @@ using namespace cocos2d;
 const std::string Chest::MapKeyChest = "chest";
 const std::string Chest::MapKeyCipherEvent = "open-cipher";
 
-Chest* Chest::create(cocos2d::ValueMap& initProperties)
+Chest* Chest::create(cocos2d::ValueMap& properties)
 {
-	Chest* instance = new Chest(initProperties);
+	Chest* instance = new Chest(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Chest::Chest(cocos2d::ValueMap& initProperties) : super(initProperties)
+Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 {
 	this->interactCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 256.0f)), (CollisionType)PlatformerCollisionType::Collectable, false, false);
 	this->chestOpen = Node::create();

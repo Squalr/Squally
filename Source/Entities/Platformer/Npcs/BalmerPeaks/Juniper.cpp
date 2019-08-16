@@ -20,16 +20,16 @@ const std::string Juniper::MapKeyJuniper = "juniper";
 HexusOpponentData* Juniper::HexusOpponentDataInstance = nullptr;
 const std::string Juniper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JUNIPER";
 
-Juniper* Juniper::deserialize(ValueMap& initProperties)
+Juniper* Juniper::deserialize(ValueMap& properties)
 {
-	Juniper* instance = new Juniper(initProperties);
+	Juniper* instance = new Juniper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Juniper::Juniper(ValueMap& initProperties) : super(initProperties,
+Juniper::Juniper(ValueMap& properties) : super(properties,
 	Juniper::MapKeyJuniper,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,

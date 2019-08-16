@@ -20,16 +20,16 @@ const std::string Atreus::MapKeyAtreus = "atreus";
 HexusOpponentData* Atreus::HexusOpponentDataInstance = nullptr;
 const std::string Atreus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATREUS";
 
-Atreus* Atreus::deserialize(ValueMap& initProperties)
+Atreus* Atreus::deserialize(ValueMap& properties)
 {
-	Atreus* instance = new Atreus(initProperties);
+	Atreus* instance = new Atreus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Atreus::Atreus(ValueMap& initProperties) : super(initProperties,
+Atreus::Atreus(ValueMap& properties) : super(properties,
 	Atreus::MapKeyAtreus,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,

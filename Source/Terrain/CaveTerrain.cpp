@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string CaveTerrain::MapKeyTerrainTypeCave = "cave";
 
-CaveTerrain* CaveTerrain::create(ValueMap& initProperties)
+CaveTerrain* CaveTerrain::create(ValueMap& properties)
 {
-	CaveTerrain* instance = new CaveTerrain(initProperties);
+	CaveTerrain* instance = new CaveTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CaveTerrain::CaveTerrain(ValueMap& initProperties) : super(
-	initProperties,
+CaveTerrain::CaveTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		CaveTerrain::MapKeyTerrainTypeCave,

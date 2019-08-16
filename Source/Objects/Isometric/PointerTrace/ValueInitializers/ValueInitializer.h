@@ -5,7 +5,7 @@
 class ValueInitializer : public GridObject
 {
 public:
-	static ValueInitializer* create(cocos2d::ValueMap& initProperties);
+	static ValueInitializer* create(cocos2d::ValueMap& properties);
 
 	void setGridIndex(int gridIndex) override;
 
@@ -13,7 +13,7 @@ public:
 	static const std::string MapKeyMetaValue;
 
 protected:
-	ValueInitializer(cocos2d::ValueMap& initProperties);
+	ValueInitializer(cocos2d::ValueMap& properties);
 	~ValueInitializer();
 
 private:

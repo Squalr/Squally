@@ -8,7 +8,7 @@ class HexusOpponentData;
 class YetiBaby : public PlatformerEntity
 {
 public:
-	static YetiBaby* deserialize(cocos2d::ValueMap& initProperties);
+	static YetiBaby* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	YetiBaby(cocos2d::ValueMap& initProperties);
+	YetiBaby(cocos2d::ValueMap& properties);
 	~YetiBaby();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

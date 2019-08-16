@@ -20,16 +20,16 @@ const std::string DarkTiger::MapKeyDarkTiger = "dark-tiger";
 HexusOpponentData* DarkTiger::HexusOpponentDataInstance = nullptr;
 const std::string DarkTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DARK_TIGER";
 
-DarkTiger* DarkTiger::deserialize(ValueMap& initProperties)
+DarkTiger* DarkTiger::deserialize(ValueMap& properties)
 {
-	DarkTiger* instance = new DarkTiger(initProperties);
+	DarkTiger* instance = new DarkTiger(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DarkTiger::DarkTiger(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DarkTiger::DarkTiger(ValueMap& properties) : PlatformerEnemy(properties,
 	DarkTiger::MapKeyDarkTiger,
 	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,

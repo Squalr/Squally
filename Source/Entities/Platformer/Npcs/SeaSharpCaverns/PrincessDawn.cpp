@@ -20,16 +20,16 @@ const std::string PrincessDawn::MapKeyPrincessDawn = "princess-dawn";
 HexusOpponentData* PrincessDawn::HexusOpponentDataInstance = nullptr;
 const std::string PrincessDawn::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_DAWN";
 
-PrincessDawn* PrincessDawn::deserialize(ValueMap& initProperties)
+PrincessDawn* PrincessDawn::deserialize(ValueMap& properties)
 {
-	PrincessDawn* instance = new PrincessDawn(initProperties);
+	PrincessDawn* instance = new PrincessDawn(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessDawn::PrincessDawn(ValueMap& initProperties) : super(initProperties,
+PrincessDawn::PrincessDawn(ValueMap& properties) : super(properties,
 	PrincessDawn::MapKeyPrincessDawn,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Illia : public PlatformerFriendly
 {
 public:
-	static Illia* deserialize(cocos2d::ValueMap& initProperties);
+	static Illia* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Illia(cocos2d::ValueMap& initProperties);
+	Illia(cocos2d::ValueMap& properties);
 	~Illia();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

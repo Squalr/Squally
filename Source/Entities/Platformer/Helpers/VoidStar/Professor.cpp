@@ -20,16 +20,16 @@ const std::string Professor::MapKeyProfessor = "professor";
 HexusOpponentData* Professor::HexusOpponentDataInstance = nullptr;
 const std::string Professor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PROFESSOR";
 
-Professor* Professor::deserialize(ValueMap& initProperties)
+Professor* Professor::deserialize(ValueMap& properties)
 {
-	Professor* instance = new Professor(initProperties);
+	Professor* instance = new Professor(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Professor::Professor(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Professor::Professor(ValueMap& properties) : PlatformerEntity(properties,
 	Professor::MapKeyProfessor,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,

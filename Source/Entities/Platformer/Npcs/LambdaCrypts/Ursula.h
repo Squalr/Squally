@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ursula : public PlatformerFriendly
 {
 public:
-	static Ursula* deserialize(cocos2d::ValueMap& initProperties);
+	static Ursula* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ursula(cocos2d::ValueMap& initProperties);
+	Ursula(cocos2d::ValueMap& properties);
 	~Ursula();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

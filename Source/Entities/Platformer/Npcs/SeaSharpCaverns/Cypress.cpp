@@ -20,16 +20,16 @@ const std::string Cypress::MapKeyCypress = "cypress";
 HexusOpponentData* Cypress::HexusOpponentDataInstance = nullptr;
 const std::string Cypress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYPRESS";
 
-Cypress* Cypress::deserialize(ValueMap& initProperties)
+Cypress* Cypress::deserialize(ValueMap& properties)
 {
-	Cypress* instance = new Cypress(initProperties);
+	Cypress* instance = new Cypress(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cypress::Cypress(ValueMap& initProperties) : super(initProperties,
+Cypress::Cypress(ValueMap& properties) : super(properties,
 	Cypress::MapKeyCypress,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,

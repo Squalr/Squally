@@ -12,12 +12,12 @@ class CollisionObject;
 class FloatingAsteroid : public DensityObject
 {
 public:
-	static FloatingAsteroid* create(cocos2d::ValueMap& initProperties);
+	static FloatingAsteroid* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyFloatingAsteroid;
 
 protected:
-	FloatingAsteroid(cocos2d::ValueMap& initProperties);
+	FloatingAsteroid(cocos2d::ValueMap& properties);
 	virtual ~FloatingAsteroid();
 
 	void onEnter() override;

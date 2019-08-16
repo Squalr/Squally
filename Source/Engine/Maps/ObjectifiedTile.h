@@ -12,10 +12,10 @@ namespace cocos2d
 class ObjectifiedTile : public GameObject
 {
 public:
-	static ObjectifiedTile* create(cocos2d::Sprite* sprite, cocos2d::ValueMap initProperties);
+	static ObjectifiedTile* create(cocos2d::Sprite* sprite, cocos2d::ValueMap properties);
 
 protected:
-	ObjectifiedTile(cocos2d::Sprite* sprite, cocos2d::ValueMap initProperties);
+	ObjectifiedTile(cocos2d::Sprite* sprite, cocos2d::ValueMap properties);
 	~ObjectifiedTile();
 
 private:

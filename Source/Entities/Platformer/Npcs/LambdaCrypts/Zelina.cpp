@@ -20,16 +20,16 @@ const std::string Zelina::MapKeyZelina = "zelina";
 HexusOpponentData* Zelina::HexusOpponentDataInstance = nullptr;
 const std::string Zelina::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZELINA";
 
-Zelina* Zelina::deserialize(ValueMap& initProperties)
+Zelina* Zelina::deserialize(ValueMap& properties)
 {
-	Zelina* instance = new Zelina(initProperties);
+	Zelina* instance = new Zelina(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Zelina::Zelina(ValueMap& initProperties) : super(initProperties,
+Zelina::Zelina(ValueMap& properties) : super(properties,
 	Zelina::MapKeyZelina,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,

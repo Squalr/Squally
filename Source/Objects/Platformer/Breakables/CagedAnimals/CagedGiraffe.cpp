@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedGiraffe::MapKeyCagedGiraffe = "caged-giraffe";
 
-CagedGiraffe* CagedGiraffe::create(ValueMap& initProperties)
+CagedGiraffe* CagedGiraffe::create(ValueMap& properties)
 {
-	CagedGiraffe* instance = new CagedGiraffe(initProperties);
+	CagedGiraffe* instance = new CagedGiraffe(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedGiraffe::CagedGiraffe(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalGiraffe)
+CagedGiraffe::CagedGiraffe(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalGiraffe)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Giraffe);
 

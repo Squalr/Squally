@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Dudly : public PlatformerFriendly
 {
 public:
-	static Dudly* deserialize(cocos2d::ValueMap& initProperties);
+	static Dudly* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Dudly(cocos2d::ValueMap& initProperties);
+	Dudly(cocos2d::ValueMap& properties);
 	~Dudly();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

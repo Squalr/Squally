@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Blackbeard : public PlatformerFriendly
 {
 public:
-	static Blackbeard* deserialize(cocos2d::ValueMap& initProperties);
+	static Blackbeard* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Blackbeard(cocos2d::ValueMap& initProperties);
+	Blackbeard(cocos2d::ValueMap& properties);
 	~Blackbeard();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

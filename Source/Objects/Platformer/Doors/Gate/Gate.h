@@ -19,7 +19,7 @@ class Sound;
 class Gate : public Portal
 {
 public:
-	static Gate* create(cocos2d::ValueMap& initProperties);
+	static Gate* create(cocos2d::ValueMap& properties);
 
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
@@ -27,7 +27,7 @@ public:
 	static const std::string MapKeyGate;
 
 protected:
-	Gate(cocos2d::ValueMap& initProperties);
+	Gate(cocos2d::ValueMap& properties);
 	~Gate();
 
 	void onEnter() override;

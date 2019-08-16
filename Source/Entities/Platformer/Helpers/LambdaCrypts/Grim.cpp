@@ -20,16 +20,16 @@ const std::string Grim::MapKeyGrim = "grim";
 HexusOpponentData* Grim::HexusOpponentDataInstance = nullptr;
 const std::string Grim::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRIM";
 
-Grim* Grim::deserialize(ValueMap& initProperties)
+Grim* Grim::deserialize(ValueMap& properties)
 {
-	Grim* instance = new Grim(initProperties);
+	Grim* instance = new Grim(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Grim::Grim(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Grim::Grim(ValueMap& properties) : PlatformerEntity(properties,
 	Grim::MapKeyGrim,
 	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,

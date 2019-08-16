@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Tyracius : public PlatformerFriendly
 {
 public:
-	static Tyracius* deserialize(cocos2d::ValueMap& initProperties);
+	static Tyracius* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Tyracius(cocos2d::ValueMap& initProperties);
+	Tyracius(cocos2d::ValueMap& properties);
 	~Tyracius();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

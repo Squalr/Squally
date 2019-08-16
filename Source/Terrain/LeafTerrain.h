@@ -5,13 +5,13 @@
 class LeafTerrain : public TerrainObject
 {
 public:
-	static LeafTerrain* create(cocos2d::ValueMap& initProperties);
+	static LeafTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeLeaf;
 
 private:
 	typedef TerrainObject super;
 
-	LeafTerrain(cocos2d::ValueMap& initProperties);
+	LeafTerrain(cocos2d::ValueMap& properties);
 	~LeafTerrain();
 };

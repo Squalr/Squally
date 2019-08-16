@@ -20,16 +20,16 @@ const std::string Fraya::MapKeyFraya = "fraya";
 HexusOpponentData* Fraya::HexusOpponentDataInstance = nullptr;
 const std::string Fraya::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FRAYA";
 
-Fraya* Fraya::deserialize(ValueMap& initProperties)
+Fraya* Fraya::deserialize(ValueMap& properties)
 {
-	Fraya* instance = new Fraya(initProperties);
+	Fraya* instance = new Fraya(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Fraya::Fraya(ValueMap& initProperties) : super(initProperties,
+Fraya::Fraya(ValueMap& properties) : super(properties,
 	Fraya::MapKeyFraya,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,

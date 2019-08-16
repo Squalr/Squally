@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Radon : public PlatformerFriendly
 {
 public:
-	static Radon* deserialize(cocos2d::ValueMap& initProperties);
+	static Radon* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Radon(cocos2d::ValueMap& initProperties);
+	Radon(cocos2d::ValueMap& properties);
 	~Radon();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

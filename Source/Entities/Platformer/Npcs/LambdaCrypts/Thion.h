@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Thion : public PlatformerFriendly
 {
 public:
-	static Thion* deserialize(cocos2d::ValueMap& initProperties);
+	static Thion* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Thion(cocos2d::ValueMap& initProperties);
+	Thion(cocos2d::ValueMap& properties);
 	~Thion();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

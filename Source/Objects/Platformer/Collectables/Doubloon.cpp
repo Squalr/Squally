@@ -21,16 +21,16 @@ using namespace cocos2d;
 
 const std::string Doubloon::MapKeyDoubloon = "doubloon";
 
-Doubloon* Doubloon::create(ValueMap& initProperties)
+Doubloon* Doubloon::create(ValueMap& properties)
 {
-	Doubloon* instance = new Doubloon(initProperties);
+	Doubloon* instance = new Doubloon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Doubloon::Doubloon(ValueMap& initProperties) : super(initProperties)
+Doubloon::Doubloon(ValueMap& properties) : super(properties)
 {
 	this->doubloon = SmartAnimationSequenceNode::create(ObjectResources::Collectables_Doubloon_Doubloon_0000);
 

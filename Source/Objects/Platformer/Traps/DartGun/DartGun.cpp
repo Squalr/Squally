@@ -30,16 +30,16 @@ using namespace cocos2d;
 const std::string DartGun::MapKeyDartGun = "dart-gun";
 const std::string DartGun::PivotBone = "pivot_bone";
 
-DartGun* DartGun::create(ValueMap& initProperties)
+DartGun* DartGun::create(ValueMap& properties)
 {
-	DartGun* instance = new DartGun(initProperties);
+	DartGun* instance = new DartGun(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DartGun::DartGun(ValueMap& initProperties) : super(initProperties)
+DartGun::DartGun(ValueMap& properties) : super(properties)
 {
 	this->dartNode = Node::create();
 	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Geryon : public PlatformerFriendly
 {
 public:
-	static Geryon* deserialize(cocos2d::ValueMap& initProperties);
+	static Geryon* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Geryon(cocos2d::ValueMap& initProperties);
+	Geryon(cocos2d::ValueMap& properties);
 	~Geryon();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

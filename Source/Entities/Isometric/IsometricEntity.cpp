@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-IsometricEntity::IsometricEntity(ValueMap& initProperties, std::string scmlResource, float scale, Vec2 offset, Size size) : super(initProperties)
+IsometricEntity::IsometricEntity(ValueMap& properties, std::string scmlResource, float scale, Vec2 offset, Size size) : super(properties)
 {
 	// TODO: Configurable/randomizable start direction (if any)
 	this->movement = Vec2(0.0f, 0.0f);

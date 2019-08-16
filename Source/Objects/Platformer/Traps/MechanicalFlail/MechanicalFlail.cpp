@@ -36,16 +36,16 @@ const float MechanicalFlail::SwingsPerSecondAt480Length = 1.5f;
 const float MechanicalFlail::MinAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle - 45.0f, 0.0f, 360.0f);
 const float MechanicalFlail::MaxAngle = MathUtils::wrappingNormalize(MechanicalFlail::DefaultAngle + 45.0f, 0.0f, 360.0f);
 
-MechanicalFlail* MechanicalFlail::create(ValueMap& initProperties)
+MechanicalFlail* MechanicalFlail::create(ValueMap& properties)
 {
-	MechanicalFlail* instance = new MechanicalFlail(initProperties);
+	MechanicalFlail* instance = new MechanicalFlail(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MechanicalFlail::MechanicalFlail(ValueMap& initProperties) : super(initProperties)
+MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 {
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();

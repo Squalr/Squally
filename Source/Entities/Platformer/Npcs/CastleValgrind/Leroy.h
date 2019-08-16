@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Leroy : public PlatformerFriendly
 {
 public:
-	static Leroy* deserialize(cocos2d::ValueMap& initProperties);
+	static Leroy* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Leroy(cocos2d::ValueMap& initProperties);
+	Leroy(cocos2d::ValueMap& properties);
 	~Leroy();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

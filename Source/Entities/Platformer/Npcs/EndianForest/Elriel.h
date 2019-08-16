@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Elriel : public PlatformerFriendly
 {
 public:
-	static Elriel* deserialize(cocos2d::ValueMap& initProperties);
+	static Elriel* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Elriel(cocos2d::ValueMap& initProperties);
+	Elriel(cocos2d::ValueMap& properties);
 	~Elriel();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

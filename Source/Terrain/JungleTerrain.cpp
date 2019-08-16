@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string JungleTerrain::MapKeyTerrainTypeJungle = "jungle";
 
-JungleTerrain* JungleTerrain::create(ValueMap& initProperties)
+JungleTerrain* JungleTerrain::create(ValueMap& properties)
 {
-	JungleTerrain* instance = new JungleTerrain(initProperties);
+	JungleTerrain* instance = new JungleTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-JungleTerrain::JungleTerrain(ValueMap& initProperties) : super(
-	initProperties,
+JungleTerrain::JungleTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		JungleTerrain::MapKeyTerrainTypeJungle,

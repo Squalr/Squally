@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string EdgePortal::MapKeyEdgePortal = "edge-portal";
 
-EdgePortal* EdgePortal::create(ValueMap& initProperties)
+EdgePortal* EdgePortal::create(ValueMap& properties)
 {
-	EdgePortal* instance = new EdgePortal(initProperties);
+	EdgePortal* instance = new EdgePortal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdgePortal::EdgePortal(ValueMap& initProperties) : super(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()))
+EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->requiresInteraction = false;
 }

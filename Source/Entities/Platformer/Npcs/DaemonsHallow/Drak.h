@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Drak : public PlatformerFriendly
 {
 public:
-	static Drak* deserialize(cocos2d::ValueMap& initProperties);
+	static Drak* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Drak(cocos2d::ValueMap& initProperties);
+	Drak(cocos2d::ValueMap& properties);
 	~Drak();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

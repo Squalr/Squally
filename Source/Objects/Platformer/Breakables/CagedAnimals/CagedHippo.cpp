@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedHippo::MapKeyCagedHippo = "caged-hippo";
 
-CagedHippo* CagedHippo::create(ValueMap& initProperties)
+CagedHippo* CagedHippo::create(ValueMap& properties)
 {
-	CagedHippo* instance = new CagedHippo(initProperties);
+	CagedHippo* instance = new CagedHippo(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedHippo::CagedHippo(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalHippo)
+CagedHippo::CagedHippo(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalHippo)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Hippo);
 

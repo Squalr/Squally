@@ -13,12 +13,12 @@ class InteractMenu;
 class HackableHint : public GameObject
 {
 public:
-	static HackableHint* create(cocos2d::ValueMap& initProperties);
+	static HackableHint* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyHackableHint;
 
 protected:
-	HackableHint(cocos2d::ValueMap& initProperties);
+	HackableHint(cocos2d::ValueMap& properties);
 	~HackableHint();
 	void onEnter() override;
 	void initializePositions() override;

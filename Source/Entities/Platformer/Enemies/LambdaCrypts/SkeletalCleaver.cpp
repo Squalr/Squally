@@ -20,16 +20,16 @@ const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
 HexusOpponentData* SkeletalCleaver::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalCleaver::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_CLEAVER";
 
-SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& initProperties)
+SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& properties)
 {
-	SkeletalCleaver* instance = new SkeletalCleaver(initProperties);
+	SkeletalCleaver* instance = new SkeletalCleaver(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalCleaver::SkeletalCleaver(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalCleaver::MapKeySkeletalCleaver,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,

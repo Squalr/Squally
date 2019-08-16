@@ -20,16 +20,16 @@ const std::string Raka::MapKeyRaka = "raka";
 HexusOpponentData* Raka::HexusOpponentDataInstance = nullptr;
 const std::string Raka::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAKA";
 
-Raka* Raka::deserialize(ValueMap& initProperties)
+Raka* Raka::deserialize(ValueMap& properties)
 {
-	Raka* instance = new Raka(initProperties);
+	Raka* instance = new Raka(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Raka::Raka(ValueMap& initProperties) : super(initProperties,
+Raka::Raka(ValueMap& properties) : super(properties,
 	Raka::MapKeyRaka,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,

@@ -20,16 +20,16 @@ const std::string Athena::MapKeyAthena = "athena";
 HexusOpponentData* Athena::HexusOpponentDataInstance = nullptr;
 const std::string Athena::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATHENA";
 
-Athena* Athena::deserialize(ValueMap& initProperties)
+Athena* Athena::deserialize(ValueMap& properties)
 {
-	Athena* instance = new Athena(initProperties);
+	Athena* instance = new Athena(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Athena::Athena(ValueMap& initProperties) : super(initProperties,
+Athena::Athena(ValueMap& properties) : super(properties,
 	Athena::MapKeyAthena,
 	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,

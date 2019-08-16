@@ -13,16 +13,16 @@ const std::vector<std::string> EdiPtrInitializer::MapKeyEdiPtrInitializerBases =
 };
 const std::string EdiPtrInitializer::MapKeyEdiPtrInitializer = "[edi]";
 
-EdiPtrInitializer* EdiPtrInitializer::create(ValueMap& initProperties)
+EdiPtrInitializer* EdiPtrInitializer::create(ValueMap& properties)
 {
-	EdiPtrInitializer* instance = new EdiPtrInitializer(initProperties);
+	EdiPtrInitializer* instance = new EdiPtrInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiPtrInitializer::EdiPtrInitializer(ValueMap& initProperties) : super(initProperties)
+EdiPtrInitializer::EdiPtrInitializer(ValueMap& properties) : super(properties)
 {
 }
 

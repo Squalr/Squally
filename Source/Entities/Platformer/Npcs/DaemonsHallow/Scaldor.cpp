@@ -20,16 +20,16 @@ const std::string Scaldor::MapKeyScaldor = "scaldor";
 HexusOpponentData* Scaldor::HexusOpponentDataInstance = nullptr;
 const std::string Scaldor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCALDOR";
 
-Scaldor* Scaldor::deserialize(ValueMap& initProperties)
+Scaldor* Scaldor::deserialize(ValueMap& properties)
 {
-	Scaldor* instance = new Scaldor(initProperties);
+	Scaldor* instance = new Scaldor(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Scaldor::Scaldor(ValueMap& initProperties) : super(initProperties,
+Scaldor::Scaldor(ValueMap& properties) : super(properties,
 	Scaldor::MapKeyScaldor,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,

@@ -5,7 +5,7 @@
 class CombatSpawn : public GameObject
 {
 public:
-	static CombatSpawn* create(cocos2d::ValueMap& initProperties);
+	static CombatSpawn* create(cocos2d::ValueMap& properties);
 
 	enum SpawnType
 	{
@@ -20,7 +20,7 @@ public:
 
 private:
 	typedef GameObject super;
-	CombatSpawn(cocos2d::ValueMap& initProperties);
+	CombatSpawn(cocos2d::ValueMap& properties);
 	virtual ~CombatSpawn();
 
 	void onEnter() override;

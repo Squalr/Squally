@@ -20,16 +20,16 @@ const std::string Olive::MapKeyOlive = "olive";
 HexusOpponentData* Olive::HexusOpponentDataInstance = nullptr;
 const std::string Olive::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OLIVE";
 
-Olive* Olive::deserialize(ValueMap& initProperties)
+Olive* Olive::deserialize(ValueMap& properties)
 {
-	Olive* instance = new Olive(initProperties);
+	Olive* instance = new Olive(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Olive::Olive(ValueMap& initProperties) : super(initProperties,
+Olive::Olive(ValueMap& properties) : super(properties,
 	Olive::MapKeyOlive,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,

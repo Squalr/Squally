@@ -20,16 +20,16 @@ const std::string DemonSwordsman::MapKeyDemonSwordsman = "demon-swordsman";
 HexusOpponentData* DemonSwordsman::HexusOpponentDataInstance = nullptr;
 const std::string DemonSwordsman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_SWORDSMAN";
 
-DemonSwordsman* DemonSwordsman::deserialize(ValueMap& initProperties)
+DemonSwordsman* DemonSwordsman::deserialize(ValueMap& properties)
 {
-	DemonSwordsman* instance = new DemonSwordsman(initProperties);
+	DemonSwordsman* instance = new DemonSwordsman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonSwordsman::DemonSwordsman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonSwordsman::DemonSwordsman(ValueMap& properties) : PlatformerEnemy(properties,
 	DemonSwordsman::MapKeyDemonSwordsman,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,

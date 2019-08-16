@@ -13,12 +13,12 @@ class HackableData;
 class StoneButton : public HackableObject
 {
 public:
-	static StoneButton* create(cocos2d::ValueMap& initProperties);
+	static StoneButton* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyStoneButton;
 
 protected:
-	StoneButton(cocos2d::ValueMap& initProperties);
+	StoneButton(cocos2d::ValueMap& properties);
 	virtual ~StoneButton();
 
 	void onEnter() override;

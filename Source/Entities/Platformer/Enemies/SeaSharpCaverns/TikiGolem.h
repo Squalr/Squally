@@ -8,7 +8,7 @@ class HexusOpponentData;
 class TikiGolem : public PlatformerEnemy
 {
 public:
-	static TikiGolem* deserialize(cocos2d::ValueMap& initProperties);
+	static TikiGolem* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	TikiGolem(cocos2d::ValueMap& initProperties);
+	TikiGolem(cocos2d::ValueMap& properties);
 	~TikiGolem();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

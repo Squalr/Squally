@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string MarbleTerrain::MapKeyTerrainTypeMarble = "marble";
 
-MarbleTerrain* MarbleTerrain::create(ValueMap& initProperties)
+MarbleTerrain* MarbleTerrain::create(ValueMap& properties)
 {
-	MarbleTerrain* instance = new MarbleTerrain(initProperties);
+	MarbleTerrain* instance = new MarbleTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MarbleTerrain::MarbleTerrain(ValueMap& initProperties) : super(
-	initProperties,
+MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		MarbleTerrain::MapKeyTerrainTypeMarble,

@@ -20,16 +20,16 @@ const std::string OrcSwordsman::MapKeyOrcSwordsman = "orc-swordsman";
 HexusOpponentData* OrcSwordsman::HexusOpponentDataInstance = nullptr;
 const std::string OrcSwordsman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_SWORDSMAN";
 
-OrcSwordsman* OrcSwordsman::deserialize(ValueMap& initProperties)
+OrcSwordsman* OrcSwordsman::deserialize(ValueMap& properties)
 {
-	OrcSwordsman* instance = new OrcSwordsman(initProperties);
+	OrcSwordsman* instance = new OrcSwordsman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcSwordsman::OrcSwordsman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+OrcSwordsman::OrcSwordsman(ValueMap& properties) : PlatformerEnemy(properties,
 	OrcSwordsman::MapKeyOrcSwordsman,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,

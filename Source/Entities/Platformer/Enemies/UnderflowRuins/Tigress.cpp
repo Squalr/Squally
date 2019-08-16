@@ -20,16 +20,16 @@ const std::string Tigress::MapKeyTigress = "tigress";
 HexusOpponentData* Tigress::HexusOpponentDataInstance = nullptr;
 const std::string Tigress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIGRESS";
 
-Tigress* Tigress::deserialize(ValueMap& initProperties)
+Tigress* Tigress::deserialize(ValueMap& properties)
 {
-	Tigress* instance = new Tigress(initProperties);
+	Tigress* instance = new Tigress(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tigress::Tigress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Tigress::Tigress(ValueMap& properties) : PlatformerEnemy(properties,
 	Tigress::MapKeyTigress,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,

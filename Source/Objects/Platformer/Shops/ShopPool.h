@@ -10,7 +10,7 @@ public:
 	Item* getItemFromPool();
 
 protected:
-	ShopPool(cocos2d::ValueMap& initProperties, std::string poolName);
+	ShopPool(cocos2d::ValueMap& properties, std::string poolName);
 	~ShopPool();
 	void onEnter() override;
 	void initializePositions() override;

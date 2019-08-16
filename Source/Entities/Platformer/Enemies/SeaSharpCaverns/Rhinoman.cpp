@@ -20,16 +20,16 @@ const std::string Rhinoman::MapKeyRhinoman = "rhinoman";
 HexusOpponentData* Rhinoman::HexusOpponentDataInstance = nullptr;
 const std::string Rhinoman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RHINOMAN";
 
-Rhinoman* Rhinoman::deserialize(ValueMap& initProperties)
+Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 {
-	Rhinoman* instance = new Rhinoman(initProperties);
+	Rhinoman* instance = new Rhinoman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rhinoman::Rhinoman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Rhinoman::Rhinoman(ValueMap& properties) : PlatformerEnemy(properties,
 	Rhinoman::MapKeyRhinoman,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,

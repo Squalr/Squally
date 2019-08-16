@@ -20,16 +20,16 @@ const std::string Johann::MapKeyJohann = "johann";
 HexusOpponentData* Johann::HexusOpponentDataInstance = nullptr;
 const std::string Johann::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JOHANN";
 
-Johann* Johann::deserialize(ValueMap& initProperties)
+Johann* Johann::deserialize(ValueMap& properties)
 {
-	Johann* instance = new Johann(initProperties);
+	Johann* instance = new Johann(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Johann::Johann(ValueMap& initProperties) : super(initProperties,
+Johann::Johann(ValueMap& properties) : super(properties,
 	Johann::MapKeyJohann,
 	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,

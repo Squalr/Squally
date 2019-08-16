@@ -14,16 +14,16 @@ using namespace cocos2d;
 
 const std::string HackableHint::MapKeyHackableHint = "hackable-hint";
 
-HackableHint* HackableHint::create(ValueMap& initProperties)
+HackableHint* HackableHint::create(ValueMap& properties)
 {
-	HackableHint* instance = new HackableHint(initProperties);
+	HackableHint* instance = new HackableHint(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HackableHint::HackableHint(ValueMap& initProperties) : super(initProperties)
+HackableHint::HackableHint(ValueMap& properties) : super(properties)
 {
 	Size collisionSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	

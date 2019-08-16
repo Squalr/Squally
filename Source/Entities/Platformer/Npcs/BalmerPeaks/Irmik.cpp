@@ -20,16 +20,16 @@ const std::string Irmik::MapKeyIrmik = "irmik";
 HexusOpponentData* Irmik::HexusOpponentDataInstance = nullptr;
 const std::string Irmik::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IRMIK";
 
-Irmik* Irmik::deserialize(ValueMap& initProperties)
+Irmik* Irmik::deserialize(ValueMap& properties)
 {
-	Irmik* instance = new Irmik(initProperties);
+	Irmik* instance = new Irmik(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Irmik::Irmik(ValueMap& initProperties) : super(initProperties,
+Irmik::Irmik(ValueMap& properties) : super(properties,
 	Irmik::MapKeyIrmik,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Animations,
 	EntityResources::Npcs_BalmerPeaks_Irmik_Emblem,

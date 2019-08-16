@@ -25,16 +25,16 @@ using namespace cocos2d;
 
 const std::string Laser::MapKeyLaser = "laser";
 
-Laser* Laser::create(ValueMap& initProperties)
+Laser* Laser::create(ValueMap& properties)
 {
-	Laser* instance = new Laser(initProperties);
+	Laser* instance = new Laser(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Laser::Laser(ValueMap& initProperties) : super(initProperties)
+Laser::Laser(ValueMap& properties) : super(properties)
 {
 	this->currentLaserCountDown = RandomHelper::random_real(0.0f, 3.0f);
 	this->maxLaserCountDown = 4.0f;

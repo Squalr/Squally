@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Thurstan : public PlatformerFriendly
 {
 public:
-	static Thurstan* deserialize(cocos2d::ValueMap& initProperties);
+	static Thurstan* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Thurstan(cocos2d::ValueMap& initProperties);
+	Thurstan(cocos2d::ValueMap& properties);
 	~Thurstan();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -8,7 +8,7 @@ class SmartAnimationSequenceNode;
 class Doubloon : public Collectable
 {
 public:
-	static Doubloon* create(cocos2d::ValueMap& initProperties);
+	static Doubloon* create(cocos2d::ValueMap& properties);
 
 	static std::string getIdentifier();
 	static std::string getIconResource();
@@ -17,7 +17,7 @@ public:
 	static const std::string MapKeyDoubloon;
 
 protected:
-	Doubloon(cocos2d::ValueMap& initProperties);
+	Doubloon(cocos2d::ValueMap& properties);
 	~Doubloon();
 
 	void onEnter() override;

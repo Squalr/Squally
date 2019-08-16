@@ -20,16 +20,16 @@ const std::string Magnus::MapKeyMagnus = "magnus";
 HexusOpponentData* Magnus::HexusOpponentDataInstance = nullptr;
 const std::string Magnus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MAGNUS";
 
-Magnus* Magnus::deserialize(ValueMap& initProperties)
+Magnus* Magnus::deserialize(ValueMap& properties)
 {
-	Magnus* instance = new Magnus(initProperties);
+	Magnus* instance = new Magnus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Magnus::Magnus(ValueMap& initProperties) : super(initProperties,
+Magnus::Magnus(ValueMap& properties) : super(properties,
 	Magnus::MapKeyMagnus,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Emblem,

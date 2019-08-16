@@ -20,16 +20,16 @@ const std::string Krampus::MapKeyKrampus = "krampus";
 HexusOpponentData* Krampus::HexusOpponentDataInstance = nullptr;
 const std::string Krampus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRAMPUS";
 
-Krampus* Krampus::deserialize(ValueMap& initProperties)
+Krampus* Krampus::deserialize(ValueMap& properties)
 {
-	Krampus* instance = new Krampus(initProperties);
+	Krampus* instance = new Krampus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Krampus::Krampus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Krampus::Krampus(ValueMap& properties) : PlatformerEnemy(properties,
 	Krampus::MapKeyKrampus,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,

@@ -15,16 +15,16 @@ using namespace cocos2d;
 const std::string ShopPoolMinos::MapKeyShopPoolMinos = "shop-pool-minos";
 const std::string ShopPoolMinos::PoolName = "minos";
 
-ShopPoolMinos* ShopPoolMinos::create(ValueMap& initProperties)
+ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 {
-	ShopPoolMinos* instance = new ShopPoolMinos(initProperties);
+	ShopPoolMinos* instance = new ShopPoolMinos(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolMinos::ShopPoolMinos(ValueMap& initProperties) : super(initProperties, ShopPoolMinos::PoolName)
+ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName)
 {
 	this->addItemToPool(BlueAxe::create(), 1.0f);
 	this->addItemToPool(CandySword::create(), 1.0f);

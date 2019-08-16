@@ -20,16 +20,16 @@ const std::string Warlock::MapKeyWarlock = "warlock";
 HexusOpponentData* Warlock::HexusOpponentDataInstance = nullptr;
 const std::string Warlock::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WARLOCK";
 
-Warlock* Warlock::deserialize(ValueMap& initProperties)
+Warlock* Warlock::deserialize(ValueMap& properties)
 {
-	Warlock* instance = new Warlock(initProperties);
+	Warlock* instance = new Warlock(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Warlock::Warlock(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Warlock::Warlock(ValueMap& properties) : PlatformerEnemy(properties,
 	Warlock::MapKeyWarlock,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,

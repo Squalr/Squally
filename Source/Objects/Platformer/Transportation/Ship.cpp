@@ -29,16 +29,16 @@ using namespace cocos2d;
 
 const std::string Ship::MapKeyShip = "ship";
 
-Ship* Ship::create(ValueMap& initProperties)
+Ship* Ship::create(ValueMap& properties)
 {
-	Ship* instance = new Ship(initProperties);
+	Ship* instance = new Ship(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ship::Ship(ValueMap& initProperties) : super(initProperties)
+Ship::Ship(ValueMap& properties) : super(properties)
 {
 	this->hull = Sprite::create(ObjectResources::Transportation_Ship_Hull);
 	

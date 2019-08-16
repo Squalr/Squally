@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Zelina : public PlatformerFriendly
 {
 public:
-	static Zelina* deserialize(cocos2d::ValueMap& initProperties);
+	static Zelina* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Zelina(cocos2d::ValueMap& initProperties);
+	Zelina(cocos2d::ValueMap& properties);
 	~Zelina();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

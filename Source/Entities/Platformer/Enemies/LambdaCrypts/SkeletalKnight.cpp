@@ -20,16 +20,16 @@ const std::string SkeletalKnight::MapKeySkeletalKnight = "skeletal-knight";
 HexusOpponentData* SkeletalKnight::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalKnight::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_KNIGHT";
 
-SkeletalKnight* SkeletalKnight::deserialize(ValueMap& initProperties)
+SkeletalKnight* SkeletalKnight::deserialize(ValueMap& properties)
 {
-	SkeletalKnight* instance = new SkeletalKnight(initProperties);
+	SkeletalKnight* instance = new SkeletalKnight(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalKnight::SkeletalKnight(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalKnight::SkeletalKnight(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalKnight::MapKeySkeletalKnight,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,

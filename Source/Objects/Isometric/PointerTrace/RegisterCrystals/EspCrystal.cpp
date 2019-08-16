@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EspCrystal::MapKeyEspCrystal = "esp-crystal";
 
-EspCrystal* EspCrystal::create(ValueMap& initProperties)
+EspCrystal* EspCrystal::create(ValueMap& properties)
 {
-	EspCrystal* instance = new EspCrystal(initProperties);
+	EspCrystal* instance = new EspCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EspCrystal::EspCrystal(ValueMap& initProperties) : super(initProperties)
+EspCrystal::EspCrystal(ValueMap& properties) : super(properties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EspCrystal);
 	

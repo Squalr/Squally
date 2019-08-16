@@ -25,7 +25,7 @@ public:
 	void runJumpAnimation(cocos2d::Vec2 destPosition, std::function<void()> callback = nullptr);
 
 protected:
-	GridEntity(cocos2d::ValueMap& initProperties,
+	GridEntity(cocos2d::ValueMap& properties,
 		std::string scmlResource,
 		float scale = 1.0f,
 		cocos2d::Vec2 offset = cocos2d::Vec2(0.0f, 0.0f),

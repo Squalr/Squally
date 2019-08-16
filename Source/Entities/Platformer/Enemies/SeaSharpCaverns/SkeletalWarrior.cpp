@@ -20,16 +20,16 @@ const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
 HexusOpponentData* SkeletalWarrior::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_WARRIOR";
 
-SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& initProperties)
+SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& properties)
 {
-	SkeletalWarrior* instance = new SkeletalWarrior(initProperties);
+	SkeletalWarrior* instance = new SkeletalWarrior(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalWarrior::SkeletalWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalWarrior::MapKeySkeletalWarrior,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,

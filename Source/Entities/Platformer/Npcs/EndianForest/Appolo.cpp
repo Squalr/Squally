@@ -20,16 +20,16 @@ const std::string Appolo::MapKeyAppolo = "appolo";
 HexusOpponentData* Appolo::HexusOpponentDataInstance = nullptr;
 const std::string Appolo::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APPOLO";
 
-Appolo* Appolo::deserialize(ValueMap& initProperties)
+Appolo* Appolo::deserialize(ValueMap& properties)
 {
-	Appolo* instance = new Appolo(initProperties);
+	Appolo* instance = new Appolo(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Appolo::Appolo(ValueMap& initProperties) : super(initProperties,
+Appolo::Appolo(ValueMap& properties) : super(properties,
 	Appolo::MapKeyAppolo,
 	EntityResources::Npcs_EndianForest_Appolo_Animations,
 	EntityResources::Npcs_EndianForest_Appolo_Emblem,

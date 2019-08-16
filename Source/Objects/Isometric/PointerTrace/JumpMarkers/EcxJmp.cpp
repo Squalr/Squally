@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EcxJmp::MapKeyEcxJmp = "ecx-jmp";
 
-EcxJmp* EcxJmp::create(ValueMap& initProperties)
+EcxJmp* EcxJmp::create(ValueMap& properties)
 {
-	EcxJmp* instance = new EcxJmp(initProperties);
+	EcxJmp* instance = new EcxJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EcxJmp::EcxJmp(ValueMap& initProperties) : super(initProperties)
+EcxJmp::EcxJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EcxJmp);
 	

@@ -6,14 +6,14 @@
 class Warp : public Portal
 {
 public:
-	static Warp* create(cocos2d::ValueMap& initProperties);
+	static Warp* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWarp;
 	static const std::string MapKeyWarpFrom;
 	static const std::string MapKeyWarpTo;
 
 protected:
-	Warp(cocos2d::ValueMap& initProperties);
+	Warp(cocos2d::ValueMap& properties);
 	~Warp();
 	void onEnter() override;
 	void initializePositions() override;

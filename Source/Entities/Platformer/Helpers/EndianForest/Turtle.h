@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Turtle : public PlatformerEntity
 {
 public:
-	static Turtle* deserialize(cocos2d::ValueMap& initProperties);
+	static Turtle* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Turtle(cocos2d::ValueMap& initProperties);
+	Turtle(cocos2d::ValueMap& properties);
 	~Turtle();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

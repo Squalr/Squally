@@ -20,16 +20,16 @@ const std::string Shaman::MapKeyShaman = "shaman";
 HexusOpponentData* Shaman::HexusOpponentDataInstance = nullptr;
 const std::string Shaman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHAMAN";
 
-Shaman* Shaman::deserialize(ValueMap& initProperties)
+Shaman* Shaman::deserialize(ValueMap& properties)
 {
-	Shaman* instance = new Shaman(initProperties);
+	Shaman* instance = new Shaman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Shaman::Shaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Shaman::Shaman(ValueMap& properties) : PlatformerEnemy(properties,
 	Shaman::MapKeyShaman,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,

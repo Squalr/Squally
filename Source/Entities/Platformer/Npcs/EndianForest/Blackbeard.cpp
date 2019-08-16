@@ -20,16 +20,16 @@ const std::string Blackbeard::MapKeyBlackbeard = "blackbeard";
 HexusOpponentData* Blackbeard::HexusOpponentDataInstance = nullptr;
 const std::string Blackbeard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BLACKBEARD";
 
-Blackbeard* Blackbeard::deserialize(ValueMap& initProperties)
+Blackbeard* Blackbeard::deserialize(ValueMap& properties)
 {
-	Blackbeard* instance = new Blackbeard(initProperties);
+	Blackbeard* instance = new Blackbeard(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Blackbeard::Blackbeard(ValueMap& initProperties) : super(initProperties,
+Blackbeard::Blackbeard(ValueMap& properties) : super(properties,
 	Blackbeard::MapKeyBlackbeard,
 	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,

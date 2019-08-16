@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string BreakableCage::MapKeyBreakableCage = "breakable-cage";
 
-BreakableCage* BreakableCage::create(ValueMap& initProperties)
+BreakableCage* BreakableCage::create(ValueMap& properties)
 {
-	BreakableCage* instance = new BreakableCage(initProperties);
+	BreakableCage* instance = new BreakableCage(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BreakableCage::BreakableCage(ValueMap& initProperties, int requiredHits) : super(initProperties, Size(196.0f, 112.0f), requiredHits)
+BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(properties, Size(196.0f, 112.0f), requiredHits)
 {
 	this->cageBottom = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->contentNode = Node::create();

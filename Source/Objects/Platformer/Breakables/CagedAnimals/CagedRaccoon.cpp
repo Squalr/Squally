@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedRaccoon::MapKeyCagedRaccoon = "caged-raccoon";
 
-CagedRaccoon* CagedRaccoon::create(ValueMap& initProperties)
+CagedRaccoon* CagedRaccoon::create(ValueMap& properties)
 {
-	CagedRaccoon* instance = new CagedRaccoon(initProperties);
+	CagedRaccoon* instance = new CagedRaccoon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedRaccoon::CagedRaccoon(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalRaccoon)
+CagedRaccoon::CagedRaccoon(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalRaccoon)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Raccoon);
 

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Scaldor : public PlatformerFriendly
 {
 public:
-	static Scaldor* deserialize(cocos2d::ValueMap& initProperties);
+	static Scaldor* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Scaldor(cocos2d::ValueMap& initProperties);
+	Scaldor(cocos2d::ValueMap& properties);
 	~Scaldor();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Werewolf : public PlatformerEnemy
 {
 public:
-	static Werewolf* deserialize(cocos2d::ValueMap& initProperties);
+	static Werewolf* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Werewolf(cocos2d::ValueMap& initProperties);
+	Werewolf(cocos2d::ValueMap& properties);
 	~Werewolf();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -20,16 +20,16 @@ const std::string Thug::MapKeyThug = "thug";
 HexusOpponentData* Thug::HexusOpponentDataInstance = nullptr;
 const std::string Thug::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THUG";
 
-Thug* Thug::deserialize(ValueMap& initProperties)
+Thug* Thug::deserialize(ValueMap& properties)
 {
-	Thug* instance = new Thug(initProperties);
+	Thug* instance = new Thug(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Thug::Thug(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Thug::Thug(ValueMap& properties) : PlatformerEnemy(properties,
 	Thug::MapKeyThug,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,

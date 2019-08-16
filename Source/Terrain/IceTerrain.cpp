@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string IceTerrain::MapKeyTerrainTypeIce = "ice";
 
-IceTerrain* IceTerrain::create(ValueMap& initProperties)
+IceTerrain* IceTerrain::create(ValueMap& properties)
 {
-	IceTerrain* instance = new IceTerrain(initProperties);
+	IceTerrain* instance = new IceTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IceTerrain::IceTerrain(ValueMap& initProperties) : super(
-	initProperties,
+IceTerrain::IceTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		IceTerrain::MapKeyTerrainTypeIce,

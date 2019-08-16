@@ -20,16 +20,16 @@ const std::string QueenElise::MapKeyQueenElise = "queen-elise";
 HexusOpponentData* QueenElise::HexusOpponentDataInstance = nullptr;
 const std::string QueenElise::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_QUEEN_ELISE";
 
-QueenElise* QueenElise::deserialize(ValueMap& initProperties)
+QueenElise* QueenElise::deserialize(ValueMap& properties)
 {
-	QueenElise* instance = new QueenElise(initProperties);
+	QueenElise* instance = new QueenElise(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-QueenElise::QueenElise(ValueMap& initProperties) : super(initProperties,
+QueenElise::QueenElise(ValueMap& properties) : super(properties,
 	QueenElise::MapKeyQueenElise,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,

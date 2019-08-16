@@ -20,16 +20,16 @@ const std::string Matu::MapKeyMatu = "matu";
 HexusOpponentData* Matu::HexusOpponentDataInstance = nullptr;
 const std::string Matu::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MATU";
 
-Matu* Matu::deserialize(ValueMap& initProperties)
+Matu* Matu::deserialize(ValueMap& properties)
 {
-	Matu* instance = new Matu(initProperties);
+	Matu* instance = new Matu(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Matu::Matu(ValueMap& initProperties) : super(initProperties,
+Matu::Matu(ValueMap& properties) : super(properties,
 	Matu::MapKeyMatu,
 	EntityResources::Npcs_EndianForest_Matu_Animations,
 	EntityResources::Npcs_EndianForest_Matu_Emblem,

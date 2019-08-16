@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string CatapultBall::MapKeyCatapultBall = "catapult-ball";
 
-CatapultBall* CatapultBall::create(const ValueMap& initProperties, Vec2 velocity)
+CatapultBall* CatapultBall::create(const ValueMap& properties, Vec2 velocity)
 {
-	CatapultBall* instance = new CatapultBall(initProperties, velocity);
+	CatapultBall* instance = new CatapultBall(properties, velocity);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-CatapultBall::CatapultBall(const ValueMap& initProperties, Vec2 velocity) : super(initProperties)
+CatapultBall::CatapultBall(const ValueMap& properties, Vec2 velocity) : super(properties)
 {
 	this->ball = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
 	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, true, true);

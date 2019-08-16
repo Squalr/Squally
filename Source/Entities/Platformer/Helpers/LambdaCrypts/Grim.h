@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Grim : public PlatformerEntity
 {
 public:
-	static Grim* deserialize(cocos2d::ValueMap& initProperties);
+	static Grim* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Grim(cocos2d::ValueMap& initProperties);
+	Grim(cocos2d::ValueMap& properties);
 	~Grim();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedBeaver::MapKeyCagedBeaver = "caged-beaver";
 
-CagedBeaver* CagedBeaver::create(ValueMap& initProperties)
+CagedBeaver* CagedBeaver::create(ValueMap& properties)
 {
-	CagedBeaver* instance = new CagedBeaver(initProperties);
+	CagedBeaver* instance = new CagedBeaver(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedBeaver::CagedBeaver(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalBeaver)
+CagedBeaver::CagedBeaver(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalBeaver)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Beaver);
 

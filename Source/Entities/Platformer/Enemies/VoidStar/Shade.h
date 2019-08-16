@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Shade : public PlatformerEnemy
 {
 public:
-	static Shade* deserialize(cocos2d::ValueMap& initProperties);
+	static Shade* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Shade(cocos2d::ValueMap& initProperties);
+	Shade(cocos2d::ValueMap& properties);
 	~Shade();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

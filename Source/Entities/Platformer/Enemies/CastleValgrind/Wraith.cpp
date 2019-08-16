@@ -20,16 +20,16 @@ const std::string Wraith::MapKeyWraith = "wraith";
 HexusOpponentData* Wraith::HexusOpponentDataInstance = nullptr;
 const std::string Wraith::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WRAITH";
 
-Wraith* Wraith::deserialize(ValueMap& initProperties)
+Wraith* Wraith::deserialize(ValueMap& properties)
 {
-	Wraith* instance = new Wraith(initProperties);
+	Wraith* instance = new Wraith(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Wraith::Wraith(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Wraith::Wraith(ValueMap& properties) : PlatformerEnemy(properties,
 	Wraith::MapKeyWraith,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,

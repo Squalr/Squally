@@ -20,16 +20,16 @@ const std::string Cyclops::MapKeyCyclops = "cyclops";
 HexusOpponentData* Cyclops::HexusOpponentDataInstance = nullptr;
 const std::string Cyclops::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYCLOPS";
 
-Cyclops* Cyclops::deserialize(ValueMap& initProperties)
+Cyclops* Cyclops::deserialize(ValueMap& properties)
 {
-	Cyclops* instance = new Cyclops(initProperties);
+	Cyclops* instance = new Cyclops(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cyclops::Cyclops(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Cyclops::Cyclops(ValueMap& properties) : PlatformerEnemy(properties,
 	Cyclops::MapKeyCyclops,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,

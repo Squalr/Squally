@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string SpikedBall::MapKeySpikedBall = "spiked-ball";
 
-SpikedBall* SpikedBall::create(ValueMap& initProperties)
+SpikedBall* SpikedBall::create(ValueMap& properties)
 {
-	SpikedBall* instance = new SpikedBall(initProperties);
+	SpikedBall* instance = new SpikedBall(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-SpikedBall::SpikedBall(ValueMap& initProperties) : super(initProperties)
+SpikedBall::SpikedBall(ValueMap& properties) : super(properties)
 {
 	this->ball = Sprite::create(ObjectResources::Traps_SpikeBall_SpikeBall);
 	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);

@@ -20,16 +20,16 @@ const std::string Mummy::MapKeyMummy = "mummy";
 HexusOpponentData* Mummy::HexusOpponentDataInstance = nullptr;
 const std::string Mummy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY";
 
-Mummy* Mummy::deserialize(ValueMap& initProperties)
+Mummy* Mummy::deserialize(ValueMap& properties)
 {
-	Mummy* instance = new Mummy(initProperties);
+	Mummy* instance = new Mummy(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mummy::Mummy(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Mummy::Mummy(ValueMap& properties) : PlatformerEntity(properties,
 	Mummy::MapKeyMummy,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,

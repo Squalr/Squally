@@ -20,16 +20,16 @@ const std::string Leroy::MapKeyLeroy = "leroy";
 HexusOpponentData* Leroy::HexusOpponentDataInstance = nullptr;
 const std::string Leroy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEROY";
 
-Leroy* Leroy::deserialize(ValueMap& initProperties)
+Leroy* Leroy::deserialize(ValueMap& properties)
 {
-	Leroy* instance = new Leroy(initProperties);
+	Leroy* instance = new Leroy(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Leroy::Leroy(ValueMap& initProperties) : super(initProperties,
+Leroy::Leroy(ValueMap& properties) : super(properties,
 	Leroy::MapKeyLeroy,
 	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,

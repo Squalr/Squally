@@ -20,16 +20,16 @@ const std::string Aspen::MapKeyAspen = "aspen";
 HexusOpponentData* Aspen::HexusOpponentDataInstance = nullptr;
 const std::string Aspen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASPEN";
 
-Aspen* Aspen::deserialize(ValueMap& initProperties)
+Aspen* Aspen::deserialize(ValueMap& properties)
 {
-	Aspen* instance = new Aspen(initProperties);
+	Aspen* instance = new Aspen(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Aspen::Aspen(ValueMap& initProperties) : super(initProperties,
+Aspen::Aspen(ValueMap& properties) : super(properties,
 	Aspen::MapKeyAspen,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,

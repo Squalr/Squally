@@ -20,16 +20,16 @@ const std::string Assassin::MapKeyAssassin = "assassin";
 HexusOpponentData* Assassin::HexusOpponentDataInstance = nullptr;
 const std::string Assassin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASSASSIN";
 
-Assassin* Assassin::deserialize(ValueMap& initProperties)
+Assassin* Assassin::deserialize(ValueMap& properties)
 {
-	Assassin* instance = new Assassin(initProperties);
+	Assassin* instance = new Assassin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Assassin::Assassin(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Assassin::Assassin(ValueMap& properties) : PlatformerEnemy(properties,
 	Assassin::MapKeyAssassin,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,

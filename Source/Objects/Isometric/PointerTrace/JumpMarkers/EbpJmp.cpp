@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EbpJmp::MapKeyEbpJmp = "ebp-jmp";
 
-EbpJmp* EbpJmp::create(ValueMap& initProperties)
+EbpJmp* EbpJmp::create(ValueMap& properties)
 {
-	EbpJmp* instance = new EbpJmp(initProperties);
+	EbpJmp* instance = new EbpJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EbpJmp::EbpJmp(ValueMap& initProperties) : super(initProperties)
+EbpJmp::EbpJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbpJmp);
 	

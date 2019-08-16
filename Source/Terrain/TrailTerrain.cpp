@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string TrailTerrain::MapKeyTerrainTypeTrail = "trail";
 
-TrailTerrain* TrailTerrain::create(ValueMap& initProperties)
+TrailTerrain* TrailTerrain::create(ValueMap& properties)
 {
-	TrailTerrain* instance = new TrailTerrain(initProperties);
+	TrailTerrain* instance = new TrailTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TrailTerrain::TrailTerrain(ValueMap& initProperties) : super(
-	initProperties,
+TrailTerrain::TrailTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		TrailTerrain::MapKeyTerrainTypeTrail,

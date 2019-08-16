@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Reaper : public PlatformerEnemy
 {
 public:
-	static Reaper* deserialize(cocos2d::ValueMap& initProperties);
+	static Reaper* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Reaper(cocos2d::ValueMap& initProperties);
+	Reaper(cocos2d::ValueMap& properties);
 	~Reaper();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

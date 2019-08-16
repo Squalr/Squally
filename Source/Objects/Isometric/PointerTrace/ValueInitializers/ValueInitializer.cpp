@@ -14,16 +14,16 @@ const std::string ValueInitializer::MapKeyValueInitializerBase = "value-%d";
 const std::string ValueInitializer::MapKeyMetaValue = "value";
 const std::string ValueInitializer::IntegerRegex = "[0-9]+";
 
-ValueInitializer* ValueInitializer::create(ValueMap& initProperties)
+ValueInitializer* ValueInitializer::create(ValueMap& properties)
 {
-	ValueInitializer* instance = new ValueInitializer(initProperties);
+	ValueInitializer* instance = new ValueInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ValueInitializer::ValueInitializer(ValueMap& initProperties) : super(initProperties)
+ValueInitializer::ValueInitializer(ValueMap& properties) : super(properties)
 {
 	std::string name = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->value = 0;

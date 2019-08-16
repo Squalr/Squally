@@ -2,16 +2,16 @@
 
 using namespace cocos2d;
 
-IsometricDecorObject* IsometricDecorObject::create(ValueMap& initProperties)
+IsometricDecorObject* IsometricDecorObject::create(ValueMap& properties)
 {
-	IsometricDecorObject* instance = new IsometricDecorObject(initProperties);
+	IsometricDecorObject* instance = new IsometricDecorObject(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IsometricDecorObject::IsometricDecorObject(ValueMap& initProperties) : super(initProperties)
+IsometricDecorObject::IsometricDecorObject(ValueMap& properties) : super(properties)
 {
 }
 

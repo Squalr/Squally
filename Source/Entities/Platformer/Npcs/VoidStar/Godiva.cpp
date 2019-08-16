@@ -20,16 +20,16 @@ const std::string Godiva::MapKeyGodiva = "godiva";
 HexusOpponentData* Godiva::HexusOpponentDataInstance = nullptr;
 const std::string Godiva::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GODIVA";
 
-Godiva* Godiva::deserialize(ValueMap& initProperties)
+Godiva* Godiva::deserialize(ValueMap& properties)
 {
-	Godiva* instance = new Godiva(initProperties);
+	Godiva* instance = new Godiva(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Godiva::Godiva(ValueMap& initProperties) : super(initProperties,
+Godiva::Godiva(ValueMap& properties) : super(properties,
 	Godiva::MapKeyGodiva,
 	EntityResources::Npcs_VoidStar_Godiva_Animations,
 	EntityResources::Npcs_VoidStar_Godiva_Emblem,

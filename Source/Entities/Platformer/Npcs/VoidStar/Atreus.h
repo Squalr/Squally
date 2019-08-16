@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Atreus : public PlatformerFriendly
 {
 public:
-	static Atreus* deserialize(cocos2d::ValueMap& initProperties);
+	static Atreus* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Atreus(cocos2d::ValueMap& initProperties);
+	Atreus(cocos2d::ValueMap& properties);
 	~Atreus();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

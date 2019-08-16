@@ -20,16 +20,16 @@ const std::string Marcel::MapKeyMarcel = "marcel";
 HexusOpponentData* Marcel::HexusOpponentDataInstance = nullptr;
 const std::string Marcel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MARCEL";
 
-Marcel* Marcel::deserialize(ValueMap& initProperties)
+Marcel* Marcel::deserialize(ValueMap& properties)
 {
-	Marcel* instance = new Marcel(initProperties);
+	Marcel* instance = new Marcel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Marcel::Marcel(ValueMap& initProperties) : super(initProperties,
+Marcel::Marcel(ValueMap& properties) : super(properties,
 	Marcel::MapKeyMarcel,
 	EntityResources::Npcs_VoidStar_Marcel_Animations,
 	EntityResources::Npcs_VoidStar_Marcel_Emblem,

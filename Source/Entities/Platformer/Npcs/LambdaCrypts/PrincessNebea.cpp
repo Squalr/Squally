@@ -20,16 +20,16 @@ const std::string PrincessNebea::MapKeyPrincessNebea = "princess-nebea";
 HexusOpponentData* PrincessNebea::HexusOpponentDataInstance = nullptr;
 const std::string PrincessNebea::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_NEBEA";
 
-PrincessNebea* PrincessNebea::deserialize(ValueMap& initProperties)
+PrincessNebea* PrincessNebea::deserialize(ValueMap& properties)
 {
-	PrincessNebea* instance = new PrincessNebea(initProperties);
+	PrincessNebea* instance = new PrincessNebea(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessNebea::PrincessNebea(ValueMap& initProperties) : super(initProperties,
+PrincessNebea::PrincessNebea(ValueMap& properties) : super(properties,
 	PrincessNebea::MapKeyPrincessNebea,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,

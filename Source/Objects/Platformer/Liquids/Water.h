@@ -15,12 +15,12 @@ class LiquidNode;
 class Water : public GameObject
 {
 public:
-	static Water* create(cocos2d::ValueMap& initProperties);
+	static Water* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWater;
 
 protected:
-	Water(cocos2d::ValueMap& initProperties);
+	Water(cocos2d::ValueMap& properties);
 	virtual ~Water();
 	void onEnter() override;
 	void update(float dt) override;

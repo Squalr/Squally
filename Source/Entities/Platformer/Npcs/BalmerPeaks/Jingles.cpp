@@ -20,16 +20,16 @@ const std::string Jingles::MapKeyJingles = "jingles";
 HexusOpponentData* Jingles::HexusOpponentDataInstance = nullptr;
 const std::string Jingles::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JINGLES";
 
-Jingles* Jingles::deserialize(ValueMap& initProperties)
+Jingles* Jingles::deserialize(ValueMap& properties)
 {
-	Jingles* instance = new Jingles(initProperties);
+	Jingles* instance = new Jingles(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Jingles::Jingles(ValueMap& initProperties) : super(initProperties,
+Jingles::Jingles(ValueMap& properties) : super(properties,
 	Jingles::MapKeyJingles,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,

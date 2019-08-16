@@ -20,16 +20,16 @@ const std::string Yeti::MapKeyYeti = "yeti";
 HexusOpponentData* Yeti::HexusOpponentDataInstance = nullptr;
 const std::string Yeti::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI";
 
-Yeti* Yeti::deserialize(ValueMap& initProperties)
+Yeti* Yeti::deserialize(ValueMap& properties)
 {
-	Yeti* instance = new Yeti(initProperties);
+	Yeti* instance = new Yeti(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Yeti::Yeti(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Yeti::Yeti(ValueMap& properties) : PlatformerEnemy(properties,
 	Yeti::MapKeyYeti,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,

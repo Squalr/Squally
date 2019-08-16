@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string EdiPtrJmp::MapKeyEdiPtrJmp = "[edi]-jmp";
 
-EdiPtrJmp* EdiPtrJmp::create(ValueMap& initProperties)
+EdiPtrJmp* EdiPtrJmp::create(ValueMap& properties)
 {
-	EdiPtrJmp* instance = new EdiPtrJmp(initProperties);
+	EdiPtrJmp* instance = new EdiPtrJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiPtrJmp::EdiPtrJmp(ValueMap& initProperties) : super(initProperties)
+EdiPtrJmp::EdiPtrJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiPtrJmp);
 	

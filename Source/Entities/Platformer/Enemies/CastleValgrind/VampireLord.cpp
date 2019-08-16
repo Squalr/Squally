@@ -20,16 +20,16 @@ const std::string VampireLord::MapKeyVampireLord = "vampire-lord";
 HexusOpponentData* VampireLord::HexusOpponentDataInstance = nullptr;
 const std::string VampireLord::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VAMPIRE_LORD";
 
-VampireLord* VampireLord::deserialize(ValueMap& initProperties)
+VampireLord* VampireLord::deserialize(ValueMap& properties)
 {
-	VampireLord* instance = new VampireLord(initProperties);
+	VampireLord* instance = new VampireLord(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VampireLord::VampireLord(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+VampireLord::VampireLord(ValueMap& properties) : PlatformerEnemy(properties,
 	VampireLord::MapKeyVampireLord,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,

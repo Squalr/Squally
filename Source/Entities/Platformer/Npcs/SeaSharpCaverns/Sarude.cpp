@@ -20,16 +20,16 @@ const std::string Sarude::MapKeySarude = "sarude";
 HexusOpponentData* Sarude::HexusOpponentDataInstance = nullptr;
 const std::string Sarude::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SARUDE";
 
-Sarude* Sarude::deserialize(ValueMap& initProperties)
+Sarude* Sarude::deserialize(ValueMap& properties)
 {
-	Sarude* instance = new Sarude(initProperties);
+	Sarude* instance = new Sarude(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Sarude::Sarude(ValueMap& initProperties) : super(initProperties,
+Sarude::Sarude(ValueMap& properties) : super(properties,
 	Sarude::MapKeySarude,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,

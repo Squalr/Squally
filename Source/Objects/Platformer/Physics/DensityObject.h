@@ -8,7 +8,7 @@ public:
 	static const std::string MapKeyDensity;
 
 protected:
-	DensityObject(cocos2d::ValueMap& initProperties);
+	DensityObject(cocos2d::ValueMap& properties);
 	virtual ~DensityObject();
 
 	void onEnter() override;

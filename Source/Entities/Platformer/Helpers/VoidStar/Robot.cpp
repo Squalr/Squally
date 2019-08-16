@@ -20,16 +20,16 @@ const std::string Robot::MapKeyRobot = "robot";
 HexusOpponentData* Robot::HexusOpponentDataInstance = nullptr;
 const std::string Robot::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBOT";
 
-Robot* Robot::deserialize(ValueMap& initProperties)
+Robot* Robot::deserialize(ValueMap& properties)
 {
-	Robot* instance = new Robot(initProperties);
+	Robot* instance = new Robot(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Robot::Robot(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Robot::Robot(ValueMap& properties) : PlatformerEntity(properties,
 	Robot::MapKeyRobot,
 	EntityResources::Helpers_VoidStar_Robot_Animations,
 	EntityResources::Helpers_VoidStar_Robot_Emblem,

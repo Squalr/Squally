@@ -7,7 +7,7 @@ class Hud;
 class CameraScrollTracker : public GameObject
 {
 public:
-	static CameraScrollTracker* create(cocos2d::ValueMap& initProperties);
+	static CameraScrollTracker* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCameraScrollTracker;
 	static const std::string MapKeyZoom;
@@ -15,7 +15,7 @@ public:
 
 private:
 	typedef GameObject super;
-	CameraScrollTracker(cocos2d::ValueMap& initProperties);
+	CameraScrollTracker(cocos2d::ValueMap& properties);
 	~CameraScrollTracker();
 
 	void onEnter() override;

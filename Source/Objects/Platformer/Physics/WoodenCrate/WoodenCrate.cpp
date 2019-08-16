@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string WoodenCrate::MapKeyWoodenCrate = "wooden-crate";
 
-WoodenCrate* WoodenCrate::create(ValueMap& initProperties)
+WoodenCrate* WoodenCrate::create(ValueMap& properties)
 {
-	WoodenCrate* instance = new WoodenCrate(initProperties);
+	WoodenCrate* instance = new WoodenCrate(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-WoodenCrate::WoodenCrate(ValueMap& initProperties) : super(initProperties)
+WoodenCrate::WoodenCrate(ValueMap& properties) : super(properties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
 	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);

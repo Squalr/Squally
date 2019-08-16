@@ -5,14 +5,14 @@
 class EaxInitializer : public RegisterInitializer
 {
 public:
-	static EaxInitializer* create(cocos2d::ValueMap& initProperties);
+	static EaxInitializer* create(cocos2d::ValueMap& properties);
 
 	void setGridIndex(int gridIndex) override;
 
 	static const std::string MapKeyEaxInitializer;
 
 protected:
-	EaxInitializer(cocos2d::ValueMap& initProperties);
+	EaxInitializer(cocos2d::ValueMap& properties);
 	~EaxInitializer();
 
 private:

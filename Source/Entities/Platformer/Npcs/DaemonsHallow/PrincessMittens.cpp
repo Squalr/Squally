@@ -20,16 +20,16 @@ const std::string PrincessMittens::MapKeyPrincessMittens = "princess-mittens";
 HexusOpponentData* PrincessMittens::HexusOpponentDataInstance = nullptr;
 const std::string PrincessMittens::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MITTENS";
 
-PrincessMittens* PrincessMittens::deserialize(ValueMap& initProperties)
+PrincessMittens* PrincessMittens::deserialize(ValueMap& properties)
 {
-	PrincessMittens* instance = new PrincessMittens(initProperties);
+	PrincessMittens* instance = new PrincessMittens(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessMittens::PrincessMittens(ValueMap& initProperties) : super(initProperties,
+PrincessMittens::PrincessMittens(ValueMap& properties) : super(properties,
 	PrincessMittens::MapKeyPrincessMittens,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,

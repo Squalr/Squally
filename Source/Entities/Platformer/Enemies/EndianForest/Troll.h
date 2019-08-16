@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Troll : public PlatformerEnemy
 {
 public:
-	static Troll* deserialize(cocos2d::ValueMap& initProperties);
+	static Troll* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Troll(cocos2d::ValueMap& initProperties);
+	Troll(cocos2d::ValueMap& properties);
 	~Troll();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

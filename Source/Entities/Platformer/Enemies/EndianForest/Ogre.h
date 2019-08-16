@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ogre : public PlatformerEnemy
 {
 public:
-	static Ogre* deserialize(cocos2d::ValueMap& initProperties);
+	static Ogre* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Ogre(cocos2d::ValueMap& initProperties);
+	Ogre(cocos2d::ValueMap& properties);
 	~Ogre();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

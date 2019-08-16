@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Shen : public PlatformerFriendly
 {
 public:
-	static Shen* deserialize(cocos2d::ValueMap& initProperties);
+	static Shen* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Shen(cocos2d::ValueMap& initProperties);
+	Shen(cocos2d::ValueMap& properties);
 	~Shen();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

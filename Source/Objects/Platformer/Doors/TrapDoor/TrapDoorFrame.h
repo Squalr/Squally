@@ -10,12 +10,12 @@ namespace cocos2d
 class TrapDoorFrame : public GameObject
 {
 public:
-	static TrapDoorFrame* create(cocos2d::ValueMap& initProperties);
+	static TrapDoorFrame* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTrapDoorFrame;
 
 protected:
-	TrapDoorFrame(cocos2d::ValueMap& initProperties);
+	TrapDoorFrame(cocos2d::ValueMap& properties);
 	virtual ~TrapDoorFrame();
 
 	void onEnter() override;

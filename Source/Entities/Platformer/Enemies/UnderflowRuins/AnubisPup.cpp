@@ -20,16 +20,16 @@ const std::string AnubisPup::MapKeyAnubisPup = "anubis-pup";
 HexusOpponentData* AnubisPup::HexusOpponentDataInstance = nullptr;
 const std::string AnubisPup::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ANUBIS_PUP";
 
-AnubisPup* AnubisPup::deserialize(ValueMap& initProperties)
+AnubisPup* AnubisPup::deserialize(ValueMap& properties)
 {
-	AnubisPup* instance = new AnubisPup(initProperties);
+	AnubisPup* instance = new AnubisPup(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AnubisPup::AnubisPup(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+AnubisPup::AnubisPup(ValueMap& properties) : PlatformerEnemy(properties,
 	AnubisPup::MapKeyAnubisPup,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,

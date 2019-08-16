@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string Collectable::SaveKeyIsCollected = "is_collected";
 
-Collectable* Collectable::create(ValueMap& initProperties)
+Collectable* Collectable::create(ValueMap& properties)
 {
-	Collectable* instance = new Collectable(initProperties);
+	Collectable* instance = new Collectable(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Collectable::Collectable(ValueMap& initProperties) : super(initProperties)
+Collectable::Collectable(ValueMap& properties) : super(properties)
 {
 	this->collectableNode = Node::create();
 	this->collectableCollision = CollisionObject::create(PhysicsBody::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, true, false);

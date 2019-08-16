@@ -20,16 +20,16 @@ const std::string EvilEye::MapKeyEvilEye = "evil-eye";
 HexusOpponentData* EvilEye::HexusOpponentDataInstance = nullptr;
 const std::string EvilEye::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EVIL_EYE";
 
-EvilEye* EvilEye::deserialize(ValueMap& initProperties)
+EvilEye* EvilEye::deserialize(ValueMap& properties)
 {
-	EvilEye* instance = new EvilEye(initProperties);
+	EvilEye* instance = new EvilEye(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EvilEye::EvilEye(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+EvilEye::EvilEye(ValueMap& properties) : PlatformerEnemy(properties,
 	EvilEye::MapKeyEvilEye,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,

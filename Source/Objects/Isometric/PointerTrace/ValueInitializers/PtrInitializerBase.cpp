@@ -13,7 +13,7 @@ using namespace cocos2d;
 const std::string PtrInitializerBase::OffsetRegex = "(\\+|\\-)?( .+)?[0-9]+";
 const std::string PtrInitializerBase::IntegerRegex = "[0-9]+";
 
-PtrInitializerBase::PtrInitializerBase(ValueMap& initProperties) : super(initProperties)
+PtrInitializerBase::PtrInitializerBase(ValueMap& properties) : super(properties)
 {
 	std::string name = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
 	this->offset = 0;

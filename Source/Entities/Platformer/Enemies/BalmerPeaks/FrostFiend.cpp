@@ -20,16 +20,16 @@ const std::string FrostFiend::MapKeyFrostFiend = "frost-fiend";
 HexusOpponentData* FrostFiend::HexusOpponentDataInstance = nullptr;
 const std::string FrostFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FROST_FIEND";
 
-FrostFiend* FrostFiend::deserialize(ValueMap& initProperties)
+FrostFiend* FrostFiend::deserialize(ValueMap& properties)
 {
-	FrostFiend* instance = new FrostFiend(initProperties);
+	FrostFiend* instance = new FrostFiend(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FrostFiend::FrostFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+FrostFiend::FrostFiend(ValueMap& properties) : PlatformerEnemy(properties,
 	FrostFiend::MapKeyFrostFiend,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,

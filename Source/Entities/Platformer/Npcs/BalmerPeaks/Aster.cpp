@@ -20,16 +20,16 @@ const std::string Aster::MapKeyAster = "aster";
 HexusOpponentData* Aster::HexusOpponentDataInstance = nullptr;
 const std::string Aster::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASTER";
 
-Aster* Aster::deserialize(ValueMap& initProperties)
+Aster* Aster::deserialize(ValueMap& properties)
 {
-	Aster* instance = new Aster(initProperties);
+	Aster* instance = new Aster(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Aster::Aster(ValueMap& initProperties) : super(initProperties,
+Aster::Aster(ValueMap& properties) : super(properties,
 	Aster::MapKeyAster,
 	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,

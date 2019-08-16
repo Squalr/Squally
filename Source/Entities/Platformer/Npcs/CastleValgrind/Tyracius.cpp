@@ -20,16 +20,16 @@ const std::string Tyracius::MapKeyTyracius = "tyracius";
 HexusOpponentData* Tyracius::HexusOpponentDataInstance = nullptr;
 const std::string Tyracius::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TYRACIUS";
 
-Tyracius* Tyracius::deserialize(ValueMap& initProperties)
+Tyracius* Tyracius::deserialize(ValueMap& properties)
 {
-	Tyracius* instance = new Tyracius(initProperties);
+	Tyracius* instance = new Tyracius(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tyracius::Tyracius(ValueMap& initProperties) : super(initProperties,
+Tyracius::Tyracius(ValueMap& properties) : super(properties,
 	Tyracius::MapKeyTyracius,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,

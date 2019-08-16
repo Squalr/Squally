@@ -10,12 +10,12 @@ namespace cocos2d
 class EcxPtrJmp : public JmpMarker
 {
 public:
-	static EcxPtrJmp* create(cocos2d::ValueMap& initProperties);
+	static EcxPtrJmp* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyEcxPtrJmp;
 
 protected:
-	EcxPtrJmp(cocos2d::ValueMap& initProperties);
+	EcxPtrJmp(cocos2d::ValueMap& properties);
 	~EcxPtrJmp();
 
 	void onEnter() override;

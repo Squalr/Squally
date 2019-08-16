@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ragnis : public PlatformerFriendly
 {
 public:
-	static Ragnis* deserialize(cocos2d::ValueMap& initProperties);
+	static Ragnis* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ragnis(cocos2d::ValueMap& initProperties);
+	Ragnis(cocos2d::ValueMap& properties);
 	~Ragnis();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

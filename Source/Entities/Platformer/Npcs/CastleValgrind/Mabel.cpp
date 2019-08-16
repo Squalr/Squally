@@ -20,16 +20,16 @@ const std::string Mabel::MapKeyMabel = "mabel";
 HexusOpponentData* Mabel::HexusOpponentDataInstance = nullptr;
 const std::string Mabel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MABEL";
 
-Mabel* Mabel::deserialize(ValueMap& initProperties)
+Mabel* Mabel::deserialize(ValueMap& properties)
 {
-	Mabel* instance = new Mabel(initProperties);
+	Mabel* instance = new Mabel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mabel::Mabel(ValueMap& initProperties) : super(initProperties,
+Mabel::Mabel(ValueMap& properties) : super(properties,
 	Mabel::MapKeyMabel,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,

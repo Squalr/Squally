@@ -16,12 +16,12 @@ class Sound;
 class SquallyShip : public HackableObject
 {
 public:
-	static SquallyShip* create(cocos2d::ValueMap& initProperties);
+	static SquallyShip* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeySquallyShip;
 
 protected:
-	SquallyShip(cocos2d::ValueMap& initProperties);
+	SquallyShip(cocos2d::ValueMap& properties);
 	~SquallyShip();
 
 	void onEnter() override;

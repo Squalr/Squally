@@ -13,16 +13,16 @@ const std::vector<std::string> EsiPtrInitializer::MapKeyEsiPtrInitializerBases =
 };
 const std::string EsiPtrInitializer::MapKeyEsiPtrInitializer = "[esi]";
 
-EsiPtrInitializer* EsiPtrInitializer::create(ValueMap& initProperties)
+EsiPtrInitializer* EsiPtrInitializer::create(ValueMap& properties)
 {
-	EsiPtrInitializer* instance = new EsiPtrInitializer(initProperties);
+	EsiPtrInitializer* instance = new EsiPtrInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EsiPtrInitializer::EsiPtrInitializer(ValueMap& initProperties) : super(initProperties)
+EsiPtrInitializer::EsiPtrInitializer(ValueMap& properties) : super(properties)
 {
 }
 

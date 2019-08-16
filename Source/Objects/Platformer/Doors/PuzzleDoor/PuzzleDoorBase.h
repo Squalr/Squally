@@ -23,7 +23,7 @@ public:
 	void unlock(bool animate = true) override;
 
 protected:
-	PuzzleDoorBase(cocos2d::ValueMap& initProperties);
+	PuzzleDoorBase(cocos2d::ValueMap& properties);
 	~PuzzleDoorBase();
 
 	void onEnter() override;

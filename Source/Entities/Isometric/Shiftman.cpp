@@ -8,16 +8,16 @@ using namespace cocos2d;
 
 const std::string Shiftman::MapKeyShiftman = "shiftman";
 
-Shiftman* Shiftman::deserialize(ValueMap& initProperties)
+Shiftman* Shiftman::deserialize(ValueMap& properties)
 {
-	Shiftman* instance = new Shiftman(initProperties);
+	Shiftman* instance = new Shiftman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Shiftman::Shiftman(ValueMap& initProperties) : super::IsometricEntity(initProperties,
+Shiftman::Shiftman(ValueMap& properties) : super::IsometricEntity(properties,
 	EntityResources::Squally_Animations,
 	1.0f,
 	Vec2(0.0f, 0.0f))

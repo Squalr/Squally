@@ -15,16 +15,16 @@ using namespace cocos2d;
 const std::string ShopPoolToben::MapKeyShopPoolToben = "shop-pool-toben";
 const std::string ShopPoolToben::PoolName = "toben";
 
-ShopPoolToben* ShopPoolToben::create(ValueMap& initProperties)
+ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 {
-	ShopPoolToben* instance = new ShopPoolToben(initProperties);
+	ShopPoolToben* instance = new ShopPoolToben(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& initProperties) : super(initProperties, ShopPoolToben::PoolName)
+ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName)
 {
 	this->addItemToPool(HealthPotion::create(), 1.0f);
 	this->addItemToPool(ManaPotion::create(), 1.0f);

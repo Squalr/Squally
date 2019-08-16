@@ -20,16 +20,16 @@ const std::string Asmodeus::MapKeyAsmodeus = "asmodeus";
 HexusOpponentData* Asmodeus::HexusOpponentDataInstance = nullptr;
 const std::string Asmodeus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASMODEUS";
 
-Asmodeus* Asmodeus::deserialize(ValueMap& initProperties)
+Asmodeus* Asmodeus::deserialize(ValueMap& properties)
 {
-	Asmodeus* instance = new Asmodeus(initProperties);
+	Asmodeus* instance = new Asmodeus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Asmodeus::Asmodeus(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Asmodeus::Asmodeus(ValueMap& properties) : PlatformerEnemy(properties,
 	Asmodeus::MapKeyAsmodeus,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,

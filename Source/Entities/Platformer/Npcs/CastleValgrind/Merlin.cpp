@@ -20,16 +20,16 @@ const std::string Merlin::MapKeyMerlin = "merlin";
 HexusOpponentData* Merlin::HexusOpponentDataInstance = nullptr;
 const std::string Merlin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERLIN";
 
-Merlin* Merlin::deserialize(ValueMap& initProperties)
+Merlin* Merlin::deserialize(ValueMap& properties)
 {
-	Merlin* instance = new Merlin(initProperties);
+	Merlin* instance = new Merlin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Merlin::Merlin(ValueMap& initProperties) : super(initProperties,
+Merlin::Merlin(ValueMap& properties) : super(properties,
 	Merlin::MapKeyMerlin,
 	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,

@@ -15,7 +15,7 @@ class GameObject;
 class MapLayer : public SmartNode
 {
 public:
-	static MapLayer* create(const cocos2d::ValueMap& initProperties, std::string name, std::string type = "", const std::vector<GameObject*>& objects = { });
+	static MapLayer* create(const cocos2d::ValueMap& properties, std::string name, std::string type = "", const std::vector<GameObject*>& objects = { });
 
 	std::string getLayerType();
 	bool isHackable();
@@ -29,8 +29,8 @@ public:
 	static const std::string MapKeyPropertyIsElevateTarget;
 
 protected:
-	MapLayer(const cocos2d::ValueMap& initProperties, std::string name, std::string type);
-	MapLayer(const cocos2d::ValueMap& initProperties, std::string name, std::string type, const std::vector<GameObject*>& objects);
+	MapLayer(const cocos2d::ValueMap& properties, std::string name, std::string type);
+	MapLayer(const cocos2d::ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects);
 	MapLayer();
 	~MapLayer();
 

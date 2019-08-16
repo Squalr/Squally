@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string FloatingBomb::MapKeyFloatingBomb = "floating-bomb";
 
-FloatingBomb* FloatingBomb::create(ValueMap& initProperties)
+FloatingBomb* FloatingBomb::create(ValueMap& properties)
 {
-	FloatingBomb* instance = new FloatingBomb(initProperties);
+	FloatingBomb* instance = new FloatingBomb(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-FloatingBomb::FloatingBomb(ValueMap& initProperties) : super(initProperties)
+FloatingBomb::FloatingBomb(ValueMap& properties) : super(properties)
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_FloatingBomb_FloatingBomb);
 	this->bombCollision = CollisionObject::create(PhysicsBody::createCircle(128.0f), (CollisionType)PlatformerCollisionType::Damage, true, true);

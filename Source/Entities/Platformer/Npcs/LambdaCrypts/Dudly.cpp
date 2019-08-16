@@ -20,16 +20,16 @@ const std::string Dudly::MapKeyDudly = "dudly";
 HexusOpponentData* Dudly::HexusOpponentDataInstance = nullptr;
 const std::string Dudly::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DUDLY";
 
-Dudly* Dudly::deserialize(ValueMap& initProperties)
+Dudly* Dudly::deserialize(ValueMap& properties)
 {
-	Dudly* instance = new Dudly(initProperties);
+	Dudly* instance = new Dudly(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dudly::Dudly(ValueMap& initProperties) : super(initProperties,
+Dudly::Dudly(ValueMap& properties) : super(properties,
 	Dudly::MapKeyDudly,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,

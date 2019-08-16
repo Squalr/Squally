@@ -20,16 +20,16 @@ const std::string Mystic::MapKeyMystic = "mystic";
 HexusOpponentData* Mystic::HexusOpponentDataInstance = nullptr;
 const std::string Mystic::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MYSTIC";
 
-Mystic* Mystic::deserialize(ValueMap& initProperties)
+Mystic* Mystic::deserialize(ValueMap& properties)
 {
-	Mystic* instance = new Mystic(initProperties);
+	Mystic* instance = new Mystic(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mystic::Mystic(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Mystic::Mystic(ValueMap& properties) : PlatformerEnemy(properties,
 	Mystic::MapKeyMystic,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,

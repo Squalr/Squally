@@ -20,16 +20,16 @@ const std::string Griffin::MapKeyGriffin = "griffin";
 HexusOpponentData* Griffin::HexusOpponentDataInstance = nullptr;
 const std::string Griffin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRIFFIN";
 
-Griffin* Griffin::deserialize(ValueMap& initProperties)
+Griffin* Griffin::deserialize(ValueMap& properties)
 {
-	Griffin* instance = new Griffin(initProperties);
+	Griffin* instance = new Griffin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Griffin::Griffin(ValueMap& initProperties) : super(initProperties,
+Griffin::Griffin(ValueMap& properties) : super(properties,
 	Griffin::MapKeyGriffin,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,

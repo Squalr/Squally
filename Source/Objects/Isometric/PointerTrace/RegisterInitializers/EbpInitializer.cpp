@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EbpInitializer::MapKeyEbpInitializer = "ebp";
 
-EbpInitializer* EbpInitializer::create(ValueMap& initProperties)
+EbpInitializer* EbpInitializer::create(ValueMap& properties)
 {
-	EbpInitializer* instance = new EbpInitializer(initProperties);
+	EbpInitializer* instance = new EbpInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EbpInitializer::EbpInitializer(ValueMap& initProperties) : super(initProperties)
+EbpInitializer::EbpInitializer(ValueMap& properties) : super(properties)
 {
 }
 

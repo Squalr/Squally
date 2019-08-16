@@ -8,7 +8,7 @@ class HexusOpponentData;
 class KingRedsong : public PlatformerFriendly
 {
 public:
-	static KingRedsong* deserialize(cocos2d::ValueMap& initProperties);
+	static KingRedsong* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	KingRedsong(cocos2d::ValueMap& initProperties);
+	KingRedsong(cocos2d::ValueMap& properties);
 	~KingRedsong();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

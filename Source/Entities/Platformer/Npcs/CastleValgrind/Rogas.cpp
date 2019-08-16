@@ -20,16 +20,16 @@ const std::string Rogas::MapKeyRogas = "rogas";
 HexusOpponentData* Rogas::HexusOpponentDataInstance = nullptr;
 const std::string Rogas::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGAS";
 
-Rogas* Rogas::deserialize(ValueMap& initProperties)
+Rogas* Rogas::deserialize(ValueMap& properties)
 {
-	Rogas* instance = new Rogas(initProperties);
+	Rogas* instance = new Rogas(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rogas::Rogas(ValueMap& initProperties) : super(initProperties,
+Rogas::Rogas(ValueMap& properties) : super(properties,
 	Rogas::MapKeyRogas,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,

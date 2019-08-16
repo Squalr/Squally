@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Lycan : public PlatformerFriendly
 {
 public:
-	static Lycan* deserialize(cocos2d::ValueMap& initProperties);
+	static Lycan* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Lycan(cocos2d::ValueMap& initProperties);
+	Lycan(cocos2d::ValueMap& properties);
 	~Lycan();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

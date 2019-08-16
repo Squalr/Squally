@@ -20,16 +20,16 @@ const std::string Igneus::MapKeyIgneus = "igneus";
 HexusOpponentData* Igneus::HexusOpponentDataInstance = nullptr;
 const std::string Igneus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IGNEUS";
 
-Igneus* Igneus::deserialize(ValueMap& initProperties)
+Igneus* Igneus::deserialize(ValueMap& properties)
 {
-	Igneus* instance = new Igneus(initProperties);
+	Igneus* instance = new Igneus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Igneus::Igneus(ValueMap& initProperties) : super(initProperties,
+Igneus::Igneus(ValueMap& properties) : super(properties,
 	Igneus::MapKeyIgneus,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,

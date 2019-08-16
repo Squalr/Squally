@@ -8,7 +8,7 @@ class HexusOpponentData;
 class WaterElemental : public PlatformerEnemy
 {
 public:
-	static WaterElemental* deserialize(cocos2d::ValueMap& initProperties);
+	static WaterElemental* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	WaterElemental(cocos2d::ValueMap& initProperties);
+	WaterElemental(cocos2d::ValueMap& properties);
 	~WaterElemental();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

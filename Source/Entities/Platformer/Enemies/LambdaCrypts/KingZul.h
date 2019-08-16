@@ -8,7 +8,7 @@ class HexusOpponentData;
 class KingZul : public PlatformerEnemy
 {
 public:
-	static KingZul* deserialize(cocos2d::ValueMap& initProperties);
+	static KingZul* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	KingZul(cocos2d::ValueMap& initProperties);
+	KingZul(cocos2d::ValueMap& properties);
 	~KingZul();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

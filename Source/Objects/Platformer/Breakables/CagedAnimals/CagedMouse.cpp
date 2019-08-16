@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedMouse::MapKeyCagedMouse = "caged-mouse";
 
-CagedMouse* CagedMouse::create(ValueMap& initProperties)
+CagedMouse* CagedMouse::create(ValueMap& properties)
 {
-	CagedMouse* instance = new CagedMouse(initProperties);
+	CagedMouse* instance = new CagedMouse(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedMouse::CagedMouse(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalMouse)
+CagedMouse::CagedMouse(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalMouse)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Mouse);
 

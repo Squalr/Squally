@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Brine : public PlatformerFriendly
 {
 public:
-	static Brine* deserialize(cocos2d::ValueMap& initProperties);
+	static Brine* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Brine(cocos2d::ValueMap& initProperties);
+	Brine(cocos2d::ValueMap& properties);
 	~Brine();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

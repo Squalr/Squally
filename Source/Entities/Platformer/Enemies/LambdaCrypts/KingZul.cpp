@@ -20,16 +20,16 @@ const std::string KingZul::MapKeyKingZul = "king-zul";
 HexusOpponentData* KingZul::HexusOpponentDataInstance = nullptr;
 const std::string KingZul::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_ZUL";
 
-KingZul* KingZul::deserialize(ValueMap& initProperties)
+KingZul* KingZul::deserialize(ValueMap& properties)
 {
-	KingZul* instance = new KingZul(initProperties);
+	KingZul* instance = new KingZul(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-KingZul::KingZul(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+KingZul::KingZul(ValueMap& properties) : PlatformerEnemy(properties,
 	KingZul::MapKeyKingZul,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,

@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedGoat::MapKeyCagedGoat = "caged-goat";
 
-CagedGoat* CagedGoat::create(ValueMap& initProperties)
+CagedGoat* CagedGoat::create(ValueMap& properties)
 {
-	CagedGoat* instance = new CagedGoat(initProperties);
+	CagedGoat* instance = new CagedGoat(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedGoat::CagedGoat(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalGoat)
+CagedGoat::CagedGoat(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalGoat)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Goat);
 

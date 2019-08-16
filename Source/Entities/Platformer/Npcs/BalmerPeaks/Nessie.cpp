@@ -20,16 +20,16 @@ const std::string Nessie::MapKeyNessie = "nessie";
 HexusOpponentData* Nessie::HexusOpponentDataInstance = nullptr;
 const std::string Nessie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_NESSIE";
 
-Nessie* Nessie::deserialize(ValueMap& initProperties)
+Nessie* Nessie::deserialize(ValueMap& properties)
 {
-	Nessie* instance = new Nessie(initProperties);
+	Nessie* instance = new Nessie(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Nessie::Nessie(ValueMap& initProperties) : super(initProperties,
+Nessie::Nessie(ValueMap& properties) : super(properties,
 	Nessie::MapKeyNessie,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,

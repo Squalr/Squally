@@ -14,12 +14,12 @@ class Sound;
 class BreakableBarrel : public BreakableBase
 {
 public:
-	static BreakableBarrel* create(cocos2d::ValueMap& initProperties);
+	static BreakableBarrel* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyBreakableBarrel;
 
 protected:
-	BreakableBarrel(cocos2d::ValueMap& initProperties);
+	BreakableBarrel(cocos2d::ValueMap& properties);
 	virtual ~BreakableBarrel();
 
 	void onEnter() override;

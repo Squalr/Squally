@@ -20,16 +20,16 @@ const std::string Ghost::MapKeyGhost = "ghost";
 HexusOpponentData* Ghost::HexusOpponentDataInstance = nullptr;
 const std::string Ghost::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GHOST";
 
-Ghost* Ghost::deserialize(ValueMap& initProperties)
+Ghost* Ghost::deserialize(ValueMap& properties)
 {
-	Ghost* instance = new Ghost(initProperties);
+	Ghost* instance = new Ghost(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ghost::Ghost(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Ghost::Ghost(ValueMap& properties) : PlatformerEntity(properties,
 	Ghost::MapKeyGhost,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,

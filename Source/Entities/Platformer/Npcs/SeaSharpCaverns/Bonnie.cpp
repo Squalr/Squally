@@ -20,16 +20,16 @@ const std::string Bonnie::MapKeyBonnie = "bonnie";
 HexusOpponentData* Bonnie::HexusOpponentDataInstance = nullptr;
 const std::string Bonnie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONNIE";
 
-Bonnie* Bonnie::deserialize(ValueMap& initProperties)
+Bonnie* Bonnie::deserialize(ValueMap& properties)
 {
-	Bonnie* instance = new Bonnie(initProperties);
+	Bonnie* instance = new Bonnie(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Bonnie::Bonnie(ValueMap& initProperties) : super(initProperties,
+Bonnie::Bonnie(ValueMap& properties) : super(properties,
 	Bonnie::MapKeyBonnie,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Emblem,

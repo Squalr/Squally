@@ -20,16 +20,16 @@ const std::string FireElemental::MapKeyFireElemental = "fire-elemental";
 HexusOpponentData* FireElemental::HexusOpponentDataInstance = nullptr;
 const std::string FireElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_ELEMENTAL";
 
-FireElemental* FireElemental::deserialize(ValueMap& initProperties)
+FireElemental* FireElemental::deserialize(ValueMap& properties)
 {
-	FireElemental* instance = new FireElemental(initProperties);
+	FireElemental* instance = new FireElemental(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FireElemental::FireElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+FireElemental::FireElemental(ValueMap& properties) : PlatformerEnemy(properties,
 	FireElemental::MapKeyFireElemental,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,

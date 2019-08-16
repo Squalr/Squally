@@ -20,16 +20,16 @@ const std::string Horus::MapKeyHorus = "horus";
 HexusOpponentData* Horus::HexusOpponentDataInstance = nullptr;
 const std::string Horus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HORUS";
 
-Horus* Horus::deserialize(ValueMap& initProperties)
+Horus* Horus::deserialize(ValueMap& properties)
 {
-	Horus* instance = new Horus(initProperties);
+	Horus* instance = new Horus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Horus::Horus(ValueMap& initProperties) : super(initProperties,
+Horus::Horus(ValueMap& properties) : super(properties,
 	Horus::MapKeyHorus,
 	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,

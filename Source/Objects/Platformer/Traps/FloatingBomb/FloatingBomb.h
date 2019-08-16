@@ -13,12 +13,12 @@ class HackableData;
 class FloatingBomb : public HackableObject
 {
 public:
-	static FloatingBomb* create(cocos2d::ValueMap& initProperties);
+	static FloatingBomb* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyFloatingBomb;
 
 protected:
-	FloatingBomb(cocos2d::ValueMap& initProperties);
+	FloatingBomb(cocos2d::ValueMap& properties);
 	virtual ~FloatingBomb();
 
 	void onEnter() override;

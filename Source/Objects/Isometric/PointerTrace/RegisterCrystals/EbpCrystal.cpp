@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EbpCrystal::MapKeyEbpCrystal = "ebp-crystal";
 
-EbpCrystal* EbpCrystal::create(ValueMap& initProperties)
+EbpCrystal* EbpCrystal::create(ValueMap& properties)
 {
-	EbpCrystal* instance = new EbpCrystal(initProperties);
+	EbpCrystal* instance = new EbpCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EbpCrystal::EbpCrystal(ValueMap& initProperties) : super(initProperties)
+EbpCrystal::EbpCrystal(ValueMap& properties) : super(properties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EbpCrystal);
 	

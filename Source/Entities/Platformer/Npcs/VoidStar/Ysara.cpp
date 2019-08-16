@@ -20,16 +20,16 @@ const std::string Ysara::MapKeyYsara = "ysara";
 HexusOpponentData* Ysara::HexusOpponentDataInstance = nullptr;
 const std::string Ysara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YSARA";
 
-Ysara* Ysara::deserialize(ValueMap& initProperties)
+Ysara* Ysara::deserialize(ValueMap& properties)
 {
-	Ysara* instance = new Ysara(initProperties);
+	Ysara* instance = new Ysara(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ysara::Ysara(ValueMap& initProperties) : super(initProperties,
+Ysara::Ysara(ValueMap& properties) : super(properties,
 	Ysara::MapKeyYsara,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,

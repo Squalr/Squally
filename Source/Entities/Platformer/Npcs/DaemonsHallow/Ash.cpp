@@ -20,16 +20,16 @@ const std::string Ash::MapKeyAsh = "ash";
 HexusOpponentData* Ash::HexusOpponentDataInstance = nullptr;
 const std::string Ash::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASH";
 
-Ash* Ash::deserialize(ValueMap& initProperties)
+Ash* Ash::deserialize(ValueMap& properties)
 {
-	Ash* instance = new Ash(initProperties);
+	Ash* instance = new Ash(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ash::Ash(ValueMap& initProperties) : super(initProperties,
+Ash::Ash(ValueMap& properties) : super(properties,
 	Ash::MapKeyAsh,
 	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,

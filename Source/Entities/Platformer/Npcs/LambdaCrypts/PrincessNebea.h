@@ -8,7 +8,7 @@ class HexusOpponentData;
 class PrincessNebea : public PlatformerFriendly
 {
 public:
-	static PrincessNebea* deserialize(cocos2d::ValueMap& initProperties);
+	static PrincessNebea* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	PrincessNebea(cocos2d::ValueMap& initProperties);
+	PrincessNebea(cocos2d::ValueMap& properties);
 	~PrincessNebea();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

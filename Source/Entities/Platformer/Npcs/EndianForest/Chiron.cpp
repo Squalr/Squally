@@ -20,16 +20,16 @@ const std::string Chiron::MapKeyChiron = "chiron";
 HexusOpponentData* Chiron::HexusOpponentDataInstance = nullptr;
 const std::string Chiron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CHIRON";
 
-Chiron* Chiron::deserialize(ValueMap& initProperties)
+Chiron* Chiron::deserialize(ValueMap& properties)
 {
-	Chiron* instance = new Chiron(initProperties);
+	Chiron* instance = new Chiron(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Chiron::Chiron(ValueMap& initProperties) : super(initProperties,
+Chiron::Chiron(ValueMap& properties) : super(properties,
 	Chiron::MapKeyChiron,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,

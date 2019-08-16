@@ -20,16 +20,16 @@ const std::string OrcBomber::MapKeyOrcBomber = "orc-bomber";
 HexusOpponentData* OrcBomber::HexusOpponentDataInstance = nullptr;
 const std::string OrcBomber::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_BOMBER";
 
-OrcBomber* OrcBomber::deserialize(ValueMap& initProperties)
+OrcBomber* OrcBomber::deserialize(ValueMap& properties)
 {
-	OrcBomber* instance = new OrcBomber(initProperties);
+	OrcBomber* instance = new OrcBomber(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcBomber::OrcBomber(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+OrcBomber::OrcBomber(ValueMap& properties) : PlatformerEnemy(properties,
 	OrcBomber::MapKeyOrcBomber,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,

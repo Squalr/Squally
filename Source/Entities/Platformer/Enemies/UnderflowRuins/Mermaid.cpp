@@ -20,16 +20,16 @@ const std::string Mermaid::MapKeyMermaid = "mermaid";
 HexusOpponentData* Mermaid::HexusOpponentDataInstance = nullptr;
 const std::string Mermaid::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERMAID";
 
-Mermaid* Mermaid::deserialize(ValueMap& initProperties)
+Mermaid* Mermaid::deserialize(ValueMap& properties)
 {
-	Mermaid* instance = new Mermaid(initProperties);
+	Mermaid* instance = new Mermaid(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mermaid::Mermaid(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Mermaid::Mermaid(ValueMap& properties) : PlatformerEnemy(properties,
 	Mermaid::MapKeyMermaid,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,

@@ -20,16 +20,16 @@ const std::string Elriel::MapKeyElriel = "elriel";
 HexusOpponentData* Elriel::HexusOpponentDataInstance = nullptr;
 const std::string Elriel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIEL";
 
-Elriel* Elriel::deserialize(ValueMap& initProperties)
+Elriel* Elriel::deserialize(ValueMap& properties)
 {
-	Elriel* instance = new Elriel(initProperties);
+	Elriel* instance = new Elriel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Elriel::Elriel(ValueMap& initProperties) : super(initProperties,
+Elriel::Elriel(ValueMap& properties) : super(properties,
 	Elriel::MapKeyElriel,
 	EntityResources::Npcs_EndianForest_Elriel_Animations,
 	EntityResources::Npcs_EndianForest_Elriel_Emblem,

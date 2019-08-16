@@ -20,16 +20,16 @@ const std::string Jasper::MapKeyJasper = "jasper";
 HexusOpponentData* Jasper::HexusOpponentDataInstance = nullptr;
 const std::string Jasper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JASPER";
 
-Jasper* Jasper::deserialize(ValueMap& initProperties)
+Jasper* Jasper::deserialize(ValueMap& properties)
 {
-	Jasper* instance = new Jasper(initProperties);
+	Jasper* instance = new Jasper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Jasper::Jasper(ValueMap& initProperties) : super(initProperties,
+Jasper::Jasper(ValueMap& properties) : super(properties,
 	Jasper::MapKeyJasper,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,

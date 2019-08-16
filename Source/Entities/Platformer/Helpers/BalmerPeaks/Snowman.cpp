@@ -20,16 +20,16 @@ const std::string Snowman::MapKeySnowman = "snowman";
 HexusOpponentData* Snowman::HexusOpponentDataInstance = nullptr;
 const std::string Snowman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SNOWMAN";
 
-Snowman* Snowman::deserialize(ValueMap& initProperties)
+Snowman* Snowman::deserialize(ValueMap& properties)
 {
-	Snowman* instance = new Snowman(initProperties);
+	Snowman* instance = new Snowman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Snowman::Snowman(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Snowman::Snowman(ValueMap& properties) : PlatformerEntity(properties,
 	Snowman::MapKeySnowman,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,

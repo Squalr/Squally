@@ -20,16 +20,16 @@ const std::string Cookie::MapKeyCookie = "cookie";
 HexusOpponentData* Cookie::HexusOpponentDataInstance = nullptr;
 const std::string Cookie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOKIE";
 
-Cookie* Cookie::deserialize(ValueMap& initProperties)
+Cookie* Cookie::deserialize(ValueMap& properties)
 {
-	Cookie* instance = new Cookie(initProperties);
+	Cookie* instance = new Cookie(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cookie::Cookie(ValueMap& initProperties) : super(initProperties,
+Cookie::Cookie(ValueMap& properties) : super(properties,
 	Cookie::MapKeyCookie,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,

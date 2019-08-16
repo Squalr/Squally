@@ -10,7 +10,7 @@ class InteractMenu;
 class Portal : public HackableObject
 {
 public:
-	static Portal* create(cocos2d::ValueMap& initProperties);
+	static Portal* create(cocos2d::ValueMap& properties);
 
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
@@ -21,7 +21,7 @@ public:
 	static const std::string MapKeyPortalTransition;
 
 protected:
-	Portal(cocos2d::ValueMap& initProperties, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
+	Portal(cocos2d::ValueMap& properties, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
 	~Portal();
 	void onEnter() override;
 	void initializePositions() override;

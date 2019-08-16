@@ -20,16 +20,16 @@ const std::string Agnes::MapKeyAgnes = "agnes";
 HexusOpponentData* Agnes::HexusOpponentDataInstance = nullptr;
 const std::string Agnes::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AGNES";
 
-Agnes* Agnes::deserialize(ValueMap& initProperties)
+Agnes* Agnes::deserialize(ValueMap& properties)
 {
-	Agnes* instance = new Agnes(initProperties);
+	Agnes* instance = new Agnes(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Agnes::Agnes(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Agnes::Agnes(ValueMap& properties) : PlatformerEnemy(properties,
 	Agnes::MapKeyAgnes,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,

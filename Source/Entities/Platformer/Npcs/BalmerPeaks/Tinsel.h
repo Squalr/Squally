@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Tinsel : public PlatformerFriendly
 {
 public:
-	static Tinsel* deserialize(cocos2d::ValueMap& initProperties);
+	static Tinsel* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Tinsel(cocos2d::ValueMap& initProperties);
+	Tinsel(cocos2d::ValueMap& properties);
 	~Tinsel();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

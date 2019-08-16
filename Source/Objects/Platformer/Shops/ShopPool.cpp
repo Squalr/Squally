@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-ShopPool::ShopPool(ValueMap& initProperties, std::string poolName) : super(initProperties)
+ShopPool::ShopPool(ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
 	this->itemPool = std::vector<std::tuple<Item*, float>>();

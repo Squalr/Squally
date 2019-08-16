@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EdiJmp::MapKeyEdiJmp = "edi-jmp";
 
-EdiJmp* EdiJmp::create(ValueMap& initProperties)
+EdiJmp* EdiJmp::create(ValueMap& properties)
 {
-	EdiJmp* instance = new EdiJmp(initProperties);
+	EdiJmp* instance = new EdiJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiJmp::EdiJmp(ValueMap& initProperties) : super(initProperties)
+EdiJmp::EdiJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiJmp);
 	

@@ -13,16 +13,16 @@ const std::vector<std::string> EcxPtrInitializer::MapKeyEcxPtrInitializerBases =
 };
 const std::string EcxPtrInitializer::MapKeyEcxPtrInitializer = "[ecx]";
 
-EcxPtrInitializer* EcxPtrInitializer::create(ValueMap& initProperties)
+EcxPtrInitializer* EcxPtrInitializer::create(ValueMap& properties)
 {
-	EcxPtrInitializer* instance = new EcxPtrInitializer(initProperties);
+	EcxPtrInitializer* instance = new EcxPtrInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EcxPtrInitializer::EcxPtrInitializer(ValueMap& initProperties) : super(initProperties)
+EcxPtrInitializer::EcxPtrInitializer(ValueMap& properties) : super(properties)
 {
 }
 

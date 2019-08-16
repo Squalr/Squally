@@ -20,16 +20,16 @@ const std::string Angel::MapKeyAngel = "angel";
 HexusOpponentData* Angel::HexusOpponentDataInstance = nullptr;
 const std::string Angel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ANGEL";
 
-Angel* Angel::deserialize(ValueMap& initProperties)
+Angel* Angel::deserialize(ValueMap& properties)
 {
-	Angel* instance = new Angel(initProperties);
+	Angel* instance = new Angel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Angel::Angel(ValueMap& initProperties) : super(initProperties,
+Angel::Angel(ValueMap& properties) : super(properties,
 	Angel::MapKeyAngel,
 	EntityResources::Npcs_UnderflowRuins_Angel_Animations,
 	EntityResources::Npcs_UnderflowRuins_Angel_Emblem,

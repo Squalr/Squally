@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Santa : public PlatformerEnemy
 {
 public:
-	static Santa* deserialize(cocos2d::ValueMap& initProperties);
+	static Santa* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Santa(cocos2d::ValueMap& initProperties);
+	Santa(cocos2d::ValueMap& properties);
 	~Santa();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

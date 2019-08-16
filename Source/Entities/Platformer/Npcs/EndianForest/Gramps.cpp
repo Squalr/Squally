@@ -20,16 +20,16 @@ const std::string Gramps::MapKeyGramps = "gramps";
 HexusOpponentData* Gramps::HexusOpponentDataInstance = nullptr;
 const std::string Gramps::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRAMPS";
 
-Gramps* Gramps::deserialize(ValueMap& initProperties)
+Gramps* Gramps::deserialize(ValueMap& properties)
 {
-	Gramps* instance = new Gramps(initProperties);
+	Gramps* instance = new Gramps(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gramps::Gramps(ValueMap& initProperties) : super(initProperties,
+Gramps::Gramps(ValueMap& properties) : super(properties,
 	Gramps::MapKeyGramps,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,

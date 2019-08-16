@@ -20,16 +20,16 @@ const std::string Ajax::MapKeyAjax = "ajax";
 HexusOpponentData* Ajax::HexusOpponentDataInstance = nullptr;
 const std::string Ajax::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AJAX";
 
-Ajax* Ajax::deserialize(ValueMap& initProperties)
+Ajax* Ajax::deserialize(ValueMap& properties)
 {
-	Ajax* instance = new Ajax(initProperties);
+	Ajax* instance = new Ajax(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ajax::Ajax(ValueMap& initProperties) : super(initProperties,
+Ajax::Ajax(ValueMap& properties) : super(properties,
 	Ajax::MapKeyAjax,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,

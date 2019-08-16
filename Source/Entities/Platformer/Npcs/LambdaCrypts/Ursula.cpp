@@ -20,16 +20,16 @@ const std::string Ursula::MapKeyUrsula = "ursula";
 HexusOpponentData* Ursula::HexusOpponentDataInstance = nullptr;
 const std::string Ursula::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_URSULA";
 
-Ursula* Ursula::deserialize(ValueMap& initProperties)
+Ursula* Ursula::deserialize(ValueMap& properties)
 {
-	Ursula* instance = new Ursula(initProperties);
+	Ursula* instance = new Ursula(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ursula::Ursula(ValueMap& initProperties) : super(initProperties,
+Ursula::Ursula(ValueMap& properties) : super(properties,
 	Ursula::MapKeyUrsula,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,

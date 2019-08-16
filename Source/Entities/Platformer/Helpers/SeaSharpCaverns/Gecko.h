@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Gecko : public PlatformerEntity
 {
 public:
-	static Gecko* deserialize(cocos2d::ValueMap& initProperties);
+	static Gecko* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Gecko(cocos2d::ValueMap& initProperties);
+	Gecko(cocos2d::ValueMap& properties);
 	~Gecko();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

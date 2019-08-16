@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EcxInitializer::MapKeyEcxInitializer = "ecx";
 
-EcxInitializer* EcxInitializer::create(ValueMap& initProperties)
+EcxInitializer* EcxInitializer::create(ValueMap& properties)
 {
-	EcxInitializer* instance = new EcxInitializer(initProperties);
+	EcxInitializer* instance = new EcxInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EcxInitializer::EcxInitializer(ValueMap& initProperties) : super(initProperties)
+EcxInitializer::EcxInitializer(ValueMap& properties) : super(properties)
 {
 }
 

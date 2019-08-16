@@ -20,16 +20,16 @@ const std::string Shade::MapKeyShade = "shade";
 HexusOpponentData* Shade::HexusOpponentDataInstance = nullptr;
 const std::string Shade::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHADE";
 
-Shade* Shade::deserialize(ValueMap& initProperties)
+Shade* Shade::deserialize(ValueMap& properties)
 {
-	Shade* instance = new Shade(initProperties);
+	Shade* instance = new Shade(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Shade::Shade(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Shade::Shade(ValueMap& properties) : PlatformerEnemy(properties,
 	Shade::MapKeyShade,
 	EntityResources::Enemies_VoidStar_Shade_Animations,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,

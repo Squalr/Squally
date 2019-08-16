@@ -8,7 +8,7 @@ class HexusOpponentData;
 class EvilEye : public PlatformerEnemy
 {
 public:
-	static EvilEye* deserialize(cocos2d::ValueMap& initProperties);
+	static EvilEye* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	EvilEye(cocos2d::ValueMap& initProperties);
+	EvilEye(cocos2d::ValueMap& properties);
 	~EvilEye();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

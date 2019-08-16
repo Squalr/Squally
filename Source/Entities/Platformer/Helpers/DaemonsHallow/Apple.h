@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Apple : public PlatformerEntity
 {
 public:
-	static Apple* deserialize(cocos2d::ValueMap& initProperties);
+	static Apple* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Apple(cocos2d::ValueMap& initProperties);
+	Apple(cocos2d::ValueMap& properties);
 	~Apple();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

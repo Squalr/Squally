@@ -20,16 +20,16 @@ const std::string Finch::MapKeyFinch = "finch";
 HexusOpponentData* Finch::HexusOpponentDataInstance = nullptr;
 const std::string Finch::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FINCH";
 
-Finch* Finch::deserialize(ValueMap& initProperties)
+Finch* Finch::deserialize(ValueMap& properties)
 {
-	Finch* instance = new Finch(initProperties);
+	Finch* instance = new Finch(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Finch::Finch(ValueMap& initProperties) : super(initProperties,
+Finch::Finch(ValueMap& properties) : super(properties,
 	Finch::MapKeyFinch,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,

@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedYeti::MapKeyCagedYeti = "caged-yeti";
 
-CagedYeti* CagedYeti::create(ValueMap& initProperties)
+CagedYeti* CagedYeti::create(ValueMap& properties)
 {
-	CagedYeti* instance = new CagedYeti(initProperties);
+	CagedYeti* instance = new CagedYeti(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedYeti::CagedYeti(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalYeti)
+CagedYeti::CagedYeti(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalYeti)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Yeti);
 

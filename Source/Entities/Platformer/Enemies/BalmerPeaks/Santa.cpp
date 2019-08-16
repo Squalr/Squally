@@ -20,16 +20,16 @@ const std::string Santa::MapKeySanta = "santa";
 HexusOpponentData* Santa::HexusOpponentDataInstance = nullptr;
 const std::string Santa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SANTA";
 
-Santa* Santa::deserialize(ValueMap& initProperties)
+Santa* Santa::deserialize(ValueMap& properties)
 {
-	Santa* instance = new Santa(initProperties);
+	Santa* instance = new Santa(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Santa::Santa(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Santa::Santa(ValueMap& properties) : PlatformerEnemy(properties,
 	Santa::MapKeySanta,
 	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,

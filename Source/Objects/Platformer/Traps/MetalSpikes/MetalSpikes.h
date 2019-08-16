@@ -14,12 +14,12 @@ class SmartAnimationSequenceNode;
 class MetalSpikes : public HackableObject
 {
 public:
-	static MetalSpikes* create(cocos2d::ValueMap& initProperties);
+	static MetalSpikes* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyMetalSpikes;
 
 protected:
-	MetalSpikes(cocos2d::ValueMap& initProperties);
+	MetalSpikes(cocos2d::ValueMap& properties);
 	virtual ~MetalSpikes();
 
 	void onEnter() override;

@@ -27,16 +27,16 @@ using namespace cocos2d;
 
 const std::string SpikeLog::MapKeySpikeLog = "spiked-log";
 
-SpikeLog* SpikeLog::create(ValueMap& initProperties)
+SpikeLog* SpikeLog::create(ValueMap& properties)
 {
-	SpikeLog* instance = new SpikeLog(initProperties);
+	SpikeLog* instance = new SpikeLog(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpikeLog::SpikeLog(ValueMap& initProperties) : super(initProperties)
+SpikeLog::SpikeLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);

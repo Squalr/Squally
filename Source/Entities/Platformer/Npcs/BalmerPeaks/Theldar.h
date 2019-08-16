@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Theldar : public PlatformerFriendly
 {
 public:
-	static Theldar* deserialize(cocos2d::ValueMap& initProperties);
+	static Theldar* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Theldar(cocos2d::ValueMap& initProperties);
+	Theldar(cocos2d::ValueMap& properties);
 	~Theldar();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -20,16 +20,16 @@ const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
 HexusOpponentData* SkeletalArcher::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_ARCHER";
 
-SkeletalArcher* SkeletalArcher::deserialize(ValueMap& initProperties)
+SkeletalArcher* SkeletalArcher::deserialize(ValueMap& properties)
 {
-	SkeletalArcher* instance = new SkeletalArcher(initProperties);
+	SkeletalArcher* instance = new SkeletalArcher(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalArcher::SkeletalArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalArcher::SkeletalArcher(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalArcher::MapKeySkeletalArcher,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,

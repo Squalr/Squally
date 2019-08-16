@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Kringle : public PlatformerFriendly
 {
 public:
-	static Kringle* deserialize(cocos2d::ValueMap& initProperties);
+	static Kringle* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Kringle(cocos2d::ValueMap& initProperties);
+	Kringle(cocos2d::ValueMap& properties);
 	~Kringle();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

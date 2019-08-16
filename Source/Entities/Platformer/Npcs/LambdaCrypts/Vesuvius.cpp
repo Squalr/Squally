@@ -20,16 +20,16 @@ const std::string Vesuvius::MapKeyVesuvius = "vesuvius";
 HexusOpponentData* Vesuvius::HexusOpponentDataInstance = nullptr;
 const std::string Vesuvius::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VESUVIUS";
 
-Vesuvius* Vesuvius::deserialize(ValueMap& initProperties)
+Vesuvius* Vesuvius::deserialize(ValueMap& properties)
 {
-	Vesuvius* instance = new Vesuvius(initProperties);
+	Vesuvius* instance = new Vesuvius(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Vesuvius::Vesuvius(ValueMap& initProperties) : super(initProperties,
+Vesuvius::Vesuvius(ValueMap& properties) : super(properties,
 	Vesuvius::MapKeyVesuvius,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Animations,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Emblem,

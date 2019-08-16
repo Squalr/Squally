@@ -10,12 +10,12 @@ namespace cocos2d
 class EdiCrystal : public RegisterCrystal
 {
 public:
-	static EdiCrystal* create(cocos2d::ValueMap& initProperties);
+	static EdiCrystal* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyEdiCrystal;
 
 protected:
-	EdiCrystal(cocos2d::ValueMap& initProperties);
+	EdiCrystal(cocos2d::ValueMap& properties);
 	~EdiCrystal();
 
 	void onEnter() override;

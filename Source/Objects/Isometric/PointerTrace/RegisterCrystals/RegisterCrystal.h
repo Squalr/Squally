@@ -14,7 +14,7 @@ class SmartAnimationSequenceNode;
 class RegisterCrystal : public GridObject
 {
 protected:
-	RegisterCrystal(cocos2d::ValueMap& initProperties);
+	RegisterCrystal(cocos2d::ValueMap& properties);
 	~RegisterCrystal();
 
 	void onEnter() override;

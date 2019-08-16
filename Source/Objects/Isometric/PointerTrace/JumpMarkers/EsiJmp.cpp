@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EsiJmp::MapKeyEsiJmp = "esi-jmp";
 
-EsiJmp* EsiJmp::create(ValueMap& initProperties)
+EsiJmp* EsiJmp::create(ValueMap& properties)
 {
-	EsiJmp* instance = new EsiJmp(initProperties);
+	EsiJmp* instance = new EsiJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EsiJmp::EsiJmp(ValueMap& initProperties) : super(initProperties)
+EsiJmp::EsiJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EsiJmp);
 	

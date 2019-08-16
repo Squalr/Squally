@@ -15,12 +15,12 @@ class Sound;
 class Tent : public HackableObject
 {
 public:
-	static Tent* create(cocos2d::ValueMap& initProperties);
+	static Tent* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTent;
 
 protected:
-	Tent(cocos2d::ValueMap& initProperties);
+	Tent(cocos2d::ValueMap& properties);
 	virtual ~Tent();
 
 	void onEnter() override;

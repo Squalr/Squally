@@ -16,16 +16,16 @@ using namespace cocos2d;
 const std::string PortalSpawn::MapKeyPortalSpawn = "spawn";
 const std::string PortalSpawn::MapKeyPortalSpawnTransition = "transition";
 
-PortalSpawn* PortalSpawn::create(ValueMap& initProperties)
+PortalSpawn* PortalSpawn::create(ValueMap& properties)
 {
-	PortalSpawn* instance = new PortalSpawn(initProperties);
+	PortalSpawn* instance = new PortalSpawn(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PortalSpawn::PortalSpawn(ValueMap& initProperties) : super(initProperties)
+PortalSpawn::PortalSpawn(ValueMap& properties) : super(properties)
 {
 	this->transition = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyPortalSpawnTransition, Value("")).asString();
 }

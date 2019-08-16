@@ -20,16 +20,16 @@ const std::string Ares::MapKeyAres = "ares";
 HexusOpponentData* Ares::HexusOpponentDataInstance = nullptr;
 const std::string Ares::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ARES";
 
-Ares* Ares::deserialize(ValueMap& initProperties)
+Ares* Ares::deserialize(ValueMap& properties)
 {
-	Ares* instance = new Ares(initProperties);
+	Ares* instance = new Ares(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ares::Ares(ValueMap& initProperties) : super(initProperties,
+Ares::Ares(ValueMap& properties) : super(properties,
 	Ares::MapKeyAres,
 	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,

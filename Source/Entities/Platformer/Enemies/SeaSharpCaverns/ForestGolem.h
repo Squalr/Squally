@@ -8,7 +8,7 @@ class HexusOpponentData;
 class ForestGolem : public PlatformerEnemy
 {
 public:
-	static ForestGolem* deserialize(cocos2d::ValueMap& initProperties);
+	static ForestGolem* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	ForestGolem(cocos2d::ValueMap& initProperties);
+	ForestGolem(cocos2d::ValueMap& properties);
 	~ForestGolem();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -11,20 +11,20 @@ using namespace cocos2d;
 
 const std::string TrapDoorFrame::MapKeyTrapDoorFrame = "trap-door-frame";
 
-TrapDoorFrame* TrapDoorFrame::create(ValueMap& initProperties)
+TrapDoorFrame* TrapDoorFrame::create(ValueMap& properties)
 {
-	TrapDoorFrame* instance = new TrapDoorFrame(initProperties);
+	TrapDoorFrame* instance = new TrapDoorFrame(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TrapDoorFrame::TrapDoorFrame(ValueMap& initProperties) : GameObject(initProperties)
+TrapDoorFrame::TrapDoorFrame(ValueMap& properties) : GameObject(properties)
 {
 	this->trapDoorFrame = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoorFrame);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 
 	this->trapDoorFrame->setFlippedX(this->isFlipped);
 

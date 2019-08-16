@@ -20,16 +20,16 @@ const std::string PenguinWarrior::MapKeyPenguinWarrior = "penguin-warrior";
 HexusOpponentData* PenguinWarrior::HexusOpponentDataInstance = nullptr;
 const std::string PenguinWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_WARRIOR";
 
-PenguinWarrior* PenguinWarrior::deserialize(ValueMap& initProperties)
+PenguinWarrior* PenguinWarrior::deserialize(ValueMap& properties)
 {
-	PenguinWarrior* instance = new PenguinWarrior(initProperties);
+	PenguinWarrior* instance = new PenguinWarrior(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PenguinWarrior::PenguinWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+PenguinWarrior::PenguinWarrior(ValueMap& properties) : PlatformerEnemy(properties,
 	PenguinWarrior::MapKeyPenguinWarrior,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,

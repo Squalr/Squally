@@ -14,12 +14,12 @@ class SmartClippingNode;
 class WoodenGate : public HackableObject
 {
 public:
-	static WoodenGate* create(cocos2d::ValueMap& initProperties);
+	static WoodenGate* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWoodenGate;
 
 protected:
-	WoodenGate(cocos2d::ValueMap& initProperties);
+	WoodenGate(cocos2d::ValueMap& properties);
 	virtual ~WoodenGate();
 
 	void onEnter() override;

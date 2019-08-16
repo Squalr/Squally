@@ -20,16 +20,16 @@ const std::string Bancroft::MapKeyBancroft = "bancroft";
 HexusOpponentData* Bancroft::HexusOpponentDataInstance = nullptr;
 const std::string Bancroft::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BANCROFT";
 
-Bancroft* Bancroft::deserialize(ValueMap& initProperties)
+Bancroft* Bancroft::deserialize(ValueMap& properties)
 {
-	Bancroft* instance = new Bancroft(initProperties);
+	Bancroft* instance = new Bancroft(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Bancroft::Bancroft(ValueMap& initProperties) : super(initProperties,
+Bancroft::Bancroft(ValueMap& properties) : super(properties,
 	Bancroft::MapKeyBancroft,
 	EntityResources::Npcs_VoidStar_Bancroft_Animations,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,

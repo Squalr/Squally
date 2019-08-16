@@ -20,16 +20,16 @@ const std::string VoidDemon::MapKeyVoidDemon = "void-demon";
 HexusOpponentData* VoidDemon::HexusOpponentDataInstance = nullptr;
 const std::string VoidDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_DEMON";
 
-VoidDemon* VoidDemon::deserialize(ValueMap& initProperties)
+VoidDemon* VoidDemon::deserialize(ValueMap& properties)
 {
-	VoidDemon* instance = new VoidDemon(initProperties);
+	VoidDemon* instance = new VoidDemon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VoidDemon::VoidDemon(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+VoidDemon::VoidDemon(ValueMap& properties) : PlatformerEnemy(properties,
 	VoidDemon::MapKeyVoidDemon,
 	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,

@@ -5,13 +5,13 @@
 class ShipTerrain : public TerrainObject
 {
 public:
-	static ShipTerrain* create(cocos2d::ValueMap& initProperties);
+	static ShipTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeShip;
 
 private:
 	typedef TerrainObject super;
 
-	ShipTerrain(cocos2d::ValueMap& initProperties);
+	ShipTerrain(cocos2d::ValueMap& properties);
 	~ShipTerrain();
 };

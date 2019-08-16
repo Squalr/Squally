@@ -20,16 +20,16 @@ const std::string Ralston::MapKeyRalston = "ralston";
 HexusOpponentData* Ralston::HexusOpponentDataInstance = nullptr;
 const std::string Ralston::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RALSTON";
 
-Ralston* Ralston::deserialize(ValueMap& initProperties)
+Ralston* Ralston::deserialize(ValueMap& properties)
 {
-	Ralston* instance = new Ralston(initProperties);
+	Ralston* instance = new Ralston(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ralston::Ralston(ValueMap& initProperties) : super(initProperties,
+Ralston::Ralston(ValueMap& properties) : super(properties,
 	Ralston::MapKeyRalston,
 	EntityResources::Npcs_VoidStar_Ralston_Animations,
 	EntityResources::Npcs_VoidStar_Ralston_Emblem,

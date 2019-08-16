@@ -16,13 +16,13 @@ class Item;
 class ShopItem : public GameObject
 {
 public:
-	static ShopItem* create(cocos2d::ValueMap& initProperties);
+	static ShopItem* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyShopItem;
 	static const std::string MapKeyPropertyShopPool;
 
 protected:
-	ShopItem(cocos2d::ValueMap& initProperties);
+	ShopItem(cocos2d::ValueMap& properties);
 	~ShopItem();
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;

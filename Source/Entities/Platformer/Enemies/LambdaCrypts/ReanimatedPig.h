@@ -8,7 +8,7 @@ class HexusOpponentData;
 class ReanimatedPig : public PlatformerEnemy
 {
 public:
-	static ReanimatedPig* deserialize(cocos2d::ValueMap& initProperties);
+	static ReanimatedPig* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	ReanimatedPig(cocos2d::ValueMap& initProperties);
+	ReanimatedPig(cocos2d::ValueMap& properties);
 	~ReanimatedPig();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

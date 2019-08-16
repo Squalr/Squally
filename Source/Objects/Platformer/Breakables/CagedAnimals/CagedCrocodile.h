@@ -10,12 +10,12 @@ namespace cocos2d
 class CagedCrocodile : public CagedAnimal
 {
 public:
-	static CagedCrocodile* create(cocos2d::ValueMap& initProperties);
+	static CagedCrocodile* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCagedCrocodile;
 
 protected:
-	CagedCrocodile(cocos2d::ValueMap& initProperties);
+	CagedCrocodile(cocos2d::ValueMap& properties);
 	~CagedCrocodile();
 
 	void initializePositions() override;

@@ -20,16 +20,16 @@ const std::string Lioness::MapKeyLioness = "lioness";
 HexusOpponentData* Lioness::HexusOpponentDataInstance = nullptr;
 const std::string Lioness::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIONESS";
 
-Lioness* Lioness::deserialize(ValueMap& initProperties)
+Lioness* Lioness::deserialize(ValueMap& properties)
 {
-	Lioness* instance = new Lioness(initProperties);
+	Lioness* instance = new Lioness(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Lioness::Lioness(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Lioness::Lioness(ValueMap& properties) : PlatformerEnemy(properties,
 	Lioness::MapKeyLioness,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Emblem,

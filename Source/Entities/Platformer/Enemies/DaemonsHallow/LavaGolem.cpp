@@ -20,16 +20,16 @@ const std::string LavaGolem::MapKeyLavaGolem = "lava-golem";
 HexusOpponentData* LavaGolem::HexusOpponentDataInstance = nullptr;
 const std::string LavaGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LAVA_GOLEM";
 
-LavaGolem* LavaGolem::deserialize(ValueMap& initProperties)
+LavaGolem* LavaGolem::deserialize(ValueMap& properties)
 {
-	LavaGolem* instance = new LavaGolem(initProperties);
+	LavaGolem* instance = new LavaGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LavaGolem::LavaGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+LavaGolem::LavaGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	LavaGolem::MapKeyLavaGolem,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,

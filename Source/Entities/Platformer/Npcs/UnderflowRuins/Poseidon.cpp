@@ -20,16 +20,16 @@ const std::string Poseidon::MapKeyPoseidon = "poseidon";
 HexusOpponentData* Poseidon::HexusOpponentDataInstance = nullptr;
 const std::string Poseidon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_POSEIDON";
 
-Poseidon* Poseidon::deserialize(ValueMap& initProperties)
+Poseidon* Poseidon::deserialize(ValueMap& properties)
 {
-	Poseidon* instance = new Poseidon(initProperties);
+	Poseidon* instance = new Poseidon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Poseidon::Poseidon(ValueMap& initProperties) : super(initProperties,
+Poseidon::Poseidon(ValueMap& properties) : super(properties,
 	Poseidon::MapKeyPoseidon,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Emblem,

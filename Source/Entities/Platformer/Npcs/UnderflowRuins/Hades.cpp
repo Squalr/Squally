@@ -20,16 +20,16 @@ const std::string Hades::MapKeyHades = "hades";
 HexusOpponentData* Hades::HexusOpponentDataInstance = nullptr;
 const std::string Hades::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HADES";
 
-Hades* Hades::deserialize(ValueMap& initProperties)
+Hades* Hades::deserialize(ValueMap& properties)
 {
-	Hades* instance = new Hades(initProperties);
+	Hades* instance = new Hades(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Hades::Hades(ValueMap& initProperties) : super(initProperties,
+Hades::Hades(ValueMap& properties) : super(properties,
 	Hades::MapKeyHades,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,

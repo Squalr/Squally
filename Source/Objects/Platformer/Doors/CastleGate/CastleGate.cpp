@@ -27,16 +27,16 @@ const float CastleGate::DoorOpenDelta = 320.0f;
 
 const std::string CastleGate::MapKeyCastleGate = "castle-gate";
 
-CastleGate* CastleGate::create(ValueMap& initProperties)
+CastleGate* CastleGate::create(ValueMap& properties)
 {
-	CastleGate* instance = new CastleGate(initProperties);
+	CastleGate* instance = new CastleGate(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleGate::CastleGate(ValueMap& initProperties) : super(initProperties)
+CastleGate::CastleGate(ValueMap& properties) : super(properties)
 {
 	this->castleBack = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_CastleGate_BRIDGE_1);
@@ -47,7 +47,7 @@ CastleGate::CastleGate(ValueMap& initProperties) : super(initProperties)
 	this->castleDoorFront = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);
 	this->castleDoorFront2 = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);

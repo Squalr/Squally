@@ -20,16 +20,16 @@ const std::string Theldar::MapKeyTheldar = "theldar";
 HexusOpponentData* Theldar::HexusOpponentDataInstance = nullptr;
 const std::string Theldar::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THELDAR";
 
-Theldar* Theldar::deserialize(ValueMap& initProperties)
+Theldar* Theldar::deserialize(ValueMap& properties)
 {
-	Theldar* instance = new Theldar(initProperties);
+	Theldar* instance = new Theldar(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Theldar::Theldar(ValueMap& initProperties) : super(initProperties,
+Theldar::Theldar(ValueMap& properties) : super(properties,
 	Theldar::MapKeyTheldar,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,

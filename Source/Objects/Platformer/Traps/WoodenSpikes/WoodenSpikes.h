@@ -14,12 +14,12 @@ class SmartAnimationSequenceNode;
 class WoodenSpikes : public HackableObject
 {
 public:
-	static WoodenSpikes* create(cocos2d::ValueMap& initProperties);
+	static WoodenSpikes* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWoodenSpikes;
 
 protected:
-	WoodenSpikes(cocos2d::ValueMap& initProperties);
+	WoodenSpikes(cocos2d::ValueMap& properties);
 	virtual ~WoodenSpikes();
 
 	void onEnter() override;

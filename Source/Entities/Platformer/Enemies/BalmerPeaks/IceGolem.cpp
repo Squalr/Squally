@@ -20,16 +20,16 @@ const std::string IceGolem::MapKeyIceGolem = "ice-golem";
 HexusOpponentData* IceGolem::HexusOpponentDataInstance = nullptr;
 const std::string IceGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ICE_GOLEM";
 
-IceGolem* IceGolem::deserialize(ValueMap& initProperties)
+IceGolem* IceGolem::deserialize(ValueMap& properties)
 {
-	IceGolem* instance = new IceGolem(initProperties);
+	IceGolem* instance = new IceGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IceGolem::IceGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+IceGolem::IceGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	IceGolem::MapKeyIceGolem,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,

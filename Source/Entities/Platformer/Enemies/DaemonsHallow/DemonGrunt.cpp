@@ -20,16 +20,16 @@ const std::string DemonGrunt::MapKeyDemonGrunt = "demon-grunt";
 HexusOpponentData* DemonGrunt::HexusOpponentDataInstance = nullptr;
 const std::string DemonGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GRUNT";
 
-DemonGrunt* DemonGrunt::deserialize(ValueMap& initProperties)
+DemonGrunt* DemonGrunt::deserialize(ValueMap& properties)
 {
-	DemonGrunt* instance = new DemonGrunt(initProperties);
+	DemonGrunt* instance = new DemonGrunt(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonGrunt::DemonGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonGrunt::DemonGrunt(ValueMap& properties) : PlatformerEnemy(properties,
 	DemonGrunt::MapKeyDemonGrunt,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,

@@ -20,16 +20,16 @@ const std::string Hera::MapKeyHera = "hera";
 HexusOpponentData* Hera::HexusOpponentDataInstance = nullptr;
 const std::string Hera::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HERA";
 
-Hera* Hera::deserialize(ValueMap& initProperties)
+Hera* Hera::deserialize(ValueMap& properties)
 {
-	Hera* instance = new Hera(initProperties);
+	Hera* instance = new Hera(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Hera::Hera(ValueMap& initProperties) : super(initProperties,
+Hera::Hera(ValueMap& properties) : super(properties,
 	Hera::MapKeyHera,
 	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,

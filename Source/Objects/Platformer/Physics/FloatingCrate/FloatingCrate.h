@@ -12,12 +12,12 @@ class CollisionObject;
 class FloatingCrate : public DensityObject
 {
 public:
-	static FloatingCrate* create(cocos2d::ValueMap& initProperties);
+	static FloatingCrate* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyFloatingCrate;
 
 protected:
-	FloatingCrate(cocos2d::ValueMap& initProperties);
+	FloatingCrate(cocos2d::ValueMap& properties);
 	virtual ~FloatingCrate();
 
 	void onEnter() override;

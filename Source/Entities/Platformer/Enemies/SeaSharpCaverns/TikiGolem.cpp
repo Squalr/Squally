@@ -20,16 +20,16 @@ const std::string TikiGolem::MapKeyTikiGolem = "tiki-golem";
 HexusOpponentData* TikiGolem::HexusOpponentDataInstance = nullptr;
 const std::string TikiGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIKI_GOLEM";
 
-TikiGolem* TikiGolem::deserialize(ValueMap& initProperties)
+TikiGolem* TikiGolem::deserialize(ValueMap& properties)
 {
-	TikiGolem* instance = new TikiGolem(initProperties);
+	TikiGolem* instance = new TikiGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TikiGolem::TikiGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+TikiGolem::TikiGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	TikiGolem::MapKeyTikiGolem,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,

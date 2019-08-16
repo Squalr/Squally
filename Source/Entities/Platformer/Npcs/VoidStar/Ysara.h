@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ysara : public PlatformerFriendly
 {
 public:
-	static Ysara* deserialize(cocos2d::ValueMap& initProperties);
+	static Ysara* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ysara(cocos2d::ValueMap& initProperties);
+	Ysara(cocos2d::ValueMap& properties);
 	~Ysara();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

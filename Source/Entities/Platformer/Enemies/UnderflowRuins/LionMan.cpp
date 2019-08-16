@@ -20,16 +20,16 @@ const std::string LionMan::MapKeyLionMan = "lion-man";
 HexusOpponentData* LionMan::HexusOpponentDataInstance = nullptr;
 const std::string LionMan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LION_MAN";
 
-LionMan* LionMan::deserialize(ValueMap& initProperties)
+LionMan* LionMan::deserialize(ValueMap& properties)
 {
-	LionMan* instance = new LionMan(initProperties);
+	LionMan* instance = new LionMan(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LionMan::LionMan(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+LionMan::LionMan(ValueMap& properties) : PlatformerEnemy(properties,
 	LionMan::MapKeyLionMan,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,

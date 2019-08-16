@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ajax : public PlatformerFriendly
 {
 public:
-	static Ajax* deserialize(cocos2d::ValueMap& initProperties);
+	static Ajax* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ajax(cocos2d::ValueMap& initProperties);
+	Ajax(cocos2d::ValueMap& properties);
 	~Ajax();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

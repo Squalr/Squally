@@ -22,16 +22,16 @@ const std::string Warp::MapKeyWarpFrom = "from";
 const std::string Warp::MapKeyWarpTo = "to";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
 
-Warp* Warp::create(ValueMap& initProperties)
+Warp* Warp::create(ValueMap& properties)
 {
-	Warp* instance = new Warp(initProperties);
+	Warp* instance = new Warp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Warp::Warp(ValueMap& initProperties) : super(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()))
+Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->requiresInteraction = true;
 	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpFrom, Value("")).asString();

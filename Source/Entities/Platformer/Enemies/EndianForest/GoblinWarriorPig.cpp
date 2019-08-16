@@ -20,16 +20,16 @@ const std::string GoblinWarriorPig::MapKeyGoblinWarriorPig = "goblin-warrior-pig
 HexusOpponentData* GoblinWarriorPig::HexusOpponentDataInstance = nullptr;
 const std::string GoblinWarriorPig::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_WARRIOR_PIG";
 
-GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap& initProperties)
+GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap& properties)
 {
-	GoblinWarriorPig* instance = new GoblinWarriorPig(initProperties);
+	GoblinWarriorPig* instance = new GoblinWarriorPig(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinWarriorPig::GoblinWarriorPig(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : PlatformerEnemy(properties,
 	GoblinWarriorPig::MapKeyGoblinWarriorPig,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,

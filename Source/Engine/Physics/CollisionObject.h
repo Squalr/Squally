@@ -20,8 +20,8 @@ namespace cocos2d
 class CollisionObject : public HackableObject
 {
 public:
-	static CollisionObject* create(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
-	static CollisionObject* create(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
+	static CollisionObject* create(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
+	static CollisionObject* create(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
 	virtual ~CollisionObject();
@@ -80,9 +80,9 @@ public:
 	static const float DefaultVerticalDampening;
 
 protected:
-	CollisionObject(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+	CollisionObject(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* initPhysicsBody,
 		std::string deserializedCollisionName, bool isDynamic, bool canRotate);
-	CollisionObject(const cocos2d::ValueMap& initProperties, cocos2d::PhysicsBody* initPhysicsBody,
+	CollisionObject(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* initPhysicsBody,
 		CollisionType collisionType, bool isDynamic, bool canRotate);
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

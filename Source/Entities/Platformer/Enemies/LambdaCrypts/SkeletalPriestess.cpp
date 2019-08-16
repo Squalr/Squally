@@ -20,16 +20,16 @@ const std::string SkeletalPriestess::MapKeySkeletalPriestess = "skeletal-prieste
 HexusOpponentData* SkeletalPriestess::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalPriestess::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PRIESTESS";
 
-SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& initProperties)
+SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& properties)
 {
-	SkeletalPriestess* instance = new SkeletalPriestess(initProperties);
+	SkeletalPriestess* instance = new SkeletalPriestess(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalPriestess::SkeletalPriestess(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalPriestess::MapKeySkeletalPriestess,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,

@@ -20,16 +20,16 @@ const std::string Pan::MapKeyPan = "pan";
 HexusOpponentData* Pan::HexusOpponentDataInstance = nullptr;
 const std::string Pan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PAN";
 
-Pan* Pan::deserialize(ValueMap& initProperties)
+Pan* Pan::deserialize(ValueMap& properties)
 {
-	Pan* instance = new Pan(initProperties);
+	Pan* instance = new Pan(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Pan::Pan(ValueMap& initProperties) : super(initProperties,
+Pan::Pan(ValueMap& properties) : super(properties,
 	Pan::MapKeyPan,
 	EntityResources::Npcs_DaemonsHallow_Pan_Animations,
 	EntityResources::Npcs_DaemonsHallow_Pan_Emblem,

@@ -20,16 +20,16 @@ const std::string Polyphemus::MapKeyPolyphemus = "polyphemus";
 HexusOpponentData* Polyphemus::HexusOpponentDataInstance = nullptr;
 const std::string Polyphemus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_POLYPHEMUS";
 
-Polyphemus* Polyphemus::deserialize(ValueMap& initProperties)
+Polyphemus* Polyphemus::deserialize(ValueMap& properties)
 {
-	Polyphemus* instance = new Polyphemus(initProperties);
+	Polyphemus* instance = new Polyphemus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Polyphemus::Polyphemus(ValueMap& initProperties) : super(initProperties,
+Polyphemus::Polyphemus(ValueMap& properties) : super(properties,
 	Polyphemus::MapKeyPolyphemus,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,

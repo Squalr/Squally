@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string CastleTerrain::MapKeyTerrainTypeCastle = "castle";
 
-CastleTerrain* CastleTerrain::create(ValueMap& initProperties)
+CastleTerrain* CastleTerrain::create(ValueMap& properties)
 {
-	CastleTerrain* instance = new CastleTerrain(initProperties);
+	CastleTerrain* instance = new CastleTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastleTerrain::CastleTerrain(ValueMap& initProperties) : super(
-	initProperties,
+CastleTerrain::CastleTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		CastleTerrain::MapKeyTerrainTypeCastle,

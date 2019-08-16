@@ -20,16 +20,16 @@ const std::string Thion::MapKeyThion = "thion";
 HexusOpponentData* Thion::HexusOpponentDataInstance = nullptr;
 const std::string Thion::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THION";
 
-Thion* Thion::deserialize(ValueMap& initProperties)
+Thion* Thion::deserialize(ValueMap& properties)
 {
-	Thion* instance = new Thion(initProperties);
+	Thion* instance = new Thion(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Thion::Thion(ValueMap& initProperties) : super(initProperties,
+Thion::Thion(ValueMap& properties) : super(properties,
 	Thion::MapKeyThion,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,

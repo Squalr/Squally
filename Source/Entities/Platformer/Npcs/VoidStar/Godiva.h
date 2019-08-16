@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Godiva : public PlatformerFriendly
 {
 public:
-	static Godiva* deserialize(cocos2d::ValueMap& initProperties);
+	static Godiva* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Godiva(cocos2d::ValueMap& initProperties);
+	Godiva(cocos2d::ValueMap& properties);
 	~Godiva();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

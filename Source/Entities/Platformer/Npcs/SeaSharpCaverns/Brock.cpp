@@ -20,16 +20,16 @@ const std::string Brock::MapKeyBrock = "brock";
 HexusOpponentData* Brock::HexusOpponentDataInstance = nullptr;
 const std::string Brock::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BROCK";
 
-Brock* Brock::deserialize(ValueMap& initProperties)
+Brock* Brock::deserialize(ValueMap& properties)
 {
-	Brock* instance = new Brock(initProperties);
+	Brock* instance = new Brock(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Brock::Brock(ValueMap& initProperties) : super(initProperties,
+Brock::Brock(ValueMap& properties) : super(properties,
 	Brock::MapKeyBrock,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,

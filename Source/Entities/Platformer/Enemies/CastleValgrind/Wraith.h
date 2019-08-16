@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Wraith : public PlatformerEnemy
 {
 public:
-	static Wraith* deserialize(cocos2d::ValueMap& initProperties);
+	static Wraith* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Wraith(cocos2d::ValueMap& initProperties);
+	Wraith(cocos2d::ValueMap& properties);
 	~Wraith();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

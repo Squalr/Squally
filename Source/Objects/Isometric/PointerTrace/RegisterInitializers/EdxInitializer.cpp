@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EdxInitializer::MapKeyEdxInitializer = "edx";
 
-EdxInitializer* EdxInitializer::create(ValueMap& initProperties)
+EdxInitializer* EdxInitializer::create(ValueMap& properties)
 {
-	EdxInitializer* instance = new EdxInitializer(initProperties);
+	EdxInitializer* instance = new EdxInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdxInitializer::EdxInitializer(ValueMap& initProperties) : super(initProperties)
+EdxInitializer::EdxInitializer(ValueMap& properties) : super(properties)
 {
 }
 

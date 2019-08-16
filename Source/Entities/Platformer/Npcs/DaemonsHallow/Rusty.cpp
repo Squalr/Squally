@@ -20,16 +20,16 @@ const std::string Rusty::MapKeyRusty = "rusty";
 HexusOpponentData* Rusty::HexusOpponentDataInstance = nullptr;
 const std::string Rusty::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUSTY";
 
-Rusty* Rusty::deserialize(ValueMap& initProperties)
+Rusty* Rusty::deserialize(ValueMap& properties)
 {
-	Rusty* instance = new Rusty(initProperties);
+	Rusty* instance = new Rusty(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rusty::Rusty(ValueMap& initProperties) : super(initProperties,
+Rusty::Rusty(ValueMap& properties) : super(properties,
 	Rusty::MapKeyRusty,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,

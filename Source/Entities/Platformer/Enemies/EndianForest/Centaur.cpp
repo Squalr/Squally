@@ -21,16 +21,16 @@ const std::string Centaur::MapKeyCentaur = "centaur";
 HexusOpponentData* Centaur::HexusOpponentDataInstance = nullptr;
 const std::string Centaur::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CENTAUR";
 
-Centaur* Centaur::deserialize(ValueMap& initProperties)
+Centaur* Centaur::deserialize(ValueMap& properties)
 {
-	Centaur* instance = new Centaur(initProperties);
+	Centaur* instance = new Centaur(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Centaur::Centaur(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Centaur::Centaur(ValueMap& properties) : PlatformerEnemy(properties,
 	Centaur::MapKeyCentaur,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,

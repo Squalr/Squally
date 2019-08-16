@@ -20,16 +20,16 @@ const std::string VoidArcher::MapKeyVoidArcher = "void-archer";
 HexusOpponentData* VoidArcher::HexusOpponentDataInstance = nullptr;
 const std::string VoidArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_ARCHER";
 
-VoidArcher* VoidArcher::deserialize(ValueMap& initProperties)
+VoidArcher* VoidArcher::deserialize(ValueMap& properties)
 {
-	VoidArcher* instance = new VoidArcher(initProperties);
+	VoidArcher* instance = new VoidArcher(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VoidArcher::VoidArcher(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+VoidArcher::VoidArcher(ValueMap& properties) : PlatformerEnemy(properties,
 	VoidArcher::MapKeyVoidArcher,
 	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,

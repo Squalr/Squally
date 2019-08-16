@@ -20,16 +20,16 @@ const std::string Cindra::MapKeyCindra = "cindra";
 HexusOpponentData* Cindra::HexusOpponentDataInstance = nullptr;
 const std::string Cindra::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CINDRA";
 
-Cindra* Cindra::deserialize(ValueMap& initProperties)
+Cindra* Cindra::deserialize(ValueMap& properties)
 {
-	Cindra* instance = new Cindra(initProperties);
+	Cindra* instance = new Cindra(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cindra::Cindra(ValueMap& initProperties) : super(initProperties,
+Cindra::Cindra(ValueMap& properties) : super(properties,
 	Cindra::MapKeyCindra,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,

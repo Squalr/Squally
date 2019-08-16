@@ -21,18 +21,18 @@ const std::string CameraScrollTracker::MapKeyZoom = "zoom";
 const std::string CameraScrollTracker::MapKeyScrollSpeed = "scroll-speed";
 const float CameraScrollTracker::ScrollSpeed = -64.0f;
 
-CameraScrollTracker* CameraScrollTracker::create(ValueMap& initProperties)
+CameraScrollTracker* CameraScrollTracker::create(ValueMap& properties)
 {
-	CameraScrollTracker* instance = new CameraScrollTracker(initProperties);
+	CameraScrollTracker* instance = new CameraScrollTracker(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CameraScrollTracker::CameraScrollTracker(ValueMap& initProperties) : GameObject(initProperties)
+CameraScrollTracker::CameraScrollTracker(ValueMap& properties) : GameObject(properties)
 {
-	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
+	this->zoom = GameUtils::getKeyOrDefault(properties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
 	this->trackTarget = Node::create();
 	this->scrollDistance = 0.0f;
 

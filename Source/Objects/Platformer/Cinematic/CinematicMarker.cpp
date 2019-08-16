@@ -25,18 +25,18 @@ using namespace cocos2d;
 const std::string CinematicMarker::MapKeyCinematicMarker = "cinematic-marker";
 const std::string CinematicMarker::MapKeyId = "id";
 
-CinematicMarker* CinematicMarker::create(ValueMap& initProperties)
+CinematicMarker* CinematicMarker::create(ValueMap& properties)
 {
-	CinematicMarker* instance = new CinematicMarker(initProperties);
+	CinematicMarker* instance = new CinematicMarker(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CinematicMarker::CinematicMarker(ValueMap& initProperties) : super(initProperties)
+CinematicMarker::CinematicMarker(ValueMap& properties) : super(properties)
 {
-	this->id = GameUtils::getKeyOrDefault(initProperties, CinematicMarker::MapKeyId, Value(0)).asInt();
+	this->id = GameUtils::getKeyOrDefault(properties, CinematicMarker::MapKeyId, Value(0)).asInt();
 }
 
 CinematicMarker::~CinematicMarker()

@@ -13,7 +13,7 @@ class SmartAnimationSequenceNode;
 class IOU : public Collectable
 {
 public:
-	static IOU* create(cocos2d::ValueMap& initProperties);
+	static IOU* create(cocos2d::ValueMap& properties);
 
 	static std::string getIdentifier();
 	static std::string getIconResource();
@@ -22,7 +22,7 @@ public:
 	static const std::string MapKeyIOU;
 
 protected:
-	IOU(cocos2d::ValueMap& initProperties);
+	IOU(cocos2d::ValueMap& properties);
 	~IOU();
 
 private:

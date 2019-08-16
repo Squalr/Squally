@@ -20,16 +20,16 @@ const std::string Thurstan::MapKeyThurstan = "thurstan";
 HexusOpponentData* Thurstan::HexusOpponentDataInstance = nullptr;
 const std::string Thurstan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THURSTAN";
 
-Thurstan* Thurstan::deserialize(ValueMap& initProperties)
+Thurstan* Thurstan::deserialize(ValueMap& properties)
 {
-	Thurstan* instance = new Thurstan(initProperties);
+	Thurstan* instance = new Thurstan(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Thurstan::Thurstan(ValueMap& initProperties) : super(initProperties,
+Thurstan::Thurstan(ValueMap& properties) : super(properties,
 	Thurstan::MapKeyThurstan,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,

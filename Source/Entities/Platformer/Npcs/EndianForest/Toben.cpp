@@ -20,16 +20,16 @@ const std::string Toben::MapKeyToben = "toben";
 HexusOpponentData* Toben::HexusOpponentDataInstance = nullptr;
 const std::string Toben::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOBEN";
 
-Toben* Toben::deserialize(ValueMap& initProperties)
+Toben* Toben::deserialize(ValueMap& properties)
 {
-	Toben* instance = new Toben(initProperties);
+	Toben* instance = new Toben(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Toben::Toben(ValueMap& initProperties) : super(initProperties,
+Toben::Toben(ValueMap& properties) : super(properties,
 	Toben::MapKeyToben,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,

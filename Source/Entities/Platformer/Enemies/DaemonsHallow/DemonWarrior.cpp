@@ -20,16 +20,16 @@ const std::string DemonWarrior::MapKeyDemonWarrior = "demon-warrior";
 HexusOpponentData* DemonWarrior::HexusOpponentDataInstance = nullptr;
 const std::string DemonWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_WARRIOR";
 
-DemonWarrior* DemonWarrior::deserialize(ValueMap& initProperties)
+DemonWarrior* DemonWarrior::deserialize(ValueMap& properties)
 {
-	DemonWarrior* instance = new DemonWarrior(initProperties);
+	DemonWarrior* instance = new DemonWarrior(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonWarrior::DemonWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonWarrior::DemonWarrior(ValueMap& properties) : PlatformerEnemy(properties,
 	DemonWarrior::MapKeyDemonWarrior,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,

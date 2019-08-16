@@ -20,16 +20,16 @@ const std::string Brine::MapKeyBrine = "brine";
 HexusOpponentData* Brine::HexusOpponentDataInstance = nullptr;
 const std::string Brine::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BRINE";
 
-Brine* Brine::deserialize(ValueMap& initProperties)
+Brine* Brine::deserialize(ValueMap& properties)
 {
-	Brine* instance = new Brine(initProperties);
+	Brine* instance = new Brine(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Brine::Brine(ValueMap& initProperties) : super(initProperties,
+Brine::Brine(ValueMap& properties) : super(properties,
 	Brine::MapKeyBrine,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,

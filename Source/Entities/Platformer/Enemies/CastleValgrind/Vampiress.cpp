@@ -20,16 +20,16 @@ const std::string Vampiress::MapKeyVampiress = "vampiress";
 HexusOpponentData* Vampiress::HexusOpponentDataInstance = nullptr;
 const std::string Vampiress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VAMPIRESS";
 
-Vampiress* Vampiress::deserialize(ValueMap& initProperties)
+Vampiress* Vampiress::deserialize(ValueMap& properties)
 {
-	Vampiress* instance = new Vampiress(initProperties);
+	Vampiress* instance = new Vampiress(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Vampiress::Vampiress(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Vampiress::Vampiress(ValueMap& properties) : PlatformerEnemy(properties,
 	Vampiress::MapKeyVampiress,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,

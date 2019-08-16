@@ -20,16 +20,16 @@ const std::string Zana::MapKeyZana = "zana";
 HexusOpponentData* Zana::HexusOpponentDataInstance = nullptr;
 const std::string Zana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZANA";
 
-Zana* Zana::deserialize(ValueMap& initProperties)
+Zana* Zana::deserialize(ValueMap& properties)
 {
-	Zana* instance = new Zana(initProperties);
+	Zana* instance = new Zana(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Zana::Zana(ValueMap& initProperties) : super(initProperties,
+Zana::Zana(ValueMap& properties) : super(properties,
 	Zana::MapKeyZana,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,

@@ -20,16 +20,16 @@ const std::string EarthGolem::MapKeyEarthGolem = "earth-golem";
 HexusOpponentData* EarthGolem::HexusOpponentDataInstance = nullptr;
 const std::string EarthGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_GOLEM";
 
-EarthGolem* EarthGolem::deserialize(ValueMap& initProperties)
+EarthGolem* EarthGolem::deserialize(ValueMap& properties)
 {
-	EarthGolem* instance = new EarthGolem(initProperties);
+	EarthGolem* instance = new EarthGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EarthGolem::EarthGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+EarthGolem::EarthGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	EarthGolem::MapKeyEarthGolem,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,

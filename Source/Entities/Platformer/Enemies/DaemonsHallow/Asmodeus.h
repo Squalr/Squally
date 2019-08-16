@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Asmodeus : public PlatformerEnemy
 {
 public:
-	static Asmodeus* deserialize(cocos2d::ValueMap& initProperties);
+	static Asmodeus* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Asmodeus(cocos2d::ValueMap& initProperties);
+	Asmodeus(cocos2d::ValueMap& properties);
 	~Asmodeus();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

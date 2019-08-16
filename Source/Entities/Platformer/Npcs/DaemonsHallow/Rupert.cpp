@@ -20,16 +20,16 @@ const std::string Rupert::MapKeyRupert = "rupert";
 HexusOpponentData* Rupert::HexusOpponentDataInstance = nullptr;
 const std::string Rupert::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RUPERT";
 
-Rupert* Rupert::deserialize(ValueMap& initProperties)
+Rupert* Rupert::deserialize(ValueMap& properties)
 {
-	Rupert* instance = new Rupert(initProperties);
+	Rupert* instance = new Rupert(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Rupert::Rupert(ValueMap& initProperties) : super(initProperties,
+Rupert::Rupert(ValueMap& properties) : super(properties,
 	Rupert::MapKeyRupert,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,

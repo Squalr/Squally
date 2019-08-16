@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-BreakableBase::BreakableBase(ValueMap& initProperties, Size collisionSize, int requiredHits) : super(initProperties)
+BreakableBase::BreakableBase(ValueMap& properties, Size collisionSize, int requiredHits) : super(properties)
 {
 	this->breakableCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), (CollisionType)(PlatformerCollisionType::Breakable), false, false);
 	

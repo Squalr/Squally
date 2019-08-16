@@ -14,12 +14,12 @@ class HackableData;
 class TrapDoor : public HackableObject
 {
 public:
-	static TrapDoor* create(cocos2d::ValueMap& initProperties);
+	static TrapDoor* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTrapDoor;
 
 protected:
-	TrapDoor(cocos2d::ValueMap& initProperties);
+	TrapDoor(cocos2d::ValueMap& properties);
 	virtual ~TrapDoor();
 
 	void onEnter() override;

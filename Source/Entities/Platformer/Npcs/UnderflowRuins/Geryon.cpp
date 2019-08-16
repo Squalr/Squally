@@ -20,16 +20,16 @@ const std::string Geryon::MapKeyGeryon = "geryon";
 HexusOpponentData* Geryon::HexusOpponentDataInstance = nullptr;
 const std::string Geryon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GERYON";
 
-Geryon* Geryon::deserialize(ValueMap& initProperties)
+Geryon* Geryon::deserialize(ValueMap& properties)
 {
-	Geryon* instance = new Geryon(initProperties);
+	Geryon* instance = new Geryon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Geryon::Geryon(ValueMap& initProperties) : super(initProperties,
+Geryon::Geryon(ValueMap& properties) : super(properties,
 	Geryon::MapKeyGeryon,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,

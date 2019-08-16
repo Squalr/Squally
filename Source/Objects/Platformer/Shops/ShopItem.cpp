@@ -22,16 +22,16 @@ using namespace cocos2d;
 const std::string ShopItem::MapKeyShopItem = "shop-item";
 const std::string ShopItem::MapKeyPropertyShopPool = "pool";
 
-ShopItem* ShopItem::create(ValueMap& initProperties)
+ShopItem* ShopItem::create(ValueMap& properties)
 {
-	ShopItem* instance = new ShopItem(initProperties);
+	ShopItem* instance = new ShopItem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopItem::ShopItem(ValueMap& initProperties) : super(initProperties)
+ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
 	this->itemPreview = ItemPreview::create(false);

@@ -28,16 +28,16 @@ using namespace cocos2d;
 
 const std::string LanternGate::MapKeyLanternGate = "lantern-gate";
 
-LanternGate* LanternGate::create(ValueMap& initProperties)
+LanternGate* LanternGate::create(ValueMap& properties)
 {
-	LanternGate* instance = new LanternGate(initProperties);
+	LanternGate* instance = new LanternGate(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LanternGate::LanternGate(ValueMap& initProperties) : super(initProperties, Size(356.0f, 320.0f), Vec2(0.0f, 0.0f))
+LanternGate::LanternGate(ValueMap& properties) : super(properties, Size(356.0f, 320.0f), Vec2(0.0f, 0.0f))
 {
 	this->gateRight = Sprite::create(ObjectResources::Doors_LanternGate_LanternOrangeRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_LanternGate_LanternOrangeLeft);

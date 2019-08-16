@@ -20,16 +20,16 @@ const std::string Mara::MapKeyMara = "mara";
 HexusOpponentData* Mara::HexusOpponentDataInstance = nullptr;
 const std::string Mara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MARA";
 
-Mara* Mara::deserialize(ValueMap& initProperties)
+Mara* Mara::deserialize(ValueMap& properties)
 {
-	Mara* instance = new Mara(initProperties);
+	Mara* instance = new Mara(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mara::Mara(ValueMap& initProperties) : super(initProperties,
+Mara::Mara(ValueMap& properties) : super(properties,
 	Mara::MapKeyMara,
 	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,

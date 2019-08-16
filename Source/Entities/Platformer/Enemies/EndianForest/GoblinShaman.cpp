@@ -20,16 +20,16 @@ const std::string GoblinShaman::MapKeyGoblinShaman = "goblin-shaman";
 HexusOpponentData* GoblinShaman::HexusOpponentDataInstance = nullptr;
 const std::string GoblinShaman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_SHAMAN";
 
-GoblinShaman* GoblinShaman::deserialize(ValueMap& initProperties)
+GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 {
-	GoblinShaman* instance = new GoblinShaman(initProperties);
+	GoblinShaman* instance = new GoblinShaman(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinShaman::GoblinShaman(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+GoblinShaman::GoblinShaman(ValueMap& properties) : PlatformerEnemy(properties,
 	GoblinShaman::MapKeyGoblinShaman,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,

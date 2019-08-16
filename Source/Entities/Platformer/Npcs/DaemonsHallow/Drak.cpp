@@ -20,16 +20,16 @@ const std::string Drak::MapKeyDrak = "drak";
 HexusOpponentData* Drak::HexusOpponentDataInstance = nullptr;
 const std::string Drak::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DRAK";
 
-Drak* Drak::deserialize(ValueMap& initProperties)
+Drak* Drak::deserialize(ValueMap& properties)
 {
-	Drak* instance = new Drak(initProperties);
+	Drak* instance = new Drak(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Drak::Drak(ValueMap& initProperties) : super(initProperties,
+Drak::Drak(ValueMap& properties) : super(properties,
 	Drak::MapKeyDrak,
 	EntityResources::Npcs_DaemonsHallow_Drak_Animations,
 	EntityResources::Npcs_DaemonsHallow_Drak_Emblem,

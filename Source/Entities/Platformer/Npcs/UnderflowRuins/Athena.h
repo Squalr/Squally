@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Athena : public PlatformerFriendly
 {
 public:
-	static Athena* deserialize(cocos2d::ValueMap& initProperties);
+	static Athena* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Athena(cocos2d::ValueMap& initProperties);
+	Athena(cocos2d::ValueMap& properties);
 	~Athena();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

@@ -20,16 +20,16 @@ const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
 HexusOpponentData* MummyWarrior::HexusOpponentDataInstance = nullptr;
 const std::string MummyWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_WARRIOR";
 
-MummyWarrior* MummyWarrior::deserialize(ValueMap& initProperties)
+MummyWarrior* MummyWarrior::deserialize(ValueMap& properties)
 {
-	MummyWarrior* instance = new MummyWarrior(initProperties);
+	MummyWarrior* instance = new MummyWarrior(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MummyWarrior::MummyWarrior(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+MummyWarrior::MummyWarrior(ValueMap& properties) : PlatformerEnemy(properties,
 	MummyWarrior::MapKeyMummyWarrior,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,

@@ -13,12 +13,12 @@ class HackableData;
 class Trigger : public HackableObject
 {
 public:
-	static Trigger* create(cocos2d::ValueMap& initProperties);
+	static Trigger* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTrigger;
 
 protected:
-	Trigger(cocos2d::ValueMap& initProperties);
+	Trigger(cocos2d::ValueMap& properties);
 	virtual ~Trigger();
 
 	void onEnter() override;

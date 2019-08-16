@@ -20,16 +20,16 @@ const std::string Raven::MapKeyRaven = "raven";
 HexusOpponentData* Raven::HexusOpponentDataInstance = nullptr;
 const std::string Raven::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAVEN";
 
-Raven* Raven::deserialize(ValueMap& initProperties)
+Raven* Raven::deserialize(ValueMap& properties)
 {
-	Raven* instance = new Raven(initProperties);
+	Raven* instance = new Raven(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Raven::Raven(ValueMap& initProperties) : super(initProperties,
+Raven::Raven(ValueMap& properties) : super(properties,
 	Raven::MapKeyRaven,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,

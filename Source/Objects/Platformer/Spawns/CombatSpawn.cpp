@@ -17,23 +17,23 @@ const std::string CombatSpawn::MapKeySpawnOrder = "spawn-order";
 const std::string CombatSpawn::MapKeyPlayerSpawn = "player";
 const std::string CombatSpawn::MapKeyEnemySpawn = "enemy";
 
-CombatSpawn* CombatSpawn::create(ValueMap& initProperties)
+CombatSpawn* CombatSpawn::create(ValueMap& properties)
 {
-	CombatSpawn* instance = new CombatSpawn(initProperties);
+	CombatSpawn* instance = new CombatSpawn(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CombatSpawn::CombatSpawn(ValueMap& initProperties) : GameObject(initProperties)
+CombatSpawn::CombatSpawn(ValueMap& properties) : GameObject(properties)
 {
 	this->spawnType = SpawnType::Player;
 	this->spawnOrder = 1;
 
-	if (GameUtils::keyExists(initProperties, CombatSpawn::MapKeySpawnType))
+	if (GameUtils::keyExists(properties, CombatSpawn::MapKeySpawnType))
 	{
-		std::string spawnType = initProperties[CombatSpawn::MapKeySpawnType].asString();
+		std::string spawnType = properties[CombatSpawn::MapKeySpawnType].asString();
 
 		if (spawnType == CombatSpawn::MapKeyEnemySpawn)
 		{
@@ -41,9 +41,9 @@ CombatSpawn::CombatSpawn(ValueMap& initProperties) : GameObject(initProperties)
 		}
 	}
 
-	if (GameUtils::keyExists(initProperties, CombatSpawn::MapKeySpawnOrder))
+	if (GameUtils::keyExists(properties, CombatSpawn::MapKeySpawnOrder))
 	{
-		this->spawnOrder = initProperties[CombatSpawn::MapKeySpawnOrder].asInt();
+		this->spawnOrder = properties[CombatSpawn::MapKeySpawnOrder].asInt();
 	}
 
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));

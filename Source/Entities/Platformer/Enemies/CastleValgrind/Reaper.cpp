@@ -20,16 +20,16 @@ const std::string Reaper::MapKeyReaper = "reaper";
 HexusOpponentData* Reaper::HexusOpponentDataInstance = nullptr;
 const std::string Reaper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REAPER";
 
-Reaper* Reaper::deserialize(ValueMap& initProperties)
+Reaper* Reaper::deserialize(ValueMap& properties)
 {
-	Reaper* instance = new Reaper(initProperties);
+	Reaper* instance = new Reaper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Reaper::Reaper(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Reaper::Reaper(ValueMap& properties) : PlatformerEnemy(properties,
 	Reaper::MapKeyReaper,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,

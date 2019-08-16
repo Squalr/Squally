@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Medusa : public PlatformerEnemy
 {
 public:
-	static Medusa* deserialize(cocos2d::ValueMap& initProperties);
+	static Medusa* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Medusa(cocos2d::ValueMap& initProperties);
+	Medusa(cocos2d::ValueMap& properties);
 	~Medusa();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

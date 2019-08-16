@@ -12,12 +12,12 @@ class CollisionObject;
 class FloatingWoodenBeam : public DensityObject
 {
 public:
-	static FloatingWoodenBeam* create(cocos2d::ValueMap& initProperties);
+	static FloatingWoodenBeam* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyFloatingWoodenBeam;
 
 protected:
-	FloatingWoodenBeam(cocos2d::ValueMap& initProperties);
+	FloatingWoodenBeam(cocos2d::ValueMap& properties);
 	virtual ~FloatingWoodenBeam();
 
 	void onEnter() override;

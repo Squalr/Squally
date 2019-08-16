@@ -20,16 +20,16 @@ const std::string Roger::MapKeyRoger = "roger";
 HexusOpponentData* Roger::HexusOpponentDataInstance = nullptr;
 const std::string Roger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGER";
 
-Roger* Roger::deserialize(ValueMap& initProperties)
+Roger* Roger::deserialize(ValueMap& properties)
 {
-	Roger* instance = new Roger(initProperties);
+	Roger* instance = new Roger(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Roger::Roger(ValueMap& initProperties) : super(initProperties,
+Roger::Roger(ValueMap& properties) : super(properties,
 	Roger::MapKeyRoger,
 	EntityResources::Npcs_LambdaCrypts_Roger_Animations,
 	EntityResources::Npcs_LambdaCrypts_Roger_Emblem,

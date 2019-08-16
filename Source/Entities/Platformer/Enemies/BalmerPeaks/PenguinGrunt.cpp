@@ -20,16 +20,16 @@ const std::string PenguinGrunt::MapKeyPenguinGrunt = "penguin-grunt";
 HexusOpponentData* PenguinGrunt::HexusOpponentDataInstance = nullptr;
 const std::string PenguinGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_GRUNT";
 
-PenguinGrunt* PenguinGrunt::deserialize(ValueMap& initProperties)
+PenguinGrunt* PenguinGrunt::deserialize(ValueMap& properties)
 {
-	PenguinGrunt* instance = new PenguinGrunt(initProperties);
+	PenguinGrunt* instance = new PenguinGrunt(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PenguinGrunt::PenguinGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+PenguinGrunt::PenguinGrunt(ValueMap& properties) : PlatformerEnemy(properties,
 	PenguinGrunt::MapKeyPenguinGrunt,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,

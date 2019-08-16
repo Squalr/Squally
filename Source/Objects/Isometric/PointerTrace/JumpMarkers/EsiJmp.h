@@ -10,12 +10,12 @@ namespace cocos2d
 class EsiJmp : public JmpMarker
 {
 public:
-	static EsiJmp* create(cocos2d::ValueMap& initProperties);
+	static EsiJmp* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyEsiJmp;
 
 protected:
-	EsiJmp(cocos2d::ValueMap& initProperties);
+	EsiJmp(cocos2d::ValueMap& properties);
 	~EsiJmp();
 
 	void onEnter() override;

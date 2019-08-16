@@ -20,16 +20,16 @@ const std::string Leon::MapKeyLeon = "leon";
 HexusOpponentData* Leon::HexusOpponentDataInstance = nullptr;
 const std::string Leon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEON";
 
-Leon* Leon::deserialize(ValueMap& initProperties)
+Leon* Leon::deserialize(ValueMap& properties)
 {
-	Leon* instance = new Leon(initProperties);
+	Leon* instance = new Leon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Leon::Leon(ValueMap& initProperties) : super(initProperties,
+Leon::Leon(ValueMap& properties) : super(properties,
 	Leon::MapKeyLeon,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,

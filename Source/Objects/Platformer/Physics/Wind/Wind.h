@@ -14,12 +14,12 @@ class HackableData;
 class Wind : public HackableObject
 {
 public:
-	static Wind* create(cocos2d::ValueMap& initProperties);
+	static Wind* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWind;
 
 protected:
-	Wind(cocos2d::ValueMap& initProperties);
+	Wind(cocos2d::ValueMap& properties);
 	virtual ~Wind();
 	void onEnter() override;
 	void initializePositions() override;

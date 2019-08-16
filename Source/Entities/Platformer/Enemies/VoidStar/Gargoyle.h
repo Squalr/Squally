@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Gargoyle : public PlatformerEnemy
 {
 public:
-	static Gargoyle* deserialize(cocos2d::ValueMap& initProperties);
+	static Gargoyle* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Gargoyle(cocos2d::ValueMap& initProperties);
+	Gargoyle(cocos2d::ValueMap& properties);
 	~Gargoyle();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

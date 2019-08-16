@@ -20,16 +20,16 @@ const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
 HexusOpponentData* ForestGolem::HexusOpponentDataInstance = nullptr;
 const std::string ForestGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FOREST_GOLEM";
 
-ForestGolem* ForestGolem::deserialize(ValueMap& initProperties)
+ForestGolem* ForestGolem::deserialize(ValueMap& properties)
 {
-	ForestGolem* instance = new ForestGolem(initProperties);
+	ForestGolem* instance = new ForestGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ForestGolem::ForestGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+ForestGolem::ForestGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	ForestGolem::MapKeyForestGolem,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,

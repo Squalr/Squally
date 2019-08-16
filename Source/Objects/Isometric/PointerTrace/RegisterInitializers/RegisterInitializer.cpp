@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-RegisterInitializer::RegisterInitializer(ValueMap& initProperties) : super(initProperties)
+RegisterInitializer::RegisterInitializer(ValueMap& properties) : super(properties)
 {
 }
 

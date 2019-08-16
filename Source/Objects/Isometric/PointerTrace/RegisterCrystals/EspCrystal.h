@@ -10,12 +10,12 @@ namespace cocos2d
 class EspCrystal : public RegisterCrystal
 {
 public:
-	static EspCrystal* create(cocos2d::ValueMap& initProperties);
+	static EspCrystal* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyEspCrystal;
 
 protected:
-	EspCrystal(cocos2d::ValueMap& initProperties);
+	EspCrystal(cocos2d::ValueMap& properties);
 	~EspCrystal();
 
 	void onEnter() override;

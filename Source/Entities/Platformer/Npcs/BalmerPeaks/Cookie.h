@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Cookie : public PlatformerFriendly
 {
 public:
-	static Cookie* deserialize(cocos2d::ValueMap& initProperties);
+	static Cookie* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Cookie(cocos2d::ValueMap& initProperties);
+	Cookie(cocos2d::ValueMap& properties);
 	~Cookie();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

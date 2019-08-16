@@ -6,7 +6,7 @@ class RegisterInitializer : public GridObject
 {
 public:
 protected:
-	RegisterInitializer(cocos2d::ValueMap& initProperties);
+	RegisterInitializer(cocos2d::ValueMap& properties);
 	~RegisterInitializer();
 
 private:

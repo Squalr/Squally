@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Irmik : public PlatformerFriendly
 {
 public:
-	static Irmik* deserialize(cocos2d::ValueMap& initProperties);
+	static Irmik* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Irmik(cocos2d::ValueMap& initProperties);
+	Irmik(cocos2d::ValueMap& properties);
 	~Irmik();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

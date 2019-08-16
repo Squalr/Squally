@@ -20,16 +20,16 @@ const std::string Abomination::MapKeyAbomination = "abomination";
 HexusOpponentData* Abomination::HexusOpponentDataInstance = nullptr;
 const std::string Abomination::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ABOMINATION";
 
-Abomination* Abomination::deserialize(ValueMap& initProperties)
+Abomination* Abomination::deserialize(ValueMap& properties)
 {
-	Abomination* instance = new Abomination(initProperties);
+	Abomination* instance = new Abomination(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Abomination::Abomination(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Abomination::Abomination(ValueMap& properties) : PlatformerEnemy(properties,
 	Abomination::MapKeyAbomination,
 	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,

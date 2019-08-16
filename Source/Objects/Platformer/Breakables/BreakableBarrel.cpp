@@ -19,16 +19,16 @@ using namespace cocos2d;
 
 const std::string BreakableBarrel::MapKeyBreakableBarrel = "breakable-barrel";
 
-BreakableBarrel* BreakableBarrel::create(ValueMap& initProperties)
+BreakableBarrel* BreakableBarrel::create(ValueMap& properties)
 {
-	BreakableBarrel* instance = new BreakableBarrel(initProperties);
+	BreakableBarrel* instance = new BreakableBarrel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BreakableBarrel::BreakableBarrel(ValueMap& initProperties) : super(initProperties, Size(128.0f, 212.0f), 1)
+BreakableBarrel::BreakableBarrel(ValueMap& properties) : super(properties, Size(128.0f, 212.0f), 1)
 {
 	this->barrelSprite = Sprite::create(ObjectResources::Doors_Tent_BARREL);
 	this->explosion = SmartAnimationSequenceNode::create();

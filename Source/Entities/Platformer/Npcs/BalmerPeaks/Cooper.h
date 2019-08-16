@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Cooper : public PlatformerFriendly
 {
 public:
-	static Cooper* deserialize(cocos2d::ValueMap& initProperties);
+	static Cooper* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Cooper(cocos2d::ValueMap& initProperties);
+	Cooper(cocos2d::ValueMap& properties);
 	~Cooper();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

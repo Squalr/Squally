@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Viking : public PlatformerEnemy
 {
 public:
-	static Viking* deserialize(cocos2d::ValueMap& initProperties);
+	static Viking* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Viking(cocos2d::ValueMap& initProperties);
+	Viking(cocos2d::ValueMap& properties);
 	~Viking();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

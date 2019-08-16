@@ -6,9 +6,9 @@ using namespace cocos2d;
 
 const std::string Background::MapKeyBackgroundType = "background";
 
-Background* Background::create(ValueMap& initProperties, std::string name, Node* child)
+Background* Background::create(ValueMap& properties, std::string name, Node* child)
 {
-	Background* instance = new Background(initProperties, name, child);
+	Background* instance = new Background(properties, name, child);
 
 	instance->autorelease();
 

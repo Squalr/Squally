@@ -23,16 +23,16 @@ const std::string Portal::MapKeyPortal = "portal";
 const std::string Portal::MapKeyPortalTransition = "transition";
 const std::string Portal::MapKeyPortalMap = "map";
 
-Portal* Portal::create(ValueMap& initProperties)
+Portal* Portal::create(ValueMap& properties)
 {
-	Portal* instance = new Portal(initProperties, Size(initProperties.at(GameObject::MapKeyWidth).asFloat(), initProperties.at(GameObject::MapKeyHeight).asFloat()));
+	Portal* instance = new Portal(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Portal::Portal(ValueMap& initProperties, Size size, Vec2 offset) : super(initProperties)
+Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 {
 	this->portalCollision = CollisionObject::create(PhysicsBody::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);

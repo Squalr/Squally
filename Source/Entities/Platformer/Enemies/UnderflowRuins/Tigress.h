@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Tigress : public PlatformerEnemy
 {
 public:
-	static Tigress* deserialize(cocos2d::ValueMap& initProperties);
+	static Tigress* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Tigress(cocos2d::ValueMap& initProperties);
+	Tigress(cocos2d::ValueMap& properties);
 	~Tigress();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

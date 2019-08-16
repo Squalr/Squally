@@ -20,16 +20,16 @@ const std::string Tinsel::MapKeyTinsel = "tinsel";
 HexusOpponentData* Tinsel::HexusOpponentDataInstance = nullptr;
 const std::string Tinsel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TINSEL";
 
-Tinsel* Tinsel::deserialize(ValueMap& initProperties)
+Tinsel* Tinsel::deserialize(ValueMap& properties)
 {
-	Tinsel* instance = new Tinsel(initProperties);
+	Tinsel* instance = new Tinsel(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tinsel::Tinsel(ValueMap& initProperties) : super(initProperties,
+Tinsel::Tinsel(ValueMap& properties) : super(properties,
 	Tinsel::MapKeyTinsel,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,

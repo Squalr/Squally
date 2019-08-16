@@ -20,16 +20,16 @@ const std::string Bard::MapKeyBard = "bard";
 HexusOpponentData* Bard::HexusOpponentDataInstance = nullptr;
 const std::string Bard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BARD";
 
-Bard* Bard::deserialize(ValueMap& initProperties)
+Bard* Bard::deserialize(ValueMap& properties)
 {
-	Bard* instance = new Bard(initProperties);
+	Bard* instance = new Bard(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Bard::Bard(ValueMap& initProperties) : super(initProperties,
+Bard::Bard(ValueMap& properties) : super(properties,
 	Bard::MapKeyBard,
 	EntityResources::Npcs_EndianForest_Bard_Animations,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,

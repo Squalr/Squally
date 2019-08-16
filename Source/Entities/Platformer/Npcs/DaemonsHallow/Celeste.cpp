@@ -20,16 +20,16 @@ const std::string Celeste::MapKeyCeleste = "celeste";
 HexusOpponentData* Celeste::HexusOpponentDataInstance = nullptr;
 const std::string Celeste::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CELESTE";
 
-Celeste* Celeste::deserialize(ValueMap& initProperties)
+Celeste* Celeste::deserialize(ValueMap& properties)
 {
-	Celeste* instance = new Celeste(initProperties);
+	Celeste* instance = new Celeste(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Celeste::Celeste(ValueMap& initProperties) : super(initProperties,
+Celeste::Celeste(ValueMap& properties) : super(properties,
 	Celeste::MapKeyCeleste,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Emblem,

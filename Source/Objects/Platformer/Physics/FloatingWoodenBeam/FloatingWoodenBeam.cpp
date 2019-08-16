@@ -31,16 +31,16 @@ using namespace cocos2d;
 
 const std::string FloatingWoodenBeam::MapKeyFloatingWoodenBeam = "floating-wooden-beam";
 
-FloatingWoodenBeam* FloatingWoodenBeam::create(ValueMap& initProperties)
+FloatingWoodenBeam* FloatingWoodenBeam::create(ValueMap& properties)
 {
-	FloatingWoodenBeam* instance = new FloatingWoodenBeam(initProperties);
+	FloatingWoodenBeam* instance = new FloatingWoodenBeam(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-FloatingWoodenBeam::FloatingWoodenBeam(ValueMap& initProperties) : super(initProperties)
+FloatingWoodenBeam::FloatingWoodenBeam(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_WoodenBeam_WoodenBeam);
 	this->collision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, false, true);

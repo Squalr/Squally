@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Fraya : public PlatformerFriendly
 {
 public:
-	static Fraya* deserialize(cocos2d::ValueMap& initProperties);
+	static Fraya* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Fraya(cocos2d::ValueMap& initProperties);
+	Fraya(cocos2d::ValueMap& properties);
 	~Fraya();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

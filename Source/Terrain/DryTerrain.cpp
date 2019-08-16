@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string DryTerrain::MapKeyTerrainTypeDry = "dry";
 
-DryTerrain* DryTerrain::create(ValueMap& initProperties)
+DryTerrain* DryTerrain::create(ValueMap& properties)
 {
-	DryTerrain* instance = new DryTerrain(initProperties);
+	DryTerrain* instance = new DryTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DryTerrain::DryTerrain(ValueMap& initProperties) : super(
-	initProperties,
+DryTerrain::DryTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		DryTerrain::MapKeyTerrainTypeDry,

@@ -26,16 +26,16 @@ using namespace cocos2d;
 const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
 const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
-MetalSpikes* MetalSpikes::create(ValueMap& initProperties)
+MetalSpikes* MetalSpikes::create(ValueMap& properties)
 {
-	MetalSpikes* instance = new MetalSpikes(initProperties);
+	MetalSpikes* instance = new MetalSpikes(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MetalSpikes::MetalSpikes(ValueMap& initProperties) : super(initProperties)
+MetalSpikes::MetalSpikes(ValueMap& properties) : super(properties)
 {
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;

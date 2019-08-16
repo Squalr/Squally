@@ -20,16 +20,16 @@ const std::string Xenon::MapKeyXenon = "xenon";
 HexusOpponentData* Xenon::HexusOpponentDataInstance = nullptr;
 const std::string Xenon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_XENON";
 
-Xenon* Xenon::deserialize(ValueMap& initProperties)
+Xenon* Xenon::deserialize(ValueMap& properties)
 {
-	Xenon* instance = new Xenon(initProperties);
+	Xenon* instance = new Xenon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Xenon::Xenon(ValueMap& initProperties) : super(initProperties,
+Xenon::Xenon(ValueMap& properties) : super(properties,
 	Xenon::MapKeyXenon,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,

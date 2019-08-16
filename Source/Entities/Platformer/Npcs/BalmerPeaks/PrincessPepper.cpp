@@ -20,16 +20,16 @@ const std::string PrincessPepper::MapKeyPrincessPepper = "princess-pepper";
 HexusOpponentData* PrincessPepper::HexusOpponentDataInstance = nullptr;
 const std::string PrincessPepper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_PEPPER";
 
-PrincessPepper* PrincessPepper::deserialize(ValueMap& initProperties)
+PrincessPepper* PrincessPepper::deserialize(ValueMap& properties)
 {
-	PrincessPepper* instance = new PrincessPepper(initProperties);
+	PrincessPepper* instance = new PrincessPepper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PrincessPepper::PrincessPepper(ValueMap& initProperties) : super(initProperties,
+PrincessPepper::PrincessPepper(ValueMap& properties) : super(properties,
 	PrincessPepper::MapKeyPrincessPepper,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,

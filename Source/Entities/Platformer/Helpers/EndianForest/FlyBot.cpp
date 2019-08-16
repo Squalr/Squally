@@ -46,16 +46,16 @@ const std::string FlyBot::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FLY_BOT";
 const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
 const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
 
-FlyBot* FlyBot::deserialize(ValueMap& initProperties)
+FlyBot* FlyBot::deserialize(ValueMap& properties)
 {
-	FlyBot* instance = new FlyBot(initProperties);
+	FlyBot* instance = new FlyBot(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FlyBot::FlyBot(ValueMap& initProperties) : PlatformerEntity(initProperties,
+FlyBot::FlyBot(ValueMap& properties) : PlatformerEntity(properties,
 	FlyBot::MapKeyFlyBot,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Animations,
 	EntityResources::Misc_DaemonsHallow_FlyBot_Emblem,

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Ralston : public PlatformerFriendly
 {
 public:
-	static Ralston* deserialize(cocos2d::ValueMap& initProperties);
+	static Ralston* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Ralston(cocos2d::ValueMap& initProperties);
+	Ralston(cocos2d::ValueMap& properties);
 	~Ralston();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

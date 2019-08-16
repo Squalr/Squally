@@ -38,16 +38,16 @@ const float Catapult::InteractCooldown = 3.0f;
 const float Catapult::LaunchPowerDefault = 0.90f;
 const Vec2 Catapult::LaunchVelocityBase = Vec2(1200.0f, 1200.0f);
 
-Catapult* Catapult::create(ValueMap& initProperties)
+Catapult* Catapult::create(ValueMap& properties)
 {
-	Catapult* instance = new Catapult(initProperties);
+	Catapult* instance = new Catapult(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-Catapult::Catapult(ValueMap& initProperties) : super(initProperties)
+Catapult::Catapult(ValueMap& properties) : super(properties)
 {
 	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
 	this->catapultCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, false, false);

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class FrostFiend : public PlatformerEnemy
 {
 public:
-	static FrostFiend* deserialize(cocos2d::ValueMap& initProperties);
+	static FrostFiend* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	FrostFiend(cocos2d::ValueMap& initProperties);
+	FrostFiend(cocos2d::ValueMap& properties);
 	~FrostFiend();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

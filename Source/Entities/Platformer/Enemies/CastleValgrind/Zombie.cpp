@@ -20,16 +20,16 @@ const std::string Zombie::MapKeyZombie = "zombie";
 HexusOpponentData* Zombie::HexusOpponentDataInstance = nullptr;
 const std::string Zombie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZOMBIE";
 
-Zombie* Zombie::deserialize(ValueMap& initProperties)
+Zombie* Zombie::deserialize(ValueMap& properties)
 {
-	Zombie* instance = new Zombie(initProperties);
+	Zombie* instance = new Zombie(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Zombie::Zombie(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Zombie::Zombie(ValueMap& properties) : PlatformerEnemy(properties,
 	Zombie::MapKeyZombie,
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,

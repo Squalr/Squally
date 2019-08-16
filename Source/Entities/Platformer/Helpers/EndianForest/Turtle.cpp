@@ -20,16 +20,16 @@ const std::string Turtle::MapKeyTurtle = "turtle";
 HexusOpponentData* Turtle::HexusOpponentDataInstance = nullptr;
 const std::string Turtle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TURTLE";
 
-Turtle* Turtle::deserialize(ValueMap& initProperties)
+Turtle* Turtle::deserialize(ValueMap& properties)
 {
-	Turtle* instance = new Turtle(initProperties);
+	Turtle* instance = new Turtle(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Turtle::Turtle(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Turtle::Turtle(ValueMap& properties) : PlatformerEntity(properties,
 	Turtle::MapKeyTurtle,
 	EntityResources::Helpers_EndianForest_Turtle_Animations,
 	EntityResources::Helpers_EndianForest_Turtle_Emblem,

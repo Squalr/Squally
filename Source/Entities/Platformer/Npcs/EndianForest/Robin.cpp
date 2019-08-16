@@ -20,16 +20,16 @@ const std::string Robin::MapKeyRobin = "robin";
 HexusOpponentData* Robin::HexusOpponentDataInstance = nullptr;
 const std::string Robin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBIN";
 
-Robin* Robin::deserialize(ValueMap& initProperties)
+Robin* Robin::deserialize(ValueMap& properties)
 {
-	Robin* instance = new Robin(initProperties);
+	Robin* instance = new Robin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Robin::Robin(ValueMap& initProperties) : super(initProperties,
+Robin::Robin(ValueMap& properties) : super(properties,
 	Robin::MapKeyRobin,
 	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,

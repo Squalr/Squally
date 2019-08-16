@@ -20,16 +20,16 @@ const std::string Thatcher::MapKeyThatcher = "thatcher";
 HexusOpponentData* Thatcher::HexusOpponentDataInstance = nullptr;
 const std::string Thatcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THATCHER";
 
-Thatcher* Thatcher::deserialize(ValueMap& initProperties)
+Thatcher* Thatcher::deserialize(ValueMap& properties)
 {
-	Thatcher* instance = new Thatcher(initProperties);
+	Thatcher* instance = new Thatcher(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Thatcher::Thatcher(ValueMap& initProperties) : super(initProperties,
+Thatcher::Thatcher(ValueMap& properties) : super(properties,
 	Thatcher::MapKeyThatcher,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Emblem,

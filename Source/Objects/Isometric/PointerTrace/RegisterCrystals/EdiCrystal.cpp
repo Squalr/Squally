@@ -17,16 +17,16 @@ using namespace cocos2d;
 
 const std::string EdiCrystal::MapKeyEdiCrystal = "edi-crystal";
 
-EdiCrystal* EdiCrystal::create(ValueMap& initProperties)
+EdiCrystal* EdiCrystal::create(ValueMap& properties)
 {
-	EdiCrystal* instance = new EdiCrystal(initProperties);
+	EdiCrystal* instance = new EdiCrystal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiCrystal::EdiCrystal(ValueMap& initProperties) : super(initProperties)
+EdiCrystal::EdiCrystal(ValueMap& properties) : super(properties)
 {
 	this->crystal = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EdiCrystal);
 	

@@ -20,16 +20,16 @@ const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
 HexusOpponentData* YetiBaby::HexusOpponentDataInstance = nullptr;
 const std::string YetiBaby::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI_BABY";
 
-YetiBaby* YetiBaby::deserialize(ValueMap& initProperties)
+YetiBaby* YetiBaby::deserialize(ValueMap& properties)
 {
-	YetiBaby* instance = new YetiBaby(initProperties);
+	YetiBaby* instance = new YetiBaby(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-YetiBaby::YetiBaby(ValueMap& initProperties) : PlatformerEntity(initProperties,
+YetiBaby::YetiBaby(ValueMap& properties) : PlatformerEntity(properties,
 	YetiBaby::MapKeyYetiBaby,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,

@@ -16,16 +16,16 @@ const float Water::WaterGravity = 0.0f;
 const Color4B Water::SurfaceColor = Color4B(105, 190, 206, 212);
 const Color4B Water::BodyColor = Color4B(98, 186, 209, 64);
 
-Water* Water::create(ValueMap& initProperties)
+Water* Water::create(ValueMap& properties)
 {
-	Water* instance = new Water(initProperties);
+	Water* instance = new Water(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Water::Water(ValueMap& initProperties) : super(initProperties)
+Water::Water(ValueMap& properties) : super(properties)
 {
 	this->waterSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->elapsed = 0.0f;

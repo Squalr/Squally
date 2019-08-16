@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string EaxPtrJmp::MapKeyEaxPtrJmp = "[eax]-jmp";
 
-EaxPtrJmp* EaxPtrJmp::create(ValueMap& initProperties)
+EaxPtrJmp* EaxPtrJmp::create(ValueMap& properties)
 {
-	EaxPtrJmp* instance = new EaxPtrJmp(initProperties);
+	EaxPtrJmp* instance = new EaxPtrJmp(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EaxPtrJmp::EaxPtrJmp(ValueMap& initProperties) : super(initProperties)
+EaxPtrJmp::EaxPtrJmp(ValueMap& properties) : super(properties)
 {
 	this->marker = Sprite::create(IsometricObjectResources::PointerTrace_Crystals_EaxPtrJmp);
 	

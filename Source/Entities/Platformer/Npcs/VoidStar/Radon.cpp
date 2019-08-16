@@ -20,16 +20,16 @@ const std::string Radon::MapKeyRadon = "radon";
 HexusOpponentData* Radon::HexusOpponentDataInstance = nullptr;
 const std::string Radon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RADON";
 
-Radon* Radon::deserialize(ValueMap& initProperties)
+Radon* Radon::deserialize(ValueMap& properties)
 {
-	Radon* instance = new Radon(initProperties);
+	Radon* instance = new Radon(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Radon::Radon(ValueMap& initProperties) : super(initProperties,
+Radon::Radon(ValueMap& properties) : super(properties,
 	Radon::MapKeyRadon,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
 	EntityResources::Npcs_VoidStar_Radon_Emblem,

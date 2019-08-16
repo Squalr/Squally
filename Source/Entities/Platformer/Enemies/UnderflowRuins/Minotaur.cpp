@@ -20,16 +20,16 @@ const std::string Minotaur::MapKeyMinotaur = "minotaur";
 HexusOpponentData* Minotaur::HexusOpponentDataInstance = nullptr;
 const std::string Minotaur::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOTAUR";
 
-Minotaur* Minotaur::deserialize(ValueMap& initProperties)
+Minotaur* Minotaur::deserialize(ValueMap& properties)
 {
-	Minotaur* instance = new Minotaur(initProperties);
+	Minotaur* instance = new Minotaur(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Minotaur::Minotaur(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Minotaur::Minotaur(ValueMap& properties) : PlatformerEnemy(properties,
 	Minotaur::MapKeyMinotaur,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,

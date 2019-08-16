@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Rusty : public PlatformerFriendly
 {
 public:
-	static Rusty* deserialize(cocos2d::ValueMap& initProperties);
+	static Rusty* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Rusty(cocos2d::ValueMap& initProperties);
+	Rusty(cocos2d::ValueMap& properties);
 	~Rusty();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

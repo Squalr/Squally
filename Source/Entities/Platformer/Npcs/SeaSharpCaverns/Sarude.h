@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Sarude : public PlatformerFriendly
 {
 public:
-	static Sarude* deserialize(cocos2d::ValueMap& initProperties);
+	static Sarude* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Sarude(cocos2d::ValueMap& initProperties);
+	Sarude(cocos2d::ValueMap& properties);
 	~Sarude();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

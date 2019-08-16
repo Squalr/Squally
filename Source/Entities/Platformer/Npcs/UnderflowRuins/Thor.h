@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Thor : public PlatformerFriendly
 {
 public:
-	static Thor* deserialize(cocos2d::ValueMap& initProperties);
+	static Thor* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Thor(cocos2d::ValueMap& initProperties);
+	Thor(cocos2d::ValueMap& properties);
 	~Thor();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

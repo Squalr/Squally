@@ -20,16 +20,16 @@ const std::string Apple::MapKeyApple = "apple";
 HexusOpponentData* Apple::HexusOpponentDataInstance = nullptr;
 const std::string Apple::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APPLE";
 
-Apple* Apple::deserialize(ValueMap& initProperties)
+Apple* Apple::deserialize(ValueMap& properties)
 {
-	Apple* instance = new Apple(initProperties);
+	Apple* instance = new Apple(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Apple::Apple(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Apple::Apple(ValueMap& properties) : PlatformerEntity(properties,
 	Apple::MapKeyApple,
 	EntityResources::Helpers_DaemonsHallow_Apple_Animations,
 	EntityResources::Helpers_DaemonsHallow_Apple_Emblem,

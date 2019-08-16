@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Cindra : public PlatformerFriendly
 {
 public:
-	static Cindra* deserialize(cocos2d::ValueMap& initProperties);
+	static Cindra* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Cindra(cocos2d::ValueMap& initProperties);
+	Cindra(cocos2d::ValueMap& properties);
 	~Cindra();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

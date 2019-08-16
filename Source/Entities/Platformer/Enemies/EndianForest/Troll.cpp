@@ -20,16 +20,16 @@ const std::string Troll::MapKeyTroll = "troll";
 HexusOpponentData* Troll::HexusOpponentDataInstance = nullptr;
 const std::string Troll::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TROLL";
 
-Troll* Troll::deserialize(ValueMap& initProperties)
+Troll* Troll::deserialize(ValueMap& properties)
 {
-	Troll* instance = new Troll(initProperties);
+	Troll* instance = new Troll(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Troll::Troll(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Troll::Troll(ValueMap& properties) : PlatformerEnemy(properties,
 	Troll::MapKeyTroll,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,

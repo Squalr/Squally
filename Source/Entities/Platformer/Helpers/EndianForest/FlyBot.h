@@ -10,7 +10,7 @@ class HexusOpponentData;
 class FlyBot : public PlatformerEntity
 {
 public:
-	static FlyBot* deserialize(cocos2d::ValueMap& initProperties);
+	static FlyBot* deserialize(cocos2d::ValueMap& properties);
 
 	float getFloatHeight() override;
 
@@ -26,7 +26,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	FlyBot(cocos2d::ValueMap& initProperties);
+	FlyBot(cocos2d::ValueMap& properties);
 	~FlyBot();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

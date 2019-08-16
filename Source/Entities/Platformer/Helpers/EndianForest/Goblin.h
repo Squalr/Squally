@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Goblin : public PlatformerEntity
 {
 public:
-	static Goblin* deserialize(cocos2d::ValueMap& initProperties);
+	static Goblin* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Goblin(cocos2d::ValueMap& initProperties);
+	Goblin(cocos2d::ValueMap& properties);
 	~Goblin();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

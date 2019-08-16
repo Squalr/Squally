@@ -12,12 +12,12 @@ class CollisionObject;
 class FloatingRock : public DensityObject
 {
 public:
-	static FloatingRock* create(cocos2d::ValueMap& initProperties);
+	static FloatingRock* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyFloatingRock;
 
 protected:
-	FloatingRock(cocos2d::ValueMap& initProperties);
+	FloatingRock(cocos2d::ValueMap& properties);
 	virtual ~FloatingRock();
 
 	void onEnter() override;

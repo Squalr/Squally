@@ -31,16 +31,16 @@ using namespace cocos2d;
 
 const std::string FloatingAsteroid::MapKeyFloatingAsteroid = "floating-asteroid";
 
-FloatingAsteroid* FloatingAsteroid::create(ValueMap& initProperties)
+FloatingAsteroid* FloatingAsteroid::create(ValueMap& properties)
 {
-	FloatingAsteroid* instance = new FloatingAsteroid(initProperties);
+	FloatingAsteroid* instance = new FloatingAsteroid(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-FloatingAsteroid::FloatingAsteroid(ValueMap& initProperties) : super(initProperties)
+FloatingAsteroid::FloatingAsteroid(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_Asteroid_Asteroid);
 	this->collision = CollisionObject::create(PhysicsBody::createCircle(96.0f), (CollisionType)PlatformerCollisionType::Physics, false, true);

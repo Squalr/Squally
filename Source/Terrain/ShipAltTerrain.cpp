@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string ShipAltTerrain::MapKeyTerrainTypeShipAlt = "ship-alt";
 
-ShipAltTerrain* ShipAltTerrain::create(ValueMap& initProperties)
+ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 {
-	ShipAltTerrain* instance = new ShipAltTerrain(initProperties);
+	ShipAltTerrain* instance = new ShipAltTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShipAltTerrain::ShipAltTerrain(ValueMap& initProperties) : super(
-	initProperties,
+ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		ShipAltTerrain::MapKeyTerrainTypeShipAlt,

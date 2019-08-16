@@ -20,16 +20,16 @@ const std::string Exterminator::MapKeyExterminator = "exterminator";
 HexusOpponentData* Exterminator::HexusOpponentDataInstance = nullptr;
 const std::string Exterminator::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EXTERMINATOR";
 
-Exterminator* Exterminator::deserialize(ValueMap& initProperties)
+Exterminator* Exterminator::deserialize(ValueMap& properties)
 {
-	Exterminator* instance = new Exterminator(initProperties);
+	Exterminator* instance = new Exterminator(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Exterminator::Exterminator(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Exterminator::Exterminator(ValueMap& properties) : PlatformerEnemy(properties,
 	Exterminator::MapKeyExterminator,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,

@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string ShadeGrassTerrain::MapKeyTerrainTypeShadeGrass = "shade-grass";
 
-ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& initProperties)
+ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& properties)
 {
-	ShadeGrassTerrain* instance = new ShadeGrassTerrain(initProperties);
+	ShadeGrassTerrain* instance = new ShadeGrassTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& initProperties) : super(
-	initProperties,
+ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		ShadeGrassTerrain::MapKeyTerrainTypeShadeGrass,

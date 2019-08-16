@@ -20,16 +20,16 @@ const std::string Alder::MapKeyAlder = "alder";
 HexusOpponentData* Alder::HexusOpponentDataInstance = nullptr;
 const std::string Alder::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ALDER";
 
-Alder* Alder::deserialize(ValueMap& initProperties)
+Alder* Alder::deserialize(ValueMap& properties)
 {
-	Alder* instance = new Alder(initProperties);
+	Alder* instance = new Alder(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Alder::Alder(ValueMap& initProperties) : super(initProperties,
+Alder::Alder(ValueMap& properties) : super(properties,
 	Alder::MapKeyAlder,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,

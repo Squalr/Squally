@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Toben : public PlatformerFriendly
 {
 public:
-	static Toben* deserialize(cocos2d::ValueMap& initProperties);
+	static Toben* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Toben(cocos2d::ValueMap& initProperties);
+	Toben(cocos2d::ValueMap& properties);
 	~Toben();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

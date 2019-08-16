@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string Trigger::MapKeyTrigger = "trigger";
 
-Trigger* Trigger::create(ValueMap& initProperties)
+Trigger* Trigger::create(ValueMap& properties)
 {
-	Trigger* instance = new Trigger(initProperties);
+	Trigger* instance = new Trigger(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Trigger::Trigger(ValueMap& initProperties) : super(initProperties)
+Trigger::Trigger(ValueMap& properties) : super(properties)
 {
 	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(PhysicsBody::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);

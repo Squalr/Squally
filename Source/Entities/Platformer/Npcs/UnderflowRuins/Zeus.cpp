@@ -20,16 +20,16 @@ const std::string Zeus::MapKeyZeus = "zeus";
 HexusOpponentData* Zeus::HexusOpponentDataInstance = nullptr;
 const std::string Zeus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZEUS";
 
-Zeus* Zeus::deserialize(ValueMap& initProperties)
+Zeus* Zeus::deserialize(ValueMap& properties)
 {
-	Zeus* instance = new Zeus(initProperties);
+	Zeus* instance = new Zeus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Zeus::Zeus(ValueMap& initProperties) : super(initProperties,
+Zeus::Zeus(ValueMap& properties) : super(properties,
 	Zeus::MapKeyZeus,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,

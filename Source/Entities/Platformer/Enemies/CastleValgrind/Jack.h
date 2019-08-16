@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Jack : public PlatformerEnemy
 {
 public:
-	static Jack* deserialize(cocos2d::ValueMap& initProperties);
+	static Jack* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Jack(cocos2d::ValueMap& initProperties);
+	Jack(cocos2d::ValueMap& properties);
 	~Jack();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

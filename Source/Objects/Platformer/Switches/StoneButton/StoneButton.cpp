@@ -28,16 +28,16 @@ const std::string StoneButton::MapKeyStoneButton = "stone-button";
 const float StoneButton::ButtonPressureSpeed = 32.0f;
 const float StoneButton::ButtonPressureOffsetMin = 8.0f;
 
-StoneButton* StoneButton::create(ValueMap& initProperties)
+StoneButton* StoneButton::create(ValueMap& properties)
 {
-	StoneButton* instance = new StoneButton(initProperties);
+	StoneButton* instance = new StoneButton(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-StoneButton::StoneButton(ValueMap& initProperties) : super(initProperties)
+StoneButton::StoneButton(ValueMap& properties) : super(properties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);

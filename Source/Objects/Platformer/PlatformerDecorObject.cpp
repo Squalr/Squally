@@ -2,16 +2,16 @@
 
 using namespace cocos2d;
 
-PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& initProperties)
+PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& properties)
 {
-	PlatformerDecorObject* instance = new PlatformerDecorObject(initProperties);
+	PlatformerDecorObject* instance = new PlatformerDecorObject(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PlatformerDecorObject::PlatformerDecorObject(ValueMap& initProperties) : super(initProperties)
+PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(properties)
 {
 }
 

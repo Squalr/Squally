@@ -14,12 +14,12 @@ class SmartClippingNode;
 class CastleGate : public HackableObject
 {
 public:
-	static CastleGate* create(cocos2d::ValueMap& initProperties);
+	static CastleGate* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCastleGate;
 
 protected:
-	CastleGate(cocos2d::ValueMap& initProperties);
+	CastleGate(cocos2d::ValueMap& properties);
 	~CastleGate();
 
 	void onEnter() override;

@@ -5,7 +5,7 @@
 class EcxPtrInitializer : public PtrInitializerBase
 {
 public:
-	static EcxPtrInitializer* create(cocos2d::ValueMap& initProperties);
+	static EcxPtrInitializer* create(cocos2d::ValueMap& properties);
 
 	void setGridIndex(int gridIndex) override;
 
@@ -13,7 +13,7 @@ public:
 	static const std::string MapKeyEcxPtrInitializer;
 
 protected:
-	EcxPtrInitializer(cocos2d::ValueMap& initProperties);
+	EcxPtrInitializer(cocos2d::ValueMap& properties);
 	~EcxPtrInitializer();
 
 private:

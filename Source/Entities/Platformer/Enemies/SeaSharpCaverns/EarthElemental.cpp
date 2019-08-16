@@ -20,16 +20,16 @@ const std::string EarthElemental::MapKeyEarthElemental = "earth-elemental";
 HexusOpponentData* EarthElemental::HexusOpponentDataInstance = nullptr;
 const std::string EarthElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_ELEMENTAL";
 
-EarthElemental* EarthElemental::deserialize(ValueMap& initProperties)
+EarthElemental* EarthElemental::deserialize(ValueMap& properties)
 {
-	EarthElemental* instance = new EarthElemental(initProperties);
+	EarthElemental* instance = new EarthElemental(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EarthElemental::EarthElemental(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+EarthElemental::EarthElemental(ValueMap& properties) : PlatformerEnemy(properties,
 	EarthElemental::MapKeyEarthElemental,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,

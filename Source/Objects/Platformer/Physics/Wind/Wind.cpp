@@ -27,16 +27,16 @@ using namespace cocos2d;
 const std::string Wind::MapKeyWind = "wind";
 const float Wind::BaseWindSpeed = 10240.0f;
 
-Wind* Wind::create(ValueMap& initProperties)
+Wind* Wind::create(ValueMap& properties)
 {
-	Wind* instance = new Wind(initProperties);
+	Wind* instance = new Wind(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Wind::Wind(ValueMap& initProperties) : super(initProperties)
+Wind::Wind(ValueMap& properties) : super(properties)
 {
 	float speedX = 0.0f;
 	float speedY = 0.0f;

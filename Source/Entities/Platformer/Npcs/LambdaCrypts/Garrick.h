@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Garrick : public PlatformerFriendly
 {
 public:
-	static Garrick* deserialize(cocos2d::ValueMap& initProperties);
+	static Garrick* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Garrick(cocos2d::ValueMap& initProperties);
+	Garrick(cocos2d::ValueMap& properties);
 	~Garrick();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

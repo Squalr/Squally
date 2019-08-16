@@ -20,16 +20,16 @@ const std::string Princess::MapKeyPrincess = "princess";
 HexusOpponentData* Princess::HexusOpponentDataInstance = nullptr;
 const std::string Princess::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS";
 
-Princess* Princess::deserialize(ValueMap& initProperties)
+Princess* Princess::deserialize(ValueMap& properties)
 {
-	Princess* instance = new Princess(initProperties);
+	Princess* instance = new Princess(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Princess::Princess(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Princess::Princess(ValueMap& properties) : PlatformerEntity(properties,
 	Princess::MapKeyPrincess,
 	EntityResources::Helpers_CastleValgrind_Princess_Animations,
 	EntityResources::Helpers_CastleValgrind_Princess_Emblem,

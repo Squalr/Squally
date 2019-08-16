@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Griffin : public PlatformerFriendly
 {
 public:
-	static Griffin* deserialize(cocos2d::ValueMap& initProperties);
+	static Griffin* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Griffin(cocos2d::ValueMap& initProperties);
+	Griffin(cocos2d::ValueMap& properties);
 	~Griffin();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

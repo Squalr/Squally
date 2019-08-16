@@ -20,16 +20,16 @@ const std::string DemonGhost::MapKeyDemonGhost = "demon-ghost";
 HexusOpponentData* DemonGhost::HexusOpponentDataInstance = nullptr;
 const std::string DemonGhost::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GHOST";
 
-DemonGhost* DemonGhost::deserialize(ValueMap& initProperties)
+DemonGhost* DemonGhost::deserialize(ValueMap& properties)
 {
-	DemonGhost* instance = new DemonGhost(initProperties);
+	DemonGhost* instance = new DemonGhost(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonGhost::DemonGhost(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonGhost::DemonGhost(ValueMap& properties) : PlatformerEnemy(properties,
 	DemonGhost::MapKeyDemonGhost,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,

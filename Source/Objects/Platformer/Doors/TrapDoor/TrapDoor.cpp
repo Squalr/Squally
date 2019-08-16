@@ -27,16 +27,16 @@ const float TrapDoor::DoorOpenDelta = 320.0f;
 
 const std::string TrapDoor::MapKeyTrapDoor = "trap-door";
 
-TrapDoor* TrapDoor::create(ValueMap& initProperties)
+TrapDoor* TrapDoor::create(ValueMap& properties)
 {
-	TrapDoor* instance = new TrapDoor(initProperties);
+	TrapDoor* instance = new TrapDoor(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TrapDoor::TrapDoor(ValueMap& initProperties) : super(initProperties)
+TrapDoor::TrapDoor(ValueMap& properties) : super(properties)
 {
 	this->door = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoor);
 	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
@@ -45,7 +45,7 @@ TrapDoor::TrapDoor(ValueMap& initProperties) : super(initProperties)
 	clipStencil->drawSolidRect(Vec2(-112.0f, -64.0f), Vec2(112.0f, 48.0f), Color4F::GREEN);
 	this->doorClip = ClippingNode::create(clipStencil);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = this->mapEvent;
 
 	this->door->setFlippedX(this->isFlipped);

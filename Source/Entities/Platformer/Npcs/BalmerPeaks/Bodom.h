@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Bodom : public PlatformerFriendly
 {
 public:
-	static Bodom* deserialize(cocos2d::ValueMap& initProperties);
+	static Bodom* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Bodom(cocos2d::ValueMap& initProperties);
+	Bodom(cocos2d::ValueMap& properties);
 	~Bodom();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

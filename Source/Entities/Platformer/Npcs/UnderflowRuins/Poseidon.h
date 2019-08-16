@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Poseidon : public PlatformerFriendly
 {
 public:
-	static Poseidon* deserialize(cocos2d::ValueMap& initProperties);
+	static Poseidon* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Poseidon(cocos2d::ValueMap& initProperties);
+	Poseidon(cocos2d::ValueMap& properties);
 	~Poseidon();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

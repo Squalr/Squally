@@ -20,16 +20,16 @@ const std::string Amelia::MapKeyAmelia = "amelia";
 HexusOpponentData* Amelia::HexusOpponentDataInstance = nullptr;
 const std::string Amelia::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AMELIA";
 
-Amelia* Amelia::deserialize(ValueMap& initProperties)
+Amelia* Amelia::deserialize(ValueMap& properties)
 {
-	Amelia* instance = new Amelia(initProperties);
+	Amelia* instance = new Amelia(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Amelia::Amelia(ValueMap& initProperties) : super(initProperties,
+Amelia::Amelia(ValueMap& properties) : super(properties,
 	Amelia::MapKeyAmelia,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Emblem,

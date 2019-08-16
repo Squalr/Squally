@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Mermaid : public PlatformerEnemy
 {
 public:
-	static Mermaid* deserialize(cocos2d::ValueMap& initProperties);
+	static Mermaid* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Mermaid(cocos2d::ValueMap& initProperties);
+	Mermaid(cocos2d::ValueMap& properties);
 	~Mermaid();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

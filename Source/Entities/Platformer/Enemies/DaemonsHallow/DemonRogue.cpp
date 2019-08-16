@@ -20,16 +20,16 @@ const std::string DemonRogue::MapKeyDemonRogue = "demon-rogue";
 HexusOpponentData* DemonRogue::HexusOpponentDataInstance = nullptr;
 const std::string DemonRogue::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_ROGUE";
 
-DemonRogue* DemonRogue::deserialize(ValueMap& initProperties)
+DemonRogue* DemonRogue::deserialize(ValueMap& properties)
 {
-	DemonRogue* instance = new DemonRogue(initProperties);
+	DemonRogue* instance = new DemonRogue(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DemonRogue::DemonRogue(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+DemonRogue::DemonRogue(ValueMap& properties) : PlatformerEnemy(properties,
 	DemonRogue::MapKeyDemonRogue,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Emblem,

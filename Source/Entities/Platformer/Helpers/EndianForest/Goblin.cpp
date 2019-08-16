@@ -20,16 +20,16 @@ const std::string Goblin::MapKeyGoblin = "goblin";
 HexusOpponentData* Goblin::HexusOpponentDataInstance = nullptr;
 const std::string Goblin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN";
 
-Goblin* Goblin::deserialize(ValueMap& initProperties)
+Goblin* Goblin::deserialize(ValueMap& properties)
 {
-	Goblin* instance = new Goblin(initProperties);
+	Goblin* instance = new Goblin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Goblin::Goblin(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Goblin::Goblin(ValueMap& properties) : PlatformerEntity(properties,
 	Goblin::MapKeyGoblin,
 	EntityResources::Helpers_EndianForest_Goblin_Animations,
 	EntityResources::Helpers_EndianForest_Goblin_Emblem,

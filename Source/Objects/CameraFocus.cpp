@@ -15,27 +15,27 @@ const std::string CameraFocus::MapKeyScrollSpeedX = "scroll-speed-x";
 const std::string CameraFocus::MapKeyScrollSpeedY = "scroll-speed-y";
 const std::string CameraFocus::MapKeyScrollType = "scroll-type";
 
-CameraFocus* CameraFocus::create(ValueMap& initProperties)
+CameraFocus* CameraFocus::create(ValueMap& properties)
 {
-	CameraFocus* instance = new CameraFocus(initProperties);
+	CameraFocus* instance = new CameraFocus(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CameraFocus::CameraFocus(ValueMap& initProperties) : GameObject(initProperties)
+CameraFocus::CameraFocus(ValueMap& properties) : GameObject(properties)
 {
-	this->zoom = GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyZoom, Value(1.0f)).asFloat();
+	this->zoom = GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyZoom, Value(1.0f)).asFloat();
 	this->scrollBounds = Vec2(
-		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollBoundsX, Value(0.0f)).asFloat(),
-		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollBoundsY, Value(0.0f)).asFloat()
+		GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyScrollBoundsX, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyScrollBoundsY, Value(0.0f)).asFloat()
 	);
 	this->scrollSpeed = Vec2(
-		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollSpeedX, Value(CameraTrackingData::DefaultCameraFollowSpeed.x)).asFloat(),
-		GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollSpeedY, Value(CameraTrackingData::DefaultCameraFollowSpeed.y)).asFloat()
+		GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyScrollSpeedX, Value(CameraTrackingData::DefaultCameraFollowSpeed.x)).asFloat(),
+		GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyScrollSpeedY, Value(CameraTrackingData::DefaultCameraFollowSpeed.y)).asFloat()
 	);
-	this->scrollType = GameUtils::getKeyOrDefault(initProperties, CameraFocus::MapKeyScrollType, Value("")).asString();
+	this->scrollType = GameUtils::getKeyOrDefault(properties, CameraFocus::MapKeyScrollType, Value("")).asString();
 }
 
 CameraFocus::~CameraFocus()

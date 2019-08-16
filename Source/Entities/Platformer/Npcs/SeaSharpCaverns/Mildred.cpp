@@ -20,16 +20,16 @@ const std::string Mildred::MapKeyMildred = "mildred";
 HexusOpponentData* Mildred::HexusOpponentDataInstance = nullptr;
 const std::string Mildred::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MILDRED";
 
-Mildred* Mildred::deserialize(ValueMap& initProperties)
+Mildred* Mildred::deserialize(ValueMap& properties)
 {
-	Mildred* instance = new Mildred(initProperties);
+	Mildred* instance = new Mildred(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Mildred::Mildred(ValueMap& initProperties) : super(initProperties,
+Mildred::Mildred(ValueMap& properties) : super(properties,
 	Mildred::MapKeyMildred,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,

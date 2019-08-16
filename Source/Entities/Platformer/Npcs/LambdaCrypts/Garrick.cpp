@@ -20,16 +20,16 @@ const std::string Garrick::MapKeyGarrick = "garrick";
 HexusOpponentData* Garrick::HexusOpponentDataInstance = nullptr;
 const std::string Garrick::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARRICK";
 
-Garrick* Garrick::deserialize(ValueMap& initProperties)
+Garrick* Garrick::deserialize(ValueMap& properties)
 {
-	Garrick* instance = new Garrick(initProperties);
+	Garrick* instance = new Garrick(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Garrick::Garrick(ValueMap& initProperties) : super(initProperties,
+Garrick::Garrick(ValueMap& properties) : super(properties,
 	Garrick::MapKeyGarrick,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,

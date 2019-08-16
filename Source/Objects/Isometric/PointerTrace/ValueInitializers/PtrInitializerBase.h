@@ -5,7 +5,7 @@
 class PtrInitializerBase : public GridObject
 {
 protected:
-	PtrInitializerBase(cocos2d::ValueMap& initProperties);
+	PtrInitializerBase(cocos2d::ValueMap& properties);
 	~PtrInitializerBase();
 
 	int offset;

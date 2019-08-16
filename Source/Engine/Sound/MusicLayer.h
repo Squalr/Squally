@@ -5,13 +5,13 @@
 class MusicLayer : public MapLayer
 {
 public:
-	static MusicLayer* create(cocos2d::ValueMap& initProperties, std::string name);
+	static MusicLayer* create(cocos2d::ValueMap& properties, std::string name);
 
 	static const std::string MapKeyMusicType;
 
 private:
 	typedef MapLayer super;
 
-	MusicLayer(cocos2d::ValueMap& initProperties, std::string name);
+	MusicLayer(cocos2d::ValueMap& properties, std::string name);
 	~MusicLayer();
 };

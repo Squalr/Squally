@@ -20,16 +20,16 @@ const std::string Ara::MapKeyAra = "ara";
 HexusOpponentData* Ara::HexusOpponentDataInstance = nullptr;
 const std::string Ara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ARA";
 
-Ara* Ara::deserialize(ValueMap& initProperties)
+Ara* Ara::deserialize(ValueMap& properties)
 {
-	Ara* instance = new Ara(initProperties);
+	Ara* instance = new Ara(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Ara::Ara(ValueMap& initProperties) : super(initProperties,
+Ara::Ara(ValueMap& properties) : super(properties,
 	Ara::MapKeyAra,
 	EntityResources::Npcs_EndianForest_Ara_Animations,
 	EntityResources::Npcs_EndianForest_Ara_Emblem,

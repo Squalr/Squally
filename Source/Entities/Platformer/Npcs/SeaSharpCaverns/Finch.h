@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Finch : public PlatformerFriendly
 {
 public:
-	static Finch* deserialize(cocos2d::ValueMap& initProperties);
+	static Finch* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Finch(cocos2d::ValueMap& initProperties);
+	Finch(cocos2d::ValueMap& properties);
 	~Finch();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

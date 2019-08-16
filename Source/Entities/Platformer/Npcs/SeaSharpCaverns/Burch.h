@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Burch : public PlatformerFriendly
 {
 public:
-	static Burch* deserialize(cocos2d::ValueMap& initProperties);
+	static Burch* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Burch(cocos2d::ValueMap& initProperties);
+	Burch(cocos2d::ValueMap& properties);
 	~Burch();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

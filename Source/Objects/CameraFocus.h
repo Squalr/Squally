@@ -5,7 +5,7 @@
 class CameraFocus : public GameObject
 {
 public:
-	static CameraFocus* create(cocos2d::ValueMap& initProperties);
+	static CameraFocus* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCameraFocus;
 	static const std::string MapKeyZoom;
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef GameObject super;
-	CameraFocus(cocos2d::ValueMap& initProperties);
+	CameraFocus(cocos2d::ValueMap& properties);
 	~CameraFocus();
 
 	void onEnter() override;

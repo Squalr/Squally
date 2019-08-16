@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Barbarian : public PlatformerEnemy
 {
 public:
-	static Barbarian* deserialize(cocos2d::ValueMap& initProperties);
+	static Barbarian* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Barbarian(cocos2d::ValueMap& initProperties);
+	Barbarian(cocos2d::ValueMap& properties);
 	~Barbarian();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

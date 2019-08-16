@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string MulDoor::MapKeyMulDoor = "mul-door";
 
-MulDoor* MulDoor::create(ValueMap& initProperties)
+MulDoor* MulDoor::create(ValueMap& properties)
 {
-	MulDoor* instance = new MulDoor(initProperties);
+	MulDoor* instance = new MulDoor(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MulDoor::MulDoor(ValueMap& initProperties) : super(initProperties)
+MulDoor::MulDoor(ValueMap& properties) : super(properties)
 {
 }
 

@@ -20,16 +20,16 @@ const std::string Barbarian::MapKeyBarbarian = "barbarian";
 HexusOpponentData* Barbarian::HexusOpponentDataInstance = nullptr;
 const std::string Barbarian::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BARBARIAN";
 
-Barbarian* Barbarian::deserialize(ValueMap& initProperties)
+Barbarian* Barbarian::deserialize(ValueMap& properties)
 {
-	Barbarian* instance = new Barbarian(initProperties);
+	Barbarian* instance = new Barbarian(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Barbarian::Barbarian(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Barbarian::Barbarian(ValueMap& properties) : PlatformerEnemy(properties,
 	Barbarian::MapKeyBarbarian,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,

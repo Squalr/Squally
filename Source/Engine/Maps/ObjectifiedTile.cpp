@@ -7,16 +7,16 @@
 
 using namespace cocos2d;
 
-ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap initProperties)
+ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap properties)
 {
-	ObjectifiedTile* instance = new ObjectifiedTile(sprite, initProperties);
+	ObjectifiedTile* instance = new ObjectifiedTile(sprite, properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap initProperties) : GameObject(initProperties)
+ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap properties) : GameObject(properties)
 {
 	this->innerSprite = sprite;
 

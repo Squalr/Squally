@@ -24,16 +24,16 @@ const std::string OrcGrunt::MapKeyOrcGrunt = "orc-grunt";
 HexusOpponentData* OrcGrunt::HexusOpponentDataInstance = nullptr;
 const std::string OrcGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ORC_GRUNT";
 
-OrcGrunt* OrcGrunt::deserialize(ValueMap& initProperties)
+OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 {
-	OrcGrunt* instance = new OrcGrunt(initProperties);
+	OrcGrunt* instance = new OrcGrunt(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcGrunt::OrcGrunt(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+OrcGrunt::OrcGrunt(ValueMap& properties) : PlatformerEnemy(properties,
 	OrcGrunt::MapKeyOrcGrunt,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,

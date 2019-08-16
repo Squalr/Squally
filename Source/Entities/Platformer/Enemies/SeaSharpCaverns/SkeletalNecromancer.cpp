@@ -20,16 +20,16 @@ const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-nec
 HexusOpponentData* SkeletalNecromancer::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalNecromancer::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_NECROMANCER";
 
-SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& initProperties)
+SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& properties)
 {
-	SkeletalNecromancer* instance = new SkeletalNecromancer(initProperties);
+	SkeletalNecromancer* instance = new SkeletalNecromancer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalNecromancer::SkeletalNecromancer(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalNecromancer::MapKeySkeletalNecromancer,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,

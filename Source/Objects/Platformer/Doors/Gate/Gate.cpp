@@ -32,16 +32,16 @@ const Vec2 Gate::GateRightClosedOffset = Vec2(128.0f, 16.0f);
 const Vec2 Gate::GateLeftOpenedOffset = Vec2(-356.0f, 16.0f);
 const Vec2 Gate::GateRightOpenedOffset = Vec2(356.0f, 16.0f);
 
-Gate* Gate::create(ValueMap& initProperties)
+Gate* Gate::create(ValueMap& properties)
 {
-	Gate* instance = new Gate(initProperties);
+	Gate* instance = new Gate(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gate::Gate(ValueMap& initProperties) : super(initProperties, Size(512.0f, 512.0f), Vec2(0.0f, 48.0f))
+Gate::Gate(ValueMap& properties) : super(properties, Size(512.0f, 512.0f), Vec2(0.0f, 48.0f))
 {
 	this->gateRight = Sprite::create(ObjectResources::Doors_Gate_GateRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_Gate_GateLeft);

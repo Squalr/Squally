@@ -12,12 +12,12 @@ class CollisionObject;
 class WoodenCrate : public HackableObject
 {
 public:
-	static WoodenCrate* create(cocos2d::ValueMap& initProperties);
+	static WoodenCrate* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyWoodenCrate;
 
 protected:
-	WoodenCrate(cocos2d::ValueMap& initProperties);
+	WoodenCrate(cocos2d::ValueMap& properties);
 	virtual ~WoodenCrate();
 
 	void onEnter() override;

@@ -20,16 +20,16 @@ const std::string LightningGolem::MapKeyLightningGolem = "lightning-golem";
 HexusOpponentData* LightningGolem::HexusOpponentDataInstance = nullptr;
 const std::string LightningGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIGHTNING_GOLEM";
 
-LightningGolem* LightningGolem::deserialize(ValueMap& initProperties)
+LightningGolem* LightningGolem::deserialize(ValueMap& properties)
 {
-	LightningGolem* instance = new LightningGolem(initProperties);
+	LightningGolem* instance = new LightningGolem(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LightningGolem::LightningGolem(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+LightningGolem::LightningGolem(ValueMap& properties) : PlatformerEnemy(properties,
 	LightningGolem::MapKeyLightningGolem,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,

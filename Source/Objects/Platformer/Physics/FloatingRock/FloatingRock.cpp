@@ -31,16 +31,16 @@ using namespace cocos2d;
 
 const std::string FloatingRock::MapKeyFloatingRock = "floating-rock";
 
-FloatingRock* FloatingRock::create(ValueMap& initProperties)
+FloatingRock* FloatingRock::create(ValueMap& properties)
 {
-	FloatingRock* instance = new FloatingRock(initProperties);
+	FloatingRock* instance = new FloatingRock(properties);
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-FloatingRock::FloatingRock(ValueMap& initProperties) : super(initProperties)
+FloatingRock::FloatingRock(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_RollingStone_RollingStone);
 	this->collision = CollisionObject::create(PhysicsBody::createCircle(96.0f), (CollisionType)PlatformerCollisionType::Physics, false, true);

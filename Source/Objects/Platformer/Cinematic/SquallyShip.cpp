@@ -35,16 +35,16 @@ using namespace cocos2d;
 
 const std::string SquallyShip::MapKeySquallyShip = "squally-ship";
 
-SquallyShip* SquallyShip::create(ValueMap& initProperties)
+SquallyShip* SquallyShip::create(ValueMap& properties)
 {
-	SquallyShip* instance = new SquallyShip(initProperties);
+	SquallyShip* instance = new SquallyShip(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
+SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 {
 	this->lightningStrike = SmartAnimationSequenceNode::create();
 	this->shipContainer = Node::create();

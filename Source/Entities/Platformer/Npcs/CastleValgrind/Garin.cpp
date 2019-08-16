@@ -20,16 +20,16 @@ const std::string Garin::MapKeyGarin = "garin";
 HexusOpponentData* Garin::HexusOpponentDataInstance = nullptr;
 const std::string Garin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARIN";
 
-Garin* Garin::deserialize(ValueMap& initProperties)
+Garin* Garin::deserialize(ValueMap& properties)
 {
-	Garin* instance = new Garin(initProperties);
+	Garin* instance = new Garin(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Garin::Garin(ValueMap& initProperties) : super(initProperties,
+Garin::Garin(ValueMap& properties) : super(properties,
 	Garin::MapKeyGarin,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,

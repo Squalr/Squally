@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Necron : public PlatformerFriendly
 {
 public:
-	static Necron* deserialize(cocos2d::ValueMap& initProperties);
+	static Necron* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Necron(cocos2d::ValueMap& initProperties);
+	Necron(cocos2d::ValueMap& properties);
 	~Necron();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

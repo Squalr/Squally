@@ -12,16 +12,16 @@ using namespace cocos2d;
 
 const std::string CagedSnail::MapKeyCagedSnail = "caged-snail";
 
-CagedSnail* CagedSnail::create(ValueMap& initProperties)
+CagedSnail* CagedSnail::create(ValueMap& properties)
 {
-	CagedSnail* instance = new CagedSnail(initProperties);
+	CagedSnail* instance = new CagedSnail(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CagedSnail::CagedSnail(ValueMap& initProperties) : super(initProperties, SaveKeys::SaveKeyCollectableAnimalSnail)
+CagedSnail::CagedSnail(ValueMap& properties) : super(properties, SaveKeys::SaveKeyCollectableAnimalSnail)
 {
 	this->animalSprite = Sprite::create(ObjectResources::Collectables_Animals_Snail);
 

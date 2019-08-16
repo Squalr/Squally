@@ -5,13 +5,13 @@
 class JungleTerrain : public TerrainObject
 {
 public:
-	static JungleTerrain* create(cocos2d::ValueMap& initProperties);
+	static JungleTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeJungle;
 
 private:
 	typedef TerrainObject super;
 	
-	JungleTerrain(cocos2d::ValueMap& initProperties);
+	JungleTerrain(cocos2d::ValueMap& properties);
 	~JungleTerrain();
 };

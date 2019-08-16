@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Appolo : public PlatformerFriendly
 {
 public:
-	static Appolo* deserialize(cocos2d::ValueMap& initProperties);
+	static Appolo* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Appolo(cocos2d::ValueMap& initProperties);
+	Appolo(cocos2d::ValueMap& properties);
 	~Appolo();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

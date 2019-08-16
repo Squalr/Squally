@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Thatcher : public PlatformerFriendly
 {
 public:
-	static Thatcher* deserialize(cocos2d::ValueMap& initProperties);
+	static Thatcher* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Thatcher(cocos2d::ValueMap& initProperties);
+	Thatcher(cocos2d::ValueMap& properties);
 	~Thatcher();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

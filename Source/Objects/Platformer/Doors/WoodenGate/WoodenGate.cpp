@@ -27,16 +27,16 @@ const float WoodenGate::DoorOpenDelta = 320.0f;
 
 const std::string WoodenGate::MapKeyWoodenGate = "wooden-gate";
 
-WoodenGate* WoodenGate::create(ValueMap& initProperties)
+WoodenGate* WoodenGate::create(ValueMap& properties)
 {
-	WoodenGate* instance = new WoodenGate(initProperties);
+	WoodenGate* instance = new WoodenGate(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WoodenGate::WoodenGate(ValueMap& initProperties) : super(initProperties)
+WoodenGate::WoodenGate(ValueMap& properties) : super(properties)
 {
 	this->castleBack = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_BACK);
 	this->bridge1 = Sprite::create(ObjectResources::Doors_WoodStronghold_BRIDGE1);
@@ -47,7 +47,7 @@ WoodenGate::WoodenGate(ValueMap& initProperties) : super(initProperties)
 	this->WoodenGateFront = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_FRONT);
 	this->WoodenGateFront2 = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_FRONT);
 
-	this->isFlipped = GameUtils::getKeyOrDefault(initProperties, GameObject::MapKeyFlipX, Value(false)).asBool();
+	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);

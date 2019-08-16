@@ -20,16 +20,16 @@ const std::string Cyrogen::MapKeyCyrogen = "cyrogen";
 HexusOpponentData* Cyrogen::HexusOpponentDataInstance = nullptr;
 const std::string Cyrogen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYROGEN";
 
-Cyrogen* Cyrogen::deserialize(ValueMap& initProperties)
+Cyrogen* Cyrogen::deserialize(ValueMap& properties)
 {
-	Cyrogen* instance = new Cyrogen(initProperties);
+	Cyrogen* instance = new Cyrogen(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cyrogen::Cyrogen(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Cyrogen::Cyrogen(ValueMap& properties) : PlatformerEnemy(properties,
 	Cyrogen::MapKeyCyrogen,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cyrogen_Emblem,

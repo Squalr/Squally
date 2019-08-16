@@ -20,16 +20,16 @@ const std::string GoblinGruntBoar::MapKeyGoblinGruntBoar = "goblin-grunt-boar";
 HexusOpponentData* GoblinGruntBoar::HexusOpponentDataInstance = nullptr;
 const std::string GoblinGruntBoar::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_GRUNT_BOAR";
 
-GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& initProperties)
+GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 {
-	GoblinGruntBoar* instance = new GoblinGruntBoar(initProperties);
+	GoblinGruntBoar* instance = new GoblinGruntBoar(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GoblinGruntBoar::GoblinGruntBoar(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : PlatformerEnemy(properties,
 	GoblinGruntBoar::MapKeyGoblinGruntBoar,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,

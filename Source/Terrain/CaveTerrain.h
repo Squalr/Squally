@@ -5,13 +5,13 @@
 class CaveTerrain : public TerrainObject
 {
 public:
-	static CaveTerrain* create(cocos2d::ValueMap& initProperties);
+	static CaveTerrain* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyTerrainTypeCave;
 
 private:
 	typedef TerrainObject super;
 
-	CaveTerrain(cocos2d::ValueMap& initProperties);
+	CaveTerrain(cocos2d::ValueMap& properties);
 	~CaveTerrain();
 };

@@ -20,16 +20,16 @@ const std::string Burch::MapKeyBurch = "burch";
 HexusOpponentData* Burch::HexusOpponentDataInstance = nullptr;
 const std::string Burch::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BURCH";
 
-Burch* Burch::deserialize(ValueMap& initProperties)
+Burch* Burch::deserialize(ValueMap& properties)
 {
-	Burch* instance = new Burch(initProperties);
+	Burch* instance = new Burch(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Burch::Burch(ValueMap& initProperties) : super(initProperties,
+Burch::Burch(ValueMap& properties) : super(properties,
 	Burch::MapKeyBurch,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,

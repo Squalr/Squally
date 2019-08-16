@@ -76,7 +76,7 @@ public:
 	static std::string MapKeyTypeTerrain;
 
 protected:
-	TerrainObject(cocos2d::ValueMap& initProperties, TerrainData terrainData);
+	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
 	~TerrainObject();
 
 	void onEnter() override;

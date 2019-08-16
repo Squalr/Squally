@@ -14,12 +14,12 @@ class SmartAnimationNode;
 class DartGun : public HackableObject
 {
 public:
-	static DartGun* create(cocos2d::ValueMap& initProperties);
+	static DartGun* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyDartGun;
 
 protected:
-	DartGun(cocos2d::ValueMap& initProperties);
+	DartGun(cocos2d::ValueMap& properties);
 	~DartGun();
 
 	void onEnter() override;

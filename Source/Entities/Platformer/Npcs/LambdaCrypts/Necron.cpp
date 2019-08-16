@@ -20,16 +20,16 @@ const std::string Necron::MapKeyNecron = "necron";
 HexusOpponentData* Necron::HexusOpponentDataInstance = nullptr;
 const std::string Necron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_NECRON";
 
-Necron* Necron::deserialize(ValueMap& initProperties)
+Necron* Necron::deserialize(ValueMap& properties)
 {
-	Necron* instance = new Necron(initProperties);
+	Necron* instance = new Necron(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Necron::Necron(ValueMap& initProperties) : super(initProperties,
+Necron::Necron(ValueMap& properties) : super(properties,
 	Necron::MapKeyNecron,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,

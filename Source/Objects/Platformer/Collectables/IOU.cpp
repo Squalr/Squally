@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string IOU::MapKeyIOU = "iou";
 
-IOU* IOU::create(ValueMap& initProperties)
+IOU* IOU::create(ValueMap& properties)
 {
-	IOU* instance = new IOU(initProperties);
+	IOU* instance = new IOU(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-IOU::IOU(ValueMap& initProperties) : super(initProperties)
+IOU::IOU(ValueMap& properties) : super(properties)
 {
 	this->iou = Sprite::create(ObjectResources::Items_Consumables_IOU);
 

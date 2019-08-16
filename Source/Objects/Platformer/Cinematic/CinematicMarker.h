@@ -13,14 +13,14 @@ class HackableData;
 class CinematicMarker : public HackableObject
 {
 public:
-	static CinematicMarker* create(cocos2d::ValueMap& initProperties);
+	static CinematicMarker* create(cocos2d::ValueMap& properties);
 	
 	int getId();
 
 	static const std::string MapKeyCinematicMarker;
 
 protected:
-	CinematicMarker(cocos2d::ValueMap& initProperties);
+	CinematicMarker(cocos2d::ValueMap& properties);
 	virtual ~CinematicMarker();
 
 	void onEnter() override;

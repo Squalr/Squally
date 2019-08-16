@@ -20,16 +20,16 @@ const std::string Scarecrow::MapKeyScarecrow = "scarecrow";
 HexusOpponentData* Scarecrow::HexusOpponentDataInstance = nullptr;
 const std::string Scarecrow::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCARECROW";
 
-Scarecrow* Scarecrow::deserialize(ValueMap& initProperties)
+Scarecrow* Scarecrow::deserialize(ValueMap& properties)
 {
-	Scarecrow* instance = new Scarecrow(initProperties);
+	Scarecrow* instance = new Scarecrow(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Scarecrow::Scarecrow(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+Scarecrow::Scarecrow(ValueMap& properties) : PlatformerEnemy(properties,
 	Scarecrow::MapKeyScarecrow,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,

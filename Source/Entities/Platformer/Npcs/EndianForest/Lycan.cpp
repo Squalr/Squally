@@ -20,16 +20,16 @@ const std::string Lycan::MapKeyLycan = "lycan";
 HexusOpponentData* Lycan::HexusOpponentDataInstance = nullptr;
 const std::string Lycan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LYCAN";
 
-Lycan* Lycan::deserialize(ValueMap& initProperties)
+Lycan* Lycan::deserialize(ValueMap& properties)
 {
-	Lycan* instance = new Lycan(initProperties);
+	Lycan* instance = new Lycan(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Lycan::Lycan(ValueMap& initProperties) : super(initProperties,
+Lycan::Lycan(ValueMap& properties) : super(properties,
 	Lycan::MapKeyLycan,
 	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,

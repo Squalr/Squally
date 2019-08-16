@@ -8,17 +8,17 @@ using namespace cocos2d;
 
 const std::string ShipTerrain::MapKeyTerrainTypeShip = "ship";
 
-ShipTerrain* ShipTerrain::create(ValueMap& initProperties)
+ShipTerrain* ShipTerrain::create(ValueMap& properties)
 {
-	ShipTerrain* instance = new ShipTerrain(initProperties);
+	ShipTerrain* instance = new ShipTerrain(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShipTerrain::ShipTerrain(ValueMap& initProperties) : super(
-	initProperties,
+ShipTerrain::ShipTerrain(ValueMap& properties) : super(
+	properties,
 	TerrainObject::TerrainData(
 		0.5f,
 		ShipTerrain::MapKeyTerrainTypeShip,

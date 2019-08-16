@@ -20,16 +20,16 @@ const std::string BoneFiend::MapKeyBoneFiend = "bone-fiend";
 HexusOpponentData* BoneFiend::HexusOpponentDataInstance = nullptr;
 const std::string BoneFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_FIEND";
 
-BoneFiend* BoneFiend::deserialize(ValueMap& initProperties)
+BoneFiend* BoneFiend::deserialize(ValueMap& properties)
 {
-	BoneFiend* instance = new BoneFiend(initProperties);
+	BoneFiend* instance = new BoneFiend(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BoneFiend::BoneFiend(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+BoneFiend::BoneFiend(ValueMap& properties) : PlatformerEnemy(properties,
 	BoneFiend::MapKeyBoneFiend,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,

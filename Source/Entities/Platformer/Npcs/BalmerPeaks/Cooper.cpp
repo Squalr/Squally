@@ -20,16 +20,16 @@ const std::string Cooper::MapKeyCooper = "cooper";
 HexusOpponentData* Cooper::HexusOpponentDataInstance = nullptr;
 const std::string Cooper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOPER";
 
-Cooper* Cooper::deserialize(ValueMap& initProperties)
+Cooper* Cooper::deserialize(ValueMap& properties)
 {
-	Cooper* instance = new Cooper(initProperties);
+	Cooper* instance = new Cooper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cooper::Cooper(ValueMap& initProperties) : super(initProperties,
+Cooper::Cooper(ValueMap& properties) : super(properties,
 	Cooper::MapKeyCooper,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Emblem,

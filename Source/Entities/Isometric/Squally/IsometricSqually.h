@@ -5,8 +5,8 @@
 class IsometricSqually : public IsometricEntity
 {
 public:
-	static IsometricSqually* deserialize(cocos2d::ValueMap& initProperties);
-	static IsometricSqually* create(cocos2d::ValueMap& initProperties);
+	static IsometricSqually* deserialize(cocos2d::ValueMap& properties);
+	static IsometricSqually* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeySqually;
 
@@ -15,7 +15,7 @@ protected:
 
 private:
 	typedef IsometricEntity super;
-	IsometricSqually(cocos2d::ValueMap& initProperties);
+	IsometricSqually(cocos2d::ValueMap& properties);
 	~IsometricSqually();
 
 	void onEnter() override;

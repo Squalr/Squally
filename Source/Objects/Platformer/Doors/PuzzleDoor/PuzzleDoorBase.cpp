@@ -33,7 +33,7 @@ const Vec2 PuzzleDoorBase::DoorOffset = Vec2(0.0f, 64.0f);
 const Vec2 PuzzleDoorBase::DoorOpenOffset = Vec2(0.0f, 356.0f);
 const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
 
-PuzzleDoorBase::PuzzleDoorBase(ValueMap& initProperties) : super(initProperties, Size(256.0f, 512.0f), PuzzleDoorBase::Offset + Vec2(0.0f, 48.0f))
+PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties) : super(properties, Size(256.0f, 512.0f), PuzzleDoorBase::Offset + Vec2(0.0f, 48.0f))
 {
 	this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_Back);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);

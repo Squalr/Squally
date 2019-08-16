@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Robot : public PlatformerEntity
 {
 public:
-	static Robot* deserialize(cocos2d::ValueMap& initProperties);
+	static Robot* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEntity super;
-	Robot(cocos2d::ValueMap& initProperties);
+	Robot(cocos2d::ValueMap& properties);
 	~Robot();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

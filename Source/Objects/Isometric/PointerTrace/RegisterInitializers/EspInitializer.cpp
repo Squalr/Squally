@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EspInitializer::MapKeyEspInitializer = "esp";
 
-EspInitializer* EspInitializer::create(ValueMap& initProperties)
+EspInitializer* EspInitializer::create(ValueMap& properties)
 {
-	EspInitializer* instance = new EspInitializer(initProperties);
+	EspInitializer* instance = new EspInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EspInitializer::EspInitializer(ValueMap& initProperties) : super(initProperties)
+EspInitializer::EspInitializer(ValueMap& properties) : super(properties)
 {
 }
 

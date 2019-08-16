@@ -6,16 +6,16 @@ using namespace cocos2d;
 
 const std::string EdiInitializer::MapKeyEdiInitializer = "edi";
 
-EdiInitializer* EdiInitializer::create(ValueMap& initProperties)
+EdiInitializer* EdiInitializer::create(ValueMap& properties)
 {
-	EdiInitializer* instance = new EdiInitializer(initProperties);
+	EdiInitializer* instance = new EdiInitializer(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EdiInitializer::EdiInitializer(ValueMap& initProperties) : super(initProperties)
+EdiInitializer::EdiInitializer(ValueMap& properties) : super(properties)
 {
 }
 

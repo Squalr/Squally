@@ -20,16 +20,16 @@ const std::string Gecko::MapKeyGecko = "gecko";
 HexusOpponentData* Gecko::HexusOpponentDataInstance = nullptr;
 const std::string Gecko::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GECKO";
 
-Gecko* Gecko::deserialize(ValueMap& initProperties)
+Gecko* Gecko::deserialize(ValueMap& properties)
 {
-	Gecko* instance = new Gecko(initProperties);
+	Gecko* instance = new Gecko(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Gecko::Gecko(ValueMap& initProperties) : PlatformerEntity(initProperties,
+Gecko::Gecko(ValueMap& properties) : PlatformerEntity(properties,
 	Gecko::MapKeyGecko,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,

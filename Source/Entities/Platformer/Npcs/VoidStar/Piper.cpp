@@ -20,16 +20,16 @@ const std::string Piper::MapKeyPiper = "piper";
 HexusOpponentData* Piper::HexusOpponentDataInstance = nullptr;
 const std::string Piper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PIPER";
 
-Piper* Piper::deserialize(ValueMap& initProperties)
+Piper* Piper::deserialize(ValueMap& properties)
 {
-	Piper* instance = new Piper(initProperties);
+	Piper* instance = new Piper(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Piper::Piper(ValueMap& initProperties) : super(initProperties,
+Piper::Piper(ValueMap& properties) : super(properties,
 	Piper::MapKeyPiper,
 	EntityResources::Npcs_VoidStar_Piper_Animations,
 	EntityResources::Npcs_VoidStar_Piper_Emblem,

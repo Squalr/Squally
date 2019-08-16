@@ -14,12 +14,12 @@ class Sound;
 class BreakableCage : public BreakableBase
 {
 public:
-	static BreakableCage* create(cocos2d::ValueMap& initProperties);
+	static BreakableCage* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyBreakableCage;
 
 protected:
-	BreakableCage(cocos2d::ValueMap& initProperties, int requiredHits = 1);
+	BreakableCage(cocos2d::ValueMap& properties, int requiredHits = 1);
 	virtual ~BreakableCage();
 
 	void initializePositions() override;

@@ -8,7 +8,7 @@ class HexusOpponentData;
 class LightningGolem : public PlatformerEnemy
 {
 public:
-	static LightningGolem* deserialize(cocos2d::ValueMap& initProperties);
+	static LightningGolem* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	LightningGolem(cocos2d::ValueMap& initProperties);
+	LightningGolem(cocos2d::ValueMap& properties);
 	~LightningGolem();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

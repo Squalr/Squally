@@ -20,16 +20,16 @@ const std::string Elric::MapKeyElric = "elric";
 HexusOpponentData* Elric::HexusOpponentDataInstance = nullptr;
 const std::string Elric::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIC";
 
-Elric* Elric::deserialize(ValueMap& initProperties)
+Elric* Elric::deserialize(ValueMap& properties)
 {
-	Elric* instance = new Elric(initProperties);
+	Elric* instance = new Elric(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Elric::Elric(ValueMap& initProperties) : super(initProperties,
+Elric::Elric(ValueMap& properties) : super(properties,
 	Elric::MapKeyElric,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,

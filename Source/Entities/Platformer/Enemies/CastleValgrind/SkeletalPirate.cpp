@@ -20,16 +20,16 @@ const std::string SkeletalPirate::MapKeySkeletalPirate = "skeletal-pirate";
 HexusOpponentData* SkeletalPirate::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalPirate::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PIRATE";
 
-SkeletalPirate* SkeletalPirate::deserialize(ValueMap& initProperties)
+SkeletalPirate* SkeletalPirate::deserialize(ValueMap& properties)
 {
-	SkeletalPirate* instance = new SkeletalPirate(initProperties);
+	SkeletalPirate* instance = new SkeletalPirate(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SkeletalPirate::SkeletalPirate(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+SkeletalPirate::SkeletalPirate(ValueMap& properties) : PlatformerEnemy(properties,
 	SkeletalPirate::MapKeySkeletalPirate,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,

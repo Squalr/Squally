@@ -5,10 +5,10 @@
 class IsometricDecorObject : public HackableObject
 {
 public:
-	static IsometricDecorObject* create(cocos2d::ValueMap& initProperties);
+	static IsometricDecorObject* create(cocos2d::ValueMap& properties);
 
 private:
 	typedef HackableObject super;
-	IsometricDecorObject(cocos2d::ValueMap& initProperties);
+	IsometricDecorObject(cocos2d::ValueMap& properties);
 	~IsometricDecorObject();
 };

@@ -20,16 +20,16 @@ const std::string BoneKnight::MapKeyBoneKnight = "bone-knight";
 HexusOpponentData* BoneKnight::HexusOpponentDataInstance = nullptr;
 const std::string BoneKnight::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_KNIGHT";
 
-BoneKnight* BoneKnight::deserialize(ValueMap& initProperties)
+BoneKnight* BoneKnight::deserialize(ValueMap& properties)
 {
-	BoneKnight* instance = new BoneKnight(initProperties);
+	BoneKnight* instance = new BoneKnight(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BoneKnight::BoneKnight(ValueMap& initProperties) : PlatformerEnemy(initProperties,
+BoneKnight::BoneKnight(ValueMap& properties) : PlatformerEnemy(properties,
 	BoneKnight::MapKeyBoneKnight,
 	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,

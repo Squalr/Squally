@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Cyrogen : public PlatformerEnemy
 {
 public:
-	static Cyrogen* deserialize(cocos2d::ValueMap& initProperties);
+	static Cyrogen* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerEnemy super;
-	Cyrogen(cocos2d::ValueMap& initProperties);
+	Cyrogen(cocos2d::ValueMap& properties);
 	~Cyrogen();
 
 	static HexusOpponentData* HexusOpponentDataInstance;

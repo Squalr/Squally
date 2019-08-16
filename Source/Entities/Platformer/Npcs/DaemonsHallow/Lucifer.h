@@ -8,7 +8,7 @@ class HexusOpponentData;
 class Lucifer : public PlatformerFriendly
 {
 public:
-	static Lucifer* deserialize(cocos2d::ValueMap& initProperties);
+	static Lucifer* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
@@ -17,7 +17,7 @@ public:
 
 private:
 	typedef PlatformerFriendly super;
-	Lucifer(cocos2d::ValueMap& initProperties);
+	Lucifer(cocos2d::ValueMap& properties);
 	~Lucifer();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
