@@ -229,8 +229,6 @@ void SquallyShip::onCrash()
 	
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	
-	squally->setState(StateKeys::Health, Value(1));
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ship,
@@ -241,6 +239,7 @@ void SquallyShip::onCrash()
 
 	squally->setPosition(crashCoords);
 	squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+	squally->setState(StateKeys::Health, Value(1));
 	GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 	this->shipCollision->setPhysicsEnabled(false);

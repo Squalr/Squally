@@ -48,18 +48,7 @@ MeetFlyBot::~MeetFlyBot()
 
 void MeetFlyBot::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->getAnimations()->setFlippedX(true);
-	}
-
-	if (!this->isActive())
-	{
-		if (this->flyBot != nullptr)
-		{
-			this->flyBot->setVisible(false);
-		}
-	}
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
@@ -82,19 +71,6 @@ void MeetFlyBot::onComplete()
 void MeetFlyBot::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void MeetFlyBot::update(float dt)
-{
-	super::update(dt);
-
-	if (this->flyBot == nullptr)
-	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
-		{
-			this->flyBot = flyBot;
-		}));
-	}
 }
 
 void MeetFlyBot::runCinematicSequence()

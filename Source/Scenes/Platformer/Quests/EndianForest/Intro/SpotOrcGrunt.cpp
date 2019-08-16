@@ -43,7 +43,7 @@ SpotOrcGrunt::~SpotOrcGrunt()
 
 void SpotOrcGrunt::onLoad(QuestState questState)
 {
-	this->scheduleUpdate();
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
@@ -63,19 +63,6 @@ void SpotOrcGrunt::onComplete()
 void SpotOrcGrunt::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void SpotOrcGrunt::update(float dt)
-{
-	super::update(dt);
-
-	if (this->flyBot == nullptr)
-	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
-		{
-			this->flyBot = flyBot;
-		}));
-	}
 }
 
 void SpotOrcGrunt::runCinematicSequence()

@@ -50,6 +50,8 @@ FlyBotMovementBehavior::~FlyBotMovementBehavior()
 
 void FlyBotMovementBehavior::onLoad()
 {
+	ObjectEvents::watchForObject<Squally>(this, &this->squally);
+
 	this->scheduleUpdate();
 }
 
@@ -57,17 +59,12 @@ void FlyBotMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
+	this->elapsed += dt;
+
 	if (this->squally == nullptr)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
-		{
-			this->squally = squally;
-		}));
-
 		return;
 	}
-
-	this->elapsed += dt;
 
 	Vec2 destPosition = this->squally->getPosition();
 

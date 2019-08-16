@@ -132,4 +132,22 @@ public:
 			&args
 		);
 	}
+
+	template <class T>
+	static void watchForObject(cocos2d::Node* host, T** pointer)
+	{
+		static unsigned long long WatchId = 0;
+		unsigned long long watchId = WatchId++;
+		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
+
+		host->schedule([=](float dt)
+		{
+			ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object)
+			{
+				*pointer = object;
+				host->unschedule(eventKey);
+			}));
+
+		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
+	}
 };

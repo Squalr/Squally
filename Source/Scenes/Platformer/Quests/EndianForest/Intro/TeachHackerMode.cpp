@@ -43,7 +43,7 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
-	this->scheduleUpdate();
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
@@ -63,19 +63,6 @@ void TeachHackerMode::onComplete()
 void TeachHackerMode::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void TeachHackerMode::update(float dt)
-{
-	super::update(dt);
-
-	if (this->flyBot == nullptr)
-	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
-		{
-			this->flyBot = flyBot;
-		}));
-	}
 }
 
 void TeachHackerMode::runCinematicSequence()

@@ -43,7 +43,7 @@ HelpSquallyHeal::~HelpSquallyHeal()
 
 void HelpSquallyHeal::onLoad(QuestState questState)
 {
-	this->scheduleUpdate();
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void HelpSquallyHeal::onActivate(bool isActiveThroughSkippable)
@@ -63,19 +63,6 @@ void HelpSquallyHeal::onComplete()
 void HelpSquallyHeal::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void HelpSquallyHeal::update(float dt)
-{
-	super::update(dt);
-
-	if (this->flyBot == nullptr)
-	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([&](FlyBot* flyBot)
-		{
-			this->flyBot = flyBot;
-		}));
-	}
 }
 
 void HelpSquallyHeal::runCinematicSequence()
