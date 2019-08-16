@@ -7,6 +7,7 @@
 class HelperEvents
 {
 public:
+	static const std::string EventFindFlyBot;
 	static const std::string EventChangeHelper;
 
 	struct ChangeHelperArgs
@@ -18,5 +19,6 @@ public:
 		}
 	};
 
+	static void TriggerFindFlyBot();
 	static void TriggerChangeHelper(ChangeHelperArgs args);
 };

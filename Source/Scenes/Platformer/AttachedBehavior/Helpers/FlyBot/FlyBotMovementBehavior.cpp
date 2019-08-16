@@ -102,7 +102,7 @@ void FlyBotMovementBehavior::update(float dt)
 	}
 
 	this->flyBot->getAnimations()->setFlippedX(flipX);
-	this->flyBot->getAnimations()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
+	this->flyBot->getFloatNode()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
 
 	if (isNearDest)
 	{

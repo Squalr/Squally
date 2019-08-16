@@ -120,6 +120,11 @@ void Squally::initializeListeners()
 	});
 }
 
+void Squally::update(float dt)
+{
+	super::update(dt);
+}
+
 Vec2 Squally::getButtonOffset()
 {
 	return Vec2(0, 72.0f);

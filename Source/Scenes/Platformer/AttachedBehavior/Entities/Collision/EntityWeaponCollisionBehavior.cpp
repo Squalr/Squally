@@ -79,7 +79,7 @@ void EntityWeaponCollisionBehavior::setWeaponOffset(Vec2 weaponOffset)
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 {
-	AnimationPart* mainhand = this->entity->animationNode->getAnimationPart("mainhand");
+	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
 
 	if (mainhand == nullptr)
 	{

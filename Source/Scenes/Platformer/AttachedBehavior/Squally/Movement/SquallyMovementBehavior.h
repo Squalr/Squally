@@ -29,4 +29,5 @@ private:
 	Squally* squally;
 
 	bool isDisposing;
+	float elapsed;
 };

@@ -38,6 +38,7 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 	void onHackerModeEnable(int eq) override;
 	void runEyeBlinkLoop();
 	void spawnHelper();

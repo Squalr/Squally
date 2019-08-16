@@ -36,6 +36,7 @@ SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owne
 	}
 
 	this->isDisposing = false;
+	this->elapsed = 0.0f;
 }
 
 SquallyMovementBehavior::~SquallyMovementBehavior()
@@ -44,10 +45,15 @@ SquallyMovementBehavior::~SquallyMovementBehavior()
 
 void SquallyMovementBehavior::update(float dt)
 {
-	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->squally->animationNode).origin;
-	//// this->squally->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
+	if (this->squally == nullptr)
+	{
+		return;
+	}
 
 	this->movement = Vec2::ZERO;
+	this->elapsed += dt;
+
+	this->squally->getFloatNode()->setPositionY(std::sin(this->elapsed * 1.5f) * 8.0f);
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{

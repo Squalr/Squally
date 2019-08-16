@@ -11,6 +11,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -49,7 +50,7 @@ void MeetFlyBot::onLoad(QuestState questState)
 {
 	if (this->flyBot != nullptr)
 	{
-		this->flyBot->animationNode->setFlippedX(true);
+		this->flyBot->getAnimations()->setFlippedX(true);
 	}
 
 	if (!this->isActive())
@@ -67,6 +68,11 @@ void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
 	{
 		this->runCinematicSequence();
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->complete();
+	}));
 }
 
 void MeetFlyBot::onComplete()
@@ -165,7 +171,7 @@ void MeetFlyBot::runCinematicSequence()
 			{
 				this->flyBot->setVisible(false);
 
-				HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(FlyBot::MapKeyFlyBot));
+				HelperEvents::TriggerFindFlyBot();
 				PlatformerEvents::TriggerCinematicRestore();
 
 				this->complete();
