@@ -58,7 +58,7 @@ PlatformerEntity::PlatformerEntity(
 	this->speechBubble = SpeechBubble::create();
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
-	this->movementSize = this->entitySize * this->entityScale + Size(0.0f, this->hoverHeight);
+	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
 
 	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
 
