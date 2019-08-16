@@ -130,15 +130,15 @@ void EntityMovementBehavior::update(float dt)
 	this->entity->setState(StateKeys::VelocityY, Value(velocity.y), false);
 
 	// Update flip
-	if (this->entity->animationNode != nullptr)
+	if (this->entity->getAnimations() != nullptr)
 	{
 		if (this->movement.x < 0.0f)
 		{
-			this->entity->animationNode->setFlippedX(true);
+			this->entity->getAnimations()->setFlippedX(true);
 		}
 		else if (this->movement.x > 0.0f)
 		{
-			this->entity->animationNode->setFlippedX(false);
+			this->entity->getAnimations()->setFlippedX(false);
 		}
 	}
 }

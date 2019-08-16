@@ -11,13 +11,16 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
+#include "Strings/Dialogue/Story/Intro/DistressBeacon.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
 using namespace cocos2d;
@@ -45,18 +48,7 @@ MeetFlyBot::~MeetFlyBot()
 
 void MeetFlyBot::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
-
-	if (!this->isActive())
-	{
-		if (this->flyBot != nullptr)
-		{
-			this->flyBot->setVisible(false);
-		}
-	}
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
@@ -65,6 +57,11 @@ void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
 	{
 		this->runCinematicSequence();
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->complete();
+	}));
 }
 
 void MeetFlyBot::onComplete()
@@ -74,11 +71,6 @@ void MeetFlyBot::onComplete()
 void MeetFlyBot::onSkipped()
 {
 	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
 }
 
 void MeetFlyBot::runCinematicSequence()
@@ -90,7 +82,6 @@ void MeetFlyBot::runCinematicSequence()
 	
 	this->hasRunEvent = true;
 	Vec2 positionA = Vec2::ZERO;
-	Vec2 positionB = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
@@ -99,11 +90,6 @@ void MeetFlyBot::runCinematicSequence()
 			case 0:
 			{
 				positionA = cinematicMarker->getPosition();
-				break;
-			}
-			case 1:
-			{
-				positionB = cinematicMarker->getPosition();
 				break;
 			}
 			default:
@@ -131,6 +117,12 @@ void MeetFlyBot::runCinematicSequence()
 			CallFunc::create([=]()
 			{
 				this->flyBot->droidBrief1Sound->play();
+				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_DistressBeacon::create());
+			}),
+			DelayTime::create(4.0f),
+			CallFunc::create([=]()
+			{
+				this->flyBot->droidBrief1Sound->play();
 				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
 			}),
 			DelayTime::create(4.0f),
@@ -141,14 +133,22 @@ void MeetFlyBot::runCinematicSequence()
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{
-				PlatformerEvents::TriggerCinematicRestore();
+				Vec2 positionB = Vec2::ZERO;
+
+				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
+				{
+					positionB = squally->getPosition();
+				}));
+
+				this->flyBot->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),
-			EaseSineInOut::create(MoveTo::create(2.0f, positionB)),
+			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{
 				this->flyBot->setVisible(false);
 
-				HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(FlyBot::MapKeyFlyBot));
+				HelperEvents::TriggerFindFlyBot();
+				PlatformerEvents::TriggerCinematicRestore();
 
 				this->complete();
 			}),

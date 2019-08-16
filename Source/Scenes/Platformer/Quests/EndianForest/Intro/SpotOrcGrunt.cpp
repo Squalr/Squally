@@ -34,7 +34,7 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std:
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = dynamic_cast<FlyBot*>(owner);
+	this->flyBot = nullptr;
 }
 
 SpotOrcGrunt::~SpotOrcGrunt()
@@ -43,18 +43,7 @@ SpotOrcGrunt::~SpotOrcGrunt()
 
 void SpotOrcGrunt::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->animationNode->setFlippedX(true);
-	}
-
-	if (!this->isActive())
-	{
-		if (this->flyBot != nullptr)
-		{
-			this->flyBot->setVisible(false);
-		}
-	}
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
@@ -74,11 +63,6 @@ void SpotOrcGrunt::onComplete()
 void SpotOrcGrunt::onSkipped()
 {
 	this->removeAllListeners();
-	
-	if (this->flyBot != nullptr)
-	{
-		this->flyBot->setVisible(false);
-	}
 }
 
 void SpotOrcGrunt::runCinematicSequence()

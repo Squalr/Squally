@@ -2,9 +2,11 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Helpers/FlyBotManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Helpers/HelperManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Abilities/SquallyAbilityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Collision/SquallyCollisionBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Visual/SquallyVisualBehaviorGroup.h"
@@ -26,9 +28,11 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityBehaviorGroup::create(owner),
 	SquallyAbilityBehaviorGroup::create(owner),
 	SquallyCollisionBehaviorGroup::create(owner),
+	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),
 	SquallyVisualBehaviorGroup::create(owner),
+	FlyBotManagerBehavior::create(owner),
 	HelperManagerBehavior::create(owner),
 	})
 {

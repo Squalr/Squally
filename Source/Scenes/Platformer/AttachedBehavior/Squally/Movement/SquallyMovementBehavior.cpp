@@ -44,8 +44,10 @@ SquallyMovementBehavior::~SquallyMovementBehavior()
 
 void SquallyMovementBehavior::update(float dt)
 {
-	//// Vec2 squallyPosition = GameUtils::getScreenBounds(this->squally->animationNode).origin;
-	//// this->squally->animationNode->setFlippedX(squallyPosition.x > MouseState::getMousePosition().x);
+	if (this->squally == nullptr)
+	{
+		return;
+	}
 
 	this->movement = Vec2::ZERO;
 

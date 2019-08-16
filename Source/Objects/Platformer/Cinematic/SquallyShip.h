@@ -22,24 +22,25 @@ public:
 
 protected:
 	SquallyShip(cocos2d::ValueMap& initProperties);
-	virtual ~SquallyShip();
+	~SquallyShip();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 
 private:
 	typedef HackableObject super;
 
+	void runShipSequence();
 	void onCrash();
 
 	bool hasCrashed;
 	float flightTime;
 
+	SmartAnimationSequenceNode* lightningStrike;
 	cocos2d::Node* shipContainer;
 	cocos2d::Sprite* ship;
 	CollisionObject* shipCollision;
@@ -53,10 +54,9 @@ private:
 	SmartAnimationSequenceNode* groundFireSmallAnimation;
 	KSequence* skipSequence;
 
+	Sound* lightningSound;
 	Sound* thrusterSound;
 	Sound* enterAtmosphereSound;
 	Sound* crashSound;
 	Sound* fireSound;
-
-	static const float FlightTimeUntilRedFlame;
 };

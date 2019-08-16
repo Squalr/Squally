@@ -50,12 +50,9 @@ FlyBotMovementBehavior::~FlyBotMovementBehavior()
 
 void FlyBotMovementBehavior::onLoad()
 {
-	this->scheduleUpdate();
+	ObjectEvents::watchForObject<Squally>(this, &this->squally);
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
-	{
-		this->squally = squally;
-	}));
+	this->scheduleUpdate();
 }
 
 void FlyBotMovementBehavior::update(float dt)
@@ -63,6 +60,11 @@ void FlyBotMovementBehavior::update(float dt)
 	super::update(dt);
 
 	this->elapsed += dt;
+
+	if (this->squally == nullptr)
+	{
+		return;
+	}
 
 	Vec2 destPosition = this->squally->getPosition();
 
@@ -97,7 +99,7 @@ void FlyBotMovementBehavior::update(float dt)
 	}
 
 	this->flyBot->getAnimations()->setFlippedX(flipX);
-	this->flyBot->getAnimations()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
+	this->flyBot->getFloatNode()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
 
 	if (isNearDest)
 	{

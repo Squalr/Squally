@@ -55,12 +55,6 @@ RestorePotionTutorial::~RestorePotionTutorial()
 
 void RestorePotionTutorial::onLoad()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<FlyBot>([=](FlyBot* flyBot, bool* isHandled)
-	{
-		this->flyBot = flyBot;
-		*isHandled = true;
-	}));
-
 	RestorePotion* restorePotion = this->entity->getInventory()->getItemOfType<RestorePotion>();
 
 	if (restorePotion != nullptr)
@@ -71,6 +65,7 @@ void RestorePotionTutorial::onLoad()
 		});
 	}
 
+	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
 	HackableEvents::TriggerDisallowHackerMode();
 }
 

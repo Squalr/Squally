@@ -36,6 +36,7 @@ public:
 	float getScale();
 	std::string getAnimationResource();
 	std::string getEmblemResource();
+	cocos2d::Node* getFloatNode();
 	SmartAnimationNode* getAnimations();
 	cocos2d::Size getEntitySize();
 	cocos2d::Size getMovementSize();
@@ -48,7 +49,6 @@ public:
 
 	ControlState controlState;
 	SpeechBubble* speechBubble;
-	SmartAnimationNode* animationNode;
 
 protected:
 	PlatformerEntity(
@@ -72,6 +72,9 @@ protected:
 	HackablePreview* createDefaultPreview() override;
 
 	std::string state;
+
+	cocos2d::Node* floatNode;
+	SmartAnimationNode* animationNode;
 
 	HexusOpponentData* hexusOpponentData;
 	Inventory* inventory;

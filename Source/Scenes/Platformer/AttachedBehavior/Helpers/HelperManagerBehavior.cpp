@@ -78,9 +78,17 @@ void HelperManagerBehavior::spawnHelper(std::string helperName)
 
 	SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 
+	std::string helperBehavior = this->getHelperAttachedBehavior(helperName);
+
+	if (helperBehavior.empty())
+	{
+		// Abort -- if no behavior found, not a valid helper
+		return;
+	}
+
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(helperName);
-	properties[GameObject::MapKeyAttachedBehavior] = Value(this->getHelperAttachedBehavior(helperName));
+	properties[GameObject::MapKeyAttachedBehavior] = Value(helperBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -113,5 +121,4 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
-	this->attachedBehaviorMap[FlyBot::MapKeyFlyBot] = FlyBotBehaviorGroup::MapKeyAttachedBehavior;
 }
