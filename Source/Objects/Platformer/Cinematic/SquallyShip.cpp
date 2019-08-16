@@ -15,6 +15,7 @@
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Konami/KSequence.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -22,6 +23,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -32,7 +34,6 @@
 using namespace cocos2d;
 
 const std::string SquallyShip::MapKeySquallyShip = "squally-ship";
-const float SquallyShip::FlightTimeUntilRedFlame = 4.25f;
 
 SquallyShip* SquallyShip::create(ValueMap& initProperties)
 {
@@ -45,6 +46,8 @@ SquallyShip* SquallyShip::create(ValueMap& initProperties)
 
 SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 {
+	this->lightningStrike = SmartAnimationSequenceNode::create();
+	this->shipContainer = Node::create();
 	this->ship = Sprite::create(ObjectResources::Cinematic_SpaceShipSqually);
 	this->shipCollision = CollisionObject::create(PhysicsBody::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->shipFireAnimation = SmartAnimationSequenceNode::create();
@@ -55,6 +58,7 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
+	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
 	this->thrusterSound = Sound::create(SoundResources::Platformer_Objects_LowFlame);
 	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_Objects_WooshRough);
 	this->crashSound = Sound::create(SoundResources::Platformer_Objects_Crash);
@@ -77,25 +81,26 @@ SquallyShip::SquallyShip(ValueMap& initProperties) : super(initProperties)
 		this->onCrash();
 	});
 
-	this->smokeAnimation->setRotation(-45.0f);
-	this->shipFireAnimation->setRotation(-45.0f);
 	this->ship->setFlippedX(true);
-	this->ship->setRotation(-45.0f);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
 	this->fireSound->toggleCameraDistanceFade(true);
+	this->shipCollision->setGravityEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
 	this->ship->addChild(this->fireRingAnimation);
 	this->ship->addChild(this->fireAnimation);
 	this->ship->addChild(this->thrustAnimation);
-	this->shipCollision->addChild(this->shipFireAnimation);
-	this->shipCollision->addChild(this->smokeAnimation);
-	this->shipCollision->addChild(this->ship);
+	this->shipContainer->addChild(this->shipFireAnimation);
+	this->shipContainer->addChild(this->smokeAnimation);
+	this->shipContainer->addChild(this->ship);
+	this->shipCollision->addChild(this->lightningStrike);
 	this->shipCollision->addChild(this->explodeAnimation);
 	this->shipCollision->addChild(this->groundFireAnimation);
 	this->shipCollision->addChild(this->groundFireSmallAnimation);
+	this->shipCollision->addChild(this->shipContainer);
 	this->addChild(this->shipCollision);
+	this->addChild(this->lightningSound);
 	this->addChild(this->thrusterSound);
 	this->addChild(this->enterAtmosphereSound);
 	this->addChild(this->crashSound);
@@ -111,8 +116,8 @@ void SquallyShip::onEnter()
 	super::onEnter();
 
 	CameraTrackingData trackingData = CameraTrackingData(
-		this->ship,
-		Vec2(0.0f, 512.0f),
+		this->shipCollision,
+		Vec2(0.0f, 128.0f),
 		Vec2(0.0f, 0.0f),
 		CameraTrackingData::CameraScrollType::Rectangle,
 		Vec2(1.0f, 1.0f)
@@ -120,13 +125,7 @@ void SquallyShip::onEnter()
 
 	GameCamera::getInstance()->setTarget(trackingData);
 
-	this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
-	this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
-	this->fireAnimation->playAnimationRepeat(FXResources::MeteorFireBlue_MeteorFire_0000, 0.06f);
-	this->thrustAnimation->playAnimationRepeat(FXResources::SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
-	this->thrusterSound->play(true);
-
-	this->scheduleUpdate();
+	this->runShipSequence();
 }
 
 void SquallyShip::onEnterTransitionDidFinish()
@@ -140,8 +139,9 @@ void SquallyShip::initializePositions()
 {
 	super::initializePositions();
 
-	this->smokeAnimation->setPosition(Vec2(-64.0f, -64.0f));
-	this->shipFireAnimation->setPosition(Vec2(-32.0f, -32.0f));
+	this->lightningStrike->setPosition(Vec2(-32.0f, 420.0f));
+	this->smokeAnimation->setPosition(Vec2(-96.0f, 0.0f));
+	this->shipFireAnimation->setPosition(Vec2(-64.0f, 48.0f));
 	this->fireAnimation->setPosition(Vec2(112.0f, 32.0f));
 	this->fireRingAnimation->setPosition(Vec2(0.0f, 32.0f));
 	this->thrustAnimation->setPosition(Vec2(448.0f, 52.0f));
@@ -161,25 +161,6 @@ void SquallyShip::initializeListeners()
 	});
 }
 
-void SquallyShip::update(float dt)
-{
-	this->shipCollision->setVelocity(Vec2(-2048.0f, -2048.0f));
-
-	if (this->flightTime < SquallyShip::FlightTimeUntilRedFlame)
-	{
-		this->flightTime += dt;
-
-		if (this->flightTime >= SquallyShip::FlightTimeUntilRedFlame)
-		{
-			this->fireAnimation->setPosition(Vec2(112.0f + 44.0f, 32.0f));
-			this->fireAnimation->playAnimationRepeat(FXResources::MeteorFire_MeteorFire_0000, 0.06f);
-			this->fireRingAnimation->playAnimation(FXResources::FireRing_FireRing_0000, 0.08f, true);
-
-			this->enterAtmosphereSound->play();
-		}
-	}
-}
-
 Vec2 SquallyShip::getButtonOffset()
 {
 	return Vec2(0.0f, 0.0f);
@@ -188,6 +169,49 @@ Vec2 SquallyShip::getButtonOffset()
 void SquallyShip::registerHackables()
 {
 	super::registerHackables();
+}
+
+void SquallyShip::runShipSequence()
+{
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			this->shipCollision->setVelocity(Vec2(0.0f, 0.0f));
+			this->shipCollision->setHorizontalDampening(1.0f);
+			this->shipCollision->setVerticalDampening(1.0f);
+			this->thrusterSound->play(true);
+			this->thrustAnimation->playAnimationRepeat(FXResources::SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
+		}),
+		DelayTime::create(4.0f),
+		CallFunc::create([=]()
+		{
+			this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
+			this->lightningSound->play();
+		}),
+		DelayTime::create(0.75f),
+		CallFunc::create([=]()
+		{
+			this->shipCollision->setVelocity(Vec2(-2048.0f, -2048.0f));
+			this->shipContainer->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
+			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
+			this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
+		}),
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			this->fireAnimation->playAnimationRepeat(FXResources::MeteorFireBlue_MeteorFire_0000, 0.06f);
+		}),
+		DelayTime::create(3.0f),
+		CallFunc::create([=]()
+		{
+			this->fireAnimation->setPosition(Vec2(112.0f + 44.0f, 32.0f));
+			this->fireAnimation->playAnimationRepeat(FXResources::MeteorFire_MeteorFire_0000, 0.06f);
+			this->fireRingAnimation->playAnimation(FXResources::FireRing_FireRing_0000, 0.08f, true);
+
+			this->enterAtmosphereSound->play();
+		}),
+		nullptr
+	));
 }
 
 void SquallyShip::onCrash()
@@ -202,6 +226,9 @@ void SquallyShip::onCrash()
 	Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
 	Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 	Squally* squally = Squally::create();
+	
+	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	
 	squally->setState(StateKeys::Health, Value(1));
 

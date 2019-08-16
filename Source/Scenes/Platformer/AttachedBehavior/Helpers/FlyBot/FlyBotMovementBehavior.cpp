@@ -51,16 +51,21 @@ FlyBotMovementBehavior::~FlyBotMovementBehavior()
 void FlyBotMovementBehavior::onLoad()
 {
 	this->scheduleUpdate();
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
-	{
-		this->squally = squally;
-	}));
 }
 
 void FlyBotMovementBehavior::update(float dt)
 {
 	super::update(dt);
+
+	if (this->squally == nullptr)
+	{
+		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
+		{
+			this->squally = squally;
+		}));
+
+		return;
+	}
 
 	this->elapsed += dt;
 

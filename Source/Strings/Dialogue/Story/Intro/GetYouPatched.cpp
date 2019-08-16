@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringAr()
 	{
-		return "دعنا نصلعك. اتبعني.";
+		return "هيا بنا نصلح ونتوجه إلى المدينة!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringBg()
 	{
-		return "Нека да те закърпим. Следвай ме.";
+		return "Хайде да ви накачим и да се отправите към града!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringCs()
 	{
-		return "Pojďme ti záplatovat. Následuj mě.";
+		return "Pojďme se napravit a zamířit do města!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringDa()
 	{
-		return "Lad os få dig lappet op. Følg mig.";
+		return "Lad os få dig til at lappe og gå ind i byen!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringDe()
 	{
-		return "Lass uns dich flicken. Folge mir.";
+		return "Lass uns dich flicken und in die Stadt fahren!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringEl()
 	{
-		return "Ας σκεφτούμε. Ακολούθησέ με.";
+		return "Ας σας πάρει patched επάνω και το κεφάλι στην πόλη!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringEn()
 	{
-		return "Let's get you patched up. Follow me.";
+		return "Let's get you patched up and head into town!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringEs()
 	{
-		return "Vamos a arreglarte. Sígueme.";
+		return "¡Vamos a arreglarte y a la ciudad!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringEs419()
 	{
-		return "Vamos a arreglarte. Sígueme.";
+		return "¡Vamos a arreglarte y a la ciudad!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringFi()
 	{
-		return "Let's letched up. Seuraa minua.";
+		return "Otetaan paikallaan ja suunnataan kaupunkiin!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringFr()
 	{
-		return "Allons vous rafistoler. Suis moi.";
+		return "On te rafraîchit et on part en ville!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringHu()
 	{
-		return "Tegyük fel a foltokat. Kövess engem.";
+		return "Vigyázzunk rá, és menjünk a városba!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringIt()
 	{
-		return "Cerchiamo di sistemarti. Seguimi.";
+		return "Lasciati aggiustare e andiamo in città!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringJa()
 	{
-		return "パッチを当てましょう。フォローしてください。";
+		return "パッチを当てて町に向かいましょう！";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringKo()
 	{
-		return "너 한테 패치 해 줘. 날 따라와.";
+		return "당신을 패치하고 마을로 향하자!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringNl()
 	{
-		return "Laten we je op orde brengen. Volg mij.";
+		return "Laten we je opknappen en de stad in gaan!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringNo()
 	{
-		return "La oss få deg oppdatert. Følg meg.";
+		return "La oss få lappet opp og dra til byen!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringPl()
 	{
-		return "Załatwimy cię. Chodź za mną.";
+		return "Pozwól się załatać i idź do miasta!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringPt()
 	{
-		return "Vamos te remendar. Me siga.";
+		return "Vamos te remendar e ir para a cidade!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringPtBr()
 	{
-		return "Vamos te remendar. Me siga.";
+		return "Vamos te remendar e ir para a cidade!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringRo()
 	{
-		return "Să-ți dăm patul. Urmați-mă.";
+		return "Hai să te aducem cu patch-ul și să ne îndreptăm în oraș!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringRu()
 	{
-		return "Давай тебя исправим. Подписывайтесь на меня.";
+		return "Давай исправим тебя и отправимся в город";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringSv()
 	{
-		return "Låt oss få dig patched upp. Följ mig.";
+		return "Låt oss få dig att lappa upp och gå in i stan!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringTh()
 	{
-		return "มาทำความรู้จักกับคุณกันเถอะ ปฏิบัติตามฉัน.";
+		return "ให้คุณได้รับการปะทุและมุ่งหน้าเข้าเมือง!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringTr()
 	{
-		return "Seni yamalıralım. Beni takip et.";
+		return "Seni yamalayıp kasabaya götürelim!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringUk()
 	{
-		return "Давайте підберемо вас. Слідуй за мною.";
+		return "Давайте ми вас зафіксували і вирушайте в місто!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringVi()
 	{
-		return "Hãy để bạn vá lỗi. Theo tôi.";
+		return "Hãy để bạn được vá và đi vào thị trấn!";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringZhCn()
 	{
-		return "我们来修补你吧。跟着我。";
+		return "让我们打补丁，然后进城！";
 	}
 
 	std::string Dialogue_Story_Intro_GetYouPatched::getStringZhTw()
 	{
-		return "我們來修補你吧。跟著我。";
+		return "讓我們打補丁，然後進城！";
 	}
 }

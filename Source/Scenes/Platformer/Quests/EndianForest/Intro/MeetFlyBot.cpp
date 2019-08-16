@@ -18,6 +18,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
+#include "Strings/Dialogue/Story/Intro/DistressBeacon.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
 
 using namespace cocos2d;
@@ -128,6 +129,12 @@ void MeetFlyBot::runCinematicSequence()
 				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
 			}),
 			DelayTime::create(2.0f),
+			CallFunc::create([=]()
+			{
+				this->flyBot->droidBrief1Sound->play();
+				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_DistressBeacon::create());
+			}),
+			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
 				this->flyBot->droidBrief1Sound->play();
