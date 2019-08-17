@@ -1,6 +1,6 @@
 [submodule "cocos2d"]
 	path = cocos2d
-	url = git@github.com:zcanann/cocos2d-x.git
+	url = git@github.com:Squalr/cocos2d-x.git
 	branch = squally/3.17
 [submodule "external/breakpad"]
 	path = external/breakpad
@@ -13,7 +13,7 @@
 	url = git@github.com:mattbucci/vcpkg.git
 [submodule "external/spriter2dx"]
 	path = external/spriter2dx
-	url = git@github.com:zcanann/Spriter2dX
+	url = git@github.com:Squalr/Spriter2dX
 [submodule "external/spriterplusplus"]
 	path = external/spriterplusplus
-	url = git@github.com:zcanann/SpriterPlusPlus
+	url = git@github.com:Squalr/SpriterPlusPlus
