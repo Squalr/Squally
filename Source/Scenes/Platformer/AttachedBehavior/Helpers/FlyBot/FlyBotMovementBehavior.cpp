@@ -35,6 +35,7 @@ FlyBotMovementBehavior::FlyBotMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->flyBot = dynamic_cast<FlyBot*>(owner);
 	this->elapsed = 0.0f;
+	this->timeNearDest = 0.0f;
 
 	if (this->flyBot == nullptr)
 	{
@@ -86,8 +87,17 @@ void FlyBotMovementBehavior::update(float dt)
 	float distance = destPosition.distance(this->flyBot->getPosition());
 	bool isLeftOfSqually = this->flyBot->getPositionX() <= this->squally->getPositionX();
 	bool isMovingLeft = this->flyBot->getPositionX() > destPosition.x;
-	bool isNearDest = distance < 24.0f;
+	bool isNearDest = distance < 8.0f;
 	bool flipX = false;
+
+	if (isNearDest)
+	{
+		this->timeNearDest += dt;
+	}
+	else
+	{
+		this->timeNearDest = 0.0f;
+	}
 
 	if (isNearDest)
 	{
@@ -101,7 +111,7 @@ void FlyBotMovementBehavior::update(float dt)
 	this->flyBot->getAnimations()->setFlippedX(flipX);
 	this->flyBot->getFloatNode()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
 
-	if (isNearDest)
+	if (isNearDest && this->timeNearDest > 0.75f)
 	{
 		return;
 	}
