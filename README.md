@@ -7,6 +7,18 @@ Squally
 ![Squally Gameplay 3](https://i.imgur.com/1hvYk3K.png) | ![Squally Gameplay 4](https://i.imgur.com/bOSKa7p.png)
 ![Squally Gameplay 5](https://i.imgur.com/0WpBLxS.png) | ![Squally Gameplay 6](https://i.imgur.com/iYUfJGq.png)
 
+Contributing
+------------
+To show support and help us finish development, [get the game on Steam](https://store.steampowered.com/app/770200/Squally/).
+
+For those that wish to help with development, just hop over to the Issues tab and look for things to improve:
+
+Issues |
+------------ |
+[Easy](https://github.com/Squalr/Squally/labels/good%20first%20issue) |
+[Intermediate](https://github.com/Squalr/Squally/labels/good%20first%20issue%20%28intermediate%29) |
+
+To edit maps, download [Tiled](https://www.mapeditor.org/). Maps are kept in Resources/Platformer/Maps/*.tmx.
 
 Compiling Squally
 ------------
