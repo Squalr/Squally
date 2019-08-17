@@ -52,18 +52,23 @@ void SquallyHealthBehavior::onLoad()
 		this->saveState();
 	}));
 
-	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-	{
-		if (!value.asBool())
-		{
-			this->respawn();
-		}
-	});
-
 	int maxHealth = this->squally->getStateOrDefaultInt(StateKeys::MaxHealth, 123);
 	int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(maxHealth)).asInt();
 
 	this->squally->setState(StateKeys::Health, Value(health));
+
+	if (health <= 0)
+	{
+		this->respawn(0.1f);
+	}
+
+	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (!value.asBool())
+		{
+			this->respawn(1.5f);
+		}
+	});
 }
 
 void SquallyHealthBehavior::saveState()
@@ -71,10 +76,10 @@ void SquallyHealthBehavior::saveState()
 	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
 }
 
-void SquallyHealthBehavior::respawn()
+void SquallyHealthBehavior::respawn(float duration)
 {
 	this->runAction(Sequence::create(
-		DelayTime::create(1.5f),
+		DelayTime::create(duration),
 		CallFunc::create([=]()
 		{
 			if (this->spawnCoords != Vec2::ZERO)

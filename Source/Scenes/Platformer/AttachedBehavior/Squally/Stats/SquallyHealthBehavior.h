@@ -21,7 +21,7 @@ private:
 	typedef AttachedBehavior super;
 	
 	void saveState();
-	void respawn();
+	void respawn(float delay);
 
 	cocos2d::Vec2 spawnCoords;
 

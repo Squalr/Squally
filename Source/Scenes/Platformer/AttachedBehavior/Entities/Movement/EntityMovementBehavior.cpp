@@ -81,9 +81,13 @@ void EntityMovementBehavior::update(float dt)
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
+			bool hasLeftCollision = movementCollision->hasLeftWallCollision();
+			bool hasRightCollision = movementCollision->hasRightWallCollision();
+			bool movingIntoLeftWall = (this->movement.x < 0.0f && hasLeftCollision);
+			bool movingIntoRightWall = (this->movement.x > 0.0f && hasRightCollision);
+
 			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
-			if ((this->movement.x < 0.0f && !movementCollision->hasLeftWallCollision()) ||
-				(this->movement.x > 0.0f && !movementCollision->hasRightWallCollision()))
+			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
 				velocity.x += this->movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
