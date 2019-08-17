@@ -95,7 +95,7 @@ void InteractMenu::show()
 	if (!this->hasRelocated)
 	{
 		// Move the UI elements to the top-most layer
-		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(
 			this->uiElements
 		));
 		this->hasRelocated = true;

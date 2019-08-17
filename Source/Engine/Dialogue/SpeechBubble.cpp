@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Camera/GameCamera.h"
@@ -17,17 +18,18 @@ const Color4F SpeechBubble::BubbleEdgeColor = Color4F(Color4B(47, 71, 78, 196));
 const Color4B SpeechBubble::BubbleTextColor = Color4B(47, 71, 78, 255);
 const float SpeechBubble::BubbleBorderSize = 3.0f;
 
-SpeechBubble* SpeechBubble::create()
+SpeechBubble* SpeechBubble::create(bool uiBound)
 {
-	SpeechBubble* instance = new SpeechBubble();
+	SpeechBubble* instance = new SpeechBubble(uiBound);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpeechBubble::SpeechBubble()
+SpeechBubble::SpeechBubble(bool uiBound)
 {
+	this->uiBound = uiBound;
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
@@ -45,6 +47,30 @@ SpeechBubble::SpeechBubble()
 
 SpeechBubble::~SpeechBubble()
 {
+}
+
+void SpeechBubble::onExit()
+{
+	super::onExit();
+	
+	if (this->uiBound)
+	{
+		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->stem));
+		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->bubble));
+		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->text));
+	}
+}
+
+void SpeechBubble::onEnter()
+{
+	super::onEnter();
+
+	if (this->uiBound)
+	{
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->stem));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->bubble));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->text));
+	}
 }
 
 void SpeechBubble::initializePositions()

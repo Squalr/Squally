@@ -200,13 +200,13 @@ void MemoryGrid::onEnter()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
-		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
 	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
-		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 

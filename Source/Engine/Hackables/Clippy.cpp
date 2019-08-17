@@ -7,7 +7,7 @@ using namespace cocos2d;
 Clippy::Clippy()
 {
 	this->animationNode = Node::create();
-	this->speechBubble = SpeechBubble::create();
+	this->speechBubble = SpeechBubble::create(false);
 
 	this->isEnabled = true;
 

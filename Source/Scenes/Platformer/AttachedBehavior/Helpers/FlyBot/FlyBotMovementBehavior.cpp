@@ -86,7 +86,7 @@ void FlyBotMovementBehavior::update(float dt)
 	float distance = destPosition.distance(this->flyBot->getPosition());
 	bool isLeftOfSqually = this->flyBot->getPositionX() <= this->squally->getPositionX();
 	bool isMovingLeft = this->flyBot->getPositionX() > destPosition.x;
-	bool isNearDest = distance < 8.0f;
+	bool isNearDest = distance < 24.0f;
 	bool flipX = false;
 
 	if (isNearDest)

@@ -68,7 +68,7 @@ void LevelNode::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->indexLabel));
+	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->indexLabel));
 
 	this->setLockState();
 }

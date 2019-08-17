@@ -9,6 +9,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Dialogue/Help/HelpTotemHacking.h"
+
 using namespace cocos2d;
 
 const std::string HelpTotemHacking::MapKeyHelpTotemHacking = "help-totem-hacking";
@@ -24,7 +26,7 @@ HelpTotemHacking* HelpTotemHacking::create(ValueMap& properties)
 
 HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 {
-	this->setHint(ConstantString::create("[TAB]"));
+	this->setHint(Strings::Dialogue_Help_HelpTotemHacking::create());
 }
 
 HelpTotemHacking::~HelpTotemHacking()

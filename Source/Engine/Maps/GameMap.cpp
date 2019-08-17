@@ -97,7 +97,7 @@ void GameMap::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventMoveObjectToTopLayer, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
 	{
 		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
 
@@ -304,7 +304,7 @@ void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
 	{
 		return;
 	}
-
+	
 	this->mapLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
 }
 

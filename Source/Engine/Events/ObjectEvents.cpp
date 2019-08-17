@@ -11,7 +11,7 @@ using namespace cocos2d;
 const std::string ObjectEvents::EventCollisonMapUpdated = "EVENT_COLLISION_MAP_UPDATED";
 const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
-const std::string ObjectEvents::EventMoveObjectToTopLayer = "EVENT_MOVE_OBJECT_TO_TOP_LAYER";
+const std::string ObjectEvents::EventBindObjectToUI = "EVENT_BIND_OBJECT_TO_UI";
 const std::string ObjectEvents::EventUnbindObject = "EVENT_UNBIND_OBJECT";
 const std::string ObjectEvents::EventElevateObject = "EVENT_ELEVATE_OBJECT";
 const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
@@ -44,10 +44,10 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 	);
 }
 
-void ObjectEvents::TriggerMoveObjectToTopLayer(RelocateObjectArgs args)
+void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventMoveObjectToTopLayer,
+		ObjectEvents::EventBindObjectToUI,
 		&args
 	);
 };

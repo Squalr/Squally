@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringAr()
 	{
-		return "تجاوز البايت! استخدم التوزيعات لكتابة المزيد من التجميع.";
+		return "بايت تجاوز! لا توجد مساحة كافية لرمزك.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringBg()
 	{
-		return "Преливане на байтове! Използвайте разпределения, за да пишете повече монтаж.";
+		return "Байт преливник! Няма достатъчно място за вашия код.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringCs()
 	{
-		return "Byte přetečení! Použijte alokace pro zápis dalšího sestavení.";
+		return "Přetečení bajtů! Nedostatek místa pro váš kód.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringDa()
 	{
-		return "Byte overløb! Brug tildelinger til at skrive mere samling.";
+		return "Byteoverløb! Ikke nok plads til din kode.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringDe()
 	{
-		return "Byteüberlauf! Verwenden Sie Zuordnungen, um mehr Assembly zu schreiben.";
+		return "Byte-Überlauf! Nicht genügend Platz für Ihren Code.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringEl()
 	{
-		return "Byte υπερχείλιση! Χρησιμοποιήστε κατανομές για να γράψετε περισσότερη συναρμολόγηση.";
+		return "Byte υπερχείλιση! Δεν υπάρχει αρκετός χώρος για τον κωδικό σας.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringEn()
 	{
-		return "Byte overflow! Use allocations to write more assembly.";
+		return "Byte overflow! Not enough space for your code.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringEs()
 	{
-		return "Desbordamiento de bytes! Usa las asignaciones para escribir más ensamblajes.";
+		return "¡Desbordamiento de bytes! No hay suficiente espacio para su código.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringEs419()
 	{
-		return "Desbordamiento de bytes! Usa las asignaciones para escribir más ensamblajes.";
+		return "¡Desbordamiento de bytes! No hay suficiente espacio para su código.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringFi()
 	{
-		return "Byte-ylivuoto! Voit käyttää lisää kokoonpanoja käyttämällä varauksia.";
+		return "Tavun ylivuoto! Ei riittävästi tilaa koodillesi.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringFr()
 	{
-		return "Débordement d'octets! Utilisez les allocations pour écrire plus d'assembly.";
+		return "Débordement d'octets! Pas assez d'espace pour votre code.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringHu()
 	{
-		return "Bájt túlcsordulás! Használjon hozzárendeléseket több összeszerelés írásához.";
+		return "Byte túlcsordulás! Nincs elég hely a kódhoz.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringIt()
 	{
-		return "Byte overflow! Utilizzare le allocazioni per scrivere più assembly.";
+		return "Byte overflow! Spazio insufficiente per il tuo codice.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringJa()
 	{
-		return "バイトオーバーフロー！より多くのアセンブリを書くために割り当てを使用してください。";
+		return "バイトオーバーフロー！コードに十分なスペースがありません。";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringKo()
 	{
-		return "바이트 오버플로! 할당을 사용하여 더 많은 어셈블리를 작성하십시오.";
+		return "바이트 오버 플로우! 코드를위한 충분한 공간이 없습니다.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringNl()
 	{
-		return "Byte overloop! Gebruik toewijzingen om meer assembly te schrijven.";
+		return "Byte overflow! Onvoldoende ruimte voor uw code.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringNo()
 	{
-		return "Byte overløp! Bruk tildelinger for å skrive mer samling.";
+		return "Byteoverløp! Ikke nok plass til koden din.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringPl()
 	{
-		return "Przepełnienie bajtów! Użyj przydziałów, aby napisać więcej złożenia.";
+		return "Przepełnienie bajtu! Za mało miejsca na Twój kod.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringPt()
 	{
-		return "Excesso de bytes! Use alocações para escrever mais montagem.";
+		return "Excesso de bytes! Não há espaço suficiente para o seu código.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringPtBr()
 	{
-		return "Excesso de bytes! Use alocações para escrever mais montagem.";
+		return "Excesso de bytes! Não há espaço suficiente para o seu código.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringRo()
 	{
-		return "Byte overflow! Utilizați alocări pentru a scrie mai multe montaj.";
+		return "Debord de byte! Nu este suficient spațiu pentru codul tău.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringRu()
 	{
-		return "Переполнение байта! Используйте выделения, чтобы написать больше сборок.";
+		return "Переполнение байта! Недостаточно места для вашего кода.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringSv()
 	{
-		return "Byte överflöde! Använd anslag för att skriva mer montering.";
+		return "Byteöverflödet! Inte tillräckligt med utrymme för din kod.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringTh()
 	{
-		return "ไบต์ล้น! ใช้การจัดสรรเพื่อเขียนชุดประกอบเพิ่มเติม";
+		return "ล้นไบต์! มีเนื้อที่ไม่เพียงพอสำหรับรหัสของคุณ";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringTr()
 	{
-		return "Bayt taşması! Daha fazla derleme yazmak için tahsisleri kullanın.";
+		return "Bayt taşması! Kodunuz için yeterli alan yok.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringUk()
 	{
-		return "Переповнення байтів! Використовуйте виділення для запису більше збірки.";
+		return "Переповнення байтів! Не вистачає місця для вашого коду.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringVi()
 	{
-		return "Byte tràn! Sử dụng phân bổ để viết thêm lắp ráp.";
+		return "Byte tràn! Không đủ không gian cho mã của bạn.";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringZhCn()
 	{
-		return "字节溢出！使用分配来编写更多程序集。";
+		return "字节溢出！没有足够的空间容纳您的代码。";
 	}
 
 	std::string Hacking_CodeEditor_ByteOverflow::getStringZhTw()
 	{
-		return "字節溢出！使用分配來編寫更多程序集。";
+		return "字節溢出！沒有足夠的空間容納您的代碼。";
 	}
 }

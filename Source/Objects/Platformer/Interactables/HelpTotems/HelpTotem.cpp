@@ -25,13 +25,11 @@ HelpTotem* HelpTotem::create(ValueMap& properties)
 HelpTotem::HelpTotem(ValueMap& properties) : super(properties)
 {
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
-	this->questionMark = Sprite::create(ObjectResources::Interactive_Help_QuestionMark);
 	this->hintCollision = CollisionObject::create(PhysicsBody::createBox(Size(248.0f, 248.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->speechBubble = SpeechBubble::create();
 	this->hint = nullptr;
 
 	this->addChild(this->totem);
-	this->addChild(this->questionMark);
 	this->addChild(this->hintCollision);
 	this->addChild(this->speechBubble);
 }
@@ -49,7 +47,6 @@ void HelpTotem::initializePositions()
 {
 	super::initializePositions();
 
-	this->questionMark->setPosition(Vec2(0.0f, 128.0f));
 	this->speechBubble->setPosition(Vec2(0.0f, 128.0f));
 }
 

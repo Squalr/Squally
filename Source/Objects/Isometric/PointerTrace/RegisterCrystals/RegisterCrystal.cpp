@@ -74,7 +74,7 @@ void RegisterCrystal::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
+	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 
 	this->crystalContainerNode->runAction(RepeatForever::create(
 		Sequence::create(

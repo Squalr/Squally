@@ -110,11 +110,11 @@ void HackableObject::update(float dt)
 
 	if (!this->hackableList.empty())
 	{	
-		// Note that this is deferred until now as an optimization, as TriggerMoveObjectToTopLayer is expensive
+		// Note that this is deferred until now as an optimization, as TriggerBindObjectToUI is expensive
 		if (!this->hasRelocatedUI)
 		{
 			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->uiElements));
+			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElements));
 			this->hasRelocatedUI = true;
 		}
 	}

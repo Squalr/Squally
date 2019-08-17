@@ -30,7 +30,6 @@ private:
 	typedef GameObject super;
 	
 	cocos2d::Sprite* totem;
-	cocos2d::Sprite* questionMark;
 	CollisionObject* hintCollision;
 	SpeechBubble* speechBubble;
 	LocalizedString* hint;

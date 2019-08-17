@@ -48,7 +48,15 @@ MeetFlyBot::~MeetFlyBot()
 
 void MeetFlyBot::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
+	if (this->flyBot != nullptr)
+	{
+		this->flyBot->getAnimations()->setFlippedX(true);
+
+		if (questState == QuestState::Complete)
+		{
+			this->flyBot->setVisible(false);
+		}
+	}
 }
 
 void MeetFlyBot::onActivate(bool isActiveThroughSkippable)

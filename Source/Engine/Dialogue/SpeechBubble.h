@@ -13,7 +13,7 @@ class LocalizedString;
 class SpeechBubble : public SmartNode
 {
 public:
-	static SpeechBubble* create();
+	static SpeechBubble* create(bool uiBound = true);
 
 	enum class Direction
 	{
@@ -28,15 +28,19 @@ public:
 
 private:
 	typedef SmartNode super;
-	SpeechBubble();
+	SpeechBubble(bool uiBound);
 	virtual ~SpeechBubble();
 
+	void onEnter() override;
+	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;
+
+	bool uiBound;
 
 	static const cocos2d::Color4F BubbleColor;
 	static const cocos2d::Color4F BubbleEdgeColor;

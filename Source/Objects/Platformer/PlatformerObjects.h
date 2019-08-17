@@ -21,6 +21,7 @@
 #include "Objects/Platformer/Doors/Warp.h"
 #include "Objects/Platformer/Doors/WoodenGate/WoodenGate.h"
 #include "Objects/Platformer/Interactables/HackableHint.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemAttacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Liquids/Water.h"

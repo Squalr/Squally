@@ -173,8 +173,8 @@ void Card::onEnterTransitionDidFinish()
 
 	if (this->relocateUI)
 	{
-		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-		ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 	}
 }
 

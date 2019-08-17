@@ -82,7 +82,7 @@ void CagedAnimal::onBreak()
 
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Menus_Notifications_AnimalRescued::create(), this->getAnimalName(), this->getSpriteResource()));
 
-	ObjectEvents::TriggerMoveObjectToTopLayer(ObjectEvents::RelocateObjectArgs(this->animalNode));
+	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->animalNode));
 
 	this->shineFx->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
