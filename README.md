@@ -1,47 +1,51 @@
 Squally
 =========
-2D Platformer Game for Teaching Game Hacking - C++/cocos2d-x
+2D Platformer Game for Teaching Game Hacking. Written in C++/cocos2d-x, runs on Windows, OSX, and Linux.
 
-Checking out
+![Squally Gameplay 1](https://i.imgur.com/M2KMSZ9.png) | ![Squally Gameplay 2](https://i.imgur.com/U3bbo1v.png)
+------------ | -------------
+![Squally Gameplay 3](https://i.imgur.com/1hvYk3K.png) | ![Squally Gameplay 4](https://i.imgur.com/bOSKa7p.png)
+![Squally Gameplay 5](https://i.imgur.com/0WpBLxS.png) | ![Squally Gameplay 6](https://i.imgur.com/iYUfJGq.png)
+
+Contributing
 ------------
+To show support and help us finish development, [get the game on Steam](https://store.steampowered.com/app/770200/Squally/).
+
+For those that wish to help with development, just hop over to the Issues tab and look for things to improve:
+
+Issues |
+------------ |
+[Easy](https://github.com/Squalr/Squally/labels/good%20first%20issue) |
+[Intermediate](https://github.com/Squalr/Squally/labels/good%20first%20issue%20%28intermediate%29) |
+
+To edit maps, download [Tiled](https://www.mapeditor.org/). Maps are kept in Resources/Platformer/Maps/*.tmx.
+
+Compiling Squally
+------------
+To minimize cross-platform effort, we develop Squally using [VsCode](https://code.visualstudio.com/) with the following extensions:
+- C/C++ for Visual Studio Code
+- CMake Tools
+
+Squally is comprised of several subrepos, including:
+- Cocos2d-x
+- Spriter2d-x / SpriterPlusPlus
+- Breakpad / AFNetworking
+- Vcpkg
+
+Additional dependencies are managed using vcpkg.
+
+**Important:** The Resources/* folder contains all art and sound for Squally, and is a private repository. This is because we do not have exclusive-rights to all of the art in Squally, so we cannot legally publish it. To gain access, purchase the game and submit proof to zacharycanann@gmail.com, and we will grant you access to this repository, under the condition that you do not redistribute the contents of the repository.
+
+To do a fresh build and pull in dependencies:
 ```
 git clone --recurse-submodules git@github.com:zcanann/Squally.git
 cd Squally
+python dep.py init
+```
 
-# to update later
+
+To update dependencies later:
+```
 git submodule update --init --recursive .
 python dep.py update
 ```
-
-Publishing to Itch and Steam
----------
-
-The gDrive SquallyDeploy folder is used as a repository for deploy files. Git is not effective here, as the binaries are large and change often. Simply run the `deploy.py` script. Currently, we release symbol files because it doesn't really matter.
-
-Note: Itch.io builds and Steam builds are identical. The difference is the files shipped:
-
-Cases:
-- Steam		Steam DLLs are present, `steam_appid.txt` is NOT present.
-- Debug		Both files are present, and Steam debug mode is used.
-- Itch		Neither file is present.
-
-
-Dependencies
----------
-Dependencies are managed via vcpkg which is conviently bundled into this repo
-- I wrote dep.py as a wrapper to vcpkg, use python dep.py search <packagename> or python dep.py install <packagename>
-- Newly installed dependencies will automatically be added to requirements.txt which should be committed along with your changes, this is how others will install your new dependency via dep.py update
-- Once installed, you'll need to include the headers in our cmake file and link the library to the squally binary
-    - For some modules, youll recieve commands you can add to CMakeLists.template directly, just replace "main" with ${AppName}
-    - For others you'll have to manually wire things up, see asmjit as an example. More details here: https://github.com/Microsoft/vcpkg/blob/master/docs/examples/installing-and-using-packages.md#handling-libraries-without-native-cmake-support
-
-On intial clone use dep.py to initalize dependencies
-`python dep.py init`
-
-when updating later run
-`python dep.py update`
-
----------
-To minimize cross-platform effort, we're using VsCode with the following extensions:
-- C/C++ for Visual Studio Code
-- CMake Tools
