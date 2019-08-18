@@ -1,6 +1,12 @@
 Squally
 =========
-2D Platformer Game for Teaching Game Hacking. Written in C++/cocos2d-x, runs on Windows, OSX, and Linux.
+2D Platformer Game for Teaching Game Hacking.
+
+Language: C++
+
+Engine: Cocos-2dx
+
+Platforms: Windows, OSX, and Linux
 
 ![Squally Gameplay 1](https://i.imgur.com/M2KMSZ9.png) | ![Squally Gameplay 2](https://i.imgur.com/U3bbo1v.png)
 ------------ | -------------
@@ -26,11 +32,14 @@ To minimize cross-platform effort, we develop Squally using [VsCode](https://cod
 - C/C++ for Visual Studio Code
 - CMake Tools
 
+You may also need to install [Ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages) to compile the project.
+
 Squally is comprised of several subrepos, including:
 - Cocos2d-x
 - Spriter2d-x / SpriterPlusPlus
 - Breakpad / AFNetworking
 - Vcpkg
+- SquallyResources*
 
 Additional dependencies are managed using vcpkg.
 
@@ -38,11 +47,12 @@ Additional dependencies are managed using vcpkg.
 
 To do a fresh build and pull in dependencies:
 ```
-git clone --recurse-submodules git@github.com:zcanann/Squally.git
+git clone git@github.com:zcanann/Squally.git
 cd Squally
+git submodule update --init --recursive .
 python dep.py init
 ```
-
+Due to a timing bug, `python dep.py init` may need to be run twice. Perhaps this is a good first issue for someone :^)
 
 To update dependencies later:
 ```
