@@ -31,6 +31,7 @@ Compiling Squally
 To minimize cross-platform effort, we develop Squally using [VsCode](https://code.visualstudio.com/) with the following extensions:
 - C/C++ for Visual Studio Code
 - CMake Tools
+- (Mac only) CodeLLDB is recommended, as this debugger works better than the default. Just be sure to go into Debug > Breakpoints > Disable C++: on throw
 
 You may also need to install [Ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages) to compile the project.
 
