@@ -17,3 +17,6 @@
 [submodule "external/spriterplusplus"]
 	path = external/spriterplusplus
 	url = git@github.com:Squalr/SpriterPlusPlus
+[submodule "Resources"]
+	path = Resources
+	url = git@github.com:Squalr/SquallyResources.git
