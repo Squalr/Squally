@@ -11,13 +11,14 @@ Mihai Gosa, email:pintea@inthekillhouse.com  twitter: @gosamihai
 */
 
 #include "TAnalytics.h"
-#include <curl/curl.h>
+// Zac: Temp disabled
+// #include <curl/curl.h>
 #include <cstdlib>
 #include <cstdio>
 #include <cstdarg>
 #include <cassert>
 
-static CURLM* g_pMultiHandle = NULL;
+// static CURLM* g_pMultiHandle = NULL;
 static char g_strServicePath[2048] = {'\0'}; // caches clientID and trackingID after calling Init() (http://www.google-analytics.com/collect?v=1&tid=%s&cid=%s)
 
 // utility function, used to replace spaces with pluses for URLs
@@ -35,6 +36,8 @@ static void ReplaceStrChar(char *s, const int len, const char what, const char w
 // utility function, used to send the HTTP get
 static bool ExecuteCurlURL(const char* url, ...)
 {
+	return true;
+	/*
 	if (!g_pMultiHandle)
 	{
 		return false;
@@ -54,10 +57,12 @@ static bool ExecuteCurlURL(const char* url, ...)
 	curl_easy_setopt(pCurlHandle, CURLOPT_TIMEOUT, 20);
 	CURLMcode result = curl_multi_add_handle(g_pMultiHandle, pCurlHandle);
 	return (result == CURLM_OK);
+	*/
 }
 
 bool TAnalytics_Init(const char* trackingId, const char* uniqueClientId)
 {
+	/*
 	curl_global_init(CURL_GLOBAL_ALL);
 	g_pMultiHandle = curl_multi_init();
 
@@ -67,11 +72,13 @@ bool TAnalytics_Init(const char* trackingId, const char* uniqueClientId)
 	}
 
 	sprintf(g_strServicePath, "http://www.google-analytics.com/collect?v=1&tid=%s&cid=%s", trackingId, uniqueClientId);
+	*/
 	return true;
 }
 
 void TAnalytics_Shutdown()
 {
+	/*
 	if (!g_pMultiHandle)
 	{
 		return;
@@ -80,6 +87,7 @@ void TAnalytics_Shutdown()
 	TAnalytics_Update(); // one last update to remove handles from stack if they're ready
 	curl_multi_cleanup(g_pMultiHandle);
 	g_pMultiHandle = NULL;
+	*/
 }
 
 void TAnalytics_Event(const char* category, const char* action, const char* label, unsigned int value)
@@ -99,6 +107,7 @@ void TAnalytics_Event(const char* category, const char* action)
 
 void TAnalytics_Update()
 {
+	/*
 	if (!g_pMultiHandle)
 	{
 		return;
@@ -131,4 +140,5 @@ void TAnalytics_Update()
 			curl_easy_cleanup(pMsg->easy_handle);
 		}
 	} while (pMsg);
+	*/
 }

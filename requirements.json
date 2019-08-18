@@ -20,7 +20,9 @@
         "sqlite3",
         "chipmunk"
     ],
-    "darwin": [],
+    "darwin": [
+        "openssl"
+    ],
     "linux": [
         "fontconfig"
     ],

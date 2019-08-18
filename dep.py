@@ -56,23 +56,26 @@ def main():
 
     return 0
 
+def integrate():
+    if _platform == "linux" or _platform == "linux2":
+        p = Popen(["./vcpkg/vcpkg", "integrate", "install"])
+    elif _platform == "darwin":
+        p = Popen(["./vcpkg/vcpkg", "integrate", "install"])
+    elif _platform == "win32":
+        p = Popen([".\\vcpkg\\vcpkg", "integrate", "install"])
+
 def bootstrap():
-    p = ""
-    # linux
     if _platform == "linux" or _platform == "linux2":
         p = Popen(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
-
-    # MAC OS X
     elif _platform == "darwin":
         p = Popen(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
-
-    # Windows
     elif _platform == "win32":
         p = Popen(".\\vcpkg\\bootstrap-vcpkg.bat", shell=True, bufsize=1)
 
 def init(triplet=""):
     bootstrap()
     update(triplet)
+    integrate()
 
 def update(triplet=""):
     with open('requirements.json', 'r+') as fp:
@@ -88,12 +91,13 @@ def update(triplet=""):
             requirements = manifest["linux"]
         elif _platform == "darwin":
             requirements = manifest["darwin"]
-        elif _platform == "win32" or _platform == "win64":
+        elif _platform == "win32":
             requirements = manifest["windows"]
 
         for line in requirements:
             print ("installing: " + line)
             install(line.strip(), False, triplet)
+    integrate()
 
 def search(searchString):
     print(shell_exec(["./vcpkg/vcpkg", "search" , searchString]).decode('utf-8'))

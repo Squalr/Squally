@@ -104,7 +104,8 @@
         "__errc": "cpp",
         "optional": "cpp",
         "clocale": "cpp",
-        "__memory": "cpp"
+        "__memory": "cpp",
+        "cassert": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",

@@ -4,13 +4,10 @@
 	branch = squally/3.17
 [submodule "external/breakpad"]
 	path = external/breakpad
-	url = git@github.com:teknoman117/breakpad.git
+	url = git@github.com:Squalr/breakpad.git
 [submodule "external/AFNetworking"]
 	path = external/AFNetworking
-	url = git@github.com:teknoman117/AFNetworking
-[submodule "vcpkg"]
-	path = vcpkg
-	url = git@github.com:mattbucci/vcpkg.git
+	url = git@github.com:Squalr/AFNetworking.git
 [submodule "external/spriter2dx"]
 	path = external/spriter2dx
 	url = git@github.com:Squalr/Spriter2dX
@@ -20,3 +17,6 @@
 [submodule "Resources"]
 	path = Resources
 	url = git@github.com:Squalr/SquallyResources.git
+[submodule "vcpkg"]
+	path = vcpkg
+	url = git@github.com:Squalr/vcpkg.git
