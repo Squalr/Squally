@@ -52,6 +52,8 @@ git clone git@github.com:zcanann/Squally.git
 cd Squally
 git submodule update --init --recursive .
 python dep.py init
+cd Resources
+git lfs pull
 ```
 Due to a timing bug, `python dep.py init` may need to be run twice. Perhaps this is a good first issue for someone :^)
 
