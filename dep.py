@@ -12,6 +12,7 @@ import json
 import os
 import time
 from sys import platform as _platform
+from subprocess import call
 from subprocess import check_output as shell_exec, Popen
 
 def main():
@@ -58,24 +59,35 @@ def main():
 
 def integrate():
     if _platform == "linux" or _platform == "linux2":
-        p = Popen(["./vcpkg/vcpkg", "integrate", "install"])
+        returncode = call(["./vcpkg/vcpkg", "integrate", "install"])
     elif _platform == "darwin":
-        p = Popen(["./vcpkg/vcpkg", "integrate", "install"])
+        returncode = call(["./vcpkg/vcpkg", "integrate", "install"])
     elif _platform == "win32":
-        p = Popen([".\\vcpkg\\vcpkg", "integrate", "install"])
+        returncode = call([".\\vcpkg\\vcpkg", "integrate", "install"])
+
+    if returncode != 0:
+        print()
+        print("dep.py: Error integrating vcpkg.")
+        return
 
 def bootstrap():
+    returncode = -1
+    
     if _platform == "linux" or _platform == "linux2":
-        p = Popen(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
+        returncode = call(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
     elif _platform == "darwin":
-        p = Popen(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
+        returncode = call(["./vcpkg/bootstrap-vcpkg.sh"], bufsize=1)
     elif _platform == "win32":
-        p = Popen(".\\vcpkg\\bootstrap-vcpkg.bat", shell=True, bufsize=1)
+        returncode = call(".\\vcpkg\\bootstrap-vcpkg.bat", shell=True, bufsize=1)
+
+    if returncode != 0:
+        print()
+        print("dep.py: Error bootstrapping vcpkg.")
+        return
 
 def init(triplet=""):
     bootstrap()
     update(triplet)
-    integrate()
 
 def update(triplet=""):
     with open('requirements.json', 'r+') as fp:
@@ -111,12 +123,11 @@ def install(packageString, common=True, triplet=""):
     # complaints about some vcpkg lock file not being present (this happens when vcpkg is run
     # quickly).
     if _platform == "linux" or _platform == "linux2":
-        p = Popen(["./vcpkg/vcpkg", "install" , s], stderr=subprocess.DEVNULL)
+        returncode = call(["./vcpkg/vcpkg", "install" , s], stderr=subprocess.DEVNULL)
     else:
-        p = Popen(["./vcpkg/vcpkg", "install" , s])
+        returncode = call(["./vcpkg/vcpkg", "install" , s])
 
-    p.wait()
-    if p.returncode != 0:
+    if returncode != 0:
         print()
         print("dep.py: A problem appears to have occurred, writing package to requirements.json skipped.")
         return
