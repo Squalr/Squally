@@ -34,10 +34,10 @@ To minimize cross-platform effort, we develop Squally using [VsCode](https://cod
 - (Mac only) CodeLLDB is recommended, as this debugger works better than the default. Just be sure to go into Debug > Breakpoints > Disable C++: on throw
 
 You will also need the following software to compile the project:
-- Cmake will need to be installed on the machine as well, since CMake Tools does not include the cmake binaries.
-    - Windows: Download the (installer)[https://cmake.org/download/]
-    - OSX: Use (Brew)[https://brew.sh/] to install Cmake with the command `brew install cmake`
-    - Linux: Install via the instructions (here)[https://cgold.readthedocs.io/en/latest/first-step/installation.html]
+- Cmake (The CMake Tools extension does not include the cmake binaries)
+    - Windows: Download the [installer](https://cmake.org/download/)
+    - OSX: Use [Brew](https://brew.sh/) to install Cmake with the command `brew install cmake`
+    - Linux: Install via the instructions [here](https://cgold.readthedocs.io/en/latest/first-step/installation.html)
 - [Ninja](https://github.com/ninja-build/ninja/wiki/Pre-built-Ninja-packages)
 - Python 2.7.x or 3.x -- all scripts should be compatible with either version.
 
