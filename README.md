@@ -52,7 +52,7 @@ Squally is comprised of several subrepos, including:
 
 Additional dependencies are managed using vcpkg.
 
-**Important:** The Resources/ folder contains all art and sound for Squally, and is a private repository. To get a copy of the Resources folder, copy it from a purchased copy of the game. See the section below for details.
+**Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the Resources folder, copy it from a purchased copy of the game. See the section below for details.
 
 To do a fresh build and pull in dependencies:
 ```
@@ -77,6 +77,8 @@ python dep.py update
 
 Getting the Resource Folder
 ------------
+We could not include the Resources folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
+
 The Resources folder in Squally will be synced up with the master branch in this repository.
 
 Note: currently there is no master branch -- we temporarily removed it when making this repository public. It will be recreated before the next release.
