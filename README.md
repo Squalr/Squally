@@ -8,6 +8,8 @@ Engine: Cocos-2dx
 
 Platforms: Windows, OSX, and Linux
 
+Discord: https://discord.gg/3maVXN5
+
 ![Squally Gameplay 1](https://i.imgur.com/M2KMSZ9.png) | ![Squally Gameplay 2](https://i.imgur.com/U3bbo1v.png)
 ------------ | -------------
 ![Squally Gameplay 3](https://i.imgur.com/1hvYk3K.png) | ![Squally Gameplay 4](https://i.imgur.com/bOSKa7p.png)
