@@ -190,22 +190,23 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 {
 	Node* notification = Node::create();
 	Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
-	Sprite* itemIcon = Sprite::create(iconResource);
+	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
-	LocalizedLabel* itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description);
+	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
 
 	titleLabel->enableOutline(Color4B::BLACK, 2);
-	itemName->enableOutline(Color4B::BLACK, 2);
+	descriptionLabel->enableOutline(Color4B::BLACK, 2);
 
-	itemIcon->setPosition(Vec2(-96.0f, 0.0f));
-	itemName->setPosition(Vec2(32.0f, 0.0f));
+	notificationIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
+	notificationIcon->setPosition(Vec2(-160.0f, 0.0f));
+	descriptionLabel->setPosition(Vec2(32.0f, 0.0f));
 	titleLabel->setPosition(Vec2(0.0f, 96.0f));
 
 	notification->setOpacity(0);
 
 	notification->addChild(itemFrame);
-	notification->addChild(itemIcon);
-	notification->addChild(itemName);
+	notification->addChild(notificationIcon);
+	notification->addChild(descriptionLabel);
 	notification->addChild(titleLabel);
 	this->notificationsNode->addChild(notification);
 
