@@ -345,6 +345,7 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Weapons_Staves_WitchDoctorsStaff;
 	extern const std::string Items_Equipment_Weapons_Staves_WoodenStaff;
 	extern const std::string Items_Equipment_Weapons_Staves_WoodenWand;
+	extern const std::string Items_Equipment_Weapons_Swords_AshenBlade;
 	extern const std::string Items_Equipment_Weapons_Swords_BattleSword;
 	extern const std::string Items_Equipment_Weapons_Swords_BlueSword;
 	extern const std::string Items_Equipment_Weapons_Swords_CandySword;
@@ -357,8 +358,7 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Weapons_Swords_IronSword;
 	extern const std::string Items_Equipment_Weapons_Swords_Katana;
 	extern const std::string Items_Equipment_Weapons_Swords_MoonBlade;
-	extern const std::string Items_Equipment_Weapons_Swords_SWORD_11;
-	extern const std::string Items_Equipment_Weapons_Swords_SWORD_5;
+	extern const std::string Items_Equipment_Weapons_Swords_Rapier;
 	extern const std::string Items_Equipment_Weapons_Swords_SteelSword;
 	extern const std::string Items_Equipment_Weapons_Swords_VikingSword;
 	extern const std::string Items_Equipment_Weapons_Swords_WarCutlas;

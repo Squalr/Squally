@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyMovementBehavior::MapKeyAttachedBehavior = "Scrappy-movement";
+const std::string ScrappyMovementBehavior::MapKeyAttachedBehavior = "scrappy-movement";
 const float ScrappyMovementBehavior::FloatOffsetRadius = 256.0f;
 const float ScrappyMovementBehavior::FloatOffsetAngle = 60.0f * float(M_PI) / 180.0f;
 const Vec2 ScrappyMovementBehavior::FlySpeedBase = Vec2(256.0f, 256.0f);

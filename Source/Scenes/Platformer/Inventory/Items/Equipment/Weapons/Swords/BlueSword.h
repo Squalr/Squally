@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 
-class CrystalSword : public Weapon
+class BlueSword : public Weapon
 {
 public:
-	static CrystalSword* create();
+	static BlueSword* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -13,11 +13,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyCrystalSword;
+	static const std::string SaveKeyBlueSword;
 
 protected:
-	CrystalSword();
-	~CrystalSword();
+	BlueSword();
+	~BlueSword();
 
 private:
 	typedef Weapon super;

@@ -53,22 +53,22 @@ void SquallyMovementBehavior::update(float dt)
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->movement.x = -1.0f;
+		this->movement.x -= 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->movement.x = 1.0f;
+		this->movement.x += 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
 	{
-		this->movement.y = 1.0f;
+		this->movement.y += 1.0f;
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		this->movement.y = -1.0f;
+		this->movement.y -= 1.0f;
 	}
 
 	if (!this->isDisposing && this->movement != Vec2::ZERO)

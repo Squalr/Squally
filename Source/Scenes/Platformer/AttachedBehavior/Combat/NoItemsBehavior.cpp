@@ -42,4 +42,3 @@ void NoItemsBehavior::onLoad()
 {
 	CombatEvents::TriggerDisableItems();
 }
-

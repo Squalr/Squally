@@ -17,7 +17,7 @@ public:
 
 protected:
 	CandySword();
-	virtual ~CandySword();
+	~CandySword();
 
 private:
 	typedef Weapon super;
