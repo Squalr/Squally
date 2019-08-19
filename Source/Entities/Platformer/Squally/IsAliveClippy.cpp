@@ -24,7 +24,7 @@ IsAliveClippy* IsAliveClippy::create()
 
 IsAliveClippy::IsAliveClippy() : super()
 {
-	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Misc_DaemonsHallow_FlyBot_Animations);
+	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
 	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->clippyAnimations->setFlippedX(true);

@@ -17,7 +17,7 @@ public:
 	static const std::string SaveKeySquallyInventory;
 	static const std::string SaveKeySquallyEquipment;
 	static const std::string SaveKeySquallyCurrencyInventory;
-	static const std::string SaveKeyFlyBotFound;
+	static const std::string SaveKeyScrappyFound;
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;

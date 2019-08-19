@@ -175,7 +175,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[LavaGolem::MapKeyLavaGolem] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Apple::MapKeyApple] = Stats(16, 8, 32);
 	StatsTables::StatsTable[CritterDemon::MapKeyCritterDemon] = Stats(16, 8, 32);
-	StatsTables::StatsTable[FlyBot::MapKeyFlyBot] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Scrappy::MapKeyScrappy] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Ash::MapKeyAsh] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Brine::MapKeyBrine] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Celeste::MapKeyCeleste] = Stats(16, 8, 32);

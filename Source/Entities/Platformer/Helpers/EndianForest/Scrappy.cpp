@@ -1,4 +1,4 @@
-#include "FlyBot.h"
+#include "Scrappy.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -39,31 +39,31 @@
 
 using namespace cocos2d;
 
-const std::string FlyBot::MapKeyFlyBot = "fly-bot";
-HexusOpponentData* FlyBot::HexusOpponentDataInstance = nullptr;
+const std::string Scrappy::MapKeyScrappy = "fly-bot";
+HexusOpponentData* Scrappy::HexusOpponentDataInstance = nullptr;
 
-const std::string FlyBot::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FLY_BOT";
-const std::string FlyBot::EventEndOfDemo = "event-end-of-demo";
-const std::string FlyBot::EventSquallyTrapped = "event-squally-trapped";
+const std::string Scrappy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FLY_BOT";
+const std::string Scrappy::EventEndOfDemo = "event-end-of-demo";
+const std::string Scrappy::EventSquallyTrapped = "event-squally-trapped";
 
-FlyBot* FlyBot::deserialize(ValueMap& properties)
+Scrappy* Scrappy::deserialize(ValueMap& properties)
 {
-	FlyBot* instance = new FlyBot(properties);
+	Scrappy* instance = new Scrappy(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FlyBot::FlyBot(ValueMap& properties) : PlatformerEntity(properties,
-	FlyBot::MapKeyFlyBot,
-	EntityResources::Misc_DaemonsHallow_FlyBot_Animations,
-	EntityResources::Misc_DaemonsHallow_FlyBot_Emblem,
+Scrappy::Scrappy(ValueMap& properties) : PlatformerEntity(properties,
+	Scrappy::MapKeyScrappy,
+	EntityResources::Helpers_EndianForest_Scrappy_Animations,
+	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
-	this->hexusOpponentData = FlyBot::getHexusOpponentData();
+	this->hexusOpponentData = Scrappy::getHexusOpponentData();
 
 	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
 	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
@@ -81,36 +81,36 @@ FlyBot::FlyBot(ValueMap& properties) : PlatformerEntity(properties,
 	this->addChild(this->droidChatterSound);
 }
 
-FlyBot::~FlyBot()
+Scrappy::~Scrappy()
 {
 }
 
-void FlyBot::onEnter()
+void Scrappy::onEnter()
 {
 	super::onEnter();
 
-	if (this->state == FlyBot::EventEndOfDemo)
+	if (this->state == Scrappy::EventEndOfDemo)
 	{
 		this->runEndOfDemoEvent();
 	}
 }
 
-void FlyBot::initializeListeners()
+void Scrappy::initializeListeners()
 {
 	super::initializeListeners();
 
-	if (this->state == FlyBot::EventSquallyTrapped)
+	if (this->state == Scrappy::EventSquallyTrapped)
 	{
 		this->setVisible(false);
 
-		this->listenForMapEvent(FlyBot::EventSquallyTrapped, [=](ValueMap args)
+		this->listenForMapEvent(Scrappy::EventSquallyTrapped, [=](ValueMap args)
 		{
 			this->runSquallyTrappedEvent();
 		});
 	}
 }
 
-void FlyBot::runEndOfDemoEvent()
+void Scrappy::runEndOfDemoEvent()
 {
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
@@ -125,9 +125,9 @@ void FlyBot::runEndOfDemoEvent()
 	));
 }
 
-void FlyBot::runSquallyTrappedEvent()
+void Scrappy::runSquallyTrappedEvent()
 {
-	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + FlyBot::EventSquallyTrapped, Value(true));
+	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + Scrappy::EventSquallyTrapped, Value(true));
 
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
@@ -143,28 +143,28 @@ void FlyBot::runSquallyTrappedEvent()
 	));
 }
 
-float FlyBot::getFloatHeight()
+float Scrappy::getFloatHeight()
 {
 	return 64.0f;
 }
 
-Vec2 FlyBot::getAvatarFrameOffset()
+Vec2 Scrappy::getAvatarFrameOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }
 
-HexusOpponentData* FlyBot::getHexusOpponentData()
+HexusOpponentData* Scrappy::getHexusOpponentData()
 {
-	if (FlyBot::HexusOpponentDataInstance == nullptr)
+	if (Scrappy::HexusOpponentDataInstance == nullptr)
 	{
-		FlyBot::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Misc_DaemonsHallow_FlyBot_Animations,
+		Scrappy::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Helpers_EndianForest_Scrappy_Animations,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
-			FlyBot::HexusSaveKey,
+			Scrappy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
 			1.000f,
@@ -186,5 +186,5 @@ HexusOpponentData* FlyBot::getHexusOpponentData()
 		);
 	}
 
-	return FlyBot::HexusOpponentDataInstance;
+	return Scrappy::HexusOpponentDataInstance;
 }

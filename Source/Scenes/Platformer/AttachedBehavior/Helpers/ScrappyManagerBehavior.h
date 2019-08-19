@@ -2,29 +2,29 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class FlyBot;
+class Scrappy;
 class PlatformerEntity;
 class PlatformerEntityDeserializer;
 
-class FlyBotManagerBehavior : public AttachedBehavior
+class ScrappyManagerBehavior : public AttachedBehavior
 {
 public:
-	static FlyBotManagerBehavior* create(GameObject* owner);
+	static ScrappyManagerBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FlyBotManagerBehavior(GameObject* owner);
-	~FlyBotManagerBehavior();
+	ScrappyManagerBehavior(GameObject* owner);
+	~ScrappyManagerBehavior();
 
 	void onLoad() override;
 
 private:
 	typedef AttachedBehavior super;
 
-	void spawnFlyBot();
+	void spawnScrappy();
 
 	PlatformerEntity* entity;
-	FlyBot* helperRef;
+	Scrappy* helperRef;
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 };

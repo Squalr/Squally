@@ -7,19 +7,19 @@ namespace cocos2d
 	class Sprite;
 }
 
-class FlyBot;
+class Scrappy;
 class Squally;
 
-class FlyBotMovementBehavior : public AttachedBehavior
+class ScrappyMovementBehavior : public AttachedBehavior
 {
 public:
-	static FlyBotMovementBehavior* create(GameObject* owner);
+	static ScrappyMovementBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FlyBotMovementBehavior(GameObject* owner);
-	~FlyBotMovementBehavior();
+	ScrappyMovementBehavior(GameObject* owner);
+	~ScrappyMovementBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;
@@ -27,7 +27,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	FlyBot* flyBot;
+	Scrappy* scrappy;
 	Squally* squally;
 
 	float elapsed;

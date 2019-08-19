@@ -25,7 +25,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[EnemyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EntityBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[FirstIOUFound::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FirstIOUFound::create(owner); };
-	this->attachedBehaviorDeserializers[FlyBotBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FlyBotBehaviorGroup::create(owner); };
+	this->attachedBehaviorDeserializers[ScrappyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ScrappyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[NpcBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)NpcBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[RestorePotionTutorial::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)RestorePotionTutorial::create(owner); };
 	this->attachedBehaviorDeserializers[ShopkeeperBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ShopkeeperBehaviorGroup::create(owner); };
@@ -102,7 +102,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	// this->attachedBehaviorDeserializers[LavaGolemCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LavaGolemCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[AppleCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)AppleCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[CritterDemonCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CritterDemonCombatBehavior::create(owner); };
-	// this->attachedBehaviorDeserializers[FlyBotCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FlyBotCombatBehavior::create(owner); };
+	// this->attachedBehaviorDeserializers[ScrappyCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ScrappyCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[AshCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)AshCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[BrineCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)BrineCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[CelesteCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CelesteCombatBehavior::create(owner); };

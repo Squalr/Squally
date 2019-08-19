@@ -2,7 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class FlyBot;
+class Scrappy;
 class QuestLine;
 
 class SpotOrcGrunt : public QuestTask
@@ -27,5 +27,5 @@ private:
 	void runCinematicSequence();
 
 	bool hasRunEvent;
-	FlyBot* flyBot;
+	Scrappy* scrappy;
 };

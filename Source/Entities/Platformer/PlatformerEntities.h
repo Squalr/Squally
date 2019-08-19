@@ -95,7 +95,7 @@
 #include "Entities/Platformer/Enemies/EndianForest/OrcSwordsman.h"
 #include "Entities/Platformer/Enemies/EndianForest/OrcWarrior.h"
 #include "Entities/Platformer/Enemies/EndianForest/Troll.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/EndianForest/Goblin.h"
 #include "Entities/Platformer/Helpers/EndianForest/Turtle.h"
 #include "Entities/Platformer/Npcs/EndianForest/Appolo.h"

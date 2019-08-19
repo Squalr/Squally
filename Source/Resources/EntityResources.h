@@ -2053,6 +2053,9 @@ namespace EntityResources
 	extern const std::string Helpers_EndianForest_Goblin_Right_Arm;
 	extern const std::string Helpers_EndianForest_Goblin_Right_Foot;
 	extern const std::string Helpers_EndianForest_Goblin_Right_Hand;
+	extern const std::string Helpers_EndianForest_Scrappy_Animations;
+	extern const std::string Helpers_EndianForest_Scrappy_Emblem;
+	extern const std::string Helpers_EndianForest_Scrappy_Flybot;
 	extern const std::string Helpers_EndianForest_Turtle_Animations;
 	extern const std::string Helpers_EndianForest_Turtle_Blade;
 	extern const std::string Helpers_EndianForest_Turtle_Body;
@@ -2235,9 +2238,6 @@ namespace EntityResources
 	extern const std::string Misc_CastleValgrind_Bat_R_LEG_1;
 	extern const std::string Misc_CastleValgrind_Bat_R_WING;
 	extern const std::string Misc_CastleValgrind_Bat_TORSO;
-	extern const std::string Misc_DaemonsHallow_FlyBot_Animations;
-	extern const std::string Misc_DaemonsHallow_FlyBot_Emblem;
-	extern const std::string Misc_DaemonsHallow_FlyBot_Flybot;
 	extern const std::string Misc_EndianForest_Bear_Animations;
 	extern const std::string Misc_EndianForest_Bear_B_BACK_LEG_1;
 	extern const std::string Misc_EndianForest_Bear_B_BACK_LEG_2;

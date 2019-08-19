@@ -9,16 +9,16 @@ namespace cocos2d
 
 class Squally;
 
-class FlyBotBehaviorGroup : public AttachedBehaviorGroup
+class ScrappyBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static FlyBotBehaviorGroup* create(GameObject* owner);
+	static ScrappyBehaviorGroup* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FlyBotBehaviorGroup(GameObject* owner);
-	~FlyBotBehaviorGroup();
+	ScrappyBehaviorGroup(GameObject* owner);
+	~ScrappyBehaviorGroup();
 
 	void onLoad() override;
 

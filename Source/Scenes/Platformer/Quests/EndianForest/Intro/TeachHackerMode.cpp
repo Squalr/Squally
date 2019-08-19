@@ -12,7 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
@@ -34,7 +34,7 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
-	this->flyBot = nullptr;
+	this->scrappy = nullptr;
 }
 
 TeachHackerMode::~TeachHackerMode()
@@ -43,7 +43,7 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
+	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
@@ -74,24 +74,24 @@ void TeachHackerMode::runCinematicSequence()
 	
 	this->hasRunEvent = true;
 
-	if (this->flyBot != nullptr)
+	if (this->scrappy != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
-		this->flyBot->runAction(Sequence::create(
+		this->scrappy->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidChatterSound->play();
+				this->scrappy->droidChatterSound->play();
 			}),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
 				PlatformerEvents::TriggerCinematicRestore();
-				this->flyBot->speechBubble->hideDialogue();
+				this->scrappy->speechBubble->hideDialogue();
 			}),
 			nullptr
 		));

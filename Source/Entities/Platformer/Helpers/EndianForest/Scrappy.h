@@ -7,10 +7,10 @@ class Sound;
 
 class HexusOpponentData;
 
-class FlyBot : public PlatformerEntity
+class Scrappy : public PlatformerEntity
 {
 public:
-	static FlyBot* deserialize(cocos2d::ValueMap& properties);
+	static Scrappy* deserialize(cocos2d::ValueMap& properties);
 
 	float getFloatHeight() override;
 
@@ -22,12 +22,12 @@ public:
 	Sound* droidBrief2Sound;
 	Sound* droidChatterSound;
 
-	static const std::string MapKeyFlyBot;
+	static const std::string MapKeyScrappy;
 
 private:
 	typedef PlatformerEntity super;
-	FlyBot(cocos2d::ValueMap& properties);
-	~FlyBot();
+	Scrappy(cocos2d::ValueMap& properties);
+	~Scrappy();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

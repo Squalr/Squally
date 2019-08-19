@@ -1,4 +1,4 @@
-#include "MeetFlyBot.h"
+#include "MeetScrappy.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -13,55 +13,59 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+
+#include "Resources/EntityResources.h"
 
 #include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
 #include "Strings/Dialogue/Story/Intro/DistressBeacon.h"
 #include "Strings/Dialogue/Story/Intro/YoureAlive.h"
+#include "Strings/Notifications/Party/ScrappyJoinedParty.h"
 
 using namespace cocos2d;
 
-const std::string MeetFlyBot::MapKeyQuest = "meet-flybot";
+const std::string MeetScrappy::MapKeyQuest = "meet-scrappy";
 
-MeetFlyBot* MeetFlyBot::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::string questTag)
 {
-	MeetFlyBot* instance = new MeetFlyBot(owner, questLine, questTag);
+	MeetScrappy* instance = new MeetScrappy(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MeetFlyBot::MeetFlyBot(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetFlyBot::MapKeyQuest, questTag, true)
+MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetScrappy::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = dynamic_cast<FlyBot*>(owner);
+	this->scrappy = dynamic_cast<Scrappy*>(owner);
 }
 
-MeetFlyBot::~MeetFlyBot()
+MeetScrappy::~MeetScrappy()
 {
 }
 
-void MeetFlyBot::onLoad(QuestState questState)
+void MeetScrappy::onLoad(QuestState questState)
 {
-	if (this->flyBot != nullptr)
+	if (this->scrappy != nullptr)
 	{
-		this->flyBot->getAnimations()->setFlippedX(true);
+		this->scrappy->getAnimations()->setFlippedX(true);
 
 		if (questState == QuestState::Complete)
 		{
-			this->flyBot->setVisible(false);
+			this->scrappy->setVisible(false);
 		}
 	}
 }
 
-void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
+void MeetScrappy::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(MeetFlyBot::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(MeetScrappy::MapKeyQuest, [=](ValueMap args)
 	{
 		this->runCinematicSequence();
 	});
@@ -72,16 +76,16 @@ void MeetFlyBot::onActivate(bool isActiveThroughSkippable)
 	}));
 }
 
-void MeetFlyBot::onComplete()
+void MeetScrappy::onComplete()
 {
 }
 
-void MeetFlyBot::onSkipped()
+void MeetScrappy::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void MeetFlyBot::runCinematicSequence()
+void MeetScrappy::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{
@@ -107,36 +111,36 @@ void MeetFlyBot::runCinematicSequence()
 		}
 	}));
 
-	if (this->flyBot != nullptr)
+	if (this->scrappy != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
-		this->flyBot->runAction(Sequence::create(
+		this->scrappy->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidAlarmedSound->play();
+				this->scrappy->droidAlarmedSound->play();
 			}),
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
 			}),
 			DelayTime::create(2.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidBrief1Sound->play();
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_DistressBeacon::create());
+				this->scrappy->droidBrief1Sound->play();
+				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_DistressBeacon::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidBrief1Sound->play();
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
+				this->scrappy->droidBrief1Sound->play();
+				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->hideDialogue();
+				this->scrappy->speechBubble->hideDialogue();
 			}),
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
@@ -148,14 +152,15 @@ void MeetFlyBot::runCinematicSequence()
 					positionB = squally->getPosition();
 				}));
 
-				this->flyBot->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
+				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->setVisible(false);
+				this->scrappy->setVisible(false);
 
-				HelperEvents::TriggerFindFlyBot();
+				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(nullptr, Strings::Notifications_Party_ScrappyJoinedParty::create(), EntityResources::Helpers_EndianForest_Scrappy_Emblem));
+				HelperEvents::TriggerFindScrappy();
 				PlatformerEvents::TriggerCinematicRestore();
 
 				this->complete();

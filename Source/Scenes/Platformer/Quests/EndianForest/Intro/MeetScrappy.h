@@ -2,19 +2,19 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class FlyBot;
+class Scrappy;
 class QuestLine;
 
-class MeetFlyBot : public QuestTask
+class MeetScrappy : public QuestTask
 {
 public:
-	static MeetFlyBot* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static MeetScrappy* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	MeetFlyBot(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~MeetFlyBot();
+	MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~MeetScrappy();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -27,5 +27,5 @@ private:
 	void runCinematicSequence();
 
 	bool hasRunEvent;
-	FlyBot* flyBot;
+	Scrappy* scrappy;
 };

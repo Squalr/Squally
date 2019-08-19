@@ -5,13 +5,13 @@
 
 using namespace cocos2d;
 
-const std::string HelperEvents::EventFindFlyBot = "EVENT_FIND_FLYBOT";
+const std::string HelperEvents::EventFindScrappy = "EVENT_FIND_Scrappy";
 const std::string HelperEvents::EventChangeHelper = "EVENT_CHANGE_HELPER";
 
-void HelperEvents::TriggerFindFlyBot()
+void HelperEvents::TriggerFindScrappy()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HelperEvents::EventFindFlyBot
+		HelperEvents::EventFindScrappy
 	);
 }
 

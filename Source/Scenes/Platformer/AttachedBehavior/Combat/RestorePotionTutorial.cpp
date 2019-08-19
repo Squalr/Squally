@@ -14,7 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -46,7 +46,7 @@ RestorePotionTutorial::RestorePotionTutorial(GameObject* owner) : super(owner)
 	}
 
 	this->hasTutorialRun = false;
-	this->flyBot = nullptr;
+	this->scrappy = nullptr;
 }
 
 RestorePotionTutorial::~RestorePotionTutorial()
@@ -65,13 +65,13 @@ void RestorePotionTutorial::onLoad()
 		});
 	}
 
-	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
+	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
 	HackableEvents::TriggerDisallowHackerMode();
 }
 
 void RestorePotionTutorial::runTutorial()
 {
-	if (this->hasTutorialRun || this->flyBot == nullptr)
+	if (this->hasTutorialRun || this->scrappy == nullptr)
 	{
 		return;
 	}
@@ -90,16 +90,16 @@ void RestorePotionTutorial::runTutorial()
 			this->runAction(Sequence::create(
 				CallFunc::create([=]()
 				{
-					this->flyBot->droidChatterSound->play();
+					this->scrappy->droidChatterSound->play();
 				}),
 				CallFunc::create([=]()
 				{
-					this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
+					this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
 				}),
 				DelayTime::create(4.0f),
 				CallFunc::create([=]()
 				{
-					this->flyBot->speechBubble->hideDialogue();
+					this->scrappy->speechBubble->hideDialogue();
 				}),
 				nullptr
 			));

@@ -1,4 +1,4 @@
-#include "FlyBotManagerBehavior.h"
+#include "ScrappyManagerBehavior.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -10,11 +10,11 @@
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Helpers/FlyBot/FlyBotBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -23,18 +23,18 @@
 
 using namespace cocos2d;
 
-const std::string FlyBotManagerBehavior::MapKeyAttachedBehavior = "flybot-manager";
+const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "Scrappy-manager";
 
-FlyBotManagerBehavior* FlyBotManagerBehavior::create(GameObject* owner)
+ScrappyManagerBehavior* ScrappyManagerBehavior::create(GameObject* owner)
 {
-	FlyBotManagerBehavior* instance = new FlyBotManagerBehavior(owner);
+	ScrappyManagerBehavior* instance = new ScrappyManagerBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FlyBotManagerBehavior::FlyBotManagerBehavior(GameObject* owner) : super(owner)
+ScrappyManagerBehavior::ScrappyManagerBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -49,37 +49,37 @@ FlyBotManagerBehavior::FlyBotManagerBehavior(GameObject* owner) : super(owner)
 	this->addChild(this->platformerEntityDeserializer);
 }
 
-FlyBotManagerBehavior::~FlyBotManagerBehavior()
+ScrappyManagerBehavior::~ScrappyManagerBehavior()
 {
 }
 
-void FlyBotManagerBehavior::onLoad()
+void ScrappyManagerBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
 	{
-		// Since FlyBot is found on the first map, this is a good way to ensure there are no sequence breaks
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyFlyBotFound, Value(true));
+		// Since Scrappy is found on the first map, this is a good way to ensure there are no sequence breaks
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventFindFlyBot, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventFindScrappy, [=](EventCustom* eventCustom)
 	{
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyFlyBotFound, Value(true));
-		this->spawnFlyBot();
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		this->spawnScrappy();
 	}));
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyFlyBotFound, Value(false)).asBool())
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyScrappyFound, Value(false)).asBool())
 	{
-		this->spawnFlyBot();
+		this->spawnScrappy();
 	}
 }
 
-void FlyBotManagerBehavior::spawnFlyBot()
+void ScrappyManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();
 
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
-	properties[GameObject::MapKeyName] = Value(FlyBot::MapKeyFlyBot);
-	properties[GameObject::MapKeyAttachedBehavior] = Value(FlyBotBehaviorGroup::MapKeyAttachedBehavior);
+	properties[GameObject::MapKeyName] = Value(Scrappy::MapKeyScrappy);
+	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKeyAttachedBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -94,7 +94,7 @@ void FlyBotManagerBehavior::spawnFlyBot()
 			));
 
 			deserializeArgs.gameObject->setPosition(this->entity->getPosition());
-			this->helperRef = dynamic_cast<FlyBot*>(deserializeArgs.gameObject);
+			this->helperRef = dynamic_cast<Scrappy*>(deserializeArgs.gameObject);
 		}
 	);
 

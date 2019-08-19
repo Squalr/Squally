@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class FlyBot;
+class Scrappy;
 class PlatformerEntity;
 
 class RestorePotionTutorial : public AttachedBehavior
@@ -29,7 +29,7 @@ private:
 	void runTutorial();
 
 	PlatformerEntity* entity;
-	FlyBot* flyBot;
+	Scrappy* scrappy;
 
 	bool hasTutorialRun;
 };

@@ -14,7 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Events/HelperEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Helpers/FlyBot/FlyBotBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

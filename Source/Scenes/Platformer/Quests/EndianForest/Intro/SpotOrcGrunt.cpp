@@ -12,7 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
-#include "Entities/Platformer/Helpers/EndianForest/FlyBot.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
@@ -34,7 +34,7 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std:
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
 {
 	this->hasRunEvent = false;
-	this->flyBot = nullptr;
+	this->scrappy = nullptr;
 }
 
 SpotOrcGrunt::~SpotOrcGrunt()
@@ -43,7 +43,7 @@ SpotOrcGrunt::~SpotOrcGrunt()
 
 void SpotOrcGrunt::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<FlyBot>(this, &this->flyBot);
+	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
@@ -74,18 +74,18 @@ void SpotOrcGrunt::runCinematicSequence()
 	
 	this->hasRunEvent = true;
 
-	if (this->flyBot != nullptr)
+	if (this->scrappy != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->flyBot->droidChatterSound->play();
+				this->scrappy->droidChatterSound->play();
 			}),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_OgreSpotted::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_OgreSpotted::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
@@ -95,7 +95,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
-				this->flyBot->speechBubble->hideDialogue();
+				this->scrappy->speechBubble->hideDialogue();
 			}),
 			nullptr
 		));
