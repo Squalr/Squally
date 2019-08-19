@@ -15,12 +15,12 @@ class TimelineEntry;
 class ChoicesMenu : public SmartNode
 {
 public:
-	static ChoicesMenu* create(bool noItems = false, bool noDefend = false);
+	static ChoicesMenu* create();
 
 private:
 	typedef SmartNode super;
-	ChoicesMenu(bool noItems = false, bool noDefend = false);
-	virtual ~ChoicesMenu() = default;
+	ChoicesMenu();
+	~ChoicesMenu();
 
 	void onEnter() override;
 	void initializePositions() override;

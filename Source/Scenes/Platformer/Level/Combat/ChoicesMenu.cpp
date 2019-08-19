@@ -27,19 +27,19 @@ using namespace cocos2d;
 const float ChoicesMenu::InnerChoicesRadius = 240.0f;
 const float ChoicesMenu::OuterChoicesRadius = 384.0f;
 
-ChoicesMenu* ChoicesMenu::create(bool noItems, bool noDefend)
+ChoicesMenu* ChoicesMenu::create()
 {
-	ChoicesMenu* instance = new ChoicesMenu(noItems, noDefend);
+	ChoicesMenu* instance = new ChoicesMenu();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChoicesMenu::ChoicesMenu(bool noItems, bool noDefend)
+ChoicesMenu::ChoicesMenu()
 {
-	this->noItems = noItems;
-	this->noDefend = noDefend;
+	this->noItems = false;
+	this->noDefend = false;
 	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 
@@ -91,6 +91,10 @@ ChoicesMenu::ChoicesMenu(bool noItems, bool noDefend)
 	this->addChild(this->defendListNode);
 }
 
+ChoicesMenu::~ChoicesMenu()
+{
+}
+
 void ChoicesMenu::onEnter()
 {
 	super::onEnter();
@@ -117,9 +121,19 @@ void ChoicesMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableDefend, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
+		this->noDefend = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableDefend, [=](EventCustom* eventCustom)
+	{
+		this->noItems = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
 		if (combatArgs != nullptr)
 		{

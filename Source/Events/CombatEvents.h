@@ -15,6 +15,8 @@ class CombatEvents
 public:
 	static const std::string EventSpawn;
 	static const std::string EventChangeMenuState;
+	static const std::string EventDisableDefend;
+	static const std::string EventDisableItems;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
 	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
@@ -202,6 +204,8 @@ public:
 
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
+	static void TriggerDisableDefend();
+	static void TriggerDisableItems();
 	static void TriggerSelectCastTarget(CastTargetArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();

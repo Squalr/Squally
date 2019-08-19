@@ -2,24 +2,18 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class Scrappy;
 class PlatformerEntity;
 
-class RestorePotionTutorial : public AttachedBehavior
+class NoItemsBehavior : public AttachedBehavior
 {
 public:
-	static RestorePotionTutorial* create(GameObject* owner);
+	static NoItemsBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	RestorePotionTutorial(GameObject* owner);
-	~RestorePotionTutorial();
+	NoItemsBehavior(GameObject* owner);
+	~NoItemsBehavior();
 
 	void onLoad() override;
 
@@ -29,7 +23,4 @@ private:
 	void runTutorial();
 
 	PlatformerEntity* entity;
-	Scrappy* scrappy;
-
-	bool hasTutorialRun;
 };

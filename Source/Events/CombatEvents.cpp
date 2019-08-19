@@ -7,6 +7,8 @@ using namespace cocos2d;
 
 const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_CHANGE_MENU_STATE";
+const std::string CombatEvents::EventDisableDefend = "EVENT_DISABLE_DEFEND";
+const std::string CombatEvents::EventDisableItems = "EVENT_DISABLE_ITEMS";
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken = "EVENT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_TAKEN";
@@ -37,6 +39,20 @@ void CombatEvents::TriggerMenuStateChange(MenuStateArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventChangeMenuState,
 		&args
+	);
+}
+
+void CombatEvents::TriggerDisableDefend()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventDisableDefend
+	);
+}
+
+void CombatEvents::TriggerDisableItems()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventDisableItems
 	);
 }
 

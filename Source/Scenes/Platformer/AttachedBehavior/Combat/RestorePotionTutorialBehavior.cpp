@@ -1,4 +1,4 @@
-#include "RestorePotionTutorial.h"
+#include "RestorePotionTutorialBehavior.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -25,18 +25,18 @@
 
 using namespace cocos2d;
 
-const std::string RestorePotionTutorial::MapKeyAttachedBehavior = "restore-potion-tutorial";
+const std::string RestorePotionTutorialBehavior::MapKeyAttachedBehavior = "restore-potion-tutorial";
 
-RestorePotionTutorial* RestorePotionTutorial::create(GameObject* owner)
+RestorePotionTutorialBehavior* RestorePotionTutorialBehavior::create(GameObject* owner)
 {
-	RestorePotionTutorial* instance = new RestorePotionTutorial(owner);
+	RestorePotionTutorialBehavior* instance = new RestorePotionTutorialBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RestorePotionTutorial::RestorePotionTutorial(GameObject* owner) : super(owner)
+RestorePotionTutorialBehavior::RestorePotionTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -49,11 +49,11 @@ RestorePotionTutorial::RestorePotionTutorial(GameObject* owner) : super(owner)
 	this->scrappy = nullptr;
 }
 
-RestorePotionTutorial::~RestorePotionTutorial()
+RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
 {
 }
 
-void RestorePotionTutorial::onLoad()
+void RestorePotionTutorialBehavior::onLoad()
 {
 	RestorePotion* restorePotion = this->entity->getInventory()->getItemOfType<RestorePotion>();
 
@@ -69,7 +69,7 @@ void RestorePotionTutorial::onLoad()
 	HackableEvents::TriggerDisallowHackerMode();
 }
 
-void RestorePotionTutorial::runTutorial()
+void RestorePotionTutorialBehavior::runTutorial()
 {
 	if (this->hasTutorialRun || this->scrappy == nullptr)
 	{
