@@ -1,5 +1,5 @@
 
-#include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Cryogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"

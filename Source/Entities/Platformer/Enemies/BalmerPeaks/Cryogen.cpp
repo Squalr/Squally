@@ -1,4 +1,4 @@
-#include "Cyrogen.h"
+#include "Cryogen.h"
 
 #include "cocos/math/CCGeometry.h"
 
@@ -16,51 +16,51 @@
 
 using namespace cocos2d;
 
-const std::string Cyrogen::MapKeyCyrogen = "cyrogen";
-HexusOpponentData* Cyrogen::HexusOpponentDataInstance = nullptr;
-const std::string Cyrogen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYROGEN";
+const std::string Cryogen::MapKeyCryogen = "cryogen";
+HexusOpponentData* Cryogen::HexusOpponentDataInstance = nullptr;
+const std::string Cryogen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYROGEN";
 
-Cyrogen* Cyrogen::deserialize(ValueMap& properties)
+Cryogen* Cryogen::deserialize(ValueMap& properties)
 {
-	Cyrogen* instance = new Cyrogen(properties);
+	Cryogen* instance = new Cryogen(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Cyrogen::Cyrogen(ValueMap& properties) : PlatformerEnemy(properties,
-	Cyrogen::MapKeyCyrogen,
-	EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
-	EntityResources::Enemies_BalmerPeaks_Cyrogen_Emblem,
+Cryogen::Cryogen(ValueMap& properties) : PlatformerEnemy(properties,
+	Cryogen::MapKeyCryogen,
+	EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
+	EntityResources::Enemies_BalmerPeaks_Cryogen_Emblem,
 	Size(420.0f, 420.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {
-	this->hexusOpponentData = Cyrogen::getHexusOpponentData();
+	this->hexusOpponentData = Cryogen::getHexusOpponentData();
 }
 
-Cyrogen::~Cyrogen()
+Cryogen::~Cryogen()
 {
 }
 
-Vec2 Cyrogen::getAvatarFrameOffset()
+Vec2 Cryogen::getAvatarFrameOffset()
 {
 	return Vec2(-48.0f, -232.0f);
 }
 
-HexusOpponentData* Cyrogen::getHexusOpponentData()
+HexusOpponentData* Cryogen::getHexusOpponentData()
 {
-	if (Cyrogen::HexusOpponentDataInstance == nullptr)
+	if (Cryogen::HexusOpponentDataInstance == nullptr)
 	{
-		Cyrogen::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_Cyrogen_Animations,
+		Cryogen::HexusOpponentDataInstance = new HexusOpponentData(
+			EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
 			0.8f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -232.0f),
-			Cyrogen::HexusSaveKey,
+			Cryogen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
 			1.000f,
@@ -144,5 +144,5 @@ CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
 		);
 	}
 
-	return Cyrogen::HexusOpponentDataInstance;
+	return Cryogen::HexusOpponentDataInstance;
 }

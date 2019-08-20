@@ -105,7 +105,7 @@ StatsTables::StatsTables()
 {
 	StatsTables::StatsTable[Squally::MapKeySqually] = Stats(16, 8, 32);
 	
-	StatsTables::StatsTable[Cyrogen::MapKeyCyrogen] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Cryogen::MapKeyCryogen] = Stats(16, 8, 32);
 	StatsTables::StatsTable[FrostFiend::MapKeyFrostFiend] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinElf::MapKeyGoblinElf] = Stats(16, 8, 32);
 	StatsTables::StatsTable[IceGolem::MapKeyIceGolem] = Stats(16, 8, 32);

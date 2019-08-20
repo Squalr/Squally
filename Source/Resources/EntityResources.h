@@ -6,27 +6,27 @@
 
 namespace EntityResources
 {
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_Animations;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_BELT;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_COVER;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_COVER_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_Emblem;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_HEAD;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_ARM_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_ARM_2;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_ARM_ARMOR_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_FINGERS;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_HAND;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_LEG_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_L_LEG_2;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_ARM_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_ARM_2;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_ARM_ARMOR_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_HAND;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_LEG_1;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_R_LEG_2;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_TORSO;
-	extern const std::string Enemies_BalmerPeaks_Cyrogen_WEAPON;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_Animations;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_BELT;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_COVER;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_COVER_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_Emblem;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_HEAD;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_ARM_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_ARM_2;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_ARM_ARMOR_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_FINGERS;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_HAND;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_LEG_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_L_LEG_2;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_ARM_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_ARM_2;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_ARM_ARMOR_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_HAND;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_LEG_1;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_R_LEG_2;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_TORSO;
+	extern const std::string Enemies_BalmerPeaks_Cryogen_WEAPON;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_Animations;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_BACK_PACKAGE;
 	extern const std::string Enemies_BalmerPeaks_FrostFiend_CAP;

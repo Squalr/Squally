@@ -28,7 +28,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 
 	this->deserializers[Squally::MapKeySqually] = [=](ValueMap properties) { return (GameObject*)Squally::deserialize(properties); };
 	
-	this->deserializers[Cyrogen::MapKeyCyrogen] = [=](ValueMap properties) { return (GameObject*)Cyrogen::deserialize(properties); };
+	this->deserializers[Cryogen::MapKeyCryogen] = [=](ValueMap properties) { return (GameObject*)Cryogen::deserialize(properties); };
 	this->deserializers[FrostFiend::MapKeyFrostFiend] = [=](ValueMap properties) { return (GameObject*)FrostFiend::deserialize(properties); };
 	this->deserializers[GoblinElf::MapKeyGoblinElf] = [=](ValueMap properties) { return (GameObject*)GoblinElf::deserialize(properties); };
 	this->deserializers[IceGolem::MapKeyIceGolem] = [=](ValueMap properties) { return (GameObject*)IceGolem::deserialize(properties); };

@@ -1,0 +1,66 @@
+#include "HedgeTrimmer.h"
+
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
+#include "Resources/ObjectResources.h"
+
+#include "Strings/Items/Equipment/Weapons/Axes/HedgeTrimmer.h"
+
+using namespace cocos2d;
+
+const std::string HedgeTrimmer::SaveKeyHedgeTrimmer = "hedge-trimmer";
+
+HedgeTrimmer* HedgeTrimmer::create()
+{
+	HedgeTrimmer* instance = new HedgeTrimmer();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+HedgeTrimmer::HedgeTrimmer() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+{
+}
+
+HedgeTrimmer::~HedgeTrimmer()
+{
+}
+
+Item* HedgeTrimmer::clone()
+{
+	return HedgeTrimmer::create();
+}
+
+std::string HedgeTrimmer::getItemName()
+{
+	return HedgeTrimmer::SaveKeyHedgeTrimmer;
+}
+
+LocalizedString* HedgeTrimmer::getString()
+{
+	return Strings::Items_Equipment_Weapons_Axes_HedgeTrimmer::create();
+}
+
+std::string HedgeTrimmer::getIconResource()
+{
+	return ObjectResources::Items_Equipment_Weapons_Axes_HedgeTrimmer;
+}
+
+std::string HedgeTrimmer::getSerializationKey()
+{
+	return HedgeTrimmer::SaveKeyHedgeTrimmer;
+}
+
+Size HedgeTrimmer::getWeaponCollisionSize()
+{
+	// As expected: Weapon width, height
+	return Size(112.0f, 96.0f);
+}
+
+Vec2 HedgeTrimmer::getWeaponOffset()
+{
+	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
+	return Vec2(0.0f, 212.0f);
+}

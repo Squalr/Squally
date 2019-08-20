@@ -2,7 +2,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/UI/Controls/ScrollPane.h"
-#include "Entities/Platformer/Enemies/BalmerPeaks/Cyrogen.h"
+#include "Entities/Platformer/Enemies/BalmerPeaks/Cryogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/IceGolem.h"
@@ -37,7 +37,7 @@ HexusOpponentMenuBalmerPeaksPuzzle* HexusOpponentMenuBalmerPeaksPuzzle::getInsta
 
 HexusOpponentMenuBalmerPeaksPuzzle::HexusOpponentMenuBalmerPeaksPuzzle() : super(HexusChapterPreviewBalmerPeaksPuzzle::SaveKeyChapterName)
 {
-	this->opponents.push_back(HexusOpponentPreview::create(Cyrogen::getHexusOpponentData()));
+	this->opponents.push_back(HexusOpponentPreview::create(Cryogen::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(FrostFiend::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(GoblinElf::getHexusOpponentData()));
 	this->opponents.push_back(HexusOpponentPreview::create(IceGolem::getHexusOpponentData()));

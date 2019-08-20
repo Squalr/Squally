@@ -34,7 +34,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[SquallyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyCombatBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyCombatBehaviorGroup::create(owner); };
 	
-	// this->attachedBehaviorDeserializers[CyrogenCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CyrogenCombatBehavior::create(owner); };
+	// this->attachedBehaviorDeserializers[CryogenCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CryogenCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[FrostFiendCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FrostFiendCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[GoblinElfCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinElfCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[IceGolemCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)IceGolemCombatBehavior::create(owner); };

@@ -18,7 +18,7 @@ public:
 
 protected:
 	CrystalMace();
-	virtual ~CrystalMace();
+	~CrystalMace();
 
 private:
 	typedef Weapon super;

@@ -5,20 +5,20 @@
 
 class HexusOpponentData;
 
-class Cyrogen : public PlatformerEnemy
+class Cryogen : public PlatformerEnemy
 {
 public:
-	static Cyrogen* deserialize(cocos2d::ValueMap& properties);
+	static Cryogen* deserialize(cocos2d::ValueMap& properties);
 
 	cocos2d::Vec2 getAvatarFrameOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyCyrogen;
+	static const std::string MapKeyCryogen;
 
 private:
 	typedef PlatformerEnemy super;
-	Cyrogen(cocos2d::ValueMap& properties);
-	~Cyrogen();
+	Cryogen(cocos2d::ValueMap& properties);
+	~Cryogen();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;
