@@ -180,10 +180,6 @@ std::string LocalizedLabel::getFont()
 		{
 			return LocalizedLabel::getMonospacedFont();
 		}
-		case FontStyle::Pixel:
-		{
-			return LocalizedLabel::getPixelFont();
-		}
 	}
 }
 
@@ -236,50 +232,6 @@ cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
 	}
 
 	return Localization::getLanguage();
-}
-
-std::string LocalizedLabel::getPixelFont()
-{
-	switch (this->getCurrentLanguage())
-	{
-		default:
-		case LanguageType::ENGLISH:
-		case LanguageType::CHINESE_SIMPLIFIED:
-		case LanguageType::CHINESE_TRADITIONAL:
-		case LanguageType::JAPANESE:
-		case LanguageType::KOREAN:
-		{
-			return FontResources::Pixel_Standard_Pixel_Zpix;
-		}
-		case LanguageType::ARABIC:
-		case LanguageType::BULGARIAN:
-		case LanguageType::CZECH:
-		case LanguageType::DANISH:
-		case LanguageType::DUTCH:
-		case LanguageType::FINNISH:
-		case LanguageType::FRENCH:
-		case LanguageType::GERMAN:
-		case LanguageType::GREEK:
-		case LanguageType::HUNGARIAN:
-		case LanguageType::ITALIAN:
-		case LanguageType::NORWEGIAN:
-		case LanguageType::POLISH:
-		case LanguageType::PORTUGUESE:
-		case LanguageType::PORTUGUESE_BRAZIL:
-		case LanguageType::ROMANIAN:
-		case LanguageType::RUSSIAN:
-		case LanguageType::SPANISH:
-		case LanguageType::SPANISH_LATIN_AMERICAN:
-		case LanguageType::SWEDISH:
-		case LanguageType::THAI:
-		case LanguageType::TURKISH:
-		case LanguageType::UKRAINIAN:
-		case LanguageType::VIETNAMESE:
-		{
-			// TODO
-			return FontResources::Pixel_Standard_Pixel_Zpix;
-		}
-	}
 }
 
 std::string LocalizedLabel::getMainFont()
@@ -376,10 +328,6 @@ float LocalizedLabel::getFontSizeM1()
 		{
 			return 80.0f;
 		}
-		case FontStyle::Pixel:
-		{
-			return 80.0f;
-		}
 	}
 }
 
@@ -397,10 +345,6 @@ float LocalizedLabel::getFontSizeM2()
 			return 72.0f;
 		}
 		case FontStyle::Monospaced:
-		{
-			return 64.0f;
-		}
-		case FontStyle::Pixel:
 		{
 			return 64.0f;
 		}
@@ -424,10 +368,6 @@ float LocalizedLabel::getFontSizeM3()
 		{
 			return 48.0f;
 		}
-		case FontStyle::Pixel:
-		{
-			return 48.0f;
-		}
 	}
 }
 
@@ -445,10 +385,6 @@ float LocalizedLabel::getFontSizeH1()
 			return 36.0f;
 		}
 		case FontStyle::Monospaced:
-		{
-			return 32.0f;
-		}
-		case FontStyle::Pixel:
 		{
 			return 32.0f;
 		}
@@ -472,10 +408,6 @@ float LocalizedLabel::getFontSizeH2()
 		{
 			return 28.0f;
 		}
-		case FontStyle::Pixel:
-		{
-			return 28.0f;
-		}
 	}
 }
 
@@ -493,10 +425,6 @@ float LocalizedLabel::getFontSizeH3()
 			return 28.0f;
 		}
 		case FontStyle::Monospaced:
-		{
-			return 24.0f;
-		}
-		case FontStyle::Pixel:
 		{
 			return 24.0f;
 		}
@@ -520,10 +448,6 @@ float LocalizedLabel::getFontSizeP()
 		{
 			return 20.0f;
 		}
-		case FontStyle::Pixel:
-		{
-			return 20.0f;
-		}
 	}
 }
 
@@ -541,10 +465,6 @@ float LocalizedLabel::getFontSizeSmall()
 			return 20.0f;
 		}
 		case FontStyle::Monospaced:
-		{
-			return 16.0f;
-		}
-		case FontStyle::Pixel:
 		{
 			return 16.0f;
 		}

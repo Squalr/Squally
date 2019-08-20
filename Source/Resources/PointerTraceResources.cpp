@@ -5,5 +5,5 @@
 #include "PointerTraceResources.h"
 #include <string>
 
-const std::string PointerTraceResources::MovementHelp = "PointerTrace/MovementHelp.png";
-const std::string PointerTraceResources::SegfaultMenu = "PointerTrace/SegfaultMenu.png";
+const std::string PointerTraceResources::MovementHelp = "Private/PointerTrace/MovementHelp.png";
+const std::string PointerTraceResources::SegfaultMenu = "Private/PointerTrace/SegfaultMenu.png";

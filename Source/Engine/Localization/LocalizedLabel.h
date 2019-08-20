@@ -14,7 +14,6 @@ public:
 		Main,
 		Coding,
 		Monospaced,
-		Pixel,
 	};
 
 	enum class FontSize

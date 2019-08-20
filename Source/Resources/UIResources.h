@@ -42,9 +42,6 @@ namespace UIResources
 	extern const std::string Cursors_Sword;
 	extern const std::string Cursors_ZoomIn;
 	extern const std::string Cursors_ZoomOut;
-	extern const std::string EmptyImage;
-	extern const std::string Fonts_Texture_AlienText;
-	extern const std::string Fonts_Texture_AsciiTable;
 	extern const std::string HUD_EmblemGlow;
 	extern const std::string HUD_ExpBarFill;
 	extern const std::string HUD_Eye;
@@ -1147,4 +1144,7 @@ namespace UIResources
 	extern const std::string Menus_WorldMap_VoidCrystal;
 	extern const std::string Menus_WorldMap_WorldMap;
 	extern const std::string Platformer_ChatBubble;
+	extern const std::string EmptyImage;
+	extern const std::string Fonts_Texture_AlienText;
+	extern const std::string Fonts_Texture_AsciiTable;
 };

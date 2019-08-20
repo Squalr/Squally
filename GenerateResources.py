@@ -18,7 +18,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/Backgrounds")
+	), "Platformer/Backgrounds")
 
 	# DecorResources
 	createResourceFile("DecorResources", (
@@ -27,7 +27,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/Decor")
+	), "Platformer/Decor")
 
 	# EntityResources
 	createResourceFile("EntityResources", (
@@ -36,7 +36,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/Entities")
+	), "Platformer/Entities")
 
 	# IsometricEntityResources
 	createResourceFile("IsometricEntityResources", (
@@ -45,7 +45,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Isometric/Entities")
+	), "Isometric/Entities")
 
 	# HexusResources
 	createResourceFile("HexusResources", (
@@ -54,7 +54,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Hexus")
+	), "Hexus")
 
 	# PointerTraceResources
 	createResourceFile("PointerTraceResources", (
@@ -63,7 +63,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/PointerTrace")
+	), "PointerTrace")
 
 	# CipherResources
 	createResourceFile("CipherResources", (
@@ -72,7 +72,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Cipher")
+	), "Cipher")
 
 	# ObjectResources
 	createResourceFile("ObjectResources", (
@@ -81,7 +81,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/Objects")
+	), "Platformer/Objects")
 
 	# FXResources
 	createResourceFile("FXResources", (
@@ -90,7 +90,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/FX")
+	), "Platformer/FX")
 
 	# IsometricObjectResources
 	createResourceFile("IsometricObjectResources", (
@@ -99,7 +99,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Isometric/Objects")
+	), "Isometric/Objects")
 
 	# TerrainResources
 	createResourceFile("TerrainResources", (
@@ -107,7 +107,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Platformer/Terrain")
+	), "Platformer/Terrain")
 
 	# CutsceneResources
 	createResourceFile("CutsceneResources", (
@@ -116,7 +116,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/Cutscenes")
+	), "Cutscenes")
 
 	# UIResources
 	createResourceFile("UIResources", (
@@ -125,42 +125,42 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/UI")
+	), "UI")
 	
 	# ShaderResources
 	createResourceFile("ShaderResources", (
 		'.frag',
 		'.vert',
-	), "Resources/Shaders")
+	), "Shaders")
 
 	# MusicResources
 	createResourceFile("MusicResources", (
 		'.mp3',
 		'.wav',
-	), "Resources/Music")
+	), "Music")
 
 	# SoundResources
 	createResourceFile("SoundResources", (
 		'.mp3',
 		'.wav',
-	), "Resources/Sounds")
+	), "Sounds")
 
 	# MapResources
 	createResourceFile("MapResources", (
 		'.tmx',
 		'.png',
-	), "Resources/Platformer/Maps")
+	), "Platformer/Maps")
 
 	# IsometricMapResources
 	createResourceFile("IsometricMapResources", (
 		'.tmx',
 		'.png',
-	), "Resources/Isometric/Maps")
+	), "Isometric/Maps")
 
 	# ParticleResources
 	createResourceFile("ParticleResources", (
 		'.plist',
-	), "Resources/Particles")
+	), "Particles")
 
 	# FontResources
 	createResourceFile("FontResources", (
@@ -169,31 +169,40 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Resources/UI/Fonts")
+	), "UI/Fonts")
 
 	# StringResources
 	createResourceFile("StringResources", (
 		'.json',
-	), "Resources/Strings")
+	), "Strings")
 
-def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
-	pathRoot = "Source/Resources/"
+def createResourceFile(outputFileBase, extensions, searchPath):
+	projectRoot = abspath(join(realpath(__file__), ".."))
+
+	searchPathPublic = join(projectRoot, "Resources/Public/" + searchPath)
+	searchPathPrivate = join(projectRoot, "Resources/Private/" + searchPath)
+
+	generatedClassFolder = "Source/Resources/"
 	outputHeader = outputFileBase + ".h"
 	outputClass = outputFileBase + ".cpp"
 	resourcePath = abspath(join(join(realpath(__file__), ".."), "Resources"))
-	searchPath = abspath(join(join(realpath(__file__), ".."), searchPath))
 	files = []
 
 	for extension in extensions:
-		for root, dirnames, filenames in os.walk(searchPath):
+		for root, dirnames, filenames in os.walk(searchPathPublic):
 			for filename in filenames:
 				if filename.lower().endswith(extension):
-					files.append(join(root, filename))
+					files.append((join(root, filename), searchPathPublic))
+					continue
+		for root, dirnames, filenames in os.walk(searchPathPrivate):
+			for filename in filenames:
+				if filename.lower().endswith(extension):
+					files.append((join(root, filename), searchPathPrivate))
 					continue
 
 	files.sort()
 			
-	with open(pathRoot + outputHeader,'w+') as h, open(pathRoot + outputClass,'w+') as cpp:
+	with open(generatedClassFolder + outputHeader,'w+') as h, open(generatedClassFolder + outputClass,'w+') as cpp:
 
 		warning = ( "////////////////////////////////////////////////////////////////////////////////////////////" + "\n" +
 			"// THIS C++ FILE IS GENERATED DO NOT EDIT. RUN GenerateResources.py TO GENERATE THIS FILE //" + "\n" +
@@ -215,8 +224,9 @@ def createResourceFile(outputFileBase, extensions, searchPath = "Resources"):
 		cpp.write("\n");
 
 		for file in files:
-			resourceRelativeFilePath = relpath(file, resourcePath).replace("\\", "/")
-			searchRelativeFilePath = relpath(file, searchPath).replace("\\", "/")
+			resourceRelativeFilePath = relpath(file[0], resourcePath).replace("\\", "/")
+			searchRelativeFilePath = relpath(file[0], file[1]).replace("\\", "/")
+
 			variableName = searchRelativeFilePath \
 				.replace("/", "_") \
 				.replace(" ", "_") \
