@@ -1,0 +1,59 @@
+#include "ArcaneWand.h"
+
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
+#include "Resources/ObjectResources.h"
+
+#include "Strings/Items/Equipment/Weapons/Wands/ArcaneWand.h"
+
+using namespace cocos2d;
+
+const std::string ArcaneWand::SaveKeyArcaneWand = "arcane-wand";
+
+ArcaneWand* ArcaneWand::create()
+{
+	ArcaneWand* instance = new ArcaneWand();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+ArcaneWand::ArcaneWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+{
+}
+
+ArcaneWand::~ArcaneWand()
+{
+}
+
+Item* ArcaneWand::clone()
+{
+	return ArcaneWand::create();
+}
+
+std::string ArcaneWand::getItemName()
+{
+	return ArcaneWand::SaveKeyArcaneWand;
+}
+
+LocalizedString* ArcaneWand::getString()
+{
+	return Strings::Items_Equipment_Weapons_Wands_ArcaneWand::create();
+}
+
+std::string ArcaneWand::getIconResource()
+{
+	return ObjectResources::Items_Equipment_Weapons_Wands_ArcaneWand;
+}
+
+std::string ArcaneWand::getSerializationKey()
+{
+	return ArcaneWand::SaveKeyArcaneWand;
+}
+
+Vec2 ArcaneWand::getDisplayOffset()
+{
+	return Vec2(0.0f, -24.0f);
+}

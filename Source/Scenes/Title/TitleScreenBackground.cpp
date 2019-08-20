@@ -55,7 +55,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->squally->setFlippedX(true);
 	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat);
 	this->mainhand = this->squally->getAnimationPart("mainhand");
-	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Staves_WoodenWand);
+	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand);
 	this->mainhand->setOffset(Vec2(0.0f, -16.0f));
 	this->leftEyeController->setVisible(false);
 	this->rightEyeController->setVisible(false);

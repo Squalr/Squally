@@ -53,6 +53,16 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SteelAxe::SaveKeySteelAxe] = [=]() { return (Item*)SteelAxe::create(); };
 	this->deserializers[WoodCutter::SaveKeyWoodCutter] = [=]() { return (Item*)WoodCutter::create(); };
 
+	// Bows
+	this->deserializers[ArchersBow::SaveKeyArchersBow] = [=]() { return (Item*)ArchersBow::create(); };
+	this->deserializers[BoneBow::SaveKeyBoneBow] = [=]() { return (Item*)BoneBow::create(); };
+	this->deserializers[CompositeBow::SaveKeyCompositeBow] = [=]() { return (Item*)CompositeBow::create(); };
+	this->deserializers[FrostBow::SaveKeyFrostBow] = [=]() { return (Item*)FrostBow::create(); };
+	this->deserializers[HuntersBow::SaveKeyHuntersBow] = [=]() { return (Item*)HuntersBow::create(); };
+	this->deserializers[IvoryBow::SaveKeyIvoryBow] = [=]() { return (Item*)IvoryBow::create(); };
+	this->deserializers[OlympusBow::SaveKeyOlympusBow] = [=]() { return (Item*)OlympusBow::create(); };
+	this->deserializers[WarBow::SaveKeyWarBow] = [=]() { return (Item*)WarBow::create(); };
+
 	// Maces
 	this->deserializers[BattleHammer::SaveKeyBattleHammer] = [=]() { return (Item*)BattleHammer::create(); };
 	this->deserializers[BoneHammer::SaveKeyBoneHammer] = [=]() { return (Item*)BoneHammer::create(); };
@@ -63,6 +73,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SkullCrusher::SaveKeySkullCrusher] = [=]() { return (Item*)SkullCrusher::create(); };
 	this->deserializers[SpikedClub::SaveKeySpikedClub] = [=]() { return (Item*)SpikedClub::create(); };
 	this->deserializers[WoodenMallet::SaveKeyWoodenMallet] = [=]() { return (Item*)WoodenMallet::create(); };
+
+	// Spears
+	this->deserializers[Impaler::SaveKeyImpaler] = [=]() { return (Item*)Impaler::create(); };
 
 	// Swords
 	this->deserializers[AshenBlade::SaveKeyAshenBlade] = [=]() { return (Item*)AshenBlade::create(); };
@@ -82,6 +95,20 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SteelSword::SaveKeySteelSword] = [=]() { return (Item*)SteelSword::create(); };
 	this->deserializers[VikingSword::SaveKeyVikingSword] = [=]() { return (Item*)VikingSword::create(); };
 	this->deserializers[WarCutlas::SaveKeyWarCutlas] = [=]() { return (Item*)WarCutlas::create(); };
+
+	// Wands
+	this->deserializers[ArcaneWand::SaveKeyArcaneWand] = [=]() { return (Item*)ArcaneWand::create(); };
+	this->deserializers[ChieftainsWand::SaveKeyChieftainsWand] = [=]() { return (Item*)ChieftainsWand::create(); };
+	this->deserializers[CrystalWand::SaveKeyCrystalWand] = [=]() { return (Item*)CrystalWand::create(); };
+	this->deserializers[CursedWand::SaveKeyCursedWand] = [=]() { return (Item*)CursedWand::create(); };
+	this->deserializers[EnchantedWand::SaveKeyEnchantedWand] = [=]() { return (Item*)EnchantedWand::create(); };
+	this->deserializers[HolyWand::SaveKeyHolyWand] = [=]() { return (Item*)HolyWand::create(); };
+	this->deserializers[ManaWand::SaveKeyManaWand] = [=]() { return (Item*)ManaWand::create(); };
+	this->deserializers[NecroWand::SaveKeyNecroWand] = [=]() { return (Item*)NecroWand::create(); };
+	this->deserializers[SerpentWand::SaveKeySerpentWand] = [=]() { return (Item*)SerpentWand::create(); };
+	this->deserializers[TaserRod::SaveKeyTaserRod] = [=]() { return (Item*)TaserRod::create(); };
+	this->deserializers[WitchDoctorsWand::SaveKeyWitchDoctorsWand] = [=]() { return (Item*)WitchDoctorsWand::create(); };
+	this->deserializers[WoodenWand::SaveKeyWoodenWand] = [=]() { return (Item*)WoodenWand::create(); };
 
 	// Hats
 	this->deserializers[SantaHat::SaveKeySantaHat] = [=]() { return (Item*)SantaHat::create(); };
