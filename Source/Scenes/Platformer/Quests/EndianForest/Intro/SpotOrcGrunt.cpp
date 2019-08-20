@@ -43,7 +43,10 @@ SpotOrcGrunt::~SpotOrcGrunt()
 
 void SpotOrcGrunt::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	});
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)

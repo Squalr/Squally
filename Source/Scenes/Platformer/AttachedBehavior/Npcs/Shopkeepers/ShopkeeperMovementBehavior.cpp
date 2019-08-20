@@ -39,7 +39,10 @@ ShopkeeperMovementBehavior::~ShopkeeperMovementBehavior()
 
 void ShopkeeperMovementBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Squally>(this, &this->squally);
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	});
 }
 
 void ShopkeeperMovementBehavior::update(float dt)

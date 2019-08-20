@@ -29,6 +29,8 @@ ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolM
 	this->addItemToPool(IronSword::create(), 1.0f);
 	this->addItemToPool(WoodenMallet::create(), 1.0f);
 	this->addItemToPool(WoodCutter::create(), 1.0f);
+	this->addItemToPool(WoodenWand::create(), 1.0f);
+	this->addItemToPool(CompositeBow::create(), 1.0f);
 }
 
 ShopPoolMinos::~ShopPoolMinos()

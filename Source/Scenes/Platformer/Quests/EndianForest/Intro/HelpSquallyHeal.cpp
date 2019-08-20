@@ -43,7 +43,10 @@ HelpSquallyHeal::~HelpSquallyHeal()
 
 void HelpSquallyHeal::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	});
 }
 
 void HelpSquallyHeal::onActivate(bool isActiveThroughSkippable)

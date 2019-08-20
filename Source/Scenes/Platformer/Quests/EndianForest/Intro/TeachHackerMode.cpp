@@ -43,7 +43,10 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	});
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)

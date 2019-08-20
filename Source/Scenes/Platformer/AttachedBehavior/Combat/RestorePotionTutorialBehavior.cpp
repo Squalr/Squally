@@ -65,7 +65,11 @@ void RestorePotionTutorialBehavior::onLoad()
 		});
 	}
 
-	ObjectEvents::watchForObject<Scrappy>(this, &this->scrappy);
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	});
+
 	HackableEvents::TriggerDisallowHackerMode();
 }
 
