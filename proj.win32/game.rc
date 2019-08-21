@@ -42,7 +42,7 @@ END
 
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
-GLFW_ICON           ICON                    "..\\Resources\\Icons\\AppIcon.ico"
+GLFW_ICON           ICON                    "..\\Resources\\Public\\AppIcon.ico"
 
 /////////////////////////////////////////////////////////////////////////////
 //

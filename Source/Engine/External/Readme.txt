@@ -1,0 +1,1 @@
+This folder contains repositories pulled in from source. While some of these could be managed via vcpkg, in our experience vcpkg is unreliable and finnicky. The less being managed by vcpkg, the better.

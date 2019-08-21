@@ -29,7 +29,6 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
     # vcpkg resources
-    asmjit::asmjit
     tinyxml2::tinyxml2
     RapidJSON::RapidJSON
     CURL::libcurl
@@ -65,6 +64,16 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE YES
     )
+    string(REGEX REPLACE "/Z[iI7]" ""
+        CMAKE_CXX_FLAGS_DEBUG
+        "${CMAKE_CXX_FLAGS_DEBUG}"
+    )
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Z7")
+    string(REGEX REPLACE "/Z[iI7]" ""
+        CMAKE_CXX_FLAGS_RELEASE
+        "${CMAKE_CXX_FLAGS_RELEASE}"
+    )
+    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Z7")
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")

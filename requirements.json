@@ -1,6 +1,5 @@
 {
     "common": [
-        "asmjit",
         "cereal",
         "curl",
         "freetype",
@@ -21,7 +20,6 @@
         "chipmunk"
     ],
     "darwin": [
-        "openssl"
     ],
     "linux": [
         "fontconfig"

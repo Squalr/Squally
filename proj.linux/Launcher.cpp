@@ -133,7 +133,7 @@ int main(int argc, char **argv)
     // set the icon
     Gtk::Image* reportImage = nullptr;
     builder->get_widget<Gtk::Image>("reportImage", reportImage);
-    reportImage->set(basePath + "/Resources/Icons/AppIcon.ico");
+    reportImage->set(basePath + "/Resources/Public/AppIcon.ico");
 
     // get dialog handle
     Gtk::Dialog* dialog = nullptr;

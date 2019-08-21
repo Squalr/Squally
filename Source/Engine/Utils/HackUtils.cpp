@@ -6,10 +6,9 @@
 #include <regex>
 #include <sstream>
 
-#include <asmjit/asmjit.h>
-
-#include "Engine/asmtk/asmtk.h"
-#include "Engine/libudis86/udis86.h"
+#include "Engine/External/asmjit/asmjit.h"
+#include "Engine/External/asmtk/asmtk.h"
+#include "Engine/External/libudis86/udis86.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
@@ -132,12 +131,12 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 {
 	CompileResult compileResult;
 	
-	CodeInfo ci(sizeof(void*) == 4 ? ArchInfo::kTypeX86 : ArchInfo::kTypeX64);
+	CodeInfo ci(sizeof(void*) == 4 ? ArchInfo::kIdX86 : ArchInfo::kIdX64);
 	CodeHolder code;
 	code.init(ci);
 
 	// Attach X86Assembler `code`.
-	X86Assembler a(&code);
+	x86::Assembler a(&code);
 
 	// Create AsmParser that will emit to X86Assembler.
 	AsmParser p(&a);
@@ -445,16 +444,12 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 		return compileResult;
 	}
 
-	// If we are done, you must detach the Assembler from CodeHolder or sync
-	// it, so its internal state and position is synced with CodeHolder.
-	code.sync();
-
 	// Now you can print the code, which is stored in the first section (.text).
-	CodeBuffer& buffer = code.getSectionEntry(0)->getBuffer();
-	uint8_t* bufferData = buffer.getData();
+	CodeBuffer& buffer = code.sectionById(0)->buffer();
+	uint8_t* bufferData = buffer.data();
 
 	compileResult.hasError = false;
-	compileResult.byteCount = buffer.getLength();
+	compileResult.byteCount = buffer.size();
 	compileResult.compiledBytes = std::vector<unsigned char>();
 	
 	for (int index = 0; index < compileResult.byteCount; index++)
