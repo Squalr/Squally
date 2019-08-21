@@ -65,23 +65,26 @@ void InfiniteParallaxNode::rebuildNodes()
 
 	Vec2 nextPosition = Vec2(-this->spriteWidth, 0.0f);
 
-	do
+	if (this->spriteWidth > 0)
 	{
-		nextSprite->setPosition(nextPosition);
-
-		this->nodes->push_back(nextSprite);
-		this->addChild(nextSprite, 0, Vec2(1.0f, 1.0f), nextPosition);
-
-		remainingSize -= this->spriteWidth;
-
-		if (remainingSize > 0.0f)
+		do
 		{
-			nextSprite = Sprite::create(this->resourcePath);
-			nextSprite->setScale(this->spriteScale);
-			nextPosition.x += this->spriteWidth - overlap;
-		}
+			nextSprite->setPosition(nextPosition);
 
-	} while (remainingSize > 0.0f);
+			this->nodes->push_back(nextSprite);
+			this->addChild(nextSprite, 0, Vec2(1.0f, 1.0f), nextPosition);
+
+			remainingSize -= this->spriteWidth;
+
+			if (remainingSize > 0.0f)
+			{
+				nextSprite = Sprite::create(this->resourcePath);
+				nextSprite->setScale(this->spriteScale);
+				nextPosition.x += this->spriteWidth - overlap;
+			}
+
+		} while (remainingSize > 0.0f);
+	}
 
 	// Anchor all new nodes
 	this->setAnchorPoint(this->spriteAnchor);

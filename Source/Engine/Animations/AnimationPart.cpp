@@ -26,7 +26,7 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 {
 	this->trackedObjects = std::vector<Node*>();
 	this->entity = entity;
-	this->spriterAnimationPart = this->entity->getObjectInstance(partName);
+	this->spriterAnimationPart = this->entity == nullptr ? nullptr : this->entity->getObjectInstance(partName);
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
 	this->originalPath = "";
 	this->lastKnownAnim = "";

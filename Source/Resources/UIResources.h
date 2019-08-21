@@ -31,10 +31,6 @@ namespace UIResources
 	extern const std::string Cursors_Key;
 	extern const std::string Cursors_Lock;
 	extern const std::string Cursors_Map;
-	extern const std::string Cursors_MouseDrag;
-	extern const std::string Cursors_MouseIdle;
-	extern const std::string Cursors_MousePoint;
-	extern const std::string Cursors_MousePointPressed;
 	extern const std::string Cursors_Question;
 	extern const std::string Cursors_Skull;
 	extern const std::string Cursors_Stash;
@@ -1144,6 +1140,10 @@ namespace UIResources
 	extern const std::string Menus_WorldMap_VoidCrystal;
 	extern const std::string Menus_WorldMap_WorldMap;
 	extern const std::string Platformer_ChatBubble;
+	extern const std::string Cursors_MouseDrag;
+	extern const std::string Cursors_MouseIdle;
+	extern const std::string Cursors_MousePoint;
+	extern const std::string Cursors_MousePointPressed;
 	extern const std::string EmptyImage;
 	extern const std::string Fonts_Texture_AlienText;
 	extern const std::string Fonts_Texture_AsciiTable;

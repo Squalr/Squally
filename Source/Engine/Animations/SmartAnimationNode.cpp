@@ -50,6 +50,11 @@ void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayM
 
 void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float blendTime)
 {
+	if (this->entity == nullptr)
+	{
+		return;
+	}
+	
 	if (this->entity->hasAnimation(animationName))
 	{
 		if (!this->initialized || this->entity->currentAnimationName() != animationName)
