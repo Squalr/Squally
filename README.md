@@ -52,7 +52,7 @@ Squally is comprised of several subrepos, including:
 
 Additional dependencies are managed using vcpkg.
 
-**Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the Resources folder, copy it from a purchased copy of the game. See the section below for details.
+**Important:** We do not have the legal rights to distribute the art/sound in Squally. To get a copy of the `Resources/Private` folder, copy it from a purchased copy of the game. See the section below for details.
 
 To do a fresh build and pull in dependencies:
 ```
@@ -60,8 +60,6 @@ git clone git@github.com:zcanann/Squally.git
 cd Squally
 git submodule update --init --recursive .
 python dep.py init
-cd Resources
-git lfs pull
 ```
 
 From here, simply open the Squally/ folder in VsCode and compile using one of the following:
@@ -77,23 +75,23 @@ python dep.py update
 
 Getting the Resource Folder
 ------------
-We could not include the Resources folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
+We could not include the `Resources/Private` folder in this repository, because a lot of the art in this game comes from asset stores. This means we have non-exclusive rights to the art, and cannot redistribute it for free. This means the Resources must be copied from a legally purchased copy of the game.
 
-The Resources folder in Squally will be synced up with the master branch in this repository.
+The `Resources/Private` folder in Squally will be synced up with the master branch in this repository.
 
 Note: currently there is no master branch -- we temporarily removed it when making this repository public. It will be recreated before the next release.
 
-To gain access to the Resources being used in develop, do the following:
+To gain access to the `Resources/Private` folder being used in develop, do the following:
 - Open Steam
 - Right click on Squally and click Properties
 - Go to the BETAS tab
 - Opt into the 'resources' beta
 - Switch to the Local Files tab
 - Click 'browse Local files'
-- Copy the Resources folder into the Squally git repository you created.
+- Copy the `Private` folder into `Squally/Resources` in the git repository you created.
 - Important: Revert back to NONE or alpha version of squally -- the 'resources' beta will not launch. Also, if Steam is not updating the files, try restarting Steam.
 
 ![Squally resource beta](https://i.imgur.com/012eDxg.png)
-![Squally resource folder](https://i.imgur.com/VFKXSSV.png)
+![Squally resource folder](https://i.imgur.com/5PaDZiG.png)
 
 For those that contribute significantly to the project, we can add you to the private repository. We're doing this sparringly because there are limted seats on Github.
