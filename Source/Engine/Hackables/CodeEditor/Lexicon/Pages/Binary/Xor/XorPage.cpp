@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Xor.h"
-#include "Strings/Hacking/Lexicon/Pages/Binary/Xor/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Xor.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Binary/Xor/Intro.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ XorPage::XorPage() : super(XorPage::Identifier, PageType::Full)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Gold);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Xor::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Instructions_Binary_Xor::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Binary_Xor_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Binary_Xor_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

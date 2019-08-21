@@ -11,9 +11,9 @@
 #include "Engine/Save/SaveManager.h"
 
 #include "Strings/Common/Count.h"
-#include "Strings/Hacking/CodeEditor/CreateNewScript.h"
-#include "Strings/Hacking/CodeEditor/MyNewScript.h"
-#include "Strings/Hacking/CodeEditor/YourScripts.h"
+#include "Strings/Menus/Hacking/CodeEditor/CreateNewScript.h"
+#include "Strings/Menus/Hacking/CodeEditor/MyNewScript.h"
+#include "Strings/Menus/Hacking/CodeEditor/YourScripts.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -34,10 +34,10 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 {
 	this->onScriptSelect = onScriptSelect;
 	this->scriptsNode = Node::create();
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_CodeEditor_YourScripts::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_CodeEditor_YourScripts::create());
 	this->scripts = std::vector<ScriptEntry*>();
 	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
-	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CreateNewScript::create());
+	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CreateNewScript::create());
 	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
 	this->hackableCode = nullptr;
 	this->activeScript = nullptr;
@@ -101,7 +101,7 @@ void ScriptList::addNewScript()
 
 		newScriptName->setStringReplacementVariables(
 		{
-			Strings::Hacking_CodeEditor_MyNewScript::create(),
+			Strings::Menus_Hacking_CodeEditor_MyNewScript::create(),
 			ConstantString::create(std::to_string(this->scripts.size()))
 		});
 

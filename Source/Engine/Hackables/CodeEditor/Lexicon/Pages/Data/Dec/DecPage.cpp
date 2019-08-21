@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Instructions/Data/Dec.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Dec/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Dec.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Dec/Intro.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ DecPage::DecPage() : super(DecPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Frog);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Data_Dec::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Instructions_Data_Dec::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Data_Dec_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Data_Dec_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

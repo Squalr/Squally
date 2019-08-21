@@ -18,8 +18,8 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h"
-#include "Strings/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h"
+#include "Strings/Menus/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h"
 
 using namespace cocos2d;
 
@@ -91,11 +91,11 @@ void SpikeLog::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				SpikeLog::MapKeySpikeLog,
-				Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
+				Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				SpikeLogSetRotationPreview::create(),
 				{
-					{ HackableCode::Register::zcx, Strings::Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				1,
 				20.0f

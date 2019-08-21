@@ -16,7 +16,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
-#include "Strings/Dialogue/Story/Intro/HackerMode.h"
+#include "Strings/Platformer/Quests/Intro/HackerMode.h"
 
 using namespace cocos2d;
 
@@ -88,7 +88,7 @@ void TeachHackerMode::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerMode::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_HackerMode::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()

@@ -16,7 +16,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
-#include "Strings/Dialogue/Story/Intro/TentHeal.h"
+#include "Strings/Platformer/Quests/Intro/TentHeal.h"
 
 using namespace cocos2d;
 
@@ -88,7 +88,7 @@ void HelpSquallyHeal::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_TentHeal::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_TentHeal::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()

@@ -22,8 +22,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/Blocked.h"
-#include "Strings/Combat/Interrupted.h"
+#include "Strings/Platformer/Combat/Blocked.h"
+#include "Strings/Platformer/Combat/Interrupted.h"
 #include "Strings/Common/MinusConstant.h"
 #include "Strings/Common/PlusConstant.h"
 
@@ -67,7 +67,7 @@ void TextOverlays::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr)
 		{
-			LocalizedLabel* interruptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Interrupted::create());
+			LocalizedLabel* interruptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Interrupted::create());
 
 			interruptLabel->setTextColor(Color4B::ORANGE);
 			interruptLabel->setPosition(Vec2(0.0f, 64.0f));
@@ -82,7 +82,7 @@ void TextOverlays::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr)
 		{
-			LocalizedLabel* blockedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Blocked::create());
+			LocalizedLabel* blockedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Blocked::create());
 
 			blockedLabel->setTextColor(Color4B::ORANGE);
 			blockedLabel->setPosition(Vec2(0.0f, 64.0f));

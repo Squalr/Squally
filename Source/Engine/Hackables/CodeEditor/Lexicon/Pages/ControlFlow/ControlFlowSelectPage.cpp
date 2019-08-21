@@ -9,8 +9,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
-#include "Strings/Hacking/Lexicon/Instructions/ControlFlow/Nop.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/ControlFlow/Nop.h"
 
 using namespace cocos2d;
 
@@ -29,8 +29,8 @@ ControlFlowSelectPage::ControlFlowSelectPage() : super(ControlFlowSelectPage::Id
 {
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
-	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
-	this->nopOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_ControlFlow_Nop::create(), NopPage::Identifier);
+	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
+	this->nopOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_ControlFlow_Nop::create(), NopPage::Identifier);
 	
 	this->operationSelectLabel->setTextColor(super::TextColor);
 

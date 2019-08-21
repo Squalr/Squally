@@ -14,26 +14,26 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Memory.h"
-#include "Strings/Hacking/Lexicon/Registers.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEax.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEbx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEcx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEdx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEdi.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEsi.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEbp.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEsp.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterEip.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRax.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRbx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRcx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRdx.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRdi.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRsi.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRbp.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRsp.h"
-#include "Strings/Hacking/Lexicon/Registers/RegisterRip.h"
+#include "Strings/Menus/Hacking/Lexicon/Memory.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEax.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEdx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEsi.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEbp.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEsp.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEip.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRax.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRbx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRdx.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRsi.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRbp.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRsp.h"
+#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRip.h"
 
 using namespace cocos2d;
 
@@ -88,32 +88,32 @@ RegisterBlock::RegisterBlock()
     this->espString = ConstantString::create(std::to_string(this->esp.currentValue));
     this->eipString = ConstantString::create(std::to_string(this->eip.currentValue));
     this->registerBlock = Sprite::create(UIResources::Menus_LexiconMenu_RegisterBlock);
-    this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Lexicon_Registers::create());
-    this->memoryTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Lexicon_Memory::create());
+    this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Registers::create());
+    this->memoryTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Memory::create());
 
     if (sizeof(void*) == 4)
     {
-        this->eaxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEax::create());
-        this->ebxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEbx::create());
-        this->ecxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEcx::create());
-        this->edxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEdx::create());
-        this->ediLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEdi::create());
-        this->esiLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEsi::create());
-        this->ebpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEbp::create());
-        this->espLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEsp::create());
-        this->eipLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterEip::create());
+        this->eaxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEax::create());
+        this->ebxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEbx::create());
+        this->ecxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEcx::create());
+        this->edxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEdx::create());
+        this->ediLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEdi::create());
+        this->esiLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEsi::create());
+        this->ebpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEbp::create());
+        this->espLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEsp::create());
+        this->eipLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterEip::create());
     }
     else
     {
-        this->eaxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRax::create());
-        this->ebxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRbx::create());
-        this->ecxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRcx::create());
-        this->edxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRdx::create());
-        this->ediLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRdi::create());
-        this->esiLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRsi::create());
-        this->ebpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRbp::create());
-        this->espLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRsp::create());
-        this->eipLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Registers_RegisterRip::create());
+        this->eaxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRax::create());
+        this->ebxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRbx::create());
+        this->ecxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRcx::create());
+        this->edxLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRdx::create());
+        this->ediLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRdi::create());
+        this->esiLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRsi::create());
+        this->ebpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRbp::create());
+        this->espLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRsp::create());
+        this->eipLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Registers_RegisterRip::create());
     }
 	this->eaxPtrNode = Node::create();
 	this->ebxPtrNode = Node::create();

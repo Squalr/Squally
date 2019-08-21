@@ -34,8 +34,8 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
-#include "Strings/Dialogue/EndOfDemo.h"
-#include "Strings/Dialogue/Story/Intro/SquallyTrapped.h"
+#include "Strings/Platformer/EndOfDemo.h"
+#include "Strings/Platformer/Quests/Intro/SquallyTrapped.h"
 
 using namespace cocos2d;
 
@@ -119,7 +119,7 @@ void Scrappy::runEndOfDemoEvent()
 		}),
 		CallFunc::create([=]()
 		{
-			this->speechBubble->runDialogue(Strings::Dialogue_EndOfDemo::create());
+			this->speechBubble->runDialogue(Strings::Platformer_EndOfDemo::create());
 		}),
 		nullptr
 	));
@@ -137,7 +137,7 @@ void Scrappy::runSquallyTrappedEvent()
 		}),
 		CallFunc::create([=]()
 		{
-			this->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_SquallyTrapped::create());
+			this->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_SquallyTrapped::create());
 		}),
 		nullptr
 	));

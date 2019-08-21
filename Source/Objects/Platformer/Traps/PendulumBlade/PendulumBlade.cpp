@@ -20,9 +20,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.h"
-#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.h"
-#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 
 using namespace cocos2d;
 
@@ -113,12 +113,12 @@ void PendulumBlade::registerHackables()
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
 				PendulumBlade::MapKeyPendulumBlade,
-				Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				PendulumBladeSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
 				},
 				2,
 				20.0f,

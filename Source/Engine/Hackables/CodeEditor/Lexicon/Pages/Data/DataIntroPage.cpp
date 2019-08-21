@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/Data/Intro.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Title.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ DataIntroPage::DataIntroPage() : super(DataIntroPage::Identifier, PageType::Left
 {
 	this->donkeySprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Donkey);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_Data_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_Data_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Data_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Data_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

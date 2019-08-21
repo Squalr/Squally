@@ -21,7 +21,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/RadialMenu/RequiresEq.h"
+#include "Strings/Menus/Hacking/RadialMenu/RequiresEq.h"
 #include "Strings/Menus/Exit.h"
 
 using namespace cocos2d;
@@ -254,7 +254,7 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 
 	if (this->currentEq < requiredLevel)
 	{
-		LocalizedLabel* requiredEqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_RadialMenu_RequiresEq::create());
+		LocalizedLabel* requiredEqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_RadialMenu_RequiresEq::create());
 
 		requiredEqLabel->setStringReplacementVariables(ConstantString::create(std::to_string(requiredLevel)));
 

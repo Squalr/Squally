@@ -22,10 +22,10 @@
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Dialogue/Story/Intro/GetYouPatched.h"
-#include "Strings/Dialogue/Story/Intro/DistressBeacon.h"
-#include "Strings/Dialogue/Story/Intro/YoureAlive.h"
-#include "Strings/Notifications/Party/ScrappyJoinedParty.h"
+#include "Strings/Platformer/Quests/Intro/GetYouPatched.h"
+#include "Strings/Platformer/Quests/Intro/DistressBeacon.h"
+#include "Strings/Platformer/Quests/Intro/YoureAlive.h"
+#include "Strings/Platformer/Notifications/Party/ScrappyJoinedParty.h"
 
 using namespace cocos2d;
 
@@ -123,19 +123,19 @@ void MeetScrappy::runCinematicSequence()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_YoureAlive::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_YoureAlive::create());
 			}),
 			DelayTime::create(2.0f),
 			CallFunc::create([=]()
 			{
 				this->scrappy->droidBrief1Sound->play();
-				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_DistressBeacon::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_DistressBeacon::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
 			{
 				this->scrappy->droidBrief1Sound->play();
-				this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_GetYouPatched::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_GetYouPatched::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()
@@ -159,7 +159,7 @@ void MeetScrappy::runCinematicSequence()
 			{
 				this->scrappy->setVisible(false);
 
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(nullptr, Strings::Notifications_Party_ScrappyJoinedParty::create(), EntityResources::Helpers_EndianForest_Scrappy_Emblem));
+				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(nullptr, Strings::Platformer_Notifications_Party_ScrappyJoinedParty::create(), EntityResources::Helpers_EndianForest_Scrappy_Emblem));
 				HelperEvents::TriggerFindScrappy();
 				PlatformerEvents::TriggerCinematicRestore();
 

@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Instructions/Data/Push.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Push/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Push.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Push/Intro.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ PushPage::PushPage() : super(PushPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Spear);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Data_Push::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Instructions_Data_Push::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Data_Push_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Data_Push_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

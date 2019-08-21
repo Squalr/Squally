@@ -7,7 +7,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/Attacks/Punch.h"
+#include "Strings/Platformer/Combat/Attacks/Punch.h"
 
 using namespace cocos2d;
 
@@ -34,7 +34,7 @@ PlatformerAttack* Punch::cloneInternal()
 
 LocalizedString* Punch::getString()
 {
-	return Strings::Combat_Attacks_Punch::create();
+	return Strings::Platformer_Combat_Attacks_Punch::create();
 }
 
 std::string Punch::getAttackAnimation()

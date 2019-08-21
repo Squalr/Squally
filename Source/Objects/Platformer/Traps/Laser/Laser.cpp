@@ -16,8 +16,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/Laser/UpdateCountDown/RegisterSt0.h"
-#include "Strings/Hacking/Objects/Laser/UpdateCountDown/UpdateCountDown.h"
+#include "Strings/Menus/Hacking/Objects/Laser/UpdateCountDown/RegisterSt0.h"
+#include "Strings/Menus/Hacking/Objects/Laser/UpdateCountDown/UpdateCountDown.h"
 
 using namespace cocos2d;
 
@@ -92,11 +92,11 @@ void Laser::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				Laser::MapKeyLaser,
-				Strings::Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
+				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
 				1,
 				20.0f

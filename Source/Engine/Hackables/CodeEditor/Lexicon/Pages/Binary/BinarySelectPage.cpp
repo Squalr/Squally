@@ -9,22 +9,22 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/And.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Bswap.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Not.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Or.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Rcl.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Rcr.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Rol.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Ror.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Sal.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Sar.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Shl.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Shld.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Shr.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Shrd.h"
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Xor.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/And.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Bswap.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Not.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Or.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rcl.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rcr.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rol.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Ror.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Sal.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Sar.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shl.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shld.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shr.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shrd.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Xor.h"
 
 using namespace cocos2d;
 
@@ -43,14 +43,14 @@ BinarySelectPage::BinarySelectPage() : super(BinarySelectPage::Identifier, PageT
 {
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
-	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
-	this->andOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_And::create(), AndPage::Identifier);
-	this->orOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Or::create(), OrPage::Identifier);
-	this->xorOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Xor::create(), XorPage::Identifier);
-	this->shlOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Shl::create(), ShlPage::Identifier);
-	this->shrOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Shr::create(), ShrPage::Identifier);
-	this->notOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Not::create(), NotPage::Identifier);
-	this->bswapOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Binary_Bswap::create(), BswapPage::Identifier);
+	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
+	this->andOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_And::create(), AndPage::Identifier);
+	this->orOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Or::create(), OrPage::Identifier);
+	this->xorOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Xor::create(), XorPage::Identifier);
+	this->shlOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shl::create(), ShlPage::Identifier);
+	this->shrOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Shr::create(), ShrPage::Identifier);
+	this->notOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Not::create(), NotPage::Identifier);
+	this->bswapOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Binary_Bswap::create(), BswapPage::Identifier);
 
 	this->operationSelectLabel->setTextColor(super::TextColor);
 

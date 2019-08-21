@@ -8,16 +8,16 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/GetProjectileAcceleration.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEax.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEbx.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEcx.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEsi.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/GetProjectileVelocity.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEax.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEbx.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEcx.h"
-#include "Strings/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEsi.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/GetProjectileAcceleration.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEsi.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/GetProjectileVelocity.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEsi.h"
 
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
@@ -84,14 +84,14 @@ void ProximityObject::registerHackables()
 			LOCAL_FUNC_ID_VELOCITY,
 			HackableCode::LateBindData(
 				"proximity-object",
-				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
+				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
 				UIResources::Menus_Icons_AxeSlash,
 				this->createVelocityPreview(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
-					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEbx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
+					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
 				10,
 				3.0f
@@ -101,14 +101,14 @@ void ProximityObject::registerHackables()
 			LOCAL_FUNC_ID_ACCELERATION,
 			HackableCode::LateBindData(
 				"proximity-object",
-				Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
+				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
 				UIResources::Menus_Icons_Scale,
 				this->createAccelerationPreview(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
-					{ HackableCode::Register::zcx, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
-					{ HackableCode::Register::zsi, Strings::Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEbx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
+					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
 				10,
 				3.0f

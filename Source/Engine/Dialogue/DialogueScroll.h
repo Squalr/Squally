@@ -26,11 +26,11 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::DrawNode* bubble;
+	cocos2d::DrawNode* panel;
 	LocalizedLabel* text;
 
-	static const cocos2d::Color4F BubbleColor;
-	static const cocos2d::Color4F BubbleEdgeColor;
-	static const cocos2d::Color4B BubbleTextColor;
-	static const float BubbleBorderSize;
+	static const cocos2d::Color4F PanelColor;
+	static const cocos2d::Color4F PanelEdgeColor;
+	static const cocos2d::Color4B PanelTextColor;
+	static const float PanelBorderSize;
 };

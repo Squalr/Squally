@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Instructions/Binary/Not.h"
-#include "Strings/Hacking/Lexicon/Pages/Binary/Not/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Not.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Binary/Not/Intro.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ NotPage::NotPage() : super(NotPage::Identifier, PageType::Full)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Scroll);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Binary_Not::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Instructions_Binary_Not::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Binary_Not_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Binary_Not_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

@@ -22,8 +22,8 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/RestorePotion/IncrementHealth/IncrementHealth.h"
-#include "Strings/Hacking/Objects/RestorePotion/IncrementHealth/RegisterEdi.h"
+#include "Strings/Menus/Hacking/Objects/RestorePotion/IncrementHealth/IncrementHealth.h"
+#include "Strings/Menus/Hacking/Objects/RestorePotion/IncrementHealth/RegisterEdi.h"
 
 using namespace cocos2d;
 
@@ -105,11 +105,11 @@ void SpeedGain::registerHackables()
 			LOCAL_FUNC_ID_RESTORE,
 			HackableCode::LateBindData(
 				SpeedGain::SpeedGainIdentifier,
-				Strings::Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
+				Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
 				UIResources::Menus_Icons_ArrowUp,
 				SpeedGainGenericPreview::create(),
 				{
-					{ HackableCode::Register::zdi, Strings::Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
 				1,
 				2.0f,

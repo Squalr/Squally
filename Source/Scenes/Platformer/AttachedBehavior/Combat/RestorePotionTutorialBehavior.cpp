@@ -21,7 +21,7 @@
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Strings/Dialogue/Story/Intro/HackerModeCombat.h"
+#include "Strings/Platformer/Quests/Intro/HackerModeCombat.h"
 
 using namespace cocos2d;
 
@@ -98,7 +98,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 				}),
 				CallFunc::create([=]()
 				{
-					this->scrappy->speechBubble->runDialogue(Strings::Dialogue_Story_Intro_HackerModeCombat::create());
+					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_HackerModeCombat::create());
 				}),
 				DelayTime::create(4.0f),
 				CallFunc::create([=]()

@@ -7,7 +7,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/Attacks/Slash.h"
+#include "Strings/Platformer/Combat/Attacks/Slash.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ PlatformerAttack* Slash::cloneInternal()
 
 LocalizedString* Slash::getString()
 {
-	return Strings::Combat_Attacks_Slash::create();
+	return Strings::Platformer_Combat_Attacks_Slash::create();
 }
 
 std::string Slash::getAttackAnimation()

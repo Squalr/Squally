@@ -19,9 +19,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h"
-#include "Strings/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h"
-#include "Strings/Hacking/Objects/RegisterRbpWarning.h"
+#include "Strings/Menus/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h"
+#include "Strings/Menus/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/RegisterRbpWarning.h"
 
 using namespace cocos2d;
 
@@ -89,12 +89,12 @@ void HeavenHug::registerHackables()
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
 			HackableCode::LateBindData(
 				HeavenHug::MapKeyHeavenHug,
-				Strings::Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
+				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
-					{ HackableCode::Register::zbp, Strings::Hacking_Objects_RegisterRbpWarning::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
+					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }
 				},
 				1,
 				20.0f

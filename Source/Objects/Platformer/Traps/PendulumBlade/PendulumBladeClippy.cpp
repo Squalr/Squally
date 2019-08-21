@@ -10,9 +10,9 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hacking/ClippyHelp/PendulumBladeMov.h"
-#include "Strings/Hacking/RegisterEax.h"
-#include "Strings/Hacking/RegisterRax.h"
+#include "Strings/Menus/Hacking/ClippyHelp/PendulumBladeMov.h"
+#include "Strings/Menus/Hacking/RegisterEax.h"
+#include "Strings/Menus/Hacking/RegisterRax.h"
 
 using namespace cocos2d;
 
@@ -49,15 +49,15 @@ void PendulumBladeClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	LocalizedString* localizedString = Strings::Hacking_ClippyHelp_PendulumBladeMov::create();
+	LocalizedString* localizedString = Strings::Menus_Hacking_ClippyHelp_PendulumBladeMov::create();
 
 	if (sizeof(void*) == 8)
 	{
-		localizedString->setStringReplacementVariables(Strings::Hacking_RegisterRax::create());
+		localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterRax::create());
 	}
 	else
 	{
-		localizedString->setStringReplacementVariables(Strings::Hacking_RegisterEax::create());
+		localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create());
 	}
 
 	this->speechBubble->runDialogue(localizedString);

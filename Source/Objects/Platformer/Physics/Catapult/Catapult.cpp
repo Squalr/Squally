@@ -24,10 +24,10 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/Catapult/ApplyPower/ApplyPower.h"
-#include "Strings/Hacking/Objects/Catapult/ApplyPower/RegisterEax.h"
-#include "Strings/Hacking/Objects/Catapult/ApplyPower/RegisterXmm0.h"
-#include "Strings/Hacking/Objects/Catapult/ApplyPower/RegisterXmm1.h"
+#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/ApplyPower.h"
+#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterXmm0.h"
+#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterXmm1.h"
 
 using namespace cocos2d;
 
@@ -140,13 +140,13 @@ void Catapult::registerHackables()
 			LOCAL_FUNC_ID_APPLY_POWER,
 			HackableCode::LateBindData(
 				Catapult::MapKeyCatapult,
-				Strings::Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
+				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				UIResources::Menus_Icons_Meteor,
 				CatapultApplyPowerPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
 				},
 				1,
 				20.0f

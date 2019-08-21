@@ -23,9 +23,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/ItemFound.h"
-#include "Strings/Combat/Rewards.h"
-#include "Strings/Combat/Victory.h"
+#include "Strings/Platformer/Combat/ItemFound.h"
+#include "Strings/Platformer/Combat/Rewards.h"
+#include "Strings/Platformer/Combat/Victory.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
@@ -46,7 +46,7 @@ RewardsMenu::RewardsMenu()
 	this->expValue = ConstantString::create(std::to_string(0));
 	this->expLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->expValue);
 
-	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Combat_Victory::create());
+	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -124,7 +124,7 @@ void RewardsMenu::loadRewards()
 
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
-			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Combat_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Combat_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
 		}
 	}));
 

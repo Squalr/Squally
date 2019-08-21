@@ -13,8 +13,8 @@
 #include "Events/NotificationEvents.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 
-#include "Strings/Cutscenes/IOU/FoundIOU.h"
-#include "Strings/Cutscenes/IOU/IOUDescription.h"
+#include "Strings/Platformer/Cutscenes/IOU/FoundIOU.h"
+#include "Strings/Platformer/Cutscenes/IOU/IOUDescription.h"
 
 using namespace cocos2d;
 
@@ -47,6 +47,6 @@ void FirstIOUFound::onLoad()
 {
 	this->iou->onCollected([=]()
 	{
-		NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(Strings::Cutscenes_IOU_FoundIOU::create(), Strings::Cutscenes_IOU_IOUDescription::create()));
+		NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(Strings::Platformer_Cutscenes_IOU_FoundIOU::create(), Strings::Platformer_Cutscenes_IOU_IOUDescription::create()));
 	});
 }

@@ -15,9 +15,9 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h"
-#include "Strings/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h"
-#include "Strings/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h"
+#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
@@ -135,12 +135,12 @@ void Wind::registerHackables()
 			LOCAL_FUNC_ID_WIND_SPEED,
 			HackableCode::LateBindData(
 				Wind::MapKeyWind,
-				Strings::Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
+				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
 				UIResources::Menus_Icons_Spell,
 				WindSetSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
 				1,
 				12.0f,

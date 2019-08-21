@@ -39,7 +39,7 @@ private:
 	ClickableTextNode* minigamesButton;
 	ClickableTextNode* optionsButton;
 	ClickableTextNode* exitButton;
-	ClickableNode* debugButton;
+	ClickableTextNode* debugButton;
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
 	Music* music;

@@ -16,8 +16,8 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h"
-#include "Strings/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.h"
+#include "Strings/Menus/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h"
+#include "Strings/Menus/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.h"
 
 using namespace cocos2d;
 
@@ -92,11 +92,11 @@ void MetalSpikes::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				MetalSpikes::MapKeyMetalSpikes,
-				Strings::Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
+				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				1,
 				20.0f

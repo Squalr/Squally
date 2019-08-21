@@ -16,8 +16,8 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.h"
-#include "Strings/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.h"
+#include "Strings/Menus/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.h"
+#include "Strings/Menus/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.h"
 
 using namespace cocos2d;
 
@@ -92,11 +92,11 @@ void WoodenSpikes::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				WoodenSpikes::MapKeyWoodenSpikes,
-				Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
+				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
 				WoodenSpikesUpdateTimerPreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				1,
 				20.0f

@@ -13,10 +13,10 @@
 
 using namespace cocos2d;
 
-const Color4F DialogueScroll::BubbleColor = Color4F(Color4B(189, 215, 221, 196));
-const Color4F DialogueScroll::BubbleEdgeColor = Color4F(Color4B(47, 71, 78, 196));
-const Color4B DialogueScroll::BubbleTextColor = Color4B(47, 71, 78, 255);
-const float DialogueScroll::BubbleBorderSize = 3.0f;
+const Color4F DialogueScroll::PanelColor = Color4F(Color4B(189, 215, 221, 196));
+const Color4F DialogueScroll::PanelEdgeColor = Color4F(Color4B(47, 71, 78, 196));
+const Color4B DialogueScroll::PanelTextColor = Color4B(47, 71, 78, 255);
+const float DialogueScroll::PanelBorderSize = 3.0f;
 
 DialogueScroll* DialogueScroll::create()
 {
@@ -29,15 +29,15 @@ DialogueScroll* DialogueScroll::create()
 
 DialogueScroll::DialogueScroll()
 {
-	this->bubble = DrawNode::create(3.0f);
+	this->panel = DrawNode::create(3.0f);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
-	this->text->setTextColor(DialogueScroll::BubbleTextColor);
+	this->text->setTextColor(DialogueScroll::PanelTextColor);
 
-	this->bubble->setOpacity(0);
+	this->panel->setOpacity(0);
 	this->text->setOpacity(0);
 
-	this->addChild(this->bubble);
+	this->addChild(this->panel);
 	this->addChild(this->text);
 }
 
@@ -61,27 +61,24 @@ void DialogueScroll::runDialogue(LocalizedString* localizedString)
 	const float centerAutoOffset = 256.0f;
 	const Size triangleSize = Size(16.0f, 32.0f);
 
-	this->bubble->runAction(FadeTo::create(0.5f, 255));
+	this->panel->runAction(FadeTo::create(0.5f, 255));
 	this->text->runAction(FadeTo::create(0.5f, 255));
 
 	this->text->setLocalizedString(localizedString);
-	this->text->setDimensions(320.0f, 0.0f);
+	this->text->setDimensions(1600.0f, 0.0f);
 	this->text->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	TypeWriterEffect::runTypeWriterEffect(this->text);
 
-	Size textSize = this->text->getContentSize();
-	std::vector<Vec2> trianglePoints = std::vector<Vec2>();
-	Vec2 source = Vec2(-textSize.width / 2.0f - padding.width, -padding.height);
-	Vec2 dest = Vec2(textSize.width / 2.0f + padding.width, textSize.height + padding.height);
+	Size visibleSize = Director::getInstance()->getVisibleSize();
 	
-	this->bubble->clear();
-	this->bubble->drawSolidRect(source, dest, DialogueScroll::BubbleColor);
-	this->bubble->drawRect(source, dest, DialogueScroll::BubbleEdgeColor);
+	this->panel->clear();
+	this->panel->drawSolidRect(Vec2::ZERO, Vec2(visibleSize.width, 256.0f), DialogueScroll::PanelColor);
+	this->panel->drawRect(Vec2::ZERO, Vec2(visibleSize.width, 256.0f), DialogueScroll::PanelEdgeColor);
 }
 
 void DialogueScroll::hideDialogue()
 {
-	this->bubble->runAction(FadeTo::create(0.5f, 0));
+	this->panel->runAction(FadeTo::create(0.5f, 0));
 	this->text->runAction(FadeTo::create(0.5f, 0));
 }

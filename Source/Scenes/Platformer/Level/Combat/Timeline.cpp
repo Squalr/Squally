@@ -19,8 +19,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/Cast.h"
-#include "Strings/Combat/Wait.h"
+#include "Strings/Platformer/Combat/Cast.h"
+#include "Strings/Platformer/Combat/Wait.h"
 
 using namespace cocos2d;
 
@@ -40,8 +40,8 @@ Timeline::Timeline()
 	this->timelineNode = Node::create();
 	this->timelineEntries = std::vector<TimelineEntry*>();
 	this->timelineWidth = this->swordFill->getContentSize().width;
-	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Wait::create());
-	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Combat_Cast::create());
+	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Wait::create());
+	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Cast::create());
 
 	this->waitLabel->enableOutline(Color4B::BLACK, 2);
 	this->castLabel->enableOutline(Color4B::BLACK, 2);

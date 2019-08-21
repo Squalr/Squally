@@ -9,7 +9,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hacking/ClippyHelp/SpeedGainMul.h"
+#include "Strings/Menus/Hacking/ClippyHelp/SpeedGainMul.h"
 
 using namespace cocos2d;
 
@@ -46,6 +46,6 @@ void SpeedGainClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Hacking_ClippyHelp_SpeedGainMul::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_SpeedGainMul::create());
 	this->droidChatterSound->play();
 }

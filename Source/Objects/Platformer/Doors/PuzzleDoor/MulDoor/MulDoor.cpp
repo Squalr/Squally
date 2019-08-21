@@ -15,8 +15,8 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/PuzzleDoor/Multiply/Multiply.h"
-#include "Strings/Hacking/Objects/PuzzleDoor/Multiply/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Objects/PuzzleDoor/Multiply/Multiply.h"
+#include "Strings/Menus/Hacking/Objects/PuzzleDoor/Multiply/RegisterEcx.h"
 
 using namespace cocos2d;
 
@@ -51,11 +51,11 @@ void MulDoor::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				MulDoor::MapKeyMulDoor,
-				Strings::Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
+				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
 				UIResources::Menus_Icons_Pearls,
 				MulDoorPreview::create(),
 				{
-					{ HackableCode::Register::zcx, Strings::Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
 				},
 				1,
 				14.0f,

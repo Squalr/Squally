@@ -35,7 +35,7 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	std::string name = properties.at(GameObject::MapKeyName).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Platformer/Decor/" + name + ".png");
+	Sprite* sprite = Sprite::create("Private/Platformer/Decor/" + name + ".png");
 
 	if (sprite == nullptr)
 	{
@@ -86,7 +86,12 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 			sprite->setTextureRect(Rect(0.0f, 0.0f, width, height));
 		}
 
-		sprite->getTexture()->setTexParameters(params);
+		Texture2D* texture = sprite->getTexture();
+
+		if (texture != nullptr)
+		{
+			texture->setTexParameters(params);
+		}
 	}
 	else
 	{

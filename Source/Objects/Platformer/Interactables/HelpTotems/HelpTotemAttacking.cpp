@@ -9,7 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Dialogue/Help/HelpTotemAttacking.h"
+#include "Strings/Platformer/Help/HelpTotemAttacking.h"
 
 using namespace cocos2d;
 
@@ -26,7 +26,7 @@ HelpTotemAttacking* HelpTotemAttacking::create(ValueMap& properties)
 
 HelpTotemAttacking::HelpTotemAttacking(ValueMap& properties) : super(properties)
 {
-	this->setHint(Strings::Dialogue_Help_HelpTotemAttacking::create());
+	this->setHint(Strings::Platformer_Help_HelpTotemAttacking::create());
 }
 
 HelpTotemAttacking::~HelpTotemAttacking()

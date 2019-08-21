@@ -18,7 +18,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Combat/Defeat.h"
+#include "Strings/Platformer/Combat/Defeat.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
@@ -35,7 +35,7 @@ DefeatMenu* DefeatMenu::create()
 DefeatMenu::DefeatMenu()
 {
 	this->defeatBanner = Sprite::create(UIResources::Combat_DefeatMenu);
-	this->defeatLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Combat_Defeat::create());
+	this->defeatLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Platformer_Combat_Defeat::create());
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();

@@ -31,66 +31,66 @@
 #include "Strings/Common/Constant.h"
 #include "Strings/Common/Empty.h"
 #include "Strings/Common/XOverY.h"
-#include "Strings/Hacking/CodeEditor/Address.h"
-#include "Strings/Hacking/CodeEditor/AllocationEditor.h"
-#include "Strings/Hacking/CodeEditor/Assembler.h"
-#include "Strings/Hacking/CodeEditor/ByteCount.h"
-#include "Strings/Hacking/CodeEditor/ByteOverflow.h"
-#include "Strings/Hacking/CodeEditor/Bytes.h"
-#include "Strings/Hacking/CodeEditor/ClickToEdit.h"
-#include "Strings/Hacking/CodeEditor/CodeEditor.h"
-#include "Strings/Hacking/CodeEditor/CompileErrors.h"
-#include "Strings/Hacking/CodeEditor/CompileSuccessful.h"
-#include "Strings/Hacking/CodeEditor/Error.h"
-#include "Strings/Hacking/CodeEditor/FunctionHeader.h"
-#include "Strings/Hacking/CodeEditor/LineNumber.h"
-#include "Strings/Hacking/CodeEditor/RegisterEax.h"
-#include "Strings/Hacking/CodeEditor/RegisterEbp.h"
-#include "Strings/Hacking/CodeEditor/RegisterEbx.h"
-#include "Strings/Hacking/CodeEditor/RegisterEcx.h"
-#include "Strings/Hacking/CodeEditor/RegisterEdi.h"
-#include "Strings/Hacking/CodeEditor/RegisterEdx.h"
-#include "Strings/Hacking/CodeEditor/RegisterEip.h"
-#include "Strings/Hacking/CodeEditor/RegisterEsi.h"
-#include "Strings/Hacking/CodeEditor/RegisterEsp.h"
-#include "Strings/Hacking/CodeEditor/RegisterR8.h"
-#include "Strings/Hacking/CodeEditor/RegisterR9.h"
-#include "Strings/Hacking/CodeEditor/RegisterR10.h"
-#include "Strings/Hacking/CodeEditor/RegisterR11.h"
-#include "Strings/Hacking/CodeEditor/RegisterR12.h"
-#include "Strings/Hacking/CodeEditor/RegisterR13.h"
-#include "Strings/Hacking/CodeEditor/RegisterR14.h"
-#include "Strings/Hacking/CodeEditor/RegisterR15.h"
-#include "Strings/Hacking/CodeEditor/RegisterRax.h"
-#include "Strings/Hacking/CodeEditor/RegisterRbp.h"
-#include "Strings/Hacking/CodeEditor/RegisterRbx.h"
-#include "Strings/Hacking/CodeEditor/RegisterRcx.h"
-#include "Strings/Hacking/CodeEditor/RegisterRdi.h"
-#include "Strings/Hacking/CodeEditor/RegisterRdx.h"
-#include "Strings/Hacking/CodeEditor/RegisterRip.h"
-#include "Strings/Hacking/CodeEditor/RegisterRsi.h"
-#include "Strings/Hacking/CodeEditor/RegisterRsp.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt0.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt1.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt2.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt3.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt4.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt5.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt6.h"
-#include "Strings/Hacking/CodeEditor/RegisterSt7.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm0.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm1.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm2.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm3.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm4.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm5.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm6.h"
-#include "Strings/Hacking/CodeEditor/RegisterXmm7.h"
-#include "Strings/Hacking/CodeEditor/Status.h"
-#include "Strings/Hacking/CodeEditor/StatusHeader.h"
-#include "Strings/Hacking/CodeEditor/UnfilledBytes.h"
-#include "Strings/Hacking/CodeEditor/Unknown.h"
-#include "Strings/Hacking/Lexicon/Lexicon.h"
+#include "Strings/Menus/Hacking/CodeEditor/Address.h"
+#include "Strings/Menus/Hacking/CodeEditor/AllocationEditor.h"
+#include "Strings/Menus/Hacking/CodeEditor/Assembler.h"
+#include "Strings/Menus/Hacking/CodeEditor/ByteCount.h"
+#include "Strings/Menus/Hacking/CodeEditor/ByteOverflow.h"
+#include "Strings/Menus/Hacking/CodeEditor/Bytes.h"
+#include "Strings/Menus/Hacking/CodeEditor/ClickToEdit.h"
+#include "Strings/Menus/Hacking/CodeEditor/CodeEditor.h"
+#include "Strings/Menus/Hacking/CodeEditor/CompileErrors.h"
+#include "Strings/Menus/Hacking/CodeEditor/CompileSuccessful.h"
+#include "Strings/Menus/Hacking/CodeEditor/Error.h"
+#include "Strings/Menus/Hacking/CodeEditor/FunctionHeader.h"
+#include "Strings/Menus/Hacking/CodeEditor/LineNumber.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEax.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEbp.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEbx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEcx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEdi.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEdx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEip.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEsi.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterEsp.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR8.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR9.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR10.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR11.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR12.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR13.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR14.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterR15.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRax.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRbp.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRbx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRcx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRdi.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRdx.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRip.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRsi.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterRsp.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt0.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt1.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt2.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt3.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt4.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt5.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt6.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterSt7.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm0.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm1.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm2.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm3.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm4.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm5.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm6.h"
+#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm7.h"
+#include "Strings/Menus/Hacking/CodeEditor/Status.h"
+#include "Strings/Menus/Hacking/CodeEditor/StatusHeader.h"
+#include "Strings/Menus/Hacking/CodeEditor/UnfilledBytes.h"
+#include "Strings/Menus/Hacking/CodeEditor/Unknown.h"
+#include "Strings/Menus/Hacking/Lexicon/Lexicon.h"
 #include "Strings/Menus/ApplyChanges.h"
 #include "Strings/Menus/Cancel.h"
 
@@ -130,7 +130,7 @@ CodeEditor::CodeEditor()
 	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->registerWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
 	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_CodeEditor_FunctionHeader::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_CodeEditor_FunctionHeader::create());
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
 	LocalizedLabel*	acceptLabelHover = acceptLabel->clone();
@@ -178,7 +178,7 @@ CodeEditor::CodeEditor()
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->applyChangesButtonGrayed->addChild(acceptGray);
 
-	LocalizedLabel*	lexiconLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Lexicon_Lexicon::create());
+	LocalizedLabel*	lexiconLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Lexicon::create());
 	LocalizedLabel*	lexiconLabelSelected = lexiconLabel->clone();
 
 	lexiconLabel->enableOutline(Color4B::BLACK, 2);
@@ -401,135 +401,135 @@ void CodeEditor::buildRegisterWindow()
 			default:
 			case HackableCode::Register::zax:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEax::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRax::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEax::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRax::create()));
 			}
 			case HackableCode::Register::zbx:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbx::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEbx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRbx::create()));
 			}
 			case HackableCode::Register::zcx:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEcx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRcx::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEcx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRcx::create()));
 			}
 			case HackableCode::Register::zdx:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdx::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdx::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEdx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRdx::create()));
 			}
 			case HackableCode::Register::zdi:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEdi::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRdi::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEdi::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRdi::create()));
 			}
 			case HackableCode::Register::zsi:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsi::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsi::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEsi::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRsi::create()));
 			}
 			case HackableCode::Register::zbp:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEbp::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRbp::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEbp::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRbp::create()));
 			}
 			case HackableCode::Register::zsp:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEsp::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRsp::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEsp::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRsp::create()));
 			}
 			case HackableCode::Register::zip:
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Hacking_CodeEditor_RegisterEip::create() : (LocalizedString*)Strings::Hacking_CodeEditor_RegisterRip::create()));
+				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEip::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRip::create()));
 			}
 			case HackableCode::Register::r8:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR8::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR8::create();
 			}
 			case HackableCode::Register::r9:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR9::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR9::create();
 			}
 			case HackableCode::Register::r10:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR10::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR10::create();
 			}
 			case HackableCode::Register::r11:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR11::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR11::create();
 			}
 			case HackableCode::Register::r12:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR12::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR12::create();
 			}
 			case HackableCode::Register::r13:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR13::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR13::create();
 			}
 			case HackableCode::Register::r14:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR14::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR14::create();
 			}
 			case HackableCode::Register::r15:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterR15::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR15::create();
 			}
 			case HackableCode::Register::st0:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt0::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt0::create();
 			}
 			case HackableCode::Register::st1:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt1::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt1::create();
 			}
 			case HackableCode::Register::st2:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt2::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt2::create();
 			}
 			case HackableCode::Register::st3:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt3::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt3::create();
 			}
 			case HackableCode::Register::st4:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt4::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt4::create();
 			}
 			case HackableCode::Register::st5:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt5::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt5::create();
 			}
 			case HackableCode::Register::st6:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt6::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt6::create();
 			}
 			case HackableCode::Register::st7:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterSt7::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt7::create();
 			}
 			case HackableCode::Register::xmm0:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm0::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm0::create();
 			}
 			case HackableCode::Register::xmm1:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm1::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm1::create();
 			}
 			case HackableCode::Register::xmm2:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm2::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm2::create();
 			}
 			case HackableCode::Register::xmm3:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm3::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm3::create();
 			}
 			case HackableCode::Register::xmm4:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm4::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm4::create();
 			}
 			case HackableCode::Register::xmm5:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm5::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm5::create();
 			}
 			case HackableCode::Register::xmm6:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm6::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm6::create();
 			}
 			case HackableCode::Register::xmm7:
 			{
-				return (LocalizedString*)Strings::Hacking_CodeEditor_RegisterXmm7::create();
+				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm7::create();
 			}
 		}
 	});
@@ -615,17 +615,17 @@ void CodeEditor::compile(std::string assemblyText)
 			ConstantString::create(std::to_string(this->activeHackableCode->getOriginalLength()))
 		});
 
-		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
+		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Status::create());
 		statusLabel->setTextColor(CodeEditor::HeaderColor);
 
-		LocalizedLabel* compileSuccessfulLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileSuccessful::create());
+		LocalizedLabel* compileSuccessfulLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CompileSuccessful::create());
 
-		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Address::create());
+		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Address::create());
 		addressLabel->setTextColor(CodeEditor::HeaderColor);
 
 		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getPointer(), true, true)));
 		
-		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteCount::create());
+		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_ByteCount::create());
 		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
 
 		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
@@ -652,7 +652,7 @@ void CodeEditor::compile(std::string assemblyText)
 		{
 			if (isByteOverflow)
 			{
-				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_ByteOverflow::create());
+				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_ByteOverflow::create());
 				
 				byteOverflowLabel->setTextColor(CodeEditor::ErrorColor);
 
@@ -660,7 +660,7 @@ void CodeEditor::compile(std::string assemblyText)
 			}
 			else
 			{
-				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_UnfilledBytes::create());
+				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_UnfilledBytes::create());
 				
 				byteOverflowLabel->setTextColor(CodeEditor::SubtextColor);
 
@@ -668,7 +668,7 @@ void CodeEditor::compile(std::string assemblyText)
 			}
 		}
 
-		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Bytes::create());
+		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Bytes::create());
 		
 		bytesLabel->setTextColor(CodeEditor::HeaderColor);
 
@@ -689,19 +689,19 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 	else
 	{
-		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Status::create());
+		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Status::create());
 		
 		statusLabel->setTextColor(CodeEditor::HeaderColor);
 
 		this->statusWindow->insert(statusLabel);
 
-		LocalizedLabel* compileErrorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_CompileErrors::create());
+		LocalizedLabel* compileErrorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CompileErrors::create());
 		
 		compileErrorsLabel->setTextColor(CodeEditor::ErrorColor);
 
 		this->statusWindow->insert(compileErrorsLabel);
 
-		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_Error::create());
+		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Error::create());
 		
 		errorLabel->setTextColor(CodeEditor::HeaderColor);
 
@@ -711,7 +711,7 @@ void CodeEditor::compile(std::string assemblyText)
 		
 		this->statusWindow->insert(errorMessageLabel);
 
-		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_CodeEditor_LineNumber::create());
+		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_LineNumber::create());
 		
 		lineNumberLabel->setTextColor(CodeEditor::HeaderColor);
 

@@ -13,6 +13,7 @@ namespace cocos2d
 class CodeEditor;
 class ConfirmationMenu;
 class DeveloperHud;
+class DialogueScroll;
 class IngameMenu;
 class Hud;
 class LayerDeserializer;
@@ -64,6 +65,7 @@ private:
 
 	Hud* hackerModeGlow;
 	MatrixRain* hackerModeRain;
+	DialogueScroll* dialogueScroll;
 	CodeEditor* codeEditor;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;

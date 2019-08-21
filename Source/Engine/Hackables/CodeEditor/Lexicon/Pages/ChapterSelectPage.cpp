@@ -9,12 +9,12 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/ChapterSelect/ChooseAChapter.h"
-#include "Strings/Hacking/Lexicon/Pages/Binary/Title.h"
-#include "Strings/Hacking/Lexicon/Pages/ControlFlow/Title.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Title.h"
-#include "Strings/Hacking/Lexicon/Pages/FloatingPoint/Title.h"
-#include "Strings/Hacking/Lexicon/Pages/Vector/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAChapter.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Binary/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/ControlFlow/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/FloatingPoint/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Vector/Title.h"
 
 using namespace cocos2d;
 
@@ -33,16 +33,16 @@ ChapterSelectPage::ChapterSelectPage() : super(ChapterSelectPage::Identifier, Pa
 {
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
-	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ChapterSelect_ChooseAChapter::create());
-	LocalizedLabel* dataLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Pages_Data_Title::create());
+	this->chapterSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAChapter::create());
+	LocalizedLabel* dataLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Pages_Data_Title::create());
 	LocalizedLabel* dataLabelSelected = dataLabel->clone();
-	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Pages_Binary_Title::create());
+	LocalizedLabel* binaryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Pages_Binary_Title::create());
 	LocalizedLabel* binaryLabelSelected = binaryLabel->clone();
-	LocalizedLabel* controlFlowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Pages_ControlFlow_Title::create());
+	LocalizedLabel* controlFlowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Pages_ControlFlow_Title::create());
 	LocalizedLabel* controlFlowLabelSelected = controlFlowLabel->clone();
-	LocalizedLabel* vectorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Pages_Vector_Title::create());
+	LocalizedLabel* vectorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Pages_Vector_Title::create());
 	LocalizedLabel* vectorLabelSelected = vectorLabel->clone();
-	LocalizedLabel* floatingPointLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Pages_FloatingPoint_Title::create());
+	LocalizedLabel* floatingPointLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Pages_FloatingPoint_Title::create());
 	LocalizedLabel* floatingPointSelected = floatingPointLabel->clone();
 
 	this->dataChapterButton = ClickableTextNode::create(dataLabel,dataLabelSelected, UIResources::Menus_LexiconMenu_ChapterMarker, UIResources::Menus_LexiconMenu_ChapterMarkerSelected);

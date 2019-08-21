@@ -9,7 +9,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hacking/ClippyHelp/IsAliveRetVal.h"
+#include "Strings/Menus/Hacking/ClippyHelp/IsAliveRetVal.h"
 
 using namespace cocos2d;
 
@@ -46,6 +46,6 @@ void IsAliveClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Hacking_ClippyHelp_IsAliveRetVal::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create());
 	this->droidChatterSound->play();
 }

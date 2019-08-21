@@ -12,27 +12,27 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Assembly/Mov.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEax.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEbx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEcx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEdx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEdi.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEsi.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEbp.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEsp.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRax.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRbx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRcx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRdx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRdi.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRsi.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRsp.h"
-#include "Strings/Hacking/Lexicon/Examples.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Mov.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/PointerHelp.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp4.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/Mov.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEax.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEsi.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEbp.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEsp.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRax.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRbx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRsi.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRsp.h"
+#include "Strings/Menus/Hacking/Lexicon/Examples.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mov.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/PointerHelp.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp4.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
 
 using namespace cocos2d;
 
@@ -49,7 +49,7 @@ MovExamplesPage* MovExamplesPage::create()
 
 MovExamplesPage::MovExamplesPage() : super(MovExamplesPage::Identifier, PageType::Right)
 {
-	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Examples::create());
+	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Examples::create());
 	this->registerBlock = RegisterBlock::create();
 	this->resetButton = this->buildResetButton();
 	this->movRegImmButton = this->buildExecuteButton();
@@ -62,79 +62,79 @@ MovExamplesPage::MovExamplesPage() : super(MovExamplesPage::Identifier, PageType
 	this->offsetHelp4Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->offsetHelp8Button = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	
-	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_PointerHelp::create();
+	LocalizedString* pointerHelpStr = Strings::Menus_Hacking_Lexicon_Pages_Data_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
-	this->textPanelOffsetHelp4 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp4::create());
-	this->textPanelOffsetHelp8 = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
+	this->textPanelOffsetHelp4 = TextPanel::create(Strings::Menus_Hacking_Lexicon_Pages_Data_OffsetHelp4::create());
+	this->textPanelOffsetHelp8 = TextPanel::create(Strings::Menus_Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
 
 	if (sizeof(void*) == 4)
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create());
 		
 		this->movRegImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterEbx::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
 			ConstantString::create(std::to_string(200))
 		);
 		this->movRegRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterEdx::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create()
 		);
 		this->movPtrImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEax::create()),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()),
 			ConstantString::create(std::to_string(10))
 		);
 		this->movPtrRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEsp::create()),
-			Strings::Hacking_Lexicon_Assembly_RegisterEdi::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create()),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdi::create()
 		);
 		this->movPtrOffsetImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 1),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 1),
 			ConstantString::create(std::to_string(100))
 		);
 		this->movPtrOffsetRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 2),
-			Strings::Hacking_Lexicon_Assembly_RegisterEsi::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsp::create(), sizeof(int) * 2),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()
 		);
 	}
 	else
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create());
 		
 		this->movRegImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterRbx::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
 			ConstantString::create(std::to_string(200))
 		);
 		this->movRegRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterRcx::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterRdx::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create()
 		);
 		this->movPtrImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRax::create()),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()),
 			ConstantString::create(std::to_string(10))
 		);
 		this->movPtrRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRsp::create()),
-			Strings::Hacking_Lexicon_Assembly_RegisterRdi::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create()),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdi::create()
 		);
 		this->movPtrOffsetImmLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 1),
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 1),
 			ConstantString::create(std::to_string(100))
 		);
 		this->movPtrOffsetRegLabel = this->createInstructionLabelDouble(
-			Strings::Hacking_Lexicon_Assembly_Mov::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 2),
-			Strings::Hacking_Lexicon_Assembly_RegisterRsi::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Mov::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsp::create(), sizeof(int) * 2),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create()
 		);
 	}
 

@@ -24,6 +24,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Developer/DeveloperMenu.h"
 #include "Strings/Menus/Exit.h"
 #include "Strings/Menus/Minigames.h"
 #include "Strings/Menus/Options/Options.h"
@@ -64,16 +65,19 @@ TitleScreen::TitleScreen()
 	Color4B glowColor = Color4B::ORANGE;
 
 	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
-	LocalizedLabel*	storyModeLabelHover = storyModeLabel->clone();
+	LocalizedLabel*	storyModeLabelSelected = storyModeLabel->clone();
 
 	LocalizedLabel*	minigamesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
-	LocalizedLabel*	minigamesLabelHover = minigamesLabel->clone();
+	LocalizedLabel*	minigamesLabelSelected = minigamesLabel->clone();
 
 	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
-	LocalizedLabel*	optionsLabelHover = optionsLabel->clone();
+	LocalizedLabel*	optionsLabelSelected = optionsLabel->clone();
 
 	LocalizedLabel*	exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create());
-	LocalizedLabel*	exitLabelHover = exitLabel->clone();
+	LocalizedLabel*	exitLabelSelected = exitLabel->clone();
+
+	LocalizedLabel*	debugLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Developer_DeveloperMenu::create());
+	LocalizedLabel*	debugLabelSelected = debugLabel->clone();
 
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
@@ -87,45 +91,55 @@ TitleScreen::TitleScreen()
 	exitLabel->setColor(textColor);
 	exitLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	exitLabel->enableGlow(shadowColor);
+	debugLabel->setColor(textColor);
+	debugLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
+	debugLabel->enableGlow(shadowColor);
 
-	storyModeLabelHover->setColor(highlightColor);
-	storyModeLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	storyModeLabelHover->enableGlow(glowColor);
-	minigamesLabelHover->setColor(highlightColor);
-	minigamesLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	minigamesLabelHover->enableGlow(glowColor);
-	optionsLabelHover->setColor(highlightColor);
-	optionsLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabelHover->enableGlow(glowColor);
-	exitLabelHover->setColor(highlightColor);
-	exitLabelHover->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabelHover->enableGlow(glowColor);
+	storyModeLabelSelected->setColor(highlightColor);
+	storyModeLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
+	storyModeLabelSelected->enableGlow(glowColor);
+	minigamesLabelSelected->setColor(highlightColor);
+	minigamesLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
+	minigamesLabelSelected->enableGlow(glowColor);
+	optionsLabelSelected->setColor(highlightColor);
+	optionsLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
+	optionsLabelSelected->enableGlow(glowColor);
+	exitLabelSelected->setColor(highlightColor);
+	exitLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
+	exitLabelSelected->enableGlow(glowColor);
+	debugLabelSelected->setColor(highlightColor);
+	debugLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
+	debugLabelSelected->enableGlow(glowColor);
 
 	this->storyModeButton = ClickableTextNode::create(
 		storyModeLabel,
-		storyModeLabelHover,
+		storyModeLabelSelected,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->minigamesButton = ClickableTextNode::create(
 		minigamesLabel,
-		minigamesLabelHover,
+		minigamesLabelSelected,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->optionsButton = ClickableTextNode::create(
 		optionsLabel,
-		optionsLabelHover,
+		optionsLabelSelected,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->exitButton = ClickableTextNode::create(
 		exitLabel,
-		exitLabelHover,
+		exitLabelSelected,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
-	this->debugButton = ClickableNode::create(UIResources::Menus_Icons_AlchemyBrew, UIResources::Menus_Icons_AlchemyBrew);
+	this->debugButton = ClickableTextNode::create(
+		debugLabel,
+		debugLabelSelected,
+		UIResources::Menus_TitleScreen_TitleButton,
+		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->ether = Sprite::create(UIResources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();
@@ -183,6 +197,7 @@ void TitleScreen::onEnter()
 	GameUtils::fadeInObject(this->minigamesButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
+	GameUtils::fadeInObject(this->debugButton, delay, duration);
 
 	this->scheduleUpdate();
 }
@@ -202,7 +217,7 @@ void TitleScreen::initializePositions()
 	this->minigamesButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f + 144.0f));
 	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 0.0f));
 	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 256.0f));
-	this->debugButton->setPosition(Vec2(visibleSize.width - 128.0f, 64.0f));
+	this->debugButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 256.0f - 144.0f));
 }
 
 void TitleScreen::initializeListeners()

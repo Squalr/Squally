@@ -9,17 +9,17 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Add.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Dec.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Div.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Mov.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Mul.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Neg.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Pop.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Push.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Sub.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Add.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Dec.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Div.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mov.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mul.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Neg.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Pop.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Push.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Sub.h"
 
 using namespace cocos2d;
 
@@ -38,17 +38,17 @@ DataSelectPage::DataSelectPage() : super(DataSelectPage::Identifier, PageType::R
 {
 	this->decorLine = Sprite::create(UIResources::Menus_LexiconMenu_DecorLine);
 
-	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
-	this->incOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Inc::create(), IncPage::Identifier, IncExamplesPage::Identifier);
-	this->decOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Dec::create(), DecPage::Identifier, DecExamplesPage::Identifier);
-	this->addOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Add::create(), AddPage::Identifier, AddExamplesPage::Identifier);
-	this->subOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Sub::create(), SubPage::Identifier, SubExamplesPage::Identifier);
-	this->divOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Div::create(), DivPage::Identifier, DivExamplesPage::Identifier);
-	this->mulOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Mul::create(), MulPage::Identifier, MulExamplesPage::Identifier);
-	this->movOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Mov::create(), MovPage::Identifier, MovExamplesPage::Identifier);
-	this->pushOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Push::create(), PushPage::Identifier, PushExamplesPage::Identifier);
-	this->popOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Pop::create(), PopPage::Identifier, PopExamplesPage::Identifier);
-	this->negOperationButton = this->buildInstructionLabel(Strings::Hacking_Lexicon_Instructions_Data_Neg::create(), NegPage::Identifier, NegExamplesPage::Identifier);
+	this->operationSelectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation::create());
+	this->incOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Inc::create(), IncPage::Identifier, IncExamplesPage::Identifier);
+	this->decOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Dec::create(), DecPage::Identifier, DecExamplesPage::Identifier);
+	this->addOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Add::create(), AddPage::Identifier, AddExamplesPage::Identifier);
+	this->subOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Sub::create(), SubPage::Identifier, SubExamplesPage::Identifier);
+	this->divOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Div::create(), DivPage::Identifier, DivExamplesPage::Identifier);
+	this->mulOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Mul::create(), MulPage::Identifier, MulExamplesPage::Identifier);
+	this->movOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Mov::create(), MovPage::Identifier, MovExamplesPage::Identifier);
+	this->pushOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Push::create(), PushPage::Identifier, PushExamplesPage::Identifier);
+	this->popOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Pop::create(), PopPage::Identifier, PopExamplesPage::Identifier);
+	this->negOperationButton = this->buildInstructionLabel(Strings::Menus_Hacking_Lexicon_Instructions_Data_Neg::create(), NegPage::Identifier, NegExamplesPage::Identifier);
 	
 	this->operationSelectLabel->setTextColor(super::TextColor);
 

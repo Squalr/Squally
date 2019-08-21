@@ -11,17 +11,17 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Assembly/Inc.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEax.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEcx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterEdi.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRax.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRcx.h"
-#include "Strings/Hacking/Lexicon/Assembly/RegisterRdi.h"
-#include "Strings/Hacking/Lexicon/Examples.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Inc/PointerHelp.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/Inc.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEax.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRax.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRcx.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdi.h"
+#include "Strings/Menus/Hacking/Lexicon/Examples.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Inc/PointerHelp.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
 
 using namespace cocos2d;
 
@@ -38,7 +38,7 @@ IncExamplesPage* IncExamplesPage::create()
 
 IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType::Right)
 {
-	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Examples::create());
+	this->examplesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Examples::create());
 	this->registerBlock = RegisterBlock::create();
 	this->resetButton = this->buildResetButton();
 	this->incButton = this->buildExecuteButton();
@@ -46,42 +46,42 @@ IncExamplesPage::IncExamplesPage() : super(IncExamplesPage::Identifier, PageType
 	this->incPtrOffsetButton = this->buildExecuteButton();
 	this->pointerHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
 	this->offsetHelpButton = ClickableNode::create(UIResources::Menus_LexiconMenu_HelpButton, UIResources::Menus_LexiconMenu_HelpButtonSelected);
-	LocalizedString* pointerHelpStr = Strings::Hacking_Lexicon_Pages_Data_Inc_PointerHelp::create();
+	LocalizedString* pointerHelpStr = Strings::Menus_Hacking_Lexicon_Pages_Data_Inc_PointerHelp::create();
 	this->textPanelPointerHelp = TextPanel::create(pointerHelpStr);
-	this->textPanelOffsetHelp = TextPanel::create(Strings::Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
+	this->textPanelOffsetHelp = TextPanel::create(Strings::Menus_Hacking_Lexicon_Pages_Data_OffsetHelp8::create());
 
 	if (sizeof(void*) == 4)
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterEax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create());
 
 		this->incLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterEcx::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()
 		);
 		this->incPtrLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterEax::create())
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
 		);
 		this->incPtrOffsetLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterEdi::create(), sizeof(int) * 2)
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdi::create(), sizeof(int) * 2)
 		);
 	}
 	else
 	{
-		pointerHelpStr->setStringReplacementVariables(Strings::Hacking_Lexicon_Assembly_RegisterRax::create());
+		pointerHelpStr->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create());
 
 		this->incLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			Strings::Hacking_Lexicon_Assembly_RegisterRcx::create()
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()
 		);
 		this->incPtrLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			this->pointerizeString(Strings::Hacking_Lexicon_Assembly_RegisterRax::create())
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			this->pointerizeString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
 		);
 		this->incPtrOffsetLabel = this->createInstructionLabelSingle(
-			Strings::Hacking_Lexicon_Assembly_Inc::create(),
-			this->offsetString(Strings::Hacking_Lexicon_Assembly_RegisterRdi::create(), sizeof(int) * 2)
+			Strings::Menus_Hacking_Lexicon_Assembly_Inc::create(),
+			this->offsetString(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdi::create(), sizeof(int) * 2)
 		);
 	}
 

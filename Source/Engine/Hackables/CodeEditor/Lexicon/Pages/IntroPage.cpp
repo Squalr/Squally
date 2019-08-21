@@ -8,8 +8,8 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Pages/Intro/Intro.h"
-#include "Strings/Hacking/Lexicon/Pages/Intro/Title.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Intro/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Intro/Title.h"
 
 using namespace cocos2d;
 
@@ -28,11 +28,11 @@ IntroPage::IntroPage() : super(IntroPage::Identifier, PageType::Left)
 {
 	this->ratSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Rat); 
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Hacking_Lexicon_Pages_Intro_Title::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_Lexicon_Pages_Intro_Title::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Intro_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Intro_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

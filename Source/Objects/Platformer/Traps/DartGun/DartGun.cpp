@@ -18,7 +18,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Dart.h"
@@ -103,7 +103,7 @@ void DartGun::registerHackables()
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
 				DartGun::MapKeyDartGun,
-				Strings::Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{

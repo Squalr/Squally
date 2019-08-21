@@ -13,11 +13,11 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Assembly/OffsetNegative.h"
-#include "Strings/Hacking/Lexicon/Assembly/OffsetPositive.h"
-#include "Strings/Hacking/Lexicon/Assembly/Ptr.h"
-#include "Strings/Hacking/Lexicon/Execute.h"
-#include "Strings/Hacking/Lexicon/Reset.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/OffsetNegative.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/OffsetPositive.h"
+#include "Strings/Menus/Hacking/Lexicon/Assembly/Ptr.h"
+#include "Strings/Menus/Hacking/Lexicon/Execute.h"
+#include "Strings/Menus/Hacking/Lexicon/Reset.h"
 
 using namespace cocos2d;
 
@@ -232,7 +232,7 @@ ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructi
 
 LocalizedString* LexiconPage::pointerizeString(LocalizedString* memRegString)
 {
-    LocalizedString* pointerizedString = Strings::Hacking_Lexicon_Assembly_Ptr::create();
+    LocalizedString* pointerizedString = Strings::Menus_Hacking_Lexicon_Assembly_Ptr::create();
 
     pointerizedString->setStringReplacementVariables(memRegString);
 
@@ -243,7 +243,7 @@ LocalizedString* LexiconPage::offsetString(LocalizedString* memRegString, int of
 {
     if (offset > 0)
     {
-        LocalizedString* offsetString = Strings::Hacking_Lexicon_Assembly_OffsetPositive::create();
+        LocalizedString* offsetString = Strings::Menus_Hacking_Lexicon_Assembly_OffsetPositive::create();
 
         offsetString->setStringReplacementVariables({ memRegString, ConstantString::create(std::to_string(offset)) });
 
@@ -251,7 +251,7 @@ LocalizedString* LexiconPage::offsetString(LocalizedString* memRegString, int of
     }
     else if (offset < 0)
     {
-        LocalizedString* offsetString = Strings::Hacking_Lexicon_Assembly_OffsetNegative::create();
+        LocalizedString* offsetString = Strings::Menus_Hacking_Lexicon_Assembly_OffsetNegative::create();
 
         offsetString->setStringReplacementVariables({ memRegString, ConstantString::create(std::to_string(std::abs(offset))) });
 
@@ -289,7 +289,7 @@ LocalizedLabel* LexiconPage::createInstructionLabelDouble(LocalizedString* instr
     
 ClickableTextNode* LexiconPage::buildExecuteButton()
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Execute::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Execute::create());
 	LocalizedLabel* labelSelected = label->clone();
 
 	ClickableTextNode* button = ClickableTextNode::create(label, labelSelected, UIResources::Menus_LexiconMenu_ExecuteButton, UIResources::Menus_LexiconMenu_ExecuteButtonSelected);
@@ -302,7 +302,7 @@ ClickableTextNode* LexiconPage::buildExecuteButton()
 
 ClickableTextNode* LexiconPage::buildResetButton()
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hacking_Lexicon_Reset::create());
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_Lexicon_Reset::create());
 	LocalizedLabel* labelSelected = label->clone();
 
 	ClickableTextNode* button = ClickableTextNode::create(label, labelSelected, UIResources::Menus_LexiconMenu_ResetButton, UIResources::Menus_LexiconMenu_ResetButtonSelected);

@@ -14,7 +14,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Stack.h"
+#include "Strings/Menus/Hacking/Lexicon/Stack.h"
 
 using namespace cocos2d;
 
@@ -35,7 +35,7 @@ StackBlock::StackBlock()
 	this->labels = std::vector<LocalizedLabel*>();
     this->stackBlock = Sprite::create(UIResources::Menus_LexiconMenu_StackBlock);
     this->stackSelector = Sprite::create(UIResources::Menus_LexiconMenu_StackSelector);
-    this->stackTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hacking_Lexicon_Stack::create());
+    this->stackTitleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_Lexicon_Stack::create());
     
     for (int index = 0; index < StackBlock::StackSize; index++)
     {

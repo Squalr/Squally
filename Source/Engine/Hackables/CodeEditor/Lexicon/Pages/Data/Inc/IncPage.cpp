@@ -10,9 +10,9 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Lexicon/Examples.h"
-#include "Strings/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Hacking/Lexicon/Pages/Data/Inc/Intro.h"
+#include "Strings/Menus/Hacking/Lexicon/Examples.h"
+#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
+#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Inc/Intro.h"
 
 using namespace cocos2d;
 
@@ -31,11 +31,11 @@ IncPage::IncPage() : super(IncPage::Identifier, PageType::Left)
 {
 	this->decorSprite = Sprite::create(UIResources::Menus_LexiconMenu_BookArt_Bird);
 	this->chapterSprite = Sprite::create(UIResources::Menus_LexiconMenu_Chapter);
-	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Hacking_Lexicon_Instructions_Data_Inc::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H2, Strings::Menus_Hacking_Lexicon_Instructions_Data_Inc::create());
 	this->introText = LocalizedLabel::create(
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
-		Strings::Hacking_Lexicon_Pages_Data_Inc_Intro::create(),
+		Strings::Menus_Hacking_Lexicon_Pages_Data_Inc_Intro::create(),
 		Size(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 

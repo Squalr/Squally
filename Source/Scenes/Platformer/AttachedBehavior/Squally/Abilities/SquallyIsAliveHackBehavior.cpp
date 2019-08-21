@@ -19,7 +19,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Entities/Squally/IsAlive/IsAlive.h"
+#include "Strings/Menus/Hacking/Entities/Squally/IsAlive/IsAlive.h"
 
 using namespace cocos2d;
 
@@ -91,7 +91,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 			LOCAL_FUNC_ID_IS_ALIVE,
 			HackableCode::LateBindData(
 				SquallyIsAliveHackBehavior::IdentifierIsAlive,
-				Strings::Hacking_Entities_Squally_IsAlive_IsAlive::create(),
+				Strings::Menus_Hacking_Entities_Squally_IsAlive_IsAlive::create(),
 				UIResources::Menus_Icons_Heart,
 				EntityPreview::create(this->squally),
 				{

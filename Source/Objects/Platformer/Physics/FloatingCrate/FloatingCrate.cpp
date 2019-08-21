@@ -20,10 +20,10 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/GetDensity.h"
-#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterEax.h"
-#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm0.h"
-#include "Strings/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm1.h"
+#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/GetDensity.h"
+#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm0.h"
+#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm1.h"
 
 using namespace cocos2d;
 
@@ -90,13 +90,13 @@ void FloatingCrate::registerHackables()
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::LateBindData(
 				FloatingCrate::MapKeyFloatingCrate,
-				Strings::Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
+				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingCrateGetDensityPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
 				1,
 				10.0f
