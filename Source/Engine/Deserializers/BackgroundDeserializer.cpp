@@ -51,7 +51,7 @@ void BackgroundDeserializer::deserialize(LayerDeserializer::LayerDeserialization
 	std::string background = properties.at(BackgroundDeserializer::MapKeyBackgroundLayer).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Platformer/Backgrounds/" + background + ".png");
+	Sprite* sprite = Sprite::create("Private/Platformer/Backgrounds/" + background + ".png");
 
 	if (sprite == nullptr)
 	{

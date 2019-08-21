@@ -119,6 +119,15 @@ void MapBase::resume(void)
 	super::resume();
 }
 
+void MapBase::initializePositions()
+{
+	super::initializePositions();
+
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->dialogueScroll->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
+}
+
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();

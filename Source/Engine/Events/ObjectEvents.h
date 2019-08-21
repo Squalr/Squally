@@ -140,12 +140,29 @@ public:
 		unsigned long long watchId = WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
 
+		bool wasHandled = false;
+
+		// Do an immediate check for the object
+		ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
+		{
+			onObjectFound(object);
+			*handled = true;
+			wasHandled = true;
+		}));
+
+		if (wasHandled)
+		{
+			return;
+		}
+
+		// Schedule a task to watch for the object
 		host->schedule([=](float dt)
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object)
+			ObjectEvents::QueryObjects(QueryObjectsArgs<T>([&](T* object, bool* handled)
 			{
 				host->unschedule(eventKey);
 				onObjectFound(object);
+				*handled = true;
 			}));
 
 		}, 1.0f / 60.0f, 0, 0.0f, eventKey);

@@ -36,6 +36,7 @@ protected:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void resume() override;
+	void initializePositions() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable() override;
 	void onDeveloperModeDisable() override;

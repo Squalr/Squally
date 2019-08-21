@@ -1,7 +1,7 @@
 #include "FerryRepairsLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/EndianForest/Intro/MeetScrappy.h"
+#include "Scenes/Platformer/Quests/EndianForest/FerryRepairs/FindSail.h"
 
 using namespace cocos2d;
 
@@ -17,7 +17,7 @@ FerryRepairsLine* FerryRepairsLine::create()
 }
 
 FerryRepairsLine::FerryRepairsLine() : super(FerryRepairsLine::MapKeyQuestLine, {
-	QuestData(MeetScrappy::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return MeetScrappy::create(owner, questLine, questTag); }),
+	QuestData(FindSail::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return FindSail::create(owner, questLine, questTag); }),
 })
 {
 }
