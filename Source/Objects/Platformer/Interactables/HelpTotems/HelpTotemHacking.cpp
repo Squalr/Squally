@@ -9,6 +9,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Common/Brackets.h"
+#include "Strings/Input/Tab.h"
 #include "Strings/Platformer/Help/HelpTotemHacking.h"
 
 using namespace cocos2d;
@@ -26,7 +28,14 @@ HelpTotemHacking* HelpTotemHacking::create(ValueMap& properties)
 
 HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 {
-	this->setHint(Strings::Platformer_Help_HelpTotemHacking::create());
+	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemHacking::create();
+	LocalizedString* bracketString = Strings::Common_Brackets::create();
+	LocalizedString* tabString = Strings::Input_Tab::create();
+
+	bracketString->setStringReplacementVariables(tabString);
+	hintString->setStringReplacementVariables(bracketString);
+	
+	this->setHint(hintString);
 }
 
 HelpTotemHacking::~HelpTotemHacking()

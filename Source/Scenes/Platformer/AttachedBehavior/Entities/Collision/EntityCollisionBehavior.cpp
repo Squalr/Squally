@@ -31,6 +31,30 @@ EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner) : super(owne
 	{
 		this->invalidate();
 	}
+	else
+	{
+		CollisionType collisionType = CollisionType(PlatformerCollisionType::Enemy);
+
+		if (dynamic_cast<Squally*>(this->entity) != nullptr)
+		{
+			collisionType = CollisionType(PlatformerCollisionType::Player);
+		}
+		else if (dynamic_cast<PlatformerFriendly*>(this->entity) != nullptr)
+		{
+			collisionType = CollisionType(PlatformerCollisionType::FriendlyNpc);
+		}
+
+		this->entityCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f),
+			collisionType,
+			false,
+			false
+		);
+
+		this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
+
+		this->addChild(this->entityCollision);
+	}
 }
 
 EntityCollisionBehavior::~EntityCollisionBehavior()
@@ -39,25 +63,4 @@ EntityCollisionBehavior::~EntityCollisionBehavior()
 
 void EntityCollisionBehavior::onLoad()
 {
-	CollisionType collisionType = CollisionType(PlatformerCollisionType::Enemy);
-
-	if (dynamic_cast<Squally*>(this->entity) != nullptr)
-	{
-		collisionType = CollisionType(PlatformerCollisionType::Player);
-	}
-	else if (dynamic_cast<PlatformerFriendly*>(this->entity) != nullptr)
-	{
-		collisionType = CollisionType(PlatformerCollisionType::FriendlyNpc);
-	}
-
-	this->entityCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f),
-		collisionType,
-		false,
-		false
-	);
-
-	this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
-
-	this->addChild(this->entityCollision);
 }

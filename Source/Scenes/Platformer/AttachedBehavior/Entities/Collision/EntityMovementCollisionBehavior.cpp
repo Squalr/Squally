@@ -38,6 +38,27 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	{
 		this->invalidate();
 	}
+	else
+	{
+		CollisionType collisionType = CollisionType(PlatformerCollisionType::Movement);
+
+		if (dynamic_cast<Squally*>(this->entity) != nullptr)
+		{
+			collisionType = CollisionType(PlatformerCollisionType::PlayerMovement);
+		}
+
+		this->movementCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f),
+			collisionType,
+			true,
+			false
+		);
+
+		this->movementCollision->bindTo(this->entity);
+		this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
+
+		this->addChild(this->movementCollision);
+	}
 }
 
 EntityMovementCollisionBehavior::~EntityMovementCollisionBehavior()
@@ -77,25 +98,6 @@ bool EntityMovementCollisionBehavior::hasRightWallCollision()
 
 void EntityMovementCollisionBehavior::buildMovementCollision()
 {
-	CollisionType collisionType = CollisionType(PlatformerCollisionType::Movement);
-
-	if (dynamic_cast<Squally*>(this->entity) != nullptr)
-	{
-		collisionType = CollisionType(PlatformerCollisionType::PlayerMovement);
-	}
-
-	this->movementCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f),
-		collisionType,
-		true,
-		false
-	);
-
-	this->movementCollision->bindTo(this->entity);
-	this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
-
-	this->addChild(this->movementCollision);
-
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;

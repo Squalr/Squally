@@ -4,7 +4,7 @@
 namespace cocos2d
 {
 	class Node;
-};
+}
 
 class LocalizedString;
 

@@ -11,7 +11,6 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"
-#include "Engine/Dialogue/DialogueScroll.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Hackables/CodeEditor/CodeEditor.h"
@@ -21,6 +20,7 @@
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Dialogue/PlatformerDialogueBox.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -40,7 +40,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
-	this->dialogueScroll = DialogueScroll::create();
+	this->dialogueBox = PlatformerDialogueBox::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
@@ -68,7 +68,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
-	this->menuHud->addChild(this->dialogueScroll);
+	this->menuHud->addChild(this->dialogueBox);
 
 	if (allowHackerMode)
 	{
@@ -125,7 +125,7 @@ void MapBase::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->dialogueScroll->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
+	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 }
 
 void MapBase::initializeListeners()

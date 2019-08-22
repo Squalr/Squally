@@ -9,12 +9,12 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
-#include "Engine/Events/DialogueEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
@@ -37,7 +37,7 @@ TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine
 
 TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownExitBlocked::MapKeyQuest, questTag, false)
 {
-	this->chiron = dynamic_cast<Chiron*>(owner);
+	this->collisionObject = dynamic_cast<CollisionObject*>(owner);
 }
 
 TownExitBlocked::~TownExitBlocked()
@@ -50,22 +50,21 @@ void TownExitBlocked::onLoad(QuestState questState)
 
 void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 {
-	if (this->chiron == nullptr)
+	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
-		return;
-	}
+		this->chiron = chiron;
+		EntityCollisionBehavior* collisionBehavior = this->chiron->getAttachedBehavior<EntityCollisionBehavior>();
 
-	EntityCollisionBehavior* collisionBehavior = this->chiron->getAttachedBehavior<EntityCollisionBehavior>();
-
-	if (collisionBehavior != nullptr)
-	{
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+		if (collisionBehavior != nullptr)
 		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(Strings::Platformer_Quests_Intro_HackerMode::create()));
-			
-			return CollisionObject::CollisionResult::DoNothing;
-		});
-	}
+			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+			{
+				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(Strings::Platformer_Quests_Intro_HackerMode::create()));
+				
+				return CollisionObject::CollisionResult::DoNothing;
+			});
+		}
+	});
 }
 
 void TownExitBlocked::onComplete()

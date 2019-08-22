@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class CollisionObject;
 class Chiron;
 class QuestLine;
 
@@ -24,5 +25,6 @@ protected:
 private:
 	typedef QuestTask super;
 
+	CollisionObject* collisionObject;
 	Chiron* chiron;
 };

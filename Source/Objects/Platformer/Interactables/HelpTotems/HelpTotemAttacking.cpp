@@ -9,6 +9,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Common/Brackets.h"
+#include "Strings/Input/Spacebar.h"
 #include "Strings/Platformer/Help/HelpTotemAttacking.h"
 
 using namespace cocos2d;
@@ -26,7 +28,14 @@ HelpTotemAttacking* HelpTotemAttacking::create(ValueMap& properties)
 
 HelpTotemAttacking::HelpTotemAttacking(ValueMap& properties) : super(properties)
 {
-	this->setHint(Strings::Platformer_Help_HelpTotemAttacking::create());
+	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemAttacking::create();
+	LocalizedString* bracketString = Strings::Common_Brackets::create();
+	LocalizedString* spaceString = Strings::Input_Spacebar::create();
+
+	bracketString->setStringReplacementVariables(spaceString);
+	hintString->setStringReplacementVariables(bracketString);
+	
+	this->setHint(hintString);
 }
 
 HelpTotemAttacking::~HelpTotemAttacking()

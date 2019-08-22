@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringAr()
 	{
-		return "اضغط [Space] للهجوم.";
+		return "اضغط %s1 للهجوم.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringBg()
 	{
-		return "Натиснете [Space], за да атакувате.";
+		return "Натиснете %s1, за да атакувате.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringCs()
 	{
-		return "Stiskněte [Space] k útoku.";
+		return "Stiskněte %s1 k útoku.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringDa()
 	{
-		return "Tryk på [Space] for at angribe.";
+		return "Tryk på %s1 for at angribe.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringDe()
 	{
-		return "Drücke [Space], um anzugreifen.";
+		return "Drücke %s1, um anzugreifen.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringEl()
 	{
-		return "Πιέστε [Space] για επίθεση.";
+		return "Πιέστε %s1 για επίθεση.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringEn()
 	{
-		return "Press [Space] to attack.";
+		return "Press %s1 to attack.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringEs()
 	{
-		return "Presiona [Space] para atacar.";
+		return "Presiona %s1 para atacar.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringEs419()
 	{
-		return "Presiona [Space] para atacar.";
+		return "Presiona %s1 para atacar.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringFi()
 	{
-		return "Paina [Space] hyökätäksesi.";
+		return "Paina %s1 hyökätäksesi.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringFr()
 	{
-		return "Appuyez sur [Space] pour attaquer.";
+		return "Appuyez sur %s1 pour attaquer.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringHu()
 	{
-		return "A támadáshoz nyomja meg az [Space] gombot.";
+		return "A támadáshoz nyomja meg az %s1 gombot.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringIt()
 	{
-		return "Premi [Space] per attaccare.";
+		return "Premi %s1 per attaccare.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringJa()
 	{
-		return "[Space]を押して攻撃します。";
+		return "%s1を押して攻撃します。";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringKo()
 	{
-		return "[Space]를 눌러 공격하십시오.";
+		return "%s1를 눌러 공격하십시오.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringNl()
 	{
-		return "Druk op [Space] om aan te vallen.";
+		return "Druk op %s1 om aan te vallen.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringNo()
 	{
-		return "Trykk [Space] for å angripe.";
+		return "Trykk %s1 for å angripe.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringPl()
 	{
-		return "Naciśnij [Space], aby zaatakować.";
+		return "Naciśnij %s1, aby zaatakować.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringPt()
 	{
-		return "Pressione [Space] para atacar.";
+		return "Pressione %s1 para atacar.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringPtBr()
 	{
-		return "Pressione [Space] para atacar.";
+		return "Pressione %s1 para atacar.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringRo()
 	{
-		return "Apăsați [Space] pentru a ataca.";
+		return "Apăsați %s1 pentru a ataca.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringRu()
 	{
-		return "Нажмите [Space] для атаки.";
+		return "Нажмите %s1 для атаки.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringSv()
 	{
-		return "Tryck på [Space] för att attackera.";
+		return "Tryck på %s1 för att attackera.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringTh()
 	{
-		return "กด [Space] เพื่อโจมตี";
+		return "กด %s1 เพื่อโจมตี";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringTr()
 	{
-		return "Saldırmak için [Space] tuşuna basın.";
+		return "Saldırmak için %s1 tuşuna basın.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringUk()
 	{
-		return "Натисніть [Space] для атаки.";
+		return "Натисніть %s1 для атаки.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringVi()
 	{
-		return "Nhấn [Space] để tấn công.";
+		return "Nhấn %s1 để tấn công.";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringZhCn()
 	{
-		return "按[Space]进行攻击。";
+		return "按%s1进行攻击。";
 	}
 
 	std::string Platformer_Help_HelpTotemAttacking::getStringZhTw()
 	{
-		return "按[Space]進行攻擊。";
+		return "按%s1進行攻擊。";
 	}
 }

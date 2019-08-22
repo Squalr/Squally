@@ -74,6 +74,7 @@ GameObject::GameObject(const ValueMap& properties)
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
 	this->attachedBehaviorNode = Node::create();
+	this->setPosition(Vec2::ZERO);
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{

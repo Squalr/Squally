@@ -8,6 +8,8 @@
 #include "cocos/base/CCValue.h"
 
 #include "Deserializers/Deserializers.h"
+#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Maps/GameMap.h"
@@ -83,7 +85,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 			MusicDeserializer::create(),
 			PhysicsDeserializer::create(),
 			ObjectLayerDeserializer::create({
-				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create() },
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
 				{ PlatformerEntityDeserializer::MapKeyTypeEntity, this->platformerEntityDeserializer },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },

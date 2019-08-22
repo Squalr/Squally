@@ -10,27 +10,26 @@ namespace cocos2d
 class LocalizedLabel;
 class LocalizedString;
  
-class DialogueScroll : public SmartNode
+class DialogueBox : public SmartNode
 {
 public:
-	static DialogueScroll* create();
 
-	void runDialogue(LocalizedString* localizedString);
-	void hideDialogue();
-
-private:
+protected:
 	typedef SmartNode super;
-	DialogueScroll();
-	~DialogueScroll();
+	DialogueBox(float textWidth);
+	~DialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;
-
-	cocos2d::DrawNode* panel;
-	LocalizedLabel* text;
+	virtual void runDialogue(LocalizedString* localizedString);
+	virtual void hideDialogue();
 
 	static const cocos2d::Color4F PanelColor;
 	static const cocos2d::Color4F PanelEdgeColor;
 	static const cocos2d::Color4B PanelTextColor;
 	static const float PanelBorderSize;
+
+private:
+	cocos2d::DrawNode* panel;
+	LocalizedLabel* text;
 };

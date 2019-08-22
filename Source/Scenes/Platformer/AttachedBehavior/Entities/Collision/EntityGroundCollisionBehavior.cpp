@@ -34,6 +34,25 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	{
 		this->invalidate();
 	}
+	else
+	{
+		this->groundCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(
+				Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
+				1.0f,
+				EntityGroundCollisionBehavior::GroundCollisionRadius
+			),
+			(int)PlatformerCollisionType::GroundDetector,
+			false,
+			false
+		);
+
+		float offsetY = 0.0f;
+
+		this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
+		
+		this->addChild(this->groundCollision);
+	}
 }
 
 EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
@@ -42,23 +61,6 @@ EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
 
 void EntityGroundCollisionBehavior::onLoad()
 {
-	this->groundCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
-			1.0f,
-			EntityGroundCollisionBehavior::GroundCollisionRadius
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		false,
-		false
-	);
-
-	float offsetY = 0.0f;
-
-	this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
-	
-	this->addChild(this->groundCollision);
-
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		// Clear current animation

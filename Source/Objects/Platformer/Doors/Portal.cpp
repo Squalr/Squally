@@ -180,7 +180,7 @@ void Portal::loadMap()
 			CallFunc::create([=]()
 			{
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create("Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
+				PlatformerMap* map = PlatformerMap::create("Private/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
 				NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 			}),
 			nullptr

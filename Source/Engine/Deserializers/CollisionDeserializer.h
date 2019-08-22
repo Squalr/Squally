@@ -5,7 +5,7 @@
 class CollisionDeserializer : public ObjectDeserializer
 {
 public:
-	static CollisionDeserializer* create();
+	static CollisionDeserializer* create(std::vector<PropertyDeserializer*> propertyDeserializers = { });
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 
@@ -13,6 +13,6 @@ public:
 
 private:
 	typedef ObjectDeserializer super;
-	CollisionDeserializer();
+	CollisionDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers);
 	~CollisionDeserializer();
 };

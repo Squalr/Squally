@@ -1,5 +1,6 @@
 #include "CollisionDeserializer.h"
 
+#include "Engine/Deserializers/PropertyDeserializer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -7,16 +8,16 @@ using namespace cocos2d;
 
 const std::string CollisionDeserializer::MapKeyTypeCollision = "collision";
 
-CollisionDeserializer* CollisionDeserializer::create()
+CollisionDeserializer* CollisionDeserializer::create(std::vector<PropertyDeserializer*> propertyDeserializers)
 {
-	CollisionDeserializer* instance = new CollisionDeserializer();
+	CollisionDeserializer* instance = new CollisionDeserializer(propertyDeserializers);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollisionDeserializer::CollisionDeserializer() : super(CollisionObject::MapKeyTypeCollision)
+CollisionDeserializer::CollisionDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers) : super(CollisionObject::MapKeyTypeCollision, propertyDeserializers)
 {
 }
 
@@ -61,6 +62,16 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 	}
 
 	CollisionObject* collisionObject = CollisionObject::create(properties, physicsBody, name, false, false);
+
+	for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+	{
+		std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
+
+		if (!key.empty())
+		{
+			(*it)->deserializeProperties(collisionObject, properties);
+		}
+	}
 
 	// Fire an event indicating successful deserialization
 	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(collisionObject));

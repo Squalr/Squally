@@ -33,14 +33,17 @@ EntityWeaponCollisionBehavior* EntityWeaponCollisionBehavior::create(GameObject*
 EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+	this->weaponOffset = Vec2::ZERO;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
-	this->weaponOffset = Vec2::ZERO;
+	else
+	{
+		this->rebuildWeaponCollision();
+	}
 }
 
 EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
@@ -49,8 +52,6 @@ EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
 
 void EntityWeaponCollisionBehavior::onLoad()
 {
-	this->rebuildWeaponCollision();
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
 	{
 		this->rebuildWeaponCollision();
