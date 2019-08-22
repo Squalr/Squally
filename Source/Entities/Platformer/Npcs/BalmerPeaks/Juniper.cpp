@@ -44,7 +44,7 @@ Juniper::~Juniper()
 {
 }
 
-Vec2 Juniper::getAvatarFrameOffset()
+Vec2 Juniper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

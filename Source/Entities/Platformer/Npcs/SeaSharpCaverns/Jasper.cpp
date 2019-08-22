@@ -44,7 +44,7 @@ Jasper::~Jasper()
 {
 }
 
-Vec2 Jasper::getAvatarFrameOffset()
+Vec2 Jasper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

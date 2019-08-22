@@ -44,7 +44,7 @@ ForestGolem::~ForestGolem()
 {
 }
 
-Vec2 ForestGolem::getAvatarFrameOffset()
+Vec2 ForestGolem::getDialogueOffset()
 {
 	return Vec2(-32.0f, -144.0f);
 }

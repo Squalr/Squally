@@ -44,7 +44,7 @@ Viking::~Viking()
 {
 }
 
-Vec2 Viking::getAvatarFrameOffset()
+Vec2 Viking::getDialogueOffset()
 {
 	return Vec2(-32.0f, -144.0f);
 }

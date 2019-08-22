@@ -44,7 +44,7 @@ Azmus::~Azmus()
 {
 }
 
-Vec2 Azmus::getAvatarFrameOffset()
+Vec2 Azmus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

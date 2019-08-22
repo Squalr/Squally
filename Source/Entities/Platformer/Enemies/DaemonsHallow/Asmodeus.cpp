@@ -44,7 +44,7 @@ Asmodeus::~Asmodeus()
 {
 }
 
-Vec2 Asmodeus::getAvatarFrameOffset()
+Vec2 Asmodeus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

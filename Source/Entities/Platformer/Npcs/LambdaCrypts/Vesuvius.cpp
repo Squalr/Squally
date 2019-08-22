@@ -44,7 +44,7 @@ Vesuvius::~Vesuvius()
 {
 }
 
-Vec2 Vesuvius::getAvatarFrameOffset()
+Vec2 Vesuvius::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

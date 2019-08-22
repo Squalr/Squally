@@ -44,7 +44,7 @@ SkeletalArcher::~SkeletalArcher()
 {
 }
 
-Vec2 SkeletalArcher::getAvatarFrameOffset()
+Vec2 SkeletalArcher::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

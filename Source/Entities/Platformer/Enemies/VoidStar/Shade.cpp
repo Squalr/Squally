@@ -44,7 +44,7 @@ Shade::~Shade()
 {
 }
 
-Vec2 Shade::getAvatarFrameOffset()
+Vec2 Shade::getDialogueOffset()
 {
 	return Vec2(0.0f, -312.0f);
 }

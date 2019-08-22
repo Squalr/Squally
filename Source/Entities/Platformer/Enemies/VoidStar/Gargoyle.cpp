@@ -44,7 +44,7 @@ Gargoyle::~Gargoyle()
 {
 }
 
-Vec2 Gargoyle::getAvatarFrameOffset()
+Vec2 Gargoyle::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

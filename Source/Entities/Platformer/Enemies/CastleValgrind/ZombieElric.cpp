@@ -44,7 +44,7 @@ ZombieElric::~ZombieElric()
 {
 }
 
-Vec2 ZombieElric::getAvatarFrameOffset()
+Vec2 ZombieElric::getDialogueOffset()
 {
 	return Vec2(-16.0f, -112.0f);
 }

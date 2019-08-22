@@ -44,7 +44,7 @@ Alder::~Alder()
 {
 }
 
-Vec2 Alder::getAvatarFrameOffset()
+Vec2 Alder::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

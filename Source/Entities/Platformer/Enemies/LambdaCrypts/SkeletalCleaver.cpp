@@ -44,7 +44,7 @@ SkeletalCleaver::~SkeletalCleaver()
 {
 }
 
-Vec2 SkeletalCleaver::getAvatarFrameOffset()
+Vec2 SkeletalCleaver::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Cyclops::~Cyclops()
 {
 }
 
-Vec2 Cyclops::getAvatarFrameOffset()
+Vec2 Cyclops::getDialogueOffset()
 {
 	return Vec2(-32.0f, -196.0f);
 }

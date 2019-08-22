@@ -44,7 +44,7 @@ Illia::~Illia()
 {
 }
 
-Vec2 Illia::getAvatarFrameOffset()
+Vec2 Illia::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

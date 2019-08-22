@@ -44,7 +44,7 @@ DemonSwordsman::~DemonSwordsman()
 {
 }
 
-Vec2 DemonSwordsman::getAvatarFrameOffset()
+Vec2 DemonSwordsman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

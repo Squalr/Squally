@@ -44,7 +44,7 @@ Kringle::~Kringle()
 {
 }
 
-Vec2 Kringle::getAvatarFrameOffset()
+Vec2 Kringle::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

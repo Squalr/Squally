@@ -44,7 +44,7 @@ Yeti::~Yeti()
 {
 }
 
-Vec2 Yeti::getAvatarFrameOffset()
+Vec2 Yeti::getDialogueOffset()
 {
 	return Vec2(-64.0f, -160.0f);
 }

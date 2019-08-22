@@ -44,7 +44,7 @@ Medusa::~Medusa()
 {
 }
 
-Vec2 Medusa::getAvatarFrameOffset()
+Vec2 Medusa::getDialogueOffset()
 {
 	return Vec2(-32.0f, -196.0f);
 }

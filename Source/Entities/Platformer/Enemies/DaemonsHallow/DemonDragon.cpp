@@ -44,7 +44,7 @@ DemonDragon::~DemonDragon()
 {
 }
 
-Vec2 DemonDragon::getAvatarFrameOffset()
+Vec2 DemonDragon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

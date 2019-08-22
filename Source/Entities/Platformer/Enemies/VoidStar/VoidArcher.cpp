@@ -44,7 +44,7 @@ VoidArcher::~VoidArcher()
 {
 }
 
-Vec2 VoidArcher::getAvatarFrameOffset()
+Vec2 VoidArcher::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Cookie::~Cookie()
 {
 }
 
-Vec2 Cookie::getAvatarFrameOffset()
+Vec2 Cookie::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

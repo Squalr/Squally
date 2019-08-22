@@ -44,7 +44,7 @@ Aspen::~Aspen()
 {
 }
 
-Vec2 Aspen::getAvatarFrameOffset()
+Vec2 Aspen::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

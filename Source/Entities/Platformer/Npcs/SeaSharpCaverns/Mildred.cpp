@@ -44,7 +44,7 @@ Mildred::~Mildred()
 {
 }
 
-Vec2 Mildred::getAvatarFrameOffset()
+Vec2 Mildred::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

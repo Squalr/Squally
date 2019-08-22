@@ -44,7 +44,7 @@ Dudly::~Dudly()
 {
 }
 
-Vec2 Dudly::getAvatarFrameOffset()
+Vec2 Dudly::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

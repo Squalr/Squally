@@ -44,7 +44,7 @@ Gramps::~Gramps()
 {
 }
 
-Vec2 Gramps::getAvatarFrameOffset()
+Vec2 Gramps::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

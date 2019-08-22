@@ -44,7 +44,7 @@ PrincessPepper::~PrincessPepper()
 {
 }
 
-Vec2 PrincessPepper::getAvatarFrameOffset()
+Vec2 PrincessPepper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

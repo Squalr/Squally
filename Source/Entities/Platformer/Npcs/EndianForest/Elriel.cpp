@@ -44,7 +44,7 @@ Elriel::~Elriel()
 {
 }
 
-Vec2 Elriel::getAvatarFrameOffset()
+Vec2 Elriel::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

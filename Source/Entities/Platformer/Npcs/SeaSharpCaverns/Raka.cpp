@@ -44,7 +44,7 @@ Raka::~Raka()
 {
 }
 
-Vec2 Raka::getAvatarFrameOffset()
+Vec2 Raka::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

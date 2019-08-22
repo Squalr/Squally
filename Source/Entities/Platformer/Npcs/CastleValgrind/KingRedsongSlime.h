@@ -10,7 +10,7 @@ class KingRedsongSlime : public PlatformerFriendly
 public:
 	static KingRedsongSlime* deserialize(cocos2d::ValueMap& properties);
 
-	cocos2d::Vec2 getAvatarFrameOffset() override;
+	cocos2d::Vec2 getDialogueOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyKingRedsongSlime;

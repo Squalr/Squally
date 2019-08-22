@@ -44,7 +44,7 @@ Agnes::~Agnes()
 {
 }
 
-Vec2 Agnes::getAvatarFrameOffset()
+Vec2 Agnes::getDialogueOffset()
 {
 	return Vec2(-32.0f, -160.0f);
 }

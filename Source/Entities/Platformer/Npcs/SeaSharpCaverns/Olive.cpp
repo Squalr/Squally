@@ -44,7 +44,7 @@ Olive::~Olive()
 {
 }
 
-Vec2 Olive::getAvatarFrameOffset()
+Vec2 Olive::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

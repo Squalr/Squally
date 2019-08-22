@@ -44,7 +44,7 @@ Nessie::~Nessie()
 {
 }
 
-Vec2 Nessie::getAvatarFrameOffset()
+Vec2 Nessie::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

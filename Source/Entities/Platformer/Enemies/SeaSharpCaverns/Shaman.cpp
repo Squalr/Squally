@@ -44,7 +44,7 @@ Shaman::~Shaman()
 {
 }
 
-Vec2 Shaman::getAvatarFrameOffset()
+Vec2 Shaman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

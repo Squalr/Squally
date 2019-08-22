@@ -44,7 +44,7 @@ Thatcher::~Thatcher()
 {
 }
 
-Vec2 Thatcher::getAvatarFrameOffset()
+Vec2 Thatcher::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Xenon::~Xenon()
 {
 }
 
-Vec2 Xenon::getAvatarFrameOffset()
+Vec2 Xenon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

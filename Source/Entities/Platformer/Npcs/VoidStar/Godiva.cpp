@@ -44,7 +44,7 @@ Godiva::~Godiva()
 {
 }
 
-Vec2 Godiva::getAvatarFrameOffset()
+Vec2 Godiva::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

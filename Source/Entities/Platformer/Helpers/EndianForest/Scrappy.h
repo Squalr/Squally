@@ -3,9 +3,9 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 
-class Sound;
-
 class HexusOpponentData;
+class SmartAnimationSequenceNode;
+class Sound;
 
 class Scrappy : public PlatformerEntity
 {
@@ -14,7 +14,7 @@ public:
 
 	float getFloatHeight() override;
 
-	cocos2d::Vec2 getAvatarFrameOffset() override;
+	cocos2d::Vec2 getDialogueOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
 	Sound* droidAlarmedSound;
@@ -33,9 +33,12 @@ private:
 	static const std::string HexusSaveKey;
 
 	void onEnter() override;
+	void initializePositions() override;
 	void initializeListeners() override;
 	void runEndOfDemoEvent();
 	void runSquallyTrappedEvent();
+
+	SmartAnimationSequenceNode* fireAnimation;
 
 	static const std::string EventEndOfDemo;
 	static const std::string EventSquallyTrapped;

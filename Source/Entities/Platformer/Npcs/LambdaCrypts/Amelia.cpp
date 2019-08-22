@@ -44,7 +44,7 @@ Amelia::~Amelia()
 {
 }
 
-Vec2 Amelia::getAvatarFrameOffset()
+Vec2 Amelia::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Geryon::~Geryon()
 {
 }
 
-Vec2 Geryon::getAvatarFrameOffset()
+Vec2 Geryon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -52,7 +52,7 @@ OrcGrunt::~OrcGrunt()
 {
 }
 
-Vec2 OrcGrunt::getAvatarFrameOffset()
+Vec2 OrcGrunt::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

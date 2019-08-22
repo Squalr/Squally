@@ -44,7 +44,7 @@ Irmik::~Irmik()
 {
 }
 
-Vec2 Irmik::getAvatarFrameOffset()
+Vec2 Irmik::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ FireTiger::~FireTiger()
 {
 }
 
-Vec2 FireTiger::getAvatarFrameOffset()
+Vec2 FireTiger::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

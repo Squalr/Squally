@@ -10,7 +10,7 @@ class DarkTiger : public PlatformerEnemy
 public:
 	static DarkTiger* deserialize(cocos2d::ValueMap& properties);
 
-	cocos2d::Vec2 getAvatarFrameOffset() override;
+	cocos2d::Vec2 getDialogueOffset() override;
 	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyDarkTiger;

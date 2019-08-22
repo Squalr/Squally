@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class Chiron;
+class Squally;
 class QuestLine;
 
 class TownExitBlocked : public QuestTask
@@ -29,6 +30,8 @@ private:
 
 	CollisionObject* collisionObject;
 	Chiron* chiron;
+	Squally* squally;
+	CollisionObject* chironCollision;
 
 	bool isEngagedInDialogue;
 	float dialogueCooldown;

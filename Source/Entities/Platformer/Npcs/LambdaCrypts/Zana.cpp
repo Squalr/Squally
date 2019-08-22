@@ -44,7 +44,7 @@ Zana::~Zana()
 {
 }
 
-Vec2 Zana::getAvatarFrameOffset()
+Vec2 Zana::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Wraith::~Wraith()
 {
 }
 
-Vec2 Wraith::getAvatarFrameOffset()
+Vec2 Wraith::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

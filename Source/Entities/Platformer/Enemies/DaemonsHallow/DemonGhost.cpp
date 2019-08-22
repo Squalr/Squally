@@ -44,7 +44,7 @@ DemonGhost::~DemonGhost()
 {
 }
 
-Vec2 DemonGhost::getAvatarFrameOffset()
+Vec2 DemonGhost::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

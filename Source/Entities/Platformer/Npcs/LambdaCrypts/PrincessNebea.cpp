@@ -44,7 +44,7 @@ PrincessNebea::~PrincessNebea()
 {
 }
 
-Vec2 PrincessNebea::getAvatarFrameOffset()
+Vec2 PrincessNebea::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

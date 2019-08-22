@@ -44,7 +44,7 @@ Thion::~Thion()
 {
 }
 
-Vec2 Thion::getAvatarFrameOffset()
+Vec2 Thion::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

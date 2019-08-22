@@ -44,7 +44,7 @@ Mystic::~Mystic()
 {
 }
 
-Vec2 Mystic::getAvatarFrameOffset()
+Vec2 Mystic::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

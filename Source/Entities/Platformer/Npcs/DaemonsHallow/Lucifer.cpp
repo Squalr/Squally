@@ -44,7 +44,7 @@ Lucifer::~Lucifer()
 {
 }
 
-Vec2 Lucifer::getAvatarFrameOffset()
+Vec2 Lucifer::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

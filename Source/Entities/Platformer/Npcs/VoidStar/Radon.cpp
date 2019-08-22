@@ -44,7 +44,7 @@ Radon::~Radon()
 {
 }
 
-Vec2 Radon::getAvatarFrameOffset()
+Vec2 Radon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

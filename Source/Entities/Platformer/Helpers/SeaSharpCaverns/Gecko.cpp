@@ -44,7 +44,7 @@ Gecko::~Gecko()
 {
 }
 
-Vec2 Gecko::getAvatarFrameOffset()
+Vec2 Gecko::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

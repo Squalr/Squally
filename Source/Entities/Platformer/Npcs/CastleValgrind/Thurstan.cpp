@@ -44,7 +44,7 @@ Thurstan::~Thurstan()
 {
 }
 
-Vec2 Thurstan::getAvatarFrameOffset()
+Vec2 Thurstan::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

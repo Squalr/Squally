@@ -44,7 +44,7 @@ DarkTiger::~DarkTiger()
 {
 }
 
-Vec2 DarkTiger::getAvatarFrameOffset()
+Vec2 DarkTiger::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

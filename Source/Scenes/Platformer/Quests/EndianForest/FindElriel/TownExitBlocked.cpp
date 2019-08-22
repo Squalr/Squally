@@ -14,11 +14,13 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+
+#include "Resources/EntityResources.h"
 
 #include "Strings/Platformer/Quests/FindElriel/CantLeaveTown.h"
 
@@ -40,6 +42,8 @@ TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::s
 	this->collisionObject = dynamic_cast<CollisionObject*>(owner);
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
+	this->chiron = nullptr;
+	this->squally = nullptr;
 }
 
 TownExitBlocked::~TownExitBlocked()
@@ -59,32 +63,46 @@ void TownExitBlocked::onLoad(QuestState questState)
 
 void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 {
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	});
+
 	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
 		this->chiron = chiron;
-		EntityCollisionBehavior* collisionBehavior = this->chiron->getAttachedBehavior<EntityCollisionBehavior>();
 
-		if (collisionBehavior != nullptr)
+		this->chironCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f),
+			(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
+			false,
+			false
+		);
+		this->chironCollision->getPhysicsBody()->setPositionOffset(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
+
+		this->chiron->addChild(this->chironCollision);
+
+		this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
 		{
-			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
+			if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
 			{
-				if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
-				{
-					this->isEngagedInDialogue = true;
+				this->isEngagedInDialogue = true;
 
-					DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-						Strings::Platformer_Quests_FindElriel_CantLeaveTown::create(),
-						[=]()
-						{
-							this->isEngagedInDialogue = false;
-							this->dialogueCooldown = 4.0f;
-						}
-					));
-				}
-				
-				return CollisionObject::CollisionResult::CollideWithPhysics;
-			});
-		}
+				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_FindElriel_CantLeaveTown::create(),
+					DialogueEvents::DialogueAlignment::Right,
+					[=]()
+					{
+						this->isEngagedInDialogue = false;
+						this->dialogueCooldown = 6.0f;
+					},
+					DialogueEvents::BuildPreviewNode(this->squally, false),
+					DialogueEvents::BuildPreviewNode(this->chiron, true)
+				));
+			}
+			
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		});
 	});
 }
 

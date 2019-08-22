@@ -44,7 +44,7 @@ Zelina::~Zelina()
 {
 }
 
-Vec2 Zelina::getAvatarFrameOffset()
+Vec2 Zelina::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ CritterDemon::~CritterDemon()
 {
 }
 
-Vec2 CritterDemon::getAvatarFrameOffset()
+Vec2 CritterDemon::getDialogueOffset()
 {
 	return Vec2(-48.0f, -112.0f);
 }

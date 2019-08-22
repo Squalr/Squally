@@ -44,7 +44,7 @@ Santa::~Santa()
 {
 }
 
-Vec2 Santa::getAvatarFrameOffset()
+Vec2 Santa::getDialogueOffset()
 {
 	return Vec2(-32.0f, -248.0f);
 }

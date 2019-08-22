@@ -44,7 +44,7 @@ AnubisWarrior::~AnubisWarrior()
 {
 }
 
-Vec2 AnubisWarrior::getAvatarFrameOffset()
+Vec2 AnubisWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -196.0f);
 }

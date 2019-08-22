@@ -135,7 +135,7 @@ float Squally::getFloatHeight()
 	return 64.0f;
 }
 
-cocos2d::Vec2 Squally::getAvatarFrameOffset()
+cocos2d::Vec2 Squally::getDialogueOffset()
 {
 	return Vec2(0.0f, 0.0f);
 }

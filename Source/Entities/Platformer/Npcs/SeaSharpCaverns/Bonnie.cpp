@@ -44,7 +44,7 @@ Bonnie::~Bonnie()
 {
 }
 
-Vec2 Bonnie::getAvatarFrameOffset()
+Vec2 Bonnie::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

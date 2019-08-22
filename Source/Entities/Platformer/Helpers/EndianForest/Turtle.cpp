@@ -44,7 +44,7 @@ Turtle::~Turtle()
 {
 }
 
-Vec2 Turtle::getAvatarFrameOffset()
+Vec2 Turtle::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

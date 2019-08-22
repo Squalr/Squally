@@ -44,7 +44,7 @@ KingGrogg::~KingGrogg()
 {
 }
 
-Vec2 KingGrogg::getAvatarFrameOffset()
+Vec2 KingGrogg::getDialogueOffset()
 {
 	return Vec2(-32.0f, -280.0f);
 }

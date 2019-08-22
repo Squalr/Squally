@@ -44,7 +44,7 @@ Tinsel::~Tinsel()
 {
 }
 
-Vec2 Tinsel::getAvatarFrameOffset()
+Vec2 Tinsel::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

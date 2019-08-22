@@ -44,7 +44,7 @@ Knight::~Knight()
 {
 }
 
-Vec2 Knight::getAvatarFrameOffset()
+Vec2 Knight::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Finch::~Finch()
 {
 }
 
-Vec2 Finch::getAvatarFrameOffset()
+Vec2 Finch::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

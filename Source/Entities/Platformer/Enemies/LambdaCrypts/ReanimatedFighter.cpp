@@ -43,7 +43,7 @@ ReanimatedFighter::~ReanimatedFighter()
 {
 }
 
-Vec2 ReanimatedFighter::getAvatarFrameOffset()
+Vec2 ReanimatedFighter::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

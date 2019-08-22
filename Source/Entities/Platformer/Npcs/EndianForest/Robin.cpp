@@ -44,7 +44,7 @@ Robin::~Robin()
 {
 }
 
-Vec2 Robin::getAvatarFrameOffset()
+Vec2 Robin::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

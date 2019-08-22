@@ -44,7 +44,7 @@ Abomination::~Abomination()
 {
 }
 
-Vec2 Abomination::getAvatarFrameOffset()
+Vec2 Abomination::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

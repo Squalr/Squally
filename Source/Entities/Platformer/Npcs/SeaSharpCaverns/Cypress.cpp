@@ -44,7 +44,7 @@ Cypress::~Cypress()
 {
 }
 
-Vec2 Cypress::getAvatarFrameOffset()
+Vec2 Cypress::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

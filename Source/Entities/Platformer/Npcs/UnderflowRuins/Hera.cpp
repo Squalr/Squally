@@ -44,7 +44,7 @@ Hera::~Hera()
 {
 }
 
-Vec2 Hera::getAvatarFrameOffset()
+Vec2 Hera::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

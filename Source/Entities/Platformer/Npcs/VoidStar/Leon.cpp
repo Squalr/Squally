@@ -44,7 +44,7 @@ Leon::~Leon()
 {
 }
 
-Vec2 Leon::getAvatarFrameOffset()
+Vec2 Leon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

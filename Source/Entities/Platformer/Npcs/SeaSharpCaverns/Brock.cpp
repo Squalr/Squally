@@ -44,7 +44,7 @@ Brock::~Brock()
 {
 }
 
-Vec2 Brock::getAvatarFrameOffset()
+Vec2 Brock::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

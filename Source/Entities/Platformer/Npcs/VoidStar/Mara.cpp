@@ -44,7 +44,7 @@ Mara::~Mara()
 {
 }
 
-Vec2 Mara::getAvatarFrameOffset()
+Vec2 Mara::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Gaunt::~Gaunt()
 {
 }
 
-Vec2 Gaunt::getAvatarFrameOffset()
+Vec2 Gaunt::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

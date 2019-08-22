@@ -44,7 +44,7 @@ SkeletalBaron::~SkeletalBaron()
 {
 }
 
-Vec2 SkeletalBaron::getAvatarFrameOffset()
+Vec2 SkeletalBaron::getDialogueOffset()
 {
 	return Vec2(16.0f, -112.0f);
 }

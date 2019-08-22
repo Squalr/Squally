@@ -44,7 +44,7 @@ Ares::~Ares()
 {
 }
 
-Vec2 Ares::getAvatarFrameOffset()
+Vec2 Ares::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

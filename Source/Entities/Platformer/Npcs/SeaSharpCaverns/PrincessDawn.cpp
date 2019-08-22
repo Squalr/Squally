@@ -44,7 +44,7 @@ PrincessDawn::~PrincessDawn()
 {
 }
 
-Vec2 PrincessDawn::getAvatarFrameOffset()
+Vec2 PrincessDawn::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

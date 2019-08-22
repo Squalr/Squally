@@ -44,7 +44,7 @@ FrostFiend::~FrostFiend()
 {
 }
 
-Vec2 FrostFiend::getAvatarFrameOffset()
+Vec2 FrostFiend::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

@@ -44,7 +44,7 @@ BoneFiend::~BoneFiend()
 {
 }
 
-Vec2 BoneFiend::getAvatarFrameOffset()
+Vec2 BoneFiend::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Ghost::~Ghost()
 {
 }
 
-Vec2 Ghost::getAvatarFrameOffset()
+Vec2 Ghost::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

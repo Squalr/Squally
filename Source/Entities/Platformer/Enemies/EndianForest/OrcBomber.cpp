@@ -44,7 +44,7 @@ OrcBomber::~OrcBomber()
 {
 }
 
-Vec2 OrcBomber::getAvatarFrameOffset()
+Vec2 OrcBomber::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

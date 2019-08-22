@@ -44,7 +44,7 @@ Vampiress::~Vampiress()
 {
 }
 
-Vec2 Vampiress::getAvatarFrameOffset()
+Vec2 Vampiress::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

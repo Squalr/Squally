@@ -44,7 +44,7 @@ Igneus::~Igneus()
 {
 }
 
-Vec2 Igneus::getAvatarFrameOffset()
+Vec2 Igneus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

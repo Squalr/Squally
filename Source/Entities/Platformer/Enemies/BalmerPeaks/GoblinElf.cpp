@@ -44,7 +44,7 @@ GoblinElf::~GoblinElf()
 {
 }
 
-Vec2 GoblinElf::getAvatarFrameOffset()
+Vec2 GoblinElf::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

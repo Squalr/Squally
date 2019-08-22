@@ -44,7 +44,7 @@ SnowFiend::~SnowFiend()
 {
 }
 
-Vec2 SnowFiend::getAvatarFrameOffset()
+Vec2 SnowFiend::getDialogueOffset()
 {
 	return Vec2(-32.0f, -248.0f);
 }

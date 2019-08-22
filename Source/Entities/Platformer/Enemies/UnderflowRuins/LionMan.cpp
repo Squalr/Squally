@@ -44,7 +44,7 @@ LionMan::~LionMan()
 {
 }
 
-Vec2 LionMan::getAvatarFrameOffset()
+Vec2 LionMan::getDialogueOffset()
 {
 	return Vec2(-32.0f, -196.0f);
 }

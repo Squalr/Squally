@@ -44,7 +44,7 @@ PrincessMittens::~PrincessMittens()
 {
 }
 
-Vec2 PrincessMittens::getAvatarFrameOffset()
+Vec2 PrincessMittens::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

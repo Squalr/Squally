@@ -44,7 +44,7 @@ Professor::~Professor()
 {
 }
 
-Vec2 Professor::getAvatarFrameOffset()
+Vec2 Professor::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

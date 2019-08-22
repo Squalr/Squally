@@ -44,7 +44,7 @@ KingRedsongSlime::~KingRedsongSlime()
 {
 }
 
-Vec2 KingRedsongSlime::getAvatarFrameOffset()
+Vec2 KingRedsongSlime::getDialogueOffset()
 {
 	return Vec2(-32.0f, -96.0f);
 }

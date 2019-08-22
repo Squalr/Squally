@@ -44,7 +44,7 @@ Rusty::~Rusty()
 {
 }
 
-Vec2 Rusty::getAvatarFrameOffset()
+Vec2 Rusty::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

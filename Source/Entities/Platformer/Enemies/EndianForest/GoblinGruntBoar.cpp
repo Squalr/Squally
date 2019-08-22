@@ -44,7 +44,7 @@ GoblinGruntBoar::~GoblinGruntBoar()
 {
 }
 
-Vec2 GoblinGruntBoar::getAvatarFrameOffset()
+Vec2 GoblinGruntBoar::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

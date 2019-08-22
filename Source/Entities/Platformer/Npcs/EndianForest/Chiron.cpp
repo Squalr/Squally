@@ -44,9 +44,9 @@ Chiron::~Chiron()
 {
 }
 
-Vec2 Chiron::getAvatarFrameOffset()
+Vec2 Chiron::getDialogueOffset()
 {
-	return Vec2(-48.0f, -128.0f);
+	return Vec2(-48.0f, -32.0f);
 }
 
 HexusOpponentData* Chiron::getHexusOpponentData()

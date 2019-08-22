@@ -44,7 +44,7 @@ Tyracius::~Tyracius()
 {
 }
 
-Vec2 Tyracius::getAvatarFrameOffset()
+Vec2 Tyracius::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

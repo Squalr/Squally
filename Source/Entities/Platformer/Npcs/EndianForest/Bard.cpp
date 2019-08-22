@@ -44,7 +44,7 @@ Bard::~Bard()
 {
 }
 
-Vec2 Bard::getAvatarFrameOffset()
+Vec2 Bard::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

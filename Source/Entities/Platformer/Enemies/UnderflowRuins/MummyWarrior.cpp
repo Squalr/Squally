@@ -44,7 +44,7 @@ MummyWarrior::~MummyWarrior()
 {
 }
 
-Vec2 MummyWarrior::getAvatarFrameOffset()
+Vec2 MummyWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

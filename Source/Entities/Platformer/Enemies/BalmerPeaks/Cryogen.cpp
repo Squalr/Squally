@@ -44,7 +44,7 @@ Cryogen::~Cryogen()
 {
 }
 
-Vec2 Cryogen::getAvatarFrameOffset()
+Vec2 Cryogen::getDialogueOffset()
 {
 	return Vec2(-48.0f, -232.0f);
 }

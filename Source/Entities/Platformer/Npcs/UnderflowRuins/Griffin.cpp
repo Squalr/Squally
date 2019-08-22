@@ -44,7 +44,7 @@ Griffin::~Griffin()
 {
 }
 
-Vec2 Griffin::getAvatarFrameOffset()
+Vec2 Griffin::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

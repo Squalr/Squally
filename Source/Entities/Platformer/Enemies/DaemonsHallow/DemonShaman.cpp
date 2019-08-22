@@ -44,7 +44,7 @@ DemonShaman::~DemonShaman()
 {
 }
 
-Vec2 DemonShaman::getAvatarFrameOffset()
+Vec2 DemonShaman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

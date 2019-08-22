@@ -44,7 +44,7 @@ DemonGrunt::~DemonGrunt()
 {
 }
 
-Vec2 DemonGrunt::getAvatarFrameOffset()
+Vec2 DemonGrunt::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

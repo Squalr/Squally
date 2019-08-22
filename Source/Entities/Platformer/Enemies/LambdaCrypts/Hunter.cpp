@@ -44,7 +44,7 @@ Hunter::~Hunter()
 {
 }
 
-Vec2 Hunter::getAvatarFrameOffset()
+Vec2 Hunter::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

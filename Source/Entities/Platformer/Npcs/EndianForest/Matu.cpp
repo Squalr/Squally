@@ -44,7 +44,7 @@ Matu::~Matu()
 {
 }
 
-Vec2 Matu::getAvatarFrameOffset()
+Vec2 Matu::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

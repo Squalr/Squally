@@ -44,7 +44,7 @@ Reaper::~Reaper()
 {
 }
 
-Vec2 Reaper::getAvatarFrameOffset()
+Vec2 Reaper::getDialogueOffset()
 {
 	return Vec2(-16.0f, -288.0f);
 }

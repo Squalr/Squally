@@ -44,7 +44,7 @@ Fraya::~Fraya()
 {
 }
 
-Vec2 Fraya::getAvatarFrameOffset()
+Vec2 Fraya::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

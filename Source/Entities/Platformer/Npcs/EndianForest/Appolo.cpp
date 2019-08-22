@@ -44,7 +44,7 @@ Appolo::~Appolo()
 {
 }
 
-Vec2 Appolo::getAvatarFrameOffset()
+Vec2 Appolo::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

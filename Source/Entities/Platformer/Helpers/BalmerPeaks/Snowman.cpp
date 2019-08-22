@@ -44,7 +44,7 @@ Snowman::~Snowman()
 {
 }
 
-Vec2 Snowman::getAvatarFrameOffset()
+Vec2 Snowman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Grim::~Grim()
 {
 }
 
-Vec2 Grim::getAvatarFrameOffset()
+Vec2 Grim::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

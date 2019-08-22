@@ -45,7 +45,7 @@ Centaur::~Centaur()
 {
 }
 
-Vec2 Centaur::getAvatarFrameOffset()
+Vec2 Centaur::getDialogueOffset()
 {
 	return Vec2(-48.0f, -212.0f);
 }

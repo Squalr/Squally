@@ -44,7 +44,7 @@ Thug::~Thug()
 {
 }
 
-Vec2 Thug::getAvatarFrameOffset()
+Vec2 Thug::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

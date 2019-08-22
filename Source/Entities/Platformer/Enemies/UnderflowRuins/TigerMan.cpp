@@ -44,7 +44,7 @@ TigerMan::~TigerMan()
 {
 }
 
-Vec2 TigerMan::getAvatarFrameOffset()
+Vec2 TigerMan::getDialogueOffset()
 {
 	return Vec2(-16.0f, -212.0f);
 }

@@ -44,7 +44,7 @@ Piper::~Piper()
 {
 }
 
-Vec2 Piper::getAvatarFrameOffset()
+Vec2 Piper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

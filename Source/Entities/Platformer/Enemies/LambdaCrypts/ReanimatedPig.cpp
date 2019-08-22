@@ -44,7 +44,7 @@ ReanimatedPig::~ReanimatedPig()
 {
 }
 
-Vec2 ReanimatedPig::getAvatarFrameOffset()
+Vec2 ReanimatedPig::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

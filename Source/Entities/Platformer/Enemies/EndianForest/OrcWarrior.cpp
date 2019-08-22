@@ -44,7 +44,7 @@ OrcWarrior::~OrcWarrior()
 {
 }
 
-Vec2 OrcWarrior::getAvatarFrameOffset()
+Vec2 OrcWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

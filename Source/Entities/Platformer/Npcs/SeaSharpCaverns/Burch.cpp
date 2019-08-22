@@ -44,7 +44,7 @@ Burch::~Burch()
 {
 }
 
-Vec2 Burch::getAvatarFrameOffset()
+Vec2 Burch::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

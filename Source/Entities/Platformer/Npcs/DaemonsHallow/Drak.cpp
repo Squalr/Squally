@@ -44,7 +44,7 @@ Drak::~Drak()
 {
 }
 
-Vec2 Drak::getAvatarFrameOffset()
+Vec2 Drak::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

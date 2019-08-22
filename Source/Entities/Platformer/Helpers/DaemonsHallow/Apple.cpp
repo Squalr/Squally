@@ -44,7 +44,7 @@ Apple::~Apple()
 {
 }
 
-Vec2 Apple::getAvatarFrameOffset()
+Vec2 Apple::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

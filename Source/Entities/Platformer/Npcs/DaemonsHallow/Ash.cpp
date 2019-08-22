@@ -44,7 +44,7 @@ Ash::~Ash()
 {
 }
 
-Vec2 Ash::getAvatarFrameOffset()
+Vec2 Ash::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

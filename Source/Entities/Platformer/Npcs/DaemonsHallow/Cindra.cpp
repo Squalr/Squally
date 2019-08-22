@@ -44,7 +44,7 @@ Cindra::~Cindra()
 {
 }
 
-Vec2 Cindra::getAvatarFrameOffset()
+Vec2 Cindra::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

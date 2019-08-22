@@ -46,7 +46,7 @@ GoblinWarriorPig::~GoblinWarriorPig()
 {
 }
 
-Vec2 GoblinWarriorPig::getAvatarFrameOffset()
+Vec2 GoblinWarriorPig::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

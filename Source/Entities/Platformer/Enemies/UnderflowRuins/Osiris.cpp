@@ -44,7 +44,7 @@ Osiris::~Osiris()
 {
 }
 
-Vec2 Osiris::getAvatarFrameOffset()
+Vec2 Osiris::getDialogueOffset()
 {
 	return Vec2(-32.0f, -212.0f);
 }

@@ -44,7 +44,7 @@ Garrick::~Garrick()
 {
 }
 
-Vec2 Garrick::getAvatarFrameOffset()
+Vec2 Garrick::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

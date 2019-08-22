@@ -44,7 +44,7 @@ Cooper::~Cooper()
 {
 }
 
-Vec2 Cooper::getAvatarFrameOffset()
+Vec2 Cooper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

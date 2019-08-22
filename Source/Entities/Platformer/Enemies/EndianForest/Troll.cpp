@@ -44,7 +44,7 @@ Troll::~Troll()
 {
 }
 
-Vec2 Troll::getAvatarFrameOffset()
+Vec2 Troll::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Atreus::~Atreus()
 {
 }
 
-Vec2 Atreus::getAvatarFrameOffset()
+Vec2 Atreus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

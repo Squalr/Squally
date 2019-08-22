@@ -44,7 +44,7 @@ Leroy::~Leroy()
 {
 }
 
-Vec2 Leroy::getAvatarFrameOffset()
+Vec2 Leroy::getDialogueOffset()
 {
 	return Vec2(-32.0f, -96.0f);
 }

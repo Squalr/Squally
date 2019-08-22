@@ -44,7 +44,7 @@ Minotaur::~Minotaur()
 {
 }
 
-Vec2 Minotaur::getAvatarFrameOffset()
+Vec2 Minotaur::getDialogueOffset()
 {
 	return Vec2(-48.0f, -196.0f);
 }

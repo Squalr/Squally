@@ -44,7 +44,7 @@ Krampus::~Krampus()
 {
 }
 
-Vec2 Krampus::getAvatarFrameOffset()
+Vec2 Krampus::getDialogueOffset()
 {
 	return Vec2(-48.0f, -232.0f);
 }

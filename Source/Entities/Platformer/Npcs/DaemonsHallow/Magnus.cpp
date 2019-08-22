@@ -44,7 +44,7 @@ Magnus::~Magnus()
 {
 }
 
-Vec2 Magnus::getAvatarFrameOffset()
+Vec2 Magnus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -13,6 +13,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -63,16 +65,36 @@ void SquallyCollisionBehavior::onLoad()
 {
 	this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
-	EntityCollisionBehavior* collisionBehavior = this->squally->getAttachedBehavior<EntityCollisionBehavior>();
+	EntityCollisionBehavior* entityCollisionBehavior = this->squally->getAttachedBehavior<EntityCollisionBehavior>();
+	EntityGroundCollisionBehavior* groundCollisionBehavior = this->squally->getAttachedBehavior<EntityGroundCollisionBehavior>();
+	EntityMovementCollisionBehavior* movementCollisionBehavior = this->squally->getAttachedBehavior<EntityMovementCollisionBehavior>();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
 	{
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 	}));
 
-	if (collisionBehavior != nullptr)
+	if (groundCollisionBehavior != nullptr)
 	{
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
+		groundCollisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		{
+			groundCollisionBehavior->onCollideWithGround();
+			
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		});
+	}
+
+	if (movementCollisionBehavior != nullptr)
+	{
+		movementCollisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		});
+	}
+
+	if (entityCollisionBehavior != nullptr)
+	{
+		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -92,7 +114,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
+		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -102,7 +124,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 		
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -114,7 +136,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		collisionBehavior->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+		entityCollisionBehavior->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -126,7 +148,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
+		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		});

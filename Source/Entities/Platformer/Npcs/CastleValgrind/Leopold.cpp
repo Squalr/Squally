@@ -44,7 +44,7 @@ Leopold::~Leopold()
 {
 }
 
-Vec2 Leopold::getAvatarFrameOffset()
+Vec2 Leopold::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

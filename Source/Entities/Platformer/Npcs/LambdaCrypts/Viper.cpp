@@ -44,7 +44,7 @@ Viper::~Viper()
 {
 }
 
-Vec2 Viper::getAvatarFrameOffset()
+Vec2 Viper::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

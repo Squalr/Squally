@@ -44,7 +44,7 @@ SkeletalNecromancer::~SkeletalNecromancer()
 {
 }
 
-Vec2 SkeletalNecromancer::getAvatarFrameOffset()
+Vec2 SkeletalNecromancer::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

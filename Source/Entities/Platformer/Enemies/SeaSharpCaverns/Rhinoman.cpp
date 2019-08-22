@@ -44,7 +44,7 @@ Rhinoman::~Rhinoman()
 {
 }
 
-Vec2 Rhinoman::getAvatarFrameOffset()
+Vec2 Rhinoman::getDialogueOffset()
 {
 	return Vec2(0.0f, -420.0f);
 }

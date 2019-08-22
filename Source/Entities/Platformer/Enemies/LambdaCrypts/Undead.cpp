@@ -44,7 +44,7 @@ Undead::~Undead()
 {
 }
 
-Vec2 Undead::getAvatarFrameOffset()
+Vec2 Undead::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

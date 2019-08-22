@@ -43,7 +43,7 @@ public:
 	cocos2d::Vec2 getCollisionOffset();
 	float getHoverHeight();
 	HexusOpponentData* getHexusOpponentData();
-	virtual cocos2d::Vec2 getAvatarFrameOffset() = 0;
+	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
 
@@ -74,6 +74,7 @@ protected:
 	std::string state;
 
 	cocos2d::Node* floatNode;
+	cocos2d::Node* belowAnimationNode;
 	SmartAnimationNode* animationNode;
 
 	HexusOpponentData* hexusOpponentData;

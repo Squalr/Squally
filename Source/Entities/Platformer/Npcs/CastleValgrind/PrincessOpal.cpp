@@ -44,7 +44,7 @@ PrincessOpal::~PrincessOpal()
 {
 }
 
-Vec2 PrincessOpal::getAvatarFrameOffset()
+Vec2 PrincessOpal::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Angel::~Angel()
 {
 }
 
-Vec2 Angel::getAvatarFrameOffset()
+Vec2 Angel::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

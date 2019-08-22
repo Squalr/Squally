@@ -44,7 +44,7 @@ Jack::~Jack()
 {
 }
 
-Vec2 Jack::getAvatarFrameOffset()
+Vec2 Jack::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

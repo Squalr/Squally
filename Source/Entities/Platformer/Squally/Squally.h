@@ -14,7 +14,7 @@ public:
 	static Squally* deserialize(cocos2d::ValueMap& properties);
 
 	float getFloatHeight() override;
-	cocos2d::Vec2 getAvatarFrameOffset() override;
+	cocos2d::Vec2 getDialogueOffset() override;
 
 	static const std::string MapKeySqually;
 

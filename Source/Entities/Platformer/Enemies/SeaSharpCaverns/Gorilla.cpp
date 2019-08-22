@@ -44,7 +44,7 @@ Gorilla::~Gorilla()
 {
 }
 
-Vec2 Gorilla::getAvatarFrameOffset()
+Vec2 Gorilla::getDialogueOffset()
 {
 	return Vec2(-64.0f, -144.0f);
 }

@@ -44,7 +44,7 @@ Rogas::~Rogas()
 {
 }
 
-Vec2 Rogas::getAvatarFrameOffset()
+Vec2 Rogas::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

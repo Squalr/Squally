@@ -44,7 +44,7 @@ VoidDemon::~VoidDemon()
 {
 }
 
-Vec2 VoidDemon::getAvatarFrameOffset()
+Vec2 VoidDemon::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

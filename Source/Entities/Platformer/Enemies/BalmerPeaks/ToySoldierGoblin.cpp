@@ -44,7 +44,7 @@ ToySoldierGoblin::~ToySoldierGoblin()
 {
 }
 
-Vec2 ToySoldierGoblin::getAvatarFrameOffset()
+Vec2 ToySoldierGoblin::getDialogueOffset()
 {
 	return Vec2(-32.0f, -144.0f);
 }

@@ -44,7 +44,7 @@ IceGolem::~IceGolem()
 {
 }
 
-Vec2 IceGolem::getAvatarFrameOffset()
+Vec2 IceGolem::getDialogueOffset()
 {
 	return Vec2(-32.0f, -160.0f);
 }

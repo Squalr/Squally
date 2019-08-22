@@ -44,7 +44,7 @@ TikiGolem::~TikiGolem()
 {
 }
 
-Vec2 TikiGolem::getAvatarFrameOffset()
+Vec2 TikiGolem::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

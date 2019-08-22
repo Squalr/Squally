@@ -44,7 +44,7 @@ DemonWarrior::~DemonWarrior()
 {
 }
 
-Vec2 DemonWarrior::getAvatarFrameOffset()
+Vec2 DemonWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

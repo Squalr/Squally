@@ -44,7 +44,7 @@ Lioness::~Lioness()
 {
 }
 
-Vec2 Lioness::getAvatarFrameOffset()
+Vec2 Lioness::getDialogueOffset()
 {
 	return Vec2(-32.0f, -160.0f);
 }

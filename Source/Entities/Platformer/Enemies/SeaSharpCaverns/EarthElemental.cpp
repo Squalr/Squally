@@ -44,7 +44,7 @@ EarthElemental::~EarthElemental()
 {
 }
 
-Vec2 EarthElemental::getAvatarFrameOffset()
+Vec2 EarthElemental::getDialogueOffset()
 {
 	return Vec2(-32.0f, -224.0f);
 }

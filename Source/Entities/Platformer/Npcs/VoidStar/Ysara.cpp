@@ -44,7 +44,7 @@ Ysara::~Ysara()
 {
 }
 
-Vec2 Ysara::getAvatarFrameOffset()
+Vec2 Ysara::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

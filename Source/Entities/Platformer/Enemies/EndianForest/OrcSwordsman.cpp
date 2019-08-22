@@ -44,7 +44,7 @@ OrcSwordsman::~OrcSwordsman()
 {
 }
 
-Vec2 OrcSwordsman::getAvatarFrameOffset()
+Vec2 OrcSwordsman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

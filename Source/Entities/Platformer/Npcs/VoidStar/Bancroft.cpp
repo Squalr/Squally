@@ -44,7 +44,7 @@ Bancroft::~Bancroft()
 {
 }
 
-Vec2 Bancroft::getAvatarFrameOffset()
+Vec2 Bancroft::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

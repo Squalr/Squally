@@ -44,7 +44,7 @@ Mermaid::~Mermaid()
 {
 }
 
-Vec2 Mermaid::getAvatarFrameOffset()
+Vec2 Mermaid::getDialogueOffset()
 {
 	return Vec2(-32.0f, -180.0f);
 }

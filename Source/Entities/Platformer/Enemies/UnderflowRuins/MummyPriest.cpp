@@ -44,7 +44,7 @@ MummyPriest::~MummyPriest()
 {
 }
 
-Vec2 MummyPriest::getAvatarFrameOffset()
+Vec2 MummyPriest::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

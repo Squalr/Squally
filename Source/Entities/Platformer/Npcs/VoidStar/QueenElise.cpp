@@ -44,7 +44,7 @@ QueenElise::~QueenElise()
 {
 }
 
-Vec2 QueenElise::getAvatarFrameOffset()
+Vec2 QueenElise::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

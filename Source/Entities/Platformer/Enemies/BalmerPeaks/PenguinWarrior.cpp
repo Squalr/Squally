@@ -44,7 +44,7 @@ PenguinWarrior::~PenguinWarrior()
 {
 }
 
-Vec2 PenguinWarrior::getAvatarFrameOffset()
+Vec2 PenguinWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

@@ -63,11 +63,7 @@ void EntityGroundCollisionBehavior::onLoad()
 {
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// Clear current animation
-		if (this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true) && this->entity->getStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
-		{
-			this->entity->getAnimations()->playAnimation("Idle");
-		}
+		this->onCollideWithGround();
 		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -81,6 +77,15 @@ void EntityGroundCollisionBehavior::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+void EntityGroundCollisionBehavior::onCollideWithGround()
+{
+	// Clear current animation
+	if (this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true) && this->entity->getStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
+	{
+		this->entity->getAnimations()->playAnimation("Idle");
+	}
 }
 
 bool EntityGroundCollisionBehavior::isOnGround()

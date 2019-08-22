@@ -44,7 +44,7 @@ GoblinShaman::~GoblinShaman()
 {
 }
 
-Vec2 GoblinShaman::getAvatarFrameOffset()
+Vec2 GoblinShaman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -15,8 +15,11 @@ class EntityGroundCollisionBehavior : public AttachedBehavior
 public:
 	static EntityGroundCollisionBehavior* create(GameObject* owner);
 
+	void onCollideWithGround();
 	bool isOnGround();
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
+	
+	CollisionObject* groundCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -30,7 +33,6 @@ private:
 	typedef AttachedBehavior super;
 
 	PlatformerEntity* entity;
-	CollisionObject* groundCollision;
 
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;

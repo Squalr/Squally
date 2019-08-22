@@ -44,7 +44,7 @@ WaterElemental::~WaterElemental()
 {
 }
 
-Vec2 WaterElemental::getAvatarFrameOffset()
+Vec2 WaterElemental::getDialogueOffset()
 {
 	return Vec2(-32.0f, -224.0f);
 }

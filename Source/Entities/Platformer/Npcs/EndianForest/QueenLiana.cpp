@@ -44,7 +44,7 @@ QueenLiana::~QueenLiana()
 {
 }
 
-Vec2 QueenLiana::getAvatarFrameOffset()
+Vec2 QueenLiana::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ FireElemental::~FireElemental()
 {
 }
 
-Vec2 FireElemental::getAvatarFrameOffset()
+Vec2 FireElemental::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ Horus::~Horus()
 {
 }
 
-Vec2 Horus::getAvatarFrameOffset()
+Vec2 Horus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }

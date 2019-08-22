@@ -44,7 +44,7 @@ EarthGolem::~EarthGolem()
 {
 }
 
-Vec2 EarthGolem::getAvatarFrameOffset()
+Vec2 EarthGolem::getDialogueOffset()
 {
 	return Vec2(-48.0f, -144.0f);
 }

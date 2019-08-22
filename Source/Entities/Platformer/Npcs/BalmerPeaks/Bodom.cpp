@@ -44,7 +44,7 @@ Bodom::~Bodom()
 {
 }
 
-Vec2 Bodom::getAvatarFrameOffset()
+Vec2 Bodom::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

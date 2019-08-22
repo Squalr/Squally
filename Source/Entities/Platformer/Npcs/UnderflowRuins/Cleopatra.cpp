@@ -44,7 +44,7 @@ Cleopatra::~Cleopatra()
 {
 }
 
-Vec2 Cleopatra::getAvatarFrameOffset()
+Vec2 Cleopatra::getDialogueOffset()
 {
 	return Vec2(-32.0f, -144.0f);
 }

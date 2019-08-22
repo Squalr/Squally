@@ -44,7 +44,7 @@ LightningGolem::~LightningGolem()
 {
 }
 
-Vec2 LightningGolem::getAvatarFrameOffset()
+Vec2 LightningGolem::getDialogueOffset()
 {
 	return Vec2(-32.0f, -380.0f);
 }

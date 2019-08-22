@@ -44,7 +44,7 @@ Ursula::~Ursula()
 {
 }
 
-Vec2 Ursula::getAvatarFrameOffset()
+Vec2 Ursula::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

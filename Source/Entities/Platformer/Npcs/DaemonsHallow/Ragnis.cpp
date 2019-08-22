@@ -44,7 +44,7 @@ Ragnis::~Ragnis()
 {
 }
 
-Vec2 Ragnis::getAvatarFrameOffset()
+Vec2 Ragnis::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

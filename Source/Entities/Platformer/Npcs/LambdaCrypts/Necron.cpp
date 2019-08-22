@@ -44,7 +44,7 @@ Necron::~Necron()
 {
 }
 
-Vec2 Necron::getAvatarFrameOffset()
+Vec2 Necron::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

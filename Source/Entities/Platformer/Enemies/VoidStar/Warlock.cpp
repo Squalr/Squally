@@ -44,7 +44,7 @@ Warlock::~Warlock()
 {
 }
 
-Vec2 Warlock::getAvatarFrameOffset()
+Vec2 Warlock::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

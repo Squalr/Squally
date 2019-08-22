@@ -44,7 +44,7 @@ Minos::~Minos()
 {
 }
 
-Vec2 Minos::getAvatarFrameOffset()
+Vec2 Minos::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

@@ -44,7 +44,7 @@ SkeletalWarrior::~SkeletalWarrior()
 {
 }
 
-Vec2 SkeletalWarrior::getAvatarFrameOffset()
+Vec2 SkeletalWarrior::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

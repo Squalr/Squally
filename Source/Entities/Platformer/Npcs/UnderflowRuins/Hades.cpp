@@ -44,7 +44,7 @@ Hades::~Hades()
 {
 }
 
-Vec2 Hades::getAvatarFrameOffset()
+Vec2 Hades::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

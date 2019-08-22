@@ -44,7 +44,7 @@ Merlin::~Merlin()
 {
 }
 
-Vec2 Merlin::getAvatarFrameOffset()
+Vec2 Merlin::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

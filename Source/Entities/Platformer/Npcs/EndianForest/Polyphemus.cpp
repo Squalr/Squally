@@ -44,7 +44,7 @@ Polyphemus::~Polyphemus()
 {
 }
 
-Vec2 Polyphemus::getAvatarFrameOffset()
+Vec2 Polyphemus::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

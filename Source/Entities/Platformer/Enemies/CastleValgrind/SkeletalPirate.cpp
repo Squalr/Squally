@@ -44,7 +44,7 @@ SkeletalPirate::~SkeletalPirate()
 {
 }
 
-Vec2 SkeletalPirate::getAvatarFrameOffset()
+Vec2 SkeletalPirate::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

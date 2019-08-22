@@ -44,7 +44,7 @@ Ajax::~Ajax()
 {
 }
 
-Vec2 Ajax::getAvatarFrameOffset()
+Vec2 Ajax::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

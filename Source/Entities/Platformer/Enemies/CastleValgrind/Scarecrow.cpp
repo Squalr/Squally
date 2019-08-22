@@ -44,7 +44,7 @@ Scarecrow::~Scarecrow()
 {
 }
 
-Vec2 Scarecrow::getAvatarFrameOffset()
+Vec2 Scarecrow::getDialogueOffset()
 {
 	return Vec2(0.0f, -312.0f);
 }

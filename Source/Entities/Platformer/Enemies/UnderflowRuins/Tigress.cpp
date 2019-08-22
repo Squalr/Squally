@@ -44,7 +44,7 @@ Tigress::~Tigress()
 {
 }
 
-Vec2 Tigress::getAvatarFrameOffset()
+Vec2 Tigress::getDialogueOffset()
 {
 	return Vec2(-16.0f, -160.0f);
 }

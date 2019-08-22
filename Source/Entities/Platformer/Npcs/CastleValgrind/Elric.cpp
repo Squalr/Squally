@@ -44,7 +44,7 @@ Elric::~Elric()
 {
 }
 
-Vec2 Elric::getAvatarFrameOffset()
+Vec2 Elric::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
 }

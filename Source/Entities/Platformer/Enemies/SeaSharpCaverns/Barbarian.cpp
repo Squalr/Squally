@@ -44,7 +44,7 @@ Barbarian::~Barbarian()
 {
 }
 
-Vec2 Barbarian::getAvatarFrameOffset()
+Vec2 Barbarian::getDialogueOffset()
 {
 	return Vec2(0.0f, -160.0f);
 }

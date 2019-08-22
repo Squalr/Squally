@@ -42,6 +42,7 @@ PlatformerEntity::PlatformerEntity(
 	) : super(properties)
 {
 	this->floatNode = Node::create();
+	this->belowAnimationNode = Node::create();
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->entityScale = scale;
 	this->animationResource = scmlResource;
@@ -72,6 +73,7 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
 
+	this->floatNode->addChild(this->belowAnimationNode);
 	this->floatNode->addChild(this->animationNode);
 	this->addChild(this->floatNode);
 	this->addChild(this->speechBubble);

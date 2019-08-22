@@ -44,7 +44,7 @@ PenguinGrunt::~PenguinGrunt()
 {
 }
 
-Vec2 PenguinGrunt::getAvatarFrameOffset()
+Vec2 PenguinGrunt::getDialogueOffset()
 {
 	return Vec2(-32.0f, -128.0f);
 }
