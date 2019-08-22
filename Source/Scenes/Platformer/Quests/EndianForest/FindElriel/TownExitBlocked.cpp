@@ -20,7 +20,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
-#include "Strings/Platformer/Quests/Intro/HackerMode.h"
+#include "Strings/Platformer/Quests/FindElriel/CantLeaveTown.h"
 
 using namespace cocos2d;
 
@@ -38,10 +38,19 @@ TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine
 TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownExitBlocked::MapKeyQuest, questTag, false)
 {
 	this->collisionObject = dynamic_cast<CollisionObject*>(owner);
+	this->dialogueCooldown = 0.0f;
+	this->isEngagedInDialogue = false;
 }
 
 TownExitBlocked::~TownExitBlocked()
 {
+}
+
+void TownExitBlocked::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
 }
 
 void TownExitBlocked::onLoad(QuestState questState)
@@ -57,11 +66,23 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 
 		if (collisionBehavior != nullptr)
 		{
-			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+			collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData collisionData)
 			{
-				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(Strings::Platformer_Quests_Intro_HackerMode::create()));
+				if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
+				{
+					this->isEngagedInDialogue = true;
+
+					DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+						Strings::Platformer_Quests_FindElriel_CantLeaveTown::create(),
+						[=]()
+						{
+							this->isEngagedInDialogue = false;
+							this->dialogueCooldown = 4.0f;
+						}
+					));
+				}
 				
-				return CollisionObject::CollisionResult::DoNothing;
+				return CollisionObject::CollisionResult::CollideWithPhysics;
 			});
 		}
 	});
@@ -69,6 +90,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 
 void TownExitBlocked::onComplete()
 {
+	this->removeAllListeners();
 }
 
 void TownExitBlocked::onSkipped()
@@ -76,3 +98,12 @@ void TownExitBlocked::onSkipped()
 	this->removeAllListeners();
 }
 
+void TownExitBlocked::update(float dt)
+{
+	super::update(dt);
+
+	if (!isEngagedInDialogue && this->dialogueCooldown > 0.0f)
+	{
+		this->dialogueCooldown -= dt;
+	}
+}

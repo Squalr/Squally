@@ -169,7 +169,6 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 		false
 	);
 
-
 	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::DoNothing;

@@ -23,6 +23,9 @@ DialogueBox::DialogueBox(float textWidth)
 {
 	this->panel = DrawNode::create(3.0f);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create());
+	this->contentNode = Node::create();
+	this->onDialogueClose = std::function<void()>();
+	this->dialogueEffectComplete = false;
 
 	this->text->setTextColor(DialogueBox::PanelTextColor);
 
@@ -39,6 +42,7 @@ DialogueBox::DialogueBox(float textWidth)
 
 	this->panel->addChild(this->text);
 	this->addChild(this->panel);
+	this->addChild(this->contentNode);
 }
 
 DialogueBox::~DialogueBox()
@@ -55,18 +59,38 @@ void DialogueBox::initializeListeners()
 	super::initializeListeners();
 }
 
-void DialogueBox::runDialogue(LocalizedString* localizedString)
+void DialogueBox::runDialogue(LocalizedString* localizedString, std::function<void()> onDialogueClose)
 {
+	this->dialogueEffectComplete = false;
+
 	this->panel->runAction(FadeTo::create(0.5f, 255));
 	this->text->runAction(FadeTo::create(0.5f, 255));
+	this->contentNode->runAction(FadeTo::create(0.5f, 255));
 
 	this->text->setLocalizedString(localizedString);
+	this->onDialogueClose = onDialogueClose;
 
-	TypeWriterEffect::runTypeWriterEffect(this->text);
+	TypeWriterEffect::runTypeWriterEffect(this->text, [=]() { this->onTypeWriterEffectComplete(); });
 }
 
 void DialogueBox::hideDialogue()
 {
 	this->panel->runAction(FadeTo::create(0.5f, 0));
 	this->text->runAction(FadeTo::create(0.5f, 0));
+	this->contentNode->runAction(FadeTo::create(0.5f, 0));
+
+	if (this->onDialogueClose != nullptr)
+	{
+		this->onDialogueClose();
+	}
+}
+
+void DialogueBox::onTypeWriterEffectComplete()
+{
+	this->dialogueEffectComplete = true;
+}
+
+bool DialogueBox::isDialogueEffectComplete()
+{
+	return this->dialogueEffectComplete;
 }

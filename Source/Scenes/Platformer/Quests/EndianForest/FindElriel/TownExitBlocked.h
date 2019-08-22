@@ -16,15 +16,20 @@ public:
 protected:
 	TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag);
 	~TownExitBlocked();
-
+	
+	void onEnter() override;
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
 	void onComplete() override;
 	void onSkipped() override;
+	void update(float dt) override;
 
 private:
 	typedef QuestTask super;
 
 	CollisionObject* collisionObject;
 	Chiron* chiron;
+
+	bool isEngagedInDialogue;
+	float dialogueCooldown;
 };

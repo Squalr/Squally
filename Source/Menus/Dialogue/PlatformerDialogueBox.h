@@ -11,8 +11,9 @@ public:
 	static PlatformerDialogueBox* create();
 
 protected:
-	void runDialogue(LocalizedString* localizedString) override;
+	void runDialogue(LocalizedString* localizedString, std::function<void()> onDialogueClose) override;
 	void hideDialogue() override;
+	void onTypeWriterEffectComplete() override;
 
 private:
 	typedef DialogueBox super;
@@ -23,4 +24,6 @@ private:
 	void initializeListeners() override;
 
 	LocalizedLabel* spaceToContinueLabel;
+
+	bool isDialogueFocused;
 };

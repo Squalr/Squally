@@ -16,10 +16,11 @@ public:
 	struct DialogueOpenArgs
 	{
 		LocalizedString* dialogue;
+		std::function<void()> onDialogueClose;
 		cocos2d::Node* leftContentNode;
 		cocos2d::Node* rightContentNode;
 
-		DialogueOpenArgs(LocalizedString* dialogue, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr) : dialogue(dialogue), leftContentNode(leftContentNode), rightContentNode(rightContentNode)
+		DialogueOpenArgs(LocalizedString* dialogue, std::function<void()> onDialogueClose, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr) : dialogue(dialogue), onDialogueClose(onDialogueClose), leftContentNode(leftContentNode), rightContentNode(rightContentNode)
 		{
 		}
 	};

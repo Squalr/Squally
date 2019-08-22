@@ -15,6 +15,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -64,7 +65,7 @@ void EntityOutOfCombatAttackBehavior::onLoad()
 
 void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain)
 {
-	if (this->isPerformingOutOfCombatAttack)
+	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
 		return;
 	}

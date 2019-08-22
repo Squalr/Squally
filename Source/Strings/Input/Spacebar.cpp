@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Input_Spacebar::getStringEn()
 	{
-		return "Spacebar";
+		return "Space";
 	}
 
 	std::string Input_Spacebar::getStringEs()
@@ -114,7 +114,7 @@ namespace Strings
 
 	std::string Input_Spacebar::getStringNl()
 	{
-		return "Spacebar";
+		return "Space";
 	}
 
 	std::string Input_Spacebar::getStringNo()
@@ -154,7 +154,7 @@ namespace Strings
 
 	std::string Input_Spacebar::getStringTh()
 	{
-		return "Spacebar";
+		return "สเปซบาร์";
 	}
 
 	std::string Input_Spacebar::getStringTr()
