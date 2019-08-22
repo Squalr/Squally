@@ -48,9 +48,9 @@ void EnemyHealthBehavior::onLoad()
 	{
 		if (!value.asBool())
 		{
-			if (!this->entity->mapEvent.empty())
+			if (!this->entity->getMapEvent().empty())
 			{
-				ObjectEvents::TriggerBroadCastMapObjectState(this->entity->mapEvent, ValueMap());
+				ObjectEvents::TriggerBroadCastMapObjectState(this->entity->getMapEvent(), ValueMap());
 			}
 		}
 

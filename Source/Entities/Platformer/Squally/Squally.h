@@ -25,11 +25,6 @@ protected:
 
 private:
 	typedef PlatformerFriendly super;
-	friend class SquallyBehaviorGroup;
-	friend class SquallyCollisionBehavior;
-	friend class SquallyEquipmentVisualBehavior;
-	friend class SquallyMovementBehavior;
-	friend class SquallyOutOfCombatAttackBehavior;
 	
 	Squally(cocos2d::ValueMap& properties);
 	~Squally();
@@ -40,8 +35,6 @@ private:
 	void initializeListeners() override;
 	void update(float dt) override;
 	void onHackerModeEnable(int eq) override;
-	void runEyeBlinkLoop();
-	void spawnHelper();
 
 	static const float SquallyScale;
 };

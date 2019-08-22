@@ -46,7 +46,6 @@ protected:
 
 private:
 	typedef PlatformerEntity super;
-	friend class EnemyHealthBehavior;
 
 	Inventory* dropInventory;
 

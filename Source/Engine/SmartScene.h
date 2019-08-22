@@ -20,13 +20,21 @@ class SmartScene : public cocos2d::Scene
 public:
 	static SmartScene* create();
 
-	SmartScene();
-	virtual ~SmartScene();
-
 	void setFadeSpeed(float newFadeSpeed);
 	float getFadeSpeed();
+	virtual void addEventListener(cocos2d::EventListener* listener);
+	virtual void removeEventListener(cocos2d::EventListener* listener);
+	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
+	void whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 
 protected:
+	SmartScene();
+	~SmartScene();
 	void pause() override;
 	void onEnter() override;
 	void onExit() override;
@@ -39,15 +47,6 @@ protected:
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	virtual void removeNonGlobalListeners();
-	virtual void addEventListener(cocos2d::EventListener* listener);
-	virtual void removeEventListener(cocos2d::EventListener* listener);
-	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
-	void whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	void whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	void whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
-	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 
 	bool hackermodeEnabled;
 	Hud* layerColorHud;

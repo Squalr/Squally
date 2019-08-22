@@ -50,7 +50,7 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 
 std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 {
-	Weapon* weapon = this->squally->equipmentInventory->getWeapon();
+	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
 
 	if (weapon != nullptr)
 	{
@@ -64,7 +64,7 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 {
-	Weapon* weapon = this->squally->equipmentInventory->getWeapon();
+	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
 
 	if (weapon == nullptr)
 	{
@@ -78,7 +78,7 @@ float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 
 float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
 {
-	Weapon* weapon = this->squally->equipmentInventory->getWeapon();
+	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
 
 	if (weapon == nullptr)
 	{

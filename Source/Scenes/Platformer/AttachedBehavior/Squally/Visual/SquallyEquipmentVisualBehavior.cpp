@@ -59,9 +59,9 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 {
-	Weapon* weapon = this->squally->equipmentInventory->getWeapon();
-	Hat* hat = this->squally->equipmentInventory->getHat();
-	Offhand* offhand = this->squally->equipmentInventory->getOffhand();
+	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
+	Hat* hat = this->squally->getEquipmentInventory()->getHat();
+	Offhand* offhand = this->squally->getEquipmentInventory()->getOffhand();
 
 	AnimationPart* hatAnim = this->squally->getAnimations()->getAnimationPart("hat");
 	
