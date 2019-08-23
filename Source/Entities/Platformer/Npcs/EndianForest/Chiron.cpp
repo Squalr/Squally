@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Chiron.h"
+
 using namespace cocos2d;
 
 const std::string Chiron::MapKeyChiron = "chiron";
@@ -51,7 +53,7 @@ Vec2 Chiron::getDialogueOffset()
 
 LocalizedString* Chiron::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Chiron::create();
 }
 
 HexusOpponentData* Chiron::getHexusOpponentData()

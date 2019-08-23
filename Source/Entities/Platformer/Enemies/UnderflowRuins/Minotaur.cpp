@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Minotaur.h"
+
 using namespace cocos2d;
 
 const std::string Minotaur::MapKeyMinotaur = "minotaur";
@@ -29,7 +31,7 @@ Minotaur* Minotaur::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Minotaur::Minotaur(ValueMap& properties) : PlatformerEnemy(properties,
+Minotaur::Minotaur(ValueMap& properties) : super(properties,
 	Minotaur::MapKeyMinotaur,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
@@ -51,7 +53,7 @@ Vec2 Minotaur::getDialogueOffset()
 
 LocalizedString* Minotaur::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Minotaur::create();
 }
 
 HexusOpponentData* Minotaur::getHexusOpponentData()

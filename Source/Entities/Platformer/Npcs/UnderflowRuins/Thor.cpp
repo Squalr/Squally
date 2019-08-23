@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Thor.h"
+
 using namespace cocos2d;
 
 const std::string Thor::MapKeyThor = "thor";
@@ -51,7 +53,7 @@ Vec2 Thor::getDialogueOffset()
 
 LocalizedString* Thor::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Thor::create();
 }
 
 HexusOpponentData* Thor::getHexusOpponentData()

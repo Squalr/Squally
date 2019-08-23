@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/LambdaCrypts/Ghost.h"
+
 using namespace cocos2d;
 
 const std::string Ghost::MapKeyGhost = "ghost";
@@ -51,7 +53,7 @@ Vec2 Ghost::getDialogueOffset()
 
 LocalizedString* Ghost::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost::create();
 }
 
 HexusOpponentData* Ghost::getHexusOpponentData()

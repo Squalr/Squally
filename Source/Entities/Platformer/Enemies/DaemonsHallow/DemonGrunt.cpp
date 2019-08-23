@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonGrunt.h"
+
 using namespace cocos2d;
 
 const std::string DemonGrunt::MapKeyDemonGrunt = "demon-grunt";
@@ -29,7 +31,7 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DemonGrunt::DemonGrunt(ValueMap& properties) : PlatformerEnemy(properties,
+DemonGrunt::DemonGrunt(ValueMap& properties) : super(properties,
 	DemonGrunt::MapKeyDemonGrunt,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
@@ -51,7 +53,7 @@ Vec2 DemonGrunt::getDialogueOffset()
 
 LocalizedString* DemonGrunt::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGrunt::create();
 }
 
 HexusOpponentData* DemonGrunt::getHexusOpponentData()

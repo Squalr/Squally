@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/OrcWarrior.h"
+
 using namespace cocos2d;
 
 const std::string OrcWarrior::MapKeyOrcWarrior = "orc-warrior";
@@ -29,7 +31,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-OrcWarrior::OrcWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
 	OrcWarrior::MapKeyOrcWarrior,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 OrcWarrior::getDialogueOffset()
 
 LocalizedString* OrcWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_OrcWarrior::create();
 }
 
 HexusOpponentData* OrcWarrior::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Appolo.h"
+
 using namespace cocos2d;
 
 const std::string Appolo::MapKeyAppolo = "appolo";
@@ -51,7 +53,7 @@ Vec2 Appolo::getDialogueOffset()
 
 LocalizedString* Appolo::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Appolo::create();
 }
 
 HexusOpponentData* Appolo::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/PrincessDawn.h"
+
 using namespace cocos2d;
 
 const std::string PrincessDawn::MapKeyPrincessDawn = "princess-dawn";
@@ -51,7 +53,7 @@ Vec2 PrincessDawn::getDialogueOffset()
 
 LocalizedString* PrincessDawn::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_PrincessDawn::create();
 }
 
 HexusOpponentData* PrincessDawn::getHexusOpponentData()

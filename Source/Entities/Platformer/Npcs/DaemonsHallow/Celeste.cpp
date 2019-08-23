@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Celeste.h"
+
 using namespace cocos2d;
 
 const std::string Celeste::MapKeyCeleste = "celeste";
@@ -51,7 +53,7 @@ Vec2 Celeste::getDialogueOffset()
 
 LocalizedString* Celeste::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Celeste::create();
 }
 
 HexusOpponentData* Celeste::getHexusOpponentData()

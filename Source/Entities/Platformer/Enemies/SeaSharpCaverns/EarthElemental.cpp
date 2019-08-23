@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/EarthElemental.h"
+
 using namespace cocos2d;
 
 const std::string EarthElemental::MapKeyEarthElemental = "earth-elemental";
@@ -29,7 +31,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap& properties)
 	return instance;
 }
 
-EarthElemental::EarthElemental(ValueMap& properties) : PlatformerEnemy(properties,
+EarthElemental::EarthElemental(ValueMap& properties) : super(properties,
 	EarthElemental::MapKeyEarthElemental,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
@@ -51,7 +53,7 @@ Vec2 EarthElemental::getDialogueOffset()
 
 LocalizedString* EarthElemental::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthElemental::create();
 }
 
 HexusOpponentData* EarthElemental::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Elric.h"
+
 using namespace cocos2d;
 
 const std::string Elric::MapKeyElric = "elric";
@@ -51,7 +53,7 @@ Vec2 Elric::getDialogueOffset()
 
 LocalizedString* Elric::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Elric::create();
 }
 
 HexusOpponentData* Elric::getHexusOpponentData()

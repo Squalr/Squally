@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Illia.h"
+
 using namespace cocos2d;
 
 const std::string Illia::MapKeyIllia = "illia";
@@ -51,7 +53,7 @@ Vec2 Illia::getDialogueOffset()
 
 LocalizedString* Illia::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Illia::create();
 }
 
 HexusOpponentData* Illia::getHexusOpponentData()

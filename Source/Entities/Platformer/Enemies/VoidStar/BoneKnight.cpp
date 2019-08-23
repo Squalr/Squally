@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/BoneKnight.h"
+
 using namespace cocos2d;
 
 const std::string BoneKnight::MapKeyBoneKnight = "bone-knight";
@@ -29,7 +31,7 @@ BoneKnight* BoneKnight::deserialize(ValueMap& properties)
 	return instance;
 }
 
-BoneKnight::BoneKnight(ValueMap& properties) : PlatformerEnemy(properties,
+BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
 	BoneKnight::MapKeyBoneKnight,
 	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
@@ -51,7 +53,7 @@ Vec2 BoneKnight::getDialogueOffset()
 
 LocalizedString* BoneKnight::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_BoneKnight::create();
 }
 
 HexusOpponentData* BoneKnight::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Dudly.h"
+
 using namespace cocos2d;
 
 const std::string Dudly::MapKeyDudly = "dudly";
@@ -51,7 +53,7 @@ Vec2 Dudly::getDialogueOffset()
 
 LocalizedString* Dudly::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly::create();
 }
 
 HexusOpponentData* Dudly::getHexusOpponentData()

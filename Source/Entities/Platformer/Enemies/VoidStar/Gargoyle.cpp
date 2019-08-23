@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Gargoyle.h"
+
 using namespace cocos2d;
 
 const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
@@ -29,7 +31,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Gargoyle::Gargoyle(ValueMap& properties) : PlatformerEnemy(properties,
+Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	Gargoyle::MapKeyGargoyle,
 	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
@@ -51,7 +53,7 @@ Vec2 Gargoyle::getDialogueOffset()
 
 LocalizedString* Gargoyle::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Gargoyle::create();
 }
 
 HexusOpponentData* Gargoyle::getHexusOpponentData()

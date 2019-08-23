@@ -27,6 +27,8 @@
 
 #include "Resources/EntityResources.h"
 
+#include "Strings/Platformer/Entities/Names/Squally.h"
+
 using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
@@ -142,7 +144,7 @@ cocos2d::Vec2 Squally::getDialogueOffset()
 
 LocalizedString* Squally::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Squally::create();
 }
 
 void Squally::performSwimAnimation()

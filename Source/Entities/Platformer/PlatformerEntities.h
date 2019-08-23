@@ -67,7 +67,6 @@
 #include "Entities/Platformer/Enemies/DaemonsHallow/FireTiger.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/LavaGolem.h"
-#include "Entities/Platformer/Helpers/DaemonsHallow/Apple.h"
 #include "Entities/Platformer/Helpers/DaemonsHallow/CritterDemon.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Ash.h"
 #include "Entities/Platformer/Npcs/DaemonsHallow/Brine.h"

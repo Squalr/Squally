@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/Hunter.h"
+
 using namespace cocos2d;
 
 const std::string Hunter::MapKeyHunter = "hunter";
@@ -29,7 +31,7 @@ Hunter* Hunter::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Hunter::Hunter(ValueMap& properties) : PlatformerEnemy(properties,
+Hunter::Hunter(ValueMap& properties) : super(properties,
 	Hunter::MapKeyHunter,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
@@ -51,7 +53,7 @@ Vec2 Hunter::getDialogueOffset()
 
 LocalizedString* Hunter::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_Hunter::create();
 }
 
 HexusOpponentData* Hunter::getHexusOpponentData()

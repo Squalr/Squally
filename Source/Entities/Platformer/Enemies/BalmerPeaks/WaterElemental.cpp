@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/WaterElemental.h"
+
 using namespace cocos2d;
 
 const std::string WaterElemental::MapKeyWaterElemental = "water-elemental";
@@ -29,7 +31,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap& properties)
 	return instance;
 }
 
-WaterElemental::WaterElemental(ValueMap& properties) : PlatformerEnemy(properties,
+WaterElemental::WaterElemental(ValueMap& properties) : super(properties,
 	WaterElemental::MapKeyWaterElemental,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
@@ -51,7 +53,7 @@ Vec2 WaterElemental::getDialogueOffset()
 
 LocalizedString* WaterElemental::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_WaterElemental::create();
 }
 
 HexusOpponentData* WaterElemental::getHexusOpponentData()

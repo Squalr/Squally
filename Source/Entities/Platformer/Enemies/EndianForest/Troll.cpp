@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Troll.h"
+
 using namespace cocos2d;
 
 const std::string Troll::MapKeyTroll = "troll";
@@ -29,7 +31,7 @@ Troll* Troll::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Troll::Troll(ValueMap& properties) : PlatformerEnemy(properties,
+Troll::Troll(ValueMap& properties) : super(properties,
 	Troll::MapKeyTroll,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
@@ -51,7 +53,7 @@ Vec2 Troll::getDialogueOffset()
 
 LocalizedString* Troll::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_Troll::create();
 }
 
 HexusOpponentData* Troll::getHexusOpponentData()

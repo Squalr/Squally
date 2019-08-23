@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Ragnis.h"
+
 using namespace cocos2d;
 
 const std::string Ragnis::MapKeyRagnis = "ragnis";
@@ -51,7 +53,7 @@ Vec2 Ragnis::getDialogueOffset()
 
 LocalizedString* Ragnis::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis::create();
 }
 
 HexusOpponentData* Ragnis::getHexusOpponentData()

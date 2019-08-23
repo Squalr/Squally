@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Jingles.h"
+
 using namespace cocos2d;
 
 const std::string Jingles::MapKeyJingles = "jingles";
@@ -51,7 +53,7 @@ Vec2 Jingles::getDialogueOffset()
 
 LocalizedString* Jingles::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Jingles::create();
 }
 
 HexusOpponentData* Jingles::getHexusOpponentData()

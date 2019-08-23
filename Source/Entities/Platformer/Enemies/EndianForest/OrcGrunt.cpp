@@ -9,14 +9,14 @@
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowRestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowRestorePotion.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/OrcGrunt.h"
 
 using namespace cocos2d;
 
@@ -33,7 +33,7 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 	return instance;
 }
 
-OrcGrunt::OrcGrunt(ValueMap& properties) : PlatformerEnemy(properties,
+OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	OrcGrunt::MapKeyOrcGrunt,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
@@ -59,7 +59,7 @@ Vec2 OrcGrunt::getDialogueOffset()
 
 LocalizedString* OrcGrunt::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_OrcGrunt::create();
 }
 
 HexusOpponentData* OrcGrunt::getHexusOpponentData()

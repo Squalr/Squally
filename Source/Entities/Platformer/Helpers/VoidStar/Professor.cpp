@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/VoidStar/Professor.h"
+
 using namespace cocos2d;
 
 const std::string Professor::MapKeyProfessor = "professor";
@@ -51,7 +53,7 @@ Vec2 Professor::getDialogueOffset()
 
 LocalizedString* Professor::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_VoidStar_Professor::create();
 }
 
 HexusOpponentData* Professor::getHexusOpponentData()

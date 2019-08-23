@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Thug.h"
+
 using namespace cocos2d;
 
 const std::string Thug::MapKeyThug = "thug";
@@ -29,7 +31,7 @@ Thug* Thug::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Thug::Thug(ValueMap& properties) : PlatformerEnemy(properties,
+Thug::Thug(ValueMap& properties) : super(properties,
 	Thug::MapKeyThug,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
@@ -51,7 +53,7 @@ Vec2 Thug::getDialogueOffset()
 
 LocalizedString* Thug::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Thug::create();
 }
 
 HexusOpponentData* Thug::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/LightningGolem.h"
+
 using namespace cocos2d;
 
 const std::string LightningGolem::MapKeyLightningGolem = "lightning-golem";
@@ -29,7 +31,7 @@ LightningGolem* LightningGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-LightningGolem::LightningGolem(ValueMap& properties) : PlatformerEnemy(properties,
+LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
 	LightningGolem::MapKeyLightningGolem,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 LightningGolem::getDialogueOffset()
 
 LocalizedString* LightningGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_LightningGolem::create();
 }
 
 HexusOpponentData* LightningGolem::getHexusOpponentData()

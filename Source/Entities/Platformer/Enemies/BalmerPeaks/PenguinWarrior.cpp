@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/PenguinWarrior.h"
+
 using namespace cocos2d;
 
 const std::string PenguinWarrior::MapKeyPenguinWarrior = "penguin-warrior";
@@ -29,7 +31,7 @@ PenguinWarrior* PenguinWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-PenguinWarrior::PenguinWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+PenguinWarrior::PenguinWarrior(ValueMap& properties) : super(properties,
 	PenguinWarrior::MapKeyPenguinWarrior,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 PenguinWarrior::getDialogueOffset()
 
 LocalizedString* PenguinWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinWarrior::create();
 }
 
 HexusOpponentData* PenguinWarrior::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Bancroft.h"
+
 using namespace cocos2d;
 
 const std::string Bancroft::MapKeyBancroft = "bancroft";
@@ -51,7 +53,7 @@ Vec2 Bancroft::getDialogueOffset()
 
 LocalizedString* Bancroft::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Bancroft::create();
 }
 
 HexusOpponentData* Bancroft::getHexusOpponentData()

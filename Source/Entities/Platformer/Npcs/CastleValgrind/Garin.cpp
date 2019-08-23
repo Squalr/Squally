@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Garin.h"
+
 using namespace cocos2d;
 
 const std::string Garin::MapKeyGarin = "garin";
@@ -51,7 +53,7 @@ Vec2 Garin::getDialogueOffset()
 
 LocalizedString* Garin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Garin::create();
 }
 
 HexusOpponentData* Garin::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/LionMan.h"
+
 using namespace cocos2d;
 
 const std::string LionMan::MapKeyLionMan = "lion-man";
@@ -29,7 +31,7 @@ LionMan* LionMan::deserialize(ValueMap& properties)
 	return instance;
 }
 
-LionMan::LionMan(ValueMap& properties) : PlatformerEnemy(properties,
+LionMan::LionMan(ValueMap& properties) : super(properties,
 	LionMan::MapKeyLionMan,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
@@ -51,7 +53,7 @@ Vec2 LionMan::getDialogueOffset()
 
 LocalizedString* LionMan::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_LionMan::create();
 }
 
 HexusOpponentData* LionMan::getHexusOpponentData()

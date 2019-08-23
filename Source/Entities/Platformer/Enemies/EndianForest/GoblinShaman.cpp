@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/GoblinShaman.h"
+
 using namespace cocos2d;
 
 const std::string GoblinShaman::MapKeyGoblinShaman = "goblin-shaman";
@@ -29,7 +31,7 @@ GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-GoblinShaman::GoblinShaman(ValueMap& properties) : PlatformerEnemy(properties,
+GoblinShaman::GoblinShaman(ValueMap& properties) : super(properties,
 	GoblinShaman::MapKeyGoblinShaman,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
@@ -51,7 +53,7 @@ Vec2 GoblinShaman::getDialogueOffset()
 
 LocalizedString* GoblinShaman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_GoblinShaman::create();
 }
 
 HexusOpponentData* GoblinShaman::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/VampireLord.h"
+
 using namespace cocos2d;
 
 const std::string VampireLord::MapKeyVampireLord = "vampire-lord";
@@ -29,7 +31,7 @@ VampireLord* VampireLord::deserialize(ValueMap& properties)
 	return instance;
 }
 
-VampireLord::VampireLord(ValueMap& properties) : PlatformerEnemy(properties,
+VampireLord::VampireLord(ValueMap& properties) : super(properties,
 	VampireLord::MapKeyVampireLord,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
@@ -51,7 +53,7 @@ Vec2 VampireLord::getDialogueOffset()
 
 LocalizedString* VampireLord::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_VampireLord::create();
 }
 
 HexusOpponentData* VampireLord::getHexusOpponentData()

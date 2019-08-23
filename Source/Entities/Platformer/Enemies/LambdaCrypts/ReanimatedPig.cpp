@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/ReanimatedPig.h"
+
 using namespace cocos2d;
 
 const std::string ReanimatedPig::MapKeyReanimatedPig = "reanimated-pig";
@@ -29,7 +31,7 @@ ReanimatedPig* ReanimatedPig::deserialize(ValueMap& properties)
 	return instance;
 }
 
-ReanimatedPig::ReanimatedPig(ValueMap& properties) : PlatformerEnemy(properties,
+ReanimatedPig::ReanimatedPig(ValueMap& properties) : super(properties,
 	ReanimatedPig::MapKeyReanimatedPig,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
@@ -51,7 +53,7 @@ Vec2 ReanimatedPig::getDialogueOffset()
 
 LocalizedString* ReanimatedPig::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig::create();
 }
 
 HexusOpponentData* ReanimatedPig::getHexusOpponentData()

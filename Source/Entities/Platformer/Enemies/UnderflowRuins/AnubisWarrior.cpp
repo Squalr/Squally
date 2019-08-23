@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/AnubisWarrior.h"
+
 using namespace cocos2d;
 
 const std::string AnubisWarrior::MapKeyAnubisWarrior = "anubis-warrior";
@@ -29,7 +31,7 @@ AnubisWarrior* AnubisWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-AnubisWarrior::AnubisWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+AnubisWarrior::AnubisWarrior(ValueMap& properties) : super(properties,
 	AnubisWarrior::MapKeyAnubisWarrior,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 AnubisWarrior::getDialogueOffset()
 
 LocalizedString* AnubisWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisWarrior::create();
 }
 
 HexusOpponentData* AnubisWarrior::getHexusOpponentData()

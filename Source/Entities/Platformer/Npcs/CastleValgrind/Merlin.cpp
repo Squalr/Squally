@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Merlin.h"
+
 using namespace cocos2d;
 
 const std::string Merlin::MapKeyMerlin = "merlin";
@@ -51,7 +53,7 @@ Vec2 Merlin::getDialogueOffset()
 
 LocalizedString* Merlin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Merlin::create();
 }
 
 HexusOpponentData* Merlin::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/GoblinWarriorPig.h"
+
 using namespace cocos2d;
 
 const std::string GoblinWarriorPig::MapKeyGoblinWarriorPig = "goblin-warrior-pig";
@@ -29,7 +31,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap& properties)
 	return instance;
 }
 
-GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : PlatformerEnemy(properties,
+GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : super(properties,
 	GoblinWarriorPig::MapKeyGoblinWarriorPig,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,
@@ -53,7 +55,7 @@ Vec2 GoblinWarriorPig::getDialogueOffset()
 
 LocalizedString* GoblinWarriorPig::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_GoblinWarriorPig::create();
 }
 
 HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()

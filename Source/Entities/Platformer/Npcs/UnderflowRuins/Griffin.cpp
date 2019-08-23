@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Griffin.h"
+
 using namespace cocos2d;
 
 const std::string Griffin::MapKeyGriffin = "griffin";
@@ -51,7 +53,7 @@ Vec2 Griffin::getDialogueOffset()
 
 LocalizedString* Griffin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin::create();
 }
 
 HexusOpponentData* Griffin::getHexusOpponentData()

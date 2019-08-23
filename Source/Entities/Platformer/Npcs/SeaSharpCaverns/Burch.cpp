@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Burch.h"
+
 using namespace cocos2d;
 
 const std::string Burch::MapKeyBurch = "burch";
@@ -51,7 +53,7 @@ Vec2 Burch::getDialogueOffset()
 
 LocalizedString* Burch::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Burch::create();
 }
 
 HexusOpponentData* Burch::getHexusOpponentData()

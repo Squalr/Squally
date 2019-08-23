@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Juniper.h"
+
 using namespace cocos2d;
 
 const std::string Juniper::MapKeyJuniper = "juniper";
@@ -51,7 +53,7 @@ Vec2 Juniper::getDialogueOffset()
 
 LocalizedString* Juniper::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Juniper::create();
 }
 
 HexusOpponentData* Juniper::getHexusOpponentData()

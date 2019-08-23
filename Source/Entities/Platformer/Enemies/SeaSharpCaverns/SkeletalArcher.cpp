@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/SkeletalArcher.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
@@ -29,7 +31,7 @@ SkeletalArcher* SkeletalArcher::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalArcher::SkeletalArcher(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalArcher::SkeletalArcher(ValueMap& properties) : super(properties,
 	SkeletalArcher::MapKeySkeletalArcher,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalArcher::getDialogueOffset()
 
 LocalizedString* SkeletalArcher::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalArcher::create();
 }
 
 HexusOpponentData* SkeletalArcher::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Robin.h"
+
 using namespace cocos2d;
 
 const std::string Robin::MapKeyRobin = "robin";
@@ -51,7 +53,7 @@ Vec2 Robin::getDialogueOffset()
 
 LocalizedString* Robin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Robin::create();
 }
 
 HexusOpponentData* Robin::getHexusOpponentData()

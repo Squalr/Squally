@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/Asmodeus.h"
+
 using namespace cocos2d;
 
 const std::string Asmodeus::MapKeyAsmodeus = "asmodeus";
@@ -29,7 +31,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Asmodeus::Asmodeus(ValueMap& properties) : PlatformerEnemy(properties,
+Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
 	Asmodeus::MapKeyAsmodeus,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
@@ -51,7 +53,7 @@ Vec2 Asmodeus::getDialogueOffset()
 
 LocalizedString* Asmodeus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus::create();
 }
 
 HexusOpponentData* Asmodeus::getHexusOpponentData()

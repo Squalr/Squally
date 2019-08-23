@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Turtle.h"
+
 using namespace cocos2d;
 
 const std::string Turtle::MapKeyTurtle = "turtle";
@@ -51,7 +53,7 @@ Vec2 Turtle::getDialogueOffset()
 
 LocalizedString* Turtle::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_EndianForest_Turtle::create();
 }
 
 HexusOpponentData* Turtle::getHexusOpponentData()

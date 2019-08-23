@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Ursula.h"
+
 using namespace cocos2d;
 
 const std::string Ursula::MapKeyUrsula = "ursula";
@@ -51,7 +53,7 @@ Vec2 Ursula::getDialogueOffset()
 
 LocalizedString* Ursula::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Ursula::create();
 }
 
 HexusOpponentData* Ursula::getHexusOpponentData()

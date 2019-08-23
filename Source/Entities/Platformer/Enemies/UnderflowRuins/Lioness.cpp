@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Lioness.h"
+
 using namespace cocos2d;
 
 const std::string Lioness::MapKeyLioness = "lioness";
@@ -29,7 +31,7 @@ Lioness* Lioness::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Lioness::Lioness(ValueMap& properties) : PlatformerEnemy(properties,
+Lioness::Lioness(ValueMap& properties) : super(properties,
 	Lioness::MapKeyLioness,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Emblem,
@@ -51,7 +53,7 @@ Vec2 Lioness::getDialogueOffset()
 
 LocalizedString* Lioness::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Lioness::create();
 }
 
 HexusOpponentData* Lioness::getHexusOpponentData()

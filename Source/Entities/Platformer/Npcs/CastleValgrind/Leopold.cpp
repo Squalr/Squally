@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Leopold.h"
+
 using namespace cocos2d;
 
 const std::string Leopold::MapKeyLeopold = "leopold";
@@ -51,7 +53,7 @@ Vec2 Leopold::getDialogueOffset()
 
 LocalizedString* Leopold::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Leopold::create();
 }
 
 HexusOpponentData* Leopold::getHexusOpponentData()

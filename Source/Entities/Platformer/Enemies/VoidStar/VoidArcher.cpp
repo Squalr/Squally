@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/VoidArcher.h"
+
 using namespace cocos2d;
 
 const std::string VoidArcher::MapKeyVoidArcher = "void-archer";
@@ -29,7 +31,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap& properties)
 	return instance;
 }
 
-VoidArcher::VoidArcher(ValueMap& properties) : PlatformerEnemy(properties,
+VoidArcher::VoidArcher(ValueMap& properties) : super(properties,
 	VoidArcher::MapKeyVoidArcher,
 	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
@@ -51,7 +53,7 @@ Vec2 VoidArcher::getDialogueOffset()
 
 LocalizedString* VoidArcher::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_VoidArcher::create();
 }
 
 HexusOpponentData* VoidArcher::getHexusOpponentData()

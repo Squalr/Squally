@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Zana.h"
+
 using namespace cocos2d;
 
 const std::string Zana::MapKeyZana = "zana";
@@ -51,7 +53,7 @@ Vec2 Zana::getDialogueOffset()
 
 LocalizedString* Zana::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Zana::create();
 }
 
 HexusOpponentData* Zana::getHexusOpponentData()

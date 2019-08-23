@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Osiris.h"
+
 using namespace cocos2d;
 
 const std::string Osiris::MapKeyOsiris = "osiris";
@@ -29,7 +31,7 @@ Osiris* Osiris::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Osiris::Osiris(ValueMap& properties) : PlatformerEnemy(properties,
+Osiris::Osiris(ValueMap& properties) : super(properties,
 	Osiris::MapKeyOsiris,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
@@ -51,7 +53,7 @@ Vec2 Osiris::getDialogueOffset()
 
 LocalizedString* Osiris::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Osiris::create();
 }
 
 HexusOpponentData* Osiris::getHexusOpponentData()

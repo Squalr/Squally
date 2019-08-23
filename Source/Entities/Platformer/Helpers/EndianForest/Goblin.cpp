@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Goblin.h"
+
 using namespace cocos2d;
 
 const std::string Goblin::MapKeyGoblin = "goblin";
@@ -51,7 +53,7 @@ Vec2 Goblin::getDialogueOffset()
 
 LocalizedString* Goblin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_EndianForest_Goblin::create();
 }
 
 HexusOpponentData* Goblin::getHexusOpponentData()

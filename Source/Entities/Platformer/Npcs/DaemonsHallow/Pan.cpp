@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Pan.h"
+
 using namespace cocos2d;
 
 const std::string Pan::MapKeyPan = "pan";
@@ -51,7 +53,7 @@ Vec2 Pan::getDialogueOffset()
 
 LocalizedString* Pan::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Pan::create();
 }
 
 HexusOpponentData* Pan::getHexusOpponentData()

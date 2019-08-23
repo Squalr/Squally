@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/SkeletalPirate.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalPirate::MapKeySkeletalPirate = "skeletal-pirate";
@@ -29,7 +31,7 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalPirate::SkeletalPirate(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalPirate::SkeletalPirate(ValueMap& properties) : super(properties,
 	SkeletalPirate::MapKeySkeletalPirate,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalPirate::getDialogueOffset()
 
 LocalizedString* SkeletalPirate::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate::create();
 }
 
 HexusOpponentData* SkeletalPirate::getHexusOpponentData()

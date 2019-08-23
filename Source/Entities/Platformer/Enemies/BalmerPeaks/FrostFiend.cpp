@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/FrostFiend.h"
+
 using namespace cocos2d;
 
 const std::string FrostFiend::MapKeyFrostFiend = "frost-fiend";
@@ -29,7 +31,7 @@ FrostFiend* FrostFiend::deserialize(ValueMap& properties)
 	return instance;
 }
 
-FrostFiend::FrostFiend(ValueMap& properties) : PlatformerEnemy(properties,
+FrostFiend::FrostFiend(ValueMap& properties) : super(properties,
 	FrostFiend::MapKeyFrostFiend,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,
@@ -51,7 +53,7 @@ Vec2 FrostFiend::getDialogueOffset()
 
 LocalizedString* FrostFiend::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_FrostFiend::create();
 }
 
 HexusOpponentData* FrostFiend::getHexusOpponentData()

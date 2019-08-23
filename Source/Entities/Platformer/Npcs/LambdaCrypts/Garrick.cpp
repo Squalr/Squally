@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Garrick.h"
+
 using namespace cocos2d;
 
 const std::string Garrick::MapKeyGarrick = "garrick";
@@ -51,7 +53,7 @@ Vec2 Garrick::getDialogueOffset()
 
 LocalizedString* Garrick::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Garrick::create();
 }
 
 HexusOpponentData* Garrick::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/ZombieElric.h"
+
 using namespace cocos2d;
 
 const std::string ZombieElric::MapKeyZombieElric = "zombie-elric";
@@ -29,7 +31,7 @@ ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 	return instance;
 }
 
-ZombieElric::ZombieElric(ValueMap& properties) : PlatformerEnemy(properties,
+ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
 	ZombieElric::MapKeyZombieElric,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
@@ -51,7 +53,7 @@ Vec2 ZombieElric::getDialogueOffset()
 
 LocalizedString* ZombieElric::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric::create();
 }
 
 HexusOpponentData* ZombieElric::getHexusOpponentData()

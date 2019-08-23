@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Mermaid.h"
+
 using namespace cocos2d;
 
 const std::string Mermaid::MapKeyMermaid = "mermaid";
@@ -29,7 +31,7 @@ Mermaid* Mermaid::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Mermaid::Mermaid(ValueMap& properties) : PlatformerEnemy(properties,
+Mermaid::Mermaid(ValueMap& properties) : super(properties,
 	Mermaid::MapKeyMermaid,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
@@ -51,7 +53,7 @@ Vec2 Mermaid::getDialogueOffset()
 
 LocalizedString* Mermaid::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Mermaid::create();
 }
 
 HexusOpponentData* Mermaid::getHexusOpponentData()

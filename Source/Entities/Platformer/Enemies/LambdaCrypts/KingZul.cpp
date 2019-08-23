@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/KingZul.h"
+
 using namespace cocos2d;
 
 const std::string KingZul::MapKeyKingZul = "king-zul";
@@ -29,7 +31,7 @@ KingZul* KingZul::deserialize(ValueMap& properties)
 	return instance;
 }
 
-KingZul::KingZul(ValueMap& properties) : PlatformerEnemy(properties,
+KingZul::KingZul(ValueMap& properties) : super(properties,
 	KingZul::MapKeyKingZul,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
@@ -51,7 +53,7 @@ Vec2 KingZul::getDialogueOffset()
 
 LocalizedString* KingZul::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul::create();
 }
 
 HexusOpponentData* KingZul::getHexusOpponentData()

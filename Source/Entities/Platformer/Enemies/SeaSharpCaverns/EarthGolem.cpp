@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/EarthGolem.h"
+
 using namespace cocos2d;
 
 const std::string EarthGolem::MapKeyEarthGolem = "earth-golem";
@@ -29,7 +31,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-EarthGolem::EarthGolem(ValueMap& properties) : PlatformerEnemy(properties,
+EarthGolem::EarthGolem(ValueMap& properties) : super(properties,
 	EarthGolem::MapKeyEarthGolem,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 EarthGolem::getDialogueOffset()
 
 LocalizedString* EarthGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_EarthGolem::create();
 }
 
 HexusOpponentData* EarthGolem::getHexusOpponentData()

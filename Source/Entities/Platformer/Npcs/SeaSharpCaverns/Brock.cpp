@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Brock.h"
+
 using namespace cocos2d;
 
 const std::string Brock::MapKeyBrock = "brock";
@@ -51,7 +53,7 @@ Vec2 Brock::getDialogueOffset()
 
 LocalizedString* Brock::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Brock::create();
 }
 
 HexusOpponentData* Brock::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Cryogen.h"
+
 using namespace cocos2d;
 
 const std::string Cryogen::MapKeyCryogen = "cryogen";
@@ -29,7 +31,7 @@ Cryogen* Cryogen::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Cryogen::Cryogen(ValueMap& properties) : PlatformerEnemy(properties,
+Cryogen::Cryogen(ValueMap& properties) : super(properties,
 	Cryogen::MapKeyCryogen,
 	EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cryogen_Emblem,
@@ -51,7 +53,7 @@ Vec2 Cryogen::getDialogueOffset()
 
 LocalizedString* Cryogen::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen::create();
 }
 
 HexusOpponentData* Cryogen::getHexusOpponentData()

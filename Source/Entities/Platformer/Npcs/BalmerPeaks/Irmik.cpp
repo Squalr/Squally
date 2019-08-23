@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Irmik.h"
+
 using namespace cocos2d;
 
 const std::string Irmik::MapKeyIrmik = "irmik";
@@ -51,7 +53,7 @@ Vec2 Irmik::getDialogueOffset()
 
 LocalizedString* Irmik::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Irmik::create();
 }
 
 HexusOpponentData* Irmik::getHexusOpponentData()

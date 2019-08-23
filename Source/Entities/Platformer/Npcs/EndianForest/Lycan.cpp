@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Lycan.h"
+
 using namespace cocos2d;
 
 const std::string Lycan::MapKeyLycan = "lycan";
@@ -51,7 +53,7 @@ Vec2 Lycan::getDialogueOffset()
 
 LocalizedString* Lycan::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Lycan::create();
 }
 
 HexusOpponentData* Lycan::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Matu.h"
+
 using namespace cocos2d;
 
 const std::string Matu::MapKeyMatu = "matu";
@@ -51,7 +53,7 @@ Vec2 Matu::getDialogueOffset()
 
 LocalizedString* Matu::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Matu::create();
 }
 
 HexusOpponentData* Matu::getHexusOpponentData()

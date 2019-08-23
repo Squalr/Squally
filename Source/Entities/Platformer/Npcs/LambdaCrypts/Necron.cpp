@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Necron.h"
+
 using namespace cocos2d;
 
 const std::string Necron::MapKeyNecron = "necron";
@@ -51,7 +53,7 @@ Vec2 Necron::getDialogueOffset()
 
 LocalizedString* Necron::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Necron::create();
 }
 
 HexusOpponentData* Necron::getHexusOpponentData()

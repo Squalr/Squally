@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Reaper.h"
+
 using namespace cocos2d;
 
 const std::string Reaper::MapKeyReaper = "reaper";
@@ -29,7 +31,7 @@ Reaper* Reaper::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Reaper::Reaper(ValueMap& properties) : PlatformerEnemy(properties,
+Reaper::Reaper(ValueMap& properties) : super(properties,
 	Reaper::MapKeyReaper,
 	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
@@ -51,7 +53,7 @@ Vec2 Reaper::getDialogueOffset()
 
 LocalizedString* Reaper::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Reaper::create();
 }
 
 HexusOpponentData* Reaper::getHexusOpponentData()

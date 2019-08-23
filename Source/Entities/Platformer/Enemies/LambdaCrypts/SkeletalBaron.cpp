@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/SkeletalBaron.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalBaron::MapKeySkeletalBaron = "skeletal-baron";
@@ -29,7 +31,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalBaron::SkeletalBaron(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
 	SkeletalBaron::MapKeySkeletalBaron,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalBaron::getDialogueOffset()
 
 LocalizedString* SkeletalBaron::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron::create();
 }
 
 HexusOpponentData* SkeletalBaron::getHexusOpponentData()

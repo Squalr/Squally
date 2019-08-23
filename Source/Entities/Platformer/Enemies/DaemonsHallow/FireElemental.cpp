@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/FireElemental.h"
+
 using namespace cocos2d;
 
 const std::string FireElemental::MapKeyFireElemental = "fire-elemental";
@@ -29,7 +31,7 @@ FireElemental* FireElemental::deserialize(ValueMap& properties)
 	return instance;
 }
 
-FireElemental::FireElemental(ValueMap& properties) : PlatformerEnemy(properties,
+FireElemental::FireElemental(ValueMap& properties) : super(properties,
 	FireElemental::MapKeyFireElemental,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
@@ -51,7 +53,7 @@ Vec2 FireElemental::getDialogueOffset()
 
 LocalizedString* FireElemental::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_FireElemental::create();
 }
 
 HexusOpponentData* FireElemental::getHexusOpponentData()

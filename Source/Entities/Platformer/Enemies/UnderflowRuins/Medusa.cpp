@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Medusa.h"
+
 using namespace cocos2d;
 
 const std::string Medusa::MapKeyMedusa = "medusa";
@@ -29,7 +31,7 @@ Medusa* Medusa::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Medusa::Medusa(ValueMap& properties) : PlatformerEnemy(properties,
+Medusa::Medusa(ValueMap& properties) : super(properties,
 	Medusa::MapKeyMedusa,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
@@ -51,7 +53,7 @@ Vec2 Medusa::getDialogueOffset()
 
 LocalizedString* Medusa::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Medusa::create();
 }
 
 HexusOpponentData* Medusa::getHexusOpponentData()

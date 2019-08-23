@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonShaman.h"
+
 using namespace cocos2d;
 
 const std::string DemonShaman::MapKeyDemonShaman = "demon-shaman";
@@ -29,7 +31,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DemonShaman::DemonShaman(ValueMap& properties) : PlatformerEnemy(properties,
+DemonShaman::DemonShaman(ValueMap& properties) : super(properties,
 	DemonShaman::MapKeyDemonShaman,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Emblem,
@@ -51,7 +53,7 @@ Vec2 DemonShaman::getDialogueOffset()
 
 LocalizedString* DemonShaman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_DemonShaman::create();
 }
 
 HexusOpponentData* DemonShaman::getHexusOpponentData()

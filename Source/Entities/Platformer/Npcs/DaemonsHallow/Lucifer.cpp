@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Lucifer.h"
+
 using namespace cocos2d;
 
 const std::string Lucifer::MapKeyLucifer = "lucifer";
@@ -51,7 +53,7 @@ Vec2 Lucifer::getDialogueOffset()
 
 LocalizedString* Lucifer::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Lucifer::create();
 }
 
 HexusOpponentData* Lucifer::getHexusOpponentData()

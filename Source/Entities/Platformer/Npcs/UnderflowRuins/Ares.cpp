@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Ares.h"
+
 using namespace cocos2d;
 
 const std::string Ares::MapKeyAres = "ares";
@@ -51,7 +53,7 @@ Vec2 Ares::getDialogueOffset()
 
 LocalizedString* Ares::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Ares::create();
 }
 
 HexusOpponentData* Ares::getHexusOpponentData()

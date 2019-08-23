@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/SkeletalPriestess.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalPriestess::MapKeySkeletalPriestess = "skeletal-priestess";
@@ -29,7 +31,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : super(properties,
 	SkeletalPriestess::MapKeySkeletalPriestess,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalPriestess::getDialogueOffset()
 
 LocalizedString* SkeletalPriestess::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalPriestess::create();
 }
 
 HexusOpponentData* SkeletalPriestess::getHexusOpponentData()

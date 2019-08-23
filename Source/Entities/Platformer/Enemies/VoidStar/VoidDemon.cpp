@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/VoidDemon.h"
+
 using namespace cocos2d;
 
 const std::string VoidDemon::MapKeyVoidDemon = "void-demon";
@@ -29,7 +31,7 @@ VoidDemon* VoidDemon::deserialize(ValueMap& properties)
 	return instance;
 }
 
-VoidDemon::VoidDemon(ValueMap& properties) : PlatformerEnemy(properties,
+VoidDemon::VoidDemon(ValueMap& properties) : super(properties,
 	VoidDemon::MapKeyVoidDemon,
 	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
@@ -51,7 +53,7 @@ Vec2 VoidDemon::getDialogueOffset()
 
 LocalizedString* VoidDemon::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_VoidDemon::create();
 }
 
 HexusOpponentData* VoidDemon::getHexusOpponentData()

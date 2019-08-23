@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Amelia.h"
+
 using namespace cocos2d;
 
 const std::string Amelia::MapKeyAmelia = "amelia";
@@ -51,7 +53,7 @@ Vec2 Amelia::getDialogueOffset()
 
 LocalizedString* Amelia::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia::create();
 }
 
 HexusOpponentData* Amelia::getHexusOpponentData()

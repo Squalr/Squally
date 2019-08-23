@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Zombie.h"
+
 using namespace cocos2d;
 
 const std::string Zombie::MapKeyZombie = "zombie";
@@ -29,7 +31,7 @@ Zombie* Zombie::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Zombie::Zombie(ValueMap& properties) : PlatformerEnemy(properties,
+Zombie::Zombie(ValueMap& properties) : super(properties,
 	Zombie::MapKeyZombie,
 	EntityResources::Enemies_CastleValgrind_Zombie_Animations,
 	EntityResources::Enemies_CastleValgrind_Zombie_Emblem,
@@ -51,7 +53,7 @@ Vec2 Zombie::getDialogueOffset()
 
 LocalizedString* Zombie::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Zombie::create();
 }
 
 HexusOpponentData* Zombie::getHexusOpponentData()

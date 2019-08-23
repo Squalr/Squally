@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Exterminator.h"
+
 using namespace cocos2d;
 
 const std::string Exterminator::MapKeyExterminator = "exterminator";
@@ -29,7 +31,7 @@ Exterminator* Exterminator::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Exterminator::Exterminator(ValueMap& properties) : PlatformerEnemy(properties,
+Exterminator::Exterminator(ValueMap& properties) : super(properties,
 	Exterminator::MapKeyExterminator,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
@@ -51,7 +53,7 @@ Vec2 Exterminator::getDialogueOffset()
 
 LocalizedString* Exterminator::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Exterminator::create();
 }
 
 HexusOpponentData* Exterminator::getHexusOpponentData()

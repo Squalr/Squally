@@ -96,7 +96,6 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[FireTiger::MapKeyFireTiger] = [=](ValueMap properties) { return (GameObject*)FireTiger::deserialize(properties); };
 	this->deserializers[Krampus::MapKeyKrampus] = [=](ValueMap properties) { return (GameObject*)Krampus::deserialize(properties); };
 	this->deserializers[LavaGolem::MapKeyLavaGolem] = [=](ValueMap properties) { return (GameObject*)LavaGolem::deserialize(properties); };
-	this->deserializers[Apple::MapKeyApple] = [=](ValueMap properties) { return (GameObject*)Apple::deserialize(properties); };
 	this->deserializers[CritterDemon::MapKeyCritterDemon] = [=](ValueMap properties) { return (GameObject*)CritterDemon::deserialize(properties); };
 	this->deserializers[Scrappy::MapKeyScrappy] = [=](ValueMap properties) { return (GameObject*)Scrappy::deserialize(properties); };
 	this->deserializers[Ash::MapKeyAsh] = [=](ValueMap properties) { return (GameObject*)Ash::deserialize(properties); };

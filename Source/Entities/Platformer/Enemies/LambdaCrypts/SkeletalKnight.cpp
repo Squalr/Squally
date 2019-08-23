@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/SkeletalKnight.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalKnight::MapKeySkeletalKnight = "skeletal-knight";
@@ -29,7 +31,7 @@ SkeletalKnight* SkeletalKnight::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalKnight::SkeletalKnight(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalKnight::SkeletalKnight(ValueMap& properties) : super(properties,
 	SkeletalKnight::MapKeySkeletalKnight,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalKnight::getDialogueOffset()
 
 LocalizedString* SkeletalKnight::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalKnight::create();
 }
 
 HexusOpponentData* SkeletalKnight::getHexusOpponentData()

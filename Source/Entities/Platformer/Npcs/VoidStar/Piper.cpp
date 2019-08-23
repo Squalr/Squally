@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Piper.h"
+
 using namespace cocos2d;
 
 const std::string Piper::MapKeyPiper = "piper";
@@ -51,7 +53,7 @@ Vec2 Piper::getDialogueOffset()
 
 LocalizedString* Piper::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Piper::create();
 }
 
 HexusOpponentData* Piper::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/SnowFiend.h"
+
 using namespace cocos2d;
 
 const std::string SnowFiend::MapKeySnowFiend = "snow-fiend";
@@ -29,7 +31,7 @@ SnowFiend* SnowFiend::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SnowFiend::SnowFiend(ValueMap& properties) : PlatformerEnemy(properties,
+SnowFiend::SnowFiend(ValueMap& properties) : super(properties,
 	SnowFiend::MapKeySnowFiend,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
@@ -51,7 +53,7 @@ Vec2 SnowFiend::getDialogueOffset()
 
 LocalizedString* SnowFiend::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_SnowFiend::create();
 }
 
 HexusOpponentData* SnowFiend::getHexusOpponentData()

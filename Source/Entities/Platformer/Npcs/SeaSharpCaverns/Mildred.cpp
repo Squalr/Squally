@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Mildred.h"
+
 using namespace cocos2d;
 
 const std::string Mildred::MapKeyMildred = "mildred";
@@ -51,7 +53,7 @@ Vec2 Mildred::getDialogueOffset()
 
 LocalizedString* Mildred::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Mildred::create();
 }
 
 HexusOpponentData* Mildred::getHexusOpponentData()

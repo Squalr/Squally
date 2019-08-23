@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Scarecrow.h"
+
 using namespace cocos2d;
 
 const std::string Scarecrow::MapKeyScarecrow = "scarecrow";
@@ -29,7 +31,7 @@ Scarecrow* Scarecrow::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Scarecrow::Scarecrow(ValueMap& properties) : PlatformerEnemy(properties,
+Scarecrow::Scarecrow(ValueMap& properties) : super(properties,
 	Scarecrow::MapKeyScarecrow,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
@@ -51,7 +53,7 @@ Vec2 Scarecrow::getDialogueOffset()
 
 LocalizedString* Scarecrow::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Scarecrow::create();
 }
 
 HexusOpponentData* Scarecrow::getHexusOpponentData()

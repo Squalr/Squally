@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/Undead.h"
+
 using namespace cocos2d;
 
 const std::string Undead::MapKeyUndead = "undead";
@@ -29,7 +31,7 @@ Undead* Undead::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Undead::Undead(ValueMap& properties) : PlatformerEnemy(properties,
+Undead::Undead(ValueMap& properties) : super(properties,
 	Undead::MapKeyUndead,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
@@ -51,7 +53,7 @@ Vec2 Undead::getDialogueOffset()
 
 LocalizedString* Undead::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_Undead::create();
 }
 
 HexusOpponentData* Undead::getHexusOpponentData()

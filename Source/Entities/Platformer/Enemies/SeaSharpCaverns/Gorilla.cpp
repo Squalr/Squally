@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Gorilla.h"
+
 using namespace cocos2d;
 
 const std::string Gorilla::MapKeyGorilla = "gorilla";
@@ -29,7 +31,7 @@ Gorilla* Gorilla::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Gorilla::Gorilla(ValueMap& properties) : PlatformerEnemy(properties,
+Gorilla::Gorilla(ValueMap& properties) : super(properties,
 	Gorilla::MapKeyGorilla,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Emblem,
@@ -51,7 +53,7 @@ Vec2 Gorilla::getDialogueOffset()
 
 LocalizedString* Gorilla::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_Gorilla::create();
 }
 
 HexusOpponentData* Gorilla::getHexusOpponentData()

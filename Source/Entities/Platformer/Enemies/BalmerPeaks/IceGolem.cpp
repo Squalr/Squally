@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/IceGolem.h"
+
 using namespace cocos2d;
 
 const std::string IceGolem::MapKeyIceGolem = "ice-golem";
@@ -29,7 +31,7 @@ IceGolem* IceGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-IceGolem::IceGolem(ValueMap& properties) : PlatformerEnemy(properties,
+IceGolem::IceGolem(ValueMap& properties) : super(properties,
 	IceGolem::MapKeyIceGolem,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 IceGolem::getDialogueOffset()
 
 LocalizedString* IceGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_IceGolem::create();
 }
 
 HexusOpponentData* IceGolem::getHexusOpponentData()

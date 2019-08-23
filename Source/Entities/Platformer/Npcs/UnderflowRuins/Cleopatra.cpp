@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Cleopatra.h"
+
 using namespace cocos2d;
 
 const std::string Cleopatra::MapKeyCleopatra = "cleopatra";
@@ -51,7 +53,7 @@ Vec2 Cleopatra::getDialogueOffset()
 
 LocalizedString* Cleopatra::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Cleopatra::create();
 }
 
 HexusOpponentData* Cleopatra::getHexusOpponentData()

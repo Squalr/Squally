@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Roger.h"
+
 using namespace cocos2d;
 
 const std::string Roger::MapKeyRoger = "roger";
@@ -51,7 +53,7 @@ Vec2 Roger::getDialogueOffset()
 
 LocalizedString* Roger::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Roger::create();
 }
 
 HexusOpponentData* Roger::getHexusOpponentData()

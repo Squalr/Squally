@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Poseidon.h"
+
 using namespace cocos2d;
 
 const std::string Poseidon::MapKeyPoseidon = "poseidon";
@@ -51,7 +53,7 @@ Vec2 Poseidon::getDialogueOffset()
 
 LocalizedString* Poseidon::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Poseidon::create();
 }
 
 HexusOpponentData* Poseidon::getHexusOpponentData()

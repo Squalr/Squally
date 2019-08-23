@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/FireTiger.h"
+
 using namespace cocos2d;
 
 const std::string FireTiger::MapKeyFireTiger = "fire-tiger";
@@ -29,7 +31,7 @@ FireTiger* FireTiger::deserialize(ValueMap& properties)
 	return instance;
 }
 
-FireTiger::FireTiger(ValueMap& properties) : PlatformerEnemy(properties,
+FireTiger::FireTiger(ValueMap& properties) : super(properties,
 	FireTiger::MapKeyFireTiger,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
@@ -51,7 +53,7 @@ Vec2 FireTiger::getDialogueOffset()
 
 LocalizedString* FireTiger::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_FireTiger::create();
 }
 
 HexusOpponentData* FireTiger::getHexusOpponentData()

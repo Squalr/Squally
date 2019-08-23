@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/BoneFiend.h"
+
 using namespace cocos2d;
 
 const std::string BoneFiend::MapKeyBoneFiend = "bone-fiend";
@@ -29,7 +31,7 @@ BoneFiend* BoneFiend::deserialize(ValueMap& properties)
 	return instance;
 }
 
-BoneFiend::BoneFiend(ValueMap& properties) : PlatformerEnemy(properties,
+BoneFiend::BoneFiend(ValueMap& properties) : super(properties,
 	BoneFiend::MapKeyBoneFiend,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
@@ -51,7 +53,7 @@ Vec2 BoneFiend::getDialogueOffset()
 
 LocalizedString* BoneFiend::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_BoneFiend::create();
 }
 
 HexusOpponentData* BoneFiend::getHexusOpponentData()

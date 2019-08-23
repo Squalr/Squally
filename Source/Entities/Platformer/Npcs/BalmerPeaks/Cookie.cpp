@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Cookie.h"
+
 using namespace cocos2d;
 
 const std::string Cookie::MapKeyCookie = "cookie";
@@ -51,7 +53,7 @@ Vec2 Cookie::getDialogueOffset()
 
 LocalizedString* Cookie::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Cookie::create();
 }
 
 HexusOpponentData* Cookie::getHexusOpponentData()

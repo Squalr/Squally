@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/Mystic.h"
+
 using namespace cocos2d;
 
 const std::string Mystic::MapKeyMystic = "mystic";
@@ -29,7 +31,7 @@ Mystic* Mystic::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Mystic::Mystic(ValueMap& properties) : PlatformerEnemy(properties,
+Mystic::Mystic(ValueMap& properties) : super(properties,
 	Mystic::MapKeyMystic,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
@@ -51,7 +53,7 @@ Vec2 Mystic::getDialogueOffset()
 
 LocalizedString* Mystic::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_Mystic::create();
 }
 
 HexusOpponentData* Mystic::getHexusOpponentData()

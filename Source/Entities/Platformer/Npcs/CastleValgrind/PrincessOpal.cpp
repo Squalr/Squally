@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/PrincessOpal.h"
+
 using namespace cocos2d;
 
 const std::string PrincessOpal::MapKeyPrincessOpal = "princess-opal";
@@ -51,7 +53,7 @@ Vec2 PrincessOpal::getDialogueOffset()
 
 LocalizedString* PrincessOpal::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_PrincessOpal::create();
 }
 
 HexusOpponentData* PrincessOpal::getHexusOpponentData()

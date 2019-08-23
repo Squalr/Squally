@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Viper.h"
+
 using namespace cocos2d;
 
 const std::string Viper::MapKeyViper = "viper";
@@ -51,7 +53,7 @@ Vec2 Viper::getDialogueOffset()
 
 LocalizedString* Viper::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Viper::create();
 }
 
 HexusOpponentData* Viper::getHexusOpponentData()

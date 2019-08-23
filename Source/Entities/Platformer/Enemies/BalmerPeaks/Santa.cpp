@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Santa.h"
+
 using namespace cocos2d;
 
 const std::string Santa::MapKeySanta = "santa";
@@ -29,7 +31,7 @@ Santa* Santa::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Santa::Santa(ValueMap& properties) : PlatformerEnemy(properties,
+Santa::Santa(ValueMap& properties) : super(properties,
 	Santa::MapKeySanta,
 	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,
@@ -51,7 +53,7 @@ Vec2 Santa::getDialogueOffset()
 
 LocalizedString* Santa::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_Santa::create();
 }
 
 HexusOpponentData* Santa::getHexusOpponentData()

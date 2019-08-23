@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalNecromancer::MapKeySkeletalNecromancer = "skeletal-necromancer";
@@ -29,7 +31,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : super(properties,
 	SkeletalNecromancer::MapKeySkeletalNecromancer,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalNecromancer::getDialogueOffset()
 
 LocalizedString* SkeletalNecromancer::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalNecromancer::create();
 }
 
 HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()

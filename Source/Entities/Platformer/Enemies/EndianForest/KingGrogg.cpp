@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/KingGrogg.h"
+
 using namespace cocos2d;
 
 const std::string KingGrogg::MapKeyKingGrogg = "king-grogg";
@@ -29,7 +31,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 	return instance;
 }
 
-KingGrogg::KingGrogg(ValueMap& properties) : PlatformerEnemy(properties,
+KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
 	KingGrogg::MapKeyKingGrogg,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
@@ -51,7 +53,7 @@ Vec2 KingGrogg::getDialogueOffset()
 
 LocalizedString* KingGrogg::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_KingGrogg::create();
 }
 
 HexusOpponentData* KingGrogg::getHexusOpponentData()

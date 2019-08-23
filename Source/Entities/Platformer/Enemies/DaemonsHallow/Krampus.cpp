@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/Krampus.h"
+
 using namespace cocos2d;
 
 const std::string Krampus::MapKeyKrampus = "krampus";
@@ -29,7 +31,7 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Krampus::Krampus(ValueMap& properties) : PlatformerEnemy(properties,
+Krampus::Krampus(ValueMap& properties) : super(properties,
 	Krampus::MapKeyKrampus,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
@@ -51,7 +53,7 @@ Vec2 Krampus::getDialogueOffset()
 
 LocalizedString* Krampus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus::create();
 }
 
 HexusOpponentData* Krampus::getHexusOpponentData()

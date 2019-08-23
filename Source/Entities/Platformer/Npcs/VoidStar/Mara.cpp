@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Mara.h"
+
 using namespace cocos2d;
 
 const std::string Mara::MapKeyMara = "mara";
@@ -51,7 +53,7 @@ Vec2 Mara::getDialogueOffset()
 
 LocalizedString* Mara::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Mara::create();
 }
 
 HexusOpponentData* Mara::getHexusOpponentData()

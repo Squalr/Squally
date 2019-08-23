@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Mabel.h"
+
 using namespace cocos2d;
 
 const std::string Mabel::MapKeyMabel = "mabel";
@@ -51,7 +53,7 @@ Vec2 Mabel::getDialogueOffset()
 
 LocalizedString* Mabel::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Mabel::create();
 }
 
 HexusOpponentData* Mabel::getHexusOpponentData()

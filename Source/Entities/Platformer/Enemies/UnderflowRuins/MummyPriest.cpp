@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/MummyPriest.h"
+
 using namespace cocos2d;
 
 const std::string MummyPriest::MapKeyMummyPriest = "mummy-priest";
@@ -29,7 +31,7 @@ MummyPriest* MummyPriest::deserialize(ValueMap& properties)
 	return instance;
 }
 
-MummyPriest::MummyPriest(ValueMap& properties) : PlatformerEnemy(properties,
+MummyPriest::MummyPriest(ValueMap& properties) : super(properties,
 	MummyPriest::MapKeyMummyPriest,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
@@ -51,7 +53,7 @@ Vec2 MummyPriest::getDialogueOffset()
 
 LocalizedString* MummyPriest::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_MummyPriest::create();
 }
 
 HexusOpponentData* MummyPriest::getHexusOpponentData()

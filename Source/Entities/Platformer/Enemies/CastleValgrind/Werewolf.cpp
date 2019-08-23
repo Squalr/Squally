@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Werewolf.h"
+
 using namespace cocos2d;
 
 const std::string Werewolf::MapKeyWerewolf = "werewolf";
@@ -29,7 +31,7 @@ Werewolf* Werewolf::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Werewolf::Werewolf(ValueMap& properties) : PlatformerEnemy(properties,
+Werewolf::Werewolf(ValueMap& properties) : super(properties,
 	Werewolf::MapKeyWerewolf,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,
@@ -51,7 +53,7 @@ Vec2 Werewolf::getDialogueOffset()
 
 LocalizedString* Werewolf::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Werewolf::create();
 }
 
 HexusOpponentData* Werewolf::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Agnes.h"
+
 using namespace cocos2d;
 
 const std::string Agnes::MapKeyAgnes = "agnes";
@@ -29,7 +31,7 @@ Agnes* Agnes::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Agnes::Agnes(ValueMap& properties) : PlatformerEnemy(properties,
+Agnes::Agnes(ValueMap& properties) : super(properties,
 	Agnes::MapKeyAgnes,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
@@ -51,7 +53,7 @@ Vec2 Agnes::getDialogueOffset()
 
 LocalizedString* Agnes::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Agnes::create();
 }
 
 HexusOpponentData* Agnes::getHexusOpponentData()

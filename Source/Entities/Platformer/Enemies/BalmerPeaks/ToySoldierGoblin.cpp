@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/ToySoldierGoblin.h"
+
 using namespace cocos2d;
 
 const std::string ToySoldierGoblin::MapKeyToySoldierGoblin = "toy-soldier-goblin";
@@ -29,7 +31,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& properties)
 	return instance;
 }
 
-ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : PlatformerEnemy(properties,
+ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : super(properties,
 	ToySoldierGoblin::MapKeyToySoldierGoblin,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
@@ -51,7 +53,7 @@ Vec2 ToySoldierGoblin::getDialogueOffset()
 
 LocalizedString* ToySoldierGoblin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_ToySoldierGoblin::create();
 }
 
 HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()

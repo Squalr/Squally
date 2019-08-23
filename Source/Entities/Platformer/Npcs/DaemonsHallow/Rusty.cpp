@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Rusty.h"
+
 using namespace cocos2d;
 
 const std::string Rusty::MapKeyRusty = "rusty";
@@ -51,7 +53,7 @@ Vec2 Rusty::getDialogueOffset()
 
 LocalizedString* Rusty::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty::create();
 }
 
 HexusOpponentData* Rusty::getHexusOpponentData()

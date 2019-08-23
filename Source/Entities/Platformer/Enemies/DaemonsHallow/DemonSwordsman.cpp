@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonSwordsman.h"
+
 using namespace cocos2d;
 
 const std::string DemonSwordsman::MapKeyDemonSwordsman = "demon-swordsman";
@@ -29,7 +31,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DemonSwordsman::DemonSwordsman(ValueMap& properties) : PlatformerEnemy(properties,
+DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
 	DemonSwordsman::MapKeyDemonSwordsman,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
@@ -51,7 +53,7 @@ Vec2 DemonSwordsman::getDialogueOffset()
 
 LocalizedString* DemonSwordsman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_DemonSwordsman::create();
 }
 
 HexusOpponentData* DemonSwordsman::getHexusOpponentData()

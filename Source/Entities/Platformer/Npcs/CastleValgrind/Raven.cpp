@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Raven.h"
+
 using namespace cocos2d;
 
 const std::string Raven::MapKeyRaven = "raven";
@@ -51,7 +53,7 @@ Vec2 Raven::getDialogueOffset()
 
 LocalizedString* Raven::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Raven::create();
 }
 
 HexusOpponentData* Raven::getHexusOpponentData()

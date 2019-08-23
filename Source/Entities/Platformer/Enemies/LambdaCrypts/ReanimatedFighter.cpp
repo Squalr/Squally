@@ -8,10 +8,13 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
+
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/ReanimatedFighter.h"
 
 using namespace cocos2d;
 
@@ -28,7 +31,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 	return instance;
 }
 
-ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : PlatformerEnemy(properties,
+ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
 	ReanimatedFighter::MapKeyReanimatedFighter,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
@@ -50,7 +53,7 @@ Vec2 ReanimatedFighter::getDialogueOffset()
 
 LocalizedString* ReanimatedFighter::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter::create();
 }
 
 HexusOpponentData* ReanimatedFighter::getHexusOpponentData()

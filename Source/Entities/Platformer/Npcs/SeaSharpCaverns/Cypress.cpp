@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Cypress.h"
+
 using namespace cocos2d;
 
 const std::string Cypress::MapKeyCypress = "cypress";
@@ -51,7 +53,7 @@ Vec2 Cypress::getDialogueOffset()
 
 LocalizedString* Cypress::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Cypress::create();
 }
 
 HexusOpponentData* Cypress::getHexusOpponentData()

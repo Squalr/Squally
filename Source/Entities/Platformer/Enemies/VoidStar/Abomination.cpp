@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Abomination.h"
+
 using namespace cocos2d;
 
 const std::string Abomination::MapKeyAbomination = "abomination";
@@ -29,7 +31,7 @@ Abomination* Abomination::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Abomination::Abomination(ValueMap& properties) : PlatformerEnemy(properties,
+Abomination::Abomination(ValueMap& properties) : super(properties,
 	Abomination::MapKeyAbomination,
 	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
@@ -51,7 +53,7 @@ Vec2 Abomination::getDialogueOffset()
 
 LocalizedString* Abomination::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Abomination::create();
 }
 
 HexusOpponentData* Abomination::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Azmus.h"
+
 using namespace cocos2d;
 
 const std::string Azmus::MapKeyAzmus = "azmus";
@@ -51,7 +53,7 @@ Vec2 Azmus::getDialogueOffset()
 
 LocalizedString* Azmus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Azmus::create();
 }
 
 HexusOpponentData* Azmus::getHexusOpponentData()

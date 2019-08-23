@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Wraith.h"
+
 using namespace cocos2d;
 
 const std::string Wraith::MapKeyWraith = "wraith";
@@ -29,7 +31,7 @@ Wraith* Wraith::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Wraith::Wraith(ValueMap& properties) : PlatformerEnemy(properties,
+Wraith::Wraith(ValueMap& properties) : super(properties,
 	Wraith::MapKeyWraith,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
@@ -51,7 +53,7 @@ Vec2 Wraith::getDialogueOffset()
 
 LocalizedString* Wraith::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Wraith::create();
 }
 
 HexusOpponentData* Wraith::getHexusOpponentData()

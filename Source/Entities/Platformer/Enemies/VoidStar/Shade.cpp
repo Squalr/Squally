@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Shade.h"
+
 using namespace cocos2d;
 
 const std::string Shade::MapKeyShade = "shade";
@@ -29,7 +31,7 @@ Shade* Shade::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Shade::Shade(ValueMap& properties) : PlatformerEnemy(properties,
+Shade::Shade(ValueMap& properties) : super(properties,
 	Shade::MapKeyShade,
 	EntityResources::Enemies_VoidStar_Shade_Animations,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,
@@ -51,7 +53,7 @@ Vec2 Shade::getDialogueOffset()
 
 LocalizedString* Shade::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Shade::create();
 }
 
 HexusOpponentData* Shade::getHexusOpponentData()

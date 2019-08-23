@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Barbarian.h"
+
 using namespace cocos2d;
 
 const std::string Barbarian::MapKeyBarbarian = "barbarian";
@@ -29,7 +31,7 @@ Barbarian* Barbarian::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Barbarian::Barbarian(ValueMap& properties) : PlatformerEnemy(properties,
+Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	Barbarian::MapKeyBarbarian,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,
@@ -51,7 +53,7 @@ Vec2 Barbarian::getDialogueOffset()
 
 LocalizedString* Barbarian::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian::create();
 }
 
 HexusOpponentData* Barbarian::getHexusOpponentData()

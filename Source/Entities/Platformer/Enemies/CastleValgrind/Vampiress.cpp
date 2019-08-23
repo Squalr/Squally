@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Vampiress.h"
+
 using namespace cocos2d;
 
 const std::string Vampiress::MapKeyVampiress = "vampiress";
@@ -29,7 +31,7 @@ Vampiress* Vampiress::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Vampiress::Vampiress(ValueMap& properties) : PlatformerEnemy(properties,
+Vampiress::Vampiress(ValueMap& properties) : super(properties,
 	Vampiress::MapKeyVampiress,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
@@ -51,7 +53,7 @@ Vec2 Vampiress::getDialogueOffset()
 
 LocalizedString* Vampiress::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Vampiress::create();
 }
 
 HexusOpponentData* Vampiress::getHexusOpponentData()

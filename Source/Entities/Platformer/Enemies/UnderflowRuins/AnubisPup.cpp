@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/AnubisPup.h"
+
 using namespace cocos2d;
 
 const std::string AnubisPup::MapKeyAnubisPup = "anubis-pup";
@@ -29,7 +31,7 @@ AnubisPup* AnubisPup::deserialize(ValueMap& properties)
 	return instance;
 }
 
-AnubisPup::AnubisPup(ValueMap& properties) : PlatformerEnemy(properties,
+AnubisPup::AnubisPup(ValueMap& properties) : super(properties,
 	AnubisPup::MapKeyAnubisPup,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
@@ -51,7 +53,7 @@ Vec2 AnubisPup::getDialogueOffset()
 
 LocalizedString* AnubisPup::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisPup::create();
 }
 
 HexusOpponentData* AnubisPup::getHexusOpponentData()

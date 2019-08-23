@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonDragon.h"
+
 using namespace cocos2d;
 
 const std::string DemonDragon::MapKeyDemonDragon = "demon-dragon";
@@ -29,7 +31,7 @@ DemonDragon* DemonDragon::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DemonDragon::DemonDragon(ValueMap& properties) : PlatformerEnemy(properties,
+DemonDragon::DemonDragon(ValueMap& properties) : super(properties,
 	DemonDragon::MapKeyDemonDragon,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
@@ -51,7 +53,7 @@ Vec2 DemonDragon::getDialogueOffset()
 
 LocalizedString* DemonDragon::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_DemonDragon::create();
 }
 
 HexusOpponentData* DemonDragon::getHexusOpponentData()

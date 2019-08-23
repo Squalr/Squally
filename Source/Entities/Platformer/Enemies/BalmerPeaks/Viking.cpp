@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Viking.h"
+
 using namespace cocos2d;
 
 const std::string Viking::MapKeyViking = "viking";
@@ -29,7 +31,7 @@ Viking* Viking::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Viking::Viking(ValueMap& properties) : PlatformerEnemy(properties,
+Viking::Viking(ValueMap& properties) : super(properties,
 	Viking::MapKeyViking,
 	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
@@ -51,7 +53,7 @@ Vec2 Viking::getDialogueOffset()
 
 LocalizedString* Viking::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_Viking::create();
 }
 
 HexusOpponentData* Viking::getHexusOpponentData()

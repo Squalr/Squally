@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/BalmerPeaks/YetiBaby.h"
+
 using namespace cocos2d;
 
 const std::string YetiBaby::MapKeyYetiBaby = "yeti-baby";
@@ -51,7 +53,7 @@ Vec2 YetiBaby::getDialogueOffset()
 
 LocalizedString* YetiBaby::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_BalmerPeaks_YetiBaby::create();
 }
 
 HexusOpponentData* YetiBaby::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/ForestGolem.h"
+
 using namespace cocos2d;
 
 const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
@@ -29,7 +31,7 @@ ForestGolem* ForestGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-ForestGolem::ForestGolem(ValueMap& properties) : PlatformerEnemy(properties,
+ForestGolem::ForestGolem(ValueMap& properties) : super(properties,
 	ForestGolem::MapKeyForestGolem,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 ForestGolem::getDialogueOffset()
 
 LocalizedString* ForestGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_ForestGolem::create();
 }
 
 HexusOpponentData* ForestGolem::getHexusOpponentData()

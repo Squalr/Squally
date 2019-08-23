@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
@@ -29,7 +31,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : super(properties,
 	SkeletalWarrior::MapKeySkeletalWarrior,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalWarrior::getDialogueOffset()
 
 LocalizedString* SkeletalWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_SkeletalWarrior::create();
 }
 
 HexusOpponentData* SkeletalWarrior::getHexusOpponentData()

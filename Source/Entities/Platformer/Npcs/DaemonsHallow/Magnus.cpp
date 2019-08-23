@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Magnus.h"
+
 using namespace cocos2d;
 
 const std::string Magnus::MapKeyMagnus = "magnus";
@@ -51,7 +53,7 @@ Vec2 Magnus::getDialogueOffset()
 
 LocalizedString* Magnus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus::create();
 }
 
 HexusOpponentData* Magnus::getHexusOpponentData()

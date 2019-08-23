@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonWarrior.h"
+
 using namespace cocos2d;
 
 const std::string DemonWarrior::MapKeyDemonWarrior = "demon-warrior";
@@ -29,7 +31,7 @@ DemonWarrior* DemonWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DemonWarrior::DemonWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+DemonWarrior::DemonWarrior(ValueMap& properties) : super(properties,
 	DemonWarrior::MapKeyDemonWarrior,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 DemonWarrior::getDialogueOffset()
 
 LocalizedString* DemonWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_DemonWarrior::create();
 }
 
 HexusOpponentData* DemonWarrior::getHexusOpponentData()

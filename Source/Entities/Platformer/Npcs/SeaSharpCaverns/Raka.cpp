@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Raka.h"
+
 using namespace cocos2d;
 
 const std::string Raka::MapKeyRaka = "raka";
@@ -51,7 +53,7 @@ Vec2 Raka::getDialogueOffset()
 
 LocalizedString* Raka::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Raka::create();
 }
 
 HexusOpponentData* Raka::getHexusOpponentData()

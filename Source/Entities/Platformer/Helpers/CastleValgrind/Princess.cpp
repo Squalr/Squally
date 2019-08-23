@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/CastleValgrind/Princess.h"
+
 using namespace cocos2d;
 
 const std::string Princess::MapKeyPrincess = "princess";
@@ -51,7 +53,7 @@ Vec2 Princess::getDialogueOffset()
 
 LocalizedString* Princess::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_CastleValgrind_Princess::create();
 }
 
 HexusOpponentData* Princess::getHexusOpponentData()

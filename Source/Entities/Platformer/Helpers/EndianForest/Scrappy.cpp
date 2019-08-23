@@ -30,6 +30,7 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/EndOfDemo.h"
+#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
 #include "Strings/Platformer/Quests/Intro/SquallyTrapped.h"
 
 using namespace cocos2d;
@@ -163,7 +164,7 @@ Vec2 Scrappy::getDialogueOffset()
 
 LocalizedString* Scrappy::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create();
 }
 
 HexusOpponentData* Scrappy::getHexusOpponentData()

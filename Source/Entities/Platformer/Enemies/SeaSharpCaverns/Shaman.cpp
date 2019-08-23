@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Shaman.h"
+
 using namespace cocos2d;
 
 const std::string Shaman::MapKeyShaman = "shaman";
@@ -29,7 +31,7 @@ Shaman* Shaman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Shaman::Shaman(ValueMap& properties) : PlatformerEnemy(properties,
+Shaman::Shaman(ValueMap& properties) : super(properties,
 	Shaman::MapKeyShaman,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
@@ -51,7 +53,7 @@ Vec2 Shaman::getDialogueOffset()
 
 LocalizedString* Shaman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_Shaman::create();
 }
 
 HexusOpponentData* Shaman::getHexusOpponentData()

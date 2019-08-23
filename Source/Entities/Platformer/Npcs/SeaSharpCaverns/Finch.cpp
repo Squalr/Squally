@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Finch.h"
+
 using namespace cocos2d;
 
 const std::string Finch::MapKeyFinch = "finch";
@@ -51,7 +53,7 @@ Vec2 Finch::getDialogueOffset()
 
 LocalizedString* Finch::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Finch::create();
 }
 
 HexusOpponentData* Finch::getHexusOpponentData()

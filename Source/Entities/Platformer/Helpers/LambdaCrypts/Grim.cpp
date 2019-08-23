@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/LambdaCrypts/Grim.h"
+
 using namespace cocos2d;
 
 const std::string Grim::MapKeyGrim = "grim";
@@ -51,7 +53,7 @@ Vec2 Grim::getDialogueOffset()
 
 LocalizedString* Grim::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_LambdaCrypts_Grim::create();
 }
 
 HexusOpponentData* Grim::getHexusOpponentData()

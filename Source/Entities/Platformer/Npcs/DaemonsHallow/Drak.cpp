@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Drak.h"
+
 using namespace cocos2d;
 
 const std::string Drak::MapKeyDrak = "drak";
@@ -51,7 +53,7 @@ Vec2 Drak::getDialogueOffset()
 
 LocalizedString* Drak::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Drak::create();
 }
 
 HexusOpponentData* Drak::getHexusOpponentData()

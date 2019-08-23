@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Rhinoman.h"
+
 using namespace cocos2d;
 
 const std::string Rhinoman::MapKeyRhinoman = "rhinoman";
@@ -29,7 +31,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Rhinoman::Rhinoman(ValueMap& properties) : PlatformerEnemy(properties,
+Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
 	Rhinoman::MapKeyRhinoman,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
@@ -51,7 +53,7 @@ Vec2 Rhinoman::getDialogueOffset()
 
 LocalizedString* Rhinoman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_Rhinoman::create();
 }
 
 HexusOpponentData* Rhinoman::getHexusOpponentData()

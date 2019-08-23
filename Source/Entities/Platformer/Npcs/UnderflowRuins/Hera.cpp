@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Hera.h"
+
 using namespace cocos2d;
 
 const std::string Hera::MapKeyHera = "hera";
@@ -51,7 +53,7 @@ Vec2 Hera::getDialogueOffset()
 
 LocalizedString* Hera::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hera::create();
 }
 
 HexusOpponentData* Hera::getHexusOpponentData()

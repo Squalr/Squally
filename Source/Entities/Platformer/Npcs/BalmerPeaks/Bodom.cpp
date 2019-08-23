@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Bodom.h"
+
 using namespace cocos2d;
 
 const std::string Bodom::MapKeyBodom = "bodom";
@@ -51,7 +53,7 @@ Vec2 Bodom::getDialogueOffset()
 
 LocalizedString* Bodom::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Bodom::create();
 }
 
 HexusOpponentData* Bodom::getHexusOpponentData()

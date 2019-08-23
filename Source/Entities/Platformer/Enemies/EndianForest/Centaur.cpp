@@ -9,11 +9,12 @@
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
+
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Centaur.h"
 
 using namespace cocos2d;
 
@@ -30,7 +31,7 @@ Centaur* Centaur::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Centaur::Centaur(ValueMap& properties) : PlatformerEnemy(properties,
+Centaur::Centaur(ValueMap& properties) : super(properties,
 	Centaur::MapKeyCentaur,
 	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
@@ -52,7 +53,7 @@ Vec2 Centaur::getDialogueOffset()
 
 LocalizedString* Centaur::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_Centaur::create();
 }
 
 HexusOpponentData* Centaur::getHexusOpponentData()

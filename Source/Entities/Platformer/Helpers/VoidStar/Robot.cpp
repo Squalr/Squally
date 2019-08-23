@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Helpers/VoidStar/Robot.h"
+
 using namespace cocos2d;
 
 const std::string Robot::MapKeyRobot = "robot";
@@ -51,7 +53,7 @@ Vec2 Robot::getDialogueOffset()
 
 LocalizedString* Robot::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Helpers_VoidStar_Robot::create();
 }
 
 HexusOpponentData* Robot::getHexusOpponentData()

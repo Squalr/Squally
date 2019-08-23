@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/GoblinGruntBoar.h"
+
 using namespace cocos2d;
 
 const std::string GoblinGruntBoar::MapKeyGoblinGruntBoar = "goblin-grunt-boar";
@@ -29,7 +31,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 	return instance;
 }
 
-GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : PlatformerEnemy(properties,
+GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
 	GoblinGruntBoar::MapKeyGoblinGruntBoar,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
@@ -51,7 +53,7 @@ Vec2 GoblinGruntBoar::getDialogueOffset()
 
 LocalizedString* GoblinGruntBoar::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_GoblinGruntBoar::create();
 }
 
 HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()

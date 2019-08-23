@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Jack.h"
+
 using namespace cocos2d;
 
 const std::string Jack::MapKeyJack = "jack";
@@ -29,7 +31,7 @@ Jack* Jack::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Jack::Jack(ValueMap& properties) : PlatformerEnemy(properties,
+Jack::Jack(ValueMap& properties) : super(properties,
 	Jack::MapKeyJack,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
@@ -51,7 +53,7 @@ Vec2 Jack::getDialogueOffset()
 
 LocalizedString* Jack::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_CastleValgrind_Jack::create();
 }
 
 HexusOpponentData* Jack::getHexusOpponentData()

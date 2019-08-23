@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/MummyWarrior.h"
+
 using namespace cocos2d;
 
 const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
@@ -29,7 +31,7 @@ MummyWarrior* MummyWarrior::deserialize(ValueMap& properties)
 	return instance;
 }
 
-MummyWarrior::MummyWarrior(ValueMap& properties) : PlatformerEnemy(properties,
+MummyWarrior::MummyWarrior(ValueMap& properties) : super(properties,
 	MummyWarrior::MapKeyMummyWarrior,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
@@ -51,7 +53,7 @@ Vec2 MummyWarrior::getDialogueOffset()
 
 LocalizedString* MummyWarrior::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_MummyWarrior::create();
 }
 
 HexusOpponentData* MummyWarrior::getHexusOpponentData()

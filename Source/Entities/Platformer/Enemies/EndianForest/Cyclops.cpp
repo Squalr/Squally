@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Cyclops.h"
+
 using namespace cocos2d;
 
 const std::string Cyclops::MapKeyCyclops = "cyclops";
@@ -29,7 +31,7 @@ Cyclops* Cyclops::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Cyclops::Cyclops(ValueMap& properties) : PlatformerEnemy(properties,
+Cyclops::Cyclops(ValueMap& properties) : super(properties,
 	Cyclops::MapKeyCyclops,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
@@ -51,7 +53,7 @@ Vec2 Cyclops::getDialogueOffset()
 
 LocalizedString* Cyclops::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_Cyclops::create();
 }
 
 HexusOpponentData* Cyclops::getHexusOpponentData()

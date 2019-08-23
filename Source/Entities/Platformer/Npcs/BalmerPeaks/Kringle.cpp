@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Kringle.h"
+
 using namespace cocos2d;
 
 const std::string Kringle::MapKeyKringle = "kringle";
@@ -51,7 +53,7 @@ Vec2 Kringle::getDialogueOffset()
 
 LocalizedString* Kringle::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_BalmerPeaks_Kringle::create();
 }
 
 HexusOpponentData* Kringle::getHexusOpponentData()

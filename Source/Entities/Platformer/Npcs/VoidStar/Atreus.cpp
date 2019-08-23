@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Atreus.h"
+
 using namespace cocos2d;
 
 const std::string Atreus::MapKeyAtreus = "atreus";
@@ -51,7 +53,7 @@ Vec2 Atreus::getDialogueOffset()
 
 LocalizedString* Atreus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Atreus::create();
 }
 
 HexusOpponentData* Atreus::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Fraya.h"
+
 using namespace cocos2d;
 
 const std::string Fraya::MapKeyFraya = "fraya";
@@ -51,7 +53,7 @@ Vec2 Fraya::getDialogueOffset()
 
 LocalizedString* Fraya::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Fraya::create();
 }
 
 HexusOpponentData* Fraya::getHexusOpponentData()

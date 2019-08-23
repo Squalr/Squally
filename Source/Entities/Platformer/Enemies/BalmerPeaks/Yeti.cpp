@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Yeti.h"
+
 using namespace cocos2d;
 
 const std::string Yeti::MapKeyYeti = "yeti";
@@ -29,7 +31,7 @@ Yeti* Yeti::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Yeti::Yeti(ValueMap& properties) : PlatformerEnemy(properties,
+Yeti::Yeti(ValueMap& properties) : super(properties,
 	Yeti::MapKeyYeti,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
@@ -51,7 +53,7 @@ Vec2 Yeti::getDialogueOffset()
 
 LocalizedString* Yeti::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_Yeti::create();
 }
 
 HexusOpponentData* Yeti::getHexusOpponentData()

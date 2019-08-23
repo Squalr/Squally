@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/EvilEye.h"
+
 using namespace cocos2d;
 
 const std::string EvilEye::MapKeyEvilEye = "evil-eye";
@@ -29,7 +31,7 @@ EvilEye* EvilEye::deserialize(ValueMap& properties)
 	return instance;
 }
 
-EvilEye::EvilEye(ValueMap& properties) : PlatformerEnemy(properties,
+EvilEye::EvilEye(ValueMap& properties) : super(properties,
 	EvilEye::MapKeyEvilEye,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
@@ -51,7 +53,7 @@ Vec2 EvilEye::getDialogueOffset()
 
 LocalizedString* EvilEye::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_EvilEye::create();
 }
 
 HexusOpponentData* EvilEye::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/SkeletalCleaver.h"
+
 using namespace cocos2d;
 
 const std::string SkeletalCleaver::MapKeySkeletalCleaver = "skeletal-cleaver";
@@ -29,7 +31,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& properties)
 	return instance;
 }
 
-SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : PlatformerEnemy(properties,
+SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : super(properties,
 	SkeletalCleaver::MapKeySkeletalCleaver,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
@@ -51,7 +53,7 @@ Vec2 SkeletalCleaver::getDialogueOffset()
 
 LocalizedString* SkeletalCleaver::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalCleaver::create();
 }
 
 HexusOpponentData* SkeletalCleaver::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Rupert.h"
+
 using namespace cocos2d;
 
 const std::string Rupert::MapKeyRupert = "rupert";
@@ -51,7 +53,7 @@ Vec2 Rupert::getDialogueOffset()
 
 LocalizedString* Rupert::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Rupert::create();
 }
 
 HexusOpponentData* Rupert::getHexusOpponentData()

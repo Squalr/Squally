@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Assassin.h"
+
 using namespace cocos2d;
 
 const std::string Assassin::MapKeyAssassin = "assassin";
@@ -29,7 +31,7 @@ Assassin* Assassin::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Assassin::Assassin(ValueMap& properties) : PlatformerEnemy(properties,
+Assassin::Assassin(ValueMap& properties) : super(properties,
 	Assassin::MapKeyAssassin,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
@@ -51,7 +53,7 @@ Vec2 Assassin::getDialogueOffset()
 
 LocalizedString* Assassin::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Assassin::create();
 }
 
 HexusOpponentData* Assassin::getHexusOpponentData()

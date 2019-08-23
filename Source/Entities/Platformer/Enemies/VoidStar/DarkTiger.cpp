@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/DarkTiger.h"
+
 using namespace cocos2d;
 
 const std::string DarkTiger::MapKeyDarkTiger = "dark-tiger";
@@ -29,7 +31,7 @@ DarkTiger* DarkTiger::deserialize(ValueMap& properties)
 	return instance;
 }
 
-DarkTiger::DarkTiger(ValueMap& properties) : PlatformerEnemy(properties,
+DarkTiger::DarkTiger(ValueMap& properties) : super(properties,
 	DarkTiger::MapKeyDarkTiger,
 	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
@@ -51,7 +53,7 @@ Vec2 DarkTiger::getDialogueOffset()
 
 LocalizedString* DarkTiger::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_DarkTiger::create();
 }
 
 HexusOpponentData* DarkTiger::getHexusOpponentData()

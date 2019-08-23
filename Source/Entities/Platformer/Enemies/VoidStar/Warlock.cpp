@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Warlock.h"
+
 using namespace cocos2d;
 
 const std::string Warlock::MapKeyWarlock = "warlock";
@@ -29,7 +31,7 @@ Warlock* Warlock::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Warlock::Warlock(ValueMap& properties) : PlatformerEnemy(properties,
+Warlock::Warlock(ValueMap& properties) : super(properties,
 	Warlock::MapKeyWarlock,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
@@ -51,7 +53,7 @@ Vec2 Warlock::getDialogueOffset()
 
 LocalizedString* Warlock::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_VoidStar_Warlock::create();
 }
 
 HexusOpponentData* Warlock::getHexusOpponentData()

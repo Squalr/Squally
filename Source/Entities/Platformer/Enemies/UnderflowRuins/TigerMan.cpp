@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/TigerMan.h"
+
 using namespace cocos2d;
 
 const std::string TigerMan::MapKeyTigerMan = "tiger-man";
@@ -29,7 +31,7 @@ TigerMan* TigerMan::deserialize(ValueMap& properties)
 	return instance;
 }
 
-TigerMan::TigerMan(ValueMap& properties) : PlatformerEnemy(properties,
+TigerMan::TigerMan(ValueMap& properties) : super(properties,
 	TigerMan::MapKeyTigerMan,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
@@ -51,7 +53,7 @@ Vec2 TigerMan::getDialogueOffset()
 
 LocalizedString* TigerMan::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_TigerMan::create();
 }
 
 HexusOpponentData* TigerMan::getHexusOpponentData()

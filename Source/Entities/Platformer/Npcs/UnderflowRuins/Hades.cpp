@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Hades.h"
+
 using namespace cocos2d;
 
 const std::string Hades::MapKeyHades = "hades";
@@ -51,7 +53,7 @@ Vec2 Hades::getDialogueOffset()
 
 LocalizedString* Hades::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Hades::create();
 }
 
 HexusOpponentData* Hades::getHexusOpponentData()

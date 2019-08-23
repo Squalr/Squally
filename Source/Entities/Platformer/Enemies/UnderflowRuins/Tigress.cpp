@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Tigress.h"
+
 using namespace cocos2d;
 
 const std::string Tigress::MapKeyTigress = "tigress";
@@ -29,7 +31,7 @@ Tigress* Tigress::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Tigress::Tigress(ValueMap& properties) : PlatformerEnemy(properties,
+Tigress::Tigress(ValueMap& properties) : super(properties,
 	Tigress::MapKeyTigress,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
@@ -51,7 +53,7 @@ Vec2 Tigress::getDialogueOffset()
 
 LocalizedString* Tigress::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_UnderflowRuins_Tigress::create();
 }
 
 HexusOpponentData* Tigress::getHexusOpponentData()

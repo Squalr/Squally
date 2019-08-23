@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Radon.h"
+
 using namespace cocos2d;
 
 const std::string Radon::MapKeyRadon = "radon";
@@ -51,7 +53,7 @@ Vec2 Radon::getDialogueOffset()
 
 LocalizedString* Radon::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Radon::create();
 }
 
 HexusOpponentData* Radon::getHexusOpponentData()

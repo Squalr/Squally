@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Ogre.h"
+
 using namespace cocos2d;
 
 const std::string Ogre::MapKeyOgre = "ogre";
@@ -29,7 +31,7 @@ Ogre* Ogre::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Ogre::Ogre(ValueMap& properties) : PlatformerEnemy(properties,
+Ogre::Ogre(ValueMap& properties) : super(properties,
 	Ogre::MapKeyOgre,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
@@ -51,7 +53,7 @@ Vec2 Ogre::getDialogueOffset()
 
 LocalizedString* Ogre::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_Ogre::create();
 }
 
 HexusOpponentData* Ogre::getHexusOpponentData()

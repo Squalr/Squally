@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Horus.h"
+
 using namespace cocos2d;
 
 const std::string Horus::MapKeyHorus = "horus";
@@ -51,7 +53,7 @@ Vec2 Horus::getDialogueOffset()
 
 LocalizedString* Horus::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Horus::create();
 }
 
 HexusOpponentData* Horus::getHexusOpponentData()

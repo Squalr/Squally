@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/PenguinGrunt.h"
+
 using namespace cocos2d;
 
 const std::string PenguinGrunt::MapKeyPenguinGrunt = "penguin-grunt";
@@ -29,7 +31,7 @@ PenguinGrunt* PenguinGrunt::deserialize(ValueMap& properties)
 	return instance;
 }
 
-PenguinGrunt::PenguinGrunt(ValueMap& properties) : PlatformerEnemy(properties,
+PenguinGrunt::PenguinGrunt(ValueMap& properties) : super(properties,
 	PenguinGrunt::MapKeyPenguinGrunt,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
@@ -51,7 +53,7 @@ Vec2 PenguinGrunt::getDialogueOffset()
 
 LocalizedString* PenguinGrunt::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_BalmerPeaks_PenguinGrunt::create();
 }
 
 HexusOpponentData* PenguinGrunt::getHexusOpponentData()

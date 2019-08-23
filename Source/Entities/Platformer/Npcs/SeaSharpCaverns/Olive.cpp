@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Olive.h"
+
 using namespace cocos2d;
 
 const std::string Olive::MapKeyOlive = "olive";
@@ -51,7 +53,7 @@ Vec2 Olive::getDialogueOffset()
 
 LocalizedString* Olive::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Olive::create();
 }
 
 HexusOpponentData* Olive::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/TikiGolem.h"
+
 using namespace cocos2d;
 
 const std::string TikiGolem::MapKeyTikiGolem = "tiki-golem";
@@ -29,7 +31,7 @@ TikiGolem* TikiGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-TikiGolem::TikiGolem(ValueMap& properties) : PlatformerEnemy(properties,
+TikiGolem::TikiGolem(ValueMap& properties) : super(properties,
 	TikiGolem::MapKeyTikiGolem,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 TikiGolem::getDialogueOffset()
 
 LocalizedString* TikiGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_SeaSharpCaverns_TikiGolem::create();
 }
 
 HexusOpponentData* TikiGolem::getHexusOpponentData()

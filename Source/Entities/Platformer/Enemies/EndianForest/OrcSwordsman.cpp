@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/OrcSwordsman.h"
+
 using namespace cocos2d;
 
 const std::string OrcSwordsman::MapKeyOrcSwordsman = "orc-swordsman";
@@ -29,7 +31,7 @@ OrcSwordsman* OrcSwordsman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-OrcSwordsman::OrcSwordsman(ValueMap& properties) : PlatformerEnemy(properties,
+OrcSwordsman::OrcSwordsman(ValueMap& properties) : super(properties,
 	OrcSwordsman::MapKeyOrcSwordsman,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
@@ -51,7 +53,7 @@ Vec2 OrcSwordsman::getDialogueOffset()
 
 LocalizedString* OrcSwordsman::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_EndianForest_OrcSwordsman::create();
 }
 
 HexusOpponentData* OrcSwordsman::getHexusOpponentData()

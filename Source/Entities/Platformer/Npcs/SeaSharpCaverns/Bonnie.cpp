@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Bonnie.h"
+
 using namespace cocos2d;
 
 const std::string Bonnie::MapKeyBonnie = "bonnie";
@@ -51,7 +53,7 @@ Vec2 Bonnie::getDialogueOffset()
 
 LocalizedString* Bonnie::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Bonnie::create();
 }
 
 HexusOpponentData* Bonnie::getHexusOpponentData()

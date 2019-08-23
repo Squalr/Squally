@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Marcel.h"
+
 using namespace cocos2d;
 
 const std::string Marcel::MapKeyMarcel = "marcel";
@@ -51,7 +53,7 @@ Vec2 Marcel::getDialogueOffset()
 
 LocalizedString* Marcel::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Marcel::create();
 }
 
 HexusOpponentData* Marcel::getHexusOpponentData()

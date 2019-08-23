@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Godiva.h"
+
 using namespace cocos2d;
 
 const std::string Godiva::MapKeyGodiva = "godiva";
@@ -51,7 +53,7 @@ Vec2 Godiva::getDialogueOffset()
 
 LocalizedString* Godiva::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Godiva::create();
 }
 
 HexusOpponentData* Godiva::getHexusOpponentData()

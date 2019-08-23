@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Ysara.h"
+
 using namespace cocos2d;
 
 const std::string Ysara::MapKeyYsara = "ysara";
@@ -51,7 +53,7 @@ Vec2 Ysara::getDialogueOffset()
 
 LocalizedString* Ysara::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Ysara::create();
 }
 
 HexusOpponentData* Ysara::getHexusOpponentData()

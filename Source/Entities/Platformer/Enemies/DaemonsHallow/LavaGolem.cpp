@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/LavaGolem.h"
+
 using namespace cocos2d;
 
 const std::string LavaGolem::MapKeyLavaGolem = "lava-golem";
@@ -29,7 +31,7 @@ LavaGolem* LavaGolem::deserialize(ValueMap& properties)
 	return instance;
 }
 
-LavaGolem::LavaGolem(ValueMap& properties) : PlatformerEnemy(properties,
+LavaGolem::LavaGolem(ValueMap& properties) : super(properties,
 	LavaGolem::MapKeyLavaGolem,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
@@ -51,7 +53,7 @@ Vec2 LavaGolem::getDialogueOffset()
 
 LocalizedString* LavaGolem::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem::create();
 }
 
 HexusOpponentData* LavaGolem::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Rogas.h"
+
 using namespace cocos2d;
 
 const std::string Rogas::MapKeyRogas = "rogas";
@@ -51,7 +53,7 @@ Vec2 Rogas::getDialogueOffset()
 
 LocalizedString* Rogas::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_CastleValgrind_Rogas::create();
 }
 
 HexusOpponentData* Rogas::getHexusOpponentData()

@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Vesuvius.h"
+
 using namespace cocos2d;
 
 const std::string Vesuvius::MapKeyVesuvius = "vesuvius";
@@ -51,7 +53,7 @@ Vec2 Vesuvius::getDialogueOffset()
 
 LocalizedString* Vesuvius::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Vesuvius::create();
 }
 
 HexusOpponentData* Vesuvius::getHexusOpponentData()

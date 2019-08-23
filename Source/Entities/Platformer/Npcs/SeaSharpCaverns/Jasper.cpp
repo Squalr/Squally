@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Jasper.h"
+
 using namespace cocos2d;
 
 const std::string Jasper::MapKeyJasper = "jasper";
@@ -51,7 +53,7 @@ Vec2 Jasper::getDialogueOffset()
 
 LocalizedString* Jasper::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_SeaSharpCaverns_Jasper::create();
 }
 
 HexusOpponentData* Jasper::getHexusOpponentData()

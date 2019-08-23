@@ -14,6 +14,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Ara.h"
+
 using namespace cocos2d;
 
 const std::string Ara::MapKeyAra = "ara";
@@ -51,7 +53,7 @@ Vec2 Ara::getDialogueOffset()
 
 LocalizedString* Ara::getEntityName()
 {
-	return nullptr;
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Ara::create();
 }
 
 HexusOpponentData* Ara::getHexusOpponentData()
