@@ -49,6 +49,11 @@ Vec2 Juniper::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Juniper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Juniper::getHexusOpponentData()
 {
 	if (Juniper::HexusOpponentDataInstance == nullptr)

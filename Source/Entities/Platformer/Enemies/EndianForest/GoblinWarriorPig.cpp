@@ -51,6 +51,11 @@ Vec2 GoblinWarriorPig::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* GoblinWarriorPig::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 {
 	if (GoblinWarriorPig::HexusOpponentDataInstance == nullptr)

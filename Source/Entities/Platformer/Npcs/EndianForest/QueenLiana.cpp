@@ -49,6 +49,11 @@ Vec2 QueenLiana::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* QueenLiana::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* QueenLiana::getHexusOpponentData()
 {
 	if (QueenLiana::HexusOpponentDataInstance == nullptr)

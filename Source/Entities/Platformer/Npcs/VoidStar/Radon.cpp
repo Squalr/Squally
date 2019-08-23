@@ -49,6 +49,11 @@ Vec2 Radon::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Radon::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Radon::getHexusOpponentData()
 {
 	if (Radon::HexusOpponentDataInstance == nullptr)

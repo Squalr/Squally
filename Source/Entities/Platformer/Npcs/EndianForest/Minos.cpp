@@ -49,6 +49,11 @@ Vec2 Minos::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Minos::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Minos::getHexusOpponentData()
 {
 	if (Minos::HexusOpponentDataInstance == nullptr)

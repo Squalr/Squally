@@ -49,6 +49,11 @@ Vec2 Mermaid::getDialogueOffset()
 	return Vec2(-32.0f, -180.0f);
 }
 
+LocalizedString* Mermaid::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Mermaid::getHexusOpponentData()
 {
 	if (Mermaid::HexusOpponentDataInstance == nullptr)

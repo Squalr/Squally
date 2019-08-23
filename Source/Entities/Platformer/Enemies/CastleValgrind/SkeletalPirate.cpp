@@ -49,6 +49,11 @@ Vec2 SkeletalPirate::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* SkeletalPirate::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SkeletalPirate::getHexusOpponentData()
 {
 	if (SkeletalPirate::HexusOpponentDataInstance == nullptr)

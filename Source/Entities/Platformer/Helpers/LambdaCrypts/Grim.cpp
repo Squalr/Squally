@@ -29,7 +29,7 @@ Grim* Grim::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Grim::Grim(ValueMap& properties) : PlatformerEntity(properties,
+Grim::Grim(ValueMap& properties) : super(properties,
 	Grim::MapKeyGrim,
 	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,
@@ -47,6 +47,11 @@ Grim::~Grim()
 Vec2 Grim::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Grim::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Grim::getHexusOpponentData()

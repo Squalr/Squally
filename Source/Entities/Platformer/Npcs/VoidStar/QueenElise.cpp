@@ -49,6 +49,11 @@ Vec2 QueenElise::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* QueenElise::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* QueenElise::getHexusOpponentData()
 {
 	if (QueenElise::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 GoblinElf::getDialogueOffset()
 	return Vec2(-32.0f, -128.0f);
 }
 
+LocalizedString* GoblinElf::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* GoblinElf::getHexusOpponentData()
 {
 	if (GoblinElf::HexusOpponentDataInstance == nullptr)

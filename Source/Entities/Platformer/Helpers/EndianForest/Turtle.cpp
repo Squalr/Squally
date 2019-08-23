@@ -29,7 +29,7 @@ Turtle* Turtle::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Turtle::Turtle(ValueMap& properties) : PlatformerEntity(properties,
+Turtle::Turtle(ValueMap& properties) : super(properties,
 	Turtle::MapKeyTurtle,
 	EntityResources::Helpers_EndianForest_Turtle_Animations,
 	EntityResources::Helpers_EndianForest_Turtle_Emblem,
@@ -47,6 +47,11 @@ Turtle::~Turtle()
 Vec2 Turtle::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Turtle::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Turtle::getHexusOpponentData()

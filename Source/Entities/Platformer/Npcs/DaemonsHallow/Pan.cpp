@@ -49,6 +49,11 @@ Vec2 Pan::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Pan::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Pan::getHexusOpponentData()
 {
 	if (Pan::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Tinsel::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Tinsel::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Tinsel::getHexusOpponentData()
 {
 	if (Tinsel::HexusOpponentDataInstance == nullptr)

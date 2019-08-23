@@ -49,6 +49,11 @@ Vec2 Gaunt::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Gaunt::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Gaunt::getHexusOpponentData()
 {
 	if (Gaunt::HexusOpponentDataInstance == nullptr)

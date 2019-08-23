@@ -49,6 +49,11 @@ Vec2 Ragnis::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ragnis::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ragnis::getHexusOpponentData()
 {
 	if (Ragnis::HexusOpponentDataInstance == nullptr)

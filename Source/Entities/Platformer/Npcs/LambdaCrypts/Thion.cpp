@@ -49,6 +49,11 @@ Vec2 Thion::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Thion::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Thion::getHexusOpponentData()
 {
 	if (Thion::HexusOpponentDataInstance == nullptr)

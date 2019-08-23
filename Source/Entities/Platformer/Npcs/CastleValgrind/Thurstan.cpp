@@ -49,6 +49,11 @@ Vec2 Thurstan::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Thurstan::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Thurstan::getHexusOpponentData()
 {
 	if (Thurstan::HexusOpponentDataInstance == nullptr)

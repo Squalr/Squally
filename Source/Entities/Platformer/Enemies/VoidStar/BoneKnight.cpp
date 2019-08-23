@@ -49,6 +49,11 @@ Vec2 BoneKnight::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* BoneKnight::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* BoneKnight::getHexusOpponentData()
 {
 	if (BoneKnight::HexusOpponentDataInstance == nullptr)

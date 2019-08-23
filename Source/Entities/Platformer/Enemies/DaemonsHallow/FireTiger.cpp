@@ -49,6 +49,11 @@ Vec2 FireTiger::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* FireTiger::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* FireTiger::getHexusOpponentData()
 {
 	if (FireTiger::HexusOpponentDataInstance == nullptr)

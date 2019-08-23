@@ -49,6 +49,11 @@ Vec2 Barbarian::getDialogueOffset()
 	return Vec2(0.0f, -160.0f);
 }
 
+LocalizedString* Barbarian::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Barbarian::getHexusOpponentData()
 {
 	if (Barbarian::HexusOpponentDataInstance == nullptr)

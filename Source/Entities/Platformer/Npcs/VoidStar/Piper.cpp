@@ -49,6 +49,11 @@ Vec2 Piper::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Piper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Piper::getHexusOpponentData()
 {
 	if (Piper::HexusOpponentDataInstance == nullptr)

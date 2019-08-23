@@ -49,6 +49,11 @@ Vec2 Werewolf::getDialogueOffset()
 	return Vec2(-32.0f, -160.0f);
 }
 
+LocalizedString* Werewolf::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Werewolf::getHexusOpponentData()
 {
 	if (Werewolf::HexusOpponentDataInstance == nullptr)

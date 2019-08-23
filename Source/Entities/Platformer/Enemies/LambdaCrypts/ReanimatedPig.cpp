@@ -49,6 +49,11 @@ Vec2 ReanimatedPig::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* ReanimatedPig::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* ReanimatedPig::getHexusOpponentData()
 {
 	if (ReanimatedPig::HexusOpponentDataInstance == nullptr)

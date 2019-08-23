@@ -29,7 +29,7 @@ CritterDemon* CritterDemon::deserialize(ValueMap& properties)
 	return instance;
 }
 
-CritterDemon::CritterDemon(ValueMap& properties) : PlatformerEntity(properties,
+CritterDemon::CritterDemon(ValueMap& properties) : super(properties,
 	CritterDemon::MapKeyCritterDemon,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
@@ -47,6 +47,11 @@ CritterDemon::~CritterDemon()
 Vec2 CritterDemon::getDialogueOffset()
 {
 	return Vec2(-48.0f, -112.0f);
+}
+
+LocalizedString* CritterDemon::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* CritterDemon::getHexusOpponentData()

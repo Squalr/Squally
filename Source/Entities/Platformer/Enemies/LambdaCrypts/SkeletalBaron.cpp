@@ -49,6 +49,11 @@ Vec2 SkeletalBaron::getDialogueOffset()
 	return Vec2(16.0f, -112.0f);
 }
 
+LocalizedString* SkeletalBaron::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 {
 	if (SkeletalBaron::HexusOpponentDataInstance == nullptr)

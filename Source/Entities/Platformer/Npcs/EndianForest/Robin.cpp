@@ -49,6 +49,11 @@ Vec2 Robin::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Robin::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Robin::getHexusOpponentData()
 {
 	if (Robin::HexusOpponentDataInstance == nullptr)

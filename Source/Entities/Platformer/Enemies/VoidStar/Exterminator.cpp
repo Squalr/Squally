@@ -49,6 +49,11 @@ Vec2 Exterminator::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Exterminator::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Exterminator::getHexusOpponentData()
 {
 	if (Exterminator::HexusOpponentDataInstance == nullptr)

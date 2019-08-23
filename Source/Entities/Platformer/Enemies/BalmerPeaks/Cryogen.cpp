@@ -49,6 +49,11 @@ Vec2 Cryogen::getDialogueOffset()
 	return Vec2(-48.0f, -232.0f);
 }
 
+LocalizedString* Cryogen::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cryogen::getHexusOpponentData()
 {
 	if (Cryogen::HexusOpponentDataInstance == nullptr)

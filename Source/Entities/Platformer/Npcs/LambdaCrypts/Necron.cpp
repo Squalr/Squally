@@ -49,6 +49,11 @@ Vec2 Necron::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Necron::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Necron::getHexusOpponentData()
 {
 	if (Necron::HexusOpponentDataInstance == nullptr)

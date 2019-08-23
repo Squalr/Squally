@@ -49,6 +49,11 @@ Vec2 Chiron::getDialogueOffset()
 	return Vec2(-48.0f, -32.0f);
 }
 
+LocalizedString* Chiron::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Chiron::getHexusOpponentData()
 {
 	if (Chiron::HexusOpponentDataInstance == nullptr)

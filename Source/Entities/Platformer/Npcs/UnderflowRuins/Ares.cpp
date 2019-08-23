@@ -49,6 +49,11 @@ Vec2 Ares::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ares::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ares::getHexusOpponentData()
 {
 	if (Ares::HexusOpponentDataInstance == nullptr)

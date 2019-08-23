@@ -49,6 +49,11 @@ Vec2 Athena::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Athena::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Athena::getHexusOpponentData()
 {
 	if (Athena::HexusOpponentDataInstance == nullptr)

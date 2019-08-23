@@ -49,6 +49,11 @@ Vec2 Cypress::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Cypress::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cypress::getHexusOpponentData()
 {
 	if (Cypress::HexusOpponentDataInstance == nullptr)

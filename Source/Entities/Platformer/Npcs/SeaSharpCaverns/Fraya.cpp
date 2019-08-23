@@ -49,6 +49,11 @@ Vec2 Fraya::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Fraya::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Fraya::getHexusOpponentData()
 {
 	if (Fraya::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Merlin::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Merlin::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Merlin::getHexusOpponentData()
 {
 	if (Merlin::HexusOpponentDataInstance == nullptr)

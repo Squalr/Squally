@@ -49,6 +49,11 @@ Vec2 Angel::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Angel::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Angel::getHexusOpponentData()
 {
 	if (Angel::HexusOpponentDataInstance == nullptr)

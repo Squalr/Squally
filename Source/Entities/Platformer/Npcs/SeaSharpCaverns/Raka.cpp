@@ -49,6 +49,11 @@ Vec2 Raka::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Raka::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Raka::getHexusOpponentData()
 {
 	if (Raka::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 LionMan::getDialogueOffset()
 	return Vec2(-32.0f, -196.0f);
 }
 
+LocalizedString* LionMan::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* LionMan::getHexusOpponentData()
 {
 	if (LionMan::HexusOpponentDataInstance == nullptr)

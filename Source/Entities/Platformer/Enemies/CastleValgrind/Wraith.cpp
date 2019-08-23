@@ -49,6 +49,11 @@ Vec2 Wraith::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Wraith::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Wraith::getHexusOpponentData()
 {
 	if (Wraith::HexusOpponentDataInstance == nullptr)

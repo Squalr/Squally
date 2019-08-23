@@ -49,6 +49,11 @@ Vec2 Shade::getDialogueOffset()
 	return Vec2(0.0f, -312.0f);
 }
 
+LocalizedString* Shade::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Shade::getHexusOpponentData()
 {
 	if (Shade::HexusOpponentDataInstance == nullptr)

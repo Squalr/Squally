@@ -49,6 +49,11 @@ Vec2 Cleopatra::getDialogueOffset()
 	return Vec2(-32.0f, -144.0f);
 }
 
+LocalizedString* Cleopatra::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cleopatra::getHexusOpponentData()
 {
 	if (Cleopatra::HexusOpponentDataInstance == nullptr)

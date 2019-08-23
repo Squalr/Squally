@@ -29,7 +29,7 @@ Snowman* Snowman::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Snowman::Snowman(ValueMap& properties) : PlatformerEntity(properties,
+Snowman::Snowman(ValueMap& properties) : super(properties,
 	Snowman::MapKeySnowman,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
@@ -47,6 +47,11 @@ Snowman::~Snowman()
 Vec2 Snowman::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Snowman::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Snowman::getHexusOpponentData()

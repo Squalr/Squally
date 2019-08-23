@@ -49,6 +49,11 @@ Vec2 Ysara::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ysara::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ysara::getHexusOpponentData()
 {
 	if (Ysara::HexusOpponentDataInstance == nullptr)

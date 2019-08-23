@@ -49,6 +49,11 @@ Vec2 VoidDemon::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* VoidDemon::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* VoidDemon::getHexusOpponentData()
 {
 	if (VoidDemon::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Ursula::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ursula::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ursula::getHexusOpponentData()
 {
 	if (Ursula::HexusOpponentDataInstance == nullptr)

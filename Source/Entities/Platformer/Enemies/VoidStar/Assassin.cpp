@@ -49,6 +49,11 @@ Vec2 Assassin::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Assassin::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Assassin::getHexusOpponentData()
 {
 	if (Assassin::HexusOpponentDataInstance == nullptr)

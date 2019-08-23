@@ -29,7 +29,7 @@ Goblin* Goblin::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Goblin::Goblin(ValueMap& properties) : PlatformerEntity(properties,
+Goblin::Goblin(ValueMap& properties) : super(properties,
 	Goblin::MapKeyGoblin,
 	EntityResources::Helpers_EndianForest_Goblin_Animations,
 	EntityResources::Helpers_EndianForest_Goblin_Emblem,
@@ -47,6 +47,11 @@ Goblin::~Goblin()
 Vec2 Goblin::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Goblin::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Goblin::getHexusOpponentData()

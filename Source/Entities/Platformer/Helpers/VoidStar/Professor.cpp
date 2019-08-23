@@ -29,7 +29,7 @@ Professor* Professor::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Professor::Professor(ValueMap& properties) : PlatformerEntity(properties,
+Professor::Professor(ValueMap& properties) : super(properties,
 	Professor::MapKeyProfessor,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
@@ -47,6 +47,11 @@ Professor::~Professor()
 Vec2 Professor::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Professor::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Professor::getHexusOpponentData()

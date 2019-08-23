@@ -49,6 +49,11 @@ Vec2 SkeletalWarrior::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* SkeletalWarrior::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 {
 	if (SkeletalWarrior::HexusOpponentDataInstance == nullptr)

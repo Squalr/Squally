@@ -49,6 +49,11 @@ Vec2 IceGolem::getDialogueOffset()
 	return Vec2(-32.0f, -160.0f);
 }
 
+LocalizedString* IceGolem::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* IceGolem::getHexusOpponentData()
 {
 	if (IceGolem::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Irmik::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Irmik::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Irmik::getHexusOpponentData()
 {
 	if (Irmik::HexusOpponentDataInstance == nullptr)

@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Shopkeepers/ShopkeeperMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
 
 using namespace cocos2d;
 
@@ -23,7 +23,7 @@ ShopkeeperBehaviorGroup::ShopkeeperBehaviorGroup(GameObject* owner) : super(owne
 	EntityCinematicHijackBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
-	ShopkeeperMovementBehavior::create(owner),
+	LookAtSquallyBehavior::create(owner),
 	})
 {
 }

@@ -18,6 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/EntityResources.h"
@@ -71,6 +72,8 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
 		this->chiron = chiron;
+
+		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
 
 		this->chironCollision = CollisionObject::create(
 			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f),

@@ -49,6 +49,11 @@ Vec2 Scaldor::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Scaldor::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Scaldor::getHexusOpponentData()
 {
 	if (Scaldor::HexusOpponentDataInstance == nullptr)

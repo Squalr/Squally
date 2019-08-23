@@ -49,6 +49,11 @@ Vec2 MummyWarrior::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* MummyWarrior::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* MummyWarrior::getHexusOpponentData()
 {
 	if (MummyWarrior::HexusOpponentDataInstance == nullptr)

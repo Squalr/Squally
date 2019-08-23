@@ -49,6 +49,11 @@ Vec2 Sarude::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Sarude::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Sarude::getHexusOpponentData()
 {
 	if (Sarude::HexusOpponentDataInstance == nullptr)

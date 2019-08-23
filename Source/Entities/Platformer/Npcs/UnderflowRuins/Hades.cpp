@@ -49,6 +49,11 @@ Vec2 Hades::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Hades::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Hades::getHexusOpponentData()
 {
 	if (Hades::HexusOpponentDataInstance == nullptr)

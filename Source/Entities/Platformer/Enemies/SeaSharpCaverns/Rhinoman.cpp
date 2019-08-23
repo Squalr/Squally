@@ -49,6 +49,11 @@ Vec2 Rhinoman::getDialogueOffset()
 	return Vec2(0.0f, -420.0f);
 }
 
+LocalizedString* Rhinoman::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Rhinoman::getHexusOpponentData()
 {
 	if (Rhinoman::HexusOpponentDataInstance == nullptr)

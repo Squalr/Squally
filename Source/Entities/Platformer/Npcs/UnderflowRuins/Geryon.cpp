@@ -49,6 +49,11 @@ Vec2 Geryon::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Geryon::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Geryon::getHexusOpponentData()
 {
 	if (Geryon::HexusOpponentDataInstance == nullptr)

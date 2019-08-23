@@ -49,6 +49,11 @@ Vec2 Leon::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Leon::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Leon::getHexusOpponentData()
 {
 	if (Leon::HexusOpponentDataInstance == nullptr)

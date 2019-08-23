@@ -49,6 +49,11 @@ Vec2 Gargoyle::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Gargoyle::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Gargoyle::getHexusOpponentData()
 {
 	if (Gargoyle::HexusOpponentDataInstance == nullptr)

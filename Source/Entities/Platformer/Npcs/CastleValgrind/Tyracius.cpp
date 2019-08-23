@@ -49,6 +49,11 @@ Vec2 Tyracius::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Tyracius::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Tyracius::getHexusOpponentData()
 {
 	if (Tyracius::HexusOpponentDataInstance == nullptr)

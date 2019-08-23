@@ -49,6 +49,11 @@ Vec2 Rusty::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Rusty::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Rusty::getHexusOpponentData()
 {
 	if (Rusty::HexusOpponentDataInstance == nullptr)

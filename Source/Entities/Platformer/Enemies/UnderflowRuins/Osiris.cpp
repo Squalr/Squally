@@ -49,6 +49,11 @@ Vec2 Osiris::getDialogueOffset()
 	return Vec2(-32.0f, -212.0f);
 }
 
+LocalizedString* Osiris::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Osiris::getHexusOpponentData()
 {
 	if (Osiris::HexusOpponentDataInstance == nullptr)

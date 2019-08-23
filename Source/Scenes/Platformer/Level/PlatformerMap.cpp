@@ -150,7 +150,7 @@ void PlatformerMap::initializeListeners()
 					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString(), ""),
 		 		},
 				{ 
-					CombatMap::CombatData(args->enemy->getEntityName(), args->enemy->getBattleBehavior()),
+					CombatMap::CombatData(args->enemy->getEntityKey(), args->enemy->getBattleBehavior()),
 				}
 			);
 

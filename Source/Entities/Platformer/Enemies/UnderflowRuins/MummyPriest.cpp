@@ -49,6 +49,11 @@ Vec2 MummyPriest::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* MummyPriest::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* MummyPriest::getHexusOpponentData()
 {
 	if (MummyPriest::HexusOpponentDataInstance == nullptr)

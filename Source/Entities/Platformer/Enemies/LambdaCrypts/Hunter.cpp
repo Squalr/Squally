@@ -49,6 +49,11 @@ Vec2 Hunter::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Hunter::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Hunter::getHexusOpponentData()
 {
 	if (Hunter::HexusOpponentDataInstance == nullptr)

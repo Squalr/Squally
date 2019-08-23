@@ -49,6 +49,11 @@ Vec2 Horus::getDialogueOffset()
 	return Vec2(-32.0f, -128.0f);
 }
 
+LocalizedString* Horus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Horus::getHexusOpponentData()
 {
 	if (Horus::HexusOpponentDataInstance == nullptr)

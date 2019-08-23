@@ -49,6 +49,11 @@ Vec2 Griffin::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Griffin::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Griffin::getHexusOpponentData()
 {
 	if (Griffin::HexusOpponentDataInstance == nullptr)

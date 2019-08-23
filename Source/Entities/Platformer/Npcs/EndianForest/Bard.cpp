@@ -49,6 +49,11 @@ Vec2 Bard::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Bard::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Bard::getHexusOpponentData()
 {
 	if (Bard::HexusOpponentDataInstance == nullptr)

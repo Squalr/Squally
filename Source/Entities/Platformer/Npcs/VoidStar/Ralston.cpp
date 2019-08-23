@@ -49,6 +49,11 @@ Vec2 Ralston::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ralston::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ralston::getHexusOpponentData()
 {
 	if (Ralston::HexusOpponentDataInstance == nullptr)

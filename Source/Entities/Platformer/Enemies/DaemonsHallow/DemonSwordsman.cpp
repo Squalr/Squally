@@ -49,6 +49,11 @@ Vec2 DemonSwordsman::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* DemonSwordsman::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 {
 	if (DemonSwordsman::HexusOpponentDataInstance == nullptr)

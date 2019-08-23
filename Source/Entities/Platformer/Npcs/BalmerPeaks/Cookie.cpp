@@ -49,6 +49,11 @@ Vec2 Cookie::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Cookie::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cookie::getHexusOpponentData()
 {
 	if (Cookie::HexusOpponentDataInstance == nullptr)

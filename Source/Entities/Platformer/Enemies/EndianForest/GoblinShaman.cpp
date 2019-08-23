@@ -49,6 +49,11 @@ Vec2 GoblinShaman::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* GoblinShaman::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* GoblinShaman::getHexusOpponentData()
 {
 	if (GoblinShaman::HexusOpponentDataInstance == nullptr)

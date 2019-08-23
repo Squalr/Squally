@@ -49,6 +49,11 @@ Vec2 Drak::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Drak::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Drak::getHexusOpponentData()
 {
 	if (Drak::HexusOpponentDataInstance == nullptr)

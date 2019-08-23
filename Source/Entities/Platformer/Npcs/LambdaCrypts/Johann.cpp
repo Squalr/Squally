@@ -49,6 +49,11 @@ Vec2 Johann::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Johann::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Johann::getHexusOpponentData()
 {
 	if (Johann::HexusOpponentDataInstance == nullptr)

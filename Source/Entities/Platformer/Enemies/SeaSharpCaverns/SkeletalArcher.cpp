@@ -49,6 +49,11 @@ Vec2 SkeletalArcher::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* SkeletalArcher::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SkeletalArcher::getHexusOpponentData()
 {
 	if (SkeletalArcher::HexusOpponentDataInstance == nullptr)

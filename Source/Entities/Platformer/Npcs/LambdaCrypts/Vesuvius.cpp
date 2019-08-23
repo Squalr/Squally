@@ -49,6 +49,11 @@ Vec2 Vesuvius::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Vesuvius::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Vesuvius::getHexusOpponentData()
 {
 	if (Vesuvius::HexusOpponentDataInstance == nullptr)

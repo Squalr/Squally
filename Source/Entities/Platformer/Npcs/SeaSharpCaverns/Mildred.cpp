@@ -49,6 +49,11 @@ Vec2 Mildred::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Mildred::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Mildred::getHexusOpponentData()
 {
 	if (Mildred::HexusOpponentDataInstance == nullptr)

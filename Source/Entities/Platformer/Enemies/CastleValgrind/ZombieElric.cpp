@@ -49,6 +49,11 @@ Vec2 ZombieElric::getDialogueOffset()
 	return Vec2(-16.0f, -112.0f);
 }
 
+LocalizedString* ZombieElric::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* ZombieElric::getHexusOpponentData()
 {
 	if (ZombieElric::HexusOpponentDataInstance == nullptr)

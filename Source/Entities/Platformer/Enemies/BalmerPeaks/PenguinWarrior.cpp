@@ -49,6 +49,11 @@ Vec2 PenguinWarrior::getDialogueOffset()
 	return Vec2(-32.0f, -128.0f);
 }
 
+LocalizedString* PenguinWarrior::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* PenguinWarrior::getHexusOpponentData()
 {
 	if (PenguinWarrior::HexusOpponentDataInstance == nullptr)

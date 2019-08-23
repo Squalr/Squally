@@ -29,7 +29,7 @@ Knight* Knight::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Knight::Knight(ValueMap& properties) : PlatformerEntity(properties,
+Knight::Knight(ValueMap& properties) : super(properties,
 	Knight::MapKeyKnight,
 	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,
@@ -47,6 +47,11 @@ Knight::~Knight()
 Vec2 Knight::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Knight::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Knight::getHexusOpponentData()

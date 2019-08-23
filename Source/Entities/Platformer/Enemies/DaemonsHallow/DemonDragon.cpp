@@ -49,6 +49,11 @@ Vec2 DemonDragon::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* DemonDragon::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* DemonDragon::getHexusOpponentData()
 {
 	if (DemonDragon::HexusOpponentDataInstance == nullptr)

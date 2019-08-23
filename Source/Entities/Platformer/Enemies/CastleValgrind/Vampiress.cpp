@@ -49,6 +49,11 @@ Vec2 Vampiress::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Vampiress::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Vampiress::getHexusOpponentData()
 {
 	if (Vampiress::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 EarthGolem::getDialogueOffset()
 	return Vec2(-48.0f, -144.0f);
 }
 
+LocalizedString* EarthGolem::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* EarthGolem::getHexusOpponentData()
 {
 	if (EarthGolem::HexusOpponentDataInstance == nullptr)

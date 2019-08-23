@@ -49,6 +49,11 @@ Vec2 Shen::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Shen::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Shen::getHexusOpponentData()
 {
 	if (Shen::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 KingZul::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* KingZul::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* KingZul::getHexusOpponentData()
 {
 	if (KingZul::HexusOpponentDataInstance == nullptr)

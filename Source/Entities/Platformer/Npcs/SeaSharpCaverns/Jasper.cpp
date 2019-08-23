@@ -49,6 +49,11 @@ Vec2 Jasper::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Jasper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Jasper::getHexusOpponentData()
 {
 	if (Jasper::HexusOpponentDataInstance == nullptr)

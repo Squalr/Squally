@@ -49,6 +49,11 @@ Vec2 Marcel::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Marcel::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Marcel::getHexusOpponentData()
 {
 	if (Marcel::HexusOpponentDataInstance == nullptr)

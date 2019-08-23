@@ -49,6 +49,11 @@ Vec2 Viper::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Viper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Viper::getHexusOpponentData()
 {
 	if (Viper::HexusOpponentDataInstance == nullptr)

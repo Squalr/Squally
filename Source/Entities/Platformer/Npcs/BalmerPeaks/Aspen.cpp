@@ -49,6 +49,11 @@ Vec2 Aspen::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Aspen::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Aspen::getHexusOpponentData()
 {
 	if (Aspen::HexusOpponentDataInstance == nullptr)

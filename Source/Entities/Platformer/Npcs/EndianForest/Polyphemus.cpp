@@ -49,6 +49,11 @@ Vec2 Polyphemus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Polyphemus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Polyphemus::getHexusOpponentData()
 {
 	if (Polyphemus::HexusOpponentDataInstance == nullptr)

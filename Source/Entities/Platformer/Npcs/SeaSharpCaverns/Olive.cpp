@@ -49,6 +49,11 @@ Vec2 Olive::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Olive::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Olive::getHexusOpponentData()
 {
 	if (Olive::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Ara::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ara::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ara::getHexusOpponentData()
 {
 	if (Ara::HexusOpponentDataInstance == nullptr)

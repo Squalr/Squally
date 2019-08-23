@@ -29,7 +29,7 @@ Robot* Robot::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Robot::Robot(ValueMap& properties) : PlatformerEntity(properties,
+Robot::Robot(ValueMap& properties) : super(properties,
 	Robot::MapKeyRobot,
 	EntityResources::Helpers_VoidStar_Robot_Animations,
 	EntityResources::Helpers_VoidStar_Robot_Emblem,
@@ -47,6 +47,11 @@ Robot::~Robot()
 Vec2 Robot::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Robot::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Robot::getHexusOpponentData()

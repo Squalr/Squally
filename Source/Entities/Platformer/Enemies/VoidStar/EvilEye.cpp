@@ -49,6 +49,11 @@ Vec2 EvilEye::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* EvilEye::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* EvilEye::getHexusOpponentData()
 {
 	if (EvilEye::HexusOpponentDataInstance == nullptr)

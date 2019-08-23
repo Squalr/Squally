@@ -49,6 +49,11 @@ Vec2 OrcBomber::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* OrcBomber::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* OrcBomber::getHexusOpponentData()
 {
 	if (OrcBomber::HexusOpponentDataInstance == nullptr)

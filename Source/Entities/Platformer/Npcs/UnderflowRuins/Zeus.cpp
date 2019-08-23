@@ -49,6 +49,11 @@ Vec2 Zeus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Zeus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Zeus::getHexusOpponentData()
 {
 	if (Zeus::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 SnowFiend::getDialogueOffset()
 	return Vec2(-32.0f, -248.0f);
 }
 
+LocalizedString* SnowFiend::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SnowFiend::getHexusOpponentData()
 {
 	if (SnowFiend::HexusOpponentDataInstance == nullptr)

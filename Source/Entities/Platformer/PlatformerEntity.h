@@ -15,6 +15,7 @@ class EquipmentInventory;
 class HackablePreview;
 class HexusOpponentData;
 class Inventory;
+class LocalizedString;
 class SmartAnimationNode;
 class SpeechBubble;
 
@@ -27,7 +28,7 @@ public:
 		Swimming,
 	};
 
-	std::string getEntityName();
+	std::string getEntityKey();
 	virtual float getFloatHeight();
 
 	Inventory* getInventory();
@@ -44,6 +45,7 @@ public:
 	float getHoverHeight();
 	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
+	virtual LocalizedString* getEntityName() = 0;
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
 

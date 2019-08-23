@@ -49,6 +49,11 @@ Vec2 PenguinGrunt::getDialogueOffset()
 	return Vec2(-32.0f, -128.0f);
 }
 
+LocalizedString* PenguinGrunt::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 {
 	if (PenguinGrunt::HexusOpponentDataInstance == nullptr)

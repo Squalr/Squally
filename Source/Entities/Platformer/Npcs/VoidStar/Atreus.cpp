@@ -49,6 +49,11 @@ Vec2 Atreus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Atreus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Atreus::getHexusOpponentData()
 {
 	if (Atreus::HexusOpponentDataInstance == nullptr)

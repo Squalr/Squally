@@ -49,6 +49,11 @@ Vec2 Rupert::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Rupert::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Rupert::getHexusOpponentData()
 {
 	if (Rupert::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Rogas::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Rogas::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Rogas::getHexusOpponentData()
 {
 	if (Rogas::HexusOpponentDataInstance == nullptr)

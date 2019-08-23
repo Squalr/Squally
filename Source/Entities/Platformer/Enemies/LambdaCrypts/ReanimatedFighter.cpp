@@ -48,6 +48,11 @@ Vec2 ReanimatedFighter::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* ReanimatedFighter::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* ReanimatedFighter::getHexusOpponentData()
 {
 	if (ReanimatedFighter::HexusOpponentDataInstance == nullptr)

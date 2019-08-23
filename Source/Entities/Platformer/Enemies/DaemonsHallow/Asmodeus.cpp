@@ -49,6 +49,11 @@ Vec2 Asmodeus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Asmodeus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Asmodeus::getHexusOpponentData()
 {
 	if (Asmodeus::HexusOpponentDataInstance == nullptr)

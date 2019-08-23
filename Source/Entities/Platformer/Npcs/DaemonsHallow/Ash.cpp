@@ -49,6 +49,11 @@ Vec2 Ash::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ash::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ash::getHexusOpponentData()
 {
 	if (Ash::HexusOpponentDataInstance == nullptr)

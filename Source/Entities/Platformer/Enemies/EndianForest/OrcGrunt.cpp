@@ -57,6 +57,11 @@ Vec2 OrcGrunt::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* OrcGrunt::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* OrcGrunt::getHexusOpponentData()
 {
 	if (OrcGrunt::HexusOpponentDataInstance == nullptr)

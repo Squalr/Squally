@@ -29,7 +29,7 @@ YetiBaby* YetiBaby::deserialize(ValueMap& properties)
 	return instance;
 }
 
-YetiBaby::YetiBaby(ValueMap& properties) : PlatformerEntity(properties,
+YetiBaby::YetiBaby(ValueMap& properties) : super(properties,
 	YetiBaby::MapKeyYetiBaby,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
@@ -47,6 +47,11 @@ YetiBaby::~YetiBaby()
 Vec2 YetiBaby::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* YetiBaby::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* YetiBaby::getHexusOpponentData()

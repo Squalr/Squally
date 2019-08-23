@@ -49,6 +49,11 @@ Vec2 Ajax::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ajax::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ajax::getHexusOpponentData()
 {
 	if (Ajax::HexusOpponentDataInstance == nullptr)

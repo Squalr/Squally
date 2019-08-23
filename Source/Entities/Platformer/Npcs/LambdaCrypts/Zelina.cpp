@@ -49,6 +49,11 @@ Vec2 Zelina::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Zelina::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Zelina::getHexusOpponentData()
 {
 	if (Zelina::HexusOpponentDataInstance == nullptr)

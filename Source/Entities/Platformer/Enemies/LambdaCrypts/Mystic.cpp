@@ -49,6 +49,11 @@ Vec2 Mystic::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Mystic::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Mystic::getHexusOpponentData()
 {
 	if (Mystic::HexusOpponentDataInstance == nullptr)

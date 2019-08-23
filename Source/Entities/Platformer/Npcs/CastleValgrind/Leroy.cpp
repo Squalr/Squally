@@ -49,6 +49,11 @@ Vec2 Leroy::getDialogueOffset()
 	return Vec2(-32.0f, -96.0f);
 }
 
+LocalizedString* Leroy::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Leroy::getHexusOpponentData()
 {
 	if (Leroy::HexusOpponentDataInstance == nullptr)

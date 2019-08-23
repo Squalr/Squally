@@ -29,7 +29,7 @@ Mummy* Mummy::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Mummy::Mummy(ValueMap& properties) : PlatformerEntity(properties,
+Mummy::Mummy(ValueMap& properties) : super(properties,
 	Mummy::MapKeyMummy,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,
@@ -47,6 +47,11 @@ Mummy::~Mummy()
 Vec2 Mummy::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Mummy::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Mummy::getHexusOpponentData()

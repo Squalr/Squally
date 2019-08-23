@@ -49,6 +49,11 @@ Vec2 Zana::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Zana::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Zana::getHexusOpponentData()
 {
 	if (Zana::HexusOpponentDataInstance == nullptr)

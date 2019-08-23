@@ -49,6 +49,11 @@ Vec2 Burch::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Burch::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Burch::getHexusOpponentData()
 {
 	if (Burch::HexusOpponentDataInstance == nullptr)

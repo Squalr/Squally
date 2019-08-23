@@ -49,6 +49,11 @@ Vec2 GoblinGruntBoar::getDialogueOffset()
 	return Vec2(-32.0f, -128.0f);
 }
 
+LocalizedString* GoblinGruntBoar::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 {
 	if (GoblinGruntBoar::HexusOpponentDataInstance == nullptr)

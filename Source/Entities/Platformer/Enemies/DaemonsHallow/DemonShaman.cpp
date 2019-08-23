@@ -49,6 +49,11 @@ Vec2 DemonShaman::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* DemonShaman::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* DemonShaman::getHexusOpponentData()
 {
 	if (DemonShaman::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Thatcher::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Thatcher::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Thatcher::getHexusOpponentData()
 {
 	if (Thatcher::HexusOpponentDataInstance == nullptr)

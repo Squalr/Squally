@@ -49,6 +49,11 @@ Vec2 Undead::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Undead::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Undead::getHexusOpponentData()
 {
 	if (Undead::HexusOpponentDataInstance == nullptr)

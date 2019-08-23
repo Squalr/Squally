@@ -49,6 +49,11 @@ Vec2 KingGrogg::getDialogueOffset()
 	return Vec2(-32.0f, -280.0f);
 }
 
+LocalizedString* KingGrogg::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* KingGrogg::getHexusOpponentData()
 {
 	if (KingGrogg::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Theldar::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Theldar::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Theldar::getHexusOpponentData()
 {
 	if (Theldar::HexusOpponentDataInstance == nullptr)

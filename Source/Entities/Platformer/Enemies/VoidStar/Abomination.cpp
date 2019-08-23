@@ -49,6 +49,11 @@ Vec2 Abomination::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Abomination::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Abomination::getHexusOpponentData()
 {
 	if (Abomination::HexusOpponentDataInstance == nullptr)

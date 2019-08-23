@@ -49,6 +49,11 @@ Vec2 PrincessNebea::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* PrincessNebea::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* PrincessNebea::getHexusOpponentData()
 {
 	if (PrincessNebea::HexusOpponentDataInstance == nullptr)

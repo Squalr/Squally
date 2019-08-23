@@ -49,6 +49,11 @@ Vec2 Igneus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Igneus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Igneus::getHexusOpponentData()
 {
 	if (Igneus::HexusOpponentDataInstance == nullptr)

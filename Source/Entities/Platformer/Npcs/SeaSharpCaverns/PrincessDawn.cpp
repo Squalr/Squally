@@ -49,6 +49,11 @@ Vec2 PrincessDawn::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* PrincessDawn::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* PrincessDawn::getHexusOpponentData()
 {
 	if (PrincessDawn::HexusOpponentDataInstance == nullptr)

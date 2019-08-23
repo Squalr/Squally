@@ -49,6 +49,11 @@ Vec2 Warlock::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Warlock::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Warlock::getHexusOpponentData()
 {
 	if (Warlock::HexusOpponentDataInstance == nullptr)

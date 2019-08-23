@@ -50,6 +50,11 @@ Vec2 Centaur::getDialogueOffset()
 	return Vec2(-48.0f, -212.0f);
 }
 
+LocalizedString* Centaur::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Centaur::getHexusOpponentData()
 {
 	if (Centaur::HexusOpponentDataInstance == nullptr)

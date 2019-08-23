@@ -49,6 +49,11 @@ Vec2 Troll::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Troll::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Troll::getHexusOpponentData()
 {
 	if (Troll::HexusOpponentDataInstance == nullptr)

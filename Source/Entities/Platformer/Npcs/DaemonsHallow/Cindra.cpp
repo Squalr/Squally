@@ -49,6 +49,11 @@ Vec2 Cindra::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Cindra::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cindra::getHexusOpponentData()
 {
 	if (Cindra::HexusOpponentDataInstance == nullptr)

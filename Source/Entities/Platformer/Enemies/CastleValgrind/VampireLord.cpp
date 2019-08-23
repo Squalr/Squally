@@ -49,6 +49,11 @@ Vec2 VampireLord::getDialogueOffset()
 	return Vec2(-32.0f, -160.0f);
 }
 
+LocalizedString* VampireLord::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* VampireLord::getHexusOpponentData()
 {
 	if (VampireLord::HexusOpponentDataInstance == nullptr)

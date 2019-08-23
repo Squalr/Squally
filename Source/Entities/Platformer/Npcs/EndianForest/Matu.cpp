@@ -49,6 +49,11 @@ Vec2 Matu::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Matu::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Matu::getHexusOpponentData()
 {
 	if (Matu::HexusOpponentDataInstance == nullptr)

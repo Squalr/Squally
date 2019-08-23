@@ -49,6 +49,11 @@ Vec2 Elriel::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Elriel::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Elriel::getHexusOpponentData()
 {
 	if (Elriel::HexusOpponentDataInstance == nullptr)

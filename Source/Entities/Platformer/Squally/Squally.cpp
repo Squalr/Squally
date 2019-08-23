@@ -140,6 +140,11 @@ cocos2d::Vec2 Squally::getDialogueOffset()
 	return Vec2(0.0f, 0.0f);
 }
 
+LocalizedString* Squally::getEntityName()
+{
+	return nullptr;
+}
+
 void Squally::performSwimAnimation()
 {
 	if (this->equipmentInventory->getWeapon() != nullptr)

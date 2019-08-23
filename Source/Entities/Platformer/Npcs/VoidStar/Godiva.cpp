@@ -49,6 +49,11 @@ Vec2 Godiva::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Godiva::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Godiva::getHexusOpponentData()
 {
 	if (Godiva::HexusOpponentDataInstance == nullptr)

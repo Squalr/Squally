@@ -49,6 +49,11 @@ Vec2 Azmus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Azmus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Azmus::getHexusOpponentData()
 {
 	if (Azmus::HexusOpponentDataInstance == nullptr)

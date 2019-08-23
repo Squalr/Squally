@@ -49,6 +49,11 @@ Vec2 Mara::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Mara::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Mara::getHexusOpponentData()
 {
 	if (Mara::HexusOpponentDataInstance == nullptr)

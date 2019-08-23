@@ -49,6 +49,11 @@ Vec2 Bodom::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Bodom::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Bodom::getHexusOpponentData()
 {
 	if (Bodom::HexusOpponentDataInstance == nullptr)

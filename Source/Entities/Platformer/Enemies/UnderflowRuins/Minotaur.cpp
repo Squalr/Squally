@@ -49,6 +49,11 @@ Vec2 Minotaur::getDialogueOffset()
 	return Vec2(-48.0f, -196.0f);
 }
 
+LocalizedString* Minotaur::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Minotaur::getHexusOpponentData()
 {
 	if (Minotaur::HexusOpponentDataInstance == nullptr)

@@ -29,7 +29,7 @@ Princess* Princess::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Princess::Princess(ValueMap& properties) : PlatformerEntity(properties,
+Princess::Princess(ValueMap& properties) : super(properties,
 	Princess::MapKeyPrincess,
 	EntityResources::Helpers_CastleValgrind_Princess_Animations,
 	EntityResources::Helpers_CastleValgrind_Princess_Emblem,
@@ -47,6 +47,11 @@ Princess::~Princess()
 Vec2 Princess::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Princess::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Princess::getHexusOpponentData()

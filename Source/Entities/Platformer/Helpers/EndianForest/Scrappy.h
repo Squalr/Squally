@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 
 class HexusOpponentData;
+class LocalizedString;
 class SmartAnimationSequenceNode;
 class Sound;
 
-class Scrappy : public PlatformerEntity
+class Scrappy : public PlatformerFriendly
 {
 public:
 	static Scrappy* deserialize(cocos2d::ValueMap& properties);
@@ -15,6 +16,7 @@ public:
 	float getFloatHeight() override;
 
 	cocos2d::Vec2 getDialogueOffset() override;
+	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
 	Sound* droidAlarmedSound;
@@ -25,7 +27,7 @@ public:
 	static const std::string MapKeyScrappy;
 
 private:
-	typedef PlatformerEntity super;
+	typedef PlatformerFriendly super;
 	Scrappy(cocos2d::ValueMap& properties);
 	~Scrappy();
 

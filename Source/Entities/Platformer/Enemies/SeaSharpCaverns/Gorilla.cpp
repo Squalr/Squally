@@ -49,6 +49,11 @@ Vec2 Gorilla::getDialogueOffset()
 	return Vec2(-64.0f, -144.0f);
 }
 
+LocalizedString* Gorilla::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Gorilla::getHexusOpponentData()
 {
 	if (Gorilla::HexusOpponentDataInstance == nullptr)

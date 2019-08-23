@@ -49,6 +49,11 @@ Vec2 BoneFiend::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* BoneFiend::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* BoneFiend::getHexusOpponentData()
 {
 	if (BoneFiend::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Santa::getDialogueOffset()
 	return Vec2(-32.0f, -248.0f);
 }
 
+LocalizedString* Santa::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Santa::getHexusOpponentData()
 {
 	if (Santa::HexusOpponentDataInstance == nullptr)

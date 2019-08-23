@@ -49,6 +49,11 @@ Vec2 Cyclops::getDialogueOffset()
 	return Vec2(-32.0f, -196.0f);
 }
 
+LocalizedString* Cyclops::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cyclops::getHexusOpponentData()
 {
 	if (Cyclops::HexusOpponentDataInstance == nullptr)

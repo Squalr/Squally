@@ -29,7 +29,7 @@ Ghost* Ghost::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Ghost::Ghost(ValueMap& properties) : PlatformerEntity(properties,
+Ghost::Ghost(ValueMap& properties) : super(properties,
 	Ghost::MapKeyGhost,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
@@ -47,6 +47,11 @@ Ghost::~Ghost()
 Vec2 Ghost::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Ghost::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Ghost::getHexusOpponentData()

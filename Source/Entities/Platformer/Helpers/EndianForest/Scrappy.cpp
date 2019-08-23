@@ -50,7 +50,7 @@ Scrappy* Scrappy::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Scrappy::Scrappy(ValueMap& properties) : PlatformerEntity(properties,
+Scrappy::Scrappy(ValueMap& properties) : super(properties,
 	Scrappy::MapKeyScrappy,
 	EntityResources::Helpers_EndianForest_Scrappy_Animations,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
@@ -159,6 +159,11 @@ float Scrappy::getFloatHeight()
 Vec2 Scrappy::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Scrappy::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Scrappy::getHexusOpponentData()

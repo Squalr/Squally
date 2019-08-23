@@ -49,6 +49,11 @@ Vec2 SkeletalNecromancer::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* SkeletalNecromancer::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 {
 	if (SkeletalNecromancer::HexusOpponentDataInstance == nullptr)

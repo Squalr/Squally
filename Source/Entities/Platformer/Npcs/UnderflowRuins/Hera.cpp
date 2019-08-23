@@ -49,6 +49,11 @@ Vec2 Hera::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Hera::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Hera::getHexusOpponentData()
 {
 	if (Hera::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 TigerMan::getDialogueOffset()
 	return Vec2(-16.0f, -212.0f);
 }
 
+LocalizedString* TigerMan::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* TigerMan::getHexusOpponentData()
 {
 	if (TigerMan::HexusOpponentDataInstance == nullptr)

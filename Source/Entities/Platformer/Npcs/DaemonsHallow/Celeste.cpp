@@ -49,6 +49,11 @@ Vec2 Celeste::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Celeste::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Celeste::getHexusOpponentData()
 {
 	if (Celeste::HexusOpponentDataInstance == nullptr)

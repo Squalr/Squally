@@ -115,7 +115,7 @@ HackablePreview* PlatformerEntity::createDefaultPreview()
 	return EntityPreview::create(this);
 }
 
-std::string PlatformerEntity::getEntityName()
+std::string PlatformerEntity::getEntityKey()
 {
 	return this->entityName;
 }

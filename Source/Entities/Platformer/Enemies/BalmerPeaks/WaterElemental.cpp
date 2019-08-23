@@ -49,6 +49,11 @@ Vec2 WaterElemental::getDialogueOffset()
 	return Vec2(-32.0f, -224.0f);
 }
 
+LocalizedString* WaterElemental::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* WaterElemental::getHexusOpponentData()
 {
 	if (WaterElemental::HexusOpponentDataInstance == nullptr)

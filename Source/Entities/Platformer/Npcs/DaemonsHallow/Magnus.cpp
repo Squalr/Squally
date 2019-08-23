@@ -49,6 +49,11 @@ Vec2 Magnus::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Magnus::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Magnus::getHexusOpponentData()
 {
 	if (Magnus::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Gramps::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Gramps::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Gramps::getHexusOpponentData()
 {
 	if (Gramps::HexusOpponentDataInstance == nullptr)

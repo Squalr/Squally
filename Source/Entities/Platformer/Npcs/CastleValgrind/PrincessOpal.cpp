@@ -49,6 +49,11 @@ Vec2 PrincessOpal::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* PrincessOpal::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* PrincessOpal::getHexusOpponentData()
 {
 	if (PrincessOpal::HexusOpponentDataInstance == nullptr)

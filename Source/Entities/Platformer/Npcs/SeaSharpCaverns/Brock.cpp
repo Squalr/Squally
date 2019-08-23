@@ -49,6 +49,11 @@ Vec2 Brock::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Brock::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Brock::getHexusOpponentData()
 {
 	if (Brock::HexusOpponentDataInstance == nullptr)

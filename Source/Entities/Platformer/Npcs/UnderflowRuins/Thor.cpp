@@ -49,6 +49,11 @@ Vec2 Thor::getDialogueOffset()
 	return Vec2(-32.0f, -144.0f);
 }
 
+LocalizedString* Thor::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Thor::getHexusOpponentData()
 {
 	if (Thor::HexusOpponentDataInstance == nullptr)

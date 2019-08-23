@@ -49,6 +49,11 @@ Vec2 Alder::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Alder::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Alder::getHexusOpponentData()
 {
 	if (Alder::HexusOpponentDataInstance == nullptr)

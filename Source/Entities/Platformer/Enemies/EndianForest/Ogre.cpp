@@ -49,6 +49,11 @@ Vec2 Ogre::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Ogre::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Ogre::getHexusOpponentData()
 {
 	if (Ogre::HexusOpponentDataInstance == nullptr)

@@ -49,6 +49,11 @@ Vec2 Finch::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Finch::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Finch::getHexusOpponentData()
 {
 	if (Finch::HexusOpponentDataInstance == nullptr)

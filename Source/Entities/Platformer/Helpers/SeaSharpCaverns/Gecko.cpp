@@ -29,7 +29,7 @@ Gecko* Gecko::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Gecko::Gecko(ValueMap& properties) : PlatformerEntity(properties,
+Gecko::Gecko(ValueMap& properties) : super(properties,
 	Gecko::MapKeyGecko,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,
@@ -47,6 +47,11 @@ Gecko::~Gecko()
 Vec2 Gecko::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Gecko::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Gecko::getHexusOpponentData()

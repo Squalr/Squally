@@ -49,6 +49,11 @@ Vec2 OrcWarrior::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* OrcWarrior::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* OrcWarrior::getHexusOpponentData()
 {
 	if (OrcWarrior::HexusOpponentDataInstance == nullptr)

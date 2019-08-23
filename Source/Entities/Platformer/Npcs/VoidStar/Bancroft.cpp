@@ -49,6 +49,11 @@ Vec2 Bancroft::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Bancroft::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Bancroft::getHexusOpponentData()
 {
 	if (Bancroft::HexusOpponentDataInstance == nullptr)

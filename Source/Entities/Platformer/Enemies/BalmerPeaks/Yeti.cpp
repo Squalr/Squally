@@ -49,6 +49,11 @@ Vec2 Yeti::getDialogueOffset()
 	return Vec2(-64.0f, -160.0f);
 }
 
+LocalizedString* Yeti::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Yeti::getHexusOpponentData()
 {
 	if (Yeti::HexusOpponentDataInstance == nullptr)

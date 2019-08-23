@@ -49,6 +49,11 @@ Vec2 Toben::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Toben::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Toben::getHexusOpponentData()
 {
 	if (Toben::HexusOpponentDataInstance == nullptr)

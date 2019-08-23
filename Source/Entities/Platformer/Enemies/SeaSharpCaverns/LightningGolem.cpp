@@ -49,6 +49,11 @@ Vec2 LightningGolem::getDialogueOffset()
 	return Vec2(-32.0f, -380.0f);
 }
 
+LocalizedString* LightningGolem::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* LightningGolem::getHexusOpponentData()
 {
 	if (LightningGolem::HexusOpponentDataInstance == nullptr)

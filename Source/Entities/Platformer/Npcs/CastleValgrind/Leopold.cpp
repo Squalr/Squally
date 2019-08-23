@@ -49,6 +49,11 @@ Vec2 Leopold::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Leopold::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Leopold::getHexusOpponentData()
 {
 	if (Leopold::HexusOpponentDataInstance == nullptr)

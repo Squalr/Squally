@@ -49,6 +49,11 @@ Vec2 Medusa::getDialogueOffset()
 	return Vec2(-32.0f, -196.0f);
 }
 
+LocalizedString* Medusa::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Medusa::getHexusOpponentData()
 {
 	if (Medusa::HexusOpponentDataInstance == nullptr)

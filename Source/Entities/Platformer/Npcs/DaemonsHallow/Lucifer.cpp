@@ -49,6 +49,11 @@ Vec2 Lucifer::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Lucifer::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Lucifer::getHexusOpponentData()
 {
 	if (Lucifer::HexusOpponentDataInstance == nullptr)

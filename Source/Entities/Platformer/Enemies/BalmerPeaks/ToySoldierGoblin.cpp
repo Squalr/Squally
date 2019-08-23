@@ -49,6 +49,11 @@ Vec2 ToySoldierGoblin::getDialogueOffset()
 	return Vec2(-32.0f, -144.0f);
 }
 
+LocalizedString* ToySoldierGoblin::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 {
 	if (ToySoldierGoblin::HexusOpponentDataInstance == nullptr)

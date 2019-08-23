@@ -49,6 +49,11 @@ Vec2 EarthElemental::getDialogueOffset()
 	return Vec2(-32.0f, -224.0f);
 }
 
+LocalizedString* EarthElemental::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* EarthElemental::getHexusOpponentData()
 {
 	if (EarthElemental::HexusOpponentDataInstance == nullptr)

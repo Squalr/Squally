@@ -49,6 +49,11 @@ Vec2 ForestGolem::getDialogueOffset()
 	return Vec2(-32.0f, -144.0f);
 }
 
+LocalizedString* ForestGolem::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* ForestGolem::getHexusOpponentData()
 {
 	if (ForestGolem::HexusOpponentDataInstance == nullptr)

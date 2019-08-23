@@ -29,7 +29,7 @@ Apple* Apple::deserialize(ValueMap& properties)
 	return instance;
 }
 
-Apple::Apple(ValueMap& properties) : PlatformerEntity(properties,
+Apple::Apple(ValueMap& properties) : super(properties,
 	Apple::MapKeyApple,
 	EntityResources::Helpers_DaemonsHallow_Apple_Animations,
 	EntityResources::Helpers_DaemonsHallow_Apple_Emblem,
@@ -47,6 +47,11 @@ Apple::~Apple()
 Vec2 Apple::getDialogueOffset()
 {
 	return Vec2(-32.0f, -112.0f);
+}
+
+LocalizedString* Apple::getEntityName()
+{
+	return nullptr;
 }
 
 HexusOpponentData* Apple::getHexusOpponentData()

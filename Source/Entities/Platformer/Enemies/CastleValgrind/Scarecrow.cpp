@@ -49,6 +49,11 @@ Vec2 Scarecrow::getDialogueOffset()
 	return Vec2(0.0f, -312.0f);
 }
 
+LocalizedString* Scarecrow::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Scarecrow::getHexusOpponentData()
 {
 	if (Scarecrow::HexusOpponentDataInstance == nullptr)

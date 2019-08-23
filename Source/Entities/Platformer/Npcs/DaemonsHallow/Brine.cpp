@@ -49,6 +49,11 @@ Vec2 Brine::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Brine::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Brine::getHexusOpponentData()
 {
 	if (Brine::HexusOpponentDataInstance == nullptr)

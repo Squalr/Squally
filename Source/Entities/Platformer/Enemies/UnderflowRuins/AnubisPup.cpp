@@ -49,6 +49,11 @@ Vec2 AnubisPup::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* AnubisPup::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* AnubisPup::getHexusOpponentData()
 {
 	if (AnubisPup::HexusOpponentDataInstance == nullptr)

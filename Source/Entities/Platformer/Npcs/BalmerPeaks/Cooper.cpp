@@ -49,6 +49,11 @@ Vec2 Cooper::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Cooper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Cooper::getHexusOpponentData()
 {
 	if (Cooper::HexusOpponentDataInstance == nullptr)

@@ -15,6 +15,7 @@ public:
 
 	float getFloatHeight() override;
 	cocos2d::Vec2 getDialogueOffset() override;
+	LocalizedString* getEntityName() override;
 
 	static const std::string MapKeySqually;
 

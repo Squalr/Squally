@@ -49,6 +49,11 @@ Vec2 Viking::getDialogueOffset()
 	return Vec2(-32.0f, -144.0f);
 }
 
+LocalizedString* Viking::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Viking::getHexusOpponentData()
 {
 	if (Viking::HexusOpponentDataInstance == nullptr)

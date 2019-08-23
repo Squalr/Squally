@@ -49,6 +49,11 @@ Vec2 Reaper::getDialogueOffset()
 	return Vec2(-16.0f, -288.0f);
 }
 
+LocalizedString* Reaper::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Reaper::getHexusOpponentData()
 {
 	if (Reaper::HexusOpponentDataInstance == nullptr)

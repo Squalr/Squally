@@ -49,6 +49,11 @@ Vec2 Appolo::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Appolo::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Appolo::getHexusOpponentData()
 {
 	if (Appolo::HexusOpponentDataInstance == nullptr)

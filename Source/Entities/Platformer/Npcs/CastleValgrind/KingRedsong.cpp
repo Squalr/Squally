@@ -49,6 +49,11 @@ Vec2 KingRedsong::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* KingRedsong::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* KingRedsong::getHexusOpponentData()
 {
 	if (KingRedsong::HexusOpponentDataInstance == nullptr)

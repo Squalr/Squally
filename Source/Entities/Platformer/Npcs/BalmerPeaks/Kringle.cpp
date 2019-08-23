@@ -49,6 +49,11 @@ Vec2 Kringle::getDialogueOffset()
 	return Vec2(-32.0f, -112.0f);
 }
 
+LocalizedString* Kringle::getEntityName()
+{
+	return nullptr;
+}
+
 HexusOpponentData* Kringle::getHexusOpponentData()
 {
 	if (Kringle::HexusOpponentDataInstance == nullptr)
