@@ -18,6 +18,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -36,6 +37,8 @@
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+
+#include "Resources/MapResources.h"
 
 #include "Strings/Menus/Inventory/Inventory.h"
 
@@ -250,13 +253,56 @@ void PlatformerMap::update(float dt)
 	this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
-void PlatformerMap::loadMap(std::string mapResource)
+bool PlatformerMap::loadMap(std::string mapResource)
 {
+	if (super::loadMap(mapResource))
+	{
+		SaveManager::batchSaveProfileData({
+			{ SaveKeys::SaveKeyMap, Value(mapResource) },
+		});
+
+		return true;
+	}
+
+	// Error loading map! Try parsing the map to look for a reasonable fallback map
+	if (StrUtils::contains(mapResource, "UnderflowRuins", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "SeaSharpCaverns", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "CastleValgrind", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "BalmerPeaks", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "DaemonsHallow", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "LambdaCrypts", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else if (StrUtils::contains(mapResource, "VoidStar", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	else // if (StrUtils::contains(mapResource, "EndianForest", true))
+	{
+		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+	}
+	
 	SaveManager::batchSaveProfileData({
 		{ SaveKeys::SaveKeyMap, Value(mapResource) },
 	});
 
-	super::loadMap(mapResource);
+	return super::loadMap(mapResource);
 }
 
 Cipher* PlatformerMap::getCipherInstance()

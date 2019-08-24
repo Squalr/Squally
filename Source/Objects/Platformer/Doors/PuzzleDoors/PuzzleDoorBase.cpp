@@ -15,7 +15,6 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Doors/PuzzleDoor/PuzzleDoorGenericPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -28,29 +27,45 @@ using namespace cocos2d;
 const int PuzzleDoorBase::RuneCount = 4;
 const Color4B PuzzleDoorBase::PassColor = Color4B(70, 144, 75, 255);
 const Color4B PuzzleDoorBase::FailColor = Color4B(144, 70, 70, 255);
-const Vec2 PuzzleDoorBase::Offset = Vec2(0.0f, -160.0f);
-const Vec2 PuzzleDoorBase::DoorOffset = Vec2(0.0f, 64.0f);
-const Vec2 PuzzleDoorBase::DoorOpenOffset = Vec2(0.0f, 356.0f);
 const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
 
-PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties) : super(properties, Size(256.0f, 512.0f), PuzzleDoorBase::Offset + Vec2(0.0f, 48.0f))
+PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
+		Size doorClipSize,
+		Vec2 doorClipOffset,
+		Vec2 indexPosition,
+		Vec2 hackLabelPosition,
+		Vec2 truthLabelPosition,
+		Vec2 runeBasePosition,
+		float runeSpacing,
+		float doorOpenDelta)
+	: super(properties, Size(256.0f, 512.0f), doorClipOffset + Vec2(0.0f, 48.0f))
 {
-	this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_Back);
+	this->backNode = Node::create();
+	this->barLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarLeft);
+	this->barRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarRight);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->lightRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
-	this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_Door);
-	this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_Front);
-	this->runes = std::vector<cocos2d::Sprite*>();
-	this->runesPassed = std::vector<cocos2d::Sprite*>();
-	this->runesFailed = std::vector<cocos2d::Sprite*>();
+	this->doorNode = Node::create();
+	this->frontNode = Node::create();
+	this->runes = std::vector<Sprite*>();
+	this->runesPassed = std::vector<Sprite*>();
+	this->runesFailed = std::vector<Sprite*>();
 	this->indexString = ConstantString::create(std::to_string(0));
 	this->truthString = ConstantString::create(std::to_string(0));
 	this->hackableString = ConstantString::create(std::to_string(0));
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->indexString);
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
-	this->doorOpenSound = Sound::create(SoundResources::Platformer_Doors_StoneWall1, true);
+	this->doorOpenSound = nullptr;
 	this->isUnlocked = false;
+	this->doorClipSize = doorClipSize;
+	this->doorClipOffset = doorClipOffset;
+	this->indexPosition = indexPosition;
+	this->hackLabelPosition = hackLabelPosition;
+	this->truthLabelPosition = truthLabelPosition;
+	this->runeBasePosition = runeBasePosition;
+	this->runeSpacing = runeSpacing;
+	this->doorOpenDelta = doorOpenDelta;
 
 	this->setRequiresInteraction(true);
 
@@ -61,7 +76,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties) : super(properties, Size(25
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
 	}
 
-	this->doorClip = SmartClippingNode::create(this->door, Rect(Vec2(-312.0f / 2.0f, -540.0f / 2.0f - 112.0f), Size(312.0f, 540.0f)));
+	this->doorClip = SmartClippingNode::create(this->doorNode, Rect(Vec2(-this->doorClipSize.width / 2.0f, -this->doorClipSize.height / 2.0f), this->doorClipSize));
 
 	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 	this->truthLabel->enableOutline(Color4B::BLACK, 4);
@@ -89,11 +104,13 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties) : super(properties, Size(25
 	this->lightLeft->setOpacity(0);
 	this->lightRight->setOpacity(0);
 
-	this->addChild(this->back);
+	this->addChild(this->barLeft);
+	this->addChild(this->barRight);
+	this->addChild(this->backNode);
 	this->addChild(this->lightLeft);
 	this->addChild(this->lightRight);
 	this->addChild(this->doorClip);
-	this->addChild(this->front);
+	this->addChild(this->frontNode);
 	this->addChild(this->indexLabel);
 	this->addChild(this->truthLabel);
 	this->addChild(this->hackableLabel);
@@ -104,8 +121,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties) : super(properties, Size(25
 		this->addChild(this->runesFailed[index]);
 		this->addChild(this->runesPassed[index]);
 	}
-
-	this->addChild(this->doorOpenSound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -211,21 +226,19 @@ void PuzzleDoorBase::initializePositions()
 {
 	super::initializePositions();
 
-	this->back->setPosition(Vec2(-4.0f, 128.0f) + PuzzleDoorBase::Offset);
-	this->door->setPosition(Vec2(0.0f, 64.0f) + PuzzleDoorBase::Offset);
-	this->front->setPosition(Vec2(0.0f, 144.0f) + PuzzleDoorBase::Offset);
-	this->indexLabel->setPosition(Vec2(0.0f, 464.0f) + PuzzleDoorBase::Offset);
-	this->truthLabel->setPosition(Vec2(284.0f, 104.0f) + PuzzleDoorBase::Offset);
-	this->hackableLabel->setPosition(Vec2(-288.0f, 104.0f) + PuzzleDoorBase::Offset);
-	this->doorOpenSound->setPosition(PuzzleDoorBase::Offset);
+	this->barLeft->setPosition(Vec2(-240.0f, 112.0f));
+	this->barRight->setPosition(Vec2(240.0f, 112.0f));
+	this->indexLabel->setPosition(this->indexPosition);
+	this->truthLabel->setPosition(this->truthLabelPosition);
+	this->hackableLabel->setPosition(this->hackLabelPosition);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
 		const Vec2 basePosition = Vec2(-208.0f, 354.0f);
 
-		this->runes[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
-		this->runesPassed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
-		this->runesFailed[index]->setPosition(basePosition + Vec2(float(index) * 136.0f, 0.0f) + PuzzleDoorBase::Offset);
+		this->runes[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
+		this->runesPassed[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
+		this->runesFailed[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
 	}
 }
 
@@ -246,16 +259,6 @@ void PuzzleDoorBase::onObjectStateLoaded()
 	{
 		this->lock(false);
 	}
-}
-
-Vec2 PuzzleDoorBase::getButtonOffset()
-{
-	return Vec2(-286.0f, -128.0f);
-}
-
-HackablePreview* PuzzleDoorBase::createDefaultPreview()
-{
-	return PuzzleDoorGenericPreview::create();
 }
 
 void PuzzleDoorBase::setRealValue(int value)
@@ -289,19 +292,21 @@ void PuzzleDoorBase::lock(bool animate)
 		this->runes[index]->runAction(FadeTo::create(0.25f, 255));
 	}
 
-	Vec2 closedPosition = PuzzleDoorBase::Offset + PuzzleDoorBase::DoorOffset;
-	Vec2 openedPosition = PuzzleDoorBase::Offset + PuzzleDoorBase::DoorOffset + PuzzleDoorBase::DoorOpenOffset;
-	float currentProgress = (this->door->getPositionY() - closedPosition.y) / (openedPosition.y - closedPosition.y);
+	float currentProgress = 1.0f - this->doorNode->getPositionY() / this->doorOpenDelta;
 
 	if (animate)
 	{
-		this->door->stopAllActions();
-		this->door->runAction(MoveTo::create(5.0f * currentProgress, closedPosition));
-		this->doorOpenSound->play();
+		this->doorNode->stopAllActions();
+		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
+
+		if (this->doorOpenSound != nullptr)
+		{
+			this->doorOpenSound->play();
+		}
 	}
 	else
 	{
-		this->door->setPosition(closedPosition);
+		this->doorNode->setPosition(Vec2::ZERO);
 	}
 }
 
@@ -323,18 +328,20 @@ void PuzzleDoorBase::unlock(bool animate)
 		this->runesFailed[index]->runAction(FadeTo::create(0.25f, 0));
 	}
 
-	Vec2 closedPosition = PuzzleDoorBase::Offset + PuzzleDoorBase::DoorOffset;
-	Vec2 openedPosition = PuzzleDoorBase::Offset + PuzzleDoorBase::DoorOffset + PuzzleDoorBase::DoorOpenOffset;
-	float currentProgress = 1.0f - (this->door->getPositionY() - closedPosition.y) / (openedPosition.y - closedPosition.y);
+	float currentProgress = 1.0f - this->doorNode->getPositionY() / this->doorOpenDelta;
 
 	if (animate)
 	{
-		this->door->stopAllActions();
-		this->door->runAction(MoveTo::create(5.0f * currentProgress, openedPosition));
-		this->doorOpenSound->play();
+		this->doorNode->stopAllActions();
+		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2(0.0f, this->doorOpenDelta)));
+		
+		if (this->doorOpenSound != nullptr)
+		{
+			this->doorOpenSound->play();
+		}
 	}
 	else
 	{
-		this->door->setPosition(openedPosition);
+		this->doorNode->setPosition(Vec2(0.0f, this->doorOpenDelta));
 	}
 }

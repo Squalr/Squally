@@ -16,7 +16,6 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Doors/PuzzleDoor/PuzzleDoorGenericPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -75,7 +74,7 @@ Vec2 LanternGate::getButtonOffset()
 
 HackablePreview* LanternGate::createDefaultPreview()
 {
-	return PuzzleDoorGenericPreview::create();
+	return nullptr;
 }
 
 void LanternGate::lock(bool animate)

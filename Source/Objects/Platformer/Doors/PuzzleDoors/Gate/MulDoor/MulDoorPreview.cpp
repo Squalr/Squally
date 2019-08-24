@@ -25,6 +25,10 @@ MulDoorPreview::MulDoorPreview()
 {
 }
 
+MulDoorPreview::~MulDoorPreview()
+{
+}
+
 HackablePreview* MulDoorPreview::clone()
 {
 	return MulDoorPreview::create();

@@ -240,7 +240,7 @@ void MapBase::onMouseWheelScroll(EventMouse* event)
 	}
 }
 
-void MapBase::loadMap(std::string mapResource)
+bool MapBase::loadMap(std::string mapResource)
 {
 	if (this->map != nullptr)
 	{
@@ -253,7 +253,11 @@ void MapBase::loadMap(std::string mapResource)
 	{
 		this->mapNode->addChild(this->map);
 		GameCamera::getInstance()->setBounds(Rect(0.0f, 0.0f, this->map->getMapSize().width, this->map->getMapSize().height));
+
+		return true;
 	}
+
+	return false;
 }
 
 void MapBase::onDeveloperModeEnable()

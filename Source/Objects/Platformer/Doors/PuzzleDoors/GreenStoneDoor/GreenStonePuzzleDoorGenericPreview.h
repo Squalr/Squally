@@ -7,21 +7,20 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
-class MulDoorPreview : public HackablePreview
+class GreenStonePuzzleDoorGenericPreview : public HackablePreview
 {
 public:
-	static MulDoorPreview* create();
+	static GreenStonePuzzleDoorGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	MulDoorPreview();
-	virtual ~MulDoorPreview() = default;
+	GreenStonePuzzleDoorGenericPreview();
+	~GreenStonePuzzleDoorGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
 };

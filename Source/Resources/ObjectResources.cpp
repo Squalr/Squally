@@ -172,9 +172,13 @@ const std::string ObjectResources::Doors_OrcGate_GROUND_OBJECTS_GROUND_OBJECTS_5
 const std::string ObjectResources::Doors_OrcGate_GROUND_OBJECTS_GROUND_OBJECTS_6 = "Private/Platformer/Objects/Doors/OrcGate/GROUND OBJECTS/GROUND OBJECTS 6.png";
 const std::string ObjectResources::Doors_OrcGate_P_MIDDLE = "Private/Platformer/Objects/Doors/OrcGate/P MIDDLE.png";
 const std::string ObjectResources::Doors_OrcGate_TOP_P = "Private/Platformer/Objects/Doors/OrcGate/TOP P.png";
-const std::string ObjectResources::Doors_PuzzleDoor_Back = "Private/Platformer/Objects/Doors/PuzzleDoor/Back.png";
-const std::string ObjectResources::Doors_PuzzleDoor_Door = "Private/Platformer/Objects/Doors/PuzzleDoor/Door.png";
-const std::string ObjectResources::Doors_PuzzleDoor_Front = "Private/Platformer/Objects/Doors/PuzzleDoor/Front.png";
+const std::string ObjectResources::Doors_PuzzleDoor_BarLeft = "Private/Platformer/Objects/Doors/PuzzleDoor/BarLeft.png";
+const std::string ObjectResources::Doors_PuzzleDoor_BarRight = "Private/Platformer/Objects/Doors/PuzzleDoor/BarRight.png";
+const std::string ObjectResources::Doors_PuzzleDoor_Gate_Front = "Private/Platformer/Objects/Doors/PuzzleDoor/Gate/Front.png";
+const std::string ObjectResources::Doors_PuzzleDoor_Gate_Gate = "Private/Platformer/Objects/Doors/PuzzleDoor/Gate/Gate.png";
+const std::string ObjectResources::Doors_PuzzleDoor_GreenStone_Back = "Private/Platformer/Objects/Doors/PuzzleDoor/GreenStone/Back.png";
+const std::string ObjectResources::Doors_PuzzleDoor_GreenStone_Door = "Private/Platformer/Objects/Doors/PuzzleDoor/GreenStone/Door.png";
+const std::string ObjectResources::Doors_PuzzleDoor_GreenStone_Front = "Private/Platformer/Objects/Doors/PuzzleDoor/GreenStone/Front.png";
 const std::string ObjectResources::Doors_PuzzleDoor_Light = "Private/Platformer/Objects/Doors/PuzzleDoor/Light.png";
 const std::string ObjectResources::Doors_PuzzleDoor_Rune = "Private/Platformer/Objects/Doors/PuzzleDoor/Rune.png";
 const std::string ObjectResources::Doors_PuzzleDoor_RuneGreen = "Private/Platformer/Objects/Doors/PuzzleDoor/RuneGreen.png";

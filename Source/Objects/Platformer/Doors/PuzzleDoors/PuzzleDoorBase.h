@@ -23,30 +23,39 @@ public:
 	void unlock(bool animate = true) override;
 
 protected:
-	PuzzleDoorBase(cocos2d::ValueMap& properties);
+	PuzzleDoorBase(cocos2d::ValueMap& properties,
+		cocos2d::Size doorClipSize,
+		cocos2d::Vec2 doorClipOffset,
+		cocos2d::Vec2 indexPosition,
+		cocos2d::Vec2 hackLabelPosition,
+		cocos2d::Vec2 truthLabelPosition,
+		cocos2d::Vec2 runeBasePosition,
+		float runeSpacing,
+		float doorOpenDelta);
 	~PuzzleDoorBase();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
-	cocos2d::Vec2 getButtonOffset() override;
-	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) = 0;
 	void setRealValue(int value);
 	void setHackValue(int value);
+
+	cocos2d::Node* backNode;
+	cocos2d::Node* doorNode;
+	SmartClippingNode* doorClip;
+	cocos2d::Node* frontNode;
+	Sound* doorOpenSound;
 
 	static const std::string UnlockedSaveKey;
 
 private:
 	typedef Portal super;
-
-	cocos2d::Sprite* back;
+	cocos2d::Sprite* barLeft;
+	cocos2d::Sprite* barRight;
 	cocos2d::Sprite* lightLeft;
 	cocos2d::Sprite* lightRight;
-	cocos2d::Sprite* door;
-	SmartClippingNode* doorClip;
-	cocos2d::Sprite* front;
 	std::vector<cocos2d::Sprite*> runes;
 	std::vector<cocos2d::Sprite*> runesPassed;
 	std::vector<cocos2d::Sprite*> runesFailed;
@@ -56,7 +65,16 @@ private:
 	LocalizedLabel* indexLabel;
 	LocalizedLabel* truthLabel;
 	LocalizedLabel* hackableLabel;
-	Sound* doorOpenSound;
+
+	// Positioning parameters
+	cocos2d::Size doorClipSize;
+	cocos2d::Vec2 doorClipOffset;
+	cocos2d::Vec2 indexPosition;
+	cocos2d::Vec2 hackLabelPosition;
+	cocos2d::Vec2 truthLabelPosition;
+	cocos2d::Vec2 runeBasePosition;
+	float runeSpacing;
+	float doorOpenDelta;
 
 	bool firstRun;
 	bool isUnlocked;
@@ -68,7 +86,4 @@ private:
 	static const int RuneCount;
 	static const cocos2d::Color4B PassColor;
 	static const cocos2d::Color4B FailColor;
-	static const cocos2d::Vec2 Offset;
-	static const cocos2d::Vec2 DoorOffset;
-	static const cocos2d::Vec2 DoorOpenOffset;
 };

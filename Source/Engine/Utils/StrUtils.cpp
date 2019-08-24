@@ -268,6 +268,18 @@ bool StrUtils::endsWith(std::string str, std::string suffix, bool ignoreCase)
 	return false;
 }
 
+bool StrUtils::contains(const std::string& str, const std::string & toFind, bool ignoreCase)
+{
+	auto it = std::search(str.begin(), str.end(), toFind.begin(), toFind.end(),
+		[=](char ch1, char ch2)
+		{
+			return ignoreCase ? (std::toupper(ch1) == std::toupper(ch2)) : (ch1 == ch2);
+		}
+	);
+
+	return (it != str.end());
+}
+
 bool StrUtils::isRegexMatch(const std::string str, const std::string regex)
 {
 	std::regex re = std::regex(regex);

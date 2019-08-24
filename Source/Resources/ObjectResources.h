@@ -173,9 +173,13 @@ namespace ObjectResources
 	extern const std::string Doors_OrcGate_GROUND_OBJECTS_GROUND_OBJECTS_6;
 	extern const std::string Doors_OrcGate_P_MIDDLE;
 	extern const std::string Doors_OrcGate_TOP_P;
-	extern const std::string Doors_PuzzleDoor_Back;
-	extern const std::string Doors_PuzzleDoor_Door;
-	extern const std::string Doors_PuzzleDoor_Front;
+	extern const std::string Doors_PuzzleDoor_BarLeft;
+	extern const std::string Doors_PuzzleDoor_BarRight;
+	extern const std::string Doors_PuzzleDoor_Gate_Front;
+	extern const std::string Doors_PuzzleDoor_Gate_Gate;
+	extern const std::string Doors_PuzzleDoor_GreenStone_Back;
+	extern const std::string Doors_PuzzleDoor_GreenStone_Door;
+	extern const std::string Doors_PuzzleDoor_GreenStone_Front;
 	extern const std::string Doors_PuzzleDoor_Light;
 	extern const std::string Doors_PuzzleDoor_Rune;
 	extern const std::string Doors_PuzzleDoor_RuneGreen;

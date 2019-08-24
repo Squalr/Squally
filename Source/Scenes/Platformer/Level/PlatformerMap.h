@@ -16,7 +16,7 @@ class PlatformerMap : public MapBase
 public:
 	static PlatformerMap* create(std::string mapResource, std::string transition = "");
 
-	void loadMap(std::string mapResource) override;
+	bool loadMap(std::string mapResource) override;
 
 protected:
 	PlatformerMap(std::string transition = "");
