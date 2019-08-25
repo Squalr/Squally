@@ -113,13 +113,6 @@ void Squally::initializeListeners()
 			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 		}
 	}));
-
-	this->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		args->handle();
-
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->getStateOrDefaultInt(StateKeys::Eq, 1)));
-	});
 }
 
 void Squally::update(float dt)

@@ -16,7 +16,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
-#include "Strings/Platformer/Quests/Intro/OgreSpotted.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/OgreSpotted.h"
 
 using namespace cocos2d;
 
@@ -88,7 +88,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_OgreSpotted::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_OgreSpotted::create());
 			}),
 			DelayTime::create(4.0f),
 			CallFunc::create([=]()

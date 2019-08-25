@@ -28,11 +28,12 @@ const Vec2 GreenStonePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
 
 GreenStonePuzzleDoor::GreenStonePuzzleDoor(ValueMap& properties) : super(properties,
 	Size(256.0f, 512.0f),
-	GreenStonePuzzleDoor::Offset + Vec2(0.0f, -128.0f),
+	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 24.0f),
+	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 32.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 464.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(284.0f, 104.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(-288.0f, 104.0f),
-	GreenStonePuzzleDoor::Offset + Vec2(-208.0f, 354.0f),
+	GreenStonePuzzleDoor::Offset + Vec2(-208.0f, 338.0f),
 	136.0f,
 	292.0f)
 {
@@ -43,7 +44,7 @@ GreenStonePuzzleDoor::GreenStonePuzzleDoor(ValueMap& properties) : super(propert
 
 	this->backNode->addChild(this->back);
 	this->doorNode->addChild(this->door);
-	//this->frontNode->addChild(this->front);
+	this->frontNode->addChild(this->front);
 	this->addChild(this->doorOpenSound);
 }
 
@@ -60,8 +61,9 @@ void GreenStonePuzzleDoor::initializePositions()
 {
 	super::initializePositions();
 
-	this->back->setPosition(Vec2(0.0f, -96.0f));
-	this->door->setPosition(Vec2(0.0f, -160.0f));
+	this->back->setPosition(Vec2(0.0f, -104.0f));
+	this->door->setPosition(Vec2(0.0f, 32.0f));
+	this->front->setPosition(Vec2(0.0f, -24.0f));
 	this->doorOpenSound->setPosition(GreenStonePuzzleDoor::Offset);
 }
 

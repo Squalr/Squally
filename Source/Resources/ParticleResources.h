@@ -19,6 +19,7 @@ namespace ParticleResources
 	extern const std::string Fireflies;
 	extern const std::string Fireflies2;
 	extern const std::string Gust;
+	extern const std::string HackableGlow;
 	extern const std::string Heal;
 	extern const std::string Hexus_Aura;
 	extern const std::string Hexus_BlueAura;
@@ -54,6 +55,7 @@ namespace ParticleResources
 	extern const std::string Hexus_RowEffects_Rain;
 	extern const std::string Hexus_WhiteAura;
 	extern const std::string Hover;
+	extern const std::string ItemGlow;
 	extern const std::string MindBlast;
 	extern const std::string Objects_Smoke;
 	extern const std::string Poison;

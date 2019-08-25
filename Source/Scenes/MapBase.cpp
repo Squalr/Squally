@@ -55,14 +55,22 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->topMenuHud = Hud::create();
 
 	this->hackerModeGlow = Hud::create();
+	this->sensingGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();
 	
-	Sprite* glow = Sprite::create(BackgroundResources::MatrixRain_HackerModeBackground);
-	glow->setAnchorPoint(Vec2::ZERO);
+	Sprite* glowFx = Sprite::create(BackgroundResources::Hacking_HackerModeBackground);
+	glowFx->setAnchorPoint(Vec2::ZERO);
+	
+	Sprite* senseFx = Sprite::create(BackgroundResources::Hacking_SensingBackground);
+	senseFx->setAnchorPoint(Vec2::ZERO);
 
-	this->hackerModeGlow->addChild(glow);
+	this->hackerModeGlow->addChild(glowFx);
 	this->hackerModeGlow->setAnchorPoint(Vec2::ZERO);
 
+	this->sensingGlow->addChild(senseFx);
+	this->sensingGlow->setAnchorPoint(Vec2::ZERO);
+
+	this->sensingGlow->setVisible(false);
 	this->hackerModeGlow->setVisible(false);
 	this->hackerModeRain->setVisible(false);
 
@@ -84,6 +92,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->hudNode);
 	this->addChild(this->hud);
 	this->addChild(this->hackerModeVisibleHud);
+	this->addChild(this->sensingGlow);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
@@ -148,6 +157,16 @@ void MapBase::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeToggle, [=](EventCustom* eventCustom)
 	{
 		this->toggleHackerMode(eventCustom->getUserData());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingEnable, [=](EventCustom*)
+	{
+		this->sensingGlow->setVisible(true);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingDisable, [=](EventCustom*)
+	{
+		this->sensingGlow->setVisible(false);
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventAllowHackerMode, [=](EventCustom*)

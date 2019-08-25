@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Doors/PuzzleDoors/GreenStoneDoor/GreenStonePuzzleDoor.h"
+#include "Objects/Platformer/Doors/PuzzleDoors/Gate/GatePuzzleDoor.h"
 
 namespace cocos2d
 {
@@ -13,7 +13,7 @@ class HackableData;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 
-class MulDoor : public GreenStonePuzzleDoor
+class MulDoor : public GatePuzzleDoor
 {
 public:
 	static MulDoor* create(cocos2d::ValueMap& properties);
@@ -28,7 +28,7 @@ protected:
 	void runOperation(int puzzleIndex) override;
 
 private:
-	typedef GreenStonePuzzleDoor super;
+	typedef GatePuzzleDoor super;
 	void showActiveHackableCrystal();
 	void mulDoorTransform(int puzzleIndex);
 };

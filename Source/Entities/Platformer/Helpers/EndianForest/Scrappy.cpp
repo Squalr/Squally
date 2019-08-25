@@ -31,7 +31,7 @@
 
 #include "Strings/Platformer/EndOfDemo.h"
 #include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
-#include "Strings/Platformer/Quests/Intro/SquallyTrapped.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/SquallyTrapped.h"
 
 using namespace cocos2d;
 
@@ -146,7 +146,7 @@ void Scrappy::runSquallyTrappedEvent()
 		}),
 		CallFunc::create([=]()
 		{
-			this->speechBubble->runDialogue(Strings::Platformer_Quests_Intro_SquallyTrapped::create());
+			this->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_SquallyTrapped::create());
 		}),
 		nullptr
 	));

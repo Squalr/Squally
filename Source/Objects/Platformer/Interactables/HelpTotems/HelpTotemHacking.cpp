@@ -10,6 +10,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Common/Brackets.h"
+#include "Strings/Input/Shift.h"
 #include "Strings/Input/Tab.h"
 #include "Strings/Platformer/Help/HelpTotemHacking.h"
 
@@ -30,9 +31,10 @@ HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 {
 	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemHacking::create();
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
+	LocalizedString* shiftString = Strings::Input_Shift::create();
 	LocalizedString* tabString = Strings::Input_Tab::create();
 
-	bracketString->setStringReplacementVariables(tabString);
+	bracketString->setStringReplacementVariables({ shiftString, tabString });
 	hintString->setStringReplacementVariables(bracketString);
 	
 	this->setHint(hintString);

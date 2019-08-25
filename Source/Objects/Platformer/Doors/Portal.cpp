@@ -87,7 +87,7 @@ void Portal::initializeListeners()
 	{
 		this->canInteract = true;
 
-		if (!this->isLocked)
+		if (!this->isLocked && !this->mapFile.empty())
 		{
 			if (this->requiresInteraction)
 			{
@@ -169,7 +169,7 @@ void Portal::setRequiresInteraction(bool requiresInteraction)
 
 void Portal::loadMap()
 {
-	if (!this->wasTripped)
+	if (!this->mapFile.empty() && !this->wasTripped)
 	{
 		this->wasTripped = true;
 

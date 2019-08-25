@@ -32,13 +32,14 @@ const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
 PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		Size doorClipSize,
 		Vec2 doorClipOffset,
+		Vec2 portalOffset,
 		Vec2 indexPosition,
 		Vec2 hackLabelPosition,
 		Vec2 truthLabelPosition,
 		Vec2 runeBasePosition,
 		float runeSpacing,
 		float doorOpenDelta)
-	: super(properties, Size(256.0f, 512.0f), doorClipOffset + Vec2(0.0f, 48.0f))
+	: super(properties, doorClipSize, portalOffset)
 {
 	this->backNode = Node::create();
 	this->barLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarLeft);
@@ -60,6 +61,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
 	this->doorClipOffset = doorClipOffset;
+	this->portalOffset = portalOffset;
 	this->indexPosition = indexPosition;
 	this->hackLabelPosition = hackLabelPosition;
 	this->truthLabelPosition = truthLabelPosition;
@@ -226,11 +228,12 @@ void PuzzleDoorBase::initializePositions()
 {
 	super::initializePositions();
 
-	this->barLeft->setPosition(Vec2(-240.0f, 112.0f));
-	this->barRight->setPosition(Vec2(240.0f, 112.0f));
+	this->barLeft->setPosition(Vec2(-228.0f, 118.0f));
+	this->barRight->setPosition(Vec2(220.0f, 118.0f));
 	this->indexLabel->setPosition(this->indexPosition);
 	this->truthLabel->setPosition(this->truthLabelPosition);
 	this->hackableLabel->setPosition(this->hackLabelPosition);
+	this->doorClip->setPosition(this->doorClipOffset);
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{

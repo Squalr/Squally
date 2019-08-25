@@ -65,6 +65,7 @@ private:
 	void openPauseMenu();
 
 	Hud* hackerModeGlow;
+	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
 	PlatformerDialogueBox* dialogueBox;
 	CodeEditor* codeEditor;

@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Platformer_Help_HelpTotemHacking::getStringAr()
 	{
-		return "اضغط على %s1 لتبديل وضع القراصنة.";
+		return "امسك %s1 لاستشعار الأشياء التي يمكن اختراقها. اضغط %s2 للتبديل وضع القراصنة.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringBg()
 	{
-		return "Натиснете %s1, за да превключите режим на хакер.";
+		return "Задръжте %s1, за да усетите обекти, които могат да бъдат хакнати. Натиснете %s2, за да превключите режим на хакер.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringCs()
 	{
-		return "Stisknutím %s1 přepnete režim hackerů.";
+		return "Držte %s1, abyste snímali objekty, které mohou být hacknuty. Stisknutím tlačítka %s2 přepnete režim hackerů.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringDa()
 	{
-		return "Tryk på %s1 for at skifte hacker-tilstand.";
+		return "Hold %s1 nede for at fornemme objekter, der kan hackes. Tryk på %s2 for at skifte hacker-tilstand.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringDe()
 	{
-		return "Drücken Sie %s1, um den Hacker-Modus umzuschalten.";
+		return "Halten Sie %s1 gedrückt, um Objekte zu erkennen, die gehackt werden können. Drücken Sie %s2, um den Hacker-Modus umzuschalten.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringEl()
 	{
-		return "Πατήστε %s1 για να μεταβείτε στη λειτουργία hacker.";
+		return "Κρατήστε το %s1 για να ανιχνεύσετε αντικείμενα που μπορούν να χαραχτούν. Πατήστε %s2 για εναλλαγή της λειτουργίας hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringEn()
 	{
-		return "Press %s1 to toggle hacker-mode.";
+		return "Hold %s1 to sense objects that can be hacked. Press %s2 to toggle hacker-mode.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringEs()
 	{
-		return "Presione %s1 para alternar el modo hacker.";
+		return "Mantenga presionado %s1 para detectar objetos que pueden ser pirateados. Presione %s2 para alternar el modo hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringEs419()
 	{
-		return "Presione %s1 para alternar el modo hacker.";
+		return "Mantenga presionado %s1 para detectar objetos que pueden ser pirateados. Presione %s2 para alternar el modo hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringFi()
 	{
-		return "Paina %s1 vaihtaaksesi hakkerointitilaa.";
+		return "Pidä %s1-painiketta havaitaksesi kohteita, jotka voidaan hakkeroida. Paina %s2 vaihtaaksesi hakkerointitilaa.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringFr()
 	{
-		return "Appuyez sur %s1 pour basculer en mode pirate.";
+		return "Tenez %s1 pour détecter les objets pouvant être piratés. Appuyez sur %s2 pour basculer en mode pirate.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringHu()
 	{
-		return "A hacker mód váltásához nyomja meg az %s1 gombot.";
+		return "Tartsa lenyomva az %s1-t, hogy érzékelje a támadható objektumokat. A hacker mód váltásához nyomja meg az %s2 gombot.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringIt()
 	{
-		return "Premi %s1 per attivare la modalità hacker.";
+		return "Tieni premuto %s1 per rilevare oggetti che possono essere hackerati. Premi %s2 per attivare la modalità hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringJa()
 	{
-		return "%s1を押して、ハッカーモードを切り替えます。";
+		return "ハッキングされる可能性のあるオブジェクトを検出するには、%s1を押し続けます。 %s2を押して、ハッカーモードを切り替えます。";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringKo()
 	{
-		return "%s1를 눌러 해커 모드를 전환하십시오.";
+		return "해킹 될 수있는 객체를 감지하려면 %s1를 유지하십시오. %s2를 눌러 해커 모드를 전환하십시오.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringNl()
 	{
-		return "Druk op %s1 om de hackermodus te schakelen.";
+		return "Houd %s1 vast om objecten te detecteren die kunnen worden gehackt. Druk op %s2 om te schakelen tussen de hackermodus.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringNo()
 	{
-		return "Trykk på %s1 for å slå på hacker-modus.";
+		return "Hold %s1 for å sanse objekter som kan hackes. Trykk %s2 for å veksle hacker-modus.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringPl()
 	{
-		return "Naciśnij %s1, aby przełączyć tryb hakera.";
+		return "Przytrzymaj %s1, aby wykryć obiekty, które mogą zostać zhakowane. Naciśnij %s2, aby przełączyć tryb hakera.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringPt()
 	{
-		return "Pressione %s1 para alternar entre o modo hacker.";
+		return "Segure %s1 para detectar objetos que podem ser hackeados. Pressione %s2 para alternar entre o modo hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringPtBr()
 	{
-		return "Pressione %s1 para alternar entre o modo hacker.";
+		return "Segure %s1 para detectar objetos que podem ser hackeados. Pressione %s2 para alternar entre o modo hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringRo()
 	{
-		return "Apăsați %s1 pentru a comuta modul hacker.";
+		return "Țineți %s1 pentru a sesiza obiecte care pot fi hackate. Apăsați %s2 pentru a comuta modul hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringRu()
 	{
-		return "Нажмите %s1 для переключения режима хакера.";
+		return "Удерживайте %s1, чтобы почувствовать объекты, которые можно взломать. Нажмите %s2 для переключения режима хакера.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringSv()
 	{
-		return "Tryck på %s1 för att växla till hacker-läge.";
+		return "Håll %s1 för att känna av objekt som kan hackas. Tryck på %s2 för att växla mellan hacker-läge.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringTh()
 	{
-		return "กด %s1 เพื่อสลับโหมดแฮ็กเกอร์";
+		return "ถือ %s1 เพื่อตรวจจับวัตถุที่สามารถถูกแฮ็ก กด %s2 เพื่อสลับโหมดแฮ็กเกอร์";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringTr()
 	{
-		return "Hacker moduna geçmek için %s1 düğmesine basın.";
+		return "Çarpılabilecek nesneleri algılamak için %s1 tuşunu basılı tutun. Hacker moduna geçmek için %s2 tuşuna basın.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringUk()
 	{
-		return "Натисніть %s1, щоб переключити режим хакера.";
+		return "Тримайте %s1, щоб відчути об’єкти, які можна зламати. Натисніть %s2, щоб переключити хакерський режим.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringVi()
 	{
-		return "Nhấn %s1 để chuyển chế độ tin tặc.";
+		return "Giữ %s1 để cảm nhận các đối tượng có thể bị hack. Nhấn %s2 để chuyển chế độ hacker.";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringZhCn()
 	{
-		return "按%s1切换黑客模式。";
+		return "按住%s1可以感知可被黑客入侵的物体。按%s2切换黑客模式。";
 	}
 
 	std::string Platformer_Help_HelpTotemHacking::getStringZhTw()
 	{
-		return "按%s1切換黑客模式。";
+		return "按住%s1可以感知可被黑客入侵的物體。按%s2切換黑客模式。";
 	}
 }

@@ -1,5 +1,6 @@
 #include "HackableObject.h"
 
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -14,6 +15,7 @@
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 
+#include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -36,10 +38,14 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
+	this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
+
+	this->sensingParticles->stopSystem();
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
 
+	this->uiElements->addChild(this->sensingParticles);
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->hackablesNode);
@@ -94,6 +100,21 @@ void HackableObject::initializeListeners()
 				}
 			}
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingEnable, [=](EventCustom* eventCustom)
+	{
+		HackableEvents::SensingArgs* args = static_cast<HackableEvents::SensingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->onSensingEnable(args->currentEq);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingDisable, [=](EventCustom*)
+	{
+		this->onSensingDisable();
 	}));
 }
 
@@ -174,6 +195,27 @@ void HackableObject::onHackerModeDisable()
 	super::onHackerModeDisable();
 
 	this->hackButton->setVisible(false);
+}
+
+void HackableObject::onSensingEnable(int eq)
+{
+	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
+	{
+		if ((*it)->getRequiredEq() > eq)
+		{
+			return;
+		}
+	}
+
+	if (!this->hackableList.empty())
+	{	
+		this->sensingParticles->start();
+	}
+}
+
+void HackableObject::onSensingDisable()
+{
+	this->sensingParticles->stopSystem();
 }
 
 void HackableObject::registerHackables()

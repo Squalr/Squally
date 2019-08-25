@@ -12,16 +12,12 @@ namespace BackgroundResources
 	extern const std::string Crypt2;
 	extern const std::string DarkForestSky;
 	extern const std::string Dawn;
+	extern const std::string Hacking_HackerModeBackground;
+	extern const std::string Hacking_SensingBackground;
 	extern const std::string IndoorHouse;
 	extern const std::string Jungle;
 	extern const std::string Laboratory;
 	extern const std::string LakeSideSky;
-	extern const std::string MatrixRain_Cloud;
-	extern const std::string MatrixRain_FontChar0;
-	extern const std::string MatrixRain_GreenFontsAlpha;
-	extern const std::string MatrixRain_HackerModeBackground;
-	extern const std::string MatrixRain_Point;
-	extern const std::string MatrixRain_WhiteFontsAlpha;
 	extern const std::string Mist;
 	extern const std::string Ocean;
 	extern const std::string PinkFade;

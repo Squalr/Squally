@@ -26,6 +26,7 @@ protected:
 	PuzzleDoorBase(cocos2d::ValueMap& properties,
 		cocos2d::Size doorClipSize,
 		cocos2d::Vec2 doorClipOffset,
+		cocos2d::Vec2 portalOffset,
 		cocos2d::Vec2 indexPosition,
 		cocos2d::Vec2 hackLabelPosition,
 		cocos2d::Vec2 truthLabelPosition,
@@ -69,6 +70,7 @@ private:
 	// Positioning parameters
 	cocos2d::Size doorClipSize;
 	cocos2d::Vec2 doorClipOffset;
+	cocos2d::Vec2 portalOffset;
 	cocos2d::Vec2 indexPosition;
 	cocos2d::Vec2 hackLabelPosition;
 	cocos2d::Vec2 truthLabelPosition;

@@ -9,6 +9,8 @@ const std::string HackableEvents::EventForceHackerModeEnable = "EVENT_FORCE_HACK
 const std::string HackableEvents::EventHackerModeToggle = "EVENT_HACKERMODE_TOGGLE";
 const std::string HackableEvents::EventHackerModeEnable = "EVENT_HACKERMODE_ENABLE";
 const std::string HackableEvents::EventHackerModeDisable = "EVENT_HACKERMODE_DISABLE";
+const std::string HackableEvents::EventSensingEnable = "EVENT_SENSING_ENABLE";
+const std::string HackableEvents::EventSensingDisable = "EVENT_SENSING_DISABLE";
 const std::string HackableEvents::EventAllowHackerMode = "EVENT_ALLOW_HACKER_MODE";
 const std::string HackableEvents::EventDisallowHackerMode = "EVENT_DISALLOW_HACKER_MODE";
 const std::string HackableEvents::EventQueryHackerModeAllowed = "EVENT_QUERY_HACKER_MODE";
@@ -48,6 +50,21 @@ void HackableEvents::TriggerHackerModeDisable()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackerModeDisable
+	);
+}
+
+void HackableEvents::TriggerSensingEnable(SensingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventSensingEnable,
+		&args
+	);
+}
+
+void HackableEvents::TriggerSensingDisable()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventSensingDisable
 	);
 }
 

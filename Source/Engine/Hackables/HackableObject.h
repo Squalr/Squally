@@ -7,6 +7,7 @@
 
 namespace cocos2d
 {
+	class ParticleSystem;
 	class Renderer;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
@@ -50,6 +51,8 @@ protected:
 	void update(float dt) override;
 	void onHackerModeEnable(int eq) override;
 	void onHackerModeDisable() override;
+	virtual void onSensingEnable(int eq);
+	virtual void onSensingDisable();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
 
@@ -58,6 +61,7 @@ private:
 
 	bool hasRelocatedUI;
 
+	cocos2d::ParticleSystem* sensingParticles;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;

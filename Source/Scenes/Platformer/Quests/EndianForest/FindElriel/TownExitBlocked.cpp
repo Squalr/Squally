@@ -23,7 +23,7 @@
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Platformer/Quests/FindElriel/CantLeaveTown.h"
+#include "Strings/Platformer/Quests/EndianForest/FindElriel/CantLeaveTown.h"
 
 using namespace cocos2d;
 
@@ -92,7 +92,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 				this->isEngagedInDialogue = true;
 
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_FindElriel_CantLeaveTown::create(),
+					Strings::Platformer_Quests_EndianForest_FindElriel_CantLeaveTown::create(),
 					DialogueEvents::DialogueAlignment::Right,
 					[=]()
 					{

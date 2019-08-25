@@ -44,37 +44,12 @@ SquallyRuneBehavior::~SquallyRuneBehavior()
 
 void SquallyRuneBehavior::onLoad()
 {
-	// Not the ideal way to communicate between attached behavior, but this is easiest
 	this->entityRuneBehavior = this->squally->getAttachedBehavior<EntityRuneBehavior>();
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{
 		this->saveState();
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
-	{
-		if (this->entityRuneBehavior != nullptr)
-		{
-			this->entityRuneBehavior->tryUseRune();
-		}
-		
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
-	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
-	{
-		args->handle();
-
-		HackableEvents::HackerModeQueryArgs queryArgs = HackableEvents::HackerModeQueryArgs();
-
-		HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
-		
-		if (queryArgs.hackerModeAllowed && (this->entityRuneBehavior == nullptr || this->entityRuneBehavior->tryUseRune()))
-		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
-		}
-	});
 
 	if (this->entityRuneBehavior != nullptr)
 	{
