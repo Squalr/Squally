@@ -17,6 +17,7 @@ class ClickableNode;
 class HackableAttribute;
 class HackableCode;
 class HackableData;
+class HackActivatedAbility;
 class HackablePreview;
 class HackButton;
 class ProgressBar;
@@ -31,15 +32,18 @@ public:
 	void unregisterData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);
 	void unregisterCode(HackableCode* hackableCode);
+	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
 
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
+	std::vector<HackActivatedAbility*> hackAbilityList;
 
 protected:
 	HackableObject(const cocos2d::ValueMap& properties);
 	HackableObject();
-	virtual ~HackableObject();
+	~HackableObject();
 
 	bool showClippy;
 

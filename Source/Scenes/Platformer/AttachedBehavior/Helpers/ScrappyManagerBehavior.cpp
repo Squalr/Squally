@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "Scrappy-manager";
+const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "scrappy-manager";
 
 ScrappyManagerBehavior* ScrappyManagerBehavior::create(GameObject* owner)
 {

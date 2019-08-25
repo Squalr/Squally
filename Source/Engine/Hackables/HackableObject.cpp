@@ -6,6 +6,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -31,6 +32,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
+	this->hackAbilityList = std::vector<HackActivatedAbility*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
@@ -318,4 +320,29 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 
 		this->hackablesNode->removeChild(hackableCode);
 	}
+}
+
+void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbility)
+{
+	if (hackActivatedAbility == nullptr)
+	{
+		return;
+	}
+
+	this->hackablesNode->addChild(hackActivatedAbility);
+	this->hackableList.push_back(hackActivatedAbility);
+	this->hackAbilityList.push_back(hackActivatedAbility);
+}
+
+void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAbility)
+{
+	if (hackActivatedAbility == nullptr)
+	{
+		return;
+	}
+
+	this->hackablesNode->removeChild(hackActivatedAbility);
+
+	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
+	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
 }

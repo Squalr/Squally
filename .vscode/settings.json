@@ -105,7 +105,9 @@
         "optional": "cpp",
         "clocale": "cpp",
         "__memory": "cpp",
-        "cassert": "cpp"
+        "cassert": "cpp",
+        "hash_map": "cpp",
+        "hash_set": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",

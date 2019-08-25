@@ -10,6 +10,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableAttribute.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -123,9 +124,17 @@ void RadialMenu::initializeListeners()
 
 void RadialMenu::onHackableAttributeEdit(HackableAttribute* attribute)
 {
-	HackableEvents::TriggerEditHackableAttribute(HackableEvents::HackableObjectEditArgs(attribute));
+	if (dynamic_cast<HackActivatedAbility*>(attribute) != nullptr)
+	{
+		dynamic_cast<HackActivatedAbility*>(attribute)->activate();
+		HackableEvents::TriggerEditHackableAttributeDone();
+	}
+	else
+	{
+		HackableEvents::TriggerEditHackableAttribute(HackableEvents::HackableObjectEditArgs(attribute));
 
-	this->setVisible(false);
+		this->setVisible(false);
+	}
 }
 
 void RadialMenu::close()
@@ -149,7 +158,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	}
 
 	// +1 from the exit node, which is always present
-	float angleStep = (float(M_PI) * 2.0f) / ((float)(this->activeHackableObject->dataList.size() + this->activeHackableObject->codeList.size() + 1));
+	float angleStep = (float(M_PI) * 2.0f) / ((float)(this->activeHackableObject->hackableList.size() + 1));
 	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
@@ -163,6 +172,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	for (auto it = this->activeHackableObject->hackableList.begin(); it != this->activeHackableObject->hackableList.end(); it++)
 	{
 		HackableAttribute* hackable = *it;
+		LocalizedString* name = hackable->getName();
 
 		nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 
@@ -171,7 +181,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 			hackable->getRequiredEq(),
 			nextDataIconPosition,
 			currentAngle,
-			hackable->getName()->clone(), 
+			name == nullptr ? nullptr : name->clone(), 
 			[=]() { this->onHackableAttributeEdit(hackable); }
 		);
 

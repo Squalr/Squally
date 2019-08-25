@@ -24,7 +24,10 @@ HackableAttribute::HackableAttribute(int requiredEq, float duration, std::string
 		this->clippy->retain();
 	}
 
-	this->addChild(name); // Retain with event listening
+	if (this->name != nullptr)
+	{
+		this->addChild(this->name); // Retain with event listening
+	}
 }
 
 HackableAttribute::~HackableAttribute()

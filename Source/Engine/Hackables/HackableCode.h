@@ -188,7 +188,7 @@ private:
 	static HackableCode* create(void* codeStart, void* codeEnd, LateBindData lateBindData);
 
 	HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData);
-	virtual ~HackableCode();
+	~HackableCode();
 
 	std::string hackableCodeIdentifier;
 	std::string assemblyString;

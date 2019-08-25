@@ -20,7 +20,7 @@ protected:
 private:
 	typedef HackableAttribute super;
 	HackableData(void* dataAddress, int requiredEq,  float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
-	virtual ~HackableData();
+	~HackableData();
 
 	void* dataPointer;
 	HackUtils::DataType dataType;

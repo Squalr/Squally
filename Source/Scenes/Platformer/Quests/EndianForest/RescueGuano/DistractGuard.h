@@ -2,9 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class CollisionObject;
-class Chiron;
-class Squally;
+class Lycan;
 class QuestLine;
 
 class DistractGuard : public QuestTask
@@ -23,16 +21,9 @@ protected:
 	void onActivate(bool isActiveThroughSkippable) override;
 	void onComplete() override;
 	void onSkipped() override;
-	void update(float dt) override;
 
 private:
 	typedef QuestTask super;
 
-	CollisionObject* collisionObject;
-	Chiron* chiron;
-	Squally* squally;
-	CollisionObject* chironCollision;
-
-	bool isEngagedInDialogue;
-	float dialogueCooldown;
+	Lycan* lycan;
 };

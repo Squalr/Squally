@@ -21,7 +21,7 @@ public:
 
 protected:
 	HackableAttribute(int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy = nullptr);
-	virtual ~HackableAttribute();
+	~HackableAttribute();
 
 	void onEnter() override;
 	void update(float dt) override;

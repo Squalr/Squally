@@ -1,4 +1,4 @@
-#include "RescueGuano.h"
+#include "ChatWithGuano.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -20,28 +20,28 @@
 
 using namespace cocos2d;
 
-const std::string RescueGuano::MapKeyQuest = "rescue-guano";
+const std::string ChatWithGuano::MapKeyQuest = "chat-with-guano";
 
-RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
-	RescueGuano* instance = new RescueGuano(owner, questLine, questTag);
+	ChatWithGuano* instance = new ChatWithGuano(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, RescueGuano::MapKeyQuest, questTag, false)
+ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ChatWithGuano::MapKeyQuest, questTag, false)
 {
 	this->hasRunEvent = false;
 	this->guano = nullptr;
 }
 
-RescueGuano::~RescueGuano()
+ChatWithGuano::~ChatWithGuano()
 {
 }
 
-void RescueGuano::onLoad(QuestState questState)
+void ChatWithGuano::onLoad(QuestState questState)
 {
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -49,9 +49,9 @@ void RescueGuano::onLoad(QuestState questState)
 	});
 }
 
-void RescueGuano::onActivate(bool isActiveThroughSkippable)
+void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(RescueGuano::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEvent(ChatWithGuano::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -59,16 +59,16 @@ void RescueGuano::onActivate(bool isActiveThroughSkippable)
 	});
 }
 
-void RescueGuano::onComplete()
+void ChatWithGuano::onComplete()
 {
 }
 
-void RescueGuano::onSkipped()
+void ChatWithGuano::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void RescueGuano::runCinematicSequence()
+void ChatWithGuano::runCinematicSequence()
 {
 	if (this->hasRunEvent)
 	{

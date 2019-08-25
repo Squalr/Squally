@@ -5,16 +5,16 @@
 class Guano;
 class QuestLine;
 
-class RescueGuano : public QuestTask
+class ChatWithGuano : public QuestTask
 {
 public:
-	static RescueGuano* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static ChatWithGuano* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~RescueGuano();
+	ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~ChatWithGuano();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
