@@ -10,6 +10,8 @@
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
 
+#include "Strings/Menus/Hacking/Abilities/WeakMinded.h"
+
 using namespace cocos2d;
 
 const std::string WeakMindedBehavior::MapKeyAttachedBehavior = "weak-minded";
@@ -60,7 +62,7 @@ void WeakMindedBehavior::onLoad()
 		1,
 		10.0f,
 		UIResources::Menus_Icons_Eye,
-		nullptr,
+		Strings::Menus_Hacking_Abilities_WeakMinded::create(),
 		nullptr,
 		nullptr
 	));

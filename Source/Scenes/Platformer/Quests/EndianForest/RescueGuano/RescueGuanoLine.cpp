@@ -1,9 +1,8 @@
 #include "RescueGuanoLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/EndianForest/RescueGuano/DistractGuard.h"
+#include "Scenes/Platformer/Quests/EndianForest/RescueGuano/PersuadeGuard.h"
 #include "Scenes/Platformer/Quests/EndianForest/RescueGuano/RescueGuano.h"
-#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TownExitBlocked.h"
 
 using namespace cocos2d;
 
@@ -19,7 +18,7 @@ RescueGuanoLine* RescueGuanoLine::create()
 }
 
 RescueGuanoLine::RescueGuanoLine() : super(RescueGuanoLine::MapKeyQuestLine, {
-	QuestData(DistractGuard::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return DistractGuard::create(owner, questLine, questTag); }),
+	QuestData(PersuadeGuard::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return PersuadeGuard::create(owner, questLine, questTag); }),
 	QuestData(RescueGuano::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return RescueGuano::create(owner, questLine, questTag); }),
 })
 {

@@ -156,7 +156,7 @@ void Portal::unlock(bool animate)
 	this->isLocked = false;
 	this->interactMenu->hide();
 
-	if (this->canInteract)
+	if (this->canInteract && !this->mapFile.empty())
 	{
 		this->interactMenu->show();
 	}

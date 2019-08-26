@@ -30,6 +30,8 @@ protected:
 	virtual void onSkipped() = 0;
 	bool isActive();
 	void complete();
+	
+	std::string questTag;
 
 private:
 	typedef GameObject super;
@@ -39,7 +41,6 @@ private:
 	GameObject* owner;
 	QuestLine* questLine;
 	std::string questTask;
-	std::string questTag;
 	QuestState questState;
 	bool isSkippable;
 	bool hasLoaded;

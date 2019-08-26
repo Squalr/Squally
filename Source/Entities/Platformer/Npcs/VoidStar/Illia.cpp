@@ -48,7 +48,7 @@ Illia::~Illia()
 
 Vec2 Illia::getDialogueOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(0.0f, -32.0f);
 }
 
 LocalizedString* Illia::getEntityName()

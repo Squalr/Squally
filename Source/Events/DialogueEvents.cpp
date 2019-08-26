@@ -29,7 +29,7 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 
 	animations->playAnimation();
 	animations->setFlippedX(isFlipped);
-	animations->setPosition(entity->getDialogueOffset());
+	animations->setPosition(entity->getDialogueOffset() - Vec2(0.0f, entity->getEntitySize().height / 2.0f));
 
 	return animations;
 }

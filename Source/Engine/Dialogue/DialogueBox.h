@@ -13,9 +13,11 @@ class LocalizedString;
 class DialogueBox : public SmartNode
 {
 public:
-
-protected:
-	typedef SmartNode super;
+	enum class DialogueDock
+	{
+		Top,
+		Bottom
+	};
 
 	enum class DialogueAlignment
 	{
@@ -24,12 +26,15 @@ protected:
 		Right,
 	};
 
+protected:
+	typedef SmartNode super;
+
 	DialogueBox(float textWidth);
 	~DialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;
-	virtual void runDialogue(LocalizedString* localizedString, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose);
+	virtual void runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose);
 	virtual void hideDialogue();
 	virtual void onTypeWriterEffectComplete();
 	bool isDialogueEffectComplete();
@@ -43,6 +48,7 @@ protected:
 	static const float DialogueHeight;
 
 private:
+	cocos2d::Node* containerNode;
 	cocos2d::DrawNode* panel;
 	LocalizedLabel* text;
 

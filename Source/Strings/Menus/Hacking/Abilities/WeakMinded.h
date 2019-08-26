@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_RescueGuano_SometimesIFindThings : public LocalizedString
+	class Menus_Hacking_Abilities_WeakMinded : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_SometimesIFindThings* create();
+		static Menus_Hacking_Abilities_WeakMinded* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_RescueGuano_SometimesIFindThings();
-		~Platformer_Quests_EndianForest_RescueGuano_SometimesIFindThings();
+		Menus_Hacking_Abilities_WeakMinded();
+		~Menus_Hacking_Abilities_WeakMinded();
 	};
 }

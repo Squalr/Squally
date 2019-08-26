@@ -48,7 +48,7 @@ Thion::~Thion()
 
 Vec2 Thion::getDialogueOffset()
 {
-	return Vec2(-32.0f, -112.0f);
+	return Vec2(0.0f, -32.0f);
 }
 
 LocalizedString* Thion::getEntityName()

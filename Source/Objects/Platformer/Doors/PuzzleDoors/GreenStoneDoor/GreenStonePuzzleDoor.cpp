@@ -31,8 +31,8 @@ GreenStonePuzzleDoor::GreenStonePuzzleDoor(ValueMap& properties) : super(propert
 	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 24.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 32.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(0.0f, 464.0f),
-	GreenStonePuzzleDoor::Offset + Vec2(284.0f, 104.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(-288.0f, 104.0f),
+	GreenStonePuzzleDoor::Offset + Vec2(284.0f, 104.0f),
 	GreenStonePuzzleDoor::Offset + Vec2(-208.0f, 338.0f),
 	136.0f,
 	292.0f)

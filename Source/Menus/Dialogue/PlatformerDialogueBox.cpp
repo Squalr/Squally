@@ -7,6 +7,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/UI/SmartClippingNode.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 
@@ -15,6 +16,9 @@
 #include "Strings/Input/Spacebar.h"
 
 using namespace cocos2d;
+
+const Color4F PlatformerDialogueBox::SpeakerBackgroundColor = Color4F(Color4B(0, 149, 194, 127));
+const float PlatformerDialogueBox::SpeakerPanelWidth = 272.0f;
 
 PlatformerDialogueBox* PlatformerDialogueBox::create()
 {
@@ -25,23 +29,33 @@ PlatformerDialogueBox* PlatformerDialogueBox::create()
 	return instance;
 }
 
-PlatformerDialogueBox::PlatformerDialogueBox() : super(1024.0f)
+PlatformerDialogueBox::PlatformerDialogueBox() : super(960.0f)
 {
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
 	LocalizedString* spaceString = Strings::Input_Spacebar::create();
 
 	bracketString->setStringReplacementVariables(spaceString);
 
+	Rect speakerRect = Rect(-PlatformerDialogueBox::SpeakerPanelWidth / 2.0f, -DialogueBox::DialogueHeight / 2.0f, PlatformerDialogueBox::SpeakerPanelWidth, DialogueBox::DialogueHeight);
+
 	this->spaceToContinueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, bracketString);
 	this->leftSpeakerNode = Node::create();
 	this->rightSpeakerNode = Node::create();
+	this->leftSpeakerBackground = DrawNode::create();
+	this->rightSpeakerBackground = DrawNode::create();
+	this->leftSpeakerClip = SmartClippingNode::create(this->leftSpeakerBackground, speakerRect);
+	this->rightSpeakerClip = SmartClippingNode::create(this->rightSpeakerBackground, speakerRect);
 
+	this->leftSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
+	this->rightSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->spaceToContinueLabel->setTextColor(DialogueBox::PanelTextColor);
 	this->isDialogueFocused = false;
 
+	this->leftSpeakerBackground->addChild(this->leftSpeakerNode);
+	this->rightSpeakerBackground->addChild(this->rightSpeakerNode);
 	this->contentNode->addChild(this->spaceToContinueLabel);
-	this->contentNode->addChild(this->leftSpeakerNode);
-	this->contentNode->addChild(this->rightSpeakerNode);
+	this->contentNode->addChild(this->leftSpeakerClip);
+	this->contentNode->addChild(this->rightSpeakerClip);
 }
 
 PlatformerDialogueBox::~PlatformerDialogueBox()
@@ -53,8 +67,8 @@ void PlatformerDialogueBox::initializePositions()
 	super::initializePositions();
 
 	this->spaceToContinueLabel->setPosition(Vec2(0.0f, -128.0f));
-	this->leftSpeakerNode->setPosition(Vec2(-768.0f, -DialogueBox::DialogueHeight / 4.0f));
-	this->rightSpeakerNode->setPosition(Vec2(768.0f, -DialogueBox::DialogueHeight / 4.0f));
+	this->leftSpeakerClip->setPosition(Vec2(-768.0f, 0.0f));
+	this->rightSpeakerClip->setPosition(Vec2(768.0f, 0.0f));
 }
 
 void PlatformerDialogueBox::initializeListeners()
@@ -67,28 +81,6 @@ void PlatformerDialogueBox::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			DialogueAlignment dialogueAlignment = DialogueAlignment::Center;
-
-			switch(args->dialogueAlignment)
-			{
-				default:
-				case DialogueEvents::DialogueAlignment::Center:
-				{
-					dialogueAlignment = DialogueAlignment::Center;
-					break;
-				}
-				case DialogueEvents::DialogueAlignment::Left:
-				{
-					dialogueAlignment = DialogueAlignment::Left;
-					break;
-				}
-				case DialogueEvents::DialogueAlignment::Right:
-				{
-					dialogueAlignment = DialogueAlignment::Right;
-					break;
-				}
-			}
-
 			this->leftSpeakerNode->removeAllChildren();
 			this->rightSpeakerNode->removeAllChildren();
 
@@ -102,7 +94,7 @@ void PlatformerDialogueBox::initializeListeners()
 				this->rightSpeakerNode->addChild(args->rightContentNode);
 			}
 
-			this->runDialogue(args->dialogue, dialogueAlignment, args->onDialogueClose);
+			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose);
 		}
 	}));
 
@@ -117,9 +109,9 @@ void PlatformerDialogueBox::initializeListeners()
 	});
 }
 
-void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose)
+void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose)
 {
-	super::runDialogue(localizedString, dialogueAlignment, onDialogueClose);
+	super::runDialogue(localizedString, dialogueDock, dialogueAlignment, onDialogueClose);
 
 	PlatformerEvents::TriggerCinematicHijack();
 	this->isDialogueFocused = true;

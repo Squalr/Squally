@@ -22,6 +22,7 @@ const float DialogueBox::DialogueHeight = 320.0f;
 
 DialogueBox::DialogueBox(float textWidth)
 {
+	this->containerNode = Node::create();
 	this->panel = DrawNode::create(3.0f);
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create());
 	this->contentNode = Node::create();
@@ -44,9 +45,10 @@ DialogueBox::DialogueBox(float textWidth)
 	this->text->setOpacity(0);
 	this->contentNode->setOpacity(0);
 
-	this->addChild(this->panel);
-	this->addChild(this->text);
-	this->addChild(this->contentNode);
+	this->containerNode->addChild(this->panel);
+	this->containerNode->addChild(this->text);
+	this->containerNode->addChild(this->contentNode);
+	this->addChild(this->containerNode);
 }
 
 DialogueBox::~DialogueBox()
@@ -63,7 +65,7 @@ void DialogueBox::initializeListeners()
 	super::initializeListeners();
 }
 
-void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose)
+void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose)
 {
 	this->dialogueEffectComplete = false;
 
@@ -71,31 +73,45 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueAlignmen
 	this->text->runAction(FadeTo::create(0.25f, 255));
 	this->contentNode->runAction(FadeTo::create(0.25f, 255));
 
-	switch(dialogueAlignment)
+	switch(dialogueDock)
 	{
 		default:
-		case DialogueAlignment::Center:
+		case DialogueDock::Top:
 		{
-			this->text->setAnchorPoint(Vec2(0.5f, 1.0f));
-			this->text->setPosition(Vec2(this->textWidth / 2.0f, DialogueBox::DialogueHeight / 2.0f - 64.0f));
+			this->containerNode->setPosition(Vec2(0.0f, 720.0f));
 			break;
 		}
-		case DialogueAlignment::Left:
+		case DialogueDock::Bottom:
 		{
-			this->text->setAnchorPoint(Vec2(0.0f, 1.0f));
-			this->text->setPosition(Vec2(0.0f, DialogueBox::DialogueHeight / 2.0f - 64.0f));
-			break;
-		}
-		case DialogueAlignment::Right:
-		{
-			this->text->setAnchorPoint(Vec2(1.0f, 1.0f));
-			this->text->setPosition(Vec2(this->textWidth, DialogueBox::DialogueHeight / 2.0f - 64.0f));
+			this->containerNode->setPosition(Vec2::ZERO);
 			break;
 		}
 	}
 
 	this->text->setLocalizedString(localizedString);
 	this->onDialogueClose = onDialogueClose;
+
+	switch(dialogueAlignment)
+	{
+		default:
+		case DialogueAlignment::Center:
+		{
+			this->text->setAnchorPoint(Vec2(0.5f, 1.0f));
+			this->text->setPosition(Vec2(this->textWidth / 2.0f + 32.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			break;
+		}
+		case DialogueAlignment::Left:
+		{
+			this->text->setAnchorPoint(Vec2(0.0f, 1.0f));
+			this->text->setPosition(Vec2(0.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			break;
+		}
+		case DialogueAlignment::Right:
+		{
+			this->text->setPosition(Vec2(this->textWidth - 32.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			break;
+		}
+	}
 
 	TypeWriterEffect::runTypeWriterEffect(this->text, [=]() { this->onTypeWriterEffectComplete(); });
 }
