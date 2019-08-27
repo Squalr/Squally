@@ -1,5 +1,7 @@
 #include "WeakMindedBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -74,6 +76,11 @@ void WeakMindedBehavior::onActivate()
 	{
 		this->glowAnim->playAnimationRepeat(FXResources::WeakMinded_WeakMinded_0000, 0.06f);
 	}
+
+	if (this->entity != nullptr)
+	{
+		this->entity->setState(StateKeys::WeakMinded, Value(true));
+	}
 }
 
 void WeakMindedBehavior::onDeactivate()
@@ -81,5 +88,10 @@ void WeakMindedBehavior::onDeactivate()
 	if (this->glowAnim != nullptr)
 	{
 		this->glowAnim->stopAnimation();
+	}
+
+	if (this->entity != nullptr)
+	{
+		this->entity->setState(StateKeys::WeakMinded, Value(false));
 	}
 }

@@ -28,6 +28,7 @@ private:
 	typedef QuestTask super;
 
 	void runNoVisitorsSequence();
+	void runPersuasionSequence();
 
 	CollisionObject* solidWall;
 	Lycan* lycan;

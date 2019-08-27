@@ -51,13 +51,16 @@ EntityRuneBehavior::~EntityRuneBehavior()
 
 void EntityRuneBehavior::onLoad()
 {
-	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->entity != nullptr)
 	{
-		if (value.asBool())
+		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			this->onRevive();
-		}
-	});
+			if (value.asBool())
+			{
+				this->onRevive();
+			}
+		});
+	}
 }
 
 void EntityRuneBehavior::update(float dt)

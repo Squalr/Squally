@@ -29,7 +29,7 @@ public:
 protected:
 	typedef SmartNode super;
 
-	DialogueBox(float textWidth);
+	DialogueBox(float textWidth, float speakerOffset, float speakerWidth);
 	~DialogueBox();
 
 	void initializePositions() override;
@@ -54,5 +54,7 @@ private:
 
 	bool dialogueEffectComplete;
 	float textWidth;
+	float speakerOffset;
+	float speakerWidth;
 	std::function<void()> onDialogueClose;
 };

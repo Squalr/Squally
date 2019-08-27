@@ -44,23 +44,26 @@ EnemyHealthBehavior::~EnemyHealthBehavior()
 
 void EnemyHealthBehavior::onLoad()
 {
-	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->entity != nullptr)
 	{
-		if (!value.asBool())
+		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			if (!this->entity->getMapEvent().empty())
+			if (!value.asBool())
 			{
-				ObjectEvents::TriggerBroadCastMapObjectState(this->entity->getMapEvent(), ValueMap());
+				if (!this->entity->getMapEvent().empty())
+				{
+					ObjectEvents::TriggerBroadCastMapObjectState(this->entity->getMapEvent(), ValueMap());
+				}
 			}
+
+			this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
+		});
+
+		if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
+		{
+			this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
+			this->entity->setState(StateKeys::IsAlive, Value(false));
 		}
-
-		this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));
-	});
-
-	if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
-	{
-		this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
-		this->entity->setState(StateKeys::IsAlive, Value(false));
 	}
 }
 

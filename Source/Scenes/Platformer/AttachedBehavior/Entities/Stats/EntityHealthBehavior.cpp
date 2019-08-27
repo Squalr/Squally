@@ -48,22 +48,25 @@ EntityHealthBehavior::~EntityHealthBehavior()
 
 void EntityHealthBehavior::onLoad()
 {
-	this->listenForStateWrite(StateKeys::Health, [=](Value value)
+	if (this->entity != nullptr)
 	{
-		this->setHealth(value.asInt(), false);
-	});
+		this->entity->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->setHealth(value.asInt(), false);
+		});
 
-	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-	{
-		if (value.asBool())
+		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			this->revive();
-		}
-		else
-		{
-			this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
-		}
-	});
+			if (value.asBool())
+			{
+				this->revive();
+			}
+			else
+			{
+				this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
+			}
+		});
+	}
 }
 
 int EntityHealthBehavior::getHealth()

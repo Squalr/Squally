@@ -19,9 +19,14 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/WeakMindedBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Lycan/BoredWithoutVisitors.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Lycan/DoorTech.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Lycan/FollowMe.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Lycan/GoingToTheInn.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/Lycan/NoVisitors.h"
 
 using namespace cocos2d;
@@ -86,9 +91,14 @@ void PersuadeGuard::onActivate(bool isActiveThroughSkippable)
 		if (this->lycan != nullptr)
 		{
 			this->lycan->attachBehavior(WeakMindedBehavior::create(this->lycan));
-		}
 
-		this->runNoVisitorsSequence();
+			this->lycan->listenForStateWrite(StateKeys::WeakMinded, [=](Value value)
+			{
+				this->runPersuasionSequence();
+			});
+
+			this->runNoVisitorsSequence();
+		}
 	}
 }
 
@@ -119,7 +129,71 @@ void PersuadeGuard::runNoVisitorsSequence()
 			PlatformerEvents::TriggerCinematicHijack();
 
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_NoVisitors::create(),
+				// Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_NoVisitors::create(),
+				Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				[=]()
+				{
+					this->runAction(Sequence::create(
+						DelayTime::create(1.0f),
+						CallFunc::create([=]()
+						{
+							PlatformerEvents::TriggerCinematicHijack();
+
+							DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+								// Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_NoVisitors::create(),
+								Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
+								DialogueBox::DialogueDock::Top,
+								DialogueBox::DialogueAlignment::Center,
+								[=]()
+								{
+									this->runAction(Sequence::create(
+										DelayTime::create(1.0f),
+										CallFunc::create([=]()
+										{
+											PlatformerEvents::TriggerCinematicHijack();
+
+											DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+												// Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_NoVisitors::create(),
+												Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
+												DialogueBox::DialogueDock::Top,
+												DialogueBox::DialogueAlignment::Right,
+												[=]()
+												{
+													PlatformerEvents::TriggerCinematicRestore();
+												},
+												DialogueEvents::BuildPreviewNode(this->squally, false),
+												DialogueEvents::BuildPreviewNode(this->lycan, true)
+											));
+										}),
+										nullptr
+									));
+								},
+								DialogueEvents::BuildPreviewNode(this->squally, false),
+								DialogueEvents::BuildPreviewNode(this->lycan, true)
+							));
+						}),
+						nullptr
+					));
+				},
+				DialogueEvents::BuildPreviewNode(this->squally, false),
+				DialogueEvents::BuildPreviewNode(this->lycan, true)
+			));
+		}),
+		nullptr
+	));
+}
+
+void PersuadeGuard::runPersuasionSequence()
+{
+	this->runAction(Sequence::create(
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicHijack();
+
+			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
 				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				[=]()

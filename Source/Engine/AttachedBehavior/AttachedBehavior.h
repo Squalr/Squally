@@ -14,7 +14,6 @@ protected:
 
 	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;
-	void listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite);
 
 	virtual void onLoad() = 0;
 	void invalidate();

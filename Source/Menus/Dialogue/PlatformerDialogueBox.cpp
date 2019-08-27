@@ -17,8 +17,10 @@
 
 using namespace cocos2d;
 
-const Color4F PlatformerDialogueBox::SpeakerBackgroundColor = Color4F(Color4B(0, 149, 194, 127));
+const Color4F PlatformerDialogueBox::SpeakerBackgroundColor = Color4F(Color4B(24, 101, 113, 127));
+const float PlatformerDialogueBox::TextWidth = 920.0f;
 const float PlatformerDialogueBox::SpeakerPanelWidth = 272.0f;
+const float PlatformerDialogueBox::SpeakerPanelOffset = 768.0f;
 
 PlatformerDialogueBox* PlatformerDialogueBox::create()
 {
@@ -29,7 +31,7 @@ PlatformerDialogueBox* PlatformerDialogueBox::create()
 	return instance;
 }
 
-PlatformerDialogueBox::PlatformerDialogueBox() : super(960.0f)
+PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::TextWidth, PlatformerDialogueBox::SpeakerPanelOffset, PlatformerDialogueBox::SpeakerPanelWidth)
 {
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
 	LocalizedString* spaceString = Strings::Input_Spacebar::create();
@@ -67,8 +69,8 @@ void PlatformerDialogueBox::initializePositions()
 	super::initializePositions();
 
 	this->spaceToContinueLabel->setPosition(Vec2(0.0f, -128.0f));
-	this->leftSpeakerClip->setPosition(Vec2(-768.0f, 0.0f));
-	this->rightSpeakerClip->setPosition(Vec2(768.0f, 0.0f));
+	this->leftSpeakerClip->setPosition(Vec2(-PlatformerDialogueBox::SpeakerPanelOffset, 0.0f));
+	this->rightSpeakerClip->setPosition(Vec2(PlatformerDialogueBox::SpeakerPanelOffset, 0.0f));
 }
 
 void PlatformerDialogueBox::initializeListeners()

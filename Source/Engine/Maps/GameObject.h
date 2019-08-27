@@ -29,6 +29,7 @@ public:
 	void setZSorted(bool zSorted);
 	bool isZSorted();
 	void saveObjectState(std::string key, cocos2d::Value value);
+	void listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite);
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);

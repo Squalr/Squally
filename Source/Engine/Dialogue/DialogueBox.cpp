@@ -20,7 +20,7 @@ const Color4B DialogueBox::PanelTextColor = Color4B(47, 71, 78, 255);
 const float DialogueBox::PanelBorderSize = 3.0f;
 const float DialogueBox::DialogueHeight = 320.0f;
 
-DialogueBox::DialogueBox(float textWidth)
+DialogueBox::DialogueBox(float textWidth, float speakerOffset, float speakerWidth)
 {
 	this->containerNode = Node::create();
 	this->panel = DrawNode::create(3.0f);
@@ -29,6 +29,8 @@ DialogueBox::DialogueBox(float textWidth)
 	this->onDialogueClose = std::function<void()>();
 	this->dialogueEffectComplete = false;
 	this->textWidth = textWidth;
+	this->speakerOffset = speakerOffset;
+	this->speakerWidth = speakerWidth;
 
 	this->text->setTextColor(DialogueBox::PanelTextColor);
 
@@ -38,8 +40,6 @@ DialogueBox::DialogueBox(float textWidth)
 
 	this->panel->drawSolidRect(-halfSize, halfSize, DialogueBox::PanelColor);
 	this->panel->drawRect(-halfSize, halfSize, DialogueBox::PanelEdgeColor);
-	this->text->setDimensions(this->textWidth, 0.0f);
-	this->text->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->panel->setOpacity(0);
 	this->text->setOpacity(0);
@@ -69,6 +69,8 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 {
 	this->dialogueEffectComplete = false;
 
+	this->text->setLocalizedString(localizedString);
+
 	this->panel->runAction(FadeTo::create(0.25f, 255));
 	this->text->runAction(FadeTo::create(0.25f, 255));
 	this->contentNode->runAction(FadeTo::create(0.25f, 255));
@@ -88,27 +90,34 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 		}
 	}
 
-	this->text->setLocalizedString(localizedString);
+	this->text->setDimensions(this->textWidth, 0.0f);
 	this->onDialogueClose = onDialogueClose;
+
+	// Math on this is wrong, but I don't have time to worry about this bs. If the constants change, this might break.
+	float distanceToMargin = (this->speakerOffset + this->speakerWidth / 2.0f - this->textWidth / 2.0f) / 2.0f - 80.0f;
 
 	switch(dialogueAlignment)
 	{
 		default:
 		case DialogueAlignment::Center:
 		{
+			this->text->setHorizontalAlignment(TextHAlignment::CENTER);
 			this->text->setAnchorPoint(Vec2(0.5f, 1.0f));
-			this->text->setPosition(Vec2(this->textWidth / 2.0f + 32.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			this->text->setPosition(Vec2(0.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
 			break;
 		}
 		case DialogueAlignment::Left:
 		{
+			this->text->setHorizontalAlignment(TextHAlignment::LEFT);
 			this->text->setAnchorPoint(Vec2(0.0f, 1.0f));
-			this->text->setPosition(Vec2(0.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			this->text->setPosition(Vec2(-this->textWidth / 2.0f - distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
 			break;
 		}
 		case DialogueAlignment::Right:
 		{
-			this->text->setPosition(Vec2(this->textWidth - 32.0f, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			this->text->setHorizontalAlignment(TextHAlignment::LEFT);
+			this->text->setAnchorPoint(Vec2(1.0f, 1.0f));
+			this->text->setPosition(Vec2(this->textWidth / 2.0f + distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
 			break;
 		}
 	}

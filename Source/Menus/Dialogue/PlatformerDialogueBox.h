@@ -35,5 +35,7 @@ private:
 	bool isDialogueFocused;
 
 	static const cocos2d::Color4F SpeakerBackgroundColor;
+	static const float TextWidth;
 	static const float SpeakerPanelWidth;
+	static const float SpeakerPanelOffset;
 };

@@ -15,6 +15,7 @@ public:
 	static const std::string Mana;
 	static const std::string MaxMana;
 	static const std::string CinematicHijacked;
+	static const std::string WeakMinded;
 	static const std::string VelocityX;
 	static const std::string VelocityY;
 };

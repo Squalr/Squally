@@ -62,13 +62,16 @@ void SquallyHealthBehavior::onLoad()
 		this->respawn(0.1f);
 	}
 
-	this->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->squally != nullptr)
 	{
-		if (!value.asBool())
+		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			this->respawn(1.5f);
-		}
-	});
+			if (!value.asBool())
+			{
+				this->respawn(1.5f);
+			}
+		});
+	}
 }
 
 void SquallyHealthBehavior::saveState()
