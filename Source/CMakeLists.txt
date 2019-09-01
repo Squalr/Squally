@@ -94,7 +94,7 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
 )
 
 # Copy steamworks runtime (regex is to switch lib for dll on Windows)
-string(REGEX REPLACE "\\.lib$" ".dll" STEAMWORKS_API_LIBRARY_RUNTIME ${STEAMWORKS_API_LIBRARY})
+string(REGEX REPLACE "\\.lib$" ".dll" STEAMWORKS_API_LIBRARY_RUNTIME "${STEAMWORKS_API_LIBRARY}")
 add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         ${STEAMWORKS_API_LIBRARY_RUNTIME}
