@@ -51,6 +51,7 @@ public:
 
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
+	static const std::string MapKeyTag;
 	static const std::string MapKeyPoints;
 	static const std::string MapKeyPolyLinePoints;
 	static const std::string MapKeyRotation;
@@ -110,6 +111,7 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
+	std::string tag;
 	bool zSorted;
 	cocos2d::Node* attachedBehaviorNode;
 	std::string uniqueIdentifier;

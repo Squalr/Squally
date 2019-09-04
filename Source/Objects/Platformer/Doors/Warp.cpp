@@ -5,9 +5,11 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
@@ -58,7 +60,10 @@ void Warp::initializeListeners()
 
 	this->listenForMapEvent(Warp::EventWarpToPrefix + this->from, [=](ValueMap args)
 	{
-		PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->getPosition()));
+		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		{
+			PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, this->getPosition()));
+		}));
 	});
 }
 

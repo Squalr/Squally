@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class Lycan;
+class MulDoor;
 class QuestLine;
 class Squally;
 
@@ -28,13 +29,23 @@ private:
 	typedef QuestTask super;
 
 	void runNoVisitorsSequence();
-	void runPersuasionSequence();
+	void runPersuasionSequencePart1a();
+	void runPersuasionSequencePart1b();
+	void runPersuasionSequencePart1c();
+	void runPersuasionSequencePart2a();
+	void runPersuasionSequencePart2b();
+	void runPersuasionSequencePart2c();
 
+	bool hasRunPersuasionSequence;
 	CollisionObject* solidWall;
+	MulDoor* mulDoor;
 	Lycan* lycan;
 	Squally* squally;
 
 	static const std::string QuestTagPrison;
-	static const std::string QuestTagSolidWall;
 	static const std::string QuestTagInn;
+	static const std::string TagSolidWall;
+	static const std::string TagPrisonDoor;
+	static const std::string TagExit;
+	static const std::string EventExplainDoor;
 };

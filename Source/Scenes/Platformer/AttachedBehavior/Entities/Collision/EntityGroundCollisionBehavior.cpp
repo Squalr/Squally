@@ -50,6 +50,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 		float offsetY = 0.0f;
 
 		this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
+		// this->groundCollision->setPosition(Vec2::ZERO);
 		
 		this->addChild(this->groundCollision);
 	}

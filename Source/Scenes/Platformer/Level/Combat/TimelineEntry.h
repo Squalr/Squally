@@ -25,8 +25,6 @@ public:
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 
-	static TimelineEntry* getAssociatedTimelineEntry(PlatformerEntity* entity);
-
 	static const float CastPercentage;
 
 private:

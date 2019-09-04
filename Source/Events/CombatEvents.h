@@ -14,6 +14,7 @@ class CombatEvents
 {
 public:
 	static const std::string EventSpawn;
+	static const std::string EventGetAssociatedTimelineEntry;
 	static const std::string EventChangeMenuState;
 	static const std::string EventDisableDefend;
 	static const std::string EventDisableItems;
@@ -43,6 +44,16 @@ public:
 		int spawnIndex;
 
 		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex)
+		{
+		}
+	};
+
+	struct AssociatedEntryArgs
+	{
+		PlatformerEntity* entity;
+		std::function<void(TimelineEntry*)> onLocated;
+
+		AssociatedEntryArgs(PlatformerEntity* entity, std::function<void(TimelineEntry*)> onLocated) : entity(entity), onLocated(onLocated)
 		{
 		}
 	};
@@ -203,6 +214,7 @@ public:
 	};
 
 	static void TriggerSpawn(SpawnArgs args);
+	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();

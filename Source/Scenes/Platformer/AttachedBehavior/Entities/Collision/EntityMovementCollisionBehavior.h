@@ -41,6 +41,8 @@ private:
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
 
+	bool movementCollisionBound;
+
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;
 };

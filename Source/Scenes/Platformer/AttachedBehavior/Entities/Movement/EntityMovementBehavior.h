@@ -20,8 +20,6 @@ protected:
 
 	void onLoad() override;
 	void update(float dt) override;
-	
-	cocos2d::Vec2 movement;
 
 private:
 	typedef AttachedBehavior super;
@@ -29,4 +27,5 @@ private:
 	bool isOnGround();
 
 	PlatformerEntity* entity;
+	cocos2d::Vec2 preCinematicPosition;
 };

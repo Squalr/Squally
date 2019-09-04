@@ -281,4 +281,13 @@ void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedStri
 void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 {
 	localizedString->setOverrideLanguage(this->getOverrideLanguage());
+
+	std::vector<LocalizedString*> stringReplacementVariables = std::vector<LocalizedString*>();
+
+	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	{
+		stringReplacementVariables.push_back((*it)->clone());
+	}
+
+	localizedString->setStringReplacementVariables(stringReplacementVariables);
 }

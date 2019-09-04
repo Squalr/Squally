@@ -9,6 +9,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -75,7 +76,8 @@ void ScrappyMovementBehavior::update(float dt)
 		return;
 	}
 
-	Vec2 destPosition = this->squally->getPosition();
+	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
+	Vec2 destPosition = squallyPosition;
 
 	if (this->squally->getAnimations()->getFlippedX())
 	{
@@ -92,7 +94,7 @@ void ScrappyMovementBehavior::update(float dt)
 		);
 	}
 
-	bool isLeftOfSqually = this->scrappy->getPositionX() <= this->squally->getPositionX();
+	bool isLeftOfSqually = this->scrappy->getPositionX() <= squallyPosition.x;
 	bool isMovingLeft = this->scrappy->getPositionX() > destPosition.x;
 	bool isMovingUp = this->scrappy->getPositionY() > destPosition.y;
 	bool isNearDestX = std::abs(destPosition.x - this->scrappy->getPositionX()) <= NearDistanceCheck;
@@ -127,7 +129,7 @@ void ScrappyMovementBehavior::update(float dt)
 	this->scrappy->getFloatNode()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
 
 	float distance = destPosition.distance(this->scrappy->getPosition());
-	float squallyDistance = this->scrappy->getPosition().distance(this->squally->getPosition());
+	float squallyDistance = this->scrappy->getPosition().distance(squallyPosition);
 	float angleBetween = -std::atan2(this->scrappy->getPositionY() - destPosition.y, this->scrappy->getPositionX() - destPosition.x);
 	float speedBonus = MathUtils::clamp(squallyDistance - ScrappyMovementBehavior::FloatOffsetRadius, 0.0f, 1024.0f);
 	

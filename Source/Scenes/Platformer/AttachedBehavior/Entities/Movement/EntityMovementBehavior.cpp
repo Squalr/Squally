@@ -38,7 +38,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 
-	this->movement = Vec2::ZERO;
+	this->preCinematicPosition = Vec2::ZERO;
 }
 
 EntityMovementBehavior::~EntityMovementBehavior()
@@ -48,15 +48,48 @@ EntityMovementBehavior::~EntityMovementBehavior()
 void EntityMovementBehavior::onLoad()
 {
 	this->scheduleUpdate();
+
+	this->entity->listenForStateWrite(StateKeys::CinematicDestinationX, [=](Value value)
+	{
+		this->preCinematicPosition = this->entity->getPosition();
+	});
 }
 
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->entity == nullptr || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+	bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+
+	if (this->entity == nullptr || (isCinematicHijacked && !hasCinematicMovement))
 	{
 		return;
+	}
+
+	float cinematicDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
+	bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+
+	Vec2 movement = Vec2(
+		this->entity->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f),
+		this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f)
+	);
+	
+	this->entity->clearState(StateKeys::MovementX);
+	this->entity->clearState(StateKeys::MovementY);
+
+	if (hasCinematicMovement)
+	{
+		movement.y = 0.0f;
+
+		if (cinematicMovementDirectionLeft)
+		{
+			movement.x = -1.0f;
+		}
+		else
+		{
+			movement.x = 1.0f;
+		}
 	}
 
 	EntityMovementCollisionBehavior* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
@@ -69,7 +102,7 @@ void EntityMovementBehavior::update(float dt)
 
 	if (!this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
-		this->movement = Vec2::ZERO;
+		movement = Vec2::ZERO;
 	}
 
 	Vec2 velocity = movementCollision->getVelocity();
@@ -83,18 +116,18 @@ void EntityMovementBehavior::update(float dt)
 		{
 			bool hasLeftCollision = movementCollision->hasLeftWallCollision();
 			bool hasRightCollision = movementCollision->hasRightWallCollision();
-			bool movingIntoLeftWall = (this->movement.x < 0.0f && hasLeftCollision);
-			bool movingIntoRightWall = (this->movement.x > 0.0f && hasRightCollision);
+			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
+			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
 			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
 			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
-				velocity.x += this->movement.x * EntityMovementBehavior::MoveAcceleration * dt;
+				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
 
-			if (this->movement.y > 0.0f && isOnGround)
+			if (movement.y > 0.0f && isOnGround)
 			{
-				velocity.y = this->movement.y * EntityMovementBehavior::JumpVelocity;
+				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
 
 				this->entity->performJumpAnimation();
 			}
@@ -106,19 +139,19 @@ void EntityMovementBehavior::update(float dt)
 			const float minSpeed = EntityMovementBehavior::SwimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
-			if (velocity.y < minSpeed && this->movement.y > 0.0f)
+			if (velocity.y < minSpeed && movement.y > 0.0f)
 			{
 				velocity.y = minSpeed;
 			}
-			else if (velocity.y > -minSpeed && this->movement.y < 0.0f)
+			else if (velocity.y > -minSpeed && movement.y < 0.0f)
 			{
 				velocity.y = -minSpeed;
 			}
 
-			velocity.x += this->movement.x * EntityMovementBehavior::SwimAcceleration.x * dt;
-			velocity.y += this->movement.y * EntityMovementBehavior::SwimAcceleration.y * dt;
+			velocity.x += movement.x * EntityMovementBehavior::SwimAcceleration.x * dt;
+			velocity.y += movement.y * EntityMovementBehavior::SwimAcceleration.y * dt;
 
-			if (this->movement != Vec2::ZERO)
+			if (movement != Vec2::ZERO)
 			{
 				this->entity->performSwimAnimation();
 			}
@@ -136,13 +169,23 @@ void EntityMovementBehavior::update(float dt)
 	// Update flip
 	if (this->entity->getAnimations() != nullptr)
 	{
-		if (this->movement.x < 0.0f)
+		if (movement.x < 0.0f)
 		{
 			this->entity->getAnimations()->setFlippedX(true);
 		}
-		else if (this->movement.x > 0.0f)
+		else if (movement.x > 0.0f)
 		{
 			this->entity->getAnimations()->setFlippedX(false);
+		}
+	}
+	
+	if (hasCinematicMovement)
+	{
+		if ((cinematicMovementDirectionLeft && this->entity->getPositionX() <= cinematicDestionationX) ||
+			(!cinematicMovementDirectionLeft && this->entity->getPositionX() >= cinematicDestionationX))
+		{
+			this->entity->clearState(StateKeys::CinematicDestinationX);
+			this->entity->setState(StateKeys::CinematicDestinationReached, Value(true));
 		}
 	}
 }

@@ -8,6 +8,7 @@
 
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -45,7 +46,7 @@ SquallyHealthBehavior::~SquallyHealthBehavior()
 
 void SquallyHealthBehavior::onLoad()
 {
-	this->spawnCoords = this->squally->getPosition();
+	this->spawnCoords = GameUtils::getWorldCoords(this->squally);
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{

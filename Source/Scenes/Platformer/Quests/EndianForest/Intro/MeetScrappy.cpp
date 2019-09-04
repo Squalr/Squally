@@ -13,6 +13,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Sound/Sound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
@@ -30,6 +31,7 @@
 using namespace cocos2d;
 
 const std::string MeetScrappy::MapKeyQuest = "meet-scrappy";
+const std::string MeetScrappy::TagScrappyStop = "scrappy-stop";
 
 MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::string questTag)
 {
@@ -97,19 +99,8 @@ void MeetScrappy::runCinematicSequence()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
-		switch(cinematicMarker->getId())
-		{
-			case 0:
-			{
-				positionA = cinematicMarker->getPosition();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}));
+		positionA = cinematicMarker->getPosition();
+	}), MeetScrappy::TagScrappyStop);
 
 	if (this->scrappy != nullptr)
 	{
@@ -149,7 +140,7 @@ void MeetScrappy::runCinematicSequence()
 
 				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
 				{
-					positionB = squally->getPosition();
+					positionB = GameUtils::getWorldCoords(squally);
 				}));
 
 				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));

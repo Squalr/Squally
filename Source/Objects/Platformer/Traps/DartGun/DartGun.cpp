@@ -129,7 +129,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		Vec2 squallyPos = squally->getPosition();
+		Vec2 squallyPos = GameUtils::getWorldCoords(squally);
 
 		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? float(M_PI) : 0.0f);
 

@@ -69,7 +69,7 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::getStringEn()
 	{
-		return "Visitors are not normally allowed, but I get bored sitting here alone all day. Visitors are not normally allowed, but I get bored sitting here alone all day. Visitors are not normally allowed, but I get bored sitting here alone all day. Visitors are not normally allowed, but I get bored sitting here alone all day. Visitors are not normally allowed, but I get bored sitting here alone all day.";
+		return "Visitors are not normally allowed, but I get bored sitting here alone all day.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::getStringEs()

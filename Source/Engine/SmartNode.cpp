@@ -9,7 +9,6 @@
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/InputEvents.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -66,9 +65,6 @@ void SmartNode::onExit()
 void SmartNode::onReenter()
 {
 	super::onReenter();
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void SmartNode::initializePositions()
@@ -82,16 +78,6 @@ void SmartNode::initializeListeners()
 	{
 		this->removeAllListeners();
 	}
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
-	{
-		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			args->tryInvoke(this);
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
 	{

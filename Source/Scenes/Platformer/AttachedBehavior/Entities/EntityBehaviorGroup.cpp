@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 
 using namespace cocos2d;
@@ -24,6 +25,7 @@ EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCollisionBehaviorGroup::create(owner),
 	EntityDeveloperBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
+	EntityMovementBehavior::create(owner),
 	})
 {
 }

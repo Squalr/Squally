@@ -7,9 +7,11 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -49,33 +51,38 @@ void SquallyMovementBehavior::update(float dt)
 		return;
 	}
 
-	this->movement = Vec2::ZERO;
+	Vec2 movement = Vec2::ZERO;
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
 	{
-		this->movement.x -= 1.0f;
+		this->squally->setState(StateKeys::MovementX, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) - 1.0f));
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
 	{
-		this->movement.x += 1.0f;
+		this->squally->setState(StateKeys::MovementX, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) + 1.0f));
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
 	{
-		this->movement.y += 1.0f;
+		this->squally->setState(StateKeys::MovementY, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) + 1.0f));
 	}
 
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
 	{
-		this->movement.y -= 1.0f;
+		this->squally->setState(StateKeys::MovementY, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) - 1.0f));
 	}
 
-	if (!this->isDisposing && this->movement != Vec2::ZERO)
+	// Soft save the player's position
+	if (!this->isDisposing)
 	{
-		// Soft save the player's position
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(this->squally->getPositionX()));
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(this->squally->getPositionY()));
+		if (this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
+			this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
+		{
+			Vec2 position = GameUtils::getWorldCoords(this->squally);
+			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
+		}
 	}
 
 	super::update(dt);
@@ -93,9 +100,11 @@ void SquallyMovementBehavior::onLoad()
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}));
 
+	Vec2 position = GameUtils::getWorldCoords(this->squally);
+
 	this->squally->setPosition(Vec2(
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(this->squally->getPositionX())).asFloat(),
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(this->squally->getPositionY())).asFloat()
+		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat(),
+		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat()
 	));
 	
 	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();

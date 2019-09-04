@@ -1,11 +1,16 @@
 #include "EntityMovementCollisionBehavior.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -33,6 +38,7 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	this->movementCollision = nullptr;
 	this->leftCollision = nullptr;
 	this->rightCollision = nullptr;
+	this->movementCollisionBound = false;
 
 	if (this->entity == nullptr)
 	{
@@ -54,9 +60,8 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 			false
 		);
 
-		this->movementCollision->bindTo(this->entity);
 		this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
-
+		
 		this->addChild(this->movementCollision);
 	}
 }
@@ -69,11 +74,28 @@ void EntityMovementCollisionBehavior::onLoad()
 {
 	this->buildMovementCollision();
 	this->buildWallDetectors();
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + std::to_string((unsigned long long)(this->entity)), [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr && this->movementCollision != nullptr)
+		{
+			this->movementCollision->setPosition(args->position);
+			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+		}
+	}));
 }
 
 void EntityMovementCollisionBehavior::update(float dt)
 {
 	super::update(dt);
+
+	if (!this->movementCollisionBound)
+	{
+		this->movementCollisionBound = true;
+		this->movementCollision->bindTo(this->entity);
+	}
 }
 
 Vec2 EntityMovementCollisionBehavior::getVelocity()

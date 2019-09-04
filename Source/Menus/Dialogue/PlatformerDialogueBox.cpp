@@ -123,10 +123,11 @@ void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, Dialog
 
 void PlatformerDialogueBox::hideDialogue()
 {
-	super::hideDialogue();
-
 	PlatformerEvents::TriggerCinematicRestore();
+
 	this->isDialogueFocused = false;
+	
+	super::hideDialogue();
 }
 
 void PlatformerDialogueBox::onTypeWriterEffectComplete()

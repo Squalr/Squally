@@ -25,7 +25,7 @@ const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
 	CollisionObject* instance = new CollisionObject(properties, physicsBody, collisionType, isDynamic, canRotate);
 
@@ -34,7 +34,7 @@ CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::Ph
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
 {
 	CollisionObject* instance = CollisionObject::create(properties, physicsBody, (CollisionType)0, isDynamic, canRotate);
 
@@ -44,14 +44,14 @@ CollisionObject* CollisionObject::create(const ValueMap& properties, cocos2d::Ph
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
 	ValueMap valueMap = ValueMap();
 
 	return CollisionObject::create(valueMap, physicsBody, collisionType, isDynamic, canRotate);
 }
 
-CollisionObject* CollisionObject::create(cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate)
 {
 	ValueMap valueMap = ValueMap();
 
@@ -71,8 +71,9 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
 	this->physicsEnabled = true;
-	this->bindTarget = nullptr;
 	this->contactUpdateCallback = nullptr;
+	this->onDebugPositionSet = nullptr;
+	this->bindTarget = nullptr;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -81,6 +82,24 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 		this->physicsBody->setContactTestBitmask(0);
 		this->physicsBody->setCollisionBitmask(0);
 		this->setPhysicsBody(this->physicsBody);
+	}
+
+	Size mapSize = Size(
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	);
+
+	this->setPosition(Vec2::ZERO);
+
+	// Note: Explicit checks for key for setting position. Important, because non-deserialized objects may not have this key, and should end up at (0, 0)
+	if (GameUtils::keyExists(this->properties, GameObject::MapKeyXPosition))
+	{
+		this->setPositionX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat() + mapSize.width / 2.0f);
+	}
+
+	if (GameUtils::keyExists(this->properties, GameObject::MapKeyYPosition))
+	{
+		this->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat() + mapSize.height / 2.0f);
 	}
 
 	this->setCollisionType(collisionType);
@@ -143,13 +162,7 @@ void CollisionObject::setCollisionType(CollisionType collisionType)
 
 void CollisionObject::update(float dt)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 worldPos = GameUtils::getWorldCoords(this);
-	Vec2 pos = this->getPosition();
-	Vec2 deltaPos = pos - worldPos;
-	Size STOP_PHYSICS_OFFSET = visibleSize / 2.0f;
-	
-	this->updateBinds();
+	super::update(dt);
 
 	if (this->contactUpdateCallback != nullptr)
 	{
@@ -168,24 +181,14 @@ void CollisionObject::update(float dt)
 	}
 }
 
-void CollisionObject::updateBinds()
-{
-	if (this->bindTarget != nullptr)
-	{
-		Vec2 positionDelta = this->getPosition();
-		
-		if (positionDelta != Vec2::ZERO)
-		{
-			this->bindTarget->setPosition(this->bindTarget->getPosition() + positionDelta);
-
-			this->setPosition(Vec2::ZERO);
-		}
-	}
-}
-
 void CollisionObject::setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback)
 {
 	this->contactUpdateCallback = contactUpdateCallback;
+}
+
+void CollisionObject::setDebugPositionSetCallback(std::function<void()> onDebugPositionSet)
+{
+	this->onDebugPositionSet = onDebugPositionSet;
 }
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
@@ -206,9 +209,14 @@ void CollisionObject::setGravityEnabled(bool isEnabled)
 	}
 }
 
-void CollisionObject::setPosition(const cocos2d::Vec2& position)
+void CollisionObject::setPosition(const Vec2& position)
 {
 	super::setPosition(position);
+
+	if (this->onDebugPositionSet != nullptr)
+	{
+		this->onDebugPositionSet();
+	}
 
 	if (this->physicsBody != nullptr)
 	{
@@ -276,7 +284,7 @@ bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 	return std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionObject) != this->currentCollisions.end();
 }
 
-void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
+void CollisionObject::addPhysicsShape(PhysicsShape* shape)
 {
 	if (this->physicsBody != nullptr)
 	{
@@ -284,11 +292,15 @@ void CollisionObject::addPhysicsShape(cocos2d::PhysicsShape* shape)
 	}
 }
 
-void CollisionObject::bindTo(cocos2d::Node* bindTarget)
+void CollisionObject::bindTo(Node* bindTarget)
 {
 	this->bindTarget = bindTarget;
 
-	this->setPosition(Vec2::ZERO);
+	if (this->bindTarget != nullptr && this->bindTarget->getParent() != nullptr)
+	{
+		GameUtils::changeParent(this, this->bindTarget->getParent(), true);
+		this->setPosition(bindTarget->getPosition());
+	}
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
@@ -392,7 +404,7 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
 }
 
-bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
+bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
 	CollisionResult result = defaultResult;
 
@@ -413,8 +425,6 @@ bool CollisionObject::runContactEvents(cocos2d::PhysicsContact& contact, std::ma
 			}
 		}
 	}
-	
-	this->updateBinds();
 
 	return (result == CollisionResult::CollideWithPhysics ? true : false);
 }
@@ -442,5 +452,15 @@ CollisionObject::CollisionData CollisionObject::constructCollisionData(PhysicsCo
 
 void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
+	this->updateBinds();
+
 	super::visit(renderer, parentTransform, parentFlags);
+}
+
+void CollisionObject::updateBinds()
+{
+	if (this->bindTarget != nullptr)
+	{
+		this->bindTarget->setPosition(this->getPosition());
+	}
 }

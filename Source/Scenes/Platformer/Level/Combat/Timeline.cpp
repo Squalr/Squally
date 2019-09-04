@@ -166,17 +166,33 @@ void Timeline::checkCombatComplete()
 		return;
 	}
 
-	bool allEnemiesDead = true;
-	bool allPlayersDead = true;
+	static bool allEnemiesDead = true;
+	static bool allPlayersDead = true;
+
+	allEnemiesDead = true;
+	allPlayersDead = true;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		allEnemiesDead &= !entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
+			{
+				allEnemiesDead = false;
+			}));
+		}
 	}));
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		allPlayersDead &= !entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			// Only set flag if the entity is on the timeline to avoid querying non-combat helpers (ie scrappy)
+			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
+			{
+				allPlayersDead = false;
+			}));
+		}
 	}));
 
 	if (allEnemiesDead)

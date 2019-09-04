@@ -52,13 +52,20 @@ EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner) : super(owne
 		);
 
 		this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
-
+		
 		this->addChild(this->entityCollision);
+
+		this->scheduleUpdate();
 	}
 }
 
 EntityCollisionBehavior::~EntityCollisionBehavior()
 {
+}
+
+void EntityCollisionBehavior::update(float dt)
+{
+	super::update(dt);
 }
 
 void EntityCollisionBehavior::onLoad()

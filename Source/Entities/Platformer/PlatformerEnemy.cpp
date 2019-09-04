@@ -88,7 +88,7 @@ std::string PlatformerEnemy::getBattleMapResource()
 		return this->battleMapResource;
 	}
 
-	return "Platformer/Maps/" + this->battleMapResource + ".tmx";
+	return "Private/Platformer/Maps/" + this->battleMapResource + ".tmx";
 }
 
 std::string PlatformerEnemy::getBattleBehavior()

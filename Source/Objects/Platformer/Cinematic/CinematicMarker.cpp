@@ -23,7 +23,6 @@
 using namespace cocos2d;
 
 const std::string CinematicMarker::MapKeyCinematicMarker = "cinematic-marker";
-const std::string CinematicMarker::MapKeyId = "id";
 
 CinematicMarker* CinematicMarker::create(ValueMap& properties)
 {
@@ -36,7 +35,6 @@ CinematicMarker* CinematicMarker::create(ValueMap& properties)
 
 CinematicMarker::CinematicMarker(ValueMap& properties) : super(properties)
 {
-	this->id = GameUtils::getKeyOrDefault(properties, CinematicMarker::MapKeyId, Value(0)).asInt();
 }
 
 CinematicMarker::~CinematicMarker()
@@ -56,9 +54,4 @@ void CinematicMarker::initializePositions()
 void CinematicMarker::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-int CinematicMarker::getId()
-{
-	return this->id;
 }

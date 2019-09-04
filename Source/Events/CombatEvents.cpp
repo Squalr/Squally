@@ -6,6 +6,7 @@
 using namespace cocos2d;
 
 const std::string CombatEvents::EventSpawn = "EVENT_COMBAT_SPAWN";
+const std::string CombatEvents::EventGetAssociatedTimelineEntry = "EVENT_GET_ASSOCIATED_TIMELINE_ENTRY";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_CHANGE_MENU_STATE";
 const std::string CombatEvents::EventDisableDefend = "EVENT_DISABLE_DEFEND";
 const std::string CombatEvents::EventDisableItems = "EVENT_DISABLE_ITEMS";
@@ -30,6 +31,14 @@ void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSpawn,
+		&args
+	);
+}
+
+void CombatEvents::TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventGetAssociatedTimelineEntry,
 		&args
 	);
 }

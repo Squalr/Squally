@@ -102,6 +102,16 @@ void TimelineEntry::initializeListeners()
 			this->applyDamageOrHealing(args->caster, args->damageOrHealing);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGetAssociatedTimelineEntry, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->entity == this->getEntity())
+		{
+			args->onLocated(this);
+		}
+	}));
 }
 
 void TimelineEntry::update(float dt)
@@ -138,7 +148,15 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
 {
-	this->target = target == nullptr ? nullptr : TimelineEntry::getAssociatedTimelineEntry(target);
+	this->target = nullptr;
+
+	if (target != nullptr)
+	{
+		CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(target, [=](TimelineEntry* timelineEntry)
+		{
+			this->target = timelineEntry;
+		}));
+	}
 }
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
@@ -273,21 +291,4 @@ void TimelineEntry::resetTimeline()
 bool TimelineEntry::isPlayerEntry()
 {
 	return (dynamic_cast<PlatformerEnemy*>(this->entity) == nullptr);
-}
-
-TimelineEntry* TimelineEntry::getAssociatedTimelineEntry(PlatformerEntity* entity)
-{
-	TimelineEntry* associatedEntry = nullptr;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<TimelineEntry>([&](TimelineEntry* entry, bool* handled)
-	{
-		if (entry->getEntity() == entity)
-		{
-			associatedEntry = entry;
-
-			*handled = true;
-		}
-	}));
-
-	return associatedEntry;
 }

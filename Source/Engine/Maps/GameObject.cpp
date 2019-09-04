@@ -14,6 +14,7 @@ using namespace cocos2d;
 const std::string GameObject::MapKeyId = "id";
 const std::string GameObject::MapKeyType = "type";
 const std::string GameObject::MapKeyName = "name";
+const std::string GameObject::MapKeyTag = "tag";
 const std::string GameObject::MapKeyWidth = "width";
 const std::string GameObject::MapKeyHeight = "height";
 const std::string GameObject::MapKeyXPosition = "x";
@@ -64,10 +65,11 @@ GameObject::GameObject() : GameObject(ValueMap())
 {
 }
 
-GameObject::GameObject(const ValueMap& properties)
+GameObject::GameObject(const ValueMap& properties) : super()
 {
 	this->properties = properties;
 	this->zSorted = false;
+	this->tag = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString();
 	this->polylinePoints = std::vector<Vec2>();
 	this->stateVariables = ValueMap();
 	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
@@ -198,6 +200,29 @@ void GameObject::onEnter()
 void GameObject::initializeListeners()
 {
 	super::initializeListeners();
+	
+	if (!this->tag.empty())
+	{
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + this->tag, [=](EventCustom* eventCustom)
+		{
+			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				args->tryInvoke(this);
+			}
+		}));
+	}
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
+	{
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			args->tryInvoke(this);
+		}
+	}));
 }
 
 std::string GameObject::getUniqueIdentifier()

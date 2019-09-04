@@ -10,6 +10,7 @@ using namespace cocos2d;
 
 const std::string ObjectEvents::EventCollisonMapUpdated = "EVENT_COLLISION_MAP_UPDATED";
 const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
+const std::string ObjectEvents::EventQueryObjectByTagPrefix = "EVENT_QUERY_OBJECT_BY_TAG_";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
 const std::string ObjectEvents::EventBindObjectToUI = "EVENT_BIND_OBJECT_TO_UI";
 const std::string ObjectEvents::EventUnbindObject = "EVENT_UNBIND_OBJECT";

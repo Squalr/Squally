@@ -28,4 +28,6 @@ private:
 
 	bool hasRunEvent;
 	Scrappy* scrappy;
+
+	static const std::string TagScrappyStop;
 };

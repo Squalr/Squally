@@ -102,17 +102,6 @@ void Squally::initializeListeners()
 	{
 		PlatformerEvents::TriggerHudUntrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 	}));
-
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocation, [=](EventCustom* eventCustom)
-	{
-		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			this->setPosition(args->position);
-			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
-		}
-	}));
 }
 
 void Squally::update(float dt)

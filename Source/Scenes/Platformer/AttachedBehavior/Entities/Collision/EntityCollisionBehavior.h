@@ -23,6 +23,7 @@ protected:
 	EntityCollisionBehavior(GameObject* owner);
 	~EntityCollisionBehavior();
 
+	void update(float dt) override;
 	void onLoad() override;
 
 private:

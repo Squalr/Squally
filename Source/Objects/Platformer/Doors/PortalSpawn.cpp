@@ -6,7 +6,9 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 
 #include "Resources/UIResources.h"
@@ -54,7 +56,10 @@ void PortalSpawn::initializeListeners()
 		
 		if (args != nullptr && args->transition == this->transition)
 		{
-			PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(GameUtils::getWorldCoords(this)));
+			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+			{
+				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
+			}));
 		}
 	}));
 }

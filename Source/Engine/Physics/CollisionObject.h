@@ -51,7 +51,6 @@ public:
 	void buildInverseCollisionMap();
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
 	void bindTo(cocos2d::Node* bindTarget);
-	void updateBinds();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void setCollisionType(CollisionType collisionType);
@@ -69,6 +68,7 @@ public:
 	bool isCollidingWith(CollisionObject* collisionObject);
 	virtual void setPhysicsEnabled(bool enabled);
 	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
+	void setDebugPositionSetCallback(std::function<void()> onDebugPositionSet);
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale, float capsuleRadius);
 
 	static const std::string MapKeyTypeCollision;
@@ -101,6 +101,7 @@ private:
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
 	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
+	void updateBinds();
 
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
@@ -112,4 +113,5 @@ private:
 	std::vector<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool physicsEnabled;
+	std::function<void()> onDebugPositionSet;
 };

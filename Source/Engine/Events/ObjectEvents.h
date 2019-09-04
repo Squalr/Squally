@@ -54,6 +54,7 @@ class ObjectEvents
 public:
 	static const std::string EventCollisonMapUpdated;
 	static const std::string EventQueryObject;
+	static const std::string EventQueryObjectByTagPrefix;
 	static const std::string EventBroadCastMapObjectStatePrefix;
 	static const std::string EventSpawnObject;
 	static const std::string EventSpawnObjectDelegator;
@@ -125,16 +126,26 @@ public:
 	static void TriggerWriteObjectState(StateWriteArgs args);
 
 	template<class T>
-	static void QueryObjects(QueryObjectsArgs<T> args)
+	static void QueryObjects(QueryObjectsArgs<T> args, std::string tag = "")
 	{
-		cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-			ObjectEvents::EventQueryObject,
-			&args
-		);
+		if (tag.empty())
+		{
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+				ObjectEvents::EventQueryObject,
+				&args
+			);
+		}
+		else
+		{
+			cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+				ObjectEvents::EventQueryObjectByTagPrefix + tag,
+				&args
+			);
+		}
 	}
 
 	template <class T>
-	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound)
+	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
 		static unsigned long long WatchId = 0;
 		unsigned long long watchId = WatchId++;
@@ -148,7 +159,7 @@ public:
 			onObjectFound(object);
 			*handled = true;
 			wasHandled = true;
-		}));
+		}), tag);
 
 		if (wasHandled)
 		{
@@ -163,7 +174,7 @@ public:
 				host->unschedule(eventKey);
 				onObjectFound(object);
 				*handled = true;
-			}));
+			}), tag);
 
 		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
 	}

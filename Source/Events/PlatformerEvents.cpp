@@ -3,10 +3,12 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
+#include "Engine/Maps/GameObject.h"
+
 using namespace cocos2d;
 
 const std::string PlatformerEvents::EventSpawnToTransitionLocation = "EVENT_SPAWN_TO_TRANSITION_LOCATION";
-const std::string PlatformerEvents::EventWarpToLocation = "EVENT_WARP_TO_LOCATION";
+const std::string PlatformerEvents::EventWarpToLocationPrefix = "EVENT_WARP_TO_LOCATION_";
 const std::string PlatformerEvents::EventBeforePlatformerMapChange = "EVENT_BEFORE_PLATFORMER_MAP_CHANGE";
 const std::string PlatformerEvents::EventCinematicHijack = "EVENT_CINEMATIC_HIJACK";
 const std::string PlatformerEvents::EventCinematicRestore = "EVENT_CINEMATIC_RESTORE";
@@ -28,7 +30,7 @@ void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventWarpToLocation,
+		PlatformerEvents::EventWarpToLocationPrefix + std::to_string((unsigned long long)(args.target)),
 		&args
 	);
 }

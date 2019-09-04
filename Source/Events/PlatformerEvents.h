@@ -4,6 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+class GameObject;
 class LocalizedString;
 class PlatformerEntity;
 class PlatformerEnemy;
@@ -12,7 +13,7 @@ class PlatformerEvents
 {
 public:
 	static const std::string EventSpawnToTransitionLocation;
-	static const std::string EventWarpToLocation;
+	static const std::string EventWarpToLocationPrefix;
 	static const std::string EventBeforePlatformerMapChange;
 	static const std::string EventCinematicHijack;
 	static const std::string EventCinematicRestore;
@@ -34,9 +35,10 @@ public:
 
 	struct WarpArgs
 	{
+		GameObject* target;
 		cocos2d::Vec2 position;
 
-		WarpArgs(cocos2d::Vec2 position) : position(position)
+		WarpArgs(GameObject* target, cocos2d::Vec2 position) : target(target), position(position)
 		{
 		}
 	};

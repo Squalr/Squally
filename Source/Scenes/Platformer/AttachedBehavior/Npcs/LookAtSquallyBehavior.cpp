@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/Squally/Squally.h"
 
@@ -54,7 +55,7 @@ void LookAtSquallyBehavior::update(float dt)
 		return;
 	}
 
-	if (this->npc->getPositionX() > this->squally->getPositionX())
+	if (this->npc->getPositionX() > GameUtils::getWorldCoords(this->squally).x)
 	{
 		this->npc->getAnimations()->setFlippedX(true);
 	}
