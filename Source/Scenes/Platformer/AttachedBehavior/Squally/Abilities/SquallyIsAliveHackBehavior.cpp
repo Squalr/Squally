@@ -65,6 +65,7 @@ void SquallyIsAliveHackBehavior::update(float dt)
 	{
 		// Check for player suicide
 		this->squally->setState(StateKeys::IsAlive, Value(false));
+		this->cooldown = 3.0f;
 	}
 }
 

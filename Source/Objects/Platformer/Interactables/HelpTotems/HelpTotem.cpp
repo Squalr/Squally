@@ -66,7 +66,7 @@ void HelpTotem::initializeListeners()
 
 	this->hintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		if (this->hint != nullptr)
+		if (this->hint != nullptr && this->isVisible())
 		{
 			this->speechBubble->runDialogue(this->hint->clone(), SpeechBubble::Direction::Centered);
 		}
