@@ -83,7 +83,7 @@ void TutorialAVictory::initializeListeners()
 
 bool TutorialAVictory::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA)
+	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->getPlayerLosses() < gameState->getEnemyLosses())
 	{
 		this->initializeCallbacks(gameState);
 		this->runTutorialLossDisplay(gameState);

@@ -57,6 +57,8 @@ public:
 	bool isRoundTied();
 	bool isPlayerWinningRound();
 	bool isEnemyWinningRound();
+	int getPlayerLosses();
+	int getEnemyLosses();
 	int getPlayerTotal();
 	int getEnemyTotal();
 	int getCardCount();

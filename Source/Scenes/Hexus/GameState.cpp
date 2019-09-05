@@ -429,6 +429,16 @@ std::vector<CardRow*> GameState::getPlayerRows()
 	return cardRows;
 }
 
+int GameState::getPlayerLosses()
+{
+	return this->playerLosses;
+}
+
+int GameState::getEnemyLosses()
+{
+	return this->enemyLosses;
+}
+
 int GameState::getPlayerTotal()
 {
 	int total = 0;

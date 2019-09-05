@@ -173,7 +173,7 @@ void HexusChapterSelectMenu::onEnter()
 
 	for (auto it = this->chapters.begin(); it != this->chapters.end(); it++)
 	{
-		/// (*it)->disableInteraction();
+		(*it)->disableInteraction();
 	}
 
 	this->loadProgress();
@@ -258,9 +258,6 @@ void HexusChapterSelectMenu::loadProgress()
 			chapter->enableInteraction();
 		}
 	}
-
-	// Prevent going passed the Forest level // TODO: Just for demo :)
-	//this->hexusChapterPreviewForest->disableInteraction();
 }
 
 void HexusChapterSelectMenu::onMouseOver(HexusChapterPreview* HexusChapterPreview)
