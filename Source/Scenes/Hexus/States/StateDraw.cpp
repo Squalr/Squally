@@ -80,7 +80,7 @@ void StateDraw::onStateEnter(GameState* gameState)
 				CallFunc::create(CC_CALLBACK_0(Card::doDrawAnimation, card, Config::cardDrawDelay)),
 				DelayTime::create(Config::cardDrawDelay),
 				DelayTime::create(Config::revealDelay),
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay)),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, card, Config::insertDelay, true)),
 				DelayTime::create(Config::insertDelay),
 				CallFunc::create([gameState]
 				{

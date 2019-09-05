@@ -13,10 +13,10 @@ class CardRow : public SmartNode
 public:
 	static CardRow * create(bool isPlayerRow);
 
-	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
-	void insertCard(Card* card, float cardInsertDelay);
-	void insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f);
-	void insertCardFront(Card* card, float cardInsertDelay);
+	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f, bool asReentry = true);
+	void insertCard(Card* card, float cardInsertDelay, bool asReentry = true);
+	void insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f, bool asReentry = true);
+	void insertCardFront(Card* card, float cardInsertDelay, bool asReentry = true);
 	void enableClearOperationsOnInsert();
 	Card* removeCard(Card* card);
 	void removeCardsWhere(std::function<bool(Card*)> predicate);

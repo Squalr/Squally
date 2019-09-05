@@ -31,9 +31,9 @@ public:
 	Card* drawCard();
 	bool hasCards();
 	void shuffle();
-	void insertCardTop(Card* card, bool faceUp, float insertDelay);
-	void insertCardBottom(Card* card, bool faceUp, float insertDelay);
-	void insertCardRandom(Card* card, bool faceUp, float insertDelay);
+	void insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
+	void insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
+	void insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void clear();
 	std::vector<Card*> deckCards;
 

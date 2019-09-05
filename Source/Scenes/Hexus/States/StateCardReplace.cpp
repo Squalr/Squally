@@ -230,7 +230,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 			// Finished replacing cards
 			CardRow * hand = gameState->playerHand;
 			this->runAction(Sequence::create(
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay, true)),
 				DelayTime::create(0.75f),
 				CallFunc::create([=]
 				{
@@ -244,7 +244,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 			// Reload state
 			CardRow * hand = gameState->playerHand;
 			this->runAction(Sequence::create(
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay)),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay, true)),
 				DelayTime::create(Config::insertDelay),
 				CallFunc::create([=]
 				{
