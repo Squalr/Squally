@@ -37,9 +37,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void runEndOfDemoEvent();
 
 	SmartAnimationSequenceNode* fireAnimation;
-
-	static const std::string EventEndOfDemo;
 };

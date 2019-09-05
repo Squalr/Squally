@@ -29,7 +29,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/EndOfDemo.h"
 #include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
 
 using namespace cocos2d;
@@ -38,7 +37,6 @@ const std::string Scrappy::MapKeyScrappy = "scrappy";
 HexusOpponentData* Scrappy::HexusOpponentDataInstance = nullptr;
 
 const std::string Scrappy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCRAPPY";
-const std::string Scrappy::EventEndOfDemo = "event-end-of-demo";
 
 Scrappy* Scrappy::deserialize(ValueMap& properties)
 {
@@ -87,11 +85,6 @@ void Scrappy::onEnter()
 {
 	super::onEnter();
 
-	if (this->state == Scrappy::EventEndOfDemo)
-	{
-		this->runEndOfDemoEvent();
-	}
-
 	this->fireAnimation->playAnimationRepeat(FXResources::FlameSmall_FlameSmall_0000, 0.045f);
 }
 
@@ -105,21 +98,6 @@ void Scrappy::initializePositions()
 void Scrappy::initializeListeners()
 {
 	super::initializeListeners();
-}
-
-void Scrappy::runEndOfDemoEvent()
-{
-	this->runAction(Sequence::create(
-		CallFunc::create([=]()
-		{
-			this->droidChatterSound->play();
-		}),
-		CallFunc::create([=]()
-		{
-			this->speechBubble->runDialogue(Strings::Platformer_EndOfDemo::create());
-		}),
-		nullptr
-	));
 }
 
 float Scrappy::getFloatHeight()

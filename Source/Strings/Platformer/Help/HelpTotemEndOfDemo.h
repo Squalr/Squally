@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_EndOfDemo : public LocalizedString
+	class Platformer_Help_HelpTotemEndOfDemo : public LocalizedString
 	{
 	public:
-		static Platformer_EndOfDemo* create();
+		static Platformer_Help_HelpTotemEndOfDemo* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_EndOfDemo();
-		~Platformer_EndOfDemo();
+		Platformer_Help_HelpTotemEndOfDemo();
+		~Platformer_Help_HelpTotemEndOfDemo();
 	};
 }
