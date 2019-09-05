@@ -30,6 +30,7 @@ private:
 	bool isSquallyAliveHack();
 
 	Squally* squally;
+	float cooldown;
 
 	static const std::string IdentifierIsAlive;
 	static const std::string EventSquallyTrapped;

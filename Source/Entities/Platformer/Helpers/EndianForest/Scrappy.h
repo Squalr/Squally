@@ -38,10 +38,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void runEndOfDemoEvent();
-	void runSquallyTrappedEvent();
 
 	SmartAnimationSequenceNode* fireAnimation;
 
 	static const std::string EventEndOfDemo;
-	static const std::string EventSquallyTrapped;
 };

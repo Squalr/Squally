@@ -31,7 +31,6 @@
 
 #include "Strings/Platformer/EndOfDemo.h"
 #include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/SquallyTrapped.h"
 
 using namespace cocos2d;
 
@@ -40,7 +39,6 @@ HexusOpponentData* Scrappy::HexusOpponentDataInstance = nullptr;
 
 const std::string Scrappy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCRAPPY";
 const std::string Scrappy::EventEndOfDemo = "event-end-of-demo";
-const std::string Scrappy::EventSquallyTrapped = "event-squally-trapped";
 
 Scrappy* Scrappy::deserialize(ValueMap& properties)
 {
@@ -107,16 +105,6 @@ void Scrappy::initializePositions()
 void Scrappy::initializeListeners()
 {
 	super::initializeListeners();
-
-	if (this->state == Scrappy::EventSquallyTrapped)
-	{
-		this->setVisible(false);
-
-		this->listenForMapEvent(Scrappy::EventSquallyTrapped, [=](ValueMap args)
-		{
-			this->runSquallyTrappedEvent();
-		});
-	}
 }
 
 void Scrappy::runEndOfDemoEvent()
@@ -129,24 +117,6 @@ void Scrappy::runEndOfDemoEvent()
 		CallFunc::create([=]()
 		{
 			this->speechBubble->runDialogue(Strings::Platformer_EndOfDemo::create());
-		}),
-		nullptr
-	));
-}
-
-void Scrappy::runSquallyTrappedEvent()
-{
-	SaveManager::saveProfileData(SaveKeys::SaveKeyEventTriggeredPrefix + Scrappy::EventSquallyTrapped, Value(true));
-
-	this->runAction(Sequence::create(
-		CallFunc::create([=]()
-		{
-			this->setVisible(true);
-			this->droidChatterSound->play();
-		}),
-		CallFunc::create([=]()
-		{
-			this->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_SquallyTrapped::create());
 		}),
 		nullptr
 	));

@@ -11,6 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -88,7 +89,7 @@ void SquallyHealthBehavior::respawn(float duration)
 		{
 			if (this->spawnCoords != Vec2::ZERO)
 			{
-				this->squally->setPosition(this->spawnCoords);
+				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords));
 			}
 			
 			this->squally->setState(StateKeys::IsAlive, Value(true));

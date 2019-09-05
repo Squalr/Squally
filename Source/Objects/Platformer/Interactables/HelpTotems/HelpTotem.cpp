@@ -41,6 +41,16 @@ HelpTotem::~HelpTotem()
 void HelpTotem::onEnter()
 {
 	super::onEnter();
+
+	if (!this->mapEvent.empty())
+	{
+		this->setVisible(false);
+
+		this->listenForMapEvent(this->mapEvent, [=](ValueMap args)
+		{
+			this->setVisible(true);
+		});
+	}
 }
 
 void HelpTotem::initializePositions()

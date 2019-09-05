@@ -41,6 +41,7 @@ SquallyIsAliveHackBehavior* SquallyIsAliveHackBehavior::create(GameObject* owner
 SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->cooldown = 0.0f;
 
 	if (this->squally == nullptr)
 	{
@@ -54,9 +55,15 @@ SquallyIsAliveHackBehavior::~SquallyIsAliveHackBehavior()
 
 void SquallyIsAliveHackBehavior::update(float dt)
 {
-	// Check for player suicide
-	if (!this->isSquallyAliveHack())
+	super::update(dt);
+
+	if (this->cooldown > 0.0f)
 	{
+		this->cooldown -= dt;
+	}
+	else if (!this->isSquallyAliveHack())
+	{
+		// Check for player suicide
 		this->squally->setState(StateKeys::IsAlive, Value(false));
 	}
 }

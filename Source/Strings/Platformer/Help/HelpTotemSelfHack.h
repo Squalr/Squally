@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_SquallyTrapped : public LocalizedString
+	class Platformer_Help_HelpTotemSelfHack : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_SquallyTrapped* create();
+		static Platformer_Help_HelpTotemSelfHack* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_SquallyTrapped();
-		~Platformer_Quests_EndianForest_Intro_SquallyTrapped();
+		Platformer_Help_HelpTotemSelfHack();
+		~Platformer_Help_HelpTotemSelfHack();
 	};
 }

@@ -33,7 +33,4 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
-	
-	int eq;
-	int eqExperience;
 };

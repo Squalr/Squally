@@ -8,6 +8,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -32,9 +33,6 @@ EntityEqBehavior::EntityEqBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
-
-	this->eq = EntityEqBehavior::DefaultEq;
-	this->eqExperience = 0;
 }
 
 EntityEqBehavior::~EntityEqBehavior()
@@ -47,27 +45,27 @@ void EntityEqBehavior::onLoad()
 
 void EntityEqBehavior::setEq(int eq)
 {
-	this->eq = eq;
+	this->entity->setState(StateKeys::Eq, Value(eq), false);
 }
 
 int EntityEqBehavior::getEq()
 {
-	return this->eq;
+	return this->entity->getStateOrDefaultInt(StateKeys::Eq, 0);
 }
 
 bool EntityEqBehavior::setEqExperience(int eqExperience)
 {
 	int expToLevel = StatsTables::getExpRequiredAtLevel(this->getEq());
 
-	this->eqExperience = eqExperience;
+	this->entity->setState(StateKeys::EqExperience, Value(eqExperience), false);
 
-	if (this->eqExperience >= expToLevel)
+	if (this->getEqExperience() >= expToLevel)
 	{
 		// Level up!
 		this->setEq(this->getEq() + 1);
 		
 		// Recurse to handle potential over-leveling
-		this->setEqExperience(this->eqExperience - expToLevel);
+		this->setEqExperience(this->getEqExperience() - expToLevel);
 
 		return true;
 	}
@@ -82,5 +80,5 @@ bool EntityEqBehavior::addEqExperience(int eqExperience)
 
 int EntityEqBehavior::getEqExperience()
 {
-	return this->eqExperience;
+	return this->entity->getStateOrDefaultInt(StateKeys::EqExperience, 0);
 }
