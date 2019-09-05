@@ -123,13 +123,13 @@ void HackableObject::initializeListeners()
 void HackableObject::initializePositions()
 {
 	super::initializePositions();
-
-	this->uiElements->setPosition(this->getButtonOffset());
 }
 
 void HackableObject::update(float dt)
 {
 	super::update(dt);
+
+	this->uiElements->setPosition(this->getButtonOffset());
 
 	if (!this->hackableList.empty())
 	{	
@@ -175,8 +175,6 @@ void HackableObject::update(float dt)
 void HackableObject::onHackerModeEnable(int eq)
 {
 	super::onHackerModeEnable(eq);
-
-	this->uiElements->setPosition(this->getButtonOffset());
 
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
