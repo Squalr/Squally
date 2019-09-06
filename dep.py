@@ -123,7 +123,7 @@ def install(packageString, common=True, triplet=""):
     # complaints about some vcpkg lock file not being present (this happens when vcpkg is run
     # quickly).
     if _platform == "linux" or _platform == "linux2":
-        returncode = call(["./vcpkg/vcpkg", "install" , s], stderr=subprocess.DEVNULL)
+        returncode = call(["./vcpkg/vcpkg", "install" , s])
     else:
         returncode = call(["./vcpkg/vcpkg", "install" , s])
 

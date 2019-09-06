@@ -43,7 +43,7 @@
             "name": "(Linux) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/build/bin/Debug/Squally/Squally",
+            "program": "${workspaceFolder}/build/bin/Squally",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

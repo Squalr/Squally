@@ -1,5 +1,12 @@
 [
     {
+        "name": "G++ 7.4",
+        "compilers": {
+            "CC": "/usr/bin/gcc-7",
+            "CCX": "/usr/bin/g++-7"
+        }
+    },
+    {
         "name": "Clang 7.0.1",
         "compilers": {
             "CC": "/usr/local/opt/llvm/bin/clang",
