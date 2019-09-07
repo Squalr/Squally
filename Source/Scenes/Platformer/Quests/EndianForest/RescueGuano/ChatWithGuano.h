@@ -4,6 +4,8 @@
 
 class Guano;
 class QuestLine;
+class MulDoor;
+class Squally;
 
 class ChatWithGuano : public QuestTask
 {
@@ -24,8 +26,13 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runChatSequence();
+	void runChatSequencePt2();
+	void runChatSequencePt3();
+	void runChatSequencePt4();
 
 	bool hasRunEvent;
 	Guano* guano;
+	Squally* squally;
+	MulDoor* mulDoor;
 };

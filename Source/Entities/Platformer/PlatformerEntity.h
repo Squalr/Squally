@@ -4,12 +4,6 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableNode;
 class CurrencyInventory;
 class EquipmentInventory;
 class HackablePreview;

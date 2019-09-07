@@ -10,4 +10,5 @@
 #include "Scenes/Platformer/AttachedBehavior/Npcs/NpcBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Shopkeepers/ShopkeeperBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyNoSavePositionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/SquallyBehaviorGroup.h"

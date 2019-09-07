@@ -24,6 +24,7 @@ public:
 		Left,
 		Center,
 		Right,
+		HardRight,
 	};
 
 protected:

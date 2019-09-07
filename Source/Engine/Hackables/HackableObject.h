@@ -28,6 +28,7 @@ public:
 	void onHackableClick();
 	virtual HackablePreview* createDefaultPreview();
 	
+	void toggleHackable(bool isHackable);
 	void registerData(HackableData* hackableData);
 	void unregisterData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);
@@ -64,6 +65,7 @@ private:
 	typedef GameObject super;
 
 	bool hasRelocatedUI;
+	bool isHackable;
 
 	cocos2d::ParticleSystem* sensingParticles;
 	cocos2d::Node* uiElements;

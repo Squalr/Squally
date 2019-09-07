@@ -13,9 +13,15 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Doors/PuzzleDoors/Gate/MulDoor/MulDoor.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerMode.h"
+#include "Strings/Platformer/Ellipses.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/GetMeOutOfHere.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/WeShouldHelpHim.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/WhatGotMeInHere.h"
 
 using namespace cocos2d;
 
@@ -34,6 +40,7 @@ ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::strin
 {
 	this->hasRunEvent = false;
 	this->guano = nullptr;
+	this->squally = nullptr;
 }
 
 ChatWithGuano::~ChatWithGuano()
@@ -46,16 +53,22 @@ void ChatWithGuano::onLoad(QuestState questState)
 	{
 		this->guano = guano;
 	});
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	});
+
+	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
+	{
+		this->mulDoor = mulDoor;
+		this->mulDoor->toggleHackable(false);
+	});
 }
 
 void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(ChatWithGuano::MapKeyQuest, [=](ValueMap args)
-	{
-		this->complete();
-
-		this->runCinematicSequence();
-	});
+	this->runChatSequence();
 }
 
 void ChatWithGuano::onComplete()
@@ -67,34 +80,72 @@ void ChatWithGuano::onSkipped()
 	this->removeAllListeners();
 }
 
-void ChatWithGuano::runCinematicSequence()
+void ChatWithGuano::runChatSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicHijack();
 
-	if (this->guano != nullptr)
-	{
-		PlatformerEvents::TriggerCinematicHijack();
+			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::create(),
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				[=]()
+				{
+					this->runChatSequencePt2();
+				},
+				DialogueEvents::BuildPreviewNode(this->guano, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			));
+		}),
+		nullptr
+	));
+}
 
-		this->guano->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-			}),
-			CallFunc::create([=]()
-			{
-				this->guano->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->guano->speechBubble->hideDialogue();
-			}),
-			nullptr
-		));
-	}
+void ChatWithGuano::runChatSequencePt2()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Ellipses::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::HardRight,
+		[=]()
+		{
+			this->runChatSequencePt3();
+		},
+		DialogueEvents::BuildPreviewNode(this->guano, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true)
+	));
+}
+
+void ChatWithGuano::runChatSequencePt3()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_WhatGotMeInHere::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::Left,
+		[=]()
+		{
+			this->runChatSequencePt4();
+		},
+		DialogueEvents::BuildPreviewNode(this->guano, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true)
+	));
+}
+
+void ChatWithGuano::runChatSequencePt4()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_WhatShouldHelpHim::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::Left,
+		[=]()
+		{
+			this->mulDoor->toggleHackable(true);
+			PlatformerEvents::TriggerCinematicRestore();
+		},
+		DialogueEvents::BuildPreviewNode(this->guano, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true)
+	));
 }

@@ -40,6 +40,7 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
+	this->isHackable = true;
 	this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
 
 	this->sensingParticles->stopSystem();
@@ -172,9 +173,19 @@ void HackableObject::update(float dt)
 	}
 }
 
+void HackableObject::toggleHackable(bool isHackable)
+{
+	this->isHackable = isHackable;
+}
+
 void HackableObject::onHackerModeEnable(int eq)
 {
 	super::onHackerModeEnable(eq);
+
+	if (!this->isHackable)
+	{
+		return;
+	}
 
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{

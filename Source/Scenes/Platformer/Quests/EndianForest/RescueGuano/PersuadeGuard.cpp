@@ -34,7 +34,6 @@
 using namespace cocos2d;
 
 const std::string PersuadeGuard::MapKeyQuest = "persuade-guard";
-const std::string PersuadeGuard::QuestTagPrison = "prison";
 const std::string PersuadeGuard::QuestTagInn = "inn";
 const std::string PersuadeGuard::TagSolidWall = "solid-wall";
 const std::string PersuadeGuard::TagPrisonDoor = "prison-door";
@@ -173,45 +172,33 @@ void PersuadeGuard::runPersuasionSequencePart1a()
 
 	this->hasRunPersuasionSequence = true;
 
-	this->runAction(Sequence::create(
-		CallFunc::create([=]()
-		{
-			PlatformerEvents::TriggerCinematicHijack();
+	PlatformerEvents::TriggerCinematicHijack();
 
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Right,
-				[=]()
-				{
-					this->runPersuasionSequencePart1b();
-				},
-				DialogueEvents::BuildPreviewNode(this->squally, false),
-				DialogueEvents::BuildPreviewNode(this->lycan, true)
-			));
-		}),
-		nullptr
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::Right,
+		[=]()
+		{
+			this->runPersuasionSequencePart1b();
+		},
+		DialogueEvents::BuildPreviewNode(this->squally, false),
+		DialogueEvents::BuildPreviewNode(this->lycan, true)
 	));
 }
 
 void PersuadeGuard::runPersuasionSequencePart1b()
 {
-	this->runAction(Sequence::create(
-		CallFunc::create([=]()
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_FollowMe::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::Right,
+		[=]()
 		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_RescueGuano_Lycan_FollowMe::create(),
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Right,
-				[=]()
-				{
-					this->runPersuasionSequencePart1c();
-				},
-				DialogueEvents::BuildPreviewNode(this->squally, false),
-				DialogueEvents::BuildPreviewNode(this->lycan, true)
-			));
-		}),
-		nullptr
+			this->runPersuasionSequencePart1c();
+		},
+		DialogueEvents::BuildPreviewNode(this->squally, false),
+		DialogueEvents::BuildPreviewNode(this->lycan, true)
 	));
 }
 
@@ -283,5 +270,5 @@ void PersuadeGuard::runPersuasionSequencePart2c()
 		this->lycan->runAction(FadeTo::create(1.0f, 0));
 	});
 
-	// this->complete();
+	this->complete();
 }

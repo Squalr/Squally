@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringAr()
 	{
-		return "يا طفل! أنت تبدو ذكيًا ، ساعدني في إخراجي من هنا!";
+		return "يا طفل! أنت تبدو ذكية جدا. إذا ساعدتني في الخروج من هنا ، سأجعل الأمر يستحق مشاكلك.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringBg()
 	{
-		return "Ей дете! Изглеждаш доста умна, помогни ми да ме измъкна оттук!";
+		return "Ей дете! Изглеждаш доста умно. Ако ми помогнете да изляза оттук, ще направя, че си струва вашите проблеми.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringCs()
 	{
-		return "Ahoj kluk! Vypadáš docela chytře, pomoz mi dostat mě odsud!";
+		return "Ahoj kluk! Vypadáš docela chytře. Pokud mi pomůžete dostat se odsud, udělám to za vaše potíže.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringDa()
 	{
-		return "Hej dreng! Du ser temmelig smart ud, hjælp mig med at komme mig ud herfra!";
+		return "Hej dreng! Du ser temmelig smart ud. Hvis du hjælper mig med at komme ud herfra, gør jeg det værd at dine problemer.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringDe()
 	{
-		return "Hey Kleiner! Du siehst ziemlich schlau aus, hilf mir, mich hier rauszuholen!";
+		return "Hey Kleiner! Du siehst ziemlich schlau aus. Wenn Sie mir helfen, hier rauszukommen, ist es Ihre Mühe wert.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringEl()
 	{
-		return "Γεια σου παιδί! Φαίνεσαι αρκετά έξυπνος, με βοηθήσεσέ με να με βγάλεις από εδώ!";
+		return "Γεια σου παιδί! Κοιτάς αρκετά έξυπνος. Εάν με βοηθήσετε να βγούμε από εδώ, θα το κάνω να αξίζει τον κόπο σας.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringEn()
 	{
-		return "Hey kid! You look pretty smart, help me get me out of here!";
+		return "Hey kid! You look pretty smart. If you help me get out of here, I'll make it worth your trouble.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringEs()
 	{
-		return "¡Hey chico! Te ves muy inteligente, ¡ayúdame a sacarme de aquí!";
+		return "¡Hey chico! Te ves muy inteligente. Si me ayudas a salir de aquí, haré que valga la pena.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringEs419()
 	{
-		return "¡Hey chico! Te ves muy inteligente, ¡ayúdame a sacarme de aquí!";
+		return "¡Hey chico! Te ves muy inteligente. Si me ayudas a salir de aquí, haré que valga la pena.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringFi()
 	{
-		return "Hei poika! Näytät melko fiksulta, auta minua päästä minut täältä!";
+		return "Hei poika! Näytät aika fiksulta. Jos autat minua pääsemään pois täältä, teen siitä vaikeutesi arvoisen.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringFr()
 	{
-		return "Hé gamin! Vous avez l'air très intelligent, aidez-moi à me sortir d'ici!";
+		return "Hé gamin! Vous avez l'air très intelligent. Si vous m'aidez à sortir d'ici, je le valoriserai.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringHu()
 	{
-		return "Hé gyerek! Nagyon okosnak látsz, segíts elmenni innen!";
+		return "Hé gyerek! Nagyon okosnak látsz. Ha segítesz nekem kijutni innen, megértem a problémádat.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringIt()
 	{
-		return "Ehi ragazzo! Sembri piuttosto intelligente, aiutami a tirarmi fuori di qui!";
+		return "Ehi ragazzo! Sembri piuttosto intelligente. Se mi aiuti a uscire di qui, farò valere la pena dei tuoi problemi.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringJa()
 	{
-		return "おいおい！あなたはかなり賢く見えます、私がここから抜け出すのを助けてください！";
+		return "おい子供！あなたはかなり賢く見えます。あなたが私がここから抜け出すのを手伝うなら、私はあなたの手間をかける価値があるようにします。";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringKo()
 	{
-		return "꼬마 야! 당신은 꽤 똑똑해 보여요, 여기서 나가게 도와주세요!";
+		return "꼬마 야! 당신은 꽤 똑똑해 보인다. 내가 여기서 나가도록 도와 주면, 당신의 문제를 해결할 가치가 있습니다.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringNl()
 	{
-		return "Hé jochie! Je ziet er slim uit, help me hier weg te komen!";
+		return "Hé jochie! Je ziet er slim uit. Als je me helpt hier weg te komen, zal ik het je moeite waard maken.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringNo()
 	{
-		return "Hei gutt! Du ser ganske smart ut, hjelp meg å komme meg ut herfra!";
+		return "Hei gutt! Du ser ganske smart ut. Hvis du hjelper meg med å komme meg ut herfra, vil jeg gjøre det verdt bryet ditt.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringPl()
 	{
-		return "Cześć dzieciaku! Wyglądasz całkiem sprytnie, pomóż mi się stąd wydostać!";
+		return "Cześć dzieciaku! Wyglądasz całkiem sprytnie. Jeśli pomożesz mi się stąd wydostać, sprawię, że będzie warto.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringPt()
 	{
-		return "Ei garoto! Você parece muito inteligente, me ajude a me tirar daqui!";
+		return "Ei garoto! Você parece muito inteligente. Se você me ajudar a sair daqui, farei com que valha a pena.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringPtBr()
 	{
-		return "Ei garoto! Você parece muito inteligente, me ajude a me tirar daqui!";
+		return "Ei garoto! Você parece muito inteligente. Se você me ajudar a sair daqui, farei com que valha a pena.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringRo()
 	{
-		return "Hei copil! Arăți destul de deștept, ajută-mă să mă scoată de aici!";
+		return "Hei copil! Arăți destul de deștept. Dacă mă ajuți să plec de aici, o să pun în valoare problema ta.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringRu()
 	{
-		return "Привет, малыш! Ты выглядишь очень умно, помоги мне вытащить меня отсюда!";
+		return "Привет, малыш! Ты выглядишь довольно умно. Если ты поможешь мне выбраться отсюда, я сделаю так, чтобы это стоило твоих хлопот.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringSv()
 	{
-		return "Hej barn! Du ser ganska smart ut, hjälp mig att få mig härifrån!";
+		return "Hej barn! Du ser ganska smart ut. Om du hjälper mig att komma härifrån, kommer jag att göra det värt dina problem.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringTh()
 	{
-		return "เฮ้เด็ก! คุณดูฉลาดมากช่วยฉันพาฉันออกไปจากที่นี่!";
+		return "เฮ้เด็ก! คุณดูสมาร์ทสวย หากคุณช่วยฉันออกจากที่นี่ฉันจะทำให้มันคุ้มค่ากับปัญหาของคุณ";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringTr()
 	{
-		return "Hey evlat! Akıllı görünüyorsun, beni buradan çıkarmama yardım et!";
+		return "Hey evlat! Çok akıllı görünüyorsun. Buradan çıkmama yardım edersen, senin derdin olur.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringUk()
 	{
-		return "Гей, дитино! Ви виглядаєте досить розумно, допоможіть мені вийти звідси!";
+		return "Гей, дитино! Ви виглядаєте досить розумно. Якщо ви допоможете мені вийти звідси, я зроблю це вашим клопотом.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringVi()
 	{
-		return "Này nhóc! Bạn trông khá thông minh, giúp tôi đưa tôi ra khỏi đây!";
+		return "Này nhóc! Trông bạn khá thông minh. Nếu bạn giúp tôi ra khỏi đây, tôi sẽ làm cho nó đáng để bạn gặp rắc rối.";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringZhCn()
 	{
-		return "嘿小子！你看起来很聪明，帮我把我赶出这里！";
+		return "嘿小子！你看起来很聪明。如果你帮助我离开这里，我会让你值得为之烦恼。";
 	}
 
 	std::string Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::getStringZhTw()
 	{
-		return "嘿小子！你看起來很聰明，幫我把我趕出這裡！";
+		return "嘿孩子！你看起來很聰明。如果你幫助我離開這裡，我會讓你值得為之煩惱。";
 	}
 }

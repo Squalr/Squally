@@ -120,6 +120,13 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 			this->text->setPosition(Vec2(this->textWidth / 2.0f + distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
 			break;
 		}
+		case DialogueAlignment::HardRight:
+		{
+			this->text->setHorizontalAlignment(TextHAlignment::RIGHT);
+			this->text->setAnchorPoint(Vec2(1.0f, 1.0f));
+			this->text->setPosition(Vec2(this->textWidth / 2.0f + distanceToMargin, DialogueBox::DialogueHeight / 2.0f - 96.0f));
+			break;
+		}
 	}
 
 	TypeWriterEffect::runTypeWriterEffect(this->text, [=]() { this->onTypeWriterEffectComplete(); });

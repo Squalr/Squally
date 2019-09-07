@@ -9,6 +9,8 @@ class SquallyMovementBehavior : public AttachedBehavior
 public:
 	static SquallyMovementBehavior* create(GameObject* owner);
 
+	void disablePositionSaving();
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
@@ -24,4 +26,5 @@ private:
 	Squally* squally;
 
 	bool isDisposing;
+	bool isPositionSavingDisabled;
 };

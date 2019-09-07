@@ -42,7 +42,6 @@ private:
 	Lycan* lycan;
 	Squally* squally;
 
-	static const std::string QuestTagPrison;
 	static const std::string QuestTagInn;
 	static const std::string TagSolidWall;
 	static const std::string TagPrisonDoor;

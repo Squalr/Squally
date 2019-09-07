@@ -38,6 +38,7 @@ SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owne
 	}
 
 	this->isDisposing = false;
+	this->isPositionSavingDisabled = false;
 }
 
 SquallyMovementBehavior::~SquallyMovementBehavior()
@@ -74,7 +75,7 @@ void SquallyMovementBehavior::update(float dt)
 	}
 
 	// Soft save the player's position
-	if (!this->isDisposing)
+	if (!this->isPositionSavingDisabled && !this->isDisposing)
 	{
 		if (this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
 			this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
@@ -92,20 +93,23 @@ void SquallyMovementBehavior::onLoad()
 {
 	this->scheduleUpdate();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
+	if (!this->isPositionSavingDisabled)
 	{
-		this->isDisposing = true;
+		this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
+		{
+			this->isDisposing = true;
 
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	}));
+			SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+			SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+		}));
 
-	Vec2 position = GameUtils::getWorldCoords(this->squally);
+		Vec2 position = GameUtils::getWorldCoords(this->squally);
 
-	this->squally->setPosition(Vec2(
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat(),
-		SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat()
-	));
+		this->squally->setPosition(Vec2(
+			SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat(),
+			SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat()
+		));
+	}
 	
 	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
 	Node* target = trackingData == nullptr ? nullptr : trackingData->target;
@@ -114,4 +118,9 @@ void SquallyMovementBehavior::onLoad()
 	{
 		GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 	}
+}
+
+void SquallyMovementBehavior::disablePositionSaving()
+{
+	this->isPositionSavingDisabled = true;
 }

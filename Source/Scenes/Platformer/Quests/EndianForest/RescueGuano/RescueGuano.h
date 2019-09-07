@@ -4,6 +4,7 @@
 
 class Guano;
 class QuestLine;
+class Squally;
 
 class RescueGuano : public QuestTask
 {
@@ -24,8 +25,12 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runRescueSequence();
+	void runRescueSequencePt2();
 
 	bool hasRunEvent;
 	Guano* guano;
+	Squally* squally;
+
+	static const std::string EventMulDoorUnlocked;
 };
