@@ -100,7 +100,7 @@ void RescueGuano::runRescueSequencePt2()
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
-			this->runRescueSequencePt2();
+			this->runRescueSequencePt3();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
 		DialogueEvents::BuildPreviewNode(this->squally, true),

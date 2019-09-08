@@ -406,10 +406,16 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 
 bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
+	const float CollisionDepthThreshold = 8.0f;
 	CollisionResult result = defaultResult;
 
 	if (collisionData.other != nullptr)
 	{
+		if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(collisionData.other)) >= CollisionDepthThreshold)
+		{
+			return false;
+		}
+
 		CollisionType collisionType = collisionData.other->getCollisionType();
 
 		if (eventMap.find(collisionType) != eventMap.end())
