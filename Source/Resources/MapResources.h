@@ -8,10 +8,10 @@ namespace MapResources
 {
 	extern const std::string BallmerPeaks_IceCaps;
 	extern const std::string CastleValgrind_Castle;
+	extern const std::string Combat_Intro;
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Quests;
-	extern const std::string EndianForest_Battlegrounds;
 	extern const std::string EndianForest_Forest;
 	extern const std::string EndianForest_Intro;
 	extern const std::string EndianForest_Zone_1_0;

@@ -7,10 +7,10 @@
 
 const std::string MapResources::BallmerPeaks_IceCaps = "Private/Platformer/Maps/BallmerPeaks/IceCaps.tmx";
 const std::string MapResources::CastleValgrind_Castle = "Private/Platformer/Maps/CastleValgrind/Castle.tmx";
+const std::string MapResources::Combat_Intro = "Private/Platformer/Maps/Combat/Intro.tmx";
 const std::string MapResources::DaemonsHallow_Volcano = "Private/Platformer/Maps/DaemonsHallow/Volcano.tmx";
 const std::string MapResources::Dev_Cages = "Private/Platformer/Maps/Dev/Cages.tmx";
 const std::string MapResources::Dev_Quests = "Private/Platformer/Maps/Dev/Quests.tmx";
-const std::string MapResources::EndianForest_Battlegrounds = "Private/Platformer/Maps/EndianForest/Battlegrounds.tmx";
 const std::string MapResources::EndianForest_Forest = "Private/Platformer/Maps/EndianForest/Forest.tmx";
 const std::string MapResources::EndianForest_Intro = "Private/Platformer/Maps/EndianForest/Intro.tmx";
 const std::string MapResources::EndianForest_Zone_1_0 = "Private/Platformer/Maps/EndianForest/Zone_1_0.tmx";

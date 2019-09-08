@@ -5,6 +5,7 @@
 class Guano;
 class QuestLine;
 class MulDoor;
+class Scrappy;
 class Squally;
 
 class ChatWithGuano : public QuestTask
@@ -33,6 +34,7 @@ private:
 
 	bool hasRunEvent;
 	Guano* guano;
+	Scrappy* scrappy;
 	Squally* squally;
 	MulDoor* mulDoor;
 };

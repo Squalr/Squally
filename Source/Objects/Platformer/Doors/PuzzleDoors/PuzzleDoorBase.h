@@ -57,6 +57,7 @@ private:
 	cocos2d::Sprite* barRight;
 	cocos2d::Sprite* lightLeft;
 	cocos2d::Sprite* lightRight;
+	cocos2d::Sprite* marker;
 	std::vector<cocos2d::Sprite*> runes;
 	std::vector<cocos2d::Sprite*> runesPassed;
 	std::vector<cocos2d::Sprite*> runesFailed;
@@ -78,9 +79,16 @@ private:
 	float runeSpacing;
 	float doorOpenDelta;
 
+	enum RuneState
+	{
+		Unset,
+		Passed,
+		Failed
+	};
+
 	bool firstRun;
 	bool isUnlocked;
-	int passedCount;
+	RuneState runeStates[4];
 	int puzzleIndex;
 	int realValue;
 	int hackValue;

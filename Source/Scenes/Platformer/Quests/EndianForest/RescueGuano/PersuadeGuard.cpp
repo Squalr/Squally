@@ -156,7 +156,8 @@ void PersuadeGuard::runNoVisitorsSequence()
 				{
 				},
 				DialogueEvents::BuildPreviewNode(this->squally, false),
-				DialogueEvents::BuildPreviewNode(this->lycan, true)
+				DialogueEvents::BuildPreviewNode(this->lycan, true),
+				true
 			));
 		}),
 		nullptr
@@ -183,7 +184,8 @@ void PersuadeGuard::runPersuasionSequencePart1a()
 			this->runPersuasionSequencePart1b();
 		},
 		DialogueEvents::BuildPreviewNode(this->squally, false),
-		DialogueEvents::BuildPreviewNode(this->lycan, true)
+		DialogueEvents::BuildPreviewNode(this->lycan, true),
+		false
 	));
 }
 
@@ -198,14 +200,13 @@ void PersuadeGuard::runPersuasionSequencePart1b()
 			this->runPersuasionSequencePart1c();
 		},
 		DialogueEvents::BuildPreviewNode(this->squally, false),
-		DialogueEvents::BuildPreviewNode(this->lycan, true)
+		DialogueEvents::BuildPreviewNode(this->lycan, true),
+		false
 	));
 }
 
 void PersuadeGuard::runPersuasionSequencePart1c()
 {
-	PlatformerEvents::TriggerCinematicHijack();
-	
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		if (this->solidWall != nullptr)
@@ -216,6 +217,7 @@ void PersuadeGuard::runPersuasionSequencePart1c()
 		this->lycan->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 	}, PersuadeGuard::TagPrisonDoor);
 
+	// Restore player control after giving the guard time to walk over
 	this->runAction(Sequence::create(
 		DelayTime::create(1.5f),
 		CallFunc::create([=]()
@@ -237,7 +239,8 @@ void PersuadeGuard::runPersuasionSequencePart2a()
 			this->runPersuasionSequencePart2b();
 		},
 		DialogueEvents::BuildPreviewNode(this->squally, false),
-		DialogueEvents::BuildPreviewNode(this->lycan, true)
+		DialogueEvents::BuildPreviewNode(this->lycan, true),
+		false
 	));
 }
 
@@ -252,7 +255,8 @@ void PersuadeGuard::runPersuasionSequencePart2b()
 			this->runPersuasionSequencePart2c();
 		},
 		DialogueEvents::BuildPreviewNode(this->squally, false),
-		DialogueEvents::BuildPreviewNode(this->lycan, true)
+		DialogueEvents::BuildPreviewNode(this->lycan, true),
+		false
 	));
 }
 

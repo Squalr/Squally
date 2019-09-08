@@ -1,8 +1,5 @@
 #pragma once
 #include <string>
-#include <vector>
-
-#include "cocos/math/CCGeometry.h"
 
 class HelperEvents
 {

@@ -48,6 +48,8 @@ PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::Te
 	this->leftSpeakerClip = SmartClippingNode::create(this->leftSpeakerBackground, speakerRect);
 	this->rightSpeakerClip = SmartClippingNode::create(this->rightSpeakerBackground, speakerRect);
 
+	this->unhijack = true;
+
 	this->leftSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->rightSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->spaceToContinueLabel->setTextColor(DialogueBox::PanelTextColor);
@@ -96,7 +98,7 @@ void PlatformerDialogueBox::initializeListeners()
 				this->rightSpeakerNode->addChild(args->rightContentNode);
 			}
 
-			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose);
+			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose, args->unhijack);
 		}
 	}));
 
@@ -111,9 +113,11 @@ void PlatformerDialogueBox::initializeListeners()
 	});
 }
 
-void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose)
+void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool unhijack)
 {
 	super::runDialogue(localizedString, dialogueDock, dialogueAlignment, onDialogueClose);
+
+	this->unhijack = unhijack;
 
 	PlatformerEvents::TriggerCinematicHijack();
 	this->isDialogueFocused = true;
@@ -123,7 +127,10 @@ void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, Dialog
 
 void PlatformerDialogueBox::hideDialogue()
 {
-	PlatformerEvents::TriggerCinematicRestore();
+	if (this->unhijack)
+	{
+		PlatformerEvents::TriggerCinematicRestore();
+	}
 
 	this->isDialogueFocused = false;
 	

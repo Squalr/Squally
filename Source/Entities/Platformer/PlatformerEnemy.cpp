@@ -41,7 +41,7 @@ PlatformerEnemy::PlatformerEnemy(
 		hoverHeight)
 {
 	this->battleBehavior = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleAttachedBehavior, Value("")).asString();
-	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Battlegrounds)).asString();
+	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::Combat_Intro)).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
 	this->iouTable = std::tuple<int, int>();
 	this->dropInventory = Inventory::create();

@@ -46,6 +46,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->barRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarRight);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->lightRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
+	this->marker = Sprite::create(ObjectResources::Doors_PuzzleDoor_Marker);
 	this->doorNode = Node::create();
 	this->frontNode = Node::create();
 	this->runes = std::vector<Sprite*>();
@@ -73,6 +74,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
+		this->runeStates[index] = RuneState::Unset;
 		this->runes.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_Rune));
 		this->runesPassed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneGreen));
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
@@ -117,6 +119,8 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->addChild(this->truthLabel);
 	this->addChild(this->hackableLabel);
 
+	this->addChild(this->marker);
+
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
 		this->addChild(this->runes[index]);
@@ -147,23 +151,13 @@ void PuzzleDoorBase::onEnter()
 					else
 					{
 						this->puzzleIndex = MathUtils::wrappingNormalize(this->puzzleIndex + 1, 0, 3);
-					}
-						
-					if (this->puzzleIndex == 0)
-					{
-						this->passedCount = 0;
-
-						for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
-						{
-							this->runesPassed[index]->runAction(FadeTo::create(0.25f, 0));
-							this->runesFailed[index]->runAction(FadeTo::create(0.25f, 0));
-						}
+						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
+						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
 					}
 
 					this->indexString->setString(std::to_string(this->puzzleIndex));
-				}
-				else
-				{
+
+					this->marker->runAction(MoveTo::create(1.0f, this->runes[this->puzzleIndex]->getPosition() + Vec2(0.0f, 64.0f)));
 				}
 			}),
 			CallFunc::create([=]()
@@ -200,13 +194,16 @@ void PuzzleDoorBase::onEnter()
 
 					if (this->realValue == this->hackValue)
 					{
-						this->passedCount++;
+						this->runeStates[this->puzzleIndex] = RuneState::Passed;
 						this->hackableLabel->setTextColor(PuzzleDoorBase::PassColor);
+						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
 						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
 					}
 					else
 					{
+						this->runeStates[this->puzzleIndex] = RuneState::Failed;
 						this->hackableLabel->setTextColor(PuzzleDoorBase::FailColor);
+						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
 						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 255));
 					}
 				}
@@ -214,8 +211,16 @@ void PuzzleDoorBase::onEnter()
 			DelayTime::create(1.5f),
 			CallFunc::create([=]()
 			{
-				if (!this->isUnlocked && this->passedCount == PuzzleDoorBase::RuneCount)
+				if (!this->isUnlocked)
 				{
+					for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
+					{
+						if (this->runeStates[index] != RuneState::Passed)
+						{
+							return;
+						}
+					}
+
 					this->unlock();
 				}
 			}),
@@ -243,6 +248,8 @@ void PuzzleDoorBase::initializePositions()
 		this->runesPassed[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
 		this->runesFailed[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
 	}
+
+	this->marker->setPosition(this->runes[0]->getPosition() + Vec2(0.0f, 64.0f));
 }
 
 void PuzzleDoorBase::initializeListeners()

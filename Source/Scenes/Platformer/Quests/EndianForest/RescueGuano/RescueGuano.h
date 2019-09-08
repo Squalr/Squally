@@ -25,7 +25,7 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runRescueSequence();
+	void runRescueSequence(); 
 	void runRescueSequencePt2();
 
 	bool hasRunEvent;

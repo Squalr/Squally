@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
+#include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
 
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
@@ -77,6 +78,10 @@ void RescueGuano::onSkipped()
 
 void RescueGuano::runRescueSequence()
 {
+	this->guano->runAction(FadeTo::create(1.0f, 0));
+
+	HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
+
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
@@ -92,7 +97,8 @@ void RescueGuano::runRescueSequence()
 					this->runRescueSequencePt2();
 				},
 				DialogueEvents::BuildPreviewNode(this->guano, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(this->squally, true),
+				false
 			));
 		}),
 		nullptr
@@ -107,9 +113,9 @@ void RescueGuano::runRescueSequencePt2()
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
-			PlatformerEvents::TriggerCinematicRestore();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true)
+		DialogueEvents::BuildPreviewNode(this->squally, true),
+		true
 	));
 }

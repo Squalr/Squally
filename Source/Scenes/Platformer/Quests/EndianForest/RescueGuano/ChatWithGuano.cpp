@@ -13,6 +13,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -40,6 +41,7 @@ ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::strin
 {
 	this->hasRunEvent = false;
 	this->guano = nullptr;
+	this->scrappy = nullptr;
 	this->squally = nullptr;
 }
 
@@ -52,6 +54,11 @@ void ChatWithGuano::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
+	});
+
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
 	});
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
@@ -82,12 +89,12 @@ void ChatWithGuano::onSkipped()
 
 void ChatWithGuano::runChatSequence()
 {
+	PlatformerEvents::TriggerCinematicHijack();
+
 	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
+		DelayTime::create(2.0f),
 		CallFunc::create([=]()
 		{
-			PlatformerEvents::TriggerCinematicHijack();
-
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::create(),
 				DialogueBox::DialogueDock::Top,
@@ -97,7 +104,8 @@ void ChatWithGuano::runChatSequence()
 					this->runChatSequencePt2();
 				},
 				DialogueEvents::BuildPreviewNode(this->guano, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(this->squally, true),
+				false
 			));
 		}),
 		nullptr
@@ -115,7 +123,8 @@ void ChatWithGuano::runChatSequencePt2()
 			this->runChatSequencePt3();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true)
+		DialogueEvents::BuildPreviewNode(this->squally, true),
+		false
 	));
 }
 
@@ -130,22 +139,23 @@ void ChatWithGuano::runChatSequencePt3()
 			this->runChatSequencePt4();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true)
+		DialogueEvents::BuildPreviewNode(this->squally, true),
+		false
 	));
 }
 
 void ChatWithGuano::runChatSequencePt4()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_WhatShouldHelpHim::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_WeShouldHelpHim::create(),
 		DialogueBox::DialogueDock::Top,
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
 			this->mulDoor->toggleHackable(true);
-			PlatformerEvents::TriggerCinematicRestore();
 		},
-		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true)
+		DialogueEvents::BuildPreviewNode(this->scrappy, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true),
+		true
 	));
 }
