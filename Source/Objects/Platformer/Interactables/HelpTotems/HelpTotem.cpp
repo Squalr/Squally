@@ -42,11 +42,11 @@ void HelpTotem::onEnter()
 {
 	super::onEnter();
 
-	if (!this->mapEvent.empty())
+	if (!this->listenEvent.empty())
 	{
 		this->setVisible(false);
 
-		this->listenForMapEvent(this->mapEvent, [=](ValueMap args)
+		this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
 		{
 			this->setVisible(true);
 		});

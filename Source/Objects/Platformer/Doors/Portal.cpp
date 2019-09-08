@@ -41,7 +41,7 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 	this->wasTripped = false;
 	this->canInteract = false;
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
-	this->isLocked = !this->mapEvent.empty();
+	this->isLocked = !this->listenEvent.empty();
 	this->requiresInteraction = true;
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
 
@@ -75,13 +75,10 @@ void Portal::initializeListeners()
 {
 	super::initializeListeners();
 
-	if (!this->mapEvent.empty())
+	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
 	{
-		this->listenForMapEvent(this->mapEvent, [=](ValueMap args)
-		{
-			this->isLocked = false;
-		});
-	}
+		this->isLocked = false;
+	});
  
 	this->portalCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
@@ -160,6 +157,8 @@ void Portal::unlock(bool animate)
 	{
 		this->interactMenu->show();
 	}
+
+	this->broadcastMapEvent(this->sendEvent, ValueMap());
 }
 
 void Portal::setRequiresInteraction(bool requiresInteraction)

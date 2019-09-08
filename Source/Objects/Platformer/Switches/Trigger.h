@@ -31,7 +31,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	std::string triggerEventName;
 	CollisionObject* triggerCollision;
 	bool wasActivated;
 };

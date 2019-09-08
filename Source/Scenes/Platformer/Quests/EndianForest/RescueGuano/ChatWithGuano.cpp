@@ -65,16 +65,16 @@ void ChatWithGuano::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	});
+}
 
+void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
+{
 	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
 	{
 		this->mulDoor = mulDoor;
 		this->mulDoor->toggleHackable(false);
 	});
-}
 
-void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
-{
 	this->runChatSequence();
 }
 
@@ -92,7 +92,7 @@ void ChatWithGuano::runChatSequence()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	this->runAction(Sequence::create(
-		DelayTime::create(2.0f),
+		DelayTime::create(3.0f),
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
@@ -153,6 +153,7 @@ void ChatWithGuano::runChatSequencePt4()
 		[=]()
 		{
 			this->mulDoor->toggleHackable(true);
+			this->complete();
 		},
 		DialogueEvents::BuildPreviewNode(this->scrappy, false),
 		DialogueEvents::BuildPreviewNode(this->squally, true),

@@ -48,7 +48,6 @@ WoodenGate::WoodenGate(ValueMap& properties) : super(properties)
 	this->WoodenGateFront2 = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_FRONT);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);
 	this->bridge1->setFlippedX(this->isFlipped);
@@ -90,7 +89,7 @@ void WoodenGate::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->listenForMapEvent(this->doorOpenEventName, CC_CALLBACK_1(WoodenGate::onDoorEventTriggered, this));
+	this->listenForMapEvent(this->listenEvent, CC_CALLBACK_1(WoodenGate::onDoorEventTriggered, this));
 }
 
 void WoodenGate::initializePositions()

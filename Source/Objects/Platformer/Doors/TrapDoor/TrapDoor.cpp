@@ -46,7 +46,6 @@ TrapDoor::TrapDoor(ValueMap& properties) : super(properties)
 	this->doorClip = ClippingNode::create(clipStencil);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = this->mapEvent;
 
 	this->door->setFlippedX(this->isFlipped);
 
@@ -73,7 +72,7 @@ void TrapDoor::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->listenForMapEvent(this->doorOpenEventName, CC_CALLBACK_1(TrapDoor::onDoorEventTriggered, this));
+	this->listenForMapEvent(this->listenEvent, CC_CALLBACK_1(TrapDoor::onDoorEventTriggered, this));
 }
 
 void TrapDoor::initializePositions()

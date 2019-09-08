@@ -31,7 +31,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	std::string stoneButtonEventName;
 	float maxDefaultButtonPosition;
 	cocos2d::Sprite* buttonBase;
 	cocos2d::Sprite* button;

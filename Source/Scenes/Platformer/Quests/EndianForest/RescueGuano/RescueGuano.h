@@ -27,10 +27,12 @@ private:
 
 	void runRescueSequence(); 
 	void runRescueSequencePt2();
+	void runRescueSequencePt3();
 
 	bool hasRunEvent;
 	Guano* guano;
 	Squally* squally;
 
 	static const std::string EventMulDoorUnlocked;
+	static const std::string TagPrisonDoor;
 };

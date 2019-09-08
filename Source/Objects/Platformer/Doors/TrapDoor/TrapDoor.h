@@ -36,7 +36,6 @@ private:
 
 	bool isFlipped;
 	float doorClosedPosition;
-	std::string doorOpenEventName;
 	cocos2d::ClippingNode* doorClip;
 	cocos2d::Sprite* door;
 	CollisionObject* doorCollision;

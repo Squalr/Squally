@@ -43,7 +43,6 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
 	this->buttonCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
-	this->stoneButtonEventName = this->mapEvent;
 	this->maxDefaultButtonPosition = 48.0f;
 
 	this->buttonCollision->addChild(this->button);
@@ -108,7 +107,7 @@ void StoneButton::update(float dt)
 			{ SwitchEvents::SwitchArgProgress, Value(progress) },
 		};
 
-		ObjectEvents::TriggerBroadCastMapObjectState(this->stoneButtonEventName, args);
+		ObjectEvents::TriggerBroadCastMapObjectState(this->sendEvent, args);
 	}
 }
 

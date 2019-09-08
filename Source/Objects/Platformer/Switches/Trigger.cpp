@@ -37,7 +37,6 @@ Trigger::Trigger(ValueMap& properties) : super(properties)
 {
 	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(PhysicsBody::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->triggerEventName = this->mapEvent;
 	this->wasActivated = false;
 
 	this->addChild(this->triggerCollision);
@@ -70,7 +69,7 @@ void Trigger::initializeListeners()
 			this->wasActivated = true;
 			ValueMap args = ValueMap();
 
-			ObjectEvents::TriggerBroadCastMapObjectState(this->triggerEventName, args);
+			ObjectEvents::TriggerBroadCastMapObjectState(this->sendEvent, args);
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

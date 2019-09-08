@@ -158,6 +158,11 @@ void PuzzleDoorBase::onEnter()
 					this->indexString->setString(std::to_string(this->puzzleIndex));
 
 					this->marker->runAction(MoveTo::create(1.0f, this->runes[this->puzzleIndex]->getPosition() + Vec2(0.0f, 64.0f)));
+					this->marker->runAction(FadeTo::create(0.25f, 255));
+				}
+				else
+				{
+					this->marker->runAction(FadeTo::create(0.25f, 0));
 				}
 			}),
 			CallFunc::create([=]()

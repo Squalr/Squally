@@ -36,7 +36,6 @@ Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 
-	this->chestOpenEvent = this->mapEvent;
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
@@ -93,7 +92,7 @@ void Chest::initializeListeners()
 	{
 		if (this->canInteract)
 		{
-			if (this->chestOpenEvent == Chest::MapKeyCipherEvent)
+			if (this->sendEvent == Chest::MapKeyCipherEvent)
 			{
 				// TODO: Easy/Hard popup, callback indicating chest can no longer be opened
 				CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));

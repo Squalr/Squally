@@ -44,7 +44,7 @@ private:
 
 	static const std::string QuestTagInn;
 	static const std::string TagSolidWall;
-	static const std::string TagPrisonDoor;
+	static const std::string TagPrisonDoorSide;
 	static const std::string TagExit;
 	static const std::string EventExplainDoor;
 };

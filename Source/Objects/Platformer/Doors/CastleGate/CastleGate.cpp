@@ -48,7 +48,6 @@ CastleGate::CastleGate(ValueMap& properties) : super(properties)
 	this->castleDoorFront2 = Sprite::create(ObjectResources::Doors_CastleGate_CASTLE_FRONT);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
-	this->doorOpenEventName = this->mapEvent;
 
 	this->castleBack->setFlippedX(this->isFlipped);
 	this->bridge1->setFlippedX(this->isFlipped);
@@ -90,7 +89,7 @@ void CastleGate::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->listenForMapEvent(this->doorOpenEventName, CC_CALLBACK_1(CastleGate::onDoorEventTriggered, this));
+	this->listenForMapEvent(this->listenEvent, CC_CALLBACK_1(CastleGate::onDoorEventTriggered, this));
 }
 
 void CastleGate::initializePositions()

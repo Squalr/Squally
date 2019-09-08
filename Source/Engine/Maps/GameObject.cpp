@@ -27,7 +27,8 @@ const std::string GameObject::MapKeyFlipX = "flip-x";
 const std::string GameObject::MapKeyFlipY = "flip-y";
 const std::string GameObject::MapKeyRepeatX = "repeat-x";
 const std::string GameObject::MapKeyRepeatY = "repeat-y";
-const std::string GameObject::MapKeyEvent = "event";
+const std::string GameObject::MapKeyListenEvent = "listen-event";
+const std::string GameObject::MapKeySendEvent = "send-event";
 const std::string GameObject::MapKeyState = "state";
 const std::string GameObject::MapKeyQuest = "quest";
 const std::string GameObject::MapKeyQuestLine = "quest-line";
@@ -72,7 +73,8 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->tag = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString();
 	this->polylinePoints = std::vector<Vec2>();
 	this->stateVariables = ValueMap();
-	this->mapEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyEvent, Value("")).asString();
+	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
+	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
 	this->attachedBehaviorNode = Node::create();
@@ -387,6 +389,11 @@ bool GameObject::isAttributeOrHiddenProperty(std::string propertyName)
 
 void GameObject::broadcastMapEvent(std::string eventName, cocos2d::ValueMap args)
 {
+	if (eventName.empty())
+	{
+		return;
+	}
+	
 	ObjectEvents::TriggerBroadCastMapObjectState(eventName, args);
 }
 
@@ -405,7 +412,12 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(Val
 	}));
 }
 
-std::string GameObject::getMapEvent()
+std::string GameObject::getListenEvent()
 {
-	return this->mapEvent;
+	return this->listenEvent;
+}
+
+std::string GameObject::getSendEvent()
+{
+	return this->sendEvent;
 }

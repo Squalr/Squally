@@ -33,7 +33,8 @@ public:
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
-	std::string getMapEvent();
+	std::string getListenEvent();
+	std::string getSendEvent();
 
 	template <class T>
 	T* getAttachedBehavior()
@@ -68,7 +69,8 @@ public:
 	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
 	static const std::string MapKeyRepeatY;
-	static const std::string MapKeyEvent;
+	static const std::string MapKeyListenEvent;
+	static const std::string MapKeySendEvent;
 	static const std::string MapKeyState;
 	static const std::string MapKeyQuest;
 	static const std::string MapKeyQuestLine;
@@ -102,7 +104,8 @@ protected:
 	virtual void onObjectStateLoaded();
 
 	cocos2d::ValueMap properties;
-	std::string mapEvent;
+	std::string listenEvent;
+	std::string sendEvent;
 	std::vector<cocos2d::Vec2> polylinePoints;
 
 private:

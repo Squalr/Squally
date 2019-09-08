@@ -36,7 +36,7 @@ using namespace cocos2d;
 const std::string PersuadeGuard::MapKeyQuest = "persuade-guard";
 const std::string PersuadeGuard::QuestTagInn = "inn";
 const std::string PersuadeGuard::TagSolidWall = "solid-wall";
-const std::string PersuadeGuard::TagPrisonDoor = "prison-door";
+const std::string PersuadeGuard::TagPrisonDoorSide = "prison-door-side";
 const std::string PersuadeGuard::TagExit = "exit";
 const std::string PersuadeGuard::EventExplainDoor = "explain-door";
 
@@ -72,11 +72,6 @@ void PersuadeGuard::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	});
-
-	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
-	{
-		this->mulDoor = mulDoor;
-	});
 	
 	ObjectEvents::watchForObject<CollisionObject>(this, [=](CollisionObject* solidWall)
 	{
@@ -109,6 +104,12 @@ void PersuadeGuard::onLoad(QuestState questState)
 
 void PersuadeGuard::onActivate(bool isActiveThroughSkippable)
 {
+	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
+	{
+		this->mulDoor = mulDoor;
+		this->mulDoor->toggleHackable(false);
+	});
+	
 	if (this->lycan != nullptr)
 	{
 		this->lycan->attachBehavior(WeakMindedBehavior::create(this->lycan));
@@ -215,7 +216,7 @@ void PersuadeGuard::runPersuasionSequencePart1c()
 		}
 
 		this->lycan->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
-	}, PersuadeGuard::TagPrisonDoor);
+	}, PersuadeGuard::TagPrisonDoorSide);
 
 	// Restore player control after giving the guard time to walk over
 	this->runAction(Sequence::create(

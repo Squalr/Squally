@@ -17,6 +17,8 @@
 #include "Events/DialogueEvents.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/HelpYouFindThings.h"
@@ -25,6 +27,7 @@ using namespace cocos2d;
 
 const std::string RescueGuano::MapKeyQuest = "rescue-guano";
 const std::string RescueGuano::EventMulDoorUnlocked = "mul-door-unlocked";
+const std::string RescueGuano::TagPrisonDoor = "prison-door";
 
 RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -77,35 +80,35 @@ void RescueGuano::onSkipped()
 }
 
 void RescueGuano::runRescueSequence()
-{
-	this->guano->runAction(FadeTo::create(1.0f, 0));
+{	
+	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
+	{
+		this->guano->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
+	}, RescueGuano::TagPrisonDoor);
 
-	HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
-
-	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
-		CallFunc::create([=]()
-		{
-			PlatformerEvents::TriggerCinematicHijack();
-
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
-				[=]()
-				{
-					this->runRescueSequencePt2();
-				},
-				DialogueEvents::BuildPreviewNode(this->guano, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true),
-				false
-			));
-		}),
-		nullptr
-	));
+	this->guano->listenForStateWrite(StateKeys::CinematicDestinationReached, [=](Value value)
+	{
+		this->runRescueSequencePt2();
+	});
 }
 
 void RescueGuano::runRescueSequencePt2()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
+		DialogueBox::DialogueDock::Top,
+		DialogueBox::DialogueAlignment::Left,
+		[=]()
+		{
+			this->runRescueSequencePt2();
+		},
+		DialogueEvents::BuildPreviewNode(this->guano, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true),
+		false
+	));
+}
+
+void RescueGuano::runRescueSequencePt3()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_HelpYouFindThings::create(),
@@ -113,6 +116,9 @@ void RescueGuano::runRescueSequencePt2()
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
+			this->guano->runAction(FadeTo::create(1.0f, 0));
+			HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
+			this->complete();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
 		DialogueEvents::BuildPreviewNode(this->squally, true),
