@@ -18,7 +18,7 @@ ProjectileSpeedRuneGenericPreview* ProjectileSpeedRuneGenericPreview::create()
 
 ProjectileSpeedRuneGenericPreview::ProjectileSpeedRuneGenericPreview()
 {
-	this->speedRune = Sprite::create(ObjectResources::Items_Consumables_YELLOW_RUNE);
+	this->speedRune = Sprite::create(ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
 
 	this->previewNode->addChild(this->speedRune);
 }

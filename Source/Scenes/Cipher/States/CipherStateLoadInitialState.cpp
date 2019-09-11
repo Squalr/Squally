@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 
-#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 
 using namespace cocos2d;
 
@@ -31,7 +31,7 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	// Load initial state variables
 	if (cipherState->puzzleData != nullptr)
 	{
-		if (cipherState->puzzleData->isHardModeEnabled())
+		if (cipherState->isHardModeEnabled())
 		{
 			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapHard();
 		}

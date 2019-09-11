@@ -10,23 +10,20 @@ public:
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards,
-		bool isHardMode);
+		std::vector<std::string> bonusRewards);
 	
 	CipherPuzzleData* clone();
 	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapEasy();
 	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapHard();
 	std::vector<std::string> getRewards();
 	std::vector<std::string> getBonusRewards();
-	bool isHardModeEnabled();
 
 private:
 	typedef SmartNode super;
 	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards,
-		bool isHardMode);
+		std::vector<std::string> bonusRewards);
 	~CipherPuzzleData();
 
 	void initializeListeners() override;
@@ -35,5 +32,4 @@ private:
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard;
 	std::vector<std::string> rewards;
 	std::vector<std::string> bonusRewards;
-	bool isHardMode;
 };

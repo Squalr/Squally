@@ -5,7 +5,6 @@
 
 using namespace cocos2d;
 
-const std::string CipherEvents::EventLoadCipher = "EVENT_LOAD_CIPHER";
 const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
 const std::string CipherEvents::EventExitCipher = "EVENT_EXIT_CIPHER";
 const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
@@ -17,15 +16,7 @@ const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPL
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
 
-void CipherEvents::TriggerLoadCipher(CipherOpenArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CipherEvents::EventLoadCipher,
-		&args
-	);
-}
-
-void CipherEvents::TriggerOpenCipher(CipherLoadArgs args)
+void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventOpenCipher,

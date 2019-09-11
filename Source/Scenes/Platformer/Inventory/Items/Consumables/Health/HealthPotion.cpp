@@ -46,7 +46,7 @@ LocalizedString* HealthPotion::getString()
 
 std::string HealthPotion::getIconResource()
 {
-	return ObjectResources::Items_Consumables_HEALTH_2;
+	return ObjectResources::Items_Consumables_Potions_HEALTH_2;
 }
 
 std::string HealthPotion::getSerializationKey()

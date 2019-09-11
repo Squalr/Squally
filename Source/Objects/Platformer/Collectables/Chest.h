@@ -10,30 +10,31 @@ class InteractMenu;
 class Chest : public GameObject
 {
 public:
-	static Chest* create(cocos2d::ValueMap& properties);
 
-	virtual void open();
-	virtual void close();
-
-	static const std::string MapKeyChest;
-
-private:
-	typedef GameObject super;
+protected:
 	Chest(cocos2d::ValueMap& properties);
-	virtual ~Chest();
+	~Chest();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
+	void toggleInteractMenu();
+
+	virtual void open();
+	virtual void close();
+	virtual void unlock();
+	virtual void lock();
+	virtual void onInteract() = 0;
+
+private:
+	typedef GameObject super;
 
 	CollisionObject* interactCollision;
 	cocos2d::Node* chestOpen;
 	cocos2d::Node* chestClosed;
 	InteractMenu* interactMenu;
-	bool canInteract;
+	bool isLocked;
+	bool isPlayerColliding;
 
 	std::string chestOpenArgs;
-
-	static const std::string MapKeyCipherEvent;
 };

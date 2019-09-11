@@ -70,20 +70,6 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	// Override how Y position is calculated when deserializing entities
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyYPosition))
-	{
-		Size mapSize = Size(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-		);
-
-		this->setPositionY(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat() + mapSize.height / 2.0f -
-				(this->getCollisionOffset().y + this->getMovementSize().height / 2.0f)
-		);
-	}
-
 	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
 

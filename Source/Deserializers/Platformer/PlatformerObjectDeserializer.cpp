@@ -83,8 +83,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CastleGate::MapKeyCastleGate] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
-	this->deserializers[Chest::MapKeyChest] = [=](ValueMap properties) { return (GameObject*)Chest::create(properties); };
 	this->deserializers[CinematicMarker::MapKeyCinematicMarker] = [=](ValueMap properties) { return (GameObject*)CinematicMarker::create(properties); };
+	this->deserializers[CipherChest::MapKeyCipherChest] = [=](ValueMap properties) { return (GameObject*)CipherChest::create(properties); };
 	this->deserializers[DartGun::MapKeyDartGun] = [=](ValueMap properties) { return (GameObject*)DartGun::create(properties); };
 	this->deserializers[Doubloon::MapKeyDoubloon] = [=](ValueMap properties) { return (GameObject*)Doubloon::create(properties); };
 	this->deserializers[EdgePortal::MapKeyEdgePortal] = [=](ValueMap properties) { return (GameObject*)EdgePortal::create(properties); };

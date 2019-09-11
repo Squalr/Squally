@@ -33,7 +33,7 @@ IOU* IOU::create(ValueMap& properties)
 
 IOU::IOU(ValueMap& properties) : super(properties)
 {
-	this->iou = Sprite::create(ObjectResources::Items_Consumables_IOU);
+	this->iou = Sprite::create(ObjectResources::Items_Currency_IOU);
 
 	this->onCollected([=]()
 	{
@@ -56,7 +56,7 @@ std::string IOU::getIdentifier()
 
 std::string IOU::getIconResource()
 {
-	return ObjectResources::Items_Consumables_IOU;
+	return ObjectResources::Items_Currency_IOU;
 }
 
 LocalizedString* IOU::getString()

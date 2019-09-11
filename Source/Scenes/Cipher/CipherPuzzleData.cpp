@@ -11,10 +11,9 @@ CipherPuzzleData* CipherPuzzleData::create(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards,
-		bool isHardMode)
+		std::vector<std::string> bonusRewards)
 {
-	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards, isHardMode);
+	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards);
 
 	instance->autorelease();
 
@@ -25,14 +24,12 @@ CipherPuzzleData::CipherPuzzleData(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards,
-		bool isHardMode)
+		std::vector<std::string> bonusRewards)
 {
 	this->inputOutputMapEasy = inputOutputMapEasy;
 	this->inputOutputMapHard = inputOutputMapHard;
 	this->rewards = rewards;
 	this->bonusRewards = bonusRewards;
-	this->isHardMode = isHardMode;
 }
 
 CipherPuzzleData::~CipherPuzzleData()
@@ -50,8 +47,7 @@ CipherPuzzleData* CipherPuzzleData::clone()
 		this->inputOutputMapEasy,
 		this->inputOutputMapHard,
 		this->rewards,
-		this->bonusRewards,
-		this->isHardMode
+		this->bonusRewards
 	);
 }
 
@@ -73,9 +69,4 @@ std::vector<std::string> CipherPuzzleData::getRewards()
 std::vector<std::string> CipherPuzzleData::getBonusRewards()
 {
 	return this->bonusRewards;
-}
-
-bool CipherPuzzleData::isHardModeEnabled()
-{
-	return this->isHardMode;
 }

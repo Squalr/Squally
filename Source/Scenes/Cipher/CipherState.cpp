@@ -10,7 +10,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 #include "Scenes/Cipher/Components/Blocks/Blocks.h"
@@ -204,4 +204,9 @@ void CipherState::loadCipherAtIndex(int index)
 		this->currentInput = std::get<0>(this->inputOutputMap[index]);
 		this->currentOutput = std::get<1>(this->inputOutputMap[index]);
 	}
+}
+
+bool CipherState::isHardModeEnabled()
+{
+	return false;
 }

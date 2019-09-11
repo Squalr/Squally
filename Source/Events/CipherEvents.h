@@ -15,7 +15,6 @@ class OutputBolt;
 class CipherEvents
 {
 public:
-	static const std::string EventLoadCipher;
 	static const std::string EventOpenCipher;
 	static const std::string EventExitCipher;
 	static const std::string EventRequestBlockSpawn;
@@ -30,19 +29,10 @@ public:
 
 	struct CipherOpenArgs
 	{
-		std::string cipherJson;
-		bool isHardMode;
-
-		CipherOpenArgs(std::string cipherJson, bool isHardMode) : cipherJson(cipherJson), isHardMode(isHardMode)
-		{
-		}
-	};
-
-	struct CipherLoadArgs
-	{
 		CipherPuzzleData* cipherPuzzleData;
+		std::function<void()> onUnlock;
 
-		CipherLoadArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
+		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData, std::function<void()> onUnlock) : cipherPuzzleData(cipherPuzzleData), onUnlock(onUnlock)
 		{
 		}
 	};
@@ -159,8 +149,7 @@ public:
 		}
 	};
 
-	static void TriggerLoadCipher(CipherOpenArgs args);
-	static void TriggerOpenCipher(CipherLoadArgs args);
+	static void TriggerOpenCipher(CipherOpenArgs args);
 	static void TriggerExitCipher(CipherExitArgs args);
 	static void TriggerRequestBlockSpawn(CipherBlockSpawnArgs args);
 	static void TriggerRequestConnectionCreate(CipherConnectionCreateArgs args);

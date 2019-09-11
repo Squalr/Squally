@@ -40,6 +40,7 @@ public:
 	static void updateState(CipherState* gameState, StateType newState);
 	void loadPuzzleData(CipherPuzzleData* puzzleData);
 	void loadCipherAtIndex(int index);
+	bool isHardModeEnabled();
 
 	StateType stateType;
 	StateType previousStateType;

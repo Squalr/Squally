@@ -16,33 +16,20 @@
 
 using namespace cocos2d;
 
-const std::string Chest::MapKeyChest = "chest";
-const std::string Chest::MapKeyCipherEvent = "open-cipher";
-
-Chest* Chest::create(cocos2d::ValueMap& properties)
-{
-	Chest* instance = new Chest(properties);
-
-	instance->autorelease();
-
-	return instance;
-}
-
 Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 {
 	this->interactCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 256.0f)), (CollisionType)PlatformerCollisionType::Collectable, false, false);
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
-	this->canInteract = false;
+	this->isLocked = false;
+	this->isPlayerColliding = false;
 
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
 
-	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::ChestBaseFront);
-	Sprite* chestOpenLidSprite = Sprite::create(ObjectResources::ChestLid);
-	Sprite* chestClosedSprite = Sprite::create(ObjectResources::ChestClosed);
+	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Collectables_Chests_ChestOpen);
+	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Collectables_Chests_ChestClosed);
 
-	this->chestOpen->addChild(chestOpenLidSprite);
 	this->chestOpen->addChild(chestOpenFrontSprite);
 	this->chestClosed->addChild(chestClosedSprite);
 
@@ -76,35 +63,27 @@ void Chest::initializeListeners()
 
 	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		this->interactMenu->show();
-		this->canInteract = true;
+		this->isPlayerColliding = true;
+		this->toggleInteractMenu();
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->interactCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		this->interactMenu->hide();
-		this->canInteract = false;
+		this->isPlayerColliding = false;
+		this->toggleInteractMenu();
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->canInteract)
+		if (!this->isLocked && this->isPlayerColliding)
 		{
-			if (this->sendEvent == Chest::MapKeyCipherEvent)
-			{
-				// TODO: Easy/Hard popup, callback indicating chest can no longer be opened
-				CipherEvents::TriggerLoadCipher(CipherEvents::CipherOpenArgs(this->chestOpenArgs, true));
-			}
-		} 
+			this->onInteract();
+		}
 	});
-}
-
-void Chest::update(float dt)
-{
-	super::update(dt);
-
 }
 
 void Chest::open()
@@ -117,4 +96,30 @@ void Chest::close()
 {
 	this->chestClosed->setVisible(true);
 	this->chestOpen->setVisible(false);
+}
+
+void Chest::lock()
+{
+	this->isLocked = true;
+
+	this->toggleInteractMenu();
+}
+
+void Chest::unlock()
+{
+	this->isLocked = false;
+
+	this->toggleInteractMenu();
+}
+
+void Chest::toggleInteractMenu()
+{
+	if (this->isLocked || !this->isPlayerColliding)
+	{
+		this->interactMenu->hide();
+	}
+	else
+	{
+		this->interactMenu->show();
+	}
 }

@@ -28,7 +28,7 @@ ProjectileHealthPotion* ProjectileHealthPotion::create(PlatformerEntity* caster)
 
 ProjectileHealthPotion::ProjectileHealthPotion(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
 {
-	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
+	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2);
 
 	this->contentNode->addChild(this->healthPotionSprite);
 }

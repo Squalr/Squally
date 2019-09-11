@@ -46,7 +46,7 @@ LocalizedString* SpeedRune::getString()
 
 std::string SpeedRune::getIconResource()
 {
-	return ObjectResources::Items_Consumables_YELLOW_RUNE;
+	return ObjectResources::Items_Consumables_Runes_YELLOW_RUNE;
 }
 
 std::string SpeedRune::getSerializationKey()

@@ -14,7 +14,6 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/MenuBackground.h"
-#include "Scenes/Cipher/CipherMenu/ChapterSelect/CipherChapterSelectMenu.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenu.h"
 #include "Scenes/Hexus/Menus/ChapterSelect/HexusChapterSelectMenuPuzzles.h"
 #include "Scenes/PointerTrace/Menus/LevelSelect/PointerTraceLevelSelect.h"
@@ -148,10 +147,10 @@ void MinigamesMenu::initializeListeners()
 	this->hexusButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(HexusChapterSelectMenu::getInstance()); });
 	this->hexusPuzzlesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(HexusChapterSelectMenuPuzzles::getInstance()); });
 	this->pointerTraceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
-	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
-	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(CipherChapterSelectMenu::getInstance()); });
+	this->cipherButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
+	this->stacksButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
+	this->towerDefenseButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
+	this->spaceForceButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(PointerTraceLevelSelect::getInstance()); });
 	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*){ NavigationEvents::LoadScene(TitleScreen::getInstance()); });
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)

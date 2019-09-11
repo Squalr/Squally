@@ -12,7 +12,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/InputOutputPanel.h"
 #include "Scenes/Cipher/Config.h"

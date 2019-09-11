@@ -18,7 +18,7 @@ ProjectileRestorePotionGenericPreview* ProjectileRestorePotionGenericPreview::cr
 
 ProjectileRestorePotionGenericPreview::ProjectileRestorePotionGenericPreview()
 {
-	this->restorePotion = Sprite::create(ObjectResources::Items_Consumables_HEALTH_2);
+	this->restorePotion = Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2);
 
 	this->previewNode->addChild(this->restorePotion);
 }

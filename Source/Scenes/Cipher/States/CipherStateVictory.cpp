@@ -15,7 +15,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -135,7 +135,7 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 	std::vector<std::string> rewards = cipherState->puzzleData->getRewards();
 	std::vector<std::string> bonusRewards = cipherState->puzzleData->getBonusRewards();
 	std::vector<Item*> items = std::vector<Item*>();
-	bool getBonusRewards = cipherState->puzzleData->isHardModeEnabled();
+	bool getBonusRewards = cipherState->isHardModeEnabled();
 
 	for (auto it = rewards.begin(); it != rewards.end(); it++)
 	{

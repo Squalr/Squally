@@ -11,7 +11,7 @@
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
-#include "Scenes/Cipher/CipherPuzzles/CipherPuzzleData.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/CipherResources.h"

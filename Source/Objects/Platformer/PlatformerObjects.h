@@ -6,7 +6,7 @@
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimals.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
-#include "Objects/Platformer/Collectables/Chest.h"
+#include "Objects/Platformer/Collectables/CipherChest.h"
 #include "Objects/Platformer/Collectables/Doubloon.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Objects/Platformer/Doors/CastleGate/CastleGate.h"

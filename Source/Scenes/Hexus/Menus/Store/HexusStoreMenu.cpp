@@ -79,7 +79,7 @@ HexusStoreMenu::HexusStoreMenu()
 	this->dustParticles = ParticleSystemQuad::create(ParticleResources::Dust);
 
 	this->goldPanel = Sprite::create(HexusResources::StoreMenu_GoldPanel);
-	this->goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_2);
+	this->goldIcon = Sprite::create(ObjectResources::Items_Currency_GOLD_2);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Constant::create());
 
@@ -612,7 +612,7 @@ std::tuple<ClickableNode*, MenuCard*, int> HexusStoreMenu::constructCard(CardDat
 	ConstantString* priceString = ConstantString::create(std::to_string(price));
 	LocalizedLabel* priceLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	
-	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Consumables_GOLD_1);
+	Sprite* goldIcon = Sprite::create(ObjectResources::Items_Currency_GOLD_1);
 
 	priceLabel->setStringReplacementVariables(priceString);
 
