@@ -50,11 +50,6 @@ void CipherBackground::initializePositions()
 	this->cipherBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
-void CipherBackground::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void CipherBackground::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

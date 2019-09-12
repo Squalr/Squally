@@ -26,7 +26,6 @@ public:
 		EmptyState,
 		GameStart,
 		LoadInitialState,
-		TransitionNeutral,
 		Neutral,
 		TransitionUnlocking,
 		Unlocking,
@@ -64,10 +63,6 @@ public:
 
 	std::string currentInput;
 	std::string currentOutput;
-
-	// Tutorial node pointers
-	cocos2d::Node* lockPointer;
-	cocos2d::Node* toolBoxPointer;
 
 protected:
 	void initializePositions() override;

@@ -50,11 +50,6 @@ void CipherFrame::initializePositions()
 	this->cipherFrame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
 
-void CipherFrame::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void CipherFrame::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

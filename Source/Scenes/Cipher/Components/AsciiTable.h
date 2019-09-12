@@ -24,7 +24,6 @@ public:
 	void open(ImmediateBlock* immediateBlock, std::function<void()> onCloseCallback);
 
 protected:
-	void onBeforeStateChange(CipherState* cipherState) override;
 	void onAnyStateChange(CipherState* cipherState) override;
 
 private:

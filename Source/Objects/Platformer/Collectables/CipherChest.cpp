@@ -26,6 +26,8 @@ const std::string CipherChest::MapKeyPropertyRuleEasy = "rule-easy";
 const std::string CipherChest::MapKeyPropertyRuleHard = "rule-hard";
 const std::string CipherChest::MapKeyPropertyRewards = "rewards";
 const std::string CipherChest::MapKeyPropertyBonusRewards = "bonus-rewards";
+const std::string CipherChest::MapKeyPropertyTokensEasy = "tokens-easy";
+const std::string CipherChest::MapKeyPropertyTokensHard = "tokens-hard";
 
 CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
 {
@@ -99,16 +101,22 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	std::string easyRule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRuleEasy, Value("")).asString();
 	std::string hardRule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRuleHard, Value("")).asString();
 	std::vector<std::string> easyInputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsEasy, Value("")).asString(), ", "
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsEasy, Value("")).asString(), ", ", false
 	);
 	std::vector<std::string> hardInputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsHard, Value("")).asString(), ", "
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsHard, Value("")).asString(), ", ", false
+	);
+	std::vector<std::string> easyTokens = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokensEasy, Value("")).asString(), ", ", false
+	);
+	std::vector<std::string> hardTokens = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokensHard, Value("")).asString(), ", ", false
 	);
 	std::vector<std::string> rewards = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRewards, Value("")).asString(), ", "
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRewards, Value("")).asString(), ", ", false
 	);
 	std::vector<std::string> bonusRewards = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusRewards, Value("")).asString(), ", "
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusRewards, Value("")).asString(), ", ", false
 	);
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();

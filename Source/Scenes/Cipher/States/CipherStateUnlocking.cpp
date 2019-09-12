@@ -68,7 +68,7 @@ void CipherStateUnlocking::onStateEnter(CipherState* cipherState)
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
 				{
-					CipherState::updateState(cipherState, CipherState::StateType::TransitionNeutral);
+					CipherState::updateState(cipherState, CipherState::StateType::Neutral);
 				}),
 				nullptr
 			));

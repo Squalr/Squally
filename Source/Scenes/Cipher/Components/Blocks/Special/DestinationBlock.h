@@ -14,7 +14,7 @@ public:
 	bool isMatchedValues();
 	
 protected:
-	void onBeforeStateChange(CipherState* cipherState) override;
+	void onAnyStateChange(CipherState* cipherState) override;
 	void execute(std::function<void()> onExecuteComplete) override;
 	unsigned char compute() override;
 	BlockBase* spawn() override;

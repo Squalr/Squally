@@ -84,8 +84,6 @@ CipherLock::~CipherLock()
 void CipherLock::onEnter()
 {
 	super::onEnter();
-
-	this->setVisible(false);
 }
 
 void CipherLock::initializePositions()
@@ -222,25 +220,6 @@ void CipherLock::initializeListeners()
 			}
 		}
 	})));
-}
-
-void CipherLock::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-
-	switch(cipherState->stateType)
-	{
-		case CipherState::StateType::TransitionUnlocking:
-		{
-			// Reset positions
-			this->initializePositions();
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
 }
 
 void CipherLock::onAnyStateChange(CipherState* cipherState)

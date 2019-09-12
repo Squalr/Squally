@@ -126,7 +126,7 @@ std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimit
 	return tokens;
 }
 
-std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimiters)
+std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimiters, bool keepDelimiters)
 {
 	std::vector<std::string> tokens = std::vector<std::string>();
 
@@ -143,8 +143,11 @@ std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimite
 			tokens.push_back(next);
 		}
 
-		std::string delim = str.substr(end, 1);
-		tokens.push_back(delim);
+		if (keepDelimiters)
+		{
+			std::string delim = str.substr(end, 1);
+			tokens.push_back(delim);
+		}
 
 		start = end + 1;
 		end = str.find_first_of(delimiters, start);

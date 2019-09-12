@@ -16,9 +16,12 @@ protected:
 	~CipherComponentBase();
 
 	void initializeListeners() override;
-	virtual void onBeforeStateChange(CipherState* cipherState);
-	virtual void onAnyRequestStateChange(CipherState* cipherState);
 	virtual void onAnyStateChange(CipherState* cipherState);
+	virtual void onAnyRequestStateChange(CipherState* cipherState);
+	virtual void onBeforeStateEnter(CipherState* cipherState);
+	virtual void onStateEnter(CipherState* cipherState);
+	virtual void onStateReload(CipherState* cipherState);
+	virtual void onStateExit(CipherState* cipherState);
 
 private:
 	typedef SmartNode super;

@@ -74,11 +74,6 @@ void QuitButton::initializeListeners()
 	});
 }
 
-void QuitButton::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void QuitButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

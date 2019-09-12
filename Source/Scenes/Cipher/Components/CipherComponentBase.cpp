@@ -35,7 +35,14 @@ void CipherComponentBase::initializeListeners()
 
 		if (cipherState != nullptr)
 		{
-			this->onBeforeStateChange(cipherState);
+			if (cipherState->stateType == cipherState->stateType && cipherState->previousStateType != cipherState->stateType)
+			{
+				this->onBeforeStateEnter(cipherState);
+			}
+			else if (cipherState->stateType != cipherState->stateType && cipherState->previousStateType == cipherState->stateType)
+			{
+				this->onStateExit(cipherState);
+			}
 		}
 	}));
 
@@ -45,12 +52,24 @@ void CipherComponentBase::initializeListeners()
 
 		if (cipherState != nullptr)
 		{
+			if (cipherState->stateType == cipherState->stateType)
+			{
+				if (cipherState->previousStateType == cipherState->stateType)
+				{
+					this->onStateReload(cipherState);
+				}
+				else
+				{
+					this->onStateEnter(cipherState);
+				}
+			}
+
 			this->onAnyStateChange(cipherState);
 		}
 	}));
 }
 
-void CipherComponentBase::onBeforeStateChange(CipherState* cipherState)
+void CipherComponentBase::onAnyStateChange(CipherState* cipherState)
 {
 }
 
@@ -58,6 +77,18 @@ void CipherComponentBase::onAnyRequestStateChange(CipherState* cipherState)
 {
 }
 
-void CipherComponentBase::onAnyStateChange(CipherState* cipherState)
+void CipherComponentBase::onBeforeStateEnter(CipherState* cipherState)
+{
+}
+
+void CipherComponentBase::onStateEnter(CipherState* cipherState)
+{
+}
+
+void CipherComponentBase::onStateReload(CipherState* cipherState)
+{
+}
+
+void CipherComponentBase::onStateExit(CipherState* cipherState)
 {
 }

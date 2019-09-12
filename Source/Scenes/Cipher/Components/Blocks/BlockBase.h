@@ -41,7 +41,7 @@ protected:
 
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onBeforeStateChange(CipherState* cipherState) override;
+	void onAnyStateChange(CipherState* cipherState) override;
 	virtual unsigned char compute() = 0;
 	virtual BlockBase* spawn() = 0;
 	virtual float getBoltOffsetY();

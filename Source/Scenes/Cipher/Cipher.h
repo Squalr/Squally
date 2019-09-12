@@ -35,7 +35,6 @@ class InputsOutputsPanel;
 class LocalizedLabel;
 class QuitButton;
 class TestButton;
-class ToolBox;
 class UnlockButton;
 
 class Cipher : public SmartNode
@@ -63,7 +62,6 @@ private:
 	AsciiButton* asciiButton;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
-	ToolBox* toolBox;
 	CipherFrame* cipherFrame;
 	CipherDecor* cipherDecor;
 	DisplayModeToggles* displayModeToggles;
@@ -78,7 +76,6 @@ private:
 	CipherStateNeutral* cipherStateNeutral;
 	CipherStateStartGame* cipherStateStartGame;
 	CipherStateTesting* cipherStateTesting;
-	CipherStateTransitionNeutral* cipherStateTransitionNeutral;
 	CipherStateTransitionUnlocking* cipherStateTransitionUnlocking;
 	CipherStateUnlocking* cipherStateUnlocking;
 	CipherStateVictory* cipherStateVictory;

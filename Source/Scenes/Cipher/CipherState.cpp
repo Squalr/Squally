@@ -33,9 +33,7 @@ CipherState* CipherState::create()
 
 CipherState::CipherState()
 	: stateType(StateType::EmptyState),
-	updateStateCallback(nullptr),
-	lockPointer(nullptr),
-	toolBoxPointer(nullptr)
+	updateStateCallback(nullptr)
 {
 	this->inputBlocks = std::vector<SourceBlock*>();
 	this->outputBlocks = std::vector<DestinationBlock*>();

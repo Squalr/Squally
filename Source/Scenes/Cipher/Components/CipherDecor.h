@@ -13,7 +13,6 @@ public:
 	static CipherDecor* create();
 
 protected:
-	void onBeforeStateChange(CipherState* cipherState) override;
 	void onAnyStateChange(CipherState* cipherState) override;
 
 private:

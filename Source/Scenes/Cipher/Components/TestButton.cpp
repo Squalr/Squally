@@ -78,11 +78,6 @@ void TestButton::initializeListeners()
 	});
 }
 
-void TestButton::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void TestButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

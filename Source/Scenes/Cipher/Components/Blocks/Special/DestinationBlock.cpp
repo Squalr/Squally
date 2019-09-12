@@ -161,9 +161,9 @@ float DestinationBlock::getBoltOffsetY()
 	return 48.0f;
 }
 
-void DestinationBlock::onBeforeStateChange(CipherState* cipherState)
+void DestinationBlock::onAnyStateChange(CipherState* cipherState)
 {
-	super::onBeforeStateChange(cipherState);
+	super::onAnyStateChange(cipherState);
 
 	switch(cipherState->stateType)
 	{

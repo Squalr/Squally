@@ -30,14 +30,12 @@
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/TestButton.h"
-#include "Scenes/Cipher/Components/ToolBox.h"
 #include "Scenes/Cipher/Components/UnlockButton.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
 #include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
 #include "Scenes/Cipher/States/CipherStateNeutral.h"
 #include "Scenes/Cipher/States/CipherStateStartGame.h"
 #include "Scenes/Cipher/States/CipherStateTesting.h"
-#include "Scenes/Cipher/States/CipherStateTransitionNeutral.h"
 #include "Scenes/Cipher/States/CipherStateTransitionUnlocking.h"
 #include "Scenes/Cipher/States/CipherStateUnlocking.h"
 #include "Scenes/Cipher/States/CipherStateVictory.h"
@@ -68,8 +66,6 @@ Cipher::Cipher()
 	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
 	this->cipherLock = CipherLock::create();
-	this->toolBox = ToolBox::create();
-	this->cipherStateTransitionNeutral = CipherStateTransitionNeutral::create();
 	this->cipherStateTransitionUnlocking = CipherStateTransitionUnlocking::create();
 	this->cipherFrame = CipherFrame::create();
 	this->cipherDecor = CipherDecor::create();
@@ -90,13 +86,8 @@ Cipher::Cipher()
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->asciiTable = AsciiTable::create();
 
-	this->cipherState->lockPointer = this->cipherLock;
-	this->cipherState->toolBoxPointer = this->toolBox;
-
 	this->addChild(this->cipherBackground);
 	this->addChild(this->cipherLock);
-	this->addChild(this->toolBox);
-	this->addChild(this->cipherStateTransitionNeutral);
 	this->addChild(this->cipherStateTransitionUnlocking);
 	this->addChild(this->cipherFrame);
 	this->addChild(this->cipherDecor);

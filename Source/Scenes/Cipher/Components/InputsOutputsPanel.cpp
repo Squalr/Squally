@@ -136,11 +136,6 @@ void InputsOutputsPanel::initializeListeners()
 	})));
 }
 
-void InputsOutputsPanel::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

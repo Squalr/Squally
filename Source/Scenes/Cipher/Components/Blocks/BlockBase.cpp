@@ -210,7 +210,7 @@ ClickableNode* BlockBase::getBlock()
 	return this->block;
 }
 
-void BlockBase::onBeforeStateChange(CipherState* cipherState)
+void BlockBase::onAnyStateChange(CipherState* cipherState)
 {
 	switch(cipherState->stateType)
 	{

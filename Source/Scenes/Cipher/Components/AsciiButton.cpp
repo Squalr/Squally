@@ -74,11 +74,6 @@ void AsciiButton::initializeListeners()
 	});
 }
 
-void AsciiButton::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void AsciiButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

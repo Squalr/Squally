@@ -297,7 +297,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
-	std::vector<std::string> splitText = StrUtils::splitOn(currentText, ";\n");
+	std::vector<std::string> splitText = StrUtils::splitOn(currentText, ";\n", true);
 	std::vector<std::string> textJoined = std::vector<std::string>();
 	std::string currentString = "";
 	bool isJoiningComment = false;

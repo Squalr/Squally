@@ -187,11 +187,6 @@ void AsciiTable::initializeListeners()
 	});
 }
 
-void AsciiTable::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void AsciiTable::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

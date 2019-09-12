@@ -74,11 +74,6 @@ void CipherDecor::initializePositions()
 	this->cipherLabel->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f + 456.0f));
 }
 
-void CipherDecor::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void CipherDecor::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

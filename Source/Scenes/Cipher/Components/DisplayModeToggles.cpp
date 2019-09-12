@@ -131,11 +131,6 @@ void DisplayModeToggles::initializeListeners()
 	});
 }
 
-void DisplayModeToggles::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void DisplayModeToggles::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

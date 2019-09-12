@@ -84,8 +84,6 @@ void CipherStateTransitionUnlocking::onStateEnter(CipherState* cipherState)
 		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
-			cipherState->toolBoxPointer->setVisible(false);
-			cipherState->lockPointer->setVisible(true);
 		}),
 		MoveTo::create(0.35f, Vec2(0.0f, 512.0f)),
 		CallFunc::create([=]()

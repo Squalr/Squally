@@ -78,11 +78,6 @@ void UnlockButton::initializeListeners()
 	});
 }
 
-void UnlockButton::onBeforeStateChange(CipherState* cipherState)
-{
-	super::onBeforeStateChange(cipherState);
-}
-
 void UnlockButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
