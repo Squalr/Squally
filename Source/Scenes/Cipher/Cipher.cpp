@@ -31,6 +31,7 @@
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/TestButton.h"
 #include "Scenes/Cipher/Components/UnlockButton.h"
+#include "Scenes/Cipher/DifficultySelectMenu.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
 #include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
 #include "Scenes/Cipher/States/CipherStateNeutral.h"
@@ -85,28 +86,34 @@ Cipher::Cipher()
 	this->cipherStateVictory = CipherStateVictory::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->asciiTable = AsciiTable::create();
+	this->gameNode = Node::create();
+	this->difficultySelectMenu = DifficultySelectMenu::create();
 
-	this->addChild(this->cipherBackground);
-	this->addChild(this->cipherLock);
-	this->addChild(this->cipherStateTransitionUnlocking);
-	this->addChild(this->cipherFrame);
-	this->addChild(this->cipherDecor);
-	this->addChild(this->inputsOutputsPanel);
-	this->addChild(this->displayModeToggles);
-	this->addChild(this->testButton);
-	this->addChild(this->unlockButton);
-	this->addChild(this->quitButton);
-	this->addChild(this->asciiButton);
-	this->addChild(this->cipherState);
-	this->addChild(this->cipherStateGameEnd);
-	this->addChild(this->cipherStateLoadInitialState);
-	this->addChild(this->cipherStateNeutral);
-	this->addChild(this->cipherStateTesting);
-	this->addChild(this->cipherStateUnlocking);
-	this->addChild(this->cipherStateStartGame);
-	this->addChild(this->cipherStateVictory);
-	this->addChild(this->backdrop);
-	this->addChild(this->asciiTable);
+	this->cipherState->cipherLockPointer = this->cipherLock;
+
+	this->gameNode->addChild(this->cipherBackground);
+	this->gameNode->addChild(this->cipherLock);
+	this->gameNode->addChild(this->cipherStateTransitionUnlocking);
+	this->gameNode->addChild(this->cipherFrame);
+	this->gameNode->addChild(this->cipherDecor);
+	this->gameNode->addChild(this->inputsOutputsPanel);
+	this->gameNode->addChild(this->displayModeToggles);
+	this->gameNode->addChild(this->testButton);
+	this->gameNode->addChild(this->unlockButton);
+	this->gameNode->addChild(this->quitButton);
+	this->gameNode->addChild(this->asciiButton);
+	this->gameNode->addChild(this->cipherState);
+	this->gameNode->addChild(this->cipherStateGameEnd);
+	this->gameNode->addChild(this->cipherStateLoadInitialState);
+	this->gameNode->addChild(this->cipherStateNeutral);
+	this->gameNode->addChild(this->cipherStateTesting);
+	this->gameNode->addChild(this->cipherStateUnlocking);
+	this->gameNode->addChild(this->cipherStateStartGame);
+	this->gameNode->addChild(this->cipherStateVictory);
+	this->gameNode->addChild(this->backdrop);
+	this->gameNode->addChild(this->asciiTable);
+	this->addChild(this->gameNode);
+	this->addChild(this->difficultySelectMenu);
 }
 
 Cipher::~Cipher()
@@ -154,6 +161,9 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
 	this->cipherState->loadPuzzleData(cipherPuzzleData);
 	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
+	
+	this->gameNode->setVisible(false);
+	this->difficultySelectMenu->setVisible(true);
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)

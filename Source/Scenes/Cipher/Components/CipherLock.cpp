@@ -222,6 +222,11 @@ void CipherLock::initializeListeners()
 	})));
 }
 
+void CipherLock::resetLock()
+{
+	this->initializePositions();
+}
+
 void CipherLock::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);

@@ -35,6 +35,8 @@ namespace CipherResources
 	extern const std::string Buttons_DecimalButton;
 	extern const std::string Buttons_DecimalButtonActive;
 	extern const std::string Buttons_DecimalButtonSelected;
+	extern const std::string Buttons_HardButton;
+	extern const std::string Buttons_HardButtonSelected;
 	extern const std::string Buttons_HexButton;
 	extern const std::string Buttons_HexButtonActive;
 	extern const std::string Buttons_HexButtonSelected;
@@ -44,6 +46,7 @@ namespace CipherResources
 	extern const std::string Buttons_RunButtonSelected;
 	extern const std::string Buttons_TestRunButton;
 	extern const std::string Buttons_TestRunButtonSelected;
+	extern const std::string CipherDifficultyPanel;
 	extern const std::string CipherMenuBase;
 	extern const std::string CipherMenuFrame;
 	extern const std::string Connections_ConnectButton;

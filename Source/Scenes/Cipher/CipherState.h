@@ -11,6 +11,7 @@ namespace cocos2d
 }
 
 class BlockBase;
+class CipherLock;
 class CipherPuzzleData;
 class CipherState;
 class ClickableNode;
@@ -63,6 +64,8 @@ public:
 
 	std::string currentInput;
 	std::string currentOutput;
+
+	CipherLock* cipherLockPointer;
 
 protected:
 	void initializePositions() override;

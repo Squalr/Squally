@@ -30,6 +30,7 @@ class CipherStateUnlocking;
 class CipherStateVictory;
 class ClickableNode;
 class ClickableTextNode;
+class DifficultySelectMenu;
 class DisplayModeToggles;
 class InputsOutputsPanel;
 class LocalizedLabel;
@@ -59,11 +60,13 @@ private:
 
 	std::function<void()> backClickCallback;
 
+	cocos2d::Node* gameNode;
 	AsciiButton* asciiButton;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
 	CipherFrame* cipherFrame;
 	CipherDecor* cipherDecor;
+	DifficultySelectMenu* difficultySelectMenu;
 	DisplayModeToggles* displayModeToggles;
 	TestButton* testButton;
 	UnlockButton* unlockButton;

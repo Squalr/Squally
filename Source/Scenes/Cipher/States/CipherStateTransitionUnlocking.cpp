@@ -10,6 +10,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Scenes/Cipher/Components/CipherLock.h"
 #include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/CipherState.h"
 
@@ -49,8 +50,6 @@ CipherStateTransitionUnlocking::~CipherStateTransitionUnlocking()
 void CipherStateTransitionUnlocking::onEnter()
 {
 	super::onEnter();
-	
-	this->setVisible(false);
 }
 
 void CipherStateTransitionUnlocking::initializePositions()
@@ -75,15 +74,13 @@ void CipherStateTransitionUnlocking::onBeforeStateEnter(CipherState* cipherState
 void CipherStateTransitionUnlocking::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
-	
-	this->transitionPanel->setPosition(Vec2(0.0f, 512.0f));
-	this->setVisible(true);
 
 	this->transitionPanel->runAction(Sequence::create(
 		MoveTo::create(0.35f, Vec2(0.0f, 0.0f)),
 		DelayTime::create(0.25f),
 		CallFunc::create([=]()
 		{
+			cipherState->cipherLockPointer->resetLock();
 		}),
 		MoveTo::create(0.35f, Vec2(0.0f, 512.0f)),
 		CallFunc::create([=]()

@@ -15,6 +15,8 @@ class CipherLock : public CipherComponentBase
 public:
 	static CipherLock* create();
 
+	void resetLock();
+
 protected:
 	void onAnyStateChange(CipherState* cipherState) override;
 
