@@ -3,6 +3,8 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Events/CipherEvents.h"
+
 using namespace cocos2d;
 
 CipherStateBase::CipherStateBase(CipherState::StateType stateType)
@@ -18,53 +20,54 @@ void CipherStateBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* requestStateUpdateListener = EventListenerCustom::create(CipherState::RequestStateUpdateEvent, CC_CALLBACK_1(CipherStateBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateUpdateListener = EventListenerCustom::create(CipherState::BeforeStateUpdateEvent, CC_CALLBACK_1(CipherStateBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* onStateUpdateListener = EventListenerCustom::create(CipherState::OnStateUpdateEvent, CC_CALLBACK_1(CipherStateBase::onStateChangeEvent, this));
-
-	this->addEventListener(requestStateUpdateListener);
-	this->addEventListener(beforeStateUpdateListener);
-	this->addEventListener(onStateUpdateListener);
-}
-
-void CipherStateBase::onRequestStateChangeEvent(EventCustom* eventCustom)
-{
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-	this->onAnyRequestStateChange(cipherState);
-}
-
-void CipherStateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
-{
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-	if (cipherState->stateType == this->stateType && cipherState->previousStateType != this->stateType)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		this->onBeforeStateEnter(cipherState);
-	}
-	else if (cipherState->stateType != this->stateType && cipherState->previousStateType == this->stateType)
-	{
-		this->onStateExit(cipherState);
-	}
-}
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
 
-void CipherStateBase::onStateChangeEvent(EventCustom* eventCustom)
-{
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-	if (cipherState->stateType == this->stateType)
-	{
-		if (cipherState->previousStateType == this->stateType)
+		if (cipherState != nullptr)
 		{
-			this->onStateReload(cipherState);
+			this->onAnyRequestStateChange(cipherState);
 		}
-		else
-		{
-			this->onStateEnter(cipherState);
-		}
-	}
+	}));
 
-	this->onAnyStateChange(cipherState);
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
+	{
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+		if (cipherState != nullptr)
+		{
+			if (cipherState->stateType == this->stateType && cipherState->previousStateType != this->stateType)
+			{
+				this->onBeforeStateEnter(cipherState);
+			}
+			else if (cipherState->stateType != this->stateType && cipherState->previousStateType == this->stateType)
+			{
+				this->onStateExit(cipherState);
+			}
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
+	{
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+		if (cipherState != nullptr)
+		{
+			if (cipherState->stateType == this->stateType)
+			{
+				if (cipherState->previousStateType == this->stateType)
+				{
+					this->onStateReload(cipherState);
+				}
+				else
+				{
+					this->onStateEnter(cipherState);
+				}
+			}
+
+			this->onAnyStateChange(cipherState);
+		}
+	}));
 }
 
 void CipherStateBase::onAnyStateChange(CipherState* cipherState)

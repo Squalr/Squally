@@ -22,10 +22,6 @@
 
 using namespace cocos2d;
 
-const std::string CipherState::RequestStateUpdateEvent = "EVENT_CIPHER_REQUEST_UPDATE_STATE";
-const std::string CipherState::BeforeStateUpdateEvent = "EVENT_CIPHER_BEFORE_UPDATE_STATE";
-const std::string CipherState::OnStateUpdateEvent = "EVENT_CIPHER_ON_UPDATE_STATE";
-
 CipherState* CipherState::create()
 {
 	CipherState* instance = new CipherState();
@@ -177,9 +173,9 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::RequestStateUpdateEvent, cipherState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::BeforeStateUpdateEvent, cipherState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(CipherState::OnStateUpdateEvent, cipherState);
+	CipherEvents::TriggerRequestStateUpdate(cipherState);
+	CipherEvents::TriggerBeforeStateUpdate(cipherState);
+	CipherEvents::TriggerOnStateUpdate(cipherState);
 }
 
 void CipherState::clearInteraction()
@@ -193,8 +189,11 @@ void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData)
 		this->removeChild(this->puzzleData);
 	}
 
-	this->puzzleData = puzzleData;
-	this->addChild(this->puzzleData);
+	if (puzzleData != nullptr)
+	{
+		this->puzzleData = puzzleData->clone();
+		this->addChild(this->puzzleData);
+	}
 }
 
 void CipherState::loadCipherAtIndex(int index)

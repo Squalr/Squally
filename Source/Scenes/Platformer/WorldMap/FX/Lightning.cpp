@@ -75,6 +75,7 @@ Lightning::Lightning()
 		SmartAnimationSequenceNode::primeCache(UIResources::Menus_WorldMap_Lightning_Lightning36_Lightning_01);
 	}
 
+	this->addChild(this->sound);
 	this->addChild(this->animations);
 }
 

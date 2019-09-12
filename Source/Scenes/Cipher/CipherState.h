@@ -69,10 +69,6 @@ public:
 	cocos2d::Node* lockPointer;
 	cocos2d::Node* toolBoxPointer;
 
-	static const std::string RequestStateUpdateEvent;
-	static const std::string BeforeStateUpdateEvent;
-	static const std::string OnStateUpdateEvent;
-
 protected:
 	void initializePositions() override;
 	void initializeListeners() override;

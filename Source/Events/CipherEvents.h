@@ -7,6 +7,7 @@
 class BlockBase;
 class BoltBase;
 class CipherPuzzleData;
+class CipherState;
 class Connection;
 class InputBolt;
 class ImmediateBlock;
@@ -26,6 +27,9 @@ public:
 	static const std::string EventOpenImmediateEditor;
 	static const std::string EventOpenAsciiTable;
 	static const std::string EventTryUnlockCurrentCipher;
+	static const std::string EventRequestStateUpdate;
+	static const std::string EventBeforeStateUpdate;
+	static const std::string EventOnStateUpdate;
 
 	struct CipherOpenArgs
 	{
@@ -159,4 +163,7 @@ public:
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
 	static void TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args);
 	static void TriggerTryUnlockCurrentCipher(UnlockArgs args);
+	static void TriggerRequestStateUpdate(CipherState* cipherState);
+	static void TriggerBeforeStateUpdate(CipherState* cipherState);
+	static void TriggerOnStateUpdate(CipherState* cipherState);
 };

@@ -30,7 +30,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
-	Cipher* getCipherInstance();
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;

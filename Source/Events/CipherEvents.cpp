@@ -15,6 +15,9 @@ const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_C
 const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
 const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
 const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
+const std::string CipherEvents::EventRequestStateUpdate = "EVENT_REQUEST_STATE_UPDATE";
+const std::string CipherEvents::EventBeforeStateUpdate = "EVENT_BEFORE_STATE_UPDATE";
+const std::string CipherEvents::EventOnStateUpdate = "EVENT_ON_STATE_UPDATE";
 
 void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
 {
@@ -93,5 +96,28 @@ void CipherEvents::TriggerTryUnlockCurrentCipher(UnlockArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CipherEvents::EventTryUnlockCurrentCipher,
 		&args
+	);
+}
+void CipherEvents::TriggerRequestStateUpdate(CipherState* cipherState)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventRequestStateUpdate,
+		cipherState
+	);
+}
+
+void CipherEvents::TriggerBeforeStateUpdate(CipherState* cipherState)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventBeforeStateUpdate,
+		cipherState
+	);
+}
+
+void CipherEvents::TriggerOnStateUpdate(CipherState* cipherState)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventOnStateUpdate,
+		cipherState
 	);
 }

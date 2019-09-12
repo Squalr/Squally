@@ -19,28 +19,35 @@ void CipherComponentBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(CipherState::RequestStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(CipherState::BeforeStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* stateChangeListener = EventListenerCustom::create(CipherState::OnStateUpdateEvent, CC_CALLBACK_1(CipherComponentBase::onStateChangeEvent, this));
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
+	{
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
 
-	this->addEventListener(requestStateChangeListener);
-	this->addEventListener(beforeStateChangeListener);
-	this->addEventListener(stateChangeListener);
-}
+		if (cipherState != nullptr)
+		{
+			this->onAnyRequestStateChange(cipherState);
+		}
+	}));
 
-void CipherComponentBase::onRequestStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onAnyRequestStateChange((CipherState*)(eventCustom->getUserData()));
-}
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
+	{
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
 
-void CipherComponentBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onBeforeStateChange((CipherState*)(eventCustom->getUserData()));
-}
+		if (cipherState != nullptr)
+		{
+			this->onBeforeStateChange(cipherState);
+		}
+	}));
 
-void CipherComponentBase::onStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onAnyStateChange((CipherState*)(eventCustom->getUserData()));
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
+	{
+		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+		if (cipherState != nullptr)
+		{
+			this->onAnyStateChange(cipherState);
+		}
+	}));
 }
 
 void CipherComponentBase::onBeforeStateChange(CipherState* cipherState)
