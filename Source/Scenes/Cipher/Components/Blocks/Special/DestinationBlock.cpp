@@ -197,10 +197,3 @@ unsigned char DestinationBlock::compute()
 
 	return this->currentInputs[0];
 }
-
-BlockBase* DestinationBlock::spawn()
-{
-	DestinationBlock* spawn = DestinationBlock::create(this->cipherIndex);
-
-	return spawn;
-}

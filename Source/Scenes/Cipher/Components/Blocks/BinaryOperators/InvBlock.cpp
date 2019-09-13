@@ -51,8 +51,3 @@ unsigned char InvBlock::compute()
 
 	return ~this->currentInputs[0];
 }
-
-BlockBase* InvBlock::spawn()
-{
-	return InvBlock::create();
-}

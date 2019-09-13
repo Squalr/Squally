@@ -51,8 +51,3 @@ unsigned char MulBlock::compute()
 
 	return this->currentInputs[0] * this->currentInputs[1];
 }
-
-BlockBase* MulBlock::spawn()
-{
-	return MulBlock::create();
-}

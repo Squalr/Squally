@@ -7,6 +7,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Scenes/Cipher/CipherPuzzleData.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -114,4 +115,43 @@ void DifficultySelectMenu::initializePositions()
 void DifficultySelectMenu::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void DifficultySelectMenu::show(CipherPuzzleData* cipherPuzzleData, std::function<void()> onEasySelect, std::function<void()> onHardSelect, std::function<void()> onCancelSelect)
+{
+	this->setVisible(true);
+	
+	if (!cipherPuzzleData->hasHardMode() && onEasySelect != nullptr)
+	{
+		onEasySelect();
+		this->setVisible(false);
+		return;
+	}
+
+	this->easyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		if (onEasySelect != nullptr)
+		{
+			onEasySelect();
+			this->setVisible(false);
+		}
+	});
+
+	this->hardButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		if (onHardSelect != nullptr)
+		{
+			onHardSelect();
+			this->setVisible(false);
+		}
+	});
+
+	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		if (onCancelSelect != nullptr)
+		{
+			onCancelSelect();
+			this->setVisible(false);
+		}
+	});
 }

@@ -51,8 +51,3 @@ unsigned char SubBlock::compute()
 
 	return this->currentInputs[0] - this->currentInputs[1];
 }
-
-BlockBase* SubBlock::spawn()
-{
-	return SubBlock::create();
-}

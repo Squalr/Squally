@@ -43,10 +43,10 @@ public:
 
 	struct CipherBlockSpawnArgs
 	{
-		std::function<BlockBase*()> spawnBlockFunc;
+		BlockBase* block;
 		cocos2d::Vec2 spawnCoords;
 
-		CipherBlockSpawnArgs(std::function<BlockBase*()> spawnBlockFunc, cocos2d::Vec2 spawnCoords) : spawnBlockFunc(spawnBlockFunc), spawnCoords(spawnCoords)
+		CipherBlockSpawnArgs(BlockBase* block, cocos2d::Vec2 spawnCoords) : block(block), spawnCoords(spawnCoords)
 		{
 		}
 	};

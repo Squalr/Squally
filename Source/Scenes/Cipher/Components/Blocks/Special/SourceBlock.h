@@ -12,7 +12,6 @@ public:
 	
 protected:
 	unsigned char compute() override;
-	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;

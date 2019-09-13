@@ -133,7 +133,7 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 	int index = 0;
 
 	std::vector<std::string> rewards = cipherState->puzzleData->getRewards();
-	std::vector<std::string> bonusRewards = cipherState->puzzleData->getBonusRewards();
+	std::string bonusReward = cipherState->puzzleData->getBonusReward();
 	std::vector<Item*> items = std::vector<Item*>();
 	bool getBonusRewards = cipherState->isHardModeEnabled();
 
@@ -147,13 +147,10 @@ void CipherStateVictory::giveRewards(CipherState* cipherState)
 
 	if (getBonusRewards)
 	{
-		for (auto it = bonusRewards.begin(); it != bonusRewards.end(); it++)
+		PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(bonusReward, [&](Item* item)
 		{
-			PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(*it, [&](Item* item)
-			{
-				items.push_back(item);
-			}));
-		}
+			items.push_back(item);
+		}));
 	}
 
 	for (auto it = items.begin(); it != items.end(); it++, index++)

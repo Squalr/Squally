@@ -18,7 +18,6 @@ class BlockBase : public CipherComponentBase
 public:
 	enum class BlockType
 	{
-		Toolbox,
 		Normal,
 		Static,
 	};
@@ -43,7 +42,6 @@ protected:
 	void initializeListeners() override;
 	void onAnyStateChange(CipherState* cipherState) override;
 	virtual unsigned char compute() = 0;
-	virtual BlockBase* spawn() = 0;
 	virtual float getBoltOffsetY();
 	bool isInGameArea();
 

@@ -46,6 +46,7 @@ CipherState::CipherState()
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->puzzleData = nullptr;
+	this->isHardMode = false;
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
@@ -106,16 +107,11 @@ void CipherState::initializeListeners()
 	{
 		CipherEvents::CipherBlockSpawnArgs* args = static_cast<CipherEvents::CipherBlockSpawnArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr)
+		if (args != nullptr && args->block != nullptr)
 		{
-			BlockBase* newBlock = args->spawnBlockFunc();
-
-			if (newBlock != nullptr)
-			{
-				this->userBlocks.push_back(newBlock);
-				this->blockContent->addChild(newBlock);
-				newBlock->setPosition(args->spawnCoords);
-			}
+			this->userBlocks.push_back(args->block);
+			this->blockContent->addChild(args->block);
+			args->block->setPosition(args->spawnCoords);
 		}
 	}));
 
@@ -181,8 +177,10 @@ void CipherState::clearInteraction()
 {
 }
 
-void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData)
+void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode)
 {
+	this->isHardMode = isHardMode;
+
 	if (this->puzzleData != nullptr)
 	{
 		this->removeChild(this->puzzleData);
@@ -206,5 +204,5 @@ void CipherState::loadCipherAtIndex(int index)
 
 bool CipherState::isHardModeEnabled()
 {
-	return false;
+	return this->isHardMode;
 }

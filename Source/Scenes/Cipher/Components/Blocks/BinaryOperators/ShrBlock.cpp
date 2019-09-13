@@ -51,8 +51,3 @@ unsigned char ShrBlock::compute()
 
 	return this->currentInputs[0] >> this->currentInputs[1];
 }
-
-BlockBase* ShrBlock::spawn()
-{
-	return ShrBlock::create();
-}

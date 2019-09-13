@@ -51,8 +51,3 @@ unsigned char XorBlock::compute()
 
 	return this->currentInputs[0] ^ this->currentInputs[1];
 }
-
-BlockBase* XorBlock::spawn()
-{
-	return XorBlock::create();
-}

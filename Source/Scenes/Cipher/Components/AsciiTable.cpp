@@ -48,11 +48,7 @@ AsciiTable::AsciiTable()
 
 	for (int next = 0; next < 256; next++)
 	{
-		ImmediateBlock* block = ImmediateBlock::create(BlockBase::BlockType::Static);
-
-		block->setValue((unsigned char)(next));
-
-		this->asciiLetters.push_back(block);
+		this->asciiLetters.push_back(ImmediateBlock::create((unsigned char)(next), BlockBase::BlockType::Static));
 	}
 
 	this->selectionSprite = Sprite::create(CipherResources::Blocks_BlockHexHuge);

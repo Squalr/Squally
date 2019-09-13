@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class CipherPuzzleData;
 class ClickableTextNode;
 class LocalizedLabel;
 
@@ -15,7 +16,7 @@ class DifficultySelectMenu : public SmartNode
 public:
 	static DifficultySelectMenu* create();
 
-	void show(std::function<void()> onEasySelect, std::function<void()> onHardSelect, std::function<void()> onCancelSelect);
+	void show(CipherPuzzleData* cipherPuzzleData, std::function<void()> onEasySelect, std::function<void()> onHardSelect, std::function<void()> onCancelSelect);
 
 private:
 	typedef SmartNode super;

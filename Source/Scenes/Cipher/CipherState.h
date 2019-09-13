@@ -38,7 +38,7 @@ public:
 
 	static CipherState* create();
 	static void updateState(CipherState* gameState, StateType newState);
-	void loadPuzzleData(CipherPuzzleData* puzzleData);
+	void loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode);
 	void loadCipherAtIndex(int index);
 	bool isHardModeEnabled();
 
@@ -49,6 +49,7 @@ public:
 
 	CipherPuzzleData* puzzleData;
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap;
+	std::vector<std::string> tokens;
 
 	std::vector<SourceBlock*> inputBlocks;
 	std::vector<DestinationBlock*> outputBlocks;
@@ -79,6 +80,8 @@ private:
 	~CipherState();
 
 	void clearInteraction();
+
+	bool isHardMode;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

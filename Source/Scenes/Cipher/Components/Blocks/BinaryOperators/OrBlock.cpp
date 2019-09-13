@@ -51,8 +51,3 @@ unsigned char OrBlock::compute()
 
 	return this->currentInputs[0] | this->currentInputs[1];
 }
-
-BlockBase* OrBlock::spawn()
-{
-	return OrBlock::create();
-}

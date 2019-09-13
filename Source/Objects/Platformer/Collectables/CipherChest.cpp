@@ -21,11 +21,11 @@ using namespace cocos2d;
 
 const std::string CipherChest::MapKeyCipherChest = "cipher-chest";
 const std::string CipherChest::MapKeyPropertyInputsEasy = "inputs-easy";
-const std::string CipherChest::MapKeyPropertyInputsHard = "inputs-easy";
+const std::string CipherChest::MapKeyPropertyInputsHard = "inputs-hard";
 const std::string CipherChest::MapKeyPropertyRuleEasy = "rule-easy";
 const std::string CipherChest::MapKeyPropertyRuleHard = "rule-hard";
 const std::string CipherChest::MapKeyPropertyRewards = "rewards";
-const std::string CipherChest::MapKeyPropertyBonusRewards = "bonus-rewards";
+const std::string CipherChest::MapKeyPropertyBonusReward = "bonus-reward";
 const std::string CipherChest::MapKeyPropertyTokensEasy = "tokens-easy";
 const std::string CipherChest::MapKeyPropertyTokensHard = "tokens-hard";
 
@@ -115,9 +115,7 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	std::vector<std::string> rewards = StrUtils::splitOn(
 		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRewards, Value("")).asString(), ", ", false
 	);
-	std::vector<std::string> bonusRewards = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusRewards, Value("")).asString(), ", ", false
-	);
+	std::string bonusRewards = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusReward, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();
 
@@ -137,5 +135,5 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		inputOutputMapHard.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 	}
 
-	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards);
+	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, rewards, bonusRewards);
 }

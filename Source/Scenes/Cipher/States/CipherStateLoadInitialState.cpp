@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Scenes/Cipher/CipherPuzzleData.h"
+#include "Scenes/Cipher/Components/Blocks/Blocks.h"
 
 using namespace cocos2d;
 
@@ -18,6 +19,9 @@ CipherStateLoadInitialState* CipherStateLoadInitialState::create()
 
 CipherStateLoadInitialState::CipherStateLoadInitialState() : super(CipherState::StateType::LoadInitialState)
 {
+	this->spawnMap = std::map<std::string, std::function<void(int, int)>>();
+	
+	this->buildSpawnMap();
 }
 
 CipherStateLoadInitialState::~CipherStateLoadInitialState()
@@ -34,14 +38,23 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 		if (cipherState->isHardModeEnabled())
 		{
 			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapHard();
+			cipherState->tokens = cipherState->puzzleData->getHardTokens();
 		}
 		else
 		{
 			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapEasy();
+			cipherState->tokens = cipherState->puzzleData->getEasyTokens();
 		}
 	}
+	else
+	{
+		cipherState->inputOutputMap = { };
+		cipherState->tokens = { };
+	}
+	
 	
 	cipherState->loadCipherAtIndex(0);
+	this->spawnBlocks(cipherState);
 }
 
 void CipherStateLoadInitialState::onStateEnter(CipherState* cipherState)
@@ -66,4 +79,157 @@ void CipherStateLoadInitialState::onStateReload(CipherState* cipherState)
 void CipherStateLoadInitialState::onStateExit(CipherState* cipherState)
 {
 	super::onStateExit(cipherState);
+}
+
+void CipherStateLoadInitialState::buildSpawnMap()
+{
+	for (int index = 0; index < 256; index++)
+	{
+		std::string token = std::to_string(index);
+
+		this->spawnMap[token] = [=](int index, int total)
+		{
+			this->spawnBlock(ImmediateBlock::create((unsigned char)(index)), index, total);
+		};
+	}
+
+	// Basic operators
+	this->spawnMap["+"] = [=](int index, int total)
+	{
+		this->spawnBlock(AddBlock::create(), index, total);
+	};
+	this->spawnMap["/"] = [=](int index, int total)
+	{
+		this->spawnBlock(DivBlock::create(), index, total);
+	};
+	this->spawnMap["%"] = [=](int index, int total)
+	{
+		this->spawnBlock(ModBlock::create(), index, total);
+	};
+	this->spawnMap["*"] = [=](int index, int total)
+	{
+		this->spawnBlock(MulBlock::create(), index, total);
+	};
+	this->spawnMap["-"] = [=](int index, int total)
+	{
+		this->spawnBlock(SubBlock::create(), index, total);
+	};
+
+	// Binary operators
+	this->spawnMap["&"] = [=](int index, int total)
+	{
+		this->spawnBlock(AndBlock::create(), index, total);
+	};
+	this->spawnMap["&&"] = [=](int index, int total)
+	{
+		this->spawnBlock(AndBlock::create(), index, total);
+	};
+	this->spawnMap["<<<"] = [=](int index, int total)
+	{
+		this->spawnBlock(CshlBlock::create(), index, total);
+	};
+	this->spawnMap[">>>"] = [=](int index, int total)
+	{
+		this->spawnBlock(CshrBlock::create(), index, total);
+	};
+	this->spawnMap["~"] = [=](int index, int total)
+	{
+		this->spawnBlock(InvBlock::create(), index, total);
+	};
+	this->spawnMap["|"] = [=](int index, int total)
+	{
+		this->spawnBlock(OrBlock::create(), index, total);
+	};
+	this->spawnMap["||"] = [=](int index, int total)
+	{
+		this->spawnBlock(OrBlock::create(), index, total);
+	};
+	this->spawnMap["<<"] = [=](int index, int total)
+	{
+		this->spawnBlock(ShlBlock::create(), index, total);
+	};
+	this->spawnMap[">>"] = [=](int index, int total)
+	{
+		this->spawnBlock(ShrBlock::create(), index, total);
+	};
+	this->spawnMap["^"] = [=](int index, int total)
+	{
+		this->spawnBlock(XorBlock::create(), index, total);
+	};
+
+	// Comparison operators
+	this->spawnMap["="] = [=](int index, int total)
+	{
+		this->spawnBlock(EqualsBlock::create(), index, total);
+	};
+	this->spawnMap["=="] = [=](int index, int total)
+	{
+		this->spawnBlock(EqualsBlock::create(), index, total);
+	};
+	this->spawnMap[">"] = [=](int index, int total)
+	{
+		this->spawnBlock(GreaterThanBlock::create(), index, total);
+	};
+	this->spawnMap[">="] = [=](int index, int total)
+	{
+		this->spawnBlock(GreaterThanOrEqualsBlock::create(), index, total);
+	};
+	this->spawnMap["<"] = [=](int index, int total)
+	{
+		this->spawnBlock(LessThanBlock::create(), index, total);
+	};
+	this->spawnMap["<="] = [=](int index, int total)
+	{
+		this->spawnBlock(LessThanOrEqualsBlock::create(), index, total);
+	};
+	this->spawnMap["!="] = [=](int index, int total)
+	{
+		this->spawnBlock(NotEqualsBlock::create(), index, total);
+	};
+
+	// Special operators
+	this->spawnMap["b"] = [=](int index, int total)
+	{
+		this->spawnBlock(BruteForceBlock::create(), index, total);
+	};
+	this->spawnMap["B"] = [=](int index, int total)
+	{
+		this->spawnBlock(BruteForceBlock::create(), index, total);
+	};
+	this->spawnMap["s"] = [=](int index, int total)
+	{
+		this->spawnBlock(SplitterBlock::create(), index, total);
+	};
+	this->spawnMap["S"] = [=](int index, int total)
+	{
+		this->spawnBlock(SplitterBlock::create(), index, total);
+	};
+}
+
+void CipherStateLoadInitialState::spawnBlocks(CipherState* cipherState)
+{
+	if (cipherState == nullptr)
+	{
+		return;
+	}
+
+	int total = cipherState->tokens.size();
+	
+	for (int index = 0; index < total; index++)
+	{
+		std::string token = cipherState->tokens[index];
+
+		if (this->spawnMap.find(token) != this->spawnMap.end())
+		{
+			this->spawnMap[token](index, total);
+		}
+	}
+}
+
+void CipherStateLoadInitialState::spawnBlock(BlockBase* block, int index, int total)
+{
+	// TODO: calculate this based on index & total
+	Vec2 position = Vec2(256.0f, 256.0f);
+
+	CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs(block, position));
 }

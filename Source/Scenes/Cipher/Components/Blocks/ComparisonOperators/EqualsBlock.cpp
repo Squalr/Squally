@@ -40,11 +40,6 @@ unsigned char EqualsBlock::compute()
 	return this->currentInputs[0];
 }
 
-BlockBase* EqualsBlock::spawn()
-{
-	return EqualsBlock::create();
-}
-
 bool EqualsBlock::compare(unsigned char inputA, unsigned char inputB)
 {
 	return inputA == inputB;

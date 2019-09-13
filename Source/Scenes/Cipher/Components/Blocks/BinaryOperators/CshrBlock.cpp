@@ -51,8 +51,3 @@ unsigned char CshrBlock::compute()
 
 	return this->currentInputs[0] >> this->currentInputs[1];
 }
-
-BlockBase* CshrBlock::spawn()
-{
-	return CshrBlock::create();
-}

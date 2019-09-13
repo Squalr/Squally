@@ -46,8 +46,3 @@ unsigned char BruteForceBlock::compute()
 {
 	return (unsigned char)(0);
 }
-
-BlockBase* BruteForceBlock::spawn()
-{
-	return BruteForceBlock::create();
-}

@@ -9,7 +9,6 @@ public:
 	
 protected:
 	unsigned char compute() override;
-	BlockBase* spawn() override;
 	bool compare(unsigned char inputA, unsigned char inputB) override;
 
 private:

@@ -159,11 +159,23 @@ void Cipher::initializePositions()
 
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
-	this->cipherState->loadPuzzleData(cipherPuzzleData);
-	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
-	
 	this->gameNode->setVisible(false);
-	this->difficultySelectMenu->setVisible(true);
+	this->difficultySelectMenu->show(cipherPuzzleData, [=]()
+	{
+		this->gameNode->setVisible(true);
+		this->cipherState->loadPuzzleData(cipherPuzzleData, false);
+		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
+	},
+	[=]()
+	{
+		this->gameNode->setVisible(true);
+		this->cipherState->loadPuzzleData(cipherPuzzleData, true);
+		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
+	},
+	[=]()
+	{
+		this->onMenuExit();
+	});
 }
 
 void Cipher::setBackClickCallback(std::function<void()> backClickCallback)

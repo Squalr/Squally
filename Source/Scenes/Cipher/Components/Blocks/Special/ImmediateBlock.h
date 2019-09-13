@@ -8,14 +8,13 @@ class SmartAsciiLabel;
 class ImmediateBlock : public BlockBase
 {
 public:
-	static ImmediateBlock* create(BlockType blockType = BlockType::Normal);
+	static ImmediateBlock* create(unsigned char immediate = 0, BlockType blockType = BlockType::Normal);
 
 	void setValue(unsigned char value);
 	unsigned char getValue();
 	
 protected:
 	unsigned char compute() override;
-	BlockBase* spawn() override;
 
 private:
 	typedef BlockBase super;

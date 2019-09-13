@@ -2,6 +2,8 @@
 
 #include "Scenes/Cipher/States/CipherStateBase.h"
 
+class BlockBase;
+
 class CipherStateLoadInitialState : public CipherStateBase
 {
 public:
@@ -17,4 +19,10 @@ private:
 	typedef CipherStateBase super;
 	CipherStateLoadInitialState();
 	~CipherStateLoadInitialState();
+
+	void buildSpawnMap();
+	void spawnBlocks(CipherState* cipherState);
+	void spawnBlock(BlockBase* block, int index, int total);
+
+	std::map<std::string, std::function<void(int, int)>> spawnMap;
 };

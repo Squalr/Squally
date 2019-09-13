@@ -10,10 +10,12 @@ using namespace cocos2d;
 CipherPuzzleData* CipherPuzzleData::create(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
+		std::vector<std::string> easyTokens,
+		std::vector<std::string> hardTokens,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards)
+		std::string bonusReward)
 {
-	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMapEasy, inputOutputMapHard, rewards, bonusRewards);
+	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, rewards, bonusReward);
 
 	instance->autorelease();
 
@@ -23,13 +25,17 @@ CipherPuzzleData* CipherPuzzleData::create(
 CipherPuzzleData::CipherPuzzleData(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
+		std::vector<std::string> easyTokens,
+		std::vector<std::string> hardTokens,
 		std::vector<std::string> rewards,
-		std::vector<std::string> bonusRewards)
+		std::string bonusReward)
 {
 	this->inputOutputMapEasy = inputOutputMapEasy;
 	this->inputOutputMapHard = inputOutputMapHard;
+	this->easyTokens = easyTokens;
+	this->hardTokens = hardTokens;
 	this->rewards = rewards;
-	this->bonusRewards = bonusRewards;
+	this->bonusReward = bonusReward;
 }
 
 CipherPuzzleData::~CipherPuzzleData()
@@ -46,9 +52,16 @@ CipherPuzzleData* CipherPuzzleData::clone()
 	return CipherPuzzleData::create(
 		this->inputOutputMapEasy,
 		this->inputOutputMapHard,
+		this->easyTokens,
+		this->hardTokens,
 		this->rewards,
-		this->bonusRewards
+		this->bonusReward
 	);
+}
+
+bool CipherPuzzleData::hasHardMode()
+{
+	return !this->inputOutputMapHard.empty();
 }
 
 std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapEasy()
@@ -61,12 +74,22 @@ std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInput
 	return this->inputOutputMapHard;
 }
 
+std::vector<std::string> CipherPuzzleData::getEasyTokens()
+{
+	return this->easyTokens;
+}
+
+std::vector<std::string> CipherPuzzleData::getHardTokens()
+{
+	return this->hardTokens;
+}
+
 std::vector<std::string> CipherPuzzleData::getRewards()
 {
 	return this->rewards;
 }
 
-std::vector<std::string> CipherPuzzleData::getBonusRewards()
+std::string CipherPuzzleData::getBonusReward()
 {
-	return this->bonusRewards;
+	return this->bonusReward;
 }

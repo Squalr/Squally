@@ -23,9 +23,11 @@
 
 using namespace cocos2d;
 
-ImmediateBlock* ImmediateBlock::create(BlockType blockType)
+ImmediateBlock* ImmediateBlock::create(unsigned char immediate, BlockType blockType)
 {
 	ImmediateBlock* instance = new ImmediateBlock(blockType);
+
+	instance->setValue(immediate);
 
 	instance->autorelease();
 
@@ -125,14 +127,6 @@ void ImmediateBlock::initializeListeners()
 			this->loadDisplayValue();
 		}
 	}));
-
-	if (this->blockType != BlockBase::BlockType::Static)
-	{
-		this->block->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-		{
-			CipherEvents::TriggerOpenAsciiTable(CipherEvents::CipherOpenAsciiTableArgs(this));
-		});
-	}
 }
 
 void ImmediateBlock::setValue(unsigned char value)
@@ -188,24 +182,9 @@ void ImmediateBlock::loadDisplayValue()
 			break;
 		}
 	}
-
-	if (this->blockType == BlockBase::BlockType::Toolbox)
-	{
-		this->displayLabel->setVisible(false);
-	}
 }
 
 unsigned char ImmediateBlock::compute()
 {
 	return this->charValue;
-}
-
-BlockBase* ImmediateBlock::spawn()
-{
-	ImmediateBlock* spawn = ImmediateBlock::create(BlockType::Normal);
-
-	spawn->displayDataType = this->displayDataType;
-	spawn->loadDisplayValue();
-
-	return spawn;
 }

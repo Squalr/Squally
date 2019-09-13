@@ -40,11 +40,6 @@ unsigned char GreaterThanOrEqualsBlock::compute()
 	return this->currentInputs[0];
 }
 
-BlockBase* GreaterThanOrEqualsBlock::spawn()
-{
-	return GreaterThanOrEqualsBlock::create();
-}
-
 bool GreaterThanOrEqualsBlock::compare(unsigned char inputA, unsigned char inputB)
 {
 	return inputA >= inputB;

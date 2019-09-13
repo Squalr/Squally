@@ -40,11 +40,6 @@ unsigned char NotEqualsBlock::compute()
 	return this->currentInputs[0];
 }
 
-BlockBase* NotEqualsBlock::spawn()
-{
-	return NotEqualsBlock::create();
-}
-
 bool NotEqualsBlock::compare(unsigned char inputA, unsigned char inputB)
 {
 	return inputA != inputB;

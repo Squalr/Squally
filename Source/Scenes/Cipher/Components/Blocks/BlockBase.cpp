@@ -38,21 +38,21 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
 
-	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
+	if (this->inputType == ConnectionType::Single)
 	{
 		this->inputBolts.push_back(InputBolt::create(this));
 	}
-	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
+	else if (this->inputType == ConnectionType::Double)
 	{
 		this->inputBolts.push_back(InputBolt::create(this));
 		this->inputBolts.push_back(InputBolt::create(this));
 	}
 
-	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
+	if (this->outputType == ConnectionType::Single)
 	{
 		this->outputBolts.push_back(OutputBolt::create());
 	}
-	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
+	else if (this->outputType == ConnectionType::Double)
 	{
 		this->outputBolts.push_back(OutputBolt::create());
 		this->outputBolts.push_back(OutputBolt::create());
@@ -82,11 +82,11 @@ void BlockBase::initializePositions()
 {
 	super::initializePositions();
 
-	if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Single)
+	if (this->inputType == ConnectionType::Single)
 	{
 		this->inputBolts[0]->setPosition(Vec2(0.0f, this->getBoltOffsetY()));
 	}
-	else if (this->blockType != BlockType::Toolbox && this->inputType == ConnectionType::Double)
+	else if (this->inputType == ConnectionType::Double)
 	{
 		this->inputBolts[0]->setPosition(Vec2(-16.0f, this->getBoltOffsetY()));
 		this->inputBolts[1]->setPosition(Vec2(16.0f, this->getBoltOffsetY()));
@@ -94,11 +94,11 @@ void BlockBase::initializePositions()
 
 	this->icon->setPosition(Vec2(0.0f, 4.0f));
 
-	if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Single)
+	if (this->outputType == ConnectionType::Single)
 	{
 		this->outputBolts[0]->setPosition(Vec2(0.0f, -this->getBoltOffsetY()));
 	}
-	else if (this->blockType != BlockType::Toolbox && this->outputType == ConnectionType::Double)
+	else if (this->outputType == ConnectionType::Double)
 	{
 		this->outputBolts[0]->setPosition(Vec2(-16.0f, -this->getBoltOffsetY()));
 		this->outputBolts[1]->setPosition(Vec2(16.0f, -this->getBoltOffsetY()));
@@ -131,74 +131,13 @@ void BlockBase::initializeListeners()
 			{
 				if (!this->isInGameArea())
 				{
-					this->removeConnections();
-
-					// Despawn out-of-bounds nodes
-					GameUtils::changeParent(this, nullptr, false);
+					// TODO: respawn block to start position?
 				}
 			});
 
 			this->block->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
 			{
 				this->setPosition(args->mouseCoords + this->clickDelta);
-			});
-			break;
-		}
-		case BlockType::Toolbox:
-		{
-			this->block->setMousePressCallback([=](InputEvents::MouseEventArgs* args)
-			{
-				this->originalPosition = GameUtils::getScreenBounds(this).origin;
-				this->clickDelta = this->originalPosition - args->mouseCoords;
-
-				CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs([=]()
-				{
-					if (this->spawningBlock == nullptr)
-					{
-						this->spawningBlock = this->spawn();
-
-						return this->spawningBlock;
-					}
-
-					return (BlockBase*)nullptr;
-				}, args->mouseCoords + this->clickDelta));
-
-				this->label->stopAllActions();
-				this->label->setOpacity(0);
-
-				InputEvents::TriggerMouseRefresh(*args);
-			});
-
-			this->block->setMouseDragCallback([=](InputEvents::MouseEventArgs* args)
-			{
-				if (this->spawningBlock != nullptr)
-				{
-					this->spawningBlock->setPosition(args->mouseCoords + this->clickDelta);
-				}
-			});
-
-			this->block->setMouseReleaseNoHitTestCallback([=](InputEvents::MouseEventArgs* args)
-			{
-				args->handle();
-
-				if (this->spawningBlock != nullptr && !this->spawningBlock->isInGameArea())
-				{
-					GameUtils::changeParent(this->spawningBlock, nullptr, true);
-				}
-
-				this->spawningBlock = nullptr;
-			});
-
-			this->block->setMouseInCallback([=](InputEvents::MouseEventArgs* args)
-			{
-				this->label->stopAllActions();
-				this->label->runAction(FadeTo::create(0.25f, 255));
-			});
-
-			this->block->setMouseOutCallback([=](InputEvents::MouseEventArgs* args)
-			{
-				this->label->stopAllActions();
-				this->label->runAction(FadeTo::create(0.25f, 0));
 			});
 			break;
 		}

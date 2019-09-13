@@ -144,10 +144,3 @@ unsigned char SourceBlock::compute()
 {
 	return this->charValue;
 }
-
-BlockBase* SourceBlock::spawn()
-{
-	SourceBlock* spawn = SourceBlock::create(this->cipherIndex);
-
-	return spawn;
-}

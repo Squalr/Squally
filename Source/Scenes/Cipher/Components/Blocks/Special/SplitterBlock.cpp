@@ -51,8 +51,3 @@ unsigned char SplitterBlock::compute()
 
 	return this->currentInputs[0];
 }
-
-BlockBase* SplitterBlock::spawn()
-{
-	return SplitterBlock::create();
-}

@@ -51,8 +51,3 @@ unsigned char DivBlock::compute()
 
 	return this->currentInputs[1] == (unsigned char)(0) ? (unsigned char)(0) : (this->currentInputs[0] / this->currentInputs[1]);
 }
-
-BlockBase* DivBlock::spawn()
-{
-	return DivBlock::create();
-}

@@ -51,8 +51,3 @@ unsigned char AndBlock::compute()
 
 	return this->currentInputs[0] & this->currentInputs[1];
 }
-
-BlockBase* AndBlock::spawn()
-{
-	return AndBlock::create();
-}

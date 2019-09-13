@@ -35,7 +35,7 @@ private:
 	static const std::string MapKeyPropertyRuleEasy;
 	static const std::string MapKeyPropertyRuleHard;
 	static const std::string MapKeyPropertyRewards;
-	static const std::string MapKeyPropertyBonusRewards;
+	static const std::string MapKeyPropertyBonusReward;
 	static const std::string MapKeyPropertyTokensEasy;
 	static const std::string MapKeyPropertyTokensHard;
 };

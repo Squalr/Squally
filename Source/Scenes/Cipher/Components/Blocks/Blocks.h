@@ -4,6 +4,7 @@
 #include "Scenes/Cipher/Components/Blocks/BasicOperators/DivBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BasicOperators/ModBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BasicOperators/MulBlock.h"
+#include "Scenes/Cipher/Components/Blocks/BasicOperators/SubBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/AndBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/CshlBlock.h"
 #include "Scenes/Cipher/Components/Blocks/BinaryOperators/CshrBlock.h"
@@ -23,4 +24,3 @@
 #include "Scenes/Cipher/Components/Blocks/Special/ImmediateBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Special/SourceBlock.h"
 #include "Scenes/Cipher/Components/Blocks/Special/SplitterBlock.h"
-#include "Scenes/Cipher/Components/Blocks/Special/SubBlock.h"

@@ -40,11 +40,6 @@ unsigned char LessThanOrEqualsBlock::compute()
 	return this->currentInputs[0];
 }
 
-BlockBase* LessThanOrEqualsBlock::spawn()
-{
-	return LessThanOrEqualsBlock::create();
-}
-
 bool LessThanOrEqualsBlock::compare(unsigned char inputA, unsigned char inputB)
 {
 	return inputA <= inputB;

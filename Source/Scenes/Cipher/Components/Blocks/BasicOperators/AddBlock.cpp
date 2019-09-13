@@ -51,8 +51,3 @@ unsigned char AddBlock::compute()
 
 	return this->currentInputs[0] + this->currentInputs[1];
 }
-
-BlockBase* AddBlock::spawn()
-{
-	return AddBlock::create();
-}
