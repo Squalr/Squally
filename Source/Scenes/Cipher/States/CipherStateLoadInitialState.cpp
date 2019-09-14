@@ -231,5 +231,7 @@ void CipherStateLoadInitialState::spawnBlock(BlockBase* block, int index, int to
 	// TODO: calculate this based on index & total
 	Vec2 position = Vec2(256.0f, 256.0f);
 
+	block->setSpawnPosition(position);
+
 	CipherEvents::TriggerRequestBlockSpawn(CipherEvents::CipherBlockSpawnArgs(block, position));
 }

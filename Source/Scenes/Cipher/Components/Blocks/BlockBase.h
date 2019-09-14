@@ -22,6 +22,7 @@ public:
 		Static,
 	};
 
+	void setSpawnPosition(cocos2d::Vec2 spawnPosition);
 	void pushInput(unsigned char input);
 	virtual void execute(std::function<void()> onExecuteComplete);
 	void removeConnections();
@@ -62,6 +63,7 @@ private:
 	
 	ConnectionType inputType;
 	ConnectionType outputType;
+	cocos2d::Vec2 spawnPosition;
 	cocos2d::Vec2 originalPosition;
 	cocos2d::Vec2 clickDelta;
 };

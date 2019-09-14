@@ -23,7 +23,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/ItemFound.h"
+#include "Strings/Platformer/Notifications/ItemFound.h"
 #include "Strings/Platformer/Combat/Rewards.h"
 #include "Strings/Platformer/Combat/Victory.h"
 #include "Strings/Menus/Return.h"
@@ -124,7 +124,7 @@ void RewardsMenu::loadRewards()
 
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
-			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Combat_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
 		}
 	}));
 

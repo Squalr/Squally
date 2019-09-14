@@ -28,6 +28,7 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->blockType = blockType;
 	this->inputType = inputType;
 	this->outputType = outputType;
+	this->spawnPosition = Vec2::ZERO;
 	this->originalPosition = Vec2::ZERO;
 	this->clickDelta = Vec2::ZERO;
 	this->inputBolts = std::vector<InputBolt*>();
@@ -111,6 +112,11 @@ void BlockBase::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventExitCipher, [=](EventCustom* eventCustom)
+	{
+		this->removeConnections();
+	}));
+
 	switch (this->blockType)
 	{
 		default:
@@ -131,7 +137,7 @@ void BlockBase::initializeListeners()
 			{
 				if (!this->isInGameArea())
 				{
-					// TODO: respawn block to start position?
+					this->setPosition(this->originalPosition);
 				}
 			});
 
@@ -181,6 +187,11 @@ bool BlockBase::isInGameArea()
 	}
 
 	return false;
+}
+
+void BlockBase::setSpawnPosition(cocos2d::Vec2 spawnPosition)
+{
+	this->spawnPosition = spawnPosition;
 }
 
 void BlockBase::pushInput(unsigned char input)

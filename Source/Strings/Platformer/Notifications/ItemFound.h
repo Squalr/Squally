@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Combat_ItemFound : public LocalizedString
+	class Platformer_Notifications_ItemFound : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_ItemFound* create();
+		static Platformer_Notifications_ItemFound* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Combat_ItemFound();
-		~Platformer_Combat_ItemFound();
+		Platformer_Notifications_ItemFound();
+		~Platformer_Notifications_ItemFound();
 	};
 }

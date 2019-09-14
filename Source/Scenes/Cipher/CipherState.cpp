@@ -103,6 +103,18 @@ void CipherState::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOpenCipher, [=](EventCustom* eventCustom)
+	{
+		this->userBlocks.clear();
+		this->blockContent->removeAllChildren();
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventExitCipher, [=](EventCustom* eventCustom)
+	{
+		this->userBlocks.clear();
+		this->blockContent->removeAllChildren();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestBlockSpawn, [=](EventCustom* eventCustom)
 	{
 		CipherEvents::CipherBlockSpawnArgs* args = static_cast<CipherEvents::CipherBlockSpawnArgs*>(eventCustom->getUserData());

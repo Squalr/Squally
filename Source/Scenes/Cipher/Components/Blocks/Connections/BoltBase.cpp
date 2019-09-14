@@ -51,8 +51,6 @@ void BoltBase::initializeListeners()
 	{
 		if (!this->isCreatingConnection)
 		{
-			this->setConnection(nullptr);
-
 			this->isCreatingConnection = true;
 
 			this->setConnection(Connection::create());
@@ -71,11 +69,10 @@ void BoltBase::initializeListeners()
 		{
 			this->isCreatingConnection = false;
 
-			// Release the connection (it will be re-added to the OutputBolt if a destionation is found)
-			Connection* connection = this->connection;
+			// Destroy the connection (it will be re-added to the OutputBolt if a destionation is found)
 			this->setConnection(nullptr);
 
-			CipherEvents::TriggerRequestConnectionCreate(CipherEvents::CipherConnectionCreateArgs(this, connection, args->mouseCoords));
+			CipherEvents::TriggerRequestConnectionCreate(CipherEvents::CipherConnectionCreateArgs(this, Connection::create(), args->mouseCoords));
 		}
 	});
 }
@@ -84,7 +81,7 @@ void BoltBase::setConnection(Connection* connection)
 {
 	if (this->connection != nullptr)
 	{
-		GameUtils::changeParent(this->connection, nullptr, false);
+		this->removeChild(this->connection);
 	}
 
 	this->connection = connection;

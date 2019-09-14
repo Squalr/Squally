@@ -9,7 +9,6 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
-class ScrollPane;
 class LocalizedLabel;
 
 class CipherStateVictory : public CipherStateBase
@@ -36,6 +35,5 @@ private:
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* rewardsMenu;
 	LocalizedLabel* titleLabel;
-	ScrollPane* rewardsScroll;
-	ClickableTextNode* okayButton;
+	ClickableTextNode* returnButton;
 };
