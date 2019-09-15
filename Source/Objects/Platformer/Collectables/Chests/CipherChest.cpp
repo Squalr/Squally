@@ -4,6 +4,8 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Input/Input.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Maps/GameObject.h"
@@ -11,11 +13,17 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Events/CipherEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPool.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
+
+#include "Strings/Platformer/Notifications/ItemFound.h"
 
 using namespace cocos2d;
 
@@ -24,7 +32,6 @@ const std::string CipherChest::MapKeyPropertyInputsEasy = "inputs-easy";
 const std::string CipherChest::MapKeyPropertyInputsHard = "inputs-hard";
 const std::string CipherChest::MapKeyPropertyRuleEasy = "rule-easy";
 const std::string CipherChest::MapKeyPropertyRuleHard = "rule-hard";
-const std::string CipherChest::MapKeyPropertyRewards = "rewards";
 const std::string CipherChest::MapKeyPropertyBonusReward = "bonus-reward";
 const std::string CipherChest::MapKeyPropertyTokensEasy = "tokens-easy";
 const std::string CipherChest::MapKeyPropertyTokensHard = "tokens-hard";
@@ -68,10 +75,7 @@ void CipherChest::initializeListeners()
 
 void CipherChest::onInteract()
 {
-	CipherEvents::TriggerOpenCipher(CipherEvents::CipherOpenArgs(this->cipherPuzzleData, [=]()
-	{
-		// On success
-	}));
+	CipherEvents::TriggerOpenCipher(CipherEvents::CipherOpenArgs(this->cipherPuzzleData));
 }
 
 CipherPuzzleData* CipherChest::buildPuzzleData()
@@ -112,9 +116,7 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	std::vector<std::string> hardTokens = StrUtils::splitOn(
 		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokensHard, Value("")).asString(), ", ", false
 	);
-	std::vector<std::string> rewards = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRewards, Value("")).asString(), ", ", false
-	);
+
 	std::string bonusRewards = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusReward, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();
@@ -135,5 +137,39 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		inputOutputMapHard.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 	}
 
-	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, rewards, bonusRewards);
+	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, bonusRewards, [=](CipherPuzzleData* puzzleData, bool isHardModeEnabled)
+	{
+		this->onUnlock(puzzleData, isHardModeEnabled);
+	});
+}
+
+void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
+{
+	this->unlock();
+	this->open();
+
+	if (this->chestPool == nullptr)
+	{
+		return;
+	}
+
+	std::string bonusReward = puzzleData->getBonusReward();
+	std::vector<Item*> items = this->chestPool->getItemsFromPool();
+
+	if (isHardModeEnabled)
+	{
+		PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(bonusReward, [&](Item* item)
+		{
+			items.push_back(item);
+		}));
+	}
+
+	for (auto it = items.begin(); it != items.end(); it++)
+	{
+		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+
+		NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+
+		playerInventory->forceInsert(*it);	
+	}
 }

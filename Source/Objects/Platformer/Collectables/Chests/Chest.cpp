@@ -10,11 +10,15 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
+#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPool.h"
+#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPoolDeserializer.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
+
+const std::string Chest::MapKeyPropertyRewardPool = "reward-pool";
 
 Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 {
@@ -22,10 +26,27 @@ Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
+	this->chestPool = nullptr;
+	this->isOpen = false;
 	this->isLocked = false;
 	this->isPlayerColliding = false;
 
 	this->chestOpenArgs = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyArgs, Value("")).asString();
+
+	ChestPoolDeserializer* chestPoolDeserializer = ChestPoolDeserializer::create();
+
+	ValueMap valueMap = ValueMap();
+
+	valueMap[GameObject::MapKeyType] = ChestPoolDeserializer::MapKeyTypeChestPool;
+	valueMap[GameObject::MapKeyName] = GameUtils::getKeyOrDefault(this->properties, Chest::MapKeyPropertyRewardPool, Value("")).asString();
+
+	ObjectDeserializer::ObjectDeserializationRequestArgs deserializeArgs = ObjectDeserializer::ObjectDeserializationRequestArgs(valueMap, [=](ObjectDeserializer::ObjectDeserializationArgs args)
+	{
+		this->chestPool = static_cast<ChestPool*>(args.gameObject);
+		this->addChild(this->chestPool);
+	});
+
+	chestPoolDeserializer->deserialize(&deserializeArgs);
 
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Collectables_Chests_ChestOpen);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Collectables_Chests_ChestClosed);
@@ -88,14 +109,20 @@ void Chest::initializeListeners()
 
 void Chest::open()
 {
+	this->isOpen = true;
 	this->chestClosed->setVisible(false);
 	this->chestOpen->setVisible(true);
+
+	this->toggleInteractMenu();
 }
 
 void Chest::close()
 {
+	this->isOpen = false;
 	this->chestClosed->setVisible(true);
 	this->chestOpen->setVisible(false);
+
+	this->toggleInteractMenu();
 }
 
 void Chest::lock()

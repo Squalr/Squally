@@ -34,9 +34,8 @@ public:
 	struct CipherOpenArgs
 	{
 		CipherPuzzleData* cipherPuzzleData;
-		std::function<void()> onUnlock;
 
-		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData, std::function<void()> onUnlock) : cipherPuzzleData(cipherPuzzleData), onUnlock(onUnlock)
+		CipherOpenArgs(CipherPuzzleData* cipherPuzzleData) : cipherPuzzleData(cipherPuzzleData)
 		{
 		}
 	};
@@ -97,12 +96,13 @@ public:
 	{
 		unsigned char input;
 		unsigned char output;
+		int index;
 		bool autoScroll;
 
-		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output) : input(input), output(output), autoScroll(false)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, int index) : input(input), output(output), index(index), autoScroll(false)
 		{
 		}
-		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, bool autoScroll) : input(input), output(output), autoScroll(autoScroll)
+		CipherChangeActiveCipherArgs(unsigned char input, unsigned char output, int index, bool autoScroll) : input(input), output(output), index(index), autoScroll(autoScroll)
 		{
 		}
 	};

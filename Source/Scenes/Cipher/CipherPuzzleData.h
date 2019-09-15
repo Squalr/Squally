@@ -3,7 +3,8 @@
 
 #include "Engine/SmartNode.h"
 
-class CipherPuzzleData : public SmartNode
+class 
+CipherPuzzleData : public SmartNode
 {
 public:
 	static CipherPuzzleData* create(
@@ -11,8 +12,8 @@ public:
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> easyTokens,
 		std::vector<std::string> hardTokens,
-		std::vector<std::string> rewards,
-		std::string bonusReward);
+		std::string bonusReward,
+		std::function<void(CipherPuzzleData*, bool)> onUnlock);
 	
 	CipherPuzzleData* clone();
 	bool hasHardMode();
@@ -20,8 +21,8 @@ public:
 	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapHard();
 	std::vector<std::string> getEasyTokens();
 	std::vector<std::string> getHardTokens();
-	std::vector<std::string> getRewards();
 	std::string getBonusReward();
+	std::function<void(CipherPuzzleData*, bool)> onUnlock;
 
 private:
 	typedef SmartNode super;
@@ -29,8 +30,8 @@ private:
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
 		std::vector<std::string> easyTokens,
 		std::vector<std::string> hardTokens,
-		std::vector<std::string> rewards,
-		std::string bonusReward);
+		std::string bonusReward,
+		std::function<void(CipherPuzzleData*, bool)> onUnlock);
 	~CipherPuzzleData();
 
 	void initializeListeners() override;
@@ -39,6 +40,5 @@ private:
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard;
 	std::vector<std::string> easyTokens;
 	std::vector<std::string> hardTokens;
-	std::vector<std::string> rewards;
 	std::string bonusReward;
 };

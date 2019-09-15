@@ -102,6 +102,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 		CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
 			std::get<0>(cipherState->inputOutputMap[index]),
 			std::get<1>(cipherState->inputOutputMap[index]),
+			index,
 			true
 		));
 

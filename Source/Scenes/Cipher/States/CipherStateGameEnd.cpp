@@ -30,6 +30,8 @@ void CipherStateGameEnd::onBeforeStateEnter(CipherState* cipherState)
 void CipherStateGameEnd::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
+	
+	CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(true));
 }
 
 void CipherStateGameEnd::onStateReload(CipherState* cipherState)

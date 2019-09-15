@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Collectables/Chest.h"
+#include "Objects/Platformer/Collectables/Chests/Chest.h"
 
 using namespace cocos2d;
 
@@ -27,6 +27,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	CipherPuzzleData* buildPuzzleData();
+	void onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled);
 
 	CipherPuzzleData* cipherPuzzleData;
 
@@ -34,7 +35,6 @@ private:
 	static const std::string MapKeyPropertyInputsHard;
 	static const std::string MapKeyPropertyRuleEasy;
 	static const std::string MapKeyPropertyRuleHard;
-	static const std::string MapKeyPropertyRewards;
 	static const std::string MapKeyPropertyBonusReward;
 	static const std::string MapKeyPropertyTokensEasy;
 	static const std::string MapKeyPropertyTokensHard;

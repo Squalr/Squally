@@ -2,15 +2,6 @@
 
 #include "Scenes/Cipher/States/CipherStateBase.h"
 
-namespace cocos2d
-{
-	class LayerColor;
-	class Sprite;
-}
-
-class ClickableTextNode;
-class LocalizedLabel;
-
 class CipherStateVictory : public CipherStateBase
 {
 public:
@@ -26,14 +17,4 @@ private:
 	typedef CipherStateBase super;
 	CipherStateVictory();
 	~CipherStateVictory();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	void giveRewards(CipherState* cipherState);
-
-	CipherState* activeCipherState;
-	cocos2d::LayerColor* backdrop;
-	cocos2d::Sprite* rewardsMenu;
-	LocalizedLabel* titleLabel;
-	ClickableTextNode* returnButton;
 };

@@ -91,20 +91,7 @@ void InputsOutputsPanel::initializeListeners()
 
 		if (args != nullptr)
 		{
-			int index = 0;
-
-			for (index = 0; index < this->currentCipherState->inputOutputMap.size(); index++)
-			{
-				unsigned char input = std::get<0>(this->currentCipherState->inputOutputMap[index]);
-				unsigned char output = std::get<1>(this->currentCipherState->inputOutputMap[index]);
-
-				if (input == args->input && output == args->output)
-				{
-					break;
-				}
-			}
-
-			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(index) * -(56.0f + 8.0f) - 32.0f + 4.0f));
+			this->ioSelectionMarker->setPosition(Vec2(-128.0f, float(args->index) * -(56.0f + 8.0f) - 32.0f + 4.0f));
 			
 			if (args->autoScroll)
 			{
@@ -213,6 +200,7 @@ void InputsOutputsPanel::selectInputOutputPairAtIndex(int index)
 
 	CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
 		std::get<0>(this->currentCipherState->inputOutputMap[index]),
-		std::get<1>(this->currentCipherState->inputOutputMap[index])
+		std::get<1>(this->currentCipherState->inputOutputMap[index]),
+		index
 	));
 }
