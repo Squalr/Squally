@@ -43,4 +43,5 @@ private:
 	std::string chestOpenArgs;
 
 	static const std::string MapKeyPropertyRewardPool;
+	static const std::string SaveKeyIsOpen;
 };

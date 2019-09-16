@@ -19,6 +19,7 @@
 using namespace cocos2d;
 
 const std::string Chest::MapKeyPropertyRewardPool = "reward-pool";
+const std::string Chest::SaveKeyIsOpen = "SAVE_KEY_IS_OPEN";
 
 Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 {
@@ -54,8 +55,6 @@ Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 	this->chestOpen->addChild(chestOpenFrontSprite);
 	this->chestClosed->addChild(chestClosedSprite);
 
-	this->close();
-
 	this->addChild(this->interactCollision);
 	this->addChild(this->chestClosed);
 	this->addChild(this->chestOpen);
@@ -70,7 +69,14 @@ void Chest::onEnter()
 {
 	super::onEnter();
 
-	this->scheduleUpdate();
+	if (this->getObjectStateOrDefault(Chest::SaveKeyIsOpen, Value(false)).asBool())
+	{
+		this->open();
+	}
+	else
+	{
+		this->close();
+	}
 }
 
 void Chest::initializePositions()
@@ -100,7 +106,7 @@ void Chest::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
-		if (!this->isLocked && this->isPlayerColliding)
+		if (!this->isOpen && !this->isLocked && this->isPlayerColliding)
 		{
 			this->onInteract();
 		}
@@ -113,6 +119,8 @@ void Chest::open()
 	this->chestClosed->setVisible(false);
 	this->chestOpen->setVisible(true);
 
+	this->saveObjectState(Chest::SaveKeyIsOpen, Value(true));
+
 	this->toggleInteractMenu();
 }
 
@@ -121,6 +129,8 @@ void Chest::close()
 	this->isOpen = false;
 	this->chestClosed->setVisible(true);
 	this->chestOpen->setVisible(false);
+
+	this->saveObjectState(Chest::SaveKeyIsOpen, Value(false));
 
 	this->toggleInteractMenu();
 }
@@ -141,7 +151,7 @@ void Chest::unlock()
 
 void Chest::toggleInteractMenu()
 {
-	if (this->isLocked || !this->isPlayerColliding)
+	if (this->isOpen || this->isLocked || !this->isPlayerColliding)
 	{
 		this->interactMenu->hide();
 	}
