@@ -24,6 +24,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemAttacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemEndOfDemo.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemRequiredLevel.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSelfHack.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Liquids/Water.h"

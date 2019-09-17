@@ -159,6 +159,18 @@ void EntityMovementBehavior::update(float dt)
 			break;
 		}
 	}
+
+	if (std::abs(movement.y) < 0.15f)
+	{
+		if (std::abs(movement.x) > 0.15f)
+		{
+			this->entity->getAnimations()->playAnimation("Walk");
+		}
+		else
+		{
+			this->entity->getAnimations()->playAnimation("Idle");
+		}
+	}
 	
 	// Save velocity
 	movementCollision->setVelocity(velocity);
