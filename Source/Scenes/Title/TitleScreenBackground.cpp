@@ -53,7 +53,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat);
+	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand);
 	this->mainhand->setOffset(Vec2(0.0f, -16.0f));
@@ -127,7 +127,7 @@ void TitleScreenBackground::onEnter()
 
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("AttackStabLite");
+		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle,  1.0f);
 		jiggleSlime->execute();
 	});
 

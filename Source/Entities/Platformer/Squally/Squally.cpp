@@ -133,11 +133,11 @@ void Squally::performSwimAnimation()
 {
 	if (this->equipmentInventory->getWeapon() != nullptr)
 	{
-		this->animationNode->playAnimation("SwimWithWeapon");
+		this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 	}
 	else
 	{
-		this->animationNode->playAnimation("Swim");
+		this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 	}
 }
 

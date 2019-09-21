@@ -147,6 +147,11 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 
 void AnimationPart::restoreSprite()
 {
+	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
+	{
+		return;
+	}
+	
 	this->spriterAnimationPart->getImage()->setPath(this->originalPath);
 }
 

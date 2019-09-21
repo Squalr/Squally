@@ -27,9 +27,9 @@ public:
 		PauseOnAnimationComplete
 	};
 
-	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
-	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
-	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
+	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
 	AnimationPart* getAnimationPart(std::string partName);
 	void restoreAnimationPart(std::string partName);
 	void setFlippedX(bool flippedX);
@@ -50,5 +50,6 @@ private:
 	virtual ~SmartAnimationNode();
 
 	bool initialized;
+	float currentAnimationPriority;
 	std::map<std::string, AnimationPart*> animationParts;
 };

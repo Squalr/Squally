@@ -150,7 +150,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		this->movementCollision->setVerticalDampening(EntityMovementCollisionBehavior::SwimVerticalDrag);
 
 		// Clear current animation
-		this->entity->getAnimations()->playAnimation("Idle");
+		this->entity->getAnimations()->playAnimation();
 		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -167,7 +167,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			// Give a velocity boost for jumping out of water
 			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehavior::WaterJumpVelocity));
 
-			this->entity->getAnimations()->playAnimation("Jump");
+			this->entity->getAnimations()->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
 		}
 		
 		return CollisionObject::CollisionResult::DoNothing;

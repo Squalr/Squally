@@ -239,7 +239,7 @@ void TimelineEntry::addTime(float dt)
 void TimelineEntry::performCast()
 {
 	this->isCasting = false;
-	this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation());
+	this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
 
 	this->currentCast->execute(
 		this->entity,

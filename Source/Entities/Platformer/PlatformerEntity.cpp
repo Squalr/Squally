@@ -64,7 +64,7 @@ PlatformerEntity::PlatformerEntity(
 	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
 
 	this->animationNode->setScale(scale);
-	this->animationNode->playAnimation("Idle");
+	this->animationNode->playAnimation();
 	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 	
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
@@ -127,12 +127,12 @@ float PlatformerEntity::getFloatHeight()
 
 void PlatformerEntity::performSwimAnimation()
 {
-	this->animationNode->playAnimation("Swim");
+	this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 }
 
 void PlatformerEntity::performJumpAnimation()
 {
-	this->animationNode->playAnimation("Jump");
+	this->animationNode->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
 }
 
 Node* PlatformerEntity::getFloatNode()

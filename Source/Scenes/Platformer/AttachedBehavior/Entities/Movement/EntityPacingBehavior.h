@@ -25,6 +25,8 @@ private:
 
 	PlatformerEntity* entity;
 	cocos2d::Vec2 anchorPosition;
+	float destinationDelta;
 
+	static const float TravelDistanceMin;
 	static const float TravelDistanceMax;
 };

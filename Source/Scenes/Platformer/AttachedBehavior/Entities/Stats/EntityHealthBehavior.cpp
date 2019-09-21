@@ -92,7 +92,7 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 
 	if (this->entity != nullptr && this->entity->getStateOrDefaultInt(StateKeys::Health, 0) <= 0)
 	{
-		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
 	}
 }
 
@@ -108,7 +108,7 @@ void EntityHealthBehavior::kill(bool loadDeadAnim)
 
 	if (loadDeadAnim && this->entity != nullptr)
 	{
-		this->entity->getAnimations()->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->entity->getAnimations()->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
 	}
 }
 

@@ -85,7 +85,7 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 	// Clear current animation
 	if (this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true) && this->entity->getStateOrDefaultFloat(StateKeys::VelocityY, 0.0f) <= 0.0f)
 	{
-		this->entity->getAnimations()->playAnimation("Idle");
+		this->entity->getAnimations()->playAnimation();
 	}
 }
 

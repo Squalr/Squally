@@ -126,7 +126,7 @@ void NotificationHud::initializeListeners()
 		this->closeNotificationMenu();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this->takeoverNode))
 		{

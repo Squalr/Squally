@@ -24,7 +24,7 @@ Shiftman::Shiftman(ValueMap& properties) : super::IsometricEntity(properties,
 {
 	this->registerHackables();
 
-	//// this->animationNode->playAnimation("Idle_SE");
+	//// this->animationNode->playAnimation("Idle_SE", 0.5f);
 }
 
 Shiftman::~Shiftman()

@@ -47,7 +47,7 @@ void EntityPreview::onEnter()
 {
 	super::onEnter();
 
-	this->previewAnimation->playAnimation("Idle");
+	this->previewAnimation->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
 }
 
 void EntityPreview::initializePositions()

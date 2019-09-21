@@ -70,7 +70,7 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 	}
 
 	this->isPerformingOutOfCombatAttack = true;
-	this->entity->getAnimations()->playAnimation(attackAnimation);
+	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
 	EntityWeaponCollisionBehavior* weaponBehavior = this->entity->getAttachedBehavior<EntityWeaponCollisionBehavior>();
 
 	this->runAction(Sequence::create(
