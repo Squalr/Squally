@@ -1,3 +1,18 @@
 #pragma once
 
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary0.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary1.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary2.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary3.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary4.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary5.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary6.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary7.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary8.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary9.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary10.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary11.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary12.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary13.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary14.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Binary/Binary15.h"

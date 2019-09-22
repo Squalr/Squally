@@ -1,0 +1,54 @@
+#include "Binary10.h"
+
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Objects/Platformer/Collectables/IOU.h"
+
+#include "Resources/ObjectResources.h"
+
+#include "Strings/Hexus/Cards/Binary10.h"
+
+using namespace cocos2d;
+
+const std::string Binary10::SaveKeyBinary10 = "binary-10";
+
+Binary10* Binary10::create()
+{
+	Binary10* instance = new Binary10();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+Binary10::Binary10() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+{
+}
+
+Binary10::~Binary10()
+{
+}
+
+Item* Binary10::clone()
+{
+	return Binary10::create();
+}
+
+std::string Binary10::getItemName()
+{
+	return Binary10::SaveKeyBinary10;
+}
+
+LocalizedString* Binary10::getString()
+{
+	return Strings::Hexus_Cards_Binary10::create();
+}
+
+std::string Binary10::getIconResource()
+{
+	return ObjectResources::Collectables_Cards_CardBinary;
+}
+
+std::string Binary10::getSerializationKey()
+{
+	return Binary10::SaveKeyBinary10;
+}

@@ -34,6 +34,24 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 {
 	this->deserializers = std::map<std::string, std::function<Item*()>>();
 
+	// Hexus Cards
+	this->deserializers[Binary0::SaveKeyBinary0] = [=]() { return (Item*)Binary0::create(); };
+	this->deserializers[Binary1::SaveKeyBinary1] = [=]() { return (Item*)Binary1::create(); };
+	this->deserializers[Binary2::SaveKeyBinary2] = [=]() { return (Item*)Binary2::create(); };
+	this->deserializers[Binary3::SaveKeyBinary3] = [=]() { return (Item*)Binary3::create(); };
+	this->deserializers[Binary4::SaveKeyBinary4] = [=]() { return (Item*)Binary4::create(); };
+	this->deserializers[Binary5::SaveKeyBinary5] = [=]() { return (Item*)Binary5::create(); };
+	this->deserializers[Binary6::SaveKeyBinary6] = [=]() { return (Item*)Binary6::create(); };
+	this->deserializers[Binary7::SaveKeyBinary7] = [=]() { return (Item*)Binary7::create(); };
+	this->deserializers[Binary8::SaveKeyBinary8] = [=]() { return (Item*)Binary8::create(); };
+	this->deserializers[Binary9::SaveKeyBinary9] = [=]() { return (Item*)Binary9::create(); };
+	this->deserializers[Binary10::SaveKeyBinary10] = [=]() { return (Item*)Binary10::create(); };
+	this->deserializers[Binary11::SaveKeyBinary11] = [=]() { return (Item*)Binary11::create(); };
+	this->deserializers[Binary12::SaveKeyBinary12] = [=]() { return (Item*)Binary12::create(); };
+	this->deserializers[Binary13::SaveKeyBinary13] = [=]() { return (Item*)Binary13::create(); };
+	this->deserializers[Binary14::SaveKeyBinary14] = [=]() { return (Item*)Binary15::create(); };
+	this->deserializers[Binary15::SaveKeyBinary15] = [=]() { return (Item*)Binary15::create(); };
+
 	// Consumables
 	this->deserializers[HealthPotion::SaveKeyHealthPotion] = [=]() { return (Item*)HealthPotion::create(); };
 	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };

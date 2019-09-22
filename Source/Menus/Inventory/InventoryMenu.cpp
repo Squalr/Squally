@@ -20,6 +20,7 @@
 #include "Menus/Inventory/ItemPreview.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -345,9 +346,14 @@ void InventoryMenu::scrollFilterUp()
 			this->setActiveFilter(ActiveFilter::Consumables);
 			break;
 		}
-		case ActiveFilter::Misc:
+		case ActiveFilter::Hexus:
 		{
 			this->setActiveFilter(ActiveFilter::Crafting);
+			break;
+		}
+		case ActiveFilter::Misc:
+		{
+			this->setActiveFilter(ActiveFilter::Hexus);
 			break;
 		}
 		default:
@@ -379,6 +385,11 @@ void InventoryMenu::scrollFilterDown()
 			break;
 		}
 		case ActiveFilter::Crafting:
+		{
+			this->setActiveFilter(ActiveFilter::Hexus);
+			break;
+		}
+		case ActiveFilter::Hexus:
 		{
 			this->setActiveFilter(ActiveFilter::Misc);
 			break;
@@ -596,6 +607,16 @@ void InventoryMenu::updateAndPositionItemText()
 			case ActiveFilter::Crafting:
 			{
 				if (dynamic_cast<Consumable*>(*it) != nullptr)
+				{
+					filteredItems.push_back(*it);
+					filteredItemLabels.push_back(this->itemLabels[index]);
+				}
+
+				break;
+			}
+			case ActiveFilter::Hexus:
+			{
+				if (dynamic_cast<HexusCard*>(*it) != nullptr)
 				{
 					filteredItems.push_back(*it);
 					filteredItemLabels.push_back(this->itemLabels[index]);
