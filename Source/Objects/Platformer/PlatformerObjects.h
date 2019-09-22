@@ -7,7 +7,6 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
 #include "Objects/Platformer/Collectables/Chests/CipherChest.h"
-#include "Objects/Platformer/Collectables/Doubloon.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Objects/Platformer/Doors/CastleGate/CastleGate.h"
 #include "Objects/Platformer/Doors/EdgePortal.h"

@@ -234,6 +234,10 @@ namespace UIResources
 	extern const std::string Menus_Icons_CrossHair;
 	extern const std::string Menus_Icons_CrystalShard;
 	extern const std::string Menus_Icons_Crystals;
+	extern const std::string Menus_Icons_Currency_GOLD_1;
+	extern const std::string Menus_Icons_Currency_GOLD_2;
+	extern const std::string Menus_Icons_Currency_GOLD_3;
+	extern const std::string Menus_Icons_Currency_GOLD_4;
 	extern const std::string Menus_Icons_Diamond;
 	extern const std::string Menus_Icons_Dice;
 	extern const std::string Menus_Icons_Egg;

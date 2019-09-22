@@ -46,9 +46,9 @@ HexusRewardsMenu* HexusRewardsMenu::getInstance()
 HexusRewardsMenu::HexusRewardsMenu()
 {
 	this->background = Sprite::create(HexusResources::Menus_WoodBackground);
-	this->goldSprite = Sprite::create(ObjectResources::Items_Currency_GOLD_2);
-	this->goldSpriteLesser = Sprite::create(ObjectResources::Items_Currency_GOLD_1);
-	this->goldSpriteChapterClear = Sprite::create(ObjectResources::Items_Currency_GOLD_4);
+	this->goldSprite = Sprite::create(UIResources::Menus_Icons_Currency_GOLD_2);
+	this->goldSpriteLesser = Sprite::create(UIResources::Menus_Icons_Currency_GOLD_1);
+	this->goldSpriteChapterClear = Sprite::create(UIResources::Menus_Icons_Currency_GOLD_4);
 	this->goldString = ConstantString::create();
 	this->goldLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
 	this->rewardSound = Sound::create(SoundResources::Hexus_Reward);
