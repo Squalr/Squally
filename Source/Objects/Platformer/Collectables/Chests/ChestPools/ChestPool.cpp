@@ -10,19 +10,27 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/ShopEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPool.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-ChestPool::ChestPool(ValueMap& properties, std::string poolName, int minItems, int maxItems) : super(properties)
+ChestPool::ChestPool(ValueMap& properties, std::string poolName, int minItems, int maxItems, CardPool* cardPool) : super(properties)
 {
 	this->poolName = poolName;
 	this->minItems = minItems;
 	this->maxItems = maxItems;
+	this->cardPool = cardPool;
 	this->itemPool = std::vector<std::tuple<Item*, float>>();
 	this->weightSum = 0.0f;
 	this->itemsNode = Node::create();
+
+	if (this->cardPool != nullptr)
+	{
+		this->addChild(this->cardPool);
+	}
 
 	this->addChild(this->itemsNode);
 }
@@ -60,6 +68,17 @@ std::vector<Item*> ChestPool::getItemsFromPool()
 {
 	int itemCount = RandomHelper::random_int(this->minItems, this->maxItems);
 	std::vector<Item*> items = std::vector<Item*>();
+
+	// Always include a hexus card!
+	if (this->cardPool != nullptr)
+	{
+		HexusCard* hexusCard = this->cardPool->getCardFromPool();
+
+		if (hexusCard != nullptr)
+		{
+			items.push_back(hexusCard);
+		}
+	}
 
 	for (int index = 0; index < itemCount; index++)
 	{

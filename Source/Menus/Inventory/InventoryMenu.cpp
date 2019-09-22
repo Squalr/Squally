@@ -35,6 +35,7 @@
 #include "Strings/Menus/Inventory/Crafting.h"
 #include "Strings/Menus/Inventory/Equipment.h"
 #include "Strings/Menus/Inventory/Inventory.h"
+#include "Strings/Menus/Inventory/Hexus.h"
 #include "Strings/Menus/Inventory/Misc.h"
 #include "Strings/Menus/Return.h"
 
@@ -106,18 +107,21 @@ InventoryMenu::InventoryMenu()
 	this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create(), Sprite::create(UIResources::Menus_InventoryMenu_EquipmentIcon));
 	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create(), Sprite::create(UIResources::Menus_InventoryMenu_ConsumablesIcon));
 	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcon));
+	this->hexusLabel = this->buildMenuLabel(Strings::Menus_Inventory_Hexus::create(), Sprite::create(UIResources::Menus_InventoryMenu_HexusIcon));
 	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create(), Sprite::create(UIResources::Menus_InventoryMenu_MiscIcon));
 
 	this->filterLabels.push_back(this->allLabel);
 	this->filterLabels.push_back(this->equipmentLabel);
 	this->filterLabels.push_back(this->consumablesLabel);
 	this->filterLabels.push_back(this->craftingLabel);
+	this->filterLabels.push_back(this->hexusLabel);
 	this->filterLabels.push_back(this->miscLabel);
 	
 	this->filterNodeContent->addChild(this->allLabel);
 	this->filterNodeContent->addChild(this->equipmentLabel);
 	this->filterNodeContent->addChild(this->consumablesLabel);
 	this->filterNodeContent->addChild(this->craftingLabel);
+	this->filterNodeContent->addChild(this->hexusLabel);
 	this->filterNodeContent->addChild(this->miscLabel);
 	this->contentNode->addChild(this->selectedFilterRowActive);
 	this->contentNode->addChild(this->selectedFilterRowInactive);
@@ -509,6 +513,13 @@ void InventoryMenu::positionFilterText()
 			this->craftingLabel->setPositionX(XOffset);
 			this->craftingLabel->setPositionY(this->craftingLabel->getPositionY() + YOffset);
 			this->craftingLabel->setPositionZ(ZOffset);
+			break;
+		}
+		case ActiveFilter::Hexus:
+		{
+			this->hexusLabel->setPositionX(XOffset);
+			this->hexusLabel->setPositionY(this->hexusLabel->getPositionY() + YOffset);
+			this->hexusLabel->setPositionZ(ZOffset);
 			break;
 		}
 		case ActiveFilter::Misc:

@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 
+class CardPool;
 class Item;
 
 class ChestPool : public GameObject
@@ -11,7 +12,7 @@ public:
 	Item* getItemFromPool();
 
 protected:
-	ChestPool(cocos2d::ValueMap& properties, std::string poolName, int minItems, int maxItems);
+	ChestPool(cocos2d::ValueMap& properties, std::string poolName, int minItems, int maxItems, CardPool* cardPool);
 	~ChestPool();
 	void onEnter() override;
 	void initializePositions() override;
@@ -24,6 +25,7 @@ private:
 
 	void calculateWeightSum();
 
+	CardPool* cardPool;
 	cocos2d::Node* itemsNode;
 
 	std::string poolName;

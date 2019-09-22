@@ -52,6 +52,7 @@ private:
 		Equipment,
 		Consumables,
 		Crafting,
+		Hexus,
 		Misc
 	};
 
@@ -98,6 +99,7 @@ private:
 	cocos2d::Node* equipmentLabel;
 	cocos2d::Node* consumablesLabel;
 	cocos2d::Node* craftingLabel;
+	cocos2d::Node* hexusLabel;
 	cocos2d::Node* miscLabel;
 
 	std::vector<Item*> inventoryItems;

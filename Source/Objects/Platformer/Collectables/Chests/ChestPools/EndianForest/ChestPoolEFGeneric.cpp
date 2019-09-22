@@ -6,6 +6,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -23,7 +24,7 @@ ChestPoolEFGeneric* ChestPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(properties, ChestPoolEFGeneric::PoolName, 1, 1)
+ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(properties, ChestPoolEFGeneric::PoolName, 1, 1, CardPoolTier1::create())
 {
 	this->addItemToPool(HealthPotion::create(), 1.0f);
 	this->addItemToPool(ManaPotion::create(), 1.0f);

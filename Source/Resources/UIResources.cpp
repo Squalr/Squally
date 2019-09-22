@@ -334,6 +334,7 @@ const std::string UIResources::Menus_InventoryMenu_CraftingIcon = "Private/UI/Me
 const std::string UIResources::Menus_InventoryMenu_EquipmentIcon = "Private/UI/Menus/InventoryMenu/EquipmentIcon.png";
 const std::string UIResources::Menus_InventoryMenu_EquipmentMenu = "Private/UI/Menus/InventoryMenu/EquipmentMenu.png";
 const std::string UIResources::Menus_InventoryMenu_EquippedIcon = "Private/UI/Menus/InventoryMenu/EquippedIcon.png";
+const std::string UIResources::Menus_InventoryMenu_HexusIcon = "Private/UI/Menus/InventoryMenu/HexusIcon.png";
 const std::string UIResources::Menus_InventoryMenu_InventoryMenu = "Private/UI/Menus/InventoryMenu/InventoryMenu.png";
 const std::string UIResources::Menus_InventoryMenu_MiscIcon = "Private/UI/Menus/InventoryMenu/MiscIcon.png";
 const std::string UIResources::Menus_InventoryMenu_RowSelectActive = "Private/UI/Menus/InventoryMenu/RowSelectActive.png";
