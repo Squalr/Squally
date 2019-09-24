@@ -6,6 +6,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -24,7 +25,7 @@ ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName)
+ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName, CardShopPoolTier1::create())
 {
 	this->addItemToPool(IronSword::create(), 1.0f);
 	this->addItemToPool(WoodenMallet::create(), 1.0f);

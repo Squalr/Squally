@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ItemEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
@@ -10,7 +11,6 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/ShopEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -64,7 +64,7 @@ void ShopItem::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ShopEvents::TriggerRequestItem(ShopEvents::ItemRequestArgs(this->poolName, [=](Item* item)
+	ItemEvents::TriggerRequestItem(ItemEvents::ItemRequestArgs(this->poolName, [=](Item* item)
 	{
 		this->item = item;
 

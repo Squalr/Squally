@@ -6,6 +6,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -24,7 +25,7 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName)
+ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName, CardShopPoolTier1::create())
 {
 	this->addItemToPool(HealthPotion::create(), 1.0f);
 	this->addItemToPool(ManaPotion::create(), 1.0f);

@@ -1,30 +1,21 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Engine/Inventory/ItemPool.h"
 
 class HexusCard;
 
-class CardPool : public GameObject
+class CardPool : public ItemPool
 {
 public:
 	HexusCard* getCardFromPool();
 
 protected:
-	CardPool();
+	CardPool(int maxCards = 256);
 	~CardPool();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-
-	void addCardToPool(HexusCard* item, float weight);
 
 private:
-	typedef GameObject super;
+	typedef ItemPool super;
 
-	void calculateWeightSum();
-
-	cocos2d::Node* cardsNode;
-
-	std::vector<std::tuple<HexusCard*, float>> itemPool;
-	float weightSum;
+	int takenCards;
+	int maxCards;
 };

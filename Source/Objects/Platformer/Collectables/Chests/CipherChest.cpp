@@ -154,7 +154,7 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 	}
 
 	std::string bonusReward = puzzleData->getBonusReward();
-	std::vector<Item*> items = this->chestPool->getItemsFromPool();
+	std::vector<Item*> items = this->chestPool->getChestItems();
 
 	if (isHardModeEnabled)
 	{

@@ -8,75 +8,24 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/ShopEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPool.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-ShopPool::ShopPool(ValueMap& properties, std::string poolName) : super(properties)
+ShopPool::ShopPool(ValueMap& properties, std::string poolName, CardPool* cardPool) : super(properties, poolName)
 {
-	this->poolName = poolName;
-	this->itemPool = std::vector<std::tuple<Item*, float>>();
-	this->weightSum = 0.0f;
-	this->itemsNode = Node::create();
+	this->cardPool = cardPool;
 
-	this->addChild(this->itemsNode);
+	if (this->cardPool != nullptr)
+	{
+		this->addChild(this->cardPool);
+	}
 }
 
 ShopPool::~ShopPool()
 {
-}
-
-void ShopPool::onEnter()
-{
-	super::onEnter();
-}
-
-void ShopPool::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPool::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ShopEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
-	{
-		ShopEvents::ItemRequestArgs* args = static_cast<ShopEvents::ItemRequestArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			args->callback(this->getItemFromPool());
-		}
-	}));
-}
-
-Item* ShopPool::getItemFromPool()
-{
-	int index = RandomHelper::random_int(0, int(this->itemPool.size()) - 1);
-
-	return std::get<0>(this->itemPool[index])->clone();
-}
-
-void ShopPool::addItemToPool(Item* item, float weight)
-{
-	std::tuple<Item*, float> itemAndWeight = { item, weight };
-
-	this->itemPool.push_back(itemAndWeight);
-	this->itemsNode->addChild(item);
-
-	this->calculateWeightSum();
-}
-
-void ShopPool::calculateWeightSum()
-{
-	this->weightSum = 0.0f;
-
-	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
-	{
-		this->weightSum += std::get<1>((*it));
-	}
 }

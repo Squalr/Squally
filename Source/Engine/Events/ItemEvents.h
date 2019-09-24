@@ -6,7 +6,7 @@
 
 class Item;
 
-class ShopEvents
+class ItemEvents
 {
 public:
 	static const std::string EventRequestItemFromPoolPrefix;
