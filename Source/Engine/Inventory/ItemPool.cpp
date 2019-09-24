@@ -17,22 +17,16 @@
 
 using namespace cocos2d;
 
-ItemPool::ItemPool(std::string poolName, ItemPool* priorityPool) : ItemPool(ValueMap(), poolName, priorityPool)
+ItemPool::ItemPool(std::string poolName) : ItemPool(ValueMap(), poolName)
 {
 }
 
-ItemPool::ItemPool(const ValueMap& properties, std::string poolName, ItemPool* priorityPool) : super(properties)
+ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
-	this->priorityPool = priorityPool;
 	this->itemPool = std::vector<std::tuple<Item*, float>>();
 	this->weightSum = 0.0f;
 	this->itemsNode = Node::create();
-
-	if (this->priorityPool != nullptr)
-	{
-		this->addChild(this->priorityPool);
-	}
 
 	this->addChild(this->itemsNode);
 }
@@ -57,21 +51,6 @@ void ItemPool::initializeListeners()
 std::vector<Item*> ItemPool::getItemsFromPool(int count)
 {
 	std::vector<Item*> items = std::vector<Item*>();
-
-	// Sample priority pool first
-	if (this->priorityPool != nullptr)
-	{
-		std::vector<Item*> priorityItems = this->priorityPool->getItemsFromPool(count);
-
-		for (auto it = priorityItems.begin(); it != priorityItems.end(); it++)
-		{
-			if (*it != nullptr)
-			{
-				items.push_back(*it);
-				count--;
-			}
-		}
-	}
 
 	for (int index = 0; index < count; index++)
 	{

@@ -17,10 +17,16 @@
 
 using namespace cocos2d;
 
-ChestPool::ChestPool(ValueMap& properties, std::string poolName, int minItems, int maxItems, CardPool* cardPool) : super(properties, poolName, cardPool)
+ChestPool::ChestPool(ValueMap& properties, std::string poolName, int minItems, int maxItems, CardPool* cardPool) : super(properties, poolName)
 {
 	this->minItems = minItems;
 	this->maxItems = maxItems;
+	this->cardPool = cardPool;
+
+	if (this->cardPool != nullptr)
+	{
+		this->addChild(this->cardPool);
+	}
 }
 
 ChestPool::~ChestPool()
@@ -31,5 +37,13 @@ std::vector<Item*> ChestPool::getChestItems()
 {
 	int itemCount = RandomHelper::random_int(this->minItems, this->maxItems);
 
-	return this->getItemsFromPool(itemCount);
+	std::vector<Item*> items = this->cardPool->getCards();
+	std::vector<Item*> cards = this->cardPool->getCards();
+
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		items.push_back(*it);
+	}
+
+	return items;
 }

@@ -29,3 +29,18 @@ ShopPool::ShopPool(ValueMap& properties, std::string poolName, CardPool* cardPoo
 ShopPool::~ShopPool()
 {
 }
+
+Item* ShopPool::getItemFromPool()
+{
+	if (this->cardPool != nullptr)
+	{
+		Item* card = this->cardPool->getCard();
+
+		if (card != nullptr)
+		{
+			return card;
+		}
+	}
+
+	return super::getItemFromPool();
+}

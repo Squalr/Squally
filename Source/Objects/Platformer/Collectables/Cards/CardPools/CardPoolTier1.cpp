@@ -15,7 +15,7 @@ CardPoolTier1* CardPoolTier1::create()
 	return instance;
 }
 
-CardPoolTier1::CardPoolTier1() : super()
+CardPoolTier1::CardPoolTier1() : super(1, 2)
 {
 	this->addItemToPool(Binary0::create(), 1.75f);
 	this->addItemToPool(Binary1::create(), 1.25f);

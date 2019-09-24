@@ -7,15 +7,15 @@ class HexusCard;
 class CardPool : public ItemPool
 {
 public:
-	HexusCard* getCardFromPool();
+	Item* getCard();
+	std::vector<Item*> getCards();
 
 protected:
-	CardPool(int maxCards = 256);
+	CardPool(int minCards, int maxCards);
 	~CardPool();
 
 private:
 	typedef ItemPool super;
 
-	int takenCards;
-	int maxCards;
+	int remainingCards;
 };

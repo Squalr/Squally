@@ -19,6 +19,8 @@ private:
 
 	void calculateWeightSum();
 
+	CardPool* cardPool;
+
 	int minItems;
 	int maxItems;
 };
