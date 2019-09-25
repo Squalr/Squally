@@ -6,6 +6,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Helpers/HelperManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Abilities/SquallyAbilityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Collision/SquallyCollisionBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Squally/Items/SquallyDefaultInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyStatsBehaviorGroup.h"
@@ -28,6 +29,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityBehaviorGroup::create(owner),
 	SquallyAbilityBehaviorGroup::create(owner),
 	SquallyCollisionBehaviorGroup::create(owner),
+	SquallyDefaultInventoryBehavior::create(owner),
 	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),

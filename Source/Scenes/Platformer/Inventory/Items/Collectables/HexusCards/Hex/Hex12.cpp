@@ -45,7 +45,7 @@ LocalizedString* Hex12::getString()
 
 std::string Hex12::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ObjectResources::Collectables_Cards_CardHex;
 }
 
 std::string Hex12::getSerializationKey()

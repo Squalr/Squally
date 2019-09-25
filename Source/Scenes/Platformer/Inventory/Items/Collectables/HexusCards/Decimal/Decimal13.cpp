@@ -45,7 +45,7 @@ LocalizedString* Decimal13::getString()
 
 std::string Decimal13::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ObjectResources::Collectables_Cards_CardDecimal;
 }
 
 std::string Decimal13::getSerializationKey()

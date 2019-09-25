@@ -29,8 +29,10 @@ void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 
 void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
 {
+	const std::string identifier = std::to_string((unsigned long long)(args.target));
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventWarpToLocationPrefix + std::to_string((unsigned long long)(args.target)),
+		PlatformerEvents::EventWarpToLocationPrefix + identifier,
 		&args
 	);
 }

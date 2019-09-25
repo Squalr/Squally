@@ -53,6 +53,7 @@ public:
 	void forceInsert(Item* item, bool doSave = true);
 	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr, bool doSave = true);
 	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr, bool doSave = true);
+	void save();
 
 protected:
 	Inventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
@@ -60,7 +61,6 @@ protected:
 	void onEnter() override;
 	void initializeListeners() override;
 
-	void save();
 	void load();
 	cocos2d::ValueMap serialize();
 	void deserialize(const cocos2d::ValueMap& valueMap);

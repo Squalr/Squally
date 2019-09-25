@@ -34,7 +34,7 @@ ShopItem* ShopItem::create(ValueMap& properties)
 ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
-	this->itemPreview = ItemPreview::create(false);
+	this->itemPreview = ItemPreview::create(false, true);
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();

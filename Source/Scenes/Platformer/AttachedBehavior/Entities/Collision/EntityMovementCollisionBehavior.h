@@ -36,6 +36,7 @@ private:
 
 	void buildMovementCollision();
 	void buildWallDetectors();
+	void tryBind();
 
 	PlatformerEntity* entity;
 	CollisionObject* leftCollision;

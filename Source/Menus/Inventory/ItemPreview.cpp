@@ -9,23 +9,23 @@
 
 #include "Strings/Common/Brackets.h"
 #include "Strings/Common/Dash.h"
+#include "Strings/Common/Constant.h"
 #include "Strings/Menus/ItemPreview/Equip.h"
 #include "Strings/Menus/ItemPreview/Spacebar.h"
 
 using namespace cocos2d;
 
-ItemPreview* ItemPreview::create(bool allowEquipHint)
+ItemPreview* ItemPreview::create(bool allowEquipHint, bool showItemName)
 {
-	ItemPreview* itemPreview = new ItemPreview(allowEquipHint);
+	ItemPreview* itemPreview = new ItemPreview(allowEquipHint, showItemName);
 
 	itemPreview->autorelease();
 
 	return itemPreview;
 }
 
-ItemPreview::ItemPreview(bool allowEquipHint)
+ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 {
-	this->allowEquipHint = allowEquipHint;
 	this->previewNode = Node::create();
 
 	LocalizedString* dashStr = Strings::Common_Dash::create();
@@ -36,13 +36,23 @@ ItemPreview::ItemPreview(bool allowEquipHint)
 	bracketStr->setStringReplacementVariables(spacebarStr);
 	dashStr->setStringReplacementVariables({ bracketStr, equipStr });
 
-	this->equipHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr);
-
-	this->equipHint->enableOutline(Color4B::BLACK, 2);
-	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->equipHint = allowEquipHint ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr) : nullptr;
+	this->itemName = showItemName ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()) : nullptr;
 
 	this->addChild(this->previewNode);
-	this->addChild(this->equipHint);
+
+	if (this->equipHint != nullptr)
+	{
+		this->equipHint->enableOutline(Color4B::BLACK, 2);
+		this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
+		this->addChild(this->equipHint);
+	}
+
+	if (this->itemName != nullptr)
+	{
+		this->itemName->enableOutline(Color4B::BLACK, 2);
+		this->addChild(this->itemName);
+	}
 }
 
 ItemPreview::~ItemPreview()
@@ -53,14 +63,30 @@ void ItemPreview::onEnter()
 {
 	super::onEnter();
 
-	this->equipHint->setVisible(false);
+	if (this->equipHint != nullptr)
+	{
+		this->equipHint->setVisible(false);
+	}
+
+	if (this->itemName != nullptr)
+	{
+		this->itemName->setVisible(false);
+	}
 }
 
 void ItemPreview::initializePositions()
 {
 	super::initializePositions();
 
-	this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
+	if (this->equipHint != nullptr)
+	{
+		this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
+	}
+
+	if (this->itemName != nullptr)
+	{
+		this->itemName->setPosition(Vec2(0.0f, -72.0f));
+	}
 }
 
 void ItemPreview::preview(Item* item)
@@ -70,11 +96,17 @@ void ItemPreview::preview(Item* item)
 	if (item != nullptr)
 	{
 		this->previewNode->addChild(Sprite::create(item->getIconResource()));
-	}
 
-	if (this->allowEquipHint && dynamic_cast<Equipable*>(item) != nullptr)
-	{
-		this->equipHint->setVisible(true);
+		if (this->equipHint != nullptr && dynamic_cast<Equipable*>(item) != nullptr)
+		{
+			this->equipHint->setVisible(true);
+		}
+
+		if (this->itemName != nullptr)
+		{
+			this->itemName->setStringReplacementVariables(item->getString());
+			this->itemName->setVisible(true);
+		}
 	}
 }
 
@@ -82,5 +114,13 @@ void ItemPreview::clearPreview()
 {
 	this->previewNode->removeAllChildren();
 
-	this->equipHint->setVisible(false);
+	if (this->equipHint != nullptr)
+	{
+		this->equipHint->setVisible(false);
+	}
+
+	if (this->itemName != nullptr)
+	{
+		this->itemName->setVisible(false);
+	}
 }

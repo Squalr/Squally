@@ -4,23 +4,23 @@
 
 class Squally;
 
-class SquallyEquipmentVisualBehavior : public AttachedBehavior
+class SquallyDefaultInventoryBehavior : public AttachedBehavior
 {
 public:
-	static SquallyEquipmentVisualBehavior* create(GameObject* owner);
+	static SquallyDefaultInventoryBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	SquallyEquipmentVisualBehavior(GameObject* owner);
-	~SquallyEquipmentVisualBehavior();
+	SquallyDefaultInventoryBehavior(GameObject* owner);
+	~SquallyDefaultInventoryBehavior();
 
 	void onLoad() override;
 
 private:
 	typedef AttachedBehavior super;
 	
-	void updateEquipmentVisual();
+	void giveDefaultItems();
 
 	Squally* squally;
 };

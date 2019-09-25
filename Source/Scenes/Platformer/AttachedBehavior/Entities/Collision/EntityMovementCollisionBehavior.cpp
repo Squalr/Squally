@@ -75,12 +75,15 @@ void EntityMovementCollisionBehavior::onLoad()
 	this->buildMovementCollision();
 	this->buildWallDetectors();
 
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + std::to_string((unsigned long long)(this->entity)), [=](EventCustom* eventCustom)
+	const std::string identifier = std::to_string((unsigned long long)(this->entity));
+
+	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + identifier, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr && this->movementCollision != nullptr)
 		{
+			this->tryBind();
 			this->movementCollision->setPosition(args->position);
 			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 		}
@@ -91,11 +94,7 @@ void EntityMovementCollisionBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->movementCollisionBound)
-	{
-		this->movementCollisionBound = true;
-		this->movementCollision->bindTo(this->entity);
-	}
+	this->tryBind();
 }
 
 Vec2 EntityMovementCollisionBehavior::getVelocity()
@@ -209,4 +208,13 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 
 	this->addChild(this->leftCollision);
 	this->addChild(this->rightCollision);
+}
+
+void EntityMovementCollisionBehavior::tryBind()
+{
+	if (!this->movementCollisionBound)
+	{
+		this->movementCollisionBound = true;
+		this->movementCollision->bindTo(this->entity);
+	}
 }

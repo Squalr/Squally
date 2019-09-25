@@ -45,7 +45,7 @@ LocalizedString* Hex3::getString()
 
 std::string Hex3::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ObjectResources::Collectables_Cards_CardHex;
 }
 
 std::string Hex3::getSerializationKey()

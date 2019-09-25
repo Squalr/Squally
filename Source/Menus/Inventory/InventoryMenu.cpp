@@ -561,9 +561,28 @@ void InventoryMenu::updateAndPositionItemText()
 		{
 			for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++, index++)
 			{
-				filteredItems.push_back(*it);
-				filteredItemLabels.push_back(this->equippedItemLabels[index]);
+				// Exclude hexus cards from the "all/equip" menu
+				if (dynamic_cast<HexusCard*>(*it) == nullptr)
+				{
+					filteredItems.push_back(*it);
+					filteredItemLabels.push_back(this->equippedItemLabels[index]);
+				}
 			}
+
+			break;
+		}
+		case ActiveFilter::Hexus:
+		{
+			for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++, index++)
+			{
+				// Only show equipped hexus cards
+				if (dynamic_cast<HexusCard*>(*it) != nullptr)
+				{
+					filteredItems.push_back(*it);
+					filteredItemLabels.push_back(this->equippedItemLabels[index]);
+				}
+			}
+
 			break;
 		}
 		default:
@@ -580,13 +599,19 @@ void InventoryMenu::updateAndPositionItemText()
 		{
 			case ActiveFilter::All:
 			{
-				filteredItems.push_back(*it);
-				filteredItemLabels.push_back(this->itemLabels[index]);
+				// Exclude hexus cards from the "all" menu
+				if (dynamic_cast<HexusCard*>(*it) == nullptr)
+				{
+					filteredItems.push_back(*it);
+					filteredItemLabels.push_back(this->itemLabels[index]);
+				}
+
 				break;
 			}
 			case ActiveFilter::Equipment:
 			{
-				if (dynamic_cast<Equipable*>(*it) != nullptr)
+				// While cards are technically equipped, exclude them here
+				if (dynamic_cast<Equipable*>(*it) != nullptr && dynamic_cast<HexusCard*>(*it) == nullptr)
 				{
 					filteredItems.push_back(*it);
 					filteredItemLabels.push_back(this->itemLabels[index]);
@@ -641,7 +666,15 @@ void InventoryMenu::updateAndPositionItemText()
 		}
 	}
 
-	for (auto it = itemLabels.begin(); it != itemLabels.end(); it++)
+	for (auto it = this->equippedItemLabels.begin(); it != this->equippedItemLabels.end(); it++)
+	{
+		(*it)->setVisible(false);
+		(*it)->setPositionX(0.0f);
+		(*it)->setPositionY(0.0f);
+		(*it)->setPositionZ(0.0f);
+	}
+
+	for (auto it = this->itemLabels.begin(); it != this->itemLabels.end(); it++)
 	{
 		(*it)->setVisible(false);
 		(*it)->setPositionX(0.0f);

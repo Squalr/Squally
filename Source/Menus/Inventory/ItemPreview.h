@@ -8,7 +8,7 @@ class LocalizedLabel;
 class ItemPreview : public SmartNode
 {
 public:
-	static ItemPreview* create(bool allowEquipHint = true);
+	static ItemPreview* create(bool allowEquipHint = true, bool showItemName = false);
 
 	void preview(Item* item);
 	void clearPreview();
@@ -19,11 +19,10 @@ protected:
 
 private:
 	typedef SmartNode super;
-	ItemPreview(bool allowEquipHint);
+	ItemPreview(bool allowEquipHint, bool showItemName);
 	~ItemPreview();
 
 	cocos2d::Node* previewNode;
 	LocalizedLabel* equipHint;
-
-	bool allowEquipHint;
+	LocalizedLabel* itemName;
 };

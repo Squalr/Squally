@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Collectables/CollectableItem.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 class LocalizedString;
 
-class HexusCard : public CollectableItem
+class HexusCard : public Equipable
 {
 public:
 
@@ -13,5 +13,5 @@ protected:
 	~HexusCard();
 
 private:
-	typedef CollectableItem super;
+	typedef Equipable super;
 };

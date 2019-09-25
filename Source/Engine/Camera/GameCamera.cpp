@@ -160,7 +160,7 @@ void GameCamera::update(float dt)
 	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
 	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
 
-	this->setCameraPosition(cameraPosition);
+	this->setCameraPosition(cameraPosition, false);
 }
 
 float GameCamera::getCameraDistance()
@@ -313,7 +313,9 @@ Vec2 GameCamera::boundCameraByEllipses()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr
+			? (trackingData.target->getPosition() + trackingData.trackOffset)
+			: trackingData.customPositionFunction();
 
 		// Don't even bother if the input data is bad
 		if (trackingData.scrollOffset.x <= 0.0f || trackingData.scrollOffset.y <= 0.0f)
@@ -368,12 +370,14 @@ Vec2 GameCamera::boundCameraByRectangle()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr
+			? (GameUtils::getWorldCoords(trackingData.target) + trackingData.trackOffset)
+			: trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance
 		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x + trackingData.trackOffset.x;
+			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x;
 
 			if (trackingData.followSpeed.x <= 0.0f)
 			{
@@ -387,7 +391,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 		}
 		else if (cameraPosition.x > targetPosition.x + trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x + trackingData.trackOffset.x;
+			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x;
 
 			if (trackingData.followSpeed.x <= 0.0f)
 			{
@@ -402,7 +406,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 
 		if (cameraPosition.y < targetPosition.y - trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y + trackingData.trackOffset.y;
+			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y;
 
 			if (trackingData.followSpeed.y <= 0.0f)
 			{
@@ -416,7 +420,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 		}
 		else if (cameraPosition.y > targetPosition.y + trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y + trackingData.trackOffset.y;
+			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y;
 
 			if (trackingData.followSpeed.y <= 0.0f)
 			{
