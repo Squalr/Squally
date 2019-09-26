@@ -115,14 +115,14 @@ void PlatformerDialogueBox::initializeListeners()
 
 void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool unhijack)
 {
+	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 0));
+
 	super::runDialogue(localizedString, dialogueDock, dialogueAlignment, onDialogueClose);
 
 	this->unhijack = unhijack;
 
 	PlatformerEvents::TriggerCinematicHijack();
 	this->isDialogueFocused = true;
-
-	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 0));
 }
 
 void PlatformerDialogueBox::hideDialogue()

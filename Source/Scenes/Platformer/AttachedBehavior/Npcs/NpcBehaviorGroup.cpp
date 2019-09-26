@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/NpcCollisionBehavior.h"
 
 using namespace cocos2d;
@@ -19,6 +20,7 @@ NpcBehaviorGroup* NpcBehaviorGroup::create(GameObject* owner)
 
 NpcBehaviorGroup::NpcBehaviorGroup(GameObject* owner) : super(owner, {
 	NpcCollisionBehavior::create(owner),
+	NpcInteractionBehavior::create(owner),
 	EntityBehaviorGroup::create(owner),
 	})
 {
