@@ -2,7 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class EntityRuneBehavior;
 class Squally;
 
 class SquallyHackingBehavior : public AttachedBehavior
@@ -22,5 +21,4 @@ private:
 	typedef AttachedBehavior super;
 
 	Squally* squally;
-	EntityRuneBehavior* entityRuneBehavior;
 };

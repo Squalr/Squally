@@ -38,12 +38,10 @@ void SquallyNoSavePositionBehavior::onEnter()
 	
 	if (!this->isInvalidated())
 	{
-		SquallyMovementBehavior* movementBehavior = this->squally->getAttachedBehavior<SquallyMovementBehavior>();
-
-		if (movementBehavior != nullptr)
+		this->squally->watchForAttachedBehavior<SquallyMovementBehavior>([=](SquallyMovementBehavior* movementBehavior)
 		{
 			movementBehavior->disablePositionSaving();
-		}
+		});
 	}
 }
 

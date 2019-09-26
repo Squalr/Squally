@@ -43,16 +43,13 @@ EntityNoCollisionBehavior::~EntityNoCollisionBehavior()
 
 void EntityNoCollisionBehavior::onLoad()
 {
-	EntityCollisionBehavior* collisionBehavior = this->entity->getAttachedBehavior<EntityCollisionBehavior>();
-	EntityMovementCollisionBehavior* movementBehavior = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
-
-	if (collisionBehavior != nullptr)
+	this->entity->watchForAttachedBehavior<EntityCollisionBehavior>([=](EntityCollisionBehavior* collisionBehavior)
 	{
 		collisionBehavior->entityCollision->setPhysicsEnabled(false);
-	}
+	});
 
-	if (movementBehavior != nullptr)
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		movementBehavior->movementCollision->setGravityEnabled(false);
-	}
+		collisionBehavior->movementCollision->setPhysicsEnabled(false);
+	});
 }

@@ -65,36 +65,32 @@ void SquallyCollisionBehavior::onLoad()
 {
 	this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
-	EntityCollisionBehavior* entityCollisionBehavior = this->squally->getAttachedBehavior<EntityCollisionBehavior>();
-	EntityGroundCollisionBehavior* groundCollisionBehavior = this->squally->getAttachedBehavior<EntityGroundCollisionBehavior>();
-	EntityMovementCollisionBehavior* movementCollisionBehavior = this->squally->getAttachedBehavior<EntityMovementCollisionBehavior>();
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
 	{
 		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 	}));
 
-	if (groundCollisionBehavior != nullptr)
+	this->squally->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* collisionBehavior)
 	{
-		groundCollisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			groundCollisionBehavior->onCollideWithGround();
+			collisionBehavior->onCollideWithGround();
 			
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
-	}
+	});
 
-	if (movementCollisionBehavior != nullptr)
+	this->squally->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		movementCollisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionObject::CollisionData collisionData)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
-	}
+	});
 
-	if (entityCollisionBehavior != nullptr)
+	this->squally->watchForAttachedBehavior<EntityCollisionBehavior>([=](EntityCollisionBehavior* collisionBehavior)
 	{
-		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -114,7 +110,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -124,7 +120,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 		
-		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -136,7 +132,7 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		entityCollisionBehavior->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
@@ -148,11 +144,11 @@ void SquallyCollisionBehavior::onLoad()
 			return CollisionObject::CollisionResult::DoNothing;
 		});
 
-		entityCollisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		});
-	}
+	});
 
 	this->scheduleUpdate();
 }

@@ -4,13 +4,14 @@
 
 #include "cocos/math/Vec2.h"
 
+#include "Engine/SmartNode.h"
 #include "Scenes/Hexus/Card.h"
 
 class CardData;
 class Deck;
 class StateOverride;
 
-class HexusOpponentData
+class HexusOpponentData : public SmartNode
 {
 public:
 	enum Strategy
@@ -19,6 +20,20 @@ public:
 		StrongestCardsFirst,
 		WeakestCardsFirst,
 	};
+
+	static HexusOpponentData* create(
+		std::string animationResourceFile,
+		std::string backgroundResourceFile,
+		float animationScale,
+		cocos2d::Vec2 animationOffset,
+		cocos2d::Vec2 frameOffset,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyNameKey,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		float strength,
+		std::vector<CardData*> cards,
+		StateOverride* stateOverride = nullptr);
 
 	HexusOpponentData(
 		std::string animationResourceFile,

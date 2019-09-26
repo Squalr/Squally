@@ -36,31 +36,32 @@ SquallyHackingBehavior::~SquallyHackingBehavior()
 
 void SquallyHackingBehavior::onLoad()
 {
-	this->entityRuneBehavior = this->squally->getAttachedBehavior<EntityRuneBehavior>();
+	this->squally->watchForAttachedBehavior<EntityRuneBehavior>([=](EntityRuneBehavior* runeBehavior)
+	{
+		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+		{
+			runeBehavior->tryUseRune();
+		}));
+
+		this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+		{
+			args->handle();
+
+			HackableEvents::HackerModeQueryArgs queryArgs = HackableEvents::HackerModeQueryArgs();
+
+			HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
+			
+			if (queryArgs.hackerModeAllowed && runeBehavior->tryUseRune())
+			{
+				HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
+			}
+		});
+	});
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
-		if (this->entityRuneBehavior != nullptr)
-		{
-			this->entityRuneBehavior->tryUseRune();
-		}
-		
 		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
 	}));
-
-	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
-	{
-		args->handle();
-
-		HackableEvents::HackerModeQueryArgs queryArgs = HackableEvents::HackerModeQueryArgs();
-
-		HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
-		
-		if (queryArgs.hackerModeAllowed && (this->entityRuneBehavior == nullptr || this->entityRuneBehavior->tryUseRune()))
-		{
-			HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
-		}
-	});
 
 	this->squally->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

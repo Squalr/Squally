@@ -44,10 +44,8 @@ void SquallyAttackBehavior::initializePositions()
 
 void SquallyAttackBehavior::onLoad()
 {
-	EntityAttackBehavior* attackBehavior = this->entity->getAttachedBehavior<EntityAttackBehavior>();
-	
-	if (attackBehavior != nullptr)
+	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Punch::create(0.4f, 0.5f));
-	}
+	});
 }

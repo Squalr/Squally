@@ -36,8 +36,6 @@ SquallySensingBehavior::~SquallySensingBehavior()
 
 void SquallySensingBehavior::onLoad()
 {
-	this->entityRuneBehavior = this->squally->getAttachedBehavior<EntityRuneBehavior>();
-	
 	this->squally->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
 	{
 		args->handle();

@@ -53,10 +53,8 @@ void OrcGruntCombatBehavior::initializePositions()
 
 void OrcGruntCombatBehavior::onLoad()
 {
-	EntityAttackBehavior* attackBehavior = this->entity->getAttachedBehavior<EntityAttackBehavior>();
-	
-	if (attackBehavior != nullptr)
+	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
-	}
+	});
 }

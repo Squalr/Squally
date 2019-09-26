@@ -50,6 +50,35 @@ public:
 		return nullptr;
 	}
 
+	template <class T>
+	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
+	{
+		static unsigned long long WatchId = 0;
+		unsigned long long watchId = WatchId++;
+		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
+
+		// Do an immediate check for the object
+		T* attachedBehavior = this->getAttachedBehavior<T>();
+
+		if (attachedBehavior != nullptr)
+		{
+			onBehaviorFound(attachedBehavior);
+		}
+
+		// Schedule a task to watch for the object
+		this->schedule([=](float dt)
+		{
+			T* attachedBehavior = this->getAttachedBehavior<T>();
+
+			if (attachedBehavior != nullptr)
+			{
+				this->unschedule(eventKey);
+				onBehaviorFound(attachedBehavior);
+			}
+
+		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
+	}
+
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
 	static const std::string MapKeyTag;

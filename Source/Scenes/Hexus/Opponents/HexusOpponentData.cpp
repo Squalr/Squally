@@ -14,6 +14,40 @@ using namespace cocos2d;
 const std::string HexusOpponentData::winsPrefix = "WINS_";
 const std::string HexusOpponentData::lossesPrefix = "LOSSES_";
 
+HexusOpponentData* HexusOpponentData::create(
+	std::string animationResourceFile,
+	std::string backgroundResourceFile,
+	float animationScale,
+	Vec2 animationOffset,
+	Vec2 frameOffset,
+	Vec2 avatarOffset,
+	std::string enemyNameKey,
+	HexusOpponentData::Strategy strategy,
+	Card::CardStyle cardStyle,
+	float strength,
+	std::vector<CardData*> cards,
+	StateOverride* stateOverride)
+{
+	HexusOpponentData* instance = new HexusOpponentData(
+		animationResourceFile,
+		backgroundResourceFile,
+		animationScale,
+		animationOffset,
+		frameOffset,
+		avatarOffset,
+		enemyNameKey,
+		strategy,
+		cardStyle,
+		strength,
+		cards,
+		stateOverride
+	);
+
+	instance->autorelease();
+
+	return instance;
+}
+
 HexusOpponentData::HexusOpponentData(
 	std::string animationResourceFile,
 	std::string backgroundResourceFile,

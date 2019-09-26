@@ -38,13 +38,11 @@ NpcCollisionBehavior::~NpcCollisionBehavior()
 
 void NpcCollisionBehavior::onLoad()
 {
-	EntityMovementCollisionBehavior* movementBehavior = this->npc->getAttachedBehavior<EntityMovementCollisionBehavior>();
-
-	if (movementBehavior != nullptr)
+	this->npc->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		movementBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 		{	
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
-	}
+	});
 }

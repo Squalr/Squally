@@ -71,26 +71,27 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 
 	this->isPerformingOutOfCombatAttack = true;
 	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
-	EntityWeaponCollisionBehavior* weaponBehavior = this->entity->getAttachedBehavior<EntityWeaponCollisionBehavior>();
-
-	this->runAction(Sequence::create(
-		DelayTime::create(onset),
-		CallFunc::create([=]()
-		{
-			if (this->isDeveloperModeEnabled())
+	this->entity->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(onset),
+			CallFunc::create([=]()
 			{
-				this->outOfCombatAttackDebug->setVisible(true);
-			}
+				if (this->isDeveloperModeEnabled())
+				{
+					this->outOfCombatAttackDebug->setVisible(true);
+				}
 
-			weaponBehavior->enable();
-		}),
-		DelayTime::create(sustain),
-		CallFunc::create([=]()
-		{
-			weaponBehavior->disable();
-			this->isPerformingOutOfCombatAttack = false;
-			this->outOfCombatAttackDebug->setVisible(false);
-		}),
-		nullptr
-	));
+				weaponBehavior->enable();
+			}),
+			DelayTime::create(sustain),
+			CallFunc::create([=]()
+			{
+				weaponBehavior->disable();
+				this->isPerformingOutOfCombatAttack = false;
+				this->outOfCombatAttackDebug->setVisible(false);
+			}),
+			nullptr
+		));
+	});
 }

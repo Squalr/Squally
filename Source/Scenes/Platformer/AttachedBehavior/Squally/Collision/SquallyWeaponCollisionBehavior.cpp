@@ -56,9 +56,7 @@ void SquallyWeaponCollisionBehavior::onLoad()
 		this->onWeaponChange();
 	}));
 
-	EntityWeaponCollisionBehavior* weaponBehavior = this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>();
-
-	if (weaponBehavior != nullptr)
+	this->squally->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
 	{
 		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 		{
@@ -77,7 +75,7 @@ void SquallyWeaponCollisionBehavior::onLoad()
 
 			return CollisionObject::CollisionResult::DoNothing;
 		});
-	}
+	});
 }
 
 void SquallyWeaponCollisionBehavior::onWeaponChange()
