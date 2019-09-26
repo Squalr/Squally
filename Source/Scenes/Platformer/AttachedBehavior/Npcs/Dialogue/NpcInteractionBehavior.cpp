@@ -41,6 +41,7 @@ NpcInteractionBehavior::NpcInteractionBehavior(GameObject* owner) : super(owner)
 	this->stringNode = Node::create();
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
+	this->dialogueOptions = std::vector<std::tuple<DialogueOption, float>>();
 
 	if (this->entity == nullptr)
 	{
@@ -98,14 +99,14 @@ void NpcInteractionBehavior::onLoad()
 	});
 
 	// Debug
-	this->addDialogueOption(DialogueOption(ConstantString::create("How do I buy something?"), nullptr));
-	this->addDialogueOption(DialogueOption(ConstantString::create("How about a round of Hexus?"), nullptr));
-	this->addDialogueOption(DialogueOption(ConstantString::create("Goodbye."), nullptr));
+	this->addDialogueOption(DialogueOption(ConstantString::create("How do I buy something?"), nullptr), 1.0f);
+	this->addDialogueOption(DialogueOption(ConstantString::create("How about a round of Hexus?"), nullptr), 0.5f);
+	this->addDialogueOption(DialogueOption(ConstantString::create("Goodbye."), nullptr), 0.1f);
 }
 
-void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption)
+void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, float priority)
 {
-	this->dialogueOptions.push_back(dialogueOption);
+	this->dialogueOptions.push_back({ dialogueOption, priority});
 
 	if (dialogueOption.dialogueOption != nullptr)
 	{
@@ -120,6 +121,12 @@ void NpcInteractionBehavior::showOptions()
 		return;
 	}
 
+	std::sort(this->dialogueOptions.begin(), this->dialogueOptions.end(), 
+		[](const std::tuple<DialogueOption, float>& a, const std::tuple<DialogueOption, float>& b)
+	{ 
+		return std::get<1>(a) > std::get<1>(b); 
+	});
+
 	LocalizedString* options = Strings::Common_Triconcat::create();
 	LocalizedString* nextOption = options;
 	LocalizedString* currentOption = nextOption;
@@ -131,7 +138,7 @@ void NpcInteractionBehavior::showOptions()
 
 		LocalizedString* newline = Strings::Common_Newline::create();
 		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
-		LocalizedString* option = this->getOptionString(index, (*it).dialogueOption->clone());
+		LocalizedString* option = this->getOptionString(index, std::get<0>((*it)).dialogueOption->clone());
 
 		currentOption->setStringReplacementVariables({option , newline, nextOption });
 		currentOption = nextOption;

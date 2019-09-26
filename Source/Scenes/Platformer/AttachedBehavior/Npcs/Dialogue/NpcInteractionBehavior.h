@@ -21,7 +21,7 @@ public:
 		DialogueOption(LocalizedString* dialogueOption, std::function<void()> onDialogueChosen) : dialogueOption(dialogueOption), onDialogueChosen(onDialogueChosen) { }
 	};
 
-	void addDialogueOption(DialogueOption dialogueOption);
+	void addDialogueOption(DialogueOption dialogueOption, float priority);
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -46,5 +46,5 @@ private:
 	InteractMenu* interactMenu;
 	cocos2d::Node* stringNode;
 
-	std::vector<DialogueOption> dialogueOptions;
+	std::vector<std::tuple<DialogueOption, float>> dialogueOptions;
 };
