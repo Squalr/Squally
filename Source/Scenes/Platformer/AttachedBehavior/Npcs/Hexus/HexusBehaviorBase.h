@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class HexusOpponentData;
+class PlatformerEntity;
 
 class HexusBehaviorBase : public AttachedBehavior
 {
@@ -14,6 +15,8 @@ protected:
 	~HexusBehaviorBase();
 
 	void onLoad() override;
+
+	PlatformerEntity* entity;
 
 private:
 	typedef AttachedBehavior super;

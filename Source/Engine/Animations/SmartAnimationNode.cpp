@@ -26,6 +26,7 @@ SmartAnimationNode* SmartAnimationNode::create(std::string animationResource, st
 
 SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::string entityName)
 {
+	this->animationResource = animationResource;
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
@@ -146,4 +147,9 @@ bool SmartAnimationNode::getFlippedX()
 bool SmartAnimationNode::getFlippedY()
 {
 	return this->animationNode->getFlippedY();
+}
+
+std::string SmartAnimationNode::getAnimationResource()
+{
+	return this->animationResource;
 }

@@ -2,11 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
+class PlatformerEntity;
 class Squally;
 
 class ShopkeeperBehaviorGroup : public AttachedBehaviorGroup
@@ -24,4 +20,6 @@ protected:
 
 private:
 	typedef AttachedBehaviorGroup super;
+
+	PlatformerEntity* entity;
 };

@@ -58,22 +58,23 @@ public:
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 
 		// Do an immediate check for the object
-		T* attachedBehavior = this->getAttachedBehavior<T>();
+		T* behavior = this->getAttachedBehavior<T>();
 
-		if (attachedBehavior != nullptr)
+		if (behavior != nullptr)
 		{
-			onBehaviorFound(attachedBehavior);
+			onBehaviorFound(behavior);
+			return;
 		}
 
 		// Schedule a task to watch for the object
 		this->schedule([=](float dt)
 		{
-			T* attachedBehavior = this->getAttachedBehavior<T>();
+			T* behavior = this->getAttachedBehavior<T>();
 
-			if (attachedBehavior != nullptr)
+			if (behavior != nullptr)
 			{
 				this->unschedule(eventKey);
-				onBehaviorFound(attachedBehavior);
+				onBehaviorFound(behavior);
 			}
 
 		}, 1.0f / 60.0f, 0, 0.0f, eventKey);

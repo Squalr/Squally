@@ -98,10 +98,7 @@ void NpcInteractionBehavior::onLoad()
 		this->showOptions();
 	});
 
-	// Debug
-	this->addDialogueOption(DialogueOption(ConstantString::create("How do I buy something?"), nullptr), 1.0f);
-	this->addDialogueOption(DialogueOption(ConstantString::create("How about a round of Hexus?"), nullptr), 0.5f);
-	this->addDialogueOption(DialogueOption(ConstantString::create("Goodbye."), nullptr), 0.1f);
+	this->addDialogueOption(DialogueOption(ConstantString::create("Goodbye."), nullptr), 0.01f);
 }
 
 void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, float priority)

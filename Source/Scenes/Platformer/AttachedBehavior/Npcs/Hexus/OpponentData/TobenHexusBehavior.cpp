@@ -1,5 +1,7 @@
 #include "TobenHexusBehavior.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
@@ -25,8 +27,9 @@ void TobenHexusBehavior::onLoad()
 
 HexusOpponentData* TobenHexusBehavior::createOpponentData()
 {
-    return HexusOpponentData::create(
-        EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
+    return HexusOpponentData::create( 
+        // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
+        this->entity->getAnimations()->getAnimationResource(),
         HexusResources::Menus_HexusFrameCastleValgrind,
         1.0f,
         Vec2(-32.0f, -64.0f),

@@ -1,6 +1,8 @@
 #include "ShopkeeperBehaviorGroup.h"
 
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Maps/GameObject.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
@@ -28,6 +30,12 @@ ShopkeeperBehaviorGroup::ShopkeeperBehaviorGroup(GameObject* owner) : super(owne
 	LookAtSquallyBehavior::create(owner),
 	})
 {
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+
+	if (this->entity == nullptr)
+	{
+		this->invalidate();
+	}
 }
 
 ShopkeeperBehaviorGroup::~ShopkeeperBehaviorGroup()
@@ -36,4 +44,15 @@ ShopkeeperBehaviorGroup::~ShopkeeperBehaviorGroup()
 
 void ShopkeeperBehaviorGroup::onLoad()
 {
+	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
+	{
+		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
+			ConstantString::create("How do I buy something?"),
+			[=]()
+			{
+
+			}),
+			1.0f
+		);
+	});
 }
