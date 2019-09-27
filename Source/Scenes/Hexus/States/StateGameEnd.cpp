@@ -12,7 +12,6 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/Config.h"
-#include "Scenes/Hexus/Menus/HexusRewardsMenu.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -99,18 +98,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
-
-		if (gameState->opponentData->stateOverride == nullptr)
-		{
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusRewardsMenu::getInstance()));
-
-			// Half the reward for a draw
-			HexusRewardsMenu::getInstance()->showReward(reward / 2, true, false);
-		}
-		else
-		{
-			NavigationEvents::NavigateBack();
-		}
 	}
 	else if (isWin)
 	{
@@ -142,19 +129,8 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for winning
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
-
-
-		if (gameState->opponentData->stateOverride == nullptr)
-		{
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(HexusRewardsMenu::getInstance()));
-
-			// Half the reward for a draw
-			HexusRewardsMenu::getInstance()->showReward(reward, false, isLastInChapter);
-		}
-		else
-		{
-			NavigationEvents::NavigateBack();
-		}
+		
+		// TODO: Win logic
 	}
 	else
 	{

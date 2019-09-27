@@ -1,10 +1,11 @@
 #include "HexusBehaviorBase.h"
 
-#include "Engine/Localization/ConstantString.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
 
 #include "Resources/EntityResources.h"
+
+#include "Strings/Platformer/Entities/HowAboutARoundOfHexus.h"
 
 using namespace cocos2d;
 
@@ -27,7 +28,7 @@ void HexusBehaviorBase::onLoad()
 	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
 	{
 		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
-			ConstantString::create("How about a round of Hexus?"),
+			Strings::Platformer_Entities_HowAboutARoundOfHexus::create(),
 			[=]()
 			{
 

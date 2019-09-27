@@ -12,6 +12,8 @@
 
 using namespace cocos2d;
 
+const std::string TobenHexusBehavior::MapKeyAttachedBehavior = "hexus-toben";
+
 TobenHexusBehavior::TobenHexusBehavior(GameObject* owner) : super(owner)
 {
 }

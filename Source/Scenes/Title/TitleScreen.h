@@ -36,7 +36,6 @@ private:
 	cocos2d::ParticleSystem* etherParticles;
 
 	ClickableTextNode* storyModeButton;
-	ClickableTextNode* minigamesButton;
 	ClickableTextNode* optionsButton;
 	ClickableTextNode* exitButton;
 	ClickableTextNode* debugButton;

@@ -1,6 +1,5 @@
 #include "ShopkeeperBehaviorGroup.h"
 
-#include "Engine/Localization/ConstantString.h"
 #include "Engine/Maps/GameObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
@@ -8,6 +7,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
+
+#include "Strings/Platformer/Entities/Shopkeepers/HowDoIBuySomething.h"
 
 using namespace cocos2d;
 
@@ -47,7 +48,7 @@ void ShopkeeperBehaviorGroup::onLoad()
 	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
 	{
 		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
-			ConstantString::create("How do I buy something?"),
+			Strings::Platformer_Entities_Shopkeepers_HowDoIBuySomething::create(),
 			[=]()
 			{
 
