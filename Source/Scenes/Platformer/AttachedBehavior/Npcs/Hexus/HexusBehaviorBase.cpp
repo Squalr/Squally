@@ -1,6 +1,7 @@
 #include "HexusBehaviorBase.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/HexusEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
 
 #include "Resources/EntityResources.h"
@@ -31,7 +32,7 @@ void HexusBehaviorBase::onLoad()
 			Strings::Platformer_Entities_HowAboutARoundOfHexus::create(),
 			[=]()
 			{
-
+				HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
 			}),
 			0.5f
 		);

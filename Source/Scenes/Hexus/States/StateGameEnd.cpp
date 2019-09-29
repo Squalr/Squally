@@ -87,8 +87,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyNameKey, gameState->gameDurationInSeconds);
 	bool isDraw = gameState->playerLosses >= 2 && gameState->enemyLosses >= 2;
 	bool isWin = gameState->playerLosses < 2 && gameState->enemyLosses >= 2;
-	int reward = gameState->opponentData->reward;
-	bool isLastInChapter = gameState->opponentData->getIsLastInChapter();
 
 	if (isDraw)
 	{
@@ -109,17 +107,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		if (wins == 1 && losses == 0)
 		{
 			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 1);
-
-			if (isLastInChapter)
-			{
-				// 8x bonus for first chapter clear
-				reward = int(float(reward) * 8.0f);
-			}
-			else
-			{
-				// 2x bonus for first clear
-				reward = int(float(reward) * 2.0f);
-			}
 		}
 
 		if (wins == 1)
@@ -146,8 +133,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
-
-		NavigationEvents::NavigateBack();
 	}
 }
 

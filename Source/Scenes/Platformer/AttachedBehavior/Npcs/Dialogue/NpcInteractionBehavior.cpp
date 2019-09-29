@@ -93,6 +93,51 @@ void NpcInteractionBehavior::onLoad()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(1);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(2);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(3);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(4);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_5 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(5);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_6 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(6);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_7 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(7);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_8 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(8);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseOption(9);
+	});
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
 		this->showOptions();
@@ -109,6 +154,16 @@ void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, fl
 	{
 		this->stringNode->addChild(dialogueOption.dialogueOption);
 	}
+}
+
+void NpcInteractionBehavior::chooseOption(int option)
+{
+	if (--option <= 0 || option >= this->dialogueOptions.size())
+	{
+		return;
+	}
+
+	std::get<0>(this->dialogueOptions[option]).onDialogueChosen();
 }
 
 void NpcInteractionBehavior::showOptions()

@@ -6,6 +6,7 @@ class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
 class GameHud;
+class Hexus;
 class InventoryMenu;
 class MapMenu;
 class NotificationHud;
@@ -34,6 +35,7 @@ private:
 	GameHud* gameHud;
 	NotificationHud* notificationHud;
 	Cipher* cipher;
+	Hexus* hexus;
 	CollectablesMenu* collectablesMenu;
 	MapMenu* mapMenu;
 	PartyMenu* partyMenu;

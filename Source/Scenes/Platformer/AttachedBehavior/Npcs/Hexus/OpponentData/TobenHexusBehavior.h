@@ -7,6 +7,8 @@ class HexusOpponentData;
 class TobenHexusBehavior : public HexusBehaviorBase
 {
 public:
+	static TobenHexusBehavior* create(GameObject* owner);
+
 	HexusOpponentData* createOpponentData() override;
 
 	static const std::string MapKeyAttachedBehavior;

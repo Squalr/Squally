@@ -23,6 +23,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -31,6 +32,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
+#include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
@@ -66,6 +68,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->gameHud = GameHud::create();
 	this->notificationHud = NotificationHud::create();
 	this->cipher = Cipher::create();
+	this->hexus = Hexus::create();
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
@@ -90,6 +93,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
+	this->menuHud->addChild(this->hexus);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
@@ -183,6 +187,31 @@ void PlatformerMap::initializeListeners()
 		{
 			this->menuBackDrop->setOpacity(0);
 			this->cipher->setVisible(false);
+			GameUtils::focus(this);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventOpenHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusOpenArgs* args = static_cast<HexusEvents::HexusOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->menuBackDrop->setOpacity(196);
+			this->hexus->setVisible(true);
+			this->hexus->open(args->opponentData);
+			GameUtils::focus(this->hexus);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->menuBackDrop->setOpacity(0);
+			this->hexus->setVisible(false);
 			GameUtils::focus(this);
 		}
 	}));

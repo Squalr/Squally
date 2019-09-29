@@ -37,6 +37,9 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[SquallyCombatBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyCombatBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyNoSavePositionBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyNoSavePositionBehavior::create(owner); };
 	
+	// Hexus behaviors
+	this->attachedBehaviorDeserializers[TobenHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TobenHexusBehavior::create(owner); };
+
 	// this->attachedBehaviorDeserializers[CryogenCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CryogenCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[FrostFiendCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FrostFiendCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[GoblinElfCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinElfCombatBehavior::create(owner); };

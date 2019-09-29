@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/GlobalScene.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -75,26 +75,23 @@ class StagingHelperText;
 class GameState;
 class HexusOpponentData;
 class HelpMenuComponent;
-class PauseMenu;
-class OptionsMenu;
-class ConfirmationMenu;
 class Music;
 
-class Hexus : public GlobalScene
+class Hexus : public SmartNode
 {
 public:
-	static Hexus* create(HexusOpponentData* opponentData);
+	static Hexus* create();
+
+	void open(HexusOpponentData* opponentData);
 
 private:
-	typedef GlobalScene super;
-	Hexus(HexusOpponentData* opponentData);
+	typedef SmartNode super;
+	Hexus();
 	~Hexus();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void startGame(HexusOpponentData* opponentData);
-	void openPauseMenu();
 
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;
@@ -169,9 +166,6 @@ private:
 
 	cocos2d::LayerColor* menuBackDrop;
 	HelpMenuComponent* helpMenuComponent;
-	PauseMenu* pauseMenu;
-	OptionsMenu* optionsMenu;
-	ConfirmationMenu* confirmationMenu;
 
 	Music* musicA;
 	Music* musicB;

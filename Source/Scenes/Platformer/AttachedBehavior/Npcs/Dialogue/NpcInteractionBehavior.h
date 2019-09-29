@@ -34,6 +34,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void chooseOption(int option);
 	void showOptions();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 

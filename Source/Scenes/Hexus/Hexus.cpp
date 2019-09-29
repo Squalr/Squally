@@ -34,16 +34,16 @@ using namespace cocos2d;
 
 Hexus* Hexus::instance = nullptr;
 
-Hexus* Hexus::create(HexusOpponentData* opponentData)
+Hexus* Hexus::create()
 {
-	Hexus* instance = new Hexus(opponentData);
+	Hexus* instance = new Hexus();
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-Hexus::Hexus(HexusOpponentData* opponentData)
+Hexus::Hexus()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -111,10 +111,7 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
-	this->pauseMenu = PauseMenu::create();
-	this->optionsMenu = OptionsMenu::create();
-	this->confirmationMenu = ConfirmationMenu::create();
-	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
+	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->musicA = Music::create(MusicResources::Hexus1);
 	this->musicB = Music::create(MusicResources::Hexus2);
 
@@ -201,13 +198,8 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->helpMenuComponent);
-	this->addChild(this->pauseMenu);
-	this->addChild(this->optionsMenu);
-	this->addChild(this->confirmationMenu);
 	this->addChild(this->musicA);
 	this->addChild(this->musicB);
-
-	this->startGame(opponentData);
 }
 
 Hexus::~Hexus()
@@ -218,21 +210,7 @@ void Hexus::onEnter()
 {
 	super::onEnter();
 
-	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
-	{
-		this->musicA->play(true);
-	}
-	else
-	{
-		this->musicB->play(true);
-	}
-
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(false);
-	this->confirmationMenu->setVisible(false); 
-
-	GameState::updateState(this->gameState, GameState::StateType::GameStart);
+	this->setVisible(false);
 }
 
 void Hexus::initializePositions()
@@ -272,45 +250,9 @@ void Hexus::initializeListeners()
 			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
 		}
 	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		if (!GameUtils::isFocused(this))
-		{
-			return;
-		}
-		
-		args->handle();
-
-		this->openPauseMenu();
-	});
-
-	this->optionsMenu->setBackClickCallback([=]()
-	{
-		this->optionsMenu->setVisible(false);
-		this->openPauseMenu();
-	});
-	this->pauseMenu->setResumeClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		GameUtils::focus(this);
-	});
-	this->pauseMenu->setOptionsClickCallback([=]()
-	{
-		this->pauseMenu->setVisible(false);
-		this->optionsMenu->setVisible(true);
-		GameUtils::focus(this->optionsMenu);
-	});
-	this->pauseMenu->setQuitToTitleClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		NavigationEvents::LoadScene(TitleScreen::getInstance());
-	});
 }
 
-void Hexus::startGame(HexusOpponentData* opponentData)
+void Hexus::open(HexusOpponentData* opponentData)
 {
 	this->relocateLayer->removeAllChildren();
 	
@@ -338,11 +280,16 @@ void Hexus::startGame(HexusOpponentData* opponentData)
 
 	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
 	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
-}
 
-void Hexus::openPauseMenu()
-{
-	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->setVisible(true);
-	GameUtils::focus(this->pauseMenu);
+	GameState::updateState(this->gameState, GameState::StateType::GameStart);
+	this->setVisible(true);
+
+	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	{
+		this->musicA->play(true);
+	}
+	else
+	{
+		this->musicB->play(true);
+	}
 }
