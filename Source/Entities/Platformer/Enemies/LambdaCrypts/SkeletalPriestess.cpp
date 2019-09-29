@@ -135,8 +135,7 @@ HexusOpponentData* SkeletalPriestess::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -144,8 +144,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

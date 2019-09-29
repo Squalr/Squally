@@ -28,7 +28,7 @@ TutorialAWinningRound* TutorialAWinningRound::create()
 	return instance;
 }
 
-TutorialAWinningRound::TutorialAWinningRound() : super(StateOverride::TutorialMode::TutorialA, GameState::StateType::TurnEnd)
+TutorialAWinningRound::TutorialAWinningRound() : super(GameState::StateType::TurnEnd)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), Size(420.0f, 0.0f));
@@ -83,7 +83,7 @@ void TutorialAWinningRound::initializeListeners()
 
 bool TutorialAWinningRound::tryHijackState(GameState* gameState)
 {
-	if (gameState->tutorialMode == StateOverride::TutorialMode::TutorialA && gameState->getPlayerTotal() > gameState->getEnemyTotal())
+	if (gameState->getPlayerTotal() > gameState->getEnemyTotal())
 	{
 		this->initializeCallbacks(gameState);
 		this->runTutorialScoreTotal(gameState);
@@ -108,7 +108,7 @@ void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
 	this->scoreTotalsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->concludeTutorial(gameState);
+		this->unHijackState(gameState);
 	});
 }
 
@@ -124,13 +124,13 @@ void TutorialAWinningRound::runTutorialScoreTotal(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialAWinningRound::concludeTutorial(GameState* gameState)
+void TutorialAWinningRound::unHijackState(GameState* gameState)
 {
+	super::unHijackState(gameState);
+
 	this->scoreTotalsNextButton->disableInteraction();
 	this->scoreTotalsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->scoreTotalsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowScoreTotals->hidePointer();
 	this->focusTakeOver->unfocus();
-
-	this->unHijackState(gameState);
 }

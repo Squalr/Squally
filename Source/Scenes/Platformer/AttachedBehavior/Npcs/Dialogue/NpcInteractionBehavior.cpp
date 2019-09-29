@@ -19,6 +19,7 @@
 #include "Strings/Common/Empty.h"
 #include "Strings/Common/Newline.h"
 #include "Strings/Common/Triconcat.h"
+#include "Strings/Platformer/Entities/Goodbye.h"
 
 using namespace cocos2d;
 
@@ -143,7 +144,7 @@ void NpcInteractionBehavior::onLoad()
 		this->showOptions();
 	});
 
-	this->addDialogueOption(DialogueOption(ConstantString::create("Goodbye."), nullptr), 0.01f);
+	this->addDialogueOption(DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
 }
 
 void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, float priority)
@@ -163,6 +164,7 @@ void NpcInteractionBehavior::chooseOption(int option)
 		return;
 	}
 
+	DialogueEvents::TriggerDialogueClose();
 	std::get<0>(this->dialogueOptions[option]).onDialogueChosen();
 }
 

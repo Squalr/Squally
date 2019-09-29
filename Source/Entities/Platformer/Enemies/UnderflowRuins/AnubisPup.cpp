@@ -136,8 +136,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

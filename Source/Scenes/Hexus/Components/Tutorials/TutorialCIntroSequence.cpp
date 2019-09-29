@@ -32,7 +32,7 @@ TutorialCIntroSequence* TutorialCIntroSequence::create()
 	return instance;
 }
 
-TutorialCIntroSequence::TutorialCIntroSequence() : super(StateOverride::TutorialMode::TutorialC, GameState::StateType::Neutral)
+TutorialCIntroSequence::TutorialCIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_C_OpponentLead::create(), Size(420.0f, 0.0f));
@@ -163,7 +163,7 @@ void TutorialCIntroSequence::initializeCallbacks(GameState* gameState)
 	});
 	this->lastStandNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->concludeTutorial(gameState);
+		this->unHijackState(gameState);
 	});
 }
 
@@ -213,13 +213,14 @@ void TutorialCIntroSequence::runTutorialLastStand(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialCIntroSequence::concludeTutorial(GameState* gameState)
+void TutorialCIntroSequence::unHijackState(GameState* gameState)
 {
+	super::unHijackState(gameState);
+
 	this->lastStandNextButton->disableInteraction();
 	this->lastStandNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowLastStand->hidePointer();
 
 	this->focusTakeOver->unfocus();
-	this->unHijackState(gameState);
 }

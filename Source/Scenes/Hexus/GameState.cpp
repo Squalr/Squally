@@ -35,7 +35,6 @@ GameState::GameState()
 	: stateType(StateType::EmptyState),
 	turn(Turn::Player),
 	difficulty(HexusOpponentData::Strategy::Random),
-	tutorialMode(StateOverride::TutorialMode::NoTutorial),
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),

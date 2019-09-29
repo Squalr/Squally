@@ -20,6 +20,7 @@ class StateSourceCardStaged;
 class StateDraw;
 class StateDrawInitial;
 class StateGameEnd;
+class StateGameExit;
 class StateLoadInitialState;
 class StateGameStart;
 class StateNeutral;
@@ -58,15 +59,6 @@ class LossesDisplay;
 class RowTotals;
 class ScoreTotal;
 class DebugDisplay;
-
-class TutorialAIntroSequence;
-class TutorialAVictory;
-class TutorialAWinningRound;
-class TutorialBIntroSequence;
-class TutorialCIntroSequence;
-class TutorialDIntroSequence;
-class TutorialEIntroSequence;
-class TutorialFIntroSequence;
 
 class Avatars;
 class CardPreviewComponent;
@@ -113,6 +105,7 @@ private:
 	StateDraw* stateDraw;
 	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
+	StateGameExit* stateGameExit;
 	StateLoadInitialState* stateLoadInitialState;
 	StateGameStart* stateGameStart;
 	StateNeutral* stateNeutral;
@@ -153,15 +146,7 @@ private:
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
 
-	TutorialAIntroSequence* tutorialAIntroSequence;
-	TutorialAVictory* tutorialAVictory;
-	TutorialAWinningRound* tutorialAWinningRound;
-	TutorialBIntroSequence* tutorialBIntroSequence;
-	TutorialCIntroSequence* tutorialCIntroSequence;
-	TutorialDIntroSequence* tutorialDIntroSequence;
-	TutorialEIntroSequence* tutorialEIntroSequence;
-	TutorialFIntroSequence* tutorialFIntroSequence;
-
+	cocos2d::Node* tutorialLayer;
 	cocos2d::Node* relocateLayer;
 
 	cocos2d::LayerColor* menuBackDrop;

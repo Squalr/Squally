@@ -80,6 +80,7 @@ Hexus::Hexus()
 	this->stateDraw = StateDraw::create();
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateGameEnd = StateGameEnd::create();
+	this->stateGameExit = StateGameExit::create();
 	this->stateGameStart = StateGameStart::create();
 	this->stateLoadInitialState = StateLoadInitialState::create();
 	this->stateNeutral = StateNeutral::create();
@@ -101,14 +102,7 @@ Hexus::Hexus()
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
-	this->tutorialAIntroSequence = TutorialAIntroSequence::create();
-	this->tutorialAVictory = TutorialAVictory::create();
-	this->tutorialAWinningRound = TutorialAWinningRound::create();
-	this->tutorialBIntroSequence = TutorialBIntroSequence::create();
-	this->tutorialCIntroSequence = TutorialCIntroSequence::create();
-	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
-	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
-	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
+	this->tutorialLayer = Node::create();
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
@@ -159,6 +153,7 @@ Hexus::Hexus()
 	this->addChild(this->stateDraw);
 	this->addChild(this->stateDrawInitial);
 	this->addChild(this->stateGameEnd);
+	this->addChild(this->stateGameExit);
 	this->addChild(this->stateGameStart);
 	this->addChild(this->stateLoadInitialState);
 	this->addChild(this->stateNeutral);
@@ -172,14 +167,7 @@ Hexus::Hexus()
 	this->addChild(this->stateTurnEnd);
 	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
-	this->addChild(this->tutorialAIntroSequence);
-	this->addChild(this->tutorialAVictory);
-	this->addChild(this->tutorialAWinningRound);
-	this->addChild(this->tutorialBIntroSequence);
-	this->addChild(this->tutorialCIntroSequence);
-	this->addChild(this->tutorialDIntroSequence);
-	this->addChild(this->tutorialEIntroSequence);
-	this->addChild(this->tutorialFIntroSequence);
+	this->addChild(this->tutorialLayer);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);
@@ -240,21 +228,25 @@ void Hexus::initializeListeners()
 		this->helpMenuComponent->setVisible(false);
 		GameUtils::focus(this);
 	});
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventArgs)
-	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
-
-		if (args != nullptr)
-		{
-			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
-		}
-	}));
 }
 
 void Hexus::open(HexusOpponentData* opponentData)
 {
+	if (opponentData == nullptr)
+	{
+		return;
+	}
+
 	this->relocateLayer->removeAllChildren();
+	this->tutorialLayer->removeAllChildren();
+
+	if (opponentData->stateOverride != nullptr)
+	{
+		for (auto it = opponentData->stateOverride->tutorials.begin(); it != opponentData->stateOverride->tutorials.begin(); it++)
+		{
+			this->tutorialLayer->addChild(*it);
+		}
+	}
 	
 	this->gameState->opponentData = opponentData;
 

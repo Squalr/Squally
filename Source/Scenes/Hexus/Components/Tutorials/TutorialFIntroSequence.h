@@ -26,9 +26,8 @@ private:
 	void initializeListeners() override;
 	void initializeCallbacks(GameState* gameState);
 	bool tryHijackState(GameState* gameState) override;
-
+	void unHijackState(GameState* gameState) override;
 	void runTutorialHandCards(GameState* gameState);
-	void concludeTutorial(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* handCardsTutorialLabel;

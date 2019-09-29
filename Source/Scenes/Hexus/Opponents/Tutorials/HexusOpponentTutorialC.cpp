@@ -99,8 +99,7 @@ HexusOpponentTutorialC::HexusOpponentTutorialC() : super(
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-		},
-		StateOverride::TutorialMode::TutorialC)
+		})
 	)
 {
 }

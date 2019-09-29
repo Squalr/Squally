@@ -142,8 +142,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

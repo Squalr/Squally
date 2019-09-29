@@ -135,8 +135,7 @@ HexusOpponentData* VoidArcher::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

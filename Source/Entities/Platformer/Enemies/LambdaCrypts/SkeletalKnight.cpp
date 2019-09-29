@@ -135,8 +135,7 @@ HexusOpponentData* SkeletalKnight::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

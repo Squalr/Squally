@@ -116,8 +116,7 @@ HexusOpponentPuzzleTutorialA::HexusOpponentPuzzleTutorialA() : super(
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-		},
-		StateOverride::TutorialMode::TutorialA)
+		})
 	)
 {
 }

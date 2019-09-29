@@ -135,8 +135,7 @@ HexusOpponentData* DemonGrunt::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

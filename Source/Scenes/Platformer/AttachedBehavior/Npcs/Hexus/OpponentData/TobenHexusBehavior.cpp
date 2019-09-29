@@ -4,6 +4,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
 
@@ -136,6 +137,6 @@ HexusOpponentData* TobenHexusBehavior::createOpponentData()
                 CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
                 CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
             },
-            StateOverride::TutorialMode::TutorialA)
+            { TutorialAIntroSequence::create(), TutorialAVictory::create() })
 	);
 }

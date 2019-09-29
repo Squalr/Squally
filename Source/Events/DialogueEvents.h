@@ -15,6 +15,7 @@ class DialogueEvents
 {
 public:
 	static const std::string EventDialogueOpen;
+	static const std::string EventDialogueClose;
 
 	struct DialogueOpenArgs
 	{
@@ -33,5 +34,6 @@ public:
 	};
 
 	static void TriggerDialogueOpen(DialogueOpenArgs args);
+	static void TriggerDialogueClose();
 	static cocos2d::Node* BuildPreviewNode(PlatformerEntity* entity, bool isFlipped);
 };

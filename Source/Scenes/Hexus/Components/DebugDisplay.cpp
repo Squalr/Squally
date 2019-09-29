@@ -210,6 +210,11 @@ void DebugDisplay::onAnyStateChange(GameState* gameState)
 			this->stateLabel->setStringReplacementVariables(ConstantString::create("GameEnd"));
 			break;
 		}
+		case GameState::StateType::GameExit:
+		{
+			this->stateLabel->setStringReplacementVariables(ConstantString::create("GameExit"));
+			break;
+		}
 		default:
 		{
 			this->stateLabel->setStringReplacementVariables(ConstantString::create("EmptyInvalidStateState"));

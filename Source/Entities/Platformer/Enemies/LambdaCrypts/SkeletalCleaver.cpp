@@ -135,8 +135,7 @@ HexusOpponentData* SkeletalCleaver::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

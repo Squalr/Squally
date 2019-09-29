@@ -141,8 +141,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

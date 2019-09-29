@@ -114,8 +114,7 @@ HexusOpponentTutorialE::HexusOpponentTutorialE() : super(
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
-		},
-		StateOverride::TutorialMode::TutorialE)
+		})
 	)
 {
 }

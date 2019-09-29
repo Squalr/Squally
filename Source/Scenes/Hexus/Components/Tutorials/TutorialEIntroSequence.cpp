@@ -29,7 +29,7 @@ TutorialEIntroSequence* TutorialEIntroSequence::create()
 	return instance;
 }
 
-TutorialEIntroSequence::TutorialEIntroSequence() : super(StateOverride::TutorialMode::TutorialE, GameState::StateType::Neutral)
+TutorialEIntroSequence::TutorialEIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_E_UseShiftLeft::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
@@ -104,7 +104,7 @@ void TutorialEIntroSequence::initializeCallbacks(GameState* gameState)
 {
 	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->concludeTutorial(gameState);
+		this->unHijackState(gameState);
 	});
 }
 
@@ -120,13 +120,14 @@ void TutorialEIntroSequence::runTutorialHandCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialEIntroSequence::concludeTutorial(GameState* gameState)
+void TutorialEIntroSequence::unHijackState(GameState* gameState)
 {
+	super::unHijackState(gameState);
+
 	this->handCardsNextButton->disableInteraction();
 	this->handCardsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->handCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
 	this->helpArrowHandCards->hidePointer();
 
 	this->focusTakeOver->unfocus();
-	this->unHijackState(gameState);
 }

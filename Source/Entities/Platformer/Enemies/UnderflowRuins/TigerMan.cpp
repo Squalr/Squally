@@ -139,8 +139,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

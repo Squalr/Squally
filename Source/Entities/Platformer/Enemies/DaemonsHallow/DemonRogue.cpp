@@ -135,8 +135,7 @@ HexusOpponentData* DemonRogue::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

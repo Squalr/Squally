@@ -140,8 +140,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

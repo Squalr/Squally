@@ -102,6 +102,11 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueClose, [=](EventCustom* eventCustom)
+	{
+		this->hideDialogue();
+	}));
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused)

@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/Config.h"
 
 #include "Resources/SoundResources.h"
@@ -79,7 +80,8 @@ void StateGameEnd::initializePositions()
 
 void StateGameEnd::onBackClick(GameState* gameState)
 {
-	GameState::updateState(gameState, GameState::StateType::EmptyState);
+	this->backButton->disableInteraction(0);
+	this->backButton->setMouseClickCallback(nullptr);
 
 	std::string winsKey = HexusOpponentData::winsPrefix + gameState->opponentData->enemyNameKey;
 	std::string lossesKey = HexusOpponentData::lossesPrefix + gameState->opponentData->enemyNameKey;
@@ -116,8 +118,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for winning
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
-		
-		// TODO: Win logic
 	}
 	else
 	{
@@ -134,6 +134,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 	}
+
+	GameState::updateState(gameState, GameState::StateType::GameExit);
+	
+	HexusEvents::TriggerExitHexus(HexusEvents::HexusExitArgs());
 }
 
 void StateGameEnd::onBeforeStateEnter(GameState* gameState)
@@ -156,7 +160,10 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 
 	this->backButton->enableInteraction(0);
 	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
-	this->backButton->setMouseClickCallback(CC_CALLBACK_0(StateGameEnd::onBackClick, this, gameState));
+	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->onBackClick(gameState);
+	});
 }
 
 void StateGameEnd::onStateReload(GameState* gameState)
@@ -167,7 +174,4 @@ void StateGameEnd::onStateReload(GameState* gameState)
 void StateGameEnd::onStateExit(GameState* gameState)
 {
 	super::onStateExit(gameState);
-
-	this->backButton->disableInteraction(0);
-	this->backButton->setMouseClickCallback(nullptr);
 }

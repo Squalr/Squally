@@ -135,8 +135,7 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

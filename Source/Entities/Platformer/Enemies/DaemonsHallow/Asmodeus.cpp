@@ -135,8 +135,7 @@ HexusOpponentData* Asmodeus::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

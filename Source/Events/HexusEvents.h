@@ -24,9 +24,7 @@ public:
 
 	struct HexusExitArgs
 	{
-		HexusOpponentData* opponentData;
-
-		HexusExitArgs(HexusOpponentData* opponentData) : opponentData(opponentData) { }
+		HexusExitArgs() { }
 	};
 
 	struct CardPreviewArgs
@@ -39,7 +37,7 @@ public:
 	};
 
 	static void TriggerOpenHexus(HexusOpenArgs args);
-	static void TriggerExitHexus();
+	static void TriggerExitHexus(HexusExitArgs args);
 	static void TriggerCardPreviewed(CardPreviewArgs args);
 	static void TriggerCardMousedOut();
 };

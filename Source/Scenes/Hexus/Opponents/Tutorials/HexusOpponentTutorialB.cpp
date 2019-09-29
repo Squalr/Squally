@@ -98,8 +98,7 @@ HexusOpponentTutorialB::HexusOpponentTutorialB() : super(
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-		},
-		StateOverride::TutorialMode::TutorialB)
+		})
 	)
 {
 }

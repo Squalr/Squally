@@ -142,8 +142,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

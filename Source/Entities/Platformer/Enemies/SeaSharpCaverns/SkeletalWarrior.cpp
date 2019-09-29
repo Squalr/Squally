@@ -138,8 +138,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

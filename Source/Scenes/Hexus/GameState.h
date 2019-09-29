@@ -42,6 +42,7 @@ public:
 		RoundEnd,
 		GameEnd,
 		Tutorial,
+		GameExit,
 	};
 
 	enum class Turn
@@ -83,7 +84,6 @@ public:
 	StateType previousStateType;
 	Turn turn;
 	HexusOpponentData::Strategy difficulty;
-	StateOverride::TutorialMode tutorialMode;
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;

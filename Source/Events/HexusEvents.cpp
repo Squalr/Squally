@@ -18,10 +18,11 @@ void HexusEvents::TriggerOpenHexus(HexusOpenArgs args)
 	);
 }
 
-void HexusEvents::TriggerExitHexus()
+void HexusEvents::TriggerExitHexus(HexusExitArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HexusEvents::EventExitHexus
+		HexusEvents::EventExitHexus,
+		&args
 	);
 }
 

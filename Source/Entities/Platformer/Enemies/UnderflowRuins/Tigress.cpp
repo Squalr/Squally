@@ -141,8 +141,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

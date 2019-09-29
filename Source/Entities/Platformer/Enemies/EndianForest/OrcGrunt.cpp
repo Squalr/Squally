@@ -141,8 +141,7 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

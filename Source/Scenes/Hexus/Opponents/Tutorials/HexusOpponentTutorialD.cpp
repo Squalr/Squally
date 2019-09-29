@@ -116,8 +116,7 @@ HexusOpponentTutorialD::HexusOpponentTutorialD() : super(
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-		},
-		StateOverride::TutorialMode::TutorialD)
+		})
 	)
 {
 }

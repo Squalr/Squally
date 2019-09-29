@@ -140,8 +140,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

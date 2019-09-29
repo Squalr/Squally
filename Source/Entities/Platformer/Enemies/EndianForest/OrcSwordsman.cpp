@@ -139,8 +139,7 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

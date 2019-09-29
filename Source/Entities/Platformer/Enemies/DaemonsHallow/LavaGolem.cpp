@@ -135,8 +135,7 @@ HexusOpponentData* LavaGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -26,7 +26,7 @@ private:
 	void initializeListeners() override;
 	void initializeCallbacks(GameState* gameState);
 	bool tryHijackState(GameState* gameState) override;
-
+	void unHijackState(GameState* gameState) override;
 	void runTutorialScoreTotal(GameState* gameState);
 	void runTutorialLossDisplay(GameState* gameState);
 	void runTutorialBinaryCards(GameState* gameState);
@@ -34,7 +34,6 @@ private:
 	void runTutorialHexCards(GameState* gameState);
 	void runTutorialRowTotals(GameState* gameState);
 	void runTutorialHandCards(GameState* gameState);
-	void concludeTutorial(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* scoreTotalsTutorialLabel;

@@ -138,8 +138,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

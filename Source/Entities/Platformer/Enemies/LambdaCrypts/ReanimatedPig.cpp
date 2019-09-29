@@ -135,8 +135,7 @@ HexusOpponentData* ReanimatedPig::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -135,8 +135,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}
