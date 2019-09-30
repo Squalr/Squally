@@ -34,7 +34,7 @@ private:
 	void runTutorialHexCards(GameState* gameState);
 	void runTutorialRowTotals(GameState* gameState);
 	void runTutorialHandCards(GameState* gameState);
-
+\
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* scoreTotalsTutorialLabel;
 	LocalizedLabel* lossDisplayTutorialLabel;

@@ -159,13 +159,17 @@ void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, fl
 
 void NpcInteractionBehavior::chooseOption(int option)
 {
-	if (--option <= 0 || option >= this->dialogueOptions.size())
+	if (--option < 0 || option >= this->dialogueOptions.size())
 	{
 		return;
 	}
 
 	DialogueEvents::TriggerDialogueClose();
-	std::get<0>(this->dialogueOptions[option]).onDialogueChosen();
+
+	if (std::get<0>(this->dialogueOptions[option]).onDialogueChosen != nullptr)
+	{
+		std::get<0>(this->dialogueOptions[option]).onDialogueChosen();
+	}
 }
 
 void NpcInteractionBehavior::showOptions()

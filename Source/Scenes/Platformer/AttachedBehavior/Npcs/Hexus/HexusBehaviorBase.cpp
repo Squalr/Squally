@@ -6,6 +6,7 @@
 
 #include "Resources/EntityResources.h"
 
+#include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Entities/HowAboutARoundOfHexus.h"
 
 using namespace cocos2d;
@@ -28,8 +29,13 @@ void HexusBehaviorBase::onLoad()
 {
 	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
 	{
+		LocalizedString* hexusDialogue = Strings::Platformer_Entities_HowAboutARoundOfHexus::create();
+		LocalizedString* hexus = Strings::Hexus_Hexus::create();
+
+		hexusDialogue->setStringReplacementVariables(hexus);
+
 		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
-			Strings::Platformer_Entities_HowAboutARoundOfHexus::create(),
+			hexusDialogue,
 			[=]()
 			{
 				HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));

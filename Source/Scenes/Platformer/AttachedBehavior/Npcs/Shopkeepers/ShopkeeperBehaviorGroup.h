@@ -2,9 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-class PlatformerEntity;
-class Squally;
-
 class ShopkeeperBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
@@ -20,6 +17,4 @@ protected:
 
 private:
 	typedef AttachedBehaviorGroup super;
-
-	PlatformerEntity* entity;
 };

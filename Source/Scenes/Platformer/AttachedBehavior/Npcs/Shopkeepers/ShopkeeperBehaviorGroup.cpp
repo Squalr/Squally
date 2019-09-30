@@ -1,14 +1,18 @@
 #include "ShopkeeperBehaviorGroup.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/GameObject.h"
+#include "Events/DialogueEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Shopkeepers/ShopkeeperDialogueBehavior.h"
 
 #include "Strings/Platformer/Entities/Shopkeepers/HowDoIBuySomething.h"
+#include "Strings/Platformer/Entities/Shopkeepers/HowToBuySomething.h"
 
 using namespace cocos2d;
 
@@ -29,14 +33,9 @@ ShopkeeperBehaviorGroup::ShopkeeperBehaviorGroup(GameObject* owner) : super(owne
 	EntityStatsBehaviorGroup::create(owner),
 	NpcInteractionBehavior::create(owner),
 	LookAtSquallyBehavior::create(owner),
+	ShopkeeperDialogueBehavior::create(owner),
 	})
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-
-	if (this->entity == nullptr)
-	{
-		this->invalidate();
-	}
 }
 
 ShopkeeperBehaviorGroup::~ShopkeeperBehaviorGroup()
@@ -45,15 +44,4 @@ ShopkeeperBehaviorGroup::~ShopkeeperBehaviorGroup()
 
 void ShopkeeperBehaviorGroup::onLoad()
 {
-	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
-	{
-		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
-			Strings::Platformer_Entities_Shopkeepers_HowDoIBuySomething::create(),
-			[=]()
-			{
-
-			}),
-			1.0f
-		);
-	});
 }
