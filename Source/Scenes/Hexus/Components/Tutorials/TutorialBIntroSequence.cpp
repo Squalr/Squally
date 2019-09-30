@@ -163,7 +163,7 @@ void TutorialBIntroSequence::initializeCallbacks(GameState* gameState)
 	});
 	this->lastStandNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->unHijackState(gameState);
+		this->tryUnHijackState(gameState);
 	});
 }
 
@@ -215,8 +215,6 @@ void TutorialBIntroSequence::runTutorialLastStand(GameState* gameState)
 
 void TutorialBIntroSequence::unHijackState(GameState* gameState)
 {
-	super::unHijackState(gameState);
-
 	this->lastStandNextButton->disableInteraction();
 	this->lastStandNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandTutorialLabel->runAction(FadeTo::create(0.25f, 0));

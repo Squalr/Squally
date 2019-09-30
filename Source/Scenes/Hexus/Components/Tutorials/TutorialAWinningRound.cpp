@@ -108,7 +108,7 @@ void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 {
 	this->scoreTotalsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->unHijackState(gameState);
+		this->tryUnHijackState(gameState);
 	});
 }
 
@@ -126,8 +126,6 @@ void TutorialAWinningRound::runTutorialScoreTotal(GameState* gameState)
 
 void TutorialAWinningRound::unHijackState(GameState* gameState)
 {
-	super::unHijackState(gameState);
-
 	this->scoreTotalsNextButton->disableInteraction();
 	this->scoreTotalsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->scoreTotalsTutorialLabel->runAction(FadeTo::create(0.25f, 0));

@@ -5,7 +5,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
-
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
@@ -17,10 +17,6 @@
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
-
-const std::string GameState::RequestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
-const std::string GameState::BeforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
-const std::string GameState::OnStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
 GameState* GameState::create()
 {
@@ -166,9 +162,10 @@ void GameState::updateState(GameState* gameState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::RequestStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::BeforeStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::OnStateUpdateEvent, gameState);
+	HexusEvents::TriggerBeforeRequestStateUpdate(gameState);
+	HexusEvents::TriggerRequestStateUpdate(gameState);
+	HexusEvents::TriggerBeforeStateUpdate(gameState);
+	HexusEvents::TriggerOnStateUpdate(gameState);
 }
 
 void GameState::clearInteraction()

@@ -104,7 +104,7 @@ void TutorialFIntroSequence::initializeCallbacks(GameState* gameState)
 {
 	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->unHijackState(gameState);
+		this->tryUnHijackState(gameState);
 	});
 }
 
@@ -122,8 +122,6 @@ void TutorialFIntroSequence::runTutorialHandCards(GameState* gameState)
 
 void TutorialFIntroSequence::unHijackState(GameState* gameState)
 {
-	super::unHijackState(gameState);
-
 	this->handCardsNextButton->disableInteraction();
 	this->handCardsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->handCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));

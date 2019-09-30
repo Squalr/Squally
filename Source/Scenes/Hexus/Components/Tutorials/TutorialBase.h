@@ -10,9 +10,11 @@ protected:
 	~TutorialBase();
 
 	void onEnter() override;
+	void onBeforeAnyRequestStateChange(GameState* gameState) override;
 	void onAnyRequestStateChange(GameState* gameState) override;
 	virtual bool tryHijackState(GameState* gameState) = 0;
-	virtual void unHijackState(GameState* gameState);
+	void tryUnHijackState(GameState* gameState, bool updateState = true);
+	virtual void unHijackState(GameState* gameState) = 0;
 
 	bool tutorialShown;
 	GameState::StateType cachedPreviousState;
@@ -20,4 +22,6 @@ protected:
 
 private:
 	typedef ComponentBase super;
+
+	bool isHijacking;
 };

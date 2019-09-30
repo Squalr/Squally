@@ -108,7 +108,7 @@ void TutorialAVictory::initializeCallbacks(GameState* gameState)
 {
 	this->lossDisplayNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->unHijackState(gameState);
+		this->tryUnHijackState(gameState);
 	});
 }
 
@@ -126,8 +126,6 @@ void TutorialAVictory::runTutorialLossDisplay(GameState* gameState)
 
 void TutorialAVictory::unHijackState(GameState* gameState)
 {
-	super::unHijackState(gameState);
-
 	this->lossDisplayNextButton->disableInteraction();
 	this->lossDisplayNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->lossDisplayTutorialLabel->runAction(FadeTo::create(0.25f, 0));

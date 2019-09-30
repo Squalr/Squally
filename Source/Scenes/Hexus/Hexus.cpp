@@ -242,7 +242,7 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (opponentData->stateOverride != nullptr)
 	{
-		for (auto it = opponentData->stateOverride->tutorials.begin(); it != opponentData->stateOverride->tutorials.begin(); it++)
+		for (auto it = opponentData->stateOverride->tutorials.begin(); it != opponentData->stateOverride->tutorials.end(); it++)
 		{
 			this->tutorialLayer->addChild(*it);
 		}
