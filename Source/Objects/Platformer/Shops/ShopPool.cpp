@@ -30,7 +30,7 @@ ShopPool::~ShopPool()
 {
 }
 
-Item* ShopPool::getItemFromPool()
+Item* ShopPool::getItemFromPool(bool removeSampledItem)
 {
 	if (this->cardPool != nullptr)
 	{
@@ -42,5 +42,5 @@ Item* ShopPool::getItemFromPool()
 		}
 	}
 
-	return super::getItemFromPool();
+	return super::getItemFromPool(removeSampledItem);
 }

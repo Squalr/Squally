@@ -2,7 +2,9 @@
 
 #include "Engine/Inventory/ItemPool.h"
 
+class EquipmentInventory;
 class HexusCard;
+class Inventory;
 
 class CardPool : public ItemPool
 {
@@ -17,7 +19,8 @@ protected:
 private:
 	typedef ItemPool super;
 
-	void removeAllMaxedOutCardsFromPool();
-
 	int remainingCards;
+
+	EquipmentInventory* equipmentInventory;
+	Inventory* inventory;
 };

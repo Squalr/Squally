@@ -13,7 +13,7 @@ protected:
 	ShopPool(cocos2d::ValueMap& properties, std::string poolName, CardPool* cardPool);
 	~ShopPool();
 
-	Item* getItemFromPool() override;
+	Item* getItemFromPool(bool removeSampledItem) override;
 
 private:
 	typedef ItemPool super;

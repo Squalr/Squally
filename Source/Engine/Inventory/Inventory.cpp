@@ -65,11 +65,11 @@ void Inventory::initializeListeners()
 ValueMap Inventory::serialize()
 {
 	ValueMap saveData = ValueMap();
-	ValueMap itemData = ValueMap();
+	ValueVector itemData = ValueVector();
 
 	for (auto it = this->items.begin(); it != this->items.end(); it++)
 	{
-		itemData[(*it)->getSerializationKey()] = (Value((*it)->serialize()));
+		itemData.push_back(Value((*it)->getSerializationKey()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -83,11 +83,11 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->clearItems();
 
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
-	ValueMap itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueMap())).asValueMap();
+	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
 	for (auto it = itemData.begin(); it != itemData.end(); it++)
 	{
-		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs((*it).asString(), [=](Item* item)
 		{
 			this->forceInsert(item, false);
 		}));

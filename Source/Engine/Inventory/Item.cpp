@@ -32,13 +32,6 @@ void Item::initializeListeners()
 	super::initializeListeners();
 }
 
-ValueMap Item::serialize()
-{
-	ValueMap result = ValueMap();
-
-	return result;
-}
-
 int Item::getCount()
 {
 	return this->count;

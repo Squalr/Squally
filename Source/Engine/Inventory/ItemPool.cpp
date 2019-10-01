@@ -43,24 +43,29 @@ void ItemPool::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			args->callback(this->getItemFromPool());
+			args->callback(this->getItemFromPool(true));
 		}
 	}));
 }
 
-std::vector<Item*> ItemPool::getItemsFromPool(int count)
+std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
 	for (int index = 0; index < count; index++)
 	{
-		items.push_back(this->getItemFromPool());
+		Item* item = this->getItemFromPool(removeSampledItems);
+
+		if (item != nullptr)
+		{
+			items.push_back(item);
+		}
 	}
 
 	return items;
 }
 
-Item* ItemPool::getItemFromPool()
+Item* ItemPool::getItemFromPool(bool removeSampledItem)
 {
 	float weight = RandomHelper::random_real(0.0f, this->weightSum);
 
@@ -70,14 +75,18 @@ Item* ItemPool::getItemFromPool()
 
 		if (weight <= 0.0f)
 		{
-			return std::get<0>(*it)->clone();
+			Item* item = std::get<0>(*it);
+
+			if (removeSampledItem)
+			{
+				this->removeItemFromPool(item);
+			}
+
+			return item->clone();
 		}
 	}
 
-	// Error! Fallback on a uniform random item
-	int index = RandomHelper::random_int(0, int(this->itemPool.size()) - 1);
-
-	return std::get<0>(this->itemPool[index])->clone();
+	return nullptr;
 }
 
 void ItemPool::addItemToPool(Item* item, float weight)
@@ -103,6 +112,8 @@ void ItemPool::removeItemFromPool(Item* item)
 
 		return false;
 	}), this->itemPool.end());
+
+	this->calculateWeightSum();
 }
 
 void ItemPool::calculateWeightSum()

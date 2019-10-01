@@ -15,10 +15,12 @@ protected:
 
 	void initializeListeners() override;
 
-	virtual Item* getItemFromPool();
-	std::vector<Item*> getItemsFromPool(int count);
+	virtual Item* getItemFromPool(bool removeSampledItem);
+	std::vector<Item*> getItemsFromPool(int count, bool removeSampledItems);
 	void addItemToPool(Item* item, float weight);
 	void removeItemFromPool(Item* item);
+	
+	std::vector<std::tuple<Item*, float>> itemPool;
 
 private:
 	typedef GameObject super;
@@ -28,6 +30,5 @@ private:
 	cocos2d::Node* itemsNode;
 
 	std::string poolName;
-	std::vector<std::tuple<Item*, float>> itemPool;
 	float weightSum;
 };

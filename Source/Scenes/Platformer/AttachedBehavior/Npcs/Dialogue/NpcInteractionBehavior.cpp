@@ -78,6 +78,14 @@ void NpcInteractionBehavior::onLoad()
 		this->squally = squally;
 	});
 
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->canInteract)
+		{
+			this->showOptions();
+		}
+	});
+
 	this->dialogueCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = true;
@@ -137,11 +145,6 @@ void NpcInteractionBehavior::onLoad()
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
 	{
 		this->chooseOption(9);
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
-	{
-		this->showOptions();
 	});
 
 	this->addDialogueOption(DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
