@@ -7,6 +7,7 @@ class LocalizedString;
 class HexusCard : public Equipable
 {
 public:
+	virtual std::string getCardKey() = 0;
 
 protected:
 	HexusCard(CurrencyInventory* cost);

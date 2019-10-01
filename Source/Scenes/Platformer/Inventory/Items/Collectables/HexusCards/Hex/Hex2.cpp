@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -51,4 +52,9 @@ std::string Hex2::getIconResource()
 std::string Hex2::getSerializationKey()
 {
 	return Hex2::SaveKeyHex2;
+}
+
+std::string Hex2::getCardKey()
+{
+	return CardKeys::Hex2;
 }

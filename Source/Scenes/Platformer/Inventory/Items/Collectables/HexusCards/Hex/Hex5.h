@@ -14,6 +14,7 @@ public:
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
+	std::string getCardKey() override;
 
 	static const std::string SaveKeyHex5;
 

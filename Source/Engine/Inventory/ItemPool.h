@@ -18,7 +18,7 @@ protected:
 	virtual Item* getItemFromPool();
 	std::vector<Item*> getItemsFromPool(int count);
 	void addItemToPool(Item* item, float weight);
-	void removeCardFromPool(Item* item);
+	void removeItemFromPool(Item* item);
 
 private:
 	typedef GameObject super;

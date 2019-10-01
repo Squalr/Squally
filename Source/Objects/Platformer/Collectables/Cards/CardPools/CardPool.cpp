@@ -35,5 +35,12 @@ std::vector<Item*> CardPool::getCards()
 	
 	this->remainingCards = 0;
 
+	this->removeAllMaxedOutCardsFromPool();
+
 	return this->getItemsFromPool(count);
+}
+
+void CardPool::removeAllMaxedOutCardsFromPool()
+{
+
 }

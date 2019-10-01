@@ -1,6 +1,7 @@
 #include "EquipmentInventory.h"
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
@@ -32,6 +33,34 @@ void EquipmentInventory::onEnter()
 void EquipmentInventory::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+std::map<std::string, int> EquipmentInventory::getCardKeyCount(Inventory* nonEquippedInventory)
+{
+	std::map<std::string, int> cardKeyCount = std::map<std::string, int>();
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<HexusCard*>(*it) != nullptr)
+		{
+			cardKeyCount[dynamic_cast<HexusCard*>(*it)->getCardKey()]++;
+		}
+	}
+
+	if (nonEquippedInventory != nullptr)
+	{
+		std::vector<Item*> items = nonEquippedInventory->getItems();
+		
+		for (auto it = items.begin(); it != items.end(); it++)
+		{
+			if (dynamic_cast<HexusCard*>(*it) != nullptr)
+			{
+				cardKeyCount[dynamic_cast<HexusCard*>(*it)->getCardKey()]++;
+			}
+		}
+	}
+
+	return cardKeyCount;
 }
 
 std::vector<Equipable*> EquipmentInventory::getEquipment()

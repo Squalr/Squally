@@ -19,6 +19,7 @@ public:
 	Offhand* getOffhand();
 	Hat* getHat();
 	std::vector<Gear*> getGear();
+	std::map<std::string, int> getCardKeyCount(Inventory* nonEquippedInventory);
 
 	int getTotalMinAttack();
 	int getTotalMaxAttack();

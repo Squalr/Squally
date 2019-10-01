@@ -90,7 +90,7 @@ void ItemPool::addItemToPool(Item* item, float weight)
 	this->calculateWeightSum();
 }
 
-void ItemPool::removeCardFromPool(Item* item)
+void ItemPool::removeItemFromPool(Item* item)
 {
 	this->itemPool.erase(std::remove_if(this->itemPool.begin(), this->itemPool.end(), [=](std::tuple<Item*, float> entry)
 	{

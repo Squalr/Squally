@@ -17,5 +17,7 @@ protected:
 private:
 	typedef ItemPool super;
 
+	void removeAllMaxedOutCardsFromPool();
+
 	int remainingCards;
 };
