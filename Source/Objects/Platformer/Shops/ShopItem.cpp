@@ -49,6 +49,8 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->itemCostLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->itemCostLabel->enableOutline(Color4B::BLACK, 2);
 
+	this->setVisible(false);
+
 	this->addChild(this->itemPreview);
 	this->addChild(this->itemNode);
 	this->addChild(this->itemClickHitbox);
@@ -70,6 +72,7 @@ void ShopItem::onEnterTransitionDidFinish()
 
 		if (this->item != nullptr)
 		{
+			this->setVisible(true);
 			this->itemNode->addChild(this->item);
 			this->itemPreview->preview(this->item);
 
@@ -80,6 +83,10 @@ void ShopItem::onEnterTransitionDidFinish()
 				this->itemCost = cost->getCurrencyCount(IOU::getIdentifier());
 				this->itemCostString->setString(std::to_string(this->itemCost));
 			}
+		}
+		else
+		{
+			this->setVisible(false);
 		}
 	}));
 }
@@ -104,6 +111,11 @@ void ShopItem::initializeListeners()
 
 void ShopItem::sellItem()
 {
+	if (!this->available)
+	{
+		return;
+	}
+
 	CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
 	int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
 
@@ -119,6 +131,8 @@ void ShopItem::sellItem()
 			this->itemPreview->preview(nullptr);
 			this->currencySprite->setVisible(false);
 			this->itemCostLabel->setVisible(false);
+			this->itemClickHitbox->setMouseClickCallback(nullptr);
+			this->itemClickHitbox->disableInteraction(0);
 		},
 		[=](Item*)
 		{

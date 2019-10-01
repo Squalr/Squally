@@ -53,6 +53,8 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 		this->itemName->enableOutline(Color4B::BLACK, 2);
 		this->addChild(this->itemName);
 	}
+
+	this->preview(nullptr);
 }
 
 ItemPreview::~ItemPreview()
@@ -95,6 +97,8 @@ void ItemPreview::preview(Item* item)
 
 	if (item != nullptr)
 	{
+		this->setVisible(true);
+
 		this->previewNode->addChild(Sprite::create(item->getIconResource()));
 
 		if (this->equipHint != nullptr && dynamic_cast<Equipable*>(item) != nullptr)
@@ -107,6 +111,10 @@ void ItemPreview::preview(Item* item)
 			this->itemName->setStringReplacementVariables(item->getString());
 			this->itemName->setVisible(true);
 		}
+	}
+	else
+	{
+		this->setVisible(false);
 	}
 }
 
