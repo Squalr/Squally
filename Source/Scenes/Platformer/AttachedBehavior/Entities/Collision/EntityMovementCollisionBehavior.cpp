@@ -60,8 +60,20 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 			false
 		);
 
-		this->movementCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f));
-		
+		Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+		if (this->entity->isFlippedY())
+		{
+			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+			this->movementCollision->inverseGravity();
+			this->movementCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+		else
+		{
+			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+			this->movementCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+
 		this->addChild(this->movementCollision);
 	}
 }
@@ -203,8 +215,23 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Size entitySize = this->entity->getEntitySize();
 
-	this->leftCollision->getPhysicsBody()->setPositionOffset(collisionOffset + Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f));
-	this->rightCollision->getPhysicsBody()->setPositionOffset(collisionOffset + Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f));
+	if (this->entity->isFlippedY())
+	{
+
+		Vec2 offsetLeft = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
+		Vec2 offsetRight = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
+		this->leftCollision->inverseGravity();
+		this->rightCollision->inverseGravity();
+		this->leftCollision->getPhysicsBody()->setPositionOffset(offsetLeft);
+		this->rightCollision->getPhysicsBody()->setPositionOffset(offsetRight);
+	}
+	else
+	{
+		Vec2 offsetLeft = collisionOffset + Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
+		Vec2 offsetRight = collisionOffset + Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
+		this->leftCollision->getPhysicsBody()->setPositionOffset(offsetLeft);
+		this->rightCollision->getPhysicsBody()->setPositionOffset(offsetRight);
+	}
 
 	this->addChild(this->leftCollision);
 	this->addChild(this->rightCollision);

@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsBody.h"
 #include "cocos/physics/CCPhysicsContact.h"
+#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
@@ -70,13 +71,15 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
-	this->physicsEnabled = true;
+	this->gravityEnabled = true;
+	this->gravityInversed = true;
 	this->contactUpdateCallback = nullptr;
 	this->onDebugPositionSet = nullptr;
 	this->bindTarget = nullptr;
 
 	if (this->physicsBody != nullptr)
 	{
+		this->physicsBody->setGravityEnable(false);
 		this->physicsBody->setRotationEnable(canRotate);
 		this->physicsBody->setDynamic(isDynamic);
 		this->physicsBody->setContactTestBitmask(0);
@@ -171,9 +174,27 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
-		// Apply dampening
 		Vec2 velocity = this->getVelocity();
+		Scene* scene = Director::getInstance()->getRunningScene();
 
+		// Apply gravity
+		if (this->gravityEnabled && scene != nullptr && scene->getPhysicsWorld() != nullptr)
+		{
+			const Vec2 gravity = Director::getInstance()->getRunningScene()->getPhysicsWorld()->getGravity();
+
+			velocity.x += gravity.x * dt;
+
+			if (this->gravityInversed)
+			{
+				velocity.y += gravity.y * dt;
+			}
+			else
+			{
+				velocity.y -= gravity.y * dt;
+			}
+		}
+
+		// Apply dampening
 		velocity.x *= this->horizontalDampening;
 		velocity.y *= this->verticalDampening;
 
@@ -193,8 +214,6 @@ void CollisionObject::setDebugPositionSetCallback(std::function<void()> onDebugP
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
-	this->physicsEnabled = enabled;
-
 	if (this->physicsBody != nullptr)
 	{
 		this->physicsBody->setEnabled(enabled);
@@ -203,10 +222,12 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 
 void CollisionObject::setGravityEnabled(bool isEnabled)
 {
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setGravityEnable(isEnabled);
-	}
+	this->gravityEnabled = isEnabled;
+}
+
+void CollisionObject::inverseGravity()
+{
+	this->gravityInversed = !this->gravityInversed;
 }
 
 void CollisionObject::setPosition(const Vec2& position)

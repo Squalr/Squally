@@ -56,6 +56,7 @@ public:
 	void setCollisionType(CollisionType collisionType);
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
+	void inverseGravity();
 	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -112,6 +113,7 @@ private:
 	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;
 	std::vector<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
-	bool physicsEnabled;
+	bool gravityEnabled;
+	bool gravityInversed;
 	std::function<void()> onDebugPositionSet;
 };

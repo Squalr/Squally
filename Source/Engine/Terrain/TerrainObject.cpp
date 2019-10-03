@@ -47,6 +47,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
+	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyFlipY, Value(false)).asBool();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -495,13 +496,18 @@ void TerrainObject::buildSurfaceTextures()
 			Sprite* top = Sprite::create(this->terrainData.topResource);
 			Vec2 offset = Vec2(0.0f, top->getContentSize().height / 2.0f) + terrainData.topOffset;
 
+			offset.y = this->isFlipped ? -offset.y : offset.y;
+
 			buildSegment(this->topsNode, top, Vec2(0.5f, 1.0f), offset, 180.0f, true);
 		}
 		else if (this->isBottomAngle(normalAngle))
 		{
 			Sprite* bottom = Sprite::create(this->terrainData.bottomResource);
+			Vec2 offset = Vec2(0.0f, -bottom->getContentSize().height / 2.0f);
 
-			buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.0f), Vec2(0.0f, -bottom->getContentSize().height / 2.0f), 360.0f, true);
+			offset.y = this->isFlipped ? -offset.y : offset.y;
+
+			buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.0f), offset, 360.0f, true);
 		}
 		else if (this->isLeftAngle(normalAngle))
 		{
@@ -528,7 +534,9 @@ void TerrainObject::buildSurfaceTextures()
 			Vec2 nextSource = std::get<0>(nextSegment);
 			Vec2 nextDest = std::get<1>(nextSegment);
 
-			if ((floorToWall && nextSource.x <= source.x) || (wallToFloor && nextDest.x >= dest.x))
+			bool isTopLeft = ((floorToWall && nextSource.x <= source.x) || (wallToFloor && nextDest.x >= dest.x)) ^ this->isFlipped;
+
+			if (isTopLeft)
 			{
 				Sprite* topLeft = Sprite::create(this->terrainData.topCornerLeftResource);
 				Size textureSize = topLeft->getContentSize();
@@ -557,7 +565,9 @@ void TerrainObject::buildSurfaceTextures()
 			Vec2 nextSource = std::get<0>(nextSegment);
 			Vec2 nextDest = std::get<1>(nextSegment);
 
-			if ((roofToWall && nextSource.x <= source.x) || (wallToRoof && nextDest.x >= dest.x))
+			bool isBottomLeft = ((roofToWall && nextSource.x <= source.x) || (wallToRoof && nextDest.x >= dest.x)) ^ this->isFlipped;
+
+			if (isBottomLeft)
 			{
 				Sprite* bottomLeft = Sprite::create(this->terrainData.bottomCornerLeftResource);
 				Size textureSize = bottomLeft->getContentSize();
@@ -667,12 +677,26 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 
 bool TerrainObject::isTopAngle(float normalAngle)
 {
-	return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
+	if (this->isFlipped)
+	{
+		return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
+	}
+	else
+	{
+		return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
+	}
 }
 
 bool TerrainObject::isBottomAngle(float normalAngle)
 {
-	return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
+	if (!this->isFlipped)
+	{
+		return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
+	}
+	else
+	{
+		return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
+	}
 }
 
 bool TerrainObject::isLeftAngle(float normalAngle)
@@ -684,4 +708,3 @@ bool TerrainObject::isRightAngle(float normalAngle)
 {
 	return (!this->isTopAngle(normalAngle) && !this->isBottomAngle(normalAngle) && !this->isLeftAngle(normalAngle));
 }
-

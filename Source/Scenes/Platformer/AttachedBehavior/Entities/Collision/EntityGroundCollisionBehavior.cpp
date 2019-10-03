@@ -47,10 +47,19 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 			false
 		);
 
-		float offsetY = 0.0f;
+		Vec2 collisionOffset = this->entity->getCollisionOffset();
 
-		this->groundCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset));
-		// this->groundCollision->setPosition(Vec2::ZERO);
+		if (this->entity->isFlippedY())
+		{
+			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+			this->groundCollision->inverseGravity();
+			this->groundCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+		else
+		{
+			Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+			this->groundCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
 		
 		this->addChild(this->groundCollision);
 	}

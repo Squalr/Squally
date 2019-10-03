@@ -42,6 +42,8 @@ public:
 	virtual LocalizedString* getEntityName() = 0;
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
+	bool isFlippedX();
+	bool isFlippedY();
 
 	ControlState controlState;
 	SpeechBubble* speechBubble;

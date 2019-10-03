@@ -51,8 +51,20 @@ EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner) : super(owne
 			false
 		);
 
-		this->entityCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
-		
+		Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+		if (this->entity->isFlippedY())
+		{
+			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
+			this->entityCollision->inverseGravity();
+			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+		else
+		{
+			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
+			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+
 		this->addChild(this->entityCollision);
 
 		this->scheduleUpdate();

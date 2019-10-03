@@ -105,6 +105,7 @@ private:
 	TerrainData terrainData;
 	bool isHollow;
 	bool isInactive;
+	bool isFlipped;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

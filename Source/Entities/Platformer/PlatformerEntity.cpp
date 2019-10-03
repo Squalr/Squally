@@ -70,8 +70,12 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
-	this->animationNode->setFlippedY(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool());
+	this->animationNode->setFlippedX(this->isFlippedX());
+
+	if (this->isFlippedY())
+	{
+		this->setRotation(180.0f);
+	}
 
 	this->floatNode->addChild(this->belowAnimationNode);
 	this->floatNode->addChild(this->animationNode);
@@ -198,4 +202,14 @@ std::string PlatformerEntity::getAnimationResource()
 std::string PlatformerEntity::getEmblemResource()
 {
 	return this->emblemResource;
+}
+
+bool PlatformerEntity::isFlippedX()
+{
+	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool();
+}
+
+bool PlatformerEntity::isFlippedY()
+{
+	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }

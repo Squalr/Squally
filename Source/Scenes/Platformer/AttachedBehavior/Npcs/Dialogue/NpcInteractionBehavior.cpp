@@ -57,8 +57,21 @@ NpcInteractionBehavior::NpcInteractionBehavior(GameObject* owner) : super(owner)
 			false
 		);
 
-		this->dialogueCollision->getPhysicsBody()->setPositionOffset(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
 		this->interactMenu->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
+
+		Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+		if (this->entity->isFlippedY())
+		{
+			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+			this->dialogueCollision->inverseGravity();
+			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
+		else
+		{
+			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
+		}
 
 		this->addChild(this->dialogueCollision);
 	}

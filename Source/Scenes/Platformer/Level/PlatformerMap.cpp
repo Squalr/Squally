@@ -297,35 +297,35 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	// Error loading map! Try parsing the map to look for a reasonable fallback map
 	if (StrUtils::contains(mapResource, "UnderflowRuins", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "SeaSharpCaverns", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "CastleValgrind", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "BalmerPeaks", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "DaemonsHallow", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "LambdaCrypts", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "VoidStar", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else // if (StrUtils::contains(mapResource, "EndianForest", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	
 	SaveManager::batchSaveProfileData({
