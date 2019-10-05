@@ -232,10 +232,19 @@ void Hexus::initializeListeners()
 
 void Hexus::open(HexusOpponentData* opponentData)
 {
-	if (opponentData == nullptr)
+	if (this->gameState->opponentData != nullptr)
+	{
+		this->removeChild(this->gameState->opponentData);
+	}
+	
+	this->gameState->opponentData = opponentData;
+
+	if (this->gameState->opponentData == nullptr)
 	{
 		return;
 	}
+	
+	this->addChild(this->gameState->opponentData);
 
 	this->relocateLayer->removeAllChildren();
 	this->tutorialLayer->removeAllChildren();
@@ -247,8 +256,6 @@ void Hexus::open(HexusOpponentData* opponentData)
 			this->tutorialLayer->addChild(*it);
 		}
 	}
-	
-	this->gameState->opponentData = opponentData;
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
