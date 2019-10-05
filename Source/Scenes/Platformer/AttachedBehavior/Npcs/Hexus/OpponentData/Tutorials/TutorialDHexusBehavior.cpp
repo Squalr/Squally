@@ -1,4 +1,4 @@
-#include "TobenHexusBehavior.h"
+#include "TutorialDHexusBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -13,18 +13,18 @@
 
 using namespace cocos2d;
 
-const std::string TobenHexusBehavior::MapKeyAttachedBehavior = "hexus-toben";
+const std::string TutorialDHexusBehavior::MapKeyAttachedBehavior = "hexus-tutorial-D";
 
-TobenHexusBehavior* TobenHexusBehavior::create(GameObject* owner)
+TutorialDHexusBehavior* TutorialDHexusBehavior::create(GameObject* owner)
 {
-	TobenHexusBehavior* instance = new TobenHexusBehavior(owner);
+	TutorialDHexusBehavior* instance = new TutorialDHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TobenHexusBehavior::TobenHexusBehavior(GameObject* owner) : super(owner)
+TutorialDHexusBehavior::TutorialDHexusBehavior(GameObject* owner) : super(owner)
 {
     this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -34,16 +34,16 @@ TobenHexusBehavior::TobenHexusBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-TobenHexusBehavior::~TobenHexusBehavior()
+TutorialDHexusBehavior::~TutorialDHexusBehavior()
 {
 }
 
-void TobenHexusBehavior::onLoad()
+void TutorialDHexusBehavior::onLoad()
 {
     super::onLoad();
 }
 
-HexusOpponentData* TobenHexusBehavior::createOpponentData()
+HexusOpponentData* TutorialDHexusBehavior::createOpponentData()
 {
     return HexusOpponentData::create( 
         // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
@@ -70,7 +70,7 @@ HexusOpponentData* TobenHexusBehavior::createOpponentData()
             // Player passed
             false,
             // Enemy passed
-            true,
+            false,
             // Player deck
             std::vector<CardData*>
             {
@@ -96,22 +96,25 @@ HexusOpponentData* TobenHexusBehavior::createOpponentData()
             // Player hand
             std::vector<CardData*>
             {
-                CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
-                CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+                CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
             },
             // Enemy hand
             std::vector<CardData*>
             {
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
             },
             // Player binary cards
             std::vector<CardData*>
             {
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
             },
             // Player decimal cards
             std::vector<CardData*>
             {
-                CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
             },
             // Player hex cards
             std::vector<CardData*>
@@ -120,23 +123,20 @@ HexusOpponentData* TobenHexusBehavior::createOpponentData()
             // Enemy binary cards
             std::vector<CardData*>
             {
-                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-                CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
             },
             // Enemy decimal cards
             std::vector<CardData*>
             {
-                CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
             },
             // Enemy hex cards
             std::vector<CardData*>
             {
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
             },
-            { TutorialAIntroSequence::create(), TutorialAVictory::create() })
+            { TutorialDIntroSequence::create() })
 	);
 }

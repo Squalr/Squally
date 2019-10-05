@@ -38,7 +38,12 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[SquallyNoSavePositionBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyNoSavePositionBehavior::create(owner); };
 	
 	// Hexus behaviors
-	this->attachedBehaviorDeserializers[TobenHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TobenHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialAHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialAHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialBHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialBHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialCHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialCHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialDHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialDHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialEHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialEHexusBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[TutorialFHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TutorialFHexusBehavior::create(owner); };
 
 	// this->attachedBehaviorDeserializers[CryogenCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CryogenCombatBehavior::create(owner); };
 	// this->attachedBehaviorDeserializers[FrostFiendCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FrostFiendCombatBehavior::create(owner); };

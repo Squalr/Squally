@@ -4,18 +4,18 @@
 
 class HexusOpponentData;
 
-class TobenHexusBehavior : public HexusBehaviorBase
+class TutorialEHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static TobenHexusBehavior* create(GameObject* owner);
+	static TutorialEHexusBehavior* create(GameObject* owner);
 
 	HexusOpponentData* createOpponentData() override;
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	TobenHexusBehavior(GameObject* owner);
-	~TobenHexusBehavior();
+	TutorialEHexusBehavior(GameObject* owner);
+	~TutorialEHexusBehavior();
 
 	void onLoad() override;
 
