@@ -123,6 +123,15 @@ namespace TerrainResources
 	extern const std::string Marble_MarbleTexture;
 	extern const std::string Marble_MarbleTopLeft;
 	extern const std::string Marble_MarbleTopRight;
+	extern const std::string MarbleDark_MarbleDark;
+	extern const std::string MarbleDark_MarbleDarkBottom;
+	extern const std::string MarbleDark_MarbleDarkBottomLeft;
+	extern const std::string MarbleDark_MarbleDarkBottomRight;
+	extern const std::string MarbleDark_MarbleDarkLeft;
+	extern const std::string MarbleDark_MarbleDarkRight;
+	extern const std::string MarbleDark_MarbleDarkTexture;
+	extern const std::string MarbleDark_MarbleDarkTopLeft;
+	extern const std::string MarbleDark_MarbleDarkTopRight;
 	extern const std::string MarbleGrass_MarbleGrass;
 	extern const std::string MarbleGrass_MarbleGrassBottom;
 	extern const std::string MarbleGrass_MarbleGrassBottomLeft;

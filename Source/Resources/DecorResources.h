@@ -552,6 +552,8 @@ namespace DecorResources
 	extern const std::string Generic_Lamp1;
 	extern const std::string Generic_Lamp2;
 	extern const std::string Generic_LesserMoonDoor;
+	extern const std::string Generic_MagesGuild;
+	extern const std::string Generic_MagesGuildFront;
 	extern const std::string Generic_MoonDoor;
 	extern const std::string Generic_Nightstand;
 	extern const std::string Generic_Register;

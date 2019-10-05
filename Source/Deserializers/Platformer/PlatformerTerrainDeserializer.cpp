@@ -35,6 +35,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[IceTerrain::MapKeyTerrainTypeIce] = [=](ValueMap properties) { return (GameObject*)IceTerrain::create(properties); };
 	this->deserializers[JungleTerrain::MapKeyTerrainTypeJungle] = [=](ValueMap properties) { return (GameObject*)JungleTerrain::create(properties); };
 	this->deserializers[LeafTerrain::MapKeyTerrainTypeLeaf] = [=](ValueMap properties) { return (GameObject*)LeafTerrain::create(properties); };
+	this->deserializers[MarbleDarkTerrain::MapKeyTerrainTypeMarbleDark] = [=](ValueMap properties) { return (GameObject*)MarbleDarkTerrain::create(properties); };
 	this->deserializers[MarbleGrassTerrain::MapKeyTerrainTypeMarbleGrass] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTerrain::create(properties); };
 	this->deserializers[MarbleTerrain::MapKeyTerrainTypeMarble] = [=](ValueMap properties) { return (GameObject*)MarbleTerrain::create(properties); };
 	this->deserializers[ShadeGrassTerrain::MapKeyTerrainTypeShadeGrass] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTerrain::create(properties); };
