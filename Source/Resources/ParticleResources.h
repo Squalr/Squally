@@ -61,6 +61,7 @@ namespace ParticleResources
 	extern const std::string Poison;
 	extern const std::string Portals_DarkPortal;
 	extern const std::string Portals_PortalEdge;
+	extern const std::string Portals_PortalEdgeDark;
 	extern const std::string Portals_PortalEye;
 	extern const std::string Portals_PortalFire;
 	extern const std::string Portals_PortalSand;

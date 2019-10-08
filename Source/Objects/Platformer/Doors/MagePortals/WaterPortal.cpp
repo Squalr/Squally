@@ -1,4 +1,4 @@
-#include "FirePortal.h"
+#include "WaterPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCParticleSystemQuad.h"
@@ -8,18 +8,18 @@
 
 using namespace cocos2d;
 
-const std::string FirePortal::MapKeyFirePortal = "fire-portal";
+const std::string WaterPortal::MapKeyWaterPortal = "water-portal";
 
-FirePortal* FirePortal::create(ValueMap& properties)
+WaterPortal* WaterPortal::create(ValueMap& properties)
 {
-	FirePortal* instance = new FirePortal(properties);
+	WaterPortal* instance = new WaterPortal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirePortal::FirePortal(ValueMap& properties) : super(properties)
+WaterPortal::WaterPortal(ValueMap& properties) : super(properties)
 {
 	this->background = DrawNode::create();
 	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
@@ -33,21 +33,21 @@ FirePortal::FirePortal(ValueMap& properties) : super(properties)
 	this->contentNode->addChild(this->edge);
 }
 
-FirePortal::~FirePortal()
+WaterPortal::~WaterPortal()
 {
 }
 
-void FirePortal::onEnter()
+void WaterPortal::onEnter()
 {
 	super::onEnter();
 }
 
-void FirePortal::initializePositions()
+void WaterPortal::initializePositions()
 {
 	super::initializePositions();
 }
 
-void FirePortal::initializeListeners()
+void WaterPortal::initializeListeners()
 {
 	super::initializeListeners();
 }

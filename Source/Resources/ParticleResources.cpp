@@ -60,6 +60,7 @@ const std::string ParticleResources::Objects_Smoke = "Public/Particles/Objects/S
 const std::string ParticleResources::Poison = "Public/Particles/Poison.plist";
 const std::string ParticleResources::Portals_DarkPortal = "Public/Particles/Portals/DarkPortal.plist";
 const std::string ParticleResources::Portals_PortalEdge = "Public/Particles/Portals/PortalEdge.plist";
+const std::string ParticleResources::Portals_PortalEdgeDark = "Public/Particles/Portals/PortalEdgeDark.plist";
 const std::string ParticleResources::Portals_PortalEye = "Public/Particles/Portals/PortalEye.plist";
 const std::string ParticleResources::Portals_PortalFire = "Public/Particles/Portals/PortalFire.plist";
 const std::string ParticleResources::Portals_PortalSand = "Public/Particles/Portals/PortalSand.plist";
