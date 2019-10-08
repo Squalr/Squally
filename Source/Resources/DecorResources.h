@@ -536,6 +536,7 @@ namespace DecorResources
 	extern const std::string Generic_Flag1;
 	extern const std::string Generic_Flag2;
 	extern const std::string Generic_Flag3;
+	extern const std::string Generic_GreenCrystal;
 	extern const std::string Generic_Helmet1;
 	extern const std::string Generic_Helmet2;
 	extern const std::string Generic_InsanityPoster1;

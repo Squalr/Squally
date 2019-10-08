@@ -59,6 +59,11 @@ namespace ParticleResources
 	extern const std::string MindBlast;
 	extern const std::string Objects_Smoke;
 	extern const std::string Poison;
+	extern const std::string Portals_DarkPortal;
+	extern const std::string Portals_PortalEdge;
+	extern const std::string Portals_PortalEye;
+	extern const std::string Portals_PortalFire;
+	extern const std::string Portals_PortalSand;
 	extern const std::string Rain;
 	extern const std::string Rain2;
 	extern const std::string Spark;

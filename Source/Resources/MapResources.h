@@ -14,7 +14,12 @@ namespace MapResources
 	extern const std::string Dev_Quests;
 	extern const std::string EndianForest_Forest;
 	extern const std::string EndianForest_Intro;
-	extern const std::string EndianForest_Mages_Guild_copy;
+	extern const std::string EndianForest_Mages_Gauntlet_1;
+	extern const std::string EndianForest_Mages_Gauntlet_2;
+	extern const std::string EndianForest_Mages_Gauntlet_3;
+	extern const std::string EndianForest_Mages_Gauntlet_4;
+	extern const std::string EndianForest_Mages_Gauntlet_5;
+	extern const std::string EndianForest_Mages_Gauntlet_6;
 	extern const std::string EndianForest_Mages_Guild;
 	extern const std::string EndianForest_Town_Alch;
 	extern const std::string EndianForest_Town_Docks;
