@@ -1,4 +1,4 @@
-#include "WaterPortal.h"
+#include "FrostPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCParticleSystemQuad.h"
@@ -8,41 +8,41 @@
 
 using namespace cocos2d;
 
-const std::string WaterPortal::MapKeyWaterPortal = "water-portal";
+const std::string FrostPortal::MapKeyFrostPortal = "frost-portal";
 
-WaterPortal* WaterPortal::create(ValueMap& properties)
+FrostPortal* FrostPortal::create(ValueMap& properties)
 {
-	WaterPortal* instance = new WaterPortal(properties);
+	FrostPortal* instance = new FrostPortal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WaterPortal::WaterPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLUE)
+FrostPortal::FrostPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalWater);
+	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFrost);
 	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-WaterPortal::~WaterPortal()
+FrostPortal::~FrostPortal()
 {
 }
 
-void WaterPortal::onEnter()
+void FrostPortal::onEnter()
 {
 	super::onEnter();
 }
 
-void WaterPortal::initializePositions()
+void FrostPortal::initializePositions()
 {
 	super::initializePositions();
 }
 
-void WaterPortal::initializeListeners()
+void FrostPortal::initializeListeners()
 {
 	super::initializeListeners();
 }

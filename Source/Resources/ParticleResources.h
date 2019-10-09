@@ -64,7 +64,13 @@ namespace ParticleResources
 	extern const std::string Portals_PortalEdgeDark;
 	extern const std::string Portals_PortalEye;
 	extern const std::string Portals_PortalFire;
+	extern const std::string Portals_PortalFrost;
+	extern const std::string Portals_PortalNature;
+	extern const std::string Portals_PortalNatureEdge;
 	extern const std::string Portals_PortalSand;
+	extern const std::string Portals_PortalVoid;
+	extern const std::string Portals_PortalWater;
+	extern const std::string Portals_PortalWind;
 	extern const std::string Rain;
 	extern const std::string Rain2;
 	extern const std::string Spark;

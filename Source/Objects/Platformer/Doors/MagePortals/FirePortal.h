@@ -26,7 +26,6 @@ protected:
 private:
 	typedef MagePortal super;
 
-	cocos2d::DrawNode* background;
 	cocos2d::ParticleSystem* portalParticles;
 	cocos2d::ParticleSystem* edgeParticles;
 };

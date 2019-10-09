@@ -19,12 +19,10 @@ DarkPortal* DarkPortal::create(ValueMap& properties)
 	return instance;
 }
 
-DarkPortal::DarkPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+DarkPortal::DarkPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
+	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalSand);
 
-	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 

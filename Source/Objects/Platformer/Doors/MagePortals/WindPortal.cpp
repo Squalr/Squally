@@ -19,12 +19,12 @@ WindPortal* WindPortal::create(ValueMap& properties)
 	return instance;
 }
 
-WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::GRAY)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
+	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalWind);
+	//this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
 
-	this->portalEffectNode->addChild(this->edgeParticles);
+	//this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 

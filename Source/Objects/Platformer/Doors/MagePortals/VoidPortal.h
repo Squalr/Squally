@@ -9,16 +9,16 @@ namespace cocos2d
 	class ParticleSystem;
 }
 
-class DarkPortal : public MagePortal
+class VoidPortal : public MagePortal
 {
 public:
-	static DarkPortal* create(cocos2d::ValueMap& properties);
+	static VoidPortal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyDarkPortal;
+	static const std::string MapKeyVoidPortal;
 
 protected:
-	DarkPortal(cocos2d::ValueMap& properties);
-	~DarkPortal();
+	VoidPortal(cocos2d::ValueMap& properties);
+	~VoidPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

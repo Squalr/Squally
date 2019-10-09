@@ -94,6 +94,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FloatingCrate::MapKeyFloatingCrate] = [=](ValueMap properties) { return (GameObject*)FloatingCrate::create(properties); };
 	this->deserializers[FloatingRock::MapKeyFloatingRock] = [=](ValueMap properties) { return (GameObject*)FloatingRock::create(properties); };
 	this->deserializers[FloatingWoodenBeam::MapKeyFloatingWoodenBeam] = [=](ValueMap properties) { return (GameObject*)FloatingWoodenBeam::create(properties); };
+	this->deserializers[FrostPortal::MapKeyFrostPortal] = [=](ValueMap properties) { return (GameObject*)FrostPortal::create(properties); };
 	this->deserializers[Gate::MapKeyGate] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };
 	this->deserializers[LanternGate::MapKeyLanternGate] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
 	this->deserializers[IOU::MapKeyIOU] = [=](ValueMap properties) { return (GameObject*)IOU::create(properties); };
@@ -124,6 +125,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
+	this->deserializers[VoidPortal::MapKeyVoidPortal] = [=](ValueMap properties) { return (GameObject*)VoidPortal::create(properties); };
 	this->deserializers[Warp::MapKeyWarp] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
 	this->deserializers[WaterPortal::MapKeyWaterPortal] = [=](ValueMap properties) { return (GameObject*)WaterPortal::create(properties); };

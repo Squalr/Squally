@@ -19,10 +19,10 @@ NaturePortal* NaturePortal::create(ValueMap& properties)
 	return instance;
 }
 
-NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Color4B(14, 82, 24, 255))
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
+	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalNature);
+	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalNatureEdge);
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
