@@ -1,4 +1,4 @@
-#include "FirePortal.h"
+#include "NaturePortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCParticleSystemQuad.h"
@@ -8,18 +8,18 @@
 
 using namespace cocos2d;
 
-const std::string FirePortal::MapKeyFirePortal = "fire-portal";
+const std::string NaturePortal::MapKeyNaturePortal = "nature-portal";
 
-FirePortal* FirePortal::create(ValueMap& properties)
+NaturePortal* NaturePortal::create(ValueMap& properties)
 {
-	FirePortal* instance = new FirePortal(properties);
+	NaturePortal* instance = new NaturePortal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
 {
 	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
 	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
@@ -28,21 +28,21 @@ FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B:
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-FirePortal::~FirePortal()
+NaturePortal::~NaturePortal()
 {
 }
 
-void FirePortal::onEnter()
+void NaturePortal::onEnter()
 {
 	super::onEnter();
 }
 
-void FirePortal::initializePositions()
+void NaturePortal::initializePositions()
 {
 	super::initializePositions();
 }
 
-void FirePortal::initializeListeners()
+void NaturePortal::initializeListeners()
 {
 	super::initializeListeners();
 }

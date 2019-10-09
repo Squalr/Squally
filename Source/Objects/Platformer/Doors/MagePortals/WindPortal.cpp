@@ -1,4 +1,4 @@
-#include "FirePortal.h"
+#include "WindPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCParticleSystemQuad.h"
@@ -8,18 +8,18 @@
 
 using namespace cocos2d;
 
-const std::string FirePortal::MapKeyFirePortal = "fire-portal";
+const std::string WindPortal::MapKeyWindPortal = "wind-portal";
 
-FirePortal* FirePortal::create(ValueMap& properties)
+WindPortal* WindPortal::create(ValueMap& properties)
 {
-	FirePortal* instance = new FirePortal(properties);
+	WindPortal* instance = new WindPortal(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
 {
 	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
 	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
@@ -28,21 +28,21 @@ FirePortal::FirePortal(ValueMap& properties) : super(properties, 96.0f, Color4B:
 	this->portalEffectNode->addChild(this->portalParticles);
 }
 
-FirePortal::~FirePortal()
+WindPortal::~WindPortal()
 {
 }
 
-void FirePortal::onEnter()
+void WindPortal::onEnter()
 {
 	super::onEnter();
 }
 
-void FirePortal::initializePositions()
+void WindPortal::initializePositions()
 {
 	super::initializePositions();
 }
 
-void FirePortal::initializeListeners()
+void WindPortal::initializeListeners()
 {
 	super::initializeListeners();
 }

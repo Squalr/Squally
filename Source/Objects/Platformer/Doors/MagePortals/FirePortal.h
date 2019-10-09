@@ -28,6 +28,5 @@ private:
 
 	cocos2d::DrawNode* background;
 	cocos2d::ParticleSystem* portalParticles;
-	cocos2d::DrawNode* edge;
 	cocos2d::ParticleSystem* edgeParticles;
 };

@@ -3,17 +3,29 @@
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/UI/SmartClippingNode.h"
+
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
+MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalBaseColor) : super(properties, Size(128.0f, 256.0f))
 {
 	this->contentNode = Node::create();
-	
-	this->contentNode->setScaleX(0.5f);
+	this->portalBase = SmartClippingNode::create(this->contentNode, portalRadius);
+	this->portalEffectNode = Node::create();
+	this->background = DrawNode::create();
+	this->edge = DrawNode::create();
 
-	this->addChild(this->contentNode);
+	this->background->drawSolidCircle(Vec2::ZERO, portalRadius, 0.0f, 32, Color4F(portalBaseColor));
+	
+	this->portalBase->setScaleX(0.5f);
+	this->drawEdge(Color4F::BLACK, this->edge, portalRadius, 8);
+
+	this->contentNode->addChild(this->background);
+	this->contentNode->addChild(this->portalEffectNode);
+	this->contentNode->addChild(this->edge);
+	this->addChild(this->portalBase);
 }
 
 MagePortal::~MagePortal()

@@ -85,6 +85,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
 	this->deserializers[CinematicMarker::MapKeyCinematicMarker] = [=](ValueMap properties) { return (GameObject*)CinematicMarker::create(properties); };
 	this->deserializers[CipherChest::MapKeyCipherChest] = [=](ValueMap properties) { return (GameObject*)CipherChest::create(properties); };
+	this->deserializers[DarkPortal::MapKeyDarkPortal] = [=](ValueMap properties) { return (GameObject*)DarkPortal::create(properties); };
 	this->deserializers[DartGun::MapKeyDartGun] = [=](ValueMap properties) { return (GameObject*)DartGun::create(properties); };
 	this->deserializers[EdgePortal::MapKeyEdgePortal] = [=](ValueMap properties) { return (GameObject*)EdgePortal::create(properties); };
 	this->deserializers[FirePortal::MapKeyFirePortal] = [=](ValueMap properties) { return (GameObject*)FirePortal::create(properties); };
@@ -107,6 +108,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
 	this->deserializers[MulDoor::MapKeyMulDoor] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };
+	this->deserializers[NaturePortal::MapKeyNaturePortal] = [=](ValueMap properties) { return (GameObject*)NaturePortal::create(properties); };
 	this->deserializers[Portal::MapKeyPortal] = [=](ValueMap properties) { return (GameObject*)Portal::create(properties); };
 	this->deserializers[PortalSpawn::MapKeyPortalSpawn] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
 	this->deserializers[PendulumBlade::MapKeyPendulumBlade] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
@@ -124,7 +126,9 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
 	this->deserializers[Warp::MapKeyWarp] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
+	this->deserializers[WaterPortal::MapKeyWaterPortal] = [=](ValueMap properties) { return (GameObject*)WaterPortal::create(properties); };
 	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
+	this->deserializers[WindPortal::MapKeyWindPortal] = [=](ValueMap properties) { return (GameObject*)WindPortal::create(properties); };
 	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };
 	this->deserializers[WoodenGate::MapKeyWoodenGate] = [=](ValueMap properties) { return (GameObject*)WoodenGate::create(properties); };
 	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (GameObject*)WoodenSpikes::create(properties); };

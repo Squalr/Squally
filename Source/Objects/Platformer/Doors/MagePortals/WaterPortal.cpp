@@ -19,18 +19,13 @@ WaterPortal* WaterPortal::create(ValueMap& properties)
 	return instance;
 }
 
-WaterPortal::WaterPortal(ValueMap& properties) : super(properties)
+WaterPortal::WaterPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
 {
-	this->background = DrawNode::create();
 	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFire);
-	this->edge = DrawNode::create();
+	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
 
-	this->background->drawSolidCircle(Vec2::ZERO, 96.0f, 0.0f, 32, Color4F::RED);
-	this->drawEdge(Color4F::BLACK, this->edge, 96.0f, 6);
-
-	this->contentNode->addChild(this->background);
-	this->contentNode->addChild(this->portalParticles);
-	this->contentNode->addChild(this->edge);
+	this->portalEffectNode->addChild(this->edgeParticles);
+	this->portalEffectNode->addChild(this->portalParticles);
 }
 
 WaterPortal::~WaterPortal()

@@ -9,16 +9,16 @@ namespace cocos2d
 	class ParticleSystem;
 }
 
-class WaterPortal : public MagePortal
+class NaturePortal : public MagePortal
 {
 public:
-	static WaterPortal* create(cocos2d::ValueMap& properties);
+	static NaturePortal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWaterPortal;
+	static const std::string MapKeyNaturePortal;
 
 protected:
-	WaterPortal(cocos2d::ValueMap& properties);
-	~WaterPortal();
+	NaturePortal(cocos2d::ValueMap& properties);
+	~NaturePortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
