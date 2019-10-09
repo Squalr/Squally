@@ -2,7 +2,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
 
 #include "Resources/EntityResources.h"
 
@@ -27,14 +27,14 @@ HexusBehaviorBase::~HexusBehaviorBase()
 
 void HexusBehaviorBase::onLoad()
 {
-	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
+	this->entity->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		LocalizedString* hexusDialogue = Strings::Platformer_Entities_HowAboutARoundOfHexus::create();
 		LocalizedString* hexus = Strings::Hexus_Hexus::create();
 
 		hexusDialogue->setStringReplacementVariables(hexus);
 
-		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueSet::DialogueOption(
 			hexusDialogue,
 			[=]()
 			{

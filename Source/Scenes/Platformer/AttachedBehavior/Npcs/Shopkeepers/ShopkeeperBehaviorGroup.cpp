@@ -7,7 +7,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Shopkeepers/ShopkeeperDialogueBehavior.h"
 
@@ -31,7 +31,7 @@ ShopkeeperBehaviorGroup::ShopkeeperBehaviorGroup(GameObject* owner) : super(owne
 	EntityCinematicHijackBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),
 	EntityStatsBehaviorGroup::create(owner),
-	NpcInteractionBehavior::create(owner),
+	NpcDialogueBehavior::create(owner),
 	LookAtSquallyBehavior::create(owner),
 	ShopkeeperDialogueBehavior::create(owner),
 	})

@@ -5,7 +5,7 @@
 #include "Events/DialogueEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcInteractionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
 
 #include "Strings/Platformer/Entities/Shopkeepers/HowDoIBuySomething.h"
@@ -46,9 +46,9 @@ void ShopkeeperDialogueBehavior::onLoad()
 		this->squally = squally;
 	});
 
-	this->entity->watchForAttachedBehavior<NpcInteractionBehavior>([=](NpcInteractionBehavior* interactionBehavior)
+	this->entity->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
-		interactionBehavior->addDialogueOption(NpcInteractionBehavior::DialogueOption(
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueSet::DialogueOption(
 			Strings::Platformer_Entities_Shopkeepers_HowDoIBuySomething::create(),
 			[=]()
 			{

@@ -26,9 +26,10 @@ public:
 		cocos2d::Node* leftContentNode;
 		cocos2d::Node* rightContentNode;
 		bool unhijack;
+		bool allowSpace;
 
-		DialogueOpenArgs(LocalizedString* dialogue, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr, bool unhijack = true)
-			: dialogue(dialogue), dialogueDock(dialogueDock), dialogueAlignment(dialogueAlignment), onDialogueClose(onDialogueClose), leftContentNode(leftContentNode), rightContentNode(rightContentNode), unhijack(unhijack)
+		DialogueOpenArgs(LocalizedString* dialogue, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr, bool unhijack = true, bool allowSpace = true)
+			: dialogue(dialogue), dialogueDock(dialogueDock), dialogueAlignment(dialogueAlignment), onDialogueClose(onDialogueClose), leftContentNode(leftContentNode), rightContentNode(rightContentNode), unhijack(unhijack), allowSpace(allowSpace)
 		{
 		}
 	};

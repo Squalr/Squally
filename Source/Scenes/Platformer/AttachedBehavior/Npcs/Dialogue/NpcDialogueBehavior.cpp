@@ -1,6 +1,7 @@
-#include "NpcInteractionBehavior.h"
+#include "NpcDialogueBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -23,26 +24,29 @@
 
 using namespace cocos2d;
 
-const std::string NpcInteractionBehavior::MapKeyAttachedBehavior = "npc-interaction";
+const std::string NpcDialogueBehavior::MapKeyAttachedBehavior = "npc-interaction";
 
-NpcInteractionBehavior* NpcInteractionBehavior::create(GameObject* owner)
+NpcDialogueBehavior* NpcDialogueBehavior::create(GameObject* owner)
 {
-	NpcInteractionBehavior* instance = new NpcInteractionBehavior(owner);
+	NpcDialogueBehavior* instance = new NpcDialogueBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-NpcInteractionBehavior::NpcInteractionBehavior(GameObject* owner) : super(owner)
+NpcDialogueBehavior::NpcDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
-	this->stringNode = Node::create();
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
-	this->dialogueOptions = std::vector<std::tuple<DialogueOption, float>>();
+	this->dialogueSetNode = Node::create();
+	this->mainDialogueSet = DialogueSet::create();
+	this->activeDialogueSet = this->mainDialogueSet;
+
+	this->addDialogueSet(this->mainDialogueSet);
 
 	if (this->entity == nullptr)
 	{
@@ -77,14 +81,13 @@ NpcInteractionBehavior::NpcInteractionBehavior(GameObject* owner) : super(owner)
 	}
 	
 	this->addChild(this->interactMenu);
-	this->addChild(this->stringNode);
 }
 
-NpcInteractionBehavior::~NpcInteractionBehavior()
+NpcDialogueBehavior::~NpcDialogueBehavior()
 {
 }
 
-void NpcInteractionBehavior::onLoad()
+void NpcDialogueBehavior::onLoad()
 {
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -95,7 +98,7 @@ void NpcInteractionBehavior::onLoad()
 	{
 		if (this->canInteract)
 		{
-			this->showOptions();
+			this->setActiveDialogueSet(this->getMainDialogueSet());
 		}
 	});
 
@@ -160,43 +163,61 @@ void NpcInteractionBehavior::onLoad()
 		this->chooseOption(9);
 	});
 
-	this->addDialogueOption(DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
+	this->mainDialogueSet->addDialogueOption(DialogueSet::DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
+	this->addChild(this->dialogueSetNode);
 }
 
-void NpcInteractionBehavior::addDialogueOption(DialogueOption dialogueOption, float priority)
+void NpcDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue)
 {
-	this->dialogueOptions.push_back({ dialogueOption, priority});
+	this->activeDialogueSet = dialogueSet;
 
-	if (dialogueOption.dialogueOption != nullptr)
+	if (showDialogue)
 	{
-		this->stringNode->addChild(dialogueOption.dialogueOption);
+		this->showOptions();
 	}
 }
 
-void NpcInteractionBehavior::chooseOption(int option)
+void NpcDialogueBehavior::addDialogueSet(DialogueSet* dialogueSet)
 {
-	if (--option < 0 || option >= this->dialogueOptions.size())
+	this->dialogueSets.push_back(dialogueSet);
+	this->dialogueSetNode->addChild(dialogueSet);
+}
+
+void NpcDialogueBehavior::removeDialogueSet(DialogueSet* dialogueSet)
+{
+	this->dialogueSets.erase(std::find(this->dialogueSets.begin(), this->dialogueSets.end(), dialogueSet));
+	this->dialogueSetNode->removeChild(dialogueSet);
+}
+
+DialogueSet* NpcDialogueBehavior::getMainDialogueSet()
+{
+	return this->mainDialogueSet;
+}
+
+void NpcDialogueBehavior::chooseOption(int option)
+{
+	if (--option < 0 || option >= this->activeDialogueSet->dialogueOptions.size())
 	{
 		return;
 	}
 
 	DialogueEvents::TriggerDialogueClose();
 
-	if (std::get<0>(this->dialogueOptions[option]).onDialogueChosen != nullptr)
+	if (std::get<0>(this->activeDialogueSet->dialogueOptions[option]).onDialogueChosen != nullptr)
 	{
-		std::get<0>(this->dialogueOptions[option]).onDialogueChosen();
+		std::get<0>(this->activeDialogueSet->dialogueOptions[option]).onDialogueChosen();
 	}
 }
 
-void NpcInteractionBehavior::showOptions()
+void NpcDialogueBehavior::showOptions()
 {
-	if (this->dialogueOptions.empty() || (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
+	if (this->activeDialogueSet->dialogueOptions.empty() || (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
 	{
 		return;
 	}
 
-	std::sort(this->dialogueOptions.begin(), this->dialogueOptions.end(), 
-		[](const std::tuple<DialogueOption, float>& a, const std::tuple<DialogueOption, float>& b)
+	std::sort(this->activeDialogueSet->dialogueOptions.begin(), this->activeDialogueSet->dialogueOptions.end(), 
+		[](const std::tuple<DialogueSet::DialogueOption, float>& a, const std::tuple<DialogueSet::DialogueOption, float>& b)
 	{ 
 		return std::get<1>(a) > std::get<1>(b); 
 	});
@@ -206,9 +227,9 @@ void NpcInteractionBehavior::showOptions()
 	LocalizedString* currentOption = nextOption;
 	int index = 1;
 
-	for (auto it = this->dialogueOptions.begin(); it != this->dialogueOptions.end(); it++, index++)
+	for (auto it = this->activeDialogueSet->dialogueOptions.begin(); it != this->activeDialogueSet->dialogueOptions.end(); it++, index++)
 	{
-		bool lastIter = it == (--this->dialogueOptions.end());
+		bool lastIter = it == (--this->activeDialogueSet->dialogueOptions.end());
 
 		LocalizedString* newline = Strings::Common_Newline::create();
 		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
@@ -230,7 +251,7 @@ void NpcInteractionBehavior::showOptions()
 	));
 }
 
-LocalizedString* NpcInteractionBehavior::getOptionString(int index, LocalizedString* optionText)
+LocalizedString* NpcDialogueBehavior::getOptionString(int index, LocalizedString* optionText)
 {
 	LocalizedString* dash = Strings::Common_Dash::create();
 	LocalizedString* brackets = Strings::Common_Brackets::create();

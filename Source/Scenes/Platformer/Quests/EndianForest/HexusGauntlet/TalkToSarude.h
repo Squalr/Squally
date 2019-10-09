@@ -6,16 +6,16 @@ class QuestLine;
 class Sarude;
 class Squally;
 
-class BeatTutorialA : public QuestTask
+class TalkToSarude : public QuestTask
 {
 public:
-	static BeatTutorialA* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TalkToSarude* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	BeatTutorialA(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~BeatTutorialA();
+	TalkToSarude(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~TalkToSarude();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -1,4 +1,4 @@
-#include "BeatTutorialA.h"
+#include "TalkToSarude.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -18,28 +18,28 @@
 
 using namespace cocos2d;
 
-const std::string BeatTutorialA::MapKeyQuest = "beat-tutorial-A";
+const std::string TalkToSarude::MapKeyQuest = "talk-to-sarude";
 
-BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToSarude* TalkToSarude::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
-	BeatTutorialA* instance = new BeatTutorialA(owner, questLine, questTag);
+	TalkToSarude* instance = new TalkToSarude(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BeatTutorialA::BeatTutorialA(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialA::MapKeyQuest, questTag, false)
+TalkToSarude::TalkToSarude(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToSarude::MapKeyQuest, questTag, false)
 {
 	this->sarude = nullptr;
 	this->squally = nullptr;
 }
 
-BeatTutorialA::~BeatTutorialA()
+TalkToSarude::~TalkToSarude()
 {
 }
 
-void BeatTutorialA::onLoad(QuestState questState)
+void TalkToSarude::onLoad(QuestState questState)
 {
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
@@ -52,20 +52,20 @@ void BeatTutorialA::onLoad(QuestState questState)
 	});
 }
 
-void BeatTutorialA::onActivate(bool isActiveThroughSkippable)
+void TalkToSarude::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void BeatTutorialA::onComplete()
+void TalkToSarude::onComplete()
 {
 }
 
-void BeatTutorialA::onSkipped()
+void TalkToSarude::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void BeatTutorialA::registerDialogue()
+void TalkToSarude::registerDialogue()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
