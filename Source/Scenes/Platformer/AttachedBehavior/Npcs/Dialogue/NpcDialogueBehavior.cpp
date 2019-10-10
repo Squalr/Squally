@@ -268,7 +268,7 @@ void NpcDialogueBehavior::showOptions()
 	{
 		bool lastIter = it == (--this->activeDialogueSet->dialogueOptions.end());
 
-		LocalizedString* optionRaw = std::get<0>((*it)).dialogueOption;
+		LocalizedString* optionRaw = std::get<0>(*it).dialogueOption;
 		LocalizedString* newline = Strings::Common_Newline::create();
 		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
 		LocalizedString* option = this->getOptionString(index, optionRaw == nullptr ? optionRaw : optionRaw->clone());
