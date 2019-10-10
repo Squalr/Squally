@@ -8,7 +8,6 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Events/DialogueEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -42,8 +41,11 @@ NpcDialogueBehavior::NpcDialogueBehavior(GameObject* owner) : super(owner)
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
+	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
 	this->mainDialogueSet = DialogueSet::create();
+	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
+	this->dialogueSets = std::vector<DialogueSet*>();
 	this->activeDialogueSet = this->mainDialogueSet;
 
 	this->addDialogueSet(this->mainDialogueSet);
@@ -79,8 +81,12 @@ NpcDialogueBehavior::NpcDialogueBehavior(GameObject* owner) : super(owner)
 
 		this->addChild(this->dialogueCollision);
 	}
+
+	this->pretextNode->setVisible(false);
 	
 	this->addChild(this->interactMenu);
+	this->addChild(this->pretextNode);
+	this->addChild(this->dialogueSetNode);
 }
 
 NpcDialogueBehavior::~NpcDialogueBehavior()
@@ -98,7 +104,7 @@ void NpcDialogueBehavior::onLoad()
 	{
 		if (this->canInteract)
 		{
-			this->setActiveDialogueSet(this->getMainDialogueSet());
+			this->tryShowPretext();
 		}
 	});
 
@@ -164,7 +170,38 @@ void NpcDialogueBehavior::onLoad()
 	});
 
 	this->mainDialogueSet->addDialogueOption(DialogueSet::DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
-	this->addChild(this->dialogueSetNode);
+}
+
+void NpcDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
+{
+	std::function<void()> originalFunc = std::function<void()>(pretext.onDialogueClose);
+
+	pretext.onDialogueClose = [=]()
+	{
+		this->tryShowPretext();
+
+		if (originalFunc != nullptr)
+		{
+			// originalFunc();
+		}
+	};
+
+	this->pretextQueue.push(pretext);
+	this->pretextNode->addChild(pretext.dialogue);
+	this->pretextNode->addChild(pretext.leftContentNode);
+	this->pretextNode->addChild(pretext.rightContentNode);
+}
+
+void NpcDialogueBehavior::tryShowPretext()
+{
+	if (this->pretextQueue.empty())
+	{
+		this->setActiveDialogueSet(this->getMainDialogueSet());
+		return;
+	}
+
+	DialogueEvents::TriggerDialogueOpen(this->pretextQueue.front());
+	this->pretextQueue.pop();
 }
 
 void NpcDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue)
@@ -196,7 +233,7 @@ DialogueSet* NpcDialogueBehavior::getMainDialogueSet()
 
 void NpcDialogueBehavior::chooseOption(int option)
 {
-	if (--option < 0 || option >= this->activeDialogueSet->dialogueOptions.size())
+	if (!this->pretextQueue.empty() || --option < 0 || option >= this->activeDialogueSet->dialogueOptions.size())
 	{
 		return;
 	}
@@ -231,9 +268,10 @@ void NpcDialogueBehavior::showOptions()
 	{
 		bool lastIter = it == (--this->activeDialogueSet->dialogueOptions.end());
 
+		LocalizedString* optionRaw = std::get<0>((*it)).dialogueOption;
 		LocalizedString* newline = Strings::Common_Newline::create();
 		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
-		LocalizedString* option = this->getOptionString(index, std::get<0>((*it)).dialogueOption->clone());
+		LocalizedString* option = this->getOptionString(index, optionRaw == nullptr ? optionRaw : optionRaw->clone());
 
 		currentOption->setStringReplacementVariables({option , newline, nextOption });
 		currentOption = nextOption;

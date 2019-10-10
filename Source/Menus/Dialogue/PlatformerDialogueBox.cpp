@@ -8,6 +8,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/SmartClippingNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 
@@ -91,12 +92,12 @@ void PlatformerDialogueBox::initializeListeners()
 
 			if (args->leftContentNode != nullptr)
 			{
-				this->leftSpeakerNode->addChild(args->leftContentNode);
+				GameUtils::changeParent(args->leftContentNode, this->leftSpeakerNode, false, false);
 			}
 
 			if (args->rightContentNode != nullptr)
 			{
-				this->rightSpeakerNode->addChild(args->rightContentNode);
+				GameUtils::changeParent(args->rightContentNode, this->rightSpeakerNode, false, false);
 			}
 
 			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);

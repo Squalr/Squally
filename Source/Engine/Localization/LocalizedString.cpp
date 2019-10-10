@@ -202,7 +202,14 @@ std::string LocalizedString::getString()
 
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+		if (*it != nullptr)
+		{
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+		}
+		else
+		{
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), "");
+		}
 	}
 
 	return localizedString;
@@ -228,6 +235,11 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	// Release old replacement varaibles
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
+		if (*it == nullptr)
+		{
+			continue;
+		}
+
 		bool isReentry = false;
 
 		for (auto compareIt = stringReplacementVariables.begin(); compareIt != stringReplacementVariables.end(); compareIt++)
@@ -241,7 +253,7 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(*it, nullptr, true);
+			GameUtils::changeParent(*it, nullptr, true, false);
 		}
 		else
 		{
@@ -255,6 +267,11 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	// Retain new replacement variables
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
+		if (*it == nullptr)
+		{
+			continue;
+		}
+
 		// Update this string if any of the replacement variables get updated
 		(*it)->setOnStringUpdateCallback([=](LocalizedString*)
 		{
@@ -286,7 +303,7 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		stringReplacementVariables.push_back((*it)->clone());
+		stringReplacementVariables.push_back(*it == nullptr ? nullptr : (*it)->clone());
 	}
 
 	localizedString->setStringReplacementVariables(stringReplacementVariables);

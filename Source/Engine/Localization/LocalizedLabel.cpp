@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
 
 #include "Resources/FontResources.h"
 #include "Resources/UIResources.h"
@@ -107,7 +108,7 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)
 
 	this->localizedString->setOnStringUpdateCallback(CC_CALLBACK_1(LocalizedLabel::onStringUpdate, this));
 
-	this->addChild(this->localizedString); // Retain as a child so it can listen for events (no visuals)
+	GameUtils::changeParent(this->localizedString, this, false); // Retain as a child so it can listen for events (no visuals)
 }
 
 void LocalizedLabel::setStringReplacementVariables(LocalizedString* stringReplacementVariables)

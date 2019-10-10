@@ -1,7 +1,10 @@
 #pragma once
 
+#include <queue>
+
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/Dialogue/DialogueSet.h"
+#include "Events/DialogueEvents.h"
 
 class CollisionObject;
 class InteractMenu;
@@ -14,6 +17,7 @@ class NpcDialogueBehavior : public AttachedBehavior
 public:
 	static NpcDialogueBehavior* create(GameObject* owner);
 
+	void enqueuePretext(DialogueEvents::DialogueOpenArgs pretext);
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
@@ -30,6 +34,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void tryShowPretext();
 	void chooseOption(int option);
 	void showOptions();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
@@ -41,8 +46,10 @@ private:
 	
 	CollisionObject* dialogueCollision;
 	InteractMenu* interactMenu;
+	std::queue<DialogueEvents::DialogueOpenArgs> pretextQueue;
 	DialogueSet* mainDialogueSet;
 	DialogueSet* activeDialogueSet;
 	std::vector<DialogueSet*> dialogueSets;
+	cocos2d::Node* pretextNode;
 	cocos2d::Node* dialogueSetNode;
 };
