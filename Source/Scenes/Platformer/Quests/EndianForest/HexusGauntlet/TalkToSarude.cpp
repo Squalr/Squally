@@ -20,12 +20,16 @@
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
 
 #include "Strings/Hexus/Hexus.h"
+#include "Strings/Platformer/Ellipses.h"
+#include "Strings/Platformer/Entities/HowAboutARoundOfHexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/FirstChallenge.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HaveYouHeardOfHexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HexusIsAGameWhere.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HowWouldYouLikeToPlay.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/LegendHasItHexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/ReadyToStart.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/WelcomeToMagesGuild.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/WishToLearn.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/YouveNeverHeardOfHexus.h"
 
 using namespace cocos2d;
 
@@ -67,15 +71,6 @@ void TalkToSarude::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{
 		this->portal = portal;
-		
-		if (questState == QuestState::Complete)
-		{
-			this->portal->openPortal(true);
-		}
-		else
-		{
-			this->portal->closePortal(true);
-		}
 	}, TalkToSarude::QuestPortalTag);
 }
 
@@ -113,7 +108,27 @@ void TalkToSarude::registerDialogue()
 			DialogueEvents::BuildPreviewNode(this->squally, true)
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HowWouldYouLikeToPlay::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			[=]()
+			{
+			},
+			DialogueEvents::BuildPreviewNode(this->sarude, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Ellipses::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::HardRight,
+			[=]()
+			{
+			},
+			DialogueEvents::BuildPreviewNode(this->sarude, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_YouveNeverHeardOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			[=]()
@@ -124,6 +139,16 @@ void TalkToSarude::registerDialogue()
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			[=]()
+			{
+			},
+			DialogueEvents::BuildPreviewNode(this->sarude, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_LegendHasItHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			[=]()

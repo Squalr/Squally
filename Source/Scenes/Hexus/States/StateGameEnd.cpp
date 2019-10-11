@@ -101,7 +101,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
-			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Tie);
+			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Draw);
 		}
 	}
 	else if (isWin)

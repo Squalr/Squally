@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallenge : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallenge* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallenge();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallenge();
 	};
 }

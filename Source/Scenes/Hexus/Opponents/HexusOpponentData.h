@@ -25,7 +25,7 @@ public:
 	{
 		Win,
 		Loss,
-		Tie,
+		Draw,
 	};
 
 	static HexusOpponentData* create(

@@ -48,6 +48,7 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_Entrance));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_1));
+	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_6));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Guild));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Prison));
 	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Inn));

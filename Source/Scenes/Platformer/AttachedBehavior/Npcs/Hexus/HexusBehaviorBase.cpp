@@ -13,13 +13,19 @@
 
 using namespace cocos2d;
 
-HexusBehaviorBase::HexusBehaviorBase(GameObject* owner) : super(owner)
+HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, LocalizedString* dialogueChoiceOverride) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->dialogueChoiceOverride = dialogueChoiceOverride;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+
+	if (this->dialogueChoiceOverride != nullptr)
+	{
+		this->addChild(this->dialogueChoiceOverride);
 	}
 }
 
@@ -31,18 +37,42 @@ void HexusBehaviorBase::onLoad()
 {
 	this->entity->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
-		LocalizedString* hexusDialogue = Strings::Platformer_Entities_HowAboutARoundOfHexus::create();
-		LocalizedString* hexus = Strings::Hexus_Hexus::create();
-
-		hexusDialogue->setStringReplacementVariables(hexus);
-
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-			hexusDialogue,
-			[=]()
-			{
-				HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-			}),
-			0.5f
-		);
+		if (this->dialogueChoiceOverride != nullptr)
+		{
+			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				this->dialogueChoiceOverride->clone(),
+				[=]()
+				{
+					HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+				}),
+				0.5f
+			);
+		}
+		else
+		{
+			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				Strings::Platformer_Entities_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+				[=]()
+				{
+					HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+				}),
+				0.5f
+			);
+		}
 	});
+}
+
+void HexusBehaviorBase::onWin()
+{
+
+}
+
+void HexusBehaviorBase::onLoss()
+{
+
+}
+
+void HexusBehaviorBase::onDraw()
+{
+
 }
