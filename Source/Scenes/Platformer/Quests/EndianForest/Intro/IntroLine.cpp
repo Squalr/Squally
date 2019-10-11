@@ -20,10 +20,10 @@ IntroLine* IntroLine::create()
 }
 
 IntroLine::IntroLine() : super(IntroLine::MapKeyQuestLine, {
-	QuestData(MeetScrappy::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return MeetScrappy::create(owner, questLine, questTag); }),
-	QuestData(HelpSquallyHeal::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return HelpSquallyHeal::create(owner, questLine, questTag); }),
-	QuestData(TeachHackerMode::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TeachHackerMode::create(owner, questLine, questTag); }),
-	QuestData(SpotOrcGrunt::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return SpotOrcGrunt::create(owner, questLine, questTag); }),
+	QuestData(MeetScrappy::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return MeetScrappy::create(owner, questLine, questTag); }),
+	QuestData(HelpSquallyHeal::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return HelpSquallyHeal::create(owner, questLine, questTag); }),
+	QuestData(TeachHackerMode::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return TeachHackerMode::create(owner, questLine, questTag); }),
+	QuestData(SpotOrcGrunt::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return SpotOrcGrunt::create(owner, questLine, questTag); }),
 })
 {
 }

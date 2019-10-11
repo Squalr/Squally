@@ -33,6 +33,7 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 		return nullptr;
 	}
 
+	Node* wrapper = Node::create();
 	SmartAnimationNode* animations = SmartAnimationNode::create(entity->getAnimationResource());
 
 	animations->playAnimation();
@@ -40,5 +41,7 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 	animations->setPosition(entity->getDialogueOffset() - Vec2(0.0f, entity->getEntitySize().height / 2.0f));
 	animations->setScale(entity->getScale());
 
-	return animations;
+	wrapper->addChild(animations);
+
+	return wrapper;
 }

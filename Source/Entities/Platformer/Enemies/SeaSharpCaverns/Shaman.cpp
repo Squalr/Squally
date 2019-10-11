@@ -75,6 +75,7 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

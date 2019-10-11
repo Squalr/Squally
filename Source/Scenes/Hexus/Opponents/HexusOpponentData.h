@@ -21,6 +21,13 @@ public:
 		WeakestCardsFirst,
 	};
 
+	enum Result
+	{
+		Win,
+		Loss,
+		Tie,
+	};
+
 	static HexusOpponentData* create(
 		std::string animationResourceFile,
 		std::string backgroundResourceFile,
@@ -33,6 +40,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 
 	HexusOpponentData(
@@ -47,6 +55,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
 
@@ -68,6 +77,7 @@ public:
 	float strength;
 	int reward;
 	Strategy strategy;
+	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
 
 	static const std::string winsPrefix;

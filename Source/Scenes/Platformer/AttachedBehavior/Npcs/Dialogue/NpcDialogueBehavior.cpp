@@ -1,6 +1,7 @@
 #include "NpcDialogueBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
@@ -169,7 +170,7 @@ void NpcDialogueBehavior::onLoad()
 		this->chooseOption(9);
 	});
 
-	this->mainDialogueSet->addDialogueOption(DialogueSet::DialogueOption(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
+	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
 }
 
 void NpcDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
@@ -233,42 +234,40 @@ DialogueSet* NpcDialogueBehavior::getMainDialogueSet()
 
 void NpcDialogueBehavior::chooseOption(int option)
 {
-	if (!this->pretextQueue.empty() || --option < 0 || option >= this->activeDialogueSet->dialogueOptions.size())
+	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
+
+	if (!this->pretextQueue.empty() || --option < 0 || option >= dialogueOptions.size())
 	{
 		return;
 	}
 
 	DialogueEvents::TriggerDialogueClose();
 
-	if (std::get<0>(this->activeDialogueSet->dialogueOptions[option]).onDialogueChosen != nullptr)
+	if (std::get<0>(dialogueOptions[option])->onDialogueChosen != nullptr)
 	{
-		std::get<0>(this->activeDialogueSet->dialogueOptions[option]).onDialogueChosen();
+		std::get<0>(dialogueOptions[option])->onDialogueChosen();
 	}
 }
 
 void NpcDialogueBehavior::showOptions()
 {
-	if (this->activeDialogueSet->dialogueOptions.empty() || (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
+	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
+
+	if (dialogueOptions.empty() || (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
 	{
 		return;
 	}
-
-	std::sort(this->activeDialogueSet->dialogueOptions.begin(), this->activeDialogueSet->dialogueOptions.end(), 
-		[](const std::tuple<DialogueSet::DialogueOption, float>& a, const std::tuple<DialogueSet::DialogueOption, float>& b)
-	{ 
-		return std::get<1>(a) > std::get<1>(b); 
-	});
 
 	LocalizedString* options = Strings::Common_Triconcat::create();
 	LocalizedString* nextOption = options;
 	LocalizedString* currentOption = nextOption;
 	int index = 1;
 
-	for (auto it = this->activeDialogueSet->dialogueOptions.begin(); it != this->activeDialogueSet->dialogueOptions.end(); it++, index++)
+	for (auto it = dialogueOptions.begin(); it != dialogueOptions.end(); it++, index++)
 	{
-		bool lastIter = it == (--this->activeDialogueSet->dialogueOptions.end());
+		bool lastIter = it == (--dialogueOptions.end());
 
-		LocalizedString* optionRaw = std::get<0>(*it).dialogueOption;
+		LocalizedString* optionRaw = std::get<0>(*it)->dialogueOption;
 		LocalizedString* newline = Strings::Common_Newline::create();
 		nextOption = lastIter ? (LocalizedString*)Strings::Common_Empty::create() : (LocalizedString*)Strings::Common_Triconcat::create();
 		LocalizedString* option = this->getOptionString(index, optionRaw == nullptr ? optionRaw : optionRaw->clone());

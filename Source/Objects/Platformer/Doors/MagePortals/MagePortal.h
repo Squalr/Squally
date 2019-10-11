@@ -13,6 +13,8 @@ class SmartClippingNode;
 class MagePortal : public Portal
 {
 public:
+	virtual void closePortal(bool instant);
+	virtual void openPortal(bool instant);
 
 protected:
 	MagePortal(cocos2d::ValueMap& properties, float portalRadius, cocos2d::Color4B portalBaseColor);

@@ -75,6 +75,7 @@ HexusOpponentData* Cryogen::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

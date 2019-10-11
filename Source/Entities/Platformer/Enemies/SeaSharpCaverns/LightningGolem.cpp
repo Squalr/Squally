@@ -75,6 +75,7 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

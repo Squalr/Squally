@@ -8,15 +8,18 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Dialogue/DialogueOption.h"
+#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
 
+#include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/FirstChallenge.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HaveYouHeardOfHexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HexusIsAGameWhere.h"
@@ -27,6 +30,7 @@
 using namespace cocos2d;
 
 const std::string TalkToSarude::MapKeyQuest = "talk-to-sarude";
+const std::string TalkToSarude::QuestPortalTag = "quest-portal";
 
 TalkToSarude* TalkToSarude::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -41,6 +45,7 @@ TalkToSarude::TalkToSarude(GameObject* owner, QuestLine* questLine, std::string 
 {
 	this->sarude = nullptr;
 	this->squally = nullptr;
+	this->portal = nullptr;
 }
 
 TalkToSarude::~TalkToSarude()
@@ -59,6 +64,41 @@ void TalkToSarude::onLoad(QuestState questState)
 		this->squally = squally;
 	});
 
+	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
+	{
+		this->portal = portal;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->portal->openPortal(true);
+		}
+		else
+		{
+			this->portal->closePortal(true);
+		}
+	}, TalkToSarude::QuestPortalTag);
+}
+
+void TalkToSarude::onActivate(bool isActiveThroughSkippable)
+{
+	this->registerDialogue();
+}
+
+void TalkToSarude::onComplete()
+{
+	if (this->portal != nullptr)
+	{
+		this->portal->openPortal(true);
+	}
+}
+
+void TalkToSarude::onSkipped()
+{
+	this->removeAllListeners();
+}
+
+void TalkToSarude::registerDialogue()
+{
 	this->sarude->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
@@ -73,7 +113,7 @@ void TalkToSarude::onLoad(QuestState questState)
 			DialogueEvents::BuildPreviewNode(this->squally, true)
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus::create(),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HaveYouHeardOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			[=]()
@@ -83,7 +123,17 @@ void TalkToSarude::onLoad(QuestState questState)
 			DialogueEvents::BuildPreviewNode(this->squally, true)
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HexusIsAGameWhere::create(),
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			[=]()
+			{
+			},
+			DialogueEvents::BuildPreviewNode(this->sarude, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WishToLearn::create(),
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			[=]()
@@ -93,7 +143,7 @@ void TalkToSarude::onLoad(QuestState questState)
 			DialogueEvents::BuildPreviewNode(this->squally, true)
 		));
 
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueSet::DialogueOption(
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart::create(),
 			[=]()
 			{
@@ -103,6 +153,7 @@ void TalkToSarude::onLoad(QuestState questState)
 					DialogueBox::DialogueAlignment::Left,
 					[=]()
 					{
+						this->complete();
 					},
 					DialogueEvents::BuildPreviewNode(this->sarude, false),
 					DialogueEvents::BuildPreviewNode(this->squally, true)
@@ -111,41 +162,4 @@ void TalkToSarude::onLoad(QuestState questState)
 			1.0f
 		);
 	});
-}
-
-void TalkToSarude::onActivate(bool isActiveThroughSkippable)
-{
-}
-
-void TalkToSarude::onComplete()
-{
-}
-
-void TalkToSarude::onSkipped()
-{
-	this->removeAllListeners();
-}
-
-void TalkToSarude::registerDialogue()
-{
-	PlatformerEvents::TriggerCinematicHijack();
-
-	this->runAction(Sequence::create(
-		DelayTime::create(3.0f),
-		CallFunc::create([=]()
-		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				nullptr,
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
-				[=]()
-				{
-				},
-				DialogueEvents::BuildPreviewNode(this->sarude, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true),
-				false
-			));
-		}),
-		nullptr
-	));
 }

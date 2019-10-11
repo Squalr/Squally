@@ -2,8 +2,6 @@
 
 #include "Engine/Quests/QuestLine.h"
 
-class GameObject;
-
 class RescueGuanoLine : public QuestLine
 {
 public:

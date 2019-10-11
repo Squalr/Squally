@@ -9,7 +9,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityPacingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Hexus/HexusBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/NpcBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Shopkeepers/ShopkeeperBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"

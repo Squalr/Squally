@@ -46,3 +46,19 @@ void FrostPortal::initializeListeners()
 {
 	super::initializeListeners();
 }
+
+void FrostPortal::closePortal(bool instant)
+{
+	super::closePortal(instant);
+
+	this->edgeParticles->stopSystem();
+	this->portalParticles->stopSystem();
+}
+
+void FrostPortal::openPortal(bool instant)
+{
+	super::openPortal(instant);
+
+	this->edgeParticles->start();
+	this->portalParticles->start();
+}

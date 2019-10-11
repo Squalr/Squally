@@ -8,17 +8,33 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Dialogue/DialogueOption.h"
+#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
+#include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
+
+#include "Resources/HexusResources.h"
+
+#include "Strings/Hexus/Hexus.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/TeachMeHexus.h"
 
 using namespace cocos2d;
 
 const std::string BeatTutorialA::MapKeyQuest = "beat-tutorial-A";
+const std::string BeatTutorialA::WinLossTrackIdentifier = "Tutorial-A";
+const std::string BeatTutorialA::QuestPortalTag = "quest-portal";
 
 BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -31,8 +47,9 @@ BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine,  s
 
 BeatTutorialA::BeatTutorialA(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialA::MapKeyQuest, questTag, false)
 {
-	this->sarude = nullptr;
+	this->alder = nullptr;
 	this->squally = nullptr;
+	this->portal = nullptr;
 }
 
 BeatTutorialA::~BeatTutorialA()
@@ -41,23 +58,52 @@ BeatTutorialA::~BeatTutorialA()
 
 void BeatTutorialA::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
 	{
-		this->sarude = sarude;
+		this->alder = alder;
 	});
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	});
+
+	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
+	{
+		this->portal = portal;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->portal->openPortal(true);
+		}
+		else
+		{
+			this->portal->closePortal(true);
+		}
+	}, BeatTutorialA::QuestPortalTag);
 }
 
 void BeatTutorialA::onActivate(bool isActiveThroughSkippable)
 {
+	this->alder->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+			[=]()
+			{
+				HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+			}),
+			0.5f
+		);
+	});
 }
 
 void BeatTutorialA::onComplete()
 {
+	if (this->portal != nullptr)
+	{
+		this->portal->openPortal(true);
+	}
 }
 
 void BeatTutorialA::onSkipped()
@@ -80,11 +126,129 @@ void BeatTutorialA::registerDialogue()
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->alder, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
 		}),
 		nullptr
 	));
+}
+
+void BeatTutorialA::onWin()
+{
+    this->complete();
+}
+
+void BeatTutorialA::onLoss()
+{
+}
+
+HexusOpponentData* BeatTutorialA::createOpponentData()
+{
+    return HexusOpponentData::create( 
+        // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
+        this->alder->getAnimations()->getAnimationResource(),
+        HexusResources::Menus_HexusFrameCastleValgrind,
+        1.0f,
+        Vec2(-32.0f, -64.0f),
+        Vec2(-48.0f, -144.0f),
+        Vec2(0.0f, -48.0f),
+        BeatTutorialA::WinLossTrackIdentifier,
+        HexusOpponentData::Strategy::Random,
+        Card::CardStyle::Light,
+        0.07f,
+        HexusOpponentData::generateDeck(25, 0.07f,
+        {
+        }),
+        [=](HexusOpponentData::Result result)
+        {
+            if (result == HexusOpponentData::Result::Win)
+            {
+                this->onWin();
+            }
+            else
+            {
+                this->onLoss();
+            }
+        },
+        StateOverride::create(
+            // Player losses
+            1,
+            // Enemy losses
+            1,
+            // Player's turn
+            true,
+            // Player passed
+            false,
+            // Enemy passed
+            true,
+            // Player deck
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+            },
+            // Enemy deck
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+            },
+            // Player hand
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+            },
+            // Enemy hand
+            std::vector<CardData*>
+            {
+            },
+            // Player binary cards
+            std::vector<CardData*>
+            {
+            },
+            // Player decimal cards
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+            },
+            // Player hex cards
+            std::vector<CardData*>
+            {
+            },
+            // Enemy binary cards
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+                CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+            },
+            // Enemy decimal cards
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
+            },
+            // Enemy hex cards
+            std::vector<CardData*>
+            {
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+                CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+            },
+            { TutorialAIntroSequence::create(), TutorialAVictory::create() })
+	);
 }

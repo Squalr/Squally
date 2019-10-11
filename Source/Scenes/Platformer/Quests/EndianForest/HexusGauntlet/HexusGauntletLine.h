@@ -2,8 +2,6 @@
 
 #include "Engine/Quests/QuestLine.h"
 
-class GameObject;
-
 class HexusGauntletLine : public QuestLine
 {
 public:

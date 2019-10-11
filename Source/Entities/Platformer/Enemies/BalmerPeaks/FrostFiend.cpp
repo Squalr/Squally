@@ -75,6 +75,7 @@ HexusOpponentData* FrostFiend::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

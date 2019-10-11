@@ -75,6 +75,7 @@ HexusOpponentData* FireTiger::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

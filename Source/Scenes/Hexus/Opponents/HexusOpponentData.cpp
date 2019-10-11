@@ -26,6 +26,7 @@ HexusOpponentData* HexusOpponentData::create(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
+	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
 	HexusOpponentData* instance = new HexusOpponentData(
@@ -40,6 +41,7 @@ HexusOpponentData* HexusOpponentData::create(
 		cardStyle,
 		strength,
 		cards,
+		onRoundEnd,
 		stateOverride
 	);
 
@@ -60,6 +62,7 @@ HexusOpponentData::HexusOpponentData(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
+	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
 	this->animationResourceFile = animationResourceFile;
@@ -74,6 +77,7 @@ HexusOpponentData::HexusOpponentData(
 	this->strength = strength;
 	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
+	this->onRoundEnd = onRoundEnd;
 	this->stateOverride = stateOverride;
 	this->isLastInChapter = false;
 

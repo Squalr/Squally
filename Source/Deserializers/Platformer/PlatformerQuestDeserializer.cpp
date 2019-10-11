@@ -5,6 +5,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Quests/QuestTask.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Scenes/Platformer/Quests/PlatformerQuests.h"
 
 using namespace cocos2d;
@@ -36,16 +37,23 @@ PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 void PlatformerQuestDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
 	std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
-	std::string questTask = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString();
+	std::vector<std::string> questTasks = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString(),
+		",",
+		false
+	);
 	std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
 
 	if (!questLine.empty())
 	{
-		QuestTask* quest = this->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(owner, questLine, questTask, questTag));
-
-		if (quest != nullptr)
+		for (auto it = questTasks.begin(); it != questTasks.end(); it++)
 		{
-			owner->addChild(quest);
+			QuestTask* quest = this->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(owner, questLine, *it, questTag));
+
+			if (quest != nullptr)
+			{
+				owner->addChild(quest);
+			}
 		}
 	}
 }

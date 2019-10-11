@@ -75,6 +75,7 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

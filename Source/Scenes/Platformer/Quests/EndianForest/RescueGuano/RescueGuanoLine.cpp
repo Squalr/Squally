@@ -19,9 +19,9 @@ RescueGuanoLine* RescueGuanoLine::create()
 }
 
 RescueGuanoLine::RescueGuanoLine() : super(RescueGuanoLine::MapKeyQuestLine, {
-	QuestData(PersuadeGuard::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return PersuadeGuard::create(owner, questLine, questTag); }),
-	QuestData(ChatWithGuano::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return ChatWithGuano::create(owner, questLine, questTag); }),
-	QuestData(RescueGuano::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return RescueGuano::create(owner, questLine, questTag); }),
+	QuestData(PersuadeGuard::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return PersuadeGuard::create(owner, questLine, questTag); }),
+	QuestData(ChatWithGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return ChatWithGuano::create(owner, questLine, questTag); }),
+	QuestData(RescueGuano::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return RescueGuano::create(owner, questLine, questTag); }),
 })
 {
 }

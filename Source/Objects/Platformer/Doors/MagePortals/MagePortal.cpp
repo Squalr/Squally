@@ -1,6 +1,11 @@
 #include "MagePortal.h"
 
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/UI/SmartClippingNode.h"
@@ -45,6 +50,34 @@ void MagePortal::initializePositions()
 void MagePortal::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void MagePortal::closePortal(bool instant)
+{
+	this->lock();
+
+	if (instant)
+	{
+		this->setOpacity(0);
+	}
+	else
+	{
+		this->runAction(FadeTo::create(0.5f, 0));
+	}
+}
+
+void MagePortal::openPortal(bool instant)
+{
+	if (instant)
+	{
+		this->setOpacity(255);
+	}
+	else
+	{
+		this->runAction(FadeTo::create(0.5f, 255));
+	}
+
+	this->unlock();
 }
 
 void MagePortal::drawEdge(cocos2d::Color4F edgeColor, cocos2d::DrawNode* drawNode, float radius, int thickness)

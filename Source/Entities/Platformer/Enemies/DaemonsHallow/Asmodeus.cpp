@@ -75,6 +75,7 @@ HexusOpponentData* Asmodeus::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

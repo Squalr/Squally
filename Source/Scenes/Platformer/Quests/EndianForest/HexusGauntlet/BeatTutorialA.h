@@ -2,8 +2,10 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Alder;
+class HexusOpponentData;
+class MagePortal;
 class QuestLine;
-class Sarude;
 class Squally;
 
 class BeatTutorialA : public QuestTask
@@ -26,7 +28,15 @@ private:
 	typedef QuestTask super;
 
 	void registerDialogue();
+	HexusOpponentData* createOpponentData();
 
-	Sarude* sarude;
+	void onWin();
+	void onLoss();
+
+	MagePortal* portal;
+	Alder* alder;
 	Squally* squally;
+
+	static const std::string QuestPortalTag;
+	static const std::string WinLossTrackIdentifier;
 };

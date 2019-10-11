@@ -75,6 +75,7 @@ HexusOpponentData* Undead::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

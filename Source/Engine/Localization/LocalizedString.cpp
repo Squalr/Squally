@@ -225,12 +225,12 @@ void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage
 	this->overrideLanguage = overrideLanguage;
 }
 
-void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
+LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
 {
-	this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
+	return this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
 }
 
-void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
+LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
@@ -288,6 +288,8 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	{
 		this->onStringUpdate(this);
 	}
+
+	return this;
 }
 
 void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)

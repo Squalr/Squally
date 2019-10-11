@@ -1,5 +1,7 @@
 #include "HexusBehaviorBase.h"
 
+#include "Engine/Dialogue/DialogueOption.h"
+#include "Engine/Dialogue/DialogueSet.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
@@ -34,7 +36,7 @@ void HexusBehaviorBase::onLoad()
 
 		hexusDialogue->setStringReplacementVariables(hexus);
 
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueSet::DialogueOption(
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			hexusDialogue,
 			[=]()
 			{

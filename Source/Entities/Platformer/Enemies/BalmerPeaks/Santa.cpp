@@ -75,6 +75,7 @@ HexusOpponentData* Santa::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

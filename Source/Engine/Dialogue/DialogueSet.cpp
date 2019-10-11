@@ -1,6 +1,7 @@
 #include "DialogueSet.h"
 
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Dialogue/DialogueOption.h"
 
 using namespace cocos2d;
 
@@ -15,32 +16,46 @@ DialogueSet* DialogueSet::create()
 
 DialogueSet::DialogueSet()
 {
-	this->stringNode = Node::create();
-	this->dialogueOptions = std::vector<std::tuple<DialogueOption, float>>();
+	this->optionsNode = Node::create();
+	this->dialogueOptions = std::vector<std::tuple<DialogueOption*, float>>();
 
-	this->addChild(this->stringNode);
+	this->addChild(this->optionsNode);
 }
 
 DialogueSet::~DialogueSet()
 {
 }
 
-void DialogueSet::initializePositions()
+void DialogueSet::addDialogueOption(DialogueOption* dialogueOption, float priority)
 {
-	super::initializePositions();
-}
-
-void DialogueSet::initializeListeners()
-{
-	super::initializeListeners();
-}
-
-void DialogueSet::addDialogueOption(DialogueOption dialogueOption, float priority)
-{
-	this->dialogueOptions.push_back({ dialogueOption, priority});
-
-	if (dialogueOption.dialogueOption != nullptr)
+	if (dialogueOption != nullptr)
 	{
-		this->stringNode->addChild(dialogueOption.dialogueOption);
+		this->dialogueOptions.push_back({ dialogueOption, priority});
+		this->optionsNode->addChild(dialogueOption);
+
+		std::sort(this->dialogueOptions.begin(), this->dialogueOptions.end(), 
+			[](const std::tuple<DialogueOption*, float>& a, const std::tuple<DialogueOption*, float>& b)
+		{ 
+			return std::get<1>(a) > std::get<1>(b); 
+		});
 	}
+}
+
+void DialogueSet::removeDialogueOption(DialogueOption* dialogueOption)
+{
+	if (dialogueOption != nullptr)
+	{
+		this->optionsNode->removeChild(dialogueOption);
+
+		this->dialogueOptions.erase(std::remove_if(this->dialogueOptions.begin(), this->dialogueOptions.end(),
+			[=](const std::tuple<DialogueOption*, float>& entry)
+		{
+			return std::get<0>(entry) == dialogueOption; 
+		}), this->dialogueOptions.end());
+	}
+}
+
+std::vector<std::tuple<DialogueOption*, float>> DialogueSet::getDialogueOptions()
+{
+	return this->dialogueOptions;
 }

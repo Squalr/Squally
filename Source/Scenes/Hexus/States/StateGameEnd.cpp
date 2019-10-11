@@ -98,6 +98,11 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+		
+		if (gameState->opponentData->onRoundEnd != nullptr)
+		{
+			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Tie);
+		}
 	}
 	else if (isWin)
 	{
@@ -118,6 +123,11 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for winning
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
+
+		if (gameState->opponentData->onRoundEnd != nullptr)
+		{
+			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Win);
+		}
 	}
 	else
 	{
@@ -133,6 +143,11 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		// Analytics for losing
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+
+		if (gameState->opponentData->onRoundEnd != nullptr)
+		{
+			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Loss);
+		}
 	}
 
 	GameState::updateState(gameState, GameState::StateType::GameExit);

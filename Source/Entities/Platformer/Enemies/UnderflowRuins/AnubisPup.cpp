@@ -75,6 +75,7 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

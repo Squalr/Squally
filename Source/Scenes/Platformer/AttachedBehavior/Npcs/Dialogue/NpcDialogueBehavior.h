@@ -3,10 +3,10 @@
 #include <queue>
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Events/DialogueEvents.h"
 
 class CollisionObject;
+class DialogueSet;
 class InteractMenu;
 class LocalizedString;
 class PlatformerEntity;

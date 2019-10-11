@@ -75,6 +75,7 @@ HexusOpponentData* Thug::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class MagePortal;
 class QuestLine;
 class Sarude;
 class Squally;
@@ -27,6 +28,9 @@ private:
 
 	void registerDialogue();
 
+	MagePortal* portal;
 	Sarude* sarude;
 	Squally* squally;
+
+	static const std::string QuestPortalTag;
 };

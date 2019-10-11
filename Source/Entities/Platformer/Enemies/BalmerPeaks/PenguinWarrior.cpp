@@ -75,6 +75,7 @@ HexusOpponentData* PenguinWarrior::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

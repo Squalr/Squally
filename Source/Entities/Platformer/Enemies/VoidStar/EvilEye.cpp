@@ -75,6 +75,7 @@ HexusOpponentData* EvilEye::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

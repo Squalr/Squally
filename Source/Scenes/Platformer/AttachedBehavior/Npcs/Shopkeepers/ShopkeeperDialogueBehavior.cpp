@@ -1,5 +1,7 @@
 #include "ShopkeeperDialogueBehavior.h"
 
+#include "Engine/Dialogue/DialogueOption.h"
+#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/GameObject.h"
 #include "Events/DialogueEvents.h"
@@ -48,7 +50,7 @@ void ShopkeeperDialogueBehavior::onLoad()
 
 	this->entity->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueSet::DialogueOption(
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Entities_Shopkeepers_HowDoIBuySomething::create(),
 			[=]()
 			{

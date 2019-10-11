@@ -75,6 +75,7 @@ HexusOpponentData* BoneFiend::getHexusOpponentData()
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
