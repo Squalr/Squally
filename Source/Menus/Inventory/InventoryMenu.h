@@ -104,6 +104,7 @@ private:
 
 	std::vector<Item*> inventoryItems;
 	std::vector<Item*> equippedItems;
+	std::vector<Item*> visibleEquippedItems;
 	std::vector<cocos2d::Node*> filterLabels;
 	std::vector<cocos2d::Node*> equippedItemLabels;
 	std::vector<cocos2d::Node*> itemLabels;

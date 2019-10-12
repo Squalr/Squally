@@ -62,6 +62,7 @@ class DebugDisplay;
 
 class Avatars;
 class CardPreviewComponent;
+class Deck;
 class AssemblyHelpText;
 class StagingHelperText;
 class GameState;
@@ -84,6 +85,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+	Deck* buildPlayerDeck();
 
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;

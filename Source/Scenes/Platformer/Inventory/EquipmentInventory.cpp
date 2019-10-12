@@ -132,6 +132,21 @@ std::vector<Gear*> EquipmentInventory::getGear()
 	return gear;
 }
 
+std::vector<HexusCard*> EquipmentInventory::getHexusCards()
+{
+	std::vector<HexusCard*> cards = std::vector<HexusCard*>();
+
+	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	{
+		if (dynamic_cast<HexusCard*>(*it) != nullptr)
+		{
+			cards.push_back(dynamic_cast<HexusCard*>(*it));
+		}
+	}
+
+	return cards;
+}
+
 int EquipmentInventory::getTotalMinAttack()
 {
 	int minAttack = 0;

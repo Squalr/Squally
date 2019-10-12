@@ -49,7 +49,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPl
 
 	for (auto it = cardData.begin(); it != cardData.end(); *it++)
 	{
-		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f);
+		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f, false);
 	}
 
 	this->addChild(this->cardsNode);
@@ -69,7 +69,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
 		{
-			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f);
+			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f, false);
 		}
 	}
 }

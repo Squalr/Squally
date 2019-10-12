@@ -81,6 +81,7 @@ InventoryMenu::InventoryMenu()
 	this->filterLabels = std::vector<Node*>();
 	this->itemLabels = std::vector<Node*>();
 	this->equippedItems = std::vector<Item*>();
+	this->visibleEquippedItems = std::vector<Item*>();
 	this->equippedItemLabels = std::vector<Node*>();
 	this->inventoryItems = std::vector<Item*>();
 
@@ -549,8 +550,8 @@ void InventoryMenu::positionFilterText()
 
 void InventoryMenu::updateAndPositionItemText()
 {
-	std::vector<Item*> filteredItems = std::vector<Item*>();
-	std::vector<Node*> filteredItemLabels = std::vector<Node*>();
+	this->visibleEquippedItems = std::vector<Item*>();
+	std::vector<Node*> visibleItemLabels = std::vector<Node*>();
 
 	int index = 0;
 
@@ -564,8 +565,8 @@ void InventoryMenu::updateAndPositionItemText()
 				// Exclude hexus cards from the "all/equip" menu
 				if (dynamic_cast<HexusCard*>(*it) == nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->equippedItemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->equippedItemLabels[index]);
 				}
 			}
 
@@ -578,8 +579,8 @@ void InventoryMenu::updateAndPositionItemText()
 				// Only show equipped hexus cards
 				if (dynamic_cast<HexusCard*>(*it) != nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->equippedItemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->equippedItemLabels[index]);
 				}
 			}
 
@@ -602,8 +603,8 @@ void InventoryMenu::updateAndPositionItemText()
 				// Exclude hexus cards from the "all" menu
 				if (dynamic_cast<HexusCard*>(*it) == nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 
 				break;
@@ -613,8 +614,8 @@ void InventoryMenu::updateAndPositionItemText()
 				// While cards are technically equipped, exclude them here
 				if (dynamic_cast<Equipable*>(*it) != nullptr && dynamic_cast<HexusCard*>(*it) == nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 
 				break;
@@ -623,8 +624,8 @@ void InventoryMenu::updateAndPositionItemText()
 			{
 				if (dynamic_cast<Consumable*>(*it) != nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 
 				break;
@@ -633,8 +634,8 @@ void InventoryMenu::updateAndPositionItemText()
 			{
 				if (dynamic_cast<Consumable*>(*it) != nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 
 				break;
@@ -643,8 +644,8 @@ void InventoryMenu::updateAndPositionItemText()
 			{
 				if (dynamic_cast<HexusCard*>(*it) != nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 
 				break;
@@ -653,8 +654,8 @@ void InventoryMenu::updateAndPositionItemText()
 			{
 				if (dynamic_cast<Consumable*>(*it) != nullptr)
 				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
+					this->visibleEquippedItems.push_back(*it);
+					visibleItemLabels.push_back(this->itemLabels[index]);
 				}
 				
 				break;
@@ -682,22 +683,22 @@ void InventoryMenu::updateAndPositionItemText()
 		(*it)->setPositionZ(0.0f);
 	}
 	
-	this->selectedItemIndex = filteredItemLabels.size() <= 0 ? 0 : MathUtils::clamp(this->selectedItemIndex, 0, filteredItemLabels.size() - 1);
-	int adjustedIndex = this->selectedItemIndex - filteredItemLabels.size() / 2;
+	this->selectedItemIndex = visibleItemLabels.size() <= 0 ? 0 : MathUtils::clamp(this->selectedItemIndex, 0, visibleItemLabels.size() - 1);
+	int adjustedIndex = this->selectedItemIndex - visibleItemLabels.size() / 2;
 	float offset = float(adjustedIndex) * InventoryMenu::LabelSpacing;
 
 	this->inventoryNodeContent->setPositionY(offset);
 	this->itemPreview->clearPreview();
 
-	if (filteredItemLabels.empty())
+	if (visibleItemLabels.empty())
 	{
 		return;
 	}
 
-	const float offsetY = InventoryMenu::LabelSpacing * float(filteredItemLabels.size() / 2);
+	const float offsetY = InventoryMenu::LabelSpacing * float(visibleItemLabels.size() / 2);
 	index = 0;
 
-	for (auto it = filteredItemLabels.begin(); it != filteredItemLabels.end(); it++, index++)
+	for (auto it = visibleItemLabels.begin(); it != visibleItemLabels.end(); it++, index++)
 	{
 		(*it)->setVisible(true);
 		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
@@ -709,11 +710,11 @@ void InventoryMenu::updateAndPositionItemText()
 		const float YOffset = 6.0f;
 		const float ZOffset = 128.0f;
 
-		filteredItemLabels[this->selectedItemIndex]->setPositionX(XOffset);
-		filteredItemLabels[this->selectedItemIndex]->setPositionY(filteredItemLabels[this->selectedItemIndex]->getPositionY() + YOffset);
-		filteredItemLabels[this->selectedItemIndex]->setPositionZ(ZOffset);
+		visibleItemLabels[this->selectedItemIndex]->setPositionX(XOffset);
+		visibleItemLabels[this->selectedItemIndex]->setPositionY(visibleItemLabels[this->selectedItemIndex]->getPositionY() + YOffset);
+		visibleItemLabels[this->selectedItemIndex]->setPositionZ(ZOffset);
 
-		this->itemPreview->preview(filteredItems[this->selectedItemIndex]);
+		this->itemPreview->preview(this->visibleEquippedItems[this->selectedItemIndex]);
 	}
 }
 
@@ -724,11 +725,11 @@ void InventoryMenu::toggleEquipSelectedItem()
 		return;
 	}
 	
-	bool isSelectionInEquipment = this->selectedItemIndex < this->equippedItems.size();
+	bool isSelectionInEquipment = this->selectedItemIndex < this->visibleEquippedItems.size();
 
 	if (isSelectionInEquipment)
 	{
-		Item* selectedItem = this->equippedItems[this->selectedItemIndex];
+		Item* selectedItem = this->visibleEquippedItems[this->selectedItemIndex];
 		
 		this->equipmentInventory->tryTransact(this->inventory, selectedItem, nullptr, [=](Item* item, Item* otherItem)
 		{
@@ -750,7 +751,7 @@ void InventoryMenu::toggleEquipSelectedItem()
 	}
 	else
 	{
-		int adjustedIndex = this->selectedItemIndex - this->equippedItems.size();
+		int adjustedIndex = this->selectedItemIndex - this->visibleEquippedItems.size();
 		Item* selectedItem = this->inventoryItems[adjustedIndex];
 		Item* equippedItem = nullptr;
 		std::string selectedItemName = selectedItem == nullptr ? "" : selectedItem->getName();

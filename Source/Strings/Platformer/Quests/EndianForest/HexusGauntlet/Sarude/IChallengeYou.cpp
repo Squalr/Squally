@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringAr()
 	{
-		return "أحسنت. الآن بعد أن فهمت القواعد الأساسية ، أتحداك في جولة من %s1. إذا كنت تستطيع هزيمة لي ، فإن المكافأة لك.";
+		return "أرى أنك تمكنت من تحقيق ذلك من خلال القفاز. حسن. أعتقد أنك مستعد لمباراة حقيقية. إذا تمكنت من إلحاق الهزيمة بي ، فسأعطيك المكافأة التي وعدت بها.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringBg()
 	{
-		return "Много добре. Сега, когато разбирате основните правила, ви предизвиквам на кръг от %s1. Ако можете да ме победите, наградата е ваша.";
+		return "Виждам, че успяхте да го направите през ръкавицата. Добре. Мисля, че сте готови за истински мач. Ако успеете да ме победите, ще ви дам наградата, която обещах.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringCs()
 	{
-		return "Výborně. Nyní, když rozumíte základním pravidlům, vyzývám vás na kolo %s1. Pokud mě můžete porazit, odměnou je vaše.";
+		return "Vidím, že jste to dokázali zvládnout rukavicí. Dobrý. Myslím, že jste připraveni na skutečný zápas. Pokud mě můžete porazit, dám vám odměnu, kterou jsem slíbil.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringDa()
 	{
-		return "Godt klaret. Nu hvor du forstår de grundlæggende regler, udfordrer jeg dig til en runde %s1. Hvis du kan besejre mig, er belønningen din.";
+		return "Jeg kan se, at du var i stand til at komme igennem måske. Godt. Jeg tror, ​​du er klar til en rigtig kamp. Hvis du kan besejre mig, vil jeg give dig den belønning, jeg lovede.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringDe()
 	{
-		return "Gut gemacht. Nachdem Sie die Grundregeln verstanden haben, fordere ich Sie zu einer Runde %s1 heraus. Wenn du mich besiegen kannst, liegt die Belohnung bei dir.";
+		return "Ich sehe, du hast es geschafft, durch den Handschuh zu kommen. Gut. Ich denke, Sie sind bereit für ein echtes Match. Wenn du mich besiegen kannst, werde ich dir die Belohnung geben, die ich versprochen habe.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringEl()
 	{
-		return "Μπράβο. Τώρα που καταλαβαίνετε τους βασικούς κανόνες, σας προκαλώ σε έναν γύρο του %s1. Εάν με μπορείτε να νικήσετε, η ανταμοιβή είναι δική σας.";
+		return "Βλέπω ότι ήσαστε σε θέση να το πετύχετε μέσα από το γάντι. Καλός. Νομίζω ότι είστε έτοιμοι για έναν πραγματικό αγώνα. Εάν με μπορείτε να νικήσετε, θα σας δώσω την ανταμοιβή που υποσχέθηκα.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringEn()
 	{
-		return "Well done. Now that you understand the basic rules, I challenge you to a round of %s1. If you can defeat me, the reward is yours.";
+		return "I see you were able to make it through the gauntlet. Good. I think you are ready for a real match. If you can defeat me, I will give you the reward I promised.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringEs()
 	{
-		return "Bien hecho. Ahora que entiendes las reglas básicas, te desafío a una ronda de %s1. Si puedes vencerme, la recompensa es tuya.";
+		return "Veo que pudiste atravesar el guante. Bueno. Creo que estás listo para un partido real. Si puedes derrotarme, te daré la recompensa que prometí.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringEs419()
 	{
-		return "Bien hecho. Ahora que entiendes las reglas básicas, te desafío a una ronda de %s1. Si puedes vencerme, la recompensa es tuya.";
+		return "Veo que pudiste atravesar el guante. Bueno. Creo que estás listo para un partido real. Si puedes derrotarme, te daré la recompensa que prometí.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringFi()
 	{
-		return "Hyvin tehty. Nyt kun ymmärrät perussäännöt, haastan sinut %s1-kierrokseen. Jos voit voittaa minut, palkkio on sinun.";
+		return "Näen että pystyit saamaan sen kurin läpi. Hyvä. Mielestäni olet valmis oikeaan otteluun. Jos voit voittaa minut, annan sinulle lupaamani palkinnon.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringFr()
 	{
-		return "Bien joué. Maintenant que vous comprenez les règles de base, je vous mets au défi de participer à une ronde de %s1. Si vous pouvez me vaincre, la récompense est à vous.";
+		return "Je vois que vous avez réussi à surmonter le défi. Bien. Je pense que vous êtes prêt pour un vrai match. Si vous pouvez me vaincre, je vous donnerai la récompense promise.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringHu()
 	{
-		return "Szép munka. Most, hogy megértette az alapvető szabályokat, kihívom Önt az %s1 fordulójára. Ha legyőz engem, akkor a jutalom a tiéd.";
+		return "Látom, hogy sikerült elérned a kesztyűn. Jó. Azt hiszem, készen állsz egy igazi mérkőzésre. Ha legyőz engem, megkapom a megígért jutalmat.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringIt()
 	{
-		return "Molto bene. Ora che hai capito le regole di base, ti sfido a un round di %s1. Se riesci a sconfiggermi, la ricompensa è tua.";
+		return "Vedo che sei riuscito a superare il guanto. Buono. Penso che tu sia pronto per una vera partita. Se riesci a sconfiggermi, ti darò la ricompensa che ti ho promesso.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringJa()
 	{
-		return "よくやった。基本的なルールを理解したので、%s1のラウンドに挑戦します。あなたが私を倒すことができれば、報酬はあなたのものです。";
+		return "ガントレットを通り抜けることができたと思います。良い。あなたは本当の試合の準備ができていると思います。あなたが私を倒すことができるなら、私はあなたに約束した報酬を与えます。";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringKo()
 	{
-		return "잘 했어. 기본 규칙을 이해 했으므로 %s1 라운드에 도전합니다. 당신이 나를 이길 수 있다면, 보상은 당신의 것입니다.";
+		return "나는 당신이 건틀렛을 통해 그것을 만들 수 있었다 참조하십시오. 좋은. 나는 당신이 진짜 경기에 대한 준비가 된 것 같아요. 당신이 나를 이길 수 있다면, 나는 당신에게 약속 한 보상을 줄 것입니다.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringNl()
 	{
-		return "Goed gedaan. Nu je de basisregels begrijpt, daag ik je uit voor een ronde %s1. Als je me kunt verslaan, is de beloning de jouwe.";
+		return "Ik zie dat je door de handschoen kon komen. Is goed. Ik denk dat je klaar bent voor een echte wedstrijd. Als je me kunt verslaan, zal ik je de beloning geven die ik heb beloofd.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringNo()
 	{
-		return "Bra gjort. Nå som du forstår de grunnleggende reglene, utfordrer jeg deg til en runde med %s1. Hvis du kan beseire meg, er belønningen din.";
+		return "Jeg ser at du klarte å komme deg gjennom måla. God. Jeg tror du er klar for en skikkelig kamp. Hvis du kan beseire meg, vil jeg gi deg belønningen jeg lovet.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringPl()
 	{
-		return "Dobra robota. Teraz, gdy rozumiesz podstawowe zasady, wzywam cię do rundy %s1. Jeśli możesz mnie pokonać, nagroda jest twoja.";
+		return "Widzę, że udało ci się przebić przez rękawicę. Dobry. Myślę, że jesteś gotowy na prawdziwy mecz. Jeśli możesz mnie pokonać, dam ci nagrodę, którą obiecałem.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringPt()
 	{
-		return "Bem feito. Agora que você entende as regras básicas, eu o desafio a uma rodada de %s1. Se você pode me derrotar, a recompensa é sua.";
+		return "Vejo que você conseguiu passar pela luva. Boa. Eu acho que você está pronto para uma partida de verdade. Se você puder me derrotar, eu lhe darei a recompensa que prometi.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringPtBr()
 	{
-		return "Bem feito. Agora que você entende as regras básicas, eu o desafio a uma rodada de %s1. Se você pode me derrotar, a recompensa é sua.";
+		return "Vejo que você conseguiu passar pela luva. Boa. Eu acho que você está pronto para uma partida de verdade. Se você puder me derrotar, eu lhe darei a recompensa que prometi.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringRo()
 	{
-		return "Foarte bine. Acum că ai înțeles regulile de bază, te provoc la o rundă de %s1. Dacă mă poți învinge, răsplata este a ta.";
+		return "Văd că ai reușit să treci prin manevră. Bun. Cred că ești pregătit pentru un meci adevărat. Dacă mă poți învinge, îți voi da răsplata pe care mi-am promis-o.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringRu()
 	{
-		return "Отлично сработано. Теперь, когда вы понимаете основные правила, я призываю вас к раунду %s1. Если ты сможешь победить меня, награда твоя.";
+		return "Я вижу, вы смогли сделать это через перчатку. Хороший. Я думаю, что вы готовы к настоящему матчу. Если ты сможешь победить меня, я дам тебе обещанную награду.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringSv()
 	{
-		return "Bra gjort. Nu när du förstår de grundläggande reglerna utmanar jag dig till en runda %s1. Om du kan besegra mig är belöningen din.";
+		return "Jag ser att du lyckades klara det genom klänningen. Bra. Jag tror att du är redo för en riktig match. Om du kan besegra mig, kommer jag att ge dig den belöning jag lovat.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringTh()
 	{
-		return "ทำได้ดี. ตอนนี้คุณเข้าใจกฎพื้นฐานแล้วฉันขอท้าให้คุณมารอบ %s1 หากคุณสามารถเอาชนะฉันได้รางวัลก็เป็นของคุณ";
+		return "ฉันเห็นคุณสามารถผ่านฝ่าอันตรายได้ ดี. ฉันคิดว่าคุณพร้อมสำหรับการแข่งขันที่แท้จริง หากคุณสามารถเอาชนะฉันได้ฉันจะให้รางวัลที่ฉันสัญญาไว้";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringTr()
 	{
-		return "Aferin. Şimdi temel kuralları anladığınıza göre, sizi bir %s1 turuna davet ediyorum. Beni yenebilirsen, ödül senindir.";
+		return "Gauntlet’ten geçebildiğini görüyorum. İyi. Bence gerçek bir eşleşmeye hazırsın. Beni yenebilirsen, sana söz verdiğim ödülü vereceğim.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringUk()
 	{
-		return "Молодці. Тепер, коли ви розумієте основні правила, я закликаю вас до туру %s1. Якщо ви можете перемогти мене, нагорода за вами.";
+		return "Я бачу, ви змогли це зробити через рукавицю. Добре. Я думаю, ви готові до справжнього матчу. Якщо ти зможеш перемогти мене, я дам тобі нагороду, яку я обіцяв.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringVi()
 	{
-		return "Làm tốt. Bây giờ bạn đã hiểu các quy tắc cơ bản, tôi thách thức bạn tham gia một vòng %s1. Nếu bạn có thể đánh bại tôi, phần thưởng là của bạn.";
+		return "Tôi thấy bạn đã có thể làm cho nó thông qua găng tay. Tốt Tôi nghĩ rằng bạn đã sẵn sàng cho một trận đấu thực sự. Nếu bạn có thể đánh bại tôi, tôi sẽ cho bạn phần thưởng tôi đã hứa.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringZhCn()
 	{
-		return "做得好。现在您已经了解了基本规则，现在我向您挑战%s1。如果您可以击败我，那么报酬就是您的。";
+		return "我看到您能够通过手套完成任务。好。我认为您已经准备好进行一场真正的比赛。如果你能打败我，我会给你我所承诺的回报。";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::getStringZhTw()
 	{
-		return "做得好。現在您已經了解了基本規則，現在我向您挑戰%s1。如果您可以擊敗我，那麼報酬就是您的。";
+		return "我看到您能夠通過手套完成任務。好。我認為您已經準備好進行一場真正的比賽。如果你能打敗我，我會給你我所承諾的回報。";
 	}
 }

@@ -54,8 +54,6 @@ void ReturnToSarude::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
-
-		this->sarude->attachBehavior(SarudeTutorialBehavior::create(this->sarude));
 	});
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
@@ -90,17 +88,8 @@ void ReturnToSarude::onSkipped()
 
 void ReturnToSarude::registerDialogue()
 {
-	this->sarude->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	if (this->sarude != nullptr)
 	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IChallengeYou::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			[=]()
-			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
-		));
-	});
+		this->sarude->attachBehavior(SarudeTutorialBehavior::create(this->sarude));
+	}
 }

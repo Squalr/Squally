@@ -5,6 +5,7 @@
 class Equipable;
 class Gear;
 class Hat;
+class HexusCard;
 class Offhand;
 class Weapon;
 
@@ -19,6 +20,7 @@ public:
 	Offhand* getOffhand();
 	Hat* getHat();
 	std::vector<Gear*> getGear();
+	std::vector<HexusCard*> getHexusCards();
 	std::map<std::string, int> getCardKeyCount(Inventory* nonEquippedInventory);
 
 	int getTotalMinAttack();

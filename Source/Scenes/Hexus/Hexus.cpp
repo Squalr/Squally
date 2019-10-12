@@ -17,14 +17,18 @@
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 #include "Scenes/Hexus/States/States.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/HexusResources.h"
@@ -278,7 +282,7 @@ void Hexus::open(HexusOpponentData* opponentData)
 	this->gameState->enemyDeck->clear();
 
 	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
-	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
+	this->buildPlayerDeck()->copyTo(this->gameState->playerDeck);
 
 	GameState::updateState(this->gameState, GameState::StateType::GameStart);
 	this->setVisible(true);
@@ -291,4 +295,24 @@ void Hexus::open(HexusOpponentData* opponentData)
 	{
 		this->musicB->play(true);
 	}
+}
+
+Deck* Hexus::buildPlayerDeck()
+{
+	EquipmentInventory* equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
+	std::vector<CardData*> cardData = std::vector<CardData*>();
+	std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
+	std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
+
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		std::string key = (*it)->getCardKey();
+
+		if (cardList.find(key) != cardList.end())
+		{
+			cardData.push_back(cardList[key]);
+		}
+	}
+
+	return Deck::create(Card::CardStyle::Earth, cardData);
 }

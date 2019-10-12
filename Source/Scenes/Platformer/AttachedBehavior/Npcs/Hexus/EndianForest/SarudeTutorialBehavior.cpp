@@ -50,7 +50,7 @@ HexusOpponentData* SarudeTutorialBehavior::createOpponentData()
         Vec2(-32.0f, -64.0f),
         Vec2(-48.0f, -144.0f),
         Vec2(0.0f, -48.0f),
-         SarudeTutorialBehavior::WinLossTrackIdentifier,
+        SarudeTutorialBehavior::WinLossTrackIdentifier,
         HexusOpponentData::Strategy::Random,
         Card::CardStyle::Light,
         0.07f,
