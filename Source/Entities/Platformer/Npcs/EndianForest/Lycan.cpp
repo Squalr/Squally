@@ -84,7 +84,7 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

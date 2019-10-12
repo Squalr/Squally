@@ -84,7 +84,7 @@ HexusOpponentData* Elriel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

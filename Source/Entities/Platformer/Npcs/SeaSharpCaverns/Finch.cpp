@@ -84,7 +84,7 @@ HexusOpponentData* Finch::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

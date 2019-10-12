@@ -85,7 +85,7 @@ HexusOpponentData* Zana::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

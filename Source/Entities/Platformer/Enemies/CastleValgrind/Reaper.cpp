@@ -75,7 +75,7 @@ HexusOpponentData* Reaper::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

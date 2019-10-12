@@ -85,7 +85,7 @@ HexusOpponentData* Ralston::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

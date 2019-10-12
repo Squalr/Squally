@@ -84,7 +84,7 @@ HexusOpponentData* Elric::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

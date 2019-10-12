@@ -84,7 +84,7 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

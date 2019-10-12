@@ -84,7 +84,7 @@ HexusOpponentData* Griffin::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

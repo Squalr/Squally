@@ -85,7 +85,7 @@ HexusOpponentData* Aspen::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

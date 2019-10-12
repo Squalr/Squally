@@ -84,7 +84,7 @@ HexusOpponentData* Burch::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

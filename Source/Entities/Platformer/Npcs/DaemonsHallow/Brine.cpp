@@ -84,7 +84,7 @@ HexusOpponentData* Brine::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

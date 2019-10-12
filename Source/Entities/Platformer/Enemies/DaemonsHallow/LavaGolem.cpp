@@ -75,7 +75,7 @@ HexusOpponentData* LavaGolem::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -85,7 +85,7 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

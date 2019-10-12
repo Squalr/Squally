@@ -83,7 +83,7 @@ HexusOpponentData* Robin::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

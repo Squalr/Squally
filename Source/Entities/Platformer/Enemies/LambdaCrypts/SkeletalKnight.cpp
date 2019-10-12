@@ -75,7 +75,7 @@ HexusOpponentData* SkeletalKnight::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

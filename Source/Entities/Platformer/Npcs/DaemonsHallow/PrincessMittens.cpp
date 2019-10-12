@@ -85,7 +85,7 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

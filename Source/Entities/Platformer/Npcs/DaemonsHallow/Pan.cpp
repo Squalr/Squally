@@ -85,7 +85,7 @@ HexusOpponentData* Pan::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

@@ -85,7 +85,7 @@ HexusOpponentData* Scaldor::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

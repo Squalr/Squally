@@ -75,7 +75,7 @@ HexusOpponentData* Minotaur::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

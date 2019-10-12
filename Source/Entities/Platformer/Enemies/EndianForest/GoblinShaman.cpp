@@ -75,7 +75,7 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

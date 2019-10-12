@@ -84,7 +84,7 @@ HexusOpponentData* PrincessDawn::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

@@ -84,7 +84,7 @@ HexusOpponentData* Rusty::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

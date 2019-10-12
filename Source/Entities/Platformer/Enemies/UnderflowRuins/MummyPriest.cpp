@@ -75,7 +75,7 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

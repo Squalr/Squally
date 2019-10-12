@@ -85,7 +85,7 @@ HexusOpponentData* Tinsel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

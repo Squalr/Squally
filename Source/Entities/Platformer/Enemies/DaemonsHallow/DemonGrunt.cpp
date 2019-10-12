@@ -75,7 +75,7 @@ HexusOpponentData* DemonGrunt::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

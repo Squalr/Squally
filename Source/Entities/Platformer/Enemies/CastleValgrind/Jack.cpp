@@ -75,7 +75,7 @@ HexusOpponentData* Jack::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

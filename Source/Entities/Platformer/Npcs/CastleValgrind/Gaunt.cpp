@@ -84,7 +84,7 @@ HexusOpponentData* Gaunt::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

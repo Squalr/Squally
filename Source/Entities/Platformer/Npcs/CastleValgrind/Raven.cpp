@@ -84,7 +84,7 @@ HexusOpponentData* Raven::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

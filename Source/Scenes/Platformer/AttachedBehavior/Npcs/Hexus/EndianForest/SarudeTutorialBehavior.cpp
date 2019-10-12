@@ -57,7 +57,7 @@ HexusOpponentData* SarudeTutorialBehavior::createOpponentData()
         HexusOpponentData::generateDeck(25, 0.07f,
         {
         }),
-		{ },
+		nullptr,
         [=](HexusOpponentData::Result result)
         {
 			switch(result)

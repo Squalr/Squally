@@ -81,7 +81,7 @@ HexusOpponentData* Bard::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

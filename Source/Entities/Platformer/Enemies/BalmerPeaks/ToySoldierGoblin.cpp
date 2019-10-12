@@ -75,7 +75,7 @@ HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

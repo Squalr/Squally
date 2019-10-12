@@ -75,7 +75,7 @@ HexusOpponentData* DemonRogue::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

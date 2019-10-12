@@ -85,7 +85,7 @@ HexusOpponentData* Ragnis::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

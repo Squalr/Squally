@@ -84,7 +84,7 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

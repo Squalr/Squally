@@ -86,7 +86,7 @@ HexusOpponentData* PrincessNebea::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

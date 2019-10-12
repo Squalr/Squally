@@ -85,7 +85,7 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

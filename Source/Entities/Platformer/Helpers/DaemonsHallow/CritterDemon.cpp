@@ -75,7 +75,7 @@ HexusOpponentData* CritterDemon::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -86,7 +86,7 @@ HexusOpponentData* Garrick::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

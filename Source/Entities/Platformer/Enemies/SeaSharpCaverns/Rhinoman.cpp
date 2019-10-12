@@ -75,7 +75,7 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

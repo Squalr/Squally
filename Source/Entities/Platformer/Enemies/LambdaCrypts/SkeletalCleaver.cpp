@@ -75,7 +75,7 @@ HexusOpponentData* SkeletalCleaver::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

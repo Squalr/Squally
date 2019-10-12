@@ -75,7 +75,7 @@ HexusOpponentData* Zombie::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

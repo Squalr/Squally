@@ -75,7 +75,7 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -75,7 +75,7 @@ HexusOpponentData* DarkTiger::getHexusOpponentData()
 			{
 
 			}),
-			{ },
+			nullptr,
 			nullptr,
 			StateOverride::create(
 				// Player losses

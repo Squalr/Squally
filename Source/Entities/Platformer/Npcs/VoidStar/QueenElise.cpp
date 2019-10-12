@@ -85,7 +85,7 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

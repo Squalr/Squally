@@ -84,7 +84,7 @@ HexusOpponentData* Garin::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

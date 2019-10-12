@@ -84,7 +84,7 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 			}),
-			{ },
+			nullptr,
 			nullptr
 		);
 	}

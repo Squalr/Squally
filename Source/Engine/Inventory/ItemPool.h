@@ -16,7 +16,7 @@ protected:
 	void initializeListeners() override;
 
 	virtual Item* getItemFromPool(bool removeSampledItem);
-	std::vector<Item*> getItemsFromPool(int count, bool removeSampledItems);
+	virtual std::vector<Item*> getItemsFromPool(int count, bool removeSampledItems);
 	void addItemToPool(Item* item, float weight);
 	void removeItemFromPool(Item* item);
 	
