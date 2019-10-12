@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_ShiftLeft::getStringAr()
 	{
-		return "تركت بت القطع";
+		return "ضربة نيزك";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringBg()
 	{
-		return "Остават бита за преместване";
+		return "Метеорен удар";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringCs()
 	{
-		return "Posunout bity";
+		return "Meteorová stávka";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringDa()
 	{
-		return "Skift bit tilbage";
+		return "Meteor strejke";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringDe()
 	{
-		return "Bits nach links verschieben";
+		return "Meteoriteneinschlag";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringEl()
 	{
-		return "Αριστερά τα bits αλλαγής";
+		return "Μετεωρολογική απεργία";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringEn()
 	{
-		return "Shift Bits Left";
+		return "Meteor strike";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringEs()
 	{
-		return "Desplazar bits a la izquierda";
+		return "Golpe de meteorito";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringEs419()
 	{
-		return "Desplazar bits a la izquierda";
+		return "Golpe de meteorito";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringFi()
 	{
-		return "Vaihtobitit vasemmalle";
+		return "Meteorilakko";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringFr()
 	{
-		return "Bits de décalage à gauche";
+		return "Frappe météorologique";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringHu()
 	{
-		return "A eltolás bitek maradtak";
+		return "Meteor sztrájk";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringIt()
 	{
-		return "Maiuscole a sinistra";
+		return "Colpo di meteore";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringJa()
 	{
-		return "ビットを左にシフト";
+		return "流星攻撃";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringKo()
 	{
-		return "왼쪽으로 시프트 비트";
+		return "유성 파업";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringNl()
 	{
-		return "Shift bits over";
+		return "Meteoor inslag";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringNo()
 	{
-		return "Skift bitene igjen";
+		return "Meteorstreik";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringPl()
 	{
-		return "Pozostały bity Shift";
+		return "Uderzenie meteoru";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringPt()
 	{
-		return "Bits de mudança restantes";
+		return "Chuva de meteoros";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringPtBr()
 	{
-		return "Bits de mudança restantes";
+		return "Chuva de meteoros";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringRo()
 	{
-		return "Ați pierdut biții";
+		return "Grevă meteorologică";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringRu()
 	{
-		return "Сдвиг битов влево";
+		return "Метеоритный удар";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringSv()
 	{
-		return "Skift bitar kvar";
+		return "Meteorstrejke";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringTh()
 	{
-		return "เลื่อนบิตไปทางซ้าย";
+		return "การโจมตีของดาวตก";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringTr()
 	{
-		return "Vites değiştirme bitleri sola";
+		return "Meteor çarpması";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringUk()
 	{
-		return "Біти Shift залишені";
+		return "Метеорний удар";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringVi()
 	{
-		return "Thay đổi bit trái";
+		return "Thiên thạch";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringZhCn()
 	{
-		return "转移位左";
+		return "流星罢工";
 	}
 
 	std::string Hexus_Cards_ShiftLeft::getStringZhTw()
 	{
-		return "轉移位左";
+		return "流星罷工";
 	}
 }

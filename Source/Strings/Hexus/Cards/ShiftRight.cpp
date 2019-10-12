@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_ShiftRight::getStringAr()
 	{
-		return "تحول بت الحق";
+		return "الأهوار الميتة";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringBg()
 	{
-		return "Смяна на бита надясно";
+		return "Мъртъв блат";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringCs()
 	{
-		return "Posunujte bity správně";
+		return "Mrtvá bažina";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringDa()
 	{
-		return "Skift bit højre";
+		return "Død myr";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringDe()
 	{
-		return "Bits nach rechts verschieben";
+		return "Toter Sumpf";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringEl()
 	{
-		return "Μετακινήστε τα κομμάτια δεξιά";
+		return "Dead marsh";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringEn()
 	{
-		return "Shift Bits Right";
+		return "Dead marsh";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringEs()
 	{
-		return "Desplazar bits a la derecha";
+		return "Pantano muerto";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringEs419()
 	{
-		return "Desplazar bits a la derecha";
+		return "Pantano muerto";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringFi()
 	{
-		return "Vaihda bittiä oikealle";
+		return "Kuollut marsa";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringFr()
 	{
-		return "Décaler les bits à droite";
+		return "Marais mort";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringHu()
 	{
-		return "Shift bitek jobbra";
+		return "Holt mocsár";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringIt()
 	{
-		return "Maiuscole a destra";
+		return "Palude morta";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringJa()
 	{
-		return "ビットを右にシフト";
+		return "デッドマーシュ";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringKo()
 	{
-		return "오른쪽으로 시프트 비트";
+		return "죽은 습지";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringNl()
 	{
-		return "Shutt bits goed";
+		return "Dood moeras";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringNo()
 	{
-		return "Skift biter til høyre";
+		return "Død myr";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringPl()
 	{
-		return "Przesunąć bity w prawo";
+		return "Martwe Bagno";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringPt()
 	{
-		return "Shift bits certo";
+		return "Pântano morto";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringPtBr()
 	{
-		return "Shift bits certo";
+		return "Pântano morto";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringRo()
 	{
-		return "Shift biți dreapta";
+		return "Mlaștină moartă";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringRu()
 	{
-		return "Сдвиг вправо";
+		return "Мертвое болото";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringSv()
 	{
-		return "Skift bitar höger";
+		return "Död träsk";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringTh()
 	{
-		return "เลื่อนบิตไปทางขวา";
+		return "หนองบึง";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringTr()
 	{
-		return "Shift bitleri sağa";
+		return "Ölü bataklık";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringUk()
 	{
-		return "Змінюйте біти вправо";
+		return "Мертвий болото";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringVi()
 	{
-		return "Thay đổi bit phải";
+		return "Đầm lầy chết";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringZhCn()
 	{
-		return "移位正确";
+		return "死沼";
 	}
 
 	std::string Hexus_Cards_ShiftRight::getStringZhTw()
 	{
-		return "移位正確";
+		return "死沼";
 	}
 }

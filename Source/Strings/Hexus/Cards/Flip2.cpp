@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Flip2::getStringAr()
 	{
-		return "اقلب الثانية";
+		return "مسلة مجمدة";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringBg()
 	{
-		return "Обърнете втория бит";
+		return "Замръзнал обелиск";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringCs()
 	{
-		return "Překlopte druhý bit";
+		return "Zmrazený obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringDa()
 	{
-		return "Vend den anden bit";
+		return "Frosset obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringDe()
 	{
-		return "Drehen Sie das zweite Bit um";
+		return "Gefrorener Obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringEl()
 	{
-		return "Περιστρέψτε το δεύτερο κομμάτι";
+		return "Κατεψυγμένο οβελίσκο";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringEn()
 	{
-		return "Flip Bit 2";
+		return "Frozen obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringEs()
 	{
-		return "Voltear el segundo bit";
+		return "Obelisco congelado";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringEs419()
 	{
-		return "Voltear el segundo bit";
+		return "Obelisco congelado";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringFi()
 	{
-		return "Käännä toinen bitti";
+		return "Jäädytetty obeliski";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringFr()
 	{
-		return "Retournez le deuxième bit";
+		return "Obélisque gelé";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringHu()
 	{
-		return "Flip a második bit";
+		return "Fagyasztott obeliszk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringIt()
 	{
-		return "Capovolgi il secondo bit";
+		return "Obelisco ghiacciato";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringJa()
 	{
-		return "2番目のビットを反転";
+		return "冷凍オベリスク";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringKo()
 	{
-		return "두 번째 비트 뒤집기";
+		return "냉동 오벨리스크";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringNl()
 	{
-		return "Draai het tweede deel";
+		return "Bevroren obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringNo()
 	{
-		return "Vend den andre biten";
+		return "Frossen obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringPl()
 	{
-		return "Odwróć drugi bit";
+		return "Mrożony obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringPt()
 	{
-		return "Virar o segundo bit";
+		return "Obelisco congelado";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringPtBr()
 	{
-		return "Virar o segundo bit";
+		return "Obelisco congelado";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringRo()
 	{
-		return "Răsuciți al doilea element";
+		return "Obeliscul congelat";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringRu()
 	{
-		return "Отразить второй бит";
+		return "Замороженный обелиск";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringSv()
 	{
-		return "Vänd den andra biten";
+		return "Fryst obelisk";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringTh()
 	{
-		return "พลิกบิตที่สอง";
+		return "เสาโอเบลิสก์แช่แข็ง";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringTr()
 	{
-		return "İkinci biti çevir";
+		return "Dondurulmuş dikilitaş";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringUk()
 	{
-		return "Переверніть другий біт";
+		return "Заморожений обеліск";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringVi()
 	{
-		return "Lật bit thứ hai";
+		return "Đông lạnh";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringZhCn()
 	{
-		return "翻转第二位";
+		return "冷冻方尖碑";
 	}
 
 	std::string Hexus_Cards_Flip2::getStringZhTw()
 	{
-		return "翻轉第二位";
+		return "冷凍方尖碑";
 	}
 }

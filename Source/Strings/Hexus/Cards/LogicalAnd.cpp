@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_LogicalAnd::getStringAr()
 	{
-		return "منطقي و";
+		return "انفجار ناري";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringBg()
 	{
-		return "Логично И";
+		return "Огнена експлозия";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringCs()
 	{
-		return "Logické AND";
+		return "Požární výbuch";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringDa()
 	{
-		return "Logisk AND";
+		return "Fire blast";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringDe()
 	{
-		return "Logisches UND";
+		return "Feuerschlag";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringEl()
 	{
-		return "Λογική AND";
+		return "Έκρηξη πυρκαγιάς";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringEn()
 	{
-		return "Logical AND";
+		return "Fire blast";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringEs()
 	{
-		return "Y lógico";
+		return "Explosión de fuego";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringEs419()
 	{
-		return "Y lógico";
+		return "Explosión de fuego";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringFi()
 	{
-		return "Looginen JA";
+		return "Tuliräjähdys";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringFr()
 	{
-		return "ET logique";
+		return "Déflagration";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringHu()
 	{
-		return "Logikai ÉS";
+		return "Láng csóva";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringIt()
 	{
-		return "AND logico";
+		return "Esplosione";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringJa()
 	{
-		return "論理積";
+		return "ファイアブラスト";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringKo()
 	{
-		return "논리적 AND";
+		return "화재 폭발";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringNl()
 	{
-		return "Logisch EN";
+		return "Vuur ontploffing";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringNo()
 	{
-		return "Logisk AND";
+		return "Fire blast";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringPl()
 	{
-		return "Logiczne AND";
+		return "Podmuch ognia";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringPt()
 	{
-		return "E lógico";
+		return "Explosão de fogo";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringPtBr()
 	{
-		return "E lógico";
+		return "Explosão de fogo";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringRo()
 	{
-		return "Logic AND";
+		return "Explozie de foc";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringRu()
 	{
-		return "Логическое И";
+		return "Огненный взрыв";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringSv()
 	{
-		return "Logisk OCH";
+		return "Eldsprängning";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringTh()
 	{
-		return "ตรรกะและ";
+		return "ไฟระเบิด";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringTr()
 	{
-		return "Mantıksal VE";
+		return "Yangın patlama";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringUk()
 	{
-		return "Логічний AND";
+		return "Вогневий вибух";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringVi()
 	{
-		return "Hợp lý VÀ";
+		return "Vụ nổ lửa";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringZhCn()
 	{
-		return "逻辑和";
+		return "爆炸起火";
 	}
 
 	std::string Hexus_Cards_LogicalAnd::getStringZhTw()
 	{
-		return "邏輯和";
+		return "爆炸起火";
 	}
 }

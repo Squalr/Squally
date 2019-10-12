@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Flip1::getStringAr()
 	{
-		return "اقلب أول بت";
+		return "حجر المسلة";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringBg()
 	{
-		return "Обърнете първия бит";
+		return "Каменен обелиск";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringCs()
 	{
-		return "Překlopte první bit";
+		return "Kamenný obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringDa()
 	{
-		return "Vend den første bit";
+		return "Stenobelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringDe()
 	{
-		return "Das erste Bit umdrehen";
+		return "Stone obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringEl()
 	{
-		return "Περιστρέψτε το πρώτο κομμάτι";
+		return "Πέτρινο οβελίσκο";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringEn()
 	{
-		return "Flip Bit 1";
+		return "Stone obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringEs()
 	{
-		return "Voltear el primer bit";
+		return "Obelisco de piedra";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringEs419()
 	{
-		return "Voltear el primer bit";
+		return "Obelisco de piedra";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringFi()
 	{
-		return "Käännä ensimmäinen bitti";
+		return "Kivi obeliski";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringFr()
 	{
-		return "Retournez le premier bit";
+		return "Obélisque de pierre";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringHu()
 	{
-		return "Flip az első bit";
+		return "Kő obeliszk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringIt()
 	{
-		return "Capovolgi il primo bit";
+		return "Obelisco di pietra";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringJa()
 	{
-		return "最初のビットを反転";
+		return "石のオベリスク";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringKo()
 	{
-		return "첫 번째 비트 뒤집기";
+		return "스톤 오벨리스크";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringNl()
 	{
-		return "Draai het eerste deel";
+		return "Stenen obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringNo()
 	{
-		return "Vend den første biten";
+		return "Stone obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringPl()
 	{
-		return "Odwróć pierwszy bit";
+		return "Kamienny obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringPt()
 	{
-		return "Virar o primeiro bit";
+		return "Obelisco de pedra";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringPtBr()
 	{
-		return "Virar o primeiro bit";
+		return "Obelisco de pedra";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringRo()
 	{
-		return "Răsturnați primul bit";
+		return "Obeliscul de piatră";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringRu()
 	{
-		return "Отразить первый бит";
+		return "Каменный обелиск";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringSv()
 	{
-		return "Vänd den första biten";
+		return "Stenobelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringTh()
 	{
-		return "พลิกบิตแรก";
+		return "เสาหินโอเบลิสค์";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringTr()
 	{
-		return "İlk biti çevir";
+		return "Taş Dikilitaş";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringUk()
 	{
-		return "Переверніть перший біт";
+		return "Кам'яний обеліск";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringVi()
 	{
-		return "Lật bit đầu tiên";
+		return "Đá obelisk";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringZhCn()
 	{
-		return "翻转第一位";
+		return "石方尖碑";
 	}
 
 	std::string Hexus_Cards_Flip1::getStringZhTw()
 	{
-		return "翻轉第一位";
+		return "石方尖碑";
 	}
 }

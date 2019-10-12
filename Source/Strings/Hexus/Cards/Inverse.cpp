@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Inverse::getStringAr()
 	{
-		return "بت عكسية";
+		return "لدغة شيطانية";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringBg()
 	{
-		return "Обратни битове";
+		return "Демонична захапка";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringCs()
 	{
-		return "Inverzní bity";
+		return "Démonický skus";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringDa()
 	{
-		return "Inverse bits";
+		return "Demonisk bid";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringDe()
 	{
-		return "Inverse Bits";
+		return "Dämonischer Biss";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringEl()
 	{
-		return "Αντίστροφα δυφία";
+		return "Δονικό δάγκωμα";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringEn()
 	{
-		return "Inverse Bits";
+		return "Demonic bite";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringEs()
 	{
-		return "Bits inversos";
+		return "Mordida demoníaca";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringEs419()
 	{
-		return "Bits inversos";
+		return "Mordida demoníaca";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringFi()
 	{
-		return "Käänteiset bitit";
+		return "Demoninen purema";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringFr()
 	{
-		return "Inverse bits";
+		return "Morsure démoniaque";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringHu()
 	{
-		return "Fordított bitek";
+		return "Démoni harapás";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringIt()
 	{
-		return "Bit inversi";
+		return "Morso demoniaco";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringJa()
 	{
-		return "逆ビット";
+		return "悪魔の一口";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringKo()
 	{
-		return "역 비트";
+		return "악마 물린";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringNl()
 	{
-		return "Inverse bits";
+		return "Demonische bijt";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringNo()
 	{
-		return "Inverterte biter";
+		return "Demonisk bitt";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringPl()
 	{
-		return "Bity odwrotne";
+		return "Ukąszenie demoniczne";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringPt()
 	{
-		return "Inverse bits";
+		return "Mordida demoníaca";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringPtBr()
 	{
-		return "Inverse bits";
+		return "Mordida demoníaca";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringRo()
 	{
-		return "Bite inversate";
+		return "Mușcătura demonică";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringRu()
 	{
-		return "Обратные биты";
+		return "Демонический укус";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringSv()
 	{
-		return "Inverterade bitar";
+		return "Demoniskt bett";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringTh()
 	{
-		return "บิตผกผัน";
+		return "ปีศาจกัด";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringTr()
 	{
-		return "Ters bit";
+		return "Şeytani ısırık";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringUk()
 	{
-		return "Зворотні біти";
+		return "Демонічний укус";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringVi()
 	{
-		return "Bit nghịch đảo";
+		return "Quỷ cắn";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringZhCn()
 	{
-		return "反位";
+		return "恶魔之咬";
 	}
 
 	std::string Hexus_Cards_Inverse::getStringZhTw()
 	{
-		return "反位";
+		return "惡魔之咬";
 	}
 }

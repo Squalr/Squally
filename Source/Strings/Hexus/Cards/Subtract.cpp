@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Subtract::getStringAr()
 	{
-		return "طرح";
+		return "سوس الطاعون";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringBg()
 	{
-		return "изваждам";
+		return "Поразен акар";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringCs()
 	{
-		return "Odčítat";
+		return "Sužovaný roztoč";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringDa()
 	{
-		return "Trække fra";
+		return "Plaget mide";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringDe()
 	{
-		return "Subtrahieren";
+		return "Geplagte Milbe";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringEl()
 	{
-		return "Αφαιρώ";
+		return "Ακατέργαστο ακάρεα";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringEn()
 	{
-		return "Subtraction";
+		return "Plague mite";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringEs()
 	{
-		return "Sustraer";
+		return "Ácaro plagado";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringEs419()
 	{
-		return "Sustraer";
+		return "Ácaro plagado";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringFi()
 	{
-		return "Vähentää";
+		return "Vaivaa punkki";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringFr()
 	{
-		return "Soustraire";
+		return "Acarien Enragé";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringHu()
 	{
-		return "levon";
+		return "Szenvedt atka";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringIt()
 	{
-		return "Sottrarre";
+		return "Acaro afflitto";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringJa()
 	{
-		return "引き算";
+		return "害虫";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringKo()
 	{
-		return "덜다";
+		return "괴로운 진드기";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringNl()
 	{
-		return "Aftrekken";
+		return "Geteisterde mijt";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringNo()
 	{
-		return "Trekke fra";
+		return "Plaget midd";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringPl()
 	{
-		return "Odejmować";
+		return "Zaraza roztocza";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringPt()
 	{
-		return "Subtrair";
+		return "Ácaro atormentado";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringPtBr()
 	{
-		return "Subtrair";
+		return "Ácaro atormentado";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringRo()
 	{
-		return "Scădea";
+		return "Acarianul plictisit";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringRu()
 	{
-		return "вычитать";
+		return "Чумной клещ";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringSv()
 	{
-		return "Subtrahera";
+		return "Plågad kvalster";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringTh()
 	{
-		return "ลบออก";
+		return "โรคไร";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringTr()
 	{
-		return "çıkarmak";
+		return "Boğulmuş akar";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringUk()
 	{
-		return "Відняти";
+		return "Попав кліщ";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringVi()
 	{
-		return "Trừ";
+		return "Bọ ve";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringZhCn()
 	{
-		return "减去";
+		return "螨虫";
 	}
 
 	std::string Hexus_Cards_Subtract::getStringZhTw()
 	{
-		return "減去";
+		return "蟎蟲";
 	}
 }

@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringAr()
 	{
-		return "اليسار تحول التعميم بت";
+		return "شفرة ثاناتوس";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringBg()
 	{
-		return "Остават кръгови премествания";
+		return "Острието на Танатос";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringCs()
 	{
-		return "Bity kruhového posunu vlevo";
+		return "Thanatosova čepel";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringDa()
 	{
-		return "Cirkulære skift bits tilbage";
+		return "Thanatos' blade";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringDe()
 	{
-		return "Bits für die zirkulare Verschiebung übrig";
+		return "Thanatos 'Klinge";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringEl()
 	{
-		return "Έχουν αριστερά κυκλικά τμήματα μετατόπισης";
+		return "Η λεπίδα του Θανάτου";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringEn()
 	{
-		return "Circular shift bits left";
+		return "Blade of Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringEs()
 	{
-		return "Desplazamiento circular bits a la izquierda";
+		return "Espada de Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringEs419()
 	{
-		return "Desplazamiento circular bits a la izquierda";
+		return "Espada de Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringFi()
 	{
-		return "Pyöreät siirtobitit vasemmalle";
+		return "Thanatosin terä";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringFr()
 	{
-		return "Peu de décalage circulaire gauche";
+		return "Lame de Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringHu()
 	{
-		return "Körkörös eltolási bitek maradtak";
+		return "Thanatos pengéje";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringIt()
 	{
-		return "Bit di spostamento circolare a sinistra";
+		return "La lama di Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringJa()
 	{
-		return "循環シフトビット左";
+		return "タナトスの刃";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringKo()
 	{
-		return "왼쪽으로 이동하는 시프트 비트";
+		return "타나토스 블레이드";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringNl()
 	{
-		return "Cirkelvormige shift bits over";
+		return "Thanatos 'mes";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringNo()
 	{
-		return "Sirkulære skiftbiter igjen";
+		return "Thanatos 'blad";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringPl()
 	{
-		return "Bity przesunięcia kołowego w lewo";
+		return "Ostrze Tanatosa";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringPt()
 	{
-		return "Bits de deslocamento circular restantes";
+		return "Lâmina de Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringPtBr()
 	{
-		return "Bits de deslocamento circular restantes";
+		return "Lâmina de Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringRo()
 	{
-		return "Circulați biți de schimb";
+		return "Lama lui Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringRu()
 	{
-		return "Биты кругового сдвига влево";
+		return "Клинок Танатоса";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringSv()
 	{
-		return "Cirkelskift bitar kvar";
+		return "Thanatos 'blad";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringTh()
 	{
-		return "บิตเลื่อนแบบวงกลมเหลือ";
+		return "ใบมีดของ Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringTr()
 	{
-		return "Dairesel kayma bitleri kaldı";
+		return "Thanatos'un bıçağı";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringUk()
 	{
-		return "Біти циркулярного зсуву залишилися";
+		return "Лезо Танатоса";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringVi()
 	{
-		return "Bit dịch chuyển trái";
+		return "Lưỡi kiếm của Thanatos";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringZhCn()
 	{
-		return "循环移位位";
+		return "塔纳托斯之刃";
 	}
 
 	std::string Hexus_Cards_ShiftLeftCircular::getStringZhTw()
 	{
-		return "循環移位位";
+		return "塔納托斯之刃";
 	}
 }

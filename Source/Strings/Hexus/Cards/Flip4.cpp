@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Flip4::getStringAr()
 	{
-		return "اقلب البت الرابع";
+		return "شيطان مسلة";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringBg()
 	{
-		return "Обърнете четвъртия бит";
+		return "Демоничен обелиск";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringCs()
 	{
-		return "Překlopte čtvrtý bit";
+		return "Démonický obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringDa()
 	{
-		return "Vend den fjerde bit";
+		return "Demonisk obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringDe()
 	{
-		return "Das vierte Bit umdrehen";
+		return "Dämonischer Obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringEl()
 	{
-		return "Ανασηκώστε το τέταρτο κομμάτι";
+		return "Δωδικός οβελίσκος";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringEn()
 	{
-		return "Flip Bit 4";
+		return "Demonic obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringEs()
 	{
-		return "Voltear el cuarto bit";
+		return "Obelisco demoníaco";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringEs419()
 	{
-		return "Voltear el cuarto bit";
+		return "Obelisco demoníaco";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringFi()
 	{
-		return "Käännä neljäs bitti";
+		return "Demoninen obeliski";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringFr()
 	{
-		return "Flip le quatrième bit";
+		return "Obélisque démoniaque";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringHu()
 	{
-		return "Flip a negyedik bit";
+		return "Démoni obeliszk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringIt()
 	{
-		return "Capovolgi il quarto bit";
+		return "Obelisco demoniaco";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringJa()
 	{
-		return "4番目のビットを反転";
+		return "悪魔のオベリスク";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringKo()
 	{
-		return "네 번째 비트 뒤집기";
+		return "악마 오벨리스크";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringNl()
 	{
-		return "Draai het vierde deel";
+		return "Demonische obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringNo()
 	{
-		return "Vend den fjerde delen";
+		return "Demonisk obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringPl()
 	{
-		return "Odwróć czwarty bit";
+		return "Demoniczny obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringPt()
 	{
-		return "Virar o quarto bit";
+		return "Obelisco demoníaco";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringPtBr()
 	{
-		return "Virar o quarto bit";
+		return "Obelisco demoníaco";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringRo()
 	{
-		return "Răsuciți al patrulea bit";
+		return "Obeliscul demonic";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringRu()
 	{
-		return "Отразить четвертый бит";
+		return "Демонический обелиск";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringSv()
 	{
-		return "Vänd den fjärde biten";
+		return "Demonisk obelisk";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringTh()
 	{
-		return "พลิกบิตที่สี่";
+		return "ปีศาจเสาโอเบลิสค์";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringTr()
 	{
-		return "Dördüncü bit çevir";
+		return "Şeytani Dikilitaş";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringUk()
 	{
-		return "Переверніть четвертий біт";
+		return "Демонічний обеліск";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringVi()
 	{
-		return "Lật bit thứ tư";
+		return "Ác quỷ";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringZhCn()
 	{
-		return "翻转第四位";
+		return "恶魔方尖碑";
 	}
 
 	std::string Hexus_Cards_Flip4::getStringZhTw()
 	{
-		return "翻轉第四位";
+		return "惡魔方尖碑";
 	}
 }

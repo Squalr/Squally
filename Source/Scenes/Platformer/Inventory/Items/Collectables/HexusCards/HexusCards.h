@@ -48,3 +48,5 @@
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Hex/Hex13.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Hex/Hex14.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Hex/Hex15.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Special/SpecialAdd.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/Special/SpecialMov.h"

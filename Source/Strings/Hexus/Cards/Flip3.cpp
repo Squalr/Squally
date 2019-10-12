@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Flip3::getStringAr()
 	{
-		return "قلب الجزء الثالث";
+		return "غامضة مسلة";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringBg()
 	{
-		return "Обърнете третия бит";
+		return "Arcane обелиск";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringCs()
 	{
-		return "Překlopte třetí bit";
+		return "Tajemný obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringDa()
 	{
-		return "Vend den tredje bit";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringDe()
 	{
-		return "Drehe das dritte Bit";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringEl()
 	{
-		return "Περιστρέψτε το τρίτο κομμάτι";
+		return "Arcane οβελίσκος";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringEn()
 	{
-		return "Flip Bit 3";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringEs()
 	{
-		return "Voltear el tercer bit";
+		return "Obelisco arcano";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringEs419()
 	{
-		return "Voltear el tercer bit";
+		return "Obelisco arcano";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringFi()
 	{
-		return "Käännä kolmas bitti";
+		return "Arkaani obeliski";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringFr()
 	{
-		return "Retournez le troisième bit";
+		return "Obélisque arcanique";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringHu()
 	{
-		return "Flip a harmadik bit";
+		return "Arcane obeliszk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringIt()
 	{
-		return "Capovolgi il terzo bit";
+		return "Obelisco Arcano";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringJa()
 	{
-		return "3番目のビットを反転";
+		return "秘儀のオベリスク";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringKo()
 	{
-		return "세 번째 비트 뒤집기";
+		return "비전 오벨리스크";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringNl()
 	{
-		return "Draai het derde deel";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringNo()
 	{
-		return "Vend den tredje biten";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringPl()
 	{
-		return "Odwróć trzeci bit";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringPt()
 	{
-		return "Virar o terceiro bit";
+		return "Obelisco Arcano";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringPtBr()
 	{
-		return "Virar o terceiro bit";
+		return "Obelisco Arcano";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringRo()
 	{
-		return "Răsturnați al treilea bit";
+		return "Obeliscul arcan";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringRu()
 	{
-		return "Отразить третий бит";
+		return "Тайный обелиск";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringSv()
 	{
-		return "Vänd den tredje biten";
+		return "Arcane obelisk";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringTh()
 	{
-		return "พลิกบิตที่สาม";
+		return "เสาโอเบลิสค์";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringTr()
 	{
-		return "Üçüncü biti çevir";
+		return "Arcane Dikilitaş";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringUk()
 	{
-		return "Переверніть третій біт";
+		return "Таємний обеліск";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringVi()
 	{
-		return "Lật bit thứ ba";
+		return "Obelisk Arcane";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringZhCn()
 	{
-		return "翻转第三位";
+		return "奥术方尖碑";
 	}
 
 	std::string Hexus_Cards_Flip3::getStringZhTw()
 	{
-		return "翻轉第三位";
+		return "奧術方尖碑";
 	}
 }

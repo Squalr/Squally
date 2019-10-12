@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_LogicalOr::getStringAr()
 	{
-		return "منطقية أو";
+		return "تمكين المسؤول";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringBg()
 	{
-		return "Логическо ИЛИ";
+		return "Овластяване на такса";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringCs()
 	{
-		return "Logické OR";
+		return "Posílení poplatku";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringDa()
 	{
-		return "Logisk ELLER";
+		return "Styrkende ladning";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringDe()
 	{
-		return "Logisches ODER";
+		return "Aufladung bevollmächtigen";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringEl()
 	{
-		return "Λογική OR";
+		return "Ενδυνάμωση χρέωσης";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringEn()
 	{
-		return "Logical OR";
+		return "Empowering charge";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringEs()
 	{
-		return "O lógico";
+		return "Carga de empoderamiento";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringEs419()
 	{
-		return "O lógico";
+		return "Carga de empoderamiento";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringFi()
 	{
-		return "Looginen TAI";
+		return "Valtuuttava lataus";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringFr()
 	{
-		return "OU logique";
+		return "Charge habilitante";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringHu()
 	{
-		return "Logikai VAGY";
+		return "Felhatalmazó töltés";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringIt()
 	{
-		return "OR logico";
+		return "Carica potenziante";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringJa()
 	{
-		return "論理和";
+		return "権限付与";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringKo()
 	{
-		return "논리 OR";
+		return "권한 강화";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringNl()
 	{
-		return "Logische OR";
+		return "Machtigende lading";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringNo()
 	{
-		return "Logisk ELLER";
+		return "Empowering charge";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringPl()
 	{
-		return "Logiczna OR";
+		return "Opłata upoważniająca";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringPt()
 	{
-		return "OR lógico";
+		return "Empowering charge";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringPtBr()
 	{
-		return "OR lógico";
+		return "Empowering charge";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringRo()
 	{
-		return "Logic OR";
+		return "Puterea de încărcare";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringRu()
 	{
-		return "Логическое ИЛИ";
+		return "Расширение возможностей заряда";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringSv()
 	{
-		return "Logisk OR";
+		return "Styrkande laddning";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringTh()
 	{
-		return "ตรรกะหรือ";
+		return "เพิ่มขีดความสามารถในการชาร์จ";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringTr()
 	{
-		return "Mantıksal VEYA";
+		return "Güçlendirme şarj";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringUk()
 	{
-		return "Логічне АБО";
+		return "Розширення можливостей заряду";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringVi()
 	{
-		return "Hợp lý HOẶC";
+		return "Trao quyền";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringZhCn()
 	{
-		return "逻辑或";
+		return "赋权收费";
 	}
 
 	std::string Hexus_Cards_LogicalOr::getStringZhTw()
 	{
-		return "邏輯或";
+		return "賦權收費";
 	}
 }

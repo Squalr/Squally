@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringAr()
 	{
-		return "التحول دائرية بت الصحيح";
+		return "مطرقة ديونيسوس";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringBg()
 	{
-		return "Крайни кръгови премествания";
+		return "Дионисов чук";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringCs()
 	{
-		return "Bity kruhového posunu vpravo";
+		return "Dionysusovo kladivo";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringDa()
 	{
-		return "Cirkulære skift bits højre";
+		return "Dionysus 'Hammer";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringDe()
 	{
-		return "Kreisverschiebungsbits rechts";
+		return "Dionysus' Hammer";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringEl()
 	{
-		return "Κυκλικά κομμάτια μετατόπισης δεξιά";
+		return "Το Σφυρί του Διονύσου";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringEn()
 	{
-		return "Circular shift bits right";
+		return "Dionysus' Hammer";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringEs()
 	{
-		return "Desplazamiento circular bits derecha";
+		return "Martillo de Dioniso";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringEs419()
 	{
-		return "Desplazamiento circular bits derecha";
+		return "Martillo de Dioniso";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringFi()
 	{
-		return "Pyöreä siirtobitti oikealle";
+		return "Dionysuksen vasara";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringFr()
 	{
-		return "Bits de décalage circulaire à droite";
+		return "Marteau de Dionysos";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringHu()
 	{
-		return "Körkörös eltolási bitek jobbra";
+		return "Dionüszosz kalapács";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringIt()
 	{
-		return "Bit di spostamento circolare a destra";
+		return "Martello di Dioniso";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringJa()
 	{
-		return "循環シフトビット右";
+		return "ディオニュソスのハンマー";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringKo()
 	{
-		return "오른쪽으로 순환 쉬프트 비트";
+		return "디오니소스 망치";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringNl()
 	{
-		return "Cirkelvormige verschuiving bits goed";
+		return "Dionysus 'Hammer";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringNo()
 	{
-		return "Sirkulære skiftbiter til høyre";
+		return "Dionysos 'Hammer";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringPl()
 	{
-		return "Bity przesunięcia kołowego w prawo";
+		return "Młot Dionizosa";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringPt()
 	{
-		return "Bits de deslocamento circulares à direita";
+		return "Martelo de Dionísio";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringPtBr()
 	{
-		return "Bits de deslocamento circulares à direita";
+		return "Martelo de Dionísio";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringRo()
 	{
-		return "Circulară schimbă biti dreapta";
+		return "Ciocanul lui Dionysos";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringRu()
 	{
-		return "Круговые сдвиги вправо";
+		return "Молот Диониса";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringSv()
 	{
-		return "Cirkulära växlingsbitar höger";
+		return "Dionysus 'hammare";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringTh()
 	{
-		return "บิตกะวงกลมด้านขวา";
+		return "ค้อนไดโอนีซัส";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringTr()
 	{
-		return "Dairesel vites değiştirme sağa";
+		return "Dionysos'un Çekiç";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringUk()
 	{
-		return "Біти кругового зсуву праворуч";
+		return "Молот Діоніса";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringVi()
 	{
-		return "Bit dịch chuyển tròn phải";
+		return "Búa của Dionysus";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringZhCn()
 	{
-		return "循环移位正确";
+		return "狄俄尼索斯的锤子";
 	}
 
 	std::string Hexus_Cards_ShiftRightCircular::getStringZhTw()
 	{
-		return "循環移位正確";
+		return "狄俄尼索斯的錘子";
 	}
 }

@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Hexus_Cards_Mov::getStringAr()
 	{
-		return "MOV";
+		return "جوهر الحياة";
 	}
 
 	std::string Hexus_Cards_Mov::getStringBg()
 	{
-		return "MOV";
+		return "Същност на живота";
 	}
 
 	std::string Hexus_Cards_Mov::getStringCs()
 	{
-		return "MOV";
+		return "Podstata života";
 	}
 
 	std::string Hexus_Cards_Mov::getStringDa()
 	{
-		return "MOV";
+		return "Livets essens";
 	}
 
 	std::string Hexus_Cards_Mov::getStringDe()
 	{
-		return "MOV";
+		return "Essenz des Lebens";
 	}
 
 	std::string Hexus_Cards_Mov::getStringEl()
 	{
-		return "MOV";
+		return "Ουσία της ζωής";
 	}
 
 	std::string Hexus_Cards_Mov::getStringEn()
 	{
-		return "MOV";
+		return "Essence of life";
 	}
 
 	std::string Hexus_Cards_Mov::getStringEs()
 	{
-		return "MOV";
+		return "La esencia de la vida";
 	}
 
 	std::string Hexus_Cards_Mov::getStringEs419()
 	{
-		return "MOV";
+		return "La esencia de la vida";
 	}
 
 	std::string Hexus_Cards_Mov::getStringFi()
 	{
-		return "MOV";
+		return "Elämän olemus";
 	}
 
 	std::string Hexus_Cards_Mov::getStringFr()
 	{
-		return "MOV";
+		return "Essence de la vie";
 	}
 
 	std::string Hexus_Cards_Mov::getStringHu()
 	{
-		return "MOV";
+		return "Az élet lényege";
 	}
 
 	std::string Hexus_Cards_Mov::getStringIt()
 	{
-		return "MOV";
+		return "Essenza di vita";
 	}
 
 	std::string Hexus_Cards_Mov::getStringJa()
 	{
-		return "MOV";
+		return "生命の本質";
 	}
 
 	std::string Hexus_Cards_Mov::getStringKo()
 	{
-		return "MOV";
+		return "삶의 본질";
 	}
 
 	std::string Hexus_Cards_Mov::getStringNl()
 	{
-		return "MOV";
+		return "Essentie van het leven";
 	}
 
 	std::string Hexus_Cards_Mov::getStringNo()
 	{
-		return "MOV";
+		return "Livets essens";
 	}
 
 	std::string Hexus_Cards_Mov::getStringPl()
 	{
-		return "MOV";
+		return "Esencja życia";
 	}
 
 	std::string Hexus_Cards_Mov::getStringPt()
 	{
-		return "MOV";
+		return "Essência da vida";
 	}
 
 	std::string Hexus_Cards_Mov::getStringPtBr()
 	{
-		return "MOV";
+		return "Essência da vida";
 	}
 
 	std::string Hexus_Cards_Mov::getStringRo()
 	{
-		return "MOV";
+		return "Esența vieții";
 	}
 
 	std::string Hexus_Cards_Mov::getStringRu()
 	{
-		return "MOV";
+		return "Сущность жизни";
 	}
 
 	std::string Hexus_Cards_Mov::getStringSv()
 	{
-		return "MOV";
+		return "Livets essens";
 	}
 
 	std::string Hexus_Cards_Mov::getStringTh()
 	{
-		return "MOV";
+		return "แก่นแท้ของชีวิต";
 	}
 
 	std::string Hexus_Cards_Mov::getStringTr()
 	{
-		return "MOV";
+		return "Hayatın özü";
 	}
 
 	std::string Hexus_Cards_Mov::getStringUk()
 	{
-		return "MOV";
+		return "Сутність життя";
 	}
 
 	std::string Hexus_Cards_Mov::getStringVi()
 	{
-		return "MOV";
+		return "Bản chất của cuộc sống";
 	}
 
 	std::string Hexus_Cards_Mov::getStringZhCn()
 	{
-		return "MOV";
+		return "生命的本质";
 	}
 
 	std::string Hexus_Cards_Mov::getStringZhTw()
 	{
-		return "MOV";
+		return "生命的本質";
 	}
 }
