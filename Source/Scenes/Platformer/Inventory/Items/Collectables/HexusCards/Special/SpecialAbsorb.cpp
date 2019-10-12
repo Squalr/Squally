@@ -41,7 +41,7 @@ std::string SpecialAbsorb::getItemName()
 
 LocalizedString* SpecialAbsorb::getString()
 {
-	return Strings::Hexus_Cards_Addition::create();
+	return Strings::Hexus_Cards_Absorb::create();
 }
 
 std::string SpecialAbsorb::getIconResource()

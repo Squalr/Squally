@@ -86,6 +86,27 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Hex14::SaveKeyHex14] = [=]() { return (Item*)Hex15::create(); };
 	this->deserializers[Hex15::SaveKeyHex15] = [=]() { return (Item*)Hex15::create(); };
 
+	this->deserializers[SpecialAbsorb::SaveKeySpecialAbsorb] = [=]() { return (Item*)SpecialAbsorb::create(); };
+	this->deserializers[SpecialAdd::SaveKeySpecialAdd] = [=]() { return (Item*)SpecialAdd::create(); };
+	this->deserializers[SpecialAnd::SaveKeySpecialAnd] = [=]() { return (Item*)SpecialAnd::create(); };
+	this->deserializers[SpecialFlip1::SaveKeySpecialFlip1] = [=]() { return (Item*)SpecialFlip1::create(); };
+	this->deserializers[SpecialFlip2::SaveKeySpecialFlip2] = [=]() { return (Item*)SpecialFlip2::create(); };
+	this->deserializers[SpecialFlip3::SaveKeySpecialFlip3] = [=]() { return (Item*)SpecialFlip3::create(); };
+	this->deserializers[SpecialFlip4::SaveKeySpecialFlip4] = [=]() { return (Item*)SpecialFlip4::create(); };
+
+	this->deserializers[SpecialGreed::SaveKeySpecialGreed] = [=]() { return (Item*)SpecialGreed::create(); };
+	this->deserializers[SpecialInv::SaveKeySpecialInv] = [=]() { return (Item*)SpecialInv::create(); };
+	this->deserializers[SpecialMov::SaveKeySpecialMov] = [=]() { return (Item*)SpecialMov::create(); };
+	this->deserializers[SpecialOr::SaveKeySpecialOr] = [=]() { return (Item*)SpecialOr::create(); };
+	this->deserializers[SpecialPeek::SaveKeySpecialPeek] = [=]() { return (Item*)SpecialPeek::create(); };
+	this->deserializers[SpecialShl::SaveKeySpecialShl] = [=]() { return (Item*)SpecialShl::create(); };
+	this->deserializers[SpecialShlCircular::SaveKeySpecialShlCircular] = [=]() { return (Item*)SpecialShlCircular::create(); };
+	this->deserializers[SpecialShr::SaveKeySpecialShr] = [=]() { return (Item*)SpecialShr::create(); };
+	this->deserializers[SpecialShrCircular::SaveKeySpecialShrCircular] = [=]() { return (Item*)SpecialShrCircular::create(); };
+	this->deserializers[SpecialSteal::SaveKeySpecialSteal] = [=]() { return (Item*)SpecialSteal::create(); };
+	this->deserializers[SpecialSub::SaveKeySpecialSub] = [=]() { return (Item*)SpecialSub::create(); };
+	this->deserializers[SpecialXor::SaveKeySpecialXor] = [=]() { return (Item*)SpecialXor::create(); };
+
 	// Consumables
 	this->deserializers[HealthPotion::SaveKeyHealthPotion] = [=]() { return (Item*)HealthPotion::create(); };
 	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };
