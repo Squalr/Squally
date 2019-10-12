@@ -75,6 +75,7 @@ HexusOpponentData* DemonDragon::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -75,6 +75,7 @@ HexusOpponentData* Grim::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -83,8 +83,8 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

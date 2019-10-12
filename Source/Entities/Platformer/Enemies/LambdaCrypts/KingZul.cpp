@@ -75,6 +75,7 @@ HexusOpponentData* KingZul::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

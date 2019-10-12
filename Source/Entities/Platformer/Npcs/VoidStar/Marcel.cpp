@@ -84,8 +84,8 @@ HexusOpponentData* Marcel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

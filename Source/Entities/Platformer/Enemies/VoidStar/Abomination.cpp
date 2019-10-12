@@ -75,6 +75,7 @@ HexusOpponentData* Abomination::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -75,6 +75,7 @@ HexusOpponentData* Warlock::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

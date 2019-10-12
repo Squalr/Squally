@@ -75,6 +75,7 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

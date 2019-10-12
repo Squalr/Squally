@@ -161,6 +161,7 @@ HexusOpponentData* BeatTutorialD::createOpponentData()
         HexusOpponentData::generateDeck(25, 0.07f,
         {
         }),
+        { },
         [=](HexusOpponentData::Result result)
         {
             if (result == HexusOpponentData::Result::Win)

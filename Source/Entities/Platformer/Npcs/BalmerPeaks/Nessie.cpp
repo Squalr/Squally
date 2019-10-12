@@ -84,8 +84,8 @@ HexusOpponentData* Nessie::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

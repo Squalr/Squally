@@ -75,6 +75,7 @@ HexusOpponentData* VoidDemon::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

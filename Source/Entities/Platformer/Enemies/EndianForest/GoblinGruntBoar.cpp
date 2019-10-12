@@ -75,6 +75,7 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

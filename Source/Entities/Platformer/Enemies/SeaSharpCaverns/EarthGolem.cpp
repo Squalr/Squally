@@ -75,6 +75,7 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -84,8 +84,8 @@ HexusOpponentData* Radon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

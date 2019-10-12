@@ -75,6 +75,7 @@ HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

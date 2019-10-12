@@ -75,6 +75,7 @@ HexusOpponentData* Professor::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

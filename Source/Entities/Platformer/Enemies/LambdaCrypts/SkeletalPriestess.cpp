@@ -75,6 +75,7 @@ HexusOpponentData* SkeletalPriestess::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

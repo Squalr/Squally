@@ -83,8 +83,8 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

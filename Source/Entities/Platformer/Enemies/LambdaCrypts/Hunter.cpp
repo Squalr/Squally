@@ -75,6 +75,7 @@ HexusOpponentData* Hunter::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

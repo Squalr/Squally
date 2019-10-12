@@ -75,6 +75,7 @@ HexusOpponentData* Troll::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -83,8 +83,8 @@ HexusOpponentData* Thurstan::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

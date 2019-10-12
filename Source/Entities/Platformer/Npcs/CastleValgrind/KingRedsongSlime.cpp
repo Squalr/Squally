@@ -83,8 +83,8 @@ HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

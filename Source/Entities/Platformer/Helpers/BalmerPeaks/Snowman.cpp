@@ -75,6 +75,7 @@ HexusOpponentData* Snowman::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -75,6 +75,7 @@ HexusOpponentData* GoblinElf::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

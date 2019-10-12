@@ -75,6 +75,7 @@ HexusOpponentData* Osiris::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

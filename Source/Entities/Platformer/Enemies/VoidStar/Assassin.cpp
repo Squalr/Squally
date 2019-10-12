@@ -75,6 +75,7 @@ HexusOpponentData* Assassin::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

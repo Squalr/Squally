@@ -75,6 +75,7 @@ HexusOpponentData* SkeletalArcher::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

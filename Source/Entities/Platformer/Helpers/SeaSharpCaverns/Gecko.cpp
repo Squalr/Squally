@@ -75,6 +75,7 @@ HexusOpponentData* Gecko::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

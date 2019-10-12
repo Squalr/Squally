@@ -75,6 +75,7 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

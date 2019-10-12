@@ -84,8 +84,8 @@ HexusOpponentData* Bancroft::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

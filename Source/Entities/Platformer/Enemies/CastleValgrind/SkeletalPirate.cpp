@@ -75,6 +75,7 @@ HexusOpponentData* SkeletalPirate::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

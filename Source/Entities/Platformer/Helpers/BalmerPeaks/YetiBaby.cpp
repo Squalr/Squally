@@ -75,6 +75,7 @@ HexusOpponentData* YetiBaby::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

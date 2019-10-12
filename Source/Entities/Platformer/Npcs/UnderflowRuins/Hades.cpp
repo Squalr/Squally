@@ -83,8 +83,8 @@ HexusOpponentData* Hades::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

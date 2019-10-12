@@ -75,6 +75,7 @@ HexusOpponentData* ZombieElric::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

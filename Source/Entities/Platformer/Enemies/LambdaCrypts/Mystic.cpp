@@ -75,6 +75,7 @@ HexusOpponentData* Mystic::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

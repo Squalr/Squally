@@ -75,6 +75,7 @@ HexusOpponentData* LionMan::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

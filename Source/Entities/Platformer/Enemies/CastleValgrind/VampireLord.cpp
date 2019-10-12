@@ -75,6 +75,7 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

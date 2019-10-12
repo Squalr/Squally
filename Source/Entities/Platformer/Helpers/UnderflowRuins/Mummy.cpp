@@ -75,6 +75,7 @@ HexusOpponentData* Mummy::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

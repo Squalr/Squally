@@ -75,6 +75,7 @@ HexusOpponentData* Viking::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

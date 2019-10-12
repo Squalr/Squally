@@ -75,6 +75,7 @@ HexusOpponentData* VoidArcher::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

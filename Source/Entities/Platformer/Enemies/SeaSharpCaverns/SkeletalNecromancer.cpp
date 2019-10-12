@@ -75,6 +75,7 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

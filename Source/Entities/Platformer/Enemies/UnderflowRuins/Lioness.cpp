@@ -75,6 +75,7 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

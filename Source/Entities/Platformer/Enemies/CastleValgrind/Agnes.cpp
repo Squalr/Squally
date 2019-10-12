@@ -75,6 +75,7 @@ HexusOpponentData* Agnes::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

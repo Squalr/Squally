@@ -26,6 +26,7 @@ HexusOpponentData* HexusOpponentData::create(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
+	std::vector<std::string> rewards,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
@@ -41,6 +42,7 @@ HexusOpponentData* HexusOpponentData::create(
 		cardStyle,
 		strength,
 		cards,
+		rewards,
 		onRoundEnd,
 		stateOverride
 	);
@@ -62,6 +64,7 @@ HexusOpponentData::HexusOpponentData(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
+	std::vector<std::string> rewards,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
@@ -78,6 +81,7 @@ HexusOpponentData::HexusOpponentData(
 	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
 	this->onRoundEnd = onRoundEnd;
+	this->rewards = rewards;
 	this->stateOverride = stateOverride;
 	this->isLastInChapter = false;
 

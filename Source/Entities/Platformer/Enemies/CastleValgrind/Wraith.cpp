@@ -75,6 +75,7 @@ HexusOpponentData* Wraith::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

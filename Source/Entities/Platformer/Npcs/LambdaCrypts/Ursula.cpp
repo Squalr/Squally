@@ -85,8 +85,8 @@ HexusOpponentData* Ursula::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

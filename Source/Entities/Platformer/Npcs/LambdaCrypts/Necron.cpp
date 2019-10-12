@@ -85,8 +85,8 @@ HexusOpponentData* Necron::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

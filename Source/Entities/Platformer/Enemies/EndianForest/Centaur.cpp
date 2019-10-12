@@ -75,6 +75,7 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

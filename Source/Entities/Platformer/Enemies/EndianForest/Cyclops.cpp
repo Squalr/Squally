@@ -75,6 +75,7 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

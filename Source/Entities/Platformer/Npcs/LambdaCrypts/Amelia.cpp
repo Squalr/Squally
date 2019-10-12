@@ -85,8 +85,8 @@ HexusOpponentData* Amelia::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

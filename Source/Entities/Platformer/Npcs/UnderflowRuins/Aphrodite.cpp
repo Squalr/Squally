@@ -83,8 +83,8 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

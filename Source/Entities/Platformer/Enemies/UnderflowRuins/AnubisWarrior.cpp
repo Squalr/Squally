@@ -75,6 +75,7 @@ HexusOpponentData* AnubisWarrior::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

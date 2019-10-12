@@ -75,6 +75,7 @@ HexusOpponentData* Guano::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

@@ -75,6 +75,7 @@ HexusOpponentData* Princess::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

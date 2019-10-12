@@ -40,6 +40,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
+		std::vector<std::string> rewards,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 
@@ -55,6 +56,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
+		std::vector<std::string> rewards,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
@@ -77,6 +79,7 @@ public:
 	float strength;
 	int reward;
 	Strategy strategy;
+	std::vector<std::string> rewards;
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
 

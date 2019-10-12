@@ -75,6 +75,7 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 			{
 
 			}),
+			{ },
 			nullptr,
 			StateOverride::create(
 				// Player losses

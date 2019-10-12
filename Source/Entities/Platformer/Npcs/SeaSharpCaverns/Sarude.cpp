@@ -83,8 +83,8 @@ HexusOpponentData* Sarude::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

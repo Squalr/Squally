@@ -85,8 +85,8 @@ HexusOpponentData* Piper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-
 			}),
+			{ },
 			nullptr
 		);
 	}
