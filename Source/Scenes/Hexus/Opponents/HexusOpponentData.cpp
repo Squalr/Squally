@@ -91,7 +91,10 @@ HexusOpponentData::HexusOpponentData(
 		this->stateOverride->retain();
 	}
 
-	this->addChild(this->rewardPool);
+	if (this->rewardPool != nullptr)
+	{
+		this->addChild(this->rewardPool);
+	}
 }
 
 HexusOpponentData::~HexusOpponentData()

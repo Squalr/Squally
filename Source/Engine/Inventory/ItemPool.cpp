@@ -72,17 +72,18 @@ Item* ItemPool::getItemFromPool(bool removeSampledItem)
 	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
 	{
 		weight -= std::get<1>(*it);
+		Item* item = std::get<0>(*it);
 
-		if (weight <= 0.0f)
+		if (weight <= 0.0f && item != nullptr)
 		{
-			Item* item = std::get<0>(*it);
+			Item* retItem = item->clone();
 
 			if (removeSampledItem)
 			{
 				this->removeItemFromPool(item);
 			}
 
-			return item->clone();
+			return retItem;
 		}
 	}
 

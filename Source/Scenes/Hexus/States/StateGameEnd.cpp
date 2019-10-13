@@ -22,7 +22,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Leave.h"
-#include "Strings/Platformer/Notifications/ItemFound.h"
+#include "Strings/Platformer/Notifications/ItemWon.h"
 
 using namespace cocos2d;
 
@@ -142,7 +142,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 			{
 				Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemWon::create(), (*it)->getString(), (*it)->getIconResource()));
 
 				playerInventory->forceInsert(*it);	
 			}
