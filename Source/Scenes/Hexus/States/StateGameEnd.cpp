@@ -8,16 +8,21 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/HexusEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Scenes/Hexus/Config.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Leave.h"
+#include "Strings/Platformer/Notifications/ItemFound.h"
 
 using namespace cocos2d;
 
@@ -96,7 +101,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
 
-		// Analytics for losing
+		// Analytics for losing (as a tie)
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
 		
 		if (gameState->opponentData->onRoundEnd != nullptr)
@@ -127,6 +132,20 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
 			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Win);
+		}
+
+		if (gameState->opponentData->rewardPool != nullptr)
+		{
+			std::vector<Item*> items = gameState->opponentData->rewardPool->getItems();
+
+			for (auto it = items.begin(); it != items.end(); it++)
+			{
+				Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+
+				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+
+				playerInventory->forceInsert(*it);	
+			}
 		}
 	}
 	else

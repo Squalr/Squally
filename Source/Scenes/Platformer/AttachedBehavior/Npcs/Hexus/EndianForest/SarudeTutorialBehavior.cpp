@@ -2,6 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -57,7 +58,7 @@ HexusOpponentData* SarudeTutorialBehavior::createOpponentData()
         HexusOpponentData::generateDeck(25, 0.07f,
         {
         }),
-		nullptr,
+		CardPoolTutorial::create(),
         [=](HexusOpponentData::Result result)
         {
 			switch(result)

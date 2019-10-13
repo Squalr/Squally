@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/ItemPool.h"
 
-class CardPool;
+class MinMaxPool;
 class Item;
 
 class ShopPool : public ItemPool
@@ -10,7 +10,7 @@ class ShopPool : public ItemPool
 public:
 
 protected:
-	ShopPool(cocos2d::ValueMap& properties, std::string poolName, CardPool* cardPool);
+	ShopPool(cocos2d::ValueMap& properties, std::string poolName, MinMaxPool* priorityPool);
 	~ShopPool();
 
 	Item* getItemFromPool(bool removeSampledItem) override;
@@ -18,5 +18,7 @@ protected:
 private:
 	typedef ItemPool super;
 
-	CardPool* cardPool;
+	MinMaxPool* priorityPool;
+
+	cocos2d::Node* priorityPoolItemsNode;
 };

@@ -9,7 +9,7 @@ class ItemPool : public GameObject
 public:
 
 protected:
-	ItemPool(const cocos2d::ValueMap&  properties, std::string poolName = "");
+	ItemPool(const cocos2d::ValueMap& properties, std::string poolName = "");
 	ItemPool(std::string poolName = "");
 	~ItemPool();
 

@@ -6,23 +6,23 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Inventory/ItemPreview.h"
-#include "Objects/Platformer/Collectables/Cards/CardPools/CardPool.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-ShopPool::ShopPool(ValueMap& properties, std::string poolName, CardPool* cardPool) : super(properties, poolName)
+ShopPool::ShopPool(ValueMap& properties, std::string poolName, MinMaxPool* priorityPool) : super(properties, poolName)
 {
-	this->cardPool = cardPool;
+	this->priorityPool = priorityPool;
 
-	if (this->cardPool != nullptr)
+	if (this->priorityPool != nullptr)
 	{
-		this->addChild(this->cardPool);
+		this->addChild(this->priorityPool);
 	}
 }
 
@@ -32,13 +32,13 @@ ShopPool::~ShopPool()
 
 Item* ShopPool::getItemFromPool(bool removeSampledItem)
 {
-	if (this->cardPool != nullptr)
+	if (this->priorityPool != nullptr)
 	{
-		Item* card = this->cardPool->getCard();
+		Item* item = this->priorityPool->getItem();
 
-		if (card != nullptr)
+		if (item != nullptr)
 		{
-			return card;
+			return item;
 		}
 	}
 

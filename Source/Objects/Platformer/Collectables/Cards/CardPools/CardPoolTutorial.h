@@ -2,14 +2,14 @@
 
 #include "Engine/Inventory/MinMaxPool.h"
 
-class CardPoolTier1 : public MinMaxPool
+class CardPoolTutorial : public MinMaxPool
 {
 public:
-	static CardPoolTier1* create();
+	static CardPoolTutorial* create();
 
 protected:
-	CardPoolTier1();
-	~CardPoolTier1();
+	CardPoolTutorial();
+	~CardPoolTutorial();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

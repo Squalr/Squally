@@ -4,13 +4,13 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Input/Input.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPool.h"
 #include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPoolDeserializer.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -43,7 +43,7 @@ Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs deserializeArgs = ObjectDeserializer::ObjectDeserializationRequestArgs(valueMap, [=](ObjectDeserializer::ObjectDeserializationArgs args)
 	{
-		this->chestPool = static_cast<ChestPool*>(args.gameObject);
+		this->chestPool = static_cast<MinMaxPool*>(args.gameObject);
 		this->addChild(this->chestPool);
 	});
 

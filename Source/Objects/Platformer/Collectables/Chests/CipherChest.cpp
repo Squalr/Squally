@@ -6,6 +6,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Maps/GameObject.h"
@@ -15,7 +16,6 @@
 #include "Events/CipherEvents.h"
 #include "Events/NotificationEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPool.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
@@ -154,7 +154,7 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 	}
 
 	std::string bonusReward = puzzleData->getBonusReward();
-	std::vector<Item*> items = this->chestPool->getChestItems();
+	std::vector<Item*> items = this->chestPool->getItems();
 
 	if (isHardModeEnabled)
 	{

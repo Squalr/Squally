@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Objects/Platformer/Collectables/Cards/CardPools/CardPool.h"
+#include "Engine/Inventory/MinMaxPool.h"
 
-class CardShopPoolTier1 : public CardPool
+class CardShopPoolTier1 : public MinMaxPool
 {
 public:
 	static CardShopPoolTier1* create();
@@ -15,5 +15,5 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef CardPool super;
+	typedef MinMaxPool super;
 };

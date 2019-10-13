@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPool.h"
+#include "Engine/Inventory/MinMaxPool.h"
 
-class ChestPoolEFGeneric : public ChestPool
+class ChestPoolEFGeneric : public MinMaxPool
 {
 public:
 	static ChestPoolEFGeneric* create(cocos2d::ValueMap& properties);
@@ -17,5 +17,5 @@ protected:
 	void initializeListeners() override;
 
 private:
-	typedef ChestPool super;
+	typedef MinMaxPool super;
 };

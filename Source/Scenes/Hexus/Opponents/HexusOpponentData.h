@@ -4,12 +4,12 @@
 
 #include "cocos/math/Vec2.h"
 
-#include "Engine/Inventory/ItemPool.h"
 #include "Engine/SmartNode.h"
 #include "Scenes/Hexus/Card.h"
 
 class CardData;
 class Deck;
+class MinMaxPool;
 class StateOverride;
 
 class HexusOpponentData : public SmartNode
@@ -41,7 +41,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
-		ItemPool* rewardPool = nullptr,
+		MinMaxPool* rewardPool = nullptr,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 
@@ -57,7 +57,7 @@ public:
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
-		ItemPool* rewardPool = nullptr,
+		MinMaxPool* rewardPool = nullptr,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
@@ -80,7 +80,7 @@ public:
 	float strength;
 	int reward;
 	Strategy strategy;
-	ItemPool* rewardPool;
+	MinMaxPool* rewardPool;
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
 

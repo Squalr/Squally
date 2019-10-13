@@ -1,5 +1,6 @@
 #include "HexusOpponentData.h"
 
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -26,7 +27,7 @@ HexusOpponentData* HexusOpponentData::create(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
-	ItemPool* rewardPool,
+	MinMaxPool* rewardPool,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
@@ -64,7 +65,7 @@ HexusOpponentData::HexusOpponentData(
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
-	ItemPool* rewardPool,
+	MinMaxPool* rewardPool,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {

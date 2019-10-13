@@ -15,7 +15,7 @@ CardShopPoolTier1* CardShopPoolTier1::create()
 	return instance;
 }
 
-CardShopPoolTier1::CardShopPoolTier1() : super(2, 3)
+CardShopPoolTier1::CardShopPoolTier1() : super(ValueMap(), "card-shop-tool-t1", 2, 3)
 {
 	this->addItemToPool(Binary0::create(), 1.75f);
 	this->addItemToPool(Binary1::create(), 1.25f);

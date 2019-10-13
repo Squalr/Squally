@@ -4,9 +4,9 @@
 
 using namespace cocos2d;
 
-class ChestPool;
 class CollisionObject;
 class InteractMenu;
+class MinMaxPool;
 
 class Chest : public GameObject
 {
@@ -27,7 +27,7 @@ protected:
 	virtual void lock();
 	virtual void onInteract() = 0;
 
-	ChestPool* chestPool;
+	MinMaxPool* chestPool;
 
 private:
 	typedef GameObject super;
