@@ -5,7 +5,6 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Menus/Inventory/ItemPreview.h"
 #include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 

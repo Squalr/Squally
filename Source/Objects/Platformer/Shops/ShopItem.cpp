@@ -11,7 +11,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Menus/Inventory/ItemPreview.h"
+#include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 

@@ -10,9 +10,8 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Menus/Inventory/ItemPreview.h"
-#include "Menus/Inventory/Filters/FilterMenu.h"
-#include "Menus/Inventory/ItemMenu.h"
+#include "Menus/Inventory/FilterMenu/FilterMenu.h"
+#include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -101,6 +100,7 @@ void InventoryMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
+	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
 	this->inventoryWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->inventoryLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -142,7 +142,7 @@ void InventoryMenu::initializeListeners()
 			this->returnClickCallback();
 		}
 	});
-	
+
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
 		this->filterMenu->unfocus();

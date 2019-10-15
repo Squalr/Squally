@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Menus/Inventory/Filters/FilterEntry.h"
+#include "Menus/Inventory/FilterMenu/FilterEntry.h"
 
 class Item;
 class LocalizedLabel;
 
-class CraftingFilter : public FilterEntry
+class AllFilter : public FilterEntry
 {
 public:
-	static CraftingFilter* create();
+	static AllFilter* create();
 
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
@@ -18,6 +18,6 @@ protected:
 
 private:
 	typedef FilterEntry super;
-	CraftingFilter();
-	~CraftingFilter();
+	AllFilter();
+	~AllFilter();
 };

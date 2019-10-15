@@ -16,7 +16,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Menus/Inventory/ItemPreview.h"
+#include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -47,23 +47,19 @@ ItemMenu::ItemMenu()
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->itemPreview = ItemPreview::create();
-	this->contentNode = Node::create();
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
-	this->inventoryNodeContent = Node::create();
-	this->inventoryNode = SmartClippingNode::create(this->inventoryNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
+	this->itemListNodeContent = Node::create();
+	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->selectedItemIndex = 0;
-	this->itemLabels = std::vector<Node*>();
-	this->equippedItemLabels = std::vector<Node*>();
 	
-	this->contentNode->addChild(this->selectedInventoryRow);
-	this->contentNode->addChild(this->inventoryNode);
-	this->contentNode->addChild(this->inventorySelectionArrow);
-	this->contentNode->addChild(this->itemPreview);
 	this->addChild(this->currencyInventory);
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->inventory);
-	this->addChild(this->contentNode);
+	this->addChild(this->selectedInventoryRow);
+	this->addChild(this->itemListNode);
+	this->addChild(this->inventorySelectionArrow);
+	this->addChild(this->itemPreview);
 }
 
 ItemMenu::~ItemMenu()
@@ -87,8 +83,7 @@ void ItemMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->contentNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 44.0f));
-	this->inventoryNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
+	this->itemListNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
 	this->inventorySelectionArrow->setPosition(Vec2(-186.0f, 0.0f));
 	this->selectedInventoryRow->setPosition(Vec2(0.0f, 0.0f));
 	this->itemPreview->setPosition(Vec2(360.0f, 96.0f));
@@ -114,6 +109,11 @@ void ItemMenu::initializeListeners()
 	});
 }
 
+void ItemMenu::setVisibleItems(std::vector<Item*> visibleItems)
+{
+	this->visibleItems = visibleItems;
+}
+
 void ItemMenu::focus()
 {
 	this->isFocused = true;
@@ -134,25 +134,21 @@ void ItemMenu::unfocus()
 
 void ItemMenu::scrollInventoryUp()
 {
-	// TODO: figure out what to bound this by
-	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex - 1, 0, this->itemLabels.size() - 1);
+	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex - 1, 0, this->visibleItems.size() - 1);
 
 	this->updateAndPositionItemText();
 }
 
 void ItemMenu::scrollInventoryDown()
 {
-	// TODO: figure out what to bound this by
-	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex + 1, 0, this->itemLabels.size() - 1);
+	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex + 1, 0, this->visibleItems.size() - 1);
 
 	this->updateAndPositionItemText();
 }
 
 void ItemMenu::buildInventoryList()
 {
-	this->inventoryNodeContent->removeAllChildren();
-	this->equippedItemLabels.clear();
-	this->itemLabels.clear();
+	this->itemListNodeContent->removeAllChildren();
 
 	this->updateAndPositionItemText();
 }
@@ -298,7 +294,7 @@ void ItemMenu::updateAndPositionItemText()
 	int adjustedIndex = this->selectedItemIndex - visibleItemLabels.size() / 2;
 	float offset = float(adjustedIndex) * ItemMenu::LabelSpacing;
 
-	this->inventoryNodeContent->setPositionY(offset);
+	this->itemListNodeContent->setPositionY(offset);
 	this->itemPreview->clearPreview();
 
 	if (visibleItemLabels.empty())

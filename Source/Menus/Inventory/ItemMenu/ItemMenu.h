@@ -29,10 +29,9 @@ class ItemMenu : public SmartNode
 public:
 	static ItemMenu* create();
 
+	void setVisibleItems(std::vector<Item*> visibleItems);
 	void focus();
 	void unfocus();
-	void open();
-	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
 	ItemMenu();
@@ -54,18 +53,15 @@ private:
 	CurrencyInventory* currencyInventory;
 	EquipmentInventory* equipmentInventory;
 	Inventory* inventory;
+
 	ItemPreview* itemPreview;
-	cocos2d::Node* contentNode;
 	cocos2d::Sprite* selectedInventoryRow;
-	int selectedItemIndex;
 	cocos2d::Sprite* inventorySelectionArrow;
+	SmartClippingNode* itemListNode;
+	cocos2d::Node* itemListNodeContent;
 
-	SmartClippingNode* inventoryNode;
-	cocos2d::Node* inventoryNodeContent;
-	
-	std::vector<cocos2d::Node*> equippedItemLabels;
-	std::vector<cocos2d::Node*> itemLabels;
-
+	std::vector<Item*> visibleItems;
+	int selectedItemIndex;
 	bool isFocused;
 
 	static const float LabelSpacing;
