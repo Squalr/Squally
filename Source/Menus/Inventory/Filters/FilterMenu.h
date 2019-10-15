@@ -43,6 +43,6 @@ private:
 
 	bool isFocused;
 	int filterSelectionIndex;
-	
+
 	static const float LabelSpacing;
 };

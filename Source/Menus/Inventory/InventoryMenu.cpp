@@ -142,13 +142,17 @@ void InventoryMenu::initializeListeners()
 			this->returnClickCallback();
 		}
 	});
-
+	
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
+		this->filterMenu->unfocus();
+		this->itemMenu->focus();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
+		this->filterMenu->focus();
+		this->itemMenu->unfocus();
 	});
 }
 

@@ -42,6 +42,7 @@ ItemMenu* ItemMenu::create()
 
 ItemMenu::ItemMenu()
 {
+	this->isFocused = false;
 	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
@@ -51,7 +52,6 @@ ItemMenu::ItemMenu()
 	this->inventoryNodeContent = Node::create();
 	this->inventoryNode = SmartClippingNode::create(this->inventoryNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->activeFocus = ActiveFocus::Filter;
 	this->selectedItemIndex = 0;
 	this->itemLabels = std::vector<Node*>();
 	this->equippedItemLabels = std::vector<Node*>();
@@ -77,7 +77,7 @@ void ItemMenu::onEnter()
 	float delay = 0.1f;
 	float duration = 0.25f;
 
-	this->unfocusInventory();
+	this->unfocus();
 	this->selectedItemIndex = 0;
 }
 
@@ -103,16 +103,6 @@ void ItemMenu::initializeListeners()
 		this->toggleEquipSelectedItem();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
-	{
-		this->focusInventory();
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
-	{
-		this->unfocusInventory();
-	});
-
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
 	{
 		this->scrollInventoryUp();
@@ -124,34 +114,36 @@ void ItemMenu::initializeListeners()
 	});
 }
 
-void ItemMenu::scrollInventoryUp()
+void ItemMenu::focus()
 {
-	this->selectedItemIndex--;
+	this->isFocused = true;
+	this->inventorySelectionArrow->setVisible(true);
+	this->selectedInventoryRow->setVisible(true);
 
 	this->updateAndPositionItemText();
 }
 
-void ItemMenu::scrollInventoryDown()
+void ItemMenu::unfocus()
 {
-	this->selectedItemIndex++;
-
-	this->updateAndPositionItemText();
-}
-
-void ItemMenu::unfocusInventory()
-{
-	this->activeFocus = ActiveFocus::Filter;
+	this->isFocused = false;
 	this->inventorySelectionArrow->setVisible(false);
 	this->selectedInventoryRow->setVisible(false);
 
 	this->updateAndPositionItemText();
 }
 
-void ItemMenu::focusInventory()
+void ItemMenu::scrollInventoryUp()
 {
-	this->activeFocus = ActiveFocus::Inventory;
-	this->inventorySelectionArrow->setVisible(true);
-	this->selectedInventoryRow->setVisible(true);
+	// TODO: figure out what to bound this by
+	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex - 1, 0, this->itemLabels.size() - 1);
+
+	this->updateAndPositionItemText();
+}
+
+void ItemMenu::scrollInventoryDown()
+{
+	// TODO: figure out what to bound this by
+	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex + 1, 0, this->itemLabels.size() - 1);
 
 	this->updateAndPositionItemText();
 }

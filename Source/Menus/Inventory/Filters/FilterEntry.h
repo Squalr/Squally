@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Menus/Inventory/MenuEntry.h"
 
 namespace cocos2d
 {
@@ -11,24 +11,15 @@ class Item;
 class LocalizedLabel;
 class LocalizedString;
 
-class FilterEntry : public SmartNode
+class FilterEntry : public MenuEntry
 {
 public:
-	LocalizedString* getLabelString();
 	virtual std::vector<Item*> filter(std::vector<Item*> itemList) = 0;
 
 protected:
 	FilterEntry(LocalizedString* text, std::string spriteResource);
 	~FilterEntry();
-	void onEnter() override;
-	void initializePositions() override;
 
 private:
-	typedef SmartNode super;
-
-	cocos2d::Node* buildMenuLabel(LocalizedString* text, std::string spriteResource);
-
-	cocos2d::Node* labelNode;
-
-	static const cocos2d::Size LabelSize;
+	typedef MenuEntry super;
 };

@@ -6,12 +6,15 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/SmartClippingNode.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Menus/Inventory/Filters/AllFilter.h"
 #include "Menus/Inventory/Filters/ConsumablesFilter.h"
 #include "Menus/Inventory/Filters/CraftingFilter.h"
 #include "Menus/Inventory/Filters/EquipmentFilter.h"
 #include "Menus/Inventory/Filters/MiscFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -32,6 +35,9 @@ FilterMenu::FilterMenu()
 	this->filterSelectionIndex = 0;
 	this->filterNodeContent = Node::create();
 	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
+	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
+	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
+	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
 
 	this->filters.push_back(AllFilter::create());
 	this->filters.push_back(ConsumablesFilter::create());
@@ -39,21 +45,15 @@ FilterMenu::FilterMenu()
 	this->filters.push_back(EquipmentFilter::create());
 	this->filters.push_back(MiscFilter::create());
 
-	/**
-	 * this->allLabel = this->buildMenuLabel(Strings::Menus_Inventory_All::create(), Sprite::create(UIResources::Menus_InventoryMenu_AllIcon));
-		this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create(), Sprite::create(UIResources::Menus_InventoryMenu_EquipmentIcon));
-		this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create(), Sprite::create(UIResources::Menus_InventoryMenu_ConsumablesIcon));
-		this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcon));
-		this->hexusLabel = this->buildMenuLabel(Strings::Menus_Inventory_Hexus::create(), Sprite::create(UIResources::Menus_InventoryMenu_HexusIcon));
-		this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create(), Sprite::create(UIResources::Menus_InventoryMenu_MiscIcon));
-	 */
-
 	for (auto it = this->filters.begin(); it != this->filters.end(); it++)
 	{
-		this->filterNode->addChild(*it);
+		this->filterNodeContent->addChild(*it);
 	}
 
+	this->addChild(this->selectedFilterRowActive);
+	this->addChild(this->selectedFilterRowInactive);
 	this->addChild(this->filterNode);
+	this->addChild(this->filterSelectionArrow);
 }
 
 FilterMenu::~FilterMenu()
@@ -64,12 +64,15 @@ void FilterMenu::onEnter()
 {
 	super::onEnter();
 
+	this->focus();
 	this->positionFilterText();
 }
 
 void FilterMenu::initializePositions()
 {
 	super::initializePositions();
+
+	this->filterSelectionArrow->setPosition(Vec2(-188.0f, 0.0f));
 }
 
 void FilterMenu::initializeListeners()
@@ -87,6 +90,22 @@ void FilterMenu::initializeListeners()
 	});
 }
 
+void FilterMenu::focus()
+{
+	this->isFocused = true;
+	this->filterSelectionArrow->setVisible(true);
+	this->selectedFilterRowActive->setVisible(true);
+	this->selectedFilterRowInactive->setVisible(false);
+}
+
+void FilterMenu::unfocus()
+{
+	this->isFocused = false;
+	this->filterSelectionArrow->setVisible(false);
+	this->selectedFilterRowActive->setVisible(false);
+	this->selectedFilterRowInactive->setVisible(true);
+}
+
 void FilterMenu::scrollFilterUp()
 {
 	if (!this->isFocused)
@@ -94,7 +113,7 @@ void FilterMenu::scrollFilterUp()
 		return;
 	}
 
-	this->filterSelectionIndex++;
+	this->filterSelectionIndex = MathUtils::clamp(this->filterSelectionIndex - 1, 0, this->filters.size() - 1);
 	this->positionFilterText();
 }
 
@@ -105,7 +124,7 @@ void FilterMenu::scrollFilterDown()
 		return;
 	}
 
-	this->filterSelectionIndex--;
+	this->filterSelectionIndex = MathUtils::clamp(this->filterSelectionIndex + 1, 0, this->filters.size() - 1);
 	this->positionFilterText();
 }
 
@@ -129,8 +148,8 @@ void FilterMenu::positionFilterText()
 	const float XOffset = 64.0f;
 	const float YOffset = 6.0f;
 	const float ZOffset = 128.0f;
-
-	//this->allLabel->setPositionX(XOffset);
-	//this->allLabel->setPositionY(this->allLabel->getPositionY() + YOffset);
-	//this->allLabel->setPositionZ(ZOffset);
+	
+	this->filters[this->filterSelectionIndex]->setPositionX(XOffset);
+	this->filters[this->filterSelectionIndex]->setPositionY(this->filters[this->filterSelectionIndex]->getPositionY() + YOffset);
+	this->filters[this->filterSelectionIndex]->setPositionZ(ZOffset);
 }

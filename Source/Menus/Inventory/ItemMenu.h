@@ -29,6 +29,8 @@ class ItemMenu : public SmartNode
 public:
 	static ItemMenu* create();
 
+	void focus();
+	void unfocus();
 	void open();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
@@ -38,19 +40,12 @@ protected:
 
 private:
 	typedef SmartNode super;
-	enum class ActiveFocus
-	{
-		Filter,
-		Inventory
-	};
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void scrollInventoryUp();
 	void scrollInventoryDown();
-	void unfocusInventory();
-	void focusInventory();
 	void buildInventoryList();
 	void updateAndPositionItemText();
 	void toggleEquipSelectedItem();
@@ -62,7 +57,6 @@ private:
 	ItemPreview* itemPreview;
 	cocos2d::Node* contentNode;
 	cocos2d::Sprite* selectedInventoryRow;
-	ActiveFocus activeFocus;
 	int selectedItemIndex;
 	cocos2d::Sprite* inventorySelectionArrow;
 
@@ -71,6 +65,8 @@ private:
 	
 	std::vector<cocos2d::Node*> equippedItemLabels;
 	std::vector<cocos2d::Node*> itemLabels;
+
+	bool isFocused;
 
 	static const float LabelSpacing;
 	static const cocos2d::Size LabelSize;
