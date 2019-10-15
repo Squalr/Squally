@@ -4,40 +4,23 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
-#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/LogUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemPreview.h"
+#include "Menus/Inventory/Filters/FilterMenu.h"
+#include "Menus/Inventory/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Inventory/All.h"
-#include "Strings/Menus/Inventory/Consumables.h"
-#include "Strings/Menus/Inventory/Crafting.h"
-#include "Strings/Menus/Inventory/Equipment.h"
 #include "Strings/Menus/Inventory/Inventory.h"
-#include "Strings/Menus/Inventory/Hexus.h"
-#include "Strings/Menus/Inventory/Misc.h"
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
@@ -57,6 +40,9 @@ InventoryMenu::InventoryMenu()
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
+	this->filterMenu = FilterMenu::create();
+	this->itemMenu = ItemMenu::create();
+	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
 
@@ -84,6 +70,8 @@ InventoryMenu::InventoryMenu()
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->inventory);
 	this->addChild(this->inventoryWindow);
+	this->addChild(this->filterMenu);
+	this->addChild(this->itemMenu);
 	this->addChild(this->inventoryLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
@@ -112,6 +100,7 @@ void InventoryMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->inventoryWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->inventoryLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));

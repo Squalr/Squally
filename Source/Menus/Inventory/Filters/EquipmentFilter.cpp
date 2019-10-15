@@ -7,6 +7,10 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
+#include "Resources/UIResources.h"
+
+#include "Strings/Menus/Inventory/Equipment.h"
+
 using namespace cocos2d;
 
 EquipmentFilter* EquipmentFilter::create()
@@ -18,7 +22,7 @@ EquipmentFilter* EquipmentFilter::create()
 	return itemPreview;
 }
 
-EquipmentFilter::EquipmentFilter()
+EquipmentFilter::EquipmentFilter() : super (Strings::Menus_Inventory_Equipment::create(), UIResources::Menus_InventoryMenu_EquipmentIcon)
 {
 }
 

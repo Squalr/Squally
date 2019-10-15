@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class FilterEntry;
 class Item;
 class LocalizedLabel;
 class SmartClippingNode;
@@ -38,7 +39,10 @@ private:
 	cocos2d::Sprite* selectedFilterRowActive;
 	cocos2d::Sprite* selectedFilterRowInactive;
 	cocos2d::Sprite* filterSelectionArrow;
-	std::vector<cocos2d::Node*> filterLabels;
+	std::vector<FilterEntry*> filters;
 
 	bool isFocused;
+	int filterSelectionIndex;
+	
+	static const float LabelSpacing;
 };

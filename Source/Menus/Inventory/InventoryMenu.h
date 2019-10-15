@@ -49,6 +49,5 @@ private:
 	EquipmentInventory* equipmentInventory;
 	Inventory* inventory;
 
-
 	std::function<void()> returnClickCallback;
 };
