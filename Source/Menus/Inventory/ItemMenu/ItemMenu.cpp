@@ -16,8 +16,11 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -43,6 +46,8 @@ ItemMenu* ItemMenu::create()
 ItemMenu::ItemMenu()
 {
 	this->isFocused = false;
+	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
+	this->visibleItems = std::vector<ItemEntry*>();
 	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
@@ -95,7 +100,15 @@ void ItemMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		this->toggleEquipSelectedItem();
+		if (!this->visibleItems.empty())
+		{
+			ItemEntry* entry = this->visibleItems[this->selectedItemIndex];
+
+			if (entry->getToggleCallback() != nullptr)
+			{
+				entry->getToggleCallback()();
+			}
+		}
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
@@ -109,9 +122,48 @@ void ItemMenu::initializeListeners()
 	});
 }
 
-void ItemMenu::setVisibleItems(std::vector<Item*> visibleItems)
+void ItemMenu::clearVisibleItems()
 {
-	this->visibleItems = visibleItems;
+	for (auto it = this->itemEntryMapping.begin(); it != itemEntryMapping.end(); it++)
+	{
+		(*it).second->setVisible(false);
+	}
+
+	this->visibleItems.clear();
+}
+
+ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> onToggle)
+{
+	ItemEntry* itemEntry = nullptr;
+
+	if (this->itemEntryMapping.find(visibleItem) == this->itemEntryMapping.end())
+	{
+		if (dynamic_cast<HexusCard*>(visibleItem) != nullptr)
+		{
+			itemEntry = ItemEntry::create(visibleItem->getString(), UIResources::Menus_InventoryMenu_EquippedIcon);
+		}
+		else if (dynamic_cast<HexusCard*>(visibleItem) != nullptr)
+		{
+			itemEntry = ItemEntry::create(visibleItem->getString(), UIResources::Menus_InventoryMenu_HexusIcon);
+		}
+		else
+		{
+			itemEntry = ItemEntry::create(visibleItem->getString());
+		}
+
+		this->itemEntryMapping[visibleItem] = itemEntry;
+		this->itemListNodeContent->addChild(itemEntry);
+	}
+	else
+	{
+		itemEntry = this->itemEntryMapping[visibleItem];
+	}
+
+	this->visibleItems.push_back(itemEntry);
+	itemEntry->setVisible(true);
+	itemEntry->setToggleCallback(onToggle);
+
+	return itemEntry;
 }
 
 void ItemMenu::focus()
@@ -134,34 +186,66 @@ void ItemMenu::unfocus()
 
 void ItemMenu::scrollInventoryUp()
 {
-	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex - 1, 0, this->visibleItems.size() - 1);
+	if (!this->isFocused)
+	{
+		return;
+	}
+
+	this->selectedItemIndex = MathUtils::clamp(this->selectedItemIndex - 1, 0, this->visibleItems.size() - 1);
 
 	this->updateAndPositionItemText();
 }
 
 void ItemMenu::scrollInventoryDown()
 {
-	this->selectedItemIndex = MathUtils::wrappingNormalize(this->selectedItemIndex + 1, 0, this->visibleItems.size() - 1);
-
-	this->updateAndPositionItemText();
-}
-
-void ItemMenu::buildInventoryList()
-{
-	this->itemListNodeContent->removeAllChildren();
+	if (!this->isFocused)
+	{
+		return;
+	}
+	
+	this->selectedItemIndex = MathUtils::clamp(this->selectedItemIndex + 1, 0, this->visibleItems.size() - 1);
 
 	this->updateAndPositionItemText();
 }
 
 void ItemMenu::updateAndPositionItemText()
 {
+	if (this->visibleItems.empty())
+	{
+		return;
+	}
+
+	int adjustedIndex = this->selectedItemIndex - this->visibleItems.size() / 2;
+	float offset = float(adjustedIndex) * ItemMenu::LabelSpacing;
+
+	this->itemListNodeContent->setPositionY(offset);
+
+	const float offsetY = ItemMenu::LabelSpacing * float(this->visibleItems.size() / 2);
+	int index = 0;
+
+	for (auto it = this->visibleItems.begin(); it != this->visibleItems.end(); it++, index++)
+	{
+		(*it)->setPositionX(0.0f);
+		(*it)->setPositionY(float(index) * -ItemMenu::LabelSpacing + offsetY);
+		(*it)->setPositionZ(0.0f);
+	}
+
+	const float XOffset = 16.0f;
+	const float YOffset = 6.0f;
+	const float ZOffset = 128.0f;
+	
+	this->visibleItems[this->selectedItemIndex]->setPositionX(XOffset);
+	this->visibleItems[this->selectedItemIndex]->setPositionY(this->visibleItems[this->selectedItemIndex]->getPositionY() + YOffset);
+	this->visibleItems[this->selectedItemIndex]->setPositionZ(ZOffset);
+
+	
+	/*
 	// this->visibleInventoryItems.clear();
 	// this->visibleEquippedItems.clear();
 	std::vector<Node*> visibleItemLabels = std::vector<Node*>();
 
 	int index = 0;
 
-	/*
 	switch(this->activeFilter)
 	{
 		case ActiveFilter::All:
@@ -326,9 +410,9 @@ void ItemMenu::updateAndPositionItemText()
 	*/
 }
 
+	/*
 void ItemMenu::toggleEquipSelectedItem()
 {
-	/*
 	if (this->activeFocus != ActiveFocus::Inventory)
 	{
 		return;
@@ -421,28 +505,5 @@ void ItemMenu::toggleEquipSelectedItem()
 	}
 
 	PlatformerEvents::TriggerEquippedItemsChanged();
+}
 	*/
-}
-
-cocos2d::Node* ItemMenu::buildMenuLabel(LocalizedString* text, Sprite* icon)
-{
-	Node* contentNode = Node::create();
-
-	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
-
-	label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	label->enableOutline(Color4B::BLACK, 2);
-	label->setPositionX(-ItemMenu::LabelSize.width / 2.0f);
-
-	contentNode->addChild(label);
-
-	if (icon != nullptr)
-	{
-		label->setPositionX(label->getPositionX() + 40.0f);
-		contentNode->addChild(icon);
-
-		icon->setPositionX(-ItemMenu::LabelSize.width / 2.0f + 16.0f);
-	}
-
-	return contentNode;
-}

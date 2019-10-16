@@ -16,9 +16,9 @@ class ClickableTextNode;
 class ConfirmationMenu;
 class CurrencyInventory;
 class EquipmentInventory;
-class FilterEntry;
 class Inventory;
 class Item;
+class ItemEntry;
 class ItemPreview;
 class LocalizedLabel;
 class LocalizedString;
@@ -29,7 +29,9 @@ class ItemMenu : public SmartNode
 public:
 	static ItemMenu* create();
 
-	void setVisibleItems(std::vector<Item*> visibleItems);
+	void clearVisibleItems();
+	ItemEntry* pushVisibleItem(Item* visibleItem, std::function<void()> onToggle);
+	void updateAndPositionItemText();
 	void focus();
 	void unfocus();
 
@@ -45,10 +47,6 @@ private:
 	void initializeListeners() override;
 	void scrollInventoryUp();
 	void scrollInventoryDown();
-	void buildInventoryList();
-	void updateAndPositionItemText();
-	void toggleEquipSelectedItem();
-	cocos2d::Node* buildMenuLabel(LocalizedString* text, cocos2d::Sprite* icon = nullptr);
 
 	CurrencyInventory* currencyInventory;
 	EquipmentInventory* equipmentInventory;
@@ -60,7 +58,8 @@ private:
 	SmartClippingNode* itemListNode;
 	cocos2d::Node* itemListNodeContent;
 
-	std::vector<Item*> visibleItems;
+	std::map<Item*, ItemEntry*> itemEntryMapping;
+	std::vector<ItemEntry*> visibleItems;
 	int selectedItemIndex;
 	bool isFocused;
 

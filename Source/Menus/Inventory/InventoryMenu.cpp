@@ -10,7 +10,9 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Menus/Inventory/FilterMenu/FilterEntry.h"
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
+#include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -39,7 +41,7 @@ InventoryMenu::InventoryMenu()
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->filterMenu = FilterMenu::create();
+	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
@@ -156,8 +158,43 @@ void InventoryMenu::initializeListeners()
 	});
 }
 
+void InventoryMenu::onFilterChange()
+{
+	this->populateItemList();
+}
+
+void InventoryMenu::populateItemList()
+{
+	this->itemMenu->clearVisibleItems();
+	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory->getItems());
+	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
+	
+	for (auto it = equipment.begin(); it != equipment.end(); it++)
+	{
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(*it, [=]()
+		{
+			
+		});
+
+		entry->showIcon();
+	}
+	
+	for (auto it = items.begin(); it != items.end(); it++)
+	{
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(*it, [=]()
+		{
+			
+		});
+
+		entry->hideIcon();
+	}
+
+	this->itemMenu->updateAndPositionItemText();
+}
+
 void InventoryMenu::open()
 {
+	this->onFilterChange();
 }
 
 void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)

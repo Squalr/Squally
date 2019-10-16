@@ -15,10 +15,11 @@ class SmartClippingNode;
 class FilterMenu : public SmartNode
 {
 public:
-	static FilterMenu* create();
-
+	static FilterMenu* create(std::function<void()> onFilterChange);
+	
 	void focus();
 	void unfocus();
+	FilterEntry* getActiveFilter();
 
 protected:
 	void onEnter() override;
@@ -27,7 +28,7 @@ protected:
 
 private:
 	typedef SmartNode super;
-	FilterMenu();
+	FilterMenu(std::function<void()> onFilterChange);
 	~FilterMenu();
 
 	void scrollFilterUp();
@@ -43,6 +44,7 @@ private:
 
 	bool isFocused;
 	int filterSelectionIndex;
+	std::function<void()> onFilterChange;
 
 	static const float LabelSpacing;
 };

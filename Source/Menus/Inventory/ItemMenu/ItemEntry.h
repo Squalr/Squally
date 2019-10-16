@@ -8,12 +8,14 @@ namespace cocos2d
 }
 
 class Item;
-class LocalizedLabel;
-class LocalizedString;
 
 class ItemEntry : public MenuEntry
 {
 public:
+	static ItemEntry* create(LocalizedString* text, std::string spriteResource = "");
+
+	void setToggleCallback(std::function<void()> onToggle);
+	std::function<void()> getToggleCallback();
 
 protected:
 	ItemEntry(LocalizedString* text, std::string spriteResource);
@@ -22,5 +24,7 @@ protected:
 private:
 	typedef MenuEntry super;
 
-	std::function<void()> onToggle();
+	Item* associatedItem;
+	
+	std::function<void()> onToggle;
 };

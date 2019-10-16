@@ -20,19 +20,20 @@ using namespace cocos2d;
 
 const float FilterMenu::LabelSpacing = 96.0f;
 
-FilterMenu* FilterMenu::create()
+FilterMenu* FilterMenu::create(std::function<void()> onFilterChange)
 {
-	FilterMenu* itemPreview = new FilterMenu();
+	FilterMenu* itemPreview = new FilterMenu(onFilterChange);
 
 	itemPreview->autorelease();
 
 	return itemPreview;
 }
 
-FilterMenu::FilterMenu()
+FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 {
 	this->isFocused = true;
 	this->filterSelectionIndex = 0;
+	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
 	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
@@ -106,6 +107,11 @@ void FilterMenu::unfocus()
 	this->selectedFilterRowInactive->setVisible(true);
 }
 
+FilterEntry* FilterMenu::getActiveFilter()
+{
+	return this->filters[this->filterSelectionIndex];
+}
+
 void FilterMenu::scrollFilterUp()
 {
 	if (!this->isFocused)
@@ -113,8 +119,14 @@ void FilterMenu::scrollFilterUp()
 		return;
 	}
 
+	int previousIndex = this->filterSelectionIndex;
 	this->filterSelectionIndex = MathUtils::clamp(this->filterSelectionIndex - 1, 0, this->filters.size() - 1);
 	this->positionFilterText();
+
+	if (previousIndex != this->filterSelectionIndex && this->onFilterChange != nullptr)
+	{
+		this->onFilterChange();
+	}
 }
 
 void FilterMenu::scrollFilterDown()
@@ -124,8 +136,14 @@ void FilterMenu::scrollFilterDown()
 		return;
 	}
 
+	int previousIndex = this->filterSelectionIndex;
 	this->filterSelectionIndex = MathUtils::clamp(this->filterSelectionIndex + 1, 0, this->filters.size() - 1);
 	this->positionFilterText();
+
+	if (previousIndex != this->filterSelectionIndex && this->onFilterChange != nullptr)
+	{
+		this->onFilterChange();
+	}
 }
 
 void FilterMenu::positionFilterText()

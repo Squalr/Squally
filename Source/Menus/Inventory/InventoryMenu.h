@@ -37,6 +37,8 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onFilterChange();
+	void populateItemList();
 
 	cocos2d::Sprite* inventoryWindow;
 	LocalizedLabel* inventoryLabel;
