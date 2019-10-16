@@ -11,6 +11,7 @@
 #include "Menus/Inventory/FilterMenu/ConsumablesFilter.h"
 #include "Menus/Inventory/FilterMenu/CraftingFilter.h"
 #include "Menus/Inventory/FilterMenu/EquipmentFilter.h"
+#include "Menus/Inventory/FilterMenu/HexusFilter.h"
 #include "Menus/Inventory/FilterMenu/MiscFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
@@ -41,10 +42,11 @@ FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
 
 	this->filters.push_back(AllFilter::create());
-	this->filters.push_back(ConsumablesFilter::create());
-	this->filters.push_back(CraftingFilter::create());
 	this->filters.push_back(EquipmentFilter::create());
+	this->filters.push_back(CraftingFilter::create());
+	this->filters.push_back(ConsumablesFilter::create());
 	this->filters.push_back(MiscFilter::create());
+	this->filters.push_back(HexusFilter::create());
 
 	for (auto it = this->filters.begin(); it != this->filters.end(); it++)
 	{

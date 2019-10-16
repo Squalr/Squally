@@ -1,11 +1,6 @@
 #include "ConsumablesFilter.h"
 
-#include "cocos/2d/CCSprite.h"
-
-#include "Engine/Inventory/Item.h"
-#include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 
 #include "Resources/UIResources.h"
 
@@ -42,5 +37,16 @@ void ConsumablesFilter::initializePositions()
 
 std::vector<Item*> ConsumablesFilter::filter(std::vector<Item*> itemList)
 {
+	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
+		[=](Item* item)
+	{
+		if (dynamic_cast<Consumable*>(item) != nullptr)
+		{
+			return false;
+		}
+
+		return true; 
+	}), itemList.end());
+
 	return itemList;
 }

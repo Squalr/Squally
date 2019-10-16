@@ -65,5 +65,4 @@ private:
 
 	static const float LabelSpacing;
 	static const cocos2d::Size LabelSize;
-	static const int MinHexusCards;
 };

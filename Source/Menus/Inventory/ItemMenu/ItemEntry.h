@@ -23,8 +23,6 @@ protected:
 
 private:
 	typedef MenuEntry super;
-
-	Item* associatedItem;
 	
 	std::function<void()> onToggle;
 };

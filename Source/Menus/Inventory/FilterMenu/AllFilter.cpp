@@ -1,11 +1,6 @@
 #include "AllFilter.h"
 
-#include "cocos/2d/CCSprite.h"
-
-#include "Engine/Inventory/Item.h"
-#include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"
 
@@ -42,5 +37,16 @@ void AllFilter::initializePositions()
 
 std::vector<Item*> AllFilter::filter(std::vector<Item*> itemList)
 {
+	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
+		[=](Item* item)
+	{
+		if (dynamic_cast<HexusCard*>(item) != nullptr)
+		{
+			return true;
+		}
+
+		return false; 
+	}), itemList.end());
+
 	return itemList;
 }

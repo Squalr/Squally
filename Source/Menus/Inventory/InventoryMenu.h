@@ -14,6 +14,7 @@ class ClickableNode;
 class ClickableTextNode;
 class CurrencyInventory;
 class EquipmentInventory;
+class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;
@@ -39,6 +40,12 @@ private:
 	void initializeListeners() override;
 	void onFilterChange();
 	void populateItemList();
+	void performEquipmentAction(Item* item);
+	void performInventoryAction(Item* item);
+	void equipHexusCard(Item* card);
+	void unequipHexusCard(Item* card);
+	void equipItem(Item* item);
+	void unequipItem(Item* item);
 
 	cocos2d::Sprite* inventoryWindow;
 	LocalizedLabel* inventoryLabel;
@@ -52,4 +59,7 @@ private:
 	Inventory* inventory;
 
 	std::function<void()> returnClickCallback;
+
+	static const int MinHexusCards;
+	static const int MaxHexusCards;
 };

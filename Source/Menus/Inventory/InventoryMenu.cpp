@@ -10,12 +10,18 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/FilterMenu/FilterEntry.h"
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -25,6 +31,9 @@
 #include "Strings/Menus/Return.h"
 
 using namespace cocos2d;
+
+const int InventoryMenu::MinHexusCards = 20;
+const int InventoryMenu::MaxHexusCards = 60;
 
 InventoryMenu* InventoryMenu::create()
 {
@@ -171,9 +180,11 @@ void InventoryMenu::populateItemList()
 	
 	for (auto it = equipment.begin(); it != equipment.end(); it++)
 	{
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(*it, [=]()
+		Item* item = *it;
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
-			
+			this->performEquipmentAction(item);
 		});
 
 		entry->showIcon();
@@ -181,9 +192,11 @@ void InventoryMenu::populateItemList()
 	
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(*it, [=]()
+		Item* item = *it;
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
-			
+			this->performInventoryAction(item);
 		});
 
 		entry->hideIcon();
@@ -200,4 +213,141 @@ void InventoryMenu::open()
 void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
 {
 	this->returnClickCallback = returnClickCallback;
+}
+
+void InventoryMenu::performEquipmentAction(Item* item)
+{
+	if (dynamic_cast<HexusCard*>(item) != nullptr)
+	{
+		this->unequipHexusCard(item);
+	}
+
+	this->populateItemList();
+}
+
+void InventoryMenu::performInventoryAction(Item* item)
+{
+	if (dynamic_cast<HexusCard*>(item) != nullptr)
+	{
+		this->equipHexusCard(item);
+	}
+
+	this->populateItemList();
+}
+
+void InventoryMenu::equipHexusCard(Item* card)
+{
+	if (this->equipmentInventory->getHexusCards().size() >= InventoryMenu::MaxHexusCards)
+	{
+		return;
+	}
+
+	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
+	{
+		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error equipping card!");
+
+		if (item != nullptr)
+		{
+			LogUtils::logError(item->getName());
+		}
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
+}
+
+void InventoryMenu::unequipHexusCard(Item* card)
+{
+	if (this->equipmentInventory->getHexusCards().size() <= InventoryMenu::MinHexusCards)
+	{
+		return;
+	}
+
+	this->equipmentInventory->tryTransact(this->inventory, card, nullptr, [=](Item* item, Item* otherItem)
+	{
+		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
+		this->inventory->moveItem(item, 0);
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error unequipping card!");
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
+}
+
+void InventoryMenu::equipItem(Item* item)
+{
+	Item* equippedItem = nullptr;
+
+	if (dynamic_cast<Hat*>(item))
+	{
+		equippedItem = this->equipmentInventory->getHat();
+	}
+	else if (dynamic_cast<Weapon*>(item))
+	{
+		equippedItem = this->equipmentInventory->getWeapon();
+	}
+	else if (dynamic_cast<Offhand*>(item))
+	{
+		equippedItem = this->equipmentInventory->getOffhand();
+	}
+	
+	this->inventory->tryTransact(this->equipmentInventory, item, equippedItem, [=](Item* item, Item* otherItem)
+	{
+		// Success equipping item. Adjust final position if equipping an item without a swap
+		if (otherItem == nullptr)
+		{
+			this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
+		}
+
+		PlatformerEvents::TriggerEquippedItemsChanged();
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error equipping item!");
+
+		if (item != nullptr)
+		{
+			LogUtils::logError(item->getName());
+		}
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
+}
+
+void InventoryMenu::unequipItem(Item* item)
+{
+	this->equipmentInventory->tryTransact(this->inventory, item, nullptr, [=](Item* item, Item* otherItem)
+	{
+		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
+		this->inventory->moveItem(item, 0);
+
+		PlatformerEvents::TriggerEquippedItemsChanged();
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error unequipping item!");
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
 }
