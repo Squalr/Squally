@@ -10,17 +10,18 @@
 
 using namespace cocos2d;
 
-ItemEntry* ItemEntry::create(LocalizedString* text, std::string spriteResource)
+ItemEntry* ItemEntry::create(Item* associatedItem, LocalizedString* text, std::string spriteResource)
 {
-    ItemEntry* instance = new ItemEntry(text, spriteResource);
+    ItemEntry* instance = new ItemEntry(associatedItem, text, spriteResource);
 
     instance->autorelease();
 
     return instance;
 }
 
-ItemEntry::ItemEntry(LocalizedString* text, std::string spriteResource) : super(text, spriteResource)
+ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource) : super(text, spriteResource)
 {
+    this->associatedItem = associatedItem;
     this->onToggle = nullptr;
     this->hideIcon();
 }
@@ -37,4 +38,9 @@ void ItemEntry::setToggleCallback(std::function<void()> onToggle)
 std::function<void()> ItemEntry::getToggleCallback()
 {
     return this->onToggle;
+}
+
+Item* ItemEntry::getAssociatedItem()
+{
+    return this->associatedItem;
 }

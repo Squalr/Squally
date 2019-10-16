@@ -55,6 +55,7 @@ InventoryMenu::InventoryMenu()
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
+	this->equipmentChanged = false;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -124,18 +125,12 @@ void InventoryMenu::initializeListeners()
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->close();
 	});
 
 	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
@@ -147,11 +142,7 @@ void InventoryMenu::initializeListeners()
 		}
 		
 		args->handle();
-
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->close();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
@@ -170,6 +161,7 @@ void InventoryMenu::initializeListeners()
 void InventoryMenu::onFilterChange()
 {
 	this->populateItemList();
+	this->itemMenu->clearPreview();
 }
 
 void InventoryMenu::populateItemList()
@@ -207,6 +199,7 @@ void InventoryMenu::populateItemList()
 
 void InventoryMenu::open()
 {
+	this->equipmentChanged = false;
 	this->onFilterChange();
 }
 
@@ -221,8 +214,10 @@ void InventoryMenu::performEquipmentAction(Item* item)
 	{
 		this->unequipHexusCard(item);
 	}
-
-	this->populateItemList();
+	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	{
+		this->unequipItem(item);
+	}
 }
 
 void InventoryMenu::performInventoryAction(Item* item)
@@ -231,8 +226,10 @@ void InventoryMenu::performInventoryAction(Item* item)
 	{
 		this->equipHexusCard(item);
 	}
-
-	this->populateItemList();
+	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	{
+		this->equipItem(item);
+	}
 }
 
 void InventoryMenu::equipHexusCard(Item* card)
@@ -245,6 +242,8 @@ void InventoryMenu::equipHexusCard(Item* card)
 	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
 	{
 		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
+
+		this->populateItemList();
 	},
 	[=](Item* item, Item* otherItem)
 	{
@@ -274,6 +273,8 @@ void InventoryMenu::unequipHexusCard(Item* card)
 	{
 		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
 		this->inventory->moveItem(item, 0);
+
+		this->populateItemList();
 	},
 	[=](Item* item, Item* otherItem)
 	{
@@ -312,7 +313,8 @@ void InventoryMenu::equipItem(Item* item)
 			this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
 		}
 
-		PlatformerEvents::TriggerEquippedItemsChanged();
+		this->populateItemList();
+		this->equipmentChanged = true;
 	},
 	[=](Item* item, Item* otherItem)
 	{
@@ -337,8 +339,9 @@ void InventoryMenu::unequipItem(Item* item)
 	{
 		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
 		this->inventory->moveItem(item, 0);
-
-		PlatformerEvents::TriggerEquippedItemsChanged();
+		
+		this->populateItemList();
+		this->equipmentChanged = true;
 	},
 	[=](Item* item, Item* otherItem)
 	{
@@ -350,4 +353,17 @@ void InventoryMenu::unequipItem(Item* item)
 			LogUtils::logError(otherItem->getName());
 		}
 	});
+}
+
+void InventoryMenu::close()
+{
+	if (this->equipmentChanged)
+	{
+		PlatformerEvents::TriggerEquippedItemsChanged();
+	}
+	
+	if (this->returnClickCallback != nullptr)
+	{
+		this->returnClickCallback();
+	}
 }

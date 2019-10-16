@@ -12,17 +12,20 @@ class Item;
 class ItemEntry : public MenuEntry
 {
 public:
-	static ItemEntry* create(LocalizedString* text, std::string spriteResource = "");
+	static ItemEntry* create(Item* associatedItem, LocalizedString* text, std::string spriteResource = "");
 
 	void setToggleCallback(std::function<void()> onToggle);
 	std::function<void()> getToggleCallback();
+	Item* getAssociatedItem();
 
 protected:
-	ItemEntry(LocalizedString* text, std::string spriteResource);
+	ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource);
 	~ItemEntry();
 
 private:
 	typedef MenuEntry super;
+
+	Item* associatedItem;
 	
 	std::function<void()> onToggle;
 };

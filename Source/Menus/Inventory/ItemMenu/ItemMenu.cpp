@@ -123,6 +123,11 @@ void ItemMenu::initializeListeners()
 	});
 }
 
+void ItemMenu::clearPreview()
+{
+	this->itemPreview->preview(nullptr);
+}
+
 void ItemMenu::clearVisibleItems()
 {
 	for (auto it = this->itemEntryMapping.begin(); it != itemEntryMapping.end(); it++)
@@ -142,15 +147,15 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 		
 		if (dynamic_cast<HexusCard*>(visibleItem) != nullptr)
 		{
-			itemEntry = ItemEntry::create(visibleItem->getString(), UIResources::Menus_InventoryMenu_HexusIcon);
+			itemEntry = ItemEntry::create(visibleItem, visibleItem->getString(), UIResources::Menus_InventoryMenu_HexusIcon);
 		}
 		else if (dynamic_cast<Equipable*>(visibleItem) != nullptr)
 		{
-			itemEntry = ItemEntry::create(visibleItem->getString(), UIResources::Menus_InventoryMenu_EquippedIcon);
+			itemEntry = ItemEntry::create(visibleItem, visibleItem->getString(), UIResources::Menus_InventoryMenu_EquippedIcon);
 		}
 		else
 		{
-			itemEntry = ItemEntry::create(visibleItem->getString());
+			itemEntry = ItemEntry::create(visibleItem, visibleItem->getString());
 		}
 
 		this->itemEntryMapping[visibleItem] = itemEntry;
@@ -182,7 +187,8 @@ void ItemMenu::unfocus()
 	this->isFocused = false;
 	this->inventorySelectionArrow->setVisible(false);
 	this->selectedInventoryRow->setVisible(false);
-
+	this->clearPreview();
+	
 	this->updateAndPositionItemText();
 }
 
@@ -236,6 +242,7 @@ void ItemMenu::updateAndPositionItemText()
 	const float YOffset = 6.0f;
 	const float ZOffset = 128.0f;
 	
+	this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
 	this->visibleItems[this->selectedItemIndex]->setPositionX(XOffset);
 	this->visibleItems[this->selectedItemIndex]->setPositionY(this->visibleItems[this->selectedItemIndex]->getPositionY() + YOffset);
 	this->visibleItems[this->selectedItemIndex]->setPositionZ(ZOffset);

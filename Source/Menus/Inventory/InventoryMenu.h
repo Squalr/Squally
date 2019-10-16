@@ -46,6 +46,7 @@ private:
 	void unequipHexusCard(Item* card);
 	void equipItem(Item* item);
 	void unequipItem(Item* item);
+	void close();
 
 	cocos2d::Sprite* inventoryWindow;
 	LocalizedLabel* inventoryLabel;
@@ -59,6 +60,7 @@ private:
 	Inventory* inventory;
 
 	std::function<void()> returnClickCallback;
+	bool equipmentChanged;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

@@ -29,6 +29,7 @@ class ItemMenu : public SmartNode
 public:
 	static ItemMenu* create();
 
+	void clearPreview();
 	void clearVisibleItems();
 	ItemEntry* pushVisibleItem(Item* visibleItem, std::function<void()> onToggle);
 	void updateAndPositionItemText();
