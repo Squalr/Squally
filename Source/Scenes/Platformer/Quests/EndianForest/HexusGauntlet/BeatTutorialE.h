@@ -4,7 +4,7 @@
 
 class HexusOpponentData;
 class MagePortal;
-class Marcel;
+class PlatformerEntity;
 class QuestLine;
 class Squally;
 
@@ -34,7 +34,7 @@ private:
 	void onLoss();
 
 	MagePortal* portal;
-	Marcel* marcel;
+	PlatformerEntity* mage;
 	Squally* squally;
 
 	static const std::string QuestPortalTag;

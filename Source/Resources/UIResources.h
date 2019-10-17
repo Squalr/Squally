@@ -333,7 +333,6 @@ namespace UIResources
 	extern const std::string Menus_InventoryMenu_ConsumablesIcon;
 	extern const std::string Menus_InventoryMenu_CraftingIcon;
 	extern const std::string Menus_InventoryMenu_EquipmentIcon;
-	extern const std::string Menus_InventoryMenu_EquipmentMenu;
 	extern const std::string Menus_InventoryMenu_EquippedIcon;
 	extern const std::string Menus_InventoryMenu_HexusIcon;
 	extern const std::string Menus_InventoryMenu_InventoryMenu;

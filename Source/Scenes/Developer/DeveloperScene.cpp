@@ -43,20 +43,20 @@ DeveloperScene::DeveloperScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
-	this->chapterList.push_back(this->buildDebugButton(MapResources::Dev_Cages));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::Dev_Quests));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Main));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_Entrance));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_1));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Gauntlet_6));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Mages_Guild));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Prison));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Inn));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Alch));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Town_Docks));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Intro));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_0));
-	this->chapterList.push_back(this->buildDebugButton(MapResources::EndianForest_Zone_1_1));
+	this->chapterList.push_back(this->buildDebugButton("Cages", MapResources::Dev_Cages));
+	this->chapterList.push_back(this->buildDebugButton("Quests", MapResources::Dev_Quests));
+	this->chapterList.push_back(this->buildDebugButton("Town", MapResources::EndianForest_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Prison", MapResources::EndianForest_Mages_Prison));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Guild",MapResources::EndianForest_Mages_Guild));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::EndianForest_Mages_Gauntlet_Entrance));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::EndianForest_Mages_Gauntlet_1));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #6", MapResources::EndianForest_Mages_Gauntlet_6));
+	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
+	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
+	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("Intro", MapResources::EndianForest_Intro));
+	this->chapterList.push_back(this->buildDebugButton("Zone 1_0 (EF)", MapResources::EndianForest_Zone_1_0));
+	this->chapterList.push_back(this->buildDebugButton("Zone 1_1 (EF)", MapResources::EndianForest_Zone_1_1));
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
 	{
@@ -87,7 +87,7 @@ void DeveloperScene::initializePositions()
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 160.0f));
+		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
 	}
 }
 
@@ -108,9 +108,9 @@ void DeveloperScene::initializeListeners()
 	});
 }
 
-ClickableTextNode* DeveloperScene::buildDebugButton(std::string mapResource)
+ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std::string mapResource)
 {
-	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, ConstantString::create(mapResource));
+	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, ConstantString::create(displayName));
 	LocalizedLabel* labelSelected = label->clone();
 
 	label->enableOutline(Color4B::BLACK, 2);

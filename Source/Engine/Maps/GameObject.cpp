@@ -347,6 +347,29 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 	}));
 }
 
+void GameObject::listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite)
+{
+	static unsigned int UniqueCounter = 0;
+	const std::string eventKey = key + "_" + std::to_string((unsigned long long)(this));
+	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
+
+	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
+	{
+		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->removeEventListenerByTag(uniqueKey);
+			
+			onWrite(args->value);
+		}
+	});
+
+	listener->setTag(uniqueKey);
+
+	this->addEventListenerIgnorePause(listener);
+}
+
 void GameObject::onObjectStateLoaded()
 {
 }

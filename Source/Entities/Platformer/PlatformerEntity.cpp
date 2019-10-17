@@ -101,7 +101,9 @@ void PlatformerEntity::initializePositions()
 {
 	super::initializePositions();
 
-	this->speechBubble->setPositionY(this->entitySize.height / 2.0f + 16.0f);
+	Vec2 offset = this->getCollisionOffset() + Vec2(0.0f, this->getEntitySize().height + this->getHoverHeight() / 2.0f + 16.0f);
+
+	this->speechBubble->setPosition(offset);
 }
 
 void PlatformerEntity::initializeListeners()

@@ -12,7 +12,6 @@
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HexusEvents.h"
@@ -47,7 +46,7 @@ BeatTutorialF* BeatTutorialF::create(GameObject* owner, QuestLine* questLine,  s
 
 BeatTutorialF::BeatTutorialF(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialF::MapKeyQuest, questTag, false)
 {
-	this->igneus = nullptr;
+	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->portal = nullptr;
 }
@@ -58,11 +57,6 @@ BeatTutorialF::~BeatTutorialF()
 
 void BeatTutorialF::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
-	{
-		this->igneus = igneus;
-	});
-
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -85,7 +79,7 @@ void BeatTutorialF::onLoad(QuestState questState)
 
 void BeatTutorialF::onActivate(bool isActiveThroughSkippable)
 {
-	this->igneus->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	this->mage->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -126,7 +120,7 @@ void BeatTutorialF::registerDialogue()
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->igneus, false),
+				DialogueEvents::BuildPreviewNode(this->mage, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
@@ -148,7 +142,7 @@ HexusOpponentData* BeatTutorialF::createOpponentData()
 {
     return HexusOpponentData::create( 
         // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
-        this->igneus->getAnimations()->getAnimationResource(),
+        this->mage->getAnimations()->getAnimationResource(),
         HexusResources::Menus_HexusFrameCastleValgrind,
         1.0f,
         Vec2(-32.0f, -64.0f),

@@ -168,6 +168,19 @@ void SmartNode::removeEventListener(EventListener* listener)
 	this->getEventDispatcher()->removeEventListener(listener);
 }
 
+void SmartNode::removeEventListenerByTag(std::string tag)
+{
+	if (tag.empty())
+	{
+		return;
+	}
+
+	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	{
+		return listener->getTag() == tag;
+	});
+}
+
 void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 {
 	if (listener == nullptr)
@@ -183,10 +196,12 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 		}
 	});
 
+	wrapper->setTag(listener->getTag());
 	wrapper->setIgnorePause(true);
 
 	// Keep the original listener around so that we can invoke it, but disable it
 	listener->setEnabled(false);
+	listener->setTag("");
 
 	this->addEventListener(wrapper);
 	this->addEventListener(listener);

@@ -47,7 +47,7 @@ BeatTutorialA* BeatTutorialA::create(GameObject* owner, QuestLine* questLine,  s
 
 BeatTutorialA::BeatTutorialA(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialA::MapKeyQuest, questTag, false)
 {
-	this->alder = nullptr;
+	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->portal = nullptr;
 }
@@ -58,11 +58,6 @@ BeatTutorialA::~BeatTutorialA()
 
 void BeatTutorialA::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
-	{
-		this->alder = alder;
-	});
-
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -85,7 +80,7 @@ void BeatTutorialA::onLoad(QuestState questState)
 
 void BeatTutorialA::onActivate(bool isActiveThroughSkippable)
 {
-	this->alder->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	this->mage->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -126,7 +121,7 @@ void BeatTutorialA::registerDialogue()
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->alder, false),
+				DialogueEvents::BuildPreviewNode(this->mage, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
@@ -148,7 +143,7 @@ HexusOpponentData* BeatTutorialA::createOpponentData()
 {
     return HexusOpponentData::create( 
         // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
-        this->alder->getAnimations()->getAnimationResource(),
+        this->mage->getAnimations()->getAnimationResource(),
         HexusResources::Menus_HexusFrameCastleValgrind,
         1.0f,
         Vec2(-32.0f, -64.0f),

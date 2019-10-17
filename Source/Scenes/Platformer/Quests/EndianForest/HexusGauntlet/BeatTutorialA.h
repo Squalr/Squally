@@ -2,9 +2,9 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Alder;
 class HexusOpponentData;
 class MagePortal;
+class PlatformerEntity;
 class QuestLine;
 class Squally;
 
@@ -34,7 +34,7 @@ private:
 	void onLoss();
 
 	MagePortal* portal;
-	Alder* alder;
+	PlatformerEntity* mage;
 	Squally* squally;
 
 	static const std::string QuestPortalTag;

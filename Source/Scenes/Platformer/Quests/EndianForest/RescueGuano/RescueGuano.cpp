@@ -86,7 +86,7 @@ void RescueGuano::runRescueSequence()
 		this->guano->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 	}, RescueGuano::TagPrisonDoor);
 
-	this->guano->listenForStateWrite(StateKeys::CinematicDestinationReached, [=](Value value)
+	this->guano->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 	{
 		this->runRescueSequencePt2();
 	});

@@ -12,7 +12,7 @@
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Cypress.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HexusEvents.h"
@@ -47,7 +47,7 @@ BeatTutorialD* BeatTutorialD::create(GameObject* owner, QuestLine* questLine,  s
 
 BeatTutorialD::BeatTutorialD(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialD::MapKeyQuest, questTag, false)
 {
-	this->merlin = nullptr;
+	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->portal = nullptr;
 }
@@ -58,11 +58,6 @@ BeatTutorialD::~BeatTutorialD()
 
 void BeatTutorialD::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
-	{
-		this->merlin = merlin;
-	});
-
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -85,7 +80,7 @@ void BeatTutorialD::onLoad(QuestState questState)
 
 void BeatTutorialD::onActivate(bool isActiveThroughSkippable)
 {
-	this->merlin->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	this->mage->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -126,7 +121,7 @@ void BeatTutorialD::registerDialogue()
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->merlin, false),
+				DialogueEvents::BuildPreviewNode(this->mage, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
@@ -148,7 +143,7 @@ HexusOpponentData* BeatTutorialD::createOpponentData()
 {
     return HexusOpponentData::create( 
         // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
-        this->merlin->getAnimations()->getAnimationResource(),
+        this->mage->getAnimations()->getAnimationResource(),
         HexusResources::Menus_HexusFrameCastleValgrind,
         1.0f,
         Vec2(-32.0f, -64.0f),

@@ -521,6 +521,7 @@ const std::string DecorResources::Generic_Background_Fog1 = "Private/Platformer/
 const std::string DecorResources::Generic_Background_Fog2 = "Private/Platformer/Decor/Generic/Background/Fog2.png";
 const std::string DecorResources::Generic_Background_Fog3 = "Private/Platformer/Decor/Generic/Background/Fog3.png";
 const std::string DecorResources::Generic_Background_Fog4 = "Private/Platformer/Decor/Generic/Background/Fog4.png";
+const std::string DecorResources::Generic_Background_Jail = "Private/Platformer/Decor/Generic/Background/Jail.png";
 const std::string DecorResources::Generic_Background_Moon = "Private/Platformer/Decor/Generic/Background/Moon.png";
 const std::string DecorResources::Generic_Background_sun = "Private/Platformer/Decor/Generic/Background/sun.png";
 const std::string DecorResources::Generic_Bed = "Private/Platformer/Decor/Generic/Bed.png";

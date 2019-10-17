@@ -47,7 +47,7 @@ BeatTutorialE* BeatTutorialE::create(GameObject* owner, QuestLine* questLine,  s
 
 BeatTutorialE::BeatTutorialE(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialE::MapKeyQuest, questTag, false)
 {
-	this->marcel = nullptr;
+	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;
 	this->portal = nullptr;
 }
@@ -58,11 +58,6 @@ BeatTutorialE::~BeatTutorialE()
 
 void BeatTutorialE::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
-	{
-		this->marcel = marcel;
-	});
-
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -85,7 +80,7 @@ void BeatTutorialE::onLoad(QuestState questState)
 
 void BeatTutorialE::onActivate(bool isActiveThroughSkippable)
 {
-	this->marcel->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
+	this->mage->watchForAttachedBehavior<NpcDialogueBehavior>([=](NpcDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -126,7 +121,7 @@ void BeatTutorialE::registerDialogue()
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
+				DialogueEvents::BuildPreviewNode(this->mage, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
@@ -148,7 +143,7 @@ HexusOpponentData* BeatTutorialE::createOpponentData()
 {
     return HexusOpponentData::create( 
         // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
-        this->marcel->getAnimations()->getAnimationResource(),
+        this->mage->getAnimations()->getAnimationResource(),
         HexusResources::Menus_HexusFrameCastleValgrind,
         1.0f,
         Vec2(-32.0f, -64.0f),

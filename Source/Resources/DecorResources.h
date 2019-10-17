@@ -522,6 +522,7 @@ namespace DecorResources
 	extern const std::string Generic_Background_Fog2;
 	extern const std::string Generic_Background_Fog3;
 	extern const std::string Generic_Background_Fog4;
+	extern const std::string Generic_Background_Jail;
 	extern const std::string Generic_Background_Moon;
 	extern const std::string Generic_Background_sun;
 	extern const std::string Generic_Bed;
