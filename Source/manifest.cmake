@@ -2571,6 +2571,7 @@ set(GAME_SOURCES
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipAltTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipTerrain.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/TempleTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.cpp"
 )
@@ -5193,6 +5194,7 @@ set(GAME_HEADERS
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShadeGrassTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipAltTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/ShipTerrain.h"
+    "${CMAKE_CURRENT_LIST_DIR}/Terrain/TempleTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/TrailTerrain.h"
     "${CMAKE_CURRENT_LIST_DIR}/Terrain/WoodTerrain.h"
 )

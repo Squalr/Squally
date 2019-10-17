@@ -24,7 +24,6 @@ namespace MapResources
 	extern const std::string EndianForest_Mages_Gauntlet_Entrance;
 	extern const std::string EndianForest_Mages_Guild;
 	extern const std::string EndianForest_Mages_Prison;
-	extern const std::string EndianForest_Mages_Prison_old;
 	extern const std::string EndianForest_Town_Alch;
 	extern const std::string EndianForest_Town_Docks;
 	extern const std::string EndianForest_Town_Inn;

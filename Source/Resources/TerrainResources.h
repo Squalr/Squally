@@ -168,7 +168,15 @@ namespace TerrainResources
 	extern const std::string ShipAlt_ShipAltTexture;
 	extern const std::string ShipAlt_ShipAltTopLeft;
 	extern const std::string ShipAlt_ShipAltTopRight;
+	extern const std::string Temple_Temple;
+	extern const std::string Temple_TempleBottom;
+	extern const std::string Temple_TempleBottomLeft;
+	extern const std::string Temple_TempleBottomRight;
+	extern const std::string Temple_TempleLeft;
+	extern const std::string Temple_TempleRight;
 	extern const std::string Temple_TempleTexture;
+	extern const std::string Temple_TempleTopLeft;
+	extern const std::string Temple_TempleTopRight;
 	extern const std::string Trail_Trail;
 	extern const std::string Trail_TrailBottom;
 	extern const std::string Trail_TrailBottomLeft;
