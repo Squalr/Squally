@@ -105,6 +105,15 @@ namespace TerrainResources
 	extern const std::string Jungle_JungleTexture;
 	extern const std::string Jungle_JungleTopLeft;
 	extern const std::string Jungle_JungleTopRight;
+	extern const std::string Lava_Lava;
+	extern const std::string Lava_LavaBottom;
+	extern const std::string Lava_LavaBottomLeft;
+	extern const std::string Lava_LavaBottomRight;
+	extern const std::string Lava_LavaLeft;
+	extern const std::string Lava_LavaRight;
+	extern const std::string Lava_LavaTexture;
+	extern const std::string Lava_LavaTopLeft;
+	extern const std::string Lava_LavaTopRight;
 	extern const std::string Leaf_Leaf;
 	extern const std::string Leaf_LeafBottom;
 	extern const std::string Leaf_LeafBottomLeft;

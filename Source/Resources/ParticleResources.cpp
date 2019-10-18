@@ -56,6 +56,7 @@ const std::string ParticleResources::Hexus_WhiteAura = "Public/Particles/Hexus/W
 const std::string ParticleResources::Hover = "Public/Particles/Hover.plist";
 const std::string ParticleResources::ItemGlow = "Public/Particles/ItemGlow.plist";
 const std::string ParticleResources::MindBlast = "Public/Particles/MindBlast.plist";
+const std::string ParticleResources::Objects_MagicWall = "Public/Particles/Objects/MagicWall.plist";
 const std::string ParticleResources::Objects_Smoke = "Public/Particles/Objects/Smoke.plist";
 const std::string ParticleResources::Poison = "Public/Particles/Poison.plist";
 const std::string ParticleResources::Portals_DarkPortal = "Public/Particles/Portals/DarkPortal.plist";

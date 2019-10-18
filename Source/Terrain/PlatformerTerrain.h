@@ -9,6 +9,7 @@
 #include "Terrain/GrassTerrain.h"
 #include "Terrain/IceTerrain.h"
 #include "Terrain/JungleTerrain.h"
+#include "Terrain/LavaTerrain.h"
 #include "Terrain/LeafTerrain.h"
 #include "Terrain/MarbleDarkTerrain.h"
 #include "Terrain/MarbleGrassTerrain.h"

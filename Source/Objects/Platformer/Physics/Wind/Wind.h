@@ -20,7 +20,7 @@ public:
 
 protected:
 	Wind(cocos2d::ValueMap& properties);
-	virtual ~Wind();
+	~Wind();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
