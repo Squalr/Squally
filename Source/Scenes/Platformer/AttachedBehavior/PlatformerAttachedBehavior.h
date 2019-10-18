@@ -2,6 +2,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoDefendBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoItemsBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/RestorePotionTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Enemies/AgroBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Enemies/EnemyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Enemies/EnemyCombatBehaviors.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityNoCollisionBehavior.h"

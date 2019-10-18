@@ -1,4 +1,4 @@
-#include "OrcGruntCombatBehavior.h"
+#include "GorgonCombatBehavior.h"
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -11,18 +11,18 @@
 
 using namespace cocos2d;
 	
-const std::string OrcGruntCombatBehavior::MapKeyAttachedBehavior = "orc-grunt";
+const std::string GorgonCombatBehavior::MapKeyAttachedBehavior = "gorgon";
 
-OrcGruntCombatBehavior* OrcGruntCombatBehavior::create(GameObject* owner)
+GorgonCombatBehavior* GorgonCombatBehavior::create(GameObject* owner)
 {
-	OrcGruntCombatBehavior* instance = new OrcGruntCombatBehavior(owner);
+	GorgonCombatBehavior* instance = new GorgonCombatBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OrcGruntCombatBehavior::OrcGruntCombatBehavior(GameObject* owner) : super(owner)
+GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEnemy*>(owner);
 
@@ -41,15 +41,15 @@ OrcGruntCombatBehavior::OrcGruntCombatBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-OrcGruntCombatBehavior::~OrcGruntCombatBehavior()
+GorgonCombatBehavior::~GorgonCombatBehavior()
 {
 }
 
-void OrcGruntCombatBehavior::initializePositions()
+void GorgonCombatBehavior::initializePositions()
 {
 }
 
-void OrcGruntCombatBehavior::onLoad()
+void GorgonCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{

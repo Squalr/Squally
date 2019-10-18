@@ -61,7 +61,14 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 
 void TrollInTheDungeon::onActivate(bool isActiveThroughSkippable)
 {
-	this->runChatSequence();
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			this->runChatSequence();
+		}),
+		nullptr
+	));
 }
 
 void TrollInTheDungeon::onComplete()
@@ -75,8 +82,6 @@ void TrollInTheDungeon::onSkipped()
 
 void TrollInTheDungeon::runChatSequence()
 {
-	PlatformerEvents::TriggerCinematicHijack();
-
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
@@ -85,6 +90,8 @@ void TrollInTheDungeon::runChatSequence()
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
 			this->mage->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create());
+			this->complete();
+			PlatformerEvents::TriggerCinematicRestore();
 
 			this->mage->runAction(Sequence::create(
 				DelayTime::create(2.0f),
@@ -108,16 +115,7 @@ void TrollInTheDungeon::runChatSequencePt2()
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
 			this->mage->runAction(FadeTo::create(0.5f, 0));
-			PlatformerEvents::TriggerCinematicRestore();
 		});
 
 	}, TrollInTheDungeon::TagExit);
-}
-
-void TrollInTheDungeon::runChatSequencePt3()
-{
-}
-
-void TrollInTheDungeon::runChatSequencePt4()
-{
 }

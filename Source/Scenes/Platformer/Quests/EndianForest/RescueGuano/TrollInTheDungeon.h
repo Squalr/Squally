@@ -27,8 +27,6 @@ private:
 
 	void runChatSequence();
 	void runChatSequencePt2();
-	void runChatSequencePt3();
-	void runChatSequencePt4();
 
 	PlatformerEntity* mage;
 	Squally* squally;
