@@ -3,7 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -24,9 +24,9 @@ FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 
 FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner)
 {
-	this->npc = dynamic_cast<PlatformerFriendly*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
-	if (this->npc == nullptr)
+	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
@@ -38,7 +38,7 @@ FriendlyCollisionBehavior::~FriendlyCollisionBehavior()
 
 void FriendlyCollisionBehavior::onLoad()
 {
-	this->npc->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 		{	

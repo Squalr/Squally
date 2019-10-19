@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/NpcCollisionBehavior.h"
 
 using namespace cocos2d;
 
@@ -20,6 +21,7 @@ EnemyBehaviorGroup* EnemyBehaviorGroup::create(GameObject* owner)
 EnemyBehaviorGroup::EnemyBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityBehaviorGroup::create(owner),
 	EnemyHealthBehavior::create(owner),
+	NpcCollisionBehavior::create(owner),
 	})
 {
 }

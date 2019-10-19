@@ -58,7 +58,7 @@ void NpcCollisionBehavior::onLoad()
 
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
 		{	
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
 	});
 }

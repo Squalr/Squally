@@ -79,6 +79,7 @@ public:
 	static const float DefaultMaxFallSpeed;
 	static const float DefaultHorizontalDampening;
 	static const float DefaultVerticalDampening;
+	static const float CollisionZThreshold;
 
 protected:
 	CollisionObject(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* initPhysicsBody,
@@ -103,6 +104,7 @@ private:
 	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 	void updateBinds();
+	bool isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData);
 
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;

@@ -25,6 +25,7 @@ const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
+const float CollisionObject::CollisionZThreshold = 8.0f;
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -380,6 +381,11 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
+
+	if (!this->isWithinZThreshold(contact, collisionData))
+	{
+		return false;
+	}
 	
 	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
 	{
@@ -392,6 +398,11 @@ bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
+
+	if (!this->isWithinZThreshold(contact, collisionData))
+	{
+		return false;
+	}
 
 	this->currentCollisions.erase(
 		std::remove(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other), this->currentCollisions.end()
@@ -427,16 +438,10 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 
 bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
-	const float CollisionDepthThreshold = 8.0f;
 	CollisionResult result = defaultResult;
 
-	if (collisionData.other != nullptr)
+	if (collisionData.other != nullptr && this->isWithinZThreshold(contact, collisionData))
 	{
-		if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(collisionData.other)) >= CollisionDepthThreshold)
-		{
-			return false;
-		}
-
 		CollisionType collisionType = collisionData.other->getCollisionType();
 
 		if (eventMap.find(collisionType) != eventMap.end())
@@ -490,4 +495,14 @@ void CollisionObject::updateBinds()
 	{
 		this->bindTarget->setPosition(this->getPosition());
 	}
+}
+
+bool CollisionObject::isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData)
+{
+	if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(collisionData.other)) >= CollisionObject::CollisionZThreshold)
+	{
+		return false;
+	}
+
+	return true;
 }

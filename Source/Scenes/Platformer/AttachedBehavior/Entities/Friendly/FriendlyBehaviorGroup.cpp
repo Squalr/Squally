@@ -1,9 +1,10 @@
 #include "FriendlyBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Collision/FriendlyCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/NpcCollisionBehavior.h"
 
 using namespace cocos2d;
 
@@ -22,6 +23,7 @@ FriendlyBehaviorGroup::FriendlyBehaviorGroup(GameObject* owner) : super(owner, {
 	FriendlyCollisionBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
 	EntityBehaviorGroup::create(owner),
+	NpcCollisionBehavior::create(owner),
 	})
 {
 }
