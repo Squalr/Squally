@@ -33,7 +33,7 @@
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"

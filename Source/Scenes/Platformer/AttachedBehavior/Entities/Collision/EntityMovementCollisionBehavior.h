@@ -16,6 +16,8 @@ public:
 	bool hasRightWallCollision();
 	
 	CollisionObject* movementCollision;
+	CollisionObject* leftCollision;
+	CollisionObject* rightCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -34,8 +36,6 @@ private:
 	void tryBind();
 
 	PlatformerEntity* entity;
-	CollisionObject* leftCollision;
-	CollisionObject* rightCollision;
 
 	bool movementCollisionBound;
 

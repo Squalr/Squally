@@ -17,8 +17,8 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Dialogue/NpcDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/Hexus/EndianForest/SarudeTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/SarudeTutorialBehavior.h"
 
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/IChallengeYou.h"
 

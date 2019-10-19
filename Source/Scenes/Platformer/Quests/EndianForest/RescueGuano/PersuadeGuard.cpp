@@ -19,7 +19,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Doors/PuzzleDoors/Gate/MulDoor/MulDoor.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/WeakMindedBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Npcs/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
