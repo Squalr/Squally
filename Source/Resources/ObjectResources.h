@@ -383,6 +383,14 @@ namespace ObjectResources
 	extern const std::string Items_Misc_CANDLE;
 	extern const std::string Items_Misc_CHEST;
 	extern const std::string Items_Misc_EYE;
+	extern const std::string Items_Misc_EssenceOfFire;
+	extern const std::string Items_Misc_EssenceOfFrost;
+	extern const std::string Items_Misc_EssenceOfLight;
+	extern const std::string Items_Misc_EssenceOfNature;
+	extern const std::string Items_Misc_EssenceOfShadow;
+	extern const std::string Items_Misc_EssenceOfThunder;
+	extern const std::string Items_Misc_EssenceOfUndeath;
+	extern const std::string Items_Misc_EssenceOfWind;
 	extern const std::string Items_Misc_Goblet;
 	extern const std::string Items_Misc_Hammer;
 	extern const std::string Items_Misc_Hourglass;

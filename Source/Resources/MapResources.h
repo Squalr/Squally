@@ -16,7 +16,6 @@ namespace MapResources
 	extern const std::string EndianForest_Intro;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
-	extern const std::string EndianForest_Mages_Gauntlet_2_old;
 	extern const std::string EndianForest_Mages_Gauntlet_3;
 	extern const std::string EndianForest_Mages_Gauntlet_4;
 	extern const std::string EndianForest_Mages_Gauntlet_5;

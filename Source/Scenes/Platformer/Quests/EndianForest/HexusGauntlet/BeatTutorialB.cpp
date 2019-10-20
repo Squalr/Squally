@@ -12,7 +12,6 @@
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HexusEvents.h"

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Entities_Names_Npcs_EndianForest_Appolo : public LocalizedString
+	class Platformer_Entities_Names_Npcs_VoidStar_Appolo : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Appolo* create();
+		static Platformer_Entities_Names_Npcs_VoidStar_Appolo* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_EndianForest_Appolo();
-		~Platformer_Entities_Names_Npcs_EndianForest_Appolo();
+		Platformer_Entities_Names_Npcs_VoidStar_Appolo();
+		~Platformer_Entities_Names_Npcs_VoidStar_Appolo();
 	};
 }

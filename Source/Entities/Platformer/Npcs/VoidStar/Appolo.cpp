@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Appolo.h"
+#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Appolo.h"
 
 using namespace cocos2d;
 
@@ -33,8 +33,8 @@ Appolo* Appolo::deserialize(ValueMap& properties)
 
 Appolo::Appolo(ValueMap& properties) : super(properties,
 	Appolo::MapKeyAppolo,
-	EntityResources::Npcs_EndianForest_Appolo_Animations,
-	EntityResources::Npcs_EndianForest_Appolo_Emblem,
+	EntityResources::Npcs_VoidStar_Appolo_Animations,
+	EntityResources::Npcs_VoidStar_Appolo_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -53,7 +53,7 @@ Vec2 Appolo::getDialogueOffset()
 
 LocalizedString* Appolo::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Appolo::create();
+	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Appolo::create();
 }
 
 HexusOpponentData* Appolo::getHexusOpponentData()
@@ -61,8 +61,8 @@ HexusOpponentData* Appolo::getHexusOpponentData()
 	if (Appolo::HexusOpponentDataInstance == nullptr)
 	{
 		Appolo::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Appolo_Animations,
-			HexusResources::Menus_HexusFrameEndianForest,
+			EntityResources::Npcs_VoidStar_Appolo_Animations,
+			HexusResources::Menus_HexusFrameVoidStar,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),

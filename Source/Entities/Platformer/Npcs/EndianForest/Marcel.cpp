@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Marcel.h"
+#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Marcel.h"
 
 using namespace cocos2d;
 
@@ -33,8 +33,8 @@ Marcel* Marcel::deserialize(ValueMap& properties)
 
 Marcel::Marcel(ValueMap& properties) : super(properties,
 	Marcel::MapKeyMarcel,
-	EntityResources::Npcs_VoidStar_Marcel_Animations,
-	EntityResources::Npcs_VoidStar_Marcel_Emblem,
+	EntityResources::Npcs_EndianForest_Marcel_Animations,
+	EntityResources::Npcs_EndianForest_Marcel_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
@@ -53,7 +53,7 @@ Vec2 Marcel::getDialogueOffset()
 
 LocalizedString* Marcel::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_VoidStar_Marcel::create();
+	return Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create();
 }
 
 HexusOpponentData* Marcel::getHexusOpponentData()
@@ -61,8 +61,8 @@ HexusOpponentData* Marcel::getHexusOpponentData()
 	if (Marcel::HexusOpponentDataInstance == nullptr)
 	{
 		Marcel::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Marcel_Animations,
-			HexusResources::Menus_HexusFrameVoidStar,
+			EntityResources::Npcs_EndianForest_Marcel_Animations,
+			HexusResources::Menus_HexusFrameEndianForest,
 			1.0f,
 			Vec2(0.0f, 0.0f),
 			Vec2(-48.0f, -144.0f),
