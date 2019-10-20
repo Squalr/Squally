@@ -210,6 +210,11 @@ void HackableObject::onHackerModeDisable()
 
 void HackableObject::onSensingEnable(int eq)
 {
+	if (!this->isHackable)
+	{
+		return;
+	}
+
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
 		if ((*it)->getRequiredEq() > eq)

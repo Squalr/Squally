@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors : public LocalizedString
+	class Platformer_Quests_EndianForest_RescueGuano_DoorTech : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors* create();
+		static Platformer_Quests_EndianForest_RescueGuano_DoorTech* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors();
-		~Platformer_Quests_EndianForest_RescueGuano_Lycan_BoredWithoutVisitors();
+		Platformer_Quests_EndianForest_RescueGuano_DoorTech();
+		~Platformer_Quests_EndianForest_RescueGuano_DoorTech();
 	};
 }
