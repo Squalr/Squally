@@ -111,26 +111,36 @@ void EntityMovementCollisionBehavior::update(float dt)
 
 Vec2 EntityMovementCollisionBehavior::getVelocity()
 {
-	return this->movementCollision->getVelocity();
+	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getVelocity();
 }
 
 void EntityMovementCollisionBehavior::setVelocity(Vec2 velocity)
 {
+	if (this->movementCollision == nullptr)
+	{
+		return;
+	}
+
 	this->movementCollision->setVelocity(velocity);
 }
 
 bool EntityMovementCollisionBehavior::hasLeftWallCollision()
 {
-	return !this->leftCollision->getCurrentCollisions().empty();
+	return this->leftCollision == nullptr ? false : !this->leftCollision->getCurrentCollisions().empty();
 }
 
 bool EntityMovementCollisionBehavior::hasRightWallCollision()
 {
-	return !this->rightCollision->getCurrentCollisions().empty();
+	return this->rightCollision == nullptr ? false : !this->rightCollision->getCurrentCollisions().empty();
 }
 
 void EntityMovementCollisionBehavior::buildMovementCollision()
 {
+	if (this->movementCollision == nullptr)
+	{
+		return;
+	}
+
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
@@ -239,7 +249,7 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 
 void EntityMovementCollisionBehavior::tryBind()
 {
-	if (!this->movementCollisionBound)
+	if (this->movementCollision != nullptr && !this->movementCollisionBound)
 	{
 		this->movementCollisionBound = true;
 		this->movementCollision->bindTo(this->entity);

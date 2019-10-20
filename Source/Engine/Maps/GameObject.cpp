@@ -448,7 +448,9 @@ std::string GameObject::getSendEvent()
 void GameObject::despawn()
 {
 	this->attachedBehaviorNode->removeAllChildren();
-	
+
+	ObjectEvents::TriggerObjectDespawning(ObjectEvents::ObjectDespawningArgs(this));
+
 	if (this->getParent() != nullptr)
 	{
 		this->getParent()->removeChild(this);

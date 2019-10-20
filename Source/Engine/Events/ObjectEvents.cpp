@@ -15,6 +15,7 @@ const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROA
 const std::string ObjectEvents::EventBindObjectToUI = "EVENT_BIND_OBJECT_TO_UI";
 const std::string ObjectEvents::EventUnbindObject = "EVENT_UNBIND_OBJECT";
 const std::string ObjectEvents::EventElevateObject = "EVENT_ELEVATE_OBJECT";
+const std::string ObjectEvents::EventObjectDespawningPrefix = "EVENT_OBJECT_DESPAWNING_";
 const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
 const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_DELEGATOR";
 const std::string ObjectEvents::EventWriteStatePrefix = "EVENT_WRITE_OBJECT_STATE_";
@@ -41,6 +42,14 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		ObjectEvents::EventSpawnObject,
+		&args
+	);
+}
+
+void ObjectEvents::TriggerObjectDespawning(ObjectDespawningArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(args.object)),
 		&args
 	);
 }

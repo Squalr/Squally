@@ -91,10 +91,14 @@ void TrollInTheDungeon::runChatSequence()
 		{
 			this->mage->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create());
 			this->complete();
-			PlatformerEvents::TriggerCinematicRestore();
 
 			this->mage->runAction(Sequence::create(
-				DelayTime::create(2.0f),
+				DelayTime::create(1.0f),
+				CallFunc::create([=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+				}),
+				DelayTime::create(1.0f),
 				CallFunc::create([=]()
 				{
 					this->runChatSequencePt2();

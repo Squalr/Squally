@@ -323,6 +323,20 @@ void CollisionObject::bindTo(Node* bindTarget)
 		GameUtils::changeParent(this, this->bindTarget->getParent(), true);
 		this->setPosition(bindTarget->getPosition());
 	}
+
+	if (this->bindTarget != nullptr)
+	{
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(bindTarget)), [=](EventCustom* eventCustom)
+		{
+			this->unbind();
+			this->despawn();
+		}));
+	}
+}
+
+void CollisionObject::unbind()
+{
+	this->bindTarget = nullptr;
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)

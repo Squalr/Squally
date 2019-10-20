@@ -172,16 +172,11 @@ void ChatWithGuano::runChatSequencePt5()
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
-			this->runChatSequencePt6();
+			this->mulDoor->toggleHackable(true);
+			this->complete();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),
 		DialogueEvents::BuildPreviewNode(this->squally, true),
 		true
 	));
-}
-
-void ChatWithGuano::runChatSequencePt6()
-{
-	this->mulDoor->toggleHackable(true);
-	this->complete();
 }

@@ -51,6 +51,7 @@ public:
 	void buildInverseCollisionMap();
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
 	void bindTo(cocos2d::Node* bindTarget);
+	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void setCollisionType(CollisionType collisionType);

@@ -83,13 +83,8 @@ void RescueGuano::runRescueSequence()
 {	
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
-		this->guano->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
-	}, RescueGuano::TagPrisonDoor);
-
-	this->guano->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
-	{
 		this->runRescueSequencePt2();
-	});
+	}, RescueGuano::TagPrisonDoor);
 }
 
 void RescueGuano::runRescueSequencePt2()

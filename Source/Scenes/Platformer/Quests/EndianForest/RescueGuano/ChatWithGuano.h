@@ -32,8 +32,6 @@ private:
 	void runChatSequencePt3();
 	void runChatSequencePt4();
 	void runChatSequencePt5();
-	void runChatSequencePt6();
-	void runChatSequencePt7();
 
 	bool hasRunEvent;
 	Guano* guano;

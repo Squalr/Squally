@@ -58,6 +58,7 @@ public:
 	static const std::string EventBroadCastMapObjectStatePrefix;
 	static const std::string EventSpawnObject;
 	static const std::string EventSpawnObjectDelegator;
+	static const std::string EventObjectDespawningPrefix;
 	static const std::string EventBindObjectToUI;
 	static const std::string EventElevateObject;
 	static const std::string EventUnbindObject;
@@ -99,6 +100,13 @@ public:
 		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
 	};
 
+	struct ObjectDespawningArgs
+	{
+		cocos2d::Node* object;
+
+		ObjectDespawningArgs(cocos2d::Node* object) : object(object) { }
+	};
+
 	struct RelocateObjectArgs
 	{
 		cocos2d::Node* relocatedObject;
@@ -123,6 +131,7 @@ public:
 	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
+	static void TriggerObjectDespawning(ObjectDespawningArgs args);
 	static void TriggerWriteObjectState(StateWriteArgs args);
 
 	template<class T>

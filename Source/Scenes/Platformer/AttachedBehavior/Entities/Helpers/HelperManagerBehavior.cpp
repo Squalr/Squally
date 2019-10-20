@@ -121,4 +121,5 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
+	this->attachedBehaviorMap[Guano::MapKeyGuano] = "friendly";
 }
