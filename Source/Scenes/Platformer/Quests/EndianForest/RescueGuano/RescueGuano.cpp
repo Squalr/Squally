@@ -54,6 +54,11 @@ void RescueGuano::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
+
+		if (questState == QuestState::Complete)
+		{
+			this->guano->despawn();
+		}
 	});
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
@@ -111,7 +116,14 @@ void RescueGuano::runRescueSequencePt3()
 		DialogueBox::DialogueAlignment::Left,
 		[=]()
 		{
-			this->guano->runAction(FadeTo::create(1.0f, 0));
+			this->guano->runAction(Sequence::create(
+				FadeTo::create(1.0f, 0),
+				CallFunc::create([=]()
+				{
+					this->guano->despawn();	
+				}),
+				nullptr
+			));
 			HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
 			this->complete();
 		},

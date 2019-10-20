@@ -14,6 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Events/HelperEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -121,5 +122,5 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
-	this->attachedBehaviorMap[Guano::MapKeyGuano] = "friendly";
+	this->attachedBehaviorMap[Guano::MapKeyGuano] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
 }

@@ -2,16 +2,16 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-class ScrappyBehaviorGroup : public AttachedBehaviorGroup
+class GuanoBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static ScrappyBehaviorGroup* create(GameObject* owner);
+	static GuanoBehaviorGroup* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	ScrappyBehaviorGroup(GameObject* owner);
-	~ScrappyBehaviorGroup();
+	GuanoBehaviorGroup(GameObject* owner);
+	~GuanoBehaviorGroup();
 
 	void onLoad() override;
 
