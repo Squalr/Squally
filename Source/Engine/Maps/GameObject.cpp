@@ -444,3 +444,13 @@ std::string GameObject::getSendEvent()
 {
 	return this->sendEvent;
 }
+
+void GameObject::despawn()
+{
+	this->attachedBehaviorNode->removeAllChildren();
+	
+	if (this->getParent() != nullptr)
+	{
+		this->getParent()->removeChild(this);
+	}
+}

@@ -13,6 +13,8 @@
 using namespace cocos2d;
 
 const std::string AgroBehavior::MapKeyAttachedBehavior = "agro";
+const float AgroBehavior::AgroRangeX = 840.0f;
+const float AgroBehavior::AgroRangeY = 512.0f;
 
 AgroBehavior* AgroBehavior::create(GameObject* owner)
 {
@@ -56,14 +58,11 @@ void AgroBehavior::update(float dt)
 		return;
 	}
 
-	const float AgroRangeX = 960.0f;
-	const float AgroRangeY = 512.0f;
-
 	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
 	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 
-	if (std::abs(squallyPosition.x - entityPosition.x) <= AgroRangeX &&
-		std::abs(squallyPosition.y - entityPosition.y) <= AgroRangeY)
+	if (std::abs(squallyPosition.x - entityPosition.x) <= AgroBehavior::AgroRangeX &&
+		std::abs(squallyPosition.y - entityPosition.y) <= AgroBehavior::AgroRangeY)
 	{
 		this->entity->setState(StateKeys::CinematicDestinationX, Value(squallyPosition.x));
 	}

@@ -24,4 +24,7 @@ private:
 
 	PlatformerEntity* entity;
 	Squally* squally;
+
+	static const float AgroRangeX;
+	static const float AgroRangeY;
 };

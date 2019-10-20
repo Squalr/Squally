@@ -37,6 +37,7 @@ public:
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	std::string getListenEvent();
 	std::string getSendEvent();
+	void despawn();
 
 	template <class T>
 	T* getAttachedBehavior()

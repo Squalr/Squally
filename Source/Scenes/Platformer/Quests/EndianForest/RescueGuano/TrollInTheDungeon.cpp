@@ -55,7 +55,7 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 	
 	if (questState == QuestState::Complete)
 	{
-		this->mage->setVisible(false);
+		this->mage->despawn();
 	}
 }
 
@@ -114,7 +114,14 @@ void TrollInTheDungeon::runChatSequencePt2()
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
-			this->mage->runAction(FadeTo::create(0.5f, 0));
+			this->mage->runAction(Sequence::create(
+				FadeTo::create(0.5f, 0),
+				CallFunc::create([=]()
+				{
+					this->mage->despawn();
+				}),
+				nullptr
+			));
 		});
 
 	}, TrollInTheDungeon::TagExit);
