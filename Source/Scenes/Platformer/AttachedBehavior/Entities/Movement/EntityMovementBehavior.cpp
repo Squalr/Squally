@@ -80,8 +80,6 @@ void EntityMovementBehavior::update(float dt)
 
 	if (hasCinematicMovement)
 	{
-		movement.y = 0.0f;
-
 		if (cinematicMovementDirectionLeft)
 		{
 			movement.x = -1.0f;
@@ -164,7 +162,7 @@ void EntityMovementBehavior::update(float dt)
 	{
 		if (std::abs(movement.x) > 0.15f)
 		{
-			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
+			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
 		}
 		else
 		{

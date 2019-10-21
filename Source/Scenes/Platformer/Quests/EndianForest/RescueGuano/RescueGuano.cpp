@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Freedom.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/HelpYouFindThings.h"
 
@@ -88,7 +89,18 @@ void RescueGuano::runRescueSequence()
 {	
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
-		this->runRescueSequencePt2();
+		DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_RescueGuano_Freedom::create(),
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			[=]()
+			{
+				this->runRescueSequencePt2();
+			},
+			DialogueEvents::BuildPreviewNode(this->guano, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true),
+			false
+		));
 	}, RescueGuano::TagPrisonDoor);
 }
 

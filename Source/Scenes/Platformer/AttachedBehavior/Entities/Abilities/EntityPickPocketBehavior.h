@@ -4,16 +4,16 @@
 
 class PlatformerEntity;
 
-class FriendlyCollisionBehavior : public AttachedBehavior
+class EntityPickPocketBehavior : public AttachedBehavior
 {
 public:
-	static FriendlyCollisionBehavior* create(GameObject* owner);
+	static EntityPickPocketBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FriendlyCollisionBehavior(GameObject* owner);
-	~FriendlyCollisionBehavior();
+	EntityPickPocketBehavior(GameObject* owner);
+	~EntityPickPocketBehavior();
 
 	void onLoad() override;
 

@@ -8,6 +8,7 @@ using namespace cocos2d;
 
 Consumable::Consumable(CurrencyInventory* cost) : super(cost)
 {
+	this->associatedAttack = nullptr;
 }
 
 Consumable::~Consumable()
@@ -16,7 +17,9 @@ Consumable::~Consumable()
 
 PlatformerAttack* Consumable::cloneAssociatedAttack()
 {
-	return this->getAssociatedAttack()->clone();
+	PlatformerAttack* attack = this->getAssociatedAttack();
+
+	return attack == nullptr ? nullptr : attack->clone();
 }
 
 PlatformerAttack* Consumable::getAssociatedAttack()

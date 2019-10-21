@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
@@ -13,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/MusicResources.h"
@@ -125,6 +127,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		PlatformerMap* map = PlatformerMap::create(mapResource);
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);
 	});

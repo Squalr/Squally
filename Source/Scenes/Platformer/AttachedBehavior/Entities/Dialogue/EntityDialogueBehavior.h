@@ -37,6 +37,7 @@ private:
 	void tryShowPretext();
 	void chooseOption(int option);
 	void showOptions();
+	bool hasDialogueOptions();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 
 	PlatformerEntity* entity;

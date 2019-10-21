@@ -14,7 +14,7 @@ using namespace cocos2d;
 
 const std::string FollowMovementBehavior::MapKeyAttachedBehavior = "follow-movement";
 const float FollowMovementBehavior::StopFollowRangeX = 64.0f;
-const float FollowMovementBehavior::TryJumpRangeY = 128.0f;
+const float FollowMovementBehavior::TryJumpRangeY = 96.0f;
 
 FollowMovementBehavior* FollowMovementBehavior::create(GameObject* owner)
 {
@@ -65,8 +65,8 @@ void FollowMovementBehavior::update(float dt)
 		this->entity->setState(StateKeys::CinematicDestinationX, Value(squallyPosition.x));
 	}
 
-	if (std::abs(squallyPosition.y - entityPosition.y) >= FollowMovementBehavior::TryJumpRangeY)
+	if (squallyPosition.y >= entityPosition.y + FollowMovementBehavior::TryJumpRangeY)
 	{
-		// Force a jump
+		this->entity->setState(StateKeys::MovementY, Value(1.0f));
 	}
 }

@@ -111,8 +111,11 @@ void EntityDialogueBehavior::onLoad()
 
 	this->dialogueCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		this->canInteract = true;
-		this->interactMenu->show();
+		if (this->hasDialogueOptions())
+		{
+			this->canInteract = true;
+			this->interactMenu->show();
+		}
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -170,7 +173,7 @@ void EntityDialogueBehavior::onLoad()
 		this->chooseOption(9);
 	});
 
-	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Entities_Goodbye::create(), nullptr), 0.01f);
+	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Entities_Goodbye::create(), nullptr, false), 0.01f);
 }
 
 void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
@@ -195,6 +198,11 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 
 void EntityDialogueBehavior::tryShowPretext()
 {
+	if (!this->hasDialogueOptions())
+	{
+		return;
+	}
+	
 	if (this->pretextQueue.empty())
 	{
 		this->setActiveDialogueSet(this->getMainDialogueSet());
@@ -286,6 +294,23 @@ void EntityDialogueBehavior::showOptions()
 		DialogueEvents::BuildPreviewNode(this->entity, false),
 		DialogueEvents::BuildPreviewNode(this->squally, true)
 	));
+}
+
+bool EntityDialogueBehavior::hasDialogueOptions()
+{
+	if (this->activeDialogueSet == nullptr)
+	{
+		return false;
+	}
+
+	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
+
+	if (dialogueOptions.size() > 1)
+	{
+		return true;
+	}
+
+	return std::get<0>(dialogueOptions[0])->isShownIfUnique();
 }
 
 LocalizedString* EntityDialogueBehavior::getOptionString(int index, LocalizedString* optionText)
