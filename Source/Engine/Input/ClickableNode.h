@@ -10,6 +10,7 @@ namespace cocos2d
 {
 	class DrawNode;
 	class EventCustom;
+	class EventListener;
 	class Node;
 }
 
@@ -66,6 +67,7 @@ private:
 	void mouseDown(InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseUp(InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
 	void mouseScroll(InputEvents::MouseEventArgs* args, cocos2d::EventCustom* event = nullptr);
+	void mouseOut(InputEvents::MouseEventArgs* args, bool force = false);
 	bool intersects(cocos2d::Vec2 mousePos);
 
 	Sound* mouseOverSound;
@@ -80,6 +82,7 @@ private:
 	bool isMousedOver;
 	std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction;
 	cocos2d::EventKeyboard::KeyCode modifier;
+	cocos2d::EventListener* modifierReleasedListener;
 	cocos2d::DrawNode* debugHitbox;
 	cocos2d::Vec2 debugCachedPos;
 

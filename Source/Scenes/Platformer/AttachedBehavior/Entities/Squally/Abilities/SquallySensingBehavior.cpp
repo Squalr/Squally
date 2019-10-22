@@ -38,22 +38,16 @@ void SquallySensingBehavior::onLoad()
 {
 	this->squally->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
 	{
-		args->handle();
-
 		HackableEvents::TriggerSensingDisable();
 	});
 	
 	this->squally->whenKeyReleasedHackerMode({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
 	{
-		args->handle();
-
 		HackableEvents::TriggerSensingDisable();
 	});
 	
 	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
 	{
-		args->handle();
-
 		HackableEvents::TriggerSensingEnable(HackableEvents::SensingArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
 	});
 }

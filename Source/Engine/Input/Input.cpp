@@ -77,6 +77,11 @@ EventKeyboard::KeyCode Input::getActiveModifiers()
 {
 	EventKeyboard::KeyCode modifiers = EventKeyboard::KeyCode::KEY_NONE;
 
+	if (Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	{
+		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_SHIFT);
+	}
+
 	if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 	{
 		modifiers = (EventKeyboard::KeyCode)((int)modifiers | (int)EventKeyboard::KeyCode::KEY_ALT);

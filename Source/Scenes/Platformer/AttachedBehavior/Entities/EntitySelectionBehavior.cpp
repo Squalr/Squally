@@ -79,6 +79,11 @@ void EntitySelectionBehavior::setEntityClickCallbacks(std::function<void()> onCl
 	});
 }
 
+void EntitySelectionBehavior::setClickModifier(EventKeyboard::KeyCode modifier)
+{
+	this->clickHitbox->setClickModifier(modifier);
+}
+
 void EntitySelectionBehavior::clearEntityClickCallbacks()
 {
 	this->clickHitbox->disableInteraction();

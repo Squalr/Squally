@@ -53,17 +53,18 @@ void EntityPickPocketBehavior::onLoad()
 
 	this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 	{
+		selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
 		selectionBehavior->setEntityClickCallbacks([=]()
 		{
 			
 		},
 		[=]()
 		{
-			Mouse::getInstance()->setActiveCursorSet(CursorSets::PickPocket);
+			CursorSets::setActiveCursorSet(CursorSets::PickPocket);
 		},
 		[=]()
 		{
-			Mouse::getInstance()->setActiveCursorSet(CursorSets::Default);
+			CursorSets::setActiveCursorSet(CursorSets::Default);
 		});
 	});
 

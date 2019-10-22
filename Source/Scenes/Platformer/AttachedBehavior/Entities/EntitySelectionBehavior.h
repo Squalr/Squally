@@ -11,6 +11,7 @@ public:
 	static EntitySelectionBehavior* create(GameObject* owner);
 	
 	void setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver = nullptr, std::function<void()> onMouseOut = nullptr);
+	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	void clearEntityClickCallbacks();
 
 	static const std::string MapKeyAttachedBehavior;

@@ -59,6 +59,7 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->wasAnywhereClicked = false;
 	this->wasClickedDirectly = false;
 	this->isMousedOver = false;
+	this->modifierReleasedListener = nullptr;
 	this->modifier = EventKeyboard::KeyCode::KEY_NONE;
 	this->intersectFunction = nullptr;
 	this->debugHitbox = DrawNode::create();
@@ -208,7 +209,19 @@ void ClickableNode::enableInteraction(GLubyte newOpacity)
 
 void ClickableNode::setClickModifier(EventKeyboard::KeyCode modifier)
 {
+	if (this->modifierReleasedListener != nullptr)
+	{
+		this->removeEventListener(this->modifierReleasedListener);
+	}
+	
 	this->modifier = modifier;
+
+	this->modifierReleasedListener = this->whenKeyReleased({ modifier }, [=](InputEvents::InputArgs*)
+	{
+		InputEvents::MouseEventArgs args = MouseState::getMouseState();
+
+		this->mouseOut(&args, true);
+	}, false);
 }
 
 void ClickableNode::setMouseClickCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseClick)
@@ -361,15 +374,7 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 	}
 	else
 	{
-		// Mouse out event
-		if (this->isMousedOver && this->mouseOutEvent != nullptr)
-		{
-			this->mouseOutEvent(args);
-		}
-
-		this->isMousedOver = false;
-
-		this->showSprite(this->sprite);
+		this->mouseOut(args);
 	}
 }
 
@@ -472,6 +477,19 @@ void ClickableNode::mouseScroll(InputEvents::MouseEventArgs* args, EventCustom* 
 
 		this->mouseScrollEvent(args);
 	}
+}
+
+void ClickableNode::mouseOut(InputEvents::MouseEventArgs* args, bool force)
+{
+	// Mouse out event
+	if ((this->isMousedOver || force) && this->mouseOutEvent != nullptr)
+	{
+		this->mouseOutEvent(args);
+	}
+
+	this->isMousedOver = false;
+
+	this->showSprite(this->sprite);
 }
 
 cocos2d::Node* ClickableNode::getSprite()
