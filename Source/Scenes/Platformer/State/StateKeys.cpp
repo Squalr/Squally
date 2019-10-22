@@ -9,6 +9,7 @@ const std::string StateKeys::Health = "STATE_KEY_HEALTH";
 const std::string StateKeys::MaxHealth = "STATE_KEY_MAX_HEALTH";
 const std::string StateKeys::Mana = "STATE_KEY_MANA";
 const std::string StateKeys::MaxMana = "STATE_KEY_MAX_MANA";
+const std::string StateKeys::CurrentHelper = "STATE_KEY_CURRENT_HELPER";
 const std::string StateKeys::CinematicHijacked = "STATE_KEY_CINEMATIC_HIJACKED";
 const std::string StateKeys::CinematicDestinationX = "STATE_KEY_CINEMATIC_DESTINATION_X";
 const std::string StateKeys::CinematicDestinationReached = "STATE_KEY_CINEMATIC_DESTINATION_REACHED";

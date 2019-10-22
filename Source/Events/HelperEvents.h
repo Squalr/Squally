@@ -1,21 +1,23 @@
 #pragma once
 #include <string>
 
+class PlatformerEntity;
+
 class HelperEvents
 {
 public:
 	static const std::string EventFindScrappy;
-	static const std::string EventChangeHelper;
+	static const std::string EventRequestPickPocket;
 
-	struct ChangeHelperArgs
+	struct RequestPickPocketArgs
 	{
-		std::string helperName;
+		PlatformerEntity* target;
 
-		ChangeHelperArgs(std::string helperName) : helperName(helperName)
+		RequestPickPocketArgs(PlatformerEntity* target) : target(target)
 		{
 		}
 	};
 
 	static void TriggerFindScrappy();
-	static void TriggerChangeHelper(ChangeHelperArgs args);
+	static void TriggerRequestPickPocket(RequestPickPocketArgs args);
 };

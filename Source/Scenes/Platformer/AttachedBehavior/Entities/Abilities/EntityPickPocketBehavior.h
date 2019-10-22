@@ -4,6 +4,7 @@
 
 class PlatformerEntity;
 class PocketPoolDeserializer;
+class Squally;
 
 class EntityPickPocketBehavior : public AttachedBehavior
 {
@@ -21,8 +22,13 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void attemptPickPocket();
+
 	PlatformerEntity* entity;
+	Squally* squally;
 	PocketPoolDeserializer* pocketPoolDeserializer;
+
+	std::string currentHelperName;
 
 	static const std::string MapKeyPocketPool;
 };

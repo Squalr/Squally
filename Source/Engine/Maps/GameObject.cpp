@@ -461,3 +461,16 @@ void GameObject::despawn()
 		this->getParent()->removeChild(this);
 	}
 }
+
+void GameObject::onDespawn(std::function<void()> callback)
+{
+	if (callback == nullptr)
+	{
+		return;
+	}
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(this)), [=](EventCustom* eventCustom)
+	{
+		callback();
+	}));
+}

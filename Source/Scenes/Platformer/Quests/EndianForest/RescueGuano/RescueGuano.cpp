@@ -136,7 +136,7 @@ void RescueGuano::runRescueSequencePt3()
 				}),
 				nullptr
 			));
-			HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
+			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
 			this->complete();
 		},
 		DialogueEvents::BuildPreviewNode(this->guano, false),

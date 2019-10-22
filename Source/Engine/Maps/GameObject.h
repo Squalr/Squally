@@ -39,6 +39,7 @@ public:
 	std::string getListenEvent();
 	std::string getSendEvent();
 	void despawn();
+	void onDespawn(std::function<void()> callback);
 
 	template <class T>
 	T* getAttachedBehavior()

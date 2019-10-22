@@ -57,27 +57,19 @@ HelperManagerBehavior::~HelperManagerBehavior()
 
 void HelperManagerBehavior::onLoad()
 {
-	this->scheduleUpdate();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventChangeHelper, [=](EventCustom* eventCustom)
-	{
-		HelperEvents::ChangeHelperArgs* args = static_cast<HelperEvents::ChangeHelperArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->spawnHelper(args->helperName);
-		}
-	}));
-
 	this->buildAttachedBehaviorMap();
-	this->spawnHelper(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString());
+
+	this->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
+	{
+		this->spawnHelper(value.asString());
+	});
 }
 
 void HelperManagerBehavior::spawnHelper(std::string helperName)
 {
 	ValueMap properties = ValueMap();
 
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
+	SaveManager::saveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 
 	std::string helperBehavior = this->getHelperAttachedBehavior(helperName);
 

@@ -1,15 +1,20 @@
 #include "EntityPickPocketBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Engine/UI/Mouse.h"
+#include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/HelperEvents.h"
 #include "Objects/Platformer/PocketPools/PocketPoolDeserializer.h"
 #include "Menus/CursorSets.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -31,6 +36,8 @@ EntityPickPocketBehavior::EntityPickPocketBehavior(GameObject* owner) : super(ow
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->pocketPoolDeserializer = PocketPoolDeserializer::create();
+	this->squally = nullptr;
+	this->currentHelperName = "";
 
 	if (this->entity == nullptr)
 	{
@@ -50,17 +57,35 @@ void EntityPickPocketBehavior::onLoad()
 	{
 		this->entity->attachBehavior(EntitySelectionBehavior::create(this->entity));
 	}
+	
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+
+		this->currentHelperName = this->squally->getStateOrDefault(StateKeys::CurrentHelper, Value("")).asString();
+
+		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
+		{
+			this->currentHelperName = value.asString();
+		});
+	});
 
 	this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 	{
 		selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
 		selectionBehavior->setEntityClickCallbacks([=]()
 		{
-			
+			if (this->currentHelperName == Guano::MapKeyGuano)
+			{
+				this->attemptPickPocket();
+			}
 		},
 		[=]()
 		{
-			CursorSets::setActiveCursorSet(CursorSets::PickPocket);
+			if (this->currentHelperName == Guano::MapKeyGuano)
+			{
+				CursorSets::setActiveCursorSet(CursorSets::PickPocket);
+			}
 		},
 		[=]()
 		{
@@ -81,4 +106,10 @@ void EntityPickPocketBehavior::onLoad()
 	});
 	
 	this->pocketPoolDeserializer->deserialize(&deserializeArgs);
+}
+
+
+void EntityPickPocketBehavior::attemptPickPocket()
+{
+	HelperEvents::TriggerRequestPickPocket(HelperEvents::RequestPickPocketArgs(this->entity));
 }
