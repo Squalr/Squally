@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Collectables/Chests/Chest.h"
+#include "Objects/Platformer/Chests/Chest.h"
 
 using namespace cocos2d;
 

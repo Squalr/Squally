@@ -21,6 +21,7 @@ public:
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
+	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
 	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
 	int getStateOrDefaultInt(std::string key, int value);
 	float getStateOrDefaultFloat(std::string key, float value);

@@ -10,7 +10,7 @@ class EntitySelectionBehavior : public AttachedBehavior
 public:
 	static EntitySelectionBehavior* create(GameObject* owner);
 	
-	void setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver);
+	void setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver = nullptr, std::function<void()> onMouseOut = nullptr);
 	void clearEntityClickCallbacks();
 
 	static const std::string MapKeyAttachedBehavior;

@@ -11,7 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Objects/Platformer/Collectables/Chests/ChestPools/ChestPoolDeserializer.h"
+#include "Objects/Platformer/Chests/ChestPools/ChestPoolDeserializer.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"

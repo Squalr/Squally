@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerEntity;
+class PocketPoolDeserializer;
 
 class EntityPickPocketBehavior : public AttachedBehavior
 {
@@ -21,4 +22,7 @@ private:
 	typedef AttachedBehavior super;
 
 	PlatformerEntity* entity;
+	PocketPoolDeserializer* pocketPoolDeserializer;
+
+	static const std::string MapKeyPocketPool;
 };

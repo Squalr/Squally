@@ -253,6 +253,11 @@ void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 	}
 }
 
+Value GameObject::getPropertyOrDefault(std::string key, Value value)
+{
+	return GameUtils::getKeyOrDefault(this->properties, key, value);
+}
+
 Value GameObject::getStateOrDefault(std::string key, Value value)
 {
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, value);
