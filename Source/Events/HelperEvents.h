@@ -2,6 +2,7 @@
 #include <string>
 
 class PlatformerEntity;
+class MinMaxPool;
 
 class HelperEvents
 {
@@ -12,8 +13,10 @@ public:
 	struct RequestPickPocketArgs
 	{
 		PlatformerEntity* target;
+		MinMaxPool* pocketPool;
+		std::string saveKeyPickPocketed;
 
-		RequestPickPocketArgs(PlatformerEntity* target) : target(target)
+		RequestPickPocketArgs(PlatformerEntity* target, MinMaxPool* pocketPool, std::string saveKeyPickPocketed) : target(target), pocketPool(pocketPool), saveKeyPickPocketed(saveKeyPickPocketed)
 		{
 		}
 	};

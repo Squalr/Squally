@@ -57,6 +57,11 @@ void FollowMovementBehavior::update(float dt)
 		return;
 	}
 
+	if (this->entity->hasState(StateKeys::CinematicHijacked) || this->entity->hasState(StateKeys::CinematicDestinationX))
+	{
+		return;
+	}
+
 	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
 	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 

@@ -21,6 +21,7 @@
 using namespace cocos2d;
 
 const std::string EntityPickPocketBehavior::MapKeyAttachedBehavior = "pick-pocket";
+const std::string EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed = "WAS_PICKPOCKETED";
 const std::string EntityPickPocketBehavior::MapKeyPocketPool = "pocket-pool";
 
 EntityPickPocketBehavior* EntityPickPocketBehavior::create(GameObject* owner)
@@ -37,6 +38,7 @@ EntityPickPocketBehavior::EntityPickPocketBehavior(GameObject* owner) : super(ow
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->pocketPoolDeserializer = PocketPoolDeserializer::create();
 	this->squally = nullptr;
+	this->pocketPool = nullptr;
 	this->currentHelperName = "";
 
 	if (this->entity == nullptr)
@@ -75,14 +77,11 @@ void EntityPickPocketBehavior::onLoad()
 		selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
 		selectionBehavior->setEntityClickCallbacks([=]()
 		{
-			if (this->currentHelperName == Guano::MapKeyGuano)
-			{
-				this->attemptPickPocket();
-			}
+			this->attemptPickPocket();
 		},
 		[=]()
 		{
-			if (this->currentHelperName == Guano::MapKeyGuano)
+			if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
 			{
 				CursorSets::setActiveCursorSet(CursorSets::PickPocket);
 			}
@@ -102,7 +101,9 @@ void EntityPickPocketBehavior::onLoad()
 	{
 		MinMaxPool* pocketPool = static_cast<MinMaxPool*>(args.gameObject);
 
-		this->addChild(pocketPool);
+		this->pocketPool = pocketPool;
+
+		this->addChild(this->pocketPool);
 	});
 	
 	this->pocketPoolDeserializer->deserialize(&deserializeArgs);
@@ -111,5 +112,17 @@ void EntityPickPocketBehavior::onLoad()
 
 void EntityPickPocketBehavior::attemptPickPocket()
 {
-	HelperEvents::TriggerRequestPickPocket(HelperEvents::RequestPickPocketArgs(this->entity));
+	if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
+	{
+		HelperEvents::TriggerRequestPickPocket(HelperEvents::RequestPickPocketArgs(
+			this->entity,
+			this->pocketPool,
+			EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed
+		));
+	}
+}
+
+bool EntityPickPocketBehavior::wasPickPocketed()
+{
+	return this->entity->getObjectStateOrDefault(EntityPickPocketBehavior::SavePropertyKeyWasPickPocketed, Value(false)).asBool();
 }

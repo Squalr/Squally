@@ -163,11 +163,11 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 			items.push_back(item);
 		}));
 	}
+	
+	Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
-		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
-
 		NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
 
 		playerInventory->forceInsert(*it);	

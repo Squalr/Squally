@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class MinMaxPool;
 class PlatformerEntity;
 class PocketPoolDeserializer;
 class Squally;
@@ -23,12 +24,15 @@ private:
 	typedef AttachedBehavior super;
 
 	void attemptPickPocket();
+	bool wasPickPocketed();
 
 	PlatformerEntity* entity;
 	Squally* squally;
+	MinMaxPool* pocketPool;
 	PocketPoolDeserializer* pocketPoolDeserializer;
 
 	std::string currentHelperName;
 
+	static const std::string SavePropertyKeyWasPickPocketed;
 	static const std::string MapKeyPocketPool;
 };
