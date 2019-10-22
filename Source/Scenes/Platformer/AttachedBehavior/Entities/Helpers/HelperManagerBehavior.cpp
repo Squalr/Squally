@@ -59,7 +59,7 @@ void HelperManagerBehavior::onLoad()
 {
 	this->buildAttachedBehaviorMap();
 
-	this->spawnHelper(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")));
+	this->spawnHelper(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString());
 
 	this->entity->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 	{
