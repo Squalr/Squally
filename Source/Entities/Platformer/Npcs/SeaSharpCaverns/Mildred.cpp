@@ -36,7 +36,7 @@ Mildred::Mildred(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Mildred::getHexusOpponentData();

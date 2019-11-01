@@ -36,7 +36,7 @@ Atreus::Atreus(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Atreus::getHexusOpponentData();

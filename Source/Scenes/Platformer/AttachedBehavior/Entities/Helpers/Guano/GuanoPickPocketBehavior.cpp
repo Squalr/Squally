@@ -83,7 +83,7 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 				playerInventory->forceInsert(*it);	
 			}
 
-			this->entity->saveObjectState(pickPocketSaveKey, Value(true));
+			target->saveObjectState(pickPocketSaveKey, Value(true));
 		}
 	});
 

@@ -4,8 +4,11 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -50,6 +53,23 @@ void EntityPacingBehavior::onLoad()
 {
 	this->anchorPosition = GameUtils::getWorldCoords(this->entity);
 
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	{
+		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{
+			this->cancelPacing();
+			
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			this->cancelPacing();
+
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+	});
+
 	this->assignDestination();
 }
 
@@ -78,4 +98,9 @@ void EntityPacingBehavior::assignDestination()
 		}),
 		nullptr
 	));
+}
+
+void EntityPacingBehavior::cancelPacing()
+{
+	this->entity->clearState(StateKeys::CinematicDestinationX);
 }

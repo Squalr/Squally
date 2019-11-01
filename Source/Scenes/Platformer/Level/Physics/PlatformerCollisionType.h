@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Engine/Physics/EngineCollisionTypes.h"
+
 enum class PlatformerCollisionType
 {
 	None				= 0,
@@ -23,8 +25,7 @@ enum class PlatformerCollisionType
 	Collectable			= 1 << 17,
 	Trigger				= 1 << 18,
 
-	// Keep in sync with EngineCollisionType:
-	Solid				= 1 << 29,
-	PassThrough			= 1 << 30,
-	Intersection		= 1 << 31,
+	Solid				= (int)EngineCollisionTypes::Solid,
+	PassThrough			= (int)EngineCollisionTypes::PassThrough,
+	Intersection		= (int)EngineCollisionTypes::Intersection,
 };

@@ -22,6 +22,7 @@ private:
 	typedef AttachedBehavior super;
 
 	void assignDestination();
+	void cancelPacing();
 
 	PlatformerEntity* entity;
 	cocos2d::Vec2 anchorPosition;
