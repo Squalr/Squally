@@ -70,7 +70,14 @@ void EntityPacingBehavior::onLoad()
 		});
 	});
 
-	this->assignDestination();
+	this->runAction(Sequence::create(
+		DelayTime::create(RandomHelper::random_real(2.0f, 7.5f)),
+		CallFunc::create([=]()
+		{
+			this->assignDestination();
+		}),
+		nullptr
+	));
 }
 
 void EntityPacingBehavior::assignDestination()

@@ -244,6 +244,6 @@ HexusOpponentData* BeatTutorialA::createOpponentData()
                 CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
                 CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
             },
-            { TutorialAIntroSequence::create(), TutorialAVictory::create() })
+            { TutorialAIntroSequence::create(), TutorialACardStaged::create(), TutorialAVictory::create() })
 	);
 }
