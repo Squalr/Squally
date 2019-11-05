@@ -3,7 +3,6 @@
 #include "Engine/Quests/QuestTask.h"
 
 class HexusOpponentData;
-class Igneus;
 class MagePortal;
 class PlatformerEntity;
 class QuestLine;
@@ -29,10 +28,6 @@ private:
 	typedef QuestTask super;
 
 	void registerDialogue();
-	HexusOpponentData* createOpponentData();
-
-	void onWin();
-	void onLoss();
 
 	MagePortal* portal;
 	PlatformerEntity* mage;

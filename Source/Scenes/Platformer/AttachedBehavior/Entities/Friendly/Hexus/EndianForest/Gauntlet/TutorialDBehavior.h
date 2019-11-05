@@ -7,14 +7,14 @@ class HexusOpponentData;
 class MinMaxPool;
 class PlatformerEntity;
 
-class SarudeTutorialBehavior : public HexusBehaviorBase
+class TutorialDBehavior : public HexusBehaviorBase
 {
 public:
-	static SarudeTutorialBehavior* create(GameObject* owner);
+	static TutorialDBehavior* create(GameObject* owner);
 
 protected:
-	SarudeTutorialBehavior(GameObject* owner);
-	~SarudeTutorialBehavior();
+	TutorialDBehavior(GameObject* owner);
+	~TutorialDBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

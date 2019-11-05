@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Entities_Shopkeepers_HowToBuySomething : public LocalizedString
+	class Platformer_Dialogue_Shopkeepers_HowDoIBuySomething : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Shopkeepers_HowToBuySomething* create();
+		static Platformer_Dialogue_Shopkeepers_HowDoIBuySomething* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Entities_Shopkeepers_HowToBuySomething();
-		~Platformer_Entities_Shopkeepers_HowToBuySomething();
+		Platformer_Dialogue_Shopkeepers_HowDoIBuySomething();
+		~Platformer_Dialogue_Shopkeepers_HowDoIBuySomething();
 	};
 }

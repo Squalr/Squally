@@ -28,10 +28,6 @@ private:
 	typedef QuestTask super;
 
 	void registerDialogue();
-	HexusOpponentData* createOpponentData();
-
-	void onWin();
-	void onLoss();
 
 	MagePortal* portal;
 	PlatformerEntity* mage;

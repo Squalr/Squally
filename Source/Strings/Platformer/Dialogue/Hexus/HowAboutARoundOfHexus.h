@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Entities_BattleCries_DieMortal : public LocalizedString
+	class Platformer_Dialogue_Hexus_HowAboutARoundOfHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_BattleCries_DieMortal* create();
+		static Platformer_Dialogue_Hexus_HowAboutARoundOfHexus* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Entities_BattleCries_DieMortal();
-		~Platformer_Entities_BattleCries_DieMortal();
+		Platformer_Dialogue_Hexus_HowAboutARoundOfHexus();
+		~Platformer_Dialogue_Hexus_HowAboutARoundOfHexus();
 	};
 }

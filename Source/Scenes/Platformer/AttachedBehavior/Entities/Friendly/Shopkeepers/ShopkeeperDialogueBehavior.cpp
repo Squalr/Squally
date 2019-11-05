@@ -10,8 +10,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 
-#include "Strings/Platformer/Entities/Shopkeepers/HowDoIBuySomething.h"
-#include "Strings/Platformer/Entities/Shopkeepers/HowToBuySomething.h"
+#include "Strings/Platformer/Dialogue/Shopkeepers/HowDoIBuySomething.h"
+#include "Strings/Platformer/Dialogue/Shopkeepers/HowToBuySomething.h"
 
 using namespace cocos2d;
 
@@ -51,11 +51,11 @@ void ShopkeeperDialogueBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-			Strings::Platformer_Entities_Shopkeepers_HowDoIBuySomething::create(),
+			Strings::Platformer_Dialogue_Shopkeepers_HowDoIBuySomething::create(),
 			[=]()
 			{
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Entities_Shopkeepers_HowToBuySomething::create(),
+					Strings::Platformer_Dialogue_Shopkeepers_HowToBuySomething::create(),
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
 					[=]()

@@ -11,9 +11,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Shopkeepers/ShopkeeperDialogueBehavior.h"
 
-#include "Strings/Platformer/Entities/Shopkeepers/HowDoIBuySomething.h"
-#include "Strings/Platformer/Entities/Shopkeepers/HowToBuySomething.h"
-
 using namespace cocos2d;
 
 const std::string ShopkeeperBehaviorGroup::MapKeyAttachedBehavior = "shopkeeper";

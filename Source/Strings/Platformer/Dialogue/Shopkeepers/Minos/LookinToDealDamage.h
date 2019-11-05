@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Entities_Shopkeepers_Welcome : public LocalizedString
+	class Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Shopkeepers_Welcome* create();
+		static Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Entities_Shopkeepers_Welcome();
-		~Platformer_Entities_Shopkeepers_Welcome();
+		Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage();
+		~Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage();
 	};
 }

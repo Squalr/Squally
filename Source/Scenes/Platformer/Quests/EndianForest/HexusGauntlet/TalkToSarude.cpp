@@ -21,7 +21,6 @@
 
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Entities/HowAboutARoundOfHexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/FirstChallenge.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HexusIsAGameWhere.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Sarude/HowWouldYouLikeToPlay.h"

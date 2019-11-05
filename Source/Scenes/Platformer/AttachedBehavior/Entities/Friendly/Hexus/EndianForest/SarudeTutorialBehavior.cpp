@@ -34,13 +34,6 @@ SarudeTutorialBehavior::~SarudeTutorialBehavior()
 {
 }
 
-std::vector<CardData*> SarudeTutorialBehavior::generateDeck()
-{
-	return HexusOpponentData::generateDeck(25, 0.07f,
-	{
-	});
-}
-
 MinMaxPool* SarudeTutorialBehavior::generateReward()
 {
 	return CardPoolTutorial::create();
@@ -54,4 +47,16 @@ std::string SarudeTutorialBehavior::getWinLossSaveKey()
 std::string SarudeTutorialBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
+}
+
+std::vector<CardData*> SarudeTutorialBehavior::generateDeck()
+{
+	return HexusOpponentData::generateDeck(25, 0.07f,
+	{
+	});
+}
+
+StateOverride* SarudeTutorialBehavior::getStateOverride()
+{
+	return nullptr;
 }

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Entities_Goodbye : public LocalizedString
+	class Platformer_Dialogue_Hexus_ADraw : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Goodbye* create();
+		static Platformer_Dialogue_Hexus_ADraw* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Entities_Goodbye();
-		~Platformer_Entities_Goodbye();
+		Platformer_Dialogue_Hexus_ADraw();
+		~Platformer_Dialogue_Hexus_ADraw();
 	};
 }

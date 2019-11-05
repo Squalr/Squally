@@ -20,7 +20,7 @@
 #include "Strings/Common/Empty.h"
 #include "Strings/Common/Newline.h"
 #include "Strings/Common/Triconcat.h"
-#include "Strings/Platformer/Entities/Goodbye.h"
+#include "Strings/Platformer/Dialogue/Goodbye.h"
 
 using namespace cocos2d;
 
@@ -173,7 +173,7 @@ void EntityDialogueBehavior::onLoad()
 		this->chooseOption(9);
 	});
 
-	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Entities_Goodbye::create(), nullptr, false), 0.01f);
+	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 }
 
 void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
