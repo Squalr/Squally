@@ -76,7 +76,6 @@ HexusOpponentData* Barbarian::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

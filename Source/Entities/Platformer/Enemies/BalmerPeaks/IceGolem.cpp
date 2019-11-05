@@ -76,7 +76,6 @@ HexusOpponentData* IceGolem::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

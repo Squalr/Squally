@@ -76,7 +76,6 @@ HexusOpponentData* Robot::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

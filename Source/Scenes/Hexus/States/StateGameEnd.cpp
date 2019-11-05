@@ -8,21 +8,16 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/HexusEvents.h"
-#include "Events/NotificationEvents.h"
 #include "Scenes/Hexus/Config.h"
-#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Leave.h"
-#include "Strings/Platformer/Notifications/ItemWon.h"
 
 using namespace cocos2d;
 
@@ -88,10 +83,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	this->backButton->disableInteraction(0);
 	this->backButton->setMouseClickCallback(nullptr);
 
-	std::string winsKey = HexusOpponentData::winsPrefix + gameState->opponentData->enemyNameKey;
-	std::string lossesKey = HexusOpponentData::lossesPrefix + gameState->opponentData->enemyNameKey;
+	std::string winsKey = HexusOpponentData::winsPrefix + gameState->opponentData->enemyAnalyticsIdentifier;
+	std::string lossesKey = HexusOpponentData::lossesPrefix + gameState->opponentData->enemyAnalyticsIdentifier;
 
-	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyNameKey, gameState->gameDurationInSeconds);
+	Analytics::sendEvent(AnalyticsCategories::Hexus, "game_duration", gameState->opponentData->enemyAnalyticsIdentifier, gameState->gameDurationInSeconds);
 	bool isDraw = gameState->playerLosses >= 2 && gameState->enemyLosses >= 2;
 	bool isWin = gameState->playerLosses < 2 && gameState->enemyLosses >= 2;
 
@@ -102,7 +97,7 @@ void StateGameEnd::onBackClick(GameState* gameState)
 		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
 
 		// Analytics for losing (as a tie)
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
 		
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
@@ -118,34 +113,20 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (wins == 1 && losses == 0)
 		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 1);
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyAnalyticsIdentifier, 1);
 		}
 
 		if (wins == 1)
 		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", gameState->opponentData->enemyNameKey, losses + wins);
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "attempts_for_first_win", gameState->opponentData->enemyAnalyticsIdentifier, losses + wins);
 		}
 
 		// Analytics for winning
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyNameKey, wins);
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_wins", gameState->opponentData->enemyAnalyticsIdentifier, wins);
 
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{
 			gameState->opponentData->onRoundEnd(HexusOpponentData::Result::Win);
-		}
-
-		if (gameState->opponentData->rewardPool != nullptr)
-		{
-			std::vector<Item*> items = gameState->opponentData->rewardPool->getItems();
-
-			for (auto it = items.begin(); it != items.end(); it++)
-			{
-				Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
-
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemWon::create(), (*it)->getString(), (*it)->getIconResource()));
-
-				playerInventory->forceInsert(*it);	
-			}
 		}
 	}
 	else
@@ -157,11 +138,11 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 		if (wins == 0 && losses == 1)
 		{
-			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyNameKey, 0);
+			Analytics::sendEvent(AnalyticsCategories::Hexus, "first_game_result", gameState->opponentData->enemyAnalyticsIdentifier, 0);
 		}
 
 		// Analytics for losing
-		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyNameKey, losses);
+		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
 
 		if (gameState->opponentData->onRoundEnd != nullptr)
 		{

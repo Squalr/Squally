@@ -76,7 +76,6 @@ HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

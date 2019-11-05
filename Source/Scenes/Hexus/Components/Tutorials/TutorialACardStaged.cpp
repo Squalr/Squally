@@ -64,9 +64,9 @@ void TutorialACardStaged::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->binaryCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::binaryRowOffsetY + 256.0f));
-	this->decimalCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::decimalRowOffsetY + 256.0f));
-	this->hexCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::hexRowOffsetY + 256.0f));
+	this->binaryCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::binaryRowOffsetY + 212.0f));
+	this->decimalCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::decimalRowOffsetY + 212.0f));
+	this->hexCardArrow->setPosition(Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::hexRowOffsetY + 212.0f));
 }
 
 void TutorialACardStaged::initializeListeners()

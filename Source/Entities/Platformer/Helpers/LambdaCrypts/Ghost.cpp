@@ -76,7 +76,6 @@ HexusOpponentData* Ghost::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

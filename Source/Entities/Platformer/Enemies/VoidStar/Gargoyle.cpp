@@ -76,7 +76,6 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

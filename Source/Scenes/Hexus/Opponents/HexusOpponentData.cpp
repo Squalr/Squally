@@ -22,12 +22,11 @@ HexusOpponentData* HexusOpponentData::create(
 	Vec2 animationOffset,
 	Vec2 frameOffset,
 	Vec2 avatarOffset,
-	std::string enemyNameKey,
+	std::string enemyAnalyticsIdentifier,
 	HexusOpponentData::Strategy strategy,
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
-	MinMaxPool* rewardPool,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
@@ -38,12 +37,11 @@ HexusOpponentData* HexusOpponentData::create(
 		animationOffset,
 		frameOffset,
 		avatarOffset,
-		enemyNameKey,
+		enemyAnalyticsIdentifier,
 		strategy,
 		cardStyle,
 		strength,
 		cards,
-		rewardPool,
 		onRoundEnd,
 		stateOverride
 	);
@@ -60,12 +58,11 @@ HexusOpponentData::HexusOpponentData(
 	Vec2 animationOffset,
 	Vec2 frameOffset,
 	Vec2 avatarOffset,
-	std::string enemyNameKey,
+	std::string enemyAnalyticsIdentifier,
 	HexusOpponentData::Strategy strategy,
 	Card::CardStyle cardStyle,
 	float strength,
 	std::vector<CardData*> cards,
-	MinMaxPool* rewardPool,
 	std::function<void(Result)> onRoundEnd,
 	StateOverride* stateOverride)
 {
@@ -75,25 +72,18 @@ HexusOpponentData::HexusOpponentData(
 	this->animationOffset = animationOffset;
 	this->frameOffset = frameOffset;
 	this->avatarOffset = avatarOffset;
-	this->enemyNameKey = enemyNameKey;
+	this->enemyAnalyticsIdentifier = enemyAnalyticsIdentifier;
 	this->strategy = strategy;
 	this->cardStyle = cardStyle;
 	this->strength = strength;
-	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
 	this->onRoundEnd = onRoundEnd;
-	this->rewardPool = rewardPool;
 	this->stateOverride = stateOverride;
 	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
 		this->stateOverride->retain();
-	}
-
-	if (this->rewardPool != nullptr)
-	{
-		this->addChild(this->rewardPool);
 	}
 }
 
@@ -123,19 +113,6 @@ CardData* HexusOpponentData::getStrongestCard()
 	}
 
 	return best;
-}
-
-int HexusOpponentData::generateReward(float deckStrength)
-{
-	// This should give us a distribution where the mininum is 32 (easiest opponent) the maximum is 512 (hardest opponent), with a healthy weight to early opponents
-	// Formula: Lagrange interpolation over (0.0, 32), (0.3, 240), (1.0, 512)
-	const float alpha = -304.762f;
-	const float beta = 785.762f;
-	const float gamma = 32.0f;
-
-	int adjusted = int((deckStrength * deckStrength) * alpha + (deckStrength * beta) + gamma);
-
-	return MathUtils::clamp(adjusted, 0, 512);
 }
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)

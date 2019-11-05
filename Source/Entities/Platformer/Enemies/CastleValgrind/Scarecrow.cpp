@@ -76,7 +76,6 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

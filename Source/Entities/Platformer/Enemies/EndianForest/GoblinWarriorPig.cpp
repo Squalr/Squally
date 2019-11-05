@@ -78,7 +78,6 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

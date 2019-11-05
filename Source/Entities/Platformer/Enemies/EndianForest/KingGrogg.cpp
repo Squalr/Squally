@@ -76,7 +76,6 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

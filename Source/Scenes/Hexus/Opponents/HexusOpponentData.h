@@ -9,7 +9,6 @@
 
 class CardData;
 class Deck;
-class MinMaxPool;
 class StateOverride;
 
 class HexusOpponentData : public SmartNode
@@ -36,12 +35,11 @@ public:
 		cocos2d::Vec2 animationOffset,
 		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
-		std::string enemyNameKey,
+		std::string enemyAnalyticsIdentifier,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
-		MinMaxPool* rewardPool = nullptr,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 
@@ -52,12 +50,11 @@ public:
 		cocos2d::Vec2 animationOffset,
 		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
-		std::string enemyNameKey,
+		std::string enemyAnalyticsIdentifier,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
 		float strength,
 		std::vector<CardData*> cards,
-		MinMaxPool* rewardPool = nullptr,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
@@ -65,22 +62,19 @@ public:
 	Deck* getDeck();
 	CardData* getStrongestCard();
 
-	static int generateReward(float deckStrength);
 	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
 	void setIsLastInChapter();
 	bool getIsLastInChapter();
 
 	std::string backgroundResourceFile;
 	std::string animationResourceFile;
-	std::string enemyNameKey;
+	std::string enemyAnalyticsIdentifier;
 	float animationScale;
 	cocos2d::Vec2 animationOffset;
 	cocos2d::Vec2 avatarOffset;
 	cocos2d::Vec2 frameOffset;
 	float strength;
-	int reward;
 	Strategy strategy;
-	MinMaxPool* rewardPool;
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
 

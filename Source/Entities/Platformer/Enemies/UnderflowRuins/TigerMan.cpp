@@ -76,7 +76,6 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,

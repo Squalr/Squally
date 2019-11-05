@@ -76,7 +76,6 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 
 			}),
 			nullptr,
-			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
