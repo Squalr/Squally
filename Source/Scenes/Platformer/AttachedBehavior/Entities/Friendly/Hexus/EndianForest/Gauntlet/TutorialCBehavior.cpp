@@ -36,7 +36,7 @@ TutorialCBehavior::~TutorialCBehavior()
 
 MinMaxPool* TutorialCBehavior::generateReward()
 {
-	return CardPoolTutorial::create();
+	return nullptr;
 }
 
 std::string TutorialCBehavior::getWinLossSaveKey()

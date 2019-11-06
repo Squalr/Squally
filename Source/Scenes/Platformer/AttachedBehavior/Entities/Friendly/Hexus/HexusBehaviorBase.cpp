@@ -199,7 +199,7 @@ HexusOpponentData* HexusBehaviorBase::createOpponentData()
         this->entity->getScale(), // DEPRECATED
 		Vec2::ZERO, // DEPRECATED
         Vec2::ZERO, // DEPRECATED
-        this->entity->getDialogueOffset() - Vec2(0.0f, 128.0f),
+        this->entity->getDialogueOffset() - Vec2(0.0f, 72.0f),
         this->getWinLossSaveKey(),
         HexusOpponentData::Strategy::Random,
         Card::CardStyle::Light,
