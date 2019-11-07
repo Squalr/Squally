@@ -23,6 +23,7 @@
 #include "Strings/Platformer/Dialogue/Hexus/BetterLuckNextTime.h"
 #include "Strings/Platformer/Dialogue/Hexus/GoodGame.h"
 #include "Strings/Platformer/Dialogue/Hexus/WellPlayed.h"
+#include "Strings/Platformer/Dialogue/Hexus/HowAboutARematch.h"
 #include "Strings/Platformer/Dialogue/Hexus/HowAboutARoundOfHexus.h"
 #include "Strings/Platformer/Notifications/ItemWon.h"
 
@@ -91,14 +92,28 @@ void HexusBehaviorBase::onLoad()
 		}
 		else
 		{
-			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-				[=]()
-				{
-					HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-				}),
-				0.5f
-			);
+			if (!this->entity->getObjectStateOrDefault(this->getWinLossSaveKey(), Value(false)).asBool())
+			{
+				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+					[=]()
+					{
+						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+					}),
+					0.5f
+				);
+			}
+			else
+			{
+				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+					Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+					[=]()
+					{
+						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+					}),
+					0.5f
+				);
+			}
 		}
 	});
 }

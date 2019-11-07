@@ -24,7 +24,9 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
 
 	bool hasRunEvent;
 	Scrappy* scrappy;

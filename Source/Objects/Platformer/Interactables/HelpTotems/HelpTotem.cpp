@@ -68,7 +68,7 @@ void HelpTotem::initializeListeners()
 	{
 		if (this->hint != nullptr && this->isVisible())
 		{
-			this->speechBubble->runDialogue(this->hint->clone(), SpeechBubble::Direction::Centered);
+			this->speechBubble->runDialogue(this->hint->clone(), 2.0f, nullptr, SpeechBubble::Direction::Centered);
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

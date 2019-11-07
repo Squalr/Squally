@@ -87,13 +87,10 @@ void HelpSquallyHeal::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_TentHeal::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->scrappy->speechBubble->hideDialogue();
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_TentHeal::create(), 4.0f, [=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+				});
 			}),
 			nullptr
 		));

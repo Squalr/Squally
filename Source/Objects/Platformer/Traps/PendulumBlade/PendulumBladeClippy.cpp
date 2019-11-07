@@ -60,6 +60,6 @@ void PendulumBladeClippy::onEnterTransitionDidFinish()
 		localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create());
 	}
 
-	this->speechBubble->runDialogue(localizedString);
+	this->speechBubble->runDialogue(localizedString, SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

@@ -46,6 +46,6 @@ void IsAliveClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create(), SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

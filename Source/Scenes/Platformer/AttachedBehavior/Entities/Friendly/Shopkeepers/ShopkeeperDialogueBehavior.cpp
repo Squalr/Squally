@@ -56,13 +56,15 @@ void ShopkeeperDialogueBehavior::onLoad()
 			{
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Dialogue_Shopkeepers_HowToBuySomething::create(),
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Left,
+						DialogueEvents::BuildPreviewNode(this->entity, false),
+						DialogueEvents::BuildPreviewNode(this->squally, true)
+					),
 					[=]()
 					{
-					},
-					DialogueEvents::BuildPreviewNode(this->entity, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
+					}
 				));
 			}),
 			1.0f

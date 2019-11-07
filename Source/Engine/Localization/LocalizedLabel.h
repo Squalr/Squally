@@ -42,6 +42,7 @@ public:
 	void setLocalizedString(LocalizedString* localizedString);
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
+	void setFontSize(FontSize fontSize);
 	float getFontSize();
 	std::string getFont();
 	void toggleAllowTranslationEdit(bool allowTranslationEdit);

@@ -23,8 +23,10 @@ public:
 		Auto
 	};
 
-	void runDialogue(LocalizedString* localizedString, Direction direction = Direction::Auto);
+	void runDialogue(LocalizedString* localizedString, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto);
 	void hideDialogue();
+
+	static const float InfiniteDuration;
 
 private:
 	typedef SmartNode super;

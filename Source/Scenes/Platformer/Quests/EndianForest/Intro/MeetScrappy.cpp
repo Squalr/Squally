@@ -69,7 +69,7 @@ void MeetScrappy::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEvent(MeetScrappy::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequence();
+		this->runCinematicSequencePt1();
 	});
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
@@ -87,7 +87,7 @@ void MeetScrappy::onSkipped()
 	this->removeAllListeners();
 }
 
-void MeetScrappy::runCinematicSequence()
+void MeetScrappy::runCinematicSequencePt1()
 {
 	if (this->hasRunEvent)
 	{
@@ -114,25 +114,29 @@ void MeetScrappy::runCinematicSequence()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create());
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), 2.0f, [=]()
+				{
+					this->scrappy->droidBrief1Sound->play();
+					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), 4.0f, [=]()
+					{
+						this->scrappy->droidBrief1Sound->play();
+						this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), 4.0f, [=]()
+						{
+							this->runCinematicSequencePt2();
+						});
+					});
+				});
 			}),
-			DelayTime::create(2.0f),
-			CallFunc::create([=]()
-			{
-				this->scrappy->droidBrief1Sound->play();
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				this->scrappy->droidBrief1Sound->play();
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->hideDialogue();
-			}),
+			nullptr
+		));
+	}
+}
+
+void MeetScrappy::runCinematicSequencePt2()
+{
+	if (this->scrappy != nullptr)
+	{
+		this->scrappy->runAction(Sequence::create(
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
 			{

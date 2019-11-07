@@ -86,13 +86,10 @@ void FindSail::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->blackbeard->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->blackbeard->speechBubble->hideDialogue();
+				this->blackbeard->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create(), 4.0f, [=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+				});
 			}),
 			nullptr
 		));

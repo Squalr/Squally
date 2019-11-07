@@ -47,6 +47,6 @@ void MechanicalFlailClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_MechanicalFlailMov::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_MechanicalFlailMov::create(), SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

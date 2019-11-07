@@ -46,6 +46,6 @@ void SpeedGainClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_SpeedGainMul::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_SpeedGainMul::create(), SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

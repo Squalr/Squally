@@ -92,15 +92,17 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Quests_EndianForest_FindElriel_CantLeaveTown::create(),
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(this->squally, false),
+						DialogueEvents::BuildPreviewNode(this->chiron, true)
+					),
 					[=]()
 					{
 						this->isEngagedInDialogue = false;
 						this->dialogueCooldown = 6.0f;
-					},
-					DialogueEvents::BuildPreviewNode(this->squally, false),
-					DialogueEvents::BuildPreviewNode(this->chiron, true)
+					}
 				));
 			}
 			

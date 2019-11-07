@@ -86,13 +86,10 @@ void TalkToQueen::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->queenLiana->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->queenLiana->speechBubble->hideDialogue();
+				this->queenLiana->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create(), 4.0f, [=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+				});
 			}),
 			nullptr
 		));

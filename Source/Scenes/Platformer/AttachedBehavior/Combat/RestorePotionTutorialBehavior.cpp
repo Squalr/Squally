@@ -98,12 +98,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 				}),
 				CallFunc::create([=]()
 				{
-					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create());
-				}),
-				DelayTime::create(4.0f),
-				CallFunc::create([=]()
-				{
-					this->scrappy->speechBubble->hideDialogue();
+					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create(), 4.0f);
 				}),
 				nullptr
 			));

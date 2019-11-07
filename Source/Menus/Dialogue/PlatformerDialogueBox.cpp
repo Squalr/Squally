@@ -90,17 +90,26 @@ void PlatformerDialogueBox::initializeListeners()
 			this->leftSpeakerNode->removeAllChildren();
 			this->rightSpeakerNode->removeAllChildren();
 
-			if (args->leftContentNode != nullptr)
+			if (args->visualArgs.leftContentNode != nullptr)
 			{
-				GameUtils::changeParent(args->leftContentNode, this->leftSpeakerNode, false, false);
+				GameUtils::changeParent(args->visualArgs.leftContentNode, this->leftSpeakerNode, false, false);
 			}
 
-			if (args->rightContentNode != nullptr)
+			if (args->visualArgs.rightContentNode != nullptr)
 			{
-				GameUtils::changeParent(args->rightContentNode, this->rightSpeakerNode, false, false);
+				GameUtils::changeParent(args->visualArgs.rightContentNode, this->rightSpeakerNode, false, false);
 			}
 
-			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);
+			if (args->visualArgs.bigFont)
+			{
+				this->text->setFontSize(LocalizedLabel::FontSize::M1);
+			}
+			else
+			{
+				this->text->setFontSize(LocalizedLabel::FontSize::H3);
+			}
+
+			this->runDialogue(args->dialogue, args->visualArgs.dialogueDock, args->visualArgs.dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);
 		}
 	}));
 

@@ -46,6 +46,6 @@ void RestoreHealthClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_RestoreHealthInc::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_RestoreHealthInc::create(), SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

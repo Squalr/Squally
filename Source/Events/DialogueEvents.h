@@ -17,19 +17,30 @@ public:
 	static const std::string EventDialogueOpen;
 	static const std::string EventDialogueClose;
 
+	struct DialogueVisualArgs
+	{
+		DialogueBox::DialogueDock dialogueDock;
+		DialogueBox::DialogueAlignment dialogueAlignment;
+		cocos2d::Node* leftContentNode;
+		cocos2d::Node* rightContentNode;
+		bool bigFont;
+
+		DialogueVisualArgs(DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr, bool bigFont = false)
+		: dialogueDock(dialogueDock), dialogueAlignment(dialogueAlignment), leftContentNode(leftContentNode), rightContentNode(rightContentNode), bigFont(bigFont)
+		{
+		}
+	};
+
 	struct DialogueOpenArgs
 	{
 		LocalizedString* dialogue;
-		DialogueBox::DialogueDock dialogueDock;
-		DialogueBox::DialogueAlignment dialogueAlignment;
+		DialogueVisualArgs visualArgs;
 		std::function<void()> onDialogueClose;
-		cocos2d::Node* leftContentNode;
-		cocos2d::Node* rightContentNode;
 		bool unhijack;
 		bool allowSpace;
 
-		DialogueOpenArgs(LocalizedString* dialogue, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, cocos2d::Node* leftContentNode = nullptr, cocos2d::Node* rightContentNode = nullptr, bool unhijack = true, bool allowSpace = true)
-			: dialogue(dialogue), dialogueDock(dialogueDock), dialogueAlignment(dialogueAlignment), onDialogueClose(onDialogueClose), leftContentNode(leftContentNode), rightContentNode(rightContentNode), unhijack(unhijack), allowSpace(allowSpace)
+		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, bool unhijack = true, bool allowSpace = true)
+			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), unhijack(unhijack), allowSpace(allowSpace)
 		{
 		}
 	};

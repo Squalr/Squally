@@ -46,6 +46,6 @@ void WindClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_WindNop::create());
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_WindNop::create(), SpeechBubble::InfiniteDuration);
 	this->droidChatterSound->play();
 }

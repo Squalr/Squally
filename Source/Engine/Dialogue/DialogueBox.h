@@ -41,6 +41,7 @@ protected:
 	bool isDialogueEffectComplete();
 
 	cocos2d::Node* contentNode;
+	LocalizedLabel* text;
 
 	static const cocos2d::Color4F PanelColor;
 	static const cocos2d::Color4F PanelEdgeColor;
@@ -51,7 +52,6 @@ protected:
 private:
 	cocos2d::Node* containerNode;
 	cocos2d::DrawNode* panel;
-	LocalizedLabel* text;
 
 	bool dialogueEffectComplete;
 	float textWidth;

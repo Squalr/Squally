@@ -123,6 +123,19 @@ void LocalizedLabel::setStringReplacementVariables(std::vector<LocalizedString*>
 		this->localizedString->setStringReplacementVariables(stringReplacementVariables);
 	}
 }
+	
+void LocalizedLabel::setFontSize(FontSize fontSize)
+{
+	if (this->fontSize == fontSize)
+	{
+		return;
+	}
+
+	this->fontSize = fontSize;
+
+	// Refresh
+	this->onStringUpdate(this->localizedString);
+}
 
 float LocalizedLabel::getFontSize()
 {

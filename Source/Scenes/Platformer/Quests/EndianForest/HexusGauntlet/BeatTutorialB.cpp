@@ -102,13 +102,15 @@ void BeatTutorialB::registerDialogue()
 		{
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 				nullptr,
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
+                DialogueEvents::DialogueVisualArgs(
+                    DialogueBox::DialogueDock::Top,
+                    DialogueBox::DialogueAlignment::Left,
+                    DialogueEvents::BuildPreviewNode(this->mage, false),
+                    DialogueEvents::BuildPreviewNode(this->squally, true)
+                ),
 				[=]()
 				{
 				},
-				DialogueEvents::BuildPreviewNode(this->mage, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true),
 				false
 			));
 		}),

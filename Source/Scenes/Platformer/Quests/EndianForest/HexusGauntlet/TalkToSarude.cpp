@@ -98,73 +98,88 @@ void TalkToSarude::registerDialogue()
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WelcomeToMagesGuild::create(),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HowWouldYouLikeToPlay::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Ellipses::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::HardRight,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::HardRight,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true),
+				true
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_YouveNeverHeardOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_LegendHasItHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WishToLearn::create(),
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->sarude, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
 			[=]()
 			{
-			},
-			DialogueEvents::BuildPreviewNode(this->sarude, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			}
 		));
 
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
@@ -173,14 +188,16 @@ void TalkToSarude::registerDialogue()
 			{
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_FirstChallenge::create(),
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Left,
+						DialogueEvents::BuildPreviewNode(this->sarude, false),
+						DialogueEvents::BuildPreviewNode(this->squally, true)
+					),
 					[=]()
 					{
 						this->complete();
-					},
-					DialogueEvents::BuildPreviewNode(this->sarude, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
+					}
 				));
 			}),
 			1.0f

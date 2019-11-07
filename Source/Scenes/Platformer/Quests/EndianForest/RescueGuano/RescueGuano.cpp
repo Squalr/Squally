@@ -91,14 +91,17 @@ void RescueGuano::runRescueSequence()
 	{
 		DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_RescueGuano_Freedom::create(),
-			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->guano, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true),
+				true
+			),
 			[=]()
 			{
 				this->runRescueSequencePt2();
 			},
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true),
 			false
 		));
 	}, RescueGuano::TagPrisonDoor);
@@ -108,14 +111,16 @@ void RescueGuano::runRescueSequencePt2()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
-		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(this->guano, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		),
 		[=]()
 		{
 			this->runRescueSequencePt3();
 		},
-		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true),
 		false
 	));
 }
@@ -124,8 +129,12 @@ void RescueGuano::runRescueSequencePt3()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_HelpYouFindThings::create(),
-		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(this->guano, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		),
 		[=]()
 		{
 			this->guano->runAction(Sequence::create(
@@ -139,8 +148,6 @@ void RescueGuano::runRescueSequencePt3()
 			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
 			this->complete();
 		},
-		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true),
 		true
 	));
 }

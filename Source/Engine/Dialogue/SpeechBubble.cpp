@@ -1,5 +1,6 @@
 #include "SpeechBubble.h"
 
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
 
@@ -13,6 +14,7 @@
 
 using namespace cocos2d;
 
+const float SpeechBubble::InfiniteDuration = -1.0f;
 const Color4F SpeechBubble::BubbleColor = Color4F(Color4B(189, 215, 221, 196));
 const Color4F SpeechBubble::BubbleEdgeColor = Color4F(Color4B(47, 71, 78, 196));
 const Color4B SpeechBubble::BubbleTextColor = Color4B(47, 71, 78, 255);
@@ -89,7 +91,7 @@ void SpeechBubble::initializeListeners()
 	super::initializeListeners();
 }
 
-void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direction)
+void SpeechBubble::runDialogue(LocalizedString* localizedString, float sustainDuration, std::function<void()> onComplete, Direction direction)
 {
 	const Size padding = Size(16.0f, 16.0f);
 	const float centerAutoOffset = 256.0f;
@@ -175,6 +177,23 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->bubble->clear();
 	this->bubble->drawSolidRect(source, dest, SpeechBubble::BubbleColor);
 	this->bubble->drawRect(source, dest, SpeechBubble::BubbleEdgeColor);
+
+	if (sustainDuration >= 0.0f)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(sustainDuration),
+			CallFunc::create([=]()
+			{
+				this->hideDialogue();
+
+				if (onComplete != nullptr)
+				{
+					onComplete();
+				}
+			}),
+			nullptr
+		));
+	}
 }
 
 void SpeechBubble::hideDialogue()

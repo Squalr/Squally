@@ -87,17 +87,11 @@ void SpotOrcGrunt::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_OgreSpotted::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->hideDialogue();
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_OgreSpotted::create(), 4.0f, [=]()
+				{
+					PlatformerEvents::TriggerCinematicRestore();
+					this->scrappy->speechBubble->hideDialogue();
+				});
 			}),
 			nullptr
 		));
