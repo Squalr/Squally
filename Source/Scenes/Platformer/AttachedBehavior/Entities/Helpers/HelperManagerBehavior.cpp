@@ -14,6 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntities.h"
 #include "Events/HelperEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -21,6 +22,7 @@
 
 #include "Resources/EntityResources.h"
 
+#include "Strings/Platformer/Notifications/Party/HelperJoinedParty.h"
 
 using namespace cocos2d;
 
@@ -59,15 +61,15 @@ void HelperManagerBehavior::onLoad()
 {
 	this->buildAttachedBehaviorMap();
 
-	this->spawnHelper(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString());
+	this->spawnHelper(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString(), false);
 
 	this->entity->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 	{
-		this->spawnHelper(value.asString());
+		this->spawnHelper(value.asString(), true);
 	});
 }
 
-void HelperManagerBehavior::spawnHelper(std::string helperName)
+void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 {
 	ValueMap properties = ValueMap();
 
@@ -80,7 +82,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName)
 		// Abort -- if no behavior found, not a valid helper
 		return;
 	}
-
+	
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(helperName);
 	properties[GameObject::MapKeyAttachedBehavior] = Value(helperBehavior);
@@ -90,14 +92,28 @@ void HelperManagerBehavior::spawnHelper(std::string helperName)
 		properties,
 		[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
 		{
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-				this->entity,
-				deserializeArgs.gameObject,
-				ObjectEvents::SpawnMethod::Below,
-				ObjectEvents::PositionMode::Discard
-			));
+			PlatformerEntity* helper = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
 
-			deserializeArgs.gameObject->setPosition(this->entity->getPosition());
+			if (helper != nullptr)
+			{
+				if (notify)
+				{
+					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+						nullptr,
+						Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(helper->getEntityName()),
+						helper->getEmblemResource())
+					);
+				}
+
+				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+					this->entity,
+					deserializeArgs.gameObject,
+					ObjectEvents::SpawnMethod::Below,
+					ObjectEvents::PositionMode::Discard
+				));
+
+				deserializeArgs.gameObject->setPosition(this->entity->getPosition());
+			}
 		}
 	);
 

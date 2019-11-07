@@ -26,7 +26,7 @@
 #include "Strings/Platformer/Quests/EndianForest/Intro/GetYouPatched.h"
 #include "Strings/Platformer/Quests/EndianForest/Intro/DistressBeacon.h"
 #include "Strings/Platformer/Quests/EndianForest/Intro/YoureAlive.h"
-#include "Strings/Platformer/Notifications/Party/ScrappyJoinedParty.h"
+#include "Strings/Platformer/Notifications/Party/HelperJoinedParty.h"
 
 using namespace cocos2d;
 
@@ -154,7 +154,11 @@ void MeetScrappy::runCinematicSequencePt2()
 			{
 				this->scrappy->setVisible(false);
 
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(nullptr, Strings::Platformer_Notifications_Party_ScrappyJoinedParty::create(), EntityResources::Helpers_EndianForest_Scrappy_Emblem));
+				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+					nullptr,
+					Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(this->scrappy->getEntityName()),
+					this->scrappy->getEmblemResource()
+				));
 				HelperEvents::TriggerFindScrappy();
 				PlatformerEvents::TriggerCinematicRestore();
 

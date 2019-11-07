@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Notifications_Party_ScrappyJoinedParty : public LocalizedString
+	class Platformer_Notifications_Party_HelperJoinedParty : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_Party_ScrappyJoinedParty* create();
+		static Platformer_Notifications_Party_HelperJoinedParty* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Notifications_Party_ScrappyJoinedParty();
-		~Platformer_Notifications_Party_ScrappyJoinedParty();
+		Platformer_Notifications_Party_HelperJoinedParty();
+		~Platformer_Notifications_Party_HelperJoinedParty();
 	};
 }

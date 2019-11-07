@@ -39,146 +39,146 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringAr()
 	{
-		return "حذر! أرى عدوًا قادمًا. منذ أن انفتحت السماء ، انتشرت الوحوش إلى زوايا الأرض.";
+		return "حذر! أرى عدوًا قادمًا. منذ أن انفتحت السماء ، انتشرت الوحوش إلى زوايا العالم.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringBg()
 	{
-		return "Внимателен! Виждам враг напред. Откакто небето се отвори, чудовищата се разпространиха по ъглите на Земята.";
+		return "Внимателен! Виждам враг напред. Откакто небето се напука, чудовища се разпространиха до ъглите на царството.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringCs()
 	{
-		return "Opatrný! Před sebou vidím nepřítele. Od té doby, co se obloha rozlétla, se příšery rozšířily do koutů Země.";
+		return "Opatrný! Před sebou vidím nepřítele. Od té doby, co se nebe otevřelo, se příšery rozšířily do rohů říše.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringDa()
 	{
-		return "Forsigtig! Jeg ser en fjende fremad. Helt siden skyen har åbnet, har monstre spredt sig til jordens hjørner.";
+		return "Forsigtig! Jeg ser en fjende forude. Lige siden himlen knækkede op, har monstre spredt sig til verdenshjørner.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringDe()
 	{
-		return "Vorsichtig! Ich sehe einen Feind vor mir. Seitdem der Himmel aufgeplatzt ist, haben sich Monster in die Ecken der Erde ausgebreitet.";
+		return "Vorsichtig! Ich sehe einen Feind vor mir. Seitdem der Himmel aufgeplatzt ist, haben sich Monster in die Ecken des Reiches ausgebreitet.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringEl()
 	{
-		return "Προσεκτικός! Βλέπω έναν εχθρό μπροστά. Από τότε που ο ουρανός έσπασε ανοιχτά, τέρατα έχουν εξαπλωθεί στις γωνίες της Γης.";
+		return "Προσεκτικός! Βλέπω έναν εχθρό μπροστά. Από τότε που ο ουρανός έσπασε ανοιχτά, τέρατα έχουν εξαπλωθεί στις γωνιές του βασιλείου.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringEn()
 	{
-		return "Careful! I see an enemy ahead. Ever since the sky cracked open, monsters have spread to the corners of the Earth.";
+		return "Careful! I see an enemy ahead. Ever since the sky cracked open, monsters have spread to the corners of the realm.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringEs()
 	{
-		return "¡Cuidadoso! Veo un enemigo por delante. Desde que el cielo se abrió, los monstruos se han extendido a los rincones de la Tierra.";
+		return "¡Cuidado! Veo un enemigo por delante. Desde que el cielo se abrió, los monstruos se han extendido a los rincones del reino.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringEs419()
 	{
-		return "¡Cuidadoso! Veo un enemigo por delante. Desde que el cielo se abrió, los monstruos se han extendido a los rincones de la Tierra.";
+		return "¡Cuidado! Veo un enemigo por delante. Desde que el cielo se abrió, los monstruos se han extendido a los rincones del reino.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringFi()
 	{
-		return "Varovainen! Näen vihollisen eteenpäin. Siitä lähtien, kun taivas säröi auki, hirviöt ovat levinneet maan kulmiin.";
+		return "Varovainen! Näen vihollisen edessä. Siitä lähtien, kun taivas on säröillä, hirviöt ovat levinneet valtakunnan nurkkaan.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringFr()
 	{
-		return "Prudent! Je vois un ennemi à venir. Depuis que le ciel s'est ouvert, des monstres se sont répandus aux quatre coins de la Terre.";
+		return "Prudent! Je vois un ennemi à venir. Depuis que le ciel s'est ouvert, les monstres se sont répandus aux quatre coins du royaume.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringHu()
 	{
-		return "Óvatos! Látok egy ellenséget. Azóta, amikor az ég megrepedt, a szörnyek elterjedtek a Föld sarkaira.";
+		return "Óvatos! Látom az ellenséget. Azóta, hogy az ég kinyílt, a szörnyek elterjedtek a birodalom sarkaiba.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringIt()
 	{
-		return "Attento! Vedo un nemico davanti. Da quando il cielo si è aperto, i mostri si sono diffusi agli angoli della Terra.";
+		return "! attento Vedo un nemico avanti. Da quando il cielo si è aperto, i mostri si sono diffusi agli angoli del regno.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringJa()
 	{
-		return "気をつけて！私は敵を先に見ます。空が広がって以来ずっと、モンスターは地球の隅々まで広がりました。";
+		return "気をつけて！敵が先に見えます。空がひび割れて以来、モンスターは王国の隅々まで広がっています。";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringKo()
 	{
-		return "꼼꼼한! 나는 적을 앞둔다. 하늘이 깨진 이후로 괴물이 지구의 모서리로 퍼졌습니다.";
+		return "꼼꼼한! 전방의 적을 봅니다. 하늘이 갈라진 이래로 몬스터들은 그 영역의 구석으로 퍼졌습니다.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringNl()
 	{
-		return "Voorzichtig! Ik zie een vijand vooruit. Sinds de lucht opengebarsten is, hebben monsters verspreid naar de hoeken van de aarde.";
+		return "Voorzichtig! Ik zie een vijand vooruit. Sinds de lucht is opengebroken, hebben monsters zich verspreid naar de hoeken van het rijk.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringNo()
 	{
-		return "Forsiktig! Jeg ser en fiende fremover. Helt siden himmelen sprakk åpen, har monstre spredt seg til jordens hjørner.";
+		return "Forsiktig! Jeg ser en fiende foran. Helt siden himmelen sprakk opp, har monstre spredd seg til riket.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringPl()
 	{
-		return "Ostrożny! Widzę przed sobą wroga. Odkąd niebo pękło, potwory rozprzestrzeniły się na krańce Ziemi.";
+		return "Ostrożny! Przed sobą widzę wroga. Odkąd niebo pękło, potwory rozprzestrzeniły się w krańce królestwa.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringPt()
 	{
-		return "Cuidado! Eu vejo um inimigo à frente. Desde que o céu se abriu, monstros se espalharam pelos cantos da Terra.";
+		return "Cuidado! Eu vejo um inimigo à frente. Desde que o céu se abriu, os monstros se espalharam pelos cantos do reino.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringPtBr()
 	{
-		return "Cuidado! Eu vejo um inimigo à frente. Desde que o céu se abriu, monstros se espalharam pelos cantos da Terra.";
+		return "Cuidado! Eu vejo um inimigo à frente. Desde que o céu se abriu, os monstros se espalharam pelos cantos do reino.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringRo()
 	{
-		return "Atent! Văd un dușman înainte. De când cerul sa deschis, monștrii s-au răspândit în colțurile Pământului.";
+		return "Atent! Văd un inamic înainte. De când cerul s-a deschis, monștrii s-au răspândit în colțurile tărâmului.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringRu()
 	{
-		return "Осторожный! Я вижу врага впереди. С тех пор, как небо раскололось, монстры распространились по углам Земли.";
+		return "Осторожный! Я вижу врага впереди. С тех пор, как небо раскололось, монстры распространились по углам царства.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringSv()
 	{
-		return "Försiktig! Jag ser en fiende framåt. Ända sedan himlen knäckt öppet har monstrar spridit sig till jordens hörn.";
+		return "Försiktig! Jag ser en fiende framåt. Ända sedan himlen knäckte upp har monster spridit sig till riket.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringTh()
 	{
-		return "ระวัง! ฉันเห็นศัตรูข้างหน้า นับตั้งแต่ที่ท้องฟ้าเปิดออกสัตว์ประหลาดก็แพร่กระจายไปยังมุมโลก";
+		return "ระวัง! ฉันเห็นศัตรูข้างหน้า นับตั้งแต่ที่ท้องฟ้าเปิดออกสัตว์ประหลาดก็แพร่กระจายไปยังมุมของอาณาจักร";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringTr()
 	{
-		return "Dikkatli! İleride bir düşman görüyorum. Gökyüzü açıldığından beri, canavarlar Dünya'nın köşelerine yayıldı.";
+		return "Dikkatli! İleride bir düşman görüyorum. Gökyüzü açıldığından beri, canavarlar alemin köşelerine yayıldı.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringUk()
 	{
-		return "Обережно! Я бачу ворога вперед. З тих пір, як небо розкрилося, монстри поширилися по кутах Землі.";
+		return "Обережно! Я бачу попереду ворога. З тих пір, як небо розтріскалося, монстри поширилися на куточки царства.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringVi()
 	{
-		return "Cẩn thận! Tôi thấy một kẻ thù phía trước. Kể từ khi bầu trời nứt toác, quái vật đã lan đến các góc của Trái đất.";
+		return "Cẩn thận! Tôi thấy một kẻ thù phía trước. Kể từ khi bầu trời mở ra, quái vật đã lan đến các góc của vương quốc.";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringZhCn()
 	{
-		return "小心！我看到了前方的敌人。自从天空开裂以来，怪物已经蔓延到地球的角落。";
+		return "小心！我看到前方有敌人。自从天空裂开以来，怪物就蔓延到了世界的角落。";
 	}
 
 	std::string Platformer_Quests_EndianForest_Intro_OgreSpotted::getStringZhTw()
 	{
-		return "小心！我看到了前方的敵人。自從天空開裂以來，怪物已經蔓延到地球的角落。";
+		return "小心！我看到前方有敵人。自從天空裂開以來，怪物就蔓延到了世界的角落。";
 	}
 }
