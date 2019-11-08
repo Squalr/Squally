@@ -30,6 +30,7 @@
 #include "Objects/Platformer/Interactables/HackableHint.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemAttacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemEndOfDemo.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPickPocket.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemRequiredLevel.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSelfHack.h"

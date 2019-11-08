@@ -25,7 +25,7 @@ PocketPoolTownGuard* PocketPoolTownGuard::create(ValueMap& properties)
 
 PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, 1, 1)
 {
-	this->addItemToPool(HealthPotion::create(), 1.0f);
+	this->addItemToPool(TownKey::create(), 1.0f);
 }
 
 PocketPoolTownGuard::~PocketPoolTownGuard()

@@ -188,6 +188,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Offhands
 	this->deserializers[WoodenShield::SaveKeyWoodenShield] = [=]() { return (Item*)WoodenShield::create(); };
+
+	// Keys
+	this->deserializers[TownKey::SaveKeyTownKey] = [=]() { return (Item*)TownKey::create(); };
 }
 
 PlatformerItemDeserializer::~PlatformerItemDeserializer()

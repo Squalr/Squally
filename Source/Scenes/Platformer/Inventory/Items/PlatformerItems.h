@@ -65,3 +65,4 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/TaserRod.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WitchDoctorsWand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WoodenWand.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"

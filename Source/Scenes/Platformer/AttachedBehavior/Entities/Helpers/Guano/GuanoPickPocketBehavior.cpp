@@ -64,6 +64,11 @@ void GuanoPickPocketBehavior::onLoad()
 
 void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey)
 {
+	if (pocketPool == nullptr)
+	{
+		return;
+	}
+	
 	this->isPickPocketing = true;
 	this->entity->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(target).x));
 
