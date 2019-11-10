@@ -32,6 +32,7 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
 	this->itemsNode = Node::create();
+	this->onChangedEvent = nullptr;
 
 	this->load();
 
@@ -58,6 +59,11 @@ void Inventory::initializeListeners()
 		if (args != nullptr && args->instance != this)
 		{
 			this->load();
+
+			if (this->onChangedEvent != nullptr)
+			{
+				this->onChangedEvent();
+			}
 		}
 	}));
 }
@@ -116,6 +122,11 @@ void Inventory::load()
 	{
 		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
+}
+
+void Inventory::onInventoryChanged(std::function<void()> onChangedEvent)
+{
+	this->onChangedEvent = onChangedEvent;
 }
 
 std::vector<Item*> Inventory::getItems()

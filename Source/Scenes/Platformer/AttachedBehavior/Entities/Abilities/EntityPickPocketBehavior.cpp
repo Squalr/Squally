@@ -5,6 +5,7 @@
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Mouse.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -14,6 +15,7 @@
 #include "Menus/CursorSets.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -64,7 +66,7 @@ void EntityPickPocketBehavior::onLoad()
 	{
 		this->squally = squally;
 
-		this->currentHelperName = this->squally->getStateOrDefault(StateKeys::CurrentHelper, Value("")).asString();
+		this->currentHelperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{

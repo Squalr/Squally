@@ -35,10 +35,13 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void updateInteractMenuVisibility();
+
 	CollisionObject* portalCollision;
 	ClickableNode* lockButton;
 	ClickableNode* unlockButton;
 	InteractMenu* interactMenu;
+	InteractMenu* lockedMenu;
 
 	bool canInteract;
 	bool wasTripped;

@@ -17,6 +17,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Platformer/Objects/Doors/Locked.h"
+
 using namespace cocos2d;
 
 const std::string Portal::MapKeyPortal = "portal";
@@ -38,6 +40,7 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
+	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
 	this->wasTripped = false;
 	this->canInteract = false;
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
@@ -47,11 +50,13 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 
 	this->portalCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
+	this->lockedMenu->setPosition(offset);
 
 	this->addChild(this->portalCollision);
 	this->addChild(this->lockButton);
 	this->addChild(this->unlockButton);
 	this->addChild(this->interactMenu);
+	this->addChild(this->lockedMenu);
 }
 
 Portal::~Portal()
@@ -78,31 +83,34 @@ void Portal::initializeListeners()
 	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
 	{
 		this->isLocked = false;
+		this->updateInteractMenuVisibility();
 	});
  
 	this->portalCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = true;
 
-		if (!this->isLocked && !this->mapFile.empty())
+		if (this->mapFile.empty())
 		{
-			if (this->requiresInteraction)
-			{
-				this->interactMenu->show();
-			}
-			else
-			{
-				this->loadMap();
-			}
+			return CollisionObject::CollisionResult::DoNothing;
 		}
 
+		if (!this->isLocked && !this->requiresInteraction)
+		{
+			this->loadMap();
+		}
+		else
+		{
+			this->updateInteractMenuVisibility();
+		}
+		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 		 
 	this->portalCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = false;
-		this->interactMenu->hide();
+		this->updateInteractMenuVisibility();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -145,18 +153,13 @@ void Portal::onDeveloperModeDisable()
 void Portal::lock(bool animate)
 {
 	this->isLocked = true;
-	this->interactMenu->hide();
+	this->updateInteractMenuVisibility();
 }
 
 void Portal::unlock(bool animate)
 {
 	this->isLocked = false;
-	this->interactMenu->hide();
-
-	if (this->canInteract && !this->mapFile.empty())
-	{
-		this->interactMenu->show();
-	}
+	this->updateInteractMenuVisibility();
 
 	this->broadcastMapEvent(this->sendEvent, ValueMap());
 }
@@ -184,5 +187,33 @@ void Portal::loadMap()
 			}),
 			nullptr
 		));
+	}
+}
+
+void Portal::updateInteractMenuVisibility()
+{
+	if (!this->requiresInteraction)
+	{
+		this->interactMenu->hide();
+		this->lockedMenu->hide();
+		return;
+	}
+
+	if (this->isLocked && this->canInteract)
+	{
+		this->lockedMenu->show();
+	}
+	else
+	{
+		this->lockedMenu->hide();
+	}
+
+	if (!this->isLocked && this->canInteract)
+	{
+		this->interactMenu->show();
+	}
+	else
+	{
+		this->interactMenu->hide();
 	}
 }

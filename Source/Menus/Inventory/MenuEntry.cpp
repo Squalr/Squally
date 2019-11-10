@@ -51,7 +51,11 @@ void MenuEntry::initializePositions()
 	super::initializePositions();
 
 	this->label->setPositionX(-MenuEntry::LabelSize.width / 2.0f);
-	this->icon->setPositionX(-MenuEntry::LabelSize.width / 2.0f + 16.0f);
+
+	if (this->icon != nullptr)
+	{
+		this->icon->setPositionX(-MenuEntry::LabelSize.width / 2.0f + 16.0f);
+	}
 }
 
 void MenuEntry::hideIcon()

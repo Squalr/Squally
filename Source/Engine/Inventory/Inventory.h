@@ -54,6 +54,7 @@ public:
 	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr, bool doSave = true);
 	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr, bool doSave = true);
 	void save();
+	void onInventoryChanged(std::function<void()> onChangedEvent);
 
 protected:
 	Inventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);
@@ -75,6 +76,7 @@ private:
 	typedef SmartNode super;
 
 	cocos2d::Node* itemsNode;
+	std::function<void()> onChangedEvent;
 
 	std::string saveKey;
 
