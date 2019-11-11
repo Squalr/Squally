@@ -215,6 +215,7 @@ const std::string ObjectResources::Doors_WoodStronghold_WOOD_BACK = "Private/Pla
 const std::string ObjectResources::Doors_WoodStronghold_WOOD_FRONT = "Private/Platformer/Objects/Doors/WoodStronghold/WOOD FRONT.png";
 const std::string ObjectResources::Doors_WoodStronghold_WOOD_G = "Private/Platformer/Objects/Doors/WoodStronghold/WOOD-G.jpg";
 const std::string ObjectResources::Interactive_Help_HelpTotem = "Private/Platformer/Objects/Interactive/Help/HelpTotem.png";
+const std::string ObjectResources::Interactive_Help_HelpTotemDeactivated = "Private/Platformer/Objects/Interactive/Help/HelpTotemDeactivated.png";
 const std::string ObjectResources::Interactive_Help_QuestionMark = "Private/Platformer/Objects/Interactive/Help/QuestionMark.png";
 const std::string ObjectResources::Interactive_Help_TotemGlow = "Private/Platformer/Objects/Interactive/Help/TotemGlow.png";
 const std::string ObjectResources::Interactive_LifeStone = "Private/Platformer/Objects/Interactive/LifeStone.png";

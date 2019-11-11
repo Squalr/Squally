@@ -14,8 +14,6 @@
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
 #include "Events/PlatformerEvents.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerMode.h"
-
 using namespace cocos2d;
 
 const std::string FindSail::MapKeyQuest = "find-sail";
@@ -77,20 +75,5 @@ void FindSail::runCinematicSequence()
 
 	if (this->blackbeard != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
-		this->blackbeard->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-			}),
-			CallFunc::create([=]()
-			{
-				this->blackbeard->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create(), 4.0f, [=]()
-				{
-					PlatformerEvents::TriggerCinematicRestore();
-				});
-			}),
-			nullptr
-		));
 	}
 }

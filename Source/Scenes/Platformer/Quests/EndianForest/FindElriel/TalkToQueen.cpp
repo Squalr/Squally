@@ -14,8 +14,6 @@
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Events/PlatformerEvents.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerMode.h"
-
 using namespace cocos2d;
 
 const std::string TalkToQueen::MapKeyQuest = "talk-to-queen";
@@ -77,20 +75,5 @@ void TalkToQueen::runCinematicSequence()
 
 	if (this->queenLiana != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
-		this->queenLiana->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-			}),
-			CallFunc::create([=]()
-			{
-				this->queenLiana->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create(), 4.0f, [=]()
-				{
-					PlatformerEvents::TriggerCinematicRestore();
-				});
-			}),
-			nullptr
-		));
 	}
 }

@@ -2,8 +2,11 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Scrappy;
+class HelpTotem;
+class MagePortal;
+class Marcel;
 class QuestLine;
+class Squally;
 
 class TeachHackerMode : public QuestTask
 {
@@ -24,8 +27,15 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
 
 	bool hasRunEvent;
-	Scrappy* scrappy;
+	HelpTotem* helpTotem;
+	MagePortal* portal;
+	Marcel* marcel;
+	Squally* squally;
+
+	static const std::string TagQuestPortal;
+	static const std::string TagHelpTotemHacking;
 };
