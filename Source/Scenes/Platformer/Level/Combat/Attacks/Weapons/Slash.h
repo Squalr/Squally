@@ -2,7 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class Sound;
+class WorldSound;
 
 class Slash : public PlatformerAttack
 {
@@ -24,6 +24,6 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	Sound* slashSound;
-	Sound* hitSound;
+	WorldSound* slashSound;
+	WorldSound* hitSound;
 };

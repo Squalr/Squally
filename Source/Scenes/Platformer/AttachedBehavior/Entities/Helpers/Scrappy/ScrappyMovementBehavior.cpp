@@ -57,7 +57,7 @@ void ScrappyMovementBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 
 	this->scheduleUpdate();
 }

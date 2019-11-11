@@ -11,7 +11,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -39,7 +39,7 @@ GatePuzzleDoor::GatePuzzleDoor(ValueMap& properties) : super(properties,
 {
 	this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_Gate_Gate);
 	this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_Gate_Front);
-	this->doorOpenSound = Sound::create();
+	this->doorOpenSound = WorldSound::create();
 
 	this->doorNode->addChild(this->door);
 	this->frontNode->addChild(this->front);

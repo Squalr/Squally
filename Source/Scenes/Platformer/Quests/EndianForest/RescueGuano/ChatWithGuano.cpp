@@ -56,17 +56,17 @@ void ChatWithGuano::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
-	});
+	}, Guano::MapKeyGuano);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+	}, Scrappy::MapKeyScrappy);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
@@ -75,7 +75,7 @@ void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 	{
 		this->mulDoor = mulDoor;
 		this->mulDoor->toggleHackable(false);
-	});
+	}, MulDoor::MapKeyMulDoor);
 
 	this->listenForMapEvent(ChatWithGuano::EventExplainDoor, [=](ValueMap)
 	{

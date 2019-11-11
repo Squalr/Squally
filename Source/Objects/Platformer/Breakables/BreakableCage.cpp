@@ -7,12 +7,13 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
-#include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"
+#include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -34,6 +35,7 @@ BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(pro
 	this->cage = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->cageTop = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->explosion = SmartAnimationSequenceNode::create();
+	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_Explosion);
 
 	this->cageBottom->addChild(Sprite::create(ObjectResources::Collectables_Animals_CageBottom));
 	this->cage->addChild(Sprite::create(ObjectResources::Collectables_Animals_CageSide));
@@ -48,6 +50,7 @@ BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(pro
 	this->addChild(this->cage);
 	this->addChild(this->cageTop);
 	this->addChild(this->explosion);
+	this->addChild(this->breakSound);
 }
 
 BreakableCage::~BreakableCage()
@@ -95,6 +98,7 @@ void BreakableCage::onBreak()
 	this->cageBottom->setPhysicsEnabled(true);
 	this->cage->setPhysicsEnabled(true);
 	this->cageTop->setPhysicsEnabled(true);
+	this->breakSound->play();
 
 	this->cageBottom->setVelocity(Vec2(-12800.0f, 7600.0f));
 	this->cage->setVelocity(Vec2(-6400.0f, 5600.0f));

@@ -12,7 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -99,7 +99,7 @@ void MeetScrappy::runCinematicSequencePt1()
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
-		positionA = cinematicMarker->getPosition();
+		positionA = GameUtils::getWorldCoords(cinematicMarker);
 	}), MeetScrappy::TagScrappyStop);
 
 	if (this->scrappy != nullptr)
@@ -145,7 +145,7 @@ void MeetScrappy::runCinematicSequencePt2()
 				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
 				{
 					positionB = GameUtils::getWorldCoords(squally);
-				}));
+				}), Squally::MapKeySqually);
 
 				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),

@@ -14,7 +14,7 @@ class InteractMenu;
 class LocalizedLabel;
 class SmartAnimationSequenceNode;
 class SmartClippingNode;
-class Sound;
+class WorldSound;
 
 class PuzzleDoorBase : public Portal
 {
@@ -47,7 +47,7 @@ protected:
 	cocos2d::Node* doorNode;
 	SmartClippingNode* doorClip;
 	cocos2d::Node* frontNode;
-	Sound* doorOpenSound;
+	WorldSound* doorOpenSound;
 
 	static const std::string UnlockedSaveKey;
 

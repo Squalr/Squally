@@ -6,7 +6,7 @@
 class HexusOpponentData;
 class LocalizedString;
 class SmartAnimationSequenceNode;
-class Sound;
+class WorldSound;
 
 class Scrappy : public PlatformerFriendly
 {
@@ -19,10 +19,10 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	Sound* droidAlarmedSound;
-	Sound* droidBrief1Sound;
-	Sound* droidBrief2Sound;
-	Sound* droidChatterSound;
+	WorldSound* droidAlarmedSound;
+	WorldSound* droidBrief1Sound;
+	WorldSound* droidBrief2Sound;
+	WorldSound* droidChatterSound;
 
 	static const std::string MapKeyScrappy;
 

@@ -77,7 +77,7 @@ void TargetSelectionMenu::initializeListeners()
 
 							*isHandled = true;
 						}
-					}));
+					}), PlatformerEnemy::PlatformerEnemyTag);
 
 					this->allowedSelection = AllowedSelection::Enemy;
 					this->setEntityClickCallbacks();
@@ -97,7 +97,7 @@ void TargetSelectionMenu::initializeListeners()
 
 							*isHandled = true;
 						}
-					}));
+					}), PlatformerFriendly::PlatformerFriendlyTag);
 
 					this->allowedSelection = AllowedSelection::Player;
 					this->setEntityClickCallbacks();
@@ -168,7 +168,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 				{
 					targetEntityGroup.push_back(entity);
 				}
-			}));
+			}), PlatformerFriendly::PlatformerFriendlyTag);
 
 			break;
 		}
@@ -180,7 +180,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 				{
 					targetEntityGroup.push_back(entity);
 				}
-			}));
+			}), PlatformerEnemy::PlatformerEnemyTag);
 
 			break;
 		}
@@ -192,7 +192,7 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 				{
 					targetEntityGroup.push_back(entity);
 				}
-			}));
+			}), PlatformerEnemy::PlatformerEnemyTag);
 
 			break;
 		}
@@ -252,7 +252,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 				this->selectEntity(entity);
 			});
 		}
-	}));
+	}), PlatformerEntity::PlatformerEntityTag);
 }
 
 void TargetSelectionMenu::clearEntityClickCallbacks()
@@ -265,5 +265,5 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 		{
 			selection->clearEntityClickCallbacks();
 		}
-	}));
+	}), PlatformerEntity::PlatformerEntityTag);
 }

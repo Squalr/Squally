@@ -59,7 +59,7 @@ void PortalSpawn::initializeListeners()
 			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 			{
 				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
-			}));
+			}), Squally::MapKeySqually);
 		}
 	}));
 }

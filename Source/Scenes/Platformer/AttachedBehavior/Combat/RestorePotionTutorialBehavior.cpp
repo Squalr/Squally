@@ -13,7 +13,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
@@ -68,7 +68,7 @@ void RestorePotionTutorialBehavior::onLoad()
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+	}, Scrappy::MapKeyScrappy);
 
 	HackableEvents::TriggerDisallowHackerMode();
 }

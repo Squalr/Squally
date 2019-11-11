@@ -12,16 +12,16 @@ class CollisionObject;
 class SmartAnimationSequenceNode;
 class WorldSound;
 
-class Tent : public HackableObject
+class LifeStone : public HackableObject
 {
 public:
-	static Tent* create(cocos2d::ValueMap& properties);
+	static LifeStone* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTent;
+	static const std::string MapKeyLifeStone;
 
 protected:
-	Tent(cocos2d::ValueMap& properties);
-	virtual ~Tent();
+	LifeStone(cocos2d::ValueMap& properties);
+	~LifeStone();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -32,12 +32,9 @@ private:
 	typedef HackableObject super;
 
 	void runHealAnimation(bool reRun = false);
-	cocos2d::PhysicsBody* createTentTopCollision();
 
-	cocos2d::Sprite* tentBack;
+	cocos2d::Sprite* lifeStone;
 	SmartAnimationSequenceNode* healAnimation;
-	cocos2d::Sprite* tentFront;
-	CollisionObject* topCollision;
 	CollisionObject* healCollision;
 	WorldSound* healSound;
 	

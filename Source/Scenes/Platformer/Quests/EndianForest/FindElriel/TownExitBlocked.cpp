@@ -12,7 +12,6 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -66,7 +65,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 
 	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
@@ -108,7 +107,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 			
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
-	});
+	}, Chiron::MapKeyChiron);
 }
 
 void TownExitBlocked::onComplete()

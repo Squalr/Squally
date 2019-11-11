@@ -242,7 +242,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 void SaveSelectMenu::loadSave()
 {
 	bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
-	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Intro)).asString();
+	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
 	
 	PlatformerMap* map = PlatformerMap::create(mapFile);
 

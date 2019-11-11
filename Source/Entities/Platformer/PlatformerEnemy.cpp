@@ -20,6 +20,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEnemy::MapKeyBattleAttachedBehavior = "battle-behavior";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
+const std::string PlatformerEnemy::PlatformerEnemyTag = "platformer-enemy";
 
 PlatformerEnemy::PlatformerEnemy(
 	ValueMap& properties,
@@ -45,6 +46,9 @@ PlatformerEnemy::PlatformerEnemy(
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
 	this->iouTable = std::tuple<int, int>();
 	this->dropInventory = Inventory::create();
+
+	// Tag all entities by class and by their name to optimize object queries (ObjectEvents.h)
+	this->addTag(PlatformerEnemy::PlatformerEnemyTag);
 
 	this->addChild(this->dropInventory);
 }

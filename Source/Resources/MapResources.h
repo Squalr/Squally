@@ -13,7 +13,6 @@ namespace MapResources
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Quests;
 	extern const std::string EndianForest_Forest;
-	extern const std::string EndianForest_Intro;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
 	extern const std::string EndianForest_Mages_Gauntlet_3;
@@ -33,6 +32,7 @@ namespace MapResources
 	extern const std::string EndianForest_Town_Smith;
 	extern const std::string EndianForest_Zone_1_0;
 	extern const std::string EndianForest_Zone_1_1;
+	extern const std::string EndianForest_Zone_1_2;
 	extern const std::string EndianForest_Zone_2_0;
 	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string SeaSharpCaverns_Caverns;

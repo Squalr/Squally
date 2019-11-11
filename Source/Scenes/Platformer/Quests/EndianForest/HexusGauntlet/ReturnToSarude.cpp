@@ -54,12 +54,12 @@ void ReturnToSarude::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
-	});
+	}, Sarude::MapKeySarude);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{

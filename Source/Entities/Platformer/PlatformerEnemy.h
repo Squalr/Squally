@@ -20,6 +20,7 @@ public:
 
 	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
+	static const std::string PlatformerEnemyTag;
 
 protected:
 	PlatformerEnemy(cocos2d::ValueMap& properties,
@@ -30,7 +31,7 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
-	virtual ~PlatformerEnemy();
+	~PlatformerEnemy();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

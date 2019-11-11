@@ -89,7 +89,8 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 		}
 	);
 
-	this->getPhysicsWorld()->setAutoStep(false);
+	// ZAC: Disabled for now. Auto step seems valuable actually.
+	// this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->menuHud->addChild(this->cipher);
@@ -280,7 +281,8 @@ void PlatformerMap::update(float dt)
 	super::update(dt);
 
 	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
-	this->getPhysicsWorld()->step(1.0f / 60.0f);
+	// ZAC: Nevermind. This does not seem to be an issue, and auto-step seems to make the game run much smoother in debug/slow PCs.
+	// this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
 bool PlatformerMap::loadMap(std::string mapResource)

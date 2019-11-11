@@ -45,7 +45,7 @@ void FollowMovementBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void FollowMovementBehavior::update(float dt)

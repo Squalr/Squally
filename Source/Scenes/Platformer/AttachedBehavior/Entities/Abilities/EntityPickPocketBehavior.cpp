@@ -72,7 +72,7 @@ void EntityPickPocketBehavior::onLoad()
 		{
 			this->currentHelperName = value.asString();
 		});
-	});
+	}, Squally::MapKeySqually);
 
 	this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
 	{

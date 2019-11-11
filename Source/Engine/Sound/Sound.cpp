@@ -12,18 +12,17 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-Sound* Sound::create(std::string soundResource, bool isPositional)
+Sound* Sound::create(std::string soundResource)
 {
-	Sound* instance = new Sound(soundResource, isPositional);
+	Sound* instance = new Sound(soundResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Sound::Sound(std::string soundResource, bool isPositional) : super(soundResource)
+Sound::Sound(std::string soundResource) : super(soundResource)
 {
-	this->toggleCameraDistanceFade(isPositional);
 }
 
 Sound::~Sound()

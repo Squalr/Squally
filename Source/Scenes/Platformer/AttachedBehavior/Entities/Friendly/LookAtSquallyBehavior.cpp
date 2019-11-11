@@ -43,7 +43,7 @@ void LookAtSquallyBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void LookAtSquallyBehavior::update(float dt)

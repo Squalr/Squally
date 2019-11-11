@@ -11,7 +11,6 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
 #include "Events/PlatformerEvents.h"
 
@@ -45,7 +44,7 @@ void FindSail::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{
 		this->blackbeard = blackbeard;
-	});
+	}, Blackbeard::MapKeyBlackbeard);
 }
 
 void FindSail::onActivate(bool isActiveThroughSkippable)

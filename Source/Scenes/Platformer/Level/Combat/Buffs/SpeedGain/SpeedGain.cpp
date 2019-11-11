@@ -9,7 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -47,8 +47,8 @@ SpeedGain::SpeedGain(PlatformerEntity* caster, PlatformerEntity* target, int hea
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->impactSound = Sound::create(SoundResources::Platformer_Attacks_Spells_Heal2);
-	this->healSound = Sound::create(SoundResources::Platformer_Attacks_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Attacks_Spells_Heal2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Attacks_Spells_Ding1);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);

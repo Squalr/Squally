@@ -9,7 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
-class Sound;
+class WorldSound;
 
 class BreakableCage : public BreakableBase
 {
@@ -31,7 +31,7 @@ protected:
 private:
 	typedef BreakableBase super;
 
-	Sound* breakSound;
+	WorldSound* breakSound;
 	SmartAnimationSequenceNode* explosion;
 	CollisionObject* cageBottom;
 	CollisionObject* cage;

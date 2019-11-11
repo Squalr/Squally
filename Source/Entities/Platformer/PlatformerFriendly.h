@@ -8,6 +8,7 @@ class ClickableNode;
 class PlatformerFriendly : public PlatformerEntity
 {
 public:
+	static const std::string PlatformerFriendlyTag;
 
 protected:
 	PlatformerFriendly(cocos2d::ValueMap& properties,
@@ -21,7 +22,7 @@ protected:
 		std::string inventorySaveKey = "",
 		std::string equipmentSaveKey = "",
 		std::string currencySaveKey = "");
-	virtual ~PlatformerFriendly();
+	~PlatformerFriendly();
 
 private:
 	typedef PlatformerEntity super;

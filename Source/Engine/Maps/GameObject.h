@@ -21,6 +21,7 @@ public:
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
+	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
 	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
 	int getStateOrDefaultInt(std::string key, int value);
@@ -88,6 +89,7 @@ public:
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
 	static const std::string MapKeyTag;
+	static const std::string MapKeyTags;
 	static const std::string MapKeyPoints;
 	static const std::string MapKeyPolyLinePoints;
 	static const std::string MapKeyRotation;
@@ -130,7 +132,7 @@ public:
 protected:
 	GameObject();
 	GameObject(const cocos2d::ValueMap& properties);
-	virtual ~GameObject();
+	~GameObject();
 	
 	void onEnter() override;
 	void initializeListeners() override;
@@ -149,7 +151,7 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
-	std::string tag;
+	std::set<std::string> tags;
 	bool zSorted;
 	cocos2d::Node* attachedBehaviorNode;
 	std::string uniqueIdentifier;

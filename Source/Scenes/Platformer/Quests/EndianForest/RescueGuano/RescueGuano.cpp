@@ -11,7 +11,6 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -60,12 +59,12 @@ void RescueGuano::onLoad(QuestState questState)
 		{
 			this->guano->despawn();
 		}
-	});
+	}, Guano::MapKeyGuano);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void RescueGuano::onActivate(bool isActiveThroughSkippable)

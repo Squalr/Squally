@@ -11,7 +11,6 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Events/PlatformerEvents.h"
 
@@ -45,7 +44,7 @@ void TalkToQueen::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
-	});
+	}, QueenLiana::MapKeyQueenLiana);
 }
 
 void TalkToQueen::onActivate(bool isActiveThroughSkippable)

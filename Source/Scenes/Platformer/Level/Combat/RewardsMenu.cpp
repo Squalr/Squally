@@ -126,7 +126,7 @@ void RewardsMenu::loadRewards()
 		{
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
 		}
-	}));
+	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	this->expValue->setString(std::to_string(totalExpGain));
 }

@@ -51,7 +51,7 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 	
 	if (questState == QuestState::Complete)
 	{

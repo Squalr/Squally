@@ -77,7 +77,7 @@ void EnemyAIHelper::performAIActions(TimelineEntry* attackingEntity)
 		{
 			enemyEntities.push_back(entity);
 		}
-	}));
+	}), PlatformerEntity::PlatformerEntityTag);
 
 	PlatformerEntity* target = this->selectTarget(attackingEntity, playerEntities, enemyEntities);
 	PlatformerAttack* attack = this->selectAttack(attackingEntity, playerEntities, enemyEntities);

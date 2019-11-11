@@ -107,6 +107,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemSelfHack::MapKeyHelpTotemSelfHack] = [=](ValueMap properties) { return (GameObject*)HelpTotemSelfHack::create(properties); };
 	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
+	this->deserializers[LifeStone::MapKeyLifeStone] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[MagicWall::MapKeyMagicWall] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };

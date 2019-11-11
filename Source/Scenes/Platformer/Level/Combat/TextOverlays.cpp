@@ -214,7 +214,7 @@ void TextOverlays::showExpBars(int expGain)
 		expProgressBar->setPosition(Vec2(0.0f, 160.0f));
 
 		entityIndex++;
-	}));
+	}), PlatformerFriendly::PlatformerFriendlyTag);
 }
 
 void TextOverlays::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label)

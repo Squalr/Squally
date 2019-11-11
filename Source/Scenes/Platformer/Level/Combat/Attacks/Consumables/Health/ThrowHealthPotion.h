@@ -2,7 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class Sound;
+class WorldSound;
 
 class ThrowHealthPotion : public PlatformerAttack
 {
@@ -25,5 +25,5 @@ private:
 
 	PlatformerAttack* cloneInternal() override;
 
-	Sound* throwSound;
+	WorldSound* throwSound;
 };

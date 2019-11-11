@@ -87,7 +87,7 @@ void CombatHud::bindStatsBars()
 		statsBars->setStatsTarget(entity);
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
-	}));
+	}), PlatformerFriendly::PlatformerFriendlyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity)
 	{
@@ -96,7 +96,7 @@ void CombatHud::bindStatsBars()
 		statsBars->setStatsTarget(entity);
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);
-	}));
+	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	this->initializePositions();
 }

@@ -11,7 +11,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 
@@ -45,7 +45,7 @@ void TeachHackerMode::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+	}, Scrappy::MapKeyScrappy);
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)

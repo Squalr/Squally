@@ -46,7 +46,7 @@ void KillTheTroll::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void KillTheTroll::onActivate(bool isActiveThroughSkippable)

@@ -158,7 +158,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 				));
 			}
 		}
-	}));
+	}), Squally::MapKeySqually);
 
 	/*
 	ASM(push ZAX);

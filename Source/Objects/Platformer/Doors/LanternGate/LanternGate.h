@@ -8,13 +8,6 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class CollisionObject;
-class ConstantString;
-class InteractMenu;
-class LocalizedLabel;
-class SmartAnimationSequenceNode;
-class SmartClippingNode;
-class Sound;
 
 class LanternGate : public Portal
 {

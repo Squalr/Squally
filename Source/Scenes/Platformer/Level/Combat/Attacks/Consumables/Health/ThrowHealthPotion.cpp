@@ -3,7 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
 
@@ -25,7 +25,7 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 
 ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Projectiles_ItemThrow1);
+	this->throwSound = WorldSound::create(SoundResources::Platformer_Attacks_Physical_Projectiles_ItemThrow1);
 
 	this->addChild(this->throwSound);
 }

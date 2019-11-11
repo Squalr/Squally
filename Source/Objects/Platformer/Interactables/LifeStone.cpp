@@ -1,4 +1,4 @@
-#include "Tent.h"
+#include "LifeStone.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -29,73 +29,61 @@
 
 using namespace cocos2d;
 
-const std::string Tent::MapKeyTent = "tent";
+const std::string LifeStone::MapKeyLifeStone = "life-stone";
 
-Tent* Tent::create(ValueMap& properties)
+LifeStone* LifeStone::create(ValueMap& properties)
 {
-	Tent* instance = new Tent(properties);
+	LifeStone* instance = new LifeStone(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Tent::Tent(ValueMap& properties) : super(properties)
+LifeStone::LifeStone(ValueMap& properties) : super(properties)
 {
-	this->tentBack = Sprite::create(ObjectResources::Interactive_TentBack);
+	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
-	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
-	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Attacks_Spells_Heal4);
 	this->isAnimating = false;
 	
 	this->addChild(this->healCollision);
-	this->addChild(this->topCollision);
-	this->addChild(this->tentBack);
+	this->addChild(this->lifeStone);
 	this->addChild(this->healAnimation);
-	this->addChild(this->tentFront);
 	this->addChild(this->healSound);
 }
 
-Tent::~Tent()
+LifeStone::~LifeStone()
 {
 }
 
-void Tent::onEnter()
+void LifeStone::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void Tent::onEnterTransitionDidFinish()
+void LifeStone::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
 	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
 }
 
-void Tent::initializePositions()
+void LifeStone::initializePositions()
 {
 	super::initializePositions();
 
-	this->tentBack->setPosition(Vec2(-132.0f, -140.0f - 32.0f));
-	this->healCollision->setPosition(Vec2(0.0f, -160.0f - 32.0f));
-	this->healAnimation->setPosition(Vec2(0.0f, -160.0f - 32.0f));
-	this->topCollision->setPosition(Vec2(-8.0f, 320.0f - 32.0f));
-	this->tentFront->setPosition(Vec2(0.0f, -16.0f));
+	this->lifeStone->setPosition(Vec2(0.0f, 0.0f));
+	this->healCollision->setPosition(Vec2(0.0f, -16.0f));
+	this->healAnimation->setPosition(Vec2(0.0f, -96.0f));
 }
 
-void Tent::initializeListeners()
+void LifeStone::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->topCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
-	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
 
 	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
@@ -117,7 +105,7 @@ void Tent::initializeListeners()
 	});
 }
 
-void Tent::runHealAnimation(bool reRun)
+void LifeStone::runHealAnimation(bool reRun)
 {
 	if (this->isAnimating && !reRun)
 	{
@@ -138,18 +126,4 @@ void Tent::runHealAnimation(bool reRun)
 			this->runHealAnimation(true);
 		}
 	});
-}
-
-PhysicsBody* Tent::createTentTopCollision()
-{
-	std::vector<Vec2> points = std::vector<Vec2>();
-
-	points.push_back(Vec2(0.0f, 0.0f));
-	points.push_back(Vec2(-336.0f, -192.0f));
-	points.push_back(Vec2(0.0f, -256.0f));
-	points.push_back(Vec2(336.0f, -192.0f));
-
-	PhysicsBody* physicsBody = PhysicsBody::createPolygon(points.data(), points.size());
-
-	return physicsBody;
 }

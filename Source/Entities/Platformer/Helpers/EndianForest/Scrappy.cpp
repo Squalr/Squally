@@ -10,7 +10,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
@@ -57,16 +57,12 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 {
 	this->hexusOpponentData = Scrappy::getHexusOpponentData();
 
-	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
-	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
-	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
+	this->droidBrief1Sound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
+	this->droidBrief2Sound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
+	this->droidChatterSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 	this->fireAnimation = SmartAnimationSequenceNode::create();
 
-	this->droidAlarmedSound->toggleCameraDistanceFade(true);
-	this->droidBrief1Sound->toggleCameraDistanceFade(true);
-	this->droidBrief2Sound->toggleCameraDistanceFade(true);
-	this->droidChatterSound->toggleCameraDistanceFade(true);
 	this->fireAnimation->setFlippedY(true);
 	this->fireAnimation->setScale(0.25f);
 

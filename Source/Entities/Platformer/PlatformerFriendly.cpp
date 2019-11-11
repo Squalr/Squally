@@ -2,6 +2,8 @@
 
 using namespace cocos2d;
 
+const std::string PlatformerFriendly::PlatformerFriendlyTag = "platformer-friendly";
+
 PlatformerFriendly::PlatformerFriendly(
 	ValueMap& properties,
 	std::string entityName,
@@ -29,6 +31,8 @@ PlatformerFriendly::PlatformerFriendly(
 		currencySaveKey
 	)
 {
+	// Tag all friendly entities by class to optimize object queries (ObjectEvents.h)
+	this->addTag(PlatformerFriendly::PlatformerFriendlyTag);
 }
 
 PlatformerFriendly::~PlatformerFriendly()

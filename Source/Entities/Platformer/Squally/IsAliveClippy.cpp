@@ -4,7 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -25,7 +25,7 @@ IsAliveClippy* IsAliveClippy::create()
 IsAliveClippy::IsAliveClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->droidChatterSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->clippyAnimations->setFlippedX(true);
 

@@ -48,6 +48,8 @@ public:
 	ControlState controlState;
 	SpeechBubble* speechBubble;
 
+	static const std::string PlatformerEntityTag;
+
 protected:
 	PlatformerEntity(
 		cocos2d::ValueMap& properties,

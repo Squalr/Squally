@@ -19,8 +19,8 @@
 
 using namespace cocos2d;
 
-const int CipherLock::PinSpacing = 48.0f;
-const int CipherLock::PinUnlockDistance = 104.0f;
+const float CipherLock::PinSpacing = 48.0f;
+const float CipherLock::PinUnlockDistance = 104.0f;
 
 CipherLock* CipherLock::create()
 {

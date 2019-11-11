@@ -99,7 +99,7 @@ void EntityDialogueBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
@@ -244,7 +244,7 @@ void EntityDialogueBehavior::chooseOption(int option)
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
-	if (!this->pretextQueue.empty() || --option < 0 || option >= dialogueOptions.size())
+	if (!this->pretextQueue.empty() || --option < 0 || option >= int(dialogueOptions.size()))
 	{
 		return;
 	}

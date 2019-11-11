@@ -179,7 +179,7 @@ void RuneBar::update(float dt)
 
 			float quadrantProgress = 1.0f - MathUtils::clamp(progress, 0.0f, 0.25f) / 0.25f;
 
-			quadrant[2] = Vec2(24.0f * std::cos(quadrantProgress * M_PI / 2.0f), 24.0f * std::sin(quadrantProgress * M_PI / 2.0f));
+			quadrant[2] = Vec2(24.0f * std::cos(quadrantProgress * float(M_PI) / 2.0f), 24.0f * std::sin(quadrantProgress * float(M_PI) / 2.0f));
 
 			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
 		}
@@ -195,7 +195,7 @@ void RuneBar::update(float dt)
 
 			float quadrantProgress = progress < 0.25f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
 
-			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 1.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 1.0f) * M_PI / 2.0f));
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 1.0f) * float(M_PI) / 2.0f), 24.0f * std::sin((quadrantProgress - 1.0f) * float(M_PI) / 2.0f));
 
 			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
 		}
@@ -211,7 +211,7 @@ void RuneBar::update(float dt)
 
 			float quadrantProgress = progress < 0.5f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
 
-			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 2.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 2.0f) * M_PI / 2.0f));
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 2.0f) * float(M_PI) / 2.0f), 24.0f * std::sin((quadrantProgress - 2.0f) * float(M_PI) / 2.0f));
 
 			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
 		}
@@ -227,7 +227,7 @@ void RuneBar::update(float dt)
 
 			float quadrantProgress = progress < 0.75f ? 1.0f : (1.0f - MathUtils::clamp(std::fmod(progress, 0.25f), 0.0f, 0.25f) / 0.25f);
 
-			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 3.0f) * M_PI / 2.0f), 24.0f * std::sin((quadrantProgress - 3.0f) * M_PI / 2.0f));
+			quadrant[2] = Vec2(24.0f * std::cos((quadrantProgress - 3.0f) * float(M_PI) / 2.0f), 24.0f * std::sin((quadrantProgress - 3.0f) * float(M_PI) / 2.0f));
 
 			this->cooldownStencils[index]->drawSolidPoly(quadrant.data(), quadrant.size(), Color4F(Color4B(0, 0, 0, 196)));
 		}

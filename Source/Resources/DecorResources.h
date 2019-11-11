@@ -533,6 +533,7 @@ namespace DecorResources
 	extern const std::string Generic_Chandilier1;
 	extern const std::string Generic_Counter;
 	extern const std::string Generic_DiningTable1;
+	extern const std::string Generic_FancyGate2;
 	extern const std::string Generic_FireplaceEmpty1;
 	extern const std::string Generic_Flag1;
 	extern const std::string Generic_Flag2;

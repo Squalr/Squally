@@ -26,6 +26,7 @@
 using namespace cocos2d;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
+const std::string PlatformerEntity::PlatformerEntityTag = "platformer-entity";
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap& properties, 
@@ -51,6 +52,10 @@ PlatformerEntity::PlatformerEntity(
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * scale;
+
+	// Tag all entities by class and by their name to optimize object queries (ObjectEvents.h)
+	this->addTag(PlatformerEntity::PlatformerEntityTag);
+	this->addTag(entityName);
 
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create(inventorySaveKey);
@@ -93,8 +98,6 @@ PlatformerEntity::~PlatformerEntity()
 void PlatformerEntity::onEnter()
 {
 	super::onEnter();
-
-	this->scheduleUpdate();
 }
 
 void PlatformerEntity::initializePositions()

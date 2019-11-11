@@ -106,7 +106,7 @@ void InputsOutputsPanel::initializeListeners()
 
 		if (args != nullptr)
 		{
-			if (args->cipherIndex < 0 || args->cipherIndex > this->ioPanels.size())
+			if (args->cipherIndex < 0 || args->cipherIndex > (int)this->ioPanels.size())
 			{
 				return;
 			}

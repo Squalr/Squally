@@ -8,6 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
@@ -15,6 +16,7 @@ const std::string GameObject::MapKeyId = "id";
 const std::string GameObject::MapKeyType = "type";
 const std::string GameObject::MapKeyName = "name";
 const std::string GameObject::MapKeyTag = "tag";
+const std::string GameObject::MapKeyTags = "tags";
 const std::string GameObject::MapKeyWidth = "width";
 const std::string GameObject::MapKeyHeight = "height";
 const std::string GameObject::MapKeyXPosition = "x";
@@ -70,7 +72,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 {
 	this->properties = properties;
 	this->zSorted = false;
-	this->tag = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString();
+	this->tags = std::set<std::string>();
 	this->polylinePoints = std::vector<Vec2>();
 	this->stateVariables = ValueMap();
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
@@ -79,6 +81,14 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
 	this->attachedBehaviorNode = Node::create();
 	this->setPosition(Vec2::ZERO);
+	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
+
+	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
+
+	for (auto it = tags.begin(); it != tags.end(); it++)
+	{
+		this->addTag(*it);
+	}
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
@@ -126,7 +136,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			ValueMap point = it->asValueMap();
 
 			Vec2 delta = Vec2(
-				point.at(GameObject::MapKeyXPosition).asFloat(),
+aaaaaaa				point.at(GameObject::MapKeyXPosition).asFloat(),
 				point.at(GameObject::MapKeyYPosition).asFloat()
 			);
 
@@ -203,19 +213,6 @@ void GameObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	if (!this->tag.empty())
-	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + this->tag, [=](EventCustom* eventCustom)
-		{
-			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
-
-			if (args != nullptr)
-			{
-				args->tryInvoke(this);
-			}
-		}));
-	}
-	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
 		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
@@ -225,6 +222,19 @@ void GameObject::initializeListeners()
 			args->tryInvoke(this);
 		}
 	}));
+
+	for (auto it = this->tags.begin(); it != this->tags.end(); it++)
+	{
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
+		{
+			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+			if (args != nullptr)
+			{
+				args->tryInvoke(this);
+			}
+		}));
+	}
 }
 
 std::string GameObject::getUniqueIdentifier()
@@ -251,6 +261,11 @@ void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 	{
 		ObjectEvents::TriggerWriteObjectState(ObjectEvents::StateWriteArgs(this, key, value));
 	}
+}
+
+void GameObject::addTag(std::string tag)
+{
+	this->tags.insert(tag);
 }
 
 Value GameObject::getPropertyOrDefault(std::string key, Value value)

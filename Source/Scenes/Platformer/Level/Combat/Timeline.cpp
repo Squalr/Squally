@@ -181,7 +181,7 @@ void Timeline::checkCombatComplete()
 				allEnemiesDead = false;
 			}));
 		}
-	}));
+	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
@@ -193,7 +193,7 @@ void Timeline::checkCombatComplete()
 				allPlayersDead = false;
 			}));
 		}
-	}));
+	}), PlatformerFriendly::PlatformerFriendlyTag);
 
 	if (allEnemiesDead)
 	{
@@ -263,7 +263,7 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 
 		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
 		nextPlayerBonus += 0.1f;
-	}));
+	}), PlatformerFriendly::PlatformerFriendlyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
@@ -274,5 +274,5 @@ void Timeline::initializeTimeline(bool isPlayerFirstStrike)
 
 		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
 		nextEnemyBonus += 0.1f;
-	}));
+	}), PlatformerEnemy::PlatformerEnemyTag);
 }

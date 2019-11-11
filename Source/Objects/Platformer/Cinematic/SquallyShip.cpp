@@ -16,7 +16,7 @@
 #include "Engine/Konami/KSequence.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
@@ -58,11 +58,11 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
-	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
-	this->thrusterSound = Sound::create(SoundResources::Platformer_Objects_LowFlame);
-	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_Objects_WooshRough);
-	this->crashSound = Sound::create(SoundResources::Platformer_Objects_Crash);
-	this->fireSound = Sound::create(SoundResources::Platformer_Environment_Fire);
+	this->lightningSound = WorldSound::create(SoundResources::Hexus_Attacks_Energy);
+	this->thrusterSound = WorldSound::create(SoundResources::Platformer_Objects_LowFlame);
+	this->enterAtmosphereSound = WorldSound::create(SoundResources::Platformer_Objects_WooshRough);
+	this->crashSound = WorldSound::create(SoundResources::Platformer_Objects_Crash);
+	this->fireSound = WorldSound::create(SoundResources::Platformer_Environment_Fire);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
@@ -84,7 +84,6 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->setFlippedX(true);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
-	this->fireSound->toggleCameraDistanceFade(true);
 	this->shipCollision->setGravityEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
