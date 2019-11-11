@@ -136,7 +136,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			ValueMap point = it->asValueMap();
 
 			Vec2 delta = Vec2(
-aaaaaaa				point.at(GameObject::MapKeyXPosition).asFloat(),
+				point.at(GameObject::MapKeyXPosition).asFloat(),
 				point.at(GameObject::MapKeyYPosition).asFloat()
 			);
 
