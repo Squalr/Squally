@@ -10,8 +10,8 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/NotificationEvents.h"
 #include "Events/HexusEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -146,11 +146,7 @@ void HexusBehaviorBase::onWin()
 
 			for (auto it = items.begin(); it != items.end(); it++)
 			{
-				Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
-
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemWon::create(), (*it)->getString(), (*it)->getIconResource()));
-
-				playerInventory->forceInsert(*it);	
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemWon::create()));
 			}
 		}
 

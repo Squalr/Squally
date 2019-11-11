@@ -110,7 +110,7 @@ void HelpTotem::activate()
 
 void HelpTotem::tryDisplayHint()
 {
-	if (this->canInteract && this->hint != nullptr && this->isVisible())
+	if (!this->isInactive && this->canInteract && this->hint != nullptr && this->isVisible())
 	{
 		this->speechBubble->runDialogue(this->hint->clone(), SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
 	}

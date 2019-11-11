@@ -18,7 +18,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Events/NotificationEvents.h"
+#include "Events/PlatformerEvents.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -124,7 +124,7 @@ void RewardsMenu::loadRewards()
 
 		for (auto it = items.begin(); it != items.end(); it++, index++)
 		{
-			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
+			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
 		}
 	}), PlatformerEnemy::PlatformerEnemyTag);
 

@@ -73,7 +73,7 @@ void TeachHackerMode::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{
 		this->portal = portal;
-		this->portal->lock();
+		this->portal->disable();
 		this->portal->closePortal(true);
 	}, TeachHackerMode::TagQuestPortal);
 }
@@ -128,7 +128,6 @@ void TeachHackerMode::runCinematicSequencePt1()
 			}),
 			nullptr
 		));
-
 	}
 }
 
@@ -165,8 +164,19 @@ void TeachHackerMode::runCinematicSequencePt2()
 						[=]()
 						{
 							this->helpTotem->activate();
-							this->portal->closePortal(false);
-							this->marcel->runAction(FadeTo::create(1.0f, 0));
+							
+							this->runAction(Sequence::create(
+								CallFunc::create([=]()
+								{
+									this->marcel->runAction(FadeTo::create(1.0f, 0));
+								}),
+								DelayTime::create(2.0f),
+								CallFunc::create([=]()
+								{
+									this->portal->closePortal(false);
+								}),
+								nullptr
+							));
 						},
 						true
 					));

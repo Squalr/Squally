@@ -13,7 +13,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
-#include "Events/NotificationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -77,15 +77,12 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		if (this->isPickPocketing)
 		{
 			this->isPickPocketing = false;
-
-			Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+			
 			std::vector<Item*> items = pocketPool->getItems();
 
 			for (auto it = items.begin(); it != items.end(); it++)
 			{
-				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
-
-				playerInventory->forceInsert(*it);	
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
 			}
 
 			target->saveObjectState(pickPocketSaveKey, Value(true));

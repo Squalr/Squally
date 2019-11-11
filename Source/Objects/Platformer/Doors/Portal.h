@@ -12,6 +12,8 @@ class Portal : public HackableObject
 public:
 	static Portal* create(cocos2d::ValueMap& properties);
 
+	void enable();
+	void disable();
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
 	void setRequiresInteraction(bool requiresInteraction);
@@ -43,6 +45,7 @@ private:
 	InteractMenu* interactMenu;
 	InteractMenu* lockedMenu;
 
+	bool disabled;
 	bool canInteract;
 	bool wasTripped;
 	bool isLocked;

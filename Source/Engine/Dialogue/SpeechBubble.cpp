@@ -198,6 +198,8 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, float sustainDu
 
 void SpeechBubble::hideDialogue()
 {
+	TypeWriterEffect::cancelEffect(this->text);
+
 	this->bubble->runAction(FadeTo::create(0.5f, 0));
 	this->stem->runAction(FadeTo::create(0.5f, 0));
 	this->text->runAction(FadeTo::create(0.5f, 0));

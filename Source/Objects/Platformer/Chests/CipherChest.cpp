@@ -14,7 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Events/CipherEvents.h"
-#include "Events/NotificationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
@@ -163,13 +163,9 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 			items.push_back(item);
 		}));
 	}
-	
-	Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
-		NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Platformer_Notifications_ItemFound::create(), (*it)->getString(), (*it)->getIconResource()));
-
-		playerInventory->forceInsert(*it);	
+		PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemFound::create()));
 	}
 }

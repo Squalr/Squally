@@ -5,6 +5,7 @@
 #include "cocos/math/CCGeometry.h"
 
 class GameObject;
+class Item;
 class LocalizedString;
 class PlatformerEntity;
 class PlatformerEnemy;
@@ -23,6 +24,7 @@ public:
 	static const std::string EventEngageEnemy;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
+	static const std::string EventGiveItem;
 
 	struct TransitionArgs
 	{
@@ -79,6 +81,14 @@ public:
 		EngageEnemyArgs(PlatformerEnemy* enemy, bool firstStrike) : enemy(enemy), firstStrike(firstStrike) { }
 	};
 
+	struct GiveItemArgs
+	{
+		Item* item;
+		LocalizedString* messageOverride;
+
+		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerBeforePlatformerMapChange();
@@ -90,4 +100,5 @@ public:
 	static void TriggerEngageEnemy(EngageEnemyArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
+	static void TriggerGiveItem(GiveItemArgs args);
 };

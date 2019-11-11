@@ -75,3 +75,21 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 		));
 	}
 }
+
+void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
+{
+	if (label == nullptr || label->localizedString == nullptr)
+	{
+		return;
+	}
+
+	int max = label->getStringLength();
+
+	for (int i = 0; i < max; i++)
+	{
+		if (label->getLetter(i) != nullptr)
+		{
+			label->getLetter(i)->stopAllActions();
+		}
+	}
+}

@@ -43,6 +43,7 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
 	this->wasTripped = false;
 	this->canInteract = false;
+	this->disabled = false;
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalMap, Value("")).asString();
 	this->isLocked = !this->listenEvent.empty();
 	this->requiresInteraction = true;
@@ -150,6 +151,16 @@ void Portal::onDeveloperModeDisable()
 	this->unlockButton->setVisible(false);
 }
 
+void Portal::enable()
+{
+	this->disabled = false;
+}
+
+void Portal::disable()
+{
+	this->disabled = true;
+}
+
 void Portal::lock(bool animate)
 {
 	this->isLocked = true;
@@ -171,28 +182,30 @@ void Portal::setRequiresInteraction(bool requiresInteraction)
 
 void Portal::loadMap()
 {
-	if (!this->mapFile.empty() && !this->wasTripped)
+	if (this->disabled || this->mapFile.empty() || this->wasTripped)
 	{
-		this->wasTripped = true;
-
-		// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
-		// (not sure why, changing to a combat map is fine)
-		this->runAction(Sequence::create(
-			DelayTime::create(0.1f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create("Private/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
-				NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
-			}),
-			nullptr
-		));
+		return;
 	}
+
+	this->wasTripped = true;
+
+	// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
+	// (not sure why, changing to a combat map is fine)
+	this->runAction(Sequence::create(
+		DelayTime::create(0.1f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerBeforePlatformerMapChange();
+			PlatformerMap* map = PlatformerMap::create("Private/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
+		}),
+		nullptr
+	));
 }
 
 void Portal::updateInteractMenuVisibility()
 {
-	if (!this->requiresInteraction)
+	if (!this->requiresInteraction || this->disabled)
 	{
 		this->interactMenu->hide();
 		this->lockedMenu->hide();
