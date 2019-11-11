@@ -469,7 +469,7 @@ void* HackUtils::resolveVTableAddress(void* address)
 		std::string newAddressStr = StrUtils::ltrim(firstInstruction, "jmp ", true);
 		newAddressStr = StrUtils::rtrim(newAddressStr, "\n", true);
 
-		address = HackUtils::hexToPointer(newAddressStr, address);
+		address = HackUtils::intToPointer(newAddressStr, address);
 	}
 
 	return address;
@@ -606,9 +606,9 @@ std::string HackUtils::toBinary8(int value)
 	return binaryString;
 }
 
-void* HackUtils::hexToPointer(std::string hexString, void* fallback)
+void* HackUtils::intToPointer(std::string intString, void* fallback)
 {
-	if (!StrUtils::isHexNumber(hexString))
+	if (!StrUtils::isInteger(intString))
 	{
 		return fallback;
 	}
@@ -616,7 +616,8 @@ void* HackUtils::hexToPointer(std::string hexString, void* fallback)
 	void* address;
 	std::stringstream ss;
 
-	ss << std::hex << hexString;
+	ss << std::hex << std::stoull(intString);
+	std::string watson = ss.str();
 	ss >> address;
 
 	return address;

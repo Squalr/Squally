@@ -469,13 +469,13 @@ void RegisterBlock::highlightEipPtr(bool isDest, int offset)
     }
 }
 
-void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned int> values)
+void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned long long> values)
 {
     if (!this->eax.initialized)
     {
         this->eax = Register(eax, eax, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->eaxPtrNode, &this->eaxPtrStrings, &this->eaxPtrLabels);
         }
@@ -483,19 +483,19 @@ void RegisterBlock::initEax(unsigned long long eax, std::vector<unsigned int> va
 
     this->setEax(eax);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEaxPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEbx(unsigned long long ebx, std::vector<unsigned int> values)
+void RegisterBlock::initEbx(unsigned long long ebx, std::vector<unsigned long long> values)
 {
     if (!this->ebx.initialized)
     {
         this->ebx = Register(ebx, ebx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->ebxPtrNode, &this->ebxPtrStrings, &this->ebxPtrLabels);
         }
@@ -503,19 +503,19 @@ void RegisterBlock::initEbx(unsigned long long ebx, std::vector<unsigned int> va
 
     this->setEbx(ebx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEbxPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEcx(unsigned long long ecx, std::vector<unsigned int> values)
+void RegisterBlock::initEcx(unsigned long long ecx, std::vector<unsigned long long> values)
 {
     if (!this->ecx.initialized)
     {
         this->ecx = Register(ecx, ecx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->ecxPtrNode, &this->ecxPtrStrings, &this->ecxPtrLabels);
         }
@@ -523,19 +523,19 @@ void RegisterBlock::initEcx(unsigned long long ecx, std::vector<unsigned int> va
 
     this->setEcx(ecx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEcxPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEdx(unsigned long long edx, std::vector<unsigned int> values)
+void RegisterBlock::initEdx(unsigned long long edx, std::vector<unsigned long long> values)
 {
     if (!this->edx.initialized)
     {
         this->edx = Register(edx, edx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->edxPtrNode, &this->edxPtrStrings, &this->edxPtrLabels);
         }
@@ -543,19 +543,19 @@ void RegisterBlock::initEdx(unsigned long long edx, std::vector<unsigned int> va
 
     this->setEdx(edx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEdxPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEdi(unsigned long long edi, std::vector<unsigned int> values)
+void RegisterBlock::initEdi(unsigned long long edi, std::vector<unsigned long long> values)
 {
     if (!this->edi.initialized)
     {
         this->edi = Register(edi, edi, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->ediPtrNode, &this->ediPtrStrings, &this->ediPtrLabels);
         }
@@ -563,19 +563,19 @@ void RegisterBlock::initEdi(unsigned long long edi, std::vector<unsigned int> va
 
     this->setEdi(edi);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEdiPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEsi(unsigned long long esi, std::vector<unsigned int> values)
+void RegisterBlock::initEsi(unsigned long long esi, std::vector<unsigned long long> values)
 {
     if (!this->esi.initialized)
     {
         this->esi = Register(esi, esi, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->esiPtrNode, &this->esiPtrStrings, &this->esiPtrLabels);
         }
@@ -583,19 +583,19 @@ void RegisterBlock::initEsi(unsigned long long esi, std::vector<unsigned int> va
 
     this->setEsi(esi);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEsiPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEbp(unsigned long long ebp, std::vector<unsigned int> values)
+void RegisterBlock::initEbp(unsigned long long ebp, std::vector<unsigned long long> values)
 {
     if (!this->ebp.initialized)
     {
         this->ebp = Register(ebp, ebp, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->ebpPtrNode, &this->ebpPtrStrings, &this->ebpPtrLabels);
         }
@@ -603,19 +603,19 @@ void RegisterBlock::initEbp(unsigned long long ebp, std::vector<unsigned int> va
 
     this->setEbp(ebp);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEbpPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEsp(unsigned long long esp, std::vector<unsigned int> values)
+void RegisterBlock::initEsp(unsigned long long esp, std::vector<unsigned long long> values)
 {
     if (!this->esp.initialized)
     {
         this->esp = Register(esp, esp, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->espPtrNode, &this->espPtrStrings, &this->espPtrLabels);
         }
@@ -623,19 +623,19 @@ void RegisterBlock::initEsp(unsigned long long esp, std::vector<unsigned int> va
 
     this->setEsp(esp);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEspPtr(values[index], index);
     }
 }
 
-void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned int> values)
+void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned long long> values)
 {
     if (!this->eip.initialized)
     {
         this->eip = Register(eip, eip, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (unsigned int index = 0; index < values.size(); index++)
         {
             this->addToData(values[index], index, this->eipPtrNode, &this->eipPtrStrings, &this->eipPtrLabels);
         }
@@ -643,7 +643,7 @@ void RegisterBlock::initEip(unsigned long long eip, std::vector<unsigned int> va
 
     this->setEip(eip);
 
-    for (int index = 0; index < values.size(); index++)
+    for (unsigned int index = 0; index < values.size(); index++)
     {
         this->setEipPtr(values[index], index);
     }
@@ -865,7 +865,7 @@ unsigned long long RegisterBlock::getEipPtr(int offset)
     return this->eip.currentValues[offset];
 }
 
-void RegisterBlock::addToData(int value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
+void RegisterBlock::addToData(unsigned long long value, int index, Node* node, std::vector<ConstantString*>* strings, std::vector<LocalizedLabel*>* labels)
 {
     ConstantString* str = ConstantString::create(std::to_string(value));
     LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::P, str);

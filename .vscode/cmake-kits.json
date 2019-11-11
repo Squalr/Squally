@@ -12,5 +12,14 @@
             "CC": "/usr/local/opt/llvm/bin/clang",
             "CCX": "/usr/local/opt/llvm/bin/clang++"
         }
+    },
+    {
+        "name": "MSVC x86 2019",
+        "visualStudio": "VisualStudio.16.0",
+        "visualStudioArchitecture": "x86",
+        "preferredGenerator":
+        {
+            "name": "Visual Studio 2019"
+        }
     }
 ]
