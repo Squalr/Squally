@@ -57,10 +57,34 @@ EntityPickPocketBehavior::~EntityPickPocketBehavior()
 
 void EntityPickPocketBehavior::onLoad()
 {
-	if (this->entity->getAttachedBehavior<EntitySelectionBehavior>() == nullptr)
+	// Defer this task since it adds an object during onEnterTransitionDidFinish(), which would otherwise cause a crash
+	this->defer([=]()
 	{
-		this->entity->attachBehavior(EntitySelectionBehavior::create(this->entity));
-	}
+		if (this->entity->getAttachedBehavior<EntitySelectionBehavior>() == nullptr)
+		{
+			this->entity->attachBehavior(EntitySelectionBehavior::create(this->entity));
+		}
+
+		this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
+		{
+			selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
+			selectionBehavior->setEntityClickCallbacks([=]()
+			{
+				this->attemptPickPocket();
+			},
+			[=]()
+			{
+				if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
+				{
+					CursorSets::setActiveCursorSet(CursorSets::PickPocket);
+				}
+			},
+			[=]()
+			{
+				CursorSets::setActiveCursorSet(CursorSets::Default);
+			});
+		});
+	});
 	
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -73,26 +97,6 @@ void EntityPickPocketBehavior::onLoad()
 			this->currentHelperName = value.asString();
 		});
 	}, Squally::MapKeySqually);
-
-	this->entity->watchForAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selectionBehavior)
-	{
-		selectionBehavior->setClickModifier(EventKeyboard::KeyCode::KEY_SHIFT);
-		selectionBehavior->setEntityClickCallbacks([=]()
-		{
-			this->attemptPickPocket();
-		},
-		[=]()
-		{
-			if (this->currentHelperName == Guano::MapKeyGuano && !this->wasPickPocketed())
-			{
-				CursorSets::setActiveCursorSet(CursorSets::PickPocket);
-			}
-		},
-		[=]()
-		{
-			CursorSets::setActiveCursorSet(CursorSets::Default);
-		});
-	});
 
 	ValueMap valueMap = ValueMap();
 

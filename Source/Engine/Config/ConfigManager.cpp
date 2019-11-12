@@ -97,7 +97,7 @@ void ConfigManager::setResolution(ResolutionSetting resolution)
 	else
 	{
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
-		glView->setWindowed(resolutionSize.width, resolutionSize.height);
+		glView->setWindowed(int(resolutionSize.width), int(resolutionSize.height));
 	}
 }
 
@@ -122,7 +122,7 @@ void ConfigManager::setIsFullScreen(bool isFullScreen)
 	else
 	{
 
-		glView->setWindowed(resolutionSize.width, resolutionSize.height);
+		glView->setWindowed(int(resolutionSize.width), int(resolutionSize.height));
 		glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 
