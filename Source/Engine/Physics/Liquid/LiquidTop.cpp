@@ -49,8 +49,6 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
         this->rightDeltas.push_back(0.0f);
         this->columns.push_back(column);
     }
-    
-    this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR));
 }
 
 LiquidTop::~LiquidTop()
@@ -79,7 +77,7 @@ void LiquidTop::update(float dt)
     for (int iteration = 0; iteration < SpreadIterations; iteration++)
     {
         // Ignore the first and last columns as an optimization. No apparent visual impact, much cleaner code.
-        for (int index = 1; index < this->columns.size() - 1; index++)
+        for (int index = 1; index < int(this->columns.size()) - 1; index++)
         {
             leftDeltas[index] = this->spread * (columns[index].height - columns[index - 1].height);
             rightDeltas[index] = this->spread * (columns[index].height - columns[index + 1].height);
@@ -87,11 +85,20 @@ void LiquidTop::update(float dt)
             columns[index + 1].speed += rightDeltas[index];
         }
 
-        for (int index = 1; index < this->columns.size() - 1; index++)
+        for (int index = 1; index < int(this->columns.size()) - 1; index++)
         {
             columns[index - 1].height += leftDeltas[index];
             columns[index + 1].height += rightDeltas[index];
         }
+    }
+
+    for (int index = 0; index < int(this->columns.size()); index++)
+    {
+        uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
+        uint16_t y = uint16_t(columns[index].height);
+        
+        this->vertexArray[2 * index] = Vertex(x, y);
+        this->vertexArray[2 * index + 1] = Vertex(x, 0);
     }
 }
 
@@ -114,27 +121,27 @@ void LiquidTop::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform
 
 void LiquidTop::onCustomDraw(const Mat4 &transform)
 {
-    // update the matrix
     Director::getInstance()->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
     Director::getInstance()->loadMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW, transform);
-
-    for (int index = 0; index < this->columns.size(); index++)
-    {
-        uint16_t x = (float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width;
-        uint16_t y = columns[index].height;
-        
-        this->vertexArray[2 * index] = Vertex(x, y);
-        this->vertexArray[2 * index + 1] = Vertex(x, 0);
-    }
     
-    // now finally call the low-level opengGL calls to render the GL_TRIANGLE_STRIP in a simple way
-    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
+    this->setGLProgram(GLProgramCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_COLOR));
+    
+    CHECK_GL_ERROR_DEBUG();
+    
     this->getGLProgram()->use();
     this->getGLProgram()->setUniformsForBuiltins();
-
+    
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
+    
+    // glEnableVertexAttribArray(GL::VERTEX_ATTRIB_FLAG_POSITION);
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_UNSIGNED_SHORT, GL_FALSE, 0, this->vertexArray.data());
-    glEnableVertexAttribArray(GL::VERTEX_ATTRIB_FLAG_POSITION);
+    // glEnableVertexAttribArray(GL::VERTEX_ATTRIB_FLAG_COLOR);
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, this->colorArray.data());
-    glEnableVertexAttribArray(GL::VERTEX_ATTRIB_FLAG_COLOR);
+
     glDrawArrays(GL_TRIANGLE_STRIP, 0, this->columns.size() * 2);
+    
+    CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1, this->columns.size() * 2);
+    
+    Director::getInstance()->popMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
 }
