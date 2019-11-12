@@ -83,7 +83,7 @@ void StackBlock::initializePositions()
 
 	this->stackTitleLabel->setPosition(Vec2(-88.0f - 12.0f, Offset + 48.0f));
 
-    for (int index = 0; index < this->labels.size(); index++)
+    for (int index = 0; index < int(this->labels.size()); index++)
     {
         this->labels[index]->setPosition(Vec2(-72.0f, Offset - Spacing * float(StackBlock::StackSize - index - 1)));
     }

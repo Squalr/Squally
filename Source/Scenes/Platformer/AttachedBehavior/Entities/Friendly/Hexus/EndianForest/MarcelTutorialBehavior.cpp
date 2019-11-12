@@ -2,7 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/HexusPools/HexusPoolMarcel.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -36,7 +36,7 @@ MarcelTutorialBehavior::~MarcelTutorialBehavior()
 
 MinMaxPool* MarcelTutorialBehavior::generateReward()
 {
-	return CardPoolTutorial::create();
+	return HexusPoolMarcel::create();
 }
 
 std::string MarcelTutorialBehavior::getWinLossSaveKey()

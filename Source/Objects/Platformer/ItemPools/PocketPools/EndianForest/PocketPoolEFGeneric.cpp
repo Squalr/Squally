@@ -5,7 +5,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/Collectables/Cards/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -35,19 +35,4 @@ PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(propertie
 
 PocketPoolEFGeneric::~PocketPoolEFGeneric()
 {
-}
-
-void PocketPoolEFGeneric::onEnter()
-{
-	super::onEnter(); 
-}
-
-void PocketPoolEFGeneric::initializePositions()
-{
-	super::initializePositions();
-}
-
-void PocketPoolEFGeneric::initializeListeners()
-{
-	super::initializeListeners();
 }

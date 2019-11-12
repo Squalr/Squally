@@ -12,9 +12,6 @@ public:
 protected:
 	PocketPoolEFGeneric(cocos2d::ValueMap& properties);
 	~PocketPoolEFGeneric();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef MinMaxPool super;

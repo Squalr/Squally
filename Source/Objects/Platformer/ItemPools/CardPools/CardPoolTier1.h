@@ -10,9 +10,6 @@ public:
 protected:
 	CardPoolTier1();
 	~CardPoolTier1();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef MinMaxPool super;

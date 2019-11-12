@@ -9,7 +9,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/Collectables/Cards/CardPools/CardPool.h"
+#include "Objects/Platformer/ItemPools/CardPools/CardPool.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"

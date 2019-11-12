@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Objects/Platformer/Chests/ChestPools/ChestPools.h"
+#include "Objects/Platformer/ItemPools/ChestPools/ChestPools.h"
 
 using namespace cocos2d;
 

@@ -40,18 +40,3 @@ CardPoolTier1::CardPoolTier1() : super(ValueMap(), "card-pool-t1", 1, 2)
 CardPoolTier1::~CardPoolTier1()
 {
 }
-
-void CardPoolTier1::onEnter()
-{
-	super::onEnter(); 
-}
-
-void CardPoolTier1::initializePositions()
-{
-	super::initializePositions();
-}
-
-void CardPoolTier1::initializeListeners()
-{
-	super::initializeListeners();
-}

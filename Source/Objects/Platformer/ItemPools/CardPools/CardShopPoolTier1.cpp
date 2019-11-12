@@ -30,18 +30,3 @@ CardShopPoolTier1::CardShopPoolTier1() : super(ValueMap(), "card-shop-tool-t1", 
 CardShopPoolTier1::~CardShopPoolTier1()
 {
 }
-
-void CardShopPoolTier1::onEnter()
-{
-	super::onEnter(); 
-}
-
-void CardShopPoolTier1::initializePositions()
-{
-	super::initializePositions();
-}
-
-void CardShopPoolTier1::initializeListeners()
-{
-	super::initializeListeners();
-}

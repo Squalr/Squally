@@ -46,6 +46,8 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[ScrappyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ScrappyBehaviorGroup::create(owner); };
 
 	// Endian forest
+	this->attachedBehaviorDeserializers[LycanBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LycanBehavior::create(owner); };
+	
 	this->attachedBehaviorDeserializers[CentaurCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)CentaurCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GoblinGruntBoarCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinGruntBoarCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GoblinShamanCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinShamanCombatBehavior::create(owner); };

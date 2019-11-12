@@ -12,9 +12,6 @@ public:
 protected:
 	PocketPoolTownGuard(cocos2d::ValueMap& properties);
 	~PocketPoolTownGuard();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef MinMaxPool super;

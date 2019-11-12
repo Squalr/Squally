@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityNoCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/EndianForest/LycanBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityPacingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoBehaviorGroup.h"

@@ -475,7 +475,7 @@ void RegisterBlockSigned::initEax(long long eax, std::vector<int> values)
     {
         this->eax = Register(eax, eax, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->eaxPtrNode, &this->eaxPtrStrings, &this->eaxPtrLabels);
         }
@@ -483,7 +483,7 @@ void RegisterBlockSigned::initEax(long long eax, std::vector<int> values)
 
     this->setEax(eax);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEaxPtr(values[index], index);
     }
@@ -495,7 +495,7 @@ void RegisterBlockSigned::initEbx(long long ebx, std::vector<int> values)
     {
         this->ebx = Register(ebx, ebx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->ebxPtrNode, &this->ebxPtrStrings, &this->ebxPtrLabels);
         }
@@ -503,7 +503,7 @@ void RegisterBlockSigned::initEbx(long long ebx, std::vector<int> values)
 
     this->setEbx(ebx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEbxPtr(values[index], index);
     }
@@ -515,7 +515,7 @@ void RegisterBlockSigned::initEcx(long long ecx, std::vector<int> values)
     {
         this->ecx = Register(ecx, ecx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->ecxPtrNode, &this->ecxPtrStrings, &this->ecxPtrLabels);
         }
@@ -523,7 +523,7 @@ void RegisterBlockSigned::initEcx(long long ecx, std::vector<int> values)
 
     this->setEcx(ecx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEcxPtr(values[index], index);
     }
@@ -535,7 +535,7 @@ void RegisterBlockSigned::initEdx(long long edx, std::vector<int> values)
     {
         this->edx = Register(edx, edx, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->edxPtrNode, &this->edxPtrStrings, &this->edxPtrLabels);
         }
@@ -543,7 +543,7 @@ void RegisterBlockSigned::initEdx(long long edx, std::vector<int> values)
 
     this->setEdx(edx);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEdxPtr(values[index], index);
     }
@@ -555,7 +555,7 @@ void RegisterBlockSigned::initEdi(long long edi, std::vector<int> values)
     {
         this->edi = Register(edi, edi, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->ediPtrNode, &this->ediPtrStrings, &this->ediPtrLabels);
         }
@@ -563,7 +563,7 @@ void RegisterBlockSigned::initEdi(long long edi, std::vector<int> values)
 
     this->setEdi(edi);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEdiPtr(values[index], index);
     }
@@ -575,7 +575,7 @@ void RegisterBlockSigned::initEsi(long long esi, std::vector<int> values)
     {
         this->esi = Register(esi, esi, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->esiPtrNode, &this->esiPtrStrings, &this->esiPtrLabels);
         }
@@ -583,7 +583,7 @@ void RegisterBlockSigned::initEsi(long long esi, std::vector<int> values)
 
     this->setEsi(esi);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEsiPtr(values[index], index);
     }
@@ -595,7 +595,7 @@ void RegisterBlockSigned::initEbp(long long ebp, std::vector<int> values)
     {
         this->ebp = Register(ebp, ebp, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->ebpPtrNode, &this->ebpPtrStrings, &this->ebpPtrLabels);
         }
@@ -603,7 +603,7 @@ void RegisterBlockSigned::initEbp(long long ebp, std::vector<int> values)
 
     this->setEbp(ebp);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEbpPtr(values[index], index);
     }
@@ -615,7 +615,7 @@ void RegisterBlockSigned::initEsp(long long esp, std::vector<int> values)
     {
         this->esp = Register(esp, esp, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->espPtrNode, &this->espPtrStrings, &this->espPtrLabels);
         }
@@ -623,7 +623,7 @@ void RegisterBlockSigned::initEsp(long long esp, std::vector<int> values)
 
     this->setEsp(esp);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEspPtr(values[index], index);
     }
@@ -635,7 +635,7 @@ void RegisterBlockSigned::initEip(long long eip, std::vector<int> values)
     {
         this->eip = Register(eip, eip, values, values);
         
-        for (int index = 0; index < values.size(); index++)
+        for (int index = 0; index < int(values.size()); index++)
         {
             this->addToData(values[index], index, this->eipPtrNode, &this->eipPtrStrings, &this->eipPtrLabels);
         }
@@ -643,7 +643,7 @@ void RegisterBlockSigned::initEip(long long eip, std::vector<int> values)
 
     this->setEip(eip);
 
-    for (int index = 0; index < values.size(); index++)
+    for (int index = 0; index < int(values.size()); index++)
     {
         this->setEipPtr(values[index], index);
     }
