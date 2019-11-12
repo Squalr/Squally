@@ -25,6 +25,7 @@ private:
 	void update(float dt) override;
 	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
+	void setEntityClickCallbacks(PlatformerEntity* entity);
 	void clearEntityClickCallbacks();
 	void selectNext(bool directionIsLeft);
 

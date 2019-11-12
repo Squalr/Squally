@@ -3,7 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerAttack;
-class PlatformerEntity;
+class Squally;
 
 class SquallyAttackBehavior : public AttachedBehavior
 {
@@ -22,5 +22,5 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	PlatformerEntity* entity;
+	Squally* squally;
 };

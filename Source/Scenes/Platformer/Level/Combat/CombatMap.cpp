@@ -132,6 +132,7 @@ void CombatMap::onEnter()
 void CombatMap::onExit()
 {
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// Any disposing should be done in the destructor anyways, not onExit().
 	// super::onExit();
 }
 

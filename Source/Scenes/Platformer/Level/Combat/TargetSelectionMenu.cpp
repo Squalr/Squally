@@ -231,28 +231,35 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
 	{
-		EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
-		
-		if (selection != nullptr)
-		{
-			if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true)
-				|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
-				|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
-			{
-				return;
-			}
-
-			selection->setEntityClickCallbacks([=]()
-			{
-				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
-				CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entity));
-			},
-			[=]()
-			{
-				this->selectEntity(entity);
-			});
-		}
+		this->setEntityClickCallbacks(entity);
 	}), PlatformerEntity::PlatformerEntityTag);
+}
+
+void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
+{
+	EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
+	
+	if (selection != nullptr)
+	{
+		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true)
+			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
+			|| (this->allowedSelection == AllowedSelection::Enemy && dynamic_cast<PlatformerEnemy*>(entity) == nullptr))
+		{
+			return;
+		}
+
+		PlatformerEntity* entityRef = entity;
+
+		selection->setEntityClickCallbacks([=]()
+		{
+			CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(entityRef));
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
+		},
+		[=]()
+		{
+			this->selectEntity(entityRef);
+		});
+	}
 }
 
 void TargetSelectionMenu::clearEntityClickCallbacks()

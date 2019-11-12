@@ -2,9 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
-#include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
@@ -13,7 +11,7 @@
 
 using namespace cocos2d;
 	
-const std::string SquallyAttackBehavior::MapKeyAttachedBehavior = "entity-attacks";
+const std::string SquallyAttackBehavior::MapKeyAttachedBehavior = "squally-attacks";
 
 SquallyAttackBehavior* SquallyAttackBehavior::create(GameObject* owner)
 {
@@ -26,9 +24,9 @@ SquallyAttackBehavior* SquallyAttackBehavior::create(GameObject* owner)
 
 SquallyAttackBehavior::SquallyAttackBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->squally = dynamic_cast<Squally*>(owner);
 
-	if (this->entity == nullptr)
+	if (this->squally == nullptr)
 	{
 		this->invalidate();
 	}
@@ -44,7 +42,7 @@ void SquallyAttackBehavior::initializePositions()
 
 void SquallyAttackBehavior::onLoad()
 {
-	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
+	this->squally->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Punch::create(0.4f, 0.5f));
 	});
