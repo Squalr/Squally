@@ -87,7 +87,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
-				{ PlatformerEntityDeserializer::MapKeyTypeEntity, this->platformerEntityDeserializer },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
 				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
 			}),
@@ -95,6 +95,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 		}
 	);
 
+	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
@@ -303,7 +304,7 @@ void CombatMap::spawnEntities()
 {
 	// Deserialize all enemies
 	{
-		for (int index = 0; index < this->enemyData.size(); index++)
+		for (int index = 0; index < int(this->enemyData.size()); index++)
 		{
 			ValueMap valueMap = ValueMap();
 
@@ -330,7 +331,7 @@ void CombatMap::spawnEntities()
 
 	// Deserialize players team
 	{
-		for (int index = 0; index < this->playerData.size(); index++)
+		for (int index = 0; index < int(this->playerData.size()); index++)
 		{
 			ValueMap valueMap = ValueMap();
 

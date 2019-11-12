@@ -72,6 +72,7 @@
 #include "Scenes/Platformer/Inventory/Items/Misc/Essences/EssenceOfNature.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Essences/EssenceOfShadow.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Essences/EssenceOfUndeath.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Essences/EssenceOfWind.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Essences/TheAllSeeingEye.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MagesGuildPrisonKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"

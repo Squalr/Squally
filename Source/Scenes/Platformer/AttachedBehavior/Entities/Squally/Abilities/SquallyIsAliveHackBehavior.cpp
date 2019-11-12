@@ -14,6 +14,7 @@
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -104,7 +105,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 				EntityPreview::create(this->squally),
 				{
 				},
-				2,
+				int(HackFlags::Light),
 				1.0f,
 				isAliveClippy
 			)

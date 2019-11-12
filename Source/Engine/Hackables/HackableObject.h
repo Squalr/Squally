@@ -54,9 +54,9 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int eq) override;
+	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
-	virtual void onSensingEnable(int eq);
+	virtual void onSensingEnable(int hackFlags);
 	virtual void onSensingDisable();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();

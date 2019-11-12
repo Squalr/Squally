@@ -15,6 +15,7 @@
 
 #include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeamGenericPreview.h"
 #include "Objects/Platformer/Physics/FloatingWoodenBeam/FloatingWoodenBeamGetDensityPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -98,7 +99,7 @@ void FloatingWoodenBeam::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
-				1,
+				int(HackFlags::Water),
 				10.0f
 			)
 		},

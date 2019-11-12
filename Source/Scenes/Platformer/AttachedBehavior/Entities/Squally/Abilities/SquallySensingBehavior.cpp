@@ -6,6 +6,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityRuneBehavior.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
@@ -48,6 +49,6 @@ void SquallySensingBehavior::onLoad()
 	
 	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
 	{
-		HackableEvents::TriggerSensingEnable(HackableEvents::SensingArgs(this->squally->getStateOrDefaultInt(StateKeys::Eq, 1)));
+		HackableEvents::TriggerSensingEnable(HackableEvents::SensingArgs(HackFlagUtils::GetCurrentHackFlags(this->squally->getInventory())));
 	});
 }

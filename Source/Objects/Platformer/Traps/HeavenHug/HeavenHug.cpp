@@ -14,6 +14,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -96,7 +97,7 @@ void HeavenHug::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
 					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }
 				},
-				1,
+				int(HackFlags::Gravity),
 				20.0f
 			)
 		},

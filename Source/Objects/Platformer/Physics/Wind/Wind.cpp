@@ -11,6 +11,7 @@
 #include "Objects/Platformer/Physics/Wind/WindClippy.h"
 #include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -142,7 +143,7 @@ void Wind::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
-				1,
+				int(HackFlags::Wind),
 				12.0f,
 				this->showClippy ? WindClippy::create() : nullptr
 			)

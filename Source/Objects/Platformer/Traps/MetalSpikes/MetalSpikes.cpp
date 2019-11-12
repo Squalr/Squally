@@ -11,6 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -98,7 +99,7 @@ void MetalSpikes::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
-				1,
+				int(HackFlags::None),
 				20.0f
 			)
 		},

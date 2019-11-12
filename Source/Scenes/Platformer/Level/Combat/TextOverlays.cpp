@@ -138,7 +138,7 @@ void TextOverlays::showExpBars(int expGain)
 		const int ticks = int(fillDuration * float(updatesPerSecond));
 		const float delay = 0.0f;
 
-		while (currentTicks.size() <= entityIndex)
+		while (int(currentTicks.size()) <= entityIndex)
 		{
 			currentTicks.push_back(0);
 		}

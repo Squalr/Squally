@@ -10,6 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Doors/PuzzleDoors/Gate/MulDoor/MulDoorPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
@@ -57,7 +58,7 @@ void MulDoor::registerHackables()
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
 				},
-				1,
+				int(HackFlags::None),
 				14.0f,
 				nullptr,
 				"imul rcx, 1" // The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs

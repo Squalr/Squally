@@ -21,7 +21,7 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 		return Sprite::create();
 	}
 
-	RenderTexture* renderedNode = RenderTexture::create(renderSize.width + padding.width * 2.0f, renderSize.height + padding.height * 2.0f);
+	RenderTexture* renderedNode = RenderTexture::create(int(renderSize.width + padding.width * 2.0f), int(renderSize.height + padding.height * 2.0f));
 
 	if (renderedNode == nullptr)
 	{
@@ -80,7 +80,7 @@ Sprite* RenderUtils::applyShaderOnce(Sprite* target, std::string vertexShader, s
 	target->setGLProgramState(state);
 	program->use();
 
-	RenderTexture* renderedSprite = RenderTexture::create(target->getContentSize().width, target->getContentSize().height);
+	RenderTexture* renderedSprite = RenderTexture::create(int(target->getContentSize().width), int(target->getContentSize().height));
 
 	if (renderedSprite == nullptr)
 	{

@@ -45,7 +45,7 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 	};
 
 	// Fire deserialization events for objects
-	for (int index = 0; index < objects.size(); index++)
+	for (int index = 0; index < int(objects.size()); index++)
 	{
 		if (objects[index].getType() == cocos2d::Value::Type::MAP)
 		{

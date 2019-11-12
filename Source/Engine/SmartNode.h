@@ -38,7 +38,7 @@ protected:
 	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable();
 	virtual void onDeveloperModeDisable();
-	virtual void onHackerModeEnable(int eq);
+	virtual void onHackerModeEnable(int hackFlags);
 	virtual void onHackerModeDisable();
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();

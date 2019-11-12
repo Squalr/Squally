@@ -15,6 +15,7 @@
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeClippy.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -120,7 +121,7 @@ void PendulumBlade::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
 				},
-				2,
+				int(HackFlags::None),
 				20.0f,
 				this->showClippy ? PendulumBladeClippy::create() : nullptr
 			)

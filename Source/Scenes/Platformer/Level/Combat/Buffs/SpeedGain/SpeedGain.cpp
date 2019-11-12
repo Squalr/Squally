@@ -15,6 +15,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/SpeedGain/SpeedGainClippy.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/SpeedGain/SpeedGainGenericPreview.h"
 
@@ -111,7 +112,7 @@ void SpeedGain::registerHackables()
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
-				1,
+				int(HackFlags::None),
 				2.0f,
 				showClippy ? SpeedGainClippy::create() : nullptr
 			)

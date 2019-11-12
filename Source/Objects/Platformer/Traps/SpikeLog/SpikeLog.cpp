@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -97,7 +98,7 @@ void SpikeLog::registerHackables()
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
-				1,
+				int(HackFlags::None),
 				20.0f
 			)
 		},

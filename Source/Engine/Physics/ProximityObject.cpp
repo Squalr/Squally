@@ -5,6 +5,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/UIResources.h"
 
@@ -93,7 +94,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
-				10,
+				int(HackFlags::Gravity),
 				3.0f
 			)
 		},
@@ -110,7 +111,7 @@ void ProximityObject::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
-				10,
+				int(HackFlags::Gravity),
 				3.0f
 			)
 		},

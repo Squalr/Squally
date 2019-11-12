@@ -111,7 +111,7 @@ void HackableObject::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onSensingEnable(args->currentEq);
+			this->onSensingEnable(args->hackFlags);
 		}
 	}));
 
@@ -178,9 +178,9 @@ void HackableObject::toggleHackable(bool isHackable)
 	this->isHackable = isHackable;
 }
 
-void HackableObject::onHackerModeEnable(int eq)
+void HackableObject::onHackerModeEnable(int hackFlags)
 {
-	super::onHackerModeEnable(eq);
+	super::onHackerModeEnable(hackFlags);
 
 	if (!this->isHackable)
 	{
@@ -189,7 +189,7 @@ void HackableObject::onHackerModeEnable(int eq)
 
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
-		if ((*it)->getRequiredEq() > eq)
+		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
 		{
 			return;
 		}
@@ -208,7 +208,7 @@ void HackableObject::onHackerModeDisable()
 	this->hackButton->setVisible(false);
 }
 
-void HackableObject::onSensingEnable(int eq)
+void HackableObject::onSensingEnable(int hackFlags)
 {
 	if (!this->isHackable)
 	{
@@ -217,7 +217,7 @@ void HackableObject::onSensingEnable(int eq)
 
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
-		if ((*it)->getRequiredEq() > eq)
+		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
 		{
 			return;
 		}

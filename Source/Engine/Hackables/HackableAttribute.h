@@ -10,7 +10,7 @@ class LocalizedString;
 class HackableAttribute : public SmartNode
 {
 public:
-	int getRequiredEq();
+	int getRequiredHackFlag();
 	float getElapsedDuration();
 	float getDuration();
 	std::string getIconResource();
@@ -20,7 +20,7 @@ public:
 	Clippy* getClippy();
 
 protected:
-	HackableAttribute(int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy = nullptr);
+	HackableAttribute(int requiredHackFlags, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy = nullptr);
 	~HackableAttribute();
 
 	void onEnter() override;
@@ -34,7 +34,7 @@ private:
 	LocalizedString* name;
 	std::string iconResource;
 	HackablePreview* hackablePreview;
-	int requiredEq;
+	int requiredHackFlag;
 	float duration;
 	float elapsedDuration;
 	Clippy* clippy;

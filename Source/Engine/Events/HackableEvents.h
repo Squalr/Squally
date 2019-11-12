@@ -53,18 +53,18 @@ public:
 
 	struct HackToggleArgs
 	{
-		int currentEq;
+		int hackFlags;
 
-		HackToggleArgs(int currentEq) : currentEq(currentEq)
+		HackToggleArgs(int hackFlags) : hackFlags(hackFlags)
 		{
 		}
 	};
 
 	struct SensingArgs
 	{
-		int currentEq;
+		int hackFlags;
 
-		SensingArgs(int currentEq) : currentEq(currentEq)
+		SensingArgs(int hackFlags) : hackFlags(hackFlags)
 		{
 		}
 	};

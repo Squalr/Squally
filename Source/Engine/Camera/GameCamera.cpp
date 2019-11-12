@@ -275,7 +275,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 	// Reset state
 	elapsed = 0.0f;
-	ticks = 60 * duration; // 60fps
+	ticks = int(60.0f * duration); // 60fps
 	elapsedTicks = 0;
 
 	Director::getInstance()->getScheduler()->schedule([=](float dt)
@@ -286,7 +286,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 		{
 			if (Camera::getDefaultCamera() != nullptr)
 			{
-				Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * M_PI) / waveLength)) * magnitude);
+				Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * float(M_PI)) / waveLength)) * magnitude);
 			}
 		}
 		else

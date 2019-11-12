@@ -15,6 +15,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthClippy.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -96,7 +97,7 @@ void RestoreHealth::registerHackables()
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
-				1,
+				int(HackFlags::None),
 				2.0f,
 				showClippy ? RestoreHealthClippy::create() : nullptr
 			)

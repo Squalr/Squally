@@ -12,6 +12,7 @@
 #include "Objects/Platformer/Traps/Laser/LaserAnimation.h"
 #include "Objects/Platformer/Traps/Laser/LaserCountDownPreview.h"
 #include "Objects/Platformer/Traps/Laser/LaserGenericPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
@@ -98,7 +99,7 @@ void Laser::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
-				1,
+				int(HackFlags::Fire),
 				20.0f
 			)
 		},

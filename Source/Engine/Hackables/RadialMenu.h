@@ -43,7 +43,7 @@ private:
 	cocos2d::Node* previewNode;
 	cocos2d::Node* radialMenuItems;
 
-	int currentEq;
+	int hackFlags;
 
 	static const float Radius;
 	static const float IconRadius;

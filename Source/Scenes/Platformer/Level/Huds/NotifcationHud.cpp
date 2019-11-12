@@ -150,7 +150,7 @@ void NotificationHud::update(float dt)
 	const float FadeOutDuration = 0.5f;
 	const float Cooldown = FadeInDuration + SustainDuration + FadeOutDuration;
 
-	for (int index = 0; index < this->slotCooldowns.size(); index++)
+	for (int index = 0; index < int(this->slotCooldowns.size()); index++)
 	{
 		this->slotCooldowns[index] += dt;
 

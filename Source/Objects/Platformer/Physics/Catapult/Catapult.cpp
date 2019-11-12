@@ -19,6 +19,7 @@
 #include "Objects/Platformer/Physics/Catapult/CatapultBall.h"
 #include "Objects/Platformer/Physics/Catapult/CatapultApplyPowerPreview.h"
 #include "Objects/Platformer/Physics/Catapult/CatapultGenericPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -148,7 +149,7 @@ void Catapult::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1::create() },
 				},
-				1,
+				int(HackFlags::Gravity),
 				20.0f
 			)
 		},

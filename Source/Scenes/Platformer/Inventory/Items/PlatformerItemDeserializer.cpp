@@ -197,6 +197,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[EssenceOfNature::SaveKeyEssenceOfNature] = [=]() { return (Item*)EssenceOfNature::create(); };
 	this->deserializers[EssenceOfShadow::SaveKeyEssenceOfShadow] = [=]() { return (Item*)EssenceOfShadow::create(); };
 	this->deserializers[EssenceOfUndeath::SaveKeyEssenceOfUndeath] = [=]() { return (Item*)EssenceOfUndeath::create(); };
+	this->deserializers[EssenceOfWind::SaveKeyEssenceOfWind] = [=]() { return (Item*)EssenceOfWind::create(); };
 	this->deserializers[TheAllSeeingEye::SaveKeyTheAllSeeingEye] = [=]() { return (Item*)TheAllSeeingEye::create(); };
 
 	// Keys

@@ -14,6 +14,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -110,7 +111,7 @@ void DartGun::registerHackables()
 					{ HackableCode::Register::zax, nullptr },
 					{ HackableCode::Register::zbx, nullptr }
 				},
-				1,
+				int(HackFlags::None),
 				20.0f
 			)
 		},

@@ -207,7 +207,7 @@ void CollectablesMenu::updateCollectedVisualState()
 {
 	int collectedCount = 0;
 
-	for (int index = 0; index < this->saveKeys.size(); index++)
+	for (int index = 0; index < int(this->saveKeys.size()); index++)
 	{
 		if (SaveManager::getProfileDataOrDefault(this->saveKeys[index], Value(false)).asBool())
 		{

@@ -141,7 +141,7 @@ void Squally::performSwimAnimation()
 	}
 }
 
-void Squally::onHackerModeEnable(int eq)
+void Squally::onHackerModeEnable(int hackFlags)
 {
-	super::onHackerModeEnable(eq);
+	super::onHackerModeEnable(hackFlags);
 }

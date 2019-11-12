@@ -2,7 +2,6 @@
 
 #include "Engine/Inventory/Item.h"
 
-class LocalizedString;
 class PlatformerAttack;
 
 class Equipable : public Item
@@ -13,7 +12,7 @@ public:
 
 protected:
 	Equipable(CurrencyInventory* cost);
-	virtual ~Equipable();
+	~Equipable();
 
 private:
 	typedef Item super;

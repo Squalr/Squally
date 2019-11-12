@@ -18,6 +18,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotem.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/BendReality.h"
 #include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/MeetMeAtMagesGuild.h"
@@ -163,6 +164,7 @@ void TeachHackerMode::runCinematicSequencePt2()
 						),
 						[=]()
 						{
+							PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(EssenceOfWind::create()));
 							this->helpTotem->activate();
 							
 							this->runAction(Sequence::create(

@@ -222,7 +222,7 @@ void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float durati
 		return;
 	}
 
-	const float step = 0.0166660007;
+	const float step = 1.0f / 60.0f;
 
 	particleSystem->start();
 

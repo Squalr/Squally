@@ -109,7 +109,7 @@ void SmartScene::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->currentEq);
+			this->onHackerModeEnable(args->hackFlags);
 		}
 	}));
 
@@ -127,7 +127,7 @@ void SmartScene::onDeveloperModeDisable()
 {
 }
 
-void SmartScene::onHackerModeEnable(int eq)
+void SmartScene::onHackerModeEnable(int hackFlags)
 {
 	this->hackermodeEnabled = true;
 }
@@ -215,7 +215,7 @@ void SmartScene::pause()
 	if (this->fadeAction != nullptr)
 	{
 		this->stopAction(this->fadeAction);
-		this->layerColor->setOpacity(0.0f);
+		this->layerColor->setOpacity(0);
 	}
 
 	super::pause();

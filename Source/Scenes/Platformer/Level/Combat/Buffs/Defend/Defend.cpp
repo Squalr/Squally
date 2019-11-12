@@ -53,7 +53,7 @@ void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> han
 {
 	super::onBeforeDamageTaken(damageOrHealing, handleCallback);
 
-	*damageOrHealing = std::round(float(*damageOrHealing) * Defend::DamageReduction);
+	*damageOrHealing = int(std::round(float(*damageOrHealing) * Defend::DamageReduction));
 }
 
 void Defend::onTimelineReset(bool wasInterrupt)
