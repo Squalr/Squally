@@ -27,6 +27,7 @@ private:
 	typedef QuestTask super;
 
 	void registerDialogue();
+	void onHexusWin();
 
 	MagePortal* portal;
 	Marcel* marcel;

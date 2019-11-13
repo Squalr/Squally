@@ -217,6 +217,7 @@ void SmartNode::defer(std::function<void()> task)
 		this->schedule([=](float dt)
 		{
 			task();
+			this->unschedule(eventKey);
 		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
 }
 

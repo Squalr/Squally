@@ -19,8 +19,13 @@
 #include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/MarcelTutorialBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/IChallengeYou.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/M_WellDone.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/N_WeBroughtYouHere.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/O_UnknownForce.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/P_OnlyYouCanDefeat.h"
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/Q_LearnMoreOfTheseMonsters.h"
 
 #include "Strings/Hexus/Hexus.h"
 
@@ -90,6 +95,84 @@ void ReturnToMarcel::registerDialogue()
 {
 	if (this->marcel != nullptr)
 	{
-		this->marcel->attachBehavior(MarcelTutorialBehavior::create(this->marcel));
+		MarcelTutorialBehavior* behavior = MarcelTutorialBehavior::create(this->marcel);
+
+		behavior->registerWinCallback([=]()
+		{
+			this->onHexusWin();
+		});
+
+		this->marcel->attachBehavior(behavior);
 	}
+}
+
+void ReturnToMarcel::onHexusWin()
+{
+	PlatformerEvents::TriggerCinematicHijack();
+
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(this->marcel, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		),
+		[=]()
+		{
+			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(this->marcel, false),
+				DialogueEvents::BuildPreviewNode(this->squally, true)
+			),
+			[=]()
+			{
+				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Top,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(this->marcel, false),
+					DialogueEvents::BuildPreviewNode(this->squally, true)
+				),
+				[=]()
+				{
+					DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Top,
+						DialogueBox::DialogueAlignment::Left,
+						DialogueEvents::BuildPreviewNode(this->marcel, false),
+						DialogueEvents::BuildPreviewNode(this->squally, true)
+					),
+					[=]()
+					{
+						DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+						Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters::create(),
+						DialogueEvents::DialogueVisualArgs(
+							DialogueBox::DialogueDock::Top,
+							DialogueBox::DialogueAlignment::Left,
+							DialogueEvents::BuildPreviewNode(this->marcel, false),
+							DialogueEvents::BuildPreviewNode(this->squally, true)
+						),
+						[=]()
+						{
+						},
+						true
+						));
+					},
+					false
+					));
+				},
+				false
+				));
+			},
+			false
+			));
+		},
+		false
+	));
 }

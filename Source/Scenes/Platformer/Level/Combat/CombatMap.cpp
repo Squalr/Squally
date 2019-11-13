@@ -126,7 +126,10 @@ void CombatMap::onEnter()
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
 
-	this->spawnEntities();
+	this->defer([=]()
+	{
+		this->spawnEntities();
+	});
 }
 
 void CombatMap::onExit()

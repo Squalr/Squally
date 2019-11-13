@@ -15,7 +15,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/OgreSpotted.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/EnemySpotted.h"
 
 using namespace cocos2d;
 
@@ -87,7 +87,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			}),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_OgreSpotted::create(), 4.0f, [=]()
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), 4.0f, [=]()
 				{
 					PlatformerEvents::TriggerCinematicRestore();
 					this->scrappy->speechBubble->hideDialogue();

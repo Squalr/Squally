@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_OgreSpotted : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_EnemySpotted : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_OgreSpotted* create();
+		static Platformer_Quests_EndianForest_Intro_EnemySpotted* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_OgreSpotted();
-		~Platformer_Quests_EndianForest_Intro_OgreSpotted();
+		Platformer_Quests_EndianForest_Intro_EnemySpotted();
+		~Platformer_Quests_EndianForest_Intro_EnemySpotted();
 	};
 }

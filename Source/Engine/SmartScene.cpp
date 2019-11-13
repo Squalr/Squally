@@ -221,6 +221,20 @@ void SmartScene::pause()
 	super::pause();
 }
 
+void SmartScene::defer(std::function<void()> task)
+{
+		static unsigned long long TaskId = 0;
+		unsigned long long taskId = TaskId++;
+		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
+
+		// Schedule the task for the next update loop
+		this->schedule([=](float dt)
+		{
+			task();
+			this->unschedule(eventKey);
+		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+}
+
 void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
