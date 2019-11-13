@@ -75,18 +75,11 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	super::onEnter();
-
-	// Request camera track player
-	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(0.0f, 128.0f), Vec2(128.0f, 96.0f));
-	GameCamera::getInstance()->setTarget(trackingData, true);
 }
 
 void Squally::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	// Request HUD track player
-	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
 void Squally::initializePositions()

@@ -15,11 +15,13 @@ class PlatformerEnemy : public PlatformerEntity
 {
 public:
 	std::string getBattleMapResource();
+	std::string getBattleTag();
 	std::string getBattleBehavior();
 	Inventory* getDropInventory();
 
 	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
+	static const std::string MapKeyBattleTag;
 	static const std::string PlatformerEnemyTag;
 
 protected:
@@ -41,6 +43,7 @@ protected:
 	std::tuple<std::string, float> createDrop(std::string itemKey, float probability);
 
 	std::string battleMapResource;
+	std::string battleMapTag;
 	std::string battleBehavior;
 	std::vector<std::tuple<std::string, float>> dropTable;
 	std::tuple<int, int> iouTable;

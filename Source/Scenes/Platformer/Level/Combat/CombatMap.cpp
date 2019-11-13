@@ -347,6 +347,11 @@ void CombatMap::spawnEntities()
 		{
 			ValueMap valueMap = ValueMap();
 
+			if (this->enemyData[index].entityType.empty())
+			{
+				continue;
+			}
+
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
 			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;

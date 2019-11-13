@@ -150,20 +150,7 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr && args->enemy != nullptr && !args->enemy->getBattleMapResource().empty())
 		{
-			CombatMap* combatMap = CombatMap::create(
-				args->enemy->getBattleMapResource(),
-				args->firstStrike,
-				args->enemy->getUniqueIdentifier(),
-				{
-					CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior),
-					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString(), ""),
-		 		},
-				{ 
-					CombatMap::CombatData(args->enemy->getEntityKey(), args->enemy->getBattleBehavior()),
-				}
-			);
-
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+			this->engageEnemy(args->enemy, args->firstStrike);
 		}
 	}));
 
@@ -335,4 +322,45 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
+}
+
+void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
+{
+	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
+	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
+
+	// Build player team
+	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
+
+	std::string helperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
+
+	if (!helperName.empty())
+	{
+		playerCombatData.push_back(CombatMap::CombatData(helperName, ""));
+	}
+
+	// Build enemy team
+	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior()));
+
+	if (!enemy->getBattleTag().empty())
+	{
+		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
+		{
+			if (enemyAlly != enemy)
+			{
+				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior()));
+			}
+		}), enemy->getBattleTag());
+	}
+
+	// Start combat
+	CombatMap* combatMap = CombatMap::create(
+		enemy->getBattleMapResource(),
+		firstStrike,
+		enemy->getUniqueIdentifier(),
+		playerCombatData,
+		enemyCombatData
+	);
+
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
 }

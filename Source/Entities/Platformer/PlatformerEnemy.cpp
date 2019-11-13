@@ -20,6 +20,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEnemy::MapKeyBattleAttachedBehavior = "battle-behavior";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
+const std::string PlatformerEnemy::MapKeyBattleTag = "battle-tag";
 const std::string PlatformerEnemy::PlatformerEnemyTag = "platformer-enemy";
 
 PlatformerEnemy::PlatformerEnemy(
@@ -43,12 +44,16 @@ PlatformerEnemy::PlatformerEnemy(
 {
 	this->battleBehavior = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleAttachedBehavior, Value("")).asString();
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::Combat_Intro)).asString();
+	this->battleMapTag = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleTag, Value("")).asString();
 	this->dropTable = std::vector<std::tuple<std::string, float>>();
 	this->iouTable = std::tuple<int, int>();
 	this->dropInventory = Inventory::create();
 
 	// Tag all entities by class and by their name to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEnemy::PlatformerEnemyTag);
+
+	// Tag enemies of the same party (same battle tag)
+	this->addTag(this->battleMapTag);
 
 	this->addChild(this->dropInventory);
 }
@@ -93,6 +98,11 @@ std::string PlatformerEnemy::getBattleMapResource()
 	}
 
 	return "Private/Platformer/Maps/" + this->battleMapResource + ".tmx";
+}
+
+std::string PlatformerEnemy::getBattleTag()
+{
+	return this->battleMapTag;
 }
 
 std::string PlatformerEnemy::getBattleBehavior()

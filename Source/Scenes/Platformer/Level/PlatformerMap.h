@@ -11,6 +11,7 @@ class InventoryMenu;
 class MapMenu;
 class NotificationHud;
 class PartyMenu;
+class PlatformerEnemy;
 
 class PlatformerMap : public MapBase
 {
@@ -31,6 +32,7 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
+	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;

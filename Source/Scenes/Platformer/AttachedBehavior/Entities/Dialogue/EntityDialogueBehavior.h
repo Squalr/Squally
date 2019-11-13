@@ -34,7 +34,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void tryShowPretext();
+	void onInteract();
 	void chooseOption(int option);
 	void showOptions();
 	bool hasDialogueOptions();

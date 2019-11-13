@@ -265,6 +265,11 @@ void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 
 void GameObject::addTag(std::string tag)
 {
+	if (tag.empty())
+	{
+		return;
+	}
+	
 	this->tags.insert(tag);
 }
 

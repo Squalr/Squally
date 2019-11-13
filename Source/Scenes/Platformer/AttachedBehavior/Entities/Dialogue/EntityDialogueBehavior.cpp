@@ -105,13 +105,13 @@ void EntityDialogueBehavior::onLoad()
 	{
 		if (this->canInteract)
 		{
-			this->tryShowPretext();
+			this->onInteract();
 		}
 	});
 
 	this->dialogueCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		if (this->hasDialogueOptions())
+		if (this->hasDialogueOptions() || !this->pretextQueue.empty())
 		{
 			this->canInteract = true;
 			this->interactMenu->show();
@@ -178,16 +178,16 @@ void EntityDialogueBehavior::onLoad()
 
 void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)
 {
-	std::function<void()> originalFunc = std::function<void()>(pretext.onDialogueClose);
+	std::function<void()> originalFunc = pretext.onDialogueClose;
 
 	pretext.onDialogueClose = [=]()
 	{
-		this->tryShowPretext();
-
 		if (originalFunc != nullptr)
 		{
-			// originalFunc();
+			originalFunc();
 		}
+
+		this->onInteract();
 	};
 
 	this->pretextQueue.push(pretext);
@@ -196,21 +196,21 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 	this->pretextNode->addChild(pretext.visualArgs.rightContentNode);
 }
 
-void EntityDialogueBehavior::tryShowPretext()
+void EntityDialogueBehavior::onInteract()
 {
-	if (!this->hasDialogueOptions())
-	{
-		return;
-	}
-	
 	if (this->pretextQueue.empty())
 	{
-		this->setActiveDialogueSet(this->getMainDialogueSet());
-		return;
+		if (this->hasDialogueOptions())
+		{
+			this->setActiveDialogueSet(this->getMainDialogueSet());
+			return;
+		}
 	}
-
-	DialogueEvents::TriggerDialogueOpen(this->pretextQueue.front());
-	this->pretextQueue.pop();
+	else 
+	{
+		DialogueEvents::TriggerDialogueOpen(this->pretextQueue.front());
+		this->pretextQueue.pop();
+	}
 }
 
 void EntityDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue)

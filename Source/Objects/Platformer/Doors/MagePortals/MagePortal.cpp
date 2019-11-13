@@ -54,7 +54,7 @@ void MagePortal::initializeListeners()
 
 void MagePortal::closePortal(bool instant)
 {
-	this->lock();
+	this->disable();
 
 	if (instant)
 	{
@@ -77,7 +77,7 @@ void MagePortal::openPortal(bool instant)
 		this->runAction(FadeTo::create(0.5f, 255));
 	}
 
-	this->unlock();
+	this->enable();
 }
 
 void MagePortal::drawEdge(cocos2d::Color4F edgeColor, cocos2d::DrawNode* drawNode, float radius, int thickness)
