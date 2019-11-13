@@ -58,6 +58,10 @@ Timeline::Timeline()
 	this->addChild(this->castLabel);
 }
 
+Timeline::~Timeline()
+{
+}
+
 void Timeline::onEnter()
 {
 	super::onEnter();
@@ -166,42 +170,42 @@ void Timeline::checkCombatComplete()
 		return;
 	}
 
-	static bool allEnemiesDead = true;
-	static bool allPlayersDead = true;
+	static bool allEnemiesAlive = true;
+	static bool allPlayersAlive = true;
 
-	allEnemiesDead = true;
-	allPlayersDead = true;
+	allEnemiesAlive = true;
+	allPlayersAlive = true;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allEnemiesDead = false;
+				allEnemiesAlive = false;
 			}));
 		}
 	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Only set flag if the entity is on the timeline to avoid querying non-combat helpers (ie scrappy)
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allPlayersDead = false;
+				allPlayersAlive = false;
 			}));
 		}
 	}), PlatformerFriendly::PlatformerFriendlyTag);
 
-	if (allEnemiesDead)
+	if (!allEnemiesAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
-	else if (allPlayersDead)
+	else if (!allPlayersAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
@@ -244,35 +248,46 @@ void Timeline::resumeTimeline()
 	this->timelineEntryAwaitingUserAction = nullptr;
 }
 
-void Timeline::initializeTimeline(bool isPlayerFirstStrike)
+std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities)
 {
-	this->timelineNode->removeAllChildren();
-	this->timelineEntries.clear();
-
-	float nextPlayerBonus = 0.0f;
-	float nextEnemyBonus = 0.0f;
+	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
 	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.35f;
-	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
+	float nextPlayerBonus = 0.0f;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
+	for (auto it = friendlyEntities.begin(); it != friendlyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity);
+		TimelineEntry* entry = TimelineEntry::create(*it);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
 		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
 		nextPlayerBonus += 0.1f;
-	}), PlatformerFriendly::PlatformerFriendlyTag);
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+		entries.push_back(entry);
+	}
+
+	return entries;
+}
+
+std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities)
+{
+	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
+	float nextEnemyBonus = 0.0f;
+	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
+
+	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity);
+		TimelineEntry* entry = TimelineEntry::create(*it);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
 		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
 		nextEnemyBonus += 0.1f;
-	}), PlatformerEnemy::PlatformerEnemyTag);
+		
+		entries.push_back(entry);
+	}
+
+	return entries;
 }

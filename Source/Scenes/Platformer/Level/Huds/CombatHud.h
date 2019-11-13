@@ -2,7 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-class PlatformerEntity;
+class TimelineEntry;
 class StatsBars;
 
 class CombatHud : public Hud
@@ -10,7 +10,7 @@ class CombatHud : public Hud
 public:
 	static CombatHud* create();
 
-	void bindStatsBars();
+	void bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::vector<TimelineEntry*> enemyEntries);
 
 private:
 	typedef Hud super;

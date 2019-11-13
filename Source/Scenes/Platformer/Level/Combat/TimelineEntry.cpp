@@ -18,7 +18,6 @@
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -35,7 +34,7 @@ TimelineEntry* TimelineEntry::create(PlatformerEntity* entity)
 	return instance;
 }
 
-TimelineEntry::TimelineEntry(PlatformerEntity* entity)
+TimelineEntry::TimelineEntry(PlatformerEntity* entity) : super()
 {
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
@@ -53,6 +52,10 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->addChild(this->circle);
 	this->addChild(this->emblem);
 	this->addChild(this->orphanedAttackCache);
+}
+
+TimelineEntry::~TimelineEntry()
+{
 }
 
 void TimelineEntry::onEnter()

@@ -30,7 +30,7 @@ public:
 private:
 	typedef SmartNode super;
 	TimelineEntry(PlatformerEntity* entity);
-	virtual ~TimelineEntry() = default;
+	~TimelineEntry();
 
 	struct DamageArgs
 	{

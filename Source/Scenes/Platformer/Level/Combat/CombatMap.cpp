@@ -306,6 +306,41 @@ void CombatMap::initializeListeners()
 
 void CombatMap::spawnEntities()
 {
+	std::vector<PlatformerEntity*> friendlyEntities = std::vector<PlatformerEntity*>();
+	std::vector<PlatformerEntity*> enemyEntities = std::vector<PlatformerEntity*>();
+
+	// Deserialize players team
+	{
+		for (int index = 0; index < int(this->playerData.size()); index++)
+		{
+			ValueMap valueMap = ValueMap();
+
+			if (this->playerData[index].entityType.empty())
+			{
+				continue;
+			}
+
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
+			valueMap[GameObject::MapKeyAttachedBehavior] = this->playerData[index].battleBehavior;
+			
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
+				valueMap,
+				[&] (ObjectDeserializer::ObjectDeserializationArgs args)
+				{
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
+					
+					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
+					friendlyEntities.push_back(entity);
+					
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
+				}
+			);
+
+			this->platformerEntityDeserializer->deserialize(&args);
+		}
+	}
+	
 	// Deserialize all enemies
 	{
 		for (int index = 0; index < int(this->enemyData.size()); index++)
@@ -319,11 +354,12 @@ void CombatMap::spawnEntities()
 
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
-				[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
+				[&] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
 
 					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
+					enemyEntities.push_back(entity);
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
 				}
@@ -333,32 +369,8 @@ void CombatMap::spawnEntities()
 		}
 	}
 
-	// Deserialize players team
-	{
-		for (int index = 0; index < int(this->playerData.size()); index++)
-		{
-			ValueMap valueMap = ValueMap();
+	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(true, friendlyEntities);
+	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(true, enemyEntities);
 
-			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
-			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->playerData[index].battleBehavior;
-			
-			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
-				valueMap,
-				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
-				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
-					
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
-					
-					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
-				}
-			);
-
-			this->platformerEntityDeserializer->deserialize(&args);
-		}
-	}
-
-	this->combatHud->bindStatsBars();
-	this->timeline->initializeTimeline(true);
+	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }
