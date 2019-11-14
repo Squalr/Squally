@@ -86,7 +86,7 @@ void StateAIDecideCardReplace::replaceCard(Card* cardToReplace, GameState* gameS
 		// Remove all cards of the same type of the target card
 		gameState->playerDeck->removeCardsWhere([=](Card* card)
 		{
-			if (card->cardData->cardKey == cardToReplace->cardData->cardKey)
+			if (card->cardData->getCardKey() == cardToReplace->cardData->getCardKey())
 			{
 				this->removedCards.push_back(card);
 				return true;

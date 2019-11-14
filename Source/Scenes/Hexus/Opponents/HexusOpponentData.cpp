@@ -106,7 +106,7 @@ CardData* HexusOpponentData::getStrongestCard()
 
 	for (auto it = this->cards.begin(); it != this->cards.end(); it++)
 	{
-		if (best == nullptr || (*it)->attack > best->attack)
+		if (best == nullptr || (*it)->getAttack() > best->getAttack())
 		{
 			best = *it;
 		}
@@ -124,17 +124,6 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)std::ceil((deckStrength + 0.10f) * 15), 2, 15);
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
-
-	// Always guarantee 0 cards, this seems to actually make for solid gameplay :)
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
 
 	for (auto it = guaranteedCards.begin(); it != guaranteedCards.end(); it++)
 	{

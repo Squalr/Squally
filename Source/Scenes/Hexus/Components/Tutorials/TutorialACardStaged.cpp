@@ -101,7 +101,7 @@ void TutorialACardStaged::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	switch(gameState->selectedHandCard->cardData->cardType)
+	switch(gameState->selectedHandCard->cardData->getCardType())
 	{
 		case CardData::CardType::Binary:
 		{

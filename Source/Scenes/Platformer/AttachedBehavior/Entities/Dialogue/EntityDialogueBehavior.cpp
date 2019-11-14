@@ -48,6 +48,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
 	this->dialogueSets = std::vector<DialogueSet*>();
 	this->activeDialogueSet = this->mainDialogueSet;
+	this->optionsVisible = false;
 
 	this->addDialogueSet(this->mainDialogueSet);
 
@@ -244,17 +245,19 @@ void EntityDialogueBehavior::chooseOption(int option)
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
-	if (!this->pretextQueue.empty() || --option < 0 || option >= int(dialogueOptions.size()))
+	if (!this->optionsVisible || --option < 0 || option >= int(dialogueOptions.size()))
 	{
 		return;
 	}
-
-	DialogueEvents::TriggerDialogueClose();
-
-	if (std::get<0>(dialogueOptions[option])->onDialogueChosen != nullptr)
+	
+	DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
 	{
-		std::get<0>(dialogueOptions[option])->onDialogueChosen();
-	}
+		if (std::get<0>(dialogueOptions[option])->onDialogueChosen != nullptr)
+		{
+			std::get<0>(dialogueOptions[option])->onDialogueChosen();
+		}
+	}));
+
 }
 
 void EntityDialogueBehavior::showOptions()
@@ -270,6 +273,8 @@ void EntityDialogueBehavior::showOptions()
 	LocalizedString* nextOption = options;
 	LocalizedString* currentOption = nextOption;
 	int index = 1;
+
+	this->optionsVisible = true;
 
 	for (auto it = dialogueOptions.begin(); it != dialogueOptions.end(); it++, index++)
 	{
@@ -294,7 +299,9 @@ void EntityDialogueBehavior::showOptions()
 		),
 		[=]()
 		{
-		}
+			this->optionsVisible = false;
+		},
+		true
 	));
 }
 

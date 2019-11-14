@@ -151,7 +151,7 @@ void HelpMenuComponent::openMenu(Card* card)
         return;
     }
 
-    switch (card->cardData->cardType)
+    switch (card->cardData->getCardType())
     {
         case CardData::CardType::Binary:
         case CardData::CardType::Decimal:

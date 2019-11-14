@@ -362,7 +362,7 @@ void TutorialAIntroSequence::runTutorialBinaryCards(GameState* gameState)
 	focusTargets.push_back(gameState->playerBinaryCards);
 	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Binary)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Binary)
 		{
 			focusTargets.push_back((*it));
 		}
@@ -384,7 +384,7 @@ void TutorialAIntroSequence::runTutorialDecimalCards(GameState* gameState)
 	focusTargets.push_back(gameState->playerDecimalCards);
 	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Decimal)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Decimal)
 		{
 			focusTargets.push_back((*it));
 		}
@@ -407,7 +407,7 @@ void TutorialAIntroSequence::runTutorialHexCards(GameState* gameState)
 	focusTargets.push_back(gameState->playerHexCards);
 	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Hexidecimal)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Hexidecimal)
 		{
 			focusTargets.push_back((*it));
 		}

@@ -39,6 +39,27 @@ CardData::~CardData()
 {
 }
 
+std::string CardData::getCardResourceFile()
+{
+	return this->cardResourceFile;
+}
+
+std::string CardData::getCardKey()
+{
+	return this->cardKey;
+}
+
+CardData::CardType CardData::getCardType()
+{
+	return this->cardType;
+}
+
+unsigned int CardData::getAttack()
+{
+	return this->attack;
+}
+
+
 LocalizedString* CardData::getCardTypeString()
 {
 	switch (this->cardType)

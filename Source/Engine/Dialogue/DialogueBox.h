@@ -27,6 +27,8 @@ public:
 		HardRight,
 	};
 
+	bool isDialogueEffectComplete();
+
 protected:
 	typedef SmartNode super;
 
@@ -38,7 +40,6 @@ protected:
 	virtual void runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose);
 	virtual void hideDialogue();
 	virtual void onTypeWriterEffectComplete();
-	bool isDialogueEffectComplete();
 
 	cocos2d::Node* contentNode;
 	LocalizedLabel* text;

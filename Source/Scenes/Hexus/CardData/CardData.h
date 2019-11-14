@@ -39,6 +39,10 @@ public:
 	CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack);
 	~CardData();
 
+	std::string getCardResourceFile();
+	std::string getCardKey();
+	CardType getCardType();
+	unsigned int getAttack();
 	LocalizedString* getCardTypeString();
 	LocalizedString* getCardOperationString();
 	bool isAttackCard();
@@ -47,6 +51,7 @@ public:
 	bool isFixedImmediateCard();
 	unsigned int getIntrinsicImmediate();
 
+private:
 	std::string cardResourceFile;
 	std::string cardKey;
 	CardType cardType;

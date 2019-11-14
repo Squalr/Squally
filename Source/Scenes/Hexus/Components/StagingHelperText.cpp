@@ -132,7 +132,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 {
 	if (gameState->turn == GameState::Turn::Player && gameState->selectedHandCard != nullptr)
 	{
-		switch (gameState->selectedHandCard->cardData->cardType)
+		switch (gameState->selectedHandCard->cardData->getCardType())
 		{
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:

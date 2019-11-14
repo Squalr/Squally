@@ -35,21 +35,21 @@ AutoCard::AutoCard(int defaultAttack)
     {
         CardData* cardData = (*it).second;
         
-        switch(cardData->cardType)
+        switch(cardData->getCardType())
         {
             case CardData::CardType::Binary:
             {
-                this->binaryCardFactory[cardData->attack] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                this->binaryCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
                 break;
             }
             case CardData::CardType::Decimal:
             {
-                this->decimalCardFactory[cardData->attack] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                this->decimalCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
                 break;
             }
             case CardData::CardType::Hexidecimal:
             {
-                this->hexCardFactory[cardData->attack] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                this->hexCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
                 break;
             }
             default:

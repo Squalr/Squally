@@ -19,10 +19,11 @@ void DialogueEvents::TriggerDialogueOpen(DialogueOpenArgs args)
 	);
 }
 
-void DialogueEvents::TriggerDialogueClose()
+void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		DialogueEvents::EventDialogueClose
+		DialogueEvents::EventDialogueClose,
+		&args
 	);
 }
 

@@ -219,7 +219,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -234,7 +234,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -247,7 +247,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			if ((*it)->getIsPlayerOwnedCard())
 			{
@@ -274,7 +274,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			if ((*it)->getIsPlayerOwnedCard())
 			{
@@ -383,7 +383,7 @@ std::vector<Card*> GameState::getAbsorbCards()
 
 	for (auto it = allCards.begin(); it != allCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Special_ABSORB)
 		{
 			absorbCards.push_back(*it);
 		}

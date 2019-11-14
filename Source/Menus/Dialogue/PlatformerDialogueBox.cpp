@@ -115,7 +115,20 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueClose, [=](EventCustom* eventCustom)
 	{
-		this->hideDialogue();
+		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			if (this->isDialogueEffectComplete() && this->isDialogueFocused)
+			{
+				this->hideDialogue();
+
+				if (args->onCloseCallback != nullptr)
+				{
+					args->onCloseCallback();
+				}
+			}
+		}
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)

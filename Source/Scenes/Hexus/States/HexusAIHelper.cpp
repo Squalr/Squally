@@ -137,7 +137,7 @@ std::tuple<Card*, int> HexusAIHelper::getStrongestPlayerCard(GameState* gameStat
 				bestDiff = diff;
 				bestCard = destinationCard;
 			}
-			else if (diff == bestDiff && destinationCard->cardData->cardKey == CardKeys::Hex0)
+			else if (diff == bestDiff && destinationCard->cardData->getCardKey() == CardKeys::Hex0)
 			{
 				bestDiff = diff;
 				bestCard = destinationCard;
@@ -186,19 +186,19 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 	{
 		bool result = false;
 
-		if (card->cardData->cardKey == CardKeys::Binary0)
+		if (card->cardData->getCardKey() == CardKeys::Binary0)
 		{
 			result = true;
 		}
-		else if (card->cardData->cardKey == CardKeys::Decimal0)
+		else if (card->cardData->getCardKey() == CardKeys::Decimal0)
 		{
 			result = true;
 		}
-		else if (card->cardData->cardKey == CardKeys::Hex0)
+		else if (card->cardData->getCardKey() == CardKeys::Hex0)
 		{
 			result = true;
 		}
-		else if (card->cardData->cardKey == CardKeys::Decimal1)
+		else if (card->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			result = true;
 		}
@@ -215,7 +215,7 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 	{
 		for (auto it = extractedCards.begin(); it != extractedCards.end(); it++)
 		{
-			if ((*it)->cardData->cardKey == cardKey)
+			if ((*it)->cardData->getCardKey() == cardKey)
 			{
 				gameState->enemyHand->insertCard(*it, 0.0f);
 			}

@@ -183,7 +183,7 @@ void StateTurnEnd::runIncrementHex0Effect(GameState* gameState)
 
 	for (auto it = allFieldCards.begin(); it != allFieldCards.end(); it++)
 	{
-		if ((*it)->cardData->cardKey == CardKeys::Hex0)
+		if ((*it)->cardData->getCardKey() == CardKeys::Hex0)
 		{
 			(*it)->addOperation(Card::Operation(Card::Operation::OperationType::ADD, 0b0001));
 			(*it)->cardEffects->runEffect(CardEffects::CardEffect::Nether);

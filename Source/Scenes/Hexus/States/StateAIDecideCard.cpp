@@ -76,7 +76,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 	{
 		Card* card = *it;
 
-		switch (card->cardData->cardType)
+		switch (card->cardData->getCardType())
 		{
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
@@ -190,7 +190,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 				Card* bestCard = std::get<0>(bestPlay);
 				int delta = std::get<1>(bestPlay);
 
-				if (delta > 0 || (bestCard != nullptr && bestCard->cardData->cardKey == CardKeys::Hex0))
+				if (delta > 0 || (bestCard != nullptr && bestCard->cardData->getCardKey() == CardKeys::Hex0))
 				{
 					gameState->cachedBestTargetPlay = bestPlay;
 					gameState->selectedHandCard = card;

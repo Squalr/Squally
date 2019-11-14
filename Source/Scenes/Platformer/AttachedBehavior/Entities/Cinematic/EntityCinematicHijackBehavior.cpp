@@ -39,12 +39,12 @@ EntityCinematicHijackBehavior::~EntityCinematicHijackBehavior()
 
 void EntityCinematicHijackBehavior::onLoad()
 {
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventCinematicHijack, [=](EventCustom*)
 	{
 		this->entity->setState(StateKeys::CinematicHijacked, Value(true));
 	}));
 
-	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventCinematicRestore, [=](EventCustom*)
 	{
 		this->entity->setState(StateKeys::CinematicHijacked, Value(false));
 	}));

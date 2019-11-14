@@ -44,6 +44,7 @@ private:
 	Squally* squally;
 
 	bool canInteract;
+	bool optionsVisible;
 	
 	CollisionObject* dialogueCollision;
 	InteractMenu* interactMenu;

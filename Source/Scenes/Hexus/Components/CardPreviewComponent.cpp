@@ -103,7 +103,7 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 				break;
 			}
 
-			switch (gameState->selectedHandCard->cardData->cardType)
+			switch (gameState->selectedHandCard->cardData->getCardType())
 			{
 				case CardData::CardType::Binary:
 				case CardData::CardType::Decimal:

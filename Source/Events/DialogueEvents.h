@@ -17,6 +17,15 @@ public:
 	static const std::string EventDialogueOpen;
 	static const std::string EventDialogueClose;
 
+	struct DialogueCloseArgs
+	{
+		std::function<void()> onCloseCallback;
+
+		DialogueCloseArgs(std::function<void()> onCloseCallback) : onCloseCallback(onCloseCallback)
+		{
+		}
+	};
+
 	struct DialogueVisualArgs
 	{
 		DialogueBox::DialogueDock dialogueDock;
@@ -46,6 +55,6 @@ public:
 	};
 
 	static void TriggerDialogueOpen(DialogueOpenArgs args);
-	static void TriggerDialogueClose();
+	static void TriggerTryDialogueClose(DialogueCloseArgs args);
 	static cocos2d::Node* BuildPreviewNode(PlatformerEntity* entity, bool isFlipped);
 };

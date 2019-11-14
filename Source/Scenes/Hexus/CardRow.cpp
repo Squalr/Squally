@@ -462,7 +462,7 @@ int CardRow::simulateCardEffect(Card* card)
 {
 	int diff = 0;
 
-	switch (card->cardData->cardType)
+	switch (card->cardData->getCardType())
 	{
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
