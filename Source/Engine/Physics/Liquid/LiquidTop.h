@@ -53,6 +53,7 @@ private:
     void onCustomDraw(const cocos2d::Mat4 &transform);
 
     std::vector<ColumnData> columns;
+    std::vector<int> columnIndicies;
     std::vector<Vertex> vertexArray;
     std::vector<float> leftDeltas;
     std::vector<float> rightDeltas;

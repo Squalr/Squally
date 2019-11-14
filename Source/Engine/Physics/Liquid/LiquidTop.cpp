@@ -1,5 +1,7 @@
 #include "LiquidTop.h"
 
+#include <execution>
+
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCCustomCommand.h"
@@ -7,11 +9,12 @@
 #include "cocos/renderer/ccGLStateCache.h"
 #include "cocos/renderer/CCRenderer.h"
 
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
-const int LiquidTop::ColumnsPer128px = 16;
+const int LiquidTop::ColumnsPer128px = 8;
 
 LiquidTop* LiquidTop::create(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, float tension, float dampening, float spread)
 {
@@ -29,6 +32,7 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
     this->leftDeltas = std::vector<float>();
     this->rightDeltas = std::vector<float>();
     this->columns = std::vector<ColumnData>();
+    this->columnIndicies = std::vector<int>();
     this->colorArray = std::vector<cocos2d::Color4B>();
     this->customCommand = new CustomCommand();
     this->tension = tension;
@@ -48,6 +52,7 @@ LiquidTop::LiquidTop(Size surfaceSize, Color4B surfaceColor, Color4B bodyColor, 
         this->leftDeltas.push_back(0.0f);
         this->rightDeltas.push_back(0.0f);
         this->columns.push_back(column);
+        this->columnIndicies.push_back(index);
     }
 }
 
@@ -67,39 +72,45 @@ void LiquidTop::update(float dt)
 {
     super::update(dt);
 
-    for (auto it = this->columns.begin(); it != this->columns.end(); it++)
-    {
-        (*it).update(this->dampening, this->tension);
-    }
-
-    const int SpreadIterations = 8;
-
-    for (int iteration = 0; iteration < SpreadIterations; iteration++)
-    {
-        // Ignore the first and last columns as an optimization. No apparent visual impact, much cleaner code.
-        for (int index = 1; index < int(this->columns.size()) - 1; index++)
+    // Ignore the first and last columns as an optimization. Edges will always be at base water level.
+    std::for_each(
+        std::execution::par_unseq,
+        std::next(this->columns.begin(), 1),
+        std::prev(this->columns.end(), 1),
+        [=](LiquidTop::ColumnData& it)
         {
-            leftDeltas[index] = this->spread * (columns[index].height - columns[index - 1].height);
-            rightDeltas[index] = this->spread * (columns[index].height - columns[index + 1].height);
-            columns[index - 1].speed += leftDeltas[index];
-            columns[index + 1].speed += rightDeltas[index];
+            it.update(this->dampening, this->tension);
         }
+    );
 
-        for (int index = 1; index < int(this->columns.size()) - 1; index++)
+    // See git commit history for unoptomized version.
+    std::for_each(
+        std::execution::par_unseq,
+        std::next(this->columnIndicies.begin(), 1),
+        std::prev(this->columnIndicies.end(), 1),
+        [=](int index)
         {
-            columns[index - 1].height += leftDeltas[index];
-            columns[index + 1].height += rightDeltas[index];
+            // Intentional data races, no apparent visual impact.
+            const float delta = this->spread * (columns[index + 1].height - columns[index].height) + 
+                this->spread * (columns[index - 1].height - columns[index].height);
+            columns[index].speed += delta;
+            columns[index].height += delta;
         }
-    }
+    );
 
-    for (int index = 0; index < int(this->columns.size()); index++)
-    {
-        uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
-        uint16_t y = uint16_t(columns[index].height);
-        
-        this->vertexArray[2 * index] = Vertex(x, y);
-        this->vertexArray[2 * index + 1] = Vertex(x, 0);
-    }
+    std::for_each(
+        std::execution::par_unseq,
+        this->columnIndicies.begin(),
+        this->columnIndicies.end(),
+        [=](int index)
+        {
+            uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
+            uint16_t y = uint16_t(columns[index].height);
+            
+            this->vertexArray[2 * index] = Vertex(x, y);
+            this->vertexArray[2 * index + 1] = Vertex(x, 0);
+        }
+    );
 }
 
 void LiquidTop::splash(float x, float speed)

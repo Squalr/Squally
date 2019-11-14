@@ -47,7 +47,7 @@ Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPl
 
 	this->addChild(this->pad);
 
-	for (auto it = cardData.begin(); it != cardData.end(); *it++)
+	for (auto it = cardData.begin(); it != cardData.end(); it++)
 	{
 		this->insertCardBottom(Card::create(this->style, *it, isPlayerOwnedDeck), false, 0.0f, false);
 	}
@@ -67,7 +67,7 @@ void Deck::copyTo(Deck* otherDeck)
 		otherDeck->clear();
 		otherDeck->style = this->style;
 
-		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
+		for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 		{
 			otherDeck->insertCardRandom(Card::create(this->style, (*it)->cardData, this->isPlayerOwnedDeck), false, 0.0f, false);
 		}
@@ -100,7 +100,10 @@ bool Deck::hasCards()
 
 void Deck::shuffle()
 {
-	std::random_shuffle(this->deckCards.begin(), this->deckCards.end());
+	std::random_device rd;
+	std::mt19937 g(rd());
+
+	std::shuffle(this->deckCards.begin(), this->deckCards.end(), g);
 	this->setCardOrder();
 }
 
@@ -283,7 +286,7 @@ void Deck::enableTopCardInteraction(std::function<void(Card*)> mouseOverCallback
 
 void Deck::disableInteraction()
 {
-	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); *it++)
+	for (auto it = this->deckCards.begin(); it != this->deckCards.end(); it++)
 	{
 		(*it)->disableInteraction();
 		(*it)->setMouseOverCallback(nullptr);

@@ -354,7 +354,11 @@ void CardRow::enableRowCardInteraction()
 
 void CardRow::shuffle()
 {
-	std::random_shuffle(this->rowCards.begin(), this->rowCards.end());
+	std::random_device rd;
+	std::mt19937 g(rd());
+
+	std::shuffle(this->rowCards.begin(), this->rowCards.end(), g);
+
 	this->setCardPositions(0.0f);
 }
 

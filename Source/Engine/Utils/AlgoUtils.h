@@ -47,4 +47,3 @@ public:
 	static cocos2d::Vec2 getOutwardNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,
 			const std::vector<Triangle>& triangles, cocos2d::Node* debugDrawNode = nullptr);
 };
-

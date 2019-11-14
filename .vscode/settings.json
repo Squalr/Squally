@@ -110,7 +110,8 @@
         "hash_set": "cpp",
         "*.mm": "cpp",
         "concepts": "cpp",
-        "shared_mutex": "cpp"
+        "shared_mutex": "cpp",
+        "execution": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
