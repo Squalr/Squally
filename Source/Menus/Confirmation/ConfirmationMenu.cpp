@@ -54,9 +54,6 @@ ConfirmationMenu::~ConfirmationMenu()
 void ConfirmationMenu::onEnter()
 {
 	super::onEnter();
-
-	this->initializePositions();
-	this->initializeListeners();
 }
 
 void ConfirmationMenu::initializePositions()

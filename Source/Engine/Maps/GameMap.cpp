@@ -38,9 +38,6 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
-	// Initialize in constructor to pick up early object spawn events
-	this->initializeListeners();
-
 	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		this->addChild(*it);

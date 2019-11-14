@@ -49,31 +49,34 @@ SquallyWeaponCollisionBehavior::~SquallyWeaponCollisionBehavior()
 
 void SquallyWeaponCollisionBehavior::onLoad()
 {
-	this->onWeaponChange();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
+	this->defer([=]()
 	{
 		this->onWeaponChange();
-	}));
 
-	this->squally->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
-	{
-		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
 		{
-			if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			this->onWeaponChange();
+		}));
+
+		this->squally->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
+		{
+			weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 			{
+				if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+				{
+					return CollisionObject::CollisionResult::DoNothing;
+				}
+
+				PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+				if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+				{
+					// Encountered enemy w/ first-strike
+					PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+				}
+
 				return CollisionObject::CollisionResult::DoNothing;
-			}
-
-			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
-
-			if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				// Encountered enemy w/ first-strike
-				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
+			});
 		});
 	});
 }

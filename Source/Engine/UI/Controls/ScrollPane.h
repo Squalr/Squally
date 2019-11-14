@@ -31,6 +31,8 @@ public:
 	float getScrollPercentage();
 	float getScrollDepth();
 	void updateScrollBounds();
+	void suspendUpdate();
+	void resumeUpdate();
 
 	cocos2d::Size getPaneSize();
 	void addChild(cocos2d::Node* child) override;
@@ -40,7 +42,7 @@ public:
 private:
 	typedef SmartNode super;
 	ScrollPane(cocos2d::Size paneSize, std::string sliderResource, std::string sliderResourceSelected, cocos2d::Size paddingSize, cocos2d::Size marginSize, cocos2d::Color4B initBackgroundColor);
-	virtual ~ScrollPane();
+	~ScrollPane();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -48,6 +50,7 @@ private:
 	void initializePositions() override;
 	float getLowestChild(cocos2d::Vector<cocos2d::Node*>& children, float lowestItem = 0.0f);
 
+	bool updateSuspended;
 	float initialDragDepth;
 	float minScrollDepth;
 	float maxScrollDepth;

@@ -110,12 +110,16 @@ AsciiTable::AsciiTable()
 
 	this->addChild(this->background);
 
+	this->scrollPane->suspendUpdate();
+
 	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
 	{
 		this->scrollPane->addChild(*it);
 	}
 	
 	this->scrollPane->addChild(this->selectionSprite);
+	
+	this->scrollPane->resumeUpdate();
 
 	this->addChild(this->scrollPane);
 	this->addChild(this->frame);

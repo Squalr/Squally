@@ -54,4 +54,5 @@ private:
 
 	bool optimizationHasGlobalListener;
 	bool optimizationHasListener;
+	bool hasInitializedListeners;
 };

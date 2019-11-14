@@ -85,8 +85,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
-
-	this->initializeListeners();
 }
 
 TitleScreenBackground::~TitleScreenBackground()

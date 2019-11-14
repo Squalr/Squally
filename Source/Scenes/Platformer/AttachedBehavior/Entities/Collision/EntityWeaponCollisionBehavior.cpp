@@ -35,6 +35,7 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
 	this->weaponOffset = Vec2::ZERO;
+	this->weaponCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -42,7 +43,13 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	}
 	else
 	{
-		this->rebuildWeaponCollision();
+		Squally* squally = dynamic_cast<Squally*>(this->entity);
+		
+		// Don't bother building weapon collision for Squally, a different attached behavior will load his weapon and call this
+		if (squally == nullptr)
+		{
+			this->rebuildWeaponCollision();
+		}
 	}
 }
 
@@ -100,7 +107,10 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 		weaponType = PlatformerCollisionType::NpcWeapon;
 	}
 	
-	mainhand->removeTrackingObject(this->weaponCollision);
+	if (this->weaponCollision != nullptr)
+	{
+		mainhand->removeTrackingObject(this->weaponCollision);
+	}
 
 	this->weaponCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f),

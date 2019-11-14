@@ -28,6 +28,7 @@ SmartNode::SmartNode()
 	this->hackermodeEnabled = false;
 	this->optimizationHasGlobalListener = false;
 	this->optimizationHasListener = false;
+	this->hasInitializedListeners = false;
 }
 
 SmartNode::~SmartNode()
@@ -39,7 +40,12 @@ void SmartNode::onEnter()
 	super::onEnter();
 
 	this->initializePositions();
-	this->initializeListeners();
+
+	if (!this->hasInitializedListeners)
+	{
+		this->initializeListeners();
+		this->hasInitializedListeners = true;
+	}
 
 	if (this->isDeveloperModeEnabled())
 	{
@@ -130,11 +136,15 @@ bool SmartNode::isDeveloperModeEnabled()
 
 void SmartNode::removeAllListeners()
 {
+	this->optimizationHasGlobalListener = false;
+	this->optimizationHasListener = false;
+	this->hasInitializedListeners = false;
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void SmartNode::removeNonGlobalListeners()
 {
+	this->hasInitializedListeners = false;
 	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
 	{
 		return !listener->isGlobal();
