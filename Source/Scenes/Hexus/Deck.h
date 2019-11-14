@@ -36,6 +36,7 @@ public:
 	void insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void clear();
 	std::vector<Card*> deckCards;
+	Card::CardStyle style;
 
 private:
 	typedef SmartNode super;
@@ -52,5 +53,4 @@ private:
 	ClickableNode* pad;
 	cocos2d::Node* cardsNode;
 	cocos2d::Sprite* deckFocus;
-	Card::CardStyle style;
 };

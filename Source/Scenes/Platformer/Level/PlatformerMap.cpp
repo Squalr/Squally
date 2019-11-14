@@ -188,6 +188,7 @@ void PlatformerMap::initializeListeners()
 			this->menuBackDrop->setOpacity(196);
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
+			
 			GameUtils::focus(this->hexus);
 		}
 	}));
@@ -200,6 +201,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->menuBackDrop->setOpacity(0);
 			this->hexus->setVisible(false);
+
 			GameUtils::focus(this);
 		}
 	}));

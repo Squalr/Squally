@@ -281,8 +281,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 	this->gameState->playerDeck->clear();
 	this->gameState->enemyDeck->clear();
 
-	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
-	this->buildPlayerDeck()->copyTo(this->gameState->playerDeck);
+	if (opponentData->stateOverride == nullptr)
+	{
+		this->buildEnemyDeck(opponentData);
+		this->buildPlayerDeck();
+	}
 
 	GameState::updateState(this->gameState, GameState::StateType::GameStart);
 	this->setVisible(true);
@@ -297,7 +300,19 @@ void Hexus::open(HexusOpponentData* opponentData)
 	}
 }
 
-Deck* Hexus::buildPlayerDeck()
+void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
+{
+	std::vector<CardData*> enemyCards = opponentData->getDeck();
+
+	this->gameState->enemyDeck->style = opponentData->cardStyle;
+
+	for (auto it = enemyCards.begin(); it != enemyCards.end(); it++)
+	{
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, (*it), false), false, 0.0f, false);
+	}
+}
+
+void Hexus::buildPlayerDeck()
 {
 	EquipmentInventory* equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	std::vector<CardData*> cardData = std::vector<CardData*>();
@@ -314,5 +329,10 @@ Deck* Hexus::buildPlayerDeck()
 		}
 	}
 
-	return Deck::create(Card::CardStyle::Earth, cardData);
+	this->gameState->playerDeck->style = Card::CardStyle::Earth;
+
+	for (auto it = cardData.begin(); it != cardData.end(); it++)
+	{
+		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), false), false, 0.0f, false);
+	}
 }

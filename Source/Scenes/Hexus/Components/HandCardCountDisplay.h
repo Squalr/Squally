@@ -8,6 +8,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
 
 class HandCardCountDisplay : public ComponentBase
@@ -28,10 +29,12 @@ private:
 	void updateTotals(GameState* gameState);
 
 	cocos2d::LayerColor* playerHandCardCountFrame;
-	LocalizedLabel* playerHandCardCountText;
+	ConstantString* playerHandCardCountStr;
+	LocalizedLabel* playerHandCardCountLabel;
 	cocos2d::Sprite* playerHandCardIcon;
 
 	cocos2d::LayerColor* enemyHandCardCountFrame;
-	LocalizedLabel* enemyHandCardCountText;
+	ConstantString* enemyHandCardCountStr;
+	LocalizedLabel* enemyHandCardCountLabel;
 	cocos2d::Sprite* enemyHandCardIcon;
 };

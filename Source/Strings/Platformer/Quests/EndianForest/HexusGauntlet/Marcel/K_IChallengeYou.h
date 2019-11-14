@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IChallengeYou : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IChallengeYou* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IChallengeYou();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IChallengeYou();
+		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou();
 	};
 }

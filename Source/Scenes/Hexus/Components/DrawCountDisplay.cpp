@@ -14,7 +14,6 @@
 #include "Resources/HexusResources.h"
 
 #include "Strings/Hexus/DrawToolTip.h"
-#include "Strings/Common/Constant.h"
 
 using namespace cocos2d;
 
@@ -30,9 +29,11 @@ DrawCountDisplay* DrawCountDisplay::create()
 DrawCountDisplay::DrawCountDisplay()
 {
 	this->drawCountSprite = ClickableNode::create(HexusResources::CardDrawIconSmall, HexusResources::CardDrawIconSmall);
-	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->drawCountStr = ConstantString::create("0");
+	this->drawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->drawCountStr);
 	this->enemyDrawCountSprite = Sprite::create(HexusResources::CardDrawIconSmall);
-	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->enemyDrawCountStr = ConstantString::create("0");
+	this->enemyDrawCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->enemyDrawCountStr);
 
 	this->deckDrawCountMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
 	this->deckDrawCountCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_DrawToolTip::create());
@@ -128,8 +129,8 @@ void DrawCountDisplay::onAnyStateChange(GameState* gameState)
 		return;
 	}
 
-	this->drawCountLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playerCardsDrawnNextRound)));
-	this->enemyDrawCountLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->enemyCardsDrawnNextRound)));
+	this->drawCountStr->setString(std::to_string(gameState->playerCardsDrawnNextRound));
+	this->enemyDrawCountStr->setString(std::to_string(gameState->enemyCardsDrawnNextRound));
 
 	switch (gameState->stateType)
 	{

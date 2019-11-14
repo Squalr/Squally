@@ -95,9 +95,9 @@ HexusOpponentData::~HexusOpponentData()
 	}
 }
 
-Deck* HexusOpponentData::getDeck()
+std::vector<CardData*> HexusOpponentData::getDeck()
 {
-	return Deck::create(this->cardStyle, this->cards, false);
+	return this->cards;
 }
 
 CardData* HexusOpponentData::getStrongestCard()

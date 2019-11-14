@@ -112,6 +112,7 @@ private:
 
 	bool isPlayerOwnedCard;
 	bool relocateUI;
+	bool uiRelocated;
 
 	std::vector<Operation> operations;
 	cocos2d::Sprite* cardBack;

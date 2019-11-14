@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
 
 class ScoreTotal : public ComponentBase
@@ -28,10 +29,12 @@ private:
 	void updateTotals(GameState* gameState);
 
 	cocos2d::Sprite* playerTotalFrame;
-	LocalizedLabel* playerTotal;
+	ConstantString* playerTotalStr;
+	LocalizedLabel* playerTotalLabel;
 	cocos2d::Sprite* playerLeaderEmblem;
 
 	cocos2d::Sprite* enemyTotalFrame;
-	LocalizedLabel* enemyTotal;
+	ConstantString* enemyTotalStr;
+	LocalizedLabel* enemyTotalLabel;
 	cocos2d::Sprite* enemyLeaderEmblem;
 };

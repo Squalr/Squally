@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/MarcelTutorialBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
+#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/K_IChallengeYou.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/M_WellDone.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/N_WeBroughtYouHere.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/O_UnknownForce.h"
@@ -95,6 +96,23 @@ void ReturnToMarcel::registerDialogue()
 {
 	if (this->marcel != nullptr)
 	{
+		this->marcel->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			// Pre-text chain
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(this->marcel, false),
+					DialogueEvents::BuildPreviewNode(this->squally, true)
+				),
+				[=]()
+				{
+				}
+			));
+		});
+
 		MarcelTutorialBehavior* behavior = MarcelTutorialBehavior::create(this->marcel);
 
 		behavior->registerWinCallback([=]()

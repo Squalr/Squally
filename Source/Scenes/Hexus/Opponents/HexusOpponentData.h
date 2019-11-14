@@ -59,7 +59,7 @@ public:
 		StateOverride* stateOverride = nullptr);
 	~HexusOpponentData();
 
-	Deck* getDeck();
+	std::vector<CardData*> getDeck();
 	CardData* getStrongestCard();
 
 	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
@@ -77,12 +77,12 @@ public:
 	Strategy strategy;
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
+	Card::CardStyle cardStyle;
 
 	static const std::string winsPrefix;
 	static const std::string lossesPrefix;
 
 protected:
-	Card::CardStyle cardStyle;
 	std::vector<CardData*> cards;
 
 private:

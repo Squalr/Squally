@@ -86,7 +86,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	Deck* buildPlayerDeck();
+	void buildEnemyDeck(HexusOpponentData* opponentData);
+	void buildPlayerDeck();
 
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;

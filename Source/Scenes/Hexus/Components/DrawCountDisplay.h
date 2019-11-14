@@ -8,8 +8,9 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
 class ClickableNode;
+class ConstantString;
+class LocalizedLabel;
 
 class DrawCountDisplay : public ComponentBase
 {
@@ -33,11 +34,13 @@ private:
 	void disableDrawCountDisplayInteraction();
 
 	ClickableNode* drawCountSprite;
+	ConstantString* drawCountStr;
 	LocalizedLabel* drawCountLabel;
 
 	cocos2d::LayerColor* deckDrawCountMouseOverPanel;
 	LocalizedLabel* deckDrawCountCardMouseOverLabel;
 
 	cocos2d::Sprite* enemyDrawCountSprite;
+	ConstantString* enemyDrawCountStr;
 	LocalizedLabel* enemyDrawCountLabel;
 };
