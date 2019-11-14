@@ -52,6 +52,10 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Mage's Guild",MapResources::EndianForest_Mages_Guild));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::EndianForest_Mages_Gauntlet_Entrance));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::EndianForest_Mages_Gauntlet_1));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::EndianForest_Mages_Gauntlet_2));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::EndianForest_Mages_Gauntlet_3));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
+	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #5", MapResources::EndianForest_Mages_Gauntlet_5));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #6", MapResources::EndianForest_Mages_Gauntlet_6));
 	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));

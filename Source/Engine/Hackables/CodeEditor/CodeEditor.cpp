@@ -28,7 +28,6 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Constant.h"
 #include "Strings/Common/Empty.h"
 #include "Strings/Common/XOverY.h"
 #include "Strings/Menus/Hacking/CodeEditor/Address.h"

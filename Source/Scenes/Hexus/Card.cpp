@@ -18,7 +18,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Common/Constant.h"
 #include "Strings/Hexus/Cards/Effects/Overflow.h"
 #include "Strings/Hexus/Cards/Effects/Underflow.h"
 
@@ -116,7 +115,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->cardEffects = CardEffects::create();
 
 	this->cardString = ConstantString::create();
-	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Common_Constant::create());
+	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, this->cardString);
 	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Overflow::create());
 	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Underflow::create());
 
@@ -127,7 +126,6 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->overflowLabel->setOpacity(0);
 	this->underflowLabel->setOpacity(0);
 
-	this->cardLabel->setStringReplacementVariables(this->cardString);
 	this->cardLabel->setAlignment(TextHAlignment::CENTER);
 	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardLabel->enableOutline(Color4B::BLACK, 6);
