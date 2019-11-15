@@ -5,7 +5,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Consumables/Health/ProjectileHealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ProjectileHealthPotion.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"

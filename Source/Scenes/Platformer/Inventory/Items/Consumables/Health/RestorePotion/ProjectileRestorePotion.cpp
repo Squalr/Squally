@@ -8,9 +8,10 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Consumables/Health/ProjectileRestorePotionGenericPreview.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ProjectileRestorePotionGenericPreview.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -63,9 +64,9 @@ void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 		return;
 	}
 
-	int healing = std::round(float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0)) * ProjectileRestorePotion::HealPercentage);
+	int healing = int(std::round(float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0)) * ProjectileRestorePotion::HealPercentage));
 	
-	target->addChild(RestoreHealth::create(this->caster, target, healing));
+	target->getAttachedBehavior<EntityBuffBehavior>()->applyBuff(RestoreHealth::create(this->caster, target, healing));
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()

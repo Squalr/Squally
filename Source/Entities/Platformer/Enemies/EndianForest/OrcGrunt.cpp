@@ -9,7 +9,6 @@
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowRestorePotion.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 
 #include "Resources/EntityResources.h"
@@ -38,7 +37,7 @@ OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	Size(256.0f, 218.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcGrunt::getHexusOpponentData();

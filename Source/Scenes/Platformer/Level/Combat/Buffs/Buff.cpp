@@ -18,6 +18,7 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target)
 	this->caster = caster;
 	this->target = target;
 	this->hackables = std::vector<HackableCode*>();
+	this->showClippy = false;
 }
 
 Buff::~Buff()
@@ -74,6 +75,16 @@ void Buff::initializeListeners()
 			this->onTimelineReset(args->wasInterrupt);
 		}
 	}));
+}
+
+void Buff::enableClippy()
+{
+	this->showClippy = true;
+}
+
+void Buff::disableClippy()
+{
+	this->showClippy = false;
 }
 
 void Buff::registerHackables()

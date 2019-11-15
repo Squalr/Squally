@@ -51,7 +51,7 @@ std::string MarcelTutorialBehavior::getBackgroundResource()
 
 std::vector<CardData*> MarcelTutorialBehavior::generateDeck()
 {
-	return HexusOpponentData::generateDeck(18, 0.0f,
+	return HexusOpponentData::generateDeck(18, 0.07f,
 	{
 		// CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		// CardList::getInstance()->cardListByName[CardKeys::Decimal0],

@@ -16,9 +16,9 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Strings/Platformer/Quests/EndianForest/Intro/HackerModeCombat.h"

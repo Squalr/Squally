@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Objects/Platformer/Collectables/IOU.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Speed/ThrowSpeedRune.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/ThrowSpeedRune.h"
 
 #include "Resources/ObjectResources.h"
 

@@ -7,7 +7,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Consumables/Speed/ProjectileSpeedRuneGenericPreview.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/ProjectileSpeedRuneGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/ObjectResources.h"

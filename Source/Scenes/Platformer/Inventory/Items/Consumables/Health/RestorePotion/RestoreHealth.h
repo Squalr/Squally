@@ -35,6 +35,7 @@ private:
 
 	void incrementHeal();
 	
+	bool showClippy;
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* impactSound;

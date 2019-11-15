@@ -200,7 +200,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[OrcGrunt::MapKeyOrcGrunt] = Stats(11, 8, 32);
 	StatsTables::StatsTable[OrcSwordsman::MapKeyOrcSwordsman] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcWarrior::MapKeyOrcWarrior] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Troll::MapKeyTroll] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Troll::MapKeyTroll] = Stats(12, 8, 32);
 	StatsTables::StatsTable[Guano::MapKeyGuano] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Turtle::MapKeyTurtle] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Appolo::MapKeyAppolo] = Stats(16, 8, 32);

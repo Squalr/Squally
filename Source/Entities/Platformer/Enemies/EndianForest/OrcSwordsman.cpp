@@ -36,7 +36,7 @@ OrcSwordsman::OrcSwordsman(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
 	Size(256.0f, 228.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcSwordsman::getHexusOpponentData();

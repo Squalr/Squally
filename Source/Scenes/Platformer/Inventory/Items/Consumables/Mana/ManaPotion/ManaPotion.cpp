@@ -2,7 +2,8 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Objects/Platformer/Collectables/IOU.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Consumables/Health/ThrowHealthPotion.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -56,5 +57,5 @@ std::string ManaPotion::getSerializationKey()
 
 PlatformerAttack* ManaPotion::createAssociatedAttack()
 {
-	return ThrowHealthPotion::create();
+	return ThrowRestorePotion::create();
 }

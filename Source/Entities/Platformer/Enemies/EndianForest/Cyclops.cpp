@@ -36,7 +36,7 @@ Cyclops::Cyclops(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
 	Size(296.0f, 256.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Cyclops::getHexusOpponentData();

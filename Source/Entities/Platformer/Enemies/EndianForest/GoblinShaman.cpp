@@ -36,7 +36,7 @@ GoblinShaman::GoblinShaman(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	Size(96.0f, 204.0f),
-	0.8f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinShaman::getHexusOpponentData();

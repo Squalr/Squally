@@ -36,7 +36,7 @@ OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
 	Size(256.0f, 228.0f),
-	0.9f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcWarrior::getHexusOpponentData();

@@ -55,7 +55,10 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 	
 	if (questState == QuestState::Complete)
 	{
-		this->mage->despawn();
+		this->defer([=]()
+		{
+			this->mage->despawn();
+		});
 	}
 }
 

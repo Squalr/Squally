@@ -5,7 +5,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Consumables/Speed/ProjectileSpeedRune.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/ProjectileSpeedRune.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"

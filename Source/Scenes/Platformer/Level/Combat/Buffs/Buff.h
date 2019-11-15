@@ -24,6 +24,11 @@ protected:
 	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
 	void removeBuff();
 
+	void enableClippy();
+	void disableClippy();
+
+	bool showClippy;
+
 	PlatformerEntity* caster;
 	PlatformerEntity* target;
 	std::vector<HackableCode*> hackables;

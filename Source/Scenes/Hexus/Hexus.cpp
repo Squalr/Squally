@@ -333,6 +333,6 @@ void Hexus::buildPlayerDeck()
 
 	for (auto it = cardData.begin(); it != cardData.end(); it++)
 	{
-		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), false), false, 0.0f, false);
+		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
 	}
 }
