@@ -53,9 +53,8 @@ PlatformerEntity::PlatformerEntity(
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * scale;
 
-	// Tag all entities by class and by their name to optimize object queries (ObjectEvents.h)
+	// Tag all entities by class to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEntity::PlatformerEntityTag);
-	this->addTag(entityName);
 
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create(inventorySaveKey);

@@ -63,3 +63,8 @@ StateOverride* MarcelTutorialBehavior::getStateOverride()
 {
 	return nullptr;
 }
+
+std::vector<TutorialBase*> MarcelTutorialBehavior::getTutorials()
+{
+	return { MarcelTutorialIntroSequence::create(), MarcelTutorialClaimVictory::create() };
+}

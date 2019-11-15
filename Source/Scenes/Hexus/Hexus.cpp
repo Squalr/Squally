@@ -253,12 +253,9 @@ void Hexus::open(HexusOpponentData* opponentData)
 	this->relocateLayer->removeAllChildren();
 	this->tutorialLayer->removeAllChildren();
 
-	if (opponentData->stateOverride != nullptr)
+	for (auto it = opponentData->tutorials.begin(); it != opponentData->tutorials.end(); it++)
 	{
-		for (auto it = opponentData->stateOverride->tutorials.begin(); it != opponentData->stateOverride->tutorials.end(); it++)
-		{
-			this->tutorialLayer->addChild(*it);
-		}
+		this->tutorialLayer->addChild(*it);
 	}
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;

@@ -24,7 +24,7 @@ public:
 	static CollisionObject* create(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
-	virtual ~CollisionObject();
+	~CollisionObject();
 
 	enum class CollisionResult
 	{
@@ -48,9 +48,10 @@ public:
 		CollisionEvent(std::function<CollisionResult(CollisionData)> collisionEvent) : collisionEvent(collisionEvent) { }
 	};
 
+	void despawn() override;
 	void buildInverseCollisionMap();
 	void addPhysicsShape(cocos2d::PhysicsShape* shape);
-	void bindTo(cocos2d::Node* bindTarget);
+	void bindTo(GameObject* bindTarget);
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
@@ -110,7 +111,7 @@ private:
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
 	cocos2d::PhysicsBody* physicsBody;
-	cocos2d::Node* bindTarget;
+	GameObject* bindTarget;
 	float horizontalDampening;
 	float verticalDampening;
 	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;

@@ -116,7 +116,11 @@ StateOverride* TutorialBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-		},
-		{ TutorialBIntroSequence::create() }
+		}
 	);
+}
+
+std::vector<TutorialBase*> TutorialBBehavior::getTutorials()
+{
+	return { TutorialBIntroSequence::create() };
 }

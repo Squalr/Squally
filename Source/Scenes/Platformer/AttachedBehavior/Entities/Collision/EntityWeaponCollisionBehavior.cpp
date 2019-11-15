@@ -43,13 +43,7 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	}
 	else
 	{
-		Squally* squally = dynamic_cast<Squally*>(this->entity);
-		
-		// Don't bother building weapon collision for Squally, a different attached behavior will load his weapon and call this
-		if (squally == nullptr)
-		{
-			this->rebuildWeaponCollision();
-		}
+		this->rebuildWeaponCollision();
 	}
 }
 

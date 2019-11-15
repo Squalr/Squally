@@ -24,8 +24,7 @@ public:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards,
-		std::vector<TutorialBase*> tutorials = { }
+		std::vector<CardData*> enemyHexCards
 	);
 
 	int playerLosses;
@@ -43,7 +42,6 @@ public:
 	std::vector<CardData*> enemyBinaryCards;
 	std::vector<CardData*> enemyDecimalCards;
 	std::vector<CardData*> enemyHexCards;
-	std::vector<TutorialBase*> tutorials;
 
 protected:
 	StateOverride();
@@ -62,8 +60,7 @@ protected:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards,
-		std::vector<TutorialBase*> tutorials
+		std::vector<CardData*> enemyHexCards
 	);
 	~StateOverride();
 

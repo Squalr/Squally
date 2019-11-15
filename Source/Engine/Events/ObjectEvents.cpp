@@ -46,14 +46,6 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 	);
 }
 
-void ObjectEvents::TriggerObjectDespawning(ObjectDespawningArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(args.object)),
-		&args
-	);
-}
-
 void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(

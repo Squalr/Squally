@@ -10,6 +10,7 @@
 class CardData;
 class Deck;
 class StateOverride;
+class TutorialBase;
 
 class HexusOpponentData : public SmartNode
 {
@@ -41,7 +42,8 @@ public:
 		float strength,
 		std::vector<CardData*> cards,
 		std::function<void(Result)> onRoundEnd = nullptr,
-		StateOverride* stateOverride = nullptr);
+		StateOverride* stateOverride = nullptr,
+		std::vector<TutorialBase*> tutorials = { });
 
 	HexusOpponentData(
 		std::string animationResourceFile,
@@ -56,7 +58,8 @@ public:
 		float strength,
 		std::vector<CardData*> cards,
 		std::function<void(Result)> onRoundEnd = nullptr,
-		StateOverride* stateOverride = nullptr);
+		StateOverride* stateOverride = nullptr,
+		std::vector<TutorialBase*> tutorials = { });
 	~HexusOpponentData();
 
 	std::vector<CardData*> getDeck();
@@ -78,6 +81,7 @@ public:
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
 	Card::CardStyle cardStyle;
+	std::vector<TutorialBase*> tutorials;
 
 	static const std::string winsPrefix;
 	static const std::string lossesPrefix;

@@ -8,6 +8,7 @@ class MinMaxPool;
 class LocalizedString;
 class PlatformerEntity;
 class StateOverride;
+class TutorialBase;
 
 class HexusBehaviorBase : public AttachedBehavior
 {
@@ -25,6 +26,7 @@ protected:
 	virtual std::string getBackgroundResource() = 0;
 	virtual std::vector<CardData*> generateDeck() = 0;
 	virtual StateOverride* getStateOverride() = 0;
+	virtual std::vector<TutorialBase*> getTutorials();
 	
 	void onLoad() override;
 	void onWin();

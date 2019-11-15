@@ -39,8 +39,8 @@ public:
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	std::string getListenEvent();
 	std::string getSendEvent();
-	void despawn();
-	void onDespawn(std::function<void()> callback);
+	virtual void despawn();
+	bool isDespawned();
 
 	template <class T>
 	T* getAttachedBehavior()
@@ -151,6 +151,7 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
+	bool despawned;
 	std::set<std::string> tags;
 	bool zSorted;
 	cocos2d::Node* attachedBehaviorNode;

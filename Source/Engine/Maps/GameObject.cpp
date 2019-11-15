@@ -72,6 +72,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 {
 	this->properties = properties;
 	this->zSorted = false;
+	this->despawned = false;
 	this->tags = std::set<std::string>();
 	this->polylinePoints = std::vector<Vec2>();
 	this->stateVariables = ValueMap();
@@ -82,6 +83,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->attachedBehaviorNode = Node::create();
 	this->setPosition(Vec2::ZERO);
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
+	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 
 	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -244,7 +246,7 @@ std::string GameObject::getUniqueIdentifier()
 
 void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 {
-	if (attachedBehavior == nullptr || attachedBehavior->isInvalidated())
+	if (this->isDespawned() || attachedBehavior == nullptr || attachedBehavior->isInvalidated())
 	{
 		return;
 	}
@@ -473,24 +475,12 @@ std::string GameObject::getSendEvent()
 void GameObject::despawn()
 {
 	this->attachedBehaviorNode->removeAllChildren();
-
-	ObjectEvents::TriggerObjectDespawning(ObjectEvents::ObjectDespawningArgs(this));
-
-	if (this->getParent() != nullptr)
-	{
-		this->getParent()->removeChild(this);
-	}
+	this->removeAllListeners();
+	this->setVisible(false);
+	this->despawned = true;
 }
 
-void GameObject::onDespawn(std::function<void()> callback)
+bool GameObject::isDespawned()
 {
-	if (callback == nullptr)
-	{
-		return;
-	}
-	
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(this)), [=](EventCustom* eventCustom)
-	{
-		callback();
-	}));
+	return this->despawned;
 }

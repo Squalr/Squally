@@ -21,6 +21,7 @@ protected:
 	std::string getBackgroundResource() override;
 	std::vector<CardData*> generateDeck() override;
 	StateOverride* getStateOverride() override;
+	std::vector<TutorialBase*> getTutorials() override;
 
 private:
 	typedef HexusBehaviorBase super;

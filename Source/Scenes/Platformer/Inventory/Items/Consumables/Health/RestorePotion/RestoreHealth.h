@@ -42,4 +42,5 @@ private:
 	WorldSound* healSound;
 
 	static const float TimeBetweenTicks;
+	static const int HackTicks;
 };

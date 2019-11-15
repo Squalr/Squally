@@ -134,7 +134,11 @@ StateOverride* TutorialABehavior::getStateOverride()
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-		},
-		{ TutorialAIntroSequence::create(), TutorialACardStaged::create(), TutorialAVictory::create() }
+		}
 	);
+}
+
+std::vector<TutorialBase*> TutorialABehavior::getTutorials()
+{
+	return { TutorialAIntroSequence::create(), TutorialACardStaged::create(), TutorialAVictory::create() };
 }

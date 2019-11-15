@@ -18,7 +18,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/MarcelTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/K_IChallengeYou.h"

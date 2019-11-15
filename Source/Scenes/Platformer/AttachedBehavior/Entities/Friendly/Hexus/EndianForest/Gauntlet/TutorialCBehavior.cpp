@@ -117,7 +117,11 @@ StateOverride* TutorialCBehavior::getStateOverride()
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-		},
-		{ TutorialCIntroSequence::create() }
+		}
 	);
+}
+
+std::vector<TutorialBase*> TutorialCBehavior::getTutorials()
+{
+	return { TutorialCIntroSequence::create() };
 }

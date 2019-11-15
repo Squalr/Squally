@@ -134,7 +134,11 @@ StateOverride* TutorialDBehavior::getStateOverride()
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-		},
-		{ TutorialDIntroSequence::create() }
+		}
 	);
+}
+
+std::vector<TutorialBase*> TutorialDBehavior::getTutorials()
+{
+	return { TutorialDIntroSequence::create() };
 }

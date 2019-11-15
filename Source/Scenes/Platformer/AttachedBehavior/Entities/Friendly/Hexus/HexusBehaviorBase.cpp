@@ -238,6 +238,12 @@ HexusOpponentData* HexusBehaviorBase::createOpponentData()
 				}
 			}
         },
-		this->getStateOverride()
+		this->getStateOverride(),
+		this->getTutorials()
 	);
+}
+
+std::vector<TutorialBase*> HexusBehaviorBase::getTutorials()
+{
+	return { };
 }

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialAnd::SaveKeySpecialAnd = "special-add";
+const std::string SpecialAnd::SaveKeySpecialAnd = "special-and";
 
 SpecialAnd* SpecialAnd::create()
 {

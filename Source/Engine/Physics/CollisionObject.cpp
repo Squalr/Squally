@@ -141,6 +141,16 @@ void CollisionObject::initializeListeners()
 	}));
 }
 
+void CollisionObject::despawn()
+{
+	super::despawn();
+	
+	if (this->physicsBody != nullptr)
+	{
+		this->physicsBody->setEnabled(false);
+	}
+}
+
 void CollisionObject::buildInverseCollisionMap()
 {
 	// Part of Box2D requires that both the colliders and collidees have their bitmasks set -- this is how we accomplish that
@@ -314,7 +324,7 @@ void CollisionObject::addPhysicsShape(PhysicsShape* shape)
 	}
 }
 
-void CollisionObject::bindTo(Node* bindTarget)
+void CollisionObject::bindTo(GameObject* bindTarget)
 {
 	this->bindTarget = bindTarget;
 
@@ -322,15 +332,6 @@ void CollisionObject::bindTo(Node* bindTarget)
 	{
 		GameUtils::changeParent(this, this->bindTarget->getParent(), true);
 		this->setPosition(bindTarget->getPosition());
-	}
-
-	if (this->bindTarget != nullptr)
-	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventObjectDespawningPrefix + std::to_string((unsigned long long)(bindTarget)), [=](EventCustom* eventCustom)
-		{
-			this->unbind();
-			this->despawn();
-		}));
 	}
 }
 
@@ -507,7 +508,15 @@ void CollisionObject::updateBinds()
 {
 	if (this->bindTarget != nullptr)
 	{
-		this->bindTarget->setPosition(this->getPosition());
+		if (this->bindTarget->isDespawned())
+		{
+			this->unbind();
+			this->despawn();
+		}
+		else
+		{
+			this->bindTarget->setPosition(this->getPosition());
+		}
 	}
 }
 

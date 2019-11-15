@@ -39,32 +39,32 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringAr()
 	{
-		return "TODO";
+		return "فقط يمكنك هزيمة هذا الشر.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringBg()
 	{
-		return "TODO";
+		return "Само вие можете да победите това зло.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringCs()
 	{
-		return "TODO";
+		return "Pouze toto zlo můžete porazit.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringDa()
 	{
-		return "TODO";
+		return "Kun du kan besejre denne ondskab.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringDe()
 	{
-		return "TODO";
+		return "Nur du kannst dieses Böse besiegen.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringEl()
 	{
-		return "TODO";
+		return "Μόνο εσείς μπορείτε να νικήσετε αυτό το κακό.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringEn()
@@ -74,111 +74,111 @@ namespace Strings
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringEs()
 	{
-		return "TODO";
+		return "Solo tú puedes derrotar a este mal.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringEs419()
 	{
-		return "TODO";
+		return "Solo tú puedes derrotar a este mal.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringFi()
 	{
-		return "TODO";
+		return "Vain sinä voit voittaa tämän pahan.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringFr()
 	{
-		return "TODO";
+		return "Vous seul pouvez vaincre ce mal.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringHu()
 	{
-		return "TODO";
+		return "Csak te legyőzheted ezt a gonoszt.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringIt()
 	{
-		return "TODO";
+		return "Solo tu puoi sconfiggere questo male.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringJa()
 	{
-		return "TODO";
+		return "あなただけがこの悪を打ち負かすことができます。";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringKo()
 	{
-		return "TODO";
+		return "오직 당신 만이이 악을 물리 칠 수 있습니다.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringNl()
 	{
-		return "TODO";
+		return "Alleen jij kunt dit kwaad verslaan.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringNo()
 	{
-		return "TODO";
+		return "Bare du kan beseire denne ondskapen.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringPl()
 	{
-		return "TODO";
+		return "Tylko ty możesz pokonać to zło.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringPt()
 	{
-		return "TODO";
+		return "Somente você pode derrotar esse mal.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringPtBr()
 	{
-		return "TODO";
+		return "Somente você pode derrotar esse mal.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringRo()
 	{
-		return "TODO";
+		return "Numai tu poți învinge acest rău.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringRu()
 	{
-		return "TODO";
+		return "Только ты можешь победить это зло.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringSv()
 	{
-		return "TODO";
+		return "Endast du kan besegra det onda.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringTh()
 	{
-		return "TODO";
+		return "มีเพียงคุณเท่านั้นที่สามารถเอาชนะความชั่วร้ายนี้ได้";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringTr()
 	{
-		return "TODO";
+		return "Sadece bu kötülüğü yenebilirsin.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringUk()
 	{
-		return "TODO";
+		return "Тільки ти можеш перемогти це зло.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringVi()
 	{
-		return "TODO";
+		return "Chỉ có bạn mới có thể đánh bại cái ác này.";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringZhCn()
 	{
-		return "TODO";
+		return "只有你可以打败这个邪恶。";
 	}
 
 	std::string Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::getStringZhTw()
 	{
-		return "TODO";
+		return "只有你可以打敗這個邪惡。";
 	}
 }

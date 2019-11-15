@@ -45,6 +45,7 @@ ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::strin
 	this->guano = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
+	this->mulDoor = nullptr;
 }
 
 ChatWithGuano::~ChatWithGuano()
@@ -67,15 +68,19 @@ void ChatWithGuano::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
+
+	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
+	{
+		this->mulDoor = mulDoor;
+	}, MulDoor::MapKeyMulDoor);
 }
 
 void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 {
-	ObjectEvents::watchForObject<MulDoor>(this, [=](MulDoor* mulDoor)
+	if (this->mulDoor != nullptr)
 	{
-		this->mulDoor = mulDoor;
 		this->mulDoor->toggleHackable(false);
-	}, MulDoor::MapKeyMulDoor);
+	}
 
 	this->listenForMapEvent(ChatWithGuano::EventExplainDoor, [=](ValueMap)
 	{

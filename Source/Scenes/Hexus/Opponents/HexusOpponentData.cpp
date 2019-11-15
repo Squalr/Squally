@@ -7,6 +7,7 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/StateOverride.h"
 
@@ -28,7 +29,8 @@ HexusOpponentData* HexusOpponentData::create(
 	float strength,
 	std::vector<CardData*> cards,
 	std::function<void(Result)> onRoundEnd,
-	StateOverride* stateOverride)
+	StateOverride* stateOverride,
+	std::vector<TutorialBase*> tutorials)
 {
 	HexusOpponentData* instance = new HexusOpponentData(
 		animationResourceFile,
@@ -43,7 +45,8 @@ HexusOpponentData* HexusOpponentData::create(
 		strength,
 		cards,
 		onRoundEnd,
-		stateOverride
+		stateOverride,
+		tutorials
 	);
 
 	instance->autorelease();
@@ -64,7 +67,8 @@ HexusOpponentData::HexusOpponentData(
 	float strength,
 	std::vector<CardData*> cards,
 	std::function<void(Result)> onRoundEnd,
-	StateOverride* stateOverride)
+	StateOverride* stateOverride,
+	std::vector<TutorialBase*> tutorials)
 {
 	this->animationResourceFile = animationResourceFile;
 	this->backgroundResourceFile = backgroundResourceFile;
@@ -79,11 +83,17 @@ HexusOpponentData::HexusOpponentData(
 	this->cards = cards;
 	this->onRoundEnd = onRoundEnd;
 	this->stateOverride = stateOverride;
+	this->tutorials = tutorials;
 	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
 		this->stateOverride->retain();
+	}
+
+	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	{
+		(*it)->retain();
 	}
 }
 
@@ -92,6 +102,11 @@ HexusOpponentData::~HexusOpponentData()
 	if (this->stateOverride != nullptr)
 	{
 		this->stateOverride->release();
+	}
+
+	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	{
+		(*it)->release();
 	}
 }
 

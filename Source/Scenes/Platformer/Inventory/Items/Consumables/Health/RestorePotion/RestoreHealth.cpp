@@ -34,6 +34,7 @@ using namespace cocos2d;
 const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
 const float RestoreHealth::TimeBetweenTicks = 0.5f;
+const int RestoreHealth::HackTicks = 5;
 
 RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 {
@@ -96,7 +97,7 @@ void RestoreHealth::registerHackables()
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
 				},
 				int(HackFlags::None),
-				2.0f,
+				(float(RestoreHealth::HackTicks) * RestoreHealth::TimeBetweenTicks) + 0.1f,
 				this->showClippy ? RestoreHealthClippy::create() : nullptr
 			)
 		},
