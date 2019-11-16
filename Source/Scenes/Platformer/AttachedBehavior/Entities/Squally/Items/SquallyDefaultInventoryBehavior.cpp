@@ -49,7 +49,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	}
 	
 	this->squally->getEquipmentInventory()->forceInsert(Binary0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary0::create(), false);
+	this->squally->getInventory()->forceInsert(Binary0::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Binary1::create(), false);
 	this->squally->getInventory()->forceInsert(Binary1::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Binary2::create(), false);
@@ -69,8 +69,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	this->squally->getEquipmentInventory()->forceInsert(Hex0::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Hex0::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
-	this->squally->getInventory()->forceInsert(Hex1::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex2::create(), false);
+	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
+	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
+	this->squally->getInventory()->forceInsert(Hex2::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Hex2::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Hex3::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(Hex3::create(), false);

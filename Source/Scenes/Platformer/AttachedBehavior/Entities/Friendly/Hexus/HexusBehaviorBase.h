@@ -18,7 +18,7 @@ public:
 	void registerDrawCallback(std::function<void()> drawCallback);
 
 protected:
-	HexusBehaviorBase(GameObject* owner, LocalizedString* dialogueChoiceOverride = nullptr);
+	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
 	~HexusBehaviorBase();
 
 	virtual MinMaxPool* generateReward() = 0;
@@ -32,6 +32,7 @@ protected:
 	void onWin();
 	void onLoss();
 	void onDraw();
+	void runPostMatchDialogue(LocalizedString* dialogue);
 
 	PlatformerEntity* entity;
 
@@ -46,4 +47,6 @@ private:
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;
 	std::vector<std::function<void()>> drawCallbacks;
+
+	std::string voiceResource;
 };

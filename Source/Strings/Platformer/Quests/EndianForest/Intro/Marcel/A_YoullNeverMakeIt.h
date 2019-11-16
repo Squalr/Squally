@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_Marcel_BendReality : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_BendReality* create();
+		static Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_BendReality();
-		~Platformer_Quests_EndianForest_Intro_Marcel_BendReality();
+		Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt();
+		~Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt();
 	};
 }

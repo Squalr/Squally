@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Quests/EndianForest/FindElriel/CantLeaveTown.h"
 
@@ -101,7 +102,8 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 					{
 						this->isEngagedInDialogue = false;
 						this->dialogueCooldown = 6.0f;
-					}
+					},
+					SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1
 				));
 			}
 			

@@ -9,6 +9,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Entities/EndianForest/Lycan/LetMeIntoTown.h"
 #include "Strings/Platformer/Entities/EndianForest/Lycan/NobodyAllowedIntoTown.h"
@@ -64,7 +65,8 @@ void LycanBehavior::onLoad()
 					[=]()
 					{
 					},
-					false
+					SoundResources::Platformer_Entities_Generic_ChatterShort2,
+					true
 				));
 			}),
 			0.5f

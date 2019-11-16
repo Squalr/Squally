@@ -7,6 +7,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/DialogueEvents.h"
@@ -107,6 +108,15 @@ void PlatformerDialogueBox::initializeListeners()
 			else
 			{
 				this->text->setFontSize(LocalizedLabel::FontSize::H3);
+			}
+
+			if (!args->soundResource.empty())
+			{
+				Sound* sound = Sound::create(args->soundResource);
+
+				this->leftSpeakerNode->addChild(sound);
+
+				sound->play();
 			}
 
 			this->runDialogue(args->dialogue, args->visualArgs.dialogueDock, args->visualArgs.dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);

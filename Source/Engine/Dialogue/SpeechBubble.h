@@ -9,6 +9,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
+class Sound;
  
 class SpeechBubble : public SmartNode
 {
@@ -23,7 +24,7 @@ public:
 		Auto
 	};
 
-	void runDialogue(LocalizedString* localizedString, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto);
+	void runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto);
 	void hideDialogue();
 
 	static const float InfiniteDuration;
@@ -41,6 +42,7 @@ private:
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;
+	Sound* voiceSound;
 
 	bool uiBound;
 

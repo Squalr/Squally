@@ -25,12 +25,10 @@ IsAliveClippy* IsAliveClippy::create()
 IsAliveClippy::IsAliveClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
-	this->droidChatterSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->clippyAnimations->setFlippedX(true);
 
 	this->animationNode->addChild(this->clippyAnimations);
-	this->addChild(this->droidChatterSound);
 }
 
 IsAliveClippy::~IsAliveClippy()
@@ -46,6 +44,5 @@ void IsAliveClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create(), SpeechBubble::InfiniteDuration);
-	this->droidChatterSound->play();
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, SpeechBubble::InfiniteDuration);
 }

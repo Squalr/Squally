@@ -21,14 +21,15 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
+#include "Resources/SoundResources.h"
+
+#include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/K_IChallengeYou.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/M_WellDone.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/N_WeBroughtYouHere.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/O_UnknownForce.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/P_OnlyYouCanDefeat.h"
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/Q_LearnMoreOfTheseMonsters.h"
-
-#include "Strings/Hexus/Hexus.h"
 
 using namespace cocos2d;
 
@@ -109,7 +110,8 @@ void ReturnToMarcel::registerDialogue()
 				),
 				[=]()
 				{
-				}
+				},
+				SoundResources::Platformer_Entities_Generic_ChatterShort1
 			));
 		});
 
@@ -179,18 +181,23 @@ void ReturnToMarcel::onHexusWin()
 						[=]()
 						{
 						},
+						SoundResources::Platformer_Entities_Generic_ChatterShort3,
 						true
 						));
 					},
+					SoundResources::Platformer_Entities_Generic_ChatterShort6,
 					false
 					));
 				},
+				SoundResources::Platformer_Entities_Generic_ChatterShort2,
 				false
 				));
 			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort7,
 			false
 			));
 		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort1,
 		false
 	));
 }

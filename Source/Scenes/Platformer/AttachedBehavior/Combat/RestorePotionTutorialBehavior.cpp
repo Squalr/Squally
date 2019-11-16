@@ -21,6 +21,8 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Quests/EndianForest/Intro/HackerModeCombat.h"
 
 using namespace cocos2d;
@@ -82,7 +84,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 
 	this->hasTutorialRun = true;
 
-	static const float TutorialDelay = 1.5f;
+	static const float TutorialDelay = RestoreHealth::StartDelay + RestoreHealth::TimeBetweenTicks * 2.0f + 0.1f;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(TutorialDelay),
@@ -94,11 +96,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 			this->runAction(Sequence::create(
 				CallFunc::create([=]()
 				{
-					this->scrappy->droidChatterSound->play();
-				}),
-				CallFunc::create([=]()
-				{
-					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create(), 4.0f);
+					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
 				}),
 				nullptr
 			));

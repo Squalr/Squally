@@ -1,5 +1,7 @@
 #include "HexusBehaviorBase.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
@@ -17,6 +19,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Dialogue/Hexus/ADraw.h"
@@ -29,13 +32,14 @@
 
 using namespace cocos2d;
 
-HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, LocalizedString* dialogueChoiceOverride) : super(owner)
+HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner)
 {
 	this->winCallbacks = std::vector<std::function<void()>>();
 	this->lossCallbacks = std::vector<std::function<void()>>();
 	this->drawCallbacks = std::vector<std::function<void()>>();
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
+	this->voiceResource = voiceResource;
 	this->rewardPool = nullptr;
 
 	if (this->entity == nullptr)
@@ -128,12 +132,12 @@ void HexusBehaviorBase::onWin()
 		default:
 		case 0:
 		{
-			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_WellPlayed::create());
+			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_WellPlayed::create());
 			break;
 		}
 		case 1:
 		{
-			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_GoodGame::create());
+			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_GoodGame::create());
 			break;
 		}
 	}
@@ -169,7 +173,7 @@ void HexusBehaviorBase::onLoss()
 		default:
 		case 0:
 		{
-			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create());
+			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create());
 			break;
 		}
 	}
@@ -190,7 +194,7 @@ void HexusBehaviorBase::onDraw()
 		default:
 		case 0:
 		{
-			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create());
+			this->runPostMatchDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create());
 			break;
 		}
 	}
@@ -199,6 +203,18 @@ void HexusBehaviorBase::onDraw()
 	{
 		(*it)();
 	}
+}
+
+void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)
+{
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create(), this->voiceResource);
+		}),
+		nullptr
+	));
 }
 
 HexusOpponentData* HexusBehaviorBase::createOpponentData()

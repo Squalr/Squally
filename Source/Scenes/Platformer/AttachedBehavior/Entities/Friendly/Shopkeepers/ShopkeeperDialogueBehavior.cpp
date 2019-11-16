@@ -10,6 +10,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Dialogue/Shopkeepers/HowDoIBuySomething.h"
 #include "Strings/Platformer/Dialogue/Shopkeepers/HowToBuySomething.h"
 
@@ -64,7 +66,8 @@ void ShopkeeperDialogueBehavior::onLoad()
 					),
 					[=]()
 					{
-					}
+					},
+					SoundResources::Platformer_Entities_Generic_ChatterQuestion1
 				));
 			}),
 			1.0f

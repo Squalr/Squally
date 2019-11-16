@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/ComeToLearn.h"
 
@@ -26,7 +27,7 @@ TutorialABehavior* TutorialABehavior::create(GameObject* owner)
 	return instance;
 }
 
-TutorialABehavior::TutorialABehavior(GameObject* owner) : super(owner, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
+TutorialABehavior::TutorialABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
 {
 }
 

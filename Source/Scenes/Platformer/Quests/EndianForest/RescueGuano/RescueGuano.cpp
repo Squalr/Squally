@@ -19,6 +19,8 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/Freedom.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/HelpYouFindThings.h"
@@ -101,6 +103,7 @@ void RescueGuano::runRescueSequence()
 			{
 				this->runRescueSequencePt2();
 			},
+			SoundResources::Platformer_Entities_Generic_Cheer1,
 			false
 		));
 	}, RescueGuano::TagPrisonDoor);
@@ -120,6 +123,7 @@ void RescueGuano::runRescueSequencePt2()
 		{
 			this->runRescueSequencePt3();
 		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort4,
 		false
 	));
 }
@@ -147,6 +151,7 @@ void RescueGuano::runRescueSequencePt3()
 			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
 			this->complete();
 		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort6,
 		true
 	));
 }

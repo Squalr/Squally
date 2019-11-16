@@ -19,6 +19,8 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Doors/PuzzleDoors/Gate/MulDoor/MulDoor.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Ellipses.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/DoorTech.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/GetMeOutOfHere.h"
@@ -116,6 +118,7 @@ void ChatWithGuano::runChatSequence()
 				{
 					this->runChatSequencePt2();
 				},
+				SoundResources::Platformer_Entities_Generic_ChatterShort3,
 				false
 			));
 		}),
@@ -138,6 +141,7 @@ void ChatWithGuano::runChatSequencePt2()
 		{
 			this->runChatSequencePt3();
 		},
+		"",
 		false
 	));
 }
@@ -156,6 +160,7 @@ void ChatWithGuano::runChatSequencePt3()
 		{
 			this->runChatSequencePt4();
 		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort7,
 		false
 	));
 }
@@ -174,6 +179,7 @@ void ChatWithGuano::runChatSequencePt4()
 		{
 			this->runChatSequencePt5();
 		},
+		SoundResources::Platformer_Entities_Droid_DroidBrief2,
 		true
 	));
 }
@@ -193,6 +199,7 @@ void ChatWithGuano::runChatSequencePt5()
 			this->mulDoor->toggleHackable(true);
 			this->complete();
 		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort5,
 		true
 	));
 }

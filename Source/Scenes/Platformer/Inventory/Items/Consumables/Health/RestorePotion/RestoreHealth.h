@@ -19,6 +19,9 @@ public:
 
 	static const std::string MapKeyPropertyRestorePotionTutorial;
 	static const std::string RestoreHealthIdentifier;
+	static const float TimeBetweenTicks;
+	static const int HackTicks;
+	static const float StartDelay;
 
 protected:
 	RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
@@ -40,7 +43,4 @@ private:
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* impactSound;
 	WorldSound* healSound;
-
-	static const float TimeBetweenTicks;
-	static const int HackTicks;
 };

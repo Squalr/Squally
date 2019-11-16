@@ -27,8 +27,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void registerDialogue();
-
 	MagePortal* portal;
 	PlatformerEntity* mage;
 	Squally* squally;

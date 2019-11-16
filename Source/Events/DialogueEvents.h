@@ -45,11 +45,12 @@ public:
 		LocalizedString* dialogue;
 		DialogueVisualArgs visualArgs;
 		std::function<void()> onDialogueClose;
+		std::string soundResource;
 		bool unhijack;
 		bool allowSpace;
 
-		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, bool unhijack = true, bool allowSpace = true)
-			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), unhijack(unhijack), allowSpace(allowSpace)
+		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true)
+			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace)
 		{
 		}
 	};

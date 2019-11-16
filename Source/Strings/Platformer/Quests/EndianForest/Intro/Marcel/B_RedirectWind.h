@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_Marcel_TakeThisItem : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_TakeThisItem* create();
+		static Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_TakeThisItem();
-		~Platformer_Quests_EndianForest_Intro_Marcel_TakeThisItem();
+		Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind();
+		~Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind();
 	};
 }

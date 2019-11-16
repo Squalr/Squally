@@ -4,8 +4,11 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -48,6 +51,11 @@ HelpTotemPickPocket::~HelpTotemPickPocket()
 void HelpTotemPickPocket::onEnter()
 {
 	super::onEnter();
+
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKeyName)
+	{
+		this->deactivate();
+	}
 }
 
 void HelpTotemPickPocket::initializePositions()

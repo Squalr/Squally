@@ -15,6 +15,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialCBehavior.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Hexus/Hexus.h"
 
@@ -90,30 +91,4 @@ void BeatTutorialC::onComplete()
 void BeatTutorialC::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void BeatTutorialC::registerDialogue()
-{
-	PlatformerEvents::TriggerCinematicHijack();
-
-	this->runAction(Sequence::create(
-		DelayTime::create(3.0f),
-		CallFunc::create([=]()
-		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				nullptr,
-                DialogueEvents::DialogueVisualArgs(
-                    DialogueBox::DialogueDock::Top,
-                    DialogueBox::DialogueAlignment::Left,
-                    DialogueEvents::BuildPreviewNode(this->mage, false),
-                    DialogueEvents::BuildPreviewNode(this->squally, true)
-                ),
-				[=]()
-				{
-				},
-				false
-			));
-		}),
-		nullptr
-	));
 }

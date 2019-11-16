@@ -20,9 +20,12 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotem.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/BendReality.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/MeetMeAtMagesGuild.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/TakeThisItem.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/A_YoullNeverMakeIt.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/B_RedirectWind.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/C_TakeThisItem.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/D_MeetMeAtMagesGuild.h"
 
 using namespace cocos2d;
 
@@ -83,8 +86,6 @@ void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{
-		this->complete();
-
 		this->runCinematicSequencePt1();
 	});
 }
@@ -135,7 +136,7 @@ void TeachHackerMode::runCinematicSequencePt1()
 void TeachHackerMode::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_Intro_Marcel_BendReality::create(),
+		Strings::Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -144,48 +145,81 @@ void TeachHackerMode::runCinematicSequencePt2()
 		),
 		[=]()
 		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Intro_Marcel_TakeThisItem::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(this->marcel, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
-				),
-				[=]()
+			this->runCinematicSequencePt3();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort1,
+		false
+	));
+}
+
+void TeachHackerMode::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(this->marcel, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterShort7,
+		false
+	));
+}
+
+void TeachHackerMode::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	Strings::Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem::create(),
+	DialogueEvents::DialogueVisualArgs(
+		DialogueBox::DialogueDock::Bottom,
+		DialogueBox::DialogueAlignment::Left,
+		DialogueEvents::BuildPreviewNode(this->marcel, false),
+		DialogueEvents::BuildPreviewNode(this->squally, true)
+	),
+	[=]()
+	{
+		this->runCinematicSequencePt5();
+	},
+	SoundResources::Platformer_Entities_Generic_ChatterShort7,
+	false
+	));
+}
+
+void TeachHackerMode::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(this->marcel, false),
+			DialogueEvents::BuildPreviewNode(this->squally, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(EssenceOfWind::create()));
+			this->helpTotem->activate();
+			this->complete();
+			
+			this->runAction(Sequence::create(
+				CallFunc::create([=]()
 				{
-					DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-						Strings::Platformer_Quests_EndianForest_Intro_Marcel_MeetMeAtMagesGuild::create(),
-						DialogueEvents::DialogueVisualArgs(
-							DialogueBox::DialogueDock::Bottom,
-							DialogueBox::DialogueAlignment::Left,
-							DialogueEvents::BuildPreviewNode(this->marcel, false),
-							DialogueEvents::BuildPreviewNode(this->squally, true)
-						),
-						[=]()
-						{
-							PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(EssenceOfWind::create()));
-							this->helpTotem->activate();
-							
-							this->runAction(Sequence::create(
-								CallFunc::create([=]()
-								{
-									this->marcel->runAction(FadeTo::create(1.0f, 0));
-								}),
-								DelayTime::create(2.0f),
-								CallFunc::create([=]()
-								{
-									this->portal->closePortal(false);
-								}),
-								nullptr
-							));
-						},
-						true
-					));
-				},
-				false
+					this->marcel->runAction(FadeTo::create(1.0f, 0));
+				}),
+				DelayTime::create(2.0f),
+				CallFunc::create([=]()
+				{
+					this->portal->closePortal(false);
+				}),
+				nullptr
 			));
 		},
-		false
+		SoundResources::Platformer_Entities_Generic_ChatterShort5,
+		true
 	));
 }

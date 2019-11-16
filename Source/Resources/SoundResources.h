@@ -56,6 +56,9 @@ namespace SoundResources
 	extern const std::string Menus_BookPageTurn_PE1014902;
 	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
 	extern const std::string Menus_Simple_Button;
+	extern const std::string Notifications_NotificationGood1;
+	extern const std::string Notifications_NotificationGood2;
+	extern const std::string Notifications_NotificationGood3;
 	extern const std::string Platformer_Abilities_HackerMode_Enable;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit1;
 	extern const std::string Platformer_Attacks_Physical_Impact_Hit2;
@@ -155,6 +158,18 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Droid_DroidBrief;
 	extern const std::string Platformer_Entities_Droid_DroidBrief2;
 	extern const std::string Platformer_Entities_Droid_DroidChatter;
+	extern const std::string Platformer_Entities_Generic_AlienChatter1;
+	extern const std::string Platformer_Entities_Generic_ChatterAnnoyed1;
+	extern const std::string Platformer_Entities_Generic_ChatterChuckle1;
+	extern const std::string Platformer_Entities_Generic_ChatterQuestion1;
+	extern const std::string Platformer_Entities_Generic_ChatterShort1;
+	extern const std::string Platformer_Entities_Generic_ChatterShort2;
+	extern const std::string Platformer_Entities_Generic_ChatterShort3;
+	extern const std::string Platformer_Entities_Generic_ChatterShort4;
+	extern const std::string Platformer_Entities_Generic_ChatterShort5;
+	extern const std::string Platformer_Entities_Generic_ChatterShort6;
+	extern const std::string Platformer_Entities_Generic_ChatterShort7;
+	extern const std::string Platformer_Entities_Generic_Cheer1;
 	extern const std::string Platformer_Entities_Generic_Footsteps1;
 	extern const std::string Platformer_Entities_Orc_LaughingCough;
 	extern const std::string Platformer_Entities_Orc_OrcDeath1;
@@ -168,6 +183,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Skeleton_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Footsteps2;
 	extern const std::string Platformer_Entities_Skeleton_SkeleDeath1;
+	extern const std::string Platformer_Entities_TikiChatter;
 	extern const std::string Platformer_Environment_Bubbles1;
 	extern const std::string Platformer_Environment_Bubbles2;
 	extern const std::string Platformer_Environment_Bubbles3;
@@ -179,6 +195,9 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Explosion;
 	extern const std::string Platformer_Objects_LowFlame;
 	extern const std::string Platformer_Objects_Thrusters;
+	extern const std::string Platformer_Objects_WoodBreak_WoodBreak1;
+	extern const std::string Platformer_Objects_WoodBreak_WoodBreak2;
+	extern const std::string Platformer_Objects_WoodBreak_WoodBreak3;
 	extern const std::string Platformer_Objects_Woosh;
 	extern const std::string Platformer_Objects_WooshRough;
 	extern const std::string Special1;

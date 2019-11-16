@@ -15,6 +15,8 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Quests/EndianForest/Intro/EnemySpotted.h"
 
 using namespace cocos2d;
@@ -83,11 +85,7 @@ void SpotOrcGrunt::runCinematicSequence()
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->droidChatterSound->play();
-			}),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), 4.0f, [=]()
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 				{
 					PlatformerEvents::TriggerCinematicRestore();
 					this->scrappy->speechBubble->hideDialogue();

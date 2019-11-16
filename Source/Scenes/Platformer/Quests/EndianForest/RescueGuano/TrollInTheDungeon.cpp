@@ -18,6 +18,8 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Platformer/Ellipses.h"
 #include "Strings/Platformer/Quests/EndianForest/RescueGuano/TrollInTheDungeon.h"
 
@@ -92,7 +94,7 @@ void TrollInTheDungeon::runChatSequence()
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
-			this->mage->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create());
+			this->mage->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
 			this->complete();
 
 			this->mage->runAction(Sequence::create(

@@ -11,6 +11,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -112,7 +113,7 @@ void HelpTotem::tryDisplayHint()
 {
 	if (!this->isInactive && this->canInteract && this->hint != nullptr && this->isVisible())
 	{
-		this->speechBubble->runDialogue(this->hint->clone(), SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
+		this->speechBubble->runDialogue(this->hint->clone(), SoundResources::Platformer_Entities_TikiChatter, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
 	}
 	else
 	{

@@ -19,6 +19,8 @@
 #include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
+#include "Resources/SoundResources.h"
+
 #include "Strings/Hexus/Hexus.h"
 #include "Strings/Platformer/Ellipses.h"
 #include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
@@ -106,7 +108,8 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort1
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
@@ -118,7 +121,8 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort2
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Ellipses::create(),
@@ -131,20 +135,9 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
-		));/*
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_WeNeededSomeone::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
-			),
-			[=]()
-			{
-			}
-		));*/
+			},
+			""
+		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
@@ -155,7 +148,8 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort3
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -167,7 +161,8 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort4
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -179,7 +174,8 @@ void TalkToMarcel::registerDialogue()
 			),
 			[=]()
 			{
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort5
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -192,7 +188,8 @@ void TalkToMarcel::registerDialogue()
 			[=]()
 			{
 				this->complete();
-			}
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterShort6
 		));
 	});
 }

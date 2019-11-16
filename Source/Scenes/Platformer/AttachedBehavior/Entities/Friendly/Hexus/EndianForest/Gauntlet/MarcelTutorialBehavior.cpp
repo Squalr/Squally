@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/IAcceptYourChallenge.h"
 
@@ -26,7 +27,7 @@ MarcelTutorialBehavior* MarcelTutorialBehavior::create(GameObject* owner)
 	return instance;
 }
 
-MarcelTutorialBehavior::MarcelTutorialBehavior(GameObject* owner) : super(owner, Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallenge::create())
+MarcelTutorialBehavior::MarcelTutorialBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort7, Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallenge::create())
 {
 }
 

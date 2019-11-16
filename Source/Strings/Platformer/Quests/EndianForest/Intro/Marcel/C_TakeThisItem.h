@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_Marcel_MeetMeAtMagesGuild : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_MeetMeAtMagesGuild* create();
+		static Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_MeetMeAtMagesGuild();
-		~Platformer_Quests_EndianForest_Intro_Marcel_MeetMeAtMagesGuild();
+		Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem();
+		~Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem();
 	};
 }

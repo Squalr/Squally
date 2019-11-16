@@ -22,6 +22,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Quests/EndianForest/Intro/GetYouPatched.h"
 #include "Strings/Platformer/Quests/EndianForest/Intro/DistressBeacon.h"
@@ -114,13 +115,11 @@ void MeetScrappy::runCinematicSequencePt1()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), 2.0f, [=]()
+				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), "", 2.0f, [=]()
 				{
-					this->scrappy->droidBrief1Sound->play();
-					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), 4.0f, [=]()
+					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
 					{
-						this->scrappy->droidBrief1Sound->play();
-						this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), 4.0f, [=]()
+						this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
 						{
 							this->runCinematicSequencePt2();
 						});

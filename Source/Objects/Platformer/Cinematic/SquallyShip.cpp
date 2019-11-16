@@ -90,6 +90,10 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->addChild(this->fireRingAnimation);
 	this->ship->addChild(this->fireAnimation);
 	this->ship->addChild(this->thrustAnimation);
+	this->ship->addChild(this->lightningSound);
+	this->ship->addChild(this->thrusterSound);
+	this->ship->addChild(this->enterAtmosphereSound);
+	this->ship->addChild(this->crashSound);
 	this->shipContainer->addChild(this->shipFireAnimation);
 	this->shipContainer->addChild(this->smokeAnimation);
 	this->shipContainer->addChild(this->ship);
@@ -99,10 +103,6 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->shipCollision->addChild(this->groundFireSmallAnimation);
 	this->shipCollision->addChild(this->shipContainer);
 	this->addChild(this->shipCollision);
-	this->addChild(this->lightningSound);
-	this->addChild(this->thrusterSound);
-	this->addChild(this->enterAtmosphereSound);
-	this->addChild(this->crashSound);
 	this->addChild(this->skipSequence);
 }
 

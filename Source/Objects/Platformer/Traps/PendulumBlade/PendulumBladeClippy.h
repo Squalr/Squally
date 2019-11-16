@@ -23,5 +23,4 @@ private:
 	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
-	Sound* droidChatterSound;
 };

@@ -55,6 +55,7 @@ PlatformerEntity::PlatformerEntity(
 
 	// Tag all entities by class to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEntity::PlatformerEntityTag);
+	this->addTag(PlatformerEntity::entityName);
 
 	this->hexusOpponentData = nullptr;
 	this->inventory = Inventory::create(inventorySaveKey);

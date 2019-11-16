@@ -301,6 +301,7 @@ void EntityDialogueBehavior::showOptions()
 		{
 			this->optionsVisible = false;
 		},
+		"",
 		true
 	));
 }

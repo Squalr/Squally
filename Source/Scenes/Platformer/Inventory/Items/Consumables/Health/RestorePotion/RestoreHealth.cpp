@@ -35,6 +35,7 @@ const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
 const float RestoreHealth::TimeBetweenTicks = 0.5f;
 const int RestoreHealth::HackTicks = 5;
+const float RestoreHealth::StartDelay = 1.0f;
 
 RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 {
@@ -117,12 +118,10 @@ void RestoreHealth::runRestoreHealth()
 	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f);
 	this->impactSound->play();
 
-	const float StartDelay = 1.0f;
-
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
 		this->runAction(Sequence::create(
-			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex) + StartDelay),
+			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay),
 			CallFunc::create([=]()
 			{
 				this->runRestoreTick();
