@@ -185,7 +185,7 @@ void ReturnToMarcel::onHexusWin()
 						true
 						));
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort6,
+					SoundResources::Platformer_Entities_Generic_ChatterShort5,
 					false
 					));
 				},

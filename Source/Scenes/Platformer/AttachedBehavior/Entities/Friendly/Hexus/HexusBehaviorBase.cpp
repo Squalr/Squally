@@ -37,6 +37,7 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->winCallbacks = std::vector<std::function<void()>>();
 	this->lossCallbacks = std::vector<std::function<void()>>();
 	this->drawCallbacks = std::vector<std::function<void()>>();
+	this->dialogueStringNode = Node::create();
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
@@ -51,6 +52,8 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	{
 		this->addChild(this->dialogueChoiceOverride);
 	}
+
+	this->addChild(this->dialogueStringNode);
 }
 
 HexusBehaviorBase::~HexusBehaviorBase()
@@ -207,11 +210,14 @@ void HexusBehaviorBase::onDraw()
 
 void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)
 {
+	// Add it to retain it until the end of this object's life
+	this->dialogueStringNode->addChild(dialogue);
+
 	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
+		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			this->entity->speechBubble->runDialogue(Strings::Platformer_Dialogue_Hexus_ADraw::create(), this->voiceResource);
+			this->entity->speechBubble->runDialogue(dialogue->clone(), this->voiceResource);
 		}),
 		nullptr
 	));

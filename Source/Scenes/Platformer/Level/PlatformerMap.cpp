@@ -61,7 +61,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
-		throw std::uncaught_exception();
+		throw std::uncaught_exceptions();
 	}
 
 	this->transition = transition;
@@ -128,6 +128,7 @@ void PlatformerMap::onEnterTransitionDidFinish()
 void PlatformerMap::onExit()
 {
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// It doesn't appear that onExit() does anything particularly vital.
 	// super::onExit();
 }
 

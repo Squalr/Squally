@@ -41,6 +41,7 @@ private:
 
 	HexusOpponentData* createOpponentData();
 
+	cocos2d::Node* dialogueStringNode;
 	LocalizedString* dialogueChoiceOverride;
 	MinMaxPool* rewardPool;
 

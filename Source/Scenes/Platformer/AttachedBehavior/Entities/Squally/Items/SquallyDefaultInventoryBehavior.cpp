@@ -80,6 +80,8 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	this->squally->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
 	this->squally->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
+	this->squally->getEquipmentInventory()->forceInsert(SpecialShl::create(), false);
+	this->squally->getEquipmentInventory()->forceInsert(SpecialShr::create(), false);
 
 	this->squally->getInventory()->save();
 	this->squally->getEquipmentInventory()->save();
