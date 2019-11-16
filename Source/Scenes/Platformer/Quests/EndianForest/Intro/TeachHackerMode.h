@@ -7,6 +7,7 @@ class MagePortal;
 class Marcel;
 class QuestLine;
 class Squally;
+class WorldSound;
 
 class TeachHackerMode : public QuestTask
 {
@@ -38,7 +39,8 @@ private:
 	MagePortal* portal;
 	Marcel* marcel;
 	Squally* squally;
-
+	WorldSound* teleportSound;
+	
 	static const std::string TagQuestPortal;
 	static const std::string TagHelpTotemHacking;
 };

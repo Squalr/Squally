@@ -58,9 +58,6 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 	this->hexusOpponentData = Scrappy::getHexusOpponentData();
 
 	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
-	this->droidBrief1Sound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
-	this->droidBrief2Sound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
-	this->droidChatterSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 	this->fireAnimation = SmartAnimationSequenceNode::create();
 
 	this->fireAnimation->setFlippedY(true);
@@ -68,9 +65,6 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 
 	this->belowAnimationNode->addChild(this->fireAnimation);
 	this->addChild(this->droidAlarmedSound);
-	this->addChild(this->droidBrief1Sound);
-	this->addChild(this->droidBrief2Sound);
-	this->addChild(this->droidChatterSound);
 }
 
 Scrappy::~Scrappy()

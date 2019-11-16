@@ -60,9 +60,12 @@ void InteractMenu::onExit()
 {
 	super::onExit();
 
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(
-		this->uiElements
-	));
+	if (this->hasRelocated)
+	{
+		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(
+			this->uiElements
+		));
+	}
 }
 
 void InteractMenu::initializePositions()

@@ -85,10 +85,10 @@ void SpotOrcGrunt::runCinematicSequence()
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 				{
 					PlatformerEvents::TriggerCinematicRestore();
-					this->scrappy->speechBubble->hideDialogue();
+					this->scrappy->getSpeechBubble()->hideDialogue();
 				});
 			}),
 			nullptr

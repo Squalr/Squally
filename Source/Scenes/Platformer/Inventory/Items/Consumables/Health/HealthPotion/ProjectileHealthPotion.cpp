@@ -61,7 +61,7 @@ void ProjectileHealthPotion::onCollideWithTarget(PlatformerEntity* target)
 		return;
 	}
 
-	int healing = std::round(float(target->getStateOrDefaultInt(StateKeys::Health, 0))) * ProjectileHealthPotion::HealPercentage;
+	int healing = int(std::round(float(target->getStateOrDefaultInt(StateKeys::Health, 0))) * ProjectileHealthPotion::HealPercentage);
 
 	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, target, healing));
 }

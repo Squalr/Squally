@@ -103,7 +103,7 @@ void CipherLock::initializePositions()
 	this->stoppingBlock->setPosition(Vec2(-16.0f, 96.0f));
 	this->pinboardFront->setPosition(Vec2(-40.0f, 0.0f));
 
-	for (int index = 0; (index < this->cipherPins.size() && index < int(this->cipherPinholes.size())); index++)
+	for (int index = 0; (index < int(this->cipherPins.size()) && index < int(this->cipherPinholes.size())); index++)
 	{
 		this->cipherPinholes[index]->setPosition(Vec2(0.0f, float(index) * -CipherLock::PinSpacing));
 		this->cipherPins[index]->setPosition(Vec2(-24.0f, float(index) * -CipherLock::PinSpacing));

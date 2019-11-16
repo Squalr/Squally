@@ -49,6 +49,9 @@ TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::s
 	this->portal = nullptr;
 	this->marcel = nullptr;
 	this->squally = nullptr;
+	this->teleportSound = WorldSound::create(SoundResources::Platformer_Doors_Portals_Teleport);
+
+	this->addChild(this->teleportSound);
 }
 
 TeachHackerMode::~TeachHackerMode()
@@ -121,7 +124,7 @@ void TeachHackerMode::runCinematicSequencePt1()
 			CallFunc::create([=]()
 			{
 				this->marcel->runAction(FadeTo::create(1.0f, 255));
-				this->portal->openPortal(false);
+				this->teleportSound->play();
 			}),
 			DelayTime::create(1.0f),
 			CallFunc::create([=]()
@@ -166,7 +169,7 @@ void TeachHackerMode::runCinematicSequencePt3()
 		{
 			this->runCinematicSequencePt4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort7,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 		false
 	));
 }
@@ -185,7 +188,7 @@ void TeachHackerMode::runCinematicSequencePt4()
 	{
 		this->runCinematicSequencePt5();
 	},
-	SoundResources::Platformer_Entities_Generic_ChatterShort7,
+	SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 	false
 	));
 }
@@ -219,7 +222,7 @@ void TeachHackerMode::runCinematicSequencePt5()
 				nullptr
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort5,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 		true
 	));
 }

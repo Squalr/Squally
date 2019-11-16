@@ -12,10 +12,12 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Platformer/Combat/Defeat.h"
@@ -36,6 +38,7 @@ DefeatMenu::DefeatMenu()
 {
 	this->defeatBanner = Sprite::create(UIResources::Combat_DefeatMenu);
 	this->defeatLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Platformer_Combat_Defeat::create());
+	this->defeatSound = Sound::create(SoundResources::Platformer_Combat_Defeat);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -50,6 +53,7 @@ DefeatMenu::DefeatMenu()
 	this->addChild(this->defeatBanner);
 	this->addChild(this->defeatLabel);
 	this->addChild(this->returnButton);
+	this->addChild(this->defeatSound);
 }
 
 DefeatMenu::~DefeatMenu()
@@ -85,4 +89,5 @@ void DefeatMenu::initializeListeners()
 void DefeatMenu::show()
 {
 	this->runAction(FadeTo::create(1.0f, 255));
+	this->defeatSound->play();
 }

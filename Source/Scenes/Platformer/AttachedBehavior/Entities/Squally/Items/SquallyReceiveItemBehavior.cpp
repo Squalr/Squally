@@ -10,6 +10,7 @@
 #include "Events/PlatformerEvents.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Notifications/ItemFound.h"
 
@@ -51,7 +52,8 @@ void SquallyReceiveItemBehavior::onLoad()
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 				args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
 				args->item->getString(),
-				args->item->getIconResource()
+				args->item->getIconResource(),
+				SoundResources::Notifications_NotificationGood3
 			));
 
 			this->squally->getInventory()->forceInsert(args->item, true);

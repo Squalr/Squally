@@ -218,3 +218,8 @@ bool PlatformerEntity::isFlippedY()
 {
 	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }
+
+SpeechBubble* PlatformerEntity::getSpeechBubble()
+{
+	return this->speechBubble;
+}

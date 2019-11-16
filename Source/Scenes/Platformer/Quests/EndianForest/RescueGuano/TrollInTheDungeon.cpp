@@ -94,7 +94,7 @@ void TrollInTheDungeon::runChatSequence()
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
-			this->mage->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
+			this->mage->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
 			this->complete();
 
 			this->mage->runAction(Sequence::create(
@@ -119,7 +119,7 @@ void TrollInTheDungeon::runChatSequencePt2()
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
-		this->mage->speechBubble->hideDialogue();
+		this->mage->getSpeechBubble()->hideDialogue();
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{

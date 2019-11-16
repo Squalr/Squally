@@ -9,6 +9,7 @@ namespace cocos2d
 }
 
 class SmartClippingNode;
+class WorldSound;
 
 class MagePortal : public Portal
 {
@@ -33,4 +34,5 @@ private:
 	cocos2d::Node* contentNode;
 	cocos2d::DrawNode* background;
 	cocos2d::DrawNode* edge;
+	WorldSound* portalOpenSound;
 };

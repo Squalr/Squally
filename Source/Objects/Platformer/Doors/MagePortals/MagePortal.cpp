@@ -8,8 +8,10 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 
+#include "Resources/Soundresources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -21,6 +23,7 @@ MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalB
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
+	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Doors_Portals_Portal);
 
 	this->background->drawSolidCircle(Vec2::ZERO, portalRadius, 0.0f, 32, Color4F(portalBaseColor));
 	
@@ -31,6 +34,7 @@ MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalB
 	this->contentNode->addChild(this->portalEffectNode);
 	this->contentNode->addChild(this->edge);
 	this->addChild(this->portalBase);
+	this->addChild(this->portalOpenSound);
 }
 
 MagePortal::~MagePortal()
@@ -75,6 +79,7 @@ void MagePortal::openPortal(bool instant)
 	else
 	{
 		this->runAction(FadeTo::create(0.5f, 255));
+		this->portalOpenSound->play();
 	}
 
 	this->enable();

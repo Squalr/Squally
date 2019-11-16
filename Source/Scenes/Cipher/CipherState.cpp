@@ -207,7 +207,7 @@ void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode)
 
 void CipherState::loadCipherAtIndex(int index)
 {
-	if (index >= 0 && index < this->inputOutputMap.size())
+	if (index >= 0 && index < int(this->inputOutputMap.size()))
 	{
 		this->currentInput = std::get<0>(this->inputOutputMap[index]);
 		this->currentOutput = std::get<1>(this->inputOutputMap[index]);

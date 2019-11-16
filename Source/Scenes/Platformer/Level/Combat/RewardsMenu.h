@@ -12,6 +12,7 @@ class ConstantString;
 class LocalizedLabel;
 class PlatformerEntity;
 class ScrollPane;
+class Sound;
 
 class RewardsMenu : public SmartNode
 {
@@ -37,4 +38,5 @@ private:
 	LocalizedLabel* victoryLabel;
 	LocalizedLabel* itemsFoundLabel;
 	ClickableTextNode* returnButton;
+	Sound* victorySound;
 };

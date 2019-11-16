@@ -8,7 +8,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/FX/TypeWriterEffect.h"
 
 #include "Strings/Common/Empty.h"
@@ -35,7 +35,7 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->uiBound = uiBound;
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
-	this->voiceSound = Sound::create("");
+	this->voiceSound = WorldSound::create("");
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
@@ -60,9 +60,7 @@ void SpeechBubble::onExit()
 	
 	if (this->uiBound)
 	{
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->stem));
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->bubble));
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->text));
+		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this));
 	}
 }
 
@@ -70,12 +68,13 @@ void SpeechBubble::onEnter()
 {
 	super::onEnter();
 
-	if (this->uiBound)
+	this->defer([=]()
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->stem));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->bubble));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->text));
-	}
+		if (this->uiBound)
+		{
+			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this));
+		}
+	});
 }
 
 void SpeechBubble::initializePositions()

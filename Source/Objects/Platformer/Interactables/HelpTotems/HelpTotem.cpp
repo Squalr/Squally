@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -29,11 +30,11 @@ HelpTotem::HelpTotem(ValueMap& properties) : super(properties)
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
 	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);
 	this->hintCollision = CollisionObject::create(PhysicsBody::createBox(Size(248.0f, 248.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->speechBubble = SpeechBubble::create();
+	this->speechBubble = SpeechBubble::create(true);
 	this->hint = nullptr;
 	this->canInteract = false;
 	this->isInactive = false;
-	
+
 	this->totemInactive->setOpacity(0);
 
 	this->addChild(this->totem);
@@ -134,6 +135,4 @@ void HelpTotem::setHint(LocalizedString* hint)
 	{
 		this->addChild(this->hint);
 	}
-
-	this->tryDisplayHint();
 }

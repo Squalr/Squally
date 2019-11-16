@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
@@ -21,6 +22,7 @@
 #include "Events/PlatformerEvents.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Platformer/Notifications/ItemFound.h"
@@ -45,6 +47,7 @@ RewardsMenu::RewardsMenu()
 	this->expSprite = Sprite::create(UIResources::Menus_Icons_Stars);
 	this->expValue = ConstantString::create(std::to_string(0));
 	this->expLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->expValue);
+	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
 
@@ -66,6 +69,7 @@ RewardsMenu::RewardsMenu()
 	this->addChild(this->expLabel);
 	this->addChild(this->victoryLabel);
 	this->addChild(this->returnButton);
+	this->addChild(this->victorySound);
 }
 
 RewardsMenu::~RewardsMenu()
@@ -108,6 +112,7 @@ void RewardsMenu::initializeListeners()
 void RewardsMenu::show()
 {
 	this->runAction(FadeTo::create(1.0f, 255));
+	this->victorySound->play();
 }
 
 void RewardsMenu::loadRewards()

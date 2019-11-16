@@ -9,7 +9,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
-class Sound;
+class WorldSound;
  
 class SpeechBubble : public SmartNode
 {
@@ -42,7 +42,7 @@ private:
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;
-	Sound* voiceSound;
+	WorldSound* voiceSound;
 
 	bool uiBound;
 

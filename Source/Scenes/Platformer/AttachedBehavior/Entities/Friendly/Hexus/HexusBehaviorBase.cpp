@@ -217,7 +217,7 @@ void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			this->entity->speechBubble->runDialogue(dialogue->clone(), this->voiceResource);
+			this->entity->getSpeechBubble()->runDialogue(dialogue->clone(), this->voiceResource);
 		}),
 		nullptr
 	));

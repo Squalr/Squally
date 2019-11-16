@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Notifications/Party/HelperJoinedParty.h"
 
@@ -104,8 +105,9 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 						nullptr,
 						Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(helper->getEntityName()),
-						helper->getEmblemResource())
-					);
+						helper->getEmblemResource(),
+						SoundResources::Notifications_NotificationGood2
+					));
 				}
 
 				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(

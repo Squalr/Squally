@@ -181,23 +181,23 @@ void ReturnToMarcel::onHexusWin()
 						[=]()
 						{
 						},
-						SoundResources::Platformer_Entities_Generic_ChatterShort3,
+						SoundResources::Platformer_Entities_Generic_ChatterLong1,
 						true
 						));
 					},
-					SoundResources::Platformer_Entities_Generic_ChatterShort5,
+					SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 					false
 					));
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterShort2,
+				SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 				false
 				));
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort7,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 			false
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort1,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 		false
 	));
 }

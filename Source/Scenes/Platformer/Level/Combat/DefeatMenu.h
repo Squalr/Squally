@@ -11,6 +11,7 @@ class ClickableTextNode;
 class LocalizedLabel;
 class PlatformerEntity;
 class ScrollPane;
+class Sound;
 
 class DefeatMenu : public SmartNode
 {
@@ -31,4 +32,5 @@ private:
 	cocos2d::Sprite* defeatBanner;
 	LocalizedLabel* defeatLabel;
 	ClickableTextNode* returnButton;
+	Sound* defeatSound;
 };

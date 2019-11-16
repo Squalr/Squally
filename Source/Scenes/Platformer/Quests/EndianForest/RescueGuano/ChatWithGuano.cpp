@@ -118,7 +118,7 @@ void ChatWithGuano::runChatSequence()
 				{
 					this->runChatSequencePt2();
 				},
-				SoundResources::Platformer_Entities_Generic_ChatterShort3,
+				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 				false
 			));
 		}),
@@ -160,7 +160,7 @@ void ChatWithGuano::runChatSequencePt3()
 		{
 			this->runChatSequencePt4();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort7,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 		false
 	));
 }
@@ -199,7 +199,7 @@ void ChatWithGuano::runChatSequencePt5()
 			this->mulDoor->toggleHackable(true);
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort5,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 		true
 	));
 }

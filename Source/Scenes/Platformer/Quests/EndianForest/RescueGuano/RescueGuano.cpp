@@ -103,7 +103,7 @@ void RescueGuano::runRescueSequence()
 			{
 				this->runRescueSequencePt2();
 			},
-			SoundResources::Platformer_Entities_Generic_Cheer1,
+			SoundResources::Platformer_Entities_Generic_ChatterCheer1,
 			false
 		));
 	}, RescueGuano::TagPrisonDoor);
@@ -123,7 +123,7 @@ void RescueGuano::runRescueSequencePt2()
 		{
 			this->runRescueSequencePt3();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort4,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 		false
 	));
 }
@@ -151,7 +151,7 @@ void RescueGuano::runRescueSequencePt3()
 			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort6,
+		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 		true
 	));
 }

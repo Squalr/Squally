@@ -115,11 +115,11 @@ void MeetScrappy::runCinematicSequencePt1()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), "", 2.0f, [=]()
+				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), "", 2.0f, [=]()
 				{
-					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
+					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
 					{
-						this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
+						this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
 						{
 							this->runCinematicSequencePt2();
 						});
@@ -156,7 +156,8 @@ void MeetScrappy::runCinematicSequencePt2()
 				NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 					nullptr,
 					Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(this->scrappy->getEntityName()),
-					this->scrappy->getEmblemResource()
+					this->scrappy->getEmblemResource(),
+					SoundResources::Notifications_NotificationGood2
 				));
 				HelperEvents::TriggerFindScrappy();
 				PlatformerEvents::TriggerCinematicRestore();

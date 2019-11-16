@@ -25,7 +25,7 @@ ThrowSpeedRune* ThrowSpeedRune::create()
 
 ThrowSpeedRune::ThrowSpeedRune() : super(AttackType::ProjectileBuffSpeed, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
-	this->throwSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Projectiles_ItemThrow1);
+	this->throwSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
 	this->addChild(this->throwSound);
 }

@@ -44,9 +44,9 @@ public:
 	virtual void performJumpAnimation();
 	bool isFlippedX();
 	bool isFlippedY();
+	SpeechBubble* getSpeechBubble();
 
 	ControlState controlState;
-	SpeechBubble* speechBubble;
 
 	static const std::string PlatformerEntityTag;
 
@@ -96,4 +96,5 @@ private:
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
+	SpeechBubble* speechBubble;
 };

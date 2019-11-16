@@ -15,6 +15,7 @@
 
 #include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Menus/Notifications/AnimalRescued.h"
 
@@ -80,7 +81,12 @@ void CagedAnimal::onBreak()
 
 	SaveManager::saveProfileData(this->saveKey, Value(true));
 
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Menus_Notifications_AnimalRescued::create(), this->getAnimalName(), this->getSpriteResource()));
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+		Strings::Menus_Notifications_AnimalRescued::create(),
+		this->getAnimalName(),
+		this->getSpriteResource(),
+		SoundResources::Notifications_NotificationGood1
+	));
 
 	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->animalNode));
 

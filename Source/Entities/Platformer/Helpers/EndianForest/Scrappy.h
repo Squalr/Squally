@@ -20,9 +20,6 @@ public:
 	static HexusOpponentData* getHexusOpponentData();
 
 	WorldSound* droidAlarmedSound;
-	WorldSound* droidBrief1Sound;
-	WorldSound* droidBrief2Sound;
-	WorldSound* droidChatterSound;
 
 	static const std::string MapKeyScrappy;
 

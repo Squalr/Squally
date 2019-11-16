@@ -50,8 +50,8 @@ RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target,
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Attacks_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Attacks_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
