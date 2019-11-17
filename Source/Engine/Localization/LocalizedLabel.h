@@ -19,6 +19,9 @@ public:
 	enum class FontSize
 	{
 		// Listed in decreasing size
+		S1,
+		S2,
+		S3,
 		M1,
 		M2,
 		M3,
@@ -45,7 +48,6 @@ public:
 	void setFontSize(FontSize fontSize);
 	float getFontSize();
 	std::string getFont();
-	void toggleAllowTranslationEdit(bool allowTranslationEdit);
 
 private:
 	typedef cocos2d::Label super;
@@ -66,6 +68,9 @@ private:
 	void onEnter() override;
 	void onStringUpdate(LocalizedString* localizedString);
 	cocos2d::LanguageType getCurrentLanguage();
+	float getFontSizeS1();
+	float getFontSizeS2();
+	float getFontSizeS3();
 	float getFontSizeM1();
 	float getFontSizeM2();
 	float getFontSizeM3();
@@ -74,14 +79,12 @@ private:
 	float getFontSizeH3();
 	float getFontSizeP();
 	float getFontSizeSmall();
-	void updateTranslationEditHitbox();
 
 	std::string getPixelFont();
 	std::string getMainFont();
 	std::string getMonospacedFont();
 	std::string getCodingFont();
 
-	ClickableNode* translationButton;
 	LocalizedString* localizedString;
 	FontStyle fontStyle;
 	FontSize fontSize;

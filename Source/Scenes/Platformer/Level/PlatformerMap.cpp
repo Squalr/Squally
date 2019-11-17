@@ -7,6 +7,7 @@
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
@@ -80,6 +81,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 				BackgroundDeserializer::create(),
 				MusicDeserializer::create(),
 				PhysicsDeserializer::create(),
+				PlatformerBannerDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },

@@ -8,7 +8,6 @@
 #include "Engine/Events/CollisionEventDispatcher.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Input/MouseState.h"
-#include "Engine/Localization/TranslationMenu.h"
 #include "Engine/UI/Mouse.h"
 
 using namespace cocos2d;
@@ -19,7 +18,6 @@ void EngineBootstrapper::initialize()
 
 	// Initialize global objects
 	Analytics::registerGlobalNode();
-	// TranslationMenu::registerGlobalNode();
 	CollisionEventDispatcher::registerGlobalNode();
 	DeveloperModeController::registerGlobalNode();
 	GameCamera::registerGlobalNode();
