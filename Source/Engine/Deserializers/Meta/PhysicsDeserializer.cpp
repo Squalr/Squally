@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Physics/PhysicsInitializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -28,11 +29,7 @@ PhysicsDeserializer::~PhysicsDeserializer()
 
 void PhysicsDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	float gravity = GameUtils::getKeyOrDefault(properties, PhysicsDeserializer::MapKeyPhysics, Value(0.0f)).asFloat();
-}
+	PhysicsInitializer* PhysicsInitializer = PhysicsInitializer::create(properties);
 
-/*
-void PhysicsDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
-{
+	owner->addChild(PhysicsInitializer);
 }
-*/

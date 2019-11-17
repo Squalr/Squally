@@ -37,5 +37,5 @@ void BackgroundDeserializer::deserializeProperties(GameObject* owner, ValueMap p
 	// For decor, simply grab the resource of the same name of the object type
 	Sprite* sprite = Sprite::create("Private/Platformer/Backgrounds/" + background + ".png");
 
-	// TODO: Do something
+	owner->addChild(Background::create(sprite));
 }

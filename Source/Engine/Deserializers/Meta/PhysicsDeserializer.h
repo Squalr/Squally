@@ -8,7 +8,6 @@ public:
 	static PhysicsDeserializer* create();
 
 	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
-	std::string getPropertyDeserializerKey() override;
 
 private:
 	typedef PropertyDeserializer super;

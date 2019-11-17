@@ -14,7 +14,7 @@ class PropertyDeserializer : public SmartNode
 {
 public:
 	virtual void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) = 0;
-	virtual std::string getPropertyDeserializerKey() = 0;
+	virtual std::string getPropertyDeserializerKey();
 
 protected:
 	PropertyDeserializer();

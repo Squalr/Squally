@@ -35,22 +35,10 @@ MusicDeserializer::~MusicDeserializer()
 
 void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	std::string music = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString();
-	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
-}
-
-/*
-void MusicDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
-{
-	ValueMap properties = args->properties;
-	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
-	
-	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
 	Music* music = Music::create(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString());
+	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
 
-	// TODO: not this
-	this->addChild(music);
+	owner->addChild(music);
 
 	music->play(true, delay);
 }
-*/

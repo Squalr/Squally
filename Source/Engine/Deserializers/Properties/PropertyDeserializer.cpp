@@ -9,3 +9,8 @@ PropertyDeserializer::PropertyDeserializer()
 PropertyDeserializer::~PropertyDeserializer()
 {
 }
+
+std::string PropertyDeserializer::getPropertyDeserializerKey()
+{
+    return "";
+}
