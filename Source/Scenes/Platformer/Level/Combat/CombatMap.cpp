@@ -81,9 +81,11 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
-			PhysicsDeserializer::create(),
+			MetaLayerDeserializer::create({
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+				PhysicsDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },

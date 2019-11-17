@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/PropertyDeserializer.h"
+#include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 
 namespace cocos2d
 {

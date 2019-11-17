@@ -9,7 +9,6 @@
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Sound/MusicLayer.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -26,7 +25,7 @@ MusicDeserializer* MusicDeserializer::create()
 	return instance;
 }
 
-MusicDeserializer::MusicDeserializer() : super(MusicDeserializer::MapKeyMusicProperty)
+MusicDeserializer::MusicDeserializer() : super()
 {
 }
 
@@ -34,18 +33,24 @@ MusicDeserializer::~MusicDeserializer()
 {
 }
 
+void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
+{
+	std::string music = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString();
+	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
+}
+
+/*
 void MusicDeserializer::deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args)
 {
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyPropertyName, Value("")).asString();
 	
-	MusicLayer* newObject = MusicLayer::create(properties, name);
 	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
 	Music* music = Music::create(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString());
 
-	newObject->addChild(music);
+	// TODO: not this
+	this->addChild(music);
 
 	music->play(true, delay);
-
-	args->onDeserializeCallback(LayerDeserializer::LayerDeserializationArgs(newObject, args->layerIndex));
 }
+*/

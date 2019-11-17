@@ -2,7 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Deserializers/ObjectDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/GameObject.h"

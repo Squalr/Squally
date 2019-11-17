@@ -1,6 +1,6 @@
 #include "CollisionDeserializer.h"
 
-#include "Engine/Deserializers/PropertyDeserializer.h"
+#include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 

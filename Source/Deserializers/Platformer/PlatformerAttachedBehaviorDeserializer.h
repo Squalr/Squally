@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/AttachedBehaviorDeserializer.h"
+#include "Engine/Deserializers/Properties/AttachedBehaviorDeserializer.h"
 
 class PlatformerAttachedBehaviorDeserializer : public AttachedBehaviorDeserializer
 {

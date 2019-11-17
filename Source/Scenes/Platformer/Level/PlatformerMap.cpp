@@ -75,9 +75,12 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->inventoryMenu = InventoryMenu::create();
 
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
-			PhysicsDeserializer::create(),
+			MetaLayerDeserializer::create(
+			{
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+				PhysicsDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
