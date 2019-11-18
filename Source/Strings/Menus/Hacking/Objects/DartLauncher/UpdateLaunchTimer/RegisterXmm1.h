@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx : public LocalizedString
+	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx* create();
+		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx();
-		~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx();
+		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1();
+		~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1();
 	};
 }

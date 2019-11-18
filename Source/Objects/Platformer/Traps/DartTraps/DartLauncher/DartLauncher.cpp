@@ -6,15 +6,11 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/AnimationPart.h"
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Traps/DartTraps/DartLauncher/DartNopClippy.h"
 #include "Objects/Platformer/Traps/DartTraps/DartPool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -22,7 +18,8 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterXmm0.h"
+#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterXmm1.h"
 #include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/UpdateLaunchTimer.h"
 
 using namespace cocos2d;
@@ -118,10 +115,12 @@ void DartLauncher::registerHackables()
 				nullptr,
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1::create() },
 				},
 				int(HackFlags::None),
-				15.0f
+				15.0f,
+				this->showClippy ? DartNopClippy::create() : nullptr
 			)
 		},
 	};
@@ -151,12 +150,12 @@ NO_OPTIMIZE void DartLauncher::shoot(float dt)
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZAX, timePtr);
 	ASM_MOV_REG_VAR(ZBX, dtPtr);
+	ASM(movss xmm0, [ZAX])
+	ASM(movss xmm1, [ZBX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHOOT);
-	ASM(fld [ZAX]);
-	ASM(fld [ZBX]);
-	ASM(fsubp st(1), st(0));
-	ASM(fstp [ZAX]);
+	ASM(subps xmm0, xmm1);
+	ASM(movss [ZAX], xmm0);
 	HACKABLE_CODE_END();
 
 	ASM(pop ZBX);

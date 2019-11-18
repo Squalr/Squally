@@ -40,6 +40,11 @@ PhysicsInitializer::~PhysicsInitializer()
 void PhysicsInitializer::onEnter()
 {
 	super::onEnter();
+	
+	PhysicsWorld* physicsWorld = Director::getInstance()->getRunningScene()->getPhysicsWorld();
 
-	Director::getInstance()->getRunningScene()->getPhysicsWorld()->setGravity(Vec2(0.0f, this->gravity));
+	if (physicsWorld != nullptr)
+	{
+		physicsWorld->setGravity(Vec2(0.0f, this->gravity));
+	}
 }

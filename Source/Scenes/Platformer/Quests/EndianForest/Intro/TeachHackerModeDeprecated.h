@@ -6,20 +6,19 @@ class HelpTotem;
 class MagePortal;
 class Marcel;
 class QuestLine;
-class Scrappy;
 class Squally;
 class WorldSound;
 
-class TeachHackerMode : public QuestTask
+class TeachHackerModeDeprecated : public QuestTask
 {
 public:
-	static TeachHackerMode* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TeachHackerModeDeprecated* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~TeachHackerMode();
+	TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~TeachHackerModeDeprecated();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -37,8 +36,11 @@ private:
 
 	bool hasRunEvent;
 	HelpTotem* helpTotem;
-	Scrappy* scrappy;
+	MagePortal* portal;
+	Marcel* marcel;
 	Squally* squally;
+	WorldSound* teleportSound;
 	
+	static const std::string TagQuestPortal;
 	static const std::string TagHelpTotemHacking;
 };
