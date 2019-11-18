@@ -15,7 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Traps/DartTraps/Dart.h"
+#include "Objects/Platformer/Traps/DartTraps/DartPool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -25,9 +25,13 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SWING 1
+#define LOCAL_FUNC_ID_SHOOT 1
 
 const std::string DartLauncher::MapKeyDartLauncher = "dart-launcher";
+const std::string DartLauncher::PropertyLaunchSpeed = "speed";
+const float DartLauncher::DefaultLaunchSpeed = 320.0f;
+const float DartLauncher::LaunchCooldownMin = 2.0f;
+const float DartLauncher::LaunchCooldownMax = 4.0f;
 
 DartLauncher* DartLauncher::create(ValueMap& properties)
 {
@@ -43,18 +47,17 @@ DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 	this->launcherContainer = Node::create();
 	this->launcherSprite = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
 	this->rotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
+	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, DartLauncher::PropertyLaunchSpeed, Value(DartLauncher::DefaultLaunchSpeed)).asFloat();
 	this->timeSinceLastShot = 0.0f;
+	this->dartPool = DartPool::create(2, this->rotation + 90.0f, this->launchSpeed, 90.0f);
 
 	this->launcherSprite->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->launcherSprite->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
-
-	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool())
-	{
-		this->rotation += 180.0f;
-	}
+	this->dartPool->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
+	this->launcherContainer->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 
 	this->launcherContainer->setRotation(this->rotation);
-
+	
+	this->launcherContainer->addChild(this->dartPool);
 	this->launcherContainer->addChild(this->launcherSprite);
 	this->addChild(this->launcherContainer);
 }
@@ -67,12 +70,16 @@ void DartLauncher::onEnter()
 {
 	super::onEnter();
 
+	this->rebindUIElementsTo(this->dartPool);
+
 	this->scheduleUpdate();
 }
 
 void DartLauncher::initializePositions()
 {
 	super::initializePositions();
+
+	this->dartPool->setPosition(Vec2(42.0f, -24.0f));
 }
 
 void DartLauncher::update(float dt)
@@ -84,7 +91,11 @@ void DartLauncher::update(float dt)
 
 Vec2 DartLauncher::getButtonOffset()
 {
-	return Vec2(0.0f, 128.0f);
+	float width = 24.0f;
+	float height = -124.0f;
+	float angle = float(M_PI) * this->rotation / 180.0f;
+
+	return Vec2(std::sin(angle) * width, std::cos(angle) * height);
 }
 
 void DartLauncher::registerHackables()
@@ -97,7 +108,7 @@ void DartLauncher::registerHackables()
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
-			LOCAL_FUNC_ID_SWING,
+			LOCAL_FUNC_ID_SHOOT,
 			HackableCode::LateBindData(
 				DartLauncher::MapKeyDartLauncher,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
@@ -124,55 +135,30 @@ void DartLauncher::registerHackables()
 
 NO_OPTIMIZE void DartLauncher::shoot(float dt)
 {
-	/*
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+	if (this->timeSinceLastShot <= 0.0f)
 	{
-		Vec2 squallyPos = GameUtils::getWorldCoords(squally);
+		this->timeSinceLastShot = RandomHelper::random_real(DartLauncher::LaunchCooldownMin, DartLauncher::LaunchCooldownMax);
 
-		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? float(M_PI) : 0.0f);
+		this->dartPool->getNextDart();
+	}
 
-		cannon->setRotation(MathUtils::wrappingNormalize(angleBetween, 0.0f, 2.0f * float(M_PI)) * 180.0f / float(M_PI));
-
-		this->timeSinceLastShot += dt;
-
-		Rect bounds = GameUtils::getScreenBounds(this);
-		Size visibleSize = Director::getInstance()->getVisibleSize();
-
-		if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
-		{
-			if (this->timeSinceLastShot > 4.0f)
-			{
-				this->timeSinceLastShot = 0.0f;
-
-				Dart* dart = Dart::create(angleBetween * 180.0f / float(M_PI), 256.0f);
-
-				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
-
-				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-					this,
-					dart,
-					ObjectEvents::SpawnMethod::Below,
-					ObjectEvents::PositionMode::Retain
-				));
-			}
-		}
-	}), Squally::MapKeySqually);
+	float* timePtr = &this->timeSinceLastShot;
+	float* dtPtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, angleInt);
-	ASM_MOV_REG_VAR(ZBX, previousAngleInt);
+	ASM_MOV_REG_VAR(ZAX, timePtr);
+	ASM_MOV_REG_VAR(ZBX, dtPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
-	ASM(mov ZBX, ZAX);
-	ASM_NOP5();
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHOOT);
+	ASM(fld [ZAX]);
+	ASM(fld [ZBX]);
+	ASM(fsubp st(1), st(0));
+	ASM(fstp [ZAX]);
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(angleInt, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
-	*/
 
 	HACKABLES_STOP_SEARCH();
 }

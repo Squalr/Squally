@@ -13,7 +13,8 @@ const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
 const std::string ObjectEvents::EventQueryObjectByTagPrefix = "EVENT_QUERY_OBJECT_BY_TAG_";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
 const std::string ObjectEvents::EventBindObjectToUI = "EVENT_BIND_OBJECT_TO_UI";
-const std::string ObjectEvents::EventUnbindObject = "EVENT_UNBIND_OBJECT";
+const std::string ObjectEvents::EventReparentBindPrefix = "EVENT_REPARENT_BIND_";
+const std::string ObjectEvents::EventUnbindObjectPrefix = "EVENT_UNBIND_OBJECT_";
 const std::string ObjectEvents::EventElevateObject = "EVENT_ELEVATE_OBJECT";
 const std::string ObjectEvents::EventObjectDespawningPrefix = "EVENT_OBJECT_DESPAWNING_";
 const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
@@ -62,10 +63,18 @@ void ObjectEvents::TriggerElevateObject(RelocateObjectArgs args)
 	);
 }
 
+void ObjectEvents::TriggerReparentBind(ReparentBindArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(args.relocatedObject)),
+		&args
+	);
+}
+
 void ObjectEvents::TriggerUnbindObject(RelocateObjectArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventUnbindObject,
+		ObjectEvents::EventUnbindObjectPrefix + std::to_string((unsigned long long)(args.relocatedObject)),
 		&args
 	);
 }

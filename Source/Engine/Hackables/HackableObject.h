@@ -56,6 +56,7 @@ protected:
 	void update(float dt) override;
 	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
+	void rebindUIElementsTo(cocos2d::Node* newParent);
 	virtual void onSensingEnable(int hackFlags);
 	virtual void onSensingDisable();
 	virtual void registerHackables();

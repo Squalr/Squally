@@ -211,7 +211,7 @@ HackableCode* HackableCode::clone()
 
 	for (auto it = this->lateBindData.registerHints.begin(); it != this->lateBindData.registerHints.end(); it++)
 	{
-		registerHintsClone[it->first] = it->second->clone();
+		registerHintsClone[it->first] = it->second == nullptr ? nullptr : it->second->clone();
 	}
 
 	clonedData.registerHints = registerHintsClone;

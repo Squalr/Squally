@@ -211,6 +211,14 @@ void HackableObject::onHackerModeDisable()
 	this->hackButton->setVisible(false);
 }
 
+void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
+{
+	this->defer([=]()
+	{
+		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElements, newParent));
+	});
+}
+
 void HackableObject::onSensingEnable(int hackFlags)
 {
 	if (!this->isHackable)

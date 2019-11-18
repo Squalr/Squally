@@ -15,18 +15,16 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SWING 1
-
-Dart* Dart::create(float rotation, float speed)
+Dart* Dart::create(float rotation, float speed, float visualRotation)
 {
-	Dart* instance = new Dart(rotation, speed);
+	Dart* instance = new Dart(rotation, speed, visualRotation);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dart::Dart(float rotation, float speed) : CollisionObject(
+Dart::Dart(float rotation, float speed, float visualRotation) : super(
 	ValueMap(),
 	PhysicsBody::createBox(
 		Size(64.0f, 16.0f),
@@ -39,41 +37,15 @@ Dart::Dart(float rotation, float speed) : CollisionObject(
 )
 {
 	this->dartSprite = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
-	this->setRotation(rotation);
 
-	float rotationInRad = (-rotation) * float(M_PI) / 180.0f;
-	this->setVelocity(Vec2(speed * std::cos(rotationInRad), speed * std::sin(rotationInRad)));
+	this->setRotation(visualRotation);
+
+	float rotationInRad = rotation * float(M_PI) / 180.0f;
+	this->setVelocity(Vec2(speed * std::cos(-rotationInRad), speed * std::sin(-rotationInRad)));
 
 	this->addChild(this->dartSprite);
 }
 
 Dart::~Dart()
 {
-}
-
-void Dart::onEnter()
-{
-	super::onEnter();
-
-	this->scheduleUpdate();
-}
-
-void Dart::initializePositions()
-{
-	super::initializePositions();
-}
-
-void Dart::update(float dt)
-{
-	super::update(dt);
-}
-
-void Dart::registerHackables()
-{
-	super::registerHackables();
-}
-
-Vec2 Dart::getButtonOffset()
-{
-	return Vec2(0.0f, 0.0f);
 }

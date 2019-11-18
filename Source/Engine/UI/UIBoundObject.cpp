@@ -51,20 +51,27 @@ void UIBoundObject::initializeListeners()
 {
     super::initializeListeners();
 
-    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom* eventCustom)
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
+    {
+        ObjectEvents::ReparentBindArgs* args = static_cast<ObjectEvents::ReparentBindArgs*>(eventCustom->getUserData());
+        
+        if (args != nullptr)
+        {
+            this->originalParent = args->newParent;
+        }
+    }));
+
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObjectPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
     {
         ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
         
         if (args != nullptr)
         {
-            if (this->referencedObject != nullptr && this->referencedObject == args->relocatedObject)
-            {
-                this->removeChild(referencedObject);
+            this->removeChild(referencedObject);
 
-                if (this->getParent() != nullptr)
-                {
-                    this->getParent()->removeChild(this);
-                }
+            if (this->getParent() != nullptr)
+            {
+                this->getParent()->removeChild(this);
             }
         }
     }));

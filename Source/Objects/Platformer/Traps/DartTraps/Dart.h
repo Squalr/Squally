@@ -4,30 +4,21 @@
 
 namespace cocos2d
 {
-	class PhysicsBody;
 	class Sprite;
 }
-
-class HackableData;
 
 class Dart : public CollisionObject
 {
 public:
-	static Dart* create(float rotation, float speed);
+	static Dart* create(float rotation, float speed, float visualRotation);
 
 protected:
-	Dart(float rotation, float speed);
-	virtual	~Dart();
-
-	cocos2d::Vec2 getButtonOffset() override;
-	void registerHackables() override;
+	Dart(float rotation, float speed, float visualRotation);
+	~Dart();
 
 private:
-	typedef HackableObject super;
+	typedef CollisionObject super;
 
-	void onEnter() override;
-	void initializePositions() override;
-	void update(float) override;
-
+	bool enabled;
 	cocos2d::Sprite* dartSprite;
 };

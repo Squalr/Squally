@@ -60,8 +60,9 @@ public:
 	static const std::string EventSpawnObjectDelegator;
 	static const std::string EventObjectDespawningPrefix;
 	static const std::string EventBindObjectToUI;
+	static const std::string EventReparentBindPrefix;
 	static const std::string EventElevateObject;
-	static const std::string EventUnbindObject;
+	static const std::string EventUnbindObjectPrefix;
 	static const std::string EventWriteStatePrefix;
 
 	enum class SpawnMethod
@@ -108,6 +109,15 @@ public:
 		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 	};
 
+	struct ReparentBindArgs
+	{
+		cocos2d::Node* relocatedObject;
+		cocos2d::Node* newParent;
+
+		ReparentBindArgs() : relocatedObject(nullptr), newParent(nullptr) { }
+		ReparentBindArgs(cocos2d::Node* relocatedObject, cocos2d::Node* newParent) : relocatedObject(relocatedObject), newParent(newParent) { }
+	};
+
 	struct StateWriteArgs
 	{
 		GameObject* owner;
@@ -120,6 +130,7 @@ public:
 	static void TriggerCollisionMapUpdated();
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);
+	static void TriggerReparentBind(ReparentBindArgs args);
 	static void TriggerUnbindObject(RelocateObjectArgs args);
 	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
