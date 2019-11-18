@@ -21,7 +21,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/SetTargetAngle.h"
 
 using namespace cocos2d;
 
@@ -103,12 +105,12 @@ void DartGun::registerHackables()
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
 				DartGun::MapKeyDartGun,
-				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{
-					{ HackableCode::Register::zax, nullptr },
-					{ HackableCode::Register::zbx, nullptr }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx::create() },
 				},
 				int(HackFlags::None),
 				20.0f

@@ -40,10 +40,7 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	// this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr; // Do not set here; set via the setter function
-
-	// this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setDimensions(dimensions.width, dimensions.height);
 	this->setAlignment(hAlignment, vAlignment);
@@ -51,7 +48,6 @@ LocalizedLabel::LocalizedLabel(
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
-	// this->addChild(this->translationButton);
 }
 
 LocalizedLabel::~LocalizedLabel()

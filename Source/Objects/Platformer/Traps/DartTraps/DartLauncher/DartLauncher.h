@@ -33,7 +33,7 @@ private:
 	typedef HackableObject super;
 	void shoot(float dt);
 
-	float timeSinceLastShot;
+	float launchTimer;
 	float launchSpeed;
 	float rotation;
 	cocos2d::Node* launcherContainer;

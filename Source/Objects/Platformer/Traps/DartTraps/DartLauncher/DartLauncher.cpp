@@ -21,7 +21,9 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterEax.h"
+#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterEbx.h"
+#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/UpdateLaunchTimer.h"
 
 using namespace cocos2d;
 
@@ -48,7 +50,7 @@ DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 	this->launcherSprite = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
 	this->rotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, DartLauncher::PropertyLaunchSpeed, Value(DartLauncher::DefaultLaunchSpeed)).asFloat();
-	this->timeSinceLastShot = 0.0f;
+	this->launchTimer = 0.0f;
 	this->dartPool = DartPool::create(2, this->rotation + 90.0f, this->launchSpeed, 90.0f);
 
 	this->launcherSprite->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -111,15 +113,15 @@ void DartLauncher::registerHackables()
 			LOCAL_FUNC_ID_SHOOT,
 			HackableCode::LateBindData(
 				DartLauncher::MapKeyDartLauncher,
-				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{
-					{ HackableCode::Register::zax, nullptr },
-					{ HackableCode::Register::zbx, nullptr }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEbx::create() },
 				},
 				int(HackFlags::None),
-				20.0f
+				15.0f
 			)
 		},
 	};
@@ -135,14 +137,14 @@ void DartLauncher::registerHackables()
 
 NO_OPTIMIZE void DartLauncher::shoot(float dt)
 {
-	if (this->timeSinceLastShot <= 0.0f)
+	if (this->launchTimer <= 0.0f)
 	{
-		this->timeSinceLastShot = RandomHelper::random_real(DartLauncher::LaunchCooldownMin, DartLauncher::LaunchCooldownMax);
+		this->launchTimer = RandomHelper::random_real(DartLauncher::LaunchCooldownMin, DartLauncher::LaunchCooldownMax);
 
 		this->dartPool->getNextDart();
 	}
 
-	float* timePtr = &this->timeSinceLastShot;
+	float* timePtr = &this->launchTimer;
 	float* dtPtr = &dt;
 
 	ASM(push ZAX);
