@@ -430,6 +430,7 @@ const std::string ObjectResources::Switches_StoneButton_StoneButtonBase = "Priva
 const std::string ObjectResources::Switches_StoneButton_StoneButtonTop = "Private/Platformer/Objects/Switches/StoneButton/StoneButtonTop.png";
 const std::string ObjectResources::Transportation_Ship_Hull = "Private/Platformer/Objects/Transportation/Ship/Hull.png";
 const std::string ObjectResources::Traps_BARRICADE = "Private/Platformer/Objects/Traps/BARRICADE.png";
+const std::string ObjectResources::Traps_DartLauncher_DartLauncher = "Private/Platformer/Objects/Traps/DartLauncher/DartLauncher.png";
 const std::string ObjectResources::Traps_FloatingBomb_FloatingBomb = "Private/Platformer/Objects/Traps/FloatingBomb/FloatingBomb.png";
 const std::string ObjectResources::Traps_FloatingBomb_FloatingBombExplode_0000 = "Private/Platformer/Objects/Traps/FloatingBomb/FloatingBombExplode_0000.png";
 const std::string ObjectResources::Traps_FloatingBomb_FloatingBombExplode_0001 = "Private/Platformer/Objects/Traps/FloatingBomb/FloatingBombExplode_0001.png";

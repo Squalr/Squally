@@ -1,4 +1,4 @@
-#include "DartGun.h"
+#include "DartLauncher.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -14,84 +14,80 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Traps/DartTraps/Dart.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
-#include "Entities/Platformer/Squally/Squally.h"
-#include "Engine/Events/ObjectEvents.h"
-#include "Dart.h"
 
 using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string DartGun::MapKeyDartGun = "dart-gun";
-const std::string DartGun::PivotBone = "pivot_bone";
+const std::string DartLauncher::MapKeyDartLauncher = "dart-launcher";
 
-DartGun* DartGun::create(ValueMap& properties)
+DartLauncher* DartLauncher::create(ValueMap& properties)
 {
-	DartGun* instance = new DartGun(properties);
+	DartLauncher* instance = new DartLauncher(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DartGun::DartGun(ValueMap& properties) : super(properties)
+DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 {
-	this->dartNode = Node::create();
-	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
+	this->launcherContainer = Node::create();
+	this->launcherSprite = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
+	this->rotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
 	this->timeSinceLastShot = 0.0f;
-	this->cannon = this->dartGunAnimations->getAnimationPart(DartGun::PivotBone);
 
-	this->dartGunAnimations->playAnimation();
+	this->launcherSprite->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->launcherSprite->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipX))
+	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool())
 	{
-		this->dartGunAnimations->setFlippedX(this->properties[GameObject::MapKeyWidth].asBool());
+		this->rotation += 180.0f;
 	}
 
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipY))
-	{
-		this->dartGunAnimations->setFlippedY(this->properties[GameObject::MapKeyWidth].asBool());
-	}
+	this->launcherContainer->setRotation(this->rotation);
 
-	this->addChild(this->dartNode);
-	this->addChild(this->dartGunAnimations);
+	this->launcherContainer->addChild(this->launcherSprite);
+	this->addChild(this->launcherContainer);
 }
 
-DartGun::~DartGun()
+DartLauncher::~DartLauncher()
 {
 }
 
-void DartGun::onEnter()
+void DartLauncher::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void DartGun::initializePositions()
+void DartLauncher::initializePositions()
 {
 	super::initializePositions();
 }
 
-void DartGun::update(float dt)
+void DartLauncher::update(float dt)
 {
 	super::update(dt);
 
 	this->shoot(dt);
 }
 
-Vec2 DartGun::getButtonOffset()
+Vec2 DartLauncher::getButtonOffset()
 {
 	return Vec2(0.0f, 128.0f);
 }
 
-void DartGun::registerHackables()
+void DartLauncher::registerHackables()
 {
 	super::registerHackables();
 
@@ -103,7 +99,7 @@ void DartGun::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::LateBindData(
-				DartGun::MapKeyDartGun,
+				DartLauncher::MapKeyDartLauncher,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
@@ -117,7 +113,7 @@ void DartGun::registerHackables()
 		},
 	};
 
-	auto swingFunc = &DartGun::shoot;
+	auto swingFunc = &DartLauncher::shoot;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -126,8 +122,9 @@ void DartGun::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void DartGun::shoot(float dt)
+NO_OPTIMIZE void DartLauncher::shoot(float dt)
 {
+	/*
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
 		Vec2 squallyPos = GameUtils::getWorldCoords(squally);
@@ -161,7 +158,6 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 		}
 	}), Squally::MapKeySqually);
 
-	/*
 	ASM(push ZAX);
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZAX, angleInt);

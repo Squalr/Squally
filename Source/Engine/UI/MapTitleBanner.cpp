@@ -74,8 +74,8 @@ void MapTitleBanner::onEnter()
 
 	this->hud->setOpacity(255);
 	this->hud->runAction(Sequence::create(
-		DelayTime::create(2.0f),
-		FadeTo::create(1.0f, 0),
+		DelayTime::create(1.75f),
+		FadeTo::create(0.5f, 0),
 		nullptr
 	));
 }

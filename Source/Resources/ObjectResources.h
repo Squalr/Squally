@@ -431,6 +431,7 @@ namespace ObjectResources
 	extern const std::string Switches_StoneButton_StoneButtonTop;
 	extern const std::string Transportation_Ship_Hull;
 	extern const std::string Traps_BARRICADE;
+	extern const std::string Traps_DartLauncher_DartLauncher;
 	extern const std::string Traps_FloatingBomb_FloatingBomb;
 	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0000;
 	extern const std::string Traps_FloatingBomb_FloatingBombExplode_0001;
