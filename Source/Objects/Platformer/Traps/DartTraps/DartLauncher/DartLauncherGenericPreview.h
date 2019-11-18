@@ -7,21 +7,21 @@ namespace cocos2d
 	class Sprite;
 }
 
-class MechanicalFlailGenericPreview : public HackablePreview
+class DartLauncherGenericPreview : public HackablePreview
 {
 public:
-	static MechanicalFlailGenericPreview* create();
+	static DartLauncherGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 private:
 	typedef HackablePreview super;
 
-	MechanicalFlailGenericPreview();
-	~MechanicalFlailGenericPreview();
+	DartLauncherGenericPreview();
+	~DartLauncherGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewFlail;
-	cocos2d::Sprite* previewJoint;
+	cocos2d::Sprite* dartLauncher;
+	cocos2d::Sprite* dart;
 };

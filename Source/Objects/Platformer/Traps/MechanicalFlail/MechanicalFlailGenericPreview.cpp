@@ -28,6 +28,10 @@ MechanicalFlailGenericPreview::MechanicalFlailGenericPreview()
 	this->previewNode->addChild(this->previewJoint);
 }
 
+MechanicalFlailGenericPreview::~MechanicalFlailGenericPreview()
+{
+}
+
 HackablePreview* MechanicalFlailGenericPreview::clone()
 {
 	return MechanicalFlailGenericPreview::create();

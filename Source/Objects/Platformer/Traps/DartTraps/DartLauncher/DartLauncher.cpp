@@ -10,6 +10,8 @@
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Traps/DartTraps/DartLauncher/DartLauncherGenericPreview.h"
+#include "Objects/Platformer/Traps/DartTraps/DartLauncher/DartLauncherUpdateTimerPreview.h"
 #include "Objects/Platformer/Traps/DartTraps/DartLauncher/DartNopClippy.h"
 #include "Objects/Platformer/Traps/DartTraps/DartPool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -112,14 +114,14 @@ void DartLauncher::registerHackables()
 				DartLauncher::MapKeyDartLauncher,
 				Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				UIResources::Menus_Icons_CrossHair,
-				nullptr,
+				DartLauncherUpdateTimerPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1::create() },
 				},
 				int(HackFlags::None),
-				15.0f,
+				12.0f,
 				this->showClippy ? DartNopClippy::create() : nullptr
 			)
 		},
@@ -132,6 +134,11 @@ void DartLauncher::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+HackablePreview* DartLauncher::createDefaultPreview()
+{
+	return DartLauncherGenericPreview::create();
 }
 
 NO_OPTIMIZE void DartLauncher::shoot(float dt)
