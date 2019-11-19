@@ -97,7 +97,11 @@ void EntityMovementCollisionBehavior::onLoad()
 		{
 			this->tryBind();
 			this->movementCollision->setPosition(args->position);
-			GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+
+			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+			{
+				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+			}
 		}
 	}));
 }

@@ -6,6 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -15,6 +16,8 @@ using namespace cocos2d;
 const std::string FollowMovementBehavior::MapKeyAttachedBehavior = "follow-movement";
 const float FollowMovementBehavior::StopFollowRangeX = 64.0f;
 const float FollowMovementBehavior::TryJumpRangeY = 96.0f;
+const float FollowMovementBehavior::ResetRangeX = 2048.0f;
+const float FollowMovementBehavior::ResetRangeY = 1024.0f;
 
 FollowMovementBehavior* FollowMovementBehavior::create(GameObject* owner)
 {
@@ -64,6 +67,13 @@ void FollowMovementBehavior::update(float dt)
 
 	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
 	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
+
+	if (std::abs(squallyPosition.x - entityPosition.x) >= FollowMovementBehavior::ResetRangeX ||
+		std::abs(squallyPosition.y - entityPosition.y) >= FollowMovementBehavior::ResetRangeY)
+	{
+		PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->entity, squallyPosition));
+		return;
+	}
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= FollowMovementBehavior::StopFollowRangeX)
 	{

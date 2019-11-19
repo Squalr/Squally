@@ -27,4 +27,6 @@ private:
 
 	static const float StopFollowRangeX;
 	static const float TryJumpRangeY;
+	static const float ResetRangeX;
+	static const float ResetRangeY;
 };
