@@ -62,7 +62,8 @@ void DartLauncherUpdateTimerPreview::initializePositions()
 
 	const float offset = 24.0f;
 
-	this->dartLauncher->setPosition(Vec2(0.0f, 64.0f));
+	this->dart->setPosition(Vec2(24.0f, 64.0f));
+	this->dartLauncher->setPosition(Vec2(24.0f, 64.0f));
 	this->eaxTimer->setPosition(Vec2(-80.0f, 0.0f));
 }
 
@@ -82,14 +83,14 @@ void DartLauncherUpdateTimerPreview::update(float dt)
 	{
 		this->isLaunching = true;
 
-		this->dart->runAction(MoveTo::create(1.0f, Vec2(0.0f, -128.0f)));
+		this->dart->runAction(MoveTo::create(1.0f, Vec2(24.0f, -128.0f)));
 		this->dart->runAction(Sequence::create(
 			DelayTime::create(0.5f),
 			FadeTo::create(0.5f, 0),
 			DelayTime::create(0.6f),
 			CallFunc::create([=]()
 			{
-				this->dart->setPosition(Vec2(0.0f, 64.0f));
+				this->dart->setPosition(Vec2(24.0f, 64.0f));
 				this->dart->setOpacity(255);
 				this->launchCountDown = RandomHelper::random_real(3.0f, 4.0f);
 				this->isLaunching = false;

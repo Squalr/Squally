@@ -458,8 +458,38 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(Val
 	{
 		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
 
-		callback(*args);
+		if (args != nullptr && callback != nullptr)
+		{
+			callback(*args);
+		}
 	}));
+}
+
+void GameObject::listenForMapEventOnce(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback)
+{
+	if (eventName.empty())
+	{
+		return;
+	}
+	
+	static unsigned int UniqueCounter = 0;
+	const std::string eventKey = eventName + "_" + std::to_string((unsigned long long)(this));
+	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
+
+	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	{
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
+		
+		if (args != nullptr && callback != nullptr)
+		{
+			this->removeEventListenerByTag(uniqueKey);
+			callback(*args);
+		}
+	});
+
+	listener->setTag(uniqueKey);
+
+	this->addEventListenerIgnorePause(listener);
 }
 
 std::string GameObject::getListenEvent()

@@ -29,7 +29,6 @@ FindElriel* FindElriel::create(GameObject* owner, QuestLine* questLine,  std::st
 
 FindElriel::FindElriel(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, FindElriel::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->blackbeard = nullptr;
 }
 
@@ -47,7 +46,7 @@ void FindElriel::onLoad(QuestState questState)
 
 void FindElriel::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(FindElriel::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(FindElriel::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -66,13 +65,6 @@ void FindElriel::onSkipped()
 
 void FindElriel::runCinematicSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->blackbeard != nullptr)
 	{
 	}

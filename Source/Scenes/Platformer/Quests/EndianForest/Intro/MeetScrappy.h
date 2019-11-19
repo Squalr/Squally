@@ -28,7 +28,6 @@ private:
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
 
-	bool hasRunEvent;
 	Scrappy* scrappy;
 
 	static const std::string TagScrappyStop;

@@ -21,9 +21,11 @@
 
 #include "Resources/SoundResources.h"
 
+#include "Strings/Platformer/Quests/EndianForest/Intro/D_TrapAhead.h"
+
 using namespace cocos2d;
 
-const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode-deprecated";
+const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
 const std::string TeachHackerMode::TagHelpTotemHacking = "help-totem-hacking";
 
 TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
@@ -37,7 +39,6 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->helpTotem = nullptr;
 	this->squally = nullptr;
 	this->scrappy = nullptr;
@@ -52,7 +53,6 @@ void TeachHackerMode::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<HelpTotem>(this, [=](HelpTotem* helpTotem)
 	{
 		this->helpTotem = helpTotem;
-		this->helpTotem->deactivate();
 	}, TeachHackerMode::TagHelpTotemHacking);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
@@ -60,7 +60,7 @@ void TeachHackerMode::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKeySqually);
 
-	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* squally)
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKeyScrappy);
@@ -68,7 +68,7 @@ void TeachHackerMode::onLoad(QuestState questState)
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{
 		this->runCinematicSequencePt1();
 	});
@@ -85,62 +85,20 @@ void TeachHackerMode::onSkipped()
 
 void TeachHackerMode::runCinematicSequencePt1()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->scrappy != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
-		this->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-			}),
-			DelayTime::create(2.0f),
-			CallFunc::create([=]()
-			{
-			}),
-			DelayTime::create(1.0f),
-			CallFunc::create([=]()
-			{
-				this->runCinematicSequencePt2();
-			}),
-			nullptr
-		));
+		this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_D_TrapAhead::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+		{
+			this->runCinematicSequencePt2();
+		});
 	}
 }
 
 void TeachHackerMode::runCinematicSequencePt2()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		nullptr, // Strings::Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt3();
-		},
-		SoundResources::Platformer_Entities_Generic_ChatterShort1,
-		false
-	));
-}
+	PlatformerEvents::TriggerCinematicRestore();
 
-void TeachHackerMode::runCinematicSequencePt3()
-{
-}
-
-void TeachHackerMode::runCinematicSequencePt4()
-{
-}
-
-void TeachHackerMode::runCinematicSequencePt5()
-{
+	this->complete();
 }

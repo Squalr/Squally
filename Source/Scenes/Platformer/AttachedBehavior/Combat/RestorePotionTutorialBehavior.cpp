@@ -23,7 +23,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerModeCombat.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/F_HackerModeCombat.h"
 
 using namespace cocos2d;
 
@@ -96,7 +96,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 			this->runAction(Sequence::create(
 				CallFunc::create([=]()
 				{
-					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
+					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
 				}),
 				nullptr
 			));

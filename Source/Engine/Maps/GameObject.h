@@ -37,6 +37,7 @@ public:
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
+	void listenForMapEventOnce(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	std::string getListenEvent();
 	std::string getSendEvent();
 	virtual void despawn();

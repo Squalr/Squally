@@ -17,7 +17,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/EnemySpotted.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/E_EnemySpotted.h"
 
 using namespace cocos2d;
 
@@ -34,7 +34,6 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std:
 
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
 {
-	this->hasRunEvent = false;
 	this->scrappy = nullptr;
 }
 
@@ -52,7 +51,7 @@ void SpotOrcGrunt::onLoad(QuestState questState)
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -71,13 +70,6 @@ void SpotOrcGrunt::onSkipped()
 
 void SpotOrcGrunt::runCinematicSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->scrappy != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();
@@ -85,7 +77,7 @@ void SpotOrcGrunt::runCinematicSequence()
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 				{
 					PlatformerEvents::TriggerCinematicRestore();
 					this->scrappy->getSpeechBubble()->hideDialogue();

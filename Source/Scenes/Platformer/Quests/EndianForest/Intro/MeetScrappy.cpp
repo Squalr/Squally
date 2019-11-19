@@ -24,9 +24,9 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/GetYouPatched.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/DistressBeacon.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/YoureAlive.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/A_YoureAlive.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/B_DistressBeacon.h"
+#include "Strings/Platformer/Quests/EndianForest/Intro/C_GetYouPatched.h"
 #include "Strings/Platformer/Notifications/Party/HelperJoinedParty.h"
 
 using namespace cocos2d;
@@ -45,7 +45,6 @@ MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::s
 
 MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetScrappy::MapKeyQuest, questTag, true)
 {
-	this->hasRunEvent = false;
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
 }
 
@@ -68,7 +67,7 @@ void MeetScrappy::onLoad(QuestState questState)
 
 void MeetScrappy::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(MeetScrappy::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(MeetScrappy::MapKeyQuest, [=](ValueMap args)
 	{
 		this->runCinematicSequencePt1();
 	});
@@ -90,12 +89,6 @@ void MeetScrappy::onSkipped()
 
 void MeetScrappy::runCinematicSequencePt1()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
 	Vec2 positionA = Vec2::ZERO;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
@@ -115,11 +108,11 @@ void MeetScrappy::runCinematicSequencePt1()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_YoureAlive::create(), "", 2.0f, [=]()
+				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), "", 2.0f, [=]()
 				{
-					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
+					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
 					{
-						this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
+						this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
 						{
 							this->runCinematicSequencePt2();
 						});

@@ -33,7 +33,6 @@ private:
 	void runChatSequencePt4();
 	void runChatSequencePt5();
 
-	bool hasRunEvent;
 	Guano* guano;
 	Scrappy* scrappy;
 	Squally* squally;

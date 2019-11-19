@@ -29,7 +29,6 @@ FindSail* FindSail::create(GameObject* owner, QuestLine* questLine,  std::string
 
 FindSail::FindSail(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, FindSail::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->blackbeard = nullptr;
 }
 
@@ -47,7 +46,7 @@ void FindSail::onLoad(QuestState questState)
 
 void FindSail::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(FindSail::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(FindSail::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -66,13 +65,6 @@ void FindSail::onSkipped()
 
 void FindSail::runCinematicSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->blackbeard != nullptr)
 	{
 	}

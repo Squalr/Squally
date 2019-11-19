@@ -44,7 +44,6 @@ TeachHackerModeDeprecated* TeachHackerModeDeprecated::create(GameObject* owner, 
 
 TeachHackerModeDeprecated::TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerModeDeprecated::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->helpTotem = nullptr;
 	this->portal = nullptr;
 	this->marcel = nullptr;
@@ -87,7 +86,7 @@ void TeachHackerModeDeprecated::onLoad(QuestState questState)
 
 void TeachHackerModeDeprecated::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(TeachHackerModeDeprecated::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(TeachHackerModeDeprecated::MapKeyQuest, [=](ValueMap args)
 	{
 		this->runCinematicSequencePt1();
 	});
@@ -104,13 +103,6 @@ void TeachHackerModeDeprecated::onSkipped()
 
 void TeachHackerModeDeprecated::runCinematicSequencePt1()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->marcel != nullptr)
 	{
 		PlatformerEvents::TriggerCinematicHijack();

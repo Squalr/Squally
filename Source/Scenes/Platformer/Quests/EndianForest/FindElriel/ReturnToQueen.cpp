@@ -1,4 +1,4 @@
-#include "TalkToQueen.h"
+#include "ReturnToQueen.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -16,27 +16,27 @@
 
 using namespace cocos2d;
 
-const std::string TalkToQueen::MapKeyQuest = "talk-to-queen";
+const std::string ReturnToQueen::MapKeyQuest = "return-to-queen";
 
-TalkToQueen* TalkToQueen::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+ReturnToQueen* ReturnToQueen::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
-	TalkToQueen* instance = new TalkToQueen(owner, questLine, questTag);
+	ReturnToQueen* instance = new ReturnToQueen(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToQueen::TalkToQueen(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToQueen::MapKeyQuest, questTag, false)
+ReturnToQueen::ReturnToQueen(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ReturnToQueen::MapKeyQuest, questTag, false)
 {
 	this->queenLiana = nullptr;
 }
 
-TalkToQueen::~TalkToQueen()
+ReturnToQueen::~ReturnToQueen()
 {
 }
 
-void TalkToQueen::onLoad(QuestState questState)
+void ReturnToQueen::onLoad(QuestState questState)
 {
 	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
@@ -44,9 +44,9 @@ void TalkToQueen::onLoad(QuestState questState)
 	}, QueenLiana::MapKeyQueenLiana);
 }
 
-void TalkToQueen::onActivate(bool isActiveThroughSkippable)
+void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEventOnce(TalkToQueen::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(ReturnToQueen::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -54,16 +54,16 @@ void TalkToQueen::onActivate(bool isActiveThroughSkippable)
 	});
 }
 
-void TalkToQueen::onComplete()
+void ReturnToQueen::onComplete()
 {
 }
 
-void TalkToQueen::onSkipped()
+void ReturnToQueen::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void TalkToQueen::runCinematicSequence()
+void ReturnToQueen::runCinematicSequence()
 {
 	if (this->queenLiana != nullptr)
 	{

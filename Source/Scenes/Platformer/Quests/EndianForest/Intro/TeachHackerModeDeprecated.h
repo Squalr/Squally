@@ -33,8 +33,7 @@ private:
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
-
-	bool hasRunEvent;
+	
 	HelpTotem* helpTotem;
 	MagePortal* portal;
 	Marcel* marcel;

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_HackerModeCombat : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_C_GetYouPatched : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_HackerModeCombat* create();
+		static Platformer_Quests_EndianForest_Intro_C_GetYouPatched* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_HackerModeCombat();
-		~Platformer_Quests_EndianForest_Intro_HackerModeCombat();
+		Platformer_Quests_EndianForest_Intro_C_GetYouPatched();
+		~Platformer_Quests_EndianForest_Intro_C_GetYouPatched();
 	};
 }

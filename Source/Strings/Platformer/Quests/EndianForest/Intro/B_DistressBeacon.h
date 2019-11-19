@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_YoureAlive : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_B_DistressBeacon : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_YoureAlive* create();
+		static Platformer_Quests_EndianForest_Intro_B_DistressBeacon* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_YoureAlive();
-		~Platformer_Quests_EndianForest_Intro_YoureAlive();
+		Platformer_Quests_EndianForest_Intro_B_DistressBeacon();
+		~Platformer_Quests_EndianForest_Intro_B_DistressBeacon();
 	};
 }

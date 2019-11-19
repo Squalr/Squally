@@ -42,7 +42,6 @@ RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::
 
 RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, RescueGuano::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->guano = nullptr;
 	this->squally = nullptr;
 }
@@ -71,7 +70,7 @@ void RescueGuano::onLoad(QuestState questState)
 
 void RescueGuano::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(RescueGuano::EventMulDoorUnlocked, [=](ValueMap args)
+	this->listenForMapEventOnce(RescueGuano::EventMulDoorUnlocked, [=](ValueMap args)
 	{
 		this->runRescueSequence();
 	});

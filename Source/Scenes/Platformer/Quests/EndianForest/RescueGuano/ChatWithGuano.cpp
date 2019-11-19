@@ -43,7 +43,6 @@ ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine,  s
 
 ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ChatWithGuano::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->guano = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
@@ -84,7 +83,7 @@ void ChatWithGuano::onActivate(bool isActiveThroughSkippable)
 		this->mulDoor->toggleHackable(false);
 	}
 
-	this->listenForMapEvent(ChatWithGuano::EventExplainDoor, [=](ValueMap)
+	this->listenForMapEventOnce(ChatWithGuano::EventExplainDoor, [=](ValueMap)
 	{
 		this->runChatSequence();
 	});

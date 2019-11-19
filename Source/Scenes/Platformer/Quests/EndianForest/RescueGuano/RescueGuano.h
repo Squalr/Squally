@@ -29,7 +29,6 @@ private:
 	void runRescueSequencePt2();
 	void runRescueSequencePt3();
 
-	bool hasRunEvent;
 	Guano* guano;
 	Squally* squally;
 

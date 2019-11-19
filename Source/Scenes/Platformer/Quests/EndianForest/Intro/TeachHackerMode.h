@@ -32,10 +32,7 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
-	void runCinematicSequencePt4();
-	void runCinematicSequencePt5();
 
-	bool hasRunEvent;
 	HelpTotem* helpTotem;
 	Scrappy* scrappy;
 	Squally* squally;

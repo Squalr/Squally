@@ -5,16 +5,16 @@
 class QueenLiana;
 class QuestLine;
 
-class TalkToQueen : public QuestTask
+class ReturnToQueen : public QuestTask
 {
 public:
-	static TalkToQueen* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static ReturnToQueen* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToQueen(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~TalkToQueen();
+	ReturnToQueen(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~ReturnToQueen();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

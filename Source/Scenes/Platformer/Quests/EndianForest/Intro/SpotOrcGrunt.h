@@ -26,6 +26,5 @@ private:
 
 	void runCinematicSequence();
 
-	bool hasRunEvent;
 	Scrappy* scrappy;
 };
