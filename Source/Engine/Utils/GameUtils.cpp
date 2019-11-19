@@ -169,6 +169,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 
 	Vec3 newPosition = Vec3::ZERO;
 	Node* previousParent = node->getParent();
+	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
 	if (previousParent != nullptr)
@@ -178,11 +179,15 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 			Vec3 screenPosition = previousParent->convertToWorldSpace3(node->getPosition3D());
 			newPosition = newParent->convertToNodeSpace3(screenPosition);
 		}
-
-		node->retain();
 		
 		if (node->getParent() != nullptr)
 		{
+			if (node->getReferenceCount() == 1)
+			{
+				refIncrement++;
+				node->retain();
+			}
+
 			node->getParent()->removeChildNoExit(node);
 		}
 	}
@@ -209,6 +214,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		{
 			newParent->addChild(node);
 		}
+	}
+
+	while (node->getReferenceCount() > 1 && refIncrement > 0)
+	{
+		node->release();
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.

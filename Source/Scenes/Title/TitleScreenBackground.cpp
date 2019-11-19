@@ -116,20 +116,11 @@ void TitleScreenBackground::onEnter()
 	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeedPostSink, Vec2(base.x, base.y - sinkOffset)));
 	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
-	CallFunc* jiggleSlime = CallFunc::create([=]
-	{
-		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
-	});
-
-	jiggleSlime->retain();
-
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
 		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle,  1.0f);
-		jiggleSlime->execute();
+		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
 	});
-
-	pokeSlime->retain();
 	
 	this->squally->stopAllActions();
 	this->squally->runAction(RepeatForever::create(
