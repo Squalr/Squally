@@ -1,4 +1,4 @@
-#include "ScrappyManagerBehavior.h"
+#include "ScrappyCombatManagerBehavior.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -14,7 +14,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -23,18 +23,18 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "scrappy-manager";
+const std::string ScrappyCombatManagerBehavior::MapKeyAttachedBehavior = "scrappy-combat-manager";
 
-ScrappyManagerBehavior* ScrappyManagerBehavior::create(GameObject* owner)
+ScrappyCombatManagerBehavior* ScrappyCombatManagerBehavior::create(GameObject* owner)
 {
-	ScrappyManagerBehavior* instance = new ScrappyManagerBehavior(owner);
+	ScrappyCombatManagerBehavior* instance = new ScrappyCombatManagerBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ScrappyManagerBehavior::ScrappyManagerBehavior(GameObject* owner) : super(owner)
+ScrappyCombatManagerBehavior::ScrappyCombatManagerBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -49,11 +49,11 @@ ScrappyManagerBehavior::ScrappyManagerBehavior(GameObject* owner) : super(owner)
 	this->addChild(this->platformerEntityDeserializer);
 }
 
-ScrappyManagerBehavior::~ScrappyManagerBehavior()
+ScrappyCombatManagerBehavior::~ScrappyCombatManagerBehavior()
 {
 }
 
-void ScrappyManagerBehavior::onLoad()
+void ScrappyCombatManagerBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
 	{
@@ -63,12 +63,6 @@ void ScrappyManagerBehavior::onLoad()
 
 	this->defer([=]()
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventFindScrappy, [=](EventCustom* eventCustom)
-		{
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
-			this->spawnScrappy();
-		}));
-
 		if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyScrappyFound, Value(false)).asBool())
 		{
 			this->spawnScrappy();
@@ -76,13 +70,13 @@ void ScrappyManagerBehavior::onLoad()
 	});
 }
 
-void ScrappyManagerBehavior::spawnScrappy()
+void ScrappyCombatManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();
 
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(Scrappy::MapKeyScrappy);
-	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKeyAttachedBehavior);
+	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyCombatBehaviorGroup::MapKeyAttachedBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(

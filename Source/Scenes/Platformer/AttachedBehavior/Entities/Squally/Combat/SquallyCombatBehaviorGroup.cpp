@@ -2,7 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/ScrappyManagerBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyCombatManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallySensingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyAttackBehavior.h"
@@ -25,7 +25,7 @@ SquallyCombatBehaviorGroup* SquallyCombatBehaviorGroup::create(GameObject* owner
 
 SquallyCombatBehaviorGroup::SquallyCombatBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCombatBehaviorGroup::create(owner),
-	ScrappyManagerBehavior::create(owner),
+	ScrappyCombatManagerBehavior::create(owner),
 	SquallyHackingBehavior::create(owner),
 	SquallySensingBehavior::create(owner),
 	SquallyAttackBehavior::create(owner),

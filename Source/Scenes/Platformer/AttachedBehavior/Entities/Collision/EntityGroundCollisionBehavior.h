@@ -31,5 +31,6 @@ private:
 
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
+	static const float GroundCollisionHeight;
 	static const float GroundCollisionRadius;
 };

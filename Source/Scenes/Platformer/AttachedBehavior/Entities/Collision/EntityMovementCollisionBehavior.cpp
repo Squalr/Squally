@@ -145,7 +145,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
-
+	
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();

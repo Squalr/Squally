@@ -15,6 +15,7 @@ using namespace cocos2d;
 const std::string EntityGroundCollisionBehavior::MapKeyAttachedBehavior = "entity-ground-collisions";
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = 28.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = -4.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionHeight = 64.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
 
 EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner)
@@ -38,7 +39,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	{
 		this->groundCollision = CollisionObject::create(
 			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), 40.0f),
+				Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
 				1.0f,
 				EntityGroundCollisionBehavior::GroundCollisionRadius
 			),

@@ -67,6 +67,8 @@ void RestoreHealth::onEnter()
 	super::onEnter();
 
 	this->runRestoreHealth();
+
+	CombatEvents::TriggerHackableCombatCue();
 }
 
 void RestoreHealth::initializePositions()

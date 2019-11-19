@@ -37,6 +37,7 @@ public:
 	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
+	static const std::string EventHackableCombatCue;
 
 	struct SpawnArgs
 	{
@@ -235,4 +236,5 @@ public:
 	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
+	static void TriggerHackableCombatCue();
 };
