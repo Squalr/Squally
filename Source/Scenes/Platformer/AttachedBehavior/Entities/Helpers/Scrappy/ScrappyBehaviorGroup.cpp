@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyMovementBehavior.h"
 
 using namespace cocos2d;
@@ -22,6 +23,7 @@ ScrappyBehaviorGroup* ScrappyBehaviorGroup::create(GameObject* owner)
 
 ScrappyBehaviorGroup::ScrappyBehaviorGroup(GameObject* owner) : super(owner, {
 	ScrappyMovementBehavior::create(owner),
+	EntityDialogueBehavior::create(owner),
 	})
 {
 }

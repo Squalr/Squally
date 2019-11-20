@@ -187,6 +187,6 @@ public:
 				*handled = true;
 			}), tag);
 
-		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
+		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
 	}
 };

@@ -1,4 +1,4 @@
-#include "EntityBehaviorGroup.h"
+#include "EntityNoCollisionBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/EntityCinematicHijackBehavior.h"
@@ -11,20 +11,19 @@
 
 using namespace cocos2d;
 
-const std::string EntityBehaviorGroup::MapKeyAttachedBehavior = "entity";
+const std::string EntityNoCollisionBehaviorGroup::MapKeyAttachedBehavior = "entity-no-collision";
 
-EntityBehaviorGroup* EntityBehaviorGroup::create(GameObject* owner)
+EntityNoCollisionBehaviorGroup* EntityNoCollisionBehaviorGroup::create(GameObject* owner)
 {
-	EntityBehaviorGroup* instance = new EntityBehaviorGroup(owner);
+	EntityNoCollisionBehaviorGroup* instance = new EntityNoCollisionBehaviorGroup(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner) : super(owner, {
+EntityNoCollisionBehaviorGroup::EntityNoCollisionBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCinematicHijackBehavior::create(owner),
-	EntityCollisionBehaviorGroup::create(owner),
 	EntityDeveloperBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
 	EntityInventoryBehavior::create(owner),
@@ -34,10 +33,10 @@ EntityBehaviorGroup::EntityBehaviorGroup(GameObject* owner) : super(owner, {
 {
 }
 
-EntityBehaviorGroup::~EntityBehaviorGroup()
+EntityNoCollisionBehaviorGroup::~EntityNoCollisionBehaviorGroup()
 {
 }
 
-void EntityBehaviorGroup::onLoad()
+void EntityNoCollisionBehaviorGroup::onLoad()
 {
 }

@@ -255,6 +255,21 @@ void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 	this->attachedBehaviorNode->addChild(attachedBehavior);
 }
 
+void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
+{
+	if (this->isDespawned() || attachedBehavior == nullptr)
+	{
+		return;
+	}
+
+	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
+	{
+		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
+		this->attachedBehaviorNode->removeChild(attachedBehavior);
+	}
+
+}
+
 void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 {
 	this->stateVariables[key] = value;

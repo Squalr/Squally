@@ -20,6 +20,7 @@ public:
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
+	void detachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
@@ -95,7 +96,7 @@ public:
 				onBehaviorFound(behavior);
 			}
 
-		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
+		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
 	}
 
 	static const std::string MapKeyId;
