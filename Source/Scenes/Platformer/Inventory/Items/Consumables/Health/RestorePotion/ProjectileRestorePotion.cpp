@@ -66,7 +66,10 @@ void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 
 	int healing = int(std::round(float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0)) * ProjectileRestorePotion::HealPercentage));
 	
-	target->getAttachedBehavior<EntityBuffBehavior>()->applyBuff(RestoreHealth::create(this->caster, target, healing));
+	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getAttachedBehavior<EntityBuffBehavior>()->applyBuff(RestoreHealth::create(this->caster, target, healing));
+	});
 }
 
 cocos2d::Vec2 ProjectileRestorePotion::getButtonOffset()

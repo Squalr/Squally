@@ -20,5 +20,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void toggleHackerMode();
+
 	Squally* squally;
 };

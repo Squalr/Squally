@@ -21,6 +21,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -124,14 +125,17 @@ LocalizedString* Squally::getEntityName()
 
 void Squally::performSwimAnimation()
 {
-	if (this->equipmentInventory->getWeapon() != nullptr)
+	this->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
-	}
-	else
-	{
-		this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
-	}
+		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
+		{
+			this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+		}
+		else
+		{
+			this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+		}
+	});
 }
 
 void Squally::onHackerModeEnable(int hackFlags)

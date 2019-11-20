@@ -3,6 +3,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -43,46 +44,49 @@ void SquallyDefaultInventoryBehavior::onLoad()
 
 void SquallyDefaultInventoryBehavior::giveDefaultItems()
 {
-	if (!this->squally->getInventory()->getItems().empty() || !this->squally->getEquipmentInventory()->getItems().empty())
+	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		return;
-	}
-	
-	this->squally->getEquipmentInventory()->forceInsert(Binary0::create(), false);
-	this->squally->getInventory()->forceInsert(Binary0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary1::create(), false);
-	this->squally->getInventory()->forceInsert(Binary1::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Binary4::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal1::create(), false);
-	this->squally->getInventory()->forceInsert(Decimal1::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Decimal4::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex0::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex1::create(), false);
-	this->squally->getInventory()->forceInsert(Hex2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex2::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex3::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(Hex4::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialShl::create(), false);
-	this->squally->getEquipmentInventory()->forceInsert(SpecialShr::create(), false);
+		if (!entityInventoryBehavior->getInventory()->getItems().empty() || !entityInventoryBehavior->getEquipmentInventory()->getItems().empty())
+		{
+			return;
+		}
+		
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);
+		entityInventoryBehavior->getInventory()->forceInsert(Binary0::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary1::create(), false);
+		entityInventoryBehavior->getInventory()->forceInsert(Binary1::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary4::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal0::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal0::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal1::create(), false);
+		entityInventoryBehavior->getInventory()->forceInsert(Decimal1::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Decimal4::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex0::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex0::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex1::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex1::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex1::create(), false);
+		entityInventoryBehavior->getInventory()->forceInsert(Hex2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex2::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex3::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Hex4::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialShl::create(), false);
+		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialShr::create(), false);
 
-	this->squally->getInventory()->save();
-	this->squally->getEquipmentInventory()->save();
+		entityInventoryBehavior->getInventory()->save();
+		entityInventoryBehavior->getEquipmentInventory()->save();
+	});
 }

@@ -8,6 +8,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -56,7 +57,10 @@ void SquallyReceiveItemBehavior::onLoad()
 				SoundResources::Notifications_NotificationGood3
 			));
 
-			this->squally->getInventory()->forceInsert(args->item, true);
+			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				entityInventoryBehavior->getInventory()->forceInsert(args->item, true);
+			});
 		}
 	}));
 }

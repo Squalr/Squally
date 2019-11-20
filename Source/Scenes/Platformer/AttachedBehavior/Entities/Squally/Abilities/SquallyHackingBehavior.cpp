@@ -5,6 +5,7 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityRuneBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -55,20 +56,28 @@ void SquallyHackingBehavior::onLoad()
 			
 			if (queryArgs.hackerModeAllowed && runeBehavior->tryUseRune())
 			{
-				HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(this->squally->getInventory())));
+				this->toggleHackerMode();
 			}
 		});
 	});
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
 	{
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(this->squally->getInventory())));
+		this->toggleHackerMode();
 	}));
 
 	this->squally->whenKeyPressedHackerMode({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
 		args->handle();
 
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(this->squally->getInventory())));
+		this->toggleHackerMode();
+	});
+}
+
+void SquallyHackingBehavior::toggleHackerMode()
+{
+	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(entityInventoryBehavior->getInventory())));
 	});
 }

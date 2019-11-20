@@ -16,6 +16,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -57,15 +58,18 @@ RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
 
 void RestorePotionTutorialBehavior::onLoad()
 {
-	RestorePotion* restorePotion = this->entity->getInventory()->getItemOfType<RestorePotion>();
-
-	if (restorePotion != nullptr)
+	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		restorePotion->getAssociatedAttack()->registerAttackCompleteCallback([=]()
+		RestorePotion* restorePotion = entityInventoryBehavior->getInventory()->getItemOfType<RestorePotion>();
+
+		if (restorePotion != nullptr)
 		{
-			this->runTutorial();
-		});
-	}
+			restorePotion->getAssociatedAttack()->registerAttackCompleteCallback([=]()
+			{
+				this->runTutorial();
+			});
+		}
+	});
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{

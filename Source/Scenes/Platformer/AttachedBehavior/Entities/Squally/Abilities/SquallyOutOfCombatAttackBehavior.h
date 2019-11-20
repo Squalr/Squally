@@ -2,12 +2,8 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class Squally;
+class Weapon;
 
 class SquallyOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 {
@@ -28,6 +24,7 @@ private:
 	std::string getOutOfCombatAttackAnimation();
 	float getOutOfCombatAttackOnset();
 	float getOutOfCombatAttackSustain();
+	Weapon* getWeapon();
 
 	Squally* squally;
 };

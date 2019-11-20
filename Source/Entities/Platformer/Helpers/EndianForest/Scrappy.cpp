@@ -97,7 +97,7 @@ float Scrappy::getFloatHeight()
 
 Vec2 Scrappy::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Scrappy::getEntityName()

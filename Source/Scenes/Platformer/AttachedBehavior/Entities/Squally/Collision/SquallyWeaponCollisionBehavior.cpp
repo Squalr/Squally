@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -65,46 +66,45 @@ void SquallyWeaponCollisionBehavior::onLoad()
 
 void SquallyWeaponCollisionBehavior::onWeaponChange()
 {
-	EntityWeaponCollisionBehavior* weaponBehavior = this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>();
-
-	if (weaponBehavior == nullptr)
+	this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
 	{
-		return;
-	}
-
-	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
-
-	if (weapon != nullptr)
-	{
-		weaponBehavior->setWeaponSize(weapon->getWeaponCollisionSize());
-		weaponBehavior->setWeaponOffset(weapon->getWeaponOffset());
-	}
-	else
-	{
-		const Size NoWeaponSize = Size(64.0f, 64.0f);
-		const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
-
-		weaponBehavior->setWeaponSize(NoWeaponSize);
-		weaponBehavior->setWeaponOffset(NoWeaponOffset);
-	}
-
-	weaponBehavior->rebuildWeaponCollision();
-
-	weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
+			Weapon* weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
+
+			if (weapon != nullptr)
+			{
+				weaponBehavior->setWeaponSize(weapon->getWeaponCollisionSize());
+				weaponBehavior->setWeaponOffset(weapon->getWeaponOffset());
+			}
+			else
+			{
+				const Size NoWeaponSize = Size(64.0f, 64.0f);
+				const Vec2 NoWeaponOffset = Vec2(0.0f, 96.0f);
+
+				weaponBehavior->setWeaponSize(NoWeaponSize);
+				weaponBehavior->setWeaponOffset(NoWeaponOffset);
+			}
+		});
+
+		weaponBehavior->rebuildWeaponCollision();
+
+		weaponBehavior->weaponCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+		{
+			if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				return CollisionObject::CollisionResult::DoNothing;
+			}
+
+			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+			if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				// Encountered enemy w/ first-strike
+				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+			}
+
 			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
-
-		if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			// Encountered enemy w/ first-strike
-			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
+		});
 	});
 }

@@ -58,6 +58,17 @@ public:
 	}
 
 	template <class T>
+	void getAttachedBehavior(std::function<void(T*)> onFound)
+	{
+		T* attachedBehavior = this->getAttachedBehavior<T>();
+
+		if (attachedBehavior != nullptr && onFound != nullptr)
+		{
+			onFound(attachedBehavior);
+		}
+	}
+
+	template <class T>
 	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
 	{
 		static unsigned long long WatchId = 0;

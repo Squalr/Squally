@@ -58,9 +58,6 @@ PlatformerEntity::PlatformerEntity(
 	this->addTag(PlatformerEntity::entityName);
 
 	this->hexusOpponentData = nullptr;
-	this->inventory = Inventory::create(inventorySaveKey);
-	this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
-	this->currencyInventory = CurrencyInventory::create(currencySaveKey);
 	this->speechBubble = SpeechBubble::create();
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
@@ -86,9 +83,6 @@ PlatformerEntity::PlatformerEntity(
 	this->floatNode->addChild(this->animationNode);
 	this->addChild(this->floatNode);
 	this->addChild(this->speechBubble);
-	this->addChild(this->inventory);
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->currencyInventory);
 }
 
 PlatformerEntity::~PlatformerEntity()
@@ -177,21 +171,6 @@ float PlatformerEntity::getHoverHeight()
 HexusOpponentData* PlatformerEntity::getHexusOpponentData()
 {
 	return this->hexusOpponentData;
-}
-
-Inventory* PlatformerEntity::getInventory()
-{
-	return this->inventory;
-}
-
-EquipmentInventory* PlatformerEntity::getEquipmentInventory()
-{
-	return this->equipmentInventory;
-}
-
-CurrencyInventory* PlatformerEntity::getCurrencyInventory()
-{
-	return this->currencyInventory;
 }
 
 float PlatformerEntity::getScale()

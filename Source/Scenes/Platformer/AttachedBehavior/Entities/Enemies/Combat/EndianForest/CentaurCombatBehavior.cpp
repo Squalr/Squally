@@ -3,6 +3,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 
@@ -31,12 +32,15 @@ CentaurCombatBehavior::CentaurCombatBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		Inventory* inventory = this->entity->getInventory();
-
-		if (inventory != nullptr)
+		this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			inventory->forceInsert(RestorePotion::create());
-		}
+			Inventory* inventory = entityInventoryBehavior->getInventory();
+
+			if (inventory != nullptr)
+			{
+				inventory->forceInsert(RestorePotion::create());
+			}
+		});
 	}
 }
 

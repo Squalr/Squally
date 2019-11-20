@@ -4,11 +4,8 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-class CurrencyInventory;
-class EquipmentInventory;
 class HackablePreview;
 class HexusOpponentData;
-class Inventory;
 class LocalizedString;
 class SmartAnimationNode;
 class SpeechBubble;
@@ -25,9 +22,6 @@ public:
 	std::string getEntityKey();
 	virtual float getFloatHeight();
 
-	Inventory* getInventory();
-	EquipmentInventory* getEquipmentInventory();
-	CurrencyInventory* getCurrencyInventory();
 	float getScale();
 	std::string getAnimationResource();
 	std::string getEmblemResource();
@@ -78,9 +72,6 @@ protected:
 	SmartAnimationNode* animationNode;
 
 	HexusOpponentData* hexusOpponentData;
-	Inventory* inventory;
-	EquipmentInventory* equipmentInventory;
-	CurrencyInventory* currencyInventory;
 
 	static const std::string MapKeyPropertyState;
 

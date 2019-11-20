@@ -11,6 +11,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 
 #include "Resources/MapResources.h"
@@ -141,5 +142,8 @@ void PlatformerEnemy::buildDropInventory()
 
 void PlatformerEnemy::buildIOUDrop()
 {
-	this->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), RandomHelper::random_int(std::get<0>(this->iouTable), std::get<1>(this->iouTable)));
+	this->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), RandomHelper::random_int(std::get<0>(this->iouTable), std::get<1>(this->iouTable)));
+	});
 }

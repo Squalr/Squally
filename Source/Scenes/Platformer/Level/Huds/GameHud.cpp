@@ -9,6 +9,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
@@ -70,7 +71,11 @@ void GameHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->statsBars->setStatsTarget(args->entity);
-			this->currencyDisplay->setCurrencyInventory(args->entity->getCurrencyInventory());
+
+			args->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				this->currencyDisplay->setCurrencyInventory(entityInventoryBehavior->getCurrencyInventory());
+			});
 
 			this->statsBars->setVisible(true);
 			this->currencyDisplay->setVisible(true);

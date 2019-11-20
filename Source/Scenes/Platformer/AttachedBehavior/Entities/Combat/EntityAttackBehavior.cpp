@@ -6,6 +6,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -110,59 +111,65 @@ void EntityAttackBehavior::registerAttack(PlatformerAttack* attack)
 
 void EntityAttackBehavior::buildEquipmentAttacks()
 {
-	EquipmentInventory* equipmentInventory = this->entity->getEquipmentInventory();
-
-	if (equipmentInventory == nullptr)
+	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		return;
-	}
+		EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 
-	std::vector<Equipable*> equipment = equipmentInventory->getEquipment();
-
-	for (auto it = equipment.begin(); it != equipment.end(); it++)
-	{
-		if (*it == nullptr)
+		if (equipmentInventory == nullptr)
 		{
-			continue;
+			return;
 		}
-		
-		std::vector<PlatformerAttack*> weaponAttacks = (*it)->cloneAssociatedAttacks();
 
-		for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
+		std::vector<Equipable*> equipment = equipmentInventory->getEquipment();
+
+		for (auto it = equipment.begin(); it != equipment.end(); it++)
 		{
-			this->registerAttack(*it);
+			if (*it == nullptr)
+			{
+				continue;
+			}
+			
+			std::vector<PlatformerAttack*> weaponAttacks = (*it)->cloneAssociatedAttacks();
+
+			for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
+			{
+				this->registerAttack(*it);
+			}
 		}
-	}
+	});
 }
 
 void EntityAttackBehavior::rebuildConsumables()
 {
 	this->registeredConsumables.clear();
 	this->consumablessNode->removeAllChildren();
-	Inventory* inventory = this->entity->getInventory();
-	
-	if (inventory == nullptr)
-	{
-		return;
-	}
-
-	std::vector<Consumable*> consumables = inventory->getItemsOfType<Consumable>();
-
-	for (auto it = consumables.begin(); it != consumables.end(); it++)
-	{
-		Consumable* item = *it;
-		PlatformerAttack* consumable = item->cloneAssociatedAttack();
-
-		consumable->registerAttackCompleteCallback([=]()
-		{
-			inventory->tryRemove(item);
-
-			this->consumablesStale = true;
-		});
-
-		this->consumablessNode->addChild(consumable);
-		this->registeredConsumables.push_back(consumable);
-	}
-	
 	this->consumablesStale = false;
+
+	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		Inventory* inventory = entityInventoryBehavior->getInventory();
+		
+		if (inventory == nullptr)
+		{
+			return;
+		}
+
+		std::vector<Consumable*> consumables = inventory->getItemsOfType<Consumable>();
+
+		for (auto it = consumables.begin(); it != consumables.end(); it++)
+		{
+			Consumable* item = *it;
+			PlatformerAttack* consumable = item->cloneAssociatedAttack();
+
+			consumable->registerAttackCompleteCallback([=]()
+			{
+				inventory->tryRemove(item);
+
+				this->consumablesStale = true;
+			});
+
+			this->consumablessNode->addChild(consumable);
+			this->registeredConsumables.push_back(consumable);
+		}
+	});
 }

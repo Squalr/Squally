@@ -5,6 +5,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -50,7 +51,7 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 
 std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 {
-	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
+	Weapon* weapon = this->getWeapon();
 
 	if (weapon != nullptr)
 	{
@@ -64,7 +65,7 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 {
-	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
+	Weapon* weapon = this->getWeapon();
 
 	if (weapon == nullptr)
 	{
@@ -78,7 +79,7 @@ float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 
 float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
 {
-	Weapon* weapon = this->squally->getEquipmentInventory()->getWeapon();
+	Weapon* weapon = this->getWeapon();
 
 	if (weapon == nullptr)
 	{
@@ -88,4 +89,16 @@ float SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
 	{
 		return weapon->getAttackSustain();
 	}
+}
+
+Weapon* SquallyOutOfCombatAttackBehavior::getWeapon()
+{
+	Weapon* weapon = nullptr;
+
+	this->squally->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		weapon = entityInventoryBehavior->getEquipmentInventory()->getWeapon();
+	});
+
+	return weapon;
 }
