@@ -48,7 +48,7 @@ QueenLiana::~QueenLiana()
 
 Vec2 QueenLiana::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* QueenLiana::getEntityName()

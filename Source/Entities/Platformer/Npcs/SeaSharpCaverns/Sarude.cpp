@@ -48,7 +48,7 @@ Sarude::~Sarude()
 
 Vec2 Sarude::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Sarude::getEntityName()

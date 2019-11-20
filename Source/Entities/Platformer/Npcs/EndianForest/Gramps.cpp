@@ -48,7 +48,7 @@ Gramps::~Gramps()
 
 Vec2 Gramps::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Gramps::getEntityName()

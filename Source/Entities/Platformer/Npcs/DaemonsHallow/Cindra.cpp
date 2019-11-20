@@ -48,7 +48,7 @@ Cindra::~Cindra()
 
 Vec2 Cindra::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Cindra::getEntityName()

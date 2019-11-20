@@ -112,7 +112,7 @@ float Squally::getFloatHeight()
 
 cocos2d::Vec2 Squally::getDialogueOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -16.0f);
 }
 
 LocalizedString* Squally::getEntityName()

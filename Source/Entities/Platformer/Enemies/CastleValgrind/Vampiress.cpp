@@ -48,7 +48,7 @@ Vampiress::~Vampiress()
 
 Vec2 Vampiress::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Vampiress::getEntityName()

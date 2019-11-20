@@ -43,7 +43,7 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 	{
 		softClone->getAnimations()->setFlippedX(isFlipped);
 		wrapper->addChild(softClone);
-		softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f + offsetY));
+		softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, offsetY));
 	}
 
 	return wrapper;

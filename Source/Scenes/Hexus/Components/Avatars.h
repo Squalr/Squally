@@ -38,6 +38,7 @@ private:
 	cocos2d::Sprite* frameEnemy;
 	cocos2d::Node* avatarPlayer;
 	cocos2d::Node* avatarEnemy;
+	cocos2d::Node* playerBackground;
 	SmartAnimationNode* playerPreview;
 	cocos2d::Node* opponentPreview;
 };

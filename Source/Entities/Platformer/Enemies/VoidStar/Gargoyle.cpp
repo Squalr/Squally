@@ -48,7 +48,7 @@ Gargoyle::~Gargoyle()
 
 Vec2 Gargoyle::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Gargoyle::getEntityName()

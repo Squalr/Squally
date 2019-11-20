@@ -30,6 +30,7 @@ Avatars::Avatars()
 	this->frameEnemy = Sprite::create(HexusResources::AvatarFrame);
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
+	this->playerBackground = Node::create();
 	this->playerPreview = SmartAnimationNode::create(EntityResources::Squally_Animations);
 	this->opponentPreview = nullptr;
 
@@ -38,6 +39,7 @@ Avatars::Avatars()
 	this->clipPlayer = SmartClippingNode::create(this->avatarPlayer, 188.0f / 2.0f, Vec2::ZERO, 48);
 	this->clipEnemy = SmartClippingNode::create(this->avatarEnemy, 188.0f / 2.0f, Vec2::ZERO, 48);
 
+	this->avatarPlayer->addChild(this->playerBackground);
 	this->avatarPlayer->addChild(this->playerPreview);
 	this->addChild(this->clipPlayer);
 	this->addChild(this->clipEnemy);
@@ -73,9 +75,11 @@ void Avatars::initializePositions()
 void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 {
 	this->avatarEnemy->removeAllChildren();
+	this->playerBackground->removeAllChildren();
 
 	this->opponentPreview = opponentData->entityPreviewNode;
 
+	this->playerBackground->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
 	this->avatarEnemy->addChild(this->opponentPreview);
 	this->avatarEnemy->setPosition(opponentData->avatarOffset);

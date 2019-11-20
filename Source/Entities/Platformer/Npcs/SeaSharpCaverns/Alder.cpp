@@ -48,7 +48,7 @@ Alder::~Alder()
 
 Vec2 Alder::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Alder::getEntityName()

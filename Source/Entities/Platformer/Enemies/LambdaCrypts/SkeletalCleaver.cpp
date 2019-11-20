@@ -48,7 +48,7 @@ SkeletalCleaver::~SkeletalCleaver()
 
 Vec2 SkeletalCleaver::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* SkeletalCleaver::getEntityName()

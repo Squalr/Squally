@@ -48,7 +48,7 @@ Robot::~Robot()
 
 Vec2 Robot::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Robot::getEntityName()

@@ -48,7 +48,7 @@ PrincessNebea::~PrincessNebea()
 
 Vec2 PrincessNebea::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* PrincessNebea::getEntityName()
