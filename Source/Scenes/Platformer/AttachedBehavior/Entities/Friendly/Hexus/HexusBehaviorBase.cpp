@@ -231,7 +231,7 @@ HexusOpponentData* HexusBehaviorBase::createOpponentData()
     return HexusOpponentData::create( 
 		HexusEvents::BuildPreviewNode(this->entity),
         this->getBackgroundResource(),
-        this->entity->getDialogueOffset() - Vec2(0.0f, 72.0f),
+        this->entity->getDialogueOffset() + this->getAvatarOffset(),
         this->getWinLossSaveKey(),
         HexusOpponentData::Strategy::Random,
         Card::CardStyle::Light,
@@ -266,4 +266,10 @@ HexusOpponentData* HexusBehaviorBase::createOpponentData()
 std::vector<TutorialBase*> HexusBehaviorBase::getTutorials()
 {
 	return { };
+}
+
+Vec2 HexusBehaviorBase::getAvatarOffset()
+{
+	// A pretty good default
+	return Vec2(-16.0f, -32.0f);
 }

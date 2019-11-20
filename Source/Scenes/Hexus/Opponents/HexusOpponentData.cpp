@@ -58,11 +58,8 @@ HexusOpponentData::HexusOpponentData(
 		StateOverride* stateOverride,
 		std::vector<TutorialBase*> tutorials)
 {
-	this->animationResourceFile = animationResourceFile;
+	this->entityPreviewNode = entityPreviewNode;
 	this->backgroundResourceFile = backgroundResourceFile;
-	this->animationScale = animationScale;
-	this->animationOffset = animationOffset;
-	this->frameOffset = frameOffset;
 	this->avatarOffset = avatarOffset;
 	this->enemyAnalyticsIdentifier = enemyAnalyticsIdentifier;
 	this->strategy = strategy;

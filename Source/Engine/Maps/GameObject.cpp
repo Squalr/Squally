@@ -37,6 +37,7 @@ const std::string GameObject::MapKeyQuestLine = "quest-line";
 const std::string GameObject::MapKeyQuestTag = "quest-tag";
 const std::string GameObject::MapKeyAttachedBehavior = "attached-behavior";
 const std::string GameObject::MapKeyArgs = "args";
+const std::string GameObject::MapKeyQueryable = "args";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";
 const std::string GameObject::MapKeyPolyLinePoints = "polylinePoints";
@@ -215,19 +216,9 @@ void GameObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
+	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
 	{
-		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			args->tryInvoke(this);
-		}
-	}));
-
-	for (auto it = this->tags.begin(); it != this->tags.end(); it++)
-	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 		{
 			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
 
@@ -236,6 +227,19 @@ void GameObject::initializeListeners()
 				args->tryInvoke(this);
 			}
 		}));
+
+		for (auto it = this->tags.begin(); it != this->tags.end(); it++)
+		{
+			this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
+			{
+				QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+				if (args != nullptr)
+				{
+					args->tryInvoke(this);
+				}
+			}));
+		}
 	}
 }
 
@@ -267,7 +271,6 @@ void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
 		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
 		this->attachedBehaviorNode->removeChild(attachedBehavior);
 	}
-
 }
 
 void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
@@ -286,8 +289,11 @@ void GameObject::addTag(std::string tag)
 	{
 		return;
 	}
-	
-	this->tags.insert(tag);
+
+	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+	{
+		this->tags.insert(tag);
+	}
 }
 
 Value GameObject::getPropertyOrDefault(std::string key, Value value)

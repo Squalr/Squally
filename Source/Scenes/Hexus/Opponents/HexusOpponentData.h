@@ -63,13 +63,10 @@ public:
 	void setIsLastInChapter();
 	bool getIsLastInChapter();
 
+	cocos2d::Node* entityPreviewNode;
 	std::string backgroundResourceFile;
-	std::string animationResourceFile;
 	std::string enemyAnalyticsIdentifier;
-	float animationScale;
-	cocos2d::Vec2 animationOffset;
 	cocos2d::Vec2 avatarOffset;
-	cocos2d::Vec2 frameOffset;
 	float strength;
 	Strategy strategy;
 	std::function<void(Result)> onRoundEnd;

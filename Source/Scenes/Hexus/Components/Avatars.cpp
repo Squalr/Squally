@@ -30,14 +30,15 @@ Avatars::Avatars()
 	this->frameEnemy = Sprite::create(HexusResources::AvatarFrame);
 	this->avatarPlayer = Node::create();
 	this->avatarEnemy = Node::create();
-	this->playerSprite = SmartAnimationNode::create(EntityResources::Squally_Animations);
+	this->playerPreview = SmartAnimationNode::create(EntityResources::Squally_Animations);
+	this->opponentPreview = nullptr;
 
-	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
+	this->playerPreview->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 	
 	this->clipPlayer = SmartClippingNode::create(this->avatarPlayer, 188.0f / 2.0f, Vec2::ZERO, 48);
 	this->clipEnemy = SmartClippingNode::create(this->avatarEnemy, 188.0f / 2.0f, Vec2::ZERO, 48);
 
-	this->avatarPlayer->addChild(this->playerSprite);
+	this->avatarPlayer->addChild(this->playerPreview);
 	this->addChild(this->clipPlayer);
 	this->addChild(this->clipEnemy);
 	this->addChild(this->framePlayer);
@@ -46,6 +47,13 @@ Avatars::Avatars()
 
 Avatars::~Avatars()
 {
+}
+
+void Avatars::onEnter()
+{
+	super::onEnter();
+
+	this->playerPreview->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
 }
 
 void Avatars::initializePositions()
@@ -58,27 +66,19 @@ void Avatars::initializePositions()
 	this->frameEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
 	this->clipPlayer->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f - Config::frameOffsetY);
 	this->clipEnemy->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::frameOffsetX, visibleSize.height / 2.0f + Config::frameOffsetY);
+	
+	this->playerPreview->setPosition(Vec2(-24.0f, -112.0f));
 }
 
 void Avatars::initializeEnemyAvatar(HexusOpponentData* opponentData)
 {
 	this->avatarEnemy->removeAllChildren();
-	GameUtils::changeParent(this->playerSprite, nullptr, true);
 
-	this->opponentSprite = SmartAnimationNode::create(opponentData->animationResourceFile);
+	this->opponentPreview = opponentData->entityPreviewNode;
 
 	this->avatarEnemy->addChild(Sprite::create(opponentData->backgroundResourceFile));
-	this->avatarEnemy->addChild(this->opponentSprite);
-
-	this->avatarPlayer->addChild(Sprite::create(opponentData->backgroundResourceFile));
-	GameUtils::changeParent(this->playerSprite, this->avatarPlayer, true);
-
-	this->opponentSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
-	this->playerSprite->playAnimation(SmartAnimationNode::AnimationPlayMode::Repeat);
-
-	this->opponentSprite->setScale(opponentData->animationScale);
-	this->opponentSprite->setPosition(opponentData->animationOffset + opponentData->avatarOffset);
-	this->playerSprite->setPosition(Vec2(-24.0f, -112.0f));
+	this->avatarEnemy->addChild(this->opponentPreview);
+	this->avatarEnemy->setPosition(opponentData->avatarOffset);
 }
 
 void Avatars::onBeforeStateChange(GameState* gameState)

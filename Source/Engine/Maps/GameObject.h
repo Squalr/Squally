@@ -128,6 +128,7 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 	static const std::string MapKeyAttachedBehaviorArgs;
 	static const std::string MapKeyArgs;
+	static const std::string MapKeyQueryable;
 
 	static const std::string MapKeyGid;
 

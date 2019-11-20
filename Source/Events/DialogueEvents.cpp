@@ -29,6 +29,8 @@ void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 
 Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 {
+	const float offsetY = -64.0f;
+
 	if (entity == nullptr)
 	{
 		return nullptr;
@@ -41,7 +43,7 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 	{
 		softClone->getAnimations()->setFlippedX(isFlipped);
 		wrapper->addChild(softClone);
-		softClone->setPosition(Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f));
+		softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f + offsetY));
 	}
 
 	return wrapper;

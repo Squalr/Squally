@@ -184,6 +184,7 @@ PlatformerEntity* PlatformerEntity::softClone()
 
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(this->entityName);
+	properties[GameObject::MapKeyQueryable] = Value(false);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 		properties,

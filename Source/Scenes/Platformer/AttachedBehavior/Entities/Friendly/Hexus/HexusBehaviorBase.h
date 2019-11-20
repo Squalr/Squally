@@ -26,6 +26,7 @@ protected:
 	virtual std::string getBackgroundResource() = 0;
 	virtual std::vector<CardData*> generateDeck() = 0;
 	virtual StateOverride* getStateOverride() = 0;
+	virtual cocos2d::Vec2 getAvatarOffset();
 	virtual std::vector<TutorialBase*> getTutorials();
 	
 	void onLoad() override;
