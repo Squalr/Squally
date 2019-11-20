@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/DialogueSet.h"
+#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -45,6 +46,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
 	this->mainDialogueSet = DialogueSet::create();
+	this->speechBubble = SpeechBubble::create();
 	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
 	this->dialogueSets = std::vector<DialogueSet*>();
 	this->activeDialogueSet = this->mainDialogueSet;
@@ -89,10 +91,23 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	this->addChild(this->interactMenu);
 	this->addChild(this->pretextNode);
 	this->addChild(this->dialogueSetNode);
+	this->addChild(this->speechBubble);
 }
 
 EntityDialogueBehavior::~EntityDialogueBehavior()
 {
+}
+
+void EntityDialogueBehavior::initializePositions()
+{
+	super::initializePositions();
+
+	if (this->entity != nullptr)
+	{
+		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 16.0f);
+
+		this->speechBubble->setPosition(offset);
+	}
 }
 
 void EntityDialogueBehavior::onLoad()
@@ -175,6 +190,11 @@ void EntityDialogueBehavior::onLoad()
 	});
 
 	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
+}
+
+SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
+{
+	return this->speechBubble;
 }
 
 void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pretext)

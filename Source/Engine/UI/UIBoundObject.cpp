@@ -25,6 +25,8 @@ UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
     this->originalScale = 1.0f;
     this->realCoords = Vec3::ZERO;
     this->realScale = 1.0f;
+    this->eventKey = "";
+    this->scheduleTarget = nullptr;
 }
 
 UIBoundObject::~UIBoundObject()
@@ -44,7 +46,7 @@ void UIBoundObject::onEnter()
         this->referencedObject->setPosition3D(position);
     }
 
-    this->scheduleUpdate();
+    this->scheduleUpdateTask();
 }
 
 void UIBoundObject::initializeListeners()
@@ -58,6 +60,7 @@ void UIBoundObject::initializeListeners()
         if (args != nullptr)
         {
             this->originalParent = args->newParent;
+            this->scheduleUpdateTask();
         }
     }));
 
@@ -77,17 +80,35 @@ void UIBoundObject::initializeListeners()
     }));
 }
 
-void UIBoundObject::update(float dt)
+void UIBoundObject::scheduleUpdateTask()
 {
-    super::update(dt);
-
-    if (this->referencedObject == nullptr)
+    if (this->scheduleTarget != nullptr && !this->eventKey.empty())
     {
-        return;
+        this->scheduleTarget->unschedule(eventKey);
     }
 
-    this->realCoords = UIBoundObject::getRealCoords(this);
-    this->realScale = UIBoundObject::getRealScale(this);
+    static unsigned long long TaskId = 0;
+    unsigned long long taskId = TaskId++;
+    this->eventKey = "EVENT_UIBOUND_UPDATE_TASK_" + std::to_string(taskId);
+
+   this->scheduleTarget = this->originalParent;
+
+    if (this->scheduleTarget == nullptr)
+    {
+        this->scheduleTarget = this;
+    }
+
+    // Schedule the task on the original parent, that way if the original parent is disposed, update will not be called (avoiding a crash)
+    this->scheduleTarget->schedule([=](float dt)
+    {
+        if (this->referencedObject == nullptr)
+        {
+            return;
+        }
+
+        this->realCoords = UIBoundObject::getRealCoords(this);
+        this->realScale = UIBoundObject::getRealScale(this);
+    }, 1.0f / 60.0f, this->eventKey);
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)

@@ -16,6 +16,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
@@ -100,7 +101,10 @@ void RestorePotionTutorialBehavior::runTutorial()
 			this->runAction(Sequence::create(
 				CallFunc::create([=]()
 				{
-					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
+					this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+					{
+						interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
+					});
 				}),
 				nullptr
 			));

@@ -7,8 +7,8 @@
 class HackablePreview;
 class HexusOpponentData;
 class LocalizedString;
+class PlatformerEntityDeserializer;
 class SmartAnimationNode;
-class SpeechBubble;
 
 class PlatformerEntity : public HackableObject
 {
@@ -38,7 +38,7 @@ public:
 	virtual void performJumpAnimation();
 	bool isFlippedX();
 	bool isFlippedY();
-	SpeechBubble* getSpeechBubble();
+	PlatformerEntity* softClone();
 
 	ControlState controlState;
 
@@ -55,10 +55,7 @@ protected:
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
 	~PlatformerEntity();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
+	
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 
@@ -84,5 +81,5 @@ private:
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
-	SpeechBubble* speechBubble;
+	PlatformerEntityDeserializer* platformerEntityDeserializer;
 };

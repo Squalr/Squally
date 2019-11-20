@@ -14,6 +14,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/SoundResources.h"
 
@@ -77,10 +78,13 @@ void SpotOrcGrunt::runCinematicSequence()
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					PlatformerEvents::TriggerCinematicRestore();
-					this->scrappy->getSpeechBubble()->hideDialogue();
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+					{
+						PlatformerEvents::TriggerCinematicRestore();
+						interactionBehavior->getSpeechBubble()->hideDialogue();
+					});
 				});
 			}),
 			nullptr

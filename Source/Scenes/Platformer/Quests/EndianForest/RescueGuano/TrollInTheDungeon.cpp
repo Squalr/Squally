@@ -16,6 +16,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -94,7 +95,11 @@ void TrollInTheDungeon::runChatSequence()
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
-			this->mage->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
+			this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			{
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
+			});
+
 			this->complete();
 
 			this->mage->runAction(Sequence::create(
@@ -119,7 +124,11 @@ void TrollInTheDungeon::runChatSequencePt2()
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		this->mage->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
-		this->mage->getSpeechBubble()->hideDialogue();
+		
+		this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->getSpeechBubble()->hideDialogue();
+		});
 
 		this->mage->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{

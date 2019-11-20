@@ -3,7 +3,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
-#include "Events/DialogueEvents.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 
 using namespace cocos2d;
 
@@ -81,6 +81,19 @@ void HexusEvents::TriggerOnStateUpdate(GameState* gameState)
 
 Node* HexusEvents::BuildPreviewNode(PlatformerEntity* entity)
 {
-	// Just use the same builder used for dialogue
-	return DialogueEvents::BuildPreviewNode(entity, false);
+	if (entity == nullptr)
+	{
+		return nullptr;
+	}
+
+	Node* wrapper = Node::create();
+	PlatformerEntity* softClone = entity->softClone();
+
+	if (softClone != nullptr)
+	{
+		wrapper->addChild(softClone);
+		softClone->setPosition(Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f));
+	}
+
+	return wrapper;
 }

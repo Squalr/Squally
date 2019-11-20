@@ -35,14 +35,14 @@ Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 	}
 
 	Node* wrapper = Node::create();
-	SmartAnimationNode* animations = SmartAnimationNode::create(entity->getAnimationResource());
+	PlatformerEntity* softClone = entity->softClone();
 
-	animations->playAnimation();
-	animations->setFlippedX(isFlipped);
-	animations->setPosition(entity->getDialogueOffset() - Vec2(0.0f, entity->getEntitySize().height / 2.0f));
-	animations->setScale(entity->getScale());
-
-	wrapper->addChild(animations);
+	if (softClone != nullptr)
+	{
+		softClone->getAnimations()->setFlippedX(isFlipped);
+		wrapper->addChild(softClone);
+		softClone->setPosition(Vec2(0.0f, -(softClone->getEntitySize() * softClone->getScale()).height / 2.0f));
+	}
 
 	return wrapper;
 }

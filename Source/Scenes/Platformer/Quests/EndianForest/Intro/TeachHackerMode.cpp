@@ -17,6 +17,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotem.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/SoundResources.h"
@@ -89,9 +90,12 @@ void TeachHackerMode::runCinematicSequencePt1()
 	{
 		PlatformerEvents::TriggerCinematicHijack();
 
-		this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_D_TrapAhead::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+		this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			this->runCinematicSequencePt2();
+			interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_D_TrapAhead::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+			{
+				this->runCinematicSequencePt2();
+			});
 		});
 	}
 }

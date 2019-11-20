@@ -27,6 +27,8 @@ protected:
 private:
 	typedef GlobalNode super;
 
+	void updateDistanceFade();
+
 	std::string soundResource;
 	float fadeMultiplier;
 	float distanceMultiplier;

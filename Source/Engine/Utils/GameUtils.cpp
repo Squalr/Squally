@@ -182,13 +182,9 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		
 		if (node->getParent() != nullptr)
 		{
-			if (node->getReferenceCount() == 1)
-			{
-				refIncrement++;
-				node->retain();
-			}
-
+			node->retain();
 			node->getParent()->removeChildNoExit(node);
+			node->softRelease();
 		}
 	}
 	else if (retainPosition)

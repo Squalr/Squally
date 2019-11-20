@@ -20,6 +20,7 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -46,6 +47,9 @@ MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::s
 MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetScrappy::MapKeyQuest, questTag, true)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
+	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
+
+	this->addChild(this->droidAlarmedSound);
 }
 
 MeetScrappy::~MeetScrappy()
@@ -103,18 +107,21 @@ void MeetScrappy::runCinematicSequencePt1()
 		this->scrappy->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->droidAlarmedSound->play();
+				this->droidAlarmedSound->play();
 			}),
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), "", 2.0f, [=]()
+				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), "", 2.0f, [=]()
 					{
-						this->scrappy->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
+						interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
 						{
-							this->runCinematicSequencePt2();
+							interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
+							{
+								this->runCinematicSequencePt2();
+							});
 						});
 					});
 				});

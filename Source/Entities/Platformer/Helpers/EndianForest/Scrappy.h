@@ -6,7 +6,6 @@
 class HexusOpponentData;
 class LocalizedString;
 class SmartAnimationSequenceNode;
-class WorldSound;
 
 class Scrappy : public PlatformerFriendly
 {
@@ -18,8 +17,6 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
-
-	WorldSound* droidAlarmedSound;
 
 	static const std::string MapKeyScrappy;
 

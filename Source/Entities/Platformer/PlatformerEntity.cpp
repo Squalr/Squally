@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
+#include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
@@ -49,13 +50,13 @@ PlatformerEntity::PlatformerEntity(
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * scale;
+	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	// Tag all entities by class to optimize object queries (ObjectEvents.h)
 	this->addTag(PlatformerEntity::PlatformerEntityTag);
 	this->addTag(PlatformerEntity::entityName);
 
 	this->hexusOpponentData = nullptr;
-	this->speechBubble = SpeechBubble::create();
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
 	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
@@ -78,31 +79,12 @@ PlatformerEntity::PlatformerEntity(
 
 	this->floatNode->addChild(this->belowAnimationNode);
 	this->floatNode->addChild(this->animationNode);
+	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->floatNode);
-	this->addChild(this->speechBubble);
 }
 
 PlatformerEntity::~PlatformerEntity()
 {
-}
-
-void PlatformerEntity::onEnter()
-{
-	super::onEnter();
-}
-
-void PlatformerEntity::initializePositions()
-{
-	super::initializePositions();
-
-	Vec2 offset = this->getCollisionOffset() + Vec2(0.0f, this->getEntitySize().height + this->getHoverHeight() / 2.0f + 16.0f);
-
-	this->speechBubble->setPosition(offset);
-}
-
-void PlatformerEntity::initializeListeners()
-{
-	super::initializeListeners();
 }
 
 Vec2 PlatformerEntity::getButtonOffset()
@@ -195,7 +177,23 @@ bool PlatformerEntity::isFlippedY()
 	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }
 
-SpeechBubble* PlatformerEntity::getSpeechBubble()
+PlatformerEntity* PlatformerEntity::softClone()
 {
-	return this->speechBubble;
+	PlatformerEntity* softClone = nullptr;
+	ValueMap properties = ValueMap();
+
+	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+	properties[GameObject::MapKeyName] = Value(this->entityName);
+
+	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
+		properties,
+		[&] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
+		{
+			softClone = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
+		}
+	);
+
+	this->platformerEntityDeserializer->deserialize(&args);
+
+	return softClone;
 }

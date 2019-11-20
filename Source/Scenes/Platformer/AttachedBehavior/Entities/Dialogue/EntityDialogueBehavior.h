@@ -10,6 +10,7 @@ class DialogueSet;
 class InteractMenu;
 class LocalizedString;
 class PlatformerEntity;
+class SpeechBubble;
 class Squally;
 
 class EntityDialogueBehavior : public AttachedBehavior
@@ -22,6 +23,7 @@ public:
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
 	DialogueSet* getMainDialogueSet();
+	SpeechBubble* getSpeechBubble();
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -29,6 +31,7 @@ protected:
 	EntityDialogueBehavior(GameObject* owner);
 	~EntityDialogueBehavior();
 
+	void initializePositions() override;
 	void onLoad() override;
 
 private:
@@ -42,6 +45,7 @@ private:
 
 	PlatformerEntity* entity;
 	Squally* squally;
+	SpeechBubble* speechBubble;
 
 	bool canInteract;
 	bool optionsVisible;

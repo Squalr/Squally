@@ -10,7 +10,6 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/WorldSound.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
@@ -57,14 +56,12 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 {
 	this->hexusOpponentData = Scrappy::getHexusOpponentData();
 
-	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
 	this->fireAnimation = SmartAnimationSequenceNode::create();
 
 	this->fireAnimation->setFlippedY(true);
 	this->fireAnimation->setScale(0.25f);
 
 	this->belowAnimationNode->addChild(this->fireAnimation);
-	this->addChild(this->droidAlarmedSound);
 }
 
 Scrappy::~Scrappy()
