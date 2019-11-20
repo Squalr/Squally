@@ -33,7 +33,7 @@ Cooper* Cooper::deserialize(ValueMap& properties)
 
 Cooper::Cooper(ValueMap& properties) : super(properties,
 	Cooper::MapKeyCooper,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

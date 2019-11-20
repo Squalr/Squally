@@ -33,7 +33,7 @@ Raven* Raven::deserialize(ValueMap& properties)
 
 Raven::Raven(ValueMap& properties) : super(properties,
 	Raven::MapKeyRaven,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

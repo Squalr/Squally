@@ -33,7 +33,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap& properties)
 
 VoidArcher::VoidArcher(ValueMap& properties) : super(properties,
 	VoidArcher::MapKeyVoidArcher,
-	nullptr,
+	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
 	Size(196.0f, 348.0f),
 	0.65f,

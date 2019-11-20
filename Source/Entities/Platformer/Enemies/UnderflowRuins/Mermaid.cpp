@@ -33,7 +33,7 @@ Mermaid* Mermaid::deserialize(ValueMap& properties)
 
 Mermaid::Mermaid(ValueMap& properties) : super(properties,
 	Mermaid::MapKeyMermaid,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
 	Size(172.0f, 296.0f),
 	1.0f,

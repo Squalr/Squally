@@ -33,7 +33,7 @@ YetiBaby* YetiBaby::deserialize(ValueMap& properties)
 
 YetiBaby::YetiBaby(ValueMap& properties) : super(properties,
 	YetiBaby::MapKeyYetiBaby,
-	nullptr,
+	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

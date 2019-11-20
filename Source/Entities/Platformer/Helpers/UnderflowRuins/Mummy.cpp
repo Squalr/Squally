@@ -33,7 +33,7 @@ Mummy* Mummy::deserialize(ValueMap& properties)
 
 Mummy::Mummy(ValueMap& properties) : super(properties,
 	Mummy::MapKeyMummy,
-	nullptr,
+	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

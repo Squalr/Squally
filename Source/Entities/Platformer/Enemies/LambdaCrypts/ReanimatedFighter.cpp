@@ -33,7 +33,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 
 ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
 	ReanimatedFighter::MapKeyReanimatedFighter,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	Size(256.0f, 248.0f),
 	0.9f,

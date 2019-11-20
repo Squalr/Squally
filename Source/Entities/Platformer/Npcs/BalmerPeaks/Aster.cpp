@@ -33,7 +33,7 @@ Aster* Aster::deserialize(ValueMap& properties)
 
 Aster::Aster(ValueMap& properties) : super(properties,
 	Aster::MapKeyAster,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

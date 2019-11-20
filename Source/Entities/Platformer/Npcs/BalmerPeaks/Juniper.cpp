@@ -33,7 +33,7 @@ Juniper* Juniper::deserialize(ValueMap& properties)
 
 Juniper::Juniper(ValueMap& properties) : super(properties,
 	Juniper::MapKeyJuniper,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

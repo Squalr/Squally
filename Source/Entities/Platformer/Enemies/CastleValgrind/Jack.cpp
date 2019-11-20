@@ -33,7 +33,7 @@ Jack* Jack::deserialize(ValueMap& properties)
 
 Jack::Jack(ValueMap& properties) : super(properties,
 	Jack::MapKeyJack,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	Size(432.0f, 768.0f),
 	1.0f,

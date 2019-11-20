@@ -33,7 +33,7 @@ EvilEye* EvilEye::deserialize(ValueMap& properties)
 
 EvilEye::EvilEye(ValueMap& properties) : super(properties,
 	EvilEye::MapKeyEvilEye,
-	nullptr,
+	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
 	Size(720.0f, 840.0f),
 	0.6f,

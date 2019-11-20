@@ -33,7 +33,7 @@ Assassin* Assassin::deserialize(ValueMap& properties)
 
 Assassin::Assassin(ValueMap& properties) : super(properties,
 	Assassin::MapKeyAssassin,
-	nullptr,
+	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
 	Size(278.0f, 288.0f),
 	1.0f,

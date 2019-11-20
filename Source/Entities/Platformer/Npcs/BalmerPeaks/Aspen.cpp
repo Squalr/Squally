@@ -33,7 +33,7 @@ Aspen* Aspen::deserialize(ValueMap& properties)
 
 Aspen::Aspen(ValueMap& properties) : super(properties,
 	Aspen::MapKeyAspen,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

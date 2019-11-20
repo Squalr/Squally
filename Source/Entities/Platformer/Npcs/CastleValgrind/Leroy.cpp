@@ -33,7 +33,7 @@ Leroy* Leroy::deserialize(ValueMap& properties)
 
 Leroy::Leroy(ValueMap& properties) : super(properties,
 	Leroy::MapKeyLeroy,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

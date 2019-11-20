@@ -33,7 +33,7 @@ Ghost* Ghost::deserialize(ValueMap& properties)
 
 Ghost::Ghost(ValueMap& properties) : super(properties,
 	Ghost::MapKeyGhost,
-	nullptr,
+	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

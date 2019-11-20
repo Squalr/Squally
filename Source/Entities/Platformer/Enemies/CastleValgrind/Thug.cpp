@@ -33,7 +33,7 @@ Thug* Thug::deserialize(ValueMap& properties)
 
 Thug::Thug(ValueMap& properties) : super(properties,
 	Thug::MapKeyThug,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

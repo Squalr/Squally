@@ -33,7 +33,7 @@ Osiris* Osiris::deserialize(ValueMap& properties)
 
 Osiris::Osiris(ValueMap& properties) : super(properties,
 	Osiris::MapKeyOsiris,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	Size(324.0f, 316.0f),
 	1.0f,

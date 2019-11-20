@@ -33,7 +33,7 @@ DarkTiger* DarkTiger::deserialize(ValueMap& properties)
 
 DarkTiger::DarkTiger(ValueMap& properties) : super(properties,
 	DarkTiger::MapKeyDarkTiger,
-	nullptr,
+	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
 	Size(256.0f, 248.0f),
 	0.9f,

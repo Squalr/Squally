@@ -33,7 +33,7 @@ Abomination* Abomination::deserialize(ValueMap& properties)
 
 Abomination::Abomination(ValueMap& properties) : super(properties,
 	Abomination::MapKeyAbomination,
-	nullptr,
+	EntityResources::Enemies_VoidStar_Abomination_Animations,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
 	Size(296.0f, 356.0f),
 	0.6f,

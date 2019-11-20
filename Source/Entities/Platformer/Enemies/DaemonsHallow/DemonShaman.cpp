@@ -33,7 +33,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap& properties)
 
 DemonShaman::DemonShaman(ValueMap& properties) : super(properties,
 	DemonShaman::MapKeyDemonShaman,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Emblem,
 	Size(212.0f, 280.0f),
 	0.65f,

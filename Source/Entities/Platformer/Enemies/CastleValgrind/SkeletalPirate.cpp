@@ -33,7 +33,7 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap& properties)
 
 SkeletalPirate::SkeletalPirate(ValueMap& properties) : super(properties,
 	SkeletalPirate::MapKeySkeletalPirate,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,
 	Size(112.0f, 820.0f),
 	0.8f,

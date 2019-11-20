@@ -33,7 +33,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap& properties)
 
 Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
 	Asmodeus::MapKeyAsmodeus,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	Size(480.0f, 480.0f),
 	0.8f,

@@ -33,7 +33,7 @@ AnubisPup* AnubisPup::deserialize(ValueMap& properties)
 
 AnubisPup::AnubisPup(ValueMap& properties) : super(properties,
 	AnubisPup::MapKeyAnubisPup,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
 	EntityResources::Enemies_UnderflowRuins_AnubisPup_Emblem,
 	Size(128.0f, 186.0f),
 	1.0f,

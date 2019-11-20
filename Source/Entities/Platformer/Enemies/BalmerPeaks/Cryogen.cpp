@@ -33,7 +33,7 @@ Cryogen* Cryogen::deserialize(ValueMap& properties)
 
 Cryogen::Cryogen(ValueMap& properties) : super(properties,
 	Cryogen::MapKeyCryogen,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cryogen_Emblem,
 	Size(420.0f, 420.0f),
 	0.8f,

@@ -33,7 +33,7 @@ Lioness* Lioness::deserialize(ValueMap& properties)
 
 Lioness::Lioness(ValueMap& properties) : super(properties,
 	Lioness::MapKeyLioness,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Emblem,
 	Size(128.0f, 278.0f),
 	1.0f,

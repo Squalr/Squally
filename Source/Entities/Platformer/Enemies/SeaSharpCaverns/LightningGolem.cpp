@@ -33,7 +33,7 @@ LightningGolem* LightningGolem::deserialize(ValueMap& properties)
 
 LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
 	LightningGolem::MapKeyLightningGolem,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	Size(768.0f, 840.0f),
 	1.0f,

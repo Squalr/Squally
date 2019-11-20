@@ -33,7 +33,7 @@ SnowFiend* SnowFiend::deserialize(ValueMap& properties)
 
 SnowFiend::SnowFiend(ValueMap& properties) : super(properties,
 	SnowFiend::MapKeySnowFiend,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	Size(420.0f, 420.0f),
 	0.85f,

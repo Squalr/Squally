@@ -33,7 +33,7 @@ Rupert* Rupert::deserialize(ValueMap& properties)
 
 Rupert::Rupert(ValueMap& properties) : super(properties,
 	Rupert::MapKeyRupert,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

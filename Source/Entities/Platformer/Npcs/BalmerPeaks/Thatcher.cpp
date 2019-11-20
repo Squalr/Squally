@@ -33,7 +33,7 @@ Thatcher* Thatcher::deserialize(ValueMap& properties)
 
 Thatcher::Thatcher(ValueMap& properties) : super(properties,
 	Thatcher::MapKeyThatcher,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

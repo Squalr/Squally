@@ -33,7 +33,7 @@ Gecko* Gecko::deserialize(ValueMap& properties)
 
 Gecko::Gecko(ValueMap& properties) : super(properties,
 	Gecko::MapKeyGecko,
-	nullptr,
+	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

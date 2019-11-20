@@ -33,7 +33,7 @@ Celeste* Celeste::deserialize(ValueMap& properties)
 
 Celeste::Celeste(ValueMap& properties) : super(properties,
 	Celeste::MapKeyCeleste,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Celeste_Animations,
 	EntityResources::Npcs_DaemonsHallow_Celeste_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

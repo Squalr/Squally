@@ -33,7 +33,7 @@ KingZul* KingZul::deserialize(ValueMap& properties)
 
 KingZul::KingZul(ValueMap& properties) : super(properties,
 	KingZul::MapKeyKingZul,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	Size(196.0f, 320.0f),
 	0.9f,

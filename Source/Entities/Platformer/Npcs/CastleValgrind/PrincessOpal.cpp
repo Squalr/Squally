@@ -33,7 +33,7 @@ PrincessOpal* PrincessOpal::deserialize(ValueMap& properties)
 
 PrincessOpal::PrincessOpal(ValueMap& properties) : super(properties,
 	PrincessOpal::MapKeyPrincessOpal,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

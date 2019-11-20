@@ -33,7 +33,7 @@ Undead* Undead::deserialize(ValueMap& properties)
 
 Undead::Undead(ValueMap& properties) : super(properties,
 	Undead::MapKeyUndead,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	Size(146.0f, 248.0f),
 	0.8f,

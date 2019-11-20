@@ -33,7 +33,7 @@ Mabel* Mabel::deserialize(ValueMap& properties)
 
 Mabel::Mabel(ValueMap& properties) : super(properties,
 	Mabel::MapKeyMabel,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

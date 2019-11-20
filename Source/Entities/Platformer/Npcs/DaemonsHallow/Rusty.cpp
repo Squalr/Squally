@@ -33,7 +33,7 @@ Rusty* Rusty::deserialize(ValueMap& properties)
 
 Rusty::Rusty(ValueMap& properties) : super(properties,
 	Rusty::MapKeyRusty,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

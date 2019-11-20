@@ -33,7 +33,7 @@ Troll* Troll::deserialize(ValueMap& properties)
 
 Troll::Troll(ValueMap& properties) : super(properties,
 	Troll::MapKeyTroll,
-	nullptr,
+	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
 	Size(256.0f, 248.0f),
 	1.0f,

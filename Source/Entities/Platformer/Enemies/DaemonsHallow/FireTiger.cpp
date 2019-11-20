@@ -33,7 +33,7 @@ FireTiger* FireTiger::deserialize(ValueMap& properties)
 
 FireTiger::FireTiger(ValueMap& properties) : super(properties,
 	FireTiger::MapKeyFireTiger,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
 	Size(256.0f, 320.0f),
 	1.0f,

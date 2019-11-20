@@ -33,7 +33,7 @@ Leopold* Leopold::deserialize(ValueMap& properties)
 
 Leopold::Leopold(ValueMap& properties) : super(properties,
 	Leopold::MapKeyLeopold,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
 	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,
 	Size(112.0f, 160.0f),
 	0.95f,

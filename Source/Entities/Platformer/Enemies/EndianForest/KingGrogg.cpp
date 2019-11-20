@@ -33,7 +33,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 
 KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
 	KingGrogg::MapKeyKingGrogg,
-	nullptr,
+	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	Size(412.0f, 412.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Hunter* Hunter::deserialize(ValueMap& properties)
 
 Hunter::Hunter(ValueMap& properties) : super(properties,
 	Hunter::MapKeyHunter,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
 	Size(112.0f, 596.0f),
 	1.0f,

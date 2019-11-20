@@ -33,7 +33,7 @@ FireElemental* FireElemental::deserialize(ValueMap& properties)
 
 FireElemental::FireElemental(ValueMap& properties) : super(properties,
 	FireElemental::MapKeyFireElemental,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	Size(820.0f, 1480.0f),
 	1.0f,

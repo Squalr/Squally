@@ -33,7 +33,7 @@ Cindra* Cindra::deserialize(ValueMap& properties)
 
 Cindra::Cindra(ValueMap& properties) : super(properties,
 	Cindra::MapKeyCindra,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

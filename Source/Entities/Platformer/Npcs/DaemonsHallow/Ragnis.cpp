@@ -33,7 +33,7 @@ Ragnis* Ragnis::deserialize(ValueMap& properties)
 
 Ragnis::Ragnis(ValueMap& properties) : super(properties,
 	Ragnis::MapKeyRagnis,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

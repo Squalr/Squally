@@ -33,7 +33,7 @@ Magnus* Magnus::deserialize(ValueMap& properties)
 
 Magnus::Magnus(ValueMap& properties) : super(properties,
 	Magnus::MapKeyMagnus,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

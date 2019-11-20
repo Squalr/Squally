@@ -33,7 +33,7 @@ LionMan* LionMan::deserialize(ValueMap& properties)
 
 LionMan::LionMan(ValueMap& properties) : super(properties,
 	LionMan::MapKeyLionMan,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
 	Size(256.0f, 326.0f),
 	1.0f,

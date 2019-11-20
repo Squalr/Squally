@@ -33,7 +33,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
 	GoblinGruntBoar::MapKeyGoblinGruntBoar,
-	nullptr,
+	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	Size(128.0f, 296.0f),
 	1.0f,

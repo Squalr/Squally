@@ -33,7 +33,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& properties)
 
 SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : super(properties,
 	SkeletalNecromancer::MapKeySkeletalNecromancer,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	Size(128.0f, 228.0f),
 	1.0f,

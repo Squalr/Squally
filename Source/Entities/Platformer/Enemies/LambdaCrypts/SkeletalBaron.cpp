@@ -33,7 +33,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 
 SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
 	SkeletalBaron::MapKeySkeletalBaron,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
 	Size(112.0f, 368.0f),
 	0.8f,

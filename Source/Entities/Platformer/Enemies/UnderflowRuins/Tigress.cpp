@@ -33,7 +33,7 @@ Tigress* Tigress::deserialize(ValueMap& properties)
 
 Tigress::Tigress(ValueMap& properties) : super(properties,
 	Tigress::MapKeyTigress,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	Size(128.0f, 256.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Kringle* Kringle::deserialize(ValueMap& properties)
 
 Kringle::Kringle(ValueMap& properties) : super(properties,
 	Kringle::MapKeyKringle,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Kringle_Animations,
 	EntityResources::Npcs_BalmerPeaks_Kringle_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

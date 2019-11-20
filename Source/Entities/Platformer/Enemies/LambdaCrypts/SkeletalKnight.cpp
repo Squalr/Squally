@@ -33,7 +33,7 @@ SkeletalKnight* SkeletalKnight::deserialize(ValueMap& properties)
 
 SkeletalKnight::SkeletalKnight(ValueMap& properties) : super(properties,
 	SkeletalKnight::MapKeySkeletalKnight,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
 	Size(212.0f, 280.0f),
 	0.8f,

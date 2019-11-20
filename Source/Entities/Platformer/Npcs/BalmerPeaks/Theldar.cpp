@@ -33,7 +33,7 @@ Theldar* Theldar::deserialize(ValueMap& properties)
 
 Theldar::Theldar(ValueMap& properties) : super(properties,
 	Theldar::MapKeyTheldar,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

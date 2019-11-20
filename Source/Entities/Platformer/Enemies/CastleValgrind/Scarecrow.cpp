@@ -33,7 +33,7 @@ Scarecrow* Scarecrow::deserialize(ValueMap& properties)
 
 Scarecrow::Scarecrow(ValueMap& properties) : super(properties,
 	Scarecrow::MapKeyScarecrow,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
 	Size(196.0f, 512.0f),
 	0.8f,

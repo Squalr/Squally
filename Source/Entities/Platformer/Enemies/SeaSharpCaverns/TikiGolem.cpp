@@ -33,7 +33,7 @@ TikiGolem* TikiGolem::deserialize(ValueMap& properties)
 
 TikiGolem::TikiGolem(ValueMap& properties) : super(properties,
 	TikiGolem::MapKeyTikiGolem,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	Size(284.0f, 256.0f),
 	1.0f,

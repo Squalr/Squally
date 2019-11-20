@@ -33,7 +33,7 @@ Pan* Pan::deserialize(ValueMap& properties)
 
 Pan::Pan(ValueMap& properties) : super(properties,
 	Pan::MapKeyPan,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Pan_Animations,
 	EntityResources::Npcs_DaemonsHallow_Pan_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

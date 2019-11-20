@@ -33,7 +33,7 @@ Cookie* Cookie::deserialize(ValueMap& properties)
 
 Cookie::Cookie(ValueMap& properties) : super(properties,
 	Cookie::MapKeyCookie,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

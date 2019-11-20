@@ -33,7 +33,7 @@ Grim* Grim::deserialize(ValueMap& properties)
 
 Grim::Grim(ValueMap& properties) : super(properties,
 	Grim::MapKeyGrim,
-	nullptr,
+	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

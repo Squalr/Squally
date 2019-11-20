@@ -33,7 +33,7 @@ Viking* Viking::deserialize(ValueMap& properties)
 
 Viking::Viking(ValueMap& properties) : super(properties,
 	Viking::MapKeyViking,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
 	Size(980.0f, 1200.0f),
 	1.0f,

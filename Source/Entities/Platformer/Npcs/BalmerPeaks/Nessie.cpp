@@ -33,7 +33,7 @@ Nessie* Nessie::deserialize(ValueMap& properties)
 
 Nessie::Nessie(ValueMap& properties) : super(properties,
 	Nessie::MapKeyNessie,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

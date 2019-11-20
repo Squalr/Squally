@@ -33,7 +33,7 @@ Igneus* Igneus::deserialize(ValueMap& properties)
 
 Igneus::Igneus(ValueMap& properties) : super(properties,
 	Igneus::MapKeyIgneus,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

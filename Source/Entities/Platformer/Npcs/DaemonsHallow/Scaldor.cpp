@@ -33,7 +33,7 @@ Scaldor* Scaldor::deserialize(ValueMap& properties)
 
 Scaldor::Scaldor(ValueMap& properties) : super(properties,
 	Scaldor::MapKeyScaldor,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Scaldor_Animations,
 	EntityResources::Npcs_DaemonsHallow_Scaldor_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

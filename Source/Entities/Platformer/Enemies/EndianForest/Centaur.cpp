@@ -33,7 +33,7 @@ Centaur* Centaur::deserialize(ValueMap& properties)
 
 Centaur::Centaur(ValueMap& properties) : super(properties,
 	Centaur::MapKeyCentaur,
-	nullptr,
+	EntityResources::Enemies_EndianForest_Centaur_Animations,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	Size(296.0f, 256.0f),
 	1.0f,

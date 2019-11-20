@@ -33,7 +33,7 @@ PrincessPepper* PrincessPepper::deserialize(ValueMap& properties)
 
 PrincessPepper::PrincessPepper(ValueMap& properties) : super(properties,
 	PrincessPepper::MapKeyPrincessPepper,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

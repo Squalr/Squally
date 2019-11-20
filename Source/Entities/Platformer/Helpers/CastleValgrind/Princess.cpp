@@ -33,7 +33,7 @@ Princess* Princess::deserialize(ValueMap& properties)
 
 Princess::Princess(ValueMap& properties) : super(properties,
 	Princess::MapKeyPrincess,
-	nullptr,
+	EntityResources::Helpers_CastleValgrind_Princess_Animations,
 	EntityResources::Helpers_CastleValgrind_Princess_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

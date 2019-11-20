@@ -33,7 +33,7 @@ Medusa* Medusa::deserialize(ValueMap& properties)
 
 Medusa::Medusa(ValueMap& properties) : super(properties,
 	Medusa::MapKeyMedusa,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	Size(224.0f, 304.0f),
 	1.0f,

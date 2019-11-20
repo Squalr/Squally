@@ -33,7 +33,7 @@ Barbarian* Barbarian::deserialize(ValueMap& properties)
 
 Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	Barbarian::MapKeyBarbarian,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,
 	Size(1280.0f, 920.0f),
 	1.0f,

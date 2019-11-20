@@ -33,7 +33,7 @@ Tinsel* Tinsel::deserialize(ValueMap& properties)
 
 Tinsel::Tinsel(ValueMap& properties) : super(properties,
 	Tinsel::MapKeyTinsel,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Tinsel_Animations,
 	EntityResources::Npcs_BalmerPeaks_Tinsel_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

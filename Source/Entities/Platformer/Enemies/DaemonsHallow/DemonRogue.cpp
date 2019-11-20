@@ -33,7 +33,7 @@ DemonRogue* DemonRogue::deserialize(ValueMap& properties)
 
 DemonRogue::DemonRogue(ValueMap& properties) : super(properties,
 	DemonRogue::MapKeyDemonRogue,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_DemonRogue_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonRogue_Emblem,
 	Size(212.0f, 268.0f),
 	0.65f,

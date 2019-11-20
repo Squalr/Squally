@@ -33,7 +33,7 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 
 Krampus::Krampus(ValueMap& properties) : super(properties,
 	Krampus::MapKeyKrampus,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
 	Size(396.0f, 412.0f),
 	0.9f,

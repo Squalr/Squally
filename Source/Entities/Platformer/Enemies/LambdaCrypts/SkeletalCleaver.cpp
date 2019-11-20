@@ -33,7 +33,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& properties)
 
 SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : super(properties,
 	SkeletalCleaver::MapKeySkeletalCleaver,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	Size(128.0f, 312.0f),
 	0.8f,

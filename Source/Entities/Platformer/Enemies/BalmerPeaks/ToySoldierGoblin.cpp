@@ -33,7 +33,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& properties)
 
 ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : super(properties,
 	ToySoldierGoblin::MapKeyToySoldierGoblin,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
 	Size(112.0f, 288.0f),
 	1.0f,

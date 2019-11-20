@@ -33,7 +33,7 @@ IceGolem* IceGolem::deserialize(ValueMap& properties)
 
 IceGolem::IceGolem(ValueMap& properties) : super(properties,
 	IceGolem::MapKeyIceGolem,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	Size(1680.0f, 996.0f),
 	1.0f,

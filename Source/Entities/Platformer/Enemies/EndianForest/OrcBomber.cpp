@@ -33,7 +33,7 @@ OrcBomber* OrcBomber::deserialize(ValueMap& properties)
 
 OrcBomber::OrcBomber(ValueMap& properties) : super(properties,
 	OrcBomber::MapKeyOrcBomber,
-	nullptr,
+	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	Size(256.0f, 218.0f),
 	1.0f,

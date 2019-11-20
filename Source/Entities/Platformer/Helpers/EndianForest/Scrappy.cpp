@@ -49,7 +49,7 @@ Scrappy* Scrappy::deserialize(ValueMap& properties)
 
 Scrappy::Scrappy(ValueMap& properties) : super(properties,
 	Scrappy::MapKeyScrappy,
-	nullptr,
+	EntityResources::Helpers_EndianForest_Scrappy_Animations,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ MummyWarrior* MummyWarrior::deserialize(ValueMap& properties)
 
 MummyWarrior::MummyWarrior(ValueMap& properties) : super(properties,
 	MummyWarrior::MapKeyMummyWarrior,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	Size(128.0f, 256.0f),
 	1.0f,

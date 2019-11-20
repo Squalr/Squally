@@ -33,7 +33,7 @@ FrostFiend* FrostFiend::deserialize(ValueMap& properties)
 
 FrostFiend::FrostFiend(ValueMap& properties) : super(properties,
 	FrostFiend::MapKeyFrostFiend,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,
 	Size(212.0f, 296.0f),
 	1.0f,

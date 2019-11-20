@@ -34,7 +34,7 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 
 OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	OrcGrunt::MapKeyOrcGrunt,
-	nullptr,
+	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	Size(256.0f, 218.0f),
 	1.0f,

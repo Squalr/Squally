@@ -33,7 +33,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap& properties)
 
 OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
 	OrcWarrior::MapKeyOrcWarrior,
-	nullptr,
+	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
 	Size(256.0f, 228.0f),
 	1.0f,

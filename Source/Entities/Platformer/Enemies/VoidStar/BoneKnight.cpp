@@ -33,7 +33,7 @@ BoneKnight* BoneKnight::deserialize(ValueMap& properties)
 
 BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
 	BoneKnight::MapKeyBoneKnight,
-	nullptr,
+	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
 	Size(540.0f, 340.0f),
 	1.0f,

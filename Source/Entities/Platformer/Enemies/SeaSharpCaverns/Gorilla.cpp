@@ -33,7 +33,7 @@ Gorilla* Gorilla::deserialize(ValueMap& properties)
 
 Gorilla::Gorilla(ValueMap& properties) : super(properties,
 	Gorilla::MapKeyGorilla,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Emblem,
 	Size(512.0f, 1126.0f),
 	1.0f,

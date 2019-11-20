@@ -33,7 +33,7 @@ Guano* Guano::deserialize(ValueMap& properties)
 
 Guano::Guano(ValueMap& properties) : super(properties,
 	Guano::MapKeyGuano,
-	nullptr,
+	EntityResources::Helpers_EndianForest_Guano_Animations,
 	EntityResources::Helpers_EndianForest_Guano_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

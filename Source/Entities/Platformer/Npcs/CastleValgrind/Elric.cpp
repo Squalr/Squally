@@ -33,7 +33,7 @@ Elric* Elric::deserialize(ValueMap& properties)
 
 Elric::Elric(ValueMap& properties) : super(properties,
 	Elric::MapKeyElric,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

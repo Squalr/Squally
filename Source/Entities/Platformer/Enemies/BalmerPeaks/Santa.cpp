@@ -33,7 +33,7 @@ Santa* Santa::deserialize(ValueMap& properties)
 
 Santa::Santa(ValueMap& properties) : super(properties,
 	Santa::MapKeySanta,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_Santa_Animations,
 	EntityResources::Enemies_BalmerPeaks_Santa_Emblem,
 	Size(420.0f, 452.0f),
 	0.9f,

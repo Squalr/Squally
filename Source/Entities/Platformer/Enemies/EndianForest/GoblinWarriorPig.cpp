@@ -33,7 +33,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap& properties)
 
 GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : super(properties,
 	GoblinWarriorPig::MapKeyGoblinWarriorPig,
-	nullptr,
+	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,
 	Size(128.0f, 296.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Thurstan* Thurstan::deserialize(ValueMap& properties)
 
 Thurstan::Thurstan(ValueMap& properties) : super(properties,
 	Thurstan::MapKeyThurstan,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	Size(124.0f, 160.0f),
 	1.05f,

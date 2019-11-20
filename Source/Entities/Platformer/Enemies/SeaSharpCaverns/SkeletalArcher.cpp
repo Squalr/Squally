@@ -33,7 +33,7 @@ SkeletalArcher* SkeletalArcher::deserialize(ValueMap& properties)
 
 SkeletalArcher::SkeletalArcher(ValueMap& properties) : super(properties,
 	SkeletalArcher::MapKeySkeletalArcher,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	Size(128.0f, 216.0f),
 	1.0f,

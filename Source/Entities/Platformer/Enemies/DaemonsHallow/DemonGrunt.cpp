@@ -33,7 +33,7 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap& properties)
 
 DemonGrunt::DemonGrunt(ValueMap& properties) : super(properties,
 	DemonGrunt::MapKeyDemonGrunt,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
 	Size(312.0f, 372.0f),
 	0.7f,

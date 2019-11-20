@@ -33,7 +33,7 @@ Warlock* Warlock::deserialize(ValueMap& properties)
 
 Warlock::Warlock(ValueMap& properties) : super(properties,
 	Warlock::MapKeyWarlock,
-	nullptr,
+	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
 	Size(284.0f, 256.0f),
 	1.0f,

@@ -33,7 +33,7 @@ KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& properties)
 
 KingRedsongSlime::KingRedsongSlime(ValueMap& properties) : super(properties,
 	KingRedsongSlime::MapKeyKingRedsongSlime,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

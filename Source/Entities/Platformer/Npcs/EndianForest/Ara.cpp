@@ -33,7 +33,7 @@ Ara* Ara::deserialize(ValueMap& properties)
 
 Ara::Ara(ValueMap& properties) : super(properties,
 	Ara::MapKeyAra,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Ara_Animations,
 	EntityResources::Npcs_EndianForest_Ara_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

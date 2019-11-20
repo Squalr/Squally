@@ -33,7 +33,7 @@ Mystic* Mystic::deserialize(ValueMap& properties)
 
 Mystic::Mystic(ValueMap& properties) : super(properties,
 	Mystic::MapKeyMystic,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
 	Size(420.0f, 296.0f),
 	1.0f,

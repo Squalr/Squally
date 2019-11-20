@@ -33,7 +33,7 @@ Brine* Brine::deserialize(ValueMap& properties)
 
 Brine::Brine(ValueMap& properties) : super(properties,
 	Brine::MapKeyBrine,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

@@ -33,7 +33,7 @@ VampireLord* VampireLord::deserialize(ValueMap& properties)
 
 VampireLord::VampireLord(ValueMap& properties) : super(properties,
 	VampireLord::MapKeyVampireLord,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
 	EntityResources::Enemies_CastleValgrind_VampireLord_Emblem,
 	Size(240.0f, 312.0f),
 	0.9f,

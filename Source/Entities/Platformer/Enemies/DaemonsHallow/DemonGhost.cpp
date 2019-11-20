@@ -33,7 +33,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap& properties)
 
 DemonGhost::DemonGhost(ValueMap& properties) : super(properties,
 	DemonGhost::MapKeyDemonGhost,
-	nullptr,
+	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,
 	Size(256.0f, 320.0f),
 	0.7f,

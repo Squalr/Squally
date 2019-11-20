@@ -33,7 +33,7 @@ GoblinElf* GoblinElf::deserialize(ValueMap& properties)
 
 GoblinElf::GoblinElf(ValueMap& properties) : super(properties,
 	GoblinElf::MapKeyGoblinElf,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	Size(140.0f, 296.0f),
 	0.8f,

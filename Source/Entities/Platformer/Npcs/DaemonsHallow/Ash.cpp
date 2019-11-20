@@ -33,7 +33,7 @@ Ash* Ash::deserialize(ValueMap& properties)
 
 Ash::Ash(ValueMap& properties) : super(properties,
 	Ash::MapKeyAsh,
-	nullptr,
+	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

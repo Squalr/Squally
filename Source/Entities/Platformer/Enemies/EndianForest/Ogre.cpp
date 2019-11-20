@@ -33,7 +33,7 @@ Ogre* Ogre::deserialize(ValueMap& properties)
 
 Ogre::Ogre(ValueMap& properties) : super(properties,
 	Ogre::MapKeyOgre,
-	nullptr,
+	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	Size(256.0f, 248.0f),
 	1.0f,

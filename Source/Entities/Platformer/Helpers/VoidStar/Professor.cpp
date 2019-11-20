@@ -33,7 +33,7 @@ Professor* Professor::deserialize(ValueMap& properties)
 
 Professor::Professor(ValueMap& properties) : super(properties,
 	Professor::MapKeyProfessor,
-	nullptr,
+	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

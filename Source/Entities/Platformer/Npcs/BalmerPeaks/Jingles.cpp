@@ -33,7 +33,7 @@ Jingles* Jingles::deserialize(ValueMap& properties)
 
 Jingles::Jingles(ValueMap& properties) : super(properties,
 	Jingles::MapKeyJingles,
-	nullptr,
+	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

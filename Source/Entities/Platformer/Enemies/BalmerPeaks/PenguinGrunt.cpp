@@ -33,7 +33,7 @@ PenguinGrunt* PenguinGrunt::deserialize(ValueMap& properties)
 
 PenguinGrunt::PenguinGrunt(ValueMap& properties) : super(properties,
 	PenguinGrunt::MapKeyPenguinGrunt,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
 	Size(212.0f, 296.0f),
 	1.0f,

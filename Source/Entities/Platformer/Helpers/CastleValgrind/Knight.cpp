@@ -33,7 +33,7 @@ Knight* Knight::deserialize(ValueMap& properties)
 
 Knight::Knight(ValueMap& properties) : super(properties,
 	Knight::MapKeyKnight,
-	nullptr,
+	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

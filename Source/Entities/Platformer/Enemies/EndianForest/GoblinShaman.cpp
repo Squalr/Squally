@@ -33,7 +33,7 @@ GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 
 GoblinShaman::GoblinShaman(ValueMap& properties) : super(properties,
 	GoblinShaman::MapKeyGoblinShaman,
-	nullptr,
+	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	Size(96.0f, 204.0f),
 	1.0f,

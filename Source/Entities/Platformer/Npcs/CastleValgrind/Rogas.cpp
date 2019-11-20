@@ -33,7 +33,7 @@ Rogas* Rogas::deserialize(ValueMap& properties)
 
 Rogas::Rogas(ValueMap& properties) : super(properties,
 	Rogas::MapKeyRogas,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

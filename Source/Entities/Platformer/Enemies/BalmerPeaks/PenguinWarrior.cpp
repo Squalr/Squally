@@ -33,7 +33,7 @@ PenguinWarrior* PenguinWarrior::deserialize(ValueMap& properties)
 
 PenguinWarrior::PenguinWarrior(ValueMap& properties) : super(properties,
 	PenguinWarrior::MapKeyPenguinWarrior,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinWarrior_Emblem,
 	Size(212.0f, 296.0f),
 	1.0f,

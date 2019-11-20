@@ -33,7 +33,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 
 Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	Gargoyle::MapKeyGargoyle,
-	nullptr,
+	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
 	Size(256.0f, 256.0f),
 	0.9f,

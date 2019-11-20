@@ -33,7 +33,7 @@ Tyracius* Tyracius::deserialize(ValueMap& properties)
 
 Tyracius::Tyracius(ValueMap& properties) : super(properties,
 	Tyracius::MapKeyTyracius,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Shaman* Shaman::deserialize(ValueMap& properties)
 
 Shaman::Shaman(ValueMap& properties) : super(properties,
 	Shaman::MapKeyShaman,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Shaman_Emblem,
 	Size(256.0f, 288.0f),
 	0.78f,

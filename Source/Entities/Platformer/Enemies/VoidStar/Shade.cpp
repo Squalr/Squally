@@ -33,7 +33,7 @@ Shade* Shade::deserialize(ValueMap& properties)
 
 Shade::Shade(ValueMap& properties) : super(properties,
 	Shade::MapKeyShade,
-	nullptr,
+	EntityResources::Enemies_VoidStar_Shade_Animations,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,
 	Size(284.0f, 256.0f),
 	1.0f,

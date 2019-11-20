@@ -33,7 +33,7 @@ VoidDemon* VoidDemon::deserialize(ValueMap& properties)
 
 VoidDemon::VoidDemon(ValueMap& properties) : super(properties,
 	VoidDemon::MapKeyVoidDemon,
-	nullptr,
+	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
 	Size(338.0f, 342.0f),
 	0.7f,

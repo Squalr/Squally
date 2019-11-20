@@ -33,7 +33,7 @@ Cyclops* Cyclops::deserialize(ValueMap& properties)
 
 Cyclops::Cyclops(ValueMap& properties) : super(properties,
 	Cyclops::MapKeyCyclops,
-	nullptr,
+	EntityResources::Enemies_EndianForest_Cyclops_Animations,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
 	Size(296.0f, 256.0f),
 	1.0f,

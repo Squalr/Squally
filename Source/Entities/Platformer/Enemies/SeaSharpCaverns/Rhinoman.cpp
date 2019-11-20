@@ -33,7 +33,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 
 Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
 	Rhinoman::MapKeyRhinoman,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	Size(592.0f, 592.0f),
 	1.0f,

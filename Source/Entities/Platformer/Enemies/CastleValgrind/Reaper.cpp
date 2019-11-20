@@ -33,7 +33,7 @@ Reaper* Reaper::deserialize(ValueMap& properties)
 
 Reaper::Reaper(ValueMap& properties) : super(properties,
 	Reaper::MapKeyReaper,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Reaper_Animations,
 	EntityResources::Enemies_CastleValgrind_Reaper_Emblem,
 	Size(196.0f, 512.0f),
 	1.0f,

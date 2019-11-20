@@ -33,7 +33,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap& properties)
 
 WaterElemental::WaterElemental(ValueMap& properties) : super(properties,
 	WaterElemental::MapKeyWaterElemental,
-	nullptr,
+	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	Size(820.0f, 1480.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Wraith* Wraith::deserialize(ValueMap& properties)
 
 Wraith::Wraith(ValueMap& properties) : super(properties,
 	Wraith::MapKeyWraith,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
 	Size(142.0f, 400.0f),
 	0.6f,

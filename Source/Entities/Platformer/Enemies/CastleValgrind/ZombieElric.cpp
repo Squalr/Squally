@@ -33,7 +33,7 @@ ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 
 ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
 	ZombieElric::MapKeyZombieElric,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	Size(114.0f, 208.0f),
 	1.0f,

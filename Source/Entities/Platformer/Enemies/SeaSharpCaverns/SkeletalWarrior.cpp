@@ -33,7 +33,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& properties)
 
 SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : super(properties,
 	SkeletalWarrior::MapKeySkeletalWarrior,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	Size(128.0f, 216.0f),
 	1.0f,

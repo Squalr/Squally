@@ -33,7 +33,7 @@ Vampiress* Vampiress::deserialize(ValueMap& properties)
 
 Vampiress::Vampiress(ValueMap& properties) : super(properties,
 	Vampiress::MapKeyVampiress,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	Size(96.0f, 236.0f),
 	0.9f,

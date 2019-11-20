@@ -33,7 +33,7 @@ Minotaur* Minotaur::deserialize(ValueMap& properties)
 
 Minotaur::Minotaur(ValueMap& properties) : super(properties,
 	Minotaur::MapKeyMinotaur,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
 	Size(278.0f, 288.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Agnes* Agnes::deserialize(ValueMap& properties)
 
 Agnes::Agnes(ValueMap& properties) : super(properties,
 	Agnes::MapKeyAgnes,
-	nullptr,
+	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	Size(360.0f, 420.0f),
 	0.9f,

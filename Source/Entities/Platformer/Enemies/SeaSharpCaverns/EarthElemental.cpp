@@ -33,7 +33,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap& properties)
 
 EarthElemental::EarthElemental(ValueMap& properties) : super(properties,
 	EarthElemental::MapKeyEarthElemental,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
 	Size(820.0f, 1480.0f),
 	1.0f,

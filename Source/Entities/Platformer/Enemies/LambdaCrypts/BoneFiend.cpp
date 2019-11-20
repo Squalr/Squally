@@ -33,7 +33,7 @@ BoneFiend* BoneFiend::deserialize(ValueMap& properties)
 
 BoneFiend::BoneFiend(ValueMap& properties) : super(properties,
 	BoneFiend::MapKeyBoneFiend,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
 	Size(224.0f, 278.0f),
 	1.0f,

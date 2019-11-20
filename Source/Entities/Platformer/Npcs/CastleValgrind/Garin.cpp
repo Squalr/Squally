@@ -33,7 +33,7 @@ Garin* Garin::deserialize(ValueMap& properties)
 
 Garin::Garin(ValueMap& properties) : super(properties,
 	Garin::MapKeyGarin,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

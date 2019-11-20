@@ -33,7 +33,7 @@ TigerMan* TigerMan::deserialize(ValueMap& properties)
 
 TigerMan::TigerMan(ValueMap& properties) : super(properties,
 	TigerMan::MapKeyTigerMan,
-	nullptr,
+	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	Size(256.0f, 308.0f),
 	1.0f,

@@ -33,7 +33,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap& properties)
 
 EarthGolem::EarthGolem(ValueMap& properties) : super(properties,
 	EarthGolem::MapKeyEarthGolem,
-	nullptr,
+	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	Size(256.0f, 224.0f),
 	1.0f,

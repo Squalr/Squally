@@ -33,7 +33,7 @@ Merlin* Merlin::deserialize(ValueMap& properties)
 
 Merlin::Merlin(ValueMap& properties) : super(properties,
 	Merlin::MapKeyMerlin,
-	nullptr,
+	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

@@ -33,7 +33,7 @@ Snowman* Snowman::deserialize(ValueMap& properties)
 
 Snowman::Snowman(ValueMap& properties) : super(properties,
 	Snowman::MapKeySnowman,
-	nullptr,
+	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,

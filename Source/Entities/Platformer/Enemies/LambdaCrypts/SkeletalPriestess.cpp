@@ -33,7 +33,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& properties)
 
 SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : super(properties,
 	SkeletalPriestess::MapKeySkeletalPriestess,
-	nullptr,
+	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
 	Size(196.0f, 312.0f),
 	0.8f,
