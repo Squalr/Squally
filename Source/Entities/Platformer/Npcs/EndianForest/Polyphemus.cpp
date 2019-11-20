@@ -33,7 +33,7 @@ Polyphemus* Polyphemus::deserialize(ValueMap& properties)
 
 Polyphemus::Polyphemus(ValueMap& properties) : super(properties,
 	Polyphemus::MapKeyPolyphemus,
-	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 	if (Polyphemus::HexusOpponentDataInstance == nullptr)
 	{
 		Polyphemus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Polyphemus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.1f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Polyphemus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.054f,
 			HexusOpponentData::generateDeck(32, 0.054f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

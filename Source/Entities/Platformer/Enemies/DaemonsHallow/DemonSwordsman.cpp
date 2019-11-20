@@ -33,7 +33,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap& properties)
 
 DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
 	DemonSwordsman::MapKeyDemonSwordsman,
-	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
 	Size(212.0f, 268.0f),
 	0.65f,
@@ -61,16 +61,12 @@ HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 	if (DemonSwordsman::HexusOpponentDataInstance == nullptr)
 	{
 		DemonSwordsman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.65f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonSwordsman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 

@@ -33,7 +33,7 @@ Fraya* Fraya::deserialize(ValueMap& properties)
 
 Fraya::Fraya(ValueMap& properties) : super(properties,
 	Fraya::MapKeyFraya,
-	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Fraya::getHexusOpponentData()
 	if (Fraya::HexusOpponentDataInstance == nullptr)
 	{
 		Fraya::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Fraya::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.304f,
 			HexusOpponentData::generateDeck(32, 0.304f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

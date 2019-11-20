@@ -33,7 +33,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap& properties)
 
 VoidArcher::VoidArcher(ValueMap& properties) : super(properties,
 	VoidArcher::MapKeyVoidArcher,
-	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
 	Size(196.0f, 348.0f),
 	0.65f,
@@ -61,16 +61,12 @@ HexusOpponentData* VoidArcher::getHexusOpponentData()
 	if (VoidArcher::HexusOpponentDataInstance == nullptr)
 	{
 		VoidArcher::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_VoidArcher_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.65f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			VoidArcher::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 

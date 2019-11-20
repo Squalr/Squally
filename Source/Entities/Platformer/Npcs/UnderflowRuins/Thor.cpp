@@ -33,7 +33,7 @@ Thor* Thor::deserialize(ValueMap& properties)
 
 Thor::Thor(ValueMap& properties) : super(properties,
 	Thor::MapKeyThor,
-	EntityResources::Npcs_UnderflowRuins_Thor_Animations,
+	nullptr,
 	EntityResources::Npcs_UnderflowRuins_Thor_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Thor::getHexusOpponentData()
 	if (Thor::HexusOpponentDataInstance == nullptr)
 	{
 		Thor::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Thor_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -172.0f),
 			Vec2(-32.0f, -144.0f),
 			Thor::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.241f,
 			HexusOpponentData::generateDeck(32, 0.241f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

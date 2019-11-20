@@ -33,7 +33,7 @@ SkeletalCleaver* SkeletalCleaver::deserialize(ValueMap& properties)
 
 SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : super(properties,
 	SkeletalCleaver::MapKeySkeletalCleaver,
-	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
 	Size(128.0f, 312.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalCleaver::getHexusOpponentData()
 	if (SkeletalCleaver::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalCleaver::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalCleaver::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 

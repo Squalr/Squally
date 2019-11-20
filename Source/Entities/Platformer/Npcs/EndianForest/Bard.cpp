@@ -33,7 +33,7 @@ Bard* Bard::deserialize(ValueMap& properties)
 
 Bard::Bard(ValueMap& properties) : super(properties,
 	Bard::MapKeyBard,
-	EntityResources::Npcs_EndianForest_Bard_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Bard::getHexusOpponentData()
 	if (Bard::HexusOpponentDataInstance == nullptr)
 	{
 		Bard::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Bard_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Bard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.018f,
 			HexusOpponentData::generateDeck(32, 0.018f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

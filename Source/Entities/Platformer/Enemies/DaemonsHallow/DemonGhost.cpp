@@ -33,7 +33,7 @@ DemonGhost* DemonGhost::deserialize(ValueMap& properties)
 
 DemonGhost::DemonGhost(ValueMap& properties) : super(properties,
 	DemonGhost::MapKeyDemonGhost,
-	EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_DemonGhost_Emblem,
 	Size(256.0f, 320.0f),
 	0.7f,
@@ -61,16 +61,12 @@ HexusOpponentData* DemonGhost::getHexusOpponentData()
 	if (DemonGhost::HexusOpponentDataInstance == nullptr)
 	{
 		DemonGhost::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonGhost_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonGhost::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 

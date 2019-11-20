@@ -33,7 +33,7 @@ Mummy* Mummy::deserialize(ValueMap& properties)
 
 Mummy::Mummy(ValueMap& properties) : super(properties,
 	Mummy::MapKeyMummy,
-	EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
+	nullptr,
 	EntityResources::Helpers_UnderflowRuins_Mummy_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Mummy::getHexusOpponentData()
 	if (Mummy::HexusOpponentDataInstance == nullptr)
 	{
 		Mummy::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_UnderflowRuins_Mummy_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mummy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

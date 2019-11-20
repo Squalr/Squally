@@ -33,7 +33,7 @@ Shen* Shen::deserialize(ValueMap& properties)
 
 Shen::Shen(ValueMap& properties) : super(properties,
 	Shen::MapKeyShen,
-	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Shen::getHexusOpponentData()
 	if (Shen::HexusOpponentDataInstance == nullptr)
 	{
 		Shen::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Shen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.375f,
 			HexusOpponentData::generateDeck(32, 0.375f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

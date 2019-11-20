@@ -33,7 +33,7 @@ Bodom* Bodom::deserialize(ValueMap& properties)
 
 Bodom::Bodom(ValueMap& properties) : super(properties,
 	Bodom::MapKeyBodom,
-	EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Bodom_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Bodom::getHexusOpponentData()
 	if (Bodom::HexusOpponentDataInstance == nullptr)
 	{
 		Bodom::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Bodom::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.536f,
 			HexusOpponentData::generateDeck(32, 0.536f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

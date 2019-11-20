@@ -33,7 +33,7 @@ EarthGolem* EarthGolem::deserialize(ValueMap& properties)
 
 EarthGolem::EarthGolem(ValueMap& properties) : super(properties,
 	EarthGolem::MapKeyEarthGolem,
-	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Emblem,
 	Size(256.0f, 224.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 	if (EarthGolem::HexusOpponentDataInstance == nullptr)
 	{
 		EarthGolem::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_EarthGolem_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -144.0f),
 			EarthGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
@@ -101,7 +97,7 @@ HexusOpponentData* EarthGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -112,7 +108,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -128,7 +124,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

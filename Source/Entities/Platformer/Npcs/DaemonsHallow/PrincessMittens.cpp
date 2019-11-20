@@ -33,7 +33,7 @@ PrincessMittens* PrincessMittens::deserialize(ValueMap& properties)
 
 PrincessMittens::PrincessMittens(ValueMap& properties) : super(properties,
 	PrincessMittens::MapKeyPrincessMittens,
-	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
+	nullptr,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 	if (PrincessMittens::HexusOpponentDataInstance == nullptr)
 	{
 		PrincessMittens::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PrincessMittens::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.732f,
 			HexusOpponentData::generateDeck(32, 0.732f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ Mildred* Mildred::deserialize(ValueMap& properties)
 
 Mildred::Mildred(ValueMap& properties) : super(properties,
 	Mildred::MapKeyMildred,
-	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 	if (Mildred::HexusOpponentDataInstance == nullptr)
 	{
 		Mildred::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mildred::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.330f,
 			HexusOpponentData::generateDeck(32, 0.330f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ Thurstan* Thurstan::deserialize(ValueMap& properties)
 
 Thurstan::Thurstan(ValueMap& properties) : super(properties,
 	Thurstan::MapKeyThurstan,
-	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	Size(124.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Thurstan::getHexusOpponentData()
 	if (Thurstan::HexusOpponentDataInstance == nullptr)
 	{
 		Thurstan::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Thurstan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.482f,
 			HexusOpponentData::generateDeck(32, 0.482f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

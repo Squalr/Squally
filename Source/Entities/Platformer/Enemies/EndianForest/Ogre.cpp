@@ -33,7 +33,7 @@ Ogre* Ogre::deserialize(ValueMap& properties)
 
 Ogre::Ogre(ValueMap& properties) : super(properties,
 	Ogre::MapKeyOgre,
-	EntityResources::Enemies_EndianForest_Ogre_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	Size(256.0f, 248.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 	if (Ogre::HexusOpponentDataInstance == nullptr)
 	{
 		Ogre::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_Ogre_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Ogre::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.846f,
 			HexusOpponentData::generateDeck(32, 0.846f,
 			{
 
@@ -101,7 +97,7 @@ HexusOpponentData* Ogre::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -117,7 +113,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -138,10 +134,10 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				}
 			)
 		);

@@ -33,7 +33,7 @@ Abomination* Abomination::deserialize(ValueMap& properties)
 
 Abomination::Abomination(ValueMap& properties) : super(properties,
 	Abomination::MapKeyAbomination,
-	EntityResources::Enemies_VoidStar_Abomination_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_Abomination_Emblem,
 	Size(296.0f, 356.0f),
 	0.6f,
@@ -61,16 +61,12 @@ HexusOpponentData* Abomination::getHexusOpponentData()
 	if (Abomination::HexusOpponentDataInstance == nullptr)
 	{
 		Abomination::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Abomination_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.6f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Abomination::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 

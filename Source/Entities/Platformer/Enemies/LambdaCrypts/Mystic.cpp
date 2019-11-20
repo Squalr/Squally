@@ -33,7 +33,7 @@ Mystic* Mystic::deserialize(ValueMap& properties)
 
 Mystic::Mystic(ValueMap& properties) : super(properties,
 	Mystic::MapKeyMystic,
-	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
 	Size(420.0f, 296.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Mystic::getHexusOpponentData()
 	if (Mystic::HexusOpponentDataInstance == nullptr)
 	{
 		Mystic::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mystic::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 

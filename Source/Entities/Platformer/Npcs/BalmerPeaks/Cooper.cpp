@@ -33,7 +33,7 @@ Cooper* Cooper::deserialize(ValueMap& properties)
 
 Cooper::Cooper(ValueMap& properties) : super(properties,
 	Cooper::MapKeyCooper,
-	EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Cooper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 	if (Cooper::HexusOpponentDataInstance == nullptr)
 	{
 		Cooper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Cooper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.527f,
 			HexusOpponentData::generateDeck(32, 0.527f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

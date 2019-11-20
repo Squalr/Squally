@@ -33,7 +33,7 @@ EvilEye* EvilEye::deserialize(ValueMap& properties)
 
 EvilEye::EvilEye(ValueMap& properties) : super(properties,
 	EvilEye::MapKeyEvilEye,
-	EntityResources::Enemies_VoidStar_EvilEye_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
 	Size(720.0f, 840.0f),
 	0.6f,
@@ -61,16 +61,12 @@ HexusOpponentData* EvilEye::getHexusOpponentData()
 	if (EvilEye::HexusOpponentDataInstance == nullptr)
 	{
 		EvilEye::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_EvilEye_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.6f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			EvilEye::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

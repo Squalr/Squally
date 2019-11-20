@@ -33,7 +33,7 @@ KingRedsong* KingRedsong::deserialize(ValueMap& properties)
 
 KingRedsong::KingRedsong(ValueMap& properties) : super(properties,
 	KingRedsong::MapKeyKingRedsong,
-	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
 	Size(160.0f, 192.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* KingRedsong::getHexusOpponentData()
 	if (KingRedsong::HexusOpponentDataInstance == nullptr)
 	{
 		KingRedsong::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			KingRedsong::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.411f,
 			HexusOpponentData::generateDeck(32, 0.411f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

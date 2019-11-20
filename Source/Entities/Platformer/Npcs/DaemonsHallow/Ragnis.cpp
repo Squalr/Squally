@@ -33,7 +33,7 @@ Ragnis* Ragnis::deserialize(ValueMap& properties)
 
 Ragnis::Ragnis(ValueMap& properties) : super(properties,
 	Ragnis::MapKeyRagnis,
-	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
+	nullptr,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* Ragnis::getHexusOpponentData()
 	if (Ragnis::HexusOpponentDataInstance == nullptr)
 	{
 		Ragnis::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Ragnis::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.741f,
 			HexusOpponentData::generateDeck(32, 0.741f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

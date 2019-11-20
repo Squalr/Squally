@@ -33,7 +33,7 @@ ReanimatedPig* ReanimatedPig::deserialize(ValueMap& properties)
 
 ReanimatedPig::ReanimatedPig(ValueMap& properties) : super(properties,
 	ReanimatedPig::MapKeyReanimatedPig,
-	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
 	Size(256.0f, 240.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* ReanimatedPig::getHexusOpponentData()
 	if (ReanimatedPig::HexusOpponentDataInstance == nullptr)
 	{
 		ReanimatedPig::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			ReanimatedPig::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 

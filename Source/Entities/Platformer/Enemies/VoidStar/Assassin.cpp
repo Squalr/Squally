@@ -33,7 +33,7 @@ Assassin* Assassin::deserialize(ValueMap& properties)
 
 Assassin::Assassin(ValueMap& properties) : super(properties,
 	Assassin::MapKeyAssassin,
-	EntityResources::Enemies_VoidStar_Assassin_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
 	Size(278.0f, 288.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Assassin::getHexusOpponentData()
 	if (Assassin::HexusOpponentDataInstance == nullptr)
 	{
 		Assassin::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Assassin_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Assassin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 

@@ -33,7 +33,7 @@ Zana* Zana::deserialize(ValueMap& properties)
 
 Zana::Zana(ValueMap& properties) : super(properties,
 	Zana::MapKeyZana,
-	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
+	nullptr,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Zana::getHexusOpponentData()
 	if (Zana::HexusOpponentDataInstance == nullptr)
 	{
 		Zana::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Zana_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zana::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.830f,
 			HexusOpponentData::generateDeck(32, 0.830f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

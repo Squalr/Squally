@@ -33,7 +33,7 @@ Cyclops* Cyclops::deserialize(ValueMap& properties)
 
 Cyclops::Cyclops(ValueMap& properties) : super(properties,
 	Cyclops::MapKeyCyclops,
-	EntityResources::Enemies_EndianForest_Cyclops_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_Cyclops_Emblem,
 	Size(296.0f, 256.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 	if (Cyclops::HexusOpponentDataInstance == nullptr)
 	{
 		Cyclops::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_Cyclops_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -196.0f),
 			Cyclops::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.462f,
 			HexusOpponentData::generateDeck(32, 0.462f,
 			{
 
@@ -116,7 +112,7 @@ HexusOpponentData* Cyclops::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -132,13 +128,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				}
 			)
 		);

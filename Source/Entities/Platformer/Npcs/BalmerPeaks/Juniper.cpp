@@ -33,7 +33,7 @@ Juniper* Juniper::deserialize(ValueMap& properties)
 
 Juniper::Juniper(ValueMap& properties) : super(properties,
 	Juniper::MapKeyJuniper,
-	EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Juniper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* Juniper::getHexusOpponentData()
 	if (Juniper::HexusOpponentDataInstance == nullptr)
 	{
 		Juniper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Juniper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Juniper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.571f,
 			HexusOpponentData::generateDeck(32, 0.571f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

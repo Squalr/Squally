@@ -33,7 +33,7 @@ Barbarian* Barbarian::deserialize(ValueMap& properties)
 
 Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	Barbarian::MapKeyBarbarian,
-	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,
 	Size(1280.0f, 920.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Barbarian::getHexusOpponentData()
 	if (Barbarian::HexusOpponentDataInstance == nullptr)
 	{
 		Barbarian::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(-32.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(0.0f, -160.0f),
 			Barbarian::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
@@ -111,7 +107,7 @@ HexusOpponentData* Barbarian::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 				},
 				// Player decimal cards
 				std::vector<CardData*>

@@ -33,7 +33,7 @@ Minotaur* Minotaur::deserialize(ValueMap& properties)
 
 Minotaur::Minotaur(ValueMap& properties) : super(properties,
 	Minotaur::MapKeyMinotaur,
-	EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
+	nullptr,
 	EntityResources::Enemies_UnderflowRuins_Minotaur_Emblem,
 	Size(278.0f, 288.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Minotaur::getHexusOpponentData()
 	if (Minotaur::HexusOpponentDataInstance == nullptr)
 	{
 		Minotaur::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_Minotaur_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -196.0f),
 			Minotaur::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* Minotaur::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -113,46 +109,46 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Player hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 				}
 			)
 		);

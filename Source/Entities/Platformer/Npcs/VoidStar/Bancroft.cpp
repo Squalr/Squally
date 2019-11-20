@@ -33,7 +33,7 @@ Bancroft* Bancroft::deserialize(ValueMap& properties)
 
 Bancroft::Bancroft(ValueMap& properties) : super(properties,
 	Bancroft::MapKeyBancroft,
-	EntityResources::Npcs_VoidStar_Bancroft_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Bancroft::getHexusOpponentData()
 	if (Bancroft::HexusOpponentDataInstance == nullptr)
 	{
 		Bancroft::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Bancroft_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Bancroft::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.913f,
 			HexusOpponentData::generateDeck(32, 0.913f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

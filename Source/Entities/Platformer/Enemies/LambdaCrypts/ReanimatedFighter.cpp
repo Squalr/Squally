@@ -33,7 +33,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 
 ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
 	ReanimatedFighter::MapKeyReanimatedFighter,
-	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	Size(256.0f, 248.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* ReanimatedFighter::getHexusOpponentData()
 	if (ReanimatedFighter::HexusOpponentDataInstance == nullptr)
 	{
 		ReanimatedFighter::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			ReanimatedFighter::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 

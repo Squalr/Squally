@@ -33,7 +33,7 @@ VoidDemon* VoidDemon::deserialize(ValueMap& properties)
 
 VoidDemon::VoidDemon(ValueMap& properties) : super(properties,
 	VoidDemon::MapKeyVoidDemon,
-	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
 	Size(338.0f, 342.0f),
 	0.7f,
@@ -61,16 +61,12 @@ HexusOpponentData* VoidDemon::getHexusOpponentData()
 	if (VoidDemon::HexusOpponentDataInstance == nullptr)
 	{
 		VoidDemon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_VoidDemon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.7f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			VoidDemon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 

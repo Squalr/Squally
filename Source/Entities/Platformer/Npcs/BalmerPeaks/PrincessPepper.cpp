@@ -33,7 +33,7 @@ PrincessPepper* PrincessPepper::deserialize(ValueMap& properties)
 
 PrincessPepper::PrincessPepper(ValueMap& properties) : super(properties,
 	PrincessPepper::MapKeyPrincessPepper,
-	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_PrincessPepper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* PrincessPepper::getHexusOpponentData()
 	if (PrincessPepper::HexusOpponentDataInstance == nullptr)
 	{
 		PrincessPepper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_PrincessPepper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PrincessPepper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.598f,
 			HexusOpponentData::generateDeck(32, 0.598f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

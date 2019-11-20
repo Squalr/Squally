@@ -33,7 +33,7 @@ TikiGolem* TikiGolem::deserialize(ValueMap& properties)
 
 TikiGolem::TikiGolem(ValueMap& properties) : super(properties,
 	TikiGolem::MapKeyTikiGolem,
-	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	Size(284.0f, 256.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 	if (TikiGolem::HexusOpponentDataInstance == nullptr)
 	{
 		TikiGolem::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			TikiGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
@@ -101,9 +97,9 @@ HexusOpponentData* TikiGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -114,9 +110,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -132,8 +128,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

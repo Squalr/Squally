@@ -33,7 +33,7 @@ Zelina* Zelina::deserialize(ValueMap& properties)
 
 Zelina::Zelina(ValueMap& properties) : super(properties,
 	Zelina::MapKeyZelina,
-	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
+	nullptr,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Zelina::getHexusOpponentData()
 	if (Zelina::HexusOpponentDataInstance == nullptr)
 	{
 		Zelina::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zelina::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.795f,
 			HexusOpponentData::generateDeck(32, 0.795f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

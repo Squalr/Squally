@@ -33,7 +33,7 @@ DarkTiger* DarkTiger::deserialize(ValueMap& properties)
 
 DarkTiger::DarkTiger(ValueMap& properties) : super(properties,
 	DarkTiger::MapKeyDarkTiger,
-	EntityResources::Enemies_VoidStar_DarkTiger_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_DarkTiger_Emblem,
 	Size(256.0f, 248.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* DarkTiger::getHexusOpponentData()
 	if (DarkTiger::HexusOpponentDataInstance == nullptr)
 	{
 		DarkTiger::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_DarkTiger_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DarkTiger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 

@@ -33,7 +33,7 @@ Burch* Burch::deserialize(ValueMap& properties)
 
 Burch::Burch(ValueMap& properties) : super(properties,
 	Burch::MapKeyBurch,
-	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Burch::getHexusOpponentData()
 	if (Burch::HexusOpponentDataInstance == nullptr)
 	{
 		Burch::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Burch::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.277f,
 			HexusOpponentData::generateDeck(32, 0.277f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

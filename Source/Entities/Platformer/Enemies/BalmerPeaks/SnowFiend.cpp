@@ -33,7 +33,7 @@ SnowFiend* SnowFiend::deserialize(ValueMap& properties)
 
 SnowFiend::SnowFiend(ValueMap& properties) : super(properties,
 	SnowFiend::MapKeySnowFiend,
-	EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_SnowFiend_Emblem,
 	Size(420.0f, 420.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* SnowFiend::getHexusOpponentData()
 	if (SnowFiend::HexusOpponentDataInstance == nullptr)
 	{
 		SnowFiend::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_SnowFiend_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -248.0f),
 			SnowFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* SnowFiend::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -128,21 +124,21 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				}
 			)
 		);

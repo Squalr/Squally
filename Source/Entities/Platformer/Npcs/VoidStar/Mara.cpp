@@ -33,7 +33,7 @@ Mara* Mara::deserialize(ValueMap& properties)
 
 Mara::Mara(ValueMap& properties) : super(properties,
 	Mara::MapKeyMara,
-	EntityResources::Npcs_VoidStar_Mara_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Mara::getHexusOpponentData()
 	if (Mara::HexusOpponentDataInstance == nullptr)
 	{
 		Mara::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Mara_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mara::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.962f,
 			HexusOpponentData::generateDeck(32, 0.962f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ SkeletalKnight* SkeletalKnight::deserialize(ValueMap& properties)
 
 SkeletalKnight::SkeletalKnight(ValueMap& properties) : super(properties,
 	SkeletalKnight::MapKeySkeletalKnight,
-	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
 	Size(212.0f, 280.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalKnight::getHexusOpponentData()
 	if (SkeletalKnight::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalKnight::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalKnight::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 

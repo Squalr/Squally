@@ -33,7 +33,7 @@ Rupert* Rupert::deserialize(ValueMap& properties)
 
 Rupert::Rupert(ValueMap& properties) : super(properties,
 	Rupert::MapKeyRupert,
-	EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
+	nullptr,
 	EntityResources::Npcs_DaemonsHallow_Rupert_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 	if (Rupert::HexusOpponentDataInstance == nullptr)
 	{
 		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Rupert::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.634f,
 			HexusOpponentData::generateDeck(32, 0.634f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

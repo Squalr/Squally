@@ -33,7 +33,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 
 Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	Gargoyle::MapKeyGargoyle,
-	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
 	Size(256.0f, 256.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 	if (Gargoyle::HexusOpponentDataInstance == nullptr)
 	{
 		Gargoyle::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Gargoyle_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
-			Vec2(-32.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Gargoyle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 

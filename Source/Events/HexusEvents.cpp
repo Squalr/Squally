@@ -3,6 +3,8 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 
+#include "Events/DialogueEvents.h"
+
 using namespace cocos2d;
 
 const std::string HexusEvents::EventOpenHexus = "EVENT_HEXUS_OPEN";
@@ -75,4 +77,10 @@ void HexusEvents::TriggerOnStateUpdate(GameState* gameState)
 		HexusEvents::OnStateUpdateEvent,
 		gameState
 	);
+}
+
+Node* HexusEvents::BuildPreviewNode(PlatformerEntity* entity)
+{
+	// Just use the same builder used for dialogue
+	return DialogueEvents::BuildPreviewNode(entity, false);
 }

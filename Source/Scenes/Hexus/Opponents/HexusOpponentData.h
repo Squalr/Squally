@@ -30,36 +30,30 @@ public:
 	};
 
 	static HexusOpponentData* create(
-		std::string animationResourceFile,
+		cocos2d::Node* entityPreviewNode,
 		std::string backgroundResourceFile,
-		float animationScale,
-		cocos2d::Vec2 animationOffset,
-		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
 		std::string enemyAnalyticsIdentifier,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
-		float strength,
 		std::vector<CardData*> cards,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr,
-		std::vector<TutorialBase*> tutorials = { });
+		std::vector<TutorialBase*> tutorials = { }
+	);
 
 	HexusOpponentData(
-		std::string animationResourceFile,
+		cocos2d::Node* entityPreviewNode,
 		std::string backgroundResourceFile,
-		float animationScale,
-		cocos2d::Vec2 animationOffset,
-		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
 		std::string enemyAnalyticsIdentifier,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
-		float strength,
 		std::vector<CardData*> cards,
 		std::function<void(Result)> onRoundEnd = nullptr,
 		StateOverride* stateOverride = nullptr,
-		std::vector<TutorialBase*> tutorials = { });
+		std::vector<TutorialBase*> tutorials = { }
+	);
 	~HexusOpponentData();
 
 	std::vector<CardData*> getDeck();

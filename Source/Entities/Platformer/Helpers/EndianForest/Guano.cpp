@@ -33,7 +33,7 @@ Guano* Guano::deserialize(ValueMap& properties)
 
 Guano::Guano(ValueMap& properties) : super(properties,
 	Guano::MapKeyGuano,
-	EntityResources::Helpers_EndianForest_Guano_Animations,
+	nullptr,
 	EntityResources::Helpers_EndianForest_Guano_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Guano::getHexusOpponentData()
 	if (Guano::HexusOpponentDataInstance == nullptr)
 	{
 		Guano::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_EndianForest_Guano_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Guano::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

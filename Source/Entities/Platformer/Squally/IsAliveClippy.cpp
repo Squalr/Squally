@@ -24,7 +24,7 @@ IsAliveClippy* IsAliveClippy::create()
 
 IsAliveClippy::IsAliveClippy() : super()
 {
-	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
+	this->clippyAnimations = SmartAnimationNode::create(nullptr);
 
 	this->clippyAnimations->setFlippedX(true);
 

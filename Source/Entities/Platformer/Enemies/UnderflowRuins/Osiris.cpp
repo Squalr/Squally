@@ -33,7 +33,7 @@ Osiris* Osiris::deserialize(ValueMap& properties)
 
 Osiris::Osiris(ValueMap& properties) : super(properties,
 	Osiris::MapKeyOsiris,
-	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
+	nullptr,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	Size(324.0f, 316.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Osiris::getHexusOpponentData()
 	if (Osiris::HexusOpponentDataInstance == nullptr)
 	{
 		Osiris::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -212.0f),
 			Osiris::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
@@ -101,9 +97,9 @@ HexusOpponentData* Osiris::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -114,7 +110,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -130,9 +126,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

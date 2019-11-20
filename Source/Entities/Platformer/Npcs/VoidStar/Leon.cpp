@@ -33,7 +33,7 @@ Leon* Leon::deserialize(ValueMap& properties)
 
 Leon::Leon(ValueMap& properties) : super(properties,
 	Leon::MapKeyLeon,
-	EntityResources::Npcs_VoidStar_Leon_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Leon::getHexusOpponentData()
 	if (Leon::HexusOpponentDataInstance == nullptr)
 	{
 		Leon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Leon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Leon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.971f,
 			HexusOpponentData::generateDeck(32, 0.971f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ Sarude* Sarude::deserialize(ValueMap& properties)
 
 Sarude::Sarude(ValueMap& properties) : super(properties,
 	Sarude::MapKeySarude,
-	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Sarude::getHexusOpponentData()
 	if (Sarude::HexusOpponentDataInstance == nullptr)
 	{
 		Sarude::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Sarude::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.366f,
 			HexusOpponentData::generateDeck(32, 0.366f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

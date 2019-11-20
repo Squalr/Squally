@@ -33,7 +33,7 @@ Gecko* Gecko::deserialize(ValueMap& properties)
 
 Gecko::Gecko(ValueMap& properties) : super(properties,
 	Gecko::MapKeyGecko,
-	EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
+	nullptr,
 	EntityResources::Helpers_SeaSharpCaverns_Gecko_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Gecko::getHexusOpponentData()
 	if (Gecko::HexusOpponentDataInstance == nullptr)
 	{
 		Gecko::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_SeaSharpCaverns_Gecko_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Gecko::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

@@ -33,7 +33,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& properties)
 
 SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : super(properties,
 	SkeletalPriestess::MapKeySkeletalPriestess,
-	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
 	Size(196.0f, 312.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalPriestess::getHexusOpponentData()
 	if (SkeletalPriestess::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalPriestess::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalPriestess::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 

@@ -33,7 +33,7 @@ Troll* Troll::deserialize(ValueMap& properties)
 
 Troll::Troll(ValueMap& properties) : super(properties,
 	Troll::MapKeyTroll,
-	EntityResources::Enemies_EndianForest_Troll_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
 	Size(256.0f, 248.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Troll::getHexusOpponentData()
 	if (Troll::HexusOpponentDataInstance == nullptr)
 	{
 		Troll::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_Troll_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Troll::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.923f,
 			HexusOpponentData::generateDeck(32, 0.923f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* Troll::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -118,8 +114,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 				},
 				// Player hex cards
 				std::vector<CardData*>

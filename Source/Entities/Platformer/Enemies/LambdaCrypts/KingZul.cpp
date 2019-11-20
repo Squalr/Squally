@@ -33,7 +33,7 @@ KingZul* KingZul::deserialize(ValueMap& properties)
 
 KingZul::KingZul(ValueMap& properties) : super(properties,
 	KingZul::MapKeyKingZul,
-	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	Size(196.0f, 320.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* KingZul::getHexusOpponentData()
 	if (KingZul::HexusOpponentDataInstance == nullptr)
 	{
 		KingZul::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			KingZul::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

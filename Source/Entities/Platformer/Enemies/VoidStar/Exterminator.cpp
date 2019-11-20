@@ -33,7 +33,7 @@ Exterminator* Exterminator::deserialize(ValueMap& properties)
 
 Exterminator::Exterminator(ValueMap& properties) : super(properties,
 	Exterminator::MapKeyExterminator,
-	EntityResources::Enemies_VoidStar_Exterminator_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	Size(320.0f, 278.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Exterminator::getHexusOpponentData()
 	if (Exterminator::HexusOpponentDataInstance == nullptr)
 	{
 		Exterminator::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Exterminator_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Exterminator::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 

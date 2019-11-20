@@ -53,7 +53,6 @@ void CipherStateTesting::onStateEnter(CipherState* cipherState)
 	{
 		this->performExecuteLoop(immediateBlocks, [=]()
 		{
-			// TODO: Check for victory and whatnot
 			this->runAction(Sequence::create(
 				DelayTime::create(0.1f),
 				CallFunc::create([=]()
@@ -78,7 +77,7 @@ void CipherStateTesting::onStateExit(CipherState* cipherState)
 
 void CipherStateTesting::performExecuteLoop(std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
 {
-	if (index < blocks.size())
+	if (index < int(blocks.size()))
 	{
 		// Execute the input block at the current index
 		blocks[index]->execute([=]

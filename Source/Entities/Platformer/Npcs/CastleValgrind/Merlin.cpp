@@ -33,7 +33,7 @@ Merlin* Merlin::deserialize(ValueMap& properties)
 
 Merlin::Merlin(ValueMap& properties) : super(properties,
 	Merlin::MapKeyMerlin,
-	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 	if (Merlin::HexusOpponentDataInstance == nullptr)
 	{
 		Merlin::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Merlin_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Merlin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.438f,
 			HexusOpponentData::generateDeck(32, 0.438f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

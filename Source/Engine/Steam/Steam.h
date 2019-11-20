@@ -6,9 +6,10 @@ class Steam
 {
 public:
 	static bool init();
-	static bool isSquallyItchBuild();
+	static bool isSquallySteamBuild();
 	static bool isSteamDebugFilePresent();
 	static bool isCloudSaveAvailable();
+	static std::string getSteamUserId();
 	static cocos2d::LanguageType getLanguage();
 
 	static const int SteamAppId;

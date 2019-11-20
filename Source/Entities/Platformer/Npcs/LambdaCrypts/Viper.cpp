@@ -33,7 +33,7 @@ Viper* Viper::deserialize(ValueMap& properties)
 
 Viper::Viper(ValueMap& properties) : super(properties,
 	Viper::MapKeyViper,
-	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
+	nullptr,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* Viper::getHexusOpponentData()
 	if (Viper::HexusOpponentDataInstance == nullptr)
 	{
 		Viper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Viper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Viper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.848f,
 			HexusOpponentData::generateDeck(32, 0.848f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

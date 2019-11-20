@@ -33,7 +33,7 @@ TigerMan* TigerMan::deserialize(ValueMap& properties)
 
 TigerMan::TigerMan(ValueMap& properties) : super(properties,
 	TigerMan::MapKeyTigerMan,
-	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
+	nullptr,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	Size(256.0f, 308.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 	if (TigerMan::HexusOpponentDataInstance == nullptr)
 	{
 		TigerMan::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-16.0f, -212.0f),
 			TigerMan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -128,8 +124,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

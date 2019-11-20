@@ -33,7 +33,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap& properties)
 
 Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
 	Asmodeus::MapKeyAsmodeus,
-	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	Size(480.0f, 480.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* Asmodeus::getHexusOpponentData()
 	if (Asmodeus::HexusOpponentDataInstance == nullptr)
 	{
 		Asmodeus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Asmodeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

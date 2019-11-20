@@ -33,7 +33,7 @@ Leroy* Leroy::deserialize(ValueMap& properties)
 
 Leroy::Leroy(ValueMap& properties) : super(properties,
 	Leroy::MapKeyLeroy,
-	EntityResources::Npcs_CastleValgrind_Leroy_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Leroy_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 	if (Leroy::HexusOpponentDataInstance == nullptr)
 	{
 		Leroy::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Leroy_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -128.0f),
 			Vec2(-32.0f, -96.0f),
 			Leroy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.420f,
 			HexusOpponentData::generateDeck(32, 0.420f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

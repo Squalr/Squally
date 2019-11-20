@@ -33,7 +33,7 @@ Mabel* Mabel::deserialize(ValueMap& properties)
 
 Mabel::Mabel(ValueMap& properties) : super(properties,
 	Mabel::MapKeyMabel,
-	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Mabel::getHexusOpponentData()
 	if (Mabel::HexusOpponentDataInstance == nullptr)
 	{
 		Mabel::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Mabel_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mabel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.429f,
 			HexusOpponentData::generateDeck(32, 0.429f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

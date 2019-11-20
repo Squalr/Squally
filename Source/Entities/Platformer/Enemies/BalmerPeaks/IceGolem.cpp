@@ -33,7 +33,7 @@ IceGolem* IceGolem::deserialize(ValueMap& properties)
 
 IceGolem::IceGolem(ValueMap& properties) : super(properties,
 	IceGolem::MapKeyIceGolem,
-	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	Size(1680.0f, 996.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* IceGolem::getHexusOpponentData()
 	if (IceGolem::HexusOpponentDataInstance == nullptr)
 	{
 		IceGolem::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -160.0f),
 			IceGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.333f,
 			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 
@@ -101,10 +97,10 @@ HexusOpponentData* IceGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -130,14 +126,14 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

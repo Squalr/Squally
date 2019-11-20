@@ -33,7 +33,7 @@ PrincessDawn* PrincessDawn::deserialize(ValueMap& properties)
 
 PrincessDawn::PrincessDawn(ValueMap& properties) : super(properties,
 	PrincessDawn::MapKeyPrincessDawn,
-	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* PrincessDawn::getHexusOpponentData()
 	if (PrincessDawn::HexusOpponentDataInstance == nullptr)
 	{
 		PrincessDawn::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PrincessDawn::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.348f,
 			HexusOpponentData::generateDeck(32, 0.348f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

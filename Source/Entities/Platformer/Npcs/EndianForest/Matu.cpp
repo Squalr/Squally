@@ -33,7 +33,7 @@ Matu* Matu::deserialize(ValueMap& properties)
 
 Matu::Matu(ValueMap& properties) : super(properties,
 	Matu::MapKeyMatu,
-	EntityResources::Npcs_EndianForest_Matu_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Matu_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Matu::getHexusOpponentData()
 	if (Matu::HexusOpponentDataInstance == nullptr)
 	{
 		Matu::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Matu_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Matu::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.045f,
 			HexusOpponentData::generateDeck(32, 0.045f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

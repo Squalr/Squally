@@ -33,7 +33,7 @@ Gramps* Gramps::deserialize(ValueMap& properties)
 
 Gramps::Gramps(ValueMap& properties) : super(properties,
 	Gramps::MapKeyGramps,
-	EntityResources::Npcs_EndianForest_Gramps_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Gramps::getHexusOpponentData()
 	if (Gramps::HexusOpponentDataInstance == nullptr)
 	{
 		Gramps::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Gramps_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Gramps::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.080f,
 			HexusOpponentData::generateDeck(32, 0.080f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

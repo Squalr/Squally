@@ -33,7 +33,7 @@ DemonWarrior* DemonWarrior::deserialize(ValueMap& properties)
 
 DemonWarrior::DemonWarrior(ValueMap& properties) : super(properties,
 	DemonWarrior::MapKeyDemonWarrior,
-	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_DemonWarrior_Emblem,
 	Size(320.0f, 372.0f),
 	0.7f,
@@ -61,16 +61,12 @@ HexusOpponentData* DemonWarrior::getHexusOpponentData()
 	if (DemonWarrior::HexusOpponentDataInstance == nullptr)
 	{
 		DemonWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 

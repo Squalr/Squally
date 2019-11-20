@@ -33,7 +33,7 @@ Rusty* Rusty::deserialize(ValueMap& properties)
 
 Rusty::Rusty(ValueMap& properties) : super(properties,
 	Rusty::MapKeyRusty,
-	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
+	nullptr,
 	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Rusty::getHexusOpponentData()
 	if (Rusty::HexusOpponentDataInstance == nullptr)
 	{
 		Rusty::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Rusty::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.643f,
 			HexusOpponentData::generateDeck(32, 0.643f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

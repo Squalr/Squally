@@ -33,7 +33,7 @@ BoneKnight* BoneKnight::deserialize(ValueMap& properties)
 
 BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
 	BoneKnight::MapKeyBoneKnight,
-	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
 	Size(540.0f, 340.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* BoneKnight::getHexusOpponentData()
 	if (BoneKnight::HexusOpponentDataInstance == nullptr)
 	{
 		BoneKnight::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_BoneKnight_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(-64.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			BoneKnight::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.333f,
 			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 

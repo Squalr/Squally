@@ -54,7 +54,7 @@ void Localization::setLanguage(LanguageType languageType)
 LanguageType Localization::getNativeLanguage()
 {
 	// Default to steam language
-	if (!Steam::isSquallyItchBuild())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return Steam::getLanguage();
 	}

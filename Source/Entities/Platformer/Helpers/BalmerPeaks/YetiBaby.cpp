@@ -33,7 +33,7 @@ YetiBaby* YetiBaby::deserialize(ValueMap& properties)
 
 YetiBaby::YetiBaby(ValueMap& properties) : super(properties,
 	YetiBaby::MapKeyYetiBaby,
-	EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
+	nullptr,
 	EntityResources::Helpers_BalmerPeaks_YetiBaby_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* YetiBaby::getHexusOpponentData()
 	if (YetiBaby::HexusOpponentDataInstance == nullptr)
 	{
 		YetiBaby::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_BalmerPeaks_YetiBaby_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			YetiBaby::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

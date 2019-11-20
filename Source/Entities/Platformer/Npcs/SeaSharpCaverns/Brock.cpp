@@ -33,7 +33,7 @@ Brock* Brock::deserialize(ValueMap& properties)
 
 Brock::Brock(ValueMap& properties) : super(properties,
 	Brock::MapKeyBrock,
-	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Brock::getHexusOpponentData()
 	if (Brock::HexusOpponentDataInstance == nullptr)
 	{
 		Brock::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Brock::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.268f,
 			HexusOpponentData::generateDeck(32, 0.268f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -34,7 +34,7 @@ OrcGrunt* OrcGrunt::deserialize(ValueMap& properties)
 
 OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	OrcGrunt::MapKeyOrcGrunt,
-	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	Size(256.0f, 218.0f),
 	1.0f,
@@ -66,16 +66,12 @@ HexusOpponentData* OrcGrunt::getHexusOpponentData()
 	if (OrcGrunt::HexusOpponentDataInstance == nullptr)
 	{
 		OrcGrunt::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			OrcGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.077f,
 			HexusOpponentData::generateDeck(32, 0.077f,
 			{
 

@@ -33,7 +33,7 @@ Cookie* Cookie::deserialize(ValueMap& properties)
 
 Cookie::Cookie(ValueMap& properties) : super(properties,
 	Cookie::MapKeyCookie,
-	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,
@@ -61,16 +61,12 @@ HexusOpponentData* Cookie::getHexusOpponentData()
 	if (Cookie::HexusOpponentDataInstance == nullptr)
 	{
 		Cookie::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Cookie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.545f,
 			HexusOpponentData::generateDeck(32, 0.545f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

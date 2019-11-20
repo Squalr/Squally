@@ -55,7 +55,7 @@ Squally* Squally::deserialize(ValueMap& properties)
 
 Squally::Squally(ValueMap& properties) : super(properties,
 	Squally::MapKeySqually,
-	EntityResources::Squally_Animations,
+	nullptr,
 	EntityResources::Squally_Emblem,
 	Size(128.0f, 128.0f),
 	Squally::SquallyScale,

@@ -33,7 +33,7 @@ Blackbeard* Blackbeard::deserialize(ValueMap& properties)
 
 Blackbeard::Blackbeard(ValueMap& properties) : super(properties,
 	Blackbeard::MapKeyBlackbeard,
-	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 	if (Blackbeard::HexusOpponentDataInstance == nullptr)
 	{
 		Blackbeard::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Blackbeard_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -160.0f),
 			Vec2(-32.0f, -112.0f),
 			Blackbeard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.027f,
 			HexusOpponentData::generateDeck(32, 0.027f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),

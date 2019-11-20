@@ -33,7 +33,7 @@ Alder* Alder::deserialize(ValueMap& properties)
 
 Alder::Alder(ValueMap& properties) : super(properties,
 	Alder::MapKeyAlder,
-	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Alder::getHexusOpponentData()
 	if (Alder::HexusOpponentDataInstance == nullptr)
 	{
 		Alder::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Alder::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.259f,
 			HexusOpponentData::generateDeck(32, 0.259f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

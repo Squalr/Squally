@@ -33,7 +33,7 @@ ToySoldierGoblin* ToySoldierGoblin::deserialize(ValueMap& properties)
 
 ToySoldierGoblin::ToySoldierGoblin(ValueMap& properties) : super(properties,
 	ToySoldierGoblin::MapKeyToySoldierGoblin,
-	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Emblem,
 	Size(112.0f, 288.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 	if (ToySoldierGoblin::HexusOpponentDataInstance == nullptr)
 	{
 		ToySoldierGoblin::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_ToySoldierGoblin_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -144.0f),
 			ToySoldierGoblin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
@@ -111,7 +107,7 @@ HexusOpponentData* ToySoldierGoblin::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -127,7 +123,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

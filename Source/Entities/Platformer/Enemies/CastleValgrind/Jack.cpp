@@ -33,7 +33,7 @@ Jack* Jack::deserialize(ValueMap& properties)
 
 Jack::Jack(ValueMap& properties) : super(properties,
 	Jack::MapKeyJack,
-	EntityResources::Enemies_CastleValgrind_Jack_Animations,
+	nullptr,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	Size(432.0f, 768.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Jack::getHexusOpponentData()
 	if (Jack::HexusOpponentDataInstance == nullptr)
 	{
 		Jack::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Jack_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Jack::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
@@ -101,9 +97,9 @@ HexusOpponentData* Jack::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -119,7 +115,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -130,22 +126,22 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				}
 			)
 		);

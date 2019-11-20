@@ -33,7 +33,7 @@ Elric* Elric::deserialize(ValueMap& properties)
 
 Elric::Elric(ValueMap& properties) : super(properties,
 	Elric::MapKeyElric,
-	EntityResources::Npcs_CastleValgrind_Elric_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Elric::getHexusOpponentData()
 	if (Elric::HexusOpponentDataInstance == nullptr)
 	{
 		Elric::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Elric_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Elric::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.384f,
 			HexusOpponentData::generateDeck(32, 0.384f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

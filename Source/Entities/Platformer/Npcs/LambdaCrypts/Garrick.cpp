@@ -33,7 +33,7 @@ Garrick* Garrick::deserialize(ValueMap& properties)
 
 Garrick::Garrick(ValueMap& properties) : super(properties,
 	Garrick::MapKeyGarrick,
-	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
+	nullptr,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Garrick::getHexusOpponentData()
 	if (Garrick::HexusOpponentDataInstance == nullptr)
 	{
 		Garrick::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Garrick::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.786f,
 			HexusOpponentData::generateDeck(32, 0.786f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

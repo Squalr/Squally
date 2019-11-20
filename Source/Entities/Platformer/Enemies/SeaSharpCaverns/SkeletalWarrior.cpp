@@ -33,7 +33,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& properties)
 
 SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : super(properties,
 	SkeletalWarrior::MapKeySkeletalWarrior,
-	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	Size(128.0f, 216.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 	if (SkeletalWarrior::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
@@ -101,7 +97,7 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -137,8 +133,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 				}
 			)
 		);

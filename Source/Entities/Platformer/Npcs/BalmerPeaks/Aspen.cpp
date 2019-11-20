@@ -33,7 +33,7 @@ Aspen* Aspen::deserialize(ValueMap& properties)
 
 Aspen::Aspen(ValueMap& properties) : super(properties,
 	Aspen::MapKeyAspen,
-	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Aspen::getHexusOpponentData()
 	if (Aspen::HexusOpponentDataInstance == nullptr)
 	{
 		Aspen::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Aspen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.509f,
 			HexusOpponentData::generateDeck(32, 0.509f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

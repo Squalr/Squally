@@ -33,7 +33,7 @@ Nessie* Nessie::deserialize(ValueMap& properties)
 
 Nessie::Nessie(ValueMap& properties) : super(properties,
 	Nessie::MapKeyNessie,
-	EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Nessie_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Nessie::getHexusOpponentData()
 	if (Nessie::HexusOpponentDataInstance == nullptr)
 	{
 		Nessie::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Nessie_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Nessie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.589f,
 			HexusOpponentData::generateDeck(32, 0.589f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

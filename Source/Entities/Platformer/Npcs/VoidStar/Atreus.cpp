@@ -33,7 +33,7 @@ Atreus* Atreus::deserialize(ValueMap& properties)
 
 Atreus::Atreus(ValueMap& properties) : super(properties,
 	Atreus::MapKeyAtreus,
-	EntityResources::Npcs_VoidStar_Atreus_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Atreus::getHexusOpponentData()
 	if (Atreus::HexusOpponentDataInstance == nullptr)
 	{
 		Atreus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Atreus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Atreus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

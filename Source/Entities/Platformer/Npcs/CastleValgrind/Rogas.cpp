@@ -33,7 +33,7 @@ Rogas* Rogas::deserialize(ValueMap& properties)
 
 Rogas::Rogas(ValueMap& properties) : super(properties,
 	Rogas::MapKeyRogas,
-	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 	if (Rogas::HexusOpponentDataInstance == nullptr)
 	{
 		Rogas::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Rogas_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Rogas::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.464f,
 			HexusOpponentData::generateDeck(32, 0.464f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

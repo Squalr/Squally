@@ -33,7 +33,7 @@ Cleopatra* Cleopatra::deserialize(ValueMap& properties)
 
 Cleopatra::Cleopatra(ValueMap& properties) : super(properties,
 	Cleopatra::MapKeyCleopatra,
-	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
+	nullptr,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Cleopatra::getHexusOpponentData()
 	if (Cleopatra::HexusOpponentDataInstance == nullptr)
 	{
 		Cleopatra::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -172.0f),
 			Vec2(-32.0f, -144.0f),
 			Cleopatra::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

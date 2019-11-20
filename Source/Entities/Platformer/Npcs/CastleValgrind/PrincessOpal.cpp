@@ -33,7 +33,7 @@ PrincessOpal* PrincessOpal::deserialize(ValueMap& properties)
 
 PrincessOpal::PrincessOpal(ValueMap& properties) : super(properties,
 	PrincessOpal::MapKeyPrincessOpal,
-	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* PrincessOpal::getHexusOpponentData()
 	if (PrincessOpal::HexusOpponentDataInstance == nullptr)
 	{
 		PrincessOpal::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PrincessOpal::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.446f,
 			HexusOpponentData::generateDeck(32, 0.446f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

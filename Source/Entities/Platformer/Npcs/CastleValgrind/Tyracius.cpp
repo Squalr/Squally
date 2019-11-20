@@ -33,7 +33,7 @@ Tyracius* Tyracius::deserialize(ValueMap& properties)
 
 Tyracius::Tyracius(ValueMap& properties) : super(properties,
 	Tyracius::MapKeyTyracius,
-	EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Tyracius_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Tyracius::getHexusOpponentData()
 	if (Tyracius::HexusOpponentDataInstance == nullptr)
 	{
 		Tyracius::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Tyracius_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Tyracius::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

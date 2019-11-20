@@ -33,7 +33,7 @@ Chiron* Chiron::deserialize(ValueMap& properties)
 
 Chiron::Chiron(ValueMap& properties) : super(properties,
 	Chiron::MapKeyChiron,
-	EntityResources::Npcs_EndianForest_Chiron_Animations,
+	nullptr,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	Size(160.0f, 224.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 	if (Chiron::HexusOpponentDataInstance == nullptr)
 	{
 		Chiron::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Chiron_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -128.0f),
 			Chiron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.107f,
 			HexusOpponentData::generateDeck(32, 0.107f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

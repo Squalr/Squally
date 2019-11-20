@@ -33,7 +33,7 @@ OrcBomber* OrcBomber::deserialize(ValueMap& properties)
 
 OrcBomber::OrcBomber(ValueMap& properties) : super(properties,
 	OrcBomber::MapKeyOrcBomber,
-	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	Size(256.0f, 218.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 	if (OrcBomber::HexusOpponentDataInstance == nullptr)
 	{
 		OrcBomber::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_OrcBomber_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			OrcBomber::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.769f,
 			HexusOpponentData::generateDeck(32, 0.769f,
 			{
 
@@ -116,7 +112,7 @@ HexusOpponentData* OrcBomber::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Player hex cards
 				std::vector<CardData*>

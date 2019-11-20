@@ -33,7 +33,7 @@ WaterElemental* WaterElemental::deserialize(ValueMap& properties)
 
 WaterElemental::WaterElemental(ValueMap& properties) : super(properties,
 	WaterElemental::MapKeyWaterElemental,
-	EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_WaterElemental_Emblem,
 	Size(820.0f, 1480.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 	if (WaterElemental::HexusOpponentDataInstance == nullptr)
 	{
 		WaterElemental::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_WaterElemental_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -224.0f),
 			WaterElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* WaterElemental::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,9 +129,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

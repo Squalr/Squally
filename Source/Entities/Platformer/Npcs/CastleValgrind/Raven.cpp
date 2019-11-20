@@ -33,7 +33,7 @@ Raven* Raven::deserialize(ValueMap& properties)
 
 Raven::Raven(ValueMap& properties) : super(properties,
 	Raven::MapKeyRaven,
-	EntityResources::Npcs_CastleValgrind_Raven_Animations,
+	nullptr,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Raven::getHexusOpponentData()
 	if (Raven::HexusOpponentDataInstance == nullptr)
 	{
 		Raven::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Raven_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Raven::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.455f,
 			HexusOpponentData::generateDeck(32, 0.455f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

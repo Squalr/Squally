@@ -49,7 +49,7 @@ Scrappy* Scrappy::deserialize(ValueMap& properties)
 
 Scrappy::Scrappy(ValueMap& properties) : super(properties,
 	Scrappy::MapKeyScrappy,
-	EntityResources::Helpers_EndianForest_Scrappy_Animations,
+	nullptr,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -110,16 +110,12 @@ HexusOpponentData* Scrappy::getHexusOpponentData()
 	if (Scrappy::HexusOpponentDataInstance == nullptr)
 	{
 		Scrappy::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_EndianForest_Scrappy_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Scrappy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

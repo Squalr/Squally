@@ -33,7 +33,7 @@ DemonShaman* DemonShaman::deserialize(ValueMap& properties)
 
 DemonShaman::DemonShaman(ValueMap& properties) : super(properties,
 	DemonShaman::MapKeyDemonShaman,
-	EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_DemonShaman_Emblem,
 	Size(212.0f, 280.0f),
 	0.65f,
@@ -61,16 +61,12 @@ HexusOpponentData* DemonShaman::getHexusOpponentData()
 	if (DemonShaman::HexusOpponentDataInstance == nullptr)
 	{
 		DemonShaman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonShaman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.65f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonShaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 

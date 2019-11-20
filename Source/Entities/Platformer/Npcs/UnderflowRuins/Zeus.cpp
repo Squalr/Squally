@@ -33,7 +33,7 @@ Zeus* Zeus::deserialize(ValueMap& properties)
 
 Zeus::Zeus(ValueMap& properties) : super(properties,
 	Zeus::MapKeyZeus,
-	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
+	nullptr,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 	if (Zeus::HexusOpponentDataInstance == nullptr)
 	{
 		Zeus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.232f,
 			HexusOpponentData::generateDeck(32, 0.232f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

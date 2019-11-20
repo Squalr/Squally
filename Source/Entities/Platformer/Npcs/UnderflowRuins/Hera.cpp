@@ -33,7 +33,7 @@ Hera* Hera::deserialize(ValueMap& properties)
 
 Hera::Hera(ValueMap& properties) : super(properties,
 	Hera::MapKeyHera,
-	EntityResources::Npcs_UnderflowRuins_Hera_Animations,
+	nullptr,
 	EntityResources::Npcs_UnderflowRuins_Hera_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Hera::getHexusOpponentData()
 	if (Hera::HexusOpponentDataInstance == nullptr)
 	{
 		Hera::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Hera_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Hera::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.205f,
 			HexusOpponentData::generateDeck(32, 0.205f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ Theldar* Theldar::deserialize(ValueMap& properties)
 
 Theldar::Theldar(ValueMap& properties) : super(properties,
 	Theldar::MapKeyTheldar,
-	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Theldar::getHexusOpponentData()
 	if (Theldar::HexusOpponentDataInstance == nullptr)
 	{
 		Theldar::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Theldar::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.607f,
 			HexusOpponentData::generateDeck(32, 0.607f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

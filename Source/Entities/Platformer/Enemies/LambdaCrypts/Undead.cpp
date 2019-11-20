@@ -33,7 +33,7 @@ Undead* Undead::deserialize(ValueMap& properties)
 
 Undead::Undead(ValueMap& properties) : super(properties,
 	Undead::MapKeyUndead,
-	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	Size(146.0f, 248.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* Undead::getHexusOpponentData()
 	if (Undead::HexusOpponentDataInstance == nullptr)
 	{
 		Undead::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_Undead_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Undead::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 

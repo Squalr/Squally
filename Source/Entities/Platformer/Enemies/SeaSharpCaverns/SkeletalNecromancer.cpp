@@ -33,7 +33,7 @@ SkeletalNecromancer* SkeletalNecromancer::deserialize(ValueMap& properties)
 
 SkeletalNecromancer::SkeletalNecromancer(ValueMap& properties) : super(properties,
 	SkeletalNecromancer::MapKeySkeletalNecromancer,
-	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Emblem,
 	Size(128.0f, 228.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 	if (SkeletalNecromancer::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalNecromancer::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalNecromancer::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
@@ -116,7 +112,7 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Player hex cards
 				std::vector<CardData*>

@@ -33,7 +33,7 @@ Viking* Viking::deserialize(ValueMap& properties)
 
 Viking::Viking(ValueMap& properties) : super(properties,
 	Viking::MapKeyViking,
-	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
 	Size(980.0f, 1200.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Viking::getHexusOpponentData()
 	if (Viking::HexusOpponentDataInstance == nullptr)
 	{
 		Viking::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_Viking_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -144.0f),
 			Viking::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* Viking::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -128,8 +124,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>

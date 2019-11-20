@@ -33,7 +33,7 @@ Olive* Olive::deserialize(ValueMap& properties)
 
 Olive::Olive(ValueMap& properties) : super(properties,
 	Olive::MapKeyOlive,
-	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Olive::getHexusOpponentData()
 	if (Olive::HexusOpponentDataInstance == nullptr)
 	{
 		Olive::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Olive::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.339f,
 			HexusOpponentData::generateDeck(32, 0.339f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

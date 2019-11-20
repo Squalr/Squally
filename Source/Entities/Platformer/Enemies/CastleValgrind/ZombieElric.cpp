@@ -33,7 +33,7 @@ ZombieElric* ZombieElric::deserialize(ValueMap& properties)
 
 ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
 	ZombieElric::MapKeyZombieElric,
-	EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
+	nullptr,
 	EntityResources::Enemies_CastleValgrind_ZombieElric_Emblem,
 	Size(114.0f, 208.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* ZombieElric::getHexusOpponentData()
 	if (ZombieElric::HexusOpponentDataInstance == nullptr)
 	{
 		ZombieElric::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_ZombieElric_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-16.0f, -112.0f),
 			ZombieElric::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* ZombieElric::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -133,8 +129,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

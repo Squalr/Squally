@@ -33,7 +33,7 @@ Aster* Aster::deserialize(ValueMap& properties)
 
 Aster::Aster(ValueMap& properties) : super(properties,
 	Aster::MapKeyAster,
-	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Aster::getHexusOpponentData()
 	if (Aster::HexusOpponentDataInstance == nullptr)
 	{
 		Aster::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Aster_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Aster::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.518f,
 			HexusOpponentData::generateDeck(32, 0.518f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

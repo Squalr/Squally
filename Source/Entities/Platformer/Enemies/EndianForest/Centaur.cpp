@@ -33,7 +33,7 @@ Centaur* Centaur::deserialize(ValueMap& properties)
 
 Centaur::Centaur(ValueMap& properties) : super(properties,
 	Centaur::MapKeyCentaur,
-	EntityResources::Enemies_EndianForest_Centaur_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_Centaur_Emblem,
 	Size(296.0f, 256.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 	if (Centaur::HexusOpponentDataInstance == nullptr)
 	{
 		Centaur::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_Centaur_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -212.0f),
 			Centaur::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.231f,
 			HexusOpponentData::generateDeck(32, 0.231f,
 			{
 
@@ -116,8 +112,8 @@ HexusOpponentData* Centaur::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -133,8 +129,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

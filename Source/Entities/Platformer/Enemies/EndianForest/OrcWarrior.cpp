@@ -33,7 +33,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap& properties)
 
 OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
 	OrcWarrior::MapKeyOrcWarrior,
-	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
 	Size(256.0f, 228.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 	if (OrcWarrior::HexusOpponentDataInstance == nullptr)
 	{
 		OrcWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			OrcWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.692f,
 			HexusOpponentData::generateDeck(32, 0.692f,
 			{
 
@@ -116,8 +112,8 @@ HexusOpponentData* OrcWarrior::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -133,8 +129,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

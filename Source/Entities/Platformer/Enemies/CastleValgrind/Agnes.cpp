@@ -33,7 +33,7 @@ Agnes* Agnes::deserialize(ValueMap& properties)
 
 Agnes::Agnes(ValueMap& properties) : super(properties,
 	Agnes::MapKeyAgnes,
-	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
+	nullptr,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	Size(360.0f, 420.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Agnes::getHexusOpponentData()
 	if (Agnes::HexusOpponentDataInstance == nullptr)
 	{
 		Agnes::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Agnes_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -160.0f),
 			Agnes::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* Agnes::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -118,7 +114,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -134,15 +130,15 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				}
 			)
 		);

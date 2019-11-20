@@ -33,7 +33,7 @@ QueenElise* QueenElise::deserialize(ValueMap& properties)
 
 QueenElise::QueenElise(ValueMap& properties) : super(properties,
 	QueenElise::MapKeyQueenElise,
-	EntityResources::Npcs_VoidStar_QueenElise_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 	if (QueenElise::HexusOpponentDataInstance == nullptr)
 	{
 		QueenElise::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_QueenElise_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			QueenElise::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.933f,
 			HexusOpponentData::generateDeck(32, 0.933f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

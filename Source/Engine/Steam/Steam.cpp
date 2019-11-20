@@ -36,7 +36,7 @@ Steam::~Steam()
 
 bool Steam::init()
 {
-	if (!Steam::isSquallyItchBuild())
+	if (Steam::isSquallySteamBuild())
 	{
 		if (SteamAPI_RestartAppIfNecessary(Steam::SteamAppId))
 		{
@@ -54,7 +54,7 @@ bool Steam::init()
 	return true;
 }
 
-bool Steam::isSquallyItchBuild()
+bool Steam::isSquallySteamBuild()
 {
 	static bool init = false;
 	static bool isItchBuild = false;
@@ -69,19 +69,19 @@ bool Steam::isSquallyItchBuild()
 		}
 	}
 
-	return isItchBuild;
+	return !isItchBuild;
 }
 
 bool Steam::isCloudSaveAvailable()
 {
-	if (Steam::isSquallyItchBuild())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return false;
 	}
 
 	ISteamRemoteStorage* steamRemoteStorage = SteamRemoteStorage();
 
-	if (!steamRemoteStorage->IsCloudEnabledForAccount() || !steamRemoteStorage->IsCloudEnabledForApp())
+	if (steamRemoteStorage == nullptr || !steamRemoteStorage->IsCloudEnabledForAccount() || !steamRemoteStorage->IsCloudEnabledForApp())
 	{
 		return false;
 	}
@@ -89,9 +89,26 @@ bool Steam::isCloudSaveAvailable()
 	return true;
 }
 
+std::string Steam::getSteamUserId()
+{
+	if (!Steam::isSquallySteamBuild())
+	{
+		return "";
+	}
+
+	ISteamUser* steamuser = SteamUser();
+
+	if (steamuser != nullptr)
+	{
+		return std::to_string(steamuser->GetSteamID().ConvertToUint64());
+	}
+
+	return "";
+}
+
 LanguageType Steam::getLanguage()
 {
-	if (!Steam::isSquallyItchBuild())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return LanguageType::ENGLISH;
 	}

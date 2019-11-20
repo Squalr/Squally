@@ -33,7 +33,7 @@ MummyPriest* MummyPriest::deserialize(ValueMap& properties)
 
 MummyPriest::MummyPriest(ValueMap& properties) : super(properties,
 	MummyPriest::MapKeyMummyPriest,
-	EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
+	nullptr,
 	EntityResources::Enemies_UnderflowRuins_MummyPriest_Emblem,
 	Size(128.0f, 256.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 	if (MummyPriest::HexusOpponentDataInstance == nullptr)
 	{
 		MummyPriest::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_MummyPriest_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			MummyPriest::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
@@ -101,7 +97,7 @@ HexusOpponentData* MummyPriest::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -112,9 +108,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -140,8 +136,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 				}
 			)
 		);

@@ -33,7 +33,7 @@ BoneFiend* BoneFiend::deserialize(ValueMap& properties)
 
 BoneFiend::BoneFiend(ValueMap& properties) : super(properties,
 	BoneFiend::MapKeyBoneFiend,
-	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
 	Size(224.0f, 278.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* BoneFiend::getHexusOpponentData()
 	if (BoneFiend::HexusOpponentDataInstance == nullptr)
 	{
 		BoneFiend::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			BoneFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.333f,
 			HexusOpponentData::generateDeck(32, 0.333f,
 			{
 

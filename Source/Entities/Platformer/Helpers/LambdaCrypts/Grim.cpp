@@ -33,7 +33,7 @@ Grim* Grim::deserialize(ValueMap& properties)
 
 Grim::Grim(ValueMap& properties) : super(properties,
 	Grim::MapKeyGrim,
-	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
+	nullptr,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Grim::getHexusOpponentData()
 	if (Grim::HexusOpponentDataInstance == nullptr)
 	{
 		Grim::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_LambdaCrypts_Grim_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Grim::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

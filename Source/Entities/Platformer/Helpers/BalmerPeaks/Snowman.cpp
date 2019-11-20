@@ -33,7 +33,7 @@ Snowman* Snowman::deserialize(ValueMap& properties)
 
 Snowman::Snowman(ValueMap& properties) : super(properties,
 	Snowman::MapKeySnowman,
-	EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
+	nullptr,
 	EntityResources::Helpers_BalmerPeaks_Snowman_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Snowman::getHexusOpponentData()
 	if (Snowman::HexusOpponentDataInstance == nullptr)
 	{
 		Snowman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_BalmerPeaks_Snowman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Snowman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

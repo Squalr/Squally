@@ -17,32 +17,24 @@ const std::string HexusOpponentData::winsPrefix = "WINS_";
 const std::string HexusOpponentData::lossesPrefix = "LOSSES_";
 
 HexusOpponentData* HexusOpponentData::create(
-	std::string animationResourceFile,
-	std::string backgroundResourceFile,
-	float animationScale,
-	Vec2 animationOffset,
-	Vec2 frameOffset,
-	Vec2 avatarOffset,
-	std::string enemyAnalyticsIdentifier,
-	HexusOpponentData::Strategy strategy,
-	Card::CardStyle cardStyle,
-	float strength,
-	std::vector<CardData*> cards,
-	std::function<void(Result)> onRoundEnd,
-	StateOverride* stateOverride,
-	std::vector<TutorialBase*> tutorials)
+		cocos2d::Node* entityPreviewNode,
+		std::string backgroundResourceFile,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyAnalyticsIdentifier,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd,
+		StateOverride* stateOverride,
+		std::vector<TutorialBase*> tutorials)
 {
 	HexusOpponentData* instance = new HexusOpponentData(
-		animationResourceFile,
+		entityPreviewNode,
 		backgroundResourceFile,
-		animationScale,
-		animationOffset,
-		frameOffset,
 		avatarOffset,
 		enemyAnalyticsIdentifier,
 		strategy,
 		cardStyle,
-		strength,
 		cards,
 		onRoundEnd,
 		stateOverride,
@@ -55,20 +47,16 @@ HexusOpponentData* HexusOpponentData::create(
 }
 
 HexusOpponentData::HexusOpponentData(
-	std::string animationResourceFile,
-	std::string backgroundResourceFile,
-	float animationScale,
-	Vec2 animationOffset,
-	Vec2 frameOffset,
-	Vec2 avatarOffset,
-	std::string enemyAnalyticsIdentifier,
-	HexusOpponentData::Strategy strategy,
-	Card::CardStyle cardStyle,
-	float strength,
-	std::vector<CardData*> cards,
-	std::function<void(Result)> onRoundEnd,
-	StateOverride* stateOverride,
-	std::vector<TutorialBase*> tutorials)
+		cocos2d::Node* entityPreviewNode,
+		std::string backgroundResourceFile,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyAnalyticsIdentifier,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd,
+		StateOverride* stateOverride,
+		std::vector<TutorialBase*> tutorials)
 {
 	this->animationResourceFile = animationResourceFile;
 	this->backgroundResourceFile = backgroundResourceFile;

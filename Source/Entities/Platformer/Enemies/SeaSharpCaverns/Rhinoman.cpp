@@ -33,7 +33,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 
 Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
 	Rhinoman::MapKeyRhinoman,
-	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
+	nullptr,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	Size(592.0f, 592.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 	if (Rhinoman::HexusOpponentDataInstance == nullptr)
 	{
 		Rhinoman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -312.0f),
 			Vec2(0.0f, -420.0f),
 			Rhinoman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
@@ -101,9 +97,9 @@ HexusOpponentData* Rhinoman::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -114,7 +110,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -130,19 +126,19 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				}
 			)
 		);

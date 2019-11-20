@@ -33,7 +33,7 @@ Medusa* Medusa::deserialize(ValueMap& properties)
 
 Medusa::Medusa(ValueMap& properties) : super(properties,
 	Medusa::MapKeyMedusa,
-	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
+	nullptr,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	Size(224.0f, 304.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Medusa::getHexusOpponentData()
 	if (Medusa::HexusOpponentDataInstance == nullptr)
 	{
 		Medusa::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -196.0f),
 			Medusa::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 

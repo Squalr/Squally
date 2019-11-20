@@ -33,7 +33,7 @@ Vampiress* Vampiress::deserialize(ValueMap& properties)
 
 Vampiress::Vampiress(ValueMap& properties) : super(properties,
 	Vampiress::MapKeyVampiress,
-	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
+	nullptr,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	Size(96.0f, 236.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 	if (Vampiress::HexusOpponentDataInstance == nullptr)
 	{
 		Vampiress::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Vampiress::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
@@ -101,8 +97,8 @@ HexusOpponentData* Vampiress::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -113,8 +109,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -130,9 +126,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -143,10 +139,10 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				}
 			)
 		);

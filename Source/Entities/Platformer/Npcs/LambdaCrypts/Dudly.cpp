@@ -33,7 +33,7 @@ Dudly* Dudly::deserialize(ValueMap& properties)
 
 Dudly::Dudly(ValueMap& properties) : super(properties,
 	Dudly::MapKeyDudly,
-	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
+	nullptr,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Dudly::getHexusOpponentData()
 	if (Dudly::HexusOpponentDataInstance == nullptr)
 	{
 		Dudly::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Dudly::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.777f,
 			HexusOpponentData::generateDeck(32, 0.777f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

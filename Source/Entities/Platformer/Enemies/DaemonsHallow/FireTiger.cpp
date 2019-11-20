@@ -33,7 +33,7 @@ FireTiger* FireTiger::deserialize(ValueMap& properties)
 
 FireTiger::FireTiger(ValueMap& properties) : super(properties,
 	FireTiger::MapKeyFireTiger,
-	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
 	Size(256.0f, 320.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* FireTiger::getHexusOpponentData()
 	if (FireTiger::HexusOpponentDataInstance == nullptr)
 	{
 		FireTiger::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			FireTiger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 

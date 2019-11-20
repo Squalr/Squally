@@ -33,7 +33,7 @@ Xenon* Xenon::deserialize(ValueMap& properties)
 
 Xenon::Xenon(ValueMap& properties) : super(properties,
 	Xenon::MapKeyXenon,
-	EntityResources::Npcs_VoidStar_Xenon_Animations,
+	nullptr,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 	if (Xenon::HexusOpponentDataInstance == nullptr)
 	{
 		Xenon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Xenon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Xenon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.904f,
 			HexusOpponentData::generateDeck(32, 0.904f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

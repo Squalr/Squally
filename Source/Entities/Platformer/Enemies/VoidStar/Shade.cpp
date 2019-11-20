@@ -33,7 +33,7 @@ Shade* Shade::deserialize(ValueMap& properties)
 
 Shade::Shade(ValueMap& properties) : super(properties,
 	Shade::MapKeyShade,
-	EntityResources::Enemies_VoidStar_Shade_Animations,
+	nullptr,
 	EntityResources::Enemies_VoidStar_Shade_Emblem,
 	Size(284.0f, 256.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Shade::getHexusOpponentData()
 	if (Shade::HexusOpponentDataInstance == nullptr)
 	{
 		Shade::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Shade_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -196.0f),
 			Vec2(0.0f, -312.0f),
 			Shade::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 

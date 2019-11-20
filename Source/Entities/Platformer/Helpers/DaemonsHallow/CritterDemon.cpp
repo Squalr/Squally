@@ -33,7 +33,7 @@ CritterDemon* CritterDemon::deserialize(ValueMap& properties)
 
 CritterDemon::CritterDemon(ValueMap& properties) : super(properties,
 	CritterDemon::MapKeyCritterDemon,
-	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
+	nullptr,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
 	Size(188.0f, 160.0f),
 	0.7f,
@@ -61,16 +61,12 @@ HexusOpponentData* CritterDemon::getHexusOpponentData()
 	if (CritterDemon::HexusOpponentDataInstance == nullptr)
 	{
 		CritterDemon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-32.0f, -128.0f),
 			Vec2(-48.0f, -112.0f),
 			CritterDemon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 

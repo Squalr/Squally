@@ -33,7 +33,7 @@ Aphrodite* Aphrodite::deserialize(ValueMap& properties)
 
 Aphrodite::Aphrodite(ValueMap& properties) : super(properties,
 	Aphrodite::MapKeyAphrodite,
-	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
+	nullptr,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 	if (Aphrodite::HexusOpponentDataInstance == nullptr)
 	{
 		Aphrodite::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Aphrodite::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.134f,
 			HexusOpponentData::generateDeck(32, 0.134f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

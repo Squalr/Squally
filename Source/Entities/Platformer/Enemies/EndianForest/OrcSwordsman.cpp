@@ -33,7 +33,7 @@ OrcSwordsman* OrcSwordsman::deserialize(ValueMap& properties)
 
 OrcSwordsman::OrcSwordsman(ValueMap& properties) : super(properties,
 	OrcSwordsman::MapKeyOrcSwordsman,
-	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
 	Size(256.0f, 228.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* OrcSwordsman::getHexusOpponentData()
 	if (OrcSwordsman::HexusOpponentDataInstance == nullptr)
 	{
 		OrcSwordsman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			OrcSwordsman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.385f,
 			HexusOpponentData::generateDeck(32, 0.385f,
 			{
 

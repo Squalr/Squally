@@ -33,7 +33,7 @@ FireElemental* FireElemental::deserialize(ValueMap& properties)
 
 FireElemental::FireElemental(ValueMap& properties) : super(properties,
 	FireElemental::MapKeyFireElemental,
-	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
 	Size(820.0f, 1480.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* FireElemental::getHexusOpponentData()
 	if (FireElemental::HexusOpponentDataInstance == nullptr)
 	{
 		FireElemental::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(64.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			FireElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 

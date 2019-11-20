@@ -33,7 +33,7 @@ SkeletalBaron* SkeletalBaron::deserialize(ValueMap& properties)
 
 SkeletalBaron::SkeletalBaron(ValueMap& properties) : super(properties,
 	SkeletalBaron::MapKeySkeletalBaron,
-	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
+	nullptr,
 	EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Emblem,
 	Size(112.0f, 368.0f),
 	0.8f,
@@ -61,16 +61,12 @@ HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 	if (SkeletalBaron::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalBaron::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, -144.0f),
 			Vec2(16.0f, -112.0f),
 			SkeletalBaron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 

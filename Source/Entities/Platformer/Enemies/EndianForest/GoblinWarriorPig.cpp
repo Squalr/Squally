@@ -33,7 +33,7 @@ GoblinWarriorPig* GoblinWarriorPig::deserialize(ValueMap& properties)
 
 GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : super(properties,
 	GoblinWarriorPig::MapKeyGoblinWarriorPig,
-	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_GoblinWarriorPig_Emblem,
 	Size(128.0f, 296.0f),
 	1.0f,
@@ -63,16 +63,12 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 	if (GoblinWarriorPig::HexusOpponentDataInstance == nullptr)
 	{
 		GoblinWarriorPig::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_GoblinWarriorPig_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			GoblinWarriorPig::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.154f,
 			HexusOpponentData::generateDeck(32, 0.154f,
 			{
 
@@ -118,7 +114,7 @@ HexusOpponentData* GoblinWarriorPig::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -134,8 +130,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -33,7 +33,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 
 KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
 	KingGrogg::MapKeyKingGrogg,
-	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	Size(412.0f, 412.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 	if (KingGrogg::HexusOpponentDataInstance == nullptr)
 	{
 		KingGrogg::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_KingGrogg_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -160.0f),
 			Vec2(-32.0f, -280.0f),
 			KingGrogg::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
@@ -101,7 +97,7 @@ HexusOpponentData* KingGrogg::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -132,8 +128,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

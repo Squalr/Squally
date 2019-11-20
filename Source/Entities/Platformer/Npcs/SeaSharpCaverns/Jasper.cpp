@@ -33,7 +33,7 @@ Jasper* Jasper::deserialize(ValueMap& properties)
 
 Jasper::Jasper(ValueMap& properties) : super(properties,
 	Jasper::MapKeyJasper,
-	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
+	nullptr,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 	if (Jasper::HexusOpponentDataInstance == nullptr)
 	{
 		Jasper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Jasper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.321f,
 			HexusOpponentData::generateDeck(32, 0.321f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

@@ -33,7 +33,7 @@ Thatcher* Thatcher::deserialize(ValueMap& properties)
 
 Thatcher::Thatcher(ValueMap& properties) : super(properties,
 	Thatcher::MapKeyThatcher,
-	EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
+	nullptr,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Thatcher::getHexusOpponentData()
 	if (Thatcher::HexusOpponentDataInstance == nullptr)
 	{
 		Thatcher::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Thatcher::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.625f,
 			HexusOpponentData::generateDeck(32, 0.625f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

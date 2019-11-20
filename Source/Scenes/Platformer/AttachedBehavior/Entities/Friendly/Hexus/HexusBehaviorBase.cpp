@@ -226,17 +226,12 @@ void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)
 HexusOpponentData* HexusBehaviorBase::createOpponentData()
 {
     return HexusOpponentData::create( 
-        // TODO: This needs to work similar to the dialogue boxes, and pass the entity to a builder that accounts for scale/offsets
-        this->entity->getAnimations()->getAnimationResource(),
+		HexusEvents::BuildPreviewNode(this->entity),
         this->getBackgroundResource(),
-        this->entity->getScale(), // DEPRECATED
-		Vec2::ZERO, // DEPRECATED
-        Vec2::ZERO, // DEPRECATED
         this->entity->getDialogueOffset() - Vec2(0.0f, 72.0f),
         this->getWinLossSaveKey(),
         HexusOpponentData::Strategy::Random,
         Card::CardStyle::Light,
-        0.0f, // DEPRECATED
         this->generateDeck(),
         [=](HexusOpponentData::Result result)
         {

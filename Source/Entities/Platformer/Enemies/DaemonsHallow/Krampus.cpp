@@ -33,7 +33,7 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 
 Krampus::Krampus(ValueMap& properties) : super(properties,
 	Krampus::MapKeyKrampus,
-	EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
+	nullptr,
 	EntityResources::Enemies_DaemonsHallow_Krampus_Emblem,
 	Size(396.0f, 412.0f),
 	0.9f,
@@ -61,16 +61,12 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 	if (Krampus::HexusOpponentDataInstance == nullptr)
 	{
 		Krampus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -232.0f),
 			Krampus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 

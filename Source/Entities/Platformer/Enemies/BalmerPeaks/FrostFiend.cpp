@@ -33,7 +33,7 @@ FrostFiend* FrostFiend::deserialize(ValueMap& properties)
 
 FrostFiend::FrostFiend(ValueMap& properties) : super(properties,
 	FrostFiend::MapKeyFrostFiend,
-	EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
+	nullptr,
 	EntityResources::Enemies_BalmerPeaks_FrostFiend_Emblem,
 	Size(212.0f, 296.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* FrostFiend::getHexusOpponentData()
 	if (FrostFiend::HexusOpponentDataInstance == nullptr)
 	{
 		FrostFiend::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			FrostFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 

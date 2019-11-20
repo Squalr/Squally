@@ -33,7 +33,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
 	GoblinGruntBoar::MapKeyGoblinGruntBoar,
-	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	Size(128.0f, 296.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* GoblinGruntBoar::getHexusOpponentData()
 	if (GoblinGruntBoar::HexusOpponentDataInstance == nullptr)
 	{
 		GoblinGruntBoar::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			GoblinGruntBoar::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.308f,
 			HexusOpponentData::generateDeck(32, 0.308f,
 			{
 

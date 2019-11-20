@@ -33,7 +33,7 @@ GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 
 GoblinShaman::GoblinShaman(ValueMap& properties) : super(properties,
 	GoblinShaman::MapKeyGoblinShaman,
-	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
+	nullptr,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	Size(96.0f, 204.0f),
 	1.0f,
@@ -61,16 +61,12 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 	if (GoblinShaman::HexusOpponentDataInstance == nullptr)
 	{
 		GoblinShaman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			GoblinShaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.538f,
 			HexusOpponentData::generateDeck(32, 0.538f,
 			{
 
@@ -131,8 +127,8 @@ HexusOpponentData* GoblinShaman::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>

@@ -221,8 +221,6 @@ void CollectablesMenu::updateCollectedVisualState()
 			this->lockedSprites[index]->setVisible(true);
 		}
 	}
-
-	// TODO: Show collected count
 }
 
 void CollectablesMenu::registerCollectableAnimal(std::string resource, std::string resourceLocked, std::string saveKey)

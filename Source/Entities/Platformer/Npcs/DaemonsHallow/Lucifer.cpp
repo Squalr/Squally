@@ -33,7 +33,7 @@ Lucifer* Lucifer::deserialize(ValueMap& properties)
 
 Lucifer::Lucifer(ValueMap& properties) : super(properties,
 	Lucifer::MapKeyLucifer,
-	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
+	nullptr,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,
@@ -61,16 +61,12 @@ HexusOpponentData* Lucifer::getHexusOpponentData()
 	if (Lucifer::HexusOpponentDataInstance == nullptr)
 	{
 		Lucifer::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Lucifer::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.705f,
 			HexusOpponentData::generateDeck(32, 0.705f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),

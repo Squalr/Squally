@@ -7,6 +7,7 @@
 class Card;
 class GameState;
 class HexusOpponentData;
+class PlatformerEntity;
 
 class HexusEvents
 {
@@ -49,4 +50,5 @@ public:
 	static void TriggerRequestStateUpdate(GameState* gameState);
 	static void TriggerBeforeStateUpdate(GameState* gameState);
 	static void TriggerOnStateUpdate(GameState* gameState);
+	static cocos2d::Node* BuildPreviewNode(PlatformerEntity* entity);
 };

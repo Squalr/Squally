@@ -33,7 +33,7 @@ Turtle* Turtle::deserialize(ValueMap& properties)
 
 Turtle::Turtle(ValueMap& properties) : super(properties,
 	Turtle::MapKeyTurtle,
-	EntityResources::Helpers_EndianForest_Turtle_Animations,
+	nullptr,
 	EntityResources::Helpers_EndianForest_Turtle_Emblem,
 	Size(224.0f, 440.0f),
 	0.3f,
@@ -61,16 +61,12 @@ HexusOpponentData* Turtle::getHexusOpponentData()
 	if (Turtle::HexusOpponentDataInstance == nullptr)
 	{
 		Turtle::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_EndianForest_Turtle_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Turtle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
