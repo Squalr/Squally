@@ -36,10 +36,7 @@ PlatformerEntity::PlatformerEntity(
 	Size size,
 	float scale, 
 	Vec2 collisionOffset,
-	float hoverHeight,
-	std::string inventorySaveKey,
-	std::string equipmentSaveKey,
-	std::string currencySaveKey
+	float hoverHeight
 	) : super(properties)
 {
 	this->floatNode = Node::create();

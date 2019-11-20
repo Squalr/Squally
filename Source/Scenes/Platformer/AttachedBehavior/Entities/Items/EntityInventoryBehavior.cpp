@@ -4,7 +4,9 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Strings/Platformer/Notifications/ItemFound.h"
 
@@ -29,6 +31,28 @@ EntityInventoryBehavior::EntityInventoryBehavior(GameObject* owner) : super(owne
 	{
 		this->invalidate();
 	}
+	else
+	{
+		std::string inventorySaveKey = "";
+		std::string equipmentSaveKey = "";
+		std::string currencySaveKey = "";
+
+		// A little bit of bad practice, but this is the only exception, so who gives a shit
+		if (dynamic_cast<Squally*>(this->platformerEntity) != nullptr)
+		{
+			inventorySaveKey = SaveKeys::SaveKeySquallyInventory;
+			equipmentSaveKey = SaveKeys::SaveKeySquallyEquipment;
+			currencySaveKey = SaveKeys::SaveKeySquallyCurrencyInventory;
+		}
+
+		this->inventory = Inventory::create(inventorySaveKey);
+		this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
+		this->currencyInventory = CurrencyInventory::create(currencySaveKey);
+
+		this->addChild(this->inventory);
+		this->addChild(this->equipmentInventory);
+		this->addChild(this->currencyInventory);
+	}
 }
 
 EntityInventoryBehavior::~EntityInventoryBehavior()
@@ -37,17 +61,6 @@ EntityInventoryBehavior::~EntityInventoryBehavior()
 
 void EntityInventoryBehavior::onLoad()
 {
-	std::string inventorySaveKey = "";
-	std::string equipmentSaveKey = "";
-	std::string currencySaveKey = "";
-
-	this->inventory = Inventory::create(inventorySaveKey);
-	this->equipmentInventory = EquipmentInventory::create(equipmentSaveKey);
-	this->currencyInventory = CurrencyInventory::create(currencySaveKey);
-
-	this->addChild(this->inventory);
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->currencyInventory);
 }
 
 Inventory* EntityInventoryBehavior::getInventory()

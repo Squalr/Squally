@@ -61,10 +61,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Size(128.0f, 128.0f),
 	Squally::SquallyScale,
 	Vec2(0.0f, 24.0f),
-	96.0f,
-	SaveKeys::SaveKeySquallyInventory,
-	SaveKeys::SaveKeySquallyEquipment,
-	SaveKeys::SaveKeySquallyCurrencyInventory)
+	96.0f)
 {
 	this->registerHackables();
 }
