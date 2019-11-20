@@ -48,12 +48,6 @@ MapTitleBanner::MapTitleBanner(LocalizedString* bannerString) : super()
 
 MapTitleBanner::~MapTitleBanner()
 {
-	if (this->hasRelocated)
-	{
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(
-			this->hud
-		));
-	}
 }
 
 void MapTitleBanner::onEnter()

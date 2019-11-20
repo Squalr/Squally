@@ -67,10 +67,6 @@ WoodenGate::WoodenGate(ValueMap& properties) : super(properties)
 
 WoodenGate::~WoodenGate()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->doorClip));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->bridge2));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->WoodenGateFront2));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->WoodenGateFront));
 }
 
 void WoodenGate::onEnter()

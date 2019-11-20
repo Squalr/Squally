@@ -67,10 +67,6 @@ CastleGate::CastleGate(ValueMap& properties) : super(properties)
 
 CastleGate::~CastleGate()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->doorClip));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->bridge2));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->castleDoorFront2));
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->castleDoorFront));
 }
 
 void CastleGate::onEnter()

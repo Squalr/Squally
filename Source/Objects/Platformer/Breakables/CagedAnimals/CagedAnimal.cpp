@@ -38,7 +38,6 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 
 CagedAnimal::~CagedAnimal()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->animalNode));
 }
 
 void CagedAnimal::onEnter()

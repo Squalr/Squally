@@ -45,7 +45,6 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->mouseOverCallback = nullptr;
 	this->isPlayerOwnedCard = isPlayerOwnedCard;
 	this->relocateUI = relocateUI;
-	this->uiRelocated = false;
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
@@ -151,11 +150,6 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 
 Card::~Card()
 {
-	if (this->relocateUI && this->uiRelocated)
-	{
-		ObjectEvents::TriggerUnbindObject(this->overflowLabel);
-		ObjectEvents::TriggerUnbindObject(this->underflowLabel);
-	}
 }
 
 void Card::onEnter()
@@ -172,7 +166,6 @@ void Card::onEnterTransitionDidFinish()
 
 	if (this->relocateUI)
 	{
-		this->uiRelocated = true;
 		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
 		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 	}

@@ -50,7 +50,6 @@ protected:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
-	void onExit() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;

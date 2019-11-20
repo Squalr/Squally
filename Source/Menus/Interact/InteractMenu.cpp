@@ -59,13 +59,6 @@ void InteractMenu::onEnter()
 void InteractMenu::onExit()
 {
 	super::onExit();
-
-	if (this->hasRelocated)
-	{
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(
-			this->uiElements
-		));
-	}
 }
 
 void InteractMenu::initializePositions()

@@ -67,7 +67,6 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 RegisterCrystal::~RegisterCrystal()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void RegisterCrystal::onEnter()

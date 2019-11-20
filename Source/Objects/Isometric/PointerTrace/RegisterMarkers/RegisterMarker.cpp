@@ -28,7 +28,6 @@ RegisterMarker::RegisterMarker() : super(ValueMap())
 
 RegisterMarker::~RegisterMarker()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->registerLabel));
 }
 
 void RegisterMarker::onEnter()

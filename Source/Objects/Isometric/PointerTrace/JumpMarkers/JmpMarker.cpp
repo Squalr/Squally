@@ -45,7 +45,6 @@ JmpMarker::JmpMarker(ValueMap& properties) : super(properties)
 
 JmpMarker::~JmpMarker()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void JmpMarker::onEnter()

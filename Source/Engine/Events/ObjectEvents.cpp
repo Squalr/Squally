@@ -71,14 +71,6 @@ void ObjectEvents::TriggerReparentBind(ReparentBindArgs args)
 	);
 }
 
-void ObjectEvents::TriggerUnbindObject(RelocateObjectArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventUnbindObjectPrefix + std::to_string((unsigned long long)(args.relocatedObject)),
-		&args
-	);
-}
-
 void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(

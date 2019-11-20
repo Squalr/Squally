@@ -61,7 +61,6 @@ LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 
 LevelNode::~LevelNode()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->indexLabel));
 }
 
 void LevelNode::onEnter()

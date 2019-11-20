@@ -181,15 +181,6 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 
 MemoryGrid::~MemoryGrid()
 {
-	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
-	{
-		ObjectEvents::TriggerUnbindObject(*it);
-	}
-
-	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
-	{
-		ObjectEvents::TriggerUnbindObject(*it);
-	}
 }
 
 void MemoryGrid::onEnter()

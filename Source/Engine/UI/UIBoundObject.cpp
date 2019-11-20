@@ -20,7 +20,7 @@ UIBoundObject* UIBoundObject::create(cocos2d::Node* referencedObject)
 UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
 {
     this->referencedObject = referencedObject;
-    this->originalParent = this->referencedObject == nullptr ? nullptr : this->referencedObject->getParent();
+    this->originalParent = this->referencedObject == nullptr ? nullptr : dynamic_cast<SmartNode*>(this->referencedObject->getParent());
     this->originalCoords = Vec3::ZERO;
     this->originalScale = 1.0f;
     this->realCoords = Vec3::ZERO;
@@ -59,25 +59,23 @@ void UIBoundObject::initializeListeners()
         
         if (args != nullptr)
         {
-            this->originalParent = args->newParent;
+            this->originalParent = dynamic_cast<SmartNode*>(args->newParent);
             this->scheduleUpdateTask();
         }
     }));
 
-    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObjectPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
+    if (this->originalParent != nullptr)
     {
-        ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
-        
-        if (args != nullptr)
+        this->originalParent->onDispose([=]()
         {
-            this->removeChild(referencedObject);
+            this->removeChild(this->referencedObject);
 
             if (this->getParent() != nullptr)
             {
                 this->getParent()->removeChild(this);
             }
-        }
-    }));
+        });
+    }
 }
 
 void UIBoundObject::scheduleUpdateTask()

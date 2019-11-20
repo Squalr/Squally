@@ -52,10 +52,6 @@ SpeechBubble::SpeechBubble(bool uiBound)
 
 SpeechBubble::~SpeechBubble()
 {
-	if (this->uiBound)
-	{
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this));
-	}
 }
 
 void SpeechBubble::onEnter()

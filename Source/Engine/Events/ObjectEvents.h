@@ -131,7 +131,6 @@ public:
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);
 	static void TriggerReparentBind(ReparentBindArgs args);
-	static void TriggerUnbindObject(RelocateObjectArgs args);
 	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);

@@ -26,6 +26,7 @@ public:
 	cocos2d::EventListener* whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void onDispose(std::function<void()> task);
 
 protected:
 	SmartNode();
@@ -33,7 +34,7 @@ protected:
 	void onEnter() override;
 
 	// IMPORTANT: This method may not get called if the object is being disposed (new scene) as an optimization.
-	// Instead, put critical exit code in a BeforeSceneChange event listener.	
+	// Instead, put critical exit code in a BeforeSceneChange event listener, or in the destructor.	
 	void onExit() override;
 	void onReenter() override; // Called on parent change
 	virtual void onDeveloperModeEnable();
@@ -55,4 +56,6 @@ private:
 	bool optimizationHasGlobalListener;
 	bool optimizationHasListener;
 	bool hasInitializedListeners;
+
+	std::vector<std::function<void()>> disposeCallbacks;
 };

@@ -57,7 +57,6 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 
 HackableObject::~HackableObject()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::onEnter()
@@ -77,13 +76,6 @@ void HackableObject::onEnterTransitionDidFinish()
 	});
 
 	this->registerHackables();
-}
-
-void HackableObject::onExit()
-{
-	super::onExit();
-
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::initializeListeners()

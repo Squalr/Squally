@@ -26,7 +26,7 @@ private:
 	void scheduleUpdateTask();
 
 	cocos2d::Node* referencedObject;
-	cocos2d::Node* originalParent;
+	SmartNode* originalParent;
 	cocos2d::Node* scheduleTarget;
 
     cocos2d::Vec3 originalCoords;

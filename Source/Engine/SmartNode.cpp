@@ -29,10 +29,15 @@ SmartNode::SmartNode()
 	this->optimizationHasGlobalListener = false;
 	this->optimizationHasListener = false;
 	this->hasInitializedListeners = false;
+	this->disposeCallbacks = std::vector<std::function<void()>>();
 }
 
 SmartNode::~SmartNode()
 {
+	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	{
+		(*it)();
+	}
 }
 
 void SmartNode::onEnter()
@@ -355,4 +360,9 @@ EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeybo
 	this->addEventListenerIgnorePause(listener);
 
 	return listener;
+}
+
+void SmartNode::onDispose(std::function<void()> task)
+{
+	this->disposeCallbacks.push_back(task);
 }
