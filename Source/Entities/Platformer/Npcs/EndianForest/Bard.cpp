@@ -33,7 +33,7 @@ Bard* Bard::deserialize(ValueMap& properties)
 
 Bard::Bard(ValueMap& properties) : super(properties,
 	Bard::MapKeyBard,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Bard_Animations,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

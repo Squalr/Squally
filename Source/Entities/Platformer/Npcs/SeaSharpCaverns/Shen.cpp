@@ -33,7 +33,7 @@ Shen* Shen::deserialize(ValueMap& properties)
 
 Shen::Shen(ValueMap& properties) : super(properties,
 	Shen::MapKeyShen,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

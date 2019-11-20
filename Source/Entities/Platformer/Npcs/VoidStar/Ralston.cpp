@@ -33,7 +33,7 @@ Ralston* Ralston::deserialize(ValueMap& properties)
 
 Ralston::Ralston(ValueMap& properties) : super(properties,
 	Ralston::MapKeyRalston,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Ralston_Animations,
 	EntityResources::Npcs_VoidStar_Ralston_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

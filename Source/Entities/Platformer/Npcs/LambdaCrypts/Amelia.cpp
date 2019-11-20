@@ -33,7 +33,7 @@ Amelia* Amelia::deserialize(ValueMap& properties)
 
 Amelia::Amelia(ValueMap& properties) : super(properties,
 	Amelia::MapKeyAmelia,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Amelia_Animations,
 	EntityResources::Npcs_LambdaCrypts_Amelia_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

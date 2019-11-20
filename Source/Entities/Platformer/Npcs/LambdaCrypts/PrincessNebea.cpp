@@ -33,7 +33,7 @@ PrincessNebea* PrincessNebea::deserialize(ValueMap& properties)
 
 PrincessNebea::PrincessNebea(ValueMap& properties) : super(properties,
 	PrincessNebea::MapKeyPrincessNebea,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Animations,
 	EntityResources::Npcs_LambdaCrypts_PrincessNebea_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

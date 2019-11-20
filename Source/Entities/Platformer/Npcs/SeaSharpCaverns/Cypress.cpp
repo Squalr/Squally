@@ -33,7 +33,7 @@ Cypress* Cypress::deserialize(ValueMap& properties)
 
 Cypress::Cypress(ValueMap& properties) : super(properties,
 	Cypress::MapKeyCypress,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Cypress_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Cypress_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

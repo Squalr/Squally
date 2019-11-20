@@ -33,7 +33,7 @@ Godiva* Godiva::deserialize(ValueMap& properties)
 
 Godiva::Godiva(ValueMap& properties) : super(properties,
 	Godiva::MapKeyGodiva,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Godiva_Animations,
 	EntityResources::Npcs_VoidStar_Godiva_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

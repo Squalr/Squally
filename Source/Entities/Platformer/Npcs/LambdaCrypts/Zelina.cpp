@@ -33,7 +33,7 @@ Zelina* Zelina::deserialize(ValueMap& properties)
 
 Zelina::Zelina(ValueMap& properties) : super(properties,
 	Zelina::MapKeyZelina,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

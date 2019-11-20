@@ -33,7 +33,7 @@ Bancroft* Bancroft::deserialize(ValueMap& properties)
 
 Bancroft::Bancroft(ValueMap& properties) : super(properties,
 	Bancroft::MapKeyBancroft,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Bancroft_Animations,
 	EntityResources::Npcs_VoidStar_Bancroft_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

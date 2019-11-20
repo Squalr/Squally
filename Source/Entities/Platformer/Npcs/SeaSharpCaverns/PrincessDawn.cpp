@@ -33,7 +33,7 @@ PrincessDawn* PrincessDawn::deserialize(ValueMap& properties)
 
 PrincessDawn::PrincessDawn(ValueMap& properties) : super(properties,
 	PrincessDawn::MapKeyPrincessDawn,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_PrincessDawn_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

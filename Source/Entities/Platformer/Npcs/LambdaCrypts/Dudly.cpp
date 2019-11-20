@@ -33,7 +33,7 @@ Dudly* Dudly::deserialize(ValueMap& properties)
 
 Dudly::Dudly(ValueMap& properties) : super(properties,
 	Dudly::MapKeyDudly,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

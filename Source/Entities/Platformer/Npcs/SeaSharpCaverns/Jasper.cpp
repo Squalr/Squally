@@ -33,7 +33,7 @@ Jasper* Jasper::deserialize(ValueMap& properties)
 
 Jasper::Jasper(ValueMap& properties) : super(properties,
 	Jasper::MapKeyJasper,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

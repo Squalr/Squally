@@ -33,7 +33,7 @@ QueenLiana* QueenLiana::deserialize(ValueMap& properties)
 
 QueenLiana::QueenLiana(ValueMap& properties) : super(properties,
 	QueenLiana::MapKeyQueenLiana,
-	nullptr,
+	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Illia* Illia::deserialize(ValueMap& properties)
 
 Illia::Illia(ValueMap& properties) : super(properties,
 	Illia::MapKeyIllia,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

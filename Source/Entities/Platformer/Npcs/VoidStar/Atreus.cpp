@@ -33,7 +33,7 @@ Atreus* Atreus::deserialize(ValueMap& properties)
 
 Atreus::Atreus(ValueMap& properties) : super(properties,
 	Atreus::MapKeyAtreus,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

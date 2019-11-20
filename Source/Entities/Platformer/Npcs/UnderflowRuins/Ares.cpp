@@ -33,7 +33,7 @@ Ares* Ares::deserialize(ValueMap& properties)
 
 Ares::Ares(ValueMap& properties) : super(properties,
 	Ares::MapKeyAres,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Ares_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ares_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

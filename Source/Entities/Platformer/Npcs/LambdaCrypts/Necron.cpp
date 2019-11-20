@@ -33,7 +33,7 @@ Necron* Necron::deserialize(ValueMap& properties)
 
 Necron::Necron(ValueMap& properties) : super(properties,
 	Necron::MapKeyNecron,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

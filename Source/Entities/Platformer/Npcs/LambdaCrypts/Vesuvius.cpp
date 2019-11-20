@@ -33,7 +33,7 @@ Vesuvius* Vesuvius::deserialize(ValueMap& properties)
 
 Vesuvius::Vesuvius(ValueMap& properties) : super(properties,
 	Vesuvius::MapKeyVesuvius,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Vesuvius_Animations,
 	EntityResources::Npcs_LambdaCrypts_Vesuvius_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

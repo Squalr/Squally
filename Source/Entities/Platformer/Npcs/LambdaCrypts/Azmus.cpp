@@ -33,7 +33,7 @@ Azmus* Azmus::deserialize(ValueMap& properties)
 
 Azmus::Azmus(ValueMap& properties) : super(properties,
 	Azmus::MapKeyAzmus,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

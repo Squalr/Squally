@@ -33,7 +33,7 @@ Piper* Piper::deserialize(ValueMap& properties)
 
 Piper::Piper(ValueMap& properties) : super(properties,
 	Piper::MapKeyPiper,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Piper_Animations,
 	EntityResources::Npcs_VoidStar_Piper_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

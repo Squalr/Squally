@@ -33,7 +33,7 @@ Raka* Raka::deserialize(ValueMap& properties)
 
 Raka::Raka(ValueMap& properties) : super(properties,
 	Raka::MapKeyRaka,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

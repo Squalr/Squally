@@ -33,7 +33,7 @@ Finch* Finch::deserialize(ValueMap& properties)
 
 Finch::Finch(ValueMap& properties) : super(properties,
 	Finch::MapKeyFinch,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Geryon* Geryon::deserialize(ValueMap& properties)
 
 Geryon::Geryon(ValueMap& properties) : super(properties,
 	Geryon::MapKeyGeryon,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Horus* Horus::deserialize(ValueMap& properties)
 
 Horus::Horus(ValueMap& properties) : super(properties,
 	Horus::MapKeyHorus,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Horus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Horus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

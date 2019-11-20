@@ -33,7 +33,7 @@ Athena* Athena::deserialize(ValueMap& properties)
 
 Athena::Athena(ValueMap& properties) : super(properties,
 	Athena::MapKeyAthena,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Athena_Animations,
 	EntityResources::Npcs_UnderflowRuins_Athena_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Cleopatra* Cleopatra::deserialize(ValueMap& properties)
 
 Cleopatra::Cleopatra(ValueMap& properties) : super(properties,
 	Cleopatra::MapKeyCleopatra,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Cleopatra_Animations,
 	EntityResources::Npcs_UnderflowRuins_Cleopatra_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

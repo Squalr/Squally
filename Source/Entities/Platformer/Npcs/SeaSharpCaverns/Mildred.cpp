@@ -33,7 +33,7 @@ Mildred* Mildred::deserialize(ValueMap& properties)
 
 Mildred::Mildred(ValueMap& properties) : super(properties,
 	Mildred::MapKeyMildred,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

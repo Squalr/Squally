@@ -33,7 +33,7 @@ Lycan* Lycan::deserialize(ValueMap& properties)
 
 Lycan::Lycan(ValueMap& properties) : super(properties,
 	Lycan::MapKeyLycan,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Lycan_Animations,
 	EntityResources::Npcs_EndianForest_Lycan_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

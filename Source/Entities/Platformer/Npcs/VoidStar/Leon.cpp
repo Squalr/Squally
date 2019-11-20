@@ -33,7 +33,7 @@ Leon* Leon::deserialize(ValueMap& properties)
 
 Leon::Leon(ValueMap& properties) : super(properties,
 	Leon::MapKeyLeon,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

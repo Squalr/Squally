@@ -33,7 +33,7 @@ Bonnie* Bonnie::deserialize(ValueMap& properties)
 
 Bonnie::Bonnie(ValueMap& properties) : super(properties,
 	Bonnie::MapKeyBonnie,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

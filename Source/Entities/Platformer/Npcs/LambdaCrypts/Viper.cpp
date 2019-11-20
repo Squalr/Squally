@@ -33,7 +33,7 @@ Viper* Viper::deserialize(ValueMap& properties)
 
 Viper::Viper(ValueMap& properties) : super(properties,
 	Viper::MapKeyViper,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Viper_Animations,
 	EntityResources::Npcs_LambdaCrypts_Viper_Emblem,
 	Size(112.0f, 160.0f),
 	0.85f,

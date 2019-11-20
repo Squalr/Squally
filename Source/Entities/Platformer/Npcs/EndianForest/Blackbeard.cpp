@@ -33,7 +33,7 @@ Blackbeard* Blackbeard::deserialize(ValueMap& properties)
 
 Blackbeard::Blackbeard(ValueMap& properties) : super(properties,
 	Blackbeard::MapKeyBlackbeard,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

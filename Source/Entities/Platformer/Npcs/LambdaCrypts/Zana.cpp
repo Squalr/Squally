@@ -33,7 +33,7 @@ Zana* Zana::deserialize(ValueMap& properties)
 
 Zana::Zana(ValueMap& properties) : super(properties,
 	Zana::MapKeyZana,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

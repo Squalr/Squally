@@ -33,7 +33,7 @@ Sarude* Sarude::deserialize(ValueMap& properties)
 
 Sarude::Sarude(ValueMap& properties) : super(properties,
 	Sarude::MapKeySarude,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

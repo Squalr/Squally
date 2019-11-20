@@ -33,7 +33,7 @@ Johann* Johann::deserialize(ValueMap& properties)
 
 Johann::Johann(ValueMap& properties) : super(properties,
 	Johann::MapKeyJohann,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Johann_Animations,
 	EntityResources::Npcs_LambdaCrypts_Johann_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

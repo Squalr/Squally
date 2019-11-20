@@ -33,7 +33,7 @@ Alder* Alder::deserialize(ValueMap& properties)
 
 Alder::Alder(ValueMap& properties) : super(properties,
 	Alder::MapKeyAlder,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

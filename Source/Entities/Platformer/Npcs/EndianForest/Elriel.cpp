@@ -33,7 +33,7 @@ Elriel* Elriel::deserialize(ValueMap& properties)
 
 Elriel::Elriel(ValueMap& properties) : super(properties,
 	Elriel::MapKeyElriel,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Elriel_Animations,
 	EntityResources::Npcs_EndianForest_Elriel_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

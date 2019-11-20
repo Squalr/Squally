@@ -33,7 +33,7 @@ Poseidon* Poseidon::deserialize(ValueMap& properties)
 
 Poseidon::Poseidon(ValueMap& properties) : super(properties,
 	Poseidon::MapKeyPoseidon,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

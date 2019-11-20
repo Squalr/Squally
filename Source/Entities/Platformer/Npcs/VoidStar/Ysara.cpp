@@ -33,7 +33,7 @@ Ysara* Ysara::deserialize(ValueMap& properties)
 
 Ysara::Ysara(ValueMap& properties) : super(properties,
 	Ysara::MapKeyYsara,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

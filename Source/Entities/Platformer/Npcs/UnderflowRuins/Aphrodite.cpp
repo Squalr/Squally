@@ -33,7 +33,7 @@ Aphrodite* Aphrodite::deserialize(ValueMap& properties)
 
 Aphrodite::Aphrodite(ValueMap& properties) : super(properties,
 	Aphrodite::MapKeyAphrodite,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

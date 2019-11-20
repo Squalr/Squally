@@ -33,7 +33,7 @@ Matu* Matu::deserialize(ValueMap& properties)
 
 Matu::Matu(ValueMap& properties) : super(properties,
 	Matu::MapKeyMatu,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Matu_Animations,
 	EntityResources::Npcs_EndianForest_Matu_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

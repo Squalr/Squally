@@ -33,7 +33,7 @@ Chiron* Chiron::deserialize(ValueMap& properties)
 
 Chiron::Chiron(ValueMap& properties) : super(properties,
 	Chiron::MapKeyChiron,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	Size(160.0f, 224.0f),
 	1.0f,

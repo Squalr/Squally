@@ -33,7 +33,7 @@ Appolo* Appolo::deserialize(ValueMap& properties)
 
 Appolo::Appolo(ValueMap& properties) : super(properties,
 	Appolo::MapKeyAppolo,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Appolo_Animations,
 	EntityResources::Npcs_VoidStar_Appolo_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

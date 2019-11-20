@@ -33,7 +33,7 @@ Garrick* Garrick::deserialize(ValueMap& properties)
 
 Garrick::Garrick(ValueMap& properties) : super(properties,
 	Garrick::MapKeyGarrick,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Garrick_Animations,
 	EntityResources::Npcs_LambdaCrypts_Garrick_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

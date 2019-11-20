@@ -33,7 +33,7 @@ Zeus* Zeus::deserialize(ValueMap& properties)
 
 Zeus::Zeus(ValueMap& properties) : super(properties,
 	Zeus::MapKeyZeus,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
 	EntityResources::Npcs_UnderflowRuins_Zeus_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

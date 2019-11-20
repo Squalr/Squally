@@ -33,7 +33,7 @@ Ajax* Ajax::deserialize(ValueMap& properties)
 
 Ajax::Ajax(ValueMap& properties) : super(properties,
 	Ajax::MapKeyAjax,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

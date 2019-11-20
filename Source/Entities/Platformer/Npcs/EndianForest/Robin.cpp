@@ -33,7 +33,7 @@ Robin* Robin::deserialize(ValueMap& properties)
 
 Robin::Robin(ValueMap& properties) : super(properties,
 	Robin::MapKeyRobin,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

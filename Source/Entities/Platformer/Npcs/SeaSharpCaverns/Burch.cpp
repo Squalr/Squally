@@ -33,7 +33,7 @@ Burch* Burch::deserialize(ValueMap& properties)
 
 Burch::Burch(ValueMap& properties) : super(properties,
 	Burch::MapKeyBurch,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Burch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Burch_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

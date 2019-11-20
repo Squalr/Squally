@@ -33,7 +33,7 @@ Xenon* Xenon::deserialize(ValueMap& properties)
 
 Xenon::Xenon(ValueMap& properties) : super(properties,
 	Xenon::MapKeyXenon,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

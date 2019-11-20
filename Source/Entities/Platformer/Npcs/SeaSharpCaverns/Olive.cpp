@@ -33,7 +33,7 @@ Olive* Olive::deserialize(ValueMap& properties)
 
 Olive::Olive(ValueMap& properties) : super(properties,
 	Olive::MapKeyOlive,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

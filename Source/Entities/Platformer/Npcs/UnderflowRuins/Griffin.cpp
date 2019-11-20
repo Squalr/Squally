@@ -33,7 +33,7 @@ Griffin* Griffin::deserialize(ValueMap& properties)
 
 Griffin::Griffin(ValueMap& properties) : super(properties,
 	Griffin::MapKeyGriffin,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

@@ -33,7 +33,7 @@ Angel* Angel::deserialize(ValueMap& properties)
 
 Angel::Angel(ValueMap& properties) : super(properties,
 	Angel::MapKeyAngel,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Angel_Animations,
 	EntityResources::Npcs_UnderflowRuins_Angel_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

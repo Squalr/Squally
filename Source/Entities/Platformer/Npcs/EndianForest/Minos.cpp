@@ -33,7 +33,7 @@ Minos* Minos::deserialize(ValueMap& properties)
 
 Minos::Minos(ValueMap& properties) : super(properties,
 	Minos::MapKeyMinos,
-	nullptr,
+	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

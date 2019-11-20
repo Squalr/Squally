@@ -33,7 +33,7 @@ Mara* Mara::deserialize(ValueMap& properties)
 
 Mara::Mara(ValueMap& properties) : super(properties,
 	Mara::MapKeyMara,
-	nullptr,
+	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

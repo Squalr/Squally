@@ -33,7 +33,7 @@ Brock* Brock::deserialize(ValueMap& properties)
 
 Brock::Brock(ValueMap& properties) : super(properties,
 	Brock::MapKeyBrock,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Brock_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Brock_Emblem,
 	Size(112.0f, 160.0f),
 	1.05f,

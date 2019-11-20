@@ -33,7 +33,7 @@ Hades* Hades::deserialize(ValueMap& properties)
 
 Hades::Hades(ValueMap& properties) : super(properties,
 	Hades::MapKeyHades,
-	nullptr,
+	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,
 	Size(112.0f, 160.0f),
 	0.9f,

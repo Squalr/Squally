@@ -33,7 +33,7 @@ Fraya* Fraya::deserialize(ValueMap& properties)
 
 Fraya::Fraya(ValueMap& properties) : super(properties,
 	Fraya::MapKeyFraya,
-	nullptr,
+	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,

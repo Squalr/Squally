@@ -33,7 +33,7 @@ Ursula* Ursula::deserialize(ValueMap& properties)
 
 Ursula::Ursula(ValueMap& properties) : super(properties,
 	Ursula::MapKeyUrsula,
-	nullptr,
+	EntityResources::Npcs_LambdaCrypts_Ursula_Animations,
 	EntityResources::Npcs_LambdaCrypts_Ursula_Emblem,
 	Size(112.0f, 160.0f),
 	1.0f,
