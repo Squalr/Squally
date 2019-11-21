@@ -108,7 +108,7 @@ void ChatWithGuano::runChatSequence()
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::create(),
 				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Top,
+					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(this->guano, false),
 					DialogueEvents::BuildPreviewNode(this->squally, true)
@@ -130,7 +130,7 @@ void ChatWithGuano::runChatSequencePt2()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::HardRight,
 			DialogueEvents::BuildPreviewNode(this->guano, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true),
@@ -150,7 +150,7 @@ void ChatWithGuano::runChatSequencePt3()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_WhatGotMeInHere::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(this->guano, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true)
@@ -169,7 +169,7 @@ void ChatWithGuano::runChatSequencePt4()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_WeShouldHelpHim::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true)
@@ -188,7 +188,7 @@ void ChatWithGuano::runChatSequencePt5()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_DoorTech::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(this->guano, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true)

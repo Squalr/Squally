@@ -92,7 +92,7 @@ void RescueGuano::runRescueSequence()
 		DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_RescueGuano_Freedom::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Top,
+				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(this->guano, false),
 				DialogueEvents::BuildPreviewNode(this->squally, true),
@@ -113,7 +113,7 @@ void RescueGuano::runRescueSequencePt2()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(this->guano, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true)
@@ -132,7 +132,7 @@ void RescueGuano::runRescueSequencePt3()
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_HelpYouFindThings::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(this->guano, false),
 			DialogueEvents::BuildPreviewNode(this->squally, true)

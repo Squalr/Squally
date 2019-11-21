@@ -67,7 +67,6 @@ private:
 	Hud* hackerModeGlow;
 	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
-	PlatformerDialogueBox* dialogueBox;
 	CodeEditor* codeEditor;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;

@@ -1144,6 +1144,9 @@ namespace UIResources
 	extern const std::string Menus_WorldMap_VoidCrystal;
 	extern const std::string Menus_WorldMap_WorldMap;
 	extern const std::string Platformer_ChatBubble;
+	extern const std::string Cinematic_FilmProjectorBase;
+	extern const std::string Cinematic_ReelLarge;
+	extern const std::string Cinematic_ReelSmall;
 	extern const std::string Cursors_MouseDrag;
 	extern const std::string Cursors_MouseIdle;
 	extern const std::string Cursors_MousePoint;

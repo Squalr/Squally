@@ -63,20 +63,6 @@ void UIBoundObject::initializeListeners()
             this->scheduleUpdateTask();
         }
     }));
-
-    if (this->originalParent != nullptr)
-    {
-        this->originalParent->onDispose([=]()
-        {
-            /*
-            this->removeChild(this->referencedObject);
-
-            if (this->getParent() != nullptr)
-            {
-                this->getParent()->removeChild(this);
-            }*/
-        });
-    }
 }
 
 void UIBoundObject::scheduleUpdateTask()
