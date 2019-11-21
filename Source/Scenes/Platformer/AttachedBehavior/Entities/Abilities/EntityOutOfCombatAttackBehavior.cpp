@@ -12,6 +12,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -25,6 +26,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
+	this->weaponSound = WorldSound::create();
 	this->isPerformingOutOfCombatAttack = false;
 
 	if (this->entity == nullptr)
@@ -33,6 +35,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 	}
 	
 	this->addChild(this->outOfCombatAttackDebug);
+	this->addChild(this->weaponSound);
 }
 
 EntityOutOfCombatAttackBehavior::~EntityOutOfCombatAttackBehavior()
@@ -62,7 +65,7 @@ void EntityOutOfCombatAttackBehavior::onLoad()
 {
 }
 
-void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain)
+void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain)
 {
 	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
@@ -70,6 +73,7 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 	}
 
 	this->isPerformingOutOfCombatAttack = true;
+
 	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
 	this->entity->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
 	{
@@ -81,6 +85,9 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 				{
 					this->outOfCombatAttackDebug->setVisible(true);
 				}
+
+				this->weaponSound->setSoundResource(soundResource);
+				this->weaponSound->play();
 
 				weaponBehavior->enable();
 			}),

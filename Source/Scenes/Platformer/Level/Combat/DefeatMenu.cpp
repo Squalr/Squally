@@ -71,9 +71,9 @@ void DefeatMenu::initializePositions()
 {
 	super::initializePositions();
 
-	this->defeatBanner->setPosition(Vec2(0.0f, 0.0f));
+	this->defeatBanner->setPosition(Vec2(16.0f, 0.0f));
 	this->defeatLabel->setPosition(Vec2(0.0f, 176.0f));
-	this->returnButton->setPosition(Vec2(16.0f, -160.0f));
+	this->returnButton->setPosition(Vec2(0.0f, -160.0f));
 }
 
 void DefeatMenu::initializeListeners()

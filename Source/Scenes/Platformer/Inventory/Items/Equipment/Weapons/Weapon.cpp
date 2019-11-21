@@ -43,3 +43,8 @@ Vec2 Weapon::getWeaponOffset()
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 192.0f);
 }
+
+std::string Weapon::getWeaponAttackSound()
+{
+	return "";
+}

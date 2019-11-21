@@ -10,7 +10,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
-#include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -45,7 +45,7 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 
 	this->squally->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		this->doOutOfCombatAttack(this->getOutOfCombatAttackAnimation(), this->getOutOfCombatAttackOnset(), this->getOutOfCombatAttackSustain());
+		this->doOutOfCombatAttack(this->getOutOfCombatAttackAnimation(), this->getOutOfCombatAttackSound(), this->getOutOfCombatAttackOnset(), this->getOutOfCombatAttackSustain());
 	});
 }
 
@@ -60,6 +60,20 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 	else
 	{
 		return "AttackPunchFast";
+	}
+}
+
+std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
+{
+	Weapon* weapon = this->getWeapon();
+
+	if (weapon == nullptr)
+	{
+		return SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
+	}
+	else
+	{
+		return weapon->getWeaponAttackSound();
 	}
 }
 

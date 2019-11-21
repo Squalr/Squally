@@ -95,6 +95,7 @@ const std::string SoundResources::Platformer_Combat_Attacks_Physical_Punches_Pun
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch7 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Punches/Punch7.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch8 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Punches/Punch8.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch9 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Punches/Punch9.mp3";
+const std::string SoundResources::Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Punches/PunchWoosh1.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Swings_KnifeSwing1 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Swings/KnifeSwing1.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Swings_KnifeSwing2 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Swings/KnifeSwing2.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1 = "Private/Sounds/Platformer/Combat/Attacks/Physical/Swings/Swing1.mp3";

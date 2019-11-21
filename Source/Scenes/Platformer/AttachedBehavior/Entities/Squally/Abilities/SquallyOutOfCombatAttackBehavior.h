@@ -22,6 +22,7 @@ private:
 	typedef EntityOutOfCombatAttackBehavior super;
 	
 	std::string getOutOfCombatAttackAnimation();
+	std::string getOutOfCombatAttackSound();
 	float getOutOfCombatAttackOnset();
 	float getOutOfCombatAttackSustain();
 	Weapon* getWeapon();

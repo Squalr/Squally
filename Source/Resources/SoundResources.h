@@ -96,6 +96,7 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_Attacks_Physical_Punches_Punch7;
 	extern const std::string Platformer_Combat_Attacks_Physical_Punches_Punch8;
 	extern const std::string Platformer_Combat_Attacks_Physical_Punches_Punch9;
+	extern const std::string Platformer_Combat_Attacks_Physical_Punches_PunchWoosh1;
 	extern const std::string Platformer_Combat_Attacks_Physical_Swings_KnifeSwing1;
 	extern const std::string Platformer_Combat_Attacks_Physical_Swings_KnifeSwing2;
 	extern const std::string Platformer_Combat_Attacks_Physical_Swings_Swing1;

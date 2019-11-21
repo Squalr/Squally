@@ -13,6 +13,7 @@ public:
 	virtual float getAttackSustain();
 	virtual cocos2d::Size getWeaponCollisionSize();
 	virtual cocos2d::Vec2 getWeaponOffset();
+	virtual std::string getWeaponAttackSound();
 
 protected:
 	Weapon(CurrencyInventory* cost, int minAttack, int maxAttack);

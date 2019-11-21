@@ -48,14 +48,14 @@ void CinematicIndicator::onEnter()
 	this->setOpacity(0);
 
 	this->reelLarge->runAction(RepeatForever::create(RotateBy::create(1.5f, 360.0f)));
-	this->reelSmall->runAction(RepeatForever::create(RotateBy::create(1.5f, 360.0f)));
+	this->reelSmall->runAction(RepeatForever::create(RotateBy::create(1.5f, -360.0f)));
 }
 
 void CinematicIndicator::initializePositions()
 {
 	super::initializePositions();
 
-	this->reelLarge->setPosition(Vec2(-13.0f, 28.0f - 4.0f));
+	this->reelLarge->setPosition(Vec2(-12.0f, 28.0f - 4.0f));
 	this->reelSmall->setPosition(Vec2(10.0f, 23.0f - 4.0f));
 }
 
