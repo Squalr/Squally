@@ -20,5 +20,4 @@ public:
 	};
 
 	static void LoadScene(LoadSceneArgs args);
-	static void NavigateBack(int backCount = 1);
 };

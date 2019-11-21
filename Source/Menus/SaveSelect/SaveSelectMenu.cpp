@@ -18,6 +18,7 @@
 #include "Menus/MenuBackground.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
@@ -113,7 +114,7 @@ void SaveSelectMenu::initializeListeners()
 		}
 		args->handle();
 
-		NavigationEvents::NavigateBack();
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 	});
 
 	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
@@ -251,5 +252,5 @@ void SaveSelectMenu::loadSave()
 
 void SaveSelectMenu::onBackClick()
 {
-	NavigationEvents::NavigateBack();
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }

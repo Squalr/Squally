@@ -15,6 +15,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/MusicResources.h"
@@ -109,8 +110,8 @@ void DeveloperScene::initializeListeners()
 			return;
 		}
 		args->handle();
-
-		NavigationEvents::NavigateBack();
+		
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 	});
 }
 

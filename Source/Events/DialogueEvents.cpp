@@ -29,7 +29,7 @@ void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 
 Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
 {
-	const float offsetY = -64.0f;
+	const float offsetY = -96.0f;
 
 	if (entity == nullptr)
 	{

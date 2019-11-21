@@ -35,25 +35,10 @@ GlobalDirector::~GlobalDirector()
 {
 }
 
-void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
+void GlobalDirector::loadScene(Scene* scene)
 {
-	auto director = Director::getInstance();
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
-
-	// Although this is counter-intuitive, add the Global Director as a child to whichever scene is active.
-	// This will allows for the Global Director's nodes to listen for events
-	if (GlobalDirector::getInstance()->activeScene != nullptr)
-	{
-		if (saveToHistory)
-		{
-			GlobalDirector::getInstance()->sceneHistory.push(GlobalDirector::getInstance()->activeScene);
-		}
-		
-		GlobalDirector::getInstance()->getParent()->removeChildNoExit(GlobalDirector::getInstance());
-	}
-
-	scene->addChild(GlobalDirector::getInstance());
 
 	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
@@ -61,31 +46,17 @@ void GlobalDirector::loadScene(Scene* scene, bool saveToHistory)
 	}
 	else
 	{
+		GlobalDirector::getInstance()->getParent()->removeChildNoExit(GlobalDirector::getInstance());
 		GameUtils::pause(GlobalDirector::getInstance()->activeScene);
-		Director::getInstance()->pushScene(scene);
+		Director::getInstance()->replaceScene(scene);
 	}
+
+	// Reparent the global director onto the active scene so that all global nodes are part of the active scene graph
+	scene->addChild(GlobalDirector::getInstance());
 
 	SaveManager::save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
-}
-
-void GlobalDirector::navigateBack(int backCount)
-{
-	Scene* scene = GlobalDirector::getInstance()->activeScene;
-
-	for (int index = 0; index < backCount; index++)
-	{
-		if (GlobalDirector::getInstance()->sceneHistory.size() <= 0)
-		{
-			break;
-		}
-
-		scene = GlobalDirector::getInstance()->sceneHistory.top();
-		GlobalDirector::getInstance()->sceneHistory.pop();
-	}
-
-	GlobalDirector::getInstance()->loadScene(scene, false);
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)

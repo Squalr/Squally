@@ -62,15 +62,17 @@ TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(ini
 		}
 		else
 		{
-			this->tileLayer->retain();
-			this->tileLayer->getParent()->removeChild(this->tileLayer);
-			this->addChild(this->tileLayer);
+			GameUtils::changeParent(this->tileLayer, this, true);
 		}
 	}
 }
 
 TileLayer::~TileLayer()
 {
+	if (this->tileLayer != nullptr && this->tileLayer->getParent() == nullptr)
+	{
+		this->tileLayer->release();
+	}
 }
 
 std::string TileLayer::getType()

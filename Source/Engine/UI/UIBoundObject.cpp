@@ -68,12 +68,13 @@ void UIBoundObject::initializeListeners()
     {
         this->originalParent->onDispose([=]()
         {
+            /*
             this->removeChild(this->referencedObject);
 
             if (this->getParent() != nullptr)
             {
                 this->getParent()->removeChild(this);
-            }
+            }*/
         });
     }
 }

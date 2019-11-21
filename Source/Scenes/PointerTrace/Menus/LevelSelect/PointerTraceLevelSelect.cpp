@@ -100,6 +100,6 @@ void PointerTraceLevelSelect::initializeListeners()
 		}
 
 		args->handle();
-		NavigationEvents::NavigateBack();
+		// NavigationEvents::NavigateBack();
 	});
 }
