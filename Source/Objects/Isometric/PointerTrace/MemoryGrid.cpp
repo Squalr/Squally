@@ -89,8 +89,8 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	float width = this->properties[super::MapKeyWidth].asFloat();
 	float height = this->properties[super::MapKeyWidth].asFloat();
 
-	this->gridWidth = std::round(width / 128.0f);
-	this->gridHeight = std::round(height / 128.0f);
+	this->gridWidth = int(std::round(width / 128.0f));
+	this->gridHeight = int(std::round(height / 128.0f));
 
 	for (int x = 0; x < this->gridWidth; x++)
 	{
@@ -272,7 +272,7 @@ void MemoryGrid::initializeListeners()
 
 		if (args != nullptr)
 		{
-			if (args->address > 0 && args->address < this->values.size())
+			if (args->address > 0 && args->address < int(this->values.size()))
 			{
 				this->values[args->address] = args->value;
 
@@ -287,7 +287,7 @@ void MemoryGrid::initializeListeners()
 
 		if (args != nullptr)
 		{
-			if (args->address > 0 && args->address < this->values.size())
+			if (args->address > 0 && args->address < int(this->values.size()))
 			{
 				if (args->onReadCallback != nullptr)
 				{
@@ -387,8 +387,8 @@ int MemoryGrid::relativeCoordsToGridIndex(cocos2d::Vec2 relativeCoordinates)
 	float y = (relativeCoordinates.x - 128.0f + float(this->getGridWidth()) * 128.0f) / 2.0f - relativeCoordinates.y;
 	float x = relativeCoordinates.y * 2.0f + y;
 
-	int gridX = std::round(x / 128.0f);
-	int gridY = std::round(y / 128.0f);
+	int gridX = int(std::round(x / 128.0f));
+	int gridY = int(std::round(y / 128.0f));
 	int gridIndex = gridX + this->getGridWidth() * gridY;
 
 	return gridIndex;

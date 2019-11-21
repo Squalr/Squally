@@ -105,7 +105,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 			{
 				std::string constrastString = HackUtils::toBinary8(int(contrast.constrastValue));
 				
-				for (int index = 0; (index < int(thisString.size()) && index < constrastString.size()); index++)
+				for (int index = 0; (index < int(thisString.size()) && index < int(constrastString.size())); index++)
 				{
 					Sprite* letter = this->displayLabel->getLetter(index);
 
@@ -193,7 +193,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 			{
 				std::string constrastString = HackUtils::toHex(int(contrast.constrastValue));
 				
-				for (int index = 0; (index < int(thisString.size()) && index < constrastString.size()); index++)
+				for (int index = 0; (index < int(thisString.size()) && index < int(constrastString.size())); index++)
 				{
 					Sprite* letter = this->displayLabel->getLetter(index);
 
