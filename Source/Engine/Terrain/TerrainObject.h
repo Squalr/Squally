@@ -23,6 +23,9 @@ public:
 		std::string leftResource;
 		std::string rightResource;
 		cocos2d::Vec2 topOffset;
+		cocos2d::Vec2 bottomOffset;
+		cocos2d::Vec2 leftOffset;
+		cocos2d::Vec2 rightOffset;
 		cocos2d::Vec2 topLeftCornerOffset;
 		cocos2d::Vec2 topRightCornerOffset;
 		cocos2d::Vec2 bottomLeftCornerOffset;
@@ -42,6 +45,9 @@ public:
 			std::string leftResource,
 			std::string rightResource,
 			cocos2d::Vec2 topOffset,
+			cocos2d::Vec2 bottomOffset,
+			cocos2d::Vec2 leftOffset,
+			cocos2d::Vec2 rightOffset,
 			cocos2d::Vec2 topLeftCornerOffset,
 			cocos2d::Vec2 topRightCornerOffset,
 			cocos2d::Vec2 bottomLeftCornerOffset,
@@ -59,6 +65,9 @@ public:
 			leftResource(leftResource),
 			rightResource(rightResource),
 			topOffset(topOffset),
+			bottomOffset(bottomOffset),
+			leftOffset(leftOffset),
+			rightOffset(rightOffset),
 			topLeftCornerOffset(topLeftCornerOffset),
 			topRightCornerOffset(topRightCornerOffset),
 			bottomLeftCornerOffset(bottomLeftCornerOffset),

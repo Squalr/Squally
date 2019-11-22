@@ -32,11 +32,22 @@ TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 		TerrainResources::Trail_TrailBottomRight,
 		TerrainResources::Trail_TrailLeft,
 		TerrainResources::Trail_TrailRight,
-		cocos2d::Vec2::ZERO,
-		cocos2d::Vec2(-16.0f, 0.0f),
-		cocos2d::Vec2(16.0f, 0.0f),
-		cocos2d::Vec2::ZERO,
-		cocos2d::Vec2::ZERO,
+		// Top
+		Vec2::ZERO,
+		// Bottom
+		Vec2::ZERO,
+		// Left
+		Vec2::ZERO,
+		// Right
+		Vec2::ZERO,
+		// TopLeft
+		Vec2::ZERO,
+		// TopRight
+		Vec2::ZERO,
+		// BottomLeft
+		Vec2::ZERO,
+		// BottomRight
+		Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }
