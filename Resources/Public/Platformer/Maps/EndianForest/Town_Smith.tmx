@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="802">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="106" name="wood -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="99" name="stairs -5 (4)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="98" name="stairs -5 (3)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="97" name="stairs -5 (2)">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="111" name="columns -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="107" name="stairs -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="110" name="columns -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="stairs -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="109" name="columns -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="83" name="stairs -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="108" name="columns -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="82" name="stairs -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="772" name="Generic/Background/BrickInterior1" type="decor" x="-8" y="-8" width="2226.36" height="1280">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="columns -0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="770" name="Generic/Shelf1" type="decor" x="806.601" y="114.954" width="1135" height="753"/>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="minos" type="entity" x="1421.5" y="850.554" width="128" height="167">
+   <properties>
+    <property name="attached-behavior" value="shopkeeper"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="769" name="Generic/Counter" type="decor" x="828.109" y="897.555" width="1080" height="167"/>
+  <object id="793" name="Generic/WoodDoor3" type="decor" x="337.604" y="682" width="347" height="393"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="658" name="wood" type="terrain" x="-65.4595" y="1066.21">
+   <polygon points="0,0 2289.83,-2.8322 2289.83,237.904 5.54441,240.737"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="706" name="spawn" type="object" x="461.648" y="941.2" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
+   <properties>
+    <property name="pool" value="minos"/>
+   </properties>
+  </object>
+  <object id="801" name="shop-pool-minos" type="object" x="404.409" y="310.893" width="64" height="64"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="463.133" y="944.96" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

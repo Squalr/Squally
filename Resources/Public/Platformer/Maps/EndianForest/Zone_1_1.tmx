@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="712">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="2" name="music">
+  <properties>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="music"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="3" name="background">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="WaterfallRocks">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4329.69" y="3021.3" width="13333.3" height="866">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="WaterfallGround">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="3025.6" width="13257.6" height="922">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="2.25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="489" name="blue-grass" type="terrain" x="-115.416" y="4874.1">
+   <polygon points="0,0 4792.55,-35.521 5824.73,-36.7222 6407.04,6.66136 6998.71,-26.0982 8669.53,0 8688.05,508.916 8520.95,1278.81 7110.1,1317.96 2617.55,1161.37 -37.1284,1017.83 0,378.425"/>
+  </object>
+  <object id="627" name="blue-grass" type="terrain" x="3909.82" y="3520.85">
+   <polygon points="0,0 84.6727,-684.032 101.406,-1041.36 2578.94,-1086.99 5035.56,-1074.95 5032.39,-728.47 5067.98,268.769 5062.77,1067.57 4454.13,1075.6 4265.34,812.388 3908.81,705.655 912.128,710.94 -11.0029,522.682 0,202.615"/>
+  </object>
+  <object id="640" name="blue-grass" type="terrain" x="13337.6" y="4290.99">
+   <polygon points="0,0 -691.091,-83.2639 -2073.27,-1273.94 -2081.6,-2414.65 224.813,-2872.61 1815.15,-2356.37 1806.83,-1124.06 1773.52,-24.9792"/>
+  </object>
+  <object id="645" name="blue-grass" type="terrain" x="8561.82" y="4916.32">
+   <polygon points="-2.20332,-30.9717 2777.14,-35.521 3334.54,17.5736 3629.98,-12.4774 4055.55,-26.0982 5023.74,0 5034.48,508.916 4937.64,1278.81 4120.1,1317.96 1516.79,1161.37 134.921,948.144 2.20332,486.826"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Forest/Flower10" type="decor" x="4299.44" y="4724.5" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="4747.6" width="199" height="133"/>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="623" name="life-stone" type="object" x="2900.24" y="4437.4" width="146" height="423"/>
+  <object id="625" name="dart-launcher" type="object" x="5116.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="636" name="trigger" type="object" x="10325.7" y="3537.4" width="195.164" height="1351.51">
+   <properties>
+    <property name="quest" value="spot-orc-grunt"/>
+    <property name="quest-line" value="intro"/>
+    <property name="send-event" value="spot-orc-grunt"/>
+   </properties>
+  </object>
+  <object id="639" name="orc-grunt" type="entity" x="11666.2" y="4789.32" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,pacing"/>
+    <property name="battle-behavior" value="orc-grunt,restore-potion-tutorial,no-items,no-defend"/>
+    <property name="battle-map" value="Combat/Intro"/>
+    <property name="send-event" value="event-door-open"/>
+   </properties>
+  </object>
+  <object id="641" name="edge-portal" type="object" x="13357.3" y="4269.89" width="199.918" height="640.851">
+   <properties>
+    <property name="listen-event" value="event-door-open"/>
+    <property name="map" value="EndianForest/Zone_1_2"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="646" name="respawn" type="object" x="2181.33" y="4734.68" width="128" height="128"/>
+  <object id="649" name="spawn" type="object" x="12966.7" y="4773.06" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="651" name="iou" type="object" x="8716.38" y="4788.44" width="87" height="87">
+   <properties>
+    <property name="attached-behavior" value="first-iou-found"/>
+   </properties>
+  </object>
+  <object id="652" name="warp" type="object" x="1106.17" y="4604.01" width="256" height="256">
+   <properties>
+    <property name="event" value="none-debug"/>
+    <property name="from" value="start"/>
+    <property name="to" value="end"/>
+   </properties>
+  </object>
+  <object id="654" name="warp" type="object" x="12432.3" y="4647.73" width="256" height="256">
+   <properties>
+    <property name="event" value="none-debug"/>
+    <property name="from" value="end"/>
+    <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="655" name="help-totem-hacking" type="object" x="4754.54" y="4589.01" width="248" height="248">
+   <properties>
+    <property name="tag" value="help-totem-hacking"/>
+   </properties>
+  </object>
+  <object id="661" name="dart-launcher" type="object" x="5628.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="670" name="dart-launcher" type="object" x="6140.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="671" name="dart-launcher" type="object" x="6652.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="673" name="dart-launcher" type="object" x="5884.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="674" name="dart-launcher" type="object" x="6396.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="380"/>
+   </properties>
+  </object>
+  <object id="675" name="dart-launcher" type="object" x="6908.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="280"/>
+   </properties>
+  </object>
+  <object id="676" name="dart-launcher" type="object" x="5372.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="682" name="dart-launcher" type="object" x="5516.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="380"/>
+   </properties>
+  </object>
+  <object id="683" name="dart-launcher" type="object" x="6028.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="684" name="dart-launcher" type="object" x="6537.09" y="5013.21" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="685" name="dart-launcher" type="object" x="7052.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="687" name="dart-launcher" type="object" x="5772.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="688" name="dart-launcher" type="object" x="6284.12" y="5031.39" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="689" name="dart-launcher" type="object" x="6796.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="690" name="dart-launcher" type="object" x="5260.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="691" name="dart-launcher" type="object" x="5244.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="692" name="dart-launcher" type="object" x="5500.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="693" name="dart-launcher" type="object" x="5756.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="694" name="dart-launcher" type="object" x="6012.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="695" name="dart-launcher" type="object" x="6268.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="696" name="dart-launcher" type="object" x="6524.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="280"/>
+   </properties>
+  </object>
+  <object id="697" name="dart-launcher" type="object" x="6780.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="698" name="dart-launcher" type="object" x="7036.97" y="4099.76" width="86" height="155">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="360"/>
+   </properties>
+  </object>
+  <object id="699" name="dart-launcher" type="object" x="5388.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="700" name="dart-launcher" type="object" x="5644.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="280"/>
+   </properties>
+  </object>
+  <object id="701" name="dart-launcher" type="object" x="5900.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="702" name="dart-launcher" type="object" x="6153.09" y="5013.21" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="703" name="dart-launcher" type="object" x="6409.09" y="5025.33" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="704" name="dart-launcher" type="object" x="6668.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="380"/>
+   </properties>
+  </object>
+  <object id="705" name="dart-launcher" type="object" x="6924.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="400"/>
+   </properties>
+  </object>
+  <object id="706" name="dart-launcher" type="object" x="7180.12" y="4992" width="86" height="155" rotation="180">
+   <properties>
+    <property name="show-clippy" type="bool" value="true"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
+  <object id="707" name="life-stone" type="object" x="9779" y="4464.5" width="146" height="423"/>
+  <object id="709" name="solid-npc" type="collision" x="10543.5" y="3899.5" width="121.03" height="993"/>
+  <object id="710" name="solid-npc" type="collision" x="12643.5" y="3991.5" width="121.03" height="993"/>
+  <object id="711" name="trigger" type="object" x="4016.36" y="3768" width="195.164" height="1351.51">
+   <properties>
+    <property name="quest" value="teach-hacker-mode"/>
+    <property name="quest-line" value="intro"/>
+    <property name="send-event" value="teach-hacker-mode"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="669.315" y="4735.5" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="650" name="spawn" type="object" x="199.418" y="4743.38" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="objects_foreground">
+  <properties>
+   <property name="is-elevate-target" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="438.393" y="4594.93" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="4698.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4459.62" y="4659.9" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="7621.57" y="4518.1" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4671" width="270" height="748"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512" visible="0">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="6018.81" y="4670.6" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1242.38" y="4673.9" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3375.62" y="4557.8" width="242" height="738"/>
+ </objectgroup>
+</map>

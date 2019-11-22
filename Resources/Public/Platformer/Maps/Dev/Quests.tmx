@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="663">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="WaterfallRocks">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4329.69" y="3021.3" width="13333.3" height="866">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="WaterfallGround">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="3025.6" width="13257.6" height="922">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="2.25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="55" name="cave" width="106" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Gf6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgMagAAAQ==
+  </data>
+ </layer>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="652" name="blue-grass" type="terrain" x="19.3986" y="5004.85">
+   <polygon points="0,0 11028.1,-9.69932 11018.4,1551.89 9.69932,1532.49"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="653" name="trigger" type="object" x="4087.49" y="4493.56" width="195.347" height="260.996">
+   <properties>
+    <property name="event" value="task1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="616" name="scrappy" type="entity" x="4145.39" y="4585.24" width="78.7879" height="88">
+   <properties>
+    <property name="quest" value="task1"/>
+    <property name="quest-line" value="developer"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="3687.14" y="4794.86" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="655" name="trigger" type="object" x="4481.96" y="4493.56" width="195.347" height="260.996">
+   <properties>
+    <property name="event" value="task2"/>
+   </properties>
+  </object>
+  <object id="656" name="scrappy" type="entity" x="4539.86" y="4585.24" width="78.7879" height="88">
+   <properties>
+    <property name="quest" value="task2"/>
+    <property name="quest-line" value="developer"/>
+   </properties>
+  </object>
+  <object id="657" name="trigger" type="object" x="4905.74" y="4493.56" width="195.347" height="260.996">
+   <properties>
+    <property name="event" value="task3"/>
+   </properties>
+  </object>
+  <object id="658" name="scrappy" type="entity" x="4963.64" y="4585.24" width="78.7879" height="88">
+   <properties>
+    <property name="quest" value="task3"/>
+    <property name="quest-line" value="developer"/>
+   </properties>
+  </object>
+  <object id="659" name="trigger" type="object" x="5312.44" y="4483.31" width="195.347" height="260.996">
+   <properties>
+    <property name="event" value="task4"/>
+   </properties>
+  </object>
+  <object id="660" name="scrappy" type="entity" x="5370.34" y="4574.99" width="78.7879" height="88">
+   <properties>
+    <property name="quest" value="task4"/>
+    <property name="quest-line" value="developer"/>
+   </properties>
+  </object>
+  <object id="661" name="trigger" type="object" x="5715.72" y="4473.06" width="195.347" height="260.996">
+   <properties>
+    <property name="event" value="task5"/>
+   </properties>
+  </object>
+  <object id="662" name="scrappy" type="entity" x="5774.62" y="4564.74" width="78.7879" height="88">
+   <properties>
+    <property name="quest" value="task5"/>
+    <property name="quest-line" value="developer"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="56" name="water" width="106" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Gf6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgMagAAAQ==
+  </data>
+ </layer>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="objects_foreground">
+  <properties>
+   <property name="is-elevate-target" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+</map>
