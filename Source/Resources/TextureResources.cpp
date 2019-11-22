@@ -6,7 +6,7 @@
 #include <string>
 
 const std::string TextureResources::BlueGrassTexture = "Private/Platformer/Textures/BlueGrassTexture.png";
-const std::string TextureResources::BrickInterior1 = "Private/Platformer/Textures/BrickInterior1.png";
+const std::string TextureResources::BrickInteriorTexture = "Private/Platformer/Textures/BrickInteriorTexture.png";
 const std::string TextureResources::CastleTexture = "Private/Platformer/Textures/CastleTexture.png";
 const std::string TextureResources::CaveTexture = "Private/Platformer/Textures/CaveTexture.png";
 const std::string TextureResources::CavernsTexture = "Private/Platformer/Textures/CavernsTexture.png";

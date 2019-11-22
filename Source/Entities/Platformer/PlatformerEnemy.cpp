@@ -98,7 +98,7 @@ std::string PlatformerEnemy::getBattleMapResource()
 		return this->battleMapResource;
 	}
 
-	return "Private/Platformer/Maps/" + this->battleMapResource + ".tmx";
+	return "Public/Platformer/Maps/" + this->battleMapResource + ".tmx";
 }
 
 std::string PlatformerEnemy::getBattleTag()

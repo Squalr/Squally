@@ -86,12 +86,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="772" name="Generic/Background/BrickInterior1" type="decor" x="-8" y="-8" width="2226.36" height="1280">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="repeat-y" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="772" name="brick-interior" type="texture" x="-489.818" y="-289.818" width="2226.36" height="1280"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
