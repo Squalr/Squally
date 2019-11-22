@@ -1,4 +1,4 @@
-#include "InputOutputPanel.h"
+#include "InputOutputItem.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
@@ -7,6 +7,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
 
 #include "Resources/CipherResources.h"
@@ -17,16 +18,16 @@
 
 using namespace cocos2d;
 
-InputOutputPanel* InputOutputPanel::create(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback)
+InputOutputItem* InputOutputItem::create(unsigned char input, unsigned char output, std::function<void(InputOutputItem*)> selectCallback)
 {
-	InputOutputPanel* instance = new InputOutputPanel(input, output, selectCallback);
+	InputOutputItem* instance = new InputOutputItem(input, output, selectCallback);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputOutputPanel::InputOutputPanel(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback)
+InputOutputItem::InputOutputItem(unsigned char input, unsigned char output, std::function<void(InputOutputItem*)> selectCallback)
 {
 	this->input = input;
 	this->output = output;
@@ -48,11 +49,11 @@ InputOutputPanel::InputOutputPanel(unsigned char input, unsigned char output, st
 	this->addChild(this->passedIcon);
 }
 
-InputOutputPanel::~InputOutputPanel()
+InputOutputItem::~InputOutputItem()
 {
 }
 
-void InputOutputPanel::onEnter()
+void InputOutputItem::onEnter()
 {
 	super::onEnter();
 
@@ -60,7 +61,7 @@ void InputOutputPanel::onEnter()
 	this->passedIcon->setVisible(false);
 }
 
-void InputOutputPanel::initializePositions()
+void InputOutputItem::initializePositions()
 {
 	super::initializePositions();
 
@@ -72,7 +73,7 @@ void InputOutputPanel::initializePositions()
 	this->passedIcon->setPosition(Vec2(144.0f, 4.0f));
 }
 
-void InputOutputPanel::initializeListeners()
+void InputOutputItem::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -85,29 +86,48 @@ void InputOutputPanel::initializeListeners()
 	});
 }
 
-void InputOutputPanel::enableInteraction()
+void InputOutputItem::onAnyStateChange(CipherState* cipherState)
+{
+	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->panel->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->panel->disableInteraction();
+			break;
+		}
+	}
+}
+
+void InputOutputItem::enableInteraction()
 {
 	this->panel->enableInteraction();
 }
 
-void InputOutputPanel::disableInteraction()
+void InputOutputItem::disableInteraction()
 {
 	this->panel->disableInteraction();
 }
 
-void InputOutputPanel::setStatusPassed()
+void InputOutputItem::setStatusPassed()
 {
 	this->failedIcon->setVisible(false);
 	this->passedIcon->setVisible(true);
 }
 
-void InputOutputPanel::setStatusFailed()
+void InputOutputItem::setStatusFailed()
 {
 	this->failedIcon->setVisible(true);
 	this->passedIcon->setVisible(false);
 }
 
-void InputOutputPanel::clearStatus()
+void InputOutputItem::clearStatus()
 {
 	this->failedIcon->setVisible(false);
 	this->passedIcon->setVisible(false);

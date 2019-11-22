@@ -9,7 +9,7 @@ namespace cocos2d
 
 class CipherState;
 class ClickableNode;
-class InputOutputPanel;
+class InputOutputItem;
 class LocalizedLabel;
 class ScrollPane;
 
@@ -19,25 +19,25 @@ public:
 	static InputsOutputsPanel* create();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	InputsOutputsPanel();
 	~InputsOutputsPanel();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 	void loadPuzzleData();
 	void selectInputOutputPairAtIndex(int index);
 	
 	LocalizedLabel* inputsHeaderLabel;
 	LocalizedLabel* outputsHeaderLabel;
 	ScrollPane* scrollPane;
-	cocos2d::Node* ioPanelsNode;
+	cocos2d::Node* ioItemsNode;
 	cocos2d::Sprite* ioSelectionMarker;
 
 	CipherState* currentCipherState;
-	std::vector<InputOutputPanel*> ioPanels;
+	std::vector<InputOutputItem*> ioItems;
 };

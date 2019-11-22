@@ -10,6 +10,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Config.h"
 
@@ -89,6 +90,25 @@ void BoltBase::setConnection(Connection* connection)
 	if (this->connection != nullptr)
 	{
 		this->addChild(this->connection);
+	}
+}
+
+void BoltBase::onAnyStateChange(CipherState* cipherState)
+{
+	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->connectButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->connectButton->disableInteraction();
+			break;
+		}
 	}
 }
 

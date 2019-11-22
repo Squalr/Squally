@@ -159,14 +159,24 @@ void BlockBase::onAnyStateChange(CipherState* cipherState)
 {
 	switch(cipherState->stateType)
 	{
+		case CipherState::StateType::Neutral:
+		{
+			if (this->blockType == BlockType::Normal)
+			{
+				this->block->enableInteraction();
+			}
+			break;
+		}
 		case CipherState::StateType::Testing:
 		case CipherState::StateType::Unlocking:
 		{
+			this->block->disableInteraction();
 			this->currentInputs.clear();
 			break;
 		}
 		default:
 		{
+			this->block->disableInteraction();
 			break;
 		}
 	}

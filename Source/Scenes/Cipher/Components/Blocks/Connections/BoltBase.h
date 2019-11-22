@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Scenes/Cipher/Components/CipherComponentBase.h"
 
 namespace cocos2d
 {
@@ -10,7 +10,7 @@ namespace cocos2d
 class ClickableNode;
 class Connection;
 
-class BoltBase : public SmartNode
+class BoltBase : public CipherComponentBase
 {
 public:
 	virtual void setConnection(Connection* connection);
@@ -22,6 +22,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
 	virtual void onConnectionUpdated();
 
 	Connection* connection;
@@ -29,7 +30,7 @@ protected:
 	bool inputDebug;
 
 private:
-	typedef SmartNode super;
+	typedef CipherComponentBase super;
 
 	bool isCreatingConnection;
 };

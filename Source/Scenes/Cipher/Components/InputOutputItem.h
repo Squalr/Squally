@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Scenes/Cipher/Components/CipherComponentBase.h"
 
 namespace cocos2d
 {
@@ -11,10 +11,10 @@ class CipherState;
 class ClickableNode;
 class SmartAsciiLabel;
 
-class InputOutputPanel : public SmartNode
+class InputOutputItem : public CipherComponentBase
 {
 public:
-	static InputOutputPanel* create(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback);
+	static InputOutputItem* create(unsigned char input, unsigned char output, std::function<void(InputOutputItem*)> selectCallback);
 
 	void enableInteraction();
 	void disableInteraction();
@@ -22,14 +22,16 @@ public:
 	void setStatusFailed();
 	void clearStatus();
 
-private:
-	typedef SmartNode super;
-	InputOutputPanel(unsigned char input, unsigned char output, std::function<void(InputOutputPanel*)> selectCallback);
-	~InputOutputPanel();
-
+protected:
+	InputOutputItem(unsigned char input, unsigned char output, std::function<void(InputOutputItem*)> selectCallback);
+	~InputOutputItem();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	ClickableNode* panel;
 	SmartAsciiLabel* inputLabel;
@@ -39,5 +41,5 @@ private:
 
 	unsigned char input;
 	unsigned char output;
-	std::function<void(InputOutputPanel*)> selectCallback;
+	std::function<void(InputOutputItem*)> selectCallback;
 };

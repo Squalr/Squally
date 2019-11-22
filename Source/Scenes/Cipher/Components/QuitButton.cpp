@@ -77,4 +77,18 @@ void QuitButton::initializeListeners()
 void QuitButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->quitButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->quitButton->disableInteraction();
+			break;
+		}
+	}
 }

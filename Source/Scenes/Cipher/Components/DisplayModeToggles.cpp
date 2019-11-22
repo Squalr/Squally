@@ -134,4 +134,24 @@ void DisplayModeToggles::initializeListeners()
 void DisplayModeToggles::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->toggleButtonDec->enableInteraction();
+			this->toggleButtonHex->enableInteraction();
+			this->toggleButtonBin->enableInteraction();
+			this->toggleButtonAscii->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->toggleButtonDec->disableInteraction();
+			this->toggleButtonHex->disableInteraction();
+			this->toggleButtonBin->disableInteraction();
+			this->toggleButtonAscii->disableInteraction();
+			break;
+		}
+	}
 }

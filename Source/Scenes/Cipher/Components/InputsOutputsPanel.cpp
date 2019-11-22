@@ -14,7 +14,7 @@
 #include "Events/CipherEvents.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Cipher/CipherState.h"
-#include "Scenes/Cipher/Components/InputOutputPanel.h"
+#include "Scenes/Cipher/Components/InputOutputItem.h"
 #include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
@@ -40,14 +40,14 @@ InputsOutputsPanel::InputsOutputsPanel()
 	this->inputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Inputs::create());
 	this->outputsHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Outputs::create());
 	this->scrollPane = ScrollPane::create(Size(312.0f + 40.0f, 318.0f - 12.0f * 2.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected, Size(0.0f, 24.0f), Size(12.0f, 12.0f));
-	this->ioPanelsNode = Node::create();
+	this->ioItemsNode = Node::create();
 	this->ioSelectionMarker = Sprite::create(CipherResources::IOSelectionMarker);
-	this->ioPanels = std::vector<InputOutputPanel*>();
+	this->ioItems = std::vector<InputOutputItem*>();
 	
 	this->inputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 	this->outputsHeaderLabel->enableShadow(Color4B::BLACK, Size(2, -2), 2);
 
-	this->scrollPane->addChild(ioPanelsNode);
+	this->scrollPane->addChild(ioItemsNode);
 	this->scrollPane->addChild(ioSelectionMarker);
 	this->addChild(this->scrollPane);
 	this->addChild(this->inputsHeaderLabel);
@@ -75,7 +75,7 @@ void InputsOutputsPanel::initializePositions()
 
 	int index = 0;
 
-	for (auto it = this->ioPanels.begin(); it != ioPanels.end(); it++, index++)
+	for (auto it = this->ioItems.begin(); it != ioItems.end(); it++, index++)
 	{
 		(*it)->setPosition(Vec2(16.0f, float(index) * -(56.0f + 8.0f) - 32.0f));
 	}
@@ -106,18 +106,18 @@ void InputsOutputsPanel::initializeListeners()
 
 		if (args != nullptr)
 		{
-			if (args->cipherIndex < 0 || args->cipherIndex > (int)this->ioPanels.size())
+			if (args->cipherIndex < 0 || args->cipherIndex > (int)this->ioItems.size())
 			{
 				return;
 			}
 
 			if (args->success)
 			{
-				this->ioPanels[args->cipherIndex]->setStatusPassed();
+				this->ioItems[args->cipherIndex]->setStatusPassed();
 			}
 			else
 			{
-				this->ioPanels[args->cipherIndex]->setStatusFailed();
+				this->ioItems[args->cipherIndex]->setStatusFailed();
 			}
 		}
 	})));
@@ -138,7 +138,7 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 		}
 		case CipherState::StateType::TransitionUnlocking:
 		{
-			for (auto it = this->ioPanels.begin(); it != this->ioPanels.end(); it++)
+			for (auto it = this->ioItems.begin(); it != this->ioItems.end(); it++)
 			{
 				(*it)->disableInteraction();
 				(*it)->clearStatus();
@@ -152,7 +152,7 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 		}
 		case CipherState::StateType::Neutral:
 		{
-			for (auto it = this->ioPanels.begin(); it != this->ioPanels.end(); it++)
+			for (auto it = this->ioItems.begin(); it != this->ioItems.end(); it++)
 			{
 				(*it)->enableInteraction();
 			}
@@ -168,21 +168,21 @@ void InputsOutputsPanel::onAnyStateChange(CipherState* cipherState)
 
 void InputsOutputsPanel::loadPuzzleData()
 {
-	this->ioPanels.clear();
-	this->ioPanelsNode->removeAllChildren();
+	this->ioItems.clear();
+	this->ioItemsNode->removeAllChildren();
 
 	int index = 0;
 
 	for (auto it = this->currentCipherState->inputOutputMap.begin(); it != this->currentCipherState->inputOutputMap.end(); it++, index++)
 	{
-		InputOutputPanel* ioPanel = InputOutputPanel::create(std::get<0>(*it), std::get<1>(*it), [=](InputOutputPanel*)
+		InputOutputItem* ioItem = InputOutputItem::create(std::get<0>(*it), std::get<1>(*it), [=](InputOutputItem*)
 		{
 			this->selectInputOutputPairAtIndex(index);
 		});
 
-		this->ioPanelsNode->addChild(ioPanel);
+		this->ioItemsNode->addChild(ioItem);
 
-		this->ioPanels.push_back(ioPanel);
+		this->ioItems.push_back(ioItem);
 	}
 
 	this->initializePositions();

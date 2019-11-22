@@ -77,4 +77,18 @@ void AsciiButton::initializeListeners()
 void AsciiButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->asciiButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->asciiButton->disableInteraction();
+			break;
+		}
+	}
 }
