@@ -15,8 +15,8 @@ public:
 	static const std::string MapKeyTutorial;
 
 protected:
-	void onBeforeStateChange(CipherState* gameState) override;
-	void onAnyStateChange(CipherState* gameState) override;
+	void onBeforeStateChange(CipherState* cipherState) override;
+	void onAnyStateChange(CipherState* cipherState) override;
 
 private:
 	typedef CipherTutorialBase super;
@@ -26,9 +26,16 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void initializeCallbacks(CipherState* gameState);
-	bool tryHijackState(CipherState* gameState) override;
-	void unHijackState(CipherState* gameState) override;
-\
+	void initializeCallbacks(CipherState* cipherState);
+	bool tryHijackState(CipherState* cipherState) override;
+	void unHijackState(CipherState* cipherState) override;
+
+	void runTutorialPartA(CipherState* cipherState);
+	void runTutorialPartB(CipherState* cipherState);
+
 	FocusTakeOver* focusTakeOver;
+	LocalizedLabel* introLabel;
+	LocalizedLabel* connectLabel;
+	ClickableTextNode* nextButtonIntro;
+	ClickableTextNode* nextButtonConnect;
 };
