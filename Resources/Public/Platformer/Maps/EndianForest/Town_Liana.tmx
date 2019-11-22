@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="749">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="751">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -195,17 +195,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="708" name="Generic/Background/BrickInterior1" type="decor" x="-8" y="-8" width="1433.15" height="1280">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="repeat-y" type="bool" value="true"/>
-   </properties>
+  <object id="749" name="brick-interior" type="texture" x="-81.8182" y="-24.2424">
+   <polygon points="0,0 1468.31,2.97636 1474.3,1217.33 1.99499,1208.4"/>
   </object>
-  <object id="722" name="Generic/Background/BrickInterior1" type="decor" x="2057.74" y="-8" width="2831.19" height="1280">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="repeat-y" type="bool" value="true"/>
-   </properties>
+  <object id="750" name="brick-interior" type="texture" x="2124" y="-40">
+   <polygon points="0,0 2535.72,2.97636 2546.06,1217.33 3.44527,1208.4"/>
   </object>
  </objectgroup>
  <objectgroup id="81" name="columns -0">

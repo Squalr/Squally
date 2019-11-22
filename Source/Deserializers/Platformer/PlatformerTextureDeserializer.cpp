@@ -24,6 +24,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
 	this->deserializers[BlueGrassTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)BlueGrassTexture::create(properties); };
+	this->deserializers[BrickInteriorTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)BrickInteriorTexture::create(properties); };
 	this->deserializers[CastleTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)CastleTexture::create(properties); };
 	this->deserializers[CavernsTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)CavernsTexture::create(properties); };
 	this->deserializers[CaveTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)CaveTexture::create(properties); };

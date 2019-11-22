@@ -1,4 +1,5 @@
 #include "Scenes/Platformer/Textures/BlueGrassTexture.h"
+#include "Scenes/Platformer/Textures/BrickInteriorTexture.h"
 #include "Scenes/Platformer/Textures/CastleTexture.h"
 #include "Scenes/Platformer/Textures/CavernsTexture.h"
 #include "Scenes/Platformer/Textures/CaveTexture.h"
