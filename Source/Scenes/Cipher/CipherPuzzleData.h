@@ -13,6 +13,7 @@ public:
 		std::vector<std::string> easyTokens,
 		std::vector<std::string> hardTokens,
 		std::string bonusReward,
+		std::string tutorial,
 		std::function<void(CipherPuzzleData*, bool)> onUnlock);
 	
 	CipherPuzzleData* clone();
@@ -22,6 +23,7 @@ public:
 	std::vector<std::string> getEasyTokens();
 	std::vector<std::string> getHardTokens();
 	std::string getBonusReward();
+	std::string getTutorial();
 	std::function<void(CipherPuzzleData*, bool)> onUnlock;
 
 private:
@@ -31,6 +33,7 @@ private:
 		std::vector<std::string> easyTokens,
 		std::vector<std::string> hardTokens,
 		std::string bonusReward,
+		std::string tutorial,
 		std::function<void(CipherPuzzleData*, bool)> onUnlock);
 	~CipherPuzzleData();
 
@@ -41,4 +44,5 @@ private:
 	std::vector<std::string> easyTokens;
 	std::vector<std::string> hardTokens;
 	std::string bonusReward;
+	std::string tutorial;
 };

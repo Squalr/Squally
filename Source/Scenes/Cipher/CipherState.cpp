@@ -180,6 +180,7 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		}
 	}
 
+	CipherEvents::TriggerBeforeRequestStateUpdate(cipherState);
 	CipherEvents::TriggerRequestStateUpdate(cipherState);
 	CipherEvents::TriggerBeforeStateUpdate(cipherState);
 	CipherEvents::TriggerOnStateUpdate(cipherState);

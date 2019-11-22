@@ -197,6 +197,7 @@
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule-easy" value="{i}"/>
     <property name="tokens-easy" value=""/>
+    <property name="tutorial" value="connect"/>
    </properties>
   </object>
   <object id="695" name="help-totem-required-level" type="object" x="3865.83" y="4094.55" width="248" height="248"/>

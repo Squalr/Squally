@@ -30,6 +30,7 @@
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/TestButton.h"
+#include "Scenes/Cipher/Components/Tutorials/CipherTutorials.h"
 #include "Scenes/Cipher/Components/UnlockButton.h"
 #include "Scenes/Cipher/DifficultySelectMenu.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
@@ -87,9 +88,12 @@ Cipher::Cipher()
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->asciiTable = AsciiTable::create();
 	this->gameNode = Node::create();
+	this->tutorialNode = Node::create();
 	this->difficultySelectMenu = DifficultySelectMenu::create();
+	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
+	this->buildTutorialMap();
 
 	this->gameNode->addChild(this->cipherBackground);
 	this->gameNode->addChild(this->cipherLock);
@@ -112,6 +116,7 @@ Cipher::Cipher()
 	this->gameNode->addChild(this->cipherStateVictory);
 	this->gameNode->addChild(this->backdrop);
 	this->gameNode->addChild(this->asciiTable);
+	this->gameNode->addChild(this->tutorialNode);
 	this->addChild(this->gameNode);
 	this->addChild(this->difficultySelectMenu);
 }
@@ -160,6 +165,15 @@ void Cipher::initializePositions()
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
 	this->gameNode->setVisible(false);
+	this->tutorialNode->removeAllChildren();
+
+	const std::string tutorialKey = cipherPuzzleData->getTutorial();
+
+	if (this->cipherTutorialMap.find(tutorialKey) != this->cipherTutorialMap.end())
+	{
+		this->tutorialNode->addChild(this->cipherTutorialMap[tutorialKey]());
+	}
+
 	this->difficultySelectMenu->show(cipherPuzzleData, [=]()
 	{
 		this->gameNode->setVisible(true);
@@ -191,4 +205,9 @@ void Cipher::onMenuExit()
 	{
 		this->backClickCallback();
 	}
+}
+
+void Cipher::buildTutorialMap()
+{
+	this->cipherTutorialMap[CipherConnectTutorial::MapKeyTutorial] = [=]() { return CipherConnectTutorial::create(); };
 }

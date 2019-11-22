@@ -20,54 +20,58 @@ void CipherStateBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CipherEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
-		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-		if (cipherState != nullptr)
-		{
-			this->onAnyRequestStateChange(cipherState);
-		}
+		this->onRequestStateChangeEvent(eventCustom);
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CipherEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
 	{
-		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-		if (cipherState != nullptr)
-		{
-			if (cipherState->stateType == this->stateType && cipherState->previousStateType != this->stateType)
-			{
-				this->onBeforeStateEnter(cipherState);
-			}
-			else if (cipherState->stateType != this->stateType && cipherState->previousStateType == this->stateType)
-			{
-				this->onStateExit(cipherState);
-			}
-		}
+		this->onBeforeStateChangeEvent(eventCustom);
 	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
 	{
-		CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
-
-		if (cipherState != nullptr)
-		{
-			if (cipherState->stateType == this->stateType)
-			{
-				if (cipherState->previousStateType == this->stateType)
-				{
-					this->onStateReload(cipherState);
-				}
-				else
-				{
-					this->onStateEnter(cipherState);
-				}
-			}
-
-			this->onAnyStateChange(cipherState);
-		}
+		this->onStateChangeEvent(eventCustom);
 	}));
+}
+
+void CipherStateBase::onRequestStateChangeEvent(EventCustom* eventCustom)
+{
+	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+	this->onAnyRequestStateChange(cipherState);
+}
+
+void CipherStateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
+{
+	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+	if (cipherState->stateType == this->stateType && cipherState->previousStateType != this->stateType)
+	{
+		this->onBeforeStateEnter(cipherState);
+	}
+	else if (cipherState->stateType != this->stateType && cipherState->previousStateType == this->stateType)
+	{
+		this->onStateExit(cipherState);
+	}
+}
+
+void CipherStateBase::onStateChangeEvent(EventCustom* eventCustom)
+{
+	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+
+	if (cipherState->stateType == this->stateType)
+	{
+		if (cipherState->previousStateType == this->stateType)
+		{
+			this->onStateReload(cipherState);
+		}
+		else
+		{
+			this->onStateEnter(cipherState);
+		}
+	}
+
+	this->onAnyStateChange(cipherState);
 }
 
 void CipherStateBase::onAnyStateChange(CipherState* cipherState)

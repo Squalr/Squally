@@ -53,25 +53,11 @@ void CipherStateUnlocking::onStateEnter(CipherState* cipherState)
 	{
 		if (success)
 		{
-			this->runAction(Sequence::create(
-				DelayTime::create(0.1f),
-				CallFunc::create([=]()
-				{
-					CipherState::updateState(cipherState, CipherState::StateType::Victory);
-				}),
-				nullptr
-			));
+			CipherState::updateState(cipherState, CipherState::StateType::Victory);
 		}
 		else
 		{
-			this->runAction(Sequence::create(
-				DelayTime::create(0.1f),
-				CallFunc::create([=]()
-				{
-					CipherState::updateState(cipherState, CipherState::StateType::Neutral);
-				}),
-				nullptr
-			));
+			CipherState::updateState(cipherState, CipherState::StateType::Neutral);
 		}
 		
 	});
@@ -97,7 +83,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 		unlockSuccessful = true;
 	}
 
-	if (index < cipherState->inputOutputMap.size())
+	if (index < int(cipherState->inputOutputMap.size()))
 	{
 		CipherEvents::TriggerChangeActiveCipher(CipherEvents::CipherChangeActiveCipherArgs(
 			std::get<0>(cipherState->inputOutputMap[index]),
@@ -124,7 +110,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 
 					unlockSuccessful &= currentUnlockSuccessful;
 
-					if (index >= cipherState->inputOutputMap.size() - 1)
+					if (index >= int(cipherState->inputOutputMap.size()) - 1)
 					{
 						onExecuteComplete(unlockSuccessful);
 					}
@@ -140,7 +126,7 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 
 void CipherStateUnlocking::performExecuteLoop(CipherState* cipherState, std::vector<BlockBase*> blocks, std::function<void()> onExecuteComplete, int index)
 {
-	if (index < blocks.size())
+	if (index < int(blocks.size()))
 	{
 		// Execute the input block at the current index
 		blocks[index]->execute([=]

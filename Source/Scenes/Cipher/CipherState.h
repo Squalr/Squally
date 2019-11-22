@@ -34,6 +34,7 @@ public:
 		Wrong,
 		Victory,
 		GameEnd,
+		Tutorial,
 	};
 
 	static CipherState* create();

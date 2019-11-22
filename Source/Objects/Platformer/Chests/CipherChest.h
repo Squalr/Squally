@@ -38,4 +38,5 @@ private:
 	static const std::string MapKeyPropertyBonusReward;
 	static const std::string MapKeyPropertyTokensEasy;
 	static const std::string MapKeyPropertyTokensHard;
+	static const std::string MapKeyPropertyTutorial;
 };

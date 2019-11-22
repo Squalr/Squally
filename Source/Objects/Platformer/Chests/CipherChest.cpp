@@ -35,6 +35,7 @@ const std::string CipherChest::MapKeyPropertyRuleHard = "rule-hard";
 const std::string CipherChest::MapKeyPropertyBonusReward = "bonus-reward";
 const std::string CipherChest::MapKeyPropertyTokensEasy = "tokens-easy";
 const std::string CipherChest::MapKeyPropertyTokensHard = "tokens-hard";
+const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
 
 CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
 {
@@ -118,6 +119,7 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	);
 
 	std::string bonusRewards = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusReward, Value("")).asString();
+	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTutorial, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();
 
@@ -137,7 +139,7 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		inputOutputMapHard.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 	}
 
-	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, bonusRewards, [=](CipherPuzzleData* puzzleData, bool isHardModeEnabled)
+	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, bonusRewards, tutorial, [=](CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 	{
 		this->onUnlock(puzzleData, isHardModeEnabled);
 	});

@@ -16,10 +16,10 @@ public:
 	static const std::string EventExitHexus;
 	static const std::string EventCardPreviewed;
 	static const std::string EventCardMousedOut;
-	static const std::string BeforeRequestStateUpdateEvent;
-	static const std::string RequestStateUpdateEvent;
-	static const std::string BeforeStateUpdateEvent;
-	static const std::string OnStateUpdateEvent;
+	static const std::string EventBeforeRequestStateUpdate;
+	static const std::string EventRequestStateUpdate;
+	static const std::string EventBeforeStateUpdate;
+	static const std::string EventOnStateUpdate;
 
 	struct HexusOpenArgs
 	{

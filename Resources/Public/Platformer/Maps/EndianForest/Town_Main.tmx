@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="923">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="925">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -430,6 +430,15 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="63" name="texture bg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="923" name="caverns" type="texture" x="3216.61" y="4991.79">
+   <polygon points="0,-65.9744 156.393,-66.0611 173.394,-66.0705 188.144,-48.8288 203.894,-66.0874 219.644,-48.8459 234.394,-66.1042 247.145,-49.3614 259.895,-66.1184 271.394,-49.1253 283.394,-66.1314 294.645,-49.3875 306.894,-66.1444 318.645,-49.1516 331.895,-66.1582 342.145,-50.4138 351.394,-66.169 362.395,-49.9249 371.895,-66.1804 380.644,-51.4357 390.895,-66.1909 401.395,-51.1959 411.894,-66.2025 422.895,-50.9578 433.394,-66.2144 444.145,-50.7203 455.894,-66.2269 467.395,-51.9836 480.395,-66.2405 492.644,-51.7468 504.395,-66.2538 516.144,-52.0104 528.894,-66.2673 540.394,-52.5231 550.395,-66.2792 560.893,-52.7856 571.894,-66.2911 582.894,-52.5464 593.394,-66.3031 603.894,-52.0591 614.894,-66.315 626.395,-51.8222 638.894,-66.3282 648.894,-66.3338 826.448,-66.4321 828.254,369.167 2548.48,1349.17 3.44856,1339.28"/>
+  </object>
+ </objectgroup>
  <objectgroup id="57" name="terrain 3">
   <properties>
    <property name="type" value="objects"/>
@@ -446,12 +455,6 @@
   <object id="764" name="blue-grass" type="terrain" x="6015.74" y="823.581">
    <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2814.66,-1590.12 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 2375.72,1594.83 2371.57,1221.15 431.5,1226.14"/>
   </object>
- </objectgroup>
- <objectgroup id="63" name="objects background">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
@@ -471,8 +474,8 @@
   <object id="662" name="blue-grass" type="terrain" x="675.156" y="2443.68">
    <polygon points="0,0 2781.71,-4.37683 2781.71,367.653 6.73538,372.031"/>
   </object>
-  <object id="915" name="blue-grass" type="terrain" x="-16" y="2452">
-   <polygon points="0,0 473.71,-4.37683 473.71,367.653 1.147,372.031"/>
+  <object id="915" name="blue-grass" type="terrain" x="-108.223" y="374.992">
+   <polygon points="1.59291,-29.3333 565.933,-28.7024 566.933,2438 1.3703,2439.71"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -718,6 +721,15 @@
   </object>
   <object id="922" name="solid" type="collision" x="4870.67" y="4000">
    <polygon points="0,0 0,-30.6667 526.667,240 528,272"/>
+  </object>
+  <object id="924" name="cipher-chest" type="object" x="140" y="220" width="128" height="128">
+   <properties>
+    <property name="event" value="open-cipher"/>
+    <property name="inputs-easy" value="s,w,a,g"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule-easy" value="{i}"/>
+    <property name="tokens-easy" value=""/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">

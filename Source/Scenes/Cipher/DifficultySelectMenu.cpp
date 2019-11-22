@@ -123,8 +123,13 @@ void DifficultySelectMenu::show(CipherPuzzleData* cipherPuzzleData, std::functio
 	
 	if (!cipherPuzzleData->hasHardMode() && onEasySelect != nullptr)
 	{
-		onEasySelect();
 		this->setVisible(false);
+
+		this->defer([=]()
+		{
+			onEasySelect();
+		});
+		
 		return;
 	}
 

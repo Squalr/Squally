@@ -20,15 +20,15 @@ void StateBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(HexusEvents::RequestStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onRequestStateChangeEvent(eventCustom);
 	}));
-	this->addEventListener(EventListenerCustom::create(HexusEvents::BeforeStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onBeforeStateChangeEvent(eventCustom);
 	}));
-	this->addEventListener(EventListenerCustom::create(HexusEvents::OnStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onStateChangeEvent(eventCustom);
 	}));

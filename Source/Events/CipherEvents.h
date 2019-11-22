@@ -28,6 +28,7 @@ public:
 	static const std::string EventOpenAsciiTable;
 	static const std::string EventTryUnlockCurrentCipher;
 	static const std::string EventRequestStateUpdate;
+	static const std::string EventBeforeRequestStateUpdate;
 	static const std::string EventBeforeStateUpdate;
 	static const std::string EventOnStateUpdate;
 
@@ -163,7 +164,8 @@ public:
 	static void TriggerChangeDisplayDataType(CipherChangeDisplayDataTypeArgs args);
 	static void TriggerOpenAsciiTable(CipherOpenAsciiTableArgs args);
 	static void TriggerTryUnlockCurrentCipher(UnlockArgs args);
-	static void TriggerRequestStateUpdate(CipherState* cipherState);
-	static void TriggerBeforeStateUpdate(CipherState* cipherState);
-	static void TriggerOnStateUpdate(CipherState* cipherState);
+	static void TriggerBeforeRequestStateUpdate(CipherState* gameState);
+	static void TriggerRequestStateUpdate(CipherState* gameState);
+	static void TriggerBeforeStateUpdate(CipherState* gameState);
+	static void TriggerOnStateUpdate(CipherState* gameState);
 };

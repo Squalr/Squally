@@ -18,6 +18,7 @@ class CipherFrame;
 class CipherLock;
 class CipherPuzzleData;
 class CipherTransitionPanel;
+class CipherTutorialBase;
 class CipherState;
 class CipherStateGameEnd;
 class CipherStateLoadInitialState;
@@ -57,10 +58,12 @@ private:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void onMenuExit();
+	void buildTutorialMap();
 
 	std::function<void()> backClickCallback;
 
 	cocos2d::Node* gameNode;
+	cocos2d::Node* tutorialNode;
 	AsciiButton* asciiButton;
 	CipherBackground* cipherBackground;
 	CipherLock* cipherLock;
@@ -85,6 +88,8 @@ private:
 
 	cocos2d::LayerColor* backdrop;
 	AsciiTable* asciiTable;
+
+	std::map<std::string, std::function<CipherTutorialBase*()>> cipherTutorialMap;
 
 	static const cocos2d::Color3B TitleColor;
 };

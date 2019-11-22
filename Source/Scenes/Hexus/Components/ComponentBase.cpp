@@ -20,19 +20,19 @@ void ComponentBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListener(EventListenerCustom::create(HexusEvents::BeforeRequestStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onBeforeAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
 	}));
-	this->addEventListener(EventListenerCustom::create(HexusEvents::RequestStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
 	}));
-	this->addEventListener(EventListenerCustom::create(HexusEvents::BeforeStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onBeforeStateChange((GameState*)(eventCustom->getUserData()));
 	}));
-	this->addEventListener(EventListenerCustom::create(HexusEvents::OnStateUpdateEvent, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
 	{
 		this->onAnyStateChange((GameState*)(eventCustom->getUserData()));
 	}));

@@ -53,14 +53,7 @@ void CipherStateTesting::onStateEnter(CipherState* cipherState)
 	{
 		this->performExecuteLoop(immediateBlocks, [=]()
 		{
-			this->runAction(Sequence::create(
-				DelayTime::create(0.1f),
-				CallFunc::create([=]()
-				{
-					CipherState::updateState(cipherState, CipherState::StateType::Neutral);
-				}),
-				nullptr
-			));
+			CipherState::updateState(cipherState, CipherState::StateType::Neutral);
 		});
 	});
 }
