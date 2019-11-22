@@ -504,7 +504,6 @@ const std::string DecorResources::Forest_wood = "Private/Platformer/Decor/Forest
 const std::string DecorResources::Generic_Arrow1 = "Private/Platformer/Decor/Generic/Arrow1.png";
 const std::string DecorResources::Generic_Arrow2 = "Private/Platformer/Decor/Generic/Arrow2.png";
 const std::string DecorResources::Generic_Arrow3 = "Private/Platformer/Decor/Generic/Arrow3.png";
-const std::string DecorResources::Generic_Background_BrickInterior1 = "Private/Platformer/Decor/Generic/Background/BrickInterior1.png";
 const std::string DecorResources::Generic_Background_Cloud1 = "Private/Platformer/Decor/Generic/Background/Cloud1.png";
 const std::string DecorResources::Generic_Background_Cloud10 = "Private/Platformer/Decor/Generic/Background/Cloud10.png";
 const std::string DecorResources::Generic_Background_Cloud11 = "Private/Platformer/Decor/Generic/Background/Cloud11.png";

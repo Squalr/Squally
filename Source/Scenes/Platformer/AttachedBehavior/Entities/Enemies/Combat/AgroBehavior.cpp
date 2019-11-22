@@ -99,10 +99,11 @@ void AgroBehavior::update(float dt)
 	{
 		if (this->engageCooldown <= 0.0f)
 		{
+			this->exclamation->setVisible(false);
+			
 			if (std::abs(squallyPosition.x - entityPosition.x) <= AgroBehavior::AgroRangeX &&
 				std::abs(squallyPosition.y - entityPosition.y) <= AgroBehavior::AgroRangeY)
 			{
-				this->exclamation->setVisible(false);
 				this->entity->setState(StateKeys::CinematicDestinationX, Value(squallyPosition.x));
 			}
 			else

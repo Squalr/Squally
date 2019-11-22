@@ -505,7 +505,6 @@ namespace DecorResources
 	extern const std::string Generic_Arrow1;
 	extern const std::string Generic_Arrow2;
 	extern const std::string Generic_Arrow3;
-	extern const std::string Generic_Background_BrickInterior1;
 	extern const std::string Generic_Background_Cloud1;
 	extern const std::string Generic_Background_Cloud10;
 	extern const std::string Generic_Background_Cloud11;

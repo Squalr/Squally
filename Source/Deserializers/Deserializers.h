@@ -9,4 +9,5 @@
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerTerrainDeserializer.h"
+#include "Deserializers/Platformer/PlatformerTextureDeserializer.h"
 #include "Deserializers/WeatherDeserializer.h"
