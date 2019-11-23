@@ -1797,8 +1797,8 @@ void MPE_PolyAddEdge(MPEPolyContext* PolyContext)
       Edge->Q = B;
     }
 
-    MPE_Assert(fabsf(A->Y - B->Y) > MPE_POLY2TRI_EPSILON ||
-               fabsf(A->X - B->X) > MPE_POLY2TRI_EPSILON);
+   /* MPE_Assert(fabsf(A->Y - B->Y) > MPE_POLY2TRI_EPSILON ||
+               fabsf(A->X - B->X) > MPE_POLY2TRI_EPSILON);*/
 
     if (Edge->Q->FirstEdge)
     {
@@ -1807,7 +1807,11 @@ void MPE_PolyAddEdge(MPEPolyContext* PolyContext)
       {
         LastEdge = LastEdge->Next;
       }
-      LastEdge->Next = Edge;
+
+      if (LastEdge)
+      {
+        LastEdge->Next = Edge;
+      }
     }
     else
     {

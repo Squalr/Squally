@@ -58,6 +58,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->bottomsNode = Node::create();
 	this->bottomCornersNode = Node::create();
 	this->topsNode = Node::create();
+	this->connectorsNode = Node::create();
 	this->topCornersNode = Node::create();
 	this->debugNode = Node::create();
 	this->boundsRect = Rect::ZERO;
@@ -71,8 +72,9 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->addChild(this->leftWallNode);
 	this->addChild(this->rightWallNode);
 	this->addChild(this->bottomsNode);
-	this->addChild(this->bottomCornersNode);
 	this->addChild(this->topsNode);
+	this->addChild(this->connectorsNode);
+	this->addChild(this->bottomCornersNode);
 	this->addChild(this->topCornersNode);
 	this->addChild(this->debugNode);
 
@@ -142,9 +144,9 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 
 	if (this->isHollow)
 	{
-		std::vector<Vec2> holes = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::HollowDistance);
+		// std::vector<Vec2> holes = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::HollowDistance);
 
-		this->infillTriangles = AlgoUtils::trianglefyPolygon(this->points, holes);
+		// this->infillTriangles = AlgoUtils::trianglefyPolygon(this->points, holes);
 	}
 	else
 	{
@@ -348,7 +350,7 @@ void TerrainObject::buildSurfaceShadow()
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
-		float currentSegmentLength = source.distance(dest);
+		float segmentLength = source.distance(dest);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, shadowTriangles);
 
 		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold)
@@ -407,7 +409,6 @@ void TerrainObject::buildSurfaceTextures()
 	this->topsNode->removeAllChildren();
 	this->topCornersNode->removeAllChildren();
 
-	float seamlessSegmentX = 0.0f;
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
 	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
@@ -420,13 +421,23 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
-		float currentSegmentLength = source.distance(dest);
+		float segmentLength = source.distance(dest);
 		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugNode);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->textureTriangles);
 		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->textureTriangles);
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
+
+		// Figure out what the transition is between this segment and the next
+		bool floorToWall = this->isTopAngle(normalAngle) && !this->isTopAngle(nextSegmentNormalAngle);
+		bool wallToFloor = !this->isTopAngle(normalAngle) && this->isTopAngle(nextSegmentNormalAngle);
+		bool roofToWall = this->isBottomAngle(normalAngle) && !this->isBottomAngle(nextSegmentNormalAngle);
+		bool wallToRoof = !this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
+		bool floorToFloor = this->isTopAngle(normalAngle) && this->isTopAngle(nextSegmentNormalAngle);
+		bool leftToLeft = this->isLeftAngle(normalAngle) && this->isLeftAngle(nextSegmentNormalAngle);
+		bool rightToRight = this->isRightAngle(normalAngle) && this->isRightAngle(nextSegmentNormalAngle);
+		bool roofToRoof = this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
 
 		std::stringstream angleStream;
 		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / float(M_PI));
@@ -448,105 +459,153 @@ void TerrainObject::buildSurfaceTextures()
 		this->debugNode->addChild(angleDebug);
 		this->debugNode->addChild(bisectingAngleDebug);
 
-		enum TileMethod
-		{
-			Horizontal,
-			Vertical,
-			None
-		};
-
-		auto buildSegment = [&](Node* parent, Sprite* sprite, Vec2 anchor, Vec2 position, float rotation, TileMethod tileMethod)
-		{
-			Size textureSize = sprite->getContentSize();
-
-			// Create parameters to repeat the texture
-			Texture2D::TexParams params = Texture2D::TexParams();
-			params.minFilter = GL_LINEAR;
-			params.magFilter = GL_LINEAR;
-
-			switch(tileMethod)
-			{
-				case Horizontal:
-				{
-					params.wrapS = GL_REPEAT;
-					break;
-				}
-				case Vertical:
-				{
-					params.wrapT = GL_REPEAT;
-					break;
-				}
-				default:
-				case None:
-				{
-					break;
-				}
-			}
-
-			// Prevent off-by-1 rendering errors where texture pixels are barely separated
-			currentSegmentLength = std::ceil(currentSegmentLength);
-
-			sprite->setAnchorPoint(anchor);
-			sprite->getTexture()->setTexParameters(params);
-
-			// Start the texture from where the previous texture left off for seamless integration
-			if (tileMethod == TileMethod::Horizontal)
-			{
-				sprite->setTextureRect(Rect(seamlessSegmentX, 0.0f, currentSegmentLength, textureSize.height));
-
-				// Advance the seamless segment distance (with wrap around on overflow)
-				seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.width);
-			}
-			else if (tileMethod == TileMethod::Vertical)
-			{
-				sprite->setTextureRect(Rect(0.0f, seamlessSegmentX, textureSize.width, currentSegmentLength));
-
-				// Advance the seamless segment distance (with wrap around on overflow)
-				seamlessSegmentX = std::remainderf(seamlessSegmentX + currentSegmentLength, textureSize.height);
-			}
-
-			sprite->setPosition(position);
-			sprite->setRotation(rotation);
-
-			parent->addChild(sprite);
-		};
-
 		if (this->isTopAngle(normalAngle))
 		{
-			Sprite* top = Sprite::create(this->terrainData.topResource);
-			Vec2 offset = terrainData.topOffset;
+			Sprite* top = Sprite::create(this->isFlipped ? this->terrainData.bottomResource : this->terrainData.topResource);
+			Vec2 offset = this->isFlipped ? terrainData.bottomOffset : terrainData.topOffset;
 
-			offset.y = this->isFlipped ? -offset.y : offset.y;
-
-			buildSegment(this->topsNode, top, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 180.0f - angle * 180.0f / float(M_PI), TileMethod::Horizontal);
+			this->buildSegment(this->topsNode, top, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 180.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
 		}
 		else if (this->isBottomAngle(normalAngle))
 		{
-			Sprite* bottom = Sprite::create(this->terrainData.bottomResource);
-			Vec2 offset = terrainData.bottomOffset;
+			Sprite* bottom = Sprite::create(this->isFlipped ? this->terrainData.topResource : this->terrainData.bottomResource);
+			Vec2 offset = this->isFlipped ? terrainData.topOffset : terrainData.bottomOffset;
 
-			offset.y = this->isFlipped ? -offset.y : offset.y;
-
-			buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 360.0f - angle * 180.0f / float(M_PI), TileMethod::Horizontal);
+			this->buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 360.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
 		}
 		else if (this->isLeftAngle(normalAngle))
 		{
 			Sprite* left = Sprite::create(this->terrainData.leftResource);
 
-			buildSegment(this->leftWallNode, left, Vec2(0.0f, 0.5f), source.getMidpoint(dest) + Vec2(0.0f, 0.0f), 270.0f - angle * 180.0f / float(M_PI), TileMethod::Vertical);
+			this->buildSegment(this->leftWallNode, left, Vec2(0.0f, 0.5f), source.getMidpoint(dest) + Vec2(0.0f, 0.0f), 270.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Vertical);
 		}
 		else
 		{
 			Sprite* right = Sprite::create(this->terrainData.rightResource);
 
-			buildSegment(this->rightWallNode, right, Vec2(1.0f, 0.5f), source.getMidpoint(dest) + Vec2(0.0f, 0.0f), 90.0f - angle * 180.0f / float(M_PI), TileMethod::Vertical);
+			this->buildSegment(this->rightWallNode, right, Vec2(1.0f, 0.5f), source.getMidpoint(dest) + Vec2(0.0f, 0.0f), 90.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Vertical);
 		}
 
-		// Figure out what the transition is between this segment and the next
-		bool floorToWall = this->isTopAngle(normalAngle) && !this->isTopAngle(nextSegmentNormalAngle);
-		bool wallToFloor = !this->isTopAngle(normalAngle) && this->isTopAngle(nextSegmentNormalAngle);
-		bool roofToWall = this->isBottomAngle(normalAngle) && !this->isBottomAngle(nextSegmentNormalAngle);
-		bool wallToRoof = !this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
+		enum Concavity
+		{
+			Standard,
+			ConvexMedium,
+			ConvexDeep,
+			ConcaveMedium,
+			ConcaveDeep,
+		};
+
+		Concavity concavity = Concavity::Standard;
+		float normalDeg = normalAngle * 180.0f / float(M_PI);
+		float nextNormalDeg = nextSegmentNormalAngle * 180.0f / float(M_PI); 
+
+		if (nextNormalDeg > normalDeg)
+		{
+			// Concave
+			float normalDelta = nextNormalDeg - normalDeg;
+
+			if (normalDelta <= 48.0f)
+			{
+				concavity = Concavity::Standard;
+			}
+			else if (normalDelta <= 96.0f)
+			{
+				concavity = Concavity::ConcaveMedium;
+			}
+			else
+			{
+				concavity = Concavity::ConcaveDeep;
+			}
+		}
+		else
+		{
+			// Convex
+			float normalDelta = normalDeg - nextNormalDeg;
+
+			if (normalDelta <= 48.0f)
+			{
+				concavity = Concavity::Standard;
+			}
+			else if (normalDelta <= 96.0f)
+			{
+				concavity = Concavity::ConvexMedium;
+			}
+			else
+			{
+				concavity = Concavity::ConvexDeep;
+			}
+		}
+
+		if (floorToFloor)
+		{
+			if (this->isFlipped)
+			{
+				Sprite* topConnector = Sprite::create(this->terrainData.bottomConnectorResource);
+				Vec2 offset = terrainData.bottomOffset;
+
+				offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
+
+				this->buildSegment(this->connectorsNode, topConnector, Vec2(0.5f, 0.5f), dest + offset, 180.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+			}
+			else
+			{
+				Sprite* topConnector = nullptr;
+				Vec2 offset = terrainData.topOffset;
+				
+				ConstantString* str = ConstantString::create("S");
+				LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
+				concavityLabel->setTextColor(Color4B::MAGENTA);
+				concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
+				this->debugNode->addChild(concavityLabel);
+				
+				switch (concavity)
+				{
+					default:
+					case Concavity::Standard:
+					{
+						topConnector = Sprite::create(this->terrainData.topConnectorResource);
+						offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
+						str->setString("S");
+						break;
+					}
+					case Concavity::ConvexMedium:
+					{
+						topConnector = Sprite::create(this->terrainData.topConnectorConvexResource);
+						str->setString("t");
+						break;
+					}
+					case Concavity::ConvexDeep:
+					{
+						topConnector = Sprite::create(this->terrainData.topConnectorConvexDeepResource);
+						str->setString("_T_");
+						break;
+					}
+					case Concavity::ConcaveMedium:
+					{
+						topConnector = Sprite::create(this->terrainData.topConnectorConcaveResource);
+						str->setString("v");
+						break;
+					}
+					case Concavity::ConcaveDeep:
+					{
+						topConnector = Sprite::create(this->terrainData.topConnectorConcaveDeepResource);
+						str->setString("_V_");
+						break;
+					}
+				}
+
+				this->buildSegment(this->connectorsNode, topConnector, Vec2(0.5f, 0.5f), dest + offset, 180.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+			}
+		}
+		else if (roofToRoof)
+		{
+			Sprite* bottom = Sprite::create(this->isFlipped ? this->terrainData.topConnectorResource : this->terrainData.bottomConnectorResource);
+			Vec2 offset = this->isFlipped ? terrainData.topOffset : terrainData.bottomOffset;
+
+			offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
+
+			this->buildSegment(this->connectorsNode, bottom, Vec2(0.5f, 0.5f), dest + offset, 360.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+		}
 
 		// Handle case when going from floor to walls
 		if (floorToWall || wallToFloor)
@@ -563,7 +622,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				offset.y = this->isFlipped ? -offset.y : offset.y;
 
-				buildSegment(this->topCornersNode, topLeft, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), TileMethod::None);
+				this->buildSegment(this->topCornersNode, topLeft, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 			else
 			{
@@ -572,7 +631,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				offset.y = this->isFlipped ? -offset.y : offset.y;
 
-				buildSegment(this->topCornersNode, topRight, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), TileMethod::None);
+				this->buildSegment(this->topCornersNode, topRight, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 		}
 		// Handle case when going from roof to walls
@@ -590,7 +649,7 @@ void TerrainObject::buildSurfaceTextures()
 
 				offset.y = this->isFlipped ? -offset.y : offset.y;
 
-				buildSegment(this->topCornersNode, bottomLeft, Vec2(0.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), TileMethod::None);
+				this->buildSegment(this->topCornersNode, bottomLeft, Vec2(0.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 			else
 			{
@@ -599,13 +658,72 @@ void TerrainObject::buildSurfaceTextures()
 
 				offset.y = this->isFlipped ? -offset.y : offset.y;
 
-				buildSegment(this->topCornersNode, bottomRight, Vec2(1.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), TileMethod::None);
+				this->buildSegment(this->topCornersNode, bottomRight, Vec2(1.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 		}
 
 		previousSegment = &segment;
 	}
 }
+
+
+void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod)
+{
+	Size textureSize = sprite->getContentSize();
+
+	static float seamlessSegmentX = 0.0f;
+
+	// Create parameters to repeat the texture
+	Texture2D::TexParams params = Texture2D::TexParams();
+	params.minFilter = GL_LINEAR;
+	params.magFilter = GL_LINEAR;
+
+	switch(tileMethod)
+	{
+		case TileMethod::Horizontal:
+		{
+			params.wrapS = GL_REPEAT;
+			break;
+		}
+		case TileMethod::Vertical:
+		{
+			params.wrapT = GL_REPEAT;
+			break;
+		}
+		default:
+		case TileMethod::None:
+		{
+			break;
+		}
+	}
+
+	// Prevent off-by-1 rendering errors where texture pixels are barely separated
+	segmentLength = std::ceil(segmentLength);
+
+	sprite->setAnchorPoint(anchor);
+	sprite->getTexture()->setTexParameters(params);
+
+	// Start the texture from where the previous texture left off for seamless integration
+	if (tileMethod == TileMethod::Horizontal)
+	{
+		sprite->setTextureRect(Rect(seamlessSegmentX, 0.0f, segmentLength, textureSize.height));
+
+		// Advance the seamless segment distance (with wrap around on overflow)
+		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f, textureSize.width);
+	}
+	else if (tileMethod == TileMethod::Vertical)
+	{
+		sprite->setTextureRect(Rect(0.0f, seamlessSegmentX, textureSize.width, segmentLength));
+
+		// Advance the seamless segment distance (with wrap around on overflow)
+		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f,  textureSize.height);
+	}
+
+	sprite->setPosition(position);
+	sprite->setRotation(rotation);
+
+	parent->addChild(sprite);
+};
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
@@ -689,26 +807,12 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 
 bool TerrainObject::isTopAngle(float normalAngle)
 {
-	if (this->isFlipped)
-	{
-		return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
-	}
-	else
-	{
-		return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
-	}
+	return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
 }
 
 bool TerrainObject::isBottomAngle(float normalAngle)
 {
-	if (!this->isFlipped)
-	{
-		return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
-	}
-	else
-	{
-		return normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold;
-	}
+	return normalAngle >= TerrainObject::BottomThreshold && normalAngle <= 2.0f * float(M_PI) - (TerrainObject::BottomThreshold - float(M_PI));
 }
 
 bool TerrainObject::isLeftAngle(float normalAngle)
