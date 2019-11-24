@@ -58,7 +58,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 {
 	if (!super::init())
 	{
-		throw std::uncaught_exceptions();
+		// throw std::uncaught_exceptions();
+		return;
 	}
 
 	this->collectablesMenu = CollectablesMenu::create();

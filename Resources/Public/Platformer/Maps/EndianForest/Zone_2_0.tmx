@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="698">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="698">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -88,7 +88,7 @@
    <properties>
     <property name="is-hollow" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 728.172,-410.079 1308.65,-607.708 1827.82,-428.973 2119.22,-602.265 2433.8,-240.582 2702.28,-584.823 2942.94,-235.672 3588.41,-594.783 4252.4,-736.854 6200.99,-730.065 7289.02,-1154.22 8113.52,-1162 8130.84,2480.07 5421.45,2985.03 3186.42,2944.09 625.129,1912.06 -340.043,1398.22 -343.477,385.375"/>
+   <polygon points="0,0 728.172,-410.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 6200.99,-730.065 7289.02,-1154.22 8113.52,-1162 8130.84,2480.07 5421.45,2985.03 3186.42,2944.09 625.129,1912.06 -340.043,1398.22 -343.477,385.375"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
@@ -200,7 +200,6 @@
     <property name="tutorial" value="connect"/>
    </properties>
   </object>
-  <object id="695" name="help-totem-required-level" type="object" x="3865.83" y="4094.55" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -62,7 +62,8 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
-		throw std::uncaught_exceptions();
+		return;
+		// throw std::uncaught_exceptions();
 	}
 
 	this->transition = transition;
