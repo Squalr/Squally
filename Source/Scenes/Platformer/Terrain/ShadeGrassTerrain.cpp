@@ -56,6 +56,16 @@ ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 		Vec2::ZERO,
 		// BottomRight
 		Vec2::ZERO,
+		// TopConnector
+		Vec2::ZERO,
+		// TopConnectorConcave
+		Vec2::ZERO,
+		// TopConnectorConcaveDeep
+		Vec2::ZERO,
+		// TopConnectorConvex
+		Vec2::ZERO,
+		// TopConnectorConvexDeep
+		Vec2::ZERO,
 		Color4B(11, 30, 39, 255)))
 {
 }

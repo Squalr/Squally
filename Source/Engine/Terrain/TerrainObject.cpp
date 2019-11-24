@@ -47,7 +47,6 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
-	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyFlipY, Value(false)).asBool();
 
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -461,17 +460,15 @@ void TerrainObject::buildSurfaceTextures()
 
 		if (this->isTopAngle(normalAngle))
 		{
-			Sprite* top = Sprite::create(this->isFlipped ? this->terrainData.bottomResource : this->terrainData.topResource);
-			Vec2 offset = this->isFlipped ? terrainData.bottomOffset : terrainData.topOffset;
+			Sprite* top = Sprite::create(this->terrainData.topResource);
 
-			this->buildSegment(this->topsNode, top, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 180.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
+			this->buildSegment(this->topsNode, top, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + terrainData.topOffset, 180.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
 		}
 		else if (this->isBottomAngle(normalAngle))
 		{
-			Sprite* bottom = Sprite::create(this->isFlipped ? this->terrainData.topResource : this->terrainData.bottomResource);
-			Vec2 offset = this->isFlipped ? terrainData.topOffset : terrainData.bottomOffset;
+			Sprite* bottom = Sprite::create(this->terrainData.bottomResource);
 
-			this->buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + offset, 360.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
+			this->buildSegment(this->bottomsNode, bottom, Vec2(0.5f, 0.5f), source.getMidpoint(dest) + terrainData.bottomOffset, 360.0f - angle * 180.0f / float(M_PI), segmentLength, TileMethod::Horizontal);
 		}
 		else if (this->isLeftAngle(normalAngle))
 		{
@@ -538,69 +535,62 @@ void TerrainObject::buildSurfaceTextures()
 
 		if (floorToFloor)
 		{
-			if (this->isFlipped)
+			Sprite* topConnector = nullptr;
+			Vec2 offset = terrainData.topOffset;
+			
+			ConstantString* str = ConstantString::create("S");
+			LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
+			concavityLabel->setTextColor(Color4B::MAGENTA);
+			concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
+			this->debugNode->addChild(concavityLabel);
+			
+			switch (concavity)
 			{
-				Sprite* topConnector = Sprite::create(this->terrainData.bottomConnectorResource);
-				Vec2 offset = terrainData.bottomOffset;
-
-				offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
-
-				this->buildSegment(this->connectorsNode, topConnector, Vec2(0.5f, 0.5f), dest + offset, 180.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
-			}
-			else
-			{
-				Sprite* topConnector = nullptr;
-				Vec2 offset = terrainData.topOffset;
-				
-				ConstantString* str = ConstantString::create("S");
-				LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
-				concavityLabel->setTextColor(Color4B::MAGENTA);
-				concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
-				this->debugNode->addChild(concavityLabel);
-				
-				switch (concavity)
+				default:
+				case Concavity::Standard:
 				{
-					default:
-					case Concavity::Standard:
-					{
-						topConnector = Sprite::create(this->terrainData.topConnectorResource);
-						offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
-						str->setString("S");
-						break;
-					}
-					case Concavity::ConvexMedium:
-					{
-						topConnector = Sprite::create(this->terrainData.topConnectorConvexResource);
-						str->setString("t");
-						break;
-					}
-					case Concavity::ConvexDeep:
-					{
-						topConnector = Sprite::create(this->terrainData.topConnectorConvexDeepResource);
-						str->setString("_T_");
-						break;
-					}
-					case Concavity::ConcaveMedium:
-					{
-						topConnector = Sprite::create(this->terrainData.topConnectorConcaveResource);
-						str->setString("v");
-						break;
-					}
-					case Concavity::ConcaveDeep:
-					{
-						topConnector = Sprite::create(this->terrainData.topConnectorConcaveDeepResource);
-						str->setString("_V_");
-						break;
-					}
+					topConnector = Sprite::create(this->terrainData.topConnectorResource);
+					offset += this->terrainData.topConnectorOffset;
+					offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
+					str->setString("S");
+					break;
 				}
-
-				this->buildSegment(this->connectorsNode, topConnector, Vec2(0.5f, 0.5f), dest + offset, 180.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+				case Concavity::ConvexMedium:
+				{
+					topConnector = Sprite::create(this->terrainData.topConnectorConvexResource);
+					offset += this->terrainData.topConnectorConvexOffset;
+					str->setString("t");
+					break;
+				}
+				case Concavity::ConvexDeep:
+				{
+					topConnector = Sprite::create(this->terrainData.topConnectorConvexDeepResource);
+					offset += this->terrainData.topConnectorConvexDeepOffset;
+					str->setString("_T_");
+					break;
+				}
+				case Concavity::ConcaveMedium:
+				{
+					topConnector = Sprite::create(this->terrainData.topConnectorConcaveResource);
+					offset += this->terrainData.topConnectorConcaveOffset;
+					str->setString("v");
+					break;
+				}
+				case Concavity::ConcaveDeep:
+				{
+					topConnector = Sprite::create(this->terrainData.topConnectorConcaveDeepResource);
+					offset += this->terrainData.topConnectorConcaveDeepOffset;
+					str->setString("_V_");
+					break;
+				}
 			}
+
+			this->buildSegment(this->connectorsNode, topConnector, Vec2(0.5f, 0.5f), dest + offset, 180.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 		}
 		else if (roofToRoof)
 		{
-			Sprite* bottom = Sprite::create(this->isFlipped ? this->terrainData.topConnectorResource : this->terrainData.bottomConnectorResource);
-			Vec2 offset = this->isFlipped ? terrainData.topOffset : terrainData.bottomOffset;
+			Sprite* bottom = Sprite::create(this->terrainData.bottomConnectorResource);
+			Vec2 offset = this->terrainData.bottomOffset;
 
 			offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
 
@@ -613,14 +603,12 @@ void TerrainObject::buildSurfaceTextures()
 			Vec2 nextSource = std::get<0>(nextSegment);
 			Vec2 nextDest = std::get<1>(nextSegment);
 
-			bool isTopLeft = ((floorToWall && nextSource.x <= source.x) || (wallToFloor && nextDest.x >= dest.x)) ^ this->isFlipped;
+			bool isTopLeft = (floorToWall && nextSource.x <= source.x) || (wallToFloor && nextDest.x >= dest.x);
 
 			if (isTopLeft)
 			{
 				Sprite* topLeft = Sprite::create(this->terrainData.topCornerLeftResource);
 				Vec2 offset = this->terrainData.topLeftCornerOffset;
-
-				offset.y = this->isFlipped ? -offset.y : offset.y;
 
 				this->buildSegment(this->topCornersNode, topLeft, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
@@ -628,8 +616,6 @@ void TerrainObject::buildSurfaceTextures()
 			{
 				Sprite* topRight = Sprite::create(this->terrainData.topCornerRightResource);
 				Vec2 offset = this->terrainData.topRightCornerOffset;
-
-				offset.y = this->isFlipped ? -offset.y : offset.y;
 
 				this->buildSegment(this->topCornersNode, topRight, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
@@ -640,25 +626,19 @@ void TerrainObject::buildSurfaceTextures()
 			Vec2 nextSource = std::get<0>(nextSegment);
 			Vec2 nextDest = std::get<1>(nextSegment);
 
-			bool isBottomLeft = ((roofToWall && nextSource.x <= source.x) || (wallToRoof && nextDest.x >= dest.x)) ^ this->isFlipped;
+			bool isBottomLeft = ((roofToWall && nextSource.x <= source.x) || (wallToRoof && nextDest.x >= dest.x));
 
 			if (isBottomLeft)
 			{
 				Sprite* bottomLeft = Sprite::create(this->terrainData.bottomCornerLeftResource);
-				Vec2 offset = this->terrainData.bottomLeftCornerOffset;
 
-				offset.y = this->isFlipped ? -offset.y : offset.y;
-
-				this->buildSegment(this->topCornersNode, bottomLeft, Vec2(0.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+				this->buildSegment(this->topCornersNode, bottomLeft, Vec2(0.0f, 0.5f), dest + this->terrainData.bottomLeftCornerOffset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 			else
 			{
 				Sprite* bottomRight = Sprite::create(this->terrainData.bottomCornerRightResource);
-				Vec2 offset = this->terrainData.bottomLeftCornerOffset;
 
-				offset.y = this->isFlipped ? -offset.y : offset.y;
-
-				this->buildSegment(this->topCornersNode, bottomRight, Vec2(1.0f, 0.5f), dest + offset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
+				this->buildSegment(this->topCornersNode, bottomRight, Vec2(1.0f, 0.5f), dest + this->terrainData.bottomLeftCornerOffset, 360.0f - (roofToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 		}
 
