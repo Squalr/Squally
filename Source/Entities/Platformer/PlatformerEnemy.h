@@ -17,11 +17,12 @@ public:
 	std::string getBattleMapResource();
 	std::string getBattleTag();
 	std::string getBattleBehavior();
-	Inventory* getDropInventory();
+	std::string getDropPool();
 
 	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyBattleTag;
+	static const std::string MapKeyDropPool;
 	static const std::string PlatformerEnemyTag;
 
 protected:
@@ -35,24 +36,13 @@ protected:
 		float hoverHeight = 0.0f);
 	~PlatformerEnemy();
 
-	void onEnter() override;
-	void onEnterTransitionDidFinish() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 	void onObjectStateLoaded() override;
-	std::tuple<std::string, float> createDrop(std::string itemKey, float probability);
 
 	std::string battleMapResource;
 	std::string battleMapTag;
 	std::string battleBehavior;
-	std::vector<std::tuple<std::string, float>> dropTable;
-	std::tuple<int, int> iouTable;
+	std::string dropPool;
 
 private:
 	typedef PlatformerEntity super;
-
-	Inventory* dropInventory;
-
-	void buildDropInventory();
-	void buildIOUDrop();
 };

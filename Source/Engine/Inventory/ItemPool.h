@@ -30,5 +30,6 @@ private:
 	cocos2d::Node* itemsNode;
 
 	std::string poolName;
+	bool weightSumStale;
 	float weightSum;
 };

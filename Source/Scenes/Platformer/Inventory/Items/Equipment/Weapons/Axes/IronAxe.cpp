@@ -20,7 +20,7 @@ IronAxe* IronAxe::create()
 	return instance;
 }
 
-IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 4, 6)
 {
 }
 

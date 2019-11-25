@@ -40,8 +40,6 @@ GoblinWarriorPig::GoblinWarriorPig(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = GoblinWarriorPig::getHexusOpponentData();
-
-	this->dropTable.push_back(this->createDrop(SpeedRune::SaveKeySpeedRune, 0.35f));
 }
 
 GoblinWarriorPig::~GoblinWarriorPig()

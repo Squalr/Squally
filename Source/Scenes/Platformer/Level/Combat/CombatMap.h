@@ -24,8 +24,9 @@ public:
 	{
 		std::string entityType;
 		std::string battleBehavior;
+		std::string dropPool;
 
-		CombatData(std::string entityType, std::string battleBehavior) : entityType(entityType), battleBehavior(battleBehavior) { }
+		CombatData(std::string entityType, std::string battleBehavior, std::string dropPool = "") : entityType(entityType), battleBehavior(battleBehavior), dropPool(dropPool) { }
 	};
 
 	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,

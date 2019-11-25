@@ -24,7 +24,7 @@ ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName, CardShopPoolTier1::create())
+ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName)
 {
 	this->addItemToPool(IronSword::create(), 1.0f);
 	this->addItemToPool(WoodenMallet::create(), 1.0f);

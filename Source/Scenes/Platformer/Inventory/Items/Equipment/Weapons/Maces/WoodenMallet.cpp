@@ -20,7 +20,7 @@ WoodenMallet* WoodenMallet::create()
 	return instance;
 }
 
-WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 3, 7)
 {
 }
 

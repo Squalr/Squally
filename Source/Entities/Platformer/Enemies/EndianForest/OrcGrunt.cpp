@@ -41,10 +41,6 @@ OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = OrcGrunt::getHexusOpponentData();
-
-	this->dropTable.push_back(this->createDrop(HealthPotion::SaveKeyHealthPotion, 0.5f));
-	this->dropTable.push_back(this->createDrop(ManaPotion::SaveKeyManaPotion, 0.5f));
-	this->iouTable = std::make_tuple(1, 2);
 }
 
 OrcGrunt::~OrcGrunt()

@@ -26,6 +26,7 @@ ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(pro
 	this->itemPool = std::vector<std::tuple<Item*, float>>();
 	this->weightSum = 0.0f;
 	this->itemsNode = Node::create();
+	this->weightSumStale = false;
 
 	this->addChild(this->itemsNode);
 }
@@ -66,6 +67,8 @@ std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems
 
 Item* ItemPool::getItemFromPool(bool removeSampledItem)
 {
+	this->calculateWeightSum();
+
 	float weight = RandomHelper::random_real(0.0f, this->weightSum);
 
 	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
@@ -73,9 +76,9 @@ Item* ItemPool::getItemFromPool(bool removeSampledItem)
 		weight -= std::get<1>(*it);
 		Item* item = std::get<0>(*it);
 
-		if (weight <= 0.0f && item != nullptr)
+		if (weight <= 0.0f)
 		{
-			Item* retItem = item->clone();
+			Item* retItem = item == nullptr ? nullptr : item->clone();
 
 			if (removeSampledItem)
 			{
@@ -94,9 +97,13 @@ void ItemPool::addItemToPool(Item* item, float weight)
 	std::tuple<Item*, float> itemAndWeight = { item, weight };
 
 	this->itemPool.push_back(itemAndWeight);
-	this->itemsNode->addChild(item);
 
-	this->calculateWeightSum();
+	if (item != nullptr)
+	{
+		this->itemsNode->addChild(item);
+	}
+
+	this->weightSumStale = true;
 }
 
 void ItemPool::removeItemFromPool(Item* item)
@@ -113,15 +120,22 @@ void ItemPool::removeItemFromPool(Item* item)
 		return false;
 	}), this->itemPool.end());
 
-	this->calculateWeightSum();
+	this->weightSumStale = true;
 }
 
 void ItemPool::calculateWeightSum()
 {
+	if (!this->weightSumStale)
+	{
+		return;
+	}
+
 	this->weightSum = 0.0f;
 
 	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
 	{
 		this->weightSum += std::get<1>(*it);
 	}
+
+	this->weightSumStale = false;
 }

@@ -12,6 +12,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Sound.h"
@@ -20,6 +21,7 @@
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -118,19 +120,26 @@ void RewardsMenu::show()
 void RewardsMenu::loadRewards()
 {
 	const int DISPLAY_LIMIT = 32;
-	int index = 0;
 	int totalExpGain = 0;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
 		totalExpGain += StatsTables::getKillExp(enemy);
 
-		std::vector<Item*> items = enemy->getDropInventory()->getItems();
-
-		for (auto it = items.begin(); it != items.end(); it++, index++)
+		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
-			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
-		}
+			MinMaxPool* dropPool = entityDropTableBehavior->getDropPool();
+
+			if (dropPool != nullptr)
+			{
+				std::vector<Item*> items = dropPool->getItems();
+
+				for (auto it = items.begin(); it != items.end(); it++)
+				{
+					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
+				}
+			}
+		});
 	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	this->expValue->setString(std::to_string(totalExpGain));

@@ -350,7 +350,7 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 	}
 
 	// Build enemy team
-	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior()));
+	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));
 
 	if (!enemy->getBattleTag().empty())
 	{
@@ -358,7 +358,7 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 		{
 			if (enemyAlly != enemy)
 			{
-				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior()));
+				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
 			}
 		}), enemy->getBattleTag());
 	}

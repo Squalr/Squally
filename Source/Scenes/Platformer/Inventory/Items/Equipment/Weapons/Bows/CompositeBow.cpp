@@ -20,7 +20,7 @@ CompositeBow* CompositeBow::create()
 	return instance;
 }
 
-CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 7 }}), 3, 6)
 {
 }
 

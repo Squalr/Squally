@@ -20,7 +20,7 @@ WoodCutter* WoodCutter::create()
 	return instance;
 }
 
-WoodCutter::WoodCutter() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+WoodCutter::WoodCutter() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 11 }}), 4, 7)
 {
 }
 

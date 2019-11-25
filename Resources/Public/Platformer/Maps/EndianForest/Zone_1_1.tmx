@@ -140,6 +140,7 @@
     <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value="orc-grunt,restore-potion-tutorial,no-items,no-defend"/>
     <property name="battle-map" value="Combat/Intro"/>
+    <property name="drop-pool" value="ef-generic"/>
     <property name="send-event" value="event-door-open"/>
    </properties>
   </object>

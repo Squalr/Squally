@@ -41,7 +41,7 @@ WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 		TerrainResources::Wood_Right,
 		TerrainResources::Wood_RightConnector,
 		// Top
-		Vec2::ZERO,
+		Vec2(0.0f, -42.0f),
 		// Bottom
 		Vec2::ZERO,
 		// Left
