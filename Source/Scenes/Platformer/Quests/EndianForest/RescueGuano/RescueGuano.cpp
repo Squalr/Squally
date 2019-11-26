@@ -21,9 +21,9 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Freedom.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/HelpYouFindThings.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/E_Freedom.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/F_NotMuchOfAFighter.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/G_HelpYouFindThings.h"
 
 using namespace cocos2d;
 
@@ -90,12 +90,12 @@ void RescueGuano::runRescueSequence()
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
 		DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_RescueGuano_Freedom::create(),
+			Strings::Platformer_Quests_EndianForest_RescueGuano_E_Freedom::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->guano, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true),
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true
 			),
 			[=]()
@@ -111,12 +111,12 @@ void RescueGuano::runRescueSequence()
 void RescueGuano::runRescueSequencePt2()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -130,12 +130,12 @@ void RescueGuano::runRescueSequencePt2()
 void RescueGuano::runRescueSequencePt3()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_HelpYouFindThings::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{

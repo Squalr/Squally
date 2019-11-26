@@ -61,8 +61,8 @@ void ShopkeeperDialogueBehavior::onLoad()
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(this->entity, false),
-						DialogueEvents::BuildPreviewNode(this->squally, true)
+						DialogueEvents::BuildPreviewNode(&this->entity, false),
+						DialogueEvents::BuildPreviewNode(&this->squally, true)
 					),
 					[=]()
 					{

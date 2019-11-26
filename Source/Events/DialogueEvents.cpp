@@ -27,24 +27,34 @@ void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 	);
 }
 
-Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
+std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFlipped)
 {
 	const float offsetY = -96.0f;
 
-	if (entity == nullptr)
+	return [=]()
 	{
-		return nullptr;
-	}
+		if (entity == nullptr)
+		{
+			return (Node*)nullptr;
+		}
 
-	Node* wrapper = Node::create();
-	PlatformerEntity* softClone = entity->softClone();
+		PlatformerEntity** entityPtr = static_cast<PlatformerEntity**>(entity);
 
-	if (softClone != nullptr)
-	{
-		softClone->getAnimations()->setFlippedX(isFlipped);
-		wrapper->addChild(softClone);
-		softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, offsetY));
-	}
+		if (entityPtr == nullptr)
+		{
+			return (Node*)nullptr;
+		}
 
-	return wrapper;
+		Node* wrapper = Node::create();
+		PlatformerEntity* softClone = (*entityPtr)->softClone();
+
+		if (softClone != nullptr)
+		{
+			softClone->getAnimations()->setFlippedX(isFlipped);
+			wrapper->addChild(softClone);
+			softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, offsetY));
+		}
+
+		return wrapper;
+	};
 }

@@ -103,93 +103,100 @@ void TalkToMarcel::registerDialogue()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1
+			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2
+			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Ellipses::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::HardRight,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true),
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true),
 				true
 			),
 			[=]()
 			{
 			},
-			""
+			"",
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1
+			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium2
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3
+			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4
+			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			true
 		));
 	});
 }

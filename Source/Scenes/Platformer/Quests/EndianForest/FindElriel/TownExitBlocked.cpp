@@ -22,7 +22,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/CantLeaveTown.h"
+#include "Strings/Platformer/Quests/EndianForest/FindElriel/Chiron/CantLeaveTown.h"
 
 using namespace cocos2d;
 
@@ -91,12 +91,12 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 				this->isEngagedInDialogue = true;
 
 				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_FindElriel_CantLeaveTown::create(),
+					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Right,
-						DialogueEvents::BuildPreviewNode(this->squally, false),
-						DialogueEvents::BuildPreviewNode(this->chiron, true)
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->chiron, true)
 					),
 					[=]()
 					{

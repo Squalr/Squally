@@ -2,8 +2,10 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Guano;
 class QueenLiana;
 class QuestLine;
+class Squally;
 
 class TalkToQueen : public QuestTask
 {
@@ -25,6 +27,9 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void setPostText();
 
+	Guano* guano;
 	QueenLiana* queenLiana;
+	Squally* squally;
 };

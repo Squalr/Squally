@@ -212,9 +212,11 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 	};
 
 	this->pretextQueue.push(pretext);
-	this->pretextNode->addChild(pretext.dialogue);
-	this->pretextNode->addChild(pretext.visualArgs.leftContentNode);
-	this->pretextNode->addChild(pretext.visualArgs.rightContentNode);
+
+	if (pretext.dialogue != nullptr)
+	{
+		this->pretextNode->addChild(pretext.dialogue);
+	}
 }
 
 void EntityDialogueBehavior::onInteract()
@@ -314,8 +316,8 @@ void EntityDialogueBehavior::showOptions()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->entity, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->entity, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{

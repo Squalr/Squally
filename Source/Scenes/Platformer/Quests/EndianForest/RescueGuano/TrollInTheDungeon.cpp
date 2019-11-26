@@ -22,7 +22,7 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/TrollInTheDungeon.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Alder/A_TrollInTheDungeon.h"
 
 using namespace cocos2d;
 
@@ -97,7 +97,7 @@ void TrollInTheDungeon::runChatSequence()
 		{
 			this->mage->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
-				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_RescueGuano_Alder_A_TrollInTheDungeon::create(), SoundResources::Platformer_Entities_Generic_ChatterAnnoyed1);
 			});
 
 			this->complete();

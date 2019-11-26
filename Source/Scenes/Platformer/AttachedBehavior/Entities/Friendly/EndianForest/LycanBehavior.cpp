@@ -59,8 +59,8 @@ void LycanBehavior::onLoad()
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Right,
-						DialogueEvents::BuildPreviewNode(this->squally, false),
-						DialogueEvents::BuildPreviewNode(this->entity, true)
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->entity, true)
 					),
 					[=]()
 					{

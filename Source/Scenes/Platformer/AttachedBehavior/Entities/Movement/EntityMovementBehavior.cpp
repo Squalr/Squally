@@ -91,7 +91,7 @@ void EntityMovementBehavior::update(float dt)
 			movement = Vec2::ZERO;
 		}
 
-		// this->applyPatrolMovement(&movement);
+		this->applyPatrolMovement(&movement);
 		this->applyCinematicMovement(&movement);
 	}
 
@@ -181,7 +181,7 @@ void EntityMovementBehavior::update(float dt)
 		}
 	}
 
-	// this->checkPatrolMovementComplete();
+	this->checkPatrolMovementComplete();
 	this->checkCinematicMovementComplete();
 }
 

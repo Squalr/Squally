@@ -22,10 +22,10 @@
 #include "Resources/SoundResources.h"
 
 #include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/DoorTech.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/GetMeOutOfHere.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/WeShouldHelpHim.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/WhatGotMeInHere.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/A_GetMeOutOfHere.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/B_WhatGotMeInHere.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/C_WeShouldHelpHim.h"
+#include "Strings/Platformer/Quests/EndianForest/RescueGuano/D_DoorTech.h"
 
 using namespace cocos2d;
 
@@ -106,12 +106,12 @@ void ChatWithGuano::runChatSequence()
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_RescueGuano_GetMeOutOfHere::create(),
+				Strings::Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(this->guano, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
+					DialogueEvents::BuildPreviewNode(&this->guano, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
 				),
 				[=]()
 				{
@@ -132,8 +132,8 @@ void ChatWithGuano::runChatSequencePt2()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::HardRight,
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true),
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true),
 			true
 		),
 		[=]()
@@ -148,12 +148,12 @@ void ChatWithGuano::runChatSequencePt2()
 void ChatWithGuano::runChatSequencePt3()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_WhatGotMeInHere::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -167,12 +167,12 @@ void ChatWithGuano::runChatSequencePt3()
 void ChatWithGuano::runChatSequencePt4()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_WeShouldHelpHim::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_C_WeShouldHelpHim::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -186,12 +186,12 @@ void ChatWithGuano::runChatSequencePt4()
 void ChatWithGuano::runChatSequencePt5()
 {
 	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_DoorTech::create(),
+		Strings::Platformer_Quests_EndianForest_RescueGuano_D_DoorTech::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->guano, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{

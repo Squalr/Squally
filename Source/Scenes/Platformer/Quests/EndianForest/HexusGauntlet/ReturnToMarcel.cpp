@@ -105,8 +105,8 @@ void ReturnToMarcel::registerDialogue()
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(this->marcel, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
+					DialogueEvents::BuildPreviewNode(&this->marcel, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
 				),
 				[=]()
 				{
@@ -135,8 +135,8 @@ void ReturnToMarcel::onHexusWin()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->marcel, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->marcel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -145,8 +145,8 @@ void ReturnToMarcel::onHexusWin()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(this->marcel, false),
-				DialogueEvents::BuildPreviewNode(this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
 			),
 			[=]()
 			{
@@ -155,8 +155,8 @@ void ReturnToMarcel::onHexusWin()
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(this->marcel, false),
-					DialogueEvents::BuildPreviewNode(this->squally, true)
+					DialogueEvents::BuildPreviewNode(&this->marcel, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
 				),
 				[=]()
 				{
@@ -165,8 +165,8 @@ void ReturnToMarcel::onHexusWin()
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Top,
 						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(this->marcel, false),
-						DialogueEvents::BuildPreviewNode(this->squally, true)
+						DialogueEvents::BuildPreviewNode(&this->marcel, false),
+						DialogueEvents::BuildPreviewNode(&this->squally, true)
 					),
 					[=]()
 					{
@@ -175,8 +175,8 @@ void ReturnToMarcel::onHexusWin()
 						DialogueEvents::DialogueVisualArgs(
 							DialogueBox::DialogueDock::Top,
 							DialogueBox::DialogueAlignment::Left,
-							DialogueEvents::BuildPreviewNode(this->marcel, false),
-							DialogueEvents::BuildPreviewNode(this->squally, true)
+							DialogueEvents::BuildPreviewNode(&this->marcel, false),
+							DialogueEvents::BuildPreviewNode(&this->squally, true)
 						),
 						[=]()
 						{

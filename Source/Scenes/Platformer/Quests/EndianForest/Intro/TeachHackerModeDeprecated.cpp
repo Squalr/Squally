@@ -135,8 +135,8 @@ void TeachHackerModeDeprecated::runCinematicSequencePt2()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->marcel, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->marcel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -154,8 +154,8 @@ void TeachHackerModeDeprecated::runCinematicSequencePt3()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->marcel, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->marcel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
@@ -173,8 +173,8 @@ void TeachHackerModeDeprecated::runCinematicSequencePt4()
 	DialogueEvents::DialogueVisualArgs(
 		DialogueBox::DialogueDock::Bottom,
 		DialogueBox::DialogueAlignment::Left,
-		DialogueEvents::BuildPreviewNode(this->marcel, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true)
+		DialogueEvents::BuildPreviewNode(&this->marcel, false),
+		DialogueEvents::BuildPreviewNode(&this->squally, true)
 	),
 	[=]()
 	{
@@ -192,8 +192,8 @@ void TeachHackerModeDeprecated::runCinematicSequencePt5()
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(this->marcel, false),
-			DialogueEvents::BuildPreviewNode(this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->marcel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{

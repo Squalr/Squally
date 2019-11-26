@@ -198,8 +198,8 @@
   <object id="749" name="brick-interior" type="texture" x="-81.8182" y="-24.2424">
    <polygon points="0,0 1468.31,2.97636 1474.3,1217.33 1.99499,1208.4"/>
   </object>
-  <object id="750" name="brick-interior" type="texture" x="2124" y="-40">
-   <polygon points="0,0 2535.72,2.97636 2546.06,1217.33 3.44527,1208.4"/>
+  <object id="750" name="brick-interior" type="texture" x="2078" y="-40">
+   <polygon points="0,0 2583.52,2.97636 2594.06,1217.33 3.51022,1208.4"/>
   </object>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
@@ -300,7 +300,8 @@
   <object id="692" name="queen-liana" type="entity" x="2704.53" y="932.381" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="quest" value="talk-to-queen"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
  </objectgroup>

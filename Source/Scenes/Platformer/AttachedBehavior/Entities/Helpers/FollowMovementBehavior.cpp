@@ -59,8 +59,10 @@ void FollowMovementBehavior::update(float dt)
 	{
 		return;
 	}
+	
+	this->entity->setState(StateKeys::MovementY, Value(0.0f));
 
-	if (this->entity->hasState(StateKeys::CinematicHijacked)
+	if (this->entity->getStateOrDefault(StateKeys::CinematicHijacked, Value(false)).asBool()
 		|| this->entity->hasState(StateKeys::CinematicDestinationX)
 		|| this->entity->hasState(StateKeys::PatrolDestinationX))
 	{
@@ -79,7 +81,7 @@ void FollowMovementBehavior::update(float dt)
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= FollowMovementBehavior::StopFollowRangeX)
 	{
-		this->entity->setState(StateKeys::CinematicDestinationX, Value(squallyPosition.x));
+		this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
 	}
 
 	if (squallyPosition.y >= entityPosition.y + FollowMovementBehavior::TryJumpRangeY)
