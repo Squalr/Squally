@@ -64,7 +64,6 @@ HexusOpponentData::HexusOpponentData(
 	this->enemyAnalyticsIdentifier = enemyAnalyticsIdentifier;
 	this->strategy = strategy;
 	this->cardStyle = cardStyle;
-	this->strength = strength;
 	this->cards = cards;
 	this->onRoundEnd = onRoundEnd;
 	this->stateOverride = stateOverride;

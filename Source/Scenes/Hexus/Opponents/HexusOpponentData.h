@@ -67,7 +67,6 @@ public:
 	std::string backgroundResourceFile;
 	std::string enemyAnalyticsIdentifier;
 	cocos2d::Vec2 avatarOffset;
-	float strength;
 	Strategy strategy;
 	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;

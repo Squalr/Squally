@@ -84,6 +84,13 @@ void EntityMovementBehavior::update(float dt)
 	}
 	else
 	{
+		bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+		
+		if (isCinematicHijacked)
+		{
+			movement = Vec2::ZERO;
+		}
+
 		// this->applyPatrolMovement(&movement);
 		this->applyCinematicMovement(&movement);
 	}
@@ -180,10 +187,9 @@ void EntityMovementBehavior::update(float dt)
 
 void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 {
-	bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
 	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
 
-	if (isCinematicHijacked && hasCinematicMovement)
+	if (hasCinematicMovement)
 	{
 		float cinematicDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
 		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
@@ -201,10 +207,11 @@ void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 
 void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 {
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
 	bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
 	bool hasPatrolMovement = this->entity->hasState(StateKeys::PatrolDestinationX);
 
-	if (!isCinematicHijacked && hasPatrolMovement)
+	if (!hasCinematicMovement && !isCinematicHijacked && hasPatrolMovement)
 	{
 		float patrolDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
 		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
@@ -250,7 +257,7 @@ void EntityMovementBehavior::checkPatrolMovementComplete()
 		if (hasPatrolMovement)
 		{
 			this->entity->clearState(StateKeys::PatrolDestinationX);
-			this->entity->setState(StateKeys::PatrolDestinationReached, Value(true));
+			this->entity->clearState(StateKeys::PatrolDestinationReached);
 		}
 
 		return;

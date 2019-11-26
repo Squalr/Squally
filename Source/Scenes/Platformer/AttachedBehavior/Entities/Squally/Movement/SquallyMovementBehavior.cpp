@@ -128,6 +128,13 @@ void SquallyMovementBehavior::onLoad()
 
 void SquallyMovementBehavior::onMovementChanged()
 {
+	bool isCinematicHijacked = this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+
+	if (isCinematicHijacked)
+	{
+		return;
+	}
+
 	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
 	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
 
