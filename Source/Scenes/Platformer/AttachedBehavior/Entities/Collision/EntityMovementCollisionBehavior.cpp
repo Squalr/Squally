@@ -22,7 +22,7 @@ using namespace cocos2d;
 const std::string EntityMovementCollisionBehavior::MapKeyAttachedBehavior = "entity-movement-collisions";
 const float EntityMovementCollisionBehavior::WaterJumpVelocity = 7680.0f;
 const float EntityMovementCollisionBehavior::SwimVerticalDrag = 0.93f;
-const float EntityMovementCollisionBehavior::StaticFriction = 65536.0f;
+const float EntityMovementCollisionBehavior::StaticFriction = 256.0f;
 
 EntityMovementCollisionBehavior* EntityMovementCollisionBehavior::create(GameObject* owner)
 {
@@ -55,7 +55,7 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 		}
 
 		this->movementCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, EntityMovementCollisionBehavior::StaticFriction),
+			CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
 			collisionType,
 			true,
 			false
