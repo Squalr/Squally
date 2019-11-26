@@ -74,9 +74,6 @@ void EntityMovementBehavior::update(float dt)
 		this->entity->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f),
 		this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f)
 	);
-	
-	this->entity->clearState(StateKeys::MovementX);
-	this->entity->clearState(StateKeys::MovementY);
 
 	if (hasCinematicMovement)
 	{

@@ -18,6 +18,7 @@ using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 const std::string CollisionObject::MapKeyCollisionTypeNone = "none";
+const std::string CollisionObject::MapKeyFriction = "friction";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
@@ -426,7 +427,7 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
-PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius)
+PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius, float friction)
 {
 	Size newSize = size * scale;
 
@@ -448,7 +449,7 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 	// Top capsule
 	points.push_back(Vec2(0.0f, newSize.height / 2.0f + capsuleRadius));
 
-	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
+	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
 bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)

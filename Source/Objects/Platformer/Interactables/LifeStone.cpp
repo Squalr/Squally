@@ -85,7 +85,7 @@ void LifeStone::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData data)
 	{
 		this->runHealAnimation();
 
@@ -97,7 +97,7 @@ void LifeStone::initializeListeners()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData data)
 	{
 		this->isAnimating = false;
 

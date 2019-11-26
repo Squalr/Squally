@@ -41,7 +41,8 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 			CollisionObject::createCapsulePolygon(
 				Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
 				1.0f,
-				EntityGroundCollisionBehavior::GroundCollisionRadius
+				EntityGroundCollisionBehavior::GroundCollisionRadius,
+				0.0f
 			),
 			(int)PlatformerCollisionType::GroundDetector,
 			false,

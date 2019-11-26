@@ -17,13 +17,19 @@ protected:
 	SquallyMovementBehavior(GameObject* owner);
 	~SquallyMovementBehavior();
 
-	void update(float dt) override;
 	void onLoad() override;
 
 private:
 	typedef AttachedBehavior super;
 
+	void onMovementChanged();
+
 	Squally* squally;
+
+	bool leftPressed;
+	bool rightPressed;
+	bool upPressed;
+	bool downPressed;
 
 	bool isDisposing;
 	bool isPositionSavingDisabled;

@@ -45,7 +45,7 @@ EntityCollisionBehavior::EntityCollisionBehavior(GameObject* owner) : super(owne
 		}
 
 		this->entityCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f),
+			CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f, 0.0f),
 			collisionType,
 			false,
 			false

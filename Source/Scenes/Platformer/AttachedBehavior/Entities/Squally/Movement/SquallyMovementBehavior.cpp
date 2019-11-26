@@ -31,6 +31,10 @@ SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 SquallyMovementBehavior::SquallyMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->leftPressed = false;
+	this->rightPressed = false;
+	this->upPressed = false;
+	this->downPressed = false;
 
 	if (this->squally == nullptr)
 	{
@@ -45,53 +49,55 @@ SquallyMovementBehavior::~SquallyMovementBehavior()
 {
 }
 
-void SquallyMovementBehavior::update(float dt)
-{
-	if (this->squally == nullptr)
-	{
-		return;
-	}
-
-	Vec2 movement = Vec2::ZERO;
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_LEFT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_A))
-	{
-		this->squally->setState(StateKeys::MovementX, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) - 1.0f));
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_RIGHT_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_D))
-	{
-		this->squally->setState(StateKeys::MovementX, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) + 1.0f));
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_UP_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_W))
-	{
-		this->squally->setState(StateKeys::MovementY, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) + 1.0f));
-	}
-
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_DOWN_ARROW) || Input::isPressed(EventKeyboard::KeyCode::KEY_S))
-	{
-		this->squally->setState(StateKeys::MovementY, Value(this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) - 1.0f));
-	}
-
-	// Soft save the player's position
-	if (!this->isPositionSavingDisabled && !this->isDisposing)
-	{
-		if (this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
-			this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
-		{
-			Vec2 position = GameUtils::getWorldCoords(this->squally);
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
-		}
-	}
-
-	super::update(dt);
-}
-
 void SquallyMovementBehavior::onLoad()
 {
-	this->scheduleUpdate();
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	{
+		this->leftPressed = true;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	{
+		this->rightPressed = true;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	{
+		this->upPressed = true;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	{
+		this->downPressed = true;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	{
+		this->leftPressed = false;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	{
+		this->rightPressed = false;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	{
+		this->upPressed = false;
+		this->onMovementChanged();
+	});
+
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	{
+		this->downPressed = false;
+		this->onMovementChanged();
+	});
 
 	if (!this->isPositionSavingDisabled)
 	{
@@ -117,6 +123,24 @@ void SquallyMovementBehavior::onLoad()
 	if (target == this->squally)
 	{
 		GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+	}
+}
+
+void SquallyMovementBehavior::onMovementChanged()
+{
+	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
+	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
+
+	// Soft save the player's position
+	if (!this->isPositionSavingDisabled && !this->isDisposing)
+	{
+		if (this->squally->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f) != 0.0f ||
+			this->squally->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) != 0.0f)
+		{
+			Vec2 position = GameUtils::getWorldCoords(this->squally);
+			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y));
+		}
 	}
 }
 

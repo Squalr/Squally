@@ -107,7 +107,7 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 	}
 
 	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f, 0.0f),
 		(int)weaponType,
 		false,
 		false

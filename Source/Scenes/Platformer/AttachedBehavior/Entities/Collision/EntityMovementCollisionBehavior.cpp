@@ -22,6 +22,7 @@ using namespace cocos2d;
 const std::string EntityMovementCollisionBehavior::MapKeyAttachedBehavior = "entity-movement-collisions";
 const float EntityMovementCollisionBehavior::WaterJumpVelocity = 7680.0f;
 const float EntityMovementCollisionBehavior::SwimVerticalDrag = 0.93f;
+const float EntityMovementCollisionBehavior::StaticFriction = 65536.0f;
 
 EntityMovementCollisionBehavior* EntityMovementCollisionBehavior::create(GameObject* owner)
 {
@@ -54,7 +55,7 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 		}
 
 		this->movementCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f),
+			CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, EntityMovementCollisionBehavior::StaticFriction),
 			collisionType,
 			true,
 			false
@@ -104,6 +105,20 @@ void EntityMovementCollisionBehavior::onLoad()
 			}
 		}
 	}));
+
+	this->entity->listenForStateWrite(StateKeys::MovementX, [=](Value value)
+	{
+		float movementX = value.asFloat();
+
+		if (movementX != 0.0f)
+		{
+			this->movementCollision->getPhysicsBody()->getFirstShape()->setFriction(0.0f);
+		}
+		else
+		{
+			this->movementCollision->getPhysicsBody()->getFirstShape()->setFriction(EntityMovementCollisionBehavior::StaticFriction);
+		}
+	});
 }
 
 void EntityMovementCollisionBehavior::update(float dt)
@@ -204,13 +219,13 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 	const Size wallDetectorSize = Size(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
 
 	this->leftCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false
 	);
 	this->rightCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		false,
 		false

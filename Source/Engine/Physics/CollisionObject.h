@@ -72,10 +72,11 @@ public:
 	virtual void setPhysicsEnabled(bool enabled);
 	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
 	void setDebugPositionSetCallback(std::function<void()> onDebugPositionSet);
-	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale, float capsuleRadius);
+	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale, float capsuleRadius, float friction);
 
 	static const std::string MapKeyTypeCollision;
 	static const std::string MapKeyCollisionTypeNone;
+	static const std::string MapKeyFriction;
 	static const float DefaultMaxHorizontalSpeed;
 	static const float DefaultMaxLaunchSpeed;
 	static const float DefaultMaxFallSpeed;

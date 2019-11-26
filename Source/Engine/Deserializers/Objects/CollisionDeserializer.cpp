@@ -30,10 +30,11 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 
-	float width = properties.at(GameObject::MapKeyWidth).asFloat();
-	float height = properties.at(GameObject::MapKeyHeight).asFloat();
-	float x = properties.at(GameObject::MapKeyXPosition).asFloat() + width / 2.0f;
-	float y = properties.at(GameObject::MapKeyYPosition).asFloat() + height / 2.0f;
+	float width = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyWidth, Value(1.0f)).asFloat();
+	float height = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyHeight, Value(1.0f)).asFloat();
+	float x = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat() + width / 2.0f;
+	float y = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat() + height / 2.0f;
+	float friction = GameUtils::getKeyOrDefault(args->properties, CollisionObject::MapKeyFriction, Value(1.0f)).asFloat();
 	PhysicsBody* physicsBody = nullptr;
 
 	if (GameUtils::keyExists(properties, GameObject::MapKeyPoints))
@@ -47,18 +48,18 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 		{
 			auto point = it->asValueMap();
 
-			float deltaX = point.at(GameObject::MapKeyXPosition).asFloat();
-			float deltaY = point.at(GameObject::MapKeyYPosition).asFloat();
+			float deltaX = GameUtils::getKeyOrDefault(point, GameObject::MapKeyXPosition, Value(0.0f)).asFloat();
+			float deltaY = GameUtils::getKeyOrDefault(point, GameObject::MapKeyYPosition, Value(0.0f)).asFloat();
 
 			// Negate the Y since we're operating in a different coordinate system
 			points[index++] = Vec2(deltaX, -deltaY);
 		}
 
-		physicsBody = PhysicsBody::createPolygon(points, polygonPoints.size(), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+		physicsBody = PhysicsBody::createPolygon(points, polygonPoints.size(), PhysicsMaterial(0.0f, 0.0f, friction));
 	}
 	else
 	{
-		physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+		physicsBody = PhysicsBody::createBox(Size(width, height), PhysicsMaterial(0.0f, 0.0f, friction));
 	}
 
 	CollisionObject* collisionObject = CollisionObject::create(properties, physicsBody, name, false, false);

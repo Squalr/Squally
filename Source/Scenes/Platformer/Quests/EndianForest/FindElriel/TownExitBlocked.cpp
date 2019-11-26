@@ -75,7 +75,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
 
 		this->chironCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f),
+			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f, 0.0f),
 			(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
 			false,
 			false

@@ -550,7 +550,7 @@ void TerrainObject::buildSurfaceTextures()
 				case Concavity::Standard:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorResource);
-					offset += this->terrainData.topConnectorOffset;
+					offset += this->terrainData.topOffset + this->terrainData.topConnectorOffset;
 					offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
 					str->setString("S");
 					break;
@@ -558,28 +558,28 @@ void TerrainObject::buildSurfaceTextures()
 				case Concavity::ConvexMedium:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConvexResource);
-					offset += this->terrainData.topConnectorConvexOffset;
+					offset += this->terrainData.topOffset + this->terrainData.topConnectorConvexOffset;
 					str->setString("t");
 					break;
 				}
 				case Concavity::ConvexDeep:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConvexDeepResource);
-					offset += this->terrainData.topConnectorConvexDeepOffset;
+					offset += this->terrainData.topOffset + this->terrainData.topConnectorConvexDeepOffset;
 					str->setString("_T_");
 					break;
 				}
 				case Concavity::ConcaveMedium:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConcaveResource);
-					offset += this->terrainData.topConnectorConcaveOffset;
+					offset += this->terrainData.topOffset + this->terrainData.topConnectorConcaveOffset;
 					str->setString("v");
 					break;
 				}
 				case Concavity::ConcaveDeep:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConcaveDeepResource);
-					offset += this->terrainData.topConnectorConcaveDeepOffset;
+					offset += this->terrainData.topOffset + this->terrainData.topConnectorConcaveDeepOffset;
 					str->setString("_V_");
 					break;
 				}
@@ -608,14 +608,14 @@ void TerrainObject::buildSurfaceTextures()
 			if (isTopLeft)
 			{
 				Sprite* topLeft = Sprite::create(this->terrainData.topCornerLeftResource);
-				Vec2 offset = this->terrainData.topLeftCornerOffset;
+				Vec2 offset = this->terrainData.topOffset + this->terrainData.topLeftCornerOffset;
 
 				this->buildSegment(this->topCornersNode, topLeft, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}
 			else
 			{
 				Sprite* topRight = Sprite::create(this->terrainData.topCornerRightResource);
-				Vec2 offset = this->terrainData.topRightCornerOffset;
+				Vec2 offset = this->terrainData.topOffset + this->terrainData.topRightCornerOffset;
 
 				this->buildSegment(this->topCornersNode, topRight, Vec2(0.5f, 0.5f), dest + offset, 180.0f - (floorToWall ? angle : nextAngle) * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 			}

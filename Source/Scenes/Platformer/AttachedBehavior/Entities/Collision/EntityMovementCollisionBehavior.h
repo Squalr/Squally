@@ -41,4 +41,5 @@ private:
 
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;
+	static const float StaticFriction;
 };
