@@ -60,7 +60,9 @@ void FollowMovementBehavior::update(float dt)
 		return;
 	}
 
-	if (this->entity->hasState(StateKeys::CinematicHijacked) || this->entity->hasState(StateKeys::CinematicDestinationX))
+	if (this->entity->hasState(StateKeys::CinematicHijacked)
+		|| this->entity->hasState(StateKeys::CinematicDestinationX)
+		|| this->entity->hasState(StateKeys::PatrolDestinationX))
 	{
 		return;
 	}

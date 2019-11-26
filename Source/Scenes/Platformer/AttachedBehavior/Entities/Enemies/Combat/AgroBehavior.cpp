@@ -104,7 +104,7 @@ void AgroBehavior::update(float dt)
 			if (std::abs(squallyPosition.x - entityPosition.x) <= AgroBehavior::AgroRangeX &&
 				std::abs(squallyPosition.y - entityPosition.y) <= AgroBehavior::AgroRangeY)
 			{
-				this->entity->setState(StateKeys::CinematicDestinationX, Value(squallyPosition.x));
+				this->entity->setState(StateKeys::PatrolDestinationX, Value(squallyPosition.x));
 			}
 			else
 			{

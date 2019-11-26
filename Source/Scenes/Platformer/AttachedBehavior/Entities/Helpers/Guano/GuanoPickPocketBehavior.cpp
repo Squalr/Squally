@@ -70,9 +70,9 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 	}
 	
 	this->isPickPocketing = true;
-	this->entity->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(target).x));
+	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
 
-	this->entity->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+	this->entity->listenForStateWriteOnce(StateKeys::PatrolDestinationReached, [=](Value value)
 	{
 		if (this->isPickPocketing)
 		{
@@ -94,7 +94,7 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		CallFunc::create([=]()
 		{
 			this->isPickPocketing = false;
-			this->entity->clearState(StateKeys::CinematicDestinationX);
+			this->entity->clearState(StateKeys::PatrolDestinationX);
 		}),
 		nullptr
 	));
