@@ -28,6 +28,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[FindElrielLine::MapKeyQuestLine] = [=]() { return (QuestLine*)FindElrielLine::create(); };
 	this->lineDeserializers[FerryRepairsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)FerryRepairsLine::create(); };
 	this->lineDeserializers[RescueGuanoLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RescueGuanoLine::create(); };
+	this->lineDeserializers[SailForRuinsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SailForRuinsLine::create(); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="745">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="745">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -62,7 +62,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="724" name="water" type="object" x="-510.907" y="1494.51" width="7386.02" height="405.346">
+  <object id="724" name="water" type="object" x="-510.907" y="1494.51" width="5722.02" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -81,7 +81,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="722" name="water" type="object" x="-358.232" y="1577.33" width="7378.35" height="458.11">
+  <object id="722" name="water" type="object" x="-358.232" y="1577.33" width="5602.35" height="458.11">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -104,7 +104,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="721" name="water" type="object" x="-315.366" y="1604" width="7272.67" height="405.346">
+  <object id="721" name="water" type="object" x="-315.366" y="1604" width="5448.67" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -139,7 +139,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="water" type="object" x="-264.642" y="1650.93" width="7161.42" height="405.346">
+  <object id="741" name="water" type="object" x="-264.642" y="1650.93" width="5305.42" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -178,14 +178,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="744" name="ship" type="object" x="4967.13" y="837.526" width="2375" height="1008"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="658" name="ship-alt" type="terrain" x="-77.6003" y="1676.37">
-   <polygon points="0,0 5797.13,-6.21322 5797.13,521.907 14.0366,528.124"/>
+   <polygon points="0,0 3997.13,-6.21322 3997.13,521.907 9.67826,528.124"/>
   </object>
  </objectgroup>
  <objectgroup id="79" name="water +1">
@@ -193,7 +192,7 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="735" name="water" type="object" x="-252.698" y="1760.93" width="6813" height="405.346">
+  <object id="735" name="water" type="object" x="-252.698" y="1760.93" width="5157" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -228,7 +227,7 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="739" name="water" type="object" x="-236.689" y="1774.74" width="6756.27" height="405.346">
+  <object id="739" name="water" type="object" x="-236.689" y="1774.74" width="5036.27" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -251,7 +250,7 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="737" name="water" type="object" x="-221.3" y="1787.66" width="6713.43" height="405.346">
+  <object id="737" name="water" type="object" x="-221.3" y="1787.66" width="4913.43" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -274,7 +273,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="736" name="water" type="object" x="-203.2" y="1806.28" width="6657.54" height="405.346">
+  <object id="736" name="water" type="object" x="-203.2" y="1806.28" width="4801.54" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -304,9 +303,8 @@
   </properties>
   <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
    <properties>
-    <property name="args" value="0"/>
     <property name="map" value="EndianForest/Town_Shack"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="ship"/>
    </properties>
   </object>
   <object id="708" name="edge-portal" type="object" x="-1.96156" y="1208.75" width="199.918" height="488.002">
@@ -315,14 +313,7 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="717" name="solid" type="collision" x="5591.52" y="935.344" width="126.878" height="778.756"/>
-  <object id="738" name="portal" type="object" x="3076.98" y="1436.32" width="256.687" height="235.919">
-   <properties>
-    <property name="args" value="0"/>
-    <property name="map" value="EndianForest/Town_Shack"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
+  <object id="717" name="solid" type="collision" x="3679.52" y="903.344" width="126.878" height="778.756"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -337,6 +328,8 @@
   <object id="692" name="blackbeard" type="entity" x="1717.67" y="1554.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
+    <property name="quest" value="sail-for-ruins"/>
+    <property name="quest-line" value="sail-for-ruins"/>
    </properties>
   </object>
  </objectgroup>

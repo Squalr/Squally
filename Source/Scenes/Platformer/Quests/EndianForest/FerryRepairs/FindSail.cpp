@@ -46,12 +46,7 @@ void FindSail::onLoad(QuestState questState)
 
 void FindSail::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEventOnce(FindSail::MapKeyQuest, [=](ValueMap args)
-	{
-		this->complete();
-
-		this->runCinematicSequence();
-	});
+	this->runCinematicSequence();
 }
 
 void FindSail::onComplete()
@@ -60,12 +55,14 @@ void FindSail::onComplete()
 
 void FindSail::onSkipped()
 {
-	this->removeAllListeners();
 }
 
 void FindSail::runCinematicSequence()
 {
-	if (this->blackbeard != nullptr)
+	if (this->blackbeard == nullptr)
 	{
+		return;
 	}
+	
+	this->complete();
 }

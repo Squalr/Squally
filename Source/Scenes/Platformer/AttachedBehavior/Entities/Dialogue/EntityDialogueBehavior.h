@@ -10,8 +10,8 @@ class DialogueSet;
 class InteractMenu;
 class LocalizedString;
 class PlatformerEntity;
+class Scrappy;
 class SpeechBubble;
-class Squally;
 
 class EntityDialogueBehavior : public AttachedBehavior
 {
@@ -44,7 +44,7 @@ private:
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 
 	PlatformerEntity* entity;
-	Squally* squally;
+	Scrappy* scrappy;
 	SpeechBubble* speechBubble;
 
 	bool canInteract;

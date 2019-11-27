@@ -8,8 +8,8 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -39,7 +39,7 @@ EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
+	this->scrappy = nullptr;
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
@@ -112,10 +112,10 @@ void EntityDialogueBehavior::initializePositions()
 
 void EntityDialogueBehavior::onLoad()
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
-		this->squally = squally;
-	}, Squally::MapKeySqually);
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
@@ -286,7 +286,7 @@ void EntityDialogueBehavior::showOptions()
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
-	if (dialogueOptions.empty() || (this->squally != nullptr && this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
+	if (dialogueOptions.empty() || (this->scrappy != nullptr && this->scrappy->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
 	{
 		return;
 	}
@@ -317,7 +317,7 @@ void EntityDialogueBehavior::showOptions()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->entity, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
