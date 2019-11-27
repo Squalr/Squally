@@ -14,10 +14,15 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
+#include "Resources/SoundResources.h"
+
+#include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/Aye.h"
 #include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/CanWeBoard.h"
+#include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/Nay.h"
 #include "Strings/Platformer/MapNames/Zones/UnderflowRuins.h"
 
 using namespace cocos2d;
@@ -36,6 +41,7 @@ SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine,  std
 SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SailForRuins::MapKeyQuest, questTag, false)
 {
 	this->blackbeard = nullptr;
+	this->squally = nullptr;
 }
 
 SailForRuins::~SailForRuins()
@@ -44,29 +50,45 @@ SailForRuins::~SailForRuins()
 
 void SailForRuins::onLoad(QuestState questState)
 {
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKeySqually);
+
 	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{
 		this->blackbeard = blackbeard;
 
-		if (questState == QuestState::None)
+		this->blackbeard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			this->blackbeard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-			{
-				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
-					[=]()
+			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard::create()->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
+				[=]()
+				{
+					switch(questState)
 					{
-					}),
-					0.5f
-				);
-			});
-		}
+						case QuestState::Active:
+						case QuestState::ActiveThroughSkippable:
+						case QuestState::Complete:
+						{
+							this->runYesSequence();
+							break;
+						}
+						case QuestState::None:
+						{
+							this->runNoSequence();
+							break;
+						}
+					}
+				}),
+				0.5f
+			);
+		});
 	}, Blackbeard::MapKeyBlackbeard);
 }
 
 void SailForRuins::onActivate(bool isActiveThroughSkippable)
 {
-	this->runCinematicSequence();
 }
 
 void SailForRuins::onComplete()
@@ -77,12 +99,38 @@ void SailForRuins::onSkipped()
 {
 }
 
-void SailForRuins::runCinematicSequence()
+void SailForRuins::runNoSequence()
 {
-	if (this->blackbeard == nullptr)
-	{
-		return;
-	}
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->blackbeard, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		true
+	));
+}
 
-	this->complete();
+void SailForRuins::runYesSequence()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Aye::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->blackbeard, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		true
+	));
 }

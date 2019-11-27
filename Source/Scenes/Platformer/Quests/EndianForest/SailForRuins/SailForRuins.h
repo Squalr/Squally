@@ -4,6 +4,7 @@
 
 class Blackbeard;
 class QuestLine;
+class Squally;
 
 class SailForRuins : public QuestTask
 {
@@ -24,7 +25,9 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runNoSequence();
+	void runYesSequence();
 
 	Blackbeard* blackbeard;
+	Squally* squally;
 };

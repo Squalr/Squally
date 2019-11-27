@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="745">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="745">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -273,7 +273,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="736" name="water" type="object" x="-203.2" y="1806.28" width="4801.54" height="405.346">
+  <object id="736" name="water" type="object" x="-203.2" y="1806.28" width="4822.75" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>

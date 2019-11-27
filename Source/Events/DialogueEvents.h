@@ -55,7 +55,7 @@ public:
 		}
 	};
 
-	static void TriggerDialogueOpen(DialogueOpenArgs args);
+	static void TriggerOpenDialogue(DialogueOpenArgs args);
 	static void TriggerTryDialogueClose(DialogueCloseArgs args);
 	static std::function<cocos2d::Node*()> BuildPreviewNode(void* entity, bool isFlipped);
 };

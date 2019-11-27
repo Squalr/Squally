@@ -54,7 +54,7 @@ void LycanBehavior::onLoad()
 			Strings::Platformer_Entities_EndianForest_Lycan_LetMeIntoTown::create(),
 			[=]()
 			{
-				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,

@@ -56,7 +56,7 @@ void ShopkeeperDialogueBehavior::onLoad()
 			Strings::Platformer_Dialogue_Shopkeepers_HowDoIBuySomething::create(),
 			[=]()
 			{
-				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Dialogue_Shopkeepers_HowToBuySomething::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,

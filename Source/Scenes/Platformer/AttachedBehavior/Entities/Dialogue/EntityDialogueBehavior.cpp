@@ -221,6 +221,11 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 
 void EntityDialogueBehavior::onInteract()
 {
+	if (this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
+	{
+		return;
+	}
+
 	if (this->pretextQueue.empty())
 	{
 		if (this->hasDialogueOptions())
@@ -231,7 +236,7 @@ void EntityDialogueBehavior::onInteract()
 	}
 	else 
 	{
-		DialogueEvents::TriggerDialogueOpen(this->pretextQueue.front());
+		DialogueEvents::TriggerOpenDialogue(this->pretextQueue.front());
 		this->pretextQueue.pop();
 	}
 }
@@ -311,7 +316,7 @@ void EntityDialogueBehavior::showOptions()
 		currentOption = nextOption;
 	}
 
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		options,
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,

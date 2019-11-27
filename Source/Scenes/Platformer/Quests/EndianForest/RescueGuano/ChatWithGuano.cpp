@@ -105,7 +105,7 @@ void ChatWithGuano::runChatSequence()
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
@@ -127,7 +127,7 @@ void ChatWithGuano::runChatSequence()
 
 void ChatWithGuano::runChatSequencePt2()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -147,7 +147,7 @@ void ChatWithGuano::runChatSequencePt2()
 
 void ChatWithGuano::runChatSequencePt3()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -166,7 +166,7 @@ void ChatWithGuano::runChatSequencePt3()
 
 void ChatWithGuano::runChatSequencePt4()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_C_WeShouldHelpHim::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -185,7 +185,7 @@ void ChatWithGuano::runChatSequencePt4()
 
 void ChatWithGuano::runChatSequencePt5()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_D_DoorTech::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,

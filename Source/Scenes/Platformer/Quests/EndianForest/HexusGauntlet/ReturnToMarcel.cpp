@@ -130,7 +130,7 @@ void ReturnToMarcel::onHexusWin()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
@@ -140,7 +140,7 @@ void ReturnToMarcel::onHexusWin()
 		),
 		[=]()
 		{
-			DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Top,
@@ -150,7 +150,7 @@ void ReturnToMarcel::onHexusWin()
 			),
 			[=]()
 			{
-				DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
@@ -160,7 +160,7 @@ void ReturnToMarcel::onHexusWin()
 				),
 				[=]()
 				{
-					DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+					DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Top,
@@ -170,7 +170,7 @@ void ReturnToMarcel::onHexusWin()
 					),
 					[=]()
 					{
-						DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+						DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 						Strings::Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters::create(),
 						DialogueEvents::DialogueVisualArgs(
 							DialogueBox::DialogueDock::Top,

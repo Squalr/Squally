@@ -130,7 +130,7 @@ void TeachHackerModeDeprecated::runCinematicSequencePt1()
 
 void TeachHackerModeDeprecated::runCinematicSequencePt2()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -149,7 +149,7 @@ void TeachHackerModeDeprecated::runCinematicSequencePt2()
 
 void TeachHackerModeDeprecated::runCinematicSequencePt3()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -168,7 +168,7 @@ void TeachHackerModeDeprecated::runCinematicSequencePt3()
 
 void TeachHackerModeDeprecated::runCinematicSequencePt4()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 	Strings::Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem::create(),
 	DialogueEvents::DialogueVisualArgs(
 		DialogueBox::DialogueDock::Bottom,
@@ -187,7 +187,7 @@ void TeachHackerModeDeprecated::runCinematicSequencePt4()
 
 void TeachHackerModeDeprecated::runCinematicSequencePt5()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,

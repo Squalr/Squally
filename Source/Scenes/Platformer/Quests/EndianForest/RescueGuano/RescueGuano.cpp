@@ -89,7 +89,7 @@ void RescueGuano::runRescueSequence()
 {	
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
-		DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_RescueGuano_E_Freedom::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
@@ -110,7 +110,7 @@ void RescueGuano::runRescueSequence()
 
 void RescueGuano::runRescueSequencePt2()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -129,7 +129,7 @@ void RescueGuano::runRescueSequencePt2()
 
 void RescueGuano::runRescueSequencePt3()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,

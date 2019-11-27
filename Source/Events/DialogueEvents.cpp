@@ -11,7 +11,7 @@ using namespace cocos2d;
 const std::string DialogueEvents::EventDialogueOpen = "EVENT_DIALOGUE_OPEN";
 const std::string DialogueEvents::EventDialogueClose = "EVENT_DIALOGUE_CLOSE";
 
-void DialogueEvents::TriggerDialogueOpen(DialogueOpenArgs args)
+void DialogueEvents::TriggerOpenDialogue(DialogueOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		DialogueEvents::EventDialogueOpen,
