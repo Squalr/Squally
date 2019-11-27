@@ -48,6 +48,7 @@ Portal::Portal(ValueMap& properties, Size size, Vec2 offset) : super(properties)
 	this->isLocked = !this->listenEvent.empty();
 	this->requiresInteraction = true;
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::MapKeyPortalTransition, Value("")).asString();
+	this->openCallback = nullptr;
 
 	this->portalCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
@@ -118,10 +119,7 @@ void Portal::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
-		if (!this->isLocked && this->canInteract)
-		{
-			this->loadMap();
-		} 
+		this->enterPortal();
 	});
 
 	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
@@ -178,6 +176,22 @@ void Portal::unlock(bool animate)
 void Portal::setRequiresInteraction(bool requiresInteraction)
 {
 	this->requiresInteraction = requiresInteraction;
+}
+
+void Portal::setOpenCallback(std::function<bool()> openCallback)
+{
+	this->openCallback = openCallback;
+}
+
+void Portal::enterPortal()
+{
+	if (!this->isLocked && this->canInteract)
+	{
+		if (this->openCallback == nullptr || this->openCallback())
+		{
+			this->loadMap();
+		}
+	}
 }
 
 void Portal::loadMap()

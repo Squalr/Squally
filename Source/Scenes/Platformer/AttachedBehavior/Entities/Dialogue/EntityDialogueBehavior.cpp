@@ -208,7 +208,7 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 			originalFunc();
 		}
 
-		this->onInteract();
+		this->progressDialogue();
 	};
 
 	this->pretextQueue.push(pretext);
@@ -226,6 +226,11 @@ void EntityDialogueBehavior::onInteract()
 		return;
 	}
 
+	this->progressDialogue();
+}
+
+void EntityDialogueBehavior::progressDialogue()
+{
 	if (this->pretextQueue.empty())
 	{
 		if (this->hasDialogueOptions())

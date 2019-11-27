@@ -492,7 +492,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="880" name="Generic/TownHomeEmpty2" type="decor" x="4270.63" y="3449.98" width="1203" height="1160"/>
+  <object id="880" name="Generic/TownHomeEmpty2" type="decor" x="4270.63" y="3442.65" width="1203" height="1160"/>
  </objectgroup>
  <objectgroup id="87" name="decore midground 2">
   <properties>
@@ -698,6 +698,8 @@
   <object id="894" name="lantern-gate" type="object" x="5955.06" y="4283.87" width="356" height="320">
    <properties>
     <property name="map" value="EndianForest/Town_Inn"/>
+    <property name="quest" value="enter-inn"/>
+    <property name="quest-line" value="inn"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -708,10 +710,10 @@
    </properties>
   </object>
   <object id="913" name="life-stone" type="object" x="2315" y="4200.5" width="146" height="423"/>
-  <object id="917" name="solid" type="collision" x="4272.79" y="4259.64">
+  <object id="917" name="solid" type="collision" x="4272.79" y="4252.31">
    <polygon points="66.6667,-14.6667 596.583,-289.039 596.77,-260.703 67.7077,13.2645"/>
   </object>
-  <object id="922" name="solid" type="collision" x="4870.67" y="4000">
+  <object id="922" name="solid" type="collision" x="4870.67" y="3992.67">
    <polygon points="0,0 0,-30.6667 526.667,240 528,272"/>
   </object>
   <object id="924" name="cipher-chest" type="object" x="140" y="220" width="128" height="128">

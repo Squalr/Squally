@@ -17,6 +17,7 @@ public:
 	virtual void lock(bool animate = true);
 	virtual void unlock(bool animate = true);
 	void setRequiresInteraction(bool requiresInteraction);
+	void setOpenCallback(std::function<bool()> openCallback);
 
 	static const std::string MapKeyPortal;
 	static const std::string MapKeyPortalMap;
@@ -38,6 +39,7 @@ private:
 	typedef HackableObject super;
 
 	void updateInteractMenuVisibility();
+	void enterPortal();
 
 	CollisionObject* portalCollision;
 	ClickableNode* lockButton;
@@ -51,4 +53,5 @@ private:
 	bool isLocked;
 	std::string transition;
 	std::string mapFile;
+	std::function<bool()> openCallback;
 };
