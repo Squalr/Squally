@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Maps_SeaSharpCaverns : public LocalizedString
+	class Platformer_MapNames_Zones_BallmerPeaks : public LocalizedString
 	{
 	public:
-		static Menus_Maps_SeaSharpCaverns* create();
+		static Platformer_MapNames_Zones_BallmerPeaks* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Maps_SeaSharpCaverns();
-		~Menus_Maps_SeaSharpCaverns();
+		Platformer_MapNames_Zones_BallmerPeaks();
+		~Platformer_MapNames_Zones_BallmerPeaks();
 	};
 }

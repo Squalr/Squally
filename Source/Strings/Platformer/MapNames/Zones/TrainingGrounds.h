@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Maps_UnderflowRuins : public LocalizedString
+	class Platformer_MapNames_Zones_TrainingGrounds : public LocalizedString
 	{
 	public:
-		static Menus_Maps_UnderflowRuins* create();
+		static Platformer_MapNames_Zones_TrainingGrounds* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Maps_UnderflowRuins();
-		~Menus_Maps_UnderflowRuins();
+		Platformer_MapNames_Zones_TrainingGrounds();
+		~Platformer_MapNames_Zones_TrainingGrounds();
 	};
 }

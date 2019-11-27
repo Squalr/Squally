@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElriel.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/ReturnToQueen.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToQueen.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TownArrival.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TownExitBlocked.h"
 
 using namespace cocos2d;
@@ -20,6 +21,7 @@ FindElrielLine* FindElrielLine::create()
 }
 
 FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
+	QuestData(TownArrival::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TownArrival::create(owner, questLine, questTag); }),
 	QuestData(TownExitBlocked::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TownExitBlocked::create(owner, questLine, questTag); }),
 	QuestData(TalkToQueen::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToQueen::create(owner, questLine, questTag); }),
 	QuestData(FindElriel::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return FindElriel::create(owner, questLine, questTag); }),

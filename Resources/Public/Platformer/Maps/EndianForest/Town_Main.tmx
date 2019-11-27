@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="925">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="929">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -617,7 +617,7 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="709" name="spawn" type="object" x="9727.93" y="3840.95" width="128" height="128">
+  <object id="709" name="spawn" type="object" x="9788.54" y="3840.95" width="128" height="128">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="left"/>
@@ -701,12 +701,6 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="900" name="solid" type="collision" x="9884.9" y="2810.57" width="133.049" height="1170.88">
-   <properties>
-    <property name="quest" value="town-exit-blocked"/>
-    <property name="quest-line" value="find-elriel"/>
-   </properties>
-  </object>
   <object id="911" name="portal" type="object" x="125.333" y="4387.03" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="locked-portal"/>
@@ -731,6 +725,19 @@
     <property name="tokens-easy" value=""/>
    </properties>
   </object>
+  <object id="925" name="solid" type="collision" x="3084.03" y="4690.56">
+   <polygon points="764.639,-59.1763 6947.22,-68.1492 6947.85,-4.12835 765.245,-1.23965"/>
+  </object>
+  <object id="926" name="solid" type="collision" x="5657.65" y="5409.33">
+   <polygon points="98.9841,-69.1763 911.446,-68.1492 911.528,-4.12835 100.397,-1.23965"/>
+  </object>
+  <object id="927" name="trigger" type="object" x="1311.85" y="2812.74" width="146" height="1829.06">
+   <properties>
+    <property name="quest" value="town-arrival"/>
+    <property name="quest-line" value="find-elriel"/>
+    <property name="send-event" value="town-arrival"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -745,6 +752,13 @@
   <object id="883" name="bard" type="entity" x="5482.59" y="4472.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
+   </properties>
+  </object>
+  <object id="928" name="chiron" type="entity" x="9960.24" y="3842.06" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+    <property name="quest" value="town-exit-blocked"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
  </objectgroup>

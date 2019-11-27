@@ -41,7 +41,7 @@ ShipTerrain::ShipTerrain(ValueMap& properties) : super(
 		TerrainResources::Ship_Right,
 		TerrainResources::Ship_RightConnector,
 		// Top
-		Vec2::ZERO,
+		Vec2(0.0f, -24.0f),
 		// Bottom
 		Vec2::ZERO,
 		// Left

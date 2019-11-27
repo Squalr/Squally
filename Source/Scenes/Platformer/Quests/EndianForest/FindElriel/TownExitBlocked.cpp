@@ -39,10 +39,9 @@ TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine
 
 TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownExitBlocked::MapKeyQuest, questTag, false)
 {
-	this->collisionObject = dynamic_cast<CollisionObject*>(owner);
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;
-	this->chiron = nullptr;
+	this->chiron = static_cast<Chiron*>(owner);
 	this->squally = nullptr;
 }
 
@@ -68,10 +67,8 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 		this->squally = squally;
 	}, Squally::MapKeySqually);
 
-	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
+	this->defer([=]()
 	{
-		this->chiron = chiron;
-
 		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
 
 		this->chironCollision = CollisionObject::create(
@@ -109,7 +106,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 			
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
-	}, Chiron::MapKeyChiron);
+	});
 }
 
 void TownExitBlocked::onComplete()

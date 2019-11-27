@@ -28,7 +28,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	CollisionObject* collisionObject;
 	Chiron* chiron;
 	Squally* squally;
 	CollisionObject* chironCollision;

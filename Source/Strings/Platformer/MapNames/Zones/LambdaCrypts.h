@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Maps_BallmerPeaks : public LocalizedString
+	class Platformer_MapNames_Zones_LambdaCrypts : public LocalizedString
 	{
 	public:
-		static Menus_Maps_BallmerPeaks* create();
+		static Platformer_MapNames_Zones_LambdaCrypts* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Maps_BallmerPeaks();
-		~Menus_Maps_BallmerPeaks();
+		Platformer_MapNames_Zones_LambdaCrypts();
+		~Platformer_MapNames_Zones_LambdaCrypts();
 	};
 }

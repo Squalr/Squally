@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Maps_EndianForest : public LocalizedString
+	class Platformer_MapNames_Zones_SeaSharpCaverns : public LocalizedString
 	{
 	public:
-		static Menus_Maps_EndianForest* create();
+		static Platformer_MapNames_Zones_SeaSharpCaverns* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Maps_EndianForest();
-		~Menus_Maps_EndianForest();
+		Platformer_MapNames_Zones_SeaSharpCaverns();
+		~Platformer_MapNames_Zones_SeaSharpCaverns();
 	};
 }

@@ -41,7 +41,7 @@ ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 		TerrainResources::ShipAlt_Right,
 		TerrainResources::ShipAlt_RightConnector,
 		// Top
-		Vec2::ZERO,
+		Vec2(0.0f, -24.0f),
 		// Bottom
 		Vec2::ZERO,
 		// Left

@@ -8,10 +8,10 @@
 
 namespace Strings
 {
-	class Menus_Maps_CastleValgrind : public LocalizedString
+	class Platformer_MapNames_Zones_VoidStar : public LocalizedString
 	{
 	public:
-		static Menus_Maps_CastleValgrind* create();
+		static Platformer_MapNames_Zones_VoidStar* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -47,7 +47,7 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Menus_Maps_CastleValgrind();
-		~Menus_Maps_CastleValgrind();
+		Platformer_MapNames_Zones_VoidStar();
+		~Platformer_MapNames_Zones_VoidStar();
 	};
 }
