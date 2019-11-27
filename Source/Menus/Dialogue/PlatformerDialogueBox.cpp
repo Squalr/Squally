@@ -94,15 +94,21 @@ void PlatformerDialogueBox::initializeListeners()
 			if (args->visualArgs.leftContentNode != nullptr)
 			{
 				Node* content = args->visualArgs.leftContentNode();
-
-				this->leftSpeakerNode->addChild(content);
+				
+				if (content != nullptr)
+				{
+					this->leftSpeakerNode->addChild(content);
+				}
 			}
 
 			if (args->visualArgs.rightContentNode != nullptr)
 			{
 				Node* content = args->visualArgs.rightContentNode();
 
-				this->rightSpeakerNode->addChild(content);
+				if (content != nullptr)
+				{
+					this->rightSpeakerNode->addChild(content);
+				}
 			}
 
 			if (args->visualArgs.bigFont)

@@ -68,11 +68,12 @@ public:
 			onFound(attachedBehavior);
 		}
 	}
+	
+	static inline unsigned long long WatchId = 0;
 
 	template <class T>
 	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
 	{
-		static unsigned long long WatchId = 0;
 		unsigned long long watchId = WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 

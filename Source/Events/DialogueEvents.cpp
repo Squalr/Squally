@@ -33,14 +33,9 @@ std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFli
 
 	return [=]()
 	{
-		if (entity == nullptr)
-		{
-			return (Node*)nullptr;
-		}
+		PlatformerEntity** entityPtr = (PlatformerEntity**)(entity);
 
-		PlatformerEntity** entityPtr = static_cast<PlatformerEntity**>(entity);
-
-		if (entityPtr == nullptr)
+		if (entityPtr == nullptr || *entityPtr == nullptr)
 		{
 			return (Node*)nullptr;
 		}

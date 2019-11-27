@@ -12,6 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -44,6 +45,7 @@ TalkToQueen::TalkToQueen(GameObject* owner, QuestLine* questLine, std::string qu
 {
 	this->guano = nullptr;
 	this->queenLiana = nullptr;
+	this->scrappy = nullptr;
 	this->squally = nullptr;
 }
 
@@ -57,6 +59,11 @@ void TalkToQueen::onLoad(QuestState questState)
 	{
 		this->guano = guano;
 	}, Guano::MapKeyGuano);
+
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
 
 	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
@@ -104,7 +111,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
 			false
 		));
 
@@ -135,7 +142,7 @@ void TalkToQueen::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			SoundResources::Platformer_Entities_Generic_ChatterLong1,
 			false
 		));
 
@@ -146,12 +153,12 @@ void TalkToQueen::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Droid_DroidChatter,
 			false
 		));
 
@@ -162,12 +169,12 @@ void TalkToQueen::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort1,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
 			false
 		));
 
@@ -177,12 +184,12 @@ void TalkToQueen::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 			),
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 			true
 		));
 	});
@@ -190,5 +197,5 @@ void TalkToQueen::runCinematicSequence()
 
 void TalkToQueen::setPostText()
 {
-	
+
 }

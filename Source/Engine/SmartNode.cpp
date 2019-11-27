@@ -222,9 +222,10 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	this->addEventListener(listener);
 }
 
+static inline unsigned long long TaskId = 0;
+
 void SmartNode::defer(std::function<void()> task)
 {
-		static unsigned long long TaskId = 0;
 		unsigned long long taskId = TaskId++;
 		std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
 

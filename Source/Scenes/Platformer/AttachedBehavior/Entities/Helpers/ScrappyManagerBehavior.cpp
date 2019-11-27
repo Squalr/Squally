@@ -80,7 +80,7 @@ void ScrappyManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();
 
-	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+	properties[GameObject::MapKeyType] = Value(PlatformerEntityDeserializer::MapKeyTypeEntity);
 	properties[GameObject::MapKeyName] = Value(Scrappy::MapKeyScrappy);
 	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKeyAttachedBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);

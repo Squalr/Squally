@@ -65,6 +65,8 @@ void UIBoundObject::initializeListeners()
     }));
 }
 
+static inline unsigned long long TaskId = 0;
+
 void UIBoundObject::scheduleUpdateTask()
 {
     if (this->scheduleTarget != nullptr && !this->eventKey.empty())
@@ -72,7 +74,6 @@ void UIBoundObject::scheduleUpdateTask()
         this->scheduleTarget->unschedule(eventKey);
     }
 
-    static unsigned long long TaskId = 0;
     unsigned long long taskId = TaskId++;
     this->eventKey = "EVENT_UIBOUND_UPDATE_TASK_" + std::to_string(taskId);
 

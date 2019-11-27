@@ -221,9 +221,10 @@ void SmartScene::pause()
 	super::pause();
 }
 
+static inline unsigned long long TaskId = 0;
+
 void SmartScene::defer(std::function<void()> task)
 {
-		static unsigned long long TaskId = 0;
 		unsigned long long taskId = TaskId++;
 		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
 

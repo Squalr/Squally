@@ -5,6 +5,7 @@
 class Guano;
 class QueenLiana;
 class QuestLine;
+class Scrappy;
 class Squally;
 
 class TalkToQueen : public QuestTask
@@ -31,5 +32,6 @@ private:
 
 	Guano* guano;
 	QueenLiana* queenLiana;
+	Scrappy* scrappy;
 	Squally* squally;
 };

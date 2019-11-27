@@ -155,10 +155,11 @@ public:
 		}
 	}
 
+	static inline unsigned long long WatchId = 0;
+
 	template <class T>
 	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
-		static unsigned long long WatchId = 0;
 		unsigned long long watchId = WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
 
