@@ -512,7 +512,7 @@
   <object id="641" name="edge-portal" type="object" x="10161.9" y="3361.82" width="199.918" height="617.692">
    <properties>
     <property name="map" value="EndianForest/Zone_1_1"/>
-    <property name="save-key" value="SAVE_KEY_PROGRESS_CAN_LEAVE_TOWN"/>
+    <property name="tag" value="blocked-exit"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -590,12 +590,16 @@
   <object id="700" name="portal" type="object" x="2366.04" y="2099.09" width="256.687" height="349.061">
    <properties>
     <property name="map" value="EndianForest/Town_Alch"/>
+    <property name="quest" value="business-hours"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="701" name="portal" type="object" x="4770.45" y="2086.85" width="256.687" height="357.764">
    <properties>
     <property name="map" value="EndianForest/Town_Smith"/>
+    <property name="quest" value="business-hours"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -698,8 +702,8 @@
   <object id="894" name="lantern-gate" type="object" x="5955.06" y="4283.87" width="356" height="320">
    <properties>
     <property name="map" value="EndianForest/Town_Inn"/>
-    <property name="quest" value="enter-inn"/>
-    <property name="quest-line" value="inn"/>
+    <property name="quest" value="business-hours"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

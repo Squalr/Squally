@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class Chiron;
+class Portal;
 class Squally;
 class QuestLine;
 
@@ -31,7 +32,10 @@ private:
 	Chiron* chiron;
 	Squally* squally;
 	CollisionObject* chironCollision;
+	Portal* townExitPortal;
 
 	bool isEngagedInDialogue;
 	float dialogueCooldown;
+
+	static const std::string TagBlockedExit;
 };

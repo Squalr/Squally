@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
@@ -27,6 +28,7 @@
 using namespace cocos2d;
 
 const std::string TownExitBlocked::MapKeyQuest = "town-exit-blocked";
+const std::string TownExitBlocked::TagBlockedExit = "blocked-exit";
 
 TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -58,15 +60,34 @@ void TownExitBlocked::onEnter()
 
 void TownExitBlocked::onLoad(QuestState questState)
 {
-}
-
-void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
-{
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
 
+	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->townExitPortal = portal;
+
+		switch(questState)
+		{
+			case QuestState::Active:
+			case QuestState::ActiveThroughSkippable:
+			{
+				this->townExitPortal->disable();
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+
+	}, TownExitBlocked::TagBlockedExit);
+}
+
+void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
+{
 	this->defer([=]()
 	{
 		this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
@@ -111,7 +132,6 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 
 void TownExitBlocked::onComplete()
 {
-	this->removeAllListeners();
 }
 
 void TownExitBlocked::onSkipped()

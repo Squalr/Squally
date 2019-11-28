@@ -23,8 +23,8 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
 	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
+	this->lineDeserializers[BusinessHoursLine::MapKeyQuestLine] = [=]() { return (QuestLine*)BusinessHoursLine::create(); };
 	this->lineDeserializers[HexusGauntletLine::MapKeyQuestLine] = [=]() { return (QuestLine*)HexusGauntletLine::create(); };
-	this->lineDeserializers[InnLine::MapKeyQuestLine] = [=]() { return (QuestLine*)InnLine::create(); };
 	this->lineDeserializers[IntroLine::MapKeyQuestLine] = [=]() { return (QuestLine*)IntroLine::create(); };
 	this->lineDeserializers[FindElrielLine::MapKeyQuestLine] = [=]() { return (QuestLine*)FindElrielLine::create(); };
 	this->lineDeserializers[FerryRepairsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)FerryRepairsLine::create(); };

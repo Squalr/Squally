@@ -184,26 +184,6 @@
    </properties>
   </object>
   <object id="801" name="shop-pool-toben" type="object" x="404.409" y="310.893" width="64" height="64"/>
-  <object id="836" name="iou" type="object" x="545.051" y="442.928" width="87" height="87"/>
-  <object id="837" name="iou" type="object" x="633.737" y="391.867" width="87" height="87"/>
-  <object id="838" name="iou" type="object" x="628.362" y="391.867" width="87" height="87"/>
-  <object id="839" name="iou" type="object" x="622.988" y="391.867" width="87" height="87"/>
-  <object id="840" name="iou" type="object" x="614.925" y="370.367" width="87" height="87"/>
-  <object id="841" name="iou" type="object" x="585.363" y="381.117" width="87" height="87"/>
-  <object id="842" name="iou" type="object" x="585.363" y="386.492" width="87" height="87"/>
-  <object id="843" name="iou" type="object" x="585.363" y="413.366" width="87" height="87"/>
-  <object id="844" name="iou" type="object" x="585.363" y="418.741" width="87" height="87"/>
-  <object id="845" name="iou" type="object" x="598.8" y="448.303" width="87" height="87"/>
-  <object id="846" name="iou" type="object" x="631.05" y="448.303" width="87" height="87"/>
-  <object id="847" name="iou" type="object" x="647.175" y="413.366" width="87" height="87"/>
-  <object id="848" name="iou" type="object" x="612.238" y="397.242" width="87" height="87"/>
-  <object id="849" name="iou" type="object" x="574.613" y="402.617" width="87" height="87"/>
-  <object id="850" name="iou" type="object" x="558.489" y="418.741" width="87" height="87"/>
-  <object id="851" name="iou" type="object" x="550.426" y="461.741" width="87" height="87"/>
-  <object id="852" name="iou" type="object" x="569.239" y="464.428" width="87" height="87"/>
-  <object id="853" name="iou" type="object" x="639.112" y="450.991" width="87" height="87"/>
-  <object id="854" name="iou" type="object" x="647.175" y="424.116" width="87" height="87"/>
-  <object id="855" name="iou" type="object" x="625.675" y="381.117" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

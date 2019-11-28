@@ -1,4 +1,4 @@
-#include "EnterInn.h"
+#include "BusinessHours.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -23,28 +23,28 @@
 
 using namespace cocos2d;
 
-const std::string EnterInn::MapKeyQuest = "enter-inn";
+const std::string BusinessHours::MapKeyQuest = "business-hours";
 
-EnterInn* EnterInn::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+BusinessHours* BusinessHours::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
-	EnterInn* instance = new EnterInn(owner, questLine, questTag);
+	BusinessHours* instance = new BusinessHours(owner, questLine, questTag);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-EnterInn::EnterInn(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, EnterInn::MapKeyQuest, questTag, false)
+BusinessHours::BusinessHours(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BusinessHours::MapKeyQuest, questTag, false)
 {
 	this->portal = static_cast<Portal*>(owner);
 	this->squally = nullptr;
 }
 
-EnterInn::~EnterInn()
+BusinessHours::~BusinessHours()
 {
 }
 
-void EnterInn::onLoad(QuestState questState)
+void BusinessHours::onLoad(QuestState questState)
 {
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -74,19 +74,19 @@ void EnterInn::onLoad(QuestState questState)
 	}
 }
 
-void EnterInn::onActivate(bool isActiveThroughSkippable)
+void BusinessHours::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void EnterInn::onComplete()
+void BusinessHours::onComplete()
 {
 }
 
-void EnterInn::onSkipped()
+void BusinessHours::onSkipped()
 {
 }
 
-void EnterInn::runCinematicSequence()
+void BusinessHours::runCinematicSequence()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Objects_Doors_ClosedBusinessHours::create(),

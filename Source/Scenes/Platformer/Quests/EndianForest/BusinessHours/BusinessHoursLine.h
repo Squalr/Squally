@@ -2,16 +2,16 @@
 
 #include "Engine/Quests/QuestLine.h"
 
-class InnLine : public QuestLine
+class BusinessHoursLine : public QuestLine
 {
 public:
-	static InnLine* create();
+	static BusinessHoursLine* create();
 
 	static const std::string MapKeyQuestLine;
 
 protected:
-	InnLine();
-	~InnLine();
+	BusinessHoursLine();
+	~BusinessHoursLine();
 
 private:
 	typedef QuestLine super;

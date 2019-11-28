@@ -6,16 +6,16 @@ class Portal;
 class QuestLine;
 class Squally;
 
-class EnterInn : public QuestTask
+class BusinessHours : public QuestTask
 {
 public:
-	static EnterInn* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static BusinessHours* create(GameObject* owner, QuestLine* questLine, std::string questTag);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	EnterInn(GameObject* owner, QuestLine* questLine, std::string questTag);
-	~EnterInn();
+	BusinessHours(GameObject* owner, QuestLine* questLine, std::string questTag);
+	~BusinessHours();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
