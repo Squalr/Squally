@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string KingGroggCombatBehavior::MapKeyAttachedBehavior = "king-grogg";
+const std::string KingGroggCombatBehavior::MapKeyAttachedBehavior = "king-grogg-combat";
 
 KingGroggCombatBehavior* KingGroggCombatBehavior::create(GameObject* owner)
 {
@@ -25,7 +25,7 @@ KingGroggCombatBehavior* KingGroggCombatBehavior::create(GameObject* owner)
 
 KingGroggCombatBehavior::KingGroggCombatBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEnemy*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

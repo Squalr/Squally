@@ -19,7 +19,6 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerEnemy::MapKeyBattleAttachedBehavior = "battle-behavior";
 const std::string PlatformerEnemy::MapKeyBattleMap = "battle-map";
 const std::string PlatformerEnemy::MapKeyBattleTag = "battle-tag";
 const std::string PlatformerEnemy::MapKeyDropPool = "drop-pool";
@@ -44,7 +43,6 @@ PlatformerEnemy::PlatformerEnemy(
 		collisionOffset,
 		hoverHeight)
 {
-	this->battleBehavior = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleAttachedBehavior, Value("")).asString();
 	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::Combat_Intro)).asString();
 	this->battleMapTag = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleTag, Value("")).asString();
 	this->dropPool = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyDropPool, Value("error")).asString();
@@ -78,11 +76,6 @@ std::string PlatformerEnemy::getBattleMapResource()
 std::string PlatformerEnemy::getBattleTag()
 {
 	return this->battleMapTag;
-}
-
-std::string PlatformerEnemy::getBattleBehavior()
-{
-	return this->battleBehavior;
 }
 
 std::string PlatformerEnemy::getDropPool()

@@ -3,7 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerAttack;
-class PlatformerEnemy;
+class PlatformerEntity;
 
 class OrcGruntCombatBehavior : public AttachedBehavior
 {
@@ -22,5 +22,5 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	PlatformerEnemy* entity;
+	PlatformerEntity* entity;
 };

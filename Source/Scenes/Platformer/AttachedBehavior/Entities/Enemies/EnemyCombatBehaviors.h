@@ -12,3 +12,4 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/OrcWarriorCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/OrthrusCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/TrollCombatBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Combat/GuanoCombatBehavior.h"

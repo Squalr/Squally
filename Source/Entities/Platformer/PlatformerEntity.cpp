@@ -28,6 +28,7 @@ using namespace cocos2d;
 
 const std::string PlatformerEntity::MapKeyPropertyState = "state";
 const std::string PlatformerEntity::PlatformerEntityTag = "platformer-entity";
+const std::string PlatformerEntity::MapKeyBattleAttachedBehavior = "battle-behavior";
 
 PlatformerEntity::PlatformerEntity(
 	ValueMap& properties, 
@@ -48,6 +49,7 @@ PlatformerEntity::PlatformerEntity(
 	this->emblemResource = emblemResource;
 	this->entityName = entityName;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
+	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyBattleAttachedBehavior, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * scale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
@@ -115,6 +117,11 @@ void PlatformerEntity::performSwimAnimation()
 void PlatformerEntity::performJumpAnimation()
 {
 	this->animationNode->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+}
+
+std::string PlatformerEntity::getBattleBehavior()
+{
+	return this->battleBehavior;
 }
 
 Node* PlatformerEntity::getFloatNode()

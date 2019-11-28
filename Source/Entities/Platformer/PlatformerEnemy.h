@@ -16,10 +16,8 @@ class PlatformerEnemy : public PlatformerEntity
 public:
 	std::string getBattleMapResource();
 	std::string getBattleTag();
-	std::string getBattleBehavior();
 	std::string getDropPool();
 
-	static const std::string MapKeyBattleAttachedBehavior;
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyBattleTag;
 	static const std::string MapKeyDropPool;
@@ -40,7 +38,6 @@ protected:
 
 	std::string battleMapResource;
 	std::string battleMapTag;
-	std::string battleBehavior;
 	std::string dropPool;
 
 private:

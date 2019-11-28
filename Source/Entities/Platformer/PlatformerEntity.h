@@ -39,10 +39,12 @@ public:
 	bool isFlippedX();
 	bool isFlippedY();
 	PlatformerEntity* softClone();
+	std::string getBattleBehavior();
 
 	ControlState controlState;
 
 	static const std::string PlatformerEntityTag;
+	static const std::string MapKeyBattleAttachedBehavior;
 
 protected:
 	PlatformerEntity(
@@ -81,5 +83,6 @@ private:
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
+	std::string battleBehavior;
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 };

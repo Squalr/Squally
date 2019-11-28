@@ -346,7 +346,7 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 
 	if (!helperName.empty())
 	{
-		playerCombatData.push_back(CombatMap::CombatData(helperName, ""));
+		playerCombatData.push_back(CombatMap::CombatData(helperName, helperName + "-combat"));
 	}
 
 	// Build enemy team

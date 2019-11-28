@@ -1,4 +1,4 @@
-#include "GorgonCombatBehavior.h"
+#include "GuanoCombatBehavior.h"
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -12,18 +12,18 @@
 
 using namespace cocos2d;
 	
-const std::string GorgonCombatBehavior::MapKeyAttachedBehavior = "gorgon-combat";
+const std::string GuanoCombatBehavior::MapKeyAttachedBehavior = "guano-combat";
 
-GorgonCombatBehavior* GorgonCombatBehavior::create(GameObject* owner)
+GuanoCombatBehavior* GuanoCombatBehavior::create(GameObject* owner)
 {
-	GorgonCombatBehavior* instance = new GorgonCombatBehavior(owner);
+	GuanoCombatBehavior* instance = new GuanoCombatBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
+GuanoCombatBehavior::GuanoCombatBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -45,15 +45,15 @@ GorgonCombatBehavior::GorgonCombatBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-GorgonCombatBehavior::~GorgonCombatBehavior()
+GuanoCombatBehavior::~GuanoCombatBehavior()
 {
 }
 
-void GorgonCombatBehavior::initializePositions()
+void GuanoCombatBehavior::initializePositions()
 {
 }
 
-void GorgonCombatBehavior::onLoad()
+void GuanoCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{

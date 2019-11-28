@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string GoblinWarriorPigCombatBehavior::MapKeyAttachedBehavior = "goblin-warrior-pig";
+const std::string GoblinWarriorPigCombatBehavior::MapKeyAttachedBehavior = "goblin-warrior-pig-combat";
 
 GoblinWarriorPigCombatBehavior* GoblinWarriorPigCombatBehavior::create(GameObject* owner)
 {
@@ -25,7 +25,7 @@ GoblinWarriorPigCombatBehavior* GoblinWarriorPigCombatBehavior::create(GameObjec
 
 GoblinWarriorPigCombatBehavior::GoblinWarriorPigCombatBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEnemy*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{

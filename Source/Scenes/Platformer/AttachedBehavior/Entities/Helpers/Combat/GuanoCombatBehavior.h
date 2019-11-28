@@ -5,16 +5,16 @@
 class PlatformerAttack;
 class PlatformerEntity;
 
-class GoblinWarriorPigCombatBehavior : public AttachedBehavior
+class GuanoCombatBehavior : public AttachedBehavior
 {
 public:
-	static GoblinWarriorPigCombatBehavior* create(GameObject* owner);
+	static GuanoCombatBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	GoblinWarriorPigCombatBehavior(GameObject* owner);
-	~GoblinWarriorPigCombatBehavior();
+	GuanoCombatBehavior(GameObject* owner);
+	~GuanoCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
