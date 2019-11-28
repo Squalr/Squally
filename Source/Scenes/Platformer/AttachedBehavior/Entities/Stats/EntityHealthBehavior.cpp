@@ -118,6 +118,7 @@ void EntityHealthBehavior::revive()
 
 	if (this->entity != nullptr)
 	{
+		this->entity->getAnimations()->clearAnimationPriority();
 		this->entity->getAnimations()->playAnimation();
 	}
 }

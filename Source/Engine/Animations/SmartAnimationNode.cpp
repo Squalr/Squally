@@ -103,6 +103,11 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 	}
 }
 
+void SmartAnimationNode::clearAnimationPriority()
+{
+	this->currentAnimationPriority = -1.0f;
+}
+
 AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 {
 	if (this->animationParts.find(partName) != this->animationParts.end())

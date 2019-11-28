@@ -30,6 +30,7 @@ public:
 	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
 	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
 	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void clearAnimationPriority();
 	AnimationPart* getAnimationPart(std::string partName);
 	void restoreAnimationPart(std::string partName);
 	void setFlippedX(bool flippedX);

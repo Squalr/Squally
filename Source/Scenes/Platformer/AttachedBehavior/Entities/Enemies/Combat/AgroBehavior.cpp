@@ -80,6 +80,11 @@ void AgroBehavior::update(float dt)
 		return;
 	}
 
+	if (!this->entity->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	{
+		return;
+	}
+
 	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
 	Vec2 entityPosition = GameUtils::getWorldCoords(this->entity);
 	
