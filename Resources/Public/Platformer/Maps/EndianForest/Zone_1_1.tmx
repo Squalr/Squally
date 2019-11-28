@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="712">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="712">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -164,14 +164,14 @@
   </object>
   <object id="652" name="warp" type="object" x="1106.17" y="4604.01" width="256" height="256">
    <properties>
-    <property name="event" value="none-debug"/>
+    <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
   </object>
   <object id="654" name="warp" type="object" x="12432.3" y="4647.73" width="256" height="256">
    <properties>
-    <property name="event" value="none-debug"/>
+    <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>

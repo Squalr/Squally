@@ -92,11 +92,6 @@ void Portal::initializeListeners()
 	{
 		this->canInteract = true;
 
-		if (this->mapFile.empty())
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
 		if (!this->isLocked && !this->requiresInteraction)
 		{
 			this->loadMap();
@@ -125,11 +120,14 @@ void Portal::initializeListeners()
 	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->lock(false);
+		this->updateInteractMenuVisibility();
 	});
 
 	this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->unlock(false);
+		this->enable();
+		this->updateInteractMenuVisibility();
 	});
 }
 
@@ -185,7 +183,7 @@ void Portal::setOpenCallback(std::function<bool()> openCallback)
 
 void Portal::enterPortal()
 {
-	if (!this->isLocked && this->canInteract)
+	if (!this->isLocked && this->canInteract && !this->disabled)
 	{
 		if (this->openCallback == nullptr || this->openCallback())
 		{

@@ -21,5 +21,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyNoSavePositionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/LockedPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
