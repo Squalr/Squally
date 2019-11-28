@@ -188,6 +188,8 @@ void TalkToQueen::runCinematicSequence()
 			),
 			[=]()
 			{
+				this->setPostText();
+				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 			true
@@ -197,5 +199,25 @@ void TalkToQueen::runCinematicSequence()
 
 void TalkToQueen::setPostText()
 {
-
+	this->defer([=]()
+	{
+		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
+					DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				),
+				[=]()
+				{
+					this->setPostText();
+				},
+				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				true
+			));
+		});
+	});
 }

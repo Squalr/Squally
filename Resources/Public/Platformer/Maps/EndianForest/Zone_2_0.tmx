@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="698">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="704">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -95,16 +95,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="680" name="caverns" type="terrain" x="5671.62" y="5788.06">
-   <polygon points="0,0 345.881,2.64316 584.192,5.45312 585.192,262.481 585.581,479.618 573.135,743.973 1067.48,736.646 1473.33,732.627 1711.54,732.13 1706.76,355.879 1710.67,127.238 1526.08,-394.799 1547.44,-785.892 2461.16,-781.859 2499.86,-467.471 3233.46,-394.349 3356.35,39.9546 3281.88,626.08 2902.21,1337.95 2389.19,1903.38 1613.98,1990.15 784.586,2049.55 79.3123,1887.77 -469.998,1454.21 -553.299,819.432"/>
-  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="blue-grass" type="terrain" x="-321.634" y="4874.1">
-   <polygon points="0,0 2477.63,-35.521 3479.35,165.942 4526.37,458.153 6090.21,823.467 6094.8,1028.01 5558.56,1749.13 4501.56,2080 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
+   <polygon points="0,0 2477.63,-35.521 2972.18,150.573 4162.64,145.653 4863.7,187.838 5572.56,348.988 6213.27,348.807 6207.99,-185.118 6635.34,-287.08 6968.69,-288.687 6971.05,-500.642 6438.58,-517.768 5990.23,-516.875 5973.62,-591.176 5993.29,-664.787 6736.77,-665.69 7307.18,-659.223 7221.84,180.301 7025.06,1242.18 6643.31,1510.37 6197.22,1740.73 4451.14,1937.14 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
   </object>
   <object id="627" name="blue-grass" type="terrain" x="3679.41" y="2590.48">
    <polygon points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
@@ -172,11 +169,6 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="692" name="help-totem-self-hack" type="object" x="6943.84" y="6278.14" width="248" height="248">
-   <properties>
-    <property name="listen-event" value="event-squally-trapped"/>
-   </properties>
-  </object>
   <object id="693" name="cipher-chest" type="object" x="7294.09" y="4079.56" width="128" height="128">
    <properties>
     <property name="bonus-reward" value=""/>
@@ -200,6 +192,7 @@
     <property name="tutorial" value="connect"/>
    </properties>
   </object>
+  <object id="698" name="caged-beaver" type="object" x="6488.82" y="4494.73" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -217,19 +210,33 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="658" name="orc-grunt" type="entity" x="6504.52" y="6397.95" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value="orc-grunt,force-level-2"/>
-    <property name="battle-map" value="EndianForest/BattleGrounds"/>
-    <property name="send-event" value="event-squally-trapped"/>
-   </properties>
-  </object>
   <object id="690" name="edge-portal" type="object" x="-2.23913" y="4134.15" width="199.918" height="734.959">
    <properties>
     <property name="args" value="0"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="700" name="wind" type="object" x="5583.57" y="4708.77" width="298.033" height="551.721">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="701" name="solid-npc" type="collision" x="5462.03" y="4457.39" width="121.03" height="777.836"/>
+  <object id="702" name="troll" type="entity" x="5086.5" y="5056.24" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value="troll,no-items,no-defend"/>
+    <property name="battle-map" value="Combat/Intro"/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="703" name="orc-grunt" type="entity" x="5089.48" y="4823.54" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>
@@ -284,7 +291,7 @@
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="496.987" y="4594.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="4698.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5078.17" width="242" height="738"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5153.8" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3970.98" y="5323.13" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4671" width="270" height="748"/>
   <object id="691" name="spawn" type="object" x="372.86" y="4727.5" width="128" height="128">
