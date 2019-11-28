@@ -22,6 +22,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerHelper.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
 #include "Events/HexusEvents.h"
@@ -341,13 +342,11 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 
 	// Build player team
 	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
-
-	std::string helperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-
-	if (!helperName.empty())
+	
+	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
 	{
-		playerCombatData.push_back(CombatMap::CombatData(helperName, helperName + "-combat"));
-	}
+		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
+	}), PlatformerHelper::PlatformerHelperTag);
 
 	// Build enemy team
 	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));

@@ -1,12 +1,12 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerHelper.h"
 
 class HexusOpponentData;
 class LocalizedString;
 
-class Guano : public PlatformerFriendly
+class Guano : public PlatformerHelper
 {
 public:
 	static Guano* deserialize(cocos2d::ValueMap& properties);
@@ -18,7 +18,7 @@ public:
 	static const std::string MapKeyGuano;
 
 private:
-	typedef PlatformerFriendly super;
+	typedef PlatformerHelper super;
 	Guano(cocos2d::ValueMap& properties);
 	~Guano();
 

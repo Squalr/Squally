@@ -7,6 +7,7 @@ class HexusOpponentData;
 class LocalizedString;
 class SmartAnimationSequenceNode;
 
+// Note: not classified as a helper since they do not participate in combat
 class Scrappy : public PlatformerFriendly
 {
 public:

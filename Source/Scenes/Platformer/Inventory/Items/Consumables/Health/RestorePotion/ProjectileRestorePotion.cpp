@@ -68,7 +68,7 @@ void ProjectileRestorePotion::onCollideWithTarget(PlatformerEntity* target)
 	
 	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getAttachedBehavior<EntityBuffBehavior>()->applyBuff(RestoreHealth::create(this->caster, target, healing));
+		entityBuffBehavior->applyBuff(RestoreHealth::create(this->caster, target, healing));
 	});
 }
 

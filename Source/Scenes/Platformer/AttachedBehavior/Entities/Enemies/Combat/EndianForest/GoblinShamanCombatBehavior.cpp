@@ -31,18 +31,6 @@ GoblinShamanCombatBehavior::GoblinShamanCombatBehavior(GameObject* owner) : supe
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			Inventory* inventory = entityInventoryBehavior->getInventory();
-
-			if (inventory != nullptr)
-			{
-				inventory->forceInsert(RestorePotion::create());
-			}
-		});
-	}
 }
 
 GoblinShamanCombatBehavior::~GoblinShamanCombatBehavior()
@@ -58,5 +46,15 @@ void GoblinShamanCombatBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+	});
+	
+	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		Inventory* inventory = entityInventoryBehavior->getInventory();
+
+		if (inventory != nullptr)
+		{
+			inventory->forceInsert(RestorePotion::create());
+		}
 	});
 }
