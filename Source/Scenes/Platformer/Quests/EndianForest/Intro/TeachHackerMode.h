@@ -30,8 +30,6 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequencePt1();
-	void runCinematicSequencePt2();
-	void runCinematicSequencePt3();
 
 	HelpTotem* helpTotem;
 	Scrappy* scrappy;

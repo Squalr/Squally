@@ -73,8 +73,6 @@ void SpotOrcGrunt::runCinematicSequence()
 {
 	if (this->scrappy != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
@@ -82,7 +80,6 @@ void SpotOrcGrunt::runCinematicSequence()
 				{
 					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 					{
-						PlatformerEvents::TriggerCinematicRestore();
 						interactionBehavior->getSpeechBubble()->hideDialogue();
 					});
 				});

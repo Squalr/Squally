@@ -86,23 +86,15 @@ void TeachHackerMode::onSkipped()
 
 void TeachHackerMode::runCinematicSequencePt1()
 {
+	this->complete();
+
 	if (this->scrappy != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_D_TrapAhead::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 			{
-				this->runCinematicSequencePt2();
 			});
 		});
 	}
-}
-
-void TeachHackerMode::runCinematicSequencePt2()
-{
-	PlatformerEvents::TriggerCinematicRestore();
-
-	this->complete();
 }

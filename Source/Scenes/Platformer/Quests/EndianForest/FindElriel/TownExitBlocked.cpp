@@ -60,30 +60,23 @@ void TownExitBlocked::onEnter()
 
 void TownExitBlocked::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	if (questState == QuestState::Complete)
 	{
-		this->squally = squally;
-	}, Squally::MapKeySqually);
-
-	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+		this->chiron->despawn();
+	}
+	else
 	{
-		this->townExitPortal = portal;
-
-		switch(questState)
+		ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 		{
-			case QuestState::Active:
-			case QuestState::ActiveThroughSkippable:
-			{
-				this->townExitPortal->disable();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
+			this->squally = squally;
+		}, Squally::MapKeySqually);
 
-	}, TownExitBlocked::TagBlockedExit);
+		ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+		{
+			this->townExitPortal = portal;
+			this->townExitPortal->disable();
+		}, TownExitBlocked::TagBlockedExit);
+	}
 }
 
 void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
