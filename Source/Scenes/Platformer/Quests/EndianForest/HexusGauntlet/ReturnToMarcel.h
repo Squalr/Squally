@@ -26,12 +26,18 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void registerDialogue();
+	void registerDialogue(bool isActiveThroughSkippable);
 	void onHexusWin();
+	void onHexusLoss();
+	void runPostHexusMatchCleanup();
+	void runDialogueIntroWin();
+	void runDialogueIntroLoss();
+	void runDialogueOutro();
 
 	MagePortal* portal;
 	Marcel* marcel;
 	Squally* squally;
 
 	static const std::string QuestPortalTag;
+	static const std::string SaveKeyLosses;
 };

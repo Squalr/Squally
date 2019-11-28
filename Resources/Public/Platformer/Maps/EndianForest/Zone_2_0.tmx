@@ -223,13 +223,14 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="701" name="solid-npc" type="collision" x="5462.03" y="4457.39" width="121.03" height="777.836"/>
+  <object id="701" name="solid-npc" type="collision" x="5572.34" y="4465.09" width="121.03" height="777.836"/>
   <object id="702" name="troll" type="entity" x="5086.5" y="5056.24" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value="troll,no-items,no-defend"/>
     <property name="battle-map" value="Combat/Intro"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="703" name="orc-grunt" type="entity" x="5089.48" y="4823.54" width="128" height="128">

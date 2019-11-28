@@ -26,7 +26,7 @@ DialogueSet::~DialogueSet()
 {
 }
 
-void DialogueSet::addDialogueOption(DialogueOption* dialogueOption, float priority)
+DialogueOption* DialogueSet::addDialogueOption(DialogueOption* dialogueOption, float priority)
 {
 	if (dialogueOption != nullptr)
 	{
@@ -39,6 +39,9 @@ void DialogueSet::addDialogueOption(DialogueOption* dialogueOption, float priori
 			return std::get<1>(a) > std::get<1>(b); 
 		});
 	}
+
+	// Return given option for convienence
+	return dialogueOption;
 }
 
 void DialogueSet::removeDialogueOption(DialogueOption* dialogueOption)

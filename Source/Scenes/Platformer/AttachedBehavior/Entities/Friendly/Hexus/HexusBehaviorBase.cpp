@@ -88,7 +88,7 @@ void HexusBehaviorBase::onLoad()
 	{
 		if (this->dialogueChoiceOverride != nullptr)
 		{
-			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 				this->dialogueChoiceOverride->clone(),
 				[=]()
 				{
@@ -101,7 +101,7 @@ void HexusBehaviorBase::onLoad()
 		{
 			if (!this->entity->getObjectStateOrDefault(this->getWinLossSaveKey(), Value(false)).asBool())
 			{
-				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 					Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 					[=]()
 					{
@@ -112,7 +112,7 @@ void HexusBehaviorBase::onLoad()
 			}
 			else
 			{
-				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 					Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
 					[=]()
 					{
@@ -122,6 +122,27 @@ void HexusBehaviorBase::onLoad()
 				);
 			}
 		}
+	});
+}
+
+void HexusBehaviorBase::giveItems()
+{
+	if (this->rewardPool != nullptr)
+	{
+		std::vector<Item*> items = this->rewardPool->getItems();
+
+		for (auto it = items.begin(); it != items.end(); it++)
+		{
+			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemWon::create()));
+		}
+	}
+}
+
+void HexusBehaviorBase::removeFromDialogue()
+{
+	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->hexusOption);
 	});
 }
 
@@ -147,15 +168,7 @@ void HexusBehaviorBase::onWin()
 
 	if (!this->entity->getObjectStateOrDefault(this->getWinLossSaveKey(), Value(false)).asBool())
 	{
-		if (this->rewardPool != nullptr)
-		{
-			std::vector<Item*> items = this->rewardPool->getItems();
-
-			for (auto it = items.begin(); it != items.end(); it++)
-			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemWon::create()));
-			}
-		}
+		this->giveItems();
 
 		this->entity->saveObjectState(this->getWinLossSaveKey(), Value(true));
 	}

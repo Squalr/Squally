@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class CardData;
+class DialogueOption;
 class HexusOpponentData;
 class MinMaxPool;
 class LocalizedString;
@@ -16,6 +17,8 @@ public:
 	void registerWinCallback(std::function<void()> winCallback);
 	void registerLossCallback(std::function<void()> lossCallback);
 	void registerDrawCallback(std::function<void()> drawCallback);
+	void giveItems();
+	void removeFromDialogue();
 
 protected:
 	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
@@ -45,6 +48,7 @@ private:
 	cocos2d::Node* dialogueStringNode;
 	LocalizedString* dialogueChoiceOverride;
 	MinMaxPool* rewardPool;
+	DialogueOption* hexusOption;
 
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;

@@ -462,6 +462,7 @@
     <property name="battle-behavior" value="no-items,no-defend"/>
     <property name="battle-map" value="Combat/Intro"/>
     <property name="battle-tag" value="prison"/>
+    <property name="drop-pool" value="ef-generic"/>
     <property name="quest" value="fight-troll"/>
     <property name="quest-line" value="rescue-guano"/>
     <property name="send-event" value="event-door-open"/>

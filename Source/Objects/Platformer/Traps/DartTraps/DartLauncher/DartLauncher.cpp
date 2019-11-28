@@ -163,6 +163,7 @@ NO_OPTIMIZE void DartLauncher::shoot(float dt)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHOOT);
 	ASM(subps xmm0, xmm1);
 	ASM(movss [ZAX], xmm0);
+	ASM_NOP10();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZBX);

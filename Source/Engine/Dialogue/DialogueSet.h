@@ -10,7 +10,7 @@ class DialogueSet : public SmartNode
 public:
 	static DialogueSet* create();
 
-	void addDialogueOption(DialogueOption* dialogueOption, float priority);
+	DialogueOption* addDialogueOption(DialogueOption* dialogueOption, float priority);
 	void removeDialogueOption(DialogueOption* dialogueOption);
 	std::vector<std::tuple<DialogueOption*, float>> getDialogueOptions();
 

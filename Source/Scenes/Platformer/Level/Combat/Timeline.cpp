@@ -35,6 +35,12 @@ Timeline* Timeline::create()
 
 Timeline::Timeline()
 {
+	this->isTimelinePaused = true;
+	this->isTimelineInterrupted = false;
+	this->isCombatComplete = false;
+	this->hasInit = false;
+	this->timelineEntryAwaitingUserAction = nullptr;
+
 	this->swordFill = ProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->timelineNode = Node::create();
@@ -65,11 +71,6 @@ Timeline::~Timeline()
 void Timeline::onEnter()
 {
 	super::onEnter();
-
-	this->isTimelinePaused = false;
-	this->isTimelineInterrupted = false;
-	this->isCombatComplete = false;
-	this->timelineEntryAwaitingUserAction = nullptr;
 
 	this->scheduleUpdate();
 }
@@ -159,8 +160,11 @@ void Timeline::update(float dt)
 {
 	super::update(dt);
 
-	this->checkCombatComplete();
-	this->updateTimeline(dt);
+	if (this->hasInit)
+	{
+		this->checkCombatComplete();
+		this->updateTimeline(dt);
+	}
 }
 
 void Timeline::checkCombatComplete()
@@ -170,42 +174,42 @@ void Timeline::checkCombatComplete()
 		return;
 	}
 
-	static bool allEnemiesAlive = true;
-	static bool allPlayersAlive = true;
+	static bool anyEnemyAlive = false;
+	static bool anyPlayerAlive = false;
 
-	allEnemiesAlive = true;
-	allPlayersAlive = true;
+	anyEnemyAlive = false;
+	anyPlayerAlive = false;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
-		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allEnemiesAlive = false;
+				anyEnemyAlive = true;
 			}));
 		}
 	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
-		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			// Only set flag if the entity is on the timeline to avoid querying non-combat helpers (ie scrappy)
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allPlayersAlive = false;
+				anyPlayerAlive = true;
 			}));
 		}
 	}), PlatformerFriendly::PlatformerFriendlyTag);
 
-	if (!allEnemiesAlive)
+	if (!anyEnemyAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
-	else if (!allPlayersAlive)
+	else if (!anyPlayerAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
@@ -244,8 +248,8 @@ void Timeline::updateTimeline(float dt)
 
 void Timeline::resumeTimeline()
 {
-	this->isTimelinePaused = true;
-	this->timelineEntryAwaitingUserAction = nullptr;
+	this->hasInit = true;
+	this->isTimelinePaused = false;
 }
 
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities)

@@ -54,9 +54,7 @@ std::vector<CardData*> MarcelTutorialBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(18, 0.07f,
 	{
-		// CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		// CardList::getInstance()->cardListByName[CardKeys::Decimal0],
-		// CardList::getInstance()->cardListByName[CardKeys::Hex0],
 	});
 }
 

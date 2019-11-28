@@ -46,5 +46,6 @@ private:
 	bool isTimelinePaused;
 	bool isTimelineInterrupted;
 	bool isCombatComplete;
+	bool hasInit;
 	TimelineEntry* timelineEntryAwaitingUserAction;
 };

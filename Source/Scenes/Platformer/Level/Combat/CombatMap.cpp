@@ -134,6 +134,7 @@ void CombatMap::onEnter()
 	this->defer([=]()
 	{
 		this->spawnEntities();
+		this->timeline->resumeTimeline();
 	});
 }
 
