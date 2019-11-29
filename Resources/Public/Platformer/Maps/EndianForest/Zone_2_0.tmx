@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="704">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="727">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -84,12 +84,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="648" name="blue-grass" type="terrain" x="1414.59" y="4943.69">
-   <properties>
-    <property name="is-hollow" type="bool" value="true"/>
-   </properties>
-   <polygon points="0,0 728.172,-410.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 6200.99,-730.065 7289.02,-1154.22 8113.52,-1162 8130.84,2480.07 5421.45,2985.03 3186.42,2944.09 625.129,1912.06 -340.043,1398.22 -343.477,385.375"/>
-  </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
   <properties>
@@ -100,11 +94,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="blue-grass" type="terrain" x="-321.634" y="4874.1">
-   <polygon points="0,0 2477.63,-35.521 2972.18,150.573 4162.64,145.653 4863.7,187.838 5572.56,348.988 6213.27,348.807 6207.99,-185.118 6635.34,-287.08 6968.69,-288.687 6971.05,-500.642 6438.58,-517.768 5990.23,-516.875 5973.62,-591.176 5993.29,-664.787 6736.77,-665.69 7307.18,-659.223 7221.84,180.301 7025.06,1242.18 6643.31,1510.37 6197.22,1740.73 4451.14,1937.14 3015.5,1525.68 1353.21,1161.37 -19.1945,1017.83 0,378.425"/>
+  <object id="627" name="blue-grass" type="terrain" x="3811.47" y="2585.36">
+   <polygon points="-323.993,-210.158 501.155,-98.5938 1946.4,-34.6889 2661.56,-39.724 3088.99,0 3158.23,500.357 3115.33,1059.33 2533.35,1255.13 591.163,1264.53 -7.13111,929.681 -315.236,351.629"/>
   </object>
-  <object id="627" name="blue-grass" type="terrain" x="3679.41" y="2590.48">
-   <polygon points="0,0 1588.05,-33.8278 1906.77,-64.4287 2097.61,12.4271 2319.07,-24.8541 2872.7,0 3054.64,478.052 2897.2,1059.33 2355.97,1255.13 549.771,1264.53 -6.6318,929.681 0,360.386"/>
+  <object id="725" name="blue-grass" type="terrain" x="1414.59" y="4943.69">
+   <polygon points="326.584,-215.545 728.172,-410.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 5568.94,1197.22 6989.95,1192.31 7038.1,915.637 6911.35,574.041 5994.44,519.085 5946.45,-1512.14 5930.98,-2860.71 6362.1,-3502.15 7196.46,-3489.3 7639.93,-2435.71 7632.48,1185.9 6995.31,1796.11 3169.18,2162.48 612.066,2179.86 -1304.19,1923.18 -1646.38,836.496 -1525.71,-71.8425 79.4238,-91.494"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -169,17 +163,14 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="693" name="cipher-chest" type="object" x="7294.09" y="4079.56" width="128" height="128">
+  <object id="693" name="cipher-chest" type="object" x="6755.75" y="519.517" width="128" height="128">
    <properties>
     <property name="bonus-reward" value=""/>
     <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="s,w,a,g"/>
-    <property name="inputs-hard" value="m,a,n,a"/>
+    <property name="inputs-easy" value="m,a,n,i,c"/>
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule-easy" value="{i}+1"/>
-    <property name="rule-hard" value="{i}|2"/>
     <property name="tokens-easy" value="+,1"/>
-    <property name="tokens-hard" value="|,+,2,1"/>
    </properties>
   </object>
   <object id="694" name="cipher-chest" type="object" x="2235.87" y="3697.12" width="128" height="128">
@@ -192,7 +183,62 @@
     <property name="tutorial" value="connect"/>
    </properties>
   </object>
-  <object id="698" name="caged-beaver" type="object" x="6488.82" y="4494.73" width="78.7879" height="88"/>
+  <object id="698" name="caged-beaver" type="object" x="7907.39" y="6035.89" width="78.7879" height="88"/>
+  <object id="704" name="cipher-chest" type="object" x="5999.1" y="493.811" width="128" height="128">
+   <properties>
+    <property name="bonus-reward" value=""/>
+    <property name="event" value="open-cipher"/>
+    <property name="inputs-easy" value="s,w,a,g"/>
+    <property name="inputs-hard" value="m,a,n,a"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule-easy" value="{i}+1"/>
+    <property name="rule-hard" value="{i}|2"/>
+    <property name="tokens-easy" value="+,1"/>
+    <property name="tokens-hard" value="|,+,2,1"/>
+   </properties>
+  </object>
+  <object id="717" name="wind" type="object" x="6985.96" y="4243.41" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="718" name="wind" type="object" x="6985.96" y="3760.72" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="719" name="wind" type="object" x="6981.08" y="3287.78" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="720" name="wind" type="object" x="6981.08" y="2814.84" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="721" name="wind" type="object" x="6985.96" y="4716.35" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="722" name="wind" type="object" x="6990.83" y="5189.29" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="723" name="wind" type="object" x="6990.83" y="5671.98" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -217,14 +263,8 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="700" name="wind" type="object" x="5583.57" y="4708.77" width="298.033" height="551.721">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="701" name="solid-npc" type="collision" x="5572.34" y="4465.09" width="121.03" height="777.836"/>
-  <object id="702" name="troll" type="entity" x="5086.5" y="5056.24" width="128" height="128">
+  <object id="701" name="solid-npc" type="collision" x="6763.23" y="1838.12" width="121.03" height="777.836"/>
+  <object id="702" name="troll" type="entity" x="5559.36" y="2429.27" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value="troll,no-items,no-defend"/>
@@ -233,13 +273,16 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="703" name="orc-grunt" type="entity" x="5089.48" y="4823.54" width="128" height="128">
+  <object id="703" name="orc-grunt" type="entity" x="5544.83" y="2152.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
+  <object id="716" name="solid-npc" type="collision" x="4385.83" y="1714.32" width="121.03" height="777.836"/>
+  <object id="724" name="hexus-shrine" type="object" x="4834.47" y="2105.16" width="146" height="423"/>
+  <object id="726" name="hexus-shrine" type="object" x="1281.87" y="4431.96" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -292,8 +335,8 @@
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="496.987" y="4594.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="4698.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5153.8" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3970.98" y="5323.13" width="242" height="738"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4511.11" y="5027.37" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3519.44" y="4901.7" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4671" width="270" height="748"/>
   <object id="691" name="spawn" type="object" x="372.86" y="4727.5" width="128" height="128">
    <properties>
@@ -301,7 +344,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="33" name="decor 512" visible="0">
+ <objectgroup id="33" name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

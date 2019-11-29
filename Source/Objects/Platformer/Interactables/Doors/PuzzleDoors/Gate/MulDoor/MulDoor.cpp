@@ -9,7 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Doors/PuzzleDoors/Gate/MulDoor/MulDoorPreview.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/MulDoor/MulDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"

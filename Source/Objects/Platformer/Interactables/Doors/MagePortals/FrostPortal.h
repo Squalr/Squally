@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 
 namespace cocos2d
 {

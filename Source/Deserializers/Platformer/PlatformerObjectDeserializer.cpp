@@ -107,6 +107,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemRequiredLevel::MapKeyHelpTotemRequiredLevel] = [=](ValueMap properties) { return (GameObject*)HelpTotemRequiredLevel::create(properties); };
 	this->deserializers[HelpTotemSelfHack::MapKeyHelpTotemSelfHack] = [=](ValueMap properties) { return (GameObject*)HelpTotemSelfHack::create(properties); };
 	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
+	this->deserializers[HexusPuzzleShrine::MapKeyHexusPuzzleShrine] = [=](ValueMap properties) { return (GameObject*)HexusPuzzleShrine::create(properties); };
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
 	this->deserializers[LifeStone::MapKeyLifeStone] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[MagicWall::MapKeyMagicWall] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };

@@ -13,7 +13,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;

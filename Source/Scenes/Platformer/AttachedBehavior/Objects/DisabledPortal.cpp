@@ -7,7 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 
 using namespace cocos2d;
 

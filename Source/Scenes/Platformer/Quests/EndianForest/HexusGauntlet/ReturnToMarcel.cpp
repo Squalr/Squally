@@ -16,7 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialSkipBehavior.h"

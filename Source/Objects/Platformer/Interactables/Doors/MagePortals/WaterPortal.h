@@ -1,7 +1,7 @@
 #pragma once
 #include <set>
 
-#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 
 namespace cocos2d
 {
@@ -9,16 +9,16 @@ namespace cocos2d
 	class ParticleSystem;
 }
 
-class WindPortal : public MagePortal
+class WaterPortal : public MagePortal
 {
 public:
-	static WindPortal* create(cocos2d::ValueMap& properties);
+	static WaterPortal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWindPortal;
+	static const std::string MapKeyWaterPortal;
 
 protected:
-	WindPortal(cocos2d::ValueMap& properties);
-	~WindPortal();
+	WaterPortal(cocos2d::ValueMap& properties);
+	~WaterPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

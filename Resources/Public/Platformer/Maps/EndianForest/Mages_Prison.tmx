@@ -468,13 +468,6 @@
     <property name="send-event" value="event-door-open"/>
    </properties>
   </object>
-  <object id="893" name="orc-grunt" type="entity" x="2883.49" y="690.773" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="ally"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="prison-disabled"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

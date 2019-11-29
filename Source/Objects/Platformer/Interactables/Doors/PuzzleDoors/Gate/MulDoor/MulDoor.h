@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Doors/PuzzleDoors/Gate/GatePuzzleDoor.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/GatePuzzleDoor.h"
 
 namespace cocos2d
 {

@@ -15,7 +15,7 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Doors/PuzzleDoors/Gate/GatePuzzleDoorGenericPreview.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/GatePuzzleDoorGenericPreview.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"

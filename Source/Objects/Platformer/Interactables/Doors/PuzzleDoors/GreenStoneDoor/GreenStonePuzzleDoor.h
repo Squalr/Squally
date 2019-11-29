@@ -1,18 +1,18 @@
 #pragma once
 
-#include "Objects/Platformer/Doors/PuzzleDoors/PuzzleDoorBase.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/PuzzleDoorBase.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class GatePuzzleDoor : public PuzzleDoorBase
+class GreenStonePuzzleDoor : public PuzzleDoorBase
 {
 public:
 protected:
-	GatePuzzleDoor(cocos2d::ValueMap& properties);
-	~GatePuzzleDoor();
+	GreenStonePuzzleDoor(cocos2d::ValueMap& properties);
+	~GreenStonePuzzleDoor();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -26,6 +26,7 @@ protected:
 private:
 	typedef PuzzleDoorBase super;
 
+	cocos2d::Sprite* back;
 	cocos2d::Sprite* door;
 	cocos2d::Sprite* front;
 

@@ -16,7 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotem.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 

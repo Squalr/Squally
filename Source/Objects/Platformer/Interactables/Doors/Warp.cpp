@@ -11,7 +11,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 

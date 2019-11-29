@@ -14,7 +14,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/SoundResources.h"

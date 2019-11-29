@@ -8,7 +8,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 

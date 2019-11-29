@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 
 namespace cocos2d
 {
