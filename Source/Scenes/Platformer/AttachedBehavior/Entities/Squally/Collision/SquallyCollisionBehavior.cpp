@@ -12,7 +12,7 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -36,7 +36,7 @@ SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner)
+SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner, PlatformerCollisionType::Player)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;
@@ -88,66 +88,63 @@ void SquallyCollisionBehavior::onLoad()
 		});
 	});
 
-	this->squally->watchForAttachedBehavior<EntityCollisionBehavior>([=](EntityCollisionBehavior* collisionBehavior)
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
-		{
-			if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				return CollisionObject::CollisionResult::DoNothing;
-			}
-
-			this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
-
-			PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
-
-			if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				// Encountered enemy body/weapon -- not a first-strike
-				PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
-		});
-
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
-		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				this->squally->setState(StateKeys::IsAlive, Value(false));
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
-		});
-		
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-				
-				mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
-		});
-
-		collisionBehavior->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-
-				mouth->replaceSprite(EntityResources::Squally_MOUTH);
-			}
-
-			return CollisionObject::CollisionResult::DoNothing;
-		});
-
-		collisionBehavior->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, }, [=](CollisionObject::CollisionData collisionData)
+		if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
-		});
+		}
+
+		this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
+
+		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+		if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			// Encountered enemy body/weapon -- not a first-strike
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			this->squally->setState(StateKeys::IsAlive, Value(false));
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+	
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
+			
+			mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
+
+			mouth->replaceSprite(EntityResources::Squally_MOUTH);
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, (int)PlatformerCollisionType::Helper, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->scheduleUpdate();

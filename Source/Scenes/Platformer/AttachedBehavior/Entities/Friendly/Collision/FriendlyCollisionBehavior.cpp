@@ -1,13 +1,8 @@
 #include "FriendlyCollisionBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
-
-#include "Resources/EntityResources.h"
 
 using namespace cocos2d;
 
@@ -22,14 +17,8 @@ FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner)
+FriendlyCollisionBehavior::FriendlyCollisionBehavior(GameObject* owner) : super(owner, PlatformerCollisionType::FriendlyNpc)
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-
-	if (this->entity == nullptr)
-	{
-		this->invalidate();
-	}
 }
 
 FriendlyCollisionBehavior::~FriendlyCollisionBehavior()
@@ -38,9 +27,21 @@ FriendlyCollisionBehavior::~FriendlyCollisionBehavior()
 
 void FriendlyCollisionBehavior::onLoad()
 {
+    super::onLoad();
+
 	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
 	{
-		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
 		{	
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});

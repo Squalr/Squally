@@ -5,7 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/FriendlyBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Guano/GuanoPickPocketBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/FollowMovementBehavior.h"
 
@@ -23,7 +23,7 @@ GuanoBehaviorGroup* GuanoBehaviorGroup::create(GameObject* owner)
 }
 
 GuanoBehaviorGroup::GuanoBehaviorGroup(GameObject* owner) : super(owner, {
-	FriendlyBehaviorGroup::create(owner),
+	HelperBehaviorGroup::create(owner),
 	GuanoPickPocketBehavior::create(owner),
 	FollowMovementBehavior::create(owner),
 	})

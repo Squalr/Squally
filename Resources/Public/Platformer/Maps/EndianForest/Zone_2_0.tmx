@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="727">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="729">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -98,7 +98,7 @@
    <polygon points="-323.993,-210.158 501.155,-98.5938 1946.4,-34.6889 2661.56,-39.724 3088.99,0 3158.23,500.357 3115.33,1059.33 2533.35,1255.13 591.163,1264.53 -7.13111,929.681 -315.236,351.629"/>
   </object>
   <object id="725" name="blue-grass" type="terrain" x="1414.59" y="4943.69">
-   <polygon points="326.584,-215.545 728.172,-410.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 5568.94,1197.22 6989.95,1192.31 7038.1,915.637 6911.35,574.041 5994.44,519.085 5946.45,-1512.14 5930.98,-2860.71 6362.1,-3502.15 7196.46,-3489.3 7639.93,-2435.71 7632.48,1185.9 6995.31,1796.11 3169.18,2162.48 612.066,2179.86 -1304.19,1923.18 -1646.38,836.496 -1525.71,-71.8425 79.4238,-91.494"/>
+   <polygon points="326.584,-215.545 728.172,-410.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 5568.94,1197.22 6989.95,1192.31 7038.1,915.637 6911.35,574.041 5994.44,519.085 5946.45,-1512.14 5959.8,-3480.31 6362.1,-3502.15 7196.46,-3489.3 7639.93,-2435.71 7632.48,1185.9 6995.31,1796.11 3169.18,2162.48 612.066,2179.86 -1304.19,1923.18 -1646.38,836.496 -1525.71,-71.8425 79.4238,-91.494"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -239,6 +239,12 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
+  <object id="728" name="wind" type="object" x="6979.68" y="2344.84" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -282,7 +288,11 @@
   </object>
   <object id="716" name="solid-npc" type="collision" x="4385.83" y="1714.32" width="121.03" height="777.836"/>
   <object id="724" name="hexus-shrine" type="object" x="4834.47" y="2105.16" width="146" height="423"/>
-  <object id="726" name="hexus-shrine" type="object" x="1281.87" y="4431.96" width="146" height="423"/>
+  <object id="727" name="orc-grunt" type="entity" x="1302.85" y="4722.23" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,puzzle-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -350,7 +360,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="5318.2" y="5281.16" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1242.38" y="4673.9" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="925.232" y="4673.9" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3494.31" y="4936.14" width="242" height="738"/>
  </objectgroup>
 </map>

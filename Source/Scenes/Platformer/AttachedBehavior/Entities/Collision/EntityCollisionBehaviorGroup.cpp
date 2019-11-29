@@ -1,7 +1,6 @@
 #include "EntityCollisionBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
@@ -20,7 +19,6 @@ EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* o
 }
 
 EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner) : super(owner, {
-	EntityCollisionBehavior::create(owner),
 	EntityGroundCollisionBehavior::create(owner),
 	EntityMovementCollisionBehavior::create(owner),
 	EntityWeaponCollisionBehavior::create(owner),

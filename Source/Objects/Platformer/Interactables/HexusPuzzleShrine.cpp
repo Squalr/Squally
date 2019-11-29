@@ -38,7 +38,7 @@ HexusPuzzleShrine* HexusPuzzleShrine::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPuzzleShrine::HexusPuzzleShrine(ValueMap& properties) : super(properties)
+HexusPuzzleShrine::HexusPuzzleShrine(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(192.0f, 440.0f))
 {
 	this->shrine = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->floatingPuzzle = Sprite::create(ObjectResources::Items_Misc_BOOK_1);

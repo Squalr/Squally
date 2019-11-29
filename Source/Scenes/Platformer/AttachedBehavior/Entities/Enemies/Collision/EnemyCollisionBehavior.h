@@ -5,20 +5,18 @@
 class CollisionObject;
 class PlatformerEntity;
 
-class FriendlyCollisionBehavior : public EntityCollisionBehaviorBase
+class EnemyCollisionBehavior : public EntityCollisionBehaviorBase
 {
 public:
-	static FriendlyCollisionBehavior* create(GameObject* owner);
+	static EnemyCollisionBehavior* create(GameObject* owner);
 
 	CollisionObject* entityCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	FriendlyCollisionBehavior(GameObject* owner);
-	~FriendlyCollisionBehavior();
-
-	void onLoad() override;
+	EnemyCollisionBehavior(GameObject* owner);
+	~EnemyCollisionBehavior();
 
 private:
 	typedef EntityCollisionBehaviorBase super;

@@ -3,7 +3,6 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityNoCollisionBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Collision/FriendlyCollisionBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/NpcCollisionBehavior.h"
 
 using namespace cocos2d;
 
@@ -20,7 +19,6 @@ FriendlyNoCollisionBehaviorGroup* FriendlyNoCollisionBehaviorGroup::create(GameO
 
 FriendlyNoCollisionBehaviorGroup::FriendlyNoCollisionBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityNoCollisionBehaviorGroup::create(owner),
-	NpcCollisionBehavior::create(owner),
 	})
 {
 }

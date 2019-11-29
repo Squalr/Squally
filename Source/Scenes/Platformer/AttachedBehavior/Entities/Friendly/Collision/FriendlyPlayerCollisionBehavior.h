@@ -4,23 +4,21 @@
 
 class PlatformerEntity;
 
-class NpcCollisionBehavior : public AttachedBehavior
+class FriendlyPlayerCollisionBehavior : public AttachedBehavior
 {
 public:
-	static NpcCollisionBehavior* create(GameObject* owner);
+	static FriendlyPlayerCollisionBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	NpcCollisionBehavior(GameObject* owner);
-	~NpcCollisionBehavior();
+	FriendlyPlayerCollisionBehavior(GameObject* owner);
+	~FriendlyPlayerCollisionBehavior();
 
 	void onLoad() override;
 
 private:
 	typedef AttachedBehavior super;
-
-	void runTutorial();
 
 	PlatformerEntity* entity;
 };
