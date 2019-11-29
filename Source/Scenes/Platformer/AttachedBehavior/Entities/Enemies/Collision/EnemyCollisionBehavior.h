@@ -18,6 +18,8 @@ protected:
 	EnemyCollisionBehavior(GameObject* owner);
 	~EnemyCollisionBehavior();
 
+	void onLoad() override;
+
 private:
 	typedef EntityCollisionBehaviorBase super;
 };

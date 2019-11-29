@@ -137,8 +137,8 @@
   </object>
   <object id="639" name="orc-grunt" type="entity" x="11666.2" y="4789.32" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
-    <property name="battle-behavior" value="restore-potion-tutorial,no-items,no-defend"/>
+    <property name="attached-behavior" value="enemy,pacing,disarmed"/>
+    <property name="battle-behavior" value="restore-potion-tutorial,no-items,no-defend,player-first-strike"/>
     <property name="battle-map" value="Combat/Intro"/>
     <property name="drop-pool" value="ef-generic"/>
     <property name="send-event" value="event-door-open"/>

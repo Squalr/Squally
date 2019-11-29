@@ -273,7 +273,7 @@
   <object id="702" name="troll" type="entity" x="5559.36" y="2429.27" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
-    <property name="battle-behavior" value="troll,no-items,no-defend"/>
+    <property name="battle-behavior" value="troll"/>
     <property name="battle-map" value="Combat/Intro"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>

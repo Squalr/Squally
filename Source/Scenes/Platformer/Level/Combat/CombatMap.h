@@ -60,9 +60,13 @@ private:
 	EnemyAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
 
+	bool playerFirstStrike;
 	std::vector<CombatData> playerData;
 	std::vector<CombatData> enemyData;
 	std::string enemyIdentifier;
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
+
+	static const std::string MapPropertyPlayerFirstStrike;
+	static const std::string MapPropertyEnemyFirstStrike;
 };

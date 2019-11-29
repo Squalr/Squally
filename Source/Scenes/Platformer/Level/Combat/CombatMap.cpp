@@ -16,6 +16,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
@@ -43,6 +44,9 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
+
+const std::string CombatMap::MapPropertyPlayerFirstStrike = "player-first-strike";
+const std::string CombatMap::MapPropertyEnemyFirstStrike = "enemy-first-strike";
 
 CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
@@ -79,6 +83,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->notificationHud = NotificationHud::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
+	this->playerFirstStrike = playerFirstStrike;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -363,6 +368,18 @@ void CombatMap::spawnEntities()
 			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
+			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
+
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyEnemyFirstStrike) != behavior.end())
+			{
+				this->playerFirstStrike = false;
+			}
+
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyPlayerFirstStrike) != behavior.end())
+			{
+				this->playerFirstStrike = true;
+			}
+
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
 				[&] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
@@ -386,8 +403,8 @@ void CombatMap::spawnEntities()
 		}
 	}
 
-	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(true, friendlyEntities);
-	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(true, enemyEntities);
+	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
+	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
 
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }

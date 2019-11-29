@@ -1,5 +1,9 @@
 #include "EnemyCollisionBehavior.h"
 
+#include "Engine/Physics/CollisionObject.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+
 using namespace cocos2d;
 
 const std::string EnemyCollisionBehavior::MapKeyAttachedBehavior = "enemy-collisions";
@@ -19,4 +23,27 @@ EnemyCollisionBehavior::EnemyCollisionBehavior(GameObject* owner) : super(owner,
 
 EnemyCollisionBehavior::~EnemyCollisionBehavior()
 {
+}
+
+void EnemyCollisionBehavior::onLoad()
+{
+    super::onLoad();
+
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* collisionBehavior)
+	{
+		collisionBehavior->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		collisionBehavior->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidNpcOnly }, [=](CollisionObject::CollisionData collisionData)
+		{	
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		});
+	});
 }
