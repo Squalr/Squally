@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Gear/Hats/SantaHat.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

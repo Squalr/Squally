@@ -21,16 +21,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hexus/Hexus.h"
-#include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/A_WelcomeToMagesGuild.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/B_BroadcastedAndSent.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/C_WeNeededSomeone.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/D_FirstYouMustLearnHexus.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/E_HexusIsAGameWhere.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/F_WhoeverMastersHexus.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/G_PortalToGauntlet.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

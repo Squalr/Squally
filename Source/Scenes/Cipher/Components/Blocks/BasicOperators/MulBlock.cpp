@@ -9,7 +9,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Operations/MUL.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

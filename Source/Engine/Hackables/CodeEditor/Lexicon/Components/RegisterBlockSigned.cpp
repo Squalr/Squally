@@ -14,26 +14,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Memory.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEax.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEdx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEsi.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEbp.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEsp.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterEip.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRax.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRbx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRdx.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRsi.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRbp.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRsp.h"
-#include "Strings/Menus/Hacking/Lexicon/Registers/RegisterRip.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

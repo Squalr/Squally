@@ -7,7 +7,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/Banners/OpponentPassed.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

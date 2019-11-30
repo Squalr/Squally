@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Maces/IronMace.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

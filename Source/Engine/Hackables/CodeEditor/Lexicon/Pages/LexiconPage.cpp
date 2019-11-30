@@ -13,11 +13,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Assembly/OffsetNegative.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/OffsetPositive.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/Ptr.h"
-#include "Strings/Menus/Hacking/Lexicon/Execute.h"
-#include "Strings/Menus/Hacking/Lexicon/Reset.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

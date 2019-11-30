@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/VoidDemon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

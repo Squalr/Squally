@@ -12,10 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Hexus/Actions/ChooseRow.h"
-#include "Strings/Hexus/Actions/ChooseSourceCard.h"
-#include "Strings/Hexus/Actions/ChooseTargetCard.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

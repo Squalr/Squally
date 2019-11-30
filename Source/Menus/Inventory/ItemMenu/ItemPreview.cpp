@@ -7,11 +7,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Common/Dash.h"
-#include "Strings/Common/Constant.h"
-#include "Strings/Menus/ItemPreview/Equip.h"
-#include "Strings/Menus/ItemPreview/Spacebar.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

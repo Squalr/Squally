@@ -9,9 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Input/Spacebar.h"
-#include "Strings/Platformer/Help/HelpTotemAttacking.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

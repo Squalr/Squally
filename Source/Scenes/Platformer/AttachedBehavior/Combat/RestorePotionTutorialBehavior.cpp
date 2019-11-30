@@ -25,7 +25,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/F_HackerModeCombat.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

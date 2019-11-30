@@ -18,9 +18,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Attack.h"
-#include "Strings/Platformer/Combat/Defend.h"
-#include "Strings/Platformer/Combat/Items.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

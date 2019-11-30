@@ -22,10 +22,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/A_YoullNeverMakeIt.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/B_RedirectWind.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/C_TakeThisItem.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/Marcel/D_MeetMeAtMagesGuild.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

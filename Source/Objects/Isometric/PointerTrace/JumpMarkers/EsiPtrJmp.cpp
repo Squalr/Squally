@@ -11,8 +11,7 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/PointerTrace/Assembly/RegisterEsi.h"
-#include "Strings/PointerTrace/Assembly/RegisterRsi.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

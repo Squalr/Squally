@@ -18,9 +18,7 @@
 #include "Resources/PointerTraceResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/PointerTrace/Victory.h"
-#include "Strings/Menus/Retry.h"
-#include "Strings/Menus/Leave.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

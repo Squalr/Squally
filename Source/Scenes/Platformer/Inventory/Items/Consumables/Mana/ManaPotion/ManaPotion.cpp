@@ -7,7 +7,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Consumables/Mana/ManaPotion.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

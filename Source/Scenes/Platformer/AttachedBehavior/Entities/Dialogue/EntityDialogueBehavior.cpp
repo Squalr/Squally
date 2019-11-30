@@ -16,12 +16,7 @@
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Common/Dash.h"
-#include "Strings/Common/Empty.h"
-#include "Strings/Common/Newline.h"
-#include "Strings/Common/Triconcat.h"
-#include "Strings/Platformer/Dialogue/Goodbye.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

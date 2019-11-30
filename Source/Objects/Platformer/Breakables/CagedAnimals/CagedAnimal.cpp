@@ -17,7 +17,7 @@
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Menus/Notifications/AnimalRescued.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Bows/OlympusBow.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

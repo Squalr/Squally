@@ -21,10 +21,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/GetDensity.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm0.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm1.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

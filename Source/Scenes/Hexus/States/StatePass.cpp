@@ -18,9 +18,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/ClaimVictory.h"
-#include "Strings/Hexus/LastStand.h"
-#include "Strings/Hexus/Pass.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

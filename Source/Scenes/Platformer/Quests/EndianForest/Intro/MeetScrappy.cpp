@@ -25,10 +25,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/A_YoureAlive.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/B_DistressBeacon.h"
-#include "Strings/Platformer/Quests/EndianForest/Intro/C_GetYouPatched.h"
-#include "Strings/Platformer/Notifications/Party/HelperJoinedParty.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

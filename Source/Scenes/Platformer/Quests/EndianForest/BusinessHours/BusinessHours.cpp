@@ -19,7 +19,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Objects/Doors/ClosedBusinessHours.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

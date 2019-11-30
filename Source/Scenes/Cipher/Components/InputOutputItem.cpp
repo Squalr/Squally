@@ -13,8 +13,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/Inputs.h"
-#include "Strings/Cipher/Outputs.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

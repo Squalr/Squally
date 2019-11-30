@@ -28,7 +28,7 @@
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Platformer/Entities/Names/Squally.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

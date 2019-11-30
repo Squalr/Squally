@@ -22,7 +22,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/D_TrapAhead.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

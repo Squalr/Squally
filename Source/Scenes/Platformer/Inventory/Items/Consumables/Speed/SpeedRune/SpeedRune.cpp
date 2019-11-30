@@ -6,7 +6,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Consumables/Speed/SpeedRune.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

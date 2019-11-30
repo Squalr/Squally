@@ -27,10 +27,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Notifications/ItemFound.h"
-#include "Strings/Platformer/Combat/Rewards.h"
-#include "Strings/Platformer/Combat/Victory.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

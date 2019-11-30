@@ -14,7 +14,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Dialogue/Combat/Help/UseYourAbilities.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

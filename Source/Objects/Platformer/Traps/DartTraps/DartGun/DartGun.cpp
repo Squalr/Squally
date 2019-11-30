@@ -21,9 +21,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/DartGun/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

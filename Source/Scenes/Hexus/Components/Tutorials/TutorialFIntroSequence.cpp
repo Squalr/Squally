@@ -15,8 +15,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/F/UseMov.h"
-#include "Strings/Menus/GotIt.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

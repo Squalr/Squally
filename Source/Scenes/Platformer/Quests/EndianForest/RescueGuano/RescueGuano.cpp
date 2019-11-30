@@ -21,9 +21,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/E_Freedom.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/F_NotMuchOfAFighter.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/G_HelpYouFindThings.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

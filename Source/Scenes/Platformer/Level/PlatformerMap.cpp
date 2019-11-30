@@ -44,7 +44,7 @@
 
 #include "Resources/MapResources.h"
 
-#include "Strings/Menus/Inventory/Inventory.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

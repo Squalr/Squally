@@ -24,14 +24,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hexus/Hexus.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/K_IChallengeYou.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/M_ValliantEffort.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/M_WellDone.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/N_WeBroughtYouHere.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/O_UnknownForce.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/P_OnlyYouCanDefeat.h"
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/Q_LearnMoreOfTheseMonsters.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

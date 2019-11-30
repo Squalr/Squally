@@ -6,7 +6,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Hexus/Cards/Peek.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

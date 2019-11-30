@@ -12,7 +12,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/HexusGauntlet/Marcel/IAcceptYourChallengeSkip.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

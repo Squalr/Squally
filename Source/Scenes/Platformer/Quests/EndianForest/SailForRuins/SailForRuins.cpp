@@ -20,10 +20,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/Aye.h"
-#include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/CanWeBoard.h"
-#include "Strings/Platformer/Quests/EndianForest/SailForRuins/BlackBeard/Nay.h"
-#include "Strings/Platformer/MapNames/Zones/UnderflowRuins.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

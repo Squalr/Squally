@@ -12,9 +12,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Common/Constant.h"
-#include "Strings/Common/PlusConstant.h"
-#include "Strings/Common/MinusConstant.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

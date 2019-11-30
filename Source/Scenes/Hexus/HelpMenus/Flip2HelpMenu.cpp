@@ -17,7 +17,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/CardDescriptionsLong/Flip2.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

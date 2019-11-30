@@ -16,9 +16,7 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h"
+#include "Strings/Strings.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;

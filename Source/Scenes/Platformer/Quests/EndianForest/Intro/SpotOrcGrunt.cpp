@@ -18,7 +18,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/E_EnemySpotted.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

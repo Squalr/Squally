@@ -23,10 +23,7 @@
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Back.h"
-#include "Strings/Menus/SaveSelect/ConfirmDelete.h"
-#include "Strings/Menus/SaveSelect/ContinueGame.h"
-#include "Strings/Menus/SaveSelect/NewGame.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

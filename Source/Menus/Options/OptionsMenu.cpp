@@ -16,13 +16,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Options/GeneralOptions.h"
-#include "Strings/Menus/Options/Language.h"
-#include "Strings/Menus/Options/Memes.h"
-#include "Strings/Menus/Options/VideoOptions.h"
-#include "Strings/Menus/Options/Options.h"
-#include "Strings/Menus/Return.h"
-#include "Strings/Menus/Cancel.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

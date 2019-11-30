@@ -19,11 +19,7 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Common/Constant.h"
-#include "Strings/PointerTrace/Assembly/Jmp.h"
-#include "Strings/PointerTrace/Assembly/OffsetNegative.h"
-#include "Strings/PointerTrace/Assembly/OffsetPositive.h"
-#include "Strings/PointerTrace/Assembly/Ptr.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

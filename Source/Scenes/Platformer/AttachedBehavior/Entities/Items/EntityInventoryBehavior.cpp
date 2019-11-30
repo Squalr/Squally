@@ -8,7 +8,7 @@
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
-#include "Strings/Platformer/Notifications/ItemFound.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

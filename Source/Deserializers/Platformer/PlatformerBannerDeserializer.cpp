@@ -8,7 +8,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Scenes/Platformer/Quests/PlatformerQuests.h"
 
-#include "Strings/Platformer/MapNames/EndianForest/TownMain.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

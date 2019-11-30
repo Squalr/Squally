@@ -19,8 +19,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Cast.h"
-#include "Strings/Platformer/Combat/Wait.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

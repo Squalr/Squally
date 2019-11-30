@@ -16,7 +16,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Currency/IOUs.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -16,8 +16,7 @@
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/PuzzleDoor/Multiply/Multiply.h"
-#include "Strings/Menus/Hacking/Objects/PuzzleDoor/Multiply/RegisterEcx.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

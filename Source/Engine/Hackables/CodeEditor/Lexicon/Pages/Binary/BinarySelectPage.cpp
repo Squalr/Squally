@@ -9,22 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/And.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Bswap.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Not.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Or.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rcl.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rcr.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Rol.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Ror.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Sal.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Sar.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shl.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shld.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shr.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Shrd.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Xor.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

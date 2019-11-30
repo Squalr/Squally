@@ -10,7 +10,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/NativeLanguage.h"
+#include "Strings/Strings.h"
 #include "Engine/Localization/Localization.h"
 
 using namespace cocos2d;

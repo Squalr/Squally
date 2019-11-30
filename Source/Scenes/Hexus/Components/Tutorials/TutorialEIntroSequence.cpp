@@ -15,8 +15,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/E/UseShiftLeft.h"
-#include "Strings/Menus/GotIt.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

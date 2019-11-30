@@ -22,11 +22,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Developer/DeveloperMenu.h"
-#include "Strings/Menus/Exit.h"
-#include "Strings/Menus/Minigames.h"
-#include "Strings/Menus/Options/Options.h"
-#include "Strings/Menus/StoryMode.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -22,10 +22,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Blocked.h"
-#include "Strings/Platformer/Combat/Interrupted.h"
-#include "Strings/Common/MinusConstant.h"
-#include "Strings/Common/PlusConstant.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

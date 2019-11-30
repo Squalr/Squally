@@ -8,8 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Bswap.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Binary/Bswap/Intro.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

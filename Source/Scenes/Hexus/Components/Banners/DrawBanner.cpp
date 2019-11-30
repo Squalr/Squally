@@ -8,7 +8,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/Banners/Draw.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

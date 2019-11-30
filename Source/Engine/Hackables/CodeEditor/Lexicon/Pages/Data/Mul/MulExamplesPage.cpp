@@ -12,27 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Assembly/Mul.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEax.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEsi.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEbp.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEsp.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRax.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRbx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRsi.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRsp.h"
-#include "Strings/Menus/Hacking/Lexicon/Examples.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mul.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/PointerHelp.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp4.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

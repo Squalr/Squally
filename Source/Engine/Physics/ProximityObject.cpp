@@ -9,16 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/GetProjectileAcceleration.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEcx.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileAcceleration/RegisterEsi.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/GetProjectileVelocity.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEcx.h"
-#include "Strings/Menus/Hacking/Objects/Combat/Projectiles/GetProjectileVelocity/RegisterEsi.h"
+#include "Strings/Strings.h"
 
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101

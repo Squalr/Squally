@@ -19,10 +19,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterXmm0.h"
-#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/RegisterXmm1.h"
-#include "Strings/Menus/Hacking/Objects/DartLauncher/UpdateLaunchTimer/UpdateLaunchTimer.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

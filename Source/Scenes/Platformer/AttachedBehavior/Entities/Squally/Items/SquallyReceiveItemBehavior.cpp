@@ -13,7 +13,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Notifications/ItemFound.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

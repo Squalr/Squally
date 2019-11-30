@@ -12,11 +12,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/BonusItem.h"
-#include "Strings/Cipher/Cipher.h"
-#include "Strings/Cipher/Easy.h"
-#include "Strings/Cipher/Hard.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

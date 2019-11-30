@@ -19,8 +19,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/SpikeLog/IncrementAnimationFrame/IncrementAnimationFrame.h"
-#include "Strings/Menus/Hacking/Objects/SpikeLog/IncrementAnimationFrame/RegisterEcx.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

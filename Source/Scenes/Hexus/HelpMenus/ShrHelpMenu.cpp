@@ -17,7 +17,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/CardDescriptionsLong/ShiftRight.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

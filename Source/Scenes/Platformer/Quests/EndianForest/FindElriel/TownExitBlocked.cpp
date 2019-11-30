@@ -23,7 +23,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Chiron/CantLeaveTown.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

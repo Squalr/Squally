@@ -20,13 +20,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Elriel.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/A_HowDoWeGetToTheRuins.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/B_HowDareYou.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/C_NobodyLeavesUntil.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/D_WhatIfWeHelp.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/E_YouWouldHelp.h"
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Queen/F_OrderMyGuards.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

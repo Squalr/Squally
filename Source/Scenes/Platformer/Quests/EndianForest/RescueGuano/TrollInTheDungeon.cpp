@@ -21,8 +21,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/Alder/A_TrollInTheDungeon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

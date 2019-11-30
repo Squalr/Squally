@@ -13,9 +13,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Common/Empty.h"
-#include "Strings/Input/Spacebar.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

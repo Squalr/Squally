@@ -12,8 +12,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Dialogue/Shopkeepers/HowDoIBuySomething.h"
-#include "Strings/Platformer/Dialogue/Shopkeepers/HowToBuySomething.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

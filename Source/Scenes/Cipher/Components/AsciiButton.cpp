@@ -12,7 +12,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Ascii.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

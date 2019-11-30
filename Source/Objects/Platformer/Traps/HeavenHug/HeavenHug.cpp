@@ -20,9 +20,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/HeavenHug/GetTravelHeight/GetTravelHeight.h"
-#include "Strings/Menus/Hacking/Objects/HeavenHug/GetTravelHeight/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/RegisterRbpWarning.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

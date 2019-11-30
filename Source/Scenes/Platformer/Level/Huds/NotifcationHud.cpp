@@ -17,8 +17,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Menus/Okay.h"
+#include "Strings/Strings.h"
 
 const int NotificationHud::SlotCount = 4;
 

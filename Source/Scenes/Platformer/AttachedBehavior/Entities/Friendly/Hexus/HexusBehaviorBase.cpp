@@ -21,14 +21,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Hexus/Hexus.h"
-#include "Strings/Platformer/Dialogue/Hexus/ADraw.h"
-#include "Strings/Platformer/Dialogue/Hexus/BetterLuckNextTime.h"
-#include "Strings/Platformer/Dialogue/Hexus/GoodGame.h"
-#include "Strings/Platformer/Dialogue/Hexus/WellPlayed.h"
-#include "Strings/Platformer/Dialogue/Hexus/HowAboutARematch.h"
-#include "Strings/Platformer/Dialogue/Hexus/HowAboutARoundOfHexus.h"
-#include "Strings/Platformer/Notifications/ItemWon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -17,8 +17,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/MetalSpikes/UpdateTimer/RegisterSt0.h"
-#include "Strings/Menus/Hacking/Objects/MetalSpikes/UpdateTimer/UpdateTimer.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

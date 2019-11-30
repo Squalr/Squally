@@ -21,11 +21,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Ellipses.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/A_GetMeOutOfHere.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/B_WhatGotMeInHere.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/C_WeShouldHelpHim.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/D_DoorTech.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

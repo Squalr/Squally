@@ -25,10 +25,7 @@
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/ApplyPower.h"
-#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterXmm0.h"
-#include "Strings/Menus/Hacking/Objects/Catapult/ApplyPower/RegisterXmm1.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

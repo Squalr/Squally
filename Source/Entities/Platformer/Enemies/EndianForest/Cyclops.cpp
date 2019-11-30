@@ -6,7 +6,7 @@
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Cyclops.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

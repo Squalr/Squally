@@ -7,7 +7,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Hexus/Config.h"
 
-#include "Strings/Common/Empty.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -15,11 +15,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/B/UseLastStand.h"
-#include "Strings/Hexus/Tutorials/B/SaveCards.h"
-#include "Strings/Hexus/Tutorials/B/ScoreLead.h"
-#include "Strings/Menus/GotIt.h"
-#include "Strings/Menus/Next.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

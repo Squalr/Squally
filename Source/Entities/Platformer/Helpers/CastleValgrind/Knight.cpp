@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Helpers/CastleValgrind/Knight.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

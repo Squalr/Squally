@@ -11,8 +11,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Entities/EndianForest/Lycan/LetMeIntoTown.h"
-#include "Strings/Platformer/Entities/EndianForest/Lycan/NobodyAllowedIntoTown.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

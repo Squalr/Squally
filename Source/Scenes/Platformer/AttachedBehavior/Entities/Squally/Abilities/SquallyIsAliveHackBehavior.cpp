@@ -20,7 +20,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Entities/Squally/IsAlive/IsAlive.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

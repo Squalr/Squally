@@ -4,7 +4,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Inventory/Consumables.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

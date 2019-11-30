@@ -15,8 +15,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Cutscenes/IOU/FoundIOU.h"
-#include "Strings/Platformer/Cutscenes/IOU/IOUDescription.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

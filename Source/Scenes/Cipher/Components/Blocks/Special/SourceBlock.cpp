@@ -17,7 +17,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/Operations/Immediate.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

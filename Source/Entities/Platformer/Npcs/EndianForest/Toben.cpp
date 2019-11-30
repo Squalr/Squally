@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Toben.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

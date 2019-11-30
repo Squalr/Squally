@@ -7,7 +7,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Attacks/Punch.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

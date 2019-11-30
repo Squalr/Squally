@@ -10,7 +10,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Menus/Hacking/ClippyHelp/MechanicalFlailMov.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

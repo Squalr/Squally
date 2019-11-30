@@ -11,7 +11,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Unlock.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

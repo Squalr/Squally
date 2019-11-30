@@ -17,15 +17,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/A/BinCards.h"
-#include "Strings/Hexus/Tutorials/A/DecCards.h"
-#include "Strings/Hexus/Tutorials/A/HandCards.h"
-#include "Strings/Hexus/Tutorials/A/HexCards.h"
-#include "Strings/Hexus/Tutorials/A/LossDisplay.h"
-#include "Strings/Hexus/Tutorials/A/RowTotals.h"
-#include "Strings/Hexus/Tutorials/A/ScoreTotals.h"
-#include "Strings/Menus/GotIt.h"
-#include "Strings/Menus/Next.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

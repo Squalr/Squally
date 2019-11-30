@@ -11,7 +11,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 
-#include "Strings/Hexus/Banners/RemainingCardReplacements.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

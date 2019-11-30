@@ -8,7 +8,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Menus/Hacking/ClippyHelp/DartNop.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

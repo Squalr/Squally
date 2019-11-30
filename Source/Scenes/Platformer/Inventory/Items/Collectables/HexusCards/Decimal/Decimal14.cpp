@@ -6,7 +6,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Hexus/Cards/Decimal14.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

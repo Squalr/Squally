@@ -20,9 +20,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-#include "Strings/Debugging/CameraX.h"
-#include "Strings/Debugging/CameraY.h"
-#include "Strings/Debugging/CameraZoom.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

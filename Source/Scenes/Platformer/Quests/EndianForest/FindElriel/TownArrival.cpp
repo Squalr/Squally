@@ -19,8 +19,7 @@
 
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Quests/EndianForest/FindElriel/Scrappy/A_LetsFindABoat.h"
-#include "Strings/Platformer/MapNames/Zones/UnderflowRuins.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -13,7 +13,7 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Hexus/DrawToolTip.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

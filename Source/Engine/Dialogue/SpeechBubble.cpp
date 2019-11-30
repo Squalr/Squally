@@ -11,7 +11,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/FX/TypeWriterEffect.h"
 
-#include "Strings/Common/Empty.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

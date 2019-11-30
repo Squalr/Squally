@@ -8,8 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Pages/FloatingPoint/Intro.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/FloatingPoint/Title.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

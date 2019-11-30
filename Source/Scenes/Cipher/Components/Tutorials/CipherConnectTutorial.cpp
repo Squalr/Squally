@@ -15,10 +15,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/Tutorials/Connect/ChestsLocked.h"
-#include "Strings/Cipher/Tutorials/Connect/ThisOneIsEasy.h"
-#include "Strings/Menus/GotIt.h"
-#include "Strings/Menus/Next.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
