@@ -80,7 +80,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CagedZebra::MapKeyCagedZebra] = [=](ValueMap properties) { return (GameObject*)CagedZebra::create(properties); };
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
-	this->deserializers[CameraStop::MapKeyCameraStop] = [=](ValueMap properties) { return (GameObject*)CameraCameraStop::create(properties); };
+	this->deserializers[CameraStop::MapKeyCameraStop] = [=](ValueMap properties) { return (GameObject*)CameraStop::create(properties); };
 	this->deserializers[CastleGate::MapKeyCastleGate] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };

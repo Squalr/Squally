@@ -2,6 +2,11 @@
 
 #include "Engine/Maps/GameObject.h"
 
+namespace cocos2d
+{
+	class DrawNode;
+}
+
 class CameraStop : public GameObject
 {
 public:
@@ -14,5 +19,11 @@ private:
 	CameraStop(cocos2d::ValueMap& properties);
 	~CameraStop();
 
+	void onEnter() override;
 	void update(float dt) override;
+	void onDeveloperModeEnable() override;
+	void onDeveloperModeDisable() override;
+
+	cocos2d::DrawNode* debugDraw;
+	cocos2d::Size stopSize;
 };
