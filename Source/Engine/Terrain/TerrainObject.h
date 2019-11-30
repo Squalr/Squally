@@ -125,7 +125,6 @@ public:
 		}
 	};
 
-	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTerrain;
 
 protected:
@@ -150,7 +149,6 @@ private:
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain(TerrainData terrainData);
-	void removeHollowEdgeCollisions();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(cocos2d::Color4B infillColor);
@@ -164,7 +162,6 @@ private:
 	bool isRightAngle(float normalAngle);
 
 	TerrainData terrainData;
-	bool isHollow;
 	bool isInactive;
 
 	cocos2d::Rect boundsRect;
@@ -190,7 +187,6 @@ private:
 
 	static const float ShadowDistance;
 	static const float InfillDistance;
-	static const float HollowDistance;
 	static const float TopThreshold;
 	static const float BottomThreshold;
 };

@@ -444,9 +444,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="681" name="blue-grass" type="terrain" x="3861.72" y="6216.62">
-   <properties>
-    <property name="is-hollow" type="bool" value="true"/>
-   </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
   <object id="724" name="blue-grass" type="terrain" x="3845.72" y="2441.07">

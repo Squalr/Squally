@@ -91,16 +91,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="blue-grass" type="terrain" x="-115.416" y="4874.1">
-   <polygon points="0,0 4792.55,-35.521 5824.73,-36.7222 6407.04,6.66136 6998.71,-26.0982 8669.53,0 8688.05,508.916 8520.95,1278.81 7110.1,1317.96 2617.55,1161.37 -37.1284,1017.83 0,378.425"/>
+   <polygon points="0,0 4792.55,-35.521 5824.73,-36.7222 6407.04,6.66136 6998.71,-26.0982 8669.53,0 11497.3,24.987 12497.4,38.932 13806.9,26.8833 13763.2,1325.57 11089.2,1386.45 8520.95,1278.81 7110.1,1317.96 2617.55,1161.37 -37.1284,1017.83 0,378.425"/>
   </object>
   <object id="627" name="blue-grass" type="terrain" x="3909.82" y="3520.85">
    <polygon points="0,0 84.6727,-684.032 101.406,-1041.36 2578.94,-1086.99 5035.56,-1074.95 5032.39,-728.47 5067.98,268.769 5062.77,1067.57 4454.13,1075.6 4265.34,812.388 3908.81,705.655 912.128,710.94 -11.0029,522.682 0,202.615"/>
   </object>
   <object id="640" name="blue-grass" type="terrain" x="13337.6" y="4290.99">
    <polygon points="0,0 -691.091,-83.2639 -2073.27,-1273.94 -2081.6,-2414.65 224.813,-2872.61 1815.15,-2356.37 1806.83,-1124.06 1773.52,-24.9792"/>
-  </object>
-  <object id="645" name="blue-grass" type="terrain" x="8561.82" y="4916.32">
-   <polygon points="-2.20332,-30.9717 2777.14,-35.521 3334.54,17.5736 3629.98,-12.4774 4055.55,-26.0982 5023.74,0 5034.48,508.916 4937.64,1278.81 4120.1,1317.96 1516.79,1161.37 134.921,948.144 2.20332,486.826"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -135,7 +132,7 @@
     <property name="send-event" value="spot-orc-grunt"/>
    </properties>
   </object>
-  <object id="639" name="orc-grunt" type="entity" x="11666.2" y="4789.32" width="128" height="128">
+  <object id="639" name="orc-grunt" type="entity" x="11661.2" y="4784.31" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing,disarmed"/>
     <property name="battle-behavior" value="restore-potion-tutorial,no-items,no-defend,player-first-strike"/>
