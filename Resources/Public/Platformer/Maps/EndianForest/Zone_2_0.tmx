@@ -294,7 +294,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="6709.27" y="3363.23" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1025.87" y="4716.09" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

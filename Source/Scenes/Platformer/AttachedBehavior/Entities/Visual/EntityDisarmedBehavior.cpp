@@ -8,7 +8,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 
-#include "Resources/EntityResources.h"
+#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -41,5 +41,8 @@ void EntityDisarmedBehavior::onLoad()
 {
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
 
-	mainhand->replaceWithObject(Node::create(), 0.0f, 0.0f);
+	if (mainhand != nullptr)
+	{
+		mainhand->replaceSprite(UIResources::EmptyImage);
+	}
 }
