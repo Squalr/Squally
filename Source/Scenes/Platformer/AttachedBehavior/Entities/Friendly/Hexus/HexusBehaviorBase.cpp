@@ -2,12 +2,15 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
@@ -19,7 +22,9 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
@@ -31,6 +36,10 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->lossCallbacks = std::vector<std::function<void()>>();
 	this->drawCallbacks = std::vector<std::function<void()>>();
 	this->dialogueStringNode = Node::create();
+	this->iconNode = Node::create();
+	this->iconContainer = Node::create();
+	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
+	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardBinary);
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
@@ -46,11 +55,77 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 		this->addChild(this->dialogueChoiceOverride);
 	}
 
+	this->iconContainer->addChild(this->cardGlow);
+	this->iconContainer->addChild(this->cardSprite);
+	this->iconNode->addChild(this->iconContainer);
 	this->addChild(this->dialogueStringNode);
+	this->addChild(this->iconNode);
 }
 
 HexusBehaviorBase::~HexusBehaviorBase()
 {
+}
+
+void HexusBehaviorBase::onEnter()
+{
+	super::onEnter();
+
+	if (this->getWins() > 0)
+	{
+		this->iconContainer->setVisible(false);
+	}
+	else
+	{
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->iconNode));
+		
+		this->iconContainer->runAction(RepeatForever::create(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, -16.0f))),
+			EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, 0.0f))),
+			nullptr
+		)));
+	}
+}
+
+void HexusBehaviorBase::initializePositions()
+{
+	super::initializePositions();
+
+	if (this->entity != nullptr)
+	{
+		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
+
+		this->iconNode->setPosition(offset);
+	}
+}
+
+int HexusBehaviorBase::getWins()
+{
+	return this->entity->getObjectStateOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+}
+
+int HexusBehaviorBase::getLosses()
+{
+	return this->entity->getObjectStateOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
+}
+
+int HexusBehaviorBase::getDraws()
+{
+	return this->entity->getObjectStateOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+}
+
+void HexusBehaviorBase::addWin()
+{
+	return this->entity->saveObjectState("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(this->getWins() + 1));
+}
+
+void HexusBehaviorBase::addLoss()
+{
+	return this->entity->saveObjectState("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
+}
+
+void HexusBehaviorBase::addDraw()
+{
+	return this->entity->saveObjectState("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
 }
 
 void HexusBehaviorBase::registerWinCallback(std::function<void()> winCallback)
@@ -92,7 +167,7 @@ void HexusBehaviorBase::onLoad()
 		}
 		else
 		{
-			if (!this->entity->getObjectStateOrDefault(this->getWinLossSaveKey(), Value(false)).asBool())
+			if (this->getWins() <= 0)
 			{
 				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 					Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
@@ -144,6 +219,8 @@ void HexusBehaviorBase::onWin()
 	static int DialogueOptionCount = 2;
 	static int DialogueIndex = RandomHelper::random_int(0, DialogueOptionCount);
 
+	this->iconNode->setVisible(false);
+
 	switch (DialogueIndex++ % DialogueOptionCount)
 	{
 		default:
@@ -159,12 +236,7 @@ void HexusBehaviorBase::onWin()
 		}
 	}
 
-	if (!this->entity->getObjectStateOrDefault(this->getWinLossSaveKey(), Value(false)).asBool())
-	{
-		this->giveItems();
-
-		this->entity->saveObjectState(this->getWinLossSaveKey(), Value(true));
-	}
+	this->addWin();
 
 	for (auto it = this->winCallbacks.begin(); it != this->winCallbacks.end(); it++)
 	{
@@ -187,6 +259,8 @@ void HexusBehaviorBase::onLoss()
 		}
 	}
 
+	this->addLoss();
+
 	for (auto it = this->lossCallbacks.begin(); it != this->lossCallbacks.end(); it++)
 	{
 		(*it)();
@@ -207,6 +281,8 @@ void HexusBehaviorBase::onDraw()
 			break;
 		}
 	}
+
+	this->addDraw();
 
 	for (auto it = this->drawCallbacks.begin(); it != this->drawCallbacks.end(); it++)
 	{

@@ -30,7 +30,6 @@ using namespace cocos2d;
 
 const std::string ReturnToMarcel::MapKeyQuest = "return-to-marcel";
 const std::string ReturnToMarcel::QuestPortalTag = "quest-portal";
-const std::string ReturnToMarcel::SaveKeyLosses = "SAVE_KEY_TUTORIAL_LOSSES";
 
 ReturnToMarcel* ReturnToMarcel::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -148,20 +147,16 @@ void ReturnToMarcel::onHexusWin()
 
 void ReturnToMarcel::onHexusLoss()
 {
-	int losses = this->marcel->getObjectStateOrDefault(ReturnToMarcel::SaveKeyLosses, Value(0)).asInt() + 1;
-
-	this->marcel->saveObjectState(ReturnToMarcel::SaveKeyLosses, Value(losses));
-
-	if (losses >= 2)
+	this->marcel->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
 	{
-		this->runPostHexusMatchCleanup();
-		this->runDialogueIntroLoss();
-
-		this->marcel->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+		if (hexusBehavior->getLosses() + hexusBehavior->getDraws() >= 2)
 		{
 			hexusBehavior->giveItems();
-		});
-	}
+
+			this->runPostHexusMatchCleanup();
+			this->runDialogueIntroLoss();
+		}
+	});
 }
 
 void ReturnToMarcel::runDialogueIntroWin()

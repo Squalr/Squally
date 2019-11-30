@@ -39,5 +39,4 @@ private:
 	Squally* squally;
 
 	static const std::string QuestPortalTag;
-	static const std::string SaveKeyLosses;
 };

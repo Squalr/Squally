@@ -44,14 +44,14 @@ PlatformerEntity::PlatformerEntity(
 	this->floatNode = Node::create();
 	this->belowAnimationNode = Node::create();
 	this->animationNode = SmartAnimationNode::create(scmlResource);
-	this->entityScale = scale;
+	this->entityScale = scale * GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f)).asFloat();
 	this->animationResource = scmlResource;
 	this->emblemResource = emblemResource;
 	this->entityName = entityName;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyPropertyState, Value("")).asString();
 	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyBattleAttachedBehavior, Value("")).asString();
 	this->entityCollisionOffset = this->entityScale * collisionOffset;
-	this->entitySize = size * scale;
+	this->entitySize = size * this->entityScale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	// Tag all entities by class to optimize object queries (ObjectEvents.h)
@@ -65,7 +65,7 @@ PlatformerEntity::PlatformerEntity(
 
 	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);
 
-	this->animationNode->setScale(scale);
+	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
 	this->animationNode->setPositionY(this->hoverHeight / 2.0f);
 	
