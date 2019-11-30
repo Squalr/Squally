@@ -126,6 +126,7 @@ public:
 	};
 
 	static std::string MapKeyTypeTerrain;
+	static std::string MapKeyTypeIsHollow;
 
 protected:
 	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
@@ -155,6 +156,7 @@ private:
 	void buildSurfaceShadow();
 	void buildSurfaceTextures();
 	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
+	void removeHollowEdgeCollisions();
 	void maskAgainstOther(TerrainObject* other);
 	bool isTopAngle(float normalAngle);
 	bool isBottomAngle(float normalAngle);
@@ -162,6 +164,7 @@ private:
 	bool isRightAngle(float normalAngle);
 
 	TerrainData terrainData;
+	bool isHollow;
 	bool isInactive;
 
 	cocos2d::Rect boundsRect;

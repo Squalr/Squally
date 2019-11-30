@@ -165,6 +165,24 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 	
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	{
+		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
+
+		if (groundBehavior == nullptr)
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		// No collision when not standing on anything, or if already on a different platform
+		if (groundBehavior->isOnGround() && !groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
+	
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
@@ -231,12 +249,12 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 		false
 	);
 
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionObject::CollisionData collisionData)
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::DoNothing;
 	});

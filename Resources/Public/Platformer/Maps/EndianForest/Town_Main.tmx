@@ -444,6 +444,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="681" name="blue-grass" type="terrain" x="3861.72" y="6216.62">
+   <properties>
+    <property name="is-hollow" type="bool" value="true"/>
+   </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
   <object id="724" name="blue-grass" type="terrain" x="3845.72" y="2441.07">
@@ -726,8 +729,8 @@
     <property name="tokens-easy" value=""/>
    </properties>
   </object>
-  <object id="925" name="solid" type="collision" x="3084.03" y="4690.56">
-   <polygon points="764.639,-59.1763 6947.22,-68.1492 6947.85,-4.12835 765.245,-1.23965"/>
+  <object id="925" name="solid" type="collision" x="9932.03" y="4690.56">
+   <polygon points="9.34516,-92.0602 101.489,-89.5237 99.8542,793.307 7.70967,794.551"/>
   </object>
   <object id="926" name="solid" type="collision" x="5657.65" y="5409.33">
    <polygon points="98.9841,-69.1763 911.446,-68.1492 911.528,-4.12835 100.397,-1.23965"/>
@@ -813,7 +816,7 @@
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="7291.47" y="4229.36" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2326.49" y="4421.47" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="33" name="decor 512" visible="0">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

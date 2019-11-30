@@ -294,7 +294,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1025.87" y="4716.09" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="6709.27" y="3363.23" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -355,7 +355,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="5318.2" y="5281.16" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="925.232" y="4673.9" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1379.96" y="4617.06" width="242" height="738"/>
   <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="3494.31" y="4936.14" width="242" height="738"/>
  </objectgroup>
 </map>

@@ -27,6 +27,7 @@ enum class PlatformerCollisionType
 	Trigger				= 1 << 19,
 
 	Solid				= (int)EngineCollisionTypes::Solid,
+	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,
 	Intersection		= (int)EngineCollisionTypes::Intersection,
 };

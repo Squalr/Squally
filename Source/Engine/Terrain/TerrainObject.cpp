@@ -29,6 +29,7 @@
 using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
+std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -43,6 +44,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
+	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 
 	this->collisionNode = Node::create();
@@ -116,7 +118,7 @@ void TerrainObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	if (!this->isInactive)
+	if (this->isHollow && !this->isInactive)
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
@@ -171,6 +173,8 @@ void TerrainObject::buildCollision()
 	{
 		return;
 	}
+	
+	this->removeHollowEdgeCollisions();
 
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
@@ -196,6 +200,10 @@ void TerrainObject::buildCollision()
 			if (this->isTopAngle(normalAngle))
 			{
 				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+			}
+			else if (this->isBottomAngle(normalAngle))
+			{
+				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
 			}
 			else
 			{
@@ -667,6 +675,23 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 	parent->addChild(sprite);
 };
+
+void TerrainObject::removeHollowEdgeCollisions()
+{
+	if (!this->isHollow || this->isInactive)
+	{
+		return;
+	}
+	
+	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
+		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
+		{
+			float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
+			
+			// Remove all collision except for top collision
+			return (!this->isTopAngle(normalAngle));
+		}));
+}
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
