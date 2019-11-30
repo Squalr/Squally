@@ -1,6 +1,7 @@
 #pragma once
-#include "Objects/CameraFocus.h"
-#include "Objects/CameraScrollTracker.h"
+#include "Objects/Camera/CameraFocus.h"
+#include "Objects/Camera/CameraScrollTracker.h"
+#include "Objects/Camera/CameraStop.h"
 #include "Objects/Platformer/Breakables/BreakableBarrel.h"
 #include "Objects/Platformer/Breakables/BreakableCage.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimals.h"
@@ -12,6 +13,7 @@
 #include "Objects/Platformer/Interactables/Doors/CastleGate/CastleGate.h"
 #include "Objects/Platformer/Interactables/Doors/EdgePortal.h"
 #include "Objects/Platformer/Interactables/Doors/Gate/Gate.h"
+#include "Objects/Platformer/Interactables/Doors/LanternGate/EdgeLanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/LanternGate/LanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/DarkPortal.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/FirePortal.h"

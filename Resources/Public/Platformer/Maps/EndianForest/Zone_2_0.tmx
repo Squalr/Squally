@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="68" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="744">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="68" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="746">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -83,7 +83,7 @@
    <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 594.354,-902.867 2509.56,-901.261 3113.08,-1105.99 3218.65,-2215.55 825.969,-2207.97 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
   </object>
   <object id="743" name="blue-grass" type="terrain" x="3787.02" y="3283.51">
-   <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 2651.52,-1125.93 2993.19,-1247.03 3585.51,-1303.03 5745.48,-1291.05 5755.62,-2214.8 3218.65,-2215.55 825.969,-2207.97 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
+   <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 2636.3,-1133.54 2993.19,-1247.03 3585.51,-1303.03 5745.48,-1291.05 5732.79,-3402.02 2039.05,-3387.54 2058.85,-2200.36 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -2">
@@ -292,6 +292,13 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
+  <object id="744" name="wind" type="object" x="3166.16" y="711.294" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="745" name="camera-stop" type="object" x="5850.18" y="832.892" width="256" height="256"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -303,9 +310,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="619" name="edge-portal" type="object" x="9274.06" y="346.545" width="199.918" height="734.959">
+  <object id="619" name="edge-lantern-gate" type="object" x="5491.72" y="765.115" width="356" height="320">
    <properties>
-    <property name="map" value="EndianForest/Zone_1_2"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -334,7 +341,7 @@
    </properties>
   </object>
   <object id="716" name="solid-npc" type="collision" x="3471.72" y="2470.08" width="121.03" height="777.836"/>
-  <object id="727" name="orc-grunt" type="entity" x="5367.97" y="955.161" width="128" height="128">
+  <object id="727" name="orc-grunt" type="entity" x="4492.78" y="955.161" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,puzzle-A"/>
     <property name="scale" type="float" value="0.75"/>
@@ -346,7 +353,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="5090.99" y="949.02" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="3913.27" y="960.021" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

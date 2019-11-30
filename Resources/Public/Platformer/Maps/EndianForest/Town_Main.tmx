@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="929">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="930">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -509,13 +509,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="641" name="edge-portal" type="object" x="10161.9" y="3361.82" width="199.918" height="617.692">
-   <properties>
-    <property name="map" value="EndianForest/Zone_2_0"/>
-    <property name="tag" value="blocked-exit"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
   <object id="682" name="wind" type="object" x="3453.59" y="5651.4" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
@@ -740,6 +733,13 @@
     <property name="quest" value="town-arrival"/>
     <property name="quest-line" value="find-elriel"/>
     <property name="send-event" value="town-arrival"/>
+   </properties>
+  </object>
+  <object id="929" name="edge-lantern-gate" type="object" x="10006.7" y="3655.28" width="356" height="320">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="tag" value="blocked-exit"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
  </objectgroup>

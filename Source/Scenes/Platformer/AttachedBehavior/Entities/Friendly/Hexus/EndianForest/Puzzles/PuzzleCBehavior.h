@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusBehaviorBase.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/HexusPuzzleBehaviorBase.h"
 
 class CardData;
 class HexusOpponentData;
 class MinMaxPool;
 class PlatformerEntity;
 
-class PuzzleCBehavior : public HexusBehaviorBase
+class PuzzleCBehavior : public HexusPuzzleBehaviorBase
 {
 public:
 	static PuzzleCBehavior* create(GameObject* owner);
@@ -26,5 +26,5 @@ protected:
 	std::vector<TutorialBase*> getTutorials() override;
 
 private:
-	typedef HexusBehaviorBase super;
+	typedef HexusPuzzleBehaviorBase super;
 };

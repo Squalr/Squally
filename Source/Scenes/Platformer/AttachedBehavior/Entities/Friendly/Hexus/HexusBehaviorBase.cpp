@@ -39,7 +39,7 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode = Node::create();
 	this->iconContainer = Node::create();
 	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
-	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardBinary);
+	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardSpecial);
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;

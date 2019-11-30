@@ -3,25 +3,10 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Input/ClickableNode.h"
-#include "Engine/Localization/ConstantString.h"
-#include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
-#include "Engine/UI/SmartClippingNode.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
-
 #include "Resources/ObjectResources.h"
-#include "Resources/ParticleResources.h"
-#include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 

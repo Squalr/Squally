@@ -191,6 +191,8 @@ PlatformerEntity* PlatformerEntity::softClone()
 
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(this->entityName);
+	properties[GameObject::MapKeyScale] = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f));
+	properties[GameObject::MapKeyAttachedBehavior] = "disarmed";
 	properties[GameObject::MapKeyQueryable] = Value(false);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(

@@ -27,7 +27,7 @@ PuzzleDBehavior* PuzzleDBehavior::create(GameObject* owner)
 	return instance;
 }
 
-PuzzleDBehavior::PuzzleDBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
+PuzzleDBehavior::PuzzleDBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
 {
 }
 

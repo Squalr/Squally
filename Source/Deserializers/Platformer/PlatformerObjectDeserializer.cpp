@@ -80,6 +80,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CagedZebra::MapKeyCagedZebra] = [=](ValueMap properties) { return (GameObject*)CagedZebra::create(properties); };
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
+	this->deserializers[CameraStop::MapKeyCameraStop] = [=](ValueMap properties) { return (GameObject*)CameraCameraStop::create(properties); };
 	this->deserializers[CastleGate::MapKeyCastleGate] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
@@ -98,6 +99,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FrostPortal::MapKeyFrostPortal] = [=](ValueMap properties) { return (GameObject*)FrostPortal::create(properties); };
 	this->deserializers[Gate::MapKeyGate] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };
 	this->deserializers[LanternGate::MapKeyLanternGate] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
+	this->deserializers[EdgeLanternGate::MapKeyEdgeLanternGate] = [=](ValueMap properties) { return (GameObject*)EdgeLanternGate::create(properties); };
 	this->deserializers[IOU::MapKeyIOU] = [=](ValueMap properties) { return (GameObject*)IOU::create(properties); };
 	this->deserializers[HackableHint::MapKeyHackableHint] = [=](ValueMap properties) { return (GameObject*)HackableHint::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKeyHelpTotemAttacking] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
