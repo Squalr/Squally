@@ -118,7 +118,7 @@ void TerrainObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	if (this->isHollow && !this->isInactive)
+	if (!this->isHollow && !this->isInactive)
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{

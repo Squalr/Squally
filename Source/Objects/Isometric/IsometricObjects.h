@@ -1,7 +1,6 @@
 #pragma once
 #include "Objects/CameraFocus.h"
 #include "Objects/CameraScrollTracker.h"
-#include "Objects/Isometric/HexusArcade.h"
 #include "Objects/Isometric/PointerTrace/ExitCrystal.h"
 #include "Objects/Isometric/PointerTrace/JumpMarkers/EaxJmp.h"
 #include "Objects/Isometric/PointerTrace/JumpMarkers/EbxJmp.h"

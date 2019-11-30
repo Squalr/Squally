@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
+#include "Scenes/Cipher/Components/Blocks/Connections/Lightning.h"
 #include "Scenes/Cipher/Config.h"
-#include "Scenes/Platformer/WorldMap/FX/Lightning.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"

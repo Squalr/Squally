@@ -2,25 +2,15 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Hexus/Card.h"
-#include "Scenes/Hexus/CardData/CardData.h"
-#include "Scenes/Hexus/CardData/CardKeys.h"
-#include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
-#include "Scenes/Hexus/StateOverride.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/HexusResources.h"
-#include "Resources/UIResources.h"
 
 #include "Strings/Platformer/Entities/Names/Enemies/EndianForest/Centaur.h"
 
 using namespace cocos2d;
 
 const std::string Centaur::MapKeyCentaur = "centaur";
-HexusOpponentData* Centaur::HexusOpponentDataInstance = nullptr;
-const std::string Centaur::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CENTAUR";
 
 Centaur* Centaur::deserialize(ValueMap& properties)
 {
@@ -39,7 +29,6 @@ Centaur::Centaur(ValueMap& properties) : super(properties,
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
-	this->hexusOpponentData = Centaur::getHexusOpponentData();
 }
 
 Centaur::~Centaur()
@@ -54,92 +43,4 @@ Vec2 Centaur::getDialogueOffset()
 LocalizedString* Centaur::getEntityName()
 {
 	return Strings::Platformer_Entities_Names_Enemies_EndianForest_Centaur::create();
-}
-
-HexusOpponentData* Centaur::getHexusOpponentData()
-{
-	if (Centaur::HexusOpponentDataInstance == nullptr)
-	{
-		Centaur::HexusOpponentDataInstance = new HexusOpponentData(
-			nullptr,
-			HexusResources::Menus_HexusFrameEndianForest,
-			Vec2(-48.0f, -212.0f),
-			Centaur::HexusSaveKey,
-			HexusOpponentData::Strategy::Random,
-			Card::CardStyle::Earth,
-			HexusOpponentData::generateDeck(32, 0.231f,
-			{
-
-			}),
-			nullptr,
-			StateOverride::create(
-				// Player losses
-				1,
-				// Enemy losses
-				1,
-				// Player's turn
-				true,
-				// Player passed
-				true,
-				// Enemy passed
-				true,
-				// Player deck
-				std::vector<CardData*>
-				{
-					
-				},
-				// Enemy deck
-				std::vector<CardData*>
-				{
-					
-				},
-				// Player hand
-				std::vector<CardData*>
-				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-				},
-				// Enemy hand
-				std::vector<CardData*>
-				{
-					
-				},
-				// Player binary cards
-				std::vector<CardData*>
-				{
-					
-				},
-				// Player decimal cards
-				std::vector<CardData*>
-				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-				},
-				// Player hex cards
-				std::vector<CardData*>
-				{
-					
-				},
-				// Enemy binary cards
-				std::vector<CardData*>
-				{
-					
-				},
-				// Enemy decimal cards
-				std::vector<CardData*>
-				{
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-					CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
-				},
-				// Enemy hex cards
-				std::vector<CardData*>
-				{
-					
-				}
-			)
-		);
-	}
-
-	return Centaur::HexusOpponentDataInstance;
 }

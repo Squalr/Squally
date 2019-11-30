@@ -15,7 +15,7 @@
 using namespace cocos2d;
 
 const std::string AgroBehavior::MapKeyAttachedBehavior = "agro";
-const float AgroBehavior::AgroRangeX = 640.0f;
+const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
 const float AgroBehavior::EngageCooldownMax = 1.0f;
 

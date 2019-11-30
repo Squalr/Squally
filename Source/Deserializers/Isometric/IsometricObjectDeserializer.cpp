@@ -26,7 +26,6 @@ IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObje
 
 	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
-	this->deserializers[HexusArcade::MapKeyHexusArcade] = [=](ValueMap properties) { return (GameObject*)HexusArcade::create(properties); };
 	this->deserializers[LevelNode::MapKeyLevelNode] = [=](ValueMap properties) { return (GameObject*)LevelNode::create(properties); };
 	this->deserializers[MemoryGrid::MapKeyMemoryGrid] = [=](ValueMap properties) { return (GameObject*)MemoryGrid::create(properties); };
 	this->deserializers[ExitCrystal::MapKeyExitCrystal] = [=](ValueMap properties) { return (GameObject*)ExitCrystal::create(properties); };

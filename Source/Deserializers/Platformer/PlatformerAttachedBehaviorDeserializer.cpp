@@ -49,6 +49,15 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[ScrappyCombatBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ScrappyCombatBehaviorGroup::create(owner); };
 	
 	/*********************
+		Hexus
+	*********************/
+
+	this->attachedBehaviorDeserializers[PuzzleABehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleABehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PuzzleBBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleBBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PuzzleCBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleCBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PuzzleDBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleDBehavior::create(owner); };
+		
+	/*********************
 		COMBAT
 	*********************/
 

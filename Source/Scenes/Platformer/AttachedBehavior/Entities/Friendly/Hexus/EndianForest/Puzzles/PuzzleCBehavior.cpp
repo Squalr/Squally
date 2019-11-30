@@ -1,4 +1,4 @@
-#include "PuzzleABehavior.h"
+#include "PuzzleCBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -16,48 +16,48 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleABehavior::MapKeyAttachedBehavior = "puzzle-A";
+const std::string PuzzleCBehavior::MapKeyAttachedBehavior = "puzzle-C";
 
-PuzzleABehavior* PuzzleABehavior::create(GameObject* owner)
+PuzzleCBehavior* PuzzleCBehavior::create(GameObject* owner)
 {
-	PuzzleABehavior* instance = new PuzzleABehavior(owner);
+	PuzzleCBehavior* instance = new PuzzleCBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PuzzleABehavior::PuzzleABehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
+PuzzleCBehavior::PuzzleCBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn::create())
 {
 }
 
-PuzzleABehavior::~PuzzleABehavior()
+PuzzleCBehavior::~PuzzleCBehavior()
 {
 }
 
-MinMaxPool* PuzzleABehavior::generateReward()
+MinMaxPool* PuzzleCBehavior::generateReward()
 {
 	return nullptr;
 }
 
-std::string PuzzleABehavior::getWinLossSaveKey()
+std::string PuzzleCBehavior::getWinLossSaveKey()
 {
-	return PuzzleABehavior::MapKeyAttachedBehavior;
+	return PuzzleCBehavior::MapKeyAttachedBehavior;
 }
 
-std::string PuzzleABehavior::getBackgroundResource()
+std::string PuzzleCBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> PuzzleABehavior::generateDeck()
+std::vector<CardData*> PuzzleCBehavior::generateDeck()
 {
 	return HexusOpponentData::generateDeck(25, 1.0f,
 	{
 	});;
 }
 
-StateOverride* PuzzleABehavior::getStateOverride()
+StateOverride* PuzzleCBehavior::getStateOverride()
 {
 	return StateOverride::create(
 		// Player losses
@@ -83,6 +83,7 @@ StateOverride* PuzzleABehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 		},
 		// Enemy hand
@@ -93,14 +94,13 @@ StateOverride* PuzzleABehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -115,19 +115,19 @@ StateOverride* PuzzleABehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 		}
 	);
 }
 
-std::vector<TutorialBase*> PuzzleABehavior::getTutorials()
+std::vector<TutorialBase*> PuzzleCBehavior::getTutorials()
 {
 	return { };
 }

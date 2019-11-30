@@ -25,4 +25,3 @@ private:
 	Sound* sound;
 	float manualDelay;
 };
-
