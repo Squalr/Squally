@@ -101,8 +101,8 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	// this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
-	this->menuHud->addChild(this->cipher);
-	this->menuHud->addChild(this->hexus);
+	this->miniGameHud->addChild(this->cipher);
+	this->miniGameHud->addChild(this->hexus);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
@@ -169,7 +169,6 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(196);
 			this->cipher->setVisible(true);
 			this->cipher->openCipher(args->cipherPuzzleData);
 			GameUtils::focus(this->cipher);
@@ -182,7 +181,6 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(0);
 			this->cipher->setVisible(false);
 			GameUtils::focus(this);
 		}
@@ -194,7 +192,6 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(196);
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
 			
@@ -208,12 +205,35 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(0);
 			this->hexus->setVisible(false);
 
 			GameUtils::focus(this);
 		}
 	}));
+
+	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this->cipher))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu();
+	});
+
+	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this->hexus))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu();
+	});
 	
 	this->ingameMenu->setInventoryClickCallback([=]()
 	{

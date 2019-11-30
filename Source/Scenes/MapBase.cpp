@@ -48,6 +48,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
+	this->miniGameHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
@@ -90,6 +91,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->hackerModeVisibleHud);
 	this->addChild(this->sensingGlow);
 	this->addChild(this->hackerModeGlow);
+	this->addChild(this->miniGameHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
@@ -208,8 +210,6 @@ void MapBase::initializeListeners()
 	this->pauseMenu->setResumeClickCallback([=]()
 	{
 		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		GameUtils::focus(this);
 	});
 
 	this->pauseMenu->setOptionsClickCallback([=]()
@@ -348,6 +348,5 @@ void MapBase::toggleHackerMode(void* userData)
 void MapBase::openPauseMenu()
 {
 	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->setVisible(true);
-	GameUtils::focus(this->pauseMenu);
+	this->pauseMenu->open();
 }

@@ -80,4 +80,6 @@ public:
 
 		return nullptr;
 	}
+
+	static cocos2d::Node* LastFocusTarget;
 };

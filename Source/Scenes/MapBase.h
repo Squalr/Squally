@@ -45,10 +45,12 @@ protected:
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
+	void openPauseMenu();
 
 	cocos2d::Node* hudNode;
 	Hud* hud;
 	Hud* hackerModeVisibleHud;
+	Hud* miniGameHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
@@ -62,7 +64,6 @@ protected:
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
-	void openPauseMenu();
 
 	Hud* hackerModeGlow;
 	Hud* sensingGlow;
