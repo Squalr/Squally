@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="68" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="747">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="68" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="749">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -83,7 +83,7 @@
    <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 594.354,-902.867 2509.56,-901.261 3113.08,-1105.99 3218.65,-2215.55 825.969,-2207.97 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
   </object>
   <object id="743" name="blue-grass" type="terrain" x="3787.02" y="3283.51">
-   <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 2636.3,-1133.54 2993.19,-1247.03 3585.51,-1303.03 5745.48,-1291.05 5732.79,-3402.02 3034.07,-3352.01 3021.89,-2193.25 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
+   <polygon points="-236.945,-1198.04 32.513,-1229.35 436.148,-1221.62 2636.3,-1133.54 2993.19,-1247.03 3585.51,-1303.03 5745.48,-1291.05 5732.79,-3402.02 2039.05,-3387.54 2058.85,-2200.36 269.368,-2191.19 -251.306,-2181.45 -250.64,-1827.21"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -2">
@@ -298,7 +298,7 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="746" name="camera-stop" type="object" x="4043.61" y="704.151" width="128" height="128" rotation="180"/>
+  <object id="746" name="camera-stop" type="object" x="5839.01" y="480.038" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -353,7 +353,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="3913.27" y="960.021" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="5100.08" y="949.032" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

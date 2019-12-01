@@ -53,37 +53,32 @@ void CameraStop::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	Vec2 cameraDistance = thisCoords - cameraCoords;
-	Vec2 cameraInset = Vec2(visibleSize / 2.0f) - (thisCoords - cameraCoords);
+	Vec2 cameraInset = cameraDistance + Vec2(visibleSize / 2.0f);
 	
-	float distL = cameraDistance.x - this->stopSize.width / 2.0f;
-	float distR = cameraDistance.x + this->stopSize.width / 2.0f;
-	float distT = cameraDistance.y - this->stopSize.height / 2.0f;
-	float distB = cameraDistance.y + this->stopSize.height / 2.0f;
+	// Determine how far into the screen each side is
+	float leftSideInset = visibleSize.width / 2.0f - cameraDistance.x + this->stopSize.width / 2.0f;
+	float rightSideInset = visibleSize.width - leftSideInset + this->stopSize.width;
+	float topSideInset = visibleSize.height / 2.0f - cameraDistance.y + this->stopSize.height / 2.0f;
+	float bottomSideInset = topSideInset + visibleSize.height + this->stopSize.height;
 
-	if ((distL <= visibleSize.width / 2.0f && distR >= -visibleSize.width / 2.0f) &&
-		(distT <= visibleSize.height / 2.0f && distB >= -visibleSize.height / 2.0f))
+	if (std::abs(cameraDistance.x) <= visibleSize.width / 2.0f + this->stopSize.width / 2.0f &&
+		std::abs(cameraDistance.y) <= visibleSize.height / 2.0f + this->stopSize.height / 2.0f)
 	{
-		if (cameraInset.x < cameraInset.y)
+		if (leftSideInset <= rightSideInset && leftSideInset <= topSideInset && leftSideInset <= bottomSideInset)
 		{
-			if (std::abs(distL) < std::abs(distR))
-			{
-				GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x - cameraInset.x - this->stopSize.width / 2.0f, cameraCoords.y));
-			}
-			else
-			{
-				GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x - cameraInset.x + this->stopSize.width / 2.0f, cameraCoords.y));
-			}
+			GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x - leftSideInset, cameraCoords.y));
+		}
+		else if (rightSideInset <= topSideInset && rightSideInset <= bottomSideInset)
+		{
+			GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x + rightSideInset, cameraCoords.y));
+		}
+		else if (topSideInset <= bottomSideInset)
+		{
+			GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x, cameraCoords.y - topSideInset));
 		}
 		else
 		{
-			if (std::abs(distT) < std::abs(distB))
-			{
-				GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x, cameraCoords.y - cameraInset.y - this->stopSize.height / 2.0f));
-			}
-			else
-			{
-				GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x, cameraCoords.y - cameraInset.y + this->stopSize.height / 2.0f));
-			}
+			GameCamera::getInstance()->setCameraPosition(Vec2(cameraCoords.x, cameraCoords.y  + bottomSideInset));
 		}
 	}
 }
