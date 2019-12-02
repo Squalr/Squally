@@ -179,7 +179,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
 {
-	if (this->capacity == Inventory::InfiniteCapacity || this->items.size() < this->capacity)
+	if (this->capacity == Inventory::InfiniteCapacity || int(this->items.size()) < this->capacity)
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);

@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Offhand::Offhand(CurrencyInventory* cost, int minAttack, int maxAttack) : super(cost)
+Offhand::Offhand(CurrencyInventory* cost, int minAttack, int maxAttack, ItemMeta itemMeta) : super(cost, itemMeta)
 {
 	this->minAttack = minAttack;
 	this->maxAttack = maxAttack;

@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-Consumable::Consumable(CurrencyInventory* cost) : super(cost)
+Consumable::Consumable(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
 {
 	this->associatedAttack = nullptr;
 }

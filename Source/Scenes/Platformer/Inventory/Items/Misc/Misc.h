@@ -6,7 +6,7 @@ class Misc : public Item
 {
 public:
 protected:
-	Misc(CurrencyInventory* cost);
+	Misc(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	~Misc();
 
 private:

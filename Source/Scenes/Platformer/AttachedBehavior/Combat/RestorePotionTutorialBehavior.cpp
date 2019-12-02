@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
@@ -98,16 +99,13 @@ void RestorePotionTutorialBehavior::runTutorial()
 			HackableEvents::TriggerAllowHackerMode();
 			HackableEvents::TriggerForceHackerModeEnable();
 
-			this->runAction(Sequence::create(
-				CallFunc::create([=]()
-				{
-					this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-					{
-						interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
-					});
-				}),
-				nullptr
-			));
+			// Hackermode will pause scrappy and render the dialogue box inaccessible -- remedy this
+			GameUtils::resume(this->scrappy);
+			
+			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			{
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
+			});
 		}),
 		nullptr
 	));

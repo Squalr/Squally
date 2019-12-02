@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
@@ -25,12 +26,12 @@ DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 
 DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, 1, 2, CardPoolTier1Rare::create())
 {
-	this->addItemToPool(HealthPotion::create(), 1.0f);
-	this->addItemToPool(ManaPotion::create(), 1.0f);
-	this->addItemToPool(WoodenMallet::create(), 0.01f);
-	this->addItemToPool(WoodCutter::create(), 0.01f);
-	this->addItemToPool(WoodenWand::create(), 0.01f);
-	this->addItemToPool(CompositeBow::create(), 0.01f);
+	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Epic));
 }
 
 DropPoolEFGeneric::~DropPoolEFGeneric()

@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Equipable::Equipable(CurrencyInventory* cost) : super(cost)
+Equipable::Equipable(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
 {
 }
 

@@ -373,6 +373,7 @@ const std::string ObjectResources::Items_Equipment_Weapons_Wands_SerpentWand = "
 const std::string ObjectResources::Items_Equipment_Weapons_Wands_TaserRod = "Private/Platformer/Objects/Items/Equipment/Weapons/Wands/TaserRod.png";
 const std::string ObjectResources::Items_Equipment_Weapons_Wands_WitchDoctorsWand = "Private/Platformer/Objects/Items/Equipment/Weapons/Wands/WitchDoctorsWand.png";
 const std::string ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand = "Private/Platformer/Objects/Items/Equipment/Weapons/Wands/WoodenWand.png";
+const std::string ObjectResources::Items_Error_MissingNo = "Private/Platformer/Objects/Items/Error/MissingNo.png";
 const std::string ObjectResources::Items_Misc_ALCHEMY = "Private/Platformer/Objects/Items/Misc/ALCHEMY.png";
 const std::string ObjectResources::Items_Misc_BAG_1 = "Private/Platformer/Objects/Items/Misc/BAG 1.png";
 const std::string ObjectResources::Items_Misc_BAG_2 = "Private/Platformer/Objects/Items/Misc/BAG 2.png";

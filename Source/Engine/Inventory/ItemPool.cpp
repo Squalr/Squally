@@ -7,6 +7,7 @@
 #include "Engine/Events/ItemEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPool.h"
@@ -23,10 +24,8 @@ ItemPool::ItemPool(std::string poolName) : ItemPool(ValueMap(), poolName)
 ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
-	this->itemPool = std::vector<std::tuple<Item*, float>>();
-	this->weightSum = 0.0f;
+	this->itemPool = std::vector<ItemChance*>();
 	this->itemsNode = Node::create();
-	this->weightSumStale = false;
 
 	this->addChild(this->itemsNode);
 }
@@ -67,75 +66,50 @@ std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems
 
 Item* ItemPool::getItemFromPool(bool removeSampledItem)
 {
-	this->calculateWeightSum();
-
-	float weight = RandomHelper::random_real(0.0f, this->weightSum);
-
-	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
+	for (auto itemChance : this->itemPool)
 	{
-		weight -= std::get<1>(*it);
-		Item* item = std::get<0>(*it);
+		float probability = itemChance->calculateProbability({ });
 
-		if (weight <= 0.0f)
+		if (probability > 0.0f)
 		{
-			Item* retItem = item == nullptr ? nullptr : item->clone();
-
-			if (removeSampledItem)
+			float rng = RandomHelper::random_real(0.0f, 1.0f);
+			
+			if (rng <= probability)
 			{
-				this->removeItemFromPool(item);
-			}
+				Item* retItem = itemChance->getItem() == nullptr ? nullptr : itemChance->getItem()->clone();
 
-			return retItem;
+				this->removeItemFromPool(itemChance);
+
+				return retItem;
+			}
 		}
 	}
 
 	return nullptr;
 }
 
-void ItemPool::addItemToPool(Item* item, float weight)
+void ItemPool::addItemToPool(ItemChance* itemChance)
 {
-	std::tuple<Item*, float> itemAndWeight = { item, weight };
-
-	this->itemPool.push_back(itemAndWeight);
-
-	if (item != nullptr)
+	if (itemChance == nullptr)
 	{
-		this->itemsNode->addChild(item);
+		return;
 	}
 
-	this->weightSumStale = true;
+	this->itemPool.push_back(itemChance);
+	this->itemsNode->addChild(itemChance);
 }
 
-void ItemPool::removeItemFromPool(Item* item)
+void ItemPool::removeItemFromPool(ItemChance* itemChance)
 {
-	this->itemPool.erase(std::remove_if(this->itemPool.begin(), this->itemPool.end(), [=](std::tuple<Item*, float> entry)
+	this->itemPool.erase(std::remove_if(this->itemPool.begin(), this->itemPool.end(), [=](ItemChance* entry)
 	{
-		if (std::get<0>(entry) == item)
+		if (entry == itemChance)
 		{
-			this->itemsNode->removeChild(item);
+			this->itemsNode->removeChild(itemChance);
 
 			return true;
 		}
 
 		return false;
 	}), this->itemPool.end());
-
-	this->weightSumStale = true;
-}
-
-void ItemPool::calculateWeightSum()
-{
-	if (!this->weightSumStale)
-	{
-		return;
-	}
-
-	this->weightSum = 0.0f;
-
-	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
-	{
-		this->weightSum += std::get<1>(*it);
-	}
-
-	this->weightSumStale = false;
 }

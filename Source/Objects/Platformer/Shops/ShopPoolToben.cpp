@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
@@ -26,9 +27,9 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 
 ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName, CardShopPoolTier1::create())
 {
-	this->addItemToPool(HealthPotion::create(), 1.0f);
-	this->addItemToPool(ManaPotion::create(), 1.0f);
-	this->addItemToPool(SpeedRune::create(), 1.0f);
+	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SpeedRune::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolToben::~ShopPoolToben()

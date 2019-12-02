@@ -69,6 +69,7 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 {
 	this->dialogueEffectComplete = false;
 
+	TypeWriterEffect::cancelEffect(this->text);
 	this->text->setLocalizedString(localizedString);
 
 	this->panel->runAction(FadeTo::create(0.25f, 255));
@@ -129,6 +130,7 @@ void DialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dia
 		}
 	}
 
+	TypeWriterEffect::cancelEffect(this->text);
 	TypeWriterEffect::runTypeWriterEffect(this->text, [=]() { this->onTypeWriterEffectComplete(); });
 }
 

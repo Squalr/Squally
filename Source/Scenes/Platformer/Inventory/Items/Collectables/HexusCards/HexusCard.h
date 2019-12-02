@@ -10,7 +10,7 @@ public:
 	virtual std::string getCardKey() = 0;
 
 protected:
-	HexusCard(CurrencyInventory* cost);
+	HexusCard(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	~HexusCard();
 
 private:

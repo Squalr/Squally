@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
@@ -25,12 +26,12 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 
 PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, 1, 1)
 {
-	this->addItemToPool(HealthPotion::create(), 1.0f);
-	this->addItemToPool(ManaPotion::create(), 1.0f);
-	this->addItemToPool(WoodenMallet::create(), 1.0f);
-	this->addItemToPool(WoodCutter::create(), 0.15f);
-	this->addItemToPool(WoodenWand::create(), 0.15f);
-	this->addItemToPool(CompositeBow::create(), 0.15f);
+	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::VeryCommon));
+	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Uncommon));
 }
 
 PocketPoolEFGeneric::~PocketPoolEFGeneric()

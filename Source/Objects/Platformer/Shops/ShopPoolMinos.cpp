@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
@@ -26,11 +27,11 @@ ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 
 ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName)
 {
-	this->addItemToPool(IronSword::create(), 1.0f);
-	this->addItemToPool(WoodenMallet::create(), 1.0f);
-	this->addItemToPool(WoodCutter::create(), 1.0f);
-	this->addItemToPool(WoodenWand::create(), 1.0f);
-	this->addItemToPool(CompositeBow::create(), 1.0f);
+	this->addItemToPool(ItemChance::create(IronSword::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolMinos::~ShopPoolMinos()

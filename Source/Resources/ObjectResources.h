@@ -374,6 +374,7 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Weapons_Wands_TaserRod;
 	extern const std::string Items_Equipment_Weapons_Wands_WitchDoctorsWand;
 	extern const std::string Items_Equipment_Weapons_Wands_WoodenWand;
+	extern const std::string Items_Error_MissingNo;
 	extern const std::string Items_Misc_ALCHEMY;
 	extern const std::string Items_Misc_BAG_1;
 	extern const std::string Items_Misc_BAG_2;

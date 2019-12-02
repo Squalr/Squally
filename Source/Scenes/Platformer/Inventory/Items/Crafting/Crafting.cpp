@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Crafting::Crafting(CurrencyInventory* cost) : super(cost)
+Crafting::Crafting(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
 {
 }
 

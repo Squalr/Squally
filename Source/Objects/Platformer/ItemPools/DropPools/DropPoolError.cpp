@@ -5,6 +5,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -25,12 +26,7 @@ DropPoolError* DropPoolError::create(ValueMap& properties)
 
 DropPoolError::DropPoolError(ValueMap& properties) : super(properties, DropPoolError::PoolName, 1, 3, CardPoolTier1::create())
 {
-	this->addItemToPool(HealthPotion::create(), 1.0f);
-	this->addItemToPool(ManaPotion::create(), 1.0f);
-	this->addItemToPool(WoodenMallet::create(), 0.01f);
-	this->addItemToPool(WoodCutter::create(), 0.01f);
-	this->addItemToPool(WoodenWand::create(), 0.01f);
-	this->addItemToPool(CompositeBow::create(), 0.01f);
+	this->addItemToPool(ItemChance::create(MissingNo::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolError::~DropPoolError()

@@ -5,10 +5,10 @@
 class CardPoolTier1 : public MinMaxPool
 {
 public:
-	static CardPoolTier1* create();
+	static CardPoolTier1* create(int maxCards = 2);
 
 protected:
-	CardPoolTier1();
+	CardPoolTier1(int maxCards);
 	~CardPoolTier1();
 
 private:

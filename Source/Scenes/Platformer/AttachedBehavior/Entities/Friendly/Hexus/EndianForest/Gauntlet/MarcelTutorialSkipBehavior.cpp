@@ -2,7 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/ItemPools/HexusPools/HexusPoolMarcel.h"
+#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolMarcel.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"

@@ -11,7 +11,7 @@ public:
 	virtual std::vector<PlatformerAttack*> cloneAssociatedAttacks();
 
 protected:
-	Equipable(CurrencyInventory* cost);
+	Equipable(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	~Equipable();
 
 private:

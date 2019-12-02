@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 
 class Item;
+class ItemChance;
 
 class ItemPool : public GameObject
 {
@@ -17,19 +18,14 @@ protected:
 
 	virtual Item* getItemFromPool(bool removeSampledItem);
 	virtual std::vector<Item*> getItemsFromPool(int count, bool removeSampledItems);
-	void addItemToPool(Item* item, float weight);
-	void removeItemFromPool(Item* item);
+	void addItemToPool(ItemChance* itemChance);
+	void removeItemFromPool(ItemChance* itemChance);
 	
-	std::vector<std::tuple<Item*, float>> itemPool;
+	std::vector<ItemChance*> itemPool;
 
 private:
 	typedef GameObject super;
 
-	void calculateWeightSum();
-
 	cocos2d::Node* itemsNode;
-
 	std::string poolName;
-	bool weightSumStale;
-	float weightSum;
 };

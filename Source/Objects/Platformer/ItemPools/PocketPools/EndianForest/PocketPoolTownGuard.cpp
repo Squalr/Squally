@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
@@ -25,7 +26,7 @@ PocketPoolTownGuard* PocketPoolTownGuard::create(ValueMap& properties)
 
 PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, 1, 1)
 {
-	this->addItemToPool(TownKey::create(), 1.0f);
+	this->addItemToPool(ItemChance::create(TownKey::create(), ItemChance::Probability::Guaranteed));
 }
 
 PocketPoolTownGuard::~PocketPoolTownGuard()
