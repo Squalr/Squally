@@ -10,7 +10,7 @@ public:
 
 protected:
 	AttachedBehavior(GameObject* owner);
-	~AttachedBehavior();
+	virtual ~AttachedBehavior();
 
 	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;

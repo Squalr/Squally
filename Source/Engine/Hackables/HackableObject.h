@@ -44,7 +44,7 @@ public:
 protected:
 	HackableObject(const cocos2d::ValueMap& properties);
 	HackableObject();
-	~HackableObject();
+	virtual ~HackableObject();
 
 	bool showClippy;
 

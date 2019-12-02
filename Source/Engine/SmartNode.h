@@ -30,7 +30,7 @@ public:
 
 protected:
 	SmartNode();
-	~SmartNode();
+	virtual ~SmartNode();
 	void onEnter() override;
 
 	// IMPORTANT: This method may not get called if the object is being disposed (new scene) as an optimization.

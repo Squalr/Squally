@@ -99,22 +99,21 @@ void SquallyMovementBehavior::onLoad()
 		this->onMovementChanged();
 	});
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
+	{
+		this->isDisposing = true;
+
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+	}));
+
 	if (!this->isPositionSavingDisabled)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
-		{
-			this->isDisposing = true;
-
-			SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-			SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-		}));
-
 		Vec2 position = GameUtils::getWorldCoords(this->squally);
+		float x = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat();
+		float y = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat();
 
-		this->squally->setPosition(Vec2(
-			SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionX, Value(position.x)).asFloat(),
-			SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyPositionY, Value(position.y)).asFloat()
-		));
+		this->squally->setPosition(Vec2(x, y));
 	}
 	
 	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();

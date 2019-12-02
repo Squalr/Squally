@@ -147,7 +147,7 @@ public:
 protected:
 	GameObject();
 	GameObject(const cocos2d::ValueMap& properties);
-	~GameObject();
+	virtual ~GameObject();
 	
 	void onEnter() override;
 	void initializeListeners() override;

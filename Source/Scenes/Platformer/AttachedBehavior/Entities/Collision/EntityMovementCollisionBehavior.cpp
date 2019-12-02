@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
@@ -81,13 +82,17 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 
 EntityMovementCollisionBehavior::~EntityMovementCollisionBehavior()
 {
+	if (this->movementCollision->getParent() != nullptr && this->movementCollision->getParent() != this)
+	{
+		this->movementCollision->getParent()->removeChild(this->movementCollision);
+	}
 }
 
 void EntityMovementCollisionBehavior::onLoad()
 {
 	this->buildMovementCollision();
 	this->buildWallDetectors();
-
+	
 	const std::string identifier = std::to_string((unsigned long long)(this->entity));
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventWarpToLocationPrefix + identifier, [=](EventCustom* eventCustom)

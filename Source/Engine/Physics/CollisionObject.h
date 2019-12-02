@@ -24,7 +24,7 @@ public:
 	static CollisionObject* create(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
 	static CollisionObject* create(cocos2d::PhysicsBody* physicsBody, std::string collisionName, bool isDynamic, bool canRotate);
-	~CollisionObject();
+	virtual ~CollisionObject();
 
 	enum class CollisionResult
 	{
