@@ -357,6 +357,8 @@ bool PlatformerMap::loadMap(std::string mapResource)
 
 void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 {
+	SaveManager::save();
+	
 	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
 	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
 

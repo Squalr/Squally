@@ -331,8 +331,7 @@ void CollisionObject::bindTo(GameObject* bindTarget)
 
 	if (this->bindTarget != nullptr && this->bindTarget->getParent() != nullptr)
 	{
-		GameUtils::changeParent(this, this->bindTarget->getParent(), true);
-		this->setPosition(bindTarget->getPosition());
+		// this->setPosition(bindTarget->getPosition());
 	}
 }
 
@@ -516,7 +515,8 @@ void CollisionObject::updateBinds()
 		}
 		else
 		{
-			this->bindTarget->setPosition(this->getPosition());
+			this->bindTarget->setPosition(GameUtils::getWorldCoords(this));
+			this->setPosition(Vec2::ZERO);
 		}
 	}
 }

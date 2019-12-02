@@ -44,8 +44,9 @@ public:
 		PlatformerEntity* entity;
 		bool isEnemySpawn;
 		int spawnIndex;
+		std::function<void()> onSpawnSuccess;
 
-		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex)
+		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex, std::function<void()> onSpawnSuccess) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex), onSpawnSuccess(onSpawnSuccess)
 		{
 		}
 	};

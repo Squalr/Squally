@@ -341,10 +341,11 @@ void CombatMap::spawnEntities()
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 					
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
-					friendlyEntities.push_back(entity);
-					
-					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
+					{
+						entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
+						friendlyEntities.push_back(entity);
+					}));
 				}
 			);
 
@@ -386,16 +387,17 @@ void CombatMap::spawnEntities()
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
 
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
-
-					entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
-						entityDropTableBehavior->setDropTable(this->enemyData[index].dropPool);
-					});
+						entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
 
-					enemyEntities.push_back(entity);
+						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+						{
+							entityDropTableBehavior->setDropTable(this->enemyData[index].dropPool);
+						});
 
-					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
+						enemyEntities.push_back(entity);
+					}));
 				}
 			);
 
