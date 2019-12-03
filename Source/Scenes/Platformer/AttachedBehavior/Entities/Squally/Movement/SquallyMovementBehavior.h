@@ -18,6 +18,7 @@ protected:
 	~SquallyMovementBehavior();
 
 	void onLoad() override;
+	void update(float dt) override;
 
 private:
 	typedef AttachedBehavior super;

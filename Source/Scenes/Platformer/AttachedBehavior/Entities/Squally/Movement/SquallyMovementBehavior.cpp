@@ -125,18 +125,8 @@ void SquallyMovementBehavior::onLoad()
 	}
 }
 
-void SquallyMovementBehavior::onMovementChanged()
+void SquallyMovementBehavior::update(float dt)
 {
-	bool isCinematicHijacked = this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
-
-	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
-	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
-
-	if (isCinematicHijacked)
-	{
-		return;
-	}
-
 	// Soft save the player's position
 	if (!this->isPositionSavingDisabled && !this->isDisposing)
 	{
@@ -149,6 +139,19 @@ void SquallyMovementBehavior::onMovementChanged()
 			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
 			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
 		}
+	}
+}
+
+void SquallyMovementBehavior::onMovementChanged()
+{
+	bool isCinematicHijacked = this->squally->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+
+	this->squally->setState(StateKeys::MovementX, Value((this->leftPressed ? -1.0f : 0.0f) + (this->rightPressed ? 1.0f : 0.0f)));
+	this->squally->setState(StateKeys::MovementY, Value((this->downPressed ? -1.0f : 0.0f) + (this->upPressed ? 1.0f : 0.0f)));
+
+	if (isCinematicHijacked)
+	{
+		return;
 	}
 }
 
