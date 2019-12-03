@@ -26,6 +26,7 @@ enum class PlatformerCollisionType
 	Collectable			= 1 << 18,
 	Trigger				= 1 << 19,
 
+	KillPlane			= (int)EngineCollisionTypes::KillPlane,
 	Solid				= (int)EngineCollisionTypes::Solid,
 	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,

@@ -66,7 +66,3 @@ void EnemyHealthBehavior::onLoad()
 		}
 	}
 }
-
-void EnemyHealthBehavior::saveState()
-{
-}

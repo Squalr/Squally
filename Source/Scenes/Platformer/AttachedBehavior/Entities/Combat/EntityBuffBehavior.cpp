@@ -1,13 +1,8 @@
 #include "EntityBuffBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
-#include "Engine/Physics/CollisionObject.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
@@ -41,6 +36,8 @@ EntityBuffBehavior::~EntityBuffBehavior()
 void EntityBuffBehavior::applyBuff(Buff* buff)
 {
 	this->addChild(buff);
+
+	CombatEvents::TriggerBuffApplied(CombatEvents::BuffAppliedArgs(this->entity, buff));
 }
 
 void EntityBuffBehavior::onLoad()

@@ -33,6 +33,7 @@ ScrappyHackableCueBehavior::ScrappyHackableCueBehavior(GameObject* owner) : supe
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
 	this->cueCooldown = 0.0f;
+	this->disabled = false;
 
 	if (this->scrappy == nullptr)
 	{
@@ -42,6 +43,11 @@ ScrappyHackableCueBehavior::ScrappyHackableCueBehavior(GameObject* owner) : supe
 
 ScrappyHackableCueBehavior::~ScrappyHackableCueBehavior()
 {
+}
+
+void ScrappyHackableCueBehavior::disable()
+{
+	this->disabled = true;
 }
 
 void ScrappyHackableCueBehavior::update(float dt)
@@ -60,7 +66,7 @@ void ScrappyHackableCueBehavior::onLoad()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHackableCombatCue, [=](EventCustom* eventCustom)
 	{
-		if (this->cueCooldown <= 0.0f)
+		if (!this->disabled && this->cueCooldown <= 0.0f)
 		{
 			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{

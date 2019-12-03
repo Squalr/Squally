@@ -11,18 +11,14 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Item.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -44,14 +40,13 @@ RestorePotionTutorialBehavior* RestorePotionTutorialBehavior::create(GameObject*
 RestorePotionTutorialBehavior::RestorePotionTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->scrappy = nullptr;
+	this->hasTutorialRun = false;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->hasTutorialRun = false;
-	this->scrappy = nullptr;
 }
 
 RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
@@ -60,22 +55,24 @@ RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
 
 void RestorePotionTutorialBehavior::onLoad()
 {
-	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffApplied, [=](EventCustom* eventCustom)
 	{
-		RestorePotion* restorePotion = entityInventoryBehavior->getInventory()->getItemOfType<RestorePotion>();
+		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getUserData());
 
-		if (restorePotion != nullptr)
+		if (dynamic_cast<RestoreHealth*>(args->buff) != nullptr)
 		{
-			restorePotion->getAssociatedAttack()->registerAttackCompleteCallback([=]()
-			{
-				this->runTutorial();
-			});
+			this->runTutorial();
 		}
-	});
+	}));
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
+
+		this->scrappy->watchForAttachedBehavior<ScrappyHackableCueBehavior>([=](ScrappyHackableCueBehavior* scrappyHackableCueBehavior)
+		{
+			scrappyHackableCueBehavior->disable();
+		});
 	}, Scrappy::MapKeyScrappy);
 
 	HackableEvents::TriggerDisallowHackerMode();

@@ -86,6 +86,16 @@ void SquallyCollisionBehavior::onLoad()
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
+
+		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
+		{
+			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			{
+				this->squally->setState(StateKeys::IsAlive, Value(false));
+			}
+
+			return CollisionObject::CollisionResult::DoNothing;
+		});
 	});
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
@@ -103,6 +113,16 @@ void SquallyCollisionBehavior::onLoad()
 		{
 			// Encountered enemy body/weapon -- not a first-strike
 			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, false));
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			this->squally->setState(StateKeys::IsAlive, Value(false));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

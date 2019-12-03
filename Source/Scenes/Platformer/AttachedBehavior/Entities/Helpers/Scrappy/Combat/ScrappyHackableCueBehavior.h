@@ -10,6 +10,8 @@ class ScrappyHackableCueBehavior : public AttachedBehavior
 public:
 	static ScrappyHackableCueBehavior* create(GameObject* owner);
 
+	void disable();
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
@@ -23,6 +25,7 @@ private:
 	typedef AttachedBehavior super;
 
 	float cueCooldown;
-
+	bool disabled;
+	
 	Scrappy* scrappy;
 };

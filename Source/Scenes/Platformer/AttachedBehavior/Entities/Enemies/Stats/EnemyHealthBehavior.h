@@ -20,8 +20,6 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
-	
-	void saveState();
 
 	PlatformerEnemy* entity;
 };

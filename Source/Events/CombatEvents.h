@@ -8,6 +8,7 @@ namespace cocos2d
 	class Node;
 }
 
+class Buff;
 class PlatformerEntity;
 class TimelineEntry;
 
@@ -21,6 +22,7 @@ public:
 	static const std::string EventDisableItems;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
+	static const std::string EventBuffApplied;
 	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
 	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
 	static const std::string EventEntityTimelineReset;
@@ -115,6 +117,16 @@ public:
 		PlatformerEntity* target;
 
 		CastInterruptArgs(PlatformerEntity* target) : target(target)
+		{
+		}
+	};
+
+	struct BuffAppliedArgs
+	{
+		PlatformerEntity* target;
+		Buff* buff;
+
+		BuffAppliedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
 		{
 		}
 	};
@@ -226,6 +238,7 @@ public:
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
+	static void TriggerBuffApplied(BuffAppliedArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
