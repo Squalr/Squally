@@ -66,6 +66,9 @@ BlueGrassTerrain::BlueGrassTerrain(ValueMap& properties) : super(
 		Vec2(0.0f, -8.0f),
 		// TopConnectorConvexDeep
 		Vec2(0.0f, -14.0f),
+		// BottomConnector
+		Vec2::ZERO,
+		// FillColor
 		Color4B(11, 30, 39, 255)))
 {
 }

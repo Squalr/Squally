@@ -48,6 +48,7 @@ public:
 		cocos2d::Vec2 topConnectorConcaveDeepOffset;
 		cocos2d::Vec2 topConnectorConvexOffset;
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
+		cocos2d::Vec2 bottomConnectorOffset;
 		cocos2d::Color4B infillColor;
 
 		TerrainData(
@@ -83,6 +84,7 @@ public:
 			cocos2d::Vec2 topConnectorConcaveDeepOffset,
 			cocos2d::Vec2 topConnectorConvexOffset,
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
+			cocos2d::Vec2 bottomConnectorOffset,
 			cocos2d::Color4B infillColor) :
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
@@ -116,6 +118,7 @@ public:
 			topConnectorConcaveDeepOffset(topConnectorConcaveDeepOffset),
 			topConnectorConvexOffset(topConnectorConvexOffset),
 			topConnectorConvexDeepOffset(topConnectorConvexDeepOffset),
+			bottomConnectorOffset(bottomConnectorOffset),
 			infillColor(infillColor)
 		{
 		}
@@ -148,6 +151,7 @@ private:
 		None
 	};
 
+	void initResources();
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain(TerrainData terrainData);
 	void buildCollision();
@@ -166,6 +170,7 @@ private:
 	TerrainData terrainData;
 	bool isHollow;
 	bool isInactive;
+	bool isFlipped;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;
