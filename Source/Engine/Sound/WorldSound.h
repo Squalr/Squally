@@ -13,5 +13,5 @@ private:
 	typedef Sound super;
 
 	WorldSound(std::string soundResource);
-	~WorldSound();
+	virtual ~WorldSound();
 };

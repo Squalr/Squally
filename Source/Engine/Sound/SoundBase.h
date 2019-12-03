@@ -7,14 +7,14 @@ class SoundBase : public GlobalNode
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	void stop();
-	void stopAndFadeOut();
+	void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
 	void setVolumeMultiplier(float volumeMultiplier);
 	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
 	void setSoundResource(std::string soundResource);
 
 protected:
 	SoundBase(std::string soundResource);
-	~SoundBase();
+	virtual ~SoundBase();
 
 	void onEnter() override;
 	void update(float dt) override;
@@ -36,6 +36,7 @@ private:
 	int fadeOutTick;
 	bool enableCameraDistanceFade;
 	bool isFading;
+	std::function<void()> onFadeOutCallback;
 
 	static const std::string KeyScheduleFadeOutAudio;
 	static const int INVALID_ID;

@@ -34,6 +34,7 @@ SmartScene::SmartScene()
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
+	this->disposeCallbacks = std::vector<std::function<void()>>();
 
 	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
 
@@ -45,6 +46,10 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
+	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	{
+		(*it)();
+	}
 }
 
 void SmartScene::onEnter()
@@ -336,4 +341,9 @@ void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyC
 			}
 		}
 	}));
+}
+
+void SmartScene::onDispose(std::function<void()> task)
+{
+	this->disposeCallbacks.push_back(task);
 }

@@ -9,7 +9,7 @@ public:
 
 protected:
 	Sound(std::string soundResource);
-	~Sound();
+	virtual ~Sound();
 
 	void initializeListeners() override;
 	void pause() override;

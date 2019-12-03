@@ -9,6 +9,7 @@
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -35,10 +36,8 @@ MusicDeserializer::~MusicDeserializer()
 
 void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	Music* music = Music::create(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString());
+	Music* music = Music::createAndAddGlobally(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString(), owner);
 	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
 
-	owner->addChild(music);
-
-	music->play(true, delay);
+	MusicPlayer::play(music, true, delay);
 }

@@ -11,6 +11,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
@@ -48,7 +49,7 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
-	this->music = Music::create(MusicResources::WeWillGetThereTogether);
+	this->music = Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
 	
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -138,7 +139,6 @@ TitleScreen::TitleScreen()
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 	this->addChild(this->debugButton);
-	this->addChild(this->music);
 }
 
 TitleScreen::~TitleScreen()
@@ -149,7 +149,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	this->music->play(true);
+	MusicPlayer::play(this->music, true);
 
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);

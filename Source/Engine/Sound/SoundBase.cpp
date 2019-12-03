@@ -26,6 +26,7 @@ SoundBase::SoundBase(std::string soundResource) : super()
 	this->distanceMultiplier = 1.0f;
 	this->volumeMultiplier = 1.0f;
 	this->fadeOutTick = 0;
+	this->onFadeOutCallback = nullptr;
 }
 
 SoundBase::~SoundBase()
@@ -69,6 +70,12 @@ void SoundBase::update(float dt)
 				if (this->fadeMultiplier == 0.0f)
 				{
 					AudioEngine::stop(this->activeTrackId);
+
+					if (this->onFadeOutCallback != nullptr)
+					{
+						this->onFadeOutCallback();
+					}
+
 					this->isFading = false;
 				}
 				else
@@ -116,9 +123,10 @@ void SoundBase::stop()
 	AudioEngine::stop(this->activeTrackId);
 }
 
-void SoundBase::stopAndFadeOut()
+void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
 {
 	this->isFading = true;
+	this->onFadeOutCallback = onFadeOutCallback;
 }
 
 void SoundBase::setVolumeMultiplier(float volumeMultiplier)

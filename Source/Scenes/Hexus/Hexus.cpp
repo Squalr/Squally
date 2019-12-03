@@ -12,6 +12,7 @@
 #include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
@@ -110,8 +111,8 @@ Hexus::Hexus()
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = Music::create(MusicResources::Hexus1);
-	this->musicB = Music::create(MusicResources::Hexus2);
+	this->musicA = Music::createAndAddGlobally(MusicResources::Hexus1, this);
+	this->musicB = Music::createAndAddGlobally(MusicResources::Hexus2, this);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;
@@ -190,8 +191,6 @@ Hexus::Hexus()
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->helpMenuComponent);
-	this->addChild(this->musicA);
-	this->addChild(this->musicB);
 }
 
 Hexus::~Hexus()
@@ -289,11 +288,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
 	{
-		this->musicA->play(true);
+		MusicPlayer::play(this->musicA, true);
 	}
 	else
 	{
-		this->musicB->play(true);
+		MusicPlayer::play(this->musicB, true);
 	}
 }
 
