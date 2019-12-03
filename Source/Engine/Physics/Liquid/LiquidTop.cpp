@@ -141,13 +141,22 @@ void LiquidTop::update(float dt)
     #endif
 }
 
-void LiquidTop::splash(float x, float speed)
+void LiquidTop::splash(float x, float speed, float splashRadius, float decay)
 {
-    int index = int((x / this->surfaceSize.width) * float(this->columns.size()));
+    int centralIndex = int((x / this->surfaceSize.width) * float(this->columns.size()));
+    int minIndex = int(((x - splashRadius) / this->surfaceSize.width) * float(this->columns.size()));
+    int maxIndex = int(((x + splashRadius) / this->surfaceSize.width) * float(this->columns.size()));
 
-    index = MathUtils::clamp(index, 0, this->columns.size() - 1);
+    centralIndex = MathUtils::clamp(centralIndex, 0, this->columns.size() - 1);
+    minIndex = MathUtils::clamp(minIndex, 0, this->columns.size() - 1);
+    maxIndex = MathUtils::clamp(maxIndex, 0, this->columns.size() - 1);
 
-    columns[index].speed = speed;
+    for (int index = minIndex; index <= maxIndex; index++)
+    {
+        int distance = std::abs(centralIndex - index);
+
+        columns[index].speed = speed - decay * float(distance);
+    }
 }
 
 void LiquidTop::draw(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags)

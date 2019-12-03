@@ -49,7 +49,7 @@ private:
     void update(float dt) override;
     void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4& transform, uint32_t flags) override;
 
-    void splash(float index, float speed);
+    void splash(float index, float speed, float splashRadius, float decay);
     void onCustomDraw(const cocos2d::Mat4 &transform);
 
     std::vector<ColumnData> columns;
