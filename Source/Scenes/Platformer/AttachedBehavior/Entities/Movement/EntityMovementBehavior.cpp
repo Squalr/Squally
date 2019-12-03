@@ -173,11 +173,11 @@ void EntityMovementBehavior::update(float dt)
 	{
 		if (movement.x < 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(true);
+			this->entity->getAnimations()->setFlippedX(true ^ this->entity->isFlippedY());
 		}
 		else if (movement.x > 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(false);
+			this->entity->getAnimations()->setFlippedX(false ^ this->entity->isFlippedY());
 		}
 	}
 

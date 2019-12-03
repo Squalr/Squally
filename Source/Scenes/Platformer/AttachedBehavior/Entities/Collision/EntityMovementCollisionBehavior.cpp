@@ -269,7 +269,6 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 
 	if (this->entity->isFlippedY())
 	{
-
 		Vec2 offsetLeft = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
 		Vec2 offsetRight = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f + this->entity->getHoverHeight() / 2.0f);
 		this->leftCollision->inverseGravity();
