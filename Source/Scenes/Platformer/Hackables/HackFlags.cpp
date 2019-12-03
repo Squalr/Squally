@@ -29,7 +29,7 @@ int HackFlagUtils::GetCurrentHackFlags(Inventory* inventory)
 
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
-		if (HackFlagUtils::EssenceFlagMap.find((*it)->getItemName()) != HackFlagUtils::EssenceFlagMap.end())
+		if ((*it) != nullptr && HackFlagUtils::EssenceFlagMap.find((*it)->getItemName()) != HackFlagUtils::EssenceFlagMap.end())
 		{
 			flags |= HackFlagUtils::EssenceFlagMap[(*it)->getItemName()];
 		}

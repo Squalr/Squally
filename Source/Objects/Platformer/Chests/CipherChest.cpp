@@ -162,12 +162,18 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 	{
 		PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(bonusReward, [&](Item* item)
 		{
-			items.push_back(item);
+			if (item != nullptr)
+			{
+				items.push_back(item);
+			}
 		}));
 	}
 
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
-		PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemFound::create()));
+		if ((*it) != nullptr)
+		{
+			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemFound::create()));
+		}
 	}
 }

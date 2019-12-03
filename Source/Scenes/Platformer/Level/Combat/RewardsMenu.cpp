@@ -133,7 +133,10 @@ void RewardsMenu::loadRewards()
 
 				for (auto it = items.begin(); it != items.end(); it++)
 				{
-					PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
+					if ((*it) != nullptr)
+					{
+						PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
+					}
 				}
 			}
 		});

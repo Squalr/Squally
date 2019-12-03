@@ -115,17 +115,24 @@ int HexusBehaviorBase::getDraws()
 
 void HexusBehaviorBase::addWin()
 {
-	return this->entity->saveObjectState("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(this->getWins() + 1));
+	int wins = this->getWins() + 1;
+
+	if (wins == 1)
+	{
+		this->giveItems();
+	}
+
+	this->entity->saveObjectState("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
 }
 
 void HexusBehaviorBase::addLoss()
 {
-	return this->entity->saveObjectState("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
+	this->entity->saveObjectState("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
 }
 
 void HexusBehaviorBase::addDraw()
 {
-	return this->entity->saveObjectState("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
+	this->entity->saveObjectState("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
 }
 
 void HexusBehaviorBase::registerWinCallback(std::function<void()> winCallback)

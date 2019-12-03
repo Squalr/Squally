@@ -2,11 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Input/ClickableNode.h"
-#include "Engine/Localization/ConstantString.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Engine/Inventory/ItemChance.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -24,7 +20,7 @@ DropPoolError* DropPoolError::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolError::DropPoolError(ValueMap& properties) : super(properties, DropPoolError::PoolName, 1, 3, CardPoolTier1::create())
+DropPoolError::DropPoolError(ValueMap& properties) : super(properties, DropPoolError::PoolName, SampleMethod::Guarantee, 1, 1)
 {
 	this->addItemToPool(ItemChance::create(MissingNo::create(), ItemChance::Probability::Guaranteed));
 }

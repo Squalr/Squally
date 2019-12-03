@@ -15,14 +15,15 @@
 
 using namespace cocos2d;
 
-MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, int minItems, int maxItems, MinMaxPool* nestedPool) : super(properties, poolName)
+MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools) : super(properties, poolName)
 {
 	this->itemCount = RandomHelper::random_int(minItems, maxItems);
-	this->nestedPool = nestedPool;
+	this->nestedPools = std::vector<MinMaxPool*>();
+	this->sampleMethod = sampleMethod;
 
-	if (this->nestedPool != nullptr)
+	for (auto nestedPool : this->nestedPools)
 	{
-		this->addChild(this->nestedPool);
+		this->addChild(nestedPool);
 	}
 }
 
@@ -44,15 +45,45 @@ Item* MinMaxPool::getItem()
 
 std::vector<Item*> MinMaxPool::getItems()
 {
-	std::vector<Item*> items = this->getItemsFromPool(itemCount, true);
-
-	if (this->nestedPool != nullptr)
+	std::vector<Item*> items = std::vector<Item*>();
+	
+	switch (this->sampleMethod)
 	{
-		std::vector<Item*> cards = this->nestedPool->getItems();
-
-		for (auto it = cards.begin(); it != cards.end(); it++)
+		default:
+		case SampleMethod::Unbounded:
 		{
-			items.push_back(*it);
+			for (auto item : this->getItemsFromPool(this->getPoolSize(), true))
+			{
+				items.push_back(item);
+			}
+
+			break;
+		}
+		case SampleMethod::Random:
+		{
+			for (auto item : this->getItemsFromPool(itemCount, true))
+			{
+				items.push_back(item);
+			}
+
+			break;
+		}
+		case SampleMethod::Guarantee:
+		{
+			for (auto item : this->getItemsFromPoolGuaranteed(itemCount, true))
+			{
+				items.push_back(item);
+			}
+
+			break;
+		}
+	}
+
+	for (auto nestedPool : this->nestedPools)
+	{
+		for (auto item : nestedPool->getItems())
+		{
+			items.push_back(item);
 		}
 	}
 

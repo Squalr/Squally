@@ -7,6 +7,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/ChestPools/EndianForest/WeaponPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -24,14 +25,11 @@ ChestPoolEFGeneric* ChestPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(properties, ChestPoolEFGeneric::PoolName, 1, 1, CardPoolTier1::create())
+ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(
+	properties, ChestPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1, { CardPoolTier1::create(), WeaponPoolTier1::create(SampleMethod::Random) })
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Legendary));
 }
 
 ChestPoolEFGeneric::~ChestPoolEFGeneric()

@@ -24,7 +24,7 @@ DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, 1, 2, CardPoolTier1Rare::create())
+DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 2, { CardPoolTier1Low::create() })
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Uncommon));

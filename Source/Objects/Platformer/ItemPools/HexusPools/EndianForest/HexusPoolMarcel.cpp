@@ -17,7 +17,7 @@ HexusPoolMarcel* HexusPoolMarcel::create()
 	return instance;
 }
 
-HexusPoolMarcel::HexusPoolMarcel() : super(ValueMap(), "hexus-pool-marcel", 2, 2)
+HexusPoolMarcel::HexusPoolMarcel() : super(ValueMap(), "hexus-pool-marcel", SampleMethod::Guarantee, 2, 2)
 {
 	this->addItemToPool(ItemChance::create(MagesGuildPrisonKey::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(SpecialMov::create(), ItemChance::Probability::Guaranteed));

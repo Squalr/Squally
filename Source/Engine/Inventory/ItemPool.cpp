@@ -26,6 +26,9 @@ ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(pro
 	this->poolName = poolName;
 	this->itemPool = std::vector<ItemChance*>();
 	this->itemsNode = Node::create();
+	this->probabilityCache = std::vector<ProbabilityData>();
+	this->probabilitySum = 0.0f;
+	this->cacheDirty = true;
 
 	this->addChild(this->itemsNode);
 }
@@ -47,6 +50,11 @@ void ItemPool::initializeListeners()
 	}));
 }
 
+int ItemPool::getPoolSize()
+{
+	return this->itemPool.size();
+}
+
 std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
@@ -54,6 +62,23 @@ std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems
 	for (int index = 0; index < count; index++)
 	{
 		Item* item = this->getItemFromPool(removeSampledItems);
+
+		if (item != nullptr)
+		{
+			items.push_back(item);
+		}
+	}
+
+	return items;
+}
+
+std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, bool removeSampledItems)
+{
+	std::vector<Item*> items = std::vector<Item*>();
+
+	for (int index = 0; index < count; index++)
+	{
+		Item* item = this->getItemFromPoolGuaranteed(removeSampledItems);
 
 		if (item != nullptr)
 		{
@@ -88,6 +113,44 @@ Item* ItemPool::getItemFromPool(bool removeSampledItem)
 	return nullptr;
 }
 
+Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem)
+{
+	if (this->cacheDirty)
+	{
+		this->cacheDirty = false;
+		this->probabilitySum = 0.0f;
+		this->probabilityCache.clear();
+
+		for (auto itemChance : this->itemPool)
+		{
+			float probability = itemChance->calculateProbability({ });
+
+			this->probabilitySum += probability;
+
+			this->probabilityCache.push_back(ProbabilityData(itemChance, probability));
+		}
+	}
+
+	float sample = RandomHelper::random_real(0.0f, this->probabilitySum);
+	float currentSum = 0.0f;
+
+	for (auto probabilityData : this->probabilityCache)
+	{
+		currentSum += probabilityData.probability;
+
+		if (sample <= currentSum && probabilityData.probability > 0.0f)
+		{
+			Item* retItem = probabilityData.itemChance->getItem() == nullptr ? nullptr : probabilityData.itemChance->getItem()->clone();
+
+			this->removeItemFromPool(probabilityData.itemChance);
+
+			return retItem;
+		}
+	}
+
+	return nullptr;
+}
+
 void ItemPool::addItemToPool(ItemChance* itemChance)
 {
 	if (itemChance == nullptr)
@@ -95,6 +158,7 @@ void ItemPool::addItemToPool(ItemChance* itemChance)
 		return;
 	}
 
+	this->cacheDirty = true;
 	this->itemPool.push_back(itemChance);
 	this->itemsNode->addChild(itemChance);
 }
@@ -105,6 +169,7 @@ void ItemPool::removeItemFromPool(ItemChance* itemChance)
 	{
 		if (entry == itemChance)
 		{
+			this->cacheDirty = true;
 			this->itemsNode->removeChild(itemChance);
 
 			return true;

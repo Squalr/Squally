@@ -24,7 +24,7 @@ PocketPoolTownGuard* PocketPoolTownGuard::create(ValueMap& properties)
 	return instance;
 }
 
-PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, 1, 1)
+PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, SampleMethod::Guarantee, 1, 1)
 {
 	this->addItemToPool(ItemChance::create(TownKey::create(), ItemChance::Probability::Guaranteed));
 }

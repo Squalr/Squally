@@ -183,8 +183,9 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(false);
-			
-			MusicPlayer::popMusic();
+
+			// Reinstate this if music is ever added to Cipher:
+			// MusicPlayer::popMusic();
 			GameUtils::focus(this);
 		}
 	}));

@@ -16,7 +16,7 @@ CardShopPoolTier1* CardShopPoolTier1::create()
 	return instance;
 }
 
-CardShopPoolTier1::CardShopPoolTier1() : super(ValueMap(), "card-shop-tool-t1", 2, 3)
+CardShopPoolTier1::CardShopPoolTier1() : super(ValueMap(), "card-shop-tool-t1", SampleMethod::Guarantee, 2, 3)
 {
 	this->addItemToPool(ItemChance::create(Binary0::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Decimal0::create(), ItemChance::Probability::Guaranteed));

@@ -16,7 +16,7 @@ CardPoolTier1* CardPoolTier1::create(int maxCards)
 	return instance;
 }
 
-CardPoolTier1::CardPoolTier1(int maxCards) : super(ValueMap(), "card-pool-t1", 1, maxCards)
+CardPoolTier1::CardPoolTier1(int maxCards) : super(ValueMap(), "card-pool-t1", SampleMethod::Guarantee, 1, maxCards)
 {
 	this->addItemToPool(ItemChance::create(Binary0::create(), ItemChance::Probability::VeryCommon));
 	this->addItemToPool(ItemChance::create(Binary1::create(), ItemChance::Probability::Common));

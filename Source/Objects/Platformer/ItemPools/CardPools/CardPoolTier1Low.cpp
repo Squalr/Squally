@@ -1,4 +1,4 @@
-#include "CardPoolTier1Rare.h"
+#include "CardPoolTier1Low.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,16 +7,16 @@
 
 using namespace cocos2d;
 
-CardPoolTier1Rare* CardPoolTier1Rare::create()
+CardPoolTier1Low* CardPoolTier1Low::create()
 {
-	CardPoolTier1Rare* instance = new CardPoolTier1Rare();
+	CardPoolTier1Low* instance = new CardPoolTier1Low();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CardPoolTier1Rare::CardPoolTier1Rare() : super(ValueMap(), "card-pool-t1-rare", 1, 1)
+CardPoolTier1Low::CardPoolTier1Low() : super(ValueMap(), "card-pool-t1-low", SampleMethod::Random, 1, 1)
 {
 	this->addItemToPool(ItemChance::create(Binary0::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Binary1::create(), ItemChance::Probability::Rare));
@@ -40,6 +40,6 @@ CardPoolTier1Rare::CardPoolTier1Rare() : super(ValueMap(), "card-pool-t1-rare", 
 	this->addItemToPool(ItemChance::create(Hex5::create(), ItemChance::Probability::Legendary));
 }
 
-CardPoolTier1Rare::~CardPoolTier1Rare()
+CardPoolTier1Low::~CardPoolTier1Low()
 {
 }

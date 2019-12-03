@@ -17,7 +17,7 @@ HexusPoolEFGeneric* HexusPoolEFGeneric::create()
 	return instance;
 }
 
-HexusPoolEFGeneric::HexusPoolEFGeneric() : super(ValueMap(), "hexus-pool-ef-generic", 1, 2, CardPoolTier1::create(1))
+HexusPoolEFGeneric::HexusPoolEFGeneric() : super(ValueMap(), "hexus-pool-ef-generic", SampleMethod::Random, 1, 2, { CardPoolTier1::create(1) })
 {
 	// TODO: Crafting materials?
 	this->addItemToPool(ItemChance::create(MissingNo::create(), ItemChance::Probability::Guaranteed));

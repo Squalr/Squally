@@ -24,7 +24,7 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, 1, 1)
+PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1)
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::VeryCommon));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::VeryCommon));
