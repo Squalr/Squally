@@ -147,6 +147,7 @@ const std::string ObjectResources::Doors_Cave_GROUND_SHADOW = "Private/Platforme
 const std::string ObjectResources::Doors_Cave_MISC = "Private/Platformer/Objects/Doors/Cave/MISC.png";
 const std::string ObjectResources::Doors_Crypt_CryptClosed = "Private/Platformer/Objects/Doors/Crypt/CryptClosed.png";
 const std::string ObjectResources::Doors_Crypt_CryptOpened = "Private/Platformer/Objects/Doors/Crypt/CryptOpened.png";
+const std::string ObjectResources::Doors_EdgePortal_EdgeArrow = "Private/Platformer/Objects/Doors/EdgePortal/EdgeArrow.png";
 const std::string ObjectResources::Doors_Gate_GateLeft = "Private/Platformer/Objects/Doors/Gate/GateLeft.png";
 const std::string ObjectResources::Doors_Gate_GateRight = "Private/Platformer/Objects/Doors/Gate/GateRight.png";
 const std::string ObjectResources::Doors_LanternGate_LanternLeft = "Private/Platformer/Objects/Doors/LanternGate/LanternLeft.png";

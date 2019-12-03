@@ -148,6 +148,7 @@ namespace ObjectResources
 	extern const std::string Doors_Cave_MISC;
 	extern const std::string Doors_Crypt_CryptClosed;
 	extern const std::string Doors_Crypt_CryptOpened;
+	extern const std::string Doors_EdgePortal_EdgeArrow;
 	extern const std::string Doors_Gate_GateLeft;
 	extern const std::string Doors_Gate_GateRight;
 	extern const std::string Doors_LanternGate_LanternLeft;

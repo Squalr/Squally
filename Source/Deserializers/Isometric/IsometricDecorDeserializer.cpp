@@ -1,7 +1,7 @@
 #include "IsometricDecorDeserializer.h"
 
-#include "cocos/2d/CCSprite.h"
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Objects/Isometric/IsometricDecorObject.h"
 

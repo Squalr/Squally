@@ -1,7 +1,13 @@
 #pragma once
-#include <set>
 
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+
+namespace cocos2d
+{
+	class Sprite;
+};
+
+class CollisionObject;
 
 class EdgePortal : public Portal
 {
@@ -19,4 +25,9 @@ protected:
 
 private:
 	typedef Portal super;
+
+	std::vector<cocos2d::Sprite*> edgeArrows;
+	CollisionObject* arrowHintCollision;
+
+	static const int ArrowCount;
 };
