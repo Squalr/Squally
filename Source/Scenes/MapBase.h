@@ -45,7 +45,7 @@ protected:
 	void onMouseWheelScroll(cocos2d::EventMouse* event);
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
-	void openPauseMenu();
+	void openPauseMenu(cocos2d::Node* refocusTarget);
 
 	cocos2d::Node* hudNode;
 	Hud* hud;

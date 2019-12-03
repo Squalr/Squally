@@ -21,9 +21,8 @@ class PauseMenu : public SmartNode
 public:
 	static PauseMenu* create();
 
-	void open();
+	void open(std::function<void()> resumeClickCallback);
 	void close();
-	void setResumeClickCallback(std::function<void()> resumeClickCallback);
 	void setOptionsClickCallback(std::function<void()> optionsClickCallback);
 	void setQuitToTitleClickCallback(std::function<void()> quitToTitleClickCallback);
 	ClickableTextNode* addNewButton(LocalizedString* text);
@@ -35,7 +34,6 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* previousFocus;
 	cocos2d::Sprite* pauseWindow;
 	LocalizedLabel* pauseLabel;
 	ClickableNode* closeButton;

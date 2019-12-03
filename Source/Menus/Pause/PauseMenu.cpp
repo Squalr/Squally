@@ -43,7 +43,6 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	this->resumeClickCallback = nullptr;
 	this->optionsClickCallback = nullptr;
 	this->quitToTitleClickCallback = nullptr;
-	this->previousFocus = nullptr;
 
 	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_Resume::create());
 	LocalizedLabel*	resumeLabelSelected = resumeLabel->clone();
@@ -201,9 +200,9 @@ void PauseMenu::initializeListeners()
 	});
 }
 
-void PauseMenu::open()
+void PauseMenu::open(std::function<void()> resumeClickCallback)
 {
-	this->previousFocus = GameUtils::getFocusedNode();
+	this->resumeClickCallback = resumeClickCallback;
 	this->setVisible(true);
 
 	GameUtils::focus(this);
@@ -211,18 +210,12 @@ void PauseMenu::open()
 
 void PauseMenu::close()
 {
-	GameUtils::focus(this->previousFocus);
 	this->setVisible(false);
 
 	if (this->resumeClickCallback != nullptr)
 	{
 		this->resumeClickCallback();
 	}
-}
-
-void PauseMenu::setResumeClickCallback(std::function<void()> resumeClickCallback)
-{
-	this->resumeClickCallback = resumeClickCallback;
 }
 
 void PauseMenu::setOptionsClickCallback(std::function<void()> optionsClickCallback)

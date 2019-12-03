@@ -194,7 +194,7 @@ void MapBase::initializeListeners()
 		
 		args->handle();
 
-		this->openPauseMenu();
+		this->openPauseMenu(this);
 	});
 
 	EventListenerMouse* scrollListener = EventListenerMouse::create();
@@ -204,12 +204,7 @@ void MapBase::initializeListeners()
 	this->optionsMenu->setBackClickCallback([=]()
 	{
 		this->optionsMenu->setVisible(false);
-		this->openPauseMenu();
-	});
-
-	this->pauseMenu->setResumeClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
+		this->openPauseMenu(this);
 	});
 
 	this->pauseMenu->setOptionsClickCallback([=]()
@@ -345,8 +340,12 @@ void MapBase::toggleHackerMode(void* userData)
 	}
 }
 
-void MapBase::openPauseMenu()
+void MapBase::openPauseMenu(Node* refocusTarget)
 {
 	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->open();
+	this->pauseMenu->open([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		GameUtils::focus(refocusTarget);
+	});
 }

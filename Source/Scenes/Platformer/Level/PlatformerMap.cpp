@@ -220,7 +220,7 @@ void PlatformerMap::initializeListeners()
 		
 		args->handle();
 
-		this->openPauseMenu();
+		this->openPauseMenu(this->cipher);
 	});
 
 	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -232,7 +232,7 @@ void PlatformerMap::initializeListeners()
 		
 		args->handle();
 
-		this->openPauseMenu();
+		this->openPauseMenu(this->hexus);
 	});
 	
 	this->ingameMenu->setInventoryClickCallback([=]()
