@@ -30,10 +30,28 @@ MusicPlayer* MusicPlayer::getInstance()
 
 MusicPlayer::MusicPlayer()
 {
+	this->songQueue = std::queue<Music*>();
 }
 
 MusicPlayer::~MusicPlayer()
 {
+}
+
+void MusicPlayer::popMusic()
+{
+	if (MusicPlayer::getInstance()->songQueue.size() <= 0)
+	{
+		return;
+	}
+
+	MusicPlayer::getInstance()->songQueue.pop();
+
+	if (MusicPlayer::getInstance()->songQueue.size() <= 0)
+	{
+		return;
+	}
+
+	MusicPlayer::getInstance()->songQueue.front()->unpause();
 }
 
 void MusicPlayer::play(Music* music, bool repeat, float startDelay)
@@ -42,6 +60,13 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay)
 	{
 		music->play(repeat, startDelay);
 	}
+
+	MusicPlayer::getInstance()->songQueue.push(music);
+}
+
+void MusicPlayer::purgueQueue()
+{
+	MusicPlayer::getInstance()->songQueue = std::queue<Music*>();
 }
 
 void MusicPlayer::registerMusic(Music* music)

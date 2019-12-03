@@ -24,7 +24,7 @@ SoundBase::SoundBase(std::string soundResource) : super()
 	this->isFading = false;
 	this->fadeMultiplier = 1.0f;
 	this->distanceMultiplier = 1.0f;
-	this->volumeMultiplier = 1.0f;
+	this->customMultiplier = 1.0f;
 	this->fadeOutTick = 0;
 	this->onFadeOutCallback = nullptr;
 }
@@ -69,7 +69,7 @@ void SoundBase::update(float dt)
 
 				if (this->fadeMultiplier == 0.0f)
 				{
-					AudioEngine::stop(this->activeTrackId);
+					AudioEngine::pause(this->activeTrackId);
 
 					if (this->onFadeOutCallback != nullptr)
 					{
@@ -118,9 +118,16 @@ void SoundBase::play(bool repeat, float startDelay)
 	}
 }
 
+void SoundBase::unpause()
+{
+	this->fadeMultiplier = 1.0f;
+	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+	AudioEngine::resume(this->activeTrackId);
+}
+
 void SoundBase::stop()
 {
-	AudioEngine::stop(this->activeTrackId);
+	AudioEngine::pause(this->activeTrackId);
 }
 
 void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
@@ -129,9 +136,9 @@ void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
 	this->onFadeOutCallback = onFadeOutCallback;
 }
 
-void SoundBase::setVolumeMultiplier(float volumeMultiplier)
+void SoundBase::setCustomMultiplier(float customMultiplier)
 {
-	this->volumeMultiplier = volumeMultiplier;
+	this->customMultiplier = customMultiplier;
 }
 
 void SoundBase::toggleCameraDistanceFade(bool enableCameraDistanceFade)
@@ -152,14 +159,14 @@ void SoundBase::setSoundResource(std::string soundResource)
 
 void SoundBase::updateVolume()
 {
-	AudioEngine::setVolume(this->activeTrackId, this->getVolume() * fadeMultiplier * distanceMultiplier * volumeMultiplier);
+	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 }
 
 float SoundBase::getVolume()
 {
 	float configVolume = this->getConfigVolume();
 
-	return MathUtils::clamp(this->volumeMultiplier * configVolume, 0.0f, configVolume);
+	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume);
 }
 
 void SoundBase::updateDistanceFade()

@@ -17,6 +17,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -182,6 +183,8 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(false);
+			
+			MusicPlayer::popMusic();
 			GameUtils::focus(this);
 		}
 	}));
@@ -207,6 +210,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->hexus->setVisible(false);
 
+			MusicPlayer::popMusic();
 			GameUtils::focus(this);
 		}
 	}));

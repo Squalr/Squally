@@ -39,5 +39,6 @@ void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap proper
 	Music* music = Music::createAndAddGlobally(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString(), owner);
 	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
 
+	MusicPlayer::purgueQueue();
 	MusicPlayer::play(music, true, delay);
 }

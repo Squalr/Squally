@@ -23,9 +23,10 @@ void SoundEvents::TriggerSoundVolumeUpdated()
 	);
 }
 
-void SoundEvents::TriggerFadeOutMusic()
+void SoundEvents::TriggerFadeOutMusic(FadeOutMusicArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SoundEvents::EventFadeOutMusic
+		SoundEvents::EventFadeOutMusic,
+		&args
 	);
 }

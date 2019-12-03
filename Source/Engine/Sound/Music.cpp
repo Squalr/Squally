@@ -73,7 +73,12 @@ void Music::initializeListeners()
 
 	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
 	{
-		this->stopAndFadeOut();
+		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->newSong != this)
+		{
+			this->stopAndFadeOut();
+		}
 	}));
 
 	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventMusicVolumeUpdated, [=](EventCustom* eventCustom)
@@ -98,7 +103,7 @@ void Music::play(bool repeat, float startDelay)
 		case AudioEngine::AudioState::INITIALIZING:
 		case AudioEngine::AudioState::PAUSED:
 		{
-			SoundEvents::TriggerFadeOutMusic();
+			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
 			super::play(repeat, startDelay);
 			break;
 		}
@@ -108,4 +113,11 @@ void Music::play(bool repeat, float startDelay)
 			break;
 		}
 	}
+}
+
+void Music::unpause()
+{
+	super::unpause();
+
+	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
 }

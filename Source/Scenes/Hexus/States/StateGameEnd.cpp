@@ -151,7 +151,6 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 
 	GameState::updateState(gameState, GameState::StateType::GameExit);
-	
 	HexusEvents::TriggerExitHexus(HexusEvents::HexusExitArgs());
 }
 

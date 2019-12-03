@@ -11,9 +11,11 @@ public:
 	static Music* createAndAddGlobally(std::string musicResource, SmartNode* owner);
 	static Music* createAndAddGlobally(std::string musicResource, SmartScene* owner);
 
+	void unpause() override;
+
 protected:
 	friend class MusicPlayer;
-	
+
 	void initializeListeners() override;
 	void play(bool repeat = true, float startDelay = 0.0f) override;
 	float getConfigVolume() override;

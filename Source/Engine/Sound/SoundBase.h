@@ -6,9 +6,11 @@ class SoundBase : public GlobalNode
 {
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
-	void stop();
-	void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
-	void setVolumeMultiplier(float volumeMultiplier);
+	virtual void unpause();
+	virtual void stop();
+	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
+
+	void setCustomMultiplier(float customMultiplier);
 	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
 	void setSoundResource(std::string soundResource);
 
@@ -32,7 +34,7 @@ private:
 	std::string soundResource;
 	float fadeMultiplier;
 	float distanceMultiplier;
-	float volumeMultiplier;
+	float customMultiplier;
 	int fadeOutTick;
 	bool enableCameraDistanceFade;
 	bool isFading;
