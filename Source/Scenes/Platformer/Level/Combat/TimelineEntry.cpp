@@ -100,9 +100,12 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
+			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
 
-			this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+				this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+			}
 		}
 	}));
 
