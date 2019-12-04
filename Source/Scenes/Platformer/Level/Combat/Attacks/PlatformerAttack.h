@@ -43,6 +43,8 @@ protected:
 	int getBaseDamageOrHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
+	std::string getMainhandResource(PlatformerEntity* owner);
+	std::string getOffhandResource(PlatformerEntity* owner);
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 

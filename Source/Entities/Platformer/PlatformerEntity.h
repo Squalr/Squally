@@ -56,7 +56,7 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
-	~PlatformerEntity();
+	virtual ~PlatformerEntity();
 	
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;

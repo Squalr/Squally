@@ -2,17 +2,17 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class TorchThrow : public PlatformerAttack
+class ThrowWeapon : public PlatformerAttack
 {
 public:
-	static TorchThrow* create(float attackDuration, float recoverDuration);
+	static ThrowWeapon* create(float attackDuration, float recoverDuration);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	TorchThrow(float attackDuration, float recoverDuration);
-	~TorchThrow();
+	ThrowWeapon(float attackDuration, float recoverDuration);
+	~ThrowWeapon();
 
 	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;

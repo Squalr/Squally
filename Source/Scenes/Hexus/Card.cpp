@@ -165,8 +165,9 @@ void Card::onEnterTransitionDidFinish()
 
 	if (this->relocateUI)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+		// TODO: This is broken somehow, there is an issue where these are not being properly positioned as UIBoundObjects
+		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 	}
 }
 

@@ -7,21 +7,22 @@ namespace cocos2d
 	class Sprite;
 }
 
-class BomberTorchGenericPreview : public HackablePreview
+class ThrownWeaponGenericPreview : public HackablePreview
 {
 public:
-	static BomberTorchGenericPreview* create();
+	static ThrownWeaponGenericPreview* create(std::string weaponResource);
 
 	HackablePreview* clone() override;
 
 protected:
-	BomberTorchGenericPreview();
-	virtual ~BomberTorchGenericPreview();
+	ThrownWeaponGenericPreview(std::string weaponResource);
+	virtual ~ThrownWeaponGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
+	std::string weaponResource;
 	cocos2d::Sprite* bomberTorch;
 };

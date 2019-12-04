@@ -10,18 +10,17 @@ namespace cocos2d
 class HackablePreview;
 class SmartAnimationSequenceNode;
 
-class BomberTorch : public Projectile
+class ThrownWeapon : public Projectile
 {
 public:
-	static BomberTorch* create(PlatformerEntity* caster, int damage);
+	static ThrownWeapon* create(PlatformerEntity* caster, std::string weaponResource, int damage);
 
 protected:
-	BomberTorch(PlatformerEntity* caster, int damage);
-	~BomberTorch();
+	ThrownWeapon(PlatformerEntity* caster, std::string weaponResource, int damage);
+	virtual ~ThrownWeapon();
 
 	void onEnter() override;
 	void initializePositions() override;
-	void update(float) override;
 	void onCollideWithTarget(PlatformerEntity* target) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
@@ -32,6 +31,7 @@ private:
 	typedef Projectile super;
 
 	int damage;
-	cocos2d::Sprite* bomberTorchSprite;
+	std::string weaponResource;
+	cocos2d::Sprite* weaponSprite;
 	SmartAnimationSequenceNode* fire;
 };

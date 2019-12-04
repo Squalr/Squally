@@ -41,6 +41,7 @@ private:
 
 	static const float SplashSpacing;
 	static const float WaterGravity;
+	static const float WaterCollisionOffset;
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
 };

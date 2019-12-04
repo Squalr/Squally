@@ -192,21 +192,10 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 	});
 }
 
-void Cipher::setBackClickCallback(std::function<void()> backClickCallback)
-{
-	this->backClickCallback = backClickCallback;
-}
-
 void Cipher::onMenuExit()
 {
-	ConfigManager::save();
-
 	MusicPlayer::popMusic();
-
-	if (this->backClickCallback != nullptr)
-	{
-		this->backClickCallback();
-	}
+	CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
 }
 
 void Cipher::buildTutorialMap()

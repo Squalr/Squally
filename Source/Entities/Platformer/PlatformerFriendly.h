@@ -19,7 +19,7 @@ protected:
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
-	~PlatformerFriendly();
+	virtual ~PlatformerFriendly();
 
 private:
 	typedef PlatformerEntity super;

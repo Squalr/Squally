@@ -133,6 +133,30 @@ void PlatformerAttack::onCleanup()
 {
 }
 
+std::string PlatformerAttack::getMainhandResource(PlatformerEntity* owner)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
+}
+
+std::string PlatformerAttack::getOffhandResource(PlatformerEntity* owner)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("offhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
+}
+
 void PlatformerAttack::replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile)
 {
 	this->replaceAnimationPartWithProjectile("mainhand", owner, projectile);

@@ -135,6 +135,11 @@ void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration
 	));
 }
 
+std::string AnimationPart::getSpriteResource()
+{
+	return this->originalPath;
+}
+
 void AnimationPart::replaceSprite(std::string spriteResource)
 {
 	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)

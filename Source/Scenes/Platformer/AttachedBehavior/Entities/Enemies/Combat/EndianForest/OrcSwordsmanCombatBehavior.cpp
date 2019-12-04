@@ -6,6 +6,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/ThrowWeapon.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 
 #include "Resources/UIResources.h"
@@ -45,7 +46,8 @@ void OrcSwordsmanCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		// attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(ThrowWeapon::create(0.7f, 0.2f));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

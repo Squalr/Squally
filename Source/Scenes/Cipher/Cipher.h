@@ -45,7 +45,6 @@ public:
 	static Cipher* create();
 
 	void openCipher(CipherPuzzleData* cipherPuzzleData);
-	void setBackClickCallback(std::function<void()> backClickCallback);
 
 protected:
 	Cipher();
