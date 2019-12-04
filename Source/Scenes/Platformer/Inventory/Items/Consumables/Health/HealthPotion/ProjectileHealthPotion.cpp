@@ -26,7 +26,7 @@ ProjectileHealthPotion* ProjectileHealthPotion::create(PlatformerEntity* caster)
 	return instance;
 }
 
-ProjectileHealthPotion::ProjectileHealthPotion(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
+ProjectileHealthPotion::ProjectileHealthPotion(PlatformerEntity* caster) : Projectile(caster, Size(64.0f, 64.0f), 1.0f, false)
 {
 	this->healthPotionSprite = Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2);
 

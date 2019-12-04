@@ -25,7 +25,7 @@ ProjectileSpeedRune* ProjectileSpeedRune::create(PlatformerEntity* caster)
 	return instance;
 }
 
-ProjectileSpeedRune::ProjectileSpeedRune(PlatformerEntity* caster) : Projectile(caster, 256.0f, 1.0f, false)
+ProjectileSpeedRune::ProjectileSpeedRune(PlatformerEntity* caster) : Projectile(caster, Size(64.0f, 64.0f), 1.0f, false)
 {
 	this->speedRuneSprite = Sprite::create(ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
 

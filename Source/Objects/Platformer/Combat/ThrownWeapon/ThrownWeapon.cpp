@@ -22,7 +22,7 @@ ThrownWeapon* ThrownWeapon::create(PlatformerEntity* caster, std::string weaponR
 	return instance;
 }
 
-ThrownWeapon::ThrownWeapon(PlatformerEntity* caster, std::string weaponResource, int damage) : Projectile(caster, 256.0f, 1.0f, true)
+ThrownWeapon::ThrownWeapon(PlatformerEntity* caster, std::string weaponResource, int damage) : Projectile(caster, Size(64.0f, 128.0f), 1.0f, true)
 {
 	this->damage = -std::abs(damage);
 	this->weaponResource = weaponResource;

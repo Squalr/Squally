@@ -10,6 +10,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
 
@@ -20,7 +21,16 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
 
-Projectile::Projectile(PlatformerEntity* caster, float radius, float noCollideDuration, bool allowHacking) : super()
+Projectile::Projectile(PlatformerEntity* caster, cocos2d::Size hitBox, float noCollideDuration, bool allowHacking) : super(
+	ValueMap(),
+	PhysicsBody::createBox(
+		hitBox,
+		PHYSICSBODY_MATERIAL_DEFAULT,
+		Vec2::ZERO
+	),
+	(int)PlatformerCollisionType::Physics,
+	false,
+	false)
 {
 	this->caster = caster;
 	this->hasCollided = false;
@@ -28,13 +38,10 @@ Projectile::Projectile(PlatformerEntity* caster, float radius, float noCollideDu
 	this->noCollideDuration = noCollideDuration;
 	this->elapsedDuration = 0.0f;
 	this->radius = radius;
-	this->velocity = Vec3::ZERO;
-	this->acceleration = Vec3::ZERO;
+	this->launchVelocity = Vec3::ZERO;
+	this->launchAcceleration = Vec3::ZERO;
 	this->allowHacking = allowHacking;
 	this->contentNode = Node::create();
-
-	// this->setVelocity(this->velocity + this->getAcceleration() * dt);
-	// this->setPosition3D(this->getPosition3D() + this->getVelocity() * dt);
 
 	this->addChild(this->contentNode);
 }
@@ -53,6 +60,14 @@ void Projectile::onEnter()
 void Projectile::initializePositions()
 {
 	super::initializePositions();
+}
+
+void Projectile::update(float dt)
+{
+	super::update(dt);
+
+	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
+	this->setPosition3D(this->getPosition3D() + this->getLaunchVelocity() * dt);
 }
 
 void Projectile::registerHackables()
@@ -110,7 +125,7 @@ void Projectile::registerHackables()
 		this->registerCode(*it);
 	}
 
-	auto accelerationFunc = &Projectile::getAcceleration;
+	auto accelerationFunc = &Projectile::getLaunchAcceleration;
 	std::vector<HackableCode*> accelerationHackables = HackableCode::create((void*&)accelerationFunc, lateBindMap);
 
 	for (auto it = accelerationHackables.begin(); it != accelerationHackables.end(); it++)
@@ -144,26 +159,26 @@ void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed,
 
 	if (spinSpeed != 0.0f)
 	{
-		this->contentNode->runAction(RotateBy::create(maxDuration, (isLeft ? -1.0f : 1.0f) * maxDuration * 360.0f * spinSpeed));
+		this->runAction(RotateBy::create(maxDuration, (isLeft ? -1.0f : 1.0f) * maxDuration * 360.0f * spinSpeed));
 	}
 
-	this->setAcceleration(gravity);
-	this->setVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));
+	this->setLaunchAcceleration(gravity);
+	this->setLaunchVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));
 }
 
-void Projectile::setVelocity(cocos2d::Vec3 velocity)
+void Projectile::setLaunchVelocity(cocos2d::Vec3 velocity)
 {
-	this->velocity = velocity;
+	this->launchVelocity = velocity;
 }
 
-void Projectile::setAcceleration(cocos2d::Vec3 acceleration)
+void Projectile::setLaunchAcceleration(cocos2d::Vec3 acceleration)
 {
-	this->acceleration = acceleration;
+	this->launchAcceleration = acceleration;
 }
 
-NO_OPTIMIZE Vec3 Projectile::getVelocity()
+NO_OPTIMIZE Vec3 Projectile::getLaunchVelocity()
 {
-	Vec3 velocityCopy = this->velocity;
+	Vec3 velocityCopy = this->launchVelocity;
 	static const volatile int* freeMemory = new int[128];
 	const volatile float* velocityPtrX = &velocityCopy.x;
 	const volatile float* velocityPtrY = &velocityCopy.y;
@@ -202,9 +217,9 @@ NO_OPTIMIZE Vec3 Projectile::getVelocity()
 	return velocityCopy;
 }
 
-NO_OPTIMIZE Vec3 Projectile::getAcceleration()
+NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 {
-	Vec3 accelerationCopy = this->acceleration;
+	Vec3 accelerationCopy = this->launchAcceleration;
 	const volatile float* accelerationPtrX = &accelerationCopy.x;
 	const volatile float* accelerationPtrY = &accelerationCopy.y;
 	const volatile float* accelerationPtrZ = &accelerationCopy.z;

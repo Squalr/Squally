@@ -61,7 +61,7 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
-	if (!super::init())
+	if (!super::initWithPhysics())
 	{
 		// throw std::uncaught_exceptions();
 		return;
