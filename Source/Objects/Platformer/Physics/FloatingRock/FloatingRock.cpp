@@ -96,8 +96,8 @@ void FloatingRock::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
-				int(HackFlags::Water),
-				10.0f
+				int(HackFlags::None),
+				8.0f
 			)
 		},
 	};
