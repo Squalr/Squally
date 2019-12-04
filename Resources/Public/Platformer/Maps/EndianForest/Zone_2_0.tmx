@@ -312,13 +312,12 @@
   </properties>
   <object id="619" name="edge-lantern-gate" type="object" x="5491.72" y="509.115" width="356" height="320">
    <properties>
-    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
   <object id="690" name="edge-portal" type="object" x="-2.23913" y="4390.15" width="199.918" height="734.959">
    <properties>
-    <property name="args" value="0"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="left"/>
    </properties>
@@ -353,7 +352,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="5100.08" y="693.032" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="700.08" y="4989.03" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
