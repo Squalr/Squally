@@ -5,7 +5,11 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ProjectileRestorePotion.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -60,7 +64,24 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 {
 	super::generateProjectiles(owner, target);
 
-	ProjectileRestorePotion* potion = ProjectileRestorePotion::create(owner);
+	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
+	
+	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	{
+		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+		if (entity != nullptr)
+		{
+			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0)) * RestorePotion::HealPercentage));
+			
+			entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+			{
+				entityBuffBehavior->applyBuff(RestoreHealth::create(owner, entity, healing));
+			});
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 
 	this->replaceOffhandWithProjectile(owner, potion);
 

@@ -38,9 +38,12 @@ protected:
 	PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
 	~PlatformerAttack() = default;
 
-	int getRandomDamageOrHealing();
-	int getBaseDamageOrHealingMin();
-	int getBaseDamageOrHealingMax();
+	int getRandomDamage();
+	int getBaseDamageMin();
+	int getBaseDamageMax();
+	int getRandomHealing();
+	int getBaseHealingMin();
+	int getBaseHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
 	std::string getMainhandResource(PlatformerEntity* owner);

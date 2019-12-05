@@ -5,7 +5,10 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/ProjectileSpeedRune.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/SpeedGain.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -59,8 +62,23 @@ void ThrowSpeedRune::onAttackTelegraphBegin()
 void ThrowSpeedRune::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::generateProjectiles(owner, target);
+
+	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
 	
-	ProjectileSpeedRune* rune = ProjectileSpeedRune::create(owner);
+	rune->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	{
+		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+		if (entity != nullptr)
+		{
+			entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+			{
+				// entityBuffBehavior->applyBuff(SpeedGain::create(owner, entity, healing));
+			});
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 
 	this->replaceOffhandWithProjectile(owner, rune);
 

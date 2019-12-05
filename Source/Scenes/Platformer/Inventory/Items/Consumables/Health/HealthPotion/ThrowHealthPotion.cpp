@@ -5,7 +5,10 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ProjectileHealthPotion.h"
+#include "Events/CombatEvents.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -60,7 +63,21 @@ void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerE
 {
 	super::generateProjectiles(owner, target);
 	
-	ProjectileHealthPotion* potion = ProjectileHealthPotion::create(owner);
+	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
+	
+	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	{
+		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+		if (entity != nullptr)
+		{
+			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * HealthPotion::HealPercentage);
+
+			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 
 	this->replaceOffhandWithProjectile(owner, potion);
 

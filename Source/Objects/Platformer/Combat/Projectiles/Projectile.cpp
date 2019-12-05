@@ -33,11 +33,9 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->radius = radius;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
-	this->contentNode = Node::create();
+	this->spinSpeed = 0.0f;
 
 	this->setPhysicsEnabled(false);
-
-	this->addChild(this->contentNode);
 }
 
 Projectile::~Projectile()
@@ -73,6 +71,11 @@ void Projectile::update(float dt)
 		{
 			this->setPhysicsEnabled(true);
 		}
+	}
+
+	if (this->spinSpeed != 0.0f)
+	{
+		this->setRotation(this->getRotation() + this->spinSpeed * dt);
 	}
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
@@ -163,13 +166,9 @@ void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed,
 	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
 	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
 	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
-	float maxDuration = std::max(std::max(duration.x, duration.y), duration.z);
 	bool isLeft = targetPosition.x < thisPosition.x;
 
-	if (spinSpeed != 0.0f)
-	{
-		this->runAction(RotateBy::create(maxDuration, (isLeft ? -1.0f : 1.0f) * maxDuration * 360.0f * spinSpeed));
-	}
+	this->spinSpeed = (isLeft ? -1.0f : 1.0f) * 360.0f * spinSpeed;
 
 	this->setLaunchAcceleration(gravity);
 	this->setLaunchVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));

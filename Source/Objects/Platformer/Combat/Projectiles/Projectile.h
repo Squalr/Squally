@@ -18,7 +18,6 @@ public:
 	void setLaunchAcceleration(cocos2d::Vec3 acceleration);
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
-	virtual void onCollideWithTarget(PlatformerEntity* target) = 0;
 	
 protected:
 	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking);
@@ -34,12 +33,12 @@ protected:
 	virtual HackablePreview* createAccelerationPreview();
 	
 	PlatformerEntity* caster;
-	cocos2d::Node* contentNode;
 
 private:
 	typedef CollisionObject super;
 
 	float radius;
+	float spinSpeed;
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;
 	cocos2d::Vec3 launchAcceleration;

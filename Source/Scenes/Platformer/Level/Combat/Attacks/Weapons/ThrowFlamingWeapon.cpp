@@ -1,55 +1,63 @@
-#include "ThrowWeapon.h"
+#include "ThrowFlamingWeapon.h"
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration)
+ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recoverDuration)
 {
-	ThrowWeapon* instance = new ThrowWeapon(attackDuration, recoverDuration);
+	ThrowFlamingWeapon* instance = new ThrowFlamingWeapon(attackDuration, recoverDuration);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
-ThrowWeapon::~ThrowWeapon()
+ThrowFlamingWeapon::~ThrowFlamingWeapon()
 {
 }
 
-PlatformerAttack* ThrowWeapon::cloneInternal()
+PlatformerAttack* ThrowFlamingWeapon::cloneInternal()
 {
-	return ThrowWeapon::create(this->getAttackDuration(), this->getRecoverDuration());
+	return ThrowFlamingWeapon::create(this->getAttackDuration(), this->getRecoverDuration());
 }
 
-LocalizedString* ThrowWeapon::getString()
+LocalizedString* ThrowFlamingWeapon::getString()
 {
 	return Strings::Common_Empty::create();
 }
 
-std::string ThrowWeapon::getAttackAnimation()
+std::string ThrowFlamingWeapon::getAttackAnimation()
 {
 	return "AttackThrow";
 }
 
-void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowFlamingWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::generateProjectiles(owner, target);
 
 	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
+	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
+
+	weapon->addChild(fire);
+
+	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
+	fire->setPosition(Vec2(0.0f, 56.0f));
 	
 	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -68,6 +76,6 @@ void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity*
 	weapon->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 }
 
-void ThrowWeapon::onCleanup()
+void ThrowFlamingWeapon::onCleanup()
 {
 }
