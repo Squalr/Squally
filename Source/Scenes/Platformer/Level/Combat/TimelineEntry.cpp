@@ -17,6 +17,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -42,7 +43,6 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity) : super()
 	this->emblem = Sprite::create(entity->getEmblemResource());
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
-	this->isBlocking = false;
 
 	this->speed = 1.0f;
 	this->interruptBonus = 0.0f;
@@ -65,7 +65,6 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->target = nullptr;
 	this->isCasting = false;
-	this->isBlocking = false;
 	this->orphanedAttackCache->removeAllChildren();
 
 	this->scheduleUpdate();
@@ -137,12 +136,14 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		return;
 	}
 
+	bool blocked = false;
+
 	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(caster, this->getEntity(), &damageOrHealing));
-	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing));
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing, &blocked));
 
 	if (damageOrHealing < 0)
 	{
-		this->tryInterrupt();
+		this->tryInterrupt(blocked);
 	}
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
@@ -182,9 +183,11 @@ void TimelineEntry::defend()
 	{
 		return;
 	}
-
-	this->isBlocking = true;
-	this->getEntity()->addChild(Defend::create(this->getEntity()));
+	
+	this->getEntity()->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
+	});
 }
 
 float TimelineEntry::getProgress()
@@ -258,11 +261,11 @@ void TimelineEntry::performCast()
 	);
 }
 
-void TimelineEntry::tryInterrupt()
+void TimelineEntry::tryInterrupt(bool blocked)
 {
-	if (this->isBlocking || this->isCasting)
-	{
-		if (this->isBlocking)
+	if (blocked || this->isCasting)
+	{	
+		if (blocked)
 		{
 			CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->entity));
 
@@ -278,7 +281,6 @@ void TimelineEntry::tryInterrupt()
 		}
 		
 		this->isCasting = false;
-		this->isBlocking = false;
 
 		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 	}
@@ -289,7 +291,6 @@ void TimelineEntry::resetTimeline()
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
 	this->isCasting = false;
-	this->isBlocking = false;
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }

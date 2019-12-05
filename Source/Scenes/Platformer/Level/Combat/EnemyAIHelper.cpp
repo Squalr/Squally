@@ -27,6 +27,8 @@ EnemyAIHelper* EnemyAIHelper::create()
 
 EnemyAIHelper::EnemyAIHelper()
 {
+	this->selectedTarget = nullptr;
+	this->selectedAttack = nullptr;
 }
 
 void EnemyAIHelper::onEnter()
@@ -61,54 +63,47 @@ void EnemyAIHelper::update(float dt)
 	super::update(dt);
 }
 
+void EnemyAIHelper::initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
+{
+	this->playerEntities = playerEntities;
+	this->enemyEntities = enemyEntities;
+}
+
 void EnemyAIHelper::performAIActions(TimelineEntry* attackingEntity)
 {
-	std::vector<PlatformerEntity*> playerEntities = std::vector<PlatformerEntity*>();
-	std::vector<PlatformerEntity*> enemyEntities = std::vector<PlatformerEntity*>();
+	this->selectedTarget = nullptr;
+	this->selectedAttack = nullptr;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
-	{
-		if (dynamic_cast<PlatformerFriendly*>(entity) != nullptr)
-		{
-			playerEntities.push_back(entity);
-		}
-
-		if (dynamic_cast<PlatformerEnemy*>(entity) != nullptr)
-		{
-			enemyEntities.push_back(entity);
-		}
-	}), PlatformerEntity::PlatformerEntityTag);
-
-	PlatformerEntity* target = this->selectTarget(attackingEntity, playerEntities, enemyEntities);
-	PlatformerAttack* attack = this->selectAttack(attackingEntity, playerEntities, enemyEntities);
+	this->selectAttack(attackingEntity);
+	this->selectTarget(attackingEntity);
 
 	// Error!
-	if (attackingEntity == nullptr || target == nullptr || attack == nullptr)
+	if (attackingEntity == nullptr || this->selectedTarget == nullptr || this->selectedAttack == nullptr)
 	{
 		CombatEvents::TriggerResumeTimeline();
 
 		return;
 	}
 
-	attackingEntity->stageCast(attack);
-	attackingEntity->stageTarget(target);
+	attackingEntity->stageCast(this->selectedAttack);
+	attackingEntity->stageTarget(this->selectedTarget);
 
 	// Choices made, resume timeline
 	CombatEvents::TriggerResumeTimeline();
 }
 
-PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
+void EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry)
 {
 	if (attackingEntry == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 
 	PlatformerEntity* attackingEntity = attackingEntry->getEntity();
 
 	if (attackingEntity == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 
 	// PHASE 1: Check if available heal target / heal spell
@@ -116,12 +111,11 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 
 	if (attackBehavior == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 
 	std::vector<PlatformerAttack*> attackList = attackBehavior->getAvailableAttacks();
 	std::vector<PlatformerAttack*> consumablesList = attackBehavior->getAvailableConsumables();
-	PlatformerAttack* attack = nullptr;
 	bool hasWeakAlly = false;
 	float selectedAttackPriority = -1.0f;
 	const float WeakPercentage = 0.5f;
@@ -131,7 +125,7 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 		attackList.push_back(*it);
 	}
 
-	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
+	for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
 	{
 		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
 		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
@@ -154,7 +148,7 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 				{
 					if ((*it)->getPriority() > selectedAttackPriority)
 					{
-						attack = *it;
+						this->selectedAttack = *it;
 					}
 				}
 				default:
@@ -165,9 +159,9 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 		}
 	}
 
-	if (attack != nullptr)
+	if (this->selectedAttack != nullptr)
 	{
-		return attack;
+		return;
 	}
 
 	// PHASE 2: Just pick the highest priority available attack
@@ -180,7 +174,7 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 			{
 				if ((*it)->getPriority() > selectedAttackPriority)
 				{
-					attack = *it;
+					this->selectedAttack = *it;
 				}
 			}
 			default:
@@ -189,37 +183,74 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 			}
 		}
 	}
-
-	return attack;
 }
 
-PlatformerEntity* EnemyAIHelper::selectTarget(TimelineEntry* attackingEntry, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
+void EnemyAIHelper::selectTarget(TimelineEntry* attackingEntry)
 {
-	if (attackingEntry == nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack == nullptr)
 	{
-		return nullptr;
+		return;
 	}
 
 	PlatformerEntity* target = nullptr;
-
-	// Currently just picking the highest health target. This is a user-friendly AI strategy.
-	for (auto it = playerEntities.begin(); it != playerEntities.end(); it++)
+	
+	switch(this->selectedAttack->getAttackType())
 	{
-		if (target == nullptr)
+		case PlatformerAttack::AttackType::ProjectileBuffSpeed:
 		{
-			target = *it;
+			target = attackingEntry->getEntity();
+
+			break;
 		}
-		else
+		case PlatformerAttack::AttackType::Healing:
+		case PlatformerAttack::AttackType::ProjectileHealing:
 		{
-			int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-			int targetHealth = target->getStateOrDefaultInt(StateKeys::Health, 0);
-			
-			if (health > targetHealth)
+			// Currently just picking the highest health target. This is a user-friendly AI strategy.
+			for (auto it = this->enemyEntities.begin(); it != this->enemyEntities.end(); it++)
 			{
-				target = *it;
+				if (target == nullptr)
+				{
+					target = *it;
+					continue;
+				}
+
+				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
+				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
+				
+				if (isAlive && health < targetHealth)
+				{
+					target = *it;
+				}
 			}
+
+			break;
+		}
+		case PlatformerAttack::AttackType::ProjectileDamage:
+		case PlatformerAttack::AttackType::Damage:
+		default:
+		{
+			// Currently just picking the highest health target. This is a user-friendly AI strategy.
+			for (auto it = this->playerEntities.begin(); it != this->playerEntities.end(); it++)
+			{
+				if (target == nullptr)
+				{
+					target = *it;
+					continue;
+				}
+
+				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
+				
+				if (health > targetHealth)
+				{
+					target = *it;
+				}
+			}
+
+			break;
 		}
 	}
 
-	return target;
+	this->selectedTarget = target;
 }

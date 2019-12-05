@@ -45,7 +45,7 @@ private:
 	void update(float dt) override;
 	bool isPlayerEntry();
 	void performCast();
-	void tryInterrupt();
+	void tryInterrupt(bool blocked);
 	void resetTimeline();
 
 	PlatformerAttack* currentCast;
@@ -59,7 +59,6 @@ private:
 	float speed;
 	float interruptBonus;
 	float progress;
-	bool isBlocking;
 	bool isCasting;
 
 	static const float BaseSpeedMultiplier;

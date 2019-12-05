@@ -62,18 +62,7 @@ void EntityProjectileTargetBehavior::initializePositions()
 
 	if (this->entity != nullptr)
 	{
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-			this->projectileTarget->setPosition(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-			this->projectileTarget->setPosition(offset);
-		}
+		this->projectileTarget->setPosition(this->entity->getEntityCenterPoint());
 	}
 }
 

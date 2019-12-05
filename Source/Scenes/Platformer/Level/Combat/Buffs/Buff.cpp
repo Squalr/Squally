@@ -52,7 +52,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -62,7 +62,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageTaken(args->damageOrHealing, args->blocked, [=](){ args->handle(); });
 		}
 	}));
 
@@ -95,7 +95,7 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
 {
 }
 

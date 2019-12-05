@@ -6,6 +6,19 @@
 
 namespace FXResources
 {
+	extern const std::string Auras_ChantAura;
+	extern const std::string Auras_ChantAura2;
+	extern const std::string Auras_DefendAura;
+	extern const std::string Auras_HexagonAura;
+	extern const std::string Auras_RuneAura1;
+	extern const std::string Auras_RuneAura2;
+	extern const std::string Auras_RuneAura3;
+	extern const std::string Auras_RuneAura4;
+	extern const std::string Auras_RuneAura5;
+	extern const std::string Auras_RuneAura6;
+	extern const std::string Auras_StarAura;
+	extern const std::string Auras_TriAura;
+	extern const std::string Auras_WindAura;
 	extern const std::string ElectricOrb_ElectricOrb_0000;
 	extern const std::string ElectricOrb_ElectricOrb_0001;
 	extern const std::string ElectricOrb_ElectricOrb_0002;

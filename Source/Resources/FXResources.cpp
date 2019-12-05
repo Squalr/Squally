@@ -5,6 +5,19 @@
 #include "FXResources.h"
 #include <string>
 
+const std::string FXResources::Auras_ChantAura = "Private/Platformer/FX/Auras/ChantAura.png";
+const std::string FXResources::Auras_ChantAura2 = "Private/Platformer/FX/Auras/ChantAura2.png";
+const std::string FXResources::Auras_DefendAura = "Private/Platformer/FX/Auras/DefendAura.png";
+const std::string FXResources::Auras_HexagonAura = "Private/Platformer/FX/Auras/HexagonAura.png";
+const std::string FXResources::Auras_RuneAura1 = "Private/Platformer/FX/Auras/RuneAura1.png";
+const std::string FXResources::Auras_RuneAura2 = "Private/Platformer/FX/Auras/RuneAura2.png";
+const std::string FXResources::Auras_RuneAura3 = "Private/Platformer/FX/Auras/RuneAura3.png";
+const std::string FXResources::Auras_RuneAura4 = "Private/Platformer/FX/Auras/RuneAura4.png";
+const std::string FXResources::Auras_RuneAura5 = "Private/Platformer/FX/Auras/RuneAura5.png";
+const std::string FXResources::Auras_RuneAura6 = "Private/Platformer/FX/Auras/RuneAura6.png";
+const std::string FXResources::Auras_StarAura = "Private/Platformer/FX/Auras/StarAura.png";
+const std::string FXResources::Auras_TriAura = "Private/Platformer/FX/Auras/TriAura.png";
+const std::string FXResources::Auras_WindAura = "Private/Platformer/FX/Auras/WindAura.png";
 const std::string FXResources::ElectricOrb_ElectricOrb_0000 = "Private/Platformer/FX/ElectricOrb/ElectricOrb_0000.png";
 const std::string FXResources::ElectricOrb_ElectricOrb_0001 = "Private/Platformer/FX/ElectricOrb/ElectricOrb_0001.png";
 const std::string FXResources::ElectricOrb_ElectricOrb_0002 = "Private/Platformer/FX/ElectricOrb/ElectricOrb_0002.png";

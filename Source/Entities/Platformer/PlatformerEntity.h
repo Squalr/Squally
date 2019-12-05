@@ -30,6 +30,7 @@ public:
 	cocos2d::Size getEntitySize();
 	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
+	cocos2d::Vec2 getEntityCenterPoint();
 	float getHoverHeight();
 	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;

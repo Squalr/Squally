@@ -149,6 +149,22 @@ Vec2 PlatformerEntity::getCollisionOffset()
 	return this->entityCollisionOffset;
 }
 
+Vec2 PlatformerEntity::getEntityCenterPoint()
+{
+	Vec2 offset = this->getCollisionOffset();
+
+	if (this->isFlippedY())
+	{
+		offset = Vec2(offset.x, -offset.y) - Vec2(0.0f, this->getMovementSize().height / 2.0f);
+	}
+	else
+	{
+		offset = offset + Vec2(0.0f, this->getMovementSize().height / 2.0f);
+	}
+
+	return offset;
+}
+
 float PlatformerEntity::getHoverHeight()
 {
 	return this->hoverHeight;

@@ -84,7 +84,14 @@ void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerE
 
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(1024.0f, 0.75f, 0.75f));
+		if (owner == target)
+		{
+			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+		}
+		else
+		{
+			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+		}
 	});
 }
 

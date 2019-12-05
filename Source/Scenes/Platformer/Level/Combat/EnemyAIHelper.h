@@ -11,6 +11,8 @@ class EnemyAIHelper : public SmartNode
 public:
 	static EnemyAIHelper* create();
 
+	void initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
+
 private:
 	typedef SmartNode super;
 	EnemyAIHelper();
@@ -22,6 +24,11 @@ private:
 	void update(float dt) override;
 
 	void performAIActions(TimelineEntry* attackingEntity);
-	PlatformerAttack* selectAttack(TimelineEntry* attackingEntity, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
-	PlatformerEntity* selectTarget(TimelineEntry* attackingEntity, std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
+	void selectTarget(TimelineEntry* attackingEntity);
+	void selectAttack(TimelineEntry* attackingEntity);
+
+	std::vector<PlatformerEntity*> playerEntities;
+	std::vector<PlatformerEntity*> enemyEntities;
+	PlatformerEntity* selectedTarget;
+	PlatformerAttack* selectedAttack;
 };

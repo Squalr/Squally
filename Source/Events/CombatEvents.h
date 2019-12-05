@@ -167,8 +167,10 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
+		bool* blocked;
 
-		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing, bool* blocked)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), blocked(blocked), handled(false) { }
 
 		void handle()
 		{

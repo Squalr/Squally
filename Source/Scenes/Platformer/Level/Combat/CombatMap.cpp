@@ -409,5 +409,6 @@ void CombatMap::spawnEntities()
 	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
 	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
 
+	this->enemyAIHelper->initializeEntities(friendlyEntities, enemyEntities);
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }
