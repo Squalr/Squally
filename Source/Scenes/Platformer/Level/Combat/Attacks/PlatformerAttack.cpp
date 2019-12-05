@@ -180,14 +180,19 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		weapon->replaceWithObject(projectile, 2.0f);
 	}
 
-	projectile->setPosition3D(GameUtils::getWorldCoords3D(weapon == nullptr ? (Node*)owner : (Node*)weapon));
-
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
 		projectile,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Retain
+		ObjectEvents::PositionMode::Discard
 	));
+
+	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;
+
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference));
+
+	// We dont actually want to set the Z to the world coord Z position, as this would end up re-applying any layer depth
+	projectile->setPositionZ(reference->getPositionZ());
 }
 
 int PlatformerAttack::getRandomDamage()

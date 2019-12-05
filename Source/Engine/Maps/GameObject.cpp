@@ -81,7 +81,6 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
-	this->attachedBehaviorNode = Node::create();
 	this->setPosition(Vec2::ZERO);
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
@@ -197,8 +196,6 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			this->polylinePoints.push_back(convertedDelta);
 		}
 	}
-
-	this->addChild(this->attachedBehaviorNode);
 }
 
 GameObject::~GameObject()
@@ -256,7 +253,7 @@ void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
 	}
 
 	this->attachedBehavior.push_back(attachedBehavior);
-	this->attachedBehaviorNode->addChild(attachedBehavior);
+	this->addChild(attachedBehavior);
 }
 
 void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
@@ -269,7 +266,7 @@ void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
 	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
 	{
 		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
-		this->attachedBehaviorNode->removeChild(attachedBehavior);
+		this->removeChild(attachedBehavior);
 	}
 }
 
@@ -525,7 +522,11 @@ std::string GameObject::getSendEvent()
 
 void GameObject::despawn()
 {
-	this->attachedBehaviorNode->removeAllChildren();
+	for (auto behavior : this->attachedBehavior)
+	{
+		this->detachBehavior(behavior);
+	}
+
 	this->removeAllListeners();
 	this->setVisible(false);
 	this->despawned = true;

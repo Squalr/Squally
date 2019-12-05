@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Developer/EntityDeveloperBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
@@ -28,6 +29,7 @@ EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(
 	EntityAttackBehavior::create(owner),
 	EntityBuffBehavior::create(owner),
 	EntityDropTableBehavior::create(owner),
+	EntityProjectileTargetBehavior::create(owner),
 	EntitySelectionBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),

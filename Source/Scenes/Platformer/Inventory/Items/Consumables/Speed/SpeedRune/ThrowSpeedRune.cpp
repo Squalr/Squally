@@ -7,6 +7,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/SpeedGain.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -82,7 +83,10 @@ void ThrowSpeedRune::generateProjectiles(PlatformerEntity* owner, PlatformerEnti
 
 	this->replaceOffhandWithProjectile(owner, rune);
 
-	rune->launchTowardsTarget(owner, Vec2(0.0f, owner->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
+	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	{
+		rune->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
+	});
 }
 
 void ThrowSpeedRune::onCleanup()

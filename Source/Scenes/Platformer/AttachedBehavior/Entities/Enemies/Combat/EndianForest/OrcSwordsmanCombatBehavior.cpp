@@ -47,7 +47,7 @@ void OrcSwordsmanCombatBehavior::onLoad()
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
-		attackBehavior->registerAttack(ThrowWeapon::create(0.6f, 0.2f));
+		attackBehavior->registerAttack(ThrowWeapon::create(0.55f, 0.2f));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

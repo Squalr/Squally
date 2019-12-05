@@ -6,6 +6,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -65,7 +66,10 @@ void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity*
 
 	this->replaceMainhandWithProjectile(owner, weapon);
 
-	weapon->launchTowardsTarget(target, Vec2(0.0f, target->getEntitySize().height / 2.0f), 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	{
+		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+	});
 }
 
 void ThrowWeapon::onCleanup()

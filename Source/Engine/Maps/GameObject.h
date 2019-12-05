@@ -169,7 +169,6 @@ private:
 	bool despawned;
 	std::set<std::string> tags;
 	bool zSorted;
-	cocos2d::Node* attachedBehaviorNode;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;

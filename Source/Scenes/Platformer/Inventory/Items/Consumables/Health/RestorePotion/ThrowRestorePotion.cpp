@@ -7,6 +7,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -85,7 +86,10 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 
 	this->replaceOffhandWithProjectile(owner, potion);
 
-	potion->launchTowardsTarget(owner, Vec2(0.0f, owner->getEntitySize().height / 2.0f) + Vec2(0.0f, 256.0f), 0.25f, Vec3(5.0f, 0.75f, 0.75f));
+	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	{
+		potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(1024.0f, 0.75f, 0.75f));
+	});
 }
 
 void ThrowRestorePotion::onCleanup()

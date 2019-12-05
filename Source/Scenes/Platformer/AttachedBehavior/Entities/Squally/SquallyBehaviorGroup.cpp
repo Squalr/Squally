@@ -2,8 +2,8 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntityBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/ScrappyManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/HelperManagerBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/ScrappyManagerBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyAbilityBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Camera/SquallyCameraFollowBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Collision/SquallyCollisionBehaviorGroup.h"
