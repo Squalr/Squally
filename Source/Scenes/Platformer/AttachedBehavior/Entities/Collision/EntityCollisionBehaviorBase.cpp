@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, PlatformerCollisionType collisionType) : super(owner)
+EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int collisionType) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 

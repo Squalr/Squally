@@ -26,7 +26,7 @@ const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
-const float CollisionObject::CollisionZThreshold = 8.0f;
+const float CollisionObject::CollisionZThreshold = 32.0f;
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -427,6 +427,11 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
+void CollisionObject::ClearInverseMap()
+{
+	CollisionObject::InverseCollisionMap.clear();
+}
+
 PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius, float friction)
 {
 	Size newSize = size * scale;
@@ -523,7 +528,10 @@ void CollisionObject::updateBinds()
 
 bool CollisionObject::isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData)
 {
-	if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(collisionData.other)) >= CollisionObject::CollisionZThreshold)
+	const float thisDepth = GameUtils::getDepth(this);
+	const float otherDepth = GameUtils::getDepth(collisionData.other);
+
+	if (std::abs(thisDepth - otherDepth) >= CollisionObject::CollisionZThreshold)
 	{
 		return false;
 	}

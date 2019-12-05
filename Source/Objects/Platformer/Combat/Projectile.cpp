@@ -10,7 +10,6 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
 
@@ -21,27 +20,22 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
 
-Projectile::Projectile(PlatformerEntity* caster, cocos2d::Size hitBox, float noCollideDuration, bool allowHacking) : super(
+Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking) : super(
 	ValueMap(),
-	PhysicsBody::createBox(
-		hitBox,
-		PHYSICSBODY_MATERIAL_DEFAULT,
-		Vec2::ZERO
-	),
-	(int)PlatformerCollisionType::Physics,
+	hitBox,
+	(int)combatCollisionType,
 	false,
 	false)
 {
 	this->caster = caster;
-	this->hasCollided = false;
 	this->allowHacking = allowHacking;
 	this->noCollideDuration = noCollideDuration;
-	this->elapsedDuration = 0.0f;
 	this->radius = radius;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
-	this->allowHacking = allowHacking;
 	this->contentNode = Node::create();
+
+	this->setPhysicsEnabled(false);
 
 	this->addChild(this->contentNode);
 }
@@ -62,9 +56,24 @@ void Projectile::initializePositions()
 	super::initializePositions();
 }
 
+void Projectile::initializeListeners()
+{
+	super::initializeListeners();
+}
+
 void Projectile::update(float dt)
 {
 	super::update(dt);
+
+	if (this->noCollideDuration > 0.0f)
+	{
+		this->noCollideDuration -= dt;
+
+		if (this->noCollideDuration <= 0.0f)
+		{
+			this->setPhysicsEnabled(true);
+		}
+	}
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
 	this->setPosition3D(this->getPosition3D() + this->getLaunchVelocity() * dt);
@@ -257,26 +266,3 @@ NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 
 	return accelerationCopy;
 }
-
-/*
-void Projectile::update(float dt)
-{
-	super::update(dt);
-
-	this->elapsedDuration += dt;
-
-	if (!this->hasCollided && this->elapsedDuration > this->noCollideDuration)
-	{
-		auto entities = this->getProximityObjects<PlatformerEntity>();
-
-		if (!entities.empty())
-		{
-			PlatformerEntity* target = entities.at(0);
-
-			this->onCollideWithTarget(target);
-
-			this->hasCollided = true;
-		}
-	}
-}
-*/

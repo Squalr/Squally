@@ -27,9 +27,10 @@
 #include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
@@ -343,7 +344,7 @@ void CombatMap::spawnEntities()
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
 					{
-						entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
+						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
 						friendlyEntities.push_back(entity);
 					}));
 				}
@@ -389,7 +390,7 @@ void CombatMap::spawnEntities()
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
-						entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
+						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
 
 						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{

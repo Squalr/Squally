@@ -3,6 +3,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
 
@@ -17,7 +18,7 @@ EnemyCollisionBehavior* EnemyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-EnemyCollisionBehavior::EnemyCollisionBehavior(GameObject* owner) : super(owner, PlatformerCollisionType::Enemy)
+EnemyCollisionBehavior::EnemyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Enemy)
 {
 }
 

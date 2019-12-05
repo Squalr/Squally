@@ -36,7 +36,7 @@ SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner, PlatformerCollisionType::Player)
+SquallyCollisionBehavior::SquallyCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Player)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->noCombatDuration = 0.0f;

@@ -113,6 +113,12 @@ PlatformerAttack* EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry, std
 
 	// PHASE 1: Check if available heal target / heal spell
 	EntityAttackBehavior* attackBehavior = attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+
+	if (attackBehavior == nullptr)
+	{
+		return nullptr;
+	}
+
 	std::vector<PlatformerAttack*> attackList = attackBehavior->getAvailableAttacks();
 	std::vector<PlatformerAttack*> consumablesList = attackBehavior->getAvailableConsumables();
 	PlatformerAttack* attack = nullptr;

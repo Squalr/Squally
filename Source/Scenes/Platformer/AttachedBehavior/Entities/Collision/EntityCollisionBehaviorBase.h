@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 class CollisionObject;
 class PlatformerEntity;
@@ -12,7 +11,7 @@ public:
 	CollisionObject* entityCollision;
 
 protected:
-	EntityCollisionBehaviorBase(GameObject* owner, PlatformerCollisionType collisionType);
+	EntityCollisionBehaviorBase(GameObject* owner, int collisionType);
 	~EntityCollisionBehaviorBase();
 
 	void onLoad() override;

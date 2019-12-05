@@ -1,5 +1,7 @@
 #include "HelperCollisionBehavior.h"
 
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+
 using namespace cocos2d;
 
 const std::string HelperCollisionBehavior::MapKeyAttachedBehavior = "helper-collisions";
@@ -13,7 +15,7 @@ HelperCollisionBehavior* HelperCollisionBehavior::create(GameObject* owner)
 	return instance;
 }
 
-HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owner, PlatformerCollisionType::Helper)
+HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owner, (int)PlatformerCollisionType::Helper)
 {
 }
 

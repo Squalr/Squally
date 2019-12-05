@@ -2,16 +2,16 @@
 
 #include "Engine/AttachedBehavior/AttachedBehaviorGroup.h"
 
-class EntityCombatBehaviorGroup : public AttachedBehaviorGroup
+class EnemyCombatBehaviorGroup : public AttachedBehaviorGroup
 {
 public:
-	static EntityCombatBehaviorGroup* create(GameObject* owner);
+	static EnemyCombatBehaviorGroup* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	EntityCombatBehaviorGroup(GameObject* owner);
-	~EntityCombatBehaviorGroup();
+	EnemyCombatBehaviorGroup(GameObject* owner);
+	~EnemyCombatBehaviorGroup();
 
 	void onLoad() override;
 

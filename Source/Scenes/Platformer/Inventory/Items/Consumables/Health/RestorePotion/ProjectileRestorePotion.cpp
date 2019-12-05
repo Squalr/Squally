@@ -29,7 +29,8 @@ ProjectileRestorePotion* ProjectileRestorePotion::create(PlatformerEntity* caste
 	return instance;
 }
 
-ProjectileRestorePotion::ProjectileRestorePotion(PlatformerEntity* caster) : Projectile(caster, Size(64.0f, 64.0f), 1.0f, false)
+ProjectileRestorePotion::ProjectileRestorePotion(PlatformerEntity* caster) 
+	: Projectile(caster, CollisionObject::createCapsulePolygon(Size(64.0f, 64.0f)), CombatCollisionType::Projectile, 1.0f, false)
 {
 	this->restorePotionSprite = Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2);
 	

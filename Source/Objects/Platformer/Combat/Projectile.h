@@ -1,6 +1,12 @@
 #pragma once
 
 #include "Engine/Physics/CollisionObject.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
+
+namespace cocos2d
+{
+	class PhysicsBody;
+};
 
 class PlatformerEntity;
 
@@ -12,19 +18,20 @@ public:
 	void setLaunchAcceleration(cocos2d::Vec3 acceleration);
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
+	virtual void onCollideWithTarget(PlatformerEntity* target) = 0;
 	
 protected:
-	Projectile(PlatformerEntity* caster, cocos2d::Size hitBox, float noCollideDuration, bool allowHacking);
+	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 	void update(float dt) override;
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 	virtual HackablePreview* createVelocityPreview();
 	virtual HackablePreview* createAccelerationPreview();
-	virtual void onCollideWithTarget(PlatformerEntity* target) = 0;
 	
 	PlatformerEntity* caster;
 	cocos2d::Node* contentNode;
@@ -36,7 +43,5 @@ private:
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;
 	cocos2d::Vec3 launchAcceleration;
-	bool hasCollided;
 	float noCollideDuration;
-	float elapsedDuration;
 };

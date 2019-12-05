@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityCombatBehaviorGroup::MapKeyAttachedBehavior = "entity-collisions";
+const std::string EntityCombatBehaviorGroup::MapKeyAttachedBehavior = "entity-combat-group";
 
 EntityCombatBehaviorGroup* EntityCombatBehaviorGroup::create(GameObject* owner)
 {
