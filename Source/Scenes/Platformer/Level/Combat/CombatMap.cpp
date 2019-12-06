@@ -34,6 +34,7 @@
 #include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
+#include "Scenes/Platformer/Level/Combat/FirstStrikeMenu.h"
 #include "Scenes/Platformer/Level/Combat/RewardsMenu.h"
 #include "Scenes/Platformer/Level/Combat/TargetSelectionMenu.h"
 #include "Scenes/Platformer/Level/Combat/TextOverlays.h"
@@ -78,6 +79,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = EnemyAIHelper::create();
@@ -113,6 +115,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
 	this->topMenuHud->addChild(this->notificationHud);
@@ -239,7 +242,7 @@ void CombatMap::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(0.0f, 128.0f));
+					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
 
 					break;
 				}
@@ -409,6 +412,7 @@ void CombatMap::spawnEntities()
 	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
 	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
 
+	this->firstStrikeMenu->show(this->playerFirstStrike);
 	this->enemyAIHelper->initializeEntities(friendlyEntities, enemyEntities);
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }

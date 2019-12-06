@@ -7,6 +7,7 @@ class CombatHud;
 class ChoicesMenu;
 class DefeatMenu;
 class EnemyAIHelper;
+class FirstStrikeMenu;
 class InventoryMenu;
 class MapMenu;
 class NotificationHud;
@@ -54,6 +55,7 @@ private:
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
 	TextOverlays* textOverlays;
+	FirstStrikeMenu* firstStrikeMenu;
 	DefeatMenu* defeatMenu;
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
