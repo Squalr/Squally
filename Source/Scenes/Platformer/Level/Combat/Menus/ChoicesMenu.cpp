@@ -294,6 +294,24 @@ void ChoicesMenu::toggleInnerText(bool isVisible)
 	this->itemsNode->setOpacity((this->noItems || !isVisible) ? 127 : 255);
 	this->attackNode->setOpacity(isVisible ? 255 : 127);
 	this->defendNode->setOpacity((this->noDefend || !isVisible) ? 127 : 255);
+
+	if (this->noItems)
+	{
+		this->itemsNode->disableInteraction();
+	}
+	else
+	{
+		this->itemsNode->enableInteraction();
+	}
+
+	if (this->noDefend)
+	{
+		this->defendNode->disableInteraction();
+	}
+	else
+	{
+		this->defendNode->enableInteraction();
+	}
 }
 
 void ChoicesMenu::toggleOuterText(bool isVisible)
