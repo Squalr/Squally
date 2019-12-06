@@ -4,12 +4,13 @@
 
 class ItemPool;
 class Item;
+class Inventory;
 
 class MinMaxPool : public ItemPool
 {
 public:
-	Item* getItem();
-	std::vector<Item*> getItems();
+	Item* getItem(std::vector<Inventory*> inventories);
+	std::vector<Item*> getItems(std::vector<Inventory*> inventories);
 
 	enum class SampleMethod
 	{
@@ -28,7 +29,7 @@ public:
 
 protected:
 	MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools = { });
-	~MinMaxPool();
+	virtual ~MinMaxPool();
 
 private:
 	typedef ItemPool super;

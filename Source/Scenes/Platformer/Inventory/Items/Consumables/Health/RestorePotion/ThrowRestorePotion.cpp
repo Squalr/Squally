@@ -73,11 +73,9 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 
 		if (entity != nullptr)
 		{
-			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0)) * RestorePotion::HealPercentage));
-			
 			entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 			{
-				entityBuffBehavior->applyBuff(RestoreHealth::create(owner, entity, healing));
+				entityBuffBehavior->applyBuff(RestoreHealth::create(owner, entity, RestorePotion::HealTicks));
 			});
 		}
 

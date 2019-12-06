@@ -77,13 +77,8 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		if (this->isPickPocketing)
 		{
 			this->isPickPocketing = false;
-			
-			std::vector<Item*> items = pocketPool->getItems();
 
-			for (auto it = items.begin(); it != items.end(); it++)
-			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
-			}
+			PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(pocketPool));
 
 			target->saveObjectState(pickPocketSaveKey, Value(true));
 		}

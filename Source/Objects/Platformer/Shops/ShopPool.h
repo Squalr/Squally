@@ -1,24 +1,24 @@
 #pragma once
 
-#include "Engine/Inventory/ItemPool.h"
+#include "Engine/Inventory/MinMaxPool.h"
 
-class MinMaxPool;
 class Item;
 
-class ShopPool : public ItemPool
+class ShopPool : public MinMaxPool
 {
 public:
-
+	Item* getNextItem();
+	
 protected:
-	ShopPool(cocos2d::ValueMap& properties, std::string poolName, MinMaxPool* priorityPool = nullptr);
-	~ShopPool();
-
-	Item* getItemFromPool(bool removeSampledItem) override;
+	ShopPool(cocos2d::ValueMap& properties, std::string poolName, std::vector<MinMaxPool*> nestedPools = { });
+	virtual ~ShopPool();
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
-	typedef ItemPool super;
+	typedef MinMaxPool super;
 
-	MinMaxPool* priorityPool;
-
-	cocos2d::Node* priorityPoolItemsNode;
+	cocos2d::Node* itemsNode;
+	std::vector<Item*> items;
 };

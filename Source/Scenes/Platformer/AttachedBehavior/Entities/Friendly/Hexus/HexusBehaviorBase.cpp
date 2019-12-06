@@ -204,12 +204,7 @@ void HexusBehaviorBase::giveItems()
 {
 	if (this->rewardPool != nullptr)
 	{
-		std::vector<Item*> items = this->rewardPool->getItems();
-
-		for (auto it = items.begin(); it != items.end(); it++)
-		{
-			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemWon::create()));
-		}
+		PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool, Strings::Platformer_Notifications_ItemWon::create()));
 	}
 }
 

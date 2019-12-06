@@ -21,7 +21,7 @@ Decimal7* Decimal7::create()
 	return instance;
 }
 
-Decimal7::Decimal7() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Decimal7::Decimal7() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
 {
 }
 

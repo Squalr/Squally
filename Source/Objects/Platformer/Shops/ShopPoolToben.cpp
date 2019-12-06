@@ -14,7 +14,7 @@
 using namespace cocos2d;
 
 const std::string ShopPoolToben::MapKeyShopPoolToben = "shop-pool-toben";
-const std::string ShopPoolToben::PoolName = "toben";
+const std::string ShopPoolToben::PoolName = "shop-pool-toben";
 
 ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName, CardShopPoolTier1::create())
+ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName, { CardShopPoolTier1::create() })
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));

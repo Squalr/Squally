@@ -213,30 +213,27 @@ void GameObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+
+		if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+		{
+			args->tryInvoke(this);
+		}
+	}));
+
+	for (auto it = this->tags.begin(); it != this->tags.end(); it++)
+	{
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
 		{
 			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
 
-			if (args != nullptr)
+			if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
 			{
 				args->tryInvoke(this);
 			}
 		}));
-
-		for (auto it = this->tags.begin(); it != this->tags.end(); it++)
-		{
-			this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
-			{
-				QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
-
-				if (args != nullptr)
-				{
-					args->tryInvoke(this);
-				}
-			}));
-		}
 	}
 }
 

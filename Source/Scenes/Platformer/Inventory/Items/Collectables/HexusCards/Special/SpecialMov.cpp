@@ -21,7 +21,7 @@ SpecialMov* SpecialMov::create()
 	return instance;
 }
 
-SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}))
+SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
 {
 }
 

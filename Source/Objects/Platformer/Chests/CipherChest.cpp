@@ -156,7 +156,7 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 	}
 
 	std::string bonusReward = puzzleData->getBonusReward();
-	std::vector<Item*> items = this->chestPool->getItems();
+	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));
 
 	if (isHardModeEnabled)
 	{
@@ -164,16 +164,8 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 		{
 			if (item != nullptr)
 			{
-				items.push_back(item);
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(item, Strings::Platformer_Notifications_ItemFound::create()));
 			}
 		}));
-	}
-
-	for (auto it = items.begin(); it != items.end(); it++)
-	{
-		if ((*it) != nullptr)
-		{
-			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it, Strings::Platformer_Notifications_ItemFound::create()));
-		}
 	}
 }

@@ -12,6 +12,7 @@ class EntityInventoryBehavior : public AttachedBehavior
 public:
 	static EntityInventoryBehavior* create(GameObject* owner);
 
+	std::vector<Inventory*> getAllInventories();
 	Inventory* getInventory();
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();

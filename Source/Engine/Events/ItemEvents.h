@@ -5,6 +5,7 @@
 #include "cocos/math/CCGeometry.h"
 
 class Item;
+class Inventory;
 
 class ItemEvents
 {
@@ -14,9 +15,10 @@ public:
 	struct ItemRequestArgs
 	{
 		std::string poolName;
+		std::vector<Inventory*> inventories;
 		std::function<void(Item*)> callback;
 
-		ItemRequestArgs(std::string poolName, std::function<void(Item*)> callback) : poolName(poolName), callback(callback)
+		ItemRequestArgs(std::string poolName, std::vector<Inventory*> inventories, std::function<void(Item*)> callback) : poolName(poolName), inventories(inventories), callback(callback)
 		{
 		}
 	};

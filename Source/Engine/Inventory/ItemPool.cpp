@@ -10,7 +10,6 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPool.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 
 #include "Resources/UIResources.h"
@@ -39,13 +38,15 @@ ItemPool::~ItemPool()
 
 void ItemPool::initializeListeners()
 {
+	super::initializeListeners();
+	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
 	{
 		ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
 		
 		if (args != nullptr)
 		{
-			args->callback(this->getItemFromPool(true));
+			args->callback(this->getItemFromPool(true, args->inventories));
 		}
 	}));
 }
@@ -55,13 +56,13 @@ int ItemPool::getPoolSize()
 	return this->itemPool.size();
 }
 
-std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems)
+std::vector<Item*> ItemPool::getItemsFromPool(int count, std::vector<Inventory*> inventories, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
 	for (int index = 0; index < count; index++)
 	{
-		Item* item = this->getItemFromPool(removeSampledItems);
+		Item* item = this->getItemFromPool(removeSampledItems, inventories);
 
 		if (item != nullptr)
 		{
@@ -72,13 +73,13 @@ std::vector<Item*> ItemPool::getItemsFromPool(int count, bool removeSampledItems
 	return items;
 }
 
-std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, bool removeSampledItems)
+std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, std::vector<Inventory*> inventories, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
 	for (int index = 0; index < count; index++)
 	{
-		Item* item = this->getItemFromPoolGuaranteed(removeSampledItems);
+		Item* item = this->getItemFromPoolGuaranteed(removeSampledItems, inventories);
 
 		if (item != nullptr)
 		{
@@ -89,11 +90,11 @@ std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, bool removeSa
 	return items;
 }
 
-Item* ItemPool::getItemFromPool(bool removeSampledItem)
+Item* ItemPool::getItemFromPool(bool removeSampledItem, std::vector<Inventory*> inventories)
 {
 	for (auto itemChance : this->itemPool)
 	{
-		float probability = itemChance->calculateProbability({ });
+		float probability = itemChance->calculateProbability(inventories);
 
 		if (probability > 0.0f)
 		{
@@ -113,7 +114,7 @@ Item* ItemPool::getItemFromPool(bool removeSampledItem)
 	return nullptr;
 }
 
-Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem)
+Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem, std::vector<Inventory*> inventories)
 {
 	if (this->cacheDirty)
 	{
@@ -123,7 +124,7 @@ Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem)
 
 		for (auto itemChance : this->itemPool)
 		{
-			float probability = itemChance->calculateProbability({ });
+			float probability = itemChance->calculateProbability(inventories);
 
 			this->probabilitySum += probability;
 

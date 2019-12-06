@@ -19,6 +19,7 @@ const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
+const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -102,6 +103,14 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventHudUntrackEntity,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveItemsFromPool,
 		&args
 	);
 }

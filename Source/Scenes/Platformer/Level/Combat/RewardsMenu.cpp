@@ -129,15 +129,7 @@ void RewardsMenu::loadRewards()
 
 			if (dropPool != nullptr)
 			{
-				std::vector<Item*> items = dropPool->getItems();
-
-				for (auto it = items.begin(); it != items.end(); it++)
-				{
-					if ((*it) != nullptr)
-					{
-						PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(*it));
-					}
-				}
+				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool));
 			}
 		});
 	}), PlatformerEnemy::PlatformerEnemyTag);

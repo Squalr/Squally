@@ -21,7 +21,7 @@ SpecialFlip2* SpecialFlip2::create()
 	return instance;
 }
 
-SpecialFlip2::SpecialFlip2() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}))
+SpecialFlip2::SpecialFlip2() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
 {
 }
 

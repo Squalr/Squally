@@ -37,6 +37,7 @@ public:
 
 		ItemMeta(int rubberBand, float rubberBandFactor, int unique) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor), unique(unique) { }
 		ItemMeta(int rubberBand, float rubberBandFactor) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor), unique(-1) { }
+		ItemMeta(int unique) : rubberBand(-1), rubberBandFactor(0.0f), unique(unique) { }
 		ItemMeta() : rubberBand(-1), rubberBandFactor(0.0f), unique(-1) { }
 	};
 

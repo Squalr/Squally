@@ -18,7 +18,7 @@ using namespace cocos2d;
 MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools) : super(properties, poolName)
 {
 	this->itemCount = RandomHelper::random_int(minItems, maxItems);
-	this->nestedPools = std::vector<MinMaxPool*>();
+	this->nestedPools = nestedPools;
 	this->sampleMethod = sampleMethod;
 
 	for (auto nestedPool : this->nestedPools)
@@ -31,28 +31,39 @@ MinMaxPool::~MinMaxPool()
 {
 }
 
-Item* MinMaxPool::getItem()
+Item* MinMaxPool::getItem(std::vector<Inventory*> inventories)
 {
-	if (this->itemCount <= 0)
+	if (this->sampleMethod != SampleMethod::Unbounded)
 	{
-		return nullptr;
+		if (this->itemCount <= 0)
+		{
+			return nullptr;
+		}
+
+		this->itemCount--;
 	}
 
-	this->itemCount--;
-
-	return this->getItemFromPool(true);
+	return this->getItemFromPool(true, inventories);
 }
 
-std::vector<Item*> MinMaxPool::getItems()
+std::vector<Item*> MinMaxPool::getItems(std::vector<Inventory*> inventories)
 {
 	std::vector<Item*> items = std::vector<Item*>();
+
+	for (auto nestedPool : this->nestedPools)
+	{
+		for (auto item : nestedPool->getItems(inventories))
+		{
+			items.push_back(item);
+		}
+	}
 	
 	switch (this->sampleMethod)
 	{
 		default:
 		case SampleMethod::Unbounded:
 		{
-			for (auto item : this->getItemsFromPool(this->getPoolSize(), true))
+			for (auto item : this->getItemsFromPool(this->getPoolSize(), inventories, true))
 			{
 				items.push_back(item);
 			}
@@ -61,7 +72,7 @@ std::vector<Item*> MinMaxPool::getItems()
 		}
 		case SampleMethod::Random:
 		{
-			for (auto item : this->getItemsFromPool(itemCount, true))
+			for (auto item : this->getItemsFromPool(itemCount, inventories, true))
 			{
 				items.push_back(item);
 			}
@@ -70,20 +81,12 @@ std::vector<Item*> MinMaxPool::getItems()
 		}
 		case SampleMethod::Guarantee:
 		{
-			for (auto item : this->getItemsFromPoolGuaranteed(itemCount, true))
+			for (auto item : this->getItemsFromPoolGuaranteed(itemCount, inventories, true))
 			{
 				items.push_back(item);
 			}
 
 			break;
-		}
-	}
-
-	for (auto nestedPool : this->nestedPools)
-	{
-		for (auto item : nestedPool->getItems())
-		{
-			items.push_back(item);
 		}
 	}
 

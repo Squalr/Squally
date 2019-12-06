@@ -5,6 +5,7 @@
 
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -60,6 +61,31 @@ void SquallyReceiveItemBehavior::onLoad()
 			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(args->item, true);
+			});
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItemsFromPool, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::GiveItemsFromPoolArgs* args = static_cast<PlatformerEvents::GiveItemsFromPoolArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->pool != nullptr)
+		{
+			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				std::vector<Item*> items = args->pool->getItems(entityInventoryBehavior->getAllInventories());
+
+				for (auto item : items)
+				{
+					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+						args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+						item->getString(),
+						item->getIconResource(),
+						SoundResources::Notifications_NotificationGood3
+					));
+
+					entityInventoryBehavior->getInventory()->forceInsert(item, true);
+				}
 			});
 		}
 	}));

@@ -63,6 +63,11 @@ void EntityInventoryBehavior::onLoad()
 {
 }
 
+std::vector<Inventory*> EntityInventoryBehavior::getAllInventories()
+{
+	return { this->inventory, this->equipmentInventory };
+}
+
 Inventory* EntityInventoryBehavior::getInventory()
 {
 	return this->inventory;

@@ -11,7 +11,7 @@
 using namespace cocos2d;
 
 const std::string RestorePotion::SaveKeyRestorePotion = "restore-potion";
-const float RestorePotion::HealPercentage = 0.4f;
+const int RestorePotion::HealTicks = 8;
 
 RestorePotion* RestorePotion::create()
 {

@@ -16,7 +16,7 @@ public:
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeyRestorePotion;
-	static const float HealPercentage;
+	static const int HealTicks;
 
 protected:
 	RestorePotion();

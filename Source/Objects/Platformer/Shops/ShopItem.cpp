@@ -4,6 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ItemEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
@@ -13,6 +14,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
+#include "Objects/Platformer/Shops/ShopPool.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -65,10 +68,10 @@ ShopItem::~ShopItem()
 void ShopItem::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	ItemEvents::TriggerRequestItem(ItemEvents::ItemRequestArgs(this->poolName, [=](Item* item)
+	
+	ObjectEvents::watchForObject<ShopPool>(this, [=](ShopPool* shopPool)
 	{
-		this->item = item;
+		this->item = shopPool->getNextItem();
 
 		if (this->item != nullptr)
 		{
@@ -88,7 +91,7 @@ void ShopItem::onEnterTransitionDidFinish()
 		{
 			this->setVisible(false);
 		}
-	}));
+	}, this->poolName);
 }
 
 void ShopItem::initializePositions()

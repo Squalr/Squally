@@ -155,32 +155,32 @@
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="minos"/>
+    <property name="pool" value="shop-pool-minos"/>
    </properties>
   </object>
   <object id="801" name="shop-pool-minos" type="object" x="404.409" y="310.893" width="64" height="64"/>

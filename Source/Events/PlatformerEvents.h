@@ -7,6 +7,7 @@
 class GameObject;
 class Item;
 class LocalizedString;
+class MinMaxPool;
 class PlatformerEntity;
 class PlatformerEnemy;
 
@@ -24,6 +25,7 @@ public:
 	static const std::string EventEngageEnemy;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
+	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
 
 	struct TransitionArgs
@@ -81,6 +83,14 @@ public:
 		EngageEnemyArgs(PlatformerEnemy* enemy, bool firstStrike) : enemy(enemy), firstStrike(firstStrike) { }
 	};
 
+	struct GiveItemsFromPoolArgs
+	{
+		MinMaxPool* pool;
+		LocalizedString* messageOverride;
+
+		GiveItemsFromPoolArgs(MinMaxPool* pool, LocalizedString* messageOverride = nullptr) : pool(pool), messageOverride(messageOverride) { }
+	};
+
 	struct GiveItemArgs
 	{
 		Item* item;
@@ -100,5 +110,6 @@ public:
 	static void TriggerEngageEnemy(EngageEnemyArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
+	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
 };

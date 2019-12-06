@@ -4,6 +4,7 @@
 
 class Item;
 class ItemChance;
+class Inventory;
 
 class ItemPool : public GameObject
 {
@@ -17,14 +18,15 @@ protected:
 	void initializeListeners() override;
 
 	int getPoolSize();
-	virtual Item* getItemFromPool(bool removeSampledItem);
-	virtual Item* getItemFromPoolGuaranteed(bool removeSampledItem);
-	virtual std::vector<Item*> getItemsFromPool(int count, bool removeSampledItems);
-	virtual std::vector<Item*> getItemsFromPoolGuaranteed(int count, bool removeSampledItems);
+	virtual Item* getItemFromPool(bool removeSampledItem, std::vector<Inventory*> inventories);
+	virtual Item* getItemFromPoolGuaranteed(bool removeSampledItem, std::vector<Inventory*> inventories);
+	virtual std::vector<Item*> getItemsFromPool(int count, std::vector<Inventory*> inventories, bool removeSampledItems);
+	virtual std::vector<Item*> getItemsFromPoolGuaranteed(int count, std::vector<Inventory*> inventories, bool removeSampledItems);
 	void addItemToPool(ItemChance* itemChance);
 	void removeItemFromPool(ItemChance* itemChance);
 	
 	std::vector<ItemChance*> itemPool;
+	std::string poolName;
 
 private:
 	typedef GameObject super;
@@ -38,7 +40,6 @@ private:
 	};
 
 	cocos2d::Node* itemsNode;
-	std::string poolName;
 
 	std::vector<ProbabilityData> probabilityCache;
 	float probabilitySum;
