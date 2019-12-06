@@ -8,6 +8,7 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
@@ -122,6 +123,19 @@ void GameCamera::initializeListeners()
 			this->clearTargets();
 		}
 	));
+	
+	EventListenerMouse* scrollListener = EventListenerMouse::create();
+
+	scrollListener->onMouseScroll = [=](EventMouse* event)
+	{
+		if (this->isDeveloperModeEnabled())
+		{
+			float delta = event->getScrollY() * 64.0f;
+			this->setCameraDistance(this->getCameraDistance() + delta);
+		}
+	};
+
+	this->addEventListenerIgnorePause(scrollListener);
 }
 
 void GameCamera::update(float dt)

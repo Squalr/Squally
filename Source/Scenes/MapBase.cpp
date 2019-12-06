@@ -5,7 +5,6 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/base/CCEventMouse.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
@@ -197,10 +196,6 @@ void MapBase::initializeListeners()
 		this->openPauseMenu(this);
 	});
 
-	EventListenerMouse* scrollListener = EventListenerMouse::create();
-
-	scrollListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
-
 	this->optionsMenu->setBackClickCallback([=]()
 	{
 		this->optionsMenu->setVisible(false);
@@ -220,8 +215,6 @@ void MapBase::initializeListeners()
 		this->pauseMenu->setVisible(false);
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 	});
-
-	this->addEventListenerIgnorePause(scrollListener);
 }
 
 void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
@@ -236,15 +229,6 @@ void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeseria
 	{
 		this->addChild(*it);
 		this->layerDeserializers.push_back(*it);
-	}
-}
-
-void MapBase::onMouseWheelScroll(EventMouse* event)
-{
-	if (this->isDeveloperModeEnabled())
-	{
-		float delta = event->getScrollY() * 64.0f;
-		GameCamera::getInstance()->setCameraDistance(GameCamera::getInstance()->getCameraDistance() + delta);
 	}
 }
 

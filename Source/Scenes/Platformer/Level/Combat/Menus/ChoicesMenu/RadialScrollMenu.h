@@ -3,6 +3,7 @@
 #include "Engine/SmartNode.h"
 
 class ClickableTextNode;
+class LocalizedString;
 
 class RadialScrollMenu : public SmartNode
 {
@@ -10,13 +11,16 @@ public:
 	static RadialScrollMenu* create(float radius);
 
 	void clearItems();
-	void addEntry(ClickableTextNode* button);
+	ClickableTextNode* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
+	void disableAll();
+	void enableAll();
 
-private:
-	typedef SmartNode super;
+protected:
 	RadialScrollMenu(float radius);
 	virtual ~RadialScrollMenu();
 
+private:
+	typedef SmartNode super;
 	void positionButtons();
 
 	std::vector<ClickableTextNode*> buttons;

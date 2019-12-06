@@ -3,13 +3,11 @@
 #include "Engine/SmartNode.h"
 #include "Events/CombatEvents.h"
 
-namespace cocos2d
-{
-	class Node;
-}
-
+class AttackMenu;
 class ClickableTextNode;
+class ItemsMenu;
 class PlatformerAttack;
+class RadialScrollMenu;
 class TimelineEntry;
 
 class ChoicesMenu : public SmartNode
@@ -20,38 +18,30 @@ public:
 private:
 	typedef SmartNode super;
 	ChoicesMenu();
-	~ChoicesMenu();
+	virtual ~ChoicesMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	void onItemsClick();
 	void onAttackClick();
 	void onDefendClick();
-	void toggleInnerText(bool isVisible);
-	void toggleOuterText(bool isVisible);
 	void setSelectedEntry(TimelineEntry* selectedEntry);
-	void buildAttackList();
-	void buildItemList();
-	void buildAttackList(cocos2d::Node* nodeRef, std::vector<ClickableTextNode*>* listRef, std::vector<PlatformerAttack*> attacks, std::string backgroundResource);
 
 	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
 
-	ClickableTextNode* itemsNode;
-	ClickableTextNode* attackNode;
-	ClickableTextNode* defendNode;
-	cocos2d::Node* attackListNode;
-	cocos2d::Node* itemListNode;
-	cocos2d::Node* defendListNode;
-	TimelineEntry* selectedEntry;
+	RadialScrollMenu* choicesMenu;
+	AttackMenu* attackMenu;
+	ItemsMenu* itemsMenu;
 
-	std::vector<ClickableTextNode*> attackListNodes;
-	std::vector<ClickableTextNode*> itemListNodes;
+	ClickableTextNode* itemsButton;
+	ClickableTextNode* attackButton;
+	ClickableTextNode* defendButton;
+	
+	TimelineEntry* selectedEntry;
 	
 	bool noItems;
 	bool noDefend;
 
-	static const float InnerChoicesRadius;
-	static const float OuterChoicesRadius;
+	static const float Radius;
 };

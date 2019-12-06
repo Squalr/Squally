@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class EventMouse;
 	class Sprite;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
@@ -42,7 +41,6 @@ protected:
 	void onDeveloperModeDisable() override;
 	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
-	void onMouseWheelScroll(cocos2d::EventMouse* event);
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 	void openPauseMenu(cocos2d::Node* refocusTarget);

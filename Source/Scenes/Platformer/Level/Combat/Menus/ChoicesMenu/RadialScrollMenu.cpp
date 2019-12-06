@@ -43,10 +43,58 @@ void RadialScrollMenu::clearItems()
 	this->buttonsNode->removeAllChildren();
 }
 
-void RadialScrollMenu::addEntry(ClickableTextNode* entry)
+ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback)
 {
+	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
+	LocalizedLabel* attackLabelSelected = attackLabel->clone();
+
+	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+	attackLabel->enableOutline(Color4B::BLACK, 2);
+	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
+	attackLabelSelected->setTextColor(Color4B::YELLOW);
+
+	ClickableTextNode* entry = ClickableTextNode::create(attackLabel, attackLabelSelected, backgroundResource, backgroundResource);
+
+	entry->setTextOffset(Vec2(48.0f, 0.0f));
+
+	if (iconNode != nullptr)
+	{
+		entry->addChild(iconNode);
+	}
+
+	if (callback != nullptr)
+	{
+		entry->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+		{
+			callback();
+		});
+	}
+
 	this->buttons.push_back(entry);
 	this->buttonsNode->addChild(entry);
+
+	this->positionButtons();
+
+	return entry;
+}
+
+void RadialScrollMenu::disableAll()
+{
+	for (auto button : this->buttons)
+	{
+		button->disableInteraction(127);
+		button->setTextVisible(false);
+	}
+}
+
+void RadialScrollMenu::enableAll()
+{
+	for (auto button : this->buttons)
+	{
+		button->enableInteraction();
+		button->setTextVisible(true);
+	}
 }
 
 void RadialScrollMenu::positionButtons()
