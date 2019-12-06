@@ -45,7 +45,7 @@ RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity*
 	return instance;
 }
 
-RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target)
+RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);

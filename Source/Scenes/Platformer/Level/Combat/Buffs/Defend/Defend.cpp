@@ -21,7 +21,7 @@ Defend* Defend::create(PlatformerEntity* caster)
 	return instance;
 }
 
-Defend::Defend(PlatformerEntity* caster) : super(caster, caster)
+Defend::Defend(PlatformerEntity* caster) : super(caster, caster, BuffData("defend-skill"))
 {
 	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
 	this->resetCount = 0;
@@ -56,7 +56,7 @@ void Defend::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::funct
 	super::onBeforeDamageTaken(damageOrHealing, blocked, handleCallback);
 
 	*blocked = true;
-	*damageOrHealing = int(std::floor(float(*damageOrHealing) * Defend::DamageReduction));
+	*damageOrHealing = int(std::floor(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
 
 	this->onDamageTakenOrCycle(true);
 }

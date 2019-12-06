@@ -13,10 +13,11 @@
 
 using namespace cocos2d;
 
-Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target)
+Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData)
 {
 	this->caster = caster;
 	this->target = target;
+	this->buffData = buffData;
 	this->hackables = std::vector<HackableCode*>();
 	this->showClippy = false;
 }
@@ -116,11 +117,20 @@ void Buff::unregisterHackables()
 	}
 }
 
+Buff::BuffData Buff::getBuffData()
+{
+	return this->buffData;
+}
+
+void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
+{
+	this->removeBuffCallback = removeBuffCallback;
+}
+
 void Buff::removeBuff()
 {
-	if (this->getParent() != nullptr)
+	if (this->removeBuffCallback != nullptr)
 	{
-		// unregisterHackables will be indirectly called due to the onExit trigger
-		this->getParent()->removeChild(this);
+		this->removeBuffCallback();
 	}
 }

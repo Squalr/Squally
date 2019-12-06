@@ -31,7 +31,7 @@ using namespace cocos2d;
 
 const std::string SpeedGain::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
 const std::string SpeedGain::EventShowRestorePotionTutorial = "EVENT_SHOW_RESTORE_POTION_TUTORIAL";
-const std::string SpeedGain::SpeedGainIdentifier = "restore-health";
+const std::string SpeedGain::SpeedGainIdentifier = "speed-gain";
 const float SpeedGain::TimeBetweenTicks = 0.5f;
 
 SpeedGain* SpeedGain::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
@@ -43,7 +43,7 @@ SpeedGain* SpeedGain::create(PlatformerEntity* caster, PlatformerEntity* target,
 	return instance;
 }
 
-SpeedGain::SpeedGain(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target)
+SpeedGain::SpeedGain(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(SpeedGain::SpeedGainIdentifier))
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);

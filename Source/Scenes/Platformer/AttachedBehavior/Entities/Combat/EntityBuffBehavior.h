@@ -11,6 +11,8 @@ public:
 	static EntityBuffBehavior* create(GameObject* owner);
 
 	void applyBuff(Buff* buff);
+	void removeBuff(Buff* buff);
+	void removeBuffsById(std::string buffId);
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -24,4 +26,6 @@ private:
 	typedef AttachedBehavior super;
 
 	PlatformerEntity* entity;
+
+	std::vector<Buff*> buffs;
 };

@@ -22,6 +22,7 @@ EntityBuffBehavior* EntityBuffBehavior::create(GameObject* owner)
 EntityBuffBehavior::EntityBuffBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->buffs = std::vector<Buff*>();
 
 	if (this->entity == nullptr)
 	{
@@ -33,13 +34,57 @@ EntityBuffBehavior::~EntityBuffBehavior()
 {
 }
 
+void EntityBuffBehavior::onLoad()
+{
+}
+
 void EntityBuffBehavior::applyBuff(Buff* buff)
 {
+	if (buff == nullptr)
+	{
+		return;
+	}
+
+	if (!buff->getBuffData().uniqueId.empty())
+	{
+		this->removeBuffsById(buff->getBuffData().uniqueId);
+	}
+	
+	buff->setRemoveBuffCallback([=]() { this->removeBuff(buff); });
+	this->buffs.push_back(buff);
 	this->addChild(buff);
 
 	CombatEvents::TriggerBuffApplied(CombatEvents::BuffAppliedArgs(this->entity, buff));
 }
 
-void EntityBuffBehavior::onLoad()
+void EntityBuffBehavior::removeBuff(Buff* buff)
 {
+	if (buff == nullptr)
+	{
+		return;
+	}
+
+	if (std::find(this->buffs.begin(), this->buffs.end(), buff) != this->buffs.end())
+	{
+		this->buffs.erase(std::remove(this->buffs.begin(), this->buffs.end(), buff), this->buffs.end());
+		this->removeChild(buff);
+	}
+}
+
+void EntityBuffBehavior::removeBuffsById(std::string buffId)
+{
+	std::vector<Buff*> buffsCopy = this->buffs;
+
+	for (auto buff : buffsCopy)
+	{
+		if (buff == nullptr)
+		{
+			continue;
+		}
+
+		if (buff->getBuffData().uniqueId == buffId)
+		{
+			this->removeBuff(buff);
+		}
+	}
 }
