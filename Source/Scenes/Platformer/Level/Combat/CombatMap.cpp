@@ -32,7 +32,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
-#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/RewardsMenu.h"
