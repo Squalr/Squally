@@ -23,7 +23,7 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration)
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_SwordStrike, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -38,7 +38,7 @@ PlatformerAttack* ThrowWeapon::cloneInternal()
 
 LocalizedString* ThrowWeapon::getString()
 {
-	return Strings::Common_Empty::create();
+	return Strings::Platformer_Combat_Attacks_ThrowWeapon::create();
 }
 
 std::string ThrowWeapon::getAttackAnimation()

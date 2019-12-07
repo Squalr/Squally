@@ -32,7 +32,6 @@ public:
 	void setIconOffset(cocos2d::Vec2 offset);
 
 protected:
-	typedef ClickableNode super;
 	ClickableIconNode(
 		cocos2d::Sprite* normalSprite,
 		cocos2d::Sprite* selectedSprite,
@@ -42,4 +41,7 @@ protected:
 
 	cocos2d::Sprite* normalContentSprite;
 	cocos2d::Sprite* selectedContentSprite;
+
+private:
+	typedef ClickableNode super;
 };

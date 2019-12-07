@@ -37,8 +37,8 @@ public:
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
-	void disableInteraction(uint8_t newOpacity = 255);
-	void enableInteraction(uint8_t newOpacity = 255);
+	virtual void disableInteraction(uint8_t newOpacity = 255);
+	virtual void enableInteraction(uint8_t newOpacity = 255);
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	cocos2d::Node* getSprite();
 	cocos2d::Node* getSpriteSelected();

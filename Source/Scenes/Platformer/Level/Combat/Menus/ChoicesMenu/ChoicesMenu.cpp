@@ -104,12 +104,11 @@ void ChoicesMenu::initializeListeners()
 		{
 			this->currentMenu = combatArgs->currentMenu;
 
-			switch (combatArgs->currentMenu)
+			switch (this->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
 					this->attackMenu->setVisible(false);
-					// this->defendMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
 					this->setSelectedEntry(combatArgs->entry);
@@ -117,38 +116,44 @@ void ChoicesMenu::initializeListeners()
 					this->setVisible(true);
 					this->choicesMenu->enableAll();
 
+					if (this->noItems)
+					{
+						this->itemsButton->disableInteraction(127);
+					}
+
+					if (this->noDefend)
+					{
+						this->defendButton->disableInteraction(127);
+					}
+
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				{
 					this->attackMenu->setVisible(true);
-					// this->defendMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
 					this->attackMenu->enableAll();
-					this->choicesMenu->disableAll();
+					this->choicesMenu->disableAll(false);
 
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
 				{
 					this->attackMenu->setVisible(false);
-					// this->defendMenu->setVisible(false);
 					this->itemsMenu->setVisible(true);
 
 					this->itemsMenu->enableAll();
-					this->choicesMenu->disableAll();
+					this->choicesMenu->disableAll(false);
 
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
 					this->attackMenu->setVisible(false);
-					// this->defendMenu->setVisible(true);
 					this->itemsMenu->setVisible(false);
 
-					// this->defendMenu->enableAll();
-					this->choicesMenu->disableAll();
+					this->choicesMenu->disableAll(false);
 
 					break;
 				}
@@ -163,7 +168,6 @@ void ChoicesMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
 				{
 					this->attackMenu->setVisible(false);
-					// this->defendMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 					this->setVisible(false);
 
@@ -176,16 +180,6 @@ void ChoicesMenu::initializeListeners()
 			}
 		}
 	}));
-
-	if (this->noItems)
-	{
-		this->itemsButton->disableInteraction();
-	}
-
-	if (this->noDefend)
-	{
-		this->defendButton->disableInteraction();
-	}
 }
 
 void ChoicesMenu::onItemsClick()

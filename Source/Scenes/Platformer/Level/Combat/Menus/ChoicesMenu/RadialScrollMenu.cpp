@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/EntryContainer.h"
 
 #include "Resources/UIResources.h"
 
@@ -28,7 +29,8 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 {
 	this->radius = radius;
 	this->buttonsNode = Node::create();
-	this->buttons = std::vector<ClickableTextNode*>();
+	this->buttons = std::vector<EntryContainer*>();
+	this->currentIndex = 0;
 	
 	this->addChild(this->buttonsNode);
 }
@@ -36,11 +38,27 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 RadialScrollMenu::~RadialScrollMenu()
 {
 }
+	
+void RadialScrollMenu::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs*)
+	{
+		this->scrollUp();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs*)
+	{
+		this->scrollDown();
+	});
+}
 
 void RadialScrollMenu::clearItems()
 {
 	this->buttons.clear();
 	this->buttonsNode->removeAllChildren();
+	this->currentIndex = 0;
 }
 
 ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback)
@@ -54,7 +72,7 @@ ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d
 	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
 	attackLabelSelected->setTextColor(Color4B::YELLOW);
 
-	ClickableTextNode* entry = ClickableTextNode::create(attackLabel, attackLabelSelected, backgroundResource, backgroundResource);
+	EntryContainer* entry = EntryContainer::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
 	entry->setTextOffset(Vec2(48.0f, 0.0f));
 
@@ -71,19 +89,37 @@ ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d
 		});
 	}
 
-	this->buttons.push_back(entry);
-	this->buttonsNode->addChild(entry);
+	Node* container = Node::create();
 
-	this->positionButtons();
+	container->addChild(entry);
+	this->buttons.push_back(entry);
+	this->buttonsNode->addChild(container);
+
+	if (this->currentIndex == 0 && this->buttons.size() == 1)
+	{
+		this->scrollDown();
+	}
+	else
+	{
+		this->positionButtons();
+	}
 
 	return entry;
 }
 
-void RadialScrollMenu::disableAll()
+void RadialScrollMenu::disableAll(bool disableInteraction)
 {
 	for (auto button : this->buttons)
 	{
-		button->disableInteraction(127);
+		if (disableInteraction)
+		{
+			button->disableInteraction(127);
+		}
+		else
+		{
+
+		}
+
 		button->setTextVisible(false);
 	}
 }
@@ -97,16 +133,44 @@ void RadialScrollMenu::enableAll()
 	}
 }
 
+void RadialScrollMenu::scrollUp()
+{
+	this->currentIndex = MathUtils::clamp(this->currentIndex - 1, 0, this->buttons.size() - 1);
+	this->positionButtons();
+}
+
+void RadialScrollMenu::scrollDown()
+{
+	this->currentIndex = MathUtils::clamp(this->currentIndex + 1, 0, this->buttons.size() - 1);
+	this->positionButtons();
+}
+
 void RadialScrollMenu::positionButtons()
 {
 	const float AngleDelta = float(M_PI) / 6.0f;
-	float currentAngle = 0.0f;
-	
-	for (auto button : this->buttons)
-	{
-		button->setTextOffset(Vec2(48.0f, 0.0f));
-		button->setPosition(Vec2(this->radius * std::cos(currentAngle), this->radius * std::sin(currentAngle)));
+	int buttonIndex = 0;
 
-		currentAngle = (currentAngle <= 0.0f ? 1.0f : -1.0f) * (std::abs(currentAngle) + (currentAngle <= 0.0f ? AngleDelta : 0.0f));
+	for (int buttonIndex = 0; buttonIndex < int(this->buttons.size()); buttonIndex++)
+	{
+		EntryContainer* button = this->buttons[buttonIndex];
+
+		int effectiveIndex = buttonIndex - this->currentIndex;
+		float currentAngle = float(effectiveIndex) * AngleDelta;
+
+		button->setTextOffset(Vec2(48.0f, 0.0f));
+		button->setPosition(Vec2(this->radius * std::cos(currentAngle), this->radius * -std::sin(currentAngle)));
+		
+		if (effectiveIndex == -2 || effectiveIndex == 2)
+		{
+			button->disable(64);
+		}
+		else if (effectiveIndex < -2 || effectiveIndex > 2)
+		{
+			button->disable(0);
+		}
+		else
+		{
+			button->enable();
+		}
 	}
 }

@@ -14,11 +14,12 @@ public:
 	bool isShownIfUnique();
 
 protected:
-	typedef SmartNode super;
 
 	DialogueOption(LocalizedString* dialogueOption, std::function<void()> onDialogueChosen, bool showIfUnique);
 	~DialogueOption();
 
 private:
+	typedef SmartNode super;
+	
 	bool showIfUnique;
 };

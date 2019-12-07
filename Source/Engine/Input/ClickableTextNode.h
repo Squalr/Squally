@@ -11,17 +11,17 @@ namespace cocos2d
 class ClickableTextNode : public ClickableNode
 {
 public:
-	static ClickableTextNode * create(
+	static ClickableTextNode* create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel,
 		std::string spriteNormal,
 		std::string spriteSelectedResource);
-	static ClickableTextNode * create(
+	static ClickableTextNode* create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel,
 		cocos2d::Node* spriteNormal,
 		std::string spriteSelectedResource);
-	static ClickableTextNode * create(
+	static ClickableTextNode* create(
 		cocos2d::Label* normalLabel,
 		cocos2d::Label* selectedLabel, 
 		cocos2d::Node* nodeNormal,

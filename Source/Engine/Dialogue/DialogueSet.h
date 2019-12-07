@@ -15,12 +15,12 @@ public:
 	std::vector<std::tuple<DialogueOption*, float>> getDialogueOptions();
 
 protected:
-	typedef SmartNode super;
-
 	DialogueSet();
 	~DialogueSet();
 
 private:
+	typedef SmartNode super;
+
 	cocos2d::Node* optionsNode;
 
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions;

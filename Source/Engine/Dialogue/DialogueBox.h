@@ -30,7 +30,6 @@ public:
 	bool isDialogueEffectComplete();
 
 protected:
-	typedef SmartNode super;
 
 	DialogueBox(float textWidth, float speakerOffset, float speakerWidth);
 	~DialogueBox();
@@ -51,6 +50,8 @@ protected:
 	static const float DialogueHeight;
 
 private:
+	typedef SmartNode super;
+	
 	cocos2d::Node* containerNode;
 	cocos2d::DrawNode* panel;
 

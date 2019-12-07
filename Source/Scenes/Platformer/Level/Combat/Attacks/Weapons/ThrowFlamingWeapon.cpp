@@ -40,7 +40,7 @@ PlatformerAttack* ThrowFlamingWeapon::cloneInternal()
 
 LocalizedString* ThrowFlamingWeapon::getString()
 {
-	return Strings::Common_Empty::create();
+	return Strings::Platformer_Combat_Attacks_ThrowFlamingWeapon::create();
 }
 
 std::string ThrowFlamingWeapon::getAttackAnimation()

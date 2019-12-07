@@ -136,6 +136,7 @@ void GameCamera::initializeListeners()
 
 	this->debugScrollHitbox->setMouseScrollCallback([=](InputEvents::MouseEventArgs* args)
 	{
+		args->unhandle();
 		float delta = args->scrollDelta.y * 64.0f;
 		this->setCameraDistance(this->getCameraDistance() + delta);
 	});
