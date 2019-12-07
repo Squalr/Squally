@@ -8,11 +8,11 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -56,6 +56,7 @@ GameCamera::GameCamera()
 	this->debugCameraStringX = ConstantString::create();
 	this->debugCameraStringY = ConstantString::create();
 	this->debugCameraStringZoom = ConstantString::create();
+	this->debugScrollHitbox = ClickableNode::create();
 	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
 
@@ -67,10 +68,16 @@ GameCamera::GameCamera()
 	this->debugCameraLabelY->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->debugCameraLabelZoom->setAnchorPoint(Vec2(0.0f, 0.0f));
 
+	Hud* debugScrollHud = Hud::create();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->debugScrollHitbox->setContentSize(visibleSize);
+
+	debugScrollHud->addChild(this->debugScrollHitbox);
 	this->hud->addChild(this->debugCameraRectangle);
 	this->hud->addChild(this->debugCameraLabelX);
 	this->hud->addChild(this->debugCameraLabelY);
 	this->hud->addChild(this->debugCameraLabelZoom);
+	this->addChild(debugScrollHud);
 	this->addChild(this->hud);
 }
 
@@ -90,6 +97,7 @@ void GameCamera::onDeveloperModeEnable()
 	super::onDeveloperModeEnable();
 
 	this->updateCameraDebugLabels();
+	this->debugScrollHitbox->enableInteraction();
 	this->hud->setVisible(true);
 }
 
@@ -97,6 +105,7 @@ void GameCamera::onDeveloperModeDisable()
 {
 	GameCamera::onDeveloperModeEnable();
 
+	this->debugScrollHitbox->disableInteraction();
 	this->hud->setVisible(false);
 }
 
@@ -106,6 +115,7 @@ void GameCamera::initializePositions()
 
 	super::initializePositions();
 
+	this->debugScrollHitbox->setPosition(visibleSize / 2.0f);
 	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
 	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 48.0f));
 	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f));
@@ -123,19 +133,12 @@ void GameCamera::initializeListeners()
 			this->clearTargets();
 		}
 	));
-	
-	EventListenerMouse* scrollListener = EventListenerMouse::create();
 
-	scrollListener->onMouseScroll = [=](EventMouse* event)
+	this->debugScrollHitbox->setMouseScrollCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		if (this->isDeveloperModeEnabled())
-		{
-			float delta = event->getScrollY() * 64.0f;
-			this->setCameraDistance(this->getCameraDistance() + delta);
-		}
-	};
-
-	this->addEventListenerIgnorePause(scrollListener);
+		float delta = args->scrollDelta.y * 64.0f;
+		this->setCameraDistance(this->getCameraDistance() + delta);
+	});
 }
 
 void GameCamera::update(float dt)

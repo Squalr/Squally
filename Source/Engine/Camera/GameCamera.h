@@ -14,6 +14,7 @@ namespace cocos2d
 	class Vec2;
 }
 
+class ClickableNode;
 class ConstantString;
 class Hud;
 class LocalizedLabel;
@@ -62,6 +63,7 @@ private:
 	float defaultDistance;
 
 	Hud* hud;
+	ClickableNode* debugScrollHitbox;
 	LocalizedLabel* debugCameraLabelX;
 	LocalizedLabel* debugCameraLabelY;
 	LocalizedLabel* debugCameraLabelZoom;

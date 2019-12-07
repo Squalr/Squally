@@ -180,10 +180,7 @@ void PauseMenu::initializeListeners()
 
 	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->resumeClickCallback != nullptr)
-		{
-			this->resumeClickCallback();
-		}
+		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 

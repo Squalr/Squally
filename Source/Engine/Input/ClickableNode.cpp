@@ -343,7 +343,10 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 
 	if (!args->isHandled() && this->intersects(args->mouseCoords))
 	{
-		InputEvents::TriggerEventClickableMouseOver();
+		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
+		{
+			InputEvents::TriggerEventClickableMouseOver();
+		}
 
 		if (!this->isMousedOver && this->mouseInEvent != nullptr)
 		{
@@ -361,10 +364,10 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 			}
 
 			this->showSprite(this->spriteSelected);
-		}
 
-		// Set args as handled. Caller must un-handle in the callback if they choose.
-		args->handle();
+			// Set args as handled. Caller must un-handle in the callback if they choose.
+			args->handle();
+		}
 
 		// Mouse over callback
 		if (this->mouseOverEvent != nullptr)
@@ -385,30 +388,33 @@ void ClickableNode::mouseDown(InputEvents::MouseEventArgs* args, EventCustom* ev
 		return;
 	}
 
-	if (!args->isHandled() && this->intersects(args->mouseCoords) && args->isLeftClicked)
+	if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
 	{
-		if (this->mouseDownEvent != nullptr)
+		if (!args->isHandled() && this->intersects(args->mouseCoords) && args->isLeftClicked)
 		{
-			// Mouse down callback
-			this->mouseDownEvent(args);
-		}
-
-		if (!this->wasAnywhereClicked)
-		{
-			// Set args as handled. Caller must un-handle in either callback if they choose.
-			args->handle();
-
-			if (this->mousePressEvent != nullptr)
+			if (this->mouseDownEvent != nullptr)
 			{
-				this->mousePressEvent(args);
+				// Mouse down callback
+				this->mouseDownEvent(args);
 			}
 
-			if (this->mouseDragEvent != nullptr)
+			if (!this->wasAnywhereClicked)
 			{
-				InputEvents::TriggerDragEvent();
-			}
+				// Set args as handled. Caller must un-handle in either callback if they choose.
+				args->handle();
 
-			this->wasClickedDirectly = true;
+				if (this->mousePressEvent != nullptr)
+				{
+					this->mousePressEvent(args);
+				}
+
+				if (this->mouseDragEvent != nullptr)
+				{
+					InputEvents::TriggerDragEvent();
+				}
+
+				this->wasClickedDirectly = true;
+			}
 		}
 	}
 
