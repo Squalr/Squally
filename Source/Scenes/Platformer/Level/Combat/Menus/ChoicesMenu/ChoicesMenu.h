@@ -28,6 +28,7 @@ private:
 	void onDefendClick();
 	void setSelectedEntry(TimelineEntry* selectedEntry);
 
+	CombatEvents::MenuStateArgs::CurrentMenu previousMenu;
 	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
 
 	RadialScrollMenu* choicesMenu;

@@ -157,6 +157,19 @@ void ClickableNode::setDebugDrawPosition()
 	this->debugHitbox->setPosition(-Vec2(this->getContentSize() / 2.0f));
 }
 
+void ClickableNode::interact()
+{
+	if (!this->interactionEnabled || (!this->allowCollisionWhenInvisible && !GameUtils::isVisible(this)))
+	{
+		return;
+	}
+
+	if (this->mouseClickEvent != nullptr)
+	{
+		this->mouseClickEvent(nullptr);
+	}
+}
+
 void ClickableNode::setContentSize(const Size & size)
 {
 	super::setContentSize(size);

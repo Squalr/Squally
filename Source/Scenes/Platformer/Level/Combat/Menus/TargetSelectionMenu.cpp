@@ -115,26 +115,31 @@ void TargetSelectionMenu::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW}, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->isActive)
-		{
-			this->selectNext(true);
-		}
+		this->selectNext(true);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW}, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->isActive)
-		{
-			this->selectNext(false);
-		}
+		this->selectNext(false);
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ENTER, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->chooseCurrentTarget();
 	});
 }
 
-void TargetSelectionMenu::update(float dt)
+void TargetSelectionMenu::chooseCurrentTarget()
 {
-	super::update(dt);
+	if (!this->isActive || this->selectedEntity == nullptr)
+	{
+		return;
+	}
+
+	CombatEvents::TriggerSelectCastTarget(CombatEvents::CastTargetArgs(this->selectedEntity));
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 }
 
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
@@ -156,6 +161,11 @@ void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 
 void TargetSelectionMenu::selectNext(bool directionIsLeft)
 {
+	if (!this->isActive)
+	{
+		return;
+	}
+
 	std::vector<PlatformerEntity*> targetEntityGroup = std::vector<PlatformerEntity*>();
 
 	switch (this->allowedSelection)
@@ -237,9 +247,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 
 void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 {
-	EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
-	
-	if (selection != nullptr)
+	entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
 		if (!entity->getStateOrDefaultBool(StateKeys::IsAlive, true)
 			|| (this->allowedSelection == AllowedSelection::Player && dynamic_cast<PlatformerFriendly*>(entity) == nullptr)
@@ -259,7 +267,7 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 		{
 			this->selectEntity(entityRef);
 		});
-	}
+	});
 }
 
 void TargetSelectionMenu::clearEntityClickCallbacks()

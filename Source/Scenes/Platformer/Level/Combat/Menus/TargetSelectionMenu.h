@@ -22,7 +22,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
+	void chooseCurrentTarget();
 	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
 	void setEntityClickCallbacks(PlatformerEntity* entity);

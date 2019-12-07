@@ -96,12 +96,31 @@ void ChoicesMenu::initializeListeners()
 		this->noItems = true;
 	}));
 
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs*)
+	{
+		switch (this->currentMenu)
+		{
+			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
+			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
+			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+			{
+				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
+				break;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	});
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
 		if (combatArgs != nullptr)
 		{
+			this->previousMenu = this->currentMenu;
 			this->currentMenu = combatArgs->currentMenu;
 
 			switch (this->currentMenu)
@@ -126,6 +145,10 @@ void ChoicesMenu::initializeListeners()
 						this->defendButton->disableInteraction(127);
 					}
 
+					this->choicesMenu->focus();
+					this->itemsMenu->unfocus();
+					this->attackMenu->unfocus();
+
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
@@ -134,7 +157,11 @@ void ChoicesMenu::initializeListeners()
 					this->itemsMenu->setVisible(false);
 
 					this->attackMenu->enableAll();
-					this->choicesMenu->disableAll(false);
+					this->choicesMenu->disableAll(false, false);
+
+					this->choicesMenu->unfocus();
+					this->itemsMenu->unfocus();
+					this->attackMenu->focus();
 
 					break;
 				}
@@ -144,7 +171,11 @@ void ChoicesMenu::initializeListeners()
 					this->itemsMenu->setVisible(true);
 
 					this->itemsMenu->enableAll();
-					this->choicesMenu->disableAll(false);
+					this->choicesMenu->disableAll(false, false);
+
+					this->choicesMenu->unfocus();
+					this->itemsMenu->focus();
+					this->attackMenu->unfocus();
 
 					break;
 				}
@@ -153,7 +184,11 @@ void ChoicesMenu::initializeListeners()
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
-					this->choicesMenu->disableAll(false);
+					this->choicesMenu->disableAll(false, false);
+
+					this->choicesMenu->unfocus();
+					this->itemsMenu->unfocus();
+					this->attackMenu->unfocus();
 
 					break;
 				}
@@ -161,8 +196,12 @@ void ChoicesMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				{
-					this->attackMenu->disableAll();
-					this->itemsMenu->disableAll();
+					this->attackMenu->disableAll(true);
+					this->itemsMenu->disableAll(true);
+
+					this->choicesMenu->unfocus();
+					this->itemsMenu->unfocus();
+					this->attackMenu->unfocus();
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
@@ -170,6 +209,10 @@ void ChoicesMenu::initializeListeners()
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 					this->setVisible(false);
+
+					this->choicesMenu->unfocus();
+					this->itemsMenu->unfocus();
+					this->attackMenu->unfocus();
 
 					break;
 				}
@@ -180,6 +223,16 @@ void ChoicesMenu::initializeListeners()
 			}
 		}
 	}));
+
+	this->itemsMenu->setBackCallback([=]()
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));	
+	});
+
+	this->attackMenu->setBackCallback([=]()
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));	
+	});
 }
 
 void ChoicesMenu::onItemsClick()

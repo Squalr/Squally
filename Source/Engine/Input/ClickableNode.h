@@ -23,6 +23,7 @@ public:
 	static ClickableNode* create(std::string spriteNormal, std::string spriteSelectedResource);
 	static ClickableNode* create(cocos2d::Node* nodeNormal, cocos2d::Node* nodeSelected);
 
+	void interact();
 	void setContentSize(const cocos2d::Size & size) override;
 	void setMouseClickCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseClick);
 	void setMouseInCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseIn);

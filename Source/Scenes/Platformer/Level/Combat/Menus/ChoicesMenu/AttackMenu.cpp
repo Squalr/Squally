@@ -60,10 +60,14 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 
 	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
+		int index = 0;
+
 		for (auto attack : attackBehavior->getAttacks())
 		{
 			this->addEntry(attack->getString(), Sprite::create(attack->getIconResource()), UIResources::Combat_AttackCircle, [=]()
 			{
+				this->scrollTo(index);
+
 				entry->stageCast(attack);
 
 				switch (attack->getAttackType())
@@ -88,6 +92,8 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 					}
 				}
 			});
+			
+			index++;
 		}
 	});
 }

@@ -13,10 +13,14 @@ public:
 
 	void clearItems();
 	ClickableTextNode* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
-	void disableAll(bool disableInteraction = true);
+	void disableAll(bool retainOpacity, bool disableInteraction = true);
 	void enableAll();
+	void focus();
+	void unfocus();
 	void scrollUp();
 	void scrollDown();
+	void scrollTo(int index);
+	void setBackCallback(std::function<void()> backCallback);
 
 protected:
 	RadialScrollMenu(float radius);
@@ -27,10 +31,13 @@ protected:
 private:
 	typedef SmartNode super;
 	void positionButtons();
+	void goBack();
 
 	std::vector<EntryContainer*> buttons;
 	cocos2d::Node* buttonsNode;
 	float radius;
 
 	int currentIndex;
+	bool focused;
+	std::function<void()> backCallback;
 };

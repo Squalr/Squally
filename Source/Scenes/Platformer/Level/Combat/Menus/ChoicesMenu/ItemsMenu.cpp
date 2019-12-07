@@ -60,8 +60,12 @@ void ItemsMenu::buildAttackList(TimelineEntry* entry)
 
 	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
+		int index = 0;
+
 		for (auto consumable : attackBehavior->getAvailableConsumables())
 		{
+			this->scrollTo(index);
+
 			this->addEntry(consumable->getString(), Sprite::create(consumable->getIconResource()), UIResources::Combat_ItemsCircle, [=]()
 			{
 				entry->stageCast(consumable);
@@ -88,6 +92,8 @@ void ItemsMenu::buildAttackList(TimelineEntry* entry)
 					}
 				}
 			});
+
+			index++;
 		}
 	});
 }
