@@ -135,6 +135,16 @@ void MapBase::initializePositions()
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventAllowPause, [=](EventCustom* eventCustom)
+	{
+		this->canPause = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDisallowPause, [=](EventCustom* eventCustom)
+	{
+		this->canPause = false;
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventQueryMapArgs, [=](EventCustom* eventCustom)
 	{
@@ -186,7 +196,7 @@ void MapBase::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this))
+		if (!this->canPause ||!GameUtils::isFocused(this))
 		{
 			return;
 		}
@@ -326,6 +336,11 @@ void MapBase::toggleHackerMode(void* userData)
 
 void MapBase::openPauseMenu(Node* refocusTarget)
 {
+	if (!this->canPause)
+	{
+		return;
+	}
+	
 	this->menuBackDrop->setOpacity(196);
 	this->pauseMenu->open([=]()
 	{

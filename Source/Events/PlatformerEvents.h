@@ -27,6 +27,8 @@ public:
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
+	static const std::string EventAllowPause;
+	static const std::string EventDisallowPause;
 
 	struct TransitionArgs
 	{
@@ -112,4 +114,6 @@ public:
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
+	static void TriggerAllowPause();
+	static void TriggerDisallowPause();
 };

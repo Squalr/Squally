@@ -56,6 +56,7 @@ protected:
 	PauseMenu* pauseMenu;
 	GameMap* map;
 
+	bool canPause;
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
 

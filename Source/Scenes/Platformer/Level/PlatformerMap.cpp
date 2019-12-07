@@ -77,6 +77,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
+	this->canPause = true;
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create(
@@ -218,7 +219,7 @@ void PlatformerMap::initializeListeners()
 
 	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this->cipher))
+		if (!this->canPause ||!GameUtils::isFocused(this->cipher))
 		{
 			return;
 		}
@@ -230,7 +231,7 @@ void PlatformerMap::initializeListeners()
 
 	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this->hexus))
+		if (!this->canPause || !GameUtils::isFocused(this->hexus))
 		{
 			return;
 		}

@@ -11,6 +11,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
@@ -96,7 +97,7 @@ void ChoicesMenu::initializeListeners()
 		this->noItems = true;
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs*)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
 		switch (this->currentMenu)
 		{
@@ -104,6 +105,7 @@ void ChoicesMenu::initializeListeners()
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 			case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 			{
+				args->handle();
 				CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
 				break;
 			}
@@ -127,6 +129,8 @@ void ChoicesMenu::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
+					PlatformerEvents::TriggerAllowPause();
+
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
@@ -153,6 +157,8 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				{
+					PlatformerEvents::TriggerDisallowPause();
+
 					this->attackMenu->setVisible(true);
 					this->itemsMenu->setVisible(false);
 
@@ -167,6 +173,8 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
 				{
+					PlatformerEvents::TriggerDisallowPause();
+
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(true);
 
@@ -181,6 +189,8 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
+					PlatformerEvents::TriggerDisallowPause();
+
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
@@ -196,6 +206,8 @@ void ChoicesMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				{
+					PlatformerEvents::TriggerDisallowPause();
+
 					this->attackMenu->disableAll(true);
 					this->itemsMenu->disableAll(true);
 
@@ -204,8 +216,11 @@ void ChoicesMenu::initializeListeners()
 					this->attackMenu->unfocus();
 					break;
 				}
+				default:
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
 				{
+					PlatformerEvents::TriggerAllowPause();
+
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 					this->setVisible(false);
@@ -214,10 +229,6 @@ void ChoicesMenu::initializeListeners()
 					this->itemsMenu->unfocus();
 					this->attackMenu->unfocus();
 
-					break;
-				}
-				default:
-				{
 					break;
 				}
 			}
