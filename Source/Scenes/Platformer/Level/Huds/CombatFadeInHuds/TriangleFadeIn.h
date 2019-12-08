@@ -14,8 +14,19 @@ public:
 
 	void runAnim() override;
 
-private:
-	typedef CombatFadeInHud super;
+protected:
 	TriangleFadeIn();
 	virtual ~TriangleFadeIn();
+
+	void initializePositions() override;
+
+private:
+	typedef CombatFadeInHud super;
+
+	void buildShapes();
+
+	cocos2d::DrawNode* upperTraingle;
+	cocos2d::DrawNode* leftTriangle;
+	cocos2d::DrawNode* rightTriangle;
+	cocos2d::DrawNode* bottomTriangle;
 };

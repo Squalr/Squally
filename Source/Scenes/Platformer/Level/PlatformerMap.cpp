@@ -1,5 +1,7 @@
 #include "PlatformerMap.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -38,6 +40,8 @@
 #include "Scenes/Hexus/Hexus.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
+#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
@@ -71,6 +75,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->transition = transition;
 	this->gameHud = GameHud::create();
 	this->notificationHud = NotificationHud::create();
+	this->combatFadeInNode = Node::create();
 	this->cipher = Cipher::create();
 	this->hexus = Hexus::create();
 	this->collectablesMenu = CollectablesMenu::create();
@@ -106,6 +111,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
 	this->topMenuHud->addChild(this->notificationHud);
+	this->topMenuHud->addChild(this->combatFadeInNode);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -388,14 +394,23 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 		}), enemy->getBattleTag());
 	}
 
-	// Start combat
-	CombatMap* combatMap = CombatMap::create(
-		enemy->getBattleMapResource(),
-		firstStrike,
-		enemy->getUniqueIdentifier(),
-		playerCombatData,
-		enemyCombatData
-	);
+	this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
 
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+	this->runAction(Sequence::create(
+		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
+		CallFunc::create([=]()
+		{
+			// Start combat
+			CombatMap* combatMap = CombatMap::create(
+				enemy->getBattleMapResource(),
+				firstStrike,
+				enemy->getUniqueIdentifier(),
+				playerCombatData,
+				enemyCombatData
+			);
+
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+		}),
+		nullptr
+	));
 }

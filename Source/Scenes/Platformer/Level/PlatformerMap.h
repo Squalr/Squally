@@ -42,6 +42,7 @@ private:
 	MapMenu* mapMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+	cocos2d::Node* combatFadeInNode;
 
 	std::string transition;
 };
