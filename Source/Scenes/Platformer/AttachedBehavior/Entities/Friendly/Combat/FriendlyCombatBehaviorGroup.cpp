@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
 
 using namespace cocos2d;
 
@@ -20,6 +21,7 @@ FriendlyCombatBehaviorGroup* FriendlyCombatBehaviorGroup::create(GameObject* own
 FriendlyCombatBehaviorGroup::FriendlyCombatBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityCombatBehaviorGroup::create(owner),
 	FriendlyCombatCollisionBehavior::create(owner),
+	FriendlyExpBarBehavior::create(owner),
 	})
 {
 }

@@ -11,8 +11,6 @@ class TextOverlays : public Hud
 public:
 	static TextOverlays* create();
 
-	void showExpBars(int expGain);
-
 private:
 	typedef Hud super;
 	TextOverlays();
@@ -21,6 +19,5 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 	void runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label);
 };

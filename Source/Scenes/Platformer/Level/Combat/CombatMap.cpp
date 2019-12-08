@@ -17,9 +17,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -182,6 +180,15 @@ void CombatMap::initializeListeners()
 				GameObject::saveObjectState(this->enemyIdentifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
 
 				CombatEvents::TriggerGiveExp();
+
+				this->runAction(Sequence::create(
+					DelayTime::create(3.5f),
+					CallFunc::create([=]()
+					{
+						CombatEvents::TriggerGiveRewards();
+					}),
+					nullptr
+				));
 			}
 			else
 			{
@@ -189,32 +196,6 @@ void CombatMap::initializeListeners()
 				this->defeatMenu->show();
 			}
 		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
-	{
-		int expGain = 0;
-
-		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-		{
-			expGain += StatsTables::getKillExp(entity);
-		}), PlatformerEnemy::PlatformerEnemyTag);
-
-		int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(0)).asInt();
-		int squallyExp = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt();
-
-		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
-		// both the gain and the animations in one step
-		this->textOverlays->showExpBars(expGain);
-
-		this->runAction(Sequence::create(
-			DelayTime::create(3.5f),
-			CallFunc::create([=]()
-			{
-				CombatEvents::TriggerGiveRewards();
-			}),
-			nullptr
-		));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
