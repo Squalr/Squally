@@ -19,8 +19,6 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
-	
-	void saveState();
 
 	Squally* squally;
 };

@@ -2,7 +2,10 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 
+class LocalizedLabel;
+class LocalizedString;
 class PlatformerEntity;
+class ProgressBar;
 
 class FriendlyExpBarBehavior : public EntityCollisionBehaviorBase
 {
@@ -23,4 +26,8 @@ private:
 	void giveExp();
 
 	PlatformerEntity* owner;
+	
+	ProgressBar* expProgressBar;
+	LocalizedString* deltaString;
+	LocalizedLabel* deltaLabel;
 };

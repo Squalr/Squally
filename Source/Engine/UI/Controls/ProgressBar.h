@@ -14,6 +14,7 @@ public:
 	static ProgressBar* create(std::string frameResource, std::string fillResource, cocos2d::Vec2 fillOffset = cocos2d::Vec2::ZERO, bool isHorizontal = true);
 	static ProgressBar* create(cocos2d::Node* frame, cocos2d::Node* fill, cocos2d::Vec2 fillOffset = cocos2d::Vec2::ZERO, bool isHorizontal = true);
 
+	float getProgress();
 	void setProgress(float newProgress);
 
 protected:

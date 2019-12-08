@@ -54,6 +54,11 @@ void ProgressBar::initializePositions()
 	super::initializePositions();
 }
 
+float ProgressBar::getProgress()
+{
+	return this->progress;
+}
+
 void ProgressBar::setProgress(float newProgress)
 {
 	this->progress = MathUtils::clamp(newProgress, 0.0f, 1.0f);
