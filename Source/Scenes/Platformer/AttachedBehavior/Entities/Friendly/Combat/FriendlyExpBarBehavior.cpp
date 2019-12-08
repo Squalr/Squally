@@ -45,7 +45,8 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner,
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
-	
+	this->tickCounter = 0;
+
 	// Gain text
 	this->deltaLabel->setTextColor(Color4B::YELLOW);
 	this->deltaLabel->enableOutline(Color4B::BLACK, 2);
@@ -84,9 +85,7 @@ void FriendlyExpBarBehavior::onLoad()
 
 void FriendlyExpBarBehavior::giveExp()
 {
-	static int uuid = 0;
 	int expGain = 0;
-	uuid++;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
@@ -102,56 +101,55 @@ void FriendlyExpBarBehavior::giveExp()
 		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
 		bool didLevelUp = eqBehavior->addEqExperience(expGain);
 		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
-
-		const float fillDuration = 1.0f;
-		const int updatesPerSecond = 60;
-		const float interval = fillDuration / float(updatesPerSecond);
-		const int ticks = int(fillDuration * float(updatesPerSecond));
-		const float delay = 0.0f;
 		
-		if (!didLevelUp)
+		const float StartDelay = 0.5f;
+		const float FillDuration = 1.0f;
+		
+		if (didLevelUp)
 		{
-			const float increment = (endProgress - startProgress) / float(ticks);
+			const float RestartDelay = 1.0f;
+			const float Phase1Duration = (1.0f - startProgress) * FillDuration;
+			const float Phase2Duration = FillDuration - Phase1Duration;
 
-			// Easy case: no level up! Just fill the bar from where it is to where it will be
-			expProgressBar->setProgress(startProgress);
-
-			expProgressBar->schedule([=](float dt)
+			this->fillBar(startProgress, 1.0f, Phase1Duration, StartDelay, [=]()
 			{
-				expProgressBar->setProgress(expProgressBar->getProgress() + increment);
-
-			}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE_EASY_" + std::to_string(uuid));
+				this->runLevelUpEffect();
+				this->fillBar(0.0f, endProgress, Phase2Duration, RestartDelay);
+			});
 		}
 		else
 		{
-			this->runAction(Sequence::create(
-				// Phase 1: Fill from start to max
-				CallFunc::create([=]()
-				{
-					const float increment = (1.0f - startProgress) / float(ticks);
-
-					expProgressBar->setProgress(startProgress);
-
-					expProgressBar->schedule([=](float dt)
-					{
-						expProgressBar->setProgress(expProgressBar->getProgress() + increment);
-
-					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE_PHASE_1_" + std::to_string(uuid));
-				}),
-				DelayTime::create(fillDuration + 0.1f),
-				// Phase 2: Fill from 0 to end
-				CallFunc::create([=]()
-				{
-					const float increment = endProgress / float(ticks);
-
-					expProgressBar->schedule([=](float dt)
-					{
-						expProgressBar->setProgress(expProgressBar->getProgress() + increment);
-
-					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE_PHASE_2_" + std::to_string(uuid));
-				}),
-				nullptr
-			));
+			this->fillBar(startProgress, endProgress, FillDuration, StartDelay);
 		}
 	});
+}
+
+void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete)
+{
+	static int UniqueId = 0;
+	UniqueId++;
+	
+	const int UpdatesPerSecond = 30;
+	const float Interval = fillDuration / float(UpdatesPerSecond);
+	const int Ticks = int(fillDuration * float(UpdatesPerSecond));
+	const float Increment = (endProgress - startProgress) / float(Ticks);
+	this->tickCounter = 0;
+
+	expProgressBar->setProgress(startProgress);
+
+	expProgressBar->schedule([=](float dt)
+	{
+		expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
+
+		if (onComplete != nullptr && ++this->tickCounter == Ticks)
+		{
+			onComplete();
+		}
+
+	}, Interval, Ticks, startDelay, "EVENT_EXP_BAR_UPDATE_" + std::to_string(UniqueId));
+}
+
+void FriendlyExpBarBehavior::runLevelUpEffect()
+{
+	// TODO :)
 }

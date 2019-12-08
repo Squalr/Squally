@@ -24,9 +24,12 @@ private:
 	typedef EntityCollisionBehaviorBase super;
 
 	void giveExp();
+	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete = nullptr);
+	void runLevelUpEffect();
 
 	PlatformerEntity* owner;
 	
+	int tickCounter;
 	ProgressBar* expProgressBar;
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
