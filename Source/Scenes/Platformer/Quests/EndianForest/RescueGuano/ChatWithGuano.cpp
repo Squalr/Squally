@@ -17,7 +17,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/MulDoor/MulDoor.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
 
 #include "Resources/SoundResources.h"
 

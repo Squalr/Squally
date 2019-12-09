@@ -22,7 +22,7 @@ public:
 
 protected:
 	MulDoor(cocos2d::ValueMap& properties);
-	~MulDoor();
+	virtual ~MulDoor();
 
 	void registerHackables() override;
 	void runOperation(int puzzleIndex) override;

@@ -30,6 +30,7 @@ using namespace cocos2d;
 
 std::string TerrainObject::MapKeyTypeTerrain = "terrain";
 std::string TerrainObject::MapKeyTypeIsHollow = "is-hollow";
+std::string TerrainObject::MapKeyTypeTopOnly = "top-only";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -45,6 +46,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
+	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeTopOnly, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
@@ -240,21 +242,30 @@ void TerrainObject::buildCollision()
 		{
 			float normalAngle = AlgoUtils::getSegmentNormalAngle(*it, this->textureTriangles);
 			
-			if ((!this->isFlipped && this->isTopAngle(normalAngle)) && (this->isFlipped && this->isBottomAngle(normalAngle)))
+			if ((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle)))
 			{
 				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
 			}
-			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) && (this->isFlipped && this->isTopAngle(normalAngle)))
+			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
 			{
-				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
+				if (!this->isTopOnlyCollision)
+				{
+					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
+				}
 			}
 			else
 			{
-				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+				if (!this->isTopOnlyCollision)
+				{
+					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+				}
 			}
 		}
 		
-		this->collisionNode->addChild(collisionObject);
+		if (collisionObject != nullptr)
+		{
+			this->collisionNode->addChild(collisionObject);
+		}
 	}
 
 	for (auto it = this->intersectionPoints.begin(); it != this->intersectionPoints.end(); it++)

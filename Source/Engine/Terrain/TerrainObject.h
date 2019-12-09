@@ -130,6 +130,7 @@ public:
 
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyTypeIsHollow;
+	static std::string MapKeyTypeTopOnly;
 
 protected:
 	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
@@ -168,6 +169,7 @@ private:
 	bool isRightAngle(float normalAngle);
 
 	TerrainData terrainData;
+	bool isTopOnlyCollision;
 	bool isHollow;
 	bool isInactive;
 	bool isFlipped;

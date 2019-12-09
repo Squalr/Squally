@@ -26,6 +26,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
+	this->deserializers[AddDoor::MapKeyAddDoor] = [=](ValueMap properties) { return (GameObject*)AddDoor::create(properties); };
 	this->deserializers[BreakableBarrel::MapKeyBreakableBarrel] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKeyBreakableCage] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };
 	this->deserializers[CagedBat::MapKeyCagedBat] = [=](ValueMap properties) { return (GameObject*)CagedBat::create(properties); };

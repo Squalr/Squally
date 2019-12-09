@@ -1,4 +1,4 @@
-#include "MulDoor.h"
+#include "AddDoor.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -9,7 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/MulDoor/MulDoorPreview.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -22,26 +22,26 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string MulDoor::MapKeyMulDoor = "mul-door";
+const std::string AddDoor::MapKeyAddDoor = "add-door";
 
-MulDoor* MulDoor::create(ValueMap& properties)
+AddDoor* AddDoor::create(ValueMap& properties)
 {
-	MulDoor* instance = new MulDoor(properties);
+	AddDoor* instance = new AddDoor(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MulDoor::MulDoor(ValueMap& properties) : super(properties)
+AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
 }
 
-MulDoor::~MulDoor()
+AddDoor::~AddDoor()
 {
 }
 
-void MulDoor::registerHackables()
+void AddDoor::registerHackables()
 {
 	super::registerHackables();
 
@@ -50,22 +50,21 @@ void MulDoor::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
-				MulDoor::MapKeyMulDoor,
+				AddDoor::MapKeyAddDoor,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
 				UIResources::Menus_Icons_Pearls,
-				MulDoorPreview::create(),
+				AddDoorPreview::create(),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				14.0f,
-				nullptr,
-				((sizeof(void*) == 4) ? "imul ecx, 1" : "imul rcx, 1") // The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs
+				nullptr
 			)
 		},
 	};
 
-	auto incrementAnimationFunc = &MulDoor::mulDoorTransform;
+	auto incrementAnimationFunc = &AddDoor::AddDoorTransform;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -74,14 +73,14 @@ void MulDoor::registerHackables()
 	}
 }
 
-void MulDoor::runOperation(int puzzleIndex)
+void AddDoor::runOperation(int puzzleIndex)
 {
-	this->setRealValue(puzzleIndex * 2);
+	this->setRealValue(puzzleIndex + 3);
 
-	this->mulDoorTransform(puzzleIndex);
+	this->AddDoorTransform(puzzleIndex);
 }
 
-NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
+NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 {
 	int transform = puzzleIndex;
 
@@ -89,7 +88,7 @@ NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 	ASM_MOV_REG_VAR(ZCX, transform);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME);
-	ASM(imul ZCX, 1)
+	ASM(add ZCX, 2)
 	ASM_NOP6();
 	HACKABLE_CODE_END();
 

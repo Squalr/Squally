@@ -12,7 +12,7 @@ class GreenStonePuzzleDoor : public PuzzleDoorBase
 public:
 protected:
 	GreenStonePuzzleDoor(cocos2d::ValueMap& properties);
-	~GreenStonePuzzleDoor();
+	virtual ~GreenStonePuzzleDoor();
 
 	void onEnter() override;
 	void initializePositions() override;
