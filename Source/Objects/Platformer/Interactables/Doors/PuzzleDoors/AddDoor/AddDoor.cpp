@@ -33,7 +33,7 @@ AddDoor* AddDoor::create(ValueMap& properties)
 	return instance;
 }
 
-AddDoor::AddDoor(ValueMap& properties) : super(properties)
+AddDoor::AddDoor(ValueMap& properties) : super(properties, StonePuzzleDoor::DoorColor::Yellow)
 {
 }
 
@@ -51,11 +51,11 @@ void AddDoor::registerHackables()
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::LateBindData(
 				AddDoor::MapKeyAddDoor,
-				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
+				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
 				UIResources::Menus_Icons_Pearls,
 				AddDoorPreview::create(),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				14.0f,

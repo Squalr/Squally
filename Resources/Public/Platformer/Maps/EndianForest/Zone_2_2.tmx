@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="819">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="820">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -99,7 +99,6 @@
   <object id="812" name="blue-grass" type="terrain" x="-909.1" y="1125.97">
    <polygon points="760.85,2549.11 223.608,2491.8 22.2118,1633.28 93.2761,83.9644 1291.52,82.1046 2478.7,-455.06 2440.83,1519.52 2279.9,2059.78 1947.67,2359.82 1296.61,2569.23"/>
   </object>
-  <object id="817" name="mul-door" type="object" x="5360" y="1796.5" width="696" height="775"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -150,6 +149,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="819" name="add-door" type="object" x="5360" y="1796.5" width="696" height="775"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
