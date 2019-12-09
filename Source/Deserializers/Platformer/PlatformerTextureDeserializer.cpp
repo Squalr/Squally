@@ -43,6 +43,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 	this->deserializers[ShadeGrassTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTexture::create(properties); };
 	this->deserializers[ShipAltTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)ShipAltTexture::create(properties); };
 	this->deserializers[ShipTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)ShipTexture::create(properties); };
+	this->deserializers[TempleDarkTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)TempleDarkTexture::create(properties); };
 	this->deserializers[TempleTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)TempleTexture::create(properties); };
 	this->deserializers[TrailTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)TrailTexture::create(properties); };
 	this->deserializers[WoodTexture::MapKeyTextureType] = [=](ValueMap properties) { return (GameObject*)WoodTexture::create(properties); };

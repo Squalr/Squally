@@ -52,7 +52,7 @@ void AddDoor::registerHackables()
 			HackableCode::LateBindData(
 				AddDoor::MapKeyAddDoor,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
-				UIResources::Menus_Icons_Pearls,
+				UIResources::Menus_Icons_Heal,
 				AddDoorPreview::create(),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx::create() },

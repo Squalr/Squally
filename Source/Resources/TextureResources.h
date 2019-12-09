@@ -26,6 +26,7 @@ namespace TextureResources
 	extern const std::string ShadeGrassTexture;
 	extern const std::string ShipAltTexture;
 	extern const std::string ShipTexture;
+	extern const std::string TempleDarkTexture;
 	extern const std::string TempleTexture;
 	extern const std::string TrailTexture;
 	extern const std::string WoodTexture;

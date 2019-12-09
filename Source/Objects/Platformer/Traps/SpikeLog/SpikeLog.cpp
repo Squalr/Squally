@@ -39,9 +39,9 @@ SpikeLog* SpikeLog::create(ValueMap& properties)
 SpikeLog::SpikeLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
-	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01);
-	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(480.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 128.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_01);
+	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
@@ -57,7 +57,7 @@ void SpikeLog::onEnter()
 {
 	super::onEnter();
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLogAvoidable_SpikedLog_01, 0.08f, 0.0f);
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_01, 0.08f, 0.0f);
 	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
 	{
 		return this->incrementSpikeLogAnimation(current, max);
@@ -81,9 +81,6 @@ Vec2 SpikeLog::getButtonOffset()
 void SpikeLog::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
@@ -132,7 +129,7 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->spikeCollision->setPositionY(96.0f * std::sin(((float)count / (float)max) * 2.0f * float(M_PI)));
+	this->spikeCollision->setPositionX(96.0f * std::sin(((float)count / (float)max) * 2.0f * float(M_PI)));
 
 	return count;
 }
