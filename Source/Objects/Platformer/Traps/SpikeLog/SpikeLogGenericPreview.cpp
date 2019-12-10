@@ -21,7 +21,7 @@ SpikeLogGenericPreview* SpikeLogGenericPreview::create()
 
 SpikeLogGenericPreview::SpikeLogGenericPreview()
 {
-	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_01);
+	this->previewSpikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_00);
 
 	this->previewSpikedLog->setScale(0.4f);
 
@@ -38,7 +38,7 @@ void SpikeLogGenericPreview::onEnter()
 	super::onEnter();
 
 	this->previewSpikedLog->setPosition(Vec2(0.0f, 0.0f));
-	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_01, 0.08f, 0.0f);
+	this->previewSpikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_00, 0.08f, 0.0f);
 }
 
 void SpikeLogGenericPreview::initializePositions()

@@ -11,6 +11,7 @@
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikeLog/SpikeLogSetRotationPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -39,7 +40,7 @@ SpikeLog* SpikeLog::create(ValueMap& properties)
 SpikeLog::SpikeLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
-	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_01);
+	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_00);
 	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
 	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
@@ -57,7 +58,7 @@ void SpikeLog::onEnter()
 {
 	super::onEnter();
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_01, 0.08f, 0.0f);
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_00, 1.0f, 0.0f);
 	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
 	{
 		return this->incrementSpikeLogAnimation(current, max);
@@ -95,7 +96,7 @@ void SpikeLog::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
-				20.0f
+				16.0f
 			)
 		},
 	};
@@ -116,6 +117,49 @@ HackablePreview* SpikeLog::createDefaultPreview()
 
 NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 {
+	this->spikeCollision->setPhysicsEnabled(true);
+	float offsetX = 0;
+
+	switch(count)
+	{
+		case 1:
+		{
+			offsetX = 32.0f;
+			break;
+		}
+		case 2:
+		{
+			offsetX = 96.0f;
+			break;
+		}
+		case 3:
+		{
+			offsetX = 72.0f;
+			break;
+		}
+		case 7:
+		{
+			offsetX = -72.0f;
+			break;
+		}
+		case 8:
+		{
+			offsetX = -96.0f;
+			break;
+		}
+		case 9:
+		{
+			offsetX = -32.0f;
+			break;
+		}
+		default:
+		{
+			this->spikeCollision->setPhysicsEnabled(false);
+		}
+	}
+
+	this->spikeCollision->setPositionX(offsetX);
+
 	ASM(push ZCX)
 	ASM_MOV_REG_VAR(ZCX, count);
 
@@ -129,7 +173,7 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->spikeCollision->setPositionX(96.0f * std::sin(((float)count / (float)max) * 2.0f * float(M_PI)));
+	count = MathUtils::wrappingNormalize(count, 0, max);
 
 	return count;
 }

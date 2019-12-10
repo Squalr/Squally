@@ -48,10 +48,11 @@
  </objectgroup>
  <objectgroup id="18" name="background">
   <properties>
+   <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-253.176" y="-192">
-   <polygon points="227.273,160.606 6430.27,151.801 6435.86,8444.9 228.449,8451.15"/>
+  <object id="897" name="temple-dark" type="texture" x="-569.09" y="-523.267">
+   <polygon points="247.186,172.527 6993.69,163.068 6999.78,9071.7 248.466,9078.42"/>
   </object>
  </objectgroup>
  <objectgroup id="19" name="terrain bg">
@@ -85,22 +86,22 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="-129.693" y="7458.52">
-   <polygon points="2175.57,49.1457 2173.29,939.048 81.9623,942.21 63.1453,45.7316"/>
+  <object id="818" name="temple" type="terrain" x="-129.693" y="7467.8">
+   <polygon points="2175.57,39.1782 2173.29,748.596 81.9623,751.116 63.1453,36.4566"/>
   </object>
-  <object id="826" name="temple" type="terrain" x="2395.37" y="7440">
-   <polygon points="1508.2,49.1457 1506.62,939.048 56.8198,942.21 43.7751,45.7316"/>
+  <object id="826" name="temple" type="terrain" x="2394.83" y="7445.1">
+   <polygon points="1526.93,43.6636 1525.32,834.299 57.5253,837.109 44.3186,40.6304"/>
   </object>
-  <object id="827" name="temple" type="terrain" x="4196.32" y="7456">
-   <polygon points="3839.88,49.1457 3835.85,939.048 104.663,934.21 111.451,45.7316"/>
+  <object id="827" name="temple" type="terrain" x="4247.78" y="7464.53">
+   <polygon points="1952.06,39.9766 1950.01,763.849 53.207,759.914 56.6579,37.1994"/>
   </object>
-  <object id="842" name="temple" type="terrain" x="2459.49" y="5898.28">
+  <object id="842" name="temple" type="terrain" x="2443.18" y="5446.77">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1388.71,12.3061 1387.26,235.138 39.7984,235.93 40.307,11.4512"/>
+   <polygon points="1429.27,12.3061 1427.77,235.138 40.9607,235.93 41.4841,11.4512"/>
   </object>
-  <object id="843" name="stone-button" type="object" x="3214.82" y="5621.14" width="258.367" height="85.7283">
+  <object id="843" name="stone-button" type="object" x="3072.39" y="5375.68" width="258.367" height="85.7283">
    <properties>
     <property name="event" value="door-open"/>
    </properties>
@@ -137,7 +138,7 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="870" name="wind" type="object" x="2057.64" y="6787.35" width="380" height="480">
+  <object id="870" name="wind" type="object" x="2059.22" y="6783.71" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>

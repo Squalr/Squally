@@ -487,6 +487,7 @@ namespace ObjectResources
 	extern const std::string Traps_PendulumBlade_PreviewBlade;
 	extern const std::string Traps_SpikeBall_SpikeBall;
 	extern const std::string Traps_SpikeLogUnavoidable_Beam;
+	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_00;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_01;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_02;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_03;
@@ -496,8 +497,8 @@ namespace ObjectResources
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_07;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_08;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_09;
-	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_10;
 	extern const std::string Traps_SpikeLog_Beam;
+	extern const std::string Traps_SpikeLog_SpikedLog_00;
 	extern const std::string Traps_SpikeLog_SpikedLog_01;
 	extern const std::string Traps_SpikeLog_SpikedLog_02;
 	extern const std::string Traps_SpikeLog_SpikedLog_03;
@@ -507,7 +508,6 @@ namespace ObjectResources
 	extern const std::string Traps_SpikeLog_SpikedLog_07;
 	extern const std::string Traps_SpikeLog_SpikedLog_08;
 	extern const std::string Traps_SpikeLog_SpikedLog_09;
-	extern const std::string Traps_SpikeLog_SpikedLog_10;
 	extern const std::string Traps_Spikes_spikes_1;
 	extern const std::string Traps_Spikes_spikes_10;
 	extern const std::string Traps_Spikes_spikes_11;
