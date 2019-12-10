@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="898">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="902">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -104,6 +104,20 @@
   <object id="843" name="stone-button" type="object" x="3072.39" y="5375.68" width="258.367" height="85.7283">
    <properties>
     <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="899" name="temple" type="terrain" x="1780.99" y="4443.67">
+   <polygon points="2181.94,18.2267 2179.64,348.266 82.2021,349.439 63.3301,16.9606"/>
+  </object>
+  <object id="900" name="camera-control" type="object" x="2488" y="4904" width="1386" height="558">
+   <properties>
+    <property name="target" value="target-A"/>
+   </properties>
+  </object>
+  <object id="901" name="camera-target" type="object" x="3413.06" y="3781.61" width="128" height="128">
+   <properties>
+    <property name="tag" value="target-A"/>
+    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -246,12 +260,23 @@
    </properties>
   </object>
   <object id="860" name="spiked-log" type="object" x="2026.81" y="6655.2" width="140" height="598"/>
+  <object id="861" name="spiked-log" type="object" x="2328.29" y="6651.4" width="140" height="598"/>
+  <object id="862" name="spiked-log" type="object" x="2031.57" y="6060.5" width="140" height="598"/>
+  <object id="863" name="spiked-log" type="object" x="2327.32" y="6052.5" width="140" height="598"/>
+  <object id="864" name="spiked-log" type="object" x="2034.18" y="5467.1" width="140" height="598"/>
+  <object id="865" name="spiked-log" type="object" x="2329.93" y="5459.1" width="140" height="598"/>
   <object id="866" name="edge-portal" type="object" x="1958.65" y="7966.8" width="578.706" height="240.851">
    <properties>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="884" name="spiked-log" type="object" x="3890.81" y="6657.82" width="140" height="598"/>
+  <object id="885" name="spiked-log" type="object" x="4192.29" y="6654.02" width="140" height="598"/>
+  <object id="886" name="spiked-log" type="object" x="3895.57" y="6063.12" width="140" height="598"/>
+  <object id="887" name="spiked-log" type="object" x="4191.32" y="6055.12" width="140" height="598"/>
+  <object id="888" name="spiked-log" type="object" x="3898.18" y="5469.72" width="140" height="598"/>
+  <object id="889" name="spiked-log" type="object" x="4193.93" y="5461.72" width="140" height="598"/>
   <object id="890" name="edge-portal" type="object" x="3822.65" y="7969.42" width="578.706" height="240.851">
    <properties>
     <property name="map" value="EndianForest/Zone_2_2"/>

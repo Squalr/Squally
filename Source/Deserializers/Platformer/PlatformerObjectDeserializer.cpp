@@ -79,9 +79,10 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CagedWorm::MapKeyCagedWorm] = [=](ValueMap properties) { return (GameObject*)CagedWorm::create(properties); };
 	this->deserializers[CagedYeti::MapKeyCagedYeti] = [=](ValueMap properties) { return (GameObject*)CagedYeti::create(properties); };
 	this->deserializers[CagedZebra::MapKeyCagedZebra] = [=](ValueMap properties) { return (GameObject*)CagedZebra::create(properties); };
-	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
+	this->deserializers[CameraControl::MapKeyCameraControl] = [=](ValueMap properties) { return (GameObject*)CameraControl::create(properties); };
 	this->deserializers[CameraScrollTracker::MapKeyCameraScrollTracker] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CameraStop::MapKeyCameraStop] = [=](ValueMap properties) { return (GameObject*)CameraStop::create(properties); };
+	this->deserializers[CameraFocus::MapKeyCameraFocus] = [=](ValueMap properties) { return (GameObject*)CameraFocus::create(properties); };
 	this->deserializers[CastleGate::MapKeyCastleGate] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKeyCombatSpawn] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[Catapult::MapKeyCatapult] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
@@ -130,6 +131,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[SquallyShip::MapKeySquallyShip] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };
 	this->deserializers[StoneButton::MapKeyStoneButton] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
 	this->deserializers[Tent::MapKeyTent] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };
+	this->deserializers[TrackingTarget::MapKeyTrackingTarget] = [=](ValueMap properties) { return (GameObject*)TrackingTarget::create(properties); };
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };

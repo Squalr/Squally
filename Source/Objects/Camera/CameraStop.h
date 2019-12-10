@@ -17,7 +17,7 @@ public:
 private:
 	typedef GameObject super;
 	CameraStop(cocos2d::ValueMap& properties);
-	~CameraStop();
+	virtual ~CameraStop();
 
 	void onEnter() override;
 	void update(float dt) override;

@@ -26,7 +26,7 @@ CombatSpawn* CombatSpawn::create(ValueMap& properties)
 	return instance;
 }
 
-CombatSpawn::CombatSpawn(ValueMap& properties) : GameObject(properties)
+CombatSpawn::CombatSpawn(ValueMap& properties) : super(properties)
 {
 	this->spawnType = SpawnType::Player;
 	this->spawnOrder = 1;

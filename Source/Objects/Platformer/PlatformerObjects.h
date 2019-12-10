@@ -5,6 +5,8 @@
 #include "Objects/Platformer/Breakables/BreakableBarrel.h"
 #include "Objects/Platformer/Breakables/BreakableCage.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimals.h"
+#include "Objects/Platformer/Camera/CameraControl.h"
+#include "Objects/Platformer/Camera/TrackingTarget.h"
 #include "Objects/Platformer/Chests/CipherChest.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"

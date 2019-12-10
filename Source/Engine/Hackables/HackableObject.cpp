@@ -27,7 +27,7 @@ HackableObject::HackableObject() : HackableObject(ValueMap())
 {
 }
 
-HackableObject::HackableObject(const ValueMap& properties) : GameObject(properties)
+HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();

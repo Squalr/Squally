@@ -20,7 +20,7 @@ TrapDoorFrame* TrapDoorFrame::create(ValueMap& properties)
 	return instance;
 }
 
-TrapDoorFrame::TrapDoorFrame(ValueMap& properties) : GameObject(properties)
+TrapDoorFrame::TrapDoorFrame(ValueMap& properties) : super(properties)
 {
 	this->trapDoorFrame = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoorFrame);
 

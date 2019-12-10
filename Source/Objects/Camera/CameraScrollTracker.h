@@ -16,7 +16,7 @@ public:
 private:
 	typedef GameObject super;
 	CameraScrollTracker(cocos2d::ValueMap& properties);
-	~CameraScrollTracker();
+	virtual ~CameraScrollTracker();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

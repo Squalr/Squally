@@ -20,7 +20,7 @@ CameraStop* CameraStop::create(ValueMap& properties)
 	return instance;
 }
 
-CameraStop::CameraStop(ValueMap& properties) : GameObject(properties)
+CameraStop::CameraStop(ValueMap& properties) : super(properties)
 {
 	this->debugDraw = DrawNode::create();
 	this->stopSize = Size(

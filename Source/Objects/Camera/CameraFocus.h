@@ -18,7 +18,7 @@ public:
 private:
 	typedef GameObject super;
 	CameraFocus(cocos2d::ValueMap& properties);
-	~CameraFocus();
+	virtual ~CameraFocus();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
