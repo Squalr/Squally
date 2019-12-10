@@ -18,7 +18,7 @@ public:
 
 protected:
 	EdgePortal(cocos2d::ValueMap& properties);
-	~EdgePortal();
+	virtual ~EdgePortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

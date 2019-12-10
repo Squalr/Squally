@@ -21,7 +21,7 @@ public:
 
 protected:
 	LanternGate(cocos2d::ValueMap& properties);
-	~LanternGate();
+	virtual ~LanternGate();
 
 	void onEnter() override;
 	void initializePositions() override;

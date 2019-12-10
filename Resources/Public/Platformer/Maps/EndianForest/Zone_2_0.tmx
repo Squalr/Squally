@@ -167,16 +167,6 @@
     <property name="show-clippy" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="693" name="cipher-chest" type="object" x="6662.72" y="-1029.13" width="128" height="128">
-   <properties>
-    <property name="bonus-reward" value=""/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="m,a,n,i,c"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}+1"/>
-    <property name="tokens-easy" value="+,1"/>
-   </properties>
-  </object>
   <object id="694" name="cipher-chest" type="object" x="2235.87" y="3953.12" width="128" height="128">
    <properties>
     <property name="event" value="open-cipher"/>
@@ -188,19 +178,6 @@
    </properties>
   </object>
   <object id="698" name="caged-beaver" type="object" x="7907.39" y="6291.89" width="78.7879" height="88"/>
-  <object id="704" name="cipher-chest" type="object" x="5906.08" y="-1045.54" width="128" height="128">
-   <properties>
-    <property name="bonus-reward" value=""/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="s,w,a,g"/>
-    <property name="inputs-hard" value="m,a,n,a"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}+1"/>
-    <property name="rule-hard" value="{i}|2"/>
-    <property name="tokens-easy" value="+,1"/>
-    <property name="tokens-hard" value="|,+,2,1"/>
-   </properties>
-  </object>
   <object id="717" name="wind" type="object" x="6985.96" y="4499.41" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="96" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="825">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="96" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="827">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -72,11 +72,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="821" name="temple" type="terrain" x="5481.48" y="5368">
+  <object id="821" name="temple" type="terrain" x="5429.01" y="5368">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1771.13,108.632 1766.64,2308.97 88.2133,2312.73 82.6379,110.918"/>
+   <polygon points="2895.6,108.632 2888.26,2308.97 144.219,2312.73 135.103,110.918"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -2">
@@ -147,10 +147,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="806" name="edge-portal" type="object" x="8816.9" y="8126.24" width="199.918" height="640.851">
+  <object id="806" name="edge-portal" type="object" x="7992.9" y="7026.24" width="199.918" height="640.851">
    <properties>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="right"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="transition" value="entrance-B"/>
    </properties>
   </object>
   <object id="816" name="edge-portal" type="object" x="-11.959" y="9775.57" width="199.918" height="640.851">
@@ -163,16 +164,21 @@
   <object id="819" name="add-door" type="object" x="6056" y="7948.5" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Zone_2_3"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="822" name="spawn" type="object" x="7875.88" y="7525.82" width="128" height="128">
+  <object id="822" name="spawn" type="object" x="6327.88" y="8585.82" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
    </properties>
   </object>
-  <object id="823" name="add-door" type="object" x="5388" y="6876.5" width="696" height="775"/>
-  <object id="824" name="spawn" type="object" x="6376" y="6236" width="128" height="128">
+  <object id="823" name="temple-door" type="object" x="6020" y="7132.5" width="432" height="528">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_4"/>
+    <property name="transition" value="entrance-C"/>
+   </properties>
+  </object>
+  <object id="825" name="spawn" type="object" x="7612" y="7524" width="128" height="128">
    <properties>
     <property name="transition" value="exit-B"/>
    </properties>
@@ -188,7 +194,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="goblin-warrior-pig" type="entity" x="5873.21" y="7514.22" width="128" height="128">
+  <object id="809" name="goblin-grunt-boar" type="entity" x="5837.21" y="7522.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -197,7 +203,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="810" name="orc-grunt" type="entity" x="5886.79" y="7105.79" width="128" height="128">
+  <object id="810" name="goblin-warrior-pig" type="entity" x="5834.79" y="7105.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

@@ -17,7 +17,7 @@ public:
 
 protected:
 	PortalSpawn(cocos2d::ValueMap& properties);
-	~PortalSpawn();
+	virtual ~PortalSpawn();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

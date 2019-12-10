@@ -113,6 +113,10 @@ void Wind::applyWindForce(const std::vector<CollisionObject*>& targets, float dt
 		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
 		Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
 		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), 0.0f, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f), 0.0f, 1.0f));
+		
+		// ZAC: Disabling the Y multiplier, it can result in the player getting caught and bobbing up and down. The X effect is the most important.
+		multiplier.y = 1.0f;
+
 		Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
 
 		(*it)->setVelocity((*it)->getVelocity() + speed * dt);

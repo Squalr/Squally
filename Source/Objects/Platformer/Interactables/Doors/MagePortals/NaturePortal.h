@@ -18,7 +18,7 @@ public:
 
 protected:
 	NaturePortal(cocos2d::ValueMap& properties);
-	~NaturePortal();
+	virtual ~NaturePortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

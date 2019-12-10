@@ -18,7 +18,7 @@ public:
 
 protected:
 	FirePortal(cocos2d::ValueMap& properties);
-	~FirePortal();
+	virtual ~FirePortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

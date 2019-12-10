@@ -226,9 +226,13 @@ void TerrainObject::buildCollision()
 	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
 	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
+	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 	
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
+		auto itClone = it;
+		std::tuple<Vec2, Vec2> segment = *it;
+		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->collisionSegments.end() ? this->collisionSegments[0] : (*itClone);
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
@@ -248,14 +252,14 @@ void TerrainObject::buildCollision()
 			}
 			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
 			{
-				if (!this->isTopOnlyCollision)
+				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
 					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
 				}
 			}
 			else
 			{
-				if (!this->isTopOnlyCollision)
+				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
 					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
 				}
@@ -266,6 +270,8 @@ void TerrainObject::buildCollision()
 		{
 			this->collisionNode->addChild(collisionObject);
 		}
+
+		previousSegment = &(*it);
 	}
 
 	for (auto it = this->intersectionPoints.begin(); it != this->intersectionPoints.end(); it++)
@@ -859,4 +865,29 @@ bool TerrainObject::isLeftAngle(float normalAngle)
 bool TerrainObject::isRightAngle(float normalAngle)
 {
 	return (!this->isTopAngle(normalAngle) && !this->isBottomAngle(normalAngle) && !this->isLeftAngle(normalAngle));
+}
+
+bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegment, std::tuple<Vec2, Vec2>* segment, std::tuple<Vec2, Vec2>* nextSegment)
+{
+	if (!this->isTopOnlyCollision)
+	{
+		return true;
+	}
+
+	if (previousSegment == nullptr || segment == nullptr || nextSegment == nullptr)
+	{
+		return false;
+	}
+
+	float normalAngle = AlgoUtils::getSegmentNormalAngle(*segment, this->textureTriangles);
+	float prevNormalAngle = AlgoUtils::getSegmentNormalAngle(*previousSegment, this->textureTriangles);
+	float nextNormalAngle = AlgoUtils::getSegmentNormalAngle(*nextSegment, this->textureTriangles);
+	bool isWallCollision = (this->isLeftAngle(normalAngle) || this->isRightAngle(normalAngle));
+
+	if (isWallCollision && this->isTopAngle(prevNormalAngle) && this->isTopAngle(nextNormalAngle))
+	{
+		return true;
+	}
+
+	return false;
 }

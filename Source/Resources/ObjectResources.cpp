@@ -180,6 +180,7 @@ const std::string ObjectResources::Doors_PuzzleDoor_RuneRed = "Private/Platforme
 const std::string ObjectResources::Doors_PuzzleDoor_YellowStone_Back = "Private/Platformer/Objects/Doors/PuzzleDoor/YellowStone/Back.png";
 const std::string ObjectResources::Doors_PuzzleDoor_YellowStone_Door = "Private/Platformer/Objects/Doors/PuzzleDoor/YellowStone/Door.png";
 const std::string ObjectResources::Doors_PuzzleDoor_YellowStone_Front = "Private/Platformer/Objects/Doors/PuzzleDoor/YellowStone/Front.png";
+const std::string ObjectResources::Doors_Temple_TempleDoor = "Private/Platformer/Objects/Doors/Temple/TempleDoor.png";
 const std::string ObjectResources::Doors_Tent_1 = "Private/Platformer/Objects/Doors/Tent/1.jpg";
 const std::string ObjectResources::Doors_Tent_BACK_CART = "Private/Platformer/Objects/Doors/Tent/BACK CART.png";
 const std::string ObjectResources::Doors_Tent_BARREL = "Private/Platformer/Objects/Doors/Tent/BARREL.png";

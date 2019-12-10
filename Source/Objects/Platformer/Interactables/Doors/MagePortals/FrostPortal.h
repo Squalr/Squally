@@ -21,7 +21,7 @@ public:
 
 protected:
 	FrostPortal(cocos2d::ValueMap& properties);
-	~FrostPortal();
+	virtual ~FrostPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

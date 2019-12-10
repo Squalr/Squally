@@ -18,7 +18,7 @@ public:
 
 protected:
 	WindPortal(cocos2d::ValueMap& properties);
-	~WindPortal();
+	virtual ~WindPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

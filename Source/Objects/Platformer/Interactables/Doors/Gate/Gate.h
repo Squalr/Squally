@@ -21,7 +21,7 @@ public:
 
 protected:
 	Gate(cocos2d::ValueMap& properties);
-	~Gate();
+	virtual ~Gate();
 
 	void onEnter() override;
 	void initializePositions() override;

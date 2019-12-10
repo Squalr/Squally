@@ -14,7 +14,7 @@ public:
 
 protected:
 	Warp(cocos2d::ValueMap& properties);
-	~Warp();
+	virtual ~Warp();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

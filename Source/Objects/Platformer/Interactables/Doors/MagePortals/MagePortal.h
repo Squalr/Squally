@@ -19,7 +19,7 @@ public:
 
 protected:
 	MagePortal(cocos2d::ValueMap& properties, float portalRadius, cocos2d::Color4B portalBaseColor);
-	~MagePortal();
+	virtual ~MagePortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

@@ -131,6 +131,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[SpikeLog::MapKeySpikeLog] = [=](ValueMap properties) { return (GameObject*)SpikeLog::create(properties); };
 	this->deserializers[SquallyShip::MapKeySquallyShip] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };
 	this->deserializers[StoneButton::MapKeyStoneButton] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
+	this->deserializers[TempleDoor::MapKeyTempleDoor] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };
 	this->deserializers[Tent::MapKeyTent] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };

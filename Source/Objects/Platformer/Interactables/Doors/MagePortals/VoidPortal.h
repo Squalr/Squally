@@ -18,7 +18,7 @@ public:
 
 protected:
 	VoidPortal(cocos2d::ValueMap& properties);
-	~VoidPortal();
+	virtual ~VoidPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	DarkPortal(cocos2d::ValueMap& properties);
-	~DarkPortal();
+	virtual ~DarkPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

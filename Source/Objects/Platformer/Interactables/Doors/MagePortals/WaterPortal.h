@@ -18,7 +18,7 @@ public:
 
 protected:
 	WaterPortal(cocos2d::ValueMap& properties);
-	~WaterPortal();
+	virtual ~WaterPortal();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

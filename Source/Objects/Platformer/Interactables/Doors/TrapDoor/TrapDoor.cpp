@@ -39,7 +39,7 @@ TrapDoor* TrapDoor::create(ValueMap& properties)
 TrapDoor::TrapDoor(ValueMap& properties) : super(properties)
 {
 	this->door = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoor);
-	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(256.0f, 80.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
 	DrawNode* clipStencil = DrawNode::create();
 	clipStencil->drawSolidRect(Vec2(-112.0f, -64.0f), Vec2(112.0f, 48.0f), Color4F::GREEN);
