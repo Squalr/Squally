@@ -61,7 +61,8 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 	const float TimeBetweenBlinks = 5.5f;
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->leftEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	
+	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimations()->getAnimationPart("eye_left");
 		
@@ -69,10 +70,8 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		{
 			leftEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
-	this->leftEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->leftEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimations()->getAnimationPart("eye_left");
 		
@@ -80,11 +79,9 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		{
 			leftEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
 	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->rightEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->rightEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimations()->getAnimationPart("eye_right");
 		
@@ -92,10 +89,8 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		{
 			rightEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
-	this->rightEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->rightEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimations()->getAnimationPart("eye_right");
 		
@@ -103,7 +98,5 @@ void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 		{
 			rightEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
 }

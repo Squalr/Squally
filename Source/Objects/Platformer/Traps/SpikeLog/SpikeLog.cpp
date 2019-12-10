@@ -58,8 +58,8 @@ void SpikeLog::onEnter()
 {
 	super::onEnter();
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_00, 1.0f, 0.0f);
-	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikeLog_SpikedLog_00, 0.08f, 0.0f);
+	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max)
 	{
 		return this->incrementSpikeLogAnimation(current, max);
 	};
@@ -172,8 +172,6 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 	ASM(pop ZCX);
 
 	HACKABLES_STOP_SEARCH();
-
-	count = MathUtils::wrappingNormalize(count, 0, max);
 
 	return count;
 }

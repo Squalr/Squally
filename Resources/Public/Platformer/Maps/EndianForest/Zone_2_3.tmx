@@ -246,23 +246,12 @@
    </properties>
   </object>
   <object id="860" name="spiked-log" type="object" x="2026.81" y="6655.2" width="140" height="598"/>
-  <object id="861" name="spiked-log" type="object" x="2328.29" y="6651.4" width="140" height="598"/>
-  <object id="862" name="spiked-log" type="object" x="2031.57" y="6060.5" width="140" height="598"/>
-  <object id="863" name="spiked-log" type="object" x="2327.32" y="6052.5" width="140" height="598"/>
-  <object id="864" name="spiked-log" type="object" x="2034.18" y="5467.1" width="140" height="598"/>
-  <object id="865" name="spiked-log" type="object" x="2329.93" y="5459.1" width="140" height="598"/>
   <object id="866" name="edge-portal" type="object" x="1958.65" y="7966.8" width="578.706" height="240.851">
    <properties>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="884" name="spiked-log" type="object" x="3890.81" y="6657.82" width="140" height="598"/>
-  <object id="885" name="spiked-log" type="object" x="4192.29" y="6654.02" width="140" height="598"/>
-  <object id="886" name="spiked-log" type="object" x="3895.57" y="6063.12" width="140" height="598"/>
-  <object id="887" name="spiked-log" type="object" x="4191.32" y="6055.12" width="140" height="598"/>
-  <object id="888" name="spiked-log" type="object" x="3898.18" y="5469.72" width="140" height="598"/>
-  <object id="889" name="spiked-log" type="object" x="4193.93" y="5461.72" width="140" height="598"/>
   <object id="890" name="edge-portal" type="object" x="3822.65" y="7969.42" width="578.706" height="240.851">
    <properties>
     <property name="map" value="EndianForest/Zone_2_2"/>
