@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="902">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="909">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -46,7 +46,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="background">
+ <objectgroup id="18" name="background" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -75,11 +75,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="temple" type="terrain" x="4261.27" y="2160">
+  <object id="820" name="temple" type="terrain" x="4220.65" y="2583.89">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="2488.61,108.632 2482.3,2308.97 123.948,2312.73 116.114,110.918"/>
+   <polygon points="1944.69,94.7422 1939.76,2013.74 96.8573,2017.02 90.7355,96.7359"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
@@ -106,15 +106,15 @@
     <property name="event" value="door-open"/>
    </properties>
   </object>
-  <object id="899" name="temple" type="terrain" x="1780.99" y="4443.67">
-   <polygon points="2181.94,18.2267 2179.64,348.266 82.2021,349.439 63.3301,16.9606"/>
+  <object id="899" name="temple" type="terrain" x="1779.55" y="4453.56">
+   <polygon points="2231.38,7.59483 2229.02,145.118 84.0645,145.606 64.7649,7.06724"/>
   </object>
-  <object id="900" name="camera-control" type="object" x="2488" y="4904" width="1386" height="558">
+  <object id="900" name="camera-control" type="object" x="3066.79" y="4797.94" width="264.788" height="664.061">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="901" name="camera-target" type="object" x="3413.06" y="3781.61" width="128" height="128">
+  <object id="901" name="camera-target" type="object" x="3425.18" y="4199.79" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>
     <property name="zoom" type="float" value="2"/>
@@ -212,6 +212,24 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
+  <object id="906" name="wind" type="object" x="3928" y="4906" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="907" name="wind" type="object" x="3932" y="4426" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="908" name="wind" type="object" x="3932" y="3950" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -271,23 +289,25 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="884" name="spiked-log" type="object" x="3890.81" y="6657.82" width="140" height="598"/>
-  <object id="885" name="spiked-log" type="object" x="4192.29" y="6654.02" width="140" height="598"/>
-  <object id="886" name="spiked-log" type="object" x="3895.57" y="6063.12" width="140" height="598"/>
-  <object id="887" name="spiked-log" type="object" x="4191.32" y="6055.12" width="140" height="598"/>
-  <object id="888" name="spiked-log" type="object" x="3898.18" y="5469.72" width="140" height="598"/>
-  <object id="889" name="spiked-log" type="object" x="4193.93" y="5461.72" width="140" height="598"/>
   <object id="890" name="edge-portal" type="object" x="3822.65" y="7969.42" width="578.706" height="240.851">
    <properties>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="902" name="trap-door-frame" type="object" x="3971.18" y="4453.77" width="301" height="215"/>
+  <object id="903" name="trap-door" type="object" x="4011.18" y="4508.11" width="299.579" height="85.7283">
+   <properties>
+    <property name="event" value="door-open-2"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
+ <objectgroup id="42" name="objects +1">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="905" name="trap-door-frame" type="object" x="4008.98" y="4494.13" width="301" height="215"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

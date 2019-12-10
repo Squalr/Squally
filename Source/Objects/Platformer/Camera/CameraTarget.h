@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
@@ -7,17 +8,21 @@ namespace cocos2d
 	class DrawNode;
 }
 
-class TrackingTarget : public GameObject
+class CameraTrackingData;
+
+class CameraTarget : public GameObject
 {
 public:
-	static TrackingTarget* create(cocos2d::ValueMap& properties);
+	static CameraTarget* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTrackingTarget;
+	CameraTrackingData getTrackingData();
+
+	static const std::string MapKeyCameraTarget;
 
 private:
 	typedef GameObject super;
-	TrackingTarget(cocos2d::ValueMap& properties);
-	virtual ~TrackingTarget();
+	CameraTarget(cocos2d::ValueMap& properties);
+	virtual ~CameraTarget();
 
 	void onEnter() override;
 	void onDeveloperModeEnable() override;

@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 
+class CameraTarget;
 class CollisionObject;
 
 class CameraControl : public GameObject
@@ -17,6 +18,12 @@ private:
 	virtual ~CameraControl();
 
 	void initializeListeners() override;
+	void beginTrack();
+	void endTrack();
 
 	CollisionObject* controlCollision;
+	CameraTarget* cameraTarget;
+	std::string targetTag;
+
+	static const std::string MapPropertyTarget;
 };
