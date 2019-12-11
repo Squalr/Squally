@@ -296,6 +296,7 @@
   </object>
   <object id="690" name="edge-portal" type="object" x="-2.23913" y="4390.15" width="199.918" height="734.959">
    <properties>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="left"/>
    </properties>

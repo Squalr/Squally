@@ -33,8 +33,11 @@ CipherConnectTutorial* CipherConnectTutorial::create()
 CipherConnectTutorial::CipherConnectTutorial() : super(CipherState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_ChestsLocked::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
-	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_ThisOneIsEasy::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_A_ChestsLocked::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_B_ThisOneIsEasy::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+
+	this->introLabel->enableOutline(Color4B::BLACK, 2);
+	this->connectLabel->enableOutline(Color4B::BLACK, 2);
 
 	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();

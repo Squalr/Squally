@@ -1572,10 +1572,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Cipher_Tutorials_Addition_ChangeDataType : public LocalizedString
+	class Cipher_Tutorials_Addition_A_DisplayedAs : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Addition_ChangeDataType* create();
+		static Cipher_Tutorials_Addition_A_DisplayedAs* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1611,17 +1611,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Addition_ChangeDataType();
-		~Cipher_Tutorials_Addition_ChangeDataType();
+		Cipher_Tutorials_Addition_A_DisplayedAs();
+		~Cipher_Tutorials_Addition_A_DisplayedAs();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_Addition_ConnectComponents : public LocalizedString
+	class Cipher_Tutorials_Addition_B_ChangeDataType : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Addition_ConnectComponents* create();
+		static Cipher_Tutorials_Addition_B_ChangeDataType* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1657,17 +1657,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Addition_ConnectComponents();
-		~Cipher_Tutorials_Addition_ConnectComponents();
+		Cipher_Tutorials_Addition_B_ChangeDataType();
+		~Cipher_Tutorials_Addition_B_ChangeDataType();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_Connect_ChestsLocked : public LocalizedString
+	class Cipher_Tutorials_Addition_C_ConnectComponents : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Connect_ChestsLocked* create();
+		static Cipher_Tutorials_Addition_C_ConnectComponents* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1703,17 +1703,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Connect_ChestsLocked();
-		~Cipher_Tutorials_Connect_ChestsLocked();
+		Cipher_Tutorials_Addition_C_ConnectComponents();
+		~Cipher_Tutorials_Addition_C_ConnectComponents();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_Connect_ThisOneIsEasy : public LocalizedString
+	class Cipher_Tutorials_Connect_A_ChestsLocked : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Connect_ThisOneIsEasy* create();
+		static Cipher_Tutorials_Connect_A_ChestsLocked* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1749,17 +1749,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Connect_ThisOneIsEasy();
-		~Cipher_Tutorials_Connect_ThisOneIsEasy();
+		Cipher_Tutorials_Connect_A_ChestsLocked();
+		~Cipher_Tutorials_Connect_A_ChestsLocked();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_ExtraTokens_ExtraTokens : public LocalizedString
+	class Cipher_Tutorials_Connect_B_ThisOneIsEasy : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ExtraTokens_ExtraTokens* create();
+		static Cipher_Tutorials_Connect_B_ThisOneIsEasy* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1795,17 +1795,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_ExtraTokens_ExtraTokens();
-		~Cipher_Tutorials_ExtraTokens_ExtraTokens();
+		Cipher_Tutorials_Connect_B_ThisOneIsEasy();
+		~Cipher_Tutorials_Connect_B_ThisOneIsEasy();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_Overflow_EightBitNumbers : public LocalizedString
+	class Cipher_Tutorials_ExtraTokens_A_ExtraTokens : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Overflow_EightBitNumbers* create();
+		static Cipher_Tutorials_ExtraTokens_A_ExtraTokens* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1841,17 +1841,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Overflow_EightBitNumbers();
-		~Cipher_Tutorials_Overflow_EightBitNumbers();
+		Cipher_Tutorials_ExtraTokens_A_ExtraTokens();
+		~Cipher_Tutorials_ExtraTokens_A_ExtraTokens();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_Overflow_PropertyOf8Bit : public LocalizedString
+	class Cipher_Tutorials_Overflow_A_EightBitNumbers : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Overflow_PropertyOf8Bit* create();
+		static Cipher_Tutorials_Overflow_A_EightBitNumbers* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1887,17 +1887,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_Overflow_PropertyOf8Bit();
-		~Cipher_Tutorials_Overflow_PropertyOf8Bit();
+		Cipher_Tutorials_Overflow_A_EightBitNumbers();
+		~Cipher_Tutorials_Overflow_A_EightBitNumbers();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_ShiftLeft_PropertyOfShl : public LocalizedString
+	class Cipher_Tutorials_Overflow_B_PropertyOf8Bit : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ShiftLeft_PropertyOfShl* create();
+		static Cipher_Tutorials_Overflow_B_PropertyOf8Bit* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1933,17 +1933,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_ShiftLeft_PropertyOfShl();
-		~Cipher_Tutorials_ShiftLeft_PropertyOfShl();
+		Cipher_Tutorials_Overflow_B_PropertyOf8Bit();
+		~Cipher_Tutorials_Overflow_B_PropertyOf8Bit();
 	};
 }
 
 namespace Strings
 {
-	class Cipher_Tutorials_ShiftLeft_ShiftLeft : public LocalizedString
+	class Cipher_Tutorials_ShiftLeft_A_ShiftLeft : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ShiftLeft_ShiftLeft* create();
+		static Cipher_Tutorials_ShiftLeft_A_ShiftLeft* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1979,8 +1979,54 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Cipher_Tutorials_ShiftLeft_ShiftLeft();
-		~Cipher_Tutorials_ShiftLeft_ShiftLeft();
+		Cipher_Tutorials_ShiftLeft_A_ShiftLeft();
+		~Cipher_Tutorials_ShiftLeft_A_ShiftLeft();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_ShiftLeft_B_PropertyOfShl : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_ShiftLeft_B_PropertyOfShl* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_ShiftLeft_B_PropertyOfShl();
+		~Cipher_Tutorials_ShiftLeft_B_PropertyOfShl();
 	};
 }
 

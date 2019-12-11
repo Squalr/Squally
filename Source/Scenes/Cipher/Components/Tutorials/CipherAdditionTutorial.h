@@ -32,10 +32,13 @@ private:
 
 	void runTutorialPartA(CipherState* cipherState);
 	void runTutorialPartB(CipherState* cipherState);
+	void runTutorialPartC(CipherState* cipherState);
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* introLabel;
+	LocalizedLabel* buttonsLabel;
 	LocalizedLabel* connectLabel;
 	ClickableTextNode* nextButtonIntro;
+	ClickableTextNode* nextButtonButtons;
 	ClickableTextNode* nextButtonConnect;
 };

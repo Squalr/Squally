@@ -17,6 +17,7 @@ class CipherState;
 class ClickableNode;
 class Connection;
 class DestinationBlock;
+class DisplayModeToggles;
 class SourceBlock;
 
 class CipherState : public SmartNode
@@ -67,6 +68,7 @@ public:
 	std::string currentOutput;
 
 	CipherLock* cipherLockPointer;
+	DisplayModeToggles* displayModeTogglesPointer;
 
 protected:
 	void initializePositions() override;

@@ -33,8 +33,10 @@ CipherExtraTokensTutorial* CipherExtraTokensTutorial::create()
 CipherExtraTokensTutorial::CipherExtraTokensTutorial() : super(CipherState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_ExtraTokens_ExtraTokens::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_ExtraTokens_A_ExtraTokens::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
 	
+	this->introLabel->enableOutline(Color4B::BLACK, 2);
+
 	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();
 

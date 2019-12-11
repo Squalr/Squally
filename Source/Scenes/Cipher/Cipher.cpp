@@ -91,6 +91,7 @@ Cipher::Cipher()
 	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
+	this->cipherState->displayModeTogglesPointer = this->displayModeToggles;
 	this->buildTutorialMap();
 
 	this->gameNode->addChild(this->cipherBackground);

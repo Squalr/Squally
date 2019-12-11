@@ -85,5 +85,5 @@ void PortalSpawn::tryShowBanner()
 
 	MapTitleBanner* banner = deserializer->deserializeProperties(properties);
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(banner));
+	this->addChild(banner);
 }

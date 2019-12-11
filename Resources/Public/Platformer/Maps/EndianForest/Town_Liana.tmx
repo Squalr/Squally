@@ -299,7 +299,7 @@
   </properties>
   <object id="692" name="queen-liana" type="entity" x="2704.53" y="932.381" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,look-at-squally"/>
+    <property name="attached-behavior" value="friendly,pacing"/>
     <property name="quest" value="talk-to-queen"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
