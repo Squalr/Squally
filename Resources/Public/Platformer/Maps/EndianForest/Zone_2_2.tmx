@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="827">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="828">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -215,6 +215,13 @@
     <property name="battle-map" value="Combat/Intro"/>
     <property name="battle-tag" value="group-b"/>
     <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="827" name="chiron" type="entity" x="5500" y="4492" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly"/>
+    <property name="quest" value="temple-door"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
  </objectgroup>

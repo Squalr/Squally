@@ -40,7 +40,7 @@ void SquallyCameraFollowBehavior::onLoad()
 		this->squally,
 		Vec2(0.0f, 128.0f),
 		Vec2(128.0f, 96.0f),
-		CameraTrackingData::CameraScrollType::Ellipse,
+		CameraTrackingData::CameraScrollType::Rectangle,
 		Vec2(0.075f, 0.075f)
 	);
 	

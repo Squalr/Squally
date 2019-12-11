@@ -31,7 +31,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="489" name="Forest/Background/Forest3" type="decor" x="307.845" y="3149.53" width="10000" height="715">
+  <object id="489" name="Forest/Background/Forest3" type="decor" x="307.845" y="3149.53" width="10000" height="941">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -42,7 +42,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="490" name="Forest/Background/Forest2" type="decor" x="193.697" y="2938.91" width="10000" height="941">
+  <object id="490" name="Forest/Background/Forest2" type="decor" x="193.697" y="2938.91" width="10000" height="920">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -53,7 +53,7 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="491" name="Forest/Background/Forest1" type="decor" x="302.909" y="3095.32" width="10000" height="909">
+  <object id="491" name="Forest/Background/Forest1" type="decor" x="302.909" y="3095.32" width="10000" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
