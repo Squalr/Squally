@@ -49,7 +49,7 @@ void CipherStateUnlocking::onStateEnter(CipherState* cipherState)
 		}
 	}
 
-	this->performUnlockLoop(cipherState, inputBlocks, immediateBlocks,[=](bool success)
+	this->performUnlockLoop(cipherState, inputBlocks, immediateBlocks, [=](bool success)
 	{
 		if (success)
 		{
@@ -81,6 +81,12 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 	if (index == 0)
 	{
 		unlockSuccessful = true;
+	}
+
+	if (cipherState->inputOutputMap.empty())
+	{
+		onExecuteComplete(true);
+		return;
 	}
 
 	if (index < int(cipherState->inputOutputMap.size()))

@@ -155,8 +155,8 @@
   <object id="816" name="edge-portal" type="object" x="-11.959" y="9775.57" width="199.918" height="640.851">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="right"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="819" name="add-door" type="object" x="6056" y="7948.5" width="696" height="775">

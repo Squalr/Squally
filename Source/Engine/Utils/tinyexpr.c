@@ -170,6 +170,10 @@ static int or(int a, int b) {return a | b;}
 static int and(int a, int b) {return a & b;}
 static int mod(int a, int b) {return a % b;}
 static int divide(int a, int b) {return a / b;}
+static int shl(int a, int b) {return a << b;}
+static int shr(int a, int b) {return a >> b;}
+static int cshl(int a, int b) {return a >> b;}
+static int cshr(int a, int b) {return a << b;}
 static int negate(int a) {return -a;}
 static int comma(int a, int b) {(void)a; return b;}
 
@@ -230,6 +234,10 @@ void next_token(state *s) {
                     case '&': s->type = TOK_INFIX; s->function = and; break;
                     case '|': s->type = TOK_INFIX; s->function = or; break;
                     case '%': s->type = TOK_INFIX; s->function = mod; break;
+                    case '<': s->type = TOK_INFIX; s->function = shl; break;
+                    case '>': s->type = TOK_INFIX; s->function = shr; break;
+                    case 'q': s->type = TOK_INFIX; s->function = cshl; break;
+                    case 'p': s->type = TOK_INFIX; s->function = cshr; break;
                     case '(': s->type = TOK_OPEN; break;
                     case ')': s->type = TOK_CLOSE; break;
                     case ',': s->type = TOK_SEP; break;
@@ -422,7 +430,9 @@ static te_expr *term(state *s) {
     /* <term>      =    <factor> {("*" | "/" | "%" | "^" | "|" | "&") <factor>} */
     te_expr *ret = factor(s);
 
-    while (s->type == TOK_INFIX && (s->function == mul || s->function == divide || s->function == mod || s->function == xor || s->function == or || s->function == and)) {
+    while (s->type == TOK_INFIX && (s->function == mul || s->function == divide || s->function == mod ||
+            s->function == xor || s->function == or || s->function == and ||
+            s->function == shl || s->function == shr || s->function == cshl || s->function == cshr)) {
         te_fun2 t = s->function;
         next_token(s);
         ret = NEW_EXPR(TE_FUNCTION2 | TE_FLAG_PURE, ret, factor(s));

@@ -10,10 +10,11 @@ using namespace cocos2d;
 CipherPuzzleData* CipherPuzzleData::create(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
 		std::vector<std::string> tokens,
+		std::string defaultDataType,
 		std::string tutorial,
 		std::function<void(CipherPuzzleData*)> onUnlock)
 {
-	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMap, tokens, tutorial, onUnlock);
+	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMap, tokens, defaultDataType, tutorial, onUnlock);
 
 	instance->autorelease();
 
@@ -23,11 +24,13 @@ CipherPuzzleData* CipherPuzzleData::create(
 CipherPuzzleData::CipherPuzzleData(
 		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
 		std::vector<std::string> tokens,
+		std::string defaultDataType,
 		std::string tutorial,
 		std::function<void(CipherPuzzleData*)> onUnlock)
 {
 	this->inputOutputMap = inputOutputMap;
 	this->tokens = tokens;
+	this->defaultDataType = defaultDataType;
 	this->tutorial = tutorial;
 	this->onUnlock = onUnlock;
 }
@@ -46,6 +49,7 @@ CipherPuzzleData* CipherPuzzleData::clone()
 	return CipherPuzzleData::create(
 		this->inputOutputMap,
 		this->tokens,
+		this->defaultDataType,
 		this->tutorial,
 		this->onUnlock
 	);
@@ -59,6 +63,11 @@ std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInput
 std::vector<std::string> CipherPuzzleData::getTokens()
 {
 	return this->tokens;
+}
+
+std::string CipherPuzzleData::getDefaultDataType()
+{
+	return this->defaultDataType;
 }
 
 std::string CipherPuzzleData::getTutorial()

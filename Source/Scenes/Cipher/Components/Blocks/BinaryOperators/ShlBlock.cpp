@@ -49,5 +49,5 @@ unsigned char ShlBlock::compute()
 		return (unsigned char)(0);
 	}
 
-	return this->currentInputs[1] == (unsigned char)(0) ? (unsigned char)(0) : (this->currentInputs[0] | this->currentInputs[1]);
+	return this->currentInputs[0] << this->currentInputs[1];
 }

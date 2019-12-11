@@ -162,8 +162,6 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		case StateType::GameStart:
 		{
 			cipherState->gameStartTime = std::chrono::high_resolution_clock::now();
-
-			CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(cipherState->displayDataType));
 			break;
 		}
 		case StateType::GameEnd:

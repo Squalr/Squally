@@ -184,5 +184,9 @@ void Cipher::onMenuExit()
 
 void Cipher::buildTutorialMap()
 {
+	this->cipherTutorialMap[CipherAdditionTutorial::MapKeyTutorial] = [=]() { return CipherAdditionTutorial::create(); };
 	this->cipherTutorialMap[CipherConnectTutorial::MapKeyTutorial] = [=]() { return CipherConnectTutorial::create(); };
+	this->cipherTutorialMap[CipherExtraTokensTutorial::MapKeyTutorial] = [=]() { return CipherExtraTokensTutorial::create(); };
+	this->cipherTutorialMap[CipherOverflowTutorial::MapKeyTutorial] = [=]() { return CipherOverflowTutorial::create(); };
+	this->cipherTutorialMap[CipherShiftLeftTutorial::MapKeyTutorial] = [=]() { return CipherShiftLeftTutorial::create(); };
 }

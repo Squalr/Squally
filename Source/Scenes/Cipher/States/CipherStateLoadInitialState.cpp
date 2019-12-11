@@ -49,6 +49,30 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	
 	cipherState->loadCipherAtIndex(0);
 	this->spawnBlocks(cipherState);
+	
+	std::string displayDataType = cipherState->puzzleData->getDefaultDataType();
+
+	if (displayDataType == "dec" || displayDataType == "decimal")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Dec;
+	}
+	else if (displayDataType == "bin" || displayDataType == "binary")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Bin;
+	}
+	else if (displayDataType == "hex" || displayDataType == "hexadecimal")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Hex;
+	}
+	else
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Ascii;
+	}
+
+	this->defer([=]()
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(cipherState->displayDataType));
+	});
 }
 
 void CipherStateLoadInitialState::onStateEnter(CipherState* cipherState)

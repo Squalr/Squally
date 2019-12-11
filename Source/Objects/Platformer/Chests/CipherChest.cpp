@@ -30,6 +30,7 @@ using namespace cocos2d;
 const std::string CipherChest::MapKeyCipherChest = "cipher-chest";
 const std::string CipherChest::MapKeyPropertyInputs = "inputs";
 const std::string CipherChest::MapKeyPropertyRule = "rule";
+const std::string CipherChest::MapKeyPropertyDataType = "data-type";
 const std::string CipherChest::MapKeyPropertyTokens = "tokens";
 const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
 
@@ -77,16 +78,34 @@ void CipherChest::onInteract()
 
 CipherPuzzleData* CipherChest::buildPuzzleData()
 {
-	auto getChar = [&](std::string input)
+	auto getChar = [&](std::string input, std::string dataType)
 	{
+		if (dataType == "decimal" || dataType == "dec")
+		{
+			if (MathUtils::isInteger(input))
+			{
+				return (unsigned char)(std::stoi(input));
+			}
+		}
+		else if (dataType == "binary" || dataType == "bin")
+		{
+			/*
+			if (StrUtils::isBinaryNumber(input))
+			{
+				return (unsigned char)StrUtils::BinToInt(input);
+			}*/
+		}
+		else if (dataType == "hexadecimal" || dataType == "hex")
+		{
+			if (StrUtils::isHexNumber(input))
+			{
+				return (unsigned char)StrUtils::HexToInt(input);
+			}
+		}
+
 		if (input.size() == 1)
 		{
 			return (unsigned char)(input[0]);
-		}
-		else if (MathUtils::isInteger(input))
-		{
-			int intVal = std::stoi(input);
-			return (unsigned char)(intVal);
 		}
 		
 		return (unsigned char)(0);
@@ -95,11 +114,18 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	auto applyRule = [&](unsigned char input, std::string rule)
 	{
 		std::string expression = StrUtils::replaceAll(rule, "{i}", std::to_string(input));
+
+		// The math library we use expects single character operators, so we map our operators to theirs
+		expression = StrUtils::replaceAll(expression, "<<<", "q");
+		expression = StrUtils::replaceAll(expression, ">>>", "p");
+		expression = StrUtils::replaceAll(expression, "<<", "<");
+		expression = StrUtils::replaceAll(expression, ">>", ">");
 		
 		return (unsigned char)(MathUtils::resolveBinaryMathExpression(expression));
 	};
 
 	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRule, Value("")).asString();
+	std::string dataType = StrUtils::toLower(GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyDataType, Value("ascii")).asString());
 	std::vector<std::string> inputs = StrUtils::splitOn(
 		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputs, Value("")).asString(), ", ", false
 	);
@@ -112,13 +138,13 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 
 	for (auto it = inputs.begin(); it != inputs.end(); it++)
 	{
-		unsigned char input = getChar(*it);
+		unsigned char input = getChar(*it, dataType);
 		unsigned char output = applyRule(input, rule);
 
 		inputOutputMap.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 	}
 
-	return CipherPuzzleData::create(inputOutputMap, tokens, tutorial, [=](CipherPuzzleData* puzzleData)
+	return CipherPuzzleData::create(inputOutputMap, tokens, dataType, tutorial, [=](CipherPuzzleData* puzzleData)
 	{
 		this->onUnlock(puzzleData);
 	});

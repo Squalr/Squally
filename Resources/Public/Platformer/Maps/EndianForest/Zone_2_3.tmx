@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="942">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="943">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -97,18 +97,6 @@
   <object id="843" name="stone-button" type="object" x="3072.39" y="4437.68" width="258.367" height="85.7283">
    <properties>
     <property name="send-event" value="door-open"/>
-   </properties>
-  </object>
-  <object id="909" name="cipher-chest" type="object" x="3126.91" y="6339.27" width="128" height="128">
-   <properties>
-    <property name="bonus-reward" value=""/>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs" value="8,9,3,0,2,1"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}&lt;&lt;1"/>
-    <property name="tokens" value="&lt;&lt;,1"/>
-    <property name="tutorial" value="shift-left"/>
    </properties>
   </object>
   <object id="924" name="temple" type="terrain" x="4074.7" y="4552">
@@ -295,6 +283,17 @@
     <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="exit-B"/>
+   </properties>
+  </object>
+  <object id="942" name="cipher-chest" type="object" x="3125.91" y="6332.27" width="128" height="128">
+   <properties>
+    <property name="data-type" value="decimal"/>
+    <property name="event" value="open-cipher"/>
+    <property name="inputs" value="8,9,3,0,2,1"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule" value="{i}&lt;&lt;1"/>
+    <property name="tokens" value="&lt;&lt;,1"/>
+    <property name="tutorial" value="shift-left"/>
    </properties>
   </object>
  </objectgroup>
