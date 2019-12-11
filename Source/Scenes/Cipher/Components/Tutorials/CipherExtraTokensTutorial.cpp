@@ -111,8 +111,7 @@ void CipherExtraTokensTutorial::runTutorialPartA(CipherState* cipherState)
 	this->introLabel->runAction(FadeTo::create(0.25f, 255));
 
 	std::vector<Node*> focusTargets = std::vector<Node*>();
-	focusTargets.push_back(cipherState->inputContent);
-	focusTargets.push_back(cipherState->outputContent);
+	focusTargets.push_back(cipherState->blockContent);
 	this->focusTakeOver->focus(focusTargets);
 }
 

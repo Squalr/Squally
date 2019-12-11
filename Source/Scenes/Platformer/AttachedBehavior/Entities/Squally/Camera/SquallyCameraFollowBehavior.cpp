@@ -36,6 +36,13 @@ SquallyCameraFollowBehavior::~SquallyCameraFollowBehavior()
 void SquallyCameraFollowBehavior::onLoad()
 {
 	// Request camera & hud track player
-	CameraTrackingData trackingData = CameraTrackingData(this->squally, Vec2(0.0f, 128.0f), Vec2(128.0f, 96.0f));
+	CameraTrackingData trackingData = CameraTrackingData(
+		this->squally,
+		Vec2(0.0f, 128.0f),
+		Vec2(128.0f, 96.0f),
+		CameraTrackingData::CameraScrollType::Ellipse,
+		Vec2(0.075f, 0.075f)
+	);
+	
 	GameCamera::getInstance()->setTarget(trackingData, true);
 }

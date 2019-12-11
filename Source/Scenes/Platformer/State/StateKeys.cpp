@@ -20,3 +20,4 @@ const std::string StateKeys::MovementX = "STATE_KEY_MOVEMENT_X";
 const std::string StateKeys::MovementY = "STATE_KEY_MOVEMENT_Y";
 const std::string StateKeys::VelocityX = "STATE_KEY_VELOCITY_X";
 const std::string StateKeys::VelocityY = "STATE_KEY_VELOCITY_Y";
+const std::string StateKeys::Zoom = "STATE_KEY_ZOOM";

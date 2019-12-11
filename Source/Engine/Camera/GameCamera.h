@@ -53,6 +53,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	float getIntendedCameraDistance();
 	cocos2d::Vec2 boundCameraByEllipses();
 	cocos2d::Vec2 boundCameraByRectangle();
 	void updateCameraDebugLabels();

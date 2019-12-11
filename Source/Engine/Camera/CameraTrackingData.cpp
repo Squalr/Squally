@@ -5,7 +5,7 @@
 using namespace cocos2d;
 
 const Vec2 CameraTrackingData::DefaultCameraOffset = cocos2d::Vec2(256.0f, 192.0f);
-const Vec2 CameraTrackingData::DefaultCameraFollowSpeed = cocos2d::Vec2(0.075f, 0.075f);
+const Vec2 CameraTrackingData::DefaultCameraFollowSpeed = cocos2d::Vec2(0.015f, 0.015f);
 
 CameraTrackingData::CameraTrackingData()
 {

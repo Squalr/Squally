@@ -25,4 +25,5 @@ public:
 	static const std::string MovementY;
 	static const std::string VelocityX;
 	static const std::string VelocityY;
+	static const std::string Zoom;
 };

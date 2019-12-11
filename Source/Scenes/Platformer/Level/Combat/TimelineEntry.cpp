@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -247,18 +248,38 @@ void TimelineEntry::addTime(float dt)
 
 void TimelineEntry::performCast()
 {
-	this->isCasting = false;
-	this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
-
-	this->currentCast->execute(
+	GameCamera::getInstance()->pushTarget(CameraTrackingData(
 		this->entity,
-		this->target->entity,
-		[=]()
+		(this->isPlayerEntry() ? Vec2(128.0f, 0.0f) : Vec2(128.0f, 0.0f)),
+		CameraTrackingData::DefaultCameraOffset,
+		CameraTrackingData::CameraScrollType::Rectangle,
+		Vec2(0.015f, 0.015f),
+		this->entity->getStateOrDefault(StateKeys::Zoom, Value(1.0f)).asFloat()
+	));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
 		{
-			this->resetTimeline();
-			CombatEvents::TriggerResumeTimeline();
-		}
-	);
+			this->isCasting = false;
+			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
+
+			this->currentCast->execute(
+				this->entity,
+				this->target->entity,
+				[=]()
+				{
+					GameCamera::getInstance()->popTarget();
+
+					// TODO: Invoke entity-take-damage animation, then resume timeline afterwards in a callback
+
+					this->resetTimeline();
+					CombatEvents::TriggerResumeTimeline();
+				}
+			);
+		}),
+		nullptr
+	));
 }
 
 void TimelineEntry::tryInterrupt(bool blocked)

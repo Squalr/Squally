@@ -196,18 +196,31 @@ void GameCamera::setCameraDistance(float distance)
 		return;
 	}
 
-	this->setPositionZ(distance - this->defaultDistance);
+	this->setPositionZ(distance - this->getIntendedCameraDistance());
 	Camera::getDefaultCamera()->setPositionZ(distance);
 }
 
 float GameCamera::getCameraZoom()
 {
-	return (this->getCameraDistance() / this->defaultDistance);
+	return (this->getCameraDistance() / this->getIntendedCameraDistance());
 }
 
 void GameCamera::setCameraZoom(float zoom)
 {
-	this->setCameraDistance(this->defaultDistance * zoom);
+
+	this->setCameraDistance(this->getIntendedCameraDistance() * zoom);
+}
+
+float GameCamera::getIntendedCameraDistance()
+{
+	float distance = this->defaultDistance;
+
+	if (this->getCurrentTrackingData() != nullptr && this->getCurrentTrackingData()->target != nullptr)
+	{
+		distance += GameUtils::getDepth(this->getCurrentTrackingData()->target);
+	}
+
+	return distance;
 }
 
 Vec2 GameCamera::getCameraPosition()

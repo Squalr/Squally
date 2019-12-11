@@ -101,12 +101,14 @@
    <properties>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
   <object id="533" name="combat-spawn" type="object" x="5451.61" y="2319.34" width="78.7879" height="88">
    <properties>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -138,12 +140,14 @@
    <properties>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
   <object id="537" name="combat-spawn" type="object" x="4370.07" y="2411.88" width="78.7879" height="88">
    <properties>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
  </objectgroup>

@@ -143,6 +143,7 @@ void CipherOverflowTutorial::runTutorialPartB(CipherState* cipherState)
 
 	std::vector<Node*> focusTargets = std::vector<Node*>();
 	focusTargets.push_back(cipherState->inputContent);
+	focusTargets.push_back(cipherState->blockContent);
 	focusTargets.push_back(cipherState->outputContent);
 	this->focusTakeOver->focus(focusTargets);
 }
