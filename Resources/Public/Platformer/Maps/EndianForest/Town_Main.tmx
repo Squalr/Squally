@@ -4,7 +4,7 @@
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value="ef-town-main"/>
+   <property name="map-banner" value="elbridge"/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="rubber-band" type="int" value="2"/>
    <property name="type" value="meta"/>
@@ -737,7 +737,7 @@
   </object>
   <object id="929" name="edge-lantern-gate" type="object" x="10006.7" y="3655.28" width="356" height="320">
    <properties>
-    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="map" value="EndianForest/Zone_2_0"/>
     <property name="tag" value="blocked-exit"/>
     <property name="transition" value="main"/>
    </properties>

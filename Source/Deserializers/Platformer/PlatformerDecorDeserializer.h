@@ -12,7 +12,7 @@ public:
 private:
 	typedef ObjectDeserializer super;
 	PlatformerDecorDeserializer();
-	~PlatformerDecorDeserializer();
+	virtual ~PlatformerDecorDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 };

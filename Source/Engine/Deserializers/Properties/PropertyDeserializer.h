@@ -18,7 +18,7 @@ public:
 
 protected:
 	PropertyDeserializer();
-	~PropertyDeserializer();
+	virtual ~PropertyDeserializer();
 
 private:
 	typedef SmartNode super;

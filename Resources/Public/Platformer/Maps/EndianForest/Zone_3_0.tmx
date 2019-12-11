@@ -311,8 +311,9 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="709" name="spawn" type="object" x="515.238" y="1226.97" width="128" height="128">
+  <object id="709" name="spawn" type="object" x="324.329" y="1230" width="128" height="128">
    <properties>
+    <property name="map-banner" value="valley-ash"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -361,7 +362,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="492.297" y="1192.33" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="843.812" y="1237.78" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

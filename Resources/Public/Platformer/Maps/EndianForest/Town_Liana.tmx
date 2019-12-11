@@ -196,7 +196,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="749" name="brick-interior" type="texture" x="-81.8182" y="-24.2424">
-   <polygon points="0,0 1468.31,2.97636 1474.3,1217.33 1.99499,1208.4"/>
+   <polygon points="0,0 1497.19,2.97636 1503.3,1217.33 2.03423,1208.4"/>
   </object>
   <object id="750" name="brick-interior" type="texture" x="2078" y="-40">
    <polygon points="0,0 2583.52,2.97636 2594.06,1217.33 3.51022,1208.4"/>
@@ -299,7 +299,7 @@
   </properties>
   <object id="692" name="queen-liana" type="entity" x="2704.53" y="932.381" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="attached-behavior" value="friendly,look-at-squally"/>
     <property name="quest" value="talk-to-queen"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>

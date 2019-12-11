@@ -393,6 +393,7 @@
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="4927" width="270" height="748"/>
   <object id="691" name="spawn" type="object" x="372.86" y="4983.5" width="128" height="128">
    <properties>
+    <property name="map-banner" value="old-town-road"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

@@ -13,7 +13,7 @@ private:
 	typedef ObjectDeserializer super;
 
 	PlatformerTerrainDeserializer();
-	~PlatformerTerrainDeserializer();
+	virtual ~PlatformerTerrainDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 

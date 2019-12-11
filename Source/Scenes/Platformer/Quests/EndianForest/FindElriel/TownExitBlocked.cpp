@@ -62,7 +62,10 @@ void TownExitBlocked::onLoad(QuestState questState)
 {
 	if (questState == QuestState::Complete)
 	{
-		this->chiron->despawn();
+		this->defer([=]()
+		{
+			this->chiron->despawn();
+		});
 	}
 	else
 	{

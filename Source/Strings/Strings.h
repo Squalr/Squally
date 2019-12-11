@@ -56082,10 +56082,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_MapNames_EndianForest_TownMain : public LocalizedString
+	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_TownMain* create();
+		static Platformer_MapNames_EndianForest_Elbridge* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -56121,8 +56121,284 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_MapNames_EndianForest_TownMain();
-		~Platformer_MapNames_EndianForest_TownMain();
+		Platformer_MapNames_EndianForest_Elbridge();
+		~Platformer_MapNames_EndianForest_Elbridge();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_InnerSanctumOfTheFallenStars : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_InnerSanctumOfTheFallenStars* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_InnerSanctumOfTheFallenStars();
+		~Platformer_MapNames_EndianForest_InnerSanctumOfTheFallenStars();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_MagesGuild : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_MagesGuild* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_MagesGuild();
+		~Platformer_MapNames_EndianForest_MagesGuild();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_MagesPrison : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_MagesPrison* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_MagesPrison();
+		~Platformer_MapNames_EndianForest_MagesPrison();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_OldTownRoad : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_OldTownRoad* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_OldTownRoad();
+		~Platformer_MapNames_EndianForest_OldTownRoad();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_TempleOfTheFallenStars : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_TempleOfTheFallenStars* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_TempleOfTheFallenStars();
+		~Platformer_MapNames_EndianForest_TempleOfTheFallenStars();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_MapNames_EndianForest_ValleyOfAsh : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_EndianForest_ValleyOfAsh* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_MapNames_EndianForest_ValleyOfAsh();
+		~Platformer_MapNames_EndianForest_ValleyOfAsh();
 	};
 }
 

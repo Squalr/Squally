@@ -13,5 +13,5 @@ private:
 	typedef ObjectDeserializer super;
 
 	PlatformerObjectDeserializer();
-	~PlatformerObjectDeserializer();
+	virtual ~PlatformerObjectDeserializer();
 };

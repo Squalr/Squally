@@ -14,5 +14,5 @@ private:
 	typedef QuestDeserializer super;
 
 	PlatformerQuestDeserializer();
-	~PlatformerQuestDeserializer();
+	virtual ~PlatformerQuestDeserializer();
 };

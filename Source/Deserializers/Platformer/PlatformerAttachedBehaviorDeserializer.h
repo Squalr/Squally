@@ -14,5 +14,5 @@ private:
 	typedef AttachedBehaviorDeserializer super;
 
 	PlatformerAttachedBehaviorDeserializer();
-	~PlatformerAttachedBehaviorDeserializer();
+	virtual ~PlatformerAttachedBehaviorDeserializer();
 };

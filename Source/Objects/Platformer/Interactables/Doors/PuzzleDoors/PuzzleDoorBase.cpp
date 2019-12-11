@@ -119,14 +119,14 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->addChild(this->truthLabel);
 	this->addChild(this->hackableLabel);
 
-	this->addChild(this->marker);
-
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
 		this->addChild(this->runes[index]);
 		this->addChild(this->runesFailed[index]);
 		this->addChild(this->runesPassed[index]);
 	}
+
+	this->addChild(this->marker);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -157,7 +157,7 @@ void PuzzleDoorBase::onEnter()
 
 					this->indexString->setString(std::to_string(this->puzzleIndex));
 
-					this->marker->runAction(MoveTo::create(1.0f, this->runes[this->puzzleIndex]->getPosition() + Vec2(0.0f, 64.0f)));
+					this->marker->runAction(MoveTo::create(1.0f, this->runes[this->puzzleIndex]->getPosition() + Vec2(0.0f, 0.0f)));
 					this->marker->runAction(FadeTo::create(0.25f, 255));
 				}
 				else
@@ -254,7 +254,7 @@ void PuzzleDoorBase::initializePositions()
 		this->runesFailed[index]->setPosition(this->runeBasePosition + Vec2(float(index) * this->runeSpacing, 0.0f));
 	}
 
-	this->marker->setPosition(this->runes[0]->getPosition() + Vec2(0.0f, 64.0f));
+	this->marker->setPosition(this->runes[0]->getPosition() + Vec2(0.0f, 0.0f));
 }
 
 void PuzzleDoorBase::initializeListeners()

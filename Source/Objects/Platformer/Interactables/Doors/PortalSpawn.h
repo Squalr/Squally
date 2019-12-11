@@ -13,7 +13,6 @@ public:
 	static PortalSpawn* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyPortalSpawn;
-	static const std::string MapKeyPortalSpawnTransition;
 
 protected:
 	PortalSpawn(cocos2d::ValueMap& properties);
@@ -25,5 +24,11 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void tryShowBanner();
+
 	std::string transition;
+	std::string bannerName;
+	
+	static const std::string MapKeyPortalSpawnTransition;
+	static const std::string MapKeyMapBanner;
 };

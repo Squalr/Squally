@@ -7,9 +7,11 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/UI/MapTitleBanner.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 
 #include "Resources/UIResources.h"
 
@@ -17,6 +19,7 @@ using namespace cocos2d;
 
 const std::string PortalSpawn::MapKeyPortalSpawn = "spawn";
 const std::string PortalSpawn::MapKeyPortalSpawnTransition = "transition";
+const std::string PortalSpawn::MapKeyMapBanner = "map-banner";
 
 PortalSpawn* PortalSpawn::create(ValueMap& properties)
 {
@@ -30,6 +33,7 @@ PortalSpawn* PortalSpawn::create(ValueMap& properties)
 PortalSpawn::PortalSpawn(ValueMap& properties) : super(properties)
 {
 	this->transition = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyPortalSpawnTransition, Value("")).asString();
+	this->bannerName = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyMapBanner, Value("")).asString();
 }
 
 PortalSpawn::~PortalSpawn()
@@ -59,8 +63,27 @@ void PortalSpawn::initializeListeners()
 			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 			{
 				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
+				this->tryShowBanner();
+
 			}), Squally::MapKeySqually);
 		}
 	}));
 }
 
+void PortalSpawn::tryShowBanner()
+{
+	if (this->bannerName.empty())
+	{
+		return;
+	}
+
+	PlatformerBannerDeserializer* deserializer = PlatformerBannerDeserializer::create();
+
+	ValueMap properties = ValueMap();
+
+	properties[BannerDeserializer::MapKeyBanner] = this->bannerName ;
+
+	MapTitleBanner* banner = deserializer->deserializeProperties(properties);
+
+	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(banner));
+}

@@ -13,7 +13,7 @@ private:
 	typedef ObjectDeserializer super;
 
 	PlatformerTextureDeserializer();
-	~PlatformerTextureDeserializer();
+	virtual ~PlatformerTextureDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 

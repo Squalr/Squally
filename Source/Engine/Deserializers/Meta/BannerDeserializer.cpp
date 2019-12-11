@@ -30,12 +30,24 @@ BannerDeserializer::~BannerDeserializer()
 {
 }
 
-void BannerDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
+MapTitleBanner* BannerDeserializer::deserializeProperties(cocos2d::ValueMap properties)
 {
 	std::string bannerName = GameUtils::getKeyOrDefault(properties, BannerDeserializer::MapKeyBanner, Value("")).asString();
 
 	if (this->deserializers.find(bannerName) != deserializers.end())
 	{
-		owner->addChild(MapTitleBanner::create(deserializers[bannerName]()));
+		return MapTitleBanner::create(deserializers[bannerName]());
+	}
+
+	return nullptr;
+}
+
+void BannerDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
+{
+	MapTitleBanner* banner = this->deserializeProperties(properties);
+	
+	if (banner != nullptr)
+	{
+		owner->addChild(banner);
 	}
 }

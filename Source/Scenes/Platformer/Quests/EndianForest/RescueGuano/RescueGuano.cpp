@@ -56,7 +56,10 @@ void RescueGuano::onLoad(QuestState questState)
 
 		if (questState == QuestState::Complete)
 		{
-			this->guano->despawn();
+			this->defer([=]()
+			{
+				this->guano->despawn();
+			});
 		}
 	}, Guano::MapKeyGuano);
 

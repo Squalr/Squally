@@ -105,6 +105,7 @@
   </properties>
   <object id="798" name="spawn" type="object" x="340.364" y="3317" width="128" height="128">
    <properties>
+    <property name="map-banner" value="inner-sanctum-fallen-stars"/>
     <property name="transition" value="entrance-C"/>
    </properties>
   </object>

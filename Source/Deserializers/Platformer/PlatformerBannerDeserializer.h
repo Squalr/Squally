@@ -11,5 +11,5 @@ private:
 	typedef BannerDeserializer super;
 
 	PlatformerBannerDeserializer();
-	~PlatformerBannerDeserializer();
+	virtual ~PlatformerBannerDeserializer();
 };
