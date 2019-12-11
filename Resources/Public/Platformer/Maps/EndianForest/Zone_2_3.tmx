@@ -102,11 +102,13 @@
   <object id="909" name="cipher-chest" type="object" x="3126.91" y="6339.27" width="128" height="128">
    <properties>
     <property name="bonus-reward" value=""/>
+    <property name="data-type" value="decimal"/>
     <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="m,a,n,i,c"/>
+    <property name="inputs" value="8,9,3,0,2,1"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}+1"/>
-    <property name="tokens-easy" value="+,1"/>
+    <property name="rule" value="{i}&lt;&lt;1"/>
+    <property name="tokens" value="&lt;&lt;,1"/>
+    <property name="tutorial" value="shift-left"/>
    </properties>
   </object>
   <object id="924" name="temple" type="terrain" x="4074.7" y="4552">

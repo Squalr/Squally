@@ -21,22 +21,19 @@ protected:
 private:
 	typedef Chest super;
 	CipherChest(cocos2d::ValueMap& properties);
-	~CipherChest();
+	virtual ~CipherChest();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	CipherPuzzleData* buildPuzzleData();
-	void onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled);
+	void onUnlock(CipherPuzzleData* puzzleData);
 
 	CipherPuzzleData* cipherPuzzleData;
 
-	static const std::string MapKeyPropertyInputsEasy;
-	static const std::string MapKeyPropertyInputsHard;
-	static const std::string MapKeyPropertyRuleEasy;
-	static const std::string MapKeyPropertyRuleHard;
-	static const std::string MapKeyPropertyBonusReward;
-	static const std::string MapKeyPropertyTokensEasy;
-	static const std::string MapKeyPropertyTokensHard;
+	static const std::string MapKeyPropertyInputs;
+	static const std::string MapKeyPropertyRule;
+	static const std::string MapKeyPropertyTokens;
+	static const std::string MapKeyPropertyDataType;
 	static const std::string MapKeyPropertyTutorial;
 };

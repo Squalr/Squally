@@ -46,7 +46,6 @@ CipherState::CipherState()
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->puzzleData = nullptr;
-	this->isHardMode = false;
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
@@ -190,10 +189,8 @@ void CipherState::clearInteraction()
 {
 }
 
-void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode)
+void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData)
 {
-	this->isHardMode = isHardMode;
-
 	if (this->puzzleData != nullptr)
 	{
 		this->removeChild(this->puzzleData);
@@ -213,9 +210,4 @@ void CipherState::loadCipherAtIndex(int index)
 		this->currentInput = std::get<0>(this->inputOutputMap[index]);
 		this->currentOutput = std::get<1>(this->inputOutputMap[index]);
 	}
-}
-
-bool CipherState::isHardModeEnabled()
-{
-	return this->isHardMode;
 }

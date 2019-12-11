@@ -33,7 +33,6 @@
 #include "Scenes/Cipher/Components/TestButton.h"
 #include "Scenes/Cipher/Components/Tutorials/CipherTutorials.h"
 #include "Scenes/Cipher/Components/UnlockButton.h"
-#include "Scenes/Cipher/DifficultySelectMenu.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
 #include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
 #include "Scenes/Cipher/States/CipherStateNeutral.h"
@@ -89,7 +88,6 @@ Cipher::Cipher()
 	this->asciiTable = AsciiTable::create();
 	this->gameNode = Node::create();
 	this->tutorialNode = Node::create();
-	this->difficultySelectMenu = DifficultySelectMenu::create();
 	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
@@ -118,7 +116,6 @@ Cipher::Cipher()
 	this->gameNode->addChild(this->asciiTable);
 	this->gameNode->addChild(this->tutorialNode);
 	this->addChild(this->gameNode);
-	this->addChild(this->difficultySelectMenu);
 }
 
 Cipher::~Cipher()
@@ -174,22 +171,9 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 		this->tutorialNode->addChild(this->cipherTutorialMap[tutorialKey]());
 	}
 
-	this->difficultySelectMenu->show(cipherPuzzleData, [=]()
-	{
-		this->gameNode->setVisible(true);
-		this->cipherState->loadPuzzleData(cipherPuzzleData, false);
-		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
-	},
-	[=]()
-	{
-		this->gameNode->setVisible(true);
-		this->cipherState->loadPuzzleData(cipherPuzzleData, true);
-		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
-	},
-	[=]()
-	{
-		this->onMenuExit();
-	});
+	this->gameNode->setVisible(true);
+	this->cipherState->loadPuzzleData(cipherPuzzleData);
+	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
 }
 
 void Cipher::onMenuExit()

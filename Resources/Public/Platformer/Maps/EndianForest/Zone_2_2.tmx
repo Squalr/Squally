@@ -131,15 +131,13 @@
   </properties>
   <object id="778" name="cipher-chest" type="object" x="4393.34" y="8002.91" width="128" height="128">
    <properties>
-    <property name="bonus-reward" value=""/>
+    <property name="data-type" value="decimal"/>
     <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="s,w,a,g"/>
-    <property name="inputs-hard" value="m,a,n,a"/>
+    <property name="inputs" value="255,252,253,0"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}+1"/>
-    <property name="rule-hard" value="{i}|2"/>
-    <property name="tokens-easy" value="+,1"/>
-    <property name="tokens-hard" value="|,+,2,1"/>
+    <property name="rule" value="{i}+5"/>
+    <property name="tokens" value="+,1,4,+,7,6"/>
+    <property name="tutorial" value="overflow"/>
    </properties>
   </object>
   <object id="798" name="spawn" type="object" x="320.364" y="10173" width="128" height="128">

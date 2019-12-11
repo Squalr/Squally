@@ -53,7 +53,7 @@ void CipherStateVictory::onStateEnter(CipherState* cipherState)
 	
 	if (cipherState->puzzleData->onUnlock != nullptr)
 	{
-		cipherState->puzzleData->onUnlock(cipherState->puzzleData, cipherState->isHardModeEnabled());
+		cipherState->puzzleData->onUnlock(cipherState->puzzleData);
 	}
 
 	CipherState::updateState(cipherState, CipherState::StateType::GameEnd);

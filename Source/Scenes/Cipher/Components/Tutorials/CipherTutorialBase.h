@@ -7,7 +7,7 @@ class CipherTutorialBase : public CipherComponentBase
 {
 protected:
 	CipherTutorialBase(CipherState::StateType stateToHijack);
-	~CipherTutorialBase();
+	virtual ~CipherTutorialBase();
 
 	void onEnter() override;
 	void onBeforeAnyRequestStateChange(CipherState* gameState) override;

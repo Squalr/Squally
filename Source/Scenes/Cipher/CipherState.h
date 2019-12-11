@@ -39,9 +39,8 @@ public:
 
 	static CipherState* create();
 	static void updateState(CipherState* gameState, StateType newState);
-	void loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode);
+	void loadPuzzleData(CipherPuzzleData* puzzleData);
 	void loadCipherAtIndex(int index);
-	bool isHardModeEnabled();
 
 	StateType stateType;
 	StateType previousStateType;
@@ -78,11 +77,9 @@ protected:
 private:
 	typedef SmartNode super;
 	CipherState();
-	~CipherState();
+	virtual ~CipherState();
 
 	void clearInteraction();
-
-	bool isHardMode;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

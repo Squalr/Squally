@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="16" name="WaterfallGround" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -169,12 +169,13 @@
   </object>
   <object id="694" name="cipher-chest" type="object" x="2235.87" y="3953.12" width="128" height="128">
    <properties>
+    <property name="data-type" value="decimal"/>
     <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="s,w,a,g"/>
+    <property name="inputs" value="l,o,c,k,e,d"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}"/>
-    <property name="tokens-easy" value=""/>
-    <property name="tutorial" value="connect"/>
+    <property name="rule" value="{i}+1"/>
+    <property name="tokens" value="+,1"/>
+    <property name="tutorial" value="addition"/>
    </properties>
   </object>
   <object id="698" name="caged-beaver" type="object" x="7907.39" y="6291.89" width="78.7879" height="88"/>

@@ -7,10 +7,10 @@ class HelpArrow;
 class LocalizedLabel;
 class ClickableTextNode;
 
-class CipherConnectTutorial : public CipherTutorialBase
+class CipherOverflowTutorial : public CipherTutorialBase
 {
 public:
-	static CipherConnectTutorial* create();
+	static CipherOverflowTutorial* create();
 
 	static const std::string MapKeyTutorial;
 
@@ -20,8 +20,8 @@ protected:
 
 private:
 	typedef CipherTutorialBase super;
-	CipherConnectTutorial();
-	virtual ~CipherConnectTutorial();
+	CipherOverflowTutorial();
+	virtual ~CipherOverflowTutorial();
 
 	void onEnter() override;
 	void initializePositions() override;

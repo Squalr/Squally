@@ -28,13 +28,9 @@
 using namespace cocos2d;
 
 const std::string CipherChest::MapKeyCipherChest = "cipher-chest";
-const std::string CipherChest::MapKeyPropertyInputsEasy = "inputs-easy";
-const std::string CipherChest::MapKeyPropertyInputsHard = "inputs-hard";
-const std::string CipherChest::MapKeyPropertyRuleEasy = "rule-easy";
-const std::string CipherChest::MapKeyPropertyRuleHard = "rule-hard";
-const std::string CipherChest::MapKeyPropertyBonusReward = "bonus-reward";
-const std::string CipherChest::MapKeyPropertyTokensEasy = "tokens-easy";
-const std::string CipherChest::MapKeyPropertyTokensHard = "tokens-hard";
+const std::string CipherChest::MapKeyPropertyInputs = "inputs";
+const std::string CipherChest::MapKeyPropertyRule = "rule";
+const std::string CipherChest::MapKeyPropertyTokens = "tokens";
 const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
 
 CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
@@ -103,49 +99,32 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		return (unsigned char)(MathUtils::resolveBinaryMathExpression(expression));
 	};
 
-	std::string easyRule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRuleEasy, Value("")).asString();
-	std::string hardRule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRuleHard, Value("")).asString();
-	std::vector<std::string> easyInputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsEasy, Value("")).asString(), ", ", false
+	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRule, Value("")).asString();
+	std::vector<std::string> inputs = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputs, Value("")).asString(), ", ", false
 	);
-	std::vector<std::string> hardInputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputsHard, Value("")).asString(), ", ", false
-	);
-	std::vector<std::string> easyTokens = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokensEasy, Value("")).asString(), ", ", false
-	);
-	std::vector<std::string> hardTokens = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokensHard, Value("")).asString(), ", ", false
+	std::vector<std::string> tokens = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokens, Value("")).asString(), ", ", false
 	);
 
-	std::string bonusRewards = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyBonusReward, Value("")).asString();
 	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTutorial, Value("")).asString();
-	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy = std::vector<std::tuple<unsigned char, unsigned char>>();
-	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard = std::vector<std::tuple<unsigned char, unsigned char>>();
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap = std::vector<std::tuple<unsigned char, unsigned char>>();
 
-	for (auto it = easyInputs.begin(); it != easyInputs.end(); it++)
+	for (auto it = inputs.begin(); it != inputs.end(); it++)
 	{
 		unsigned char input = getChar(*it);
-		unsigned char output = applyRule(input, easyRule);
+		unsigned char output = applyRule(input, rule);
 
-		inputOutputMapEasy.push_back(std::tuple<unsigned char, unsigned char>(input, output));
+		inputOutputMap.push_back(std::tuple<unsigned char, unsigned char>(input, output));
 	}
 
-	for (auto it = hardInputs.begin(); it != hardInputs.end(); it++)
+	return CipherPuzzleData::create(inputOutputMap, tokens, tutorial, [=](CipherPuzzleData* puzzleData)
 	{
-		unsigned char input = getChar(*it);
-		unsigned char output = applyRule(input, hardRule);
-
-		inputOutputMapHard.push_back(std::tuple<unsigned char, unsigned char>(input, output));
-	}
-
-	return CipherPuzzleData::create(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, bonusRewards, tutorial, [=](CipherPuzzleData* puzzleData, bool isHardModeEnabled)
-	{
-		this->onUnlock(puzzleData, isHardModeEnabled);
+		this->onUnlock(puzzleData);
 	});
 }
 
-void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
+void CipherChest::onUnlock(CipherPuzzleData* puzzleData)
 {
 	this->unlock();
 	this->open();
@@ -155,17 +134,5 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData, bool isHardModeEnabled)
 		return;
 	}
 
-	std::string bonusReward = puzzleData->getBonusReward();
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));
-
-	if (isHardModeEnabled)
-	{
-		PlatformerItemDeserializer::getInstance()->deserialize(InventoryEvents::RequestItemDeserializationArgs(bonusReward, [&](Item* item)
-		{
-			if (item != nullptr)
-			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(item, Strings::Platformer_Notifications_ItemFound::create()));
-			}
-		}));
-	}
 }

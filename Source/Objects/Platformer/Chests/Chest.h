@@ -14,7 +14,7 @@ public:
 
 protected:
 	Chest(cocos2d::ValueMap& properties);
-	~Chest();
+	virtual ~Chest();
 
 	void onEnter() override;
 	void initializePositions() override;

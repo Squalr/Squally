@@ -8,15 +8,12 @@
 using namespace cocos2d;
 
 CipherPuzzleData* CipherPuzzleData::create(
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
-		std::vector<std::string> easyTokens,
-		std::vector<std::string> hardTokens,
-		std::string bonusReward,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
+		std::vector<std::string> tokens,
 		std::string tutorial,
-		std::function<void(CipherPuzzleData*, bool)> onUnlock)
+		std::function<void(CipherPuzzleData*)> onUnlock)
 {
-	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMapEasy, inputOutputMapHard, easyTokens, hardTokens, bonusReward, tutorial, onUnlock);
+	CipherPuzzleData* instance = new CipherPuzzleData(inputOutputMap, tokens, tutorial, onUnlock);
 
 	instance->autorelease();
 
@@ -24,19 +21,13 @@ CipherPuzzleData* CipherPuzzleData::create(
 }
 
 CipherPuzzleData::CipherPuzzleData(
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
-		std::vector<std::string> easyTokens,
-		std::vector<std::string> hardTokens,
-		std::string bonusReward,
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
+		std::vector<std::string> tokens,
 		std::string tutorial,
-		std::function<void(CipherPuzzleData*, bool)> onUnlock)
+		std::function<void(CipherPuzzleData*)> onUnlock)
 {
-	this->inputOutputMapEasy = inputOutputMapEasy;
-	this->inputOutputMapHard = inputOutputMapHard;
-	this->easyTokens = easyTokens;
-	this->hardTokens = hardTokens;
-	this->bonusReward = bonusReward;
+	this->inputOutputMap = inputOutputMap;
+	this->tokens = tokens;
 	this->tutorial = tutorial;
 	this->onUnlock = onUnlock;
 }
@@ -53,44 +44,21 @@ void CipherPuzzleData::initializeListeners()
 CipherPuzzleData* CipherPuzzleData::clone()
 {
 	return CipherPuzzleData::create(
-		this->inputOutputMapEasy,
-		this->inputOutputMapHard,
-		this->easyTokens,
-		this->hardTokens,
-		this->bonusReward,
+		this->inputOutputMap,
+		this->tokens,
 		this->tutorial,
 		this->onUnlock
 	);
 }
 
-bool CipherPuzzleData::hasHardMode()
+std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMap()
 {
-	return !this->inputOutputMapHard.empty();
+	return this->inputOutputMap;
 }
 
-std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapEasy()
+std::vector<std::string> CipherPuzzleData::getTokens()
 {
-	return this->inputOutputMapEasy;
-}
-
-std::vector<std::tuple<unsigned char, unsigned char>> CipherPuzzleData::getInputOutputMapHard()
-{
-	return this->inputOutputMapHard;
-}
-
-std::vector<std::string> CipherPuzzleData::getEasyTokens()
-{
-	return this->easyTokens;
-}
-
-std::vector<std::string> CipherPuzzleData::getHardTokens()
-{
-	return this->hardTokens;
-}
-
-std::string CipherPuzzleData::getBonusReward()
-{
-	return this->bonusReward;
+	return this->tokens;
 }
 
 std::string CipherPuzzleData::getTutorial()
