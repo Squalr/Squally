@@ -33,8 +33,8 @@ CipherShiftLeftTutorial* CipherShiftLeftTutorial::create()
 CipherShiftLeftTutorial::CipherShiftLeftTutorial() : super(CipherState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_ChestsLocked::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
-	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Connect_ThisOneIsEasy::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_ShiftLeft_ShiftLeft::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_ShiftLeft_PropertyOfShl::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
 
 	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();
@@ -143,7 +143,7 @@ void CipherShiftLeftTutorial::runTutorialPartB(CipherState* cipherState)
 
 	std::vector<Node*> focusTargets = std::vector<Node*>();
 	focusTargets.push_back(cipherState->inputContent);
-	focusTargets.push_back(cipherState->outputContent);
+	focusTargets.push_back(cipherState->blockContent);
 	this->focusTakeOver->focus(focusTargets);
 }
 

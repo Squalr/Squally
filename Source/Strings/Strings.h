@@ -1572,6 +1572,98 @@ namespace Strings
 
 namespace Strings
 {
+	class Cipher_Tutorials_Addition_ChangeDataType : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_Addition_ChangeDataType* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_Addition_ChangeDataType();
+		~Cipher_Tutorials_Addition_ChangeDataType();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_Addition_ConnectComponents : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_Addition_ConnectComponents* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_Addition_ConnectComponents();
+		~Cipher_Tutorials_Addition_ConnectComponents();
+	};
+}
+
+namespace Strings
+{
 	class Cipher_Tutorials_Connect_ChestsLocked : public LocalizedString
 	{
 	public:
@@ -1659,6 +1751,236 @@ namespace Strings
 	private:
 		Cipher_Tutorials_Connect_ThisOneIsEasy();
 		~Cipher_Tutorials_Connect_ThisOneIsEasy();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_ExtraTokens_ExtraTokens : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_ExtraTokens_ExtraTokens* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_ExtraTokens_ExtraTokens();
+		~Cipher_Tutorials_ExtraTokens_ExtraTokens();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_Overflow_EightBitNumbers : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_Overflow_EightBitNumbers* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_Overflow_EightBitNumbers();
+		~Cipher_Tutorials_Overflow_EightBitNumbers();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_Overflow_PropertyOf8Bit : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_Overflow_PropertyOf8Bit* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_Overflow_PropertyOf8Bit();
+		~Cipher_Tutorials_Overflow_PropertyOf8Bit();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_ShiftLeft_PropertyOfShl : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_ShiftLeft_PropertyOfShl* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_ShiftLeft_PropertyOfShl();
+		~Cipher_Tutorials_ShiftLeft_PropertyOfShl();
+	};
+}
+
+namespace Strings
+{
+	class Cipher_Tutorials_ShiftLeft_ShiftLeft : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_ShiftLeft_ShiftLeft* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Cipher_Tutorials_ShiftLeft_ShiftLeft();
+		~Cipher_Tutorials_ShiftLeft_ShiftLeft();
 	};
 }
 

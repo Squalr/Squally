@@ -31,11 +31,8 @@ private:
 	void unHijackState(CipherState* cipherState) override;
 
 	void runTutorialPartA(CipherState* cipherState);
-	void runTutorialPartB(CipherState* cipherState);
 
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* introLabel;
-	LocalizedLabel* connectLabel;
 	ClickableTextNode* nextButtonIntro;
-	ClickableTextNode* nextButtonConnect;
 };
