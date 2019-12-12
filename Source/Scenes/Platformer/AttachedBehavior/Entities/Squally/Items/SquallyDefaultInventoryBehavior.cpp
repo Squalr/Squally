@@ -83,8 +83,6 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialMov::create(), false);
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialAdd::create(), false);
-		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialShl::create(), false);
-		entityInventoryBehavior->getEquipmentInventory()->forceInsert(SpecialShr::create(), false);
 
 		entityInventoryBehavior->getInventory()->save();
 		entityInventoryBehavior->getEquipmentInventory()->save();

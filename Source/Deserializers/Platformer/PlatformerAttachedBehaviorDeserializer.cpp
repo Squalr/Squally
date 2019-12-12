@@ -57,6 +57,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[PuzzleBBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleBBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleCBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleCBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleDBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleDBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[ChironHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ChironHexusBehavior::create(owner); };
 		
 	/*********************
 		COMBAT

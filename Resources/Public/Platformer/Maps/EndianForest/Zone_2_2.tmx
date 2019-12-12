@@ -122,7 +122,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="4806.57" y="4523.73" width="199" height="133"/>
-  <object id="729" name="Forest/Flower10" type="decor" x="7172.41" y="4520.97" width="199" height="133"/>
+  <object id="729" name="Forest/Flower10" type="decor" x="6824.41" y="4508.97" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -187,7 +187,7 @@
     <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="829" name="help-totem-hexus-cards" type="object" x="5468" y="4372" width="248" height="248"/>
+  <object id="829" name="help-totem-hexus-cards" type="object" x="5168" y="4376" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -224,10 +224,10 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="827" name="chiron" type="entity" x="6576" y="4492" width="128" height="128">
+  <object id="827" name="chiron" type="entity" x="5972" y="4496" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,look-at-squally"/>
-    <property name="quest" value="temple-door"/>
+    <property name="attached-behavior" value="chiron-hexus,friendly,look-at-squally"/>
+    <property name="quest" value="talk-to-chiron"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>

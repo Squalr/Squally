@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::WinLossTrackIdentifier = "chiron-hexus";
+const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
 
 ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
 {
@@ -27,7 +27,7 @@ ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
@@ -42,7 +42,7 @@ MinMaxPool* ChironHexusBehavior::generateReward()
 
 std::string ChironHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::WinLossTrackIdentifier;
+	return ChironHexusBehavior::MapKeyAttachedBehavior;
 }
 
 std::string ChironHexusBehavior::getBackgroundResource()
@@ -52,9 +52,11 @@ std::string ChironHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> ChironHexusBehavior::generateDeck()
 {
-	return HexusOpponentData::generateDeck(25, 0.07f,
+	return HexusOpponentData::generateDeck(25, 0.08f,
 	{
-		// CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 	});
 }
 
@@ -65,5 +67,5 @@ StateOverride* ChironHexusBehavior::getStateOverride()
 
 std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
 {
-	return { MarcelTutorialIntroSequence::create(), MarcelTutorialClaimVictory::create() };
+	return { };
 }

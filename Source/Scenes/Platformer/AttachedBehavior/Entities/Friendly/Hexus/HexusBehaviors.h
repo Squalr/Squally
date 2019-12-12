@@ -1,0 +1,15 @@
+#pragma once
+
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/MarcelTutorialSkipBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialABehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialBBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialCBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialDBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialEBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialFBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Puzzles/PuzzleABehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Puzzles/PuzzleBBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Puzzles/PuzzleCBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Puzzles/PuzzleDBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/ChironHexusBehavior.h"

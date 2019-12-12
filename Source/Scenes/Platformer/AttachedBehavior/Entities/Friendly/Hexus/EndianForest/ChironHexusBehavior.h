@@ -12,6 +12,8 @@ class ChironHexusBehavior : public HexusBehaviorBase
 public:
 	static ChironHexusBehavior* create(GameObject* owner);
 
+	static const std::string MapKeyAttachedBehavior;
+
 protected:
 	ChironHexusBehavior(GameObject* owner);
 	~ChironHexusBehavior();
@@ -26,5 +28,4 @@ protected:
 private:
 	typedef HexusBehaviorBase super;
 
-	static const std::string WinLossTrackIdentifier;
 };
