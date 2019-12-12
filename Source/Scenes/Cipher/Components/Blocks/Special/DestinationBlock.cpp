@@ -127,8 +127,8 @@ void DestinationBlock::loadDisplayValue()
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
 
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
-	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType, SmartAsciiLabel::Contrast(this->charValue));
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
+	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType, false, SmartAsciiLabel::Contrast(this->charValue));
 	
 	switch(this->displayDataType)
 	{

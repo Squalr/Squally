@@ -152,7 +152,7 @@ void ImmediateBlock::loadDisplayValue()
 	this->spriteDecSelected->setVisible(false);
 	this->spriteHexSelected->setVisible(false);
 
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
 	
 	switch(this->displayDataType)
 	{

@@ -3,11 +3,11 @@
 #include "Engine/SmartNode.h"
 
 #include "Events/CipherEvents.h"
+#include "Engine/Localization/LocalizedLabel.h"
 
 class AsciiLetter;
 class ConstantString;
 class ClickableTextNode;
-class LocalizedLabel;
 
 class SmartAsciiLabel : public SmartNode
 {
@@ -23,7 +23,8 @@ public:
 		Contrast(unsigned char constrastValue) : doContrast(true), constrastValue(constrastValue) { }
 	};
 
-	void loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType, Contrast contrast = Contrast());
+	void setFontSize(LocalizedLabel::FontSize fontSize);
+	void loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType, bool colorize, Contrast contrast = Contrast());
 
 private:
 	typedef SmartNode super;

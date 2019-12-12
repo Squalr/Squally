@@ -112,7 +112,7 @@ void SourceBlock::loadDisplayValue()
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
 	
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
 	
 	switch(this->displayDataType)
 	{

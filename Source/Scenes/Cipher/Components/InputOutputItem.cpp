@@ -1,6 +1,8 @@
 #include "InputOutputItem.h"
 
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Localization/ConstantString.h"
@@ -38,8 +40,8 @@ InputOutputItem::InputOutputItem(unsigned char input, unsigned char output, std:
 	this->failedIcon = Sprite::create(CipherResources::IOFailed);
 	this->passedIcon = Sprite::create(CipherResources::IOCorrect);
 
-	this->inputLabel->loadDisplayValue(this->input, CipherEvents::DisplayDataType::Ascii);
-	this->outputLabel->loadDisplayValue(this->output, CipherEvents::DisplayDataType::Ascii);
+	this->inputLabel->loadDisplayValue(this->input, CipherEvents::DisplayDataType::Ascii, true);
+	this->outputLabel->loadDisplayValue(this->output, CipherEvents::DisplayDataType::Ascii, true);
 
 	this->addChild(this->panel);
 	this->addChild(this->inputLabel);
@@ -83,6 +85,33 @@ void InputOutputItem::initializeListeners()
 			this->selectCallback(this);
 		}
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
+	{
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			switch(args->displayDataType)
+			{
+				case CipherEvents::DisplayDataType::Bin:
+				{
+					this->inputLabel->setFontSize(LocalizedLabel::FontSize::H3);
+					this->outputLabel->setFontSize(LocalizedLabel::FontSize::H3);
+					break;
+				}
+				default:
+				{
+					this->inputLabel->setFontSize(LocalizedLabel::FontSize::H1);
+					this->outputLabel->setFontSize(LocalizedLabel::FontSize::H1);
+					break;
+				}
+			}
+			
+			this->inputLabel->loadDisplayValue(this->input, args->displayDataType, true);
+			this->outputLabel->loadDisplayValue(this->output, args->displayDataType, true);
+		}
+	}));
 }
 
 void InputOutputItem::onAnyStateChange(CipherState* cipherState)

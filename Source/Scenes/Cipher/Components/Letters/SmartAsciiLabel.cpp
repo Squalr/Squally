@@ -8,7 +8,6 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
-#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Cipher/Components/Letters/AsciiLetter.h"
 
@@ -61,11 +60,20 @@ void SmartAsciiLabel::initializeListeners()
 	super::initializeListeners();
 }
 
-void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType, Contrast contrast)
+void SmartAsciiLabel::setFontSize(LocalizedLabel::FontSize fontSize)
+{
+	this->displayLabel->setFontSize(fontSize);
+}
+
+void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::DisplayDataType displayDataType, bool colorize, Contrast contrast)
 {
 	const Color3B DefaultColor = Color3B::WHITE;
 	const Color3B PassingColor = Color3B::GRAY;
 	const Color3B ContrastColor = Color3B::RED;
+	const Color3B BinaryColor = Color3B(35, 150, 255);
+	const Color3B DecimalColor = Color3B(255, 255, 255);
+	const Color3B HexColor = Color3B(78, 149, 66);
+	const Color3B AsciiColor = Color3B(255, 255, 255);
 
 	this->asciiLetterLabel->setVisible(false);
 	this->displayLabel->setVisible(false);
@@ -91,7 +99,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 			}
 			else
 			{
-				this->asciiLetterLabel->setColor(DefaultColor);
+				this->asciiLetterLabel->setColor(colorize ? AsciiColor : DefaultColor);
 			}
 			break;
 		}
@@ -130,7 +138,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 
 					if (letter != nullptr)
 					{
-						letter->setColor(DefaultColor);
+						letter->setColor(colorize ? BinaryColor : DefaultColor);
 					}
 				}
 			}
@@ -177,7 +185,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 
 					if (letter != nullptr)
 					{
-						letter->setColor(DefaultColor);
+						letter->setColor(colorize ? DecimalColor : DefaultColor);
 					}
 				}
 			}
@@ -218,7 +226,7 @@ void SmartAsciiLabel::loadDisplayValue(unsigned char charValue, CipherEvents::Di
 
 					if (letter != nullptr)
 					{
-						letter->setColor(DefaultColor);
+						letter->setColor(colorize ? HexColor : DefaultColor);
 					}
 				}
 			}
