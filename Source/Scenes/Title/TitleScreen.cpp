@@ -200,9 +200,9 @@ void TitleScreen::initializeListeners()
 	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DeveloperScene::getInstance()); });
 }
 
-void TitleScreen::onDeveloperModeEnable()
+void TitleScreen::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->debugButton->setVisible(true);
 }

@@ -43,7 +43,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void enableBack(std::string backPage, bool closeExisting = true);
 	void enableBack(std::string backPageLeft, std::string backPageRight);

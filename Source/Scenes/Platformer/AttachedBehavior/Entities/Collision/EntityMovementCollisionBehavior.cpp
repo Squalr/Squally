@@ -180,7 +180,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		}
 
 		// No collision when not standing on anything, or if already on a different platform
-		if (groundBehavior->isOnGround() && !groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		if (!groundBehavior->isOnGround() || !groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}

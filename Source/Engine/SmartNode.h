@@ -37,7 +37,7 @@ protected:
 	// Instead, put critical exit code in a BeforeSceneChange event listener, or in the destructor.	
 	void onExit() override;
 	void onReenter() override; // Called on parent change
-	virtual void onDeveloperModeEnable();
+	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();
 	virtual void onHackerModeEnable(int hackFlags);
 	virtual void onHackerModeDisable();

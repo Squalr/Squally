@@ -151,9 +151,9 @@ void PointerTraceMap::update(float dt)
 	super::update(dt);
 }
 
-void PointerTraceMap::onDeveloperModeEnable()
+void PointerTraceMap::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->collisionDebugNode->setVisible(true);
 }

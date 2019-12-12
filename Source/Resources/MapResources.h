@@ -12,6 +12,7 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Quests;
+	extern const std::string Dev_Terrain;
 	extern const std::string EndianForest_Forest;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
@@ -37,6 +38,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_2_1;
 	extern const std::string EndianForest_Zone_2_2;
 	extern const std::string EndianForest_Zone_2_3;
+	extern const std::string EndianForest_Zone_2_4;
 	extern const std::string EndianForest_Zone_3_0;
 	extern const std::string EndianForest_Zone_3_1;
 	extern const std::string LambdaCrypts_Crypts;

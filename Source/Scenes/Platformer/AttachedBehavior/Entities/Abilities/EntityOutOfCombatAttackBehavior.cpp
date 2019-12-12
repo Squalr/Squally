@@ -49,9 +49,9 @@ void EntityOutOfCombatAttackBehavior::initializePositions()
 	this->outOfCombatAttackDebug->setPosition(Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f));
 }
 
-void EntityOutOfCombatAttackBehavior::onDeveloperModeEnable()
+void EntityOutOfCombatAttackBehavior::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 }
 
 void EntityOutOfCombatAttackBehavior::onDeveloperModeDisable()

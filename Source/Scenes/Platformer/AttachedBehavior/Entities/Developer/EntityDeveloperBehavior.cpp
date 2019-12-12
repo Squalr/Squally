@@ -56,9 +56,9 @@ void EntityDeveloperBehavior::initializePositions()
 	this->resurrectButton->setPosition(Vec2(64.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 32.0f));
 }
 
-void EntityDeveloperBehavior::onDeveloperModeEnable()
+void EntityDeveloperBehavior::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->resurrectButton->setVisible(true);
 	this->killButton->setVisible(true);

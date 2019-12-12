@@ -151,7 +151,7 @@ private:
 	~GameState();
 
 	void initializePositions() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;

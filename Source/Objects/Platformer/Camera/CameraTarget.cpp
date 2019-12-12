@@ -44,7 +44,7 @@ void CameraTarget::onEnter()
 	super::onEnter();
 }
 
-void CameraTarget::onDeveloperModeEnable()
+void CameraTarget::onDeveloperModeEnable(int debugLevel)
 {
 	this->debugDraw->setVisible(true);
 }

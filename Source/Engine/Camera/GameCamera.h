@@ -48,7 +48,7 @@ private:
 	GameCamera();
 	virtual ~GameCamera();
 	void onEnter() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;

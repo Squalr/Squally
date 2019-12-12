@@ -53,7 +53,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	void update(float) override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 	cocos2d::Node* sprite;

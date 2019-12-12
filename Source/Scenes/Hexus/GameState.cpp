@@ -118,9 +118,9 @@ void GameState::initializePositions()
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
 }
 
-void GameState::onDeveloperModeEnable()
+void GameState::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 

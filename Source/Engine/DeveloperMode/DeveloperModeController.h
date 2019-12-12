@@ -15,6 +15,7 @@ public:
 	static DeveloperModeController* getInstance();
 
 	bool isDeveloperModeEnabled();
+	int getDebugLevel();
 
 private:
 	typedef GlobalNode super;
@@ -23,8 +24,9 @@ private:
 
 	void initializeListeners() override;
 
-	bool developerModeEnabled;
+	int currentDebugLevel;
 
 	static DeveloperModeController* instance;
 	static bool IsDeveloperBuild;
+	static int MaxDebugLevel;
 };

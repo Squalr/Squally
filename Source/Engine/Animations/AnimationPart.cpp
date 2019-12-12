@@ -250,9 +250,9 @@ void AnimationPart::updateTrackedAttributes()
 	this->ghostSprite->setPosition(Vec2::ZERO);
 }
 
-void AnimationPart::onDeveloperModeEnable()
+void AnimationPart::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	if (this->ghostSprite != nullptr)
 	{

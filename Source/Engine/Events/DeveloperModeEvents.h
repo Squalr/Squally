@@ -7,6 +7,13 @@ public:
 	static const std::string EventDeveloperModeModeEnable;
 	static const std::string EventDeveloperModeModeDisable;
 
-	static void TriggerDeveloperModeModeEnable();
+	struct DeveloperModeEnableArgs
+	{
+		int debugLevel;
+
+		DeveloperModeEnableArgs(int debugLevel) : debugLevel(debugLevel) { }
+	};
+
+	static void TriggerDeveloperModeModeEnable(DeveloperModeEnableArgs args);
 	static void TriggerDeveloperModeModeDisable();
 };

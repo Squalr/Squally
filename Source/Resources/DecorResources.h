@@ -288,15 +288,12 @@ namespace DecorResources
 	extern const std::string Forest_Background_BackgroundHill1;
 	extern const std::string Forest_Background_BackgroundHill2;
 	extern const std::string Forest_Background_BackgroundHill3;
-	extern const std::string Forest_Background_Bush1;
-	extern const std::string Forest_Background_Bush2;
 	extern const std::string Forest_Background_Clouds_01;
 	extern const std::string Forest_Background_DarkForestClouds1;
 	extern const std::string Forest_Background_DarkForestClouds2;
 	extern const std::string Forest_Background_DarkForestGround1;
 	extern const std::string Forest_Background_DarkForestGround2;
 	extern const std::string Forest_Background_DarkForestGround3;
-	extern const std::string Forest_Background_DarkForestPlant;
 	extern const std::string Forest_Background_DarkForestRocks;
 	extern const std::string Forest_Background_Forest1;
 	extern const std::string Forest_Background_Forest2;
@@ -348,6 +345,9 @@ namespace DecorResources
 	extern const std::string Forest_Bush2;
 	extern const std::string Forest_Bush3;
 	extern const std::string Forest_Bush4;
+	extern const std::string Forest_Bush5;
+	extern const std::string Forest_Bush6;
+	extern const std::string Forest_DarkForestPlant;
 	extern const std::string Forest_Flower10;
 	extern const std::string Forest_Flower11;
 	extern const std::string Forest_Flower12;

@@ -135,9 +135,9 @@ void LexiconPage::initializeListeners()
     }));
 }
 
-void LexiconPage::onDeveloperModeEnable()
+void LexiconPage::onDeveloperModeEnable(int debugLevel)
 {
-    super::onDeveloperModeEnable();
+    super::onDeveloperModeEnable(debugLevel);
 
     this->debugDrawNode->setVisible(true);
 }

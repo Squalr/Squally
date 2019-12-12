@@ -131,9 +131,9 @@ void Portal::initializeListeners()
 	});
 }
 
-void Portal::onDeveloperModeEnable()
+void Portal::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 	
 	this->lockButton->setVisible(true);
 	this->unlockButton->setVisible(true);

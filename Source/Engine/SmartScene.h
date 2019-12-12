@@ -39,7 +39,7 @@ protected:
 	void pause() override;
 	void onEnter() override;
 	void onExit() override;
-	virtual void onDeveloperModeEnable();
+	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();
 	virtual void onHackerModeEnable(int hackFlags);
 	virtual void onHackerModeDisable();

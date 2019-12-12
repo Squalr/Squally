@@ -83,7 +83,7 @@ void CameraStop::update(float dt)
 	}
 }
 
-void CameraStop::onDeveloperModeEnable()
+void CameraStop::onDeveloperModeEnable(int debugLevel)
 {
 	this->debugDraw->setVisible(true);
 }

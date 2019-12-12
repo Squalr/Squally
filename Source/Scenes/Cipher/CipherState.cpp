@@ -137,16 +137,16 @@ void CipherState::initializeListeners()
 	}));
 }
 
-void CipherState::onDeveloperModeEnable()
+void CipherState::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->gameAreaDebug->setVisible(true);
 }
 
 void CipherState::onDeveloperModeDisable()
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeDisable();
 
 	this->gameAreaDebug->setVisible(false);
 }

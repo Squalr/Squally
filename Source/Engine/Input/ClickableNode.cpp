@@ -181,9 +181,9 @@ void ClickableNode::setContentSize(const Size & size)
 	this->setDebugDrawPosition();
 }
 
-void ClickableNode::onDeveloperModeEnable()
+void ClickableNode::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->debugHitbox->setVisible(true);
 }

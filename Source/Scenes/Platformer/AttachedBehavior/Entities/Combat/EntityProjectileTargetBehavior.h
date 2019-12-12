@@ -22,7 +22,7 @@ protected:
 	EntityProjectileTargetBehavior(GameObject* owner);
 	~EntityProjectileTargetBehavior();
 
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onLoad() override;
 	void initializePositions() override;

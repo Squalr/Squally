@@ -56,9 +56,9 @@ void SmartClippingNode::onEnter()
 	super::onEnter();
 }
 
-void SmartClippingNode::onDeveloperModeEnable()
+void SmartClippingNode::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->stencil->setOpacity(255);
 }

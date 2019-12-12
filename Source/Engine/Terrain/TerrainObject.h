@@ -138,7 +138,7 @@ protected:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
 
@@ -194,7 +194,7 @@ private:
 	cocos2d::Node* topsNode;
 	cocos2d::Node* connectorsNode;
 	cocos2d::Node* topCornersNode;
-	cocos2d::Node* debugNode;
+	cocos2d::Node* debugLevel2Node;
 
 	static const float ShadowDistance;
 	static const float InfillDistance;

@@ -25,7 +25,7 @@ private:
 	virtual ~CameraTarget();
 
 	void onEnter() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 	cocos2d::DrawNode* debugDraw;

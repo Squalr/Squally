@@ -43,16 +43,16 @@ DebugDisplay::~DebugDisplay()
 {
 }
 
-void DebugDisplay::onDeveloperModeEnable()
+void DebugDisplay::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->setVisible(true);
 }
 
 void DebugDisplay::onDeveloperModeDisable()
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeDisable();
 
 	this->setVisible(false);
 }

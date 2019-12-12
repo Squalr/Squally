@@ -92,9 +92,9 @@ void GameCamera::onEnter()
 	this->scheduleUpdate();
 }
 
-void GameCamera::onDeveloperModeEnable()
+void GameCamera::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->updateCameraDebugLabels();
 	this->debugScrollHitbox->enableInteraction();
@@ -103,7 +103,7 @@ void GameCamera::onDeveloperModeEnable()
 
 void GameCamera::onDeveloperModeDisable()
 {
-	GameCamera::onDeveloperModeEnable();
+	super::onDeveloperModeDisable();
 
 	this->debugScrollHitbox->disableInteraction();
 	this->hud->setVisible(false);

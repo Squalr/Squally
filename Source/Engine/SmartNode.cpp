@@ -54,7 +54,7 @@ void SmartNode::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}
 	else
 	{
@@ -90,12 +90,17 @@ void SmartNode::initializeListeners()
 		this->removeAllListeners();
 	}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* eventCustom)
 	{
-		this->onDeveloperModeEnable();
+		DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->onDeveloperModeEnable(args->debugLevel);
+		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* eventCustom)
 	{
 		this->onDeveloperModeDisable();
 	}));
@@ -116,7 +121,7 @@ void SmartNode::initializeListeners()
 	}));
 }
 
-void SmartNode::onDeveloperModeEnable()
+void SmartNode::onDeveloperModeEnable(int debugLevel)
 {
 }
 

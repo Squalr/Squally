@@ -47,6 +47,7 @@ DeveloperScene::DeveloperScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
+	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
 	this->chapterList.push_back(this->buildDebugButton("Town", MapResources::EndianForest_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_1 (EF)", MapResources::EndianForest_Zone_3_1));

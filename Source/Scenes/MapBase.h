@@ -37,7 +37,7 @@ protected:
 	void resume() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;

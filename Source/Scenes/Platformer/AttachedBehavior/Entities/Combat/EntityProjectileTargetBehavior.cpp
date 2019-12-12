@@ -38,9 +38,9 @@ EntityProjectileTargetBehavior::~EntityProjectileTargetBehavior()
 {
 }
 
-void EntityProjectileTargetBehavior::onDeveloperModeEnable()
+void EntityProjectileTargetBehavior::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->projectileTarget->setVisible(true);
 }

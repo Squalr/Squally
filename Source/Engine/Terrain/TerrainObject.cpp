@@ -61,10 +61,10 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topsNode = Node::create();
 	this->connectorsNode = Node::create();
 	this->topCornersNode = Node::create();
-	this->debugNode = Node::create();
+	this->debugLevel2Node = Node::create();
 	this->boundsRect = Rect::ZERO;
 
-	this->debugNode->setVisible(false);
+	this->debugLevel2Node->setVisible(false);
 
 	this->addChild(this->collisionNode);
 	this->addChild(this->infillTexturesNode);
@@ -77,7 +77,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->addChild(this->connectorsNode);
 	this->addChild(this->bottomCornersNode);
 	this->addChild(this->topCornersNode);
-	this->addChild(this->debugNode);
+	this->addChild(this->debugLevel2Node);
 
 	this->initResources();
 	this->setPoints(this->polylinePoints);
@@ -107,14 +107,17 @@ void TerrainObject::onEnterTransitionDidFinish()
 	this->buildCollision();
 }
 
-void TerrainObject::onDeveloperModeEnable()
+void TerrainObject::onDeveloperModeEnable(int debugLevel)
 {
-	this->debugNode->setVisible(true);
+	if (debugLevel >= 2)
+	{
+		this->debugLevel2Node->setVisible(true);
+	}
 }
 
 void TerrainObject::onDeveloperModeDisable()
 {
-	this->debugNode->setVisible(false);
+	this->debugLevel2Node->setVisible(false);
 }
 
 void TerrainObject::initializeListeners()
@@ -188,7 +191,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 
 void TerrainObject::rebuildTerrain(TerrainData terrainData)
 {
-	this->debugNode->removeAllChildren();
+	this->debugLevel2Node->removeAllChildren();
 
 	this->buildInnerTextures();
 
@@ -452,7 +455,7 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float segmentLength = source.distance(dest);
-		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugNode);
+		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugLevel2Node);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->textureTriangles);
 		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->textureTriangles);
@@ -486,8 +489,8 @@ void TerrainObject::buildSurfaceTextures()
 		angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
 		bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
 
-		this->debugNode->addChild(angleDebug);
-		this->debugNode->addChild(bisectingAngleDebug);
+		this->debugLevel2Node->addChild(angleDebug);
+		this->debugLevel2Node->addChild(bisectingAngleDebug);
 
 		if (this->isTopAngle(normalAngle))
 		{
@@ -577,7 +580,7 @@ void TerrainObject::buildSurfaceTextures()
 			LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
 			concavityLabel->setTextColor(Color4B::MAGENTA);
 			concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
-			this->debugNode->addChild(concavityLabel);
+			this->debugLevel2Node->addChild(concavityLabel);
 			
 			switch (concavity)
 			{

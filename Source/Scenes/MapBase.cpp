@@ -262,7 +262,7 @@ bool MapBase::loadMap(std::string mapResource)
 	return false;
 }
 
-void MapBase::onDeveloperModeEnable()
+void MapBase::onDeveloperModeEnable(int debugLevel)
 {
 	if (this->map != nullptr)
 	{

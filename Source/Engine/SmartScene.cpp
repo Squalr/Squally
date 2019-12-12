@@ -75,7 +75,7 @@ void SmartScene::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}
 	else
 	{
@@ -100,7 +100,7 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
@@ -124,7 +124,7 @@ void SmartScene::initializeListeners()
 	}));
 }
 
-void SmartScene::onDeveloperModeEnable()
+void SmartScene::onDeveloperModeEnable(int debugLevel)
 {
 }
 
