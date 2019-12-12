@@ -31,6 +31,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
+	this->currentAnimation = "";
 
 	this->addChild(this->animationNode);
 }
@@ -70,6 +71,7 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			this->initialized = true;
 			this->entity->setCurrentTime(0.0f);
 			this->entity->setCurrentAnimation(animationName, blendTime);
+			this->currentAnimation = animationName;
 		}
 
 		switch (animationPlayMode)
@@ -152,6 +154,11 @@ bool SmartAnimationNode::getFlippedX()
 bool SmartAnimationNode::getFlippedY()
 {
 	return this->animationNode->getFlippedY();
+}
+
+std::string SmartAnimationNode::getCurrentAnimation()
+{
+	return this->currentAnimation;
 }
 
 std::string SmartAnimationNode::getAnimationResource()

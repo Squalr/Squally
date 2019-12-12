@@ -37,6 +37,7 @@ public:
 	void setFlippedY(bool flippedY);
 	bool getFlippedX();
 	bool getFlippedY();
+	std::string getCurrentAnimation();
 	std::string getAnimationResource();
 
 	static const std::string DefaultAnimationEntityName;
@@ -54,5 +55,6 @@ private:
 	bool initialized;
 	float currentAnimationPriority;
 	std::map<std::string, AnimationPart*> animationParts;
+	std::string currentAnimation;
 	std::string animationResource;
 };
