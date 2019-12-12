@@ -2,7 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/EmptyPool.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -37,7 +37,7 @@ TutorialBBehavior::~TutorialBBehavior()
 
 MinMaxPool* TutorialBBehavior::generateReward()
 {
-	return nullptr;
+	return EmptyPool::create();
 }
 
 std::string TutorialBBehavior::getWinLossSaveKey()

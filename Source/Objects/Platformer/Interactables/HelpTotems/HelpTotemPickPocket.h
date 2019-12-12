@@ -13,8 +13,6 @@ protected:
 	HelpTotemPickPocket(cocos2d::ValueMap& properties);
 	~HelpTotemPickPocket();
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef HelpTotem super;

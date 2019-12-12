@@ -69,6 +69,8 @@ void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, Platformer
 	
 	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
+		potion->setPhysicsEnabled(false);
+
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 		if (entity != nullptr)

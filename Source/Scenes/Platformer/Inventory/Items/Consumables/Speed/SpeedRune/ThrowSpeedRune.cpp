@@ -68,6 +68,8 @@ void ThrowSpeedRune::generateProjectiles(PlatformerEntity* owner, PlatformerEnti
 	
 	rune->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
+		rune->setPhysicsEnabled(false);
+
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 		if (entity != nullptr)

@@ -53,13 +53,3 @@ void HelpTotemPickPocket::onEnter()
 		this->deactivate();
 	}
 }
-
-void HelpTotemPickPocket::initializePositions()
-{
-	super::initializePositions();
-}
-
-void HelpTotemPickPocket::initializeListeners()
-{
-	super::initializeListeners();
-}

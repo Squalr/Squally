@@ -12,9 +12,6 @@ public:
 protected:
 	HelpTotemHacking(cocos2d::ValueMap& properties);
 	~HelpTotemHacking();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef HelpTotem super;

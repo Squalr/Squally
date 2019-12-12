@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -37,7 +38,7 @@ PuzzleCBehavior::~PuzzleCBehavior()
 
 MinMaxPool* PuzzleCBehavior::generateReward()
 {
-	return nullptr;
+	return HexusPoolEFGeneric::create();
 }
 
 std::string PuzzleCBehavior::getWinLossSaveKey()
@@ -83,8 +84,7 @@ StateOverride* PuzzleCBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Kill),
-			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -94,13 +94,12 @@ StateOverride* PuzzleCBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -115,19 +114,18 @@ StateOverride* PuzzleCBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 		}
 	);
 }
 
 std::vector<TutorialBase*> PuzzleCBehavior::getTutorials()
 {
-	return { };
+	return { TutorialPuzzleC::create() };
 }

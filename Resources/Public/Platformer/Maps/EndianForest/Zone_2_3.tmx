@@ -311,13 +311,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="932" name="life-stone" type="object" x="3823" y="2792.5" width="146" height="423"/>
-  <object id="940" name="goblin-warrior-pig" type="entity" x="3508" y="3076" width="128" height="128">
+  <object id="940" name="goblin-warrior-pig" type="entity" x="4228" y="3080" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,puzzle-C"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="941" name="orc-swordsman" type="entity" x="4220" y="3076" width="128" height="128">
+  <object id="941" name="orc-swordsman" type="entity" x="3404" y="3080" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,puzzle-D"/>
     <property name="scale" type="float" value="0.75"/>

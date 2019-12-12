@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="829">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="830">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -159,13 +159,13 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="819" name="add-door" type="object" x="6056" y="3852.5" width="696" height="775">
+  <object id="819" name="add-door" type="object" x="7152" y="3840.5" width="696" height="775">
    <properties>
     <property name="map" value="EndianForest/Zone_2_3"/>
     <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="822" name="spawn" type="object" x="6327.88" y="4489.82" width="128" height="128">
+  <object id="822" name="spawn" type="object" x="7423.88" y="4477.82" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
    </properties>
@@ -187,6 +187,7 @@
     <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="829" name="help-totem-hexus-cards" type="object" x="5468" y="4372" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -223,7 +224,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="827" name="chiron" type="entity" x="5500" y="4492" width="128" height="128">
+  <object id="827" name="chiron" type="entity" x="6576" y="4492" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,look-at-squally"/>
     <property name="quest" value="temple-door"/>

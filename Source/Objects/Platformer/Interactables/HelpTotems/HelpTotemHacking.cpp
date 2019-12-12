@@ -42,18 +42,3 @@ HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 HelpTotemHacking::~HelpTotemHacking()
 {
 }
-
-void HelpTotemHacking::onEnter()
-{
-	super::onEnter();
-}
-
-void HelpTotemHacking::initializePositions()
-{
-	super::initializePositions();
-}
-
-void HelpTotemHacking::initializeListeners()
-{
-	super::initializeListeners();
-}

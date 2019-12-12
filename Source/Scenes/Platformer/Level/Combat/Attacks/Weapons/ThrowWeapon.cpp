@@ -54,6 +54,8 @@ void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity*
 	
 	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
+		weapon->setPhysicsEnabled(false);
+		
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 		if (entity != nullptr)

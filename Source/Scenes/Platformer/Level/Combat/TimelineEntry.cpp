@@ -258,7 +258,7 @@ void TimelineEntry::performCast()
 	));
 
 	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			this->isCasting = false;

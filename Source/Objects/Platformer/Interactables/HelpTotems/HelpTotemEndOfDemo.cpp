@@ -34,18 +34,3 @@ HelpTotemEndOfDemo::HelpTotemEndOfDemo(ValueMap& properties) : super(properties)
 HelpTotemEndOfDemo::~HelpTotemEndOfDemo()
 {
 }
-
-void HelpTotemEndOfDemo::onEnter()
-{
-	super::onEnter();
-}
-
-void HelpTotemEndOfDemo::initializePositions()
-{
-	super::initializePositions();
-}
-
-void HelpTotemEndOfDemo::initializeListeners()
-{
-	super::initializeListeners();
-}

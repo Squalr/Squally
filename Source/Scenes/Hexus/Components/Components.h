@@ -37,4 +37,6 @@
 #include "Scenes/Hexus/Components/Tutorials/TutorialDIntroSequence.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialEIntroSequence.h"
 #include "Scenes/Hexus/Components/Tutorials/TutorialFIntroSequence.h"
-#include "Scenes/Hexus/Components/Tutorials/TutorialPuzzleB.h"
+#include "Scenes/Hexus/Components/Tutorials/Puzzles/TutorialPuzzleB.h"
+#include "Scenes/Hexus/Components/Tutorials/Puzzles/TutorialPuzzleC.h"
+#include "Scenes/Hexus/Components/Tutorials/Puzzles/TutorialPuzzleD.h"

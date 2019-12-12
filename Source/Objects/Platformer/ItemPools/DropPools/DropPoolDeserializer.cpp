@@ -22,7 +22,8 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 	
-	this->deserializers[DropPoolError::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolError::create(properties); };
+	this->deserializers[EmptyPool::PoolName] = [=](ValueMap properties) { return (GameObject*)EmptyPool::create(); };
+	this->deserializers[ErrorPool::PoolName] = [=](ValueMap properties) { return (GameObject*)ErrorPool::create(); };
 
 	// Endian forest drop pools
 	this->deserializers[DropPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGeneric::create(properties); };

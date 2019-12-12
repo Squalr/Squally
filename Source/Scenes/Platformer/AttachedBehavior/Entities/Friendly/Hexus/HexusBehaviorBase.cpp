@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -153,11 +154,13 @@ void HexusBehaviorBase::registerDrawCallback(std::function<void()> drawCallback)
 void HexusBehaviorBase::onLoad()
 {
 	this->rewardPool = this->generateReward();
-
-	if (this->rewardPool != nullptr)
+	
+	if (this->rewardPool == nullptr)
 	{
-		this->addChild(this->rewardPool);
+		this->rewardPool = ErrorPool::create();
 	}
+
+	this->addChild(this->rewardPool);
 
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{

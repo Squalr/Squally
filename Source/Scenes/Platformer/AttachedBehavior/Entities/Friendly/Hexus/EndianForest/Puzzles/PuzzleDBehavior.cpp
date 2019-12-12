@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
@@ -37,7 +38,7 @@ PuzzleDBehavior::~PuzzleDBehavior()
 
 MinMaxPool* PuzzleDBehavior::generateReward()
 {
-	return nullptr;
+	return HexusPoolEFGeneric::create();
 }
 
 std::string PuzzleDBehavior::getWinLossSaveKey()
@@ -83,6 +84,7 @@ StateOverride* PuzzleDBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 		},
 		// Enemy hand
@@ -98,35 +100,35 @@ StateOverride* PuzzleDBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		}
 	);
 }
 
 std::vector<TutorialBase*> PuzzleDBehavior::getTutorials()
 {
-	return { };
+	return { TutorialPuzzleD::create() };
 }

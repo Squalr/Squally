@@ -459,6 +459,11 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 
 bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
+	if (this->physicsBody != nullptr && !this->physicsBody->isEnabled())
+	{
+		return false;
+	}
+
 	CollisionResult result = defaultResult;
 
 	if (collisionData.other != nullptr && this->isWithinZThreshold(contact, collisionData))

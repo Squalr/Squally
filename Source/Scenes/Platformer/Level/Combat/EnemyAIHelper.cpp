@@ -129,8 +129,9 @@ void EnemyAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	{
 		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
 		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
 
-		if (maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
+		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
 		{
 			hasWeakAlly = true;
 		}

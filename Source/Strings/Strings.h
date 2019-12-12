@@ -13394,6 +13394,98 @@ namespace Strings
 
 namespace Strings
 {
+	class Hexus_Tutorials_PuzzleC_A_Overflow : public LocalizedString
+	{
+	public:
+		static Hexus_Tutorials_PuzzleC_A_Overflow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_Tutorials_PuzzleC_A_Overflow();
+		~Hexus_Tutorials_PuzzleC_A_Overflow();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_Tutorials_PuzzleD_A_Order : public LocalizedString
+	{
+	public:
+		static Hexus_Tutorials_PuzzleD_A_Order* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_Tutorials_PuzzleD_A_Order();
+		~Hexus_Tutorials_PuzzleD_A_Order();
+	};
+}
+
+namespace Strings
+{
 	class Input_Shift : public LocalizedString
 	{
 	public:
@@ -56082,6 +56174,52 @@ namespace Strings
 
 namespace Strings
 {
+	class Platformer_Help_HelpTotemHexusCards : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemHexusCards* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Help_HelpTotemHexusCards();
+		~Platformer_Help_HelpTotemHexusCards();
+	};
+}
+
+namespace Strings
+{
 	class Platformer_Help_HelpTotemPickPocket : public LocalizedString
 	{
 	public:
@@ -56123,98 +56261,6 @@ namespace Strings
 	private:
 		Platformer_Help_HelpTotemPickPocket();
 		~Platformer_Help_HelpTotemPickPocket();
-	};
-}
-
-namespace Strings
-{
-	class Platformer_Help_HelpTotemRequiredLevel : public LocalizedString
-	{
-	public:
-		static Platformer_Help_HelpTotemRequiredLevel* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Help_HelpTotemRequiredLevel();
-		~Platformer_Help_HelpTotemRequiredLevel();
-	};
-}
-
-namespace Strings
-{
-	class Platformer_Help_HelpTotemSelfHack : public LocalizedString
-	{
-	public:
-		static Platformer_Help_HelpTotemSelfHack* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Help_HelpTotemSelfHack();
-		~Platformer_Help_HelpTotemSelfHack();
 	};
 }
 
