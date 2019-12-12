@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityHeadCollisionBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -191,14 +192,25 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
+		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
 
-		if (groundBehavior == nullptr)
+		if (groundBehavior == nullptr || headBehavior == nullptr)
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		if (groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		if (!headBehavior->hasHeadCollisionWith(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
 		// No collision when not standing on anything, or if already on a different platform
-		if (!groundBehavior->isOnGround() || groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		if (!groundBehavior->isOnGround())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}

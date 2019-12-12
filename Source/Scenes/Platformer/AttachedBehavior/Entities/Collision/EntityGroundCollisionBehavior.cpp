@@ -53,7 +53,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 
 		if (this->entity->isFlippedY())
 		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
 			this->groundCollision->inverseGravity();
 			this->groundCollision->getPhysicsBody()->setPositionOffset(offset);
 		}
@@ -108,16 +108,15 @@ bool EntityGroundCollisionBehavior::isOnGround()
 bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)
 {
 	Node* currentCollisionGroup = collisonObject->getParent();
-	std::vector<CollisionObject*> groundCollisions = this->groundCollision->getCurrentCollisions();
 
 	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
-	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
+	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
-		switch((*it)->getCollisionType())
+		switch(next->getCollisionType())
 		{
 			case (int)EngineCollisionTypes::Intersection:
 			{
-				return currentCollisionGroup == (*it)->getParent();
+				return currentCollisionGroup == next->getParent();
 			}
 			default:
 			{
@@ -127,15 +126,15 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	}
 
 	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
-	for (auto it = groundCollisions.begin(); it != groundCollisions.end(); it++)
+	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
-		switch((*it)->getCollisionType())
+		switch(next->getCollisionType())
 		{
 			case (int)PlatformerCollisionType::Solid:
 			case (int)PlatformerCollisionType::PassThrough:
 			{
 				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
-				if ((*it)->getParent() != currentCollisionGroup)
+				if (next->getParent() != currentCollisionGroup)
 				{
 					return true;
 				}

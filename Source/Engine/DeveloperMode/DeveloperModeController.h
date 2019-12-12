@@ -16,6 +16,8 @@ public:
 
 	bool isDeveloperModeEnabled();
 	int getDebugLevel();
+	
+	static bool IsDeveloperBuild;
 
 private:
 	typedef GlobalNode super;
@@ -27,6 +29,5 @@ private:
 	int currentDebugLevel;
 
 	static DeveloperModeController* instance;
-	static bool IsDeveloperBuild;
 	static int MaxDebugLevel;
 };

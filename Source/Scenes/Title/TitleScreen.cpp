@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
@@ -128,7 +129,10 @@ TitleScreen::TitleScreen()
 	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
 
-	this->debugButton->setVisible(false);
+	if (!DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugButton->setVisible(false);
+	}
 
 	this->addChild(this->background);
 	this->addChild(this->ether);
@@ -198,18 +202,4 @@ void TitleScreen::initializeListeners()
 	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(OptionsScene::getInstance()); });
 	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { Director::getInstance()->end(); });
 	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DeveloperScene::getInstance()); });
-}
-
-void TitleScreen::onDeveloperModeEnable(int debugLevel)
-{
-	super::onDeveloperModeEnable(debugLevel);
-
-	this->debugButton->setVisible(true);
-}
-
-void TitleScreen::onDeveloperModeDisable()
-{
-	super::onDeveloperModeDisable();
-
-	this->debugButton->setVisible(false);
 }

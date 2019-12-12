@@ -228,49 +228,43 @@
    </properties>
   </object>
   <object id="732" name="life-stone" type="object" x="4098.9" y="2389.43" width="146" height="423"/>
-  <object id="734" name="wind" type="object" x="3165.48" y="2815" width="380" height="480">
+  <object id="734" name="wind" type="object" x="3173.48" y="2679" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="735" name="wind" type="object" x="3177.1" y="3288.43" width="380" height="480">
+  <object id="735" name="wind" type="object" x="3185.1" y="3152.43" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="736" name="wind" type="object" x="3180.42" y="3761.85" width="380" height="480">
+  <object id="736" name="wind" type="object" x="3188.42" y="3625.85" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
-  <object id="739" name="wind" type="object" x="3173.89" y="2343.22" width="380" height="480">
+  <object id="739" name="wind" type="object" x="3181.89" y="2207.22" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="740" name="wind" type="object" x="3153.98" y="1397.4" width="380" height="480">
+  <object id="740" name="wind" type="object" x="3161.98" y="1261.4" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="741" name="wind" type="object" x="3165.6" y="1870.83" width="380" height="480">
+  <object id="741" name="wind" type="object" x="3173.6" y="1734.83" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="742" name="wind" type="object" x="3162.39" y="925.62" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="744" name="wind" type="object" x="3166.16" y="455.294" width="380" height="480">
+  <object id="742" name="wind" type="object" x="3170.39" y="789.62" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
