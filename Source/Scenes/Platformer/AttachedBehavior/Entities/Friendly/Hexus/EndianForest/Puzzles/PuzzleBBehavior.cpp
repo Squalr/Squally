@@ -93,7 +93,8 @@ StateOverride* PuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
@@ -103,7 +104,7 @@ StateOverride* PuzzleBBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
@@ -118,12 +119,12 @@ StateOverride* PuzzleBBehavior::getStateOverride()
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 		}
 	);
 }
 
 std::vector<TutorialBase*> PuzzleBBehavior::getTutorials()
 {
-	return { };
+	return { TutorialPuzzleB::create() };
 }

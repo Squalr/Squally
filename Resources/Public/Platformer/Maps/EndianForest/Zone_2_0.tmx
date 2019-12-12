@@ -113,9 +113,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="1230.21" y="4972.82" width="199" height="133"/>
-  <object id="729" name="Forest/Flower10" type="decor" x="4001.38" y="4465.82" width="199" height="133"/>
-  <object id="730" name="Forest/Flower10" type="decor" x="4917.83" y="2663.82" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1203.91" y="5015" width="199" height="133"/>
+  <object id="729" name="Forest/Flower10" type="decor" x="4017.38" y="4515.82" width="199" height="133"/>
+  <object id="730" name="Forest/Flower10" type="decor" x="4941.83" y="2703.82" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -270,7 +270,11 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="746" name="camera-stop" type="object" x="5839.01" y="224.038" width="128" height="600"/>
+  <object id="746" name="camera-stop" type="object" x="5839.01" y="224.038" width="128" height="600">
+   <properties>
+    <property name="no-y" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

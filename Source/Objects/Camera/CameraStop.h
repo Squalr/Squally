@@ -13,6 +13,9 @@ public:
 	static CameraStop* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKeyCameraStop;
+	static const std::string MapKeyPropertySoft;
+	static const std::string MapKeyPropertyNoX;
+	static const std::string MapKeyPropertyNoY;
 
 private:
 	typedef GameObject super;
@@ -23,6 +26,10 @@ private:
 	void update(float dt) override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
+
+	bool soft;
+	bool noX;
+	bool noY;
 
 	cocos2d::DrawNode* debugDraw;
 	cocos2d::Size stopSize;

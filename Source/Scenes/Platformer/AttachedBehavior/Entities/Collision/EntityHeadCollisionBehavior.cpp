@@ -52,13 +52,13 @@ EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : su
 
 		if (this->entity->isFlippedY())
 		{
-			Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 3.0f);
+			Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 			this->headCollision->inverseGravity();
 			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
 		}
 		else
 		{
-			Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 3.0f);
+			Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
 		}
 		

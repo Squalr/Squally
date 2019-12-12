@@ -180,13 +180,15 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		// No collision when not standing on anything, or if already on a different platform
+		// Collide in these two cases:
+		//	- Not on the ground
+		//	- On the ground, but standing on a different platform (ie not standing on the roof, which can happen if they glitch through the ground)
 		if (!groundBehavior->isOnGround() || !groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 	
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="828">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="829">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -121,8 +121,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="4805.24" y="4505.06" width="199" height="133"/>
-  <object id="729" name="Forest/Flower10" type="decor" x="7169.74" y="4499.64" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="4806.57" y="4523.73" width="199" height="133"/>
+  <object id="729" name="Forest/Flower10" type="decor" x="7172.41" y="4520.97" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -181,6 +181,12 @@
     <property name="transition" value="exit-B"/>
    </properties>
   </object>
+  <object id="828" name="camera-stop" type="object" x="5236" y="4752" width="2944" height="1008">
+   <properties>
+    <property name="no-x" type="bool" value="true"/>
+    <property name="soft" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -219,7 +225,7 @@
   </object>
   <object id="827" name="chiron" type="entity" x="5500" y="4492" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="attached-behavior" value="friendly,look-at-squally"/>
     <property name="quest" value="temple-door"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>

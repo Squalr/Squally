@@ -173,7 +173,8 @@ void TalkToQueen::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create(),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create()
+				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create() }),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -198,7 +199,8 @@ void TalkToQueen::setPostText()
 		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create(),
+				Strings::Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards::create()
+					->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
