@@ -9,58 +9,6 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="18" name="decor background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="19" name="objects background">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain 2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
@@ -137,11 +85,6 @@
   <object id="815" name="trail" type="terrain" x="-16.6014" y="16439.9">
    <polygon points="84.8485,-3.0303 460.626,-0.405125 828.612,415.285 1196.63,-1.05244 1536.61,122.663 1908.6,-1.67864 2316.6,329.97 2740.59,-2.41038 3136.59,-2.75866 3588.59,-235.139 4100.61,-3.60653 6469.32,-16.2023 7224.61,-20.2187 7676.6,-560.592 8172.6,-21.0524 8344.61,-21.457 8345.56,-149.147 8475.44,-148.837 8475.14,-276.24 8600.49,-275.876 8602.11,-404.563 8728.2,-404.39 8730.81,-532.823 8986.78,-532.971 8985.6,-405.72 9113.26,-406.027 9113.96,-275.838 9242.95,-275.728 9243.18,-150.091 9370.6,-148.14 9369.6,-21.3576 10009.3,-21.7267 10905.3,-46.2437 11797.3,-22.7584 12953.3,-95.4278 13973.3,-24.014 15073.3,-136.573 16026.2,-25.1986 16027.6,1517.98 15129.3,1626.1 13981.3,1518.26 12957.3,1590.4 11797.3,1518.56 10909.3,1550.67 10013.3,1518.8 9369.77,1518.89 9369.24,1645.82 9241.25,1646.02 9241.18,1773.62 9112.84,1773.4 9112.94,1902.01 8985.7,1900.88 8985.02,2029.8 8729.26,2029.83 8729.2,1902.2 8601.09,1901.77 8600.89,1773.22 8473.43,1773.81 8473.53,1645.87 8345.17,1645.99 8344.84,1516.69 8134.54,1516.27 7702.54,2012.75 7235.87,1527.51 6485.2,1531.12 4041.2,1542.86 3592.71,1727.32 3144.24,1542.1 2753.31,1541.77 2316.96,1189.92 1941.2,1541.09 1553.33,1340.74 1192.75,1540.45 844.271,1030.83 456.361,1536.27 85.4569,1535.52"/>
   </object>
- </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -581,11 +524,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
@@ -602,33 +540,5 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="28" name="fireflies">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects_foreground">
-  <properties>
-   <property name="is-elevate-target" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
  </objectgroup>
 </map>

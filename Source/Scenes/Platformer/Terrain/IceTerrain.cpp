@@ -28,10 +28,10 @@ IceTerrain::IceTerrain(ValueMap& properties) : super(
 		TerrainResources::Ice_TopLeft,
 		TerrainResources::Ice_TopRight,
 		TerrainResources::Ice_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Ice_TopConnectorConcave,
+		TerrainResources::Ice_TopConnectorConcaveDeep,
+		TerrainResources::Ice_TopConnectorConvex,
+		TerrainResources::Ice_TopConnectorConvexDeep,
 		TerrainResources::Ice_Bottom,
 		TerrainResources::Ice_BottomLeft,
 		TerrainResources::Ice_BottomRight,
@@ -59,13 +59,13 @@ IceTerrain::IceTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

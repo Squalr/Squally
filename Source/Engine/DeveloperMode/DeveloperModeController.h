@@ -19,12 +19,15 @@ public:
 	
 	static bool IsDeveloperBuild;
 
-private:
-	typedef GlobalNode super;
+protected:
 	DeveloperModeController();
 	virtual ~DeveloperModeController();
 
+	void onEnter() override;
 	void initializeListeners() override;
+
+private:
+	typedef GlobalNode super;
 
 	int currentDebugLevel;
 

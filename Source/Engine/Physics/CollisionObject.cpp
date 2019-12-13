@@ -130,16 +130,17 @@ void CollisionObject::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	this->buildInverseCollisionMap();
+
+	// Optimization: do not add during initalizeListeners to avoid extra calls
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
+	{
+		this->buildInverseCollisionMap();
+	}));
 }
 
 void CollisionObject::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
-	{
-		this->buildInverseCollisionMap();
-	}));
 }
 
 void CollisionObject::despawn()

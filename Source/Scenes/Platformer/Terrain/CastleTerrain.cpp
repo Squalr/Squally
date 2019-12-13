@@ -28,10 +28,10 @@ CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 		TerrainResources::Castle_TopLeft,
 		TerrainResources::Castle_TopRight,
 		TerrainResources::Castle_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Castle_TopConnectorConcave,
+		TerrainResources::Castle_TopConnectorConcaveDeep,
+		TerrainResources::Castle_TopConnectorConvex,
+		TerrainResources::Castle_TopConnectorConvexDeep,
 		TerrainResources::Castle_Bottom,
 		TerrainResources::Castle_BottomLeft,
 		TerrainResources::Castle_BottomRight,
@@ -59,13 +59,13 @@ CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 16.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -6.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -12.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

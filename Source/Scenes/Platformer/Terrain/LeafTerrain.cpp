@@ -28,10 +28,10 @@ LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 		TerrainResources::Leaf_TopLeft,
 		TerrainResources::Leaf_TopRight,
 		TerrainResources::Leaf_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Leaf_TopConnectorConcave,
+		TerrainResources::Leaf_TopConnectorConcaveDeep,
+		TerrainResources::Leaf_TopConnectorConvex,
+		TerrainResources::Leaf_TopConnectorConvexDeep,
 		TerrainResources::Leaf_Bottom,
 		TerrainResources::Leaf_BottomLeft,
 		TerrainResources::Leaf_BottomRight,
@@ -59,13 +59,13 @@ LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

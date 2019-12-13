@@ -28,10 +28,10 @@ TempleTerrain::TempleTerrain(ValueMap& properties) : super(
 		TerrainResources::Temple_TopLeft,
 		TerrainResources::Temple_TopRight,
 		TerrainResources::Temple_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Temple_TopConnectorConcave,
+		TerrainResources::Temple_TopConnectorConcaveDeep,
+		TerrainResources::Temple_TopConnectorConvex,
+		TerrainResources::Temple_TopConnectorConvexDeep,
 		TerrainResources::Temple_Bottom,
 		TerrainResources::Temple_BottomLeft,
 		TerrainResources::Temple_BottomRight,
@@ -59,13 +59,13 @@ TempleTerrain::TempleTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -6.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -8.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

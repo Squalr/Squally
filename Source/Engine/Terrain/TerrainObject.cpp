@@ -7,6 +7,7 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -50,6 +51,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
+	this->rootNode = Node::create();
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
 	this->infillNode = Node::create();
@@ -66,18 +68,19 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 
 	this->debugLevel2Node->setVisible(false);
 
-	this->addChild(this->collisionNode);
-	this->addChild(this->infillTexturesNode);
-	this->addChild(this->infillNode);
-	this->addChild(this->shadowsNode);
-	this->addChild(this->leftWallNode);
-	this->addChild(this->rightWallNode);
-	this->addChild(this->bottomsNode);
-	this->addChild(this->topsNode);
-	this->addChild(this->connectorsNode);
-	this->addChild(this->bottomCornersNode);
-	this->addChild(this->topCornersNode);
-	this->addChild(this->debugLevel2Node);
+	this->rootNode->addChild(this->collisionNode);
+	this->rootNode->addChild(this->infillTexturesNode);
+	this->rootNode->addChild(this->infillNode);
+	this->rootNode->addChild(this->shadowsNode);
+	this->rootNode->addChild(this->leftWallNode);
+	this->rootNode->addChild(this->rightWallNode);
+	this->rootNode->addChild(this->bottomsNode);
+	this->rootNode->addChild(this->topsNode);
+	this->rootNode->addChild(this->connectorsNode);
+	this->rootNode->addChild(this->bottomCornersNode);
+	this->rootNode->addChild(this->topCornersNode);
+	this->rootNode->addChild(this->debugLevel2Node);
+	this->addChild(this->rootNode);
 
 	this->initResources();
 	this->setPoints(this->polylinePoints);

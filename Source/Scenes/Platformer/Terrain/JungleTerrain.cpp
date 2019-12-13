@@ -28,10 +28,10 @@ JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 		TerrainResources::Jungle_TopLeft,
 		TerrainResources::Jungle_TopRight,
 		TerrainResources::Jungle_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Jungle_TopConnectorConcave,
+		TerrainResources::Jungle_TopConnectorConcaveDeep,
+		TerrainResources::Jungle_TopConnectorConvex,
+		TerrainResources::Jungle_TopConnectorConvexDeep,
 		TerrainResources::Jungle_Bottom,
 		TerrainResources::Jungle_BottomLeft,
 		TerrainResources::Jungle_BottomRight,
@@ -59,13 +59,13 @@ JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

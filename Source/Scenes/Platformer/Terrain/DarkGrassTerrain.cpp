@@ -28,10 +28,10 @@ DarkGrassTerrain::DarkGrassTerrain(ValueMap& properties) : super(
 		TerrainResources::DarkGrass_TopLeft,
 		TerrainResources::DarkGrass_TopRight,
 		TerrainResources::DarkGrass_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::DarkGrass_TopConnectorConcave,
+		TerrainResources::DarkGrass_TopConnectorConcaveDeep,
+		TerrainResources::DarkGrass_TopConnectorConvex,
+		TerrainResources::DarkGrass_TopConnectorConvexDeep,
 		TerrainResources::DarkGrass_Bottom,
 		TerrainResources::DarkGrass_BottomLeft,
 		TerrainResources::DarkGrass_BottomRight,
@@ -59,13 +59,13 @@ DarkGrassTerrain::DarkGrassTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

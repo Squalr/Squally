@@ -14,7 +14,7 @@
 using namespace cocos2d;
 
 const std::string FollowMovementBehavior::MapKeyAttachedBehavior = "follow-movement";
-const float FollowMovementBehavior::StopFollowRangeX = 64.0f;
+const float FollowMovementBehavior::StopFollowRangeX = 128.0f;
 const float FollowMovementBehavior::TryJumpRangeY = 96.0f;
 const float FollowMovementBehavior::ResetRangeX = 2048.0f;
 const float FollowMovementBehavior::ResetRangeY = 1024.0f;

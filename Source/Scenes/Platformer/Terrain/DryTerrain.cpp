@@ -28,10 +28,10 @@ DryTerrain::DryTerrain(ValueMap& properties) : super(
 		TerrainResources::Dry_TopLeft,
 		TerrainResources::Dry_TopRight,
 		TerrainResources::Dry_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Dry_TopConnectorConcave,
+		TerrainResources::Dry_TopConnectorConcaveDeep,
+		TerrainResources::Dry_TopConnectorConvex,
+		TerrainResources::Dry_TopConnectorConvexDeep,
 		TerrainResources::Dry_Bottom,
 		TerrainResources::Dry_BottomLeft,
 		TerrainResources::Dry_BottomRight,
@@ -59,13 +59,13 @@ DryTerrain::DryTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

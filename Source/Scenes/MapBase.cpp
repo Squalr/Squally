@@ -273,8 +273,6 @@ void MapBase::onDeveloperModeEnable(int debugLevel)
 	{
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	}
-	
-	Director::getInstance()->setDisplayStats(true);
 }
 
 void MapBase::onDeveloperModeDisable()
@@ -288,8 +286,6 @@ void MapBase::onDeveloperModeDisable()
 	{
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 	}
-
-	Director::getInstance()->setDisplayStats(false);
 }
 
 void MapBase::onHackerModeEnable(int hackFlags)

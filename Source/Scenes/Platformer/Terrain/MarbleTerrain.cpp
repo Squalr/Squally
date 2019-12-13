@@ -28,10 +28,10 @@ MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
 		TerrainResources::Marble_TopLeft,
 		TerrainResources::Marble_TopRight,
 		TerrainResources::Marble_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Marble_TopConnectorConcave,
+		TerrainResources::Marble_TopConnectorConcaveDeep,
+		TerrainResources::Marble_TopConnectorConvex,
+		TerrainResources::Marble_TopConnectorConvexDeep,
 		TerrainResources::Marble_Bottom,
 		TerrainResources::Marble_BottomLeft,
 		TerrainResources::Marble_BottomRight,
@@ -59,13 +59,13 @@ MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

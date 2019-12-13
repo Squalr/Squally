@@ -28,10 +28,10 @@ FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 		TerrainResources::Frost_TopLeft,
 		TerrainResources::Frost_TopRight,
 		TerrainResources::Frost_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Frost_TopConnectorConcave,
+		TerrainResources::Frost_TopConnectorConcaveDeep,
+		TerrainResources::Frost_TopConnectorConvex,
+		TerrainResources::Frost_TopConnectorConvexDeep,
 		TerrainResources::Frost_Bottom,
 		TerrainResources::Frost_BottomLeft,
 		TerrainResources::Frost_BottomRight,
@@ -59,13 +59,13 @@ FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

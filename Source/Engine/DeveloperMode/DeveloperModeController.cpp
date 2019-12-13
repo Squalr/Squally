@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
@@ -42,6 +43,16 @@ DeveloperModeController::DeveloperModeController()
 
 DeveloperModeController::~DeveloperModeController()
 {
+}
+
+void DeveloperModeController::onEnter()
+{
+	super::onEnter();
+	
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		Director::getInstance()->setDisplayStats(true);
+	}
 }
 
 void DeveloperModeController::initializeListeners()

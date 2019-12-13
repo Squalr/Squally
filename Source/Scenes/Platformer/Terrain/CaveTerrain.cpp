@@ -28,10 +28,10 @@ CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 		TerrainResources::Cave_TopLeft,
 		TerrainResources::Cave_TopRight,
 		TerrainResources::Cave_TopConnector,
-		TerrainResources::BlueGrass_TopConnectorConcave,
-		TerrainResources::BlueGrass_TopConnectorConcaveDeep,
-		TerrainResources::BlueGrass_TopConnectorConvex,
-		TerrainResources::BlueGrass_TopConnectorConvexDeep,
+		TerrainResources::Cave_TopConnectorConcave,
+		TerrainResources::Cave_TopConnectorConcaveDeep,
+		TerrainResources::Cave_TopConnectorConvex,
+		TerrainResources::Cave_TopConnectorConvexDeep,
 		TerrainResources::Cave_Bottom,
 		TerrainResources::Cave_BottomLeft,
 		TerrainResources::Cave_BottomRight,
@@ -59,13 +59,13 @@ CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2::ZERO,
+		Vec2(0.0f, 4.0f),
 		// TopConnectorConcaveDeep
-		Vec2::ZERO,
+		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2::ZERO,
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
-		Vec2::ZERO,
+		Vec2(0.0f, -14.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor

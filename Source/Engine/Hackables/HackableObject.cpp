@@ -45,6 +45,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 
 	this->sensingParticles->stopSystem();
 
+	this->sensingParticles->setVisible(false);
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
 
@@ -227,7 +228,8 @@ void HackableObject::onSensingEnable(int hackFlags)
 	}
 
 	if (!this->hackableList.empty())
-	{	
+	{
+		this->sensingParticles->setVisible(true);
 		this->sensingParticles->start();
 	}
 }

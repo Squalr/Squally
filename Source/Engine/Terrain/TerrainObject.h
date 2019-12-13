@@ -183,6 +183,7 @@ private:
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
 
+	cocos2d::Node* rootNode;
 	cocos2d::Node* collisionNode;
 	cocos2d::Node* infillTexturesNode;
 	cocos2d::Node* infillNode;
