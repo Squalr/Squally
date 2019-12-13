@@ -63,7 +63,7 @@ BlueGrassTerrain::BlueGrassTerrain(ValueMap& properties) : super(
 		// TopConnectorConcaveDeep
 		Vec2(0.0f, 6.0f),
 		// TopConnectorConvex
-		Vec2(0.0f, -8.0f),
+		Vec2(0.0f, -2.0f),
 		// TopConnectorConvexDeep
 		Vec2(0.0f, -14.0f),
 		// BottomConnector

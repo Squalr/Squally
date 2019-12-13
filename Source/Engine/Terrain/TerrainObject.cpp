@@ -539,7 +539,7 @@ void TerrainObject::buildSurfaceTextures()
 			// Concave
 			float normalDelta = nextNormalDeg - normalDeg;
 
-			if (normalDelta <= 48.0f)
+			if (normalDelta <= 24.0f)
 			{
 				concavity = Concavity::Standard;
 			}
@@ -557,7 +557,7 @@ void TerrainObject::buildSurfaceTextures()
 			// Convex
 			float normalDelta = normalDeg - nextNormalDeg;
 
-			if (normalDelta <= 48.0f)
+			if (normalDelta <= 24.0f)
 			{
 				concavity = Concavity::Standard;
 			}
@@ -589,7 +589,6 @@ void TerrainObject::buildSurfaceTextures()
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorOffset;
-					offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
 					str->setString("S");
 					break;
 				}
@@ -631,8 +630,6 @@ void TerrainObject::buildSurfaceTextures()
 			Vec2 offset = this->terrainData.bottomOffset + this->terrainData.bottomConnectorOffset;
 
 			bottom->setFlippedY(this->isFlipped);
-
-			offset.y -= std::abs(normalDeg - nextNormalDeg) / 8.0f;
 
 			this->buildSegment(this->connectorsNode, bottom, Vec2(0.5f, 0.5f), dest + offset, 360.0f - bisectingAngle * 180.0f / float(M_PI), segmentLength, TileMethod::None);
 		}
