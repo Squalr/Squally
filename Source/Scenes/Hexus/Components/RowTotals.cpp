@@ -371,12 +371,12 @@ void RowTotals::readNewTotals(GameState* gameState, bool displayDeltas)
 
 void RowTotals::updateTotals(GameState* gameState)
 {
-	this->enemyBinaryCardTotalStr->setString(std::to_string(gameState->playerBinaryCards->getRowAttack()));
-	this->enemyDecimalCardTotalStr->setString(std::to_string(gameState->playerDecimalCards->getRowAttack()));
-	this->enemyHexCardTotalStr->setString(std::to_string(gameState->playerHexCards->getRowAttack()));
-	this->playerBinaryCardTotalStr->setString(std::to_string(gameState->enemyBinaryCards->getRowAttack()));
-	this->playerDecimalCardTotalStr->setString(std::to_string(gameState->enemyDecimalCards->getRowAttack()));
-	this->playerHexCardTotalStr->setString(std::to_string(gameState->enemyHexCards->getRowAttack()));
+	this->playerBinaryCardTotalStr->setString(std::to_string(gameState->playerBinaryCards->getRowAttack()));
+	this->playerDecimalCardTotalStr->setString(std::to_string(gameState->playerDecimalCards->getRowAttack()));
+	this->playerHexCardTotalStr->setString(std::to_string(gameState->playerHexCards->getRowAttack()));
+	this->enemyBinaryCardTotalStr->setString(std::to_string(gameState->enemyBinaryCards->getRowAttack()));
+	this->enemyDecimalCardTotalStr->setString(std::to_string(gameState->enemyDecimalCards->getRowAttack()));
+	this->enemyHexCardTotalStr->setString(std::to_string(gameState->enemyHexCards->getRowAttack()));
 }
 
 void RowTotals::runDeltaAnimation(LocalizedLabel* label, ConstantString* str, float startPositionY, int delta)
