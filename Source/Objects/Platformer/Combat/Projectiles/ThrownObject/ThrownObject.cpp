@@ -4,6 +4,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Physics/CollisionObject.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObjectGenericPreview.h"
@@ -22,7 +23,7 @@ ThrownObject* ThrownObject::create(PlatformerEntity* caster, std::string objectR
 }
 
 ThrownObject::ThrownObject(PlatformerEntity* caster, std::string objectResource)
-	: Projectile(caster, CollisionObject::createCapsulePolygon(Size(64.0f, 128.0f)), CombatCollisionType::Projectile, 1.0f, true)
+	: super(caster, CollisionObject::createCapsulePolygon(Size(64.0f, 128.0f)), CombatCollisionType::Projectile, 1.0f, true)
 {
 	this->objectResource = objectResource;
 	this->objectSprite = Sprite::create(objectResource);

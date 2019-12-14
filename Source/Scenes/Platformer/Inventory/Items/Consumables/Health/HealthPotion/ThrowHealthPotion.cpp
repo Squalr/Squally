@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -66,8 +67,10 @@ void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerE
 	
 	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
 	
-	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	potion->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
+		potion->getCollision()->setPhysicsEnabled(false);
+		
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
 		if (entity != nullptr)

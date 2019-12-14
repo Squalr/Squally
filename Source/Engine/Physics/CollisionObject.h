@@ -5,7 +5,7 @@
 #include "cocos/math/Vec2.h"
 
 #include "Engine/Events/CollisionMappingEvents.h"
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 typedef int CollisionType;
 
@@ -17,7 +17,7 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class CollisionObject : public HackableObject
+class CollisionObject : public GameObject
 {
 public:
 	static CollisionObject* create(const cocos2d::ValueMap& properties, cocos2d::PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate);
@@ -97,7 +97,7 @@ protected:
 	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 
 private:
-	typedef HackableObject super;
+	typedef GameObject super;
 	// We need to let the dispatcher call our events directly when it determines that this object was involved in a collision
 	friend class CollisionEventDispatcher;
 

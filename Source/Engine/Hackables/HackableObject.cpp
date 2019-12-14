@@ -41,15 +41,13 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
-	this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
+	this->sensingParticlesNode = Node::create();
+	this->sensingParticles = nullptr;
 
-	this->sensingParticles->stopSystem();
-
-	this->sensingParticles->setVisible(false);
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
 
-	this->uiElements->addChild(this->sensingParticles);
+	this->uiElements->addChild(this->sensingParticlesNode);
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->hackablesNode);
@@ -229,14 +227,17 @@ void HackableObject::onSensingEnable(int hackFlags)
 
 	if (!this->hackableList.empty())
 	{
-		this->sensingParticles->setVisible(true);
-		this->sensingParticles->start();
+		this->getSensingParticles()->setVisible(true);
+		this->getSensingParticles()->start();
 	}
 }
 
 void HackableObject::onSensingDisable()
 {
-	this->sensingParticles->stopSystem();
+	if (this->sensingParticles != nullptr)
+	{
+		this->getSensingParticles()->stopSystem();
+	}
 }
 
 void HackableObject::registerHackables()
@@ -364,4 +365,18 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
+}
+
+ParticleSystem* HackableObject::getSensingParticles()
+{
+	if (this->sensingParticles == nullptr)
+	{
+		this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
+		this->sensingParticles->stopSystem();
+		this->sensingParticles->setVisible(false);
+
+		this->sensingParticlesNode->addChild(this->sensingParticles);
+	}
+	
+	return this->sensingParticles;
 }

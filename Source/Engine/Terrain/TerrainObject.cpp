@@ -99,6 +99,8 @@ void TerrainObject::onEnter()
 	{
 		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
 	}
+	
+	this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onEnterTransitionDidFinish()
@@ -884,7 +886,9 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	// Heuristic -- technically this warrants using a bunch of projection math, but it's close enough, and always over-shoots favorably. Good enough.
+	float zoom = GameCamera::getInstance()->getCameraZoom();
+	Size visibleSize = Director::getInstance()->getVisibleSize() * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f), visibleSize);
 
 	if (cameraRect.intersectsRect(this->boundsRect))

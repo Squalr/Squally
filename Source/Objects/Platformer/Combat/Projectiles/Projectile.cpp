@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -20,12 +21,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
 
-Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking) : super(
-	ValueMap(),
-	hitBox,
-	(int)combatCollisionType,
-	false,
-	false)
+Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
@@ -34,8 +30,14 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->spinSpeed = 0.0f;
+	this->collisionObject = CollisionObject::create(ValueMap(),
+		hitBox,
+		(int)combatCollisionType,
+		false,
+		false
+	);
 
-	this->setPhysicsEnabled(false);
+	this->collisionObject->setPhysicsEnabled(false);
 }
 
 Projectile::~Projectile()
@@ -69,7 +71,7 @@ void Projectile::update(float dt)
 
 		if (this->noCollideDuration <= 0.0f)
 		{
-			this->setPhysicsEnabled(true);
+			this->collisionObject->setPhysicsEnabled(true);
 		}
 	}
 
@@ -129,7 +131,7 @@ void Projectile::registerHackables()
 		},
 	};
 
-	auto velocityFunc = &Projectile::getVelocity;
+	auto velocityFunc = &Projectile::getLaunchVelocity;
 	std::vector<HackableCode*> velocityHackables = HackableCode::create((void*&)velocityFunc, lateBindMap);
 
 	for (auto it = velocityHackables.begin(); it != velocityHackables.end(); it++)
@@ -182,6 +184,11 @@ void Projectile::setLaunchVelocity(cocos2d::Vec3 velocity)
 void Projectile::setLaunchAcceleration(cocos2d::Vec3 acceleration)
 {
 	this->launchAcceleration = acceleration;
+}
+
+CollisionObject* Projectile::getCollision()
+{
+	return this->collisionObject;
 }
 
 NO_OPTIMIZE Vec3 Projectile::getLaunchVelocity()

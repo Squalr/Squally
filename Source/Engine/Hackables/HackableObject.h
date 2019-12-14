@@ -67,6 +67,9 @@ private:
 	bool hasRelocatedUI;
 	bool isHackable;
 
+	cocos2d::ParticleSystem* getSensingParticles();
+
+	cocos2d::Node* sensingParticlesNode;
 	cocos2d::ParticleSystem* sensingParticles;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;

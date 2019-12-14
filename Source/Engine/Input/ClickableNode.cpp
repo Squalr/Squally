@@ -29,21 +29,21 @@ ClickableNode* ClickableNode::create()
 	return ClickableNode::create(Node::create(), Node::create());
 }
 
-ClickableNode* ClickableNode::create(std::string spriteNormal, std::string spriteSelectedResource)
+ClickableNode* ClickableNode::create(std::string spriteResource, std::string spriteSelectedResource)
 {
-	return ClickableNode::create(Sprite::create(spriteNormal), Sprite::create(spriteSelectedResource));
+	return ClickableNode::create(Sprite::create(spriteResource), Sprite::create(spriteSelectedResource));
 }
 
-ClickableNode* ClickableNode::create(Node* nodeNormal, Node* nodeSelected)
+ClickableNode* ClickableNode::create(Node* content, Node* contentSelected)
 {
-	ClickableNode* instance = new ClickableNode(nodeNormal, nodeSelected);
+	ClickableNode* instance = new ClickableNode(content, contentSelected);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
+ClickableNode::ClickableNode(Node* content, Node* contentSelected)
 {
 	this->mouseClickEvent = nullptr;
 	this->mouseInEvent = nullptr;
@@ -67,16 +67,16 @@ ClickableNode::ClickableNode(Node* nodeNormal, Node* nodeSelected)
 	this->clickSound = Sound::create();
 	this->mouseOverSound = Sound::create(SoundResources::ButtonRollover1);
 
-	this->sprite = nodeNormal;
-	this->spriteSelected = nodeSelected;
+	this->content = content;
+	this->contentSelected = contentSelected;
 
 	this->debugHitbox->setVisible(false);
 
 	this->debugCachedPos = Vec2::ZERO;
-	this->setContentSize(this->sprite == nullptr ? Size(256.0f, 128.0f) : this->sprite->getContentSize());
+	this->setContentSize(this->content == nullptr ? Size(256.0f, 128.0f) : this->content->getContentSize());
 
-	this->addChild(this->sprite);
-	this->addChild(this->spriteSelected);
+	this->addChild(this->content);
+	this->addChild(this->contentSelected);
 	this->addChild(this->debugHitbox);
 	this->addChild(this->clickSound);
 	this->addChild(this->mouseOverSound);
@@ -93,10 +93,8 @@ void ClickableNode::onEnter()
 	this->wasAnywhereClicked = false;
 	this->wasClickedDirectly = false;
 
-	this->sprite->setVisible(true);
-	this->spriteSelected->setVisible(false);
-
-	this->scheduleUpdate();
+	this->content->setVisible(true);
+	this->contentSelected->setVisible(false);
 }
 
 void ClickableNode::onEnterTransitionDidFinish()
@@ -142,14 +140,6 @@ void ClickableNode::initializeListeners()
 	this->addEventListener(mouseDownListener);
 	this->addEventListener(mouseUpListener);
 	this->addEventListener(mouseScrollListener);
-}
-
-void ClickableNode::update(float dt)
-{
-	super::update(dt);
-
-	// Update the selected sprite to track the main sprite
-	this->spriteSelected->setPosition(this->sprite->getPosition());
 }
 
 void ClickableNode::setDebugDrawPosition()
@@ -203,7 +193,7 @@ void ClickableNode::setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisi
 void ClickableNode::disableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = false;
-	this->showSprite(this->sprite);
+	this->showContent(this->content);
 	this->setOpacity(newOpacity);
 
 	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
@@ -213,7 +203,7 @@ void ClickableNode::disableInteraction(GLubyte newOpacity)
 void ClickableNode::enableInteraction(GLubyte newOpacity)
 {
 	this->interactionEnabled = true;
-	this->showSprite(this->sprite);
+	this->showContent(this->content);
 	this->setOpacity(newOpacity);
 
 	// Refresh the mouse state in case the mouse was already hovered over this in order to keep the mouse sprite valid
@@ -297,17 +287,17 @@ void ClickableNode::setClickSound(std::string soundResource)
 	this->clickSound->setSoundResource(soundResource);
 }
 
-void ClickableNode::showSprite(Node* sprite)
+void ClickableNode::showContent(Node* sprite)
 {
 	// Hide everything
-	if (this->sprite != nullptr)
+	if (this->content != nullptr)
 	{
-		this->sprite->setVisible(false);
+		this->content->setVisible(false);
 	}
 
-	if (this->spriteSelected != nullptr)
+	if (this->contentSelected != nullptr)
 	{
-		this->spriteSelected->setVisible(false);
+		this->contentSelected->setVisible(false);
 	}
 
 	if (sprite != nullptr)
@@ -320,7 +310,7 @@ void ClickableNode::showSprite(Node* sprite)
 		else
 		{
 			// Interaction disabled -- only show the main sprite
-			this->sprite->setVisible(true);
+			this->content->setVisible(true);
 		}
 	}
 
@@ -371,12 +361,12 @@ void ClickableNode::mouseMove(InputEvents::MouseEventArgs* args, EventCustom* ev
 		if (this->mouseDownEvent != nullptr || this->mouseClickEvent != nullptr || this->mouseDragEvent != nullptr)
 		{
 			// Play mouse over sound
-			if (!args->isDragging && !isRefresh && this->currentSprite != this->spriteSelected)
+			if (!args->isDragging && !isRefresh && this->currentSprite != this->contentSelected)
 			{
 				this->mouseOverSound->play();
 			}
 
-			this->showSprite(this->spriteSelected);
+			this->showContent(this->contentSelected);
 
 			// Set args as handled. Caller must un-handle in the callback if they choose.
 			args->handle();
@@ -462,7 +452,7 @@ void ClickableNode::mouseUp(InputEvents::MouseEventArgs* args, EventCustom* even
 
 		this->clickSound->play();
 
-		this->showSprite(this->spriteSelected);
+		this->showContent(this->contentSelected);
 
 		if (event != nullptr)
 		{
@@ -508,17 +498,17 @@ void ClickableNode::mouseOut(InputEvents::MouseEventArgs* args, bool force)
 
 	this->isMousedOver = false;
 
-	this->showSprite(this->sprite);
+	this->showContent(this->content);
 }
 
-cocos2d::Node* ClickableNode::getSprite()
+cocos2d::Node* ClickableNode::getContent()
 {
-	return this->sprite;
+	return this->content;
 }
 
-cocos2d::Node* ClickableNode::getSpriteSelected()
+cocos2d::Node* ClickableNode::getContentSelected()
 {
-	return this->spriteSelected;
+	return this->contentSelected;
 }
 
 void ClickableNode::setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction)

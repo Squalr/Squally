@@ -39,6 +39,7 @@ private:
 	bool enableCameraDistanceFade;
 	bool isFading;
 	std::function<void()> onFadeOutCallback;
+	cocos2d::Vec2 cachedCoords;
 
 	static const std::string KeyScheduleFadeOutAudio;
 	static const int INVALID_ID;

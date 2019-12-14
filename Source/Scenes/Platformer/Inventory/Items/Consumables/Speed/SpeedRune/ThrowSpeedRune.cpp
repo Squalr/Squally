@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -66,9 +67,9 @@ void ThrowSpeedRune::generateProjectiles(PlatformerEntity* owner, PlatformerEnti
 
 	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
 	
-	rune->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	rune->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
-		rune->setPhysicsEnabled(false);
+		rune->getCollision()->setPhysicsEnabled(false);
 
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

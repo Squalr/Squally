@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
@@ -52,9 +53,9 @@ void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity*
 
 	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
 	
-	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
-		weapon->setPhysicsEnabled(false);
+		weapon->getCollision()->setPhysicsEnabled(false);
 		
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

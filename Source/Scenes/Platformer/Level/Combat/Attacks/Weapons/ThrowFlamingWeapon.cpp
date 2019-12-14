@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
@@ -60,9 +61,9 @@ void ThrowFlamingWeapon::generateProjectiles(PlatformerEntity* owner, Platformer
 	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
 	fire->setPosition(Vec2(0.0f, 56.0f));
 	
-	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
-		weapon->setPhysicsEnabled(false);
+		weapon->getCollision()->setPhysicsEnabled(false);
 
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

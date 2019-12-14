@@ -12,36 +12,34 @@ class ClickableTextNode : public ClickableNode
 {
 public:
 	static ClickableTextNode* create(
-		cocos2d::Label* normalLabel,
-		cocos2d::Label* selectedLabel,
-		std::string spriteNormal,
+		cocos2d::Label* label,
+		cocos2d::Label* labelSelected,
+		std::string spriteResource,
 		std::string spriteSelectedResource);
 	static ClickableTextNode* create(
-		cocos2d::Label* normalLabel,
-		cocos2d::Label* selectedLabel,
-		cocos2d::Node* spriteNormal,
+		cocos2d::Label* label,
+		cocos2d::Label* labelSelected,
+		cocos2d::Node* spriteResource,
 		std::string spriteSelectedResource);
 	static ClickableTextNode* create(
-		cocos2d::Label* normalLabel,
-		cocos2d::Label* selectedLabel, 
-		cocos2d::Node* nodeNormal,
-		cocos2d::Node* nodeSelected);
+		cocos2d::Label* label,
+		cocos2d::Label* labelSelected, 
+		cocos2d::Node* content,
+		cocos2d::Node* contentSelected);
 
 	void setTextVisible(bool isVisible);
 	void setTextOffset(cocos2d::Vec2 offset);
 
 protected:
 	ClickableTextNode(
-		cocos2d::Label* normalLabel,
-		cocos2d::Label* selectedLabel,
-		cocos2d::Node* nodeNormal,
-		cocos2d::Node* nodeSelected);
+		cocos2d::Label* label,
+		cocos2d::Label* labelSelected,
+		cocos2d::Node* content,
+		cocos2d::Node* contentSelected);
 	virtual ~ClickableTextNode();
 
-	cocos2d::Label* normalContentLabel;
-	cocos2d::Label* selectedContentLabel;
-	cocos2d::Node* normalContent;
-	cocos2d::Node* selectedContent;
+	cocos2d::Label* label;
+	cocos2d::Label* labelSelected;
 
 private:
 	typedef ClickableNode super;

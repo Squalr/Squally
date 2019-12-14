@@ -27,6 +27,7 @@ SoundBase::SoundBase(std::string soundResource) : super()
 	this->customMultiplier = 1.0f;
 	this->fadeOutTick = 0;
 	this->onFadeOutCallback = nullptr;
+	this->cachedCoords = Vec2::ZERO;
 }
 
 SoundBase::~SoundBase()
@@ -43,7 +44,7 @@ void SoundBase::onEnter()
 
 void SoundBase::update(float dt)
 {
-	super::update(dt);
+	// super::update(dt);
 
 	this->updateDistanceFade();
 
@@ -175,6 +176,15 @@ void SoundBase::updateDistanceFade()
 	{
 		return;
 	}
+	
+	Vec2 thisCoords = GameUtils::getWorldCoords(this);
+
+	if (thisCoords == this->cachedCoords)
+	{
+		return;
+	}
+
+	this->cachedCoords = thisCoords;
 
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
