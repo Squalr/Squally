@@ -223,8 +223,6 @@ void TerrainObject::buildCollision()
 	{
 		return;
 	}
-	
-	this->removeHollowEdgeCollisions();
 
 	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
 	this->properties[GameObject::MapKeyXPosition] = 0.0f;
@@ -751,24 +749,6 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 	parent->addChild(sprite);
 };
-
-void TerrainObject::removeHollowEdgeCollisions()
-{
-	if (this->isInactive)
-	{
-		return;
-	}
-	
-	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
-		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
-		{
-			float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
-			
-			// Remove all collision except for top collision
-			return (!this->isTopAngle(normalAngle));
-		})
-	);
-}
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {

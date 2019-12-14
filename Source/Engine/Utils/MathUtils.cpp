@@ -56,7 +56,7 @@ int MathUtils::wrappingNormalize(int value, int start, int end)
     return start + (value - start) % size;
 }
 
-int MathUtils::resolveBinaryMathExpression(const std::string& expression)
+unsigned char MathUtils::resolveBinaryMathExpression(const std::string& expression)
 {
 	return te_interp(expression.c_str(), 0);
 }

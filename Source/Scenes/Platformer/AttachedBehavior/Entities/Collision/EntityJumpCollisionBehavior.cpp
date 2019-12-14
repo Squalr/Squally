@@ -44,7 +44,7 @@ EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : su
 				EntityJumpCollisionBehavior::JumpCollisionRadius,
 				0.0f
 			),
-			(int)PlatformerCollisionType::JumpDetector,
+			(int)PlatformerCollisionType::GroundDetector,
 			false,
 			false
 		);

@@ -50,7 +50,7 @@ For log = natural log uncomment the next line. */
 #endif
 
 
-typedef int (*te_fun2)(int, int);
+typedef unsigned char (*te_fun2)(int, int);
 
 enum {
     TOK_NULL = TE_CLOSURE7+1, TOK_ERROR, TOK_END, TOK_SEP,
@@ -65,7 +65,7 @@ typedef struct state {
     const char *start;
     const char *next;
     int type;
-    union {int value; const int *bound; const void *function;};
+    union {unsigned char value; const int* bound; const void *function;};
     void *context;
 
     const te_variable *lookup;
@@ -81,10 +81,10 @@ typedef struct state {
 #define ARITY(TYPE) ( ((TYPE) & (TE_FUNCTION0 | TE_CLOSURE0)) ? ((TYPE) & 0x00000007) : 0 )
 #define NEW_EXPR(type, ...) new_expr((type), (const te_expr*[]){__VA_ARGS__})
 
-static te_expr *new_expr(const int type, const te_expr *parameters[]) {
-    const int arity = ARITY(type);
-    const int psize = sizeof(void*) * arity;
-    const int size = (sizeof(te_expr) - sizeof(void*)) + psize + (IS_CLOSURE(type) ? sizeof(void*) : 0);
+static te_expr *new_expr(const unsigned char type, const te_expr *parameters[]) {
+    const unsigned char arity = ARITY(type);
+    const unsigned char psize = sizeof(void*) * arity;
+    const unsigned char size = (sizeof(te_expr) - sizeof(void*)) + psize + (IS_CLOSURE(type) ? sizeof(void*) : 0);
     te_expr *ret = malloc(size);
     memset(ret, 0, size);
     if (arity && parameters) {
@@ -117,12 +117,12 @@ void te_free(te_expr *n) {
 }
 
 
-static int fac(int a) {/* simplest version of fac */
+static unsigned char fac(unsigned char a) {/* simplest version of fac */
     if (a < 0.0)
         return NAN;
     if (a > UINT_MAX)
         return INFINITY;
-    unsigned int ua = (unsigned int)(a);
+    unsigned char ua = (unsigned char )(a);
     unsigned long int result = 1, i;
     for (i = 1; i <= ua; i++) {
         if (i > ULONG_MAX / result)
@@ -131,24 +131,9 @@ static int fac(int a) {/* simplest version of fac */
     }
     return (int)result;
 }
-static int ncr(int n, int r) {
-    if (n < 0.0 || r < 0.0 || n < r) return NAN;
-    if (n > UINT_MAX || r > UINT_MAX) return INFINITY;
-    unsigned long int un = (unsigned int)(n), ur = (unsigned int)(r), i;
-    unsigned long int result = 1;
-    if (ur > un / 2) ur = un - ur;
-    for (i = 1; i <= ur; i++) {
-        if (result > ULONG_MAX / (un - ur + i))
-            return INFINITY;
-        result *= un - ur + i;
-        result /= i;
-    }
-    return result;
-}
-static int npr(int n, int r) {return ncr(n, r) * fac(r);}
 
-static const te_variable *find_lookup(const state *s, const char *name, int len) {
-    int iters;
+static const te_variable *find_lookup(const state *s, const char *name, unsigned char len) {
+    unsigned char iters;
     const te_variable *var;
     if (!s->lookup) return 0;
 
@@ -162,20 +147,20 @@ static const te_variable *find_lookup(const state *s, const char *name, int len)
 
 
 
-static int add(int a, int b) {return a + b;}
-static int sub(int a, int b) {return a - b;}
-static int mul(int a, int b) {return a * b;}
-static int xor(int a, int b) {return a ^ b;}
-static int or(int a, int b) {return a | b;}
-static int and(int a, int b) {return a & b;}
-static int mod(int a, int b) {return a % b;}
-static int divide(int a, int b) {return a / b;}
-static int shl(int a, int b) {return a << b;}
-static int shr(int a, int b) {return a >> b;}
-static int cshl(int a, int b) {return a >> b;}
-static int cshr(int a, int b) {return a << b;}
-static int negate(int a) {return -a;}
-static int comma(int a, int b) {(void)a; return b;}
+static unsigned char add(unsigned char a, unsigned char b) {return a + b;}
+static unsigned char sub(unsigned char a, unsigned char b) {return a - b;}
+static unsigned char mul(unsigned char a, unsigned char b) {return a * b;}
+static unsigned char xor(unsigned char a, unsigned char b) {return a ^ b;}
+static unsigned char or(unsigned char a, unsigned char b) {return a | b;}
+static unsigned char and(unsigned char a, unsigned char b) {return a & b;}
+static unsigned char mod(unsigned char a, unsigned char b) {return a % b;}
+static unsigned char divide(unsigned char a, unsigned char b) {return a / b;}
+static unsigned char shl(unsigned char a, unsigned char b) {return a << b;}
+static unsigned char shr(unsigned char a, unsigned char b) {return a >> b;}
+static unsigned char cshl(unsigned char a, unsigned char b) {return a >> b;}
+static unsigned char cshr(unsigned char a, unsigned char b) {return a << b;}
+static unsigned char negate(unsigned char a) {return -a;}
+static unsigned char comma(unsigned char a, unsigned char b) {(void)a; return b;}
 
 
 void next_token(state *s) {
@@ -257,7 +242,7 @@ static te_expr *power(state *s);
 static te_expr *base(state *s) {
     /* <base>      =    <constant> | <variable> | <function-0> {"(" ")"} | <function-1> <power> | <function-X> "(" <expr> {"," <expr>} ")" | "(" <list> ")" */
     te_expr *ret;
-    int arity;
+    unsigned char arity;
 
     switch (TYPE_MASK(s->type)) {
         case TOK_NUMBER:
@@ -311,7 +296,7 @@ static te_expr *base(state *s) {
             if (s->type != TOK_OPEN) {
                 s->type = TOK_ERROR;
             } else {
-                int i;
+                unsigned char i;
                 for(i = 0; i < arity; i++) {
                     next_token(s);
                     ret->parameters[i] = expr(s);
@@ -351,7 +336,7 @@ static te_expr *base(state *s) {
 
 static te_expr *power(state *s) {
     /* <power>     =    {("-" | "+")} <base> */
-    int sign = 1;
+    unsigned char sign = 1;
     while (s->type == TOK_INFIX && (s->function == add || s->function == sub)) {
         if (s->function == sub) sign = -sign;
         next_token(s);
@@ -369,46 +354,6 @@ static te_expr *power(state *s) {
     return ret;
 }
 
-#ifdef TE_POW_FROM_RIGHT
-static te_expr *factor(state *s) {
-    /* <factor>    =    <power> {"^" <power>} */
-    te_expr *ret = power(s);
-
-    int neg = 0;
-    te_expr *insertion = 0;
-
-    if (ret->type == (TE_FUNCTION1 | TE_FLAG_PURE) && ret->function == negate) {
-        te_expr *se = ret->parameters[0];
-        free(ret);
-        ret = se;
-        neg = 1;
-    }
-
-    while (s->type == TOK_INFIX && (s->function == pow)) {
-        te_fun2 t = s->function;
-        next_token(s);
-
-        if (insertion) {
-            /* Make exponentiation go right-to-left. */
-            te_expr *insert = NEW_EXPR(TE_FUNCTION2 | TE_FLAG_PURE, insertion->parameters[1], power(s));
-            insert->function = t;
-            insertion->parameters[1] = insert;
-            insertion = insert;
-        } else {
-            ret = NEW_EXPR(TE_FUNCTION2 | TE_FLAG_PURE, ret, power(s));
-            ret->function = t;
-            insertion = ret;
-        }
-    }
-
-    if (neg) {
-        ret = NEW_EXPR(TE_FUNCTION1 | TE_FLAG_PURE, ret);
-        ret->function = negate;
-    }
-
-    return ret;
-}
-#else
 static te_expr *factor(state *s) {
     /* <factor>    =    <power> {"^" <power>} */
     te_expr *ret = power(s);
@@ -422,9 +367,6 @@ static te_expr *factor(state *s) {
 
     return ret;
 }
-#endif
-
-
 
 static te_expr *term(state *s) {
     /* <term>      =    <factor> {("*" | "/" | "%" | "^" | "|" | "&") <factor>} */
@@ -476,7 +418,7 @@ static te_expr *list(state *s) {
 #define M(e) te_eval(n->parameters[e])
 
 
-int te_eval(const te_expr *n) {
+unsigned char te_eval(const te_expr *n) {
     if (!n) return NAN;
 
     switch(TYPE_MASK(n->type)) {
@@ -526,9 +468,9 @@ static void optimize(te_expr *n) {
 
     /* Only optimize out functions flagged as pure. */
     if (IS_PURE(n->type)) {
-        const int arity = ARITY(n->type);
-        int known = 1;
-        int i;
+        const unsigned char arity = ARITY(n->type);
+        unsigned char known = 1;
+        unsigned char i;
         for (i = 0; i < arity; ++i) {
             optimize(n->parameters[i]);
             if (((te_expr*)(n->parameters[i]))->type != TE_CONSTANT) {
@@ -536,7 +478,7 @@ static void optimize(te_expr *n) {
             }
         }
         if (known) {
-            const int value = te_eval(n);
+            const unsigned char value = te_eval(n);
             te_free_parameters(n);
             n->type = TE_CONSTANT;
             n->value = value;
@@ -545,7 +487,7 @@ static void optimize(te_expr *n) {
 }
 
 
-te_expr *te_compile(const char *expression, const te_variable *variables, int var_count, int *error) {
+te_expr *te_compile(const char *expression, const te_variable *variables, int var_count, int* error) {
     state s;
     s.start = s.next = expression;
     s.lookup = variables;
@@ -569,9 +511,9 @@ te_expr *te_compile(const char *expression, const te_variable *variables, int va
 }
 
 
-int te_interp(const char *expression, int *error) {
+unsigned char te_interp(const char *expression, int* error) {
     te_expr *n = te_compile(expression, 0, 0, error);
-    int ret;
+    unsigned char ret;
     if (n) {
         ret = te_eval(n);
         te_free(n);
@@ -581,8 +523,8 @@ int te_interp(const char *expression, int *error) {
     return ret;
 }
 
-static void pn (const te_expr *n, int depth) {
-    int i, arity;
+static void pn (const te_expr *n, unsigned char depth) {
+    unsigned char i, arity;
     printf("%*s", depth, "");
 
     switch(TYPE_MASK(n->type)) {
