@@ -47,14 +47,17 @@ BeatTutorialE::~BeatTutorialE()
 
 void BeatTutorialE::onLoad(QuestState questState)
 {
-    TutorialEBehavior* tutorialBehavior = TutorialEBehavior::create(this->mage);
+	this->defer([=]()
+	{
+		TutorialEBehavior* tutorialBehavior = TutorialEBehavior::create(this->mage);
 
-    tutorialBehavior->registerWinCallback([=]()
-    {
-        this->complete();
-    });
-
-    this->mage->attachBehavior(tutorialBehavior);
+		tutorialBehavior->registerWinCallback([=]()
+		{
+			this->complete();
+		});
+		
+    	this->mage->attachBehavior(tutorialBehavior);
+	});
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{

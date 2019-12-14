@@ -140,6 +140,13 @@ void TerrainObject::initializeListeners()
 	}
 }
 
+void TerrainObject::update(float dt)
+{
+	super::update(dt);
+	
+	this->optimizationHideOffscreenTerrain();
+}
+
 void TerrainObject::initResources()
 {
 	if (!this->isFlipped)
@@ -320,7 +327,7 @@ void TerrainObject::buildInnerTextures()
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
 
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+	this->boundsRect = Rect(this->getPosition(), drawRect.size);
 
 	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
 	texture->getTexture()->setTexParameters(params);
@@ -873,4 +880,19 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 	}
 
 	return false;
+}
+
+void TerrainObject::optimizationHideOffscreenTerrain()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f), visibleSize);
+
+	if (cameraRect.intersectsRect(this->boundsRect))
+	{
+		this->rootNode->setVisible(true);
+	}
+	else
+	{
+		this->rootNode->setVisible(false);
+	}
 }

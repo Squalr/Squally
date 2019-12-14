@@ -141,6 +141,7 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
+	void update(float dt) override;
 
 private:
 	typedef HackableObject super;
@@ -167,6 +168,7 @@ private:
 	bool isLeftAngle(float normalAngle);
 	bool isRightAngle(float normalAngle);
 	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
+	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
 	bool isTopOnlyCollision;

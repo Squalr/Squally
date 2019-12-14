@@ -49,7 +49,7 @@ private:
 	void onClaimVictoryMouseOver();
 	void onClaimVictoryMouseOut();
 
-	ClickableIconNode* currentVisiblePlayerButton;
+	ClickableNode* currentVisiblePlayerButton;
 	bool playerChoiceLocked;
 	bool enemyChoiceLocked;
 
@@ -57,7 +57,7 @@ private:
 	friend class Hexus;
 
 	cocos2d::Sprite* lastStandSprite;
-	ClickableIconNode* lastStandButton;
+	ClickableNode* lastStandButton;
 	cocos2d::LayerColor* lastStandPanel;
 	LocalizedLabel* lastStandLabel;
 	cocos2d::ParticleSystemQuad* lastStandParticles;
@@ -67,7 +67,7 @@ private:
 
 	// Surrender
 	cocos2d::Sprite* passSprite;
-	ClickableIconNode* passButton;
+	ClickableNode* passButton;
 	cocos2d::LayerColor* passPanel;
 	LocalizedLabel* passLabel;
 	cocos2d::ParticleSystemQuad* passParticles;
@@ -77,7 +77,7 @@ private:
 
 	// Claim victory
 	cocos2d::Sprite* claimVictorySprite;
-	ClickableIconNode* claimVictoryButton;
+	ClickableNode* claimVictoryButton;
 	cocos2d::LayerColor* claimVictoryPanel;
 	LocalizedLabel* claimVictoryLabel;
 	cocos2d::ParticleSystemQuad* claimVictoryParticles;

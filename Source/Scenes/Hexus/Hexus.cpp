@@ -9,7 +9,6 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/Sound/MusicPlayer.h"

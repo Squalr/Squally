@@ -170,7 +170,6 @@
   <object id="694" name="cipher-chest" type="object" x="2235.87" y="3953.12" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
     <property name="inputs" value="l,o,c,k,e,d"/>
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule" value="{i}+1"/>

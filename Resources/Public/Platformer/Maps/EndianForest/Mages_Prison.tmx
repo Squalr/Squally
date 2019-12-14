@@ -387,7 +387,6 @@
   <object id="906" name="cipher-chest" type="object" x="6060" y="926" width="128" height="128">
    <properties>
     <property name="data-type" value="ascii"/>
-    <property name="event" value="open-cipher"/>
     <property name="inputs-easy" value="m,a,g,e"/>
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule-easy" value="{i}"/>
