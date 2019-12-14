@@ -17,7 +17,7 @@ public:
 	bool isDeveloperModeEnabled();
 	int getDebugLevel();
 	
-	static bool IsDeveloperBuild;
+	static volatile bool IsDeveloperBuild;
 
 protected:
 	DeveloperModeController();

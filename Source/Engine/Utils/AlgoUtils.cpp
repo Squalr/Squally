@@ -350,7 +350,7 @@ std::vector<Vec2> AlgoUtils::insetPolygon(const std::vector<Triangle>& triangles
 }
 
 float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
-		Node* debugDrawNode)
+		DrawNode* debugDrawNode)
 {
 	float angle = AlgoUtils::getSegmentNormalAngle(segment, triangles, debugDrawNode);
 
@@ -369,7 +369,7 @@ float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vect
 }
 
 float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
-		const std::vector<AlgoUtils::Triangle>& triangles, Node* debugDrawNode)
+		const std::vector<AlgoUtils::Triangle>& triangles, DrawNode* debugDrawNode)
 {
 	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
 	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
@@ -386,7 +386,7 @@ float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
 }
 
 Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
-		Node* debugDrawNode)
+		DrawNode* debugDrawNode)
 {
 	// Distance used to check which direction is "inside" the polygon
 	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
@@ -414,23 +414,13 @@ Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, const std::vect
 	if (debugDrawNode != nullptr)
 	{
 		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
-
-		DrawNode* sourcePointDebug = DrawNode::create();
-		DrawNode* midPointDebug = DrawNode::create();
-		DrawNode* candidateNormalDebug = DrawNode::create(1.0f);
-		DrawNode* normalDebug = DrawNode::create();
-
-		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
-		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
-		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
-		candidateNormalDebug->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
-		candidateNormalDebug->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
-		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
-
-		debugDrawNode->addChild(sourcePointDebug);
-		debugDrawNode->addChild(normalDebug);
-		debugDrawNode->addChild(candidateNormalDebug);
-		debugDrawNode->addChild(midPointDebug);
+		
+		debugDrawNode->drawDot(source, 4.0f, Color4F::BLUE);
+		debugDrawNode->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
+		debugDrawNode->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
+		debugDrawNode->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
+		debugDrawNode->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
+		debugDrawNode->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
 	}
 
 	return outwardNormal;

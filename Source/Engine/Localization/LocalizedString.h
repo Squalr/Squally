@@ -21,7 +21,6 @@ protected:
 	~LocalizedString();
 
 	void onEnter() override;
-	void initializeListeners() override;
 
 	void copyAttributesTo(LocalizedString* localizedString);
 	virtual std::string getStringAr() = 0;

@@ -23,18 +23,16 @@ LocalizedString::~LocalizedString()
 
 void LocalizedString::onEnter()
 {
-	super::onEnter();
+	// ZAC: Optimization to skip SmartNode onEnter(). LocalizedStrings do not need the events set up by the SmartNode base class.
+	// Less stuff to dispose, this means significantly faster map destruction.
+	Node::onEnter();
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
 		this->onStringUpdate(this);
 	}
-}
 
-void LocalizedString::initializeListeners()
-{
-	super::initializeListeners();
-
+	// This needs to be done here since we side-step SmartNode functions
 	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
 		if (this->onStringUpdate != nullptr)

@@ -15,6 +15,7 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -62,10 +63,12 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topsNode = Node::create();
 	this->connectorsNode = Node::create();
 	this->topCornersNode = Node::create();
-	this->debugLevel2Node = Node::create();
+	this->debugLabelsNode = Node::create();
+	this->debugDrawNode = DrawNode::create();
 	this->boundsRect = Rect::ZERO;
 
-	this->debugLevel2Node->setVisible(false);
+	this->debugLabelsNode->setVisible(false);
+	this->debugDrawNode->setVisible(false);
 
 	this->rootNode->addChild(this->collisionNode);
 	this->rootNode->addChild(this->infillTexturesNode);
@@ -78,7 +81,8 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->rootNode->addChild(this->connectorsNode);
 	this->rootNode->addChild(this->bottomCornersNode);
 	this->rootNode->addChild(this->topCornersNode);
-	this->rootNode->addChild(this->debugLevel2Node);
+	this->rootNode->addChild(this->debugLabelsNode);
+	this->rootNode->addChild(this->debugDrawNode);
 	this->addChild(this->rootNode);
 
 	this->initResources();
@@ -115,13 +119,15 @@ void TerrainObject::onDeveloperModeEnable(int debugLevel)
 {
 	if (debugLevel >= 2)
 	{
-		this->debugLevel2Node->setVisible(true);
+		this->debugLabelsNode->setVisible(true);
+		this->debugDrawNode->setVisible(true);
 	}
 }
 
 void TerrainObject::onDeveloperModeDisable()
 {
-	this->debugLevel2Node->setVisible(false);
+	this->debugLabelsNode->setVisible(false);
+	this->debugDrawNode->setVisible(false);
 }
 
 void TerrainObject::initializeListeners()
@@ -202,7 +208,8 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 
 void TerrainObject::rebuildTerrain(TerrainData terrainData)
 {
-	this->debugLevel2Node->removeAllChildren();
+	this->debugLabelsNode->removeAllChildren();
+	this->debugDrawNode->removeAllChildren();
 
 	this->buildInnerTextures();
 
@@ -464,7 +471,7 @@ void TerrainObject::buildSurfaceTextures()
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float segmentLength = source.distance(dest);
-		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugLevel2Node);
+		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugDrawNode);
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->textureTriangles);
 		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->textureTriangles);
@@ -481,25 +488,28 @@ void TerrainObject::buildSurfaceTextures()
 		bool rightToRight = this->isRightAngle(normalAngle) && this->isRightAngle(nextSegmentNormalAngle);
 		bool roofToRoof = this->isBottomAngle(normalAngle) && this->isBottomAngle(nextSegmentNormalAngle);
 
-		std::stringstream angleStream;
-		angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / float(M_PI));
-		ConstantString* angleString = ConstantString::create(angleStream.str());
+		if (DeveloperModeController::IsDeveloperBuild)
+		{
+			std::stringstream angleStream;
+			angleStream << std::fixed << std::setprecision(2) << (angle * 180.0f / float(M_PI));
+			ConstantString* angleString = ConstantString::create(angleStream.str());
 
-		std::stringstream bisectingAngleStream;
-		bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / float(M_PI));
-		ConstantString* bisectingAngleString = ConstantString::create(bisectingAngleStream.str());
+			std::stringstream bisectingAngleStream;
+			bisectingAngleStream << std::fixed << std::setprecision(2) << (bisectingAngle * 180.0f / float(M_PI));
+			ConstantString* bisectingAngleString = ConstantString::create(bisectingAngleStream.str());
 
-		LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, angleString);
-		LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, bisectingAngleString);
+			LocalizedLabel* angleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, angleString);
+			LocalizedLabel* bisectingAngleDebug = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, bisectingAngleString);
 
-		angleDebug->setTextColor(Color4B::YELLOW);
-		bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
+			angleDebug->setTextColor(Color4B::YELLOW);
+			bisectingAngleDebug->setTextColor(Color4B::MAGENTA);
 
-		angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
-		bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
+			angleDebug->setPosition(midPoint + Vec2(0.0f, 24.0f));
+			bisectingAngleDebug->setPosition(dest + Vec2(0.0f, 24.0f));
 
-		this->debugLevel2Node->addChild(angleDebug);
-		this->debugLevel2Node->addChild(bisectingAngleDebug);
+			this->debugLabelsNode->addChild(angleDebug);
+			this->debugLabelsNode->addChild(bisectingAngleDebug);
+		}
 
 		if (this->isTopAngle(normalAngle))
 		{
@@ -585,11 +595,22 @@ void TerrainObject::buildSurfaceTextures()
 			Sprite* topConnector = nullptr;
 			Vec2 offset = terrainData.topOffset;
 			
-			ConstantString* str = ConstantString::create("S");
-			LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
-			concavityLabel->setTextColor(Color4B::MAGENTA);
-			concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
-			this->debugLevel2Node->addChild(concavityLabel);
+			if (DeveloperModeController::IsDeveloperBuild)
+			{
+				ConstantString* str = ConstantString::create("S");
+				LocalizedLabel* concavityLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, str);
+				concavityLabel->setTextColor(Color4B::MAGENTA);
+				concavityLabel->setPosition(dest + Vec2(0.0f, -24.0f));
+				switch (concavity)
+				{
+					default: case Concavity::Standard: { str->setString("S"); break; }
+					case Concavity::ConvexMedium: { str->setString("t"); break; }
+					case Concavity::ConvexDeep: { str->setString("_T_"); break; }
+					case Concavity::ConcaveMedium: { str->setString("v"); break; }
+					case Concavity::ConcaveDeep: { str->setString("_V_"); break; }
+				}
+				this->debugLabelsNode->addChild(concavityLabel);
+			}
 			
 			switch (concavity)
 			{
@@ -598,35 +619,30 @@ void TerrainObject::buildSurfaceTextures()
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorOffset;
-					str->setString("S");
 					break;
 				}
 				case Concavity::ConvexMedium:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConvexResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorConvexOffset;
-					str->setString("t");
 					break;
 				}
 				case Concavity::ConvexDeep:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConvexDeepResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorConvexDeepOffset;
-					str->setString("_T_");
 					break;
 				}
 				case Concavity::ConcaveMedium:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConcaveResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorConcaveOffset;
-					str->setString("v");
 					break;
 				}
 				case Concavity::ConcaveDeep:
 				{
 					topConnector = Sprite::create(this->terrainData.topConnectorConcaveDeepResource);
 					offset += this->terrainData.topOffset + this->terrainData.topConnectorConcaveDeepOffset;
-					str->setString("_V_");
 					break;
 				}
 			}

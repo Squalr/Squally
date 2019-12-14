@@ -168,7 +168,7 @@ void SmartNode::addEventListener(EventListener* listener)
 		return;
 	}
 
-	if (!listener->isGlobal())
+	if (listener->isGlobal())
 	{
 		this->optimizationHasGlobalListener = true;
 	}

@@ -366,14 +366,21 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 {
 	if (CollisionObject::InverseCollisionMap.find(collisionType) != CollisionObject::InverseCollisionMap.end())
 	{
-		CollisionObject::InverseCollisionMap[collisionType] = CollisionObject::InverseCollisionMap[collisionType] | this->getCollisionType();
+		int newBitmask = CollisionObject::InverseCollisionMap[collisionType] | this->getCollisionType();
+
+		if (CollisionObject::InverseCollisionMap[collisionType] != newBitmask)
+		{
+			CollisionObject::InverseCollisionMap[collisionType] = newBitmask;
+			
+			ObjectEvents::TriggerCollisionMapUpdated();
+		}
 	}
 	else
 	{
 		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
-	}
 
-	ObjectEvents::TriggerCollisionMapUpdated();
+		ObjectEvents::TriggerCollisionMapUpdated();
+	}
 
 	if (eventMap.find(collisionType) == eventMap.end())
 	{

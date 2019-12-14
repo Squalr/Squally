@@ -8,6 +8,7 @@
 
 namespace cocos2d
 {
+	class DrawNode;
 	class Sprite;
 }
 
@@ -195,7 +196,8 @@ private:
 	cocos2d::Node* topsNode;
 	cocos2d::Node* connectorsNode;
 	cocos2d::Node* topCornersNode;
-	cocos2d::Node* debugLevel2Node;
+	cocos2d::DrawNode* debugDrawNode;
+	cocos2d::Node* debugLabelsNode;
 
 	static const float ShadowDistance;
 	static const float InfillDistance;
