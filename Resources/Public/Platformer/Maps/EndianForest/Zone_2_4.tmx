@@ -46,12 +46,12 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="background" visible="0">
+ <objectgroup id="18" name="background">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-569.09" y="-3478.78">
+  <object id="897" name="temple-green-dark" type="texture" x="-569.09" y="-3478.78">
    <polygon points="247.186,150.853 6993.69,142.582 6999.78,7932.06 248.466,7937.93"/>
   </object>
  </objectgroup>
@@ -79,7 +79,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="-197.543" y="3408.94">
+  <object id="818" name="temple-green" type="terrain" x="-197.543" y="3408.94">
    <polygon points="4375.42,42.2482 4370.83,807.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
   </object>
  </objectgroup>

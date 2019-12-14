@@ -72,7 +72,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="821" name="temple" type="terrain" x="5429.01" y="1272">
+  <object id="821" name="temple-green" type="terrain" x="5429.01" y="1272">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -83,7 +83,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="temple" type="terrain" x="4483.13" y="2160">
+  <object id="820" name="temple-green" type="terrain" x="4483.13" y="2160">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -94,7 +94,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="3784" y="3440">
+  <object id="818" name="temple-green" type="terrain" x="3784" y="3440">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -136,7 +136,7 @@
     <property name="inputs" value="255,252,253,0"/>
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule" value="{i}+5"/>
-    <property name="tokens" value="+,1,4,+,7,6"/>
+    <property name="tokens" value="+,1,4,+,7"/>
     <property name="tutorial" value="overflow"/>
    </properties>
   </object>
@@ -170,7 +170,7 @@
     <property name="transition" value="exit-A"/>
    </properties>
   </object>
-  <object id="823" name="temple-door" type="object" x="6020" y="3036.5" width="432" height="528">
+  <object id="823" name="temple-green-door" type="object" x="6020" y="3036.5" width="432" height="528">
    <properties>
     <property name="map" value="EndianForest/Zone_2_4"/>
     <property name="transition" value="entrance-C"/>
