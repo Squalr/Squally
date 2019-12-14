@@ -182,6 +182,7 @@ namespace ObjectResources
 	extern const std::string Doors_PuzzleDoor_YellowStone_Door;
 	extern const std::string Doors_PuzzleDoor_YellowStone_Front;
 	extern const std::string Doors_Temple_TempleDoor;
+	extern const std::string Doors_Temple_TempleGreenDoor;
 	extern const std::string Doors_Tent_1;
 	extern const std::string Doors_Tent_BACK_CART;
 	extern const std::string Doors_Tent_BARREL;
