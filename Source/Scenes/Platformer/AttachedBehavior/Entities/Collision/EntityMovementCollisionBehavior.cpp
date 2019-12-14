@@ -201,6 +201,12 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
+		if (groundBehavior->isStandingOn(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		// This is how we allow platforms to overlap -- just decide which platform is more important to collide with
 		if (groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
@@ -211,7 +217,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		// No collision when not standing on anything, or if already on a different platform
+		// No collision when not standing on anything
 		if (!groundBehavior->isOnGround())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
@@ -244,7 +250,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			// Give a velocity boost for jumping out of water
 			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehavior::WaterJumpVelocity));
 
-			this->entity->getAnimations()->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+			this->entity->performJumpAnimation();
 		}
 		
 		return CollisionObject::CollisionResult::DoNothing;

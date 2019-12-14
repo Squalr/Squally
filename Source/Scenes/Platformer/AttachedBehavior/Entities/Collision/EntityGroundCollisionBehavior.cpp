@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 const std::string EntityGroundCollisionBehavior::MapKeyAttachedBehavior = "entity-ground-collisions";
-const float EntityGroundCollisionBehavior::GroundCollisionPadding = 28.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionPadding = 16.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = -4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionHeight = 64.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
@@ -39,7 +39,7 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	{
 		this->groundCollision = CollisionObject::create(
 			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width - EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
+				Size(std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
 				1.0f,
 				EntityGroundCollisionBehavior::GroundCollisionRadius,
 				0.0f
@@ -108,6 +108,49 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 bool EntityGroundCollisionBehavior::isOnGround()
 {
 	return !this->groundCollision->getCurrentCollisions().empty();
+}
+
+bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
+{
+	Node* currentCollisionGroup = collisonObject->getParent();
+
+	// Special case for intersection points -- just return false
+	for (auto next : this->groundCollision->getCurrentCollisions())
+	{
+		switch(next->getCollisionType())
+		{
+			case (int)EngineCollisionTypes::Intersection:
+			{
+				return false;
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
+
+	for (auto next : this->groundCollision->getCurrentCollisions())
+	{
+		switch(next->getCollisionType())
+		{
+			case (int)PlatformerCollisionType::Solid:
+			case (int)PlatformerCollisionType::PassThrough:
+			{
+				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
+				if (next->getParent() == currentCollisionGroup)
+				{
+					return true;
+				}
+			}
+			default:
+			{
+				break;
+			}
+		}
+	}
+
+	return false;
 }
 
 bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObject* collisonObject)

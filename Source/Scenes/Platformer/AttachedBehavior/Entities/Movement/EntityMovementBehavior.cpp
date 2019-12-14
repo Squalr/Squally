@@ -7,7 +7,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -66,7 +66,7 @@ void EntityMovementBehavior::update(float dt)
 	super::update(dt);
 
 	EntityMovementCollisionBehavior* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
-	EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
+	EntityJumpCollisionBehavior* jumpBehavior = this->entity->getAttachedBehavior<EntityJumpCollisionBehavior>();
 
 	if (movementCollision == nullptr)
 	{
@@ -97,7 +97,7 @@ void EntityMovementBehavior::update(float dt)
 
 	Vec2 velocity = movementCollision->getVelocity();
 
-	bool isOnGround = groundBehavior == nullptr ? false : groundBehavior->isOnGround();
+	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
 
 	switch (this->entity->controlState)
 	{
@@ -115,7 +115,7 @@ void EntityMovementBehavior::update(float dt)
 				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
 
-			if (movement.y > 0.0f && isOnGround)
+			if (movement.y > 0.0f && canJump)
 			{
 				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
 

@@ -46,7 +46,6 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
 	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
-	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::MapKeyTypeTopOnly, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
@@ -127,7 +126,7 @@ void TerrainObject::initializeListeners()
 {
 	super::initializeListeners();
 	
-	if (!this->isHollow && !this->isInactive)
+	if (!this->isInactive)
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
@@ -246,7 +245,7 @@ void TerrainObject::buildCollision()
 
 		if (deserializedCollisionName != "")
 		{
-			collisionObject = CollisionObject::create(this->properties, physicsBody, deserializedCollisionName, false, false);
+			collisionObject = CollisionObject::create(ValueMap(), physicsBody, deserializedCollisionName, false, false);
 		}
 		else
 		{
@@ -254,20 +253,20 @@ void TerrainObject::buildCollision()
 			
 			if ((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle)))
 			{
-				collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+				collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
 			}
 			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
 			{
 				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
-					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
+					collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
 				}
 			}
 			else
 			{
 				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
-					collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+					collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
 				}
 			}
 		}
@@ -287,7 +286,7 @@ void TerrainObject::buildCollision()
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
-		CollisionObject* collisionObject = CollisionObject::create(this->properties, physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
+		CollisionObject* collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}
@@ -755,7 +754,7 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 void TerrainObject::removeHollowEdgeCollisions()
 {
-	if (!this->isHollow || this->isInactive)
+	if (this->isInactive)
 	{
 		return;
 	}
@@ -767,7 +766,8 @@ void TerrainObject::removeHollowEdgeCollisions()
 			
 			// Remove all collision except for top collision
 			return (!this->isTopAngle(normalAngle));
-		}));
+		})
+	);
 }
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)

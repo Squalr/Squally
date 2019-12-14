@@ -12,6 +12,7 @@ public:
 
 	void onCollideWithGround();
 	bool isOnGround();
+	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
 	CollisionObject* groundCollision;

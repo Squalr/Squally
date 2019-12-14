@@ -171,7 +171,6 @@ private:
 
 	TerrainData terrainData;
 	bool isTopOnlyCollision;
-	bool isHollow;
 	bool isInactive;
 	bool isFlipped;
 
