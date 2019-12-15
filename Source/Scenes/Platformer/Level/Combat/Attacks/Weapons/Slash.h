@@ -17,6 +17,7 @@ protected:
 	Slash(float attackDuration, float recoverDuration);
 	~Slash() = default;
 
+	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

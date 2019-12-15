@@ -28,7 +28,7 @@ ThrowSpeedRune* ThrowSpeedRune::create()
 	return instance;
 }
 
-ThrowSpeedRune::ThrowSpeedRune() : super(AttackType::ProjectileBuffSpeed, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowSpeedRune::ThrowSpeedRune() : super(AttackType::Buff, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -61,9 +61,9 @@ void ThrowSpeedRune::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowSpeedRune::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowSpeedRune::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target);
+	super::performAttack(owner, target);
 
 	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
 	

@@ -13,9 +13,9 @@ public:
 	{
 		Damage,
 		Healing,
-		ProjectileHealing,
-		ProjectileDamage,
-		ProjectileBuffSpeed,
+		Buff,
+		Debuff,
+		Resurrection,
 	};
 
 	PlatformerAttack* clone();
@@ -30,7 +30,7 @@ public:
 	AttackType getAttackType();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
-	virtual void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target);
+	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
 	virtual void onAttackEnd();
 	virtual void onCleanup();
 

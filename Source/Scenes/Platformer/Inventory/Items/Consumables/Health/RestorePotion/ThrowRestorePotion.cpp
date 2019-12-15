@@ -29,7 +29,7 @@ ThrowRestorePotion* ThrowRestorePotion::create()
 	return instance;
 }
 
-ThrowRestorePotion::ThrowRestorePotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowRestorePotion::ThrowRestorePotion() : super(AttackType::Healing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -62,9 +62,9 @@ void ThrowRestorePotion::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowRestorePotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowRestorePotion::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target);
+	super::performAttack(owner, target);
 
 	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
 	

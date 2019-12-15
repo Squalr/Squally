@@ -22,6 +22,7 @@ public:
 	static const std::string EventDisableItems;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
+	static const std::string EventRequestRetargetCorrection;
 	static const std::string EventBuffApplied;
 	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
 	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
@@ -236,6 +237,7 @@ public:
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();
 	static void TriggerSelectCastTarget(CastTargetArgs args);
+	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();

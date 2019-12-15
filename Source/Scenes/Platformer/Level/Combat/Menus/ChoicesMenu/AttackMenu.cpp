@@ -73,14 +73,14 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 				switch (attack->getAttackType())
 				{
 					case PlatformerAttack::AttackType::Healing:
-					case PlatformerAttack::AttackType::ProjectileHealing:
-					case PlatformerAttack::AttackType::ProjectileBuffSpeed:
+					case PlatformerAttack::AttackType::Buff:
+					case PlatformerAttack::AttackType::Resurrection:
 					{
 						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:
-					case PlatformerAttack::AttackType::ProjectileDamage:
+					case PlatformerAttack::AttackType::Debuff:
 					{
 						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry));
 						break;

@@ -12,6 +12,7 @@ const std::string CombatEvents::EventDisableDefend = "EVENT_COMBAT_DISABLE_DEFEN
 const std::string CombatEvents::EventDisableItems = "EVENT_COMBAT_DISABLE_ITEMS";
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
+const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
 const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_TAKEN";
 const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_DELT";
@@ -71,6 +72,14 @@ void CombatEvents::TriggerSelectCastTarget(CastTargetArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventSelectCastTarget,
+		&args
+	);
+}
+
+void CombatEvents::TriggerRequestRetargetCorrection(AIRequestArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventRequestRetargetCorrection,
 		&args
 	);
 }

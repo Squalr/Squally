@@ -6,7 +6,7 @@ class CollectablesMenu;
 class CombatHud;
 class ChoicesMenu;
 class DefeatMenu;
-class EnemyAIHelper;
+class CombatAIHelper;
 class FirstStrikeMenu;
 class InventoryMenu;
 class MapMenu;
@@ -59,7 +59,7 @@ private:
 	DefeatMenu* defeatMenu;
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
-	EnemyAIHelper* enemyAIHelper;
+	CombatAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
 
 	bool playerFirstStrike;

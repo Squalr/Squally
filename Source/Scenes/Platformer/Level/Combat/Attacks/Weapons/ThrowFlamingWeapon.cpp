@@ -26,7 +26,7 @@ ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recov
 	return instance;
 }
 
-ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -49,9 +49,9 @@ std::string ThrowFlamingWeapon::getAttackAnimation()
 	return "AttackThrow";
 }
 
-void ThrowFlamingWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target);
+	super::performAttack(owner, target);
 
 	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);

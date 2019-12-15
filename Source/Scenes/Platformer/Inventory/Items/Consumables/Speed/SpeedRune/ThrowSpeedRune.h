@@ -18,7 +18,7 @@ protected:
 	ThrowSpeedRune();
 	~ThrowSpeedRune();
 
-	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 
 private:

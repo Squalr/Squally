@@ -14,7 +14,7 @@ protected:
 	ThrowFlamingWeapon(float attackDuration, float recoverDuration);
 	~ThrowFlamingWeapon();
 
-	void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 
 private:

@@ -91,7 +91,7 @@
   <object id="827" name="temple" type="terrain" x="4038.06" y="6440.53">
    <polygon points="2161.77,39.9766 2159.51,763.849 58.9233,759.914 62.7449,37.1994"/>
   </object>
-  <object id="842" name="temple-green" type="terrain" x="2441.66" y="4422.77">
+  <object id="842" name="temple" type="terrain" x="2441.66" y="4422.77">
    <polygon points="1275.64,16.3061 1272.75,233.805 42.4806,235.93 43.0234,11.4512 503.345,11.743 540.341,58.7656 599.348,97.8553 921.344,99.8886 968.345,65.2348 1015.35,14.9765"/>
   </object>
   <object id="843" name="stone-button" type="object" x="3072.39" y="4437.68" width="258.367" height="85.7283">
@@ -99,7 +99,7 @@
     <property name="send-event" value="door-open"/>
    </properties>
   </object>
-  <object id="924" name="temple-green" type="terrain" x="4074.7" y="4552">
+  <object id="924" name="temple" type="terrain" x="4074.7" y="4552">
    <polygon points="1039.18,12.3061 1038.09,235.138 29.7813,235.93 30.1618,11.4512"/>
   </object>
  </objectgroup>

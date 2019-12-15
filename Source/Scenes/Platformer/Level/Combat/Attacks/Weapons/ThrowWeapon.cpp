@@ -24,7 +24,7 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration)
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::ProjectileDamage, UIResources::Menus_Icons_SwordStrike, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -47,9 +47,9 @@ std::string ThrowWeapon::getAttackAnimation()
 	return "AttackThrow";
 }
 
-void ThrowWeapon::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target);
+	super::performAttack(owner, target);
 
 	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
 	

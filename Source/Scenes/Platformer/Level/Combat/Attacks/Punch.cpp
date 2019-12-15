@@ -49,6 +49,11 @@ void Punch::onAttackTelegraphBegin()
 	this->punchSound->play(false, this->attackDuration / 2.0f);
 }
 
+void Punch::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+{
+	this->doDamageOrHealing(owner, target);
+}
+
 void Punch::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));

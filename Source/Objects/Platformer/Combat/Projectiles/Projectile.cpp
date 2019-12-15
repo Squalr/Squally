@@ -38,6 +38,8 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	);
 
 	this->collisionObject->setPhysicsEnabled(false);
+
+	this->addChild(this->collisionObject);
 }
 
 Projectile::~Projectile()

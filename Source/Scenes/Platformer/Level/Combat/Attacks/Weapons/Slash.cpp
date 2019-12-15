@@ -51,6 +51,11 @@ void Slash::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
+void Slash::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+{
+	this->doDamageOrHealing(owner, target);
+}
+
 void Slash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	this->hitSound->play();

@@ -28,7 +28,7 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::ProjectileHealing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Healing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -61,9 +61,9 @@ void ThrowHealthPotion::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowHealthPotion::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	super::generateProjectiles(owner, target);
+	super::performAttack(owner, target);
 	
 	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
 	

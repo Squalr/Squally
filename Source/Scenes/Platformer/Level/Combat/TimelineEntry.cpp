@@ -178,6 +178,16 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 	this->currentCast = attack;
 }
 
+PlatformerEntity* TimelineEntry::getStagedTarget()
+{
+	return this->target == nullptr ? nullptr : this->target->getEntity();
+}
+
+PlatformerAttack* TimelineEntry::getStagedCast()
+{
+	return this->currentCast;
+}
+
 void TimelineEntry::defend()
 {
 	if (this->getEntity() == nullptr)
@@ -248,6 +258,8 @@ void TimelineEntry::addTime(float dt)
 
 void TimelineEntry::performCast()
 {
+	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
+	
 	GameCamera::getInstance()->pushTarget(CameraTrackingData(
 		this->entity,
 		(this->isPlayerEntry() ? Vec2(128.0f, 0.0f) : Vec2(128.0f, 0.0f)),

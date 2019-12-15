@@ -17,6 +17,7 @@ protected:
 	Punch(float attackDuration, float recoverDuration);
 	~Punch() = default;
 
+	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

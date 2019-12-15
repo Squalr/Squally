@@ -84,23 +84,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			switch (this->attackType)
-			{
-				default:
-				case AttackType::Damage:
-				case AttackType::Healing:
-				{
-					this->doDamageOrHealing(owner, target);
-
-					break;
-				}
-				case AttackType::ProjectileDamage:
-				case AttackType::ProjectileHealing:
-				case AttackType::ProjectileBuffSpeed:
-				{
-					this->generateProjectiles(owner, target);
-				}
-			}
+			this->performAttack(owner, target);
 		}),
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
@@ -121,7 +105,7 @@ void PlatformerAttack::doDamageOrHealing(PlatformerEntity* owner, PlatformerEnti
 {
 }
 
-void PlatformerAttack::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
 }
 

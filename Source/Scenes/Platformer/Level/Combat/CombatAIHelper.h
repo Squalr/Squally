@@ -6,26 +6,27 @@ class PlatformerAttack;
 class PlatformerEntity;
 class TimelineEntry;
 
-class EnemyAIHelper : public SmartNode
+class CombatAIHelper : public SmartNode
 {
 public:
-	static EnemyAIHelper* create();
+	static CombatAIHelper* create();
 
 	void initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
 
 private:
 	typedef SmartNode super;
-	EnemyAIHelper();
-	virtual ~EnemyAIHelper() = default;
+	CombatAIHelper();
+	virtual ~CombatAIHelper() = default;
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	void performAIActions(TimelineEntry* attackingEntity);
-	void selectTarget(TimelineEntry* attackingEntity);
-	void selectAttack(TimelineEntry* attackingEntity);
+	void performRetargetCorrections(TimelineEntry* attackingEntry);
+	void performAIActions(TimelineEntry* attackingEntry);
+	void selectTarget(TimelineEntry* attackingEntry);
+	void selectAttack(TimelineEntry* attackingEntry);
 
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;

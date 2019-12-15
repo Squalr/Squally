@@ -29,7 +29,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
+#include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
@@ -80,7 +80,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
-	this->enemyAIHelper = EnemyAIHelper::create();
+	this->enemyAIHelper = CombatAIHelper::create();
 	this->notificationHud = NotificationHud::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
