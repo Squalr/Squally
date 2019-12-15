@@ -7,6 +7,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
@@ -42,7 +43,9 @@ StateCardReplace::StateCardReplace() : super(GameState::StateType::CardReplace)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected
 	);
+	this->focusTakeOver = FocusTakeOver::create();
 	
+	this->addChild(this->focusTakeOver);
 	this->addChild(this->doneButton);
 }
 
@@ -98,7 +101,11 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 		gameState->playerHand->enableRowCardInteraction();
 
 		Size visibleSize = Director::getInstance()->getVisibleSize();
-		GameUtils::changeParent(gameState->playerHand, this, true);
+
+		this->focusTakeOver->focus({
+			gameState->playerHand
+		});
+
 		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
 		gameState->playerHand->setCardScale(0.6f, 0.25f);
 		gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
@@ -150,7 +157,7 @@ void StateCardReplace::onStateExit(GameState* gameState)
 
 	// Restore hand to proper position
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-	GameUtils::changeParent(gameState->playerHand, gameState, true);
+	this->focusTakeOver->unfocus();
 	gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
 	gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
 	gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));

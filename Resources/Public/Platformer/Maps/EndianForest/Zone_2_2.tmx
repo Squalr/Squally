@@ -72,7 +72,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="temple-green" type="terrain" x="6567.32" y="1613.37">
+  <object id="833" name="temple" type="terrain" x="6567.32" y="1613.37">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -83,7 +83,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="821" name="temple-green" type="terrain" x="5429.01" y="2137.46">
+  <object id="821" name="temple" type="terrain" x="5429.01" y="2137.46">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -94,7 +94,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="temple-green" type="terrain" x="4483.13" y="2829.93">
+  <object id="820" name="temple" type="terrain" x="4483.13" y="2829.93">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -105,7 +105,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple-green" type="terrain" x="3784" y="3440">
+  <object id="818" name="temple" type="terrain" x="3784" y="3440">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -171,6 +171,7 @@
   </object>
   <object id="819" name="add-door" type="object" x="7152" y="3840.5" width="696" height="775">
    <properties>
+    <property name="color" value="yellow"/>
     <property name="map" value="EndianForest/Zone_2_3"/>
     <property name="transition" value="entrance-A"/>
    </properties>
@@ -180,7 +181,7 @@
     <property name="transition" value="exit-A"/>
    </properties>
   </object>
-  <object id="823" name="temple-green-door" type="object" x="6020" y="3036.5" width="432" height="528">
+  <object id="823" name="temple-door" type="object" x="6020" y="3036.5" width="432" height="528">
    <properties>
     <property name="map" value="EndianForest/Zone_2_4"/>
     <property name="transition" value="entrance-C"/>
@@ -217,7 +218,7 @@
     <property name="transition" value="exit-C"/>
    </properties>
   </object>
-  <object id="834" name="temple-green-door" type="object" x="6552" y="2364" width="432" height="528">
+  <object id="834" name="temple-door" type="object" x="6552" y="2364" width="432" height="528">
    <properties>
     <property name="map" value="EndianForest/Zone_2_5"/>
     <property name="transition" value="entrance-E"/>

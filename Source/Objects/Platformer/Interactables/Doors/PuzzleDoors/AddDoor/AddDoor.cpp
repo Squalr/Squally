@@ -33,7 +33,7 @@ AddDoor* AddDoor::create(ValueMap& properties)
 	return instance;
 }
 
-AddDoor::AddDoor(ValueMap& properties) : super(properties, StonePuzzleDoor::DoorColor::Green)
+AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
 }
 

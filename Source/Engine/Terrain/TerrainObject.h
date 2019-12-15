@@ -175,6 +175,7 @@ private:
 	bool isTopOnlyCollision;
 	bool isInactive;
 	bool isFlipped;
+	unsigned long long terrainObjectId;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

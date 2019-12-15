@@ -5,6 +5,7 @@
 class Card;
 class ClickableTextNode;
 class ClickableNode;
+class FocusTakeOver;
 
 class StateCardReplace : public StateBase
 {
@@ -28,6 +29,7 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void replaceCard(Card* cardToReplace, GameState* gameState);
 
+	FocusTakeOver* focusTakeOver;
 	std::vector<Card*> removedCards;
 	ClickableTextNode* doneButton;
 };

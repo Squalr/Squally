@@ -40,6 +40,9 @@ const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
 
 TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : super(properties)
 {
+	static unsigned long long int nextTerrainObjectId = 0;
+	
+	this->terrainObjectId = nextTerrainObjectId++;
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
 	this->intersectionPoints = std::vector<Vec2>();
@@ -142,7 +145,7 @@ void TerrainObject::initializeListeners()
 		{
 			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
 
-			if (args != nullptr && args->newTerrain != this)
+			if (args != nullptr && args->newTerrain != this && this->terrainObjectId < args->newTerrain->terrainObjectId)
 			{
 				this->maskAgainstOther(args->newTerrain);
 			}

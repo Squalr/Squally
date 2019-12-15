@@ -10,14 +10,9 @@ namespace cocos2d
 class StonePuzzleDoor : public PuzzleDoorBase
 {
 public:
-	enum class DoorColor
-	{
-		Green,
-		Yellow,
-	};
 
 protected:
-	StonePuzzleDoor(cocos2d::ValueMap& properties, DoorColor doorColor);
+	StonePuzzleDoor(cocos2d::ValueMap& properties);
 	virtual ~StonePuzzleDoor();
 
 	void onEnter() override;
@@ -27,8 +22,6 @@ protected:
 	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) override = 0;
 
-	static const std::string UnlockedSaveKey;
-
 private:
 	typedef PuzzleDoorBase super;
 
@@ -37,4 +30,5 @@ private:
 	cocos2d::Sprite* front;
 
 	static const cocos2d::Vec2 Offset;
+	static const std::string MapPropertyColor;
 };

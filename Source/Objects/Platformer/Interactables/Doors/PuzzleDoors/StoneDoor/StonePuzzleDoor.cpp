@@ -25,8 +25,9 @@
 using namespace cocos2d;
 
 const Vec2 StonePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
+const std::string StonePuzzleDoor::MapPropertyColor = "color";
 
-StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties, DoorColor doorColor) : super(properties,
+StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 	Size(256.0f, 512.0f),
 	StonePuzzleDoor::Offset + Vec2(0.0f, 24.0f),
 	StonePuzzleDoor::Offset + Vec2(0.0f, 32.0f),
@@ -37,24 +38,21 @@ StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties, DoorColor doorColor) : su
 	136.0f,
 	292.0f)
 {
-	switch (doorColor)
+	std::string color = GameUtils::getKeyOrDefault(this->properties, StonePuzzleDoor::MapPropertyColor, Value("yellow")).asString();
+	
+	if (color == "green")
 	{
-		default:
-		case DoorColor::Green:
-		{
-			this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Back);
-			this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Door);
-			this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Front);
-			break;
-		}
-		case DoorColor::Yellow:
-		{
-			this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Back);
-			this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Door);
-			this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Front);
-			break;
-		}
+		this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Back);
+		this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Door);
+		this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_GreenStone_Front);
 	}
+	else
+	{
+		this->back = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Back);
+		this->door = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Door);
+		this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Front);
+	}
+
 	this->doorOpenSound = WorldSound::create();
 
 	this->backNode->addChild(this->back);
