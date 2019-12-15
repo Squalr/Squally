@@ -84,10 +84,6 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->rootNode->addChild(this->debugLabelsNode);
 	this->rootNode->addChild(this->debugDrawNode);
 	this->addChild(this->rootNode);
-
-	this->initResources();
-	this->setPoints(this->polylinePoints);
-	this->rebuildTerrain(terrainData);
 }
 
 TerrainObject::~TerrainObject()
@@ -98,21 +94,27 @@ void TerrainObject::onEnter()
 {
 	super::onEnter();
 
-	// Should get called right after this is terrain is added to the map
-	if (!this->isInactive)
-	{
-		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
-	}
-	
+	this->initResources();
+	this->setPoints(this->polylinePoints);
+	this->rebuildTerrain(terrainData);
 	this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
+
+	// Should get called right after this is terrain is added to the map
+	if (!this->isInactive)
+	{
+		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+	}
 	
 	// This gets built as a deferred step since we may be waiting on masking until this point
-	this->buildCollision();
+	this->defer([=]()
+	{
+		this->buildCollision();
+	});
 }
 
 void TerrainObject::onDeveloperModeEnable(int debugLevel)
@@ -336,7 +338,9 @@ void TerrainObject::buildInnerTextures()
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
 
-	this->boundsRect = Rect(this->getPosition(), drawRect.size);
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+
+	this->debugDrawNode->drawRect(drawRect.origin, drawRect.origin + drawRect.size, Color4F::GRAY);
 
 	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
 	texture->getTexture()->setTexParameters(params);
@@ -902,7 +906,7 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	// Heuristic -- technically this warrants using a bunch of projection math, but it's close enough, and always over-shoots favorably. Good enough.
+	// Admissible heuristic -- technically this warrants using a bunch of projection math. Zoom is good enough.
 	float zoom = GameCamera::getInstance()->getCameraZoom();
 	Size visibleSize = Director::getInstance()->getVisibleSize() * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f), visibleSize);
