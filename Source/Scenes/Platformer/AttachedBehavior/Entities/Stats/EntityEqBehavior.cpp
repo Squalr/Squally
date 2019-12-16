@@ -71,7 +71,7 @@ int EntityEqBehavior::getEq()
 
 bool EntityEqBehavior::setEqExperience(int eqExperience)
 {
-	int expToLevel = StatsTables::getExpRequiredAtLevel(this->getEq());
+	int expToLevel = StatsTables::getExpRequiredAtLevel(this->entity);
 
 	this->entity->setState(StateKeys::EqExperience, Value(eqExperience), false);
 

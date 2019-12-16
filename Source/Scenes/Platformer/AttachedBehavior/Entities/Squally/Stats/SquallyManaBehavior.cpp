@@ -8,6 +8,10 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyEqBehavior.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -46,14 +50,37 @@ void SquallyManaBehavior::onLoad()
 	{
 		this->saveState();
 	}));
+	
+	this->squally->watchForAttachedBehavior<SquallyEqBehavior>([=](SquallyEqBehavior* squallyEqBehavior)
+	{
+		this->recalculateMaxMana([=]()
+		{
+			int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(777)).asInt();
 
-	int maxMana = this->squally->getStateOrDefaultInt(StateKeys::MaxMana, 123);
-	int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(maxMana)).asInt();
-
-	this->squally->setState(StateKeys::Mana, Value(mana));
+			this->squally->setState(StateKeys::Mana, Value(mana));
+		});
+	});
 }
 
 void SquallyManaBehavior::saveState()
 {
 	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
 }
+
+void SquallyManaBehavior::recalculateMaxMana(std::function<void()> onCalculated)
+{
+	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		int maxMana = StatsTables::getBaseMana(this->squally);
+
+		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
+		{
+			maxMana += item->getItemStats().manaBonus;
+		}
+
+		this->squally->setState(StateKeys::MaxMana, Value(maxMana));
+
+		onCalculated();
+	});
+}
+

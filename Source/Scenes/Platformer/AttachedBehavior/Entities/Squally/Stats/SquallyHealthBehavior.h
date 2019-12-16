@@ -22,6 +22,7 @@ private:
 	
 	void saveState();
 	void respawn(float delay);
+	void recalculateMaxHealth(std::function<void()> onCalculated);
 
 	cocos2d::Vec2 spawnCoords;
 

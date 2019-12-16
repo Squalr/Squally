@@ -25,7 +25,6 @@ public:
 
 	int getTotalMinAttack();
 	int getTotalMaxAttack();
-	int getTotalDefense();
 
 protected:
 	EquipmentInventory(std::string saveKey = "", int capacity = Inventory::InfiniteCapacity);

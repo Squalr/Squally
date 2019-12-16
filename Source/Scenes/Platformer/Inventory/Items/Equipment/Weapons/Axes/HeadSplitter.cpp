@@ -20,7 +20,18 @@ HeadSplitter* HeadSplitter::create()
 	return instance;
 }
 
-HeadSplitter::HeadSplitter() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+HeadSplitter::HeadSplitter() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

@@ -11,6 +11,7 @@ public:
 	static const std::string IsAlive;
 	static const std::string SkipDeathAnimation;
 	static const std::string Health;
+	static const std::string BaseHealth;
 	static const std::string MaxHealth;
 	static const std::string Mana;
 	static const std::string MaxMana;

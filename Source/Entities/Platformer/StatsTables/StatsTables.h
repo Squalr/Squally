@@ -10,12 +10,7 @@ class StatsTables : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	static int getHealthGainAtLevel(int level);
-	static int getHealthGainAtNewLevel(int newLevel);
-	static int getManaGainAtLevel(int level);
-	static int getManaGainAtNewLevel(int newLevel);
-	static int getExpRequiredAtLevel(int level);
-	static int getExpNeededUntilLevel(int currentLevel, int currentExp, int level);
+	static int getExpRequiredAtLevel(PlatformerEntity* platformerEntity);
 	static int getKillExp(PlatformerEntity* platformerEntity);
 	static int getBaseMana(PlatformerEntity* platformerEntity);
 	static int getBaseHealth(PlatformerEntity* platformerEntity);
@@ -30,9 +25,11 @@ private:
 		int health;
 		int mana;
 		int exp;
+		std::vector<std::tuple<int, int, int>> increments;
 
-		Stats() : health(420), mana(420), exp(420) { }
-		Stats(int health, int mana, int exp) : health(health), mana(mana), exp(exp) { }
+		Stats() : health(665), mana(68), exp(419), increments({ }) { }
+		Stats(int health, int mana, int exp) : health(health), mana(mana), exp(exp), increments({ }) { }
+		Stats(int health, int mana, int exp, std::vector<std::tuple<int, int, int>> increments) : health(health), mana(mana), exp(exp), increments(increments) { }
 	};
 
 	static StatsTables* getInstance();
@@ -40,9 +37,6 @@ private:
 	~StatsTables();
 
 	static StatsTables* instance;
-	static const std::map<int, int> HealthGain;
-	static const std::map<int, int> ManaGain;
-	static const std::map<int, int> ExpRequired;
 	static std::map<std::string, Stats> StatsTable;
 	static const int FallbackExp;
 	static const int FallbackMana;

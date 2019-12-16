@@ -20,7 +20,18 @@ Flail* Flail::create()
 	return instance;
 }
 
-Flail::Flail() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+Flail::Flail() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

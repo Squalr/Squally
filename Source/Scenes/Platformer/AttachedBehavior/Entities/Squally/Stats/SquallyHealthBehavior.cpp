@@ -7,11 +7,16 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/SaveEvents.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyEqBehavior.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -53,16 +58,21 @@ void SquallyHealthBehavior::onLoad()
 	{
 		this->saveState();
 	}));
-
-	int maxHealth = this->squally->getStateOrDefaultInt(StateKeys::MaxHealth, 123);
-	int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(maxHealth)).asInt();
-
-	this->squally->setState(StateKeys::Health, Value(health));
-
-	if (health <= 0)
+	
+	this->squally->watchForAttachedBehavior<SquallyEqBehavior>([=](SquallyEqBehavior* squallyEqBehavior)
 	{
-		this->respawn(0.1f);
-	}
+		this->recalculateMaxHealth([=]()
+		{
+			int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(777)).asInt();
+
+			this->squally->setState(StateKeys::Health, Value(health));
+
+			if (health <= 0)
+			{
+				this->respawn(0.1f);
+			}
+		});
+	});
 
 	if (this->squally != nullptr)
 	{
@@ -96,4 +106,21 @@ void SquallyHealthBehavior::respawn(float duration)
 		}),
 		nullptr
 	));
+}
+
+void SquallyHealthBehavior::recalculateMaxHealth(std::function<void()> onCalculated)
+{
+	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		int maxHealth = StatsTables::getBaseHealth(this->squally);
+
+		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
+		{
+			maxHealth += item->getItemStats().healthBonus;
+		}
+
+		this->squally->setState(StateKeys::MaxHealth, Value(maxHealth));
+
+		onCalculated();
+	});
 }

@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Weapon::Weapon(CurrencyInventory* cost, int minAttack, int maxAttack) : super(cost)
+Weapon::Weapon(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats) : super(cost, itemStats)
 {
 	this->minAttack = minAttack;
 	this->maxAttack = maxAttack;

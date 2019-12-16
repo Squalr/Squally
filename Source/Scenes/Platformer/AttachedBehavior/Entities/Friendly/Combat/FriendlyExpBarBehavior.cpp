@@ -98,9 +98,9 @@ void FriendlyExpBarBehavior::giveExp()
 
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
 	{
-		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
+		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
 		bool didLevelUp = eqBehavior->addEqExperience(expGain);
-		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
+		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
 		
 		const float StartDelay = 0.5f;
 		const float FillDuration = 1.0f;

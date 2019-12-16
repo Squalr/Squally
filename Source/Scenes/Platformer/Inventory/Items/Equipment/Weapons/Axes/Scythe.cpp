@@ -20,7 +20,18 @@ Scythe* Scythe::create()
 	return instance;
 }
 
-Scythe::Scythe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+Scythe::Scythe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

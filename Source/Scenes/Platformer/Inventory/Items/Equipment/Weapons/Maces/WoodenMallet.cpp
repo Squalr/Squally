@@ -20,7 +20,18 @@ WoodenMallet* WoodenMallet::create()
 	return instance;
 }
 
-WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 3, 7)
+WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 3, 7, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

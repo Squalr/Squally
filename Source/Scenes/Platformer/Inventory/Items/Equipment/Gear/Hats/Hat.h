@@ -9,7 +9,7 @@ class Hat : public Gear
 public:
 
 protected:
-	Hat(CurrencyInventory* cost, int defense, ItemMeta itemMeta = ItemMeta());
+	Hat(CurrencyInventory* cost, ItemStats itemStats, ItemMeta itemMeta = ItemMeta());
 	virtual ~Hat();
 
 private:

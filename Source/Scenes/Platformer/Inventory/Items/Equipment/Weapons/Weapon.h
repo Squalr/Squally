@@ -16,7 +16,7 @@ public:
 	virtual std::string getWeaponAttackSound();
 
 protected:
-	Weapon(CurrencyInventory* cost, int minAttack, int maxAttack);
+	Weapon(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);
 	virtual ~Weapon();
 
 private:

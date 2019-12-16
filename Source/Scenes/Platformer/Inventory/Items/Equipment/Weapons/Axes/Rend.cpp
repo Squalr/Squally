@@ -20,7 +20,18 @@ Rend* Rend::create()
 	return instance;
 }
 
-Rend::Rend() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+Rend::Rend() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

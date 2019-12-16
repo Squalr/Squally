@@ -176,18 +176,3 @@ int EquipmentInventory::getTotalMaxAttack()
 
 	return maxAttack;
 }
-
-int EquipmentInventory::getTotalDefense()
-{
-	int defense = 0;
-
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
-	{
-		if (dynamic_cast<Gear*>(*it) != nullptr)
-		{
-			defense += dynamic_cast<Gear*>(*it)->getDefense();
-		}
-	}
-
-	return defense;
-}

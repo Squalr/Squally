@@ -2,12 +2,18 @@
 
 using namespace cocos2d;
 
-Equipable::Equipable(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
+Equipable::Equipable(CurrencyInventory* cost, ItemStats itemStats, ItemMeta itemMeta) : super(cost, itemMeta)
 {
+	this->itemStats = itemStats;
 }
 
 Equipable::~Equipable()
 {
+}
+
+Equipable::ItemStats Equipable::getItemStats()
+{
+	return this->itemStats;
 }
 
 Vec2 Equipable::getDisplayOffset()

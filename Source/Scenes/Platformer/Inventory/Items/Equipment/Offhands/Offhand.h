@@ -15,7 +15,7 @@ public:
 	virtual cocos2d::Vec2 getOffhandOffset();
 
 protected:
-	Offhand(CurrencyInventory* cost, int minAttack, int maxAttack, ItemMeta itemMeta = ItemMeta());
+	Offhand(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats, ItemMeta itemMeta = ItemMeta());
 	virtual ~Offhand();
 
 private:

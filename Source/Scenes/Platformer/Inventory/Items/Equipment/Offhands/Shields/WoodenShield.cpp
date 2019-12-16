@@ -20,7 +20,18 @@ WoodenShield* WoodenShield::create()
 	return instance;
 }
 
-WoodenShield::WoodenShield() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+WoodenShield::WoodenShield() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

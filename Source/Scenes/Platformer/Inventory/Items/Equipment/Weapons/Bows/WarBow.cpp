@@ -20,7 +20,18 @@ WarBow* WarBow::create()
 	return instance;
 }
 
-WarBow::WarBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+WarBow::WarBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 
