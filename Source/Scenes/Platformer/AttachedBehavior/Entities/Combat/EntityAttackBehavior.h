@@ -12,6 +12,7 @@ public:
 
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
+	std::vector<PlatformerAttack*> getNoCostAttacks();
 	std::vector<PlatformerAttack*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
 

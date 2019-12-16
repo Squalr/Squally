@@ -88,6 +88,22 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 	return availableAttacks;
 }
 
+std::vector<PlatformerAttack*> EntityAttackBehavior::getNoCostAttacks()
+{
+	std::vector<PlatformerAttack*> attacks = this->getAttacks();
+	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
+
+	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	{
+		if ((*it)->getSpecialCost() <= 0)
+		{
+			availableAttacks.push_back(*it);
+		}
+	}
+
+	return availableAttacks;
+}
+
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableConsumables()
 {
 	if (this->consumablesStale)

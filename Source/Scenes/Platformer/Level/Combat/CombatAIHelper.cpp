@@ -160,7 +160,7 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 
 	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	std::vector<PlatformerAttack*> attackList = attackBehavior->getAvailableAttacks();
+	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
 	std::vector<PlatformerAttack*> consumablesList = attackingEntry->isPlayerEntry()
 		? std::vector<PlatformerAttack*>()
 		: attackBehavior->getAvailableConsumables();
@@ -191,8 +191,26 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 		}
 	}
 	
-	if (hasDeadAlly)
+	// Prioritize resurrection
+	if (!attackingEntry->isPlayerEntry() && hasDeadAlly)
 	{
+		for (auto it = attackList.begin(); it != attackList.end(); it++)
+		{
+			switch((*it)->getAttackType())
+			{
+				case PlatformerAttack::AttackType::Resurrection:
+				{
+					if ((*it)->getPriority() > selectedAttackPriority)
+					{
+						this->selectedAttack = *it;
+					}
+				}
+				default:
+				{
+					break;
+				}
+			}
+		}
 	}
 
 	if (this->selectedAttack != nullptr)
@@ -200,7 +218,8 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 		return;
 	}
 
-	if (hasWeakAlly)
+	// Prioritize heals next
+	if (!attackingEntry->isPlayerEntry() && hasWeakAlly)
 	{
 		for (auto it = attackList.begin(); it != attackList.end(); it++)
 		{
@@ -272,17 +291,11 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 			// Currently just picking the highest health target. This is a user-friendly AI strategy.
 			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
 			{
-				if (target == nullptr)
-				{
-					target = *it;
-					continue;
-				}
-
 				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
 				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
+				int targetHealth = target == nullptr ? health : target->getStateOrDefaultInt(StateKeys::Health, 0);
 				
-				if (isAlive && health < targetHealth)
+				if (isAlive && health <= targetHealth)
 				{
 					target = *it;
 				}
@@ -294,12 +307,6 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 		{
 			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
 			{
-				if (target == nullptr)
-				{
-					target = *it;
-					continue;
-				}
-
 				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
 				
 				if (!isAlive)
@@ -320,16 +327,10 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 			// Currently just picking the highest health target. This is a user-friendly AI strategy.
 			for (auto it = otherTeam.begin(); it != otherTeam.end(); it++)
 			{
-				if (target == nullptr)
-				{
-					target = *it;
-					continue;
-				}
-
 				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
 				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
 				
-				if (health > targetHealth)
+				if (health >= targetHealth)
 				{
 					target = *it;
 				}
