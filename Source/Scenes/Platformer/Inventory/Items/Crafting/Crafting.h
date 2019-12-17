@@ -7,7 +7,7 @@ class Crafting : public Item
 public:
 protected:
 	Crafting(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
-	~Crafting();
+	virtual ~Crafting();
 
 private:
 	typedef Item super;
