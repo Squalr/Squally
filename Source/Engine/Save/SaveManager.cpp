@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 const std::string SaveManager::globalSaveFileName = "Global.sqa";
-const std::string SaveManager::profileSaveFileTemplate = "SaveGame_%d.sqa";
+const std::string SaveManager::profileSaveFileTemplate = "Profile_%d.sqa";
 const std::string SaveManager::SaveKeyIncrement = "SAVE_KEY_INCREMENT";
 
 SaveManager::ActiveSaveProfile SaveManager::activeSaveProfile = ActiveSaveProfile(0);

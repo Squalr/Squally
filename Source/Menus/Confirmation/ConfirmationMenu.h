@@ -11,6 +11,7 @@ namespace cocos2d
 class LocalizedString;
 class LocalizedLabel;
 class ClickableNode;
+class ClickableTextNode;
 
 class ConfirmationMenu : public SmartNode
 {
@@ -33,8 +34,8 @@ private:
 	cocos2d::Sprite* confirmWindow;
 	LocalizedLabel* confirmationLabel;
 	ClickableNode* closeButton;
-	ClickableNode* confirmButton;
-	ClickableNode* cancelButton;
+	ClickableTextNode* confirmButton;
+	ClickableTextNode* cancelButton;
 
 	std::function<void()> onConfirmCallback;
 	std::function<void()> onCancelCallback;

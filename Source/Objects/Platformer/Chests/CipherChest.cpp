@@ -16,6 +16,7 @@
 #include "Events/CipherEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
@@ -157,7 +158,8 @@ void CipherChest::onUnlock(CipherPuzzleData* puzzleData)
 
 	if (this->chestPool == nullptr)
 	{
-		return;
+		this->chestPool = ErrorPool::create();
+		this->addChild(this->chestPool);
 	}
 
 	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));

@@ -51,26 +51,33 @@ SaveSelectMenu::SaveSelectMenu()
 	this->setFadeSpeed(0.0f);
 
 	this->backgroundNode = Node::create();
-	this->buttonsNode = Node::create();
+	this->saveSelectWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->saveButtonNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->confirmationMenu = ConfirmationMenu::create();
 
-	LocalizedLabel*	backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Back::create());
-	LocalizedLabel*	backButtonLabelHover = backButtonLabel->clone();
+	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
+	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	backButtonLabel->enableOutline(Color4B::BLACK, 2);
-	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);
+	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableGlow(Color4B::BLACK);
 
-	this->backButton = ClickableTextNode::create(
-		backButtonLabel,
-		backButtonLabelHover,
-		UIResources::Menus_Buttons_GenericButton,
-		UIResources::Menus_Buttons_GenericButtonHover
-	);
+	returnLabelHover->setColor(Color3B::YELLOW);
+	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->returnButton = ClickableTextNode::create(
+		returnLabel,
+		returnLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->addChild(this->backgroundNode);
-	this->addChild(this->buttonsNode);
-	this->addChild(this->backButton);
+	this->addChild(this->saveSelectWindow);
+	this->addChild(this->saveButtonNode);
+	this->addChild(this->returnButton);
+	this->addChild(this->closeButton);
 	this->addChild(this->backdrop);
 	this->addChild(this->confirmationMenu);
 }
@@ -83,20 +90,19 @@ void SaveSelectMenu::onEnter()
 {
 	super::onEnter();
 
-	this->backgroundNode->addChild(MenuBackground::claimInstance());
 	this->backdrop->setVisible(false);
+	this->backgroundNode->addChild(MenuBackground::claimInstance());
+	this->buildSaveButtons();
 
 	const float delay = 0.15f;
 	const float duration = 0.5f;
 
-	this->buildSaveButtons();
-
+	GameUtils::fadeInObject(this->saveSelectWindow, delay, duration);
 	GameUtils::fadeInObject(this->saveGameButton0, delay, duration);
 	GameUtils::fadeInObject(this->saveGameButton1, delay, duration);
 	GameUtils::fadeInObject(this->saveGameButton2, delay, duration);
-	GameUtils::fadeInObject(this->backButton, delay, duration);
-
-	this->scheduleUpdate();
+	GameUtils::fadeInObject(this->returnButton, delay, duration);
+	GameUtils::fadeInObject(this->closeButton, delay, duration);
 }
 
 void SaveSelectMenu::initializeListeners()
@@ -109,12 +115,11 @@ void SaveSelectMenu::initializeListeners()
 		{
 			return;
 		}
+
 		args->handle();
 
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+		this->goBack();
 	});
-
-	this->backButton->setMouseClickCallback(CC_CALLBACK_0(SaveSelectMenu::onBackClick, this));
 }
 
 void SaveSelectMenu::initializePositions()
@@ -123,25 +128,27 @@ void SaveSelectMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->buttonsNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->backButton->setPosition(Vec2(visibleSize.width / 2.0f - 756.0f, visibleSize.height - 64.0f));
+	this->saveSelectWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->saveButtonNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 48.0f));
+	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
+	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 420.0f));
 }
 
 void SaveSelectMenu::buildSaveButtons()
 {
-	this->buttonsNode->removeAllChildren();
+	this->saveButtonNode->removeAllChildren();
 
 	this->saveGameButton0 = this->buildSaveButton(0);
 	this->saveGameButton1 = this->buildSaveButton(1);
 	this->saveGameButton2 = this->buildSaveButton(2);
 
-	this->saveGameButton0->setPositionY(224.0f);
-	this->saveGameButton1->setPositionY(0.0f);
-	this->saveGameButton2->setPositionY(-224.0f);
+	this->saveButtonNode->addChild(this->saveGameButton0);
+	this->saveButtonNode->addChild(this->saveGameButton1);
+	this->saveButtonNode->addChild(this->saveGameButton2);
 
-	this->buttonsNode->addChild(this->saveGameButton0);
-	this->buttonsNode->addChild(this->saveGameButton1);
-	this->buttonsNode->addChild(this->saveGameButton2);
+	this->saveGameButton0->setPosition(Vec2(0.0f, 192.0f));
+	this->saveGameButton1->setPosition(Vec2(0.0f, 0.0f));
+	this->saveGameButton2->setPosition(Vec2(0.0f, -192.0f));
 }
 
 ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
@@ -153,7 +160,6 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 	const Color4B shadowColor = Color4B::BLACK;
 	const Color3B highlightColor = Color3B::YELLOW;
 	const Color4B glowColor = Color4B::ORANGE;
-	const Vec2 labelOffset = Vec2(48.0f, 0.0f);
 
 	bool hasSaveData = SaveManager::hasSaveProfile(profileId);
 	LocalizedLabel*	saveGameLabel = nullptr;
@@ -180,17 +186,8 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 	ClickableTextNode* saveGameButton = ClickableTextNode::create(
 		saveGameLabel,
 		saveGameLabelHover,
-		UIResources::Menus_MinigamesMenu_Banner,
-		UIResources::Menus_MinigamesMenu_BannerHover);
-
-	saveGameButton->setTextOffset(labelOffset);
-
-	Sprite* saveGameIcon = Sprite::create(hasSaveData ? UIResources::Menus_Icons_BookSpellsArcane : UIResources::Menus_Icons_Health);
-
-	saveGameIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	saveGameIcon->setPosition(Vec2(-saveGameButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
-
-	saveGameButton->addChild(saveGameIcon);
+		UIResources::Menus_SaveSelectMenu_Row,
+		UIResources::Menus_SaveSelectMenu_RowSelected);
 
 	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
@@ -200,9 +197,15 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 	if (hasSaveData)
 	{
+		Sprite* saveGameIcon = Sprite::create(hasSaveData ? UIResources::Menus_Icons_BookSpellsArcane : UIResources::Menus_Icons_Health);
+
+		saveGameIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
+		saveGameIcon->setPosition(Vec2(-saveGameButton->getContentSize().width / 2.0f + 78.0f, 0.0f));
+		saveGameButton->addChild(saveGameIcon);
+
 		ClickableNode* deleteButton = this->buildDeleteButton(profileId);
 
-		deleteButton->setPosition(Vec2(580.0f, 0.0f));
+		deleteButton->setPosition(Vec2(392.0f, -32.0f));
 
 		saveGameButton->addChild(deleteButton);
 	}
@@ -212,7 +215,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 {
-	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_DeleteButton, UIResources::Menus_Buttons_DeleteButtonHover);
+	ClickableNode* deleteButton = ClickableNode::create(UIResources::Menus_Buttons_TrashV2Button, UIResources::Menus_Buttons_TrashV2ButtonHover);
 
 	deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
@@ -247,7 +250,7 @@ void SaveSelectMenu::loadSave()
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
 }
 
-void SaveSelectMenu::onBackClick()
+void SaveSelectMenu::goBack()
 {
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 }

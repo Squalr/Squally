@@ -167,4 +167,6 @@ namespace HexusResources
 	extern const std::string StoreMenu_TabButtonSelected;
 	extern const std::string Victory;
 	extern const std::string VictorySelected;
+	extern const std::string WoodSquareButton;
+	extern const std::string WoodSquareButtonSelected;
 };

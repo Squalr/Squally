@@ -166,3 +166,5 @@ const std::string HexusResources::StoreMenu_TabButton = "Private/Hexus/StoreMenu
 const std::string HexusResources::StoreMenu_TabButtonSelected = "Private/Hexus/StoreMenu/TabButtonSelected.png";
 const std::string HexusResources::Victory = "Private/Hexus/Victory.png";
 const std::string HexusResources::VictorySelected = "Private/Hexus/VictorySelected.png";
+const std::string HexusResources::WoodSquareButton = "Private/Hexus/WoodSquareButton.png";
+const std::string HexusResources::WoodSquareButtonSelected = "Private/Hexus/WoodSquareButtonSelected.png";

@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -31,10 +32,40 @@ ConfirmationMenu::ConfirmationMenu()
 
 	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_Buttons_CloseButton, UIResources::Menus_Buttons_CloseButtonHover);
-	this->cancelButton = ClickableNode::create(UIResources::Menus_Buttons_CancelButton, UIResources::Menus_Buttons_CancelButtonHover);
-	this->confirmButton = ClickableNode::create(UIResources::Menus_Buttons_AcceptButton, UIResources::Menus_Buttons_AcceptButtonHover);
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	
+	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
+	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
+
+	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableGlow(Color4B::BLACK);
+
+	cancelLabelHover->setColor(Color3B::YELLOW);
+	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->cancelButton = ClickableTextNode::create(
+		cancelLabel,
+		cancelLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
+
+	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
+	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();
+
+	confirmLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabel->enableGlow(Color4B::BLACK);
+
+	confirmLabelHover->setColor(Color3B::YELLOW);
+	confirmLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabelHover->enableGlow(Color4B::ORANGE);
+
+	this->confirmButton = ClickableTextNode::create(
+		confirmLabel,
+		confirmLabelHover,
+		UIResources::Menus_Buttons_WoodButton,
+		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
 

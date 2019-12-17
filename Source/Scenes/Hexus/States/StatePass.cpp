@@ -15,7 +15,6 @@
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
 
@@ -39,12 +38,12 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	// Pass
 	this->passSprite = Sprite::create(HexusResources::Flags);
 
-	Node* passContent = Sprite::create(UIResources::Menus_Buttons_WoodSquareButton);
+	Node* passContent = Sprite::create(HexusResources::WoodSquareButton);
 	Node* passIcon = Sprite::create(HexusResources::Flags);
 	
 	passContent->addChild(passIcon);
 
-	Node* passContentSelected = Sprite::create(UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	Node* passContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
 	Node* passIconSelected = Sprite::create(HexusResources::FlagsSelected);
 	
 	passContentSelected->addChild(passIconSelected);
@@ -62,12 +61,12 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	// Last stand
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
 
-	Sprite* lastStandContent = Sprite::create(UIResources::Menus_Buttons_WoodSquareButton);
+	Sprite* lastStandContent = Sprite::create(HexusResources::WoodSquareButton);
 	Sprite* lastStandIcon = Sprite::create(HexusResources::ShieldButton);
 	
 	lastStandContent->addChild(lastStandIcon);
 
-	Sprite* lastStandContentSelected = Sprite::create(UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	Sprite* lastStandContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
 	Sprite* lastStandIconSelected = Sprite::create(HexusResources::ShieldButtonSelected);
 	
 	lastStandContentSelected->addChild(lastStandIconSelected);
@@ -85,12 +84,12 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	// Claim victory
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
 
-	Sprite* claimVictoryContent = Sprite::create(UIResources::Menus_Buttons_WoodSquareButton);
+	Sprite* claimVictoryContent = Sprite::create(HexusResources::WoodSquareButton);
 	Sprite* claimVictoryIcon = Sprite::create(HexusResources::Victory);
 	
 	claimVictoryContent->addChild(claimVictoryIcon);
 
-	Node* claimVictoryContentSelected = Sprite::create(UIResources::Menus_Buttons_WoodSquareButtonSelected);
+	Node* claimVictoryContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
 	Node* claimVictoryIconSelected = Sprite::create(HexusResources::VictorySelected);
 	
 	claimVictoryContentSelected->addChild(claimVictoryIconSelected);
