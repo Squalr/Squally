@@ -120,6 +120,16 @@ void SaveSelectMenu::initializeListeners()
 
 		this->goBack();
 	});
+
+	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->goBack();
+	});
+
+	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->goBack();
+	});
 }
 
 void SaveSelectMenu::initializePositions()

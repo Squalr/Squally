@@ -9,7 +9,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -51,13 +51,16 @@ void SquallyManaBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->squally->watchForAttachedBehavior<SquallyEqBehavior>([=](SquallyEqBehavior* squallyEqBehavior)
+	this->defer([=]()
 	{
-		this->recalculateMaxMana([=]()
+		this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* entityManaBehavior)
 		{
-			int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(777)).asInt();
+			this->recalculateMaxMana([=]()
+			{
+				int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(777)).asInt();
 
-			this->squally->setState(StateKeys::Mana, Value(mana));
+				this->squally->setState(StateKeys::Mana, Value(mana));
+			});
 		});
 	});
 }
