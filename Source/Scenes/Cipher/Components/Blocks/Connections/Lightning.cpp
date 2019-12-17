@@ -27,7 +27,7 @@ Lightning* Lightning::create()
 Lightning::Lightning()
 {
 	this->animations = SmartAnimationSequenceNode::create(UIResources::EmptyImage);
-	this->sound = Sound::create(SoundResources::Hexus_Attacks_Energy);
+	this->sound = Sound::create(SoundResources::Cipher_Lightning);
 	this->manualDelay = -1.0f;
 
 	static bool runOnce = true;

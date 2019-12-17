@@ -11,6 +11,7 @@ const std::string SoundResources::ButtonClick2 = "Private/Sounds/ButtonClick2.mp
 const std::string SoundResources::ButtonClick3 = "Private/Sounds/ButtonClick3.mp3";
 const std::string SoundResources::ButtonRollover1 = "Private/Sounds/ButtonRollover1.mp3";
 const std::string SoundResources::Cipher_GearTurn = "Private/Sounds/Cipher/GearTurn.mp3";
+const std::string SoundResources::Cipher_Lightning = "Private/Sounds/Cipher/Lightning.mp3";
 const std::string SoundResources::Clean_Interface_Buttons_8 = "Private/Sounds/Clean_Interface_Buttons_8.mp3";
 const std::string SoundResources::ClickBack1 = "Private/Sounds/ClickBack1.mp3";
 const std::string SoundResources::ClickBack2 = "Private/Sounds/ClickBack2.mp3";

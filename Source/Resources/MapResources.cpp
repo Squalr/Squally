@@ -39,6 +39,7 @@ const std::string MapResources::EndianForest_Zone_2_2 = "Public/Platformer/Maps/
 const std::string MapResources::EndianForest_Zone_2_3 = "Public/Platformer/Maps/EndianForest/Zone_2_3.tmx";
 const std::string MapResources::EndianForest_Zone_2_4 = "Public/Platformer/Maps/EndianForest/Zone_2_4.tmx";
 const std::string MapResources::EndianForest_Zone_2_5 = "Public/Platformer/Maps/EndianForest/Zone_2_5.tmx";
+const std::string MapResources::EndianForest_Zone_2_a = "Public/Platformer/Maps/EndianForest/Zone_2_a.tmx";
 const std::string MapResources::EndianForest_Zone_3_0 = "Public/Platformer/Maps/EndianForest/Zone_3_0.tmx";
 const std::string MapResources::EndianForest_Zone_3_1 = "Public/Platformer/Maps/EndianForest/Zone_3_1.tmx";
 const std::string MapResources::LambdaCrypts_Crypts = "Public/Platformer/Maps/LambdaCrypts/Crypts.tmx";

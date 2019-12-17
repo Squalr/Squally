@@ -12,6 +12,7 @@ namespace SoundResources
 	extern const std::string ButtonClick3;
 	extern const std::string ButtonRollover1;
 	extern const std::string Cipher_GearTurn;
+	extern const std::string Cipher_Lightning;
 	extern const std::string Clean_Interface_Buttons_8;
 	extern const std::string ClickBack1;
 	extern const std::string ClickBack2;
