@@ -6,7 +6,9 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/CraftingPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -24,14 +26,9 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1)
+PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
+	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 1, 1) })
 {
-	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::VeryCommon));
-	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Uncommon));
 }
 
 PocketPoolEFGeneric::~PocketPoolEFGeneric()

@@ -427,6 +427,7 @@ namespace ObjectResources
 	extern const std::string Items_Reagents_Herbs_Brugmansia;
 	extern const std::string Items_Reagents_Herbs_Clover;
 	extern const std::string Items_Reagents_Herbs_Cocoa;
+	extern const std::string Items_Reagents_Herbs_Flax;
 	extern const std::string Items_Reagents_Herbs_Grass;
 	extern const std::string Items_Reagents_Herbs_Henbane;
 	extern const std::string Items_Reagents_Herbs_Mandrake_Root;
@@ -437,7 +438,6 @@ namespace ObjectResources
 	extern const std::string Items_Reagents_Herbs_Poison_Oak;
 	extern const std::string Items_Reagents_Herbs_Poppy;
 	extern const std::string Items_Reagents_Herbs_Skunk_Cabbage;
-	extern const std::string Items_Reagents_Herbs_Sweet_Brier;
 	extern const std::string Items_Reagents_Misc_HORN___ARTIFACT;
 	extern const std::string Items_Reagents_Misc_Honey;
 	extern const std::string Items_Reagents_Misc_RAINBOW_HORN;
@@ -452,7 +452,7 @@ namespace ObjectResources
 	extern const std::string Items_Reagents_Ores_Gold;
 	extern const std::string Items_Reagents_Ores_Iron;
 	extern const std::string Items_Reagents_Ores_Jade;
-	extern const std::string Items_Reagents_Ores_Obsidean;
+	extern const std::string Items_Reagents_Ores_Obsidian;
 	extern const std::string Items_Reagents_Ores_Quartz;
 	extern const std::string Items_Reagents_Ores_Ruby;
 	extern const std::string Items_Reagents_Ores_Silver;

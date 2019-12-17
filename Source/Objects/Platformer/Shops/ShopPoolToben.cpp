@@ -6,7 +6,7 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -25,7 +25,8 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName, { CardShopPoolTier1::create() })
+ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName,
+	{ CardPoolTier1::create(SampleMethod::Guarantee, 3, 3) })
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));

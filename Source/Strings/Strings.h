@@ -14176,10 +14176,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Items_Crafting_Ore_Obsidean : public LocalizedString
+	class Items_Crafting_Ore_Obsidian : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Obsidean* create();
+		static Items_Crafting_Ore_Obsidian* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14215,8 +14215,8 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Items_Crafting_Ore_Obsidean();
-		~Items_Crafting_Ore_Obsidean();
+		Items_Crafting_Ore_Obsidian();
+		~Items_Crafting_Ore_Obsidian();
 	};
 }
 

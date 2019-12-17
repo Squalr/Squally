@@ -8,7 +8,6 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/ItemPools/CardPools/CardPools.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
