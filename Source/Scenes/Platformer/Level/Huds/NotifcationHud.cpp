@@ -19,7 +19,7 @@
 
 #include "Strings/Strings.h"
 
-const int NotificationHud::SlotCount = 4;
+const int NotificationHud::SlotCount = 3;
 
 using namespace cocos2d;
 

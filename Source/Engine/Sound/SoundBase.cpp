@@ -92,7 +92,7 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
-	if (this->soundResource.empty())
+	if (this->soundResource.empty() || AudioEngine::getState(this->activeTrackId) == AudioEngine::AudioState::PLAYING)
 	{
 		return;
 	}

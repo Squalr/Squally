@@ -72,8 +72,8 @@ ParticleSystem* ParticleObject::getParticles()
 void ParticleObject::optimizationHideOffscreenParticles()
 {
 	// Admissible heuristic -- technically this warrants using a bunch of projection math. Zoom is good enough.
-	float zoom = 1.0f; // GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(128.0f, 128.0f);
+	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
+	static const Size Padding = Size(384.0f, 384.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
 	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
 	Rect thisRect = this->boundsRect;
