@@ -27,7 +27,7 @@ PocketPoolTownGuard* PocketPoolTownGuard::create(ValueMap& properties)
 }
 
 PocketPoolTownGuard::PocketPoolTownGuard(ValueMap& properties) : super(properties, PocketPoolTownGuard::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 1, 1) })
+	{ CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1) })
 {
 	this->addItemToPool(ItemChance::create(TownKey::create(), ItemChance::Probability::Guaranteed));
 }

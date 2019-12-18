@@ -18,6 +18,7 @@ public:
 	LocalizedString* getEntityName() override;
 
 	static const std::string MapKeySqually;
+	static const std::string BattleTag;
 
 protected:
 	void performSwimAnimation() override;

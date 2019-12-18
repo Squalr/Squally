@@ -44,16 +44,16 @@ DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 {
 	this->launcherContainer = Node::create();
 	this->launcherSprite = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
-	this->rotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
+	this->launchRotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, DartLauncher::PropertyLaunchSpeed, Value(DartLauncher::DefaultLaunchSpeed)).asFloat();
 	this->launchTimer = 0.0f;
-	this->dartPool = DartPool::create(2, this->rotation + 90.0f, this->launchSpeed, 90.0f);
+	this->dartPool = DartPool::create(2, this->launchRotation + 90.0f, this->launchSpeed);
 
 	this->launcherSprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->dartPool->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 	this->launcherContainer->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 
-	this->launcherContainer->setRotation(this->rotation);
+	this->launcherContainer->setRotation(this->launchRotation);
 	
 	this->launcherContainer->addChild(this->dartPool);
 	this->launcherContainer->addChild(this->launcherSprite);
@@ -91,7 +91,7 @@ Vec2 DartLauncher::getButtonOffset()
 {
 	float width = 24.0f;
 	float height = -124.0f;
-	float angle = float(M_PI) * this->rotation / 180.0f;
+	float angle = float(M_PI) * this->launchRotation / 180.0f;
 
 	return Vec2(std::sin(angle) * width, std::cos(angle) * height);
 }
@@ -147,8 +147,8 @@ NO_OPTIMIZE void DartLauncher::shoot(float dt)
 		this->dartPool->getNextDart();
 	}
 
-	float* timePtr = &this->launchTimer;
-	float* dtPtr = &dt;
+	volatile float* timePtr = &this->launchTimer;
+	volatile float* dtPtr = &dt;
 
 	ASM(push ZAX);
 	ASM(push ZBX);

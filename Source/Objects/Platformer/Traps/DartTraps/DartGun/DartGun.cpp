@@ -147,7 +147,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 				this->timeSinceLastShot = 0.0f;
 
 				float dartRotation = angleBetween * 180.0f / float(M_PI);
-				Dart* dart = Dart::create(dartRotation, 256.0f, dartRotation);
+				Dart* dart = Dart::create(dartRotation, 256.0f);
 
 				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
 

@@ -1,24 +1,34 @@
 #pragma once
 
-#include "Engine/Physics/CollisionObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class Dart : public CollisionObject
+class CollisionObject;
+
+class Dart : public GameObject
 {
 public:
-	static Dart* create(float rotation, float speed, float visualRotation);
+	static Dart* create(float dartRotation, float speed);
+
+	void reset();
+	void disable();
+	void enable();
 
 protected:
-	Dart(float rotation, float speed, float visualRotation);
-	~Dart();
+	Dart(float dartRotation, float speed);
+	virtual ~Dart();
+
+	void onEnter() override;
 
 private:
-	typedef CollisionObject super;
+	typedef GameObject super;
 
-	bool enabled;
+	CollisionObject* collision;
 	cocos2d::Sprite* dartSprite;
+	float dartRotation;
+	float dartSpeed;
 };

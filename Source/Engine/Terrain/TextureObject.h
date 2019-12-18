@@ -50,11 +50,6 @@ private:
 
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void buildTextures();
-	void buildInfill(cocos2d::Color4B infillColor);
 
 	cocos2d::Node* infillTexturesNode;
-	cocos2d::Node* infillNode;
-	std::vector<AlgoUtils::Triangle> infillTriangles;
-
-	static const float InfillDistance;
 };

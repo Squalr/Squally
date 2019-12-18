@@ -89,6 +89,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(helperName);
+	properties[GameObject::MapKeyTags] = Value(Squally::BattleTag);
 	properties[GameObject::MapKeyAttachedBehavior] = Value(helperBehavior);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 

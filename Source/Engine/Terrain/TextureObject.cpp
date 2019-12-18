@@ -30,7 +30,6 @@ using namespace cocos2d;
 
 std::string TextureObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TextureObject::MapKeyTypeTexture = "texture";
-const float TextureObject::InfillDistance = 128.0f;
 
 TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : super(properties)
 {
@@ -39,14 +38,11 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
-	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 
 	this->infillTexturesNode = Node::create();
-	this->infillNode = Node::create();
 	this->boundsRect = Rect::ZERO;
 
 	this->addChild(this->infillTexturesNode);
-	this->addChild(this->infillNode);
 
 	// Build the terrain from the parsed points
 	this->setPoints(this->polylinePoints);
@@ -103,55 +99,4 @@ void TextureObject::buildTextures()
 	clip->addChild(texture);
 
 	this->infillTexturesNode->addChild(clip);
-}
-
-void TextureObject::buildInfill(Color4B infillColor)
-{
-	this->infillNode->removeAllChildren();
-
-	if (this->textureTriangles.empty())
-	{
-		return;
-	}
-
-	if (this->isHollow)
-	{
-		return;
-	}
-
-	std::vector<Vec2> infillPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TextureObject::InfillDistance);
-	std::vector<AlgoUtils::Triangle> infillTriangles = AlgoUtils::trianglefyPolygon(infillPoints);
-
-	DrawNode* infill = DrawNode::create();
-
-	// Invisible padding up to the original triangle size
-	for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.0f));
-	}
-
-	// Loop over all infill triangles and create the solid infill color
-	for (auto it = infillTriangles.begin(); it != infillTriangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
-	}
-
-	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
-	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-
-	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
-	Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
-	{
-		state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
-		state->setUniformFloat("blurRadius", 112.0f);
-		state->setUniformFloat("sampleNum", 24.0f);
-	});
-	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
-	rasterizedInfill->setPosition(infillRect.origin);
-
-	this->infillNode->addChild(rasterizedInfill);
 }

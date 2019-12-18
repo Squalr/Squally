@@ -200,6 +200,11 @@ void GameCamera::setCameraDistance(float distance)
 	Camera::getDefaultCamera()->setPositionZ(distance);
 }
 
+float GameCamera::getCameraZoomOnTarget(cocos2d::Node* target)
+{
+	return ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->getIntendedCameraDistance());
+}
+
 float GameCamera::getCameraZoom()
 {
 	return (this->getCameraDistance() / this->getIntendedCameraDistance());

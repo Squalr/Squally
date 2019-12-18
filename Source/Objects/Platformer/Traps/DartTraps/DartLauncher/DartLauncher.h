@@ -34,9 +34,9 @@ private:
 	typedef HackableObject super;
 	void shoot(float dt);
 
-	float launchTimer;
+	volatile float launchTimer;
 	float launchSpeed;
-	float rotation;
+	float launchRotation;
 	cocos2d::Node* launcherContainer;
 	cocos2d::Sprite* launcherSprite;
 	DartPool* dartPool;

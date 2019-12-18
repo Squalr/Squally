@@ -3,13 +3,9 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
-
 class CollisionObject;
 class HackableData;
+class ParticleObject;
 
 class MagicWall : public HackableObject
 {
@@ -26,6 +22,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	cocos2d::ParticleSystem* wallParticles;
+	ParticleObject* wallParticles;
 	cocos2d::Size wallSize;
 };

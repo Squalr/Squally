@@ -37,6 +37,8 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->bubble = DrawNode::create(3.0f);
 	this->voiceSound = WorldSound::create("");
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
+	this->speechBubbleNode = Node::create();
+	this->hasBound = false;
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 
@@ -44,27 +46,15 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->stem->setOpacity(0);
 	this->text->setOpacity(0);
 
-	this->addChild(this->stem);
-	this->addChild(this->bubble);
-	this->addChild(this->voiceSound);
-	this->addChild(this->text);
+	this->speechBubbleNode->addChild(this->stem);
+	this->speechBubbleNode->addChild(this->bubble);
+	this->speechBubbleNode->addChild(this->voiceSound);
+	this->speechBubbleNode->addChild(this->text);
+	this->addChild(this->speechBubbleNode);
 }
 
 SpeechBubble::~SpeechBubble()
 {
-}
-
-void SpeechBubble::onEnter()
-{
-	super::onEnter();
-
-	this->defer([=]()
-	{
-		if (this->uiBound)
-		{
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this));
-		}
-	});
 }
 
 void SpeechBubble::initializePositions()
@@ -90,6 +80,12 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string sou
 	const Size triangleSize = Size(16.0f, 32.0f);
 
 	this->voiceSound->setSoundResource(soundResource);
+
+	if (!this->hasBound && this->uiBound)
+	{
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->speechBubbleNode));
+		hasBound = true;
+	}
 
 	if (direction == Direction::Auto)
 	{

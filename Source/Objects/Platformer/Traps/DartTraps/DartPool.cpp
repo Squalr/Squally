@@ -13,28 +13,28 @@
 
 using namespace cocos2d;
 
-DartPool* DartPool::create(int capacity, float rotation, float speed, float visualRotation)
+DartPool* DartPool::create(int capacity, float rotation, float speed)
 {
-	DartPool* instance = new DartPool(capacity, rotation, speed, visualRotation);
+	DartPool* instance = new DartPool(capacity, rotation, speed);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DartPool::DartPool(int capacity, float rotation, float speed, float visualRotation) : super()
+DartPool::DartPool(int capacity, float rotation, float speed) : super()
 {
 	this->darts = std::vector<Dart*>();
 	this->dartIndex = 0;
 
 	for (int index = 0; index < capacity; index++)
 	{
-		this->darts.push_back(Dart::create(rotation, speed, visualRotation));
+		this->darts.push_back(Dart::create(rotation, speed));
 	}
 
 	for (auto it = this->darts.begin(); it != this->darts.end(); it++)
 	{
-		(*it)->setPhysicsEnabled(false);
+		(*it)->disable();
 		this->addChild(*it);
 	}
 }
@@ -52,8 +52,7 @@ Dart* DartPool::getNextDart()
 
 	this->dartIndex = MathUtils::wrappingNormalize(this->dartIndex + 1, 0, this->darts.size() - 1);
 	
-	this->darts[dartIndex]->setPosition3D(Vec3::ZERO);
-	this->darts[dartIndex]->setPhysicsEnabled(true);
+	this->darts[dartIndex]->reset();
 
 	return this->darts[dartIndex];
 }

@@ -12,12 +12,12 @@ class Dart;
 class DartPool : public SmartNode
 {
 public:
-	static DartPool* create(int capacity, float rotation, float speed, float visualRotation);
+	static DartPool* create(int capacity, float rotation, float speed);
 
 	Dart* getNextDart();
 
 protected:
-	DartPool(int capacity, float rotation, float speed, float visualRotation);
+	DartPool(int capacity, float rotation, float speed);
 	~DartPool();
 
 private:

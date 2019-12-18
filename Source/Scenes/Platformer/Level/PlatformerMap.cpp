@@ -378,7 +378,7 @@ void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
 	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
 	{
 		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
-	}), PlatformerHelper::PlatformerHelperTag);
+	}), Squally::BattleTag);
 
 	// Build enemy team
 	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));

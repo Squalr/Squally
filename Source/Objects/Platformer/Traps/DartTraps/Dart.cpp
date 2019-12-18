@@ -15,37 +15,62 @@
 
 using namespace cocos2d;
 
-Dart* Dart::create(float rotation, float speed, float visualRotation)
+Dart* Dart::create(float dartRotation, float dartSpeed)
 {
-	Dart* instance = new Dart(rotation, speed, visualRotation);
+	Dart* instance = new Dart(dartRotation, dartSpeed);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Dart::Dart(float rotation, float speed, float visualRotation) : super(
-	ValueMap(),
-	PhysicsBody::createBox(
-		Size(64.0f, 16.0f),
-		PHYSICSBODY_MATERIAL_DEFAULT,
-		Vec2::ZERO
-	),
-	(int)PlatformerCollisionType::Damage,
-	false,
-	false
-)
+Dart::Dart(float dartRotation, float dartSpeed) : super()
 {
+	this->dartRotation = dartRotation;
+	this->dartSpeed = dartSpeed;
 	this->dartSprite = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
+	this->collision = CollisionObject::create(
+		ValueMap(),
+		PhysicsBody::createBox(
+			Size(16.0f, 64.0f),
+			PHYSICSBODY_MATERIAL_DEFAULT,
+			Vec2::ZERO
+		),
+		(int)PlatformerCollisionType::Damage,
+		false,
+		false
+	);
 
-	this->setRotation(visualRotation);
-
-	float rotationInRad = rotation * float(M_PI) / 180.0f;
-	this->setVelocity(Vec2(speed * std::cos(-rotationInRad), speed * std::sin(-rotationInRad)));
-
-	this->addChild(this->dartSprite);
+	this->collision->addChild(this->dartSprite);
+	this->addChild(this->collision);
 }
 
 Dart::~Dart()
 {
+}
+
+void Dart::onEnter()
+{
+	super::onEnter();
+
+	float rotationInRad = this->dartRotation * float(M_PI) / 180.0f;
+	this->collision->setVelocity(Vec2(this->dartSpeed * std::cos(-rotationInRad), this->dartSpeed * std::sin(-rotationInRad)));
+
+	this->dartSprite->setRotation(90.0f);
+}
+
+void Dart::reset()
+{
+	this->collision->setPosition(Vec2::ZERO);
+	this->enable();
+}
+
+void Dart::disable()
+{
+	this->collision->setPhysicsEnabled(false);
+}
+
+void Dart::enable()
+{
+	this->collision->setPhysicsEnabled(true);
 }

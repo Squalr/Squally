@@ -33,16 +33,17 @@ private:
 	typedef SmartNode super;
 	SpeechBubble(bool uiBound);
 	~SpeechBubble();
-
-	void onEnter() override;
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	cocos2d::Node* speechBubbleNode;
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;
 	WorldSound* voiceSound;
 
+	bool hasBound;
 	bool uiBound;
 
 	static const cocos2d::Color4F BubbleColor;

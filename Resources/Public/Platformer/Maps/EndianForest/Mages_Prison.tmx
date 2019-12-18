@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="907">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="909">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -15,29 +15,17 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="Generic/Background/BrickInterior1" type="decor" x="2322.82" y="-319.074" width="2581.06" height="1561.34">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="repeat-y" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="862" name="castle" type="terrain" x="6118.57" y="-354.923">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="862" name="castle" type="texture" x="6118.57" y="-354.923">
    <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
   </object>
-  <object id="863" name="temple" type="terrain" x="4865.4" y="-376.95">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="863" name="temple" type="texture" x="4865.4" y="-376.95">
    <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
   </object>
-  <object id="864" name="lava" type="terrain" x="1191.39" y="-339.713">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="864" name="lava" type="texture" x="1191.39" y="-339.713">
    <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
+  </object>
+  <object id="908" name="brick-interior" type="texture" x="2345.45" y="-342.424">
+   <polygon points="0,0 2529.77,4.64408 2529.77,1599.31 6.12538,1602.13"/>
   </object>
  </objectgroup>
  <objectgroup id="117" name="terrain -3">
@@ -255,16 +243,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="marble" type="terrain" x="-81.203" y="-28.4116">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="816" name="marble" type="texture" x="-81.203" y="-28.4116">
    <polygon points="0,0 1508.65,1.50508 1510.64,1386.39 3.65775,1390.83"/>
   </object>
-  <object id="825" name="marble" type="terrain" x="2148.03" y="-160.901">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="825" name="marble" type="texture" x="2148.03" y="-160.901">
    <polygon points="0,0 456.738,4.03159 456.738,1388.38 1.10591,1390.83"/>
   </object>
   <object id="839" name="marble" type="terrain" x="4604.55" y="-174.305">
@@ -279,10 +261,7 @@
    </properties>
    <polygon points="0,0 456.738,4.03159 456.738,1388.38 1.10591,1390.83"/>
   </object>
-  <object id="851" name="marble" type="terrain" x="7140.45" y="-244.09">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="851" name="marble" type="texture" x="7140.45" y="-244.09">
    <polygon points="0,0 456.738,4.03159 456.738,1388.38 1.10591,1390.83"/>
   </object>
   <object id="882" name="marble" type="terrain" x="3349.95" y="-177.999">
