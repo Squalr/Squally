@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="946">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt1"/>
@@ -112,29 +112,28 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="344.364" y="6349" width="128" height="128">
+  <object id="798" name="spawn" type="object" x="640.364" y="6353" width="128" height="128">
    <properties>
-    <property name="transition" value="entrance-A"/>
-   </properties>
-  </object>
-  <object id="816" name="edge-portal" type="object" x="8.041" y="5839.57" width="199.918" height="640.851">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="exit-A"/>
+    <property name="transition" value="entrance-D"/>
    </properties>
   </object>
   <object id="822" name="spawn" type="object" x="389.941" y="2518.43" width="128" height="128">
    <properties>
-    <property name="transition" value="entrance-B"/>
+    <property name="transition" value="entrance-D"/>
    </properties>
   </object>
-  <object id="934" name="life-stone" type="object" x="1172.09" y="6075.77" width="146" height="423"/>
+  <object id="934" name="life-stone" type="object" x="1668.09" y="6063.77" width="146" height="423"/>
   <object id="935" name="edge-portal" type="object" x="4.041" y="2015.57" width="199.918" height="640.851">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="exit-B"/>
+    <property name="transition" value="exit-D"/>
+   </properties>
+  </object>
+  <object id="945" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="transition" value="exit-D"/>
    </properties>
   </object>
  </objectgroup>
@@ -163,7 +162,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="573.292" y="6346.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1081.29" y="6346.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

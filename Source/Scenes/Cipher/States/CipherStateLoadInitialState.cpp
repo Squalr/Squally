@@ -103,7 +103,7 @@ void CipherStateLoadInitialState::buildSpawnMap()
 
 		this->spawnMap[token] = [=](int index, int total)
 		{
-			this->spawnBlock(ImmediateBlock::create((unsigned char)(index)), index, total);
+			this->spawnBlock(ImmediateBlock::create((unsigned char)(std::stoi(token))), index, total);
 		};
 	}
 

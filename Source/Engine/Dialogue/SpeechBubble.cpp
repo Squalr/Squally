@@ -48,8 +48,8 @@ SpeechBubble::SpeechBubble(bool uiBound)
 
 	this->speechBubbleNode->addChild(this->stem);
 	this->speechBubbleNode->addChild(this->bubble);
-	this->speechBubbleNode->addChild(this->voiceSound);
 	this->speechBubbleNode->addChild(this->text);
+	this->addChild(this->voiceSound);
 	this->addChild(this->speechBubbleNode);
 }
 

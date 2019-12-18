@@ -11,6 +11,7 @@
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -87,6 +88,20 @@ PlatformerEntity::PlatformerEntity(
 
 PlatformerEntity::~PlatformerEntity()
 {
+}
+
+void PlatformerEntity::onEnter()
+{
+	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void PlatformerEntity::update(float dt)
+{
+	super::update(dt);
+
+	this->optimizationHideOffscreenEntity();
 }
 
 Vec2 PlatformerEntity::getButtonOffset()
@@ -222,4 +237,23 @@ PlatformerEntity* PlatformerEntity::softClone()
 	this->platformerEntityDeserializer->deserialize(&args);
 
 	return softClone;
+}
+
+void PlatformerEntity::optimizationHideOffscreenEntity()
+{
+	// Admissible heuristic -- technically this warrants using a bunch of projection math. Zoom is good enough.
+	float zoom = 1.0f; //GameCamera::getInstance()->getCameraZoomOnTarget(this);
+	static const Size Padding = Size(384.0f, 384.0f);
+	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
+	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
+	Rect thisRect = Rect(GameUtils::getWorldCoords(this), this->entitySize);
+
+	if (cameraRect.intersectsRect(thisRect))
+	{
+		this->animationNode->enableRender();
+	}
+	else
+	{
+		this->animationNode->disableRender();
+	}
 }

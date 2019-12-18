@@ -165,3 +165,13 @@ std::string SmartAnimationNode::getAnimationResource()
 {
 	return this->animationResource;
 }
+
+void SmartAnimationNode::disableRender()
+{
+	this->animationNode->disableRender();
+}
+
+void SmartAnimationNode::enableRender()
+{
+	this->animationNode->enableRender();
+}

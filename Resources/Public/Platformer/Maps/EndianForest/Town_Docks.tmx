@@ -303,6 +303,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
    <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
     <property name="map" value="EndianForest/Town_Shack"/>
     <property name="transition" value="ship"/>
    </properties>

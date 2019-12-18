@@ -39,6 +39,8 @@ public:
 	bool getFlippedY();
 	std::string getCurrentAnimation();
 	std::string getAnimationResource();
+	void disableRender();
+	void enableRender();
 
 	static const std::string DefaultAnimationEntityName;
 	static const std::string DefaultAnimationName;
