@@ -21,4 +21,6 @@ private:
 	typedef AttachedBehavior super;
 
 	Squally* squally;
+
+	float zoom;
 };

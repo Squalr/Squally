@@ -41,6 +41,7 @@ const std::string GameObject::MapKeyQueryable = "args";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";
 const std::string GameObject::MapKeyPolyLinePoints = "polylinePoints";
+const std::string GameObject::MapKeyZoom = "zoom";
 
 const std::string GameObject::MapKeyGid = "gid";
 

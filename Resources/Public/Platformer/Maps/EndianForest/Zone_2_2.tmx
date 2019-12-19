@@ -280,7 +280,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="goblin-grunt-boar" type="entity" x="5837.21" y="3426.22" width="128" height="128">
+  <object id="809" name="goblin-warrior-pig" type="entity" x="5837.21" y="3426.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -289,7 +289,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="810" name="goblin-warrior-pig" type="entity" x="5834.79" y="3009.79" width="128" height="128">
+  <object id="810" name="orc-grunt" type="entity" x="5834.79" y="3009.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

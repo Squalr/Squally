@@ -130,6 +130,7 @@ public:
 	static const std::string MapKeyAttachedBehaviorArgs;
 	static const std::string MapKeyArgs;
 	static const std::string MapKeyQueryable;
+	static const std::string MapKeyZoom;
 
 	static const std::string MapKeyGid;
 
@@ -144,6 +145,8 @@ public:
 	static const std::string MapKeyPropertyType;
 	static const std::string MapKeyPropertyValue;
 
+	cocos2d::ValueMap properties;
+	
 protected:
 	GameObject();
 	GameObject(const cocos2d::ValueMap& properties);
@@ -155,7 +158,6 @@ protected:
 	void loadObjectState();
 	virtual void onObjectStateLoaded();
 
-	cocos2d::ValueMap properties;
 	std::string listenEvent;
 	std::string sendEvent;
 	std::vector<cocos2d::Vec2> polylinePoints;
