@@ -145,7 +145,6 @@ void GameCamera::initializeListeners()
 void GameCamera::update(float dt)
 {
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (!this->targetStack.empty())
 	{
@@ -172,9 +171,11 @@ void GameCamera::update(float dt)
 		}
 	}
 
+	Size boundsSize = Director::getInstance()->getVisibleSize() * this->getCameraZoom();
+
 	// Prevent camera from leaving level bounds
-	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
-	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
+	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + boundsSize.width / 2.0f, this->cameraBounds.getMaxX() - boundsSize.width / 2.0f);
+	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + boundsSize.height / 2.0f, this->cameraBounds.getMaxY() - boundsSize.height / 2.0f);
 
 	this->setCameraPosition(cameraPosition, false);
 }

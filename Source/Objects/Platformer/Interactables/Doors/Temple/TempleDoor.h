@@ -27,4 +27,6 @@ private:
 
 	cocos2d::Sprite* door;
 	CollisionObject* topCollision;
+
+	static const std::string MapKeyColor;
 };

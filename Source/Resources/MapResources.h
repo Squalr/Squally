@@ -6,7 +6,7 @@
 
 namespace MapResources
 {
-	extern const std::string BallmerPeaks_IceCaps;
+	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string Combat_Intro;
 	extern const std::string DaemonsHallow_Volcano;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="942">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="943">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -46,18 +46,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-720"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4403.17" y="4041.62" width="13257.6" height="1140">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="73" name="decor -12 bg">
   <properties>
    <property name="depth" type="float" value="-640"/>
@@ -96,7 +84,6 @@
   <object id="840" name="Generic/TownFence" type="decor" x="11463.9" y="4739.83" width="538" height="948"/>
   <object id="841" name="Generic/TownFence" type="decor" x="11016.5" y="4751.92" width="538" height="948"/>
   <object id="845" name="Generic/TownFence" type="decor" x="-731.783" y="4779.91" width="538" height="948"/>
-  <object id="846" name="Generic/TownFence" type="decor" x="-1179.18" y="4792" width="538" height="948"/>
   <object id="847" name="Generic/TownFence" type="decor" x="-264.253" y="4786.53" width="538" height="948"/>
   <object id="939" name="Generic/TownFence" type="decor" x="2899" y="1626" width="538" height="948"/>
   <object id="940" name="Generic/TownFence" type="decor" x="3891" y="1646" width="538" height="948"/>
@@ -113,21 +100,11 @@
    </properties>
    <polygon points="0,0 5875.16,-5.20891 5875.16,359.415 12.8279,364.624"/>
   </object>
-  <object id="804" name="blue-grass" type="terrain" x="-1675.2" y="5667.65">
+  <object id="804" name="blue-grass" type="terrain" x="-659.316" y="5667.65">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-10.6667 13347.8,-11.408 13347.8,787.153 -1.52306,795.894"/>
-  </object>
-  <object id="936" name="camera-stop" type="object" x="9532" y="3936" width="2312" height="2364">
-   <properties>
-    <property name="no-y" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="937" name="camera-stop" type="object" x="-1768" y="126" width="2312" height="6468">
-   <properties>
-    <property name="no-y" type="bool" value="true"/>
-   </properties>
+   <polygon points="0,-10.6667 12331.9,-11.408 12331.9,787.153 -1.40714,795.894"/>
   </object>
  </objectgroup>
  <objectgroup id="72" name="decor -12">
@@ -214,11 +191,11 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="864" name="dark-grass" type="terrain" x="-1378.25" y="907.73">
+  <object id="864" name="dark-grass" type="terrain" x="-114.254" y="907.73">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-26.3307 3536.65,-27.1469 3536.65,1873.14 7.72189,1900.28"/>
+   <polygon points="0,-26.3307 2272.65,-27.1469 2272.65,1873.14 4.96209,1900.28"/>
   </object>
  </objectgroup>
  <objectgroup id="70" name="terrain -6">
@@ -226,11 +203,11 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="753" name="blue-grass" type="terrain" x="-1530.38" y="5803.41">
+  <object id="753" name="blue-grass" type="terrain" x="-458.559" y="5803.41">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 9059.59,-11.408 9059.59,787.153 -1.55258,797.228"/>
+   <polygon points="0,0 7987.78,-11.408 7987.78,787.153 -1.3689,797.228"/>
   </object>
   <object id="763" name="blue-grass" type="terrain" x="1774.84" y="2726.61">
    <properties>
@@ -238,11 +215,11 @@
    </properties>
    <polygon points="0,0 5852.01,-11.408 5852.01,787.153 12.7773,798.561"/>
   </object>
-  <object id="769" name="dark-grass" type="terrain" x="-1338.38" y="2723.81">
+  <object id="769" name="dark-grass" type="terrain" x="-258.385" y="2723.81">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-5.86159 3157.07,-6.04329 3157.07,416.988 6.89318,423.031"/>
+   <polygon points="0,-5.86159 2077.07,-6.04329 2077.07,416.988 4.53509,423.031"/>
   </object>
  </objectgroup>
  <objectgroup id="69" name="decor -6">
@@ -403,7 +380,6 @@
   <object id="912" name="Generic/TownFence" type="decor" x="-459" y="4968" width="538" height="948"/>
   <object id="933" name="Generic/TownFence" type="decor" x="806.758" y="1868.42" width="538" height="948"/>
   <object id="934" name="Generic/TownFence" type="decor" x="-541.727" y="1877.52" width="538" height="948"/>
-  <object id="935" name="Generic/TownFence" type="decor" x="-932.636" y="1877.52" width="538" height="948"/>
  </objectgroup>
  <objectgroup id="62" name="terrain 4">
   <properties>
@@ -481,11 +457,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="blue-grass" type="terrain" x="-822.895" y="5921.23">
-   <polygon points="0,0 4276.4,-27.0701 4276.4,2273.88 10.3545,2300.96"/>
+  <object id="658" name="blue-grass" type="terrain" x="-142.895" y="5921.23">
+   <polygon points="0,0 3596.4,-27.0701 3596.4,2273.88 8.70799,2300.96"/>
   </object>
-  <object id="662" name="blue-grass" type="terrain" x="-1212.84" y="2823.68">
-   <polygon points="0,0 4673.71,-4.37683 4673.71,367.653 11.3165,372.031"/>
+  <object id="662" name="blue-grass" type="terrain" x="-116.844" y="2823.68">
+   <polygon points="0,0 3577.71,-4.37683 3577.71,367.653 8.66274,372.031"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -713,7 +689,7 @@
    </properties>
   </object>
   <object id="913" name="life-stone" type="object" x="2315" y="5480.5" width="146" height="423"/>
-  <object id="917" name="pass-through" type="collision" x="4450.23" y="5342.98">
+  <object id="917" name="pass-through" type="collision" x="4449.23" y="5328.98">
    <polygon points="62.5619,-541.333 857.836,-543.706 857.999,-503.37 63.4665,-508.069"/>
   </object>
   <object id="926" name="solid" type="collision" x="5647.58" y="6689.33">
@@ -809,24 +785,24 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="492.297" y="5533.01" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1872.93" y="5547.35" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4375" y="5669.34" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="7291.47" y="5509.36" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2326.49" y="5701.47" width="270" height="748"/>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
+ <objectgroup id="32" name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="500.297" y="5753.01" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1880.93" y="5767.35" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4975" y="5673.34" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="7295.47" y="5649.36" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2422.49" y="5845.47" width="270" height="748"/>
+  <object id="942" name="Forest/Foreground/ForegroundTree1" type="decor" x="8543" y="5647" width="242" height="738"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 1024">
+  <properties>
+   <property name="depth" type="float" value="1024"/>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="6180.71" y="5629.86" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="8629.28" y="5367.79" width="242" height="738"/>
   <object id="848" name="Generic/TownFence" type="decor" x="381.127" y="5806.07" width="538" height="948"/>
   <object id="849" name="Generic/TownFence" type="decor" x="-66.2725" y="5818.16" width="538" height="948"/>
   <object id="850" name="Generic/TownFence" type="decor" x="848.657" y="5812.69" width="538" height="948"/>
