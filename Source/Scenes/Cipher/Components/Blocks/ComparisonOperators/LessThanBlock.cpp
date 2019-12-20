@@ -32,12 +32,7 @@ LessThanBlock::~LessThanBlock()
 
 unsigned char LessThanBlock::compute()
 {
-	if (this->currentInputs.size() < 1)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->currentInputs[0];
+	return this->inputLeft;
 }
 
 bool LessThanBlock::compare(unsigned char inputA, unsigned char inputB)

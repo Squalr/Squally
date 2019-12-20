@@ -32,12 +32,7 @@ GreaterThanBlock::~GreaterThanBlock()
 
 unsigned char GreaterThanBlock::compute()
 {
-	if (this->currentInputs.size() < 1)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->currentInputs[0];
+	return this->inputLeft;
 }
 
 bool GreaterThanBlock::compare(unsigned char inputA, unsigned char inputB)

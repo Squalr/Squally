@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1018">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1019">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt1"/>
@@ -277,6 +277,12 @@
    </properties>
    <polygon points="2573.67,110.218 2570.97,2117.25 75.1531,2113.08 74.7,102.562"/>
   </object>
+  <object id="1018" name="temple" type="terrain" x="4309.09" y="621.212">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="2573.67,110.218 2570.97,2117.25 75.1531,2113.08 74.7,102.562"/>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -335,19 +341,19 @@
     <property name="transition" value="exit-D"/>
    </properties>
   </object>
-  <object id="999" name="wind" type="object" x="160.487" y="4686.72" width="380" height="480">
+  <object id="999" name="wind" type="object" x="166.547" y="4483.69" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1000" name="wind" type="object" x="167.697" y="4204.22" width="380" height="480">
+  <object id="1000" name="wind" type="object" x="173.757" y="4001.19" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1001" name="wind" type="object" x="166.597" y="3741.87" width="380" height="480">
+  <object id="1001" name="wind" type="object" x="172.657" y="3529.75" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
@@ -355,11 +361,11 @@
   </object>
   <object id="1014" name="cipher-chest" type="object" x="7372" y="4976" width="128" height="128">
    <properties>
-    <property name="data-type" value="binary"/>
-    <property name="inputs" value="2,4,5,9,15"/>
+    <property name="data-type" value="decimal"/>
+    <property name="inputs" value="3,1,2,9,4"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}&lt;&lt;1+1"/>
-    <property name="tokens" value="1,1,&lt;&lt;.+,2"/>
+    <property name="rule" value="{i}&gt;&gt;1&lt;&lt;1"/>
+    <property name="tokens" value="1,1,&lt;&lt;,&gt;&gt;"/>
     <property name="tutorial" value=""/>
    </properties>
   </object>

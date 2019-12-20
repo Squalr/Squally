@@ -18,12 +18,7 @@ ComparisonBlockBase::~ComparisonBlockBase()
 
 unsigned char ComparisonBlockBase::compute()
 {
-	if (this->currentInputs.size() < 2)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->compare(this->currentInputs[0], this->currentInputs[1]) ? this->currentInputs[0] : this->currentInputs[1];
+	return this->compare(this->inputLeft, this->inputRight) ? this->inputLeft : this->inputRight;
 }
 
 void ComparisonBlockBase::execute(std::function<void()> onExecuteComplete)
@@ -31,15 +26,16 @@ void ComparisonBlockBase::execute(std::function<void()> onExecuteComplete)
 	this->receivedValue = this->compute();
 	
 	// Only perform execution when the total input count has been reached
-	if (this->outputBolts.size() > 0 && this->currentInputs.size() == this->inputBolts.size())
+	if ((this->receivedInputs == 1 && this->inputType == BlockBase::ConnectionType::Single) || 
+		(this->receivedInputs == 2 && this->inputType == BlockBase::ConnectionType::Double))
 	{
-		if (this->compare(this->currentInputs[0], this->currentInputs[1]))
+		if (this->compare(this->inputLeft, this->inputRight))
 		{
-			this->outputBolts[0]->execute(this->receivedValue, onExecuteComplete);
+			this->outputBoltLeft->execute(this->receivedValue, onExecuteComplete);
 		}
 		else
 		{
-			this->outputBolts[1]->execute(this->receivedValue, onExecuteComplete);
+			this->outputBoltRight->execute(this->receivedValue, onExecuteComplete);
 		}
 	}
 	else

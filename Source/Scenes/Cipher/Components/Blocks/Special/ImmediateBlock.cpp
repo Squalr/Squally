@@ -64,14 +64,24 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	
 	if (this->blockType == BlockBase::BlockType::Static)
 	{
-		for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+		if (this->inputBoltLeft != nullptr)
 		{
-			(*it)->setVisible(false);
+			inputBoltLeft->setVisible(false);
 		}
 
-		for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+		if (this->inputBoltRight != nullptr)
 		{
-			(*it)->setVisible(false);
+			inputBoltRight->setVisible(false);
+		}
+
+		if (this->outputBoltLeft != nullptr)
+		{
+			outputBoltLeft->setVisible(false);
+		}
+
+		if (this->outputBoltLeft != nullptr)
+		{
+			outputBoltLeft->setVisible(false);
 		}
 	}
 
