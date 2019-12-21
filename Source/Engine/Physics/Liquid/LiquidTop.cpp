@@ -1,8 +1,6 @@
 #include "LiquidTop.h"
 
-#ifdef _MSC_VER
-    #include <execution>
-#endif
+#include <execution>
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
@@ -74,71 +72,45 @@ void LiquidTop::update(float dt)
 {
     super::update(dt);
 
-    #ifdef _MSC_VER
-        // Ignore the first and last columns as an optimization. Edges will always be at base water level.
-        std::for_each(
-            std::execution::par_unseq,
-            std::next(this->columns.begin(), 1),
-            std::prev(this->columns.end(), 1),
-            [=](LiquidTop::ColumnData& it)
-            {
-                it.update(this->dampening, this->tension);
-            }
-        );
-
-        // See git commit history for unoptomized version.
-        std::for_each(
-            std::execution::par_unseq,
-            std::next(this->columnIndicies.begin(), 1),
-            std::prev(this->columnIndicies.end(), 1),
-            [=](int index)
-            {
-                // Intentional data races, no apparent visual impact.
-                const float delta = this->spread * (columns[index + 1].height - columns[index].height) + 
-                    this->spread * (columns[index - 1].height - columns[index].height);
-                columns[index].speed += delta;
-                columns[index].height += delta;
-            }
-        );
-
-        std::for_each(
-            std::execution::par_unseq,
-            this->columnIndicies.begin(),
-            this->columnIndicies.end(),
-            [=](int index)
-            {
-                uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
-                uint16_t y = uint16_t(columns[index].height);
-                
-                this->vertexArray[2 * index] = Vertex(x, y);
-                this->vertexArray[2 * index + 1] = Vertex(x, 0);
-            }
-        );
-    #else
-        for (auto it = std::next(this->columns.begin(), 1); it != std::prev(this->columns.end(), 1); it++)
+    // Ignore the first and last columns as an optimization. Edges will always be at base water level.
+    std::for_each(
+        std::execution::par_unseq,
+        std::next(this->columns.begin(), 1),
+        std::prev(this->columns.end(), 1),
+        [=](LiquidTop::ColumnData& it)
         {
-            (*it).update(this->dampening, this->tension);
+            it.update(this->dampening, this->tension);
         }
+    );
 
-        for (auto it = std::next(this->columnIndicies.begin(), 1); it != std::prev(this->columnIndicies.end(), 1); it++)
+    // See git commit history for unoptomized version.
+    std::for_each(
+        std::execution::par_unseq,
+        std::next(this->columnIndicies.begin(), 1),
+        std::prev(this->columnIndicies.end(), 1),
+        [=](int index)
         {
-            int index = *it;
+            // Intentional data races, no apparent visual impact.
             const float delta = this->spread * (columns[index + 1].height - columns[index].height) + 
                 this->spread * (columns[index - 1].height - columns[index].height);
             columns[index].speed += delta;
             columns[index].height += delta;
         }
+    );
 
-        for (auto it = std::next(this->columnIndicies.begin(), 1); it != std::prev(this->columnIndicies.end(), 1); it++)
+    std::for_each(
+        std::execution::par_unseq,
+        this->columnIndicies.begin(),
+        this->columnIndicies.end(),
+        [=](int index)
         {
-            int index = *it;
             uint16_t x = uint16_t((float(index) / float(this->columns.size() - 1)) * this->surfaceSize.width);
             uint16_t y = uint16_t(columns[index].height);
             
             this->vertexArray[2 * index] = Vertex(x, y);
             this->vertexArray[2 * index + 1] = Vertex(x, 0);
         }
-    #endif
+    );
 }
 
 void LiquidTop::splash(float x, float speed, float splashRadius, float decay)

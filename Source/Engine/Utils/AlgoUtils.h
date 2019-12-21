@@ -42,6 +42,8 @@ public:
 	static bool doSegmentsIntersect(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentA, std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentB);
 	static std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>
 			buildSegmentsFromPoints(const std::vector<cocos2d::Vec2>& points);
+	static std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>
+			shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments);
 	static cocos2d::Rect getPolygonRect(const std::vector<cocos2d::Vec2>& points);
 	static std::vector<cocos2d::Vec2> insetPolygon(const std::vector<Triangle>& triangles,
 			const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments, float insetDistance);

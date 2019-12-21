@@ -281,6 +281,43 @@ bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<
 	return false;
 }
 
+std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> AlgoUtils::shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments)
+{
+	const float factor = 8.0f;
+
+	std::vector<std::tuple<Vec2, Vec2>> newSegments = std::vector<std::tuple<Vec2, Vec2>>();
+
+	for (auto segment : segments)
+	{
+		const Vec2& first = std::get<0>(segment);
+		const Vec2& second = std::get<1>(segment);
+		const Vec2& left = first.x <= second.x ? first : second;
+		const Vec2& right = first.x <= second.x ? second : first;
+		const Vec2& lower = first.y <= second.y ? first : second;
+		const Vec2& upper = first.y <= second.y ? second : first;
+
+		if (left.x == right.x)
+		{
+			newSegments.push_back({ Vec2(lower.x, lower.y + factor), Vec2(upper.x, upper.y - factor) });
+		}
+		else
+		{
+			const float rise = std::abs(left.y - right.y);
+			const float run = std::abs(left.x - right.x);
+			const float angle = std::atan2f(rise, run);
+			const float factorX = std::cos(angle) * factor;
+			const float factorY = std::sin(angle) * factor;
+
+			newSegments.push_back({
+				Vec2(left.x + factorX, left.y + (rise >= 0.0f ? factorY : -factorY)),
+				Vec2(right.x - factorX, right.y + (rise <= 0.0f ? factorY : -factorY))
+			});
+		}
+	}
+
+	return newSegments;
+}
+
 std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std::vector<Vec2>& points)
 {
 	std::vector<std::tuple<Vec2, Vec2>> segments = std::vector<std::tuple<Vec2, Vec2>>();

@@ -60,6 +60,8 @@ protected:
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
 
+	cocos2d::Node* mapNode;
+
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
@@ -73,6 +75,4 @@ private:
 	ConfirmationMenu* confirmationMenu;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
-
-	cocos2d::Node* mapNode;
 };
