@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="943">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="947">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt1"/>
@@ -295,6 +295,7 @@
     <property name="tutorial" value="shift-left"/>
    </properties>
   </object>
+  <object id="946" name="iou" type="object" x="984.5" y="2560.5" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -322,6 +323,9 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
+  <object id="943" name="iou" type="object" x="2768.5" y="6376.5" width="87" height="87"/>
+  <object id="944" name="iou" type="object" x="4476.5" y="6384.5" width="87" height="87"/>
+  <object id="945" name="iou" type="object" x="4480.5" y="4464.5" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

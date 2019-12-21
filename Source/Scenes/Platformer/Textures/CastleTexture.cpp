@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string CastleTexture::MapKeyTextureType = "blue-grass";
+const std::string CastleTexture::MapKeyTextureType = "castle";
 
 CastleTexture* CastleTexture::create(ValueMap& properties)
 {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="950">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="952">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt1"/>
@@ -176,6 +176,8 @@
    </properties>
   </object>
   <object id="949" name="caged-bee" type="object" x="2083.27" y="1466.91" width="78.7879" height="88"/>
+  <object id="950" name="iou" type="object" x="2288.5" y="1468.5" width="87" height="87"/>
+  <object id="951" name="iou" type="object" x="1848.5" y="1464.5" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>

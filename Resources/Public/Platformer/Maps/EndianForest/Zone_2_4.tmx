@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1019">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1023">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt1"/>
@@ -369,6 +369,10 @@
     <property name="tutorial" value=""/>
    </properties>
   </object>
+  <object id="1019" name="iou" type="object" x="3853.47" y="6371.65" width="87" height="87"/>
+  <object id="1020" name="iou" type="object" x="4880.74" y="4268.62" width="87" height="87"/>
+  <object id="1021" name="iou" type="object" x="2683.77" y="4592.86" width="87" height="87"/>
+  <object id="1022" name="iou" type="object" x="6056.5" y="2411.05" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>

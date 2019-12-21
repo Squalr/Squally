@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="909">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="59" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="910">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -15,9 +15,6 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="862" name="castle" type="texture" x="6118.57" y="-354.923">
-   <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
-  </object>
   <object id="863" name="temple" type="texture" x="4865.4" y="-376.95">
    <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
   </object>
@@ -26,6 +23,9 @@
   </object>
   <object id="908" name="brick-interior" type="texture" x="2345.45" y="-342.424">
    <polygon points="0,0 2529.77,4.64408 2529.77,1599.31 6.12538,1602.13"/>
+  </object>
+  <object id="909" name="castle" type="texture" x="6133.33" y="-360.606">
+   <polygon points="0,0 1154.01,4.64408 1154.01,1599.31 2.79423,1602.13"/>
   </object>
  </objectgroup>
  <objectgroup id="117" name="terrain -3">
