@@ -14,6 +14,7 @@ const std::string StateKeys::CurrentHelper = "STATE_KEY_CURRENT_HELPER";
 const std::string StateKeys::CinematicHijacked = "STATE_KEY_CINEMATIC_HIJACKED";
 const std::string StateKeys::CinematicDestinationX = "STATE_KEY_CINEMATIC_DESTINATION_X";
 const std::string StateKeys::CinematicDestinationReached = "STATE_KEY_CINEMATIC_DESTINATION_REACHED";
+const std::string StateKeys::PatrolHijacked = "STATE_KEY_PATROL_HIJACKED";
 const std::string StateKeys::PatrolDestinationX = "STATE_KEY_PATROL_DESTINATION_X";
 const std::string StateKeys::PatrolDestinationReached = "STATE_KEY_PATROL_DESTINATION_REACHED";
 const std::string StateKeys::WeakMinded = "STATE_KEY_WEAK_MINDED";
