@@ -9,7 +9,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Operations/BruteForce.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

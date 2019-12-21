@@ -47,6 +47,6 @@ private:
 
 	bool hasAnyPinFailed;
 
-	static const int PinSpacing;
-	static const int PinUnlockDistance;
+	static const float PinSpacing;
+	static const float PinUnlockDistance;
 };

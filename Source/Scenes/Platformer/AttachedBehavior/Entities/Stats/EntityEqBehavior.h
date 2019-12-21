@@ -15,6 +15,7 @@ class EntityEqBehavior : public AttachedBehavior
 public:
 	static EntityEqBehavior* create(GameObject* owner);
 
+	void load(std::string saveKeyEq, std::string saveKeyExp);
 	void setEq(int eq);
 	int getEq();
 	bool setEqExperience(int eqExperience);
@@ -33,4 +34,9 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	void save();
+
+	std::string saveKeyEq;
+	std::string saveKeyExp;
 };

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Aster.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Aster::~Aster()
 
 Vec2 Aster::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Aster::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Aster::getHexusOpponentData()
 	if (Aster::HexusOpponentDataInstance == nullptr)
 	{
 		Aster::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Aster_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Aster::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.518f,
 			HexusOpponentData::generateDeck(32, 0.518f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Aster::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

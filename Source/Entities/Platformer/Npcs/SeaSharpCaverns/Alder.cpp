@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Alder.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Alder::Alder(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Alder_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Alder::getHexusOpponentData();
@@ -48,7 +48,7 @@ Alder::~Alder()
 
 Vec2 Alder::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Alder::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Alder::getHexusOpponentData()
 	if (Alder::HexusOpponentDataInstance == nullptr)
 	{
 		Alder::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Alder_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Alder::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.259f,
 			HexusOpponentData::generateDeck(32, 0.259f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Alder::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

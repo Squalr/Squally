@@ -11,15 +11,23 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotem.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerMode.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
 const std::string TeachHackerMode::MapKeyQuest = "teach-hacker-mode";
+const std::string TeachHackerMode::TagHelpTotemHacking = "help-totem-hacking";
 
 TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -32,7 +40,8 @@ TeachHackerMode* TeachHackerMode::create(GameObject* owner, QuestLine* questLine
 
 TeachHackerMode::TeachHackerMode(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerMode::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
+	this->helpTotem = nullptr;
+	this->squally = nullptr;
 	this->scrappy = nullptr;
 }
 
@@ -42,19 +51,27 @@ TeachHackerMode::~TeachHackerMode()
 
 void TeachHackerMode::onLoad(QuestState questState)
 {
+	ObjectEvents::watchForObject<HelpTotem>(this, [=](HelpTotem* helpTotem)
+	{
+		this->helpTotem = helpTotem;
+	}, TeachHackerMode::TagHelpTotemHacking);
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKeySqually);
+
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+	}, Scrappy::MapKeyScrappy);
 }
 
 void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{
-		this->complete();
-
-		this->runCinematicSequence();
+		this->runCinematicSequencePt1();
 	});
 }
 
@@ -67,35 +84,17 @@ void TeachHackerMode::onSkipped()
 	this->removeAllListeners();
 }
 
-void TeachHackerMode::runCinematicSequence()
+void TeachHackerMode::runCinematicSequencePt1()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
+	this->complete();
 
 	if (this->scrappy != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
-		this->scrappy->runAction(Sequence::create(
-			CallFunc::create([=]()
+		this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_D_TrapAhead::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
 			{
-				this->scrappy->droidChatterSound->play();
-			}),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->scrappy->speechBubble->hideDialogue();
-			}),
-			nullptr
-		));
+			});
+		});
 	}
 }

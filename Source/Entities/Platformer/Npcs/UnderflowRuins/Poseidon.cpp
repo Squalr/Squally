@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Poseidon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Poseidon::~Poseidon()
 
 Vec2 Poseidon::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Poseidon::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 	if (Poseidon::HexusOpponentDataInstance == nullptr)
 	{
 		Poseidon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Poseidon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.223f,
 			HexusOpponentData::generateDeck(32, 0.223f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Poseidon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

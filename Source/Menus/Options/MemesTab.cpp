@@ -11,10 +11,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Credits/Developers.h"
-#include "Strings/Menus/Credits/MattTwitter.h"
-#include "Strings/Menus/Credits/NateTwitter.h"
-#include "Strings/Menus/Credits/ZacTwitter.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

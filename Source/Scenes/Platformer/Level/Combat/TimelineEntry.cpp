@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -17,7 +18,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
-
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -35,7 +36,7 @@ TimelineEntry* TimelineEntry::create(PlatformerEntity* entity)
 	return instance;
 }
 
-TimelineEntry::TimelineEntry(PlatformerEntity* entity)
+TimelineEntry::TimelineEntry(PlatformerEntity* entity) : super()
 {
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
@@ -43,7 +44,6 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->emblem = Sprite::create(entity->getEmblemResource());
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
-	this->isBlocking = false;
 
 	this->speed = 1.0f;
 	this->interruptBonus = 0.0f;
@@ -55,6 +55,10 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity)
 	this->addChild(this->orphanedAttackCache);
 }
 
+TimelineEntry::~TimelineEntry()
+{
+}
+
 void TimelineEntry::onEnter()
 {
 	super::onEnter();
@@ -62,7 +66,6 @@ void TimelineEntry::onEnter()
 	this->currentCast = nullptr;
 	this->target = nullptr;
 	this->isCasting = false;
-	this->isBlocking = false;
 	this->orphanedAttackCache->removeAllChildren();
 
 	this->scheduleUpdate();
@@ -97,9 +100,12 @@ void TimelineEntry::initializeListeners()
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
-			CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
+			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
 
-			this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+				this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+			}
 		}
 	}));
 
@@ -131,12 +137,14 @@ void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrH
 		return;
 	}
 
+	bool blocked = false;
+
 	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(caster, this->getEntity(), &damageOrHealing));
-	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing));
+	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing, &blocked));
 
 	if (damageOrHealing < 0)
 	{
-		this->tryInterrupt();
+		this->tryInterrupt(blocked);
 	}
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
@@ -170,15 +178,27 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 	this->currentCast = attack;
 }
 
+PlatformerEntity* TimelineEntry::getStagedTarget()
+{
+	return this->target == nullptr ? nullptr : this->target->getEntity();
+}
+
+PlatformerAttack* TimelineEntry::getStagedCast()
+{
+	return this->currentCast;
+}
+
 void TimelineEntry::defend()
 {
 	if (this->getEntity() == nullptr)
 	{
 		return;
 	}
-
-	this->isBlocking = true;
-	this->getEntity()->addChild(Defend::create(this->getEntity()));
+	
+	this->getEntity()->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
+	});
 }
 
 float TimelineEntry::getProgress()
@@ -238,25 +258,47 @@ void TimelineEntry::addTime(float dt)
 
 void TimelineEntry::performCast()
 {
-	this->isCasting = false;
-	this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation());
-
-	this->currentCast->execute(
+	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
+	
+	GameCamera::getInstance()->pushTarget(CameraTrackingData(
 		this->entity,
-		this->target->entity,
-		[=]()
+		(this->isPlayerEntry() ? Vec2(128.0f, 0.0f) : Vec2(128.0f, 0.0f)),
+		CameraTrackingData::DefaultCameraOffset,
+		CameraTrackingData::CameraScrollType::Rectangle,
+		Vec2(0.015f, 0.015f),
+		this->entity->getStateOrDefault(StateKeys::Zoom, Value(1.0f)).asFloat()
+	));
+
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
 		{
-			this->resetTimeline();
-			CombatEvents::TriggerResumeTimeline();
-		}
-	);
+			this->isCasting = false;
+			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
+
+			this->currentCast->execute(
+				this->entity,
+				this->target->entity,
+				[=]()
+				{
+					GameCamera::getInstance()->popTarget();
+
+					// TODO: Invoke entity-take-damage animation, then resume timeline afterwards in a callback
+
+					this->resetTimeline();
+					CombatEvents::TriggerResumeTimeline();
+				}
+			);
+		}),
+		nullptr
+	));
 }
 
-void TimelineEntry::tryInterrupt()
+void TimelineEntry::tryInterrupt(bool blocked)
 {
-	if (this->isBlocking || this->isCasting)
-	{
-		if (this->isBlocking)
+	if (blocked || this->isCasting)
+	{	
+		if (blocked)
 		{
 			CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->entity));
 
@@ -272,7 +314,6 @@ void TimelineEntry::tryInterrupt()
 		}
 		
 		this->isCasting = false;
-		this->isBlocking = false;
 
 		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 	}
@@ -283,7 +324,6 @@ void TimelineEntry::resetTimeline()
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
 	this->isCasting = false;
-	this->isBlocking = false;
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }

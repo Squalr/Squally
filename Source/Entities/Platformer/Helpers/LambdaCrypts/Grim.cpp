@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Helpers/LambdaCrypts/Grim.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Grim::~Grim()
 
 Vec2 Grim::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Grim::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Grim::getHexusOpponentData()
 	if (Grim::HexusOpponentDataInstance == nullptr)
 	{
 		Grim::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_LambdaCrypts_Grim_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Grim::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Grim::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -31,10 +31,12 @@ private:
 	void runChatSequencePt2();
 	void runChatSequencePt3();
 	void runChatSequencePt4();
+	void runChatSequencePt5();
 
-	bool hasRunEvent;
 	Guano* guano;
 	Scrappy* scrappy;
 	Squally* squally;
 	MulDoor* mulDoor;
+
+	static const std::string EventExplainDoor;
 };

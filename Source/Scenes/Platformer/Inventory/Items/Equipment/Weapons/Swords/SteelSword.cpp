@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Swords/SteelSword.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -20,7 +20,18 @@ SteelSword* SteelSword::create()
 	return instance;
 }
 
-SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

@@ -12,7 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -136,8 +136,11 @@ void Lexicon::onEnter()
 {
 	super::onEnter();
 
-	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::Identifier));
-	HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::Identifier));
+	this->defer([=]()
+	{
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::Identifier));
+	});
 }
 
 void Lexicon::initializePositions()

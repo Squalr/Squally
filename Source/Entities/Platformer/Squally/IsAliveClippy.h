@@ -4,7 +4,6 @@
 #include "Engine/Hackables/Clippy.h"
 
 class SmartAnimationNode;
-class Sound;
 
 class IsAliveClippy : public Clippy
 {
@@ -23,5 +22,4 @@ private:
 	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
-	Sound* droidChatterSound;
 };

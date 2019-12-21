@@ -9,6 +9,9 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
+#include "Menus/Dialogue/PlatformerDialogueBox.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Level/Huds/Components/CinematicIndicator.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
@@ -27,6 +30,8 @@ GameHud::GameHud()
 {
 	this->currencyDisplay = CurrencyDisplay::create();
 	this->statsBars = StatsBars::create();
+	this->cinematicIndicator = CinematicIndicator::create();
+	this->dialogueBox = PlatformerDialogueBox::create();
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->statsBars->setVisible(false);
@@ -34,6 +39,8 @@ GameHud::GameHud()
 
 	this->addChild(this->statsBars);
 	this->addChild(this->currencyDisplay);
+	this->addChild(this->dialogueBox);
+	this->addChild(this->cinematicIndicator);
 }
 
 GameHud::~GameHud()
@@ -57,6 +64,8 @@ void GameHud::initializePositions()
 	
 	this->statsBars->setPosition(offset.x, visibleSize.height + offset.y);
 	this->currencyDisplay->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 96.0f);
+	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
+	this->cinematicIndicator->setPosition(48.0f, 48.0f);
 }
 
 void GameHud::initializeListeners()
@@ -70,7 +79,11 @@ void GameHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->statsBars->setStatsTarget(args->entity);
-			this->currencyDisplay->setCurrencyInventory(args->entity->getCurrencyInventory());
+
+			args->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				this->currencyDisplay->setCurrencyInventory(entityInventoryBehavior->getCurrencyInventory());
+			});
 
 			this->statsBars->setVisible(true);
 			this->currencyDisplay->setVisible(true);

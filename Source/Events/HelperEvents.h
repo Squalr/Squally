@@ -1,21 +1,26 @@
 #pragma once
 #include <string>
 
+class PlatformerEntity;
+class MinMaxPool;
+
 class HelperEvents
 {
 public:
 	static const std::string EventFindScrappy;
-	static const std::string EventChangeHelper;
+	static const std::string EventRequestPickPocket;
 
-	struct ChangeHelperArgs
+	struct RequestPickPocketArgs
 	{
-		std::string helperName;
+		PlatformerEntity* target;
+		MinMaxPool* pocketPool;
+		std::string saveKeyPickPocketed;
 
-		ChangeHelperArgs(std::string helperName) : helperName(helperName)
+		RequestPickPocketArgs(PlatformerEntity* target, MinMaxPool* pocketPool, std::string saveKeyPickPocketed) : target(target), pocketPool(pocketPool), saveKeyPickPocketed(saveKeyPickPocketed)
 		{
 		}
 	};
 
 	static void TriggerFindScrappy();
-	static void TriggerChangeHelper(ChangeHelperArgs args);
+	static void TriggerRequestPickPocket(RequestPickPocketArgs args);
 };

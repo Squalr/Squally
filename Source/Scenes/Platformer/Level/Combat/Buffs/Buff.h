@@ -12,24 +12,45 @@ class PlatformerEntity;
 
 class Buff : public SmartNode
 {
+public:
+	struct BuffData
+	{
+		std::string uniqueId;
+
+		BuffData() : uniqueId("") { }
+		BuffData(std::string uniqueId) : uniqueId(uniqueId) { }
+	};
+
+	BuffData getBuffData();
+	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
+	void removeBuff();
+
 protected:
-	Buff(PlatformerEntity* caster, PlatformerEntity* target);
+
+	Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData);
 	~Buff();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
 	virtual void onTimelineReset(bool wasInterrupt);
-	virtual void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback);
+	virtual void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback);
 	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
-	void removeBuff();
 
+	void enableClippy();
+	void disableClippy();
+
+	bool showClippy;
+
+	BuffData buffData;
 	PlatformerEntity* caster;
 	PlatformerEntity* target;
 	std::vector<HackableCode*> hackables;
 
 private:
 	typedef SmartNode super;
+
+	std::function<void()> removeBuffCallback;
 	
 	void unregisterHackables();
 };

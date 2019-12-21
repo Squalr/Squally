@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/GameUtils.h"
 
 #include "Resources/FontResources.h"
 #include "Resources/UIResources.h"
@@ -39,10 +40,7 @@ LocalizedLabel::LocalizedLabel(
 {
 	this->fontStyle = fontStyle;
 	this->fontSize = fontSize;
-	// this->translationButton = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	this->localizedString = nullptr; // Do not set here; set via the setter function
-
-	// this->translationButton->setClickModifier(EventKeyboard::KeyCode::KEY_ALT);
 
 	this->setDimensions(dimensions.width, dimensions.height);
 	this->setAlignment(hAlignment, vAlignment);
@@ -50,7 +48,6 @@ LocalizedLabel::LocalizedLabel(
 	this->setOverflow(Label::Overflow::RESIZE_HEIGHT);
 
 	this->setLocalizedString(localizedString);
-	// this->addChild(this->translationButton);
 }
 
 LocalizedLabel::~LocalizedLabel()
@@ -60,14 +57,6 @@ LocalizedLabel::~LocalizedLabel()
 void LocalizedLabel::onEnter()
 {
 	super::onEnter();
-
-	// We don't have access to initializePositions/initializeListeners because we're inheriting directly from a cocos object
-	/*
-	this->updateTranslationEditHitbox();
-	this->translationButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		LocalizationEvents::TriggerTranslationBeginEdit(LocalizationEvents::TranslationBeginEditArgs(this->localizedString));
-	});*/
 }
 
 LocalizedLabel* LocalizedLabel::clone()
@@ -107,7 +96,7 @@ void LocalizedLabel::setLocalizedString(LocalizedString* localizedString)
 
 	this->localizedString->setOnStringUpdateCallback(CC_CALLBACK_1(LocalizedLabel::onStringUpdate, this));
 
-	this->addChild(this->localizedString); // Retain as a child so it can listen for events (no visuals)
+	GameUtils::changeParent(this->localizedString, this, false); // Retain as a child so it can listen for events (no visuals)
 }
 
 void LocalizedLabel::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
@@ -122,11 +111,36 @@ void LocalizedLabel::setStringReplacementVariables(std::vector<LocalizedString*>
 		this->localizedString->setStringReplacementVariables(stringReplacementVariables);
 	}
 }
+	
+void LocalizedLabel::setFontSize(FontSize fontSize)
+{
+	if (this->fontSize == fontSize)
+	{
+		return;
+	}
+
+	this->fontSize = fontSize;
+
+	// Refresh
+	this->onStringUpdate(this->localizedString);
+}
 
 float LocalizedLabel::getFontSize()
 {
 	switch (this->fontSize)
 	{
+		case FontSize::S1:
+		{
+			return LocalizedLabel::getFontSizeS1();
+		}
+		case FontSize::S2:
+		{
+			return LocalizedLabel::getFontSizeS2();
+		}
+		case FontSize::S3:
+		{
+			return LocalizedLabel::getFontSizeS3();
+		}
 		case FontSize::M1:
 		{
 			return LocalizedLabel::getFontSizeM1();
@@ -183,18 +197,6 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
-void LocalizedLabel::toggleAllowTranslationEdit(bool allowTranslationEdit)
-{
-	if (allowTranslationEdit)
-	{
-		// this->translationButton->enableInteraction();
-	}
-	else
-	{
-		// this->translationButton->disableInteraction();
-	}
-}
-
 void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 {
 	// Save some state we wish to keep
@@ -215,8 +217,6 @@ void LocalizedLabel::onStringUpdate(LocalizedString* localizedString)
 	{
 		this->enableOutline(outlineColor, outlineSize);
 	}
-
-	this->updateTranslationEditHitbox();
 }
 
 cocos2d::LanguageType LocalizedLabel::getCurrentLanguage()
@@ -309,6 +309,66 @@ std::string LocalizedLabel::getMonospacedFont()
 std::string LocalizedLabel::getCodingFont()
 {
 	return FontResources::Coding_UbuntuMono_Bold;
+}
+
+float LocalizedLabel::getFontSizeS1()
+{
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 128.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 140.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 128.0f;
+		}
+	}
+}
+
+float LocalizedLabel::getFontSizeS2()
+{
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 112.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 120.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 112.0f;
+		}
+	}
+}
+
+float LocalizedLabel::getFontSizeS3()
+{
+	switch (this->fontStyle)
+	{
+		default:
+		case FontStyle::Main:
+		{
+			return 96.0f;
+		}
+		case FontStyle::Coding:
+		{
+			return 104.0f;
+		}
+		case FontStyle::Monospaced:
+		{
+			return 96.0f;
+		}
+	}
 }
 
 float LocalizedLabel::getFontSizeM1()
@@ -469,10 +529,4 @@ float LocalizedLabel::getFontSizeSmall()
 			return 16.0f;
 		}
 	}
-}
-
-void LocalizedLabel::updateTranslationEditHitbox()
-{
-	// this->translationButton->setContentSize(this->getContentSize());
-	// this->translationButton->setPosition(Vec2(this->getContentSize() / 2.0f));
 }

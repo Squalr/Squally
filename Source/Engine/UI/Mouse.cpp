@@ -74,12 +74,20 @@ void Mouse::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* mouseStateUpdateListener = EventListenerCustom::create(
-		InputEvents::EventMouseStateUpdate,
-		CC_CALLBACK_1(Mouse::onEventMouseStateUpdate, this)
-	);
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onEventMouseStateUpdate(eventCustom);
+	}));
 
-	this->addGlobalEventListener(mouseStateUpdateListener);
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
+	{
+		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	});
+
+	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
+	{
+		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
+	});
 }
 
 void Mouse::registerCursorSet(int setId, CursorSet cursorSet)

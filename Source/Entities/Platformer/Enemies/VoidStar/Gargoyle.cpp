@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Gargoyle.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Gargoyle::~Gargoyle()
 
 Vec2 Gargoyle::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Gargoyle::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 	if (Gargoyle::HexusOpponentDataInstance == nullptr)
 	{
 		Gargoyle::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Gargoyle_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.9f,
-			Vec2(-32.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Gargoyle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Gargoyle::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

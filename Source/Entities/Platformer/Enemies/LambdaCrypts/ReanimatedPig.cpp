@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/ReanimatedPig.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ ReanimatedPig::~ReanimatedPig()
 
 Vec2 ReanimatedPig::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* ReanimatedPig::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* ReanimatedPig::getHexusOpponentData()
 	if (ReanimatedPig::HexusOpponentDataInstance == nullptr)
 	{
 		ReanimatedPig::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			ReanimatedPig::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* ReanimatedPig::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

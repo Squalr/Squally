@@ -17,7 +17,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/StrUtils.h"
 
-#include "Strings/Common/Newline.h"
+#include "Strings/Strings.h"
 
 #include "Resources/UIResources.h"
 

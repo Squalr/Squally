@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Cooper.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Cooper::~Cooper()
 
 Vec2 Cooper::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Cooper::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 	if (Cooper::HexusOpponentDataInstance == nullptr)
 	{
 		Cooper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Cooper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Cooper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.527f,
 			HexusOpponentData::generateDeck(32, 0.527f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Cooper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

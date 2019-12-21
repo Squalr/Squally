@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Zeus.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Zeus::~Zeus()
 
 Vec2 Zeus::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Zeus::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 	if (Zeus::HexusOpponentDataInstance == nullptr)
 	{
 		Zeus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Zeus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zeus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.232f,
 			HexusOpponentData::generateDeck(32, 0.232f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Zeus::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

@@ -6,7 +6,8 @@ class CollectablesMenu;
 class CombatHud;
 class ChoicesMenu;
 class DefeatMenu;
-class EnemyAIHelper;
+class CombatAIHelper;
+class FirstStrikeMenu;
 class InventoryMenu;
 class MapMenu;
 class NotificationHud;
@@ -24,8 +25,9 @@ public:
 	{
 		std::string entityType;
 		std::string battleBehavior;
+		std::string dropPool;
 
-		CombatData(std::string entityType, std::string battleBehavior) : entityType(entityType), battleBehavior(battleBehavior) { }
+		CombatData(std::string entityType, std::string battleBehavior, std::string dropPool = "") : entityType(entityType), battleBehavior(battleBehavior), dropPool(dropPool) { }
 	};
 
 	static CombatMap* create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
@@ -53,15 +55,20 @@ private:
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
 	TextOverlays* textOverlays;
+	FirstStrikeMenu* firstStrikeMenu;
 	DefeatMenu* defeatMenu;
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
-	EnemyAIHelper* enemyAIHelper;
+	CombatAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
 
+	bool playerFirstStrike;
 	std::vector<CombatData> playerData;
 	std::vector<CombatData> enemyData;
 	std::string enemyIdentifier;
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
+
+	static const std::string MapPropertyPlayerFirstStrike;
+	static const std::string MapPropertyEnemyFirstStrike;
 };

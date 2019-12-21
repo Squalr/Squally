@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Cookie.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Cookie::~Cookie()
 
 Vec2 Cookie::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Cookie::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Cookie::getHexusOpponentData()
 	if (Cookie::HexusOpponentDataInstance == nullptr)
 	{
 		Cookie::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Cookie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.545f,
 			HexusOpponentData::generateDeck(32, 0.545f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Cookie::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

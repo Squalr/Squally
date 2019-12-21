@@ -11,8 +11,6 @@
 
 #include "Resources/HexusResources.h"
 
-#include "Strings/Common/Constant.h"
-
 using namespace cocos2d;
 
 ScoreTotal* ScoreTotal::create()
@@ -27,22 +25,24 @@ ScoreTotal* ScoreTotal::create()
 ScoreTotal::ScoreTotal()
 {
 	this->playerTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->playerTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Common_Constant::create());
-	this->playerTotal->enableOutline(Color4B::BLACK, 3);
+	this->playerTotalStr = ConstantString::create("0");
+	this->playerTotalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->playerTotalStr);
+	this->playerTotalLabel->enableOutline(Color4B::BLACK, 3);
 	this->playerLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->enemyTotalFrame = Sprite::create(HexusResources::ScoreBox);
-	this->enemyTotal = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Common_Constant::create());
-	this->enemyTotal->enableOutline(Color4B::BLACK, 3);
+	this->enemyTotalStr = ConstantString::create("0");
+	this->enemyTotalLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->enemyTotalStr);
+	this->enemyTotalLabel->enableOutline(Color4B::BLACK, 3);
 	this->enemyLeaderEmblem = Sprite::create(HexusResources::LeaderEmblem);
 
 	this->addChild(this->playerTotalFrame);
 	this->addChild(this->playerLeaderEmblem);
-	this->addChild(this->playerTotal);
+	this->addChild(this->playerTotalLabel);
 
 	this->addChild(this->enemyTotalFrame);
 	this->addChild(this->enemyLeaderEmblem);
-	this->addChild(this->enemyTotal);
+	this->addChild(this->enemyTotalLabel);
 }
 
 ScoreTotal::~ScoreTotal()
@@ -65,11 +65,11 @@ void ScoreTotal::initializePositions()
 
 	this->playerTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
 	this->playerLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::leaderEmblemOffsetY);
-	this->playerTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
+	this->playerTotalLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f - Config::totalAttackOffsetY);
 
 	this->enemyTotalFrame->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 	this->enemyLeaderEmblem->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::leaderEmblemOffsetY);
-	this->enemyTotal->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
+	this->enemyTotalLabel->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::totalAttackOffsetX, visibleSize.height / 2.0f + Config::totalAttackOffsetY);
 }
 
 void ScoreTotal::onBeforeStateChange(GameState* gameState)
@@ -89,8 +89,8 @@ void ScoreTotal::updateTotals(GameState* gameState)
 	int playerTotalAttack = gameState->getPlayerTotal();
 	int enemyTotalAttack = gameState->getEnemyTotal();
 
-	this->playerTotal->setStringReplacementVariables(ConstantString::create(std::to_string(playerTotalAttack)));
-	this->enemyTotal->setStringReplacementVariables(ConstantString::create(std::to_string(enemyTotalAttack)));
+	this->playerTotalStr->setString(std::to_string(playerTotalAttack));
+	this->enemyTotalStr->setString(std::to_string(enemyTotalAttack));
 
 	this->playerLeaderEmblem->stopAllActions();
 	this->enemyLeaderEmblem->stopAllActions();

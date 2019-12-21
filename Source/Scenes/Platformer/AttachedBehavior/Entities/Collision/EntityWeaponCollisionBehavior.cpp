@@ -35,6 +35,7 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
 	this->weaponOffset = Vec2::ZERO;
+	this->weaponCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -100,10 +101,13 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 		weaponType = PlatformerCollisionType::NpcWeapon;
 	}
 	
-	mainhand->removeTrackingObject(this->weaponCollision);
+	if (this->weaponCollision != nullptr)
+	{
+		mainhand->removeTrackingObject(this->weaponCollision);
+	}
 
 	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f),
+		CollisionObject::createCapsulePolygon(this->weaponSize, 1.0f, 8.0f, 0.0f),
 		(int)weaponType,
 		false,
 		false

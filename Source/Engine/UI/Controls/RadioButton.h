@@ -18,6 +18,8 @@ public:
 	void check();
 	void uncheck();
 	void setCheckCallback(std::function<void(RadioButton*)> callback);
+	void enableInteraction();
+	void disableInteraction();
 
 	static const std::string RadioButtonCheckEvent;
 

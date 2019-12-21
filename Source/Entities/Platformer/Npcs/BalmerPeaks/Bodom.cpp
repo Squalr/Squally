@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Bodom.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Bodom::~Bodom()
 
 Vec2 Bodom::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Bodom::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Bodom::getHexusOpponentData()
 	if (Bodom::HexusOpponentDataInstance == nullptr)
 	{
 		Bodom::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Bodom_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Bodom::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.536f,
 			HexusOpponentData::generateDeck(32, 0.536f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Bodom::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

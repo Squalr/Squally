@@ -3,6 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ItemEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
@@ -10,9 +12,10 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/ShopEvents.h"
-#include "Menus/Inventory/ItemPreview.h"
+#include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
+#include "Objects/Platformer/Shops/ShopPool.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -34,7 +37,7 @@ ShopItem* ShopItem::create(ValueMap& properties)
 ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
-	this->itemPreview = ItemPreview::create(false);
+	this->itemPreview = ItemPreview::create(false, true);
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();
@@ -48,6 +51,8 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
 	this->itemCostLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->itemCostLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->setVisible(false);
 
 	this->addChild(this->itemPreview);
 	this->addChild(this->itemNode);
@@ -63,13 +68,14 @@ ShopItem::~ShopItem()
 void ShopItem::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	ShopEvents::TriggerRequestItem(ShopEvents::ItemRequestArgs(this->poolName, [=](Item* item)
+	
+	ObjectEvents::watchForObject<ShopPool>(this, [=](ShopPool* shopPool)
 	{
-		this->item = item;
+		this->item = shopPool->getNextItem();
 
 		if (this->item != nullptr)
 		{
+			this->setVisible(true);
 			this->itemNode->addChild(this->item);
 			this->itemPreview->preview(this->item);
 
@@ -81,7 +87,11 @@ void ShopItem::onEnterTransitionDidFinish()
 				this->itemCostString->setString(std::to_string(this->itemCost));
 			}
 		}
-	}));
+		else
+		{
+			this->setVisible(false);
+		}
+	}, this->poolName);
 }
 
 void ShopItem::initializePositions()
@@ -104,6 +114,11 @@ void ShopItem::initializeListeners()
 
 void ShopItem::sellItem()
 {
+	if (!this->available)
+	{
+		return;
+	}
+
 	CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
 	int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
 
@@ -119,6 +134,8 @@ void ShopItem::sellItem()
 			this->itemPreview->preview(nullptr);
 			this->currencySprite->setVisible(false);
 			this->itemCostLabel->setVisible(false);
+			this->itemClickHitbox->setMouseClickCallback(nullptr);
+			this->itemClickHitbox->disableInteraction(0);
 		},
 		[=](Item*)
 		{

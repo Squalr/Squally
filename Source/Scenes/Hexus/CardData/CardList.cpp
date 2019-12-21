@@ -177,25 +177,25 @@ CardList::CardList()
 	std::sort(this->sortedCardList.begin(), this->sortedCardList.end(), [](CardData* a, CardData* b) -> bool
 	{
 		// Non-matching types, just sort these by card type
-		if (a->cardType != b->cardType)
+		if (a->getCardType() != b->getCardType())
 		{
-			return a->cardType < b->cardType;
+			return a->getCardType() < b->getCardType();
 		}
 
-		switch (a->cardType)
+		switch (a->getCardType())
 		{
 			case CardData::CardType::Binary:
 			case CardData::CardType::Decimal:
 			case CardData::CardType::Hexidecimal:
 			{
 				// Sort by attack
-				return a->attack < b->attack;
+				return a->getAttack() < b->getAttack();
 				break;
 			}
 			default:
 			{
 				// Sort by card type
-				return a->cardType < b->cardType;
+				return a->getCardType() < b->getCardType();
 			}
 		}
 	});

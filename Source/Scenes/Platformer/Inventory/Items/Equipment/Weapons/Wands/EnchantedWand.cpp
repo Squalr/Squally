@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Wands/EnchantedWand.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -20,7 +20,18 @@ EnchantedWand* EnchantedWand::create()
 	return instance;
 }
 
-EnchantedWand::EnchantedWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+EnchantedWand::EnchantedWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

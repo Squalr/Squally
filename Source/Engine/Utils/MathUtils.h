@@ -10,6 +10,6 @@ public:
 	static int clamp(int n, int lower, int upper);
 	static float wrappingNormalize(float value, float start, float end);
 	static int wrappingNormalize(int value, int start, int end);
-	static int resolveBinaryMathExpression(const std::string& expression);
+	static unsigned char resolveBinaryMathExpression(const std::string& expression);
 	static bool isInteger(const std::string& str);
 };

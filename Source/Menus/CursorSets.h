@@ -8,7 +8,8 @@ public:
 	enum CursorSet
 	{
 		Default = Mouse::SET_ID_DEFAULT,
-		Globe = Mouse::SET_ID_TRANSLATION_CURSOR		
+		Globe = Mouse::SET_ID_TRANSLATION_CURSOR,
+		PickPocket = 2,
 	};
 
 	static void registerCursorSets();

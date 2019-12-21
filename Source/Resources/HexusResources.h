@@ -35,7 +35,7 @@ namespace HexusResources
 	extern const std::string CardFrontCoverDec;
 	extern const std::string CardFrontCoverHex;
 	extern const std::string CardFrontCoverSpecial;
-	extern const std::string CardIcons;
+	extern const std::string CardIcon;
 	extern const std::string CardPad;
 	extern const std::string CardReplaceIcon;
 	extern const std::string CardReplaceIconLarge;
@@ -167,4 +167,6 @@ namespace HexusResources
 	extern const std::string StoreMenu_TabButtonSelected;
 	extern const std::string Victory;
 	extern const std::string VictorySelected;
+	extern const std::string WoodSquareButton;
+	extern const std::string WoodSquareButtonSelected;
 };

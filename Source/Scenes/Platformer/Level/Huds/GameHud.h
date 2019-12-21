@@ -2,7 +2,9 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+class CinematicIndicator;
 class CurrencyDisplay;
+class PlatformerDialogueBox;
 class StatsBars;
 
 class GameHud : public Hud
@@ -22,4 +24,6 @@ private:
 
 	CurrencyDisplay* currencyDisplay;
 	StatsBars* statsBars;
+	CinematicIndicator* cinematicIndicator;
+	PlatformerDialogueBox* dialogueBox;
 };

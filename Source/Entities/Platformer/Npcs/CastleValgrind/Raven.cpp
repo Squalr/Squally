@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Raven.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Raven::Raven(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Raven::getHexusOpponentData();
@@ -48,7 +48,7 @@ Raven::~Raven()
 
 Vec2 Raven::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Raven::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Raven::getHexusOpponentData()
 	if (Raven::HexusOpponentDataInstance == nullptr)
 	{
 		Raven::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Raven_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Raven::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.455f,
 			HexusOpponentData::generateDeck(32, 0.455f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Raven::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

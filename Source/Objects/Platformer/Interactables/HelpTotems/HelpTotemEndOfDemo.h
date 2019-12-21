@@ -12,9 +12,6 @@ public:
 protected:
 	HelpTotemEndOfDemo(cocos2d::ValueMap& properties);
 	~HelpTotemEndOfDemo();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef HelpTotem super;

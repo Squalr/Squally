@@ -8,37 +8,32 @@ CipherPuzzleData : public SmartNode
 {
 public:
 	static CipherPuzzleData* create(
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
-		std::vector<std::string> easyTokens,
-		std::vector<std::string> hardTokens,
-		std::string bonusReward,
-		std::function<void(CipherPuzzleData*, bool)> onUnlock);
+		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
+		std::vector<std::string> tokens,
+		std::string defaultDataType,
+		std::string tutorial,
+		std::function<void(CipherPuzzleData*)> onUnlock);
 	
 	CipherPuzzleData* clone();
-	bool hasHardMode();
-	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapEasy();
-	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMapHard();
-	std::vector<std::string> getEasyTokens();
-	std::vector<std::string> getHardTokens();
-	std::string getBonusReward();
-	std::function<void(CipherPuzzleData*, bool)> onUnlock;
+	std::vector<std::tuple<unsigned char, unsigned char>> getInputOutputMap();
+	std::vector<std::string> getTokens();
+	std::string getDefaultDataType();
+	std::string getTutorial();
+	std::function<void(CipherPuzzleData*)> onUnlock;
 
 private:
 	typedef SmartNode super;
-	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy,
-		std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard,
-		std::vector<std::string> easyTokens,
-		std::vector<std::string> hardTokens,
-		std::string bonusReward,
-		std::function<void(CipherPuzzleData*, bool)> onUnlock);
-	~CipherPuzzleData();
+	CipherPuzzleData(std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap,
+		std::vector<std::string> tokens,
+		std::string defaultDataType,
+		std::string tutorial,
+		std::function<void(CipherPuzzleData*)> onUnlock);
+	virtual ~CipherPuzzleData();
 
 	void initializeListeners() override;
 
-	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapEasy;
-	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMapHard;
-	std::vector<std::string> easyTokens;
-	std::vector<std::string> hardTokens;
-	std::string bonusReward;
+	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap;
+	std::string defaultDataType;
+	std::vector<std::string> tokens;
+	std::string tutorial;
 };

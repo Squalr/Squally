@@ -10,16 +10,16 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NotificationEvents.h"
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Menus/Okay.h"
+#include "Strings/Strings.h"
 
-const int NotificationHud::SlotCount = 4;
+const int NotificationHud::SlotCount = 3;
 
 using namespace cocos2d;
 
@@ -41,6 +41,7 @@ NotificationHud::NotificationHud()
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
 	this->slotCooldowns = std::vector<float>();
@@ -68,6 +69,7 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->okButton);
 	this->addChild(this->takeoverNode);
 	this->addChild(this->notificationsNode);
+	this->addChild(this->notificationSound);
 }
 
 NotificationHud::~NotificationHud()
@@ -107,7 +109,7 @@ void NotificationHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->showNotificationTakeover(args->title, args->description);
+			this->showNotificationTakeover(args->title, args->description, args->soundResource);
 		}
 	}));
 
@@ -117,7 +119,7 @@ void NotificationHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->pushNotification(args->title, args->description, args->iconResource);
+			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource);
 		}
 	}));
 
@@ -126,7 +128,7 @@ void NotificationHud::initializeListeners()
 		this->closeNotificationMenu();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
 		if (!GameUtils::isVisible(this->takeoverNode))
 		{
@@ -150,7 +152,7 @@ void NotificationHud::update(float dt)
 	const float FadeOutDuration = 0.5f;
 	const float Cooldown = FadeInDuration + SustainDuration + FadeOutDuration;
 
-	for (int index = 0; index < this->slotCooldowns.size(); index++)
+	for (int index = 0; index < int(this->slotCooldowns.size()); index++)
 	{
 		this->slotCooldowns[index] += dt;
 
@@ -176,23 +178,27 @@ void NotificationHud::update(float dt)
 	}
 }
 
-void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description)
+void NotificationHud::showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource)
 {
 	this->title->setLocalizedString(title);
 	this->description->setLocalizedString(description);
 	this->takeoverNode->setVisible(true);
+	this->notificationSound->setSoundResource(soundResource);
 	
 	this->previousFocus = GameUtils::getFocusedNode();
 	GameUtils::focus(this);
+	this->notificationSound->play();
 }
 
-void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource)
+void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
 {
 	Node* notification = Node::create();
 	Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
 	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
 	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
+
+	this->notificationSound->setSoundResource(soundResource);
 
 	titleLabel->enableOutline(Color4B::BLACK, 2);
 	descriptionLabel->enableOutline(Color4B::BLACK, 2);
@@ -209,6 +215,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	notification->addChild(descriptionLabel);
 	notification->addChild(titleLabel);
 	this->notificationsNode->addChild(notification);
+	this->notificationSound->play();
 
 	this->toProcess.push(notification);
 }

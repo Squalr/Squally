@@ -16,9 +16,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 
-#include "Strings/Hexus/CardsToPlayToolTip.h"
-#include "Strings/Common/Constant.h"
-#include "Strings/Common/Infinity.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -35,9 +33,12 @@ RemainingCardDisplay::RemainingCardDisplay()
 {
 	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = ClickableNode::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
-	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->remainingCardStr = ConstantString::create("0");
+	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->remainingCardStr);
 	this->enemyRemainingCardSprite = Sprite::create(HexusResources::RemainingCardsIcon);
-	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->enemyRemainingCardStr = ConstantString::create("0");
+	this->enemyRemainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->enemyRemainingCardStr);
+	this->infinityString = Strings::Common_Infinity::create();
 
 	this->remainingCardMouseOverPanel = LayerColor::create(Color4B::BLACK, 320.0f, 96.0f);
 	this->remainingCardMouseOverLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardsToPlayToolTip::create());
@@ -54,6 +55,7 @@ RemainingCardDisplay::RemainingCardDisplay()
 	this->addChild(this->enemyRemainingCardSprite);
 	this->addChild(this->remainingCardMouseOverPanel);
 	this->addChild(this->remainingCardMouseOverLabel);
+	this->addChild(this->infinityString);
 }
 
 RemainingCardDisplay::~RemainingCardDisplay()
@@ -130,25 +132,25 @@ void RemainingCardDisplay::onAnyStateChange(GameState* gameState)
 
 	if (gameState->enemyPassed || gameState->playerPassed)
 	{
-		this->remainingCardLabel->setStringReplacementVariables(Strings::Common_Infinity::create());
-		this->enemyRemainingCardLabel->setStringReplacementVariables(Strings::Common_Infinity::create());
+		this->remainingCardStr->setString(this->infinityString->getString());
+		this->enemyRemainingCardStr->setString(this->infinityString->getString());
 	}
 	else
 	{
-		this->remainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playableCardsThisTurn)));
-		this->enemyRemainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(gameState->playableCardsThisTurn)));
+		this->remainingCardStr->setString(std::to_string(gameState->playableCardsThisTurn));
+		this->enemyRemainingCardStr->setString(std::to_string(gameState->playableCardsThisTurn));
 	}
 
 	switch (gameState->turn)
 	{
 		case GameState::Turn::Player:
 		{
-			this->enemyRemainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(0)));
+			this->enemyRemainingCardStr->setString(std::to_string(0));
 			break;
 		}
 		case GameState::Turn::Enemy:
 		{
-			this->remainingCardLabel->setStringReplacementVariables(ConstantString::create(std::to_string(0)));
+			this->remainingCardStr->setString(std::to_string(0));
 			break;
 		}
 		default:

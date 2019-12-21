@@ -20,11 +20,13 @@ UIBoundObject* UIBoundObject::create(cocos2d::Node* referencedObject)
 UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
 {
     this->referencedObject = referencedObject;
-    this->originalParent = this->referencedObject == nullptr ? nullptr : this->referencedObject->getParent();
+    this->originalParent = this->referencedObject == nullptr ? nullptr : dynamic_cast<SmartNode*>(this->referencedObject->getParent());
     this->originalCoords = Vec3::ZERO;
     this->originalScale = 1.0f;
     this->realCoords = Vec3::ZERO;
     this->realScale = 1.0f;
+    this->eventKey = "";
+    this->scheduleTarget = nullptr;
 }
 
 UIBoundObject::~UIBoundObject()
@@ -44,43 +46,55 @@ void UIBoundObject::onEnter()
         this->referencedObject->setPosition3D(position);
     }
 
-    this->scheduleUpdate();
+    this->scheduleUpdateTask();
 }
 
 void UIBoundObject::initializeListeners()
 {
     super::initializeListeners();
 
-    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventUnbindObject, [=](EventCustom* eventCustom)
+    this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
     {
-        ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+        ObjectEvents::ReparentBindArgs* args = static_cast<ObjectEvents::ReparentBindArgs*>(eventCustom->getUserData());
         
         if (args != nullptr)
         {
-            if (this->referencedObject != nullptr && this->referencedObject == args->relocatedObject)
-            {
-                this->removeChild(referencedObject);
-
-                if (this->getParent() != nullptr)
-                {
-                    this->getParent()->removeChild(this);
-                }
-            }
+            this->originalParent = dynamic_cast<SmartNode*>(args->newParent);
+            this->scheduleUpdateTask();
         }
     }));
 }
 
-void UIBoundObject::update(float dt)
-{
-    super::update(dt);
+static inline unsigned long long TaskId = 0;
 
-    if (this->referencedObject == nullptr)
+void UIBoundObject::scheduleUpdateTask()
+{
+    if (this->scheduleTarget != nullptr && !this->eventKey.empty())
     {
-        return;
+        this->scheduleTarget->unschedule(eventKey);
     }
 
-    this->realCoords = UIBoundObject::getRealCoords(this);
-    this->realScale = UIBoundObject::getRealScale(this);
+    unsigned long long taskId = TaskId++;
+    this->eventKey = "EVENT_UIBOUND_UPDATE_TASK_" + std::to_string(taskId);
+
+   this->scheduleTarget = this->originalParent;
+
+    if (this->scheduleTarget == nullptr)
+    {
+        this->scheduleTarget = this;
+    }
+
+    // Schedule the task on the original parent, that way if the original parent is disposed, update will not be called (avoiding a crash)
+    this->scheduleTarget->schedule([=](float dt)
+    {
+        if (this->referencedObject == nullptr)
+        {
+            return;
+        }
+
+        this->realCoords = UIBoundObject::getRealCoords(this);
+        this->realScale = UIBoundObject::getRealScale(this);
+    }, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, this->eventKey);
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)

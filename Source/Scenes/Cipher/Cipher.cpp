@@ -11,6 +11,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/RenderUtils.h"
 #include "Events/CipherEvents.h"
@@ -30,8 +31,8 @@
 #include "Scenes/Cipher/Components/InputsOutputsPanel.h"
 #include "Scenes/Cipher/Components/QuitButton.h"
 #include "Scenes/Cipher/Components/TestButton.h"
+#include "Scenes/Cipher/Components/Tutorials/CipherTutorials.h"
 #include "Scenes/Cipher/Components/UnlockButton.h"
-#include "Scenes/Cipher/DifficultySelectMenu.h"
 #include "Scenes/Cipher/States/CipherStateGameEnd.h"
 #include "Scenes/Cipher/States/CipherStateLoadInitialState.h"
 #include "Scenes/Cipher/States/CipherStateNeutral.h"
@@ -44,8 +45,7 @@
 #include "Resources/ShaderResources.h"
 #include "Resources/CipherResources.h"
 
-#include "Strings/Menus/Cancel.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -87,9 +87,12 @@ Cipher::Cipher()
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->asciiTable = AsciiTable::create();
 	this->gameNode = Node::create();
-	this->difficultySelectMenu = DifficultySelectMenu::create();
+	this->tutorialNode = Node::create();
+	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
+	this->cipherState->displayModeTogglesPointer = this->displayModeToggles;
+	this->buildTutorialMap();
 
 	this->gameNode->addChild(this->cipherBackground);
 	this->gameNode->addChild(this->cipherLock);
@@ -112,8 +115,8 @@ Cipher::Cipher()
 	this->gameNode->addChild(this->cipherStateVictory);
 	this->gameNode->addChild(this->backdrop);
 	this->gameNode->addChild(this->asciiTable);
+	this->gameNode->addChild(this->tutorialNode);
 	this->addChild(this->gameNode);
-	this->addChild(this->difficultySelectMenu);
 }
 
 Cipher::~Cipher()
@@ -160,35 +163,31 @@ void Cipher::initializePositions()
 void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 {
 	this->gameNode->setVisible(false);
-	this->difficultySelectMenu->show(cipherPuzzleData, [=]()
-	{
-		this->gameNode->setVisible(true);
-		this->cipherState->loadPuzzleData(cipherPuzzleData, false);
-		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
-	},
-	[=]()
-	{
-		this->gameNode->setVisible(true);
-		this->cipherState->loadPuzzleData(cipherPuzzleData, true);
-		this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
-	},
-	[=]()
-	{
-		this->onMenuExit();
-	});
-}
+	this->tutorialNode->removeAllChildren();
 
-void Cipher::setBackClickCallback(std::function<void()> backClickCallback)
-{
-	this->backClickCallback = backClickCallback;
+	const std::string tutorialKey = cipherPuzzleData->getTutorial();
+
+	if (this->cipherTutorialMap.find(tutorialKey) != this->cipherTutorialMap.end())
+	{
+		this->tutorialNode->addChild(this->cipherTutorialMap[tutorialKey]());
+	}
+
+	this->gameNode->setVisible(true);
+	this->cipherState->loadPuzzleData(cipherPuzzleData);
+	this->cipherState->updateState(this->cipherState, CipherState::StateType::GameStart);
 }
 
 void Cipher::onMenuExit()
 {
-	ConfigManager::save();
+	MusicPlayer::popMusic();
+	CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
+}
 
-	if (this->backClickCallback != nullptr)
-	{
-		this->backClickCallback();
-	}
+void Cipher::buildTutorialMap()
+{
+	this->cipherTutorialMap[CipherAdditionTutorial::MapKeyTutorial] = [=]() { return CipherAdditionTutorial::create(); };
+	this->cipherTutorialMap[CipherConnectTutorial::MapKeyTutorial] = [=]() { return CipherConnectTutorial::create(); };
+	this->cipherTutorialMap[CipherExtraTokensTutorial::MapKeyTutorial] = [=]() { return CipherExtraTokensTutorial::create(); };
+	this->cipherTutorialMap[CipherOverflowTutorial::MapKeyTutorial] = [=]() { return CipherOverflowTutorial::create(); };
+	this->cipherTutorialMap[CipherShiftLeftTutorial::MapKeyTutorial] = [=]() { return CipherShiftLeftTutorial::create(); };
 }

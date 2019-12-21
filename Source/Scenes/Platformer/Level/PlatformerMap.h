@@ -6,10 +6,12 @@ class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
 class GameHud;
+class Hexus;
 class InventoryMenu;
 class MapMenu;
 class NotificationHud;
 class PartyMenu;
+class PlatformerEnemy;
 
 class PlatformerMap : public MapBase
 {
@@ -30,14 +32,17 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
+	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;
 	Cipher* cipher;
+	Hexus* hexus;
 	CollectablesMenu* collectablesMenu;
 	MapMenu* mapMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+	cocos2d::Node* combatFadeInNode;
 
 	std::string transition;
 };

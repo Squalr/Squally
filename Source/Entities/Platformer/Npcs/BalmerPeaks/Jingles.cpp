@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Jingles.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Jingles::~Jingles()
 
 Vec2 Jingles::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Jingles::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Jingles::getHexusOpponentData()
 	if (Jingles::HexusOpponentDataInstance == nullptr)
 	{
 		Jingles::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Jingles::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.562f,
 			HexusOpponentData::generateDeck(32, 0.562f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Jingles::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

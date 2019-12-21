@@ -11,7 +11,7 @@ class CollisionObject;
 class HackableData;
 class KSequence;
 class SmartAnimationSequenceNode;
-class Sound;
+class WorldSound;
 
 class SquallyShip : public HackableObject
 {
@@ -54,9 +54,9 @@ private:
 	SmartAnimationSequenceNode* groundFireSmallAnimation;
 	KSequence* skipSequence;
 
-	Sound* lightningSound;
-	Sound* thrusterSound;
-	Sound* enterAtmosphereSound;
-	Sound* crashSound;
-	Sound* fireSound;
+	WorldSound* lightningSound;
+	WorldSound* thrusterSound;
+	WorldSound* enterAtmosphereSound;
+	WorldSound* crashSound;
+	WorldSound* fireSound;
 };

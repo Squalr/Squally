@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Jasper.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Jasper::~Jasper()
 
 Vec2 Jasper::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Jasper::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 	if (Jasper::HexusOpponentDataInstance == nullptr)
 	{
 		Jasper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Jasper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.321f,
 			HexusOpponentData::generateDeck(32, 0.321f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Jasper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

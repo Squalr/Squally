@@ -10,8 +10,7 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/PointerTrace/Assembly/RegisterEbx.h"
-#include "Strings/PointerTrace/Assembly/RegisterRbx.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="38" nextobjectid="656">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="4" name="decor -4096">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="5" name="decor -3584">
+  <properties>
+   <property name="depth" type="float" value="-3584"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="396" name="Forest/Background/Mountain2" type="decor" x="1097.5" y="1757.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="6" name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="430" name="Forest/Background/Mountain1" type="decor" x="3889.5" y="1769.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="7" name="decor -2560">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="426" name="Forest/Background/Forest4" type="decor" x="-2128" y="2467.85" width="40000" height="816">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="432" name="Forest/Background/Forest3" type="decor" x="-2128" y="2527.85" width="40000" height="715">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="431" name="Forest/Background/Forest2" type="decor" x="-2128" y="2559.85" width="40000" height="941">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2126.46" y="2496.5" width="40000" height="909">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="background mist">
+  <properties>
+   <property name="background" value="Mist"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="12" name="decor -1536">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="13" name="decor -1024">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="decor -512">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="decor -256">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="600" name="blue-grass" type="terrain" x="-14.9031" y="2816.69">
+   <polygon points="0,0 6154.99,-7.45156 6154.99,625.931 14.9031,633.383"/>
+  </object>
+  <object id="619" name="caged-hedgehog" type="object" x="2093.51" y="2705.1" width="196" height="112"/>
+  <object id="620" name="caged-zebra" type="object" x="2093.21" y="2587.68" width="196" height="112"/>
+  <object id="621" name="caged-goat" type="object" x="2094.84" y="2471.24" width="196" height="112"/>
+  <object id="622" name="caged-giraffe" type="object" x="2096.83" y="2358.5" width="196" height="112"/>
+  <object id="623" name="caged-fox" type="object" x="2098.46" y="2242.06" width="196" height="112"/>
+  <object id="624" name="caged-ladybug" type="object" x="2491.49" y="2702.3" width="196" height="112"/>
+  <object id="625" name="caged-koala" type="object" x="2491.19" y="2584.88" width="196" height="112"/>
+  <object id="626" name="caged-killer-whale" type="object" x="2492.82" y="2468.44" width="196" height="112"/>
+  <object id="627" name="caged-horse" type="object" x="2494.81" y="2355.7" width="196" height="112"/>
+  <object id="628" name="caged-hippo" type="object" x="2496.44" y="2239.26" width="196" height="112"/>
+  <object id="629" name="caged-tucan" type="object" x="4033.87" y="2702.3" width="196" height="112"/>
+  <object id="630" name="caged-tiger" type="object" x="4033.57" y="2584.88" width="196" height="112"/>
+  <object id="631" name="caged-squirrel" type="object" x="4035.2" y="2468.44" width="196" height="112"/>
+  <object id="632" name="caged-squid" type="object" x="4037.19" y="2355.7" width="196" height="112"/>
+  <object id="633" name="caged-snake" type="object" x="4038.82" y="2239.26" width="196" height="112"/>
+  <object id="634" name="caged-yeti" type="object" x="4431.85" y="2699.5" width="196" height="112"/>
+  <object id="635" name="caged-worm" type="object" x="4431.55" y="2582.08" width="196" height="112"/>
+  <object id="636" name="caged-wolf" type="object" x="4433.18" y="2465.64" width="196" height="112"/>
+  <object id="637" name="caged-whale" type="object" x="4435.17" y="2352.9" width="196" height="112"/>
+  <object id="638" name="caged-turtle" type="object" x="4436.8" y="2236.46" width="196" height="112"/>
+  <object id="639" name="caged-mouse" type="object" x="2877.35" y="2704.64" width="196" height="112"/>
+  <object id="640" name="caged-mountain-lion" type="object" x="2877.05" y="2587.22" width="196" height="112"/>
+  <object id="641" name="caged-monkey" type="object" x="2878.68" y="2470.78" width="196" height="112"/>
+  <object id="642" name="caged-lizard" type="object" x="2880.67" y="2358.04" width="196" height="112"/>
+  <object id="643" name="caged-lion" type="object" x="2882.3" y="2241.6" width="196" height="112"/>
+  <object id="644" name="caged-raccoon" type="object" x="3265.93" y="2702.3" width="196" height="112"/>
+  <object id="645" name="caged-pig" type="object" x="3265.63" y="2584.88" width="196" height="112"/>
+  <object id="646" name="caged-penguin" type="object" x="3267.26" y="2468.44" width="196" height="112"/>
+  <object id="647" name="caged-parrot" type="object" x="3269.25" y="2355.7" width="196" height="112"/>
+  <object id="648" name="caged-panda" type="object" x="3270.88" y="2239.26" width="196" height="112"/>
+  <object id="649" name="caged-snail" type="object" x="3644.3" y="2705.1" width="196" height="112"/>
+  <object id="650" name="caged-skunk" type="object" x="3644" y="2587.68" width="196" height="112"/>
+  <object id="651" name="caged-sheep" type="object" x="3645.63" y="2471.24" width="196" height="112"/>
+  <object id="652" name="caged-rhino" type="object" x="3647.62" y="2358.5" width="196" height="112"/>
+  <object id="653" name="caged-reindeer" type="object" x="3649.25" y="2242.06" width="196" height="112"/>
+  <object id="654" name="edge-portal" type="object" x="5929.41" y="2248.64" width="199.918" height="559.063">
+   <properties>
+    <property name="args" value="0"/>
+    <property name="map" value="Dev/Cages"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="655" name="portal" type="object" x="5192.18" y="2593.16" width="226.759" height="216.791">
+   <properties>
+    <property name="args" value="0"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="598" name="caged-bird" type="object" x="936.982" y="2707.43" width="196" height="112"/>
+  <object id="599" name="caged-bee" type="object" x="936.689" y="2590.02" width="196" height="112"/>
+  <object id="601" name="caged-beaver" type="object" x="938.319" y="2473.58" width="196" height="112"/>
+  <object id="602" name="caged-bear" type="object" x="940.307" y="2360.84" width="196" height="112"/>
+  <object id="603" name="caged-bat" type="object" x="941.937" y="2244.4" width="196" height="112"/>
+  <object id="604" name="caged-chicken" type="object" x="1325.57" y="2705.1" width="196" height="112"/>
+  <object id="605" name="caged-cat" type="object" x="1325.27" y="2587.68" width="196" height="112"/>
+  <object id="606" name="caged-bunny" type="object" x="1326.9" y="2471.24" width="196" height="112"/>
+  <object id="607" name="caged-bull" type="object" x="1328.89" y="2358.5" width="196" height="112"/>
+  <object id="608" name="caged-blowfish" type="object" x="1330.52" y="2242.06" width="196" height="112"/>
+  <object id="609" name="caged-duck" type="object" x="1703.93" y="2707.9" width="196" height="112"/>
+  <object id="610" name="caged-dog" type="object" x="1703.63" y="2590.48" width="196" height="112"/>
+  <object id="611" name="caged-dinosaur" type="object" x="1705.26" y="2474.04" width="196" height="112"/>
+  <object id="612" name="caged-crocodile" type="object" x="1707.25" y="2361.3" width="196" height="112"/>
+  <object id="613" name="caged-cow" type="object" x="1708.88" y="2244.86" width="196" height="112"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="157.785" y="2527.43" width="78.7879" height="88">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="object_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

@@ -12,7 +12,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/Controls/MenuLabel.h"
 
-#include "Strings/Common/Newline.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;

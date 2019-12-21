@@ -4,13 +4,15 @@
 
 #include "cocos/math/Vec2.h"
 
+#include "Engine/SmartNode.h"
 #include "Scenes/Hexus/Card.h"
 
 class CardData;
 class Deck;
 class StateOverride;
+class TutorialBase;
 
-class HexusOpponentData
+class HexusOpponentData : public SmartNode
 {
 public:
 	enum Strategy
@@ -20,46 +22,61 @@ public:
 		WeakestCardsFirst,
 	};
 
-	HexusOpponentData(
-		std::string animationResourceFile,
+	enum Result
+	{
+		Win,
+		Loss,
+		Draw,
+	};
+
+	static HexusOpponentData* create(
+		cocos2d::Node* entityPreviewNode,
 		std::string backgroundResourceFile,
-		float animationScale,
-		cocos2d::Vec2 animationOffset,
-		cocos2d::Vec2 frameOffset,
 		cocos2d::Vec2 avatarOffset,
-		std::string enemyNameKey,
+		std::string enemyAnalyticsIdentifier,
 		HexusOpponentData::Strategy strategy,
 		Card::CardStyle cardStyle,
-		float strength,
 		std::vector<CardData*> cards,
-		StateOverride* stateOverride = nullptr);
+		std::function<void(Result)> onRoundEnd = nullptr,
+		StateOverride* stateOverride = nullptr,
+		std::vector<TutorialBase*> tutorials = { }
+	);
+
+	HexusOpponentData(
+		cocos2d::Node* entityPreviewNode,
+		std::string backgroundResourceFile,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyAnalyticsIdentifier,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd = nullptr,
+		StateOverride* stateOverride = nullptr,
+		std::vector<TutorialBase*> tutorials = { }
+	);
 	~HexusOpponentData();
 
-	Deck* getDeck();
+	std::vector<CardData*> getDeck();
 	CardData* getStrongestCard();
 
-	static int generateReward(float deckStrength);
 	static std::vector<CardData*> generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards);
 	void setIsLastInChapter();
 	bool getIsLastInChapter();
 
+	cocos2d::Node* entityPreviewNode;
 	std::string backgroundResourceFile;
-	std::string animationResourceFile;
-	std::string enemyNameKey;
-	float animationScale;
-	cocos2d::Vec2 animationOffset;
+	std::string enemyAnalyticsIdentifier;
 	cocos2d::Vec2 avatarOffset;
-	cocos2d::Vec2 frameOffset;
-	float strength;
-	int reward;
 	Strategy strategy;
+	std::function<void(Result)> onRoundEnd;
 	StateOverride* stateOverride;
+	Card::CardStyle cardStyle;
+	std::vector<TutorialBase*> tutorials;
 
 	static const std::string winsPrefix;
 	static const std::string lossesPrefix;
 
 protected:
-	Card::CardStyle cardStyle;
 	std::vector<CardData*> cards;
 
 private:

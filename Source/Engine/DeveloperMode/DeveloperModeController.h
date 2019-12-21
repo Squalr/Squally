@@ -15,16 +15,22 @@ public:
 	static DeveloperModeController* getInstance();
 
 	bool isDeveloperModeEnabled();
+	int getDebugLevel();
+	
+	static volatile bool IsDeveloperBuild;
 
-private:
-	typedef GlobalNode super;
+protected:
 	DeveloperModeController();
 	virtual ~DeveloperModeController();
 
+	void onEnter() override;
 	void initializeListeners() override;
 
-	bool developerModeEnabled;
+private:
+	typedef GlobalNode super;
+
+	int currentDebugLevel;
 
 	static DeveloperModeController* instance;
-	static bool IsDeveloperBuild;
+	static int MaxDebugLevel;
 };

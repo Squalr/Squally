@@ -12,7 +12,7 @@ public:
 	static PlatformerDialogueBox* create();
 
 protected:
-	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool unhijack);
+	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack);
 	void hideDialogue() override;
 	void onTypeWriterEffectComplete() override;
 
@@ -33,6 +33,7 @@ private:
 	cocos2d::Node* rightSpeakerNode;
 
 	bool isDialogueFocused;
+	bool allowSpace;
 	bool unhijack;
 
 	static const cocos2d::Color4F SpeakerBackgroundColor;

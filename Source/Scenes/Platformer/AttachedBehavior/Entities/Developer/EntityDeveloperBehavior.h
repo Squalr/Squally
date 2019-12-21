@@ -1,12 +1,7 @@
 #pragma once
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
-
-namespace cocos2d
-{
-	class Sprite;
-}
-
+ 
 class ClickableNode;
 class PlatformerEntity;
 
@@ -22,7 +17,7 @@ protected:
 	~EntityDeveloperBehavior();
 
 	void initializePositions() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onLoad() override;
 

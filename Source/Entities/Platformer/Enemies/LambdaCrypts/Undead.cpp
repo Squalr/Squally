@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/Undead.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Undead::~Undead()
 
 Vec2 Undead::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Undead::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Undead::getHexusOpponentData()
 	if (Undead::HexusOpponentDataInstance == nullptr)
 	{
 		Undead::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_Undead_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Undead::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Undead::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

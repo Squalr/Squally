@@ -42,6 +42,7 @@ public:
 		RoundEnd,
 		GameEnd,
 		Tutorial,
+		GameExit,
 	};
 
 	enum class Turn
@@ -83,7 +84,6 @@ public:
 	StateType previousStateType;
 	Turn turn;
 	HexusOpponentData::Strategy difficulty;
-	StateOverride::TutorialMode tutorialMode;
 	bool isRepeatingSameTurn;
 	bool playerPassed;
 	bool enemyPassed;
@@ -145,17 +145,13 @@ public:
 	cocos2d::Node* lastStandButtonPointer;
 	cocos2d::Node* claimVictoryButtonPointer;
 
-	static const std::string RequestStateUpdateEvent;
-	static const std::string BeforeStateUpdateEvent;
-	static const std::string OnStateUpdateEvent;
-
 private:
 	typedef SmartNode super;
 	GameState();
 	~GameState();
 
 	void initializePositions() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;

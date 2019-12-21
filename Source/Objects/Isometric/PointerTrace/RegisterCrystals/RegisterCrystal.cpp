@@ -18,17 +18,7 @@
 #include "Events/PointerTraceEvents.h"
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Common/Constant.h"
-#include "Strings/PointerTrace/Assembly/Add.h"
-#include "Strings/PointerTrace/Assembly/Dec.h"
-#include "Strings/PointerTrace/Assembly/Div.h"
-#include "Strings/PointerTrace/Assembly/Inc.h"
-#include "Strings/PointerTrace/Assembly/Mov.h"
-#include "Strings/PointerTrace/Assembly/Mul.h"
-#include "Strings/PointerTrace/Assembly/OffsetNegative.h"
-#include "Strings/PointerTrace/Assembly/OffsetPositive.h"
-#include "Strings/PointerTrace/Assembly/Ptr.h"
-#include "Strings/PointerTrace/Assembly/Sub.h"
+#include "Strings/Strings.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/IsometricObjectResources.h"
@@ -67,7 +57,6 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 RegisterCrystal::~RegisterCrystal()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
 }
 
 void RegisterCrystal::onEnter()

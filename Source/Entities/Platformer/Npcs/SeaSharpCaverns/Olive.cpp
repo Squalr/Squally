@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Olive.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Olive::~Olive()
 
 Vec2 Olive::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Olive::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Olive::getHexusOpponentData()
 	if (Olive::HexusOpponentDataInstance == nullptr)
 	{
 		Olive::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Olive::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.339f,
 			HexusOpponentData::generateDeck(32, 0.339f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Olive::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

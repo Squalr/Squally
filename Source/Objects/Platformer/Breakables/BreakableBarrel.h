@@ -9,7 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
-class Sound;
+class WorldSound;
 
 class BreakableBarrel : public BreakableBase
 {
@@ -31,6 +31,6 @@ private:
 	typedef BreakableBase super;
 
 	cocos2d::Sprite* barrelSprite;
-	Sound* breakSound;
+	WorldSound* breakSound;
 	SmartAnimationSequenceNode* explosion;
 };

@@ -6,26 +6,16 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
-#include "Resources/UIResources.h"
-
-#include "Strings/Platformer/Combat/Blocked.h"
-#include "Strings/Platformer/Combat/Interrupted.h"
-#include "Strings/Common/MinusConstant.h"
-#include "Strings/Common/PlusConstant.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -55,12 +45,7 @@ void TextOverlays::initializePositions()
 void TextOverlays::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
-	{
-		this->removeAllChildren();
-	}));
-
+	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
@@ -106,114 +91,6 @@ void TextOverlays::initializeListeners()
 
 			this->runLabelOverEntity(args->target, deltaLabel);
 		}
-	}));
-}
-
-void TextOverlays::update(float dt)
-{
-	super::update(dt);
-}
-
-void TextOverlays::showExpBars(int expGain)
-{
-	static std::vector<int> currentTicks = std::vector<int>();
-	int entityIndex = 0;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
-	{
-		EntityEqBehavior* eqBehavior = entity == nullptr ? nullptr : entity->getAttachedBehavior<EntityEqBehavior>();
-
-		if (eqBehavior == nullptr)
-		{
-			return;
-		}
-
-		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
-		bool didLevelUp = eqBehavior->addEqExperience(expGain);
-		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(eqBehavior->getEq()));
-
-		const float fillDuration = 1.0f;
-		const int updatesPerSecond = 60;
-		const float interval = fillDuration / float(updatesPerSecond);
-		const int ticks = int(fillDuration * float(updatesPerSecond));
-		const float delay = 0.0f;
-
-		while (currentTicks.size() <= entityIndex)
-		{
-			currentTicks.push_back(0);
-		}
-
-		currentTicks[entityIndex] = 0;
-
-		ProgressBar* expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
-
-		if (!didLevelUp)
-		{
-			expProgressBar->setProgress(startProgress);
-
-			expProgressBar->schedule([=](float dt)
-			{
-				float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
-
-				expProgressBar->setProgress(startProgress + (endProgress - startProgress) * tickProgress);
-
-				currentTicks[entityIndex]++;
-
-			}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
-		}
-		else
-		{
-			this->runAction(Sequence::create(
-				// Phase 1: Fill from start to max
-				CallFunc::create([=]()
-				{
-					expProgressBar->setProgress(startProgress);
-
-					expProgressBar->schedule([=](float dt)
-					{
-						float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
-
-						expProgressBar->setProgress(startProgress + (1.0f - startProgress) * tickProgress);
-
-						currentTicks[entityIndex]++;
-
-					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
-				}),
-				DelayTime::create(fillDuration + 0.1f),
-				// Phase 2: Fill from 0 to end
-				CallFunc::create([=]()
-				{
-					currentTicks[entityIndex] = 0;
-
-					expProgressBar->schedule([=](float dt)
-					{
-						float tickProgress = MathUtils::clamp(((float)currentTicks[entityIndex] / (float)ticks), 0.0f, 1.0f);
-
-						expProgressBar->setProgress(endProgress * tickProgress);
-
-						currentTicks[entityIndex]++;
-
-					}, interval, ticks, delay, "EVENT_EXP_BAR_UPDATE");
-				}),
-				nullptr
-			));
-		}
-
-		// Gain text
-		LocalizedString* deltaString = Strings::Common_PlusConstant::create();
-		LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
-
-		deltaLabel->setTextColor(Color4B::YELLOW);
-		deltaLabel->enableOutline(Color4B::BLACK, 2);
-		deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
-
-		entity->getAnimations()->addChild(expProgressBar);
-		entity->getAnimations()->addChild(deltaLabel);
-
-		deltaLabel->setPosition(Vec2(0.0f, 208.0f));
-		expProgressBar->setPosition(Vec2(0.0f, 160.0f));
-
-		entityIndex++;
 	}));
 }
 

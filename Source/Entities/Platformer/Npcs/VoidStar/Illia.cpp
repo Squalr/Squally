@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Illia.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Illia::Illia(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Illia::getHexusOpponentData();
@@ -48,7 +48,7 @@ Illia::~Illia()
 
 Vec2 Illia::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Illia::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Illia::getHexusOpponentData()
 	if (Illia::HexusOpponentDataInstance == nullptr)
 	{
 		Illia::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Illia_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Illia::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.981f,
 			HexusOpponentData::generateDeck(32, 0.981f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Illia::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

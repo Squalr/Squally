@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Scarecrow.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 	if (Scarecrow::HexusOpponentDataInstance == nullptr)
 	{
 		Scarecrow::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -196.0f),
 			Vec2(0.0f, -312.0f),
 			Scarecrow::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,9 +97,9 @@ HexusOpponentData* Scarecrow::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -128,23 +125,22 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+				}
 			)
 		);
 	}

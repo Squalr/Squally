@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Shen.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Shen::~Shen()
 
 Vec2 Shen::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Shen::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Shen::getHexusOpponentData()
 	if (Shen::HexusOpponentDataInstance == nullptr)
 	{
 		Shen::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Shen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.375f,
 			HexusOpponentData::generateDeck(32, 0.375f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Shen::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

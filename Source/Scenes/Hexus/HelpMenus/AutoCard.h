@@ -43,4 +43,12 @@ private:
 	DisplayType displayType;
 	float cardScale;
 	int currentAttack;
+
+	std::map<int, Card*> binaryCardMap;
+	std::map<int, Card*> decimalCardMap;
+	std::map<int, Card*> hexCardMap;
+
+	std::map<int, std::function<Card*()>> binaryCardFactory;
+	std::map<int, std::function<Card*()>> decimalCardFactory;
+	std::map<int, std::function<Card*()>> hexCardFactory;
 };

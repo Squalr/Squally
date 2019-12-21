@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/BalmerPeaks/Thatcher.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Thatcher::~Thatcher()
 
 Vec2 Thatcher::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Thatcher::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Thatcher::getHexusOpponentData()
 	if (Thatcher::HexusOpponentDataInstance == nullptr)
 	{
 		Thatcher::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Thatcher::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.625f,
 			HexusOpponentData::generateDeck(32, 0.625f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Thatcher::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

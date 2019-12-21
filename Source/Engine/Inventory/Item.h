@@ -19,15 +19,30 @@ public:
 	virtual LocalizedString* getString() = 0;
 	virtual std::string getIconResource() = 0;
 	virtual std::string getSerializationKey() = 0;
-	virtual cocos2d::ValueMap serialize();
-	int getCount();
-	int getStackSize();
 	CurrencyInventory* getCost();
+	int getUniqueCount();
+	int getRubberBand();
+	float getRubberBandFactor();
 
-	static const int MaxStack;
+	struct ItemMeta
+	{
+		// The "expected value" that the player should have
+		int rubberBand;
+
+		// Standard deviation to place around
+		float rubberBandFactor;
+		
+		// How many of this item can exist in inventories.
+		int unique;
+
+		ItemMeta(int rubberBand, float rubberBandFactor, int unique) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor), unique(unique) { }
+		ItemMeta(int rubberBand, float rubberBandFactor) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor), unique(-1) { }
+		ItemMeta(int unique) : rubberBand(-1), rubberBandFactor(0.0f), unique(unique) { }
+		ItemMeta() : rubberBand(-1), rubberBandFactor(0.0f), unique(-1) { }
+	};
 
 protected:
-	Item(CurrencyInventory* cost, int stackSize = 1);
+	Item(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	virtual ~Item();
 	void onEnter() override;
 	void initializeListeners() override;
@@ -35,7 +50,6 @@ protected:
 private:
 	typedef SmartNode super;
 
-	int count;
-	int stackSize;
+	ItemMeta itemMeta;
 	CurrencyInventory* cost;
 };

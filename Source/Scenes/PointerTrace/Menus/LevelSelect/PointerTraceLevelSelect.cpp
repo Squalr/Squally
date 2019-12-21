@@ -47,9 +47,11 @@ PointerTraceLevelSelect* PointerTraceLevelSelect::getInstance()
 PointerTraceLevelSelect::PointerTraceLevelSelect() : super(false, false)
 {
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
-			
+			MetaLayerDeserializer::create(
+			{
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ IsometricDecorDeserializer::MapKeyTypeDecor, IsometricDecorDeserializer::create() },
 				{ IsometricEntityDeserializer::MapKeyTypeEntity, IsometricEntityDeserializer::create() },
@@ -98,6 +100,6 @@ void PointerTraceLevelSelect::initializeListeners()
 		}
 
 		args->handle();
-		NavigationEvents::NavigateBack();
+		// NavigationEvents::NavigateBack();
 	});
 }

@@ -17,6 +17,7 @@ class CipherState;
 class ClickableNode;
 class Connection;
 class DestinationBlock;
+class DisplayModeToggles;
 class SourceBlock;
 
 class CipherState : public SmartNode
@@ -34,13 +35,13 @@ public:
 		Wrong,
 		Victory,
 		GameEnd,
+		Tutorial,
 	};
 
 	static CipherState* create();
 	static void updateState(CipherState* gameState, StateType newState);
-	void loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode);
+	void loadPuzzleData(CipherPuzzleData* puzzleData);
 	void loadCipherAtIndex(int index);
-	bool isHardModeEnabled();
 
 	StateType stateType;
 	StateType previousStateType;
@@ -67,21 +68,20 @@ public:
 	std::string currentOutput;
 
 	CipherLock* cipherLockPointer;
+	DisplayModeToggles* displayModeTogglesPointer;
 
 protected:
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 private:
 	typedef SmartNode super;
 	CipherState();
-	~CipherState();
+	virtual ~CipherState();
 
 	void clearInteraction();
-
-	bool isHardMode;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

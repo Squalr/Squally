@@ -23,7 +23,7 @@ private:
 	typedef MapBase super;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onEnter() override;
 	void update(float dt) override;

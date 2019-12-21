@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Chiron.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,16 +61,12 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 	if (Chiron::HexusOpponentDataInstance == nullptr)
 	{
 		Chiron::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Chiron_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -128.0f),
 			Chiron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.107f,
 			HexusOpponentData::generateDeck(32, 0.107f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Chiron::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

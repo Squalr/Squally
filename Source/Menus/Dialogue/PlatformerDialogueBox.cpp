@@ -7,13 +7,13 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/SmartClippingNode.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Common/Empty.h"
-#include "Strings/Input/Spacebar.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -49,6 +49,7 @@ PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::Te
 	this->rightSpeakerClip = SmartClippingNode::create(this->rightSpeakerBackground, speakerRect);
 
 	this->unhijack = true;
+	this->allowSpace = false;
 
 	this->leftSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->rightSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
@@ -88,23 +89,69 @@ void PlatformerDialogueBox::initializeListeners()
 			this->leftSpeakerNode->removeAllChildren();
 			this->rightSpeakerNode->removeAllChildren();
 
-			if (args->leftContentNode != nullptr)
+			if (args->visualArgs.leftContentNode != nullptr)
 			{
-				this->leftSpeakerNode->addChild(args->leftContentNode);
+				Node* content = args->visualArgs.leftContentNode();
+				
+				if (content != nullptr)
+				{
+					this->leftSpeakerNode->addChild(content);
+				}
 			}
 
-			if (args->rightContentNode != nullptr)
+			if (args->visualArgs.rightContentNode != nullptr)
 			{
-				this->rightSpeakerNode->addChild(args->rightContentNode);
+				Node* content = args->visualArgs.rightContentNode();
+
+				if (content != nullptr)
+				{
+					this->rightSpeakerNode->addChild(content);
+				}
 			}
 
-			this->runDialogue(args->dialogue, args->dialogueDock, args->dialogueAlignment, args->onDialogueClose, args->unhijack);
+			if (args->visualArgs.bigFont)
+			{
+				this->text->setFontSize(LocalizedLabel::FontSize::M1);
+			}
+			else
+			{
+				this->text->setFontSize(LocalizedLabel::FontSize::H3);
+			}
+
+			if (!args->soundResource.empty())
+			{
+				Sound* sound = Sound::create(args->soundResource);
+
+				this->leftSpeakerNode->addChild(sound);
+
+				sound->play();
+			}
+
+			this->runDialogue(args->dialogue, args->visualArgs.dialogueDock, args->visualArgs.dialogueAlignment, args->onDialogueClose, args->allowSpace, args->unhijack);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueClose, [=](EventCustom* eventCustom)
+	{
+		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			if (this->isDialogueEffectComplete() && this->isDialogueFocused)
+			{
+				this->hideDialogue();
+
+				if (args->onCloseCallback != nullptr)
+				{
+					args->onCloseCallback();
+				}
+			}
 		}
 	}));
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
-		if (this->isDialogueEffectComplete() && this->isDialogueFocused)
+		if (this->allowSpace && this->isDialogueEffectComplete() && this->isDialogueFocused)
 		{
 			args->handle();
 
@@ -113,16 +160,17 @@ void PlatformerDialogueBox::initializeListeners()
 	});
 }
 
-void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool unhijack)
+void PlatformerDialogueBox::runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack)
 {
+	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 0));
+
 	super::runDialogue(localizedString, dialogueDock, dialogueAlignment, onDialogueClose);
 
+	this->allowSpace = allowSpace;
 	this->unhijack = unhijack;
 
 	PlatformerEvents::TriggerCinematicHijack();
 	this->isDialogueFocused = true;
-
-	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 0));
 }
 
 void PlatformerDialogueBox::hideDialogue()
@@ -141,5 +189,8 @@ void PlatformerDialogueBox::onTypeWriterEffectComplete()
 {
 	super::onTypeWriterEffectComplete();
 
-	this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 255));
+	if (this->allowSpace)
+	{
+		this->spaceToContinueLabel->runAction(FadeTo::create(0.25f, 255));
+	}
 }

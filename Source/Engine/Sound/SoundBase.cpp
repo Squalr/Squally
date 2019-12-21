@@ -24,8 +24,10 @@ SoundBase::SoundBase(std::string soundResource) : super()
 	this->isFading = false;
 	this->fadeMultiplier = 1.0f;
 	this->distanceMultiplier = 1.0f;
-	this->volumeMultiplier = 1.0f;
+	this->customMultiplier = 1.0f;
 	this->fadeOutTick = 0;
+	this->onFadeOutCallback = nullptr;
+	this->cachedCoords = Vec2::ZERO;
 }
 
 SoundBase::~SoundBase()
@@ -42,29 +44,9 @@ void SoundBase::onEnter()
 
 void SoundBase::update(float dt)
 {
-	super::update(dt);
+	// super::update(dt);
 
-	if (this->enableCameraDistanceFade)
-	{
-		Vec2 thisCoords = GameUtils::getWorldCoords(this);
-		Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
-        Size dropOffDistance = Director::getInstance()->getVisibleSize() + Size(480.0f, 480.0f);
-
-		// The object is visible on the screen! No sound dropoff.
-		if (((thisCoords.x - cameraPosition.x) * (thisCoords.x - cameraPosition.x)) / (dropOffDistance.width / 2.0f * dropOffDistance.width / 2.0f) +
-			((thisCoords.y - cameraPosition.y) * (thisCoords.y - cameraPosition.y)) / (dropOffDistance.height / 2.0f * dropOffDistance.height / 2.0f) <= 1.0f)
-		{
-			this->distanceMultiplier = 1.0f;
-			this->updateVolume();
-			return;
-		}
-
-		Vec2 soundFadeOffOrigin = AlgoUtils::pointOnEllipse(thisCoords, dropOffDistance.width / 2.0f, dropOffDistance.height / 2.0f, cameraPosition);
-		float distance = soundFadeOffOrigin.distance(cameraPosition);
-		
-		this->distanceMultiplier = MathUtils::clamp(1.0f / (1.0f + 0.0025f * std::pow(distance, 1.25f)), 0.0f, 1.0f);
-		this->updateVolume();
-	}
+	this->updateDistanceFade();
 
 	if (this->isFading)
 	{
@@ -88,7 +70,13 @@ void SoundBase::update(float dt)
 
 				if (this->fadeMultiplier == 0.0f)
 				{
-					AudioEngine::stop(this->activeTrackId);
+					AudioEngine::pause(this->activeTrackId);
+
+					if (this->onFadeOutCallback != nullptr)
+					{
+						this->onFadeOutCallback();
+					}
+
 					this->isFading = false;
 				}
 				else
@@ -104,7 +92,7 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
-	if (this->soundResource.empty())
+	if (this->soundResource.empty() || AudioEngine::getState(this->activeTrackId) == AudioEngine::AudioState::PLAYING)
 	{
 		return;
 	}
@@ -131,19 +119,27 @@ void SoundBase::play(bool repeat, float startDelay)
 	}
 }
 
+void SoundBase::unpause()
+{
+	this->fadeMultiplier = 1.0f;
+	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+	AudioEngine::resume(this->activeTrackId);
+}
+
 void SoundBase::stop()
 {
-	AudioEngine::stop(this->activeTrackId);
+	AudioEngine::pause(this->activeTrackId);
 }
 
-void SoundBase::stopAndFadeOut()
+void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
 {
 	this->isFading = true;
+	this->onFadeOutCallback = onFadeOutCallback;
 }
 
-void SoundBase::setVolumeMultiplier(float volumeMultiplier)
+void SoundBase::setCustomMultiplier(float customMultiplier)
 {
-	this->volumeMultiplier = volumeMultiplier;
+	this->customMultiplier = customMultiplier;
 }
 
 void SoundBase::toggleCameraDistanceFade(bool enableCameraDistanceFade)
@@ -164,12 +160,66 @@ void SoundBase::setSoundResource(std::string soundResource)
 
 void SoundBase::updateVolume()
 {
-	AudioEngine::setVolume(this->activeTrackId, this->getVolume() * fadeMultiplier * distanceMultiplier * volumeMultiplier);
+	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 }
 
 float SoundBase::getVolume()
 {
 	float configVolume = this->getConfigVolume();
 
-	return MathUtils::clamp(this->volumeMultiplier * configVolume, 0.0f, configVolume);
+	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume);
+}
+
+void SoundBase::updateDistanceFade()
+{
+	if (!this->enableCameraDistanceFade)
+	{
+		return;
+	}
+	
+	Vec2 thisCoords = GameUtils::getWorldCoords(this);
+
+	if (thisCoords == this->cachedCoords)
+	{
+		return;
+	}
+
+	this->cachedCoords = thisCoords;
+
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			// Not playing, do nothing
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			Vec2 thisCoords = GameUtils::getWorldCoords(this);
+			Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
+			Size dropOffDistance = Director::getInstance()->getVisibleSize() + Size(480.0f, 480.0f);
+
+			// The object is visible on the screen! No sound dropoff.
+			if (((thisCoords.x - cameraPosition.x) * (thisCoords.x - cameraPosition.x)) / (dropOffDistance.width / 2.0f * dropOffDistance.width / 2.0f) +
+				((thisCoords.y - cameraPosition.y) * (thisCoords.y - cameraPosition.y)) / (dropOffDistance.height / 2.0f * dropOffDistance.height / 2.0f) <= 1.0f)
+			{
+				this->distanceMultiplier = 1.0f;
+				this->updateVolume();
+				return;
+			}
+
+			Vec2 soundFadeOffOrigin = AlgoUtils::pointOnEllipse(thisCoords, dropOffDistance.width / 2.0f, dropOffDistance.height / 2.0f, cameraPosition);
+			float distance = soundFadeOffOrigin.distance(cameraPosition);
+			
+			this->distanceMultiplier = MathUtils::clamp(1.0f / (1.0f + 0.0025f * std::pow(distance, 1.25f)), 0.0f, 1.0f);
+			this->updateVolume();
+
+			break;
+		}
+	}
 }

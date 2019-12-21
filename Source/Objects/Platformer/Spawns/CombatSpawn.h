@@ -28,9 +28,11 @@ private:
 
 	SpawnType spawnType;
 	int spawnOrder;
+	float zoom;
 
 	static const std::string MapKeySpawnType;
 	static const std::string MapKeySpawnOrder;
 	static const std::string MapKeyPlayerSpawn;
 	static const std::string MapKeyEnemySpawn;
+	static const std::string MapKeyPropertyZoom;
 };

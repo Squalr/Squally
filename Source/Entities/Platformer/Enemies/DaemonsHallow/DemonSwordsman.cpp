@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonSwordsman.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ DemonSwordsman::~DemonSwordsman()
 
 Vec2 DemonSwordsman::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* DemonSwordsman::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 	if (DemonSwordsman::HexusOpponentDataInstance == nullptr)
 	{
 		DemonSwordsman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.65f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonSwordsman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* DemonSwordsman::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

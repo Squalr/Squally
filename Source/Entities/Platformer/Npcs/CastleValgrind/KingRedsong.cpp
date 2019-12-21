@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/KingRedsong.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ KingRedsong::~KingRedsong()
 
 Vec2 KingRedsong::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* KingRedsong::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* KingRedsong::getHexusOpponentData()
 	if (KingRedsong::HexusOpponentDataInstance == nullptr)
 	{
 		KingRedsong::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			KingRedsong::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.411f,
 			HexusOpponentData::generateDeck(32, 0.411f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* KingRedsong::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

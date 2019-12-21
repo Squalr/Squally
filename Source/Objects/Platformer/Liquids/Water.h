@@ -23,7 +23,6 @@ protected:
 	Water(cocos2d::ValueMap& properties);
 	virtual ~Water();
 	void onEnter() override;
-	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void applyWaterForce(const std::vector<CollisionObject*>& targets, float dt);
@@ -34,10 +33,15 @@ private:
 	CollisionObject* waterCollision;
 	LiquidNode* water;
 
-	cocos2d::Size waterSize;
-	float elapsed;
+	void runSplashes();
+	void runSplash(int index);
 
+	cocos2d::Size waterSize;
+	int splashes;
+
+	static const float SplashSpacing;
 	static const float WaterGravity;
+	static const float WaterCollisionOffset;
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
 };

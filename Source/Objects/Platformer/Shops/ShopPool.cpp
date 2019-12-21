@@ -1,26 +1,25 @@
 #include "ShopPool.h"
 
-#include "cocos/base/CCEventCustom.h"
-#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Events/ShopEvents.h"
-#include "Menus/Inventory/ItemPreview.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-ShopPool::ShopPool(ValueMap& properties, std::string poolName) : super(properties)
+ShopPool::ShopPool(ValueMap& properties, std::string poolName, std::vector<MinMaxPool*> nestedPools) : super(properties, poolName, SampleMethod::Unbounded, 1, 1, nestedPools)
 {
-	this->poolName = poolName;
-	this->itemPool = std::vector<std::tuple<Item*, float>>();
-	this->weightSum = 0.0f;
 	this->itemsNode = Node::create();
+	this->items = std::vector<Item*>();
+	this->properties[GameObject::MapKeyQueryable] = false;
 
 	this->addChild(this->itemsNode);
 }
@@ -32,6 +31,22 @@ ShopPool::~ShopPool()
 void ShopPool::onEnter()
 {
 	super::onEnter();
+	
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->items = this->getItems(entityInventoryBehavior->getAllInventories());
+
+			for (auto item : this->items)
+			{
+				this->itemsNode->addChild(item);
+			}
+
+			// Re-enable querying. This prevents a race-scenario where an object queries this one before items are built.
+			this->properties[GameObject::MapKeyQueryable] = true;
+		});
+	}, Squally::MapKeySqually);
 }
 
 void ShopPool::initializePositions()
@@ -42,41 +57,18 @@ void ShopPool::initializePositions()
 void ShopPool::initializeListeners()
 {
 	super::initializeListeners();
+}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ShopEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
+Item* ShopPool::getNextItem()
+{
+	if (this->items.empty())
 	{
-		ShopEvents::ItemRequestArgs* args = static_cast<ShopEvents::ItemRequestArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
-		{
-			args->callback(this->getItemFromPool());
-		}
-	}));
-}
-
-Item* ShopPool::getItemFromPool()
-{
-	int index = RandomHelper::random_int(0, int(this->itemPool.size()) - 1);
-
-	return std::get<0>(this->itemPool[index])->clone();
-}
-
-void ShopPool::addItemToPool(Item* item, float weight)
-{
-	std::tuple<Item*, float> itemAndWeight = { item, weight };
-
-	this->itemPool.push_back(itemAndWeight);
-	this->itemsNode->addChild(item);
-
-	this->calculateWeightSum();
-}
-
-void ShopPool::calculateWeightSum()
-{
-	this->weightSum = 0.0f;
-
-	for (auto it = this->itemPool.begin(); it != this->itemPool.end(); it++)
-	{
-		this->weightSum += std::get<1>((*it));
+		return nullptr;
 	}
+
+	Item* item = this->items.back();
+
+	this->items.pop_back();
+
+	return item->clone();
 }

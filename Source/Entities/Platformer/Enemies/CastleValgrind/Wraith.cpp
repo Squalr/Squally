@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Wraith.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Wraith::~Wraith()
 
 Vec2 Wraith::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Wraith::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Wraith::getHexusOpponentData()
 	if (Wraith::HexusOpponentDataInstance == nullptr)
 	{
 		Wraith::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Wraith_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.6f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Wraith::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,9 +97,9 @@ HexusOpponentData* Wraith::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -113,9 +110,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -131,22 +128,21 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

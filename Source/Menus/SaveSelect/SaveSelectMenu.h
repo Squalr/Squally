@@ -5,6 +5,7 @@
 namespace cocos2d
 {
 	class LayerColor;
+	class Sprite;
 }
 
 class ClickableNode;
@@ -30,14 +31,16 @@ private:
 	ClickableTextNode* buildSaveButton(int profileId);
 	ClickableNode* buildDeleteButton(int profileId);
 	void loadSave();
-	void onBackClick();
+	void goBack();
 
 	cocos2d::Node* backgroundNode;
-	cocos2d::Node* buttonsNode;
+	cocos2d::Sprite* saveSelectWindow;
+	cocos2d::Node* saveButtonNode;
 	ClickableTextNode* saveGameButton0;
 	ClickableTextNode* saveGameButton1;
 	ClickableTextNode* saveGameButton2;
-	ClickableTextNode* backButton;
+	ClickableNode* closeButton;
+	ClickableTextNode* returnButton;
 	cocos2d::LayerColor* backdrop;
 	ConfirmationMenu* confirmationMenu;
 

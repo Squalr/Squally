@@ -1,15 +1,18 @@
 #include "HelpTotem.h"
 
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -25,11 +28,17 @@ HelpTotem* HelpTotem::create(ValueMap& properties)
 HelpTotem::HelpTotem(ValueMap& properties) : super(properties)
 {
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
+	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);
 	this->hintCollision = CollisionObject::create(PhysicsBody::createBox(Size(248.0f, 248.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->speechBubble = SpeechBubble::create();
+	this->speechBubble = SpeechBubble::create(true);
 	this->hint = nullptr;
+	this->canInteract = false;
+	this->isInactive = false;
+
+	this->totemInactive->setOpacity(0);
 
 	this->addChild(this->totem);
+	this->addChild(this->totemInactive);
 	this->addChild(this->hintCollision);
 	this->addChild(this->speechBubble);
 }
@@ -66,20 +75,51 @@ void HelpTotem::initializeListeners()
 
 	this->hintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		if (this->hint != nullptr && this->isVisible())
-		{
-			this->speechBubble->runDialogue(this->hint->clone(), SpeechBubble::Direction::Centered);
-		}
+		this->canInteract = true;
+
+		this->tryDisplayHint();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->hintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
-		this->speechBubble->hideDialogue();
-		
+		this->canInteract = false;
+
+		this->tryDisplayHint();
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
+}
+
+void HelpTotem::deactivate()
+{
+	this->isInactive = true;
+	this->totem->runAction(FadeTo::create(1.0f, 0));
+	this->totemInactive->runAction(FadeTo::create(1.0f, 255));
+
+	this->tryDisplayHint();
+}
+
+void HelpTotem::activate()
+{
+	this->isInactive = false;
+	this->totem->runAction(FadeTo::create(1.0f, 255));
+	this->totemInactive->runAction(FadeTo::create(1.0f, 0));
+
+	this->tryDisplayHint();
+}
+
+void HelpTotem::tryDisplayHint()
+{
+	if (!this->isInactive && this->canInteract && this->hint != nullptr && this->isVisible())
+	{
+		this->speechBubble->runDialogue(this->hint->clone(), SoundResources::Platformer_Entities_TikiChatter, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::Centered);
+	}
+	else
+	{
+		this->speechBubble->hideDialogue();
+	}
 }
 
 void HelpTotem::setHint(LocalizedString* hint)

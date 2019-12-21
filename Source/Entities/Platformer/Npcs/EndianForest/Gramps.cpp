@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Gramps.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Gramps::Gramps(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_EndianForest_Gramps_Animations,
 	EntityResources::Npcs_EndianForest_Gramps_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Gramps::getHexusOpponentData();
@@ -48,7 +48,7 @@ Gramps::~Gramps()
 
 Vec2 Gramps::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Gramps::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Gramps::getHexusOpponentData()
 	if (Gramps::HexusOpponentDataInstance == nullptr)
 	{
 		Gramps::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Gramps_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Gramps::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.080f,
 			HexusOpponentData::generateDeck(32, 0.080f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Gramps::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

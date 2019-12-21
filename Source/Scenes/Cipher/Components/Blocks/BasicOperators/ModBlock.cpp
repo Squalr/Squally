@@ -9,7 +9,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Operations/MOD.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -44,10 +44,5 @@ void ModBlock::initializePositions()
 
 unsigned char ModBlock::compute()
 {
-	if (this->currentInputs.size() < 2)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->currentInputs[1] == (unsigned char)(0) ? (unsigned char)(0) : (this->currentInputs[0] % this->currentInputs[1]);
+	return this->inputRight == (unsigned char)(0) ? (unsigned char)(0) : (this->inputLeft % this->inputRight);
 }

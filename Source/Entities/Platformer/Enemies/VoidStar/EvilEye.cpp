@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/EvilEye.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ EvilEye::~EvilEye()
 
 Vec2 EvilEye::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* EvilEye::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* EvilEye::getHexusOpponentData()
 	if (EvilEye::HexusOpponentDataInstance == nullptr)
 	{
 		EvilEye::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_EvilEye_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.6f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			EvilEye::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* EvilEye::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

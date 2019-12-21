@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Merlin.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Merlin::~Merlin()
 
 Vec2 Merlin::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Merlin::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 	if (Merlin::HexusOpponentDataInstance == nullptr)
 	{
 		Merlin::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Merlin_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Merlin::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.438f,
 			HexusOpponentData::generateDeck(32, 0.438f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Merlin::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

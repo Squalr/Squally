@@ -87,7 +87,7 @@ void Analytics::shutDown()
 bool Analytics::areAnalyticsEnabled()
 {
 	// Analytics are currently disabled in Steam builds, and only on Itch.io (this is the price of being free for Itch)
-	if (Steam::isSquallyItchBuild())
+	if (!Steam::isSquallySteamBuild())
 	{
 		return true;
 	}

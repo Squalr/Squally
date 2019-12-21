@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "Engine/SmartNode.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -10,9 +10,7 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class GameObject;
-
-class MapLayer : public SmartNode
+class MapLayer : public GameObject
 {
 public:
 	static MapLayer* create(const cocos2d::ValueMap& properties, std::string name, std::string type = "", const std::vector<GameObject*>& objects = { });
@@ -41,5 +39,5 @@ protected:
 	cocos2d::ValueMap properties;
 
 private:
-	typedef SmartNode super;
+	typedef GameObject super;
 };

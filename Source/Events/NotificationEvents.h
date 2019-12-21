@@ -17,8 +17,10 @@ public:
 	{
 		LocalizedString* title;
 		LocalizedString* description;
+		std::string soundResource;
 
-		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description) : title(title), description(description)
+		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description, std::string soundResource)
+			: title(title), description(description), soundResource(soundResource)
 		{
 		}
 	};
@@ -28,8 +30,10 @@ public:
 		LocalizedString* title;
 		LocalizedString* description;
 		std::string iconResource;
+		std::string soundResource;
 
-		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource) : title(title), description(description), iconResource(iconResource)
+		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
+			: title(title), description(description), iconResource(iconResource), soundResource(soundResource)
 		{
 		}
 	};

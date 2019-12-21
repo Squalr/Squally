@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Bows/OlympusBow.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -20,7 +20,18 @@ OlympusBow* OlympusBow::create()
 	return instance;
 }
 
-OlympusBow::OlympusBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+OlympusBow::OlympusBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

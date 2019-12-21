@@ -1,5 +1,7 @@
 #include "PlatformerMap.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -7,6 +9,7 @@
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
@@ -16,13 +19,16 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerHelper.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -31,8 +37,11 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Combat/SquallyCombatBehaviorGroup.h"
+#include "Scenes/Hexus/Hexus.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
+#include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
@@ -40,7 +49,7 @@
 
 #include "Resources/MapResources.h"
 
-#include "Strings/Menus/Inventory/Inventory.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -59,38 +68,50 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
 	if (!PlatformerMap::initWithPhysics())
 	{
-		throw std::uncaught_exception();
+		return;
+		// throw std::uncaught_exceptions();
 	}
 
 	this->transition = transition;
 	this->gameHud = GameHud::create();
 	this->notificationHud = NotificationHud::create();
+	this->combatFadeInNode = Node::create();
 	this->cipher = Cipher::create();
+	this->hexus = Hexus::create();
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
+	this->canPause = true;
 
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
-			PhysicsDeserializer::create(),
+			MetaLayerDeserializer::create(
+			{
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+				PhysicsDeserializer::create(),
+				PlatformerBannerDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
 				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
-				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() }
+				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+				{ PlatformerTextureDeserializer::MapKeyTypeTexture, PlatformerTextureDeserializer::create() },
 			}),
 			WeatherDeserializer::create()
 		}
 	);
 
-	this->getPhysicsWorld()->setAutoStep(false);
+	// ZAC: Disabled for now. Auto step seems valuable actually.
+	// this->getPhysicsWorld()->setAutoStep(false);
 
 	this->hackerModeVisibleHud->addChild(this->gameHud);
-	this->menuHud->addChild(this->cipher);
+	this->miniGameHud->addChild(this->cipher);
+	this->miniGameHud->addChild(this->hexus);
 	this->topMenuHud->addChild(this->notificationHud);
+	this->topMenuHud->addChild(this->combatFadeInNode);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -123,6 +144,7 @@ void PlatformerMap::onEnterTransitionDidFinish()
 void PlatformerMap::onExit()
 {
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// It doesn't appear that onExit() does anything particularly vital.
 	// super::onExit();
 }
 
@@ -145,20 +167,7 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr && args->enemy != nullptr && !args->enemy->getBattleMapResource().empty())
 		{
-			CombatMap* combatMap = CombatMap::create(
-				args->enemy->getBattleMapResource(),
-				args->firstStrike,
-				args->enemy->getUniqueIdentifier(),
-				{
-					CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior),
-					CombatMap::CombatData(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString(), ""),
-		 		},
-				{ 
-					CombatMap::CombatData(args->enemy->getEntityKey(), args->enemy->getBattleBehavior()),
-				}
-			);
-
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+			this->engageEnemy(args->enemy, args->firstStrike);
 		}
 	}));
 
@@ -168,7 +177,6 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(196);
 			this->cipher->setVisible(true);
 			this->cipher->openCipher(args->cipherPuzzleData);
 			GameUtils::focus(this->cipher);
@@ -181,11 +189,63 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->menuBackDrop->setOpacity(0);
 			this->cipher->setVisible(false);
+
+			// Reinstate this if music is ever added to Cipher:
+			// MusicPlayer::popMusic();
 			GameUtils::focus(this);
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventOpenHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusOpenArgs* args = static_cast<HexusEvents::HexusOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->hexus->setVisible(true);
+			this->hexus->open(args->opponentData);
+			
+			GameUtils::focus(this->hexus);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->hexus->setVisible(false);
+
+			MusicPlayer::popMusic();
+			GameUtils::focus(this);
+		}
+	}));
+
+	this->cipher->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(this->cipher))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu(this->cipher);
+	});
+
+	this->hexus->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	{
+		if (!this->canPause || !GameUtils::isFocused(this->hexus))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu(this->hexus);
+	});
 	
 	this->ingameMenu->setInventoryClickCallback([=]()
 	{
@@ -251,7 +311,8 @@ void PlatformerMap::update(float dt)
 	super::update(dt);
 
 	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
-	this->getPhysicsWorld()->step(1.0f / 60.0f);
+	// ZAC: Nevermind. This does not seem to be an issue, and auto-step seems to make the game run much smoother in debug/slow PCs.
+	// this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
 bool PlatformerMap::loadMap(std::string mapResource)
@@ -268,35 +329,35 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	// Error loading map! Try parsing the map to look for a reasonable fallback map
 	if (StrUtils::contains(mapResource, "UnderflowRuins", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "SeaSharpCaverns", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "CastleValgrind", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "BalmerPeaks", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "DaemonsHallow", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "LambdaCrypts", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else if (StrUtils::contains(mapResource, "VoidStar", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	else // if (StrUtils::contains(mapResource, "EndianForest", true))
 	{
-		mapResource = MapResources::EndianForest_Zone_1_Town_Main;
+		mapResource = MapResources::EndianForest_Town_Main;
 	}
 	
 	SaveManager::batchSaveProfileData({
@@ -304,4 +365,52 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
+}
+
+void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
+{
+	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
+	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
+
+	// Build player team
+	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
+	
+	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
+	{
+		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
+	}), Squally::BattleTag);
+
+	// Build enemy team
+	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));
+
+	if (!enemy->getBattleTag().empty())
+	{
+		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
+		{
+			if (enemyAlly != enemy)
+			{
+				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
+			}
+		}), enemy->getBattleTag());
+	}
+
+	this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+
+	this->runAction(Sequence::create(
+		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
+		CallFunc::create([=]()
+		{
+			// Start combat
+			CombatMap* combatMap = CombatMap::create(
+				enemy->getBattleMapResource(),
+				firstStrike,
+				enemy->getUniqueIdentifier(),
+				playerCombatData,
+				enemyCombatData
+			);
+
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+		}),
+		nullptr
+	));
 }

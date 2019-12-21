@@ -14,7 +14,7 @@ class LiquidNode : public SmartNode
 public:
     static LiquidNode* create(cocos2d::Size liquidSize, float surfaceDepth, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor);
 
-    void splash(float index, float speed);
+    void splash(float index, float speed, float splashRadius = 64.0f, float decay = 0.05f);
 
 protected:
     LiquidNode(cocos2d::Size liquidSize, float surfaceDepth, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor);

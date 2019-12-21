@@ -7,6 +7,7 @@ namespace cocos2d
 	class LayerColor;
 }
 
+class ConstantString;
 class LocalizedLabel;
 
 class DeckCardCountDisplay : public ComponentBase
@@ -27,8 +28,10 @@ private:
 	void updateTotals(GameState* gameState);
 
 	cocos2d::LayerColor* playerDeckCardCountFrame;
-	LocalizedLabel* playerDeckCardCountText;
+	ConstantString* playerDeckCardCountStr;
+	LocalizedLabel* playerDeckCardCountLabel;
 
 	cocos2d::LayerColor* enemyDeckCardCountFrame;
-	LocalizedLabel* enemyDeckCardCountText;
+	ConstantString* enemyDeckCardCountStr;
+	LocalizedLabel* enemyDeckCardCountLabel;
 };

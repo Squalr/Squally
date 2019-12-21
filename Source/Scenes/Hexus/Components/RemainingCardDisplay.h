@@ -9,8 +9,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedLabel;
 class ClickableNode;
+class ConstantString;
+class LocalizedLabel;
+class LocalizedString;
 
 class RemainingCardDisplay : public ComponentBase
 {
@@ -36,11 +38,15 @@ private:
 	cocos2d::ParticleSystemQuad* particles;
 
 	ClickableNode* remainingCardSprite;
+	ConstantString* remainingCardStr;
 	LocalizedLabel* remainingCardLabel;
 
 	cocos2d::LayerColor* remainingCardMouseOverPanel;
 	LocalizedLabel* remainingCardMouseOverLabel;
 
 	cocos2d::Sprite* enemyRemainingCardSprite;
+	ConstantString* enemyRemainingCardStr;
 	LocalizedLabel* enemyRemainingCardLabel;
+
+	LocalizedString* infinityString;
 };

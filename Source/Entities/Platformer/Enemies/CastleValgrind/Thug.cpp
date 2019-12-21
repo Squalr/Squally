@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Thug.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Thug::~Thug()
 
 Vec2 Thug::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Thug::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Thug::getHexusOpponentData()
 	if (Thug::HexusOpponentDataInstance == nullptr)
 	{
 		Thug::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Thug_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Thug::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* Thug::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,14 +128,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

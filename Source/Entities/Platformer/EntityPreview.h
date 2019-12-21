@@ -21,7 +21,7 @@ private:
 	typedef HackablePreview super;
 
 	EntityPreview(PlatformerEntity* entity);
-	~EntityPreview();
+	virtual ~EntityPreview();
 	void onEnter() override;
 	void initializePositions() override;
 

@@ -44,7 +44,7 @@ void LiquidNode::initializePositions()
     this->liquidBody->setPosition(Vec2(-this->liquidSize.width / 2.0f, -this->liquidSize.height / 2.0f));
 }
 
-void LiquidNode::splash(float x, float speed)
+void LiquidNode::splash(float x, float speed, float splashRadius, float decay)
 {
-    this->liquidTop->splash(x, speed);
+    this->liquidTop->splash(x, speed, splashRadius, decay);
 }

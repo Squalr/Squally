@@ -12,7 +12,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Ascii.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -77,4 +77,18 @@ void AsciiButton::initializeListeners()
 void AsciiButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->asciiButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->asciiButton->disableInteraction();
+			break;
+		}
+	}
 }

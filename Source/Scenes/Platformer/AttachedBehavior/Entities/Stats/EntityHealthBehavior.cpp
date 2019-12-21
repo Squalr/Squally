@@ -86,13 +86,14 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 		return;
 	}
 
-	health = MathUtils::clamp(health, 0, this->entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+	health = MathUtils::clamp(health, 0, this->getMaxHealth());
 	this->entity->setState(StateKeys::Health, Value(health), false);
 	this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), false);
 
 	if (this->entity != nullptr && this->entity->getStateOrDefaultInt(StateKeys::Health, 0) <= 0)
 	{
-		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->entity->getAnimations()->clearAnimationPriority();
+		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
 	}
 }
 
@@ -108,7 +109,8 @@ void EntityHealthBehavior::kill(bool loadDeadAnim)
 
 	if (loadDeadAnim && this->entity != nullptr)
 	{
-		this->entity->getAnimations()->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete);
+		this->entity->getAnimations()->clearAnimationPriority();
+		this->entity->getAnimations()->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
 	}
 }
 
@@ -118,6 +120,7 @@ void EntityHealthBehavior::revive()
 
 	if (this->entity != nullptr)
 	{
+		this->entity->getAnimations()->clearAnimationPriority();
 		this->entity->getAnimations()->playAnimation();
 	}
 }

@@ -8,7 +8,8 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Projectile.h"
+#include "Objects/Platformer/Combat/Projectiles/Projectile.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
 
@@ -19,8 +20,8 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->attackType = attackType;
 	this->iconResource = iconResource;
 	this->priority = priority;
-	this->baseDamageOrHealingMin = baseDamageOrHealingMin;
-	this->baseDamageOrHealingMax = baseDamageOrHealingMax;
+	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
+	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->specialCost = specialCost;
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
@@ -76,27 +77,14 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 {
 	this->onAttackTelegraphBegin();
 
+	int mana = std::max(0, owner->getStateOrDefaultInt(StateKeys::Mana, 0) - this->getSpecialCost());
+	owner->setState(StateKeys::Mana, Value(mana));
+
 	this->runAction(Sequence::create(
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			switch (this->attackType)
-			{
-				default:
-				case AttackType::Damage:
-				case AttackType::Healing:
-				{
-					this->doDamageOrHealing(owner, target);
-
-					break;
-				}
-				case AttackType::ProjectileDamage:
-				case AttackType::ProjectileHealing:
-				case AttackType::ProjectileBuffSpeed:
-				{
-					this->generateProjectiles(owner, target);
-				}
-			}
+			this->performAttack(owner, target);
 		}),
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
@@ -117,7 +105,7 @@ void PlatformerAttack::doDamageOrHealing(PlatformerEntity* owner, PlatformerEnti
 {
 }
 
-void PlatformerAttack::generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target)
+void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
 }
 
@@ -131,6 +119,30 @@ void PlatformerAttack::onAttackEnd()
 
 void PlatformerAttack::onCleanup()
 {
+}
+
+std::string PlatformerAttack::getMainhandResource(PlatformerEntity* owner)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("mainhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
+}
+
+std::string PlatformerAttack::getOffhandResource(PlatformerEntity* owner)
+{
+	AnimationPart* weapon = owner->getAnimations()->getAnimationPart("offhand");
+
+	if (weapon != nullptr)
+	{
+		return weapon->getSpriteResource();
+	}
+
+	return "";
 }
 
 void PlatformerAttack::replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile)
@@ -152,27 +164,47 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		weapon->replaceWithObject(projectile, 2.0f);
 	}
 
-	projectile->setPosition3D(GameUtils::getWorldCoords3D(weapon == nullptr ? (Node*)owner : (Node*)weapon));
-
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
 		projectile,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Retain
+		ObjectEvents::PositionMode::Discard
 	));
-} 
 
-int PlatformerAttack::getRandomDamageOrHealing()
-{
-	return RandomHelper::random_int(this->getBaseDamageOrHealingMin(), this->getBaseDamageOrHealingMax());
+	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;
+
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference));
+
+	// We dont actually want to set the Z to the world coord Z position, as this would end up re-applying any layer depth
+	projectile->setPositionZ(reference->getPositionZ());
 }
 
-int PlatformerAttack::getBaseDamageOrHealingMin()
+int PlatformerAttack::getRandomDamage()
+{
+	return -RandomHelper::random_int(this->getBaseDamageMin(), this->getBaseDamageMax());
+}
+
+int PlatformerAttack::getBaseDamageMin()
 {
 	return this->baseDamageOrHealingMin;
 }
 
-int PlatformerAttack::getBaseDamageOrHealingMax()
+int PlatformerAttack::getBaseDamageMax()
+{
+	return this->baseDamageOrHealingMax;
+}
+
+int PlatformerAttack::getRandomHealing()
+{
+	return RandomHelper::random_int(this->getBaseDamageMin(), this->getBaseDamageMax());
+}
+
+int PlatformerAttack::getBaseHealingMin()
+{
+	return this->baseDamageOrHealingMin;
+}
+
+int PlatformerAttack::getBaseHealingMax()
 {
 	return this->baseDamageOrHealingMax;
 }

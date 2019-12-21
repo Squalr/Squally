@@ -11,17 +11,18 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Item.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Combat/Buffs/RestoreHealth/RestoreHealth.h"
-#include "Scenes/Platformer/State/StateKeys.h"
+#include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerModeCombat.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -39,14 +40,13 @@ RestorePotionTutorialBehavior* RestorePotionTutorialBehavior::create(GameObject*
 RestorePotionTutorialBehavior::RestorePotionTutorialBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->scrappy = nullptr;
+	this->hasTutorialRun = false;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->hasTutorialRun = false;
-	this->scrappy = nullptr;
 }
 
 RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
@@ -55,20 +55,25 @@ RestorePotionTutorialBehavior::~RestorePotionTutorialBehavior()
 
 void RestorePotionTutorialBehavior::onLoad()
 {
-	RestorePotion* restorePotion = this->entity->getInventory()->getItemOfType<RestorePotion>();
-
-	if (restorePotion != nullptr)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffApplied, [=](EventCustom* eventCustom)
 	{
-		restorePotion->getAssociatedAttack()->registerAttackCompleteCallback([=]()
+		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getUserData());
+
+		if (dynamic_cast<RestoreHealth*>(args->buff) != nullptr)
 		{
 			this->runTutorial();
-		});
-	}
+		}
+	}));
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+
+		this->scrappy->watchForAttachedBehavior<ScrappyHackableCueBehavior>([=](ScrappyHackableCueBehavior* scrappyHackableCueBehavior)
+		{
+			scrappyHackableCueBehavior->disable();
+		});
+	}, Scrappy::MapKeyScrappy);
 
 	HackableEvents::TriggerDisallowHackerMode();
 }
@@ -82,7 +87,7 @@ void RestorePotionTutorialBehavior::runTutorial()
 
 	this->hasTutorialRun = true;
 
-	static const float TutorialDelay = 1.5f;
+	static const float TutorialDelay = RestoreHealth::StartDelay + RestoreHealth::TimeBetweenTicks * 2.0f + 0.1f;
 
 	this->runAction(Sequence::create(
 		DelayTime::create(TutorialDelay),
@@ -91,22 +96,13 @@ void RestorePotionTutorialBehavior::runTutorial()
 			HackableEvents::TriggerAllowHackerMode();
 			HackableEvents::TriggerForceHackerModeEnable();
 
-			this->runAction(Sequence::create(
-				CallFunc::create([=]()
-				{
-					this->scrappy->droidChatterSound->play();
-				}),
-				CallFunc::create([=]()
-				{
-					this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerModeCombat::create());
-				}),
-				DelayTime::create(4.0f),
-				CallFunc::create([=]()
-				{
-					this->scrappy->speechBubble->hideDialogue();
-				}),
-				nullptr
-			));
+			// Hackermode will pause scrappy and render the dialogue box inaccessible -- remedy this
+			GameUtils::resume(this->scrappy);
+			
+			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			{
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
+			});
 		}),
 		nullptr
 	));

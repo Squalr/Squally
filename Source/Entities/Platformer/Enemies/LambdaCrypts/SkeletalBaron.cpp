@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/LambdaCrypts/SkeletalBaron.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 	if (SkeletalBaron::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalBaron::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_LambdaCrypts_SkeletalBaron_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(0.0f, -144.0f),
 			Vec2(16.0f, -112.0f),
 			SkeletalBaron::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* SkeletalBaron::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

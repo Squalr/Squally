@@ -2,7 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class Sound;
+class WorldSound;
 
 class Slash : public PlatformerAttack
 {
@@ -17,6 +17,7 @@ protected:
 	Slash(float attackDuration, float recoverDuration);
 	~Slash() = default;
 
+	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:
@@ -24,6 +25,6 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	Sound* slashSound;
-	Sound* hitSound;
+	WorldSound* slashSound;
+	WorldSound* hitSound;
 };

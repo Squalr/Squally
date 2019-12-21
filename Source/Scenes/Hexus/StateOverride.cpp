@@ -22,8 +22,7 @@ StateOverride* StateOverride::create(
 	std::vector<CardData*> playerHexCards,
 	std::vector<CardData*> enemyBinaryCards,
 	std::vector<CardData*> enemyDecimalCards,
-	std::vector<CardData*> enemyHexCards,
-	TutorialMode tutorialMode
+	std::vector<CardData*> enemyHexCards
 )
 {
 	StateOverride* instance = new StateOverride(
@@ -41,8 +40,7 @@ StateOverride* StateOverride::create(
 		playerHexCards,
 		enemyBinaryCards,
 		enemyDecimalCards,
-		enemyHexCards,
-		tutorialMode);
+		enemyHexCards);
 
 	instance->autorelease();
 
@@ -68,8 +66,7 @@ StateOverride::StateOverride(
 	std::vector<CardData*> playerHexCards,
 	std::vector<CardData*> enemyBinaryCards,
 	std::vector<CardData*> enemyDecimalCards,
-	std::vector<CardData*> enemyHexCards,
-	TutorialMode tutorialMode)
+	std::vector<CardData*> enemyHexCards)
 {
 	this->playerLosses = playerLosses;
 	this->enemyLosses = enemyLosses;
@@ -86,7 +83,6 @@ StateOverride::StateOverride(
 	this->enemyBinaryCards = enemyBinaryCards;
 	this->enemyDecimalCards = enemyDecimalCards;
 	this->enemyHexCards = enemyHexCards;
-	this->tutorialMode = tutorialMode;
 }
 
 StateOverride::~StateOverride()

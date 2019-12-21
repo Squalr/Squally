@@ -69,6 +69,26 @@ std::string StrUtils::quote(std::string value)
 	return "\"" + value + "\"";
 }
 
+std::string StrUtils::toLower(std::string str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), [=](unsigned char c)
+	{
+		return std::tolower(c);
+	});
+
+	return str;
+}
+
+std::string StrUtils::toUpper(std::string str)
+{
+	std::transform(str.begin(), str.end(), str.begin(), [=](unsigned char c)
+	{
+		return std::toupper(c);
+	});
+
+	return str;
+}
+
 std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimiters)
 {
 	std::vector<std::string> tokens = std::vector<std::string>();

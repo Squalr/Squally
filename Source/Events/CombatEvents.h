@@ -8,6 +8,7 @@ namespace cocos2d
 	class Node;
 }
 
+class Buff;
 class PlatformerEntity;
 class TimelineEntry;
 
@@ -21,6 +22,8 @@ public:
 	static const std::string EventDisableItems;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
+	static const std::string EventRequestRetargetCorrection;
+	static const std::string EventBuffApplied;
 	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
 	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
 	static const std::string EventEntityTimelineReset;
@@ -37,14 +40,16 @@ public:
 	static const std::string EventGiveExp;
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
+	static const std::string EventHackableCombatCue;
 
 	struct SpawnArgs
 	{
 		PlatformerEntity* entity;
 		bool isEnemySpawn;
 		int spawnIndex;
+		std::function<void()> onSpawnSuccess;
 
-		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex)
+		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex, std::function<void()> onSpawnSuccess) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex), onSpawnSuccess(onSpawnSuccess)
 		{
 		}
 	};
@@ -117,6 +122,16 @@ public:
 		}
 	};
 
+	struct BuffAppliedArgs
+	{
+		PlatformerEntity* target;
+		Buff* buff;
+
+		BuffAppliedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
+		{
+		}
+	};
+
 	struct DamageOrHealingDeltArgs
 	{
 		PlatformerEntity* caster;
@@ -153,8 +168,10 @@ public:
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int* damageOrHealing;
+		bool* blocked;
 
-		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
+		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing, bool* blocked)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), blocked(blocked), handled(false) { }
 
 		void handle()
 		{
@@ -220,10 +237,12 @@ public:
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();
 	static void TriggerSelectCastTarget(CastTargetArgs args);
+	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
+	static void TriggerBuffApplied(BuffAppliedArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
@@ -235,4 +254,5 @@ public:
 	static void TriggerGiveExp();
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
+	static void TriggerHackableCombatCue();
 };

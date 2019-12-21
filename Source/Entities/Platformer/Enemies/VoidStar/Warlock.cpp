@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Warlock.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Warlock::~Warlock()
 
 Vec2 Warlock::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Warlock::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Warlock::getHexusOpponentData()
 	if (Warlock::HexusOpponentDataInstance == nullptr)
 	{
 		Warlock::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Warlock_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Warlock::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Warlock::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

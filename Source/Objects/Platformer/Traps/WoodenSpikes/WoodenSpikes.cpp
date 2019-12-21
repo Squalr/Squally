@@ -11,13 +11,13 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/WoodenSpikes/UpdateTimer/RegisterSt0.h"
-#include "Strings/Menus/Hacking/Objects/WoodenSpikes/UpdateTimer/UpdateTimer.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -98,7 +98,7 @@ void WoodenSpikes::registerHackables()
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 				},
-				1,
+				int(HackFlags::None),
 				20.0f
 			)
 		},

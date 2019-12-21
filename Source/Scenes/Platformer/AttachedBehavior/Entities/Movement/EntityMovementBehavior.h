@@ -25,7 +25,12 @@ private:
 	typedef AttachedBehavior super;
 
 	bool isOnGround();
+	void applyCinematicMovement(cocos2d::Vec2* movement);
+	void applyPatrolMovement(cocos2d::Vec2* movement);
+	void checkCinematicMovementComplete();
+	void checkPatrolMovementComplete();
 
 	PlatformerEntity* entity;
 	cocos2d::Vec2 preCinematicPosition;
+	cocos2d::Vec2 prePatrolPosition;
 };

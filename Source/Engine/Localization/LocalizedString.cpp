@@ -23,18 +23,16 @@ LocalizedString::~LocalizedString()
 
 void LocalizedString::onEnter()
 {
-	super::onEnter();
+	// ZAC: Optimization to skip SmartNode onEnter(). LocalizedStrings do not need the events set up by the SmartNode base class.
+	// Less stuff to dispose, this means significantly faster map destruction.
+	Node::onEnter();
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
 		this->onStringUpdate(this);
 	}
-}
 
-void LocalizedString::initializeListeners()
-{
-	super::initializeListeners();
-
+	// This needs to be done here since we side-step SmartNode functions
 	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
 	{
 		if (this->onStringUpdate != nullptr)
@@ -202,7 +200,14 @@ std::string LocalizedString::getString()
 
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+		if (*it != nullptr)
+		{
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+		}
+		else
+		{
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), "");
+		}
 	}
 
 	return localizedString;
@@ -218,16 +223,21 @@ void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage
 	this->overrideLanguage = overrideLanguage;
 }
 
-void LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
+LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
 {
-	this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
+	return this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
 }
 
-void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
+LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
+		if (*it == nullptr)
+		{
+			continue;
+		}
+
 		bool isReentry = false;
 
 		for (auto compareIt = stringReplacementVariables.begin(); compareIt != stringReplacementVariables.end(); compareIt++)
@@ -241,7 +251,7 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(*it, nullptr, true);
+			GameUtils::changeParent(*it, nullptr, true, false);
 		}
 		else
 		{
@@ -255,6 +265,11 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	// Retain new replacement variables
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
+		if (*it == nullptr)
+		{
+			continue;
+		}
+
 		// Update this string if any of the replacement variables get updated
 		(*it)->setOnStringUpdateCallback([=](LocalizedString*)
 		{
@@ -271,6 +286,8 @@ void LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*
 	{
 		this->onStringUpdate(this);
 	}
+
+	return this;
 }
 
 void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)
@@ -286,7 +303,7 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
 	{
-		stringReplacementVariables.push_back((*it)->clone());
+		stringReplacementVariables.push_back(*it == nullptr ? nullptr : (*it)->clone());
 	}
 
 	localizedString->setStringReplacementVariables(stringReplacementVariables);

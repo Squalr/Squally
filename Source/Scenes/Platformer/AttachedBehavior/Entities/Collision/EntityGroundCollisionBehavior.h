@@ -2,11 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class CollisionObject;
 class PlatformerEntity;
 
@@ -17,6 +12,7 @@ public:
 
 	void onCollideWithGround();
 	bool isOnGround();
+	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
 	CollisionObject* groundCollision;
@@ -36,5 +32,6 @@ private:
 
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
+	static const float GroundCollisionHeight;
 	static const float GroundCollisionRadius;
 };

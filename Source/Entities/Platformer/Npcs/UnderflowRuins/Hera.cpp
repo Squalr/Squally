@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Hera.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Hera::~Hera()
 
 Vec2 Hera::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Hera::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Hera::getHexusOpponentData()
 	if (Hera::HexusOpponentDataInstance == nullptr)
 	{
 		Hera::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Hera_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Hera::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.205f,
 			HexusOpponentData::generateDeck(32, 0.205f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Hera::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

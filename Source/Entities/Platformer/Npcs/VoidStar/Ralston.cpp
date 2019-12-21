@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Ralston.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Ralston::~Ralston()
 
 Vec2 Ralston::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Ralston::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Ralston::getHexusOpponentData()
 	if (Ralston::HexusOpponentDataInstance == nullptr)
 	{
 		Ralston::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Ralston_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Ralston::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.894f,
 			HexusOpponentData::generateDeck(32, 0.894f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Ralston::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

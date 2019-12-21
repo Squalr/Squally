@@ -16,9 +16,8 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
@@ -26,13 +25,16 @@
 #include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Enemies/Stats/EnemyHealthBehavior.h"
-#include "Scenes/Platformer/Level/Combat/ChoicesMenu.h"
-#include "Scenes/Platformer/Level/Combat/DefeatMenu.h"
-#include "Scenes/Platformer/Level/Combat/EnemyAIHelper.h"
-#include "Scenes/Platformer/Level/Combat/RewardsMenu.h"
-#include "Scenes/Platformer/Level/Combat/TargetSelectionMenu.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/DefeatMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/RewardsMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/TargetSelectionMenu.h"
 #include "Scenes/Platformer/Level/Combat/TextOverlays.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -42,6 +44,9 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
+
+const std::string CombatMap::MapPropertyPlayerFirstStrike = "player-first-strike";
+const std::string CombatMap::MapPropertyEnemyFirstStrike = "enemy-first-strike";
 
 CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
@@ -56,9 +61,10 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
 {
-	if (!super::init())
+	if (!super::initWithPhysics())
 	{
-		throw std::uncaught_exception();
+		// throw std::uncaught_exceptions();
+		return;
 	}
 
 	this->collectablesMenu = CollectablesMenu::create();
@@ -71,36 +77,43 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
-	this->enemyAIHelper = EnemyAIHelper::create();
+	this->enemyAIHelper = CombatAIHelper::create();
 	this->notificationHud = NotificationHud::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
+	this->playerFirstStrike = playerFirstStrike;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
-			PhysicsDeserializer::create(),
+			MetaLayerDeserializer::create({
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+				PhysicsDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
-				{ PlatformerEntityDeserializer::MapKeyTypeEntity, this->platformerEntityDeserializer },
+				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
 				{ PlatformerTerrainDeserializer::MapKeyTypeTerrain, PlatformerTerrainDeserializer::create() },
+				{ PlatformerTextureDeserializer::MapKeyTypeTexture, PlatformerTextureDeserializer::create() },
 			}),
 			WeatherDeserializer::create()
 		}
 	);
 
+	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
 	this->topMenuHud->addChild(this->notificationHud);
@@ -125,12 +138,17 @@ void CombatMap::onEnter()
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
 
-	this->spawnEntities();
+	this->defer([=]()
+	{
+		this->spawnEntities();
+		this->timeline->resumeTimeline();
+	});
 }
 
 void CombatMap::onExit()
 {
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
+	// Any disposing should be done in the destructor anyways, not onExit().
 	// super::onExit();
 }
 
@@ -162,6 +180,15 @@ void CombatMap::initializeListeners()
 				GameObject::saveObjectState(this->enemyIdentifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
 
 				CombatEvents::TriggerGiveExp();
+
+				this->runAction(Sequence::create(
+					DelayTime::create(3.5f),
+					CallFunc::create([=]()
+					{
+						CombatEvents::TriggerGiveRewards();
+					}),
+					nullptr
+				));
 			}
 			else
 			{
@@ -169,32 +196,6 @@ void CombatMap::initializeListeners()
 				this->defeatMenu->show();
 			}
 		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
-	{
-		int expGain = 0;
-
-		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-		{
-			expGain += StatsTables::getKillExp(entity);
-		}));
-
-		int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(0)).asInt();
-		int squallyExp = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEqExperience, Value(0)).asInt();
-
-		// Note: The entities gain EXP during the animation in this function. This is a bit janky, but it's helpful to do
-		// both the gain and the animations in one step
-		this->textOverlays->showExpBars(expGain);
-
-		this->runAction(Sequence::create(
-			DelayTime::create(3.5f),
-			CallFunc::create([=]()
-			{
-				CombatEvents::TriggerGiveRewards();
-			}),
-			nullptr
-		));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
@@ -222,7 +223,7 @@ void CombatMap::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(0.0f, 128.0f));
+					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
 
 					break;
 				}
@@ -301,38 +302,19 @@ void CombatMap::initializeListeners()
 
 void CombatMap::spawnEntities()
 {
-	// Deserialize all enemies
-	{
-		for (int index = 0; index < this->enemyData.size(); index++)
-		{
-			ValueMap valueMap = ValueMap();
-
-			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
-			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
-			valueMap[GameObject::MapKeyFlipX] = Value(true);
-
-			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
-				valueMap,
-				[=] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
-				{
-					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
-
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
-
-					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index));
-				}
-			);
-
-			this->platformerEntityDeserializer->deserialize(&args);
-		}
-	}
+	std::vector<PlatformerEntity*> friendlyEntities = std::vector<PlatformerEntity*>();
+	std::vector<PlatformerEntity*> enemyEntities = std::vector<PlatformerEntity*>();
 
 	// Deserialize players team
 	{
-		for (int index = 0; index < this->playerData.size(); index++)
+		for (int index = 0; index < int(this->playerData.size()); index++)
 		{
 			ValueMap valueMap = ValueMap();
+
+			if (this->playerData[index].entityType.empty())
+			{
+				continue;
+			}
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
@@ -340,13 +322,67 @@ void CombatMap::spawnEntities()
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
-				[=] (ObjectDeserializer::ObjectDeserializationArgs args)
+				[&] (ObjectDeserializer::ObjectDeserializationArgs args)
 				{
 					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(args.gameObject);
 					
-					entity->attachBehavior(EntityCombatBehaviorGroup::create(entity));
-					
-					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index));
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
+					{
+						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
+						friendlyEntities.push_back(entity);
+					}));
+				}
+			);
+
+			this->platformerEntityDeserializer->deserialize(&args);
+		}
+	}
+	
+	// Deserialize all enemies
+	{
+		for (int index = 0; index < int(this->enemyData.size()); index++)
+		{
+			ValueMap valueMap = ValueMap();
+
+			if (this->enemyData[index].entityType.empty())
+			{
+				continue;
+			}
+
+			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
+			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
+			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
+			valueMap[GameObject::MapKeyFlipX] = Value(true);
+
+			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
+
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyEnemyFirstStrike) != behavior.end())
+			{
+				this->playerFirstStrike = false;
+			}
+
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyPlayerFirstStrike) != behavior.end())
+			{
+				this->playerFirstStrike = true;
+			}
+
+			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
+				valueMap,
+				[&] (ObjectDeserializer::ObjectDeserializationArgs deserializeArgs)
+				{
+					PlatformerEntity* entity = dynamic_cast<PlatformerEntity*>(deserializeArgs.gameObject);
+
+					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
+					{
+						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
+
+						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+						{
+							entityDropTableBehavior->setDropTable(this->enemyData[index].dropPool);
+						});
+
+						enemyEntities.push_back(entity);
+					}));
 				}
 			);
 
@@ -354,6 +390,10 @@ void CombatMap::spawnEntities()
 		}
 	}
 
-	this->combatHud->bindStatsBars();
-	this->timeline->initializeTimeline(true);
+	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
+	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
+
+	this->firstStrikeMenu->show(this->playerFirstStrike);
+	this->enemyAIHelper->initializeEntities(friendlyEntities, enemyEntities);
+	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }

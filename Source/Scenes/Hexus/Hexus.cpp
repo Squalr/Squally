@@ -9,22 +9,26 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/CardStorage.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 #include "Scenes/Hexus/States/States.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/HexusResources.h"
@@ -34,16 +38,16 @@ using namespace cocos2d;
 
 Hexus* Hexus::instance = nullptr;
 
-Hexus* Hexus::create(HexusOpponentData* opponentData)
+Hexus* Hexus::create()
 {
-	Hexus* instance = new Hexus(opponentData);
+	Hexus* instance = new Hexus();
 	
 	instance->autorelease();
 
 	return instance;
 }
 
-Hexus::Hexus(HexusOpponentData* opponentData)
+Hexus::Hexus()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -80,6 +84,7 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->stateDraw = StateDraw::create();
 	this->stateDrawInitial = StateDrawInitial::create();
 	this->stateGameEnd = StateGameEnd::create();
+	this->stateGameExit = StateGameExit::create();
 	this->stateGameStart = StateGameStart::create();
 	this->stateLoadInitialState = StateLoadInitialState::create();
 	this->stateNeutral = StateNeutral::create();
@@ -101,22 +106,12 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->rowTotals = RowTotals::create();
 	this->scoreTotal = ScoreTotal::create();
 	this->debugDisplay = DebugDisplay::create();
-	this->tutorialAIntroSequence = TutorialAIntroSequence::create();
-	this->tutorialAVictory = TutorialAVictory::create();
-	this->tutorialAWinningRound = TutorialAWinningRound::create();
-	this->tutorialBIntroSequence = TutorialBIntroSequence::create();
-	this->tutorialCIntroSequence = TutorialCIntroSequence::create();
-	this->tutorialDIntroSequence = TutorialDIntroSequence::create();
-	this->tutorialEIntroSequence = TutorialEIntroSequence::create();
-	this->tutorialFIntroSequence = TutorialFIntroSequence::create();
+	this->tutorialLayer = Node::create();
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
-	this->pauseMenu = PauseMenu::create();
-	this->optionsMenu = OptionsMenu::create();
-	this->confirmationMenu = ConfirmationMenu::create();
-	this->menuBackDrop = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
-	this->musicA = Music::create(MusicResources::Hexus1);
-	this->musicB = Music::create(MusicResources::Hexus2);
+	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
+	this->musicA = Music::createAndAddGlobally(MusicResources::Hexus1, this);
+	this->musicB = Music::createAndAddGlobally(MusicResources::Hexus2, this);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;
@@ -162,6 +157,7 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->addChild(this->stateDraw);
 	this->addChild(this->stateDrawInitial);
 	this->addChild(this->stateGameEnd);
+	this->addChild(this->stateGameExit);
 	this->addChild(this->stateGameStart);
 	this->addChild(this->stateLoadInitialState);
 	this->addChild(this->stateNeutral);
@@ -175,14 +171,7 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->addChild(this->stateTurnEnd);
 	this->addChild(this->stateTutorial);
 	this->addChild(this->debugDisplay);
-	this->addChild(this->tutorialAIntroSequence);
-	this->addChild(this->tutorialAVictory);
-	this->addChild(this->tutorialAWinningRound);
-	this->addChild(this->tutorialBIntroSequence);
-	this->addChild(this->tutorialCIntroSequence);
-	this->addChild(this->tutorialDIntroSequence);
-	this->addChild(this->tutorialEIntroSequence);
-	this->addChild(this->tutorialFIntroSequence);
+	this->addChild(this->tutorialLayer);
 	this->addChild(this->cardReplaceBanner);
 	this->addChild(this->opponentFirstBanner);
 	this->addChild(this->opponentLastStandBanner);
@@ -201,13 +190,6 @@ Hexus::Hexus(HexusOpponentData* opponentData)
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->helpMenuComponent);
-	this->addChild(this->pauseMenu);
-	this->addChild(this->optionsMenu);
-	this->addChild(this->confirmationMenu);
-	this->addChild(this->musicA);
-	this->addChild(this->musicB);
-
-	this->startGame(opponentData);
 }
 
 Hexus::~Hexus()
@@ -218,21 +200,7 @@ void Hexus::onEnter()
 {
 	super::onEnter();
 
-	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
-	{
-		this->musicA->play(true);
-	}
-	else
-	{
-		this->musicB->play(true);
-	}
-
-	this->menuBackDrop->setOpacity(0);
-	this->pauseMenu->setVisible(false);
-	this->optionsMenu->setVisible(false);
-	this->confirmationMenu->setVisible(false); 
-
-	GameState::updateState(this->gameState, GameState::StateType::GameStart);
+	this->setVisible(false);
 }
 
 void Hexus::initializePositions()
@@ -262,59 +230,31 @@ void Hexus::initializeListeners()
 		this->helpMenuComponent->setVisible(false);
 		GameUtils::focus(this);
 	});
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventArgs)
-	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventArgs->getUserData());
-
-		if (args != nullptr)
-		{
-			this->relocateLayer->addChild(UIBoundObject::create(args->relocatedObject));
-		}
-	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
-	{
-		if (!GameUtils::isFocused(this))
-		{
-			return;
-		}
-		
-		args->handle();
-
-		this->openPauseMenu();
-	});
-
-	this->optionsMenu->setBackClickCallback([=]()
-	{
-		this->optionsMenu->setVisible(false);
-		this->openPauseMenu();
-	});
-	this->pauseMenu->setResumeClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		GameUtils::focus(this);
-	});
-	this->pauseMenu->setOptionsClickCallback([=]()
-	{
-		this->pauseMenu->setVisible(false);
-		this->optionsMenu->setVisible(true);
-		GameUtils::focus(this->optionsMenu);
-	});
-	this->pauseMenu->setQuitToTitleClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		NavigationEvents::LoadScene(TitleScreen::getInstance());
-	});
 }
 
-void Hexus::startGame(HexusOpponentData* opponentData)
+void Hexus::open(HexusOpponentData* opponentData)
 {
-	this->relocateLayer->removeAllChildren();
+	if (this->gameState->opponentData != nullptr)
+	{
+		this->removeChild(this->gameState->opponentData);
+	}
 	
 	this->gameState->opponentData = opponentData;
+
+	if (this->gameState->opponentData == nullptr)
+	{
+		return;
+	}
+	
+	this->addChild(this->gameState->opponentData);
+
+	this->relocateLayer->removeAllChildren();
+	this->tutorialLayer->removeAllChildren();
+
+	for (auto it = opponentData->tutorials.begin(); it != opponentData->tutorials.end(); it++)
+	{
+		this->tutorialLayer->addChild(*it);
+	}
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
 	this->gameState->stateType = GameState::StateType::EmptyState;
@@ -336,13 +276,58 @@ void Hexus::startGame(HexusOpponentData* opponentData)
 	this->gameState->playerDeck->clear();
 	this->gameState->enemyDeck->clear();
 
-	opponentData->getDeck()->copyTo(this->gameState->enemyDeck);
-	Deck::create(Card::CardStyle::Earth, CardStorage::getInstance()->getDeckCards())->copyTo(this->gameState->playerDeck);
+	if (opponentData->stateOverride == nullptr)
+	{
+		this->buildEnemyDeck(opponentData);
+		this->buildPlayerDeck();
+	}
+
+	GameState::updateState(this->gameState, GameState::StateType::GameStart);
+	this->setVisible(true);
+
+	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	{
+		MusicPlayer::play(this->musicA, true);
+	}
+	else
+	{
+		MusicPlayer::play(this->musicB, true);
+	}
 }
 
-void Hexus::openPauseMenu()
+void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 {
-	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->setVisible(true);
-	GameUtils::focus(this->pauseMenu);
+	std::vector<CardData*> enemyCards = opponentData->getDeck();
+
+	this->gameState->enemyDeck->style = opponentData->cardStyle;
+
+	for (auto it = enemyCards.begin(); it != enemyCards.end(); it++)
+	{
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, (*it), false), false, 0.0f, false);
+	}
+}
+
+void Hexus::buildPlayerDeck()
+{
+	EquipmentInventory* equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
+	std::vector<CardData*> cardData = std::vector<CardData*>();
+	std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
+	std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
+
+	for (auto it = cards.begin(); it != cards.end(); it++)
+	{
+		std::string key = (*it)->getCardKey();
+
+		if (cardList.find(key) != cardList.end())
+		{
+			cardData.push_back(cardList[key]);
+		}
+	}
+
+	this->gameState->playerDeck->style = Card::CardStyle::Earth;
+
+	for (auto it = cardData.begin(); it != cardData.end(); it++)
+	{
+		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
+	}
 }

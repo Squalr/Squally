@@ -20,15 +20,13 @@ public:
 
 protected:
 	TitleScreen();
-	~TitleScreen();
+	virtual ~TitleScreen();
 
 private:
 	typedef GlobalScene super;
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
-	void onDeveloperModeDisable() override;
 
 	TitleScreenBackground* background;
 
@@ -36,7 +34,6 @@ private:
 	cocos2d::ParticleSystem* etherParticles;
 
 	ClickableTextNode* storyModeButton;
-	ClickableTextNode* minigamesButton;
 	ClickableTextNode* optionsButton;
 	ClickableTextNode* exitButton;
 	ClickableTextNode* debugButton;

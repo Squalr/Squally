@@ -16,7 +16,7 @@ ObjectifiedTile* ObjectifiedTile::create(Sprite* sprite, ValueMap properties)
 	return instance;
 }
 
-ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap properties) : GameObject(properties)
+ObjectifiedTile::ObjectifiedTile(Sprite* sprite, ValueMap properties) : super(properties)
 {
 	this->innerSprite = sprite;
 

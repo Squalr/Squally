@@ -2,11 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class CollisionObject;
 class PlatformerEntity;
 
@@ -21,6 +16,8 @@ public:
 	bool hasRightWallCollision();
 	
 	CollisionObject* movementCollision;
+	CollisionObject* leftCollision;
+	CollisionObject* rightCollision;
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -36,13 +33,13 @@ private:
 
 	void buildMovementCollision();
 	void buildWallDetectors();
+	void tryBind();
 
 	PlatformerEntity* entity;
-	CollisionObject* leftCollision;
-	CollisionObject* rightCollision;
 
 	bool movementCollisionBound;
 
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;
+	static const float StaticFriction;
 };

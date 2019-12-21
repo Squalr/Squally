@@ -10,11 +10,9 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
 
-#include "Strings/Common/Count.h"
-#include "Strings/Menus/Hacking/CodeEditor/CreateNewScript.h"
-#include "Strings/Menus/Hacking/CodeEditor/MyNewScript.h"
-#include "Strings/Menus/Hacking/CodeEditor/YourScripts.h"
 #include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

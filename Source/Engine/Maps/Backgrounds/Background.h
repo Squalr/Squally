@@ -1,18 +1,16 @@
 #pragma once
-#include "Engine/Maps/MapLayer.h"
+#include "Engine/Maps/GameObject.h"
 
 class Hud;
 
-class Background : public MapLayer
+class Background : public GameObject
 {
 public:
-	static Background* create(cocos2d::ValueMap& properties, std::string name, cocos2d::Node* child);
-
-	static const std::string MapKeyBackgroundType;
+	static Background* create(cocos2d::Node* child);
 
 private:
-	typedef MapLayer super;
-	Background(cocos2d::ValueMap& properties, std::string name, Node* child);
+	typedef GameObject super;
+	Background(Node* child);
 	~Background();
 
 	Hud* background;

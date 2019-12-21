@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Dudly.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Dudly::~Dudly()
 
 Vec2 Dudly::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Dudly::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Dudly::getHexusOpponentData()
 	if (Dudly::HexusOpponentDataInstance == nullptr)
 	{
 		Dudly::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Dudly::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.777f,
 			HexusOpponentData::generateDeck(32, 0.777f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Dudly::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

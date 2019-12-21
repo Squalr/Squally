@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/QueenElise.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ QueenElise::QueenElise(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_QueenElise_Animations,
 	EntityResources::Npcs_VoidStar_QueenElise_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = QueenElise::getHexusOpponentData();
@@ -48,7 +48,7 @@ QueenElise::~QueenElise()
 
 Vec2 QueenElise::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* QueenElise::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 	if (QueenElise::HexusOpponentDataInstance == nullptr)
 	{
 		QueenElise::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_QueenElise_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			QueenElise::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.933f,
 			HexusOpponentData::generateDeck(32, 0.933f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* QueenElise::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

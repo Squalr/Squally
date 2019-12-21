@@ -39,6 +39,7 @@ ScrollPane::ScrollPane(Size paneSize, std::string sliderResource, std::string sl
 	this->paneSize = paneSize;
 	this->paddingSize = paddingSize;
 	this->marginSize = marginSize;
+	this->updateSuspended = false;
 
 	this->initialDragDepth = 0.0f;
 	this->customBackground = DrawNode::create();
@@ -195,7 +196,7 @@ void ScrollPane::scrollTo(float position, bool updateScrollBars, float duration)
 			nullptr
 		));
 
-		int ticks = duration / (1.0f / 60.0f);
+		int ticks = int(duration / (1.0f / 60.0f));
 		
 		this->content->runAction(
 			Repeat::create(Sequence::create(
@@ -253,12 +254,29 @@ void ScrollPane::removeAllChildren()
 
 void ScrollPane::updateScrollBounds()
 {
+	if (this->updateSuspended)
+	{
+		return;
+	}
+
 	this->minScrollDepth = this->paneSize.height - this->paddingSize.height;
 
 	float discoveredLowestItem = this->getLowestChild(this->content->getChildren());
 
 	this->maxScrollDepth = std::max(this->minScrollDepth, -discoveredLowestItem) + this->paddingSize.height;
 	this->setScrollPercentage(this->getScrollPercentage());
+}
+
+void ScrollPane::suspendUpdate()
+{
+	this->updateSuspended = true;
+}
+
+void ScrollPane::resumeUpdate()
+{
+	this->updateSuspended = false;
+
+	this->updateScrollBounds();
 }
 
 float ScrollPane::getLowestChild(Vector<cocos2d::Node*>& children, float lowestItem)

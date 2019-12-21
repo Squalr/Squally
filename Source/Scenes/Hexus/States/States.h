@@ -11,6 +11,7 @@
 #include "Scenes/Hexus/States/StateLoadInitialState.h"
 #include "Scenes/Hexus/States/StateTurnEnd.h"
 #include "Scenes/Hexus/States/StateGameEnd.h"
+#include "Scenes/Hexus/States/StateGameExit.h"
 #include "Scenes/Hexus/States/StateNeutral.h"
 #include "Scenes/Hexus/States/StateOpponentTurnStart.h"
 #include "Scenes/Hexus/States/StatePass.h"

@@ -3,17 +3,14 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Engine/Localization/LocalizedString.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
-const int Item::MaxStack = -1;
-
-Item::Item(CurrencyInventory* cost, int stackSize)
+Item::Item(CurrencyInventory* cost, ItemMeta itemMeta)
 {
-	this->count = 1;
-	this->stackSize = stackSize;
 	this->cost = cost;
+	this->itemMeta = itemMeta;
 
 	this->addChild(this->cost);
 }
@@ -32,24 +29,22 @@ void Item::initializeListeners()
 	super::initializeListeners();
 }
 
-ValueMap Item::serialize()
-{
-	ValueMap result = ValueMap();
-
-	return result;
-}
-
-int Item::getCount()
-{
-	return this->count;
-}
-
-int Item::getStackSize()
-{
-	return this->stackSize;
-}
-
 CurrencyInventory* Item::getCost()
 {
 	return this->cost;
+}
+
+int Item::getUniqueCount()
+{
+	return this->itemMeta.unique;
+}
+
+int Item::getRubberBand()
+{
+	return this->itemMeta.rubberBand;
+}
+
+float Item::getRubberBandFactor()
+{
+	return MathUtils::clamp(this->itemMeta.rubberBandFactor, 0.0f, 1.0f);
 }

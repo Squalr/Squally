@@ -15,15 +15,14 @@
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailClippy.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/MechanicalFlail/SetTargetAngle/SetTargetAngle.h"
-#include "Strings/Menus/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/MechanicalFlail/SetTargetAngle/RegisterEbx.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -119,7 +118,7 @@ void MechanicalFlail::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
 				},
-				2,
+				int(HackFlags::None),
 				20.0f,
 				this->showClippy ? MechanicalFlailClippy::create() : nullptr
 			)

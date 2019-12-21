@@ -21,18 +21,20 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 
-#include "Strings/Platformer/Entities/Names/Squally.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKeySqually = "squally";
+const std::string Squally::BattleTag = "squally-team";
 
 Squally* Squally::create()
 {
@@ -60,10 +62,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Size(128.0f, 128.0f),
 	Squally::SquallyScale,
 	Vec2(0.0f, 24.0f),
-	96.0f,
-	SaveKeys::SaveKeySquallyInventory,
-	SaveKeys::SaveKeySquallyEquipment,
-	SaveKeys::SaveKeySquallyCurrencyInventory)
+	96.0f)
 {
 	this->registerHackables();
 }
@@ -75,18 +74,11 @@ Squally::~Squally()
 void Squally::onEnter()
 {
 	super::onEnter();
-
-	// Request camera track player
-	CameraTrackingData trackingData = CameraTrackingData(this, Vec2(0.0f, 128.0f), Vec2(128.0f, 96.0f));
-	GameCamera::getInstance()->setTarget(trackingData, true);
 }
 
 void Squally::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
-
-	// Request HUD track player
-	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this));
 }
 
 void Squally::initializePositions()
@@ -121,7 +113,7 @@ float Squally::getFloatHeight()
 
 cocos2d::Vec2 Squally::getDialogueOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -16.0f);
 }
 
 LocalizedString* Squally::getEntityName()
@@ -131,17 +123,20 @@ LocalizedString* Squally::getEntityName()
 
 void Squally::performSwimAnimation()
 {
-	if (this->equipmentInventory->getWeapon() != nullptr)
+	this->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		this->animationNode->playAnimation("SwimWithWeapon");
-	}
-	else
-	{
-		this->animationNode->playAnimation("Swim");
-	}
+		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
+		{
+			this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+		}
+		else
+		{
+			this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+		}
+	});
 }
 
-void Squally::onHackerModeEnable(int eq)
+void Squally::onHackerModeEnable(int hackFlags)
 {
-	super::onHackerModeEnable(eq);
+	super::onHackerModeEnable(hackFlags);
 }

@@ -37,16 +37,8 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	// Load initial state variables
 	if (cipherState->puzzleData != nullptr)
 	{
-		if (cipherState->isHardModeEnabled())
-		{
-			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapHard();
-			cipherState->tokens = cipherState->puzzleData->getHardTokens();
-		}
-		else
-		{
-			cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMapEasy();
-			cipherState->tokens = cipherState->puzzleData->getEasyTokens();
-		}
+		cipherState->inputOutputMap = cipherState->puzzleData->getInputOutputMap();
+		cipherState->tokens = cipherState->puzzleData->getTokens();
 	}
 	else
 	{
@@ -57,20 +49,40 @@ void CipherStateLoadInitialState::onBeforeStateEnter(CipherState* cipherState)
 	
 	cipherState->loadCipherAtIndex(0);
 	this->spawnBlocks(cipherState);
+	
+	std::string displayDataType = cipherState->puzzleData->getDefaultDataType();
+
+	if (displayDataType == "dec" || displayDataType == "decimal")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Dec;
+	}
+	else if (displayDataType == "bin" || displayDataType == "binary")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Bin;
+	}
+	else if (displayDataType == "hex" || displayDataType == "hexadecimal")
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Hex;
+	}
+	else
+	{
+		cipherState->displayDataType = CipherEvents::DisplayDataType::Ascii;
+	}
+
+	this->defer([=]()
+	{
+		CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(cipherState->displayDataType));
+	});
 }
 
 void CipherStateLoadInitialState::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
-
-	this->runAction(Sequence::create(
-		DelayTime::create(0.1f),
-		CallFunc::create([=]()
-		{
-			CipherState::updateState(cipherState, CipherState::StateType::Neutral);
-		}),
-		nullptr
-	));
+	
+	this->defer([=]()
+	{
+		CipherState::updateState(cipherState, CipherState::StateType::Neutral);
+	});
 }
 
 void CipherStateLoadInitialState::onStateReload(CipherState* cipherState)
@@ -91,7 +103,7 @@ void CipherStateLoadInitialState::buildSpawnMap()
 
 		this->spawnMap[token] = [=](int index, int total)
 		{
-			this->spawnBlock(ImmediateBlock::create((unsigned char)(index)), index, total);
+			this->spawnBlock(ImmediateBlock::create((unsigned char)(std::stoi(token))), index, total);
 		};
 	}
 

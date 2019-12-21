@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/AttachedBehaviorDeserializer.h"
+#include "Engine/Deserializers/Properties/AttachedBehaviorDeserializer.h"
 
 class PlatformerAttachedBehaviorDeserializer : public AttachedBehaviorDeserializer
 {
@@ -14,5 +14,5 @@ private:
 	typedef AttachedBehaviorDeserializer super;
 
 	PlatformerAttachedBehaviorDeserializer();
-	~PlatformerAttachedBehaviorDeserializer();
+	virtual ~PlatformerAttachedBehaviorDeserializer();
 };

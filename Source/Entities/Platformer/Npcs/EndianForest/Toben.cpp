@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Toben.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Toben::Toben(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,
 	Size(112.0f, 160.0f),
-	1.05f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Toben::getHexusOpponentData();
@@ -48,7 +48,7 @@ Toben::~Toben()
 
 Vec2 Toben::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Toben::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Toben::getHexusOpponentData()
 	if (Toben::HexusOpponentDataInstance == nullptr)
 	{
 		Toben::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Toben_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Toben::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.009f,
 			HexusOpponentData::generateDeck(32, 0.009f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
@@ -79,8 +75,8 @@ HexusOpponentData* Toben::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

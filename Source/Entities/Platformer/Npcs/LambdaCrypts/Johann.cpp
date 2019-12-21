@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Johann.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Johann::~Johann()
 
 Vec2 Johann::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Johann::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Johann::getHexusOpponentData()
 	if (Johann::HexusOpponentDataInstance == nullptr)
 	{
 		Johann::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Johann_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Johann::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.866f,
 			HexusOpponentData::generateDeck(32, 0.866f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Johann::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

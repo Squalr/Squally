@@ -27,7 +27,7 @@ HackableObject::HackableObject() : HackableObject(ValueMap())
 {
 }
 
-HackableObject::HackableObject(const ValueMap& properties) : GameObject(properties)
+HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
 	this->dataList = std::vector<HackableData*>();
@@ -41,14 +41,13 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
-	this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
-
-	this->sensingParticles->stopSystem();
+	this->sensingParticlesNode = Node::create();
+	this->sensingParticles = nullptr;
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
 
-	this->uiElements->addChild(this->sensingParticles);
+	this->uiElements->addChild(this->sensingParticlesNode);
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
 	this->addChild(this->hackablesNode);
@@ -57,7 +56,6 @@ HackableObject::HackableObject(const ValueMap& properties) : GameObject(properti
 
 HackableObject::~HackableObject()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::onEnter()
@@ -71,16 +69,12 @@ void HackableObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->hackButton->setMouseClickCallback(CC_CALLBACK_0(HackableObject::onHackableClick, this));
+	this->hackButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		this->onHackableClick();
+	});
 
 	this->registerHackables();
-}
-
-void HackableObject::onExit()
-{
-	super::onExit();
-
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->uiElements));
 }
 
 void HackableObject::initializeListeners()
@@ -111,7 +105,7 @@ void HackableObject::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onSensingEnable(args->currentEq);
+			this->onSensingEnable(args->hackFlags);
 		}
 	}));
 
@@ -178,9 +172,9 @@ void HackableObject::toggleHackable(bool isHackable)
 	this->isHackable = isHackable;
 }
 
-void HackableObject::onHackerModeEnable(int eq)
+void HackableObject::onHackerModeEnable(int hackFlags)
 {
-	super::onHackerModeEnable(eq);
+	super::onHackerModeEnable(hackFlags);
 
 	if (!this->isHackable)
 	{
@@ -189,7 +183,7 @@ void HackableObject::onHackerModeEnable(int eq)
 
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
-		if ((*it)->getRequiredEq() > eq)
+		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
 		{
 			return;
 		}
@@ -208,25 +202,42 @@ void HackableObject::onHackerModeDisable()
 	this->hackButton->setVisible(false);
 }
 
-void HackableObject::onSensingEnable(int eq)
+void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 {
+	this->defer([=]()
+	{
+		ObjectEvents::TriggerReparentBind(ObjectEvents::ReparentBindArgs(this->uiElements, newParent));
+	});
+}
+
+void HackableObject::onSensingEnable(int hackFlags)
+{
+	if (!this->isHackable)
+	{
+		return;
+	}
+
 	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
 	{
-		if ((*it)->getRequiredEq() > eq)
+		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
 		{
 			return;
 		}
 	}
 
 	if (!this->hackableList.empty())
-	{	
-		this->sensingParticles->start();
+	{
+		this->getSensingParticles()->setVisible(true);
+		this->getSensingParticles()->start();
 	}
 }
 
 void HackableObject::onSensingDisable()
 {
-	this->sensingParticles->stopSystem();
+	if (this->sensingParticles != nullptr)
+	{
+		this->getSensingParticles()->stopSystem();
+	}
 }
 
 void HackableObject::registerHackables()
@@ -354,4 +365,18 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
+}
+
+ParticleSystem* HackableObject::getSensingParticles()
+{
+	if (this->sensingParticles == nullptr)
+	{
+		this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
+		this->sensingParticles->stopSystem();
+		this->sensingParticles->setVisible(false);
+
+		this->sensingParticlesNode->addChild(this->sensingParticles);
+	}
+	
+	return this->sensingParticles;
 }

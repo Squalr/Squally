@@ -13,26 +13,7 @@
 
 #include "Resources/PointerTraceResources.h"
 
-#include "Strings/PointerTrace/Hud/RegisterEax.h"
-#include "Strings/PointerTrace/Hud/RegisterEbp.h"
-#include "Strings/PointerTrace/Hud/RegisterEbx.h"
-#include "Strings/PointerTrace/Hud/RegisterEcx.h"
-#include "Strings/PointerTrace/Hud/RegisterEdi.h"
-#include "Strings/PointerTrace/Hud/RegisterEdx.h"
-#include "Strings/PointerTrace/Hud/RegisterEip.h"
-#include "Strings/PointerTrace/Hud/RegisterEsi.h"
-#include "Strings/PointerTrace/Hud/RegisterEsp.h"
-#include "Strings/PointerTrace/Hud/RegisterRax.h"
-#include "Strings/PointerTrace/Hud/RegisterRbp.h"
-#include "Strings/PointerTrace/Hud/RegisterRbx.h"
-#include "Strings/PointerTrace/Hud/RegisterRcx.h"
-#include "Strings/PointerTrace/Hud/RegisterRdi.h"
-#include "Strings/PointerTrace/Hud/RegisterRdx.h"
-#include "Strings/PointerTrace/Hud/RegisterRip.h"
-#include "Strings/PointerTrace/Hud/RegisterRsi.h"
-#include "Strings/PointerTrace/Hud/RegisterRsp.h"
-#include "Strings/PointerTrace/ShiftHint.h"
-#include "Strings/PointerTrace/TabHint.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

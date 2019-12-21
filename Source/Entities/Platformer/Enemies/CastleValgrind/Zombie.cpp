@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Zombie.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Zombie::~Zombie()
 
 Vec2 Zombie::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Zombie::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Zombie::getHexusOpponentData()
 	if (Zombie::HexusOpponentDataInstance == nullptr)
 	{
 		Zombie::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Zombie_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zombie::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -110,7 +107,7 @@ HexusOpponentData* Zombie::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -126,7 +123,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -137,8 +134,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

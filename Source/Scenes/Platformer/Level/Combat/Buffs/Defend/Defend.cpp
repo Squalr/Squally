@@ -4,14 +4,9 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Physics/CollisionObject.h"
-#include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 
 #include "Resources/FXResources.h"
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -26,9 +21,10 @@ Defend* Defend::create(PlatformerEntity* caster)
 	return instance;
 }
 
-Defend::Defend(PlatformerEntity* caster) : super(caster, caster)
+Defend::Defend(PlatformerEntity* caster) : super(caster, caster, BuffData("defend-skill"))
 {
-	this->defendEffect = SmartAnimationSequenceNode::create(FXResources::EnergyCircle_EnergyCircle_0000);
+	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
+	this->resetCount = 0;
 
 	this->addChild(this->defendEffect);
 }
@@ -40,25 +36,44 @@ Defend::~Defend()
 void Defend::onEnter()
 {
 	super::onEnter();
-
-	this->defendEffect->playAnimationRepeat(FXResources::EnergyCircle_EnergyCircle_0000, 0.05f);
 }
 
 void Defend::initializePositions()
 {
 	super::initializePositions();
+
+	this->defendEffect->setPosition(this->caster->getEntityCenterPoint());
+
+	this->defendEffect->runAction(RepeatForever::create(Sequence::create(
+		ScaleTo::create(0.5f, 0.95f),
+		ScaleTo::create(0.5f, 1.0f),
+		nullptr
+	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Defend::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback);
+	super::onBeforeDamageTaken(damageOrHealing, blocked, handleCallback);
 
-	*damageOrHealing = std::round(float(*damageOrHealing) * Defend::DamageReduction);
+	*blocked = true;
+	*damageOrHealing = int(std::floor(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
+
+	this->onDamageTakenOrCycle(true);
 }
 
 void Defend::onTimelineReset(bool wasInterrupt)
 {
 	super::onTimelineReset(wasInterrupt);
 
-	this->removeBuff();
+	this->resetCount++;
+	this->onDamageTakenOrCycle(false);
+}
+
+
+void Defend::onDamageTakenOrCycle(bool isDamage)
+{
+	if (isDamage || this->resetCount >= 2)
+	{
+		this->removeBuff();
+	}
 }

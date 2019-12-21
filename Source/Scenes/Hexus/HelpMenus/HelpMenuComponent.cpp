@@ -27,7 +27,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Exit.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -151,7 +151,7 @@ void HelpMenuComponent::openMenu(Card* card)
         return;
     }
 
-    switch (card->cardData->cardType)
+    switch (card->cardData->getCardType())
     {
         case CardData::CardType::Binary:
         case CardData::CardType::Decimal:

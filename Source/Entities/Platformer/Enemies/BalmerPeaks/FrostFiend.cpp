@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/FrostFiend.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* FrostFiend::getHexusOpponentData()
 	if (FrostFiend::HexusOpponentDataInstance == nullptr)
 	{
 		FrostFiend::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_FrostFiend_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			FrostFiend::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -141,8 +138,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

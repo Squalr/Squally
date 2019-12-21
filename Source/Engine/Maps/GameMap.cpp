@@ -38,9 +38,6 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
-	// Initialize in constructor to pick up early object spawn events
-	this->initializeListeners();
-
 	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
 	{
 		this->addChild(*it);
@@ -158,7 +155,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		const float EdgeThickness = 256.0f;
 
 		CollisionObject* topCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
-		CollisionObject* bottomCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* bottomCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, false, false);
 		CollisionObject* leftCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
 		CollisionObject* rightCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
 

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Matu.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Matu::~Matu()
 
 Vec2 Matu::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Matu::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Matu::getHexusOpponentData()
 	if (Matu::HexusOpponentDataInstance == nullptr)
 	{
 		Matu::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Matu_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Matu::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.045f,
 			HexusOpponentData::generateDeck(32, 0.045f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -82,8 +78,8 @@ HexusOpponentData* Matu::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/GlobalScene.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -20,6 +20,7 @@ class StateSourceCardStaged;
 class StateDraw;
 class StateDrawInitial;
 class StateGameEnd;
+class StateGameExit;
 class StateLoadInitialState;
 class StateGameStart;
 class StateNeutral;
@@ -59,42 +60,34 @@ class RowTotals;
 class ScoreTotal;
 class DebugDisplay;
 
-class TutorialAIntroSequence;
-class TutorialAVictory;
-class TutorialAWinningRound;
-class TutorialBIntroSequence;
-class TutorialCIntroSequence;
-class TutorialDIntroSequence;
-class TutorialEIntroSequence;
-class TutorialFIntroSequence;
-
 class Avatars;
 class CardPreviewComponent;
+class Deck;
 class AssemblyHelpText;
 class StagingHelperText;
 class GameState;
 class HexusOpponentData;
 class HelpMenuComponent;
-class PauseMenu;
-class OptionsMenu;
-class ConfirmationMenu;
 class Music;
 
-class Hexus : public GlobalScene
+class Hexus : public SmartNode
 {
 public:
-	static Hexus* create(HexusOpponentData* opponentData);
+	static Hexus* create();
+
+	void open(HexusOpponentData* opponentData);
 
 private:
-	typedef GlobalScene super;
-	Hexus(HexusOpponentData* opponentData);
+	typedef SmartNode super;
+	Hexus();
 	~Hexus();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void startGame(HexusOpponentData* opponentData);
-	void openPauseMenu();
+
+	void buildEnemyDeck(HexusOpponentData* opponentData);
+	void buildPlayerDeck();
 
 	GameState* gameState;
 	cocos2d::Sprite* gameBackground;
@@ -116,6 +109,7 @@ private:
 	StateDraw* stateDraw;
 	StateDrawInitial* stateDrawInitial;
 	StateGameEnd* stateGameEnd;
+	StateGameExit* stateGameExit;
 	StateLoadInitialState* stateLoadInitialState;
 	StateGameStart* stateGameStart;
 	StateNeutral* stateNeutral;
@@ -156,22 +150,11 @@ private:
 	ScoreTotal* scoreTotal;
 	DebugDisplay* debugDisplay;
 
-	TutorialAIntroSequence* tutorialAIntroSequence;
-	TutorialAVictory* tutorialAVictory;
-	TutorialAWinningRound* tutorialAWinningRound;
-	TutorialBIntroSequence* tutorialBIntroSequence;
-	TutorialCIntroSequence* tutorialCIntroSequence;
-	TutorialDIntroSequence* tutorialDIntroSequence;
-	TutorialEIntroSequence* tutorialEIntroSequence;
-	TutorialFIntroSequence* tutorialFIntroSequence;
-
+	cocos2d::Node* tutorialLayer;
 	cocos2d::Node* relocateLayer;
 
 	cocos2d::LayerColor* menuBackDrop;
 	HelpMenuComponent* helpMenuComponent;
-	PauseMenu* pauseMenu;
-	OptionsMenu* optionsMenu;
-	ConfirmationMenu* confirmationMenu;
 
 	Music* musicA;
 	Music* musicB;

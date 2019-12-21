@@ -18,9 +18,7 @@
 #include "Resources/PointerTraceResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/PointerTrace/Victory.h"
-#include "Strings/Menus/Retry.h"
-#include "Strings/Menus/Leave.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -73,5 +71,5 @@ void VictoryMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents::NavigateBack(); } );
+	// this->leaveButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { NavigationEvents::NavigateBack(); } );
 }

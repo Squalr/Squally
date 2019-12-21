@@ -4,87 +4,16 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerEntities.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
 StatsTables* StatsTables::instance = nullptr;
-const std::map<int, int> StatsTables::HealthGain =
-{
-	{ 1, 2 },
-	{ 2, 2 },
-	{ 3, 2 },
-	{ 4, 2 },
-	{ 5, 2 },
-	{ 6, 3 },
-	{ 7, 3 },
-	{ 8, 3 },
-	{ 9, 3 },
-	{ 10, 3 },
-	{ 11, 4 },
-	{ 12, 4 },
-	{ 13, 4 },
-	{ 14, 4 },
-	{ 15, 5 },
-	{ 16, 5 },
-	{ 17, 5 },
-	{ 18, 5 },
-	{ 19, 5 },
-	{ 20, 5 }
-};
-
-const std::map<int, int> StatsTables::ManaGain =
-{
-	{ 1, 1 },
-	{ 2, 1 },
-	{ 3, 1 },
-	{ 4, 1 },
-	{ 5, 1 },
-	{ 6, 1 },
-	{ 7, 1 },
-	{ 8, 1 },
-	{ 9, 1 },
-	{ 10, 1 },
-	{ 11, 2 },
-	{ 12, 2 },
-	{ 13, 2 },
-	{ 14, 2 },
-	{ 15, 2 },
-	{ 16, 2 },
-	{ 17, 2 },
-	{ 18, 2 },
-	{ 19, 2 },
-	{ 20, 2 }
-};
-
-const std::map<int, int> StatsTables::ExpRequired =
-{
-	{ 1, 64 },
-	{ 2, 640 },
-	{ 3, 1024 },
-	{ 4, 1528 },
-	{ 5, 2048 },
-	{ 6, 3072 },
-	{ 7, 3584 },
-	{ 8, 4096 },
-	{ 9, 4608 },
-	{ 10, 5120 },
-	{ 11, 5632 },
-	{ 12, 6144 },
-	{ 13, 6656 },
-	{ 14, 7168 },
-	{ 15, 7680 },
-	{ 16, 8192 },
-	{ 17, 8704 },
-	{ 18, 9216 },
-	{ 19, 9728 },
-	{ 20, 10240 }
-};
-
 std::map<std::string, StatsTables::Stats> StatsTables::StatsTable = std::map<std::string, StatsTables::Stats>();
 
 const int StatsTables::FallbackExp = 666;
-const int StatsTables::FallbackMana = 666;
-const int StatsTables::FallbackHealth = 666;
+const int StatsTables::FallbackMana = 69;
+const int StatsTables::FallbackHealth = 420;
 
 void StatsTables::registerGlobalNode()
 {
@@ -103,7 +32,85 @@ StatsTables* StatsTables::getInstance()
 
 StatsTables::StatsTables()
 {
-	StatsTables::StatsTable[Squally::MapKeySqually] = Stats(16, 8, 32);
+	// SQUALLY
+	StatsTables::StatsTable[Squally::MapKeySqually] = Stats(16, 8, 48, 
+	{
+		{ 2, 1, 64 },
+		{ 2, 1, 128 },
+		{ 2, 1, 192 },
+		{ 2, 1, 368 },
+		{ 2, 1, 368 },
+		{ 2, 1, 512 },
+		{ 3, 2, 768 },
+		{ 3, 2, 1024 },
+		{ 3, 2, 1536 },
+		{ 3, 2, 2048 },
+		{ 3, 2, 3072 },
+		{ 4, 3, 4096 },
+		{ 4, 3, 5120 },
+		{ 4, 3, 6144 },
+		{ 4, 3, 6656 },
+		{ 5, 4, 7168 },
+		{ 5, 4, 7680 },
+		{ 5, 4, 8192 },
+		{ 5, 4, 8704 },
+		{ 5, 4, 9216 },
+		{ 5, 4, 9728 },
+		{ 5, 4, 10240 }
+	});
+
+	// HELPERS
+	StatsTables::StatsTable[Guano::MapKeyGuano] = Stats(16, 8, 48, 
+	{
+		{ 2, 1, 64 },
+		{ 2, 1, 128 },
+		{ 2, 1, 192 },
+		{ 2, 1, 368 },
+		{ 2, 1, 368 },
+		{ 2, 1, 512 },
+		{ 3, 2, 768 },
+		{ 3, 2, 1024 },
+		{ 3, 2, 1536 },
+		{ 3, 2, 2048 },
+		{ 3, 2, 3072 },
+		{ 4, 3, 4096 },
+		{ 4, 3, 5120 },
+		{ 4, 3, 6144 },
+		{ 4, 3, 6656 },
+		{ 5, 4, 7168 },
+		{ 5, 4, 7680 },
+		{ 5, 4, 8192 },
+		{ 5, 4, 8704 },
+		{ 5, 4, 9216 },
+		{ 5, 4, 9728 },
+		{ 5, 4, 10240 }
+	});
+
+	StatsTables::StatsTable[Turtle::MapKeyTurtle] = Stats(16, 8, 32, 
+	{
+		{ 2, 1, 64 },
+		{ 2, 1, 128 },
+		{ 2, 1, 192 },
+		{ 2, 1, 368 },
+		{ 2, 1, 368 },
+		{ 2, 1, 512 },
+		{ 3, 2, 768 },
+		{ 3, 2, 1024 },
+		{ 3, 2, 1536 },
+		{ 3, 2, 2048 },
+		{ 3, 2, 3072 },
+		{ 4, 3, 4096 },
+		{ 4, 3, 5120 },
+		{ 4, 3, 6144 },
+		{ 4, 3, 6656 },
+		{ 5, 4, 7168 },
+		{ 5, 4, 7680 },
+		{ 5, 4, 8192 },
+		{ 5, 4, 8704 },
+		{ 5, 4, 9216 },
+		{ 5, 4, 9728 },
+		{ 5, 4, 10240 }
+	});
 	
 	StatsTables::StatsTable[Cryogen::MapKeyCryogen] = Stats(16, 8, 32);
 	StatsTables::StatsTable[FrostFiend::MapKeyFrostFiend] = Stats(16, 8, 32);
@@ -194,15 +201,13 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[GoblinGruntBoar::MapKeyGoblinGruntBoar] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinShaman::MapKeyGoblinShaman] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinWarriorPig::MapKeyGoblinWarriorPig] = Stats(16, 8, 32);
-	StatsTables::StatsTable[KingGrogg::MapKeyKingGrogg] = Stats(16, 8, 32);
+	StatsTables::StatsTable[KingGrogg::MapKeyKingGrogg] = Stats(32, 8, 32);
 	StatsTables::StatsTable[Ogre::MapKeyOgre] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcBomber::MapKeyOrcBomber] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcGrunt::MapKeyOrcGrunt] = Stats(11, 8, 32);
-	StatsTables::StatsTable[OrcSwordsman::MapKeyOrcSwordsman] = Stats(16, 8, 32);
+	StatsTables::StatsTable[OrcSwordsman::MapKeyOrcSwordsman] = Stats(21, 8, 32);
 	StatsTables::StatsTable[OrcWarrior::MapKeyOrcWarrior] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Troll::MapKeyTroll] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Guano::MapKeyGuano] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Turtle::MapKeyTurtle] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Troll::MapKeyTroll] = Stats(12, 8, 32);
 	StatsTables::StatsTable[Appolo::MapKeyAppolo] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Ara::MapKeyAra] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Bard::MapKeyBard] = Stats(16, 8, 32);
@@ -329,69 +334,28 @@ StatsTables::~StatsTables()
 {
 }
 
-int StatsTables::getHealthGainAtLevel(int level)
+int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::HealthGain.find(level) != StatsTables::HealthGain.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::HealthGain.at(level);
-	}
-	
-	return 0;
-}
+		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
+		int exp = stats.exp;
+		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
 
-int StatsTables::getHealthGainAtNewLevel(int newLevel)
-{
-	return StatsTables::getHealthGainAtLevel(newLevel - 1);
-}
+		for (int index = 0; index < levelIndex; index++)
+		{
+			exp += std::get<0>(stats.increments[index]);	
+		}
 
-int StatsTables::getManaGainAtLevel(int level)
-{
-	if (StatsTables::ManaGain.find(level) != StatsTables::ManaGain.end())
-	{
-		return StatsTables::ManaGain.at(level);
-	}
-	
-	return 0;
-}
-
-int StatsTables::getManaGainAtNewLevel(int newLevel)
-{
-	return StatsTables::getManaGainAtLevel(newLevel - 1);
-}
-
-int StatsTables::getExpRequiredAtLevel(int level)
-{
-	if (StatsTables::ExpRequired.find(level) != StatsTables::ExpRequired.end())
-	{
-		return StatsTables::ExpRequired.at(level);
-	}
-	
-	return 0;
-}
-
-int StatsTables::getExpNeededUntilLevel(int currentLevel, int currentExp, int level)
-{
-	currentLevel = MathUtils::clamp(currentLevel, 0, currentLevel);
-	level = MathUtils::clamp(level, 0, StatsTables::ExpRequired.size());
-
-	if (currentLevel >= level)
-	{
-		return 0;
+		return exp;
 	}
 
-	int expRequired = 0;
-
-	while (currentLevel < level)
-	{
-		expRequired += StatsTables::getExpRequiredAtLevel(currentLevel++);
-	}
-
-	return expRequired;
+	return StatsTables::FallbackExp;
 }
 
 int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
 	{
 		return StatsTables::StatsTable[platformerEntity->getEntityKey()].exp;
 	}
@@ -401,9 +365,18 @@ int StatsTables::getKillExp(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::StatsTable[platformerEntity->getEntityKey()].mana;
+		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
+		int mana = stats.mana;
+		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+
+		for (int index = 0; index < levelIndex; index++)
+		{
+			mana += std::get<0>(stats.increments[index]);	
+		}
+
+		return mana;
 	}
 
 	return StatsTables::FallbackMana;
@@ -411,9 +384,18 @@ int StatsTables::getBaseMana(PlatformerEntity* platformerEntity)
 
 int StatsTables::getBaseHealth(PlatformerEntity* platformerEntity)
 {
-	if (StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
+	if (platformerEntity != nullptr && StatsTables::StatsTable.find(platformerEntity->getEntityKey()) != StatsTables::StatsTable.end())
 	{
-		return StatsTables::StatsTable[platformerEntity->getEntityKey()].health;
+		Stats stats = StatsTables::StatsTable[platformerEntity->getEntityKey()];
+		int health = stats.health;
+		int levelIndex = std::min(platformerEntity->getStateOrDefaultInt(StateKeys::Eq, 1), int(stats.increments.size())) - 1;
+
+		for (int index = 0; index < levelIndex; index++)
+		{
+			health += std::get<0>(stats.increments[index]);	
+		}
+
+		return health;
 	}
 
 	return StatsTables::FallbackHealth;

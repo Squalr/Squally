@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Turtle.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Turtle::~Turtle()
 
 Vec2 Turtle::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Turtle::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Turtle::getHexusOpponentData()
 	if (Turtle::HexusOpponentDataInstance == nullptr)
 	{
 		Turtle::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_EndianForest_Turtle_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			0.3f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Turtle::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Turtle::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

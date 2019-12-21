@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="35" nextobjectid="553">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="music" value="Music/TrickOrTreat.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="3" name="decor -4096">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="460" name="Generic/Background/Moon" type="decor" x="4364.7" y="768.939" width="812" height="812"/>
+ </objectgroup>
+ <objectgroup id="5" name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="461" name="Generic/Background/Cloud_01" type="decor" x="4846.82" y="629.364" width="1380" height="1000"/>
+  <object id="462" name="Generic/Background/Cloud_03" type="decor" x="3829" y="1073.61" width="780" height="274"/>
+ </objectgroup>
+ <objectgroup id="7" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="489" name="Forest/Background/Forest3" type="decor" x="307.845" y="3149.53" width="10000" height="941">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="490" name="Forest/Background/Forest2" type="decor" x="193.697" y="2938.91" width="10000" height="920">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="491" name="Forest/Background/Forest1" type="decor" x="302.909" y="3095.32" width="10000" height="816">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="background mist">
+  <properties>
+   <property name="background" value="Mist"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="477" name="Generic/Background/Cloud_05" type="decor" x="5236.79" y="1669.3" width="864" height="177"/>
+  <object id="478" name="Generic/Background/Cloud_02" type="decor" x="3636.24" y="1637.56" width="570" height="271"/>
+ </objectgroup>
+ <objectgroup id="16" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="549" name="blue-grass" type="terrain" x="5213.84" y="2411.35">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="552" name="blue-grass" type="terrain" x="3772" y="2408">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="17" name="entities -2">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="532" name="combat-spawn" type="object" x="4013.61" y="2314.66" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="533" name="combat-spawn" type="object" x="5451.61" y="2319.34" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="547" name="blue-grass" type="terrain" x="4904.36" y="2499.46">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="548" name="blue-grass" type="terrain" x="4074.79" y="2501.61">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="19" name="entities -1">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="536" name="combat-spawn" type="object" x="5155.34" y="2405.05" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="537" name="combat-spawn" type="object" x="4370.07" y="2411.88" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="terrain">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="546" name="blue-grass" type="terrain" x="5132.17" y="2574.68">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="518" name="combat-spawn" type="object" x="5371.27" y="2500.67" width="78.7879" height="88">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="4711.58" y="2226.12" width="170.788" height="172"/>
+ </objectgroup>
+ <objectgroup id="24" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="26" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="27" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="5368.97" y="2439.64" width="270" height="748"/>
+  <object id="494" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="3476.5" y="1823.5" width="2731" height="265">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="495" name="Forest/Foreground/ShadowVine2" type="decor" x="4608" y="1987.5" width="340" height="135"/>
+  <object id="496" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="3160.5" y="1825.5" width="2731" height="265">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="decor 512" visible="0">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="4339.7" y="2422.61" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="4682.85" y="2481.64" width="242" height="738"/>
+  <object id="463" name="Forest/Foreground/Grass1" type="decor" x="4187.61" y="2487.61" width="1920" height="306"/>
+ </objectgroup>
+</map>

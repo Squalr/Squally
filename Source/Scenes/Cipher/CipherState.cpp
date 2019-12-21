@@ -46,7 +46,6 @@ CipherState::CipherState()
 	this->connectionContent = Node::create();
 	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
 	this->puzzleData = nullptr;
-	this->isHardMode = false;
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 
 	for (int index = 0; index < Config::MaxInputOutputCount; index++)
@@ -138,16 +137,16 @@ void CipherState::initializeListeners()
 	}));
 }
 
-void CipherState::onDeveloperModeEnable()
+void CipherState::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->gameAreaDebug->setVisible(true);
 }
 
 void CipherState::onDeveloperModeDisable()
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeDisable();
 
 	this->gameAreaDebug->setVisible(false);
 }
@@ -163,8 +162,6 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		case StateType::GameStart:
 		{
 			cipherState->gameStartTime = std::chrono::high_resolution_clock::now();
-
-			CipherEvents::TriggerChangeDisplayDataType(CipherEvents::CipherChangeDisplayDataTypeArgs(cipherState->displayDataType));
 			break;
 		}
 		case StateType::GameEnd:
@@ -180,6 +177,7 @@ void CipherState::updateState(CipherState* cipherState, StateType newState)
 		}
 	}
 
+	CipherEvents::TriggerBeforeRequestStateUpdate(cipherState);
 	CipherEvents::TriggerRequestStateUpdate(cipherState);
 	CipherEvents::TriggerBeforeStateUpdate(cipherState);
 	CipherEvents::TriggerOnStateUpdate(cipherState);
@@ -189,10 +187,8 @@ void CipherState::clearInteraction()
 {
 }
 
-void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode)
+void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData)
 {
-	this->isHardMode = isHardMode;
-
 	if (this->puzzleData != nullptr)
 	{
 		this->removeChild(this->puzzleData);
@@ -207,14 +203,9 @@ void CipherState::loadPuzzleData(CipherPuzzleData* puzzleData, bool isHardMode)
 
 void CipherState::loadCipherAtIndex(int index)
 {
-	if (index >= 0 && index < this->inputOutputMap.size())
+	if (index >= 0 && index < int(this->inputOutputMap.size()))
 	{
 		this->currentInput = std::get<0>(this->inputOutputMap[index]);
 		this->currentOutput = std::get<1>(this->inputOutputMap[index]);
 	}
-}
-
-bool CipherState::isHardModeEnabled()
-{
-	return this->isHardMode;
 }

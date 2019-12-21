@@ -8,6 +8,7 @@ class ClickableNode;
 class PlatformerFriendly : public PlatformerEntity
 {
 public:
+	static const std::string PlatformerFriendlyTag;
 
 protected:
 	PlatformerFriendly(cocos2d::ValueMap& properties,
@@ -17,10 +18,7 @@ protected:
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
-		float hoverHeight = 0.0f,
-		std::string inventorySaveKey = "",
-		std::string equipmentSaveKey = "",
-		std::string currencySaveKey = "");
+		float hoverHeight = 0.0f);
 	virtual ~PlatformerFriendly();
 
 private:

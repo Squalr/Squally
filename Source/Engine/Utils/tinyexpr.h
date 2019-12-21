@@ -62,14 +62,14 @@ typedef struct te_variable {
 
 /* Parses the input expression, evaluates it, and frees it. */
 /* Returns NaN on error. */
-int te_interp(const char *expression, int *error);
+unsigned char te_interp(const char *expression, int *error);
 
 /* Parses the input expression and binds variables. */
 /* Returns NULL on error. */
 te_expr *te_compile(const char *expression, const te_variable *variables, int var_count, int *error);
 
 /* Evaluates the expression. */
-int te_eval(const te_expr *n);
+unsigned char te_eval(const te_expr *n);
 
 /* Prints debugging information on the syntax tree. */
 void te_print(const te_expr *n);

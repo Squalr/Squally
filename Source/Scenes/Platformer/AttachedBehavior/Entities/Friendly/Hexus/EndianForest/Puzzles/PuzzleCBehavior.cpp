@@ -1,0 +1,130 @@
+#include "PuzzleCBehavior.h"
+
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
+#include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/StateOverride.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+
+#include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
+
+using namespace cocos2d;
+
+const std::string PuzzleCBehavior::MapKeyAttachedBehavior = "puzzle-C";
+
+PuzzleCBehavior* PuzzleCBehavior::create(GameObject* owner)
+{
+	PuzzleCBehavior* instance = new PuzzleCBehavior(owner);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+PuzzleCBehavior::PuzzleCBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort2, Strings::Platformer_Dialogue_Hexus_IAcceptYourChallenge::create())
+{
+}
+
+PuzzleCBehavior::~PuzzleCBehavior()
+{
+}
+
+MinMaxPool* PuzzleCBehavior::generateReward()
+{
+	return HexusPoolEFGeneric::create();
+}
+
+std::string PuzzleCBehavior::getWinLossSaveKey()
+{
+	return PuzzleCBehavior::MapKeyAttachedBehavior;
+}
+
+std::string PuzzleCBehavior::getBackgroundResource()
+{
+	return HexusResources::Menus_HexusFrameCastleValgrind;
+}
+
+std::vector<CardData*> PuzzleCBehavior::generateDeck()
+{
+	return HexusOpponentData::generateDeck(25, 1.0f,
+	{
+	});;
+}
+
+StateOverride* PuzzleCBehavior::getStateOverride()
+{
+	return StateOverride::create(
+		// Player losses
+		1,
+		// Enemy losses
+		1,
+		// Player's turn
+		true,
+		// Player passed
+		true,
+		// Enemy passed
+		true,
+		// Player deck
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy deck
+		std::vector<CardData*>
+		{
+			
+		},
+		// Player hand
+		std::vector<CardData*>
+		{
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+		},
+		// Enemy hand
+		std::vector<CardData*>
+		{
+			
+		},
+		// Player binary cards
+		std::vector<CardData*>
+		{
+		},
+		// Player decimal cards
+		std::vector<CardData*>
+		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+		},
+		// Player hex cards
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy binary cards
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy decimal cards
+		std::vector<CardData*>
+		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+		},
+		// Enemy hex cards
+		std::vector<CardData*>
+		{
+		}
+	);
+}
+
+std::vector<TutorialBase*> PuzzleCBehavior::getTutorials()
+{
+	return { TutorialPuzzleC::create() };
+}

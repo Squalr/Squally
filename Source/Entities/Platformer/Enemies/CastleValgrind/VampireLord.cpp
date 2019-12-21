@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/VampireLord.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 	if (VampireLord::HexusOpponentDataInstance == nullptr)
 	{
 		VampireLord::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_VampireLord_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -160.0f),
 			VampireLord::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,12 +97,12 @@ HexusOpponentData* VampireLord::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -131,25 +128,24 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+				}
 			)
 		);
 	}

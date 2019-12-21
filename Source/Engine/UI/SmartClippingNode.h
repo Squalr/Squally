@@ -23,7 +23,7 @@ protected:
 	~SmartClippingNode();
 
 	void onEnter() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	
 private:

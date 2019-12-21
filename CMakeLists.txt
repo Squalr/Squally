@@ -21,12 +21,14 @@ endif()
 ###############################################################################
 
 # Fix curl dependencies for static linking
+if(LINUX)
 target_link_libraries(CURL::libcurl INTERFACE
     $<$<NOT:$<PLATFORM_ID:Windows>>:OpenSSL::SSL>
     $<$<NOT:$<PLATFORM_ID:Windows>>:OpenSSL::Crypto>
     $<$<PLATFORM_ID:Windows>:ws2_32>
     $<$<PLATFORM_ID:Windows>:crypt32>
 )
+endif()
 
 # Fix rapidjson target
 add_library(RapidJSON INTERFACE)

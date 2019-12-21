@@ -16,12 +16,12 @@
 #include "Engine/Konami/KSequence.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/SquallyBehaviorGroup.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -58,11 +58,11 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->fireRingAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
-	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
-	this->thrusterSound = Sound::create(SoundResources::Platformer_Objects_LowFlame);
-	this->enterAtmosphereSound = Sound::create(SoundResources::Platformer_Objects_WooshRough);
-	this->crashSound = Sound::create(SoundResources::Platformer_Objects_Crash);
-	this->fireSound = Sound::create(SoundResources::Platformer_Environment_Fire);
+	this->lightningSound = WorldSound::create(SoundResources::Hexus_Attacks_Energy);
+	this->thrusterSound = WorldSound::create(SoundResources::Platformer_Objects_LowFlame);
+	this->enterAtmosphereSound = WorldSound::create(SoundResources::Platformer_Objects_WooshRough);
+	this->crashSound = WorldSound::create(SoundResources::Platformer_Objects_Crash);
+	this->fireSound = WorldSound::create(SoundResources::Platformer_Environment_Fire);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 
@@ -84,13 +84,16 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->setFlippedX(true);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
-	this->fireSound->toggleCameraDistanceFade(true);
 	this->shipCollision->setGravityEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
 	this->ship->addChild(this->fireRingAnimation);
 	this->ship->addChild(this->fireAnimation);
 	this->ship->addChild(this->thrustAnimation);
+	this->ship->addChild(this->lightningSound);
+	this->ship->addChild(this->thrusterSound);
+	this->ship->addChild(this->enterAtmosphereSound);
+	this->ship->addChild(this->crashSound);
 	this->shipContainer->addChild(this->shipFireAnimation);
 	this->shipContainer->addChild(this->smokeAnimation);
 	this->shipContainer->addChild(this->ship);
@@ -100,10 +103,6 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->shipCollision->addChild(this->groundFireSmallAnimation);
 	this->shipCollision->addChild(this->shipContainer);
 	this->addChild(this->shipCollision);
-	this->addChild(this->lightningSound);
-	this->addChild(this->thrusterSound);
-	this->addChild(this->enterAtmosphereSound);
-	this->addChild(this->crashSound);
 	this->addChild(this->skipSequence);
 }
 

@@ -7,9 +7,19 @@ class LocalizedString;
 class Binary0 : public HexusCard
 {
 public:
+	static Binary0* create();
+
+	Item* clone() override;
+	std::string getItemName() override;
+	LocalizedString* getString() override;
+	std::string getIconResource() override;
+	std::string getSerializationKey() override;
+	std::string getCardKey() override;
+
+	static const std::string SaveKeyBinary0;
 
 protected:
-	Binary0(CurrencyInventory* cost);
+	Binary0();
 	~Binary0();
 
 private:

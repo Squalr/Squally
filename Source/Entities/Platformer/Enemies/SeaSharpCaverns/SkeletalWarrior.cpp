@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/SkeletalWarrior.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ SkeletalWarrior::~SkeletalWarrior()
 
 Vec2 SkeletalWarrior::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* SkeletalWarrior::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 	if (SkeletalWarrior::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* SkeletalWarrior::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,10 +133,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+				}
 			)
 		);
 	}

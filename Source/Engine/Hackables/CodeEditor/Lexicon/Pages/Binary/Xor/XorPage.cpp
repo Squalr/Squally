@@ -8,8 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Binary/Xor.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Binary/Xor/Intro.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

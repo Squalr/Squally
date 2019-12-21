@@ -13,12 +13,12 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -47,7 +47,7 @@ Tent::Tent(ValueMap& properties) : super(properties)
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
-	this->healSound = Sound::create(SoundResources::Platformer_Attacks_Spells_Heal4);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
 	this->isAnimating = false;
 	
 	this->addChild(this->healCollision);
@@ -104,7 +104,7 @@ void Tent::initializeListeners()
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
 			squally->setState(StateKeys::Health, squally->getStateOrDefault(StateKeys::MaxHealth, Value(0)));
-		}));
+		}), Squally::MapKeySqually);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

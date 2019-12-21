@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/TigerMan.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 	if (TigerMan::HexusOpponentDataInstance == nullptr)
 	{
 		TigerMan::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-16.0f, -212.0f),
 			TigerMan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,8 +97,8 @@ HexusOpponentData* TigerMan::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -127,8 +124,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -139,8 +136,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

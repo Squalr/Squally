@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Cryogen.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Cryogen::getHexusOpponentData()
 	if (Cryogen::HexusOpponentDataInstance == nullptr)
 	{
 		Cryogen::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -232.0f),
 			Cryogen::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,9 +97,9 @@ HexusOpponentData* Cryogen::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -113,8 +110,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -130,8 +127,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -142,11 +139,10 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
+				}
 			)
 		);
 	}

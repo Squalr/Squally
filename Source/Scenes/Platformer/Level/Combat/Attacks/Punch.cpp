@@ -7,7 +7,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Attacks/Punch.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -22,7 +22,7 @@ Punch* Punch::create(float attackDuration, float recoverDuration)
 
 Punch::Punch(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_Punch, 0.5f, -3, -5, 0, attackDuration, recoverDuration)
 {
-	this->punchSound = Sound::create(SoundResources::Platformer_Attacks_Physical_Punches_Punch7);
+	this->punchSound = Sound::create(SoundResources::Platformer_Combat_Attacks_Physical_Punches_Punch7);
 
 	this->addChild(this->punchSound);
 }
@@ -49,9 +49,14 @@ void Punch::onAttackTelegraphBegin()
 	this->punchSound->play(false, this->attackDuration / 2.0f);
 }
 
+void Punch::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+{
+	this->doDamageOrHealing(owner, target);
+}
+
 void Punch::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)
 {
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamageOrHealing()));
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }

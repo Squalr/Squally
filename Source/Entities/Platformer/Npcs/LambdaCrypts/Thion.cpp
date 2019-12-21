@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Thion.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Thion::~Thion()
 
 Vec2 Thion::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Thion::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Thion::getHexusOpponentData()
 	if (Thion::HexusOpponentDataInstance == nullptr)
 	{
 		Thion::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Thion_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Thion::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.857f,
 			HexusOpponentData::generateDeck(32, 0.857f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Thion::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

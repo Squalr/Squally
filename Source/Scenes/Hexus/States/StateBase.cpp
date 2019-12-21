@@ -3,6 +3,8 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Events/HexusEvents.h"
+
 using namespace cocos2d;
 
 StateBase::StateBase(GameState::StateType stateType)
@@ -18,13 +20,18 @@ void StateBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* requestStateUpdateListener = EventListenerCustom::create(GameState::RequestStateUpdateEvent, CC_CALLBACK_1(StateBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateUpdateListener = EventListenerCustom::create(GameState::BeforeStateUpdateEvent, CC_CALLBACK_1(StateBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* onStateUpdateListener = EventListenerCustom::create(GameState::OnStateUpdateEvent, CC_CALLBACK_1(StateBase::onStateChangeEvent, this));
-
-	this->addEventListener(requestStateUpdateListener);
-	this->addEventListener(beforeStateUpdateListener);
-	this->addEventListener(onStateUpdateListener);
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onRequestStateChangeEvent(eventCustom);
+	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onBeforeStateChangeEvent(eventCustom);
+	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onStateChangeEvent(eventCustom);
+	}));
 }
 
 void StateBase::onRequestStateChangeEvent(EventCustom* eventCustom)

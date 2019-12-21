@@ -5,19 +5,20 @@
 
 using namespace cocos2d;
 
-const std::string CipherEvents::EventOpenCipher = "EVENT_OPEN_CIPHER";
-const std::string CipherEvents::EventExitCipher = "EVENT_EXIT_CIPHER";
-const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_REQUEST_BLOCK_SPAWN";
-const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_REQUEST_CONNECTION_SPAWN";
-const std::string CipherEvents::EventConnectionUpdated = "EVENT_CONNECTION_UPDATED";
-const std::string CipherEvents::EventConnectionDestroy = "EVENT_CONNECTION_DESTROY";
-const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CHANGE_ACTIVE_CIPHER";
-const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CHANGE_DISPLAY_DATA_TYPE";
-const std::string CipherEvents::EventOpenAsciiTable = "EVENT_OPEN_ASCII_TABLE";
-const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_TRY_UNLOCK_CURRENT_CIPHER";
-const std::string CipherEvents::EventRequestStateUpdate = "EVENT_REQUEST_STATE_UPDATE";
-const std::string CipherEvents::EventBeforeStateUpdate = "EVENT_BEFORE_STATE_UPDATE";
-const std::string CipherEvents::EventOnStateUpdate = "EVENT_ON_STATE_UPDATE";
+const std::string CipherEvents::EventOpenCipher = "EVENT_CIPHER_OPEN_CIPHER";
+const std::string CipherEvents::EventExitCipher = "EVENT_CIPHER_EXIT_CIPHER";
+const std::string CipherEvents::EventRequestBlockSpawn = "EVENT_CIPHER_REQUEST_BLOCK_SPAWN";
+const std::string CipherEvents::EventRequestConnectionCreate = "EVENT_CIPHER_REQUEST_CONNECTION_SPAWN";
+const std::string CipherEvents::EventConnectionUpdated = "EVENT_CIPHER_CONNECTION_UPDATED";
+const std::string CipherEvents::EventConnectionDestroy = "EVENT_CIPHER_CONNECTION_DESTROY";
+const std::string CipherEvents::EventChangeActiveCipher = "EVENT_CIPHER_CHANGE_ACTIVE_CIPHER";
+const std::string CipherEvents::EventChangeDisplayDataType = "EVENT_CIPHER_CHANGE_DISPLAY_DATA_TYPE";
+const std::string CipherEvents::EventOpenAsciiTable = "EVENT_CIPHER_OPEN_ASCII_TABLE";
+const std::string CipherEvents::EventTryUnlockCurrentCipher = "EVENT_CIPHER_TRY_UNLOCK_CURRENT_CIPHER";
+const std::string CipherEvents::EventRequestStateUpdate = "EVENT_CIPHER_REQUEST_STATE_UPDATE";
+const std::string CipherEvents::EventBeforeRequestStateUpdate = "EVENT_CIPHER_BEFORE_REQUEST_STATE_UPDATE";
+const std::string CipherEvents::EventBeforeStateUpdate = "EVENT_CIPHER_BEFORE_STATE_UPDATE";
+const std::string CipherEvents::EventOnStateUpdate = "EVENT_CIPHER_ON_STATE_UPDATE";
 
 void CipherEvents::TriggerOpenCipher(CipherOpenArgs args)
 {
@@ -98,6 +99,15 @@ void CipherEvents::TriggerTryUnlockCurrentCipher(UnlockArgs args)
 		&args
 	);
 }
+
+void CipherEvents::TriggerBeforeRequestStateUpdate(CipherState* cipherState)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CipherEvents::EventBeforeRequestStateUpdate,
+		cipherState
+	);
+}
+	
 void CipherEvents::TriggerRequestStateUpdate(CipherState* cipherState)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(

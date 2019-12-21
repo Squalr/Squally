@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Lioness.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 	if (Lioness::HexusOpponentDataInstance == nullptr)
 	{
 		Lioness::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -160.0f),
 			Lioness::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.250f,
 			HexusOpponentData::generateDeck(32, 0.250f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* Lioness::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -111,8 +108,8 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -138,8 +135,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

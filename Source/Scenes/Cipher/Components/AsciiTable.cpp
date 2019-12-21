@@ -21,9 +21,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/AsciiTable.h"
-#include "Strings/Cipher/ChooseANewValue.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +46,7 @@ AsciiTable::AsciiTable()
 
 	for (int next = 0; next < 256; next++)
 	{
-		this->asciiLetters.push_back(ImmediateBlock::create((unsigned char)(next), BlockBase::BlockType::Static));
+		// this->asciiLetters.push_back(ImmediateBlock::create((unsigned char)(next), BlockBase::BlockType::Static));
 	}
 
 	this->selectionSprite = Sprite::create(CipherResources::Blocks_BlockHexHuge);
@@ -110,12 +108,16 @@ AsciiTable::AsciiTable()
 
 	this->addChild(this->background);
 
+	this->scrollPane->suspendUpdate();
+
 	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
 	{
 		this->scrollPane->addChild(*it);
 	}
 	
 	this->scrollPane->addChild(this->selectionSprite);
+	
+	this->scrollPane->resumeUpdate();
 
 	this->addChild(this->scrollPane);
 	this->addChild(this->frame);

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/LightningGolem.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 	if (LightningGolem::HexusOpponentDataInstance == nullptr)
 	{
 		LightningGolem::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -280.0f),
 			Vec2(-32.0f, -380.0f),
 			LightningGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,9 +97,9 @@ HexusOpponentData* LightningGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -113,7 +110,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -134,14 +131,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

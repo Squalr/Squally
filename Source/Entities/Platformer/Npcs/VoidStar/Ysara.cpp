@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Ysara.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Ysara::Ysara(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Ysara::getHexusOpponentData();
@@ -48,7 +48,7 @@ Ysara::~Ysara()
 
 Vec2 Ysara::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Ysara::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Ysara::getHexusOpponentData()
 	if (Ysara::HexusOpponentDataInstance == nullptr)
 	{
 		Ysara::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Ysara_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Ysara::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.885f,
 			HexusOpponentData::generateDeck(32, 0.885f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Ysara::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

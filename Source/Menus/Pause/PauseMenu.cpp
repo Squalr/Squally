@@ -14,14 +14,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Pause/Collectables.h"
-#include "Strings/Menus/Pause/Inventory.h"
-#include "Strings/Menus/Pause/Map.h"
-#include "Strings/Menus/Pause/Options.h"
-#include "Strings/Menus/Pause/Party.h"
-#include "Strings/Menus/Pause/Pause.h"
-#include "Strings/Menus/Pause/QuitToTitle.h"
-#include "Strings/Menus/Pause/Resume.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -165,10 +158,7 @@ void PauseMenu::initializeListeners()
 	{
 		this->resumeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
-			if (this->resumeClickCallback != nullptr)
-			{
-				this->resumeClickCallback();
-			}
+			this->close();
 		});
 	}
 	
@@ -190,10 +180,7 @@ void PauseMenu::initializeListeners()
 
 	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->resumeClickCallback != nullptr)
-		{
-			this->resumeClickCallback();
-		}
+		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
@@ -206,16 +193,26 @@ void PauseMenu::initializeListeners()
 		
 		args->handle();
 
-		if (this->resumeClickCallback != nullptr)
-		{
-			this->resumeClickCallback();
-		}
+		this->close();
 	});
 }
 
-void PauseMenu::setResumeClickCallback(std::function<void()> resumeClickCallback)
+void PauseMenu::open(std::function<void()> resumeClickCallback)
 {
 	this->resumeClickCallback = resumeClickCallback;
+	this->setVisible(true);
+
+	GameUtils::focus(this);
+}
+
+void PauseMenu::close()
+{
+	this->setVisible(false);
+
+	if (this->resumeClickCallback != nullptr)
+	{
+		this->resumeClickCallback();
+	}
 }
 
 void PauseMenu::setOptionsClickCallback(std::function<void()> optionsClickCallback)

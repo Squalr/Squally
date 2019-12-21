@@ -34,7 +34,7 @@ void StateAIDecidePass::onStateEnter(GameState* gameState)
 	super::onStateEnter(gameState);
 
 	CardData* strongestCardInDeck = gameState->opponentData->getStrongestCard();
-	int strongestAttack = strongestCardInDeck == nullptr ? 1 : int(strongestCardInDeck->attack);
+	int strongestAttack = strongestCardInDeck == nullptr ? 1 : int(strongestCardInDeck->getAttack());
 	int passIfDiffAboveOrEqual = int(float(strongestAttack) * 2.5f);
 	CallFunc* stateTransition = nullptr;
 

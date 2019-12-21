@@ -1,0 +1,575 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="196" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="598">
+ <objectgroup id="1" name="physics">
+  <properties>
+   <property name="gravity" value="-768"/>
+   <property name="type" value="physics"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="2" name="music">
+  <properties>
+   <property name="music" value="Music/BurdenOfTime.mp3"/>
+   <property name="type" value="music"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="3" name="background">
+  <properties>
+   <property name="background" value="Dawn"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="4" name="decor -4096">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="5" name="decor -3584">
+  <properties>
+   <property name="depth" type="float" value="-3584"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="396" name="Forest/Background/Mountain2" type="decor" x="1097.5" y="1757.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="6" name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="430" name="Forest/Background/Mountain1" type="decor" x="3889.5" y="1769.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="7" name="decor -2560">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="426" name="Forest/Background/Forest4" type="decor" x="-2128" y="2420" width="40000" height="816">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="432" name="Forest/Background/Forest3" type="decor" x="-2128" y="2480" width="40000" height="715">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="431" name="Forest/Background/Forest2" type="decor" x="-2128" y="2512" width="40000" height="941">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2126.46" y="2448.65" width="40000" height="909">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="background mist">
+  <properties>
+   <property name="background" value="Mist"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="12" name="decor -1536">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="13" name="decor -1024">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="434" name="Forest/Background/Hills2" type="decor" x="-2180" y="3117.5" width="40000" height="537">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="497" name="Forest/Background/Hills2" type="decor" x="-2168.48" y="3317.68" width="40000" height="537">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="498" name="Forest/Background/Hills2" type="decor" x="-2150.3" y="3578.29" width="40000" height="537">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="decor -512">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="decor -256">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="493" name="spiked-log" type="object" x="3386.42" y="2823.94" width="598" height="140"/>
+  <object id="535" name="torch" type="object" x="10573.6" y="3405.84" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="536" name="torch" type="object" x="9782.02" y="3405.84" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="537" name="torch" type="object" x="11387" y="3405.84" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="538" name="torch" type="object" x="10501" y="5286.74" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="539" name="torch" type="object" x="12679.6" y="5352.1" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="540" name="torch" type="object" x="11488.6" y="5352.1" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="541" name="torch" type="object" x="10944" y="4604.1" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="542" name="torch" type="object" x="9404.39" y="5243.17" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="583" name="trap-door-frame" type="object" x="23051.7" y="3971.14" width="301" height="215"/>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="422" name="solid" type="terrain" x="3272" y="1624">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -348,-84 -652,-8 -928,-120 -1292,-60 -1276,304 4,292 -4,128"/>
+  </object>
+  <object id="423" name="solid" type="terrain" x="936" y="1800">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -360,148 -780,16 -932,-528 -812,-1040 -332,-1176 88,-1168 372,-996 352,-672 -240,-704 -360,-520 -256,-248 256,-252 228,-84"/>
+  </object>
+  <object id="468" name="solid" type="terrain" x="4148.61" y="2295.64">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 1975.76,12.1212 1978.79,-590.909 3.0303,-590.909 45.4545,-315.152"/>
+  </object>
+  <object id="489" name="solid" type="terrain" x="-333.576" y="2816">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 2264,-8 2448,32 2728,8 3016,-16 3736,0 3744,312 3672,784 3064,808 1128,712 -16,624 0,232"/>
+  </object>
+  <object id="490" name="solid" type="terrain" x="3968" y="2824">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 920,-64 1576,-32 2168,-64 2176,272 2176,752 -16,784 -8,96"/>
+  </object>
+  <object id="491" name="solid" type="terrain" x="6520" y="2776">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 424,8 1040,56 1624,128 1616,-144 2144,-64 2776,-48 2765.04,3038.68 344,2944 -80,888 -152,16"/>
+  </object>
+  <object id="510" name="solid" type="terrain" x="8123.13" y="5628">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 811.42,4 1991.67,-8 3105.52,24 4130.86,-8 4957.03,0 5952.87,-16 5938.12,440 5893.85,752 5797.96,792 154.872,804 -81.052,740 -39.4015,434.667 -22.9932,178.667"/>
+  </object>
+  <object id="511" name="solid" type="terrain" x="10324" y="4340">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="-21.3356,134.913 -52,348 -32,784 -248,960 -632,928 -668,484 -584,-228 -604,-540 209.914,-598.773 862.086,-562.945 1196,-568 1432,-528 1472,136 1428,628 1408.42,921.568 1216.42,933.601 893.798,920.214 589.773,936.638 582.156,663.161 971.356,674.203 1215.19,668.423 1226.34,451.653 1203.06,193.581 1151.99,-84.9764 1046.19,-310.104 737.542,-433.392 235.344,-247.44 -2.1093,-46.8202"/>
+  </object>
+  <object id="512" name="solid" type="terrain" x="12298.6" y="1517.18">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -288,7.10408 -360,404.932 -340,1435.02 -340,2465.11 -326.434,3004.65 -342.189,3683.06 48,3701.22 412,3665.71 672,3672.81 1188,3601.77 1372,3658.6 1444,2465.11 1360,1385.3 1376,191.81 1280,-14.2081 136,0"/>
+  </object>
+  <object id="543" name="solid" type="terrain" x="14048.6" y="5624">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 737.189,4 1809.47,-8 2821.42,24 3752.96,-8 4503.55,0 5408.28,-16 5394.88,440 5354.66,752 5267.55,792 140.704,804 -73.6371,740 -35.7969,434.667 -20.8897,178.667"/>
+  </object>
+  <object id="578" name="solid" type="terrain" x="23918.5" y="1387.6">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="-16.1918,-167.197 -597.3,-161.58 -778.238,625.85 -692.887,1374.78 -66.63,1223.46 237.016,1412.36 109.076,2015.78 -194.209,2014.66 -197.997,1860.29 -564.214,1847.48 -567.861,2546.52 -556.05,3484.5 2082,3480.61 2149.01,2131.45 2101.44,692.322 2122.35,-170.432 334.232,-175.159"/>
+  </object>
+  <object id="579" name="solid" type="terrain" x="23529.8" y="5381.79">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -584.671,-12.049 -806.184,-16.5261 -748.65,292.153 -748.65,501.865 -718.78,611.71 -753.472,749.827 105.692,753.524 907.193,746.297 1479.68,747.738 2108.63,746.768 3021.04,744.845 3179.59,501.865 2994.61,282.032 3029.85,39.0501 2818.45,-2.89261 299.461,0"/>
+  </object>
+  <object id="585" name="solid" type="terrain" x="18216" y="2352">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 312,-56 720,8 1104,-32 1496,-40 1512,272 1508,610.667 1484,896 1440,1200 1488,1568 2456,1504 3248,1496 4144,1488 4424,1624 4872,1632 4896,2400 4736,2992 4760,3368 4720,3848 4128,3832 3280,3856 2368,3776 1680,3848 1336,3840 1328,4376 808,4368 320,4432 0,4344 -56,3376 -16,2544 -64,1544 -32,760 -88,96"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="2703.39" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="2693.5" width="199" height="133"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="470" name="pendulum-blade" type="object" x="5275.45" y="2294.85" width="42.4242" height="277.636"/>
+  <object id="471" name="pendulum-blade" type="object" x="4584.79" y="2297.58" width="42.4242" height="420.97"/>
+  <object id="472" name="pendulum-blade" type="object" x="4883.45" y="2289.52" width="42.4242" height="304.97"/>
+  <object id="474" name="pendulum-blade" type="object" x="5672.79" y="2300.85" width="42.4242" height="364.97"/>
+  <object id="475" name="mechanical-flail" type="object" x="4742.79" y="2584.85" width="42.4242" height="198.303"/>
+  <object id="476" name="mechanical-flail" type="object" x="5084.79" y="2511.85" width="42.4242" height="264.303"/>
+  <object id="479" name="mechanical-flail" type="object" x="5474.79" y="2634.85" width="42.4242" height="166.303"/>
+  <object id="494" name="heaven-hug" type="object" x="7254.55" y="2180.24" width="78.7879" height="603.152">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="495" name="heaven-hug" type="object" x="7593.94" y="2174.18" width="78.7879" height="651.637">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="496" name="heaven-hug" type="object" x="7933.33" y="2177.21" width="78.7879" height="688.001">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="513" name="wind" type="object" x="9525.94" y="3328" width="2457.86" height="424">
+   <properties>
+    <property name="speed-x" type="float" value="-5"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="517" name="wind" type="object" x="9311.71" y="5227.65" width="2652.48" height="409.566">
+   <properties>
+    <property name="speed-x" type="float" value="5"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="518" name="wind" type="object" x="9314" y="3327.79" width="356" height="2097.49">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-3"/>
+   </properties>
+  </object>
+  <object id="519" name="wind" type="object" x="11760.8" y="3516.94" width="208.004" height="2120.42">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="520" name="wind" type="object" x="10298" y="3886.91" width="614.476" height="1475.09">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-2"/>
+   </properties>
+  </object>
+  <object id="521" name="stone-button" type="object" x="11229.8" y="4923.24" width="258.367" height="85.7283">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="525" name="wooden-crate" type="object" x="10912.3" y="5403.17" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="526" name="wooden-crate" type="object" x="9390.9" y="3780.4" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="527" name="wooden-crate" type="object" x="11721.4" y="3097.13" width="160" height="160">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="532" name="castle-door" type="object" x="12275.1" y="5192.77" width="441.081" height="440.261">
+   <properties>
+    <property name="event" value="door-open"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="545" name="wind" type="object" x="13752" y="2347.79" width="208.004" height="3280.42">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="551" name="floating-rock" type="object" x="15394.1" y="5214.63" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="552" name="spiked-ball" type="object" x="15654.6" y="5408.44" width="208.004" height="200.71"/>
+  <object id="553" name="floating-crate" type="object" x="15665.8" y="5206.95" width="208.004" height="430.704">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="50"/>
+   </properties>
+  </object>
+  <object id="554" name="floating-asteroid" type="object" x="16192.7" y="5196.57" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.7"/>
+    <property name="rotation" type="float" value="32"/>
+   </properties>
+  </object>
+  <object id="555" name="floating-rock" type="object" x="16461.5" y="5199.63" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="180"/>
+   </properties>
+  </object>
+  <object id="556" name="spiked-ball" type="object" x="16189.3" y="5200.73" width="208.004" height="200.71"/>
+  <object id="557" name="spiked-ball" type="object" x="16735.7" y="5429.05" width="208.004" height="200.71"/>
+  <object id="559" name="spiked-ball" type="object" x="17156.4" y="5201.44" width="208.004" height="200.71"/>
+  <object id="560" name="spiked-ball" type="object" x="17421.5" y="5200.1" width="208.004" height="200.71"/>
+  <object id="561" name="floating-rock" type="object" x="17155.8" y="5212.59" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.75"/>
+    <property name="rotation" type="float" value="135"/>
+   </properties>
+  </object>
+  <object id="563" name="floating-crate" type="object" x="15905.8" y="5208.84" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="-25"/>
+   </properties>
+  </object>
+  <object id="564" name="floating-crate" type="object" x="16740.9" y="5202.02" width="208.004" height="420">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="15"/>
+   </properties>
+  </object>
+  <object id="565" name="water" type="object" x="14432.8" y="2475.79" width="5007.29" height="3384.42">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="5"/>
+   </properties>
+  </object>
+  <object id="566" name="doubloon" type="object" x="13792" y="5338" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="567" name="doubloon" type="object" x="13808" y="5012" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="568" name="doubloon" type="object" x="13820" y="4140" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="569" name="doubloon" type="object" x="13804" y="4512" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="570" name="doubloon" type="object" x="13812" y="3708" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="571" name="doubloon" type="object" x="13808" y="3288" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="572" name="doubloon" type="object" x="13820" y="2884" width="64" height="64">
+   <properties>
+    <property name="density" type="float" value="0.2"/>
+    <property name="rotation" type="float" value="33"/>
+   </properties>
+  </object>
+  <object id="580" name="stone-button" type="object" x="23802" y="3316.16" width="258.367" height="85.7283">
+   <properties>
+    <property name="event" value="door-open-2"/>
+   </properties>
+  </object>
+  <object id="581" name="catapult" type="object" x="21829.4" y="3531.98" width="512" height="320">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+  <object id="582" name="trap-door" type="object" x="23091.7" y="4025.48" width="299.579" height="85.7283">
+   <properties>
+    <property name="event" value="door-open-2"/>
+   </properties>
+  </object>
+  <object id="597" name="chest" type="object" x="3203.3" y="2646.27" width="174.424" height="166.303">
+   <properties>
+    <property name="args" value="{&quot;easy&quot;:{&quot;sup&quot;:&quot;sad&quot;,&quot;cry&quot;:&quot;bus&quot;,&quot;ded&quot;:&quot;two&quot;,&quot;nop&quot;:&quot;pls&quot;,&quot;hey&quot;:&quot;mad&quot;},&quot;hard&quot;:{&quot;sup&quot;:&quot;sad&quot;,&quot;cry&quot;:&quot;bus&quot;,&quot;ded&quot;:&quot;two&quot;,&quot;nop&quot;:&quot;pls&quot;,&quot;hey&quot;:&quot;mad&quot;},&quot;rewards&quot;:[&quot;health-potion&quot;,&quot;mana-potion&quot;],&quot;bonus-rewards&quot;:[&quot;blue-axe&quot;]}"/>
+    <property name="event" value="open-cipher"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="438" name="goblin" type="entity" x="4226.96" y="2711.46" width="78.7879" height="88">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="1646.69" y="2520.27" width="78.7879" height="88"/>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="548" name="solid" type="terrain" x="14047" y="2436.18">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -88.7627,8.45749 -110.953,482.076 -104.789,1708.41 -104.789,2934.74 -100.608,3577.07 -105.464,4384.72 14.7938,4406.35 126.98,4364.07 207.113,4372.52 295.146,4366.83 422.856,4355.6 445.047,2934.74 419.157,1649.22 424.089,228.352 394.501,-16.9149 41.9157,0"/>
+  </object>
+  <object id="550" name="solid" type="terrain" x="15723.8" y="1605.78">
+   <properties>
+    <property name="texture" value="castle"/>
+   </properties>
+   <polyline points="0,0 -397.256,6.9212 -496.568,394.508 -468.981,1398.08 -468.981,2401.65 -450.269,2927.3 -472.002,3588.24 66.2094,3605.94 568.297,3571.35 926.93,3578.26 1320.92,3573.6 1892.48,3564.41 1991.8,2401.65 1875.93,1349.64 1898,186.872 1765.58,-13.8424 187.593,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="528" name="castle-door-front" type="object" x="12278.7" y="5195.5" width="438.016" height="442.095">
+   <properties>
+    <property name="event" value="door-open"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="30" name="object_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="584" name="trap-door-frame" type="object" x="23089.5" y="4011.5" width="301" height="215"/>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="316" y="2556" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="2229.99" y="2585.34" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="950" y="2434" width="242" height="738"/>
+  <object id="408" name="Forest/Foreground/ForegroundTree2" type="decor" x="3924.06" y="2678.06" width="270" height="705.576"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1320.05" y="2568.31" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2677.12" y="2622.97" width="270" height="748"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="152" y="2468" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="1835.99" y="2547.58" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="606" y="2580" width="242" height="738"/>
+ </objectgroup>
+</map>

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Mabel.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Mabel::Mabel(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Mabel::getHexusOpponentData();
@@ -48,7 +48,7 @@ Mabel::~Mabel()
 
 Vec2 Mabel::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Mabel::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Mabel::getHexusOpponentData()
 	if (Mabel::HexusOpponentDataInstance == nullptr)
 	{
 		Mabel::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Mabel_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mabel::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.429f,
 			HexusOpponentData::generateDeck(32, 0.429f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Mabel::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

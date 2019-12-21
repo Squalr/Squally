@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/QuestDeserializer.h"
+#include "Engine/Deserializers/Properties/QuestDeserializer.h"
 
 class PlatformerQuestDeserializer : public QuestDeserializer
 {
@@ -14,5 +14,5 @@ private:
 	typedef QuestDeserializer super;
 
 	PlatformerQuestDeserializer();
-	~PlatformerQuestDeserializer();
+	virtual ~PlatformerQuestDeserializer();
 };

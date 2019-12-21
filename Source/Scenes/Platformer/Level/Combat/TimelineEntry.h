@@ -19,18 +19,21 @@ public:
 	void applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing);
 	void stageTarget(PlatformerEntity* target);
 	void stageCast(PlatformerAttack* attack);
+	PlatformerEntity* getStagedTarget();
+	PlatformerAttack* getStagedCast();
 	void defend();
 	float getProgress();
 	void setProgress(float progress);
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
+	bool isPlayerEntry();
 
 	static const float CastPercentage;
 
 private:
 	typedef SmartNode super;
 	TimelineEntry(PlatformerEntity* entity);
-	virtual ~TimelineEntry() = default;
+	virtual ~TimelineEntry();
 
 	struct DamageArgs
 	{
@@ -43,9 +46,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	bool isPlayerEntry();
 	void performCast();
-	void tryInterrupt();
+	void tryInterrupt(bool blocked);
 	void resetTimeline();
 
 	PlatformerAttack* currentCast;
@@ -59,7 +61,6 @@ private:
 	float speed;
 	float interruptBonus;
 	float progress;
-	bool isBlocking;
 	bool isCasting;
 
 	static const float BaseSpeedMultiplier;

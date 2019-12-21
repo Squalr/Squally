@@ -47,7 +47,7 @@ void StateSourceCardStaged::onStateEnter(GameState* gameState)
 			{
 				gameState->selectedHandCard->focus();
 
-				switch (gameState->selectedHandCard->cardData->cardType)
+				switch (gameState->selectedHandCard->cardData->getCardType())
 				{
 					case CardData::CardType::Special_MOV:
 					case CardData::CardType::Special_AND:
@@ -175,7 +175,7 @@ void StateSourceCardStaged::stageCombineTarget(Card* card, GameState* gameState)
 		gameState->selectedDestinationCard = card;
 	}
 
-	switch (gameState->selectedHandCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->getCardType())
 	{
 		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_AND:

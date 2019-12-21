@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Rupert.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Rupert::~Rupert()
 
 Vec2 Rupert::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Rupert::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 	if (Rupert::HexusOpponentDataInstance == nullptr)
 	{
 		Rupert::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Rupert_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Rupert::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.634f,
 			HexusOpponentData::generateDeck(32, 0.634f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Rupert::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

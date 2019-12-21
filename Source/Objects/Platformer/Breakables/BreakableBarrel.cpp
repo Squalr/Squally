@@ -9,7 +9,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"

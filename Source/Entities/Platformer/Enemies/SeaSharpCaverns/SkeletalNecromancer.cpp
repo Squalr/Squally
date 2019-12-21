@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/SkeletalNecromancer.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ SkeletalNecromancer::~SkeletalNecromancer()
 
 Vec2 SkeletalNecromancer::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* SkeletalNecromancer::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 	if (SkeletalNecromancer::HexusOpponentDataInstance == nullptr)
 	{
 		SkeletalNecromancer::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_SkeletalNecromancer_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			SkeletalNecromancer::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -115,7 +112,7 @@ HexusOpponentData* SkeletalNecromancer::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -136,8 +133,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Leopold.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Leopold::~Leopold()
 
 Vec2 Leopold::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Leopold::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Leopold::getHexusOpponentData()
 	if (Leopold::HexusOpponentDataInstance == nullptr)
 	{
 		Leopold::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Leopold_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.95f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Leopold::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.491f,
 			HexusOpponentData::generateDeck(32, 0.491f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Leopold::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

@@ -120,7 +120,9 @@ bool QuestTask::isActive()
 
 void QuestTask::complete()
 {
-	if (this->completeCalled || (this->questState != QuestState::Active && this->questState != QuestState::ActiveThroughSkippable))
+	// Ideally we would also check to see if this quest is active, but we'll leave it up to the caller instead to
+	// ensure complete() is never called in such a way to sequence break. Allowing sequence breaks makes debugging easier anyhow.
+	if (this->completeCalled || this->questState == QuestState::Complete)
 	{
 		return;
 	}

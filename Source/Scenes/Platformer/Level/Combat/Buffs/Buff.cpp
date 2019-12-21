@@ -13,11 +13,13 @@
 
 using namespace cocos2d;
 
-Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target)
+Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData)
 {
 	this->caster = caster;
 	this->target = target;
+	this->buffData = buffData;
 	this->hackables = std::vector<HackableCode*>();
+	this->showClippy = false;
 }
 
 Buff::~Buff()
@@ -51,7 +53,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -61,7 +63,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageTaken(args->damageOrHealing, args->blocked, [=](){ args->handle(); });
 		}
 	}));
 
@@ -76,6 +78,16 @@ void Buff::initializeListeners()
 	}));
 }
 
+void Buff::enableClippy()
+{
+	this->showClippy = true;
+}
+
+void Buff::disableClippy()
+{
+	this->showClippy = false;
+}
+
 void Buff::registerHackables()
 {
 }
@@ -84,7 +96,7 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
 {
 }
 
@@ -105,11 +117,20 @@ void Buff::unregisterHackables()
 	}
 }
 
+Buff::BuffData Buff::getBuffData()
+{
+	return this->buffData;
+}
+
+void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
+{
+	this->removeBuffCallback = removeBuffCallback;
+}
+
 void Buff::removeBuff()
 {
-	if (this->getParent() != nullptr)
+	if (this->removeBuffCallback != nullptr)
 	{
-		// unregisterHackables will be indirectly called due to the onExit trigger
-		this->getParent()->removeChild(this);
+		this->removeBuffCallback();
 	}
 }

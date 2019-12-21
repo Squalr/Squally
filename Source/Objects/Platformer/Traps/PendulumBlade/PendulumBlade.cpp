@@ -15,14 +15,13 @@
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeClippy.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/PendulumBlade/SetTargetAngle/SetTargetAngle.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -120,7 +119,7 @@ void PendulumBlade::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
 				},
-				2,
+				int(HackFlags::None),
 				20.0f,
 				this->showClippy ? PendulumBladeClippy::create() : nullptr
 			)

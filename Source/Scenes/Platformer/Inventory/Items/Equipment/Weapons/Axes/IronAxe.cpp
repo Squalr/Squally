@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Axes/IronAxe.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -20,7 +20,18 @@ IronAxe* IronAxe::create()
 	return instance;
 }
 
-IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7)
+IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 4, 6, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

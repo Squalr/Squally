@@ -10,8 +10,7 @@
 
 #include "Scenes/PointerTrace/RegisterState.h"
 
-#include "Strings/PointerTrace/Assembly/RegisterEax.h"
-#include "Strings/PointerTrace/Assembly/RegisterRax.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

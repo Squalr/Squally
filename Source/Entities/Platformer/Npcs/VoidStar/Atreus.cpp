@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Atreus.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Atreus::Atreus(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Atreus::getHexusOpponentData();
@@ -48,7 +48,7 @@ Atreus::~Atreus()
 
 Vec2 Atreus::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Atreus::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Atreus::getHexusOpponentData()
 	if (Atreus::HexusOpponentDataInstance == nullptr)
 	{
 		Atreus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Atreus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Atreus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -87,8 +83,8 @@ HexusOpponentData* Atreus::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

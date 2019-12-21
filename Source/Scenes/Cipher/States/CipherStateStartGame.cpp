@@ -51,7 +51,10 @@ void CipherStateStartGame::onStateEnter(CipherState* cipherState)
 {
 	super::onStateEnter(cipherState);
 
-	CipherState::updateState(cipherState, CipherState::StateType::LoadInitialState);
+	this->defer([=]()
+	{
+		CipherState::updateState(cipherState, CipherState::StateType::LoadInitialState);
+	});
 }
 
 void CipherStateStartGame::onStateReload(CipherState* cipherState)

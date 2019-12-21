@@ -47,6 +47,11 @@ void EntityManaBehavior::onLoad()
 {
 	if (this->entity != nullptr)
 	{
+		this->entity->listenForStateWrite(StateKeys::Mana, [=](Value value)
+		{
+			this->setMana(value.asInt());
+		});
+
 		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
 			if (value.asBool())
@@ -69,7 +74,7 @@ void EntityManaBehavior::addMana(int manaDelta)
 
 void EntityManaBehavior::setMana(int mana)
 {
-	mana = MathUtils::clamp(mana, 0, this->entity->getStateOrDefaultInt(StateKeys::MaxMana, 0));
+	mana = MathUtils::clamp(mana, 0, this->getMaxMana());
 	this->entity->setState(StateKeys::Mana, Value(mana), false);
 }
 

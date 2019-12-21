@@ -7,7 +7,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -39,6 +39,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	}
 
 	this->preCinematicPosition = Vec2::ZERO;
+	this->prePatrolPosition = Vec2::ZERO;
 }
 
 EntityMovementBehavior::~EntityMovementBehavior()
@@ -53,61 +54,50 @@ void EntityMovementBehavior::onLoad()
 	{
 		this->preCinematicPosition = this->entity->getPosition();
 	});
+
+	this->entity->listenForStateWrite(StateKeys::PatrolDestinationX, [=](Value value)
+	{
+		this->prePatrolPosition = this->entity->getPosition();
+	});
 }
 
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
-	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
-
-	if (this->entity == nullptr || (isCinematicHijacked && !hasCinematicMovement))
-	{
-		return;
-	}
-
-	float cinematicDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
-	bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
-
-	Vec2 movement = Vec2(
-		this->entity->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f),
-		this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f)
-	);
-	
-	this->entity->clearState(StateKeys::MovementX);
-	this->entity->clearState(StateKeys::MovementY);
-
-	if (hasCinematicMovement)
-	{
-		movement.y = 0.0f;
-
-		if (cinematicMovementDirectionLeft)
-		{
-			movement.x = -1.0f;
-		}
-		else
-		{
-			movement.x = 1.0f;
-		}
-	}
-
 	EntityMovementCollisionBehavior* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
-	EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
+	EntityJumpCollisionBehavior* jumpBehavior = this->entity->getAttachedBehavior<EntityJumpCollisionBehavior>();
 
 	if (movementCollision == nullptr)
 	{
 		return;
 	}
 
+	Vec2 movement = Vec2(
+		this->entity->getStateOrDefaultFloat(StateKeys::MovementX, 0.0f),
+		this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f)
+	);
+
 	if (!this->entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		movement = Vec2::ZERO;
 	}
+	else
+	{
+		bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+		
+		if (isCinematicHijacked)
+		{
+			movement = Vec2::ZERO;
+		}
+
+		this->applyPatrolMovement(&movement);
+		this->applyCinematicMovement(&movement);
+	}
 
 	Vec2 velocity = movementCollision->getVelocity();
 
-	bool isOnGround = groundBehavior == nullptr ? false : groundBehavior->isOnGround();
+	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
 
 	switch (this->entity->controlState)
 	{
@@ -125,7 +115,7 @@ void EntityMovementBehavior::update(float dt)
 				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
 
-			if (movement.y > 0.0f && isOnGround)
+			if (movement.y > 0.0f && canJump)
 			{
 				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
 
@@ -159,6 +149,18 @@ void EntityMovementBehavior::update(float dt)
 			break;
 		}
 	}
+
+	if (std::abs(movement.y) < 0.15f)
+	{
+		if (std::abs(movement.x) > 0.15f)
+		{
+			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
+		}
+		else
+		{
+			this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
+		}
+	}
 	
 	// Save velocity
 	movementCollision->setVelocity(velocity);
@@ -171,21 +173,106 @@ void EntityMovementBehavior::update(float dt)
 	{
 		if (movement.x < 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(true);
+			this->entity->getAnimations()->setFlippedX(true ^ this->entity->isFlippedY());
 		}
 		else if (movement.x > 0.0f)
 		{
-			this->entity->getAnimations()->setFlippedX(false);
+			this->entity->getAnimations()->setFlippedX(false ^ this->entity->isFlippedY());
 		}
 	}
+
+	this->checkPatrolMovementComplete();
+	this->checkCinematicMovementComplete();
+}
+
+void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
+{
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+
+	if (hasCinematicMovement)
+	{
+		float cinematicDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
+		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+
+		if (cinematicMovementDirectionLeft)
+		{
+			movement->x = -1.0f;
+		}
+		else
+		{
+			movement->x = 1.0f;
+		}
+	}
+}
+
+void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
+{
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+	bool isCinematicHijacked = this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false);
+	bool hasPatrolMovement = this->entity->hasState(StateKeys::PatrolDestinationX);
+
+	if (!hasCinematicMovement && !isCinematicHijacked && hasPatrolMovement)
+	{
+		float patrolDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
+		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
+
+		if (patrolMovementDirectionLeft)
+		{
+			movement->x = -1.0f;
+		}
+		else
+		{
+			movement->x = 1.0f;
+		}
+	}
+}
+
+void EntityMovementBehavior::checkCinematicMovementComplete()
+{
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
 	
 	if (hasCinematicMovement)
 	{
+		float cinematicDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::CinematicDestinationX, 0.0f);
+		bool cinematicMovementDirectionLeft = cinematicDestionationX < this->preCinematicPosition.x;
+
 		if ((cinematicMovementDirectionLeft && this->entity->getPositionX() <= cinematicDestionationX) ||
 			(!cinematicMovementDirectionLeft && this->entity->getPositionX() >= cinematicDestionationX))
 		{
 			this->entity->clearState(StateKeys::CinematicDestinationX);
 			this->entity->setState(StateKeys::CinematicDestinationReached, Value(true));
+		}
+	}
+}
+
+void EntityMovementBehavior::checkPatrolMovementComplete()
+{
+	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);
+	bool hasPatrolMovement = this->entity->hasState(StateKeys::PatrolDestinationX);
+
+	// Exit if doing cinematic movement. That has priority.
+	if (hasCinematicMovement)
+	{
+		// Just clear any existing patrol state
+		if (hasPatrolMovement)
+		{
+			this->entity->clearState(StateKeys::PatrolDestinationX);
+			this->entity->clearState(StateKeys::PatrolDestinationReached);
+		}
+
+		return;
+	}
+	
+	if (hasPatrolMovement)
+	{
+		float patrolDestionationX = this->entity->getStateOrDefaultFloat(StateKeys::PatrolDestinationX, 0.0f);
+		bool patrolMovementDirectionLeft = patrolDestionationX < this->prePatrolPosition.x;
+
+		if ((patrolMovementDirectionLeft && this->entity->getPositionX() <= patrolDestionationX) ||
+			(!patrolMovementDirectionLeft && this->entity->getPositionX() >= patrolDestionationX))
+		{
+			this->entity->clearState(StateKeys::PatrolDestinationX);
+			this->entity->setState(StateKeys::PatrolDestinationReached, Value(true));
 		}
 	}
 }

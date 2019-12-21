@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Radon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Radon::Radon(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Radon_Animations,
 	EntityResources::Npcs_VoidStar_Radon_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Radon::getHexusOpponentData();
@@ -48,7 +48,7 @@ Radon::~Radon()
 
 Vec2 Radon::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Radon::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Radon::getHexusOpponentData()
 	if (Radon::HexusOpponentDataInstance == nullptr)
 	{
 		Radon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Radon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Radon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.923f,
 			HexusOpponentData::generateDeck(32, 0.923f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Radon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

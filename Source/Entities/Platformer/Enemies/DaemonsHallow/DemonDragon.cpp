@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonDragon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ DemonDragon::~DemonDragon()
 
 Vec2 DemonDragon::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* DemonDragon::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* DemonDragon::getHexusOpponentData()
 	if (DemonDragon::HexusOpponentDataInstance == nullptr)
 	{
 		DemonDragon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonDragon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* DemonDragon::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

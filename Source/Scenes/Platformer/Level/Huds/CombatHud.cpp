@@ -8,6 +8,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 
 using namespace cocos2d;
@@ -46,7 +47,7 @@ void CombatHud::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 96.0f);
-	this->enemyPartyStatsNode->setPosition(visibleSize.width - 212.0f, visibleSize.height - 96.0f);
+	this->enemyPartyStatsNode->setPosition(visibleSize.width - 396.0f, visibleSize.height - 96.0f);
 
 	int index = 0;
 
@@ -73,30 +74,32 @@ void CombatHud::initializeListeners()
 	super::initializeListeners();
 }
 
-void CombatHud::bindStatsBars()
+void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::vector<TimelineEntry*> enemyEntries)
 {
 	this->playerPartyStatsNode->removeAllChildren();
 	this->enemyPartyStatsNode->removeAllChildren();
 	this->playerPartyStatsBars.clear();
 	this->enemyPartyStatsBars.clear();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
+	for (auto it = friendlyEntries.begin(); it != friendlyEntries.end(); it++)
 	{
 		StatsBars* statsBars = StatsBars::create();
-
-		statsBars->setStatsTarget(entity);
+		
+		statsBars->setStatsTarget((*it)->getEntity());
+		
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
-	}));
+	}
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity)
+	for (auto it = enemyEntries.begin(); it != enemyEntries.end(); it++)
 	{
-		StatsBars* statsBars = StatsBars::create(false);
-
-		statsBars->setStatsTarget(entity);
+		StatsBars* statsBars = StatsBars::create();
+		
+		statsBars->setStatsTarget((*it)->getEntity());
+		
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);
-	}));
+	}
 
 	this->initializePositions();
 }

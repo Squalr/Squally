@@ -28,71 +28,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Constant.h"
-#include "Strings/Common/Empty.h"
-#include "Strings/Common/XOverY.h"
-#include "Strings/Menus/Hacking/CodeEditor/Address.h"
-#include "Strings/Menus/Hacking/CodeEditor/AllocationEditor.h"
-#include "Strings/Menus/Hacking/CodeEditor/Assembler.h"
-#include "Strings/Menus/Hacking/CodeEditor/ByteCount.h"
-#include "Strings/Menus/Hacking/CodeEditor/ByteOverflow.h"
-#include "Strings/Menus/Hacking/CodeEditor/Bytes.h"
-#include "Strings/Menus/Hacking/CodeEditor/ClickToEdit.h"
-#include "Strings/Menus/Hacking/CodeEditor/CodeEditor.h"
-#include "Strings/Menus/Hacking/CodeEditor/CompileErrors.h"
-#include "Strings/Menus/Hacking/CodeEditor/CompileSuccessful.h"
-#include "Strings/Menus/Hacking/CodeEditor/Error.h"
-#include "Strings/Menus/Hacking/CodeEditor/FunctionHeader.h"
-#include "Strings/Menus/Hacking/CodeEditor/LineNumber.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEax.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEbp.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEbx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEcx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEdi.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEdx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEip.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEsi.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterEsp.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR8.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR9.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR10.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR11.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR12.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR13.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR14.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterR15.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRax.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRbp.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRbx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRcx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRdi.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRdx.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRip.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRsi.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterRsp.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt0.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt1.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt2.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt3.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt4.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt5.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt6.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterSt7.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm0.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm1.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm2.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm3.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm4.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm5.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm6.h"
-#include "Strings/Menus/Hacking/CodeEditor/RegisterXmm7.h"
-#include "Strings/Menus/Hacking/CodeEditor/Status.h"
-#include "Strings/Menus/Hacking/CodeEditor/StatusHeader.h"
-#include "Strings/Menus/Hacking/CodeEditor/UnfilledBytes.h"
-#include "Strings/Menus/Hacking/CodeEditor/Unknown.h"
-#include "Strings/Menus/Hacking/Lexicon/Lexicon.h"
-#include "Strings/Menus/ApplyChanges.h"
-#include "Strings/Menus/Cancel.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -544,7 +480,9 @@ void CodeEditor::buildRegisterWindow()
 
 			this->registerWindow->insert(registerLabel);
 
-			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->activeHackableCode->registerHints[reg]->clone());
+			LocalizedString* strRef = this->activeHackableCode->registerHints[reg];
+			LocalizedString* strCopy = strRef == nullptr ? nullptr : strRef->clone();
+			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, strCopy);
 
 			this->registerWindow->insert(registerHint);
 		}

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Lycan.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Lycan::~Lycan()
 
 Vec2 Lycan::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Lycan::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 	if (Lycan::HexusOpponentDataInstance == nullptr)
 	{
 		Lycan::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Lycan_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Lycan::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.071f,
 			HexusOpponentData::generateDeck(32, 0.071f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Lycan::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

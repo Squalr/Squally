@@ -4,6 +4,11 @@
 
 #include "cocos/math/CCGeometry.h"
 
+namespace cocos2d
+{
+	class DrawNode;
+}
+
 class AlgoUtils
 {
 public:
@@ -41,10 +46,9 @@ public:
 	static std::vector<cocos2d::Vec2> insetPolygon(const std::vector<Triangle>& triangles,
 			const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments, float insetDistance);
 	static float getSegmentAngle(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,
-			const std::vector<Triangle>& triangles, cocos2d::Node* debugDrawNode = nullptr);
+			const std::vector<Triangle>& triangles, cocos2d::DrawNode* debugDrawNode = nullptr);
 	static float getSegmentNormalAngle(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,
-			const std::vector<Triangle>& triangles, cocos2d::Node* debugDrawNode = nullptr);
+			const std::vector<Triangle>& triangles, cocos2d::DrawNode* debugDrawNode = nullptr);
 	static cocos2d::Vec2 getOutwardNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,
-			const std::vector<Triangle>& triangles, cocos2d::Node* debugDrawNode = nullptr);
+			const std::vector<Triangle>& triangles, cocos2d::DrawNode* debugDrawNode = nullptr);
 };
-

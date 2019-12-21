@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Roger.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Roger::~Roger()
 
 Vec2 Roger::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Roger::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Roger::getHexusOpponentData()
 	if (Roger::HexusOpponentDataInstance == nullptr)
 	{
 		Roger::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Roger_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Roger::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.821f,
 			HexusOpponentData::generateDeck(32, 0.821f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Roger::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::SuddenDeath),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

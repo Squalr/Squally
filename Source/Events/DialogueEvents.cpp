@@ -9,8 +9,9 @@
 using namespace cocos2d;
 
 const std::string DialogueEvents::EventDialogueOpen = "EVENT_DIALOGUE_OPEN";
+const std::string DialogueEvents::EventDialogueClose = "EVENT_DIALOGUE_CLOSE";
 
-void DialogueEvents::TriggerDialogueOpen(DialogueOpenArgs args)
+void DialogueEvents::TriggerOpenDialogue(DialogueOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		DialogueEvents::EventDialogueOpen,
@@ -18,19 +19,37 @@ void DialogueEvents::TriggerDialogueOpen(DialogueOpenArgs args)
 	);
 }
 
-Node* DialogueEvents::BuildPreviewNode(PlatformerEntity* entity, bool isFlipped)
+void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 {
-	if (entity == nullptr)
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		DialogueEvents::EventDialogueClose,
+		&args
+	);
+}
+
+std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFlipped)
+{
+	const float offsetY = -96.0f;
+
+	return [=]()
 	{
-		return nullptr;
-	}
+		PlatformerEntity** entityPtr = (PlatformerEntity**)(entity);
 
-	SmartAnimationNode* animations = SmartAnimationNode::create(entity->getAnimationResource());
+		if (entityPtr == nullptr || *entityPtr == nullptr)
+		{
+			return (Node*)nullptr;
+		}
 
-	animations->playAnimation();
-	animations->setFlippedX(isFlipped);
-	animations->setPosition(entity->getDialogueOffset() - Vec2(0.0f, entity->getEntitySize().height / 2.0f));
-	animations->setScale(entity->getScale());
+		Node* wrapper = Node::create();
+		PlatformerEntity* softClone = (*entityPtr)->softClone();
 
-	return animations;
+		if (softClone != nullptr)
+		{
+			softClone->getAnimations()->setFlippedX(isFlipped);
+			wrapper->addChild(softClone);
+			softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, offsetY));
+		}
+
+		return wrapper;
+	};
 }

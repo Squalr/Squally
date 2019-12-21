@@ -44,19 +44,19 @@ public:
 protected:
 	HackableObject(const cocos2d::ValueMap& properties);
 	HackableObject();
-	~HackableObject();
+	virtual ~HackableObject();
 
 	bool showClippy;
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
-	void onExit() override;
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int eq) override;
+	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
-	virtual void onSensingEnable(int eq);
+	void rebindUIElementsTo(cocos2d::Node* newParent);
+	virtual void onSensingEnable(int hackFlags);
 	virtual void onSensingDisable();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
@@ -67,6 +67,9 @@ private:
 	bool hasRelocatedUI;
 	bool isHackable;
 
+	cocos2d::ParticleSystem* getSensingParticles();
+
+	cocos2d::Node* sensingParticlesNode;
 	cocos2d::ParticleSystem* sensingParticles;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;

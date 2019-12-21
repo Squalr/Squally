@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/PrincessMittens.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ PrincessMittens::~PrincessMittens()
 
 Vec2 PrincessMittens::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* PrincessMittens::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 	if (PrincessMittens::HexusOpponentDataInstance == nullptr)
 	{
 		PrincessMittens::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			PrincessMittens::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.732f,
 			HexusOpponentData::generateDeck(32, 0.732f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* PrincessMittens::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

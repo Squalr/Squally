@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/PenguinGrunt.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 	if (PenguinGrunt::HexusOpponentDataInstance == nullptr)
 	{
 		PenguinGrunt::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			PenguinGrunt::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* PenguinGrunt::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
+					CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -116,7 +113,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Player hex cards
 				std::vector<CardData*>
@@ -132,16 +129,15 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+				}
 			)
 		);
 	}

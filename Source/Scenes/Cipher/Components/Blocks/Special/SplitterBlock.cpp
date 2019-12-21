@@ -9,7 +9,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Operations/SHR.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -44,10 +44,5 @@ void SplitterBlock::initializePositions()
 
 unsigned char SplitterBlock::compute()
 {
-	if (this->currentInputs.size() < 1)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->currentInputs[0];
+	return this->inputLeft;
 }

@@ -4,14 +4,11 @@
 
 #include "Engine/Hackables/HackableObject.h"
 
-class CurrencyInventory;
-class EquipmentInventory;
 class HackablePreview;
 class HexusOpponentData;
-class Inventory;
 class LocalizedString;
+class PlatformerEntityDeserializer;
 class SmartAnimationNode;
-class SpeechBubble;
 
 class PlatformerEntity : public HackableObject
 {
@@ -25,9 +22,6 @@ public:
 	std::string getEntityKey();
 	virtual float getFloatHeight();
 
-	Inventory* getInventory();
-	EquipmentInventory* getEquipmentInventory();
-	CurrencyInventory* getCurrencyInventory();
 	float getScale();
 	std::string getAnimationResource();
 	std::string getEmblemResource();
@@ -36,15 +30,22 @@ public:
 	cocos2d::Size getEntitySize();
 	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
+	cocos2d::Vec2 getEntityCenterPoint();
 	float getHoverHeight();
 	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
 	virtual void performSwimAnimation();
 	virtual void performJumpAnimation();
+	bool isFlippedX();
+	bool isFlippedY();
+	PlatformerEntity* softClone();
+	std::string getBattleBehavior();
 
 	ControlState controlState;
-	SpeechBubble* speechBubble;
+
+	static const std::string PlatformerEntityTag;
+	static const std::string MapKeyBattleAttachedBehavior;
 
 protected:
 	PlatformerEntity(
@@ -55,15 +56,11 @@ protected:
 		cocos2d::Size size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
-		float hoverHeight = 0.0f,
-		std::string inventorySaveKey = "",
-		std::string equipmentSaveKey = "",
-		std::string currencySaveKey = "");
-	~PlatformerEntity();
-
+		float hoverHeight = 0.0f);
+	virtual ~PlatformerEntity();
+	
 	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
+	void update(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 
@@ -74,14 +71,13 @@ protected:
 	SmartAnimationNode* animationNode;
 
 	HexusOpponentData* hexusOpponentData;
-	Inventory* inventory;
-	EquipmentInventory* equipmentInventory;
-	CurrencyInventory* currencyInventory;
 
 	static const std::string MapKeyPropertyState;
 
 private:
 	typedef HackableObject super;
+
+	void optimizationHideOffscreenEntity();
 	
 	float entityScale;
 	cocos2d::Vec2 entityCollisionOffset;
@@ -92,4 +88,6 @@ private:
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
+	std::string battleBehavior;
+	PlatformerEntityDeserializer* platformerEntityDeserializer;
 };

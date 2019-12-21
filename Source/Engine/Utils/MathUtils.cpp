@@ -43,6 +43,11 @@ int MathUtils::wrappingNormalize(int value, int start, int end)
 {
 	int size = end - start + 1;
 
+	if (size == 0)
+	{
+		return 0;
+	}
+
     if (value < start)
 	{
         value += size * ((start - value) / size + 1);
@@ -51,7 +56,7 @@ int MathUtils::wrappingNormalize(int value, int start, int end)
     return start + (value - start) % size;
 }
 
-int MathUtils::resolveBinaryMathExpression(const std::string& expression)
+unsigned char MathUtils::resolveBinaryMathExpression(const std::string& expression)
 {
 	return te_interp(expression.c_str(), 0);
 }

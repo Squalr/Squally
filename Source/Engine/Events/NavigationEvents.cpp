@@ -14,8 +14,3 @@ void NavigationEvents::LoadScene(LoadSceneArgs args)
 {
 	GlobalDirector::loadScene(args.scene);
 }
-
-void NavigationEvents::NavigateBack(int backCount)
-{
-	GlobalDirector::navigateBack(backCount);
-}

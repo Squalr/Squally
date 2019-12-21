@@ -146,7 +146,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 	}
 
-	switch (gameState->selectedHandCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->getCardType())
 	{
 		case CardData::CardType::Binary:
 		case CardData::CardType::Decimal:
@@ -159,7 +159,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			// Draw card effect for decimal 0 card
-			if (gameState->selectedHandCard->cardData->cardKey == CardKeys::Decimal0)
+			if (gameState->selectedHandCard->cardData->getCardKey() == CardKeys::Decimal0)
 			{
 				selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
 			}
@@ -168,13 +168,13 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
 
 			// Horde effect for hex 1 card
-			if (gameState->selectedHandCard->cardData->cardKey == CardKeys::Hex1)
+			if (gameState->selectedHandCard->cardData->getCardKey() == CardKeys::Hex1)
 			{
 				std::vector<Card*> hordeCards = std::vector<Card*>();
 
 				selfDeck->removeCardsWhere([&](Card* card)
 				{
-					if (card->cardData->cardKey == CardKeys::Hex1)
+					if (card->cardData->getCardKey() == CardKeys::Hex1)
 					{
 						hordeCards.push_back(card);
 						return true;
@@ -185,7 +185,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 				selfHand->removeCardsWhere([&](Card* card)
 				{
-					if (card->cardData->cardKey == CardKeys::Hex1)
+					if (card->cardData->getCardKey() == CardKeys::Hex1)
 					{
 						hordeCards.push_back(card);
 						return true;
@@ -240,7 +240,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 					Card::Operation operation = gameState->selectedHandCard->toOperation(card->cardData->getIntrinsicImmediate());
 
-					int previousValue = card->getAttack();
+					unsigned int previousValue = card->getAttack();
 
 					card->addOperation(operation);
 
@@ -264,7 +264,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				}
 
 				// Decide which effect and sounds to play
-				switch (gameState->selectedHandCard->cardData->cardType)
+				switch (gameState->selectedHandCard->cardData->getCardType())
 				{
 					case CardData::CardType::Special_SHL:
 					{
@@ -333,7 +333,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					gameState->selectedSourceCard->getAttack()
 				);
 
-				int previousValue = gameState->selectedDestinationCard->getAttack();
+				unsigned int previousValue = gameState->selectedDestinationCard->getAttack();
 
 				gameState->selectedDestinationCard->addOperation(operation);
 
@@ -353,7 +353,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				} 
 
 				// Decide which effect and sounds to play
-				switch (gameState->selectedHandCard->cardData->cardType)
+				switch (gameState->selectedHandCard->cardData->getCardType())
 				{
 					case CardData::CardType::Special_MOV:
 					{
@@ -421,7 +421,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 				gameState->selectedDestinationCard->addOperation(operation);
 				
-				switch (gameState->selectedHandCard->cardData->cardType)
+				switch (gameState->selectedHandCard->cardData->getCardType())
 				{
 					case CardData::CardType::Special_ROL:
 					{
@@ -489,7 +489,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 					for (auto it = targetRow->rowCards.begin(); it != targetRow->rowCards.end(); it++)
 					{
-						if ((*it)->cardData->cardKey != CardKeys::Binary0 && (*it)->getAttack() < (*it)->getOriginalAttack())
+						if ((*it)->cardData->getCardKey() != CardKeys::Binary0 && (*it)->getAttack() < (*it)->getOriginalAttack())
 						{
 							toRemove.push_back(*it);
 						}
@@ -526,7 +526,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			if (!tryAbsorb(gameState, targetRow))
 			{
-				if (gameState->selectedDestinationCard->cardData->cardKey != CardKeys::Binary0)
+				if (gameState->selectedDestinationCard->cardData->getCardKey() != CardKeys::Binary0)
 				{
 					if (targetRow->isPlayerRow())
 					{
@@ -742,7 +742,7 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 
 	for (auto it = cardRow->rowCards.begin(); it != cardRow->rowCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Special_ABSORB)
 		{
 			if (cardRow->isPlayerRow())
 			{

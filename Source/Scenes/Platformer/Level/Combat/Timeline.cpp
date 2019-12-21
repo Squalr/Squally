@@ -19,8 +19,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Cast.h"
-#include "Strings/Platformer/Combat/Wait.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -35,6 +34,12 @@ Timeline* Timeline::create()
 
 Timeline::Timeline()
 {
+	this->isTimelinePaused = true;
+	this->isTimelineInterrupted = false;
+	this->isCombatComplete = false;
+	this->hasInit = false;
+	this->timelineEntryAwaitingUserAction = nullptr;
+
 	this->swordFill = ProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
 	this->timelineNode = Node::create();
@@ -58,14 +63,13 @@ Timeline::Timeline()
 	this->addChild(this->castLabel);
 }
 
+Timeline::~Timeline()
+{
+}
+
 void Timeline::onEnter()
 {
 	super::onEnter();
-
-	this->isTimelinePaused = false;
-	this->isTimelineInterrupted = false;
-	this->isCombatComplete = false;
-	this->timelineEntryAwaitingUserAction = nullptr;
 
 	this->scheduleUpdate();
 }
@@ -155,8 +159,11 @@ void Timeline::update(float dt)
 {
 	super::update(dt);
 
-	this->checkCombatComplete();
-	this->updateTimeline(dt);
+	if (this->hasInit)
+	{
+		this->checkCombatComplete();
+		this->updateTimeline(dt);
+	}
 }
 
 void Timeline::checkCombatComplete()
@@ -166,11 +173,11 @@ void Timeline::checkCombatComplete()
 		return;
 	}
 
-	static bool allEnemiesDead = true;
-	static bool allPlayersDead = true;
+	static bool anyEnemyAlive = false;
+	static bool anyPlayerAlive = false;
 
-	allEnemiesDead = true;
-	allPlayersDead = true;
+	anyEnemyAlive = false;
+	anyPlayerAlive = false;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
 	{
@@ -178,10 +185,10 @@ void Timeline::checkCombatComplete()
 		{
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allEnemiesDead = false;
+				anyEnemyAlive = true;
 			}));
 		}
-	}));
+	}), PlatformerEnemy::PlatformerEnemyTag);
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
 	{
@@ -190,18 +197,18 @@ void Timeline::checkCombatComplete()
 			// Only set flag if the entity is on the timeline to avoid querying non-combat helpers (ie scrappy)
 			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
 			{
-				allPlayersDead = false;
+				anyPlayerAlive = true;
 			}));
 		}
-	}));
+	}), PlatformerFriendly::PlatformerFriendlyTag);
 
-	if (allEnemiesDead)
+	if (!anyEnemyAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
 		CombatEvents::TriggerCombatFinished(CombatEvents::CombatFinishedArgs(true));
 	}
-	else if (allPlayersDead)
+	else if (!anyPlayerAlive)
 	{
 		this->isCombatComplete = true;
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));
@@ -240,39 +247,50 @@ void Timeline::updateTimeline(float dt)
 
 void Timeline::resumeTimeline()
 {
-	this->isTimelinePaused = true;
-	this->timelineEntryAwaitingUserAction = nullptr;
+	this->hasInit = true;
+	this->isTimelinePaused = false;
 }
 
-void Timeline::initializeTimeline(bool isPlayerFirstStrike)
+std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities)
 {
-	this->timelineNode->removeAllChildren();
-	this->timelineEntries.clear();
-
-	float nextPlayerBonus = 0.0f;
-	float nextEnemyBonus = 0.0f;
+	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
 	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.35f;
-	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
+	float nextPlayerBonus = 0.0f;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
+	for (auto it = friendlyEntities.begin(); it != friendlyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity);
+		TimelineEntry* entry = TimelineEntry::create(*it);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
 		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
 		nextPlayerBonus += 0.1f;
-	}));
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+		entries.push_back(entry);
+	}
+
+	return entries;
+}
+
+std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities)
+{
+	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
+	float nextEnemyBonus = 0.0f;
+	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
+
+	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(entity);
+		TimelineEntry* entry = TimelineEntry::create(*it);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
 
 		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
 		nextEnemyBonus += 0.1f;
-	}));
+		
+		entries.push_back(entry);
+	}
+
+	return entries;
 }

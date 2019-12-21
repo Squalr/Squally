@@ -8,8 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Instructions/ControlFlow/Nop.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/ControlFlow/Nop/Intro.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

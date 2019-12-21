@@ -31,45 +31,59 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->spawnPosition = Vec2::ZERO;
 	this->originalPosition = Vec2::ZERO;
 	this->clickDelta = Vec2::ZERO;
-	this->inputBolts = std::vector<InputBolt*>();
-	this->outputBolts = std::vector<OutputBolt*>();
-	this->currentInputs = std::vector<unsigned char>();
+	this->inputBoltLeft = nullptr;
+	this->inputBoltRight = nullptr;
+	this->outputBoltLeft = nullptr;
+	this->outputBoltRight = nullptr;
+	this->inputLeft = 0;
+	this->inputRight = 0;
 	this->spawningBlock = nullptr;
+	this->receivedInputs = 0;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
 
 	if (this->inputType == ConnectionType::Single)
 	{
-		this->inputBolts.push_back(InputBolt::create(this));
+		this->inputBoltLeft = InputBolt::create(this);
 	}
 	else if (this->inputType == ConnectionType::Double)
 	{
-		this->inputBolts.push_back(InputBolt::create(this));
-		this->inputBolts.push_back(InputBolt::create(this));
+		this->inputBoltLeft = InputBolt::create(this);
+		this->inputBoltRight = InputBolt::create(this);
 	}
 
 	if (this->outputType == ConnectionType::Single)
 	{
-		this->outputBolts.push_back(OutputBolt::create());
+		this->outputBoltLeft = OutputBolt::create();
 	}
 	else if (this->outputType == ConnectionType::Double)
 	{
-		this->outputBolts.push_back(OutputBolt::create());
-		this->outputBolts.push_back(OutputBolt::create());
+		this->outputBoltLeft = OutputBolt::create();
+		this->outputBoltRight = OutputBolt::create();
 	}
 
-	for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+	if (this->inputBoltLeft != nullptr)
 	{
-		this->addChild(*it);
+		this->addChild(this->inputBoltLeft);
+	}
+
+	if (this->inputBoltRight != nullptr)
+	{
+		this->addChild(this->inputBoltRight);
 	}
 
 	this->addChild(this->block);
 	this->addChild(this->icon);
 
-	for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+	if (this->outputBoltLeft != nullptr)
 	{
-		this->addChild(*it);
+		this->addChild(this->outputBoltLeft);
+	}
+
+	if (this->outputBoltRight != nullptr)
+	{
+		this->addChild(this->outputBoltRight);
 	}
 
 	this->addChild(this->label);
@@ -85,24 +99,24 @@ void BlockBase::initializePositions()
 
 	if (this->inputType == ConnectionType::Single)
 	{
-		this->inputBolts[0]->setPosition(Vec2(0.0f, this->getBoltOffsetY()));
+		this->inputBoltLeft->setPosition(Vec2(0.0f, this->getBoltOffsetY()));
 	}
 	else if (this->inputType == ConnectionType::Double)
 	{
-		this->inputBolts[0]->setPosition(Vec2(-16.0f, this->getBoltOffsetY()));
-		this->inputBolts[1]->setPosition(Vec2(16.0f, this->getBoltOffsetY()));
+		this->inputBoltLeft->setPosition(Vec2(-16.0f, this->getBoltOffsetY()));
+		this->inputBoltRight->setPosition(Vec2(16.0f, this->getBoltOffsetY()));
 	}
 
 	this->icon->setPosition(Vec2(0.0f, 4.0f));
 
 	if (this->outputType == ConnectionType::Single)
 	{
-		this->outputBolts[0]->setPosition(Vec2(0.0f, -this->getBoltOffsetY()));
+		this->outputBoltLeft->setPosition(Vec2(0.0f, -this->getBoltOffsetY()));
 	}
 	else if (this->outputType == ConnectionType::Double)
 	{
-		this->outputBolts[0]->setPosition(Vec2(-16.0f, -this->getBoltOffsetY()));
-		this->outputBolts[1]->setPosition(Vec2(16.0f, -this->getBoltOffsetY()));
+		this->outputBoltLeft->setPosition(Vec2(-16.0f, -this->getBoltOffsetY()));
+		this->outputBoltRight->setPosition(Vec2(16.0f, -this->getBoltOffsetY()));
 	}
 	
 	this->label->setPosition(Vec2(0.0f, 48.0f));
@@ -159,14 +173,26 @@ void BlockBase::onAnyStateChange(CipherState* cipherState)
 {
 	switch(cipherState->stateType)
 	{
+		case CipherState::StateType::Neutral:
+		{
+			if (this->blockType == BlockType::Normal)
+			{
+				this->block->enableInteraction();
+			}
+			break;
+		}
 		case CipherState::StateType::Testing:
 		case CipherState::StateType::Unlocking:
 		{
-			this->currentInputs.clear();
+			this->block->disableInteraction();
+			this->inputLeft = 0;
+			this->inputRight = 0;
+			this->receivedInputs = 0;
 			break;
 		}
 		default:
 		{
+			this->block->disableInteraction();
 			break;
 		}
 	}
@@ -196,19 +222,49 @@ void BlockBase::setSpawnPosition(cocos2d::Vec2 spawnPosition)
 
 void BlockBase::pushInput(unsigned char input)
 {
-	this->currentInputs.push_back(input);
+	switch(this->receivedInputs++)
+	{
+		default:
+		case 0:
+		{
+			this->inputLeft = input;
+			break;
+		}
+		case 1:
+		{
+			this->inputRight = input;
+			break;
+		}
+	}
 }
 
 void BlockBase::execute(std::function<void()> onExecuteComplete)
 {
 	this->receivedValue = this->compute();
-	
+
 	// Only perform execution when the total input count has been reached
-	if (this->outputBolts.size() > 0 && this->currentInputs.size() == this->inputBolts.size())
+	if ((this->inputType == BlockBase::ConnectionType::None) || 
+		(this->receivedInputs == 1 && this->inputType == BlockBase::ConnectionType::Single) || 
+		(this->receivedInputs == 2 && this->inputType == BlockBase::ConnectionType::Double))
 	{
-		for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+		switch(this->outputType)
 		{
-			(*it)->execute(this->receivedValue, onExecuteComplete);
+			case BlockBase::ConnectionType::Single:
+			{
+				this->outputBoltLeft->execute(this->receivedValue, onExecuteComplete);
+				break;
+			}
+			case BlockBase::ConnectionType::Double:
+			{
+				this->outputBoltLeft->execute(this->receivedValue, onExecuteComplete);
+				this->outputBoltRight->execute(this->receivedValue, onExecuteComplete);
+				break;
+			}
+			default:
+			{
+				onExecuteComplete();
+				break;
+			}
 		}
 	}
 	else
@@ -219,15 +275,25 @@ void BlockBase::execute(std::function<void()> onExecuteComplete)
 
 void BlockBase::removeConnections()
 {
-	for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+	if (this->inputBoltLeft != nullptr)
 	{
-		CipherEvents::TriggerDestroyConnectionToInput(*it);
-		(*it)->setConnection(nullptr);
+		CipherEvents::TriggerDestroyConnectionToInput(this->inputBoltLeft);
+		this->inputBoltLeft->setConnection(nullptr);
 	}
-
-	for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+	
+	if (this->inputBoltRight != nullptr)
 	{
-		(*it)->setConnection(nullptr);
+		CipherEvents::TriggerDestroyConnectionToInput(this->inputBoltRight);
+		this->inputBoltRight->setConnection(nullptr);
+	}
+	if (this->outputBoltLeft != nullptr)
+	{
+		this->outputBoltLeft->setConnection(nullptr);
+	}
+	
+	if (this->outputBoltRight != nullptr)
+	{
+		this->outputBoltRight->setConnection(nullptr);
 	}
 }
 

@@ -20,6 +20,11 @@ void CursorSets::registerCursorSets()
 		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Globe, UIResources::Cursors_Globe, UIResources::Cursors_MouseDrag)
 	);
 
+	Mouse::getInstance()->registerCursorSet(
+		CursorSet::PickPocket,
+		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Store, UIResources::Cursors_Store, UIResources::Cursors_Store)
+	);
+
 	CursorSets::setActiveCursorSet(CursorSet::Default);
 }
 

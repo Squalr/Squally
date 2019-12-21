@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+#include "Engine/Steam/Steam.h"
+
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32) && !defined(__CYGWIN__)
 	#define WIN32_LEAN_AND_MEAN
 	#include <windows.h>
@@ -356,7 +358,12 @@ std::string machineHash()
 
 std::string SystemUtils::getUniqueSystemIdentifier()
 {
-	// TODO: Return steam UUID if that exists
+	std::string steamId = Steam::getSteamUserId();
+
+	if (!steamId.empty())
+	{
+		return steamId;
+	}
 
 	return machineHash();
 }

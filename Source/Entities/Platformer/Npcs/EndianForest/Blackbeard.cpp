@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Blackbeard.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Blackbeard::~Blackbeard()
 
 Vec2 Blackbeard::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Blackbeard::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 	if (Blackbeard::HexusOpponentDataInstance == nullptr)
 	{
 		Blackbeard::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Blackbeard_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -160.0f),
 			Vec2(-32.0f, -112.0f),
 			Blackbeard::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.027f,
 			HexusOpponentData::generateDeck(32, 0.027f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
@@ -80,8 +76,8 @@ HexusOpponentData* Blackbeard::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

@@ -12,10 +12,16 @@ using namespace cocos2d;
 
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE_";
 
-QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests)
+QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq)
 {
 	this->questLine = questLine;
 	this->quests = quests;
+	this->prereq = prereq;
+
+	if (this->prereq != nullptr)
+	{
+		this->addChild(this->prereq);
+	}
 }
 
 QuestLine::~QuestLine()
@@ -41,6 +47,7 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
 	bool hasEncounteredActive = false;
 	bool activeThroughSkippable = false;
+	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isComplete();
 
 	if (currentQuestTask.empty() && !this->quests.empty())
 	{
@@ -72,8 +79,8 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 
 	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 	{
-		bool isActive = activeThroughSkippable || (*it).questTask == currentQuestTask;
-		bool isComplete = !isActive && !hasEncounteredActive;
+		bool isActive = prereqComplete && (activeThroughSkippable || (*it).questTask == currentQuestTask);
+		bool isComplete = prereqComplete && !isActive && !hasEncounteredActive;
 		bool isSkippable = (*it).isSkippable;
 
 		questData.push_back(QuestMeta((*it).questTask, isActive, isSkippable, isComplete));
@@ -98,6 +105,18 @@ LocalizedString* QuestLine::getQuestLineName()
 LocalizedString* QuestLine::getQuestLineObjective(std::string questTask)
 {
 	return nullptr;
+}
+
+bool QuestLine::isComplete()
+{
+	const std::vector<QuestMeta> questMeta = this->getQuests();
+
+	if (questMeta.empty())
+	{
+		return true;
+	}
+
+	return questMeta.back().isComplete;
 }
 
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)

@@ -11,13 +11,12 @@
 #include "Objects/Platformer/Physics/Wind/WindClippy.h"
 #include "Objects/Platformer/Physics/Wind/WindGenericPreview.h"
 #include "Objects/Platformer/Physics/Wind/WindSetSpeedPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/RegisterEbx.h"
-#include "Strings/Menus/Hacking/Objects/Wind/SetWindSpeed/SetWindSpeed.h"
+#include "Strings/Strings.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 using namespace cocos2d;
@@ -113,7 +112,9 @@ void Wind::applyWindForce(const std::vector<CollisionObject*>& targets, float dt
 		Vec2 targetPosition = GameUtils::getWorldCoords(*it);
 		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
 		Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
-		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), 0.0f, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f), 0.0f, 1.0f));
+
+		// Note: Y multiplier minimum is higher to prevent bobbing in place between wind objects
+		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), 0.0f, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f) * 2.0f, 0.25f, 1.0f));
 		Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
 
 		(*it)->setVelocity((*it)->getVelocity() + speed * dt);
@@ -142,7 +143,7 @@ void Wind::registerHackables()
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
 				},
-				1,
+				int(HackFlags::Wind),
 				12.0f,
 				this->showClippy ? WindClippy::create() : nullptr
 			)

@@ -12,22 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Options/FullScreen.h"
-#include "Strings/Menus/Options/GraphicEffects.h"
-#include "Strings/Menus/Options/HighQuality.h"
-#include "Strings/Menus/Options/LowQuality.h"
-#include "Strings/Menus/Options/Resolution1080x768.h"
-#include "Strings/Menus/Options/Resolution1152x864.h"
-#include "Strings/Menus/Options/Resolution1280x720.h"
-#include "Strings/Menus/Options/Resolution1280x960.h"
-#include "Strings/Menus/Options/Resolution1280x1024.h"
-#include "Strings/Menus/Options/Resolution1440x900.h"
-#include "Strings/Menus/Options/Resolution1600x900.h"
-#include "Strings/Menus/Options/Resolution1600x1024.h"
-#include "Strings/Menus/Options/Resolution1920x1080.h"
-#include "Strings/Menus/Options/Resolution2560x1440.h"
-#include "Strings/Menus/Options/Resolution3840x2160.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

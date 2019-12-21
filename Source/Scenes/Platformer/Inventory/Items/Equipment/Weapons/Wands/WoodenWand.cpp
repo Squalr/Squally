@@ -5,7 +5,7 @@
 
 #include "Resources/ObjectResources.h"
 
-#include "Strings/Items/Equipment/Weapons/Wands/WoodenWand.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -20,7 +20,18 @@ WoodenWand* WoodenWand::create()
 	return instance;
 }
 
-WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6)
+WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 1, 2, ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
 {
 }
 

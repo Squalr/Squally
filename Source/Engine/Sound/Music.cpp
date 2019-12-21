@@ -6,22 +6,61 @@
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/SoundEvents.h"
+#include "Engine/SmartScene.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-Music* Music::create(std::string musicResource)
+Music* Music::createAndAddGlobally(std::string musicResource, SmartNode* owner)
 {
-	Music* instance = new Music(musicResource);
+	Music* instance = new Music(musicResource, owner);
 
 	instance->autorelease();
+
+	MusicPlayer::registerMusic(instance);
 
 	return instance;
 }
 
-Music::Music(std::string musicResource) : super(musicResource)
+Music* Music::createAndAddGlobally(std::string musicResource, SmartScene* owner)
 {
+	Music* instance = new Music(musicResource, owner);
+
+	instance->autorelease();
+
+	MusicPlayer::registerMusic(instance);
+
+	return instance;
+}
+
+Music::Music(std::string musicResource, SmartNode* owner) : super(musicResource)
+{
+	if (owner != nullptr)
+	{
+		owner->onDispose([=]()
+		{
+			this->stopAndFadeOut([=]()
+			{
+				MusicPlayer::destroyMusic(this);
+			});
+		});
+	}
+}
+
+Music::Music(std::string musicResource, SmartScene* owner) : super(musicResource)
+{
+	if (owner != nullptr)
+	{
+		owner->onDispose([=]()
+		{
+			this->stopAndFadeOut([=]()
+			{
+				MusicPlayer::destroyMusic(this);
+			});
+		});
+	}
 }
 
 Music::~Music()
@@ -34,7 +73,12 @@ void Music::initializeListeners()
 
 	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
 	{
-		this->stopAndFadeOut();
+		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->newSong != this)
+		{
+			this->stopAndFadeOut();
+		}
 	}));
 
 	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventMusicVolumeUpdated, [=](EventCustom* eventCustom)
@@ -59,7 +103,7 @@ void Music::play(bool repeat, float startDelay)
 		case AudioEngine::AudioState::INITIALIZING:
 		case AudioEngine::AudioState::PAUSED:
 		{
-			SoundEvents::TriggerFadeOutMusic();
+			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
 			super::play(repeat, startDelay);
 			break;
 		}
@@ -69,4 +113,11 @@ void Music::play(bool repeat, float startDelay)
 			break;
 		}
 	}
+}
+
+void Music::unpause()
+{
+	super::unpause();
+
+	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
 }

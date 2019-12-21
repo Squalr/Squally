@@ -19,7 +19,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Cipher/Operations/Immediate.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -57,21 +57,31 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	this->spriteDecSelected->setAnchorPoint(Vec2::ZERO);
 	this->spriteHexSelected->setAnchorPoint(Vec2::ZERO);
 
-	this->block->getSprite()->setOpacity(1);
-	this->block->getSprite()->setCascadeOpacityEnabled(false);
-	this->block->getSpriteSelected()->setOpacity(1);
-	this->block->getSpriteSelected()->setCascadeOpacityEnabled(false);
+	this->block->getContent()->setOpacity(1);
+	this->block->getContent()->setCascadeOpacityEnabled(false);
+	this->block->getContentSelected()->setOpacity(1);
+	this->block->getContentSelected()->setCascadeOpacityEnabled(false);
 	
 	if (this->blockType == BlockBase::BlockType::Static)
 	{
-		for (auto it = this->inputBolts.begin(); it != this->inputBolts.end(); it++)
+		if (this->inputBoltLeft != nullptr)
 		{
-			(*it)->setVisible(false);
+			inputBoltLeft->setVisible(false);
 		}
 
-		for (auto it = this->outputBolts.begin(); it != this->outputBolts.end(); it++)
+		if (this->inputBoltRight != nullptr)
 		{
-			(*it)->setVisible(false);
+			inputBoltRight->setVisible(false);
+		}
+
+		if (this->outputBoltLeft != nullptr)
+		{
+			outputBoltLeft->setVisible(false);
+		}
+
+		if (this->outputBoltLeft != nullptr)
+		{
+			outputBoltLeft->setVisible(false);
 		}
 	}
 
@@ -83,14 +93,14 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	// Huh? I think we've got a bug where this isn't called on spawned objects, just patch it in
 	this->initializePositions();
 
-	this->block->getSprite()->addChild(this->spriteAscii);
-	this->block->getSprite()->addChild(this->spriteBin);
-	this->block->getSprite()->addChild(this->spriteDec);
-	this->block->getSprite()->addChild(this->spriteHex);
-	this->block->getSpriteSelected()->addChild(this->spriteAsciiSelected);
-	this->block->getSpriteSelected()->addChild(this->spriteBinSelected);
-	this->block->getSpriteSelected()->addChild(this->spriteDecSelected);
-	this->block->getSpriteSelected()->addChild(this->spriteHexSelected);
+	this->block->getContent()->addChild(this->spriteAscii);
+	this->block->getContent()->addChild(this->spriteBin);
+	this->block->getContent()->addChild(this->spriteDec);
+	this->block->getContent()->addChild(this->spriteHex);
+	this->block->getContentSelected()->addChild(this->spriteAsciiSelected);
+	this->block->getContentSelected()->addChild(this->spriteBinSelected);
+	this->block->getContentSelected()->addChild(this->spriteDecSelected);
+	this->block->getContentSelected()->addChild(this->spriteHexSelected);
 	this->addChild(this->displayLabel);
 }
 
@@ -152,7 +162,7 @@ void ImmediateBlock::loadDisplayValue()
 	this->spriteDecSelected->setVisible(false);
 	this->spriteHexSelected->setVisible(false);
 
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
 	
 	switch(this->displayDataType)
 	{

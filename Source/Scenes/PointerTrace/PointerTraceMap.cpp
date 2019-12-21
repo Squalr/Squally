@@ -54,8 +54,11 @@ PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLe
 	this->victoryMenu = VictoryMenu::create();
 
 	this->addLayerDeserializers({
-			BackgroundDeserializer::create(),
-			MusicDeserializer::create(),
+			MetaLayerDeserializer::create(
+			{
+				BackgroundDeserializer::create(),
+				MusicDeserializer::create(),
+			}),
 			ObjectLayerDeserializer::create({
 				{ IsometricDecorDeserializer::MapKeyTypeDecor, IsometricDecorDeserializer::create() },
 				{ IsometricEntityDeserializer::MapKeyTypeEntity, IsometricEntityDeserializer::create() },
@@ -148,9 +151,9 @@ void PointerTraceMap::update(float dt)
 	super::update(dt);
 }
 
-void PointerTraceMap::onDeveloperModeEnable()
+void PointerTraceMap::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->collisionDebugNode->setVisible(true);
 }

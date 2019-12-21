@@ -18,7 +18,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Scenes/Title/TitleScreen.h"
 
-#include "Strings/Common/Squally.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 using namespace cocos2d::cocos_experimental;

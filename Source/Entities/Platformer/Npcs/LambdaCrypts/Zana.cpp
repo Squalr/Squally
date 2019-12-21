@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/LambdaCrypts/Zana.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Zana::~Zana()
 
 Vec2 Zana::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Zana::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Zana::getHexusOpponentData()
 	if (Zana::HexusOpponentDataInstance == nullptr)
 	{
 		Zana::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_LambdaCrypts_Zana_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameLambdaCrypts,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Zana::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.830f,
 			HexusOpponentData::generateDeck(32, 0.830f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Zana::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

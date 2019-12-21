@@ -34,6 +34,7 @@ SmartScene::SmartScene()
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
+	this->disposeCallbacks = std::vector<std::function<void()>>();
 
 	this->layerColor->setContentSize(Director::getInstance()->getVisibleSize());
 
@@ -45,6 +46,10 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
+	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	{
+		(*it)();
+	}
 }
 
 void SmartScene::onEnter()
@@ -70,7 +75,7 @@ void SmartScene::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}
 	else
 	{
@@ -95,7 +100,7 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
@@ -109,7 +114,7 @@ void SmartScene::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->currentEq);
+			this->onHackerModeEnable(args->hackFlags);
 		}
 	}));
 
@@ -119,7 +124,7 @@ void SmartScene::initializeListeners()
 	}));
 }
 
-void SmartScene::onDeveloperModeEnable()
+void SmartScene::onDeveloperModeEnable(int debugLevel)
 {
 }
 
@@ -127,7 +132,7 @@ void SmartScene::onDeveloperModeDisable()
 {
 }
 
-void SmartScene::onHackerModeEnable(int eq)
+void SmartScene::onHackerModeEnable(int hackFlags)
 {
 	this->hackermodeEnabled = true;
 }
@@ -215,10 +220,25 @@ void SmartScene::pause()
 	if (this->fadeAction != nullptr)
 	{
 		this->stopAction(this->fadeAction);
-		this->layerColor->setOpacity(0.0f);
+		this->layerColor->setOpacity(0);
 	}
 
 	super::pause();
+}
+
+static inline unsigned long long TaskId = 0;
+
+void SmartScene::defer(std::function<void()> task)
+{
+		unsigned long long taskId = TaskId++;
+		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
+
+		// Schedule the task for the next update loop
+		this->schedule([=](float dt)
+		{
+			task();
+			this->unschedule(eventKey);
+		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
 }
 
 void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
@@ -321,4 +341,9 @@ void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyC
 			}
 		}
 	}));
+}
+
+void SmartScene::onDispose(std::function<void()> task)
+{
+	this->disposeCallbacks.push_back(task);
 }

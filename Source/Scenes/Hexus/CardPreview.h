@@ -24,13 +24,24 @@ private:
 	CardPreview();
 	~CardPreview();
 
+	struct PreviewData
+	{
+		Card* previewCard;
+		cocos2d::Node* previewNode;
+
+		PreviewData() : previewCard(nullptr), previewNode(nullptr) { }
+		PreviewData(Card* previewCard, cocos2d::Node* previewNode) : previewCard(previewCard), previewNode(previewNode) { }
+	};
+
 	void onEnter() override;
 	void initializePositions() override;
+	CardPreview::PreviewData constructPreview(Card* card);
 
 	cocos2d::Sprite* cardPad;
-	Card* currentPreviewCard;
+	PreviewData currentPreviewData;
 	cocos2d::Node* previewPanel;
 	ClickableTextNode* helpButton;
 	
 	std::function<void(Card* card)> onHelpClick;
+	std::map<std::string, PreviewData> previewCache;
 };

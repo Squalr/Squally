@@ -7,6 +7,7 @@
 
 namespace cocos2d
 {
+	class EventListener;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
 }
@@ -19,7 +20,10 @@ public:
 	static void saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value);
 	std::string getUniqueIdentifier();
 	void attachBehavior(AttachedBehavior* attachedBehavior);
+	void detachBehavior(AttachedBehavior* attachedBehavior);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
+	void addTag(std::string tag);
+	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
 	cocos2d::Value getStateOrDefault(std::string key, cocos2d::Value value);
 	int getStateOrDefaultInt(std::string key, int value);
 	float getStateOrDefaultFloat(std::string key, float value);
@@ -30,11 +34,15 @@ public:
 	bool isZSorted();
 	void saveObjectState(std::string key, cocos2d::Value value);
 	void listenForStateWrite(std::string key, std::function<void(cocos2d::Value)> onWrite);
+	void listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite);
 	const cocos2d::Value& getObjectStateOrDefault(std::string key, const cocos2d::Value& defaultValue);
 	void broadcastMapEvent(std::string eventName, cocos2d::ValueMap args);
 	void listenForMapEvent(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
+	void listenForMapEventOnce(std::string eventName, std::function<void(cocos2d::ValueMap args)> callback);
 	std::string getListenEvent();
 	std::string getSendEvent();
+	virtual void despawn();
+	bool isDespawned();
 
 	template <class T>
 	T* getAttachedBehavior()
@@ -50,9 +58,52 @@ public:
 		return nullptr;
 	}
 
+	template <class T>
+	void getAttachedBehavior(std::function<void(T*)> onFound)
+	{
+		T* attachedBehavior = this->getAttachedBehavior<T>();
+
+		if (attachedBehavior != nullptr && onFound != nullptr)
+		{
+			onFound(attachedBehavior);
+		}
+	}
+	
+	static inline unsigned long long WatchId = 0;
+
+	template <class T>
+	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
+	{
+		unsigned long long watchId = WatchId++;
+		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
+
+		// Do an immediate check for the object
+		T* behavior = this->getAttachedBehavior<T>();
+
+		if (behavior != nullptr)
+		{
+			onBehaviorFound(behavior);
+			return;
+		}
+
+		// Schedule a task to watch for the object
+		this->schedule([=](float dt)
+		{
+			T* behavior = this->getAttachedBehavior<T>();
+
+			if (behavior != nullptr)
+			{
+				this->unschedule(eventKey);
+				onBehaviorFound(behavior);
+			}
+
+		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
+	}
+
 	static const std::string MapKeyId;
 	static const std::string MapKeyName;
 	static const std::string MapKeyTag;
+	static const std::string MapKeyTags;
 	static const std::string MapKeyPoints;
 	static const std::string MapKeyPolyLinePoints;
 	static const std::string MapKeyRotation;
@@ -78,6 +129,8 @@ public:
 	static const std::string MapKeyAttachedBehavior;
 	static const std::string MapKeyAttachedBehaviorArgs;
 	static const std::string MapKeyArgs;
+	static const std::string MapKeyQueryable;
+	static const std::string MapKeyZoom;
 
 	static const std::string MapKeyGid;
 
@@ -92,6 +145,8 @@ public:
 	static const std::string MapKeyPropertyType;
 	static const std::string MapKeyPropertyValue;
 
+	cocos2d::ValueMap properties;
+	
 protected:
 	GameObject();
 	GameObject(const cocos2d::ValueMap& properties);
@@ -103,7 +158,6 @@ protected:
 	void loadObjectState();
 	virtual void onObjectStateLoaded();
 
-	cocos2d::ValueMap properties;
 	std::string listenEvent;
 	std::string sendEvent;
 	std::vector<cocos2d::Vec2> polylinePoints;
@@ -114,9 +168,9 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
-	std::string tag;
+	bool despawned;
+	std::set<std::string> tags;
 	bool zSorted;
-	cocos2d::Node* attachedBehaviorNode;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;

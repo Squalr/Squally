@@ -10,6 +10,9 @@
 
 using namespace cocos2d;
 
+const int MenuLabel::FontOutlineSize = 2;
+const int MenuLabel::HighlightOutlineSize = 4;
+
 MenuLabel* MenuLabel::create(LocalizedLabel* label)
 {
 	MenuLabel* instance = new MenuLabel(label);
@@ -26,7 +29,7 @@ MenuLabel::MenuLabel(LocalizedLabel* label)
 	this->label = label;
 	this->labelHighlighted = label->clone();
 
-	this->label->enableOutline(Color4B::BLACK, fontOutlineSize);
+	this->label->enableOutline(Color4B::BLACK, MenuLabel::FontOutlineSize);
 
 	this->addChild(this->labelHighlighted);
 	this->addChild(this->label);
@@ -89,7 +92,7 @@ void MenuLabel::onMouseMove(EventMouse* event)
 			this->label->setTextColor(this->hoverColor);
 			this->labelHighlighted->setTextColor(this->hoverColor);
 
-			this->labelHighlighted->enableOutline(this->glowColor, highlightOutlineSize);
+			this->labelHighlighted->enableOutline(this->glowColor, MenuLabel::HighlightOutlineSize);
 		}
 		else
 		{

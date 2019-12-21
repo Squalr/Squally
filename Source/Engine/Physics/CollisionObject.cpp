@@ -5,6 +5,7 @@
 #include "cocos/base/CCValue.h"
 #include "cocos/physics/CCPhysicsBody.h"
 #include "cocos/physics/CCPhysicsContact.h"
+#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
@@ -17,6 +18,7 @@ using namespace cocos2d;
 
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 const std::string CollisionObject::MapKeyCollisionTypeNone = "none";
+const std::string CollisionObject::MapKeyFriction = "friction";
 std::map<int, int> CollisionObject::InverseCollisionMap = std::map<int, int>();
 
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
@@ -24,6 +26,7 @@ const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
+const float CollisionObject::CollisionZThreshold = 32.0f;
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -70,13 +73,15 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
-	this->physicsEnabled = true;
+	this->gravityEnabled = true;
+	this->gravityInversed = true;
 	this->contactUpdateCallback = nullptr;
 	this->onDebugPositionSet = nullptr;
 	this->bindTarget = nullptr;
 
 	if (this->physicsBody != nullptr)
 	{
+		this->physicsBody->setGravityEnable(false);
 		this->physicsBody->setRotationEnable(canRotate);
 		this->physicsBody->setDynamic(isDynamic);
 		this->physicsBody->setContactTestBitmask(0);
@@ -125,16 +130,27 @@ void CollisionObject::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	this->buildInverseCollisionMap();
+
+	// Optimization: do not add during initalizeListeners to avoid extra calls
+	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
+	{
+		this->buildInverseCollisionMap();
+	}));
 }
 
 void CollisionObject::initializeListeners()
 {
 	super::initializeListeners();
+}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventCollisonMapUpdated, [=](EventCustom* eventCustom)
+void CollisionObject::despawn()
+{
+	super::despawn();
+	
+	if (this->physicsBody != nullptr)
 	{
-		this->buildInverseCollisionMap();
-	}));
+		this->physicsBody->setEnabled(false);
+	}
 }
 
 void CollisionObject::buildInverseCollisionMap()
@@ -171,9 +187,27 @@ void CollisionObject::update(float dt)
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
 	{
-		// Apply dampening
 		Vec2 velocity = this->getVelocity();
+		Scene* scene = Director::getInstance()->getRunningScene();
 
+		// Apply gravity
+		if (this->gravityEnabled && scene != nullptr && scene->getPhysicsWorld() != nullptr)
+		{
+			const Vec2 gravity = Director::getInstance()->getRunningScene()->getPhysicsWorld()->getGravity();
+
+			velocity.x += gravity.x * dt;
+
+			if (this->gravityInversed)
+			{
+				velocity.y += gravity.y * dt;
+			}
+			else
+			{
+				velocity.y -= gravity.y * dt;
+			}
+		}
+
+		// Apply dampening
 		velocity.x *= this->horizontalDampening;
 		velocity.y *= this->verticalDampening;
 
@@ -193,8 +227,6 @@ void CollisionObject::setDebugPositionSetCallback(std::function<void()> onDebugP
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
-	this->physicsEnabled = enabled;
-
 	if (this->physicsBody != nullptr)
 	{
 		this->physicsBody->setEnabled(enabled);
@@ -203,10 +235,12 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 
 void CollisionObject::setGravityEnabled(bool isEnabled)
 {
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setGravityEnable(isEnabled);
-	}
+	this->gravityEnabled = isEnabled;
+}
+
+void CollisionObject::inverseGravity()
+{
+	this->gravityInversed = !this->gravityInversed;
 }
 
 void CollisionObject::setPosition(const Vec2& position)
@@ -292,7 +326,7 @@ void CollisionObject::addPhysicsShape(PhysicsShape* shape)
 	}
 }
 
-void CollisionObject::bindTo(Node* bindTarget)
+void CollisionObject::bindTo(GameObject* bindTarget)
 {
 	this->bindTarget = bindTarget;
 
@@ -301,6 +335,11 @@ void CollisionObject::bindTo(Node* bindTarget)
 		GameUtils::changeParent(this, this->bindTarget->getParent(), true);
 		this->setPosition(bindTarget->getPosition());
 	}
+}
+
+void CollisionObject::unbind()
+{
+	this->bindTarget = nullptr;
 }
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
@@ -327,14 +366,21 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 {
 	if (CollisionObject::InverseCollisionMap.find(collisionType) != CollisionObject::InverseCollisionMap.end())
 	{
-		CollisionObject::InverseCollisionMap[collisionType] = CollisionObject::InverseCollisionMap[collisionType] | this->getCollisionType();
+		int newBitmask = CollisionObject::InverseCollisionMap[collisionType] | this->getCollisionType();
+
+		if (CollisionObject::InverseCollisionMap[collisionType] != newBitmask)
+		{
+			CollisionObject::InverseCollisionMap[collisionType] = newBitmask;
+			
+			ObjectEvents::TriggerCollisionMapUpdated();
+		}
 	}
 	else
 	{
 		CollisionObject::InverseCollisionMap[collisionType] = this->getCollisionType();
-	}
 
-	ObjectEvents::TriggerCollisionMapUpdated();
+		ObjectEvents::TriggerCollisionMapUpdated();
+	}
 
 	if (eventMap.find(collisionType) == eventMap.end())
 	{
@@ -359,6 +405,11 @@ bool CollisionObject::onContactBegin(PhysicsContact &contact)
 bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
+
+	if (!this->isWithinZThreshold(contact, collisionData))
+	{
+		return false;
+	}
 	
 	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
 	{
@@ -372,6 +423,11 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 
+	if (!this->isWithinZThreshold(contact, collisionData))
+	{
+		return false;
+	}
+
 	this->currentCollisions.erase(
 		std::remove(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other), this->currentCollisions.end()
 	);
@@ -379,7 +435,12 @@ bool CollisionObject::onContactEnd(PhysicsContact &contact)
 	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
-PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius)
+void CollisionObject::ClearInverseMap()
+{
+	CollisionObject::InverseCollisionMap.clear();
+}
+
+PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius, float friction)
 {
 	Size newSize = size * scale;
 
@@ -401,21 +462,20 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 	// Top capsule
 	points.push_back(Vec2(0.0f, newSize.height / 2.0f + capsuleRadius));
 
-	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, 0.5f));
+	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
 bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
-	const float CollisionDepthThreshold = 8.0f;
+	if (this->physicsBody != nullptr && !this->physicsBody->isEnabled())
+	{
+		return false;
+	}
+
 	CollisionResult result = defaultResult;
 
-	if (collisionData.other != nullptr)
+	if (collisionData.other != nullptr && this->isWithinZThreshold(contact, collisionData))
 	{
-		if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(collisionData.other)) >= CollisionDepthThreshold)
-		{
-			return false;
-		}
-
 		CollisionType collisionType = collisionData.other->getCollisionType();
 
 		if (eventMap.find(collisionType) != eventMap.end())
@@ -467,6 +527,27 @@ void CollisionObject::updateBinds()
 {
 	if (this->bindTarget != nullptr)
 	{
-		this->bindTarget->setPosition(this->getPosition());
+		if (this->bindTarget->isDespawned())
+		{
+			this->unbind();
+			this->despawn();
+		}
+		else
+		{
+			this->bindTarget->setPosition(this->getPosition());
+		}
 	}
+}
+
+bool CollisionObject::isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData)
+{
+	const float thisDepth = GameUtils::getDepth(this);
+	const float otherDepth = GameUtils::getDepth(collisionData.other);
+
+	if (std::abs(thisDepth - otherDepth) >= CollisionObject::CollisionZThreshold)
+	{
+		return false;
+	}
+
+	return true;
 }

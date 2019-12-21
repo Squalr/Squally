@@ -14,6 +14,7 @@ namespace cocos2d
 	class Vec2;
 }
 
+class ClickableNode;
 class ConstantString;
 class Hud;
 class LocalizedLabel;
@@ -26,6 +27,7 @@ public:
 
 	float getCameraDistance();
 	void setCameraDistance(float distance);
+	float getCameraZoomOnTarget(cocos2d::Node* target);
 	float getCameraZoom();
 	void setCameraZoom(float zoom);
 	cocos2d::Vec2 getCameraPosition();
@@ -47,11 +49,12 @@ private:
 	GameCamera();
 	virtual ~GameCamera();
 	void onEnter() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	float getIntendedCameraDistance();
 	cocos2d::Vec2 boundCameraByEllipses();
 	cocos2d::Vec2 boundCameraByRectangle();
 	void updateCameraDebugLabels();
@@ -62,6 +65,7 @@ private:
 	float defaultDistance;
 
 	Hud* hud;
+	ClickableNode* debugScrollHitbox;
 	LocalizedLabel* debugCameraLabelX;
 	LocalizedLabel* debugCameraLabelY;
 	LocalizedLabel* debugCameraLabelZoom;

@@ -159,7 +159,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, LateBindData 
 	return hackableCode;
 }
 
-HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.requiredEq, lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview, lateBindData.clippy)
+HackableCode::HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData) : HackableAttribute(lateBindData.hackFlags, lateBindData.duration, lateBindData.iconResource, lateBindData.functionName, lateBindData.hackablePreview, lateBindData.clippy)
 {
 	this->hackableCodeIdentifier = lateBindData.hackableObjectIdentifier + "_" + lateBindData.functionName->getStringIdentifier();
 	this->codePointer = (unsigned char*)codeStart;
@@ -211,7 +211,7 @@ HackableCode* HackableCode::clone()
 
 	for (auto it = this->lateBindData.registerHints.begin(); it != this->lateBindData.registerHints.end(); it++)
 	{
-		registerHintsClone[it->first] = it->second->clone();
+		registerHintsClone[it->first] = it->second == nullptr ? nullptr : it->second->clone();
 	}
 
 	clonedData.registerHints = registerHintsClone;

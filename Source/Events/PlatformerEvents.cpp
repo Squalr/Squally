@@ -18,6 +18,10 @@ const std::string PlatformerEvents::EventEquippedItemsChanged = "EVENT_EQUIPPED_
 const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
+const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
+const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
+const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
+const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -29,8 +33,10 @@ void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 
 void PlatformerEvents::TriggerWarpToLocation(WarpArgs args)
 {
+	const std::string identifier = std::to_string((unsigned long long)(args.target));
+
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventWarpToLocationPrefix + std::to_string((unsigned long long)(args.target)),
+		PlatformerEvents::EventWarpToLocationPrefix + identifier,
 		&args
 	);
 }
@@ -102,3 +108,34 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 		&args
 	);
 }
+
+void PlatformerEvents::TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveItemsFromPool,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveItem(GiveItemArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveItem,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerAllowPause()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventAllowPause
+	);
+}
+
+void PlatformerEvents::TriggerDisallowPause()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventDisallowPause
+	);
+}
+

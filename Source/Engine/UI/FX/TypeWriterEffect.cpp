@@ -16,6 +16,16 @@ using namespace cocos2d;
 
 void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<void()> onEffectFinishedCallback, float delayPerLetter)
 {
+	if (label == nullptr || label->localizedString == nullptr)
+	{
+		if (onEffectFinishedCallback != nullptr)
+		{
+			onEffectFinishedCallback();
+		}
+		
+		return;
+	}
+
 	int max = label->getStringLength();
 
 	// We have to add events the old way -- LocalizedLabels inherit from a cocos label, not a SmartNode
@@ -63,5 +73,23 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 			}),
 			nullptr
 		));
+	}
+}
+
+void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
+{
+	if (label == nullptr || label->localizedString == nullptr)
+	{
+		return;
+	}
+
+	int max = label->getStringLength();
+
+	for (int i = 0; i < max; i++)
+	{
+		if (label->getLetter(i) != nullptr)
+		{
+			label->getLetter(i)->stopAllActions();
+		}
 	}
 }

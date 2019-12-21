@@ -10,8 +10,6 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
-#include "Strings/Common/Constant.h"
-
 using namespace cocos2d;
 
 DeckCardCountDisplay* DeckCardCountDisplay::create()
@@ -26,24 +24,26 @@ DeckCardCountDisplay* DeckCardCountDisplay::create()
 DeckCardCountDisplay::DeckCardCountDisplay()
 {
 	this->playerDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->playerDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->playerDeckCardCountStr = ConstantString::create("0");
+	this->playerDeckCardCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->playerDeckCardCountStr);
 	this->enemyDeckCardCountFrame = LayerColor::create(Color4B(0, 0, 0, 196));
-	this->enemyDeckCardCountText = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, Strings::Common_Constant::create());
+	this->enemyDeckCardCountStr = ConstantString::create("0");
+	this->enemyDeckCardCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->enemyDeckCardCountStr);
 
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->playerDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->playerDeckCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->playerDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->playerDeckCardCountLabel->setAlignment(TextHAlignment::LEFT);
+	this->playerDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 1.0f));
 	this->enemyDeckCardCountFrame->setContentSize(Size(48.0f, 32.0f));
-	this->enemyDeckCardCountText->setAlignment(TextHAlignment::LEFT);
-	this->enemyDeckCardCountText->setAnchorPoint(Vec2(0.0f, 1.0f));
+	this->enemyDeckCardCountLabel->setAlignment(TextHAlignment::LEFT);
+	this->enemyDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 
 	this->addChild(this->playerDeckCardCountFrame);
-	this->addChild(this->playerDeckCardCountText);
+	this->addChild(this->playerDeckCardCountLabel);
 	this->addChild(this->enemyDeckCardCountFrame);
-	this->addChild(this->enemyDeckCardCountText);
+	this->addChild(this->enemyDeckCardCountLabel);
 }
 
 DeckCardCountDisplay::~DeckCardCountDisplay()
@@ -57,10 +57,10 @@ void DeckCardCountDisplay::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->playerDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY - 32.0f);
-	this->playerDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY + 2.0f);
+	this->playerDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f - Config::deckOffsetY - Config::deckCardCountOffsetY + 2.0f);
 
 	this->enemyDeckCardCountFrame->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY);
-	this->enemyDeckCardCountText->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f + 2.0f);
+	this->enemyDeckCardCountLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX - 24.0f + 6.0f, visibleSize.height / 2.0f + Config::deckOffsetY + Config::deckCardCountOffsetY + 32.0f + 2.0f);
 }
 
 void DeckCardCountDisplay::onBeforeStateChange(GameState* gameState)
@@ -75,6 +75,6 @@ void DeckCardCountDisplay::onAnyStateChange(GameState* gameState)
 
 void DeckCardCountDisplay::updateTotals(GameState* gameState)
 {
-	this->playerDeckCardCountText->setStringReplacementVariables(ConstantString::create(StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2)));
-	this->enemyDeckCardCountText->setStringReplacementVariables(ConstantString::create(StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2)));
+	this->playerDeckCardCountStr->setString(StrUtils::toStringZeroPad(gameState->playerDeck->getCardCount(), 2));
+	this->enemyDeckCardCountStr->setString(StrUtils::toStringZeroPad(gameState->enemyDeck->getCardCount(), 2));
 }

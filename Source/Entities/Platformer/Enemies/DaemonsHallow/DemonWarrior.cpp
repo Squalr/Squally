@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/DemonWarrior.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ DemonWarrior::~DemonWarrior()
 
 Vec2 DemonWarrior::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* DemonWarrior::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* DemonWarrior::getHexusOpponentData()
 	if (DemonWarrior::HexusOpponentDataInstance == nullptr)
 	{
 		DemonWarrior::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_DemonWarrior_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.7f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			DemonWarrior::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.583f,
 			HexusOpponentData::generateDeck(32, 0.583f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* DemonWarrior::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
 
 class RowTotals : public ComponentBase
@@ -35,7 +36,7 @@ private:
 	void initializePositions() override;
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
-	void runDeltaAnimation(LocalizedLabel* label, float startPositionY, int delta);
+	void runDeltaAnimation(LocalizedLabel* label, ConstantString* str, float startPositionY, int delta);
 
 	LocalizedLabel* enemyBinaryCardTotal;
 	LocalizedLabel* enemyDecimalCardTotal;
@@ -44,6 +45,13 @@ private:
 	LocalizedLabel* playerDecimalCardTotal;
 	LocalizedLabel* playerHexCardTotal;
 
+	ConstantString* enemyBinaryCardTotalStr;
+	ConstantString* enemyDecimalCardTotalStr;
+	ConstantString* enemyHexCardTotalStr;
+	ConstantString* playerBinaryCardTotalStr;
+	ConstantString* playerDecimalCardTotalStr;
+	ConstantString* playerHexCardTotalStr;
+
 	LocalizedLabel* enemyBinaryCardIncreaseLabel;
 	LocalizedLabel* enemyDecimalCardIncreaseLabel;
 	LocalizedLabel* enemyHexCardIncreaseLabel;
@@ -51,12 +59,26 @@ private:
 	LocalizedLabel* playerDecimalCardIncreaseLabel;
 	LocalizedLabel* playerHexCardIncreaseLabel;
 
+	ConstantString* enemyBinaryCardIncreaseStr;
+	ConstantString* enemyDecimalCardIncreaseStr;
+	ConstantString* enemyHexCardIncreaseStr;
+	ConstantString* playerBinaryCardIncreaseStr;
+	ConstantString* playerDecimalCardIncreaseStr;
+	ConstantString* playerHexCardIncreaseStr;
+
 	LocalizedLabel* enemyBinaryCardDecreaseLabel;
 	LocalizedLabel* enemyDecimalCardDecreaseLabel;
 	LocalizedLabel* enemyHexCardDecreaseLabel;
 	LocalizedLabel* playerBinaryCardDecreaseLabel;
 	LocalizedLabel* playerDecimalCardDecreaseLabel;
 	LocalizedLabel* playerHexCardDecreaseLabel;
+
+	ConstantString* enemyBinaryCardDecreaseStr;
+	ConstantString* enemyDecimalCardDecreaseStr;
+	ConstantString* enemyHexCardDecreaseStr;
+	ConstantString* playerBinaryCardDecreaseStr;
+	ConstantString* playerDecimalCardDecreaseStr;
+	ConstantString* playerHexCardDecreaseStr;
 
 	int cachedEnemyBinaryTotal;
 	int cachedEnemyDecimalTotal;

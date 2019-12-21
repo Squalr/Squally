@@ -10,7 +10,6 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/Sound.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Events/CombatEvents.h"
@@ -29,7 +28,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Platformer/Entities/Names/Helpers/EndianForest/Scrappy.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -57,24 +56,12 @@ Scrappy::Scrappy(ValueMap& properties) : super(properties,
 {
 	this->hexusOpponentData = Scrappy::getHexusOpponentData();
 
-	this->droidAlarmedSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
-	this->droidBrief1Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief);
-	this->droidBrief2Sound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidBrief2);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 	this->fireAnimation = SmartAnimationSequenceNode::create();
 
-	this->droidAlarmedSound->toggleCameraDistanceFade(true);
-	this->droidBrief1Sound->toggleCameraDistanceFade(true);
-	this->droidBrief2Sound->toggleCameraDistanceFade(true);
-	this->droidChatterSound->toggleCameraDistanceFade(true);
 	this->fireAnimation->setFlippedY(true);
 	this->fireAnimation->setScale(0.25f);
 
 	this->belowAnimationNode->addChild(this->fireAnimation);
-	this->addChild(this->droidAlarmedSound);
-	this->addChild(this->droidBrief1Sound);
-	this->addChild(this->droidBrief2Sound);
-	this->addChild(this->droidChatterSound);
 }
 
 Scrappy::~Scrappy()
@@ -107,7 +94,7 @@ float Scrappy::getFloatHeight()
 
 Vec2 Scrappy::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 48.0f);
 }
 
 LocalizedString* Scrappy::getEntityName()
@@ -120,16 +107,12 @@ HexusOpponentData* Scrappy::getHexusOpponentData()
 	if (Scrappy::HexusOpponentDataInstance == nullptr)
 	{
 		Scrappy::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Helpers_EndianForest_Scrappy_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Scrappy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			1.000f,
 			HexusOpponentData::generateDeck(32, 1.000f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -142,8 +125,8 @@ HexusOpponentData* Scrappy::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			{ },
 			nullptr
 		);
 	}

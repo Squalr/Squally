@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Magnus.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Magnus::~Magnus()
 
 Vec2 Magnus::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Magnus::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 	if (Magnus::HexusOpponentDataInstance == nullptr)
 	{
 		Magnus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Magnus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.714f,
 			HexusOpponentData::generateDeck(32, 0.714f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Magnus::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Kill),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

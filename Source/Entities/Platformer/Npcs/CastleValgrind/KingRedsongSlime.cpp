@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/KingRedsong.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,16 +61,12 @@ HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
 	if (KingRedsongSlime::HexusOpponentDataInstance == nullptr)
 	{
 		KingRedsongSlime::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -128.0f),
 			Vec2(-32.0f, -96.0f),
 			KingRedsongSlime::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.402f,
 			HexusOpponentData::generateDeck(32, 0.402f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* KingRedsongSlime::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

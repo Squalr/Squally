@@ -3,6 +3,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/GameState.h"
 
 using namespace cocos2d;
@@ -19,31 +20,29 @@ void ComponentBase::initializeListeners()
 {
 	super::initializeListeners();
 
-	EventListenerCustom* requestStateChangeListener = EventListenerCustom::create(GameState::RequestStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onRequestStateChangeEvent, this));
-	EventListenerCustom* beforeStateChangeListener = EventListenerCustom::create(GameState::BeforeStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onBeforeStateChangeEvent, this));
-	EventListenerCustom* stateChangeListener = EventListenerCustom::create(GameState::OnStateUpdateEvent, CC_CALLBACK_1(ComponentBase::onStateChangeEvent, this));
-
-	this->addEventListener(requestStateChangeListener);
-	this->addEventListener(beforeStateChangeListener);
-	this->addEventListener(stateChangeListener);
-}
-
-void ComponentBase::onRequestStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
-}
-
-void ComponentBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onBeforeStateChange((GameState*)(eventCustom->getUserData()));
-}
-
-void ComponentBase::onStateChangeEvent(EventCustom* eventCustom)
-{
-	this->onAnyStateChange((GameState*)(eventCustom->getUserData()));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeRequestStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onBeforeAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
+	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventRequestStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onAnyRequestStateChange((GameState*)(eventCustom->getUserData()));
+	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventBeforeStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onBeforeStateChange((GameState*)(eventCustom->getUserData()));
+	}));
+	this->addEventListener(EventListenerCustom::create(HexusEvents::EventOnStateUpdate, [=](EventCustom* eventCustom)
+	{
+		this->onAnyStateChange((GameState*)(eventCustom->getUserData()));
+	}));
 }
 
 void ComponentBase::onBeforeStateChange(GameState* gameState)
+{
+}
+
+void ComponentBase::onBeforeAnyRequestStateChange(GameState* gameState)
 {
 }
 

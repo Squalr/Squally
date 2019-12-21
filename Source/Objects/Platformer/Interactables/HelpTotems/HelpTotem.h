@@ -18,6 +18,9 @@ class HelpTotem : public GameObject
 public:
 	static HelpTotem* create(cocos2d::ValueMap& properties);
 
+	void deactivate();
+	void activate();
+
 protected:
 	HelpTotem(cocos2d::ValueMap& properties);
 	~HelpTotem();
@@ -28,8 +31,14 @@ protected:
 
 private:
 	typedef GameObject super;
+
+	void tryDisplayHint();
 	
+	bool isInactive;
+	bool canInteract;
+
 	cocos2d::Sprite* totem;
+	cocos2d::Sprite* totemInactive;
 	CollisionObject* hintCollision;
 	SpeechBubble* speechBubble;
 	LocalizedString* hint;

@@ -15,8 +15,9 @@
 
 #include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"
+#include "Resources/SoundResources.h"
 
-#include "Strings/Menus/Notifications/AnimalRescued.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -37,7 +38,6 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 
 CagedAnimal::~CagedAnimal()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->animalNode));
 }
 
 void CagedAnimal::onEnter()
@@ -80,7 +80,12 @@ void CagedAnimal::onBreak()
 
 	SaveManager::saveProfileData(this->saveKey, Value(true));
 
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(Strings::Menus_Notifications_AnimalRescued::create(), this->getAnimalName(), this->getSpriteResource()));
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+		Strings::Menus_Notifications_AnimalRescued::create(),
+		this->getAnimalName(),
+		this->getSpriteResource(),
+		SoundResources::Notifications_NotificationGood1
+	));
 
 	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->animalNode));
 

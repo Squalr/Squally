@@ -101,3 +101,15 @@ void RadioButton::uncheck()
 
 	this->isChecked = false;
 }
+
+void RadioButton::enableInteraction()
+{
+	this->checked->enableInteraction();
+	this->unchecked->enableInteraction();
+}
+
+void RadioButton::disableInteraction()
+{
+	this->checked->disableInteraction();
+	this->unchecked->disableInteraction();
+}

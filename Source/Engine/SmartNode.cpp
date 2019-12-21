@@ -28,10 +28,16 @@ SmartNode::SmartNode()
 	this->hackermodeEnabled = false;
 	this->optimizationHasGlobalListener = false;
 	this->optimizationHasListener = false;
+	this->hasInitializedListeners = false;
+	this->disposeCallbacks = std::vector<std::function<void()>>();
 }
 
 SmartNode::~SmartNode()
 {
+	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	{
+		(*it)();
+	}
 }
 
 void SmartNode::onEnter()
@@ -39,11 +45,16 @@ void SmartNode::onEnter()
 	super::onEnter();
 
 	this->initializePositions();
-	this->initializeListeners();
+
+	if (!this->hasInitializedListeners)
+	{
+		this->initializeListeners();
+		this->hasInitializedListeners = true;
+	}
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable();
+		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
 	}
 	else
 	{
@@ -79,12 +90,17 @@ void SmartNode::initializeListeners()
 		this->removeAllListeners();
 	}
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* eventCustom)
 	{
-		this->onDeveloperModeEnable();
+		DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->onDeveloperModeEnable(args->debugLevel);
+		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* eventCustom)
 	{
 		this->onDeveloperModeDisable();
 	}));
@@ -95,7 +111,7 @@ void SmartNode::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->currentEq);
+			this->onHackerModeEnable(args->hackFlags);
 		}
 	}));
 
@@ -105,7 +121,7 @@ void SmartNode::initializeListeners()
 	}));
 }
 
-void SmartNode::onDeveloperModeEnable()
+void SmartNode::onDeveloperModeEnable(int debugLevel)
 {
 }
 
@@ -113,7 +129,7 @@ void SmartNode::onDeveloperModeDisable()
 {
 }
 
-void SmartNode::onHackerModeEnable(int eq)
+void SmartNode::onHackerModeEnable(int hackFlags)
 {
 	this->hackermodeEnabled = true;
 }
@@ -130,11 +146,15 @@ bool SmartNode::isDeveloperModeEnabled()
 
 void SmartNode::removeAllListeners()
 {
+	this->optimizationHasGlobalListener = false;
+	this->optimizationHasListener = false;
+	this->hasInitializedListeners = false;
 	this->getEventDispatcher()->removeEventListenersForTarget(this);
 }
 
 void SmartNode::removeNonGlobalListeners()
 {
+	this->hasInitializedListeners = false;
 	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
 	{
 		return !listener->isGlobal();
@@ -148,7 +168,7 @@ void SmartNode::addEventListener(EventListener* listener)
 		return;
 	}
 
-	if (!listener->isGlobal())
+	if (listener->isGlobal())
 	{
 		this->optimizationHasGlobalListener = true;
 	}
@@ -168,6 +188,19 @@ void SmartNode::removeEventListener(EventListener* listener)
 	this->getEventDispatcher()->removeEventListener(listener);
 }
 
+void SmartNode::removeEventListenerByTag(std::string tag)
+{
+	if (tag.empty())
+	{
+		return;
+	}
+
+	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	{
+		return listener->getTag() == tag;
+	});
+}
+
 void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 {
 	if (listener == nullptr)
@@ -183,18 +216,35 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 		}
 	});
 
+	wrapper->setTag(listener->getTag());
 	wrapper->setIgnorePause(true);
 
 	// Keep the original listener around so that we can invoke it, but disable it
 	listener->setEnabled(false);
+	listener->setTag("");
 
 	this->addEventListener(wrapper);
 	this->addEventListener(listener);
 }
 
-void SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+static inline unsigned long long TaskId = 0;
+
+void SmartNode::defer(std::function<void()> task)
 {
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+		unsigned long long taskId = TaskId++;
+		std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
+
+		// Schedule the task for the next update loop
+		this->schedule([=](float dt)
+		{
+			task();
+			this->unschedule(eventKey);
+		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+}
+
+EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+{
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
 
@@ -205,12 +255,16 @@ void SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCode
 				callback(args);
 			}
 		}
-	}));
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
 }
 
-void SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
 
@@ -221,12 +275,16 @@ void SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCo
 				callback(args);
 			}
 		}
-	}));
+	});
+
+	this->addEventListenerIgnorePause(listener);
+
+	return listener;
 }
 
-void SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
@@ -240,12 +298,16 @@ void SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCod
 				}
 			}
 		}
-	}));
+	});
+
+	this->addEventListenerIgnorePause(listener);
+
+	return listener;
 }
 
-void SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
-	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
 
@@ -256,12 +318,16 @@ void SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCod
 				callback(args);
 			}
 		}
-	}));
+	});
+
+	this->addEventListener(listener);
+
+	return listener;
 }
 
-void SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
 
@@ -272,12 +338,16 @@ void SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyC
 				callback(args);
 			}
 		}
-	}));
+	});
+
+	this->addEventListenerIgnorePause(listener);
+
+	return listener;
 }
 
-void SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
 {
-	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
@@ -291,5 +361,14 @@ void SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCo
 				}
 			}
 		}
-	}));
+	});
+
+	this->addEventListenerIgnorePause(listener);
+
+	return listener;
+}
+
+void SmartNode::onDispose(std::function<void()> task)
+{
+	this->disposeCallbacks.push_back(task);
 }

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/Krampus.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 	if (Krampus::HexusOpponentDataInstance == nullptr)
 	{
 		Krampus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_Krampus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-48.0f, -232.0f),
 			Krampus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.917f,
 			HexusOpponentData::generateDeck(32, 0.917f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Krampus::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

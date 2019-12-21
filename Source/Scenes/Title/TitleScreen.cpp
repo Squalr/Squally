@@ -5,15 +5,15 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Steam/Steam.h"
+#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Menus/MinigamesMenu.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Scenes/Title/TitleScreenBackground.h"
@@ -24,11 +24,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Developer/DeveloperMenu.h"
-#include "Strings/Menus/Exit.h"
-#include "Strings/Menus/Minigames.h"
-#include "Strings/Menus/Options/Options.h"
-#include "Strings/Menus/StoryMode.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -54,7 +50,7 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
-	this->music = Music::create(MusicResources::WeWillGetThereTogether);
+	this->music = Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
 	
 	Size shadowSize = Size(-2.0f, -2.0f);
 	int shadowBlur = 2;
@@ -66,9 +62,6 @@ TitleScreen::TitleScreen()
 
 	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
 	LocalizedLabel*	storyModeLabelSelected = storyModeLabel->clone();
-
-	LocalizedLabel*	minigamesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Minigames::create());
-	LocalizedLabel*	minigamesLabelSelected = minigamesLabel->clone();
 
 	LocalizedLabel*	optionsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Options_Options::create());
 	LocalizedLabel*	optionsLabelSelected = optionsLabel->clone();
@@ -82,9 +75,6 @@ TitleScreen::TitleScreen()
 	storyModeLabel->setColor(textColor);
 	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabel->enableGlow(shadowColor);
-	minigamesLabel->setColor(textColor);
-	minigamesLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	minigamesLabel->enableGlow(shadowColor);
 	optionsLabel->setColor(textColor);
 	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabel->enableGlow(shadowColor);
@@ -98,9 +88,6 @@ TitleScreen::TitleScreen()
 	storyModeLabelSelected->setColor(highlightColor);
 	storyModeLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
 	storyModeLabelSelected->enableGlow(glowColor);
-	minigamesLabelSelected->setColor(highlightColor);
-	minigamesLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	minigamesLabelSelected->enableGlow(glowColor);
 	optionsLabelSelected->setColor(highlightColor);
 	optionsLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
 	optionsLabelSelected->enableGlow(glowColor);
@@ -114,12 +101,6 @@ TitleScreen::TitleScreen()
 	this->storyModeButton = ClickableTextNode::create(
 		storyModeLabel,
 		storyModeLabelSelected,
-		UIResources::Menus_TitleScreen_TitleButton,
-		UIResources::Menus_TitleScreen_TitleButtonHover);
-
-	this->minigamesButton = ClickableTextNode::create(
-		minigamesLabel,
-		minigamesLabelSelected,
 		UIResources::Menus_TitleScreen_TitleButton,
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
@@ -145,11 +126,13 @@ TitleScreen::TitleScreen()
 	this->etherParticles = ParticleGalaxy::create();
 
 	this->storyModeButton->setClickSound(SoundResources::Menus_Simple_Button);
-	this->minigamesButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
 	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
 
-	this->debugButton->setVisible(false);
+	if (!DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugButton->setVisible(false);
+	}
 
 	this->addChild(this->background);
 	this->addChild(this->ether);
@@ -157,11 +140,9 @@ TitleScreen::TitleScreen()
 	this->addChild(this->titleBar);
 	this->addChild(this->title);
 	this->addChild(this->storyModeButton);
-	this->addChild(this->minigamesButton);
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 	this->addChild(this->debugButton);
-	this->addChild(this->music);
 }
 
 TitleScreen::~TitleScreen()
@@ -172,7 +153,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	this->music->play(true);
+	MusicPlayer::play(this->music, true);
 
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
@@ -184,17 +165,11 @@ void TitleScreen::onEnter()
 
 	firstRun = false;
 
-	if (Steam::isSquallyItchBuild())
-	{
-		this->storyModeButton->disableInteraction();
-	}
-
 	GameUtils::fadeInObject(this->ether, delay, duration);
 	GameUtils::fadeInObject(this->etherParticles, delay, duration);
 	GameUtils::fadeInObject(this->titleBar, delay, duration);
 	GameUtils::fadeInObject(this->title, delay, duration);
 	GameUtils::fadeInObject(this->storyModeButton, delay, duration);
-	GameUtils::fadeInObject(this->minigamesButton, delay, duration);
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->exitButton, delay, duration);
 	GameUtils::fadeInObject(this->debugButton, delay, duration);
@@ -214,10 +189,9 @@ void TitleScreen::initializePositions()
 	this->titleBar->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height - this->title->getContentSize().height / 2));
 	this->storyModeButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f + 288.0f));
-	this->minigamesButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f + 144.0f));
-	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 0.0f));
-	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 256.0f));
-	this->debugButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 256.0f - 144.0f));
+	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 144.0f));
+	this->exitButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 288.0f));
+	this->debugButton->setPosition(Vec2(visibleSize.width / 2.0f - visibleSize.width / 3.0f, visibleSize.height / 2.0f - 288.0f - 144.0f));
 }
 
 void TitleScreen::initializeListeners()
@@ -225,22 +199,7 @@ void TitleScreen::initializeListeners()
 	super::initializeListeners();
 
 	this->storyModeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(SaveSelectMenu::getInstance()); });
-	this->minigamesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(MinigamesMenu::getInstance()); });
 	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(OptionsScene::getInstance()); });
 	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { Director::getInstance()->end(); });
 	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DeveloperScene::getInstance()); });
-}
-
-void TitleScreen::onDeveloperModeEnable()
-{
-	super::onDeveloperModeEnable();
-
-	this->debugButton->setVisible(true);
-}
-
-void TitleScreen::onDeveloperModeDisable()
-{
-	super::onDeveloperModeDisable();
-
-	this->debugButton->setVisible(false);
 }

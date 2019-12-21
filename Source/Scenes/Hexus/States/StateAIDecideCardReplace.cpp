@@ -49,7 +49,7 @@ void StateAIDecideCardReplace::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
 
-	// TODO: AI card replace logic here
+	// AI card replace logic would go here, but we'll just leave it out. We'll just give the player an advantage here.
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.5f),
@@ -86,7 +86,7 @@ void StateAIDecideCardReplace::replaceCard(Card* cardToReplace, GameState* gameS
 		// Remove all cards of the same type of the target card
 		gameState->playerDeck->removeCardsWhere([=](Card* card)
 		{
-			if (card->cardData->cardKey == cardToReplace->cardData->cardKey)
+			if (card->cardData->getCardKey() == cardToReplace->cardData->getCardKey())
 			{
 				this->removedCards.push_back(card);
 				return true;

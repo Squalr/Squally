@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Gorilla.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Gorilla::getHexusOpponentData()
 	if (Gorilla::HexusOpponentDataInstance == nullptr)
 	{
 		Gorilla::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-64.0f, -144.0f),
 			Gorilla::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.167f,
 			HexusOpponentData::generateDeck(32, 0.167f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -110,7 +107,7 @@ HexusOpponentData* Gorilla::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -126,7 +123,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -137,8 +134,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

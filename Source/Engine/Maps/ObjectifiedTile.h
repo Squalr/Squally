@@ -19,5 +19,6 @@ protected:
 	~ObjectifiedTile();
 
 private:
+	typedef GameObject super;
 	cocos2d::Sprite* innerSprite;
 };

@@ -13,9 +13,9 @@ public:
 	{
 		Damage,
 		Healing,
-		ProjectileHealing,
-		ProjectileDamage,
-		ProjectileBuffSpeed,
+		Buff,
+		Debuff,
+		Resurrection,
 	};
 
 	PlatformerAttack* clone();
@@ -30,7 +30,7 @@ public:
 	AttackType getAttackType();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
-	virtual void generateProjectiles(PlatformerEntity* owner, PlatformerEntity* target);
+	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
 	virtual void onAttackEnd();
 	virtual void onCleanup();
 
@@ -38,11 +38,16 @@ protected:
 	PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
 	~PlatformerAttack() = default;
 
-	int getRandomDamageOrHealing();
-	int getBaseDamageOrHealingMin();
-	int getBaseDamageOrHealingMax();
+	int getRandomDamage();
+	int getBaseDamageMin();
+	int getBaseDamageMax();
+	int getRandomHealing();
+	int getBaseHealingMin();
+	int getBaseHealingMax();
 	float getAttackDuration();
 	float getRecoverDuration();
+	std::string getMainhandResource(PlatformerEntity* owner);
+	std::string getOffhandResource(PlatformerEntity* owner);
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 

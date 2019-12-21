@@ -8,8 +8,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mul.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Mul/Intro.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

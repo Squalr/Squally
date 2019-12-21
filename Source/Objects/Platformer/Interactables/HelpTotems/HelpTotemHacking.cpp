@@ -9,10 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Input/Shift.h"
-#include "Strings/Input/Tab.h"
-#include "Strings/Platformer/Help/HelpTotemHacking.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -44,19 +41,4 @@ HelpTotemHacking::HelpTotemHacking(ValueMap& properties) : super(properties)
 
 HelpTotemHacking::~HelpTotemHacking()
 {
-}
-
-void HelpTotemHacking::onEnter()
-{
-	super::onEnter();
-}
-
-void HelpTotemHacking::initializePositions()
-{
-	super::initializePositions();
-}
-
-void HelpTotemHacking::initializeListeners()
-{
-	super::initializeListeners();
 }

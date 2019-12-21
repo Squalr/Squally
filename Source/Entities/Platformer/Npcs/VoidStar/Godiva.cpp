@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Godiva.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Godiva::~Godiva()
 
 Vec2 Godiva::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Godiva::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Godiva::getHexusOpponentData()
 	if (Godiva::HexusOpponentDataInstance == nullptr)
 	{
 		Godiva::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Godiva_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.05f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Godiva::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.990f,
 			HexusOpponentData::generateDeck(32, 0.990f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Godiva::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

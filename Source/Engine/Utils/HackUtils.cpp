@@ -12,63 +12,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
-#include "Strings/Menus/Hacking/CodeEditor/Errors/AlreadyInitialized.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/AmbiguousOperandSize.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/CodeTooLarge.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/FeatureNotEnabled.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidAddress.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidAddressIndex.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidAddressScale.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidArchitecture.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidArgument.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidBroadcast.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidDisplacement.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidImmediateValue.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidInstruction.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidLabel.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidLabelName.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidLockPrefix.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidMask.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidOperandSize.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidOption.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidParentLabel.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidPrefixCombination.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRegisterKind.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRegisterPhysicalId.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRegisterType.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRegisterVirtualId.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRelocationEntry.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRepPrefix.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidRexPrefix.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidSegment.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidState.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidTypeInfo.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseDouble.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseOf8BitRegister.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseOf64BitAddress.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseOf64BitRegister.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseOf80BitFloat.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidUseSingle.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidXAquirePrefix.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/InvalidXReleasePrefix.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/LabelAlreadyBound.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/LabelAlreadyDefined.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/LabelIndexOverflow.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/LabelNameTooLong.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NoCodeGenerated.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NoHeapMemory.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NonLocalLabelCantHaveParent.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NoPhysicalRegisters.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NotConsecutiveRegisters.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NotInitialized.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/NoVirtualMemory.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/Ok.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/OperandSizeMismatch.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/OverlappedRegisters.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/OverlappingRegisterAndArgsRegister.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/RelocationIndexOverflow.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/SlotOccupied.h"
-#include "Strings/Menus/Hacking/CodeEditor/Errors/UnknownError.h"
+#include "Strings/Strings.h"
 
 #if __GNUC__ || __clang__
 	#include <unistd.h>
@@ -469,7 +413,7 @@ void* HackUtils::resolveVTableAddress(void* address)
 		std::string newAddressStr = StrUtils::ltrim(firstInstruction, "jmp ", true);
 		newAddressStr = StrUtils::rtrim(newAddressStr, "\n", true);
 
-		address = HackUtils::hexToPointer(newAddressStr, address);
+		address = HackUtils::intToPointer(newAddressStr, address);
 	}
 
 	return address;
@@ -606,9 +550,9 @@ std::string HackUtils::toBinary8(int value)
 	return binaryString;
 }
 
-void* HackUtils::hexToPointer(std::string hexString, void* fallback)
+void* HackUtils::intToPointer(std::string intString, void* fallback)
 {
-	if (!StrUtils::isHexNumber(hexString))
+	if (!StrUtils::isInteger(intString))
 	{
 		return fallback;
 	}
@@ -616,7 +560,8 @@ void* HackUtils::hexToPointer(std::string hexString, void* fallback)
 	void* address;
 	std::stringstream ss;
 
-	ss << std::hex << hexString;
+	ss << std::hex << std::stoull(intString);
+	std::string watson = ss.str();
 	ss >> address;
 
 	return address;

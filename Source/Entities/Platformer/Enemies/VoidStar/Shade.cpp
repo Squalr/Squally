@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/VoidStar/Shade.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Shade::getHexusOpponentData()
 	if (Shade::HexusOpponentDataInstance == nullptr)
 	{
 		Shade::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_VoidStar_Shade_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -196.0f),
 			Vec2(0.0f, -312.0f),
 			Shade::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* Shade::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

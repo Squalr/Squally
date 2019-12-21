@@ -12,6 +12,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -25,6 +26,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
+	this->weaponSound = WorldSound::create();
 	this->isPerformingOutOfCombatAttack = false;
 
 	if (this->entity == nullptr)
@@ -33,6 +35,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 	}
 	
 	this->addChild(this->outOfCombatAttackDebug);
+	this->addChild(this->weaponSound);
 }
 
 EntityOutOfCombatAttackBehavior::~EntityOutOfCombatAttackBehavior()
@@ -46,9 +49,9 @@ void EntityOutOfCombatAttackBehavior::initializePositions()
 	this->outOfCombatAttackDebug->setPosition(Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f));
 }
 
-void EntityOutOfCombatAttackBehavior::onDeveloperModeEnable()
+void EntityOutOfCombatAttackBehavior::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 }
 
 void EntityOutOfCombatAttackBehavior::onDeveloperModeDisable()
@@ -62,7 +65,7 @@ void EntityOutOfCombatAttackBehavior::onLoad()
 {
 }
 
-void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain)
+void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain)
 {
 	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))
 	{
@@ -70,27 +73,33 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 	}
 
 	this->isPerformingOutOfCombatAttack = true;
-	this->entity->getAnimations()->playAnimation(attackAnimation);
-	EntityWeaponCollisionBehavior* weaponBehavior = this->entity->getAttachedBehavior<EntityWeaponCollisionBehavior>();
 
-	this->runAction(Sequence::create(
-		DelayTime::create(onset),
-		CallFunc::create([=]()
-		{
-			if (this->isDeveloperModeEnabled())
+	this->entity->getAnimations()->clearAnimationPriority();
+	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
+	this->entity->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(onset),
+			CallFunc::create([=]()
 			{
-				this->outOfCombatAttackDebug->setVisible(true);
-			}
+				if (this->isDeveloperModeEnabled())
+				{
+					this->outOfCombatAttackDebug->setVisible(true);
+				}
 
-			weaponBehavior->enable();
-		}),
-		DelayTime::create(sustain),
-		CallFunc::create([=]()
-		{
-			weaponBehavior->disable();
-			this->isPerformingOutOfCombatAttack = false;
-			this->outOfCombatAttackDebug->setVisible(false);
-		}),
-		nullptr
-	));
+				this->weaponSound->setSoundResource(soundResource);
+				this->weaponSound->play();
+
+				weaponBehavior->enable();
+			}),
+			DelayTime::create(sustain),
+			CallFunc::create([=]()
+			{
+				weaponBehavior->disable();
+				this->isPerformingOutOfCombatAttack = false;
+				this->outOfCombatAttackDebug->setVisible(false);
+			}),
+			nullptr
+		));
+	});
 }

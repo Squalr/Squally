@@ -4,24 +4,21 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
-#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
-#include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
-#include "Engine/Utils/MathUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Menus/Inventory/ItemPreview.h"
+#include "Menus/Inventory/FilterMenu/FilterEntry.h"
+#include "Menus/Inventory/FilterMenu/FilterMenu.h"
+#include "Menus/Inventory/ItemMenu/ItemEntry.h"
+#include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
@@ -30,18 +27,12 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Inventory/All.h"
-#include "Strings/Menus/Inventory/Consumables.h"
-#include "Strings/Menus/Inventory/Crafting.h"
-#include "Strings/Menus/Inventory/Equipment.h"
-#include "Strings/Menus/Inventory/Inventory.h"
-#include "Strings/Menus/Inventory/Misc.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const float InventoryMenu::LabelSpacing = 96.0f;
-const Size InventoryMenu::LabelSize = Size(288.0f, 32.0f);
+const int InventoryMenu::MinHexusCards = 20;
+const int InventoryMenu::MaxHexusCards = 60;
 
 InventoryMenu* InventoryMenu::create()
 {
@@ -58,29 +49,12 @@ InventoryMenu::InventoryMenu()
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->equipmentPanel = Sprite::create(UIResources::Menus_InventoryMenu_EquipmentMenu);
-	this->itemPreview = ItemPreview::create();
-	this->contentNode = Node::create();
-	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
-	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
-	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
-	this->filterNodeContent = Node::create();
-	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
-	this->inventoryNodeContent = Node::create();
-	this->inventoryNode = SmartClippingNode::create(this->inventoryNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
-	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
+	this->itemMenu = ItemMenu::create();
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
+	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
-	this->activeFocus = ActiveFocus::Filter;
-	this->activeFilter = ActiveFilter::All;
-	this->selectedItemIndex = 0;
-	this->filterLabels = std::vector<Node*>();
-	this->itemLabels = std::vector<Node*>();
-	this->equippedItems = std::vector<Item*>();
-	this->equippedItemLabels = std::vector<Node*>();
-	this->inventoryItems = std::vector<Item*>();
+	this->equipmentChanged = false;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -101,38 +75,13 @@ InventoryMenu::InventoryMenu()
 
 	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
-
-	this->allLabel = this->buildMenuLabel(Strings::Menus_Inventory_All::create(), Sprite::create(UIResources::Menus_InventoryMenu_AllIcon));
-	this->equipmentLabel = this->buildMenuLabel(Strings::Menus_Inventory_Equipment::create(), Sprite::create(UIResources::Menus_InventoryMenu_EquipmentIcon));
-	this->consumablesLabel = this->buildMenuLabel(Strings::Menus_Inventory_Consumables::create(), Sprite::create(UIResources::Menus_InventoryMenu_ConsumablesIcon));
-	this->craftingLabel = this->buildMenuLabel(Strings::Menus_Inventory_Crafting::create(), Sprite::create(UIResources::Menus_InventoryMenu_CraftingIcon));
-	this->miscLabel = this->buildMenuLabel(Strings::Menus_Inventory_Misc::create(), Sprite::create(UIResources::Menus_InventoryMenu_MiscIcon));
-
-	this->filterLabels.push_back(this->allLabel);
-	this->filterLabels.push_back(this->equipmentLabel);
-	this->filterLabels.push_back(this->consumablesLabel);
-	this->filterLabels.push_back(this->craftingLabel);
-	this->filterLabels.push_back(this->miscLabel);
 	
-	this->filterNodeContent->addChild(this->allLabel);
-	this->filterNodeContent->addChild(this->equipmentLabel);
-	this->filterNodeContent->addChild(this->consumablesLabel);
-	this->filterNodeContent->addChild(this->craftingLabel);
-	this->filterNodeContent->addChild(this->miscLabel);
-	this->contentNode->addChild(this->selectedFilterRowActive);
-	this->contentNode->addChild(this->selectedFilterRowInactive);
-	this->contentNode->addChild(this->selectedInventoryRow);
-	this->contentNode->addChild(this->filterNode);
-	this->contentNode->addChild(this->inventoryNode);
-	this->contentNode->addChild(this->filterSelectionArrow);
-	this->contentNode->addChild(this->inventorySelectionArrow);
-	this->contentNode->addChild(this->itemPreview);
 	this->addChild(this->currencyInventory);
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->inventory);
 	this->addChild(this->inventoryWindow);
-	this->addChild(this->equipmentPanel);
-	this->addChild(this->contentNode);
+	this->addChild(this->filterMenu);
+	this->addChild(this->itemMenu);
 	this->addChild(this->inventoryLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
@@ -153,12 +102,6 @@ void InventoryMenu::onEnter()
 	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
-	this->equipmentPanel->setVisible(false);
-
-	this->unfocusInventory();
-	this->setActiveFilter(ActiveFilter::All);
-	this->selectedItemIndex = 0;
 }
 
 void InventoryMenu::initializePositions()
@@ -167,28 +110,12 @@ void InventoryMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
+	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
 	this->inventoryWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->contentNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 44.0f));
-	this->filterNode->setPosition(Vec2(-340.0f, 0.0f));
-	this->inventoryNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
-	this->filterSelectionArrow->setPosition(Vec2(-524.0f, 0.0f));
-	this->inventorySelectionArrow->setPosition(Vec2(-186.0f, 0.0f));
-	this->selectedFilterRowActive->setPosition(Vec2(-341.0f, 0.0f));
-	this->selectedFilterRowInactive->setPosition(Vec2(-341.0f, 0.0f));
-	this->selectedInventoryRow->setPosition(Vec2(0.0f, 0.0f));
-	this->itemPreview->setPosition(Vec2(360.0f, 96.0f));
-	this->equipmentPanel->setPosition(Vec2(visibleSize.width / 2.0f + 292.0f, visibleSize.height / 2.0f + 64.0f));
 	this->inventoryLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
-
-	const float offsetY = InventoryMenu::LabelSpacing * float(this->filterLabels.size() / 2);
-	int index = 0;
-
-	for (auto it = this->filterLabels.begin(); it != this->filterLabels.end(); it++, index++)
-	{
-		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
-	}
 }
 
 void InventoryMenu::initializeListeners()
@@ -197,18 +124,12 @@ void InventoryMenu::initializeListeners()
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->close();
 	});
 
 	this->closeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
+		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
 
@@ -220,86 +141,65 @@ void InventoryMenu::initializeListeners()
 		}
 		
 		args->handle();
-
-		if (this->returnClickCallback != nullptr)
-		{
-			this->returnClickCallback();
-		}
-	});
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
-	{
-		switch(this->activeFocus)
-		{
-			case ActiveFocus::Inventory:
-			{
-				this->toggleEquipSelectedItem();
-				break;
-			}
-			case ActiveFocus::Filter:
-			default:
-			{
-				break;
-			}
-		}
+		this->close();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->focusInventory();
+		this->filterMenu->unfocus();
+		this->itemMenu->focus();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->unfocusInventory();
+		this->filterMenu->focus();
+		this->itemMenu->unfocus();
 	});
+}
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
-	{
-		switch(this->activeFocus)
-		{
-			case ActiveFocus::Filter:
-			{
-				this->scrollFilterUp();
-				break;
-			}
-			case ActiveFocus::Inventory:
-			{
-				this->scrollInventoryUp();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	});
+void InventoryMenu::onFilterChange()
+{
+	this->populateItemList();
+	this->itemMenu->clearPreview();
+}
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+void InventoryMenu::populateItemList()
+{
+	this->itemMenu->clearVisibleItems();
+	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory->getItems());
+	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
+	
+	for (auto it = equipment.begin(); it != equipment.end(); it++)
 	{
-		switch(this->activeFocus)
+		Item* item = *it;
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
-			case ActiveFocus::Filter:
-			{
-				this->scrollFilterDown();
-				break;
-			}
-			case ActiveFocus::Inventory:
-			{
-				this->scrollInventoryDown();
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
-	});
+			this->performEquipmentAction(item);
+		});
+
+		entry->showIcon();
+	}
+	
+	for (auto it = items.begin(); it != items.end(); it++)
+	{
+		Item* item = *it;
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
+		{
+			this->performInventoryAction(item);
+		});
+
+		entry->hideIcon();
+	}
+
+	this->itemMenu->updateAndPositionItemText();
 }
 
 void InventoryMenu::open()
 {
-	this->buildInventoryList();
+	this->equipmentChanged = false;
+	this->onFilterChange();
 }
 
 void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
@@ -307,457 +207,162 @@ void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCall
 	this->returnClickCallback = returnClickCallback;
 }
 
-void InventoryMenu::setActiveFilter(ActiveFilter activeFilter)
+void InventoryMenu::performEquipmentAction(Item* item)
 {
-	this->activeFilter = activeFilter;
-	this->selectedItemIndex = 0;
-
-	this->positionFilterText();
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::scrollFilterUp()
-{
-	switch(this->activeFilter)
+	if (dynamic_cast<HexusCard*>(item) != nullptr)
 	{
-		case ActiveFilter::All:
-		{
-			// No looping
-			this->setActiveFilter(ActiveFilter::All);
-			break;
-		}
-		case ActiveFilter::Equipment:
-		{
-			this->setActiveFilter(ActiveFilter::All);
-			break;
-		}
-		case ActiveFilter::Consumables:
-		{
-			this->setActiveFilter(ActiveFilter::Equipment);
-			break;
-		}
-		case ActiveFilter::Crafting:
-		{
-			this->setActiveFilter(ActiveFilter::Consumables);
-			break;
-		}
-		case ActiveFilter::Misc:
-		{
-			this->setActiveFilter(ActiveFilter::Crafting);
-			break;
-		}
-		default:
-		{
-			break;
-		}
+		this->unequipHexusCard(item);
 	}
-
-	this->positionFilterText();
-}
-
-void InventoryMenu::scrollFilterDown()
-{
-	switch(this->activeFilter)
+	else if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
-		case ActiveFilter::All:
-		{
-			this->setActiveFilter(ActiveFilter::Equipment);
-			break;
-		}
-		case ActiveFilter::Equipment:
-		{
-			this->setActiveFilter(ActiveFilter::Consumables);
-			break;
-		}
-		case ActiveFilter::Consumables:
-		{
-			this->setActiveFilter(ActiveFilter::Crafting);
-			break;
-		}
-		case ActiveFilter::Crafting:
-		{
-			this->setActiveFilter(ActiveFilter::Misc);
-			break;
-		}
-		case ActiveFilter::Misc:
-		{
-			// No looping
-			this->setActiveFilter(ActiveFilter::Misc);
-			break;
-		}
-		default:
-		{
-			break;
-		}
-	}
-
-	this->positionFilterText();
-}
-
-void InventoryMenu::scrollInventoryUp()
-{
-	this->selectedItemIndex--;
-
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::scrollInventoryDown()
-{
-	this->selectedItemIndex++;
-
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::unfocusInventory()
-{
-	this->activeFocus = ActiveFocus::Filter;
-	this->filterSelectionArrow->setVisible(true);
-	this->inventorySelectionArrow->setVisible(false);
-	this->selectedFilterRowActive->setVisible(true);
-	this->selectedFilterRowInactive->setVisible(false);
-	this->selectedInventoryRow->setVisible(false);
-
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::focusInventory()
-{
-	this->activeFocus = ActiveFocus::Inventory;
-	this->filterSelectionArrow->setVisible(false);
-	this->inventorySelectionArrow->setVisible(true);
-	this->selectedFilterRowActive->setVisible(false);
-	this->selectedFilterRowInactive->setVisible(true);
-	this->selectedInventoryRow->setVisible(true);
-
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::buildInventoryList()
-{
-	this->inventoryNodeContent->removeAllChildren();
-	this->equippedItemLabels.clear();
-	this->itemLabels.clear();
-
-	this->inventoryItems = this->inventory->getItems();
-	this->equippedItems = this->equipmentInventory->getItems();
-
-	for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++)
-	{
-		Node* label = this->buildMenuLabel((*it)->getString(), Sprite::create(UIResources::Menus_InventoryMenu_EquippedIcon));
-
-		this->equippedItemLabels.push_back(label);
-		this->inventoryNodeContent->addChild(label);
-	}
-
-	for (auto it = this->inventoryItems.begin(); it != this->inventoryItems.end(); it++)
-	{
-		Node* label = this->buildMenuLabel((*it)->getString());
-
-		this->itemLabels.push_back(label);
-		this->inventoryNodeContent->addChild(label);
-	}
-
-	this->updateAndPositionItemText();
-}
-
-void InventoryMenu::positionFilterText()
-{
-	int adjustedIndex = (int)this->activeFilter - this->filterLabels.size() / 2;
-	float offset = float(adjustedIndex) * InventoryMenu::LabelSpacing;
-
-	this->filterNodeContent->setPositionY(offset);
-
-	const float offsetY = InventoryMenu::LabelSpacing * float(this->filterLabels.size() / 2);
-	int index = 0;
-
-	for (auto it = this->filterLabels.begin(); it != this->filterLabels.end(); it++, index++)
-	{
-		(*it)->setPositionX(0.0f);
-		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
-		(*it)->setPositionZ(0.0f);
-	}
-
-	const float XOffset = 64.0f;
-	const float YOffset = 6.0f;
-	const float ZOffset = 128.0f;
-
-	switch(this->activeFilter)
-	{
-		case ActiveFilter::All:
-		{
-			this->allLabel->setPositionX(XOffset);
-			this->allLabel->setPositionY(this->allLabel->getPositionY() + YOffset);
-			this->allLabel->setPositionZ(ZOffset);
-			break;
-		}
-		case ActiveFilter::Equipment:
-		{
-			this->equipmentLabel->setPositionX(XOffset);
-			this->equipmentLabel->setPositionY(this->equipmentLabel->getPositionY() + YOffset);
-			this->equipmentLabel->setPositionZ(ZOffset);
-			break;
-		}
-		case ActiveFilter::Consumables:
-		{
-			this->consumablesLabel->setPositionX(XOffset);
-			this->consumablesLabel->setPositionY(this->consumablesLabel->getPositionY() + YOffset);
-			this->consumablesLabel->setPositionZ(ZOffset);
-			break;
-		}
-		case ActiveFilter::Crafting:
-		{
-			this->craftingLabel->setPositionX(XOffset);
-			this->craftingLabel->setPositionY(this->craftingLabel->getPositionY() + YOffset);
-			this->craftingLabel->setPositionZ(ZOffset);
-			break;
-		}
-		case ActiveFilter::Misc:
-		{
-			this->miscLabel->setPositionX(XOffset);
-			this->miscLabel->setPositionY(this->miscLabel->getPositionY() + YOffset);
-			this->miscLabel->setPositionZ(ZOffset);
-			break;
-		}
-		default:
-		{
-			break;
-		}
+		this->unequipItem(item);
 	}
 }
 
-void InventoryMenu::updateAndPositionItemText()
+void InventoryMenu::performInventoryAction(Item* item)
 {
-	std::vector<Item*> filteredItems = std::vector<Item*>();
-	std::vector<Node*> filteredItemLabels = std::vector<Node*>();
-
-	int index = 0;
-
-	switch(this->activeFilter)
+	if (dynamic_cast<HexusCard*>(item) != nullptr)
 	{
-		case ActiveFilter::All:
-		case ActiveFilter::Equipment:
-		{
-			for (auto it = this->equippedItems.begin(); it != this->equippedItems.end(); it++, index++)
-			{
-				filteredItems.push_back(*it);
-				filteredItemLabels.push_back(this->equippedItemLabels[index]);
-			}
-			break;
-		}
-		default:
-		{
-			break;
-		}
+		this->equipHexusCard(item);
 	}
-
-	index = 0;
-
-	for (auto it = this->inventoryItems.begin(); it != this->inventoryItems.end(); it++, index++)
+	else if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
-		switch(this->activeFilter)
-		{
-			case ActiveFilter::All:
-			{
-				filteredItems.push_back(*it);
-				filteredItemLabels.push_back(this->itemLabels[index]);
-				break;
-			}
-			case ActiveFilter::Equipment:
-			{
-				if (dynamic_cast<Equipable*>(*it) != nullptr)
-				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
-				}
-
-				break;
-			}
-			case ActiveFilter::Consumables:
-			{
-				if (dynamic_cast<Consumable*>(*it) != nullptr)
-				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
-				}
-
-				break;
-			}
-			case ActiveFilter::Crafting:
-			{
-				if (dynamic_cast<Consumable*>(*it) != nullptr)
-				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
-				}
-
-				break;
-			}
-			case ActiveFilter::Misc:
-			{
-				if (dynamic_cast<Consumable*>(*it) != nullptr)
-				{
-					filteredItems.push_back(*it);
-					filteredItemLabels.push_back(this->itemLabels[index]);
-				}
-				
-				break;
-			}
-			default:
-			{
-				break;
-			}
-		}
+		this->equipItem(item);
 	}
+}
 
-	for (auto it = itemLabels.begin(); it != itemLabels.end(); it++)
-	{
-		(*it)->setVisible(false);
-		(*it)->setPositionX(0.0f);
-		(*it)->setPositionY(0.0f);
-		(*it)->setPositionZ(0.0f);
-	}
-	
-	this->selectedItemIndex = filteredItemLabels.size() <= 0 ? 0 : MathUtils::clamp(this->selectedItemIndex, 0, filteredItemLabels.size() - 1);
-	int adjustedIndex = this->selectedItemIndex - filteredItemLabels.size() / 2;
-	float offset = float(adjustedIndex) * InventoryMenu::LabelSpacing;
-
-	this->inventoryNodeContent->setPositionY(offset);
-	this->itemPreview->clearPreview();
-
-	if (filteredItemLabels.empty())
+void InventoryMenu::equipHexusCard(Item* card)
+{
+	if (this->equipmentInventory->getHexusCards().size() >= InventoryMenu::MaxHexusCards)
 	{
 		return;
 	}
 
-	const float offsetY = InventoryMenu::LabelSpacing * float(filteredItemLabels.size() / 2);
-	index = 0;
-
-	for (auto it = filteredItemLabels.begin(); it != filteredItemLabels.end(); it++, index++)
+	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
 	{
-		(*it)->setVisible(true);
-		(*it)->setPositionY(float(index) * -InventoryMenu::LabelSpacing + offsetY);
-	}
+		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
 
-	if (this->activeFocus == ActiveFocus::Inventory)
+		this->populateItemList();
+	},
+	[=](Item* item, Item* otherItem)
 	{
-		const float XOffset = 16.0f;
-		const float YOffset = 6.0f;
-		const float ZOffset = 128.0f;
+		// Failure
+		LogUtils::logError("Error equipping card!");
 
-		filteredItemLabels[this->selectedItemIndex]->setPositionX(XOffset);
-		filteredItemLabels[this->selectedItemIndex]->setPositionY(filteredItemLabels[this->selectedItemIndex]->getPositionY() + YOffset);
-		filteredItemLabels[this->selectedItemIndex]->setPositionZ(ZOffset);
+		if (item != nullptr)
+		{
+			LogUtils::logError(item->getName());
+		}
 
-		this->itemPreview->preview(filteredItems[this->selectedItemIndex]);
-	}
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
 }
 
-void InventoryMenu::toggleEquipSelectedItem()
+void InventoryMenu::unequipHexusCard(Item* card)
 {
-	if (this->activeFocus != ActiveFocus::Inventory)
+	if (this->equipmentInventory->getHexusCards().size() <= InventoryMenu::MinHexusCards)
 	{
 		return;
 	}
-	
-	bool isSelectionInEquipment = this->selectedItemIndex < this->equippedItems.size();
 
-	if (isSelectionInEquipment)
+	this->equipmentInventory->tryTransact(this->inventory, card, nullptr, [=](Item* item, Item* otherItem)
 	{
-		Item* selectedItem = this->equippedItems[this->selectedItemIndex];
-		
-		this->equipmentInventory->tryTransact(this->inventory, selectedItem, nullptr, [=](Item* item, Item* otherItem)
-		{
-			// Success unequipping item -- visually best if this ends up in the 1st inventory slot
-			this->inventory->moveItem(item, 0);
-		},
-		[=](Item* item, Item* otherItem)
-		{
-			// Failure
-			LogUtils::logError("Error unequipping item!");
+		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
+		this->inventory->moveItem(item, 0);
 
-			if (otherItem != nullptr)
-			{
-				LogUtils::logError(otherItem->getName());
-			}
-		});
-	
-		this->buildInventoryList();
-	}
-	else
+		this->populateItemList();
+	},
+	[=](Item* item, Item* otherItem)
 	{
-		int adjustedIndex = this->selectedItemIndex - this->equippedItems.size();
-		Item* selectedItem = this->inventoryItems[adjustedIndex];
-		Item* equippedItem = nullptr;
-		std::string selectedItemName = selectedItem == nullptr ? "" : selectedItem->getName();
-		
-		// Check if it's even an equipable item...
-		if (dynamic_cast<Equipable*>(selectedItem) == nullptr)
-		{
-			return;
-		}
+		// Failure
+		LogUtils::logError("Error unequipping card!");
 
-		if (dynamic_cast<Hat*>(selectedItem))
+		if (otherItem != nullptr)
 		{
-			equippedItem = this->equipmentInventory->getHat();
+			LogUtils::logError(otherItem->getName());
 		}
-		else if (dynamic_cast<Weapon*>(selectedItem))
-		{
-			equippedItem = this->equipmentInventory->getWeapon();
-		}
-		else if (dynamic_cast<Offhand*>(selectedItem))
-		{
-			equippedItem = this->equipmentInventory->getOffhand();
-		}
-		
-		this->inventory->tryTransact(this->equipmentInventory, selectedItem, equippedItem, [=](Item* item, Item* otherItem)
-		{
-			// Success equipping item. Adjust final position if equipping an item without a swap
-			if (otherItem == nullptr)
-			{
-				this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
-			}
-		},
-		[=](Item* item, Item* otherItem)
-		{
-			// Failure
-			LogUtils::logError("Error equipping item!");
-
-			if (item != nullptr)
-			{
-				LogUtils::logError(item->getName());
-			}
-
-			if (otherItem != nullptr)
-			{
-				LogUtils::logError(otherItem->getName());
-			}
-		});
-	
-		this->buildInventoryList();
-	}
-
-	PlatformerEvents::TriggerEquippedItemsChanged();
+	});
 }
 
-cocos2d::Node* InventoryMenu::buildMenuLabel(LocalizedString* text, Sprite* icon)
+void InventoryMenu::equipItem(Item* item)
 {
-	Node* contentNode = Node::create();
+	Item* equippedItem = nullptr;
 
-	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
-
-	label->setAnchorPoint(Vec2(0.0f, 0.5f));
-	label->enableOutline(Color4B::BLACK, 2);
-	label->setPositionX(-InventoryMenu::LabelSize.width / 2.0f);
-
-	contentNode->addChild(label);
-
-	if (icon != nullptr)
+	if (dynamic_cast<Hat*>(item))
 	{
-		label->setPositionX(label->getPositionX() + 40.0f);
-		contentNode->addChild(icon);
-
-		icon->setPositionX(-InventoryMenu::LabelSize.width / 2.0f + 16.0f);
+		equippedItem = this->equipmentInventory->getHat();
 	}
+	else if (dynamic_cast<Weapon*>(item))
+	{
+		equippedItem = this->equipmentInventory->getWeapon();
+	}
+	else if (dynamic_cast<Offhand*>(item))
+	{
+		equippedItem = this->equipmentInventory->getOffhand();
+	}
+	
+	this->inventory->tryTransact(this->equipmentInventory, item, equippedItem, [=](Item* item, Item* otherItem)
+	{
+		// Success equipping item. Adjust final position if equipping an item without a swap
+		if (otherItem == nullptr)
+		{
+			this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
+		}
 
-	return contentNode;
+		this->populateItemList();
+		this->equipmentChanged = true;
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error equipping item!");
+
+		if (item != nullptr)
+		{
+			LogUtils::logError(item->getName());
+		}
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
+}
+
+void InventoryMenu::unequipItem(Item* item)
+{
+	this->equipmentInventory->tryTransact(this->inventory, item, nullptr, [=](Item* item, Item* otherItem)
+	{
+		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
+		this->inventory->moveItem(item, 0);
+		
+		this->populateItemList();
+		this->equipmentChanged = true;
+	},
+	[=](Item* item, Item* otherItem)
+	{
+		// Failure
+		LogUtils::logError("Error unequipping item!");
+
+		if (otherItem != nullptr)
+		{
+			LogUtils::logError(otherItem->getName());
+		}
+	});
+}
+
+void InventoryMenu::close()
+{
+	if (this->equipmentChanged)
+	{
+		PlatformerEvents::TriggerEquippedItemsChanged();
+	}
+	
+	if (this->returnClickCallback != nullptr)
+	{
+		this->returnClickCallback();
+	}
 }

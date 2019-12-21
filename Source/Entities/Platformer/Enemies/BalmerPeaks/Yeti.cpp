@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/Yeti.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 	if (Yeti::HexusOpponentDataInstance == nullptr)
 	{
 		Yeti::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			1.0f,
-			Vec2(24.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-64.0f, -160.0f),
 			Yeti::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -110,7 +107,7 @@ HexusOpponentData* Yeti::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -126,7 +123,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -137,8 +134,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

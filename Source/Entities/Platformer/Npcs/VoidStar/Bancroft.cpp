@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Bancroft.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Bancroft::~Bancroft()
 
 Vec2 Bancroft::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Bancroft::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Bancroft::getHexusOpponentData()
 	if (Bancroft::HexusOpponentDataInstance == nullptr)
 	{
 		Bancroft::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Bancroft_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Bancroft::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.913f,
 			HexusOpponentData::generateDeck(32, 0.913f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Bancroft::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

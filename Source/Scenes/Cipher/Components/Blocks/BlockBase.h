@@ -50,10 +50,17 @@ protected:
 	cocos2d::Sprite* icon;
 	BlockType blockType;
 	unsigned char receivedValue;
-
-	std::vector<unsigned char> currentInputs;
-	std::vector<InputBolt*> inputBolts;
-	std::vector<OutputBolt*> outputBolts;
+	int receivedInputs;
+	
+	unsigned char inputLeft;
+	unsigned char inputRight;
+	InputBolt* inputBoltLeft;
+	InputBolt* inputBoltRight;
+	OutputBolt* outputBoltLeft;
+	OutputBolt* outputBoltRight;
+	
+	ConnectionType inputType;
+	ConnectionType outputType;
 
 private:
 	typedef CipherComponentBase super;
@@ -61,8 +68,6 @@ private:
 	BlockBase* spawningBlock;
 	LocalizedLabel* label;
 	
-	ConnectionType inputType;
-	ConnectionType outputType;
 	cocos2d::Vec2 spawnPosition;
 	cocos2d::Vec2 originalPosition;
 	cocos2d::Vec2 clickDelta;

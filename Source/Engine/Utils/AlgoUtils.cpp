@@ -77,7 +77,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 		}
 
 		// No more choices left to add
-		if (vote_choice_index >= numbers.size())
+		if (vote_choice_index >= int(numbers.size()))
 		{
 			return;
 		}
@@ -89,7 +89,7 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 		}
 
 		// No more votes allowed
-		if (votes.size() > requiredLength)
+		if (int(votes.size()) > requiredLength)
 		{
 			return;
 		}
@@ -114,16 +114,16 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 		}
 
 		// Save best solution so far (priorize closest count first, then closest sum)
-		if ((requiredLength - (votes.size() + 1) < closestCount) || (requiredLength - (votes.size() + 1) == closestCount && remainder < closestSum))
+		if ((requiredLength - (int(votes.size()) + 1) < closestCount) || (requiredLength - (int(votes.size()) + 1) == closestCount && remainder < closestSum))
 		{
-			closestCount = requiredLength - votes.size();
+			closestCount = requiredLength - int(votes.size());
 			closestSum = remainder;
 			result = std::vector<int>(votes);
 			result.push_back(next_vote);
 		}
 
 		// Check if we found a perfect solution
-		if (next_vote == remainder && votes.size() + 1 >= requiredLength)
+		if (next_vote == remainder && int(votes.size()) + 1 >= requiredLength)
 		{
 			votes.push_back(next_vote);
 			result = votes;
@@ -181,7 +181,7 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 	{
 		MPEPolyPoint* holes = MPE_PolyPushPointArray(&polyContext, holePoints.size());
 
-		for (int index = 0; index < holePoints.size(); index++)
+		for (int index = 0; index < int(holePoints.size()); index++)
 		{
 			holes[index].X = holePoints[index].x;
 			holes[index].Y = holePoints[index].y;
@@ -211,8 +211,8 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 
 bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 point)
 {
-	int as_x = point.x - triangle.coords[0].x;
-	int as_y = point.y - triangle.coords[0].y;
+	float as_x = point.x - triangle.coords[0].x;
+	float as_y = point.y - triangle.coords[0].y;
 	bool s_ab = (triangle.coords[1].x - triangle.coords[0].x) * as_y - (triangle.coords[1].y - triangle.coords[0].y) * as_x > 0;
 
 	if ((triangle.coords[2].x - triangle.coords[0].x) * as_y - (triangle.coords[2].y - triangle.coords[0].y) * as_x > 0 == s_ab ||
@@ -350,43 +350,43 @@ std::vector<Vec2> AlgoUtils::insetPolygon(const std::vector<Triangle>& triangles
 }
 
 float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
-		Node* debugDrawNode)
+		DrawNode* debugDrawNode)
 {
 	float angle = AlgoUtils::getSegmentNormalAngle(segment, triangles, debugDrawNode);
 
 	// Because we used the outward normal to find the angle, correct the angle by 90 degrees
-	angle += M_PI / 2.0f;
+	angle += float(M_PI) / 2.0f;
 
 	// Make it positive for my sanity
-	angle = std::fmod(angle, 2.0f * M_PI);
+	angle = std::fmod(angle, 2.0f * float(M_PI));
 
 	if (angle < 0)
 	{
-		angle += 2.0f * M_PI;
+		angle += 2.0f * float(M_PI);
 	}
 
 	return angle;
 }
 
 float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
-		const std::vector<AlgoUtils::Triangle>& triangles, Node* debugDrawNode)
+		const std::vector<AlgoUtils::Triangle>& triangles, DrawNode* debugDrawNode)
 {
 	Vec2 outwardNormal = AlgoUtils::getOutwardNormal(segment, triangles, debugDrawNode);
 	float angle = std::atan2(outwardNormal.y, outwardNormal.x);
 
 	// Make it positive for my sanity
-	angle = std::fmod(angle, 2.0f * M_PI);
+	angle = std::fmod(angle, 2.0f * float(M_PI));
 
 	if (angle < 0)
 	{
-		angle += 2.0f * M_PI;
+		angle += 2.0f * float(M_PI);
 	}
 
 	return angle;
 }
 
 Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, const std::vector<AlgoUtils::Triangle>& triangles,
-		Node* debugDrawNode)
+		DrawNode* debugDrawNode)
 {
 	// Distance used to check which direction is "inside" the polygon
 	const float INNER_NORMAL_COLLISION_TEST_DISTANCE = 48.0f;
@@ -414,23 +414,13 @@ Vec2 AlgoUtils::getOutwardNormal(std::tuple<Vec2, Vec2> segment, const std::vect
 	if (debugDrawNode != nullptr)
 	{
 		Vec2 outwardNormalPoint = midPoint + INNER_NORMAL_COLLISION_TEST_DISTANCE * outwardNormal;
-
-		DrawNode* sourcePointDebug = DrawNode::create();
-		DrawNode* midPointDebug = DrawNode::create();
-		DrawNode* candidateNormalDebug = DrawNode::create(1.0f);
-		DrawNode* normalDebug = DrawNode::create();
-
-		sourcePointDebug->drawDot(source, 4.0f, Color4F::BLUE);
-		normalDebug->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
-		normalDebug->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
-		candidateNormalDebug->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
-		candidateNormalDebug->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
-		midPointDebug->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
-
-		debugDrawNode->addChild(sourcePointDebug);
-		debugDrawNode->addChild(normalDebug);
-		debugDrawNode->addChild(candidateNormalDebug);
-		debugDrawNode->addChild(midPointDebug);
+		
+		debugDrawNode->drawDot(source, 4.0f, Color4F::BLUE);
+		debugDrawNode->drawLine(midPoint, outwardNormalPoint, Color4F::YELLOW);
+		debugDrawNode->drawDot(outwardNormalPoint, 4.0f, Color4F::YELLOW);
+		debugDrawNode->drawLine(midPoint, candidateTestingPoint, Color4F::GREEN);
+		debugDrawNode->drawDot(candidateTestingPoint, 3.0f, Color4F::GREEN);
+		debugDrawNode->drawDot(midPoint, 8.0f, Color4F::MAGENTA);
 	}
 
 	return outwardNormal;

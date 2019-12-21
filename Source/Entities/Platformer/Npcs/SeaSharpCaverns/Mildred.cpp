@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/SeaSharpCaverns/Mildred.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Mildred::Mildred(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Mildred::getHexusOpponentData();
@@ -48,7 +48,7 @@ Mildred::~Mildred()
 
 Vec2 Mildred::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Mildred::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 	if (Mildred::HexusOpponentDataInstance == nullptr)
 	{
 		Mildred::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Mildred::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.330f,
 			HexusOpponentData::generateDeck(32, 0.330f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Mildred::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

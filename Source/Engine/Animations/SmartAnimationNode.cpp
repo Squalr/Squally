@@ -26,10 +26,12 @@ SmartAnimationNode* SmartAnimationNode::create(std::string animationResource, st
 
 SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::string entityName)
 {
+	this->animationResource = animationResource;
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
+	this->currentAnimation = "";
 
 	this->addChild(this->animationNode);
 }
@@ -38,22 +40,29 @@ SmartAnimationNode::~SmartAnimationNode()
 {
 }
 
-void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float blendTime)
+void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float priority, float blendTime)
 {
-	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, blendTime);
+	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, priority, blendTime);
 }
 
-void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, float blendTime)
+void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime)
 {
-	this->playAnimation(std::string(animationName), animationPlayMode, blendTime);
+	this->playAnimation(std::string(animationName), animationPlayMode, priority, blendTime);
 }
 
-void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float blendTime)
+void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime)
 {
 	if (this->entity == nullptr)
 	{
 		return;
 	}
+
+	if (priority < this->currentAnimationPriority)
+	{
+		return;
+	}
+
+	this->currentAnimationPriority = priority;
 	
 	if (this->entity->hasAnimation(animationName))
 	{
@@ -62,6 +71,7 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			this->initialized = true;
 			this->entity->setCurrentTime(0.0f);
 			this->entity->setCurrentAnimation(animationName, blendTime);
+			this->currentAnimation = animationName;
 		}
 
 		switch (animationPlayMode)
@@ -70,6 +80,7 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			{
 				this->entity->setAnimationCompleteCallback([=]()
 				{
+					this->currentAnimationPriority = 0.0f;
 					this->playAnimation(AnimationPlayMode::ReturnToIdle);
 				});
 
@@ -92,6 +103,11 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			}
 		}
 	}
+}
+
+void SmartAnimationNode::clearAnimationPriority()
+{
+	this->currentAnimationPriority = -1.0f;
 }
 
 AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
@@ -138,4 +154,24 @@ bool SmartAnimationNode::getFlippedX()
 bool SmartAnimationNode::getFlippedY()
 {
 	return this->animationNode->getFlippedY();
+}
+
+std::string SmartAnimationNode::getCurrentAnimation()
+{
+	return this->currentAnimation;
+}
+
+std::string SmartAnimationNode::getAnimationResource()
+{
+	return this->animationResource;
+}
+
+void SmartAnimationNode::disableRender()
+{
+	this->animationNode->disableRender();
+}
+
+void SmartAnimationNode::enableRender()
+{
+	this->animationNode->enableRender();
 }

@@ -5,7 +5,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
-
+#include "Events/HexusEvents.h"
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
@@ -17,10 +17,6 @@
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
-
-const std::string GameState::RequestStateUpdateEvent = "EVENT_HEXUS_REQUEST_UPDATE_STATE";
-const std::string GameState::BeforeStateUpdateEvent = "EVENT_HEXUS_BEFORE_UPDATE_STATE";
-const std::string GameState::OnStateUpdateEvent = "EVENT_HEXUS_ON_UPDATE_STATE";
 
 GameState* GameState::create()
 {
@@ -35,7 +31,6 @@ GameState::GameState()
 	: stateType(StateType::EmptyState),
 	turn(Turn::Player),
 	difficulty(HexusOpponentData::Strategy::Random),
-	tutorialMode(StateOverride::TutorialMode::NoTutorial),
 	playerLosses(0),
 	enemyLosses(0),
 	cardReplaceCount(0),
@@ -47,6 +42,7 @@ GameState::GameState()
 	playerCardsDrawnNextRound(0),
 	enemyCardsDrawnNextRound(0),
 	roundNumber(0),
+	opponentData(nullptr),
 	selectedHandCard(nullptr),
 	selectedRow(nullptr),
 	cardPreviewComponentCallback(nullptr),
@@ -122,9 +118,9 @@ void GameState::initializePositions()
 	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
 }
 
-void GameState::onDeveloperModeEnable()
+void GameState::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -166,9 +162,10 @@ void GameState::updateState(GameState* gameState, StateType newState)
 		}
 	}
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::RequestStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::BeforeStateUpdateEvent, gameState);
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(GameState::OnStateUpdateEvent, gameState);
+	HexusEvents::TriggerBeforeRequestStateUpdate(gameState);
+	HexusEvents::TriggerRequestStateUpdate(gameState);
+	HexusEvents::TriggerBeforeStateUpdate(gameState);
+	HexusEvents::TriggerOnStateUpdate(gameState);
 }
 
 void GameState::clearInteraction()
@@ -222,7 +219,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -237,7 +234,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		(*it)->removeCardsWhere([&](Card* card)
 		{
 			// Special effect for binary 0 card (unless the game is over)
-			if (!isGameOver && card->cardData->cardKey == CardKeys::Binary0)
+			if (!isGameOver && card->cardData->getCardKey() == CardKeys::Binary0)
 			{
 				return false;
 			}
@@ -250,7 +247,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	for (auto it = playerRemovedCards.begin(); it != playerRemovedCards.end(); it++)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			if ((*it)->getIsPlayerOwnedCard())
 			{
@@ -277,7 +274,7 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 	for (auto it = enemyRemovedCards.begin(); it != enemyRemovedCards.end(); it++)
 	{
 		// Special effect for Dec1 cards
-		if (!isGameOver && (*it)->cardData->cardKey == CardKeys::Decimal1)
+		if (!isGameOver && (*it)->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			if ((*it)->getIsPlayerOwnedCard())
 			{
@@ -386,7 +383,7 @@ std::vector<Card*> GameState::getAbsorbCards()
 
 	for (auto it = allCards.begin(); it != allCards.end(); it++)
 	{
-		if ((*it)->cardData->cardType == CardData::CardType::Special_ABSORB)
+		if ((*it)->cardData->getCardType() == CardData::CardType::Special_ABSORB)
 		{
 			absorbCards.push_back(*it);
 		}

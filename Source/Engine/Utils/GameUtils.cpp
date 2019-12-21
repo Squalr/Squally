@@ -127,13 +127,18 @@ bool GameUtils::isFocused(Node *node)
 
 void GameUtils::focus(Node *node)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+
 	GameUtils::pause(Director::getInstance()->getRunningScene());
 	GameUtils::resume(node);
 }
 
 void GameUtils::flattenNode(Node* parent)
 {
-	if (parent->getChildren().size() <= 0)
+	if (parent == nullptr || parent->getChildren().size() <= 0)
 	{
 		return;
 	}
@@ -169,6 +174,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 
 	Vec3 newPosition = Vec3::ZERO;
 	Node* previousParent = node->getParent();
+	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
 	if (previousParent != nullptr)
@@ -178,12 +184,12 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 			Vec3 screenPosition = previousParent->convertToWorldSpace3(node->getPosition3D());
 			newPosition = newParent->convertToNodeSpace3(screenPosition);
 		}
-
-		node->retain();
 		
 		if (node->getParent() != nullptr)
 		{
+			node->retain();
 			node->getParent()->removeChildNoExit(node);
+			node->softRelease();
 		}
 	}
 	else if (retainPosition)
@@ -210,6 +216,11 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 			newParent->addChild(node);
 		}
 	}
+
+	while (node->getReferenceCount() > 1 && refIncrement > 0)
+	{
+		node->release();
+	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.
 	return node;
@@ -222,7 +233,7 @@ void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float durati
 		return;
 	}
 
-	const float step = 0.0166660007;
+	const float step = 1.0f / 60.0f;
 
 	particleSystem->start();
 

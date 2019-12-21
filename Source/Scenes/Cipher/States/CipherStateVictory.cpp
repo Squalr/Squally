@@ -21,9 +21,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Combat/Rewards.h"
-#include "Strings/Platformer/Notifications/ItemFound.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -55,7 +53,7 @@ void CipherStateVictory::onStateEnter(CipherState* cipherState)
 	
 	if (cipherState->puzzleData->onUnlock != nullptr)
 	{
-		cipherState->puzzleData->onUnlock(cipherState->puzzleData, cipherState->isHardModeEnabled());
+		cipherState->puzzleData->onUnlock(cipherState->puzzleData);
 	}
 
 	CipherState::updateState(cipherState, CipherState::StateType::GameEnd);

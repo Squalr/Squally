@@ -21,7 +21,8 @@ class PauseMenu : public SmartNode
 public:
 	static PauseMenu* create();
 
-	void setResumeClickCallback(std::function<void()> resumeClickCallback);
+	void open(std::function<void()> resumeClickCallback);
+	void close();
 	void setOptionsClickCallback(std::function<void()> optionsClickCallback);
 	void setQuitToTitleClickCallback(std::function<void()> quitToTitleClickCallback);
 	ClickableTextNode* addNewButton(LocalizedString* text);

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Rogas.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Rogas::Rogas(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Rogas::getHexusOpponentData();
@@ -48,7 +48,7 @@ Rogas::~Rogas()
 
 Vec2 Rogas::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Rogas::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 	if (Rogas::HexusOpponentDataInstance == nullptr)
 	{
 		Rogas::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Rogas_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Rogas::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.464f,
 			HexusOpponentData::generateDeck(32, 0.464f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Rogas::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::Steal),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

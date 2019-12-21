@@ -24,6 +24,7 @@ public:
 	void addTrackingObject(cocos2d::Node* trackedObject);
 	void replaceWithObject(cocos2d::Node* replacement, float disappearDuration = 2.0f, float fadeInDuration = 0.5f);
 	void detachFromTimeline();
+	std::string getSpriteResource();
 	void replaceSprite(std::string spriteResource);
 	void restoreSprite();
 	void setRotation(float rotation) override;
@@ -43,7 +44,7 @@ private:
 	void onEnter() override;
 	void update(float dt) override;
 	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
 	std::string originalPath;

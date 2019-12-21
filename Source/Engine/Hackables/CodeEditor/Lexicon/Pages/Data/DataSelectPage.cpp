@@ -9,17 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Pages/ChapterSelect/ChooseAnOperation.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Add.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Dec.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Div.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mov.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Mul.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Neg.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Pop.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Push.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Sub.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

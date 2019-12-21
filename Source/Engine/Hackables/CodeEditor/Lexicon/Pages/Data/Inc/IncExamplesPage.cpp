@@ -11,17 +11,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Assembly/Inc.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEax.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterEdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRax.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRcx.h"
-#include "Strings/Menus/Hacking/Lexicon/Assembly/RegisterRdi.h"
-#include "Strings/Menus/Hacking/Lexicon/Examples.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Inc/PointerHelp.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/OffsetHelp8.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

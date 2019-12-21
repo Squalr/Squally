@@ -31,22 +31,24 @@ public:
 	void whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	void whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	void whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
+	void onDispose(std::function<void()> task);
 
 protected:
 	SmartScene();
-	~SmartScene();
+	virtual ~SmartScene();
 	void pause() override;
 	void onEnter() override;
 	void onExit() override;
-	virtual void onDeveloperModeEnable();
+	virtual void onDeveloperModeEnable(int debugLevel);
 	virtual void onDeveloperModeDisable();
-	virtual void onHackerModeEnable(int eq);
+	virtual void onHackerModeEnable(int hackFlags);
 	virtual void onHackerModeDisable();
 	bool isDeveloperModeEnabled();
 	virtual void initializePositions();
 	virtual void initializeListeners();
 	virtual void removeAllListeners();
 	virtual void removeNonGlobalListeners();
+	void defer(std::function<void()> task);
 
 	bool hackermodeEnabled;
 	Hud* layerColorHud;
@@ -55,7 +57,10 @@ protected:
 	float fadeSpeed;
 
 	static const float defaultFadeSpeed;
+
 private:
 	typedef cocos2d::Scene super;
+
+	std::vector<std::function<void()>> disposeCallbacks;
 };
 

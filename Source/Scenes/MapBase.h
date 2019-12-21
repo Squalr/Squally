@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class EventMouse;
 	class Sprite;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
@@ -38,17 +37,18 @@ protected:
 	void resume() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
-	void onHackerModeEnable(int eq) override;
+	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
-	void onMouseWheelScroll(cocos2d::EventMouse* event);
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
+	void openPauseMenu(cocos2d::Node* refocusTarget);
 
 	cocos2d::Node* hudNode;
 	Hud* hud;
 	Hud* hackerModeVisibleHud;
+	Hud* miniGameHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;
@@ -56,18 +56,17 @@ protected:
 	PauseMenu* pauseMenu;
 	GameMap* map;
 
+	bool canPause;
 	bool allowHackerMode;
 	std::vector<std::string> mapArgs;
 
 private:
 	typedef GlobalScene super;
 	void toggleHackerMode(void* userData);
-	void openPauseMenu();
 
 	Hud* hackerModeGlow;
 	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
-	PlatformerDialogueBox* dialogueBox;
 	CodeEditor* codeEditor;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;

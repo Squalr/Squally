@@ -6,8 +6,8 @@
 class HexusOpponentData;
 class LocalizedString;
 class SmartAnimationSequenceNode;
-class Sound;
 
+// Note: not classified as a helper since they do not participate in combat
 class Scrappy : public PlatformerFriendly
 {
 public:
@@ -18,11 +18,6 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
-
-	Sound* droidAlarmedSound;
-	Sound* droidBrief1Sound;
-	Sound* droidBrief2Sound;
-	Sound* droidChatterSound;
 
 	static const std::string MapKeyScrappy;
 

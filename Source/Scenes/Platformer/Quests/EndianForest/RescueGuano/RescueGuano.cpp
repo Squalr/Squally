@@ -11,7 +11,6 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -20,8 +19,9 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/NotMuchOfAFighter.h"
-#include "Strings/Platformer/Quests/EndianForest/RescueGuano/HelpYouFindThings.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -40,7 +40,6 @@ RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::
 
 RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, RescueGuano::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->guano = nullptr;
 	this->squally = nullptr;
 }
@@ -54,17 +53,25 @@ void RescueGuano::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
-	});
+
+		if (questState == QuestState::Complete)
+		{
+			this->defer([=]()
+			{
+				this->guano->despawn();
+			});
+		}
+	}, Guano::MapKeyGuano);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	});
+	}, Squally::MapKeySqually);
 }
 
 void RescueGuano::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(RescueGuano::EventMulDoorUnlocked, [=](ValueMap args)
+	this->listenForMapEventOnce(RescueGuano::EventMulDoorUnlocked, [=](ValueMap args)
 	{
 		this->runRescueSequence();
 	});
@@ -83,45 +90,68 @@ void RescueGuano::runRescueSequence()
 {	
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
-		this->guano->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_RescueGuano_E_Freedom::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true),
+				true
+			),
+			[=]()
+			{
+				this->runRescueSequencePt2();
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterCheer1,
+			false
+		));
 	}, RescueGuano::TagPrisonDoor);
-
-	this->guano->listenForStateWrite(StateKeys::CinematicDestinationReached, [=](Value value)
-	{
-		this->runRescueSequencePt2();
-	});
 }
 
 void RescueGuano::runRescueSequencePt2()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_NotMuchOfAFighter::create(),
-		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
 		[=]()
 		{
 			this->runRescueSequencePt3();
 		},
-		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true),
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 		false
 	));
 }
 
 void RescueGuano::runRescueSequencePt3()
 {
-	DialogueEvents::TriggerDialogueOpen(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_RescueGuano_HelpYouFindThings::create(),
-		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
 		[=]()
 		{
-			this->guano->runAction(FadeTo::create(1.0f, 0));
-			HelperEvents::TriggerChangeHelper(HelperEvents::ChangeHelperArgs(Guano::MapKeyGuano));
+			this->guano->runAction(Sequence::create(
+				FadeTo::create(1.0f, 0),
+				CallFunc::create([=]()
+				{
+					this->guano->despawn();	
+				}),
+				nullptr
+			));
+			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
 			this->complete();
 		},
-		DialogueEvents::BuildPreviewNode(this->guano, false),
-		DialogueEvents::BuildPreviewNode(this->squally, true),
+		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 		true
 	));
 }

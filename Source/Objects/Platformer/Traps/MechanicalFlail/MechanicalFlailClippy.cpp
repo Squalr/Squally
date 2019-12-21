@@ -10,7 +10,7 @@
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Menus/Hacking/ClippyHelp/MechanicalFlailMov.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -26,12 +26,10 @@ MechanicalFlailClippy* MechanicalFlailClippy::create()
 MechanicalFlailClippy::MechanicalFlailClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
-	this->droidChatterSound = Sound::create(SoundResources::Platformer_Entities_Droid_DroidChatter);
 
 	this->clippyAnimations->setFlippedX(true);
 
 	this->animationNode->addChild(this->clippyAnimations);
-	this->addChild(this->droidChatterSound);
 }
 
 MechanicalFlailClippy::~MechanicalFlailClippy()
@@ -47,6 +45,5 @@ void MechanicalFlailClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_MechanicalFlailMov::create());
-	this->droidChatterSound->play();
+	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_MechanicalFlailMov::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, SpeechBubble::InfiniteDuration);
 }

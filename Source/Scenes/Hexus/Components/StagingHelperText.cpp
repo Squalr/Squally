@@ -12,10 +12,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Hexus/Actions/ChooseRow.h"
-#include "Strings/Hexus/Actions/ChooseSourceCard.h"
-#include "Strings/Hexus/Actions/ChooseTargetCard.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -132,7 +129,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 {
 	if (gameState->turn == GameState::Turn::Player && gameState->selectedHandCard != nullptr)
 	{
-		switch (gameState->selectedHandCard->cardData->cardType)
+		switch (gameState->selectedHandCard->cardData->getCardType())
 		{
 			case CardData::CardType::Special_AND:
 			case CardData::CardType::Special_OR:

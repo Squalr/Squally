@@ -15,7 +15,6 @@ namespace BackgroundResources
 	extern const std::string Hacking_HackerModeBackground;
 	extern const std::string Hacking_SensingBackground;
 	extern const std::string IndoorHouse;
-	extern const std::string Jungle;
 	extern const std::string Laboratory;
 	extern const std::string LakeSideSky;
 	extern const std::string Mist;

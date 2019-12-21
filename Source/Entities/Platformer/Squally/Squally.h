@@ -18,6 +18,7 @@ public:
 	LocalizedString* getEntityName() override;
 
 	static const std::string MapKeySqually;
+	static const std::string BattleTag;
 
 protected:
 	void performSwimAnimation() override;
@@ -35,7 +36,7 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int eq) override;
+	void onHackerModeEnable(int hackFlags) override;
 
 	static const float SquallyScale;
 };

@@ -5,7 +5,6 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerMouse.h"
 #include "cocos/base/CCEventMouse.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
@@ -20,7 +19,6 @@
 #include "Engine/UI/HUD/Hud.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
-#include "Menus/Dialogue/PlatformerDialogueBox.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -40,7 +38,6 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
-	this->dialogueBox = PlatformerDialogueBox::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
@@ -50,6 +47,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
+	this->miniGameHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
@@ -76,8 +74,6 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 
 	this->menuBackDrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
-	this->menuHud->addChild(this->dialogueBox);
-
 	if (allowHackerMode)
 	{
 		this->menuHud->addChild(this->radialMenu);
@@ -94,6 +90,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->hackerModeVisibleHud);
 	this->addChild(this->sensingGlow);
 	this->addChild(this->hackerModeGlow);
+	this->addChild(this->miniGameHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
@@ -133,13 +130,21 @@ void MapBase::initializePositions()
 	super::initializePositions();
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 }
 
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventAllowPause, [=](EventCustom* eventCustom)
+	{
+		this->canPause = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDisallowPause, [=](EventCustom* eventCustom)
+	{
+		this->canPause = false;
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventQueryMapArgs, [=](EventCustom* eventCustom)
 	{
@@ -191,31 +196,20 @@ void MapBase::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this))
+		if (!this->canPause ||!GameUtils::isFocused(this))
 		{
 			return;
 		}
 		
 		args->handle();
 
-		this->openPauseMenu();
+		this->openPauseMenu(this);
 	});
-
-	EventListenerMouse* scrollListener = EventListenerMouse::create();
-
-	scrollListener->onMouseScroll = CC_CALLBACK_1(MapBase::onMouseWheelScroll, this);
 
 	this->optionsMenu->setBackClickCallback([=]()
 	{
 		this->optionsMenu->setVisible(false);
-		this->openPauseMenu();
-	});
-
-	this->pauseMenu->setResumeClickCallback([=]()
-	{
-		this->menuBackDrop->setOpacity(0);
-		this->pauseMenu->setVisible(false);
-		GameUtils::focus(this);
+		this->openPauseMenu(this);
 	});
 
 	this->pauseMenu->setOptionsClickCallback([=]()
@@ -231,8 +225,6 @@ void MapBase::initializeListeners()
 		this->pauseMenu->setVisible(false);
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
 	});
-
-	this->addEventListenerIgnorePause(scrollListener);
 }
 
 void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
@@ -247,15 +239,6 @@ void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeseria
 	{
 		this->addChild(*it);
 		this->layerDeserializers.push_back(*it);
-	}
-}
-
-void MapBase::onMouseWheelScroll(EventMouse* event)
-{
-	if (this->isDeveloperModeEnabled())
-	{
-		float delta = event->getScrollY() * 64.0f;
-		GameCamera::getInstance()->setCameraDistance(GameCamera::getInstance()->getCameraDistance() + delta);
 	}
 }
 
@@ -279,7 +262,7 @@ bool MapBase::loadMap(std::string mapResource)
 	return false;
 }
 
-void MapBase::onDeveloperModeEnable()
+void MapBase::onDeveloperModeEnable(int debugLevel)
 {
 	if (this->map != nullptr)
 	{
@@ -290,8 +273,6 @@ void MapBase::onDeveloperModeEnable()
 	{
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
 	}
-	
-	Director::getInstance()->setDisplayStats(true);
 }
 
 void MapBase::onDeveloperModeDisable()
@@ -305,13 +286,11 @@ void MapBase::onDeveloperModeDisable()
 	{
 		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 	}
-
-	Director::getInstance()->setDisplayStats(false);
 }
 
-void MapBase::onHackerModeEnable(int eq)
+void MapBase::onHackerModeEnable(int hackFlags)
 {
-	super::onHackerModeEnable(eq);
+	super::onHackerModeEnable(hackFlags);
 
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);
@@ -351,9 +330,17 @@ void MapBase::toggleHackerMode(void* userData)
 	}
 }
 
-void MapBase::openPauseMenu()
+void MapBase::openPauseMenu(Node* refocusTarget)
 {
+	if (!this->canPause)
+	{
+		return;
+	}
+	
 	this->menuBackDrop->setOpacity(196);
-	this->pauseMenu->setVisible(true);
-	GameUtils::focus(this->pauseMenu);
+	this->pauseMenu->open([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		GameUtils::focus(refocusTarget);
+	});
 }

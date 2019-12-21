@@ -42,6 +42,6 @@ private:
 	cocos2d::Color4B hoverColor = cocos2d::Color4B(0x6c, 0xa5, 0xad, 0xff);
 	cocos2d::Color4B glowColor = cocos2d::Color4B(255, 255, 168, 255);
 
-	const float fontOutlineSize = 2.0f;
-	const float highlightOutlineSize = 4.0f;
+	static const int FontOutlineSize;
+	static const int HighlightOutlineSize;
 };

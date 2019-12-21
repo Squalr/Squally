@@ -8,10 +8,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/HelpMenus/AutoCard.h"
 
-#include "Strings/Hexus/BinHeader.h"
-#include "Strings/Hexus/DecHeader.h"
-#include "Strings/Hexus/HexHeader.h"
-#include "Strings/Hexus/CardDescriptionsLong/BinDecHex.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

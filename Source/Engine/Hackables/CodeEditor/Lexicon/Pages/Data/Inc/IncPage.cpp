@@ -10,9 +10,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Lexicon/Examples.h"
-#include "Strings/Menus/Hacking/Lexicon/Instructions/Data/Inc.h"
-#include "Strings/Menus/Hacking/Lexicon/Pages/Data/Inc/Intro.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

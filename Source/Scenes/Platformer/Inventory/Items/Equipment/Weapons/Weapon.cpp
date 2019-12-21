@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Weapon::Weapon(CurrencyInventory* cost, int minAttack, int maxAttack) : super(cost)
+Weapon::Weapon(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats) : super(cost, itemStats)
 {
 	this->minAttack = minAttack;
 	this->maxAttack = maxAttack;
@@ -42,4 +42,9 @@ Vec2 Weapon::getWeaponOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 192.0f);
+}
+
+std::string Weapon::getWeaponAttackSound()
+{
+	return "";
 }

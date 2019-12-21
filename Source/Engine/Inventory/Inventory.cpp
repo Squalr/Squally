@@ -32,6 +32,7 @@ Inventory::Inventory(std::string saveKey, int capacity)
 	this->capacity = capacity;
 	this->items = std::vector<Item*>();
 	this->itemsNode = Node::create();
+	this->onChangedEvent = nullptr;
 
 	this->load();
 
@@ -58,6 +59,11 @@ void Inventory::initializeListeners()
 		if (args != nullptr && args->instance != this)
 		{
 			this->load();
+
+			if (this->onChangedEvent != nullptr)
+			{
+				this->onChangedEvent();
+			}
 		}
 	}));
 }
@@ -65,11 +71,11 @@ void Inventory::initializeListeners()
 ValueMap Inventory::serialize()
 {
 	ValueMap saveData = ValueMap();
-	ValueMap itemData = ValueMap();
+	ValueVector itemData = ValueVector();
 
 	for (auto it = this->items.begin(); it != this->items.end(); it++)
 	{
-		itemData[(*it)->getSerializationKey()] = (Value((*it)->serialize()));
+		itemData.push_back(Value((*it)->getSerializationKey()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -83,11 +89,11 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->clearItems();
 
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
-	ValueMap itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueMap())).asValueMap();
+	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
 	for (auto it = itemData.begin(); it != itemData.end(); it++)
 	{
-		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(it->first, [=](Item* item)
+		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs((*it).asString(), [=](Item* item)
 		{
 			this->forceInsert(item, false);
 		}));
@@ -116,6 +122,11 @@ void Inventory::load()
 	{
 		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
+}
+
+void Inventory::onInventoryChanged(std::function<void()> onChangedEvent)
+{
+	this->onChangedEvent = onChangedEvent;
 }
 
 std::vector<Item*> Inventory::getItems()
@@ -168,7 +179,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 
 void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
 {
-	if (this->capacity == Inventory::InfiniteCapacity || this->items.size() < this->capacity)
+	if (this->capacity == Inventory::InfiniteCapacity || int(this->items.size()) < this->capacity)
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);

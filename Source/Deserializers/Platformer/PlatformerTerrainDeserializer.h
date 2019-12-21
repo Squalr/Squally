@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/ObjectDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 
 class PlatformerTerrainDeserializer : public ObjectDeserializer
 {
@@ -13,7 +13,7 @@ private:
 	typedef ObjectDeserializer super;
 
 	PlatformerTerrainDeserializer();
-	~PlatformerTerrainDeserializer();
+	virtual ~PlatformerTerrainDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 

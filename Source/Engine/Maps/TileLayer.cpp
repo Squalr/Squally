@@ -48,7 +48,7 @@ TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(ini
 			{
 				for (int y = 0; y < this->tileLayer->getLayerSize().height; y++)
 				{
-					Sprite* tile = this->tileLayer->getTileAt(Vec2(x, y));
+					Sprite* tile = this->tileLayer->getTileAt(Vec2(float(x), float(y)));
 
 					if (tile != nullptr)
 					{
@@ -62,15 +62,17 @@ TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(ini
 		}
 		else
 		{
-			this->tileLayer->retain();
-			this->tileLayer->getParent()->removeChild(this->tileLayer);
-			this->addChild(this->tileLayer);
+			GameUtils::changeParent(this->tileLayer, this, true);
 		}
 	}
 }
 
 TileLayer::~TileLayer()
 {
+	if (this->tileLayer != nullptr && this->tileLayer->getParent() == nullptr)
+	{
+		this->tileLayer->release();
+	}
 }
 
 std::string TileLayer::getType()
@@ -84,8 +86,8 @@ std::vector<std::vector<int>> TileLayer::getGidMap()
 
 	if (this->tileLayer != nullptr)
 	{
-		int width = this->tileLayer->getLayerSize().width;
-		int height = this->tileLayer->getLayerSize().height;
+		int width = int(this->tileLayer->getLayerSize().width);
+		int height = int(this->tileLayer->getLayerSize().height);
 
 		for (int y = 0; y < height; y++)
 		{
@@ -93,7 +95,7 @@ std::vector<std::vector<int>> TileLayer::getGidMap()
 
 			for (int x = 0; x < width; x++)
 			{
-				row.push_back(this->tileLayer->getTileGIDAt(Vec2(x, y)));
+				row.push_back(this->tileLayer->getTileGIDAt(Vec2(float(x), float(y))));
 			}
 
 			gidMap.push_back(row);

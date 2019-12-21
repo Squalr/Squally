@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/AnubisPup.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ AnubisPup::~AnubisPup()
 
 Vec2 AnubisPup::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* AnubisPup::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 	if (AnubisPup::HexusOpponentDataInstance == nullptr)
 	{
 		AnubisPup::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_AnubisPup_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			AnubisPup::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.083f,
 			HexusOpponentData::generateDeck(32, 0.083f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* AnubisPup::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -136,8 +133,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

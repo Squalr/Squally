@@ -58,9 +58,11 @@ public:
 	static const std::string EventBroadCastMapObjectStatePrefix;
 	static const std::string EventSpawnObject;
 	static const std::string EventSpawnObjectDelegator;
+	static const std::string EventObjectDespawningPrefix;
 	static const std::string EventBindObjectToUI;
+	static const std::string EventReparentBindPrefix;
 	static const std::string EventElevateObject;
-	static const std::string EventUnbindObject;
+	static const std::string EventUnbindObjectPrefix;
 	static const std::string EventWriteStatePrefix;
 
 	enum class SpawnMethod
@@ -107,6 +109,15 @@ public:
 		RelocateObjectArgs(cocos2d::Node* relocatedObject) : relocatedObject(relocatedObject) { }
 	};
 
+	struct ReparentBindArgs
+	{
+		cocos2d::Node* relocatedObject;
+		cocos2d::Node* newParent;
+
+		ReparentBindArgs() : relocatedObject(nullptr), newParent(nullptr) { }
+		ReparentBindArgs(cocos2d::Node* relocatedObject, cocos2d::Node* newParent) : relocatedObject(relocatedObject), newParent(newParent) { }
+	};
+
 	struct StateWriteArgs
 	{
 		GameObject* owner;
@@ -119,7 +130,7 @@ public:
 	static void TriggerCollisionMapUpdated();
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);
-	static void TriggerUnbindObject(RelocateObjectArgs args);
+	static void TriggerReparentBind(ReparentBindArgs args);
 	static void TriggerElevateObject(RelocateObjectArgs args);
 	static void TriggerObjectSpawn(RequestObjectSpawnArgs args);
 	static void TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args);
@@ -144,10 +155,11 @@ public:
 		}
 	}
 
+	static inline unsigned long long WatchId = 0;
+
 	template <class T>
 	static void watchForObject(cocos2d::Node* host, std::function<void(T*)> onObjectFound, std::string tag = "")
 	{
-		static unsigned long long WatchId = 0;
 		unsigned long long watchId = WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_OBJECT_" + std::to_string(watchId);
 
@@ -176,6 +188,6 @@ public:
 				*handled = true;
 			}), tag);
 
-		}, 1.0f / 60.0f, 0, 0.0f, eventKey);
+		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
 	}
 };

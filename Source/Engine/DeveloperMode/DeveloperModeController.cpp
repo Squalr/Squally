@@ -2,15 +2,18 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
+#include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
 DeveloperModeController* DeveloperModeController::instance = nullptr;
-bool DeveloperModeController::IsDeveloperBuild = true;
+volatile bool DeveloperModeController::IsDeveloperBuild = false;
+int DeveloperModeController::MaxDebugLevel = 2;
 
 void DeveloperModeController::registerGlobalNode()
 {
@@ -35,11 +38,21 @@ DeveloperModeController* DeveloperModeController::getInstance()
 
 DeveloperModeController::DeveloperModeController()
 {
-	this->developerModeEnabled = false;
+	this->currentDebugLevel = 0;
 }
 
 DeveloperModeController::~DeveloperModeController()
 {
+}
+
+void DeveloperModeController::onEnter()
+{
+	super::onEnter();
+	
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		Director::getInstance()->setDisplayStats(true);
+	}
 }
 
 void DeveloperModeController::initializeListeners()
@@ -57,16 +70,16 @@ void DeveloperModeController::initializeListeners()
 		
 		args->handle();
 
-		if (!this->developerModeEnabled)
+		this->currentDebugLevel = MathUtils::wrappingNormalize(this->currentDebugLevel + 1, 0, DeveloperModeController::MaxDebugLevel);
+
+		if (this->isDeveloperModeEnabled())
 		{
-			DeveloperModeEvents::TriggerDeveloperModeModeEnable();
+			DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEvents::DeveloperModeEnableArgs(this->currentDebugLevel));
 		}
 		else
 		{
 			DeveloperModeEvents::TriggerDeveloperModeModeDisable();
 		}
-
-		this->developerModeEnabled = !this->developerModeEnabled;
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F1 }, [=](InputEvents::InputArgs* args)
@@ -172,5 +185,10 @@ void DeveloperModeController::initializeListeners()
 
 bool DeveloperModeController::isDeveloperModeEnabled()
 {
-	return this->developerModeEnabled;
+	return this->currentDebugLevel > 0 && this->currentDebugLevel <= DeveloperModeController::MaxDebugLevel;
+}
+
+int DeveloperModeController::getDebugLevel()
+{
+	return this->currentDebugLevel;
 }

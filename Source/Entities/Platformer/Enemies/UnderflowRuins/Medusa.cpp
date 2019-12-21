@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/UnderflowRuins/Medusa.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Medusa::getHexusOpponentData()
 	if (Medusa::HexusOpponentDataInstance == nullptr)
 	{
 		Medusa::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -196.0f),
 			Medusa::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.833f,
 			HexusOpponentData::generateDeck(32, 0.833f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -143,8 +140,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -34,12 +34,7 @@ WoodenCrate* WoodenCrate::create(ValueMap& properties)
 WoodenCrate::WoodenCrate(ValueMap& properties) : super(properties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
-
-	this->boxCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
-	});
+	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 154.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 
 	this->boxCollision->addChild(this->box);
 	this->addChild(this->boxCollision);
@@ -49,21 +44,14 @@ WoodenCrate::~WoodenCrate()
 {
 }
 
-void WoodenCrate::onEnter()
+void WoodenCrate::initializeListeners()
 {
-	super::onEnter();
+	super::initializeListeners();
 
-	this->scheduleUpdate();
-}
-
-void WoodenCrate::initializePositions()
-{
-	super::initializePositions();
-}
-
-void WoodenCrate::update(float dt)
-{
-	super::update(dt);
+	this->boxCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::CollideWithPhysics;
+	});
 }
 
 Vec2 WoodenCrate::getButtonOffset()

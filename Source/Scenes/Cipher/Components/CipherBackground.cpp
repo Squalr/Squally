@@ -12,7 +12,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/ShaderResources.h"
 
-#include "Strings/Cipher/CipherCaps.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

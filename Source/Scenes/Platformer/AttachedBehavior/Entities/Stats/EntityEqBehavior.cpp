@@ -28,6 +28,8 @@ EntityEqBehavior* EntityEqBehavior::create(GameObject* owner)
 EntityEqBehavior::EntityEqBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->saveKeyEq = "";
+	this->saveKeyExp = "";
 
 	if (this->entity == nullptr)
 	{
@@ -43,19 +45,33 @@ void EntityEqBehavior::onLoad()
 {
 }
 
+void EntityEqBehavior::load(std::string saveKeyEq, std::string saveKeyExp)
+{
+	this->saveKeyEq = saveKeyEq;
+	this->saveKeyExp = saveKeyExp;
+
+	int eq = SaveManager::getProfileDataOrDefault(this->saveKeyEq, Value(1)).asInt();
+	int exp = SaveManager::getProfileDataOrDefault(this->saveKeyExp, Value(0)).asInt();
+
+	this->entity->setState(StateKeys::Eq, Value(eq), false);
+	this->entity->setState(StateKeys::EqExperience, Value(exp), false);
+}
+
 void EntityEqBehavior::setEq(int eq)
 {
 	this->entity->setState(StateKeys::Eq, Value(eq), false);
+
+	this->save();
 }
 
 int EntityEqBehavior::getEq()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::Eq, 0);
+	return this->entity->getStateOrDefaultInt(StateKeys::Eq, 1);
 }
 
 bool EntityEqBehavior::setEqExperience(int eqExperience)
 {
-	int expToLevel = StatsTables::getExpRequiredAtLevel(this->getEq());
+	int expToLevel = StatsTables::getExpRequiredAtLevel(this->entity);
 
 	this->entity->setState(StateKeys::EqExperience, Value(eqExperience), false);
 
@@ -70,6 +86,8 @@ bool EntityEqBehavior::setEqExperience(int eqExperience)
 		return true;
 	}
 
+	this->save();
+
 	return false;
 }
 
@@ -81,4 +99,15 @@ bool EntityEqBehavior::addEqExperience(int eqExperience)
 int EntityEqBehavior::getEqExperience()
 {
 	return this->entity->getStateOrDefaultInt(StateKeys::EqExperience, 0);
+}
+
+void EntityEqBehavior::save()
+{
+	if (this->saveKeyEq.empty() || this->saveKeyExp.empty())
+	{
+		return;
+	}
+
+	SaveManager::softSaveProfileData(this->saveKeyEq, Value(this->getEq()));
+	SaveManager::softSaveProfileData(this->saveKeyExp, Value(this->getEqExperience()));
 }

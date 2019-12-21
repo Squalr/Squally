@@ -17,7 +17,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/Operations/Immediate.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -46,15 +46,15 @@ SourceBlock::SourceBlock(int cipherIndex) : super(BlockType::Static, ConnectionT
 	this->spriteDec->setAnchorPoint(Vec2::ZERO);
 	this->spriteHex->setAnchorPoint(Vec2::ZERO);
 
-	this->block->getSprite()->setOpacity(1);
-	this->block->getSprite()->setCascadeOpacityEnabled(false);
-	this->block->getSpriteSelected()->setOpacity(1);
-	this->block->getSpriteSelected()->setCascadeOpacityEnabled(false);
+	this->block->getContent()->setOpacity(1);
+	this->block->getContent()->setCascadeOpacityEnabled(false);
+	this->block->getContentSelected()->setOpacity(1);
+	this->block->getContentSelected()->setCascadeOpacityEnabled(false);
 
-	this->block->getSprite()->addChild(this->spriteAscii);
-	this->block->getSprite()->addChild(this->spriteBin);
-	this->block->getSprite()->addChild(this->spriteDec);
-	this->block->getSprite()->addChild(this->spriteHex);
+	this->block->getContent()->addChild(this->spriteAscii);
+	this->block->getContent()->addChild(this->spriteBin);
+	this->block->getContent()->addChild(this->spriteDec);
+	this->block->getContent()->addChild(this->spriteHex);
 	this->addChild(this->displayLabel);
 }
 
@@ -112,7 +112,7 @@ void SourceBlock::loadDisplayValue()
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
 	
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
 	
 	switch(this->displayDataType)
 	{

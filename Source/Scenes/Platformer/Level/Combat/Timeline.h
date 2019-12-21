@@ -16,14 +16,16 @@ class Timeline : public SmartNode
 {
 public:
 	static Timeline* create();
+	
+	std::vector<TimelineEntry*> initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities);
+	std::vector<TimelineEntry*> initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities);
 
-	void initializeTimeline(bool isPlayerFirstStrike);
 	void resumeTimeline();
 
 private:
 	typedef SmartNode super;
 	Timeline();
-	virtual ~Timeline() = default;
+	~Timeline();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -44,5 +46,6 @@ private:
 	bool isTimelinePaused;
 	bool isTimelineInterrupted;
 	bool isCombatComplete;
+	bool hasInit;
 	TimelineEntry* timelineEntryAwaitingUserAction;
 };

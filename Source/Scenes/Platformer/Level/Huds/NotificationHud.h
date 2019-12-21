@@ -13,6 +13,7 @@ class ClickableTextNode;
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
+class Sound;
 
 class NotificationHud : public Hud
 {
@@ -31,8 +32,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	void showNotificationTakeover(LocalizedString* title, LocalizedString* description);
-	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource);
+	void showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource);
+	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource);
 	void closeNotificationMenu();
 
 	cocos2d::Node* previousFocus;
@@ -44,9 +45,11 @@ private:
 	LocalizedLabel* description;
 	cocos2d::Node* takeoverNode;
 	cocos2d::Node* notificationsNode;
+	Sound* notificationSound;
 
 	std::queue<cocos2d::Node*> toProcess;
 	std::vector<float> slotCooldowns;
 
 	static const int SlotCount;
+	static const int SfxCooldown;
 };

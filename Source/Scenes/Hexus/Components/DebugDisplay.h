@@ -3,6 +3,7 @@
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
 class ClickableNode;
+class ConstantString;
 class GameState;
 class LocalizedLabel;
 
@@ -20,12 +21,13 @@ private:
 	DebugDisplay();
 	~DebugDisplay();
 
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 	GameState* activeGameState;
+	ConstantString* stateStr;
 	LocalizedLabel* stateLabel;
 	ClickableNode* loseButton;
 	ClickableNode* drawButton;

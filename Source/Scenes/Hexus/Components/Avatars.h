@@ -28,6 +28,7 @@ private:
 	Avatars();
 	~Avatars();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void setAvatars(GameState* gameState);
 
@@ -37,6 +38,7 @@ private:
 	cocos2d::Sprite* frameEnemy;
 	cocos2d::Node* avatarPlayer;
 	cocos2d::Node* avatarEnemy;
-	SmartAnimationNode* playerSprite;
-	SmartAnimationNode* opponentSprite;
+	cocos2d::Node* playerBackground;
+	SmartAnimationNode* playerPreview;
+	cocos2d::Node* opponentPreview;
 };

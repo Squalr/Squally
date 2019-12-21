@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/DaemonsHallow/Ash.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Ash::~Ash()
 
 Vec2 Ash::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Ash::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Ash::getHexusOpponentData()
 	if (Ash::HexusOpponentDataInstance == nullptr)
 	{
 		Ash::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_DaemonsHallow_Ash_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Ash::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.652f,
 			HexusOpponentData::generateDeck(32, 0.652f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Ash::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

@@ -27,15 +27,20 @@ public:
 		PauseOnAnimationComplete
 	};
 
-	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
-	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
-	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float blendTime = 0.25f);
+	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f);
+	void clearAnimationPriority();
 	AnimationPart* getAnimationPart(std::string partName);
 	void restoreAnimationPart(std::string partName);
 	void setFlippedX(bool flippedX);
 	void setFlippedY(bool flippedY);
 	bool getFlippedX();
 	bool getFlippedY();
+	std::string getCurrentAnimation();
+	std::string getAnimationResource();
+	void disableRender();
+	void enableRender();
 
 	static const std::string DefaultAnimationEntityName;
 	static const std::string DefaultAnimationName;
@@ -50,5 +55,8 @@ private:
 	virtual ~SmartAnimationNode();
 
 	bool initialized;
+	float currentAnimationPriority;
 	std::map<std::string, AnimationPart*> animationParts;
+	std::string currentAnimation;
+	std::string animationResource;
 };

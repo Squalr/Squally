@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Deserializers/ObjectDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectDeserializer.h"
 
 class PlatformerObjectDeserializer : public ObjectDeserializer
 {
@@ -13,5 +13,5 @@ private:
 	typedef ObjectDeserializer super;
 
 	PlatformerObjectDeserializer();
-	~PlatformerObjectDeserializer();
+	virtual ~PlatformerObjectDeserializer();
 };

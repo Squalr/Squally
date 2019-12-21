@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/Shaman.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Shaman::~Shaman()
 
 Vec2 Shaman::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Shaman::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 	if (Shaman::HexusOpponentDataInstance == nullptr)
 	{
 		Shaman::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_Shaman_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			0.78f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Shaman::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* Shaman::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -121,9 +118,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -134,16 +131,15 @@ CardList::getInstance()->cardListByName.at(CardKeys::Hex0),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

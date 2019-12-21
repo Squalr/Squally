@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/CastleValgrind/Leroy.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,16 +61,12 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 	if (Leroy::HexusOpponentDataInstance == nullptr)
 	{
 		Leroy::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_CastleValgrind_Leroy_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			0.9f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -128.0f),
 			Vec2(-32.0f, -96.0f),
 			Leroy::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.420f,
 			HexusOpponentData::generateDeck(32, 0.420f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Leroy::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 				CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

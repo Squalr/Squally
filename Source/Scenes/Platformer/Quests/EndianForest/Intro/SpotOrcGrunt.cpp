@@ -11,11 +11,14 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
-#include "Strings/Platformer/Quests/EndianForest/Intro/OgreSpotted.h"
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -32,7 +35,6 @@ SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std:
 
 SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
 {
-	this->hasRunEvent = false;
 	this->scrappy = nullptr;
 }
 
@@ -45,12 +47,12 @@ void SpotOrcGrunt::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	});
+	}, Scrappy::MapKeyScrappy);
 }
 
 void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -69,35 +71,18 @@ void SpotOrcGrunt::onSkipped()
 
 void SpotOrcGrunt::runCinematicSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->scrappy != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
 		this->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->scrappy->droidChatterSound->play();
-			}),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_OgreSpotted::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				this->scrappy->speechBubble->hideDialogue();
+				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+				{
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_EnemySpotted::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f, [=]()
+					{
+						interactionBehavior->getSpeechBubble()->hideDialogue();
+					});
+				});
 			}),
 			nullptr
 		));

@@ -2,11 +2,6 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class IOU;
 
 class FirstIOUFound : public AttachedBehavior

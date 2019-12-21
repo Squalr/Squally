@@ -9,29 +9,29 @@
 using namespace cocos2d;
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* normalLabel,
-	Label* selectedLabel,
-	std::string spriteNormal,
+	Label* label,
+	Label* labelSelected,
+	std::string spriteResource,
 	std::string spriteSelectedResource)
 {
 	return ClickableTextNode::create(
-		normalLabel,
-		selectedLabel,
-		Sprite::create(spriteNormal),
+		label,
+		labelSelected,
+		Sprite::create(spriteResource),
 		Sprite::create(spriteSelectedResource)
 	);
 }
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* normalLabel,
-	Label* selectedLabel,
-	Node* spriteNormal,
+	Label* label,
+	Label* labelSelected,
+	Node* spriteResource,
 	std::string spriteSelectedResource)
 {
 	ClickableTextNode* instance = new ClickableTextNode(
-		normalLabel,
-		selectedLabel,
-		spriteNormal, 
+		label,
+		labelSelected,
+		spriteResource, 
 		Sprite::create(spriteSelectedResource)
 	);
 
@@ -41,16 +41,16 @@ ClickableTextNode* ClickableTextNode::create(
 }
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* normalLabel,
-	Label* selectedLabel,
-	Node* nodeNormal, 
-	Node* nodeSelected)
+	Label* label,
+	Label* labelSelected,
+	Node* content, 
+	Node* contentSelected)
 {
 	ClickableTextNode* instance = new ClickableTextNode(
-		normalLabel,
-		selectedLabel,
-		nodeNormal,
-		nodeSelected);
+		label,
+		labelSelected,
+		content,
+		contentSelected);
 
 	instance->autorelease();
 
@@ -58,25 +58,23 @@ ClickableTextNode* ClickableTextNode::create(
 }
 
 ClickableTextNode::ClickableTextNode(
-	Label* normalLabel,
-	Label* selectedLabel,
-	Node* nodeNormal,
-	Node* nodeSelected) : ClickableNode(nodeNormal, nodeSelected)
+	Label* label,
+	Label* labelSelected,
+	Node* content,
+	Node* contentSelected) : ClickableNode(content, contentSelected)
 {
-	this->normalContentLabel = normalLabel;
-	this->selectedContentLabel = selectedLabel;
-	this->normalContent = nodeNormal;
-	this->selectedContent = nodeSelected;
+	this->label = label;
+	this->labelSelected = labelSelected;
 
 	Vec2 center = this->getContentSize() / 2.0f;
 
-	normalLabel->setPosition(center);
-	selectedLabel->setPosition(center);
+	this->label->setPosition(center);
+	this->labelSelected->setPosition(center);
 
 	this->setCascadeOpacityEnabled(true);
 
-	nodeNormal->addChild(normalLabel);
-	nodeSelected->addChild(selectedLabel);
+	this->content->addChild(label);
+	this->contentSelected->addChild(labelSelected);
 }
 
 ClickableTextNode::~ClickableTextNode()
@@ -85,14 +83,14 @@ ClickableTextNode::~ClickableTextNode()
 
 void ClickableTextNode::setTextVisible(bool isVisible)
 {
-	this->normalContentLabel->setVisible(isVisible);
-	this->selectedContentLabel->setVisible(isVisible);
+	this->label->setVisible(isVisible);
+	this->labelSelected->setVisible(isVisible);
 }
 
 void ClickableTextNode::setTextOffset(Vec2 offset)
 {
 	Vec2 center = this->getContentSize() / 2.0f;
 
-	this->normalContentLabel->setPosition(center + offset);
-	this->selectedContentLabel->setPosition(center + offset);
+	this->label->setPosition(center + offset);
+	this->labelSelected->setPosition(center + offset);
 }

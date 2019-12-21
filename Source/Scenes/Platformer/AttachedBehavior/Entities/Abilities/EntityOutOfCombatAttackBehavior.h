@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class WorldSound;
 
 class EntityOutOfCombatAttackBehavior : public AttachedBehavior
 {
@@ -16,10 +17,10 @@ protected:
 	~EntityOutOfCombatAttackBehavior();
 
 	void initializePositions() override;
-	void onDeveloperModeEnable() override;
+	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onLoad() override;
-	void doOutOfCombatAttack(std::string attackAnimation, float onset, float sustain);
+	void doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain);
 
 private:
 	typedef AttachedBehavior super;
@@ -27,5 +28,6 @@ private:
 	bool isPerformingOutOfCombatAttack;
 
 	PlatformerEntity* entity;
+	WorldSound* weaponSound;
 	cocos2d::Sprite* outOfCombatAttackDebug;
 };

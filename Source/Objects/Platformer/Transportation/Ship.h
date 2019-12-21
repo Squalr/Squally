@@ -4,13 +4,8 @@
 
 namespace cocos2d
 {
-	class PhysicsBody;
 	class Sprite;
 }
-
-class CollisionObject;
-class SmartAnimationSequenceNode;
-class Sound;
 
 class Ship : public HackableObject
 {

@@ -1,18 +1,21 @@
 #include "SpeechBubble.h"
 
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCDrawNode.h"
 
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/Camera/GameCamera.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/FX/TypeWriterEffect.h"
 
-#include "Strings/Common/Empty.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
+const float SpeechBubble::InfiniteDuration = -1.0f;
 const Color4F SpeechBubble::BubbleColor = Color4F(Color4B(189, 215, 221, 196));
 const Color4F SpeechBubble::BubbleEdgeColor = Color4F(Color4B(47, 71, 78, 196));
 const Color4B SpeechBubble::BubbleTextColor = Color4B(47, 71, 78, 255);
@@ -32,7 +35,10 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->uiBound = uiBound;
 	this->stem = DrawNode::create(3.0f);
 	this->bubble = DrawNode::create(3.0f);
+	this->voiceSound = WorldSound::create("");
 	this->text = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
+	this->speechBubbleNode = Node::create();
+	this->hasBound = false;
 
 	this->text->setTextColor(SpeechBubble::BubbleTextColor);
 
@@ -40,37 +46,15 @@ SpeechBubble::SpeechBubble(bool uiBound)
 	this->stem->setOpacity(0);
 	this->text->setOpacity(0);
 
-	this->addChild(this->stem);
-	this->addChild(this->bubble);
-	this->addChild(this->text);
+	this->speechBubbleNode->addChild(this->stem);
+	this->speechBubbleNode->addChild(this->bubble);
+	this->speechBubbleNode->addChild(this->text);
+	this->addChild(this->voiceSound);
+	this->addChild(this->speechBubbleNode);
 }
 
 SpeechBubble::~SpeechBubble()
 {
-}
-
-void SpeechBubble::onExit()
-{
-	super::onExit();
-	
-	if (this->uiBound)
-	{
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->stem));
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->bubble));
-		ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->text));
-	}
-}
-
-void SpeechBubble::onEnter()
-{
-	super::onEnter();
-
-	if (this->uiBound)
-	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->stem));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->bubble));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->text));
-	}
 }
 
 void SpeechBubble::initializePositions()
@@ -89,11 +73,19 @@ void SpeechBubble::initializeListeners()
 	super::initializeListeners();
 }
 
-void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direction)
+void SpeechBubble::runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration, std::function<void()> onComplete, Direction direction)
 {
 	const Size padding = Size(16.0f, 16.0f);
 	const float centerAutoOffset = 256.0f;
 	const Size triangleSize = Size(16.0f, 32.0f);
+
+	this->voiceSound->setSoundResource(soundResource);
+
+	if (!this->hasBound && this->uiBound)
+	{
+		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->speechBubbleNode));
+		hasBound = true;
+	}
 
 	if (direction == Direction::Auto)
 	{
@@ -175,10 +167,31 @@ void SpeechBubble::runDialogue(LocalizedString* localizedString, Direction direc
 	this->bubble->clear();
 	this->bubble->drawSolidRect(source, dest, SpeechBubble::BubbleColor);
 	this->bubble->drawRect(source, dest, SpeechBubble::BubbleEdgeColor);
+
+	this->voiceSound->play();
+
+	if (sustainDuration >= 0.0f)
+	{
+		this->runAction(Sequence::create(
+			DelayTime::create(sustainDuration),
+			CallFunc::create([=]()
+			{
+				this->hideDialogue();
+
+				if (onComplete != nullptr)
+				{
+					onComplete();
+				}
+			}),
+			nullptr
+		));
+	}
 }
 
 void SpeechBubble::hideDialogue()
 {
+	TypeWriterEffect::cancelEffect(this->text);
+
 	this->bubble->runAction(FadeTo::create(0.5f, 0));
 	this->stem->runAction(FadeTo::create(0.5f, 0));
 	this->text->runAction(FadeTo::create(0.5f, 0));

@@ -18,9 +18,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
 
-#include "Strings/Common/Constant.h"
-#include "Strings/Hexus/Cards/Effects/Overflow.h"
-#include "Strings/Hexus/Cards/Effects/Underflow.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -49,7 +47,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->operations = std::vector<Operation>();
 	this->cardData = data;
 
-	switch (data->cardType)
+	switch (data->getCardType())
 	{
 		case CardData::CardType::Binary:
 		{
@@ -110,12 +108,12 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 
 	this->cardSelect = ClickableNode::create(HexusResources::CardUnselected, HexusResources::CardSelect);
 	this->cardSelect->setClickSound(SoundResources::Menus_Card_Game_UI_Button_Light_Reverb_02);
-	this->cardSprite = Sprite::create(data->cardResourceFile);
+	this->cardSprite = Sprite::create(data->getCardResourceFile());
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();
 
 	this->cardString = ConstantString::create();
-	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, Strings::Common_Constant::create());
+	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M2, this->cardString);
 	this->overflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Overflow::create());
 	this->underflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Hexus_Cards_Effects_Underflow::create());
 
@@ -126,7 +124,6 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->overflowLabel->setOpacity(0);
 	this->underflowLabel->setOpacity(0);
 
-	this->cardLabel->setStringReplacementVariables(this->cardString);
 	this->cardLabel->setAlignment(TextHAlignment::CENTER);
 	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardLabel->enableOutline(Color4B::BLACK, 6);
@@ -152,11 +149,6 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 
 Card::~Card()
 {
-	if (this->relocateUI)
-	{
-		ObjectEvents::TriggerUnbindObject(this->overflowLabel);
-		ObjectEvents::TriggerUnbindObject(this->underflowLabel);
-	}
 }
 
 void Card::onEnter()
@@ -173,8 +165,9 @@ void Card::onEnterTransitionDidFinish()
 
 	if (this->relocateUI)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+		// TODO: This is broken somehow, there is an issue where these are not being properly positioned as UIBoundObjects
+		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
 	}
 }
 
@@ -220,7 +213,7 @@ void Card::enableInteraction()
 
 Card::Operation Card::toOperation(unsigned int immediate)
 {
-	switch (this->cardData->cardType)
+	switch (this->cardData->getCardType())
 	{
 		case CardData::CardType::Special_SHL:
 		{
@@ -291,12 +284,12 @@ Card::Operation Card::toOperation(unsigned int immediate)
 
 unsigned int Card::getOriginalAttack()
 {
-	return this->cardData->attack;
+	return this->cardData->getAttack();
 }
 
 unsigned int Card::getAttack()
 {
-	unsigned int attack = this->cardData->attack;
+	unsigned int attack = this->cardData->getAttack();
 
 	for (auto it = this->operations.begin(); it != this->operations.end(); it++)
 	{
@@ -319,7 +312,7 @@ bool Card::getIsPlayerOwnedCard()
 
 int Card::applyOperation(int attack, Operation operation)
 {
-	if (this->cardData->cardKey == CardKeys::Absorb)
+	if (this->cardData->getCardKey() == CardKeys::Absorb)
 	{
 		return 0b0000;
 	}
@@ -452,7 +445,7 @@ void Card::updateText()
 {
 	unsigned int actualAttack = this->getAttack();
 
-	switch (this->cardData->cardType)
+	switch (this->cardData->getCardType())
 	{
 		case CardData::CardType::Binary:
 		{
@@ -480,11 +473,11 @@ void Card::updateText()
 		}
 	}
 
-	if (actualAttack > this->cardData->attack)
+	if (actualAttack > this->cardData->getAttack())
 	{
 		this->cardLabel->setTextColor(Card::buffColor);
 	}
-	else if (actualAttack < this->cardData->attack)
+	else if (actualAttack < this->cardData->getAttack())
 	{
 		this->cardLabel->setTextColor(Card::debuffColor);
 	}
@@ -578,7 +571,7 @@ void Card::runUnderflowEffect(bool offsetYPosition, bool isGoodEffect)
 
 CardEffects::CardEffect Card::getCorrespondingCardEffect()
 {
-	switch (this->cardData->cardType)
+	switch (this->cardData->getCardType())
 	{
 		case CardData::CardType::Special_SHL:
 		{

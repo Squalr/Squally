@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class SmartAnimationSequenceNode;
 
 class Defend : public Buff
 {
@@ -22,13 +21,17 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback) override;
+	void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback) override;
 	void onTimelineReset(bool wasInterrupt) override;
 
 private:
 	typedef Buff super;
 
-	SmartAnimationSequenceNode* defendEffect;
+	void onDamageTakenOrCycle(bool isDamage);
+
+	cocos2d::Sprite* defendEffect;
+
+	int resetCount;
 
 	static const float DamageReduction;
 };

@@ -6,7 +6,7 @@
 using namespace cocos2d;
 
 const std::string HelperEvents::EventFindScrappy = "EVENT_FIND_Scrappy";
-const std::string HelperEvents::EventChangeHelper = "EVENT_CHANGE_HELPER";
+const std::string HelperEvents::EventRequestPickPocket = "EVENT_REQUEST_PICK_POCKET";
 
 void HelperEvents::TriggerFindScrappy()
 {
@@ -15,10 +15,10 @@ void HelperEvents::TriggerFindScrappy()
 	);
 }
 
-void HelperEvents::TriggerChangeHelper(ChangeHelperArgs args)
+void HelperEvents::TriggerRequestPickPocket(RequestPickPocketArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		HelperEvents::EventChangeHelper,
+		HelperEvents::EventRequestPickPocket,
 		&args
 	);
 }

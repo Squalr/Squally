@@ -105,7 +105,7 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 	gameState->playerHand->setMouseClickCallback(CC_CALLBACK_1(StateHandCardStaged::selectCard, this, gameState));
 	gameState->enemyHand->setMouseClickCallback(CC_CALLBACK_1(StateHandCardStaged::selectCard, this, gameState));
 
-	switch (gameState->selectedHandCard->cardData->cardType)
+	switch (gameState->selectedHandCard->cardData->getCardType())
 	{
 		case CardData::CardType::Special_ABSORB:
 		{

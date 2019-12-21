@@ -12,7 +12,7 @@ public:
 	PlatformerAttack* getAssociatedAttack();
 
 protected:
-	Consumable(CurrencyInventory* cost);
+	Consumable(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	~Consumable();
 
 	virtual PlatformerAttack* createAssociatedAttack() = 0;

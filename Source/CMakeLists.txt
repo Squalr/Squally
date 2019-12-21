@@ -54,12 +54,15 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 # Platform specific target options
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set_target_properties(${PROJECT_NAME} PROPERTIES
+        CXX_STANDARD 17
+        CXX_EXTENSIONS ON
         MACOSX_BUNDLE YES
         MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/proj.mac/Info.plist
     )
     set_source_files_properties(${PROJECT_SOURCE_DIR}/proj.mac/Icon.icns PROPERTIES
         MACOSX_PACKAGE_LOCATION Resources
     )
+
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE YES
@@ -68,12 +71,23 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
         CMAKE_CXX_FLAGS_DEBUG
         "${CMAKE_CXX_FLAGS_DEBUG}"
     )
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Z7")
     string(REGEX REPLACE "/Z[iI7]" ""
         CMAKE_CXX_FLAGS_RELEASE
         "${CMAKE_CXX_FLAGS_RELEASE}"
     )
+    string(REGEX REPLACE "/Z[iI7]" ""
+        CMAKE_CXX_FLAGS_RELWITHDEBINFO
+        "${CMAKE_CXX_FLAGS_RELWITHDEBINFO}"
+    )
+    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /Z7")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Z7")
+    set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /Z7")
+
+    # Find C++ 17, allow large multi-class C++ files
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /bigobj")
+
+    # Enable to allow profiling on windows:
+    # target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:/PROFILE>)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")

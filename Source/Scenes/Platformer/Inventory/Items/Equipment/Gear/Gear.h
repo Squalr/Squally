@@ -7,14 +7,11 @@ class LocalizedString;
 class Gear : public Equipable
 {
 public:
-	int getDefense();
 
 protected:
-	Gear(CurrencyInventory* cost, int defense);
+	Gear(CurrencyInventory* cost, ItemStats itemStats, ItemMeta itemMeta = ItemMeta());
 	virtual ~Gear();
 
 private:
 	typedef Equipable super;
-
-	int defense;
 };

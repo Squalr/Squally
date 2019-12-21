@@ -13,31 +13,7 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Hexus/BinLabel.h"
-#include "Strings/Hexus/CardDescriptions/Absorb.h"
-#include "Strings/Hexus/CardDescriptions/Addition.h"
-#include "Strings/Hexus/CardDescriptions/BonusMoves.h"
-#include "Strings/Hexus/CardDescriptions/Flip1.h"
-#include "Strings/Hexus/CardDescriptions/Flip2.h"
-#include "Strings/Hexus/CardDescriptions/Flip3.h"
-#include "Strings/Hexus/CardDescriptions/Flip4.h"
-#include "Strings/Hexus/CardDescriptions/Greed.h"
-#include "Strings/Hexus/CardDescriptions/Inverse.h"
-#include "Strings/Hexus/CardDescriptions/Kill.h"
-#include "Strings/Hexus/CardDescriptions/LogicalAnd.h"
-#include "Strings/Hexus/CardDescriptions/LogicalOr.h"
-#include "Strings/Hexus/CardDescriptions/LogicalXor.h"
-#include "Strings/Hexus/CardDescriptions/Mov.h"
-#include "Strings/Hexus/CardDescriptions/Peek.h"
-#include "Strings/Hexus/CardDescriptions/ReturnToHand.h"
-#include "Strings/Hexus/CardDescriptions/ShiftLeft.h"
-#include "Strings/Hexus/CardDescriptions/ShiftRight.h"
-#include "Strings/Hexus/CardDescriptions/Steal.h"
-#include "Strings/Hexus/CardDescriptions/Subtract.h"
-#include "Strings/Hexus/CardDescriptions/SuddenDeath.h"
-#include "Strings/Hexus/DecLabel.h"
-#include "Strings/Hexus/HexLabel.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -103,7 +79,7 @@ void CardPreviewComponent::onAnyStateChange(GameState* gameState)
 				break;
 			}
 
-			switch (gameState->selectedHandCard->cardData->cardType)
+			switch (gameState->selectedHandCard->cardData->getCardType())
 			{
 				case CardData::CardType::Binary:
 				case CardData::CardType::Decimal:

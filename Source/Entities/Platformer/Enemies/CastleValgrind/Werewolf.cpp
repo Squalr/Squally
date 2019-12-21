@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/CastleValgrind/Werewolf.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* Werewolf::getHexusOpponentData()
 	if (Werewolf::HexusOpponentDataInstance == nullptr)
 	{
 		Werewolf::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameCastleValgrind,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -160.0f),
 			Werewolf::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Air,
-			0.750f,
 			HexusOpponentData::generateDeck(32, 0.750f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,8 +97,8 @@ HexusOpponentData* Werewolf::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
-CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+					CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -112,9 +109,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				},
 				// Player decimal cards
 				std::vector<CardData*>
@@ -130,24 +127,23 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
-				},
-				StateOverride::TutorialMode::NoTutorial
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+				}
 			)
 		);
 	}

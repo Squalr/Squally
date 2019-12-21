@@ -15,8 +15,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Hexus/Tutorials/F/UseMov.h"
-#include "Strings/Menus/GotIt.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -29,7 +28,7 @@ TutorialFIntroSequence* TutorialFIntroSequence::create()
 	return instance;
 }
 
-TutorialFIntroSequence::TutorialFIntroSequence() : super(StateOverride::TutorialMode::TutorialF, GameState::StateType::Neutral)
+TutorialFIntroSequence::TutorialFIntroSequence() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_F_UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
@@ -104,7 +103,7 @@ void TutorialFIntroSequence::initializeCallbacks(GameState* gameState)
 {
 	this->handCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->concludeTutorial(gameState);
+		this->tryUnHijackState(gameState);
 	});
 }
 
@@ -120,7 +119,7 @@ void TutorialFIntroSequence::runTutorialHandCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialFIntroSequence::concludeTutorial(GameState* gameState)
+void TutorialFIntroSequence::unHijackState(GameState* gameState)
 {
 	this->handCardsNextButton->disableInteraction();
 	this->handCardsNextButton->runAction(FadeTo::create(0.25f, 0));
@@ -128,5 +127,4 @@ void TutorialFIntroSequence::concludeTutorial(GameState* gameState)
 	this->helpArrowHandCards->hidePointer();
 
 	this->focusTakeOver->unfocus();
-	this->unHijackState(gameState);
 }

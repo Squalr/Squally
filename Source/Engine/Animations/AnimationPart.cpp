@@ -135,6 +135,11 @@ void AnimationPart::replaceWithObject(Node* replacement, float disappearDuration
 	));
 }
 
+std::string AnimationPart::getSpriteResource()
+{
+	return this->originalPath;
+}
+
 void AnimationPart::replaceSprite(std::string spriteResource)
 {
 	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
@@ -147,6 +152,11 @@ void AnimationPart::replaceSprite(std::string spriteResource)
 
 void AnimationPart::restoreSprite()
 {
+	if (this->spriterAnimationPart == nullptr || this->spriterAnimationPart->getImage() == nullptr)
+	{
+		return;
+	}
+	
 	this->spriterAnimationPart->getImage()->setPath(this->originalPath);
 }
 
@@ -240,9 +250,9 @@ void AnimationPart::updateTrackedAttributes()
 	this->ghostSprite->setPosition(Vec2::ZERO);
 }
 
-void AnimationPart::onDeveloperModeEnable()
+void AnimationPart::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	if (this->ghostSprite != nullptr)
 	{

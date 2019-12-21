@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="753">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DarkForestSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="Tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="wall bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="748" name="marble" type="terrain" x="-45.4762" y="-90.3629">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 2669.39,-16.3627 2669.39,1374.48 6.46348,1390.83"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="57" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="658" name="marble" type="terrain" x="-427.766" y="1066.21">
+   <polygon points="0,0 3112.12,-2.8322 3112.12,237.904 7.53542,240.737"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Generic/LesserMoonDoor" type="decor" x="403.186" y="562.62" width="310" height="492"/>
+  <object id="749" name="marcel" type="entity" x="1621.01" y="932.932" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="talk-to-marcel,return-to-marcel"/>
+    <property name="quest-line" value="hexus-gauntlet"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="433.163" y="603.189" width="237.527" height="464.666">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Guild"/>
+    <property name="transition" value="gauntlet"/>
+   </properties>
+  </object>
+  <object id="706" name="spawn" type="object" x="485.456" y="939.259" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="751" name="frost-portal" type="object" x="2203.44" y="806.705" width="128" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Mages_Gauntlet_1"/>
+    <property name="tag" value="quest-portal"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="752" name="spawn" type="object" x="1367.13" y="937.789" width="128" height="128">
+   <properties>
+    <property name="transition" value="gauntlet"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="838.452" y="935.328" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

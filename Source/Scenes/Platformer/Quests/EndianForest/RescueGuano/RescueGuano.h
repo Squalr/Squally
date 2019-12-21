@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 
 #include "Engine/Quests/QuestTask.h"
 
@@ -29,7 +29,6 @@ private:
 	void runRescueSequencePt2();
 	void runRescueSequencePt3();
 
-	bool hasRunEvent;
 	Guano* guano;
 	Squally* squally;
 

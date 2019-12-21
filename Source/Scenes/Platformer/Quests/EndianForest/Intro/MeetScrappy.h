@@ -4,6 +4,7 @@
 
 class Scrappy;
 class QuestLine;
+class WorldSound;
 
 class MeetScrappy : public QuestTask
 {
@@ -24,10 +25,12 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
 
-	bool hasRunEvent;
 	Scrappy* scrappy;
+	WorldSound* droidAlarmedSound;
 
 	static const std::string TagScrappyStop;
 };

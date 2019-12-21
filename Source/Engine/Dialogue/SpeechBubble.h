@@ -9,6 +9,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
+class WorldSound;
  
 class SpeechBubble : public SmartNode
 {
@@ -23,23 +24,26 @@ public:
 		Auto
 	};
 
-	void runDialogue(LocalizedString* localizedString, Direction direction = Direction::Auto);
+	void runDialogue(LocalizedString* localizedString, std::string soundResource, float sustainDuration = 4.0f, std::function<void()> onComplete = nullptr, Direction direction = Direction::Auto);
 	void hideDialogue();
+
+	static const float InfiniteDuration;
 
 private:
 	typedef SmartNode super;
 	SpeechBubble(bool uiBound);
 	~SpeechBubble();
-
-	void onEnter() override;
-	void onExit() override;
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 
+	cocos2d::Node* speechBubbleNode;
 	cocos2d::DrawNode* stem;
 	cocos2d::DrawNode* bubble;
 	LocalizedLabel* text;
+	WorldSound* voiceSound;
 
+	bool hasBound;
 	bool uiBound;
 
 	static const cocos2d::Color4F BubbleColor;

@@ -11,7 +11,7 @@
 
 #include "Resources/IsometricObjectResources.h"
 
-#include "Strings/Common/Constant.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -28,7 +28,6 @@ RegisterMarker::RegisterMarker() : super(ValueMap())
 
 RegisterMarker::~RegisterMarker()
 {
-	ObjectEvents::TriggerUnbindObject(ObjectEvents::RelocateObjectArgs(this->registerLabel));
 }
 
 void RegisterMarker::onEnter()

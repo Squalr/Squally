@@ -11,11 +11,8 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
 #include "Events/PlatformerEvents.h"
-
-#include "Strings/Platformer/Quests/EndianForest/Intro/HackerMode.h"
 
 using namespace cocos2d;
 
@@ -32,7 +29,6 @@ FindElriel* FindElriel::create(GameObject* owner, QuestLine* questLine,  std::st
 
 FindElriel::FindElriel(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, FindElriel::MapKeyQuest, questTag, false)
 {
-	this->hasRunEvent = false;
 	this->blackbeard = nullptr;
 }
 
@@ -45,12 +41,12 @@ void FindElriel::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{
 		this->blackbeard = blackbeard;
-	});
+	}, Blackbeard::MapKeyBlackbeard);
 }
 
 void FindElriel::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEvent(FindElriel::MapKeyQuest, [=](ValueMap args)
+	this->listenForMapEventOnce(FindElriel::MapKeyQuest, [=](ValueMap args)
 	{
 		this->complete();
 
@@ -69,32 +65,7 @@ void FindElriel::onSkipped()
 
 void FindElriel::runCinematicSequence()
 {
-	if (this->hasRunEvent)
-	{
-		return;
-	}
-	
-	this->hasRunEvent = true;
-
 	if (this->blackbeard != nullptr)
 	{
-		PlatformerEvents::TriggerCinematicHijack();
-
-		this->blackbeard->runAction(Sequence::create(
-			CallFunc::create([=]()
-			{
-			}),
-			CallFunc::create([=]()
-			{
-				this->blackbeard->speechBubble->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_HackerMode::create());
-			}),
-			DelayTime::create(4.0f),
-			CallFunc::create([=]()
-			{
-				PlatformerEvents::TriggerCinematicRestore();
-				this->blackbeard->speechBubble->hideDialogue();
-			}),
-			nullptr
-		));
 	}
 }

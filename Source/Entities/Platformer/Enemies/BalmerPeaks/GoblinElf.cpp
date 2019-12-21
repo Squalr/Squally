@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/BalmerPeaks/GoblinElf.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* GoblinElf::getHexusOpponentData()
 	if (GoblinElf::HexusOpponentDataInstance == nullptr)
 	{
 		GoblinElf::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameBalmerPeaks,
-			0.8f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -128.0f),
 			GoblinElf::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Water,
-			0.500f,
 			HexusOpponentData::generateDeck(32, 0.500f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,11 +97,11 @@ HexusOpponentData* GoblinElf::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
-CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+					CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -130,9 +127,9 @@ CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
-CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+					CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				},
 				// Enemy decimal cards
 				std::vector<CardData*>
@@ -143,8 +140,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -7,7 +7,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
-#include "Engine/Input/ClickableIconNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Sound/Sound.h"
@@ -16,11 +15,8 @@
 #include "Resources/HexusResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
-#include "Resources/UIResources.h"
 
-#include "Strings/Hexus/ClaimVictory.h"
-#include "Strings/Hexus/LastStand.h"
-#include "Strings/Hexus/Pass.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -41,7 +37,20 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 
 	// Pass
 	this->passSprite = Sprite::create(HexusResources::Flags);
-	this->passButton = ClickableIconNode::create(HexusResources::Flags, HexusResources::FlagsSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+
+	Node* passContent = Sprite::create(HexusResources::WoodSquareButton);
+	Node* passIcon = Sprite::create(HexusResources::Flags);
+	
+	passContent->addChild(passIcon);
+
+	Node* passContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
+	Node* passIconSelected = Sprite::create(HexusResources::FlagsSelected);
+	
+	passContentSelected->addChild(passIconSelected);
+	passIcon->setPosition(Vec2(passContent->getContentSize() / 2.0f) + Vec2(0.0f, 12.0f));
+	passIconSelected->setPosition(Vec2(passContentSelected->getContentSize() / 2.0f) + Vec2(0.0f, 12.0f));
+
+	this->passButton = ClickableNode::create(passContent, passContentSelected);
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Pass::create());
 
@@ -51,7 +60,20 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 
 	// Last stand
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
-	this->lastStandButton = ClickableIconNode::create(HexusResources::ShieldButton, HexusResources::ShieldButtonSelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+
+	Sprite* lastStandContent = Sprite::create(HexusResources::WoodSquareButton);
+	Sprite* lastStandIcon = Sprite::create(HexusResources::ShieldButton);
+	
+	lastStandContent->addChild(lastStandIcon);
+
+	Sprite* lastStandContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
+	Sprite* lastStandIconSelected = Sprite::create(HexusResources::ShieldButtonSelected);
+	
+	lastStandContentSelected->addChild(lastStandIconSelected);
+	lastStandIcon->setPosition(Vec2(lastStandContent->getContentSize() / 2.0f) + Vec2(0.0f, 6.0f));
+	lastStandIconSelected->setPosition(Vec2(lastStandContentSelected->getContentSize() / 2.0f) + Vec2(0.0f, 6.0f));
+
+	this->lastStandButton = ClickableNode::create(lastStandContent, lastStandContentSelected);
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->lastStandLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_LastStand::create());
 	
@@ -61,7 +83,20 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 
 	// Claim victory
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
-	this->claimVictoryButton = ClickableIconNode::create(HexusResources::Victory, HexusResources::VictorySelected, UIResources::Menus_Buttons_WoodSquareButton, UIResources::Menus_Buttons_WoodSquareButtonSelected);
+
+	Sprite* claimVictoryContent = Sprite::create(HexusResources::WoodSquareButton);
+	Sprite* claimVictoryIcon = Sprite::create(HexusResources::Victory);
+	
+	claimVictoryContent->addChild(claimVictoryIcon);
+
+	Node* claimVictoryContentSelected = Sprite::create(HexusResources::WoodSquareButtonSelected);
+	Node* claimVictoryIconSelected = Sprite::create(HexusResources::VictorySelected);
+	
+	claimVictoryContentSelected->addChild(claimVictoryIconSelected);
+	claimVictoryIcon->setPosition(Vec2(claimVictoryContent->getContentSize() / 2.0f) + Vec2(0.0f, 4.0f));
+	claimVictoryIconSelected->setPosition(Vec2(claimVictoryContentSelected->getContentSize() / 2.0f) + Vec2(0.0f, 4.0f));
+
+	this->claimVictoryButton = ClickableNode::create(claimVictoryContent, claimVictoryContentSelected);
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ClaimVictory::create());
 	
@@ -156,7 +191,7 @@ void StatePass::initializePositions()
 	this->passParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerPassCorrectionY);
 	this->passSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerPassCorrectionY);
 	this->passButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
-	this->passButton->setIconOffset(Vec2(0.0f, playerPassCorrectionY));
+	
 	this->passPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->passPanel->getContentSize().width / 2.0f,
 		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->passPanel->getContentSize().height / 2.0f
@@ -172,7 +207,7 @@ void StatePass::initializePositions()
 	this->lastStandParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerLastStandCorrectionY);
 	this->lastStandSprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerLastStandCorrectionY);
 	this->lastStandButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
-	this->lastStandButton->setIconOffset(Vec2(0.0f, playerLastStandCorrectionY));
+	
 	this->lastStandPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->lastStandPanel->getContentSize().width / 2.0f,
 		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->lastStandPanel->getContentSize().height / 2.0f
@@ -188,7 +223,7 @@ void StatePass::initializePositions()
 	this->claimVictoryParticles->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerClaimVictoryCorrectionY);
 	this->claimVictorySprite->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY + playerClaimVictoryCorrectionY);
 	this->claimVictoryButton->setPosition(visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX, visibleSize.height / 2.0f + Config::passButtonOffsetY);
-	this->claimVictoryButton->setIconOffset(Vec2(0.0f, playerClaimVictoryCorrectionY));
+	
 	this->claimVictoryPanel->setPosition(
 		visibleSize.width / 2.0f + Config::leftColumnCenter + Config::passButtonOffsetX - this->claimVictoryPanel->getContentSize().width / 2.0f,
 		visibleSize.height / 2.0f + Config::passButtonOffsetY + 64.0f - this->claimVictoryPanel->getContentSize().height / 2.0f

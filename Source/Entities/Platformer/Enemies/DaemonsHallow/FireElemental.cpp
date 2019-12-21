@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/DaemonsHallow/FireElemental.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ FireElemental::~FireElemental()
 
 Vec2 FireElemental::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* FireElemental::getEntityName()
@@ -61,20 +61,17 @@ HexusOpponentData* FireElemental::getHexusOpponentData()
 	if (FireElemental::HexusOpponentDataInstance == nullptr)
 	{
 		FireElemental::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameDaemonsHallow,
-			1.0f,
-			Vec2(64.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			FireElemental::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Fire,
-			0.667f,
 			HexusOpponentData::generateDeck(32, 0.667f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -135,8 +132,7 @@ HexusOpponentData* FireElemental::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

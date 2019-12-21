@@ -20,9 +20,7 @@ protected:
 	WoodenCrate(cocos2d::ValueMap& properties);
 	virtual ~WoodenCrate();
 
-	void onEnter() override;
-	void initializePositions() override;
-	void update(float) override;
+	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 

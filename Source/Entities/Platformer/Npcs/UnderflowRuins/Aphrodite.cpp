@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/UnderflowRuins/Aphrodite.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Aphrodite::~Aphrodite()
 
 Vec2 Aphrodite::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Aphrodite::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 	if (Aphrodite::HexusOpponentDataInstance == nullptr)
 	{
 		Aphrodite::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameUnderflowRuins,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Aphrodite::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Light,
-			0.134f,
 			HexusOpponentData::generateDeck(32, 0.134f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Aphrodite::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

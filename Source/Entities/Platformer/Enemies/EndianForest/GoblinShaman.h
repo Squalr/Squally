@@ -3,7 +3,6 @@
 
 #include "Entities/Platformer/PlatformerEnemy.h"
 
-class HexusOpponentData;
 class LocalizedString;
 
 class GoblinShaman : public PlatformerEnemy
@@ -13,7 +12,6 @@ public:
 
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
-	static HexusOpponentData* getHexusOpponentData();
 
 	static const std::string MapKeyGoblinShaman;
 
@@ -21,7 +19,4 @@ private:
 	typedef PlatformerEnemy super;
 	GoblinShaman(cocos2d::ValueMap& properties);
 	~GoblinShaman();
-
-	static HexusOpponentData* HexusOpponentDataInstance;
-	static const std::string HexusSaveKey;
 };

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Xenon.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Xenon::Xenon(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	Size(112.0f, 160.0f),
-	0.85f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Xenon::getHexusOpponentData();
@@ -48,7 +48,7 @@ Xenon::~Xenon()
 
 Vec2 Xenon::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Xenon::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 	if (Xenon::HexusOpponentDataInstance == nullptr)
 	{
 		Xenon::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Xenon_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			0.85f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Xenon::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.904f,
 			HexusOpponentData::generateDeck(32, 0.904f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -84,8 +80,8 @@ HexusOpponentData* Xenon::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
 				CardList::getInstance()->cardListByName.at(CardKeys::BonusMoves),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

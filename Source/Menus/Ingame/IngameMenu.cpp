@@ -14,15 +14,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Empty.h"
-#include "Strings/Menus/Pause/Collectables.h"
-#include "Strings/Menus/Pause/Inventory.h"
-#include "Strings/Menus/Pause/Map.h"
-#include "Strings/Menus/Pause/Options.h"
-#include "Strings/Menus/Pause/Party.h"
-#include "Strings/Menus/Pause/Pause.h"
-#include "Strings/Menus/Pause/QuitToTitle.h"
-#include "Strings/Menus/Pause/Resume.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 

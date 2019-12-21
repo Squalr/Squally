@@ -27,8 +27,9 @@ public:
 		HardRight,
 	};
 
+	bool isDialogueEffectComplete();
+
 protected:
-	typedef SmartNode super;
 
 	DialogueBox(float textWidth, float speakerOffset, float speakerWidth);
 	~DialogueBox();
@@ -38,9 +39,9 @@ protected:
 	virtual void runDialogue(LocalizedString* localizedString, DialogueDock dialogueDock, DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose);
 	virtual void hideDialogue();
 	virtual void onTypeWriterEffectComplete();
-	bool isDialogueEffectComplete();
 
 	cocos2d::Node* contentNode;
+	LocalizedLabel* text;
 
 	static const cocos2d::Color4F PanelColor;
 	static const cocos2d::Color4F PanelEdgeColor;
@@ -49,9 +50,10 @@ protected:
 	static const float DialogueHeight;
 
 private:
+	typedef SmartNode super;
+	
 	cocos2d::Node* containerNode;
 	cocos2d::DrawNode* panel;
-	LocalizedLabel* text;
 
 	bool dialogueEffectComplete;
 	float textWidth;

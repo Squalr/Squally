@@ -15,15 +15,13 @@
 
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGenericPreview.h"
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGetDensityPreview.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/GetDensity.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterEax.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm0.h"
-#include "Strings/Menus/Hacking/Objects/FloatingObjects/GetDensity/RegisterXmm1.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -98,8 +96,8 @@ void FloatingCrate::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1::create() },
 				},
-				1,
-				10.0f
+				int(HackFlags::None),
+				8.0f
 			)
 		},
 	};

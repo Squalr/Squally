@@ -104,7 +104,7 @@ void MatrixStrand::update(float dt)
 	// Set darkness based on distance
 	if (this->getPositionZ() < 0.0f)
 	{
-		this->setOpacity(255 * (1.0f - (this->getPositionZ() / MatrixStrand::MaxSpawnDistance)));
+		this->setOpacity(int(255.0f * (1.0f - (this->getPositionZ() / MatrixStrand::MaxSpawnDistance))));
 	}
 	else
 	{

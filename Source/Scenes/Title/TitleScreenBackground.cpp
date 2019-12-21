@@ -53,7 +53,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat);
+	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 	this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand);
 	this->mainhand->setOffset(Vec2(0.0f, -16.0f));
@@ -85,8 +85,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->addChild(this->foregroundGrassBottom);
 	this->addChild(this->foregroundGrassTop);
 	this->addChild(this->foregroundLight);
-
-	this->initializeListeners();
 }
 
 TitleScreenBackground::~TitleScreenBackground()
@@ -118,20 +116,11 @@ void TitleScreenBackground::onEnter()
 	FiniteTimeAction* bounceDownPostSink = EaseSineInOut::create(MoveTo::create(floatSpeedPostSink, Vec2(base.x, base.y - sinkOffset)));
 	FiniteTimeAction* sinkUp = EaseSineInOut::create(MoveTo::create(sinkSpeed, Vec2(base.x, base.y)));
 
-	CallFunc* jiggleSlime = CallFunc::create([=]
-	{
-		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
-	});
-
-	jiggleSlime->retain();
-
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("AttackStabLite");
-		jiggleSlime->execute();
+		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle,  1.0f);
+		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
 	});
-
-	pokeSlime->retain();
 	
 	this->squally->stopAllActions();
 	this->squally->runAction(RepeatForever::create(
@@ -206,7 +195,7 @@ void TitleScreenBackground::runEyeBlinkLoop()
 	const float TimeBetweenBlinks = 5.5f;
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->leftEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
 		
@@ -214,10 +203,8 @@ void TitleScreenBackground::runEyeBlinkLoop()
 		{
 			leftEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
-	this->leftEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->leftEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
 		
@@ -225,11 +212,9 @@ void TitleScreenBackground::runEyeBlinkLoop()
 		{
 			leftEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
 	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
-	this->rightEyeController->getForwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->rightEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
 		
@@ -237,10 +222,8 @@ void TitleScreenBackground::runEyeBlinkLoop()
 		{
 			rightEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
-	this->rightEyeController->getBackwardsAnimation()->incrementCallback = [=](int current, int max, std::string spriteResource)
+	this->rightEyeController->getBackwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
 		
@@ -248,7 +231,5 @@ void TitleScreenBackground::runEyeBlinkLoop()
 		{
 			rightEye->replaceSprite(spriteResource);
 		}
-
-		return current + 1;
 	};
 }

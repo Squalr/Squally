@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Enemies/SeaSharpCaverns/ForestGolem.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -61,20 +61,17 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 	if (ForestGolem::HexusOpponentDataInstance == nullptr)
 	{
 		ForestGolem::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameSeaSharpCaverns,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -144.0f),
 			ForestGolem::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.417f,
 			HexusOpponentData::generateDeck(32, 0.417f,
 			{
 
 			}),
+			nullptr,
 			StateOverride::create(
 				// Player losses
 				1,
@@ -100,7 +97,7 @@ HexusOpponentData* ForestGolem::getHexusOpponentData()
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+					CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				},
 				// Enemy hand
 				std::vector<CardData*>
@@ -121,7 +118,7 @@ CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+					CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				},
 				// Enemy binary cards
 				std::vector<CardData*>
@@ -132,14 +129,13 @@ CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 				std::vector<CardData*>
 				{
 					CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
-CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
+					CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
 				},
 				// Enemy hex cards
 				std::vector<CardData*>
 				{
 					
-				},
-				StateOverride::TutorialMode::NoTutorial
+				}
 			)
 		);
 	}

@@ -18,7 +18,7 @@
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Cipher/Operations/Immediate.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -49,15 +49,15 @@ DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, C
 	this->spriteDec->setAnchorPoint(Vec2::ZERO);
 	this->spriteHex->setAnchorPoint(Vec2::ZERO);
 
-	this->block->getSprite()->setOpacity(1);
-	this->block->getSprite()->setCascadeOpacityEnabled(false);
-	this->block->getSpriteSelected()->setOpacity(1);
-	this->block->getSpriteSelected()->setCascadeOpacityEnabled(false);
+	this->block->getContent()->setOpacity(1);
+	this->block->getContent()->setCascadeOpacityEnabled(false);
+	this->block->getContentSelected()->setOpacity(1);
+	this->block->getContentSelected()->setCascadeOpacityEnabled(false);
 
-	this->block->getSprite()->addChild(this->spriteAscii);
-	this->block->getSprite()->addChild(this->spriteBin);
-	this->block->getSprite()->addChild(this->spriteDec);
-	this->block->getSprite()->addChild(this->spriteHex);
+	this->block->getContent()->addChild(this->spriteAscii);
+	this->block->getContent()->addChild(this->spriteBin);
+	this->block->getContent()->addChild(this->spriteDec);
+	this->block->getContent()->addChild(this->spriteHex);
 	this->addChild(this->displayLabel);
 	this->addChild(this->receivedDisplayLabel);
 }
@@ -127,8 +127,8 @@ void DestinationBlock::loadDisplayValue()
 	this->spriteDec->setVisible(false);
 	this->spriteHex->setVisible(false);
 
-	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType);
-	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType, SmartAsciiLabel::Contrast(this->charValue));
+	this->displayLabel->loadDisplayValue(this->charValue, this->displayDataType, false);
+	this->receivedDisplayLabel->loadDisplayValue(this->receivedValue, this->displayDataType, false, SmartAsciiLabel::Contrast(this->charValue));
 	
 	switch(this->displayDataType)
 	{
@@ -190,10 +190,5 @@ void DestinationBlock::execute(std::function<void()> onExecuteComplete)
 
 unsigned char DestinationBlock::compute()
 {
-	if (this->currentInputs.size() < 1)
-	{
-		return (unsigned char)(0);
-	}
-
-	return this->currentInputs[0];
+	return this->inputLeft;
 }

@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/EndianForest/Polyphemus.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,7 +36,7 @@ Polyphemus::Polyphemus(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_EndianForest_Polyphemus_Animations,
 	EntityResources::Npcs_EndianForest_Polyphemus_Emblem,
 	Size(112.0f, 160.0f),
-	1.1f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 	this->hexusOpponentData = Polyphemus::getHexusOpponentData();
@@ -48,7 +48,7 @@ Polyphemus::~Polyphemus()
 
 Vec2 Polyphemus::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Polyphemus::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 	if (Polyphemus::HexusOpponentDataInstance == nullptr)
 	{
 		Polyphemus::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_EndianForest_Polyphemus_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameEndianForest,
-			1.1f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Polyphemus::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Earth,
-			0.054f,
 			HexusOpponentData::generateDeck(32, 0.054f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -83,8 +79,8 @@ HexusOpponentData* Polyphemus::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 				CardList::getInstance()->cardListByName.at(CardKeys::Flip1),
 				CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

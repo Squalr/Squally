@@ -9,10 +9,7 @@
 
 #include "Resources/UIResources.h"
 
-#include "Strings/Common/Brackets.h"
-#include "Strings/Input/Shift.h"
-#include "Strings/Input/Tab.h"
-#include "Strings/Platformer/Help/HelpTotemEndOfDemo.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -36,19 +33,4 @@ HelpTotemEndOfDemo::HelpTotemEndOfDemo(ValueMap& properties) : super(properties)
 
 HelpTotemEndOfDemo::~HelpTotemEndOfDemo()
 {
-}
-
-void HelpTotemEndOfDemo::onEnter()
-{
-	super::onEnter();
-}
-
-void HelpTotemEndOfDemo::initializePositions()
-{
-	super::initializePositions();
-}
-
-void HelpTotemEndOfDemo::initializeListeners()
-{
-	super::initializeListeners();
 }

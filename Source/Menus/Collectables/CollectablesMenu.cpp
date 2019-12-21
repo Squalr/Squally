@@ -19,8 +19,7 @@
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Menus/Collectables/Collectables.h"
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -207,7 +206,7 @@ void CollectablesMenu::updateCollectedVisualState()
 {
 	int collectedCount = 0;
 
-	for (int index = 0; index < this->saveKeys.size(); index++)
+	for (int index = 0; index < int(this->saveKeys.size()); index++)
 	{
 		if (SaveManager::getProfileDataOrDefault(this->saveKeys[index], Value(false)).asBool())
 		{
@@ -221,8 +220,6 @@ void CollectablesMenu::updateCollectedVisualState()
 			this->lockedSprites[index]->setVisible(true);
 		}
 	}
-
-	// TODO: Show collected count
 }
 
 void CollectablesMenu::registerCollectableAnimal(std::string resource, std::string resourceLocked, std::string saveKey)

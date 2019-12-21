@@ -14,7 +14,7 @@
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
 
-#include "Strings/Platformer/Entities/Names/Npcs/VoidStar/Piper.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -48,7 +48,7 @@ Piper::~Piper()
 
 Vec2 Piper::getDialogueOffset()
 {
-	return Vec2(0.0f, -32.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* Piper::getEntityName()
@@ -61,16 +61,12 @@ HexusOpponentData* Piper::getHexusOpponentData()
 	if (Piper::HexusOpponentDataInstance == nullptr)
 	{
 		Piper::HexusOpponentDataInstance = new HexusOpponentData(
-			EntityResources::Npcs_VoidStar_Piper_Animations,
+			nullptr,
 			HexusResources::Menus_HexusFrameVoidStar,
-			1.0f,
-			Vec2(0.0f, 0.0f),
-			Vec2(-48.0f, -144.0f),
 			Vec2(-32.0f, -112.0f),
 			Piper::HexusSaveKey,
 			HexusOpponentData::Strategy::Random,
 			Card::CardStyle::Shadow,
-			0.942f,
 			HexusOpponentData::generateDeck(32, 0.942f,
 			{
 				CardList::getInstance()->cardListByName.at(CardKeys::Greed),
@@ -85,8 +81,8 @@ HexusOpponentData* Piper::getHexusOpponentData()
 				CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 				CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
 				CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
-
 			}),
+			nullptr,
 			nullptr
 		);
 	}

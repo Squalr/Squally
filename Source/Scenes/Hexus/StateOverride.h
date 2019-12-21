@@ -3,22 +3,12 @@
 #include "Engine/SmartNode.h"
 
 class CardData;
+class TutorialBase;
 
 // A class for loading an initial state into Hexus -- used in puzzles and tutorials
 class StateOverride : public SmartNode
 {
 public:
-	enum class TutorialMode
-	{
-		NoTutorial,
-		TutorialA,
-		TutorialB,
-		TutorialC,
-		TutorialD,
-		TutorialE,
-		TutorialF
-	};
-
 	static StateOverride* create(
 		int playerLosses,
 		int enemyLosses,
@@ -34,8 +24,7 @@ public:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards,
-		TutorialMode tutorialMode = TutorialMode::NoTutorial
+		std::vector<CardData*> enemyHexCards
 	);
 
 	int playerLosses;
@@ -53,7 +42,6 @@ public:
 	std::vector<CardData*> enemyBinaryCards;
 	std::vector<CardData*> enemyDecimalCards;
 	std::vector<CardData*> enemyHexCards;
-	TutorialMode tutorialMode;
 
 protected:
 	StateOverride();
@@ -72,8 +60,7 @@ protected:
 		std::vector<CardData*> playerHexCards,
 		std::vector<CardData*> enemyBinaryCards,
 		std::vector<CardData*> enemyDecimalCards,
-		std::vector<CardData*> enemyHexCards,
-		TutorialMode tutorialMode = TutorialMode::NoTutorial
+		std::vector<CardData*> enemyHexCards
 	);
 	~StateOverride();
 

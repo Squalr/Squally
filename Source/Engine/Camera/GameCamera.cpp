@@ -12,6 +12,7 @@
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Input/ClickableNode.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -20,9 +21,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-#include "Strings/Debugging/CameraX.h"
-#include "Strings/Debugging/CameraY.h"
-#include "Strings/Debugging/CameraZoom.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -57,6 +56,7 @@ GameCamera::GameCamera()
 	this->debugCameraStringX = ConstantString::create();
 	this->debugCameraStringY = ConstantString::create();
 	this->debugCameraStringZoom = ConstantString::create();
+	this->debugScrollHitbox = ClickableNode::create();
 	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
 
@@ -68,10 +68,16 @@ GameCamera::GameCamera()
 	this->debugCameraLabelY->setAnchorPoint(Vec2(0.0f, 0.0f));
 	this->debugCameraLabelZoom->setAnchorPoint(Vec2(0.0f, 0.0f));
 
+	Hud* debugScrollHud = Hud::create();
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->debugScrollHitbox->setContentSize(visibleSize);
+
+	debugScrollHud->addChild(this->debugScrollHitbox);
 	this->hud->addChild(this->debugCameraRectangle);
 	this->hud->addChild(this->debugCameraLabelX);
 	this->hud->addChild(this->debugCameraLabelY);
 	this->hud->addChild(this->debugCameraLabelZoom);
+	this->addChild(debugScrollHud);
 	this->addChild(this->hud);
 }
 
@@ -86,18 +92,20 @@ void GameCamera::onEnter()
 	this->scheduleUpdate();
 }
 
-void GameCamera::onDeveloperModeEnable()
+void GameCamera::onDeveloperModeEnable(int debugLevel)
 {
-	super::onDeveloperModeEnable();
+	super::onDeveloperModeEnable(debugLevel);
 
 	this->updateCameraDebugLabels();
+	this->debugScrollHitbox->enableInteraction();
 	this->hud->setVisible(true);
 }
 
 void GameCamera::onDeveloperModeDisable()
 {
-	GameCamera::onDeveloperModeEnable();
+	super::onDeveloperModeDisable();
 
+	this->debugScrollHitbox->disableInteraction();
 	this->hud->setVisible(false);
 }
 
@@ -107,6 +115,7 @@ void GameCamera::initializePositions()
 
 	super::initializePositions();
 
+	this->debugScrollHitbox->setPosition(visibleSize / 2.0f);
 	this->debugCameraRectangle->setPosition(visibleSize / 2.0f);
 	this->debugCameraLabelX->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f + 48.0f));
 	this->debugCameraLabelY->setPosition(Vec2(visibleSize.width - 320.0f, 16.0f));
@@ -124,12 +133,18 @@ void GameCamera::initializeListeners()
 			this->clearTargets();
 		}
 	));
+
+	this->debugScrollHitbox->setMouseScrollCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		args->unhandle();
+		float delta = args->scrollDelta.y * 64.0f;
+		this->setCameraDistance(this->getCameraDistance() + delta);
+	});
 }
 
 void GameCamera::update(float dt)
 {
 	Vec2 cameraPosition = Camera::getDefaultCamera()->getPosition();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (!this->targetStack.empty())
 	{
@@ -156,11 +171,13 @@ void GameCamera::update(float dt)
 		}
 	}
 
-	// Prevent camera from leaving level bounds
-	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + visibleSize.width / 2.0f, this->cameraBounds.getMaxX() - visibleSize.width / 2.0f);
-	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + visibleSize.height / 2.0f, this->cameraBounds.getMaxY() - visibleSize.height / 2.0f);
+	Size boundsSize = Director::getInstance()->getVisibleSize() * this->getCameraZoom();
 
-	this->setCameraPosition(cameraPosition);
+	// Prevent camera from leaving level bounds
+	cameraPosition.x = MathUtils::clamp(cameraPosition.x, this->cameraBounds.getMinX() + boundsSize.width / 2.0f, this->cameraBounds.getMaxX() - boundsSize.width / 2.0f);
+	cameraPosition.y = MathUtils::clamp(cameraPosition.y, this->cameraBounds.getMinY() + boundsSize.height / 2.0f, this->cameraBounds.getMaxY() - boundsSize.height / 2.0f);
+
+	this->setCameraPosition(cameraPosition, false);
 }
 
 float GameCamera::getCameraDistance()
@@ -180,18 +197,36 @@ void GameCamera::setCameraDistance(float distance)
 		return;
 	}
 
-	this->setPositionZ(distance - this->defaultDistance);
+	this->setPositionZ(distance - this->getIntendedCameraDistance());
 	Camera::getDefaultCamera()->setPositionZ(distance);
+}
+
+float GameCamera::getCameraZoomOnTarget(cocos2d::Node* target)
+{
+	return ((this->getCameraDistance() - GameUtils::getDepth(target)) / this->getIntendedCameraDistance());
 }
 
 float GameCamera::getCameraZoom()
 {
-	return (this->getCameraDistance() / this->defaultDistance);
+	return (this->getCameraDistance() / this->getIntendedCameraDistance());
 }
 
 void GameCamera::setCameraZoom(float zoom)
 {
-	this->setCameraDistance(this->defaultDistance * zoom);
+
+	this->setCameraDistance(this->getIntendedCameraDistance() * zoom);
+}
+
+float GameCamera::getIntendedCameraDistance()
+{
+	float distance = this->defaultDistance;
+
+	if (this->getCurrentTrackingData() != nullptr && this->getCurrentTrackingData()->target != nullptr)
+	{
+		distance += GameUtils::getDepth(this->getCurrentTrackingData()->target);
+	}
+
+	return distance;
 }
 
 Vec2 GameCamera::getCameraPosition()
@@ -275,7 +310,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 	// Reset state
 	elapsed = 0.0f;
-	ticks = 60 * duration; // 60fps
+	ticks = int(60.0f * duration); // 60fps
 	elapsedTicks = 0;
 
 	Director::getInstance()->getScheduler()->schedule([=](float dt)
@@ -286,7 +321,7 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 		{
 			if (Camera::getDefaultCamera() != nullptr)
 			{
-				Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * M_PI) / waveLength)) * magnitude);
+				Camera::getDefaultCamera()->setRotation(std::sin(elapsed * ((2.0f * float(M_PI)) / waveLength)) * magnitude);
 			}
 		}
 		else
@@ -313,7 +348,9 @@ Vec2 GameCamera::boundCameraByEllipses()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? trackingData.target->getPosition() : trackingData.customPositionFunction();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr
+			? (trackingData.target->getPosition() + trackingData.trackOffset)
+			: trackingData.customPositionFunction();
 
 		// Don't even bother if the input data is bad
 		if (trackingData.scrollOffset.x <= 0.0f || trackingData.scrollOffset.y <= 0.0f)
@@ -368,12 +405,14 @@ Vec2 GameCamera::boundCameraByRectangle()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr ? GameUtils::getWorldCoords(trackingData.target) : trackingData.customPositionFunction();
+		Vec2 targetPosition = trackingData.customPositionFunction == nullptr
+			? (GameUtils::getWorldCoords(trackingData.target) + trackingData.trackOffset)
+			: trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance
 		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x + trackingData.trackOffset.x;
+			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x;
 
 			if (trackingData.followSpeed.x <= 0.0f)
 			{
@@ -387,7 +426,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 		}
 		else if (cameraPosition.x > targetPosition.x + trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x + trackingData.trackOffset.x;
+			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x;
 
 			if (trackingData.followSpeed.x <= 0.0f)
 			{
@@ -402,7 +441,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 
 		if (cameraPosition.y < targetPosition.y - trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y + trackingData.trackOffset.y;
+			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y;
 
 			if (trackingData.followSpeed.y <= 0.0f)
 			{
@@ -416,7 +455,7 @@ Vec2 GameCamera::boundCameraByRectangle()
 		}
 		else if (cameraPosition.y > targetPosition.y + trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y + trackingData.trackOffset.y;
+			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y;
 
 			if (trackingData.followSpeed.y <= 0.0f)
 			{

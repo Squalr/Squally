@@ -21,9 +21,43 @@ AutoCard::AutoCard(int defaultAttack)
 {
     this->currentAttack = defaultAttack;
     this->cardNode = Node::create();
+	this->binaryCardMap = std::map<int, Card*>();
+	this->decimalCardMap = std::map<int, Card*>();
+	this->hexCardMap = std::map<int, Card*>();
+	this->binaryCardFactory = std::map<int, std::function<Card*()>>();
+	this->decimalCardFactory = std::map<int, std::function<Card*()>>();
+	this->hexCardFactory = std::map<int, std::function<Card*()>>();
     this->activeCard = nullptr;
     this->cardScale = Card::cardScale;
     this->displayType = DisplayType::Binary;
+
+    for (auto it = CardList::getInstance()->cardListByName.begin(); it != CardList::getInstance()->cardListByName.end(); it++)
+    {
+        CardData* cardData = (*it).second;
+        
+        switch(cardData->getCardType())
+        {
+            case CardData::CardType::Binary:
+            {
+                this->binaryCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                break;
+            }
+            case CardData::CardType::Decimal:
+            {
+                this->decimalCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                break;
+            }
+            case CardData::CardType::Hexidecimal:
+            {
+                this->hexCardFactory[cardData->getAttack()] = [=](){ return Card::create(Card::CardStyle::Earth, cardData, true, false); };
+                break;
+            }
+            default:
+            {
+                continue;
+            }
+        }
+    }
 
     this->addChild(this->cardNode);
 }
@@ -86,401 +120,58 @@ void AutoCard::updateToggle()
 {
     if (this->activeCard != nullptr)
     {
-        this->cardNode->removeChild(this->activeCard);
+        this->activeCard->setVisible(false);
     }
-
-    switch(this->currentAttack)
+    
+    switch (this->displayType)
     {
         default:
-        case 0:
+        case DisplayType::Binary:
         {
-            switch(this->displayType)
+            if (this->binaryCardMap.find(this->currentAttack) != this->binaryCardMap.end())
             {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary0), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal0), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex0), true, false);
-                    break;
-                }
+                this->activeCard = this->binaryCardMap[this->currentAttack];
             }
-
+            else
+            {
+                this->activeCard = this->binaryCardFactory[this->currentAttack]();
+                this->binaryCardMap[this->currentAttack] = this->activeCard;
+                this->cardNode->addChild(this->activeCard);
+            }
             break;
         }
-        case 1:
+        case DisplayType::Decimal:
         {
-            switch(this->displayType)
+            if (this->decimalCardMap.find(this->currentAttack) != this->decimalCardMap.end())
             {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary1), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal1), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex1), true, false);
-                    break;
-                }
+                this->activeCard = this->decimalCardMap[this->currentAttack];
             }
-
+            else
+            {
+                this->activeCard = this->decimalCardFactory[this->currentAttack]();
+                this->decimalCardMap[this->currentAttack] = this->activeCard;
+                this->cardNode->addChild(this->activeCard);
+            }
             break;
         }
-        case 2:
+        case DisplayType::Hex:
         {
-            switch(this->displayType)
+            if (this->hexCardMap.find(this->currentAttack) != this->hexCardMap.end())
             {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary2), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal2), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex2), true, false);
-                    break;
-                }
+                this->activeCard = this->hexCardMap[this->currentAttack];
             }
-            
-            break;
-        }
-        case 3:
-        {
-            switch(this->displayType)
+            else
             {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary3), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal3), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex3), true, false);
-                    break;
-                }
+                this->activeCard = this->hexCardFactory[this->currentAttack]();
+                this->hexCardMap[this->currentAttack] = this->activeCard;
+                this->cardNode->addChild(this->activeCard);
             }
-            
-            break;
-        }
-        case 4:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary4), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal4), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex4), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 5:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary5), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal5), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex5), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 6:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary6), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal6), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex6), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 7:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary7), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal7), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex7), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 8:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary8), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal8), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex8), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 9:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary9), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal9), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex9), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 10:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary10), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal10), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex10), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 11:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary11), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal11), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex11), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 12:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary12), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal12), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex12), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 13:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary13), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal13), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex13), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 14:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary14), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal14), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex14), true, false);
-                    break;
-                }
-            }
-            
-            break;
-        }
-        case 15:
-        {
-            switch(this->displayType)
-            {
-                default:
-                case DisplayType::Binary:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Binary15), true, false);
-                    break;
-                }
-                case DisplayType::Decimal:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Decimal15), true, false);
-                    break;
-                }
-                case DisplayType::Hex:
-                {
-                    this->activeCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Hex15), true, false);
-                    break;
-                }
-            }
-            
             break;
         }
     }
 
+    this->activeCard->setVisible(true);
     this->activeCard->setScale(this->cardScale);
     this->activeCard->reveal();
     this->activeCard->disableInteraction();
-
-    this->cardNode->addChild(this->activeCard);
 }

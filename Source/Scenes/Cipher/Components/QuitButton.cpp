@@ -12,7 +12,7 @@
 
 #include "Resources/CipherResources.h"
 
-#include "Strings/Menus/Return.h"
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -77,4 +77,18 @@ void QuitButton::initializeListeners()
 void QuitButton::onAnyStateChange(CipherState* cipherState)
 {
 	super::onAnyStateChange(cipherState);
+
+	switch(cipherState->stateType)
+	{
+		case CipherState::StateType::Neutral:
+		{
+			this->quitButton->enableInteraction();
+			break;
+		}
+		default:
+		{
+			this->quitButton->disableInteraction();
+			break;
+		}
+	}
 }

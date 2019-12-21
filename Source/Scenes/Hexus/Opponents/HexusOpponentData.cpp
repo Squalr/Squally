@@ -1,11 +1,13 @@
 #include "HexusOpponentData.h"
 
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Hexus/Components/Tutorials/TutorialBase.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/StateOverride.h"
 
@@ -14,38 +16,68 @@ using namespace cocos2d;
 const std::string HexusOpponentData::winsPrefix = "WINS_";
 const std::string HexusOpponentData::lossesPrefix = "LOSSES_";
 
-HexusOpponentData::HexusOpponentData(
-	std::string animationResourceFile,
-	std::string backgroundResourceFile,
-	float animationScale,
-	Vec2 animationOffset,
-	Vec2 frameOffset,
-	Vec2 avatarOffset,
-	std::string enemyNameKey,
-	HexusOpponentData::Strategy strategy,
-	Card::CardStyle cardStyle,
-	float strength,
-	std::vector<CardData*> cards,
-	StateOverride* stateOverride)
+HexusOpponentData* HexusOpponentData::create(
+		cocos2d::Node* entityPreviewNode,
+		std::string backgroundResourceFile,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyAnalyticsIdentifier,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd,
+		StateOverride* stateOverride,
+		std::vector<TutorialBase*> tutorials)
 {
-	this->animationResourceFile = animationResourceFile;
+	HexusOpponentData* instance = new HexusOpponentData(
+		entityPreviewNode,
+		backgroundResourceFile,
+		avatarOffset,
+		enemyAnalyticsIdentifier,
+		strategy,
+		cardStyle,
+		cards,
+		onRoundEnd,
+		stateOverride,
+		tutorials
+	);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+HexusOpponentData::HexusOpponentData(
+		cocos2d::Node* entityPreviewNode,
+		std::string backgroundResourceFile,
+		cocos2d::Vec2 avatarOffset,
+		std::string enemyAnalyticsIdentifier,
+		HexusOpponentData::Strategy strategy,
+		Card::CardStyle cardStyle,
+		std::vector<CardData*> cards,
+		std::function<void(Result)> onRoundEnd,
+		StateOverride* stateOverride,
+		std::vector<TutorialBase*> tutorials)
+{
+	this->entityPreviewNode = entityPreviewNode;
 	this->backgroundResourceFile = backgroundResourceFile;
-	this->animationScale = animationScale;
-	this->animationOffset = animationOffset;
-	this->frameOffset = frameOffset;
 	this->avatarOffset = avatarOffset;
-	this->enemyNameKey = enemyNameKey;
+	this->enemyAnalyticsIdentifier = enemyAnalyticsIdentifier;
 	this->strategy = strategy;
 	this->cardStyle = cardStyle;
-	this->strength = strength;
-	this->reward = HexusOpponentData::generateReward(this->strength);
 	this->cards = cards;
+	this->onRoundEnd = onRoundEnd;
 	this->stateOverride = stateOverride;
+	this->tutorials = tutorials;
 	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
 		this->stateOverride->retain();
+	}
+
+	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	{
+		(*it)->retain();
 	}
 }
 
@@ -55,11 +87,16 @@ HexusOpponentData::~HexusOpponentData()
 	{
 		this->stateOverride->release();
 	}
+
+	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	{
+		(*it)->release();
+	}
 }
 
-Deck* HexusOpponentData::getDeck()
+std::vector<CardData*> HexusOpponentData::getDeck()
 {
-	return Deck::create(this->cardStyle, this->cards, false);
+	return this->cards;
 }
 
 CardData* HexusOpponentData::getStrongestCard()
@@ -68,26 +105,13 @@ CardData* HexusOpponentData::getStrongestCard()
 
 	for (auto it = this->cards.begin(); it != this->cards.end(); it++)
 	{
-		if (best == nullptr || (*it)->attack > best->attack)
+		if (best == nullptr || (*it)->getAttack() > best->getAttack())
 		{
 			best = *it;
 		}
 	}
 
 	return best;
-}
-
-int HexusOpponentData::generateReward(float deckStrength)
-{
-	// This should give us a distribution where the mininum is 32 (easiest opponent) the maximum is 512 (hardest opponent), with a healthy weight to early opponents
-	// Formula: Lagrange interpolation over (0.0, 32), (0.3, 240), (1.0, 512)
-	const float alpha = -304.762f;
-	const float beta = 785.762f;
-	const float gamma = 32.0f;
-
-	int adjusted = int((deckStrength * deckStrength) * alpha + (deckStrength * beta) + gamma);
-
-	return MathUtils::clamp(adjusted, 0, 512);
 }
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)
@@ -99,17 +123,6 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	int maxGeneratedDeckCardAttack = MathUtils::clamp((int)std::ceil((deckStrength + 0.10f) * 15), 2, 15);
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
-
-	// Always guarantee 0 cards, this seems to actually make for solid gameplay :)
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Binary0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Decimal0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
-	guaranteedCards.push_back(CardList::getInstance()->cardListByName[CardKeys::Hex0]);
 
 	for (auto it = guaranteedCards.begin(); it != guaranteedCards.end(); it++)
 	{

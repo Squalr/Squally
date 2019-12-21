@@ -38,6 +38,11 @@ public:
 			this->handled = true;
 		}
 
+		void unhandle()
+		{
+			this->handled = false;
+		}
+
 		bool isHandled()
 		{
 			return this->handled;
