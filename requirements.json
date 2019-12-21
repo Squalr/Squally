@@ -16,8 +16,7 @@
         "tinyxml2", 
         "xxhash", 
         "zlib", 
-        "sqlite3", 
-        "chipmunk"
+        "sqlite3"
     ], 
     "darwin": [], 
     "linux": [
