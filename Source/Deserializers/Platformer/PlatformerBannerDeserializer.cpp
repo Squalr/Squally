@@ -24,11 +24,10 @@ PlatformerBannerDeserializer* PlatformerBannerDeserializer::create()
 PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 {
 	this->deserializers["elbridge"] = [=]() { return Strings::Platformer_MapNames_EndianForest_Elbridge::create(); };
-	this->deserializers["inner-sanctum-fallen-stars"] = [=]() { return Strings::Platformer_MapNames_EndianForest_InnerSanctumOfTheFallenStars::create(); };
 	this->deserializers["mages-guild"] = [=]() { return Strings::Platformer_MapNames_EndianForest_MagesGuild::create(); };
 	this->deserializers["mages-prison"] = [=]() { return Strings::Platformer_MapNames_EndianForest_MagesPrison::create(); };
-	this->deserializers["old-town-road"] = [=]() { return Strings::Platformer_MapNames_EndianForest_OldTownRoad::create(); };
-	this->deserializers["temple-fallen-stars"] = [=]() { return Strings::Platformer_MapNames_EndianForest_TempleOfTheFallenStars::create(); };
+	this->deserializers["sullen-forest"] = [=]() { return Strings::Platformer_MapNames_EndianForest_SullenForest::create(); };
+	this->deserializers["limestone-temple"] = [=]() { return Strings::Platformer_MapNames_EndianForest_LimestoneTemple::create(); };
 	this->deserializers["valley-ash"] = [=]() { return Strings::Platformer_MapNames_EndianForest_ValleyOfAsh::create(); };
 }
 

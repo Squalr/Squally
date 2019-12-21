@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="948">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="955">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -79,14 +79,26 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="-197.543" y="2128.94">
-   <polygon points="5411.42,38.2482 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
+  <object id="948" name="temple" type="terrain" x="3510.65" y="-249.089">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
+  </object>
+  <object id="950" name="temple" type="terrain" x="-648.87" y="-514.179">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="949" name="temple" type="terrain" x="-197.543" y="2128.94">
+   <polygon points="5411.42,38.2482 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -105,18 +117,11 @@
   </properties>
   <object id="798" name="spawn" type="object" x="340.364" y="2037" width="128" height="128">
    <properties>
-    <property name="map-banner" value="inner-sanctum-fallen-stars"/>
+    <property name="map-banner" value=""/>
     <property name="transition" value="entrance-E"/>
    </properties>
   </object>
-  <object id="816" name="edge-portal" type="object" x="4.041" y="1527.57" width="199.918" height="640.851">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="exit-E"/>
-   </properties>
-  </object>
-  <object id="942" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
+  <object id="942" name="king-grogg-disabled" type="entity" x="2610.61" y="1532.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy"/>
     <property name="battle-behavior" value=""/>
@@ -124,19 +129,30 @@
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="quest" value="talk-to-grogg"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
-  <object id="944" name="temple-door" type="object" x="3935.52" y="1645.09" width="432" height="528">
+  <object id="944" name="temple-door-disabled" type="object" x="3935.52" y="1645.09" width="432" height="528">
    <properties>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="entrance-D"/>
+    <property name="color" value="yellow"/>
+    <property name="map" value="EndianForest/Zone_2_6"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="947" name="spawn" type="object" x="4096.61" y="2042.06" width="128" height="128">
    <properties>
-    <property name="transition" value="exit-D"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
+  <object id="952" name="temple-door" type="object" x="164" y="1640" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow-skull"/>
+    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="transition" value="exit-E"/>
+   </properties>
+  </object>
+  <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -154,9 +170,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="945" name="elriel" type="entity" x="4578.42" y="2023.88" width="128" height="128">
+  <object id="953" name="trigger" type="object" x="1995" y="-18.53" width="146" height="1829.06">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="send-event" value="talk-to-grogg-disabled"/>
    </properties>
   </object>
  </objectgroup>

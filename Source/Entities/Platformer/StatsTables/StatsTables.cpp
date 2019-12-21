@@ -201,7 +201,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[GoblinGruntBoar::MapKeyGoblinGruntBoar] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinShaman::MapKeyGoblinShaman] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinWarriorPig::MapKeyGoblinWarriorPig] = Stats(16, 8, 32);
-	StatsTables::StatsTable[KingGrogg::MapKeyKingGrogg] = Stats(16, 8, 32);
+	StatsTables::StatsTable[KingGrogg::MapKeyKingGrogg] = Stats(32, 8, 32);
 	StatsTables::StatsTable[Ogre::MapKeyOgre] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcBomber::MapKeyOrcBomber] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcGrunt::MapKeyOrcGrunt] = Stats(11, 8, 32);

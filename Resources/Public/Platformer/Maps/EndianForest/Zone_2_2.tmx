@@ -301,7 +301,7 @@
   </object>
   <object id="827" name="chiron" type="entity" x="5972" y="4496" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="chiron-hexus,friendly,look-at-squally"/>
+    <property name="attached-behavior" value="chiron-hexus,friendly,face-squally"/>
     <property name="quest" value="talk-to-chiron"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>

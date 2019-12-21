@@ -116,7 +116,6 @@ void RewardsMenu::show()
 
 void RewardsMenu::loadRewards()
 {
-	const int DISPLAY_LIMIT = 32;
 	int totalExpGain = 0;
 
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)

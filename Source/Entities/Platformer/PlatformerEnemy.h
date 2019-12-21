@@ -17,6 +17,7 @@ public:
 	std::string getBattleMapResource();
 	std::string getBattleTag();
 	std::string getDropPool();
+	void setDropPool(std::string dropPool);
 
 	static const std::string MapKeyBattleMap;
 	static const std::string MapKeyBattleTag;

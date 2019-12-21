@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -44,4 +45,10 @@ void EnemyBattleAllyBehavior::initializePositions()
 void EnemyBattleAllyBehavior::onLoad()
 {
 	this->entity->setVisible(false);
+
+	// Allies should not have a drop pool
+	if (dynamic_cast<PlatformerEnemy*>(this->entity) != nullptr)
+	{
+		dynamic_cast<PlatformerEnemy*>(this->entity)->setDropPool("");
+	}
 }
