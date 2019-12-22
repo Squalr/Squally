@@ -9,6 +9,7 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
+class RestoreHealthClippy;
 class SmartAnimationSequenceNode;
 class WorldSound;
 
@@ -16,6 +17,8 @@ class RestoreHealth : public Buff
 {
 public:
 	static RestoreHealth* create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
+
+	void enableClippy();
 
 	static const std::string MapKeyPropertyRestorePotionTutorial;
 	static const std::string RestoreHealthIdentifier;
@@ -38,7 +41,7 @@ private:
 
 	void incrementHeal();
 	
-	bool showClippy;
+	RestoreHealthClippy* clippy;
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* impactSound;

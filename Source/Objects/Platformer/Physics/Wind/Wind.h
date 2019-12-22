@@ -10,6 +10,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class WindClippy;
 
 class Wind : public HackableObject
 {
@@ -42,6 +43,8 @@ private:
 	cocos2d::Size windSize;
 	cocos2d::Vec2 windSpeedDefault;
 	cocos2d::Vec2 windSpeed;
+
+	WindClippy* windClippy;
 
 	static const float BaseWindSpeed;
 };

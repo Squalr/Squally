@@ -6,6 +6,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
@@ -21,8 +22,6 @@
 
 using namespace cocos2d;
 
-const std::string HackableObject::MapKeyShowClippy = "show-clippy";
-
 HackableObject::HackableObject() : HackableObject(ValueMap())
 {
 }
@@ -34,11 +33,11 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->codeList = std::vector<HackableCode*>();
 	this->hackAbilityList = std::vector<HackActivatedAbility*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
+	this->clippyList = std::vector<Clippy*>();
 	this->uiElements = Node::create();
 	this->hackButton = HackButton::create();
 	this->hackablesNode = Node::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
-	this->showClippy = GameUtils::getKeyOrDefault(this->properties, HackableObject::MapKeyShowClippy, Value(false)).asBool();
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
 	this->sensingParticlesNode = Node::create();
@@ -365,6 +364,23 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
+}
+
+void HackableObject::enableAllClippy()
+{
+	for (auto next : this->clippyList)
+	{
+		next->setIsEnabled(true);
+	}
+}
+
+void HackableObject::registerClippy(Clippy* clippy)
+{
+	if (clippy != nullptr)
+	{
+		this->clippyList.push_back(clippy);
+		this->addChild(clippy);
+	}
 }
 
 ParticleSystem* HackableObject::getSensingParticles()

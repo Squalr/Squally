@@ -44,5 +44,5 @@ void IsAliveClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->speechBubble->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, SpeechBubble::InfiniteDuration);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_IsAliveRetVal::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

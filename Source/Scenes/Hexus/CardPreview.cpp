@@ -111,7 +111,7 @@ void CardPreview::previewCard(Card* card)
 	else
 	{
 		this->currentPreviewData = this->constructPreview(card);
-
+		this->previewCache[card->cardData->getCardKey()] = this->currentPreviewData;
 		this->previewPanel->addChild(this->currentPreviewData.previewNode);
 	}
 

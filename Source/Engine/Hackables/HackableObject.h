@@ -14,6 +14,7 @@ namespace cocos2d
 }
 
 class ClickableNode;
+class Clippy;
 class HackableAttribute;
 class HackableCode;
 class HackableData;
@@ -35,6 +36,22 @@ public:
 	void unregisterCode(HackableCode* hackableCode);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
+	void registerClippy(Clippy* clippy);
+	void enableAllClippy();
+
+	template <class T>
+	T* getClippy()
+	{
+		for (auto it = clippyList.begin(); it != clippyList.end(); it++)
+		{
+			if (dynamic_cast<T*>(*it) != nullptr)
+			{
+				return dynamic_cast<T*>(*it);
+			}
+		}
+
+		return nullptr;
+	}
 
 	std::vector<HackableAttribute*> hackableList;
 	std::vector<HackableData*> dataList;
@@ -45,8 +62,6 @@ protected:
 	HackableObject(const cocos2d::ValueMap& properties);
 	HackableObject();
 	virtual ~HackableObject();
-
-	bool showClippy;
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -76,8 +91,7 @@ private:
 	ProgressBar* timeRemainingBar;
 	cocos2d::Node* hackablesNode;
 
+	std::vector<Clippy*> clippyList;
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
-
-	static const std::string MapKeyShowClippy;
 };

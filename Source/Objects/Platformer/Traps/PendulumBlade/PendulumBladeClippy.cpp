@@ -55,5 +55,5 @@ void PendulumBladeClippy::onEnterTransitionDidFinish()
 		localizedString->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create());
 	}
 
-	this->speechBubble->runDialogue(localizedString, SoundResources::Platformer_Entities_Droid_DroidChatter, SpeechBubble::InfiniteDuration);
+	this->runDialogue(localizedString, SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

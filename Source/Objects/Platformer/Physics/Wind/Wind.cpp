@@ -37,6 +37,7 @@ Wind* Wind::create(ValueMap& properties)
 
 Wind::Wind(ValueMap& properties) : super(properties)
 {
+	this->windClippy = WindClippy::create();
 	float speedX = 0.0f;
 	float speedY = 0.0f;
 
@@ -59,6 +60,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	this->windParticles->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
 
+	this->registerClippy(this->windClippy);
 	this->addChild(this->windForce);
 	this->addChild(this->windParticles);
 }
@@ -145,7 +147,7 @@ void Wind::registerHackables()
 				},
 				int(HackFlags::Wind),
 				12.0f,
-				this->showClippy ? WindClippy::create() : nullptr
+				this->windClippy->refClone()
 			)
 		},
 	};

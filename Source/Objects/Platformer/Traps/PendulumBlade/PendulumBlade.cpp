@@ -45,6 +45,7 @@ PendulumBlade* PendulumBlade::create(ValueMap& properties)
 
 PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 {
+	this->pendulumBladeClippy = PendulumBladeClippy::create();
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
 	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
@@ -59,6 +60,7 @@ PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 
 	this->buildChain();
 
+	this->registerClippy(this->pendulumBladeClippy);
 	this->bladeChain->addChild(this->bladeCollision);
 	this->addChild(this->neck);
 	this->addChild(this->bladeChain);
@@ -103,9 +105,6 @@ void PendulumBlade::registerHackables()
 {
 	super::registerHackables();
 
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
@@ -121,7 +120,7 @@ void PendulumBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				this->showClippy ? PendulumBladeClippy::create() : nullptr
+				this->pendulumBladeClippy->refClone()
 			)
 		},
 	};

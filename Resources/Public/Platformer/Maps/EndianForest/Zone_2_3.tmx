@@ -75,7 +75,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="820" name="temple" type="terrain" x="5471.11" y="10.7798">
-   <polygon points="720.227,345.186 724.325,7186.13 415.433,7178.29 415.43,4983.16 33.6117,4977.1 33.6045,352.449"/>
+   <polygon points="720.227,345.186 724.325,7186.13 415.433,7178.29 406.339,5492.25 -614.873,5498.31 -616.897,5107.3 -93.9243,5107.42 -96.8624,4852.85 30.4941,4852.85 30.5862,4719.52 33.6045,352.449"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
@@ -100,7 +100,7 @@
    </properties>
   </object>
   <object id="924" name="temple" type="terrain" x="4074.7" y="4552">
-   <polygon points="1039.18,12.3061 1038.09,235.138 29.7813,235.93 30.1618,11.4512"/>
+   <polygon points="1039.18,12.3061 1038.09,235.138 407.127,238.602 401.762,1208.63 1035.68,1211.65 1034.39,1487.15 29.7813,1484.41 30.1618,11.4512"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -236,12 +236,36 @@
     <property name="transition" value="entrance-B"/>
    </properties>
   </object>
-  <object id="860" name="spiked-log" type="object" x="2026.81" y="5631.2" width="140" height="598"/>
-  <object id="861" name="spiked-log" type="object" x="2328.29" y="5627.4" width="140" height="598"/>
-  <object id="862" name="spiked-log" type="object" x="2031.57" y="5036.5" width="140" height="598"/>
-  <object id="863" name="spiked-log" type="object" x="2327.32" y="5028.5" width="140" height="598"/>
-  <object id="864" name="spiked-log" type="object" x="2034.18" y="4443.1" width="140" height="598"/>
-  <object id="865" name="spiked-log" type="object" x="2329.93" y="4435.1" width="140" height="598"/>
+  <object id="860" name="spiked-log" type="object" x="2026.81" y="5631.2" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
+  <object id="861" name="spiked-log" type="object" x="2328.29" y="5627.4" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
+  <object id="862" name="spiked-log" type="object" x="2031.57" y="5036.5" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
+  <object id="863" name="spiked-log" type="object" x="2327.32" y="5028.5" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
+  <object id="864" name="spiked-log" type="object" x="2034.18" y="4443.1" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
+  <object id="865" name="spiked-log" type="object" x="2329.93" y="4435.1" width="140" height="598">
+   <properties>
+    <property name="attached-behavior" value="enable-all-clippy"/>
+   </properties>
+  </object>
   <object id="866" name="edge-portal" type="object" x="1958.65" y="6942.8" width="578.706" height="240.851">
    <properties>
     <property name="flip-y" type="bool" value="true"/>

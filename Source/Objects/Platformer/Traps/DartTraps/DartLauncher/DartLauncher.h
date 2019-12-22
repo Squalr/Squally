@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class AnimationPart;
+class DartNopClippy;
 class DartPool;
 class HackableData;
 class SmartAnimationNode;
@@ -40,6 +41,8 @@ private:
 	cocos2d::Node* launcherContainer;
 	cocos2d::Sprite* launcherSprite;
 	DartPool* dartPool;
+
+	DartNopClippy* dartNopClippy;
 
 	static const std::string PropertyLaunchSpeed;
 	static const float DefaultLaunchSpeed;

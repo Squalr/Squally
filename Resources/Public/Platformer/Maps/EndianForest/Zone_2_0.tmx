@@ -124,32 +124,32 @@
   </properties>
   <object id="673" name="pendulum-blade" type="object" x="5194.64" y="4101.36" width="42.4242" height="277.636">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="674" name="pendulum-blade" type="object" x="4422.98" y="4108.47" width="42.4242" height="219.569">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="675" name="pendulum-blade" type="object" x="4723.83" y="4104.79" width="42.4242" height="304.97">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="676" name="pendulum-blade" type="object" x="5427.16" y="4100.19" width="42.4242" height="364.97">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="677" name="mechanical-flail" type="object" x="5534.07" y="4300.58" width="42.4242" height="198.303">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="678" name="mechanical-flail" type="object" x="5824.31" y="4204.54" width="42.4242" height="264.303">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="679" name="mechanical-flail" type="object" x="6090.93" y="4307.59" width="42.4242" height="166.303">
@@ -159,12 +159,12 @@
   </object>
   <object id="687" name="pendulum-blade" type="object" x="4974.41" y="4091.05" width="42.4242" height="420.97">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="688" name="mechanical-flail" type="object" x="6280.72" y="4140.14" width="42.4242" height="337.056">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="694" name="cipher-chest" type="object" x="2235.87" y="3953.12" width="128" height="128">

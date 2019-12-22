@@ -42,6 +42,7 @@ DartLauncher* DartLauncher::create(ValueMap& properties)
 
 DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 {
+	this->dartNopClippy = DartNopClippy::create();
 	this->launcherContainer = Node::create();
 	this->launcherSprite = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
 	this->launchRotation = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRotation, Value(0.0f)).asFloat();
@@ -55,9 +56,11 @@ DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 
 	this->launcherContainer->setRotation(this->launchRotation);
 	
+	this->registerClippy(this->dartNopClippy);
 	this->launcherContainer->addChild(this->dartPool);
 	this->launcherContainer->addChild(this->launcherSprite);
 	this->addChild(this->launcherContainer);
+	this->addChild(this->dartNopClippy);
 }
 
 DartLauncher::~DartLauncher()
@@ -100,9 +103,6 @@ void DartLauncher::registerHackables()
 {
 	super::registerHackables();
 
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
@@ -119,7 +119,7 @@ void DartLauncher::registerHackables()
 				},
 				int(HackFlags::None),
 				12.0f,
-				this->showClippy ? DartNopClippy::create() : nullptr
+				this->dartNopClippy->refClone()
 			)
 		},
 	};

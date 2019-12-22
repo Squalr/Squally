@@ -259,6 +259,8 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 		{
 			Clippy* clippy = hackableCode->getClippy()->clone();
 
+			clippy->setVisible(true);
+
 			this->clippyNode->addChild(clippy);
 		}
 

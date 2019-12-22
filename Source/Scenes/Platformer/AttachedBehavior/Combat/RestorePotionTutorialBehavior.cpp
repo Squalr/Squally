@@ -61,6 +61,7 @@ void RestorePotionTutorialBehavior::onLoad()
 
 		if (dynamic_cast<RestoreHealth*>(args->buff) != nullptr)
 		{
+			dynamic_cast<RestoreHealth*>(args->buff)->enableClippy();
 			this->runTutorial();
 		}
 	}));

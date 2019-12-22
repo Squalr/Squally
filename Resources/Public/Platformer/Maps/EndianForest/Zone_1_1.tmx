@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="712">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="712">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -121,7 +121,7 @@
   <object id="623" name="life-stone" type="object" x="2900.24" y="4437.4" width="146" height="423"/>
   <object id="625" name="dart-launcher" type="object" x="5116.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
@@ -180,187 +180,187 @@
   </object>
   <object id="661" name="dart-launcher" type="object" x="5628.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="670" name="dart-launcher" type="object" x="6140.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="671" name="dart-launcher" type="object" x="6652.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="400"/>
    </properties>
   </object>
   <object id="673" name="dart-launcher" type="object" x="5884.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="674" name="dart-launcher" type="object" x="6396.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="380"/>
    </properties>
   </object>
   <object id="675" name="dart-launcher" type="object" x="6908.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="280"/>
    </properties>
   </object>
   <object id="676" name="dart-launcher" type="object" x="5372.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="682" name="dart-launcher" type="object" x="5516.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="380"/>
    </properties>
   </object>
   <object id="683" name="dart-launcher" type="object" x="6028.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="684" name="dart-launcher" type="object" x="6537.09" y="5013.21" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="685" name="dart-launcher" type="object" x="7052.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="687" name="dart-launcher" type="object" x="5772.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="688" name="dart-launcher" type="object" x="6284.12" y="5031.39" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="689" name="dart-launcher" type="object" x="6796.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="690" name="dart-launcher" type="object" x="5260.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="691" name="dart-launcher" type="object" x="5244.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="692" name="dart-launcher" type="object" x="5500.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="400"/>
    </properties>
   </object>
   <object id="693" name="dart-launcher" type="object" x="5756.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="694" name="dart-launcher" type="object" x="6012.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="695" name="dart-launcher" type="object" x="6268.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="696" name="dart-launcher" type="object" x="6524.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="280"/>
    </properties>
   </object>
   <object id="697" name="dart-launcher" type="object" x="6780.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="698" name="dart-launcher" type="object" x="7036.97" y="4099.76" width="86" height="155">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>
   <object id="699" name="dart-launcher" type="object" x="5388.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="400"/>
    </properties>
   </object>
   <object id="700" name="dart-launcher" type="object" x="5644.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="280"/>
    </properties>
   </object>
   <object id="701" name="dart-launcher" type="object" x="5900.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="400"/>
    </properties>
   </object>
   <object id="702" name="dart-launcher" type="object" x="6153.09" y="5013.21" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="703" name="dart-launcher" type="object" x="6409.09" y="5025.33" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>
   <object id="704" name="dart-launcher" type="object" x="6668.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="380"/>
    </properties>
   </object>
   <object id="705" name="dart-launcher" type="object" x="6924.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="400"/>
    </properties>
   </object>
   <object id="706" name="dart-launcher" type="object" x="7180.12" y="4992" width="86" height="155" rotation="180">
    <properties>
-    <property name="show-clippy" type="bool" value="true"/>
+    <property name="attached-behavior" value="enable-all-clippy"/>
     <property name="speed" type="float" value="320"/>
    </properties>
   </object>

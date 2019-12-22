@@ -46,6 +46,7 @@ MechanicalFlail* MechanicalFlail::create(ValueMap& properties)
 
 MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 {
+	this->mechanicalFlailClippy = MechanicalFlailClippy::create();
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
 	this->smokeParticles = ParticleSystemQuad::create(ParticleResources::Objects_Smoke);
@@ -63,6 +64,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 
 	this->buildChain();
 
+	this->registerClippy(this->mechanicalFlailClippy);
 	this->flailChain->addChild(this->flailCollision);
 	this->addChild(this->flailChain);
 	this->addChild(this->joint);
@@ -120,7 +122,7 @@ void MechanicalFlail::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				this->showClippy ? MechanicalFlailClippy::create() : nullptr
+				mechanicalFlailClippy->refClone()
 			)
 		},
 	};

@@ -47,10 +47,13 @@ RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity*
 
 RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
 {
+	this->clippy = RestoreHealthClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	
+	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
@@ -77,6 +80,14 @@ void RestoreHealth::initializePositions()
 	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
+void RestoreHealth::enableClippy()
+{
+	if (this->clippy != nullptr)
+	{
+		this->clippy->setIsEnabled(true);
+	}
+}
+
 void RestoreHealth::registerHackables()
 {
 	super::registerHackables();
@@ -85,6 +96,8 @@ void RestoreHealth::registerHackables()
 	{
 		return;
 	}
+
+	this->clippy->setIsEnabled(false);
 
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
@@ -100,7 +113,7 @@ void RestoreHealth::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(RestoreHealth::HackTicks) * RestoreHealth::TimeBetweenTicks) + 0.1f,
-				this->showClippy ? RestoreHealthClippy::create() : nullptr
+				this->clippy
 			)
 		},
 	};

@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class Clippy;
 class HackableCode;
 class PlatformerEntity;
 
@@ -33,14 +34,10 @@ protected:
 	void onEnter() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
+	void registerClippy(Clippy* clippy);
 	virtual void onTimelineReset(bool wasInterrupt);
 	virtual void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback);
 	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
-
-	void enableClippy();
-	void disableClippy();
-
-	bool showClippy;
 
 	BuffData buffData;
 	PlatformerEntity* caster;

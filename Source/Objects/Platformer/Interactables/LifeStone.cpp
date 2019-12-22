@@ -47,7 +47,16 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties)
 	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 440.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
 	this->isAnimating = false;
-	
+
+	static bool runOnce = true;
+
+	if (runOnce)
+	{
+		runOnce = false;
+
+		SmartAnimationSequenceNode::primeCache(FXResources::Heal_Heal_0000);
+	}
+
 	this->addChild(this->healCollision);
 	this->addChild(this->lifeStone);
 	this->addChild(this->healAnimation);

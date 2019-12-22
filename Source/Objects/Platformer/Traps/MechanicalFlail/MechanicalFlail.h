@@ -10,6 +10,7 @@ namespace cocos2d
 
 class CollisionObject;
 class HackableData;
+class MechanicalFlailClippy;
 
 class MechanicalFlail : public HackableObject
 {
@@ -42,6 +43,8 @@ private:
 	HackableData* hackableDataTargetAngle;
 	cocos2d::ParticleSystemQuad* smokeParticles;
 	CollisionObject* flailCollision;
+	
+	MechanicalFlailClippy* mechanicalFlailClippy;
 
 	static const float DefaultAngle;
 	static const float SwingsPerSecondAt480Length;
