@@ -69,12 +69,12 @@ public:
 		}
 	}
 	
-	static inline unsigned long long WatchId = 0;
+	static unsigned long long WatchId;
 
 	template <class T>
 	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
 	{
-		unsigned long long watchId = WatchId++;
+		unsigned long long watchId = GameObject::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 
 		// Do an immediate check for the object

@@ -15,6 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 
 const float SmartScene::defaultFadeSpeed = 0.75f;
+unsigned long long SmartScene::TaskId = 0;
 
 using namespace cocos2d;
 
@@ -226,11 +227,9 @@ void SmartScene::pause()
 	super::pause();
 }
 
-static inline unsigned long long TaskId = 0;
-
 void SmartScene::defer(std::function<void()> task)
 {
-		unsigned long long taskId = TaskId++;
+		unsigned long long taskId = SmartScene::TaskId++;
 		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
 
 		// Schedule the task for the next update loop

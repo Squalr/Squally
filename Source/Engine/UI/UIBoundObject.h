@@ -25,6 +25,8 @@ private:
 	~UIBoundObject();
 	void scheduleUpdateTask();
 
+	static unsigned long long TaskId;
+
 	cocos2d::Node* referencedObject;
 	SmartNode* originalParent;
 	cocos2d::Node* scheduleTarget;

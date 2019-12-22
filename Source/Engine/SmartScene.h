@@ -62,5 +62,7 @@ private:
 	typedef cocos2d::Scene super;
 
 	std::vector<std::function<void()>> disposeCallbacks;
+
+	static unsigned long long TaskId;
 };
 

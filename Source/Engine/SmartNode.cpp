@@ -14,6 +14,8 @@
 
 using namespace cocos2d;
 
+unsigned long long SmartNode::TaskId = 0;
+
 SmartNode* SmartNode::create()
 {
 	SmartNode* instance = new SmartNode();
@@ -227,11 +229,9 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 	this->addEventListener(listener);
 }
 
-static inline unsigned long long TaskId = 0;
-
 void SmartNode::defer(std::function<void()> task)
 {
-		unsigned long long taskId = TaskId++;
+		unsigned long long taskId = SmartNode::TaskId++;
 		std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
 
 		// Schedule the task for the next update loop

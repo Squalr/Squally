@@ -21,6 +21,8 @@ const std::string ObjectEvents::EventSpawnObject = "EVENT_SPAWN_OBJECT";
 const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_DELEGATOR";
 const std::string ObjectEvents::EventWriteStatePrefix = "EVENT_WRITE_OBJECT_STATE_";
 
+unsigned long long ObjectEvents::WatchId = 0;
+
 void ObjectEvents::TriggerCollisionMapUpdated()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(

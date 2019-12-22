@@ -53,6 +53,8 @@ protected:
 private:
 	typedef cocos2d::Node super;
 
+	static unsigned long long TaskId;
+
 	bool optimizationHasGlobalListener;
 	bool optimizationHasListener;
 	bool hasInitializedListeners;
