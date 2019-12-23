@@ -185,11 +185,6 @@ float PlatformerEntity::getHoverHeight()
 	return this->hoverHeight;
 }
 
-HexusOpponentData* PlatformerEntity::getHexusOpponentData()
-{
-	return this->hexusOpponentData;
-}
-
 float PlatformerEntity::getScale()
 {
 	return this->entityScale;

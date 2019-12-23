@@ -2,8 +2,6 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"

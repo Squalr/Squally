@@ -23,6 +23,7 @@ public:
 	static const std::string EventRuneConsumed;
 	static const std::string EventEquippedItemsChanged;
 	static const std::string EventEngageEnemy;
+	static const std::string EventEnemyEngaged;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventGiveItemsFromPool;
@@ -85,6 +86,11 @@ public:
 		EngageEnemyArgs(PlatformerEnemy* enemy, bool firstStrike) : enemy(enemy), firstStrike(firstStrike) { }
 	};
 
+	struct EnemyEngagedArgs
+	{
+		EnemyEngagedArgs() { }
+	};
+
 	struct GiveItemsFromPoolArgs
 	{
 		MinMaxPool* pool;
@@ -110,6 +116,7 @@ public:
 	static void TriggerRuneConsumed(RuneConsumedArgs args);
 	static void TriggerEquippedItemsChanged();
 	static void TriggerEngageEnemy(EngageEnemyArgs args);
+	static void TriggerEnemyEngaged(EnemyEngagedArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);

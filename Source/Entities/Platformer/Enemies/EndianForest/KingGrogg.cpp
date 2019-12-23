@@ -2,8 +2,6 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
@@ -29,7 +27,6 @@ KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
-	this->hexusOpponentData = KingGrogg::getHexusOpponentData();
 }
 
 KingGrogg::~KingGrogg()

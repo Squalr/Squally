@@ -1,7 +1,11 @@
 #include "SquallyDefaultInventoryBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -44,13 +48,28 @@ void SquallyDefaultInventoryBehavior::onLoad()
 
 void SquallyDefaultInventoryBehavior::giveDefaultItems()
 {
-	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHasGivenDefaultItems, Value(false)).asBool())
 	{
+		return;
+	}
+
+	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		SaveManager::softSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
+
+		// Because the save key was patched in later, we need this code here until.... let's say April 2020
+		// Alternatively, we can add logic to detect exceeding the max unique on cards, as those are the only items given
 		if (!entityInventoryBehavior->getInventory()->getItems().empty() || !entityInventoryBehavior->getEquipmentInventory()->getItems().empty())
 		{
 			return;
 		}
-		
+
+		// It is safe to add items to the player's inventory here for testing purposes, without fear of accidentally shipping this code live
+		if (DeveloperModeController::IsDeveloperBuild)
+		{
+			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SantaHat::create(), false);
+		}
+
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary1::create(), false);

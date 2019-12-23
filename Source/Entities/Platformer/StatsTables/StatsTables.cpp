@@ -111,6 +111,32 @@ StatsTables::StatsTables()
 		{ 5, 4, 9728 },
 		{ 5, 4, 10240 }
 	});
+
+	StatsTables::StatsTable[Snowman::MapKeySnowman] = Stats(16, 8, 48, 
+	{
+		{ 2, 1, 64 },
+		{ 2, 1, 128 },
+		{ 2, 1, 192 },
+		{ 2, 1, 368 },
+		{ 2, 1, 368 },
+		{ 2, 1, 512 },
+		{ 3, 2, 768 },
+		{ 3, 2, 1024 },
+		{ 3, 2, 1536 },
+		{ 3, 2, 2048 },
+		{ 3, 2, 3072 },
+		{ 4, 3, 4096 },
+		{ 4, 3, 5120 },
+		{ 4, 3, 6144 },
+		{ 4, 3, 6656 },
+		{ 5, 4, 7168 },
+		{ 5, 4, 7680 },
+		{ 5, 4, 8192 },
+		{ 5, 4, 8704 },
+		{ 5, 4, 9216 },
+		{ 5, 4, 9728 },
+		{ 5, 4, 10240 }
+	});
 	
 	StatsTables::StatsTable[Cryogen::MapKeyCryogen] = Stats(16, 8, 32);
 	StatsTables::StatsTable[FrostFiend::MapKeyFrostFiend] = Stats(16, 8, 32);

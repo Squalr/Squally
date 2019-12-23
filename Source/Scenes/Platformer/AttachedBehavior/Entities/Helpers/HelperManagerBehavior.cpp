@@ -139,4 +139,5 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
 	this->attachedBehaviorMap[Guano::MapKeyGuano] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
+	this->attachedBehaviorMap[Snowman::MapKeySnowman] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
 }

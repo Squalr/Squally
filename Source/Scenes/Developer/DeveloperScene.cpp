@@ -13,6 +13,7 @@
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
+#include "Entities/Platformer/Helpers/BalmerPeaks/Snowman.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -48,9 +49,11 @@ DeveloperScene::DeveloperScene()
 	this->chapterList = std::vector<ClickableTextNode*>();
 
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
-	this->chapterList.push_back(this->buildDebugButton("Town", MapResources::EndianForest_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
+	this->chapterList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_1 (EF)", MapResources::EndianForest_Zone_3_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_6 Temple (EF)", MapResources::EndianForest_Zone_2_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 Inner Sanctum (EF)", MapResources::EndianForest_Zone_2_5));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 (EF)", MapResources::EndianForest_Zone_2_4));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_3 Temple (EF)", MapResources::EndianForest_Zone_2_3));
@@ -143,6 +146,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		PlatformerMap* map = PlatformerMap::create(mapResource);
 		SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
+		// SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
 		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);

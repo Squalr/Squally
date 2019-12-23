@@ -11,8 +11,6 @@
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
-#include "Engine/Camera/GameCamera.h"
-#include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
@@ -38,11 +36,8 @@
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/Hexus.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHud.h"
 #include "Scenes/Platformer/Level/Huds/CombatFadeInHuds/CombatFadeInHudFactory.h"
-#include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/GameHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -161,13 +156,14 @@ void PlatformerMap::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEnemyEngaged, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getUserData());
+		PlatformerEvents::EnemyEngagedArgs* args = static_cast<PlatformerEvents::EnemyEngagedArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->enemy != nullptr && !args->enemy->getBattleMapResource().empty())
+		if (args != nullptr)
 		{
-			this->engageEnemy(args->enemy, args->firstStrike);
+			// In the future, we can pass parameters via EnemyEngagedArgs to dictate which fade-in animation to use
+			this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
 		}
 	}));
 
@@ -369,54 +365,6 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
-}
-
-void PlatformerMap::engageEnemy(PlatformerEnemy* enemy, bool firstStrike)
-{
-	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
-	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
-
-	// Build player team
-	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
-	
-	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
-	{
-		playerCombatData.push_back(CombatMap::CombatData(helper->getEntityKey(), helper->getBattleBehavior()));
-	}), Squally::BattleTag);
-
-	// Build enemy team
-	enemyCombatData.push_back(CombatMap::CombatData(enemy->getEntityKey(), enemy->getBattleBehavior(), enemy->getDropPool()));
-
-	if (!enemy->getBattleTag().empty())
-	{
-		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
-		{
-			if (enemyAlly != enemy)
-			{
-				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
-			}
-		}), enemy->getBattleTag());
-	}
-
-	this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
-
-	this->runAction(Sequence::create(
-		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
-		CallFunc::create([=]()
-		{
-			// Start combat
-			CombatMap* combatMap = CombatMap::create(
-				enemy->getBattleMapResource(),
-				firstStrike,
-				enemy->getUniqueIdentifier(),
-				playerCombatData,
-				enemyCombatData
-			);
-
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
-		}),
-		nullptr
-	));
 }
 
 void PlatformerMap::disableMap()

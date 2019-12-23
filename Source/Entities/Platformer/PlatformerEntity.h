@@ -32,7 +32,6 @@ public:
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	float getHoverHeight();
-	HexusOpponentData* getHexusOpponentData();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
 	virtual void performSwimAnimation();

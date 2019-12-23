@@ -16,6 +16,7 @@ const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND";
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
+const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
 
 const std::string SaveKeys::SaveKeyCollectableAnimalBat = "SAVE_KEY_ANIMAL_BAT";
 const std::string SaveKeys::SaveKeyCollectableAnimalBear = "SAVE_KEY_ANIMAL_BEAR";

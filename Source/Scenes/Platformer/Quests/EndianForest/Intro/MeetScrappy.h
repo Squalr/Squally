@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Scrappy;
+class Squally;
 class QuestLine;
 class WorldSound;
 
@@ -28,8 +29,10 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
 
 	Scrappy* scrappy;
+	Squally* squally;
 	WorldSound* droidAlarmedSound;
 
 	static const std::string TagScrappyStop;

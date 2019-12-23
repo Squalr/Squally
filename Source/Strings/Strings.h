@@ -48676,6 +48676,52 @@ namespace Strings
 
 namespace Strings
 {
+	class Platformer_Entities_Names_Enemies_EndianForest_Gorgon : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_EndianForest_Gorgon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_EndianForest_Gorgon();
+		~Platformer_Entities_Names_Enemies_EndianForest_Gorgon();
+	};
+}
+
+namespace Strings
+{
 	class Platformer_Entities_Names_Enemies_EndianForest_KingGrogg : public LocalizedString
 	{
 	public:
@@ -48947,6 +48993,52 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_EndianForest_OrcWarrior();
 		~Platformer_Entities_Names_Enemies_EndianForest_OrcWarrior();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Entities_Names_Enemies_EndianForest_Orthrus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_EndianForest_Orthrus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_EndianForest_Orthrus();
+		~Platformer_Entities_Names_Enemies_EndianForest_Orthrus();
 	};
 }
 
@@ -58055,6 +58147,98 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown();
 		~Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe();
+		~Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown();
+		~Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown();
 	};
 }
 

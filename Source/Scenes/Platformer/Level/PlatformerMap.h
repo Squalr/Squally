@@ -34,7 +34,6 @@ private:
 	void update(float dt) override;
 	void disableMap();
 	void enableMap();
-	void engageEnemy(PlatformerEnemy* enemy, bool firstStrike);
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;

@@ -121,7 +121,7 @@
     <property name="transition" value="entrance-E"/>
    </properties>
   </object>
-  <object id="942" name="king-grogg-disabled" type="entity" x="2610.61" y="1532.97" width="128" height="128">
+  <object id="942" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy"/>
     <property name="battle-behavior" value=""/>
@@ -133,7 +133,7 @@
     <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
-  <object id="944" name="temple-door-disabled" type="object" x="3935.52" y="1645.09" width="432" height="528">
+  <object id="944" name="temple-door" type="object" x="3935.52" y="1645.09" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
     <property name="map" value="EndianForest/Zone_2_6"/>
@@ -142,7 +142,7 @@
   </object>
   <object id="947" name="spawn" type="object" x="4096.61" y="2042.06" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="exit"/>
    </properties>
   </object>
   <object id="952" name="temple-door" type="object" x="164" y="1640" width="432" height="528">
@@ -172,7 +172,7 @@
   </properties>
   <object id="953" name="trigger" type="object" x="1995" y="-18.53" width="146" height="1829.06">
    <properties>
-    <property name="send-event" value="talk-to-grogg-disabled"/>
+    <property name="send-event" value="talk-to-grogg"/>
    </properties>
   </object>
  </objectgroup>
@@ -183,7 +183,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="569.292" y="2034.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="attached-behavior" value="squally,no-position-save"/>
    </properties>
   </object>
  </objectgroup>

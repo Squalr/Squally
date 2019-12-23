@@ -789,6 +789,11 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 		return;
 	}
 
+	if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other)) > CollisionObject::CollisionZThreshold)
+	{
+		return;
+	}
+
 	// Remove all collision boxes that are completely eclipsed
 	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
 		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)

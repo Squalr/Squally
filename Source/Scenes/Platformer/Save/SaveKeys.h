@@ -21,6 +21,7 @@ public:
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
+	static const std::string SaveKeyHasGivenDefaultItems;
 
 	static const std::string SaveKeyCollectableAnimalBat;
 	static const std::string SaveKeyCollectableAnimalBear;

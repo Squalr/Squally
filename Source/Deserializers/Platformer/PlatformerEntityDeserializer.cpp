@@ -117,12 +117,14 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[GoblinGruntBoar::MapKeyGoblinGruntBoar] = [=](ValueMap properties) { return (GameObject*)GoblinGruntBoar::deserialize(properties); };
 	this->deserializers[GoblinShaman::MapKeyGoblinShaman] = [=](ValueMap properties) { return (GameObject*)GoblinShaman::deserialize(properties); };
 	this->deserializers[GoblinWarriorPig::MapKeyGoblinWarriorPig] = [=](ValueMap properties) { return (GameObject*)GoblinWarriorPig::deserialize(properties); };
+	this->deserializers[Gorgon::MapKeyGorgon] = [=](ValueMap properties) { return (GameObject*)Gorgon::deserialize(properties); };
 	this->deserializers[KingGrogg::MapKeyKingGrogg] = [=](ValueMap properties) { return (GameObject*)KingGrogg::deserialize(properties); };
 	this->deserializers[Ogre::MapKeyOgre] = [=](ValueMap properties) { return (GameObject*)Ogre::deserialize(properties); };
 	this->deserializers[OrcBomber::MapKeyOrcBomber] = [=](ValueMap properties) { return (GameObject*)OrcBomber::deserialize(properties); };
 	this->deserializers[OrcGrunt::MapKeyOrcGrunt] = [=](ValueMap properties) { return (GameObject*)OrcGrunt::deserialize(properties); };
 	this->deserializers[OrcSwordsman::MapKeyOrcSwordsman] = [=](ValueMap properties) { return (GameObject*)OrcSwordsman::deserialize(properties); };
 	this->deserializers[OrcWarrior::MapKeyOrcWarrior] = [=](ValueMap properties) { return (GameObject*)OrcWarrior::deserialize(properties); };
+	this->deserializers[Orthrus::MapKeyOrthrus] = [=](ValueMap properties) { return (GameObject*)Orthrus::deserialize(properties); };
 	this->deserializers[Troll::MapKeyTroll] = [=](ValueMap properties) { return (GameObject*)Troll::deserialize(properties); };
 	this->deserializers[Guano::MapKeyGuano] = [=](ValueMap properties) { return (GameObject*)Guano::deserialize(properties); };
 	this->deserializers[Turtle::MapKeyTurtle] = [=](ValueMap properties) { return (GameObject*)Turtle::deserialize(properties); };

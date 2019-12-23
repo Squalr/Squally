@@ -44,6 +44,7 @@ MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::s
 MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetScrappy::MapKeyQuest, questTag, true)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
+	this->squally = nullptr;
 	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_DroidAlarmed);
 
 	this->addChild(this->droidAlarmedSound);
@@ -64,6 +65,11 @@ void MeetScrappy::onLoad(QuestState questState)
 			this->scrappy->setVisible(false);
 		}
 	}
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKeySqually);
 }
 
 void MeetScrappy::onActivate(bool isActiveThroughSkippable)
@@ -113,13 +119,7 @@ void MeetScrappy::runCinematicSequencePt1()
 				{
 					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), "", 2.0f, [=]()
 					{
-						interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(), SoundResources::Platformer_Entities_Droid_DroidBrief2, 4.0f, [=]()
-						{
-							interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 4.0f, [=]()
-							{
-								this->runCinematicSequencePt2();
-							});
-						});
+						this->runCinematicSequencePt2();
 					});
 				});
 			}),
@@ -129,6 +129,44 @@ void MeetScrappy::runCinematicSequencePt1()
 }
 
 void MeetScrappy::runCinematicSequencePt2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt3();
+		},
+		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		false
+	));
+}
+
+void MeetScrappy::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		SoundResources::Platformer_Entities_Droid_DroidBrief,
+		false
+	));
+}
+
+void MeetScrappy::runCinematicSequencePt4()
 {
 	if (this->scrappy != nullptr)
 	{
