@@ -106,11 +106,7 @@ void TalkToElriel::runCinematicSequence()
 	{
 	}
 
-	if (this->gorgon != nullptr)
-	{
-		this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Repeat, 1.0f);
-	}
-
+	this->runGorgonLoop();
 	this->doCastAnim(this->alder);
 	this->doCastAnim(this->aster);
 	this->doCastAnim(this->igneus);
@@ -125,4 +121,31 @@ void TalkToElriel::doCastAnim(PlatformerEntity* entity)
 	{
 		return;
 	}
+	
+	entity->getAnimations()->playAnimation("AttackCastChannel", SmartAnimationNode::AnimationPlayMode::Repeat, 1.0f);
+}
+
+void TalkToElriel::runGorgonLoop()
+{
+	if (this->gorgon == nullptr)
+	{
+		return;
+	}
+	
+	this->gorgon->getAnimations()->clearAnimationPriority();
+
+	this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+	{
+		this->gorgon->getAnimations()->clearAnimationPriority();
+
+		this->gorgon->getAnimations()->playAnimation("AttackStrongRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+		{
+			this->gorgon->getAnimations()->clearAnimationPriority();
+
+			this->gorgon->getAnimations()->playAnimation("AttackChargeRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+			{
+				this->runGorgonLoop();
+			});
+		});
+	});
 }

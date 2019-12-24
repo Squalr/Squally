@@ -211,7 +211,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="978" name="blue-grass" type="terrain" x="1936" y="3288">
-   <polygon points="-976.387,767.414 -1000,-1528.93 -110.285,-1773.79 643.83,-1984.03 1291.54,-2146.11 6523.06,-2151.93 6520.88,757.705"/>
+   <polygon points="-976.387,767.414 -1000,-1528.93 -110.285,-1773.79 643.83,-1984.03 1291.54,-2152.11 6523.06,-2151.93 6520.88,757.705"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -32">
@@ -243,32 +243,32 @@
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="marcel" type="entity" x="4452" y="1014" width="128" height="128">
+  <object id="1011" name="marcel" type="entity" x="4578.67" y="1012.67" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1012" name="sarude" type="entity" x="4190" y="1010" width="128" height="128">
+  <object id="1012" name="sarude" type="entity" x="4254" y="1010" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1013" name="igneus" type="entity" x="3928" y="1012" width="128" height="128">
+  <object id="1013" name="igneus" type="entity" x="3928" y="1010.67" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1014" name="aster" type="entity" x="3796" y="1010" width="128" height="128">
+  <object id="1014" name="aster" type="entity" x="3764" y="1012.67" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1015" name="alder" type="entity" x="4058" y="1010" width="128" height="128">
+  <object id="1015" name="alder" type="entity" x="4084.67" y="1010" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1016" name="merlin" type="entity" x="4324" y="1014" width="128" height="128">
+  <object id="1016" name="merlin" type="entity" x="4418.67" y="1014" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>

@@ -40,24 +40,24 @@ SmartAnimationNode::~SmartAnimationNode()
 {
 }
 
-void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float priority, float blendTime)
+void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
 {
-	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, priority, blendTime);
+	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, priority, blendTime, callback);
 }
 
-void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime)
+void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
 {
-	this->playAnimation(std::string(animationName), animationPlayMode, priority, blendTime);
+	this->playAnimation(std::string(animationName), animationPlayMode, priority, blendTime, callback);
 }
 
-void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime)
+void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
 {
 	if (this->entity == nullptr)
 	{
 		return;
 	}
 
-	if (priority < this->currentAnimationPriority)
+	if (priority <= this->currentAnimationPriority)
 	{
 		return;
 	}
@@ -80,7 +80,8 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			{
 				this->entity->setAnimationCompleteCallback([=]()
 				{
-					this->currentAnimationPriority = 0.0f;
+					this->clearAnimationPriority();
+
 					this->playAnimation(AnimationPlayMode::ReturnToIdle);
 				});
 
@@ -95,14 +96,27 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 
 				break;
 			}
+			case AnimationPlayMode::Callback:
+			{
+				this->entity->setAnimationCompleteCallback([=]()
+				{
+					if (callback != nullptr)
+					{
+						callback();
+					}
+				});
+				break;
+			}
 			default:
 			case AnimationPlayMode::Repeat:
 			{
 				this->entity->setAnimationCompleteCallback([=]()
 				{
+					float priority = this->currentAnimationPriority;
 					this->initialized = false;
-					this->currentAnimationPriority = 0.0f;
-					this->playAnimation(this->getCurrentAnimation(), AnimationPlayMode::Repeat, this->currentAnimationPriority);
+					this->clearAnimationPriority();
+
+					this->playAnimation(this->getCurrentAnimation(), AnimationPlayMode::Repeat, priority);
 				});
 				break;
 			}

@@ -34,6 +34,7 @@ private:
 
 	void runCinematicSequence();
 	void doCastAnim(PlatformerEntity* entity);
+	void runGorgonLoop();
 
 	Alder* alder;
 	Aster* aster;
