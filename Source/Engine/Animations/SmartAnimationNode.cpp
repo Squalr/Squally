@@ -98,7 +98,12 @@ void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayM
 			default:
 			case AnimationPlayMode::Repeat:
 			{
-				// Repeating is the default behavior for Spriter
+				this->entity->setAnimationCompleteCallback([=]()
+				{
+					this->initialized = false;
+					this->currentAnimationPriority = 0.0f;
+					this->playAnimation(this->getCurrentAnimation(), AnimationPlayMode::Repeat, this->currentAnimationPriority);
+				});
 				break;
 			}
 		}

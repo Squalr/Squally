@@ -130,6 +130,11 @@ void GameCamera::initializeListeners()
 		SceneEvents::EventBeforeSceneChange,
 		[=](EventCustom* eventCustom)
 		{
+			Size visibleSize = Director::getInstance()->getVisibleSize();
+
+			this->unscheduleUpdate();
+			this->setBounds(Rect(Vec2::ZERO, visibleSize));
+			this->resetCamera();
 			this->clearTargets();
 		}
 	));
@@ -226,6 +231,14 @@ void GameCamera::setCameraZoom(float zoom)
 {
 
 	this->setCameraDistance(this->getIntendedCameraDistance() * zoom);
+}
+
+void GameCamera::resetCamera()
+{
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->setCameraPosition(Vec2(visibleSize / 2.0f));
+	this->setCameraZoom(1.0f);
 }
 
 float GameCamera::getIntendedCameraDistance()

@@ -268,13 +268,13 @@
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
-  <object id="1016" name="cypress" type="entity" x="4324" y="1014" width="128" height="128">
+  <object id="1016" name="merlin" type="entity" x="4324" y="1014" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="72" name="decor -32">
+ <objectgroup id="72" name="decor -32" visible="0">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
