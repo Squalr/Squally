@@ -105,7 +105,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 				this->isEngagedInDialogue = true;
 
 				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown::create(),
+					Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Right,

@@ -11,19 +11,23 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Enemies/EndianForest/Gorgon.h"
-#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
-#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
-#include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
-#include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/State/StateKeys.h"
+
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
 const std::string TalkToElriel::MapKeyQuest = "talk-to-elriel";
+const std::string TalkToElriel::TagElrielExit = "elriel-exit";
 
 TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
 {
@@ -36,14 +40,8 @@ TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine,  std
 
 TalkToElriel::TalkToElriel(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToElriel::MapKeyQuest, questTag, false)
 {
-	this->alder = nullptr;
-	this->aster = nullptr;
 	this->elriel = nullptr;
-	this->gorgon = nullptr;
-	this->igneus = nullptr;
-	this->marcel = nullptr;
-	this->merlin = nullptr;
-	this->sarude = nullptr;
+	this->squally = nullptr;
 }
 
 TalkToElriel::~TalkToElriel()
@@ -52,47 +50,35 @@ TalkToElriel::~TalkToElriel()
 
 void TalkToElriel::onLoad(QuestState questState)
 {
-	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
-	{
-		this->alder = alder;
-	}, Alder::MapKeyAlder);
-	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
-	{
-		this->aster = aster;
-	}, Aster::MapKeyAster);
 	ObjectEvents::watchForObject<Elriel>(this, [=](Elriel* elriel)
 	{
 		this->elriel = elriel;
+
+		if (questState == QuestState::Complete)
+		{
+			this->elriel->despawn();
+		}
 	}, Elriel::MapKeyElriel);
-	ObjectEvents::watchForObject<Gorgon>(this, [=](Gorgon* gorgon)
+
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
-		this->gorgon = gorgon;
-	}, Gorgon::MapKeyGorgon);
-	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		this->igneus = igneus;
-	}, Igneus::MapKeyIgneus);
-	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
-	{
-		this->marcel = marcel;
-	}, Marcel::MapKeyMarcel);
-	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
-	{
-		this->merlin = merlin;
-	}, Merlin::MapKeyMerlin);
-	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
-	{
-		this->sarude = sarude;
-	}, Sarude::MapKeySarude);
+		this->squally = squally;
+	}, Squally::MapKeySqually);
 }
 
 void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 {
-	this->runCinematicSequence();
+	this->runCinematicSequencePart1();
 }
 
 void TalkToElriel::onComplete()
 {
+	this->runCinematicSequencePart4();
 }
 
 void TalkToElriel::onSkipped()
@@ -100,52 +86,85 @@ void TalkToElriel::onSkipped()
 	this->removeAllListeners();
 }
 
-void TalkToElriel::runCinematicSequence()
+void TalkToElriel::runCinematicSequencePart1()
 {
-	if (this->elriel != nullptr)
-	{
-	}
-
-	this->runGorgonLoop();
-	this->doCastAnim(this->alder);
-	this->doCastAnim(this->aster);
-	this->doCastAnim(this->igneus);
-	this->doCastAnim(this->marcel);
-	this->doCastAnim(this->merlin);
-	this->doCastAnim(this->sarude);
-}
-
-void TalkToElriel::doCastAnim(PlatformerEntity* entity)
-{
-	if (entity == nullptr)
-	{
-		return;
-	}
-	
-	entity->getAnimations()->playAnimation("AttackCastChannel", SmartAnimationNode::AnimationPlayMode::Repeat, 1.0f);
-}
-
-void TalkToElriel::runGorgonLoop()
-{
-	if (this->gorgon == nullptr)
-	{
-		return;
-	}
-	
-	this->gorgon->getAnimations()->clearAnimationPriority();
-
-	this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
-	{
-		this->gorgon->getAnimations()->clearAnimationPriority();
-
-		this->gorgon->getAnimations()->playAnimation("AttackStrongRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->elriel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
 		{
-			this->gorgon->getAnimations()->clearAnimationPriority();
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Ellipses::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Top,
+					DialogueBox::DialogueAlignment::HardRight,
+					DialogueEvents::BuildPreviewNode(&this->elriel, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true),
+					true
+				),
+				[=]()
+				{
+					this->runCinematicSequencePart2();
+				},
+				""
+			));
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1
+	));
+}
 
-			this->gorgon->getAnimations()->playAnimation("AttackChargeRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
-			{
-				this->runGorgonLoop();
-			});
-		});
-	});
+void TalkToElriel::runCinematicSequencePart2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::HardRight,
+			DialogueEvents::BuildPreviewNode(&this->elriel, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart3();
+		},
+		SoundResources::Platformer_Entities_Droid_DroidBrief2
+	));
+}
+
+
+void TalkToElriel::runCinematicSequencePart3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown::create()
+			->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->elriel, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			this->complete();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4
+	));
+}
+
+void TalkToElriel::runCinematicSequencePart4()
+{
+	if (this->elriel == nullptr)
+	{
+		return;
+	}
+
+	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	{
+		this->elriel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
+	}, TalkToElriel::TagElrielExit);
 }

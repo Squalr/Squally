@@ -54,8 +54,6 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
 # Platform specific target options
 if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
     set_target_properties(${PROJECT_NAME} PROPERTIES
-        CXX_STANDARD 17
-        CXX_EXTENSIONS ON
         MACOSX_BUNDLE YES
         MACOSX_BUNDLE_INFO_PLIST ${PROJECT_SOURCE_DIR}/proj.mac/Info.plist
     )

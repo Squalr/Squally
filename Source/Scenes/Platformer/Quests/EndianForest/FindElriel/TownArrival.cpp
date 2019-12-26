@@ -85,7 +85,7 @@ void TownArrival::runCinematicSequence()
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat::create()
-			->setStringReplacementVariables({ Strings::Platformer_MapNames_Zones_UnderflowRuins::create() }),
+			->setStringReplacementVariables(Strings::Platformer_MapNames_Zones_UnderflowRuins::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

@@ -2,16 +2,11 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Alder;
-class Aster;
 class Elriel;
-class Gorgon;
-class Igneus;
-class Marcel;
-class Merlin;
 class PlatformerEntity;
 class QuestLine;
-class Sarude;
+class Scrappy;
+class Squally;
 
 class TalkToElriel : public QuestTask
 {
@@ -32,16 +27,14 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
-	void doCastAnim(PlatformerEntity* entity);
-	void runGorgonLoop();
+	void runCinematicSequencePart1();
+	void runCinematicSequencePart2();
+	void runCinematicSequencePart3();
+	void runCinematicSequencePart4();
 
-	Alder* alder;
-	Aster* aster;
 	Elriel* elriel;
-	Gorgon* gorgon;
-	Igneus* igneus;
-	Marcel* marcel;
-	Merlin* merlin;
-	Sarude* sarude;
+	Scrappy* scrappy;
+	Squally* squally;
+
+	static const std::string TagElrielExit;
 };

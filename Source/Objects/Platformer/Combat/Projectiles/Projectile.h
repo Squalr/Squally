@@ -40,7 +40,6 @@ private:
 	typedef HackableObject super;
 
 	CollisionObject* collisionObject;
-	float radius;
 	float spinSpeed;
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;

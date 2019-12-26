@@ -26,7 +26,7 @@ HelpTotemHexusCards* HelpTotemHexusCards::create(ValueMap& properties)
 
 HelpTotemHexusCards::HelpTotemHexusCards(ValueMap& properties) : super(properties)
 {
-	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemHexusCards::create()->setStringReplacementVariables({ Strings::Hexus_Hexus::create() });
+	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemHexusCards::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create());
 	
 	this->setHint(hintString);
 }

@@ -4148,6 +4148,1294 @@ namespace Strings
 
 namespace Strings
 {
+	class Hexus_CardDescriptions_Absorb : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Absorb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Absorb();
+		~Hexus_CardDescriptions_Absorb();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Addition : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Addition* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Addition();
+		~Hexus_CardDescriptions_Addition();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_BonusMoves : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_BonusMoves* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_BonusMoves();
+		~Hexus_CardDescriptions_BonusMoves();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_DrawEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_DrawEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_DrawEffect();
+		~Hexus_CardDescriptions_DrawEffect();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Flip1 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Flip1();
+		~Hexus_CardDescriptions_Flip1();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Flip2 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Flip2();
+		~Hexus_CardDescriptions_Flip2();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Flip3 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Flip3();
+		~Hexus_CardDescriptions_Flip3();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Flip4 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Flip4();
+		~Hexus_CardDescriptions_Flip4();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Greed : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Greed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Greed();
+		~Hexus_CardDescriptions_Greed();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Horde : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Horde* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Horde();
+		~Hexus_CardDescriptions_Horde();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Inverse : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Inverse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Inverse();
+		~Hexus_CardDescriptions_Inverse();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Kill : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Kill* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Kill();
+		~Hexus_CardDescriptions_Kill();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_LogicalAnd : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalAnd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalAnd();
+		~Hexus_CardDescriptions_LogicalAnd();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_LogicalOr : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalOr* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalOr();
+		~Hexus_CardDescriptions_LogicalOr();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_LogicalXor : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalXor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalXor();
+		~Hexus_CardDescriptions_LogicalXor();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Mov : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Mov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Mov();
+		~Hexus_CardDescriptions_Mov();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_NoDestroyEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_NoDestroyEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_NoDestroyEffect();
+		~Hexus_CardDescriptions_NoDestroyEffect();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Peek : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Peek* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Peek();
+		~Hexus_CardDescriptions_Peek();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ReturnAfterRound* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ReturnAfterRound();
+		~Hexus_CardDescriptions_ReturnAfterRound();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ReturnToHand : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ReturnToHand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ReturnToHand();
+		~Hexus_CardDescriptions_ReturnToHand();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ShiftLeft : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftLeft* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftLeft();
+		~Hexus_CardDescriptions_ShiftLeft();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ShiftLeftCircular : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftLeftCircular* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftLeftCircular();
+		~Hexus_CardDescriptions_ShiftLeftCircular();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ShiftRight : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftRight* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftRight();
+		~Hexus_CardDescriptions_ShiftRight();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_ShiftRightCircular : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftRightCircular* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftRightCircular();
+		~Hexus_CardDescriptions_ShiftRightCircular();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Steal : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Steal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Steal();
+		~Hexus_CardDescriptions_Steal();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_Subtract : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Subtract* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_Subtract();
+		~Hexus_CardDescriptions_Subtract();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_SuddenDeath : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_SuddenDeath* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_SuddenDeath();
+		~Hexus_CardDescriptions_SuddenDeath();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardDescriptions_TurnGainsEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_TurnGainsEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardDescriptions_TurnGainsEffect();
+		~Hexus_CardDescriptions_TurnGainsEffect();
+	};
+}
+
+namespace Strings
+{
 	class Hexus_CardDescriptionsLong_Absorb : public LocalizedString
 	{
 	public:
@@ -5477,1432 +6765,6 @@ namespace Strings
 	private:
 		Hexus_CardDescriptionsLong_TurnGainsEffect();
 		~Hexus_CardDescriptionsLong_TurnGainsEffect();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Absorb : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Absorb* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Absorb();
-		~Hexus_CardDescriptions_Absorb();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Addition : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Addition* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Addition();
-		~Hexus_CardDescriptions_Addition();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_BonusMoves : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_BonusMoves* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_BonusMoves();
-		~Hexus_CardDescriptions_BonusMoves();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_DrawEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_DrawEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_DrawEffect();
-		~Hexus_CardDescriptions_DrawEffect();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Flip1 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip1* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Flip1();
-		~Hexus_CardDescriptions_Flip1();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Flip2 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip2* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Flip2();
-		~Hexus_CardDescriptions_Flip2();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Flip3 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Flip3();
-		~Hexus_CardDescriptions_Flip3();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Flip4 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip4* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Flip4();
-		~Hexus_CardDescriptions_Flip4();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Greed : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Greed* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Greed();
-		~Hexus_CardDescriptions_Greed();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Horde : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Horde* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Horde();
-		~Hexus_CardDescriptions_Horde();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Inverse : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Inverse* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Inverse();
-		~Hexus_CardDescriptions_Inverse();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Kill : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Kill* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Kill();
-		~Hexus_CardDescriptions_Kill();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_LogicalAnd : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalAnd* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalAnd();
-		~Hexus_CardDescriptions_LogicalAnd();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_LogicalOr : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalOr* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalOr();
-		~Hexus_CardDescriptions_LogicalOr();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_LogicalXor : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalXor* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalXor();
-		~Hexus_CardDescriptions_LogicalXor();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Mov : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Mov* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Mov();
-		~Hexus_CardDescriptions_Mov();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_NoDestroyEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_NoDestroyEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_NoDestroyEffect();
-		~Hexus_CardDescriptions_NoDestroyEffect();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Peek : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Peek* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Peek();
-		~Hexus_CardDescriptions_Peek();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ReturnAfterRound* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ReturnAfterRound();
-		~Hexus_CardDescriptions_ReturnAfterRound();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ReturnToHand : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ReturnToHand* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ReturnToHand();
-		~Hexus_CardDescriptions_ReturnToHand();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ShiftLeft : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftLeft* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftLeft();
-		~Hexus_CardDescriptions_ShiftLeft();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ShiftLeftCircular : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftLeftCircular* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftLeftCircular();
-		~Hexus_CardDescriptions_ShiftLeftCircular();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ShiftRight : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftRight* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftRight();
-		~Hexus_CardDescriptions_ShiftRight();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_ShiftRightCircular : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftRightCircular* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftRightCircular();
-		~Hexus_CardDescriptions_ShiftRightCircular();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Steal : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Steal* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Steal();
-		~Hexus_CardDescriptions_Steal();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_Subtract : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Subtract* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_Subtract();
-		~Hexus_CardDescriptions_Subtract();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_SuddenDeath : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_SuddenDeath* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_SuddenDeath();
-		~Hexus_CardDescriptions_SuddenDeath();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardDescriptions_TurnGainsEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_TurnGainsEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardDescriptions_TurnGainsEffect();
-		~Hexus_CardDescriptions_TurnGainsEffect();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardsInDeck : public LocalizedString
-	{
-	public:
-		static Hexus_CardsInDeck* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardsInDeck();
-		~Hexus_CardsInDeck();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardsInStorage : public LocalizedString
-	{
-	public:
-		static Hexus_CardsInStorage* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardsInStorage();
-		~Hexus_CardsInStorage();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_CardsToPlayToolTip : public LocalizedString
-	{
-	public:
-		static Hexus_CardsToPlayToolTip* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_CardsToPlayToolTip();
-		~Hexus_CardsToPlayToolTip();
 	};
 }
 
@@ -11319,6 +11181,144 @@ namespace Strings
 	private:
 		Hexus_Cards_Subtract();
 		~Hexus_Cards_Subtract();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardsInDeck : public LocalizedString
+	{
+	public:
+		static Hexus_CardsInDeck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardsInDeck();
+		~Hexus_CardsInDeck();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardsInStorage : public LocalizedString
+	{
+	public:
+		static Hexus_CardsInStorage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardsInStorage();
+		~Hexus_CardsInStorage();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_CardsToPlayToolTip : public LocalizedString
+	{
+	public:
+		static Hexus_CardsToPlayToolTip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_CardsToPlayToolTip();
+		~Hexus_CardsToPlayToolTip();
 	};
 }
 
@@ -58106,10 +58106,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown* create();
+		static Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58145,17 +58145,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown();
-		~Platformer_Quests_EndianForest_FindElriel_Chiron_CantLeaveTown();
+		Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown();
+		~Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe* create();
+		static Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58191,17 +58191,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe();
-		~Platformer_Quests_EndianForest_FindElriel_Elriel_A_YouShouldNotHaveComeForMe();
+		Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor();
+		~Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown* create();
+		static Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58237,8 +58237,100 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown();
-		~Platformer_Quests_EndianForest_FindElriel_Elriel_B_DefendTown();
+		Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere();
+		~Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell();
+		~Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown();
+		~Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown();
 	};
 }
 
@@ -58428,10 +58520,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_A_HowDoWeGetToTheRuins : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_A_HowDoWeGetToTheRuins* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58467,17 +58559,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_A_HowDoWeGetToTheRuins();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_A_HowDoWeGetToTheRuins();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_B_HowDareYou : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_B_HowDareYou* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58513,17 +58605,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_B_HowDareYou();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_B_HowDareYou();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_C_NobodyLeavesUntil : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_C_NobodyLeavesUntil* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58559,17 +58651,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_C_NobodyLeavesUntil();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_C_NobodyLeavesUntil();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_D_WhatIfWeHelp : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_D_WhatIfWeHelp* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58605,17 +58697,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_D_WhatIfWeHelp();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_D_WhatIfWeHelp();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_E_YouWouldHelp : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_E_YouWouldHelp* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58651,17 +58743,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_E_YouWouldHelp();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_E_YouWouldHelp();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58697,17 +58789,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_F_OrderMyGuards();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -58743,8 +58835,376 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor();
-		~Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor();
+		Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_N_However : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_N_However* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_N_However();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_N_However();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops();
+		~Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops();
 	};
 }
 
@@ -60585,6 +61045,98 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay();
 		~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse();
+		~Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse();
+	};
+}
+
+namespace Strings
+{
+	class Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent();
+		~Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent();
 	};
 }
 

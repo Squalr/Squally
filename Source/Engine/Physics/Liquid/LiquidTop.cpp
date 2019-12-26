@@ -1,6 +1,10 @@
 #include "LiquidTop.h"
 
-#include <execution>
+#if __GNUC__ || __clang__
+    // #include <execution>
+#else
+    #include <execution>
+#endif
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
@@ -73,8 +77,7 @@ void LiquidTop::update(float dt)
     super::update(dt);
 
     // Ignore the first and last columns as an optimization. Edges will always be at base water level.
-    std::for_each(
-        std::execution::par_unseq,
+    TRY_PARALLELIZE(
         std::next(this->columns.begin(), 1),
         std::prev(this->columns.end(), 1),
         [=](LiquidTop::ColumnData& it)
@@ -84,8 +87,7 @@ void LiquidTop::update(float dt)
     );
 
     // See git commit history for unoptomized version.
-    std::for_each(
-        std::execution::par_unseq,
+    TRY_PARALLELIZE(
         std::next(this->columnIndicies.begin(), 1),
         std::prev(this->columnIndicies.end(), 1),
         [=](int index)
@@ -98,8 +100,7 @@ void LiquidTop::update(float dt)
         }
     );
 
-    std::for_each(
-        std::execution::par_unseq,
+    TRY_PARALLELIZE(
         this->columnIndicies.begin(),
         this->columnIndicies.end(),
         [=](int index)

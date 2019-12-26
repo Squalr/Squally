@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="15" name="WaterfallRocks" visible="0">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -215,11 +215,11 @@
    </properties>
    <polygon points="0,0 5852.01,-11.408 5852.01,787.153 12.7773,798.561"/>
   </object>
-  <object id="769" name="dark-grass" type="terrain" x="-258.385" y="2773.84">
+  <object id="769" name="dark-grass" type="terrain" x="-258.385" y="2723.81">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-54.3855 2077.07,-56.0714 2077.07,3868.93 4.53509,3925"/>
+   <polygon points="0,-5.86159 2077.07,-6.04329 2077.07,416.988 4.53509,423.031"/>
   </object>
  </objectgroup>
  <objectgroup id="69" name="decor -6">
@@ -438,11 +438,11 @@
    </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
-  <object id="724" name="blue-grass" type="terrain" x="3845.72" y="2923.07">
-   <polygon points="-8,-120 1863.05,-119.86 1858.82,3162.68 0,3164"/>
+  <object id="724" name="blue-grass" type="terrain" x="3845.72" y="2817.07">
+   <polygon points="0,0 1863.05,-13.8647 1864.82,354.271 0,365.991"/>
   </object>
   <object id="764" name="blue-grass" type="terrain" x="6015.74" y="1199.58">
-   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4416.2,4813.49 48,4815.97 -2.21724,1606.05 2375.72,1594.83 2371.57,1221.15 431.5,1226.14"/>
+   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 2375.72,1594.83 2371.57,1221.15 431.5,1226.14"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
@@ -460,8 +460,8 @@
   <object id="658" name="blue-grass" type="terrain" x="-142.895" y="5921.23">
    <polygon points="0,0 3596.4,-27.0701 3596.4,2273.88 8.70799,2300.96"/>
   </object>
-  <object id="662" name="blue-grass" type="terrain" x="-116.844" y="2865.08">
-   <polygon points="0,0 3577.71,-45.7721 3577.71,3844.85 8.66274,3890.64"/>
+  <object id="662" name="blue-grass" type="terrain" x="-116.844" y="2823.68">
+   <polygon points="0,0 3577.71,-4.37683 3577.71,367.653 8.66274,372.031"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">

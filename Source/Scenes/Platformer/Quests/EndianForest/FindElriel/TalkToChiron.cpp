@@ -79,8 +79,8 @@ void TalkToChiron::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Queen_G_TempleDoor::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create() }),
+			Strings::Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

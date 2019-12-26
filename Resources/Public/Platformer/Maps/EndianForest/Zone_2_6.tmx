@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1020">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1024">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -111,8 +111,8 @@
    <property name="depth" type="float" value="-7168"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="907" name="blue-grass" type="terrain" x="-1989.44" y="-479.066">
-   <polygon points="3.0303,-109.091 1866.08,-113.287 1864.82,3204.44 -9.09091,3201.36"/>
+  <object id="907" name="blue-grass" type="terrain" x="-1989.44" y="-508.447">
+   <polygon points="3.0303,-80.7978 1866.08,-83.9056 1864.82,2373.36 -9.09091,2371.08"/>
   </object>
   <object id="909" name="blue-grass" type="terrain" x="-7388" y="-548.837">
    <polygon points="0,-40 5013.71,-39.5396 5013.71,3321.32 12.1397,3336.87"/>
@@ -211,6 +211,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="978" name="blue-grass" type="terrain" x="1936" y="3288">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-976.387,767.414 -1000,-1528.93 -110.285,-1773.79 643.83,-1984.03 1291.54,-2152.11 6523.06,-2151.93 6520.88,757.705"/>
   </object>
  </objectgroup>
@@ -221,15 +224,15 @@
   </properties>
   <object id="893" name="blue-grass" type="terrain" x="-1989.44" y="3368.94">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
-  <object id="896" name="blue-grass" type="terrain" x="-5994.05" y="1793.55">
+  <object id="896" name="blue-grass" type="terrain" x="-5994.05" y="1778.1">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 3596.4,-27.0701 3596.4,2273.88 8.70799,2300.96"/>
+   <polygon points="0,0 3596.4,-11.6214 3596.4,976.195 8.70799,987.82"/>
   </object>
   <object id="976" name="ship-alt" type="terrain" x="4134.55" y="1791.88">
    <properties>
@@ -243,56 +246,19 @@
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="marcel" type="entity" x="4578.67" y="1012.67" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
-  <object id="1012" name="sarude" type="entity" x="4254" y="1010" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
-  <object id="1013" name="igneus" type="entity" x="3928" y="1010.67" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
-  <object id="1014" name="aster" type="entity" x="3764" y="1012.67" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
-  <object id="1015" name="alder" type="entity" x="4084.67" y="1010" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
-  <object id="1016" name="merlin" type="entity" x="4418.67" y="1014" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="72" name="decor -32" visible="0">
+ <objectgroup id="72" name="decor -32">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="883" name="Generic/TownHomeEmpty4" type="decor" x="-1456.62" y="-275.372" width="1950" height="2019"/>
-  <object id="1009" name="Generic/ForceFieldDome" type="decor" x="3591.15" y="492.303" width="1234" height="669"/>
  </objectgroup>
  <objectgroup id="97" name="entities -32 top">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1018" name="gorgon" type="entity" x="5041.46" y="1009.94" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="86" name="objects -32 (ship)">
   <properties>
@@ -329,10 +295,32 @@
  </objectgroup>
  <objectgroup id="98" name="water -32 (+3)">
   <properties>
-   <property name="depth" type="float" value="-3968"/>
+   <property name="depth" type="float" value="-3904"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1019" name="water" type="object" x="3153.5" y="1939.99" width="5157" height="405.346">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="water -32 (+4)">
+  <properties>
+   <property name="depth" type="float" value="-3840"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1020" name="water" type="object" x="3153.5" y="1996.52" width="5157" height="405.346">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="water -32 (+5)">
+  <properties>
+   <property name="depth" type="float" value="-3776"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1021" name="water" type="object" x="3153.5" y="2056.44" width="5157" height="405.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -428,7 +416,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="906" name="temple" type="terrain" x="826.468" y="1471.26">
-   <polygon points="0,-24.9365 1735.53,-23.1859 1735.53,110.911 1859.53,109.004 1859,233.165 1992.25,232.864 1990.85,362.055 2116.62,359.462 2117.53,488.502 2241.43,489.33 2247.43,1858.2 -0.238416,1860.63"/>
+   <polygon points="0,-24.9365 1735.53,-23.1859 1735.53,110.911 2061.52,106.311 2060.99,230.472 2355.84,230.171 2354.44,359.362 2480.21,356.769 2481.12,485.809 2605.02,486.637 2602.94,1855.51 -0.238416,1860.63"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -464,6 +452,12 @@
    </properties>
   </object>
   <object id="1003" name="solid" type="collision" x="700.319" y="25.6523" width="126.878" height="1843.48"/>
+  <object id="1022" name="cinematic-marker" type="object" x="2992.41" y="1868.43" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="elriel-exit"/>
+   </properties>
+  </object>
+  <object id="1023" name="solid" type="collision" x="3071.63" y="590.032" width="126.878" height="1843.48"/>
  </objectgroup>
  <objectgroup id="42" name="objects +1">
   <properties>

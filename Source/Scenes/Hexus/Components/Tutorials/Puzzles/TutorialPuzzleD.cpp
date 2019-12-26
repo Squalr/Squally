@@ -33,7 +33,7 @@ TutorialPuzzleD* TutorialPuzzleD::create()
 TutorialPuzzleD::TutorialPuzzleD() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleD_A_Order::create()->setStringReplacementVariables({ Strings::Hexus_Hexus::create() }), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleD_A_Order::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	
 	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
 	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();

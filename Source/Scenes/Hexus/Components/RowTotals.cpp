@@ -86,19 +86,19 @@ RowTotals::RowTotals()
 	this->playerDecimalCardDecreaseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Common_MinusConstant::create());
 	this->playerHexCardDecreaseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, Strings::Common_MinusConstant::create());
 
-	this->enemyBinaryCardIncreaseLabel->setStringReplacementVariables({ this->enemyBinaryCardIncreaseStr });
-	this->enemyDecimalCardIncreaseLabel->setStringReplacementVariables({ this->enemyDecimalCardIncreaseStr });
-	this->enemyHexCardIncreaseLabel->setStringReplacementVariables({ this->enemyHexCardIncreaseStr });
-	this->playerBinaryCardIncreaseLabel->setStringReplacementVariables({ this->playerBinaryCardIncreaseStr });
-	this->playerDecimalCardIncreaseLabel->setStringReplacementVariables({ this->playerDecimalCardIncreaseStr });
-	this->playerHexCardIncreaseLabel->setStringReplacementVariables({ this->playerHexCardIncreaseStr });
+	this->enemyBinaryCardIncreaseLabel->setStringReplacementVariables(this->enemyBinaryCardIncreaseStr);
+	this->enemyDecimalCardIncreaseLabel->setStringReplacementVariables(this->enemyDecimalCardIncreaseStr);
+	this->enemyHexCardIncreaseLabel->setStringReplacementVariables(this->enemyHexCardIncreaseStr);
+	this->playerBinaryCardIncreaseLabel->setStringReplacementVariables(this->playerBinaryCardIncreaseStr);
+	this->playerDecimalCardIncreaseLabel->setStringReplacementVariables(this->playerDecimalCardIncreaseStr);
+	this->playerHexCardIncreaseLabel->setStringReplacementVariables(this->playerHexCardIncreaseStr);
 	
-	this->enemyBinaryCardDecreaseLabel->setStringReplacementVariables({ this->enemyBinaryCardDecreaseStr });
-	this->enemyDecimalCardDecreaseLabel->setStringReplacementVariables({ this->enemyDecimalCardDecreaseStr });
-	this->enemyHexCardDecreaseLabel->setStringReplacementVariables({ this->enemyHexCardDecreaseStr });
-	this->playerBinaryCardDecreaseLabel->setStringReplacementVariables({ this->playerBinaryCardDecreaseStr });
-	this->playerDecimalCardDecreaseLabel->setStringReplacementVariables({ this->playerDecimalCardDecreaseStr });
-	this->playerHexCardDecreaseLabel->setStringReplacementVariables({ this->playerHexCardDecreaseStr });
+	this->enemyBinaryCardDecreaseLabel->setStringReplacementVariables(this->enemyBinaryCardDecreaseStr);
+	this->enemyDecimalCardDecreaseLabel->setStringReplacementVariables(this->enemyDecimalCardDecreaseStr);
+	this->enemyHexCardDecreaseLabel->setStringReplacementVariables(this->enemyHexCardDecreaseStr);
+	this->playerBinaryCardDecreaseLabel->setStringReplacementVariables(this->playerBinaryCardDecreaseStr);
+	this->playerDecimalCardDecreaseLabel->setStringReplacementVariables(this->playerDecimalCardDecreaseStr);
+	this->playerHexCardDecreaseLabel->setStringReplacementVariables(this->playerHexCardDecreaseStr);
 	
 	std::vector<LocalizedLabel*> deltaLabels = std::vector<LocalizedLabel*>({
 		this->enemyBinaryCardIncreaseLabel,

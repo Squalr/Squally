@@ -26,7 +26,6 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->caster = caster;
 	this->allowHacking = allowHacking;
 	this->noCollideDuration = noCollideDuration;
-	this->radius = radius;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->spinSpeed = 0.0f;
