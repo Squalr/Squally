@@ -28,3 +28,8 @@ BusinessHoursLine::BusinessHoursLine() : super(BusinessHoursLine::MapKeyQuestLin
 BusinessHoursLine::~BusinessHoursLine()
 {
 }
+
+QuestLine* BusinessHoursLine::clone()
+{
+	return BusinessHoursLine::create();
+}

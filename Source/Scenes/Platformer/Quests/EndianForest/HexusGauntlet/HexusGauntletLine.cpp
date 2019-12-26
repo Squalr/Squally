@@ -39,3 +39,8 @@ HexusGauntletLine::HexusGauntletLine() : super(HexusGauntletLine::MapKeyQuestLin
 HexusGauntletLine::~HexusGauntletLine()
 {
 }
+
+QuestLine* HexusGauntletLine::clone()
+{
+	return HexusGauntletLine::create();
+}

@@ -7,6 +7,8 @@ class FindElrielLine : public QuestLine
 public:
 	static FindElrielLine* create();
 
+	QuestLine* clone() override;
+
 	static const std::string MapKeyQuestLine;
 
 protected:

@@ -78,7 +78,6 @@ void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 
 void TalkToElriel::onComplete()
 {
-	this->runCinematicSequencePart4();
 }
 
 void TalkToElriel::onSkipped()
@@ -153,7 +152,7 @@ void TalkToElriel::runCinematicSequencePart3()
 		),
 		[=]()
 		{
-			this->complete();
+			this->runCinematicSequencePart4();
 		},
 		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 		true
@@ -166,6 +165,8 @@ void TalkToElriel::runCinematicSequencePart4()
 	{
 		return;
 	}
+
+	this->complete();
 
 	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{

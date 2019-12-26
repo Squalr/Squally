@@ -7,6 +7,8 @@ class RescueGuanoLine : public QuestLine
 public:
 	static RescueGuanoLine* create();
 
+	QuestLine* clone() override;
+
 	static const std::string MapKeyQuestLine;
 
 protected:

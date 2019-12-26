@@ -37,3 +37,8 @@ FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
 FindElrielLine::~FindElrielLine()
 {
 }
+
+QuestLine* FindElrielLine::clone()
+{
+	return FindElrielLine::create();
+}

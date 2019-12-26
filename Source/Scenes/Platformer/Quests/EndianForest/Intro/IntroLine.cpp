@@ -29,3 +29,8 @@ IntroLine::IntroLine() : super(IntroLine::MapKeyQuestLine, {
 IntroLine::~IntroLine()
 {
 }
+
+QuestLine* IntroLine::clone()
+{
+	return IntroLine::create();
+}

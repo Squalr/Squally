@@ -179,8 +179,8 @@ void GameCamera::update(float dt)
 	Size boundsSize = Director::getInstance()->getVisibleSize() * this->getCameraZoom();
 	const float MinX = this->cameraBounds.getMinX() + boundsSize.width / 2.0f;
 	const float MaxX = this->cameraBounds.getMaxX() - boundsSize.width / 2.0f;
-	const float MinY = this->cameraBounds.getMaxY() - boundsSize.height / 2.0f;
-	const float MaxY = this->cameraBounds.getMinY() + boundsSize.height / 2.0f;
+	const float MinY = this->cameraBounds.getMinY() + boundsSize.height / 2.0f;
+	const float MaxY = this->cameraBounds.getMaxY() - boundsSize.height / 2.0f;
 
 	// Prevent camera from leaving level bounds. Note: Only constrain if out of bounds in one direction, otherwise bounds are irrelevant
 	if ((cameraPosition.x < MinX) ^ (cameraPosition.x > MaxX))

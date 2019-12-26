@@ -31,3 +31,8 @@ RescueGuanoLine::RescueGuanoLine() : super(RescueGuanoLine::MapKeyQuestLine, {
 RescueGuanoLine::~RescueGuanoLine()
 {
 }
+
+QuestLine* RescueGuanoLine::clone()
+{
+	return RescueGuanoLine::create();
+}

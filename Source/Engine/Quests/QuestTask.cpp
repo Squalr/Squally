@@ -54,30 +54,34 @@ std::string QuestTask::getQuestTaskName()
 	return this->questTask;
 }
 
-void QuestTask::updateState()
+QuestTask::QuestState QuestTask::getQuestState()
 {
-	const std::vector<QuestLine::QuestMeta> quests = this->questLine->getQuests();
+	return this->questState;
+}
+
+QuestTask::QuestState QuestTask::getQuestStateForTask(QuestLine* questLine, std::string questTask)
+{
+	const std::vector<QuestLine::QuestMeta> quests = questLine->getQuests();
 	
 	bool isPreviousSkippable = false;
 	bool isPreviousComplete = false;
-	QuestState previousState = this->questState;
-	this->questState = QuestState::None;
+	QuestState questState = QuestState::None;
 
 	for (auto it = quests.begin(); it != quests.end(); it++)
 	{
-		if ((*it).questTask == this->questTask)
+		if ((*it).questTask == questTask)
 		{
 			if ((*it).isComplete)
 			{
-				this->questState = QuestState::Complete;
+				questState = QuestState::Complete;
 			}
 			else if ((*it).isActive && (isPreviousSkippable && !isPreviousComplete))
 			{
-				this->questState = QuestState::ActiveThroughSkippable;
+				questState = QuestState::ActiveThroughSkippable;
 			}
 			else if ((*it).isActive)
 			{
-				this->questState = QuestState::Active;
+				questState = QuestState::Active;
 			}
 			
 			break;
@@ -86,6 +90,14 @@ void QuestTask::updateState()
 		isPreviousSkippable = (*it).isSkippable;
 		isPreviousComplete = (*it).isComplete;
 	}
+
+	return questState;
+}
+
+void QuestTask::updateState()
+{
+	QuestState previousState = this->questState;
+	this->questState = QuestTask::getQuestStateForTask(this->questLine, this->questTask);
 
 	if (!this->hasLoaded)
 	{

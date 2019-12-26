@@ -28,3 +28,8 @@ SailForRuinsLine::SailForRuinsLine() : super(SailForRuinsLine::MapKeyQuestLine,
 SailForRuinsLine::~SailForRuinsLine()
 {
 }
+
+QuestLine* SailForRuinsLine::clone()
+{
+	return SailForRuinsLine::create();
+}

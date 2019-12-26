@@ -7,15 +7,13 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Events/QuestEvents.h"
+#include "Engine/Quests/QuestLine.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/SoundResources.h"
@@ -68,6 +66,12 @@ void TalkToQueen::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
+
+	if (questState == QuestState::Complete &&
+		QuestTask::getQuestStateForTask(this->questLine, TalkToElriel::MapKeyQuest) == QuestState::None)
+	{
+		this->setPostText();
+	}
 }
 
 void TalkToQueen::onActivate(bool isActiveThroughSkippable)

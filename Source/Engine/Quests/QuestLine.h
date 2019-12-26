@@ -42,6 +42,7 @@ public:
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 	bool isComplete();
+	virtual QuestLine* clone() = 0;
 
 protected:
 	QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq = nullptr);
