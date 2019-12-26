@@ -13210,98 +13210,6 @@ namespace Strings
 
 namespace Strings
 {
-	class Hexus_Tutorials_Marcel_ClaimWin : public LocalizedString
-	{
-	public:
-		static Hexus_Tutorials_Marcel_ClaimWin* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_Tutorials_Marcel_ClaimWin();
-		~Hexus_Tutorials_Marcel_ClaimWin();
-	};
-}
-
-namespace Strings
-{
-	class Hexus_Tutorials_Marcel_RealMatch : public LocalizedString
-	{
-	public:
-		static Hexus_Tutorials_Marcel_RealMatch* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Hexus_Tutorials_Marcel_RealMatch();
-		~Hexus_Tutorials_Marcel_RealMatch();
-	};
-}
-
-namespace Strings
-{
 	class Hexus_Tutorials_PuzzleB_A_4Bits : public LocalizedString
 	{
 	public:
@@ -13481,6 +13389,98 @@ namespace Strings
 	private:
 		Hexus_Tutorials_PuzzleD_A_Order();
 		~Hexus_Tutorials_PuzzleD_A_Order();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_Tutorials_Sarude_ClaimWin : public LocalizedString
+	{
+	public:
+		static Hexus_Tutorials_Sarude_ClaimWin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_Tutorials_Sarude_ClaimWin();
+		~Hexus_Tutorials_Sarude_ClaimWin();
+	};
+}
+
+namespace Strings
+{
+	class Hexus_Tutorials_Sarude_RealMatch : public LocalizedString
+	{
+	public:
+		static Hexus_Tutorials_Sarude_RealMatch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringAr() override;
+		std::string getStringBg() override;
+		std::string getStringCs() override;
+		std::string getStringDa() override;
+		std::string getStringDe() override;
+		std::string getStringEl() override;
+		std::string getStringEn() override;
+		std::string getStringEs() override;
+		std::string getStringEs419() override;
+		std::string getStringFi() override;
+		std::string getStringFr() override;
+		std::string getStringHu() override;
+		std::string getStringIt() override;
+		std::string getStringJa() override;
+		std::string getStringKo() override;
+		std::string getStringNl() override;
+		std::string getStringNo() override;
+		std::string getStringPl() override;
+		std::string getStringPt() override;
+		std::string getStringPtBr() override;
+		std::string getStringRo() override;
+		std::string getStringRu() override;
+		std::string getStringSv() override;
+		std::string getStringTh() override;
+		std::string getStringTr() override;
+		std::string getStringUk() override;
+		std::string getStringVi() override;
+		std::string getStringZhCn() override;
+		std::string getStringZhTw() override;
+		
+	private:
+		Hexus_Tutorials_Sarude_RealMatch();
+		~Hexus_Tutorials_Sarude_RealMatch();
 	};
 }
 
@@ -59348,10 +59348,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59387,17 +59387,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59433,17 +59433,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_WeNeededSomeone : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_WeNeededSomeone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_WeNeededSomeone* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_WeNeededSomeone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59479,17 +59479,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_WeNeededSomeone();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_WeNeededSomeone();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_WeNeededSomeone();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_WeNeededSomeone();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_FirstYouMustLearnHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_FirstYouMustLearnHexus* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59525,17 +59525,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_D_FirstYouMustLearnHexus();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_FirstYouMustLearnHexus();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_FirstYouMustLearnHexus();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_HexusIsAGameWhere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_HexusIsAGameWhere* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59571,17 +59571,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_E_HexusIsAGameWhere();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_HexusIsAGameWhere();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_HexusIsAGameWhere();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_WhoeverMastersHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_WhoeverMastersHexus* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59617,17 +59617,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_F_WhoeverMastersHexus();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_WhoeverMastersHexus();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_WhoeverMastersHexus();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_PortalToGauntlet : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_PortalToGauntlet* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59663,17 +59663,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_G_PortalToGauntlet();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_PortalToGauntlet();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_PortalToGauntlet();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallengeSkip : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallengeSkip* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59709,17 +59709,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallengeSkip();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_IAcceptYourChallengeSkip();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_IAcceptYourChallengeSkip();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59755,17 +59755,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_K_IChallengeYou();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_ValliantEffort : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_ValliantEffort* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59801,17 +59801,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_ValliantEffort();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_ValliantEffort();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59847,17 +59847,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_M_WellDone();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59893,17 +59893,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_N_WeBroughtYouHere();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_UnknownForce : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_UnknownForce* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59939,17 +59939,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_O_UnknownForce();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_UnknownForce();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_UnknownForce();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_OnlyYouCanDefeat : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_OnlyYouCanDefeat* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -59985,17 +59985,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_P_OnlyYouCanDefeat();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_OnlyYouCanDefeat();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_OnlyYouCanDefeat();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -60031,17 +60031,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_Q_LearnMoreOfTheseMonsters();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_ReadyToStart : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_ReadyToStart* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -60077,8 +60077,8 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_ReadyToStart();
-		~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_ReadyToStart();
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart();
+		~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart();
 	};
 }
 

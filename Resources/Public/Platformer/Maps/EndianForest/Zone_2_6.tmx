@@ -416,7 +416,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="906" name="temple" type="terrain" x="826.468" y="1471.26">
-   <polygon points="0,-24.9365 1735.53,-23.1859 1729.81,169.97 2055.81,165.37 2055.28,329.538 2350.12,329.237 2357.28,483.904 2605.02,486.637 2602.94,1855.51 -0.238416,1860.63"/>
+   <polygon points="0,-24.9365 1735.53,-23.1859 1729.81,169.97 2055.81,165.37 2052.74,410.715 2347.59,410.414 2354.75,565.081 2602.48,567.814 2602.94,1855.51 -0.238416,1860.63"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -452,7 +452,7 @@
    </properties>
   </object>
   <object id="1003" name="solid" type="collision" x="700.319" y="25.6523" width="126.878" height="1843.48"/>
-  <object id="1022" name="cinematic-marker" type="object" x="2992.57" y="1714.87" width="78.7879" height="88">
+  <object id="1022" name="cinematic-marker" type="object" x="2992.57" y="1790.97" width="78.7879" height="88">
    <properties>
     <property name="tag" value="elriel-exit"/>
    </properties>

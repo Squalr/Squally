@@ -73,7 +73,10 @@ void TalkToElriel::onLoad(QuestState questState)
 
 void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 {
-	this->runCinematicSequencePart1();
+	this->defer([=]()
+	{
+		this->runCinematicSequencePart1();
+	});
 }
 
 void TalkToElriel::onComplete()
