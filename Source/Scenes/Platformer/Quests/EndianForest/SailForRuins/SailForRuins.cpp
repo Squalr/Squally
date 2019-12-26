@@ -26,16 +26,16 @@ using namespace cocos2d;
 
 const std::string SailForRuins::MapKeyQuest = "sail-for-ruins";
 
-SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine)
 {
-	SailForRuins* instance = new SailForRuins(owner, questLine, questTag);
+	SailForRuins* instance = new SailForRuins(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SailForRuins::MapKeyQuest, questTag, false)
+SailForRuins::SailForRuins(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SailForRuins::MapKeyQuest, false)
 {
 	this->blackbeard = nullptr;
 	this->squally = nullptr;

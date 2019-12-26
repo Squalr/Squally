@@ -38,24 +38,34 @@ PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 
 void PlatformerQuestDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	std::string questLine = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString();
+	/*
+		TWO FORMATS ARE SUPPORTED:
+		1) QuestLine (single) / QuestTask (single)
+		2) QuestLine (single) / QuestTask (multiple)
+	*/
+	std::vector<std::string> questLines = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString(),
+		",",
+		false
+	);
 	std::vector<std::string> questTasks = StrUtils::splitOn(
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuest, Value("")).asString(),
 		",",
 		false
 	);
-	std::string questTag = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestTag, Value("")).asString();
 
-	if (!questLine.empty())
+	while (!questLines.empty() && questLines.size() < questTasks.size())
 	{
-		for (auto it = questTasks.begin(); it != questTasks.end(); it++)
-		{
-			QuestTask* quest = this->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(owner, questLine, *it, questTag));
+		questLines.push_back(questLines.front());
+	}
 
-			if (quest != nullptr)
-			{
-				owner->addChild(quest);
-			}
+	for (int index = 0; index < questTasks.size(); index++)
+	{
+		QuestTask* quest = this->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(owner, questLines[index], questTasks[index]));
+
+		if (quest != nullptr)
+		{
+			owner->addChild(quest);
 		}
 	}
 }

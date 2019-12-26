@@ -28,16 +28,16 @@ using namespace cocos2d;
 const std::string TalkToMarcel::MapKeyQuest = "talk-to-marcel";
 const std::string TalkToMarcel::QuestPortalTag = "quest-portal";
 
-TalkToMarcel* TalkToMarcel::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToMarcel* TalkToMarcel::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToMarcel* instance = new TalkToMarcel(owner, questLine, questTag);
+	TalkToMarcel* instance = new TalkToMarcel(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToMarcel::TalkToMarcel(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToMarcel::MapKeyQuest, questTag, false)
+TalkToMarcel::TalkToMarcel(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToMarcel::MapKeyQuest, false)
 {
 	this->marcel = nullptr;
 	this->squally = nullptr;

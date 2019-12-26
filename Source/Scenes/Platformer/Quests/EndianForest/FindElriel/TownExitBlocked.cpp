@@ -30,16 +30,16 @@ using namespace cocos2d;
 const std::string TownExitBlocked::MapKeyQuest = "town-exit-blocked";
 const std::string TownExitBlocked::TagBlockedExit = "blocked-exit";
 
-TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine)
 {
-	TownExitBlocked* instance = new TownExitBlocked(owner, questLine, questTag);
+	TownExitBlocked* instance = new TownExitBlocked(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownExitBlocked::MapKeyQuest, questTag, false)
+TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownExitBlocked::MapKeyQuest, false)
 {
 	this->dialogueCooldown = 0.0f;
 	this->isEngagedInDialogue = false;

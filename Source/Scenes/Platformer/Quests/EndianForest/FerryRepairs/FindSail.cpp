@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string FindSail::MapKeyQuest = "find-sail";
 
-FindSail* FindSail::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+FindSail* FindSail::create(GameObject* owner, QuestLine* questLine)
 {
-	FindSail* instance = new FindSail(owner, questLine, questTag);
+	FindSail* instance = new FindSail(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FindSail::FindSail(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, FindSail::MapKeyQuest, questTag, false)
+FindSail::FindSail(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FindSail::MapKeyQuest, false)
 {
 	this->blackbeard = nullptr;
 }

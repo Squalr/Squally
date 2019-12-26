@@ -34,7 +34,7 @@ QuestTask* QuestDeserializer::deserialize(QuestDeserializer::QuestDeserializatio
 
 	if (questLine != nullptr && args.owner != nullptr)
 	{
-		return questLine->deserialize(args.owner, args.questTask, args.questTag);
+		return questLine->deserialize(args.owner, args.questTask);
 	}
 	else
 	{

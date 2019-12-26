@@ -19,7 +19,7 @@ BusinessHoursLine* BusinessHoursLine::create()
 
 BusinessHoursLine::BusinessHoursLine() : super(BusinessHoursLine::MapKeyQuestLine,
 	{
-		QuestData(BusinessHours::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return BusinessHours::create(owner, questLine, questTag); }),
+		QuestData(BusinessHours::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return BusinessHours::create(owner, questLine); }),
 	},
 	(QuestLine*)FindElrielLine::create())
 {

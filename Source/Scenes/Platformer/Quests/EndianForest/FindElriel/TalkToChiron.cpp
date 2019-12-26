@@ -22,16 +22,16 @@ using namespace cocos2d;
 
 const std::string TalkToChiron::MapKeyQuest = "talk-to-chiron";
 
-TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToChiron* instance = new TalkToChiron(owner, questLine, questTag);
+	TalkToChiron* instance = new TalkToChiron(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToChiron::MapKeyQuest, questTag, false)
+TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToChiron::MapKeyQuest, false)
 {
 	this->chiron = nullptr;
 	this->squally = nullptr;

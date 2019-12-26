@@ -19,9 +19,9 @@ public:
 	{
 		std::string questTask;
 		bool isSkippable;
-		std::function<QuestTask*(GameObject*, QuestLine*, std::string)> deserializer;
+		std::function<QuestTask*(GameObject*, QuestLine*)> deserializer;
 
-		QuestData(std::string questTask, bool isSkippable, std::function<QuestTask*(GameObject*, QuestLine*, std::string)> deserializer)
+		QuestData(std::string questTask, bool isSkippable, std::function<QuestTask*(GameObject*, QuestLine*)> deserializer)
 			: questTask(questTask), isSkippable(isSkippable), deserializer(deserializer) { }
 	};
 
@@ -35,7 +35,7 @@ public:
 		QuestMeta(std::string questTask, bool isActive, bool isSkippable, bool isComplete) : questTask(questTask), isActive(isActive), isSkippable(isSkippable), isComplete(isComplete) { }
 	};
 
-	QuestTask* deserialize(GameObject* owner, std::string questTask, std::string questTag);
+	QuestTask* deserialize(GameObject* owner, std::string questTask);
 	const std::vector<QuestMeta> getQuests();
 	std::string getQuestLine();
 	void advanceNextQuest(QuestTask* currentQuest);

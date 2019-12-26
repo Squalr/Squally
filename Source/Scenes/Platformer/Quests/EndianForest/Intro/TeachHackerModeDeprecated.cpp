@@ -30,16 +30,16 @@ const std::string TeachHackerModeDeprecated::MapKeyQuest = "teach-hacker-mode-de
 const std::string TeachHackerModeDeprecated::TagQuestPortal = "quest-portal";
 const std::string TeachHackerModeDeprecated::TagHelpTotemHacking = "help-totem-hacking";
 
-TeachHackerModeDeprecated* TeachHackerModeDeprecated::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TeachHackerModeDeprecated* TeachHackerModeDeprecated::create(GameObject* owner, QuestLine* questLine)
 {
-	TeachHackerModeDeprecated* instance = new TeachHackerModeDeprecated(owner, questLine, questTag);
+	TeachHackerModeDeprecated* instance = new TeachHackerModeDeprecated(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TeachHackerModeDeprecated::TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TeachHackerModeDeprecated::MapKeyQuest, questTag, false)
+TeachHackerModeDeprecated::TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TeachHackerModeDeprecated::MapKeyQuest, false)
 {
 	this->helpTotem = nullptr;
 	this->portal = nullptr;

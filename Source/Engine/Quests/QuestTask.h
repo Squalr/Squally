@@ -18,7 +18,7 @@ public:
 	std::string getQuestTaskName();
 
 protected:
-	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable = false);
+	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, bool skippable = false);
 	~QuestTask();
 
 	void initializeListeners() override;
@@ -30,8 +30,6 @@ protected:
 	virtual void onSkipped() = 0;
 	bool isActive();
 	void complete();
-	
-	std::string questTag;
 
 private:
 	typedef GameObject super;

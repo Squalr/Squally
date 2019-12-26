@@ -9,12 +9,12 @@ class Squally;
 class TrollInTheDungeon : public QuestTask
 {
 public:
-	static TrollInTheDungeon* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TrollInTheDungeon* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TrollInTheDungeon(GameObject* owner, QuestLine* questLine, std::string questTag);
+	TrollInTheDungeon(GameObject* owner, QuestLine* questLine);
 	~TrollInTheDungeon();
 
 	void onLoad(QuestState questState) override;

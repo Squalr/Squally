@@ -18,16 +18,16 @@ using namespace cocos2d;
 
 const std::string ReturnToQueen::MapKeyQuest = "return-to-queen";
 
-ReturnToQueen* ReturnToQueen::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+ReturnToQueen* ReturnToQueen::create(GameObject* owner, QuestLine* questLine)
 {
-	ReturnToQueen* instance = new ReturnToQueen(owner, questLine, questTag);
+	ReturnToQueen* instance = new ReturnToQueen(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ReturnToQueen::ReturnToQueen(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ReturnToQueen::MapKeyQuest, questTag, false)
+ReturnToQueen::ReturnToQueen(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToQueen::MapKeyQuest, false)
 {
 	this->queenLiana = nullptr;
 }

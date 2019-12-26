@@ -26,16 +26,16 @@ using namespace cocos2d;
 
 const std::string TalkToGrogg::MapKeyQuest = "talk-to-grogg";
 
-TalkToGrogg* TalkToGrogg::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToGrogg* TalkToGrogg::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToGrogg* instance = new TalkToGrogg(owner, questLine, questTag);
+	TalkToGrogg* instance = new TalkToGrogg(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToGrogg::TalkToGrogg(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToGrogg::MapKeyQuest, questTag, false)
+TalkToGrogg::TalkToGrogg(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToGrogg::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->kingGrogg = nullptr;

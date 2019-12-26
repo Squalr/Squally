@@ -9,12 +9,12 @@ class QuestLine;
 class TownArrival : public QuestTask
 {
 public:
-	static TownArrival* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TownArrival* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TownArrival(GameObject* owner, QuestLine* questLine, std::string questTag);
+	TownArrival(GameObject* owner, QuestLine* questLine);
 	~TownArrival();
 
 	void onLoad(QuestState questState) override;

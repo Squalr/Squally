@@ -25,16 +25,16 @@ const std::string BeatTutorialC::MapKeyQuest = "beat-tutorial-C";
 const std::string BeatTutorialC::WinLossTrackIdentifier = "Tutorial-C";
 const std::string BeatTutorialC::QuestPortalTag = "quest-portal";
 
-BeatTutorialC* BeatTutorialC::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+BeatTutorialC* BeatTutorialC::create(GameObject* owner, QuestLine* questLine)
 {
-	BeatTutorialC* instance = new BeatTutorialC(owner, questLine, questTag);
+	BeatTutorialC* instance = new BeatTutorialC(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BeatTutorialC::BeatTutorialC(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, BeatTutorialC::MapKeyQuest, questTag, false)
+BeatTutorialC::BeatTutorialC(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BeatTutorialC::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
 	this->squally = nullptr;

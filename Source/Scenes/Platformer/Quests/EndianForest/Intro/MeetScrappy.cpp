@@ -32,16 +32,16 @@ using namespace cocos2d;
 const std::string MeetScrappy::MapKeyQuest = "meet-scrappy";
 const std::string MeetScrappy::TagScrappyStop = "scrappy-stop";
 
-MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine)
 {
-	MeetScrappy* instance = new MeetScrappy(owner, questLine, questTag);
+	MeetScrappy* instance = new MeetScrappy(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, MeetScrappy::MapKeyQuest, questTag, true)
+MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine) : super(owner, questLine, MeetScrappy::MapKeyQuest, true)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
 	this->squally = nullptr;

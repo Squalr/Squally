@@ -10,12 +10,12 @@ class Squally;
 class ReturnToMarcel : public QuestTask
 {
 public:
-	static ReturnToMarcel* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static ReturnToMarcel* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	ReturnToMarcel(GameObject* owner, QuestLine* questLine, std::string questTag);
+	ReturnToMarcel(GameObject* owner, QuestLine* questLine);
 	~ReturnToMarcel();
 
 	void onLoad(QuestState questState) override;

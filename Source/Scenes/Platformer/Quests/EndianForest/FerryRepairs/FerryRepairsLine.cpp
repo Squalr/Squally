@@ -17,7 +17,7 @@ FerryRepairsLine* FerryRepairsLine::create()
 }
 
 FerryRepairsLine::FerryRepairsLine() : super(FerryRepairsLine::MapKeyQuestLine, {
-	QuestData(FindSail::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return FindSail::create(owner, questLine, questTag); }),
+	QuestData(FindSail::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return FindSail::create(owner, questLine); }),
 })
 {
 }

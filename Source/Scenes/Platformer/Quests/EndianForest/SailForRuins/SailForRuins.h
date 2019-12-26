@@ -9,12 +9,12 @@ class Squally;
 class SailForRuins : public QuestTask
 {
 public:
-	static SailForRuins* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static SailForRuins* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	SailForRuins(GameObject* owner, QuestLine* questLine, std::string questTag);
+	SailForRuins(GameObject* owner, QuestLine* questLine);
 	~SailForRuins();
 
 	void onLoad(QuestState questState) override;

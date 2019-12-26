@@ -29,16 +29,16 @@ const std::string RescueGuano::MapKeyQuest = "rescue-guano";
 const std::string RescueGuano::EventMulDoorUnlocked = "mul-door-unlocked";
 const std::string RescueGuano::TagPrisonDoor = "prison-door";
 
-RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+RescueGuano* RescueGuano::create(GameObject* owner, QuestLine* questLine)
 {
-	RescueGuano* instance = new RescueGuano(owner, questLine, questTag);
+	RescueGuano* instance = new RescueGuano(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, RescueGuano::MapKeyQuest, questTag, false)
+RescueGuano::RescueGuano(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RescueGuano::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->squally = nullptr;

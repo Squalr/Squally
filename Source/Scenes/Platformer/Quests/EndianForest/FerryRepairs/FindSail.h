@@ -8,12 +8,12 @@ class QuestLine;
 class FindSail : public QuestTask
 {
 public:
-	static FindSail* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static FindSail* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	FindSail(GameObject* owner, QuestLine* questLine, std::string questTag);
+	FindSail(GameObject* owner, QuestLine* questLine);
 	~FindSail();
 
 	void onLoad(QuestState questState) override;

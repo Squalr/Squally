@@ -12,12 +12,12 @@ class WorldSound;
 class TeachHackerModeDeprecated : public QuestTask
 {
 public:
-	static TeachHackerModeDeprecated* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TeachHackerModeDeprecated* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine, std::string questTag);
+	TeachHackerModeDeprecated(GameObject* owner, QuestLine* questLine);
 	~TeachHackerModeDeprecated();
 
 	void onLoad(QuestState questState) override;

@@ -10,12 +10,12 @@ class Squally;
 class TalkToMarcel : public QuestTask
 {
 public:
-	static TalkToMarcel* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TalkToMarcel* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToMarcel(GameObject* owner, QuestLine* questLine, std::string questTag);
+	TalkToMarcel(GameObject* owner, QuestLine* questLine);
 	~TalkToMarcel();
 
 	void onLoad(QuestState questState) override;

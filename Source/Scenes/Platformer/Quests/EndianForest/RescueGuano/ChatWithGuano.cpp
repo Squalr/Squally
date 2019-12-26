@@ -28,16 +28,16 @@ using namespace cocos2d;
 const std::string ChatWithGuano::MapKeyQuest = "chat-with-guano";
 const std::string ChatWithGuano::EventExplainDoor = "explain-door";
 
-ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+ChatWithGuano* ChatWithGuano::create(GameObject* owner, QuestLine* questLine)
 {
-	ChatWithGuano* instance = new ChatWithGuano(owner, questLine, questTag);
+	ChatWithGuano* instance = new ChatWithGuano(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, ChatWithGuano::MapKeyQuest, questTag, false)
+ChatWithGuano::ChatWithGuano(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ChatWithGuano::MapKeyQuest, false)
 {
 	this->guano = nullptr;
 	this->scrappy = nullptr;

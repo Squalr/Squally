@@ -11,12 +11,12 @@ class Squally;
 class TalkToElriel : public QuestTask
 {
 public:
-	static TalkToElriel* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static TalkToElriel* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToElriel(GameObject* owner, QuestLine* questLine, std::string questTag);
+	TalkToElriel(GameObject* owner, QuestLine* questLine);
 	~TalkToElriel();
 
 	void onLoad(QuestState questState) override;

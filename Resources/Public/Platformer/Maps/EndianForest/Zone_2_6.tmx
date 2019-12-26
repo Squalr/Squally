@@ -452,12 +452,12 @@
    </properties>
   </object>
   <object id="1003" name="solid" type="collision" x="700.319" y="25.6523" width="126.878" height="1843.48"/>
-  <object id="1022" name="cinematic-marker" type="object" x="2992.41" y="1868.43" width="78.7879" height="88">
+  <object id="1022" name="cinematic-marker" type="object" x="3351.02" y="1871.37" width="78.7879" height="88">
    <properties>
     <property name="tag" value="elriel-exit"/>
    </properties>
   </object>
-  <object id="1023" name="solid" type="collision" x="3071.63" y="590.032" width="126.878" height="1843.48"/>
+  <object id="1023" name="solid" type="collision" x="3430.24" y="592.971" width="126.878" height="1843.48"/>
  </objectgroup>
  <objectgroup id="42" name="objects +1">
   <properties>

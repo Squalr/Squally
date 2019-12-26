@@ -19,7 +19,7 @@ SailForRuinsLine* SailForRuinsLine::create()
 
 SailForRuinsLine::SailForRuinsLine() : super(SailForRuinsLine::MapKeyQuestLine,
 	{
-		QuestData(SailForRuins::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return SailForRuins::create(owner, questLine, questTag); }),
+		QuestData(SailForRuins::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return SailForRuins::create(owner, questLine); }),
 	},
 	(QuestLine*)FindElrielLine::create())
 {

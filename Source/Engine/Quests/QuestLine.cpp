@@ -28,13 +28,13 @@ QuestLine::~QuestLine()
 {
 }
 
-QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask, std::string questTag)
+QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask)
 {
 	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
 	{
 		if ((*it).questTask == questTask)
 		{
-			return (*it).deserializer(owner, this, questTag);
+			return (*it).deserializer(owner, this);
 		}
 	}
 	

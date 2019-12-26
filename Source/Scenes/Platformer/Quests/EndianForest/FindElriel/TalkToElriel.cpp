@@ -29,16 +29,16 @@ using namespace cocos2d;
 const std::string TalkToElriel::MapKeyQuest = "talk-to-elriel";
 const std::string TalkToElriel::TagElrielExit = "elriel-exit";
 
-TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine,  std::string questTag)
+TalkToElriel* TalkToElriel::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToElriel* instance = new TalkToElriel(owner, questLine, questTag);
+	TalkToElriel* instance = new TalkToElriel(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToElriel::TalkToElriel(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TalkToElriel::MapKeyQuest, questTag, false)
+TalkToElriel::TalkToElriel(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToElriel::MapKeyQuest, false)
 {
 	this->elriel = nullptr;
 	this->squally = nullptr;
@@ -111,10 +111,12 @@ void TalkToElriel::runCinematicSequencePart1()
 				{
 					this->runCinematicSequencePart2();
 				},
-				""
+				"",
+				false
 			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		false
 	));
 }
 
@@ -132,7 +134,8 @@ void TalkToElriel::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Droid_DroidBrief2
+		SoundResources::Platformer_Entities_Droid_DroidBrief2,
+		false
 	));
 }
 
@@ -152,7 +155,8 @@ void TalkToElriel::runCinematicSequencePart3()
 		{
 			this->complete();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium4
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		true
 	));
 }
 

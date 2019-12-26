@@ -8,12 +8,12 @@ class QuestLine;
 class ReturnToQueen : public QuestTask
 {
 public:
-	static ReturnToQueen* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static ReturnToQueen* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	ReturnToQueen(GameObject* owner, QuestLine* questLine, std::string questTag);
+	ReturnToQueen(GameObject* owner, QuestLine* questLine);
 	~ReturnToQueen();
 
 	void onLoad(QuestState questState) override;

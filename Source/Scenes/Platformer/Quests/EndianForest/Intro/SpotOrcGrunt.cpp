@@ -24,16 +24,16 @@ using namespace cocos2d;
 
 const std::string SpotOrcGrunt::MapKeyQuest = "spot-orc-grunt";
 
-SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+SpotOrcGrunt* SpotOrcGrunt::create(GameObject* owner, QuestLine* questLine)
 {
-	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine, questTag);
+	SpotOrcGrunt* instance = new SpotOrcGrunt(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, questTag, true)
+SpotOrcGrunt::SpotOrcGrunt(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SpotOrcGrunt::MapKeyQuest, true)
 {
 	this->scrappy = nullptr;
 }

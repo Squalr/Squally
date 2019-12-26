@@ -8,12 +8,12 @@ class QuestLine;
 class SpotOrcGrunt : public QuestTask
 {
 public:
-	static SpotOrcGrunt* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static SpotOrcGrunt* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	SpotOrcGrunt(GameObject* owner, QuestLine* questLine, std::string questTag);
+	SpotOrcGrunt(GameObject* owner, QuestLine* questLine);
 	~SpotOrcGrunt();
 
 	void onLoad(QuestState questState) override;

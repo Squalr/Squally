@@ -24,14 +24,14 @@ HexusGauntletLine* HexusGauntletLine::create()
 }
 
 HexusGauntletLine::HexusGauntletLine() : super(HexusGauntletLine::MapKeyQuestLine, {
-	QuestData(TalkToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToMarcel::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialA::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialA::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialB::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialC::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialC::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialD::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialD::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialE::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialE::create(owner, questLine, questTag); }),
-	QuestData(BeatTutorialF::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return BeatTutorialF::create(owner, questLine, questTag); }),
-	QuestData(ReturnToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine, std::string questTag) { return ReturnToMarcel::create(owner, questLine, questTag); }),
+	QuestData(TalkToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return TalkToMarcel::create(owner, questLine); }),
+	QuestData(BeatTutorialA::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialA::create(owner, questLine); }),
+	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialB::create(owner, questLine); }),
+	QuestData(BeatTutorialC::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialC::create(owner, questLine); }),
+	QuestData(BeatTutorialD::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialD::create(owner, questLine); }),
+	QuestData(BeatTutorialE::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialE::create(owner, questLine); }),
+	QuestData(BeatTutorialF::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialF::create(owner, questLine); }),
+	QuestData(ReturnToMarcel::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return ReturnToMarcel::create(owner, questLine); }),
 })
 {
 }

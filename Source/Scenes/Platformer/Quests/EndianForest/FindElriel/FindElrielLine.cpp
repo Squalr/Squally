@@ -23,13 +23,13 @@ FindElrielLine* FindElrielLine::create()
 }
 
 FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
-	QuestData(TownArrival::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TownArrival::create(owner, questLine, questTag); }),
-	QuestData(TownExitBlocked::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TownExitBlocked::create(owner, questLine, questTag); }),
-	QuestData(TalkToQueen::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToQueen::create(owner, questLine, questTag); }),
-	QuestData(TalkToChiron::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToChiron::create(owner, questLine, questTag); }),
-	QuestData(TalkToGrogg::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToGrogg::create(owner, questLine, questTag); }),
-	QuestData(TalkToElriel::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return TalkToElriel::create(owner, questLine, questTag); }),
-	QuestData(ReturnToQueen::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine, std::string questTag) { return ReturnToQueen::create(owner, questLine, questTag); }),
+	QuestData(TownArrival::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TownArrival::create(owner, questLine); }),
+	QuestData(TownExitBlocked::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TownExitBlocked::create(owner, questLine); }),
+	QuestData(TalkToQueen::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToQueen::create(owner, questLine); }),
+	QuestData(TalkToChiron::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToChiron::create(owner, questLine); }),
+	QuestData(TalkToGrogg::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToGrogg::create(owner, questLine); }),
+	QuestData(TalkToElriel::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToElriel::create(owner, questLine); }),
+	QuestData(ReturnToQueen::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return ReturnToQueen::create(owner, questLine); }),
 })
 {
 }

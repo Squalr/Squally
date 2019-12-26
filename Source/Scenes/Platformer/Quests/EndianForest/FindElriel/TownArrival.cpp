@@ -25,16 +25,16 @@ using namespace cocos2d;
 
 const std::string TownArrival::MapKeyQuest = "town-arrival";
 
-TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine, std::string questTag)
+TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine)
 {
-	TownArrival* instance = new TownArrival(owner, questLine, questTag);
+	TownArrival* instance = new TownArrival(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TownArrival::TownArrival(GameObject* owner, QuestLine* questLine, std::string questTag) : super(owner, questLine, TownArrival::MapKeyQuest, questTag, true)
+TownArrival::TownArrival(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownArrival::MapKeyQuest, true)
 {
 	this->scrappy = nullptr;
 	this->squally = nullptr;

@@ -10,13 +10,12 @@
 
 using namespace cocos2d;
 
-QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, std::string questTag, bool skippable) : super()
+QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, bool skippable) : super()
 {
 	this->questState = QuestState::None;
 	this->owner = owner;
 	this->questLine = questLine;
 	this->questTask = questTask;
-	this->questTag = questTag;
 	this->isSkippable = skippable;
 	this->hasLoaded = false;
 	this->completeCalled = false;

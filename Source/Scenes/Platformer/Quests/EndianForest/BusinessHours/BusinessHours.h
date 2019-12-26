@@ -9,12 +9,12 @@ class Squally;
 class BusinessHours : public QuestTask
 {
 public:
-	static BusinessHours* create(GameObject* owner, QuestLine* questLine, std::string questTag);
+	static BusinessHours* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	BusinessHours(GameObject* owner, QuestLine* questLine, std::string questTag);
+	BusinessHours(GameObject* owner, QuestLine* questLine);
 	~BusinessHours();
 
 	void onLoad(QuestState questState) override;
