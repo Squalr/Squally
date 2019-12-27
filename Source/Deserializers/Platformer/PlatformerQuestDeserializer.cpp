@@ -23,12 +23,16 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 {
 	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
+	// ENDIAN FOREST QUESTS
 	this->lineDeserializers[BusinessHoursLine::MapKeyQuestLine] = [=]() { return (QuestLine*)BusinessHoursLine::create(); };
 	this->lineDeserializers[HexusGauntletLine::MapKeyQuestLine] = [=]() { return (QuestLine*)HexusGauntletLine::create(); };
 	this->lineDeserializers[IntroLine::MapKeyQuestLine] = [=]() { return (QuestLine*)IntroLine::create(); };
 	this->lineDeserializers[FindElrielLine::MapKeyQuestLine] = [=]() { return (QuestLine*)FindElrielLine::create(); };
 	this->lineDeserializers[RescueGuanoLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RescueGuanoLine::create(); };
 	this->lineDeserializers[SailForRuinsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SailForRuinsLine::create(); };
+	this->lineDeserializers[WindBlessingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindBlessingLine::create(); };
+
+	// UNDERFLOW RUINS QUESTS
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
@@ -38,9 +42,10 @@ PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
 void PlatformerQuestDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
 	/*
-		TWO FORMATS ARE SUPPORTED:
+		FORMATS SUPPORTED:
 		1) QuestLine (single) / QuestTask (single)
 		2) QuestLine (single) / QuestTask (multiple)
+		3) QuestLine (multiple) / QuestTask (multiple) -- same count
 	*/
 	std::vector<std::string> questLines = StrUtils::splitOn(
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyQuestLine, Value("")).asString(),

@@ -60406,190 +60406,6 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt();
-		~Platformer_Quests_EndianForest_Intro_Marcel_A_YoullNeverMakeIt();
-	};
-}
-
-namespace Strings
-{
-	class Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind();
-		~Platformer_Quests_EndianForest_Intro_Marcel_B_RedirectWind();
-	};
-}
-
-namespace Strings
-{
-	class Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem();
-		~Platformer_Quests_EndianForest_Intro_Marcel_C_TakeThisItem();
-	};
-}
-
-namespace Strings
-{
-	class Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringAr() override;
-		std::string getStringBg() override;
-		std::string getStringCs() override;
-		std::string getStringDa() override;
-		std::string getStringDe() override;
-		std::string getStringEl() override;
-		std::string getStringEn() override;
-		std::string getStringEs() override;
-		std::string getStringEs419() override;
-		std::string getStringFi() override;
-		std::string getStringFr() override;
-		std::string getStringHu() override;
-		std::string getStringIt() override;
-		std::string getStringJa() override;
-		std::string getStringKo() override;
-		std::string getStringNl() override;
-		std::string getStringNo() override;
-		std::string getStringPl() override;
-		std::string getStringPt() override;
-		std::string getStringPtBr() override;
-		std::string getStringRo() override;
-		std::string getStringRu() override;
-		std::string getStringSv() override;
-		std::string getStringTh() override;
-		std::string getStringTr() override;
-		std::string getStringUk() override;
-		std::string getStringVi() override;
-		std::string getStringZhCn() override;
-		std::string getStringZhTw() override;
-		
-	private:
-		Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild();
-		~Platformer_Quests_EndianForest_Intro_Marcel_D_MeetMeAtMagesGuild();
-	};
-}
-
-namespace Strings
-{
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString
 	{
 	public:
@@ -61096,10 +60912,10 @@ namespace Strings
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse : public LocalizedString
+	class Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse* create();
+		static Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -61135,17 +60951,17 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse();
-		~Platformer_Quests_EndianForest_SlayGorgon_Marcel_A_GoodUse();
+		Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse();
+		~Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse();
 	};
 }
 
 namespace Strings
 {
-	class Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent : public LocalizedString
+	class Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent* create();
+		static Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -61181,8 +60997,8 @@ namespace Strings
 		std::string getStringZhTw() override;
 		
 	private:
-		Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent();
-		~Platformer_Quests_EndianForest_SlayGorgon_Marcel_B_Latent();
+		Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent();
+		~Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent();
 	};
 }
 

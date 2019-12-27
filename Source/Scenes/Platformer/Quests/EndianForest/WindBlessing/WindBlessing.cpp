@@ -71,18 +71,45 @@ void WindBlessing::onSkipped()
 
 void WindBlessing::runCinematicSequence()
 {
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Ellipses::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Center,
-			DialogueEvents::BuildPreviewNode(nullptr, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
-		),
-		[=]()
-		{
-		},
-		"",
-		true
-	));
+	if (this->marcel == nullptr)
+	{
+		return;
+	}
+
+	this->marcel->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		// Pre-text chain
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->marcel, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
+				this->complete();
+
+				// TODO: Give reward here
+			},
+			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			true
+		));
+	});
 }
