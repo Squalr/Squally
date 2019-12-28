@@ -172,19 +172,10 @@ float SoundBase::getVolume()
 
 void SoundBase::updateDistanceFade()
 {
-	if (!this->enableCameraDistanceFade)
+	if (!this->enableCameraDistanceFade || this->soundResource.empty())
 	{
 		return;
 	}
-	
-	Vec2 thisCoords = GameUtils::getWorldCoords(this);
-
-	if (thisCoords == this->cachedCoords)
-	{
-		return;
-	}
-
-	this->cachedCoords = thisCoords;
 
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
@@ -201,6 +192,14 @@ void SoundBase::updateDistanceFade()
 		case AudioEngine::AudioState::PLAYING:
 		{
 			Vec2 thisCoords = GameUtils::getWorldCoords(this);
+
+			if (thisCoords == this->cachedCoords)
+			{
+				return;
+			}
+
+			this->cachedCoords = thisCoords;
+			
 			Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 			Size dropOffDistance = Director::getInstance()->getVisibleSize() + Size(480.0f, 480.0f);
 

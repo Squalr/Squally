@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="799">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="800">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -233,8 +233,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="762" name="Generic/WoodDoor4" type="decor" x="357.031" y="690.351" width="316" height="380"/>
   <object id="769" name="Generic/Counter" type="decor" x="1617.54" y="898.353" width="1080" height="167"/>
+  <object id="799" name="Generic/WoodDoor1" type="decor" x="337.5" y="684" width="366" height="384"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>

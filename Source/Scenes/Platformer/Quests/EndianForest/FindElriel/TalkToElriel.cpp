@@ -141,7 +141,6 @@ void TalkToElriel::runCinematicSequencePart2()
 	));
 }
 
-
 void TalkToElriel::runCinematicSequencePart3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(

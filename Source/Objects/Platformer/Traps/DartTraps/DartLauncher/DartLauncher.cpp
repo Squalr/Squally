@@ -60,7 +60,6 @@ DartLauncher::DartLauncher(ValueMap& properties) : super(properties)
 	this->launcherContainer->addChild(this->dartPool);
 	this->launcherContainer->addChild(this->launcherSprite);
 	this->addChild(this->launcherContainer);
-	this->addChild(this->dartNopClippy);
 }
 
 DartLauncher::~DartLauncher()

@@ -1,9 +1,6 @@
 ﻿#include "InputText.h"
 
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/ui/UIRichText.h"
-#include "cocos/ui/UIScrollView.h"
-#include "cocos/ui/UITextField.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"

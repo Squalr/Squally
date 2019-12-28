@@ -251,8 +251,7 @@ void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte op
 	}
 
 	Sequence* sequence = Sequence::create(DelayTime::create(delay), FadeTo::create(duration, opacity), nullptr);
-
-	node->setCascadeOpacityEnabled(true);
+	
 	node->setOpacity(1); // Using 1 instead of 0 to avoid any GameUtils::isVisible check failures, while still being inperceptible
 	node->runAction(sequence);
 }

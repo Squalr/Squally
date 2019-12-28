@@ -4,8 +4,6 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/ui/UIRichText.h"
-#include "cocos/ui/UIScrollView.h"
-#include "cocos/ui/UITextField.h"
 
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Events/HackableEvents.h"

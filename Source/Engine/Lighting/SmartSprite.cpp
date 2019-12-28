@@ -1,6 +1,8 @@
 #include "SmartSprite.h"
 
-#include "cocos2d.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/renderer/CCRenderer.h"
+#include "cocos/renderer/CCTextureCache.h"
 
 #include "Engine/Lighting/LightEffect.h"
 

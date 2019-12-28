@@ -3,9 +3,6 @@
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/ui/UIRichText.h"
-#include "cocos/ui/UIScrollView.h"
-#include "cocos/ui/UITextField.h"
 
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"

@@ -41,6 +41,7 @@ SmartClippingNode::SmartClippingNode(Node* contentNode, DrawNode* stencil)
 	this->clip = ClippingNode::create(this->stencil);
 
 	this->stencil->setOpacity(0);
+	this->stencil->setCascadeOpacityEnabled(false);
 
 	this->clip->addChild(contentNode);
 	this->addChild(this->clip);

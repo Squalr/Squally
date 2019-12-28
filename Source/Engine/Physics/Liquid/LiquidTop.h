@@ -31,13 +31,6 @@ private:
         float speed;
 
         ColumnData(float targetHeight, float height, float speed) : targetHeight(targetHeight), height(height), speed(speed) { }
-
-        void update(float dampening, float tension)
-        {
-            float deltaHeight = targetHeight - height;
-            speed += tension * deltaHeight - speed * dampening;
-            height += speed;
-        }
     };
 
     static LiquidTop* create(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
@@ -64,6 +57,8 @@ private:
     float tension;
     float dampening;
     float spread;
+    int columnCount;
+    int lastIndex;
 
     static const int ColumnsPer128px;
 };

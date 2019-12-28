@@ -71,8 +71,6 @@ ClickableTextNode::ClickableTextNode(
 	this->label->setPosition(center);
 	this->labelSelected->setPosition(center);
 
-	this->setCascadeOpacityEnabled(true);
-
 	this->content->addChild(label);
 	this->contentSelected->addChild(labelSelected);
 }

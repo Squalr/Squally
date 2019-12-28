@@ -111,7 +111,8 @@
         "*.mm": "cpp",
         "concepts": "cpp",
         "shared_mutex": "cpp",
-        "execution": "cpp"
+        "execution": "cpp",
+        "*.vert": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",

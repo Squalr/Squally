@@ -3,7 +3,6 @@
 #include <iomanip>
 #include <sstream>
 
-#include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCSprite.h"
@@ -25,6 +24,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/RenderUtils.h"
+#include "Engine/UI/SmartClippingNode.h"
 
 #include "Resources/ShaderResources.h"
 
@@ -329,8 +329,6 @@ void TerrainObject::buildInnerTextures()
 		stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
 	}
 
-	ClippingNode* clip = ClippingNode::create(stencil);
-
 	// Create parameters to repeat the texture
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -349,7 +347,8 @@ void TerrainObject::buildInnerTextures()
 	texture->getTexture()->setTexParameters(params);
 	texture->setPosition(drawRect.origin);
 	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
-	clip->addChild(texture);
+
+	SmartClippingNode* clip = SmartClippingNode::create(texture, stencil);
 
 	this->infillTexturesNode->addChild(clip);
 }

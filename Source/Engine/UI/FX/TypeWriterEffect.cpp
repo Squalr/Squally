@@ -31,12 +31,19 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	// We have to add events the old way -- LocalizedLabels inherit from a cocos label, not a SmartNode
 	label->getEventDispatcher()->addCustomEventListener(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
 	{
+		if (label == nullptr)
+		{
+			return;
+		}
+
 		for (int i = 0; i < max; i++)
 		{
-			if (label->getLetter(i) != nullptr)
+			Sprite* letter = label->getLetter(i);
+
+			if (letter != nullptr)
 			{
-				label->getLetter(i)->stopAllActions();
-				label->getLetter(i)->setTextureAtlas(nullptr);
+				letter->stopAllActions();
+				letter->setTextureAtlas(nullptr);
 			}
 		}
 

@@ -47,8 +47,7 @@ MatrixStrand::MatrixStrand(int strandIndex)
 		this->letters.push_back(letter);
 		this->addChild(letter);
 	}
-
-	this->setCascadeOpacityEnabled(true);
+	
 	this->setScale(MatrixStrand::StrandScale);
 	this->randomizeInitialState(strandIndex);
 }

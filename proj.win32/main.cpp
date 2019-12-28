@@ -24,7 +24,6 @@
 
 #include "main.h"
 #include "GameWindow.h"
-#include "cocos2d.h"
 
 #include "client/windows/handler/exception_handler.h"
 
