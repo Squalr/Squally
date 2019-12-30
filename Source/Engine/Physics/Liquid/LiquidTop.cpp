@@ -7,6 +7,7 @@
 #endif
 
 #include "cocos/2d/CCLayer.h"
+#include "cocos/base/CCConsole.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/renderer/CCCustomCommand.h"
 #include "cocos/renderer/CCGLProgramCache.h"

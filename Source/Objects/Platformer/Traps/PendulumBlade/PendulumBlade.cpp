@@ -105,11 +105,11 @@ void PendulumBlade::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				PendulumBlade::MapKeyPendulumBlade,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
@@ -126,7 +126,7 @@ void PendulumBlade::registerHackables()
 	};
 
 	auto swingFunc = &PendulumBlade::swingToAngle;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

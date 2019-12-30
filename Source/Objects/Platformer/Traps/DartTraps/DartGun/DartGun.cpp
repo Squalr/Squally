@@ -97,11 +97,11 @@ void DartGun::registerHackables()
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				DartGun::MapKeyDartGun,
 				Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
@@ -117,7 +117,7 @@ void DartGun::registerHackables()
 	};
 
 	auto swingFunc = &DartGun::shoot;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

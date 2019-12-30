@@ -149,7 +149,7 @@ public:
 		xmm0, xmm1, xmm2, xmm3, xmm4, xmm5, xmm6, xmm7,
 	};
 
-	struct LateBindData
+	struct HackableCodeInfo
 	{
 		std::string hackableObjectIdentifier;
 		LocalizedString* functionName;
@@ -161,19 +161,30 @@ public:
 		Clippy* clippy;
 		std::string asmOverride;
 
-		LateBindData() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr) { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration) :
+		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration) :
 			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(nullptr), asmOverride("") { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy) :
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy) :
 				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride("") { }
-		LateBindData(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy, std::string asmOverride) :
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy, std::string asmOverride) :
 				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride(asmOverride) { }
 	
 	};
 
-	static std::vector<HackableCode*> create(void* functionStart, std::map<unsigned char, LateBindData>& lateBindDataMap);
+	struct HackableCodeMarkers
+	{
+		void* start;
+		void* end;
 
-	HackableCode* clone();
+		HackableCodeMarkers() : start(nullptr), end(nullptr) { }
+		HackableCodeMarkers(void* start, void* end) : start(start), end(end) { }
+	};
+
+	typedef std::map<unsigned char, HackableCodeInfo> CodeInfoMap;
+
+	static std::vector<HackableCode*> create(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+
+	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
 	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
@@ -184,25 +195,31 @@ public:
 
 	std::map<Register, LocalizedString*> registerHints;
 
-	static std::map<void*, std::vector<HackableCode*>> HackableCodeCache;
-	static const int StartTagFuncIdIndex;
-	static const unsigned char StartTagSignature[];
-	static const unsigned char EndTagSignature[];
-	static const unsigned char StopSearchTagSignature[];
-
 private:
 	typedef HackableAttribute super;
-	static HackableCode* create(void* codeStart, void* codeEnd, LateBindData lateBindData);
+	static HackableCode* create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
 
-	HackableCode(void* codeStart, void* codeEnd, LateBindData lateBindData);
+	HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
 	~HackableCode();
+
+	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
+	typedef std::map<void*, MarkerMap> CodeMap;
+
+	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 
 	std::string hackableCodeIdentifier;
 	std::string assemblyString;
 	std::string originalAssemblyString;
 	void* codePointer;
 	void* codeEndPointer;
-	LateBindData lateBindData;
+	HackableCodeInfo hackableCodeInfo;
 	std::vector<unsigned char> originalCodeCopy;
 	int originalCodeLength;
+
+	static CodeMap HackableCodeCache;
+	static const int StartTagFuncIdIndex;
+	static const unsigned char StartTagSignature[];
+	static const unsigned char EndTagSignature[];
+	static const unsigned char StopSearchTagSignature[];
 };

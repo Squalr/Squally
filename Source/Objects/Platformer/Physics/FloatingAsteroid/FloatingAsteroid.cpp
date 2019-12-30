@@ -82,11 +82,11 @@ void FloatingAsteroid::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				FloatingAsteroid::MapKeyFloatingAsteroid,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
@@ -103,7 +103,7 @@ void FloatingAsteroid::registerHackables()
 	};
 
 	auto densityFunc = &FloatingAsteroid::getDensityNonVirtual;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

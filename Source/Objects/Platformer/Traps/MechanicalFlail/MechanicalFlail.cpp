@@ -107,11 +107,11 @@ Vec2 MechanicalFlail::getButtonOffset()
 
 void MechanicalFlail::registerHackables()
 {
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SWING,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				MechanicalFlail::MapKeyMechanicalFlail,
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
@@ -128,7 +128,7 @@ void MechanicalFlail::registerHackables()
 	};
 
 	auto swingFunc = &MechanicalFlail::swingToAngle;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

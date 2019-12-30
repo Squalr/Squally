@@ -82,11 +82,11 @@ void HeavenHug::registerHackables()
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				HeavenHug::MapKeyHeavenHug,
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				UIResources::Menus_Icons_BleedingLimb,
@@ -102,7 +102,7 @@ void HeavenHug::registerHackables()
 	};
 
 	auto getHeightFunc = &HeavenHug::getTravelHeight;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

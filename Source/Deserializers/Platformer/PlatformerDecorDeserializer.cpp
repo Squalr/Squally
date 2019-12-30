@@ -5,6 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 
@@ -35,11 +36,12 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	std::string name = properties.at(GameObject::MapKeyName).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Private/Platformer/Decor/" + name + ".png");
+	const std::string path = "Private/Platformer/Decor/" + name + ".png";
+	Sprite* sprite = Sprite::create(path);
 
 	if (sprite == nullptr)
 	{
-		CCLOG("Non-existant decor");
+		LogUtils::logError("Non-existant decor" + path);
 		return;
 	}
 

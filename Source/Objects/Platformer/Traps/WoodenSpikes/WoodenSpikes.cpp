@@ -86,11 +86,11 @@ void WoodenSpikes::registerHackables()
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				WoodenSpikes::MapKeyWoodenSpikes,
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
@@ -105,7 +105,7 @@ void WoodenSpikes::registerHackables()
 	};
 
 	auto updateSpikesFunc = &WoodenSpikes::updateSpikes;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

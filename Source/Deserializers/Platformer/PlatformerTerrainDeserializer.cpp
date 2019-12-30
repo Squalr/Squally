@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Terrain/PlatformerTerrain.h"
 
@@ -63,6 +64,6 @@ void PlatformerTerrainDeserializer::deserialize(ObjectDeserializer::ObjectDeseri
 	}
 	else
 	{
-		CCLOG("Unknown terrain encountered: %s", name.c_str());
+		LogUtils::logError("Unknown terrain encountered:" + name);
 	}
 }

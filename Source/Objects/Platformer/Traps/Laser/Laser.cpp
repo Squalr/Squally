@@ -86,11 +86,11 @@ void Laser::registerHackables()
 	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
 	// this->registerData(this->hackableDataTargetAngle);
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				Laser::MapKeyLaser,
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				UIResources::Menus_Icons_SpellImpactWhite,
@@ -105,7 +105,7 @@ void Laser::registerHackables()
 	};
 
 	auto updateLaserFunc = &Laser::updateLaser;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

@@ -83,11 +83,11 @@ void SpikeLog::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				SpikeLog::MapKeySpikeLog,
 				Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
@@ -102,7 +102,7 @@ void SpikeLog::registerHackables()
 	};
 
 	auto incrementAnimationFunc = &SpikeLog::incrementSpikeLogAnimation;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

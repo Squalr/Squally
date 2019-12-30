@@ -93,11 +93,11 @@ void SquallyIsAliveHackBehavior::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_IS_ALIVE,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				SquallyIsAliveHackBehavior::IdentifierIsAlive,
 				Strings::Menus_Hacking_Entities_Squally_IsAlive_IsAlive::create(),
 				UIResources::Menus_Icons_Heart,
@@ -112,7 +112,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 	};
 
 	auto isSquallyAliveHackFunc = &SquallyIsAliveHackBehavior::isSquallyAliveHack;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)isSquallyAliveHackFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)isSquallyAliveHackFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

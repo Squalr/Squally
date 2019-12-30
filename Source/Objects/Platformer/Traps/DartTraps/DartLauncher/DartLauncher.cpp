@@ -102,11 +102,11 @@ void DartLauncher::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_SHOOT,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				DartLauncher::MapKeyDartLauncher,
 				Strings::Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				UIResources::Menus_Icons_CrossHair,
@@ -124,7 +124,7 @@ void DartLauncher::registerHackables()
 	};
 
 	auto swingFunc = &DartLauncher::shoot;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

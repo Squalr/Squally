@@ -132,11 +132,11 @@ void Wind::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_WIND_SPEED,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				Wind::MapKeyWind,
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
 				UIResources::Menus_Icons_Spell,
@@ -153,7 +153,7 @@ void Wind::registerHackables()
 	};
 
 	auto updateWindFunc = &Wind::updateWind;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateWindFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateWindFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

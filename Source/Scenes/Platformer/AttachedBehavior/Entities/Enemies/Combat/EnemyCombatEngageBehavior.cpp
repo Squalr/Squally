@@ -51,7 +51,7 @@ void EnemyCombatEngageBehavior::onLoad()
 	{
 		PlatformerEvents::EngageEnemyArgs* args = static_cast<PlatformerEvents::EngageEnemyArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->enemy != nullptr && args->enemy != this->enemy)
+		if (args != nullptr && args->enemy != nullptr && args->enemy == this->enemy)
 		{
 			this->engageEnemy(args->firstStrike);
 		}

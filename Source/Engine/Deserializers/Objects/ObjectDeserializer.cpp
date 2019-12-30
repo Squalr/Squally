@@ -4,6 +4,7 @@
 
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -54,6 +55,6 @@ void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRe
 	}
 	else
 	{
-		CCLOG("Unknown entity encountered: %s", name.c_str());
+		LogUtils::logError("Unknown entity encountered: " + name);
 	}
 }

@@ -45,11 +45,11 @@ void AddDoor::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				AddDoor::MapKeyAddDoor,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
 				UIResources::Menus_Icons_Heal,
@@ -65,7 +65,7 @@ void AddDoor::registerHackables()
 	};
 
 	auto incrementAnimationFunc = &AddDoor::AddDoorTransform;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

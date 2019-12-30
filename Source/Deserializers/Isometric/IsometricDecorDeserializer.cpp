@@ -3,6 +3,7 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Utils/LogUtils.h"
 #include "Objects/Isometric/IsometricDecorObject.h"
 
 #include "Engine/Utils/GameUtils.h"
@@ -34,11 +35,12 @@ void IsometricDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeseriali
 	const std::string name = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyName, Value("")).asString();
 
 	// For decor, simply grab the resource of the same name of the object type
-	Sprite* sprite = Sprite::create("Private/Isometric/Decor" + name + ".png");
+	std::string path = "Private/Isometric/Decor" + name + ".png";
+	Sprite* sprite = Sprite::create();
 
 	if (sprite == nullptr)
 	{
-		CCLOG("Non-existant decor");
+		LogUtils::logError("Non-existant decor: " + path);
 		return;
 	}
 

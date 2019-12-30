@@ -45,11 +45,11 @@ void MulDoor::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				MulDoor::MapKeyMulDoor,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
 				UIResources::Menus_Icons_Pearls,
@@ -66,7 +66,7 @@ void MulDoor::registerHackables()
 	};
 
 	auto incrementAnimationFunc = &MulDoor::mulDoorTransform;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{

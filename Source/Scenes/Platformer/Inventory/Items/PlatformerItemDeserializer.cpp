@@ -5,6 +5,7 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Utils/LogUtils.h"
 
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -248,6 +249,6 @@ void PlatformerItemDeserializer::deserialize(InventoryEvents::RequestItemDeseria
 	}
 	else
 	{
-		CCLOG("Unknown item encountered: %s", serializationKey.c_str());
+		LogUtils::logError("Unknown item encountered: " + serializationKey);
 	}
 }

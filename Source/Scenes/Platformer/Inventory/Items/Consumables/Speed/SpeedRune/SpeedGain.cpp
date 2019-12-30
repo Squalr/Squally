@@ -99,11 +99,11 @@ void SpeedGain::registerHackables()
 
 	bool showClippy = (std::find(mapArgs.begin(), mapArgs.end(), SpeedGain::MapKeyPropertyRestorePotionTutorial) != mapArgs.end());
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_RESTORE,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				SpeedGain::SpeedGainIdentifier,
 				Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
 				UIResources::Menus_Icons_ArrowUp,
@@ -119,7 +119,7 @@ void SpeedGain::registerHackables()
 	};
 
 	auto restoreFunc = &SpeedGain::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, lateBindMap);
+	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
 	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
 	{

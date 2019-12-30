@@ -94,11 +94,11 @@ void Projectile::registerHackables()
 		return;
 	}
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_VELOCITY,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				"proximity-object",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_GetProjectileVelocity::create(),
 				UIResources::Menus_Icons_AxeSlash,
@@ -115,7 +115,7 @@ void Projectile::registerHackables()
 		},
 		{
 			LOCAL_FUNC_ID_ACCELERATION,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				"proximity-object",
 				Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_GetProjectileAcceleration::create(),
 				UIResources::Menus_Icons_Scale,
@@ -133,7 +133,7 @@ void Projectile::registerHackables()
 	};
 
 	auto velocityFunc = &Projectile::getLaunchVelocity;
-	std::vector<HackableCode*> velocityHackables = HackableCode::create((void*&)velocityFunc, lateBindMap);
+	std::vector<HackableCode*> velocityHackables = HackableCode::create((void*&)velocityFunc, codeInfoMap);
 
 	for (auto it = velocityHackables.begin(); it != velocityHackables.end(); it++)
 	{
@@ -141,7 +141,7 @@ void Projectile::registerHackables()
 	}
 
 	auto accelerationFunc = &Projectile::getLaunchAcceleration;
-	std::vector<HackableCode*> accelerationHackables = HackableCode::create((void*&)accelerationFunc, lateBindMap);
+	std::vector<HackableCode*> accelerationHackables = HackableCode::create((void*&)accelerationFunc, codeInfoMap);
 
 	for (auto it = accelerationHackables.begin(); it != accelerationHackables.end(); it++)
 	{

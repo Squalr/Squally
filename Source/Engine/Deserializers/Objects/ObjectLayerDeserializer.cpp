@@ -6,6 +6,7 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/GameObject.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -59,37 +60,37 @@ void ObjectLayerDeserializer::deserialize(LayerDeserializer::LayerDeserializatio
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyType))
 			{
-				CCLOG("Missing type on object");
+				LogUtils::logError("Missing type on object");
 				continue;
 			}
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyName))
 			{
-				CCLOG("Missing name on object");
+				LogUtils::logError("Missing name on object");
 				continue;
 			}
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyWidth))
 			{
-				CCLOG("Missing width on object");
+				LogUtils::logError("Missing width on object");
 				continue;
 			}
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyHeight))
 			{
-				CCLOG("Missing height on object");
+				LogUtils::logError("Missing height on object");
 				continue;
 			}
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyXPosition))
 			{
-				CCLOG("Missing x position on object");
+				LogUtils::logError("Missing x position on object");
 				continue;
 			}
 
 			if (!GameUtils::keyExists(object, GameObject::MapKeyYPosition))
 			{
-				CCLOG("Missing y position on object");
+				LogUtils::logError("Missing y position on object");
 				continue;
 			}
 

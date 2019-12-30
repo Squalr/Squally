@@ -132,11 +132,11 @@ void Catapult::registerHackables()
 {
 	super::registerHackables();
 
-	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
+	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_APPLY_POWER,
-			HackableCode::LateBindData(
+			HackableCode::HackableCodeInfo(
 				Catapult::MapKeyCatapult,
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				UIResources::Menus_Icons_Meteor,
@@ -153,7 +153,7 @@ void Catapult::registerHackables()
 	};
 
 	auto applyLaunchFunc = &Catapult::applyLaunchPower;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)applyLaunchFunc, lateBindMap);
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)applyLaunchFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
 	{
