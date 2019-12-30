@@ -232,3 +232,4 @@ NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 
 	return Vec2(baseSpeed.x, MathUtils::clamp(resultSpeedY, -Catapult::LaunchVelocityBase.y, Catapult::LaunchVelocityBase.y));
 }
+END_NO_OPTIMIZE

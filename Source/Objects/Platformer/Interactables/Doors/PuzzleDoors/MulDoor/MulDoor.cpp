@@ -100,3 +100,4 @@ NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

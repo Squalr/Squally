@@ -22,6 +22,15 @@ public:
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
 	static const std::string SaveKeyHasGivenDefaultItems;
+	
+	static const std::string SaveKeyBlessingOfFire;
+	static const std::string SaveKeyBlessingOfFrost;
+	static const std::string SaveKeyBlessingOfLight;
+	static const std::string SaveKeyBlessingOfLightning;
+	static const std::string SaveKeyBlessingOfNature;
+	static const std::string SaveKeyBlessingOfShadow;
+	static const std::string SaveKeyBlessingOfUndeath;
+	static const std::string SaveKeyBlessingOfWind;
 
 	static const std::string SaveKeyCollectableAnimalBat;
 	static const std::string SaveKeyCollectableAnimalBear;

@@ -232,6 +232,7 @@ NO_OPTIMIZE Vec3 Projectile::getLaunchVelocity()
 
 	return velocityCopy;
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 {
@@ -273,3 +274,4 @@ NO_OPTIMIZE Vec3 Projectile::getLaunchAcceleration()
 
 	return accelerationCopy;
 }
+END_NO_OPTIMIZE

@@ -31,7 +31,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     # vcpkg resources
     tinyxml2::tinyxml2
     RapidJSON::RapidJSON
-    CURL::libcurl
 
     # internal dependencies
     cocos2d::cocos2d
@@ -85,7 +84,7 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /bigobj")
 
     # Enable to allow profiling on windows:
-    target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:/PROFILE>)
+    # target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:/PROFILE>)
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")

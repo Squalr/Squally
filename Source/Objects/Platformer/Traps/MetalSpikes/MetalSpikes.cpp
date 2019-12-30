@@ -169,3 +169,4 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 		});
 	}
 }
+END_NO_OPTIMIZE

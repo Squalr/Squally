@@ -161,6 +161,7 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 
 	return retVal;
 }
+END_NO_OPTIMIZE
 
 PhysicsBody* HeavenHug::createSpikeCollision()
 {

@@ -99,3 +99,4 @@ NO_OPTIMIZE void AddDoor::AddDoorTransform(int puzzleIndex)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

@@ -17,7 +17,7 @@
 using namespace cocos2d;
 
 const int EntityRuneBehavior::MaxRunes = 3;
-const float EntityRuneBehavior::RuneCooldown = 24.0f;
+const float EntityRuneBehavior::RuneCooldown = 2.0f;
 
 EntityRuneBehavior* EntityRuneBehavior::create(GameObject* owner)
 {

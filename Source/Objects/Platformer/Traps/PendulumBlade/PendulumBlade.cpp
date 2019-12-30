@@ -120,7 +120,7 @@ void PendulumBlade::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				this->pendulumBladeClippy->refClone()
+				this->pendulumBladeClippy
 			)
 		},
 	};
@@ -200,6 +200,7 @@ NO_OPTIMIZE void PendulumBlade::swingToAngle(float angle)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE
 
 void PendulumBlade::buildChain()
 {

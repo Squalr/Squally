@@ -18,6 +18,15 @@ const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
 const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
 
+const std::string SaveKeys::SaveKeyBlessingOfFire = "SAVE_KEY_BLESSING_OF_FIRE";
+const std::string SaveKeys::SaveKeyBlessingOfFrost = "SAVE_KEY_BLESSING_OF_FROST";
+const std::string SaveKeys::SaveKeyBlessingOfLight = "SAVE_KEY_BLESSING_OF_LIGHT";
+const std::string SaveKeys::SaveKeyBlessingOfLightning = "SAVE_KEY_BLESSING_OF_LIGHTNING";
+const std::string SaveKeys::SaveKeyBlessingOfNature = "SAVE_KEY_BLESSING_OF_NATURE";
+const std::string SaveKeys::SaveKeyBlessingOfShadow = "SAVE_KEY_BLESSING_OF_SHADOW";
+const std::string SaveKeys::SaveKeyBlessingOfUndeath = "SAVE_KEY_BLESSING_OF_UNDEATH";
+const std::string SaveKeys::SaveKeyBlessingOfWind = "SAVE_KEY_BLESSING_OF_WIND";
+
 const std::string SaveKeys::SaveKeyCollectableAnimalBat = "SAVE_KEY_ANIMAL_BAT";
 const std::string SaveKeys::SaveKeyCollectableAnimalBear = "SAVE_KEY_ANIMAL_BEAR";
 const std::string SaveKeys::SaveKeyCollectableAnimalBeaver = "SAVE_KEY_ANIMAL_BEAVER";

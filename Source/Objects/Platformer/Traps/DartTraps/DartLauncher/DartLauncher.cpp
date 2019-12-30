@@ -118,7 +118,7 @@ void DartLauncher::registerHackables()
 				},
 				int(HackFlags::None),
 				12.0f,
-				this->dartNopClippy->refClone()
+				this->dartNopClippy
 			)
 		},
 	};
@@ -167,3 +167,4 @@ NO_OPTIMIZE void DartLauncher::shoot(float dt)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

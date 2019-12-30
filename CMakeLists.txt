@@ -1,13 +1,12 @@
 # Copyright 2019 Squalr
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-project(Squally VERSION 1.0.16 LANGUAGES C CXX)
+project(Squally VERSION 1.0.17 LANGUAGES C CXX)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
 # External dependencies
 find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)
-find_package(CURL REQUIRED)
 find_package(SteamWorks REQUIRED)
 
 if(UNIX)
@@ -19,16 +18,6 @@ endif()
 ###############################################################################
 # Dependency Fixing
 ###############################################################################
-
-# Fix curl dependencies for static linking
-if(LINUX)
-target_link_libraries(CURL::libcurl INTERFACE
-    $<$<NOT:$<PLATFORM_ID:Windows>>:OpenSSL::SSL>
-    $<$<NOT:$<PLATFORM_ID:Windows>>:OpenSSL::Crypto>
-    $<$<PLATFORM_ID:Windows>:ws2_32>
-    $<$<PLATFORM_ID:Windows>:crypt32>
-)
-endif()
 
 # Fix rapidjson target
 add_library(RapidJSON INTERFACE)

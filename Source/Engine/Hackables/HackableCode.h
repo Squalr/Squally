@@ -37,8 +37,10 @@
 
 // Define macros for inlining x86 assembly in a compiler-independent way
 #ifdef _MSC_VER
-	#define NO_OPTIMIZE
-		#pragma optimize("", off)
+	#define NO_OPTIMIZE \
+		__pragma(optimize("", off))
+	#define END_NO_OPTIMIZE \
+		__pragma(optimize("", on))
 	#define ASM1(asm_literal) \
 		__asm asm_literal
 	#define ASM2(asm_literal1, asm_literal2) \
@@ -54,9 +56,15 @@
 
 #elif __GNUC__ || __clang__
 	#ifdef __clang__
-		#define NO_OPTIMIZE __attribute__((optnone))
+		#define NO_OPTIMIZE \
+			__attribute__((optnone))
+		#define END_NO_OPTIMIZE
 	#elif __GNUC__
-		#define NO_OPTIMIZE [[gnu::optimize(0)]]
+		#define NO_OPTIMIZE \
+			_Pragma("GCC push_options") \
+			_Pragma("GCC optimize(\"O0\")")
+		#define END_NO_OPTIMIZE \
+			_Pragma("GCC pop_options")
 	#endif
 
 	#define ASM1(asm_literal) \
@@ -108,7 +116,6 @@
 	ASM(mov edx, 0x0D15EA5E) \
 	ASM(pop ZDX) \
 	ASM(pop ZDX)
-	#pragma optimize("", on) // This is just for MSVC to re-enable optimizations at the end of the function, harmless on Clang/GCC
 
 #define ASM_NOP1() ASM(nop)
 #define ASM_NOP2() ASM_NOP1() ASM_NOP1()

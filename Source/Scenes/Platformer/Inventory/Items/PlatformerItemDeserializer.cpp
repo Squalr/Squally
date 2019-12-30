@@ -209,17 +209,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Offhands
 	this->deserializers[WoodenShield::SaveKeyWoodenShield] = [=]() { return (Item*)WoodenShield::create(); };
 
-	// Essences
-	this->deserializers[EssenceOfFire::SaveKeyEssenceOfFire] = [=]() { return (Item*)EssenceOfFire::create(); };
-	this->deserializers[EssenceOfFrost::SaveKeyEssenceOfFrost] = [=]() { return (Item*)EssenceOfFrost::create(); };
-	this->deserializers[EssenceOfLight::SaveKeyEssenceOfLight] = [=]() { return (Item*)EssenceOfLight::create(); };
-	this->deserializers[EssenceOfLightning::SaveKeyEssenceOfLightning] = [=]() { return (Item*)EssenceOfLightning::create(); };
-	this->deserializers[EssenceOfNature::SaveKeyEssenceOfNature] = [=]() { return (Item*)EssenceOfNature::create(); };
-	this->deserializers[EssenceOfShadow::SaveKeyEssenceOfShadow] = [=]() { return (Item*)EssenceOfShadow::create(); };
-	this->deserializers[EssenceOfUndeath::SaveKeyEssenceOfUndeath] = [=]() { return (Item*)EssenceOfUndeath::create(); };
-	this->deserializers[EssenceOfWind::SaveKeyEssenceOfWind] = [=]() { return (Item*)EssenceOfWind::create(); };
-	this->deserializers[TheAllSeeingEye::SaveKeyTheAllSeeingEye] = [=]() { return (Item*)TheAllSeeingEye::create(); };
-
 	// Keys
 	this->deserializers[MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
 	this->deserializers[TownKey::SaveKeyTownKey] = [=]() { return (Item*)TownKey::create(); };

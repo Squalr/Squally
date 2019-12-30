@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class IsAliveClippy;
 class Squally;
 
 class SquallyIsAliveHackBehavior : public AttachedBehavior
@@ -29,6 +30,7 @@ private:
 
 	bool isSquallyAliveHack();
 
+	IsAliveClippy* clippy;
 	Squally* squally;
 	float cooldown;
 

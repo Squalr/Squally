@@ -12,7 +12,7 @@ HackableAttribute::HackableAttribute(int requiredHackFlag, float duration, std::
 	this->name = name;
 	this->hackablePreview = hackablePreview;
 	this->elapsedDuration = this->duration;
-	this->clippy = clippy;
+	this->clippy = clippy == nullptr ? nullptr : clippy->refClone();
 
 	if (this->hackablePreview != nullptr)
 	{

@@ -181,3 +181,4 @@ NO_OPTIMIZE void RestoreHealth::runRestoreTick()
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

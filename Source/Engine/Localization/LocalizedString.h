@@ -2,6 +2,8 @@
 #include <string>
 #include <functional>
 
+#include "cocos/platform/CCCommon.h"
+
 #include "Engine/SmartNode.h"
 
 class LocalizedString : public SmartNode

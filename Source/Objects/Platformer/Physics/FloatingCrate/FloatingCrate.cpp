@@ -155,6 +155,7 @@ NO_OPTIMIZE float FloatingCrate::getDensityNonVirtual()
 
 	return MathUtils::clamp(densityRet, 0.0f, 1.0f);
 }
+END_NO_OPTIMIZE
 
 float FloatingCrate::getObjectHeight()
 {

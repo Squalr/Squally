@@ -183,3 +183,4 @@ NO_OPTIMIZE void SpeedGain::runRestoreTick()
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

@@ -175,3 +175,4 @@ NO_OPTIMIZE int SpikeLog::incrementSpikeLogAnimation(int count, int max)
 
 	return count;
 }
+END_NO_OPTIMIZE

@@ -41,8 +41,11 @@ SquallyIsAliveHackBehavior* SquallyIsAliveHackBehavior::create(GameObject* owner
 
 SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner) : super(owner)
 {
+	this->clippy = IsAliveClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->cooldown = 0.0f;
+
+	this->registerClippy(this->clippy);
 
 	if (this->squally == nullptr)
 	{
@@ -90,10 +93,6 @@ void SquallyIsAliveHackBehavior::registerHackables()
 {
 	super::registerHackables();
 
-	IsAliveClippy* isAliveClippy = IsAliveClippy::create();
-
-	isAliveClippy->setIsEnabled(true);
-
 	std::map<unsigned char, HackableCode::LateBindData> lateBindMap =
 	{
 		{
@@ -107,7 +106,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 				},
 				int(HackFlags::Light),
 				1.0f,
-				isAliveClippy
+				this->clippy
 			)
 		},
 	};
@@ -137,3 +136,4 @@ NO_OPTIMIZE bool SquallyIsAliveHackBehavior::isSquallyAliveHack()
 
 	return isAlive;
 }
+END_NO_OPTIMIZE

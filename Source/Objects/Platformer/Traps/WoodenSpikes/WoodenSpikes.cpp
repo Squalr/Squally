@@ -169,3 +169,4 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 		});
 	}
 }
+END_NO_OPTIMIZE

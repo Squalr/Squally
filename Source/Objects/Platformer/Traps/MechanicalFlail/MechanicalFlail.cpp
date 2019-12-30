@@ -122,7 +122,7 @@ void MechanicalFlail::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				mechanicalFlailClippy->refClone()
+				mechanicalFlailClippy
 			)
 		},
 	};
@@ -220,6 +220,7 @@ NO_OPTIMIZE void MechanicalFlail::swingToAngle(float angle)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE
 
 void MechanicalFlail::buildChain()
 {

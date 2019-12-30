@@ -147,7 +147,7 @@ void Wind::registerHackables()
 				},
 				int(HackFlags::Wind),
 				12.0f,
-				this->windClippy->refClone()
+				this->windClippy
 			)
 		},
 	};
@@ -222,3 +222,4 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 
 	this->windParticles->setAngle(angle);
 }
+END_NO_OPTIMIZE

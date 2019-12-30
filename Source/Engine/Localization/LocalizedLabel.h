@@ -2,6 +2,7 @@
 #include <string>
 
 #include "cocos/2d/CCLabel.h"
+#include "cocos/platform/CCCommon.h"
 
 class LocalizedString;
 class ClickableNode;

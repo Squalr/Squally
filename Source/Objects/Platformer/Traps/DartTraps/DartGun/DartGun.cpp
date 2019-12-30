@@ -180,3 +180,4 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 
 	HACKABLES_STOP_SEARCH();
 }
+END_NO_OPTIMIZE

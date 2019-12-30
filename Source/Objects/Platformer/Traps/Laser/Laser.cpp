@@ -166,3 +166,4 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 		});
 	}
 }
+END_NO_OPTIMIZE

@@ -40,7 +40,14 @@ AsciiLetter::~AsciiLetter()
 
 void AsciiLetter::loadLetter(unsigned char letter)
 {
-	Size spriteSheetSize = this->getTexture()->getContentSize();
+	Texture2D* texture = this->getTexture();
+
+	if (texture == nullptr)
+	{
+		return;
+	}
+
+	Size spriteSheetSize = texture->getContentSize();
 
 	float x = float((letter % AsciiLetter::GridWidth) * AsciiLetter::LetterSize);
 	float y = float((letter / AsciiLetter::GridHeight) * AsciiLetter::LetterSize);
