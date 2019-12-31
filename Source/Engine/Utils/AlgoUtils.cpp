@@ -304,7 +304,7 @@ std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> AlgoUtils::shrinkSegments(
 		{
 			const float rise = std::abs(left.y - right.y);
 			const float run = std::abs(left.x - right.x);
-			const float angle = std::atan2f(rise, run);
+			const float angle = std::atan2(rise, run);
 			const float factorX = std::cos(angle) * factor;
 			const float factorY = std::sin(angle) * factor;
 
