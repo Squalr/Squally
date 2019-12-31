@@ -17,18 +17,14 @@ using namespace cocos2d;
 
 std::map<std::string, std::vector<std::string>> SmartAnimationSequenceNode::AnimationFileCache = std::map<std::string, std::vector<std::string>>();
 
+SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
+{
+	return SmartAnimationSequenceNode::create(UIResources::EmptyImage);
+}
+
 SmartAnimationSequenceNode* SmartAnimationSequenceNode::create(std::string defaultSprite)
 {
 	SmartAnimationSequenceNode* instance = new SmartAnimationSequenceNode(defaultSprite);
-
-	instance->autorelease();
-
-	return instance;
-}
-
-SmartAnimationSequenceNode* SmartAnimationSequenceNode::create()
-{
-	SmartAnimationSequenceNode* instance = new SmartAnimationSequenceNode();
 
 	instance->autorelease();
 
@@ -48,19 +44,13 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->addChild(this->sprite);
 }
 
-SmartAnimationSequenceNode::SmartAnimationSequenceNode()
-{
-	this->defaultSprite = "";
-	this->sprite = Sprite::create();
-	this->forwardsAnimation = nullptr;
-	this->backwardsAnimation = nullptr;
-	this->repeatIndex = 0;
-
-	this->addChild(this->sprite);
-}
-
 SmartAnimationSequenceNode::~SmartAnimationSequenceNode()
 {
+}
+
+SmartAnimationSequenceNode* SmartAnimationSequenceNode::clone()
+{
+	return SmartAnimationSequenceNode::create(this->defaultSprite);
 }
 
 void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceFile)

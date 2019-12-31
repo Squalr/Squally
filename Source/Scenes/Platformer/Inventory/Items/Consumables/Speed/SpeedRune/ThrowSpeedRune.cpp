@@ -65,7 +65,7 @@ void ThrowSpeedRune::performAttack(PlatformerEntity* owner, PlatformerEntity* ta
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE);
+	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE, Size(64.0f, 64.0f));
 	
 	rune->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -90,11 +90,11 @@ void ThrowSpeedRune::performAttack(PlatformerEntity* owner, PlatformerEntity* ta
 	{
 		if (owner == target)
 		{
-			rune->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			rune->arcTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 		}
 		else
 		{
-			rune->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			rune->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 		}
 	});
 }

@@ -53,7 +53,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
+	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner), Size(64.0f, 128.0f));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	weapon->addChild(fire);
@@ -79,7 +79,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		weapon->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
 }
 
