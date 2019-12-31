@@ -399,6 +399,7 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_ToggleButtonOn;
 	extern const std::string Menus_OptionsMenu_ToggleButtonOnHover;
 	extern const std::string Menus_PauseMenu_PauseMenu;
+	extern const std::string Menus_SaveSelectMenu_AvatarFrame;
 	extern const std::string Menus_SaveSelectMenu_Row;
 	extern const std::string Menus_SaveSelectMenu_RowSelected;
 	extern const std::string Menus_TitleScreen_Slime_Slime_0000;

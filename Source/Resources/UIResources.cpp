@@ -398,6 +398,7 @@ const std::string UIResources::Menus_OptionsMenu_ToggleButtonOffHover = "Private
 const std::string UIResources::Menus_OptionsMenu_ToggleButtonOn = "Private/UI/Menus/OptionsMenu/ToggleButtonOn.png";
 const std::string UIResources::Menus_OptionsMenu_ToggleButtonOnHover = "Private/UI/Menus/OptionsMenu/ToggleButtonOnHover.png";
 const std::string UIResources::Menus_PauseMenu_PauseMenu = "Private/UI/Menus/PauseMenu/PauseMenu.png";
+const std::string UIResources::Menus_SaveSelectMenu_AvatarFrame = "Private/UI/Menus/SaveSelectMenu/AvatarFrame.png";
 const std::string UIResources::Menus_SaveSelectMenu_Row = "Private/UI/Menus/SaveSelectMenu/Row.png";
 const std::string UIResources::Menus_SaveSelectMenu_RowSelected = "Private/UI/Menus/SaveSelectMenu/RowSelected.png";
 const std::string UIResources::Menus_TitleScreen_Slime_Slime_0000 = "Private/UI/Menus/TitleScreen/Slime/Slime_0000.png";

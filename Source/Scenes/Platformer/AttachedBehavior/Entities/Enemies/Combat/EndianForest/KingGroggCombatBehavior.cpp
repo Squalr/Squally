@@ -5,6 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/KingGrogg/DragonBreath.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 
@@ -45,6 +46,7 @@ void KingGroggCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
+		attackBehavior->registerAttack(DragonBreath::create(0.7f, 0.2f));
 		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
 	});
 	

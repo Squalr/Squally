@@ -554,6 +554,8 @@ namespace DecorResources
 	extern const std::string Generic_Flag1;
 	extern const std::string Generic_Flag2;
 	extern const std::string Generic_Flag3;
+	extern const std::string Generic_ForceField;
+	extern const std::string Generic_ForceFieldDome;
 	extern const std::string Generic_GreenCrystal;
 	extern const std::string Generic_Helmet1;
 	extern const std::string Generic_Helmet2;
@@ -608,6 +610,7 @@ namespace DecorResources
 	extern const std::string Generic_TreeHome1;
 	extern const std::string Generic_Vent;
 	extern const std::string Generic_WoodDoor;
+	extern const std::string Generic_WoodDoor1;
 	extern const std::string Generic_birds;
 	extern const std::string Generic_wheel;
 	extern const std::string Ruins_Background_island_1_no_trees;

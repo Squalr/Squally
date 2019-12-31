@@ -17,8 +17,8 @@ namespace MapResources
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
 	extern const std::string EndianForest_Mages_Gauntlet_3;
-	extern const std::string EndianForest_Mages_Gauntlet_4;
-	extern const std::string EndianForest_Mages_Gauntlet_5;
+	extern const std::string EndianForest_Mages_Gauntlet_4_deprecated;
+	extern const std::string EndianForest_Mages_Gauntlet_5_deprecated;
 	extern const std::string EndianForest_Mages_Gauntlet_6;
 	extern const std::string EndianForest_Mages_Gauntlet_Entrance;
 	extern const std::string EndianForest_Mages_Guild;
@@ -41,7 +41,6 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_2_4;
 	extern const std::string EndianForest_Zone_2_5;
 	extern const std::string EndianForest_Zone_2_6;
-	extern const std::string EndianForest_Zone_2_6_old;
 	extern const std::string EndianForest_Zone_2_a;
 	extern const std::string EndianForest_Zone_3_0;
 	extern const std::string EndianForest_Zone_3_1;
