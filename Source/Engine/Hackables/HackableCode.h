@@ -62,7 +62,8 @@
 	#elif __GNUC__
 		#define NO_OPTIMIZE \
 			_Pragma("GCC push_options") \
-			_Pragma("GCC optimize(\"O0\")")
+			_Pragma("GCC optimize (\"O0\")") \
+			 __attribute__((optimize("O0")))
 		#define END_NO_OPTIMIZE \
 			_Pragma("GCC pop_options")
 	#endif
