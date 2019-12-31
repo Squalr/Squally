@@ -66,7 +66,7 @@ void ThrowRestorePotion::performAttack(PlatformerEntity* owner, PlatformerEntity
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2);
+	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2, Size(64.0f, 64.0f));
 	
 	potion->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -91,11 +91,11 @@ void ThrowRestorePotion::performAttack(PlatformerEntity* owner, PlatformerEntity
 	{
 		if (owner == target)
 		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			potion->arcTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 		}
 		else
 		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			potion->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 		}
 	});
 }

@@ -12,10 +12,14 @@ class HackablePreview;
 class ThrownObject : public Projectile
 {
 public:
-	static ThrownObject* create(PlatformerEntity* caster, std::string objectResource);
+	static ThrownObject* create(PlatformerEntity* caster, std::string objectResource, cocos2d::Size collisionSize);
+	static ThrownObject* create(PlatformerEntity* caster, cocos2d::Node* object, cocos2d::Size collisionSize);
+
+	void setFlippedX(bool isFlipped);
+	void setFlippedY(bool isFlipped);
 
 protected:
-	ThrownObject(PlatformerEntity* caster, std::string objectResource);
+	ThrownObject(PlatformerEntity* caster, cocos2d::Node* object, cocos2d::Size collisionSize);
 	virtual ~ThrownObject();
 
 	void onEnter() override;
@@ -27,7 +31,6 @@ protected:
 
 private:
 	typedef Projectile super;
-
-	std::string objectResource;
-	cocos2d::Sprite* objectSprite;
+	
+	cocos2d::Node* object;
 };

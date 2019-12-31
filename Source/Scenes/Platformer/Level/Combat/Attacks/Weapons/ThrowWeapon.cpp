@@ -51,7 +51,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner));
+	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner), Size(64.0f, 128.0f));
 	
 	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -71,7 +71,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		weapon->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
 }
 

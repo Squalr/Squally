@@ -177,6 +177,19 @@ void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed,
 	this->setLaunchVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));
 }
 
+void Projectile::arcTowardsTarget(Node* target, Vec2 offset, float spinSpeed, Vec3 secondsPer256pxLinearDistance, Vec3 gravity)
+{
+	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
+	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
+	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
+	bool isLeft = targetPosition.x < thisPosition.x;
+
+	this->spinSpeed = (isLeft ? -1.0f : 1.0f) * 360.0f * spinSpeed;
+
+	this->setLaunchAcceleration(gravity);
+	this->setLaunchVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));
+}
+
 void Projectile::setLaunchVelocity(cocos2d::Vec3 velocity)
 {
 	this->launchVelocity = velocity;

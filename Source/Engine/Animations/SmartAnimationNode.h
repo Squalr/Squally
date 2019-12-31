@@ -28,6 +28,7 @@ public:
 		Callback,
 	};
 
+	SmartAnimationNode* clone();
 	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f, std::function<void()> callback = nullptr);
 	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f, std::function<void()> callback = nullptr);
 	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, float priority = 0.5f, float blendTime = 0.25f, std::function<void()> callback = nullptr);
@@ -60,4 +61,5 @@ private:
 	std::map<std::string, AnimationPart*> animationParts;
 	std::string currentAnimation;
 	std::string animationResource;
+	std::string entityName;
 };

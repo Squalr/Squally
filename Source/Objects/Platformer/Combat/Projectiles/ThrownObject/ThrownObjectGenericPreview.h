@@ -10,12 +10,12 @@ namespace cocos2d
 class ThrownObjectGenericPreview : public HackablePreview
 {
 public:
-	static ThrownObjectGenericPreview* create(std::string objectResource);
+	static ThrownObjectGenericPreview* create(cocos2d::Node* object);
 
 	HackablePreview* clone() override;
 
 protected:
-	ThrownObjectGenericPreview(std::string objectResource);
+	ThrownObjectGenericPreview(cocos2d::Node* object);
 	virtual ~ThrownObjectGenericPreview();
 	void onEnter() override;
 	void initializePositions() override;
@@ -23,6 +23,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	std::string objectResource;
-	cocos2d::Sprite* objectPreview;
+	cocos2d::Node* object;
 };

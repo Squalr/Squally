@@ -13,10 +13,12 @@ namespace cocos2d
 class SmartAnimationSequenceNode : public SmartNode
 {
 public:
-	static SmartAnimationSequenceNode* create(std::string defaultSprite);
 	static SmartAnimationSequenceNode* create();
+	static SmartAnimationSequenceNode* create(std::string defaultSprite);
 
 	static void primeCache(std::string initialSequenceResourceFile);
+
+	SmartAnimationSequenceNode* clone();
 	bool isPlayingAnimation();
 	void stopAnimation();
 	void playAnimation(std::string initialSequenceResourceFile, float animationSpeed, bool insertBlankFrame = false, std::function<void()> onAnimationComplete = nullptr);
@@ -39,7 +41,6 @@ protected:
 
 private:
 	typedef SmartNode super;
-	SmartAnimationSequenceNode();
 	SmartAnimationSequenceNode(std::string defaultSprite);
 	virtual ~SmartAnimationSequenceNode();
 

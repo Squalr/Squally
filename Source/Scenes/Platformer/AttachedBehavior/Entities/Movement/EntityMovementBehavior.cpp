@@ -154,10 +154,15 @@ void EntityMovementBehavior::update(float dt)
 	{
 		if (std::abs(movement.x) > 0.15f)
 		{
-			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
+			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.65f);
 		}
 		else
 		{
+			if (this->entity->getAnimations()->getCurrentAnimation() == "Walk")
+			{
+				this->entity->getAnimations()->clearAnimationPriority();
+			}
+			
 			this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
 		}
 	}

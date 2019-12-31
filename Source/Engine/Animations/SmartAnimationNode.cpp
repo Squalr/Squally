@@ -27,6 +27,7 @@ SmartAnimationNode* SmartAnimationNode::create(std::string animationResource, st
 SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::string entityName)
 {
 	this->animationResource = animationResource;
+	this->entityName = entityName;
 	this->animationNode = AnimationNode::create(animationResource);
 	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
@@ -38,6 +39,11 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 
 SmartAnimationNode::~SmartAnimationNode()
 {
+}
+
+SmartAnimationNode* SmartAnimationNode::clone()
+{
+	return SmartAnimationNode::create(this->animationResource, this->entityName);
 }
 
 void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
