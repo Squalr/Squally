@@ -12,10 +12,9 @@ class DeveloperModeController : public GlobalNode
 {
 public:
 	static void registerGlobalNode();
-	static DeveloperModeController* getInstance();
 
-	bool isDeveloperModeEnabled();
-	int getDebugLevel();
+	static bool isDeveloperModeEnabled();
+	static int getDebugLevel();
 	
 	static volatile bool IsDeveloperBuild;
 
@@ -23,13 +22,15 @@ protected:
 	DeveloperModeController();
 	virtual ~DeveloperModeController();
 
+	static DeveloperModeController* getInstance();
+
 	void onEnter() override;
 	void initializeListeners() override;
 
 private:
 	typedef GlobalNode super;
 
-	int currentDebugLevel;
+	static int CurrentDebugLevel;
 
 	static DeveloperModeController* instance;
 	static int MaxDebugLevel;

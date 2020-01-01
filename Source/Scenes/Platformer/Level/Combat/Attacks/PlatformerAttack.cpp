@@ -15,11 +15,11 @@ using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
 
-PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
+PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float probabilityWeight, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
-	this->priority = priority;
+	this->probabilityWeight = probabilityWeight;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->specialCost = specialCost;
@@ -58,9 +58,9 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-float PlatformerAttack::getPriority()
+float PlatformerAttack::getProbabilityWeight()
 {
-	return this->priority;
+	return this->probabilityWeight;
 }
 
 int PlatformerAttack::getSpecialCost()

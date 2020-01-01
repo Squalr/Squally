@@ -79,7 +79,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		weapon->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
+		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
 }
 

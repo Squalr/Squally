@@ -30,7 +30,7 @@ ThrownObject* ThrownObject::create(PlatformerEntity* caster, cocos2d::Node* obje
 }
 
 ThrownObject::ThrownObject(PlatformerEntity* caster, cocos2d::Node* object, cocos2d::Size collisionSize)
-	: super(caster, CollisionObject::createCapsulePolygon(collisionSize), CombatCollisionType::Projectile, 1.0f, true)
+	: super(caster, CollisionObject::createCapsulePolygon(collisionSize), CombatCollisionType::Projectile, true)
 {
 	this->object = object;
 

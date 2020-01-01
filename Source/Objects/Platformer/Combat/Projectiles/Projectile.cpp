@@ -21,11 +21,11 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
 
-Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking) : super(ValueMap())
+Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
-	this->noCollideDuration = noCollideDuration;
+	this->noCollideDuration = 1.0f;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->spinSpeed = 0.0f;
@@ -170,19 +170,11 @@ void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed,
 	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
 	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
 	bool isLeft = targetPosition.x < thisPosition.x;
-
-	this->spinSpeed = (isLeft ? -1.0f : 1.0f) * 360.0f * spinSpeed;
-
-	this->setLaunchAcceleration(gravity);
-	this->setLaunchVelocity(AlgoUtils::computeArcVelocity(thisPosition, targetPosition, gravity, duration));
-}
-
-void Projectile::arcTowardsTarget(Node* target, Vec2 offset, float spinSpeed, Vec3 secondsPer256pxLinearDistance, Vec3 gravity)
-{
-	Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
-	Vec3 targetPosition = GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f);
-	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
-	bool isLeft = targetPosition.x < thisPosition.x;
+	
+	// Disable collision for the first 256px of travel distance
+	float maxSpeed = std::max(0.1f, std::max(std::max(secondsPer256pxLinearDistance.x, secondsPer256pxLinearDistance.y), secondsPer256pxLinearDistance.z));
+	this->noCollideDuration = maxSpeed;
+	this->collisionObject->setPhysicsEnabled(false);
 
 	this->spinSpeed = (isLeft ? -1.0f : 1.0f) * 360.0f * spinSpeed;
 

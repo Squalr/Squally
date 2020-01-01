@@ -155,7 +155,7 @@ void GameCamera::update(float dt)
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
 
-		if (!DeveloperModeController::getInstance()->isDeveloperModeEnabled())
+		if (!DeveloperModeController::isDeveloperModeEnabled())
 		{
 			this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
 		}

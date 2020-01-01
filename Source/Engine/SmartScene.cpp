@@ -76,7 +76,7 @@ void SmartScene::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}
 	else
 	{
@@ -101,7 +101,7 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* args)
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeDisable, [=](EventCustom* args)
@@ -145,7 +145,7 @@ void SmartScene::onHackerModeDisable()
 
 bool SmartScene::isDeveloperModeEnabled()
 {
-	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
+	return DeveloperModeController::isDeveloperModeEnabled();
 }
 
 void SmartScene::removeAllListeners()

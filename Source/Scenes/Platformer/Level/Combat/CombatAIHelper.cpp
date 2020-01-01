@@ -335,7 +335,7 @@ CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(con
 		// Only build an attack probability map for attacks that match the given predicate
 		if (predicate(attack))
 		{
-			cumulativeProbability += attack->getPriority();
+			cumulativeProbability += attack->getProbabilityWeight();
 			cumulativeProbabilityMap[attack] = cumulativeProbability;
 		}
 	}

@@ -14,6 +14,7 @@ using namespace cocos2d;
 DeveloperModeController* DeveloperModeController::instance = nullptr;
 volatile bool DeveloperModeController::IsDeveloperBuild = true;
 int DeveloperModeController::MaxDebugLevel = 2;
+int DeveloperModeController::CurrentDebugLevel = 0;
 
 void DeveloperModeController::registerGlobalNode()
 {
@@ -38,7 +39,7 @@ DeveloperModeController* DeveloperModeController::getInstance()
 
 DeveloperModeController::DeveloperModeController()
 {
-	this->currentDebugLevel = 0;
+	DeveloperModeController::CurrentDebugLevel = 0;
 }
 
 DeveloperModeController::~DeveloperModeController()
@@ -70,11 +71,11 @@ void DeveloperModeController::initializeListeners()
 		
 		args->handle();
 
-		this->currentDebugLevel = MathUtils::wrappingNormalize(this->currentDebugLevel + 1, 0, DeveloperModeController::MaxDebugLevel);
+		DeveloperModeController::CurrentDebugLevel = MathUtils::wrappingNormalize(DeveloperModeController::CurrentDebugLevel + 1, 0, DeveloperModeController::MaxDebugLevel);
 
 		if (this->isDeveloperModeEnabled())
 		{
-			DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEvents::DeveloperModeEnableArgs(this->currentDebugLevel));
+			DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEvents::DeveloperModeEnableArgs(DeveloperModeController::CurrentDebugLevel));
 		}
 		else
 		{
@@ -185,10 +186,10 @@ void DeveloperModeController::initializeListeners()
 
 bool DeveloperModeController::isDeveloperModeEnabled()
 {
-	return this->currentDebugLevel > 0 && this->currentDebugLevel <= DeveloperModeController::MaxDebugLevel;
+	return DeveloperModeController::CurrentDebugLevel > 0 && DeveloperModeController::CurrentDebugLevel <= DeveloperModeController::MaxDebugLevel;
 }
 
 int DeveloperModeController::getDebugLevel()
 {
-	return this->currentDebugLevel;
+	return DeveloperModeController::CurrentDebugLevel;
 }

@@ -15,7 +15,6 @@ class Projectile : public HackableObject
 {
 public:
 	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
-	void arcTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setLaunchVelocity(cocos2d::Vec3 velocity);
 	void setLaunchAcceleration(cocos2d::Vec3 acceleration);
 	CollisionObject* getCollision();
@@ -23,7 +22,7 @@ public:
 	cocos2d::Vec3 getLaunchAcceleration();
 	
 protected:
-	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, float noCollideDuration, bool allowHacking);
+	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;

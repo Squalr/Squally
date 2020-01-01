@@ -11,6 +11,7 @@ typedef int CollisionType;
 
 namespace cocos2d
 {
+	class DrawNode;
 	class PhysicsBody;
 	class PhysicsContact;
 	class Value;
@@ -122,4 +123,5 @@ private:
 	bool gravityEnabled;
 	bool gravityInversed;
 	std::function<void()> onDebugPositionSet;
+	cocos2d::DrawNode* debugDrawNode;
 };

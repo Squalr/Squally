@@ -268,11 +268,6 @@ void MapBase::onDeveloperModeEnable(int debugLevel)
 	{
 		this->map->setCollisionLayersVisible(true);
 	}
-
-	if (this->getPhysicsWorld() != nullptr)
-	{
-		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
-	}
 }
 
 void MapBase::onDeveloperModeDisable()
@@ -280,11 +275,6 @@ void MapBase::onDeveloperModeDisable()
 	if (this->map != nullptr)
 	{
 		this->map->setCollisionLayersVisible(false);
-	}
-	
-	if (this->getPhysicsWorld() != nullptr)
-	{
-		this->getPhysicsWorld()->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
 	}
 }
 

@@ -46,8 +46,8 @@ void KingGroggCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(DragonBreath::create(0.7f, 0.2f));
-		attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
+		attackBehavior->registerAttack(DragonBreath::create(0.5f, 0.2f));
+		// attackBehavior->registerAttack(Slash::create(0.7f, 0.2f));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

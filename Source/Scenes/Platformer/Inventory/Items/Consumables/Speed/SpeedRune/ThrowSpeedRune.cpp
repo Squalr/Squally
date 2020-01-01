@@ -90,11 +90,11 @@ void ThrowSpeedRune::performAttack(PlatformerEntity* owner, PlatformerEntity* ta
 	{
 		if (owner == target)
 		{
-			rune->arcTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			rune->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 		}
 		else
 		{
-			rune->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			rune->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 		}
 	});
 }

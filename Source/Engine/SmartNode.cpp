@@ -56,7 +56,7 @@ void SmartNode::onEnter()
 
 	if (this->isDeveloperModeEnabled())
 	{
-		this->onDeveloperModeEnable(DeveloperModeController::getInstance()->getDebugLevel());
+		this->onDeveloperModeEnable(DeveloperModeController::getDebugLevel());
 	}
 	else
 	{
@@ -143,7 +143,7 @@ void SmartNode::onHackerModeDisable()
 
 bool SmartNode::isDeveloperModeEnabled()
 {
-	return DeveloperModeController::getInstance()->isDeveloperModeEnabled();
+	return DeveloperModeController::isDeveloperModeEnabled();
 }
 
 void SmartNode::removeAllListeners()

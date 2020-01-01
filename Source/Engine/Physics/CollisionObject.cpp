@@ -1,5 +1,6 @@
 #include "CollisionObject.h"
 
+#include "cocos/2d/CCDrawNode.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCValue.h"
@@ -9,10 +10,13 @@
 
 #include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
+
+#include "cocos/physics/chipmunk/chipmunk_private.h"
 
 using namespace cocos2d;
 
@@ -78,6 +82,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->contactUpdateCallback = nullptr;
 	this->onDebugPositionSet = nullptr;
 	this->bindTarget = nullptr;
+	this->debugDrawNode = nullptr;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -521,6 +526,21 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 	this->updateBinds();
 
 	super::visit(renderer, parentTransform, parentFlags);
+
+	if (DeveloperModeController::getDebugLevel() > 0)
+	{
+		if (this->debugDrawNode == nullptr)
+		{
+			this->debugDrawNode = DrawNode::create();
+			this->addChild(this->debugDrawNode);
+		}
+
+        this->debugDrawNode->clear();
+
+		Vec2 worldCoords = GameUtils::getWorldCoords(this);
+
+		PhysicsWorld::debugDrawBody(this->physicsBody, this->debugDrawNode, worldCoords);
+	}
 }
 
 void CollisionObject::updateBinds()

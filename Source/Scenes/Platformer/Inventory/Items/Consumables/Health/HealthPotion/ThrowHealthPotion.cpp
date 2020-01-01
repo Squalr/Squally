@@ -89,11 +89,11 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity*
 	{
 		if (owner == target)
 		{
-			potion->arcTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
 		}
 		else
 		{
-			potion->arcTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
 		}
 	});
 }
