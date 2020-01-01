@@ -111,12 +111,6 @@ namespace UIResources
 	extern const std::string Menus_CreditsMenu_Nathan;
 	extern const std::string Menus_CreditsMenu_Twitter;
 	extern const std::string Menus_CreditsMenu_Zac;
-	extern const std::string Menus_DialogueMenu_AI;
-	extern const std::string Menus_DialogueMenu_DialogueBox;
-	extern const std::string Menus_DialogueMenu_DialogueFrameLeft;
-	extern const std::string Menus_DialogueMenu_DialogueFrameRight;
-	extern const std::string Menus_DialogueMenu_JungleBackground;
-	extern const std::string Menus_DialogueMenu_ShipBackground;
 	extern const std::string Menus_Generic_LargeMenu;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntry;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntrySelected;
@@ -400,6 +394,7 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_ToggleButtonOnHover;
 	extern const std::string Menus_PauseMenu_PauseMenu;
 	extern const std::string Menus_SaveSelectMenu_AvatarFrame;
+	extern const std::string Menus_SaveSelectMenu_CollectablesIcon;
 	extern const std::string Menus_SaveSelectMenu_Row;
 	extern const std::string Menus_SaveSelectMenu_RowSelected;
 	extern const std::string Menus_TitleScreen_Slime_Slime_0000;
@@ -445,7 +440,6 @@ namespace UIResources
 	extern const std::string Menus_TitleScreen_TitleButton;
 	extern const std::string Menus_TitleScreen_TitleButtonClick;
 	extern const std::string Menus_TitleScreen_TitleButtonHover;
-	extern const std::string Menus_TranslateMenu_TranslateMenu;
 	extern const std::string Menus_TutorialMenu_Gem;
 	extern const std::string Menus_TutorialMenu_ObjectBox1;
 	extern const std::string Menus_TutorialMenu_ObjectBox2;

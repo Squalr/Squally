@@ -23,6 +23,7 @@
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
+#include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
 
@@ -267,6 +268,25 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 		this->platformerEntityDeserializer->deserialize(&args);
 	}
+
+	LocalizedString* collectablesCount = Strings::Common_XOverY::create();
+	LocalizedLabel* collectablesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, collectablesCount);
+	Sprite* collectablesIcon = Sprite::create(UIResources::Menus_SaveSelectMenu_CollectablesIcon);
+
+	collectablesCount->setStringReplacementVariables({
+		ConstantString::create(std::to_string(Collectables::getCollectedAnimalCount())),
+		ConstantString::create(std::to_string(Collectables::getCollectedAnimalTotal()))
+	});
+	
+	collectablesIcon->setAnchorPoint(Vec2(1.0f, 0.5f));
+	collectablesLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	collectablesLabel->enableOutline(Color4B::BLACK, 2);
+
+	collectablesLabel->setPosition(Vec2(356.0f, -64.0f));
+	collectablesIcon->setPosition(Vec2(356.0f - 8.0f, -64.0f));
+
+	content->addChild(collectablesLabel);
+	content->addChild(collectablesIcon);
 
 	return content;
 }
