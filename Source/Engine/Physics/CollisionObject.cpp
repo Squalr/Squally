@@ -527,6 +527,11 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 
 	super::visit(renderer, parentTransform, parentFlags);
 
+	if (this->debugDrawNode != nullptr)
+	{
+        this->debugDrawNode->clear();
+	}
+
 	if (DeveloperModeController::getDebugLevel() > 0)
 	{
 		if (this->debugDrawNode == nullptr)
@@ -535,8 +540,6 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 
 			this->addChild(this->debugDrawNode);
 		}
-
-        this->debugDrawNode->clear();
 
 		Vec2 worldCoords = GameUtils::getWorldCoords(this);
 

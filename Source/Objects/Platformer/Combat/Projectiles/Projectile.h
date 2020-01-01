@@ -35,6 +35,7 @@ protected:
 	virtual HackablePreview* createAccelerationPreview();
 	
 	PlatformerEntity* caster;
+	cocos2d::Node* contentNode;
 
 private:
 	typedef HackableObject super;

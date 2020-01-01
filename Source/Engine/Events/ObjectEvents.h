@@ -69,6 +69,7 @@ public:
 	{
 		Below,
 		Above,
+		TopMost,
 	};
 
 	enum class PositionMode

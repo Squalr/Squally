@@ -29,6 +29,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->spinSpeed = 0.0f;
+	this->contentNode = Node::create();
 	this->collisionObject = CollisionObject::create(ValueMap(),
 		hitBox,
 		(int)combatCollisionType,
@@ -38,6 +39,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 
 	this->collisionObject->setPhysicsEnabled(false);
 
+	this->addChild(this->contentNode);
 	this->addChild(this->collisionObject);
 }
 

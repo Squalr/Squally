@@ -279,6 +279,14 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 
 			break;
 		}
+		case ObjectEvents::SpawnMethod::TopMost:
+		{
+			if (!this->mapLayers.empty())
+			{
+				GameUtils::changeParent(args->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+			}
+			break;
+		}
 		default:
 		case ObjectEvents::SpawnMethod::Above:
 		{
