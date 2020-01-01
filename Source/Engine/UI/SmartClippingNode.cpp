@@ -42,6 +42,7 @@ SmartClippingNode* SmartClippingNode::create(Node* contentNode, DrawNode* stenci
 SmartClippingNode::SmartClippingNode(Node* contentNode, DrawNode* stencil)
 {
 	this->stencil = stencil;
+	this->allowDebugDraw = true;
 
 	this->clip = ClippingNode::create(this->stencil);
 
@@ -66,10 +67,23 @@ void SmartClippingNode::onDeveloperModeEnable(int debugLevel)
 {
 	super::onDeveloperModeEnable(debugLevel);
 
-	this->stencil->setOpacity(255);
+	if (this->allowDebugDraw)
+	{
+		this->stencil->setOpacity(255);
+	}
 }
 
 void SmartClippingNode::onDeveloperModeDisable()
 {
 	this->stencil->setOpacity(0);
+}
+
+void SmartClippingNode::enableAllowDebugDraw()
+{
+	this->allowDebugDraw = true;
+}
+
+void SmartClippingNode::disableAllowDebugDraw()
+{
+	this->allowDebugDraw = false;
 }

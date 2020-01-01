@@ -532,6 +532,7 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 		if (this->debugDrawNode == nullptr)
 		{
 			this->debugDrawNode = DrawNode::create();
+
 			this->addChild(this->debugDrawNode);
 		}
 

@@ -73,7 +73,6 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->debugLabelsNode->setVisible(false);
 	this->debugDrawNode->setVisible(false);
 
-	this->rootNode->addChild(this->collisionNode);
 	this->rootNode->addChild(this->infillTexturesNode);
 	this->rootNode->addChild(this->infillNode);
 	this->rootNode->addChild(this->shadowsNode);
@@ -86,6 +85,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->rootNode->addChild(this->topCornersNode);
 	this->rootNode->addChild(this->debugLabelsNode);
 	this->rootNode->addChild(this->debugDrawNode);
+	this->rootNode->addChild(this->collisionNode);
 	this->addChild(this->rootNode);
 }
 
@@ -349,6 +349,8 @@ void TerrainObject::buildInnerTextures()
 	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
 
 	SmartClippingNode* clip = SmartClippingNode::create(texture, stencil);
+
+	clip->disableAllowDebugDraw();
 
 	this->infillTexturesNode->addChild(clip);
 }

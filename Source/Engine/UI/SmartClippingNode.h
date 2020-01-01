@@ -19,6 +19,9 @@ public:
 	static SmartClippingNode* create(cocos2d::Node* contentNode, cocos2d::Rect bounds);
 	static SmartClippingNode* create(cocos2d::Node* contentNode, cocos2d::DrawNode* stencil);
 
+	void enableAllowDebugDraw();
+	void disableAllowDebugDraw();
+
 protected:
 	SmartClippingNode(cocos2d::Node* contentNode, cocos2d::DrawNode* stencil);
 	~SmartClippingNode();
@@ -32,6 +35,7 @@ private:
 
 	cocos2d::ClippingNode* clip;
 	cocos2d::DrawNode* stencil;
+	bool allowDebugDraw;
 
 	static const cocos2d::Color4F DebugColor;
 };
