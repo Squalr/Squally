@@ -62,6 +62,7 @@ SaveSelectMenu::SaveSelectMenu()
 	this->saveSelectWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->saveButtonNode = Node::create();
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_SaveSelect_SelectASave::create());
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
@@ -82,9 +83,13 @@ SaveSelectMenu::SaveSelectMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
+	this->titleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->titleLabel->enableGlow(Color4B::BLACK);
+
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->backgroundNode);
 	this->addChild(this->saveSelectWindow);
+	this->addChild(this->titleLabel);
 	this->addChild(this->saveButtonNode);
 	this->addChild(this->returnButton);
 	this->addChild(this->closeButton);
@@ -149,6 +154,7 @@ void SaveSelectMenu::initializePositions()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->saveSelectWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
 	this->saveButtonNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 48.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 420.0f));
@@ -282,8 +288,8 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 	collectablesLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	collectablesLabel->enableOutline(Color4B::BLACK, 2);
 
-	collectablesLabel->setPosition(Vec2(356.0f, -64.0f));
-	collectablesIcon->setPosition(Vec2(356.0f - 8.0f, -64.0f));
+	collectablesLabel->setPosition(Vec2(356.0f + 16.0f, -64.0f));
+	collectablesIcon->setPosition(Vec2(356.0f + 16.0f - 12.0f, -64.0f));
 
 	content->addChild(collectablesLabel);
 	content->addChild(collectablesIcon);

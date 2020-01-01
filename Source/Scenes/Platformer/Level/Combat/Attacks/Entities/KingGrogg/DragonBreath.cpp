@@ -46,7 +46,7 @@ LocalizedString* DragonBreath::getString()
 
 std::string DragonBreath::getAttackAnimation()
 {
-	return "AttackThrow";
+	return "AttackDragon";
 }
 
 void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* target)

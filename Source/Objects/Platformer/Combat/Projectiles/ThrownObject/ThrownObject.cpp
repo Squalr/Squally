@@ -96,15 +96,38 @@ cocos2d::Vec2 ThrownObject::getButtonOffset()
 
 HackablePreview* ThrownObject::createDefaultPreview()
 {
-	return ThrownObjectGenericPreview::create(this->object);
+	return ThrownObjectGenericPreview::create(this->cloneObject());
 }
 
 HackablePreview* ThrownObject::createVelocityPreview()
 {
-	return ThrownObjectGenericPreview::create(this->object);
+	return ThrownObjectGenericPreview::create(this->cloneObject());
 }
 
 HackablePreview* ThrownObject::createAccelerationPreview()
 {
-	return ThrownObjectGenericPreview::create(this->object);
+	return ThrownObjectGenericPreview::create(this->cloneObject());
+}
+
+Node* ThrownObject::cloneObject()
+{
+	if (dynamic_cast<Sprite*>(this->object) != nullptr)
+	{
+		Texture2D* texture = dynamic_cast<Sprite*>(this->object)->getTexture();
+
+		if (texture != nullptr)
+		{
+			return Sprite::create(texture->getPath());
+		}
+	}
+	else if (dynamic_cast<SmartAnimationNode*>(this->object) != nullptr)
+	{
+		return dynamic_cast<SmartAnimationNode*>(this->object)->clone();
+	}
+	else if (dynamic_cast<SmartAnimationSequenceNode*>(this->object) != nullptr)
+	{
+		return dynamic_cast<SmartAnimationSequenceNode*>(this->object)->clone();
+	}
+
+	return Node::create();
 }

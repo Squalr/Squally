@@ -31,6 +31,8 @@ protected:
 
 private:
 	typedef Projectile super;
+
+	cocos2d::Node* cloneObject();
 	
 	cocos2d::Node* object;
 };

@@ -11,6 +11,7 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class ConfirmationMenu;
+class LocalizedLabel;
 class PlatformerEntity;
 class PlatformerEntityDeserializer;
 
@@ -46,6 +47,7 @@ private:
 	ClickableTextNode* saveGameButton2;
 	ClickableNode* closeButton;
 	ClickableTextNode* returnButton;
+	LocalizedLabel* titleLabel;
 	cocos2d::LayerColor* backdrop;
 	ConfirmationMenu* confirmationMenu;
 	PlatformerEntityDeserializer* platformerEntityDeserializer;

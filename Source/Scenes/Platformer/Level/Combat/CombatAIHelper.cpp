@@ -136,136 +136,6 @@ void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
 	CombatEvents::TriggerResumeTimeline();
 }
 
-void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
-{
-	if (attackingEntry == nullptr)
-	{
-		return;
-	}
-
-	PlatformerEntity* attackingEntity = attackingEntry->getEntity();
-
-	if (attackingEntity == nullptr)
-	{
-		return;
-	}
-
-	// PHASE 1: Check if available heal target / heal spell
-	EntityAttackBehavior* attackBehavior = attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
-
-	if (attackBehavior == nullptr)
-	{
-		return;
-	}
-
-	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
-	std::vector<PlatformerAttack*> consumablesList = attackingEntry->isPlayerEntry()
-		? std::vector<PlatformerAttack*>()
-		: attackBehavior->getAvailableConsumables();
-	bool hasWeakAlly = false;
-	bool hasDeadAlly = false;
-	float selectedAttackPriority = -1.0f;
-	const float WeakPercentage = 0.5f;
-
-	for (auto it = consumablesList.begin(); it != consumablesList.end(); it++)
-	{
-		attackList.push_back(*it);
-	}
-
-	for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
-	{
-		int health = (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = (*it)->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-		bool isAlive = (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
-
-		if (!isAlive)
-		{
-			hasDeadAlly = true;
-		}
-
-		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
-		{
-			hasWeakAlly = true;
-		}
-	}
-	
-	// Prioritize resurrection
-	if (!attackingEntry->isPlayerEntry() && hasDeadAlly)
-	{
-		for (auto it = attackList.begin(); it != attackList.end(); it++)
-		{
-			switch((*it)->getAttackType())
-			{
-				case PlatformerAttack::AttackType::Resurrection:
-				{
-					if ((*it)->getPriority() > selectedAttackPriority)
-					{
-						this->selectedAttack = *it;
-					}
-				}
-				default:
-				{
-					break;
-				}
-			}
-		}
-	}
-
-	if (this->selectedAttack != nullptr)
-	{
-		return;
-	}
-
-	// Prioritize heals next
-	if (!attackingEntry->isPlayerEntry() && hasWeakAlly)
-	{
-		for (auto it = attackList.begin(); it != attackList.end(); it++)
-		{
-			switch((*it)->getAttackType())
-			{
-				case PlatformerAttack::AttackType::Healing:
-				{
-					if ((*it)->getPriority() > selectedAttackPriority)
-					{
-						this->selectedAttack = *it;
-					}
-				}
-				default:
-				{
-					break;
-				}
-			}
-		}
-	}
-
-	if (this->selectedAttack != nullptr)
-	{
-		return;
-	}
-
-	// PHASE 2: Just pick the highest priority available attack
-	for (auto it = attackList.begin(); it != attackList.end(); it++)
-	{
-		switch((*it)->getAttackType())
-		{
-			case PlatformerAttack::AttackType::Damage:
-			case PlatformerAttack::AttackType::Debuff:
-			{
-				if ((*it)->getPriority() > selectedAttackPriority)
-				{
-					this->selectedAttack = *it;
-				}
-			}
-			default:
-			{
-				break;
-			}
-		}
-	}
-}
-
 void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 {
 	if (attackingEntry == nullptr || this->selectedAttack == nullptr)
@@ -341,4 +211,134 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 	}
 
 	this->selectedTarget = target;
+}
+
+void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
+{
+	PlatformerEntity* attackingEntity = attackingEntry == nullptr ? nullptr : attackingEntry->getEntity();
+	EntityAttackBehavior* attackBehavior = attackingEntity == nullptr ? nullptr : attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+
+	if (attackingEntry == nullptr || attackingEntity == nullptr || attackBehavior == nullptr)
+	{
+		return;
+	}
+
+	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
+	std::vector<PlatformerAttack*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<PlatformerAttack*>() : attackBehavior->getAvailableConsumables();
+	
+	for (auto next : consumablesList)
+	{
+		attackList.push_back(next);
+	}
+
+	// Prioritize resurrection > healing > damage
+	this->trySelectResurrectionSkill(attackingEntry, attackList);
+	this->trySelectHealingSkill(attackingEntry, attackList);
+	this->trySelectDamageSkill(attackingEntry, attackList);
+}
+
+void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Resurrection;
+	});
+	bool hasDeadAlly = false;
+
+	for (auto entity : sameTeam)
+	{
+		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+
+		if (!isAlive)
+		{
+			hasDeadAlly = true;
+		}
+	}
+
+	if (!hasDeadAlly || attackProbabilities.map.empty())
+	{
+		return;
+	}
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Healing;
+	});
+	bool hasWeakAlly = false;
+	const float WeakPercentage = 0.5f;
+
+	for (auto entity : sameTeam)
+	{
+		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+
+		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
+		{
+			hasWeakAlly = true;
+		}
+	}
+
+	if (!hasWeakAlly || attackProbabilities.map.empty())
+	{
+		return;
+	}
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Damage || attack->getAttackType() == PlatformerAttack::AttackType::Debuff;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
+CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(const std::vector<PlatformerAttack*>& attackList, std::function<bool(PlatformerAttack*)> predicate)
+{
+	std::map<PlatformerAttack*, float> cumulativeProbabilityMap = std::map<PlatformerAttack*, float>();
+	float cumulativeProbability = 0.0f;
+
+	for (auto attack : attackList)
+	{
+		// Only build an attack probability map for attacks that match the given predicate
+		if (predicate(attack))
+		{
+			cumulativeProbability += attack->getPriority();
+			cumulativeProbabilityMap[attack] = cumulativeProbability;
+		}
+	}
+
+	return ProbabilityMap(cumulativeProbabilityMap, cumulativeProbability);
 }
