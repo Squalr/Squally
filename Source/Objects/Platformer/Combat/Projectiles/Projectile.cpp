@@ -21,6 +21,8 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_VELOCITY 100
 #define LOCAL_FUNC_ID_ACCELERATION 101
 
+const std::string Projectile::ProjectileTag = "projectile";
+
 Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
@@ -29,7 +31,6 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->spinSpeed = 0.0f;
-	this->contentNode = Node::create();
 	this->collisionObject = CollisionObject::create(ValueMap(),
 		hitBox,
 		(int)combatCollisionType,
@@ -37,9 +38,10 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 		false
 	);
 
+	this->addTag(Projectile::ProjectileTag);
+
 	this->collisionObject->setPhysicsEnabled(false);
 
-	this->addChild(this->contentNode);
 	this->addChild(this->collisionObject);
 }
 
@@ -77,6 +79,8 @@ void Projectile::update(float dt)
 			this->collisionObject->setPhysicsEnabled(true);
 		}
 	}
+	
+	this->setLocalZOrder(int32_t(this->getPositionZ()));
 
 	if (this->spinSpeed != 0.0f)
 	{

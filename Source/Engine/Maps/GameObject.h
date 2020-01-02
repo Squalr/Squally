@@ -112,6 +112,7 @@ public:
 	static const std::string MapKeyHeight;
 	static const std::string MapKeyXPosition;
 	static const std::string MapKeyYPosition;
+	static const std::string MapKeyDepth;
 	static const std::string MapKeyScale;
 	static const std::string MapKeyScaleX;
 	static const std::string MapKeyScaleY;

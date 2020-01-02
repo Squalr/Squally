@@ -20,6 +20,8 @@ public:
 	CollisionObject* getCollision();
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
+
+	static const std::string ProjectileTag;
 	
 protected:
 	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking);
@@ -35,7 +37,6 @@ protected:
 	virtual HackablePreview* createAccelerationPreview();
 	
 	PlatformerEntity* caster;
-	cocos2d::Node* contentNode;
 
 private:
 	typedef HackableObject super;

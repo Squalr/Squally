@@ -54,6 +54,8 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
+	this->addTag(TerrainObject::MapKeyTypeTerrain);
+
 	this->rootNode = Node::create();
 	this->collisionNode = Node::create();
 	this->infillTexturesNode = Node::create();
@@ -72,6 +74,8 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 
 	this->debugLabelsNode->setVisible(false);
 	this->debugDrawNode->setVisible(false);
+	
+	this->setLocalZOrder(int32_t(this->getPositionZ()));
 
 	this->rootNode->addChild(this->infillTexturesNode);
 	this->rootNode->addChild(this->infillNode);

@@ -143,6 +143,8 @@ void CombatMap::onEnter()
 		this->spawnEntities();
 		this->timeline->resumeTimeline();
 	});
+
+	this->scheduleUpdate();
 }
 
 void CombatMap::onExit()
@@ -150,6 +152,11 @@ void CombatMap::onExit()
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
 	// Any disposing should be done in the destructor anyways, not onExit().
 	// super::onExit();
+}
+
+void CombatMap::update(float dt)
+{
+	super::update(dt);
 }
 
 void CombatMap::initializePositions()
@@ -329,6 +336,7 @@ void CombatMap::spawnEntities()
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
 					{
 						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
+						entity->setLocalZOrder(int32_t(entity->getPositionZ()));
 						friendlyEntities.push_back(entity);
 					}));
 				}
@@ -375,6 +383,7 @@ void CombatMap::spawnEntities()
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
 						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
+						entity->setLocalZOrder(int32_t(entity->getPositionZ()));
 
 						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{

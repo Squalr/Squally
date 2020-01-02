@@ -5,6 +5,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
@@ -12,6 +13,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/FXResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -57,16 +59,20 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	SmartAnimationSequenceNode* fireballAnim = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
 	SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
 	ThrownObject* fireball = ThrownObject::create(owner, fireballAnim, Size(32.0f, 32.0f));
+	WorldSound* breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 
 	fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(owner->isFlippedX());
-	
+	fireBreath->addChild(breathSound);
+
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, fireball, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, fireBreath, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
 	
-	fireball->setPosition(GameUtils::getWorldCoords(owner) + Vec2((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f));
-	fireBreath->setPosition(GameUtils::getWorldCoords(fireballAnim) + Vec2((owner->isFlippedX() ? -160.0f : 160.0f), 0.0f));
+	fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
+	fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireballAnim) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
+
+	breathSound->play();
 
 	fireball->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -75,9 +81,14 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 
 		// Explosion animation
 		SmartAnimationSequenceNode* explosionAnim = SmartAnimationSequenceNode::create(FXResources::Explosion_Explosion_0000);
+		WorldSound* impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
+		
 		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, explosionAnim, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
 		explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
-		explosionAnim->setPosition(GameUtils::getWorldCoords(fireball));
+		explosionAnim->setPosition3D(GameUtils::getWorldCoords3D(fireball));
+		explosionAnim->addChild(impactSound);
+
+		impactSound->play();
 
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

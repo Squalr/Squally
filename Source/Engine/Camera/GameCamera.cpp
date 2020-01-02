@@ -47,7 +47,7 @@ GameCamera::GameCamera()
 {
 	this->defaultDistance = Director::getInstance()->getZEye();
 	this->targetStack = std::stack<CameraTrackingData>();
-	this->cameraBounds = Rect::ZERO;
+	this->mapBounds = Rect::ZERO;
 	this->hud = Hud::create();
 	this->debugCameraRectangle = DrawNode::create();
 	this->debugCameraLabelX = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Debugging_CameraX::create());
@@ -157,7 +157,10 @@ void GameCamera::update(float dt)
 
 		if (!DeveloperModeController::isDeveloperModeEnabled())
 		{
-			this->setCameraZoom(this->getCameraZoom() + (trackingData.zoom - this->getCameraZoom()) * dt);
+			const float intendedZoom = trackingData.zoom;
+			const float distance = intendedZoom - this->getCameraZoom();
+
+			this->setCameraZoom(this->getCameraZoom() + distance * dt);
 		}
 
 		switch (trackingData.scrollType)
@@ -165,32 +168,15 @@ void GameCamera::update(float dt)
 			default:
 			case CameraTrackingData::CameraScrollType::Rectangle:
 			{
-				cameraPosition = this->boundCameraByRectangle();
+				cameraPosition = this->boundCameraByRectangle(this->getCameraPosition());
 				break;
 			}
 			case CameraTrackingData::CameraScrollType::Ellipse:
 			{
-				cameraPosition = this->boundCameraByEllipses();
+				cameraPosition = this->boundCameraByEllipses(this->getCameraPosition());
 				break;
 			}
 		}
-	}
-
-	Size boundsSize = Director::getInstance()->getVisibleSize() * this->getCameraZoom();
-	const float MinX = this->cameraBounds.getMinX() + boundsSize.width / 2.0f;
-	const float MaxX = this->cameraBounds.getMaxX() - boundsSize.width / 2.0f;
-	const float MinY = this->cameraBounds.getMinY() + boundsSize.height / 2.0f;
-	const float MaxY = this->cameraBounds.getMaxY() - boundsSize.height / 2.0f;
-
-	// Prevent camera from leaving level bounds. Note: Only constrain if out of bounds in one direction, otherwise bounds are irrelevant
-	if ((cameraPosition.x < MinX) ^ (cameraPosition.x > MaxX))
-	{
-		cameraPosition.x = MathUtils::clamp(cameraPosition.x, MinX, MaxX);
-	}
-
-	if ((cameraPosition.y < MinY) ^ (cameraPosition.y > MaxY))
-	{
-		cameraPosition.y = MathUtils::clamp(cameraPosition.y, MinY, MaxY);
 	}
 
 	this->setCameraPosition(cameraPosition, false);
@@ -316,12 +302,12 @@ void GameCamera::setCameraPosition3(Vec3 position, bool addTrackOffset)
 
 Rect GameCamera::getBounds()
 {
-	return this->cameraBounds;
+	return this->mapBounds;
 }
 
 void GameCamera::setBounds(Rect bounds)
 {
-	this->cameraBounds = bounds;
+	this->mapBounds = bounds;
 }
 
 void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float duration)
@@ -359,10 +345,8 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 	}, this, 0.0f, ticks, 0.0f, false, GameCamera::SchedulerKeyCameraShake);
 }
 
-Vec2 GameCamera::boundCameraByEllipses()
+Vec2 GameCamera::boundCameraByEllipses(Vec2 cameraPosition)
 {
-	Vec2 cameraPosition = this->getCameraPosition();
-
 	if (!this->targetStack.empty())
 	{
 		CameraTrackingData trackingData = this->targetStack.top();
@@ -390,35 +374,20 @@ Vec2 GameCamera::boundCameraByEllipses()
 		}
 
 		Vec2 idealPosition = AlgoUtils::pointOnEllipse(cameraPosition, trackingData.scrollOffset.x, trackingData.scrollOffset.y, targetPosition);
-		float deltaX = targetPosition.x - idealPosition.x;
-		float deltaY = targetPosition.y - idealPosition.y;
+		idealPosition = this->boundCameraByMapBounds(idealPosition);
 
-		if (trackingData.followSpeed.x > 0.0f)
-		{
-			cameraPosition.x = cameraPosition.x + deltaX * trackingData.followSpeed.x;
-		}
-		else
-		{
-			cameraPosition.x = idealPosition.x;
-		}
+		const Vec2 distance = targetPosition - idealPosition;
 
-		if (trackingData.followSpeed.y > 0.0f)
-		{
-			cameraPosition.y = cameraPosition.y + deltaY * trackingData.followSpeed.y;
-		}
-		else
-		{
-			cameraPosition.y = idealPosition.y;
-		}
+		cameraPosition.x = (trackingData.followSpeed.x > 0.0f) ? (cameraPosition.x + distance.x * trackingData.followSpeed.x) : idealPosition.x;
+		cameraPosition.y = (trackingData.followSpeed.y > 0.0f) ? (cameraPosition.y + distance.y * trackingData.followSpeed.y) : idealPosition.y;
 	}
 
 	return cameraPosition;
 }
 
-Vec2 GameCamera::boundCameraByRectangle()
+Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 {
-	Vec2 cameraPositionDebug = this->getCameraPosition();
-	Vec2 cameraPosition = this->getCameraPosition();
+	Vec2 idealPosition = cameraPosition;
 
 	if (!this->targetStack.empty())
 	{
@@ -429,68 +398,59 @@ Vec2 GameCamera::boundCameraByRectangle()
 			return cameraPosition;
 		}
 
-		Vec2 targetPosition = trackingData.customPositionFunction == nullptr
+		const Vec2 targetPosition = trackingData.customPositionFunction == nullptr
 			? (GameUtils::getWorldCoords(trackingData.target) + trackingData.trackOffset)
 			: trackingData.customPositionFunction();
 
 		// Handle camera scrolling from target traveling past scroll distance
 		if (cameraPosition.x < targetPosition.x - trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x - trackingData.scrollOffset.x;
-
-			if (trackingData.followSpeed.x <= 0.0f)
-			{
-				cameraPosition.x = idealPositionX;
-			}
-			else
-			{
-				float distance = idealPositionX - cameraPosition.x;
-				cameraPosition.x = cameraPosition.x + distance * trackingData.followSpeed.x;
-			}
+			idealPosition.x = targetPosition.x - trackingData.scrollOffset.x;
 		}
 		else if (cameraPosition.x > targetPosition.x + trackingData.scrollOffset.x)
 		{
-			float idealPositionX = targetPosition.x + trackingData.scrollOffset.x;
-
-			if (trackingData.followSpeed.x <= 0.0f)
-			{
-				cameraPosition.x = idealPositionX;
-			}
-			else
-			{
-				float distance = idealPositionX - cameraPosition.x;
-				cameraPosition.x = cameraPosition.x + distance * trackingData.followSpeed.x;
-			}
+			idealPosition.x = targetPosition.x + trackingData.scrollOffset.x;
 		}
 
 		if (cameraPosition.y < targetPosition.y - trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y - trackingData.scrollOffset.y;
-
-			if (trackingData.followSpeed.y <= 0.0f)
-			{
-				cameraPosition.y = idealPositionY;
-			}
-			else
-			{
-				float distance = idealPositionY - cameraPosition.y;
-				cameraPosition.y = cameraPosition.y + distance * trackingData.followSpeed.y;
-			}
+			idealPosition.y = targetPosition.y - trackingData.scrollOffset.y;
 		}
 		else if (cameraPosition.y > targetPosition.y + trackingData.scrollOffset.y)
 		{
-			float idealPositionY = targetPosition.y + trackingData.scrollOffset.y;
-
-			if (trackingData.followSpeed.y <= 0.0f)
-			{
-				cameraPosition.y = idealPositionY;
-			}
-			else
-			{
-				float distance = idealPositionY - cameraPosition.y;
-				cameraPosition.y = cameraPosition.y + distance * trackingData.followSpeed.y;
-			}
+			idealPosition.y = targetPosition.y + trackingData.scrollOffset.y;
 		}
+
+		idealPosition = this->boundCameraByMapBounds(idealPosition);
+
+		const Vec2 distance = idealPosition - cameraPosition;
+		
+		cameraPosition.x = (trackingData.followSpeed.x > 0.0f) ? (cameraPosition.x + distance.x * trackingData.followSpeed.x) : idealPosition.x;
+		cameraPosition.y = (trackingData.followSpeed.y > 0.0f) ? (cameraPosition.y + distance.y * trackingData.followSpeed.y) : idealPosition.y;
+	}
+
+	return cameraPosition;
+}
+
+Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
+{
+	const float cameraZoom = this->getCameraZoom();
+	const Size cameraSize = Director::getInstance()->getVisibleSize() * cameraZoom;
+
+	const float MinX = this->mapBounds.getMinX() + cameraSize.width / 2.0f;
+	const float MaxX = this->mapBounds.getMaxX() - cameraSize.width / 2.0f;
+	const float MinY = this->mapBounds.getMinY() + cameraSize.height / 2.0f;
+	const float MaxY = this->mapBounds.getMaxY() - cameraSize.height / 2.0f;
+
+	// Prevent camera from leaving level bounds. Note: Only constrain if out of bounds in one direction, otherwise bounds are irrelevant
+	if ((cameraPosition.x < MinX) ^ (cameraPosition.x > MaxX))
+	{
+		cameraPosition.x = MathUtils::clamp(cameraPosition.x, MinX, MaxX);
+	}
+
+	if ((cameraPosition.y < MinY) ^ (cameraPosition.y > MaxY))
+	{
+		cameraPosition.y = MathUtils::clamp(cameraPosition.y, MinY, MaxY);
 	}
 
 	return cameraPosition;

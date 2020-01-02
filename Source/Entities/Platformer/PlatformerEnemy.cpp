@@ -43,7 +43,7 @@ PlatformerEnemy::PlatformerEnemy(
 		collisionOffset,
 		hoverHeight)
 {
-	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::Combat_Intro)).asString();
+	this->battleMapResource = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleMap, Value(MapResources::EndianForest_Combat_Intro)).asString();
 	this->battleMapTag = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyBattleTag, Value("")).asString();
 	this->dropPool = GameUtils::getKeyOrDefault(this->properties, PlatformerEnemy::MapKeyDropPool, Value("error")).asString();
 

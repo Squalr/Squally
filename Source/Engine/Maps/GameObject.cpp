@@ -21,6 +21,7 @@ const std::string GameObject::MapKeyWidth = "width";
 const std::string GameObject::MapKeyHeight = "height";
 const std::string GameObject::MapKeyXPosition = "x";
 const std::string GameObject::MapKeyYPosition = "y";
+const std::string GameObject::MapKeyDepth = "depth";
 const std::string GameObject::MapKeyScale = "scale";
 const std::string GameObject::MapKeyScaleX = "scale-x";
 const std::string GameObject::MapKeyScaleY = "scale-y";
@@ -198,6 +199,8 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			this->polylinePoints.push_back(convertedDelta);
 		}
 	}
+
+	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
 }
 
 GameObject::~GameObject()

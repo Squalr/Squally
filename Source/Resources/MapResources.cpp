@@ -7,11 +7,12 @@
 
 const std::string MapResources::BallmerPeaks_Town_Main = "Public/Platformer/Maps/BallmerPeaks/Town_Main.tmx";
 const std::string MapResources::CastleValgrind_Castle = "Public/Platformer/Maps/CastleValgrind/Castle.tmx";
-const std::string MapResources::Combat_Intro = "Public/Platformer/Maps/Combat/Intro.tmx";
 const std::string MapResources::DaemonsHallow_Volcano = "Public/Platformer/Maps/DaemonsHallow/Volcano.tmx";
 const std::string MapResources::Dev_Cages = "Public/Platformer/Maps/Dev/Cages.tmx";
 const std::string MapResources::Dev_Quests = "Public/Platformer/Maps/Dev/Quests.tmx";
 const std::string MapResources::Dev_Terrain = "Public/Platformer/Maps/Dev/Terrain.tmx";
+const std::string MapResources::EndianForest_Combat_Intro = "Public/Platformer/Maps/EndianForest/Combat_Intro.tmx";
+const std::string MapResources::EndianForest_Combat_TempleBoss = "Public/Platformer/Maps/EndianForest/Combat_TempleBoss.tmx";
 const std::string MapResources::EndianForest_Forest = "Public/Platformer/Maps/EndianForest/Forest.tmx";
 const std::string MapResources::EndianForest_Mages_Gauntlet_1 = "Public/Platformer/Maps/EndianForest/Mages_Gauntlet_1.tmx";
 const std::string MapResources::EndianForest_Mages_Gauntlet_2 = "Public/Platformer/Maps/EndianForest/Mages_Gauntlet_2.tmx";

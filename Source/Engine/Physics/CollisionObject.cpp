@@ -8,10 +8,10 @@
 #include "cocos/physics/CCPhysicsContact.h"
 #include "cocos/physics/CCPhysicsWorld.h"
 
-#include "Engine/GlobalDirector.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/GlobalDirector.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -30,7 +30,7 @@ const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
-const float CollisionObject::CollisionZThreshold = 32.0f;
+const float CollisionObject::CollisionZThreshold = 20.0f;
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, PhysicsBody* physicsBody, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
@@ -538,12 +538,11 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 		{
 			this->debugDrawNode = DrawNode::create();
 
-			this->addChild(this->debugDrawNode);
+			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(this, this->debugDrawNode, ObjectEvents::SpawnMethod::TopMost, ObjectEvents::PositionMode::Discard));
 		}
 
-		Vec2 worldCoords = GameUtils::getWorldCoords(this);
-
-		PhysicsWorld::debugDrawBody(this->physicsBody, this->debugDrawNode, worldCoords);
+		this->debugDrawNode->setPositionZ(GameUtils::getDepth(this));
+		PhysicsWorld::debugDrawBody(this->physicsBody, this->debugDrawNode, Vec2::ZERO);
 	}
 }
 

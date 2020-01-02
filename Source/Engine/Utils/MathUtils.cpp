@@ -18,12 +18,12 @@ float MathUtils::clamp(float n, float lower, float upper)
 		return lower;
 	}
 	
-	return std::max(lower, std::min(n, upper));
+	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
 }
 
 int MathUtils::clamp(int n, int lower, int upper)
 {
-	return std::max(lower, std::min(n, upper));
+	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
 }
 
 float MathUtils::wrappingNormalize(float value, float start, float end)

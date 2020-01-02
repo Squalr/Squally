@@ -118,6 +118,9 @@ void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
 	this->selectedTarget = nullptr;
 	this->selectedAttack = nullptr;
 
+	attackingEntry->stageCast(nullptr);
+	attackingEntry->stageTarget(nullptr);
+
 	this->selectAttack(attackingEntry);
 	this->selectTarget(attackingEntry);
 

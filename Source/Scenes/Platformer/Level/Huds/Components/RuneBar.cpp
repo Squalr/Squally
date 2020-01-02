@@ -64,7 +64,7 @@ RuneBar::RuneBar(bool isFrameOnLeft)
 		this->emptyRunes.push_back(Sprite::create(UIResources::HUD_EyeSlot));
 		this->filledRunes.push_back(Sprite::create(UIResources::HUD_Eye));
 		this->smokeFx.push_back(SmartAnimationSequenceNode::create());
-		this->smokeSound.push_back(Sound::create(SoundResources::Platformer_Abilities_HackerMode_Enable));
+		this->smokeSound.push_back(Sound::create(SoundResources::Platformer_Entities_Squally_HackerMode_Enable));
 	}
 
 	for (auto it = this->emptyRunes.begin(); it != this->emptyRunes.end(); it++)

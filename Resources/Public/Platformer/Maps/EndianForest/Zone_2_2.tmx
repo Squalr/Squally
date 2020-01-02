@@ -292,7 +292,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="Combat/Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>

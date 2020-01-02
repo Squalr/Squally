@@ -38,6 +38,8 @@ protected:
 		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
 	~CombatMap();
 
+	void update(float dt) override;
+
 private:
 	typedef MapBase super;
 	void onEnter() override;

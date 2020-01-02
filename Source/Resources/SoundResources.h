@@ -60,7 +60,6 @@ namespace SoundResources
 	extern const std::string Notifications_NotificationGood1;
 	extern const std::string Notifications_NotificationGood2;
 	extern const std::string Notifications_NotificationGood3;
-	extern const std::string Platformer_Abilities_HackerMode_Enable;
 	extern const std::string Platformer_Combat_Attacks_Physical_Impact_Hit1;
 	extern const std::string Platformer_Combat_Attacks_Physical_Impact_Hit2;
 	extern const std::string Platformer_Combat_Attacks_Physical_Impact_Hit3;
@@ -129,7 +128,8 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_Attacks_Spells_FireHit7;
 	extern const std::string Platformer_Combat_Attacks_Spells_FireHit8;
 	extern const std::string Platformer_Combat_Attacks_Spells_FireHit9;
-	extern const std::string Platformer_Combat_Attacks_Spells_Fireball;
+	extern const std::string Platformer_Combat_Attacks_Spells_Fireball1;
+	extern const std::string Platformer_Combat_Attacks_Spells_Fireball2;
 	extern const std::string Platformer_Combat_Attacks_Spells_Heal1;
 	extern const std::string Platformer_Combat_Attacks_Spells_Heal2;
 	extern const std::string Platformer_Combat_Attacks_Spells_Heal3;
@@ -148,7 +148,9 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_Attacks_Spells_MagicArrow1;
 	extern const std::string Platformer_Combat_Attacks_Spells_PoisonSpell1;
 	extern const std::string Platformer_Combat_Attacks_Spells_Recharge1;
+	extern const std::string Platformer_Combat_CombatEngage1;
 	extern const std::string Platformer_Combat_Defeat;
+	extern const std::string Platformer_Combat_LevelUp;
 	extern const std::string Platformer_Combat_Victory;
 	extern const std::string Platformer_Doors_Ancient_Stone_Mechanism_Movement_01;
 	extern const std::string Platformer_Doors_Portals_Portal;
@@ -164,6 +166,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Droid_DroidBrief;
 	extern const std::string Platformer_Entities_Droid_DroidBrief2;
 	extern const std::string Platformer_Entities_Droid_DroidChatter;
+	extern const std::string Platformer_Entities_Generic_AgroBeep1;
 	extern const std::string Platformer_Entities_Generic_AlienChatter1;
 	extern const std::string Platformer_Entities_Generic_ChatterAnnoyed1;
 	extern const std::string Platformer_Entities_Generic_ChatterCheer1;
@@ -189,6 +192,7 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Skeleton_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Footsteps2;
 	extern const std::string Platformer_Entities_Skeleton_SkeleDeath1;
+	extern const std::string Platformer_Entities_Squally_HackerMode_Enable;
 	extern const std::string Platformer_Entities_TikiChatter;
 	extern const std::string Platformer_Environment_Bubbles1;
 	extern const std::string Platformer_Environment_Bubbles2;

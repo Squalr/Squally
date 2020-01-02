@@ -56,12 +56,13 @@ private:
 	void update(float dt) override;
 	void resetCamera();
 	float getIntendedCameraDistance();
-	cocos2d::Vec2 boundCameraByEllipses();
-	cocos2d::Vec2 boundCameraByRectangle();
+	cocos2d::Vec2 boundCameraByEllipses(cocos2d::Vec2 cameraPosition);
+	cocos2d::Vec2 boundCameraByRectangle(cocos2d::Vec2 cameraPosition);
+	cocos2d::Vec2 boundCameraByMapBounds(cocos2d::Vec2 cameraPosition);
 	void updateCameraDebugLabels();
 
 	std::stack<CameraTrackingData> targetStack;
-	cocos2d::Rect cameraBounds;
+	cocos2d::Rect mapBounds;
 	CameraTrackingData currentTrackingData;
 	float defaultDistance;
 
