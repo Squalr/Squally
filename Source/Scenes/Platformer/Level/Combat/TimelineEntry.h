@@ -49,6 +49,7 @@ private:
 	void performCast();
 	void tryInterrupt(bool blocked);
 	void resetTimeline();
+	void cameraFocusEntity(PlatformerEntity* entity);
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;

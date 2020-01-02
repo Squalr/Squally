@@ -44,6 +44,6 @@ void SquallyAttackBehavior::onLoad()
 {
 	this->squally->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(Punch::create(0.4f, 0.5f));
+		attackBehavior->registerAttack(Punch::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed));
 	});
 }

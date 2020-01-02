@@ -23,7 +23,7 @@ public:
 	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();
-	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onAttackComplete);
+	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 
 	float getProbabilityWeight();
 	int getSpecialCost();

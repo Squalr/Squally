@@ -259,15 +259,8 @@ void TimelineEntry::addTime(float dt)
 void TimelineEntry::performCast()
 {
 	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
-	
-	GameCamera::getInstance()->pushTarget(CameraTrackingData(
-		this->entity,
-		(this->isPlayerEntry() ? Vec2(128.0f, 0.0f) : Vec2(128.0f, 0.0f)),
-		CameraTrackingData::DefaultCameraOffset,
-		CameraTrackingData::CameraScrollType::Rectangle,
-		Vec2(0.015f, 0.015f),
-		this->entity->getStateOrDefault(StateKeys::Zoom, Value(1.0f)).asFloat()
-	));
+
+	this->cameraFocusEntity(this->entity);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
@@ -281,16 +274,34 @@ void TimelineEntry::performCast()
 				this->target->entity,
 				[=]()
 				{
+					// Attack complete -- camera focus target
 					GameCamera::getInstance()->popTarget();
-
-					// TODO: Invoke entity-take-damage animation, then resume timeline afterwards in a callback
-
+					this->cameraFocusEntity(this->target->entity);
+				},
+				[=]()
+				{
+					// Recover finished, camera unfocus target
+					GameCamera::getInstance()->popTarget();
+					
 					this->resetTimeline();
 					CombatEvents::TriggerResumeTimeline();
 				}
 			);
 		}),
 		nullptr
+	));
+}
+
+void TimelineEntry::cameraFocusEntity(PlatformerEntity* entity)
+{
+	// TODO: Direct focus is no good, and hard coded offsets do not work particularly well. Maybe bind each entity to a camera hint obj in the map file?
+	GameCamera::getInstance()->pushTarget(CameraTrackingData(
+		entity,
+		Vec2::ZERO,
+		CameraTrackingData::DefaultCameraOffset,
+		CameraTrackingData::CameraScrollType::Rectangle,
+		Vec2(0.015f, 0.015f),
+		1.0f // entity->getStateOrDefault(StateKeys::Zoom, Value(1.0f)).asFloat()
 	));
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="565">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="565">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -11,13 +11,13 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="35" name="background" visible="0">
+ <objectgroup id="35" name="background">
   <properties>
    <property name="depth" type="float" value="-356"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="564" name="temple-dark" type="texture" x="-788.245" y="-415.903">
-   <polygon points="131.803,64.0027 3729.15,60.4936 3732.4,3365.35 132.486,3367.84"/>
+  <object id="564" name="temple-dark" type="texture" x="-781.031" y="-415.903">
+   <polygon points="140.589,64.0027 3977.72,60.4936 3981.18,3365.35 141.317,3367.84"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
@@ -25,7 +25,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1523.34" y="1371.05" width="78.7879" height="88">
+  <object id="554" name="combat-spawn" type="object" x="1779.34" y="1371.05" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -33,7 +33,7 @@
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="263.4" y="1609.7" width="78.7879" height="88">
+  <object id="555" name="combat-spawn" type="object" x="519.4" y="1609.7" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -41,14 +41,14 @@
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="556" name="temple" type="terrain" x="1272.36" y="1465.46">
+  <object id="556" name="temple" type="terrain" x="1528.36" y="1465.46">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 519.718,1.85085 519.305,142.53 649.655,142.551 647.95,275.518 777.151,273.063 777.935,403.076 901.94,403.024 898.962,1197.8 -373.105,1200.31 -374.044,377.027 -247.91,376.915 -249.314,257.13 -116.669,255.415 -118.551,134.529 3.6594,132.54"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="483.61" y="1528.66" width="78.7879" height="88">
+  <object id="558" name="combat-spawn" type="object" x="739.61" y="1528.66" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
@@ -56,14 +56,14 @@
     <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
-  <object id="562" name="temple" type="terrain" x="300" y="1624">
+  <object id="562" name="temple" type="terrain" x="556" y="1624">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 500.962,1205.8 -3.1051,1208.31"/>
   </object>
-  <object id="563" name="temple" type="terrain" x="66" y="1704">
+  <object id="563" name="temple" type="terrain" x="322" y="1704">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
@@ -75,6 +75,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="551" name="camera-focus" type="object" x="871.58" y="1202.12" width="170.788" height="172"/>
+  <object id="551" name="camera-focus" type="object" x="1127.58" y="1202.12" width="170.788" height="172"/>
  </objectgroup>
 </map>

@@ -16,6 +16,9 @@ public:
 	std::vector<PlatformerAttack*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
 
+	static const float DefaultRecoverSpeed;
+	static const float DefaultRecoverSpeedSlow;
+	static const float DefaultRecoverSpeedVerySlow;
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
