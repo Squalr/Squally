@@ -25,6 +25,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/LabelStack.h"
 #include "Engine/UI/Controls/MenuLabel.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
@@ -65,7 +66,8 @@ CodeHud::CodeHud()
 	this->functionWindow = CodeWindow::create(CodeHud::FunctionSize);
 	this->statusWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
 	this->registerWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
-	this->scriptList = ScriptList::create([=](ScriptEntry* scriptEntry) { this->functionWindow->openScript(scriptEntry); });
+	this->confirmationMenu = ConfirmationMenu::create();
+	this->scriptList = ScriptList::create(this->confirmationMenu, [=](ScriptEntry* scriptEntry) { this->functionWindow->openScript(scriptEntry); });
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_CodeEditor_FunctionHeader::create());
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Apply::create());
@@ -153,6 +155,7 @@ CodeHud::CodeHud()
 	this->addChild(this->titleLabel);
 	this->addChild(this->lexiconButton);
 	this->addChild(this->clippyNode);
+	this->addChild(this->confirmationMenu);
 }
 
 CodeHud::~CodeHud()

@@ -8,6 +8,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConfirmationMenu;
 class ConstantString;
 class ClickableNode;
 class HackableCode;
@@ -17,7 +18,7 @@ class ScriptEntry;
 class ScriptList : public SmartNode
 {
 public:
-	static ScriptList* create(std::function<void(ScriptEntry*)> onScriptSelect);
+	static ScriptList* create(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect);
 
 	void setActiveScriptText(std::string text);
 	ScriptEntry* addNewScript();
@@ -27,7 +28,7 @@ public:
 	ScriptEntry* getActiveScript();
 
 protected:
-	ScriptList(std::function<void(ScriptEntry*)> onScriptSelect);
+	ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect);
 	~ScriptList() = default;
 
 private:
@@ -51,6 +52,7 @@ private:
 	cocos2d::Sprite* createNewScriptSprite;
 	ScriptEntry* activeScript;
 	HackableCode* hackableCode;
+	ConfirmationMenu* confirmationMenuRef;
 
 	static const std::string ScriptNameKey;
 	static const std::string ScriptKey;

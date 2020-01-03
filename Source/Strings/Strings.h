@@ -6294,6 +6294,21 @@ namespace Strings
 		virtual ~Menus_Hacking_CodeEditor_CreateNewScript() = default;
 	};
 
+	class Menus_Hacking_CodeEditor_DeleteConfirmation : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_CodeEditor_DeleteConfirmation* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_CodeEditor_DeleteConfirmation();
+		virtual ~Menus_Hacking_CodeEditor_DeleteConfirmation() = default;
+	};
+
 	class Menus_Hacking_CodeEditor_Error : public LocalizedString
 	{
 	public:
@@ -7912,6 +7927,21 @@ namespace Strings
 	private:
 		Menus_Hacking_CodeEditor_Unknown();
 		virtual ~Menus_Hacking_CodeEditor_Unknown() = default;
+	};
+
+	class Menus_Hacking_CodeEditor_UnnamedScript : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_CodeEditor_UnnamedScript* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_CodeEditor_UnnamedScript();
+		virtual ~Menus_Hacking_CodeEditor_UnnamedScript() = default;
 	};
 
 	class Menus_Hacking_CodeEditor_YourScripts : public LocalizedString

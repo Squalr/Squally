@@ -9,6 +9,8 @@
 #include "Engine/Hackables/CodeEditor/ScriptEntry.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
@@ -20,16 +22,16 @@ const std::string ScriptList::ScriptNameKey = "SCRIPT_NAME";
 const std::string ScriptList::ScriptKey = "SCRIPT";
 const int ScriptList::MaxScripts = 9;
 
-ScriptList* ScriptList::create(std::function<void(ScriptEntry*)> onScriptSelect)
+ScriptList* ScriptList::create(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect)
 {
-	ScriptList* instance = new ScriptList(onScriptSelect);
+	ScriptList* instance = new ScriptList(confirmationMenuRef, onScriptSelect);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
+ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect)
 {
 	this->onScriptSelect = onScriptSelect;
 	this->scriptsNode = Node::create();
@@ -38,6 +40,7 @@ ScriptList::ScriptList(std::function<void(ScriptEntry*)> onScriptSelect)
 	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CreateNewScript::create());
 	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
+	this->confirmationMenuRef = confirmationMenuRef;
 	this->hackableCode = nullptr;
 	this->activeScript = nullptr;
 
@@ -138,23 +141,37 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 		return;
 	}
 
-	this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), scriptEntry), this->scripts.end());
-	this->scriptsNode->removeChild(scriptEntry);
+	LocalizedString* scriptName = (scriptEntry->getName() == nullptr) ? Strings::Menus_Hacking_CodeEditor_UnnamedScript::create() : scriptEntry->getName()->clone();
+	
+	GameUtils::focus(this->confirmationMenuRef);
 
-	// Re-initialize positions
-	this->initializePositions();
-
-	if (scriptEntry == this->activeScript)
+	this->confirmationMenuRef->showMessage(Strings::Menus_Hacking_CodeEditor_DeleteConfirmation::create()->setStringReplacementVariables(scriptName),
+	[=]()
 	{
-		if (!this->scripts.empty())
+		this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), scriptEntry), this->scripts.end());
+		this->scriptsNode->removeChild(scriptEntry);
+
+		// Re-initialize positions
+		this->initializePositions();
+
+		if (scriptEntry == this->activeScript)
 		{
-			this->setActiveScript(scripts.front());
+			if (!this->scripts.empty())
+			{
+				this->setActiveScript(scripts.front());
+			}
+			else
+			{
+				this->addNewScript();
+			}
 		}
-		else
-		{
-			this->addNewScript();
-		}
-	}
+
+		GameUtils::focus(this);
+	},
+	[=]()
+	{
+		GameUtils::focus(this);
+	});
 }
 
 void ScriptList::copyScript(ScriptEntry* scriptEntry)

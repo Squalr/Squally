@@ -1,5 +1,6 @@
 #include "ConfirmationMenu.h"
 
+#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
@@ -27,6 +28,9 @@ ConfirmationMenu* ConfirmationMenu::create()
 
 ConfirmationMenu::ConfirmationMenu()
 {
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
+
 	this->onConfirmCallback = nullptr;
 	this->onCancelCallback = nullptr;
 
@@ -68,9 +72,11 @@ ConfirmationMenu::ConfirmationMenu()
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
 	this->confirmationLabel->enableOutline(Color4B::BLACK, 2);
+	this->confirmationLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 
 	this->setVisible(false);
 
+	this->addChild(this->backdrop);
 	this->addChild(this->confirmWindow);
 	this->addChild(this->confirmationLabel);
 	this->addChild(this->closeButton);
@@ -119,6 +125,11 @@ void ConfirmationMenu::initializeListeners()
 
 		this->close();
 	});
+}
+
+void ConfirmationMenu::disableBackdrop()
+{
+	this->backdrop->setVisible(false);
 }
 
 void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback)

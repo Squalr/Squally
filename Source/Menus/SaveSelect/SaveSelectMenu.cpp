@@ -1,6 +1,5 @@
 #include "SaveSelectMenu.h"
 
-#include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
@@ -54,8 +53,6 @@ SaveSelectMenu* SaveSelectMenu::getInstance()
 
 SaveSelectMenu::SaveSelectMenu()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
 	this->setFadeSpeed(0.0f);
 
 	this->backgroundNode = Node::create();
@@ -63,7 +60,6 @@ SaveSelectMenu::SaveSelectMenu()
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->saveButtonNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_SaveSelect_SelectASave::create());
-	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -93,7 +89,6 @@ SaveSelectMenu::SaveSelectMenu()
 	this->addChild(this->saveButtonNode);
 	this->addChild(this->returnButton);
 	this->addChild(this->closeButton);
-	this->addChild(this->backdrop);
 	this->addChild(this->confirmationMenu);
 }
 
@@ -105,7 +100,6 @@ void SaveSelectMenu::onEnter()
 {
 	super::onEnter();
 
-	this->backdrop->setVisible(false);
 	this->backgroundNode->addChild(MenuBackground::claimInstance());
 	this->buildSaveButtons();
 
@@ -309,15 +303,12 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 
 			this->buildSaveButtons();
 
-			this->backdrop->setVisible(false);
 			GameUtils::focus(this);
 		}, [=]()
 		{
-			this->backdrop->setVisible(false);
 			GameUtils::focus(this);
 		});
-
-		this->backdrop->setVisible(true);
+		
 		GameUtils::focus(this->confirmationMenu);
 	});
 

@@ -159,6 +159,8 @@ void CodeWindow::initializePositions()
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
 	this->windowTitle->setPosition(-windowSize.width / 2.0f + 8.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->deleteButton->setPosition(windowSize.width / 2.0f - 32.0f - 40.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
+	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
 	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 	this->lineNumbers->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
@@ -166,9 +168,22 @@ void CodeWindow::initializePositions()
 	this->lineNumbers->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + 20.0f, 0.0f));
 	this->displayedText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
 	this->editableText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
-	//this->displayedText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
-	//this->lineNumbers->setPosition(Vec2(CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
-	//this->editableText->setPosition(Vec2(this->marginSize + CodeWindow::Padding.width - this->windowSize.width / 2.0f, this->windowSize.height / 2.0f - CodeWindow::Padding.height));
+
+	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->copyScript();
+		}
+	});
+
+	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->deleteScript();
+		}
+	});
 }
 
 void CodeWindow::initializeListeners()
@@ -216,6 +231,7 @@ void CodeWindow::openScript(ScriptEntry* script)
 	this->script = script;
 	this->clearText();
 	this->editableText->setString("");
+	this->deleteButton->setVisible(false);
 
 	if (this->script == nullptr)
 	{
@@ -230,6 +246,7 @@ void CodeWindow::openScript(ScriptEntry* script)
 	}
 	else
 	{
+		this->deleteButton->setVisible(true);
 		this->windowTitle->getHitbox()->enableInteraction();
 		this->editableText->getHitbox()->enableInteraction();
 		this->focus();

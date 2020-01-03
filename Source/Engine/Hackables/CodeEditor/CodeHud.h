@@ -14,6 +14,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class ConfirmationMenu;
 class HackableCode;
 class LabelStack;
 class Lexicon;
@@ -69,6 +70,7 @@ private:
 	LocalizedLabel* titleLabel;
 	ClickableTextNode* lexiconButton;
 	Lexicon* lexicon;
+	ConfirmationMenu* confirmationMenu;
 
 	HackableCode* activeHackableCode;
 	float timeSinceLastCompile;

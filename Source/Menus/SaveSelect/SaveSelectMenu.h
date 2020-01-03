@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class LayerColor;
 	class Sprite;
 }
 
@@ -48,7 +47,6 @@ private:
 	ClickableNode* closeButton;
 	ClickableTextNode* returnButton;
 	LocalizedLabel* titleLabel;
-	cocos2d::LayerColor* backdrop;
 	ConfirmationMenu* confirmationMenu;
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 

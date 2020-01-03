@@ -1,10 +1,11 @@
 #pragma once
 #include <functional>
 
-#include "Engine/SmartNode.h"
+#include "Engine/UI/HUD/Hud.h"
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
@@ -13,15 +14,17 @@ class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
 
-class ConfirmationMenu : public SmartNode
+class ConfirmationMenu : public Hud
 {
 public:
 	static ConfirmationMenu* create();
 
 	void showMessage(LocalizedString* confirmationMessage, std::function<void()> confirmCallback, std::function<void()> cancelCallback = nullptr);
 
+	void disableBackdrop();
+
 private:
-	typedef SmartNode super;
+	typedef Hud super;
 	ConfirmationMenu();
 	~ConfirmationMenu();
 
@@ -36,6 +39,7 @@ private:
 	ClickableNode* closeButton;
 	ClickableTextNode* confirmButton;
 	ClickableTextNode* cancelButton;
+	cocos2d::LayerColor* backdrop;
 
 	std::function<void()> onConfirmCallback;
 	std::function<void()> onCancelCallback;

@@ -57,15 +57,14 @@ void ScriptEntry::initializePositions()
 	super::initializePositions();
 
 	const float Margin = 16.0f;
-	const float CopyOffset = 24.0f;
 
-	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + CopyOffset + Margin);
-	this->selectedSprite->setPositionX(-this->backPlate->getContentSize().width / 2.0f + CopyOffset + Margin);
-	this->copyButton->setPositionX(-this->backPlate->getContentSize().width / 2.0f + CopyOffset);
+	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + Margin);
+	this->selectedSprite->setPositionX(-this->backPlate->getContentSize().width / 2.0f + Margin);
+	this->copyButton->setPositionX(this->backPlate->getContentSize().width / 2.0f - 24.0f);
 
 	if (this->deleteButton != nullptr)
 	{
-		this->deleteButton->setPositionX(this->backPlate->getContentSize().width / 2.0f - 24.0f);
+		this->deleteButton->setPositionX(this->backPlate->getContentSize().width / 2.0f - 24.0f - 40.0f);
 	}
 }
 
@@ -105,12 +104,11 @@ void ScriptEntry::toggleSelected(bool isSelected)
 {
 	const float Margin = 16.0f;
 	const float SelectedOffset = 32.0f;
-	const float CopyOffset = 24.0f;
 
 	this->selectedSprite->setVisible(isSelected);
 
 	this->label->setTextColor(isSelected ? Color4B::YELLOW : Color4B::WHITE);
-	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + CopyOffset + Margin + (isSelected ? SelectedOffset : 0.0f));
+	this->label->setPositionX(-this->backPlate->getContentSize().width / 2.0f + Margin + (isSelected ? SelectedOffset : 0.0f));
 }
 
 void ScriptEntry::deleteScript()
