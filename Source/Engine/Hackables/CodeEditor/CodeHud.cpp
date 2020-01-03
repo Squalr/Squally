@@ -262,7 +262,6 @@ void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 		}
 
 		this->functionWindow->openScript(this->scriptList->getActiveScript());
-		this->functionWindow->focus();
 
 		this->titleLabel->setStringReplacementVariables(hackableCode->getName()->clone());
 

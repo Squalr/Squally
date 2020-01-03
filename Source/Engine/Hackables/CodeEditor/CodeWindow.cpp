@@ -185,33 +185,58 @@ void CodeWindow::initializeListeners()
 	{
 		this->editableText->getHitbox()->setAllowCollisionWhenInvisible(false);
 	}));
-}
 
-void CodeWindow::update(float dt)
-{
-	std::string currentText = this->editableText->getString();
-
-	if (this->previousText != currentText)
+	this->editableText->setStringChangeCallback([=](std::string newText)
 	{
-		this->previousText = currentText;
-		this->constructTokenizedText(currentText);
+		if (this->script != nullptr)
+		{
+			this->script->setScript(newText);
+		}
+		
+		this->constructTokenizedText(newText);
 
 		this->contentPane->updateScrollBounds();
-	}
+	});
+
+	this->windowTitle->setStringChangeCallback([=](std::string newTitle)
+	{
+		if (this->script != nullptr && !this->script->isReadOnly)
+		{
+			this->script->setName(newTitle);
+		}
+	});
 }
 
 void CodeWindow::openScript(ScriptEntry* script)
 {
 	this->script = script;
 	this->clearText();
+	this->editableText->setString("");
 
 	if (this->script == nullptr)
 	{
 		return;
 	}
 
-	this->setText(script->getScript());
+	if (script->isReadOnly)
+	{
+		this->windowTitle->getHitbox()->disableInteraction();
+		this->editableText->getHitbox()->disableInteraction();
+		this->unfocus();
+	}
+	else
+	{
+		this->windowTitle->getHitbox()->enableInteraction();
+		this->editableText->getHitbox()->enableInteraction();
+		this->focus();
+	}
+
+	std::string scriptText = script->getScript();
+
+	this->setText(scriptText);
+	this->constructTokenizedText(scriptText);
 	this->setWindowTitle(script->getName()->getString());
+	this->contentPane->updateScrollBounds();
 }
 
 std::string CodeWindow::getText()
@@ -237,6 +262,14 @@ void CodeWindow::clearHasChanges()
 
 void CodeWindow::focus()
 {
+	// Focusing readonly scripts is not allowed
+	if (this->script != nullptr && this->script->isReadOnly)
+	{
+		this->unfocus();
+
+		return;
+	}
+
 	this->editableText->focus();
 }
 

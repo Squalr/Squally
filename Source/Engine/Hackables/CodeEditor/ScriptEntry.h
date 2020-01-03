@@ -23,6 +23,7 @@ public:
 	LocalizedString* getName();
 	std::string getScript();
 	void setScript(std::string script);
+	void setName(std::string name);
 
 	bool isReadOnly;
 

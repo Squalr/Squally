@@ -193,9 +193,24 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
+	if (savedScripts.empty())
+	{
+		this->addNewScript();
+	}
+
 	this->initializePositions();
 
-	this->setActiveScript(scripts.front());
+	// Focus the first non-readonly script
+	for (auto script : this->scripts)
+	{
+		if (script->isReadOnly)
+		{
+			continue;
+		}
+
+		this->setActiveScript(script);
+		break;
+	}
 }
 
 void ScriptList::saveScripts()

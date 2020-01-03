@@ -55,7 +55,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float) override;
 	void setWindowTitle(std::string windowTitle);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
 	void insertNewline();
@@ -78,7 +77,6 @@ private:
 	ScriptEntry* script;
 	int currentLineNumber;
 	cocos2d::Size windowSize;
-	std::string previousText;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;

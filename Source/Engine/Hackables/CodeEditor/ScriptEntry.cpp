@@ -92,6 +92,14 @@ LocalizedString* ScriptEntry::getName()
 	return this->scriptName;
 }
 
+void ScriptEntry::setName(std::string name)
+{
+	if (dynamic_cast<ConstantString*>(this->scriptName) != nullptr)
+	{
+		dynamic_cast<ConstantString*>(this->scriptName)->setString(name);
+	}
+}
+
 std::string ScriptEntry::getScript()
 {
 	return this->script;
