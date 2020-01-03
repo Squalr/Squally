@@ -10,6 +10,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
@@ -148,6 +149,8 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 	this->confirmationMenuRef->showMessage(Strings::Menus_Hacking_CodeEditor_DeleteConfirmation::create()->setStringReplacementVariables(scriptName),
 	[=]()
 	{
+		int scriptIndex = std::distance(this->scripts.begin(), std::find(this->scripts.begin(), this->scripts.end(), scriptEntry));
+
 		this->scripts.erase(std::remove(this->scripts.begin(), this->scripts.end(), scriptEntry), this->scripts.end());
 		this->scriptsNode->removeChild(scriptEntry);
 
@@ -158,7 +161,9 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 		{
 			if (!this->scripts.empty())
 			{
-				this->setActiveScript(scripts.front());
+				scriptIndex = MathUtils::clamp(scriptIndex, 0, this->scripts.size() - 1);
+
+				this->setActiveScript(scripts[scriptIndex]);
 			}
 			else
 			{
@@ -166,11 +171,11 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 			}
 		}
 
-		GameUtils::focus(this);
+		GameUtils::focus(this->getParent());
 	},
 	[=]()
 	{
-		GameUtils::focus(this);
+		GameUtils::focus(this->getParent());
 	});
 }
 
@@ -185,7 +190,12 @@ void ScriptList::copyScript(ScriptEntry* scriptEntry)
 	}
 
 	newScript->setScript(scriptEntry->getScript());
-	newScript->setName(scriptEntry->getName() == nullptr ? "" : scriptEntry->getName()->getString());
+
+	// For now, no name copy is made.
+	// newScript->setName(scriptEntry->getName() == nullptr ? "" : scriptEntry->getName()->getString());
+
+	// Refresh view
+	this->onScriptSelect(this->activeScript);
 }
 
 void ScriptList::loadScripts(HackableCode* hackableCode)

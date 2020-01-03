@@ -18,10 +18,25 @@ float MathUtils::clamp(float n, float lower, float upper)
 		return lower;
 	}
 	
-	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
+	return std::max(lower, std::min(n, upper));
 }
 
 int MathUtils::clamp(int n, int lower, int upper)
+{
+	return std::max(lower, std::min(n, upper));
+}
+
+float MathUtils::bound(float n, float lower, float upper)
+{
+	if (std::isnan(n) || !std::isfinite(n))
+	{
+		return lower;
+	}
+	
+	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
+}
+
+int MathUtils::bound(int n, int lower, int upper)
 {
 	return std::max(std::min(lower, upper), std::min(n, std::max(lower, upper)));
 }

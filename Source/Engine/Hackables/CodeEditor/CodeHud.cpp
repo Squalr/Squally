@@ -112,7 +112,7 @@ CodeHud::CodeHud()
 	this->applyChangesButtonGrayed = Node::create();
 	this->applyChangesButtonGrayed->addChild(Sprite::create(UIResources::Menus_Buttons_GenericHackButtonGray));
 
-	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
+	LocalizedLabel*	acceptGray = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Apply::create());
 	acceptGray->setTextColor(Color4B::GRAY);
 	this->applyChangesButtonGrayed->addChild(acceptGray);
 

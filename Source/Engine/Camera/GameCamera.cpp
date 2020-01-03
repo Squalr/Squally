@@ -445,12 +445,12 @@ Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 	// Prevent camera from leaving level bounds. Note: Only constrain if out of bounds in one direction, otherwise bounds are irrelevant
 	if ((cameraPosition.x < MinX) ^ (cameraPosition.x > MaxX))
 	{
-		cameraPosition.x = MathUtils::clamp(cameraPosition.x, MinX, MaxX);
+		cameraPosition.x = MathUtils::bound(cameraPosition.x, MinX, MaxX);
 	}
 
 	if ((cameraPosition.y < MinY) ^ (cameraPosition.y > MaxY))
 	{
-		cameraPosition.y = MathUtils::clamp(cameraPosition.y, MinY, MaxY);
+		cameraPosition.y = MathUtils::bound(cameraPosition.y, MinY, MaxY);
 	}
 
 	return cameraPosition;
