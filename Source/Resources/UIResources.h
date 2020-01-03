@@ -112,6 +112,8 @@ namespace UIResources
 	extern const std::string Menus_CreditsMenu_Twitter;
 	extern const std::string Menus_CreditsMenu_Zac;
 	extern const std::string Menus_Generic_LargeMenu;
+	extern const std::string Menus_HackerModeMenu_Copy;
+	extern const std::string Menus_HackerModeMenu_CopySelected;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntry;
 	extern const std::string Menus_HackerModeMenu_NewScriptEntrySelected;
 	extern const std::string Menus_HackerModeMenu_Plus;

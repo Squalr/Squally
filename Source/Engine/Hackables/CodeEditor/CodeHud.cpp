@@ -68,7 +68,7 @@ CodeHud::CodeHud()
 	this->scriptList = ScriptList::create([=](ScriptEntry* scriptEntry) { this->functionWindow->openScript(scriptEntry); });
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_CodeEditor_FunctionHeader::create());
 
-	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
+	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Apply::create());
 	LocalizedLabel*	acceptLabelHover = acceptLabel->clone();
 
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());

@@ -18,6 +18,7 @@ namespace cocos2d
 	}
 }
 
+class ClickableNode;
 class InputText;
 class LocalizedLabel;
 class LocalizedString;
@@ -65,6 +66,8 @@ private:
 	cocos2d::LayerColor* background;
 	cocos2d::LayerColor* titleBar;
 	InputText* windowTitle;
+	ClickableNode* deleteButton;
+	ClickableNode* copyButton;
 	ScrollPane* contentPane;
 	cocos2d::ui::RichText* displayedText;
 	InputText* editableText;

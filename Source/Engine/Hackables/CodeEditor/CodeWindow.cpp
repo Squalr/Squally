@@ -108,6 +108,8 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);
+	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
+	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
 
 	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -131,6 +133,8 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->addChild(this->titleBar);
 	this->addChild(this->windowTitle);
 	this->addChild(this->contentPane);
+	this->addChild(this->deleteButton);
+	this->addChild(this->copyButton);
 }
 
 CodeWindow::~CodeWindow()
@@ -192,7 +196,7 @@ void CodeWindow::initializeListeners()
 		{
 			this->script->setScript(newText);
 		}
-		
+
 		this->constructTokenizedText(newText);
 
 		this->contentPane->updateScrollBounds();

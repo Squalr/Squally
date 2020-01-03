@@ -20,7 +20,7 @@ public:
 	static ScriptList* create(std::function<void(ScriptEntry*)> onScriptSelect);
 
 	void setActiveScriptText(std::string text);
-	void addNewScript();
+	ScriptEntry* addNewScript();
 	void deleteActiveScript();
 	void loadScripts(HackableCode* hackableCode);
 	void saveScripts();
@@ -36,7 +36,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void deleteScript(ScriptEntry* scriptEntry);
+	void copyScript(ScriptEntry* scriptEntry);
 	void onScriptEntryClick(ScriptEntry* scriptEntry);
+	void onScriptEntryCopyClick(ScriptEntry* scriptEntry);
 	void onScriptEntryDeleteClick(ScriptEntry* scriptEntry);
 	void setActiveScript(ScriptEntry* activeScript);
 	

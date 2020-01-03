@@ -90,35 +90,40 @@ void ScriptList::setActiveScriptText(std::string text)
 	}
 }
 
-void ScriptList::addNewScript()
+ScriptEntry* ScriptList::addNewScript()
 {
-	if (this->scripts.size() < ScriptList::MaxScripts)
+	if (this->scripts.size() >= ScriptList::MaxScripts)
 	{
-		LocalizedString* newScriptName = Strings::Common_Count::create();
-
-		newScriptName->setStringReplacementVariables(
-		{
-			Strings::Menus_Hacking_CodeEditor_MyNewScript::create(),
-			ConstantString::create(std::to_string(this->scripts.size()))
-		});
-
-		std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
-		ScriptEntry* newScriptEntry = ScriptEntry::create(
-			ConstantString::create(newScriptName->getString()),
-			script,
-			false,
-			[=](ScriptEntry* entry) { this->onScriptEntryClick(entry); }, 
-			[=](ScriptEntry* entry) { this->onScriptEntryDeleteClick(entry); }
-		);
-		
-		this->scripts.push_back(newScriptEntry);
-		this->scriptsNode->addChild(newScriptEntry);
-
-		this->setActiveScript(newScriptEntry);
-
-		// Re-initialize positions
-		this->initializePositions();
+		return nullptr;
 	}
+
+	LocalizedString* newScriptName = Strings::Common_Count::create();
+
+	newScriptName->setStringReplacementVariables(
+	{
+		Strings::Menus_Hacking_CodeEditor_MyNewScript::create(),
+		ConstantString::create(std::to_string(this->scripts.size()))
+	});
+
+	std::string script = this->hackableCode == nullptr ? "" : this->hackableCode->getOriginalAssemblyString();
+	ScriptEntry* newScriptEntry = ScriptEntry::create(
+		ConstantString::create(newScriptName->getString()),
+		script,
+		false,
+		[=](ScriptEntry* entry) { this->onScriptEntryClick(entry); }, 
+		[=](ScriptEntry* entry) { this->onScriptEntryCopyClick(entry); },
+		[=](ScriptEntry* entry) { this->onScriptEntryDeleteClick(entry); }
+	);
+	
+	this->scripts.push_back(newScriptEntry);
+	this->scriptsNode->addChild(newScriptEntry);
+
+	this->setActiveScript(newScriptEntry);
+
+	// Re-initialize positions
+	this->initializePositions();
+
+	return newScriptEntry;
 }
 
 void ScriptList::deleteActiveScript()
@@ -152,6 +157,20 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 	}
 }
 
+void ScriptList::copyScript(ScriptEntry* scriptEntry)
+{
+	ScriptEntry* newScript = this->addNewScript();
+
+	// Exit if unable to create a new script (ie script list is full)
+	if (newScript == nullptr)
+	{
+		return;
+	}
+
+	newScript->setScript(scriptEntry->getScript());
+	newScript->setName(scriptEntry->getName() == nullptr ? "" : scriptEntry->getName()->getString());
+}
+
 void ScriptList::loadScripts(HackableCode* hackableCode)
 {
 	this->hackableCode = hackableCode;
@@ -165,6 +184,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 			(sizeof(void*) == 4) ? readOnlyScript.scriptx86 : readOnlyScript.scriptx64,
 			true,
 			[=](ScriptEntry* entry) { this->onScriptEntryClick(entry); }, 
+			[=](ScriptEntry* entry) { this->onScriptEntryCopyClick(entry); }, 
 			nullptr
 		);
 
@@ -186,6 +206,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 			script,
 			false,
 			[=](ScriptEntry* entry) { this->onScriptEntryClick(entry); }, 
+			[=](ScriptEntry* entry) { this->onScriptEntryCopyClick(entry); },
 			[=](ScriptEntry* entry) { this->onScriptEntryDeleteClick(entry); }
 		);
 
@@ -245,6 +266,11 @@ void ScriptList::onScriptEntryClick(ScriptEntry* scriptEntry)
 	this->setActiveScript(scriptEntry);
 
 	this->onScriptSelect(scriptEntry);
+}
+
+void ScriptList::onScriptEntryCopyClick(ScriptEntry* scriptEntry)
+{
+	this->copyScript(scriptEntry);
 }
 
 void ScriptList::onScriptEntryDeleteClick(ScriptEntry* scriptEntry)

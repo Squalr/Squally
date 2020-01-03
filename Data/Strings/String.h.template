@@ -1,0 +1,15 @@
+
+	class {{ClassName}} : public LocalizedString
+	{
+	public:
+		static {{ClassName}}* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		{{ClassName}}();
+		virtual ~{{ClassName}}() = default;
+	};
