@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerEnemy;
+class Sound;
 
 class EnemyCombatEngageBehavior : public AttachedBehavior
 {
@@ -26,4 +27,5 @@ private:
 	bool canEngage;
 
 	PlatformerEnemy* enemy;
+	Sound* engageSound;
 };

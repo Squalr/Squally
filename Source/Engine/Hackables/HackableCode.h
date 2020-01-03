@@ -150,6 +150,16 @@ public:
 		xmm0, xmm1, xmm2, xmm3, xmm4, xmm5, xmm6, xmm7,
 	};
 
+	struct ReadOnlyScript
+	{
+		LocalizedString* title;
+		std::string scriptx86;
+		std::string scriptx64;
+
+		ReadOnlyScript() : title(nullptr), scriptx86(""), scriptx64("") { }
+		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
+	};
+
 	struct HackableCodeInfo
 	{
 		std::string hackableObjectIdentifier;
@@ -160,15 +170,12 @@ public:
 		int hackFlags;
 		float duration;
 		Clippy* clippy;
-		std::string asmOverride;
+		std::vector<ReadOnlyScript> readOnlyScripts;
+		bool excludeDefaultScript;
 
-		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration) :
-			hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(nullptr), asmOverride("") { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride("") { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy, std::string asmOverride) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), asmOverride(asmOverride) { }
+		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	
 	};
 
@@ -186,6 +193,7 @@ public:
 	static std::vector<HackableCode*> create(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 
 	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
+	std::vector<ReadOnlyScript> getReadOnlyScripts();
 	std::string getHackableCodeIdentifier();
 	std::string getAssemblyString();
 	std::string getOriginalAssemblyString();
@@ -217,6 +225,7 @@ private:
 	HackableCodeInfo hackableCodeInfo;
 	std::vector<unsigned char> originalCodeCopy;
 	int originalCodeLength;
+	std::vector<ReadOnlyScript> readOnlyScripts;
 
 	static CodeMap HackableCodeCache;
 	static const int StartTagFuncIdIndex;

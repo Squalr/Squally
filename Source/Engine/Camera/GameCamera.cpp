@@ -434,13 +434,13 @@ Vec2 GameCamera::boundCameraByRectangle(Vec2 cameraPosition)
 
 Vec2 GameCamera::boundCameraByMapBounds(Vec2 cameraPosition)
 {
-	const float cameraZoom = this->getCameraZoom();
-	const Size cameraSize = Director::getInstance()->getVisibleSize() * cameraZoom;
+	const float CameraZoom = this->getCameraZoom();
+	const Size CameraSize = Director::getInstance()->getVisibleSize() * CameraZoom;
 
-	const float MinX = this->mapBounds.getMinX() + cameraSize.width / 2.0f;
-	const float MaxX = this->mapBounds.getMaxX() - cameraSize.width / 2.0f;
-	const float MinY = this->mapBounds.getMinY() + cameraSize.height / 2.0f;
-	const float MaxY = this->mapBounds.getMaxY() - cameraSize.height / 2.0f;
+	const float MinX = this->mapBounds.getMinX() + CameraSize.width / 2.0f;
+	const float MaxX = this->mapBounds.getMaxX() - CameraSize.width / 2.0f;
+	const float MinY = this->mapBounds.getMinY() + CameraSize.height / 2.0f;
+	const float MaxY = this->mapBounds.getMaxY() - CameraSize.height / 2.0f;
 
 	// Prevent camera from leaving level bounds. Note: Only constrain if out of bounds in one direction, otherwise bounds are irrelevant
 	if ((cameraPosition.x < MinX) ^ (cameraPosition.x > MaxX))

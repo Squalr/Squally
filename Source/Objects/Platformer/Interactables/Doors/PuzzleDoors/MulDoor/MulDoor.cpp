@@ -60,7 +60,11 @@ void MulDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				nullptr,
-				((sizeof(void*) == 4) ? "imul ecx, 1" : "imul rcx, 1") // The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs
+				{
+					// The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs, so we override that
+					HackableCode::ReadOnlyScript(nullptr, "imul ecx, 1", "imul rcx, 1"),
+				},
+				true
 			)
 		},
 	};

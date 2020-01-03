@@ -22,16 +22,16 @@ class ScriptEntry;
 class ScriptList;
 class TextWindow;
 
-class CodeEditor : public GlobalHud
+class CodeHud : public GlobalHud
 {
 public:
-	static CodeEditor* create();
+	static CodeHud* create();
 
 private:
 	typedef SmartNode super;
 
-	CodeEditor();
-	~CodeEditor();
+	CodeHud();
+	virtual ~CodeHud();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -42,9 +42,7 @@ private:
 	void disableAccept();
 	void buildRegisterWindow();
 	void compile(std::string rawText);
-	void onFunctionTextUpdate(std::string text);
 	void tokenizeCallback(std::string text, std::vector<CodeWindow::token>&);
-	void onScriptLoad(ScriptEntry* script);
 	void onAccept();
 	void onCancel();
 	void setWindowColor(cocos2d::Color4B windowColor);
@@ -73,7 +71,7 @@ private:
 	Lexicon* lexicon;
 
 	HackableCode* activeHackableCode;
-	float compileDelay;
+	float timeSinceLastCompile;
 
 	static const cocos2d::Size Padding;
 	static const float CompileDelayMaxSeconds;

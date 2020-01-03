@@ -9,7 +9,7 @@ namespace cocos2d
 	typedef std::map<std::string, Value> ValueMap;
 }
 
-class CodeEditor;
+class CodeHud;
 class ConfirmationMenu;
 class DeveloperHud;
 class IngameMenu;
@@ -69,7 +69,7 @@ private:
 	Hud* hackerModeGlow;
 	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
-	CodeEditor* codeEditor;
+	CodeHud* codeHud;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;

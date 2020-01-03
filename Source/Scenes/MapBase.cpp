@@ -12,7 +12,7 @@
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
-#include "Engine/Hackables/CodeEditor/CodeEditor.h"
+#include "Engine/Hackables/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Utils/GameUtils.h"
@@ -39,7 +39,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->map = nullptr;
 	this->mapNode = Node::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
-	this->codeEditor = allowHackerMode ? CodeEditor::create() : nullptr;
+	this->codeHud = allowHackerMode ? CodeHud::create() : nullptr;
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
 	this->pauseMenu = useIngameMenu ? (PauseMenu*)this->ingameMenu : PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
@@ -77,7 +77,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	if (allowHackerMode)
 	{
 		this->menuHud->addChild(this->radialMenu);
-		this->menuHud->addChild(this->codeEditor);
+		this->menuHud->addChild(this->codeHud);
 	}
 	
 	this->topMenuHud->addChild(this->pauseMenu);

@@ -17,16 +17,18 @@ class LocalizedLabel;
 class ScriptEntry : public SmartNode
 {
 public:
-	static ScriptEntry* create(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
+	static ScriptEntry* create(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
 
 	void toggleSelected(bool isSelected);
-	ConstantString* getName();
+	LocalizedString* getName();
 	std::string getScript();
 	void setScript(std::string script);
 
+	bool isReadOnly;
+
 private:
 	typedef SmartNode super;
-	ScriptEntry(ConstantString* scriptName, std::string script, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
+	ScriptEntry(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onDeleteClick);
 	~ScriptEntry() = default;
 
 	void initializePositions() override;
@@ -37,7 +39,7 @@ private:
 	LocalizedLabel* label;
 	ClickableNode* deleteButton;
 
-	ConstantString* scriptName;
+	LocalizedString* scriptName;
 	std::string script;
 	std::function<void(ScriptEntry*)> onScriptEntryClick;
 	std::function<void(ScriptEntry*)> onDeleteClick;

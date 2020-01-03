@@ -67,9 +67,9 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 {
 	std::vector<PlatformerAttack*> attacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = this->registeredAttacks.begin(); it != this->registeredAttacks.end(); it++)
+	for (auto attack : this->registeredAttacks)
 	{
-		attacks.push_back(*it);
+		attacks.push_back(attack);
 	}
 
 	return attacks;
@@ -77,14 +77,13 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 {
-	std::vector<PlatformerAttack*> attacks = this->getAttacks();
 	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	for (auto attack : this->getAttacks())
 	{
-		if ((*it)->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
+		if (attack->getSpecialCost() <= this->entity->getStateOrDefaultInt(StateKeys::Mana, 0))
 		{
-			availableAttacks.push_back(*it);
+			availableAttacks.push_back(attack);
 		}
 	}
 
@@ -93,14 +92,13 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableAttacks()
 
 std::vector<PlatformerAttack*> EntityAttackBehavior::getNoCostAttacks()
 {
-	std::vector<PlatformerAttack*> attacks = this->getAttacks();
 	std::vector<PlatformerAttack*> availableAttacks = std::vector<PlatformerAttack*>();
 
-	for (auto it = attacks.begin(); it != attacks.end(); it++)
+	for (auto attack : this->getAttacks())
 	{
-		if ((*it)->getSpecialCost() <= 0)
+		if (attack->getSpecialCost() <= 0)
 		{
-			availableAttacks.push_back(*it);
+			availableAttacks.push_back(attack);
 		}
 	}
 
@@ -138,21 +136,17 @@ void EntityAttackBehavior::buildEquipmentAttacks()
 		{
 			return;
 		}
-
-		std::vector<Equipable*> equipment = equipmentInventory->getEquipment();
-
-		for (auto it = equipment.begin(); it != equipment.end(); it++)
+		
+		for (auto equipable : equipmentInventory->getEquipment())
 		{
-			if (*it == nullptr)
+			if (equipable == nullptr)
 			{
 				continue;
 			}
-			
-			std::vector<PlatformerAttack*> weaponAttacks = (*it)->cloneAssociatedAttacks();
 
-			for (auto it = weaponAttacks.begin(); it != weaponAttacks.end(); it++)
+			for (auto attack : equipable->cloneAssociatedAttacks())
 			{
-				this->registerAttack(*it);
+				this->registerAttack(attack);
 			}
 		}
 	});
@@ -173,22 +167,19 @@ void EntityAttackBehavior::rebuildConsumables()
 			return;
 		}
 
-		std::vector<Consumable*> consumables = inventory->getItemsOfType<Consumable>();
-
-		for (auto it = consumables.begin(); it != consumables.end(); it++)
+		for (auto consumable : inventory->getItemsOfType<Consumable>())
 		{
-			Consumable* item = *it;
-			PlatformerAttack* consumable = item->cloneAssociatedAttack();
+			PlatformerAttack* consumableClone = consumable->cloneAssociatedAttack();
 
-			consumable->registerAttackCompleteCallback([=]()
+			consumableClone->registerAttackCompleteCallback([=]()
 			{
-				inventory->tryRemove(item);
+				inventory->tryRemove(consumable);
 
 				this->consumablesStale = true;
 			});
 
-			this->consumablessNode->addChild(consumable);
-			this->registeredConsumables.push_back(consumable);
+			this->consumablessNode->addChild(consumableClone);
+			this->registeredConsumables.push_back(consumableClone);
 		}
 	});
 }

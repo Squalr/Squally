@@ -1,4 +1,4 @@
-﻿#include "CodeEditor.h"
+﻿#include "CodeHud.h"
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
@@ -33,27 +33,27 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-const float CodeEditor::CompileDelayMaxSeconds = 0.1f;
-const float CodeEditor::LineNumberMargin = 32.0f;
-const Size CodeEditor::StatusSize = Size(420.0f, 1080.0f);
-const Size CodeEditor::FunctionSize = Size(640.0f, 640.0f);
-const Color4B CodeEditor::SubtextColor = Color4B(66, 166, 166, 255);
-const Color4B CodeEditor::HeaderColor = Color4B(188, 188, 64, 255);
-const Color4B CodeEditor::ErrorColor = Color4B(196, 82, 82, 255);
-const Color4B CodeEditor::RegisterColor = Color4B(86, 156, 214, 255);
+const float CodeHud::CompileDelayMaxSeconds = 0.1f;
+const float CodeHud::LineNumberMargin = 32.0f;
+const Size CodeHud::StatusSize = Size(420.0f, 1080.0f);
+const Size CodeHud::FunctionSize = Size(640.0f, 640.0f);
+const Color4B CodeHud::SubtextColor = Color4B(66, 166, 166, 255);
+const Color4B CodeHud::HeaderColor = Color4B(188, 188, 64, 255);
+const Color4B CodeHud::ErrorColor = Color4B(196, 82, 82, 255);
+const Color4B CodeHud::RegisterColor = Color4B(86, 156, 214, 255);
 
-CodeEditor* CodeEditor::create()
+CodeHud* CodeHud::create()
 {
-	CodeEditor* instance = new CodeEditor();
+	CodeHud* instance = new CodeHud();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CodeEditor::CodeEditor()
+CodeHud::CodeHud()
 {
-	this->compileDelay = CodeEditor::CompileDelayMaxSeconds;
+	this->timeSinceLastCompile = CodeHud::CompileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
@@ -62,10 +62,10 @@ CodeEditor::CodeEditor()
 	this->previewNode = Node::create();
 	this->clippyNode = Node::create();
 
-	this->functionWindow = CodeWindow::create(CodeEditor::FunctionSize);
-	this->statusWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
-	this->registerWindow = LabelStack::create(CodeEditor::StatusSize, 8.0f);
-	this->scriptList = ScriptList::create(CC_CALLBACK_1(CodeEditor::onScriptLoad, this));
+	this->functionWindow = CodeWindow::create(CodeHud::FunctionSize);
+	this->statusWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
+	this->registerWindow = LabelStack::create(CodeHud::StatusSize, 8.0f);
+	this->scriptList = ScriptList::create([=](ScriptEntry* scriptEntry) { this->functionWindow->openScript(scriptEntry); });
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Hacking_CodeEditor_FunctionHeader::create());
 
 	LocalizedLabel*	acceptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_ApplyChanges::create());
@@ -127,9 +127,6 @@ CodeEditor::CodeEditor()
 	this->titleLabel->enableOutline(Color4B::BLACK, 3);
 	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
 
-	this->functionWindow->setTokenizationCallback(CC_CALLBACK_2(CodeEditor::tokenizeCallback, this));
-	this->functionWindow->setOnEditCallback(CC_CALLBACK_1(CodeEditor::onFunctionTextUpdate, this));
-
 	this->statusWindow->setPadding(Size(16.0f, 0.0f));
 	this->registerWindow->setPadding(Size(16.0f, 0.0f));
 
@@ -158,18 +155,18 @@ CodeEditor::CodeEditor()
 	this->addChild(this->clippyNode);
 }
 
-CodeEditor::~CodeEditor()
+CodeHud::~CodeHud()
 {
 }
 
-void CodeEditor::onEnter()
+void CodeHud::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void CodeEditor::initializePositions()
+void CodeHud::initializePositions()
 {
 	super::initializePositions();
 
@@ -186,22 +183,22 @@ void CodeEditor::initializePositions()
 	this->previewNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f + 352.0f));
 	this->clippyNode->setPosition(Vec2(visibleSize.width - sidebarWidth / 2.0f, visibleSize.height / 2.0f - 480.0f));
 	this->functionWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeEditor::StatusSize.width, visibleSize.height / 2.0f + 144.0f));
+	this->registerWindow->setPosition(Vec2(visibleSize.width - CodeHud::StatusSize.width, visibleSize.height / 2.0f + 144.0f));
 
-	this->cancelButton->setPosition(this->functionWindow->getPosition() + Vec2(-160.0f, -CodeEditor::FunctionSize.height / 2.0f - 64.0f));
-	this->applyChangesButton->setPosition(this->functionWindow->getPosition() + Vec2(160.0f, -CodeEditor::FunctionSize.height / 2.0f - 64.0f));
+	this->cancelButton->setPosition(this->functionWindow->getPosition() + Vec2(-160.0f, -CodeHud::FunctionSize.height / 2.0f - 64.0f));
+	this->applyChangesButton->setPosition(this->functionWindow->getPosition() + Vec2(160.0f, -CodeHud::FunctionSize.height / 2.0f - 64.0f));
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
 	this->lexiconButton->setPosition(Vec2(sidebarWidth / 2.0f, 88.0f));
 }
 
-void CodeEditor::initializeListeners()
+void CodeHud::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onAccept, this));
-	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeEditor::onCancel, this));
+	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeHud::onAccept, this));
+	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeHud::onCancel, this));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
@@ -234,7 +231,7 @@ void CodeEditor::initializeListeners()
 	});
 }
 
-void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
+void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 {
 	HackableCode* hackableCode = dynamic_cast<HackableCode*>(args->hackableAttribute);
 
@@ -264,9 +261,7 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 			this->clippyNode->addChild(clippy);
 		}
 
-		ScriptEntry* activeScript = this->scriptList->getActiveScript();
-
-		this->functionWindow->setText(activeScript == nullptr ? "" : activeScript->getScript());
+		this->functionWindow->openScript(this->scriptList->getActiveScript());
 		this->functionWindow->focus();
 
 		this->titleLabel->setStringReplacementVariables(hackableCode->getName()->clone());
@@ -278,52 +273,37 @@ void CodeEditor::open(HackableEvents::HackableObjectEditArgs* args)
 	}
 }
 
-void CodeEditor::onFunctionTextUpdate(std::string text)
-{
-	this->scriptList->setActiveScriptText(text);
-
-	this->disableAccept();
-
-	// This will trigger another compile after waiting the compile delay time, for performance
-	this->compileDelay = 0.0f;
-}
-
-void CodeEditor::update(float dt)
+void CodeHud::update(float dt)
 {
 	super::update(dt);
 
-	ScriptEntry* activeScript = this->scriptList->getActiveScript();
-	
-	if (activeScript != nullptr)
+	// Compile on a delay as a performance boost
+	if (this->functionWindow->hasChanges() && this->timeSinceLastCompile >= CodeHud::CompileDelayMaxSeconds)
 	{
-		activeScript->getName()->setString(this->functionWindow->getTitle());
+		this->timeSinceLastCompile = 0.0f;
+		this->functionWindow->clearHasChanges();
+		this->compile(this->functionWindow->getText());
 	}
-
-	// Update compile based on compile delay
-	if (this->compileDelay <= CodeEditor::CompileDelayMaxSeconds)
+	
+	if (this->timeSinceLastCompile <= CodeHud::CompileDelayMaxSeconds)
 	{
-		this->compileDelay += dt;
-
-		if (this->compileDelay > CodeEditor::CompileDelayMaxSeconds)
-		{
-			this->compile(this->functionWindow->getText());
-		}
+		this->timeSinceLastCompile += dt;
 	}
 }
 
-void CodeEditor::enableAccept()
+void CodeHud::enableAccept()
 {
 	this->applyChangesButtonGrayed->setVisible(false);
 	this->applyChangesButton->setVisible(true);
 }
 
-void CodeEditor::disableAccept()
+void CodeHud::disableAccept()
 {
 	this->applyChangesButtonGrayed->setVisible(true);
 	this->applyChangesButton->setVisible(false);
 }
 
-void CodeEditor::buildRegisterWindow()
+void CodeHud::buildRegisterWindow()
 {
 	if (this->activeHackableCode == nullptr)
 	{
@@ -478,7 +458,7 @@ void CodeEditor::buildRegisterWindow()
 		{
 			LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, getRegisterLabel(reg));
 
-			registerLabel->setTextColor(CodeEditor::RegisterColor);
+			registerLabel->setTextColor(CodeHud::RegisterColor);
 
 			this->registerWindow->insert(registerLabel);
 
@@ -530,7 +510,7 @@ void CodeEditor::buildRegisterWindow()
 	tryPrintRegisterHint(HackableCode::Register::xmm7);
 }
 
-void CodeEditor::compile(std::string assemblyText)
+void CodeHud::compile(std::string assemblyText)
 {
 	if (this->activeHackableCode == nullptr)
 	{
@@ -556,17 +536,17 @@ void CodeEditor::compile(std::string assemblyText)
 		});
 
 		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Status::create());
-		statusLabel->setTextColor(CodeEditor::HeaderColor);
+		statusLabel->setTextColor(CodeHud::HeaderColor);
 
 		LocalizedLabel* compileSuccessfulLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CompileSuccessful::create());
 
 		LocalizedLabel* addressLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Address::create());
-		addressLabel->setTextColor(CodeEditor::HeaderColor);
+		addressLabel->setTextColor(CodeHud::HeaderColor);
 
 		LocalizedLabel* addressValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, ConstantString::create(HackUtils::hexAddressOf(this->activeHackableCode->getPointer(), true, true)));
 		
 		LocalizedLabel* byteCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_ByteCount::create());
-		byteCountLabel->setTextColor(CodeEditor::HeaderColor);
+		byteCountLabel->setTextColor(CodeHud::HeaderColor);
 
 		LocalizedLabel* bytesUsedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_XOverY::create());
 
@@ -578,7 +558,7 @@ void CodeEditor::compile(std::string assemblyText)
 
 		if (isByteOverflow)
 		{
-			bytesUsedLabel->setTextColor(CodeEditor::ErrorColor);
+			bytesUsedLabel->setTextColor(CodeHud::ErrorColor);
 		}
 
 		this->statusWindow->insert(statusLabel);
@@ -594,7 +574,7 @@ void CodeEditor::compile(std::string assemblyText)
 			{
 				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_ByteOverflow::create());
 				
-				byteOverflowLabel->setTextColor(CodeEditor::ErrorColor);
+				byteOverflowLabel->setTextColor(CodeHud::ErrorColor);
 
 				this->statusWindow->insert(byteOverflowLabel);
 			}
@@ -602,7 +582,7 @@ void CodeEditor::compile(std::string assemblyText)
 			{
 				LocalizedLabel* byteOverflowLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_UnfilledBytes::create());
 				
-				byteOverflowLabel->setTextColor(CodeEditor::SubtextColor);
+				byteOverflowLabel->setTextColor(CodeHud::SubtextColor);
 
 				this->statusWindow->insert(byteOverflowLabel);
 			}
@@ -610,7 +590,7 @@ void CodeEditor::compile(std::string assemblyText)
 
 		LocalizedLabel* bytesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Bytes::create());
 		
-		bytesLabel->setTextColor(CodeEditor::HeaderColor);
+		bytesLabel->setTextColor(CodeHud::HeaderColor);
 
 		this->statusWindow->insert(bytesLabel);
 
@@ -631,19 +611,19 @@ void CodeEditor::compile(std::string assemblyText)
 	{
 		LocalizedLabel* statusLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Status::create());
 		
-		statusLabel->setTextColor(CodeEditor::HeaderColor);
+		statusLabel->setTextColor(CodeHud::HeaderColor);
 
 		this->statusWindow->insert(statusLabel);
 
 		LocalizedLabel* compileErrorsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CompileErrors::create());
 		
-		compileErrorsLabel->setTextColor(CodeEditor::ErrorColor);
+		compileErrorsLabel->setTextColor(CodeHud::ErrorColor);
 
 		this->statusWindow->insert(compileErrorsLabel);
 
 		LocalizedLabel* errorLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_Error::create());
 		
-		errorLabel->setTextColor(CodeEditor::HeaderColor);
+		errorLabel->setTextColor(CodeHud::HeaderColor);
 
 		this->statusWindow->insert(errorLabel);
 
@@ -653,7 +633,7 @@ void CodeEditor::compile(std::string assemblyText)
 
 		LocalizedLabel* lineNumberLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_LineNumber::create());
 		
-		lineNumberLabel->setTextColor(CodeEditor::HeaderColor);
+		lineNumberLabel->setTextColor(CodeHud::HeaderColor);
 
 		this->statusWindow->insert(lineNumberLabel);
 
@@ -665,25 +645,17 @@ void CodeEditor::compile(std::string assemblyText)
 	}
 }
 
-void CodeEditor::tokenizeCallback(std::string text, std::vector<CodeWindow::token>& tokens)
-{
-}
-
-void CodeEditor::onScriptLoad(ScriptEntry* script)
-{
-	this->functionWindow->setWindowTitle(script->getName()->getString());
-	this->functionWindow->setText(script->getScript());
-}
-
-void CodeEditor::onAccept()
+void CodeHud::onAccept()
 {
 	if (this->lexicon != nullptr)
 	{
 		this->lexicon->close();
 	}
+
 	this->scriptList->saveScripts();
 
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->functionWindow->getText(), this->activeHackableCode->getPointer());
+	std::string scriptText = this->functionWindow->getText();
+	HackUtils::CompileResult compileResult = HackUtils::assemble(scriptText, this->activeHackableCode->getPointer());
 
 	// Sanity check that the code compiles -- it should at this point
 	if (compileResult.hasError || compileResult.byteCount > this->activeHackableCode->getOriginalLength())
@@ -693,7 +665,7 @@ void CodeEditor::onAccept()
 	}
 
 	// Enable hack with new assembly
-	this->activeHackableCode->applyCustomCode(this->functionWindow->getText());
+	this->activeHackableCode->applyCustomCode(scriptText);
 
 	this->setVisible(false);
 	this->getParent()->setOpacity(0xFF);
@@ -701,7 +673,7 @@ void CodeEditor::onAccept()
 	HackableEvents::TriggerEditHackableAttributeDone();
 }
 
-void CodeEditor::onCancel()
+void CodeHud::onCancel()
 {
 	if (this->lexicon != nullptr)
 	{
@@ -715,7 +687,7 @@ void CodeEditor::onCancel()
 	HackableEvents::TriggerEditHackableAttributeDone();
 }
 
-Lexicon* CodeEditor::getLexicon()
+Lexicon* CodeHud::getLexicon()
 {
 	// Lazy initialization for lexicon since it is a little bit resource intensive (several sprites, buttons)
 	if (this->lexicon == nullptr)

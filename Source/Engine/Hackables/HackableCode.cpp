@@ -10,6 +10,8 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/StrUtils.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 HackableCode::CodeMap HackableCode::HackableCodeCache = HackableCode::CodeMap();
@@ -60,17 +62,35 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 		}
 	}
 
-	// Disassemble starting bytes, strip out NOPs
-	if (!hackableCodeInfo.asmOverride.empty())
+	this->readOnlyScripts = std::vector<ReadOnlyScript>();
+
+	if (!hackableCodeInfo.excludeDefaultScript)
 	{
-		this->originalAssemblyString = hackableCodeInfo.asmOverride;
+		std::string script = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
+
+		this->readOnlyScripts.push_back(ReadOnlyScript(
+			Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+			script,
+			script
+		));
 	}
-	else
+
+	for (auto script : hackableCodeInfo.readOnlyScripts)
 	{
-		this->originalAssemblyString = StrUtils::replaceAll(HackUtils::disassemble(codeStart, this->originalCodeLength), "nop\n", "");
+		this->readOnlyScripts.push_back(script);
+	}
+
+	if (!this->readOnlyScripts.empty())
+	{
+		this->originalAssemblyString = (sizeof(void*) == 4) ? this->readOnlyScripts.front().scriptx86 : this->readOnlyScripts.front().scriptx64;
 	}
 	
 	this->assemblyString = this->originalAssemblyString;
+
+	for (auto script : this->readOnlyScripts)
+	{
+		this->addChild(script.title);
+	}
 }
 
 HackableCode::~HackableCode()
@@ -92,6 +112,11 @@ HackableCode* HackableCode::clone(CodeInfoMap& hackableCodeInfoMap)
 	clonedData.registerHints = registerHintsClone;
 
 	return HackableCode::create(this->codePointer, this->codeEndPointer, clonedData);
+}
+
+std::vector<HackableCode::ReadOnlyScript> HackableCode::getReadOnlyScripts()
+{
+	return this->readOnlyScripts;
 }
 
 std::string HackableCode::getHackableCodeIdentifier()
