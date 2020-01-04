@@ -5,6 +5,7 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Node;
 	class Sprite;
 }
@@ -29,19 +30,26 @@ public:
 
 	bool isReadOnly;
 
-private:
-	typedef SmartNode super;
+protected:
 	ScriptEntry(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onCopyClick, std::function<void(ScriptEntry*)> onDeleteClick);
 	~ScriptEntry() = default;
-
+	
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	ClickableNode* backPlate;
 	cocos2d::Sprite* selectedSprite;
 	LocalizedLabel* label;
 	ClickableNode* copyButton;
 	ClickableNode* deleteButton;
+	cocos2d::LayerColor* deletePanel;
+	LocalizedLabel* deleteLabel;
+	cocos2d::LayerColor* copyPanel;
+	LocalizedLabel* copyLabel;
 
 	LocalizedString* scriptName;
 	std::string script;

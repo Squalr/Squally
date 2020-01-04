@@ -110,6 +110,10 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	);
 	this->deleteButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_TrashCan, UIResources::Menus_HackerModeMenu_TrashCanSelected);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);
+	this->copyPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
+	this->copyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CopyScript::create());
+	this->deletePanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
+	this->deleteLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_DeleteScript::create());
 
 	this->windowTitle->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->displayedText->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -135,6 +139,10 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 	this->addChild(this->contentPane);
 	this->addChild(this->deleteButton);
 	this->addChild(this->copyButton);
+	this->addChild(this->deletePanel);
+	this->addChild(this->deleteLabel);
+	this->addChild(this->copyPanel);
+	this->addChild(this->copyLabel);
 }
 
 CodeWindow::~CodeWindow()
@@ -146,6 +154,11 @@ void CodeWindow::onEnter()
 {
 	super::onEnter();
 	this->scheduleUpdate();
+
+	this->deletePanel->setOpacity(0);
+	this->deleteLabel->setOpacity(0);
+	this->copyPanel->setOpacity(0);
+	this->copyLabel->setOpacity(0);
 
 	this->editableText->scheduleUpdate();
 }
@@ -168,22 +181,11 @@ void CodeWindow::initializePositions()
 	this->lineNumbers->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + 20.0f, 0.0f));
 	this->displayedText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
 	this->editableText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
-
-	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		if (this->script != nullptr)
-		{
-			this->script->copyScript();
-		}
-	});
-
-	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
-	{
-		if (this->script != nullptr)
-		{
-			this->script->deleteScript();
-		}
-	});
+	
+	this->copyPanel->setPosition(this->copyButton->getPosition() + Vec2(0.0f, 48.0f) - Vec2(this->copyPanel->getContentSize() / 2.0f));
+	this->copyLabel->setPosition(this->copyButton->getPosition() + Vec2(0.0f, 48.0f));
+	this->deletePanel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f) - Vec2(this->deletePanel->getContentSize() / 2.0f));
+	this->deleteLabel->setPosition(this->deleteButton->getPosition() + Vec2(0.0f, 48.0f));
 }
 
 void CodeWindow::initializeListeners()
@@ -223,6 +225,44 @@ void CodeWindow::initializeListeners()
 		{
 			this->script->setName(newTitle);
 		}
+	});
+
+	this->copyButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->copyScript();
+		}
+	});
+
+	this->deleteButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->script != nullptr)
+		{
+			this->script->deleteScript();
+		}
+	});
+
+	this->deleteButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->deletePanel->setOpacity(196);
+		this->deleteLabel->setOpacity(255);
+	});
+	this->deleteButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->deletePanel->setOpacity(0);
+		this->deleteLabel->setOpacity(0);
+	});
+
+	this->copyButton->setMouseOverCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->copyPanel->setOpacity(196);
+		this->copyLabel->setOpacity(255);
+	});
+	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->copyPanel->setOpacity(0);
+		this->copyLabel->setOpacity(0);
 	});
 }
 

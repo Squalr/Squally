@@ -54,6 +54,7 @@ ConfirmationMenu::ConfirmationMenu()
 		cancelLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
+	this->cancelButton->setClickSound(SoundResources::ClickBack1);
 
 	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
 	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();

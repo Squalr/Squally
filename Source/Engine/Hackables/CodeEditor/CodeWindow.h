@@ -72,6 +72,10 @@ private:
 	cocos2d::ui::RichText* displayedText;
 	InputText* editableText;
 	cocos2d::ui::RichText* lineNumbers;
+	cocos2d::LayerColor* deletePanel;
+	LocalizedLabel* deleteLabel;
+	cocos2d::LayerColor* copyPanel;
+	LocalizedLabel* copyLabel;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textElements;
 	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
