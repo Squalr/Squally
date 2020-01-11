@@ -7,14 +7,14 @@ class WorldSound;
 class Slash : public PlatformerAttack
 {
 public:
-	static Slash* create(float attackDuration, float recoverDuration);
+	static Slash* create(float attackDuration, float recoverDuration, float priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	Slash(float attackDuration, float recoverDuration);
+	Slash(float attackDuration, float recoverDuration, float priority);
 	~Slash() = default;
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;

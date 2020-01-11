@@ -25,7 +25,7 @@ public:
 	std::string getIconResource();
 	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 
-	float getProbabilityWeight();
+	float getPriority();
 	int getSpecialCost();
 	AttackType getAttackType();
 	virtual void onAttackTelegraphBegin();
@@ -33,12 +33,16 @@ public:
 	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
 	virtual void onAttackEnd();
 	virtual void onCleanup();
+	int getRandomDamage();
+
+	static const float PriorityCommon;
+	static const float PriorityUncommon;
+	static const float PriorityRare;
 
 protected:
 	PlatformerAttack(AttackType attackType, std::string iconResource, float probabilityWeight, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
 	~PlatformerAttack() = default;
 
-	int getRandomDamage();
 	int getBaseDamageMin();
 	int getBaseDamageMax();
 	int getRandomHealing();
@@ -53,6 +57,8 @@ protected:
 
 	float attackDuration;
 	float recoverDuration;
+	float priority;
+	
 	static const float DefaultCleanupDuration;
 
 private:
@@ -61,7 +67,6 @@ private:
 	void replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile);
 	virtual PlatformerAttack* cloneInternal() = 0;
 
-	float probabilityWeight;
 	AttackType attackType;
 	std::string iconResource;
 	int baseDamageOrHealingMin;

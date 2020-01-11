@@ -8,6 +8,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -30,6 +31,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->noCollideDuration = 1.0f;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
+	this->speedMultiplier = Vec3::ONE;
 	this->spinSpeed = 0.0f;
 	this->collisionObject = CollisionObject::create(ValueMap(),
 		hitBox,
@@ -88,7 +90,14 @@ void Projectile::update(float dt)
 	}
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
-	this->setPosition3D(this->getPosition3D() + this->getLaunchVelocity() * dt);
+
+	Vec3 velocity = this->getLaunchVelocity() * dt;
+
+	velocity.x *= this->speedMultiplier.x;
+	velocity.y *= this->speedMultiplier.y;
+	velocity.z *= this->speedMultiplier.z;
+
+	this->setPosition3D(this->getPosition3D() + velocity);
 }
 
 void Projectile::registerHackables()
@@ -196,6 +205,13 @@ void Projectile::setLaunchVelocity(cocos2d::Vec3 velocity)
 void Projectile::setLaunchAcceleration(cocos2d::Vec3 acceleration)
 {
 	this->launchAcceleration = acceleration;
+}
+
+void Projectile::setSpeedMultiplier(Vec3 speedMultiplier)
+{
+	this->speedMultiplier.x = MathUtils::clamp(speedMultiplier.x, -1.0f, 1.0f);
+	this->speedMultiplier.y = MathUtils::clamp(speedMultiplier.y, -1.0f, 1.0f);
+	this->speedMultiplier.z = MathUtils::clamp(speedMultiplier.z, -1.0f, 1.0f);
 }
 
 CollisionObject* Projectile::getCollision()

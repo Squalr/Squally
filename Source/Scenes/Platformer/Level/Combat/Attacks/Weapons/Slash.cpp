@@ -11,16 +11,16 @@
 
 using namespace cocos2d;
 
-Slash* Slash::create(float attackDuration, float recoverDuration)
+Slash* Slash::create(float attackDuration, float recoverDuration, float priority)
 {
-	Slash* instance = new Slash(attackDuration, recoverDuration);
+	Slash* instance = new Slash(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Slash::Slash(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, 0.5f, 3, 5, 0, attackDuration, recoverDuration)
+Slash::Slash(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
@@ -31,7 +31,7 @@ Slash::Slash(float attackDuration, float recoverDuration) : super(AttackType::Da
 
 PlatformerAttack* Slash::cloneInternal()
 {
-	return Slash::create(this->getAttackDuration(), this->getRecoverDuration());
+	return Slash::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* Slash::getString()

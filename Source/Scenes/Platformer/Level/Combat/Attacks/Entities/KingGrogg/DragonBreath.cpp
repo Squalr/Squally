@@ -10,6 +10,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/FXResources.h"
@@ -20,16 +21,16 @@
 
 using namespace cocos2d;
 
-DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration)
+DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, float priority)
 {
-	DragonBreath* instance = new DragonBreath(attackDuration, recoverDuration);
+	DragonBreath* instance = new DragonBreath(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DragonBreath::DragonBreath(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, 1.5f, 5, 7, 4, attackDuration, recoverDuration)
+DragonBreath::DragonBreath(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 7, 9, 12, attackDuration, recoverDuration)
 {
 }
 
@@ -39,7 +40,7 @@ DragonBreath::~DragonBreath()
 
 PlatformerAttack* DragonBreath::cloneInternal()
 {
-	return DragonBreath::create(this->getAttackDuration(), this->getRecoverDuration());
+	return DragonBreath::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* DragonBreath::getString()
@@ -56,12 +57,10 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 {
 	super::performAttack(owner, target);
 
-	SmartAnimationSequenceNode* fireballAnim = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
 	SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
-	ThrownObject* fireball = ThrownObject::create(owner, fireballAnim, Size(32.0f, 32.0f));
 	WorldSound* breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
+	Fireball* fireball = Fireball::create(owner, this);
 
-	fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(owner->isFlippedX());
 	fireBreath->addChild(breathSound);
@@ -70,39 +69,13 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, fireBreath, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
 	
 	fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
-	fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireballAnim) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
+	fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
 
 	breathSound->play();
 
-	fireball->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
-	{
-		fireball->getCollision()->setPhysicsEnabled(false);
-		fireball->setVisible(false);
-
-		// Explosion animation
-		SmartAnimationSequenceNode* explosionAnim = SmartAnimationSequenceNode::create(FXResources::Explosion_Explosion_0000);
-		WorldSound* impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
-		
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, explosionAnim, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
-		explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
-		explosionAnim->setPosition3D(GameUtils::getWorldCoords3D(fireball));
-		explosionAnim->addChild(impactSound);
-
-		impactSound->play();
-
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
-		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		fireball->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+		fireball->getProjectile()->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 	});
 }
 

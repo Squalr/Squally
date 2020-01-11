@@ -293,10 +293,11 @@ void CodeWindow::openScript(ScriptEntry* script)
 	}
 
 	std::string scriptText = script->getScript();
+	LocalizedString* name = script->getName();
 
 	this->setText(scriptText);
 	this->constructTokenizedText(scriptText);
-	this->setWindowTitle(script->getName()->getString());
+	this->setWindowTitle(name == nullptr ? "" : name->getString());
 	this->contentPane->updateScrollBounds();
 }
 

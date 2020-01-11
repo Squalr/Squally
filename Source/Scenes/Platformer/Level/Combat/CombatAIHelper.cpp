@@ -267,7 +267,7 @@ void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, c
 		}
 	}
 
-	if (!hasDeadAlly || attackProbabilities.map.empty())
+	if (!hasDeadAlly || attackProbabilities.probabilities.empty())
 	{
 		return;
 	}
@@ -303,7 +303,7 @@ void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const 
 		}
 	}
 
-	if (!hasWeakAlly || attackProbabilities.map.empty())
+	if (!hasWeakAlly || attackProbabilities.probabilities.empty())
 	{
 		return;
 	}
@@ -330,7 +330,7 @@ void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const s
 
 CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(const std::vector<PlatformerAttack*>& attackList, std::function<bool(PlatformerAttack*)> predicate)
 {
-	std::map<PlatformerAttack*, float> cumulativeProbabilityMap = std::map<PlatformerAttack*, float>();
+	std::vector<AttackProbability> probabilities = std::vector<AttackProbability>();
 	float cumulativeProbability = 0.0f;
 
 	for (auto attack : attackList)
@@ -338,10 +338,10 @@ CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(con
 		// Only build an attack probability map for attacks that match the given predicate
 		if (predicate(attack))
 		{
-			cumulativeProbability += attack->getProbabilityWeight();
-			cumulativeProbabilityMap[attack] = cumulativeProbability;
+			cumulativeProbability += attack->getPriority();
+			probabilities.push_back(AttackProbability(attack, cumulativeProbability));
 		}
 	}
 
-	return ProbabilityMap(cumulativeProbabilityMap, cumulativeProbability);
+	return ProbabilityMap(probabilities, cumulativeProbability);
 }

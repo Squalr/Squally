@@ -89,7 +89,10 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 	for (auto script : this->readOnlyScripts)
 	{
-		this->addChild(script.title);
+		if (script.title != nullptr)
+		{
+			this->addChild(script.title);
+		}
 	}
 }
 

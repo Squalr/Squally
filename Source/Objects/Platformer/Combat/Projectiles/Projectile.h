@@ -20,6 +20,7 @@ public:
 	CollisionObject* getCollision();
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
+	void setSpeedMultiplier(cocos2d::Vec3 speedMultiplier);
 
 	static const std::string ProjectileTag;
 	
@@ -46,5 +47,6 @@ private:
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;
 	cocos2d::Vec3 launchAcceleration;
+	cocos2d::Vec3 speedMultiplier;
 	float noCollideDuration;
 };

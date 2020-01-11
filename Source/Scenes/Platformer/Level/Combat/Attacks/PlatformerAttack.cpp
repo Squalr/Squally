@@ -6,6 +6,7 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/Projectile.h"
@@ -14,12 +15,15 @@
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
+const float PlatformerAttack::PriorityCommon = 0.5f;
+const float PlatformerAttack::PriorityUncommon = 0.2f;
+const float PlatformerAttack::PriorityRare = 0.1f;
 
-PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float probabilityWeight, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
+PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
-	this->probabilityWeight = probabilityWeight;
+	this->priority = priority;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->specialCost = specialCost;
@@ -58,9 +62,9 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-float PlatformerAttack::getProbabilityWeight()
+float PlatformerAttack::getPriority()
 {
-	return this->probabilityWeight;
+	return this->priority;
 }
 
 int PlatformerAttack::getSpecialCost()
@@ -176,11 +180,10 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 	));
 
 	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;
+	float layerZ = GameUtils::getDepth(GameUtils::getFirstParentOfType<MapLayer>(reference));
 
-	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference));
-
-	// We dont actually want to set the Z to the world coord Z position, as this would end up re-applying any layer depth
-	projectile->setPositionZ(reference->getPositionZ());
+	// Set the position to the reference object's position. Offset it by any layer positioning.
+	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference) - Vec3(0.0f, 0.0f, layerZ));
 }
 
 int PlatformerAttack::getRandomDamage()

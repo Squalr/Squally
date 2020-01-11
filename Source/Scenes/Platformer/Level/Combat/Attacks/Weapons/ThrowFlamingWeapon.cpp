@@ -17,16 +17,16 @@
 
 using namespace cocos2d;
 
-ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recoverDuration)
+ThrowFlamingWeapon* ThrowFlamingWeapon::create(float attackDuration, float recoverDuration, float priority)
 {
-	ThrowFlamingWeapon* instance = new ThrowFlamingWeapon(attackDuration, recoverDuration);
+	ThrowFlamingWeapon* instance = new ThrowFlamingWeapon(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, 0.5f, 5, 7, 4, attackDuration, recoverDuration)
+ThrowFlamingWeapon::ThrowFlamingWeapon(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 
@@ -36,7 +36,7 @@ ThrowFlamingWeapon::~ThrowFlamingWeapon()
 
 PlatformerAttack* ThrowFlamingWeapon::cloneInternal()
 {
-	return ThrowFlamingWeapon::create(this->getAttackDuration(), this->getRecoverDuration());
+	return ThrowFlamingWeapon::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* ThrowFlamingWeapon::getString()

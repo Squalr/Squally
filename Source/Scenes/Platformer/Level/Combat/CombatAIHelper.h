@@ -30,24 +30,32 @@ private:
 	void selectTarget(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
 
+	struct AttackProbability
+	{
+		PlatformerAttack* attack;
+		float cumulativeProbability;
+
+		AttackProbability(PlatformerAttack* attack, float probability) : attack(attack), cumulativeProbability(cumulativeProbability) { }
+	};
+
 	struct ProbabilityMap
 	{
-		std::map<PlatformerAttack*, float> map;
+		std::vector<AttackProbability> probabilities;
 		float sum;
 
-		ProbabilityMap() : map({ }), sum(0.0f) { }
-		ProbabilityMap(std::map<PlatformerAttack*, float> map, float sum) : map(map), sum(sum) { }
+		ProbabilityMap() : probabilities({ }), sum(0.0f) { }
+		ProbabilityMap(std::vector<AttackProbability> probabilities, float sum) : probabilities(probabilities), sum(sum) { }
 
 		PlatformerAttack* getRandomAttack()
 		{
 			PlatformerAttack* attack = nullptr;
 			float rng = cocos2d::RandomHelper::random_real(0.0f, sum);
 
-			for (auto next : map)
+			for (auto next : probabilities)
 			{
-				attack = next.first;
+				attack = next.attack;
 
-				if (next.second > rng)
+				if (rng >= next.cumulativeProbability)
 				{
 					break;
 				}

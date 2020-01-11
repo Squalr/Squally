@@ -5,13 +5,13 @@
 class DragonBreath : public PlatformerAttack
 {
 public:
-	static DragonBreath* create(float attackDuration, float recoverDuration);
+	static DragonBreath* create(float attackDuration, float recoverDuration, float priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	DragonBreath(float attackDuration, float recoverDuration);
+	DragonBreath(float attackDuration, float recoverDuration, float priority);
 	~DragonBreath();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
