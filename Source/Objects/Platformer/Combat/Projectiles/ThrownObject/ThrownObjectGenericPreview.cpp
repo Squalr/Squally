@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-ThrownObjectGenericPreview* ThrownObjectGenericPreview::create(cocos2d::Node* object)
+ThrownObjectGenericPreview* ThrownObjectGenericPreview::create(Node* object)
 {
 	ThrownObjectGenericPreview* instance = new ThrownObjectGenericPreview(object);
 
@@ -19,7 +19,7 @@ ThrownObjectGenericPreview* ThrownObjectGenericPreview::create(cocos2d::Node* ob
 	return instance;
 }
 
-ThrownObjectGenericPreview::ThrownObjectGenericPreview(cocos2d::Node* object)
+ThrownObjectGenericPreview::ThrownObjectGenericPreview(Node* object)
 {
 	this->object = object;
 

@@ -7269,6 +7269,21 @@ namespace Strings
 		virtual ~Menus_Hacking_CodeEditor_OriginalCode() = default;
 	};
 
+	class Menus_Hacking_CodeEditor_Readonly : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_CodeEditor_Readonly* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_CodeEditor_Readonly();
+		virtual ~Menus_Hacking_CodeEditor_Readonly() = default;
+	};
+
 	class Menus_Hacking_CodeEditor_RegisterEax : public LocalizedString
 	{
 	public:
@@ -12607,6 +12622,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer();
 		virtual ~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer() = default;
+	};
+
+	class Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed();
+		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax();
+		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0();
+		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0() = default;
+	};
+
+	class Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1();
+		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1() = default;
+	};
+
+	class Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball();
+		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball() = default;
 	};
 
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity : public LocalizedString

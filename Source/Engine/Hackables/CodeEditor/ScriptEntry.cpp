@@ -36,7 +36,21 @@ ScriptEntry::ScriptEntry(LocalizedString* scriptName, std::string script, bool i
 	this->deletePanel = nullptr;
 	this->deleteLabel = nullptr;
 	
-	this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
+	if (this->isReadOnly)
+	{
+		LocalizedString* readOnly = Strings::Menus_Hacking_CodeEditor_Readonly::create();
+
+		readOnly->setStringReplacementVariables(this->scriptName);
+		
+		this->scriptName = readOnly;
+
+		this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_NewScriptEntry, UIResources::Menus_HackerModeMenu_NewScriptEntrySelected);
+	}
+	else
+	{
+		this->backPlate = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
+	}
+
 	this->selectedSprite = Sprite::create(UIResources::Menus_HackerModeMenu_SelectedScriptArrow);
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->scriptName);
 	this->copyButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_Copy, UIResources::Menus_HackerModeMenu_CopySelected);

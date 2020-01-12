@@ -9,9 +9,8 @@
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeClippy.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeGenericPreview.h"
-#include "Objects/Platformer/Traps/PendulumBlade/PendulumBladeSetAnglePreview.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/FireballGenericPreview.h"
+#include "Objects/Platformer/Combat/Projectiles/ThrownObject/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -99,25 +98,26 @@ void Fireball::registerHackables()
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
 				"Fireball",
-				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed::create(),
 				UIResources::Menus_Icons_CrossHair,
-				PendulumBladeSetAnglePreview::create(),
+				FireballSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::None),
-				20.0f,
+				5.0f,
 				nullptr,
 				{
 					HackableCode::ReadOnlyScript(
-						nullptr,
+						Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
-						"mov dword ptr [eax], 1.0\n"
+						"mov dword ptr [eax], 0.0\n"
 						"movss xmm1, dword ptr [eax]\n\n"
 						"mulps xmm0, xmm1",
 						// x64
-						"mov dword ptr [rax], 1.0\n"
+						"mov dword ptr [rax], 0.0\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"
 					)
@@ -137,7 +137,7 @@ void Fireball::registerHackables()
 
 HackablePreview* Fireball::createDefaultPreview()
 {
-	return PendulumBladeGenericPreview::create();
+	return FireballGenericPreview::create();
 }
 
 ThrownObject* Fireball::getProjectile()
