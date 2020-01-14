@@ -18,7 +18,7 @@ public:
 
 protected:
 	CompositeBow();
-	~CompositeBow();
+	virtual ~CompositeBow();
 
 private:
 	typedef Weapon super;

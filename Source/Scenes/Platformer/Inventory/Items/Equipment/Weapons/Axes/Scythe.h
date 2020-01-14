@@ -19,7 +19,7 @@ public:
 
 protected:
 	Scythe();
-	~Scythe();
+	virtual ~Scythe();
 
 private:
 	typedef Weapon super;

@@ -19,7 +19,7 @@ public:
 
 protected:
 	StarAxe();
-	~StarAxe();
+	virtual ~StarAxe();
 
 private:
 	typedef Weapon super;

@@ -19,6 +19,7 @@ const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
 const std::string PlatformerEvents::EventEnemyEngaged = "EVENT_ENEMY_ENGAGED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
+const std::string PlatformerEvents::EventOpenCrafting = "EVENT_OPEN_CRAFTING";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
 const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
@@ -114,6 +115,14 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventHudUntrackEntity,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenCrafting(CraftingOpenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventOpenCrafting,
 		&args
 	);
 }

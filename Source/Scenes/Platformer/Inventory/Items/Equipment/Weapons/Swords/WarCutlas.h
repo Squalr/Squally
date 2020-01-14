@@ -17,7 +17,7 @@ public:
 
 protected:
 	WarCutlas();
-	~WarCutlas();
+	virtual ~WarCutlas();
 
 private:
 	typedef Weapon super;

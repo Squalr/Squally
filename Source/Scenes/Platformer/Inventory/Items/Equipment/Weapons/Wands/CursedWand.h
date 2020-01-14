@@ -18,7 +18,7 @@ public:
 
 protected:
 	CursedWand();
-	~CursedWand();
+	virtual ~CursedWand();
 
 private:
 	typedef Weapon super;

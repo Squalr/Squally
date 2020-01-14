@@ -18,7 +18,7 @@ public:
 
 protected:
 	BoneHammer();
-	~BoneHammer();
+	virtual ~BoneHammer();
 
 private:
 	typedef Weapon super;

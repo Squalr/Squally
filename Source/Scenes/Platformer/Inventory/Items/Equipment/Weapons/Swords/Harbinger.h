@@ -17,7 +17,7 @@ public:
 
 protected:
 	Harbinger();
-	~Harbinger();
+	virtual ~Harbinger();
 
 private:
 	typedef Weapon super;

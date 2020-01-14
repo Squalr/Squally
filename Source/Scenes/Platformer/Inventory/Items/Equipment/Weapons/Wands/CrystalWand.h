@@ -18,7 +18,7 @@ public:
 
 protected:
 	CrystalWand();
-	~CrystalWand();
+	virtual ~CrystalWand();
 
 private:
 	typedef Weapon super;

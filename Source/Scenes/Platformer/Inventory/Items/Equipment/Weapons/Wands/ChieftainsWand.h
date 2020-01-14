@@ -18,7 +18,7 @@ public:
 
 protected:
 	ChieftainsWand();
-	~ChieftainsWand();
+	virtual ~ChieftainsWand();
 
 private:
 	typedef Weapon super;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	ArchersBow();
-	~ArchersBow();
+	virtual ~ArchersBow();
 
 private:
 	typedef Weapon super;

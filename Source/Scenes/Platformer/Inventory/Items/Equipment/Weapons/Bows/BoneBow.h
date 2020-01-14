@@ -18,7 +18,7 @@ public:
 
 protected:
 	BoneBow();
-	~BoneBow();
+	virtual ~BoneBow();
 
 private:
 	typedef Weapon super;

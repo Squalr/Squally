@@ -18,7 +18,7 @@ public:
 
 protected:
 	IvoryBow();
-	~IvoryBow();
+	virtual ~IvoryBow();
 
 private:
 	typedef Weapon super;

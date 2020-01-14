@@ -19,7 +19,7 @@ public:
 
 protected:
 	MithrilAxe();
-	~MithrilAxe();
+	virtual ~MithrilAxe();
 
 private:
 	typedef Weapon super;

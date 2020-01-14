@@ -17,7 +17,7 @@ public:
 
 protected:
 	BlueSword();
-	~BlueSword();
+	virtual ~BlueSword();
 
 private:
 	typedef Weapon super;

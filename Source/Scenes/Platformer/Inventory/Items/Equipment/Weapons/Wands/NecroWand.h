@@ -18,7 +18,7 @@ public:
 
 protected:
 	NecroWand();
-	~NecroWand();
+	virtual ~NecroWand();
 
 private:
 	typedef Weapon super;

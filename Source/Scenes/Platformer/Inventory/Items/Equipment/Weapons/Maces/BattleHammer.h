@@ -18,7 +18,7 @@ public:
 
 protected:
 	BattleHammer();
-	~BattleHammer();
+	virtual ~BattleHammer();
 
 private:
 	typedef Weapon super;

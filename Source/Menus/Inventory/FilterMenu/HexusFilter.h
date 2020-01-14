@@ -19,5 +19,5 @@ protected:
 private:
 	typedef FilterEntry super;
 	HexusFilter();
-	~HexusFilter();
+	virtual ~HexusFilter();
 };

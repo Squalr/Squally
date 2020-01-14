@@ -18,7 +18,7 @@ public:
 
 protected:
 	Judgement();
-	~Judgement();
+	virtual ~Judgement();
 
 private:
 	typedef Weapon super;

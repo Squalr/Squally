@@ -17,7 +17,7 @@ public:
 
 protected:
 	GladiatorSword();
-	~GladiatorSword();
+	virtual ~GladiatorSword();
 
 private:
 	typedef Weapon super;

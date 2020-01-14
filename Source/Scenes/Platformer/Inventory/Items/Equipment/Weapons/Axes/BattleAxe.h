@@ -19,7 +19,7 @@ public:
 
 protected:
 	BattleAxe();
-	~BattleAxe();
+	virtual ~BattleAxe();
 
 private:
 	typedef Weapon super;

@@ -19,7 +19,7 @@ public:
 
 protected:
 	Rend();
-	~Rend();
+	virtual ~Rend();
 
 private:
 	typedef Weapon super;

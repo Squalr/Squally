@@ -5,6 +5,7 @@
 class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
+class CraftingMenu;
 class GameHud;
 class Hexus;
 class InventoryMenu;
@@ -43,6 +44,7 @@ private:
 	MapMenu* mapMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+	CraftingMenu* craftingMenu;
 	cocos2d::Node* combatFadeInNode;
 
 	std::string transition;

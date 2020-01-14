@@ -18,7 +18,7 @@ public:
 
 protected:
 	SkullCrusher();
-	~SkullCrusher();
+	virtual ~SkullCrusher();
 
 private:
 	typedef Weapon super;

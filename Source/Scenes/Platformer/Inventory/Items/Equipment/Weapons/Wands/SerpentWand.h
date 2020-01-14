@@ -18,7 +18,7 @@ public:
 
 protected:
 	SerpentWand();
-	~SerpentWand();
+	virtual ~SerpentWand();
 
 private:
 	typedef Weapon super;

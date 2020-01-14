@@ -18,7 +18,7 @@ public:
 
 protected:
 	ArcaneWand();
-	~ArcaneWand();
+	virtual ~ArcaneWand();
 
 private:
 	typedef Weapon super;

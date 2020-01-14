@@ -17,7 +17,7 @@ public:
 
 protected:
 	Katana();
-	~Katana();
+	virtual ~Katana();
 
 private:
 	typedef Weapon super;

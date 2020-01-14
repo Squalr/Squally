@@ -17,7 +17,7 @@ public:
 
 protected:
 	CrystalSword();
-	~CrystalSword();
+	virtual ~CrystalSword();
 
 private:
 	typedef Weapon super;

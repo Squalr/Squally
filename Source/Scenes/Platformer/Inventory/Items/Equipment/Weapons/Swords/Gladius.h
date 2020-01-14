@@ -17,7 +17,7 @@ public:
 
 protected:
 	Gladius();
-	~Gladius();
+	virtual ~Gladius();
 
 private:
 	typedef Weapon super;

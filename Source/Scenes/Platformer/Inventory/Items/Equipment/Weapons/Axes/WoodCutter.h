@@ -19,7 +19,7 @@ public:
 
 protected:
 	WoodCutter();
-	~WoodCutter();
+	virtual ~WoodCutter();
 
 private:
 	typedef Weapon super;

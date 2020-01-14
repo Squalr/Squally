@@ -29,6 +29,7 @@
 #include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Crafting/CraftingMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Map/MapMenu.h"
@@ -76,6 +77,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->collectablesMenu = CollectablesMenu::create();
 	this->mapMenu = MapMenu::create();
 	this->partyMenu = PartyMenu::create();
+	this->craftingMenu = CraftingMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->canPause = true;
 
@@ -110,6 +112,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->mapMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->craftingMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 }
 
@@ -125,6 +128,7 @@ void PlatformerMap::onEnter()
 	this->mapMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
+	this->craftingMenu->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -164,6 +168,18 @@ void PlatformerMap::initializeListeners()
 		{
 			// In the future, we can pass parameters via EnemyEngagedArgs to dictate which fade-in animation to use
 			this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenCrafting, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->craftingMenu->setVisible(true);
+
+			GameUtils::focus(this->craftingMenu);
 		}
 	}));
 
@@ -303,6 +319,12 @@ void PlatformerMap::initializeListeners()
 		this->ingameMenu->setVisible(true);
 		this->inventoryMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->craftingMenu->setReturnClickCallback([=]()
+	{
+		this->craftingMenu->setVisible(false);
+		GameUtils::focus(this);
 	});
 }
 

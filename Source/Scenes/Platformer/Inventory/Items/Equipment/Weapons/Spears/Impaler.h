@@ -18,7 +18,7 @@ public:
 
 protected:
 	Impaler();
-	~Impaler();
+	virtual ~Impaler();
 
 private:
 	typedef Weapon super;

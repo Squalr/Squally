@@ -19,7 +19,7 @@ public:
 
 protected:
 	FireAxe();
-	~FireAxe();
+	virtual ~FireAxe();
 
 private:
 	typedef Weapon super;

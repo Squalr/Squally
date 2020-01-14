@@ -17,7 +17,7 @@ public:
 
 protected:
 	SteelSword();
-	~SteelSword();
+	virtual ~SteelSword();
 
 private:
 	typedef Weapon super;

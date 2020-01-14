@@ -17,7 +17,7 @@ public:
 
 protected:
 	Rapier();
-	~Rapier();
+	virtual ~Rapier();
 
 private:
 	typedef Weapon super;

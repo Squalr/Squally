@@ -17,7 +17,7 @@ public:
 
 protected:
 	AshenBlade();
-	~AshenBlade();
+	virtual ~AshenBlade();
 
 private:
 	typedef Weapon super;

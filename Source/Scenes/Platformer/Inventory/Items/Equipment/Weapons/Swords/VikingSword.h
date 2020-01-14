@@ -17,7 +17,7 @@ public:
 
 protected:
 	VikingSword();
-	~VikingSword();
+	virtual ~VikingSword();
 
 private:
 	typedef Weapon super;

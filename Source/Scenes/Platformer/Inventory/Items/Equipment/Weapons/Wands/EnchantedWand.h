@@ -18,7 +18,7 @@ public:
 
 protected:
 	EnchantedWand();
-	~EnchantedWand();
+	virtual ~EnchantedWand();
 
 private:
 	typedef Weapon super;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	IronMace();
-	~IronMace();
+	virtual ~IronMace();
 
 private:
 	typedef Weapon super;

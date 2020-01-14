@@ -18,7 +18,7 @@ public:
 
 protected:
 	ManaWand();
-	~ManaWand();
+	virtual ~ManaWand();
 
 private:
 	typedef Weapon super;

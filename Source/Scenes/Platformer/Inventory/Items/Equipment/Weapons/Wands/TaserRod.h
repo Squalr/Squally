@@ -18,7 +18,7 @@ public:
 
 protected:
 	TaserRod();
-	~TaserRod();
+	virtual ~TaserRod();
 
 private:
 	typedef Weapon super;

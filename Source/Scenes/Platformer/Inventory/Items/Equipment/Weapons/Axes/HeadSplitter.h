@@ -19,7 +19,7 @@ public:
 
 protected:
 	HeadSplitter();
-	~HeadSplitter();
+	virtual ~HeadSplitter();
 
 private:
 	typedef Weapon super;

@@ -5889,6 +5889,111 @@ namespace Strings
 		virtual ~Menus_Confirm() = default;
 	};
 
+	class Menus_Crafting_Axes : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Axes* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Axes();
+		virtual ~Menus_Crafting_Axes() = default;
+	};
+
+	class Menus_Crafting_Bows : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Bows* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Bows();
+		virtual ~Menus_Crafting_Bows() = default;
+	};
+
+	class Menus_Crafting_Crafting : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Crafting* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Crafting();
+		virtual ~Menus_Crafting_Crafting() = default;
+	};
+
+	class Menus_Crafting_Maces : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Maces* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Maces();
+		virtual ~Menus_Crafting_Maces() = default;
+	};
+
+	class Menus_Crafting_Spears : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Spears* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Spears();
+		virtual ~Menus_Crafting_Spears() = default;
+	};
+
+	class Menus_Crafting_Swords : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Swords* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Swords();
+		virtual ~Menus_Crafting_Swords() = default;
+	};
+
+	class Menus_Crafting_Wands : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Wands* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Wands();
+		virtual ~Menus_Crafting_Wands() = default;
+	};
+
 	class Menus_Credits_Developers : public LocalizedString
 	{
 	public:

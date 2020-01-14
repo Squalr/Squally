@@ -26,6 +26,7 @@ public:
 	static const std::string EventEnemyEngaged;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
+	static const std::string EventOpenCrafting;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
 	static const std::string EventAllowPause;
@@ -91,6 +92,11 @@ public:
 		EnemyEngagedArgs() { }
 	};
 
+	struct CraftingOpenArgs
+	{
+		CraftingOpenArgs() { }
+	};
+
 	struct GiveItemsFromPoolArgs
 	{
 		MinMaxPool* pool;
@@ -119,6 +125,7 @@ public:
 	static void TriggerEnemyEngaged(EnemyEngagedArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
+	static void TriggerOpenCrafting(CraftingOpenArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
 	static void TriggerAllowPause();

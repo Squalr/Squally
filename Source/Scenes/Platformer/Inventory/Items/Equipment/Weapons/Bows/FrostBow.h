@@ -18,7 +18,7 @@ public:
 
 protected:
 	FrostBow();
-	~FrostBow();
+	virtual ~FrostBow();
 
 private:
 	typedef Weapon super;

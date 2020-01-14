@@ -18,7 +18,7 @@ public:
 
 protected:
 	OlympusBow();
-	~OlympusBow();
+	virtual ~OlympusBow();
 
 private:
 	typedef Weapon super;

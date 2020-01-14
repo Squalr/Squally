@@ -18,7 +18,7 @@ public:
 
 protected:
 	WarBow();
-	~WarBow();
+	virtual ~WarBow();
 
 private:
 	typedef Weapon super;

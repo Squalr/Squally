@@ -18,7 +18,7 @@ public:
 
 protected:
 	WoodenMallet();
-	~WoodenMallet();
+	virtual ~WoodenMallet();
 
 private:
 	typedef Weapon super;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	WitchDoctorsWand();
-	~WitchDoctorsWand();
+	virtual ~WitchDoctorsWand();
 
 private:
 	typedef Weapon super;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	HolyWand();
-	~HolyWand();
+	virtual ~HolyWand();
 
 private:
 	typedef Weapon super;

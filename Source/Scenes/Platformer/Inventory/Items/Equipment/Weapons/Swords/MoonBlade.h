@@ -17,7 +17,7 @@ public:
 
 protected:
 	MoonBlade();
-	~MoonBlade();
+	virtual ~MoonBlade();
 
 private:
 	typedef Weapon super;

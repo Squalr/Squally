@@ -18,7 +18,7 @@ public:
 
 protected:
 	WoodenWand();
-	~WoodenWand();
+	virtual ~WoodenWand();
 
 private:
 	typedef Weapon super;

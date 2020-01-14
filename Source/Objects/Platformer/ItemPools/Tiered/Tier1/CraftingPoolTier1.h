@@ -9,7 +9,7 @@ public:
 
 protected:
 	CraftingPoolTier1(SampleMethod sampleMethod, int min, int max);
-	~CraftingPoolTier1();
+	virtual ~CraftingPoolTier1();
 
 private:
 	typedef MinMaxPool super;

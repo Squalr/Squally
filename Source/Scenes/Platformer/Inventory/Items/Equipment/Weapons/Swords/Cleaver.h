@@ -17,7 +17,7 @@ public:
 
 protected:
 	Cleaver();
-	~Cleaver();
+	virtual ~Cleaver();
 
 private:
 	typedef Weapon super;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	SpikedClub();
-	~SpikedClub();
+	virtual ~SpikedClub();
 
 private:
 	typedef Weapon super;

@@ -19,7 +19,7 @@ public:
 
 protected:
 	HedgeTrimmer();
-	~HedgeTrimmer();
+	virtual ~HedgeTrimmer();
 
 private:
 	typedef Weapon super;

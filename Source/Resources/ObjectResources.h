@@ -223,6 +223,8 @@ namespace ObjectResources
 	extern const std::string Doors_WoodStronghold_WOOD_BACK;
 	extern const std::string Doors_WoodStronghold_WOOD_FRONT;
 	extern const std::string Doors_WoodStronghold_WOOD_G;
+	extern const std::string Interactive_Anvil_Anvil;
+	extern const std::string Interactive_Anvil_AnvilHammer;
 	extern const std::string Interactive_Help_HelpTotem;
 	extern const std::string Interactive_Help_HelpTotemDeactivated;
 	extern const std::string Interactive_Help_QuestionMark;

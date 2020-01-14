@@ -18,7 +18,7 @@ public:
 
 protected:
 	Flail();
-	~Flail();
+	virtual ~Flail();
 
 private:
 	typedef Weapon super;

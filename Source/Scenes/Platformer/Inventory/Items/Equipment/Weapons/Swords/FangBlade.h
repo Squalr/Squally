@@ -17,7 +17,7 @@ public:
 
 protected:
 	FangBlade();
-	~FangBlade();
+	virtual ~FangBlade();
 
 private:
 	typedef Weapon super;
