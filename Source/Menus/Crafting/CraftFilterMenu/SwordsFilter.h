@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Menus/Inventory/FilterMenu/CraftFilterEntry.h"
+#include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 
 class Item;
 class LocalizedLabel;

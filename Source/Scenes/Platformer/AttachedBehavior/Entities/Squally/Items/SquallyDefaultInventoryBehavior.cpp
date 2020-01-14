@@ -68,6 +68,8 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		if (DeveloperModeController::IsDeveloperBuild)
 		{
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SantaHat::create(), false);
+
+			entityInventoryBehavior->getInventory()->forceInsert(BattleAxePlans::create(), false);
 		}
 
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);

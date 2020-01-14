@@ -13,13 +13,13 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
+class CraftFilterMenu;
 class CurrencyInventory;
 class EquipmentInventory;
 class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;
-class FilterMenu;
 
 class CraftingMenu : public SmartNode
 {
@@ -41,24 +41,18 @@ private:
 	void initializeListeners() override;
 	void onFilterChange();
 	void populateItemList();
-	void performEquipmentAction(Item* item);
-	void performInventoryAction(Item* item);
-	void equipHexusCard(Item* card);
-	void unequipHexusCard(Item* card);
-	void equipItem(Item* item);
-	void unequipItem(Item* item);
+	void tryCraftItem(Item* item);
 	void close();
 
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* craftingWindow;
 	LocalizedLabel* craftingLabel;
-	FilterMenu* filterMenu;
+	CraftFilterMenu* filterMenu;
 	ItemMenu* itemMenu;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 
 	CurrencyInventory* currencyInventory;
-	EquipmentInventory* equipmentInventory;
 	Inventory* inventory;
 
 	std::function<void()> returnClickCallback;

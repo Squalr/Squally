@@ -24,6 +24,7 @@
 #include "Scenes/Platformer/Inventory/Items/Error/MissingNo.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/SantaHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Shields/WoodenShield.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BattleAxe.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BlueAxe.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/FireAxe.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/HandAxe.h"
@@ -85,3 +86,4 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WoodenWand.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MagesGuildPrisonKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/BattleAxePlans.h"

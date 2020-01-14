@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class FilterEntry;
+class CraftFilterEntry;
 class Item;
 class LocalizedLabel;
 class SmartClippingNode;
@@ -19,7 +19,7 @@ public:
 	
 	void focus();
 	void unfocus();
-	FilterEntry* getActiveFilter();
+	CraftFilterEntry* getActiveFilter();
 
 protected:
 	void onEnter() override;
@@ -40,7 +40,7 @@ private:
 	cocos2d::Sprite* selectedFilterRowActive;
 	cocos2d::Sprite* selectedFilterRowInactive;
 	cocos2d::Sprite* filterSelectionArrow;
-	std::vector<FilterEntry*> filters;
+	std::vector<CraftFilterEntry*> filters;
 
 	bool isFocused;
 	int filterSelectionIndex;

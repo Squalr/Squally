@@ -5,10 +5,10 @@
 class Item;
 class LocalizedLabel;
 
-class AllWeaponsFilter : public CraftFilterEntry
+class AxesFilter : public CraftFilterEntry
 {
 public:
-	static AllWeaponsFilter* create();
+	static AxesFilter* create();
 
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
@@ -18,6 +18,6 @@ protected:
 
 private:
 	typedef CraftFilterEntry super;
-	AllWeaponsFilter();
-	virtual ~AllWeaponsFilter();
+	AxesFilter();
+	virtual ~AxesFilter();
 };

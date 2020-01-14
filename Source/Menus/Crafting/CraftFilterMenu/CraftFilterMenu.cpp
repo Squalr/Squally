@@ -7,12 +7,10 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Menus/Inventory/CraftFilterMenu/AllFilter.h"
-#include "Menus/Inventory/CraftFilterMenu/ConsumablesFilter.h"
-#include "Menus/Inventory/CraftFilterMenu/CraftingFilter.h"
-#include "Menus/Inventory/CraftFilterMenu/EquipmentFilter.h"
-#include "Menus/Inventory/CraftFilterMenu/HexusFilter.h"
-#include "Menus/Inventory/CraftFilterMenu/MiscFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
+#include "Menus/Crafting/CraftFilterMenu/AllWeaponsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/AxesFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/SwordsFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 #include "Resources/UIResources.h"
@@ -41,12 +39,9 @@ CraftFilterMenu::CraftFilterMenu(std::function<void()> onFilterChange)
 	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
 
-	this->filters.push_back(AllFilter::create());
-	this->filters.push_back(EquipmentFilter::create());
-	this->filters.push_back(CraftingFilter::create());
-	this->filters.push_back(ConsumablesFilter::create());
-	this->filters.push_back(MiscFilter::create());
-	this->filters.push_back(HexusFilter::create());
+	this->filters.push_back(AllWeaponsFilter::create());
+	this->filters.push_back(AxesFilter::create());
+	this->filters.push_back(SwordsFilter::create());
 
 	for (auto it = this->filters.begin(); it != this->filters.end(); it++)
 	{
@@ -109,7 +104,7 @@ void CraftFilterMenu::unfocus()
 	this->selectedFilterRowInactive->setVisible(true);
 }
 
-FilterEntry* CraftFilterMenu::getActiveFilter()
+CraftFilterEntry* CraftFilterMenu::getActiveFilter()
 {
 	return this->filters[this->filterSelectionIndex];
 }

@@ -1,6 +1,6 @@
 #include "AllWeaponsFilter.h"
 
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 
 #include "Resources/UIResources.h"
 
@@ -40,12 +40,7 @@ std::vector<Item*> AllWeaponsFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<HexusCard*>(item) != nullptr)
-		{
-			return true;
-		}
-
-		return false; 
+		return dynamic_cast<Recipe*>(item) == nullptr; 
 	}), itemList.end());
 
 	return itemList;

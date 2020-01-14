@@ -134,6 +134,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SpeedRune::SaveKeySpeedRune] = [=]() { return (Item*)SpeedRune::create(); };
 
 	// Axes
+	this->deserializers[BattleAxe::SaveKeyBattleAxe] = [=]() { return (Item*)BattleAxe::create(); };
 	this->deserializers[BlueAxe::SaveKeyBlueAxe] = [=]() { return (Item*)BlueAxe::create(); };
 	this->deserializers[FireAxe::SaveKeyFireAxe] = [=]() { return (Item*)FireAxe::create(); };
 	this->deserializers[HandAxe::SaveKeyHandAxe] = [=]() { return (Item*)HandAxe::create(); };
@@ -146,6 +147,8 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[StarAxe::SaveKeyStarAxe] = [=]() { return (Item*)StarAxe::create(); };
 	this->deserializers[SteelAxe::SaveKeySteelAxe] = [=]() { return (Item*)SteelAxe::create(); };
 	this->deserializers[WoodCutter::SaveKeyWoodCutter] = [=]() { return (Item*)WoodCutter::create(); };
+
+	this->deserializers[BattleAxePlans::SaveKeyBattleAxePlans] = [=]() { return (Item*)BattleAxePlans::create(); };
 
 	// Bows
 	this->deserializers[ArchersBow::SaveKeyArchersBow] = [=]() { return (Item*)ArchersBow::create(); };

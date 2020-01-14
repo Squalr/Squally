@@ -13,16 +13,13 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Menus/Inventory/FilterMenu/FilterEntry.h"
-#include "Menus/Inventory/FilterMenu/FilterMenu.h"
+#include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
+#include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -49,10 +46,9 @@ CraftingMenu::CraftingMenu()
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->craftingWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
+	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
@@ -81,7 +77,6 @@ CraftingMenu::CraftingMenu()
 	
 	this->addChild(this->backdrop);
 	this->addChild(this->currencyInventory);
-	this->addChild(this->equipmentInventory);
 	this->addChild(this->inventory);
 	this->addChild(this->craftingWindow);
 	this->addChild(this->filterMenu);
@@ -170,20 +165,7 @@ void CraftingMenu::onFilterChange()
 void CraftingMenu::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory->getItems());
 	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
-	
-	for (auto it = equipment.begin(); it != equipment.end(); it++)
-	{
-		Item* item = *it;
-
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
-		{
-			this->performEquipmentAction(item);
-		});
-
-		entry->showIcon();
-	}
 	
 	for (auto it = items.begin(); it != items.end(); it++)
 	{
@@ -191,7 +173,7 @@ void CraftingMenu::populateItemList()
 
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
-			this->performInventoryAction(item);
+			this->tryCraftItem(item);
 		});
 
 		entry->hideIcon();
@@ -211,37 +193,14 @@ void CraftingMenu::setReturnClickCallback(std::function<void()> returnClickCallb
 	this->returnClickCallback = returnClickCallback;
 }
 
-void CraftingMenu::performEquipmentAction(Item* item)
+void CraftingMenu::tryCraftItem(Item* item)
 {
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->unequipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
-	{
-		this->unequipItem(item);
-	}
-}
-
-void CraftingMenu::performInventoryAction(Item* item)
-{
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->equipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
-	{
-		this->equipItem(item);
-	}
-}
-
-void CraftingMenu::equipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() >= CraftingMenu::MaxHexusCards)
+	if (dynamic_cast<Recipe*>(item) == nullptr)
 	{
 		return;
 	}
 
+	/*
 	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
 	{
 		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
@@ -263,99 +222,7 @@ void CraftingMenu::equipHexusCard(Item* card)
 			LogUtils::logError(otherItem->getName());
 		}
 	});
-}
-
-void CraftingMenu::unequipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() <= CraftingMenu::MinHexusCards)
-	{
-		return;
-	}
-
-	this->equipmentInventory->tryTransact(this->inventory, card, nullptr, [=](Item* item, Item* otherItem)
-	{
-		// Success unequipping item -- visually best if this ends up in the 1st crafting slot
-		this->inventory->moveItem(item, 0);
-
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error unequipping card!");
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-}
-
-void CraftingMenu::equipItem(Item* item)
-{
-	Item* equippedItem = nullptr;
-
-	if (dynamic_cast<Hat*>(item))
-	{
-		equippedItem = this->equipmentInventory->getHat();
-	}
-	else if (dynamic_cast<Weapon*>(item))
-	{
-		equippedItem = this->equipmentInventory->getWeapon();
-	}
-	else if (dynamic_cast<Offhand*>(item))
-	{
-		equippedItem = this->equipmentInventory->getOffhand();
-	}
-	
-	this->inventory->tryTransact(this->equipmentInventory, item, equippedItem, [=](Item* item, Item* otherItem)
-	{
-		// Success equipping item. Adjust final position if equipping an item without a swap
-		if (otherItem == nullptr)
-		{
-			this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
-		}
-
-		this->populateItemList();
-		this->equipmentChanged = true;
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error equipping item!");
-
-		if (item != nullptr)
-		{
-			LogUtils::logError(item->getName());
-		}
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-}
-
-void CraftingMenu::unequipItem(Item* item)
-{
-	this->equipmentInventory->tryTransact(this->inventory, item, nullptr, [=](Item* item, Item* otherItem)
-	{
-		// Success unequipping item -- visually best if this ends up in the 1st crafting slot
-		this->inventory->moveItem(item, 0);
-		
-		this->populateItemList();
-		this->equipmentChanged = true;
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error unequipping item!");
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
+	*/
 }
 
 void CraftingMenu::close()

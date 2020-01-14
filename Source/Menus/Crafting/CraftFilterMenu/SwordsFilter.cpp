@@ -17,7 +17,7 @@ SwordsFilter* SwordsFilter::create()
 	return itemPreview;
 }
 
-SwordsFilter::SwordsFilter() : super (Strings::Menus_Inventory_Consumables::create(), UIResources::Menus_InventoryMenu_ConsumablesIcon)
+SwordsFilter::SwordsFilter() : super (Strings::Menus_Inventory_Consumables::create(), UIResources::Menus_InventoryMenu_EquipmentIcon)
 {
 }
 
