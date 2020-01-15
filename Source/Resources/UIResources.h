@@ -107,6 +107,12 @@ namespace UIResources
 	extern const std::string Menus_Buttons_WoodButton;
 	extern const std::string Menus_Buttons_WoodButtonSelected;
 	extern const std::string Menus_ConfirmMenu_ConfirmMenu;
+	extern const std::string Menus_CraftingMenu_AllIcon;
+	extern const std::string Menus_CraftingMenu_AxeIcon;
+	extern const std::string Menus_CraftingMenu_BowIcon;
+	extern const std::string Menus_CraftingMenu_MaceIcon;
+	extern const std::string Menus_CraftingMenu_SpearIcon;
+	extern const std::string Menus_CraftingMenu_SwordIcon;
 	extern const std::string Menus_CreditsMenu_Matt;
 	extern const std::string Menus_CreditsMenu_Nathan;
 	extern const std::string Menus_CreditsMenu_Twitter;

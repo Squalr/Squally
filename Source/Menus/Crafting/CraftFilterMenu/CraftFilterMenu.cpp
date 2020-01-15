@@ -10,6 +10,9 @@
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/AllWeaponsFilter.h"
 #include "Menus/Crafting/CraftFilterMenu/AxesFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/BowsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/MacesFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/SpearsFilter.h"
 #include "Menus/Crafting/CraftFilterMenu/SwordsFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
@@ -41,6 +44,9 @@ CraftFilterMenu::CraftFilterMenu(std::function<void()> onFilterChange)
 
 	this->filters.push_back(AllWeaponsFilter::create());
 	this->filters.push_back(AxesFilter::create());
+	this->filters.push_back(BowsFilter::create());
+	this->filters.push_back(MacesFilter::create());
+	this->filters.push_back(SpearsFilter::create());
 	this->filters.push_back(SwordsFilter::create());
 
 	for (auto it = this->filters.begin(); it != this->filters.end(); it++)

@@ -1,6 +1,6 @@
 #include "SwordsFilter.h"
 
-#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/SwordRecipe.h"
 
 #include "Resources/UIResources.h"
 
@@ -17,7 +17,7 @@ SwordsFilter* SwordsFilter::create()
 	return itemPreview;
 }
 
-SwordsFilter::SwordsFilter() : super (Strings::Menus_Inventory_Consumables::create(), UIResources::Menus_InventoryMenu_EquipmentIcon)
+SwordsFilter::SwordsFilter() : super (Strings::Menus_Crafting_Swords::create(), UIResources::Menus_CraftingMenu_SwordIcon)
 {
 }
 
@@ -40,12 +40,7 @@ std::vector<Item*> SwordsFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<Consumable*>(item) != nullptr)
-		{
-			return false;
-		}
-
-		return true; 
+		return dynamic_cast<SwordRecipe*>(item) == nullptr;
 	}), itemList.end());
 
 	return itemList;

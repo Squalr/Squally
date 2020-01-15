@@ -100,9 +100,6 @@ void IngameMenu::onEnter()
 {
 	super::onEnter();
 
-	this->partyButton->setVisible(false);
-	this->mapButton->setVisible(false);
-
 	float delay = 0.1f;
 	float duration = 0.25f;
 

@@ -17,7 +17,7 @@ AxesFilter* AxesFilter::create()
 	return itemPreview;
 }
 
-AxesFilter::AxesFilter() : super (Strings::Menus_Inventory_Consumables::create(), UIResources::Menus_InventoryMenu_EquipmentIcon)
+AxesFilter::AxesFilter() : super (Strings::Menus_Crafting_Axes::create(), UIResources::Menus_CraftingMenu_AxeIcon)
 {
 }
 

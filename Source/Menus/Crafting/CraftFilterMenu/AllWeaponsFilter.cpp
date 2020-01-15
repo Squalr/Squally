@@ -17,7 +17,7 @@ AllWeaponsFilter* AllWeaponsFilter::create()
 	return itemPreview;
 }
 
-AllWeaponsFilter::AllWeaponsFilter() : super (Strings::Menus_Inventory_All::create(), UIResources::Menus_InventoryMenu_AllIcon)
+AllWeaponsFilter::AllWeaponsFilter() : super (Strings::Menus_Crafting_All::create(), UIResources::Menus_CraftingMenu_AllIcon)
 {
 }
 
