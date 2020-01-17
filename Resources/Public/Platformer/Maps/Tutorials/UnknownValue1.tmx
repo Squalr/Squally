@@ -24,9 +24,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="894" name="lazarus" type="entity" x="1225.58" y="920" width="128" height="128">
+  <object id="894" name="lazarus" type="entity" x="1231.64" y="920" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,face-squally,unknown-val-bar"/>
+    <property name="attached-behavior" value="enemy,face-squally,squalr-unknown-int"/>
    </properties>
   </object>
  </objectgroup>
@@ -43,7 +43,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="fire-launcher" type="object" x="302.424" y="1188.97" width="128" height="128">
+  <object id="896" name="fire-launcher-squalr" type="object" x="302.424" y="1188.97" width="128" height="128">
    <properties>
     <property name="listen-event" value="launch"/>
     <property name="pivot-target" value="lazarus"/>

@@ -28,3 +28,4 @@
 #include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/Objects/LockedPortal.h"
 #include "Scenes/Platformer/AttachedBehavior/IOU/FirstIOUFound.h"
+#include "Scenes/Platformer/AttachedBehavior/Squalr/UnknownValueScanInt/UnknownValueBarBehavior.h"

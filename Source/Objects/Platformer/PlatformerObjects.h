@@ -64,6 +64,7 @@
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncher.h"
 #include "Objects/Platformer/Traps/Launchers/DartTripodLauncher/DartTripodLauncher.h"
 #include "Objects/Platformer/Traps/Launchers/FireLauncher/FireLauncher.h"
+#include "Objects/Platformer/Traps/Launchers/FireLauncher/FireLauncherSqualr.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlail.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikes.h"
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h"

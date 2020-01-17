@@ -84,6 +84,12 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[OrcWarriorCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)OrcWarriorCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[OrthrusCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)OrthrusCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrollCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TrollCombatBehavior::create(owner); };
+
+	/*********************
+		Squalr
+	*********************/
+
+	this->attachedBehaviorDeserializers[UnknownValueBarBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)UnknownValueBarBehavior::create(owner); };
 }
 
 PlatformerAttachedBehaviorDeserializer::~PlatformerAttachedBehaviorDeserializer()
