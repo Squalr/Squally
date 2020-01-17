@@ -26,6 +26,4 @@ protected:
 
 private:
 	typedef PivotLauncher super;
-
-	static const std::string PivotBone;
 };

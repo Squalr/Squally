@@ -16479,6 +16479,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus();
+		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Mystic : public LocalizedString
 	{
 	public:

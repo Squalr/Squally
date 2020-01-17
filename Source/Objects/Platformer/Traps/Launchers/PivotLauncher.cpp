@@ -14,7 +14,10 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Projectiles/Fireball/Fireball.h"
+#include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -28,31 +31,29 @@ using namespace cocos2d;
 
 const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
+const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
 const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
 
 PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource) : super(properties)
 {
-	this->projectileNode = Node::create();
+	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
+	this->projectilePool = ProjectilePool::create([=](){ return Fireball::create(nullptr, nullptr); });
 	this->timeSinceLastShot = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
+	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
+	this->target = nullptr;
 
 	this->launcherAnimations->playAnimation();
+	this->launcherAnimations->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
+	this->launcherAnimations->setFlippedX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool());
+	this->launcherAnimations->setFlippedY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool());
 
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipX))
-	{
-		this->launcherAnimations->setFlippedX(this->properties[GameObject::MapKeyWidth].asBool());
-	}
-
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipY))
-	{
-		this->launcherAnimations->setFlippedY(this->properties[GameObject::MapKeyWidth].asBool());
-	}
-
-	this->addChild(this->projectileNode);
-	this->addChild(this->launcherAnimations);
+	this->containerNode->addChild(this->projectilePool);
+	this->containerNode->addChild(this->launcherAnimations);
+	this->addChild(this->containerNode);
 }
 
 PivotLauncher::~PivotLauncher()
@@ -62,6 +63,16 @@ PivotLauncher::~PivotLauncher()
 void PivotLauncher::onEnter()
 {
 	super::onEnter();
+
+	this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+	{
+
+	});
+
+	ObjectEvents::watchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
+	{
+		this->target = platformerEntity;
+	}, this->targetQueryKey);
 
 	this->scheduleUpdate();
 }
@@ -75,7 +86,8 @@ void PivotLauncher::update(float dt)
 {
 	super::update(dt);
 
-	this->shoot(dt);
+	this->faceTarget();
+	this->updateShootTimer(dt);
 }
 
 Vec2 PivotLauncher::getButtonOffset()
@@ -106,7 +118,7 @@ void PivotLauncher::registerHackables()
 		},
 	};
 
-	auto swingFunc = &PivotLauncher::shoot;
+	auto swingFunc = &PivotLauncher::updateShootTimer;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -115,43 +127,60 @@ void PivotLauncher::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void PivotLauncher::shoot(float dt)
+void PivotLauncher::shoot()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+	
+}
+
+void PivotLauncher::faceTarget()
+{
+	if (this->target == nullptr)
 	{
-		Vec2 squallyPos = GameUtils::getWorldCoords(squally);
+		return;
+	}
 
-		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
+	Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
+	Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
 
-		cannon->setRotation(MathUtils::wrappingNormalize(angleBetween, 0.0f, 2.0f * float(M_PI)) * 180.0f / float(M_PI));
+	const float angleBetween = -std::atan2(thisCoords.y - targetCoords.y, thisCoords.x - targetCoords.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
+	const float angleNormalized = MathUtils::wrappingNormalize(float(M_PI) + angleBetween, 0.0f, 2.0f * float(M_PI));
 
-		this->timeSinceLastShot += dt;
+	cannon->setRotation(angleNormalized * 180.0f / float(M_PI));
+}
 
-		Rect bounds = GameUtils::getScreenBounds(this);
-		Size visibleSize = Director::getInstance()->getVisibleSize();
+NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
+{
+	if (this->target == nullptr)
+	{
+		return;
+	}
+	
+	this->timeSinceLastShot += dt;
 
-		if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+	Rect bounds = GameUtils::getScreenBounds(this);
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+	{
+		if (this->timeSinceLastShot > 4.0f)
 		{
-			if (this->timeSinceLastShot > 4.0f)
-			{
-				this->timeSinceLastShot = 0.0f;
+			this->timeSinceLastShot = 0.0f;
 
-				float dartRotation = angleBetween * 180.0f / float(M_PI);
-				/*
-				Dart* dart = Dart::create(dartRotation, 256.0f);
+			/*
+			float dartRotation = angleBetween * 180.0f / float(M_PI);
+			Dart* dart = Dart::create(dartRotation, 256.0f);
 
-				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
+			dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
 
-				ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-					this,
-					dart,
-					ObjectEvents::SpawnMethod::Below,
-					ObjectEvents::PositionMode::Retain
-				));
-				*/
-			}
+			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+				this,
+				dart,
+				ObjectEvents::SpawnMethod::Below,
+				ObjectEvents::PositionMode::Retain
+			));
+			*/
 		}
-	}), Squally::MapKeySqually);
+	}
 
 	/*
 	ASM(push ZAX);

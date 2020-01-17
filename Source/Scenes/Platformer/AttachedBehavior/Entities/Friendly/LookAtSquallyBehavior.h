@@ -2,7 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class PlatformerFriendly;
+class PlatformerEntity;
 class Squally;
 
 class LookAtSquallyBehavior : public AttachedBehavior
@@ -22,6 +22,6 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	PlatformerFriendly* npc;
+	PlatformerEntity* entity;
 	Squally* squally;
 };

@@ -145,6 +145,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[BoneFiend::MapKeyBoneFiend] = [=](ValueMap properties) { return (GameObject*)BoneFiend::deserialize(properties); };
 	this->deserializers[Hunter::MapKeyHunter] = [=](ValueMap properties) { return (GameObject*)Hunter::deserialize(properties); };
 	this->deserializers[KingZul::MapKeyKingZul] = [=](ValueMap properties) { return (GameObject*)KingZul::deserialize(properties); };
+	this->deserializers[Lazarus::MapKeyLazarus] = [=](ValueMap properties) { return (GameObject*)Lazarus::deserialize(properties); };
 	this->deserializers[Mystic::MapKeyMystic] = [=](ValueMap properties) { return (GameObject*)Mystic::deserialize(properties); };
 	this->deserializers[ReanimatedFighter::MapKeyReanimatedFighter] = [=](ValueMap properties) { return (GameObject*)ReanimatedFighter::deserialize(properties); };
 	this->deserializers[ReanimatedPig::MapKeyReanimatedPig] = [=](ValueMap properties) { return (GameObject*)ReanimatedPig::deserialize(properties); };

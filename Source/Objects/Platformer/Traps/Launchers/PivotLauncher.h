@@ -9,6 +9,7 @@ namespace cocos2d
 
 class AnimationPart;
 class HackableData;
+class PlatformerEntity;
 class ProjectilePool;
 class SmartAnimationNode;
 
@@ -28,17 +29,23 @@ protected:
 
 private:
 	typedef HackableObject super;
-	void shoot(float dt);
+	void shoot();
+	void faceTarget();
+	void updateShootTimer(float dt);
 
 	float timeSinceLastShot;
+	cocos2d::Node* containerNode;
 	ProjectilePool* projectilePool;
 	SmartAnimationNode* launcherAnimations;
 	AnimationPart* cannon;
-	cocos2d::Node* projectileNode;
+
+	PlatformerEntity* target;
+	std::string targetQueryKey;
 
 	static const std::string PivotBone;
 
 	static const std::string PropertyLaunchSpeed;
+	static const std::string PropertyPivotTarget;
 	static const float DefaultLaunchSpeed;
 	static const float LaunchCooldownMin;
 	static const float LaunchCooldownMax;

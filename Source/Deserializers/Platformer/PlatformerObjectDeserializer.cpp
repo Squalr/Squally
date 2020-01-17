@@ -95,6 +95,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[DartTripodLauncher::MapKeyDartTripodLauncher] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncher::create(properties); };
 	this->deserializers[EdgePortal::MapKeyEdgePortal] = [=](ValueMap properties) { return (GameObject*)EdgePortal::create(properties); };
 	this->deserializers[FirePortal::MapKeyFirePortal] = [=](ValueMap properties) { return (GameObject*)FirePortal::create(properties); };
+	this->deserializers[FireLauncher::MapKeyFireLauncher] = [=](ValueMap properties) { return (GameObject*)FireLauncher::create(properties); };
 	this->deserializers[FloatingAsteroid::MapKeyFloatingAsteroid] = [=](ValueMap properties) { return (GameObject*)FloatingAsteroid::create(properties); };
 	this->deserializers[FloatingBomb::MapKeyFloatingBomb] = [=](ValueMap properties) { return (GameObject*)FloatingBomb::create(properties); };
 	this->deserializers[FloatingCrate::MapKeyFloatingCrate] = [=](ValueMap properties) { return (GameObject*)FloatingCrate::create(properties); };
@@ -113,6 +114,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemPickPocket::MapKeyHelpTotemPickPocket] = [=](ValueMap properties) { return (GameObject*)HelpTotemPickPocket::create(properties); };
 	this->deserializers[HeavenHug::MapKeyHeavenHug] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKeyLaser] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
+	this->deserializers[Lever::MapKeyLever] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKeyLifeStone] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[MagicWall::MapKeyMagicWall] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };

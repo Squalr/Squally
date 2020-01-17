@@ -9,7 +9,7 @@
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Combat/Projectiles/Projectile.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;

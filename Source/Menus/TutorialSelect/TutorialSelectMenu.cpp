@@ -58,8 +58,8 @@ TutorialSelectMenu::TutorialSelectMenu()
 
 	this->chapterList.push_back(this->buildTutorialButton("Tutorial I - Hex Editing", MapResources::Tutorials_UnknownValue1));
 	this->chapterList.push_back(this->buildTutorialButton("Tutorial II - Exact value Scans", MapResources::Tutorials_UnknownValue1));
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial III - Unknown Value Scans 1", MapResources::Tutorials_UnknownValue1));
-	this->chapterList.push_back(this->buildTutorialButton("Tutorial IV - Unknown Value Scans 2", MapResources::Tutorials_UnknownValue2));
+	this->chapterList.push_back(this->buildTutorialButton("Tutorial III - Unknown Value Scans Int32", MapResources::Tutorials_UnknownValue1));
+	this->chapterList.push_back(this->buildTutorialButton("Tutorial IV - Unknown Value Scans Float", MapResources::Tutorials_UnknownValue2));
 
 	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
 	{
@@ -135,8 +135,8 @@ ClickableTextNode* TutorialSelectMenu::buildTutorialButton(std::string displayNa
 		PlatformerMap* map = PlatformerMap::create(mapResource);
 
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
-		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
+		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);

@@ -116,6 +116,7 @@
 #include "Entities/Platformer/Enemies/LambdaCrypts/BoneFiend.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Hunter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Mystic.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedFighter.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ReanimatedPig.h"

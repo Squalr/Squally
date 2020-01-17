@@ -6,7 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/UIResources.h"

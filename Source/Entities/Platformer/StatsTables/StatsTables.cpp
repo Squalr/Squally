@@ -251,6 +251,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[BoneFiend::MapKeyBoneFiend] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Hunter::MapKeyHunter] = Stats(16, 8, 32);
 	StatsTables::StatsTable[KingZul::MapKeyKingZul] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Lazarus::MapKeyLazarus] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Mystic::MapKeyMystic] = Stats(16, 8, 32);
 	StatsTables::StatsTable[ReanimatedFighter::MapKeyReanimatedFighter] = Stats(16, 8, 32);
 	StatsTables::StatsTable[ReanimatedPig::MapKeyReanimatedPig] = Stats(16, 8, 32);

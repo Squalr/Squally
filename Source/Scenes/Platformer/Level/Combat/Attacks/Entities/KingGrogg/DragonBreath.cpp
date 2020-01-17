@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Fireball/Fireball.h"
+#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/FXResources.h"
@@ -75,7 +75,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 
 	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 	{
-		fireball->getProjectile()->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+		fireball->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 	});
 }
 
