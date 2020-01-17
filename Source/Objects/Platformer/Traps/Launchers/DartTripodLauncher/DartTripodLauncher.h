@@ -23,6 +23,7 @@ protected:
 	virtual ~DartTripodLauncher();
 
 	void initializePositions() override;
+	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;

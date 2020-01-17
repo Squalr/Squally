@@ -40,7 +40,7 @@ ThrownObject::ThrownObject(PlatformerEntity* caster, cocos2d::Node* object, coco
 		this->setFlippedY(caster->isFlippedY());
 	}
 	
-	this->addChild(this->object);
+	this->contentNode->addChild(this->object);
 }
 
 ThrownObject::~ThrownObject()

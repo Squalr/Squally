@@ -10,6 +10,7 @@ namespace cocos2d
 class AnimationPart;
 class HackableData;
 class PlatformerEntity;
+class Projectile;
 class ProjectilePool;
 class SmartAnimationNode;
 
@@ -26,16 +27,19 @@ protected:
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
+	virtual Projectile* createProjectile() = 0;
+
+	ProjectilePool* projectilePool;
 
 private:
 	typedef HackableObject super;
+	
 	void shoot();
 	void faceTarget();
 	void updateShootTimer(float dt);
 
 	float timeSinceLastShot;
 	cocos2d::Node* containerNode;
-	ProjectilePool* projectilePool;
 	SmartAnimationNode* launcherAnimations;
 	AnimationPart* cannon;
 

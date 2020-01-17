@@ -25,6 +25,7 @@ protected:
 	virtual ~DartLauncher();
 
 	void initializePositions() override;
+	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;

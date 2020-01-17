@@ -16,7 +16,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Projectiles/Fireball/Fireball.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -40,7 +40,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 {
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
-	this->projectilePool = ProjectilePool::create([=](){ return Fireball::create(nullptr, nullptr); });
+	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); });
 	this->timeSinceLastShot = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
@@ -66,7 +66,7 @@ void PivotLauncher::onEnter()
 
 	this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
 	{
-
+		this->shoot();
 	});
 
 	ObjectEvents::watchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
@@ -129,7 +129,9 @@ void PivotLauncher::registerHackables()
 
 void PivotLauncher::shoot()
 {
-	
+	Projectile* projectile = this->projectilePool->getNextProjectile();
+
+	projectile->launchTowardsTarget(this->target, this->target->getEntityCenterPoint(), 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
 }
 
 void PivotLauncher::faceTarget()

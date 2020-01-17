@@ -77,6 +77,8 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
+	this->passThroughCandidates = std::map<CollisionObject*, CollisionData>();
+	this->passThroughCandidatesIter = std::map<CollisionObject*, CollisionData>();
 	this->gravityEnabled = true;
 	this->gravityInversed = true;
 	this->contactUpdateCallback = nullptr;
@@ -188,6 +190,14 @@ void CollisionObject::update(float dt)
 	if (this->contactUpdateCallback != nullptr)
 	{
 		this->contactUpdateCallback(this->currentCollisions, dt);
+	}
+
+	// Retry collision on objects that are not in the same depth, as they may have moved through z-space (cocos/chipmunk do not handle this automatically)
+	this->passThroughCandidatesIter = this->passThroughCandidates;
+	
+	for (auto candidate : this->passThroughCandidatesIter)
+	{
+		this->onContactRetry(candidate.second);
 	}
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
@@ -411,7 +421,23 @@ bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 
-	if (!this->isWithinZThreshold(contact, collisionData))
+	if (!this->isWithinZThreshold(collisionData))
+	{
+		this->passThroughCandidates[collisionData.other] = collisionData;
+		return false;
+	}
+	
+	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
+	{
+		this->currentCollisions.push_back(collisionData.other);
+	}
+
+	return this->runContactEvents(this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
+}
+
+bool CollisionObject::onContactRetry(CollisionData& collisionData)
+{
+	if (!this->isWithinZThreshold(collisionData))
 	{
 		return false;
 	}
@@ -421,23 +447,30 @@ bool CollisionObject::onContactUpdate(PhysicsContact &contact)
 		this->currentCollisions.push_back(collisionData.other);
 	}
 
-	return this->runContactEvents(contact, this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
+	this->runContactEvents(this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
+
+	return true;
 }
 
 bool CollisionObject::onContactEnd(PhysicsContact &contact)
 {
 	CollisionData collisionData = this->constructCollisionData(contact);
 
-	if (!this->isWithinZThreshold(contact, collisionData))
+	if (this->passThroughCandidates.find(collisionData.other) != this->passThroughCandidates.end())
 	{
-		return false;
+		this->passThroughCandidates.erase(collisionData.other);
 	}
 
 	this->currentCollisions.erase(
 		std::remove(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other), this->currentCollisions.end()
 	);
 
-	return this->runContactEvents(contact, this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
+	if (!this->isWithinZThreshold(collisionData))
+	{
+		return false;
+	}
+
+	return this->runContactEvents(this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
 }
 
 void CollisionObject::ClearInverseMap()
@@ -470,7 +503,7 @@ PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float
 	return PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
-bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
+bool CollisionObject::runContactEvents(std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
 {
 	if (this->physicsBody != nullptr && !this->physicsBody->isEnabled())
 	{
@@ -479,7 +512,7 @@ bool CollisionObject::runContactEvents(PhysicsContact& contact, std::map<Collisi
 
 	CollisionResult result = defaultResult;
 
-	if (collisionData.other != nullptr && this->isWithinZThreshold(contact, collisionData))
+	if (collisionData.other != nullptr && this->isWithinZThreshold(collisionData))
 	{
 		CollisionType collisionType = collisionData.other->getCollisionType();
 
@@ -562,7 +595,7 @@ void CollisionObject::updateBinds()
 	}
 }
 
-bool CollisionObject::isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData)
+bool CollisionObject::isWithinZThreshold(const CollisionData& collisionData)
 {
 	const float thisDepth = GameUtils::getDepth(this);
 	const float otherDepth = GameUtils::getDepth(collisionData.other);

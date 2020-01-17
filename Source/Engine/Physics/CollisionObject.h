@@ -37,9 +37,8 @@ public:
 	{
 		CollisionObject* other;
 
-		CollisionData(CollisionObject* other) : other(other)
-		{
-		}
+		CollisionData() : other(nullptr) { }
+		CollisionData(CollisionObject* other) : other(other) { }
 	};
 
 	struct CollisionEvent
@@ -105,11 +104,12 @@ private:
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	bool onContactBegin(cocos2d::PhysicsContact& contact);
 	bool onContactUpdate(cocos2d::PhysicsContact& contact);
+	bool onContactRetry(CollisionData& collisionData);
 	bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(cocos2d::PhysicsContact& contact, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
+	bool runContactEvents(std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 	void updateBinds();
-	bool isWithinZThreshold(cocos2d::PhysicsContact& contact, const CollisionData& collisionData);
+	bool isWithinZThreshold(const CollisionData& collisionData);
 
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
@@ -118,6 +118,8 @@ private:
 	float horizontalDampening;
 	float verticalDampening;
 	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;
+	std::map<CollisionObject*, CollisionData> passThroughCandidates;
+	std::map<CollisionObject*, CollisionData> passThroughCandidatesIter;
 	std::vector<CollisionObject*> currentCollisions;
 	static std::map<int, int> InverseCollisionMap;
 	bool gravityEnabled;

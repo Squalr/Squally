@@ -9,6 +9,7 @@ namespace cocos2d
 
 class AnimationPart;
 class HackableData;
+class Projectile;
 class SmartAnimationNode;
 
 class FireLauncher : public PivotLauncher
@@ -23,6 +24,7 @@ protected:
 	virtual ~FireLauncher();
 
 	void initializePositions() override;
+	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;

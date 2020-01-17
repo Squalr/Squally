@@ -12,6 +12,7 @@
 #include "Objects/Platformer/Projectiles/Fireball/FireballGenericPreview.h"
 #include "Objects/Platformer/Projectiles/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -25,48 +26,30 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_FIREBALL_SPEED 11
 
-Fireball* Fireball::create(PlatformerEntity* owner, PlatformerAttack* attack)
+Fireball* Fireball::create(PlatformerEntity* owner)
 {
-	Fireball* instance = new Fireball(owner, attack);
+	Fireball* instance = new Fireball(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Fireball::Fireball(PlatformerEntity* owner, PlatformerAttack* attack) : super(owner, SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000), Size(32.0f, 32.0f))
+Fireball::Fireball(PlatformerEntity* owner) : super(owner, SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000), Size(32.0f, 32.0f))
 {
 	SmartAnimationSequenceNode* fireballAnim = dynamic_cast<SmartAnimationSequenceNode*>(this->object);
+
+	this->explosionAnim = SmartAnimationSequenceNode::create();
+	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
 
 	this->toggleHackable(false);
 
 	fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 
-	this->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
-	{
-		this->getCollision()->setPhysicsEnabled(false);
-		this->setVisible(false);
-
-		// Explosion animation
-		SmartAnimationSequenceNode* explosionAnim = SmartAnimationSequenceNode::create(FXResources::Explosion_Explosion_0000);
-		WorldSound* impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
-		
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, explosionAnim, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
-		explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
-		explosionAnim->setPosition3D(GameUtils::getWorldCoords3D(this));
-		explosionAnim->addChild(impactSound);
-
-		impactSound->play();
-
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
-		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, attack->getRandomDamage()));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+	this->postFXNode->addChild(this->breathSound);
+	this->postFXNode->addChild(this->impactSound);
+	this->postFXNode->addChild(this->explosionAnim);
 }
 
 Fireball::~Fireball()
@@ -78,6 +61,18 @@ void Fireball::update(float dt)
 	super::update(dt);
 
 	this->setFireballSpeed();
+}
+
+void Fireball::runSpawnFX()
+{
+	this->breathSound->play();
+}
+
+void Fireball::runImpactFX()
+{
+	this->explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
+
+	this->impactSound->play();
 }
 
 Vec2 Fireball::getButtonOffset()

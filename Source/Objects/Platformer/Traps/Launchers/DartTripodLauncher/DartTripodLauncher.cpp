@@ -49,3 +49,8 @@ void DartTripodLauncher::initializePositions()
 {
 	super::initializePositions();
 }
+
+Projectile* DartTripodLauncher::createProjectile()
+{
+	return nullptr;
+}

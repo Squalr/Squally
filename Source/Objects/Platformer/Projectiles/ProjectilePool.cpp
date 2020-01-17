@@ -26,21 +26,9 @@ ProjectilePool* ProjectilePool::create(std::function<Projectile*()> projectileFa
 
 ProjectilePool::ProjectilePool(std::function<Projectile*()> projectileFactory) : super()
 {
+	this->projectileFactory = projectileFactory;
 	this->projectiles = std::vector<Projectile*>();
-	this->dartIndex = 0;
-
-	if (projectileFactory != nullptr)
-	{
-		for (int index = 0; index < ProjectilePool::PoolCapacity; index++)
-		{
-			this->projectiles.push_back(projectileFactory());
-		}
-	}
-
-	for (auto it = this->projectiles.begin(); it != this->projectiles.end(); it++)
-	{
-		this->addChild(*it);
-	}
+	this->dartIndex = -1;
 }
 
 ProjectilePool::~ProjectilePool()
@@ -49,12 +37,24 @@ ProjectilePool::~ProjectilePool()
 
 Projectile* ProjectilePool::getNextProjectile()
 {
-	if (this->projectiles.size() <= 0)
+	if (this->projectiles.size() < ProjectilePool::PoolCapacity)
 	{
-		return nullptr;
+		if (projectileFactory != nullptr)
+		{
+			Projectile* newProjectile = projectileFactory();
+
+			newProjectile->disable(false);
+
+			this->projectiles.push_back(newProjectile);
+			this->addChild(newProjectile);
+		}
 	}
 
 	this->dartIndex = MathUtils::wrappingNormalize(this->dartIndex + 1, 0, this->projectiles.size() - 1);
+
+	this->projectiles[dartIndex]->enable(true);
+	this->projectiles[dartIndex]->setPosition3D(Vec3::ZERO);
+	this->projectiles[dartIndex]->runSpawnFX();
 
 	return this->projectiles[dartIndex];
 }

@@ -39,11 +39,15 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 		false,
 		false
 	);
+	this->contentNode = Node::create();
+	this->postFXNode = Node::create();
 
 	this->addTag(Projectile::ProjectileTag);
 
 	this->collisionObject->setPhysicsEnabled(false);
 
+	this->collisionObject->addChild(this->contentNode);
+	this->collisionObject->addChild(this->postFXNode);
 	this->addChild(this->collisionObject);
 }
 
@@ -71,6 +75,12 @@ void Projectile::initializeListeners()
 void Projectile::update(float dt)
 {
 	super::update(dt);
+
+	// Should prolly have another boolean for this, but whatever
+	if (!this->contentNode->isVisible())
+	{
+		return;
+	}
 
 	if (this->noCollideDuration > 0.0f)
 	{
@@ -212,6 +222,24 @@ void Projectile::setSpeedMultiplier(Vec3 speedMultiplier)
 	this->speedMultiplier.x = MathUtils::clamp(speedMultiplier.x, -1.0f, 1.0f);
 	this->speedMultiplier.y = MathUtils::clamp(speedMultiplier.y, -1.0f, 1.0f);
 	this->speedMultiplier.z = MathUtils::clamp(speedMultiplier.z, -1.0f, 1.0f);
+}
+
+void Projectile::enable(bool setVisible)
+{
+	this->contentNode->setVisible(setVisible);
+
+	this->collisionObject->setPhysicsEnabled(true);
+}
+
+void Projectile::disable(bool setVisible)
+{
+	this->contentNode->setVisible(setVisible);
+
+	this->collisionObject->setPhysicsEnabled(false);
+}
+
+void Projectile::runSpawnFX()
+{
 }
 
 CollisionObject* Projectile::getCollision()

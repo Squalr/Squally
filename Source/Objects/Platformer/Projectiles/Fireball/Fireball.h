@@ -5,14 +5,19 @@
 class ThrownObject;
 class PlatformerAttack;
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
+class WorldSound;
 
 class Fireball : public ThrownObject
 {
 public:
-	static Fireball* create(PlatformerEntity* owner, PlatformerAttack* attack);
+	static Fireball* create(PlatformerEntity* owner);
+	
+	void runSpawnFX() override;
+	void runImpactFX();
 
 protected:
-	Fireball(PlatformerEntity* owner, PlatformerAttack* attack);
+	Fireball(PlatformerEntity* owner);
 	virtual ~Fireball();
 
 	void update(float dt) override;
@@ -22,6 +27,10 @@ protected:
 
 private:
 	typedef ThrownObject super;
+
+	SmartAnimationSequenceNode* explosionAnim;
+	WorldSound* breathSound;
+	WorldSound* impactSound;
 
 	void setFireballSpeed();
 };

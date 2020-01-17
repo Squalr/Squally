@@ -3,6 +3,7 @@
 #include "Objects/Platformer/Interactables/InteractObject.h"
 
 class SmartAnimationNode;
+class WorldSound;
 
 class Lever : public InteractObject
 {
@@ -24,4 +25,5 @@ private:
 
 	bool canPull;
 	SmartAnimationNode* lever;
+	WorldSound* leverSound;
 };

@@ -21,6 +21,9 @@ public:
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
 	void setSpeedMultiplier(cocos2d::Vec3 speedMultiplier);
+	void enable(bool setVisible);
+	void disable(bool setVisible);
+	virtual void runSpawnFX();
 
 	static const std::string ProjectileTag;
 	
@@ -38,6 +41,9 @@ protected:
 	virtual HackablePreview* createAccelerationPreview();
 	
 	PlatformerEntity* caster;
+
+	cocos2d::Node* contentNode;
+	cocos2d::Node* postFXNode;
 
 private:
 	typedef HackableObject super;

@@ -50,3 +50,8 @@ void DartLauncher::initializePositions()
 {
 	super::initializePositions();
 }
+
+Projectile* DartLauncher::createProjectile()
+{
+	return nullptr;
+}
