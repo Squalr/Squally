@@ -28,6 +28,7 @@ public:
 	int getStateOrDefaultInt(std::string key, int value);
 	float getStateOrDefaultFloat(std::string key, float value);
 	bool getStateOrDefaultBool(std::string key, bool value);
+	cocos2d::ValueMap& getStateVariables();
 	bool hasState(std::string key);
 	void clearState(std::string key);
 	void setZSorted(bool zSorted);

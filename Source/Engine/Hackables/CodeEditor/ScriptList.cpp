@@ -280,7 +280,7 @@ void ScriptList::saveScripts()
 		scriptsToSave.push_back(Value(attributes));
 	}
 
-	SaveManager::saveProfileData(this->hackableCode->getHackableCodeIdentifier(), Value(scriptsToSave));
+	SaveManager::SaveProfileData(this->hackableCode->getHackableCodeIdentifier(), Value(scriptsToSave));
 }
 
 ScriptEntry* ScriptList::getActiveScript()

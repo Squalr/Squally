@@ -9,6 +9,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -24,11 +25,11 @@ Dart* Dart::create(float dartRotation, float dartSpeed)
 	return instance;
 }
 
-Dart::Dart(float dartRotation, float dartSpeed) : super()
+Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, nullptr, CombatCollisionType::Projectile, false)
 {
 	this->dartRotation = dartRotation;
 	this->dartSpeed = dartSpeed;
-	this->dartSprite = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
+	this->dartSprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 	this->collision = CollisionObject::create(
 		ValueMap(),
 		PhysicsBody::createBox(

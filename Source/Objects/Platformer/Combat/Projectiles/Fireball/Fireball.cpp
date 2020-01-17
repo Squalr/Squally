@@ -9,8 +9,8 @@
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/FireballGenericPreview.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/FireballSpeedPreview.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/FireballGenericPreview.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 

@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
-#include "Objects/Platformer/Combat/Projectiles/ThrownObject/Fireball.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 
 #include "Resources/FXResources.h"

@@ -8,10 +8,14 @@ public:
 	virtual Item* craft() = 0;
 	virtual std::map<std::string, int> getReagents() = 0;
 	
+	Item* getCraftedItemRef();
+
 protected:
 	Recipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	virtual ~Recipe();
 
 private:
 	typedef Item super;
+
+	Item* craftedItem;
 };

@@ -243,7 +243,7 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 		
 		ValueMap properties = ValueMap();
 
-		SaveManager::saveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
+		SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 		
 		properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 		properties[GameObject::MapKeyName] = Value(helperName);

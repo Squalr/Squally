@@ -1,4 +1,4 @@
-#include "DartGun.h"
+#include "PivotLauncher.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -15,7 +15,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Traps/DartTraps/Dart.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -25,90 +24,81 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SWING 1
+#define LOCAL_FUNC_ID_LAUNCH 1
 
-const std::string DartGun::MapKeyDartGun = "dart-gun";
-const std::string DartGun::PivotBone = "pivot_bone";
+const std::string PivotLauncher::PivotBone = "pivot_bone";
+const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
+const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
+const float PivotLauncher::LaunchCooldownMin = 2.0f;
+const float PivotLauncher::LaunchCooldownMax = 4.0f;
 
-DartGun* DartGun::create(ValueMap& properties)
+PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource) : super(properties)
 {
-	DartGun* instance = new DartGun(properties);
-
-	instance->autorelease();
-
-	return instance;
-}
-
-DartGun::DartGun(ValueMap& properties) : super(properties)
-{
-	this->dartNode = Node::create();
-	this->dartGunAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Dartgun_Animations);
+	this->projectileNode = Node::create();
+	this->launcherAnimations = SmartAnimationNode::create(animationResource);
 	this->timeSinceLastShot = 0.0f;
-	this->cannon = this->dartGunAnimations->getAnimationPart(DartGun::PivotBone);
+	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 
-	this->dartGunAnimations->playAnimation();
+	this->launcherAnimations->playAnimation();
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipX))
 	{
-		this->dartGunAnimations->setFlippedX(this->properties[GameObject::MapKeyWidth].asBool());
+		this->launcherAnimations->setFlippedX(this->properties[GameObject::MapKeyWidth].asBool());
 	}
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyFlipY))
 	{
-		this->dartGunAnimations->setFlippedY(this->properties[GameObject::MapKeyWidth].asBool());
+		this->launcherAnimations->setFlippedY(this->properties[GameObject::MapKeyWidth].asBool());
 	}
 
-	this->addChild(this->dartNode);
-	this->addChild(this->dartGunAnimations);
+	this->addChild(this->projectileNode);
+	this->addChild(this->launcherAnimations);
 }
 
-DartGun::~DartGun()
+PivotLauncher::~PivotLauncher()
 {
 }
 
-void DartGun::onEnter()
+void PivotLauncher::onEnter()
 {
 	super::onEnter();
 
 	this->scheduleUpdate();
 }
 
-void DartGun::initializePositions()
+void PivotLauncher::initializePositions()
 {
 	super::initializePositions();
 }
 
-void DartGun::update(float dt)
+void PivotLauncher::update(float dt)
 {
 	super::update(dt);
 
 	this->shoot(dt);
 }
 
-Vec2 DartGun::getButtonOffset()
+Vec2 PivotLauncher::getButtonOffset()
 {
 	return Vec2(0.0f, 128.0f);
 }
 
-void DartGun::registerHackables()
+void PivotLauncher::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_SWING,
+			LOCAL_FUNC_ID_LAUNCH,
 			HackableCode::HackableCodeInfo(
-				DartGun::MapKeyDartGun,
-				Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle::create(),
+				"PivotLauncher",
+				Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				nullptr,
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx::create() },
 				},
 				int(HackFlags::None),
 				20.0f
@@ -116,7 +106,7 @@ void DartGun::registerHackables()
 		},
 	};
 
-	auto swingFunc = &DartGun::shoot;
+	auto swingFunc = &PivotLauncher::shoot;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
 	for (auto it = hackables.begin(); it != hackables.end(); it++)
@@ -125,13 +115,13 @@ void DartGun::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void DartGun::shoot(float dt)
+NO_OPTIMIZE void PivotLauncher::shoot(float dt)
 {
 	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
 		Vec2 squallyPos = GameUtils::getWorldCoords(squally);
 
-		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->dartGunAnimations->getFlippedX() ? float(M_PI) : 0.0f);
+		float angleBetween = -std::atan2(this->getPositionY() - squallyPos.y, this->getPositionX() - squallyPos.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
 
 		cannon->setRotation(MathUtils::wrappingNormalize(angleBetween, 0.0f, 2.0f * float(M_PI)) * 180.0f / float(M_PI));
 
@@ -147,6 +137,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 				this->timeSinceLastShot = 0.0f;
 
 				float dartRotation = angleBetween * 180.0f / float(M_PI);
+				/*
 				Dart* dart = Dart::create(dartRotation, 256.0f);
 
 				dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
@@ -157,6 +148,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 					ObjectEvents::SpawnMethod::Below,
 					ObjectEvents::PositionMode::Retain
 				));
+				*/
 			}
 		}
 	}), Squally::MapKeySqually);
@@ -167,7 +159,7 @@ NO_OPTIMIZE void DartGun::shoot(float dt)
 	ASM_MOV_REG_VAR(ZAX, angleInt);
 	ASM_MOV_REG_VAR(ZBX, previousAngleInt);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LAUNCH);
 	ASM(mov ZBX, ZAX);
 	ASM_NOP5();
 	HACKABLE_CODE_END();

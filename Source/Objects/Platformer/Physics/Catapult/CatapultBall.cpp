@@ -33,7 +33,7 @@ CatapultBall* CatapultBall::create(const ValueMap& properties, Vec2 velocity)
 
 CatapultBall::CatapultBall(const ValueMap& properties, Vec2 velocity) : super(properties)
 {
-	this->ball = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
+	this->ball = Sprite::create(ObjectResources::Traps_Catapult_BALL);
 	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(48.0f), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->velocity = velocity;
 	this->isAccelerating = true;

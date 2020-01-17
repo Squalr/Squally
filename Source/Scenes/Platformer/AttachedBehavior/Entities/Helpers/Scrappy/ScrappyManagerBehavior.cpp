@@ -58,14 +58,14 @@ void ScrappyManagerBehavior::onLoad()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventBeforePlatformerMapChange, [=](EventCustom* eventCustom)
 	{
 		// Since Scrappy is found on the first map, this is a good way to ensure there are no sequence breaks
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 	}));
 
 	this->defer([=]()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(HelperEvents::EventFindScrappy, [=](EventCustom* eventCustom)
 		{
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 			this->spawnScrappy();
 		}));
 

@@ -608,6 +608,7 @@ const std::string DecorResources::Generic_TownHomeEmpty8 = "Private/Platformer/D
 const std::string DecorResources::Generic_TownSmith = "Private/Platformer/Decor/Generic/TownSmith.png";
 const std::string DecorResources::Generic_TreeHome1 = "Private/Platformer/Decor/Generic/TreeHome1.png";
 const std::string DecorResources::Generic_Vent = "Private/Platformer/Decor/Generic/Vent.png";
+const std::string DecorResources::Generic_WoodCaveDoor1 = "Private/Platformer/Decor/Generic/WoodCaveDoor1.png";
 const std::string DecorResources::Generic_WoodDoor = "Private/Platformer/Decor/Generic/WoodDoor.png";
 const std::string DecorResources::Generic_WoodDoor1 = "Private/Platformer/Decor/Generic/WoodDoor1.png";
 const std::string DecorResources::Generic_birds = "Private/Platformer/Decor/Generic/birds.png";

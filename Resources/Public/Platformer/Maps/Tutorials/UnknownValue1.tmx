@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="22" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="896">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="895" name="lava" type="terrain" x="-34.2714" y="1511.21">
+   <polygon points="-128.096,48.1572 3018.27,49.6516 3015.17,1194.63 -130.846,1196.79"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="894" name="asmodeus" type="entity" x="1324" y="1428" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,unknown-val-bar"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="891" name="lava" type="terrain" x="-34.2714" y="1779.21">
+   <polygon points="-128.096,48.1572 3018.27,49.6516 3015.17,1194.63 -130.846,1196.79"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="849.14" y="1696.19" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

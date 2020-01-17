@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="943">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="944">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -413,7 +413,7 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="water" type="object" x="9846.66" y="5955.32" width="1101.32" height="405.346">
+  <object id="905" name="water" type="object" x="9846.66" y="5955.32" width="1101.32" height="831.346">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -604,8 +604,6 @@
   </object>
   <object id="782" name="gate" type="object" x="392.638" y="2393.93" width="450.603" height="423.038">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
-    <property name="item-required" value="gate-key"/>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="main"/>
    </properties>
@@ -719,6 +717,11 @@
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="943" name="spawn" type="object" x="548.121" y="2693.58" width="128" height="128">
+   <properties>
+    <property name="transition" value="gate"/>
    </properties>
   </object>
  </objectgroup>

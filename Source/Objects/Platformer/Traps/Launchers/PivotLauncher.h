@@ -9,18 +9,16 @@ namespace cocos2d
 
 class AnimationPart;
 class HackableData;
+class ProjectilePool;
 class SmartAnimationNode;
 
-class DartGun : public HackableObject
+class PivotLauncher : public HackableObject
 {
 public:
-	static DartGun* create(cocos2d::ValueMap& properties);
-
-	static const std::string MapKeyDartGun;
 
 protected:
-	DartGun(cocos2d::ValueMap& properties);
-	~DartGun();
+	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource);
+	virtual ~PivotLauncher();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -33,9 +31,15 @@ private:
 	void shoot(float dt);
 
 	float timeSinceLastShot;
-	cocos2d::Node* dartNode;
-	SmartAnimationNode* dartGunAnimations;
+	ProjectilePool* projectilePool;
+	SmartAnimationNode* launcherAnimations;
 	AnimationPart* cannon;
+	cocos2d::Node* projectileNode;
 
 	static const std::string PivotBone;
+
+	static const std::string PropertyLaunchSpeed;
+	static const float DefaultLaunchSpeed;
+	static const float LaunchCooldownMin;
+	static const float LaunchCooldownMax;
 };

@@ -12,10 +12,12 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -63,6 +65,9 @@ void WindBlessing::onActivate(bool isActiveThroughSkippable)
 
 void WindBlessing::onComplete()
 {
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+	
+	// TODO: Notify user
 }
 
 void WindBlessing::onSkipped()
@@ -105,8 +110,6 @@ void WindBlessing::runCinematicSequence()
 			[=]()
 			{
 				this->complete();
-
-				// TODO: Give reward here
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
 			true

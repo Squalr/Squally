@@ -47,7 +47,8 @@ CraftingMenu::CraftingMenu()
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
-	this->craftingWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
+	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
+	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
@@ -79,6 +80,7 @@ CraftingMenu::CraftingMenu()
 	this->addChild(this->currencyInventory);
 	this->addChild(this->inventory);
 	this->addChild(this->craftingWindow);
+	this->addChild(this->anvil);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
 	this->addChild(this->craftingLabel);
@@ -111,6 +113,7 @@ void CraftingMenu::initializePositions()
 
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
+	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f));
 	this->craftingWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->craftingLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));

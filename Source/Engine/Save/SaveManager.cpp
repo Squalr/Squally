@@ -101,14 +101,14 @@ void SaveManager::batchSaveProfileData(std::vector<std::tuple<std::string, cocos
 	);
 }
 
-void SaveManager::softSaveProfileData(std::string key, const Value& data)
+void SaveManager::SoftSaveProfileData(std::string key, const Value& data)
 {
 	SaveManager::initializeSaveData();
 
 	SaveManager::profileSaveData[key] = data;
 }
 
-void SaveManager::saveProfileData(std::string key, const Value& data)
+void SaveManager::SaveProfileData(std::string key, const Value& data)
 {
 	SaveManager::initializeSaveData();
 

@@ -6129,6 +6129,36 @@ namespace Strings
 		virtual ~Menus_GotIt() = default;
 	};
 
+	class Menus_HackingTutorials : public LocalizedString
+	{
+	public:
+		static Menus_HackingTutorials* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_HackingTutorials();
+		virtual ~Menus_HackingTutorials() = default;
+	};
+
+	class Menus_HackingTutorials_Disclaimer : public LocalizedString
+	{
+	public:
+		static Menus_HackingTutorials_Disclaimer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_HackingTutorials_Disclaimer();
+		virtual ~Menus_HackingTutorials_Disclaimer() = default;
+	};
+
 	class Menus_Hacking_Abilities_WeakMinded : public LocalizedString
 	{
 	public:
@@ -12639,111 +12669,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax();
-		virtual ~Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEax() = default;
-	};
-
-	class Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx();
-		virtual ~Menus_Hacking_Objects_DartGun_SetTargetAngle_RegisterEbx() = default;
-	};
-
-	class Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle();
-		virtual ~Menus_Hacking_Objects_DartGun_SetTargetAngle_SetTargetAngle() = default;
-	};
-
-	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax();
-		virtual ~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterEax() = default;
-	};
-
-	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0();
-		virtual ~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm0() = default;
-	};
-
-	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1();
-		virtual ~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_RegisterXmm1() = default;
-	};
-
-	class Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer();
-		virtual ~Menus_Hacking_Objects_DartLauncher_UpdateLaunchTimer_UpdateLaunchTimer() = default;
-	};
-
 	class Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
@@ -13057,6 +12982,111 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle();
 		virtual ~Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1() = default;
+	};
+
+	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer();
+		virtual ~Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer() = default;
 	};
 
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_Addition : public LocalizedString
@@ -14109,6 +14139,51 @@ namespace Strings
 		virtual ~Menus_Inventory_Misc() = default;
 	};
 
+	class Menus_ItemPreview_Armor : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Armor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Armor();
+		virtual ~Menus_ItemPreview_Armor() = default;
+	};
+
+	class Menus_ItemPreview_Attack : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Attack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Attack();
+		virtual ~Menus_ItemPreview_Attack() = default;
+	};
+
+	class Menus_ItemPreview_Damage : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Damage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Damage();
+		virtual ~Menus_ItemPreview_Damage() = default;
+	};
+
 	class Menus_ItemPreview_Equip : public LocalizedString
 	{
 	public:
@@ -14124,6 +14199,36 @@ namespace Strings
 		virtual ~Menus_ItemPreview_Equip() = default;
 	};
 
+	class Menus_ItemPreview_Health : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Health* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Health();
+		virtual ~Menus_ItemPreview_Health() = default;
+	};
+
+	class Menus_ItemPreview_Mana : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Mana* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Mana();
+		virtual ~Menus_ItemPreview_Mana() = default;
+	};
+
 	class Menus_ItemPreview_Spacebar : public LocalizedString
 	{
 	public:
@@ -14137,6 +14242,21 @@ namespace Strings
 	private:
 		Menus_ItemPreview_Spacebar();
 		virtual ~Menus_ItemPreview_Spacebar() = default;
+	};
+
+	class Menus_ItemPreview_Speed : public LocalizedString
+	{
+	public:
+		static Menus_ItemPreview_Speed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_ItemPreview_Speed();
+		virtual ~Menus_ItemPreview_Speed() = default;
 	};
 
 	class Menus_Leave : public LocalizedString

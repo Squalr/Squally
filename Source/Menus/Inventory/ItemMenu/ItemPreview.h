@@ -2,8 +2,12 @@
 
 #include "Engine/SmartNode.h"
 
+class Hat;
 class Item;
+class Offhand;
 class LocalizedLabel;
+class LocalizedString;
+class Weapon;
 
 class ItemPreview : public SmartNode
 {
@@ -20,9 +24,23 @@ protected:
 private:
 	typedef SmartNode super;
 	ItemPreview(bool allowEquipHint, bool showItemName);
-	~ItemPreview();
+	virtual ~ItemPreview();
+
+	void setHatStatline(Hat* hat);
+	void setOffhandStatline(Offhand* offhand);
+	void setWeaponStatline(Weapon* weapon);
+	
+	LocalizedLabel* createStatline();
+	void bindStatlineToIntRange(std::function<LocalizedString*()> prefixFunc, int min, int max);
+	void bindStatlineToNonZeroInt(std::function<LocalizedString*()> prefixFunc, int value);
+	void bindStatlineToNonZeroFloat(std::function<LocalizedString*()> prefixFunc, float value);
 
 	cocos2d::Node* previewNode;
+	std::vector<LocalizedLabel*> statlines;
 	LocalizedLabel* equipHint;
 	LocalizedLabel* itemName;
+
+	int nextStatline;
+
+	static const int MaxStatlines;
 };

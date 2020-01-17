@@ -1,6 +1,6 @@
 #include "SwordsFilter.h"
 
-#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/SwordRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/SwordRecipe.h"
 
 #include "Resources/UIResources.h"
 

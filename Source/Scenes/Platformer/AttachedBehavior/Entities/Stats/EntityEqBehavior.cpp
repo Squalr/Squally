@@ -108,6 +108,6 @@ void EntityEqBehavior::save()
 		return;
 	}
 
-	SaveManager::softSaveProfileData(this->saveKeyEq, Value(this->getEq()));
-	SaveManager::softSaveProfileData(this->saveKeyExp, Value(this->getEqExperience()));
+	SaveManager::SoftSaveProfileData(this->saveKeyEq, Value(this->getEq()));
+	SaveManager::SoftSaveProfileData(this->saveKeyExp, Value(this->getEqExperience()));
 }

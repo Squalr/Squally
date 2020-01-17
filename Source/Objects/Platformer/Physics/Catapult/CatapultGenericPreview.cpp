@@ -21,7 +21,7 @@ CatapultGenericPreview* CatapultGenericPreview::create()
 
 CatapultGenericPreview::CatapultGenericPreview()
 {
-	this->previewCatapult = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
+	this->previewCatapult = SmartAnimationNode::create(ObjectResources::Traps_Catapult_Animations);
 
 	this->previewCatapult->setScale(0.35f);
 

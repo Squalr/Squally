@@ -110,7 +110,7 @@ void Inventory::save()
 {
 	if (!this->saveKey.empty())
 	{
-		SaveManager::saveProfileData(this->saveKey, Value(this->serialize()));
+		SaveManager::SaveProfileData(this->saveKey, Value(this->serialize()));
 		
 		InventoryEvents::TriggerInventoryInstanceChanged(InventoryEvents::InventoryInstanceChangedArgs(this, this->saveKey));
 	}

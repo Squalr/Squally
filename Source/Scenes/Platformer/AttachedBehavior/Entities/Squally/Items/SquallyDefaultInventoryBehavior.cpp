@@ -3,10 +3,12 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -55,7 +57,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 
 	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
 
 		// Because the save key was patched in later, we need this code here until.... let's say April 2020
 		// Alternatively, we can add logic to detect exceeding the max unique on cards, as those are the only items given
@@ -68,8 +70,10 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		if (DeveloperModeController::IsDeveloperBuild)
 		{
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SantaHat::create(), false);
+			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SteelSword::create(), false);
 
 			entityInventoryBehavior->getInventory()->forceInsert(BattleAxePlans::create(), false);
+			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), 420);
 		}
 
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);

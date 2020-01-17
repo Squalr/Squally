@@ -101,7 +101,7 @@ void CurrencyInventory::save()
 {
 	if (!this->saveKey.empty())
 	{
-		SaveManager::saveProfileData(this->saveKey, Value(this->currencyMap));
+		SaveManager::SaveProfileData(this->saveKey, Value(this->currencyMap));
 		
 		InventoryEvents::TriggerCurrencyInventoryInstanceChanged(InventoryEvents::CurrencyInventoryInstanceChangedArgs(this, this->saveKey));
 	}

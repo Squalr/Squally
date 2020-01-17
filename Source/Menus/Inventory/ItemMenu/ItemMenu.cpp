@@ -242,7 +242,11 @@ void ItemMenu::updateAndPositionItemText()
 	const float YOffset = 6.0f;
 	const float ZOffset = 128.0f;
 	
-	this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
+	if (this->isFocused)
+	{
+		this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
+	}
+	
 	this->visibleItems[this->selectedItemIndex]->setPositionX(XOffset);
 	this->visibleItems[this->selectedItemIndex]->setPositionY(this->visibleItems[this->selectedItemIndex]->getPositionY() + YOffset);
 	this->visibleItems[this->selectedItemIndex]->setPositionZ(ZOffset);

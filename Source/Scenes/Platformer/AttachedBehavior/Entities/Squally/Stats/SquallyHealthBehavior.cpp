@@ -88,7 +88,7 @@ void SquallyHealthBehavior::onLoad()
 
 void SquallyHealthBehavior::saveState()
 {
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
 }
 
 void SquallyHealthBehavior::respawn(float duration)

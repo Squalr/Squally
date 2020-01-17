@@ -46,6 +46,7 @@ private:
 
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* craftingWindow;
+	cocos2d::Sprite* anvil;
 	LocalizedLabel* craftingLabel;
 	CraftFilterMenu* filterMenu;
 	ItemMenu* itemMenu;

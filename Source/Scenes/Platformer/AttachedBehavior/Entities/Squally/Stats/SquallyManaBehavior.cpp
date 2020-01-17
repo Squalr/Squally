@@ -67,7 +67,7 @@ void SquallyManaBehavior::onLoad()
 
 void SquallyManaBehavior::saveState()
 {
-	SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
 }
 
 void SquallyManaBehavior::recalculateMaxMana(std::function<void()> onCalculated)

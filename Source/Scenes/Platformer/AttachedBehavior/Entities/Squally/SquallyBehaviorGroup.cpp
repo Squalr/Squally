@@ -10,6 +10,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Hud/SquallyHudTrackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyDefaultInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Items/SquallyReceiveItemBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
@@ -42,6 +43,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyVisualBehaviorGroup::create(owner),
 	ScrappyManagerBehavior::create(owner),
 	HelperManagerBehavior::create(owner),
+	SquallyStaticHelpBehavior::create(owner)
 	})
 {
 }

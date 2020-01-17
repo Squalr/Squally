@@ -47,7 +47,7 @@ Catapult* Catapult::create(ValueMap& properties)
 
 Catapult::Catapult(ValueMap& properties) : super(properties)
 {
-	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::War_Machines_Catapult_Animations);
+	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::Traps_Catapult_Animations);
 	this->catapultCollision = CollisionObject::create(PhysicsBody::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, false, false);
 	this->ballAnimationPart = this->catapultAnimations->getAnimationPart("BALL");
 	this->launchPower = Catapult::LaunchPowerDefault;

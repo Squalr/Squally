@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="106" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="682">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="WaterfallRocks" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-1513.69" y="3069.3" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="WaterfallGround" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-1485.81" y="3073.6" width="13257.6" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="2.25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="630" name="dark-grass" type="terrain" x="11885.9" y="2120.87">
+   <polygon points="424.577,927.528 593.802,-1106.59 1690.64,-1098.14 1707.43,-255.287 1666.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
+  </object>
+  <object id="670" name="wind" type="object" x="10785.2" y="4267.16" width="1101.21" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="674" name="dark-grass" type="terrain" x="5288.77" y="6632.45">
+   <polygon points="-1385.28,-780.685 2064.18,-778.961 2060.2,453.605 -1379.23,448.586"/>
+  </object>
+  <object id="675" name="wind" type="object" x="10779.7" y="3838.42" width="640.606" height="425.455">
+   <properties>
+    <property name="speed-x" type="float" value="1"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="676" name="dark-grass" type="terrain" x="9437.35" y="1960">
+   <polygon points="475.265,-1106.59 1353.15,-1098.14 1368.62,-184.052 1340.37,1975.05 257.513,2174.75 -555.905,2170.5 -541.803,-1017.5"/>
+  </object>
+  <object id="677" name="wind" type="object" x="10795.8" y="3361.45" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="678" name="wind" type="object" x="10792.8" y="2879.52" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="679" name="wind" type="object" x="10791.8" y="2405.7" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="680" name="dark-grass" type="terrain" x="5200" y="4500">
+   <polygon points="-52,348 -64,968 -660,964 -668,484 -604,-540 862.086,-562.945 1468,-552 1464,628 1464.42,965.568 561.773,972.638 562.156,663.161 1215.19,668.423 1226.34,451.653 1203.06,193.581 1151.99,-84.9764 1046.19,-310.104 617.542,-381.392 235.344,-247.44 -2.1093,-46.8202"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="623" name="life-stone" type="object" x="9140.24" y="4625.4" width="146" height="423"/>
+  <object id="641" name="edge-portal" type="object" x="13333.3" y="4109.89" width="199.918" height="640.851">
+   <properties>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="gate"/>
+   </properties>
+  </object>
+  <object id="648" name="caged-monkey" type="object" x="11932.5" y="2958.79" width="78.7879" height="88"/>
+  <object id="655" name="help-totem-wind" type="object" x="12328.5" y="4508.16" width="248" height="248">
+   <properties>
+    <property name="tag" value="help-totem-wind"/>
+   </properties>
+  </object>
+  <object id="681" name="stone-button" type="object" x="6010.82" y="5081.14" width="258.367" height="85.7283">
+   <properties>
+    <property name="event" value="door-open"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="12797.9" y="4611.62" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="650" name="spawn" type="object" x="12836" y="4603.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer id="56" name="water" width="106" height="64">
+  <data encoding="base64" compression="zlib">
+   eJztwTEBAAAAwqD1T20Gf6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHgMagAAAQ==
+  </data>
+ </layer>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="objects_foreground">
+  <properties>
+   <property name="is-elevate-target" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor 256">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2022.39" y="-1421.07" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="3403.03" y="-1317.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="6139.62" y="-1368.1" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="8421.57" y="-1501.9" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="4032.81" y="-1345" width="270" height="748"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 512">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="7710.81" y="-1365.4" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="2826.38" y="-1342.1" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="4959.62" y="-1458.2" width="242" height="738"/>
+ </objectgroup>
+</map>

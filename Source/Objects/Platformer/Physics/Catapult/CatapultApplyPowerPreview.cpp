@@ -22,8 +22,8 @@ CatapultApplyPowerPreview* CatapultApplyPowerPreview::create()
 
 CatapultApplyPowerPreview::CatapultApplyPowerPreview()
 {
-	this->catapultBall1 = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
-	this->catapultBall2 = Sprite::create(ObjectResources::War_Machines_Catapult_BALL);
+	this->catapultBall1 = Sprite::create(ObjectResources::Traps_Catapult_BALL);
+	this->catapultBall2 = Sprite::create(ObjectResources::Traps_Catapult_BALL);
 
 	this->xmm1Low = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("0.5f"));
 	this->xmm1High = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("1.0f"));

@@ -20,8 +20,8 @@ DartLauncherGenericPreview* DartLauncherGenericPreview::create()
 
 DartLauncherGenericPreview::DartLauncherGenericPreview()
 {
-	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
-	this->dart = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
+	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART_HOLDER);
+	this->dart = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 
 	this->dart->setRotation(90.0f);
 

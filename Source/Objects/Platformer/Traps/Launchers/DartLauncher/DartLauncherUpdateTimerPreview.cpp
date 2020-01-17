@@ -26,8 +26,8 @@ DartLauncherUpdateTimerPreview* DartLauncherUpdateTimerPreview::create()
 DartLauncherUpdateTimerPreview::DartLauncherUpdateTimerPreview()
 {
 	this->launchCountDown = 0.0f;
-	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartLauncher_DartLauncher);
-	this->dart = Sprite::create(ObjectResources::War_Machines_Dartgun_DART);
+	this->dartLauncher = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART_HOLDER);
+	this->dart = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 	this->eaxTimerStr = ConstantString::create(std::to_string(this->launchCountDown));
 	this->eaxTimer = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, this->eaxTimerStr);
 	this->isLaunching = false;

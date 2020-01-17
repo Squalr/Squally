@@ -1,6 +1,7 @@
 #include "AllFilter.h"
 
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 
 #include "Resources/UIResources.h"
 
@@ -40,7 +41,9 @@ std::vector<Item*> AllFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<HexusCard*>(item) != nullptr)
+		// Exclude hidden items
+		if (dynamic_cast<HexusCard*>(item) != nullptr ||
+			dynamic_cast<Recipe*>(item) != nullptr)
 		{
 			return true;
 		}

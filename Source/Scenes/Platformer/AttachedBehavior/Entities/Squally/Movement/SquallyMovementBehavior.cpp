@@ -136,8 +136,8 @@ void SquallyMovementBehavior::update(float dt)
 			const float SaveOffsetY = 32.0f;
 
 			Vec2 position = GameUtils::getWorldCoords(this->squally);
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
-			SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
 		}
 	}
 }

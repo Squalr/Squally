@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Combat/Projectiles/Projectile.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 
-class Dart : public GameObject
+class Dart : public Projectile
 {
 public:
 	static Dart* create(float dartRotation, float speed);
@@ -25,7 +25,7 @@ protected:
 	void onEnter() override;
 
 private:
-	typedef GameObject super;
+	typedef Projectile super;
 
 	CollisionObject* collision;
 	cocos2d::Sprite* dartSprite;

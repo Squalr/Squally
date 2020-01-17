@@ -107,6 +107,7 @@ const std::string UIResources::Menus_Buttons_WoodButton = "Private/UI/Menus/Butt
 const std::string UIResources::Menus_Buttons_WoodButtonSelected = "Private/UI/Menus/Buttons/WoodButtonSelected.png";
 const std::string UIResources::Menus_ConfirmMenu_ConfirmMenu = "Private/UI/Menus/ConfirmMenu/ConfirmMenu.png";
 const std::string UIResources::Menus_CraftingMenu_AllIcon = "Private/UI/Menus/CraftingMenu/AllIcon.png";
+const std::string UIResources::Menus_CraftingMenu_Anvil = "Private/UI/Menus/CraftingMenu/Anvil.png";
 const std::string UIResources::Menus_CraftingMenu_AxeIcon = "Private/UI/Menus/CraftingMenu/AxeIcon.png";
 const std::string UIResources::Menus_CraftingMenu_BowIcon = "Private/UI/Menus/CraftingMenu/BowIcon.png";
 const std::string UIResources::Menus_CraftingMenu_MaceIcon = "Private/UI/Menus/CraftingMenu/MaceIcon.png";

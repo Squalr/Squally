@@ -56,6 +56,7 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_1 (EF)", MapResources::EndianForest_Zone_3_1));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_0 (EF)", MapResources::EndianForest_Zone_3_0));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_6 Temple (EF)", MapResources::EndianForest_Zone_2_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 Inner Sanctum (EF)", MapResources::EndianForest_Zone_2_5));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 (EF)", MapResources::EndianForest_Zone_2_4));
@@ -141,14 +142,16 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		const int UNUSED_SAVE_PROFILE = 3;
+		const int UNUSED_SAVE_PROFILE = 99;
 
 		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
 		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		PlatformerMap* map = PlatformerMap::create(mapResource);
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
-		// SaveManager::softSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
+		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);
 	});

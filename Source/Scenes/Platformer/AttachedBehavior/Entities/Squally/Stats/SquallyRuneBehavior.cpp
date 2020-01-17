@@ -73,6 +73,6 @@ void SquallyRuneBehavior::saveState()
 			cooldowns.push_back(Value(this->entityRuneBehavior->getRuneCooldown(index)));
 		}
 
-		SaveManager::softSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyRuneCooldowns, Value(cooldowns));
 	}
 }

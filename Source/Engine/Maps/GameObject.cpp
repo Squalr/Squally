@@ -320,6 +320,11 @@ bool GameObject::getStateOrDefaultBool(std::string key, bool value)
 	return GameUtils::getKeyOrDefault(this->stateVariables, key, Value(value)).asBool();
 }
 
+ValueMap& GameObject::getStateVariables()
+{
+	return this->stateVariables;
+}
+
 bool GameObject::hasState(std::string key)
 {
 	return GameUtils::keyExists(this->stateVariables, key);
@@ -351,7 +356,7 @@ void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, 
 
 	saveData[key] = value;
 
-	SaveManager::saveProfileData(uniqueIdentifier, Value(saveData));
+	SaveManager::SaveProfileData(uniqueIdentifier, Value(saveData));
 }
 
 void GameObject::saveObjectState(std::string key, cocos2d::Value value)
@@ -360,7 +365,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 	{
 		this->saveProperties[key] = value;
 
-		SaveManager::saveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
+		SaveManager::SaveProfileData(this->uniqueIdentifier, Value(this->saveProperties));
 	}
 }
 

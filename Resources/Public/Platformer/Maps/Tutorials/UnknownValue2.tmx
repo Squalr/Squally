@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="894">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="891" name="lava" type="terrain" x="126.412" y="4595.21">
+   <polygon points="-238.412,48.1572 5617.59,49.6516 5611.82,1194.63 -243.529,1196.79"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="2161.14" y="4516.19" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="892" name="crank" type="object" x="1632" y="4280" width="2472" height="128"/>
+  <object id="893" name="crank" type="object" x="3328" y="3836" width="88" height="813"/>
+ </objectgroup>
+</map>

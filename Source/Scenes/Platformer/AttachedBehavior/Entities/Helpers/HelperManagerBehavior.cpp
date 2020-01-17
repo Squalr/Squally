@@ -77,7 +77,7 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 {
 	ValueMap properties = ValueMap();
 
-	SaveManager::saveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(helperName));
 
 	std::string helperBehavior = this->getHelperAttachedBehavior(helperName);
 
