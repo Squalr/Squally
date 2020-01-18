@@ -254,7 +254,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		}
 		else
 		{
-			if (this->entity->getAnimations()->getCurrentAnimation() == "Swim")
+			if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
 			{
 				this->entity->getAnimations()->clearAnimationPriority();
 			}

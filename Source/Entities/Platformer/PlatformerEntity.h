@@ -34,7 +34,7 @@ public:
 	float getHoverHeight();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
-	virtual void performSwimAnimation();
+	virtual std::string getSwimAnimation();
 	virtual void performJumpAnimation();
 	bool isFlippedX();
 	bool isFlippedY();

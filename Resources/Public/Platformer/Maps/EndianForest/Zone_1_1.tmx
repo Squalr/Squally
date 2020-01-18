@@ -143,6 +143,7 @@
   </object>
   <object id="641" name="edge-portal" type="object" x="13357.3" y="4269.89" width="199.918" height="640.851">
    <properties>
+    <property name="direction" value="right"/>
     <property name="listen-event" value="event-door-open"/>
     <property name="map" value="EndianForest/Zone_1_2"/>
     <property name="transition" value="right"/>

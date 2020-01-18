@@ -124,9 +124,9 @@ float PlatformerEntity::getFloatHeight()
 	return 0.0f;
 }
 
-void PlatformerEntity::performSwimAnimation()
+std::string PlatformerEntity::getSwimAnimation()
 {
-	this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+	return "Swim";
 }
 
 void PlatformerEntity::performJumpAnimation()

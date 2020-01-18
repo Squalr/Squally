@@ -143,7 +143,7 @@ void EntityMovementBehavior::update(float dt)
 
 			if (movement != Vec2::ZERO)
 			{
-				this->entity->performSwimAnimation();
+				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 			}
 
 			break;

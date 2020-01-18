@@ -21,7 +21,7 @@ public:
 	static const std::string BattleTag;
 
 protected:
-	void performSwimAnimation() override;
+	std::string getSwimAnimation() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 

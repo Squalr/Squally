@@ -154,6 +154,7 @@
   <object id="623" name="life-stone" type="object" x="5872.24" y="5857.4" width="146" height="423"/>
   <object id="641" name="edge-portal" type="object" x="10005.3" y="5389.89" width="199.918" height="640.851">
    <properties>
+    <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="gate"/>
    </properties>

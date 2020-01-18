@@ -19,6 +19,7 @@ using namespace cocos2d;
 
 const std::string EdgePortal::MapKeyEdgePortal = "edge-portal";
 const int EdgePortal::ArrowCount = 5;
+const std::string EdgePortal::MapPropertyDirection = "direction";
 
 EdgePortal* EdgePortal::create(ValueMap& properties)
 {
@@ -35,6 +36,7 @@ EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties
 	this->edgeArrows = std::vector<Sprite*>();
 	this->requiresInteraction = false;
 	this->arrowHintCollision = CollisionObject::create(PhysicsBody::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapPropertyDirection, Value("right")).asString();
 
 	for (int index = 0; index < EdgePortal::ArrowCount; index++)
 	{
@@ -43,9 +45,17 @@ EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties
 
 	for (auto arrow : this->edgeArrows)
 	{
-		if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool())
+		if (this->direction == "left")
 		{
 			arrow->setFlippedX(true);
+		}
+		else if (this->direction == "up")
+		{
+			arrow->setRotation(270.0f);
+		}
+		else if (this->direction == "down")
+		{
+			arrow->setRotation(90.0f);
 		}
 
 		this->addChild(arrow);
@@ -72,7 +82,8 @@ void EdgePortal::initializePositions()
 {
 	super::initializePositions();
 	
-	const float spacing = 72.0f;
+	const float spacingH = 72.0f;
+	const float spacingV = 88.0f;
 	int centerIndex = EdgePortal::ArrowCount / 2;
 	int index = 0;
 
@@ -80,7 +91,14 @@ void EdgePortal::initializePositions()
 	{
 		int distance = (centerIndex - index++);
 
-		arrow->setPosition(Vec2(0.0f, float(distance) * spacing));
+		if (this->direction == "up" || this->direction == "down")
+		{
+			arrow->setPosition(Vec2(float(distance) * spacingV, 0.0f));
+		}
+		else
+		{
+			arrow->setPosition(Vec2(0.0f, float(distance) * spacingH));
+		}
 	}
 }
 
@@ -90,11 +108,30 @@ void EdgePortal::initializeListeners()
 
 	for (auto arrow : this->edgeArrows)
 	{
-		arrow->runAction(RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->isFlippedX() ? -16.0f : 16.0f, arrow->getPositionY()))),
-			EaseSineInOut::create(MoveTo::create(0.75f, Vec2(0.0f, arrow->getPositionY()))),
-			nullptr
-		)));
+		if (this->direction == "up")
+		{
+			arrow->runAction(RepeatForever::create(Sequence::create(
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->getPositionX(), -16.0f))),
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->getPositionX(), 0.0f))),
+				nullptr
+			)));
+		}
+		else if (this->direction == "down")
+		{
+			arrow->runAction(RepeatForever::create(Sequence::create(
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->getPositionX(), 16.0f))),
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->getPositionX(), 0.0f))),
+				nullptr
+			)));
+		}
+		else
+		{
+			arrow->runAction(RepeatForever::create(Sequence::create(
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(arrow->isFlippedX() ? -16.0f : 16.0f, arrow->getPositionY()))),
+				EaseSineInOut::create(MoveTo::create(0.75f, Vec2(0.0f, arrow->getPositionY()))),
+				nullptr
+			)));
+		}
 	}
 
 	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)

@@ -181,6 +181,7 @@
   <object id="804" name="mechanical-flail" type="object" x="4058.79" y="5002.18" width="42.4242" height="187.636"/>
   <object id="806" name="edge-portal" type="object" x="14144.9" y="3910.24" width="199.918" height="640.851">
    <properties>
+    <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
    </properties>
@@ -195,6 +196,7 @@
   <object id="818" name="iou" type="object" x="12285.5" y="2448.5" width="87" height="87"/>
   <object id="819" name="edge-portal" type="object" x="14145.6" y="795.696" width="199.918" height="640.851">
    <properties>
+    <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right_alt"/>
    </properties>

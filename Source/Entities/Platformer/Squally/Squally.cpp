@@ -121,19 +121,23 @@ LocalizedString* Squally::getEntityName()
 	return Strings::Platformer_Entities_Names_Squally::create();
 }
 
-void Squally::performSwimAnimation()
+std::string Squally::getSwimAnimation()
 {
-	this->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+	std::string swimAnimation = super::getSwimAnimation();
+
+	this->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
 		{
-			this->animationNode->playAnimation("SwimWithWeapon", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+			swimAnimation = "SwimWithWeapon";
 		}
 		else
 		{
-			this->animationNode->playAnimation("Swim", SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+			swimAnimation = "Swim";
 		}
 	});
+
+	return swimAnimation;
 }
 
 void Squally::onHackerModeEnable(int hackFlags)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="73" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="876">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="883">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -117,7 +117,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="805" name="blue-grass" type="terrain" x="-7042" y="2014">
-   <polygon points="7973.06,6388.97 6373.99,6381.11 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4 8836.44,3898 9697.97,3199.56 10749.1,2743.55 11773.5,2611.44 14498.7,2608.42 15577.3,2673.97 16512.2,2674.82 16508.6,6407.94"/>
+   <polygon points="7973.06,6388.97 6373.99,6381.11 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4 8836.44,3898 9697.97,3199.56 10749.1,2743.55 11773.5,2611.44 14498.7,2608.42 15522.8,2707.3 16512.2,2977.85 16511.5,3657.99 16510.3,4818.01 16810,4898.02 17085.8,4818.03 17101.7,2570.82 17347.1,2335.6 17587.9,2553.82 17615.3,3736.84 17590.3,5141.01 17604.6,6367.94"/>
   </object>
   <object id="812" name="blue-grass" type="terrain" x="-909.1" y="3173.97">
    <polygon points="760.85,2549.11 730.212,545.28 763.52,-882.622 1858.1,-870.643 2538.57,-875.375 2294.7,-415.06 2440.83,1519.52 2279.9,2059.78 1947.67,2359.82 1296.61,2569.23"/>
@@ -157,7 +157,7 @@
   </object>
   <object id="816" name="edge-portal" type="object" x="-11.959" y="5679.57" width="199.918" height="640.851">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="direction" value="left"/>
     <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="left"/>
    </properties>
@@ -187,7 +187,7 @@
     <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="829" name="help-totem-hexus-cards" type="object" x="5168" y="4376" width="248" height="248"/>
+  <object id="829" name="help-totem-hexus-cards" type="object" x="5620" y="4376" width="248" height="248"/>
   <object id="830" name="warp" type="object" x="6468" y="4368" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
@@ -257,10 +257,10 @@
   </object>
   <object id="864" name="iou" type="object" x="6976.74" y="199.05" width="87" height="87"/>
   <object id="865" name="iou" type="object" x="6202.68" y="192.98" width="87" height="87"/>
-  <object id="868" name="iou" type="object" x="5632.26" y="4538.32" width="87" height="87"/>
+  <object id="868" name="iou" type="object" x="7208.26" y="4534.32" width="87" height="87"/>
   <object id="869" name="edge-portal" type="object" x="4.041" y="1655.57" width="199.918" height="640.851">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="direction" value="left"/>
     <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="left_alt"/>
    </properties>
@@ -268,13 +268,6 @@
   <object id="870" name="spawn" type="object" x="462.424" y="2172.36" width="128" height="128">
    <properties>
     <property name="transition" value="right_alt"/>
-   </properties>
-  </object>
-  <object id="871" name="edge-portal" type="object" x="9148.04" y="4051.57" width="199.918" height="640.851">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-    <property name="map" value="EndianForest/Zone_2_3"/>
-    <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="872" name="temple-door" type="object" x="7380" y="1896" width="432" height="528">
@@ -301,6 +294,18 @@
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end3"/>
     <property name="to" value="start3"/>
+   </properties>
+  </object>
+  <object id="881" name="edge-portal" type="object" x="9409.19" y="6110.48" width="718.1" height="174.184">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="transition" value="down"/>
+   </properties>
+  </object>
+  <object id="882" name="spawn" type="object" x="9690.55" y="5678.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="up"/>
    </properties>
   </object>
  </objectgroup>
@@ -334,7 +339,7 @@
     <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
-  <object id="827" name="chiron" type="entity" x="5972" y="4496" width="128" height="128">
+  <object id="827" name="chiron" type="entity" x="6600" y="4488" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
@@ -359,11 +364,11 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="69" name="water">
+ <objectgroup id="69" name="water" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="water" type="object" x="-127.645" y="4995.79" width="9923.3" height="3384.42">
+  <object id="781" name="water" type="object" x="-127.645" y="4995.79" width="11395.3" height="3384.42">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="5"/>
