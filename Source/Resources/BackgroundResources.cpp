@@ -32,4 +32,5 @@ const std::string BackgroundResources::SkySunrise = "Private/Platformer/Backgrou
 const std::string BackgroundResources::SkySunset = "Private/Platformer/Backgrounds/SkySunset.png";
 const std::string BackgroundResources::SkyYellow = "Private/Platformer/Backgrounds/SkyYellow.png";
 const std::string BackgroundResources::Sun = "Private/Platformer/Backgrounds/Sun.png";
+const std::string BackgroundResources::Waterfall = "Private/Platformer/Backgrounds/Waterfall.png";
 const std::string BackgroundResources::WaterfallSky = "Private/Platformer/Backgrounds/WaterfallSky.png";

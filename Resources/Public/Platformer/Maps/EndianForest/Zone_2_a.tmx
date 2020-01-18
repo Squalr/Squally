@@ -159,14 +159,14 @@
   <object id="866" name="edge-portal" type="object" x="898.65" y="-69.2" width="578.706" height="240.851">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="map" value="EndianForest/Zone_2_4"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="890" name="edge-portal" type="object" x="2654.65" y="-74.58" width="578.706" height="240.851">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="map" value="EndianForest/Zone_2_4"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

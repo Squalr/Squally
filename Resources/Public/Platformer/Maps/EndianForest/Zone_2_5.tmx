@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="955">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1023">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value=""/>
+   <property name="background" value="Crypt1"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -34,70 +34,270 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="18" name="background -8" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="897" name="temple-dark" type="texture" x="-1227.89" y="-1165.02">
+   <polygon points="361.983,174.385 10241.7,164.823 10250.6,9169.39 363.857,9176.17"/>
+  </object>
  </objectgroup>
- <objectgroup id="18" name="background">
+ <objectgroup id="70" name="objects bg -8">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-537.462" y="-416.789">
-   <polygon points="215.558,68.3375 6098.84,64.5907 6104.15,3593.28 216.675,3595.94"/>
-  </object>
  </objectgroup>
  <objectgroup id="19" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="70" name="objects bg">
+ <objectgroup id="77" name="terrain -6">
   <properties>
+   <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="55" name="terrain -3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain -2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="58" name="terrain -1">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="948" name="temple" type="terrain" x="3510.65" y="-249.089">
+  <object id="966" name="temple" type="terrain" x="2796" y="5231.18">
    <properties>
+    <property name="collision" value="none"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
+   <polygon points="290.883,66.4291 293.24,1381.42 8.57185,1381.33 8.52019,66.9177"/>
   </object>
-  <object id="950" name="temple" type="terrain" x="-648.87" y="-514.179">
+ </objectgroup>
+ <objectgroup id="76" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="974" name="temple" type="terrain" x="2928" y="5364">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,60.4681 293.24,1257.46 8.57185,1257.38 8.52019,60.9129"/>
+  </object>
+  <object id="1013" name="temple" type="terrain" x="2608" y="5152">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,74.2086 293.24,1543.2 8.57185,1543.1 8.52019,74.7544"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="973" name="temple" type="terrain" x="3072" y="5482.67">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,55.6185 293.24,1156.61 8.57185,1156.54 8.52019,56.0276"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="55" name="terrain -3 (pillar)">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="952" name="temple" type="terrain" x="2990.37" y="-560.798">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="290.883,371.47 293.24,7724.89 8.57185,7724.36 8.52019,374.202"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="972" name="temple" type="terrain" x="3220" y="5599.27">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,49.6576 293.24,1032.65 8.57185,1032.58 8.52019,50.0228"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="971" name="temple" type="terrain" x="3338" y="5724">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,43.2925 293.24,900.288 8.57185,900.227 8.52019,43.6109"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -0">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="969" name="temple" type="terrain" x="3509.33" y="5837.77">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1931.02,175.867 1928.99,3378.34 56.3872,3371.68 56.0472,163.651"/>
+   <polygon points="290.883,39.6553 293.24,824.651 8.57185,824.595 8.52019,39.947"/>
+  </object>
+  <object id="970" name="temple" type="terrain" x="3336" y="5954">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,34.0985 293.24,709.094 8.57185,709.046 8.52019,34.3493"/>
+  </object>
+  <object id="975" name="temple" type="terrain" x="3095.75" y="6071.92">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,29.653 293.24,616.649 8.57185,616.606 8.52019,29.8711"/>
+  </object>
+  <object id="976" name="temple" type="terrain" x="2926.36" y="6203.6">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,23.3216 293.24,484.984 8.57185,484.951 8.52019,23.4931"/>
+  </object>
+  <object id="977" name="temple" type="terrain" x="2726.42" y="6328.29">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,17.3607 293.24,361.023 8.57185,360.999 8.52019,17.4884"/>
+  </object>
+  <object id="978" name="temple" type="terrain" x="2533.33" y="6424.24">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,12.3763 293.24,257.372 8.57185,257.355 8.52019,12.4674"/>
+  </object>
+  <object id="981" name="temple" type="terrain" x="3909.86" y="4867.14">
+   <polygon points="1659.78,-2.37451 1660.23,116.985 48.5311,116.977 54.2992,-1023.42 560.143,-1023.23 563.145,-902.18 690.618,-902.138 690.039,-771.251 818.648,-770.335 818.382,-645.372 946.204,-644.175 947.309,-512.876 1075.3,-511.29 1074.76,-387.708 1200.74,-388.123 1202.31,-258.274 1329.63,-258.612 1329.5,-131.483 1460.04,-132.14 1459.16,-2.06275"/>
+  </object>
+  <object id="987" name="temple" type="terrain" x="3564" y="4085.53">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,39.6553 293.24,824.651 8.57185,824.595 8.52019,39.947"/>
+  </object>
+  <object id="988" name="temple" type="terrain" x="3390.67" y="4201.76">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,34.0985 293.24,709.094 8.57185,709.046 8.52019,34.3493"/>
+  </object>
+  <object id="989" name="temple" type="terrain" x="3150.42" y="4319.68">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,29.653 293.24,616.649 8.57185,616.606 8.52019,29.8711"/>
+  </object>
+  <object id="990" name="temple" type="terrain" x="2981.03" y="4451.36">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,23.3216 293.24,484.984 8.57185,484.951 8.52019,23.4931"/>
+  </object>
+  <object id="991" name="temple" type="terrain" x="2781.09" y="4576.05">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,17.3607 293.24,361.023 8.57185,360.999 8.52019,17.4884"/>
+  </object>
+  <object id="992" name="temple" type="terrain" x="2588" y="4672">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,12.3763 293.24,257.372 8.57185,257.355 8.52019,12.4674"/>
+  </object>
+  <object id="1006" name="temple" type="terrain" x="-123.75" y="3653.63">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="2421.42,-451.533 2411.02,2087.62 66.8528,2079.52 66.4497,100.933 773.679,108.617 2179.74,-453.396"/>
+  </object>
+  <object id="1007" name="temple" type="terrain" x="3560" y="2545.53">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,39.6553 293.24,824.651 8.57185,824.595 8.52019,39.947"/>
+  </object>
+  <object id="1008" name="temple" type="terrain" x="3386.67" y="2661.76">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,34.0985 293.24,709.094 8.57185,709.046 8.52019,34.3493"/>
+  </object>
+  <object id="1009" name="temple" type="terrain" x="3146.42" y="2779.68">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,29.653 293.24,616.649 8.57185,616.606 8.52019,29.8711"/>
+  </object>
+  <object id="1010" name="temple" type="terrain" x="2977.03" y="2911.36">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,23.3216 293.24,484.984 8.57185,484.951 8.52019,23.4931"/>
+  </object>
+  <object id="1011" name="temple" type="terrain" x="2777.09" y="3036.05">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,17.3607 293.24,361.023 8.57185,360.999 8.52019,17.4884"/>
+  </object>
+  <object id="1012" name="temple" type="terrain" x="2584" y="3132">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,12.3763 293.24,257.372 8.57185,257.355 8.52019,12.4674"/>
+  </object>
+  <object id="1015" name="temple" type="terrain" x="5724" y="4932.24">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="290.883,29.0805 293.24,604.743 8.57185,604.702 8.52019,29.2943"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="terrain b1">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="951" name="temple" type="terrain" x="-134.591" y="5043.04">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="2573.67,110.218 2570.97,2117.25 75.1531,2113.08 74.7,102.562"/>
+  </object>
+  <object id="1018" name="temple" type="terrain" x="4309.09" y="621.212">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+   <polygon points="2573.67,110.218 2570.97,2117.25 75.1531,2113.08 74.7,102.562"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="949" name="temple" type="terrain" x="-197.543" y="2128.94">
-   <polygon points="5411.42,38.2482 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
+  <object id="979" name="temple" type="terrain" x="-253.806" y="6443.8">
+   <polygon points="4387.68,15.1782 4380.92,728.596 188.394,751.116 187.258,36.4566"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="58" name="terrain f1">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="980" name="temple" type="terrain" x="3899.84" y="-546">
+   <polygon points="4489.29,539.47 4501.4,7732.89 73.1197,7724.36 72.0369,6303 1475.16,6304.41 1474.76,6174.55 1604.04,6175 1604.31,6047.33 1732.58,6047.33 1731.31,5920 1860.98,5919.59 1859.44,5791.75 2112.7,5791.39 2112.59,5662.01 3780.24,5654.01 3775.99,5023.82 1983.59,5030.01 1983.05,3868.37 65.9652,3865.82 56.679,3046.2 2388.09,3048.99 2388.15,537.208"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -109,50 +309,70 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1005" name="Generic/Vent" type="decor" x="198.045" y="4766.62" width="305" height="307"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="340.364" y="2037" width="128" height="128">
+  <object id="798" name="spawn" type="object" x="640.364" y="6353" width="128" height="128">
    <properties>
-    <property name="map-banner" value=""/>
-    <property name="transition" value="entrance-E"/>
+    <property name="transition" value="entrance-C"/>
    </properties>
   </object>
-  <object id="942" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="enemy"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_TempleBoss"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="drop-pool" value="ef-generic"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value="talk-to-grogg"/>
-    <property name="quest-line" value="find-elriel"/>
-   </properties>
-  </object>
-  <object id="944" name="temple-door" type="object" x="3935.52" y="1645.09" width="432" height="528">
+  <object id="934" name="life-stone" type="object" x="1668.09" y="6063.77" width="146" height="423"/>
+  <object id="945" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_6"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="947" name="spawn" type="object" x="4096.61" y="2042.06" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
-   </properties>
-  </object>
-  <object id="952" name="temple-door" type="object" x="164" y="1640" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow-skull"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="exit-E"/>
+    <property name="transition" value="exit-C"/>
    </properties>
   </object>
-  <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
+  <object id="948" name="spawn" type="object" x="5470.06" y="2378.44" width="128" height="128">
+   <properties>
+    <property name="transition" value="entrance-D"/>
+   </properties>
+  </object>
+  <object id="949" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="transition" value="exit-D"/>
+   </properties>
+  </object>
+  <object id="999" name="wind" type="object" x="166.547" y="4483.69" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1000" name="wind" type="object" x="173.757" y="4001.19" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1001" name="wind" type="object" x="172.657" y="3529.75" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="1014" name="cipher-chest" type="object" x="7372" y="4976" width="128" height="128">
+   <properties>
+    <property name="data-type" value="decimal"/>
+    <property name="inputs" value="3,1,2,9,4"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule" value="{i}&gt;&gt;1&lt;&lt;1"/>
+    <property name="tokens" value="1,1,&lt;&lt;,&gt;&gt;"/>
+    <property name="tutorial" value=""/>
+   </properties>
+  </object>
+  <object id="1019" name="iou" type="object" x="3853.47" y="6371.65" width="87" height="87"/>
+  <object id="1020" name="iou" type="object" x="4880.74" y="4268.62" width="87" height="87"/>
+  <object id="1021" name="iou" type="object" x="2683.77" y="4592.86" width="87" height="87"/>
+  <object id="1022" name="iou" type="object" x="6056.5" y="2411.05" width="87" height="87"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -170,9 +390,26 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="trigger" type="object" x="1995" y="-18.53" width="146" height="1829.06">
+  <object id="946" name="goblin-grunt-boar" type="entity" x="5029.21" y="5620.22" width="128" height="128">
    <properties>
-    <property name="send-event" value="talk-to-grogg"/>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="947" name="orc-grunt" type="entity" x="5024.73" y="5295.78" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="1017" name="goblin-grunt-boar" type="entity" x="4677.33" y="2372" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,puzzle-E"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -181,9 +418,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="569.292" y="2034.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1081.29" y="6346.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally,no-position-save"/>
+    <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
  </objectgroup>

@@ -33,5 +33,6 @@ namespace BackgroundResources
 	extern const std::string SkySunset;
 	extern const std::string SkyYellow;
 	extern const std::string Sun;
+	extern const std::string Waterfall;
 	extern const std::string WaterfallSky;
 };

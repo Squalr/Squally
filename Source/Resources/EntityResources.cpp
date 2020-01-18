@@ -1083,7 +1083,6 @@ const std::string EntityResources::Enemies_LambdaCrypts_KingZul_WEAPON = "Privat
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_Animations = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/Animations.scml";
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_BELT = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/BELT.png";
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_BOOK = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/BOOK.png";
-const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_BOSS_1_UNDEAD = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/BOSS-1-UNDEAD.jpg";
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_CHAIN_BACK_2 = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/CHAIN BACK 2.png";
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_CHAIN_BACK = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/CHAIN BACK.png";
 const std::string EntityResources::Enemies_LambdaCrypts_Lazarus_CHAIN_FRONT_2 = "Private/Platformer/Entities/Enemies/LambdaCrypts/Lazarus/CHAIN FRONT 2.png";

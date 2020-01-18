@@ -1084,7 +1084,6 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_Lazarus_Animations;
 	extern const std::string Enemies_LambdaCrypts_Lazarus_BELT;
 	extern const std::string Enemies_LambdaCrypts_Lazarus_BOOK;
-	extern const std::string Enemies_LambdaCrypts_Lazarus_BOSS_1_UNDEAD;
 	extern const std::string Enemies_LambdaCrypts_Lazarus_CHAIN_BACK_2;
 	extern const std::string Enemies_LambdaCrypts_Lazarus_CHAIN_BACK;
 	extern const std::string Enemies_LambdaCrypts_Lazarus_CHAIN_FRONT_2;

@@ -57,10 +57,11 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_1 (EF)", MapResources::EndianForest_Zone_3_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_0 (EF)", MapResources::EndianForest_Zone_3_0));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_6 Temple (EF)", MapResources::EndianForest_Zone_2_6));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 Inner Sanctum (EF)", MapResources::EndianForest_Zone_2_5));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 (EF)", MapResources::EndianForest_Zone_2_4));
-	this->chapterList.push_back(this->buildDebugButton("Zone 2_3 Temple (EF)", MapResources::EndianForest_Zone_2_3));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_7 Temple (EF)", MapResources::EndianForest_Zone_2_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_6 Inner Sanctum (EF)", MapResources::EndianForest_Zone_2_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_5 (EF)", MapResources::EndianForest_Zone_2_5));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_4 Temple (EF)", MapResources::EndianForest_Zone_2_4));
+	this->chapterList.push_back(this->buildDebugButton("Zone 2_3 (EF)", MapResources::EndianForest_Zone_2_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_2 (EF)", MapResources::EndianForest_Zone_2_2));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_1 (EF)", MapResources::EndianForest_Zone_2_1));
 	this->chapterList.push_back(this->buildDebugButton("Zone 2_0 (EF)", MapResources::EndianForest_Zone_2_0));

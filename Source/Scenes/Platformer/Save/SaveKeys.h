@@ -31,6 +31,7 @@ public:
 	static const std::string SaveKeyBlessingOfShadow;
 	static const std::string SaveKeyBlessingOfUndeath;
 	static const std::string SaveKeyBlessingOfWind;
+	static const std::string SaveKeyBlessingOfJump;
 
 	static const std::string SaveKeyCollectableAnimalBat;
 	static const std::string SaveKeyCollectableAnimalBear;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="869">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="73" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="876">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="15" name="WaterfallRocks" visible="0">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="16" name="WaterfallGround" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -72,44 +72,44 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="temple" type="terrain" x="6567.32" y="1613.37">
+  <object id="833" name="temple" type="terrain" x="5931.22" y="231.314">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="1624.28,32.4741 1620.17,690.236 80.8994,691.36 75.7858,33.1575"/>
+   <polygon points="1652.38,50.53 1646.2,1193.56 -152.421,1193.42 -160.11,49.6197"/>
   </object>
  </objectgroup>
  <objectgroup id="55" name="terrain -3">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="821" name="temple" type="terrain" x="5146.11" y="2137.46">
+  <object id="821" name="temple" type="terrain" x="5172.74" y="1265.46">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="3178.5,71.1744 3170.44,1512.81 158.309,1515.27 148.302,72.6721"/>
+   <polygon points="2783.87,71.1744 2776.39,1512.81 146.96,1515.27 137.67,72.6721"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain -2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="temple" type="terrain" x="4483.13" y="2829.93">
+  <object id="820" name="temple" type="terrain" x="4405.78" y="2340.3">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="3734.75,62.6971 3725.28,1332.63 186.014,1334.8 174.257,64.0165"/>
+   <polygon points="4148.1,88.3259 4134,1877.37 277.127,1880.43 259.612,90.1847"/>
   </object>
  </objectgroup>
  <objectgroup id="58" name="terrain -1">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="temple" type="terrain" x="3784" y="3440">
+  <object id="818" name="temple" type="terrain" x="3784" y="3448">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="4597.88,120.632 4593.06,2304.97 313.22,2314.73 311.452,594.252 1110.01,593.367 1110.34,478.102 1233.95,478.038 1233.9,364.258 1361.01,364.827 1362.56,242.456 1488.08,243.352 1487.48,120.372"/>
+   <polygon points="5625.88,120.632 5621.06,2304.97 313.22,2314.73 311.452,594.252 1110.01,593.367 1110.34,478.102 1233.95,478.038 1233.9,364.258 1361.01,364.827 1362.56,242.456 1488.08,243.352 1487.48,120.372"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -117,10 +117,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="805" name="blue-grass" type="terrain" x="-7042" y="2014">
-   <polygon points="7973.06,6388.97 6373.99,6381.11 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4 8836.44,3898 9697.97,3199.56 10749.1,2743.55 11773.5,2611.44 14498.7,2608.42 15577.3,2597.97 15568.4,6388.49"/>
+   <polygon points="7973.06,6388.97 6373.99,6381.11 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4 8836.44,3898 9697.97,3199.56 10749.1,2743.55 11773.5,2611.44 14498.7,2608.42 15577.3,2673.97 16512.2,2674.82 16508.6,6407.94"/>
   </object>
   <object id="812" name="blue-grass" type="terrain" x="-909.1" y="3173.97">
-   <polygon points="760.85,2549.11 223.608,2491.8 22.2118,1633.28 93.2761,83.9644 763.52,-909.895 1733.86,-807.007 2294.7,-415.06 2440.83,1519.52 2279.9,2059.78 1947.67,2359.82 1296.61,2569.23"/>
+   <polygon points="760.85,2549.11 730.212,545.28 763.52,-882.622 1858.1,-870.643 2538.57,-875.375 2294.7,-415.06 2440.83,1519.52 2279.9,2059.78 1947.67,2359.82 1296.61,2569.23"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -155,13 +155,6 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="806" name="edge-portal" type="object" x="7992.9" y="3018.12" width="199.918" height="552.972">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-    <property name="map" value="EndianForest/Zone_2_3"/>
-    <property name="transition" value="entrance-B"/>
-   </properties>
-  </object>
   <object id="816" name="edge-portal" type="object" x="-11.959" y="5679.57" width="199.918" height="640.851">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -169,31 +162,26 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="819" name="add-door" type="object" x="7152" y="3840.5" width="696" height="775">
+  <object id="819" name="add-door" type="object" x="7548.97" y="2778.44" width="696" height="775">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="map" value="EndianForest/Zone_2_4"/>
     <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="822" name="spawn" type="object" x="7423.88" y="4477.82" width="128" height="128">
+  <object id="822" name="spawn" type="object" x="7819.88" y="3441.82" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
    </properties>
   </object>
-  <object id="823" name="temple-door" type="object" x="6020" y="3036.5" width="432" height="528">
+  <object id="823" name="temple-door" type="object" x="5531.27" y="1900.74" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_4"/>
+    <property name="map" value="EndianForest/Zone_2_5"/>
     <property name="transition" value="entrance-C"/>
    </properties>
   </object>
-  <object id="825" name="spawn" type="object" x="7633.21" y="3431.03" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit-B"/>
-   </properties>
-  </object>
-  <object id="828" name="camera-stop" type="object" x="5236" y="4752" width="2944" height="1008">
+  <object id="828" name="camera-stop" type="object" x="5236" y="4752" width="3584" height="1008">
    <properties>
     <property name="no-x" type="bool" value="true"/>
     <property name="soft" type="bool" value="true"/>
@@ -207,26 +195,26 @@
     <property name="to" value="end"/>
    </properties>
   </object>
-  <object id="831" name="warp" type="object" x="7212" y="3300" width="256" height="256">
+  <object id="831" name="warp" type="object" x="6788.12" y="3320.24" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="832" name="spawn" type="object" x="6175.39" y="3436" width="128" height="128">
+  <object id="832" name="spawn" type="object" x="5686.66" y="2300.24" width="128" height="128">
    <properties>
     <property name="transition" value="exit-C"/>
    </properties>
   </object>
-  <object id="834" name="temple-door" type="object" x="6003.52" y="2367.03" width="432" height="528">
+  <object id="834" name="temple-door" type="object" x="5907.52" y="819.03" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_4"/>
+    <property name="map" value="EndianForest/Zone_2_5"/>
     <property name="transition" value="entrance-D"/>
    </properties>
   </object>
-  <object id="840" name="cipher-chest" type="object" x="7406.24" y="1519.21" width="128" height="128">
+  <object id="840" name="cipher-chest" type="object" x="1142.24" y="2167.21" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="inputs" value="0"/>
@@ -236,59 +224,101 @@
     <property name="tutorial" value=""/>
    </properties>
   </object>
-  <object id="850" name="warp" type="object" x="6675.03" y="3305.33" width="256" height="256">
+  <object id="850" name="warp" type="object" x="6054.67" y="3317.45" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="start2"/>
     <property name="to" value="end2"/>
    </properties>
   </object>
-  <object id="851" name="warp" type="object" x="6923.52" y="2635.64" width="256" height="256">
+  <object id="851" name="warp" type="object" x="6803.52" y="2175.64" width="256" height="256">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="from" value="end2"/>
     <property name="to" value="start2"/>
    </properties>
   </object>
-  <object id="854" name="spawn" type="object" x="6151.15" y="2769.33" width="128" height="128">
+  <object id="854" name="spawn" type="object" x="6055.15" y="1221.33" width="128" height="128">
    <properties>
     <property name="transition" value="exit-D"/>
    </properties>
   </object>
-  <object id="855" name="spawn" type="object" x="7554.18" y="2760.24" width="128" height="128">
+  <object id="855" name="spawn" type="object" x="7218.18" y="1204.24" width="128" height="128">
    <properties>
     <property name="transition" value="exit-E"/>
    </properties>
   </object>
-  <object id="856" name="temple-door" type="object" x="7402.18" y="2363.27" width="432" height="528">
+  <object id="856" name="temple-door" type="object" x="7066.18" y="807.27" width="432" height="528">
    <properties>
     <property name="color" value="yellow-skull"/>
-    <property name="map" value="EndianForest/Zone_2_5"/>
+    <property name="map" value="EndianForest/Zone_2_6"/>
     <property name="transition" value="entrance-E"/>
    </properties>
   </object>
-  <object id="863" name="iou" type="object" x="7171.65" y="1553.47" width="87" height="87"/>
-  <object id="864" name="iou" type="object" x="6680.74" y="2811.05" width="87" height="87"/>
-  <object id="865" name="iou" type="object" x="7274.68" y="2804.98" width="87" height="87"/>
-  <object id="866" name="iou" type="object" x="7844.38" y="1556.5" width="87" height="87"/>
+  <object id="864" name="iou" type="object" x="6976.74" y="199.05" width="87" height="87"/>
+  <object id="865" name="iou" type="object" x="6202.68" y="192.98" width="87" height="87"/>
   <object id="868" name="iou" type="object" x="5632.26" y="4538.32" width="87" height="87"/>
+  <object id="869" name="edge-portal" type="object" x="4.041" y="1655.57" width="199.918" height="640.851">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="transition" value="left_alt"/>
+   </properties>
+  </object>
+  <object id="870" name="spawn" type="object" x="462.424" y="2172.36" width="128" height="128">
+   <properties>
+    <property name="transition" value="right_alt"/>
+   </properties>
+  </object>
+  <object id="871" name="edge-portal" type="object" x="9148.04" y="4051.57" width="199.918" height="640.851">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="map" value="EndianForest/Zone_2_3"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="872" name="temple-door" type="object" x="7380" y="1896" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="EndianForest/Zone_2_4"/>
+    <property name="transition" value="entrance-B"/>
+   </properties>
+  </object>
+  <object id="873" name="spawn" type="object" x="7535.39" y="2295.5" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit-B"/>
+   </properties>
+  </object>
+  <object id="874" name="warp" type="object" x="6203.57" y="2176.9" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="star3"/>
+    <property name="to" value="end3"/>
+   </properties>
+  </object>
+  <object id="875" name="warp" type="object" x="6528.43" y="1087.09" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="end3"/>
+    <property name="to" value="start3"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="objects +1">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="857" name="breakable-cage" type="object" x="7895.93" y="2777.33" width="196" height="112"/>
-  <object id="858" name="breakable-cage" type="object" x="5695.94" y="2777.33" width="196" height="112"/>
-  <object id="859" name="breakable-cage" type="object" x="6292.91" y="2092.48" width="196" height="112"/>
-  <object id="860" name="breakable-cage" type="object" x="7611.09" y="2092.48" width="196" height="112"/>
+  <object id="857" name="breakable-cage" type="object" x="7559.93" y="1221.33" width="196" height="112"/>
+  <object id="858" name="breakable-cage" type="object" x="5599.94" y="1229.33" width="196" height="112"/>
+  <object id="860" name="breakable-cage" type="object" x="6631.09" y="2312.48" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="goblin-warrior-pig" type="entity" x="5837.21" y="3426.22" width="128" height="128">
+  <object id="809" name="goblin-warrior-pig" type="entity" x="6470.79" y="3443.43" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -297,7 +327,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="810" name="troll" type="entity" x="5834.79" y="3009.79" width="128" height="128">
+  <object id="810" name="troll" type="entity" x="6476.37" y="3035" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
@@ -329,11 +359,11 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="69" name="water" visible="0">
+ <objectgroup id="69" name="water">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="water" type="object" x="-127.645" y="4995.79" width="8467.3" height="3384.42">
+  <object id="781" name="water" type="object" x="-127.645" y="4995.79" width="9923.3" height="3384.42">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="5"/>

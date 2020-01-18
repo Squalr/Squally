@@ -7,10 +7,11 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class LocalizedLabel;
-class LocalizedString;
 class PlatformerEntity;
 class ProgressBar;
+class WorldSound;
 
 class UnknownValueBarBehavior : public AttachedBehavior
 {
@@ -37,8 +38,9 @@ private:
 	cocos2d::Sprite* spellAura;
 
 	ProgressBar* healthBar;
-	LocalizedString* deltaString;
+	ConstantString* deltaString;
 	LocalizedLabel* deltaLabel;
+	WorldSound* healSound;
 
 	static int Health;
 	static const int MaxHealth;
