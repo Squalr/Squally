@@ -16,7 +16,7 @@ public:
 
 protected:
 	MeetScrappy(GameObject* owner, QuestLine* questLine);
-	~MeetScrappy();
+	virtual ~MeetScrappy();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

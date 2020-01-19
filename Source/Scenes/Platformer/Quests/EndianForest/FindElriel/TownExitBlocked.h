@@ -17,7 +17,7 @@ public:
 
 protected:
 	TownExitBlocked(GameObject* owner, QuestLine* questLine);
-	~TownExitBlocked();
+	virtual ~TownExitBlocked();
 	
 	void onEnter() override;
 	void onLoad(QuestState questState) override;

@@ -232,4 +232,5 @@ private:
 	static const unsigned char StartTagSignature[];
 	static const unsigned char EndTagSignature[];
 	static const unsigned char StopSearchTagSignature[];
+	static std::map<std::string, std::vector<unsigned char>> OriginalCodeCache;
 };

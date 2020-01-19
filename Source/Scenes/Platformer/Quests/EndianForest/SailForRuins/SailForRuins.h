@@ -15,7 +15,7 @@ public:
 
 protected:
 	SailForRuins(GameObject* owner, QuestLine* questLine);
-	~SailForRuins();
+	virtual ~SailForRuins();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

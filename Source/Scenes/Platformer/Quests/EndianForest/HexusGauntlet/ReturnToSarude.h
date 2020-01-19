@@ -16,7 +16,7 @@ public:
 
 protected:
 	ReturnToSarude(GameObject* owner, QuestLine* questLine);
-	~ReturnToSarude();
+	virtual ~ReturnToSarude();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

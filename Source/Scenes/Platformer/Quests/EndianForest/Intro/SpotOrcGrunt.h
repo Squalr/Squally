@@ -14,7 +14,7 @@ public:
 
 protected:
 	SpotOrcGrunt(GameObject* owner, QuestLine* questLine);
-	~SpotOrcGrunt();
+	virtual ~SpotOrcGrunt();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

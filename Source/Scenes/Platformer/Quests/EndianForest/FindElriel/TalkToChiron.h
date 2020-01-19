@@ -17,7 +17,7 @@ public:
 
 protected:
 	TalkToChiron(GameObject* owner, QuestLine* questLine);
-	~TalkToChiron();
+	virtual ~TalkToChiron();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

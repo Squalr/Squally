@@ -17,7 +17,7 @@ public:
 
 protected:
 	TalkToElriel(GameObject* owner, QuestLine* questLine);
-	~TalkToElriel();
+	virtual ~TalkToElriel();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -26,6 +26,7 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void setPostText();
 
 	PlatformerEntity* entity;
 	Squally* squally;

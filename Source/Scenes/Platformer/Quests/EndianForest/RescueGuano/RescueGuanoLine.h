@@ -13,7 +13,7 @@ public:
 
 protected:
 	RescueGuanoLine();
-	~RescueGuanoLine();
+	virtual ~RescueGuanoLine();
 
 private:
 	typedef QuestLine super;

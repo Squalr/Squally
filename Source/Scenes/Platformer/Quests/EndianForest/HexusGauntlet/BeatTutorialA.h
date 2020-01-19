@@ -17,7 +17,7 @@ public:
 
 protected:
 	BeatTutorialA(GameObject* owner, QuestLine* questLine);
-	~BeatTutorialA();
+	virtual ~BeatTutorialA();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

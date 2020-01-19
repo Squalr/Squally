@@ -17,7 +17,7 @@ public:
 
 protected:
 	TalkToGrogg(GameObject* owner, QuestLine* questLine);
-	~TalkToGrogg();
+	virtual ~TalkToGrogg();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

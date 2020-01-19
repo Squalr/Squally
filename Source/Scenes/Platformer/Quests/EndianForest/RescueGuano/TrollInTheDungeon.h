@@ -15,7 +15,7 @@ public:
 
 protected:
 	TrollInTheDungeon(GameObject* owner, QuestLine* questLine);
-	~TrollInTheDungeon();
+	virtual ~TrollInTheDungeon();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

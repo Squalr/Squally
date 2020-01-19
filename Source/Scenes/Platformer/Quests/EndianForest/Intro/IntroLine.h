@@ -13,7 +13,7 @@ public:
 
 protected:
 	IntroLine();
-	~IntroLine();
+	virtual ~IntroLine();
 
 private:
 	typedef QuestLine super;

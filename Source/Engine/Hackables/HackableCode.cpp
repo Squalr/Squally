@@ -21,6 +21,7 @@ const int HackableCode::StartTagFuncIdIndex = 2;
 const unsigned char HackableCode::StartTagSignature[] = { 0x57, 0x6A, 0x00, 0xBF, 0xDE, 0xC0, 0xED, 0xFE, 0x5F, 0x5F };
 const unsigned char HackableCode::EndTagSignature[] = { 0x56, 0x6A, 0x45, 0xBE, 0xDE, 0xC0, 0xAD, 0xDE, 0x5E, 0x5E };
 const unsigned char HackableCode::StopSearchTagSignature[] = { 0x52, 0x6A, 0x45, 0xBA, 0x5E, 0xEA, 0x15, 0x0D, 0x5A, 0x5A };
+std::map<std::string, std::vector<unsigned char>> HackableCode::OriginalCodeCache = std::map<std::string, std::vector<unsigned char>>();
 
 std::vector<HackableCode*> HackableCode::create(void* functionStart, CodeInfoMap& hackableCodeInfoMap)
 {
@@ -56,10 +57,17 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 	if (codeStart != nullptr)
 	{
-		for (int index = 0; index < this->originalCodeLength; index++)
+		if (HackableCode::OriginalCodeCache.find(hackableCodeInfo.hackableObjectIdentifier) == HackableCode::OriginalCodeCache.end())
 		{
-			this->originalCodeCopy.push_back(((unsigned char*)codeStart)[index]);
+			HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier] = std::vector<unsigned char>();
+
+			for (int index = 0; index < this->originalCodeLength; index++)
+			{
+				HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier].push_back(((unsigned char*)codeStart)[index]);
+			}
 		}
+
+		this->originalCodeCopy = HackableCode::OriginalCodeCache[hackableCodeInfo.hackableObjectIdentifier];
 	}
 
 	this->readOnlyScripts = std::vector<ReadOnlyScript>();

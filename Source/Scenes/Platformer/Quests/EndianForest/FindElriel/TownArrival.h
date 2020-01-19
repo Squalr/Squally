@@ -15,7 +15,7 @@ public:
 
 protected:
 	TownArrival(GameObject* owner, QuestLine* questLine);
-	~TownArrival();
+	virtual ~TownArrival();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

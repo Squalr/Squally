@@ -17,7 +17,7 @@ public:
 
 protected:
 	ChatWithGuano(GameObject* owner, QuestLine* questLine);
-	~ChatWithGuano();
+	virtual ~ChatWithGuano();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

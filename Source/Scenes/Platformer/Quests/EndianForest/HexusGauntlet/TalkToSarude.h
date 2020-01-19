@@ -16,7 +16,7 @@ public:
 
 protected:
 	TalkToSarude(GameObject* owner, QuestLine* questLine);
-	~TalkToSarude();
+	virtual ~TalkToSarude();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

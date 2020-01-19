@@ -15,7 +15,7 @@ public:
 
 protected:
 	RescueGuano(GameObject* owner, QuestLine* questLine);
-	~RescueGuano();
+	virtual ~RescueGuano();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

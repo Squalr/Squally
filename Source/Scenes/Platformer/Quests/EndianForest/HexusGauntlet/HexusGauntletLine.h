@@ -13,7 +13,7 @@ public:
 
 protected:
 	HexusGauntletLine();
-	~HexusGauntletLine();
+	virtual ~HexusGauntletLine();
 
 private:
 	typedef QuestLine super;

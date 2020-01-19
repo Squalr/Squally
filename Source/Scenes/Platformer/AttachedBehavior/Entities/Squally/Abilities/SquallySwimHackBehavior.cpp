@@ -96,7 +96,7 @@ void SquallySwimHackBehavior::registerHackables()
 				{
 				},
 				int(HackFlags::Water),
-				2.0f,
+				1.0f,
 				this->clippy
 			)
 		},

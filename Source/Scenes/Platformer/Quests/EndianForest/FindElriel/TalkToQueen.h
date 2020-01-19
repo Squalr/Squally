@@ -17,7 +17,7 @@ public:
 
 protected:
 	TalkToQueen(GameObject* owner, QuestLine* questLine);
-	~TalkToQueen();
+	virtual ~TalkToQueen();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

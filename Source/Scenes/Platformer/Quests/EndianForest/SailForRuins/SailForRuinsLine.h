@@ -13,7 +13,7 @@ public:
 
 protected:
 	SailForRuinsLine();
-	~SailForRuinsLine();
+	virtual ~SailForRuinsLine();
 
 private:
 	typedef QuestLine super;

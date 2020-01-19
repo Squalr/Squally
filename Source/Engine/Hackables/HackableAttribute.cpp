@@ -1,8 +1,14 @@
 #include "HackableAttribute.h"
 
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Localization/LocalizedString.h"
+
+using namespace cocos2d;
 
 HackableAttribute::HackableAttribute(int requiredHackFlag, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy)
 {
@@ -46,6 +52,11 @@ HackableAttribute::~HackableAttribute()
 void HackableAttribute::onEnter()
 {
 	super::onEnter();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->restoreState();
+	}));
 
 	this->scheduleUpdate();
 }

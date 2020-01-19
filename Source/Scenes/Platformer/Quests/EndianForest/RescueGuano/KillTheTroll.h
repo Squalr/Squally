@@ -15,7 +15,7 @@ public:
 
 protected:
 	KillTheTroll(GameObject* owner, QuestLine* questLine);
-	~KillTheTroll();
+	virtual ~KillTheTroll();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -53,11 +53,16 @@ void WaterBlessing::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKeySqually);
 
-	this->runCinematicSequence();
+	if (questState == QuestState::Complete &&
+		QuestTask::getQuestStateForTask(this->questLine, WaterBlessing::MapKeyQuest) == QuestState::None)
+	{
+		this->setPostText();
+	}
 }
 
 void WaterBlessing::onActivate(bool isActiveThroughSkippable)
 {
+	this->runCinematicSequence();
 }
 
 void WaterBlessing::onComplete()
@@ -136,10 +141,36 @@ void WaterBlessing::runCinematicSequence()
 			),
 			[=]()
 			{
+				this->setPostText();
 				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 			true
 		));
+	});
+}
+
+void WaterBlessing::setPostText()
+{
+	this->defer([=]()
+	{
+		this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->entity, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
+				),
+				[=]()
+				{
+					this->setPostText();
+				},
+				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
+				true
+			));
+		});
 	});
 }

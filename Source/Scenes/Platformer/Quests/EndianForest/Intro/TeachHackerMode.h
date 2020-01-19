@@ -19,7 +19,7 @@ public:
 
 protected:
 	TeachHackerMode(GameObject* owner, QuestLine* questLine);
-	~TeachHackerMode();
+	virtual ~TeachHackerMode();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -18,7 +18,7 @@ public:
 
 protected:
 	ReturnToQueen(GameObject* owner, QuestLine* questLine);
-	~ReturnToQueen();
+	virtual ~ReturnToQueen();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -13,7 +13,7 @@ public:
 
 protected:
 	FindElrielLine();
-	~FindElrielLine();
+	virtual ~FindElrielLine();
 
 private:
 	typedef QuestLine super;
