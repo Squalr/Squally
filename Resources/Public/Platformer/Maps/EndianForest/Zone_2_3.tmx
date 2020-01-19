@@ -146,7 +146,7 @@
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="up"/>
    </properties>
   </object>
  </objectgroup>

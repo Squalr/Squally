@@ -32,7 +32,6 @@ private:
 
 	IsAliveClippy* clippy;
 	Squally* squally;
-	float cooldown;
 
 	static const std::string IdentifierCanSwim;
 };

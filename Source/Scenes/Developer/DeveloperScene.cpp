@@ -150,6 +150,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 		PlatformerMap* map = PlatformerMap::create(mapResource);
 
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
 		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));

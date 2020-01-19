@@ -42,7 +42,6 @@ SquallySwimHackBehavior::SquallySwimHackBehavior(GameObject* owner) : super(owne
 {
 	this->clippy = IsAliveClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->cooldown = 0.0f;
 
 	this->registerClippy(this->clippy);
 
@@ -60,14 +59,9 @@ void SquallySwimHackBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->cooldown > 0.0f)
-	{
-		this->cooldown -= dt;
-	}
-	else if (this->canSwimHack())
+	if (this->canSwimHack())
 	{
 		this->squally->controlStateOverride = PlatformerEntity::ControlState::Swimming;
-		this->cooldown = 3.0f;
 	}
 	else if (this->squally->controlStateOverride == PlatformerEntity::ControlState::Swimming)
 	{
