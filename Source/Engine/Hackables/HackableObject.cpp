@@ -42,6 +42,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->isHackable = true;
 	this->sensingParticlesNode = Node::create();
 	this->sensingParticles = nullptr;
+	this->cachedHackFlags = 0;
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
@@ -180,18 +181,16 @@ void HackableObject::onHackerModeEnable(int hackFlags)
 		return;
 	}
 
-	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
-	{
-		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
+	// Enable if any hackable is unlocked
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
 		{
-			return;
-		}
-	}
-
-	if (!this->hackableList.empty())
-	{	
+			return (attribute->getRequiredHackFlag() & hackFlags) == attribute->getRequiredHackFlag();
+		}))
+	{
 		this->hackButton->setVisible(true);
 	}
+
+	this->cachedHackFlags = hackFlags;
 }
 
 void HackableObject::onHackerModeDisable()
@@ -250,7 +249,7 @@ Vec2 HackableObject::getButtonOffset()
 
 void HackableObject::onHackableClick()
 {
-	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this));
+	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this, this->cachedHackFlags));
 }
 
 HackablePreview* HackableObject::createDefaultPreview()

@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallySensingBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallySwimHackBehavior.h"
 
 using namespace cocos2d;
 
@@ -21,9 +22,11 @@ SquallyAbilityBehaviorGroup* SquallyAbilityBehaviorGroup::create(GameObject* own
 
 SquallyAbilityBehaviorGroup::SquallyAbilityBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyIsAliveHackBehavior::create(owner),
+	SquallyIsAliveHackBehavior::create(owner),
 	SquallyHackingBehavior::create(owner),
 	SquallyOutOfCombatAttackBehavior::create(owner),
 	SquallySensingBehavior::create(owner),
+	SquallySwimHackBehavior::create(owner),
 	})
 {
 }

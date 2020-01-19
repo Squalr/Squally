@@ -150,14 +150,23 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->removeAllChildren();
 
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
+	std::vector<HackableAttribute*> filteredAttributes = std::vector<HackableAttribute*>();
 
+	for (auto attribute : this->activeHackableObject->hackableList)
+	{
+		if ((attribute->getRequiredHackFlag() & hackFlags) == attribute->getRequiredHackFlag())
+		{
+			filteredAttributes.push_back(attribute);
+		}
+	}
+	
 	if (preview != nullptr)
 	{
 		this->previewNode->addChild(preview);
 	}
 
 	// +1 from the exit node, which is always present
-	float angleStep = (float(M_PI) * 2.0f) / ((float)(this->activeHackableObject->hackableList.size() + 1));
+	float angleStep = (float(M_PI) * 2.0f) / ((float)(filteredAttributes.size() + 1));
 	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
@@ -168,7 +177,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->addChild(returnRadialNode);
 
 	// Draw data icons
-	for (auto it = this->activeHackableObject->hackableList.begin(); it != this->activeHackableObject->hackableList.end(); it++)
+	for (auto it = filteredAttributes.begin(); it != filteredAttributes.end(); it++)
 	{
 		HackableAttribute* hackable = *it;
 		LocalizedString* name = hackable->getName();

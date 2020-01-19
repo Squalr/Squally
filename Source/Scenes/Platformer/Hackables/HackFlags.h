@@ -16,7 +16,6 @@ enum class HackFlags
 	Water	 	= 1 << 7,
 	Wind	 	= 1 << 8,
 	Gravity	 	= 1 << 9,
-	Jump	 	= 1 << 10,
 };
 
 class Inventory;

@@ -31,8 +31,9 @@ public:
 	struct HackableObjectOpenArgs
 	{
 		HackableObject* hackableObject;
+		int hackFlags;
 
-		HackableObjectOpenArgs(HackableObject* hackableObject) : hackableObject(hackableObject) { }
+		HackableObjectOpenArgs(HackableObject* hackableObject, int hackFlags) : hackableObject(hackableObject), hackFlags(hackFlags) { }
 	};
 
 	struct HackableObjectEditArgs

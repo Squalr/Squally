@@ -20304,6 +20304,66 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay() = default;
 	};
 
+	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou();
+		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou() = default;
+	};
+
+	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers();
+		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers() = default;
+	};
+
+	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing();
+		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing() = default;
+	};
+
+	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers();
+		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers() = default;
+	};
+
 	class Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse : public LocalizedString
 	{
 	public:

@@ -62,6 +62,7 @@ PlatformerEntity::PlatformerEntity(
 	this->hexusOpponentData = nullptr;
 	this->hoverHeight = hoverHeight;
 	this->controlState = ControlState::Normal;
+	this->controlStateOverride = ControlState::None;
 	this->movementSize = this->entitySize + Size(0.0f, this->hoverHeight);
 
 	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->hoverHeight + this->entitySize.height);

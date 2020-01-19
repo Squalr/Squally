@@ -98,8 +98,9 @@ void EntityMovementBehavior::update(float dt)
 	Vec2 velocity = movementCollision->getVelocity();
 
 	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
+	PlatformerEntity::ControlState controlState = (this->entity->controlStateOverride == PlatformerEntity::ControlState::None) ? this->entity->controlState : this->entity->controlStateOverride;
 
-	switch (this->entity->controlState)
+	switch (controlState)
 	{
 		default:
 		case PlatformerEntity::ControlState::Normal:

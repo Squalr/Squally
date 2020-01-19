@@ -94,4 +94,6 @@ private:
 	std::vector<Clippy*> clippyList;
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
+
+	int cachedHackFlags;
 };

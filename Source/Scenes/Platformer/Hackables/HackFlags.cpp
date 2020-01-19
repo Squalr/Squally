@@ -22,8 +22,8 @@ int HackFlagUtils::GetCurrentHackFlags(Inventory* inventory)
         HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfNature] = int(HackFlags::Nature);
         HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfShadow] = int(HackFlags::Shadow);
         HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfUndeath] = int(HackFlags::Undeath);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfWater] = int(HackFlags::Water);
         HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfWind] = int(HackFlags::Wind);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfJump] = int(HackFlags::Jump);
 
         init = true;
     }

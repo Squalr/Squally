@@ -15,6 +15,7 @@ class PlatformerEntity : public HackableObject
 public:
 	enum class ControlState
 	{
+		None,
 		Normal,
 		Swimming,
 	};
@@ -42,6 +43,7 @@ public:
 	std::string getBattleBehavior();
 
 	ControlState controlState;
+	ControlState controlStateOverride;
 
 	static const std::string PlatformerEntityTag;
 	static const std::string MapKeyBattleAttachedBehavior;

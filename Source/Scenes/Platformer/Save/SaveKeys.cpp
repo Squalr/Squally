@@ -25,8 +25,8 @@ const std::string SaveKeys::SaveKeyBlessingOfLightning = "SAVE_KEY_BLESSING_OF_L
 const std::string SaveKeys::SaveKeyBlessingOfNature = "SAVE_KEY_BLESSING_OF_NATURE";
 const std::string SaveKeys::SaveKeyBlessingOfShadow = "SAVE_KEY_BLESSING_OF_SHADOW";
 const std::string SaveKeys::SaveKeyBlessingOfUndeath = "SAVE_KEY_BLESSING_OF_UNDEATH";
+const std::string SaveKeys::SaveKeyBlessingOfWater = "SAVE_KEY_BLESSING_OF_WATER";
 const std::string SaveKeys::SaveKeyBlessingOfWind = "SAVE_KEY_BLESSING_OF_WIND";
-const std::string SaveKeys::SaveKeyBlessingOfJump = "SAVE_KEY_BLESSING_OF_JUMP";
 
 const std::string SaveKeys::SaveKeyCollectableAnimalBat = "SAVE_KEY_ANIMAL_BAT";
 const std::string SaveKeys::SaveKeyCollectableAnimalBear = "SAVE_KEY_ANIMAL_BEAR";
