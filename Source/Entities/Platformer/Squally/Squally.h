@@ -16,12 +16,12 @@ public:
 	float getFloatHeight() override;
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
+	std::string getSwimAnimation() override;
 
 	static const std::string MapKeySqually;
 	static const std::string BattleTag;
 
 protected:
-	std::string getSwimAnimation() override;
 
 	cocos2d::Vec2 getButtonOffset() override;
 

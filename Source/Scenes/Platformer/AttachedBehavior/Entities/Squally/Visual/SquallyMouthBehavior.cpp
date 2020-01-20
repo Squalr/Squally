@@ -50,7 +50,7 @@ void SquallyMouthBehavior::update(float dt)
 	super::update(dt);
 
 	PlatformerEntity::ControlState controlState = this->squally->getControlState();
-
+	
 	switch (controlState)
 	{
 		default:

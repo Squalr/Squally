@@ -118,11 +118,6 @@ void EntityMovementBehavior::update(float dt)
 				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
 
-			if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
-			{
-				this->entity->getAnimations()->clearAnimationPriority();
-			}
-
 			if (movement.y > 0.0f && canJump)
 			{
 				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
@@ -153,11 +148,6 @@ void EntityMovementBehavior::update(float dt)
 
 			if (movement != Vec2::ZERO)
 			{
-				if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getJumpAnimation())
-				{
-					this->entity->getAnimations()->clearAnimationPriority();
-				}
-
 				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 			}
 
