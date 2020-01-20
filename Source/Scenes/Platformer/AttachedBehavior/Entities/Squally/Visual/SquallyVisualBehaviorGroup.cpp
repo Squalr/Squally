@@ -3,6 +3,7 @@
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyEquipmentVisualBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyEyeBlinkBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyMouthBehavior.h"
 
 using namespace cocos2d;
 
@@ -20,6 +21,7 @@ SquallyVisualBehaviorGroup* SquallyVisualBehaviorGroup::create(GameObject* owner
 SquallyVisualBehaviorGroup::SquallyVisualBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyEquipmentVisualBehavior::create(owner),
 	SquallyEyeBlinkBehavior::create(owner),
+	SquallyMouthBehavior::create(owner),
 	})
 {
 }

@@ -36,7 +36,8 @@ public:
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;
 	virtual std::string getSwimAnimation();
-	virtual void performJumpAnimation();
+	virtual std::string getJumpAnimation();
+	PlatformerEntity::ControlState getControlState();
 	bool isFlippedX();
 	bool isFlippedY();
 	PlatformerEntity* softClone();

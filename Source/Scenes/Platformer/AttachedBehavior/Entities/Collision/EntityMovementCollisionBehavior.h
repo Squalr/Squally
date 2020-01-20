@@ -10,6 +10,8 @@ class EntityMovementCollisionBehavior : public AttachedBehavior
 public:
 	static EntityMovementCollisionBehavior* create(GameObject* owner);
 
+	void enableNormalPhysics();
+	void enableWaterPhysics();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	bool hasLeftWallCollision();

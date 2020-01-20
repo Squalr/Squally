@@ -134,6 +134,18 @@ void EntityMovementCollisionBehavior::update(float dt)
 	this->tryBind();
 }
 
+void EntityMovementCollisionBehavior::enableNormalPhysics()
+{
+	this->movementCollision->setGravityEnabled(true);
+	this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+}
+
+void EntityMovementCollisionBehavior::enableWaterPhysics()
+{
+	this->movementCollision->setGravityEnabled(false);
+	this->movementCollision->setVerticalDampening(EntityMovementCollisionBehavior::SwimVerticalDrag);
+}
+
 Vec2 EntityMovementCollisionBehavior::getVelocity()
 {
 	return this->movementCollision == nullptr ? Vec2::ZERO : this->movementCollision->getVelocity();
@@ -228,9 +240,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->movementCollision->setGravityEnabled(false);
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
-		this->movementCollision->setVerticalDampening(EntityMovementCollisionBehavior::SwimVerticalDrag);
 
 		// Clear current animation
 		this->entity->getAnimations()->playAnimation();
@@ -240,9 +250,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		this->movementCollision->setGravityEnabled(true);
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
-		this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 
 		// Animate jumping out of water
 		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)
@@ -250,7 +258,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			// Give a velocity boost for jumping out of water
 			this->movementCollision->setVelocity(Vec2(this->movementCollision->getVelocity().x, EntityMovementCollisionBehavior::WaterJumpVelocity));
 
-			this->entity->performJumpAnimation();
+			this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
 		}
 		else
 		{

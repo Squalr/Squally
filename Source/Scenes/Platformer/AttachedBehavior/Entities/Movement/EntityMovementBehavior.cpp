@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -98,13 +99,14 @@ void EntityMovementBehavior::update(float dt)
 	Vec2 velocity = movementCollision->getVelocity();
 
 	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
-	PlatformerEntity::ControlState controlState = (this->entity->controlStateOverride == PlatformerEntity::ControlState::None) ? this->entity->controlState : this->entity->controlStateOverride;
+	PlatformerEntity::ControlState controlState = this->entity->getControlState();
 
 	switch (controlState)
 	{
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
+			movementCollision->enableNormalPhysics();
 			bool hasLeftCollision = movementCollision->hasLeftWallCollision();
 			bool hasRightCollision = movementCollision->hasRightWallCollision();
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
@@ -116,17 +118,24 @@ void EntityMovementBehavior::update(float dt)
 				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
 			}
 
+			if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
+			{
+				this->entity->getAnimations()->clearAnimationPriority();
+			}
+
 			if (movement.y > 0.0f && canJump)
 			{
 				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
 
-				this->entity->performJumpAnimation();
+				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
 			}
 
 			break;
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
+			movementCollision->enableWaterPhysics();
+
 			const float minSpeed = EntityMovementBehavior::SwimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
@@ -144,6 +153,11 @@ void EntityMovementBehavior::update(float dt)
 
 			if (movement != Vec2::ZERO)
 			{
+				if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getJumpAnimation())
+				{
+					this->entity->getAnimations()->clearAnimationPriority();
+				}
+
 				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
 			}
 

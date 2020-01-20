@@ -137,30 +137,6 @@ void SquallyCollisionBehavior::onLoad()
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-	
-	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-			
-			mouth->replaceSprite(EntityResources::Squally_MOUTH_SWIMMING);
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->entityCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
-	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
-
-			mouth->replaceSprite(EntityResources::Squally_MOUTH);
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::FriendlyNpc, (int)PlatformerCollisionType::Helper, }, [=](CollisionObject::CollisionData collisionData)
 	{

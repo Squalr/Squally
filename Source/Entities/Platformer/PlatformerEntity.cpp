@@ -130,9 +130,14 @@ std::string PlatformerEntity::getSwimAnimation()
 	return "Swim";
 }
 
-void PlatformerEntity::performJumpAnimation()
+std::string PlatformerEntity::getJumpAnimation()
 {
-	this->animationNode->playAnimation("Jump", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+	return "Jump";
+}
+
+PlatformerEntity::ControlState PlatformerEntity::getControlState()
+{
+	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;;
 }
 
 std::string PlatformerEntity::getBattleBehavior()
