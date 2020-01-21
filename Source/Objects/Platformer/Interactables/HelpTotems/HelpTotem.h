@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Maps/GameObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
 namespace cocos2d
 {
@@ -8,12 +8,11 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
 class SpeechBubble;
 class LocalizedLabel;
 class LocalizedString;
 
-class HelpTotem : public GameObject
+class HelpTotem : public InteractObject
 {
 public:
 	static HelpTotem* create(cocos2d::ValueMap& properties);
@@ -27,19 +26,19 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onInteract() override;
+	void onEndCollision() override;
 	void setHint(LocalizedString* hint);
 
 private:
-	typedef GameObject super;
+	typedef InteractObject super;
 
 	void tryDisplayHint();
 	
 	bool isInactive;
-	bool canInteract;
 
 	cocos2d::Sprite* totem;
 	cocos2d::Sprite* totemInactive;
-	CollisionObject* hintCollision;
 	SpeechBubble* speechBubble;
 	LocalizedString* hint;
 };

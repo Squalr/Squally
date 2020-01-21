@@ -11,6 +11,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"

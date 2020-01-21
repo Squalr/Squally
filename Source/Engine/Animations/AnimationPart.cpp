@@ -166,7 +166,7 @@ void AnimationPart::setRotation(float rotation)
 
 	if (this->spriterAnimationPart != nullptr)
 	{
-		this->spriterAnimationPart->setAngle(rotation / 180.0f * M_PI);
+		this->spriterAnimationPart->setAngle(-rotation / 180.0f * M_PI);
 	}
 }
 

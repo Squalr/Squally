@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
 namespace cocos2d
 {
@@ -8,11 +8,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
 class SmartAnimationSequenceNode;
 class WorldSound;
 
-class LifeStone : public HackableObject
+class LifeStone : public InteractObject
 {
 public:
 	static LifeStone* create(cocos2d::ValueMap& properties);
@@ -21,21 +20,22 @@ public:
 
 protected:
 	LifeStone(cocos2d::ValueMap& properties);
-	~LifeStone();
+	virtual ~LifeStone();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onInteract() override;
+	void onEndCollision() override;
 
 private:
-	typedef HackableObject super;
+	typedef InteractObject super;
 
 	void runHealAnimation(bool reRun = false);
 
 	cocos2d::Sprite* lifeStone;
 	SmartAnimationSequenceNode* healAnimation;
-	CollisionObject* healCollision;
 	WorldSound* healSound;
 	
 	bool isAnimating;

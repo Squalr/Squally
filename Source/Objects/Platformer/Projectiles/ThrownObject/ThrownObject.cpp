@@ -10,6 +10,7 @@
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/ThrownObject/ThrownObjectGenericPreview.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/EntityResources.h"
 
@@ -30,7 +31,7 @@ ThrownObject* ThrownObject::create(PlatformerEntity* caster, cocos2d::Node* obje
 }
 
 ThrownObject::ThrownObject(PlatformerEntity* caster, cocos2d::Node* object, cocos2d::Size collisionSize)
-	: super(caster, CollisionObject::createCapsulePolygon(collisionSize), CombatCollisionType::Projectile, true)
+	: super(caster, CollisionObject::createCapsulePolygon(collisionSize), (int)CombatCollisionType::Projectile, true)
 {
 	this->object = object;
 

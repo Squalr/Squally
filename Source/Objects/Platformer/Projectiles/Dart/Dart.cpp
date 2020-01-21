@@ -25,25 +25,15 @@ Dart* Dart::create(float dartRotation, float dartSpeed)
 	return instance;
 }
 
-Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, nullptr, CombatCollisionType::Projectile, false)
+Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, PhysicsBody::createBox(Size(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
 {
 	this->dartRotation = dartRotation;
 	this->dartSpeed = dartSpeed;
 	this->dartSprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
-	this->collision = CollisionObject::create(
-		ValueMap(),
-		PhysicsBody::createBox(
-			Size(16.0f, 64.0f),
-			PHYSICSBODY_MATERIAL_DEFAULT,
-			Vec2::ZERO
-		),
-		(int)PlatformerCollisionType::Damage,
-		false,
-		false
-	);
 
-	this->collision->addChild(this->dartSprite);
-	this->addChild(this->collision);
+	this->setRotation(-this->dartRotation);
+
+	this->contentNode->addChild(this->dartSprite);
 }
 
 Dart::~Dart()
@@ -54,24 +44,7 @@ void Dart::onEnter()
 {
 	super::onEnter();
 
-	float rotationInRad = this->dartRotation * float(M_PI) / 180.0f;
-	this->collision->setVelocity(Vec2(this->dartSpeed * std::cos(-rotationInRad), this->dartSpeed * std::sin(-rotationInRad)));
-
-	this->dartSprite->setRotation(90.0f);
-}
-
-void Dart::reset()
-{
-	this->collision->setPosition(Vec2::ZERO);
-	this->enable();
-}
-
-void Dart::disable()
-{
-	this->collision->setPhysicsEnabled(false);
-}
-
-void Dart::enable()
-{
-	this->collision->setPhysicsEnabled(true);
+	const float rotationInRad = this->dartRotation * float(M_PI) / 180.0f;
+	
+	this->getCollision()->setVelocity(Vec2(this->dartSpeed * std::cos(rotationInRad), this->dartSpeed * std::sin(rotationInRad)));
 }

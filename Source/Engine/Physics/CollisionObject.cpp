@@ -565,7 +565,7 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
         this->debugDrawNode->clear();
 	}
 
-	if (DeveloperModeController::getDebugLevel() > 0)
+	if (DeveloperModeController::getDebugLevel() > 0 && this->physicsBody != nullptr)
 	{
 		if (this->debugDrawNode == nullptr)
 		{

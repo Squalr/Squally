@@ -43,10 +43,13 @@ Projectile* ProjectilePool::getNextProjectile()
 		{
 			Projectile* newProjectile = projectileFactory();
 
-			newProjectile->disable(false);
+			if (newProjectile != nullptr)
+			{
+				newProjectile->disable(false);
 
-			this->projectiles.push_back(newProjectile);
-			this->addChild(newProjectile);
+				this->projectiles.push_back(newProjectile);
+				this->addChild(newProjectile);
+			}
 		}
 	}
 

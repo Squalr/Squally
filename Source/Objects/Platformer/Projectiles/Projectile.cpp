@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 const std::string Projectile::ProjectileTag = "projectile";
 
-Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking) : super(ValueMap())
+Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, int collisionType, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
@@ -35,7 +35,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, C
 	this->spinSpeed = 0.0f;
 	this->collisionObject = CollisionObject::create(ValueMap(),
 		hitBox,
-		(int)combatCollisionType,
+		collisionType,
 		false,
 		false
 	);

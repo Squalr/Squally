@@ -24,19 +24,26 @@ using namespace cocos2d;
 InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset) : super(properties)
 {
 	this->interactType = interactType;
+	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
+	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
 	this->interactCollision = CollisionObject::create(PhysicsBody::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
+	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
+	this->isLocked = !this->listenEvent.empty();
 	this->wasTripped = false;
 	this->canInteract = false;
 	this->disabled = false;
-	this->requiresInteraction = true;
 	this->interactCallback = nullptr;
 
 	this->interactCollision->setPosition(offset);
 	this->interactMenu->setPosition(offset);
+	this->lockedMenu->setPosition(offset);
 
 	this->addChild(this->interactCollision);
 	this->addChild(this->interactMenu);
+	this->addChild(this->lockedMenu);
+	this->addChild(this->lockButton);
+	this->addChild(this->unlockButton);
 }
 
 InteractObject::~InteractObject()
@@ -51,23 +58,54 @@ void InteractObject::onEnter()
 void InteractObject::initializePositions()
 {
 	super::initializePositions();
+
+	this->lockButton->setPosition(Vec2(-64.0f, 212.0f));
+	this->unlockButton->setPosition(Vec2(64.0f, 212.0f));
 }
 
 void InteractObject::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
+	{
+		this->isLocked = false;
+		this->updateInteractMenuVisibility();
+	});
+
+	this->lockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->lock(false);
+		this->updateInteractMenuVisibility();
+	});
+
+	this->unlockButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->unlock(false);
+		this->enable();
+		this->updateInteractMenuVisibility();
+	});
+
 	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = true;
 
-		if (!this->requiresInteraction)
+		switch(this->interactType)
 		{
-			this->tryInteractObject();
-		}
-		else
-		{
-			this->updateInteractMenuVisibility();
+			case InteractType::None:
+			{
+				break;
+			}
+			case InteractType::Input:
+			{
+				this->updateInteractMenuVisibility();
+				break;
+			}
+			case InteractType::Collision:
+			{
+				this->tryInteractObject();
+				break;
+			}
 		}
 		
 		return CollisionObject::CollisionResult::DoNothing;
@@ -77,6 +115,7 @@ void InteractObject::initializeListeners()
 	{
 		this->canInteract = false;
 		this->updateInteractMenuVisibility();
+		this->onEndCollision();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -85,6 +124,22 @@ void InteractObject::initializeListeners()
 	{
 		this->tryInteractObject();
 	});
+}
+
+void InteractObject::onDeveloperModeEnable(int debugLevel)
+{
+	super::onDeveloperModeEnable(debugLevel);
+	
+	this->lockButton->setVisible(true);
+	this->unlockButton->setVisible(true);
+}
+
+void InteractObject::onDeveloperModeDisable()
+{
+	super::onDeveloperModeDisable();
+
+	this->lockButton->setVisible(false);
+	this->unlockButton->setVisible(false);
 }
 
 void InteractObject::enable()
@@ -97,9 +152,23 @@ void InteractObject::disable()
 	this->disabled = true;
 }
 
-void InteractObject::setRequiresInteraction(bool requiresInteraction)
+void InteractObject::lock(bool animate)
 {
-	this->requiresInteraction = requiresInteraction;
+	this->isLocked = true;
+	this->updateInteractMenuVisibility();
+}
+
+void InteractObject::unlock(bool animate)
+{
+	this->isLocked = false;
+	this->updateInteractMenuVisibility();
+
+	this->broadcastMapEvent(this->sendEvent, ValueMap());
+}
+
+void InteractObject::setInteractType(InteractType interactType)
+{
+	this->interactType = interactType;
 }
 
 void InteractObject::setOpenCallback(std::function<bool()> interactCallback)
@@ -122,15 +191,29 @@ void InteractObject::onInteract()
 {
 }
 
+void InteractObject::onEndCollision()
+{
+}
+
 void InteractObject::updateInteractMenuVisibility()
 {
-	if (!this->requiresInteraction || this->disabled)
+	if (this->interactType != InteractType::Input || this->disabled)
 	{
 		this->interactMenu->hide();
+		this->lockedMenu->hide();
 		return;
 	}
 
-	if (this->canInteract)
+	if (this->isLocked && this->canInteract)
+	{
+		this->lockedMenu->show();
+	}
+	else
+	{
+		this->lockedMenu->hide();
+	}
+
+	if (!this->isLocked && this->canInteract)
 	{
 		this->interactMenu->show();
 	}

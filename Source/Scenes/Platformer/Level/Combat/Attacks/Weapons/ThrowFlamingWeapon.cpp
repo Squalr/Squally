@@ -9,6 +9,7 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"

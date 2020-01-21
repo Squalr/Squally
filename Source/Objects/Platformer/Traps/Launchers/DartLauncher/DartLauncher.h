@@ -25,6 +25,9 @@ protected:
 	virtual ~DartLauncher();
 
 	void initializePositions() override;
+	HackablePreview* createDefaultPreview() override;
+	Clippy* getTimerClippy() override;
+	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
 
 private:

@@ -14,10 +14,6 @@ class Dart : public Projectile
 public:
 	static Dart* create(float dartRotation, float speed);
 
-	void reset();
-	void disable();
-	void enable();
-
 protected:
 	Dart(float dartRotation, float speed);
 	virtual ~Dart();
@@ -27,7 +23,6 @@ protected:
 private:
 	typedef Projectile super;
 
-	CollisionObject* collision;
 	cocos2d::Sprite* dartSprite;
 	float dartRotation;
 	float dartSpeed;

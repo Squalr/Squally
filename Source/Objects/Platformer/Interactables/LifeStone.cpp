@@ -40,11 +40,10 @@ LifeStone* LifeStone::create(ValueMap& properties)
 	return instance;
 }
 
-LifeStone::LifeStone(ValueMap& properties) : super(properties)
+LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(192.0f, 440.0f), Vec2::ZERO)
 {
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
-	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 440.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
 	this->isAnimating = false;
 
@@ -56,8 +55,7 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties)
 
 		SmartAnimationSequenceNode::primeCache(FXResources::Heal_Heal_0000);
 	}
-
-	this->addChild(this->healCollision);
+	
 	this->addChild(this->lifeStone);
 	this->addChild(this->healAnimation);
 	this->addChild(this->healSound);
@@ -86,32 +84,29 @@ void LifeStone::initializePositions()
 	super::initializePositions();
 
 	this->lifeStone->setPosition(Vec2(0.0f, 0.0f));
-	this->healCollision->setPosition(Vec2(0.0f, 0.0f));
 	this->healAnimation->setPosition(Vec2(0.0f, -96.0f));
 }
 
 void LifeStone::initializeListeners()
 {
 	super::initializeListeners();
+}
 
-	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData data)
+void LifeStone::onInteract()
+{
+	super::onInteract();
+
+	this->runHealAnimation();
+
+	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 	{
-		this->runHealAnimation();
+		squally->setState(StateKeys::Health, squally->getStateOrDefault(StateKeys::MaxHealth, Value(0)));
+	}), Squally::MapKeySqually);
+}
 
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
-		{
-			squally->setState(StateKeys::Health, squally->getStateOrDefault(StateKeys::MaxHealth, Value(0)));
-		}), Squally::MapKeySqually);
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData data)
-	{
-		this->isAnimating = false;
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+void LifeStone::onEndCollision()
+{
+	this->isAnimating = false;
 }
 
 void LifeStone::runHealAnimation(bool reRun)

@@ -2,12 +2,8 @@
 
 #include "Objects/Platformer/Traps/Launchers/PivotLauncher.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class AnimationPart;
+class DartNopClippy;
 class HackableData;
 class SmartAnimationNode;
 
@@ -23,8 +19,13 @@ protected:
 	virtual ~DartTripodLauncher();
 
 	void initializePositions() override;
+	HackablePreview* createDefaultPreview() override;
+	Clippy* getTimerClippy() override;
+	HackablePreview* getTimerPreview() override;
 	Projectile* createProjectile() override;
 
 private:
 	typedef PivotLauncher super;
+
+	DartNopClippy* dartNopClippy;
 };

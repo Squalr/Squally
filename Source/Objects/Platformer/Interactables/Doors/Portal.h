@@ -1,23 +1,15 @@
 #pragma once
 #include <set>
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
-class CollisionObject;
 class HackableData;
 class InteractMenu;
 
-class Portal : public HackableObject
+class Portal : public InteractObject
 {
 public:
 	static Portal* create(cocos2d::ValueMap& properties);
-
-	void enable();
-	void disable();
-	virtual void lock(bool animate = true);
-	virtual void unlock(bool animate = true);
-	void setRequiresInteraction(bool requiresInteraction);
-	void setOpenCallback(std::function<bool()> openCallback);
 
 	static const std::string MapKeyPortal;
 	static const std::string MapKeyPortalMap;
@@ -29,29 +21,12 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onDeveloperModeEnable(int debugLevel) override;
-	void onDeveloperModeDisable() override;
+	void onInteract() override;
 	virtual void loadMap();
 
-	bool requiresInteraction;
-
 private:
-	typedef HackableObject super;
+	typedef InteractObject super;
 
-	void updateInteractMenuVisibility();
-	void enterPortal();
-
-	CollisionObject* portalCollision;
-	ClickableNode* lockButton;
-	ClickableNode* unlockButton;
-	InteractMenu* interactMenu;
-	InteractMenu* lockedMenu;
-
-	bool disabled;
-	bool canInteract;
-	bool wasTripped;
-	bool isLocked;
 	std::string transition;
 	std::string mapFile;
-	std::function<bool()> openCallback;
 };

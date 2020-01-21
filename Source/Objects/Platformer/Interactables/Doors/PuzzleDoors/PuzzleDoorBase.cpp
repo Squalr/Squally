@@ -70,8 +70,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->runeSpacing = runeSpacing;
 	this->doorOpenDelta = doorOpenDelta;
 
-	this->setRequiresInteraction(true);
-
 	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
 	{
 		this->runeStates[index] = RuneState::Unset;

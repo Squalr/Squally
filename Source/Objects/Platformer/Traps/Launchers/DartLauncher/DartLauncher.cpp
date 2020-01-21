@@ -10,6 +10,7 @@
 #include "Engine/Hackables/HackableData.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Projectiles/Dart/Dart.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherGenericPreview.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherUpdateTimerPreview.h"
 #include "Objects/Platformer/Traps/Launchers/DartLauncher/DartNopClippy.h"
@@ -51,7 +52,22 @@ void DartLauncher::initializePositions()
 	super::initializePositions();
 }
 
+HackablePreview* DartLauncher::createDefaultPreview()
+{
+	return DartLauncherGenericPreview::create();
+}
+
+Clippy* DartLauncher::getTimerClippy()
+{
+	return this->dartNopClippy;
+}
+
+HackablePreview* DartLauncher::getTimerPreview()
+{
+	return DartLauncherUpdateTimerPreview::create();
+}
+
 Projectile* DartLauncher::createProjectile()
 {
-	return nullptr;
+	return Dart::create(this->currentAngle, this->launchSpeed);
 }

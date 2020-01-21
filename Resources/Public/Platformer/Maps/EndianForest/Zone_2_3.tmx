@@ -96,13 +96,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="780" name="edge-lantern-gate" type="object" x="-1170.24" y="707.64" width="356" height="320">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
   <object id="798" name="spawn" type="object" x="963.576" y="601.394" width="128" height="128">
    <properties>
     <property name="transition" value="down"/>

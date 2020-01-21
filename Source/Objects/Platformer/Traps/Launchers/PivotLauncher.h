@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class AnimationPart;
+class Clippy;
 class HackableData;
 class PlatformerEntity;
 class Projectile;
@@ -28,8 +29,13 @@ protected:
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	virtual Projectile* createProjectile() = 0;
+	virtual Clippy* getTimerClippy();
+	virtual HackablePreview* getTimerPreview();
 
 	ProjectilePool* projectilePool;
+
+	float currentAngle;
+	float launchSpeed;
 
 private:
 	typedef HackableObject super;
@@ -38,7 +44,7 @@ private:
 	void faceTarget();
 	void updateShootTimer(float dt);
 
-	float timeSinceLastShot;
+	float launchTimer;
 	cocos2d::Node* containerNode;
 	SmartAnimationNode* launcherAnimations;
 	AnimationPart* cannon;
@@ -46,10 +52,13 @@ private:
 	PlatformerEntity* target;
 	std::string targetQueryKey;
 
-	static const std::string PivotBone;
+	float fixedAngle;
+	bool isFixed;
 
+	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;
 	static const std::string PropertyPivotTarget;
+	static const std::string PropertyFixed;
 	static const float DefaultLaunchSpeed;
 	static const float LaunchCooldownMin;
 	static const float LaunchCooldownMax;

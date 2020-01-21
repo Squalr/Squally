@@ -704,7 +704,7 @@
    <properties>
     <property name="map" value="EndianForest/Zone_2_0"/>
     <property name="tag" value="blocked-exit"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
   <object id="931" name="wind" type="object" x="3456.18" y="3553.7" width="380" height="480">

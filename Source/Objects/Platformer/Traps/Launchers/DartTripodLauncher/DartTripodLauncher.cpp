@@ -15,6 +15,10 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Projectiles/Dart/Dart.h"
+#include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherGenericPreview.h"
+#include "Objects/Platformer/Traps/Launchers/DartLauncher/DartLauncherUpdateTimerPreview.h"
+#include "Objects/Platformer/Traps/Launchers/DartLauncher/DartNopClippy.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -39,6 +43,9 @@ DartTripodLauncher* DartTripodLauncher::create(ValueMap& properties)
 
 DartTripodLauncher::DartTripodLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations)
 {
+	this->dartNopClippy = DartNopClippy::create();
+	
+	this->registerClippy(this->dartNopClippy);
 }
 
 DartTripodLauncher::~DartTripodLauncher()
@@ -50,7 +57,22 @@ void DartTripodLauncher::initializePositions()
 	super::initializePositions();
 }
 
+HackablePreview* DartTripodLauncher::createDefaultPreview()
+{
+	return DartLauncherGenericPreview::create();
+}
+
+Clippy* DartTripodLauncher::getTimerClippy()
+{
+	return this->dartNopClippy;
+}
+
+HackablePreview* DartTripodLauncher::getTimerPreview()
+{
+	return DartLauncherUpdateTimerPreview::create();
+}
+
 Projectile* DartTripodLauncher::createProjectile()
 {
-	return nullptr;
+	return Dart::create(this->currentAngle, this->launchSpeed);
 }

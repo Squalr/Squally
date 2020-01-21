@@ -27,11 +27,12 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_LAUNCH 1
+#define LOCAL_FUNC_ID_LAUNCH_TIMER 1
 
 const std::string PivotLauncher::PivotBone = "pivot_bone";
 const std::string PivotLauncher::PropertyLaunchSpeed = "speed";
 const std::string PivotLauncher::PropertyPivotTarget = "pivot-target";
+const std::string PivotLauncher::PropertyFixed = "fixed";
 const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
@@ -41,9 +42,13 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
 	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); });
-	this->timeSinceLastShot = 0.0f;
+	this->launchTimer = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
+	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
+	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
+	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
+	this->currentAngle = this->fixedAngle;
 	this->target = nullptr;
 
 	this->launcherAnimations->playAnimation();
@@ -92,7 +97,11 @@ void PivotLauncher::update(float dt)
 
 Vec2 PivotLauncher::getButtonOffset()
 {
-	return Vec2(0.0f, 128.0f);
+	float width = 24.0f;
+	float height = -124.0f;
+	float angle = float(M_PI) * this->currentAngle / 180.0f;
+
+	return Vec2(std::sin(angle) * width, std::cos(angle) * height);
 }
 
 void PivotLauncher::registerHackables()
@@ -102,18 +111,20 @@ void PivotLauncher::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_LAUNCH,
+			LOCAL_FUNC_ID_LAUNCH_TIMER,
 			HackableCode::HackableCodeInfo(
-				"PivotLauncher",
-				Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle::create(),
+				"pivot-launch-timer",
+				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				UIResources::Menus_Icons_CrossHair,
-				nullptr,
+				this->getTimerPreview(),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax::create() },
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1::create() },
 				},
 				int(HackFlags::None),
-				20.0f
+				12.0f,
+				this->getTimerClippy()
 			)
 		},
 	};
@@ -125,6 +136,16 @@ void PivotLauncher::registerHackables()
 	{
 		this->registerCode(*it);
 	}
+}
+
+Clippy* PivotLauncher::getTimerClippy()
+{
+	return nullptr;
+}
+
+HackablePreview* PivotLauncher::getTimerPreview()
+{
+	return nullptr;
 }
 
 void PivotLauncher::shoot()
@@ -141,13 +162,22 @@ void PivotLauncher::faceTarget()
 		return;
 	}
 
-	Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
-	Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
+	if (this->isFixed)
+	{
+		this->currentAngle = this->fixedAngle;
+	}
+	else
+	{
+		Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
+		Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
 
-	const float angleBetween = -std::atan2(thisCoords.y - targetCoords.y, thisCoords.x - targetCoords.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
-	const float angleNormalized = MathUtils::wrappingNormalize(float(M_PI) + angleBetween, 0.0f, 2.0f * float(M_PI));
+		const float angleBetween = -std::atan2(thisCoords.y - targetCoords.y, thisCoords.x - targetCoords.x) + (this->launcherAnimations->getFlippedX() ? float(M_PI) : 0.0f);
+		const float angleNormalized = MathUtils::wrappingNormalize(float(M_PI) + angleBetween, 0.0f, 2.0f * float(M_PI));
 
-	cannon->setRotation(angleNormalized * 180.0f / float(M_PI));
+		this->currentAngle = -angleNormalized * 180.0f / float(M_PI);
+	}
+
+	cannon->setRotation(this->currentAngle);
 }
 
 NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
@@ -156,50 +186,38 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 	{
 		return;
 	}
-	
-	this->timeSinceLastShot += dt;
 
 	Rect bounds = GameUtils::getScreenBounds(this);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
 	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
 	{
-		if (this->timeSinceLastShot > 4.0f)
+		if (this->launchTimer <= 0.0f)
 		{
-			this->timeSinceLastShot = 0.0f;
+			this->launchTimer = RandomHelper::random_real(PivotLauncher::LaunchCooldownMin, PivotLauncher::LaunchCooldownMax);
 
-			/*
-			float dartRotation = angleBetween * 180.0f / float(M_PI);
-			Dart* dart = Dart::create(dartRotation, 256.0f);
-
-			dart->setPosition3D(this->getPosition3D() + Vec3(0.0f, 64.0f, 0.0f));
-
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-				this,
-				dart,
-				ObjectEvents::SpawnMethod::Below,
-				ObjectEvents::PositionMode::Retain
-			));
-			*/
+			this->projectilePool->getNextProjectile();
 		}
 	}
 
-	/*
+	volatile float* timePtr = &this->launchTimer;
+	volatile float* dtPtr = &dt;
+
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, angleInt);
-	ASM_MOV_REG_VAR(ZBX, previousAngleInt);
+	ASM_MOV_REG_VAR(ZAX, timePtr);
+	ASM_MOV_REG_VAR(ZBX, dtPtr);
+	ASM(movss xmm0, [ZAX])
+	ASM(movss xmm1, [ZBX])
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LAUNCH);
-	ASM(mov ZBX, ZAX);
-	ASM_NOP5();
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LAUNCH_TIMER);
+	ASM(subps xmm0, xmm1);
+	ASM(movss [ZAX], xmm0);
+	ASM_NOP10();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(angleInt, ZBX);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
-	*/
 
 	HACKABLES_STOP_SEARCH();
 }

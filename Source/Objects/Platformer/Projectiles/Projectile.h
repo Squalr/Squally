@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Engine/Hackables/HackableObject.h"
-#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 namespace cocos2d
 {
@@ -28,7 +27,7 @@ public:
 	static const std::string ProjectileTag;
 	
 protected:
-	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, CombatCollisionType combatCollisionType, bool allowHacking);
+	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, int collisionType, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;
