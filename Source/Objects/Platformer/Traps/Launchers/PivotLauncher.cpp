@@ -8,6 +8,7 @@
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableData.h"
@@ -56,6 +57,8 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->launcherAnimations->setFlippedX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool());
 	this->launcherAnimations->setFlippedY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool());
 
+	this->faceTarget();
+
 	this->containerNode->addChild(this->projectilePool);
 	this->containerNode->addChild(this->launcherAnimations);
 	this->addChild(this->containerNode);
@@ -92,14 +95,18 @@ void PivotLauncher::update(float dt)
 	super::update(dt);
 
 	this->faceTarget();
-	this->updateShootTimer(dt);
+
+	// if (this->rangeCheck())
+	{
+		this->updateShootTimer(dt);
+	}
 }
 
 Vec2 PivotLauncher::getButtonOffset()
 {
-	float width = 24.0f;
-	float height = -124.0f;
-	float angle = float(M_PI) * this->currentAngle / 180.0f;
+	const float width = 0.0f;
+	const float height = -124.0f;
+	const float angle = float(M_PI) * this->currentAngle / 180.0f;
 
 	return Vec2(std::sin(angle) * width, std::cos(angle) * height);
 }
@@ -148,6 +155,21 @@ HackablePreview* PivotLauncher::getTimerPreview()
 	return nullptr;
 }
 
+bool PivotLauncher::rangeCheck()
+{
+	// It may be ideal for this to be configurable. Fixed-angle launchers can get away with this being a high value, but player-tracking launchers would want this to be low.
+	static const Size Padding = Size(1024.0f, 512.0f);
+
+	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
+	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
+	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
+	Rect thisRect = GameUtils::getScreenBounds(this);
+
+	thisRect.origin += GameUtils::getWorldCoords(this);
+
+	return cameraRect.intersectsRect(thisRect);
+}
+
 void PivotLauncher::shoot()
 {
 	Projectile* projectile = this->projectilePool->getNextProjectile();
@@ -157,16 +179,12 @@ void PivotLauncher::shoot()
 
 void PivotLauncher::faceTarget()
 {
-	if (this->target == nullptr)
-	{
-		return;
-	}
-
 	if (this->isFixed)
 	{
 		this->currentAngle = this->fixedAngle;
+		return;
 	}
-	else
+	else if (this->target != nullptr)
 	{
 		Vec2 thisCoords = GameUtils::getWorldCoords(this->launcherAnimations);
 		Vec2 targetCoords = GameUtils::getWorldCoords(this->target);
@@ -187,17 +205,11 @@ NO_OPTIMIZE void PivotLauncher::updateShootTimer(float dt)
 		return;
 	}
 
-	Rect bounds = GameUtils::getScreenBounds(this);
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	if (bounds.getMinX() > 0 && bounds.getMaxX() < visibleSize.width && bounds.getMinY() > 0 && bounds.getMaxY() < visibleSize.height)
+	if (this->launchTimer <= 0.0f)
 	{
-		if (this->launchTimer <= 0.0f)
-		{
-			this->launchTimer = RandomHelper::random_real(PivotLauncher::LaunchCooldownMin, PivotLauncher::LaunchCooldownMax);
+		this->launchTimer = RandomHelper::random_real(PivotLauncher::LaunchCooldownMin, PivotLauncher::LaunchCooldownMax);
 
-			this->projectilePool->getNextProjectile();
-		}
+		this->projectilePool->getNextProjectile();
 	}
 
 	volatile float* timePtr = &this->launchTimer;

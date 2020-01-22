@@ -41,6 +41,7 @@ private:
 	typedef HackableObject super;
 	
 	void shoot();
+	bool rangeCheck();
 	void faceTarget();
 	void updateShootTimer(float dt);
 

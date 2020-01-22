@@ -152,12 +152,6 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_Defeat;
 	extern const std::string Platformer_Combat_LevelUp;
 	extern const std::string Platformer_Combat_Victory;
-	extern const std::string Platformer_Doors_Ancient_Stone_Mechanism_Movement_01;
-	extern const std::string Platformer_Doors_Portals_Portal;
-	extern const std::string Platformer_Doors_Portals_Teleport;
-	extern const std::string Platformer_Doors_StoneWall1;
-	extern const std::string Platformer_Doors_StoneWall2;
-	extern const std::string Platformer_Doors_StoneWall3;
 	extern const std::string Platformer_Entities_Demon_DemonLaugh;
 	extern const std::string Platformer_Entities_Demon_DemonRoar1;
 	extern const std::string Platformer_Entities_Demon_DemonRoar2;
@@ -202,6 +196,13 @@ namespace SoundResources
 	extern const std::string Platformer_Environment_FireSizzle;
 	extern const std::string Platformer_Environment_Submerge;
 	extern const std::string Platformer_Objects_Crash;
+	extern const std::string Platformer_Objects_Doors_Ancient_Stone_Mechanism_Movement_01;
+	extern const std::string Platformer_Objects_Doors_Portals_Portal;
+	extern const std::string Platformer_Objects_Doors_Portals_Teleport;
+	extern const std::string Platformer_Objects_Doors_StoneWall1;
+	extern const std::string Platformer_Objects_Doors_StoneWall2;
+	extern const std::string Platformer_Objects_Doors_StoneWall3;
+	extern const std::string Platformer_Objects_Doors_WoodDoorOpen1;
 	extern const std::string Platformer_Objects_Explosion;
 	extern const std::string Platformer_Objects_LowFlame;
 	extern const std::string Platformer_Objects_Thrusters;

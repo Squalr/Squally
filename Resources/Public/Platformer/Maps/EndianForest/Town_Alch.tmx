@@ -178,7 +178,7 @@
     <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="461.648" y="941.2" width="128" height="128">
+  <object id="706" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

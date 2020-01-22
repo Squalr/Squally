@@ -545,18 +545,18 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="697" name="spawn" type="object" x="5817.48" y="7283.51" width="128" height="128">
+  <object id="697" name="spawn-wood-door" type="object" x="5817.48" y="7283.51" width="128" height="128">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="shack"/>
    </properties>
   </object>
-  <object id="698" name="spawn" type="object" x="4673.82" y="2681.03" width="128" height="128">
+  <object id="698" name="spawn-wood-door" type="object" x="4673.82" y="2681.03" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="699" name="spawn" type="object" x="2239.98" y="2692.36" width="128" height="128">
+  <object id="699" name="spawn-wood-door" type="object" x="2239.98" y="2692.36" width="128" height="128">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="smith"/>
@@ -578,7 +578,7 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="705" name="spawn" type="object" x="7720.62" y="1031.55" width="128" height="128">
+  <object id="705" name="spawn-wood-door" type="object" x="7720.62" y="1031.55" width="128" height="128">
    <properties>
     <property name="transition" value="liana"/>
    </properties>
@@ -614,7 +614,7 @@
     <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="866" name="spawn" type="object" x="6069.3" y="5748.1" width="128" height="128">
+  <object id="866" name="spawn-wood-door" type="object" x="6069.3" y="5748.1" width="128" height="128">
    <properties>
     <property name="transition" value="inn"/>
    </properties>

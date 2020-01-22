@@ -60,14 +60,19 @@ void PortalSpawn::initializeListeners()
 		
 		if (args != nullptr && args->transition == this->transition)
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
-			{
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
-				this->tryShowBanner();
-
-			}), Squally::MapKeySqually);
+			this->onPlayerSpawn();
 		}
 	}));
+}
+
+void PortalSpawn::onPlayerSpawn()
+{
+	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+	{
+		PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
+		this->tryShowBanner();
+
+	}), Squally::MapKeySqually);
 }
 
 void PortalSpawn::tryShowBanner()

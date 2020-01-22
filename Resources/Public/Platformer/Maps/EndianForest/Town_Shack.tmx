@@ -101,7 +101,7 @@
   </object>
   <object id="702" name="camera-focus" type="object" x="508.445" y="761.888" width="128" height="128"/>
   <object id="705" name="breakable-cage" type="object" x="117.942" y="960.196" width="196" height="112"/>
-  <object id="706" name="spawn" type="object" x="509.801" y="939.417" width="128" height="128">
+  <object id="706" name="spawn-wood-door" type="object" x="509.801" y="939.417" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>

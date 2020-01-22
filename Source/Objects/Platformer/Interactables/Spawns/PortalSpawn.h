@@ -20,6 +20,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	virtual void onPlayerSpawn();
 
 private:
 	typedef HackableObject super;

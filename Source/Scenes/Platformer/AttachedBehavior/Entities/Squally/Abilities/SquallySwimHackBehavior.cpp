@@ -113,6 +113,7 @@ NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CAN_SWIM);
 	ASM(mov ZAX, 0);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(canSwim, ZAX);

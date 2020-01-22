@@ -145,6 +145,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Wind::MapKeyWind] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
 	this->deserializers[WindPortal::MapKeyWindPortal] = [=](ValueMap properties) { return (GameObject*)WindPortal::create(properties); };
 	this->deserializers[WoodenCrate::MapKeyWoodenCrate] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };
+	this->deserializers[WoodDoorSpawn::MapKeyWoodDoorSpawn] = [=](ValueMap properties) { return (GameObject*)WoodDoorSpawn::create(properties); };
 	this->deserializers[WoodenGate::MapKeyWoodenGate] = [=](ValueMap properties) { return (GameObject*)WoodenGate::create(properties); };
 	this->deserializers[WoodenSpikes::MapKeyWoodenSpikes] = [=](ValueMap properties) { return (GameObject*)WoodenSpikes::create(properties); };
 }

@@ -148,7 +148,7 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="461.648" y="941.2" width="128" height="128">
+  <object id="706" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>
@@ -202,7 +202,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="463.133" y="944.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="508.588" y="941.93" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>

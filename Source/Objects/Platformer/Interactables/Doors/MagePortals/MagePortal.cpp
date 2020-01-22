@@ -23,7 +23,7 @@ MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalB
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
-	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Doors_Portals_Portal);
+	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
 
 	this->background->drawSolidCircle(Vec2::ZERO, portalRadius, 0.0f, 32, Color4F(portalBaseColor));
 	

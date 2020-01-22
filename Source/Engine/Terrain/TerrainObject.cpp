@@ -919,7 +919,6 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	// Admissible heuristic -- technically this warrants using a bunch of projection math. Zoom is good enough.
 	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
 	static const Size Padding = Size(128.0f, 128.0f);
 	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
