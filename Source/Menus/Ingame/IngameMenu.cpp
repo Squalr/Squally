@@ -39,7 +39,7 @@ IngameMenu::IngameMenu() : super(true)
 	this->quitToTitleClickCallback = nullptr;
 	this->inventoryClickCallback = nullptr;
 	this->partyClickCallback = nullptr;
-	this->mapClickCallback = nullptr;
+	this->cardsClickCallback = nullptr;
 	this->collectablesClickCallback = nullptr;
 
 	this->resumeButton = nullptr;
@@ -67,10 +67,10 @@ IngameMenu::IngameMenu() : super(true)
 		Strings::Menus_Pause_Party::create(),
 		true,
 		Vec2(80.0f, 0.0f));
-	this->mapButton = this->buildButton(
-		UIResources::Menus_IngameMenu_MapButton,
-		UIResources::Menus_IngameMenu_MapButtonSelected,
-		Strings::Menus_Pause_Map::create(),
+	this->cardsButton = this->buildButton(
+		UIResources::Menus_IngameMenu_CardsButton,
+		UIResources::Menus_IngameMenu_CardsButtonSelected,
+		Strings::Menus_Pause_Cards::create(),
 		false,
 		Vec2(-80.0f, 0.0f));
 	this->collectablesButton = this->buildButton(
@@ -87,7 +87,7 @@ IngameMenu::IngameMenu() : super(true)
 	this->addChild(this->quitToTitleButton);
 	this->addChild(this->inventoryButton);
 	this->addChild(this->partyButton);
-	this->addChild(this->mapButton);
+	this->addChild(this->cardsButton);
 	this->addChild(this->collectablesButton);
 	this->addChild(this->newButtonsNode);
 }
@@ -121,7 +121,7 @@ void IngameMenu::initializePositions()
 	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - 240.0f, visibleSize.height / 2.0f + 64.0f));
 	this->quitToTitleButton->setPosition(Vec2(visibleSize.width / 2.0f - 538.0f, visibleSize.height / 2.0f - 144.0f));
 	this->partyButton->setPosition(Vec2(visibleSize.width / 2.0f + 80.0f, visibleSize.height / 2.0f + 296.0f));
-	this->mapButton->setPosition(Vec2(visibleSize.width / 2.0f + 384.0f, visibleSize.height / 2.0f + 96.0f));
+	this->cardsButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f + 96.0f));
 	this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 104.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
@@ -145,11 +145,11 @@ void IngameMenu::initializeListeners()
 		}
 	});
 	
-	this->mapButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	this->cardsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		if (this->mapClickCallback != nullptr)
+		if (this->cardsClickCallback != nullptr)
 		{
-			this->mapClickCallback();
+			this->cardsClickCallback();
 		}
 	});
 	
@@ -172,9 +172,9 @@ void IngameMenu::setPartyClickCallback(std::function<void()> partyClickCallback)
 	this->partyClickCallback = partyClickCallback;
 }
 
-void IngameMenu::setMapClickCallback(std::function<void()> mapClickCallback)
+void IngameMenu::setCardsClickCallback(std::function<void()> cardsClickCallback)
 {
-	this->mapClickCallback = mapClickCallback;
+	this->cardsClickCallback = cardsClickCallback;
 }
 
 void IngameMenu::setCollectablesClickCallback(std::function<void()> collectablesClickCallback)

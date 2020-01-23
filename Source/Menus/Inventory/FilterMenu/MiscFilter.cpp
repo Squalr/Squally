@@ -40,12 +40,7 @@ std::vector<Item*> MiscFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<Misc*>(item) == nullptr)
-		{
-			return true;
-		}
-
-		return false; 
+		return dynamic_cast<Misc*>(item) == nullptr;
 	}), itemList.end());
 
 	return itemList;

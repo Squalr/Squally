@@ -18,6 +18,7 @@ class SmartAnimationNode;
 class PivotLauncher : public HackableObject
 {
 public:
+	void setAutoLaunch(bool isAutoLaunch);
 
 protected:
 	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource);
@@ -55,6 +56,7 @@ private:
 
 	float fixedAngle;
 	bool isFixed;
+	bool isAutoLaunch;
 
 	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;

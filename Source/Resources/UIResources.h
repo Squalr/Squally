@@ -247,6 +247,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_Wand;
 	extern const std::string Menus_Icons_WheelBurrow;
 	extern const std::string Menus_Icons_YinYang;
+	extern const std::string Menus_IngameMenu_CardsButton;
+	extern const std::string Menus_IngameMenu_CardsButtonSelected;
 	extern const std::string Menus_IngameMenu_CloseButton;
 	extern const std::string Menus_IngameMenu_CloseButtonSelected;
 	extern const std::string Menus_IngameMenu_CollectablesButton;

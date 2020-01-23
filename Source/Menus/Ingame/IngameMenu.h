@@ -20,12 +20,12 @@ public:
 
 	void setInventoryClickCallback(std::function<void()> inventoryClickCallback);
 	void setPartyClickCallback(std::function<void()> partyClickCallback);
-	void setMapClickCallback(std::function<void()> mapClickCallback);
+	void setCardsClickCallback(std::function<void()> cardsClickCallback);
 	void setCollectablesClickCallback(std::function<void()> collectablesClickCallback);
 
 protected:
 	IngameMenu();
-	~IngameMenu();
+	virtual ~IngameMenu();
 
 private:
 	typedef PauseMenu super;
@@ -37,11 +37,11 @@ private:
 
 	ClickableTextNode* inventoryButton;
 	ClickableTextNode* partyButton;
-	ClickableTextNode* mapButton;
+	ClickableTextNode* cardsButton;
 	ClickableTextNode* collectablesButton;
 
 	std::function<void()> inventoryClickCallback;
 	std::function<void()> partyClickCallback;
-	std::function<void()> mapClickCallback;
+	std::function<void()> cardsClickCallback;
 	std::function<void()> collectablesClickCallback;
 };

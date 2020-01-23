@@ -20,7 +20,7 @@ public:
 
 protected:
 	ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource);
-	~ItemEntry();
+	virtual ~ItemEntry();
 
 private:
 	typedef MenuEntry super;

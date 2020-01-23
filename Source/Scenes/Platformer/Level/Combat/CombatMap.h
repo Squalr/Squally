@@ -9,7 +9,7 @@ class DefeatMenu;
 class CombatAIHelper;
 class FirstStrikeMenu;
 class InventoryMenu;
-class MapMenu;
+class CardsMenu;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
@@ -49,7 +49,7 @@ private:
 	void spawnEntities();
 
 	CollectablesMenu* collectablesMenu;
-	MapMenu* mapMenu;
+	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
 

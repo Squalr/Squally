@@ -21,7 +21,7 @@ public:
 
 protected:
 	MenuEntry(LocalizedString* text, std::string iconResource);
-	~MenuEntry();
+	virtual ~MenuEntry();
 	void onEnter() override;
 	void initializePositions() override;
 

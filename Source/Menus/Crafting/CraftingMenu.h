@@ -31,7 +31,7 @@ public:
 
 protected:
 	CraftingMenu();
-	~CraftingMenu();
+	virtual ~CraftingMenu();
 
 private:
 	typedef SmartNode super;

@@ -41,6 +41,7 @@ FireLauncherSqualr* FireLauncherSqualr::create(ValueMap& properties)
 
 FireLauncherSqualr::FireLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations)
 {
+	this->setAutoLaunch(false);
 }
 
 FireLauncherSqualr::~FireLauncherSqualr()

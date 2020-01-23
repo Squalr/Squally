@@ -99,6 +99,11 @@ void UnknownValueBarBehavior::update(float dt)
 
 void UnknownValueBarBehavior::addHealth(int delta)
 {
+	if (UnknownValueBarBehavior::Health <= 0)
+	{
+		return;
+	}
+	
 	this->deltaLabel->setTextColor(delta < 0 ? Color4B::RED : Color4B::GREEN);
 	this->deltaString->setString(delta < 0 ? std::to_string(delta) : ("+" + std::to_string(delta)));
 	this->deltaLabel->runAction(Sequence::create(
@@ -135,4 +140,5 @@ void UnknownValueBarBehavior::setHealth(int newHealth)
 
 void UnknownValueBarBehavior::onDeath()
 {
+	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
 }

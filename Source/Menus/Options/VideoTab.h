@@ -19,7 +19,7 @@ public:
 
 protected:
 	VideoTab();
-	~VideoTab();
+	virtual ~VideoTab();
 
 private:
 	typedef SmartNode super;

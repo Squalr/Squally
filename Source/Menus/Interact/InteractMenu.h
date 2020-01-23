@@ -25,7 +25,7 @@ public:
 
 protected:
 	InteractMenu(LocalizedString* displayString);
-	~InteractMenu();
+	virtual ~InteractMenu();
 
 private:
 	typedef SmartNode super;

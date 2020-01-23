@@ -38,7 +38,7 @@ public:
 
 protected:
 	ItemMenu();
-	~ItemMenu();
+	virtual ~ItemMenu();
 
 private:
 	typedef SmartNode super;

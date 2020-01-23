@@ -19,10 +19,10 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
-#include "Menus/Map/MapMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
@@ -68,7 +68,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	}
 
 	this->collectablesMenu = CollectablesMenu::create();
-	this->mapMenu = MapMenu::create();
+	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->enemyIdentifier = enemyIdentifier;
@@ -118,7 +118,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->menuHud->addChild(this->rewardsMenu);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
-	this->topMenuHud->addChild(this->mapMenu);
+	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 
@@ -134,7 +134,7 @@ void CombatMap::onEnter()
 	super::onEnter();
 
 	this->collectablesMenu->setVisible(false);
-	this->mapMenu->setVisible(false);
+	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
 
@@ -263,11 +263,11 @@ void CombatMap::initializeListeners()
 		GameUtils::focus(this->partyMenu);
 	});
 	
-	this->ingameMenu->setMapClickCallback([=]()
+	this->ingameMenu->setCardsClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(false);
-		this->mapMenu->setVisible(true);
-		GameUtils::focus(this->mapMenu);
+		this->cardsMenu->setVisible(true);
+		GameUtils::focus(this->cardsMenu);
 	});
 	
 	this->ingameMenu->setCollectablesClickCallback([=]()
@@ -285,10 +285,10 @@ void CombatMap::initializeListeners()
 		GameUtils::focus(this->ingameMenu);
 	});
 
-	this->mapMenu->setReturnClickCallback([=]()
+	this->cardsMenu->setReturnClickCallback([=]()
 	{
 		this->ingameMenu->setVisible(true);
-		this->mapMenu->setVisible(false);
+		this->cardsMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
 	});
 

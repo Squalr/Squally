@@ -29,7 +29,7 @@ public:
 
 protected:
 	OptionsMenu();
-	~OptionsMenu();
+	virtual ~OptionsMenu();
 
 private:
 	typedef SmartNode super;

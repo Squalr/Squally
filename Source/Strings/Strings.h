@@ -5844,6 +5844,21 @@ namespace Strings
 		virtual ~Menus_Cancel() = default;
 	};
 
+	class Menus_Cards_Cards : public LocalizedString
+	{
+	public:
+		static Menus_Cards_Cards* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Cards_Cards();
+		virtual ~Menus_Cards_Cards() = default;
+	};
+
 	class Menus_Collectables_Collectables : public LocalizedString
 	{
 	public:
@@ -14274,21 +14289,6 @@ namespace Strings
 		virtual ~Menus_Leave() = default;
 	};
 
-	class Menus_Map_Map : public LocalizedString
-	{
-	public:
-		static Menus_Map_Map* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Map_Map();
-		virtual ~Menus_Map_Map() = default;
-	};
-
 	class Menus_Minigames : public LocalizedString
 	{
 	public:
@@ -14662,6 +14662,21 @@ namespace Strings
 	private:
 		Menus_Party_Party();
 		virtual ~Menus_Party_Party() = default;
+	};
+
+	class Menus_Pause_Cards : public LocalizedString
+	{
+	public:
+		static Menus_Pause_Cards* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Pause_Cards();
+		virtual ~Menus_Pause_Cards() = default;
 	};
 
 	class Menus_Pause_Collectables : public LocalizedString

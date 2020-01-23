@@ -18,7 +18,6 @@
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
@@ -30,9 +29,6 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
-
-const int InventoryMenu::MinHexusCards = 20;
-const int InventoryMenu::MaxHexusCards = 60;
 
 InventoryMenu* InventoryMenu::create()
 {
@@ -209,11 +205,7 @@ void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCall
 
 void InventoryMenu::performEquipmentAction(Item* item)
 {
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->unequipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
 		this->unequipItem(item);
 	}
@@ -221,70 +213,10 @@ void InventoryMenu::performEquipmentAction(Item* item)
 
 void InventoryMenu::performInventoryAction(Item* item)
 {
-	if (dynamic_cast<HexusCard*>(item) != nullptr)
-	{
-		this->equipHexusCard(item);
-	}
-	else if (dynamic_cast<Equipable*>(item) != nullptr)
+	if (dynamic_cast<Equipable*>(item) != nullptr)
 	{
 		this->equipItem(item);
 	}
-}
-
-void InventoryMenu::equipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() >= InventoryMenu::MaxHexusCards)
-	{
-		return;
-	}
-
-	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
-	{
-		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
-
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error equipping card!");
-
-		if (item != nullptr)
-		{
-			LogUtils::logError(item->getName());
-		}
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-}
-
-void InventoryMenu::unequipHexusCard(Item* card)
-{
-	if (this->equipmentInventory->getHexusCards().size() <= InventoryMenu::MinHexusCards)
-	{
-		return;
-	}
-
-	this->equipmentInventory->tryTransact(this->inventory, card, nullptr, [=](Item* item, Item* otherItem)
-	{
-		// Success unequipping item -- visually best if this ends up in the 1st inventory slot
-		this->inventory->moveItem(item, 0);
-
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error unequipping card!");
-
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
 }
 
 void InventoryMenu::equipItem(Item* item)

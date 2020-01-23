@@ -40,12 +40,7 @@ std::vector<Item*> ConsumablesFilter::filter(std::vector<Item*> itemList)
 	itemList.erase(std::remove_if(itemList.begin(), itemList.end(),
 		[=](Item* item)
 	{
-		if (dynamic_cast<Consumable*>(item) != nullptr)
-		{
-			return false;
-		}
-
-		return true; 
+		return dynamic_cast<Consumable*>(item) == nullptr;
 	}), itemList.end());
 
 	return itemList;

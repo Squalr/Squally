@@ -51,6 +51,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
 	this->target = nullptr;
+	this->isAutoLaunch = true;
 
 	this->launcherAnimations->playAnimation();
 	this->launcherAnimations->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
@@ -97,6 +98,7 @@ void PivotLauncher::update(float dt)
 	this->faceTarget();
 
 	// if (this->rangeCheck())
+	if (this->isAutoLaunch)
 	{
 		this->updateShootTimer(dt);
 	}
@@ -153,6 +155,11 @@ Clippy* PivotLauncher::getTimerClippy()
 HackablePreview* PivotLauncher::getTimerPreview()
 {
 	return nullptr;
+}
+
+void PivotLauncher::setAutoLaunch(bool isAutoLaunch)
+{
+	this->isAutoLaunch = isAutoLaunch;
 }
 
 bool PivotLauncher::rangeCheck()
