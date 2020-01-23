@@ -22,7 +22,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 0.15f))
+HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 

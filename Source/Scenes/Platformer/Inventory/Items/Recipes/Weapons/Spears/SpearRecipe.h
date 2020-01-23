@@ -6,7 +6,7 @@ class SpearRecipe : public Recipe
 {
 public:
 protected:
-	SpearRecipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	SpearRecipe(CurrencyInventory* cost);
 	virtual ~SpearRecipe();
 
 private:

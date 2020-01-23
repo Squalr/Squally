@@ -6,7 +6,7 @@ class SwordRecipe : public Recipe
 {
 public:
 protected:
-	SwordRecipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	SwordRecipe(CurrencyInventory* cost);
 	virtual ~SwordRecipe();
 
 private:

@@ -147,6 +147,19 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 {
 	ItemEntry* itemEntry = nullptr;
 
+	for (auto entry : this->visibleItems)
+	{
+		if (entry->getAssociatedItem()->getItemName() == visibleItem->getItemName())
+		{
+			if (entry->getStackSize() < entry->getAssociatedItem()->getStackSize())
+			{
+				entry->setStackSize(entry->getStackSize() + 1);
+
+				return entry;
+			}
+		}
+	}
+
 	if (this->itemEntryMapping.find(visibleItem) == this->itemEntryMapping.end())
 	{
 		

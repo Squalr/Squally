@@ -22,7 +22,7 @@ RestorePotion* RestorePotion::create()
 	return instance;
 }
 
-RestorePotion::RestorePotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 0.15f))
+RestorePotion::RestorePotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 

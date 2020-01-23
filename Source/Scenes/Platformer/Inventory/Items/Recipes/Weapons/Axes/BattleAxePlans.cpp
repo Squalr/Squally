@@ -21,7 +21,7 @@ BattleAxePlans* BattleAxePlans::create()
 	return instance;
 }
 
-BattleAxePlans::BattleAxePlans() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), ItemMeta(1))
+BattleAxePlans::BattleAxePlans() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}))
 {
 }
 

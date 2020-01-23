@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ConstantString;
 class Item;
 
 class ItemEntry : public MenuEntry
@@ -17,6 +18,8 @@ public:
 	void setToggleCallback(std::function<void()> onToggle);
 	std::function<void()> getToggleCallback();
 	Item* getAssociatedItem();
+	int getStackSize();
+	void setStackSize(int stackSize);
 
 protected:
 	ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource);
@@ -25,7 +28,9 @@ protected:
 private:
 	typedef MenuEntry super;
 
+	ConstantString* stackString;
 	Item* associatedItem;
+	int stackSize;
 	
 	std::function<void()> onToggle;
 };

@@ -34,6 +34,11 @@ CurrencyInventory* Item::getCost()
 	return this->cost;
 }
 
+int Item::getStackSize()
+{
+	return this->itemMeta.stackSize;
+}
+
 int Item::getUniqueCount()
 {
 	return this->itemMeta.unique;
@@ -41,10 +46,10 @@ int Item::getUniqueCount()
 
 int Item::getRubberBand()
 {
-	return this->itemMeta.rubberBand;
+	return this->itemMeta.rubberBanding.rubberBand;
 }
 
 float Item::getRubberBandFactor()
 {
-	return MathUtils::clamp(this->itemMeta.rubberBandFactor, 0.0f, 1.0f);
+	return MathUtils::clamp(this->itemMeta.rubberBanding.rubberBandFactor, 0.0f, 1.0f);
 }

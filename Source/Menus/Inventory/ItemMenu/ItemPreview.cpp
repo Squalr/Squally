@@ -54,7 +54,7 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
 	
 	this->cardLabel->setVisible(false);
-	this->cardLabel->enableOutline(Color4B::BLACK, 2);
+	this->cardLabel->enableOutline(Color4B::BLACK, 3);
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)
 	{
@@ -134,7 +134,7 @@ void ItemPreview::initializePositions()
 		statline->setPosition(Vec2(OffsetX, OffsetY - 40.0f * float(index++)));
 	}
 	
-	this->cardLabel->setPosition(Vec2(-24.0f, -72.0f));
+	this->cardLabel->setPosition(Vec2(-6.0f, -72.0f));
 }
 
 void ItemPreview::preview(Item* item)

@@ -22,7 +22,7 @@ ManaPotion* ManaPotion::create()
 	return instance;
 }
 
-ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 0.15f))
+ManaPotion::ManaPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 

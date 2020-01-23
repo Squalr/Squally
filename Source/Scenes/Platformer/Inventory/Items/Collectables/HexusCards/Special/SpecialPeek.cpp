@@ -21,7 +21,7 @@ SpecialPeek* SpecialPeek::create()
 	return instance;
 }
 
-SpecialPeek::SpecialPeek() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialPeek::SpecialPeek() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 

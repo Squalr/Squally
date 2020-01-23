@@ -21,7 +21,7 @@ Binary4* Binary4::create()
 	return instance;
 }
 
-Binary4::Binary4() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Binary4::Binary4() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 

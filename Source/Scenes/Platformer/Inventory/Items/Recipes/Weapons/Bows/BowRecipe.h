@@ -6,7 +6,7 @@ class BowRecipe : public Recipe
 {
 public:
 protected:
-	BowRecipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	BowRecipe(CurrencyInventory* cost);
 	virtual ~BowRecipe();
 
 private:

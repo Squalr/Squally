@@ -21,7 +21,7 @@ Binary6* Binary6::create()
 	return instance;
 }
 
-Binary6::Binary6() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Binary6::Binary6() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 

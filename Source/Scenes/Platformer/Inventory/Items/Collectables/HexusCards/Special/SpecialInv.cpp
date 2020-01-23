@@ -21,7 +21,7 @@ SpecialInv* SpecialInv::create()
 	return instance;
 }
 
-SpecialInv::SpecialInv() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3))
+SpecialInv::SpecialInv() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 

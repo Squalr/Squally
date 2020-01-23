@@ -21,7 +21,7 @@ Hex15* Hex15::create()
 	return instance;
 }
 
-Hex15::Hex15() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3))
+Hex15::Hex15() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 

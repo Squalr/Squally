@@ -2,7 +2,7 @@
 
 using namespace cocos2d;
 
-Recipe::Recipe(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, itemMeta)
+Recipe::Recipe(CurrencyInventory* cost) : super(cost, ItemMeta(1, 1))
 {
     this->craftedItem = nullptr;
 }

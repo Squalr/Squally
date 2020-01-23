@@ -11,7 +11,7 @@ public:
 	Item* getCraftedItemRef();
 
 protected:
-	Recipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	Recipe(CurrencyInventory* cost);
 	virtual ~Recipe();
 
 private:

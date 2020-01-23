@@ -6,7 +6,7 @@ class MaceRecipe : public Recipe
 {
 public:
 protected:
-	MaceRecipe(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	MaceRecipe(CurrencyInventory* cost);
 	virtual ~MaceRecipe();
 
 private:
