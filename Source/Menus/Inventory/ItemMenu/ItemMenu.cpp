@@ -138,6 +138,7 @@ void ItemMenu::clearVisibleItems()
 	for (auto it = this->itemEntryMapping.begin(); it != itemEntryMapping.end(); it++)
 	{
 		(*it).second->setVisible(false);
+		(*it).second->setStackSize(1);
 	}
 
 	this->visibleItems.clear();
@@ -162,7 +163,6 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 
 	if (this->itemEntryMapping.find(visibleItem) == this->itemEntryMapping.end())
 	{
-		
 		if (dynamic_cast<HexusCard*>(visibleItem) != nullptr)
 		{
 			itemEntry = ItemEntry::create(visibleItem, visibleItem->getString(), UIResources::Menus_InventoryMenu_HexusIcon);

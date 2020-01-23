@@ -68,6 +68,6 @@ void ItemEntry::setStackSize(int stackSize)
     }
     else
     {
-        this->stackString->setString("x" + std::to_string(this->stackSize));
+        this->stackString->setString("(x" + std::to_string(this->stackSize) + ")");
     }
 }
