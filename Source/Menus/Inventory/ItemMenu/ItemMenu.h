@@ -32,9 +32,14 @@ public:
 	void clearPreview();
 	void clearVisibleItems();
 	ItemEntry* pushVisibleItem(Item* visibleItem, std::function<void()> onToggle);
+	void setPreviewOffset(cocos2d::Vec2 previewOffset);
+	void setTextOffset(cocos2d::Vec3 textOffset);
 	void updateAndPositionItemText();
 	void focus();
 	void unfocus();
+
+	static const cocos2d::Vec2 DefaultPreviewOffset;
+	static const cocos2d::Vec3 DefaultTextOffset;
 
 protected:
 	ItemMenu();
@@ -48,6 +53,9 @@ private:
 	void initializeListeners() override;
 	void scrollInventoryUp();
 	void scrollInventoryDown();
+
+	cocos2d::Vec2 previewOffset;
+	cocos2d::Vec3 textOffset;
 
 	CurrencyInventory* currencyInventory;
 	EquipmentInventory* equipmentInventory;

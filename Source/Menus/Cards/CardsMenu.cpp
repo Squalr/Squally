@@ -47,8 +47,9 @@ CardsMenu::CardsMenu()
 	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->cardsWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->itemMenu = ItemMenu::create();
-	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
+	this->equippedCardsMenu = ItemMenu::create();
+	this->unequippedCardsMenu = ItemMenu::create();
+	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
@@ -74,11 +75,15 @@ CardsMenu::CardsMenu()
 	this->cardsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->cardsLabel->enableGlow(Color4B::BLACK);
 	this->hexusFilter->setVisible(false);
+
+	this->unequippedCardsMenu->setTextOffset(ItemMenu::DefaultTextOffset + Vec3(50.0f, 0.0f, 0.0f));
 	
 	this->addChild(this->equipmentInventory);
 	this->addChild(this->inventory);
 	this->addChild(this->cardsWindow);
-	this->addChild(this->itemMenu);
+	this->addChild(this->equippedCardsMenu);
+	this->addChild(this->unequippedCardsMenu);
+	this->addChild(this->hexusFilter);
 	this->addChild(this->cardsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
@@ -107,7 +112,9 @@ void CardsMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
+	this->unequippedCardsMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
+	this->equippedCardsMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
+	this->unequippedCardsMenu->setPreviewOffset(ItemMenu::DefaultPreviewOffset + (this->equippedCardsMenu->getPosition() - this->unequippedCardsMenu->getPosition()));
 	this->cardsWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->cardsLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -142,18 +149,21 @@ void CardsMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->itemMenu->focus();
+		this->equippedCardsMenu->focus();
+		this->unequippedCardsMenu->unfocus();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
 	{
-		this->itemMenu->unfocus();
+		this->equippedCardsMenu->unfocus();
+		this->unequippedCardsMenu->focus();
 	});
 }
 
 void CardsMenu::populateItemList()
 {
-	this->itemMenu->clearVisibleItems();
+	this->equippedCardsMenu->clearVisibleItems();
+	this->unequippedCardsMenu->clearVisibleItems();
 	std::vector<Item*> equipment = this->hexusFilter->filter(this->equipmentInventory->getItems());
 	std::vector<Item*> items = this->hexusFilter->filter(this->inventory->getItems());
 	
@@ -161,7 +171,7 @@ void CardsMenu::populateItemList()
 	{
 		Item* item = *it;
 
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
+		ItemEntry* entry = this->equippedCardsMenu->pushVisibleItem(item, [=]()
 		{
 			if (dynamic_cast<HexusCard*>(item) != nullptr)
 			{
@@ -176,7 +186,7 @@ void CardsMenu::populateItemList()
 	{
 		Item* item = *it;
 
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
+		ItemEntry* entry = this->unequippedCardsMenu->pushVisibleItem(item, [=]()
 		{
 			if (dynamic_cast<HexusCard*>(item) != nullptr)
 			{
@@ -187,14 +197,19 @@ void CardsMenu::populateItemList()
 		entry->hideIcon();
 	}
 
-	this->itemMenu->updateAndPositionItemText();
+	this->equippedCardsMenu->updateAndPositionItemText();
+	this->unequippedCardsMenu->updateAndPositionItemText();
 }
 
 void CardsMenu::open()
 {
 	this->equipmentChanged = false;
 	this->populateItemList();
-	this->itemMenu->clearPreview();
+	this->equippedCardsMenu->clearPreview();
+	this->unequippedCardsMenu->clearPreview();
+	
+	this->equippedCardsMenu->focus();
+	this->unequippedCardsMenu->unfocus();
 }
 
 void CardsMenu::setReturnClickCallback(std::function<void()> returnClickCallback)

@@ -46,7 +46,8 @@ private:
 
 	cocos2d::Sprite* cardsWindow;
 	LocalizedLabel* cardsLabel;
-	ItemMenu* itemMenu;
+	ItemMenu* equippedCardsMenu;
+	ItemMenu* unequippedCardsMenu;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 

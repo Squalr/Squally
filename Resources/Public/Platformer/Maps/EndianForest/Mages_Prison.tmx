@@ -52,8 +52,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="894" name="solid-npc" type="collision" x="2101.15" y="80.4078" width="537.03" height="993"/>
-  <object id="895" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="537.03" height="993"/>
-  <object id="896" name="solid-npc" type="collision" x="4560.2" y="98.9323" width="565.578" height="993"/>
+  <object id="895" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="667.333" height="993"/>
+  <object id="896" name="solid-npc" type="collision" x="4366.26" y="98.9323" width="759.517" height="993"/>
   <object id="897" name="solid-npc" type="collision" x="5873.41" y="70.3842" width="537.03" height="993"/>
   <object id="898" name="solid-npc" type="collision" x="7084.67" y="86.6974" width="537.03" height="993"/>
   <object id="900" name="solid-npc" type="collision" x="898.738" y="69.5377" width="537.03" height="993"/>
@@ -171,8 +171,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="885" name="solid-npc" type="collision" x="2101.15" y="80.4078" width="537.03" height="993"/>
-  <object id="888" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="537.03" height="993"/>
-  <object id="889" name="solid-npc" type="collision" x="4560.2" y="98.9323" width="565.578" height="993"/>
+  <object id="888" name="solid-npc" type="collision" x="3312.24" y="82.6191" width="664.303" height="993"/>
+  <object id="889" name="solid-npc" type="collision" x="4384.44" y="77.7202" width="735.275" height="993"/>
   <object id="890" name="solid-npc" type="collision" x="5873.41" y="70.3842" width="537.03" height="993"/>
   <object id="891" name="solid-npc" type="collision" x="7084.67" y="86.6974" width="537.03" height="993"/>
   <object id="899" name="solid-npc" type="collision" x="898.738" y="69.5377" width="537.03" height="993"/>
@@ -249,11 +249,11 @@
   <object id="825" name="marble" type="texture" x="2148.03" y="-160.901">
    <polygon points="0,0 456.738,4.03159 456.738,1388.38 1.10591,1390.83"/>
   </object>
-  <object id="839" name="marble" type="terrain" x="4604.55" y="-174.305">
+  <object id="839" name="marble" type="terrain" x="4383.34" y="-174.305">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 456.738,4.03159 456.738,1388.38 1.10591,1390.83"/>
+   <polygon points="0,0 677.95,4.03159 677.95,1388.38 1.64154,1390.83"/>
   </object>
   <object id="846" name="marble" type="terrain" x="5887.75" y="-218.75">
    <properties>
