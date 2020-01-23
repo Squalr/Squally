@@ -9,10 +9,15 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Utils/HackUtils.h"
+#include "Scenes/Hexus/Card.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 
 #include "Strings/Strings.h"
@@ -45,6 +50,11 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 
 	this->equipHint = allowEquipHint ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr) : nullptr;
 	this->itemName = showItemName ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()) : nullptr;
+	this->cardString = ConstantString::create("--");
+	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
+	
+	this->cardLabel->setVisible(false);
+	this->cardLabel->enableOutline(Color4B::BLACK, 2);
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)
 	{
@@ -76,6 +86,8 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 	{
 		this->addChild(statline);
 	}
+	
+	this->addChild(cardLabel);
 
 	this->preview(nullptr);
 }
@@ -121,6 +133,8 @@ void ItemPreview::initializePositions()
 	{
 		statline->setPosition(Vec2(OffsetX, OffsetY - 40.0f * float(index++)));
 	}
+	
+	this->cardLabel->setPosition(Vec2(-24.0f, -72.0f));
 }
 
 void ItemPreview::preview(Item* item)
@@ -165,6 +179,10 @@ void ItemPreview::preview(Item* item)
 	{
 		this->setWeaponStatline(dynamic_cast<Weapon*>(item));
 	}
+	else if (dynamic_cast<HexusCard*>(item) != nullptr)
+	{
+		this->setHexusInfo(dynamic_cast<HexusCard*>(item));
+	}
 }
 
 void ItemPreview::setHatStatline(Hat* hat)
@@ -199,6 +217,41 @@ void ItemPreview::setWeaponStatline(Weapon* weapon)
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
 	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);
+}
+
+void ItemPreview::setHexusInfo(HexusCard* hexusCard)
+{
+	CardData* cardData = CardList::getInstance()->cardListByName[hexusCard->getCardKey()];
+
+	switch (cardData->getCardType())
+	{
+		case CardData::CardType::Binary:
+		{
+			this->cardString->setString(HackUtils::toBinary4(cardData->getAttack()));
+			this->cardLabel->setTextColor(Card::BinaryColor);
+			break;
+		}
+		case CardData::CardType::Decimal:
+		{
+			this->cardString->setString(std::to_string(cardData->getAttack()));
+			this->cardLabel->setTextColor(Card::DecimalColor);
+			break;
+		}
+		case CardData::CardType::Hexidecimal:
+		{
+			this->cardString->setString(HackUtils::toHex(cardData->getAttack()));
+			this->cardLabel->setTextColor(Card::HexColor);
+			break;
+		}
+		default:
+		{
+			this->cardString->setString(cardData->getCardTypeString()->getString());
+			this->cardLabel->setTextColor(Card::SpecialColor);
+			break;
+		}
+	}
+
+	this->cardLabel->setVisible(true);
 }
 
 LocalizedLabel* ItemPreview::createStatline()
@@ -264,6 +317,7 @@ void ItemPreview::clearPreview()
 {
 	this->nextStatline = 0;
 	this->previewNode->removeAllChildren();
+	this->cardLabel->setVisible(false);
 
 	for (auto statline : this->statlines)
 	{

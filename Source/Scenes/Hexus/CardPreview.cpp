@@ -199,7 +199,7 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 				}
 				
 				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
-				specialLabel->setTextColor(Card::specialColor);
+				specialLabel->setTextColor(Card::SpecialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
 				specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, 160.0f));
 				specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
@@ -223,9 +223,9 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 			decimalLabel->setAnchorPoint(Vec2::ZERO);
 			hexLabel->setAnchorPoint(Vec2::ZERO);
 
-			binaryLabel->setTextColor(Card::binaryColor);
-			decimalLabel->setTextColor(Card::decimalColor);
-			hexLabel->setTextColor(Card::hexColor);
+			binaryLabel->setTextColor(Card::BinaryColor);
+			decimalLabel->setTextColor(Card::DecimalColor);
+			hexLabel->setTextColor(Card::HexColor);
 
 			binaryLabel->enableOutline(Color4B::BLACK, 3);
 			decimalLabel->enableOutline(Color4B::BLACK, 3);
@@ -248,7 +248,7 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 			LocalizedLabel* specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Common_Empty::create());
 
 			specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
-			specialLabel->setTextColor(Card::specialColor);
+			specialLabel->setTextColor(Card::SpecialColor);
 			specialLabel->enableOutline(Color4B::BLACK, 2);
 			specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
 			specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);

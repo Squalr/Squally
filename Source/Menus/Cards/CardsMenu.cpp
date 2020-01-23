@@ -16,6 +16,8 @@
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
+#include "Scenes/Hexus/CardData/CardData.h"
+#include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -166,6 +168,50 @@ void CardsMenu::populateItemList()
 	this->unequippedCardsMenu->clearVisibleItems();
 	std::vector<Item*> equipment = this->hexusFilter->filter(this->equipmentInventory->getItems());
 	std::vector<Item*> items = this->hexusFilter->filter(this->inventory->getItems());
+
+	auto sortLambda = [](Item* a, Item* b)
+	{
+		HexusCard* cardA = dynamic_cast<HexusCard*>(a);
+		HexusCard* cardB = dynamic_cast<HexusCard*>(b);
+
+		if (cardA == nullptr)
+		{
+			return false;
+		}
+		else if (cardB == nullptr)
+		{
+			return false;
+		}
+
+		CardData* dataA = CardList::getInstance()->cardListByName[cardA->getCardKey()];
+		CardData* dataB = CardList::getInstance()->cardListByName[cardB->getCardKey()];
+
+		// Non-matching types, just sort these by card type
+		if (dataA->getCardType() != dataB->getCardType())
+		{
+			return dataA->getCardType() < dataB->getCardType();
+		}
+
+		switch (dataA->getCardType())
+		{
+			case CardData::CardType::Binary:
+			case CardData::CardType::Decimal:
+			case CardData::CardType::Hexidecimal:
+			{
+				// Sort by attack
+				return dataA->getAttack() < dataB->getAttack();
+				break;
+			}
+			default:
+			{
+				// Sort by card type
+				return dataA->getCardType() < dataB->getCardType();
+			}
+		}
+	};
+	
+	std::sort(equipment.begin(), equipment.end(), sortLambda);
+	std::sort(items.begin(), items.end(), sortLambda);
 	
 	for (auto it = equipment.begin(); it != equipment.end(); it++)
 	{

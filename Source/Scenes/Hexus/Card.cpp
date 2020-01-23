@@ -23,12 +23,12 @@
 using namespace cocos2d;
 
 const float Card::cardScale = 0.4f;
-const Color4B Card::binaryColor = Color4B(35, 150, 255, 255);
-const Color4B Card::decimalColor = Color4B(255, 255, 255, 255);
-const Color4B Card::hexColor = Color4B(78, 149, 66, 255);
-const Color4B Card::specialColor = Color4B(255, 116, 0, 255);
-const Color4B Card::debuffColor = Color4B(225, 0, 0, 255);
-const Color4B Card::buffColor = Color4B(30, 223, 0, 255);
+const Color4B Card::BinaryColor = Color4B(35, 150, 255, 255);
+const Color4B Card::DecimalColor = Color4B(255, 255, 255, 255);
+const Color4B Card::HexColor = Color4B(78, 149, 66, 255);
+const Color4B Card::SpecialColor = Color4B(255, 116, 0, 255);
+const Color4B Card::DebuffColor = Color4B(225, 0, 0, 255);
+const Color4B Card::BuffColor = Color4B(30, 223, 0, 255);
 
 Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool relocateUI)
 {
@@ -450,36 +450,36 @@ void Card::updateText()
 		case CardData::CardType::Binary:
 		{
 			this->cardString->setString(HackUtils::toBinary4(this->getAttack()));
-			this->cardLabel->setTextColor(Card::binaryColor);
+			this->cardLabel->setTextColor(Card::BinaryColor);
 			break;
 		}
 		case CardData::CardType::Decimal:
 		{
 			this->cardString->setString(std::to_string(this->getAttack()));
-			this->cardLabel->setTextColor(Card::decimalColor);
+			this->cardLabel->setTextColor(Card::DecimalColor);
 			break;
 		}
 		case CardData::CardType::Hexidecimal:
 		{
 			this->cardString->setString(HackUtils::toHex(this->getAttack()));
-			this->cardLabel->setTextColor(Card::hexColor);
+			this->cardLabel->setTextColor(Card::HexColor);
 			break;
 		}
 		default:
 		{
 			this->cardString->setString(this->cardData->getCardTypeString()->getString());
-			this->cardLabel->setTextColor(Card::specialColor);
+			this->cardLabel->setTextColor(Card::SpecialColor);
 			break;
 		}
 	}
 
 	if (actualAttack > this->cardData->getAttack())
 	{
-		this->cardLabel->setTextColor(Card::buffColor);
+		this->cardLabel->setTextColor(Card::BuffColor);
 	}
 	else if (actualAttack < this->cardData->getAttack())
 	{
-		this->cardLabel->setTextColor(Card::debuffColor);
+		this->cardLabel->setTextColor(Card::DebuffColor);
 	}
 }
 

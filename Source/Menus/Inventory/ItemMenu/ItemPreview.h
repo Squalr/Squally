@@ -2,7 +2,9 @@
 
 #include "Engine/SmartNode.h"
 
+class ConstantString;
 class Hat;
+class HexusCard;
 class Item;
 class Offhand;
 class LocalizedLabel;
@@ -29,6 +31,7 @@ private:
 	void setHatStatline(Hat* hat);
 	void setOffhandStatline(Offhand* offhand);
 	void setWeaponStatline(Weapon* weapon);
+	void setHexusInfo(HexusCard* hexusCard);
 	
 	LocalizedLabel* createStatline();
 	void bindStatlineToIntRange(std::function<LocalizedString*()> prefixFunc, int min, int max);
@@ -37,6 +40,8 @@ private:
 
 	cocos2d::Node* previewNode;
 	std::vector<LocalizedLabel*> statlines;
+	ConstantString* cardString;
+	LocalizedLabel* cardLabel;
 	LocalizedLabel* equipHint;
 	LocalizedLabel* itemName;
 

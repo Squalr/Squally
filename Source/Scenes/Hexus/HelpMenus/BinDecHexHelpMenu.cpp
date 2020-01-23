@@ -41,9 +41,9 @@ BinDecHexHelpMenu::BinDecHexHelpMenu()
 	this->decHeader->enableOutline(Color4B::BLACK, 3);
 	this->hexHeader->enableOutline(Color4B::BLACK, 3);
 
-	this->binHeader->setTextColor(Card::binaryColor);
-	this->decHeader->setTextColor(Card::decimalColor);
-	this->hexHeader->setTextColor(Card::hexColor);
+	this->binHeader->setTextColor(Card::BinaryColor);
+	this->decHeader->setTextColor(Card::DecimalColor);
+	this->hexHeader->setTextColor(Card::HexColor);
 
 	this->binCard->setDisplayType(AutoCard::DisplayType::Binary);
 	this->decCard->setDisplayType(AutoCard::DisplayType::Decimal);
