@@ -34,12 +34,12 @@ Item* BattleAxePlans::craft()
 	return BattleAxe::create();
 }
 
-std::map<std::string, int> BattleAxePlans::getReagents()
+std::map<Item*, int> BattleAxePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::SaveKeyWood, 2 },
-		{ Iron::SaveKeyIron, 4 },
+		{ Wood::create(), 2 },
+		{ Iron::create(), 4 },
 	};
 }
 

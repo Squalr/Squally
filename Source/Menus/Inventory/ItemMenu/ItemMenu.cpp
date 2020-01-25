@@ -58,6 +58,7 @@ ItemMenu::ItemMenu()
 	this->itemListNodeContent = Node::create();
 	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
+	this->previewCallback = nullptr;
 	this->previewOffset = ItemMenu::DefaultPreviewOffset;
 	this->textOffset = ItemMenu::DefaultTextOffset;
 	this->selectedItemIndex = 0;
@@ -142,6 +143,11 @@ void ItemMenu::clearVisibleItems()
 	}
 
 	this->visibleItems.clear();
+}
+
+void ItemMenu::setPreviewCallback(std::function<void(Item*)> previewCallback)
+{
+	this->previewCallback = previewCallback;
 }
 
 ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> onToggle)
@@ -273,6 +279,11 @@ void ItemMenu::updateAndPositionItemText()
 	if (this->isFocused)
 	{
 		this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
+
+		if (this->previewCallback != nullptr)
+		{
+			this->previewCallback(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
+		}
 	}
 	
 	this->visibleItems[this->selectedItemIndex]->setPositionX(this->textOffset.x);

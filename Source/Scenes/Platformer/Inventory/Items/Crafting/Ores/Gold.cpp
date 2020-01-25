@@ -20,7 +20,7 @@ Gold* Gold::create()
 	return instance;
 }
 
-Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Gold::Gold() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

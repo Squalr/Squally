@@ -20,7 +20,7 @@ Silver* Silver::create()
 	return instance;
 }
 
-Silver::Silver() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Silver::Silver() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

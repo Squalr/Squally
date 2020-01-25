@@ -14,6 +14,7 @@ namespace cocos2d
 class ClickableNode;
 class ClickableTextNode;
 class CraftFilterMenu;
+class CraftingPreview;
 class CurrencyInventory;
 class EquipmentInventory;
 class Item;
@@ -41,6 +42,7 @@ private:
 	void initializeListeners() override;
 	void onFilterChange();
 	void populateItemList();
+	void onCraftPreview(Item* item);
 	void tryCraftItem(Item* item);
 	void close();
 
@@ -48,6 +50,7 @@ private:
 	cocos2d::Sprite* craftingWindow;
 	cocos2d::Sprite* anvil;
 	LocalizedLabel* craftingLabel;
+	CraftingPreview* craftingPreview;
 	CraftFilterMenu* filterMenu;
 	ItemMenu* itemMenu;
 	ClickableTextNode* returnButton;

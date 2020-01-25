@@ -20,7 +20,7 @@ LightWood* LightWood::create()
 	return instance;
 }
 
-LightWood::LightWood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+LightWood::LightWood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

@@ -20,7 +20,7 @@ Dirt* Dirt::create()
 	return instance;
 }
 
-Dirt::Dirt() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Dirt::Dirt() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

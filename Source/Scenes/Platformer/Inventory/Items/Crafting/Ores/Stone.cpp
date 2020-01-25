@@ -20,7 +20,7 @@ Stone* Stone::create()
 	return instance;
 }
 
-Stone::Stone() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Stone::Stone() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

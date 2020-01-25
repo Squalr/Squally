@@ -20,7 +20,7 @@ Sulfur* Sulfur::create()
 	return instance;
 }
 
-Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

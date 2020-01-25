@@ -20,7 +20,7 @@ Coal* Coal::create()
 	return instance;
 }
 
-Coal::Coal() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Coal::Coal() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

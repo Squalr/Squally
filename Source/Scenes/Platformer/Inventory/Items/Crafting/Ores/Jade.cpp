@@ -20,7 +20,7 @@ Jade* Jade::create()
 	return instance;
 }
 
-Jade::Jade() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Jade::Jade() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

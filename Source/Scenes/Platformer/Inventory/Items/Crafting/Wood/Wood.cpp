@@ -20,7 +20,7 @@ Wood* Wood::create()
 	return instance;
 }
 
-Wood::Wood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Wood::Wood() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

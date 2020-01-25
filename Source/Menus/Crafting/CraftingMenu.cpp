@@ -15,6 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
+#include "Menus/Crafting/CraftingPreview.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -49,6 +50,7 @@ CraftingMenu::CraftingMenu()
 	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
+	this->craftingPreview = CraftingPreview::create();
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
@@ -81,6 +83,7 @@ CraftingMenu::CraftingMenu()
 	this->addChild(this->inventory);
 	this->addChild(this->craftingWindow);
 	this->addChild(this->anvil);
+	this->addChild(this->craftingPreview);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
 	this->addChild(this->craftingLabel);
@@ -111,9 +114,13 @@ void CraftingMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
+	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
+
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
+	this->itemMenu->setPreviewOffset(ItemMenu::DefaultPreviewOffset + AnvilOffset);
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
-	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f));
+	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset);
+	this->craftingPreview->setPosition(this->anvil->getPosition() + Vec2(128.0f, -64.0f));
 	this->craftingWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->craftingLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -133,7 +140,13 @@ void CraftingMenu::initializeListeners()
 	{
 		this->close();
 	});
+
 	this->closeButton->setClickSound(SoundResources::ClickBack1);
+
+	this->itemMenu->setPreviewCallback([=](Item* item)
+	{
+		this->onCraftPreview(item);
+	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -156,6 +169,7 @@ void CraftingMenu::initializeListeners()
 	{
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();
+		this->craftingPreview->clearPreview();
 	});
 }
 
@@ -163,6 +177,7 @@ void CraftingMenu::onFilterChange()
 {
 	this->populateItemList();
 	this->itemMenu->clearPreview();
+	this->craftingPreview->clearPreview();
 }
 
 void CraftingMenu::populateItemList()
@@ -189,11 +204,24 @@ void CraftingMenu::open()
 {
 	this->equipmentChanged = false;
 	this->onFilterChange();
+
+	this->filterMenu->focus();
+	this->itemMenu->unfocus();
 }
 
 void CraftingMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
 {
 	this->returnClickCallback = returnClickCallback;
+}
+
+void CraftingMenu::onCraftPreview(Item* item)
+{
+	if (dynamic_cast<Recipe*>(item) == nullptr)
+	{
+		return;
+	}
+
+	this->craftingPreview->preview(dynamic_cast<Recipe*>(item));
 }
 
 void CraftingMenu::tryCraftItem(Item* item)

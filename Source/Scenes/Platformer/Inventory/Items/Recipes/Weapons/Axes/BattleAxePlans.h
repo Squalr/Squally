@@ -8,7 +8,6 @@ public:
 	static BattleAxePlans* create();
 
 	Item* craft() override;
-	std::map<std::string, int> getReagents() override;
 	Item* clone() override;
 	std::string getItemName() override;
 	LocalizedString* getString() override;
@@ -20,6 +19,8 @@ public:
 protected:
 	BattleAxePlans();
 	virtual ~BattleAxePlans();
+	
+	std::map<Item*, int> getReagentsInternal() override;
 
 private:
 	typedef AxeRecipe super;

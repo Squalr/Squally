@@ -31,6 +31,7 @@ public:
 
 	void clearPreview();
 	void clearVisibleItems();
+	void setPreviewCallback(std::function<void(Item*)> previewCallback);
 	ItemEntry* pushVisibleItem(Item* visibleItem, std::function<void()> onToggle);
 	void setPreviewOffset(cocos2d::Vec2 previewOffset);
 	void setTextOffset(cocos2d::Vec3 textOffset);
@@ -42,15 +43,16 @@ public:
 	static const cocos2d::Vec3 DefaultTextOffset;
 
 protected:
+	typedef SmartNode super;
+	
 	ItemMenu();
 	virtual ~ItemMenu();
-
-private:
-	typedef SmartNode super;
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
 	void scrollInventoryUp();
 	void scrollInventoryDown();
 
@@ -67,6 +69,7 @@ private:
 	SmartClippingNode* itemListNode;
 	cocos2d::Node* itemListNodeContent;
 
+	std::function<void(Item*)> previewCallback;
 	std::map<Item*, ItemEntry*> itemEntryMapping;
 	std::vector<ItemEntry*> visibleItems;
 	int selectedItemIndex;

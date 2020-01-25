@@ -20,7 +20,7 @@ Quartz* Quartz::create()
 	return instance;
 }
 
-Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 
