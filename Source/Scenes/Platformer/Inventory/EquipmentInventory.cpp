@@ -49,13 +49,11 @@ std::map<std::string, int> EquipmentInventory::getCardKeyCount(Inventory* nonEqu
 
 	if (nonEquippedInventory != nullptr)
 	{
-		std::vector<Item*> items = nonEquippedInventory->getItems();
-		
-		for (auto it = items.begin(); it != items.end(); it++)
+		for (auto item : nonEquippedInventory->getItems())
 		{
-			if (dynamic_cast<HexusCard*>(*it) != nullptr)
+			if (dynamic_cast<HexusCard*>(item) != nullptr)
 			{
-				cardKeyCount[dynamic_cast<HexusCard*>(*it)->getCardKey()]++;
+				cardKeyCount[dynamic_cast<HexusCard*>(item)->getCardKey()]++;
 			}
 		}
 	}

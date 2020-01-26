@@ -51,6 +51,8 @@ CraftingMenu::CraftingMenu()
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->craftingPreview = CraftingPreview::create();
+	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
+	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
@@ -84,6 +86,8 @@ CraftingMenu::CraftingMenu()
 	this->addChild(this->craftingWindow);
 	this->addChild(this->anvil);
 	this->addChild(this->craftingPreview);
+	this->addChild(this->craftButtonDisabled);
+	this->addChild(this->craftButton);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
 	this->addChild(this->craftingLabel);
@@ -120,7 +124,9 @@ void CraftingMenu::initializePositions()
 	this->itemMenu->setPreviewOffset(ItemMenu::DefaultPreviewOffset + AnvilOffset);
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
 	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset);
-	this->craftingPreview->setPosition(this->anvil->getPosition() + Vec2(128.0f, -64.0f));
+	this->craftButton->setPosition(Vec2(visibleSize.width / 2.0f + 456.0f, visibleSize.height / 2.0f - 288.0f));
+	this->craftButtonDisabled->setPosition(this->craftButton->getPosition());
+	this->craftingPreview->setPosition(this->anvil->getPosition() + Vec2(128.0f, 64.0f));
 	this->craftingWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->craftingLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -146,6 +152,11 @@ void CraftingMenu::initializeListeners()
 	this->itemMenu->setPreviewCallback([=](Item* item)
 	{
 		this->onCraftPreview(item);
+	});
+
+	this->craftButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		this->tryCraftItem();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -191,7 +202,6 @@ void CraftingMenu::populateItemList()
 
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
-			this->tryCraftItem(item);
 		});
 
 		entry->hideIcon();
@@ -221,39 +231,55 @@ void CraftingMenu::onCraftPreview(Item* item)
 		return;
 	}
 
-	this->craftingPreview->preview(dynamic_cast<Recipe*>(item));
+	bool canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
+
+	if (canCraft)
+	{
+		this->craftButton->enableInteraction();
+		this->craftButton->setVisible(true);
+		this->craftButtonDisabled->setVisible(false);
+	}
+	else
+	{
+		this->craftButton->disableInteraction();
+		this->craftButton->setVisible(false);
+		this->craftButtonDisabled->setVisible(true);
+	}
 }
 
-void CraftingMenu::tryCraftItem(Item* item)
+void CraftingMenu::tryCraftItem()
 {
-	if (dynamic_cast<Recipe*>(item) == nullptr)
+	Recipe* recipe = this->craftingPreview->getCurrentRecipe();
+
+	if (recipe == nullptr)
 	{
 		return;
 	}
 
-	/*
-	this->inventory->tryTransact(this->equipmentInventory, card, nullptr, [=](Item* item, Item* otherItem)
+	Item* item = recipe->craft();
+	std::map<Item*, int> reagents = recipe->getReagents();
+
+	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(item, Strings::Platformer_Notifications_ItemCrafted::create()));
+
+	for (auto reagent : reagents)
 	{
-		this->equipmentInventory->moveItem(item, this->equipmentInventory->getItems().size());
+		int foundCount = 0;
 
-		this->populateItemList();
-	},
-	[=](Item* item, Item* otherItem)
-	{
-		// Failure
-		LogUtils::logError("Error equipping card!");
-
-		if (item != nullptr)
+		for (auto item : this->inventory->getItems())
 		{
-			LogUtils::logError(item->getName());
+			if (item->getItemName() == reagent.first->getItemName())
+			{
+				this->inventory->tryRemove(item);
+				
+				if (++foundCount >= reagent.second)
+				{
+					break;
+				}
+			}
 		}
+	}
 
-		if (otherItem != nullptr)
-		{
-			LogUtils::logError(otherItem->getName());
-		}
-	});
-	*/
+	this->craftingPreview->refresh();
 }
 
 void CraftingMenu::close()

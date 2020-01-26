@@ -73,6 +73,14 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SteelSword::create(), false);
 
 			entityInventoryBehavior->getInventory()->forceInsert(BattleAxePlans::create(), false);
+			
+			for (int index = 0; index < 20; index++)
+			{
+				entityInventoryBehavior->getInventory()->forceInsert(Wood::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(LightWood::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Iron::create(), false);
+			}
+
 			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), 420);
 		}
 

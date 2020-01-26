@@ -19329,6 +19329,21 @@ namespace Strings
 		virtual ~Platformer_MapNames_Zones_VoidStar() = default;
 	};
 
+	class Platformer_Notifications_ItemCrafted : public LocalizedString
+	{
+	public:
+		static Platformer_Notifications_ItemCrafted* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Notifications_ItemCrafted();
+		virtual ~Platformer_Notifications_ItemCrafted() = default;
+	};
+
 	class Platformer_Notifications_ItemFound : public LocalizedString
 	{
 	public:

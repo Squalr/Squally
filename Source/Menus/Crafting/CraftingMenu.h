@@ -43,7 +43,7 @@ private:
 	void onFilterChange();
 	void populateItemList();
 	void onCraftPreview(Item* item);
-	void tryCraftItem(Item* item);
+	void tryCraftItem();
 	void close();
 
 	cocos2d::LayerColor* backdrop;
@@ -51,6 +51,8 @@ private:
 	cocos2d::Sprite* anvil;
 	LocalizedLabel* craftingLabel;
 	CraftingPreview* craftingPreview;
+	cocos2d::Sprite* craftButtonDisabled;
+	ClickableNode* craftButton;
 	CraftFilterMenu* filterMenu;
 	ItemMenu* itemMenu;
 	ClickableTextNode* returnButton;

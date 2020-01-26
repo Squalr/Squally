@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -23,9 +24,11 @@ CraftingPreview* CraftingPreview::create()
 
 CraftingPreview::CraftingPreview()
 {
+	this->recipe = nullptr;
+	this->inventory = nullptr;
 	this->previewNode = Node::create();
 
-	this->preview(nullptr);
+	this->preview(nullptr, nullptr);
 
 	this->addChild(this->previewNode);
 }
@@ -44,17 +47,26 @@ void CraftingPreview::initializePositions()
 	super::initializePositions();
 }
 
-void CraftingPreview::preview(Recipe* recipe)
+Recipe* CraftingPreview::getCurrentRecipe()
+{
+	return this->recipe;
+}
+
+bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 {
 	this->clearPreview();
 
-	if (recipe == nullptr)
+	this->recipe = recipe;
+	this->inventory = inventory;
+
+	if (this->recipe == nullptr || this->inventory == nullptr)
 	{
-		return;
+		return false;
 	}
 
-	std::map<Item*, int> reagents = recipe->getReagents();
+	std::map<Item*, int> reagents = this->recipe->getReagents();
 	int index = 0;
+	bool canCraft = true;
 
 	for (auto reagent : reagents)
 	{
@@ -63,6 +75,14 @@ void CraftingPreview::preview(Recipe* recipe)
 		LocalizedString* counts = Strings::Common_XOverY::create();
 		LocalizedLabel* countsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, counts);
 		int existingCount = 0;
+
+		for (auto item : this->inventory->getItems())
+		{
+			if (item->getItemName() == reagent.first->getItemName())
+			{
+				existingCount++;
+			}
+		}
 
 		countsLabel->enableOutline(Color4B::BLACK, 2);
 		countsLabel->setTextColor(existingCount < reagent.second ? Color4B::RED : Color4B::WHITE);
@@ -75,8 +95,17 @@ void CraftingPreview::preview(Recipe* recipe)
 		this->previewNode->addChild(icon);
 		this->previewNode->addChild(countsLabel);
 
+		canCraft &= (existingCount >= reagent.second);
+
 		index++;
 	}
+
+	return canCraft;
+}
+
+void CraftingPreview::refresh()
+{
+	this->preview(this->recipe, this->inventory);
 }
 
 void CraftingPreview::clearPreview()

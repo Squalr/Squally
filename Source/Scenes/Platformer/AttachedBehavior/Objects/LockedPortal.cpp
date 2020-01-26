@@ -65,13 +65,11 @@ void LockedPortal::onLoad()
 
 void LockedPortal::checkForRequiredItem()
 {
-	std::vector<Item*> items = this->playerInventory->getItems();
-
 	this->portal->lock();
 
-	for (auto it = items.begin(); it != items.end(); it++)
+	for (auto item : this->playerInventory->getItems())
 	{
-		if (*it != nullptr && this->requiredItemName == (*it)->getItemName())
+		if (item != nullptr && this->requiredItemName == item->getItemName())
 		{
 			this->portal->unlock();
 		}

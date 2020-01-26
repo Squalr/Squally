@@ -246,7 +246,7 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 
 	if (otherItem != nullptr)
 	{
-		if (std::find(other->items.begin(), other->items.end(), otherItem) == this->items.end())
+		if (std::find(other->items.begin(), other->items.end(), otherItem) == other->items.end())
 		{
 			failTransaction();
 			return;
