@@ -56,7 +56,7 @@ Additional dependencies are managed using vcpkg.
 
 To do a fresh build and pull in dependencies:
 ```
-git clone git@github.com:zcanann/Squally.git
+git clone git@github.com:Squalr/Squally.git
 cd Squally
 git submodule update --init --recursive .
 python dep.py init
