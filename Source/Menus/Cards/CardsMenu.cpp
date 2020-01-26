@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -11,6 +12,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/FilterMenu/HexusFilter.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
@@ -18,6 +20,7 @@
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -46,14 +49,14 @@ CardsMenu* CardsMenu::create()
 
 CardsMenu::CardsMenu()
 {
-	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->cardsWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->equippedCardsMenu = ItemMenu::create();
 	this->unequippedCardsMenu = ItemMenu::create();
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->inventory = nullptr;
+	this->equipmentInventory = nullptr;
 	this->returnClickCallback = nullptr;
 	this->equipmentChanged = false;
 
@@ -80,8 +83,6 @@ CardsMenu::CardsMenu()
 
 	this->unequippedCardsMenu->setTextOffset(ItemMenu::DefaultTextOffset + Vec3(50.0f, 0.0f, 0.0f));
 	
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->inventory);
 	this->addChild(this->cardsWindow);
 	this->addChild(this->equippedCardsMenu);
 	this->addChild(this->unequippedCardsMenu);
@@ -106,6 +107,15 @@ void CardsMenu::onEnter()
 	GameUtils::fadeInObject(this->cardsLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+	
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->inventory = entityInventoryBehavior->getInventory();
+			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+		});
+	}, Squally::MapKeySqually);
 }
 
 void CardsMenu::initializePositions()

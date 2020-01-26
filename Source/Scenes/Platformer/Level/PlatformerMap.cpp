@@ -107,12 +107,12 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
-	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->combatFadeInNode);
+	this->topMenuHud->addChild(this->craftingMenu);
+	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
-	this->topMenuHud->addChild(this->craftingMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 }
 
@@ -181,6 +181,7 @@ void PlatformerMap::initializeListeners()
 			this->craftingMenu->setVisible(true);
 
 			GameUtils::focus(this->craftingMenu);
+			GameUtils::resume(this->notificationHud);
 		}
 	}));
 

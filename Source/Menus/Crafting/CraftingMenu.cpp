@@ -5,6 +5,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -12,12 +13,14 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftingPreview.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
@@ -46,8 +49,8 @@ CraftingMenu::CraftingMenu()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
-	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+	this->currencyInventory = nullptr;
+	this->inventory = nullptr;
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->craftingPreview = CraftingPreview::create();
@@ -81,8 +84,6 @@ CraftingMenu::CraftingMenu()
 	this->craftingLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->backdrop);
-	this->addChild(this->currencyInventory);
-	this->addChild(this->inventory);
 	this->addChild(this->craftingWindow);
 	this->addChild(this->anvil);
 	this->addChild(this->craftingPreview);
@@ -110,6 +111,15 @@ void CraftingMenu::onEnter()
 	GameUtils::fadeInObject(this->craftingLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+	
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->inventory = entityInventoryBehavior->getInventory();
+			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
+		});
+	}, Squally::MapKeySqually);
 }
 
 void CraftingMenu::initializePositions()
@@ -256,10 +266,8 @@ void CraftingMenu::tryCraftItem()
 		return;
 	}
 
-	Item* item = recipe->craft();
+	Item* craftedItem = recipe->craft();
 	std::map<Item*, int> reagents = recipe->getReagents();
-
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(item, Strings::Platformer_Notifications_ItemCrafted::create()));
 
 	for (auto reagent : reagents)
 	{
@@ -279,6 +287,9 @@ void CraftingMenu::tryCraftItem()
 		}
 	}
 
+	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(craftedItem, Strings::Platformer_Notifications_ItemCrafted::create()));
+
+	this->populateItemList();
 	this->craftingPreview->refresh();
 }
 

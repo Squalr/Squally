@@ -9,11 +9,14 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/InventoryEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Sound/Sound.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
@@ -32,16 +35,14 @@ LockedPortal* LockedPortal::create(GameObject* owner)
 
 LockedPortal::LockedPortal(GameObject* owner) : super(owner)
 {
+	this->playerInventory = nullptr;
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->requiredItemName = "";
-	this->playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 
 	if (this->portal == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->addChild(this->playerInventory);
 }
 
 LockedPortal::~LockedPortal()
@@ -52,20 +53,33 @@ void LockedPortal::onLoad()
 {
 	this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::MapKeyPropertyItemRequired, Value("")).asString();
 
-	if (!this->requiredItemName.empty())
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		this->playerInventory->onInventoryChanged([=]()
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			this->checkForRequiredItem();
-		});
+			this->playerInventory = entityInventoryBehavior->getInventory();
 
-		this->checkForRequiredItem();
-	}
+			if (this->playerInventory != nullptr && !this->requiredItemName.empty())
+			{
+				this->playerInventory->onInventoryChanged([=]()
+				{
+					this->checkForRequiredItem();
+				});
+
+				this->checkForRequiredItem();
+			}
+		});
+	}, Squally::MapKeySqually);
 }
 
 void LockedPortal::checkForRequiredItem()
 {
 	this->portal->lock();
+
+	if (this->playerInventory == nullptr)
+	{
+		return;
+	}
 
 	for (auto item : this->playerInventory->getItems())
 	{

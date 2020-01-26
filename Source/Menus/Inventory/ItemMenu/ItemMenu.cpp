@@ -50,9 +50,6 @@ ItemMenu::ItemMenu()
 	this->isFocused = false;
 	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
 	this->visibleItems = std::vector<ItemEntry*>();
-	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
 	this->itemPreview = ItemPreview::create();
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
@@ -63,9 +60,6 @@ ItemMenu::ItemMenu()
 	this->textOffset = ItemMenu::DefaultTextOffset;
 	this->selectedItemIndex = 0;
 	
-	this->addChild(this->currencyInventory);
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->inventory);
 	this->addChild(this->selectedInventoryRow);
 	this->addChild(this->itemListNode);
 	this->addChild(this->inventorySelectionArrow);

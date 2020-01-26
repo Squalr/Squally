@@ -14,6 +14,7 @@
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -27,6 +28,7 @@
 #include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
 #include "Scenes/Hexus/States/States.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -309,25 +311,31 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 void Hexus::buildPlayerDeck()
 {
-	EquipmentInventory* equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	std::vector<CardData*> cardData = std::vector<CardData*>();
-	std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
-	std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
-
-	for (auto it = cards.begin(); it != cards.end(); it++)
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		std::string key = (*it)->getCardKey();
-
-		if (cardList.find(key) != cardList.end())
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			cardData.push_back(cardList[key]);
-		}
-	}
+			EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+			std::vector<CardData*> cardData = std::vector<CardData*>();
+			std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
+			std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
 
-	this->gameState->playerDeck->style = Card::CardStyle::Earth;
+			for (auto it = cards.begin(); it != cards.end(); it++)
+			{
+				std::string key = (*it)->getCardKey();
 
-	for (auto it = cardData.begin(); it != cardData.end(); it++)
-	{
-		this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
-	}
+				if (cardList.find(key) != cardList.end())
+				{
+					cardData.push_back(cardList[key]);
+				}
+			}
+
+			this->gameState->playerDeck->style = Card::CardStyle::Earth;
+
+			for (auto it = cardData.begin(); it != cardData.end(); it++)
+			{
+				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
+			}
+		});
+	}, Squally::MapKeySqually);
 }

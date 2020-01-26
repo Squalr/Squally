@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerKeyboard.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -11,12 +12,14 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/FilterMenu/FilterEntry.h"
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Scenes/Title/TitleScreen.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
@@ -41,9 +44,9 @@ InventoryMenu* InventoryMenu::create()
 
 InventoryMenu::InventoryMenu()
 {
-	this->currencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	this->equipmentInventory = EquipmentInventory::create(SaveKeys::SaveKeySquallyEquipment);
-	this->inventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
+	this->currencyInventory = nullptr;
+	this->equipmentInventory = nullptr;
+	this->inventory = nullptr;
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
@@ -72,9 +75,6 @@ InventoryMenu::InventoryMenu()
 	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
 	
-	this->addChild(this->currencyInventory);
-	this->addChild(this->equipmentInventory);
-	this->addChild(this->inventory);
 	this->addChild(this->inventoryWindow);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
@@ -98,6 +98,16 @@ void InventoryMenu::onEnter()
 	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->inventory = entityInventoryBehavior->getInventory();
+			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
+		});
+	}, Squally::MapKeySqually);
 }
 
 void InventoryMenu::initializePositions()

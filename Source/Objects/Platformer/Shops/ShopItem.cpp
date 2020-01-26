@@ -12,6 +12,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Collectables/IOU.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
@@ -119,27 +120,31 @@ void ShopItem::sellItem()
 		return;
 	}
 
-	CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-	int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
-
-	if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		Inventory* playerInventory = Inventory::create(SaveKeys::SaveKeySquallyInventory);
-
-		playerInventory->tryInsert(this->item->clone(),
-		[=](Item*)
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			this->available = false;
-			playerCurrencyInventory->removeCurrency(IOU::getIdentifier(), this->itemCost);
-			this->itemPreview->preview(nullptr);
-			this->currencySprite->setVisible(false);
-			this->itemCostLabel->setVisible(false);
-			this->itemClickHitbox->setMouseClickCallback(nullptr);
-			this->itemClickHitbox->disableInteraction(0);
-		},
-		[=](Item*)
-		{
-			// Failure!
+			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
+			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
+			
+			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
+			{
+				entityInventoryBehavior->getInventory()->tryInsert(this->item->clone(),
+				[=](Item*)
+				{
+					this->available = false;
+					playerCurrencyInventory->removeCurrency(IOU::getIdentifier(), this->itemCost);
+					this->itemPreview->preview(nullptr);
+					this->currencySprite->setVisible(false);
+					this->itemCostLabel->setVisible(false);
+					this->itemClickHitbox->setMouseClickCallback(nullptr);
+					this->itemClickHitbox->disableInteraction(0);
+				},
+				[=](Item*)
+				{
+					// Failure!
+				});
+			}
 		});
-	}
+	}, Squally::MapKeySqually);
 }

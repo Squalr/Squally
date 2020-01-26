@@ -7,10 +7,13 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -37,9 +40,13 @@ IOU::IOU(ValueMap& properties) : super(properties)
 
 	this->onCollected([=]()
 	{
-		CurrencyInventory* playerCurrencyInventory = CurrencyInventory::create(SaveKeys::SaveKeySquallyCurrencyInventory);
-
-		playerCurrencyInventory->addCurrency(IOU::getIdentifier(), 1);
+		ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+		{
+			squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), 1);
+			});
+		}, Squally::MapKeySqually);
 	});
 
 	this->collectableNode->addChild(this->iou);

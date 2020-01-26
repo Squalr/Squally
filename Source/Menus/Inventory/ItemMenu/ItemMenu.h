@@ -59,10 +59,6 @@ private:
 	cocos2d::Vec2 previewOffset;
 	cocos2d::Vec3 textOffset;
 
-	CurrencyInventory* currencyInventory;
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
-
 	ItemPreview* itemPreview;
 	cocos2d::Sprite* selectedInventoryRow;
 	cocos2d::Sprite* inventorySelectionArrow;
