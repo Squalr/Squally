@@ -178,7 +178,7 @@ void InteractObject::setOpenCallback(std::function<bool()> interactCallback)
 
 void InteractObject::tryInteractObject()
 {
-	if (this->canInteract && !this->disabled)
+	if (!this->isLocked && this->canInteract && !this->disabled)
 	{
 		if (this->interactCallback == nullptr || this->interactCallback())
 		{

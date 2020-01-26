@@ -134,7 +134,7 @@ void MeetScrappy::runCinematicSequencePt2()
 		Strings::Platformer_Quests_EndianForest_Intro_B_DistressBeacon::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
@@ -153,7 +153,7 @@ void MeetScrappy::runCinematicSequencePt3()
 		Strings::Platformer_Quests_EndianForest_Intro_C_GetYouPatched::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),

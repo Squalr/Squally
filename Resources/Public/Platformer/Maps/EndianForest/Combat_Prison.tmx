@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="565">
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="Laboratory"/>
+   <property name="music" value="Music/TrickOrTreat.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="35" name="bg -4">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="562" name="brick-interior" type="texture" x="-377.212" y="-379.758">
+   <polygon points="0,0 3453.77,11.4502 3453.77,3943.18 8.36268,3950.13"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="553" name="marble" type="terrain" x="-354.205" y="1678.68">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" value="-128"/>
+   </properties>
+   <polygon points="0,0 3569.4,-2.14915 3573.58,1008.83 -38.5487,1008.55"/>
+  </object>
+  <object id="554" name="combat-spawn" type="object" x="1849.34" y="1589.05" width="78.7879" height="88">
+   <properties>
+    <property name="depth" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="555" name="combat-spawn" type="object" x="789.4" y="1590.61" width="78.7879" height="88">
+   <properties>
+    <property name="depth" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="558" name="combat-spawn" type="object" x="693.61" y="1422.66" width="78.7879" height="88">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="559" name="combat-spawn" type="object" x="1995.61" y="1423.34" width="78.7879" height="88">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="560" name="marble" type="terrain" x="-136.099" y="1515.35">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 2862.63,-2.14915 2839.91,1002.77 4.38526,999.463"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="1265.58" y="1330.12" width="170.788" height="172"/>
+ </objectgroup>
+ <objectgroup id="36" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="564" name="Generic/Chandilier1" type="decor" x="1185.74" y="789.852" width="372.519" height="492.296"/>
+ </objectgroup>
+</map>

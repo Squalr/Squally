@@ -440,7 +440,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value="no-items,no-defend"/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Prison"/>
     <property name="battle-tag" value="prison"/>
     <property name="drop-pool" value="ef-generic"/>
     <property name="quest" value="fight-troll"/>

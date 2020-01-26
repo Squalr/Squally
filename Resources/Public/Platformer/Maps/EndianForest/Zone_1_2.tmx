@@ -161,7 +161,7 @@
     <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
-  <object id="746" name="camera-stop" type="object" x="671.01" y="1640.04" width="7176" height="600">
+  <object id="746" name="camera-stop" type="object" x="671.01" y="1640.04" width="6744" height="2848">
    <properties>
     <property name="no-x" type="bool" value="true"/>
     <property name="no-y" type="bool" value="false"/>
@@ -195,7 +195,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="619" name="edge-lantern-gate" type="object" x="9373.7" y="2625.11" width="356" height="320">
+  <object id="619" name="edge-lantern-gate" type="object" x="9376.73" y="2594.81" width="356" height="320">
    <properties>
     <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="right"/>
@@ -214,7 +214,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="800.08" y="1269.03" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="430.383" y="1259.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -266,14 +266,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="6500.99" y="1186.9" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="9131.03" y="2654.5" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="8819.03" y="2662.5" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="3727.11" y="1171.37" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1783.44" y="1317.7" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="792.81" y="1223" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="472.86" y="1263.5" width="128" height="128">
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="932.204" y="1229.06" width="270" height="748"/>
+  <object id="691" name="spawn" type="object" x="375.89" y="1260.47" width="128" height="128">
    <properties>
-    <property name="map-banner" value="sullen-forest"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
   <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="5907" y="1063" width="242" height="738"/>

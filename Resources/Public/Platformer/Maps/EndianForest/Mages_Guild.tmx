@@ -195,7 +195,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="892" name="marcel" type="entity" x="4530.19" y="383.339" width="128" height="128">
+  <object id="892" name="cypress" type="entity" x="4530.19" y="383.339" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
@@ -920,7 +920,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="371.467" y="606.282" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="EndianForest/Zone_1_2"/>
+    <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="mages"/>
    </properties>
   </object>

@@ -51,23 +51,19 @@ LockedPortal::~LockedPortal()
 
 void LockedPortal::onLoad()
 {
-	this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::MapKeyPropertyItemRequired, Value("")).asString();
-
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->playerInventory = entityInventoryBehavior->getInventory();
+			this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::MapKeyPropertyItemRequired, Value("")).asString();
 
-			if (this->playerInventory != nullptr && !this->requiredItemName.empty())
+			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->playerInventory->getSaveKey(), [=](EventCustom* eventCustom)
 			{
-				this->playerInventory->onInventoryChanged([=]()
-				{
-					this->checkForRequiredItem();
-				});
-
 				this->checkForRequiredItem();
-			}
+			}));
+
+			this->checkForRequiredItem();
 		});
 	}, Squally::MapKeySqually);
 }

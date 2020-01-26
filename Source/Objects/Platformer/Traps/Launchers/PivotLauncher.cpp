@@ -189,7 +189,6 @@ void PivotLauncher::faceTarget()
 	if (this->isFixed)
 	{
 		this->currentAngle = this->fixedAngle;
-		return;
 	}
 	else if (this->target != nullptr)
 	{
