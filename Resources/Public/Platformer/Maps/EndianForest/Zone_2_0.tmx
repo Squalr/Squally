@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="823">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="824">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -162,7 +162,6 @@
   <object id="786" name="mechanical-flail" type="object" x="5310.33" y="4611.2" width="42.4242" height="202.545"/>
   <object id="788" name="pendulum-blade" type="object" x="5162.79" y="4413.18" width="42.4242" height="244.303"/>
   <object id="790" name="mechanical-flail" type="object" x="4963.82" y="4092.12" width="42.4242" height="316.97"/>
-  <object id="797" name="life-stone" type="object" x="1217.9" y="2139.05" width="146" height="423"/>
   <object id="798" name="spawn" type="object" x="372.364" y="2428.97" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
@@ -208,6 +207,7 @@
     <property name="tutorial" value="addition"/>
    </properties>
   </object>
+  <object id="823" name="life-stone" type="object" x="4175" y="1624.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -225,7 +225,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="809" name="goblin-warrior-pig" type="entity" x="4381.21" y="1914.22" width="128" height="128">
+  <object id="809" name="goblin-warrior-pig" type="entity" x="4581.21" y="1914.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -234,7 +234,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="810" name="orc-grunt" type="entity" x="4382.79" y="1645.79" width="128" height="128">
+  <object id="810" name="orc-grunt" type="entity" x="4582.79" y="1645.79" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

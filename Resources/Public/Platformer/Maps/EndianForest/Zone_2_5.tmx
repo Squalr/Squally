@@ -325,7 +325,7 @@
   <object id="945" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="exit-C"/>
    </properties>
   </object>
@@ -337,7 +337,7 @@
   <object id="949" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="exit-D"/>
    </properties>
   </object>

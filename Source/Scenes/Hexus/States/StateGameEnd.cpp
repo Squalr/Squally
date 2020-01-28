@@ -33,7 +33,7 @@ StateGameEnd* StateGameEnd::create()
 StateGameEnd::StateGameEnd() : super(GameState::StateType::GameEnd)
 {
 	LocalizedLabel* backButtonLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
-	LocalizedLabel* backButtonLabelHover = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Leave::create());
+	LocalizedLabel* backButtonLabelHover = backButtonLabel->clone();
 
 	backButtonLabel->enableOutline(Color4B::BLACK, 2);
 	backButtonLabelHover->enableOutline(Color4B::BLACK, 2);

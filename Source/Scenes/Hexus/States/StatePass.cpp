@@ -411,6 +411,7 @@ void StatePass::onAnyStateChange(GameState* gameState)
 
 	switch (gameState->stateType)
 	{
+		case GameState::StateType::GameStart:
 		case GameState::StateType::RoundEnd:
 		{
 			this->currentVisiblePlayerButton = nullptr;
