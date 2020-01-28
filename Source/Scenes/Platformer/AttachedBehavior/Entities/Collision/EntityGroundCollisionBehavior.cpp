@@ -157,14 +157,16 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 {
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	// Special case when standing on an intersection -- always collide with the non-owner of that intersection point (the lower platform)
+	// Special case when standing on an intersection -- The owner of the intersection point has collision priority, as it is the lower of the platforms.
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
+		const Node* otherCollisionGroup = next->getParent();
+
 		switch(next->getCollisionType())
 		{
 			case (int)EngineCollisionTypes::Intersection:
 			{
-				return currentCollisionGroup == next->getParent();
+				return currentCollisionGroup == otherCollisionGroup;
 			}
 			default:
 			{
@@ -176,13 +178,15 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
+		const Node* otherCollisionGroup = next->getParent();
+
 		switch(next->getCollisionType())
 		{
 			case (int)PlatformerCollisionType::Solid:
 			case (int)PlatformerCollisionType::PassThrough:
 			{
 				// Do a parent check because multiple collison objects can be nested under the same macro-object (ie terrain segments)
-				if (next->getParent() != currentCollisionGroup)
+				if (otherCollisionGroup != currentCollisionGroup)
 				{
 					return true;
 				}

@@ -84,7 +84,7 @@ void SquallySwimHackBehavior::registerHackables()
 			LOCAL_FUNC_ID_CAN_SWIM,
 			HackableCode::HackableCodeInfo(
 				SquallySwimHackBehavior::IdentifierCanSwim,
-				Strings::Menus_Hacking_Entities_Squally_IsAlive_IsAlive::create(),
+				Strings::Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming::create(),
 				UIResources::Menus_Icons_Bubbles,
 				EntityPreview::create(this->squally),
 				{

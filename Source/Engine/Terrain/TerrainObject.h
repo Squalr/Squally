@@ -157,6 +157,7 @@ private:
 	void initResources();
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void rebuildTerrain(TerrainData terrainData);
+	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(cocos2d::Color4B infillColor);

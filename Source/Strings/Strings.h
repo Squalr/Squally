@@ -8184,6 +8184,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Entities_Squally_IsAlive_IsAlive() = default;
 	};
 
+	class Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming();
+		virtual ~Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Assembly_Add : public LocalizedString
 	{
 	public:

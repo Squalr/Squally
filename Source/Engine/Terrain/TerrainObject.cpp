@@ -103,6 +103,7 @@ void TerrainObject::onEnter()
 
 	this->initResources();
 	this->setPoints(this->polylinePoints);
+	this->cullCollision();
 	this->rebuildTerrain(terrainData);
 	this->optimizationHideOffscreenTerrain();
 }
@@ -238,6 +239,50 @@ void TerrainObject::rebuildTerrain(TerrainData terrainData)
 	}
 
 	this->buildSurfaceTextures();
+}
+
+void TerrainObject::cullCollision()
+{
+	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
+	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> usedCollisionSegments;
+	
+	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
+	{
+		auto itClone = it;
+		std::tuple<Vec2, Vec2> segment = *it;
+		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->collisionSegments.end() ? this->collisionSegments[0] : (*itClone);
+
+		if (deserializedCollisionName != "")
+		{
+			usedCollisionSegments.push_back(*it);
+		}
+		else
+		{
+			float normalAngle = AlgoUtils::getSegmentNormalAngle(*it, this->textureTriangles);
+			
+			if ((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle)))
+			{
+				usedCollisionSegments.push_back(*it);
+			}
+			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
+			{
+				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
+				{
+					usedCollisionSegments.push_back(*it);
+				}
+			}
+			else
+			{
+				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
+				{
+					usedCollisionSegments.push_back(*it);
+				}
+			}
+		}
+	}
+
+	this->collisionSegments = usedCollisionSegments;
 }
 
 void TerrainObject::buildCollision()
@@ -799,77 +844,87 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 		return;
 	}
 
-	// Remove all collision boxes that are completely eclipsed
-	this->collisionSegments.erase(std::remove_if(this->collisionSegments.begin(), this->collisionSegments.end(),
-		[=](const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment)
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> rebuiltSegments = std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>();
+	
+	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
+	{
+		std::tuple<Vec2, Vec2> segment = *it;
+		float normalAngle = AlgoUtils::getSegmentNormalAngle(*it, this->textureTriangles);
+		Vec2 pointA = std::get<0>(segment);
+		Vec2 pointB = std::get<1>(segment);
+		bool isEclipsed[2] = { false, false };
+
+		pointA += this->getPosition();
+		pointB += this->getPosition();
+
+		for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
 		{
-			int index = (&segment - &*this->collisionSegments.begin());
+			AlgoUtils::Triangle triangle = *it;
 
-			Vec2 pointA = std::get<0>(segment);
-			Vec2 pointB = std::get<1>(segment);
-			bool isEclipsed[2] = { false, false };
+			triangle.coords[0] += other->getPosition();
+			triangle.coords[1] += other->getPosition();
+			triangle.coords[2] += other->getPosition();
 
-			pointA += this->getPosition();
-			pointB += this->getPosition();
-
-			for (auto it = other->textureTriangles.begin(); it != other->textureTriangles.end(); it++)
-			{
-				AlgoUtils::Triangle triangle = *it;
-
-				triangle.coords[0] += other->getPosition();
-				triangle.coords[1] += other->getPosition();
-				triangle.coords[2] += other->getPosition();
-
-				isEclipsed[0] |= AlgoUtils::isPointInTriangle(triangle, pointA);
-				isEclipsed[1] |= AlgoUtils::isPointInTriangle(triangle, pointB);
-
-				if (isEclipsed[0] && isEclipsed[1])
-				{
-					break;
-				}
-			}
+			isEclipsed[0] |= AlgoUtils::isPointInTriangle(triangle, pointA);
+			isEclipsed[1] |= AlgoUtils::isPointInTriangle(triangle, pointB);
 
 			if (isEclipsed[0] && isEclipsed[1])
 			{
-				return true;
+				break;
 			}
-			else if (isEclipsed[0] || isEclipsed[1])
+		}
+
+		if (isEclipsed[0] && isEclipsed[1])
+		{
+			// Entirely eclipsed, discarded
+		}
+		else if (isEclipsed[0] || isEclipsed[1])
+		{
+			Vec2 eclipsedPoint = isEclipsed[0] ? pointA : pointB;
+			Vec2 anchorPoint = isEclipsed[0] ? pointB : pointA;
+			std::tuple<Vec2, Vec2> eclipsedSegment = std::tuple<Vec2, Vec2>(eclipsedPoint, anchorPoint);
+
+			for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
 			{
-				Vec2 eclipsedPoint = isEclipsed[0] ? pointA : pointB;
-				Vec2 anchorPoint = isEclipsed[0] ? pointB : pointA;
-				std::tuple<Vec2, Vec2> eclipsedSegment = std::tuple<Vec2, Vec2>(eclipsedPoint, anchorPoint);
+				float otherNormalAngle = AlgoUtils::getSegmentNormalAngle(*segmentIt, other->textureTriangles);
+				cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
+				cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
 
-				for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
+				p1 += other->getPosition();
+				p2 += other->getPosition();
+				
+				std::tuple<Vec2, Vec2> candidateSegment = std::tuple<Vec2, Vec2>(p1, p2);
+
+				if (AlgoUtils::doSegmentsIntersect(eclipsedSegment, candidateSegment))
 				{
-					cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
-					cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
+					Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(eclipsedSegment, candidateSegment) - this->getPosition();
 
-					p1 += other->getPosition();
-					p2 += other->getPosition();
-					
-					std::tuple<Vec2, Vec2> candidateSegment = std::tuple<Vec2, Vec2>(p1, p2);
-
-					if (AlgoUtils::doSegmentsIntersect(eclipsedSegment, candidateSegment))
+					if (isEclipsed[0])
 					{
-						Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(eclipsedSegment, candidateSegment) - this->getPosition();
-
-						if (isEclipsed[0])
-						{
-							std::get<0>(this->collisionSegments[index]) = intersectionPoint;	
-						}
-						else
-						{
-							std::get<1>(this->collisionSegments[index]) = intersectionPoint;	
-						}
-
+						std::get<0>(segment) = intersectionPoint;	
+					}
+					else
+					{
+						std::get<1>(segment) = intersectionPoint;	
+					}
+					
+					if (((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle))) &&
+						((!other->isFlipped && other->isTopAngle(otherNormalAngle)) || (other->isFlipped && other->isBottomAngle(otherNormalAngle))))
+					{
 						this->intersectionPoints.push_back(intersectionPoint);
 					}
 				}
 			}
 
-			return false;
-		}), this->collisionSegments.end()
-	);
+			rebuiltSegments.push_back(segment);
+		}
+		else
+		{
+			rebuiltSegments.push_back(*it);
+		}
+	}
+
+	this->collisionSegments = rebuiltSegments;
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)

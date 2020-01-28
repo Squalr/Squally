@@ -171,6 +171,32 @@ bool EntityMovementCollisionBehavior::hasRightWallCollision()
 	return this->rightCollision == nullptr ? false : !this->rightCollision->getCurrentCollisions().empty();
 }
 
+bool EntityMovementCollisionBehavior::hasLeftWallCollisionWith(CollisionObject* collisonObject)
+{
+	for (auto next : this->leftCollision->getCurrentCollisions())
+	{
+		if (next == collisonObject)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
+bool EntityMovementCollisionBehavior::hasRightWallCollisionWith(CollisionObject* collisonObject)
+{
+	for (auto next : this->rightCollision->getCurrentCollisions())
+	{
+		if (next == collisonObject)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void EntityMovementCollisionBehavior::buildMovementCollision()
 {
 	if (this->movementCollision == nullptr)
@@ -218,7 +244,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		// This is how we allow platforms to overlap -- just decide which platform is more important to collide with
+		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
 		if (groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;

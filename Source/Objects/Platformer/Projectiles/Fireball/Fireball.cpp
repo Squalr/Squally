@@ -16,7 +16,7 @@
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
-#include "Resources/FxResources.h"
+#include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
