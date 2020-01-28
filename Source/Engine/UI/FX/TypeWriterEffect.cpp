@@ -99,4 +99,6 @@ void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
 			label->getLetter(i)->stopAllActions();
 		}
 	}
+	
+	label->removeLetters();
 }
