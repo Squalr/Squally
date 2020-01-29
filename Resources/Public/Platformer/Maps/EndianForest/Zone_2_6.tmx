@@ -6,7 +6,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
-   <property name="rubber-band" type="int" value="3"/>
+   <property name="rubber-band" type="int" value="4"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -336,7 +336,7 @@
   </object>
   <object id="949" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
    <properties>
-    <property name="color" value="yellow"/>
+    <property name="color" value="yellow-skull"/>
     <property name="map" value="EndianForest/Zone_2_7"/>
     <property name="transition" value="exit-D"/>
    </properties>

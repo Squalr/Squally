@@ -29,27 +29,43 @@ TempleDoor* TempleDoor::create(ValueMap& properties)
 TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->topCollision = CollisionObject::create(PhysicsBody::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, false, false);
+	this->emblem = nullptr;
+	this->emblemOffset = Vec2::ZERO;
 
 	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::MapKeyColor, Value("")).asString();
 
-	if (color == "green")
+	if (color == "green" || color == "green-skull" || color == "green-up" || color == "green-down")
 	{
 		this->door = Sprite::create(ObjectResources::Doors_Temple_TempleGreenDoor);
 	}
-	else if (color == "green-skull")
-	{
-		this->door = Sprite::create(ObjectResources::Doors_Temple_TempleSkullGreenDoor);
-	}
-	else if (color == "yellow-skull")
-	{
-		this->door = Sprite::create(ObjectResources::Doors_Temple_TempleSkullDoor);
-	}
-	else
+	else // if (color == "yellow" || color == "yellow-skull" || color == "yellow-up" || color == "yellow-down")
 	{
 		this->door = Sprite::create(ObjectResources::Doors_Temple_TempleDoor);
 	}
+	
+	if (color == "yellow-skull" || color == "green-skull")
+	{
+		this->emblem = Sprite::create(ObjectResources::Doors_Temple_Skull);
+		this->emblemOffset = Vec2(0.0f, 116.0f);
+	}
+	else if (color == "yellow-up" || color == "green-up")
+	{
+		this->emblem = Sprite::create(ObjectResources::Doors_Temple_UpArrow);
+		this->emblemOffset = Vec2(0.0f, 172.0f);
+	}
+	else if (color == "yellow-down" || color == "green-down")
+	{
+		this->emblem = Sprite::create(ObjectResources::Doors_Temple_DownArrow);
+		this->emblemOffset = Vec2(0.0f, 172.0f);
+	}
 
 	this->addChild(this->door);
+
+	if (this->emblem != nullptr)
+	{
+		this->addChild(this->emblem);
+	}
+
 	this->addChild(this->topCollision);
 }
 
@@ -60,6 +76,11 @@ TempleDoor::~TempleDoor()
 void TempleDoor::initializePositions()
 {
 	super::initializePositions();
+
+	if (this->emblem != nullptr)
+	{
+		this->emblem->setPosition(this->emblemOffset);
+	}
 
 	this->topCollision->setPositionY(238.0f);
 }

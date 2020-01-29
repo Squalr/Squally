@@ -887,6 +887,7 @@ namespace EntityResources
 	extern const std::string Enemies_EndianForest_KingGrogg_TORSO;
 	extern const std::string Enemies_EndianForest_KingGrogg_WEAPON;
 	extern const std::string Enemies_EndianForest_KingGrogg_WEAPON_OH_PLACEHOLDER;
+	extern const std::string Enemies_EndianForest_KingGrogg_aa_000;
 	extern const std::string Enemies_EndianForest_Ogre_Animations;
 	extern const std::string Enemies_EndianForest_Ogre_BELT;
 	extern const std::string Enemies_EndianForest_Ogre_COVER_1;

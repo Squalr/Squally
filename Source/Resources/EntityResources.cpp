@@ -886,6 +886,7 @@ const std::string EntityResources::Enemies_EndianForest_KingGrogg_R_LEG_2 = "Pri
 const std::string EntityResources::Enemies_EndianForest_KingGrogg_TORSO = "Private/Platformer/Entities/Enemies/EndianForest/KingGrogg/TORSO.png";
 const std::string EntityResources::Enemies_EndianForest_KingGrogg_WEAPON = "Private/Platformer/Entities/Enemies/EndianForest/KingGrogg/WEAPON.png";
 const std::string EntityResources::Enemies_EndianForest_KingGrogg_WEAPON_OH_PLACEHOLDER = "Private/Platformer/Entities/Enemies/EndianForest/KingGrogg/WEAPON_OH_PLACEHOLDER.png";
+const std::string EntityResources::Enemies_EndianForest_KingGrogg_aa_000 = "Private/Platformer/Entities/Enemies/EndianForest/KingGrogg/aa_000.png";
 const std::string EntityResources::Enemies_EndianForest_Ogre_Animations = "Private/Platformer/Entities/Enemies/EndianForest/Ogre/Animations.scml";
 const std::string EntityResources::Enemies_EndianForest_Ogre_BELT = "Private/Platformer/Entities/Enemies/EndianForest/Ogre/BELT.png";
 const std::string EntityResources::Enemies_EndianForest_Ogre_COVER_1 = "Private/Platformer/Entities/Enemies/EndianForest/Ogre/COVER 1.png";

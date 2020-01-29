@@ -9,10 +9,12 @@ public:
 
 	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
 
+protected:
+	MusicDeserializer();
+	virtual ~MusicDeserializer();
+
 private:
 	typedef PropertyDeserializer super;
-	MusicDeserializer();
-	~MusicDeserializer();
 
 	static const std::string MapKeyMusicProperty;
 	static const std::string MapKeyDelayProperty;

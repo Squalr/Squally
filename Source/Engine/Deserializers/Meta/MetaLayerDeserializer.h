@@ -11,11 +11,12 @@ public:
 
 	void deserialize(LayerDeserializer::LayerDeserializationRequestArgs* args) override;
 
+protected:
+	MetaLayerDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers);
+	virtual ~MetaLayerDeserializer();
+
 private:
 	typedef LayerDeserializer super;
-
-	MetaLayerDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers);
-	~MetaLayerDeserializer();
 
 	std::vector<PropertyDeserializer*> propertyDeserializers;
 

@@ -11,12 +11,14 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Enemies/EndianForest/KingGrogg.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -49,6 +51,9 @@ TalkToGrogg::~TalkToGrogg()
 
 void TalkToGrogg::onLoad(QuestState questState)
 {
+	// Ret-con to allow players to hack water stuff TODO: Delete after 4/x/2020
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
+
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;

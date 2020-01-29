@@ -26,7 +26,10 @@ private:
 	typedef Portal super;
 
 	cocos2d::Sprite* door;
+	cocos2d::Sprite* emblem;
 	CollisionObject* topCollision;
+
+	cocos2d::Vec2 emblemOffset;
 
 	static const std::string MapKeyColor;
 };

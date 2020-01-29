@@ -9,10 +9,12 @@ public:
 
 	void deserializeProperties(GameObject* owner, cocos2d::ValueMap properties) override;
 
-private:
-	typedef PropertyDeserializer super;
+protected:
 	PhysicsDeserializer();
 	~PhysicsDeserializer();
+
+private:
+	typedef PropertyDeserializer super;
 
 	static const std::string MapKeyPhysics;
 };
