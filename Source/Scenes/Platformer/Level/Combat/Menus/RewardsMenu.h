@@ -31,13 +31,14 @@ private:
 	void initializeListeners() override;
 	void giveExp();
 	void loadRewards();
+	void clearEmblems();
+	void addExpEmblem(std::string emblemResource, int gain);
 
 	cocos2d::Sprite* victoryMenu;
-	cocos2d::Sprite* expSprite;
-	ConstantString* expValue;
-	LocalizedLabel* expLabel;
+	cocos2d::Node* expNode;
 	LocalizedLabel* victoryLabel;
 	LocalizedLabel* itemsFoundLabel;
 	ClickableTextNode* returnButton;
 	Sound* victorySound;
+	int emblemCount;
 };

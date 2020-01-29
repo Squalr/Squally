@@ -47,10 +47,9 @@ RewardsMenu* RewardsMenu::create()
 RewardsMenu::RewardsMenu()
 {
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
-	this->expSprite = Sprite::create(UIResources::Menus_Icons_Stars);
-	this->expValue = ConstantString::create(std::to_string(0));
-	this->expLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->expValue);
+	this->expNode = Node::create();
 	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
+	this->emblemCount = 0;
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
 
@@ -62,15 +61,11 @@ RewardsMenu::RewardsMenu()
 
 	this->returnButton = ClickableTextNode::create(returnLabel, returnLabelHover, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 
-	this->expLabel->enableOutline(Color4B::BLACK, 2);
 	this->victoryLabel->enableOutline(Color4B::BLACK, 2);
 
-	this->expLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-
 	this->addChild(this->victoryMenu);
-	this->addChild(this->expSprite);
-	this->addChild(this->expLabel);
 	this->addChild(this->victoryLabel);
+	this->addChild(this->expNode);
 	this->addChild(this->returnButton);
 	this->addChild(this->victorySound);
 }
@@ -92,8 +87,6 @@ void RewardsMenu::initializePositions()
 
 	this->victoryLabel->setPosition(Vec2(0.0f, 176.0f));
 	this->victoryMenu->setPosition(Vec2(0.0f, 0.0f));
-	this->expSprite->setPosition(Vec2(-48.0f, 32.0f));
-	this->expLabel->setPosition(Vec2(16.0f, 32.0f));
 	this->returnButton->setPosition(Vec2(16.0f, -160.0f));
 }
 
@@ -125,11 +118,13 @@ void RewardsMenu::show()
 
 void RewardsMenu::giveExp()
 {
+	this->clearEmblems();
+
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
 	{
-		entity->getAttachedBehavior<FriendlyExpBarBehavior>([=](FriendlyExpBarBehavior* friendlyExpBarBehavior)
+		entity->getAttachedBehavior<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
 		{
-			entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
+			entity->getAttachedBehavior<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
 			{
 				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
 				const int currentLevel = eqBehavior->getEq();
@@ -149,6 +144,7 @@ void RewardsMenu::giveExp()
 					: int(float(expGain) * std::pow(GainFactor, intendedLevel - currentLevel));
 
 				friendlyExpBarBehavior->giveExp(adjustedGain);
+				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
 			});
 		});
 	}), PlatformerEntity::PlatformerEntityTag);
@@ -168,4 +164,29 @@ void RewardsMenu::loadRewards()
 			}
 		});
 	}), PlatformerEnemy::PlatformerEnemyTag);
+}
+
+void RewardsMenu::clearEmblems()
+{
+	this->expNode->removeAllChildren();
+	this->emblemCount = 0;
+}
+
+void RewardsMenu::addExpEmblem(std::string emblemResource, int gain)
+{
+	Sprite* emblem = Sprite::create(emblemResource);
+	LocalizedString* expGainString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(gain)));
+	LocalizedLabel* expGainLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, expGainString);
+
+	const Vec2 offset = Vec2(-64.0f, 48.0f);
+
+	emblem->setPosition(Vec2(0.0f, -64.0f * float(this->emblemCount)) + offset);
+	expGainLabel->setPosition(Vec2(48.0f, -64.0f * float(this->emblemCount)) + offset);
+	expGainLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	expGainLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->expNode->addChild(emblem);
+	this->expNode->addChild(expGainLabel);
+
+	this->emblemCount++;
 }

@@ -11,6 +11,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -22,6 +23,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -45,6 +47,7 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner,
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
+	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp);
 	this->tickCounter = 0;
 
 	// Gain text
@@ -58,6 +61,7 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner,
 
 	this->addChild(this->expProgressBar);
 	this->addChild(this->deltaLabel);
+	this->addChild(this->levelUpSound);
 }
 
 FriendlyExpBarBehavior::~FriendlyExpBarBehavior()
@@ -87,8 +91,8 @@ void FriendlyExpBarBehavior::giveExp(int expGain)
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
 	{
 		const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		const bool didLevelUp = eqBehavior->addEqExperience(expGain);
 		const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+		const bool didLevelUp = eqBehavior->addEqExperience(expGain);
 		
 		const float StartDelay = 0.5f;
 		const float FillDuration = 1.0f;
@@ -139,5 +143,5 @@ void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, flo
 
 void FriendlyExpBarBehavior::runLevelUpEffect()
 {
-	// TODO :)
+	this->levelUpSound->play();
 }

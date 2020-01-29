@@ -6,6 +6,7 @@ class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
 class ProgressBar;
+class Sound;
 
 class FriendlyExpBarBehavior : public EntityCollisionBehaviorBase
 {
@@ -34,4 +35,5 @@ private:
 	ProgressBar* expProgressBar;
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
+	Sound* levelUpSound;
 };
