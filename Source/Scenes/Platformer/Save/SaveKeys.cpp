@@ -18,6 +18,8 @@ const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
 const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
 
+const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
+
 const std::string SaveKeys::SaveKeyBlessingOfFire = "SAVE_KEY_BLESSING_OF_FIRE";
 const std::string SaveKeys::SaveKeyBlessingOfFrost = "SAVE_KEY_BLESSING_OF_FROST";
 const std::string SaveKeys::SaveKeyBlessingOfLight = "SAVE_KEY_BLESSING_OF_LIGHT";

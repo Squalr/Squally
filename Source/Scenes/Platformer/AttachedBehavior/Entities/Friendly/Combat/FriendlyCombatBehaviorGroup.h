@@ -11,7 +11,7 @@ public:
 
 protected:
 	FriendlyCombatBehaviorGroup(GameObject* owner);
-	~FriendlyCombatBehaviorGroup();
+	virtual ~FriendlyCombatBehaviorGroup();
 
 	void onLoad() override;
 

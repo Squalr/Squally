@@ -2,11 +2,10 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/SoundEvents.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Maps/MapLayer.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 using namespace cocos2d;
 
@@ -31,5 +30,10 @@ PlatformerRubberbandingDeserializer::~PlatformerRubberbandingDeserializer()
 
 void PlatformerRubberbandingDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	int rubberBand = GameUtils::getKeyOrDefault(properties, PlatformerRubberbandingDeserializer::MapPropertyRubberBand, Value(1)).asInt();
+	if (GameUtils::keyExists(properties, PlatformerRubberbandingDeserializer::MapPropertyRubberBand))
+	{
+		const int rubberBand = GameUtils::getKeyOrDefault(properties, PlatformerRubberbandingDeserializer::MapPropertyRubberBand, Value(1)).asInt();
+		
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyLevelRubberband, Value(rubberBand));
+	}
 }

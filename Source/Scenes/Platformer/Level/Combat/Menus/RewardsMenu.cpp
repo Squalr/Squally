@@ -15,6 +15,7 @@
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -22,6 +23,9 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -97,6 +101,11 @@ void RewardsMenu::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* args)
+	{
+		this->giveExp();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* args)
 	{
 		this->loadRewards();
@@ -114,14 +123,41 @@ void RewardsMenu::show()
 	this->victorySound->play();
 }
 
+void RewardsMenu::giveExp()
+{
+	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
+	{
+		entity->getAttachedBehavior<FriendlyExpBarBehavior>([=](FriendlyExpBarBehavior* friendlyExpBarBehavior)
+		{
+			entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
+			{
+				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
+				const int currentLevel = eqBehavior->getEq();
+				int expGain = 0;
+				
+				ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
+				{
+					expGain += StatsTables::getKillExp(enemy);
+				}), PlatformerEnemy::PlatformerEnemyTag);
+
+				// This determins how drastic penalties and losses are for being outside of the intended level. Higher is more drastic.
+				static const float GainFactor = 1.25f;
+
+				// Apply rubber banding to keep the player near the intended level for the current map
+				const int adjustedGain = intendedLevel == currentLevel
+					? expGain
+					: int(float(expGain) * std::pow(GainFactor, intendedLevel - currentLevel));
+
+				friendlyExpBarBehavior->giveExp(adjustedGain);
+			});
+		});
+	}), PlatformerEntity::PlatformerEntityTag);
+}
+
 void RewardsMenu::loadRewards()
 {
-	int totalExpGain = 0;
-
 	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
-		totalExpGain += StatsTables::getKillExp(enemy);
-
 		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
 			MinMaxPool* dropPool = entityDropTableBehavior->getDropPool();
@@ -132,6 +168,4 @@ void RewardsMenu::loadRewards()
 			}
 		});
 	}), PlatformerEnemy::PlatformerEnemyTag);
-
-	this->expValue->setString(std::to_string(totalExpGain));
 }

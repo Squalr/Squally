@@ -12,18 +12,19 @@ class FriendlyExpBarBehavior : public EntityCollisionBehaviorBase
 public:
 	static FriendlyExpBarBehavior* create(GameObject* owner);
 
+	void giveExp(int expGain);
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
 	FriendlyExpBarBehavior(GameObject* owner);
-	~FriendlyExpBarBehavior();
+	virtual ~FriendlyExpBarBehavior();
 
 	void onLoad() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;
 
-	void giveExp();
 	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete = nullptr);
 	void runLevelUpEffect();
 

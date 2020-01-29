@@ -22,6 +22,8 @@ public:
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
 	static const std::string SaveKeyHasGivenDefaultItems;
+
+	static const std::string SaveKeyLevelRubberband;
 	
 	static const std::string SaveKeyBlessingOfFire;
 	static const std::string SaveKeyBlessingOfFrost;

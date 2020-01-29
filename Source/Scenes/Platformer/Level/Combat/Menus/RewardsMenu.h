@@ -29,6 +29,7 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void giveExp();
 	void loadRewards();
 
 	cocos2d::Sprite* victoryMenu;

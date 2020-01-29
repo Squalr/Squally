@@ -68,11 +68,6 @@ void FriendlyExpBarBehavior::onLoad()
 {
     super::onLoad();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveExp, [=](EventCustom* eventCustom)
-	{
-		this->giveExp();
-	}));
-
 	this->expProgressBar->setOpacity(0);
 	this->deltaLabel->setOpacity(0);
 
@@ -83,24 +78,17 @@ void FriendlyExpBarBehavior::onLoad()
 	this->expProgressBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 }
 
-void FriendlyExpBarBehavior::giveExp()
+void FriendlyExpBarBehavior::giveExp(int expGain)
 {
-	int expGain = 0;
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-	{
-		expGain += StatsTables::getKillExp(entity);
-	}), PlatformerEnemy::PlatformerEnemyTag);
-
 	this->expProgressBar->runAction(FadeTo::create(0.25f, 255));
 	this->deltaLabel->runAction(FadeTo::create(0.25f, 255));
 	this->deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
-
+	
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
 	{
-		float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		bool didLevelUp = eqBehavior->addEqExperience(expGain);
-		float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+		const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+		const bool didLevelUp = eqBehavior->addEqExperience(expGain);
+		const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
 		
 		const float StartDelay = 0.5f;
 		const float FillDuration = 1.0f;
