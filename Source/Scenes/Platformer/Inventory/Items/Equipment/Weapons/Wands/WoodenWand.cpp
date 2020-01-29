@@ -1,7 +1,7 @@
 #include "WoodenWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ WoodenWand* WoodenWand::create()
 	return instance;
 }
 
-WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 1, 2, ItemStats(
+WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 1, 2, ItemStats(
 	// Health
 	0,
 	// Mana

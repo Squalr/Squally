@@ -1,7 +1,7 @@
 #include "BlueAxe.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ BlueAxe* BlueAxe::create()
 	return instance;
 }
 
-BlueAxe::BlueAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 4, 7, ItemStats(
+BlueAxe::BlueAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
 	// Health
 	0,
 	// Mana

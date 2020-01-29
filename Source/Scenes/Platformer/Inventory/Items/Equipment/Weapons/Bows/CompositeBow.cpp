@@ -1,7 +1,7 @@
 #include "CompositeBow.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ CompositeBow* CompositeBow::create()
 	return instance;
 }
 
-CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 7 }}), 3, 6, ItemStats(
+CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), 3, 6, ItemStats(
 	// Health
 	0,
 	// Mana

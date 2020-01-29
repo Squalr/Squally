@@ -1,7 +1,7 @@
 #include "SpikedClub.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ SpikedClub* SpikedClub::create()
 	return instance;
 }
 
-SpikedClub::SpikedClub() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+SpikedClub::SpikedClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
 	// Health
 	0,
 	// Mana

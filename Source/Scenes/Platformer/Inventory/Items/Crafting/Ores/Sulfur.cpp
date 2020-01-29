@@ -1,7 +1,7 @@
 #include "Sulfur.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ Sulfur* Sulfur::create()
 	return instance;
 }
 
-Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20000))
+Sulfur::Sulfur() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
 {
 }
 

@@ -106,7 +106,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Gate::MapKeyGate] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };
 	this->deserializers[LanternGate::MapKeyLanternGate] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
 	this->deserializers[EdgeLanternGate::MapKeyEdgeLanternGate] = [=](ValueMap properties) { return (GameObject*)EdgeLanternGate::create(properties); };
-	this->deserializers[IOU::MapKeyIOU] = [=](ValueMap properties) { return (GameObject*)IOU::create(properties); };
+	this->deserializers[IOUDrop::MapKeyIOUDrop] = [=](ValueMap properties) { return (GameObject*)IOUDrop::create(properties); };
 	this->deserializers[HackableHint::MapKeyHackableHint] = [=](ValueMap properties) { return (GameObject*)HackableHint::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKeyHelpTotemAttacking] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKeyHelpTotemEndOfDemo] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };

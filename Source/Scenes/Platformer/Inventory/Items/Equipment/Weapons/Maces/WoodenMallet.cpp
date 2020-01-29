@@ -1,7 +1,7 @@
 #include "WoodenMallet.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ WoodenMallet* WoodenMallet::create()
 	return instance;
 }
 
-WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 3, 7, ItemStats(
+WoodenMallet::WoodenMallet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 3, 7, ItemStats(
 	// Health
 	0,
 	// Mana

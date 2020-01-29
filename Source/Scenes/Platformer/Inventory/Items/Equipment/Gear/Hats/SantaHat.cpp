@@ -1,7 +1,7 @@
 #include "SantaHat.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ SantaHat* SantaHat::create()
 	return instance;
 }
 
-SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), ItemStats(
+SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
 	0,
 	// Mana

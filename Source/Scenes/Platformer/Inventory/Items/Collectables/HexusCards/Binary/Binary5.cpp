@@ -1,7 +1,7 @@
 #include "Binary5.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,7 @@ Binary5* Binary5::create()
 	return instance;
 }
 
-Binary5::Binary5() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 3))
+Binary5::Binary5() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 

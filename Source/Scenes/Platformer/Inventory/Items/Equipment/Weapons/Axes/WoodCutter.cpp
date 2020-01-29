@@ -1,7 +1,7 @@
 #include "WoodCutter.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ WoodCutter* WoodCutter::create()
 	return instance;
 }
 
-WoodCutter::WoodCutter() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 11 }}), 4, 7, ItemStats(
+WoodCutter::WoodCutter() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), 4, 7, ItemStats(
 	// Health
 	0,
 	// Mana

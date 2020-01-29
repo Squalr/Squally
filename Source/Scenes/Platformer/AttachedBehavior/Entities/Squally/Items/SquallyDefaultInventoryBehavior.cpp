@@ -8,7 +8,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -81,7 +81,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 				entityInventoryBehavior->getInventory()->forceInsert(Iron::create(), false);
 			}
 
-			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIdentifier(), 420);
+			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 420);
 		}
 
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);

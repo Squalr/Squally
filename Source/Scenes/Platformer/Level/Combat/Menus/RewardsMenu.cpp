@@ -160,6 +160,7 @@ void RewardsMenu::loadRewards()
 
 			if (dropPool != nullptr)
 			{
+				PlatformerEvents::TriggerGiveCurrenciesFromPool(PlatformerEvents::GiveCurrenciesFromPoolArgs(dropPool->getCurrencyPool()));
 				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool));
 			}
 		});

@@ -2,7 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-class IOU;
+class IOUDrop;
 
 class FirstIOUFound : public AttachedBehavior
 {
@@ -20,5 +20,5 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	IOU* iou;
+	IOUDrop* iou;
 };

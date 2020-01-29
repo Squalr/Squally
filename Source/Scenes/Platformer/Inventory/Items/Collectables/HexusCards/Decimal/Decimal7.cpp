@@ -1,7 +1,7 @@
 #include "Decimal7.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,7 @@ Decimal7* Decimal7::create()
 	return instance;
 }
 
-Decimal7::Decimal7() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(3, 3))
+Decimal7::Decimal7() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(3, 3))
 {
 }
 

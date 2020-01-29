@@ -1,7 +1,7 @@
 #include "CrystalWand.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ CrystalWand* CrystalWand::create()
 	return instance;
 }
 
-CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}), 3, 6, ItemStats(
+CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
 	// Health
 	0,
 	// Mana

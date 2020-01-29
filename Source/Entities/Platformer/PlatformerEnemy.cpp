@@ -10,7 +10,6 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Objects/Platformer/Collectables/IOU.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 

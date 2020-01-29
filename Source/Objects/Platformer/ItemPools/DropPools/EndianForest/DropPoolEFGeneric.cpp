@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string DropPoolEFGeneric::PoolName = "drop-ef-generic";
+const std::string DropPoolEFGeneric::PoolName = "ef-generic";
 
 DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 {

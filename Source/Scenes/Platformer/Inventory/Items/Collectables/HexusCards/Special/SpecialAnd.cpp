@@ -1,7 +1,7 @@
 #include "SpecialAnd.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,7 @@ SpecialAnd* SpecialAnd::create()
 	return instance;
 }
 
-SpecialAnd::SpecialAnd() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialAnd::SpecialAnd() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
 {
 }
 

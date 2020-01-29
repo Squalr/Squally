@@ -1,7 +1,7 @@
 #include "TownKey.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ TownKey* TownKey::create()
 	return instance;
 }
 
-TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+TownKey::TownKey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 

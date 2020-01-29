@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string EmptyDropPool::PoolName = "drop-empty";
+const std::string EmptyDropPool::PoolName = "empty";
 
 EmptyDropPool* EmptyDropPool::create(ValueMap& properties)
 {

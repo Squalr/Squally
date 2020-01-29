@@ -1,7 +1,7 @@
 #include "HealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
 
 #include "Resources/ObjectResources.h"
@@ -22,7 +22,7 @@ HealthPotion* HealthPotion::create()
 	return instance;
 }
 
-HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
+HealthPotion::HealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20, RubberBanding(3, 0.15f)))
 {
 }
 

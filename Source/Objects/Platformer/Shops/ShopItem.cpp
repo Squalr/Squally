@@ -14,7 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -42,7 +42,7 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();
-	this->currencySprite = Sprite::create(IOU::getIconResource());
+	this->currencySprite = Sprite::create(IOU::getIOUIconResource());
 	this->itemCostString = ConstantString::create(std::to_string(0));
 	this->itemCostLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->itemCostString);
 	this->itemCost = -1;
@@ -84,7 +84,7 @@ void ShopItem::onEnterTransitionDidFinish()
 
 			if (cost != nullptr)
 			{
-				this->itemCost = cost->getCurrencyCount(IOU::getIdentifier());
+				this->itemCost = cost->getCurrencyCount(IOU::getIOUIdentifier());
 				this->itemCostString->setString(std::to_string(this->itemCost));
 			}
 		}
@@ -125,7 +125,7 @@ void ShopItem::sellItem()
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
-			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIdentifier());
+			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIOUIdentifier());
 			
 			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
 			{
@@ -133,7 +133,7 @@ void ShopItem::sellItem()
 				[=](Item*)
 				{
 					this->available = false;
-					playerCurrencyInventory->removeCurrency(IOU::getIdentifier(), this->itemCost);
+					playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
 					this->itemPreview->preview(nullptr);
 					this->currencySprite->setVisible(false);
 					this->itemCostLabel->setVisible(false);

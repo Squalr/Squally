@@ -1,7 +1,7 @@
 #include "IronAxe.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -20,7 +20,7 @@ IronAxe* IronAxe::create()
 	return instance;
 }
 
-IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 5 }}), 4, 6, ItemStats(
+IronAxe::IronAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 4, 6, ItemStats(
 	// Health
 	0,
 	// Mana

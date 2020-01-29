@@ -1,7 +1,7 @@
 #include "MissingNo.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
 
@@ -22,7 +22,7 @@ MissingNo* MissingNo::create()
 	return instance;
 }
 
-MissingNo::MissingNo() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+MissingNo::MissingNo() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 

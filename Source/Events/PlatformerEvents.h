@@ -4,6 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+class Currency;
 class CurrencyPool;
 class GameObject;
 class Item;
@@ -126,12 +127,11 @@ public:
 
 	struct GiveCurrencyArgs
 	{
-		std::string currencyIdentifier;
-		int count;
+		Currency* currency;
 		LocalizedString* messageOverride;
 
-		GiveCurrencyArgs(std::string currencyIdentifier, int count, LocalizedString* messageOverride = nullptr)
-			: currencyIdentifier(currencyIdentifier), count(count), messageOverride(messageOverride) { }
+		GiveCurrencyArgs(Currency* currency, LocalizedString* messageOverride = nullptr)
+			: currency(currency), messageOverride(messageOverride) { }
 	};
 
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);

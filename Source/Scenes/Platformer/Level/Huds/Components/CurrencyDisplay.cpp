@@ -5,7 +5,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -71,7 +71,7 @@ void CurrencyDisplay::update(float dt)
 		return;
 	}
 
-	int iouCount = this->inventory->getCurrencyCount(IOU::getIdentifier());
+	int iouCount = this->inventory->getCurrencyCount(IOU::getIOUIdentifier());
 
 	if (iouCount != (this->cachedCurrency ^ CurrencyDisplay::CacheCipher))
 	{

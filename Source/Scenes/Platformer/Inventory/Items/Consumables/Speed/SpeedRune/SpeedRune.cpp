@@ -1,7 +1,7 @@
 #include "SpeedRune.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/ThrowSpeedRune.h"
 
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,7 @@ SpeedRune* SpeedRune::create()
 	return instance;
 }
 
-SpeedRune::SpeedRune() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 1 }}))
+SpeedRune::SpeedRune() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}))
 {
 }
 

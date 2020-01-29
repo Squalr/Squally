@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string ErrorDropPool::PoolName = "drop-error";
+const std::string ErrorDropPool::PoolName = "error";
 
 ErrorDropPool* ErrorDropPool::create(ValueMap& properties)
 {

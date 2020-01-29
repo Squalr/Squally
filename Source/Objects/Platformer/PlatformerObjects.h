@@ -10,7 +10,7 @@
 #include "Objects/Platformer/Chests/CipherChest.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Cinematic/SquallyShip.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Objects/Platformer/Collectables/IOUDrop.h"
 #include "Objects/Platformer/Decor/MagicWall.h"
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"
 #include "Objects/Platformer/Interactables/Doors/CastleGate/CastleGate.h"

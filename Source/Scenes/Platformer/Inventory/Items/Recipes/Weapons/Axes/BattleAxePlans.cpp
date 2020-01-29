@@ -1,7 +1,7 @@
 #include "BattleAxePlans.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
-#include "Objects/Platformer/Collectables/IOU.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,7 @@ BattleAxePlans* BattleAxePlans::create()
 	return instance;
 }
 
-BattleAxePlans::BattleAxePlans() : super(CurrencyInventory::create({{ IOU::getIdentifier(), 2 }}))
+BattleAxePlans::BattleAxePlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
 {
 }
 

@@ -6,6 +6,7 @@
 
 #include "Engine/Events/ItemEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/Currency.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
@@ -23,24 +24,33 @@ CurrencyPool::CurrencyPool(std::string poolName) : CurrencyPool(ValueMap(), pool
 CurrencyPool::CurrencyPool(const ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
-	this->currencies = std::vector<Currency>();
+	this->currencies = std::vector<CurrencyData>();
 }
 
 CurrencyPool::~CurrencyPool()
 {
 }
 
-void CurrencyPool::addCurrencyToPool(Currency currency)
+void CurrencyPool::addCurrencyToPool(CurrencyData currency)
 {
 	this->currencies.push_back(currency);
+
+	if (currency.currency != nullptr)
+	{
+		this->addChild(currency.currency);
+	}
 }
 
-std::vector<CurrencyPool::Currency> CurrencyPool::getRandomCurrencyFromPool()
+std::vector<Currency*> CurrencyPool::getRandomCurrencyFromPool()
 {
+	std::vector<Currency*> randCurrencies = std::vector<Currency*>();
+
 	for (auto next : this->currencies)
 	{
-		next.count = RandomHelper::random_int(next.minCount, next.maxCount);
+		next.currency->setCount(RandomHelper::random_int(next.minCount, next.maxCount));
+
+		randCurrencies.push_back(next.currency);
 	}
 
-	return this->currencies;
+	return randCurrencies;
 }
