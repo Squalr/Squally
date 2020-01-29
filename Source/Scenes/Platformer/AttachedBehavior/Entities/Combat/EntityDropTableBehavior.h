@@ -4,7 +4,7 @@
 
 class DropPoolDeserializer;
 class PlatformerEntity;
-class MinMaxPool;
+class DropPool;
 
 class EntityDropTableBehavior : public AttachedBehavior
 {
@@ -12,7 +12,7 @@ public:
 	static EntityDropTableBehavior* create(GameObject* owner);
 
 	void setDropTable(std::string dropTable);
-	MinMaxPool* getDropPool();
+	DropPool* getDropPool();
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -27,5 +27,5 @@ private:
 
 	PlatformerEntity* entity;
 	DropPoolDeserializer* dropPoolDeserializer;
-	MinMaxPool* dropPool;
+	DropPool* dropPool;
 };

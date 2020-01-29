@@ -22,6 +22,8 @@ const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_E
 const std::string PlatformerEvents::EventOpenCrafting = "EVENT_OPEN_CRAFTING";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
+const std::string PlatformerEvents::EventGiveCurrency = "EVENT_GIVE_CURRENCY";
+const std::string PlatformerEvents::EventGiveCurrenciesFromPool = "EVENT_GIVE_CURRENCIES_FROM_POOL";
 const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
 const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
 
@@ -139,6 +141,22 @@ void PlatformerEvents::TriggerGiveItem(GiveItemArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventGiveItem,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveCurrenciesFromPool,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerGiveCurrency(GiveCurrencyArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventGiveCurrency,
 		&args
 	);
 }

@@ -4,6 +4,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+class CurrencyPool;
 class GameObject;
 class Item;
 class LocalizedString;
@@ -29,6 +30,8 @@ public:
 	static const std::string EventOpenCrafting;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
+	static const std::string EventGiveCurrenciesFromPool;
+	static const std::string EventGiveCurrency;
 	static const std::string EventAllowPause;
 	static const std::string EventDisallowPause;
 
@@ -113,6 +116,24 @@ public:
 		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
 	};
 
+	struct GiveCurrenciesFromPoolArgs
+	{
+		CurrencyPool* pool;
+		LocalizedString* messageOverride;
+
+		GiveCurrenciesFromPoolArgs(CurrencyPool* pool, LocalizedString* messageOverride = nullptr) : pool(pool), messageOverride(messageOverride) { }
+	};
+
+	struct GiveCurrencyArgs
+	{
+		std::string currencyIdentifier;
+		int count;
+		LocalizedString* messageOverride;
+
+		GiveCurrencyArgs(std::string currencyIdentifier, int count, LocalizedString* messageOverride = nullptr)
+			: currencyIdentifier(currencyIdentifier), count(count), messageOverride(messageOverride) { }
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerBeforePlatformerMapChange();
@@ -128,6 +149,8 @@ public:
 	static void TriggerOpenCrafting(CraftingOpenArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
+	static void TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args);
+	static void TriggerGiveCurrency(GiveCurrencyArgs args);
 	static void TriggerAllowPause();
 	static void TriggerDisallowPause();
 };

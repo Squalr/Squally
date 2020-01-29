@@ -89,4 +89,52 @@ void SquallyReceiveItemBehavior::onLoad()
 			});
 		}
 	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveCurrency, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::GiveCurrencyArgs* args = static_cast<PlatformerEvents::GiveCurrencyArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->count > 0)
+		{
+			/*
+			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+				args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+				args->item->getString(),
+				args->item->getIconResource(),
+				SoundResources::Notifications_NotificationGood3
+			));
+
+			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				entityInventoryBehavior->getInventory()->forceInsert(args->item, true);
+			});*/
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveCurrenciesFromPool, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::GiveCurrenciesFromPoolArgs* args = static_cast<PlatformerEvents::GiveCurrenciesFromPoolArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->pool != nullptr)
+		{
+			this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+			{
+				/*
+				std::vector<Item*> items = args->pool->getItems(entityInventoryBehavior->getAllInventories());
+
+				for (auto item : items)
+				{
+					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+						args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+						item->getString(),
+						item->getIconResource(),
+						SoundResources::Notifications_NotificationGood3
+					));
+
+					entityInventoryBehavior->getInventory()->forceInsert(item, true);
+				}
+				*/
+			});
+		}
+	}));
 }

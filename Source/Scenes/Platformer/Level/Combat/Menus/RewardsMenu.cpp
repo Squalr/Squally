@@ -12,7 +12,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
-#include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Inventory/DropPool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Save/SaveManager.h"
@@ -156,7 +156,7 @@ void RewardsMenu::loadRewards()
 	{
 		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
-			MinMaxPool* dropPool = entityDropTableBehavior->getDropPool();
+			DropPool* dropPool = entityDropTableBehavior->getDropPool();
 
 			if (dropPool != nullptr)
 			{

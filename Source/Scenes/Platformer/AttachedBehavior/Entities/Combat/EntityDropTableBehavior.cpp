@@ -7,7 +7,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Inventory/DropPool.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/DropPools/DropPoolDeserializer.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -62,7 +62,7 @@ void EntityDropTableBehavior::setDropTable(std::string dropTable)
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs deserializeArgs = ObjectDeserializer::ObjectDeserializationRequestArgs(valueMap, [=](ObjectDeserializer::ObjectDeserializationArgs args)
 	{
-		MinMaxPool* dropPool = static_cast<MinMaxPool*>(args.gameObject);
+		DropPool* dropPool = static_cast<DropPool*>(args.gameObject);
 
 		this->dropPool = dropPool;
 
@@ -72,7 +72,7 @@ void EntityDropTableBehavior::setDropTable(std::string dropTable)
 	this->dropPoolDeserializer->deserialize(&deserializeArgs);
 }
 
-MinMaxPool* EntityDropTableBehavior::getDropPool()
+DropPool* EntityDropTableBehavior::getDropPool()
 {
 	return this->dropPool;
 }
