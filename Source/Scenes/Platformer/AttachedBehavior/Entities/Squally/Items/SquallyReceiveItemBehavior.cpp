@@ -9,6 +9,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -106,7 +107,7 @@ void SquallyReceiveItemBehavior::onLoad()
 		{
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 				args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
-				args->currency->getString(),
+				Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(args->currency->getCount()))),
 				args->currency->getIconResource(),
 				SoundResources::Notifications_NotificationGood3
 			));
@@ -137,7 +138,7 @@ void SquallyReceiveItemBehavior::onLoad()
 
 					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 						args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
-						currency->getString(),
+						Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(currency->getCount()))),
 						currency->getIconResource(),
 						SoundResources::Notifications_NotificationGood3
 					));

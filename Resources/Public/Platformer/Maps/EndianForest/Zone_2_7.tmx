@@ -149,7 +149,7 @@
    <properties>
     <property name="color" value="yellow-skull"/>
     <property name="map" value="EndianForest/Zone_2_6"/>
-    <property name="transition" value="exit-E"/>
+    <property name="transition" value="entrance-D"/>
    </properties>
   </object>
   <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
