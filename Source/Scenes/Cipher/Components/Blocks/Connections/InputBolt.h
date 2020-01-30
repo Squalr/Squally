@@ -13,7 +13,7 @@ class ClickableNode;
 class InputBolt : public BoltBase
 {
 public:
-	static InputBolt* create(BlockBase* parentBlock);
+	static InputBolt* create(BlockBase* parentBlock, int inputIndex);
 
 	void execute(char value, std::function<void()> onExecuteComplete);
 	void setConnection(Connection* connection) override;
@@ -22,7 +22,7 @@ public:
 
 private:
 	typedef BoltBase super;
-	InputBolt(BlockBase* parentBlock);
+	InputBolt(BlockBase* parentBlock, int inputIndex);
 	~InputBolt();
 
 	void onEnter() override;
@@ -32,4 +32,5 @@ private:
 	BlockBase* parentBlock;
 	cocos2d::Sprite* bolt;
 	cocos2d::Sprite* helperArrow;
+	int inputIndex;
 };

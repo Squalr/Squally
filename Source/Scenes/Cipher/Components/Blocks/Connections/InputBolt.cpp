@@ -19,20 +19,21 @@
 
 using namespace cocos2d;
 
-InputBolt* InputBolt::create(BlockBase* parentBlock)
+InputBolt* InputBolt::create(BlockBase* parentBlock, int inputIndex)
 {
-	InputBolt* instance = new InputBolt(parentBlock);
+	InputBolt* instance = new InputBolt(parentBlock, inputIndex);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InputBolt::InputBolt(BlockBase* parentBlock)
+InputBolt::InputBolt(BlockBase* parentBlock, int inputIndex)
 {
 	this->parentBlock = parentBlock;
 	this->bolt = Sprite::create(CipherResources::Connections_ConnectionPlug);
 	this->helperArrow = Sprite::create(CipherResources::Connections_HelperArrowInput);
+	this->inputIndex = inputIndex;
 	this->inputDebug = true;
 
 	bolt->setFlippedY(true);
@@ -98,7 +99,7 @@ void InputBolt::execute(char value, std::function<void()> onExecuteComplete)
 {
 	if (this->parentBlock != nullptr)
 	{
-		this->parentBlock->pushInput(value);
+		this->parentBlock->setInput(value, this->inputIndex);
 		this->parentBlock->execute(onExecuteComplete);
 	}
 	else

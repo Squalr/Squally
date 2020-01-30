@@ -145,22 +145,76 @@ static const te_variable *find_lookup(const state *s, const char *name, unsigned
     return 0;
 }
 
+static unsigned char add(unsigned char a, unsigned char b)
+{
+    return a + b;
+}
 
+static unsigned char sub(unsigned char a, unsigned char b)
+{
+    return a - b;
+}
 
-static unsigned char add(unsigned char a, unsigned char b) {return a + b;}
-static unsigned char sub(unsigned char a, unsigned char b) {return a - b;}
-static unsigned char mul(unsigned char a, unsigned char b) {return a * b;}
-static unsigned char xor(unsigned char a, unsigned char b) {return a ^ b;}
-static unsigned char or(unsigned char a, unsigned char b) {return a | b;}
-static unsigned char and(unsigned char a, unsigned char b) {return a & b;}
-static unsigned char mod(unsigned char a, unsigned char b) {return a % b;}
-static unsigned char divide(unsigned char a, unsigned char b) {return a / b;}
-static unsigned char shl(unsigned char a, unsigned char b) {return a << b;}
-static unsigned char shr(unsigned char a, unsigned char b) {return a >> b;}
-static unsigned char cshl(unsigned char a, unsigned char b) {return a >> b;}
-static unsigned char cshr(unsigned char a, unsigned char b) {return a << b;}
-static unsigned char negate(unsigned char a) {return -a;}
-static unsigned char comma(unsigned char a, unsigned char b) {(void)a; return b;}
+static unsigned char mul(unsigned char a, unsigned char b)
+{
+    return a * b;
+}
+
+static unsigned char xor(unsigned char a, unsigned char b)
+{
+    return a ^ b;
+}
+
+static unsigned char or(unsigned char a, unsigned char b)
+{
+    return a | b;
+}
+
+static unsigned char and(unsigned char a, unsigned char b)
+{
+    return a & b;
+}
+
+static unsigned char mod(unsigned char a, unsigned char b)
+{
+    return a % b;
+}
+
+static unsigned char divide(unsigned char a, unsigned char b)
+{
+    return a / b;
+}
+
+static unsigned char shl(unsigned char a, unsigned char b)
+{
+    return a << b;
+}
+
+static unsigned char shr(unsigned char a, unsigned char b)
+{
+    return a >> b;
+}
+
+static unsigned char cshl(unsigned char a, unsigned char b)
+{
+    return a >> b;
+}
+
+static unsigned char cshr(unsigned char a, unsigned char b)
+{
+    return a << b;
+}
+
+static unsigned char negate(unsigned char a)
+{
+    return -a;
+}
+
+static unsigned char comma(unsigned char a, unsigned char b)
+{
+    (void)a;
+    return b;
+}
 
 
 void next_token(state *s) {

@@ -23,7 +23,7 @@ public:
 	};
 
 	void setSpawnPosition(cocos2d::Vec2 spawnPosition);
-	void pushInput(unsigned char input);
+	void setInput(unsigned char input, int inputIndex);
 	virtual void execute(std::function<void()> onExecuteComplete);
 	void removeConnections();
 	ClickableNode* getBlock();
