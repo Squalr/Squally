@@ -143,7 +143,11 @@ void RewardsMenu::giveExp()
 					? expGain
 					: int(float(expGain) * std::pow(GainFactor, intendedLevel - currentLevel));
 
-				friendlyExpBarBehavior->giveExp(adjustedGain);
+				const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+				const bool didLevelUp = eqBehavior->addEqExperience(adjustedGain);
+				const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
+
+				friendlyExpBarBehavior->giveExp(startProgress, endProgress, didLevelUp, adjustedGain);
 				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
 			});
 		});

@@ -48,7 +48,8 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner,
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
 	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp);
-	this->tickCounter = 0;
+	this->tickCounterA = 0;
+	this->tickCounterB = 0;
 
 	// Gain text
 	this->deltaLabel->setTextColor(Color4B::YELLOW);
@@ -82,7 +83,7 @@ void FriendlyExpBarBehavior::onLoad()
 	this->expProgressBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 }
 
-void FriendlyExpBarBehavior::giveExp(int expGain)
+void FriendlyExpBarBehavior::giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain)
 {
 	this->expProgressBar->runAction(FadeTo::create(0.25f, 255));
 	this->deltaLabel->runAction(FadeTo::create(0.25f, 255));
@@ -90,33 +91,28 @@ void FriendlyExpBarBehavior::giveExp(int expGain)
 	
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
 	{
-		const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
-		const bool didLevelUp = eqBehavior->addEqExperience(expGain);
-		
 		const float StartDelay = 0.5f;
-		const float FillDuration = 1.0f;
+		const float TimePerPercent = 0.85f;
+		const float RestartDelay = 0.0f;
+		const float Phase1Duration = (1.0f - startProgress) * TimePerPercent;
+		const float Phase2Duration = endProgress * TimePerPercent;
 		
 		if (didLevelUp)
 		{
-			const float RestartDelay = 1.0f;
-			const float Phase1Duration = (1.0f - startProgress) * FillDuration;
-			const float Phase2Duration = FillDuration - Phase1Duration;
-
-			this->fillBar(startProgress, 1.0f, Phase1Duration, StartDelay, [=]()
+			this->fillBar(startProgress, 1.0f, Phase1Duration, StartDelay, &this->tickCounterA, [=]()
 			{
 				this->runLevelUpEffect();
-				this->fillBar(0.0f, endProgress, Phase2Duration, RestartDelay);
+				this->fillBar(0.0f, endProgress, Phase2Duration, RestartDelay, &this->tickCounterB);
 			});
 		}
 		else
 		{
-			this->fillBar(startProgress, endProgress, FillDuration, StartDelay);
+			this->fillBar(startProgress, endProgress, Phase1Duration, StartDelay, &this->tickCounterA);
 		}
 	});
 }
 
-void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete)
+void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete)
 {
 	static int UniqueId = 0;
 	UniqueId++;
@@ -125,18 +121,22 @@ void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, flo
 	const float Interval = fillDuration / float(UpdatesPerSecond);
 	const int Ticks = int(fillDuration * float(UpdatesPerSecond));
 	const float Increment = (endProgress - startProgress) / float(Ticks);
-	this->tickCounter = 0;
+	*tickCounter = 0;
 
 	expProgressBar->setProgress(startProgress);
 
 	expProgressBar->schedule([=](float dt)
 	{
-		expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
-
-		if (onComplete != nullptr && ++this->tickCounter == Ticks)
+		if (onComplete != nullptr && *tickCounter == Ticks)
 		{
 			onComplete();
 		}
+		else if (*tickCounter < Ticks)
+		{
+			expProgressBar->setProgress(expProgressBar->getProgress() + Increment);
+		}
+
+		++*tickCounter;
 
 	}, Interval, Ticks, startDelay, "EVENT_EXP_BAR_UPDATE_" + std::to_string(UniqueId));
 }

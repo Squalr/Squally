@@ -13,7 +13,7 @@ class FriendlyExpBarBehavior : public EntityCollisionBehaviorBase
 public:
 	static FriendlyExpBarBehavior* create(GameObject* owner);
 
-	void giveExp(int expGain);
+	void giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain);
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -26,12 +26,13 @@ protected:
 private:
 	typedef EntityCollisionBehaviorBase super;
 
-	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, std::function<void()> onComplete = nullptr);
+	void fillBar(float startProgress, float endProgress, float fillDuration, float startDelay, int* tickCounter, std::function<void()> onComplete = nullptr);
 	void runLevelUpEffect();
 
 	PlatformerEntity* owner;
 	
-	int tickCounter;
+	int tickCounterA;
+	int tickCounterB;
 	ProgressBar* expProgressBar;
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
