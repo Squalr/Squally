@@ -131,11 +131,13 @@
     <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="talk-to-grogg"/>
     <property name="quest-line" value="find-elriel"/>
+    <property name="send-event" value="grogg-dead"/>
    </properties>
   </object>
   <object id="944" name="temple-door" type="object" x="3935.52" y="1645.09" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
+    <property name="listen-event" value="grogg-dead"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
     <property name="transition" value="main"/>
    </properties>

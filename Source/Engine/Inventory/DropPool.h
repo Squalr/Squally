@@ -10,7 +10,7 @@ public:
 	CurrencyPool* getCurrencyPool();
 
 protected:
-	DropPool(cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, CurrencyPool* currencyPool, std::vector<MinMaxPool*> nestedPools = { });
+	DropPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, CurrencyPool* currencyPool, std::vector<MinMaxPool*> nestedPools = { });
 	virtual ~DropPool();
 
 private:
