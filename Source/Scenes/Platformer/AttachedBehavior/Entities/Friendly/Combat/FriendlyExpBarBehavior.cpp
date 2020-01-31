@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -23,6 +24,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -46,22 +48,29 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner,
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = Strings::Common_PlusConstant::create();
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
+	this->levelUpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_LevelUp::create());
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
-	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp);
+	this->levelUpFx = ParticleSystemQuad::create(ParticleResources::Platformer_Combat_LevelUp);
+	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp2);
 	this->tickCounterA = 0;
 	this->tickCounterB = 0;
 
-	// Gain text
 	this->deltaLabel->setTextColor(Color4B::YELLOW);
 	this->deltaLabel->enableOutline(Color4B::BLACK, 2);
+	this->levelUpLabel->setTextColor(Color4B::YELLOW);
+	this->levelUpLabel->enableOutline(Color4B::BLACK, 2);
+
+	this->levelUpFx->stopSystem();
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
 
+	this->addChild(this->levelUpFx);
 	this->addChild(this->expProgressBar);
 	this->addChild(this->deltaLabel);
+	this->addChild(this->levelUpLabel);
 	this->addChild(this->levelUpSound);
 }
 
@@ -75,18 +84,44 @@ void FriendlyExpBarBehavior::onLoad()
 
 	this->expProgressBar->setOpacity(0);
 	this->deltaLabel->setOpacity(0);
+	this->levelUpLabel->setOpacity(0);
 
 	const Vec2 entityCenter = this->entity->getEntityCenterPoint();
 	const float offetY =  this->entity->getEntitySize().height / 2.0f + 32.0f;
 
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
+	this->levelUpLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
+	this->levelUpFx->setPosition(entityCenter + Vec2(0.0f, offetY - 16.0f));
 	this->expProgressBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 }
 
 void FriendlyExpBarBehavior::giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain)
 {
-	this->expProgressBar->runAction(FadeTo::create(0.25f, 255));
-	this->deltaLabel->runAction(FadeTo::create(0.25f, 255));
+	this->expProgressBar->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(5.0f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
+
+	this->deltaLabel->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(1.0f),
+		FadeTo::create(0.25f, 0),
+		CallFunc::create([=]()
+		{
+			if (didLevelUp)
+			{
+				this->levelUpLabel->runAction(Sequence::create(
+					FadeTo::create(0.25f, 255),
+					DelayTime::create(2.0f),
+					FadeTo::create(0.25f, 0),
+					nullptr
+				));
+			}
+		}),
+		nullptr
+	));
 	this->deltaString->setStringReplacementVariables(ConstantString::create(std::to_string(expGain)));
 	
 	this->entity->getAttachedBehavior<EntityEqBehavior>([=](EntityEqBehavior* eqBehavior)
@@ -144,4 +179,5 @@ void FriendlyExpBarBehavior::fillBar(float startProgress, float endProgress, flo
 void FriendlyExpBarBehavior::runLevelUpEffect()
 {
 	this->levelUpSound->play();
+	this->levelUpFx->start();
 }

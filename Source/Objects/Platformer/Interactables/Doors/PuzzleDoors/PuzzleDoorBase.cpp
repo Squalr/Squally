@@ -305,7 +305,7 @@ void PuzzleDoorBase::lock(bool animate)
 		this->runes[index]->runAction(FadeTo::create(0.25f, 255));
 	}
 
-	float currentProgress = 1.0f - this->doorNode->getPositionY() / this->doorOpenDelta;
+	float currentProgress = this->doorNode->getPositionY() / this->doorOpenDelta;
 
 	if (animate)
 	{

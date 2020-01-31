@@ -2,6 +2,11 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 
+namespace cocos2d
+{
+	class ParticleSystem;
+}
+
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
@@ -36,5 +41,7 @@ private:
 	ProgressBar* expProgressBar;
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
+	LocalizedLabel* levelUpLabel;
+	cocos2d::ParticleSystem* levelUpFx;
 	Sound* levelUpSound;
 };

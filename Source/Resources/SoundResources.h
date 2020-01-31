@@ -151,6 +151,8 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_CombatEngage1;
 	extern const std::string Platformer_Combat_Defeat;
 	extern const std::string Platformer_Combat_LevelUp;
+	extern const std::string Platformer_Combat_LevelUp2;
+	extern const std::string Platformer_Combat_LevelUp3;
 	extern const std::string Platformer_Combat_Victory;
 	extern const std::string Platformer_Entities_Demon_DemonLaugh;
 	extern const std::string Platformer_Entities_Demon_DemonRoar1;

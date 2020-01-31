@@ -184,7 +184,7 @@ namespace ObjectResources
 	extern const std::string Doors_Temple_DownArrow;
 	extern const std::string Doors_Temple_Skull;
 	extern const std::string Doors_Temple_TempleDoor;
-	extern const std::string Doors_Temple_TempleGreenDoor;
+	extern const std::string Doors_Temple_TempleDoorBack;
 	extern const std::string Doors_Temple_UpArrow;
 	extern const std::string Doors_Tent_1;
 	extern const std::string Doors_Tent_BACK_CART;
