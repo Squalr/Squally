@@ -25,7 +25,7 @@ public:
 private:
 	typedef SmartNode super;
 	Timeline();
-	~Timeline();
+	virtual ~Timeline();
 
 	void onEnter() override;
 	void initializePositions() override;

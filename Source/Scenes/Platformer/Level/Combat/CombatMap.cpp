@@ -83,12 +83,15 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = CombatAIHelper::create();
 	this->notificationHud = NotificationHud::create();
+	this->entityFocusTakeOver = FocusTakeOver::create();
 	this->focusTakeOver = FocusTakeOver::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
+
+	this->entityFocusTakeOver->disableBackground();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -116,6 +119,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->entityFocusTakeOver);
 	this->hud->addChild(this->focusTakeOver);
 	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
@@ -236,12 +240,14 @@ void CombatMap::initializeListeners()
 				{
 					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
 
-					this->focusTakeOver->repeatFocus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry, combatArgs->entry->getEntity() });
+					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
+					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry, combatArgs->entry->getEntity() });
 
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
 				{
+					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
 
 					break;

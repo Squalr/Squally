@@ -179,28 +179,19 @@ void Timeline::checkCombatComplete()
 	anyEnemyAlive = false;
 	anyPlayerAlive = false;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
+	for (auto next : this->timelineEntries)
 	{
-		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-		{
-			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
-			{
-				anyEnemyAlive = true;
-			}));
-		}
-	}), PlatformerEnemy::PlatformerEnemyTag);
+		PlatformerEntity* entity = next->getEntity();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
-	{
-		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (dynamic_cast<PlatformerEnemy*>(entity) != nullptr)
 		{
-			// Only set flag if the entity is on the timeline to avoid querying non-combat helpers (ie scrappy)
-			CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(entity, [=](TimelineEntry* timelineEntry)
-			{
-				anyPlayerAlive = true;
-			}));
+			anyEnemyAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
 		}
-	}), PlatformerFriendly::PlatformerFriendlyTag);
+		else if (dynamic_cast<PlatformerFriendly*>(entity) != nullptr)
+		{
+			anyPlayerAlive |= entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+		}
+	}
 
 	if (!anyEnemyAlive)
 	{

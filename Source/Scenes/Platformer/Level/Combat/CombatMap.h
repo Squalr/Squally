@@ -65,6 +65,7 @@ private:
 	CombatAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
 
+	FocusTakeOver* entityFocusTakeOver;
 	FocusTakeOver* focusTakeOver;
 
 	bool playerFirstStrike;

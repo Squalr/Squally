@@ -59,6 +59,11 @@ void FocusTakeOver::initializeListeners()
 	this->addEventListenerIgnorePause(beforeSceneChangeListener);
 }
 
+void FocusTakeOver::disableBackground()
+{
+	this->focusBackground->setVisible(false);
+}
+
 void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 {
 	this->unfocus(Transition::Instant);
@@ -136,7 +141,7 @@ void FocusTakeOver::unfocus(Transition transition)
 void FocusTakeOver::repeatFocus(std::vector<cocos2d::Node*> nodes)
 {
 	this->focus(nodes, Transition::Fade);
-	
+
 	this->repeatFocusedNodes = nodes;
 
 	this->softUnfocus();
