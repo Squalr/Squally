@@ -123,7 +123,7 @@
   </object>
   <object id="942" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy"/>
+    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_TempleBoss"/>
     <property name="battle-tag" value="group-a"/>
@@ -172,7 +172,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="trigger" type="object" x="1995" y="-18.53" width="146" height="1829.06">
+  <object id="953" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
    <properties>
     <property name="send-event" value="talk-to-grogg"/>
    </properties>

@@ -35,7 +35,7 @@ KingGrogg::~KingGrogg()
 
 Vec2 KingGrogg::getDialogueOffset()
 {
-	return Vec2(-32.0f, -280.0f);
+	return Vec2(-32.0f, -192.0f);
 }
 
 LocalizedString* KingGrogg::getEntityName()

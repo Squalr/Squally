@@ -15,6 +15,12 @@ class AgroBehavior : public AttachedBehavior
 public:
 	static AgroBehavior* create(GameObject* owner);
 
+	void enable();
+	void disable();
+	void toggleWarnOnAgro(bool warnOnAgro);
+	void setAgroRangeX(float agroRange);
+	void setAgroRangeY(float agroRange);
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
@@ -32,7 +38,11 @@ private:
 	Squally* squally;
 	cocos2d::Sprite* exclamation;
 
+	bool isEnabled;
 	bool isAgrod;
+	bool warnOnAgro;
+	float agroRangeX;
+	float agroRangeY;
 	float engageCooldown;
 
 	static const float AgroRangeX;

@@ -18,6 +18,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -67,6 +68,11 @@ void TalkToGrogg::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<KingGrogg>(this, [=](KingGrogg* kingGrogg)
 	{
 		this->kingGrogg = kingGrogg;
+		
+		this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
+		{
+			agroBehavior->disable();
+		});
 	}, KingGrogg::MapKeyKingGrogg);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
@@ -106,7 +112,7 @@ void TalkToGrogg::runCinematicSequencePart1()
 		{
 			this->runCinematicSequencePart2();
 		},
-		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		SoundResources::Platformer_Entities_Orc_GruntDeep1,
 		false
 	));
 }
@@ -125,7 +131,7 @@ void TalkToGrogg::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		SoundResources::Platformer_Entities_Orc_Grunt1,
 		false
 	));
 }
@@ -144,7 +150,7 @@ void TalkToGrogg::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		SoundResources::Platformer_Entities_Orc_Growl1,
 		false
 	));
 }
@@ -161,8 +167,15 @@ void TalkToGrogg::runCinematicSequencePart4()
 		),
 		[=]()
 		{
+			this->kingGrogg->watchForAttachedBehavior<AgroBehavior>([&](AgroBehavior* agroBehavior)
+			{
+				agroBehavior->enable();
+				agroBehavior->toggleWarnOnAgro(false);
+				agroBehavior->setAgroRangeX(65535.0f);
+				agroBehavior->setAgroRangeY(65535.0f);
+			});
 		},
-		SoundResources::Platformer_Entities_Orc_OrcLaugh,
-		false
+		SoundResources::Platformer_Entities_Orc_OrcLaugh1,
+		true
 	));
 }
