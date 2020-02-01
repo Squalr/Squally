@@ -231,9 +231,10 @@ void Timeline::updateTimeline(float dt)
 			{
 				if (!this->isTimelineInterrupted)
 				{
-					entry->addTime(dt);
-
+					entry->addTimeWithoutActions(dt);
 					entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
+
+					entry->tryPerformActions();
 				}
 				else
 				{

@@ -131,7 +131,7 @@ void TalkToGrogg::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Orc_Grunt1,
+		SoundResources::Platformer_Entities_Orc_Growl1,
 		false
 	));
 }
@@ -150,7 +150,7 @@ void TalkToGrogg::runCinematicSequencePart3()
 		{
 			this->runCinematicSequencePart4();
 		},
-		SoundResources::Platformer_Entities_Orc_Growl1,
+		SoundResources::Platformer_Entities_Orc_Grunt1,
 		false
 	));
 }

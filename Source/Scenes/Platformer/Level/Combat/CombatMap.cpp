@@ -15,6 +15,7 @@
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -82,6 +83,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = CombatAIHelper::create();
 	this->notificationHud = NotificationHud::create();
+	this->focusTakeOver = FocusTakeOver::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
@@ -114,6 +116,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->choicesMenu);
+	this->hud->addChild(this->focusTakeOver);
 	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
@@ -225,19 +228,21 @@ void CombatMap::initializeListeners()
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
 
-		if (combatArgs != nullptr && combatArgs->entry != nullptr)
+		if (combatArgs != nullptr)
 		{
 			switch (combatArgs->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
+					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
+
+					this->focusTakeOver->repeatFocus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry, combatArgs->entry->getEntity() });
 
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
 				{
-					this->choicesMenu->setVisible(false);
+					this->focusTakeOver->unfocus();
 
 					break;
 				}

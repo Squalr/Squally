@@ -219,7 +219,11 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 void TimelineEntry::addTime(float dt)
 {
 	this->addTimeWithoutActions(dt);
+	this->tryPerformActions();
+}
 
+void TimelineEntry::tryPerformActions()
+{
 	// Cast started
 	if (this->progress > TimelineEntry::CastPercentage && !this->isCasting)
 	{

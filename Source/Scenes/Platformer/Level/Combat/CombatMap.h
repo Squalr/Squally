@@ -2,14 +2,15 @@
 
 #include "Scenes/MapBase.h"
 
-class CollectablesMenu;
-class CombatHud;
+class CardsMenu;
 class ChoicesMenu;
-class DefeatMenu;
+class CollectablesMenu;
 class CombatAIHelper;
+class CombatHud;
+class DefeatMenu;
+class FocusTakeOver;
 class FirstStrikeMenu;
 class InventoryMenu;
-class CardsMenu;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
@@ -63,6 +64,8 @@ private:
 	Timeline* timeline;
 	CombatAIHelper* enemyAIHelper;
 	NotificationHud* notificationHud;
+
+	FocusTakeOver* focusTakeOver;
 
 	bool playerFirstStrike;
 	std::vector<CombatData> playerData;

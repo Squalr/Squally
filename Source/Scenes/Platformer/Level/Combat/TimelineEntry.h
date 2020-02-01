@@ -24,6 +24,7 @@ public:
 	void defend();
 	float getProgress();
 	void setProgress(float progress);
+	void tryPerformActions();
 	void addTimeWithoutActions(float dt);
 	void addTime(float dt);
 	bool isPlayerEntry();
