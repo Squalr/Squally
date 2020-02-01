@@ -23,6 +23,7 @@
 using namespace cocos2d;
 
 const std::string Trigger::MapKeyTrigger = "trigger";
+const std::string Trigger::PropertySaveState = "save-state";
 
 Trigger* Trigger::create(ValueMap& properties)
 {
@@ -37,6 +38,7 @@ Trigger::Trigger(ValueMap& properties) : super(properties)
 {
 	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(PhysicsBody::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->saveState = GameUtils::getKeyOrDefault(this->properties, Trigger::PropertySaveState, Value(false)).asBool();
 	this->wasActivated = false;
 
 	this->addChild(this->triggerCollision);
@@ -49,6 +51,8 @@ Trigger::~Trigger()
 void Trigger::onEnter()
 {
 	super::onEnter();
+
+	this->wasActivated = this->getObjectStateOrDefault(Trigger::PropertySaveState, Value(false)).asBool();
 
 	this->scheduleUpdate();
 }
@@ -67,9 +71,9 @@ void Trigger::initializeListeners()
 		if (!this->wasActivated)
 		{
 			this->wasActivated = true;
-			ValueMap args = ValueMap();
-
-			ObjectEvents::TriggerBroadCastMapObjectState(this->sendEvent, args);
+			this->saveObjectState(Trigger::PropertySaveState, Value(this->wasActivated));
+			
+			this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

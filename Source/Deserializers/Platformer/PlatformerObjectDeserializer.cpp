@@ -25,7 +25,12 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
+	
+	// Engine objects
+	this->deserializers[Sound::MapKeySound] = [=](ValueMap properties) { return (GameObject*)Sound::create(properties); };
+	this->deserializers[WorldSound::MapKeyWorldSound] = [=](ValueMap properties) { return (GameObject*)WorldSound::create(properties); };
 
+	// Custom objects
 	this->deserializers[AddDoor::MapKeyAddDoor] = [=](ValueMap properties) { return (GameObject*)AddDoor::create(properties); };
 	this->deserializers[Anvil::MapKeyAnvil] = [=](ValueMap properties) { return (GameObject*)Anvil::create(properties); };
 	this->deserializers[BreakableBarrel::MapKeyBreakableBarrel] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };

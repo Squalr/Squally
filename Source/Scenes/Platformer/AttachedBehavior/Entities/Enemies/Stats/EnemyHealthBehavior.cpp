@@ -50,10 +50,7 @@ void EnemyHealthBehavior::onLoad()
 		{
 			if (!value.asBool())
 			{
-				if (!this->entity->getSendEvent().empty())
-				{
-					ObjectEvents::TriggerBroadCastMapObjectState(this->entity->getSendEvent(), ValueMap());
-				}
+				this->entity->broadcastMapEvent(this->entity->getSendEvent(), ValueMap());
 			}
 
 			this->entity->saveObjectState(EnemyHealthBehavior::SaveKeyIsDead, Value(!value.asBool()));

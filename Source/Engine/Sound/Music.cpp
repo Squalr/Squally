@@ -35,7 +35,7 @@ Music* Music::createAndAddGlobally(std::string musicResource, SmartScene* owner)
 	return instance;
 }
 
-Music::Music(std::string musicResource, SmartNode* owner) : super(musicResource)
+Music::Music(std::string musicResource, SmartNode* owner) : super(ValueMap(), musicResource)
 {
 	if (owner != nullptr)
 	{
@@ -49,7 +49,7 @@ Music::Music(std::string musicResource, SmartNode* owner) : super(musicResource)
 	}
 }
 
-Music::Music(std::string musicResource, SmartScene* owner) : super(musicResource)
+Music::Music(std::string musicResource, SmartScene* owner) : super(ValueMap(),musicResource)
 {
 	if (owner != nullptr)
 	{
@@ -71,7 +71,7 @@ void Music::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
 	{
 		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
 
@@ -81,7 +81,7 @@ void Music::initializeListeners()
 		}
 	}));
 
-	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventMusicVolumeUpdated, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventMusicVolumeUpdated, [=](EventCustom* eventCustom)
 	{
 		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 	}));

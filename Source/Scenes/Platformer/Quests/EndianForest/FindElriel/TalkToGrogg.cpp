@@ -79,7 +79,7 @@ void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequence();
+		this->runCinematicSequencePart1();
 	});
 }
 
@@ -92,46 +92,77 @@ void TalkToGrogg::onSkipped()
 	this->removeAllListeners();
 }
 
-void TalkToGrogg::runCinematicSequence()
+void TalkToGrogg::runCinematicSequencePart1()
 {
-	if (this->kingGrogg == nullptr)
-	{
-		return;
-	}
-	
-	this->kingGrogg->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		// Pre-text chain
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->kingGrogg, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			false
-		));
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart2();
+		},
+		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		false
+	));
+}
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->kingGrogg, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
-			true
-		));
-	});
+void TalkToGrogg::runCinematicSequencePart2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_B_RescueElf::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart3();
+		},
+		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		false
+	));
+}
+
+void TalkToGrogg::runCinematicSequencePart3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart4();
+		},
+		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		false
+	));
+}
+
+void TalkToGrogg::runCinematicSequencePart4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_D_MarchesTowards::create()->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingGrogg, true)
+		),
+		[=]()
+		{
+		},
+		SoundResources::Platformer_Entities_Orc_OrcLaugh,
+		false
+	));
 }

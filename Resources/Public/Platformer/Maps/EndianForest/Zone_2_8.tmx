@@ -434,14 +434,15 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="spawn" type="object" x="1695" y="1317.64" width="128" height="128">
+  <object id="822" name="spawn" type="object" x="2009" y="1321.64" width="128" height="128">
    <properties>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="874" name="edge-portal" type="object" x="2362.04" y="893.514" width="199.918" height="552.972">
    <properties>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_6"/>
     <property name="transition" value="exit"/>
    </properties>

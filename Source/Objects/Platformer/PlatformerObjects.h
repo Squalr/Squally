@@ -1,4 +1,6 @@
 #pragma once
+#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Objects/Camera/CameraFocus.h"
 #include "Objects/Camera/CameraScrollTracker.h"
 #include "Objects/Camera/CameraStop.h"

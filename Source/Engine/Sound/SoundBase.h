@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/GlobalNode.h"
+#include "Engine/Maps/GameObject.h"
 
-class SoundBase : public GlobalNode
+class SoundBase : public GameObject
 {
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
@@ -15,7 +15,7 @@ public:
 	void setSoundResource(std::string soundResource);
 
 protected:
-	SoundBase(std::string soundResource);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
 	virtual ~SoundBase();
 
 	void onEnter() override;
@@ -27,7 +27,7 @@ protected:
 	int activeTrackId;
 
 private:
-	typedef GlobalNode super;
+	typedef GameObject super;
 
 	void updateDistanceFade();
 

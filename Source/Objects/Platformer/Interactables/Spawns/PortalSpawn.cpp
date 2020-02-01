@@ -6,6 +6,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/UI/MapTitleBanner.h"
 #include "Engine/Utils/GameUtils.h"
@@ -34,6 +35,7 @@ PortalSpawn::PortalSpawn(ValueMap& properties) : super(properties)
 {
 	this->transition = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyPortalSpawnTransition, Value("")).asString();
 	this->bannerName = GameUtils::getKeyOrDefault(this->properties, PortalSpawn::MapKeyMapBanner, Value("")).asString();
+	this->flipX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 }
 
 PortalSpawn::~PortalSpawn()
@@ -71,6 +73,11 @@ void PortalSpawn::onPlayerSpawn()
 	{
 		PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, GameUtils::getWorldCoords(this)));
 		this->tryShowBanner();
+		
+		if (squally->getAnimations() != nullptr)
+		{
+			squally->getAnimations()->setFlippedX(this->flipX);
+		}
 
 	}), Squally::MapKeySqually);
 }

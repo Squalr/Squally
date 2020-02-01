@@ -70,7 +70,7 @@ void Lever::onInteract()
 	
 	this->lever->playAnimation("PullBack", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
 	{
-		ObjectEvents::TriggerBroadCastMapObjectState(this->getSendEvent(), ValueMap());
+		this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 		
 		this->lever->clearAnimationPriority();
 		this->lever->playAnimation("Reset", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()

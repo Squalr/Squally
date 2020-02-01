@@ -52,6 +52,16 @@ Portal::~Portal()
 void Portal::onEnter()
 {
 	super::onEnter();
+
+	if (!this->getListenEvent().empty())
+	{
+		this->lock(false);
+
+		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap args)
+		{
+			this->unlock(true);
+		});
+	}
 }
 
 void Portal::initializePositions()

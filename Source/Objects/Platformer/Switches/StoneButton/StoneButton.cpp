@@ -107,7 +107,7 @@ void StoneButton::update(float dt)
 			{ SwitchEvents::SwitchArgProgress, Value(progress) },
 		};
 
-		ObjectEvents::TriggerBroadCastMapObjectState(this->sendEvent, args);
+		this->broadcastMapEvent(this->getSendEvent(), args);
 	}
 }
 

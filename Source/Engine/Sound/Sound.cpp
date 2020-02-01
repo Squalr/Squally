@@ -7,22 +7,35 @@
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Events/SoundEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
 
+const std::string Sound::MapKeySound = "sound";
+const std::string Sound::PropertyKeyResource = "resource";
+
 Sound* Sound::create(std::string soundResource)
 {
-	Sound* instance = new Sound(soundResource);
+	return Sound::create(ValueMap(), soundResource);
+}
+
+Sound* Sound::create(ValueMap& properties, std::string soundResource)
+{
+	Sound* instance = new Sound(properties, soundResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Sound::Sound(std::string soundResource) : super(soundResource)
+Sound::Sound(ValueMap& properties, std::string soundResource) : super(properties, soundResource)
 {
+	if (soundResource.empty() && GameUtils::keyExists(this->properties, Sound::PropertyKeyResource))
+	{
+		this->setSoundResource("Resources/Private/Sounds/" + GameUtils::getKeyOrDefault(this->properties, Sound::PropertyKeyResource, Value("")).asString() + ".mp3");
+	}
 }
 
 Sound::~Sound()
@@ -33,7 +46,7 @@ void Sound::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
 	{
 		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 	}));
@@ -42,6 +55,14 @@ void Sound::initializeListeners()
 	{
 		this->stop();
 	}));
+
+	if (!this->getListenEvent().empty())
+	{
+		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap valueMap)
+		{
+			this->play();
+		});
+	}
 }
 
 void Sound::pause()

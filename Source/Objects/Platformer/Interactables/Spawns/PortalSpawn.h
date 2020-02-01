@@ -29,6 +29,7 @@ private:
 
 	std::string transition;
 	std::string bannerName;
+	bool flipX;
 	
 	static const std::string MapKeyPortalSpawnTransition;
 	static const std::string MapKeyMapBanner;

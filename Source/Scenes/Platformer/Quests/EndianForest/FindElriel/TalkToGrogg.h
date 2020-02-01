@@ -27,7 +27,10 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePart1();
+	void runCinematicSequencePart2();
+	void runCinematicSequencePart3();
+	void runCinematicSequencePart4();
 
 	Guano* guano;
 	KingGrogg* kingGrogg;

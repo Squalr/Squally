@@ -33,4 +33,7 @@ private:
 
 	CollisionObject* triggerCollision;
 	bool wasActivated;
+	bool saveState;
+
+	static const std::string PropertySaveState;
 };
