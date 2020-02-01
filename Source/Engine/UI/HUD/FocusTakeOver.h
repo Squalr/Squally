@@ -23,6 +23,7 @@ public:
 
 	void focus(std::vector<cocos2d::Node*> nodes, Transition transition = Transition::Fade);
 	void unfocus(Transition transition = Transition::Fade);
+	bool isFocused();
 	void repeatFocus(std::vector<cocos2d::Node*> nodes);
 	void disableBackground();
 
@@ -40,6 +41,7 @@ private:
 	
 	void refocus();
 	void softUnfocus();
+	bool hasFocus;
 
 	std::vector<cocos2d::Node*> repeatFocusedNodes;
 	cocos2d::LayerColor* focusBackground;

@@ -15,24 +15,27 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-TargetSelectionMenu* TargetSelectionMenu::create()
+TargetSelectionMenu* TargetSelectionMenu::create(Timeline* timelineRef)
 {
-	TargetSelectionMenu* instance = new TargetSelectionMenu();
+	TargetSelectionMenu* instance = new TargetSelectionMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TargetSelectionMenu::TargetSelectionMenu()
+TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
+	this->timelineRef = timelineRef;
 
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -69,15 +72,14 @@ void TargetSelectionMenu::initializeListeners()
 				{
 					this->selectEntity(nullptr);
 
-					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* entity, bool* isHandled)
+					for (auto next : this->timelineRef->getEntries())
 					{
-						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+						if (!next->isPlayerEntry())
 						{
-							this->selectEntity(entity);
-
-							*isHandled = true;
+							this->selectEntity(next->getEntity());
+							break;
 						}
-					}), PlatformerEnemy::PlatformerEnemyTag);
+					}
 
 					this->allowedSelection = AllowedSelection::Enemy;
 					this->setEntityClickCallbacks();
@@ -89,15 +91,14 @@ void TargetSelectionMenu::initializeListeners()
 				{
 					this->selectEntity(nullptr);
 
-					ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity, bool* isHandled)
+					for (auto next : this->timelineRef->getEntries())
 					{
-						if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
+						if (next->isPlayerEntry())
 						{
-							this->selectEntity(entity);
-
-							*isHandled = true;
+							this->selectEntity(next->getEntity());
+							break;
 						}
-					}), PlatformerFriendly::PlatformerFriendlyTag);
+					}
 
 					this->allowedSelection = AllowedSelection::Player;
 					this->setEntityClickCallbacks();

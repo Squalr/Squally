@@ -17,6 +17,7 @@ class Timeline : public SmartNode
 public:
 	static Timeline* create();
 	
+	std::vector<TimelineEntry*> getEntries();
 	std::vector<TimelineEntry*> initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities);
 	std::vector<TimelineEntry*> initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities);
 

@@ -40,7 +40,7 @@
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="789.4" y="1590.61" width="78.7879" height="88">
+  <object id="555" name="combat-spawn" type="object" x="865.4" y="1588.61" width="78.7879" height="88">
    <properties>
     <property name="depth" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>

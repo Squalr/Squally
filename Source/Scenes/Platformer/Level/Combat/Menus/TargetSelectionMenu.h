@@ -8,15 +8,16 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class Timeline;
 
 class TargetSelectionMenu : public Hud
 {
 public:
-	static TargetSelectionMenu* create();
+	static TargetSelectionMenu* create(Timeline* timelineRef);
 
 private:
 	typedef Hud super;
-	TargetSelectionMenu();
+	TargetSelectionMenu(Timeline* timelineRef);
 	virtual ~TargetSelectionMenu() = default;
 
 	void onEnter() override;
@@ -36,6 +37,7 @@ private:
 		Either
 	};
 
+	Timeline* timelineRef;
 	AllowedSelection allowedSelection;
 	bool isActive;
 	PlatformerEntity* selectedEntity;

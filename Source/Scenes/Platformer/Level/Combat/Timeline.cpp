@@ -243,6 +243,11 @@ void Timeline::resumeTimeline()
 	this->isTimelinePaused = false;
 }
 
+std::vector<TimelineEntry*> Timeline::getEntries()
+{
+	return this->timelineEntries;
+}
+
 std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities)
 {
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();

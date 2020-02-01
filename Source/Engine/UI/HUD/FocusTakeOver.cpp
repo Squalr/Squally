@@ -27,6 +27,10 @@ FocusTakeOver::FocusTakeOver()
 	this->hijackedNodes = std::map<Node*, std::tuple<Node*, int>>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->hijackContainer = Node::create();
+	this->hasFocus = false;
+
+	this->hijackContainer->setCascadeColorEnabled(false);
+	this->hijackContainer->setCascadeOpacityEnabled(false);
 
 	this->addChild(this->focusBackground);
 	this->addChild(this->hijackContainer);
@@ -66,7 +70,7 @@ void FocusTakeOver::disableBackground()
 
 void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 {
-	this->unfocus(Transition::Instant);
+	this->unfocus(Transition::None);
 
 	for (auto next : nodes)
 	{
@@ -103,6 +107,8 @@ void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 			break;
 		}
 	}
+
+	this->hasFocus = false;
 }
 
 void FocusTakeOver::unfocus(Transition transition)
@@ -115,9 +121,6 @@ void FocusTakeOver::unfocus(Transition transition)
 
 		GameUtils::changeParent(node, parent, true, true, childIndex);
 	}
-
-	this->hijackedNodes.clear();
-	this->repeatFocusedNodes.clear();
 
 	switch(transition)
 	{
@@ -136,6 +139,15 @@ void FocusTakeOver::unfocus(Transition transition)
 			break;
 		}
 	}
+
+	this->hijackedNodes.clear();
+	this->repeatFocusedNodes.clear();
+	this->hasFocus = false;
+}
+
+bool FocusTakeOver::isFocused()
+{
+	return this->hasFocus;
 }
 
 void FocusTakeOver::repeatFocus(std::vector<cocos2d::Node*> nodes)

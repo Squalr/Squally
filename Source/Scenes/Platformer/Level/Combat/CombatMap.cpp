@@ -75,9 +75,9 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
-	this->targetSelectionMenu = TargetSelectionMenu::create();
 	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
+	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
@@ -91,7 +91,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
-	this->entityFocusTakeOver->disableBackground();
+	this->focusTakeOver->disableBackground();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -241,8 +241,28 @@ void CombatMap::initializeListeners()
 					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
 
 					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
-					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry, combatArgs->entry->getEntity() });
+					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
 
+					break;
+				}
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
+				{
+					std::vector<Node*> focusTargets = std::vector<Node*>();
+
+					for (auto entity : this->timeline->getEntries())
+					{
+						if (combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget
+							|| (!entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
+							|| (entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
+						{
+							focusTargets.push_back(entity->getEntity());
+						}
+					}
+
+					this->entityFocusTakeOver->repeatFocus({ focusTargets });
+					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
