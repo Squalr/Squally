@@ -240,8 +240,6 @@ void CombatMap::initializeListeners()
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				{
-					this->choicesMenu->setPosition(GameUtils::getScreenBounds(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity()).origin + Vec2(-64.0f, 128.0f));
-
 					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
 					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
 

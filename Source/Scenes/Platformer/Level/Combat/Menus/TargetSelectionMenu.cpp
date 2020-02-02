@@ -36,6 +36,7 @@ TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
 	this->timelineRef = timelineRef;
+	this->selectedEntity = nullptr;
 
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -132,6 +133,23 @@ void TargetSelectionMenu::initializeListeners()
 	});
 }
 
+void TargetSelectionMenu::update(float dt)
+{
+	super::update(dt);
+	
+	const Vec2 LightOffset = Vec2(128.0f, -256.0f);
+
+	if (this->selectedEntity != nullptr)
+	{
+		this->lightRay->setPosition(GameUtils::getScreenBounds(this->selectedEntity).origin + this->selectedEntity->getEntityCenterPoint() + LightOffset);
+		this->lightRay->setVisible(true);
+	}
+	else
+	{
+		this->lightRay->setVisible(false);
+	}
+}
+
 void TargetSelectionMenu::chooseCurrentTarget()
 {
 	if (!this->isActive || this->selectedEntity == nullptr)
@@ -145,18 +163,6 @@ void TargetSelectionMenu::chooseCurrentTarget()
 
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 {
-	const Vec2 LightOffset = Vec2(128.0f, -128.0f);
-
-	if (entity != nullptr)
-	{
-		this->lightRay->setPosition(GameUtils::getScreenBounds(entity).origin + LightOffset);
-		this->lightRay->setVisible(true);
-	}
-	else
-	{
-		this->lightRay->setVisible(false);
-	}
-
 	this->selectedEntity = entity;
 }
 

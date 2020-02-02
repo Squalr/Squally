@@ -9,6 +9,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
@@ -46,6 +47,7 @@ ChoicesMenu::ChoicesMenu()
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
 	this->attackMenu = AttackMenu::create();
 	this->itemsMenu = ItemsMenu::create();
+	this->trackTarget = nullptr;
 
 	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), Sprite::create(UIResources::Menus_Icons_Dice), UIResources::Combat_ItemsCircle, [=]()
 	{
@@ -76,6 +78,8 @@ void ChoicesMenu::onEnter()
 	super::onEnter();
 
 	this->setVisible(false);
+
+	this->scheduleUpdate();
 }
 
 void ChoicesMenu::initializePositions()
@@ -124,6 +128,8 @@ void ChoicesMenu::initializeListeners()
 		{
 			this->previousMenu = this->currentMenu;
 			this->currentMenu = combatArgs->currentMenu;
+
+			this->track(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
 
 			switch (this->currentMenu)
 			{
@@ -251,6 +257,18 @@ void ChoicesMenu::initializeListeners()
 	});
 }
 
+void ChoicesMenu::update(float dt)
+{
+	super::update(dt);
+
+	static const Vec2 Offset = Vec2(-64.0f, 0.0f);
+
+	if (this->trackTarget != nullptr)
+	{
+		this->setPosition(GameUtils::getScreenBounds(this->trackTarget).origin + this->trackTarget->getEntityCenterPoint() + Offset);
+	}
+}
+
 void ChoicesMenu::onItemsClick()
 {
 	switch (this->currentMenu)
@@ -308,4 +326,9 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 
 	this->attackMenu->buildAttackList(selectedEntry);
 	this->itemsMenu->buildAttackList(selectedEntry);
+}
+
+void ChoicesMenu::track(PlatformerEntity* trackTarget)
+{
+	this->trackTarget = trackTarget;
 }

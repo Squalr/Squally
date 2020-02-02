@@ -15,14 +15,17 @@ class TargetSelectionMenu : public Hud
 public:
 	static TargetSelectionMenu* create(Timeline* timelineRef);
 
-private:
-	typedef Hud super;
+protected:
 	TargetSelectionMenu(Timeline* timelineRef);
 	virtual ~TargetSelectionMenu() = default;
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
+
+private:
+	typedef Hud super;
 	void chooseCurrentTarget();
 	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
