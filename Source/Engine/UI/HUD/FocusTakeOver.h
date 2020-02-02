@@ -21,11 +21,11 @@ public:
 		Fade,
 	};
 
+	void setTakeOverOpacity(GLubyte takeOverOpacity);
 	void focus(std::vector<cocos2d::Node*> nodes, Transition transition = Transition::Fade);
 	void unfocus(Transition transition = Transition::Fade);
 	bool isFocused();
 	void repeatFocus(std::vector<cocos2d::Node*> nodes);
-	void disableBackground();
 
 protected:
 	FocusTakeOver();
@@ -43,6 +43,7 @@ private:
 	void softUnfocus();
 	bool hasFocus;
 
+	GLubyte takeOverOpacity;
 	std::vector<cocos2d::Node*> repeatFocusedNodes;
 	cocos2d::LayerColor* focusBackground;
 	cocos2d::Node* hijackContainer;

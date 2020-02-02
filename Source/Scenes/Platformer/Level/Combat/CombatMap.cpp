@@ -10,6 +10,7 @@
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Maps/GameMap.h"
@@ -91,7 +92,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
-	this->focusTakeOver->disableBackground();
+	this->focusTakeOver->setTakeOverOpacity(0);
+	this->entityFocusTakeOver->setTakeOverOpacity(127);
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -243,6 +245,13 @@ void CombatMap::initializeListeners()
 					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
 					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
 
+					for (auto entity : this->timeline->getEntries())
+					{
+						entity->getEntity()->getAnimations()->setOpacity(127);
+					}
+
+					combatArgs->entry->getEntity()->getAnimations()->setOpacity(255);
+
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
@@ -253,13 +262,21 @@ void CombatMap::initializeListeners()
 
 					for (auto entity : this->timeline->getEntries())
 					{
+						entity->getEntity()->getAnimations()->setOpacity(127);
+
 						if (combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget
 							|| (!entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
 							|| (entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
 						{
+							entity->getEntity()->getAnimations()->setOpacity(255);
 							focusTargets.push_back(entity->getEntity());
 						}
 					}
+
+					std::sort(focusTargets.begin(), focusTargets.end(), [](auto& a, auto& b)
+					{ 
+						return a->getPositionZ() < b->getPositionZ();
+					});
 
 					this->entityFocusTakeOver->repeatFocus({ focusTargets });
 					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
@@ -269,6 +286,11 @@ void CombatMap::initializeListeners()
 				{
 					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
+
+					for (auto entity : this->timeline->getEntries())
+					{
+						entity->getEntity()->getAnimations()->setOpacity(255);
+					}
 
 					break;
 				}

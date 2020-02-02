@@ -169,47 +169,18 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 
 	std::vector<PlatformerEntity*> targetEntityGroup = std::vector<PlatformerEntity*>();
 
-	switch (this->allowedSelection)
+	for (auto next : timelineRef->getEntries())
 	{
-		case AllowedSelection::Player:
-		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([&](PlatformerFriendly* entity)
-			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerFriendly::PlatformerFriendlyTag);
+		PlatformerEntity* entity = next->getEntity();
 
-			break;
-		}
-		case AllowedSelection::Either:
+		if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEntity* entity)
+			if (this->allowedSelection == AllowedSelection::Either
+				|| (next->isPlayerEntry() && this->allowedSelection == AllowedSelection::Player)
+				|| (!next->isPlayerEntry() && this->allowedSelection == AllowedSelection::Enemy))
 			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerEnemy::PlatformerEnemyTag);
-
-			break;
-		}
-		case AllowedSelection::Enemy:
-		{
-			ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* entity)
-			{
-				if (entity->getStateOrDefaultBool(StateKeys::IsAlive, true))
-				{
-					targetEntityGroup.push_back(entity);
-				}
-			}), PlatformerEnemy::PlatformerEnemyTag);
-
-			break;
-		}
-		default:
-		{
-			break;
+				targetEntityGroup.push_back(entity);
+			}
 		}
 	}
 
@@ -240,10 +211,10 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 
 void TargetSelectionMenu::setEntityClickCallbacks()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
+	for (auto next : timelineRef->getEntries())
 	{
-		this->setEntityClickCallbacks(entity);
-	}), PlatformerEntity::PlatformerEntityTag);
+		this->setEntityClickCallbacks(next->getEntity());
+	}
 }
 
 void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
@@ -273,13 +244,13 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 
 void TargetSelectionMenu::clearEntityClickCallbacks()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([=](PlatformerEntity* entity)
+	for (auto next : timelineRef->getEntries())
 	{
-		EntitySelectionBehavior* selection = entity->getAttachedBehavior<EntitySelectionBehavior>();
+		EntitySelectionBehavior* selection = next->getEntity()->getAttachedBehavior<EntitySelectionBehavior>();
 		
 		if (selection != nullptr)
 		{
 			selection->clearEntityClickCallbacks();
 		}
-	}), PlatformerEntity::PlatformerEntityTag);
+	}
 }

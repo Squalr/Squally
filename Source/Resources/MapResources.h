@@ -10,6 +10,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Castle;
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string Dev_Cages;
+	extern const std::string Dev_Combat;
 	extern const std::string Dev_Quests;
 	extern const std::string Dev_Terrain;
 	extern const std::string EndianForest_Combat_Intro;

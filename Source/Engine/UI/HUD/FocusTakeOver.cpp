@@ -27,6 +27,7 @@ FocusTakeOver::FocusTakeOver()
 	this->hijackedNodes = std::map<Node*, std::tuple<Node*, int>>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->hijackContainer = Node::create();
+	this->takeOverOpacity = 196;
 	this->hasFocus = false;
 
 	this->hijackContainer->setCascadeColorEnabled(false);
@@ -63,9 +64,9 @@ void FocusTakeOver::initializeListeners()
 	this->addEventListenerIgnorePause(beforeSceneChangeListener);
 }
 
-void FocusTakeOver::disableBackground()
+void FocusTakeOver::setTakeOverOpacity(GLubyte takeOverOpacity)
 {
-	this->focusBackground->setVisible(false);
+	this->takeOverOpacity = takeOverOpacity;
 }
 
 void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
@@ -98,12 +99,12 @@ void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 		}
 		case Transition::Fade:
 		{
-			this->focusBackground->runAction(FadeTo::create(0.25f, 196));
+			this->focusBackground->runAction(FadeTo::create(0.25f, this->takeOverOpacity));
 			break;
 		}
 		case Transition::Instant:
 		{
-			this->focusBackground->setOpacity(196);
+			this->focusBackground->setOpacity(this->takeOverOpacity);
 			break;
 		}
 	}

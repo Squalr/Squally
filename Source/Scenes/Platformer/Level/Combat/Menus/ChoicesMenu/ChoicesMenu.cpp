@@ -97,7 +97,7 @@ void ChoicesMenu::initializeListeners()
 		this->noItems = true;
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](InputEvents::InputArgs* args)
 	{
 		switch (this->currentMenu)
 		{
@@ -147,6 +147,11 @@ void ChoicesMenu::initializeListeners()
 					if (this->noDefend)
 					{
 						this->defendButton->disableInteraction(127);
+					}
+
+					if (this->previousMenu == CombatEvents::MenuStateArgs::CurrentMenu::Closed)
+					{
+						this->choicesMenu->scrollTo(1);
 					}
 
 					this->choicesMenu->focus();
