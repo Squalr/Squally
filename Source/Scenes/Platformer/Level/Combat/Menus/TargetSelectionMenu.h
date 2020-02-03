@@ -15,6 +15,8 @@ class TargetSelectionMenu : public Hud
 public:
 	static TargetSelectionMenu* create(Timeline* timelineRef);
 
+	void selectEntity(PlatformerEntity* entity);
+
 protected:
 	TargetSelectionMenu(Timeline* timelineRef);
 	virtual ~TargetSelectionMenu() = default;
@@ -27,7 +29,6 @@ protected:
 private:
 	typedef Hud super;
 	void chooseCurrentTarget();
-	void selectEntity(PlatformerEntity* entity);
 	void setEntityClickCallbacks();
 	void setEntityClickCallbacks(PlatformerEntity* entity);
 	void clearEntityClickCallbacks();
@@ -35,6 +36,7 @@ private:
 
 	enum class AllowedSelection
 	{
+		None,
 		Player,
 		Enemy,
 		Either

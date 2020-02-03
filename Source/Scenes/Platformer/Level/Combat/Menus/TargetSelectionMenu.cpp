@@ -37,6 +37,7 @@ TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
 	this->timelineRef = timelineRef;
 	this->selectedEntity = nullptr;
+	this->allowedSelection = AllowedSelection::None;
 
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
@@ -69,6 +70,18 @@ void TargetSelectionMenu::initializeListeners()
 		{
 			switch (combatArgs->currentMenu)
 			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
+				{
+					this->selectEntity(combatArgs->entry->getEntity());
+					this->setVisible(true);
+					this->allowedSelection = AllowedSelection::None;
+					this->clearEntityClickCallbacks();
+
+					break;
+				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				{
 					this->selectEntity(nullptr);
@@ -109,8 +122,9 @@ void TargetSelectionMenu::initializeListeners()
 				}
 				default:
 				{
+					this->selectEntity(nullptr);
+					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
-					this->setVisible(false);
 					break;
 				}
 			}
@@ -168,7 +182,7 @@ void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 
 void TargetSelectionMenu::selectNext(bool directionIsLeft)
 {
-	if (!this->isActive)
+	if (!this->isActive || this->allowedSelection == AllowedSelection::None)
 	{
 		return;
 	}
@@ -188,6 +202,11 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 				targetEntityGroup.push_back(entity);
 			}
 		}
+	}
+
+	if (targetEntityGroup.empty())
+	{
+		return;
 	}
 
 	auto entityPosition = std::find(targetEntityGroup.begin(), targetEntityGroup.end(), this->selectedEntity);

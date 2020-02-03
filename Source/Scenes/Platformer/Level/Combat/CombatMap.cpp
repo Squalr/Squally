@@ -239,6 +239,9 @@ void CombatMap::initializeListeners()
 			switch (combatArgs->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
 					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
 					this->focusTakeOver->focus({ this->choicesMenu, this->targetSelectionMenu, combatArgs->entry });
@@ -284,6 +287,8 @@ void CombatMap::initializeListeners()
 				{
 					this->entityFocusTakeOver->unfocus();
 					this->focusTakeOver->unfocus();
+
+					this->targetSelectionMenu->selectEntity(nullptr);
 
 					for (auto entity : this->timeline->getEntries())
 					{
