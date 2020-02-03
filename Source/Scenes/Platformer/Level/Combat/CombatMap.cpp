@@ -37,7 +37,6 @@
 #include "Scenes/Platformer/Level/Combat/Menus/FirstStrikeMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/RewardsMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/TargetSelectionMenu.h"
-#include "Scenes/Platformer/Level/Combat/TextOverlays.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
@@ -76,7 +75,6 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->enemyIdentifier = enemyIdentifier;
 	this->combatHud = CombatHud::create();
 	this->choicesMenu = ChoicesMenu::create();
-	this->textOverlays = TextOverlays::create();
 	this->timeline = Timeline::create();
 	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
@@ -116,7 +114,6 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
-	this->hackerModeVisibleHud->addChild(this->textOverlays);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);

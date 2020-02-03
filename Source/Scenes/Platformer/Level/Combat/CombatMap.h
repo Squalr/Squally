@@ -57,7 +57,6 @@ private:
 	TargetSelectionMenu* targetSelectionMenu;
 	ChoicesMenu* choicesMenu;
 	CombatHud* combatHud;
-	TextOverlays* textOverlays;
 	FirstStrikeMenu* firstStrikeMenu;
 	DefeatMenu* defeatMenu;
 	RewardsMenu* rewardsMenu;
