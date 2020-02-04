@@ -13,7 +13,7 @@ public:
 
 protected:
 	NoDefendBehavior(GameObject* owner);
-	~NoDefendBehavior();
+	virtual ~NoDefendBehavior();
 
 	void onLoad() override;
 

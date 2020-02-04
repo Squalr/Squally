@@ -14,19 +14,20 @@ public:
 	bool isMatchedValues();
 	
 protected:
+	DestinationBlock(int cipherIndex);
+	virtual ~DestinationBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
+	float getBoltOffsetY() override;
 	void onAnyStateChange(CipherState* cipherState) override;
 	void execute(std::function<void()> onExecuteComplete) override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	DestinationBlock(int cipherIndex);
-	~DestinationBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	float getBoltOffsetY() override;
+	
 	void loadDisplayValue();
 
 	int cipherIndex;

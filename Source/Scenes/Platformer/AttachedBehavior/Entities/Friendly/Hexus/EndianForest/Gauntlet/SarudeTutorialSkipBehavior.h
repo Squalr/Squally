@@ -14,7 +14,7 @@ public:
 
 protected:
 	SarudeTutorialSkipBehavior(GameObject* owner);
-	~SarudeTutorialSkipBehavior();
+	virtual ~SarudeTutorialSkipBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

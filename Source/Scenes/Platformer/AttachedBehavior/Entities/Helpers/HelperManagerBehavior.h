@@ -14,7 +14,7 @@ public:
 
 protected:
 	HelperManagerBehavior(GameObject* owner);
-	~HelperManagerBehavior();
+	virtual ~HelperManagerBehavior();
 
 	void onLoad() override;
 

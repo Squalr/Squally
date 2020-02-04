@@ -13,7 +13,7 @@ public:
 
 protected:
 	EntityCinematicHijackBehavior(GameObject* owner);
-	~EntityCinematicHijackBehavior();
+	virtual ~EntityCinematicHijackBehavior();
 
 	void onLoad() override;
 

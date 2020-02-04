@@ -20,16 +20,16 @@ public:
 	static RemainingCardDisplay * create();
 
 protected:
+	RemainingCardDisplay();
+	virtual ~RemainingCardDisplay();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	RemainingCardDisplay();
-	~RemainingCardDisplay();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void onRemaningCardDisplayMouseOver();
 	void onRemaningCardDisplayMouseOut();
 	void enableCardDisplayInteraction();

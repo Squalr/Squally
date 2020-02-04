@@ -8,13 +8,13 @@ public:
 	static ShrBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	ShrBlock(BlockType blockType);
+	virtual ~ShrBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	ShrBlock(BlockType blockType);
-	~ShrBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

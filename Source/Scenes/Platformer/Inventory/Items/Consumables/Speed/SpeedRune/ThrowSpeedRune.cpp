@@ -68,9 +68,9 @@ void ThrowSpeedRune::performAttack(PlatformerEntity* owner, PlatformerEntity* ta
 
 	ThrownObject* rune = ThrownObject::create(owner, ObjectResources::Items_Consumables_Runes_YELLOW_RUNE, Size(64.0f, 64.0f));
 	
-	rune->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	rune->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
-		rune->getCollision()->setPhysicsEnabled(false);
+		rune->disable(true);
 
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

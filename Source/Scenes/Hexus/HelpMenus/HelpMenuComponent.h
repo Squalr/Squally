@@ -37,7 +37,7 @@ public:
 
 protected:
 	HelpMenuComponent();
-	~HelpMenuComponent();
+	virtual ~HelpMenuComponent();
 
 	void onEnter() override;
 	void initializePositions() override;

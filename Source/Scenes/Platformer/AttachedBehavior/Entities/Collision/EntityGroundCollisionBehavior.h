@@ -21,7 +21,7 @@ public:
 
 protected:
 	EntityGroundCollisionBehavior(GameObject* owner);
-	~EntityGroundCollisionBehavior();
+	virtual ~EntityGroundCollisionBehavior();
 
 	void onLoad() override;
 

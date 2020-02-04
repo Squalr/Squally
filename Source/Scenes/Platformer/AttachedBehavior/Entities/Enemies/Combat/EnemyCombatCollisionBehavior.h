@@ -14,7 +14,7 @@ public:
 
 protected:
 	EnemyCombatCollisionBehavior(GameObject* owner);
-	~EnemyCombatCollisionBehavior();
+	virtual ~EnemyCombatCollisionBehavior();
 
 	void onLoad() override;
 

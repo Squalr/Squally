@@ -13,15 +13,15 @@ public:
 	static CipherFrame* create();
 
 protected:
+	CipherFrame();
+	virtual ~CipherFrame();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onAnyStateChange(CipherState* cipherState) override;
 
 private:
 	typedef CipherComponentBase super;
-	CipherFrame();
-	~CipherFrame();
-
-	void onEnter() override;
-	void initializePositions() override;
 
 	cocos2d::Sprite* cipherFrame;
 	cocos2d::Sprite* furnace;

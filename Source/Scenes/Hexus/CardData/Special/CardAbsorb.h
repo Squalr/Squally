@@ -6,5 +6,5 @@ class CardAbsorb : public CardData
 {
 public:
 	CardAbsorb();
-	~CardAbsorb();
+	virtual ~CardAbsorb();
 };

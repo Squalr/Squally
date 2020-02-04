@@ -16,16 +16,16 @@ public:
 	static DisplayModeToggles* create(bool inAsciiMenu = false);
 	
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	DisplayModeToggles(bool inAsciiMenu = false);
-	~DisplayModeToggles();
+	virtual ~DisplayModeToggles();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	bool inAsciiMenu;
 	RadioButton* toggleButtonBin;

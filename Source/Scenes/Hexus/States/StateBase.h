@@ -12,7 +12,7 @@ class StateBase : public SmartNode
 {
 protected:
 	StateBase(GameState::StateType stateType);
-	~StateBase();
+	virtual ~StateBase();
 
 	void initializeListeners() override;
 	virtual void onAnyStateChange(GameState* gameState);

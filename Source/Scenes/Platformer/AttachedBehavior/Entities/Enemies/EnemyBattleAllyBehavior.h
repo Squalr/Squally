@@ -13,7 +13,7 @@ public:
 
 protected:
 	EnemyBattleAllyBehavior(GameObject* owner);
-	~EnemyBattleAllyBehavior();
+	virtual ~EnemyBattleAllyBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

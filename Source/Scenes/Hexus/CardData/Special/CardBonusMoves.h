@@ -6,5 +6,5 @@ class CardBonusMoves : public CardData
 {
 public:
 	CardBonusMoves();
-	~CardBonusMoves();
+	virtual ~CardBonusMoves();
 };

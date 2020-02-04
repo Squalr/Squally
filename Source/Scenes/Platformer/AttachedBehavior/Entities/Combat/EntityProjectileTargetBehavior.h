@@ -20,7 +20,7 @@ public:
 
 protected:
 	EntityProjectileTargetBehavior(GameObject* owner);
-	~EntityProjectileTargetBehavior();
+	virtual ~EntityProjectileTargetBehavior();
 
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;

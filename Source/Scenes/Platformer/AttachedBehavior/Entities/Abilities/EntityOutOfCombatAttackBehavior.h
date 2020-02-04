@@ -14,7 +14,7 @@ class EntityOutOfCombatAttackBehavior : public AttachedBehavior
 {
 protected:
 	EntityOutOfCombatAttackBehavior(GameObject* owner);
-	~EntityOutOfCombatAttackBehavior();
+	virtual ~EntityOutOfCombatAttackBehavior();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable(int debugLevel) override;

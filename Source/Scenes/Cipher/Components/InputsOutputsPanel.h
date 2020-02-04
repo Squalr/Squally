@@ -20,7 +20,7 @@ public:
 
 protected:
 	InputsOutputsPanel();
-	~InputsOutputsPanel();
+	virtual ~InputsOutputsPanel();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -29,6 +29,7 @@ protected:
 
 private:
 	typedef CipherComponentBase super;
+	
 	void loadPuzzleData();
 	void selectInputOutputPairAtIndex(int index);
 	

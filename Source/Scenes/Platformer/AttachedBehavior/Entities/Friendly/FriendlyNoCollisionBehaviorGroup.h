@@ -11,7 +11,7 @@ public:
 
 protected:
 	FriendlyNoCollisionBehaviorGroup(GameObject* owner);
-	~FriendlyNoCollisionBehaviorGroup();
+	virtual ~FriendlyNoCollisionBehaviorGroup();
 
 	void onLoad() override;
 

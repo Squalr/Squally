@@ -95,7 +95,7 @@ public:
 
 protected:
 	Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard = true, bool relocateUI = true);
-	~Card();
+	virtual ~Card();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

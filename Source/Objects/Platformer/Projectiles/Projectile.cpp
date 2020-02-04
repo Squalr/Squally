@@ -11,6 +11,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/UIResources.h"
@@ -28,7 +29,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, i
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
-	this->noCollideDuration = 1.0f;
+	this->noOwnerCollideDuration = 1.0f;
 	this->launchVelocity = Vec3::ZERO;
 	this->launchAcceleration = Vec3::ZERO;
 	this->speedMultiplier = Vec3::ONE;
@@ -41,10 +42,9 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, i
 	);
 	this->contentNode = Node::create();
 	this->postFXNode = Node::create();
+	this->ownerCollisionRef = nullptr;
 
 	this->addTag(Projectile::ProjectileTag);
-
-	this->collisionObject->setPhysicsEnabled(false);
 
 	this->collisionObject->addChild(this->contentNode);
 	this->collisionObject->addChild(this->postFXNode);
@@ -58,6 +58,14 @@ Projectile::~Projectile()
 void Projectile::onEnter()
 {
 	super::onEnter();
+
+	if (this->caster != nullptr)
+	{
+		this->caster->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
+		{
+			this->ownerCollisionRef = collisionBehavior->entityCollision;
+		});
+	}
 
 	this->scheduleUpdate();
 }
@@ -82,14 +90,9 @@ void Projectile::update(float dt)
 		return;
 	}
 
-	if (this->noCollideDuration > 0.0f)
+	if (this->noOwnerCollideDuration > 0.0f)
 	{
-		this->noCollideDuration -= dt;
-
-		if (this->noCollideDuration <= 0.0f)
-		{
-			this->collisionObject->setPhysicsEnabled(true);
-		}
+		this->noOwnerCollideDuration -= dt;
 	}
 	
 	this->setLocalZOrder(int32_t(this->getPositionZ()));
@@ -108,6 +111,32 @@ void Projectile::update(float dt)
 	velocity.z *= this->speedMultiplier.z;
 
 	this->setPosition3D(this->getPosition3D() + velocity);
+}
+
+void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision)
+{
+	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	{
+		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration <= 0.0f)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		return onCollision(data);
+	});
+}
+
+void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd)
+{
+	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	{
+		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration <= 0.0f)
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+		
+		return onCollisionEnd(data);
+	});
 }
 
 void Projectile::registerHackables()
@@ -196,10 +225,9 @@ void Projectile::launchTowardsTarget(Node* target, Vec2 offset, float spinSpeed,
 	Vec3 duration = secondsPer256pxLinearDistance * (targetPosition.distance(thisPosition) / 256.0f);
 	bool isLeft = targetPosition.x < thisPosition.x;
 	
-	// Disable collision for the first 256px of travel distance
+	// Disable collision for the first 128px of travel distance
 	float maxSpeed = std::max(0.1f, std::max(std::max(secondsPer256pxLinearDistance.x, secondsPer256pxLinearDistance.y), secondsPer256pxLinearDistance.z));
-	this->noCollideDuration = maxSpeed;
-	this->collisionObject->setPhysicsEnabled(false);
+	this->noOwnerCollideDuration = maxSpeed;
 
 	this->spinSpeed = (isLeft ? -1.0f : 1.0f) * 360.0f * spinSpeed;
 

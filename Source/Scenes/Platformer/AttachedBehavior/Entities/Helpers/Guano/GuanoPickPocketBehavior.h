@@ -15,7 +15,7 @@ public:
 
 protected:
 	GuanoPickPocketBehavior(GameObject* owner);
-	~GuanoPickPocketBehavior();
+	virtual ~GuanoPickPocketBehavior();
 
 	void onLoad() override;
 

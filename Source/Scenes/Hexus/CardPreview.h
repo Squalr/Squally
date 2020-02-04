@@ -19,10 +19,15 @@ public:
 	void clearPreview();
 	void setHelpClickCallback(std::function<void(Card* card)> onHelpClick);
 
+protected:
+	CardPreview();
+	virtual ~CardPreview();
+	
+	void onEnter() override;
+	void initializePositions() override;
+
 private:
 	typedef SmartNode super;
-	CardPreview();
-	~CardPreview();
 
 	struct PreviewData
 	{
@@ -33,8 +38,6 @@ private:
 		PreviewData(Card* previewCard, cocos2d::Node* previewNode) : previewCard(previewCard), previewNode(previewNode) { }
 	};
 
-	void onEnter() override;
-	void initializePositions() override;
 	CardPreview::PreviewData constructPreview(Card* card);
 
 	cocos2d::Sprite* cardPad;

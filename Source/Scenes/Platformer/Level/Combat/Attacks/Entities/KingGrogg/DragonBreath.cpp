@@ -63,7 +63,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 
 	fireball->runSpawnFX();
 
-	fireball->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
 		fireball->disable(false);
 		fireball->runImpactFX();

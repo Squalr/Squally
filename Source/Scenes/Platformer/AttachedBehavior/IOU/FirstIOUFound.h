@@ -13,7 +13,7 @@ public:
 
 protected:
 	FirstIOUFound(GameObject* owner);
-	~FirstIOUFound();
+	virtual ~FirstIOUFound();
 
 	void onLoad() override;
 

@@ -14,7 +14,7 @@ public:
 
 protected:
 	FollowMovementBehavior(GameObject* owner);
-	~FollowMovementBehavior();
+	virtual ~FollowMovementBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

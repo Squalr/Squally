@@ -28,7 +28,7 @@ public:
 protected:
 
 	InteractObject(cocos2d::ValueMap& properties, InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
-	~InteractObject();
+	virtual ~InteractObject();
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

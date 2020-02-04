@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyOutOfCombatAttackBehavior(GameObject* owner);
-	~SquallyOutOfCombatAttackBehavior();
+	virtual ~SquallyOutOfCombatAttackBehavior();
 
 	void onLoad() override;
 

@@ -8,11 +8,11 @@ public:
 	static LessThanBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	LessThanBlock(BlockType blockType);
+	virtual ~LessThanBlock();
 	unsigned char compute() override;
 	bool compare(unsigned char inputA, unsigned char inputB) override;
 
 private:
 	typedef ComparisonBlockBase super;
-	LessThanBlock(BlockType blockType);
-	~LessThanBlock();
 };

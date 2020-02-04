@@ -13,6 +13,9 @@ public:
 	static void DoNextTransition(GameState* gameState, bool enterPeekState = false);
 
 protected:
+	StatePlayCard();
+	virtual ~StatePlayCard();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -20,8 +23,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StatePlayCard();
-	~StatePlayCard();
 
 	bool tryAbsorb(GameState* gameState, CardRow* cardRow);
 	void passFromError(GameState* gameState);

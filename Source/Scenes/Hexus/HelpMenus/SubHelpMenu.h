@@ -21,14 +21,16 @@ public:
 
 	void open();
 
-private:
-	typedef SmartNode super;
+protected:
 	SubHelpMenu();
-	~SubHelpMenu();
+	virtual ~SubHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 	void resetAnimation();
 	void runAnimationLoop();
 	void runTrivialSubtraction(std::function<void()> callback);

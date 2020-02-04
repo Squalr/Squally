@@ -13,12 +13,13 @@ public:
 
 protected:
 	MenuCard(Card::CardStyle cardStyle, CardData* cardData);
-	~MenuCard();
+	virtual ~MenuCard();
+	
+	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef Card super;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 	std::vector<cocos2d::Node*> displayItems;
 };

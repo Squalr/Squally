@@ -15,7 +15,7 @@ public:
 
 protected:
 	SquallyMovementBehavior(GameObject* owner);
-	~SquallyMovementBehavior();
+	virtual ~SquallyMovementBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

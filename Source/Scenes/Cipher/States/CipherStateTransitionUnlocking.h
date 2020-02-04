@@ -16,6 +16,9 @@ public:
 	static CipherStateTransitionUnlocking* create();
 
 protected:
+	CipherStateTransitionUnlocking();
+	virtual ~CipherStateTransitionUnlocking();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -26,8 +29,6 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateTransitionUnlocking();
-	~CipherStateTransitionUnlocking();
 
 	cocos2d::ClippingNode* contentClip;
 	cocos2d::Sprite* transitionPanel;

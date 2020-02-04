@@ -14,7 +14,7 @@ public:
 
 protected:
 	GuanoCombatBehavior(GameObject* owner);
-	~GuanoCombatBehavior();
+	virtual ~GuanoCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

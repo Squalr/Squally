@@ -12,6 +12,12 @@ public:
 	static StatePeekCards* create();
 
 protected:
+	StatePeekCards();
+	virtual ~StatePeekCards();
+
+	void onEnter() override;
+	void initializePositions() override;
+
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -19,11 +25,7 @@ protected:
 
 private:
 	typedef StateBase super;
-	StatePeekCards();
-	~StatePeekCards();
-
-	void onEnter() override;
-	void initializePositions() override;
+	
 	void onEndPeekCards(GameState* gameState);
 	void initializeCallbacks(GameState* gameState);
 

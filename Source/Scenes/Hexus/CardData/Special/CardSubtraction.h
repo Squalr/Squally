@@ -6,5 +6,5 @@ class CardSubtraction : public CardData
 {
 public:
 	CardSubtraction();
-	~CardSubtraction();
+	virtual ~CardSubtraction();
 };

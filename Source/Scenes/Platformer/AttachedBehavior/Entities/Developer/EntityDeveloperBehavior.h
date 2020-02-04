@@ -14,7 +14,7 @@ public:
 
 protected:
 	EntityDeveloperBehavior(GameObject* owner);
-	~EntityDeveloperBehavior();
+	virtual ~EntityDeveloperBehavior();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable(int debugLevel) override;

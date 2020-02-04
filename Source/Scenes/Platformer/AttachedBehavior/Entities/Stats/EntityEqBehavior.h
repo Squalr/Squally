@@ -26,7 +26,7 @@ public:
 
 protected:
 	EntityEqBehavior(GameObject* owner);
-	~EntityEqBehavior();
+	virtual ~EntityEqBehavior();
 
 	void onLoad() override;
 

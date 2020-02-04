@@ -16,7 +16,7 @@ public:
 
 protected:
 	EntityManaBehavior(GameObject* owner);
-	~EntityManaBehavior();
+	virtual ~EntityManaBehavior();
 
 	void onLoad() override;
 

@@ -17,7 +17,7 @@ public:
 
 protected:
 	BoltBase();
-	~BoltBase();
+	virtual ~BoltBase();
 
 	void onEnter() override;
 	void initializePositions() override;

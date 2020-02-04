@@ -8,6 +8,9 @@ public:
 	static CipherStateGameEnd* create();
 
 protected:
+	CipherStateGameEnd();
+	virtual ~CipherStateGameEnd();
+	
 	void onBeforeStateEnter(CipherState* cipherState) override;
 	void onStateEnter(CipherState* cipherState) override;
 	void onStateReload(CipherState* cipherState) override;
@@ -15,6 +18,4 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateGameEnd();
-	~CipherStateGameEnd();
 };

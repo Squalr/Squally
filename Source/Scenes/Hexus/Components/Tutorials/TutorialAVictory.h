@@ -13,20 +13,21 @@ public:
 	static TutorialAVictory * create();
 
 protected:
-	void onBeforeStateChange(GameState* gameState) override;
-	void onAnyStateChange(GameState* gameState) override;
-
-private:
-	typedef TutorialBase super;
 	TutorialAVictory();
-	~TutorialAVictory();
+	virtual ~TutorialAVictory();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void initializeCallbacks(GameState* gameState);
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
 	bool tryHijackState(GameState* gameState) override;
 	void unHijackState(GameState* gameState) override;
+
+private:
+	typedef TutorialBase super;
+
+	void initializeCallbacks(GameState* gameState);
 	void runTutorialLossDisplay(GameState* gameState);
 
 	FocusTakeOver* focusTakeOver;

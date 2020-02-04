@@ -21,12 +21,13 @@ public:
 protected:
 	TitleScreen();
 	virtual ~TitleScreen();
-
-private:
-	typedef GlobalScene super;
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef GlobalScene super;
 
 	TitleScreenBackground* background;
 

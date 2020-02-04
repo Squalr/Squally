@@ -35,6 +35,10 @@ FireballSpeedPreview::FireballSpeedPreview()
 	this->assemblyTextNode->addChild(this->xmm1Right);
 }
 
+FireballSpeedPreview::~FireballSpeedPreview()
+{
+}
+
 HackablePreview* FireballSpeedPreview::clone()
 {
 	return FireballSpeedPreview::create();

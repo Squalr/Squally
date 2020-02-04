@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntityDropTableBehavior(GameObject* owner);
-	~EntityDropTableBehavior();
+	virtual ~EntityDropTableBehavior();
 
 	void onLoad() override;
 

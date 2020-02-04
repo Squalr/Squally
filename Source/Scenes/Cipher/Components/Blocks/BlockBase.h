@@ -37,7 +37,7 @@ protected:
 	};
 
 	BlockBase(BlockType blockType, ConnectionType inputType, ConnectionType outputType, ClickableNode* block, std::string iconResource, LocalizedString* label);
-	~BlockBase();
+	virtual ~BlockBase();
 
 	void initializePositions() override;
 	void initializeListeners() override;

@@ -62,9 +62,9 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
 	fire->setPosition(Vec2(0.0f, 56.0f));
 	
-	weapon->getCollision()->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
-		weapon->getCollision()->setPhysicsEnabled(false);
+		weapon->disable(true);
 
 		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 

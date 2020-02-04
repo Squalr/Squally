@@ -45,7 +45,7 @@ public:
 
 protected:
 	CardEffects();
-	~CardEffects();
+	virtual ~CardEffects();
 
 	void onEnter() override;
 	void initializePositions() override;

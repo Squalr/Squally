@@ -11,6 +11,10 @@ public:
 	static StateHandCardStaged* create();
 
 protected:
+	StateHandCardStaged();
+	virtual ~StateHandCardStaged();
+
+	void initializePositions() override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -18,10 +22,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateHandCardStaged();
-	~StateHandCardStaged();
-
-	void initializePositions() override;
 	void initializeSelectablesAndCallbacks(GameState* gameState);
 	void selectCard(Card* card, GameState* gameState);
 	void stageSelectedCombineCard(Card* card, GameState* gameState);

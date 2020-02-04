@@ -20,14 +20,17 @@ class TitleScreenBackground : public SmartNode
 public:
 	static TitleScreenBackground* create();
 
-private:
-	typedef SmartNode super;
+protected:
 	TitleScreenBackground();
-	~TitleScreenBackground();
+	virtual ~TitleScreenBackground();
 
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
+	
 	void runEyeBlinkLoop();
 
 	SmartAnimationNode* squally;

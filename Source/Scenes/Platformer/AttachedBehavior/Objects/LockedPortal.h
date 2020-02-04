@@ -15,7 +15,7 @@ public:
 
 protected:
 	LockedPortal(GameObject* owner);
-	~LockedPortal();
+	virtual ~LockedPortal();
 
 	void onLoad() override;
 

@@ -16,7 +16,7 @@ public:
 
 protected:
 	PuzzleEBehavior(GameObject* owner);
-	~PuzzleEBehavior();
+	virtual ~PuzzleEBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

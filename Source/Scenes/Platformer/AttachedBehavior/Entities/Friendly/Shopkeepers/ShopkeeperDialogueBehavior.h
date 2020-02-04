@@ -14,7 +14,7 @@ public:
 
 protected:
 	ShopkeeperDialogueBehavior(GameObject* owner);
-	~ShopkeeperDialogueBehavior();
+	virtual ~ShopkeeperDialogueBehavior();
 
 	void onLoad() override;
 

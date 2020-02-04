@@ -33,7 +33,7 @@ public:
 
 protected:
 	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
-	~HexusBehaviorBase();
+	virtual ~HexusBehaviorBase();
 
 	virtual MinMaxPool* generateReward() = 0;
 	virtual std::string getWinLossSaveKey() = 0;

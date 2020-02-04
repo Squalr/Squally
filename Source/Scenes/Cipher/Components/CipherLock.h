@@ -18,16 +18,16 @@ public:
 	void resetLock();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	CipherLock();
-	~CipherLock();
+	virtual ~CipherLock();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	std::vector<cocos2d::Sprite*> cipherPinholes;
 	std::vector<cocos2d::Sprite*> cipherPins;

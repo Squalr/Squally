@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyCameraFollowBehavior(GameObject* owner);
-	~SquallyCameraFollowBehavior();
+	virtual ~SquallyCameraFollowBehavior();
 
 	void onLoad() override;
 

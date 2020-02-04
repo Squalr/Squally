@@ -11,17 +11,18 @@ class LossesDisplay : public ComponentBase
 {
 public:
 	static LossesDisplay* create();
+	
 protected:
+	LossesDisplay();
+	virtual ~LossesDisplay();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	LossesDisplay();
-	~LossesDisplay();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void updateDisplayedLosses(GameState* gameState);
 
 	cocos2d::Sprite* playerSocketA;

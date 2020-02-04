@@ -13,7 +13,7 @@ public:
 
 protected:
 	DisabledPortal(GameObject* owner);
-	~DisabledPortal();
+	virtual ~DisabledPortal();
 
 	void onLoad() override;
 

@@ -13,7 +13,7 @@ public:
 
 protected:
 	EnableAllClippyBehavior(GameObject* owner);
-	~EnableAllClippyBehavior();
+	virtual ~EnableAllClippyBehavior();
 
 	void onLoad() override;
 

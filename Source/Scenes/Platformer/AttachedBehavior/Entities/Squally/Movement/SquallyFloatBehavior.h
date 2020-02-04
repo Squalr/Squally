@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyFloatBehavior(GameObject* owner);
-	~SquallyFloatBehavior();
+	virtual ~SquallyFloatBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

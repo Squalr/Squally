@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Hackables/HackableObject.h"
 
 namespace cocos2d
@@ -7,12 +8,13 @@ namespace cocos2d
 	class PhysicsBody;
 };
 
-class CollisionObject;
 class PlatformerEntity;
 
 class Projectile : public HackableObject
 {
 public:
+	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision);
+	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd);
 	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setLaunchVelocity(cocos2d::Vec3 velocity);
 	void setLaunchAcceleration(cocos2d::Vec3 acceleration);
@@ -48,10 +50,11 @@ private:
 	typedef HackableObject super;
 
 	CollisionObject* collisionObject;
+	CollisionObject* ownerCollisionRef;
 	float spinSpeed;
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;
 	cocos2d::Vec3 launchAcceleration;
 	cocos2d::Vec3 speedMultiplier;
-	float noCollideDuration;
+	float noOwnerCollideDuration;
 };

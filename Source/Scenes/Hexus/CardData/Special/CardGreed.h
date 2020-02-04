@@ -6,5 +6,5 @@ class CardGreed : public CardData
 {
 public:
 	CardGreed();
-	~CardGreed();
+	virtual ~CardGreed();
 };

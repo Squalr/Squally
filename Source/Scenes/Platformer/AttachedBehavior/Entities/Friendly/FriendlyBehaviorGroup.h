@@ -11,7 +11,7 @@ public:
 
 protected:
 	FriendlyBehaviorGroup(GameObject* owner);
-	~FriendlyBehaviorGroup();
+	virtual ~FriendlyBehaviorGroup();
 
 	void onLoad() override;
 

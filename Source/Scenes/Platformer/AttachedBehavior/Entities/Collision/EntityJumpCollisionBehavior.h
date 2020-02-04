@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntityJumpCollisionBehavior(GameObject* owner);
-	~EntityJumpCollisionBehavior();
+	virtual ~EntityJumpCollisionBehavior();
 
 	void onLoad() override;
 

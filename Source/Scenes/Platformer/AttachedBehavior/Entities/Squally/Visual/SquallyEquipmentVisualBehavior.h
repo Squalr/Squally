@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyEquipmentVisualBehavior(GameObject* owner);
-	~SquallyEquipmentVisualBehavior();
+	virtual ~SquallyEquipmentVisualBehavior();
 
 	void onLoad() override;
 

@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyMouthBehavior(GameObject* owner);
-	~SquallyMouthBehavior();
+	virtual ~SquallyMouthBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

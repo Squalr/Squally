@@ -8,6 +8,12 @@ public:
 	static StateGameExit* create();
 
 protected:
+	StateGameExit();
+	virtual ~StateGameExit();
+
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -15,10 +21,4 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateGameExit();
-	~StateGameExit();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 };

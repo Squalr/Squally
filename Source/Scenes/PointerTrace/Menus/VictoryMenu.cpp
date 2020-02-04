@@ -50,6 +50,10 @@ VictoryMenu::VictoryMenu()
 	this->addChild(this->leaveButton);
 }
 
+VictoryMenu::~VictoryMenu()
+{
+}
+
 void VictoryMenu::onEnter()
 {
 	super::onEnter();

@@ -8,6 +8,9 @@ public:
 	static StateDrawInitial* create();
 
 protected:
+	StateDrawInitial();
+	virtual ~StateDrawInitial();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -15,6 +18,4 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateDrawInitial();
-	~StateDrawInitial();
 };

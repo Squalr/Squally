@@ -17,17 +17,17 @@ public:
 	static AssemblyHelpText* create();
 
 protected:
+	AssemblyHelpText();
+	virtual ~AssemblyHelpText();
+
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	AssemblyHelpText();
-	~AssemblyHelpText();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 	LocalizedLabel* assemblyHelpLabel;
 	ConstantString* operationString;

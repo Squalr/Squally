@@ -6,5 +6,5 @@ class CardPeek : public CardData
 {
 public:
 	CardPeek();
-	~CardPeek();
+	virtual ~CardPeek();
 };

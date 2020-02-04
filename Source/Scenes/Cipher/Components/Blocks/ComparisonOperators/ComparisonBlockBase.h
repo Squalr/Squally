@@ -8,7 +8,7 @@ class ComparisonBlockBase : public BlockBase
 {
 protected:
 	ComparisonBlockBase(BlockType blockType, std::string iconResource, LocalizedString* localizedString);
-	~ComparisonBlockBase();
+	virtual ~ComparisonBlockBase();
 
 	void execute(std::function<void()> onExecuteComplete) override;
 	unsigned char compute() override;

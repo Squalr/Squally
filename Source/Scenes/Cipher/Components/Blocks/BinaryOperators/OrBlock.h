@@ -8,13 +8,13 @@ public:
 	static OrBlock* create(BlockType blockType = BlockType::Normal);
 	
 protected:
+	OrBlock(BlockType blockType);
+	virtual ~OrBlock();
+
+	void onEnter() override;
+	void initializePositions() override;
 	unsigned char compute() override;
 
 private:
 	typedef BlockBase super;
-	OrBlock(BlockType blockType);
-	~OrBlock();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

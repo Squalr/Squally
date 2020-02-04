@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyHackingBehavior(GameObject* owner);
-	~SquallyHackingBehavior();
+	virtual ~SquallyHackingBehavior();
 
 	void onLoad() override;
 

@@ -8,6 +8,9 @@ public:
 	static CipherStateNeutral* create();
 
 protected:
+	CipherStateNeutral();
+	virtual ~CipherStateNeutral();
+	
 	void onBeforeStateEnter(CipherState* cipherState) override;
 	void onStateEnter(CipherState* cipherState) override;
 	void onStateReload(CipherState* cipherState) override;
@@ -15,6 +18,4 @@ protected:
 
 private:
 	typedef CipherStateBase super;
-	CipherStateNeutral();
-	~CipherStateNeutral();
 };

@@ -59,7 +59,7 @@ Projectile* FireLauncherSqualr::createProjectile()
 {
 	Fireball* fireball = Fireball::create(nullptr);
 	
-	fireball->getCollision()->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{
 		fireball->disable(false);
 		fireball->runImpactFX();

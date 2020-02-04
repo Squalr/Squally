@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntityBuffBehavior(GameObject* owner);
-	~EntityBuffBehavior();
+	virtual ~EntityBuffBehavior();
 
 	void onLoad() override;
 

@@ -29,7 +29,7 @@ public:
 
 protected:
 	EntityDialogueBehavior(GameObject* owner);
-	~EntityDialogueBehavior();
+	virtual ~EntityDialogueBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

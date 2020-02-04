@@ -6,5 +6,5 @@ class CardInverse : public CardData
 {
 public:
 	CardInverse();
-	~CardInverse();
+	virtual ~CardInverse();
 };

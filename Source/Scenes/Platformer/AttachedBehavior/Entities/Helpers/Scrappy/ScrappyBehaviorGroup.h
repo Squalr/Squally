@@ -11,7 +11,7 @@ public:
 
 protected:
 	ScrappyBehaviorGroup(GameObject* owner);
-	~ScrappyBehaviorGroup();
+	virtual ~ScrappyBehaviorGroup();
 
 	void onLoad() override;
 

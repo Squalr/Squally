@@ -14,7 +14,7 @@ public:
 
 protected:
 	LycanBehavior(GameObject* owner);
-	~LycanBehavior();
+	virtual ~LycanBehavior();
 
 	void onLoad() override;
 

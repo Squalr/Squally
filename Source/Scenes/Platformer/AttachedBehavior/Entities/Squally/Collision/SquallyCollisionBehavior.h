@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyCollisionBehavior(GameObject* owner);
-	~SquallyCollisionBehavior();
+	virtual ~SquallyCollisionBehavior();
 
 	void update(float dt) override;
 	void onLoad() override;

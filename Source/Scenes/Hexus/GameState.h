@@ -145,14 +145,16 @@ public:
 	cocos2d::Node* lastStandButtonPointer;
 	cocos2d::Node* claimVictoryButtonPointer;
 
-private:
-	typedef SmartNode super;
+protected:
 	GameState();
-	~GameState();
+	virtual ~GameState();
 
 	void initializePositions() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
+
+private:
+	typedef SmartNode super;
 
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameStartTime;
 	std::chrono::time_point<std::chrono::high_resolution_clock> gameEndTime;

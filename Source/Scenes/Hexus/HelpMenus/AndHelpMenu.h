@@ -21,14 +21,16 @@ public:
 
 	void open();
 
-private:
-	typedef SmartNode super;
+protected:
 	AndHelpMenu();
-	~AndHelpMenu();
+	virtual ~AndHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 	void resetAnimation();
 	void runAnimationLoop();
 

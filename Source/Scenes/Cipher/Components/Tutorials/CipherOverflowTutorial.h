@@ -15,21 +15,21 @@ public:
 	static const std::string MapKeyTutorial;
 
 protected:
-	void onBeforeStateChange(CipherState* cipherState) override;
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherTutorialBase super;
 	CipherOverflowTutorial();
 	virtual ~CipherOverflowTutorial();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void initializeCallbacks(CipherState* cipherState);
+	void onBeforeStateChange(CipherState* cipherState) override;
+	void onAnyStateChange(CipherState* cipherState) override;
 	bool tryHijackState(CipherState* cipherState) override;
 	void unHijackState(CipherState* cipherState) override;
 
+private:
+	typedef CipherTutorialBase super;
+
+	void initializeCallbacks(CipherState* cipherState);
 	void runTutorialPartA(CipherState* cipherState);
 	void runTutorialPartB(CipherState* cipherState);
 

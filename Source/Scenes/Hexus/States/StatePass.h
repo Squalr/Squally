@@ -20,6 +20,12 @@ public:
 	static StatePass* create();
 
 protected:
+	StatePass();
+	virtual ~StatePass();
+
+	void onEnter() override;
+	void initializePositions() override;
+	
 	void onAnyStateChange(GameState* gameState) override;
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
@@ -28,11 +34,7 @@ protected:
 
 private:
 	typedef StateBase super;
-	StatePass();
-	~StatePass();
 
-	void onEnter() override;
-	void initializePositions() override;
 	void onPassClick(GameState* gameState);
 	void hideOpponenentPassSprites();
 	void hideAndDisableAllButtons();

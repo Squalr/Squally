@@ -18,7 +18,7 @@ public:
 
 protected:
 	BannerBase();
-	~BannerBase();
+	virtual ~BannerBase();
 
 	void onEnter() override;
 	void initializePositions() override;

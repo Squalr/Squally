@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyAttackBehavior(GameObject* owner);
-	~SquallyAttackBehavior();
+	virtual ~SquallyAttackBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

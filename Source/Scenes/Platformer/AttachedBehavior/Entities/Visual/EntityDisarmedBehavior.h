@@ -14,7 +14,7 @@ public:
 
 protected:
 	EntityDisarmedBehavior(GameObject* owner);
-	~EntityDisarmedBehavior();
+	virtual ~EntityDisarmedBehavior();
 
 	void onLoad() override;
 

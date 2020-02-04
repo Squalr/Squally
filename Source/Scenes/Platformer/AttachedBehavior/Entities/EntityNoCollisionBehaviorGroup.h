@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntityNoCollisionBehaviorGroup(GameObject* owner);
-	~EntityNoCollisionBehaviorGroup();
+	virtual ~EntityNoCollisionBehaviorGroup();
 
 	void onLoad() override;
 

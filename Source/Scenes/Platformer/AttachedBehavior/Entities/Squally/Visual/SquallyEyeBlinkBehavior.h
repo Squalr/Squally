@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyEyeBlinkBehavior(GameObject* owner);
-	~SquallyEyeBlinkBehavior();
+	virtual ~SquallyEyeBlinkBehavior();
 
 	void onLoad() override;
 

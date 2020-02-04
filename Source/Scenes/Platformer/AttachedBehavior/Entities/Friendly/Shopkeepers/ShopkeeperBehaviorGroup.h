@@ -11,7 +11,7 @@ public:
 
 protected:
 	ShopkeeperBehaviorGroup(GameObject* owner);
-	~ShopkeeperBehaviorGroup();
+	virtual ~ShopkeeperBehaviorGroup();
 
 	void onLoad() override;
 

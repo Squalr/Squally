@@ -11,7 +11,7 @@ public:
 
 protected:
 	SnowmanBehaviorGroup(GameObject* owner);
-	~SnowmanBehaviorGroup();
+	virtual ~SnowmanBehaviorGroup();
 
 	void onLoad() override;
 

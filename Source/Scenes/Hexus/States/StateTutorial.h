@@ -8,6 +8,9 @@ public:
 	static StateTutorial* create();
 
 protected:
+	StateTutorial();
+	virtual ~StateTutorial();
+	
 	void onAnyStateChange(GameState* gameState) override;
 	void onAnyRequestStateChange(GameState* gameState) override;
 	void onBeforeStateEnter(GameState* gameState) override;
@@ -17,6 +20,4 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateTutorial();
-	~StateTutorial();
 };

@@ -6,5 +6,5 @@ class CardDecimal6 : public CardData
 {
 public:
 	CardDecimal6();
-	~CardDecimal6();
+	virtual ~CardDecimal6();
 };

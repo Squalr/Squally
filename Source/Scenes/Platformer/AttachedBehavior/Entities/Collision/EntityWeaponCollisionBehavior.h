@@ -22,7 +22,7 @@ public:
 
 protected:
 	EntityWeaponCollisionBehavior(GameObject* owner);
-	~EntityWeaponCollisionBehavior();
+	virtual ~EntityWeaponCollisionBehavior();
 
 	void onLoad() override;
 

@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallySensingBehavior(GameObject* owner);
-	~SquallySensingBehavior();
+	virtual ~SquallySensingBehavior();
 
 	void onLoad() override;
 

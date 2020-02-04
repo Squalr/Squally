@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntityStatsBehaviorGroup(GameObject* owner);
-	~EntityStatsBehaviorGroup();
+	virtual ~EntityStatsBehaviorGroup();
 
 	void onLoad() override;
 

@@ -24,7 +24,7 @@ public:
 
 protected:
 	EntityAttackBehavior(GameObject* owner);
-	~EntityAttackBehavior();
+	virtual ~EntityAttackBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

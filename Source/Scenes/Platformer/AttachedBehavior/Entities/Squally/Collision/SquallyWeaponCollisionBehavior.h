@@ -19,7 +19,7 @@ public:
 
 protected:
 	SquallyWeaponCollisionBehavior(GameObject* owner);
-	~SquallyWeaponCollisionBehavior();
+	virtual ~SquallyWeaponCollisionBehavior();
 
 	void onLoad() override;
 

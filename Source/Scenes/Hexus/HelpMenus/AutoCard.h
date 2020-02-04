@@ -27,12 +27,14 @@ public:
 
 	Card* activeCard;
 
-private:
-	typedef SmartNode super;
+protected:
 	AutoCard(int defaultAttack);
-	~AutoCard();
+	virtual ~AutoCard();
 
 	void onEnter() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Node* cardNode;
 	ClickableNode* upToggle;

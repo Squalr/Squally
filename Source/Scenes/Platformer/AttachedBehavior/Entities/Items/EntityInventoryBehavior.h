@@ -21,7 +21,7 @@ public:
 
 protected:
 	EntityInventoryBehavior(GameObject* owner);
-	~EntityInventoryBehavior();
+	virtual ~EntityInventoryBehavior();
 
 	void onLoad() override;
 

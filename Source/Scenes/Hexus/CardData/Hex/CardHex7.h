@@ -6,5 +6,5 @@ class CardHex7 : public CardData
 {
 public:
 	CardHex7();
-	~CardHex7();
+	virtual ~CardHex7();
 };

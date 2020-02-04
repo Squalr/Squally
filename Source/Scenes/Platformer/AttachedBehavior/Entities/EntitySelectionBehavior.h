@@ -18,7 +18,7 @@ public:
 
 protected:
 	EntitySelectionBehavior(GameObject* owner);
-	~EntitySelectionBehavior();
+	virtual ~EntitySelectionBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

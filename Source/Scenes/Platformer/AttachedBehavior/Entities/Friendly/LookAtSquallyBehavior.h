@@ -14,7 +14,7 @@ public:
 
 protected:
 	LookAtSquallyBehavior(GameObject* owner);
-	~LookAtSquallyBehavior();
+	virtual ~LookAtSquallyBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

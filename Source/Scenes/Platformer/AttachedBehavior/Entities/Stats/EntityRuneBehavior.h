@@ -25,7 +25,7 @@ public:
 
 protected:
 	EntityRuneBehavior(GameObject* owner);
-	~EntityRuneBehavior();
+	virtual ~EntityRuneBehavior();
 
 	void onLoad() override;
 	void update(float) override;

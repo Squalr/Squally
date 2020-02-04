@@ -24,18 +24,19 @@ public:
 	void open(ImmediateBlock* immediateBlock, std::function<void()> onCloseCallback);
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	AsciiTable();
-	~AsciiTable();
-
-	std::vector<ImmediateBlock*> asciiLetters;
+	virtual ~AsciiTable();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
+
+	std::vector<ImmediateBlock*> asciiLetters;
+
 	void select(ImmediateBlock* block);
 	void close();
 

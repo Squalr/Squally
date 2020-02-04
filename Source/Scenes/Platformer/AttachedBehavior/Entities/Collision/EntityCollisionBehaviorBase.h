@@ -12,7 +12,7 @@ public:
 
 protected:
 	EntityCollisionBehaviorBase(GameObject* owner, int collisionType);
-	~EntityCollisionBehaviorBase();
+	virtual ~EntityCollisionBehaviorBase();
 
 	void onLoad() override;
 

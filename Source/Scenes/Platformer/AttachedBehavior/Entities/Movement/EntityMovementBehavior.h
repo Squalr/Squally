@@ -16,7 +16,7 @@ public:
 
 protected:
 	EntityMovementBehavior(GameObject* owner);
-	~EntityMovementBehavior();
+	virtual ~EntityMovementBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

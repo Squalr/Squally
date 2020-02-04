@@ -20,14 +20,16 @@ public:
 	void hideHelp();
 	void onConnectionUpdated() override;
 
-private:
-	typedef BoltBase super;
+protected:
 	InputBolt(BlockBase* parentBlock, int inputIndex);
-	~InputBolt();
+	virtual ~InputBolt();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef BoltBase super;
 
 	BlockBase* parentBlock;
 	cocos2d::Sprite* bolt;

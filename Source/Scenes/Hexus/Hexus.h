@@ -80,7 +80,7 @@ public:
 private:
 	typedef SmartNode super;
 	Hexus();
-	~Hexus();
+	virtual ~Hexus();
 
 	void onEnter() override;
 	void initializePositions() override;

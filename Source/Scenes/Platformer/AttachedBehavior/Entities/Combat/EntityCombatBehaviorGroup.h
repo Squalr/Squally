@@ -11,7 +11,7 @@ public:
 
 protected:
 	EntityCombatBehaviorGroup(GameObject* owner);
-	~EntityCombatBehaviorGroup();
+	virtual ~EntityCombatBehaviorGroup();
 
 	void onLoad() override;
 

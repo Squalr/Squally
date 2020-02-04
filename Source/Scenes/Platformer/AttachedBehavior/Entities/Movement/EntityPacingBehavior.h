@@ -13,7 +13,7 @@ public:
 
 protected:
 	EntityPacingBehavior(GameObject* owner);
-	~EntityPacingBehavior();
+	virtual ~EntityPacingBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

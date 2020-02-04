@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyEqBehavior(GameObject* owner);
-	~SquallyEqBehavior();
+	virtual ~SquallyEqBehavior();
 
 	void onLoad() override;
 

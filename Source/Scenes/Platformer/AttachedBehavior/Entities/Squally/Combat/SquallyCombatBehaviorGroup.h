@@ -18,7 +18,7 @@ public:
 
 protected:
 	SquallyCombatBehaviorGroup(GameObject* owner);
-	~SquallyCombatBehaviorGroup();
+	virtual ~SquallyCombatBehaviorGroup();
 
 	void onLoad() override;
 

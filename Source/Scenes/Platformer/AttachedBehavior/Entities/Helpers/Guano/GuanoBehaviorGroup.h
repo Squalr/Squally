@@ -11,7 +11,7 @@ public:
 
 protected:
 	GuanoBehaviorGroup(GameObject* owner);
-	~GuanoBehaviorGroup();
+	virtual ~GuanoBehaviorGroup();
 
 	void onLoad() override;
 

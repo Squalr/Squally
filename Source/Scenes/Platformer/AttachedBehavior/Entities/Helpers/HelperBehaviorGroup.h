@@ -11,7 +11,7 @@ public:
 
 protected:
 	HelperBehaviorGroup(GameObject* owner);
-	~HelperBehaviorGroup();
+	virtual ~HelperBehaviorGroup();
 
 	void onLoad() override;
 

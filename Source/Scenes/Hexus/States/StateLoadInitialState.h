@@ -10,6 +10,9 @@ public:
 	static StateLoadInitialState* create();
 
 protected:
+	StateLoadInitialState();
+	virtual ~StateLoadInitialState();
+	
 	void onBeforeStateEnter(GameState* gameState) override;
 	void onStateEnter(GameState* gameState) override;
 	void onStateReload(GameState* gameState) override;
@@ -17,8 +20,6 @@ protected:
 
 private:
 	typedef StateBase super;
-	StateLoadInitialState();
-	~StateLoadInitialState();
 
 	void loadStateOverrides(GameState* gameState, StateOverride* stateOverride);
 };

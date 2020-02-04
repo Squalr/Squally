@@ -37,7 +37,7 @@ public:
 	};
 
 	CardData(std::string cardResourceFile, std::string cardKey, CardType cardType, unsigned int attack);
-	~CardData();
+	virtual ~CardData();
 
 	std::string getCardResourceFile();
 	std::string getCardKey();

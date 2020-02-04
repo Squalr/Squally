@@ -16,7 +16,7 @@ public:
 
 protected:
 	ScrappyHackableCueBehavior(GameObject* owner);
-	~ScrappyHackableCueBehavior();
+	virtual ~ScrappyHackableCueBehavior();
 
 	void update(float dt) override;
 	void onLoad() override;

@@ -27,7 +27,7 @@ public:
 
 protected:
 	EntityMovementCollisionBehavior(GameObject* owner);
-	~EntityMovementCollisionBehavior();
+	virtual ~EntityMovementCollisionBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

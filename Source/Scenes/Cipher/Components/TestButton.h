@@ -10,16 +10,16 @@ public:
 	static TestButton* create();
 
 protected:
-	void onAnyStateChange(CipherState* cipherState) override;
-
-private:
-	typedef CipherComponentBase super;
 	TestButton();
-	~TestButton();
+	virtual ~TestButton();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onAnyStateChange(CipherState* cipherState) override;
+
+private:
+	typedef CipherComponentBase super;
 
 	ClickableTextNode* testButton;
 	CipherState* activeCipherState;

@@ -16,16 +16,16 @@ public:
 	static ScoreTotal* create();
 
 protected:
+	ScoreTotal();
+	virtual ~ScoreTotal();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	ScoreTotal();
-	~ScoreTotal();
-
-	void onEnter() override;
-	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
 	cocos2d::Sprite* playerTotalFrame;

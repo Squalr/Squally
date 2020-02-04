@@ -13,15 +13,15 @@ public:
 	static PlayerLastStandBanner* create();
 
 protected:
+	PlayerLastStandBanner();
+	virtual ~PlayerLastStandBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	PlayerLastStandBanner();
-	~PlayerLastStandBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* playerPassBanner1;
 	cocos2d::Sprite* playerPassBanner2;

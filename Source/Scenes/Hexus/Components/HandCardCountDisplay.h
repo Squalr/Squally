@@ -17,15 +17,15 @@ public:
 	static HandCardCountDisplay* create();
 
 protected:
+	HandCardCountDisplay();
+	virtual ~HandCardCountDisplay();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	HandCardCountDisplay();
-	~HandCardCountDisplay();
-
-	void initializePositions() override;
 	void updateTotals(GameState* gameState);
 
 	cocos2d::LayerColor* playerHandCardCountFrame;

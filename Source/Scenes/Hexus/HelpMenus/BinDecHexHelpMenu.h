@@ -18,14 +18,16 @@ public:
 
 	void open(Card* card);
 
-private:
-	typedef SmartNode super;
+protected:
 	BinDecHexHelpMenu();
-	~BinDecHexHelpMenu();
+	virtual ~BinDecHexHelpMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	LocalizedLabel* description;
 	AutoCard* binCard;

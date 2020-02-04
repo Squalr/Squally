@@ -14,7 +14,7 @@ public:
 
 protected:
 	WeakMindedBehavior(GameObject* owner);
-	~WeakMindedBehavior();
+	virtual ~WeakMindedBehavior();
 
 	void onLoad() override;
 

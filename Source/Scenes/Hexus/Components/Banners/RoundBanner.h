@@ -12,15 +12,15 @@ public:
 	static RoundBanner* create();
 
 protected:
+	RoundBanner();
+	virtual ~RoundBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	RoundBanner();
-	~RoundBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* roundBanner1;
 	cocos2d::Sprite* roundBanner2;

@@ -13,7 +13,7 @@ public:
 
 protected:
 	NoItemsBehavior(GameObject* owner);
-	~NoItemsBehavior();
+	virtual ~NoItemsBehavior();
 
 	void onLoad() override;
 

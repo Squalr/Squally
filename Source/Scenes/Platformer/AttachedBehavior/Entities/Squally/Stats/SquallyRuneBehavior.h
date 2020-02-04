@@ -14,7 +14,7 @@ public:
 
 protected:
 	SquallyRuneBehavior(GameObject* owner);
-	~SquallyRuneBehavior();
+	virtual ~SquallyRuneBehavior();
 
 	void onLoad() override;
 

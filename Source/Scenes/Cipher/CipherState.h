@@ -71,6 +71,8 @@ public:
 	DisplayModeToggles* displayModeTogglesPointer;
 
 protected:
+	CipherState();
+	virtual ~CipherState();
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
@@ -78,8 +80,6 @@ protected:
 
 private:
 	typedef SmartNode super;
-	CipherState();
-	virtual ~CipherState();
 
 	void clearInteraction();
 

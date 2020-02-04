@@ -10,7 +10,7 @@ public:
 
 protected:
 	HexusPuzzleBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
-	~HexusPuzzleBehaviorBase();
+	virtual ~HexusPuzzleBehaviorBase();
 
 	void onEnter() override;
 

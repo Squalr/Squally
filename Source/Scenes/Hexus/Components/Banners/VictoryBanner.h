@@ -12,15 +12,15 @@ public:
 	static VictoryBanner * create();
 
 protected:
+	VictoryBanner();
+	virtual ~VictoryBanner();
+
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef BannerBase super;
-	VictoryBanner();
-	~VictoryBanner();
-
-	void initializePositions() override;
 
 	cocos2d::Sprite* victoryBanner1;
 	cocos2d::Sprite* victoryBanner2;

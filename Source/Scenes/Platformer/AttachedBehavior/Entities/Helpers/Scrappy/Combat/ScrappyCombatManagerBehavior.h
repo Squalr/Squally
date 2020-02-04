@@ -15,7 +15,7 @@ public:
 
 protected:
 	ScrappyCombatManagerBehavior(GameObject* owner);
-	~ScrappyCombatManagerBehavior();
+	virtual ~ScrappyCombatManagerBehavior();
 
 	void onLoad() override;
 

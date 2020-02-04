@@ -19,7 +19,7 @@ public:
 
 protected:
 	SquallyIsAliveHackBehavior(GameObject* owner);
-	~SquallyIsAliveHackBehavior();
+	virtual ~SquallyIsAliveHackBehavior();
 
 	void update(float dt) override;
 	void registerHackables() override;

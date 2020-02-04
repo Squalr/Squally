@@ -19,7 +19,7 @@ public:
 
 protected:
 	RestorePotionTutorialBehavior(GameObject* owner);
-	~RestorePotionTutorialBehavior();
+	virtual ~RestorePotionTutorialBehavior();
 
 	void onLoad() override;
 

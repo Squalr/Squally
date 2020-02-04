@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyHudTrackBehavior(GameObject* owner);
-	~SquallyHudTrackBehavior();
+	virtual ~SquallyHudTrackBehavior();
 
 	void onLoad() override;
 

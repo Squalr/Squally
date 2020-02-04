@@ -12,13 +12,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	FireballSpeedPreview();
-	virtual ~FireballSpeedPreview() = default;
+	virtual ~FireballSpeedPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 
 	SmartAnimationSequenceNode* fireball;
 	LocalizedLabel* xmm1Left;

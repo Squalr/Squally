@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyStaticHelpBehavior(GameObject* owner);
-	~SquallyStaticHelpBehavior();
+	virtual ~SquallyStaticHelpBehavior();
 
 	void onLoad() override;
 

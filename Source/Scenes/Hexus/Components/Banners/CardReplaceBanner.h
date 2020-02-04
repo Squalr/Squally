@@ -14,6 +14,11 @@ public:
 	static CardReplaceBanner* create();
 
 protected:
+	CardReplaceBanner();
+	virtual ~CardReplaceBanner();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
@@ -22,10 +27,4 @@ protected:
 
 private:
 	typedef BannerBase super;
-
-	CardReplaceBanner();
-	~CardReplaceBanner();
-
-	void onEnter() override;
-	void initializePositions() override;
 };

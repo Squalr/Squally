@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyManaBehavior(GameObject* owner);
-	~SquallyManaBehavior();
+	virtual ~SquallyManaBehavior();
 
 	void onLoad() override;
 

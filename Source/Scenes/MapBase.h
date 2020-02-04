@@ -30,7 +30,7 @@ public:
 
 protected:
 	MapBase(bool useIngameMenu, bool allowHackerMode);
-	~MapBase();
+	virtual ~MapBase();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

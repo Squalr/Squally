@@ -38,11 +38,13 @@ public:
 	std::vector<Card*> deckCards;
 	Card::CardStyle style;
 
-private:
-	typedef SmartNode super;
+protected:
 	Deck(bool isPlayerOwnedDeck);
 	Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck);
-	~Deck();
+	virtual ~Deck();
+
+private:
+	typedef SmartNode super;
 
 	void setCardOrder();
 	void doInsertAnimation(Card* card, bool faceUp, float insertDelay);

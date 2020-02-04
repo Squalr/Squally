@@ -14,7 +14,7 @@ public:
 
 protected:
 	ScrappyMovementBehavior(GameObject* owner);
-	~ScrappyMovementBehavior();
+	virtual ~ScrappyMovementBehavior();
 
 	void onLoad() override;
 	void update(float dt) override;

@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyDefaultInventoryBehavior(GameObject* owner);
-	~SquallyDefaultInventoryBehavior();
+	virtual ~SquallyDefaultInventoryBehavior();
 
 	void onLoad() override;
 

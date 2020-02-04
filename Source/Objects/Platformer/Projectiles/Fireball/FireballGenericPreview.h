@@ -14,6 +14,7 @@ public:
 protected:
 	FireballGenericPreview();
 	virtual ~FireballGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 

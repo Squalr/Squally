@@ -11,16 +11,17 @@ public:
 	static StagingHelperText* create();
 
 protected:
+	StagingHelperText();
+	virtual ~StagingHelperText();
+
+	void onEnter() override;
+	void initializePositions() override;
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
-	StagingHelperText();
-	~StagingHelperText();
 
-	void onEnter() override;
-	void initializePositions() override;
 	void updateSelectionStatus(GameState* gameState);
 	void updateCombineStatus(GameState* gameState);
 	void onSelectionCancel(GameState* gameState);

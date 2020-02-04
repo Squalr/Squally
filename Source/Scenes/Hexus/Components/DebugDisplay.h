@@ -13,18 +13,18 @@ public:
 	static DebugDisplay* create();
 
 protected:
-	void onBeforeStateChange(GameState* gameState) override;
-	void onAnyStateChange(GameState* gameState) override;
-
-private:
-	typedef ComponentBase super;
 	DebugDisplay();
-	~DebugDisplay();
+	virtual ~DebugDisplay();
 
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onBeforeStateChange(GameState* gameState) override;
+	void onAnyStateChange(GameState* gameState) override;
+
+private:
+	typedef ComponentBase super;
 
 	GameState* activeGameState;
 	ConstantString* stateStr;

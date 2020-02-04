@@ -6,5 +6,5 @@ class CardSuddenDeath : public CardData
 {
 public:
 	CardSuddenDeath();
-	~CardSuddenDeath();
+	virtual ~CardSuddenDeath();
 };

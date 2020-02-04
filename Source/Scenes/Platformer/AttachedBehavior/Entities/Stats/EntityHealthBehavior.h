@@ -17,7 +17,7 @@ public:
 
 protected:
 	EntityHealthBehavior(GameObject* owner);
-	~EntityHealthBehavior();
+	virtual ~EntityHealthBehavior();
 
 	void onLoad() override;
 

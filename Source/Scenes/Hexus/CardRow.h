@@ -11,7 +11,7 @@ class ClickableNode;
 class CardRow : public SmartNode
 {
 public:
-	static CardRow * create(bool isPlayerRow);
+	static CardRow* create(bool isPlayerRow);
 
 	void insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay = 0.0f, bool asReentry = true);
 	void insertCard(Card* card, float cardInsertDelay, bool asReentry = true);
@@ -45,13 +45,15 @@ public:
 
 	std::vector<Card*> rowCards;
 
-private:
-	typedef SmartNode super;
+protected:
 	CardRow(bool isPlayerRow);
-	~CardRow();
+	virtual ~CardRow();
 
 	void onEnter() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	void onRowSelectClick();
 

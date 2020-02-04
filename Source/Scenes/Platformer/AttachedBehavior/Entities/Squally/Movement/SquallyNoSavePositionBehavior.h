@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyNoSavePositionBehavior(GameObject* owner);
-	~SquallyNoSavePositionBehavior();
+	virtual ~SquallyNoSavePositionBehavior();
 
 	void onEnter() override;
 	void onLoad() override;

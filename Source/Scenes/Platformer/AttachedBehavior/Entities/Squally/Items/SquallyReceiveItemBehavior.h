@@ -13,7 +13,7 @@ public:
 
 protected:
 	SquallyReceiveItemBehavior(GameObject* owner);
-	~SquallyReceiveItemBehavior();
+	virtual ~SquallyReceiveItemBehavior();
 
 	void onLoad() override;
 

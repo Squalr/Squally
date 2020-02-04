@@ -16,7 +16,7 @@ public:
 
 protected:
 	EntityPickPocketBehavior(GameObject* owner);
-	~EntityPickPocketBehavior();
+	virtual ~EntityPickPocketBehavior();
 
 	void onLoad() override;
 
