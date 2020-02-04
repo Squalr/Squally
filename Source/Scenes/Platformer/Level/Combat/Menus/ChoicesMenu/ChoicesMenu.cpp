@@ -174,7 +174,7 @@ void ChoicesMenu::initializeListeners()
 					this->itemsMenu->setVisible(false);
 
 					this->attackMenu->enableAll();
-					this->choicesMenu->disableAll(false, false);
+					this->choicesMenu->toggleAll(false, true);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->unfocus();
@@ -190,7 +190,7 @@ void ChoicesMenu::initializeListeners()
 					this->itemsMenu->setVisible(true);
 
 					this->itemsMenu->enableAll();
-					this->choicesMenu->disableAll(false, false);
+					this->choicesMenu->toggleAll(false, true);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->focus();
@@ -205,7 +205,7 @@ void ChoicesMenu::initializeListeners()
 					this->attackMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 
-					this->choicesMenu->disableAll(false, false);
+					this->choicesMenu->toggleAll(false, true);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->unfocus();
@@ -219,8 +219,9 @@ void ChoicesMenu::initializeListeners()
 				{
 					PlatformerEvents::TriggerDisallowPause();
 
-					this->attackMenu->disableAll(true);
-					this->itemsMenu->disableAll(true);
+					this->choicesMenu->toggleAll(false, true, true);
+					this->attackMenu->toggleAll(true, true, false);
+					this->itemsMenu->toggleAll(true, true, false);
 
 					this->choicesMenu->unfocus();
 					this->itemsMenu->unfocus();

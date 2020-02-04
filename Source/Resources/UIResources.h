@@ -6,6 +6,7 @@
 
 namespace UIResources
 {
+	extern const std::string Combat_Arrow;
 	extern const std::string Combat_AttackCircle;
 	extern const std::string Combat_DefeatMenu;
 	extern const std::string Combat_DefendCircle;

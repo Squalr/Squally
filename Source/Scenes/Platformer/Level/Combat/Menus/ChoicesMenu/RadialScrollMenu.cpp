@@ -29,18 +29,27 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 {
 	this->radius = radius;
 	this->buttonsNode = Node::create();
+	this->arrow = Sprite::create(UIResources::Combat_Arrow);
 	this->buttons = std::vector<EntryContainer*>();
 	this->currentIndex = 0;
 	this->focused = true;
 	this->backCallback = nullptr;
 
 	this->addChild(this->buttonsNode);
+	this->addChild(this->arrow);
 }
 
 RadialScrollMenu::~RadialScrollMenu()
 {
 }
-	
+
+void RadialScrollMenu::initializePositions()
+{
+	super::initializePositions();
+
+	this->arrow->setPosition(Vec2(this->radius - 72.0f, 0.0f));
+}
+
 void RadialScrollMenu::initializeListeners()
 {
 	super::initializeListeners();
@@ -152,16 +161,20 @@ ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d
 	return entry;
 }
 
-void RadialScrollMenu::disableAll(bool retainOpacity, bool disableInteraction)
+void RadialScrollMenu::toggleAll(bool disableInteraction, bool fadeOpacity, bool hideText)
 {
 	for (auto button : this->buttons)
 	{
 		if (disableInteraction)
 		{
-			button->disable(retainOpacity ? button->getOpacity() : 127);
+			button->disableInteraction(fadeOpacity ? 127 : 255);
+		}
+		else
+		{
+			button->enableInteraction(fadeOpacity ? 127 : 255);
 		}
 
-		button->setTextVisible(false);
+		button->setTextVisible(!hideText);
 	}
 }
 
@@ -173,11 +186,13 @@ void RadialScrollMenu::enableAll()
 void RadialScrollMenu::focus()
 {
 	this->focused = true;
+	this->arrow->setVisible(true);
 }
 
 void RadialScrollMenu::unfocus()
 {
 	this->focused = false;
+	this->arrow->setVisible(false);
 }
 
 void RadialScrollMenu::scrollUp()
@@ -230,28 +245,28 @@ void RadialScrollMenu::positionButtons()
 			{
 				button->setTextVisible(true);
 				button->setScale(1.0f);
-				button->enable();
+				button->enableInteraction();
 				break;
 			}
 			case 1:
 			{
 				button->setTextVisible(true);
 				button->setScale(0.85f);
-				button->enable();
+				button->enableInteraction();
 				break;
 			}
 			case 2:
 			{
 				button->setTextVisible(false);
 				button->setScale(0.75f);
-				button->disable(64);
+				button->disableInteraction(64);
 				break;
 			}
 			default:
 			{
 				button->setTextVisible(false);
 				button->setScale(1.0f);
-				button->disable(0);
+				button->disableInteraction(0);
 				break;
 			}
 		}

@@ -2,6 +2,11 @@
 
 #include "Engine/SmartNode.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class ClickableTextNode;
 class EntryContainer;
 class LocalizedString;
@@ -13,7 +18,7 @@ public:
 
 	void clearItems();
 	ClickableTextNode* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
-	void disableAll(bool retainOpacity, bool disableInteraction = true);
+	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();
 	void unfocus();
@@ -26,6 +31,7 @@ protected:
 	RadialScrollMenu(float radius);
 	virtual ~RadialScrollMenu();
 	
+	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
@@ -34,6 +40,7 @@ private:
 	void goBack();
 
 	std::vector<EntryContainer*> buttons;
+	cocos2d::Sprite* arrow;
 	cocos2d::Node* buttonsNode;
 	float radius;
 

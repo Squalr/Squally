@@ -5,6 +5,7 @@
 #include "UIResources.h"
 #include <string>
 
+const std::string UIResources::Combat_Arrow = "Private/UI/Combat/Arrow.png";
 const std::string UIResources::Combat_AttackCircle = "Private/UI/Combat/AttackCircle.png";
 const std::string UIResources::Combat_DefeatMenu = "Private/UI/Combat/DefeatMenu.png";
 const std::string UIResources::Combat_DefendCircle = "Private/UI/Combat/DefendCircle.png";
