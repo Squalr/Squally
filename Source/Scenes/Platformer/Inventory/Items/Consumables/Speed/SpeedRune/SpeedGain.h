@@ -23,7 +23,7 @@ public:
 
 protected:
 	SpeedGain(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
-	~SpeedGain();
+	virtual ~SpeedGain();
 
 	void onEnter() override;
 	void initializePositions() override;

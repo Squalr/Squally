@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -62,15 +63,39 @@ void ItemsMenu::buildAttackList(TimelineEntry* entry)
 	{
 		int index = 0;
 
+		std::map<std::string, std::tuple<int, PlatformerAttack*>> consumablesMap = std::map<std::string, std::tuple<int, PlatformerAttack*>>();
+		
 		for (auto consumable : attackBehavior->getAvailableConsumables())
+		{
+			const std::string identifier = consumable->getItemName();
+
+			if (consumablesMap.find(identifier) == consumablesMap.end())
+			{
+				consumablesMap[identifier] = std::make_tuple<int, PlatformerAttack*>(1, consumable->getAssociatedAttack(entity));
+			}
+			else
+			{
+				std::get<0>(consumablesMap[identifier])++;
+			}
+		}
+
+		for (auto next : consumablesMap)
 		{
 			this->scrollTo(index);
 
-			this->addEntry(consumable->getString(), Sprite::create(consumable->getIconResource()), UIResources::Combat_ItemsCircle, [=]()
-			{
-				entry->stageCast(consumable);
+			int count = std::get<0>(next.second);
+			PlatformerAttack* attack = std::get<1>(next.second);
+			
+			LocalizedString* countString = Strings::Common_Brackets::create()
+				->setStringReplacementVariables(Strings::Common_TimesConstant::create()
+				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
+			LocalizedString* menuString = Strings::Common_Count::create()->setStringReplacementVariables({ attack->getString(), countString });
 
-				switch (consumable->getAttackType())
+			this->addEntry(menuString, Sprite::create(attack->getIconResource()), UIResources::Combat_ItemsCircle, [=]()
+			{
+				entry->stageCast(attack->clone());
+
+				switch (attack->getAttackType())
 				{
 					case PlatformerAttack::AttackType::Healing:
 					case PlatformerAttack::AttackType::Buff:

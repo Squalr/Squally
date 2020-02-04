@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -12,6 +12,7 @@
 using namespace cocos2d;
 
 const std::string ManaPotion::SaveKeyManaPotion = "mana-potion";
+const float ManaPotion::RestorePercentage = 0.4f;
 
 ManaPotion* ManaPotion::create()
 {
@@ -57,5 +58,5 @@ std::string ManaPotion::getSerializationKey()
 
 PlatformerAttack* ManaPotion::createAssociatedAttack()
 {
-	return ThrowRestorePotion::create();
+	return ThrowManaPotion::create();
 }

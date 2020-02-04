@@ -20,7 +20,7 @@ public:
 
 protected:
 	HealthPotion();
-	~HealthPotion();
+	virtual ~HealthPotion();
 
 	PlatformerAttack* createAssociatedAttack() override;
 

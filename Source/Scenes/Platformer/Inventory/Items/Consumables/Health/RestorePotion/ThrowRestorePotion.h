@@ -15,7 +15,7 @@ public:
 
 protected:
 	ThrowRestorePotion();
-	~ThrowRestorePotion();
+	virtual ~ThrowRestorePotion();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;

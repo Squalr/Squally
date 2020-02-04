@@ -19,7 +19,7 @@ public:
 
 protected:
 	SpeedRune();
-	~SpeedRune();
+	virtual ~SpeedRune();
 
 	PlatformerAttack* createAssociatedAttack() override;
 

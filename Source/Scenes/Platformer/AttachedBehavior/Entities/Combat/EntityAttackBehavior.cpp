@@ -41,7 +41,7 @@ EntityAttackBehavior::EntityAttackBehavior(GameObject* owner) : super(owner)
 	}
 
 	this->registeredAttacks = std::vector<PlatformerAttack*>();
-	this->registeredConsumables = std::vector<PlatformerAttack*>();
+	this->registeredConsumables = std::vector<Consumable*>();
 	this->attacksNode = Node::create();
 	this->consumablessNode = Node::create();
 	this->consumablesStale = true;
@@ -105,7 +105,7 @@ std::vector<PlatformerAttack*> EntityAttackBehavior::getNoCostAttacks()
 	return availableAttacks;
 }
 
-std::vector<PlatformerAttack*> EntityAttackBehavior::getAvailableConsumables()
+std::vector<Consumable*> EntityAttackBehavior::getAvailableConsumables()
 {
 	if (this->consumablesStale)
 	{
@@ -156,7 +156,9 @@ void EntityAttackBehavior::rebuildConsumables()
 {
 	this->registeredConsumables.clear();
 	this->consumablessNode->removeAllChildren();
-	this->consumablesStale = false;
+
+	// Disabled due to refactor. Only reinstate if this causes perf issues.
+	// this->consumablesStale = false;
 
 	this->entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 	{
@@ -167,19 +169,6 @@ void EntityAttackBehavior::rebuildConsumables()
 			return;
 		}
 
-		for (auto consumable : inventory->getItemsOfType<Consumable>())
-		{
-			PlatformerAttack* consumableClone = consumable->cloneAssociatedAttack();
-
-			consumableClone->registerAttackCompleteCallback([=]()
-			{
-				inventory->tryRemove(consumable);
-
-				this->consumablesStale = true;
-			});
-
-			this->consumablessNode->addChild(consumableClone);
-			this->registeredConsumables.push_back(consumableClone);
-		}
+		this->registeredConsumables = inventory->getItemsOfType<Consumable>();
 	});
 }

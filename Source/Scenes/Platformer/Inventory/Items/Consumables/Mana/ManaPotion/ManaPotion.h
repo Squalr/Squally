@@ -16,10 +16,11 @@ public:
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeyManaPotion;
+	static const float RestorePercentage;
 
 protected:
 	ManaPotion();
-	~ManaPotion();
+	virtual ~ManaPotion();
 
 	PlatformerAttack* createAssociatedAttack() override;
 

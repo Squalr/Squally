@@ -28,7 +28,7 @@ public:
 
 protected:
 	RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount);
-	~RestoreHealth();
+	virtual ~RestoreHealth();
 
 	void onEnter() override;
 	void initializePositions() override;

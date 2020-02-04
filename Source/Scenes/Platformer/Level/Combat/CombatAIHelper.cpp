@@ -10,6 +10,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -222,11 +223,11 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	}
 
 	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
-	std::vector<PlatformerAttack*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<PlatformerAttack*>() : attackBehavior->getAvailableConsumables();
+	std::vector<Consumable*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<Consumable*>() : attackBehavior->getAvailableConsumables();
 	
 	for (auto next : consumablesList)
 	{
-		attackList.push_back(next);
+		attackList.push_back(next->getAssociatedAttack(attackingEntity));
 	}
 
 	// Prioritize resurrection > healing > damage

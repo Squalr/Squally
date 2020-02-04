@@ -14,6 +14,7 @@ public:
 protected:
 	SpeedGainGenericPreview();
 	virtual ~SpeedGainGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 

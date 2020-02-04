@@ -4,18 +4,18 @@
 
 class WorldSound;
 
-class ThrowHealthPotion : public PlatformerAttack
+class ThrowManaPotion : public PlatformerAttack
 {
 public:
-	static ThrowHealthPotion* create();
+	static ThrowManaPotion* create();
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	ThrowHealthPotion();
-	virtual ~ThrowHealthPotion();
+	ThrowManaPotion();
+	virtual ~ThrowManaPotion();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;

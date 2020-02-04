@@ -12,7 +12,7 @@ public:
 
 protected:
 	SpeedGainClippy();
-	~SpeedGainClippy();
+	virtual ~SpeedGainClippy();
 
 	Clippy* innerClone() override;
 

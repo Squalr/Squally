@@ -1,5 +1,8 @@
 #include "Consumable.h"
 
+#include "Engine/Inventory/Inventory.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 #include "Resources/ObjectResources.h"
@@ -13,6 +16,24 @@ Consumable::Consumable(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost,
 
 Consumable::~Consumable()
 {
+}
+
+PlatformerAttack* Consumable::cloneAssociatedAttack(PlatformerEntity* entity)
+{
+	PlatformerAttack* attack = this->cloneAssociatedAttack();
+
+	this->bindItemUseCallback(attack, entity);
+
+	return attack;
+}
+
+PlatformerAttack* Consumable::getAssociatedAttack(PlatformerEntity* entity)
+{
+	PlatformerAttack* attack = this->getAssociatedAttack();
+
+	this->bindItemUseCallback(attack, entity);
+
+	return attack;
 }
 
 PlatformerAttack* Consumable::cloneAssociatedAttack()
@@ -35,4 +56,27 @@ PlatformerAttack* Consumable::getAssociatedAttack()
 	}
 
 	return this->associatedAttack;
+}
+
+void Consumable::bindItemUseCallback(PlatformerAttack* attack, PlatformerEntity* entity)
+{
+	if (attack == nullptr)
+	{
+		return;
+	}
+
+	attack->registerAttackCompleteCallback([=]()
+	{
+		entity->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			Inventory* inventory = entityInventoryBehavior->getInventory();
+			
+			if (inventory == nullptr)
+			{
+				return;
+			}
+
+			inventory->tryRemove(this);
+		});
+	});
 }

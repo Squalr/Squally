@@ -20,7 +20,7 @@ public:
 
 protected:
 	RestorePotion();
-	~RestorePotion();
+	virtual ~RestorePotion();
 
 	PlatformerAttack* createAssociatedAttack() override;
 

@@ -13,7 +13,7 @@ public:
 
 protected:
 	RestoreHealthClippy();
-	~RestoreHealthClippy();
+	virtual ~RestoreHealthClippy();
 
 	Clippy* innerClone() override;
 

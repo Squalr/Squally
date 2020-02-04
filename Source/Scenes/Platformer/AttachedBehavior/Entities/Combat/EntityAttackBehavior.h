@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class Consumable;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -13,7 +14,7 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> getNoCostAttacks();
-	std::vector<PlatformerAttack*> getAvailableConsumables();
+	std::vector<Consumable*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
 
 	static const float DefaultRecoverSpeed;
@@ -41,5 +42,5 @@ private:
 	bool consumablesStale;
 
 	std::vector<PlatformerAttack*> registeredAttacks;
-	std::vector<PlatformerAttack*> registeredConsumables;
+	std::vector<Consumable*> registeredConsumables;
 };
