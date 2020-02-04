@@ -118,7 +118,7 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="849.61" y="1438.66" width="78.7879" height="88">
+  <object id="558" name="combat-spawn" type="object" x="723.61" y="1440.66" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
@@ -141,7 +141,7 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="561" name="blue-grass" type="terrain" x="608" y="1532">
+  <object id="561" name="blue-grass" type="terrain" x="482" y="1534">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>

@@ -24,11 +24,12 @@ FocusTakeOver::FocusTakeOver()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->hijackedNodes = std::map<Node*, std::tuple<Node*, int>>();
+	this->hijackedNodes = std::vector<HijackData>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->hijackContainer = Node::create();
 	this->takeOverOpacity = 196;
 	this->hasFocus = false;
+	this->isRepeatFocused = false;
 
 	this->hijackContainer->setCascadeColorEnabled(false);
 	this->hijackContainer->setCascadeOpacityEnabled(false);
@@ -91,9 +92,19 @@ void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 			childIndex = std::distance(children.begin(), search);
 		}
 
-		this->hijackedNodes[next] = std::tuple<Node*, int>(parent, childIndex);
+		this->hijackedNodes.push_back(HijackData(next, parent, childIndex));
+	}
 
-		GameUtils::changeParent(next, this->hijackContainer, true);
+	// Sort in lowest-to-highest child index so that they are restored in the correct order
+	std::sort(this->hijackedNodes.begin(), this->hijackedNodes.end(), [](auto& a, auto& b)
+	{ 
+		return a.originalIndex < b.originalIndex;
+	});
+
+	// Change the parents of the focus targets (do this as a post-step to keep an accurate child index)
+	for (auto next : this->hijackedNodes)
+	{
+		GameUtils::changeParent(next.node, this->hijackContainer, true);
 	}
 
 	switch(transition)
@@ -121,16 +132,7 @@ void FocusTakeOver::unfocus(Transition transition)
 {
 	for (auto next : this->hijackedNodes)
 	{
-		if (next.first == nullptr)
-		{
-			continue;
-		}
-
-		Node* node = next.first;
-		Node* parent = std::get<0>(next.second);
-		int childIndex = std::get<1>(next.second);
-
-		GameUtils::changeParent(node, parent, true, true, childIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
 	}
 
 	switch(transition)
@@ -152,7 +154,6 @@ void FocusTakeOver::unfocus(Transition transition)
 	}
 
 	this->hijackedNodes.clear();
-	this->repeatFocusedNodes.clear();
 	this->hasFocus = false;
 }
 
@@ -165,21 +166,16 @@ void FocusTakeOver::repeatFocus(std::vector<cocos2d::Node*> nodes)
 {
 	this->focus(nodes, Transition::Fade);
 
-	this->repeatFocusedNodes = nodes;
+	this->isRepeatFocused = true;
 
 	this->softUnfocus();
 }
 
 void FocusTakeOver::refocus()
 {
-	for (auto next : this->repeatFocusedNodes)
+	for (auto next : this->hijackedNodes)
 	{
-		if (next == nullptr)
-		{
-			continue;
-		}
-
-		GameUtils::changeParent(next, this->hijackContainer, true);
+		GameUtils::changeParent(next.node, this->hijackContainer, true);
 	}
 }
 
@@ -187,31 +183,22 @@ void FocusTakeOver::softUnfocus()
 {
 	for (auto next : this->hijackedNodes)
 	{
-		if (next.first == nullptr)
-		{
-			continue;
-		}
-
-		Node* node = next.first;
-		Node* parent = std::get<0>(next.second);
-		int childIndex = std::get<1>(next.second);
-
-		GameUtils::changeParent(node, parent, true, true, childIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
 	}
 }
 
 void FocusTakeOver::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags)
 {
-	if (this->repeatFocusedNodes.empty())
-	{
-		super::visit(renderer, parentTransform, parentFlags);
-	}
-	else
+	if (this->isRepeatFocused)
 	{
 		this->refocus();
 
 		super::visit(renderer, parentTransform, parentFlags);
 
 		this->softUnfocus();
+	}
+	else
+	{
+		super::visit(renderer, parentTransform, parentFlags);
 	}
 }

@@ -43,9 +43,18 @@ private:
 	void softUnfocus();
 	bool hasFocus;
 
+	struct HijackData
+	{
+		cocos2d::Node* node;
+		cocos2d::Node* originalParent;
+		int originalIndex;
+
+		HijackData(cocos2d::Node* node, cocos2d::Node* originalParent, int originalIndex) : node(node), originalParent(originalParent), originalIndex(originalIndex) { }
+	};
+
 	GLubyte takeOverOpacity;
-	std::vector<cocos2d::Node*> repeatFocusedNodes;
 	cocos2d::LayerColor* focusBackground;
 	cocos2d::Node* hijackContainer;
-	std::map<cocos2d::Node*, std::tuple<cocos2d::Node*, int>> hijackedNodes;
+	std::vector<HijackData> hijackedNodes;
+	bool isRepeatFocused;
 };
