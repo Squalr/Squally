@@ -17,6 +17,7 @@ class CombatEvents
 public:
 	static const std::string EventSpawn;
 	static const std::string EventGetAssociatedTimelineEntry;
+	static const std::string EventMenuBack;
 	static const std::string EventChangeMenuState;
 	static const std::string EventDisableDefend;
 	static const std::string EventDisableItems;
@@ -233,6 +234,7 @@ public:
 
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
+	static void TriggerMenuGoBack();
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();

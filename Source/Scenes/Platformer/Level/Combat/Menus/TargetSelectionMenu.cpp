@@ -75,7 +75,7 @@ void TargetSelectionMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				{
-					this->selectEntity(combatArgs->entry->getEntity());
+					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
 					this->setVisible(true);
 					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
@@ -215,6 +215,13 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 	{
 		if (directionIsLeft)
 		{
+			// Looping disabled -- just go back if cycled through all entities
+			if (*entityPosition == targetEntityGroup.front())
+			{
+				CombatEvents::TriggerMenuGoBack();
+				return;
+			}
+
 			PlatformerEntity* nextEntity = (*entityPosition == targetEntityGroup.front()) ? targetEntityGroup.back() : *std::prev(entityPosition);
 
 			this->selectEntity(nextEntity);
@@ -222,6 +229,16 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 		else
 		{
 			auto next = std::next(entityPosition);
+
+			// Looping disabled -- just go back if cycled through all entities
+			// Edit: Nvm, looping actually feels more natural when scrolling right, whereas going back is more natural when scrolling left
+			/*
+			if (next == std::end(targetEntityGroup))
+			{
+				CombatEvents::TriggerMenuGoBack();
+				return;
+			}
+			*/
 
 			PlatformerEntity* nextEntity = (next != std::end(targetEntityGroup)) ? *next : targetEntityGroup.front();
 

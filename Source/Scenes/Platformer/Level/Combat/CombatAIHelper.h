@@ -23,7 +23,6 @@ private:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 	void performRetargetCorrections(TimelineEntry* attackingEntry);
 	void performAIActions(TimelineEntry* attackingEntry);

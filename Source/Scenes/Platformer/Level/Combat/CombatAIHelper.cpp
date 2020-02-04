@@ -68,11 +68,6 @@ void CombatAIHelper::initializeListeners()
 	}));
 }
 
-void CombatAIHelper::update(float dt)
-{
-	super::update(dt);
-}
-
 void CombatAIHelper::initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities)
 {
 	this->playerEntities = playerEntities;

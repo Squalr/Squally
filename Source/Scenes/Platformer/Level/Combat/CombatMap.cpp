@@ -240,7 +240,9 @@ void CombatMap::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
-					this->entityFocusTakeOver->repeatFocus({ combatArgs->entry->getEntity() });
+					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+
+					this->entityFocusTakeOver->repeatFocus({ entity });
 					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry });
 
 					for (auto entity : this->timeline->getEntries())
@@ -248,7 +250,10 @@ void CombatMap::initializeListeners()
 						entity->getEntity()->getAnimations()->setOpacity(127);
 					}
 
-					combatArgs->entry->getEntity()->getAnimations()->setOpacity(255);
+					if (entity != nullptr)
+					{
+						entity->getAnimations()->setOpacity(255);
+					}
 
 					break;
 				}
@@ -258,16 +263,23 @@ void CombatMap::initializeListeners()
 				{
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
-					for (auto entity : this->timeline->getEntries())
+					for (auto entry : this->timeline->getEntries())
 					{
-						entity->getEntity()->getAnimations()->setOpacity(127);
+						PlatformerEntity* entity = entry == nullptr ? nullptr : entry->getEntity();
+
+						if (entity == nullptr)
+						{
+							continue;
+						}
+
+						entity->getAnimations()->setOpacity(127);
 
 						if (combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget
-							|| (!entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
-							|| (entity->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
+							|| (!entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget)
+							|| (entry->isPlayerEntry() && combatArgs->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget))
 						{
-							entity->getEntity()->getAnimations()->setOpacity(255);
-							focusTargets.push_back(entity->getEntity());
+							entity->getAnimations()->setOpacity(255);
+							focusTargets.push_back(entity);
 						}
 					}
 
@@ -287,9 +299,16 @@ void CombatMap::initializeListeners()
 
 					this->targetSelectionMenu->selectEntity(nullptr);
 
-					for (auto entity : this->timeline->getEntries())
+					for (auto entry : this->timeline->getEntries())
 					{
-						entity->getEntity()->getAnimations()->setOpacity(255);
+						PlatformerEntity* entity = entry == nullptr ? nullptr : entry->getEntity();
+
+						if (entity == nullptr)
+						{
+							continue;
+						}
+
+						entity->getAnimations()->setOpacity(255);
 					}
 
 					break;

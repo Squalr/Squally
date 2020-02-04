@@ -120,6 +120,11 @@ void ChoicesMenu::initializeListeners()
 		}
 	});
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventMenuBack, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, nullptr));	
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());

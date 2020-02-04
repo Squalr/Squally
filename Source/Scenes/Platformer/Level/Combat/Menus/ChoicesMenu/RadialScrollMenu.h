@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
-class EntryContainer;
 class LocalizedString;
 
 class RadialScrollMenu : public SmartNode
@@ -39,7 +38,7 @@ private:
 	void positionButtons();
 	void goBack();
 
-	std::vector<EntryContainer*> buttons;
+	std::vector<ClickableTextNode*> buttons;
 	cocos2d::Sprite* arrow;
 	cocos2d::Node* buttonsNode;
 	float radius;

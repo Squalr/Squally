@@ -8,7 +8,6 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/EntryContainer.h"
 
 #include "Resources/UIResources.h"
 
@@ -30,7 +29,7 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 	this->radius = radius;
 	this->buttonsNode = Node::create();
 	this->arrow = Sprite::create(UIResources::Combat_Arrow);
-	this->buttons = std::vector<EntryContainer*>();
+	this->buttons = std::vector<ClickableTextNode*>();
 	this->currentIndex = 0;
 	this->focused = true;
 	this->backCallback = nullptr;
@@ -128,7 +127,7 @@ ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d
 	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
 	attackLabelSelected->setTextColor(Color4B::YELLOW);
 
-	EntryContainer* entry = EntryContainer::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
+	ClickableTextNode* entry = ClickableTextNode::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
 	entry->setTextOffset(Vec2(48.0f, 0.0f));
 
@@ -230,7 +229,7 @@ void RadialScrollMenu::positionButtons()
 
 	for (int buttonIndex = 0; buttonIndex < int(this->buttons.size()); buttonIndex++)
 	{
-		EntryContainer* button = this->buttons[buttonIndex];
+		ClickableTextNode* button = this->buttons[buttonIndex];
 
 		int effectiveIndex = buttonIndex - this->currentIndex;
 		int distance = std::abs(effectiveIndex);

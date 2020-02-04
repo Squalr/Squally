@@ -75,6 +75,11 @@ void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 
 	for (auto next : nodes)
 	{
+		if (next == nullptr)
+		{
+			continue;
+		}
+
 		Node* parent = next->getParent();
 		
 		cocos2d::Vector<Node*> children = parent->getChildren();
@@ -116,6 +121,11 @@ void FocusTakeOver::unfocus(Transition transition)
 {
 	for (auto next : this->hijackedNodes)
 	{
+		if (next.first == nullptr)
+		{
+			continue;
+		}
+
 		Node* node = next.first;
 		Node* parent = std::get<0>(next.second);
 		int childIndex = std::get<1>(next.second);
@@ -164,6 +174,11 @@ void FocusTakeOver::refocus()
 {
 	for (auto next : this->repeatFocusedNodes)
 	{
+		if (next == nullptr)
+		{
+			continue;
+		}
+
 		GameUtils::changeParent(next, this->hijackContainer, true);
 	}
 }
@@ -172,6 +187,11 @@ void FocusTakeOver::softUnfocus()
 {
 	for (auto next : this->hijackedNodes)
 	{
+		if (next.first == nullptr)
+		{
+			continue;
+		}
+
 		Node* node = next.first;
 		Node* parent = std::get<0>(next.second);
 		int childIndex = std::get<1>(next.second);
