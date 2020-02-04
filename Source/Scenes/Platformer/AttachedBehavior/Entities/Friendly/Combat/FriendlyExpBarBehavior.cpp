@@ -7,21 +7,11 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
-#include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
-#include "Events/CombatEvents.h"
-#include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 
 #include "Resources/ParticleResources.h"
@@ -43,7 +33,7 @@ FriendlyExpBarBehavior* FriendlyExpBarBehavior::create(GameObject* owner)
 	return instance;
 }
 
-FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner, (CollisionType)CombatCollisionType::EntityFriendly)
+FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = static_cast<PlatformerEntity*>(owner);
 	this->deltaString = Strings::Common_PlusConstant::create();
@@ -80,8 +70,6 @@ FriendlyExpBarBehavior::~FriendlyExpBarBehavior()
 
 void FriendlyExpBarBehavior::onLoad()
 {
-    super::onLoad();
-
 	this->expProgressBar->setOpacity(0);
 	this->deltaLabel->setOpacity(0);
 	this->levelUpLabel->setOpacity(0);

@@ -117,7 +117,7 @@ void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std
 {
 	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionObject::CollisionData data)
 	{
-		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration <= 0.0f)
+		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
@@ -130,7 +130,7 @@ void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionType
 {
 	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionObject::CollisionData data)
 	{
-		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration <= 0.0f)
+		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
