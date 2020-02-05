@@ -29,8 +29,6 @@ using namespace cocos2d;
 
 const std::string EntityTextOverlayBehavior::MapKeyAttachedBehavior = "combat-text-overlays";
 
-const int EntityTextOverlayBehavior::MaxOverlays = 32;
-
 EntityTextOverlayBehavior* EntityTextOverlayBehavior::create(GameObject* owner)
 {
 	EntityTextOverlayBehavior* instance = new EntityTextOverlayBehavior(owner);

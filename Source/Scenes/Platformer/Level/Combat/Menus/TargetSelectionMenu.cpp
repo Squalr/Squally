@@ -36,15 +36,11 @@ TargetSelectionMenu* TargetSelectionMenu::create(Timeline* timelineRef)
 
 TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
-	this->lightRay = Sprite::create(UIResources::Combat_SelectionLight);
 	this->timelineRef = timelineRef;
 	this->selectedEntity = nullptr;
 	this->allowedSelection = AllowedSelection::None;
 	this->chooseTargetMenu = ChooseTargetMenu::create();
 
-	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
-
-	this->addChild(this->lightRay);
 	this->addChild(this->chooseTargetMenu);
 }
 
@@ -154,18 +150,6 @@ void TargetSelectionMenu::initializeListeners()
 void TargetSelectionMenu::update(float dt)
 {
 	super::update(dt);
-	
-	const Vec2 LightOffset = Vec2(128.0f, -256.0f);
-
-	if (this->selectedEntity != nullptr)
-	{
-		this->lightRay->setPosition(GameUtils::getScreenBounds(this->selectedEntity).origin + this->selectedEntity->getEntityCenterPoint() + LightOffset);
-		this->lightRay->setVisible(true);
-	}
-	else
-	{
-		this->lightRay->setVisible(false);
-	}
 }
 
 void TargetSelectionMenu::chooseCurrentTarget()
@@ -182,6 +166,8 @@ void TargetSelectionMenu::chooseCurrentTarget()
 void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 {
 	this->selectedEntity = entity;
+	
+	CombatEvents::TriggerSelectionChanged(CombatEvents::SelectionArgs(this->selectedEntity));
 }
 
 void TargetSelectionMenu::selectNext(bool directionIsLeft)

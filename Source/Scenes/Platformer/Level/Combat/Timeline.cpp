@@ -253,10 +253,11 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFi
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
 	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.35f;
 	float nextPlayerBonus = 0.0f;
+	int index = 0;
 
 	for (auto it = friendlyEntities.begin(); it != friendlyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it);
+		TimelineEntry* entry = TimelineEntry::create(*it, index++);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);
@@ -275,10 +276,11 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFir
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
 	float nextEnemyBonus = 0.0f;
 	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
+	int index = 0;
 
 	for (auto it = enemyEntities.begin(); it != enemyEntities.end(); it++)
 	{
-		TimelineEntry* entry = TimelineEntry::create(*it);
+		TimelineEntry* entry = TimelineEntry::create(*it, index++);
 
 		this->timelineEntries.push_back(entry);
 		this->timelineNode->addChild(entry);

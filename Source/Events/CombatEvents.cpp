@@ -11,6 +11,7 @@ const std::string CombatEvents::EventMenuBack = "EVENT_COMBAT_CHANGE_MENU_BACK";
 const std::string CombatEvents::EventChangeMenuState = "EVENT_COMBAT_CHANGE_MENU_STATE";
 const std::string CombatEvents::EventDisableDefend = "EVENT_COMBAT_DISABLE_DEFEND";
 const std::string CombatEvents::EventDisableItems = "EVENT_COMBAT_DISABLE_ITEMS";
+const std::string CombatEvents::EventSelectionChanged = "EVENT_COMBAT_SELECTION_CHANGED";
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
@@ -73,6 +74,14 @@ void CombatEvents::TriggerDisableItems()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventDisableItems
+	);
+}
+
+void CombatEvents::TriggerSelectionChanged(SelectionArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventSelectionChanged,
+		&args
 	);
 }
 

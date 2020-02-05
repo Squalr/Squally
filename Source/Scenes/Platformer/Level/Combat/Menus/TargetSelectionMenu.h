@@ -47,7 +47,6 @@ private:
 	AllowedSelection allowedSelection;
 	bool isActive;
 	PlatformerEntity* selectedEntity;
-	cocos2d::Sprite* lightRay;
 
 	ChooseTargetMenu* chooseTargetMenu;
 };

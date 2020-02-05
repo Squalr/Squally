@@ -13,7 +13,7 @@ class PlatformerEntity;
 class TimelineEntry : public SmartNode
 {
 public:
-	static TimelineEntry* create(PlatformerEntity* entity);
+	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
 	void applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing);
@@ -33,7 +33,7 @@ public:
 
 private:
 	typedef SmartNode super;
-	TimelineEntry(PlatformerEntity* entity);
+	TimelineEntry(PlatformerEntity* entity, int spawnIndex);
 	virtual ~TimelineEntry();
 
 	struct DamageArgs
@@ -50,7 +50,7 @@ private:
 	void performCast();
 	void tryInterrupt(bool blocked);
 	void resetTimeline();
-	void cameraFocusEntity(PlatformerEntity* entity);
+	void cameraFocusEntry();
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
@@ -60,6 +60,7 @@ private:
 	cocos2d::Sprite* emblem;
 	cocos2d::Node* orphanedAttackCache;
 
+	int spawnIndex;
 	float speed;
 	float interruptBonus;
 	float progress;

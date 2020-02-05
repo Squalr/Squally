@@ -14,6 +14,8 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Objects/Camera/CameraFocus.h"
+#include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
@@ -27,16 +29,16 @@ using namespace cocos2d;
 const float TimelineEntry::CastPercentage = 0.75f;
 const float TimelineEntry::BaseSpeedMultiplier = 0.175f;
 
-TimelineEntry* TimelineEntry::create(PlatformerEntity* entity)
+TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, int spawnIndex)
 {
-	TimelineEntry* instance = new TimelineEntry(entity);
+	TimelineEntry* instance = new TimelineEntry(entity, spawnIndex);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TimelineEntry::TimelineEntry(PlatformerEntity* entity) : super()
+TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 {
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
@@ -44,6 +46,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity) : super()
 	this->emblem = Sprite::create(entity->getEmblemResource());
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
+	this->spawnIndex = spawnIndex;
 
 	this->speed = 1.0f;
 	this->interruptBonus = 0.0f;
@@ -241,6 +244,11 @@ void TimelineEntry::tryPerformActions()
 			CombatEvents::TriggerPauseTimeline();
 			CombatEvents::TriggerRequestAIAction(CombatEvents::AIRequestArgs(this));
 		}
+
+		ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+		{
+			GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
+		}), CameraFocus::MapKeyCameraFocus);
 	}
 	// Progress complete, do the cast
 	else if (this->progress > 1.0f)
@@ -264,7 +272,7 @@ void TimelineEntry::performCast()
 {
 	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
 
-	this->cameraFocusEntity(this->entity);
+	this->cameraFocusEntry();
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
@@ -279,14 +287,10 @@ void TimelineEntry::performCast()
 				[=]()
 				{
 					// Attack complete -- camera focus target
-					GameCamera::getInstance()->popTarget();
-					this->cameraFocusEntity(this->target->entity);
+					this->target->cameraFocusEntry();
 				},
 				[=]()
 				{
-					// Recover finished, camera unfocus target
-					GameCamera::getInstance()->popTarget();
-					
 					this->resetTimeline();
 					CombatEvents::TriggerResumeTimeline();
 				}
@@ -296,17 +300,14 @@ void TimelineEntry::performCast()
 	));
 }
 
-void TimelineEntry::cameraFocusEntity(PlatformerEntity* entity)
+void TimelineEntry::cameraFocusEntry()
 {
-	// TODO: Direct focus is no good, and hard coded offsets do not work particularly well. Maybe bind each entity to a camera hint obj in the map file?
-	GameCamera::getInstance()->pushTarget(CameraTrackingData(
-		entity,
-		Vec2::ZERO,
-		CameraTrackingData::DefaultCameraOffset,
-		CameraTrackingData::CameraScrollType::Rectangle,
-		Vec2(0.015f, 0.015f),
-		1.0f // entity->getStateOrDefault(StateKeys::Zoom, Value(1.0f)).asFloat()
-	));
+	std::string cameraTag = (this->isPlayerEntry() ? "player" : "enemy") + ("-camera-" + std::to_string(this->spawnIndex));
+
+	ObjectEvents::QueryObjects<CameraTarget>(QueryObjectsArgs<CameraTarget>([&](CameraTarget* cameraTarget)
+	{
+		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
+	}), cameraTag);
 }
 
 void TimelineEntry::tryInterrupt(bool blocked)

@@ -21,6 +21,7 @@ public:
 	static const std::string EventChangeMenuState;
 	static const std::string EventDisableDefend;
 	static const std::string EventDisableItems;
+	static const std::string EventSelectionChanged;
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
 	static const std::string EventRequestRetargetCorrection;
@@ -101,6 +102,15 @@ public:
 
 		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry), selectionMeta(SelectionMeta()) { }
 		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry, SelectionMeta selectionMeta) : currentMenu(currentMenu), entry(entry), selectionMeta(selectionMeta) { }
+	};
+
+	struct SelectionArgs
+	{
+		PlatformerEntity* target;
+
+		SelectionArgs(PlatformerEntity* target) : target(target)
+		{
+		}
 	};
 
 	struct CastTargetArgs
@@ -254,6 +264,7 @@ public:
 	static void TriggerMenuStateChange(MenuStateArgs args);
 	static void TriggerDisableDefend();
 	static void TriggerDisableItems();
+	static void TriggerSelectionChanged(SelectionArgs args);
 	static void TriggerSelectCastTarget(CastTargetArgs args);
 	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);

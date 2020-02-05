@@ -49,6 +49,8 @@ ChooseTargetMenu::~ChooseTargetMenu()
 void ChooseTargetMenu::onEnter()
 {
 	super::onEnter();
+	
+	this->setVisible(false);
 }
 
 void ChooseTargetMenu::initializePositions()
