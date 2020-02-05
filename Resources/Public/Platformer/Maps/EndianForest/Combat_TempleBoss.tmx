@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="565">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="571">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -25,20 +25,18 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1779.34" y="1371.05" width="78.7879" height="88">
+  <object id="554" name="combat-spawn" type="object" x="1785.34" y="1379.05" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
-    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="519.4" y="1609.7" width="78.7879" height="88">
+  <object id="555" name="combat-spawn" type="object" x="521.4" y="1613.7" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="player"/>
-    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
   <object id="556" name="temple" type="terrain" x="1528.36" y="1465.46">
@@ -48,12 +46,11 @@
    </properties>
    <polygon points="0,0 519.718,1.85085 519.305,142.53 649.655,142.551 647.95,275.518 777.151,273.063 777.935,403.076 901.94,403.024 898.962,1197.8 -373.105,1200.31 -374.044,377.027 -247.91,376.915 -249.314,257.13 -116.669,255.415 -118.551,134.529 3.6594,132.54"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="739.61" y="1528.66" width="78.7879" height="88">
+  <object id="558" name="combat-spawn" type="object" x="741.61" y="1532.66" width="78.7879" height="88">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
-    <property name="zoom" type="float" value="1.25"/>
    </properties>
   </object>
   <object id="562" name="temple" type="terrain" x="556" y="1624">
@@ -75,6 +72,28 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="551" name="camera-focus" type="object" x="1127.58" y="1202.12" width="170.788" height="172"/>
+  <object id="565" name="camera-focus" type="object" x="1171.28" y="1220.51" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="880.303" y="1318.39" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
+  <object id="568" name="camera-target" type="object" x="671.697" y="1394.39" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.125"/>
+   </properties>
+  </object>
+  <object id="569" name="camera-target" type="object" x="1503.7" y="1290.39" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

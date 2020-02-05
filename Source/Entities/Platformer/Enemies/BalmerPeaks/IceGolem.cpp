@@ -35,7 +35,7 @@ IceGolem::IceGolem(ValueMap& properties) : super(properties,
 	IceGolem::MapKeyIceGolem,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
-	Size(1680.0f, 996.0f),
+	Size(256.0f, 224.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

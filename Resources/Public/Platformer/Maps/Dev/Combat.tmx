@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="665">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="666">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -79,6 +79,18 @@
   </properties>
   <object id="652" name="blue-grass" type="terrain" x="-124.601" y="1804.85">
    <polygon points="0,0 3268.1,-9.69932 3265.23,1551.89 2.87433,1532.49"/>
+  </object>
+  <object id="665" name="troll" type="entity" x="263.273" y="1675.39" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value="no-items,no-defend"/>
+    <property name="battle-map" value="EndianForest/Combat_Prison"/>
+    <property name="battle-tag" value="prison"/>
+    <property name="drop-pool" value="ef-generic"/>
+    <property name="quest" value="fight-troll"/>
+    <property name="quest-line" value="rescue-guano"/>
+    <property name="send-event" value="event-door-open"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
