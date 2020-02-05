@@ -124,6 +124,11 @@ void RadialScrollMenu::goBack()
 	}
 }
 
+int RadialScrollMenu::getIndex()
+{
+	return this->currentIndex;
+}
+
 void RadialScrollMenu::clearItems()
 {
 	this->buttons.clear();
@@ -131,7 +136,7 @@ void RadialScrollMenu::clearItems()
 	this->currentIndex = 0;
 }
 
-RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback)
+RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
 {
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
 	LocalizedLabel* attackLabelSelected = attackLabel->clone();
@@ -145,7 +150,7 @@ RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node
 	RadialEntry* entry = RadialEntry::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
 	entry->setTextOffset(Vec2(48.0f, 0.0f));
-	entry->addIcon(iconNode);
+	entry->addIcon(iconResource);
 
 	if (callback != nullptr)
 	{

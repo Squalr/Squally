@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class ChooseTargetMenu;
 class PlatformerEntity;
 class Timeline;
 
@@ -47,4 +48,6 @@ private:
 	bool isActive;
 	PlatformerEntity* selectedEntity;
 	cocos2d::Sprite* lightRay;
+
+	ChooseTargetMenu* chooseTargetMenu;
 };

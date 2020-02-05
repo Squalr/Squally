@@ -64,7 +64,7 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 
 		for (auto attack : attackBehavior->getAttacks())
 		{
-			this->addEntry(attack->getString(), Sprite::create(attack->getIconResource()), UIResources::Combat_AttackCircle, [=]()
+			this->addEntry(attack->getString(), attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->scrollTo(index);
 
@@ -76,18 +76,21 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 					case PlatformerAttack::AttackType::Buff:
 					case PlatformerAttack::AttackType::Resurrection:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:
 					case PlatformerAttack::AttackType::Debuff:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
 						break;
 					}
 					default:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
 						break;
 					}
 				}

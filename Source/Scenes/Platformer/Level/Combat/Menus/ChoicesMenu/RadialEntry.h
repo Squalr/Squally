@@ -31,7 +31,8 @@ public:
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 
-	void addIcon(cocos2d::Node* icon);
+	std::string getIconResource();
+	void addIcon(std::string iconResource);
 
 	// ClickableTextNode wrapper
 	void setTextVisible(bool isVisible);
@@ -69,4 +70,5 @@ private:
 	typedef SmartNode super;
 
 	ClickableTextNode* entry;
+	std::string iconResource;
 };

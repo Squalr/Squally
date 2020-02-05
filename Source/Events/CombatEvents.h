@@ -78,13 +78,29 @@ public:
 			ChooseBuffTarget,
 			ChooseAnyTarget,
 		};
+		
+		struct SelectionMeta
+		{
+			enum class Choice
+			{
+				Item,
+				Attack,
+				Defend,
+			};
+
+			Choice choice;
+			std::string iconResource;
+
+			SelectionMeta() : choice(Choice::Attack), iconResource("") { }
+			SelectionMeta(Choice choice, std::string iconResource) : choice(choice), iconResource(iconResource) { }
+		};
 
 		CurrentMenu currentMenu;
 		TimelineEntry* entry;
+		SelectionMeta selectionMeta;
 
-		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry)
-		{
-		}
+		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry), selectionMeta(SelectionMeta()) { }
+		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry, SelectionMeta selectionMeta) : currentMenu(currentMenu), entry(entry), selectionMeta(selectionMeta) { }
 	};
 
 	struct CastTargetArgs

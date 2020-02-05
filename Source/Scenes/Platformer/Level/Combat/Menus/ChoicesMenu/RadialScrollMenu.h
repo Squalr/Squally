@@ -16,8 +16,9 @@ class RadialScrollMenu : public SmartNode
 public:
 	static RadialScrollMenu* create(float radius);
 
+	int getIndex();
 	void clearItems();
-	RadialEntry* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
+	RadialEntry* addEntry(LocalizedString* labelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback);
 	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();

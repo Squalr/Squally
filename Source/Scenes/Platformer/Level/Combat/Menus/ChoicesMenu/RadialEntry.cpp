@@ -1,5 +1,7 @@
 #include "RadialEntry.h"
 
+#include "cocos/2d/CCSprite.h"
+
 #include "Engine/Input/ClickableTextNode.h"
 
 using namespace cocos2d;
@@ -46,6 +48,7 @@ RadialEntry* RadialEntry::create(
 RadialEntry::RadialEntry(ClickableTextNode* entry) : super()
 {
 	this->entry = entry;
+	this->iconResource = "";
 
 	this->addChild(this->entry);
 }
@@ -54,14 +57,16 @@ RadialEntry::~RadialEntry()
 {
 }
 
-void RadialEntry::addIcon(cocos2d::Node* icon)
+std::string RadialEntry::getIconResource()
 {
-	if (icon == nullptr)
-	{
-		return;
-	}
+	return this->iconResource;
+}
 
-	this->entry->addChild(icon);
+void RadialEntry::addIcon(std::string iconResource)
+{
+	this->iconResource = iconResource;
+
+	this->entry->addChild(Sprite::create(iconResource));
 }
 
 void RadialEntry::setTextVisible(bool isVisible)

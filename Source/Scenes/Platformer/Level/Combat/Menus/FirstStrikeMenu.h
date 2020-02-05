@@ -17,14 +17,16 @@ public:
 
 	void show(bool playerFirstStrike);
 
-private:
-	typedef Hud super;
+protected:
 	FirstStrikeMenu();
-	~FirstStrikeMenu();
+	virtual ~FirstStrikeMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef Hud super;
 
 	cocos2d::Sprite* background;
 	LocalizedLabel* firstStrikeLabel;

@@ -88,7 +88,6 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 
 		for (auto next : consumablesMap)
 		{
-			this->scrollTo(index);
 			this->hasItemsInList = true;
 
 			int count = std::get<0>(next.second);
@@ -99,8 +98,10 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 				->setStringReplacementVariables(ConstantString::create(std::to_string(count))));
 			LocalizedString* menuString = Strings::Common_Count::create()->setStringReplacementVariables({ attack->getString(), countString });
 
-			this->addEntry(menuString, Sprite::create(attack->getIconResource()), UIResources::Combat_ItemsCircle, [=]()
+			this->addEntry(menuString, attack->getIconResource(), UIResources::Combat_ItemsCircle, [=]()
 			{
+				this->scrollTo(index);
+
 				entry->stageCast(attack->clone());
 
 				switch (attack->getAttackType())
@@ -109,18 +110,21 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 					case PlatformerAttack::AttackType::Buff:
 					case PlatformerAttack::AttackType::Resurrection:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
 						break;
 					}
 					case PlatformerAttack::AttackType::Damage:
 					case PlatformerAttack::AttackType::Debuff:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
 						break;
 					}
 					default:
 					{
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry));
+						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Item, attack->getIconResource());
+						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
 						break;
 					}
 				}

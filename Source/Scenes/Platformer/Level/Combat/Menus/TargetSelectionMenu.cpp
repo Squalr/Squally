@@ -9,12 +9,14 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChooseTargetMenu.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -38,10 +40,12 @@ TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 	this->timelineRef = timelineRef;
 	this->selectedEntity = nullptr;
 	this->allowedSelection = AllowedSelection::None;
+	this->chooseTargetMenu = ChooseTargetMenu::create();
 
 	this->lightRay->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->lightRay);
+	this->addChild(this->chooseTargetMenu);
 }
 
 void TargetSelectionMenu::onEnter()
