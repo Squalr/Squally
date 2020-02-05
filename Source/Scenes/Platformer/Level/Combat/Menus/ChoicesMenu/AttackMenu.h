@@ -11,10 +11,12 @@ public:
 
 	void buildAttackList(TimelineEntry* entry);
 
-private:
-	typedef RadialScrollMenu super;
+protected:
 	AttackMenu();
 	virtual ~AttackMenu();
+
+private:
+	typedef RadialScrollMenu super;
 
 	static const float Radius;
 };

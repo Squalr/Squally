@@ -4,10 +4,10 @@
 #include "Events/CombatEvents.h"
 
 class AttackMenu;
-class ClickableTextNode;
 class ItemsMenu;
 class PlatformerAttack;
 class PlatformerEntity;
+class RadialEntry;
 class RadialScrollMenu;
 class TimelineEntry;
 
@@ -40,9 +40,9 @@ private:
 	AttackMenu* attackMenu;
 	ItemsMenu* itemsMenu;
 
-	ClickableTextNode* itemsButton;
-	ClickableTextNode* attackButton;
-	ClickableTextNode* defendButton;
+	RadialEntry* itemsButton;
+	RadialEntry* attackButton;
+	RadialEntry* defendButton;
 	
 	TimelineEntry* selectedEntry;
 	PlatformerEntity* trackTarget;

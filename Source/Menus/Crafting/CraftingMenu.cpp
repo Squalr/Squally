@@ -157,7 +157,7 @@ void CraftingMenu::initializeListeners()
 		this->close();
 	});
 
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	this->itemMenu->setPreviewCallback([=](Item* item)
 	{

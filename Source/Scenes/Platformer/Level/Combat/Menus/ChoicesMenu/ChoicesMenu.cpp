@@ -18,6 +18,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/AttackMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ItemsMenu.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -150,9 +151,13 @@ void ChoicesMenu::initializeListeners()
 					this->setVisible(true);
 					this->choicesMenu->enableAll();
 
-					if (this->noItems)
+					if (this->noItems || !this->itemsMenu->hasItems())
 					{
 						this->itemsButton->disableInteraction(127);
+					}
+					else
+					{
+						this->itemsButton->enableInteraction();
 					}
 
 					if (this->noDefend)
@@ -331,7 +336,7 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 	this->selectedEntry = selectedEntry;
 
 	this->attackMenu->buildAttackList(selectedEntry);
-	this->itemsMenu->buildAttackList(selectedEntry);
+	this->itemsMenu->buildItemList(selectedEntry);
 }
 
 void ChoicesMenu::track(PlatformerEntity* trackTarget)

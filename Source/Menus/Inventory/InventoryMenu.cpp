@@ -137,7 +137,7 @@ void InventoryMenu::initializeListeners()
 	{
 		this->close();
 	});
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{

@@ -6,16 +6,8 @@
 
 namespace SoundResources
 {
-	extern const std::string AFX_INTERFACE_ERROR_1_DFMG;
-	extern const std::string ButtonClick1;
-	extern const std::string ButtonClick2;
-	extern const std::string ButtonClick3;
-	extern const std::string ButtonRollover1;
 	extern const std::string Cipher_GearTurn;
 	extern const std::string Cipher_Lightning;
-	extern const std::string Clean_Interface_Buttons_8;
-	extern const std::string ClickBack1;
-	extern const std::string ClickBack2;
 	extern const std::string Hexus_Achievement;
 	extern const std::string Hexus_Attacks_Acid;
 	extern const std::string Hexus_Attacks_AcidHit;
@@ -52,11 +44,20 @@ namespace SoundResources
 	extern const std::string Hexus_Pass;
 	extern const std::string Hexus_Reward;
 	extern const std::string Hexus_Victory;
-	extern const std::string Item_Purchase__1_;
-	extern const std::string MapOpen;
-	extern const std::string Menus_BookPageTurn_PE1014902;
-	extern const std::string Menus_Card_Game_UI_Button_Light_Reverb_02;
-	extern const std::string Menus_Simple_Button;
+	extern const std::string Menus_BookTurn1;
+	extern const std::string Menus_ButtonClick1;
+	extern const std::string Menus_ButtonClick2;
+	extern const std::string Menus_ButtonClick3;
+	extern const std::string Menus_ButtonClick4;
+	extern const std::string Menus_ButtonClick5;
+	extern const std::string Menus_ButtonRollover1;
+	extern const std::string Menus_ClickBack1;
+	extern const std::string Menus_ClickBack2;
+	extern const std::string Menus_Error1;
+	extern const std::string Menus_MapOpen1;
+	extern const std::string Menus_Special1;
+	extern const std::string Menus_Special2;
+	extern const std::string Menus_TransactGold1;
 	extern const std::string Notifications_NotificationGood1;
 	extern const std::string Notifications_NotificationGood2;
 	extern const std::string Notifications_NotificationGood3;
@@ -249,6 +250,4 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_WoodBreak_WoodBreak3;
 	extern const std::string Platformer_Objects_Woosh;
 	extern const std::string Platformer_Objects_WooshRough;
-	extern const std::string Special1;
-	extern const std::string Special2;
 };

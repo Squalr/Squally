@@ -141,10 +141,10 @@ TitleScreen::TitleScreen()
 	this->ether = Sprite::create(UIResources::Menus_Backgrounds_Ether);
 	this->etherParticles = ParticleGalaxy::create();
 
-	this->storyModeButton->setClickSound(SoundResources::Menus_Simple_Button);
-	this->tutorialsButton->setClickSound(SoundResources::Menus_Simple_Button);
-	this->optionsButton->setClickSound(SoundResources::Menus_Simple_Button);
-	this->exitButton->setClickSound(SoundResources::Menus_Simple_Button);
+	this->storyModeButton->setClickSound(SoundResources::Menus_ButtonClick5);
+	this->tutorialsButton->setClickSound(SoundResources::Menus_ButtonClick5);
+	this->optionsButton->setClickSound(SoundResources::Menus_ButtonClick5);
+	this->exitButton->setClickSound(SoundResources::Menus_ButtonClick5);
 
 	if (!DeveloperModeController::IsDeveloperBuild)
 	{

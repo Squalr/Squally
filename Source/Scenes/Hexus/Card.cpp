@@ -107,7 +107,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	}
 
 	this->cardSelect = ClickableNode::create(HexusResources::CardUnselected, HexusResources::CardSelect);
-	this->cardSelect->setClickSound(SoundResources::Menus_Card_Game_UI_Button_Light_Reverb_02);
+	this->cardSelect->setClickSound(SoundResources::Menus_ButtonClick4);
 	this->cardSprite = Sprite::create(data->getCardResourceFile());
 	this->cardFocus = Sprite::create(HexusResources::CardSelect);
 	this->cardEffects = CardEffects::create();

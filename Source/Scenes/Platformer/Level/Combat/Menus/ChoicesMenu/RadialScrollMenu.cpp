@@ -7,8 +7,11 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -29,13 +32,17 @@ RadialScrollMenu::RadialScrollMenu(float radius)
 	this->radius = radius;
 	this->buttonsNode = Node::create();
 	this->arrow = Sprite::create(UIResources::Combat_Arrow);
-	this->buttons = std::vector<ClickableTextNode*>();
+	this->buttons = std::vector<RadialEntry*>();
+	this->indexChangeSound = Sound::create(SoundResources::Menus_ButtonRollover1);
+	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->currentIndex = 0;
 	this->focused = true;
 	this->backCallback = nullptr;
 
 	this->addChild(this->buttonsNode);
 	this->addChild(this->arrow);
+	this->addChild(this->indexChangeSound);
+	this->addChild(this->errorSound);
 }
 
 RadialScrollMenu::~RadialScrollMenu()
@@ -87,7 +94,15 @@ void RadialScrollMenu::initializeListeners()
 			if (this->currentIndex >= 0 && this->currentIndex < int(this->buttons.size()))
 			{
 				args->handle();
-				this->buttons[this->currentIndex]->interact();
+
+				if (this->buttons[this->currentIndex]->canInteract())
+				{
+					this->buttons[this->currentIndex]->interact();
+				}
+				else
+				{
+					this->errorSound->play();
+				}
 			}
 		}
 	});
@@ -116,7 +131,7 @@ void RadialScrollMenu::clearItems()
 	this->currentIndex = 0;
 }
 
-ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback)
+RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback)
 {
 	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
 	LocalizedLabel* attackLabelSelected = attackLabel->clone();
@@ -127,14 +142,10 @@ ClickableTextNode* RadialScrollMenu::addEntry(LocalizedString* labelStr, cocos2d
 	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
 	attackLabelSelected->setTextColor(Color4B::YELLOW);
 
-	ClickableTextNode* entry = ClickableTextNode::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
+	RadialEntry* entry = RadialEntry::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
 	entry->setTextOffset(Vec2(48.0f, 0.0f));
-
-	if (iconNode != nullptr)
-	{
-		entry->addChild(iconNode);
-	}
+	entry->addIcon(iconNode);
 
 	if (callback != nullptr)
 	{
@@ -179,7 +190,11 @@ void RadialScrollMenu::toggleAll(bool disableInteraction, bool fadeOpacity, bool
 
 void RadialScrollMenu::enableAll()
 {
-	this->positionButtons();
+	for (auto button : this->buttons)
+	{
+		button->enableInteraction();
+		button->setTextVisible(true);
+	}
 }
 
 void RadialScrollMenu::focus()
@@ -200,8 +215,19 @@ void RadialScrollMenu::scrollUp()
 	{
 		return;
 	}
-
+	
+	int previousIndex = this->currentIndex;
 	this->currentIndex = MathUtils::clamp(this->currentIndex - 1, 0, this->buttons.size() - 1);
+
+	if (previousIndex != this->currentIndex)
+	{
+		this->indexChangeSound->play();
+	}
+	else
+	{
+		this->errorSound->play();
+	}
+
 	this->positionButtons();
 }
 
@@ -212,7 +238,18 @@ void RadialScrollMenu::scrollDown()
 		return;
 	}
 	
+	int previousIndex = this->currentIndex;
 	this->currentIndex = MathUtils::clamp(this->currentIndex + 1, 0, this->buttons.size() - 1);
+
+	if (previousIndex != this->currentIndex)
+	{
+		this->indexChangeSound->play();
+	}
+	else
+	{
+		this->errorSound->play();
+	}
+
 	this->positionButtons();
 }
 
@@ -229,7 +266,7 @@ void RadialScrollMenu::positionButtons()
 
 	for (int buttonIndex = 0; buttonIndex < int(this->buttons.size()); buttonIndex++)
 	{
-		ClickableTextNode* button = this->buttons[buttonIndex];
+		RadialEntry* button = this->buttons[buttonIndex];
 
 		int effectiveIndex = buttonIndex - this->currentIndex;
 		int distance = std::abs(effectiveIndex);
@@ -244,28 +281,28 @@ void RadialScrollMenu::positionButtons()
 			{
 				button->setTextVisible(true);
 				button->setScale(1.0f);
-				button->enableInteraction();
+				button->setOpacity(255);
 				break;
 			}
 			case 1:
 			{
 				button->setTextVisible(true);
 				button->setScale(0.85f);
-				button->enableInteraction();
+				button->setOpacity(255);
 				break;
 			}
 			case 2:
 			{
 				button->setTextVisible(false);
 				button->setScale(0.75f);
-				button->disableInteraction(64);
+				button->setOpacity(64);
 				break;
 			}
 			default:
 			{
 				button->setTextVisible(false);
 				button->setScale(1.0f);
-				button->disableInteraction(0);
+				button->setOpacity(0);
 				break;
 			}
 		}

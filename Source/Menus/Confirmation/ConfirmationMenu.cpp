@@ -37,7 +37,7 @@ ConfirmationMenu::ConfirmationMenu()
 	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->closeButton->setClickSound(SoundResources::ClickBack1);
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 	
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
@@ -54,7 +54,7 @@ ConfirmationMenu::ConfirmationMenu()
 		cancelLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
-	this->cancelButton->setClickSound(SoundResources::ClickBack1);
+	this->cancelButton->setClickSound(SoundResources::Menus_ClickBack1);
 
 	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
 	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();

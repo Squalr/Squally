@@ -31,9 +31,6 @@ FocusTakeOver::FocusTakeOver()
 	this->hasFocus = false;
 	this->isRepeatFocused = false;
 
-	this->hijackContainer->setCascadeColorEnabled(false);
-	this->hijackContainer->setCascadeOpacityEnabled(false);
-
 	this->addChild(this->focusBackground);
 	this->addChild(this->hijackContainer);
 }

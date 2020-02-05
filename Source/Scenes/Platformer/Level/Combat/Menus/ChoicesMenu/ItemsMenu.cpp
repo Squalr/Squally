@@ -37,15 +37,22 @@ ItemsMenu* ItemsMenu::create()
 
 ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius)
 {
+	this->hasItemsInList = false;
 }
 
 ItemsMenu::~ItemsMenu()
 {
 }
 
-void ItemsMenu::buildAttackList(TimelineEntry* entry)
+bool ItemsMenu::hasItems()
+{
+	return this->hasItemsInList;
+}
+
+void ItemsMenu::buildItemList(TimelineEntry* entry)
 {
 	this->clearItems();
+	this->hasItemsInList = false;
 
 	if (entry == nullptr)
 	{
@@ -82,6 +89,7 @@ void ItemsMenu::buildAttackList(TimelineEntry* entry)
 		for (auto next : consumablesMap)
 		{
 			this->scrollTo(index);
+			this->hasItemsInList = true;
 
 			int count = std::get<0>(next.second);
 			PlatformerAttack* attack = std::get<1>(next.second);

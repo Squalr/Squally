@@ -7,8 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableTextNode;
+class RadialEntry;
 class LocalizedString;
+class Sound;
 
 class RadialScrollMenu : public SmartNode
 {
@@ -16,7 +17,7 @@ public:
 	static RadialScrollMenu* create(float radius);
 
 	void clearItems();
-	ClickableTextNode* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
+	RadialEntry* addEntry(LocalizedString* labelStr, cocos2d::Node* iconNode, std::string backgroundResource, std::function<void()> callback);
 	void toggleAll(bool disableInteraction = true, bool fadeOpacity = false, bool hideText = true);
 	void enableAll();
 	void focus();
@@ -38,9 +39,11 @@ private:
 	void positionButtons();
 	void goBack();
 
-	std::vector<ClickableTextNode*> buttons;
+	std::vector<RadialEntry*> buttons;
 	cocos2d::Sprite* arrow;
 	cocos2d::Node* buttonsNode;
+	Sound* indexChangeSound;
+	Sound* errorSound;
 	float radius;
 
 	int currentIndex;
