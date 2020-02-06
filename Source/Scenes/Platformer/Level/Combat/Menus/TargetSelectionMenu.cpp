@@ -70,9 +70,13 @@ void TargetSelectionMenu::initializeListeners()
 		{
 			switch (combatArgs->currentMenu)
 			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
+				{
+					// For now, there is no defend select menu. Just wait for this state to pass.
+					break;
+				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
-				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				{
 					this->allowedSelection = AllowedSelection::None;

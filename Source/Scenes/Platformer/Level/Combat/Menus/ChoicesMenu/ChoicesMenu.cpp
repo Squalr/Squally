@@ -212,18 +212,7 @@ void ChoicesMenu::initializeListeners()
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				{
-					PlatformerEvents::TriggerDisallowPause();
-
-					this->attackMenu->setVisible(false);
-					this->itemsMenu->setVisible(false);
-					this->choicesMenu->setVisible(true);
-
-					this->choicesMenu->toggleAll(false, true);
-
-					this->choicesMenu->unfocus();
-					this->itemsMenu->unfocus();
-					this->attackMenu->unfocus();
-
+					// For now, there is no defend select menu. Just wait for this state to pass.
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
