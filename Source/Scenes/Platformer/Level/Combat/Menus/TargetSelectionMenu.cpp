@@ -75,48 +75,35 @@ void TargetSelectionMenu::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				{
-					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
-					this->setVisible(true);
 					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
+					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
+
+					this->setVisible(true);
 
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				{
-					this->selectEntity(nullptr);
-
-					for (auto next : this->timelineRef->getEntries())
-					{
-						if (!next->isPlayerEntry())
-						{
-							this->selectEntity(next->getEntity());
-							break;
-						}
-					}
-
 					this->allowedSelection = AllowedSelection::Enemy;
-					this->setEntityClickCallbacks();
 					this->isActive = true;
+
+					this->setEntityClickCallbacks();
+					this->selectEntity(nullptr);
+					this->selectNext(false);
+
 					this->setVisible(true);
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				{
-					this->selectEntity(nullptr);
-
-					for (auto next : this->timelineRef->getEntries())
-					{
-						if (next->isPlayerEntry())
-						{
-							this->selectEntity(next->getEntity());
-							break;
-						}
-					}
-
 					this->allowedSelection = AllowedSelection::Player;
-					this->setEntityClickCallbacks();
 					this->isActive = true;
+
+					this->setEntityClickCallbacks();
+					this->selectEntity(nullptr);
+					this->selectNext(false);
+					
 					this->setVisible(true);
 					break;
 				}
@@ -201,7 +188,11 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 
 	auto entityPosition = std::find(targetEntityGroup.begin(), targetEntityGroup.end(), this->selectedEntity);
 
-	if (entityPosition != std::end(targetEntityGroup))
+	if (this->selectedEntity == nullptr)
+	{
+		this->selectEntity(targetEntityGroup.front());
+	}
+	else if (entityPosition != std::end(targetEntityGroup))
 	{
 		if (directionIsLeft)
 		{

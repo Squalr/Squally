@@ -6,70 +6,18 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
-   <property name="rubber-band" type="int" value="2"/>
+   <property name="rubber-band" type="int" value="5"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="63" name="background" visible="0">
+ <objectgroup id="63" name="background">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="705" name="caverns" type="texture" x="1936" y="3680">
+  <object id="705" name="lava" type="texture" x="1936" y="3680">
    <polygon points="-2946.67,-4347.96 4390.79,-4338.37 4382.31,2526.32 -2933.8,2498.37"/>
   </object>
- </objectgroup>
- <objectgroup id="18" name="decor background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="19" name="objects background">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain 2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -81,17 +29,6 @@
   <object id="714" name="caverns" type="terrain" x="1903.49" y="2210.45">
    <polygon points="-794.854,-2266.93 -108.47,-2259.33 -30.2131,-1009.81 104.929,-695.323 720.152,-682.123 1422.89,-698.248 1640.21,-1140.22 1706.32,-2309 2411.6,-2313.84 2250.73,523.609 817.239,713.664 -711.373,444.427 -791.349,-801.079"/>
   </object>
- </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="57" name="objects back">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -129,11 +66,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
@@ -143,7 +75,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
@@ -167,49 +99,10 @@
    </properties>
   </object>
  </objectgroup>
- <layer id="64" name="water" width="44" height="44">
-  <data encoding="base64" compression="zlib">
-   eJztwQEBAAAAgJD+r+4ICgAAAAAAAABqHkAAAQ==
-  </data>
- </layer>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects_foreground">
-  <properties>
-   <property name="is-elevate-target" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
   </properties>
  </objectgroup>
 </map>

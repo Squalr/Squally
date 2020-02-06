@@ -123,7 +123,7 @@ void ChoicesMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventMenuBack, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, nullptr));	
+		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(this->previousMenu, this->selectedEntry));	
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)

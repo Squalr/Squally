@@ -75,29 +75,58 @@ void CombatAIHelper::initializeEntities(std::vector<PlatformerEntity*> playerEnt
 	this->enemyEntities = enemyEntities;
 }
 
-void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntity)
+void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntry)
 {
-	if (attackingEntity == nullptr)
+	if (attackingEntry == nullptr)
 	{
 		return;
 	}
 
-	this->selectedTarget = attackingEntity->getStagedTarget();
-	this->selectedAttack = attackingEntity->getStagedCast();
+	this->selectedTarget = attackingEntry->getStagedTarget();
+	this->selectedAttack = attackingEntry->getStagedCast();
 
 	if (this->selectedTarget == nullptr || this->selectedAttack == nullptr)
 	{
 		return;
 	}
 
-	if (this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool() &&
-		this->selectedAttack->getAttackType() != PlatformerAttack::AttackType::Resurrection)
+	// Clear target entity if invalid
+	switch(this->selectedAttack->getAttackType())
+	{
+		case PlatformerAttack::AttackType::Resurrection:
+		{
+			if (this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->selectedTarget = nullptr;
+			}
+			break;
+		}
+		case PlatformerAttack::AttackType::Damage:
+		case PlatformerAttack::AttackType::Debuff:
+		case PlatformerAttack::AttackType::Buff:
+		case PlatformerAttack::AttackType::Healing:
+		{
+			if (!this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->selectedTarget = nullptr;
+			}
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	}
+
+	if (this->selectedTarget != nullptr)
 	{
 		return;
 	}
 	
 	// Use AI to auto-choose attack and entity. Start by just trying to re-target.
-	this->selectTarget(attackingEntity);
+	this->selectTarget(attackingEntry);
+	
+	attackingEntry->stageTarget(this->selectedTarget);
 
 	if (this->selectedTarget != nullptr)
 	{
@@ -105,8 +134,11 @@ void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntity)
 	}
 	
 	// Retarget failed. We'll just have to pick an attack/target at random then.
-	this->selectAttack(attackingEntity);
-	this->selectTarget(attackingEntity);
+	this->selectAttack(attackingEntry);
+	this->selectTarget(attackingEntry);
+
+	attackingEntry->stageCast(this->selectedAttack);
+	attackingEntry->stageTarget(this->selectedTarget);
 }
 
 void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)

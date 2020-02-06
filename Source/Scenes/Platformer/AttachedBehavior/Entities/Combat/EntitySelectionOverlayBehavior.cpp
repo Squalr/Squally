@@ -79,6 +79,11 @@ void EntitySelectionOverlayBehavior::onLoad()
 		{
 			switch (combatArgs->currentMenu)
 			{
+				case CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
+				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				{
