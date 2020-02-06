@@ -15,7 +15,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="lava" type="texture" x="3372.84" y="2692.56">
+  <object id="712" name="caverns" type="texture" x="3372.84" y="2692.56">
    <polygon points="-3949.04,-3335.96 5884.42,-3328.61 5873.06,1938.32 -3931.8,1916.87"/>
   </object>
  </objectgroup>
@@ -47,7 +47,7 @@
    <polygon points="-52,348 -64,968 -660,964 -668,484 -604,-540 862.086,-562.945 1468,-552 1464,628 1464.42,965.568 561.773,972.638 562.156,663.161 1215.19,668.423 1226.34,451.653 1203.06,193.581 1151.99,-84.9764 1046.19,-310.104 617.542,-381.392 235.344,-247.44 -2.1093,-46.8202"/>
   </object>
   <object id="713" name="caverns" type="terrain" x="3201.24" y="1609.98">
-   <polygon points="-161.224,-1706.66 3536.24,-1718.89 3548.16,-1025.97 240.12,-1025.98 239.774,983.629 -160.52,980.657"/>
+   <polygon points="-161.224,-1706.66 3431.02,-1713.92 3426.95,-1029 3230.76,-1028.87 3230.76,-1488.77 252.12,-1497.98 239.774,983.629 -160.52,980.657"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -68,17 +68,17 @@
   </properties>
   <object id="681" name="stone-button" type="object" x="5306.82" y="2129.14" width="258.367" height="85.7283">
    <properties>
-    <property name="event" value="door-open"/>
+    <property name="send-event" value="door-open"/>
    </properties>
   </object>
-  <object id="717" name="Generic/WoodCaveDoor1" type="decor" x="7087.33" y="591.955" width="388" height="403"/>
-  <object id="718" name="portal" type="object" x="7157.33" y="719.455" width="256" height="256">
+  <object id="717" name="Generic/WoodCaveDoor1" type="decor" x="7571.33" y="591.955" width="388" height="403"/>
+  <object id="718" name="portal" type="object" x="7641.33" y="719.455" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="719" name="spawn" type="object" x="7217.33" y="851.455" width="128" height="128">
+  <object id="719" name="spawn" type="object" x="7701.33" y="851.455" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
    </properties>
@@ -199,10 +199,10 @@
     <property name="zoom" type="float" value="2.4"/>
    </properties>
   </object>
-  <object id="756" name="wooden-gate" type="object" x="6372" y="584" width="400" height="400">
+  <object id="756" name="wooden-gate" type="object" x="6485.58" y="584" width="160" height="400">
    <properties>
-    <property name="event" value="door-open"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="listen-event" value="door-open"/>
    </properties>
   </object>
   <object id="758" name="wind" type="object" x="4268.24" y="2527.97" width="422" height="392">
@@ -236,35 +236,35 @@
   <object id="763" name="wind" type="object" x="3819.46" y="611.841" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0.1"/>
+    <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
   <object id="764" name="wind" type="object" x="4244.55" y="615.371" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0.1"/>
+    <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
   <object id="765" name="wind" type="object" x="4672.52" y="616.881" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0.1"/>
+    <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
   <object id="766" name="wind" type="object" x="5097.61" y="620.401" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0.1"/>
+    <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>
   <object id="767" name="wind" type="object" x="5522.18" y="613.611" width="422" height="392">
    <properties>
     <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0.1"/>
+    <property name="speed-y" type="float" value="0"/>
     <property name="uniform" type="bool" value="true"/>
    </properties>
   </object>

@@ -14,7 +14,7 @@ using namespace cocos2d;
 
 const std::string EntityHeadCollisionBehavior::MapKeyAttachedBehavior = "entity-head-collisions";
 const float EntityHeadCollisionBehavior::HeadCollisionPadding = 16.0f;
-const float EntityHeadCollisionBehavior::HeadCollisionOffset = 16.0f;
+const float EntityHeadCollisionBehavior::HeadCollisionOffset = 24.0f;
 const float EntityHeadCollisionBehavior::HeadCollisionRadius = 8.0f;
 
 EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* owner)
@@ -38,7 +38,7 @@ EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : su
 	{
 		this->headCollision = CollisionObject::create(
 			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), (this->entity->getEntitySize()).height / 2.0f),
+				Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), (this->entity->getEntitySize()).height / 1.0f),
 				1.0f,
 				EntityHeadCollisionBehavior::HeadCollisionRadius,
 				0.0f
@@ -72,7 +72,7 @@ EntityHeadCollisionBehavior::~EntityHeadCollisionBehavior()
 
 void EntityHeadCollisionBehavior::onLoad()
 {
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, }, [=](CollisionObject::CollisionData collisionData)
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -92,6 +92,7 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 		switch(next->getCollisionType())
 		{
 			case (int)PlatformerCollisionType::PassThrough:
+			case (int)PlatformerCollisionType::SolidRoof:
 			{
 				return true;
 			}

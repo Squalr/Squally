@@ -38,31 +38,19 @@ WoodenGate* WoodenGate::create(ValueMap& properties)
 
 WoodenGate::WoodenGate(ValueMap& properties) : super(properties)
 {
-	this->castleBack = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_BACK);
-	this->bridge1 = Sprite::create(ObjectResources::Doors_WoodStronghold_BRIDGE1);
 	this->bridge2 = Sprite::create(ObjectResources::Doors_WoodStronghold_BRIDGE2);
 	this->door = Sprite::create(ObjectResources::Doors_WoodStronghold_FENCE);
 	this->doorCollision = CollisionObject::create(PhysicsBody::createBox(Size(96.0f, 420.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 	this->doorClip = SmartClippingNode::create(this->doorCollision, Rect(Vec2(-64.0f, -312.0f), Size(160.0f, 416.0f)));
-	this->WoodenGateFront = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_FRONT);
-	this->WoodenGateFront2 = Sprite::create(ObjectResources::Doors_WoodStronghold_WOOD_FRONT);
 
 	this->isFlipped = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyFlipX, Value(false)).asBool();
 
-	this->castleBack->setFlippedX(this->isFlipped);
-	this->bridge1->setFlippedX(this->isFlipped);
 	this->bridge2->setFlippedX(this->isFlipped);
 	this->door->setFlippedX(this->isFlipped);
-	this->WoodenGateFront->setFlippedX(this->isFlipped);
-	this->WoodenGateFront2->setFlippedX(this->isFlipped);
 
 	this->doorCollision->addChild(this->door);
-	this->addChild(this->castleBack);
 	this->addChild(this->doorClip);
-	this->addChild(this->bridge1);
 	this->addChild(this->bridge2);
-	this->addChild(this->WoodenGateFront2);
-	this->addChild(this->WoodenGateFront);
 }
 
 WoodenGate::~WoodenGate()
@@ -75,8 +63,6 @@ void WoodenGate::onEnter()
 
 	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->doorClip));
 	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->bridge2));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->WoodenGateFront2));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->WoodenGateFront));
 
 	this->scheduleUpdate();
 }
@@ -92,25 +78,16 @@ void WoodenGate::initializePositions()
 {
 	super::initializePositions();
 
-	Vec2 shift = Vec2(128.0f, 0.0f);
-	float flipMultiplier = this->isFlipped ? -1.0f : 1.0f;
+	const Vec2 Shift = Vec2(128.0f, 0.0f);
+	const float FlipMultiplier = this->isFlipped ? -1.0f : 1.0f;
 
-	this->castleBack->setPosition(Vec2(0.0f, 32.0f) + shift);
 	this->door->setPosition(Vec2(0.0f, -32.0f));
 	this->doorCollision->setPosition(Vec2(0.0f, -64.0f));
-	this->doorClip->setPosition(Vec2(104.0f, 64.0f) + shift);
-	this->bridge1->setPosition(Vec2(-224.0f, 192.0f) + shift);
-	this->bridge2->setPosition(Vec2(80.0f, 112.0f) + shift);
-	this->WoodenGateFront->setPosition(Vec2(-48.0f, 0.0f));
-	this->WoodenGateFront2->setPosition(Vec2(-48 - 472.0f, 0.0f));
+	this->doorClip->setPosition(Vec2(104.0f, 64.0f) + Shift);
+	this->bridge2->setPosition(Vec2(80.0f, 112.0f) + Shift);
 
-	this->castleBack->setPositionX(this->castleBack->getPositionX() * flipMultiplier);
-	this->doorClip->setPositionX(this->doorClip->getPositionX() * flipMultiplier);
-	this->bridge1->setPositionX(this->bridge1->getPositionX() * flipMultiplier);
-	this->bridge2->setPositionX(this->bridge2->getPositionX() * flipMultiplier);
-
-	this->WoodenGateFront->setPositionX(this->WoodenGateFront->getPositionX() * flipMultiplier);
-	this->WoodenGateFront2->setPositionX(this->WoodenGateFront2->getPositionX() * flipMultiplier);
+	this->doorClip->setPositionX(this->doorClip->getPositionX() * FlipMultiplier);
+	this->bridge2->setPositionX(this->bridge2->getPositionX() * FlipMultiplier);
 
 	this->doorClosedPosition = this->doorClip->getPositionY();
 }

@@ -212,16 +212,19 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
+		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
 
-		if (groundBehavior == nullptr)
+		if (groundBehavior == nullptr || headBehavior == nullptr)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		// Collide in these two cases:
-		//	- Not on the ground
-		//	- On the ground, but standing on a different platform (ie not standing on the roof, which can happen if they glitch through the ground)
-		if (!groundBehavior->isOnGround() || !groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		if (groundBehavior->isStandingOn(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		if (headBehavior->hasHeadCollisionWith(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}

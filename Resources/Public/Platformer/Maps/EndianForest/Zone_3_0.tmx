@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -85,7 +85,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="630" name="dark-grass" type="terrain" x="8557.9" y="1096.87">
-   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -2278.74,1800.77 -2840.24,1301.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5706.57,343.132 -4909.92,334.261 -3693.9,241.43 -2805.41,119.824 -2525.9,119.172 -1233.41,-16.115 768.767,-8.91868 1686.8,227.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
+   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -2278.74,1800.77 -2840.24,1301.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5709.6,321.92 -5570.03,341.611 -4909.92,334.261 -3647.9,311.43 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1686.8,227.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
   </object>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="5282.75">
    <polygon points="-2172.51,-2466.57 -1471.65,-2083.26 -1475.38,-1313.25 -319.177,-1314.27 80.8231,-1553.22 3576.95,-1551.21 3522.05,-200.696 -6846.03,-194.69 -6810.77,-2714.44 -5455.05,-2721.6 -3415.15,-2638.44 -2835.26,-2593.27"/>
@@ -168,7 +168,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="708" name="life-stone" type="object" x="5815" y="792.5" width="146" height="423"/>
+  <object id="708" name="life-stone" type="object" x="4283" y="994.5" width="146" height="423"/>
   <object id="710" name="camera-target" type="object" x="1699.15" y="1658.47" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>
@@ -180,7 +180,7 @@
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="713" name="camera-control" type="object" x="2618" y="715.97" width="1188" height="904.06">
+  <object id="713" name="camera-control" type="object" x="2618" y="715.97" width="840" height="904.06">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
@@ -205,7 +205,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="692" name="goblin-shaman" type="entity" x="8485.21" y="964.22" width="128" height="128">
+  <object id="692" name="goblin-shaman" type="entity" x="6021.82" y="1088.34" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -214,7 +214,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="troll" type="entity" x="8482.79" y="547.79" width="128" height="128">
+  <object id="693" name="troll" type="entity" x="6019.4" y="671.911" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>

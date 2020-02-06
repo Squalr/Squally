@@ -36,14 +36,10 @@ private:
 
 	bool isFlipped;
 	float doorClosedPosition;
-	cocos2d::Sprite* castleBack;
 	SmartClippingNode* doorClip;
 	cocos2d::Sprite* door;
-	cocos2d::Sprite* bridge1;
 	cocos2d::Sprite* bridge2;
 	CollisionObject* doorCollision;
-	cocos2d::Sprite* WoodenGateFront;
-	cocos2d::Sprite* WoodenGateFront2;
 
 	static const float DoorOpenDelta;
 };
