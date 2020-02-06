@@ -303,6 +303,7 @@ void ChoicesMenu::onAttackClick()
 
 void ChoicesMenu::onDefendClick()
 {
+	/*
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 2)
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
@@ -310,7 +311,9 @@ void ChoicesMenu::onDefendClick()
 	else
 	{
 		CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect, this->selectedEntry));
-	}
+	}*/
+	
+	CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect, this->selectedEntry));
 	
 	this->choicesMenu->scrollTo(2);
 }
