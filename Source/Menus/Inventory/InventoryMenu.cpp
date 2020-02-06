@@ -172,8 +172,8 @@ void InventoryMenu::onFilterChange()
 void InventoryMenu::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory->getItems());
-	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
+	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory == nullptr ? std::vector<Item*>() : this->equipmentInventory->getItems());
+	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory == nullptr ? std::vector<Item*>() : this->inventory->getItems());
 	
 	for (auto it = equipment.begin(); it != equipment.end(); it++)
 	{
@@ -231,6 +231,11 @@ void InventoryMenu::performInventoryAction(Item* item)
 
 void InventoryMenu::equipItem(Item* item)
 {
+	if (this->inventory == nullptr || this->equipmentInventory == nullptr)
+	{
+		return;
+	}
+
 	Item* equippedItem = nullptr;
 
 	if (dynamic_cast<Hat*>(item))
@@ -276,6 +281,11 @@ void InventoryMenu::equipItem(Item* item)
 
 void InventoryMenu::unequipItem(Item* item)
 {
+	if (this->inventory == nullptr || this->equipmentInventory == nullptr)
+	{
+		return;
+	}
+	
 	this->equipmentInventory->tryTransact(this->inventory, item, nullptr, [=](Item* item, Item* otherItem)
 	{
 		// Success unequipping item -- visually best if this ends up in the 1st inventory slot

@@ -505,7 +505,10 @@ CameraTrackingData* GameCamera::getCurrentTrackingData()
 
 void GameCamera::popTarget()
 {
-	this->targetStack.pop();
+	if (!this->targetStack.empty())
+	{
+		this->targetStack.pop();
+	}
 }
 
 void GameCamera::clearTargets()

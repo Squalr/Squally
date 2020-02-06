@@ -108,7 +108,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->hackerModeVisibleHud->addChild(this->gameHud);
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
-	this->topMenuHud->addChild(this->combatFadeInNode);
+	this->menuHud->addChild(this->combatFadeInNode);
 	this->topMenuHud->addChild(this->craftingMenu);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);

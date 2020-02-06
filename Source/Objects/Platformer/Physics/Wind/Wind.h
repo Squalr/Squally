@@ -46,5 +46,10 @@ private:
 
 	WindClippy* windClippy;
 
+	bool isUniform;
+
 	static const float BaseWindSpeed;
+	static const std::string MapPropertyUniform;
+	static const std::string MapPropertySpeedX;
+	static const std::string MapPropertySpeedY;
 };

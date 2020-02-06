@@ -24,6 +24,9 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_WIND_SPEED 1
 
 const std::string Wind::MapKeyWind = "wind";
+const std::string Wind::MapPropertyUniform = "uniform";
+const std::string Wind::MapPropertySpeedX = "speed-x";
+const std::string Wind::MapPropertySpeedY = "speed-y";
 const float Wind::BaseWindSpeed = 10240.0f;
 
 Wind* Wind::create(ValueMap& properties)
@@ -38,18 +41,9 @@ Wind* Wind::create(ValueMap& properties)
 Wind::Wind(ValueMap& properties) : super(properties)
 {
 	this->windClippy = WindClippy::create();
-	float speedX = 0.0f;
-	float speedY = 0.0f;
-
-	if (GameUtils::keyExists(this->properties, "speed-x"))
-	{
-		speedX = this->properties.at("speed-x").asFloat();
-	}
-
-	if (GameUtils::keyExists(this->properties, "speed-y"))
-	{
-		speedY = this->properties.at("speed-y").asFloat();
-	}
+	this->isUniform = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertyUniform, Value(false)).asBool();
+	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertySpeedX, Value(0.0f)).asFloat();
+	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertySpeedY, Value(0.0f)).asFloat();
 
 	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
@@ -115,8 +109,11 @@ void Wind::applyWindForce(const std::vector<CollisionObject*>& targets, float dt
 		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
 		Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
 
-		// Note: Y multiplier minimum is higher to prevent bobbing in place between wind objects
-		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), 0.0f, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f) * 2.0f, 0.25f, 1.0f));
+		// Note: default non-uniform values are to prevent bobbing in place between two wind objects
+		const float MinMultiplierX = this->isUniform ? 1.0f : 0.15f;
+		const float MinMultiplierY = this->isUniform ? 1.0f : 0.25f;
+
+		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), MinMultiplierX, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f) * 2.0f, MinMultiplierY, 1.0f));
 		Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
 
 		(*it)->setVelocity((*it)->getVelocity() + speed * dt);

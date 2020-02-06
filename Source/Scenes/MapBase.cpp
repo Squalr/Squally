@@ -12,6 +12,7 @@
 #include "Engine/Deserializers/LayerDeserializer.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/RadialMenu.h"
 #include "Engine/Maps/GameMap.h"
@@ -115,26 +116,19 @@ void MapBase::onEnter()
 	}
 }
 
-void MapBase::onEnterTransitionDidFinish()
-{
-	super::onEnterTransitionDidFinish();
-}
-
-void MapBase::resume(void)
-{
-	super::resume();
-}
-
-void MapBase::initializePositions()
-{
-	super::initializePositions();
-
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-}
-
 void MapBase::initializeListeners()
 {
 	super::initializeListeners();
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->canPause = false;
+	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventAfterSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->canPause = true;
+	}));
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventAllowPause, [=](EventCustom* eventCustom)
 	{

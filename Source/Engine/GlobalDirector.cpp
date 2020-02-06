@@ -61,6 +61,8 @@ void GlobalDirector::loadScene(Scene* scene)
 	SaveManager::save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
+
+	SceneEvents::TriggerAfterSceneChange();
 }
 
 void GlobalDirector::registerGlobalNode(GlobalNode* node)

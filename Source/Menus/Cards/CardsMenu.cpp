@@ -176,8 +176,8 @@ void CardsMenu::populateItemList()
 {
 	this->equippedCardsMenu->clearVisibleItems();
 	this->unequippedCardsMenu->clearVisibleItems();
-	std::vector<Item*> equipment = this->hexusFilter->filter(this->equipmentInventory->getItems());
-	std::vector<Item*> items = this->hexusFilter->filter(this->inventory->getItems());
+	std::vector<Item*> equipment = this->hexusFilter->filter(this->equipmentInventory == nullptr ? std::vector<Item*>() : this->equipmentInventory->getItems());
+	std::vector<Item*> items = this->hexusFilter->filter(this->inventory == nullptr ? std::vector<Item*>() : this->inventory->getItems());
 
 	auto sortLambda = [](Item* a, Item* b)
 	{
@@ -275,6 +275,11 @@ void CardsMenu::setReturnClickCallback(std::function<void()> returnClickCallback
 
 void CardsMenu::equipHexusCard(HexusCard* card)
 {
+	if (this->equipmentInventory == nullptr || this->inventory == nullptr)
+	{
+		return;
+	}
+
 	if (this->equipmentInventory->getHexusCards().size() >= CardsMenu::MaxHexusCards)
 	{
 		return;
@@ -305,6 +310,11 @@ void CardsMenu::equipHexusCard(HexusCard* card)
 
 void CardsMenu::unequipHexusCard(HexusCard* card)
 {
+	if (this->equipmentInventory == nullptr || this->inventory == nullptr)
+	{
+		return;
+	}
+	
 	if (this->equipmentInventory->getHexusCards().size() <= CardsMenu::MinHexusCards)
 	{
 		return;
