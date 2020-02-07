@@ -11,7 +11,7 @@ public:
 
 protected:
 	PhysicsDeserializer();
-	~PhysicsDeserializer();
+	virtual ~PhysicsDeserializer();
 
 private:
 	typedef PropertyDeserializer super;

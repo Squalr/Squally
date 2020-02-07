@@ -14,6 +14,7 @@
 #include "Engine/Sound/Music.h"
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Menus/TutorialSelect/TutorialSelectMenu.h"
@@ -51,15 +52,16 @@ TitleScreen::TitleScreen()
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
+	this->musicOverlay = MusicOverlay::create();
 	this->music = Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
 	
-	Size shadowSize = Size(-2.0f, -2.0f);
-	int shadowBlur = 2;
-	int hoverOutlineSize = 2;
-	Color3B textColor = Color3B::WHITE;
-	Color4B shadowColor = Color4B::BLACK;
-	Color3B highlightColor = Color3B::YELLOW;
-	Color4B glowColor = Color4B::ORANGE;
+	const Size ShadowSize = Size(-2.0f, -2.0f);
+	const int ShadowBlur = 2;
+	const int HoverOutlineSize = 2;
+	const Color3B TextColor = Color3B::WHITE;
+	const Color4B ShadowColor = Color4B::BLACK;
+	const Color3B HighlightColor = Color3B::YELLOW;
+	const Color4B GlowColor = Color4B::ORANGE;
 
 	LocalizedLabel*	storyModeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_StoryMode::create());
 	LocalizedLabel*	storyModeLabelSelected = storyModeLabel->clone();
@@ -76,37 +78,37 @@ TitleScreen::TitleScreen()
 	LocalizedLabel*	debugLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Developer_DeveloperMenu::create());
 	LocalizedLabel*	debugLabelSelected = debugLabel->clone();
 
-	storyModeLabel->setColor(textColor);
-	storyModeLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	storyModeLabel->enableGlow(shadowColor);
-	tutorialsLabel->setColor(textColor);
-	tutorialsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	tutorialsLabel->enableGlow(shadowColor);
-	optionsLabel->setColor(textColor);
-	optionsLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabel->enableGlow(shadowColor);
-	exitLabel->setColor(textColor);
-	exitLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabel->enableGlow(shadowColor);
-	debugLabel->setColor(textColor);
-	debugLabel->enableShadow(shadowColor, shadowSize, shadowBlur);
-	debugLabel->enableGlow(shadowColor);
+	storyModeLabel->setColor(TextColor);
+	storyModeLabel->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	storyModeLabel->enableGlow(ShadowColor);
+	tutorialsLabel->setColor(TextColor);
+	tutorialsLabel->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	tutorialsLabel->enableGlow(ShadowColor);
+	optionsLabel->setColor(TextColor);
+	optionsLabel->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	optionsLabel->enableGlow(ShadowColor);
+	exitLabel->setColor(TextColor);
+	exitLabel->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	exitLabel->enableGlow(ShadowColor);
+	debugLabel->setColor(TextColor);
+	debugLabel->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	debugLabel->enableGlow(ShadowColor);
 
-	storyModeLabelSelected->setColor(highlightColor);
-	storyModeLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	storyModeLabelSelected->enableGlow(glowColor);
-	tutorialsLabelSelected->setColor(highlightColor);
-	tutorialsLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	tutorialsLabelSelected->enableGlow(glowColor);
-	optionsLabelSelected->setColor(highlightColor);
-	optionsLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	optionsLabelSelected->enableGlow(glowColor);
-	exitLabelSelected->setColor(highlightColor);
-	exitLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	exitLabelSelected->enableGlow(glowColor);
-	debugLabelSelected->setColor(highlightColor);
-	debugLabelSelected->enableShadow(shadowColor, shadowSize, shadowBlur);
-	debugLabelSelected->enableGlow(glowColor);
+	storyModeLabelSelected->setColor(HighlightColor);
+	storyModeLabelSelected->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	storyModeLabelSelected->enableGlow(GlowColor);
+	tutorialsLabelSelected->setColor(HighlightColor);
+	tutorialsLabelSelected->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	tutorialsLabelSelected->enableGlow(GlowColor);
+	optionsLabelSelected->setColor(HighlightColor);
+	optionsLabelSelected->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	optionsLabelSelected->enableGlow(GlowColor);
+	exitLabelSelected->setColor(HighlightColor);
+	exitLabelSelected->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	exitLabelSelected->enableGlow(GlowColor);
+	debugLabelSelected->setColor(HighlightColor);
+	debugLabelSelected->enableShadow(ShadowColor, ShadowSize, ShadowBlur);
+	debugLabelSelected->enableGlow(GlowColor);
 
 	this->storyModeButton = ClickableTextNode::create(
 		storyModeLabel,
@@ -161,6 +163,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->optionsButton);
 	this->addChild(this->exitButton);
 	this->addChild(this->debugButton);
+	this->addChild(this->musicOverlay);
 }
 
 TitleScreen::~TitleScreen()

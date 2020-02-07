@@ -19,6 +19,8 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	LocalizedString* activeSongString;
-	LocalizedLabel* activeSongLabel;
+	LocalizedString* trackString;
+	LocalizedLabel* trackLabel;
+	LocalizedString* artistString;
+	LocalizedLabel* artistLabel;
 };

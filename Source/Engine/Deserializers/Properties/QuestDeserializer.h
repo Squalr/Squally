@@ -40,7 +40,7 @@ public:
 
 protected:
 	QuestDeserializer();
-	~QuestDeserializer();
+	virtual ~QuestDeserializer();
 
 	std::map<std::string, std::function<QuestLine*()>> lineDeserializers;
 

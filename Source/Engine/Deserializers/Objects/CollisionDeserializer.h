@@ -11,8 +11,10 @@ public:
 
 	static const std::string MapKeyTypeCollision;
 
+protected:
+	CollisionDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers);
+	virtual ~CollisionDeserializer();
+
 private:
 	typedef ObjectDeserializer super;
-	CollisionDeserializer(std::vector<PropertyDeserializer*> propertyDeserializers);
-	~CollisionDeserializer();
 };

@@ -29,7 +29,7 @@ public:
 
 protected:
 	AttachedBehaviorDeserializer();
-	~AttachedBehaviorDeserializer();
+	virtual ~AttachedBehaviorDeserializer();
 
 	std::map<std::string, std::function<AttachedBehavior*(GameObject* owner)>> attachedBehaviorDeserializers;
 

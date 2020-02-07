@@ -41,7 +41,7 @@ public:
 
 protected:
 	ObjectDeserializer(std::string objectType, std::vector<PropertyDeserializer*> propertyDeserializers = { });
-	~ObjectDeserializer();
+	virtual ~ObjectDeserializer();
 
 	std::map<std::string, std::function<GameObject*(cocos2d::ValueMap)>> deserializers;
 	std::vector<PropertyDeserializer*> propertyDeserializers;

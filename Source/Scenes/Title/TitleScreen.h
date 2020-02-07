@@ -12,6 +12,7 @@ class ClickableNode;
 class ClickableTextNode;
 class TitleScreenBackground;
 class Music;
+class MusicOverlay;
 
 class TitleScreen : public GlobalScene
 {
@@ -41,6 +42,7 @@ private:
 	ClickableTextNode* debugButton;
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
+	MusicOverlay* musicOverlay;
 	Music* music;
 
 	static TitleScreen* instance;
