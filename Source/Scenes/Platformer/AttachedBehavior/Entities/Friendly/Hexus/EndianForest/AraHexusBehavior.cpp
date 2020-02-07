@@ -50,7 +50,7 @@ std::string AraHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> AraHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{

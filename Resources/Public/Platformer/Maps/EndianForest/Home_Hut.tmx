@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="710">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="711">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -10,42 +10,6 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="18" name="decor background">
   <properties>
    <property name="type" value="objects"/>
@@ -54,16 +18,6 @@
  <objectgroup id="19" name="objects background">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="57" name="terrain 3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain 2">
-  <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -79,47 +33,39 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Generic/WoodDoor" type="decor" x="548.222" y="757.502" width="238.499" height="312.248"/>
+  <object id="484" name="Generic/WoodDoor" type="decor" x="1038.22" y="751.502" width="238.499" height="312.248"/>
   <object id="695" name="Generic/Bed" type="decor" x="94.3297" y="940.852" width="339.213" height="127.347">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="696" name="Generic/Sack" type="decor" x="1101.67" y="921.411" width="162" height="145"/>
-  <object id="697" name="Generic/NightStand" type="decor" x="1264.64" y="880.337" width="215.403" height="184.472"/>
-  <object id="699" name="Generic/BoardedWindow" type="decor" x="811.498" y="628" width="211.218" height="207.113"/>
-  <object id="700" name="Generic/InsanityPoster5" type="decor" x="1069.97" y="430.515" width="298" height="330"/>
-  <object id="709" name="Generic/BoardedWindow" type="decor" x="1398.53" y="628" width="211.218" height="207.113"/>
+  <object id="700" name="Generic/InsanityPoster5" type="decor" x="1430.45" y="453.182" width="298" height="330"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="548.357" y="782.287" width="237.527" height="287.568">
+  <object id="694" name="portal" type="object" x="1038.36" y="776.287" width="237.527" height="287.568">
    <properties>
     <property name="map" value="EndianForest/Zone_3_2"/>
     <property name="transition" value="hut"/>
    </properties>
   </object>
-  <object id="705" name="breakable-cage" type="object" x="1617.94" y="954.135" width="196" height="112"/>
-  <object id="706" name="spawn-wood-door" type="object" x="607.801" y="941.417" width="128" height="128">
+  <object id="705" name="breakable-cage" type="object" x="1533.94" y="950.135" width="196" height="112"/>
+  <object id="706" name="spawn-wood-door" type="object" x="1097.8" y="935.417" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="710" name="camera-focus" type="object" x="1100" y="768" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="matu" type="entity" x="1025.14" y="938.218" width="128" height="128">
+  <object id="692" name="matu" type="entity" x="581.14" y="938.218" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="matu-hexus,friendly"/>
    </properties>
@@ -135,33 +81,5 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects_foreground">
-  <properties>
-   <property name="is-elevate-target" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
 </map>

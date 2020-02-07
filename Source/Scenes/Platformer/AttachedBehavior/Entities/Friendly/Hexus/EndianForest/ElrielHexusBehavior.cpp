@@ -50,7 +50,7 @@ std::string ElrielHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> ElrielHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 4.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{

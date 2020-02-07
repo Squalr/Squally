@@ -119,7 +119,7 @@
   </properties>
   <object id="692" name="gramps" type="entity" x="1025.14" y="938.218" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="attached-behavior" value="friendly,gramps-hexus"/>
    </properties>
   </object>
  </objectgroup>

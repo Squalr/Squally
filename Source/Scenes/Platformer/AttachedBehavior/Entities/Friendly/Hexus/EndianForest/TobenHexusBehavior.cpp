@@ -50,7 +50,7 @@ std::string TobenHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> TobenHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{

@@ -50,7 +50,7 @@ std::string GrampsHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> GrampsHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 5.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{

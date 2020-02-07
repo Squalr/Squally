@@ -225,7 +225,7 @@
   </properties>
   <object id="760" name="polyphemus" type="entity" x="2210.93" y="851.352" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="shopkeeper"/>
+    <property name="attached-behavior" value="face-squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -289,7 +289,7 @@
   </properties>
   <object id="692" name="robin" type="entity" x="2640.1" y="930.785" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="attached-behavior" value="friendly,robin-hexus"/>
    </properties>
   </object>
  </objectgroup>

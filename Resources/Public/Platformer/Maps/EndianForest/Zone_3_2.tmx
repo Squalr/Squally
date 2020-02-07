@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="739">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="740">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -15,7 +15,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4837.69" y="453.3" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4797.69" y="293.3" width="13333.3" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
@@ -27,7 +27,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4797.81" y="721.6" width="13257.6" height="1140">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4785.81" y="369.6" width="13257.6" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="2.25"/>
@@ -285,7 +285,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="6747.27" y="1634.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6745.94" y="1642.25" width="146" height="423"/>
   <object id="641" name="edge-portal" type="object" x="10029.3" y="1397.89" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -316,6 +316,16 @@
    <properties>
     <property name="map" value="EndianForest/Home_Hut"/>
     <property name="transition" value="hut"/>
+   </properties>
+  </object>
+  <object id="739" name="cipher-chest" type="object" x="2576" y="3488" width="128" height="128">
+   <properties>
+    <property name="data-type" value="decimal"/>
+    <property name="inputs" value="255,252,253,0"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule" value="{i}+5"/>
+    <property name="tokens" value="+,1,4,+"/>
+    <property name="tutorial" value="overflow"/>
    </properties>
   </object>
  </objectgroup>

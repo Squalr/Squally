@@ -50,7 +50,7 @@ std::string MarcelHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> MarcelHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{
