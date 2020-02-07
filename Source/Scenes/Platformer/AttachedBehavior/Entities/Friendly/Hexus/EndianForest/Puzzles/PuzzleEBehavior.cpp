@@ -1,13 +1,11 @@
 #include "PuzzleEBehavior.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Components/Components.h"
+#include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"

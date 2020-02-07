@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "BlackbeardHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,43 +14,43 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string BlackbeardHexusBehavior::MapKeyAttachedBehavior = "blackbeard-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+BlackbeardHexusBehavior* BlackbeardHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	BlackbeardHexusBehavior* instance = new BlackbeardHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+BlackbeardHexusBehavior::BlackbeardHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+BlackbeardHexusBehavior::~BlackbeardHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* BlackbeardHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string BlackbeardHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return BlackbeardHexusBehavior::MapKeyAttachedBehavior;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string BlackbeardHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> BlackbeardHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 1.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{
@@ -60,12 +60,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* BlackbeardHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> BlackbeardHexusBehavior::getTutorials()
 {
 	return { };
 }

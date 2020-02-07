@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "GrampsHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,41 +14,41 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string GrampsHexusBehavior::MapKeyAttachedBehavior = "gramps-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+GrampsHexusBehavior* GrampsHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	GrampsHexusBehavior* instance = new GrampsHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+GrampsHexusBehavior::GrampsHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+GrampsHexusBehavior::~GrampsHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* GrampsHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string GrampsHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return GrampsHexusBehavior::MapKeyAttachedBehavior;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string GrampsHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> GrampsHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
 
@@ -60,12 +60,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* GrampsHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> GrampsHexusBehavior::getTutorials()
 {
 	return { };
 }

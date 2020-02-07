@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "PolyphemusHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,41 +14,41 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string PolyphemusHexusBehavior::MapKeyAttachedBehavior = "polyphemus-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+PolyphemusHexusBehavior* PolyphemusHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	PolyphemusHexusBehavior* instance = new PolyphemusHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+PolyphemusHexusBehavior::PolyphemusHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+PolyphemusHexusBehavior::~PolyphemusHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* PolyphemusHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string PolyphemusHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return PolyphemusHexusBehavior::MapKeyAttachedBehavior;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string PolyphemusHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> PolyphemusHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
 
@@ -60,12 +60,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* PolyphemusHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> PolyphemusHexusBehavior::getTutorials()
 {
 	return { };
 }

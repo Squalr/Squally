@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "BardHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,43 +14,43 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string BardHexusBehavior::MapKeyAttachedBehavior = "bard-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+BardHexusBehavior* BardHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	BardHexusBehavior* instance = new BardHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+BardHexusBehavior::BardHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+BardHexusBehavior::~BardHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* BardHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string BardHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return BardHexusBehavior::MapKeyAttachedBehavior;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string BardHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> BardHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 1.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, LocalOrder * EFHexusConfig::ZoneOrder,
 	{
@@ -60,12 +60,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* BardHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> BardHexusBehavior::getTutorials()
 {
 	return { };
 }

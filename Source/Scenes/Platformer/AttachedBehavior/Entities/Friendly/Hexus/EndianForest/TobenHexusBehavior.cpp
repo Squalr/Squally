@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "TobenHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,41 +14,41 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string TobenHexusBehavior::MapKeyAttachedBehavior = "toben-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+TobenHexusBehavior* TobenHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	TobenHexusBehavior* instance = new TobenHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+TobenHexusBehavior::TobenHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+TobenHexusBehavior::~TobenHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* TobenHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string TobenHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return TobenHexusBehavior::MapKeyAttachedBehavior;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string TobenHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> TobenHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
 
@@ -60,12 +60,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* TobenHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> TobenHexusBehavior::getTutorials()
 {
 	return { };
 }

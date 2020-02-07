@@ -7,16 +7,16 @@ class HexusOpponentData;
 class MinMaxPool;
 class PlatformerEntity;
 
-class ChironHexusBehavior : public HexusBehaviorBase
+class GrampsHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static ChironHexusBehavior* create(GameObject* owner);
+	static GrampsHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
 
 protected:
-	ChironHexusBehavior(GameObject* owner);
-	virtual ~ChironHexusBehavior();
+	GrampsHexusBehavior(GameObject* owner);
+	virtual ~GrampsHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;
