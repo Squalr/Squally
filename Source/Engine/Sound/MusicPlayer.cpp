@@ -61,6 +61,11 @@ void MusicPlayer::popMusic()
 
 void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQueue)
 {
+	if (music == MusicPlayer::getCurrentSong())
+	{
+		return;
+	}
+	
 	// Ignore request if the song is already playing
 	if (MusicPlayer::getCurrentSong() != nullptr && music != nullptr)
 	{

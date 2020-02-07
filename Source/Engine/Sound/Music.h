@@ -14,11 +14,9 @@ protected:
 	friend class MusicPlayer;
 	friend class Track;
 
-	static Music* createAndAddGlobally(std::string musicResource, SmartNode* owner);
-	static Music* createAndAddGlobally(std::string musicResource, SmartScene* owner);
+	static Music* createAndAddGlobally(std::string musicResource);
 
-	Music(std::string musicResource, SmartNode* owner);
-	Music(std::string musicResource, SmartScene* owner);
+	Music(std::string musicResource);
 	virtual ~Music();
 
 	void initializeListeners() override;
@@ -27,6 +25,4 @@ protected:
 
 private:
 	typedef SoundBase super;
-
-	SmartNode* owner;
 };

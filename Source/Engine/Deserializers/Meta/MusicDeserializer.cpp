@@ -36,7 +36,7 @@ void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap proper
 {
 	std::string trackSerializationKey = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString();
 
-	SoundEvents::TriggerRequestTrackDeserialization(SoundEvents::RequestTrackDeserializationArgs(trackSerializationKey, owner, [=](Track* track)
+	SoundEvents::TriggerRequestTrackDeserialization(SoundEvents::RequestTrackDeserializationArgs(trackSerializationKey, [=](Track* track)
 	{
 		owner->addChild(track);
 

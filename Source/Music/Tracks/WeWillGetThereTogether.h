@@ -7,12 +7,12 @@ class Item;
 class WeWillGetThereTogether : public Track
 {
 public:
-	static WeWillGetThereTogether* create(SmartNode* owner);
+	static WeWillGetThereTogether* create();
 
 	static const std::string TrackKey;
 
 protected:
-	WeWillGetThereTogether(SmartNode* owner);
+	WeWillGetThereTogether();
 	virtual ~WeWillGetThereTogether();
 
 private:

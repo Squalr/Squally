@@ -18,6 +18,7 @@
 #include "Menus/Options/OptionsScene.h"
 #include "Menus/SaveSelect/SaveSelectMenu.h"
 #include "Menus/TutorialSelect/TutorialSelectMenu.h"
+#include "Music/Tracks/WeWillGetThereTogether.h"
 #include "Scenes/Title/TitleScreenBackground.h"
 #include "Scenes/Developer/DeveloperScene.h"
 
@@ -53,7 +54,7 @@ TitleScreen::TitleScreen()
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	this->musicOverlay = MusicOverlay::create();
-	this->music = nullptr; // Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
+	this->music = WeWillGetThereTogether::create();
 	
 	const Size ShadowSize = Size(-2.0f, -2.0f);
 	const int ShadowBlur = 2;
@@ -164,6 +165,7 @@ TitleScreen::TitleScreen()
 	this->addChild(this->exitButton);
 	this->addChild(this->debugButton);
 	this->addChild(this->musicOverlay);
+	this->addChild(this->music);
 }
 
 TitleScreen::~TitleScreen()
@@ -174,7 +176,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	MusicPlayer::play(this->music, true);
+	this->music->play();
 
 	this->etherParticles->start();
 	GameUtils::accelerateParticles(this->etherParticles, 5.0f);

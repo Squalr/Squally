@@ -13,9 +13,9 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-Music* Music::createAndAddGlobally(std::string musicResource, SmartNode* owner)
+Music* Music::createAndAddGlobally(std::string musicResource)
 {
-	Music* instance = new Music(musicResource, owner);
+	Music* instance = new Music(musicResource);
 
 	instance->autorelease();
 
@@ -24,22 +24,7 @@ Music* Music::createAndAddGlobally(std::string musicResource, SmartNode* owner)
 	return instance;
 }
 
-Music* Music::createAndAddGlobally(std::string musicResource, SmartScene* owner)
-{
-	Music* instance = new Music(musicResource, owner);
-
-	instance->autorelease();
-
-	MusicPlayer::registerMusic(instance);
-
-	return instance;
-}
-
-Music::Music(std::string musicResource, SmartNode* owner) : super(ValueMap(), musicResource)
-{
-}
-
-Music::Music(std::string musicResource, SmartScene* owner) : super(ValueMap(),musicResource)
+Music::Music(std::string musicResource) : super(ValueMap(), musicResource)
 {
 }
 

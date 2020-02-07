@@ -18,6 +18,8 @@
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
+#include "Music/Tracks/Medieval.h"
+#include "Music/Tracks/Medieval2.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
@@ -112,8 +114,8 @@ Hexus::Hexus()
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = nullptr; // Music::createAndAddGlobally(MusicResources::Hexus1, this);
-	this->musicB = nullptr; // Music::createAndAddGlobally(MusicResources::Hexus2, this);
+	this->musicA = Medieval::create();
+	this->musicB = Medieval2::create();
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;
@@ -192,6 +194,8 @@ Hexus::Hexus()
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->helpMenuComponent);
+	this->addChild(this->musicA);
+	this->addChild(this->musicB);
 }
 
 Hexus::~Hexus()
@@ -289,11 +293,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
 	{
-		MusicPlayer::play(this->musicA, true);
+		this->musicA->play();
 	}
 	else
 	{
-		MusicPlayer::play(this->musicB, true);
+		this->musicB->play();
 	}
 }
 

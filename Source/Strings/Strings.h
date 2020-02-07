@@ -14394,6 +14394,51 @@ namespace Strings
 		virtual ~Menus_Music_Artist() = default;
 	};
 
+	class Menus_Music_Blacksmith_Blacksmith : public LocalizedString
+	{
+	public:
+		static Menus_Music_Blacksmith_Blacksmith* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Blacksmith_Blacksmith();
+		virtual ~Menus_Music_Blacksmith_Blacksmith() = default;
+	};
+
+	class Menus_Music_Blacksmith_Medieval : public LocalizedString
+	{
+	public:
+		static Menus_Music_Blacksmith_Medieval* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Blacksmith_Medieval();
+		virtual ~Menus_Music_Blacksmith_Medieval() = default;
+	};
+
+	class Menus_Music_Blacksmith_Medieval2 : public LocalizedString
+	{
+	public:
+		static Menus_Music_Blacksmith_Medieval2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Blacksmith_Medieval2();
+		virtual ~Menus_Music_Blacksmith_Medieval2() = default;
+	};
+
 	class Menus_Music_Lemmonias_Lemmonias : public LocalizedString
 	{
 	public:

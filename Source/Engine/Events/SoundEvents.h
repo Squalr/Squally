@@ -17,11 +17,10 @@ public:
 	struct RequestTrackDeserializationArgs
 	{
 		std::string trackSerializationKey;
-		SmartNode* owner;
 		std::function<void(Track*)> onTrackDeserializedCallback;
 
-		RequestTrackDeserializationArgs(std::string trackSerializationKey, SmartNode* owner, std::function<void(Track*)> onTrackDeserializedCallback)
-			: trackSerializationKey(trackSerializationKey), owner(owner), onTrackDeserializedCallback(onTrackDeserializedCallback) { }
+		RequestTrackDeserializationArgs(std::string trackSerializationKey, std::function<void(Track*)> onTrackDeserializedCallback)
+			: trackSerializationKey(trackSerializationKey), onTrackDeserializedCallback(onTrackDeserializedCallback) { }
 	};
 
 	struct FadeOutMusicArgs

@@ -10,9 +10,9 @@ namespace cocos2d
 
 class ClickableNode;
 class ClickableTextNode;
-class TitleScreenBackground;
-class Music;
 class MusicOverlay;
+class TitleScreenBackground;
+class Track;
 
 class TitleScreen : public GlobalScene
 {
@@ -43,7 +43,7 @@ private:
 	cocos2d::Sprite* titleBar;
 	cocos2d::Sprite* title;
 	MusicOverlay* musicOverlay;
-	Music* music;
+	Track* music;
 
 	static TitleScreen* instance;
 };

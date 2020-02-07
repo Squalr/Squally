@@ -12,7 +12,7 @@ public:
 	virtual void play(float delay = 0.0f);
 
 protected:
-	Track(std::string musicResource, SmartNode* owner);
+	Track(std::string musicResource);
 	virtual ~Track();
 
 private:

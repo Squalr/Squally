@@ -8,16 +8,16 @@ using namespace cocos2d;
 
 const std::string WeWillGetThereTogether::TrackKey = "wwgtt";
 
-WeWillGetThereTogether* WeWillGetThereTogether::create(SmartNode* owner)
+WeWillGetThereTogether* WeWillGetThereTogether::create()
 {
-	WeWillGetThereTogether* instance = new WeWillGetThereTogether(owner);
+	WeWillGetThereTogether* instance = new WeWillGetThereTogether();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-WeWillGetThereTogether::WeWillGetThereTogether(SmartNode* owner) : super(MusicResources::WeWillGetThereTogether, owner)
+WeWillGetThereTogether::WeWillGetThereTogether() : super(MusicResources::WeWillGetThereTogether)
 {
 }
 

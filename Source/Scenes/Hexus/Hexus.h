@@ -68,7 +68,7 @@ class StagingHelperText;
 class GameState;
 class HexusOpponentData;
 class HelpMenuComponent;
-class Music;
+class Track;
 
 class Hexus : public SmartNode
 {
@@ -156,8 +156,8 @@ private:
 	cocos2d::LayerColor* menuBackDrop;
 	HelpMenuComponent* helpMenuComponent;
 
-	Music* musicA;
-	Music* musicB;
+	Track* musicA;
+	Track* musicB;
 
 	static Hexus* instance;
 };

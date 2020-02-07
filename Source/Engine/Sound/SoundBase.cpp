@@ -65,7 +65,7 @@ void SoundBase::update(float dt)
 			}
 			case AudioEngine::AudioState::PLAYING:
 			{
-				const float fadeDuration = 2.0f;
+				const float fadeDuration = 1.0f;
 				
 				this->fadeMultiplier = MathUtils::clamp(this->fadeMultiplier - (dt / fadeDuration), 0.0f, 1.0f);
 

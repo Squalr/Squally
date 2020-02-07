@@ -33,11 +33,11 @@ void TrackDeserializer::registerGlobalNode()
 
 TrackDeserializer::TrackDeserializer()
 {
-	this->deserializers = std::map<std::string, std::function<Track*(SmartNode*)>>();
+	this->deserializers = std::map<std::string, std::function<Track*()>>();
 
 	// Hexus Cards
-	this->deserializers[Heartbeat::TrackKey] = [=](SmartNode* owner) { return (Track*)Heartbeat::create(owner); };
-	this->deserializers[WeWillGetThereTogether::TrackKey] = [=](SmartNode* owner) { return (Track*)WeWillGetThereTogether::create(owner); };
+	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Track*)Heartbeat::create(); };
+	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Track*)WeWillGetThereTogether::create(); };
 }
 
 TrackDeserializer::~TrackDeserializer()
@@ -70,7 +70,7 @@ void TrackDeserializer::deserialize(SoundEvents::RequestTrackDeserializationArgs
 
 	if (args.onTrackDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
-		args.onTrackDeserializedCallback(this->deserializers[serializationKey](args.owner));
+		args.onTrackDeserializedCallback(this->deserializers[serializationKey]());
 	}
 	else
 	{

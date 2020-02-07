@@ -4,9 +4,9 @@
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 
-Track::Track(std::string musicResource, SmartNode* owner) : super()
+Track::Track(std::string musicResource) : super()
 {
-	this->music = Music::createAndAddGlobally(musicResource, owner);
+	this->music = Music::createAndAddGlobally(musicResource);
 }
 
 Track::~Track()

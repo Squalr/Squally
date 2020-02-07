@@ -8,16 +8,16 @@ using namespace cocos2d;
 
 const std::string Heartbeat::TrackKey = "heartbeat";
 
-Heartbeat* Heartbeat::create(SmartNode* owner)
+Heartbeat* Heartbeat::create()
 {
-	Heartbeat* instance = new Heartbeat(owner);
+	Heartbeat* instance = new Heartbeat();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Heartbeat::Heartbeat(SmartNode* owner) : super(MusicResources::HeartBeat, owner)
+Heartbeat::Heartbeat() : super(MusicResources::HeartBeat)
 {
 }
 

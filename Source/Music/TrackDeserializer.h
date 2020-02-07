@@ -23,7 +23,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	std::map<std::string, std::function<Track*(SmartNode*)>> deserializers;
+	std::map<std::string, std::function<Track*()>> deserializers;
 
 	static TrackDeserializer* instance;
 };

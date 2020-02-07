@@ -7,12 +7,12 @@ class Item;
 class Heartbeat : public Track
 {
 public:
-	static Heartbeat* create(SmartNode* owner);
+	static Heartbeat* create();
 
 	static const std::string TrackKey;
 
 protected:
-	Heartbeat(SmartNode* owner);
+	Heartbeat();
 	virtual ~Heartbeat();
 
 private:
