@@ -179,7 +179,7 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 
 void Cipher::onMenuExit()
 {
-	MusicPlayer::popMusic();
+	// this->music->pop();
 	CipherEvents::TriggerExitCipher(CipherEvents::CipherExitArgs(false));
 }
 

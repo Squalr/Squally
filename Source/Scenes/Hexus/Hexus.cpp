@@ -15,6 +15,7 @@
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/HexusEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
@@ -236,6 +237,17 @@ void Hexus::initializeListeners()
 		this->helpMenuComponent->setVisible(false);
 		GameUtils::focus(this);
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->musicA->pop();
+			this->musicB->pop();
+		}
+	}));
 }
 
 void Hexus::open(HexusOpponentData* opponentData)

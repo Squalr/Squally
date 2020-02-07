@@ -25,9 +25,9 @@ public:
 
 	struct FadeOutMusicArgs
 	{
-		Music* newSong;
+		int trackId;
 
-		FadeOutMusicArgs(Music* newSong) : newSong(newSong) { }
+		FadeOutMusicArgs(int trackId) : trackId(trackId) { }
 	};
 
 	static void TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args);

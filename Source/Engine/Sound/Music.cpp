@@ -40,7 +40,7 @@ void Music::initializeListeners()
 	{
 		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->newSong != this)
+		if (args != nullptr && args->trackId != this->activeTrackId && args->trackId != SoundBase::INVALID_ID)
 		{
 			this->stopAndFadeOut();
 		}
@@ -66,15 +66,17 @@ void Music::play(bool repeat, float startDelay)
 		default:
 		case AudioEngine::AudioState::ERROR:
 		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PAUSED:
-		{
-			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
-			super::play(repeat, startDelay);
-			break;
-		}
 		case AudioEngine::AudioState::PLAYING:
 		{
-			// Already playing!
+			this->stop();
+			super::play(repeat, startDelay);
+			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+			break;
+		}
+		case AudioEngine::AudioState::PAUSED:
+		{
+			this->unpause();
+			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 			break;
 		}
 	}
@@ -84,5 +86,5 @@ void Music::unpause()
 {
 	super::unpause();
 
-	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this));
+	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 }

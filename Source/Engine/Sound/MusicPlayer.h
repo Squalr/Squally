@@ -9,16 +9,19 @@ class MusicPlayer : public GlobalNode
 public:
 	static void registerGlobalNode();
 
-	static Music* getCurrentSong();
-	static void play(Music* music, bool repeat = true, float startDelay = 0.0f, bool purgeQueue = false);
-	static void popMusic();
-	static void purgueQueue();
 	static void registerMusic(Music* music);
-	static void destroyMusic(Music* music);
 
 protected:
+	friend class Track;
+
 	MusicPlayer();
 	virtual ~MusicPlayer();
+
+	static Music* getCurrentSong();
+	static void play(Music* music, bool repeat = true, float startDelay = 0.0f, bool purgeQueue = false, bool allowDestruction = false);
+	static void popMusic();
+	static void purgueQueue();
+	static void destroyMusic(Music* music);
 
 	static MusicPlayer* getInstance();
 

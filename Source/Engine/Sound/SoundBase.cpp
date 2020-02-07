@@ -71,7 +71,7 @@ void SoundBase::update(float dt)
 
 				if (this->fadeMultiplier == 0.0f)
 				{
-					AudioEngine::pause(this->activeTrackId);
+					AudioEngine::stop(this->activeTrackId);
 
 					if (this->onFadeOutCallback != nullptr)
 					{
@@ -93,7 +93,7 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
-	if (this->soundResource.empty() || AudioEngine::getState(this->activeTrackId) == AudioEngine::AudioState::PLAYING)
+	if (this->soundResource.empty())
 	{
 		return;
 	}
@@ -127,15 +127,37 @@ void SoundBase::unpause()
 	AudioEngine::resume(this->activeTrackId);
 }
 
-void SoundBase::stop()
+void SoundBase::freeze()
 {
 	AudioEngine::pause(this->activeTrackId);
 }
 
+void SoundBase::stop()
+{
+	AudioEngine::stop(this->activeTrackId);
+}
+
 void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
 {
-	this->isFading = true;
-	this->onFadeOutCallback = onFadeOutCallback;
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			// Not playing, do nothing
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			this->isFading = true;
+			this->onFadeOutCallback = onFadeOutCallback;
+			break;
+		}
+	}
 }
 
 void SoundBase::setCustomMultiplier(float customMultiplier)

@@ -112,6 +112,7 @@ void SaveSelectMenu::onEnter()
 	GameUtils::fadeInObject(this->saveGameButton2, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 }
 
 void SaveSelectMenu::initializeListeners()

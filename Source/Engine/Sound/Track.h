@@ -10,6 +10,7 @@ class Track : public SmartNode
 public:
 	virtual void push(float delay = 0.0f);
 	virtual void play(float delay = 0.0f);
+	virtual void pop();
 
 protected:
 	Track(std::string musicResource);
@@ -17,6 +18,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	bool isParentGlobal();
 
 	Music* music;
 };

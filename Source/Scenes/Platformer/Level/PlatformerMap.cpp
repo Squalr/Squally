@@ -236,8 +236,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->hexus->setVisible(false);
 			this->enableMap();
-
-			MusicPlayer::popMusic();
+			
 			GameUtils::focus(this);
 		}
 	}));

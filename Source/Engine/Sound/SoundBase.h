@@ -7,6 +7,7 @@ class SoundBase : public GameObject
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	virtual void unpause();
+	virtual void freeze();
 	virtual void stop();
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
 
@@ -28,6 +29,8 @@ protected:
 	float getVolume();
 
 	int activeTrackId;
+	
+	static const int INVALID_ID;
 
 private:
 	typedef GameObject super;
@@ -46,5 +49,4 @@ private:
 	cocos2d::Vec2 cachedCoords;
 
 	static const std::string KeyScheduleFadeOutAudio;
-	static const int INVALID_ID;
 };

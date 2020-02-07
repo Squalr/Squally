@@ -59,7 +59,7 @@ void MusicPlayer::popMusic()
 	MusicPlayer::SongQueue.front()->unpause();
 }
 
-void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQueue)
+void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQueue, bool allowDestruction)
 {
 	if (music == MusicPlayer::getCurrentSong())
 	{
@@ -71,7 +71,10 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQu
 	{
 		if (MusicPlayer::getCurrentSong()->getSoundResource() == music->getSoundResource())
 		{
-			MusicPlayer::destroyMusic(music);
+			if (allowDestruction)
+			{
+				MusicPlayer::destroyMusic(music);
+			}
 			
 			return;
 		}
