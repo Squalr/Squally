@@ -112,8 +112,8 @@ Hexus::Hexus()
 	this->relocateLayer = Node::create();
 	this->helpMenuComponent = HelpMenuComponent::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = Music::createAndAddGlobally(MusicResources::Hexus1, this);
-	this->musicB = Music::createAndAddGlobally(MusicResources::Hexus2, this);
+	this->musicA = nullptr; // Music::createAndAddGlobally(MusicResources::Hexus1, this);
+	this->musicB = nullptr; // Music::createAndAddGlobally(MusicResources::Hexus2, this);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;

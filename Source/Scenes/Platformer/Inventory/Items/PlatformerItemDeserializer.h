@@ -13,11 +13,14 @@ public:
 
 	void deserialize(InventoryEvents::RequestItemDeserializationArgs args);
 
+protected:
+	PlatformerItemDeserializer();
+	virtual ~PlatformerItemDeserializer();
+
+	void initializeListeners() override;
+
 private:
 	typedef GlobalNode super;
-	PlatformerItemDeserializer();
-	~PlatformerItemDeserializer();
-	void initializeListeners() override;
 
 	std::map<std::string, std::function<Item*()>> deserializers;
 

@@ -5,9 +5,18 @@
 
 using namespace cocos2d;
 
+const std::string SoundEvents::EventRequestTrackDeserialization = "EVENT_REQUEST_TRACK_DESERIALIZATION";
 const std::string SoundEvents::EventFadeOutMusic = "EVENT_FADE_OUT_MUSIC";
 const std::string SoundEvents::EventMusicVolumeUpdated = "EVENT_MUSIC_VOLUME_UPDATED";
 const std::string SoundEvents::EventSoundVolumeUpdated = "EVENT_SOUND_VOLUME_UPDATED";
+
+void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		SoundEvents::EventRequestTrackDeserialization,
+		&args
+	);
+}
 
 void SoundEvents::TriggerMusicVolumeUpdated()
 {

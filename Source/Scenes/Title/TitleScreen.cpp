@@ -53,7 +53,7 @@ TitleScreen::TitleScreen()
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	this->musicOverlay = MusicOverlay::create();
-	this->music = Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
+	this->music = nullptr; // Music::createAndAddGlobally(MusicResources::WeWillGetThereTogether, this);
 	
 	const Size ShadowSize = Size(-2.0f, -2.0f);
 	const int ShadowBlur = 2;

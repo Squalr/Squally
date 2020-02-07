@@ -13,6 +13,7 @@ public:
 	void setCustomMultiplier(float customMultiplier);
 	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
 	void setSoundResource(std::string soundResource);
+	std::string getSoundResource();
 
 protected:
 	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
@@ -22,6 +23,8 @@ protected:
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
+	void setVolumeOverride(float volume);
+	void clearVolumeOverride();
 	float getVolume();
 
 	int activeTrackId;
@@ -37,6 +40,7 @@ private:
 	float customMultiplier;
 	int fadeOutTick;
 	bool enableCameraDistanceFade;
+	bool hasVolumeOverride;
 	bool isFading;
 	std::function<void()> onFadeOutCallback;
 	cocos2d::Vec2 cachedCoords;

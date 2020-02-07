@@ -5,7 +5,7 @@
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="music" value="wwgtt"/>
    <property name="rubber-band" type="int" value="5"/>
    <property name="type" value="meta"/>
   </properties>
@@ -57,17 +57,6 @@
     <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="18" name="decor background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="19" name="objects background">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
@@ -186,11 +175,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
@@ -248,31 +232,10 @@
    </properties>
   </object>
  </objectgroup>
- <layer id="64" name="water" width="80" height="38">
-  <data encoding="base64" compression="zlib">
-   eJztwYEAAAAAw6D5Ux/hAlUBAAAAAAAAAAAAAADPAC+AAAE=
-  </data>
- </layer>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects_foreground">
-  <properties>
-   <property name="is-elevate-target" type="bool" value="true"/>
-   <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="31" name="rain">
@@ -286,19 +249,19 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="2966.39" y="-3485.07" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="4347.03" y="-3381.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="7083.62" y="-3432.1" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="9365.57" y="-3565.9" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="4976.81" y="-3409" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="7270.39" y="3746.93" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="8651.03" y="3850.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="955.62" y="2455.9" width="242" height="738"/>
+  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="3941.57" y="2594.1" width="242" height="738"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="9280.81" y="3823" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="8654.81" y="-3429.4" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="3770.38" y="-3406.1" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="5903.62" y="-3522.2" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="2590.81" y="2522.6" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="8074.38" y="3825.9" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="5423.62" y="3805.8" width="242" height="738"/>
  </objectgroup>
 </map>

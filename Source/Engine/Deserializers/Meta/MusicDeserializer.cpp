@@ -5,11 +5,9 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/SoundEvents.h"
-#include "Engine/GlobalDirector.h"
-#include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/GameObject.h"
-#include "Engine/Sound/Music.h"
 #include "Engine/Sound/MusicPlayer.h"
+#include "Engine/Sound/Track.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
@@ -36,9 +34,12 @@ MusicDeserializer::~MusicDeserializer()
 
 void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	Music* music = Music::createAndAddGlobally(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString(), owner);
-	float delay = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat();
+	std::string trackSerializationKey = GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyMusicProperty, Value("")).asString();
 
-	MusicPlayer::purgueQueue();
-	MusicPlayer::play(music, true, delay);
+	SoundEvents::TriggerRequestTrackDeserialization(SoundEvents::RequestTrackDeserializationArgs(trackSerializationKey, owner, [=](Track* track)
+	{
+		owner->addChild(track);
+
+		track->play(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat());
+	}));
 }

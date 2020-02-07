@@ -37,30 +37,10 @@ Music* Music::createAndAddGlobally(std::string musicResource, SmartScene* owner)
 
 Music::Music(std::string musicResource, SmartNode* owner) : super(ValueMap(), musicResource)
 {
-	if (owner != nullptr)
-	{
-		owner->onDispose([=]()
-		{
-			this->stopAndFadeOut([=]()
-			{
-				MusicPlayer::destroyMusic(this);
-			});
-		});
-	}
 }
 
 Music::Music(std::string musicResource, SmartScene* owner) : super(ValueMap(),musicResource)
 {
-	if (owner != nullptr)
-	{
-		owner->onDispose([=]()
-		{
-			this->stopAndFadeOut([=]()
-			{
-				MusicPlayer::destroyMusic(this);
-			});
-		});
-	}
 }
 
 Music::~Music()
@@ -83,7 +63,7 @@ void Music::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventMusicVolumeUpdated, [=](EventCustom* eventCustom)
 	{
-		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+		this->updateVolume();
 	}));
 }
 

@@ -22,6 +22,7 @@ SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(pr
 	this->soundResource = soundResource;
 	this->enableCameraDistanceFade = false;
 	this->isFading = false;
+	this->hasVolumeOverride = false;
 	this->fadeMultiplier = 1.0f;
 	this->distanceMultiplier = 1.0f;
 	this->customMultiplier = 1.0f;
@@ -158,9 +159,32 @@ void SoundBase::setSoundResource(std::string soundResource)
 	this->soundResource = soundResource;
 }
 
+std::string SoundBase::getSoundResource()
+{
+	return this->soundResource;
+}
+
 void SoundBase::updateVolume()
 {
+	if (this->hasVolumeOverride)
+	{
+		return;
+	}
+
 	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+}
+
+void SoundBase::setVolumeOverride(float volume)
+{
+	this->hasVolumeOverride = true;
+
+	AudioEngine::setVolume(this->activeTrackId, volume);
+}
+
+void SoundBase::clearVolumeOverride()
+{
+	this->hasVolumeOverride = false;
+	this->updateVolume();
 }
 
 float SoundBase::getVolume()
