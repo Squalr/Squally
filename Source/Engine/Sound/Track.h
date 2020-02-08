@@ -2,6 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
+class LocalizedString;
 class Music;
 
 // Wrapper object for music, as music objects behave a little irregularly due to their global nature.
@@ -12,8 +13,11 @@ public:
 	virtual void play(float delay = 0.0f);
 	virtual void pop();
 
+	LocalizedString* getTrackName();
+	LocalizedString* getArtistName();
+
 protected:
-	Track(std::string musicResource);
+	Track(std::string musicResource, LocalizedString* trackName, LocalizedString* artistName);
 	virtual ~Track();
 
 	void initializeListeners() override;
@@ -22,4 +26,6 @@ private:
 	typedef SmartNode super;
 
 	Music* music;
+	LocalizedString* trackName;
+	LocalizedString* artistName;
 };

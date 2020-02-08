@@ -21,6 +21,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
+#include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Scenes/Platformer/Level/Backgrounds/MatrixRain/MatrixRain.h"
@@ -39,6 +40,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 
 	this->map = nullptr;
 	this->mapNode = Node::create();
+	this->musicOverlay = MusicOverlay::create();
 	this->radialMenu = allowHackerMode ? RadialMenu::create() : nullptr;
 	this->codeHud = allowHackerMode ? CodeHud::create() : nullptr;
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
@@ -92,6 +94,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->sensingGlow);
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->miniGameHud);
+	this->addChild(this->musicOverlay);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);

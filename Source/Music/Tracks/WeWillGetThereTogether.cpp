@@ -17,7 +17,7 @@ WeWillGetThereTogether* WeWillGetThereTogether::create()
 	return instance;
 }
 
-WeWillGetThereTogether::WeWillGetThereTogether() : super(MusicResources::WeWillGetThereTogether)
+WeWillGetThereTogether::WeWillGetThereTogether() : super(MusicResources::WeWillGetThereTogether, Strings::Menus_Music_Lemmonias_WWGTT::create(), Strings::Menus_Music_Lemmonias_Lemmonias::create())
 {
 }
 

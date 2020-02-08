@@ -17,7 +17,7 @@ Heartbeat* Heartbeat::create()
 	return instance;
 }
 
-Heartbeat::Heartbeat() : super(MusicResources::HeartBeat)
+Heartbeat::Heartbeat() : super(MusicResources::HeartBeat, Strings::Menus_Music_AlexanderIvanov_Heartbeat::create(), Strings::Menus_Music_AlexanderIvanov_AlexanderIvanov::create())
 {
 }
 

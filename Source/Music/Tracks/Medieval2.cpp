@@ -17,7 +17,7 @@ Medieval2* Medieval2::create()
 	return instance;
 }
 
-Medieval2::Medieval2() : super(MusicResources::Hexus2)
+Medieval2::Medieval2() : super(MusicResources::Hexus2, Strings::Menus_Music_Blacksmith_Medieval2::create(), Strings::Menus_Music_Blacksmith_Blacksmith::create())
 {
 }
 

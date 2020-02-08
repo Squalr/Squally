@@ -2,25 +2,38 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+namespace cocos2d
+{
+	class Sprite;
+};
+
 class LocalizedLabel;
 class LocalizedString;
+class Track;
 
 class MusicOverlay : public Hud
 {
 public:
 	static MusicOverlay* create();
 
-private:
-	typedef Hud super;
+protected:
 	MusicOverlay();
 	virtual ~MusicOverlay();
 
-	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	LocalizedString* trackString;
+private:
+	typedef Hud super;
+
+	void showOverlayForTrack(Track* track);
+
+	cocos2d::Node* contentNode;
 	LocalizedLabel* trackLabel;
-	LocalizedString* artistString;
 	LocalizedLabel* artistLabel;
+	cocos2d::Sprite* note;
+	LocalizedString* trackString;
+	LocalizedString* artistString;
+
+	static const cocos2d::Vec2 ScrollOutDelta;
 };

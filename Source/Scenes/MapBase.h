@@ -12,15 +12,16 @@ namespace cocos2d
 class CodeHud;
 class ConfirmationMenu;
 class DeveloperHud;
-class IngameMenu;
+class GameMap;
 class Hud;
+class IngameMenu;
 class LayerDeserializer;
+class MatrixRain;
+class MusicOverlay;
 class OptionsMenu;
 class PauseMenu;
 class PlatformerDialogueBox;
 class RadialMenu;
-class GameMap;
-class MatrixRain;
 class HackerModeHud;
 
 class MapBase : public GlobalScene
@@ -70,6 +71,7 @@ private:
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;
 	ConfirmationMenu* confirmationMenu;
+	MusicOverlay* musicOverlay;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
 };

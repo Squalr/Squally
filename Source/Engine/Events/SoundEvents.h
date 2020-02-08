@@ -9,6 +9,7 @@ class Track;
 class SoundEvents
 {
 public:
+	static const std::string EventTrackPlayed;
 	static const std::string EventRequestTrackDeserialization;
 	static const std::string EventDestroyOrphanedMusic;
 	static const std::string EventOnMusicDestroyed;
@@ -39,6 +40,14 @@ public:
 		MusicDestroyedArgs(Music* music) : music(music) { }
 	};
 
+	struct TrackPlayedArgs
+	{
+		Track* track;
+
+		TrackPlayedArgs(Track* track) : track(track) { }
+	};
+
+	static void TriggerTrackPlayed(TrackPlayedArgs args);
 	static void TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args);
 	static void TriggerDestroyOrphanedMusic();
 	static void TriggerMusicDestroyed(MusicDestroyedArgs args);
