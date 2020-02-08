@@ -435,6 +435,7 @@ namespace DecorResources
 	extern const std::string Forest_Foreground_trees_branch_foreground_2;
 	extern const std::string Forest_Foreground_trees_branch_foreground_3;
 	extern const std::string Forest_Foreground_trees_branch_foreground_4;
+	extern const std::string Forest_Hut1;
 	extern const std::string Forest_Light1;
 	extern const std::string Forest_Light2;
 	extern const std::string Forest_Light3;

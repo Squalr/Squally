@@ -53,7 +53,9 @@ void Sound::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
-		this->stop();
+		// This needs more thought. Most sounds are brief and should just play out. However, if long sounds are added, then it makes sense to fade them out or something.
+		// May need to add a special global node that can handle fading out a given audio ID.
+		// this->stop();
 	}));
 
 	if (!this->getListenEvent().empty())

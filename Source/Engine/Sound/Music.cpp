@@ -13,9 +13,9 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-Music* Music::createAndAddGlobally(std::string musicResource)
+Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
 {
-	Music* instance = new Music(musicResource);
+	Music* instance = new Music(owner, musicResource);
 
 	instance->autorelease();
 
@@ -24,8 +24,10 @@ Music* Music::createAndAddGlobally(std::string musicResource)
 	return instance;
 }
 
-Music::Music(std::string musicResource) : super(ValueMap(), musicResource)
+Music::Music(Track* owner, std::string musicResource) : super(ValueMap(), musicResource)
 {
+	this->owner = owner;
+	this->orphaned = false;
 }
 
 Music::~Music()
@@ -51,6 +53,21 @@ void Music::initializeListeners()
 		this->updateVolume();
 	}));
 }
+
+void Music::orphanMusic()
+{
+	this->orphaned = true;
+}
+
+bool Music::isOrphaned()
+{
+	return this->orphaned;
+}
+
+Track* Music::getOwner()
+{
+	return this->owner;
+} 
 
 float Music::getConfigVolume()
 {
@@ -80,6 +97,35 @@ void Music::play(bool repeat, float startDelay)
 			break;
 		}
 	}
+}
+
+void Music::copyStateFrom(Music* music)
+{
+	this->activeTrackId = music->activeTrackId;
+	this->soundResource = music->soundResource;
+	this->enableCameraDistanceFade = music->enableCameraDistanceFade;
+	this->isFading = music->isFading;
+	this->hasVolumeOverride = music->hasVolumeOverride;
+	this->fadeMultiplier = music->fadeMultiplier;
+	this->distanceMultiplier = music->distanceMultiplier;
+	this->customMultiplier = music->customMultiplier;
+	this->onFadeOutCallback = music->onFadeOutCallback;
+	this->cachedCoords = music->cachedCoords;
+	this->destroyOnFadeOut = music->destroyOnFadeOut;
+}
+
+void Music::clearState()
+{
+	this->activeTrackId = SoundBase::INVALID_ID;
+	this->enableCameraDistanceFade = false;
+	this->isFading = false;
+	this->hasVolumeOverride = false;
+	this->fadeMultiplier = 1.0f;
+	this->distanceMultiplier = 1.0f;
+	this->customMultiplier = 1.0f;
+	this->onFadeOutCallback = nullptr;
+	this->cachedCoords = Vec2::ZERO;
+	this->destroyOnFadeOut = false;
 }
 
 void Music::unpause()

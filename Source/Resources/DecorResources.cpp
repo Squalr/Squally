@@ -434,6 +434,7 @@ const std::string DecorResources::Forest_Foreground_trees_branch_foreground_1 = 
 const std::string DecorResources::Forest_Foreground_trees_branch_foreground_2 = "Private/Platformer/Decor/Forest/Foreground/trees branch foreground 2.png";
 const std::string DecorResources::Forest_Foreground_trees_branch_foreground_3 = "Private/Platformer/Decor/Forest/Foreground/trees branch foreground 3.png";
 const std::string DecorResources::Forest_Foreground_trees_branch_foreground_4 = "Private/Platformer/Decor/Forest/Foreground/trees branch foreground 4.png";
+const std::string DecorResources::Forest_Hut1 = "Private/Platformer/Decor/Forest/Hut1.png";
 const std::string DecorResources::Forest_Light1 = "Private/Platformer/Decor/Forest/Light1.png";
 const std::string DecorResources::Forest_Light2 = "Private/Platformer/Decor/Forest/Light2.png";
 const std::string DecorResources::Forest_Light3 = "Private/Platformer/Decor/Forest/Light3.png";

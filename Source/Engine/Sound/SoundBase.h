@@ -9,7 +9,7 @@ public:
 	virtual void unpause();
 	virtual void freeze();
 	virtual void stop();
-	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr);
+	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 
 	void setCustomMultiplier(float customMultiplier);
 	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
@@ -29,6 +29,17 @@ protected:
 	float getVolume();
 
 	int activeTrackId;
+
+	std::string soundResource;
+	float fadeMultiplier;
+	float distanceMultiplier;
+	float customMultiplier;
+	bool enableCameraDistanceFade;
+	bool hasVolumeOverride;
+	bool isFading;
+	bool destroyOnFadeOut;
+	std::function<void()> onFadeOutCallback;
+	cocos2d::Vec2 cachedCoords;
 	
 	static const int INVALID_ID;
 
@@ -36,17 +47,6 @@ private:
 	typedef GameObject super;
 
 	void updateDistanceFade();
-
-	std::string soundResource;
-	float fadeMultiplier;
-	float distanceMultiplier;
-	float customMultiplier;
-	int fadeOutTick;
-	bool enableCameraDistanceFade;
-	bool hasVolumeOverride;
-	bool isFading;
-	std::function<void()> onFadeOutCallback;
-	cocos2d::Vec2 cachedCoords;
 
 	static const std::string KeyScheduleFadeOutAudio;
 };

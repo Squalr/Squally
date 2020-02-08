@@ -17,7 +17,7 @@ Medieval* Medieval::create()
 	return instance;
 }
 
-Medieval::Medieval() : super(MusicResources::HeartBeat)
+Medieval::Medieval() : super(MusicResources::Hexus1)
 {
 }
 

@@ -16,10 +16,10 @@ protected:
 	Track(std::string musicResource);
 	virtual ~Track();
 
+	void initializeListeners() override;
+
 private:
 	typedef SmartNode super;
-
-	bool isParentGlobal();
 
 	Music* music;
 };

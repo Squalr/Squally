@@ -1,42 +1,66 @@
 #include "Track.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
+
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/GlobalNode.h"
-#include "Engine/GlobalHud.h"
-#include "Engine/GlobalScene.h"
+
+using namespace cocos2d;
 
 Track::Track(std::string musicResource) : super()
 {
-	this->music = Music::createAndAddGlobally(musicResource);
+	this->music = Music::createAndAddGlobally(this, musicResource);
 }
 
 Track::~Track()
 {
+	if (this->music != nullptr)
+	{
+		MusicPlayer::orphanMusic(this->music);
+		MusicPlayer::stopAndFadeOutMusic(this->music);
+	}
+}
+
+void Track::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventOnMusicDestroyed, [=](EventCustom* eventCustom)
+	{
+		SoundEvents::MusicDestroyedArgs* args = static_cast<SoundEvents::MusicDestroyedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->music == this->music)
+		{
+			this->music = nullptr;
+		}
+	}));
 }
 
 void Track::push(float delay)
 {
-	MusicPlayer::play(this->music, true, delay, false, !this->isParentGlobal());
+	if (this->music != nullptr)
+	{
+		MusicPlayer::play(this->music, true, delay, false);
+	}
 }
 
 void Track::play(float delay)
 {
-	MusicPlayer::play(this->music, true, delay, true, !this->isParentGlobal());
+	if (this->music != nullptr)
+	{
+		MusicPlayer::play(this->music, true, delay, true);
+	}
 }
 
 void Track::pop()
 {
-	if (MusicPlayer::getCurrentSong() == this->music)
+	if (this->music != nullptr && MusicPlayer::getCurrentSong() == this->music)
 	{
 		MusicPlayer::popMusic();
 	}
-}
-
-bool Track::isParentGlobal()
-{
-	return (GameUtils::getFirstParentOfType<GlobalNode>(this) != nullptr ||
-		GameUtils::getFirstParentOfType<GlobalHud>(this) != nullptr ||
-		GameUtils::getFirstParentOfType<GlobalScene>(this) != nullptr);
 }

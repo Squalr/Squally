@@ -26,14 +26,13 @@ SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(pr
 	this->fadeMultiplier = 1.0f;
 	this->distanceMultiplier = 1.0f;
 	this->customMultiplier = 1.0f;
-	this->fadeOutTick = 0;
 	this->onFadeOutCallback = nullptr;
 	this->cachedCoords = Vec2::ZERO;
+	this->destroyOnFadeOut = false;
 }
 
 SoundBase::~SoundBase()
 {
-	this->stop();
 }
 
 void SoundBase::onEnter()
@@ -71,7 +70,7 @@ void SoundBase::update(float dt)
 
 				if (this->fadeMultiplier == 0.0f)
 				{
-					AudioEngine::stop(this->activeTrackId);
+					this->stop();
 
 					if (this->onFadeOutCallback != nullptr)
 					{
@@ -137,8 +136,13 @@ void SoundBase::stop()
 	AudioEngine::stop(this->activeTrackId);
 }
 
-void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
+void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool hasPriority)
 {
+	if (this->isFading && !hasPriority)
+	{
+		return;
+	}
+
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
 	switch (state)
@@ -149,6 +153,11 @@ void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback)
 		case AudioEngine::AudioState::PAUSED:
 		{
 			// Not playing, do nothing
+			if (this->onFadeOutCallback != nullptr)
+			{
+				this->onFadeOutCallback();
+			}
+			
 			break;
 		}
 		case AudioEngine::AudioState::PLAYING:

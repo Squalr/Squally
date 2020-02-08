@@ -18,10 +18,13 @@ protected:
 	virtual ~MusicPlayer();
 
 	static Music* getCurrentSong();
-	static void play(Music* music, bool repeat = true, float startDelay = 0.0f, bool purgeQueue = false, bool allowDestruction = false);
-	static void popMusic();
+	static void play(Music* music, bool repeat = true, float startDelay = 0.0f, bool purgeQueue = false);
+	static void pushMusic(Music* music);
+	static void popMusic(bool unpauseNext = true);
 	static void purgueQueue();
+	static void stopAndFadeOutMusic(Music* music);
 	static void destroyMusic(Music* music);
+	static void orphanMusic(Music* music);
 
 	static MusicPlayer* getInstance();
 
@@ -29,6 +32,9 @@ protected:
 
 private:
 	typedef GlobalNode super;
+
+	static void performHandoff(Music* music);
+	static bool isParentGlobal(Track* track);
 
 	static std::queue<Music*> SongQueue;
 };

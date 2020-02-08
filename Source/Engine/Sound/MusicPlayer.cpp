@@ -1,7 +1,13 @@
 #include "MusicPlayer.h"
 
+#include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/GlobalNode.h"
+#include "Engine/GlobalHud.h"
+#include "Engine/GlobalScene.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/Music.h"
+#include "Engine/Sound/Track.h"
 
 using namespace cocos2d;
 
@@ -42,7 +48,7 @@ Music* MusicPlayer::getCurrentSong()
 	return MusicPlayer::SongQueue.empty() ? nullptr : MusicPlayer::SongQueue.front();
 }
 
-void MusicPlayer::popMusic()
+void MusicPlayer::popMusic(bool unpauseNext)
 {
 	if (MusicPlayer::SongQueue.empty())
 	{
@@ -51,33 +57,26 @@ void MusicPlayer::popMusic()
 
 	MusicPlayer::SongQueue.pop();
 
-	if (MusicPlayer::SongQueue.empty())
+	if (unpauseNext && !MusicPlayer::SongQueue.empty())
 	{
-		return;
+		MusicPlayer::SongQueue.front()->unpause();
 	}
-
-	MusicPlayer::SongQueue.front()->unpause();
 }
 
-void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQueue, bool allowDestruction)
+void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQueue)
 {
-	if (music == MusicPlayer::getCurrentSong())
+	Music* currentMusic = MusicPlayer::getCurrentSong();
+
+	if (music == currentMusic)
 	{
 		return;
 	}
 	
-	// Ignore request if the song is already playing
-	if (MusicPlayer::getCurrentSong() != nullptr && music != nullptr)
+	// Hand off the music ID to the newer music object if the song is already playing
+	if (currentMusic != nullptr && music != nullptr && currentMusic->getSoundResource() == music->getSoundResource())
 	{
-		if (MusicPlayer::getCurrentSong()->getSoundResource() == music->getSoundResource())
-		{
-			if (allowDestruction)
-			{
-				MusicPlayer::destroyMusic(music);
-			}
-			
-			return;
-		}
+		MusicPlayer::performHandoff(music);
+		return;
 	}
 
 	if (purgeQueue)
@@ -90,20 +89,88 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQu
 		music->play(repeat, startDelay);
 	}
 
+	MusicPlayer::pushMusic(music);
+}
+
+void MusicPlayer::pushMusic(Music* music)
+{
 	MusicPlayer::SongQueue.push(music);
 }
 
 void MusicPlayer::purgueQueue()
 {
+	// TODO: Fire off an event destroying all music that is not the actively playing song.
+	
 	MusicPlayer::SongQueue = std::queue<Music*>();
 }
 
 void MusicPlayer::registerMusic(Music* music)
 {
+	if (music == nullptr)
+	{
+		return;
+	}
+
 	MusicPlayer::getInstance()->addChild(music);
+}
+
+void MusicPlayer::stopAndFadeOutMusic(Music* music)
+{	
+	if (music == nullptr)
+	{
+		return;
+	}
+
+	music->stopAndFadeOut([=]()
+	{
+		MusicPlayer::destroyMusic(music);
+	}, true);
 }
 
 void MusicPlayer::destroyMusic(Music* music)
 {
+	if (music == nullptr)
+	{
+		return;
+	}
+	
 	MusicPlayer::getInstance()->removeChild(music);
+}
+
+void MusicPlayer::orphanMusic(Music* music)
+{
+	music->orphanMusic();
+}
+
+void MusicPlayer::performHandoff(Music* music)
+{
+	Music* currentMusic = MusicPlayer::getCurrentSong();
+
+	if (currentMusic == nullptr)
+	{
+		return;
+	}
+
+	// 4 possible cases:
+	// Global => Local		The new track inherits all state
+	// Global => Global		The new track inherits all state
+	// Local => Local		The new track inherits all state, the old track needs to be destroyed if orphaned
+	// Local => Global		The new track inherits all state, the old track needs to be destroyed if orphaned
+	MusicPlayer::popMusic(false);
+	music->copyStateFrom(currentMusic);
+	currentMusic->clearState();
+	MusicPlayer::pushMusic(music);
+
+	if (currentMusic->isOrphaned() || !MusicPlayer::isParentGlobal(currentMusic->getOwner()))
+	{
+		SoundEvents::TriggerMusicDestroyed(SoundEvents::MusicDestroyedArgs(currentMusic));
+		MusicPlayer::destroyMusic(currentMusic);
+	}
+}
+
+bool MusicPlayer::isParentGlobal(Track* track)
+{
+	return (GameUtils::getFirstParentOfType<GlobalNode>(track) != nullptr ||
+		GameUtils::getFirstParentOfType<GlobalHud>(track) != nullptr ||
+		GameUtils::getFirstParentOfType<GlobalScene>(track) != nullptr);
 }
