@@ -19,7 +19,7 @@ public:
 protected:
 	MusicOverlay();
 	virtual ~MusicOverlay();
-
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 
