@@ -22,7 +22,6 @@ Track::~Track()
 	if (this->music != nullptr)
 	{
 		MusicPlayer::orphanMusic(this->music);
-		MusicPlayer::stopAndFadeOutMusic(this->music);
 	}
 }
 
@@ -37,6 +36,14 @@ void Track::initializeListeners()
 		if (args != nullptr && args->music == this->music)
 		{
 			this->music = nullptr;
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventDestroyOrphanedMusic, [=](EventCustom* eventCustom)
+	{
+		if (this->music != nullptr && this->music->isOrphaned())
+		{
+			MusicPlayer::destroyMusic(this->music);
 		}
 	}));
 }

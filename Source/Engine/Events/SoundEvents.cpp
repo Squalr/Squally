@@ -6,6 +6,7 @@
 using namespace cocos2d;
 
 const std::string SoundEvents::EventRequestTrackDeserialization = "EVENT_REQUEST_TRACK_DESERIALIZATION";
+const std::string SoundEvents::EventDestroyOrphanedMusic = "EVENT_DESTROY_ORPHANED_MUSIC";
 const std::string SoundEvents::EventOnMusicDestroyed = "EVENT_ON_MUSIC_DESTROYED";
 const std::string SoundEvents::EventFadeOutMusic = "EVENT_FADE_OUT_MUSIC";
 const std::string SoundEvents::EventMusicVolumeUpdated = "EVENT_MUSIC_VOLUME_UPDATED";
@@ -16,6 +17,13 @@ void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserialization
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		SoundEvents::EventRequestTrackDeserialization,
 		&args
+	);
+}
+
+void SoundEvents::TriggerDestroyOrphanedMusic()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		SoundEvents::EventDestroyOrphanedMusic
 	);
 }
 

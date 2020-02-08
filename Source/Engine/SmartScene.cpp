@@ -68,6 +68,7 @@ void SmartScene::onEnter()
 	}
 	else
 	{
+		this->fadeAction = nullptr;
 		this->layerColor->setOpacity(0);
 	}
 

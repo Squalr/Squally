@@ -10,6 +10,7 @@ class SoundEvents
 {
 public:
 	static const std::string EventRequestTrackDeserialization;
+	static const std::string EventDestroyOrphanedMusic;
 	static const std::string EventOnMusicDestroyed;
 	static const std::string EventFadeOutMusic;
 	static const std::string EventMusicVolumeUpdated;
@@ -39,6 +40,7 @@ public:
 	};
 
 	static void TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args);
+	static void TriggerDestroyOrphanedMusic();
 	static void TriggerMusicDestroyed(MusicDestroyedArgs args);
 	static void TriggerMusicVolumeUpdated();
 	static void TriggerSoundVolumeUpdated();

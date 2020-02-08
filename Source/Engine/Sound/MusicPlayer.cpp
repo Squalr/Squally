@@ -79,6 +79,8 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQu
 		return;
 	}
 
+	MusicPlayer::stopAndFadeOutMusic(currentMusic);
+
 	if (purgeQueue)
 	{
 		MusicPlayer::purgueQueue();
@@ -99,7 +101,7 @@ void MusicPlayer::pushMusic(Music* music)
 
 void MusicPlayer::purgueQueue()
 {
-	// TODO: Fire off an event destroying all music that is not the actively playing song.
+	SoundEvents::TriggerDestroyOrphanedMusic();
 	
 	MusicPlayer::SongQueue = std::queue<Music*>();
 }
@@ -123,7 +125,7 @@ void MusicPlayer::stopAndFadeOutMusic(Music* music)
 
 	music->stopAndFadeOut([=]()
 	{
-		MusicPlayer::destroyMusic(music);
+		// MusicPlayer::destroyMusic(music);
 	}, true);
 }
 
