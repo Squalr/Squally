@@ -18,7 +18,9 @@ const std::string Sound::PropertyKeyResource = "resource";
 
 Sound* Sound::create(std::string soundResource)
 {
-	return Sound::create(ValueMap(), soundResource);
+	ValueMap valueMap = ValueMap();
+
+	return Sound::create(valueMap, soundResource);
 }
 
 Sound* Sound::create(ValueMap& properties, std::string soundResource)

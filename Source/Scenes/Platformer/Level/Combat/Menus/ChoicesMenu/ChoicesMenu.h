@@ -27,6 +27,7 @@ protected:
 
 private:
 	typedef SmartNode super;
+	
 	void onItemsClick();
 	void onAttackClick();
 	void onDefendClick();

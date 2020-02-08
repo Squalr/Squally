@@ -3,6 +3,7 @@
 #include "Engine/GlobalNode.h"
 
 class Music;
+class Track;
 
 class MusicPlayer : public GlobalNode
 {

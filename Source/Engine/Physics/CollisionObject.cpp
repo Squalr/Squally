@@ -96,7 +96,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 		this->setPhysicsBody(this->physicsBody);
 	}
 
-	Size mapSize = Size(
+	cocos2d::Size mapSize = cocos2d::Size(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
@@ -478,9 +478,9 @@ void CollisionObject::ClearInverseMap()
 	CollisionObject::InverseCollisionMap.clear();
 }
 
-PhysicsBody* CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius, float friction)
+PhysicsBody* CollisionObject::createCapsulePolygon(cocos2d::Size size, float scale, float capsuleRadius, float friction)
 {
-	Size newSize = size * scale;
+	cocos2d::Size newSize = size * scale;
 
 	newSize.height = std::max(0.0f, newSize.height - capsuleRadius * 2.0f);
 

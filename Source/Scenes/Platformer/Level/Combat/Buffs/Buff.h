@@ -29,7 +29,7 @@ public:
 protected:
 
 	Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData);
-	~Buff();
+	virtual ~Buff();
 
 	void onEnter() override;
 	void initializeListeners() override;

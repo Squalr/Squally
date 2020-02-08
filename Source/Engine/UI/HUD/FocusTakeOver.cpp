@@ -93,7 +93,7 @@ void FocusTakeOver::focus(std::vector<Node*> nodes, Transition transition)
 	}
 
 	// Sort in lowest-to-highest child index so that they are restored in the correct order
-	std::sort(this->hijackedNodes.begin(), this->hijackedNodes.end(), [](auto& a, auto& b)
+	std::sort(this->hijackedNodes.begin(), this->hijackedNodes.end(), [](FocusTakeOver::HijackData& a, FocusTakeOver::HijackData& b)
 	{ 
 		return a.originalIndex < b.originalIndex;
 	});

@@ -17,7 +17,7 @@ public:
 
 protected:
 	Defend(PlatformerEntity* caster);
-	~Defend();
+	virtual ~Defend();
 
 	void onEnter() override;
 	void initializePositions() override;

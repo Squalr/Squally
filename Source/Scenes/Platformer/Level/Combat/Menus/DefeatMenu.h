@@ -20,14 +20,16 @@ public:
 	
 	void show();
 
-private:
-	typedef SmartNode super;
+protected:
 	DefeatMenu();
-	~DefeatMenu();
+	virtual ~DefeatMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Sprite* defeatBanner;
 	LocalizedLabel* defeatLabel;

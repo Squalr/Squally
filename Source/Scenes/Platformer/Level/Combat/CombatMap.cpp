@@ -287,7 +287,7 @@ void CombatMap::initializeListeners()
 						}
 					}
 
-					std::sort(focusTargets.begin(), focusTargets.end(), [](auto& a, auto& b)
+					std::sort(focusTargets.begin(), focusTargets.end(), [](Node* a, Node* b)
 					{ 
 						return a->getPositionZ() < b->getPositionZ();
 					});

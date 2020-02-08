@@ -8,7 +8,9 @@ const std::string WorldSound::MapKeyWorldSound = "world-sound";
 
 WorldSound* WorldSound::create(std::string soundResource)
 {
-	return WorldSound::create(ValueMap(), soundResource);
+	ValueMap valueMap = ValueMap();
+
+	return WorldSound::create(valueMap, soundResource);
 }
 
 WorldSound* WorldSound::create(ValueMap& properties, std::string soundResource)

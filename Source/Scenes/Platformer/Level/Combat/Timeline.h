@@ -23,8 +23,7 @@ public:
 
 	void resumeTimeline();
 
-private:
-	typedef SmartNode super;
+protected:
 	Timeline();
 	virtual ~Timeline();
 
@@ -32,6 +31,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	void checkCombatComplete();
 	void updateTimeline(float dt);

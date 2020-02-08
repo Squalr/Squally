@@ -15,14 +15,16 @@ public:
 
 	void initializeEntities(std::vector<PlatformerEntity*> playerEntities, std::vector<PlatformerEntity*> enemyEntities);
 
-private:
-	typedef SmartNode super;
+protected:
 	CombatAIHelper();
-	virtual ~CombatAIHelper() = default;
+	virtual ~CombatAIHelper();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	void performRetargetCorrections(TimelineEntry* attackingEntry);
 	void performAIActions(TimelineEntry* attackingEntry);
@@ -34,7 +36,7 @@ private:
 		PlatformerAttack* attack;
 		float cumulativeProbability;
 
-		AttackProbability(PlatformerAttack* attack, float probability) : attack(attack), cumulativeProbability(cumulativeProbability) { }
+		AttackProbability(PlatformerAttack* attack, float cumulativeProbability) : attack(attack), cumulativeProbability(cumulativeProbability) { }
 	};
 
 	struct ProbabilityMap

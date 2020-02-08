@@ -32,6 +32,10 @@ CombatAIHelper::CombatAIHelper()
 	this->selectedAttack = nullptr;
 }
 
+CombatAIHelper::~CombatAIHelper()
+{
+}
+
 void CombatAIHelper::onEnter()
 {
 	super::onEnter();

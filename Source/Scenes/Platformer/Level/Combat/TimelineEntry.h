@@ -31,10 +31,17 @@ public:
 
 	static const float CastPercentage;
 
-private:
-	typedef SmartNode super;
+protected:
 	TimelineEntry(PlatformerEntity* entity, int spawnIndex);
 	virtual ~TimelineEntry();
+	
+	void onEnter() override;
+	void initializePositions() override;
+	void initializeListeners() override;
+	void update(float dt) override;
+
+private:
+	typedef SmartNode super;
 
 	struct DamageArgs
 	{
@@ -43,10 +50,6 @@ private:
 		DamageArgs(int damageDelta) : damageDelta(damageDelta) { }
 	};
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-	void update(float dt) override;
 	void performCast();
 	void tryInterrupt(bool blocked);
 	void resetTimeline();

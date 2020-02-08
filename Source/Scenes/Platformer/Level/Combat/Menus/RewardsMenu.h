@@ -21,14 +21,16 @@ public:
 
 	void show();
 
-private:
-	typedef SmartNode super;
+protected:
 	RewardsMenu();
-	~RewardsMenu();
+	virtual ~RewardsMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 	void giveExp();
 	void loadRewards();
 	void clearEmblems();

@@ -19,7 +19,7 @@ protected:
 
 	static Music* createAndAddGlobally(Track* owner, std::string musicResource);
 
-	Music(Track* owner, std::string musicResource);
+	Music(cocos2d::ValueMap& properties, Track* owner, std::string musicResource);
 	virtual ~Music();
 	
 	void initializeListeners() override;

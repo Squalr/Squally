@@ -15,7 +15,8 @@ using namespace cocos_experimental;
 
 Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
 {
-	Music* instance = new Music(owner, musicResource);
+	ValueMap valueMap = ValueMap();
+	Music* instance = new Music(valueMap, owner, musicResource);
 
 	instance->autorelease();
 
@@ -24,7 +25,7 @@ Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
 	return instance;
 }
 
-Music::Music(Track* owner, std::string musicResource) : super(ValueMap(), musicResource)
+Music::Music(ValueMap& properties, Track* owner, std::string musicResource) : super(properties, musicResource)
 {
 	this->owner = owner;
 	this->orphaned = false;
