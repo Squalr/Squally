@@ -84,7 +84,7 @@ void DefeatMenu::initializeListeners()
 		CombatEvents::TriggerReturnToMap();
 	});
 
-	this->whenKeyPressed({ cocos2d::EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs)
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
