@@ -27,7 +27,7 @@
 	<key>finishColorRed</key>
 	<real>0.5787474513053894</real>
 	<key>finishColorVarianceAlpha</key>
-	<real>1</real>
+	<real>0.0</real>
 	<key>finishColorVarianceBlue</key>
 	<real>0.0</real>
 	<key>finishColorVarianceGreen</key>
@@ -91,7 +91,7 @@
 	<key>startColorRed</key>
 	<real>0.5787474513053894</real>
 	<key>startColorVarianceAlpha</key>
-	<real>1</real>
+	<real>0.0</real>
 	<key>startColorVarianceBlue</key>
 	<real>0.0</real>
 	<key>startColorVarianceGreen</key>
