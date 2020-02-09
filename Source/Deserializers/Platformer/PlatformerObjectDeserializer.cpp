@@ -140,9 +140,11 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[StoneButton::MapKeyStoneButton] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
 	this->deserializers[TempleDoor::MapKeyTempleDoor] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };
 	this->deserializers[Tent::MapKeyTent] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };
+	this->deserializers[Torch::MapKeyTorch] = [=](ValueMap properties) { return (GameObject*)Torch::create(properties); };
 	this->deserializers[TrapDoor::MapKeyTrapDoor] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKeyTrapDoorFrame] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKeyTrigger] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
+	this->deserializers[Vase::MapKeyVase] = [=](ValueMap properties) { return (GameObject*)Vase::create(properties); };
 	this->deserializers[VoidPortal::MapKeyVoidPortal] = [=](ValueMap properties) { return (GameObject*)VoidPortal::create(properties); };
 	this->deserializers[Warp::MapKeyWarp] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[Water::MapKeyWater] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };

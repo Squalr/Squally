@@ -1,13 +1,12 @@
 #pragma once
 #include <set>
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
-class CollisionObject;
 class HackableData;
 class ParticleObject;
 
-class MagicWall : public HackableObject
+class MagicWall : public GameObject
 {
 public:
 	static MagicWall* create(cocos2d::ValueMap& properties);
@@ -17,10 +16,11 @@ public:
 protected:
 	MagicWall(cocos2d::ValueMap& properties);
 	~MagicWall();
+
 	void onEnter() override;
 
 private:
-	typedef HackableObject super;
+	typedef GameObject super;
 
 	ParticleObject* wallParticles;
 	cocos2d::Size wallSize;

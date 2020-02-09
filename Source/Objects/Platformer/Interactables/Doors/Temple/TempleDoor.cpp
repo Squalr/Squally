@@ -52,6 +52,11 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 52
 		this->emblem = Sprite::create(ObjectResources::Doors_Temple_Skull);
 		this->emblemOffset = Vec2(0.0f, 116.0f);
 	}
+	else if (color == "yellow-scarab" || color == "green-scarab")
+	{
+		this->emblem = Sprite::create(ObjectResources::Doors_Temple_Scarab);
+		this->emblemOffset = Vec2(0.0f, 116.0f);
+	}
 	else if (color == "yellow-up" || color == "green-up")
 	{
 		this->emblem = Sprite::create(ObjectResources::Doors_Temple_UpArrow);

@@ -7,6 +7,20 @@
 namespace ObjectResources
 {
 	extern const std::string Box;
+	extern const std::string Breakables_VaseBlue;
+	extern const std::string Breakables_VaseBlueBroken;
+	extern const std::string Breakables_VaseBrown;
+	extern const std::string Breakables_VaseBrownBroken;
+	extern const std::string Breakables_VaseClay;
+	extern const std::string Breakables_VaseClayBroken;
+	extern const std::string Breakables_VaseGray;
+	extern const std::string Breakables_VaseGrayBroken;
+	extern const std::string Breakables_VaseGreen;
+	extern const std::string Breakables_VaseGreenBroken;
+	extern const std::string Breakables_VaseTan;
+	extern const std::string Breakables_VaseTanBroken;
+	extern const std::string Breakables_VaseYellow;
+	extern const std::string Breakables_VaseYellowBroken;
 	extern const std::string Cinematic_SpaceShipSqually;
 	extern const std::string Collectables_Animals_Bat;
 	extern const std::string Collectables_Animals_Bat_Locked;
@@ -119,6 +133,8 @@ namespace ObjectResources
 	extern const std::string Collectables_Chests_ChestClosed;
 	extern const std::string Collectables_Chests_ChestOpen;
 	extern const std::string Collectables_Currency_IOU;
+	extern const std::string Decor_Torch;
+	extern const std::string Decor_TorchGlow;
 	extern const std::string Doors_BugDoor_3;
 	extern const std::string Doors_BugDoor_MAIN_BASE;
 	extern const std::string Doors_BugDoor_STONES_S1;
@@ -182,6 +198,7 @@ namespace ObjectResources
 	extern const std::string Doors_PuzzleDoor_YellowStone_Door;
 	extern const std::string Doors_PuzzleDoor_YellowStone_Front;
 	extern const std::string Doors_Temple_DownArrow;
+	extern const std::string Doors_Temple_Scarab;
 	extern const std::string Doors_Temple_Skull;
 	extern const std::string Doors_Temple_TempleDoor;
 	extern const std::string Doors_Temple_TempleDoorBack;
@@ -670,6 +687,7 @@ namespace ObjectResources
 	extern const std::string Traps_SpikeLog_SpikedLog_07;
 	extern const std::string Traps_SpikeLog_SpikedLog_08;
 	extern const std::string Traps_SpikeLog_SpikedLog_09;
+	extern const std::string Traps_SpikePillars_WoodSpike;
 	extern const std::string Traps_Spikes_spikes_1;
 	extern const std::string Traps_Spikes_spikes_10;
 	extern const std::string Traps_Spikes_spikes_11;

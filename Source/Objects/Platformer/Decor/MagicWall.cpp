@@ -11,8 +11,6 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_WIND_SPEED 1
-
 const std::string MagicWall::MapKeyMagicWall = "magic-wall";
 
 MagicWall* MagicWall::create(ValueMap& properties)

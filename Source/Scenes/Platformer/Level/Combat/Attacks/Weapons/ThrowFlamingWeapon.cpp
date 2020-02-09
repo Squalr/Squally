@@ -59,7 +59,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 
 	weapon->addChild(fire);
 
-	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.005f);
+	fire->playAnimationRepeat(FXResources::TorchFire_TorchFire_0000, 0.05f);
 	fire->setPosition(Vec2(0.0f, 56.0f));
 	
 	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
