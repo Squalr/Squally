@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="958">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="959">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="Crypt1"/>
+   <property name="background" value="Waterfall"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value="limestone-temple"/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -46,13 +46,25 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="72" name="bg -6">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup id="18" name="background">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="temple-dark" type="texture" x="-569.09" y="-1942.78">
-   <polygon points="247.186,150.853 6993.69,142.582 6999.78,7932.06 248.466,7937.93"/>
+  <object id="897" name="temple-dark" type="terrain" x="-569.09" y="-1942.78">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="247.186,150.853 6993.69,142.582 7019.37,5810.79 5547.78,5808.06 5549.08,7932.81 248.466,7937.93"/>
+  </object>
+  <object id="958" name="temple-dark" type="texture" x="4373.93" y="3376.01">
+   <polygon points="75.9738,57.7337 2149.54,54.5682 2157.44,2223.88 66.5318,2241.92"/>
   </object>
  </objectgroup>
  <objectgroup id="71" name="objects bg">
@@ -60,7 +72,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="Generic/Vent" type="decor" x="2092.47" y="4714.98" width="305" height="307"/>
+  <object id="955" name="Generic/Vent" type="decor" x="2102.47" y="4626.98" width="305" height="307"/>
   <object id="956" name="Generic/Vent" type="decor" x="3769.56" y="4738.86" width="305" height="307"/>
  </objectgroup>
  <objectgroup id="19" name="terrain bg">
@@ -216,6 +228,7 @@
   </object>
   <object id="816" name="edge-portal" type="object" x="8.041" y="4303.57" width="199.918" height="640.851">
    <properties>
+    <property name="direction" value="left"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="exit-A"/>
@@ -261,11 +274,11 @@
     <property name="listen-event" value="door-open"/>
    </properties>
   </object>
-  <object id="917" name="wooden-crate" type="object" x="4889.7" y="4778.18" width="160" height="160"/>
-  <object id="918" name="wooden-crate" type="object" x="5247.27" y="4781.58" width="160" height="160"/>
+  <object id="917" name="wooden-crate" type="object" x="4265.7" y="4778.18" width="160" height="160"/>
+  <object id="918" name="wooden-crate" type="object" x="4623.27" y="4781.58" width="160" height="160"/>
   <object id="919" name="wooden-crate" type="object" x="3450.31" y="4790.3" width="160" height="160"/>
-  <object id="920" name="wooden-crate" type="object" x="5303.85" y="4621.27" width="160" height="160"/>
-  <object id="921" name="wooden-crate" type="object" x="5408.3" y="4782.24" width="160" height="160"/>
+  <object id="920" name="wooden-crate" type="object" x="4679.85" y="4621.27" width="160" height="160"/>
+  <object id="921" name="wooden-crate" type="object" x="4784.3" y="4782.24" width="160" height="160"/>
   <object id="922" name="camera-control" type="object" x="3040.46" y="2237.94" width="316" height="792.061">
    <properties>
     <property name="target" value="target-A"/>
@@ -323,7 +336,6 @@
    </properties>
   </object>
   <object id="943" name="iou" type="object" x="2723.05" y="4861.71" width="87" height="87"/>
-  <object id="944" name="iou" type="object" x="4476.5" y="4857.59" width="87" height="87"/>
   <object id="945" name="iou" type="object" x="4480.5" y="2928.5" width="87" height="87"/>
   <object id="947" name="iou" type="object" x="984.5" y="1024.5" width="87" height="87"/>
  </objectgroup>

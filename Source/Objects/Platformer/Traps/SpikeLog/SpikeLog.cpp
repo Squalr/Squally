@@ -96,7 +96,8 @@ void SpikeLog::registerHackables()
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
-				16.0f
+				16.0f,
+				0.0f
 			)
 		},
 	};

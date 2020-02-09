@@ -96,7 +96,8 @@ void HeavenHug::registerHackables()
 					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }
 				},
 				int(HackFlags::Gravity),
-				20.0f
+				20.0f,
+				0.0f
 			)
 		},
 	};

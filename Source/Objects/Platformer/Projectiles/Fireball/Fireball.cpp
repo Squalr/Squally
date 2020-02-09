@@ -100,6 +100,7 @@ void Fireball::registerHackables()
 				},
 				int(HackFlags::None),
 				5.0f,
+				0.0f,
 				nullptr,
 				{
 					HackableCode::ReadOnlyScript(

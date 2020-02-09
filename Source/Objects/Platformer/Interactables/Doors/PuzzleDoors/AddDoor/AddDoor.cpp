@@ -59,6 +59,7 @@ void AddDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				14.0f,
+				0.0f,
 				nullptr
 			)
 		},

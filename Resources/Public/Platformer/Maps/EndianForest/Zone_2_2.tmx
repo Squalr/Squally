@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="780">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="781">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -158,7 +158,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="702" name="troll" type="entity" x="2641" y="2948.91" width="128" height="128">
+  <object id="702" name="orc-swordsman" type="entity" x="2641" y="2948.91" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -167,11 +167,17 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="703" name="orc-swordsman" type="entity" x="2642.6" y="2680.48" width="128" height="128">
+  <object id="703" name="troll" type="entity" x="2642.6" y="2680.48" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="780" name="troll" type="entity" x="1096.61" y="2272.36" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,disarmed,puzzle-B"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>

@@ -144,6 +144,7 @@ void Wind::registerHackables()
 				},
 				int(HackFlags::Wind),
 				12.0f,
+				0.0f,
 				this->windClippy
 			)
 		},

@@ -113,6 +113,7 @@ void SpeedGain::registerHackables()
 				},
 				int(HackFlags::None),
 				2.0f,
+				0.0f,
 				showClippy ? SpeedGainClippy::create() : nullptr
 			)
 		},

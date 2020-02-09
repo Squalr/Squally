@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTerrainType;
 
+protected:
+	LavaTerrain(cocos2d::ValueMap& properties);
+	virtual ~LavaTerrain();
+
 private:
 	typedef TerrainObject super;
-
-	LavaTerrain(cocos2d::ValueMap& properties);
-	~LavaTerrain();
 };

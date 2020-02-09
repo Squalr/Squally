@@ -59,6 +59,7 @@ void MulDoor::registerHackables()
 				},
 				int(HackFlags::None),
 				14.0f,
+				0.0f,
 				nullptr,
 				{
 					// The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs, so we override that

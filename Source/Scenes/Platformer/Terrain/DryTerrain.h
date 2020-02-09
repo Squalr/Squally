@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTerrainType;
 
+protected:
+	DryTerrain(cocos2d::ValueMap& properties);
+	virtual ~DryTerrain();
+
 private:
 	typedef TerrainObject super;
-
-	DryTerrain(cocos2d::ValueMap& properties);
-	~DryTerrain();
 };

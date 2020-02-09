@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTerrainType;
 
+protected:
+	ShipTerrain(cocos2d::ValueMap& properties);
+	virtual ~ShipTerrain();
+
 private:
 	typedef TerrainObject super;
-
-	ShipTerrain(cocos2d::ValueMap& properties);
-	~ShipTerrain();
 };

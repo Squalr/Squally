@@ -164,7 +164,8 @@ void Projectile::registerHackables()
 					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileVelocity_RegisterEsi::create() }
 				},
 				int(HackFlags::Gravity),
-				3.0f
+				3.0f,
+				0.0f
 			)
 		},
 		{
@@ -181,7 +182,8 @@ void Projectile::registerHackables()
 					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Combat_Projectiles_GetProjectileAcceleration_RegisterEsi::create() }
 				},
 				int(HackFlags::Gravity),
-				3.0f
+				3.0f,
+				0.0f
 			)
 		},
 	};

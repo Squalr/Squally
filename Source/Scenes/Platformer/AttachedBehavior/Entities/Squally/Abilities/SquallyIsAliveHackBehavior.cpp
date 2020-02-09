@@ -106,6 +106,7 @@ void SquallyIsAliveHackBehavior::registerHackables()
 				},
 				int(HackFlags::Light),
 				1.0f,
+				0.0f,
 				this->clippy
 			)
 		},

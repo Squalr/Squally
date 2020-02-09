@@ -113,6 +113,7 @@ void RestoreHealth::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(RestoreHealth::HackTicks) * RestoreHealth::TimeBetweenTicks) + 0.1f,
+				0.0f,
 				this->clippy
 			)
 		},

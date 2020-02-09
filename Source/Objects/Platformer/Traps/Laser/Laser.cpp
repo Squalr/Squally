@@ -99,7 +99,8 @@ void Laser::registerHackables()
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
 				int(HackFlags::Fire),
-				20.0f
+				20.0f,
+				0.0f
 			)
 		},
 	};

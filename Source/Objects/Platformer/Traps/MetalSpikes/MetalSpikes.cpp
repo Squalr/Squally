@@ -99,7 +99,8 @@ void MetalSpikes::registerHackables()
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterSt0::create() },
 				},
 				int(HackFlags::None),
-				20.0f
+				20.0f,
+				0.0f
 			)
 		},
 	};

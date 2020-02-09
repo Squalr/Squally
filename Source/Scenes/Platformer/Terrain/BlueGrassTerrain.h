@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTerrainType;
 
+protected:
+	BlueGrassTerrain(cocos2d::ValueMap& properties);
+	virtual ~BlueGrassTerrain();
+
 private:
 	typedef TerrainObject super;
-
-	BlueGrassTerrain(cocos2d::ValueMap& properties);
-	~BlueGrassTerrain();
 };

@@ -169,13 +169,14 @@ public:
 		std::map<Register, LocalizedString*> registerHints;
 		int hackFlags;
 		float duration;
+		float cooldown;
 		Clippy* clippy;
 		std::vector<ReadOnlyScript> readOnlyScripts;
 		bool excludeDefaultScript;
 
-		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
-				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
+		HackableCodeInfo() : hackableObjectIdentifier(""), functionName(nullptr), iconResource(""), hackablePreview(nullptr), registerHints({ }), duration(1.0f), cooldown(1.0f), hackFlags(0), clippy(nullptr), readOnlyScripts({ }), excludeDefaultScript(false) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, std::string iconResource, HackablePreview* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, Clippy* clippy = nullptr, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
+				hackableObjectIdentifier(hackableIdentifier), functionName(functionName), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), clippy(clippy), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	
 	};
 
