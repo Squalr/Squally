@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1060">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1062">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -300,6 +300,20 @@
   <object id="1030" name="torch" type="object" x="1782.03" y="4492.58" width="42" height="130"/>
   <object id="1031" name="torch" type="object" x="5106.39" y="2149.09" width="42" height="130"/>
   <object id="1032" name="torch" type="object" x="5930.39" y="2151.21" width="42" height="130"/>
+  <object id="1060" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="EndianForest/Zone_2_5"/>
+    <property name="transition" value="exit-C"/>
+   </properties>
+  </object>
+  <object id="1061" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow-skull"/>
+    <property name="map" value="EndianForest/Zone_2_7"/>
+    <property name="transition" value="exit-D"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -312,23 +326,9 @@
    </properties>
   </object>
   <object id="934" name="life-stone" type="object" x="1668.09" y="6063.77" width="146" height="423"/>
-  <object id="945" name="temple-door" type="object" x="488" y="5952" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_5"/>
-    <property name="transition" value="exit-C"/>
-   </properties>
-  </object>
   <object id="948" name="spawn" type="object" x="5470.06" y="2378.44" width="128" height="128">
    <properties>
     <property name="transition" value="entrance-D"/>
-   </properties>
-  </object>
-  <object id="949" name="temple-door" type="object" x="5317.7" y="1977.44" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="EndianForest/Zone_2_7"/>
-    <property name="transition" value="exit-D"/>
    </properties>
   </object>
   <object id="999" name="wind" type="object" x="166.547" y="4483.69" width="380" height="480">

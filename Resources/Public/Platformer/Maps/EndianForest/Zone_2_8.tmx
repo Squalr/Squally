@@ -367,7 +367,7 @@
    <property name="depth" type="float" value="-3072"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="974" name="Forest/Background/Forest4" type="decor" x="-7296" y="1624" width="13464" height="816">
+  <object id="974" name="Forest/Background/Forest4" type="decor" x="-3769.33" y="1664" width="16401.3" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -378,7 +378,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="973" name="Forest/Background/Forest3" type="decor" x="-7528" y="1560" width="13880" height="816">
+  <object id="973" name="Forest/Background/Forest3" type="decor" x="-3440" y="1600" width="15596" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -389,7 +389,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="971" name="Forest/Background/Forest1" type="decor" x="-7440" y="1480" width="13952" height="816">
+  <object id="971" name="Forest/Background/Forest1" type="decor" x="-3152" y="1520" width="14840" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -400,7 +400,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="972" name="Forest/Background/Forest2" type="decor" x="-7312" y="1392" width="13960" height="816">
+  <object id="972" name="Forest/Background/Forest2" type="decor" x="-2892" y="1432" width="14004" height="816">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -443,7 +443,7 @@
   <object id="874" name="edge-portal" type="object" x="2362.04" y="893.514" width="199.918" height="552.972">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_2_6"/>
+    <property name="map" value="EndianForest/Zone_2_7"/>
     <property name="transition" value="exit"/>
    </properties>
   </object>
@@ -458,8 +458,9 @@
     <property name="tag" value="elriel-exit"/>
    </properties>
   </object>
-  <object id="1024" name="portal" type="object" x="1238.98" y="1050.81" width="256.687" height="394.577">
+  <object id="1024" name="portal" type="object" x="1260.98" y="1190.81" width="256" height="256">
    <properties>
+    <property name="attached-behavior" value="disabled-port"/>
     <property name="map" value="EndianForest/Town_Liana"/>
     <property name="transition" value="main"/>
    </properties>

@@ -42,9 +42,9 @@ MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string typ
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyDepth, Value(0.0f)).asFloat());
 
-	for (auto it = objects.begin(); it != objects.end(); it++)
+	for (auto object : objects)
 	{
-		this->addChild(*it);
+		this->addChild(object);
 	}
 }
 
@@ -63,7 +63,7 @@ void MapLayer::initializeListeners()
 		if (GameUtils::getFirstParentOfType<MapLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
-			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args->spawner, args->objectToSpawn, args->spawnMethod, args->positionMode));
+			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args));
 		}
 	}));
 }

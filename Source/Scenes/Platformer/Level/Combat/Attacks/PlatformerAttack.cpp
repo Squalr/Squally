@@ -176,7 +176,13 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		owner,
 		projectile,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
 	));
 
 	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;

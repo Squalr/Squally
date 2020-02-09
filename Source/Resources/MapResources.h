@@ -12,6 +12,7 @@ namespace MapResources
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
 	extern const std::string Dev_Combat;
+	extern const std::string Dev_PositionBug;
 	extern const std::string Dev_Quests;
 	extern const std::string Dev_Terrain;
 	extern const std::string EndianForest_Combat_Caves;

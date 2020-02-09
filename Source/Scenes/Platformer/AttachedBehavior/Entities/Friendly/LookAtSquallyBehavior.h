@@ -11,6 +11,7 @@ public:
 	static LookAtSquallyBehavior* create(GameObject* owner);
 
 	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKeyAttachedBehaviorAlias;
 
 protected:
 	LookAtSquallyBehavior(GameObject* owner);

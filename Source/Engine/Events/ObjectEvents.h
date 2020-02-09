@@ -85,21 +85,23 @@ public:
 		cocos2d::Node* objectToSpawn;
 		SpawnMethod spawnMethod;
 		PositionMode positionMode;
+		std::function<void()> onSpawnSuccess;
+		std::function<void()> onSpawnFailed;
+		
+		bool handled;
 
-		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
+		RequestObjectSpawnArgs() : spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above), onSpawnSuccess(nullptr), onSpawnFailed(nullptr), handled(false) { }
+		RequestObjectSpawnArgs(cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode, std::function<void()> onSpawnSuccess, std::function<void()> onSpawnFailed)
+			: spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode), onSpawnSuccess(onSpawnSuccess), onSpawnFailed(onSpawnFailed), handled(false) { }
 	};
 
 	struct RequestObjectSpawnDelegatorArgs
 	{
 		MapLayer* sourceLayer;
-		cocos2d::Node* spawner;
-		cocos2d::Node* objectToSpawn;
-		SpawnMethod spawnMethod;
-		PositionMode positionMode;
+		RequestObjectSpawnArgs* innerArgs;
 
-		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), spawner(nullptr), objectToSpawn(nullptr), spawnMethod(SpawnMethod::Above) { }
-		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, cocos2d::Node* spawner, cocos2d::Node* objectToSpawn, SpawnMethod spawnMethod, PositionMode positionMode) : sourceLayer(sourceLayer), spawner(spawner), objectToSpawn(objectToSpawn), spawnMethod(spawnMethod), positionMode(positionMode) { }
+		RequestObjectSpawnDelegatorArgs() : sourceLayer(nullptr), innerArgs(nullptr) { }
+		RequestObjectSpawnDelegatorArgs(MapLayer* sourceLayer, RequestObjectSpawnArgs* innerArgs) : sourceLayer(sourceLayer), innerArgs(innerArgs) { }
 	};
 
 	struct RelocateObjectArgs

@@ -189,15 +189,21 @@ void Catapult::launchBall()
 
 	this->ballAnimationPart->replaceWithObject(catapultBall, 0.0f, 0.0f);
 	catapultBall->setScale(this->catapultAnimations->getScale());
+	catapultBall->setRotation(0.0f);
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner
+		ObjectEvents::PositionMode::SetToOwner,
+		[&]()
+		{
+		},
+		[&]()
+		{
+			catapultBall = nullptr;
+		}
 	));
-
-	catapultBall->setRotation(0.0f);
 }
 
 NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)

@@ -81,8 +81,30 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
 	fireBreath->setFlippedX(owner->isFlippedX());
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, fireball, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(owner, fireBreath, ObjectEvents::SpawnMethod::Above, ObjectEvents::PositionMode::Discard));
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		owner,
+		fireball,
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		owner,
+		fireBreath,
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
 	
 	fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
 	fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="824">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="826">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -208,6 +208,8 @@
    </properties>
   </object>
   <object id="823" name="life-stone" type="object" x="4175" y="1624.5" width="146" height="423"/>
+  <object id="824" name="solid-npc" type="collision" x="11583.5" y="1903.08" width="121.03" height="777.836"/>
+  <object id="825" name="solid-npc" type="collision" x="12595.5" y="1903.08" width="121.03" height="777.836"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

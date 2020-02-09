@@ -85,6 +85,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 	this->onDebugPositionSet = nullptr;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;
+	this->debugInfoSpawned = false;
 
 	if (this->physicsBody != nullptr)
 	{
@@ -94,24 +95,6 @@ CollisionObject::CollisionObject(const ValueMap& properties, PhysicsBody* initPh
 		this->physicsBody->setContactTestBitmask(0);
 		this->physicsBody->setCollisionBitmask(0);
 		this->setPhysicsBody(this->physicsBody);
-	}
-
-	cocos2d::Size mapSize = cocos2d::Size(
-		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-	);
-
-	this->setPosition(Vec2::ZERO);
-
-	// Note: Explicit checks for key for setting position. Important, because non-deserialized objects may not have this key, and should end up at (0, 0)
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyXPosition))
-	{
-		this->setPositionX(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat() + mapSize.width / 2.0f);
-	}
-
-	if (GameUtils::keyExists(this->properties, GameObject::MapKeyYPosition))
-	{
-		this->setPositionY(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat() + mapSize.height / 2.0f);
 	}
 
 	this->setCollisionType(collisionType);
@@ -235,11 +218,6 @@ void CollisionObject::setContactUpdateCallback(std::function<void(const std::vec
 	this->contactUpdateCallback = contactUpdateCallback;
 }
 
-void CollisionObject::setDebugPositionSetCallback(std::function<void()> onDebugPositionSet)
-{
-	this->onDebugPositionSet = onDebugPositionSet;
-}
-
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
 	if (this->physicsBody != nullptr)
@@ -261,11 +239,6 @@ void CollisionObject::inverseGravity()
 void CollisionObject::setPosition(const Vec2& position)
 {
 	super::setPosition(position);
-
-	if (this->onDebugPositionSet != nullptr)
-	{
-		this->onDebugPositionSet();
-	}
 
 	if (this->physicsBody != nullptr)
 	{
@@ -567,15 +540,30 @@ void CollisionObject::visit(Renderer *renderer, const Mat4& parentTransform, uin
 
 	if (DeveloperModeController::getDebugLevel() > 0 && this->physicsBody != nullptr)
 	{
-		if (this->debugDrawNode == nullptr)
+		if (!this->debugInfoSpawned)
 		{
+			this->debugInfoSpawned = true;
 			this->debugDrawNode = DrawNode::create();
 
-			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(this, this->debugDrawNode, ObjectEvents::SpawnMethod::TopMost, ObjectEvents::PositionMode::Discard));
+			ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+				this,
+				this->debugDrawNode,
+				ObjectEvents::SpawnMethod::TopMost,
+				ObjectEvents::PositionMode::Discard,
+				[&]()
+				{
+				},
+				[&]()
+				{
+					this->debugDrawNode = nullptr;
+				}));
 		}
 
-		this->debugDrawNode->setPositionZ(GameUtils::getDepth(this));
-		PhysicsWorld::debugDrawBody(this->physicsBody, this->debugDrawNode, Vec2::ZERO);
+		if (this->debugDrawNode  != nullptr)
+		{
+			this->debugDrawNode->setPositionZ(GameUtils::getDepth(this));
+			PhysicsWorld::debugDrawBody(this->physicsBody, this->debugDrawNode, Vec2::ZERO);
+		}
 	}
 }
 

@@ -241,20 +241,27 @@ std::string GameMap::getMapFileName()
 
 void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 {
-	if (this->mapLayers.empty() || args->objectToSpawn == nullptr)
+	if (args == nullptr)
 	{
 		return;
 	}
 
-	bool isReentry = (args->objectToSpawn->getParent() != nullptr);
-	bool retainPosition = (args->positionMode != ObjectEvents::PositionMode::Discard);
+	ObjectEvents::RequestObjectSpawnArgs* innerArgs = args->innerArgs;
 
-	if (args->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	if (this->mapLayers.empty() || innerArgs->objectToSpawn == nullptr)
 	{
-		args->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(args->spawner));
+		return;
 	}
 
-	switch (args->spawnMethod)
+	bool isReentry = (innerArgs->objectToSpawn->getParent() != nullptr);
+	bool retainPosition = (innerArgs->positionMode != ObjectEvents::PositionMode::Discard);
+
+	if (innerArgs->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	{
+		innerArgs->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(innerArgs->spawner));
+	}
+
+	switch (innerArgs->spawnMethod)
 	{
 		case ObjectEvents::SpawnMethod::Below:
 		{
@@ -266,11 +273,17 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 				{
 					if (prevIt != this->mapLayers.end())
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						innerArgs->handled = true;
+
+						return;
 					}
 					else
 					{
-						GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition, isReentry);
+						innerArgs->handled = true;
+
+						return;
 					}
 				}
 
@@ -283,18 +296,21 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 		{
 			if (!this->mapLayers.empty())
 			{
-				GameUtils::changeParent(args->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+				innerArgs->handled = true;
 			}
+			
 			break;
 		}
 		default:
 		case ObjectEvents::SpawnMethod::Above:
 		{
-			for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+			for (auto layer : this->mapLayers)
 			{
-				if (*it == args->sourceLayer)
+				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(args->objectToSpawn, (*it), retainPosition, isReentry);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry);
+					innerArgs->handled = true;
 				}
 			}
 			
@@ -320,50 +336,50 @@ void GameMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
 		return;
 	}
 
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if ((*it)->isElevateTarget())
+		if (layer->isElevateTarget())
 		{
-			GameUtils::changeParent(args->relocatedObject, *it, true);
+			GameUtils::changeParent(args->relocatedObject, layer, true);
 		}
 	}
 }
 
 void GameMap::hackerModeEnable()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if (!(*it)->isHackable())
+		if (!layer->isHackable())
 		{
-			(*it)->setVisible(false);
+			layer->setVisible(false);
 		}
 	}
 }
 
 void GameMap::hackerModeDisable()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		(*it)->setVisible(true);
+		layer->setVisible(true);
 	}
 }
 
 void GameMap::hackerModeLayerFade()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		if ((*it)->isHackable())
+		if (layer->isHackable())
 		{
-			(*it)->setOpacity(128);
+			layer->setOpacity(128);
 		}
 	}
 }
 
 void GameMap::hackerModeLayerUnfade()
 {
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto layer : this->mapLayers)
 	{
-		(*it)->setOpacity(255);
+		layer->setOpacity(255);
 	}
 }
 
@@ -403,9 +419,9 @@ void GameMap::appendLayer(MapLayer* mapLayer)
 
 void GameMap::setCollisionLayersVisible(bool isVisible)
 {
-	for (auto it = this->collisionLayers.begin(); it != this->collisionLayers.end(); it++)
+	for (auto layer : this->collisionLayers)
 	{
-		(*it)->setVisible(isVisible);
+		layer->setVisible(isVisible);
 	}
 }
 
@@ -421,11 +437,11 @@ void GameMap::isometricZSort()
 		return;
 	}
 
-	for (auto it = this->layersToSort.begin(); it != this->layersToSort.end(); it++)
+	for (auto layer : this->layersToSort)
 	{
-		for (auto childIt = (*it)->getChildren().begin(); childIt != (*it)->getChildren().end(); childIt++)
+		for (auto child : layer->getChildren())
 		{
-			GameObject* object = dynamic_cast<GameObject*>(*childIt);
+			GameObject* object = dynamic_cast<GameObject*>(child);
 
 			// Only z sort the objects in the map marked for z sorting (top left lowest, bottom right highest)
 			if (object != nullptr && object->isZSorted())

@@ -12,6 +12,7 @@
 using namespace cocos2d;
 
 const std::string LookAtSquallyBehavior::MapKeyAttachedBehavior = "face-squally";
+const std::string LookAtSquallyBehavior::MapKeyAttachedBehaviorAlias = "look-at-squally";
 
 LookAtSquallyBehavior* LookAtSquallyBehavior::create(GameObject* owner)
 {

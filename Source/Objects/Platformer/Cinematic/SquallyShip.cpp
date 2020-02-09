@@ -233,12 +233,19 @@ void SquallyShip::onCrash()
 		this->ship,
 		squally,
 		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard
+		ObjectEvents::PositionMode::Discard,
+		[&]()
+		{
+			squally->setPosition(crashCoords);
+			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+			squally->setState(StateKeys::Health, Value(1));
+		},
+		[&]()
+		{
+			squally = nullptr;
+		}
 	));
 
-	squally->setPosition(crashCoords);
-	squally->attachBehavior(SquallyBehaviorGroup::create(squally));
-	squally->setState(StateKeys::Health, Value(1));
 	GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
 	this->shipCollision->setPhysicsEnabled(false);

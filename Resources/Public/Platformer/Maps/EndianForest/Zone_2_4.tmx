@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="1028">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1227">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -8,42 +8,6 @@
    <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="rubber-band" type="int" value="3"/>
    <property name="type" value="meta"/>
-  </properties>
- </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="72" name="bg -8">
@@ -132,7 +96,7 @@
     <property name="color" value="clay"/>
    </properties>
   </object>
-  <object id="1023" name="vase" type="object" x="3103.5" y="4544" width="113" height="160">
+  <object id="1023" name="vase" type="object" x="3080.83" y="4544" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
    </properties>
@@ -335,13 +299,20 @@
    <polygon points="1445.7,90.4947 1441.81,1923.46 76.3183,1926.59 71.4938,92.399"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="1002" name="torch" type="object" x="4556.82" y="4318.76" width="42" height="130"/>
   <object id="1004" name="torch" type="object" x="90.1515" y="768" width="42" height="130"/>
   <object id="1005" name="torch" type="object" x="808.333" y="768" width="42" height="130"/>
+  <object id="1028" name="temple-door" type="object" x="252" y="593.33" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="map" value="EndianForest/Zone_2_5"/>
+    <property name="transition" value="exit-B"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="30" name="objects -1">
   <properties>
@@ -501,13 +472,6 @@
    </properties>
   </object>
   <object id="934" name="life-stone" type="object" x="1172.09" y="4539.77" width="146" height="423"/>
-  <object id="948" name="temple-door" type="object" x="252" y="593.33" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="map" value="EndianForest/Zone_2_5"/>
-    <property name="transition" value="exit-B"/>
-   </properties>
-  </object>
   <object id="969" name="portal" type="object" x="5379.39" y="4690.79" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_2_4_a"/>
@@ -534,13 +498,18 @@
     <property name="transition" value="treasure-room"/>
    </properties>
   </object>
+  <object id="1030" name="solid-npc" type="collision" x="3118.27" y="1065.63" width="121.03" height="777.836"/>
+  <object id="1031" name="solid-npc" type="collision" x="5009.18" y="1117.14" width="121.03" height="777.836"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="928" name="temple" type="terrain" x="3015.55" y="1889.56">
-   <polygon points="2277.38,7.59483 2276.35,92.0392 64.7312,90.9398 -3018.62,91.3916 -3019.01,-773.572 -1459.25,-773.564 -1459.45,-685.556 -1227,-684.764 -1226.71,-592.957 -988.088,-589.242 -987.207,-504.213 -725.743,-502.449 -725.235,-419.864 -493.629,-419.816 -493.996,-344.352 -287.369,-342.638 -285.469,-277.191 -78.8905,-276.755 -78.9419,-219.205 2001.58,-209.405 2000.33,-95.8615 2119.11,-96.4572 2119.11,7.56749"/>
+   <polygon points="48.35,84.0392 -3018.62,91.3916 -3019.01,-773.572 -1459.25,-773.564 -1459.45,-685.556 -1227,-684.764 -1226.71,-592.957 -988.088,-589.242 -987.207,-504.213 -725.743,-502.449 -725.235,-419.864 -493.629,-419.816 -493.996,-344.352 -287.369,-342.638 -285.469,-277.191 -78.8905,-276.755 -79.1195,-165.576 52.7405,-165.568"/>
+  </object>
+  <object id="1029" name="temple" type="terrain" x="3015.55" y="1889.56">
+   <polygon points="2277.38,7.59483 2276.35,92.0392 226.713,92.3613 230.391,-218.235 2001.58,-209.405 2000.33,-95.8615 2119.11,-96.4572 2119.11,7.56749"/>
   </object>
  </objectgroup>
  <objectgroup id="42" name="objects +1">
@@ -568,12 +537,12 @@
     <property name="color" value="brown"/>
    </properties>
   </object>
-  <object id="1016" name="vase" type="object" x="4314.77" y="2864" width="113" height="160">
+  <object id="1016" name="vase" type="object" x="5084.47" y="3424.61" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
    </properties>
   </object>
-  <object id="1017" name="vase" type="object" x="4666.23" y="2870.06" width="113" height="160">
+  <object id="1017" name="vase" type="object" x="4587.44" y="4064" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
    </properties>
@@ -603,35 +572,6 @@
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="69" name="water">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="68" name="decor_foreground +1">
-  <properties>
-   <property name="depth" type="float" value="128"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground +2">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>

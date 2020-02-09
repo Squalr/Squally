@@ -84,7 +84,6 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
 	this->attachedBehavior = std::vector<AttachedBehavior*>();
-	this->setPosition(Vec2::ZERO);
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 

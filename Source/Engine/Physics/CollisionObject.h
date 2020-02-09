@@ -71,7 +71,6 @@ public:
 	bool isCollidingWith(CollisionObject* collisionObject);
 	virtual void setPhysicsEnabled(bool enabled);
 	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
-	void setDebugPositionSetCallback(std::function<void()> onDebugPositionSet);
 	static void ClearInverseMap();
 	static cocos2d::PhysicsBody* createCapsulePolygon(cocos2d::Size size, float scale = 1.0f, float capsuleRadius = 8.0f, float friction = 0.5f);
 
@@ -124,6 +123,7 @@ private:
 	static std::map<int, int> InverseCollisionMap;
 	bool gravityEnabled;
 	bool gravityInversed;
+	bool debugInfoSpawned;
 	std::function<void()> onDebugPositionSet;
 	cocos2d::DrawNode* debugDrawNode;
 };

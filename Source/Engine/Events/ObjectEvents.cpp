@@ -47,6 +47,15 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 		ObjectEvents::EventSpawnObject,
 		&args
 	);
+
+	if (args.handled && args.onSpawnSuccess != nullptr)
+	{
+		args.onSpawnSuccess();
+	}
+	else if (args.onSpawnFailed != nullptr)
+	{
+		args.onSpawnFailed();
+	}
 }
 
 void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)

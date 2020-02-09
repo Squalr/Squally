@@ -81,7 +81,13 @@ void ScrappyCombatManagerBehavior::spawnScrappy()
 				this->entity,
 				deserializeArgs.gameObject,
 				ObjectEvents::SpawnMethod::Above,
-				ObjectEvents::PositionMode::Discard
+				ObjectEvents::PositionMode::Discard,
+				[&]()
+				{
+				},
+				[&]()
+				{
+				}
 			));
 
 			deserializeArgs.gameObject->setPosition(this->entity->getPosition());
