@@ -108,6 +108,11 @@ void RewardsMenu::initializeListeners()
 	{
 		CombatEvents::TriggerReturnToMap();
 	});
+
+	this->whenKeyPressed({ cocos2d::EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs)
+	{
+		CombatEvents::TriggerReturnToMap();
+	});
 }
 
 void RewardsMenu::show()

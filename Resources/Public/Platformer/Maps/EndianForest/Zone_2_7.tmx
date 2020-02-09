@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="955">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="967">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value=""/>
+   <property name="background" value="SkyYellow"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -10,43 +10,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
-  <properties>
-   <property name="depth" type="float" value="-2560"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="18" name="background">
+ <objectgroup id="18" name="bg -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -55,27 +19,15 @@
    <polygon points="215.558,68.3375 6098.84,64.5907 6104.15,3593.28 216.675,3595.94"/>
   </object>
  </objectgroup>
- <objectgroup id="19" name="terrain bg">
+ <objectgroup id="72" name="decor -2">
   <properties>
+   <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="961" name="Ruins/Window" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
+  <object id="962" name="Ruins/Window" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
  </objectgroup>
- <objectgroup id="70" name="objects bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="55" name="terrain -3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain -2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="58" name="terrain -1">
+ <objectgroup id="58" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -100,28 +52,67 @@
    <polygon points="5411.42,38.2482 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3013.84,-466.266 3013.57,-338.775 3143.87,-339.715 3142.44,-208.567 3269.61,-207.94 3269,-83.8781 3399.01,-82.1483 3397.46,46.3778"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects -1">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="spawn" type="object" x="340.364" y="2037" width="128" height="128">
+  <object id="798" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
     <property name="transition" value="entrance-E"/>
    </properties>
   </object>
-  <object id="942" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
+  <object id="944" name="temple-door" type="object" x="3990.07" y="1642.06" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow"/>
+    <property name="listen-event" value="grogg-dead"/>
+    <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="947" name="spawn" type="object" x="4151.16" y="2039.03" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="952" name="temple-door" type="object" x="332" y="1644" width="432" height="528">
+   <properties>
+    <property name="color" value="yellow-skull"/>
+    <property name="map" value="EndianForest/Zone_2_6"/>
+    <property name="transition" value="entrance-D"/>
+   </properties>
+  </object>
+  <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
+  <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="decor">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="955" name="torch" type="object" x="876.091" y="1758.03" width="42" height="130"/>
+  <object id="956" name="torch" type="object" x="175.97" y="1753.18" width="42" height="130"/>
+  <object id="958" name="torch" type="object" x="4531.61" y="1798.39" width="42" height="130"/>
+  <object id="959" name="torch" type="object" x="3831.48" y="1795.54" width="42" height="130"/>
+  <object id="963" name="torch" type="object" x="2429.06" y="1180.42" width="42" height="130"/>
+  <object id="964" name="torch" type="object" x="1388.93" y="1185.57" width="42" height="130"/>
+  <object id="965" name="torch" type="object" x="3539" y="1187" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="953" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
+   <properties>
+    <property name="send-event" value="talk-to-grogg"/>
+   </properties>
+  </object>
+  <object id="966" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -134,93 +125,16 @@
     <property name="send-event" value="grogg-dead"/>
    </properties>
   </object>
-  <object id="944" name="temple-door" type="object" x="3935.52" y="1645.09" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="listen-event" value="grogg-dead"/>
-    <property name="map" value="EndianForest/Zone_2_8"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="947" name="spawn" type="object" x="4096.61" y="2042.06" width="128" height="128">
-   <properties>
-    <property name="transition" value="exit"/>
-   </properties>
-  </object>
-  <object id="952" name="temple-door" type="object" x="164" y="1640" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow-skull"/>
-    <property name="map" value="EndianForest/Zone_2_6"/>
-    <property name="transition" value="entrance-D"/>
-   </properties>
-  </object>
-  <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
- </objectgroup>
- <objectgroup id="60" name="terrain +1">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="42" name="objects +1">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="24" name="entities">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="953" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
-   <properties>
-    <property name="send-event" value="talk-to-grogg"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="569.292" y="2034.5" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally,no-position-save"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="69" name="water">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="68" name="decor_foreground +1">
-  <properties>
-   <property name="depth" type="float" value="128"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground +2">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
 </map>

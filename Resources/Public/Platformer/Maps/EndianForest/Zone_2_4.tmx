@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="1016">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="1028">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="Waterfall"/>
+   <property name="background" value="SkyYellow"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value="limestone-temple"/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -51,9 +51,6 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="959" name="temple-dark" type="texture" x="4520" y="3544">
-   <polygon points="75.9738,57.7337 2149.54,54.5682 2157.44,2223.88 66.5318,2241.92"/>
-  </object>
   <object id="970" name="temple-dark" type="texture" x="-983.092" y="-1019.98">
    <polygon points="211.73,188.91 5990.52,178.552 6012.53,7276.73 205.624,7285.9"/>
   </object>
@@ -76,9 +73,19 @@
   <object id="1001" name="torch" type="object" x="5844" y="4500" width="42" height="130"/>
   <object id="1003" name="torch" type="object" x="5163" y="4500" width="42" height="130"/>
   <object id="1006" name="Ruins/Window" type="decor" x="3067.5" y="2225.5" width="313" height="381"/>
-  <object id="1007" name="torch" type="object" x="2725.25" y="2362.96" width="42" height="130"/>
-  <object id="1008" name="torch" type="object" x="3760.75" y="2379.04" width="42" height="130"/>
+  <object id="1007" name="torch" type="object" x="2763.25" y="2388" width="42" height="130"/>
+  <object id="1008" name="torch" type="object" x="3586.75" y="2388" width="42" height="130"/>
   <object id="1011" name="Ruins/Window" type="decor" x="5095.5" y="649.5" width="313" height="381"/>
+  <object id="1027" name="torch" type="object" x="3235" y="1063" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="84" name="bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1026" name="temple-dark" type="texture" x="4520" y="3544">
+   <polygon points="75.9738,57.7337 2149.54,54.5682 2157.44,2223.88 66.5318,2241.92"/>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -6">
   <properties>
@@ -93,18 +100,6 @@
   </object>
   <object id="971" name="temple" type="terrain" x="-811.223" y="4689.69">
    <polygon points="5619.29,3.37039 5615.58,571.409 133.038,601.426 130.495,311.191 957.68,317.967 957.946,262.029 1014.68,261.892 1014.75,205.617 1076.84,204.701 1076.53,149.221 1131.38,148.374 1131.22,92.5964 1188.56,92.6439 1191.22,32.6956"/>
-  </object>
- </objectgroup>
- <objectgroup id="80" name="entities -6">
-  <properties>
-   <property name="depth" type="float" value="-384"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="972" name="goblin-grunt-boar" type="entity" x="1122.79" y="4595.52" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
-    <property name="scale" type="float" value="0.75"/>
-   </properties>
   </object>
  </objectgroup>
  <objectgroup id="81" name="objects -6">
@@ -125,6 +120,43 @@
     <property name="color" value="yellow-scarab"/>
     <property name="map" value=""/>
     <property name="transition" value=""/>
+   </properties>
+  </object>
+  <object id="1020" name="vase" type="object" x="5887.5" y="4692" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="1021" name="vase" type="object" x="5771.5" y="4692" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="1023" name="vase" type="object" x="3103.5" y="4544" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="1024" name="vase" type="object" x="3196.83" y="4545.33" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="1025" name="vase" type="object" x="845.5" y="4560" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="972" name="goblin-grunt-boar" type="entity" x="1122.79" y="4595.52" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -239,6 +271,8 @@
   <object id="1013" name="torch" type="object" x="2593.18" y="1137.67" width="42" height="130"/>
   <object id="1014" name="torch" type="object" x="2000.21" y="882.636" width="42" height="130"/>
   <object id="1015" name="torch" type="object" x="4099" y="1239" width="42" height="130"/>
+  <object id="1018" name="torch" type="object" x="4197.18" y="2438.03" width="42" height="130"/>
+  <object id="1019" name="torch" type="object" x="4921.42" y="2441.06" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="71" name="objects bg">
   <properties>
@@ -305,7 +339,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1002" name="torch" type="object" x="4275" y="4243" width="42" height="130"/>
+  <object id="1002" name="torch" type="object" x="4556.82" y="4318.76" width="42" height="130"/>
   <object id="1004" name="torch" type="object" x="90.1515" y="768" width="42" height="130"/>
   <object id="1005" name="torch" type="object" x="808.333" y="768" width="42" height="130"/>
  </objectgroup>
@@ -524,14 +558,29 @@
   <object id="943" name="iou" type="object" x="2903.05" y="4857.71" width="87" height="87"/>
   <object id="945" name="iou" type="object" x="4480.5" y="2928.5" width="87" height="87"/>
   <object id="947" name="iou" type="object" x="984.5" y="1024.5" width="87" height="87"/>
-  <object id="987" name="vase" type="object" x="3159.5" y="1504" width="113" height="160">
+  <object id="987" name="vase" type="object" x="4288.5" y="1518" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
    </properties>
   </object>
-  <object id="988" name="vase" type="object" x="4427.5" y="1512" width="113" height="160">
+  <object id="988" name="vase" type="object" x="4428.5" y="1518" width="113" height="160">
    <properties>
     <property name="color" value="brown"/>
+   </properties>
+  </object>
+  <object id="1016" name="vase" type="object" x="4314.77" y="2864" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="1017" name="vase" type="object" x="4666.23" y="2870.06" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="1022" name="vase" type="object" x="865.5" y="954" width="113" height="160">
+   <properties>
+    <property name="color" value="yellow"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="891">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="904">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -120,6 +120,26 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="894" name="torch" type="object" x="1163" y="1497.67" width="42" height="130"/>
+  <object id="895" name="torch" type="object" x="1531" y="319" width="42" height="130"/>
+  <object id="896" name="torch" type="object" x="427" y="1499" width="42" height="130"/>
+  <object id="898" name="torch" type="object" x="2555" y="1505" width="42" height="130"/>
+  <object id="899" name="torch" type="object" x="1819" y="1506.33" width="42" height="130"/>
+  <object id="900" name="vase" type="object" x="361.682" y="1747.27" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="901" name="vase" type="object" x="2595.02" y="1750.3" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="902" name="vase" type="object" x="1998.05" y="662.424" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -138,8 +158,6 @@
     <property name="transition" value="exit-C"/>
    </properties>
   </object>
-  <object id="864" name="iou" type="object" x="2052.74" y="727.05" width="87" height="87"/>
-  <object id="865" name="iou" type="object" x="1010.68" y="732.98" width="87" height="87"/>
   <object id="872" name="temple-door" type="object" x="600" y="1388" width="432" height="528">
    <properties>
     <property name="color" value="yellow-down"/>
@@ -174,6 +192,11 @@
     <property name="rule" value="{i}"/>
     <property name="tokens" value=""/>
     <property name="tutorial" value=""/>
+   </properties>
+  </object>
+  <object id="903" name="vase" type="object" x="976.833" y="653.333" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
    </properties>
   </object>
  </objectgroup>

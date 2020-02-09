@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1025">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="56" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1060">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="Crypt1"/>
+   <property name="background" value="SkyYellow"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -10,31 +10,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="8" name="decor -2304">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="9" name="decor -2048">
-  <properties>
-   <property name="depth" type="float" value="-2048"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="7" name="decor -1792">
-  <properties>
-   <property name="depth" type="float" value="-1792"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="14" name="decor -768">
-  <properties>
-   <property name="depth" type="float" value="-1024"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="18" name="background -8" visible="0">
+ <objectgroup id="18" name="background -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -43,16 +19,30 @@
    <polygon points="361.983,174.385 10241.7,164.823 10250.6,9169.39 363.857,9176.17"/>
   </object>
  </objectgroup>
- <objectgroup id="70" name="objects bg -8">
+ <objectgroup id="79" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="19" name="terrain bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="1033" name="Ruins/Window" type="decor" x="3473.2" y="5101.86" width="313" height="381"/>
+  <object id="1034" name="Ruins/Window" type="decor" x="2485.92" y="3821.62" width="313" height="381"/>
+  <object id="1035" name="Ruins/Window" type="decor" x="2495.02" y="1964.05" width="313" height="381"/>
+  <object id="1036" name="Ruins/Window" type="decor" x="646.53" y="2642.83" width="313" height="381"/>
+  <object id="1037" name="torch" type="object" x="412.333" y="2989.55" width="42" height="130"/>
+  <object id="1038" name="torch" type="object" x="1142.64" y="2992.58" width="42" height="130"/>
+  <object id="1039" name="torch" type="object" x="2263.85" y="2350.15" width="42" height="130"/>
+  <object id="1040" name="torch" type="object" x="2972.94" y="2359.24" width="42" height="130"/>
+  <object id="1041" name="torch" type="object" x="2269.91" y="4248.64" width="42" height="130"/>
+  <object id="1042" name="torch" type="object" x="2979" y="4257.73" width="42" height="130"/>
+  <object id="1043" name="torch" type="object" x="3272.94" y="5500.15" width="42" height="130"/>
+  <object id="1044" name="torch" type="object" x="3982.03" y="5509.24" width="42" height="130"/>
+  <object id="1045" name="torch" type="object" x="4803.24" y="5515.3" width="42" height="130"/>
+  <object id="1046" name="torch" type="object" x="5512.33" y="5524.39" width="42" height="130"/>
+  <object id="1047" name="torch" type="object" x="6324.45" y="4791.06" width="42" height="130"/>
+  <object id="1048" name="torch" type="object" x="7033.55" y="4800.15" width="42" height="130"/>
+  <object id="1049" name="torch" type="object" x="4657.79" y="3681.97" width="42" height="130"/>
+  <object id="1050" name="torch" type="object" x="5536.58" y="4433.48" width="42" height="130"/>
+  <object id="1051" name="torch" type="object" x="5094.15" y="4065.3" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="77" name="terrain -6">
   <properties>
@@ -267,7 +257,7 @@
    <polygon points="290.883,29.0805 293.24,604.743 8.57185,604.702 8.52019,29.2943"/>
   </object>
  </objectgroup>
- <objectgroup id="20" name="terrain b1">
+ <objectgroup id="20" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -275,7 +265,7 @@
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
-   <polygon points="2573.67,110.218 2570.97,2117.25 75.1531,2113.08 74.7,102.562"/>
+   <polygon points="2573.67,-180.691 2570.97,2117.25 75.1531,2113.08 74.7,102.562 2103.31,98.923 2103.32,-36.5393 2228.23,-36.8136 2228.51,-181.749"/>
   </object>
   <object id="1018" name="temple" type="terrain" x="4309.09" y="621.212">
    <properties>
@@ -292,7 +282,7 @@
    <polygon points="4387.68,15.1782 4380.92,728.596 188.394,751.116 187.258,36.4566"/>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain f1">
+ <objectgroup id="58" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -300,16 +290,16 @@
    <polygon points="4489.29,539.47 4501.4,7732.89 73.1197,7724.36 72.0369,6303 1475.16,6304.41 1474.76,6174.55 1604.04,6175 1604.31,6047.33 1732.58,6047.33 1731.31,5920 1860.98,5919.59 1859.44,5791.75 2112.7,5791.39 2112.59,5662.01 3780.24,5654.01 3775.99,5023.82 1983.59,5030.01 1983.05,3868.37 65.9652,3865.82 56.679,3046.2 2388.09,3048.99 2388.15,537.208"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="78" name="decor">
   <properties>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="30" name="objects -1">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="1005" name="Generic/Vent" type="decor" x="198.045" y="4766.62" width="305" height="307"/>
+  <object id="1026" name="torch" type="object" x="275" y="6073" width="42" height="130"/>
+  <object id="1027" name="torch" type="object" x="1099" y="6079" width="42" height="130"/>
+  <object id="1029" name="torch" type="object" x="1094.03" y="4705.76" width="42" height="130"/>
+  <object id="1030" name="torch" type="object" x="1782.03" y="4492.58" width="42" height="130"/>
+  <object id="1031" name="torch" type="object" x="5106.39" y="2149.09" width="42" height="130"/>
+  <object id="1032" name="torch" type="object" x="5930.39" y="2151.21" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -369,10 +359,8 @@
     <property name="tutorial" value=""/>
    </properties>
   </object>
-  <object id="1019" name="iou" type="object" x="3853.47" y="6371.65" width="87" height="87"/>
   <object id="1020" name="iou" type="object" x="4880.74" y="4268.62" width="87" height="87"/>
   <object id="1021" name="iou" type="object" x="2683.77" y="4592.86" width="87" height="87"/>
-  <object id="1022" name="iou" type="object" x="6056.5" y="2411.05" width="87" height="87"/>
   <object id="1023" name="trigger" type="object" x="2307" y="5217.47" width="128" height="1257.06">
    <properties>
     <property name="save-state" type="bool" value="true"/>
@@ -385,17 +373,47 @@
     <property name="resource" value="Platformer/Entities/Orc/LaughingCough"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="60" name="terrain +1">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="42" name="objects +1">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="1025" name="Generic/Vent" type="decor" x="198.045" y="4766.62" width="305" height="307"/>
+  <object id="1052" name="vase" type="object" x="3739.5" y="6296" width="113" height="160">
+   <properties>
+    <property name="color" value="brown"/>
+   </properties>
+  </object>
+  <object id="1053" name="vase" type="object" x="239.5" y="6324" width="113" height="160">
+   <properties>
+    <property name="color" value="yellow"/>
+   </properties>
+  </object>
+  <object id="1054" name="vase" type="object" x="6507.5" y="4952" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="1055" name="vase" type="object" x="6715.5" y="4952" width="113" height="160">
+   <properties>
+    <property name="color" value="gray"/>
+   </properties>
+  </object>
+  <object id="1056" name="vase" type="object" x="4167.5" y="3680" width="113" height="160">
+   <properties>
+    <property name="color" value="green"/>
+   </properties>
+  </object>
+  <object id="1057" name="vase" type="object" x="1051.5" y="4980" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="1058" name="vase" type="object" x="1235.5" y="4980" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+   </properties>
+  </object>
+  <object id="1059" name="vase" type="object" x="6003.5" y="2348" width="113" height="160">
+   <properties>
+    <property name="color" value="brown"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -435,39 +453,5 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="69" name="water">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="68" name="decor_foreground +1">
-  <properties>
-   <property name="depth" type="float" value="128"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground +2">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor 256">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 512">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
 </map>

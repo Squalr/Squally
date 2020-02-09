@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="975">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="982">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="Waterfall"/>
+   <property name="background" value="SkyYellow"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value="limestone-temple"/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
@@ -15,8 +15,8 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="959" name="temple-dark" type="texture" x="-826.875" y="-347.675">
-   <polygon points="115.797,70.0862 3276.28,66.2435 3288.31,2699.7 101.406,2721.6"/>
+  <object id="959" name="temple-dark" type="texture" x="-604.002" y="-347.675">
+   <polygon points="107.949,70.0862 3054.22,66.2435 3065.44,2699.7 94.533,2721.6"/>
   </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -6">
@@ -28,7 +28,7 @@
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="1703.95,12.1333 1702.16,231.836 64.1944,232.616 49.4566,11.2904"/>
+   <polygon points="1703.95,12.1333 1702.16,231.836 50.1944,230.616 49.4566,11.2904"/>
   </object>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
@@ -41,6 +41,15 @@
     <property name="color" value="yellow-scarab"/>
     <property name="map" value=""/>
     <property name="transition" value=""/>
+   </properties>
+  </object>
+  <object id="975" name="torch" type="object" x="275" y="1151" width="42" height="130"/>
+  <object id="976" name="torch" type="object" x="771" y="1151" width="42" height="130"/>
+  <object id="977" name="torch" type="object" x="1847" y="1143" width="42" height="130"/>
+  <object id="978" name="Ruins/Window" type="decor" x="389.5" y="845.5" width="313" height="381"/>
+  <object id="981" name="vase" type="object" x="1009.5" y="1408" width="113" height="160">
+   <properties>
+    <property name="color" value="blue"/>
    </properties>
   </object>
  </objectgroup>
@@ -124,7 +133,7 @@
   </properties>
   <object id="798" name="spawn" type="object" x="1346.36" y="1538.33" width="128" height="128">
    <properties>
-    <property name="transition" value="entrance-A"/>
+    <property name="transition" value="treasure-room"/>
    </properties>
   </object>
   <object id="969" name="portal" type="object" x="1279.39" y="1408.12" width="256" height="256">
@@ -151,6 +160,11 @@
   <object id="974" name="vase" type="object" x="549.561" y="1507.88" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+   </properties>
+  </object>
+  <object id="979" name="vase" type="object" x="1801.5" y="1510" width="113" height="160">
+   <properties>
+    <property name="color" value="green"/>
    </properties>
   </object>
  </objectgroup>
