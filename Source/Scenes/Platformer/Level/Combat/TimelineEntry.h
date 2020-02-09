@@ -61,6 +61,7 @@ private:
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;
+	cocos2d::Sprite* skull;
 	cocos2d::Node* orphanedAttackCache;
 
 	int spawnIndex;

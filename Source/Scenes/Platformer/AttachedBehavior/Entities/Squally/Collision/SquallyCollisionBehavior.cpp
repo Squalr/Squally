@@ -94,7 +94,7 @@ void SquallyCollisionBehavior::onLoad()
 				this->squally->setState(StateKeys::IsAlive, Value(false));
 			}
 
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
 	});
 

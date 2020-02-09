@@ -292,14 +292,14 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="876" name="marble" type="terrain" x="-281.867" y="427.568">
-   <polygon points="0,0 4770.06,-2.8322 4770.06,237.904 11.5499,240.737"/>
+   <polygon points="8,0 4770.06,-2.8322 4770.06,237.904 11.5499,240.737"/>
   </object>
   <object id="928" name="marble" type="terrain" x="-91.7185" y="1627.01">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" value="0"/>
    </properties>
-   <polygon points="0,0 4336.22,-1.15427 4341.3,541.825 -46.8302,541.674"/>
+   <polygon points="0,0 4336.22,-1.15427 4341.3,541.825 5.1698,533.674"/>
   </object>
  </objectgroup>
  <objectgroup id="122" name="==========="/>

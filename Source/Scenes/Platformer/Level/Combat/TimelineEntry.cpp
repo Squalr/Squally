@@ -43,7 +43,8 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->entity = entity;
 	this->line = Sprite::create(UIResources::Combat_Line);
 	this->circle = this->isPlayerEntry() ? Sprite::create(UIResources::Combat_PlayerCircle) : Sprite::create(UIResources::Combat_EnemyCircle);
-	this->emblem = Sprite::create(entity->getEmblemResource());
+	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
+	this->skull = Sprite::create(UIResources::Combat_Skull);
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
 	this->spawnIndex = spawnIndex;
@@ -55,6 +56,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->addChild(this->line);
 	this->addChild(this->circle);
 	this->addChild(this->emblem);
+	this->addChild(this->skull);
 	this->addChild(this->orphanedAttackCache);
 }
 
@@ -70,6 +72,7 @@ void TimelineEntry::onEnter()
 	this->target = nullptr;
 	this->isCasting = false;
 	this->orphanedAttackCache->removeAllChildren();
+	this->skull->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -126,6 +129,22 @@ void TimelineEntry::initializeListeners()
 void TimelineEntry::update(float dt)
 {
 	super::update(dt);
+
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	{
+		this->emblem->setVisible(true);
+		this->skull->setVisible(false);
+	}
+	else
+	{
+		this->emblem->setVisible(false);
+		this->skull->setVisible(true);
+	}
 }
 
 PlatformerEntity* TimelineEntry::getEntity()

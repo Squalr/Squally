@@ -43,11 +43,17 @@ SquallyMouthBehavior::~SquallyMouthBehavior()
 
 void SquallyMouthBehavior::onLoad()
 {
+	this->scheduleUpdate();
 }
 
 void SquallyMouthBehavior::update(float dt)
 {
 	super::update(dt);
+
+	if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+	{
+		return;
+	}
 
 	PlatformerEntity::ControlState controlState = this->squally->getControlState();
 	

@@ -199,7 +199,7 @@
     <property name="zoom" type="float" value="2.4"/>
    </properties>
   </object>
-  <object id="756" name="wooden-gate" type="object" x="6485.58" y="584" width="160" height="400">
+  <object id="756" name="wooden-gate" type="object" x="6453.58" y="584" width="160" height="400">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="listen-event" value="door-open"/>

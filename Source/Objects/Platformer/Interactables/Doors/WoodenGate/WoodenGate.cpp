@@ -78,7 +78,7 @@ void WoodenGate::initializePositions()
 {
 	super::initializePositions();
 
-	const Vec2 Shift = Vec2(128.0f, 0.0f);
+	const Vec2 Shift = Vec2(0.0f, 0.0f);
 	const float FlipMultiplier = this->isFlipped ? -1.0f : 1.0f;
 
 	this->door->setPosition(Vec2(0.0f, -32.0f));

@@ -4861,6 +4861,8 @@ namespace EntityResources
 	extern const std::string Squally_CEREBELLUM;
 	extern const std::string Squally_EYE_L;
 	extern const std::string Squally_Emblem;
+	extern const std::string Squally_Eye_Dead_L;
+	extern const std::string Squally_Eye_Dead_R;
 	extern const std::string Squally_Eye_R;
 	extern const std::string Squally_HAND_L_1;
 	extern const std::string Squally_HAND_L_2;
@@ -4879,6 +4881,7 @@ namespace EntityResources
 	extern const std::string Squally_Jump_Jump_09;
 	extern const std::string Squally_Jump_Jump_10;
 	extern const std::string Squally_Jump_Jump_11;
+	extern const std::string Squally_MOUTH_DEAD;
 	extern const std::string Squally_MOUTH_SWIMMING;
 	extern const std::string Squally_MOUTH;
 	extern const std::string Squally_STEM;
