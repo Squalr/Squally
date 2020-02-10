@@ -213,6 +213,18 @@ void GameObject::onEnter()
 	this->loadObjectState();
 }
 
+void GameObject::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	// Depressing band-aid fix to a rare bug where certain game objects have incorrectly cached parent matricies in CCNode.cpp.
+	// Being unable to diagnose the reasons, we can just mark objects as dirty and have these re-calculate at load time.
+	this->defer([=]()
+	{
+		this->makeDirty();
+	});
+}
+
 void GameObject::initializeListeners()
 {
 	super::initializeListeners();

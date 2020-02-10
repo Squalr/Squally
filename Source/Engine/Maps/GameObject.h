@@ -155,6 +155,7 @@ protected:
 	virtual ~GameObject();
 	
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializeListeners() override;
 	bool isMapObject();
 	void loadObjectState();
