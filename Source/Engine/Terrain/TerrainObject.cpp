@@ -37,12 +37,11 @@ const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
 const float TerrainObject::BottomThreshold = 7.0f * float(M_PI) / 6.0f;
+unsigned int TerrainObject::NextTerrainId = 0;
 
 TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : super(properties)
 {
-	static unsigned long long int nextTerrainObjectId = 0;
-	
-	this->terrainObjectId = nextTerrainObjectId++;
+	this->terrainObjectId = TerrainObject::NextTerrainId++;
 	this->terrainData = terrainData;
 	this->points = std::vector<Vec2>();
 	this->intersectionPoints = std::vector<Vec2>();
@@ -123,6 +122,12 @@ void TerrainObject::onEnterTransitionDidFinish()
 	{
 		this->buildCollision();
 	});
+}
+
+void TerrainObject::makeDirty()
+{
+	// Do nothing. Another super fucking horrible hack. I literally don't understand how this works.
+	// See: https://github.com/Squalr/Squally/issues/134
 }
 
 void TerrainObject::onDeveloperModeEnable(int debugLevel)
@@ -293,10 +298,6 @@ void TerrainObject::buildCollision()
 	{
 		return;
 	}
-
-	// Clear x/y position -- this is already handled by this TerrainObject, and would otherwise result in incorrectly placed collision
-	this->properties[GameObject::MapKeyXPosition] = 0.0f;
-	this->properties[GameObject::MapKeyYPosition] = 0.0f;
 
 	std::string deserializedCollisionName = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString();
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;

@@ -61,11 +61,21 @@ void EntityWeaponCollisionBehavior::onLoad()
 
 void EntityWeaponCollisionBehavior::enable()
 {
+	if (this->weaponCollision == nullptr)
+	{
+		return;
+	}
+
 	this->weaponCollision->setPhysicsEnabled(true);
 }
 
 void EntityWeaponCollisionBehavior::disable()
 {
+	if (this->weaponCollision == nullptr)
+	{
+		return;
+	}
+	
 	this->weaponCollision->setPhysicsEnabled(false);
 }
 

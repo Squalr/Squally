@@ -129,9 +129,12 @@ public:
 		}
 	};
 
+    void makeDirty() override;
+
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTopOnly;
+	static unsigned int NextTerrainId;
 
 protected:
 	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
@@ -176,7 +179,7 @@ private:
 	bool isTopOnlyCollision;
 	bool isInactive;
 	bool isFlipped;
-	unsigned long long terrainObjectId;
+	unsigned int terrainObjectId;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

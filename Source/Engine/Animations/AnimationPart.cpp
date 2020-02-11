@@ -221,6 +221,7 @@ void AnimationPart::updateTrackedAttributes()
 	{
 		return;
 	}
+
 	SmartAnimationNode* parent = dynamic_cast<SmartAnimationNode*>(this->getParent());
 	this->ghostSprite->setPosition(Vec2(this->ghostSprite->getContentSize().width / 2.0f, this->ghostSprite->getContentSize().height / 2.0f));
 
