@@ -1,7 +1,8 @@
 #include "FrostPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
+
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -19,10 +20,10 @@ FrostPortal* FrostPortal::create(ValueMap& properties)
 	return instance;
 }
 
-FrostPortal::FrostPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::RED)
+FrostPortal::FrostPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLUE)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalFrost);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
@@ -51,8 +52,8 @@ void FrostPortal::closePortal(bool instant)
 {
 	super::closePortal(instant);
 
-	this->edgeParticles->stopSystem();
-	this->portalParticles->stopSystem();
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
 }
 
 void FrostPortal::openPortal(bool instant)

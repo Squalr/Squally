@@ -1,10 +1,10 @@
 #include "HackableObject.h"
 
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
@@ -13,7 +13,7 @@
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
-#include "Engine/Events/HackableEvents.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -225,7 +225,6 @@ void HackableObject::onSensingEnable(int hackFlags)
 
 	if (!this->hackableList.empty())
 	{
-		this->getSensingParticles()->setVisible(true);
 		this->getSensingParticles()->start();
 	}
 }
@@ -234,7 +233,7 @@ void HackableObject::onSensingDisable()
 {
 	if (this->sensingParticles != nullptr)
 	{
-		this->getSensingParticles()->stopSystem();
+		this->getSensingParticles()->stop();
 	}
 }
 
@@ -382,13 +381,11 @@ void HackableObject::registerClippy(Clippy* clippy)
 	}
 }
 
-ParticleSystem* HackableObject::getSensingParticles()
+SmartParticles* HackableObject::getSensingParticles()
 {
 	if (this->sensingParticles == nullptr)
 	{
-		this->sensingParticles = ParticleSystemQuad::create(ParticleResources::HackableGlow);
-		this->sensingParticles->stopSystem();
-		this->sensingParticles->setVisible(false);
+		this->sensingParticles = SmartParticles::create(ParticleResources::HackableGlow, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
 
 		this->sensingParticlesNode->addChild(this->sensingParticles);
 	}

@@ -2,12 +2,8 @@
 
 #include "Engine/Hackables/HackablePreview.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
-
 class LocalizedLabel;
+class SmartParticles;
 
 class WindSetSpeedPreview : public HackablePreview
 {
@@ -16,15 +12,17 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	WindSetSpeedPreview();
 	virtual ~WindSetSpeedPreview() = default;
+	
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::ParticleSystem* windParticles;
+private:
+	typedef HackablePreview super;
+
+	SmartParticles* windParticles;
 	LocalizedLabel* eaxPositive;
 	LocalizedLabel* eaxNegative;
 	LocalizedLabel* ebxPositive;

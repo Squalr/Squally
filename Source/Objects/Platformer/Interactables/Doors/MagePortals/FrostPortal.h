@@ -6,8 +6,9 @@
 namespace cocos2d
 {
 	class DrawNode;
-	class ParticleSystem;
 }
+
+class SmartParticles;
 
 class FrostPortal : public MagePortal
 {
@@ -29,6 +30,6 @@ protected:
 private:
 	typedef MagePortal super;
 
-	cocos2d::ParticleSystem* portalParticles;
-	cocos2d::ParticleSystem* edgeParticles;
+	SmartParticles* portalParticles;
+	SmartParticles* edgeParticles;
 };

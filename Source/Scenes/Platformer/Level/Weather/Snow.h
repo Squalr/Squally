@@ -1,10 +1,7 @@
 #pragma once
 #include "Engine/Maps/MapLayer.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
+class SmartParticles;
 
 class Snow : public MapLayer
 {
@@ -13,13 +10,15 @@ public:
 
 	static const std::string MapKeyWeatherLayerSnow;
 
-private:
-	typedef MapLayer super;
+protected:
 	Snow(cocos2d::ValueMap& properties, std::string name);
-	~Snow();
+	virtual ~Snow();
 
 	void onEnter() override;
 	void update(float) override;
 
-	cocos2d::ParticleSystem* snow;
+private:
+	typedef MapLayer super;
+
+	SmartParticles* snow;
 };

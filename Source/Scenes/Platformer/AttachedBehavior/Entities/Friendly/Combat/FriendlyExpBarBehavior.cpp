@@ -2,13 +2,13 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -40,7 +40,7 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 	this->deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, deltaString);
 	this->levelUpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_LevelUp::create());
 	this->expProgressBar = ProgressBar::create(Sprite::create(UIResources::HUD_StatFrame), Sprite::create(UIResources::HUD_ExpBarFill));
-	this->levelUpFx = ParticleSystemQuad::create(ParticleResources::Platformer_Combat_LevelUp);
+	this->levelUpFx = SmartParticles::create(ParticleResources::Platformer_Combat_LevelUp);
 	this->levelUpSound = Sound::create(SoundResources::Platformer_Combat_LevelUp2);
 	this->tickCounterA = 0;
 	this->tickCounterB = 0;
@@ -49,8 +49,6 @@ FriendlyExpBarBehavior::FriendlyExpBarBehavior(GameObject* owner) : super(owner)
 	this->deltaLabel->enableOutline(Color4B::BLACK, 2);
 	this->levelUpLabel->setTextColor(Color4B::YELLOW);
 	this->levelUpLabel->enableOutline(Color4B::BLACK, 2);
-
-	this->levelUpFx->stopSystem();
 
 	if (this->entity == nullptr)
 	{

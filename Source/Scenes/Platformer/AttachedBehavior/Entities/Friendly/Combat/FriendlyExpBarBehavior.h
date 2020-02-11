@@ -2,15 +2,11 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
-
 class LocalizedLabel;
 class LocalizedString;
 class PlatformerEntity;
 class ProgressBar;
+class SmartParticles;
 class Sound;
 
 class FriendlyExpBarBehavior : public AttachedBehavior
@@ -42,6 +38,6 @@ private:
 	LocalizedString* deltaString;
 	LocalizedLabel* deltaLabel;
 	LocalizedLabel* levelUpLabel;
-	cocos2d::ParticleSystem* levelUpFx;
+	SmartParticles* levelUpFx;
 	Sound* levelUpSound;
 };

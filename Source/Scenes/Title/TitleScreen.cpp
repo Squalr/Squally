@@ -1,7 +1,6 @@
 #include "TitleScreen.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/2d/CCParticleExamples.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
@@ -11,6 +10,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Music.h"
 #include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
@@ -22,8 +22,7 @@
 #include "Scenes/Title/TitleScreenBackground.h"
 #include "Scenes/Developer/DeveloperScene.h"
 
-#include "Resources/MapResources.h"
-#include "Resources/MusicResources.h"
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -142,7 +141,7 @@ TitleScreen::TitleScreen()
 		UIResources::Menus_TitleScreen_TitleButtonHover);
 
 	this->ether = Sprite::create(UIResources::Menus_Backgrounds_Ether);
-	this->etherParticles = ParticleGalaxy::create();
+	this->etherParticles = SmartParticles::create(ParticleResources::Galaxy);
 
 	this->storyModeButton->setClickSound(SoundResources::Menus_ButtonClick5);
 	this->tutorialsButton->setClickSound(SoundResources::Menus_ButtonClick5);
@@ -178,8 +177,7 @@ void TitleScreen::onEnter()
 
 	this->music->play();
 
-	this->etherParticles->start();
-	GameUtils::accelerateParticles(this->etherParticles, 5.0f);
+	this->etherParticles->accelerate(5.0f);
 	
 	// Fade in slower when the game first boots. Once the user is in the game and navigating menus, this gets annoying if it is too slow.
 	static bool firstRun = true;

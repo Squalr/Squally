@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class LayerColor;
-	class ParticleSystemQuad;
 	class Sprite;
 }
 
@@ -13,6 +12,7 @@ class ClickableNode;
 class ConstantString;
 class LocalizedLabel;
 class LocalizedString;
+class SmartParticles;
 
 class RemainingCardDisplay : public ComponentBase
 {
@@ -35,7 +35,7 @@ private:
 	void enableCardDisplayInteraction();
 	void disableCardDisplayInteraction();
 
-	cocos2d::ParticleSystemQuad* particles;
+	SmartParticles* particles;
 
 	ClickableNode* remainingCardSprite;
 	ConstantString* remainingCardStr;

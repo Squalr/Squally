@@ -7,7 +7,6 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Renderer;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
@@ -22,6 +21,7 @@ class HackActivatedAbility;
 class HackablePreview;
 class HackButton;
 class ProgressBar;
+class SmartParticles;
 
 class HackableObject : public GameObject
 {
@@ -82,10 +82,10 @@ private:
 	bool hasRelocatedUI;
 	bool isHackable;
 
-	cocos2d::ParticleSystem* getSensingParticles();
+	SmartParticles* getSensingParticles();
 
 	cocos2d::Node* sensingParticlesNode;
-	cocos2d::ParticleSystem* sensingParticles;
+	SmartParticles* sensingParticles;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;

@@ -1,7 +1,8 @@
 #include "NaturePortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
+
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -21,8 +22,8 @@ NaturePortal* NaturePortal::create(ValueMap& properties)
 
 NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Color4B(14, 82, 24, 255))
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalNature);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalNatureEdge);
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalNature, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalNatureEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
@@ -45,4 +46,20 @@ void NaturePortal::initializePositions()
 void NaturePortal::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void NaturePortal::closePortal(bool instant)
+{
+	super::closePortal(instant);
+
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
+}
+
+void NaturePortal::openPortal(bool instant)
+{
+	super::openPortal(instant);
+
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

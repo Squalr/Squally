@@ -5,13 +5,13 @@
 namespace cocos2d
 {
 	class LayerColor;
-	class ParticleSystemQuad;
 	class Sprite;
 }
 
 class ClickableNode;
 class ClickableIconNode;
 class LocalizedLabel;
+class SmartParticles;
 class Sound;
 
 class StatePass : public StateBase
@@ -62,30 +62,30 @@ private:
 	ClickableNode* lastStandButton;
 	cocos2d::LayerColor* lastStandPanel;
 	LocalizedLabel* lastStandLabel;
-	cocos2d::ParticleSystemQuad* lastStandParticles;
+	SmartParticles* lastStandParticles;
 
 	cocos2d::Sprite* enemyLastStandSprite;
-	cocos2d::ParticleSystemQuad* enemyLastStandParticles;
+	SmartParticles* enemyLastStandParticles;
 
 	// Surrender
 	cocos2d::Sprite* passSprite;
 	ClickableNode* passButton;
 	cocos2d::LayerColor* passPanel;
 	LocalizedLabel* passLabel;
-	cocos2d::ParticleSystemQuad* passParticles;
+	SmartParticles* passParticles;
 
 	cocos2d::Sprite* enemyPassSprite;
-	cocos2d::ParticleSystemQuad* enemyPassParticles;
+	SmartParticles* enemyPassParticles;
 
 	// Claim victory
 	cocos2d::Sprite* claimVictorySprite;
 	ClickableNode* claimVictoryButton;
 	cocos2d::LayerColor* claimVictoryPanel;
 	LocalizedLabel* claimVictoryLabel;
-	cocos2d::ParticleSystemQuad* claimVictoryParticles;
+	SmartParticles* claimVictoryParticles;
 
 	cocos2d::Sprite* enemyClaimVictorySprite;
-	cocos2d::ParticleSystemQuad* enemyClaimVictoryParticles;
+	SmartParticles* enemyClaimVictoryParticles;
 
 	Sound* passSound;
 	Sound* lastStandSound;

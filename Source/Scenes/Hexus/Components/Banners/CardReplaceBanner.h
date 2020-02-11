@@ -4,9 +4,10 @@
 
 namespace cocos2d
 {
-	class ParticleSystemQuad;
 	class Sprite;
 }
+
+class SmartParticles;
 
 class CardReplaceBanner : public BannerBase
 {
@@ -23,7 +24,7 @@ protected:
 	void onAnyStateChange(GameState* gameState) override;
 
 	cocos2d::Sprite* penaltyIcon;
-	cocos2d::ParticleSystemQuad* penaltyIconParticles;
+	SmartParticles* penaltyIconParticles;
 
 private:
 	typedef BannerBase super;

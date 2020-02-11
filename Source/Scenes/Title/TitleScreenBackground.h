@@ -5,7 +5,6 @@
 namespace cocos2d
 {
 	class Sprite;
-	class ParticleSystem;
 }
 
 class AnimationPart;
@@ -14,6 +13,7 @@ class FloatingSprite;
 class InfiniteParallaxNode;
 class SmartAnimationNode;
 class SmartAnimationSequenceNode;
+class SmartParticles;
 
 class TitleScreenBackground : public SmartNode
 {
@@ -52,6 +52,6 @@ private:
 	FloatingSprite* foregroundGrassTop;
 	cocos2d::Sprite* foregroundLight;
 
-	cocos2d::ParticleSystem* windParticles;
-	cocos2d::ParticleSystem* fireflyParticles;
+	SmartParticles* windParticles;
+	SmartParticles* fireflyParticles;
 };

@@ -18,6 +18,7 @@ namespace ParticleResources
 	extern const std::string Electric;
 	extern const std::string Fireflies;
 	extern const std::string Fireflies2;
+	extern const std::string Galaxy;
 	extern const std::string Gust;
 	extern const std::string HackableGlow;
 	extern const std::string Heal;

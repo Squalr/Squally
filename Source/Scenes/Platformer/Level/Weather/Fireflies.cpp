@@ -1,9 +1,10 @@
 #include "Fireflies.h"
 
-#include "cocos/2d/CCParticleSystemQuad.h"
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 
@@ -22,8 +23,8 @@ Fireflies* Fireflies::create(ValueMap& properties, std::string name)
 
 Fireflies::Fireflies(ValueMap& properties, std::string name) : super(properties, name, "weather")
 {
-	this->fireflies = ParticleSystemQuad::create(ParticleResources::Fireflies2);
-	this->fireflies->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->fireflies = SmartParticles::create(ParticleResources::Fireflies2);
+	this->fireflies->setGrouped();
 
 	this->fireflies->start();
 
@@ -48,5 +49,5 @@ void Fireflies::update(float dt)
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 
-	this->fireflies->setSourcePosition(cameraPosition + visibleSize / 2.0f);
+	this->fireflies->getParticles()->setSourcePosition(cameraPosition + visibleSize / 2.0f);
 }

@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 
@@ -13,6 +12,7 @@ class ClickableTextNode;
 class MusicOverlay;
 class TitleScreenBackground;
 class Track;
+class SmartParticles;
 
 class TitleScreen : public GlobalScene
 {
@@ -33,7 +33,7 @@ private:
 	TitleScreenBackground* background;
 
 	cocos2d::Sprite* ether;
-	cocos2d::ParticleSystem* etherParticles;
+	SmartParticles* etherParticles;
 
 	ClickableTextNode* storyModeButton;
 	ClickableTextNode* tutorialsButton;

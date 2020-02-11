@@ -5,13 +5,13 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
 #include "Engine/UI/InfiniteParallaxNode.h"
 #include "Engine/Utils/GameUtils.h"
@@ -68,8 +68,8 @@ TitleScreenBackground::TitleScreenBackground()
 	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
 	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 
-	this->windParticles = ParticleSystemQuad::create(ParticleResources::Wind);
-	this->fireflyParticles = ParticleSystemQuad::create(ParticleResources::Fireflies2);
+	this->windParticles = SmartParticles::create(ParticleResources::Wind);
+	this->fireflyParticles = SmartParticles::create(ParticleResources::Fireflies2);
 
 	this->addChild(this->background);
 	this->addChild(this->backgroundTrees);
@@ -101,8 +101,8 @@ void TitleScreenBackground::onEnter()
 	super::onEnter();
 
 	// Initialize particles to an intermediate state
-	GameUtils::accelerateParticles(this->fireflyParticles, 2.0f);
-	GameUtils::accelerateParticles(this->windParticles, 5.0f);
+	this->fireflyParticles->accelerate(2.0f);
+	this->windParticles->accelerate(5.0f);
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);

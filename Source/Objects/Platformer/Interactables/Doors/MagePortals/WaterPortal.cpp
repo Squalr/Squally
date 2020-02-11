@@ -1,7 +1,8 @@
 #include "WaterPortal.h"
 
 #include "cocos/2d/CCDrawNode.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
+
+#include "Engine/Particles/SmartParticles.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
@@ -21,8 +22,8 @@ WaterPortal* WaterPortal::create(ValueMap& properties)
 
 WaterPortal::WaterPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLUE)
 {
-	this->portalParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalWater);
-	this->edgeParticles = ParticleSystemQuad::create(ParticleResources::Portals_PortalEdge);
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWater, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
@@ -45,4 +46,20 @@ void WaterPortal::initializePositions()
 void WaterPortal::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void WaterPortal::closePortal(bool instant)
+{
+	super::closePortal(instant);
+
+	this->edgeParticles->stop();
+	this->portalParticles->stop();
+}
+
+void WaterPortal::openPortal(bool instant)
+{
+	super::openPortal(instant);
+
+	this->edgeParticles->start();
+	this->portalParticles->start();
 }

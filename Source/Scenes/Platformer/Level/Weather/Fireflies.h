@@ -4,10 +4,7 @@
 
 using namespace cocos2d;
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
+class SmartParticles;
 
 class Fireflies : public MapLayer
 {
@@ -16,13 +13,15 @@ public:
 
 	static const std::string MapKeyWeatherLayerFireflies;
 
-private:
-	typedef MapLayer super;
+protected:
 	Fireflies(cocos2d::ValueMap& properties, std::string name);
-	~Fireflies();
+	virtual ~Fireflies();
 
 	void onEnter() override;
 	void update(float) override;
 
-	cocos2d::ParticleSystem* fireflies;
+private:
+	typedef MapLayer super;
+
+	SmartParticles* fireflies;
 };

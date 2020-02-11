@@ -6,13 +6,17 @@
 namespace cocos2d
 {
 	class DrawNode;
-	class ParticleSystem;
 }
+
+class SmartParticles;
 
 class DarkPortal : public MagePortal
 {
 public:
 	static DarkPortal* create(cocos2d::ValueMap& properties);
+
+	void closePortal(bool instant) override;
+	void openPortal(bool instant) override;
 
 	static const std::string MapKeyDarkPortal;
 
@@ -26,6 +30,6 @@ protected:
 private:
 	typedef MagePortal super;
 
-	cocos2d::ParticleSystem* portalParticles;
-	cocos2d::ParticleSystem* edgeParticles;
+	SmartParticles* portalParticles;
+	SmartParticles* edgeParticles;
 };

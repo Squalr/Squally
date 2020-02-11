@@ -1,10 +1,7 @@
 #pragma once
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class ParticleSystemQuad;
-}
+class SmartParticles;
 
 class CardEffects : public SmartNode
 {
@@ -54,55 +51,55 @@ protected:
 private:
 	typedef SmartNode super;
 	
-	cocos2d::ParticleSystemQuad* getBite();
-	cocos2d::ParticleSystemQuad* getDustPoof();
-	cocos2d::ParticleSystemQuad* getDustStorm();
-	cocos2d::ParticleSystemQuad* getFireBlast();
-	cocos2d::ParticleSystemQuad* getFlow();
-	cocos2d::ParticleSystemQuad* getFocusRing();
-	cocos2d::ParticleSystemQuad* getFrostCircle();
-	cocos2d::ParticleSystemQuad* getGush();
-	cocos2d::ParticleSystemQuad* getLightning();
-	cocos2d::ParticleSystemQuad* getMagicBurst();
-	cocos2d::ParticleSystemQuad* getMeteorAlt();
-	cocos2d::ParticleSystemQuad* getMeteorBlue();
-	cocos2d::ParticleSystemQuad* getMeteorPurple();
-	cocos2d::ParticleSystemQuad* getNether();
-	cocos2d::ParticleSystemQuad* getPoison();
-	cocos2d::ParticleSystemQuad* getRadialAura();
-	cocos2d::ParticleSystemQuad* getRadialFire();
-	cocos2d::ParticleSystemQuad* getRadialGalaxy();
-	cocos2d::ParticleSystemQuad* getRadialStorm();
-	cocos2d::ParticleSystemQuad* getSelectionPulse();
-	cocos2d::ParticleSystemQuad* getSpinningMagic();
-	cocos2d::ParticleSystemQuad* getSplash();
-	cocos2d::ParticleSystemQuad* getStarBurst();
-	cocos2d::ParticleSystemQuad* getStarHit();
-	cocos2d::ParticleSystemQuad* getTargetPulse();
+	SmartParticles* getBite();
+	SmartParticles* getDustPoof();
+	SmartParticles* getDustStorm();
+	SmartParticles* getFireBlast();
+	SmartParticles* getFlow();
+	SmartParticles* getFocusRing();
+	SmartParticles* getFrostCircle();
+	SmartParticles* getGush();
+	SmartParticles* getLightning();
+	SmartParticles* getMagicBurst();
+	SmartParticles* getMeteorAlt();
+	SmartParticles* getMeteorBlue();
+	SmartParticles* getMeteorPurple();
+	SmartParticles* getNether();
+	SmartParticles* getPoison();
+	SmartParticles* getRadialAura();
+	SmartParticles* getRadialFire();
+	SmartParticles* getRadialGalaxy();
+	SmartParticles* getRadialStorm();
+	SmartParticles* getSelectionPulse();
+	SmartParticles* getSpinningMagic();
+	SmartParticles* getSplash();
+	SmartParticles* getStarBurst();
+	SmartParticles* getStarHit();
+	SmartParticles* getTargetPulse();
 
-	cocos2d::ParticleSystemQuad* bite;
-	cocos2d::ParticleSystemQuad* dustPoof;
-	cocos2d::ParticleSystemQuad* dustStorm;
-	cocos2d::ParticleSystemQuad* fireBlast;
-	cocos2d::ParticleSystemQuad* flow;
-	cocos2d::ParticleSystemQuad* frostCircle;
-	cocos2d::ParticleSystemQuad* focusRing;
-	cocos2d::ParticleSystemQuad* gush;
-	cocos2d::ParticleSystemQuad* lightning;
-	cocos2d::ParticleSystemQuad* magicBurst;
-	cocos2d::ParticleSystemQuad* meteorAlt;
-	cocos2d::ParticleSystemQuad* meteorBlue;
-	cocos2d::ParticleSystemQuad* meteorPurple;
-	cocos2d::ParticleSystemQuad* nether;
-	cocos2d::ParticleSystemQuad* poison;
-	cocos2d::ParticleSystemQuad* radialAura;
-	cocos2d::ParticleSystemQuad* radialFire;
-	cocos2d::ParticleSystemQuad* radialGalaxy;
-	cocos2d::ParticleSystemQuad* radialStorm;
-	cocos2d::ParticleSystemQuad* selectionPulse;
-	cocos2d::ParticleSystemQuad* spinningMagic;
-	cocos2d::ParticleSystemQuad* splash;
-	cocos2d::ParticleSystemQuad* starBurst;
-	cocos2d::ParticleSystemQuad* starHit;
-	cocos2d::ParticleSystemQuad* targetPulse;
+	SmartParticles* bite;
+	SmartParticles* dustPoof;
+	SmartParticles* dustStorm;
+	SmartParticles* fireBlast;
+	SmartParticles* flow;
+	SmartParticles* frostCircle;
+	SmartParticles* focusRing;
+	SmartParticles* gush;
+	SmartParticles* lightning;
+	SmartParticles* magicBurst;
+	SmartParticles* meteorAlt;
+	SmartParticles* meteorBlue;
+	SmartParticles* meteorPurple;
+	SmartParticles* nether;
+	SmartParticles* poison;
+	SmartParticles* radialAura;
+	SmartParticles* radialFire;
+	SmartParticles* radialGalaxy;
+	SmartParticles* radialStorm;
+	SmartParticles* selectionPulse;
+	SmartParticles* spinningMagic;
+	SmartParticles* splash;
+	SmartParticles* starBurst;
+	SmartParticles* starHit;
+	SmartParticles* targetPulse;
 };

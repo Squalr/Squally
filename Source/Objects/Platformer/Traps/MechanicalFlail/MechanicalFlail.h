@@ -4,13 +4,13 @@
 
 namespace cocos2d
 {
-	class ParticleSystemQuad;
 	class Sprite;
 }
 
 class CollisionObject;
 class HackableData;
 class MechanicalFlailClippy;
+class SmartParticles;
 
 class MechanicalFlail : public HackableObject
 {
@@ -41,7 +41,7 @@ private:
 	cocos2d::Node* flailChain;
 	float flailHeight;
 	HackableData* hackableDataTargetAngle;
-	cocos2d::ParticleSystemQuad* smokeParticles;
+	SmartParticles* smokeParticles;
 	CollisionObject* flailCollision;
 	
 	MechanicalFlailClippy* mechanicalFlailClippy;

@@ -4,12 +4,12 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
+class SmartParticles;
 class WorldSound;
 
 class Vase : public BreakableBase
@@ -35,7 +35,7 @@ private:
 	SmartAnimationSequenceNode* explosion;
 	cocos2d::Sprite* vase;
 	CollisionObject* vaseBroken;
-	cocos2d::ParticleSystem* shardParticles;
+	SmartParticles* shardParticles;
 	std::string color;
 
 	static const std::string MapPropertyColor;

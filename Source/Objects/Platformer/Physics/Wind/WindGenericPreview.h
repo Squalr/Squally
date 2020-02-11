@@ -2,10 +2,7 @@
 
 #include "Engine/Hackables/HackablePreview.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
+class SmartParticles;
 
 class WindGenericPreview : public HackablePreview
 {
@@ -17,11 +14,12 @@ public:
 protected:
 	WindGenericPreview();
 	virtual ~WindGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
-	cocos2d::ParticleSystem* windParticles;
+	SmartParticles* windParticles;
 };

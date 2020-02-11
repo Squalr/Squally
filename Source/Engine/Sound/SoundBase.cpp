@@ -92,6 +92,8 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
+	return;
+	
 	if (this->soundResource.empty())
 	{
 		return;

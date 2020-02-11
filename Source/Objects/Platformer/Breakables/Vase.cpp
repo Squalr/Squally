@@ -2,11 +2,11 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -37,7 +37,7 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 	this->explosion = SmartAnimationSequenceNode::create();
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_WoodBreak_WoodBreak1);
 	this->color = GameUtils::getKeyOrDefault(this->properties, Vase::MapPropertyColor, Value("yellow")).asString();
-	this->shardParticles = ParticleSystemQuad::create(ParticleResources::Objects_VaseBreak);
+	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
 	this->vaseBroken = CollisionObject::create(PhysicsBody::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 
 	if (this->color == "blue")
@@ -78,7 +78,6 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 
 	this->vaseBroken->setPhysicsEnabled(false);
 	this->vaseBroken->setVisible(false);
-	this->shardParticles->stopSystem();
 
 	this->addChild(this->vase);
 	this->addChild(this->vaseBroken);

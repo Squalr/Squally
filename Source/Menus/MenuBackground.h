@@ -10,6 +10,7 @@ namespace cocos2d
 
 class InfiniteParallaxNode;
 class FloatingSprite;
+class SmartParticles;
 
 class MenuBackground : public SmartNode
 {
@@ -17,12 +18,14 @@ public:
 	static MenuBackground* claimInstance();
 	static MenuBackground* getInstance();
 
-private:
-	typedef SmartNode super;
+protected:
 	MenuBackground();
-	~MenuBackground();
+	virtual ~MenuBackground();
 
 	void initializePositions() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Sprite* background;
 	FloatingSprite* backgroundTrees;
@@ -35,8 +38,8 @@ private:
 	cocos2d::Sprite* webs;
 	cocos2d::Sprite* foregroundLight;
 
-	cocos2d::ParticleSystem* windParticles;
-	cocos2d::ParticleSystem* fireflyParticles;
+	SmartParticles* windParticles;
+	SmartParticles* fireflyParticles;
 
 	static MenuBackground* menuBackgroundInstance;
 };

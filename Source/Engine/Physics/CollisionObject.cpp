@@ -170,17 +170,20 @@ void CollisionObject::update(float dt)
 {
 	super::update(dt);
 
-	if (this->contactUpdateCallback != nullptr)
+	if (this->contactUpdateCallback != nullptr && !this->currentCollisions.empty())
 	{
 		this->contactUpdateCallback(this->currentCollisions, dt);
 	}
 
 	// Retry collision on objects that are not in the same depth, as they may have moved through z-space (cocos/chipmunk do not handle this automatically)
-	this->passThroughCandidatesIter = this->passThroughCandidates;
-	
-	for (auto candidate : this->passThroughCandidatesIter)
+	if (!this->passThroughCandidates.empty())
 	{
-		this->onContactRetry(candidate.second);
+		this->passThroughCandidatesIter = this->passThroughCandidates;
+		
+		for (auto candidate : this->passThroughCandidatesIter)
+		{
+			this->onContactRetry(candidate.second);
+		}
 	}
 
 	if (this->physicsBody != nullptr && this->physicsBody->isDynamic())

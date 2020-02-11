@@ -1,11 +1,9 @@
 #pragma once
 
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Maps/MapLayer.h"
 
-namespace cocos2d
-{
-	class ParticleSystem;
-}
+class SmartParticles;
 
 class Rain : public MapLayer
 {
@@ -14,13 +12,15 @@ public:
 
 	static const std::string MapKeyWeatherLayerRain;
 
-private:
-	typedef MapLayer super;
+protected:
 	Rain(cocos2d::ValueMap& properties, std::string name);
-	~Rain();
+	virtual ~Rain();
 
 	void onEnter() override;
 	void update(float) override;
 
-	cocos2d::ParticleSystem* rain;
+private:
+	typedef MapLayer super;
+
+	SmartParticles* rain;
 };

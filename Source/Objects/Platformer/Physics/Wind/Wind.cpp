@@ -1,10 +1,11 @@
 #include "Wind.h"
 
+#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -48,11 +49,11 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
-	this->windParticles = ParticleSystemQuad::create(ParticleResources::Gust);
+	this->windParticles = SmartParticles::create(ParticleResources::Gust);
 	this->windForce = CollisionObject::create(PhysicsBody::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, false, false);
 
-	this->windParticles->setAnchorPoint(Vec2::ZERO);
-	this->windParticles->setPositionType(ParticleSystem::PositionType::GROUPED);
+	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setGrouped();
 
 	this->registerClippy(this->windClippy);
 	this->addChild(this->windForce);
@@ -67,8 +68,8 @@ void Wind::onEnter()
 {
 	super::onEnter();
 
-	this->windParticles->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
-	this->windParticles->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
+	this->windParticles->getParticles()->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
+	this->windParticles->getParticles()->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
 
 	this->scheduleUpdate();
 }
@@ -204,7 +205,7 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 
 	if (this->windSpeed.x == 0.0f && this->windSpeed.y == 0.0f)
 	{
-		this->windParticles->stopSystem();
+		this->windParticles->stop(2.0f);
 	}
 	else
 	{
@@ -218,6 +219,6 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 
 	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / float(M_PI);
 
-	this->windParticles->setAngle(angle);
+	this->windParticles->getParticles()->setAngle(angle);
 }
 END_NO_OPTIMIZE

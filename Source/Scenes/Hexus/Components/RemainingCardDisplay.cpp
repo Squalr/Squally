@@ -2,13 +2,13 @@
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
@@ -31,7 +31,7 @@ RemainingCardDisplay* RemainingCardDisplay::create()
 
 RemainingCardDisplay::RemainingCardDisplay()
 {
-	this->particles = ParticleSystemQuad::create(ParticleResources::Hexus_BlueAura);
+	this->particles = SmartParticles::create(ParticleResources::Hexus_BlueAura);
 	this->remainingCardSprite = ClickableNode::create(HexusResources::RemainingCardsIcon, HexusResources::RemainingCardsIcon);
 	this->remainingCardStr = ConstantString::create("0");
 	this->remainingCardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->remainingCardStr);

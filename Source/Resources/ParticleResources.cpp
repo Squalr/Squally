@@ -17,6 +17,7 @@ const std::string ParticleResources::Dust = "Public/Particles/Dust.plist";
 const std::string ParticleResources::Electric = "Public/Particles/Electric.plist";
 const std::string ParticleResources::Fireflies = "Public/Particles/Fireflies.plist";
 const std::string ParticleResources::Fireflies2 = "Public/Particles/Fireflies2.plist";
+const std::string ParticleResources::Galaxy = "Public/Particles/Galaxy.plist";
 const std::string ParticleResources::Gust = "Public/Particles/Gust.plist";
 const std::string ParticleResources::HackableGlow = "Public/Particles/HackableGlow.plist";
 const std::string ParticleResources::Heal = "Public/Particles/Heal.plist";

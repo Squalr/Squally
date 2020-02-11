@@ -226,23 +226,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	return node;
 }
 
-void GameUtils::accelerateParticles(ParticleSystem* particleSystem, float duration)
-{
-	if (particleSystem == nullptr)
-	{
-		return;
-	}
-
-	const float step = 1.0f / 60.0f;
-
-	particleSystem->start();
-
-	for (float currentDuration = 0.0f; currentDuration < duration; currentDuration += step)
-	{
-		particleSystem->update(step);
-	}
-}
-
 void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte opacity)
 {
 	if (node == nullptr)

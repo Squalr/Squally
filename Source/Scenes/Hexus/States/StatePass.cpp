@@ -3,12 +3,12 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/Config.h"
 
@@ -54,9 +54,9 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	this->passPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->passLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Pass::create());
 
-	this->passParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
+	this->passParticles = SmartParticles::create(ParticleResources::Hexus_WhiteAura);
 	this->enemyPassSprite = Sprite::create(HexusResources::Flags);
-	this->enemyPassParticles = ParticleSystemQuad::create(ParticleResources::Hexus_WhiteAura);
+	this->enemyPassParticles = SmartParticles::create(ParticleResources::Hexus_WhiteAura);
 
 	// Last stand
 	this->lastStandSprite = Sprite::create(HexusResources::ShieldButton);
@@ -77,9 +77,9 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	this->lastStandPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->lastStandLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_LastStand::create());
 	
-	this->lastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->lastStandParticles = SmartParticles::create(ParticleResources::Hexus_Aura);
 	this->enemyLastStandSprite = Sprite::create(HexusResources::ShieldButton);
-	this->enemyLastStandParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->enemyLastStandParticles = SmartParticles::create(ParticleResources::Hexus_Aura);
 
 	// Claim victory
 	this->claimVictorySprite = Sprite::create(HexusResources::Victory);
@@ -100,9 +100,9 @@ StatePass::StatePass() : super(GameState::StateType::Pass)
 	this->claimVictoryPanel = LayerColor::create(Color4B::BLACK, 256.0f, 48.0f);
 	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_ClaimVictory::create());
 	
-	this->claimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->claimVictoryParticles = SmartParticles::create(ParticleResources::Hexus_Aura);
 	this->enemyClaimVictorySprite = Sprite::create(HexusResources::Victory);
-	this->enemyClaimVictoryParticles = ParticleSystemQuad::create(ParticleResources::Hexus_Aura);
+	this->enemyClaimVictoryParticles = SmartParticles::create(ParticleResources::Hexus_Aura);
 
 	this->passSound = Sound::create(SoundResources::Hexus_Pass);
 	this->lastStandSound = Sound::create(SoundResources::Hexus_LastStand);
