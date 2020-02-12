@@ -10,6 +10,7 @@ const std::string MapResources::CastleValgrind_Castle = "Public/Platformer/Maps/
 const std::string MapResources::DaemonsHallow_Volcano = "Public/Platformer/Maps/DaemonsHallow/Volcano.tmx";
 const std::string MapResources::Dev_Bounds = "Public/Platformer/Maps/Dev/Bounds.tmx";
 const std::string MapResources::Dev_Cages = "Public/Platformer/Maps/Dev/Cages.tmx";
+const std::string MapResources::Dev_Collision = "Public/Platformer/Maps/Dev/Collision.tmx";
 const std::string MapResources::Dev_Combat = "Public/Platformer/Maps/Dev/Combat.tmx";
 const std::string MapResources::Dev_PositionBug = "Public/Platformer/Maps/Dev/PositionBug.tmx";
 const std::string MapResources::Dev_Quests = "Public/Platformer/Maps/Dev/Quests.tmx";

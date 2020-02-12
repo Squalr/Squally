@@ -29,16 +29,15 @@ public:
 		{
 		}
 	};
-
-	static std::string MapKeyTypeIsHollow;
+	
 	static std::string MapKeyTypeTexture;
+	static std::string MapPropertyKeyIsPartOfTerrain;
 
 protected:
 	TextureObject(cocos2d::ValueMap& properties, TextureData terrainData);
 	virtual ~TextureObject();
 
 	TextureData terrainData;
-	bool isHollow;
 
 	cocos2d::Rect boundsRect;
 	std::vector<cocos2d::Vec2> points;

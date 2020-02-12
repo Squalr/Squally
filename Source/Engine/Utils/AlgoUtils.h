@@ -47,6 +47,7 @@ public:
 	static cocos2d::Rect getPolygonRect(const std::vector<cocos2d::Vec2>& points);
 	static std::vector<cocos2d::Vec2> insetPolygon(const std::vector<Triangle>& triangles,
 			const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments, float insetDistance);
+	static cocos2d::Vec2 getSegmentNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment);
 	static float getSegmentAngle(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,
 			const std::vector<Triangle>& triangles, cocos2d::DrawNode* debugDrawNode = nullptr);
 	static float getSegmentNormalAngle(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment,

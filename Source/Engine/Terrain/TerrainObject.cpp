@@ -983,6 +983,7 @@ ValueMap TerrainObject::transformPropertiesForTexture(cocos2d::ValueMap& propert
 	textureProperties[GameObject::MapKeyType] = TextureObject::MapKeyTypeTexture;
 	textureProperties[GameObject::MapKeyXPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyYPosition] = Value(0.0f);
+	textureProperties[TextureObject::MapPropertyKeyIsPartOfTerrain] = Value(true);
 
 	return textureProperties;
 }

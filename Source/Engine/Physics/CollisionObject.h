@@ -59,7 +59,6 @@ public:
 	void setVelocity(cocos2d::Vec2 velocity);
 	void setVelocityX(float velocityX);
 	void setVelocityY(float velocityY);
-	void setAngularVelocity(float angularVelocity);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
 	std::vector<CollisionObject*> getCurrentCollisions();
@@ -99,17 +98,23 @@ private:
 	typedef GameObject super;
 	friend class GlobalDirector;
 
+	struct CollisionCorrections
+	{
+		cocos2d::Vec2 normalForce;
+
+		CollisionCorrections() : normalForce(cocos2d::Vec2::ZERO) { }
+		CollisionCorrections(cocos2d::Vec2 normalForce, int collisionCount) : normalForce(normalForce) { }
+	};
+
 	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
-	// bool onContactBegin(cocos2d::PhysicsContact& contact);
-	// bool onContactUpdate(cocos2d::PhysicsContact& contact);
-	// bool onContactRetry(CollisionData& collisionData);
-	// bool onContactEnd(cocos2d::PhysicsContact& contact);
-	bool runContactEvents(std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
-	// CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
 	bool collidesWith(CollisionObject* collisionObject);
-	bool isWithinZThreshold(const CollisionData& collisionData);
+	void applyCollisionCorrections(CollisionObject* collisionObject);
+	void updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections);
+	bool isWithinZThreshold(CollisionObject* collisionObject);
+	cocos2d::Vec2 getThisOrBindPosition();
+	void setThisOrBindPosition(cocos2d::Vec2 position);
 
 	static void ClearCollisionObjects();
 	static void RegisterCollisionObject(CollisionObject* collisionObject);
@@ -129,9 +134,12 @@ private:
 	std::map<CollisionObject*, CollisionData> passThroughCandidatesIter;
 	std::vector<CollisionObject*> currentCollisions;
 	std::vector<cocos2d::Vec2> shape;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	cocos2d::Rect boundsRect;
 	CollisionType collisionType;
 	GameObject* bindTarget;
+	bool isDynamic;
+	bool physicsEnabled;
 	bool gravityEnabled;
 	bool gravityInversed;
 	bool debugInfoSpawned;

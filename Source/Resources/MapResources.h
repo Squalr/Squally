@@ -11,6 +11,7 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string Dev_Bounds;
 	extern const std::string Dev_Cages;
+	extern const std::string Dev_Collision;
 	extern const std::string Dev_Combat;
 	extern const std::string Dev_PositionBug;
 	extern const std::string Dev_Quests;

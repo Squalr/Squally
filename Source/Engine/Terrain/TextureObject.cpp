@@ -28,13 +28,12 @@
 
 using namespace cocos2d;
 
-std::string TextureObject::MapKeyTypeIsHollow = "is-hollow";
 std::string TextureObject::MapKeyTypeTexture = "texture";
+std::string TextureObject::MapPropertyKeyIsPartOfTerrain = "part-of-terrain";
 
 TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : super(properties)
 {
 	this->terrainData = terrainData;
-	this->isHollow = GameUtils::getKeyOrDefault(this->properties, TextureObject::MapKeyTypeIsHollow, Value(false)).asBool();
 	this->points = std::vector<Vec2>();
 	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
 	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
@@ -101,10 +100,14 @@ void TextureObject::buildTextures()
 
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
-	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
+	if (!GameUtils::getKeyOrDefault(this->properties, TextureObject::MapPropertyKeyIsPartOfTerrain, Value(false)).asBool())
+	{
+		texture->setAnchorPoint(Vec2::ZERO);
+	}
+	
 	texture->getTexture()->setTexParameters(params);
 	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
+	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width, drawRect.size.height));
 
 	if (this->useClipping)
 	{

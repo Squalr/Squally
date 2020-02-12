@@ -405,6 +405,15 @@ float AlgoUtils::getSegmentAngle(std::tuple<Vec2, Vec2> segment, const std::vect
 	return angle;
 }
 
+Vec2 AlgoUtils::getSegmentNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment)
+{
+	Vec2 delta = std::get<0>(segment) - std::get<1>(segment);
+
+	delta.normalize();
+
+	return Vec2(-delta.y, -delta.x);
+}
+
 float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
 		const std::vector<AlgoUtils::Triangle>& triangles, DrawNode* debugDrawNode)
 {

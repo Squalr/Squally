@@ -77,14 +77,17 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 {
 	this->collisionType = collisionType;
 	this->shape = shape;
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->shape);
 	this->boundsRect = AlgoUtils::getPolygonRect(this->shape);
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
 	this->passThroughCandidates = std::map<CollisionObject*, CollisionData>();
 	this->passThroughCandidatesIter = std::map<CollisionObject*, CollisionData>();
-	this->gravityEnabled = true;
-	this->gravityInversed = true;
+	this->isDynamic = isDynamic;
+	this->physicsEnabled = true;
+	this->gravityEnabled = false;
+	this->gravityInversed = false;
 	this->contactUpdateCallback = nullptr;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;
@@ -196,49 +199,48 @@ void CollisionObject::update(float dt)
 
 void CollisionObject::runPhysics(float dt)
 {
-	Vec2 velocity = this->getVelocity();
+	if (!this->physicsEnabled)
+	{
+		return;
+	}
 
 	// Apply gravity
-	/*
-	if (this->gravityEnabled && scene != nullptr && scene->getPhysicsWorld() != nullptr)
+	if (this->gravityEnabled)
 	{
-		const Vec2 gravity = Director::getInstance()->getRunningScene()->getPhysicsWorld()->getGravity();
+		const Vec2 gravity = Vec2(0.0f, -768.0f);
 
-		velocity.x += gravity.x * dt;
+		this->velocity.x += gravity.x * dt;
 
 		if (this->gravityInversed)
 		{
-			velocity.y += gravity.y * dt;
+			this->velocity.y -= gravity.y * dt;
 		}
 		else
 		{
-			velocity.y -= gravity.y * dt;
+			this->velocity.y += gravity.y * dt;
 		}
 	}
-	*/
 
-	const Vec2 oldPosition = this->bindTarget == nullptr ? this->getPosition() : this->bindTarget->getPosition();
-
-	if (velocity != Vec2::ZERO)
+	if (this->velocity != Vec2::ZERO)
 	{
 		// Apply dampening
-		velocity.x *= this->horizontalDampening;
-		velocity.y *= this->verticalDampening;
+		this->velocity.x *= this->horizontalDampening;
+		this->velocity.y *= this->verticalDampening;
 
-		this->setVelocity(velocity);
+		// Enforce constraints by calling setter
+		this->setVelocity(this->velocity);
 
-		if (this->bindTarget == nullptr)
-		{
-			this->setPositionX(this->getPositionX() + velocity.x * dt);
-			this->setPositionY(this->getPositionY() + velocity.y * dt);
-		}
-		else
-		{	this->bindTarget->setPositionX(this->bindTarget->getPositionX() + velocity.x * dt);
-			this->bindTarget->setPositionY(this->bindTarget->getPositionY() + velocity.y * dt);
-		}
+		Vec2 updatedPosition = this->getThisOrBindPosition();
+
+		updatedPosition.x += this->velocity.x * dt;
+		updatedPosition.y += this->velocity.y * dt;
+
+		this->setThisOrBindPosition(updatedPosition);
 	}
 
-	CollisionResult result = CollisionResult::DoNothing;
+	CollisionCorrections collisionCorrections = CollisionCorrections();
+
+	this->currentCollisions.clear();
 
 	for (auto events : this->collisionEvents)
 	{
@@ -248,26 +250,44 @@ void CollisionObject::runPhysics(float dt)
 		{
 			if (this->collidesWith(collisionObject))
 			{
+				this->currentCollisions.push_back(collisionObject);
+
+				CollisionResult collisionResult;
+
 				for (auto event : events.second)
 				{
-					CollisionResult eventResult = event.collisionEvent(CollisionData(collisionObject));
+					CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject));
 
-					result = eventResult == CollisionResult::DoNothing ? result : eventResult;
+					collisionResult = nextResult == CollisionResult::DoNothing ? collisionResult : nextResult;
+				}
+
+				if (this->isDynamic && collisionResult == CollisionResult::CollideWithPhysics)
+				{
+					this->applyCollisionCorrections(collisionObject);
 				}
 			}
 		}
 	}
 
-	if (result == CollisionResult::CollideWithPhysics)
+	/*
+	if (collisionCorrections.normalForce != Vec2::ZERO)
 	{
+		collisionCorrections.normalForce.normalize();
+		Vec2 normalVelocity = this->velocity;
+
+		normalVelocity.x *= collisionCorrections.normalForce.x;
+		normalVelocity.y *= collisionCorrections.normalForce.y;
+
 		if (this->bindTarget == nullptr)
 		{
-			this->setPosition(oldPosition);
+			this->setPositionX(this->getPositionX() + normalVelocity.x * dt);
+			this->setPositionY(this->getPositionY() + normalVelocity.y * dt);
 		}
 		else
-		{	this->bindTarget->setPosition(oldPosition);
+		{	this->bindTarget->setPositionX(this->bindTarget->getPositionX() + normalVelocity.x * dt);
+			this->bindTarget->setPositionY(this->bindTarget->getPositionY() + normalVelocity.y * dt);
 		}
-	}
+	}*/
 }
 
 void CollisionObject::setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback)
@@ -277,12 +297,7 @@ void CollisionObject::setContactUpdateCallback(std::function<void(const std::vec
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
 {
-	/*
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setEnabled(enabled);
-	}
-	*/
+	this->physicsEnabled = enabled;
 }
 
 void CollisionObject::setGravityEnabled(bool isEnabled)
@@ -325,16 +340,6 @@ void CollisionObject::setVelocityX(float velocityX)
 void CollisionObject::setVelocityY(float velocityY)
 {
 	this->setVelocity(Vec2(this->getVelocity().x, velocityY));
-}
-
-void CollisionObject::setAngularVelocity(float angularVelocity)
-{
-	/*
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setAngularVelocity(angularVelocity);
-	}
-	*/
 }
 
 void CollisionObject::setHorizontalDampening(float horizontalDampening)
@@ -393,70 +398,6 @@ void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<Co
 	eventMap[collisionType].push_back(onCollision);
 }
 
-/*
-bool CollisionObject::onContactBegin(PhysicsContact &contact)
-{
-	// Currently we are not distinguishing between begin/update
-	return this->onContactUpdate(contact);
-}
-
-bool CollisionObject::onContactUpdate(PhysicsContact &contact)
-{
-	CollisionData collisionData = this->constructCollisionData(contact);
-
-	if (!this->isWithinZThreshold(collisionData))
-	{
-		this->passThroughCandidates[collisionData.other] = collisionData;
-		return false;
-	}
-	
-	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
-	{
-		this->currentCollisions.push_back(collisionData.other);
-	}
-
-	return this->runContactEvents(this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
-}
-
-bool CollisionObject::onContactRetry(CollisionData& collisionData)
-{
-	if (!this->isWithinZThreshold(collisionData))
-	{
-		return false;
-	}
-	
-	if (std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other) == this->currentCollisions.end())
-	{
-		this->currentCollisions.push_back(collisionData.other);
-	}
-
-	this->runContactEvents(this->collisionEvents, CollisionResult::CollideWithPhysics, collisionData);
-
-	return true;
-}
-
-bool CollisionObject::onContactEnd(PhysicsContact &contact)
-{
-	CollisionData collisionData = this->constructCollisionData(contact);
-
-	if (this->passThroughCandidates.find(collisionData.other) != this->passThroughCandidates.end())
-	{
-		this->passThroughCandidates.erase(collisionData.other);
-	}
-
-	this->currentCollisions.erase(
-		std::remove(this->currentCollisions.begin(), this->currentCollisions.end(), collisionData.other), this->currentCollisions.end()
-	);
-
-	if (!this->isWithinZThreshold(collisionData))
-	{
-		return false;
-	}
-
-	return this->runContactEvents(this->collisionEndEvents, CollisionResult::DoNothing, collisionData);
-}
-*/
-
 std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 {
 	return std::vector<Vec2>();
@@ -497,41 +438,14 @@ std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float scale, 
 	return points; // PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }
 
-bool CollisionObject::runContactEvents(std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData)
-{
-	/*
-	if (this->physicsBody != nullptr && !this->physicsBody->isEnabled())
-	{
-		return false;
-	}
-	*/
-
-	CollisionResult result = defaultResult;
-
-	if (collisionData.other != nullptr && this->isWithinZThreshold(collisionData))
-	{
-		CollisionType collisionType = collisionData.other->getCollisionType();
-
-		if (eventMap.find(collisionType) != eventMap.end())
-		{
-			std::vector<CollisionEvent> events = eventMap[collisionType];
-
-			for (auto eventIt = events.begin(); eventIt != events.end(); eventIt++)
-			{
-				CollisionResult eventResult = (*eventIt).collisionEvent(collisionData);
-
-				// Anti-default takes precidence
-				result = (eventResult != defaultResult) ? eventResult : result;
-			}
-		}
-	}
-
-	return (result == CollisionResult::CollideWithPhysics ? true : false);
-}
-
 bool CollisionObject::collidesWith(CollisionObject* collisionObject)
 {
-	if (collisionObject == this)
+	// Check for easy disqualifications
+	if (collisionObject == this
+		|| collisionObject == nullptr
+		|| !this->physicsEnabled
+		|| !collisionObject->physicsEnabled
+		|| !this->isWithinZThreshold(collisionObject))
 	{
 		return false;
 	}
@@ -539,39 +453,125 @@ bool CollisionObject::collidesWith(CollisionObject* collisionObject)
 	Rect thisRect = this->boundsRect;
 	Rect otherRect = collisionObject->boundsRect;
 
-	thisRect.origin += GameUtils::getWorldCoords(this);
-	otherRect.origin += GameUtils::getWorldCoords(collisionObject);
+	Vec2 thisCoords = GameUtils::getWorldCoords(this);
+	Vec2 otherCoords = GameUtils::getWorldCoords(collisionObject);
 
-	bool intersects = thisRect.intersectsRect(otherRect);
+	thisRect.origin += thisCoords;
+	otherRect.origin += otherCoords;
 
-	if (intersects == true)
+	if (thisRect.intersectsRect(otherRect))
 	{
-		return true;
+		std::tuple<cocos2d::Vec2, cocos2d::Vec2> currentSegment;
+		std::tuple<cocos2d::Vec2, cocos2d::Vec2> otherSegment;
+
+		for (auto segment : this->segments)
+		{
+			currentSegment = std::make_tuple(thisCoords + std::get<0>(segment), thisCoords + std::get<1>(segment));
+
+			for (auto otherSegment : collisionObject->segments)
+			{
+				otherSegment = std::make_tuple(otherCoords + std::get<0>(otherSegment), otherCoords + std::get<1>(otherSegment));
+
+				if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
+				{
+					return true;
+				}
+			}
+		}
 	}
 
 	return false;
-
-	/*
-	if (this->getParent() == collisionObject->getParent())
-	{
-		return this->boundsRect.intersectsRect(collisionObject->boundsRect);
-	}
-	else
-	{
-		Rect thisRect = this->boundsRect;
-		Rect otherRect = collisionObject->boundsRect;
-
-		thisRect.origin += GameUtils::getWorldCoords(this);
-		otherRect.origin += GameUtils::getWorldCoords(collisionObject);
-
-		return thisRect.intersectsRect(otherRect);
-	}*/
 }
 
-bool CollisionObject::isWithinZThreshold(const CollisionData& collisionData)
+void CollisionObject::applyCollisionCorrections(CollisionObject* collisionObject)
+{
+	Vec2 thisCoords = GameUtils::getWorldCoords(this);
+	Vec2 otherCoords = GameUtils::getWorldCoords(collisionObject);
+
+	std::tuple<cocos2d::Vec2, cocos2d::Vec2> currentSegment;
+	std::tuple<cocos2d::Vec2, cocos2d::Vec2> otherSegment;
+
+	Vec2 correctionOffset = Vec2::ZERO;
+
+	for (auto currentSegment : this->segments)
+	{
+		currentSegment = std::make_tuple(thisCoords + std::get<0>(currentSegment), thisCoords + std::get<1>(currentSegment));
+
+		for (auto otherSegment : collisionObject->segments)
+		{
+			otherSegment = std::make_tuple(otherCoords + std::get<0>(otherSegment), otherCoords + std::get<1>(otherSegment));
+
+			if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
+			{
+				Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(currentSegment, otherSegment);
+
+				// Other object is static! We need to push this object away from it.
+				if (!collisionObject->isDynamic)
+				{
+					float thisDistanceA = std::get<0>(currentSegment).distance(intersectionPoint);
+					float thisDistanceB = std::get<1>(currentSegment).distance(intersectionPoint);
+					float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
+					float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
+
+					Vec2 updatedPosition = this->getThisOrBindPosition();
+					Vec2 correction = Vec2::ZERO;
+
+					if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
+					{
+						// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
+						if (thisDistanceA < thisDistanceB)
+						{
+							// correction = intersectionPoint - std::get<0>(currentSegment);
+							correction = std::get<0>(currentSegment) - intersectionPoint;
+						}
+						else
+						{
+							correction = intersectionPoint - std::get<1>(currentSegment);
+							// correction = std::get<1>(currentSegment) - intersectionPoint;
+						}
+					}
+					else
+					{
+						// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's dynamic,
+						// so instead we need to push this object away by a calculated amount
+					}
+
+					thisCoords += correction;
+					this->setThisOrBindPosition(updatedPosition + correction);
+				}
+			}
+		}
+	}
+}
+
+void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections)
+{
+	Vec2 thisCoords = GameUtils::getWorldCoords(this);
+	Vec2 otherCoords = GameUtils::getWorldCoords(collisionObject);
+
+	std::tuple<cocos2d::Vec2, cocos2d::Vec2> currentSegment;
+	std::tuple<cocos2d::Vec2, cocos2d::Vec2> otherSegment;
+
+	for (auto segment : this->segments)
+	{
+		currentSegment = std::make_tuple(thisCoords + std::get<0>(segment), thisCoords + std::get<1>(segment));
+
+		for (auto otherSegment : collisionObject->segments)
+		{
+			otherSegment = std::make_tuple(otherCoords + std::get<0>(otherSegment), otherCoords + std::get<1>(otherSegment));
+
+			if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
+			{
+				collisionCorrections->normalForce += AlgoUtils::getSegmentNormal(currentSegment);
+			}
+		}
+	}
+}
+
+bool CollisionObject::isWithinZThreshold(CollisionObject* collisionObject)
 {
 	const float thisDepth = GameUtils::getDepth(this);
-	const float otherDepth = GameUtils::getDepth(collisionData.other);
+	const float otherDepth = GameUtils::getDepth(collisionObject);
 
 	if (std::abs(thisDepth - otherDepth) >= CollisionObject::CollisionZThreshold)
 	{
@@ -579,6 +579,30 @@ bool CollisionObject::isWithinZThreshold(const CollisionData& collisionData)
 	}
 
 	return true;
+}
+
+cocos2d::Vec2 CollisionObject::getThisOrBindPosition()
+{
+	if (this->bindTarget == nullptr)
+	{
+		return this->getPosition();
+	}
+	else
+	{
+		return this->bindTarget->getPosition();
+	}
+}
+
+void CollisionObject::setThisOrBindPosition(cocos2d::Vec2 position)
+{
+	if (this->bindTarget == nullptr)
+	{
+		this->setPosition(position);
+	}
+	else
+	{
+		this->bindTarget->setPosition(position);
+	}
 }
 
 void CollisionObject::ClearCollisionObjects()

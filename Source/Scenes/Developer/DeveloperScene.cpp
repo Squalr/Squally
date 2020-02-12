@@ -48,6 +48,7 @@ DeveloperScene::DeveloperScene()
 	this->scrollPane = ScrollPane::create(Size(1280.0f, 768.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->chapterList = std::vector<ClickableTextNode*>();
 
+	this->chapterList.push_back(this->buildDebugButton("DBG Collision", MapResources::Dev_Collision));
 	this->chapterList.push_back(this->buildDebugButton("DBG Positions", MapResources::Dev_PositionBug));
 	this->chapterList.push_back(this->buildDebugButton("DBG Bounds", MapResources::Dev_Bounds));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
@@ -157,9 +158,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
+		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
 		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);
 	});
