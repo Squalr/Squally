@@ -100,17 +100,15 @@ private:
 
 	struct CollisionCorrections
 	{
-		cocos2d::Vec2 normalForce;
+		cocos2d::Vec2 corrections;
 
-		CollisionCorrections() : normalForce(cocos2d::Vec2::ZERO) { }
-		CollisionCorrections(cocos2d::Vec2 normalForce, int collisionCount) : normalForce(normalForce) { }
+		CollisionCorrections() : corrections(cocos2d::Vec2::ZERO) { }
 	};
 
 	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	bool collidesWith(CollisionObject* collisionObject);
-	void applyCollisionCorrections(CollisionObject* collisionObject);
 	void updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections);
 	bool isWithinZThreshold(CollisionObject* collisionObject);
 	cocos2d::Vec2 getThisOrBindPosition();

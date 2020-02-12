@@ -268,6 +268,91 @@ Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::t
 
 bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB)
 {
+	auto onSegment = [](Vec2 p, Vec2 q, Vec2 r) 
+	{ 
+		if (q.x <= std::max(p.x, r.x) && q.x >= std::min(p.x, r.x) && 
+			q.y <= std::max(p.y, r.y) && q.y >= std::min(p.y, r.y))
+		{
+			return true; 	
+		}
+
+		return false; 
+	};
+	
+	auto orientation = [](Vec2 p, Vec2 q, Vec2 r) 
+	{ 
+		float val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y); 
+	
+		if (val == 0.0f)
+		{
+			return 0;
+		}
+	
+		return (val > 0.0f) ? 1 : 2;
+	};
+
+	Vec2 p1 = std::get<0>(segmentA);
+	Vec2 q1 = std::get<1>(segmentA);
+	Vec2 p2 = std::get<0>(segmentB);
+	Vec2 q2 = std::get<1>(segmentB);
+
+	auto det = [=](float a, float b, float c, float d)
+	{
+		return a * d - b * c;
+	};
+
+    float x1mx2 = p1.x - q1.x;
+    float x3mx4 = p2.x - q2.x;
+    float y1my2 = p1.y - q1.y;
+    float y3my4 = p2.y - q2.y;
+
+    float denom = det(x1mx2, y1my2, x3mx4, y3my4);
+
+    if(denom == 0.0)
+    {
+        return false;
+    }
+
+    // Find the four orientations needed for general and special cases 
+    int o1 = orientation(p1, q1, p2); 
+    int o2 = orientation(p1, q1, q2); 
+    int o3 = orientation(p2, q2, p1); 
+    int o4 = orientation(p2, q2, q1); 
+  
+    // General case 
+    if (o1 != o2 && o3 != o4)
+	{
+        return true; 
+	}
+  
+    // Special Cases 
+    // p1, q1 and p2 are colinear and p2 lies on segment p1q1 
+    if (o1 == 0 && onSegment(p1, p2, q1))
+	{
+		return true;
+	}
+  
+    // p1, q1 and q2 are colinear and q2 lies on segment p1q1 
+    if (o2 == 0 && onSegment(p1, q2, q1))
+	{
+		return true;
+	}
+  
+    // p2, q2 and p1 are colinear and p1 lies on segment p2q2 
+    if (o3 == 0 && onSegment(p2, p1, q2))
+	{
+		return true;
+	}
+  
+     // p2, q2 and q1 are colinear and q1 lies on segment p2q2 
+    if (o4 == 0 && onSegment(p2, q1, q2))
+	{
+		return true;
+	}
+  
+    return false;
+
+	/*
 	Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(segmentA, segmentB);
 
 	// (0, 0) is our magic nubmer for "parallel non-intersecting". Trashy, but it works for our use cases.
@@ -279,6 +364,7 @@ bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<
 	}
 
 	return false;
+	*/
 }
 
 std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> AlgoUtils::shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments)

@@ -207,7 +207,7 @@ void CollisionObject::runPhysics(float dt)
 	// Apply gravity
 	if (this->gravityEnabled)
 	{
-		const Vec2 gravity = Vec2(0.0f, -768.0f);
+		const Vec2 gravity = Vec2(0.0f, -128.0f);
 
 		this->velocity.x += gravity.x * dt;
 
@@ -221,6 +221,8 @@ void CollisionObject::runPhysics(float dt)
 		}
 	}
 
+	Vec2 positionUpdates = Vec2::ZERO;
+
 	if (this->velocity != Vec2::ZERO)
 	{
 		// Apply dampening
@@ -230,12 +232,9 @@ void CollisionObject::runPhysics(float dt)
 		// Enforce constraints by calling setter
 		this->setVelocity(this->velocity);
 
-		Vec2 updatedPosition = this->getThisOrBindPosition();
+		positionUpdates = Vec2(this->velocity * dt);
 
-		updatedPosition.x += this->velocity.x * dt;
-		updatedPosition.y += this->velocity.y * dt;
-
-		this->setThisOrBindPosition(updatedPosition);
+		this->setThisOrBindPosition(this->getThisOrBindPosition() + positionUpdates);
 	}
 
 	CollisionCorrections collisionCorrections = CollisionCorrections();
@@ -263,10 +262,25 @@ void CollisionObject::runPhysics(float dt)
 
 				if (this->isDynamic && collisionResult == CollisionResult::CollideWithPhysics)
 				{
-					this->applyCollisionCorrections(collisionObject);
+					this->updateCollisionCorrections(collisionObject, &collisionCorrections);
 				}
 			}
 		}
+	}
+	
+	if (collisionCorrections.corrections != Vec2::ZERO)
+	{
+		Vec2 updatedPosition = this->getThisOrBindPosition();
+
+		// At most, corrections may only offset updates to velocity
+		collisionCorrections.corrections.x = 0.0f; // MathUtils::bound(collisionCorrections.corrections.x, 0.0f, -positionUpdates.x);
+		collisionCorrections.corrections.y = MathUtils::bound(
+			collisionCorrections.corrections.y,
+			0.0f,
+			-(positionUpdates.y < 0 ? std::floor(positionUpdates.y) : std::ceil(positionUpdates.y))
+		);
+
+		this->setThisOrBindPosition(updatedPosition + collisionCorrections.corrections);
 	}
 
 	/*
@@ -483,15 +497,13 @@ bool CollisionObject::collidesWith(CollisionObject* collisionObject)
 	return false;
 }
 
-void CollisionObject::applyCollisionCorrections(CollisionObject* collisionObject)
+void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections)
 {
 	Vec2 thisCoords = GameUtils::getWorldCoords(this);
 	Vec2 otherCoords = GameUtils::getWorldCoords(collisionObject);
 
 	std::tuple<cocos2d::Vec2, cocos2d::Vec2> currentSegment;
 	std::tuple<cocos2d::Vec2, cocos2d::Vec2> otherSegment;
-
-	Vec2 correctionOffset = Vec2::ZERO;
 
 	for (auto currentSegment : this->segments)
 	{
@@ -513,7 +525,6 @@ void CollisionObject::applyCollisionCorrections(CollisionObject* collisionObject
 					float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
 					float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
 
-					Vec2 updatedPosition = this->getThisOrBindPosition();
 					Vec2 correction = Vec2::ZERO;
 
 					if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
@@ -521,8 +532,8 @@ void CollisionObject::applyCollisionCorrections(CollisionObject* collisionObject
 						// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
 						if (thisDistanceA < thisDistanceB)
 						{
-							// correction = intersectionPoint - std::get<0>(currentSegment);
-							correction = std::get<0>(currentSegment) - intersectionPoint;
+							correction = intersectionPoint - std::get<0>(currentSegment);
+							// correction = std::get<0>(currentSegment) - intersectionPoint;
 						}
 						else
 						{
@@ -534,35 +545,21 @@ void CollisionObject::applyCollisionCorrections(CollisionObject* collisionObject
 					{
 						// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's dynamic,
 						// so instead we need to push this object away by a calculated amount
+						if (otherDistanceA < otherDistanceB)
+						{
+							// correction = intersectionPoint - std::get<0>(otherSegment);
+							correction = std::get<0>(otherSegment) - intersectionPoint;
+						}
+						else
+						{
+							// correction = intersectionPoint - std::get<1>(otherSegment);
+							correction = std::get<1>(otherSegment) - intersectionPoint;
+						}
 					}
 
+					collisionCorrections->corrections += correction;
 					thisCoords += correction;
-					this->setThisOrBindPosition(updatedPosition + correction);
 				}
-			}
-		}
-	}
-}
-
-void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections)
-{
-	Vec2 thisCoords = GameUtils::getWorldCoords(this);
-	Vec2 otherCoords = GameUtils::getWorldCoords(collisionObject);
-
-	std::tuple<cocos2d::Vec2, cocos2d::Vec2> currentSegment;
-	std::tuple<cocos2d::Vec2, cocos2d::Vec2> otherSegment;
-
-	for (auto segment : this->segments)
-	{
-		currentSegment = std::make_tuple(thisCoords + std::get<0>(segment), thisCoords + std::get<1>(segment));
-
-		for (auto otherSegment : collisionObject->segments)
-		{
-			otherSegment = std::make_tuple(otherCoords + std::get<0>(otherSegment), otherCoords + std::get<1>(otherSegment));
-
-			if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
-			{
-				collisionCorrections->normalForce += AlgoUtils::getSegmentNormal(currentSegment);
 			}
 		}
 	}

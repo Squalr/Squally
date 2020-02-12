@@ -78,6 +78,8 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 			this->dialogueCollision->setPosition(offset);
 		}
 
+		this->dialogueCollision->setPhysicsEnabled(false);
+
 		this->addChild(this->dialogueCollision);
 	}
 
@@ -249,18 +251,33 @@ void EntityDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool
 	{
 		this->showOptions();
 	}
+
+	if (this->dialogueCollision != nullptr)
+	{
+		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
+	}
 }
 
 void EntityDialogueBehavior::addDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.push_back(dialogueSet);
 	this->dialogueSetNode->addChild(dialogueSet);
+	
+	if (this->dialogueCollision != nullptr)
+	{
+		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
+	}
 }
 
 void EntityDialogueBehavior::removeDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.erase(std::find(this->dialogueSets.begin(), this->dialogueSets.end(), dialogueSet));
 	this->dialogueSetNode->removeChild(dialogueSet);
+
+	if (this->dialogueCollision != nullptr)
+	{
+		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
+	}
 }
 
 DialogueSet* EntityDialogueBehavior::getMainDialogueSet()
