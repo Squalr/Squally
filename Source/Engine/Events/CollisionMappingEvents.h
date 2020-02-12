@@ -17,10 +17,10 @@ public:
 	struct CollisionMapRequestArgs
 	{
 		std::string deserializedCollisionName;
-		CollisionObject* collisionObject;
+		std::function<void(int collisionType)> callback;
 
-		CollisionMapRequestArgs(std::string deserializedCollisionName, CollisionObject* collisionObject) :
-			deserializedCollisionName(deserializedCollisionName), collisionObject(collisionObject)
+		CollisionMapRequestArgs(std::string deserializedCollisionName, std::function<void(int collisionType)> callback) :
+			deserializedCollisionName(deserializedCollisionName), callback(callback)
 		{
 		}
 	};

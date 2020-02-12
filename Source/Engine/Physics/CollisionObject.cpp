@@ -9,8 +9,9 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
-#include "Engine/Events/ObjectEvents.h"
+#include "Engine/Events/CollisionEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -20,6 +21,8 @@ using namespace cocos2d;
 const std::string CollisionObject::MapKeyTypeCollision = "collision";
 const std::string CollisionObject::MapKeyCollisionTypeNone = "none";
 const std::string CollisionObject::MapKeyFriction = "friction";
+
+std::map<CollisionType, std::vector<CollisionObject*>> CollisionObject::CollisionObjects = std::map<CollisionType, std::vector<CollisionObject*>>();
 
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
@@ -39,10 +42,13 @@ CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector
 
 CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> shape, std::string collisionName, bool isDynamic, bool canRotate)
 {
-	CollisionObject* instance = CollisionObject::create(properties, shape, (CollisionType)0, isDynamic, canRotate);
+	CollisionObject* instance = nullptr;
 
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
-	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(collisionName, instance));
+	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(collisionName, [&](CollisionType collisionType)
+	{
+		instance = CollisionObject::create(properties, shape, collisionType, isDynamic, canRotate);
+	}));
 
 	return instance;
 }
@@ -69,7 +75,9 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate) :
 	super(properties)
 {
+	this->collisionType = collisionType;
 	this->shape = shape;
+	this->boundsRect = AlgoUtils::getPolygonRect(this->shape);
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->currentCollisions = std::vector<CollisionObject*>();
@@ -78,7 +86,6 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 	this->gravityEnabled = true;
 	this->gravityInversed = true;
 	this->contactUpdateCallback = nullptr;
-	this->onDebugPositionSet = nullptr;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
@@ -91,7 +98,6 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 		this->physicsBody->setCollisionBitmask(0);
 	*/
 
-	this->setCollisionType(collisionType);
 	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
 	this->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 }
@@ -104,6 +110,8 @@ void CollisionObject::onEnter()
 {
 	super::onEnter();
 
+	CollisionObject::RegisterCollisionObject(this);
+
 	this->currentCollisions.clear();
 
 	this->scheduleUpdate();
@@ -112,6 +120,13 @@ void CollisionObject::onEnter()
 void CollisionObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
+}
+
+void CollisionObject::onExit()
+{
+	super::onExit();
+
+	CollisionObject::UnregisterCollisionObject(this);
 }
 
 void CollisionObject::initializeListeners()
@@ -172,62 +187,40 @@ void CollisionObject::despawn()
 	*/
 }
 
-void CollisionObject::setCollisionType(CollisionType collisionType)
-{
-	/*
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setCategoryBitmask(collisionType);
-	}
-	*/
-}
-
 void CollisionObject::update(float dt)
 {
 	super::update(dt);
 
-	if (this->contactUpdateCallback != nullptr && !this->currentCollisions.empty())
-	{
-		this->contactUpdateCallback(this->currentCollisions, dt);
-	}
-	
+	this->runPhysics(dt);
+}
+
+void CollisionObject::runPhysics(float dt)
+{
+	Vec2 velocity = this->getVelocity();
+
+	// Apply gravity
 	/*
-	// Retry collision on objects that are not in the same depth, as they may have moved through z-space (cocos/chipmunk do not handle this automatically)
-	if (!this->passThroughCandidates.empty())
+	if (this->gravityEnabled && scene != nullptr && scene->getPhysicsWorld() != nullptr)
 	{
-		this->passThroughCandidatesIter = this->passThroughCandidates;
-		
-		for (auto candidate : this->passThroughCandidatesIter)
+		const Vec2 gravity = Director::getInstance()->getRunningScene()->getPhysicsWorld()->getGravity();
+
+		velocity.x += gravity.x * dt;
+
+		if (this->gravityInversed)
 		{
-			this->onContactRetry(candidate.second);
+			velocity.y += gravity.y * dt;
+		}
+		else
+		{
+			velocity.y -= gravity.y * dt;
 		}
 	}
 	*/
 
-	// if (this->physicsBody != nullptr && this->physicsBody->isDynamic())
+	const Vec2 oldPosition = this->bindTarget == nullptr ? this->getPosition() : this->bindTarget->getPosition();
+
+	if (velocity != Vec2::ZERO)
 	{
-		Vec2 velocity = this->getVelocity();
-		Scene* scene = Director::getInstance()->getRunningScene();
-
-		// Apply gravity
-		/*
-		if (this->gravityEnabled && scene != nullptr && scene->getPhysicsWorld() != nullptr)
-		{
-			const Vec2 gravity = Director::getInstance()->getRunningScene()->getPhysicsWorld()->getGravity();
-
-			velocity.x += gravity.x * dt;
-
-			if (this->gravityInversed)
-			{
-				velocity.y += gravity.y * dt;
-			}
-			else
-			{
-				velocity.y -= gravity.y * dt;
-			}
-		}
-		*/
-
 		// Apply dampening
 		velocity.x *= this->horizontalDampening;
 		velocity.y *= this->verticalDampening;
@@ -242,6 +235,37 @@ void CollisionObject::update(float dt)
 		else
 		{	this->bindTarget->setPositionX(this->bindTarget->getPositionX() + velocity.x * dt);
 			this->bindTarget->setPositionY(this->bindTarget->getPositionY() + velocity.y * dt);
+		}
+	}
+
+	CollisionResult result = CollisionResult::DoNothing;
+
+	for (auto events : this->collisionEvents)
+	{
+		CollisionType eventCollisionType = events.first;
+
+		for (auto collisionObject : CollisionObject::CollisionObjects[eventCollisionType])
+		{
+			if (this->collidesWith(collisionObject))
+			{
+				for (auto event : events.second)
+				{
+					CollisionResult eventResult = event.collisionEvent(CollisionData(collisionObject));
+
+					result = eventResult == CollisionResult::DoNothing ? result : eventResult;
+				}
+			}
+		}
+	}
+
+	if (result == CollisionResult::CollideWithPhysics)
+	{
+		if (this->bindTarget == nullptr)
+		{
+			this->setPosition(oldPosition);
+		}
+		else
+		{	this->bindTarget->setPosition(oldPosition);
 		}
 	}
 }
@@ -325,7 +349,7 @@ void CollisionObject::setVerticalDampening(float verticalDampening)
 	
 CollisionType CollisionObject::getCollisionType()
 {
-	return (CollisionType)0; // this->physicsBody == nullptr ? (CollisionType)0 : (CollisionType)this->physicsBody->getCategoryBitmask();
+	return this->collisionType;
 }
 
 std::vector<CollisionObject*> CollisionObject::getCurrentCollisions()
@@ -350,41 +374,25 @@ void CollisionObject::unbind()
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+	for (auto collisionType : collisionTypes)
 	{
-		CollisionType collisionType = *it;
-
 		this->addCollisionEvent(collisionType, this->collisionEvents, CollisionEvent(onCollision));
 	}
 }
 
 void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	for (auto it = collisionTypes.begin(); it != collisionTypes.end(); it++)
+	for (auto collisionType : collisionTypes)
 	{
-		CollisionType collisionType = *it;
-
 		this->addCollisionEvent(collisionType, this->collisionEndEvents, CollisionEvent(onCollisionEnd));
 	}
 }
 
 void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision)
 {
-	if (eventMap.find(collisionType) == eventMap.end())
-	{
-		eventMap[collisionType] = std::vector<CollisionEvent>();
-	}
-
 	eventMap[collisionType].push_back(onCollision);
-
-	/*
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setContactTestBitmask(this->physicsBody->getContactTestBitmask() | (int)collisionType);
-		this->physicsBody->setCollisionBitmask(this->physicsBody->getCollisionBitmask() | (int)collisionType);
-	}
-	*/
 }
+
 /*
 bool CollisionObject::onContactBegin(PhysicsContact &contact)
 {
@@ -521,6 +529,45 @@ bool CollisionObject::runContactEvents(std::map<CollisionType, std::vector<Colli
 	return (result == CollisionResult::CollideWithPhysics ? true : false);
 }
 
+bool CollisionObject::collidesWith(CollisionObject* collisionObject)
+{
+	if (collisionObject == this)
+	{
+		return false;
+	}
+	
+	Rect thisRect = this->boundsRect;
+	Rect otherRect = collisionObject->boundsRect;
+
+	thisRect.origin += GameUtils::getWorldCoords(this);
+	otherRect.origin += GameUtils::getWorldCoords(collisionObject);
+
+	bool intersects = thisRect.intersectsRect(otherRect);
+
+	if (intersects == true)
+	{
+		return true;
+	}
+
+	return false;
+
+	/*
+	if (this->getParent() == collisionObject->getParent())
+	{
+		return this->boundsRect.intersectsRect(collisionObject->boundsRect);
+	}
+	else
+	{
+		Rect thisRect = this->boundsRect;
+		Rect otherRect = collisionObject->boundsRect;
+
+		thisRect.origin += GameUtils::getWorldCoords(this);
+		otherRect.origin += GameUtils::getWorldCoords(collisionObject);
+
+		return thisRect.intersectsRect(otherRect);
+	}*/
+}
+
 bool CollisionObject::isWithinZThreshold(const CollisionData& collisionData)
 {
 	const float thisDepth = GameUtils::getDepth(this);
@@ -532,4 +579,35 @@ bool CollisionObject::isWithinZThreshold(const CollisionData& collisionData)
 	}
 
 	return true;
+}
+
+void CollisionObject::ClearCollisionObjects()
+{
+	CollisionObject::CollisionObjects.clear();
+}
+
+void CollisionObject::RegisterCollisionObject(CollisionObject* collisionObject)
+{
+	if (collisionObject == nullptr)
+	{
+		return;
+	}
+
+	CollisionObject::CollisionObjects[collisionObject->collisionType].push_back(collisionObject);
+}
+
+void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject)
+{
+	if (collisionObject == nullptr)
+	{
+		return;
+	}
+
+	CollisionObject::CollisionObjects[collisionObject->collisionType].erase(
+		std::remove(
+			CollisionObject::CollisionObjects[collisionObject->collisionType].begin(),
+			CollisionObject::CollisionObjects[collisionObject->collisionType].end(),
+			collisionObject
+		), CollisionObject::CollisionObjects[collisionObject->collisionType].end()
+	);
 }

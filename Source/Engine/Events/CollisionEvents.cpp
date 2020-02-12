@@ -8,4 +8,12 @@
 
 using namespace cocos2d;
 
-const std::string CollisionEvents::EventQueryCollisionObject = "EVENT_QUERY_COLLISION_OBJECT";
+const std::string CollisionEvents::EventQueryCollisionObjectPrefix = "EVENT_QUERY_COLLISION_OBJECT_";
+
+void CollisionEvents::QueryCollisionObjects(QueryCollisionObjectsArgs args)
+{
+    cocos2d::Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+        CollisionEvents::EventQueryCollisionObjectPrefix + std::to_string(args.bitmask),
+        &args
+    );
+}

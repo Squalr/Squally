@@ -41,6 +41,8 @@ void GlobalDirector::loadScene(Scene* scene)
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
 
+	CollisionObject::ClearCollisionObjects();
+
 	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
 		Director::getInstance()->runWithScene(scene);

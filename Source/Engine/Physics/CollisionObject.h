@@ -27,8 +27,8 @@ public:
 
 	enum class CollisionResult
 	{
-		DoNothing,
-		CollideWithPhysics
+		DoNothing = 0,
+		CollideWithPhysics = 1
 	};
 
 	struct CollisionData
@@ -51,7 +51,6 @@ public:
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
-	void setCollisionType(CollisionType collisionType);
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
 	void inverseGravity();
@@ -90,6 +89,7 @@ protected:
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
+	void onExit() override;
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
@@ -97,6 +97,9 @@ protected:
 
 private:
 	typedef GameObject super;
+	friend class GlobalDirector;
+
+	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	// bool onContactBegin(cocos2d::PhysicsContact& contact);
@@ -105,23 +108,32 @@ private:
 	// bool onContactEnd(cocos2d::PhysicsContact& contact);
 	bool runContactEvents(std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionResult defaultResult, const CollisionData& collisionData);
 	// CollisionData constructCollisionData(cocos2d::PhysicsContact& contact);
+	bool collidesWith(CollisionObject* collisionObject);
 	bool isWithinZThreshold(const CollisionData& collisionData);
 
+	static void ClearCollisionObjects();
+	static void RegisterCollisionObject(CollisionObject* collisionObject);
+	static void UnregisterCollisionObject(CollisionObject* collisionObject);
+
+	static std::map<CollisionType, std::vector<CollisionObject*>> CollisionObjects;
+
+	// Physics state
 	cocos2d::Vec2 velocity;
+	float horizontalDampening;
+	float verticalDampening;
 
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
-	std::vector<cocos2d::Vec2> shape;
-	GameObject* bindTarget;
-	float horizontalDampening;
-	float verticalDampening;
 	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;
 	std::map<CollisionObject*, CollisionData> passThroughCandidates;
 	std::map<CollisionObject*, CollisionData> passThroughCandidatesIter;
 	std::vector<CollisionObject*> currentCollisions;
+	std::vector<cocos2d::Vec2> shape;
+	cocos2d::Rect boundsRect;
+	CollisionType collisionType;
+	GameObject* bindTarget;
 	bool gravityEnabled;
 	bool gravityInversed;
 	bool debugInfoSpawned;
-	std::function<void()> onDebugPositionSet;
 	cocos2d::DrawNode* debugDrawNode;
 };
