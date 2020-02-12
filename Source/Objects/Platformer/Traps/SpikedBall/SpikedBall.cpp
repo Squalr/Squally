@@ -36,7 +36,7 @@ SpikedBall* SpikedBall::create(ValueMap& properties)
 SpikedBall::SpikedBall(ValueMap& properties) : super(properties)
 {
 	this->ball = Sprite::create(ObjectResources::Traps_SpikeBall_SpikeBall);
-	this->ballCollision = CollisionObject::create(PhysicsBody::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->ballCollision = CollisionObject::create(CollisionObject::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
 	{

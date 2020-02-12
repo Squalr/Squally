@@ -35,7 +35,7 @@ EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties
 	Size arrowHintSize = Size(properties.at(GameObject::MapKeyWidth).asFloat() + 768.0f, properties.at(GameObject::MapKeyHeight).asFloat() + 256.0f);
 	this->edgeArrows = std::vector<Sprite*>();
 	this->setInteractType(InteractType::Collision);
-	this->arrowHintCollision = CollisionObject::create(PhysicsBody::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->arrowHintCollision = CollisionObject::create(CollisionObject::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapPropertyDirection, Value("right")).asString();
 
 	for (int index = 0; index < EdgePortal::ArrowCount; index++)

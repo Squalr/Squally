@@ -44,11 +44,11 @@ Water::Water(ValueMap& properties) : super(properties)
 
 	if (customCollison == "")
 	{
-		this->waterCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, false, false);
+		this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, false, false);
 	}
 	else
 	{
-		this->waterCollision = CollisionObject::create(PhysicsBody::createBox(collisionSize), customCollison, false, false);
+		this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), customCollison, false, false);
 	}
 
 	this->waterCollision->setPositionY(-effectiveOffset / 2.0f);

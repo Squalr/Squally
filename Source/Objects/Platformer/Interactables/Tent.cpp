@@ -5,7 +5,6 @@
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsBody.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -46,7 +45,7 @@ Tent::Tent(ValueMap& properties) : super(properties)
 	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, false, false);
-	this->healCollision = CollisionObject::create(PhysicsBody::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->healCollision = CollisionObject::create(CollisionObject::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, false, false);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal4);
 	this->isAnimating = false;
 	
@@ -140,7 +139,7 @@ void Tent::runHealAnimation(bool reRun)
 	});
 }
 
-PhysicsBody* Tent::createTentTopCollision()
+std::vector<Vec2> Tent::createTentTopCollision()
 {
 	std::vector<Vec2> points = std::vector<Vec2>();
 
@@ -149,7 +148,5 @@ PhysicsBody* Tent::createTentTopCollision()
 	points.push_back(Vec2(0.0f, -256.0f));
 	points.push_back(Vec2(336.0f, -192.0f));
 
-	PhysicsBody* physicsBody = PhysicsBody::createPolygon(points.data(), points.size());
-
-	return physicsBody;
+	return points;
 }

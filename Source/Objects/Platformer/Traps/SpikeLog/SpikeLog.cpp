@@ -41,8 +41,8 @@ SpikeLog::SpikeLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikeLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikeLog_SpikedLog_00);
-	this->spikeCollision = CollisionObject::create(PhysicsBody::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
-	this->logCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->logCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);

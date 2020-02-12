@@ -7,7 +7,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Deserializers.h"
 #include "Engine/Camera/GameCamera.h"

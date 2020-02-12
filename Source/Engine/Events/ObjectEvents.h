@@ -52,7 +52,6 @@ public:
 class ObjectEvents
 {
 public:
-	static const std::string EventCollisonMapUpdated;
 	static const std::string EventQueryObject;
 	static const std::string EventQueryObjectByTagPrefix;
 	static const std::string EventBroadCastMapObjectStatePrefix;
@@ -129,8 +128,7 @@ public:
 
 		StateWriteArgs(GameObject* owner, std::string key, cocos2d::Value value) : owner(owner), key(key), value(value) { }
 	};
-
-	static void TriggerCollisionMapUpdated();
+	
 	static void TriggerBroadCastMapObjectState(std::string eventName, cocos2d::ValueMap args);
 	static void TriggerBindObjectToUI(RelocateObjectArgs args);
 	static void TriggerReparentBind(ReparentBindArgs args);

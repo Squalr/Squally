@@ -94,7 +94,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 			false,
 			false
 		);
-		this->chironCollision->getPhysicsBody()->setPositionOffset(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
+		this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
 
 		this->chiron->addChild(this->chironCollision);
 

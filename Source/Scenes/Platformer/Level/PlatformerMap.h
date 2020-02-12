@@ -33,8 +33,6 @@ private:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	void update(float dt) override;
-	void disableMap();
-	void enableMap();
 
 	GameHud* gameHud;
 	NotificationHud* notificationHud;

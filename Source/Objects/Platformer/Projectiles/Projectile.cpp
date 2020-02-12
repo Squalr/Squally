@@ -25,7 +25,7 @@ using namespace cocos2d;
 
 const std::string Projectile::ProjectileTag = "projectile";
 
-Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, int collisionType, bool allowHacking) : super(ValueMap())
+Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int collisionType, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
@@ -34,7 +34,7 @@ Projectile::Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, i
 	this->launchAcceleration = Vec3::ZERO;
 	this->speedMultiplier = Vec3::ONE;
 	this->spinSpeed = 0.0f;
-	this->collisionObject = CollisionObject::create(ValueMap(),
+	this->collisionObject = CollisionObject::create(
 		hitBox,
 		collisionType,
 		false,

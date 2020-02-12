@@ -31,7 +31,7 @@ private:
 	typedef HackableObject super;
 	void updateHeavenHug();
 	float getTravelHeight();
-	cocos2d::PhysicsBody* createSpikeCollision();
+	std::vector<cocos2d::Vec2>& createSpikeCollision();
 
 	volatile float travelDistance;
 	cocos2d::Node* heavenHugContainer;

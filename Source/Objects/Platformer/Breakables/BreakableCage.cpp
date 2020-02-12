@@ -30,10 +30,10 @@ BreakableCage* BreakableCage::create(ValueMap& properties)
 
 BreakableCage::BreakableCage(ValueMap& properties, int requiredHits) : super(properties, Size(196.0f, 112.0f), requiredHits)
 {
-	this->cageBottom = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->cageBottom = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->contentNode = Node::create();
-	this->cage = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
-	this->cageTop = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->cage = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->cageTop = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 	this->explosion = SmartAnimationSequenceNode::create();
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_WoodBreak_WoodBreak1);
 

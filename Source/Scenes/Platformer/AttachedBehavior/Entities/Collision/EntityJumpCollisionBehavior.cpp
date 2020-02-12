@@ -55,12 +55,12 @@ EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : su
 		{
 			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityJumpCollisionBehavior::JumpCollisionOffset);
 			this->jumpCollision->inverseGravity();
-			this->jumpCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->jumpCollision->setPosition(offset);
 		}
 		else
 		{
 			Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
-			this->jumpCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->jumpCollision->setPosition(offset);
 		}
 		
 		this->addChild(this->jumpCollision);

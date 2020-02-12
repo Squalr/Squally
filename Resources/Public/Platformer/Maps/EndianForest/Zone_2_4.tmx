@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1227">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1229">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -15,9 +15,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="970" name="temple-dark" type="texture" x="-983.092" y="-1019.98">
-   <polygon points="211.73,188.91 5990.52,178.552 6012.53,7276.73 205.624,7285.9"/>
-  </object>
+  <object id="1228" name="temple-dark" type="texture" x="-736" y="-816" width="5728" height="7008"/>
  </objectgroup>
  <objectgroup id="82" name="decor -8">
   <properties>

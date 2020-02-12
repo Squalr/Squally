@@ -56,7 +56,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 	else
 	{
 		this->dialogueCollision = CollisionObject::create(
-			PhysicsBody::createBox(this->entity->getEntitySize()),
+			CollisionObject::createBox(this->entity->getEntitySize()),
 			(CollisionType)PlatformerCollisionType::Trigger,
 			false,
 			false
@@ -70,12 +70,12 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		{
 			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 			this->dialogueCollision->inverseGravity();
-			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->dialogueCollision->setPosition(offset);
 		}
 		else
 		{
 			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->dialogueCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->dialogueCollision->setPosition(offset);
 		}
 
 		this->addChild(this->dialogueCollision);

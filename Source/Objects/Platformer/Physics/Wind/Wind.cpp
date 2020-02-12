@@ -50,7 +50,7 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = SmartParticles::create(ParticleResources::Gust);
-	this->windForce = CollisionObject::create(PhysicsBody::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, false, false);
+	this->windForce = CollisionObject::create(CollisionObject::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, false, false);
 
 	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setGrouped();

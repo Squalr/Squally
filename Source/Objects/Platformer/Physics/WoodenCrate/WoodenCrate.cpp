@@ -34,7 +34,7 @@ WoodenCrate* WoodenCrate::create(ValueMap& properties)
 WoodenCrate::WoodenCrate(ValueMap& properties) : super(properties)
 {
 	this->box = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->boxCollision = CollisionObject::create(PhysicsBody::createBox(Size(160.0f, 154.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->boxCollision = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 154.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 
 	this->boxCollision->addChild(this->box);
 	this->addChild(this->boxCollision);

@@ -3,11 +3,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Hackables/HackableObject.h"
 
-namespace cocos2d
-{
-	class PhysicsBody;
-};
-
 class PlatformerEntity;
 
 class Projectile : public HackableObject
@@ -29,7 +24,7 @@ public:
 	static const std::string ProjectileTag;
 	
 protected:
-	Projectile(PlatformerEntity* caster, cocos2d::PhysicsBody* hitBox, int collisionType, bool allowHacking);
+	Projectile(PlatformerEntity* caster, std::vector<cocos2d::Vec2>& hitBox, int collisionType, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;

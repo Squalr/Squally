@@ -4,7 +4,6 @@
 
 namespace cocos2d
 {
-	class PhysicsBody;
 	class Sprite;
 }
 
@@ -32,7 +31,7 @@ private:
 	typedef HackableObject super;
 
 	void runHealAnimation(bool reRun = false);
-	cocos2d::PhysicsBody* createTentTopCollision();
+	std::vector<cocos2d::Vec2> createTentTopCollision();
 
 	cocos2d::Sprite* tentBack;
 	SmartAnimationSequenceNode* healAnimation;

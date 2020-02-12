@@ -41,9 +41,6 @@ void GlobalDirector::loadScene(Scene* scene)
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
 
-	// Different scenes may have different physics collision flags, clean up before scene changes
-	CollisionObject::ClearInverseMap();
-
 	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{
 		Director::getInstance()->runWithScene(scene);

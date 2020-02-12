@@ -51,5 +51,7 @@ private:
 	void setPoints(std::vector<cocos2d::Vec2> points);
 	void buildTextures();
 
+	bool useClipping;
+
 	cocos2d::Node* infillTexturesNode;
 };

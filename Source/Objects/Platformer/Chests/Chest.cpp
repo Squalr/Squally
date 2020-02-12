@@ -23,7 +23,7 @@ const std::string Chest::SaveKeyIsOpen = "SAVE_KEY_IS_OPEN";
 
 Chest::Chest(cocos2d::ValueMap& properties) : super(properties)
 {
-	this->interactCollision = CollisionObject::create(PhysicsBody::createBox(Size(128.0f, 96.0f)), (CollisionType)PlatformerCollisionType::Collectable, false, false);
+	this->interactCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 96.0f)), (CollisionType)PlatformerCollisionType::Collectable, false, false);
 	this->chestOpen = Node::create();
 	this->chestClosed = Node::create();
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));

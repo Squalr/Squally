@@ -33,7 +33,7 @@ TempleDoor* TempleDoor::create(ValueMap& properties)
 
 TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
-	this->topCollision = CollisionObject::create(PhysicsBody::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, false, false);
+	this->topCollision = CollisionObject::create(CollisionObject::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, false, false);
 	this->emblem = nullptr;
 	this->emblemOffset = Vec2::ZERO;
 	this->doorOpenSound = WorldSound::create();

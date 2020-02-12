@@ -164,9 +164,7 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 }
 END_NO_OPTIMIZE
 
-PhysicsBody* HeavenHug::createSpikeCollision()
+std::vector<Vec2>& HeavenHug::createSpikeCollision()
 {
-	PhysicsBody* physicsBody = PhysicsBody::createBox(Size(180.0f, 32.0f));
-
-	return physicsBody;
+	return std::vector<Vec2>();
 }

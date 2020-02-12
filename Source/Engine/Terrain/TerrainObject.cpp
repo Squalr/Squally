@@ -307,14 +307,23 @@ void TerrainObject::buildCollision()
 		auto itClone = it;
 		std::tuple<Vec2, Vec2> segment = *it;
 		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->collisionSegments.end() ? this->collisionSegments[0] : (*itClone);
+
+		std::vector<Vec2> shape = std::vector<Vec2>();
+
+		shape.push_back(std::get<0>(segment));
+		shape.push_back(std::get<1>(segment));
+
+		/*
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createEdgeSegment(std::get<0>(*it), std::get<1>(*it), material, 2.0f);
+		*/
+		
 		CollisionObject* collisionObject = nullptr;
 
 		if (deserializedCollisionName != "")
 		{
-			collisionObject = CollisionObject::create(ValueMap(), physicsBody, deserializedCollisionName, false, false);
+			collisionObject = CollisionObject::create(shape, deserializedCollisionName, false, false);
 		}
 		else
 		{
@@ -322,20 +331,20 @@ void TerrainObject::buildCollision()
 			
 			if ((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle)))
 			{
-				collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
+				collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::PassThrough, false, false);
 			}
 			else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
 			{
 				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
-					collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
+					collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::SolidRoof, false, false);
 				}
 			}
 			else
 			{
 				if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 				{
-					collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::Solid, false, false);
+					collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::Solid, false, false);
 				}
 			}
 		}
@@ -352,10 +361,13 @@ void TerrainObject::buildCollision()
 	{
 		const float Radius = 32.0f;
 
+		/*
 		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
 		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
 		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
-		CollisionObject* collisionObject = CollisionObject::create(ValueMap(), physicsBody, (CollisionType)EngineCollisionTypes::Intersection, false, false);
+		*/
+
+		CollisionObject* collisionObject = CollisionObject::create(CollisionObject::createCircle(Radius), (CollisionType)EngineCollisionTypes::Intersection, false, false);
 
 		this->collisionNode->addChild(collisionObject);
 	}

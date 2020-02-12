@@ -231,29 +231,23 @@ void PendulumBlade::buildChain()
 	this->bladeChain->addChild(blade);
 }
 
-PhysicsBody* PendulumBlade::createBladeCollision()
+std::vector<Vec2>& PendulumBlade::createBladeCollision()
 {
 	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
 
-	std::vector<Vec2> leftPoints = std::vector<Vec2>();
+	std::vector<Vec2> points = std::vector<Vec2>();
 
-	leftPoints.push_back(Vec2(0.0f, 8.0f));
-	leftPoints.push_back(Vec2(-212.0f, 64.0f));
-	leftPoints.push_back(Vec2(-160.0f, -32.0f));
-	leftPoints.push_back(Vec2(-96.0f, -64.0f));
-	leftPoints.push_back(Vec2(0.0f, -80.0f));
+	points.push_back(Vec2(0.0f, 8.0f));
+	points.push_back(Vec2(-212.0f, 64.0f));
+	points.push_back(Vec2(-160.0f, -32.0f));
+	points.push_back(Vec2(-96.0f, -64.0f));
+	points.push_back(Vec2(0.0f, -80.0f));
 
-	std::vector<Vec2> rightPoints = std::vector<Vec2>();
+	points.push_back(Vec2(0.0f, 8.0f));
+	points.push_back(Vec2(212.0f, 64.0f));
+	points.push_back(Vec2(160.0f, -32.0f));
+	points.push_back(Vec2(96.0f, -64.0f));
+	points.push_back(Vec2(0.0f, -80.0f));
 
-	rightPoints.push_back(Vec2(0.0f, 8.0f));
-	rightPoints.push_back(Vec2(212.0f, 64.0f));
-	rightPoints.push_back(Vec2(160.0f, -32.0f));
-	rightPoints.push_back(Vec2(96.0f, -64.0f));
-	rightPoints.push_back(Vec2(0.0f, -80.0f));
-
-	PhysicsBody* physicsBody = PhysicsBody::createPolygon(leftPoints.data(), leftPoints.size());
-
-	physicsBody->addShape(PhysicsShapePolygon::create(rightPoints.data(), rightPoints.size()));
-
-	return physicsBody;
+	return points;
 }

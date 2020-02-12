@@ -5,7 +5,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/physics/CCPhysicsBody.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/Deserializers/LayerDeserializer.h"
@@ -154,10 +153,10 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 
 		const float EdgeThickness = 256.0f;
 
-		CollisionObject* topCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
-		CollisionObject* bottomCollision = CollisionObject::create(PhysicsBody::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, false, false);
-		CollisionObject* leftCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
-		CollisionObject* rightCollision = CollisionObject::create(PhysicsBody::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::KillPlane, false, false);
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, false, false);
 
 		edgeCollisionLayer->addChild(topCollision);
 		edgeCollisionLayer->addChild(leftCollision);

@@ -50,7 +50,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
 	this->smokeParticles = SmartParticles::create(ParticleResources::Objects_Smoke, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
-	this->flailCollision = CollisionObject::create(PhysicsBody::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->flailCollision = CollisionObject::create(CollisionObject::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, false, false);
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 

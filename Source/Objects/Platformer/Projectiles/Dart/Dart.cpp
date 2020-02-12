@@ -25,7 +25,7 @@ Dart* Dart::create(float dartRotation, float dartSpeed)
 	return instance;
 }
 
-Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, PhysicsBody::createBox(Size(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
+Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject::createBox(Size(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
 {
 	this->dartRotation = dartRotation;
 	this->dartSpeed = dartSpeed;

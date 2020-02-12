@@ -138,7 +138,7 @@ public:
 
 protected:
 	TerrainObject(cocos2d::ValueMap& properties, TerrainData terrainData);
-	~TerrainObject();
+	virtual ~TerrainObject();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

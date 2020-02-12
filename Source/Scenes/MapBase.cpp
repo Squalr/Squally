@@ -6,7 +6,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCEventMouse.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Deserializers/LayerDeserializer.h"

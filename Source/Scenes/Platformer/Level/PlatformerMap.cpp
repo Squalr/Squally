@@ -5,7 +5,6 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Deserializers.h"
 #include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
@@ -62,7 +61,7 @@ PlatformerMap* PlatformerMap::create(std::string mapResource, std::string transi
 
 PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 {
-	if (!PlatformerMap::initWithPhysics())
+	if (!PlatformerMap::init())
 	{
 		return;
 		// throw std::uncaught_exceptions();
@@ -193,7 +192,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(true);
-			this->disableMap();
+			this->mapNode->setVisible(false);
 			this->cipher->openCipher(args->cipherPuzzleData);
 			GameUtils::focus(this->cipher);
 		}
@@ -206,7 +205,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->cipher->setVisible(false);
-			this->enableMap();
+			this->mapNode->setVisible(true);
 
 			// Reinstate this if music is ever added to Cipher:
 			// MusicPlayer::popMusic();
@@ -222,7 +221,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
-			this->disableMap();
+			this->mapNode->setVisible(false);
 			
 			GameUtils::focus(this->hexus);
 		}
@@ -235,7 +234,7 @@ void PlatformerMap::initializeListeners()
 		if (args != nullptr)
 		{
 			this->hexus->setVisible(false);
-			this->enableMap();
+			this->mapNode->setVisible(true);
 			
 			GameUtils::focus(this);
 		}
@@ -390,16 +389,4 @@ bool PlatformerMap::loadMap(std::string mapResource)
 	});
 
 	return super::loadMap(mapResource);
-}
-
-void PlatformerMap::disableMap()
-{
-	this->mapNode->setVisible(false);
-	this->getPhysicsWorld()->pause();
-}
-
-void PlatformerMap::enableMap()
-{
-	this->mapNode->setVisible(true);
-	this->getPhysicsWorld()->resume();
 }

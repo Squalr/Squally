@@ -54,12 +54,12 @@ EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : su
 		{
 			Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 			this->headCollision->inverseGravity();
-			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->headCollision->setPosition(offset);
 		}
 		else
 		{
 			Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->headCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->headCollision->setPosition(offset);
 		}
 		
 		this->addChild(this->headCollision);

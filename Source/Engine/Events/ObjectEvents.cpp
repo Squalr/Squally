@@ -8,7 +8,6 @@
 
 using namespace cocos2d;
 
-const std::string ObjectEvents::EventCollisonMapUpdated = "EVENT_COLLISION_MAP_UPDATED";
 const std::string ObjectEvents::EventQueryObject = "EVENT_QUERY_OBJECT";
 const std::string ObjectEvents::EventQueryObjectByTagPrefix = "EVENT_QUERY_OBJECT_BY_TAG_";
 const std::string ObjectEvents::EventBroadCastMapObjectStatePrefix = "EVENT_BROADCAST_MAP_OBJECT_STATE_";
@@ -22,13 +21,6 @@ const std::string ObjectEvents::EventSpawnObjectDelegator = "EVENT_SPAWN_OBJECT_
 const std::string ObjectEvents::EventWriteStatePrefix = "EVENT_WRITE_OBJECT_STATE_";
 
 unsigned long long ObjectEvents::WatchId = 0;
-
-void ObjectEvents::TriggerCollisionMapUpdated()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		ObjectEvents::EventCollisonMapUpdated
-	);
-}
 
 void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMap args)
 {

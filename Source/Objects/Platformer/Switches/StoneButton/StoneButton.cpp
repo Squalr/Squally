@@ -41,7 +41,7 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
-	this->buttonCollision = CollisionObject::create(PhysicsBody::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
+	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, false, false);
 
 	this->maxDefaultButtonPosition = 48.0f;
 

@@ -38,7 +38,7 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_WoodBreak_WoodBreak1);
 	this->color = GameUtils::getKeyOrDefault(this->properties, Vase::MapPropertyColor, Value("yellow")).asString();
 	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
-	this->vaseBroken = CollisionObject::create(PhysicsBody::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
 
 	if (this->color == "blue")
 	{

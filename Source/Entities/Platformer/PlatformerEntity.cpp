@@ -6,7 +6,6 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Engine/Animations/AnimationPart.h"

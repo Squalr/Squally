@@ -5,7 +5,6 @@
 #include "cocos/2d/CCClippingNode.h"
 #include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCScene.h"
-#include "cocos/physics/CCPhysicsWorld.h"
 #include "cocos/platform/CCFileUtils.h"
 
 #include "Engine/UI/UIBoundObject.h"
@@ -20,17 +19,6 @@ void GameUtils::pause(Node *node)
 		return;
 	}
 
-	// If the node is a scene node, pause physics
-	if (dynamic_cast<const Scene*>(node) != nullptr)
-	{
-		const Scene* scene = dynamic_cast<const Scene*>(node);
-
-		if (scene->getPhysicsWorld() != nullptr)
-		{
-			scene->getPhysicsWorld()->setSpeed(0.0f);
-		}
-	}
-
 	node->pause();
 
 	for (const auto &child : node->getChildren())
@@ -41,17 +29,6 @@ void GameUtils::pause(Node *node)
 
 void GameUtils::resume(Node *node)
 {
-	// If the node is a scene node, resume physics
-	if (dynamic_cast<const Scene*>(node) != nullptr)
-	{
-		Scene* scene = (Scene*)node;
-
-		if (scene->getPhysicsWorld() != nullptr)
-		{
-			scene->getPhysicsWorld()->setSpeed(1.0f);
-		}
-	}
-
 	node->resume();
 
 	for (const auto &child : node->getChildren())

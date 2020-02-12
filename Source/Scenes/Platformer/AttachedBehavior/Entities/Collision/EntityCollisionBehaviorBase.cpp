@@ -34,12 +34,12 @@ EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int 
 		{
 			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
 			this->entityCollision->inverseGravity();
-			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->entityCollision->setPosition(offset);
 		}
 		else
 		{
 			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-			this->entityCollision->getPhysicsBody()->setPositionOffset(offset);
+			this->entityCollision->setPosition(offset);
 		}
 
 		this->addChild(this->entityCollision);
