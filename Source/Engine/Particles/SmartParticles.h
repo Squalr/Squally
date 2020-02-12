@@ -55,5 +55,6 @@ private:
 
 	cocos2d::Rect boundsRect;
 	cocos2d::DrawNode* debugDrawNode;
+	cocos2d::Node* cullContainer;
 	cocos2d::ParticleSystem* particles;
 };

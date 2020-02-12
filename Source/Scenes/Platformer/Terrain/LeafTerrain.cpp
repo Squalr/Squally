@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/LeafTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ LeafTerrain* LeafTerrain::create(ValueMap& properties)
 LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return LeafTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		LeafTerrain::MapKeyTerrainType,
 		TextureResources::LeafTexture,

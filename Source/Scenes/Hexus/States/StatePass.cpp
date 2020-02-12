@@ -149,34 +149,24 @@ void StatePass::onEnter()
 	this->playerChoiceLocked = false;
 	this->enemyChoiceLocked = false;
 
-	this->passParticles->setVisible(false);
 	// Default this button to visible
 	this->passButton->setOpacity(255);
 	this->passSprite->setOpacity(0);
 	this->passPanel->setOpacity(0);
 	this->passLabel->setOpacity(0);
 	this->enemyPassSprite->setOpacity(0);
-	this->enemyPassParticles->setVisible(false);
 
-	this->lastStandParticles->setVisible(false);
 	this->lastStandButton->setOpacity(0);
 	this->lastStandSprite->setOpacity(0);
 	this->lastStandPanel->setOpacity(0);
 	this->lastStandLabel->setOpacity(0);
 	this->enemyLastStandSprite->setOpacity(0);
-	this->enemyLastStandParticles->setVisible(false);
 
-	this->claimVictoryParticles->setVisible(false);
 	this->claimVictoryButton->setOpacity(0);
 	this->claimVictorySprite->setOpacity(0);
 	this->claimVictoryPanel->setOpacity(0);
 	this->claimVictoryLabel->setOpacity(0);
 	this->enemyClaimVictorySprite->setOpacity(0);
-	this->enemyClaimVictoryParticles->setVisible(false);
-
-	this->passParticles->start();
-	this->lastStandParticles->start();
-	this->claimVictoryParticles->start();
 }
 
 void StatePass::initializePositions()
@@ -242,7 +232,6 @@ void StatePass::onPassClick(GameState* gameState)
 void StatePass::hideAndDisableAllButtons()
 {
 	// Pass
-	this->passParticles->setVisible(false);
 	this->passSprite->runAction(FadeTo::create(0.25f, 0));
 	this->passButton->runAction(FadeTo::create(0.25f, 0));
 	this->passButton->disableInteraction();
@@ -252,7 +241,6 @@ void StatePass::hideAndDisableAllButtons()
 	this->onPassMouseOut();
 
 	// Last stand
-	this->lastStandParticles->setVisible(false);
 	this->lastStandSprite->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandButton->runAction(FadeTo::create(0.25f, 0));
 	this->lastStandButton->disableInteraction();
@@ -262,7 +250,6 @@ void StatePass::hideAndDisableAllButtons()
 	this->onLastStandMouseOut();
 
 	// Claim victory
-	this->claimVictoryParticles->setVisible(false);
 	this->claimVictorySprite->runAction(FadeTo::create(0.25f, 0));
 	this->claimVictoryButton->runAction(FadeTo::create(0.25f, 0));
 	this->claimVictoryButton->disableInteraction();
@@ -275,13 +262,10 @@ void StatePass::hideAndDisableAllButtons()
 void StatePass::hideOpponenentPassSprites()
 {
 	this->enemyPassSprite->runAction(FadeTo::create(0.25f, 0));
-	this->enemyPassParticles->setVisible(false);
 
 	this->enemyLastStandSprite->runAction(FadeTo::create(0.25f, 0));
-	this->enemyLastStandParticles->setVisible(false);
 
 	this->enemyClaimVictorySprite->runAction(FadeTo::create(0.25f, 0));
-	this->enemyClaimVictoryParticles->setVisible(false);
 }
 
 void StatePass::enablePassButtonInteraction(GameState* gameState)
@@ -310,19 +294,16 @@ void StatePass::enableClaimVictoryButtonInteraction(GameState* gameState)
 
 void StatePass::showPassButton()
 {
-	this->passParticles->setVisible(false);
 	this->passButton->runAction(FadeTo::create(0.25f, 255));
 }
 
 void StatePass::showLastStandButton()
 {
-	this->lastStandParticles->setVisible(false);
 	this->lastStandButton->runAction(FadeTo::create(0.25f, 255));
 }
 
 void StatePass::showClaimVictoryButton()
 {
-	this->claimVictoryParticles->setVisible(false);
 	this->claimVictoryButton->runAction(FadeTo::create(0.25f, 255));
 }
 
@@ -366,6 +347,13 @@ void StatePass::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 
+	this->lastStandParticles->stop(1.0f);
+	this->claimVictoryParticles->stop(1.0f);
+	this->passParticles->stop(1.0f);
+	this->enemyLastStandParticles->stop(1.0f);
+	this->enemyClaimVictoryParticles->stop(1.0f);
+	this->enemyPassParticles->stop(1.0f);
+
 	if (gameState->playerPassed && !this->playerChoiceLocked)
 	{
 		this->playerChoiceLocked = true;
@@ -373,17 +361,17 @@ void StatePass::onAnyStateChange(GameState* gameState)
 
 		if (gameState->isPlayerLastStandCondition())
 		{
-			this->lastStandParticles->setVisible(true);
+			this->lastStandParticles->start();
 			this->lastStandSprite->runAction(FadeTo::create(0.25f, 255));
 		}
 		else if (gameState->isPlayerClaimVictoryCondition())
 		{
-			this->claimVictoryParticles->setVisible(true);
+			this->claimVictoryParticles->start();
 			this->claimVictorySprite->runAction(FadeTo::create(0.25f, 255));
 		}
 		else
 		{
-			this->passParticles->setVisible(true);
+			this->passParticles->start();
 			this->passSprite->runAction(FadeTo::create(0.25f, 255));
 		}
 	}
@@ -394,18 +382,18 @@ void StatePass::onAnyStateChange(GameState* gameState)
 
 		if (gameState->isEnemyLastStandCondition())
 		{
-			this->enemyLastStandParticles->setVisible(true);
 			this->enemyLastStandSprite->runAction(FadeTo::create(0.25f, 255));
+			this->enemyLastStandParticles->start();
 		}
 		else if (gameState->isEnemyClaimVictoryCondition())
 		{
-			this->enemyClaimVictoryParticles->setVisible(true);
 			this->enemyClaimVictorySprite->runAction(FadeTo::create(0.25f, 255));
+			this->enemyClaimVictoryParticles->start();
 		}
 		else
 		{
-			this->enemyPassParticles->setVisible(true);
 			this->enemyPassSprite->runAction(FadeTo::create(0.25f, 255));
+			this->enemyPassParticles->start();
 		}
 	}
 

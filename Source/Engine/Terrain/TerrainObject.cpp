@@ -20,6 +20,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Terrain/TextureObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -101,7 +102,26 @@ void TerrainObject::onEnter()
 	super::onEnter();
 
 	this->initResources();
-	this->setPoints(this->polylinePoints);
+
+	if (this->polylinePoints.empty())
+	{
+		Size size = Size(
+			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+		);
+
+		this->setPoints(std::vector<Vec2>({
+			Vec2(-size.width / 2.0f, -size.height / 2.0f),
+			Vec2(-size.width / 2.0f, size.height / 2.0f),
+			Vec2(size.width / 2.0f, size.height / 2.0f),
+			Vec2(size.width / 2.0f, -size.height / 2.0f)
+		}));
+	}
+	else
+	{
+		this->setPoints(this->polylinePoints);
+	}
+
 	this->cullCollision();
 	this->rebuildTerrain(terrainData);
 	this->optimizationHideOffscreenTerrain();
@@ -219,6 +239,10 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 	this->collisionSegments = AlgoUtils::shrinkSegments(this->segments);
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 	this->infillTriangles = this->textureTriangles;
+
+	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
+
+	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 }
 
 void TerrainObject::rebuildTerrain(TerrainData terrainData)
@@ -375,46 +399,13 @@ void TerrainObject::buildCollision()
 
 void TerrainObject::buildInnerTextures()
 {
-	this->infillTexturesNode->removeAllChildren();
-
-	if (this->textureTriangles.empty())
+	if (this->terrainData.textureFactory != nullptr)
 	{
-		return;
+		TextureObject* textures = this->terrainData.textureFactory(this->properties);
+
+		this->infillTexturesNode->removeAllChildren();
+		this->infillTexturesNode->addChild(textures);
 	}
-
-	DrawNode* stencil = DrawNode::create();
-
-	for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
-	{
-		AlgoUtils::Triangle triangle = *it;
-
-		stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
-	}
-
-	// Create parameters to repeat the texture
-	Texture2D::TexParams params = Texture2D::TexParams();
-	params.minFilter = GL_LINEAR;
-	params.magFilter = GL_LINEAR;
-	params.wrapS = GL_REPEAT;
-	params.wrapT = GL_REPEAT;
-
-	Sprite* texture = Sprite::create(this->terrainData.textureResource);
-	Rect drawRect = AlgoUtils::getPolygonRect(this->points);
-
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
-
-	this->debugDrawNode->drawRect(drawRect.origin, drawRect.origin + drawRect.size, Color4F::GRAY);
-
-	texture->setAnchorPoint(Vec2(0.0f, 0.0f));
-	texture->getTexture()->setTexParameters(params);
-	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width - drawRect.origin.x, drawRect.size.height - drawRect.origin.y));
-
-	SmartClippingNode* clip = SmartClippingNode::create(texture, stencil);
-
-	clip->disableAllowDebugDraw();
-
-	this->infillTexturesNode->addChild(clip);
 }
 
 void TerrainObject::buildInfill(Color4B infillColor)
@@ -983,6 +974,17 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 	}
 
 	return false;
+}
+
+ValueMap TerrainObject::transformPropertiesForTexture(cocos2d::ValueMap& properties)
+{
+	ValueMap textureProperties = properties;
+
+	textureProperties[GameObject::MapKeyType] = TextureObject::MapKeyTypeTexture;
+	textureProperties[GameObject::MapKeyXPosition] = Value(0.0f);
+	textureProperties[GameObject::MapKeyYPosition] = Value(0.0f);
+
+	return textureProperties;
 }
 
 void TerrainObject::optimizationHideOffscreenTerrain()

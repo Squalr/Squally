@@ -35,7 +35,7 @@ public:
 
 protected:
 	TextureObject(cocos2d::ValueMap& properties, TextureData terrainData);
-	~TextureObject();
+	virtual ~TextureObject();
 
 	TextureData terrainData;
 	bool isHollow;

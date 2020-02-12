@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MarbleDarkTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ MarbleDarkTerrain* MarbleDarkTerrain::create(ValueMap& properties)
 MarbleDarkTerrain::MarbleDarkTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return MarbleDarkTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		MarbleDarkTerrain::MapKeyTerrainType,
 		TextureResources::MarbleDarkTexture,

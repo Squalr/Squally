@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/ShadeGrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& properties)
 ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return ShadeGrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		ShadeGrassTerrain::MapKeyTerrainType,
 		TextureResources::ShadeGrassTexture,

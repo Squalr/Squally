@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/IceTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ IceTerrain* IceTerrain::create(ValueMap& properties)
 IceTerrain::IceTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return IceTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		IceTerrain::MapKeyTerrainType,
 		TextureResources::IceTexture,

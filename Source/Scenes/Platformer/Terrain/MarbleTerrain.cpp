@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MarbleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ MarbleTerrain* MarbleTerrain::create(ValueMap& properties)
 MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return MarbleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		MarbleTerrain::MapKeyTerrainType,
 		TextureResources::MarbleTexture,

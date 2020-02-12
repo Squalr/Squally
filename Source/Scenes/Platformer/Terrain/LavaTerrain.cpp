@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/LavaTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ LavaTerrain* LavaTerrain::create(ValueMap& properties)
 LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return LavaTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		LavaTerrain::MapKeyTerrainType,
 		TextureResources::LavaTexture,

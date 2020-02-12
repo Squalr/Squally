@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/ShipTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ ShipTerrain* ShipTerrain::create(ValueMap& properties)
 ShipTerrain::ShipTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return ShipTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		ShipTerrain::MapKeyTerrainType,
 		TextureResources::ShipTexture,

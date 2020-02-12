@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/TempleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ TempleTerrain* TempleTerrain::create(ValueMap& properties)
 TempleTerrain::TempleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return TempleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		TempleTerrain::MapKeyTerrainType,
 		TextureResources::TempleTexture,

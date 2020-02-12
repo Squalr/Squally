@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/DarkGrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ DarkGrassTerrain* DarkGrassTerrain::create(ValueMap& properties)
 DarkGrassTerrain::DarkGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return DarkGrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		DarkGrassTerrain::MapKeyTerrainType,
 		TextureResources::DarkGrassTexture,

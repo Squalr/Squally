@@ -233,7 +233,7 @@ void HackableObject::onSensingDisable()
 {
 	if (this->sensingParticles != nullptr)
 	{
-		this->getSensingParticles()->stop();
+		this->getSensingParticles()->stop(1.5f);
 	}
 }
 

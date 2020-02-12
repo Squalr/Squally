@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/TempleGreenTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ TempleGreenTerrain* TempleGreenTerrain::create(ValueMap& properties)
 TempleGreenTerrain::TempleGreenTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return TempleGreenTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		TempleGreenTerrain::MapKeyTerrainType,
 		TextureResources::TempleGreenTexture,

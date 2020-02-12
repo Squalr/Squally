@@ -22,6 +22,7 @@ SmartParticles* SmartParticles::create(std::string particleResource, CullInfo cu
 
 SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) : super()
 {
+	this->cullContainer = Node::create();
 	this->particles = ParticleSystemQuad::create(particleResource);
 	this->debugDrawNode = DrawNode::create();
 	this->cullInfo = cullInfo;
@@ -35,8 +36,9 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 		this->debugDrawNode->drawRect(-Vec2(this->cullInfo.size) / 2.0f, Vec2(this->cullInfo.size) / 2.0f, Color4F::GREEN);
 	}
 
+	this->cullContainer->addChild(this->particles);
+	this->addChild(this->cullContainer);
 	this->addChild(this->debugDrawNode);
-	this->addChild(this->particles);
 }
 
 SmartParticles::~SmartParticles()
@@ -206,10 +208,10 @@ void SmartParticles::optimizationHideOffscreenParticles()
 
 	if (cameraRect.intersectsRect(thisRect))
 	{
-		this->particles->setVisible(true);
+		this->cullContainer->setVisible(true);
 	}
 	else
 	{
-		this->particles->setVisible(false);
+		this->cullContainer->setVisible(false);
 	}
 }

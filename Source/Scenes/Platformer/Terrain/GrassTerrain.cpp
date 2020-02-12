@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/GrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ GrassTerrain* GrassTerrain::create(ValueMap& properties)
 GrassTerrain::GrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return GrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		GrassTerrain::MapKeyTerrainType,
 		TextureResources::GrassTexture,

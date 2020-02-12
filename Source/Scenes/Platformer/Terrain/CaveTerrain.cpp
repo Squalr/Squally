@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/CaveTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ CaveTerrain* CaveTerrain::create(ValueMap& properties)
 CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return CaveTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		CaveTerrain::MapKeyTerrainType,
 		TextureResources::CaveTexture,

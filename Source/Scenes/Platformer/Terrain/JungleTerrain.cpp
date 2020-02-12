@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/JungleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ JungleTerrain* JungleTerrain::create(ValueMap& properties)
 JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return JungleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		JungleTerrain::MapKeyTerrainType,
 		TextureResources::JungleTexture,

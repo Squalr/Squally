@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/FrostTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ FrostTerrain* FrostTerrain::create(ValueMap& properties)
 FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return FrostTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		FrostTerrain::MapKeyTerrainType,
 		TextureResources::FrostTexture,

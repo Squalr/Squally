@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/TrailTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ TrailTerrain* TrailTerrain::create(ValueMap& properties)
 TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return TrailTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		TrailTerrain::MapKeyTerrainType,
 		TextureResources::TrailTexture,

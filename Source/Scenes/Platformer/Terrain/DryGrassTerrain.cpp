@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/DryGrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ DryGrassTerrain* DryGrassTerrain::create(ValueMap& properties)
 DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return DryGrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		DryGrassTerrain::MapKeyTerrainType,
 		TextureResources::DryGrassTexture,

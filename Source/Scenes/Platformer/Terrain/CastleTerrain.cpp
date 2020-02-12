@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/CastleTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ CastleTerrain* CastleTerrain::create(ValueMap& properties)
 CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return CastleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		CastleTerrain::MapKeyTerrainType,
 		TextureResources::CastleTexture,

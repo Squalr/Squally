@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MarbleGrassTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -21,6 +23,7 @@ MarbleGrassTerrain* MarbleGrassTerrain::create(ValueMap& properties)
 MarbleGrassTerrain::MarbleGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
+		[=](ValueMap& properties) { return MarbleGrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
 		MarbleGrassTerrain::MapKeyTerrainType,
 		TextureResources::MarbleGrassTexture,
