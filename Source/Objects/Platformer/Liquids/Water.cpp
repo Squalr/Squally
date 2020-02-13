@@ -77,11 +77,9 @@ void Water::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->waterCollision->setContactUpdateCallback(CC_CALLBACK_2(Water::applyWaterForce, this));
-
 	this->waterCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// Speed is applied in the update applyWaterForce
+		this->applyWaterForce(collisionData.other, collisionData.dt);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -109,10 +107,7 @@ void Water::runSplash(int index)
 	));
 }
 
-void Water::applyWaterForce(const std::vector<CollisionObject*>& targets, float dt)
+void Water::applyWaterForce(CollisionObject* target, float dt)
 {
-	for (auto it = targets.begin(); it != targets.end(); it++)
-	{
-		(*it)->setVelocity((*it)->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
-	}
+	target->setVelocity(target->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
 }

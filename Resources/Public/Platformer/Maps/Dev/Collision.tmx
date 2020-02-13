@@ -79,13 +79,9 @@
   </properties>
   <object id="663" name="blue-grass" type="terrain" x="2224" y="132" width="1076" height="2644"/>
   <object id="665" name="blue-grass" type="terrain" x="462" y="2350" width="1076" height="548"/>
-  <object id="666" name="blue-grass" type="terrain" x="-570" y="854" width="1076" height="548"/>
-  <object id="667" name="blue-grass" type="texture" x="-570" y="1490" width="1076" height="548"/>
-  <object id="668" name="blue-grass" type="terrain" x="1624" y="1072">
-   <polygon points="0,0 272,-340 416,4 352,244"/>
-  </object>
-  <object id="669" name="blue-grass" type="texture" x="1624" y="1860">
-   <polygon points="0,0 272,-340 416,4 352,244"/>
+  <object id="666" name="blue-grass" type="terrain" x="-478" y="1274" width="1076" height="548"/>
+  <object id="668" name="blue-grass" type="terrain" x="1264" y="1449.97">
+   <polygon points="-20,-68 721.846,-693.973 1396.27,-386.572 1821.85,-670.04 2452,-323.836 2420.7,575.319 914.154,430.027"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">

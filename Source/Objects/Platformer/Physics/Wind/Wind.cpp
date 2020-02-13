@@ -83,11 +83,9 @@ void Wind::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->windForce->setContactUpdateCallback(CC_CALLBACK_2(Wind::applyWindForce, this));
-
 	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Movement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
-		// Speed is applied in the update applyWindForce
+		this->applyWindForce(collisionData.other, collisionData.dt);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -100,25 +98,22 @@ void Wind::update(float dt)
 	this->updateWind(dt);
 }
 
-void Wind::applyWindForce(const std::vector<CollisionObject*>& targets, float dt)
+void Wind::applyWindForce(CollisionObject* target, float dt)
 {
 	Vec2 thisPosition = GameUtils::getWorldCoords(this);
 
-	for (auto it = targets.begin(); it != targets.end(); it++)
-	{
-		Vec2 targetPosition = GameUtils::getWorldCoords(*it);
-		Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
-		Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
+	Vec2 targetPosition = GameUtils::getWorldCoords(target);
+	Vec2 distance = Vec2(std::abs(thisPosition.x - targetPosition.x), std::abs(thisPosition.y - targetPosition.y));
+	Vec2 delta = Vec2(this->windSize / 2.0f) - distance;
 
-		// Note: default non-uniform values are to prevent bobbing in place between two wind objects
-		const float MinMultiplierX = this->isUniform ? 1.0f : 0.15f;
-		const float MinMultiplierY = this->isUniform ? 1.0f : 0.25f;
+	// Note: default non-uniform values are to prevent bobbing in place between two wind objects
+	const float MinMultiplierX = this->isUniform ? 1.0f : 0.15f;
+	const float MinMultiplierY = this->isUniform ? 1.0f : 0.25f;
 
-		Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), MinMultiplierX, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f) * 2.0f, MinMultiplierY, 1.0f));
-		Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
+	Vec2 multiplier = Vec2(MathUtils::clamp(delta.x / (this->windSize.width / 2.0f), MinMultiplierX, 1.0f), MathUtils::clamp(delta.y / (this->windSize.height / 2.0f) * 2.0f, MinMultiplierY, 1.0f));
+	Vec2 speed = Vec2(this->windSpeed.x * multiplier.x, this->windSpeed.y * multiplier.y) * Wind::BaseWindSpeed;
 
-		(*it)->setVelocity((*it)->getVelocity() + speed * dt);
-	}
+	target->setVelocity(target->getVelocity() + speed * dt);
 }
 
 Vec2 Wind::getButtonOffset()

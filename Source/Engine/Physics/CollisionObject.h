@@ -34,9 +34,10 @@ public:
 	struct CollisionData
 	{
 		CollisionObject* other;
+		float dt;
 
-		CollisionData() : other(nullptr) { }
-		CollisionData(CollisionObject* other) : other(other) { }
+		CollisionData() : other(nullptr), dt(0.0f) { }
+		CollisionData(CollisionObject* other, float dt) : other(other), dt(dt) { }
 	};
 
 	struct CollisionEvent
@@ -47,6 +48,7 @@ public:
 	};
 
 	void despawn() override;
+	void warpTo(cocos2d::Vec2 location);
 	void bindTo(GameObject* bindTarget);
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
@@ -54,17 +56,15 @@ public:
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
 	void inverseGravity();
-	void setPosition(const cocos2d::Vec2& position) override;
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	void setVelocityX(float velocityX);
 	void setVelocityY(float velocityY);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
-	std::vector<CollisionObject*> getCurrentCollisions();
+	std::set<CollisionObject*> getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
 	virtual void setPhysicsEnabled(bool enabled);
-	virtual void setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback);
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
 	static std::vector<cocos2d::Vec2> createBox(cocos2d::Size size);
@@ -124,22 +124,29 @@ private:
 	cocos2d::Vec2 velocity;
 	float horizontalDampening;
 	float verticalDampening;
-
-	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
-	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
-	std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback;
-	std::map<CollisionObject*, CollisionData> passThroughCandidates;
-	std::map<CollisionObject*, CollisionData> passThroughCandidatesIter;
-	std::vector<CollisionObject*> currentCollisions;
-	std::vector<cocos2d::Vec2> shape;
-	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
-	cocos2d::Rect boundsRect;
-	CollisionType collisionType;
-	GameObject* bindTarget;
 	bool isDynamic;
+	bool canRotate;
 	bool physicsEnabled;
 	bool gravityEnabled;
 	bool gravityInversed;
+	
+	// Shape
+	std::vector<cocos2d::Vec2> shape;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
+	cocos2d::Rect boundsRect;
+
+	CollisionType collisionType;
+	std::set<CollisionObject*>* currentCollisions;		// Will alternate between pointing to storage #1 and #2
+	std::set<CollisionObject*>* previousCollisions;		// Will point to the opposite storage as the current collisions
+	std::set<CollisionObject*> collisionsRed;			// Collision storage #1
+	std::set<CollisionObject*> collisionsBlack;			// Collision storage #2
+	GameObject* bindTarget;
+
+	// Events
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
+
+	// Debug
 	bool debugInfoSpawned;
 	cocos2d::DrawNode* debugDrawNode;
 };

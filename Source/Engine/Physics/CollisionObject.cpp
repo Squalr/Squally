@@ -81,25 +81,18 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 	this->boundsRect = AlgoUtils::getPolygonRect(this->shape);
 	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
-	this->currentCollisions = std::vector<CollisionObject*>();
-	this->passThroughCandidates = std::map<CollisionObject*, CollisionData>();
-	this->passThroughCandidatesIter = std::map<CollisionObject*, CollisionData>();
+	this->collisionsRed = std::set<CollisionObject*>();
+	this->collisionsBlack = std::set<CollisionObject*>();
+	this->currentCollisions = &this->collisionsRed;
+	this->previousCollisions = &this->collisionsBlack;
 	this->isDynamic = isDynamic;
+	this->canRotate = canRotate;
 	this->physicsEnabled = true;
 	this->gravityEnabled = false;
 	this->gravityInversed = false;
-	this->contactUpdateCallback = nullptr;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
-
-	/*
-		this->physicsBody->setGravityEnable(false);
-		this->physicsBody->setRotationEnable(canRotate);
-		this->physicsBody->setDynamic(isDynamic);
-		this->physicsBody->setContactTestBitmask(0);
-		this->physicsBody->setCollisionBitmask(0);
-	*/
 
 	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
 	this->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
@@ -115,7 +108,8 @@ void CollisionObject::onEnter()
 
 	CollisionObject::RegisterCollisionObject(this);
 
-	this->currentCollisions.clear();
+	this->currentCollisions->clear();
+	this->previousCollisions->clear();
 
 	this->scheduleUpdate();
 }
@@ -239,7 +233,10 @@ void CollisionObject::runPhysics(float dt)
 
 	CollisionCorrections collisionCorrections = CollisionCorrections();
 
-	this->currentCollisions.clear();
+	// Pass off current collisions to previous
+	this->previousCollisions->clear();
+	this->previousCollisions = this->currentCollisions;
+	this->currentCollisions = this->previousCollisions == &this->collisionsBlack ? &this->collisionsRed : &this->collisionsBlack;
 
 	for (auto events : this->collisionEvents)
 	{
@@ -249,13 +246,13 @@ void CollisionObject::runPhysics(float dt)
 		{
 			if (this->collidesWith(collisionObject))
 			{
-				this->currentCollisions.push_back(collisionObject);
+				this->currentCollisions->insert(collisionObject);
 
 				CollisionResult collisionResult;
 
 				for (auto event : events.second)
 				{
-					CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject));
+					CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
 					collisionResult = nextResult == CollisionResult::DoNothing ? collisionResult : nextResult;
 				}
@@ -263,6 +260,20 @@ void CollisionObject::runPhysics(float dt)
 				if (this->isDynamic && collisionResult == CollisionResult::CollideWithPhysics)
 				{
 					this->updateCollisionCorrections(collisionObject, &collisionCorrections);
+				}
+			}
+		}
+	}
+
+	for (auto collisionObject : *this->previousCollisions)
+	{
+		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
+		{
+			for (auto events : this->collisionEndEvents)
+			{
+				for (auto event : events.second)
+				{
+					event.collisionEvent(CollisionData(collisionObject, dt));
 				}
 			}
 		}
@@ -282,31 +293,6 @@ void CollisionObject::runPhysics(float dt)
 
 		this->setThisOrBindPosition(updatedPosition + collisionCorrections.corrections);
 	}
-
-	/*
-	if (collisionCorrections.normalForce != Vec2::ZERO)
-	{
-		collisionCorrections.normalForce.normalize();
-		Vec2 normalVelocity = this->velocity;
-
-		normalVelocity.x *= collisionCorrections.normalForce.x;
-		normalVelocity.y *= collisionCorrections.normalForce.y;
-
-		if (this->bindTarget == nullptr)
-		{
-			this->setPositionX(this->getPositionX() + normalVelocity.x * dt);
-			this->setPositionY(this->getPositionY() + normalVelocity.y * dt);
-		}
-		else
-		{	this->bindTarget->setPositionX(this->bindTarget->getPositionX() + normalVelocity.x * dt);
-			this->bindTarget->setPositionY(this->bindTarget->getPositionY() + normalVelocity.y * dt);
-		}
-	}*/
-}
-
-void CollisionObject::setContactUpdateCallback(std::function<void(const std::vector<CollisionObject*>& currentCollisions, float dt)> contactUpdateCallback)
-{
-	this->contactUpdateCallback = contactUpdateCallback;
 }
 
 void CollisionObject::setPhysicsEnabled(bool enabled)
@@ -322,17 +308,6 @@ void CollisionObject::setGravityEnabled(bool isEnabled)
 void CollisionObject::inverseGravity()
 {
 	this->gravityInversed = !this->gravityInversed;
-}
-
-void CollisionObject::setPosition(const Vec2& position)
-{
-	super::setPosition(position);
-
-	/*
-	if (this->physicsBody != nullptr)
-	{
-		this->physicsBody->setPositionInterruptPhysics(Vec2::ZERO);
-	}*/
 }
 
 Vec2 CollisionObject::getVelocity()
@@ -371,14 +346,19 @@ CollisionType CollisionObject::getCollisionType()
 	return this->collisionType;
 }
 
-std::vector<CollisionObject*> CollisionObject::getCurrentCollisions()
+std::set<CollisionObject*> CollisionObject::getCurrentCollisions()
 {
-	return this->currentCollisions;
+	return *this->currentCollisions;
 }
 
 bool CollisionObject::isCollidingWith(CollisionObject* collisionObject)
 {
-	return std::find(this->currentCollisions.begin(), this->currentCollisions.end(), collisionObject) != this->currentCollisions.end();
+	return std::find(this->currentCollisions->begin(), this->currentCollisions->end(), collisionObject) != this->currentCollisions->end();
+}
+
+void CollisionObject::warpTo(cocos2d::Vec2 location)
+{
+	this->setThisOrBindPosition(location);
 }
 
 void CollisionObject::bindTo(GameObject* bindTarget)
@@ -395,7 +375,7 @@ void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes
 {
 	for (auto collisionType : collisionTypes)
 	{
-		this->addCollisionEvent(collisionType, this->collisionEvents, CollisionEvent(onCollision));
+		this->collisionEvents[collisionType].push_back(CollisionEvent(onCollision));
 	}
 }
 
@@ -403,18 +383,20 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 {
 	for (auto collisionType : collisionTypes)
 	{
-		this->addCollisionEvent(collisionType, this->collisionEndEvents, CollisionEvent(onCollisionEnd));
+		this->collisionEndEvents[collisionType].push_back(CollisionEvent(onCollisionEnd));
 	}
-}
-
-void CollisionObject::addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision)
-{
-	eventMap[collisionType].push_back(onCollision);
 }
 
 std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 {
-	return std::vector<Vec2>();
+	std::vector<Vec2> points = std::vector<Vec2>();
+
+	for (int index = 0; index < segments; index++)
+	{
+
+	}
+
+	return points;
 }
 
 std::vector<Vec2> CollisionObject::createBox(Size size)

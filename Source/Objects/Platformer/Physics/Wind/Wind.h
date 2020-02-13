@@ -24,7 +24,7 @@ protected:
 	void initializeListeners() override;
 	void update(float dt) override;
 
-	void applyWindForce(const std::vector<CollisionObject*>& targets, float dt);
+	void applyWindForce(CollisionObject* target, float dt);
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 

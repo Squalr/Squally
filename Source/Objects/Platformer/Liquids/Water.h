@@ -25,7 +25,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void applyWaterForce(const std::vector<CollisionObject*>& targets, float dt);
+	void applyWaterForce(CollisionObject* target, float dt);
 
 private:
 	typedef GameObject super;

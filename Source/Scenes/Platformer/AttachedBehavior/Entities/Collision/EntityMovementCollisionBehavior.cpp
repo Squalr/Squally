@@ -77,7 +77,7 @@ void EntityMovementCollisionBehavior::onLoad()
 		if (args != nullptr && this->movementCollision != nullptr)
 		{
 			this->tryBind();
-			this->movementCollision->setPosition(args->position);
+			this->movementCollision->warpTo(args->position);
 
 			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
 			{
