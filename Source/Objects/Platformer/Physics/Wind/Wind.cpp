@@ -68,6 +68,7 @@ void Wind::onEnter()
 {
 	super::onEnter();
 
+	this->windParticles->start();
 	this->windParticles->getParticles()->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
 	this->windParticles->getParticles()->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
 

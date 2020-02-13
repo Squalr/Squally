@@ -186,6 +186,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	}
 
 	this->movementCollision = CollisionObject::create(
+		// CollisionObject::createBox(this->entity->getMovementSize()),
 		CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
 		collisionType,
 		true,
@@ -336,6 +337,9 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	Size entitySize = this->entity->getEntitySize();
+
+	// Padding
+	entitySize.width += 8.0f;
 
 	if (this->entity->isFlippedY())
 	{

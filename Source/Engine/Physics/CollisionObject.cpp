@@ -10,6 +10,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/CollisionEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
@@ -88,7 +89,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 	this->isDynamic = isDynamic;
 	this->canRotate = canRotate;
 	this->physicsEnabled = true;
-	this->gravityEnabled = false;
+	this->gravityEnabled = isDynamic;
 	this->gravityInversed = false;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;
@@ -282,14 +283,6 @@ void CollisionObject::runPhysics(float dt)
 	if (collisionCorrections.corrections != Vec2::ZERO)
 	{
 		Vec2 updatedPosition = this->getThisOrBindPosition();
-
-		// At most, corrections may only offset updates to velocity
-		collisionCorrections.corrections.x = 0.0f; // MathUtils::bound(collisionCorrections.corrections.x, 0.0f, -positionUpdates.x);
-		collisionCorrections.corrections.y = MathUtils::bound(
-			collisionCorrections.corrections.y,
-			0.0f,
-			-(positionUpdates.y < 0 ? std::floor(positionUpdates.y) : std::ceil(positionUpdates.y))
-		);
 
 		this->setThisOrBindPosition(updatedPosition + collisionCorrections.corrections);
 	}
@@ -508,23 +501,26 @@ void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObjec
 					float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
 
 					Vec2 correction = Vec2::ZERO;
+					Vec2 normal = Vec2::ZERO;
 
 					if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
 					{
+						normal = AlgoUtils::getSegmentNormal(otherSegment);
+
 						// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
 						if (thisDistanceA < thisDistanceB)
 						{
 							correction = intersectionPoint - std::get<0>(currentSegment);
-							// correction = std::get<0>(currentSegment) - intersectionPoint;
 						}
 						else
 						{
 							correction = intersectionPoint - std::get<1>(currentSegment);
-							// correction = std::get<1>(currentSegment) - intersectionPoint;
 						}
 					}
 					else
 					{
+						normal = AlgoUtils::getSegmentNormal(currentSegment);
+
 						// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's dynamic,
 						// so instead we need to push this object away by a calculated amount
 						if (otherDistanceA < otherDistanceB)
@@ -538,9 +534,18 @@ void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObjec
 							correction = std::get<1>(otherSegment) - intersectionPoint;
 						}
 					}
+						
+					correction.x *= normal.x;
+					correction.y *= normal.y;
+						
+					this->velocity.x *= normal.y;
+					this->velocity.y *= normal.x;
 
-					collisionCorrections->corrections += correction;
-					thisCoords += correction;
+					if (correction != Vec2::ZERO)
+					{
+						collisionCorrections->corrections += correction;
+						thisCoords += correction;
+					}
 				}
 			}
 		}

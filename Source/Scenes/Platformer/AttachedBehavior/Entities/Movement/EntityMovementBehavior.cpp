@@ -112,7 +112,7 @@ void EntityMovementBehavior::update(float dt)
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
-			// Move in the x direction unless hitting a wall while not standing on anything (this->entity prevents wall jumps)
+			// Only apply movement velocity if not running into a wall. Prevents visual jitter.
 			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
 				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;

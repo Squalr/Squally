@@ -497,7 +497,7 @@ Vec2 AlgoUtils::getSegmentNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmen
 
 	delta.normalize();
 
-	return Vec2(-delta.y, -delta.x);
+	return Vec2(std::abs(delta.y), std::abs(delta.x));
 }
 
 float AlgoUtils::getSegmentNormalAngle(std::tuple<Vec2, Vec2> segment,
