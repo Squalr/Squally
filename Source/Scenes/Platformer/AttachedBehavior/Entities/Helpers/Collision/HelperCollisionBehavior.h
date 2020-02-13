@@ -17,6 +17,8 @@ public:
 protected:
 	HelperCollisionBehavior(GameObject* owner);
 	virtual ~HelperCollisionBehavior();
+	
+	void onEntityCollisionCreated() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

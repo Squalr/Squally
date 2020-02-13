@@ -48,11 +48,11 @@ public:
 	template <class T>
 	T* getAttachedBehavior()
 	{
-		for (auto it = attachedBehavior.begin(); it != attachedBehavior.end(); it++)
+		for (auto next : attachedBehavior)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr && next->isQueryable())
 			{
-				return dynamic_cast<T*>(*it);
+				return dynamic_cast<T*>(next);
 			}
 		}
 

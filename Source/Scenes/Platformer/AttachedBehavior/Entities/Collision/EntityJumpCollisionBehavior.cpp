@@ -30,41 +30,14 @@ EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* own
 EntityJumpCollisionBehavior::EntityJumpCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-
+	this->jumpCollision = nullptr;
+	
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->jumpCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionPadding * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight),
-				1.0f,
-				EntityJumpCollisionBehavior::JumpCollisionRadius,
-				0.0f
-			),
-			(int)PlatformerCollisionType::GroundDetector,
-			false,
-			false
-		);
 
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityJumpCollisionBehavior::JumpCollisionOffset);
-			this->jumpCollision->inverseGravity();
-			this->jumpCollision->setPosition(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
-			this->jumpCollision->setPosition(offset);
-		}
-		
-		this->addChild(this->jumpCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityJumpCollisionBehavior::~EntityJumpCollisionBehavior()
@@ -73,6 +46,53 @@ EntityJumpCollisionBehavior::~EntityJumpCollisionBehavior()
 
 void EntityJumpCollisionBehavior::onLoad()
 {
+	this->defer([=]()
+	{
+		this->buildJumpCollisionDetector();
+		this->toggleQueryable(true);
+	});
+}
+
+bool EntityJumpCollisionBehavior::canJump()
+{
+	return !this->jumpCollision->getCurrentCollisions().empty();
+}
+
+void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
+{
+	if (this->jumpCollision != nullptr)
+	{
+		return;
+	}
+	
+	this->jumpCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionPadding * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight),
+			1.0f,
+			EntityJumpCollisionBehavior::JumpCollisionRadius,
+			0.0f
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		false,
+		false
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+	if (this->entity->isFlippedY())
+	{
+		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityJumpCollisionBehavior::JumpCollisionOffset);
+		this->jumpCollision->inverseGravity();
+		this->jumpCollision->setPosition(offset);
+	}
+	else
+	{
+		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
+		this->jumpCollision->setPosition(offset);
+	}
+	
+	this->addChild(this->jumpCollision);
+
 	this->jumpCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
@@ -87,9 +107,4 @@ void EntityJumpCollisionBehavior::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-}
-
-bool EntityJumpCollisionBehavior::canJump()
-{
-	return !this->jumpCollision->getCurrentCollisions().empty();
 }

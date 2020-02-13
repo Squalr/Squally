@@ -48,3 +48,7 @@ void FriendlyCollisionBehavior::onLoad()
 		});
 	});
 }
+
+void FriendlyCollisionBehavior::onEntityCollisionCreated()
+{
+}

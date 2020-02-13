@@ -29,7 +29,7 @@
 using namespace cocos2d;
 
 std::string TextureObject::MapKeyTypeTexture = "texture";
-std::string TextureObject::MapPropertyKeyIsPartOfTerrain = "part-of-terrain";
+std::string TextureObject::MapPropertyKeyClearAnchor = "apply-anchor";
 
 TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : super(properties)
 {
@@ -100,11 +100,11 @@ void TextureObject::buildTextures()
 
 	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
 
-	if (!GameUtils::getKeyOrDefault(this->properties, TextureObject::MapPropertyKeyIsPartOfTerrain, Value(false)).asBool())
+	if (GameUtils::getKeyOrDefault(this->properties, TextureObject::MapPropertyKeyClearAnchor, Value(true)).asBool())
 	{
 		texture->setAnchorPoint(Vec2::ZERO);
 	}
-	
+
 	texture->getTexture()->setTexParameters(params);
 	texture->setPosition(drawRect.origin);
 	texture->setTextureRect(Rect(0.0f, 0.0f, drawRect.size.width, drawRect.size.height));

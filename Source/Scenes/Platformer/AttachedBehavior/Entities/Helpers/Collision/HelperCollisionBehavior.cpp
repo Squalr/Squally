@@ -22,3 +22,7 @@ HelperCollisionBehavior::HelperCollisionBehavior(GameObject* owner) : super(owne
 HelperCollisionBehavior::~HelperCollisionBehavior()
 {
 }
+
+void HelperCollisionBehavior::onEntityCollisionCreated()
+{
+}

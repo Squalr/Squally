@@ -37,3 +37,7 @@ void EnemyCombatCollisionBehavior::onLoad()
 {
     super::onLoad();
 }
+
+void EnemyCombatCollisionBehavior::onEntityCollisionCreated()
+{
+}

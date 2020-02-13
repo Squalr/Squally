@@ -48,3 +48,7 @@ void EnemyCollisionBehavior::onLoad()
 		});
 	});
 }
+
+void EnemyCollisionBehavior::onEntityCollisionCreated()
+{
+}

@@ -16,9 +16,10 @@ public:
 
 protected:
 	EnemyCollisionBehavior(GameObject* owner);
-	~EnemyCollisionBehavior();
+	virtual ~EnemyCollisionBehavior();
 
 	void onLoad() override;
+	void onEntityCollisionCreated() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

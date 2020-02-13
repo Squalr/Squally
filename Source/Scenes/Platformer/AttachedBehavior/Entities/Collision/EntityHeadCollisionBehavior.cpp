@@ -29,41 +29,14 @@ EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* own
 EntityHeadCollisionBehavior::EntityHeadCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->headCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->headCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), (this->entity->getEntitySize()).height / 1.0f),
-				1.0f,
-				EntityHeadCollisionBehavior::HeadCollisionRadius,
-				0.0f
-			),
-			(int)PlatformerCollisionType::HeadDetector,
-			false,
-			false
-		);
 
-		Vec2 entityCenter = this->entity->getEntityCenterPoint();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->headCollision->inverseGravity();
-			this->headCollision->setPosition(offset);
-		}
-		else
-		{
-			Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->headCollision->setPosition(offset);
-		}
-		
-		this->addChild(this->headCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityHeadCollisionBehavior::~EntityHeadCollisionBehavior()
@@ -72,9 +45,10 @@ EntityHeadCollisionBehavior::~EntityHeadCollisionBehavior()
 
 void EntityHeadCollisionBehavior::onLoad()
 {
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->defer([=]()
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		this->buildHeadCollisionDetector();
+		this->toggleQueryable(true);
 	});
 }
 
@@ -104,4 +78,45 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 	}
 
 	return false;
+}
+
+void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
+{
+	if (this->headCollision != nullptr)
+	{
+		return;
+	}
+	
+	this->headCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), (this->entity->getEntitySize()).height / 1.0f),
+			1.0f,
+			EntityHeadCollisionBehavior::HeadCollisionRadius,
+			0.0f
+		),
+		(int)PlatformerCollisionType::HeadDetector,
+		false,
+		false
+	);
+
+	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+
+	if (this->entity->isFlippedY())
+	{
+		Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+		this->headCollision->inverseGravity();
+		this->headCollision->setPosition(offset);
+	}
+	else
+	{
+		Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+		this->headCollision->setPosition(offset);
+	}
+	
+	this->addChild(this->headCollision);
+
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }

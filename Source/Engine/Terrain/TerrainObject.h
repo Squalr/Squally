@@ -134,8 +134,6 @@ public:
 		}
 	};
 
-    void makeDirty() override;
-
 	static std::string MapKeyTypeTerrain;
 	static std::string MapKeyTypeIsHollow;
 	static std::string MapKeyTypeTopOnly;

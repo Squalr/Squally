@@ -7,6 +7,7 @@ class AttachedBehavior : public HackableObject
 {
 public:
 	bool isInvalidated();
+	bool isQueryable();
 
 protected:
 	AttachedBehavior(GameObject* owner);
@@ -17,6 +18,7 @@ protected:
 
 	virtual void onLoad() = 0;
 	void invalidate();
+	void toggleQueryable(bool queryable);
 
 private:
 	typedef HackableObject super;
@@ -25,5 +27,6 @@ private:
 
 	GameObject* owner;
 	bool invalidated;
+	bool queryable;
 };
 

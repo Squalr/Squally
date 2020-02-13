@@ -144,12 +144,6 @@ void TerrainObject::onEnterTransitionDidFinish()
 	});
 }
 
-void TerrainObject::makeDirty()
-{
-	// Do nothing. Another super fucking horrible hack. I literally don't understand how this works.
-	// See: https://github.com/Squalr/Squally/issues/134
-}
-
 void TerrainObject::onDeveloperModeEnable(int debugLevel)
 {
 	if (debugLevel >= 2)
@@ -983,7 +977,7 @@ ValueMap TerrainObject::transformPropertiesForTexture(cocos2d::ValueMap& propert
 	textureProperties[GameObject::MapKeyType] = TextureObject::MapKeyTypeTexture;
 	textureProperties[GameObject::MapKeyXPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyYPosition] = Value(0.0f);
-	textureProperties[TextureObject::MapPropertyKeyIsPartOfTerrain] = Value(true);
+	textureProperties[TextureObject::MapPropertyKeyClearAnchor] = Value(!this->polylinePoints.empty());
 
 	return textureProperties;
 }

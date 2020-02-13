@@ -207,7 +207,7 @@ void CollisionObject::runPhysics(float dt)
 	// Apply gravity
 	if (this->gravityEnabled)
 	{
-		const Vec2 gravity = Vec2(0.0f, -128.0f);
+		const Vec2 gravity = Vec2(0.0f, -768.0f);
 
 		this->velocity.x += gravity.x * dt;
 

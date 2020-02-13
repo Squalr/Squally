@@ -41,10 +41,8 @@ EntityWeaponCollisionBehavior::EntityWeaponCollisionBehavior(GameObject* owner) 
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->rebuildWeaponCollision();
-	}
+
+	this->toggleQueryable(false);
 }
 
 EntityWeaponCollisionBehavior::~EntityWeaponCollisionBehavior()
@@ -57,6 +55,12 @@ void EntityWeaponCollisionBehavior::onLoad()
 	{
 		this->rebuildWeaponCollision();
 	}));
+
+	this->defer([=]()
+	{
+		this->rebuildWeaponCollision();
+		this->toggleQueryable(true);
+	});
 }
 
 void EntityWeaponCollisionBehavior::enable()

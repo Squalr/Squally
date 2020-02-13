@@ -15,9 +15,14 @@ protected:
 	virtual ~EntityCollisionBehaviorBase();
 
 	void onLoad() override;
+	virtual void onEntityCollisionCreated() = 0;
 
 	PlatformerEntity* entity;
 
 private:
 	typedef AttachedBehavior super;
+
+	int collisionType;
+
+	void buildEntityCollision();
 };

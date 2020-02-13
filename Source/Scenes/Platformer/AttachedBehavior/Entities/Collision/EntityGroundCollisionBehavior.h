@@ -28,6 +28,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void buildGroundCollisionDetector();
+
 	PlatformerEntity* entity;
 
 	static const float GroundCollisionPadding;

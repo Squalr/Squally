@@ -30,41 +30,14 @@ EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject*
 EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->groundCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
-	else
-	{
-		this->groundCollision = CollisionObject::create(
-			CollisionObject::createCapsulePolygon(
-				Size(std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
-				1.0f,
-				EntityGroundCollisionBehavior::GroundCollisionRadius,
-				0.0f
-			),
-			(int)PlatformerCollisionType::GroundDetector,
-			false,
-			false
-		);
 
-		Vec2 collisionOffset = this->entity->getCollisionOffset();
-
-		if (this->entity->isFlippedY())
-		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
-			this->groundCollision->inverseGravity();
-			this->groundCollision->setPosition(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
-			this->groundCollision->setPosition(offset);
-		}
-		
-		this->addChild(this->groundCollision);
-	}
+	this->toggleQueryable(false);
 }
 
 EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
@@ -73,21 +46,10 @@ EntityGroundCollisionBehavior::~EntityGroundCollisionBehavior()
 
 void EntityGroundCollisionBehavior::onLoad()
 {
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->defer([=]()
 	{
-		this->onCollideWithGround();
-		
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
-	{
-		return CollisionObject::CollisionResult::DoNothing;
+		this->buildGroundCollisionDetector();
+		this->toggleQueryable(true);
 	});
 }
 
@@ -203,4 +165,57 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	}
 
 	return false;
+}
+
+void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
+{
+	if (this->groundCollision != nullptr)
+	{
+		return;
+	}
+
+	this->groundCollision = CollisionObject::create(
+		CollisionObject::createCapsulePolygon(
+			Size(std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight),
+			1.0f,
+			EntityGroundCollisionBehavior::GroundCollisionRadius,
+			0.0f
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		false,
+		false
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+	if (this->entity->isFlippedY())
+	{
+		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
+		this->groundCollision->inverseGravity();
+		this->groundCollision->setPosition(offset);
+	}
+	else
+	{
+		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+		this->groundCollision->setPosition(offset);
+	}
+	
+	this->addChild(this->groundCollision);
+
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{
+		this->onCollideWithGround();
+		
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
 }

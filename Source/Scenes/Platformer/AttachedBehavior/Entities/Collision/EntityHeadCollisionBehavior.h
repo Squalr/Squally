@@ -25,6 +25,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	void buildHeadCollisionDetector();
+
 	PlatformerEntity* entity;
 
 	static const float HeadCollisionPadding;

@@ -63,6 +63,8 @@ void SquallyCollisionBehavior::update(float dt)
 
 void SquallyCollisionBehavior::onLoad()
 {
+	super::onLoad();
+	
 	this->noCombatDuration = SquallyCollisionBehavior::DefaultNoCombatDuration;
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEngageEnemy, [=](EventCustom* eventCustom)
@@ -98,6 +100,11 @@ void SquallyCollisionBehavior::onLoad()
 		});
 	});
 
+	this->scheduleUpdate();
+}
+
+void SquallyCollisionBehavior::onEntityCollisionCreated()
+{
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		if (this->noCombatDuration > 0.0f || !this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
@@ -142,6 +149,4 @@ void SquallyCollisionBehavior::onLoad()
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
-
-	this->scheduleUpdate();
 }

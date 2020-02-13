@@ -31,7 +31,7 @@ public:
 	};
 	
 	static std::string MapKeyTypeTexture;
-	static std::string MapPropertyKeyIsPartOfTerrain;
+	static std::string MapPropertyKeyClearAnchor;
 
 protected:
 	TextureObject(cocos2d::ValueMap& properties, TextureData terrainData);

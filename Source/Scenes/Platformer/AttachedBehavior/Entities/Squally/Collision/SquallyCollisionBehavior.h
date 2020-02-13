@@ -17,6 +17,7 @@ protected:
 
 	void update(float dt) override;
 	void onLoad() override;
+	void onEntityCollisionCreated() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;
