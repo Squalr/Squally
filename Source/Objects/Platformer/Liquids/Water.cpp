@@ -77,7 +77,7 @@ void Water::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->waterCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->waterCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->applyWaterForce(collisionData.other, collisionData.dt);
 

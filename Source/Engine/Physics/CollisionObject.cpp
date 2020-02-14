@@ -80,7 +80,9 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> s
 	this->shape = shape;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->shape);
 	this->boundsRect = AlgoUtils::getPolygonRect(this->shape);
-	this->collisionEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
+	this->collidesWithTypes = std::set<CollisionType>();
+	this->collisionStartEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
+	this->collisionSustainEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionsRed = std::set<CollisionObject*>();
 	this->collisionsBlack = std::set<CollisionObject*>();
@@ -239,25 +241,39 @@ void CollisionObject::runPhysics(float dt)
 	this->previousCollisions = this->currentCollisions;
 	this->currentCollisions = this->previousCollisions == &this->collisionsBlack ? &this->collisionsRed : &this->collisionsBlack;
 
-	for (auto events : this->collisionEvents)
+	for (auto collisionType : this->collidesWithTypes)
 	{
-		CollisionType eventCollisionType = events.first;
-
-		for (auto collisionObject : CollisionObject::CollisionObjects[eventCollisionType])
+		for (auto collisionObject : CollisionObject::CollisionObjects[collisionType])
 		{
 			if (this->collidesWith(collisionObject))
 			{
+				// Default is colliding with physics
+				CollisionResult collisionResult = CollisionResult::CollideWithPhysics;
+
 				this->currentCollisions->insert(collisionObject);
 
-				CollisionResult collisionResult;
-
-				for (auto event : events.second)
+				if (this->previousCollisions->find(collisionObject) == this->previousCollisions->end())
 				{
-					CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
+					// Run new collision events
+					for (auto event : this->collisionStartEvents[collisionType])
+					{
+						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
-					collisionResult = nextResult == CollisionResult::DoNothing ? collisionResult : nextResult;
+						collisionResult = nextResult == CollisionResult::DoNothing ? collisionResult : nextResult;
+					}
+				}
+				else
+				{
+					// Run collision-sustain events
+					for (auto event : this->collisionSustainEvents[collisionType])
+					{
+						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
+
+						collisionResult = nextResult == CollisionResult::DoNothing ? collisionResult : nextResult;
+					}
 				}
 
+				// Resolve collisions between the two objects
 				if (this->isDynamic && collisionResult == CollisionResult::CollideWithPhysics)
 				{
 					this->updateCollisionCorrections(collisionObject, &collisionCorrections);
@@ -266,6 +282,7 @@ void CollisionObject::runPhysics(float dt)
 		}
 	}
 
+	// Run collision end events
 	for (auto collisionObject : *this->previousCollisions)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
@@ -285,6 +302,7 @@ void CollisionObject::runPhysics(float dt)
 		Vec2 updatedPosition = this->getThisOrBindPosition();
 
 		this->setThisOrBindPosition(updatedPosition + collisionCorrections.corrections);
+		collisionCorrections.corrections = Vec2::ZERO;
 	}
 }
 
@@ -368,7 +386,27 @@ void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes
 {
 	for (auto collisionType : collisionTypes)
 	{
-		this->collisionEvents[collisionType].push_back(CollisionEvent(onCollision));
+		this->collidesWithTypes.insert(collisionType);
+		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
+	}
+}
+
+void CollisionObject::whileCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
+{
+	for (auto collisionType : collisionTypes)
+	{
+		this->collidesWithTypes.insert(collisionType);
+		this->collisionSustainEvents[collisionType].push_back(CollisionEvent(onCollision));
+	}
+}
+
+void CollisionObject::ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
+{
+	for (auto collisionType : collisionTypes)
+	{
+		this->collidesWithTypes.insert(collisionType);
+		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
+		this->collisionSustainEvents[collisionType].push_back(CollisionEvent(onCollision));
 	}
 }
 
@@ -376,6 +414,7 @@ void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisio
 {
 	for (auto collisionType : collisionTypes)
 	{
+		this->collidesWithTypes.insert(collisionType);
 		this->collisionEndEvents[collisionType].push_back(CollisionEvent(onCollisionEnd));
 	}
 }

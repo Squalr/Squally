@@ -84,7 +84,7 @@ void Wind::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->windForce->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Movement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whileCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Movement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->applyWindForce(collisionData.other, collisionData.dt);
 

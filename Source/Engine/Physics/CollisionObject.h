@@ -52,6 +52,8 @@ public:
 	void bindTo(GameObject* bindTarget);
 	void unbind();
 	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
+	void whileCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
+	void ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
@@ -143,7 +145,9 @@ private:
 	GameObject* bindTarget;
 
 	// Events
-	std::map<CollisionType, std::vector<CollisionEvent>> collisionEvents;
+	std::set<CollisionType> collidesWithTypes;
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionStartEvents;
+	std::map<CollisionType, std::vector<CollisionEvent>> collisionSustainEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
 
 	// Debug

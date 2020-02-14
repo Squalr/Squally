@@ -209,12 +209,12 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->addChild(this->movementCollision);
 
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{	
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 	
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
 		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
@@ -237,7 +237,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 	
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
 		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
 		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
@@ -272,7 +272,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
 
