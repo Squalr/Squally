@@ -491,61 +491,67 @@ void CollisionObject::updateCollisionCorrections(CollisionObject* collisionObjec
 			if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
 			{
 				Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(currentSegment, otherSegment);
+				float thisDistanceA = std::get<0>(currentSegment).distance(intersectionPoint);
+				float thisDistanceB = std::get<1>(currentSegment).distance(intersectionPoint);
+				float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
+				float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
 
-				// Other object is static! We need to push this object away from it.
-				if (!collisionObject->isDynamic)
+				Vec2 correction = Vec2::ZERO;
+				Vec2 normal = Vec2::ZERO;
+
+				if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
 				{
-					float thisDistanceA = std::get<0>(currentSegment).distance(intersectionPoint);
-					float thisDistanceB = std::get<1>(currentSegment).distance(intersectionPoint);
-					float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
-					float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
-
-					Vec2 correction = Vec2::ZERO;
-					Vec2 normal = Vec2::ZERO;
-
-					if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
+					// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
+					normal = AlgoUtils::getSegmentNormal(otherSegment);
+					
+					if (thisDistanceA < thisDistanceB)
 					{
-						normal = AlgoUtils::getSegmentNormal(otherSegment);
-
-						// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
-						if (thisDistanceA < thisDistanceB)
-						{
-							correction = intersectionPoint - std::get<0>(currentSegment);
-						}
-						else
-						{
-							correction = intersectionPoint - std::get<1>(currentSegment);
-						}
+						correction = intersectionPoint - std::get<0>(currentSegment);
 					}
 					else
 					{
-						normal = AlgoUtils::getSegmentNormal(currentSegment);
-
-						// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's dynamic,
-						// so instead we need to push this object away by a calculated amount
-						if (otherDistanceA < otherDistanceB)
-						{
-							// correction = intersectionPoint - std::get<0>(otherSegment);
-							correction = std::get<0>(otherSegment) - intersectionPoint;
-						}
-						else
-						{
-							// correction = intersectionPoint - std::get<1>(otherSegment);
-							correction = std::get<1>(otherSegment) - intersectionPoint;
-						}
+						correction = intersectionPoint - std::get<1>(currentSegment);
 					}
-						
-					correction.x *= normal.x;
-					correction.y *= normal.y;
-						
-					this->velocity.x *= normal.y;
-					this->velocity.y *= normal.x;
+				}
+				else
+				{
+					// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's static,
+					// so instead we need to push this object away by a calculated amount
+					normal = AlgoUtils::getSegmentNormal(currentSegment);
 
-					if (correction != Vec2::ZERO)
+					if (otherDistanceA < otherDistanceB)
 					{
-						collisionCorrections->corrections += correction;
-						thisCoords += correction;
+						correction = std::get<0>(otherSegment) - intersectionPoint;
 					}
+					else
+					{
+						correction = std::get<1>(otherSegment) - intersectionPoint;
+					}
+				}
+					
+				correction.x *= normal.x;
+				correction.y *= normal.y;
+					
+				this->velocity.x *= normal.y;
+				this->velocity.y *= normal.x;
+
+				if (collisionObject->isDynamic)
+				{
+					// TODO: Instead of weighting each object equally, allow for this to be configurable (ie 75% of force to one object, 25% to other).
+					// Unsure of best implementation for this.
+					correction.x /= 2.0f;
+					correction.y /= 2.0f;
+
+					collisionCorrections->corrections += correction;
+					thisCoords += correction;
+					
+					// Equal and opposite force on other dynamic objects
+					collisionObject->setThisOrBindPosition(collisionObject->getThisOrBindPosition() - correction);
+				}
+				else
+				{
+					collisionCorrections->corrections += correction;
+					thisCoords += correction;
 				}
 			}
 		}

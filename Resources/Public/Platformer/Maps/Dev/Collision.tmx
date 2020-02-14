@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="670">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="673">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -78,11 +78,14 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="663" name="blue-grass" type="terrain" x="2224" y="132" width="1076" height="2644"/>
-  <object id="665" name="blue-grass" type="terrain" x="462" y="2350" width="1076" height="548"/>
+  <object id="665" name="blue-grass" type="terrain" x="462" y="2350" width="1282.06" height="548"/>
   <object id="666" name="blue-grass" type="terrain" x="-478" y="1274" width="1076" height="548"/>
   <object id="668" name="blue-grass" type="terrain" x="1264" y="1449.97">
    <polygon points="-20,-68 721.846,-693.973 1396.27,-386.572 1821.85,-670.04 2452,-323.836 2420.7,575.319 914.154,430.027"/>
   </object>
+  <object id="670" name="wooden-crate" type="object" x="1159.49" y="2185.82" width="160" height="160"/>
+  <object id="671" name="wooden-crate" type="object" x="1216.07" y="2025.52" width="160" height="160"/>
+  <object id="672" name="wooden-crate" type="object" x="1320.52" y="2186.48" width="160" height="160"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
