@@ -91,7 +91,6 @@ protected:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
-	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void update(float dt) override;
@@ -99,20 +98,11 @@ protected:
 private:
 	typedef GameObject super;
 	friend class GlobalDirector;
-
-	struct CollisionCorrections
-	{
-		cocos2d::Vec2 corrections;
-
-		CollisionCorrections() : corrections(cocos2d::Vec2::ZERO) { }
-	};
+	friend class CollisionResolver;
 
 	void runPhysics(float dt);
 
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
-	bool collidesWith(CollisionObject* collisionObject);
-	void updateCollisionCorrections(CollisionObject* collisionObject, CollisionCorrections* collisionCorrections);
-	bool isWithinZThreshold(CollisionObject* collisionObject);
 	cocos2d::Vec2 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec2 position);
 

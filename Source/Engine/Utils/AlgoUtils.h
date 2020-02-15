@@ -37,7 +37,9 @@ public:
 	
 	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints, const std::vector<cocos2d::Vec2>& holePoints = { });
 	static bool isPointInTriangle(const Triangle& triangle, cocos2d::Vec2 point);
-	static bool isPointInColinearSegment(const cocos2d::Vec2& point, const std::tuple<cocos2d::Vec2, cocos2d::Vec2>& segment);
+	static bool isPointInPolygon(const std::vector<cocos2d::Vec2>& points, cocos2d::Vec2 point);
+	static cocos2d::Vec2 getClosestPointOnLine(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment, cocos2d::Vec2 point);
+	static float getDistanceFromSegment(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment, cocos2d::Vec2 point);
 	static cocos2d::Vec2 getLineIntersectionPoint(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentA, std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentB);
 	static bool doSegmentsIntersect(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentA, std::tuple<cocos2d::Vec2, cocos2d::Vec2> segmentB);
 	static std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>

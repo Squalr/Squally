@@ -224,15 +224,62 @@ bool AlgoUtils::isPointInTriangle(const AlgoUtils::Triangle& triangle, Vec2 poin
 	return true;
 }
 
-bool AlgoUtils::isPointInColinearSegment(const Vec2& point, const std::tuple<Vec2, Vec2>& segment)
+bool AlgoUtils::isPointInPolygon(const std::vector<Vec2>& points, Vec2 point)
+{
+	int size = int(points.size());
+	bool c = false;
+	int i = 0;
+	int j = 0;
+
+	for (i = 0, j = size - 1; i < size; j = i++)
+	{
+		if (((points[i].y > point.y) != (points[j].y > point.y)) && (point.x < (points[j].x - points[i].x) * (point.y - points[i].y) / (points[j].y - points[i].y) + points[i].x))
+		{
+			c = !c;
+		}
+	}
+
+	return c;
+}
+
+Vec2 AlgoUtils::getClosestPointOnLine(std::tuple<Vec2, Vec2> segment, Vec2 point)
+{
+	Vec2 A = std::get<0>(segment);
+	Vec2 B = std::get<1>(segment);
+
+	Vec2 ap = Vec2(point.x - A.x, point.y - A.y);
+	Vec2 ab = Vec2(B.x - A.x, B.y - A.y);
+
+	float magnitude = ab.x * ab.x + ab.y * ab.y;
+	float dotProd = ap.x * ab.x + ap.y * ab.y;
+
+	if (magnitude == 0.0f)
+	{
+		return Vec2::ZERO;
+	}
+
+	float t = dotProd / magnitude;
+
+	return Vec2(A.x + ab.x * t, A.y + ab.y * t);
+}
+
+float AlgoUtils::getDistanceFromSegment(std::tuple<Vec2, Vec2> segment, Vec2 point)
 {
 	Vec2 p1 = std::get<0>(segment);
 	Vec2 p2 = std::get<1>(segment);
 
-	return (point.x >= std::min(p1.x, p2.x) &&
-		point.x <= std::max(p1.x, p2.x) &&
-		point.y >= std::min(p1.y, p2.y) &&
-		point.y <= std::max(p1.y, p2.y));
+	float a = p1.y - p2.y;
+	float b = p2.x - p1.x;
+	float c = p1.x * p2.y - p2.x * p1.y;
+
+	float denom = a * a + b * b;
+
+	if (denom == 0.0f)
+	{
+		return 0.0f;
+	}
+	
+    return std::abs(a * point.x + b * point.y + c) / std::sqrt(denom);
 }
 
 Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB) 
@@ -264,7 +311,7 @@ Vec2 AlgoUtils::getLineIntersectionPoint(std::tuple<Vec2, Vec2> segmentA, std::t
     }
 
     return Vec2(xnom / denom, ynom / denom);
-} 
+}
 
 bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<Vec2, Vec2> segmentB)
 {
@@ -351,20 +398,6 @@ bool AlgoUtils::doSegmentsIntersect(std::tuple<Vec2, Vec2> segmentA, std::tuple<
 	}
   
     return false;
-
-	/*
-	Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(segmentA, segmentB);
-
-	// (0, 0) is our magic nubmer for "parallel non-intersecting". Trashy, but it works for our use cases.
-	if (intersectionPoint != Vec2::ZERO && 
-		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentA) &&
-		AlgoUtils::isPointInColinearSegment(intersectionPoint, segmentB))
-	{
-		return true;
-	}
-
-	return false;
-	*/
 }
 
 std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> AlgoUtils::shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments)

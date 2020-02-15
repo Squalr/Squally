@@ -230,7 +230,7 @@ void TerrainObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-	this->collisionSegments = this->segments; // AlgoUtils::shrinkSegments(this->segments);
+	this->collisionSegments = this->segments;
 	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
 	this->infillTriangles = this->textureTriangles;
 

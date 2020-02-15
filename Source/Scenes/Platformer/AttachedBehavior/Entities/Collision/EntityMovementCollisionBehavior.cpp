@@ -186,8 +186,8 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	}
 
 	this->movementCollision = CollisionObject::create(
-		// CollisionObject::createBox(this->entity->getMovementSize()),
-		CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
+		CollisionObject::createBox(this->entity->getMovementSize()),
+		// CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
 		collisionType,
 		true,
 		false
