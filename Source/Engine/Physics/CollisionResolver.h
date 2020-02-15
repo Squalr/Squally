@@ -18,6 +18,8 @@ private:
 	static void quadToCircle(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision);
 	static void circleToCircle(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision);
 	static void polyToPoly(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision);
+	static void polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision);
+	static void segmentToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision);
 	static cocos2d::Vec2 applyCorrection(CollisionObject* objectA, CollisionObject* objectB, cocos2d::Vec2 correction, cocos2d::Vec2 impactNormal);
 	static bool isWithinZThreshold(CollisionObject* collisionObjectA, CollisionObject* collisionObjectB);
 

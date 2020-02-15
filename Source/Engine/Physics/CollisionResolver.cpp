@@ -41,6 +41,14 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	{
 		CollisionResolver::quadToQuad(objectA, objectB, onCollision);
 	}
+	else if (objectA->shape.size() == 2 && objectB->shape.size() > 2)
+	{
+		CollisionResolver::polyToSegment(objectB, objectA, onCollision);
+	}
+	else if (objectA->shape.size() > 2 && objectB->shape.size() == 2)
+	{
+		CollisionResolver::polyToSegment(objectA, objectB, onCollision);
+	}
 	else if (objectA->shape.size() == 0 && objectB->shape.size() == 0)
 	{
 		CollisionResolver::circleToCircle(objectA, objectB, onCollision);
@@ -160,9 +168,6 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
 	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
 
-	std::tuple<Vec2, Vec2> currentSegment;
-	std::tuple<Vec2, Vec2> otherSegment;
-
 	CollisionObject::CollisionResult collisionResult = CollisionObject::CollisionResult::DoNothing;
 
 	if (std::any_of(objectA->shape.begin(), objectA->shape.end(), [=](Vec2 point)
@@ -186,74 +191,96 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 		return;
 	}
 
+	// TODO: Resolve
+}
+
+void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+{
+	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
+	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+
+	std::tuple<Vec2, Vec2> currentSegment;
+	std::tuple<Vec2, Vec2> otherSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
+	bool hadCollision = false;
+
 	for (auto currentSegment : objectA->segments)
 	{
 		currentSegment = std::make_tuple(coordsA + std::get<0>(currentSegment), coordsA + std::get<1>(currentSegment));
 
-		for (auto otherSegment : objectB->segments)
+		if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
 		{
-			otherSegment = std::make_tuple(coordsB + std::get<0>(otherSegment), coordsB + std::get<1>(otherSegment));
-
-			if (AlgoUtils::doSegmentsIntersect(currentSegment, otherSegment))
+			if (!hadCollision)
 			{
-				Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(currentSegment, otherSegment);
-				float thisDistanceA = std::get<0>(currentSegment).distance(intersectionPoint);
-				float thisDistanceB = std::get<1>(currentSegment).distance(intersectionPoint);
-				float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
-				float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
+				if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+				{
+					return;
+				}
 
-				Vec2 correction = Vec2::ZERO;
-				Vec2 normal = Vec2::ZERO;
+				hadCollision = true;
+			}
+
+			Vec2 intersectionPoint = AlgoUtils::getLineIntersectionPoint(currentSegment, otherSegment);
+			float thisDistanceA = std::get<0>(currentSegment).distance(intersectionPoint);
+			float thisDistanceB = std::get<1>(currentSegment).distance(intersectionPoint);
+			float otherDistanceA = std::get<0>(otherSegment).distance(intersectionPoint);
+			float otherDistanceB = std::get<1>(otherSegment).distance(intersectionPoint);
+
+			Vec2 correction = Vec2::ZERO;
+			Vec2 normal = Vec2::ZERO;
+
+			if (objectA->isDynamic && objectB->isDynamic)
+			{
+				CollisionResolver::spawnDebugPoint(intersectionPoint);
+			}
+
+			if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
+			{
+				// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
+				normal = AlgoUtils::getSegmentNormal(otherSegment);
 
 				if (objectA->isDynamic && objectB->isDynamic)
 				{
-					CollisionResolver::spawnDebugPoint(intersectionPoint);
+					CollisionResolver::spawnDebugVector(std::get<0>(currentSegment), std::get<1>(currentSegment), Color4F::GREEN);
 				}
 
-				if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
+				if (thisDistanceA < thisDistanceB)
 				{
-					// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
-					normal = AlgoUtils::getSegmentNormal(otherSegment);
-
-					if (objectA->isDynamic && objectB->isDynamic)
-					{
-						CollisionResolver::spawnDebugVector(std::get<0>(currentSegment), std::get<1>(currentSegment), Color4F::GREEN);
-					}
-
-					if (thisDistanceA < thisDistanceB)
-					{
-						correction = intersectionPoint - std::get<0>(currentSegment);
-					}
-					else
-					{
-						correction = intersectionPoint - std::get<1>(currentSegment);
-					}
+					correction = intersectionPoint - std::get<0>(currentSegment);
 				}
 				else
 				{
-					// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's static,
-					// so instead we need to push this object away by a calculated amount
-					normal = AlgoUtils::getSegmentNormal(currentSegment);
+					correction = intersectionPoint - std::get<1>(currentSegment);
+				}
+			}
+			else
+			{
+				// Case 2: The end of the other segment is closer to the intersection point. The other object can't snap since it's static,
+				// so instead we need to push this object away by a calculated amount
+				normal = AlgoUtils::getSegmentNormal(currentSegment);
 
-					if (objectA->isDynamic && objectB->isDynamic)
-					{
-						CollisionResolver::spawnDebugVector(std::get<0>(otherSegment), std::get<1>(otherSegment), Color4F::BLUE);
-					}
-
-					if (otherDistanceA < otherDistanceB)
-					{
-						correction = std::get<0>(otherSegment) - intersectionPoint;
-					}
-					else
-					{
-						correction = std::get<1>(otherSegment) - intersectionPoint;
-					}
+				if (objectA->isDynamic && objectB->isDynamic)
+				{
+					CollisionResolver::spawnDebugVector(std::get<0>(otherSegment), std::get<1>(otherSegment), Color4F::BLUE);
 				}
 
-				coordsA += CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
+				if (otherDistanceA < otherDistanceB)
+				{
+					correction = std::get<0>(otherSegment) - intersectionPoint;
+				}
+				else
+				{
+					correction = std::get<1>(otherSegment) - intersectionPoint;
+				}
 			}
+
+			coordsA += CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
 		}
 	}
+}
+
+void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+{
+	
 }
 
 Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObject* objectB, Vec2 correction, Vec2 impactNormal)

@@ -236,8 +236,7 @@ void CollisionObject::runPhysics(float dt)
 		{
 			CollisionResolver::resolveCollision(this, collisionObject, [=]()
 			{
-				// Default is colliding with physics
-				CollisionResult collisionResult = CollisionResult::CollideWithPhysics;
+				CollisionResult collisionResult = CollisionResult::DoNothing;
 
 				this->currentCollisions->insert(collisionObject);
 
