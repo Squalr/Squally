@@ -97,14 +97,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="675" name="wooden-crate" type="object" x="3111.49" y="2297.82" width="160" height="160"/>
-  <object id="676" name="wooden-crate" type="object" x="2452.07" y="2301.52" width="160" height="160"/>
-  <object id="677" name="wooden-crate" type="object" x="3272.52" y="2298.48" width="160" height="160"/>
-  <object id="678" name="vase" type="object" x="2929.5" y="2296" width="113" height="160">
-   <properties>
-    <property name="color" value="green"/>
-   </properties>
-  </object>
+  <object id="676" name="wooden-crate" type="object" x="3073.28" y="2289.4" width="160" height="160"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

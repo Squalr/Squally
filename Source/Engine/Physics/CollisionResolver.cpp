@@ -78,12 +78,12 @@ bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, Co
 
 void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
 {
-	auto resolve = [](CollisionObject* innerObject, CollisionObject* outerObject, Vec2 innerPoint)
+	auto resolve = [](CollisionObject* innerObject, CollisionObject* outerObject, std::vector<cocos2d::Vec2>& outerShape, Vec2 innerPoint)
 	{
-		std::tuple<Vec2, Vec2> ab = std::make_tuple(outerObject->shape[0], outerObject->shape[1]);
-		std::tuple<Vec2, Vec2> bc = std::make_tuple(outerObject->shape[1], outerObject->shape[2]);
-		std::tuple<Vec2, Vec2> cd = std::make_tuple(outerObject->shape[2], outerObject->shape[3]);
-		std::tuple<Vec2, Vec2> da = std::make_tuple(outerObject->shape[3], outerObject->shape[0]);
+		std::tuple<Vec2, Vec2> ab = std::make_tuple(outerShape[0], outerShape[1]);
+		std::tuple<Vec2, Vec2> bc = std::make_tuple(outerShape[1], outerShape[2]);
+		std::tuple<Vec2, Vec2> cd = std::make_tuple(outerShape[2], outerShape[3]);
+		std::tuple<Vec2, Vec2> da = std::make_tuple(outerShape[3], outerShape[0]);
 
 		float abDist = AlgoUtils::getDistanceFromSegment(ab, innerPoint);
 		float bcDist = AlgoUtils::getDistanceFromSegment(bc, innerPoint);
@@ -114,41 +114,58 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 			normal = AlgoUtils::getSegmentNormal(da);
 		}
 
-		Vec2 correction = closestPoint - innerPoint;
+		CollisionResolver::applyCorrection(innerObject, outerObject, closestPoint - innerPoint, normal);
+	};
 
-		CollisionResolver::applyCorrection(innerObject, outerObject, correction, normal);
+	bool hasRunEvents = false;
+	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
+
+	auto runCollisonEventsOnce = [&]()
+	{
+		if (!hasRunEvents)
+		{
+			hasRunEvents = true;
+			result = onCollision();
+		}
+
+		return result;
 	};
 
 	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
 	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
 
-	for (auto point : objectA->shape)
-	{
-		point += (coordsA - coordsB);
+	std::vector<cocos2d::Vec2> shapeA = objectA->shape;
+	std::vector<cocos2d::Vec2> shapeB = objectB->shape;
 
-		if (AlgoUtils::isPointInPolygon(objectB->shape, point))
+	for (cocos2d::Vec2& point : shapeA)
+	{
+		point += coordsA;
+	}
+
+	for (cocos2d::Vec2& point : shapeB)
+	{
+		point += coordsB;
+	}
+
+	for (auto point : shapeA)
+	{
+		if (AlgoUtils::isPointInPolygon(shapeB, point))
 		{
-			if (onCollision() == CollisionObject::CollisionResult::CollideWithPhysics)
+			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
 			{
-				resolve(objectA, objectB, point);
+				resolve(objectA, objectB, shapeB, point);
 			}
-				
-			return;
 		}
 	}
 
-	for (auto point : objectB->shape)
+	for (auto point : shapeB)
 	{
-		point += (coordsB - coordsA);
-
-		if (AlgoUtils::isPointInPolygon(objectA->shape, point))
+		if (AlgoUtils::isPointInPolygon(shapeA, point))
 		{
-			if (onCollision() == CollisionObject::CollisionResult::CollideWithPhysics)
+			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
 			{
-				resolve(objectB, objectA, point);
+				resolve(objectB, objectA, shapeA,  point);
 			}
-			
-			return;
 		}
 	}
 }
@@ -228,20 +245,14 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 			Vec2 correction = Vec2::ZERO;
 			Vec2 normal = Vec2::ZERO;
 
-			if (objectA->isDynamic && objectB->isDynamic)
-			{
-				CollisionResolver::spawnDebugPoint(intersectionPoint);
-			}
+			// CollisionResolver::spawnDebugPoint(objectA, intersectionPoint);
 
 			if (std::min(thisDistanceA, thisDistanceB) < std::min(otherDistanceA, otherDistanceB))
 			{
 				// Case 1: The end of this segment is close to the intersection point. Snap the end of this segment to intersect the other segment.
 				normal = AlgoUtils::getSegmentNormal(otherSegment);
 
-				if (objectA->isDynamic && objectB->isDynamic)
-				{
-					CollisionResolver::spawnDebugVector(std::get<0>(currentSegment), std::get<1>(currentSegment), Color4F::GREEN);
-				}
+				// CollisionResolver::spawnDebugVector(objectA, std::get<0>(currentSegment), std::get<1>(currentSegment), Color4F::GREEN);
 
 				if (thisDistanceA < thisDistanceB)
 				{
@@ -258,10 +269,7 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 				// so instead we need to push this object away by a calculated amount
 				normal = AlgoUtils::getSegmentNormal(currentSegment);
 
-				if (objectA->isDynamic && objectB->isDynamic)
-				{
-					CollisionResolver::spawnDebugVector(std::get<0>(otherSegment), std::get<1>(otherSegment), Color4F::BLUE);
-				}
+				// CollisionResolver::spawnDebugVector(objectA, std::get<0>(otherSegment), std::get<1>(otherSegment), Color4F::BLUE);
 
 				if (otherDistanceA < otherDistanceB)
 				{
@@ -292,7 +300,7 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 	// objectA->velocity.x *= impactNormal.y;
 	objectA->velocity.y *= impactNormal.x;
 
-	if (objectB->isDynamic)
+	if (objectA->isDynamic && objectB->isDynamic)
 	{
 		// TODO: Instead of weighting each object equally, allow for this to be configurable (ie 75% of force to one object, 25% to other).
 		// Unsure of best implementation for this.
@@ -303,22 +311,26 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction);
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction);
 	}
-	else
+	else if (objectA->isDynamic)
 	{
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction);
+	}
+	else if (objectB->isDynamic)
+	{
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + correction);
 	}
 
 	return correction;
 }
 
-void CollisionResolver::spawnDebugPoint(Vec2 point)
+void CollisionResolver::spawnDebugPoint(CollisionObject* objectA, Vec2 point, Color4F color)
 {
 	DrawNode* dbg = DrawNode::create();
 
-	dbg->drawPoint(point, 4.0f, Color4F::GRAY);
+	dbg->drawPoint(point, 4.0f, color);
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		nullptr,
+		objectA,
 		dbg,
 		ObjectEvents::SpawnMethod::Above,
 		ObjectEvents::PositionMode::Discard,
@@ -331,14 +343,14 @@ void CollisionResolver::spawnDebugPoint(Vec2 point)
 	));
 }
 
-void CollisionResolver::spawnDebugVector(Vec2 pointA, Vec2 pointB, Color4F color)
+void CollisionResolver::spawnDebugVector(CollisionObject* objectA, Vec2 pointA, Vec2 pointB, Color4F color)
 {
 	DrawNode* dbg = DrawNode::create();
 
 	dbg->drawSegment(pointA, pointB, 1.0f, color);
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		nullptr,
+		objectA,
 		dbg,
 		ObjectEvents::SpawnMethod::Above,
 		ObjectEvents::PositionMode::Discard,
