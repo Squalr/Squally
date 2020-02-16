@@ -273,12 +273,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="water" type="object" x="-143.645" y="2659.79" width="14743.3" height="2896.42">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="5"/>
-   </properties>
-  </object>
+  <object id="781" name="water" type="object" x="-143.645" y="2659.79" width="14743.3" height="2896.42"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>

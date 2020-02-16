@@ -44,4 +44,6 @@ private:
 	static const float WaterCollisionOffset;
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
+
+	static const std::string MapKeyPropertyDisablePhysics;
 };

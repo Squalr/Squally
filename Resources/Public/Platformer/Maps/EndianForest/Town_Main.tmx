@@ -396,7 +396,7 @@
   </properties>
   <object id="906" name="water" type="object" x="9942.82" y="5891.9" width="956.842" height="405.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -415,7 +415,7 @@
   </properties>
   <object id="905" name="water" type="object" x="9846.66" y="5955.32" width="1101.32" height="831.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

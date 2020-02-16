@@ -375,17 +375,13 @@ void TerrainObject::buildCollision()
 		previousSegment = &(*it);
 	}
 
-	for (auto it = this->intersectionPoints.begin(); it != this->intersectionPoints.end(); it++)
+	for (auto intersectionPoint : this->intersectionPoints)
 	{
 		const float Radius = 32.0f;
 
-		/*
-		PhysicsMaterial material = PHYSICSBODY_MATERIAL_DEFAULT;
-		material.friction = MathUtils::clamp(this->terrainData.friction, 0.0f, 1.0f);
-		PhysicsBody* physicsBody = PhysicsBody::createCircle(Radius, material, *it);
-		*/
-
 		CollisionObject* collisionObject = CollisionObject::create(CollisionObject::createCircle(Radius), (CollisionType)EngineCollisionTypes::Intersection, false, false);
+
+		collisionObject->setPosition(intersectionPoint);
 
 		this->collisionNode->addChild(collisionObject);
 	}

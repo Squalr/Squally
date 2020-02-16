@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="785">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="38" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="785">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -59,7 +59,7 @@
   </properties>
   <object id="783" name="water" type="object" x="-596.335" y="1557.33" width="7928.67" height="405.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -70,7 +70,7 @@
   </properties>
   <object id="714" name="blue-grass" type="terrain" x="1115.87" y="1552">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
    <polygon points="0,0 4909.4,-4.22532 4909.4,354.925 11.8872,359.152"/>
   </object>
@@ -108,7 +108,7 @@
   </properties>
   <object id="764" name="water" type="object" x="-315.366" y="1590.11" width="7272.67" height="405.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -173,7 +173,7 @@
   </properties>
   <object id="741" name="water" type="object" x="-264.642" y="1650.93" width="7161.42" height="405.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -226,7 +226,7 @@
   </properties>
   <object id="735" name="water" type="object" x="-252.698" y="1760.93" width="6813" height="405.346">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="disable-physics" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

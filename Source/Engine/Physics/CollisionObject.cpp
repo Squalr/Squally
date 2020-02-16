@@ -402,7 +402,12 @@ std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 
 	for (int index = 0; index < segments; index++)
 	{
+		float progress = float(index) / float(segments);
 
+		points.push_back(Vec2(
+			std::cos(2.0f * float(M_PI) * progress) * radius,
+			std::sin(2.0f * float(M_PI) * progress) * radius
+		));
 	}
 
 	return points;
