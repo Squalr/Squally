@@ -233,29 +233,24 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		if (groundBehavior->isStandingOn(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		}
-
-		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
-		if (groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::DoNothing;
-		}
-
-		if (!headBehavior->hasHeadCollisionWith(collisionData.other))
-		{
-			return CollisionObject::CollisionResult::CollideWithPhysics;
-		}
-
 		// No collision when not standing on anything
 		if (!groundBehavior->isOnGround())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
+		if (!groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		if (groundBehavior->isStandingOn(collisionData.other))
+		{
+			return CollisionObject::CollisionResult::CollideWithPhysics;
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)

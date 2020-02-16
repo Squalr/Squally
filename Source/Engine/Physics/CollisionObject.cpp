@@ -272,12 +272,9 @@ void CollisionObject::runPhysics(float dt)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
 		{
-			for (auto events : this->collisionEndEvents)
+			for (auto event : this->collisionEndEvents[collisionObject->getCollisionType()])
 			{
-				for (auto event : events.second)
-				{
-					event.collisionEvent(CollisionData(collisionObject, dt));
-				}
+				event.collisionEvent(CollisionData(collisionObject, dt));
 			}
 		}
 	}

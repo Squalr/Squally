@@ -30,6 +30,5 @@ private:
 	PlatformerEntity* entity;
 
 	static const float HeadCollisionPadding;
-	static const float HeadCollisionOffset;
-	static const float HeadCollisionRadius;
+	static const float HeadCollisionSize;
 };

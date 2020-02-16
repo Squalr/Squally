@@ -13,10 +13,9 @@
 using namespace cocos2d;
 
 const std::string EntityJumpCollisionBehavior::MapKeyAttachedBehavior = "entity-jump-collisions";
-const float EntityJumpCollisionBehavior::JumpCollisionPadding = 28.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionMargin = 8.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionOffset = -4.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionHeight = 64.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionRadius = 8.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionHeight = 32.0f;
 
 EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* owner)
 {
@@ -55,7 +54,17 @@ void EntityJumpCollisionBehavior::onLoad()
 
 bool EntityJumpCollisionBehavior::canJump()
 {
-	return !this->jumpCollision->getCurrentCollisions().empty();
+	for (auto collision : this->jumpCollision->getCurrentCollisions())
+	{
+		if (collision->getCollisionType() == (int)PlatformerCollisionType::Solid
+			|| collision->getCollisionType() == (int)PlatformerCollisionType::Physics
+			|| collision->getCollisionType() == (int)PlatformerCollisionType::PassThrough)
+		{
+			return true;	
+		}
+	}
+
+	return false;
 }
 
 void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
@@ -67,10 +76,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 	
 	this->jumpCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionPadding * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight),
-			1.0f,
-			EntityJumpCollisionBehavior::JumpCollisionRadius,
-			0.0f
+			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		false,

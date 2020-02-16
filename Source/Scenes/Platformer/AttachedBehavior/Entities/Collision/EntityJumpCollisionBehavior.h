@@ -29,8 +29,7 @@ private:
 
 	PlatformerEntity* entity;
 
-	static const float JumpCollisionPadding;
+	static const float JumpCollisionMargin;
 	static const float JumpCollisionOffset;
 	static const float JumpCollisionHeight;
-	static const float JumpCollisionRadius;
 };
