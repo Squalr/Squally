@@ -85,20 +85,6 @@ void EntityMovementCollisionBehavior::onLoad()
 			}
 		}
 	}));
-
-	this->entity->listenForStateWrite(StateKeys::MovementX, [=](Value value)
-	{
-		float movementX = value.asFloat();
-
-		if (movementX != 0.0f)
-		{
-			// this->movementCollision->getPhysicsBody()->getFirstShape()->setFriction(0.0f);
-		}
-		else
-		{
-			// this->movementCollision->getPhysicsBody()->getFirstShape()->setFriction(EntityMovementCollisionBehavior::StaticFriction);
-		}
-	});
 }
 
 void EntityMovementCollisionBehavior::update(float dt)

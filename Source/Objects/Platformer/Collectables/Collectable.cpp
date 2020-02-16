@@ -56,7 +56,7 @@ void Collectable::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
