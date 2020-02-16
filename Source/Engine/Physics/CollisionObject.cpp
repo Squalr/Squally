@@ -33,54 +33,55 @@ const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
-	CollisionObject* instance = new CollisionObject(properties, shape, collisionType, isDynamic, canRotate);
+	CollisionObject* instance = new CollisionObject(properties, points, collisionType, isDynamic, canRotate);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> shape, std::string collisionName, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, std::string collisionName, bool isDynamic, bool canRotate)
 {
 	CollisionObject* instance = nullptr;
 
 	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
 	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(collisionName, [&](CollisionType collisionType)
 	{
-		instance = CollisionObject::create(properties, shape, collisionType, isDynamic, canRotate);
+		instance = CollisionObject::create(properties, points, collisionType, isDynamic, canRotate);
 	}));
 
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(std::vector<Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate)
 {
 	ValueMap valueMap = ValueMap();
 
-	return CollisionObject::create(valueMap, shape, collisionType, isDynamic, canRotate);
+	return CollisionObject::create(valueMap, points, collisionType, isDynamic, canRotate);
 }
 
-CollisionObject* CollisionObject::create(std::vector<Vec2> shape, std::string collisionName, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(std::vector<Vec2> points, std::string collisionName, bool isDynamic, bool canRotate)
 {
 	ValueMap valueMap = ValueMap();
 
-	return CollisionObject::create(valueMap, shape, collisionName, isDynamic, canRotate);
+	return CollisionObject::create(valueMap, points, collisionName, isDynamic, canRotate);
 }
 
-CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> shape, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
-	CollisionObject(properties, shape, (CollisionType)0, isDynamic, canRotate)
+CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
+	CollisionObject(properties, points, (CollisionType)0, isDynamic, canRotate)
 {
 }
 
-CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate) :
+CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate) :
 	super(properties)
 {
 	this->collisionType = collisionType;
-	this->shape = shape;
-	this->segments = AlgoUtils::buildSegmentsFromPoints(this->shape);
-	this->boundsRect = AlgoUtils::getPolygonRect(this->shape);
+	this->points = points;
+	this->shape = this->determineShape();
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
+	this->boundsRect = AlgoUtils::getPolygonRect(this->points);
 	this->collidesWithTypes = std::set<CollisionType>();
 	this->collisionStartEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionSustainEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
@@ -143,15 +144,15 @@ void CollisionObject::onDeveloperModeEnable(int debugLevel)
 	{
 		this->debugDrawNode = DrawNode::create();
 
-		if (!this->shape.empty())
+		if (!this->points.empty())
 		{
-			if (this->shape.size() == 2)
+			if (this->points.size() == 2)
 			{
-				this->debugDrawNode->drawSegment(this->shape.front(), this->shape.back(), 1.0f, Color4F::RED);
+				this->debugDrawNode->drawSegment(this->points.front(), this->points.back(), 1.0f, Color4F::RED);
 			}
 			else
 			{
-				this->debugDrawNode->drawPolygon(this->shape.data(), this->shape.size(), Color4F(1.0f, 0.0f, 0.0f, 0.4f), 1.0f, Color4F::RED);
+				this->debugDrawNode->drawPolygon(this->points.data(), this->points.size(), Color4F(1.0f, 0.0f, 0.0f, 0.4f), 1.0f, Color4F::RED);
 			}
 		}
 
@@ -464,6 +465,30 @@ void CollisionObject::setThisOrBindPosition(cocos2d::Vec2 position)
 	{
 		this->bindTarget->setPosition(position);
 	}
+}
+
+CollisionObject::Shape CollisionObject::determineShape()
+{
+	if (this->points.size() == 2)
+	{
+		return Shape::Segment;
+	}
+	else if (this->points.size() == 4)
+	{
+		int sameX = 0;
+		int sameY = 0;
+		Vec2 prior = this->points.back();
+
+		for (auto point : this->points)
+		{
+			sameX += (point.x == prior.x ? 1 : 0);
+			sameY += (point.y == prior.y ? 1 : 0);
+		}
+
+		return (sameX == 2 && sameY == 2) ? Shape::Rectangle : Shape::Quad;
+	}
+
+	return Shape::Polygon;
 }
 
 void CollisionObject::ClearCollisionObjects()

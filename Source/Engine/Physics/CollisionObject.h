@@ -19,16 +19,24 @@ namespace cocos2d
 class CollisionObject : public GameObject
 {
 public:
-	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate);
-	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, std::string collisionName, bool isDynamic, bool canRotate);
-	static CollisionObject* create(std::vector<cocos2d::Vec2> shape, CollisionType collisionType, bool isDynamic, bool canRotate);
-	static CollisionObject* create(std::vector<cocos2d::Vec2> shape, std::string collisionName, bool isDynamic, bool canRotate);
+	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate);
+	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, std::string collisionName, bool isDynamic, bool canRotate);
+	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate);
+	static CollisionObject* create(std::vector<cocos2d::Vec2> points, std::string collisionName, bool isDynamic, bool canRotate);
 	virtual ~CollisionObject();
 
 	enum class CollisionResult
 	{
 		DoNothing = 0,
 		CollideWithPhysics = 1
+	};
+
+	enum class Shape
+	{
+		Polygon,
+		Segment,
+		Rectangle,
+		Quad,
 	};
 
 	struct CollisionData
@@ -105,6 +113,7 @@ private:
 	void addCollisionEvent(CollisionType collisionType, std::map<CollisionType, std::vector<CollisionEvent>>& eventMap, CollisionEvent onCollision);
 	cocos2d::Vec2 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec2 position);
+	Shape determineShape();
 
 	static void ClearCollisionObjects();
 	static void RegisterCollisionObject(CollisionObject* collisionObject);
@@ -123,7 +132,8 @@ private:
 	bool gravityInversed;
 	
 	// Shape
-	std::vector<cocos2d::Vec2> shape;
+	Shape shape;
+	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	cocos2d::Rect boundsRect;
 

@@ -71,17 +71,17 @@ void BreakableCage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cageBottom->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->cageBottom->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->cage->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->cage->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
 
-	this->cageTop->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->cageTop->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Movement, (CollisionType)PlatformerCollisionType::PlayerMovement, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::CollideWithPhysics;
 	});
