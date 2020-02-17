@@ -73,6 +73,8 @@ public:
 	void whileCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
 	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
+	const std::vector<cocos2d::Vec2>& getPoints();
+	Shape getShape();
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
 	void inverseGravity();

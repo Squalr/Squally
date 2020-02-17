@@ -232,6 +232,46 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
+		if (collisionData.other->getShape() == CollisionObject::Shape::Segment)
+		{
+			if (collisionData.other->getPoints()[0].x <= collisionData.other->getPoints()[1].x)
+			{
+				// High => Low slope
+				if (collisionData.other->getPoints()[0].y <= collisionData.other->getPoints()[1].y)
+				{
+					if (!groundBehavior->hasRightCornerCollision())
+					{
+						return CollisionObject::CollisionResult::DoNothing;
+					}
+				}
+				else
+				{
+					if (!groundBehavior->hasLeftCornerCollision())
+					{
+						return CollisionObject::CollisionResult::DoNothing;
+					}
+				}
+			}
+			else
+			{
+				// High => Low slope
+				if (collisionData.other->getPoints()[0].y >= collisionData.other->getPoints()[1].y)
+				{
+					if (!groundBehavior->hasRightCornerCollision())
+					{
+						return CollisionObject::CollisionResult::DoNothing;
+					}
+				}
+				else
+				{
+					if (!groundBehavior->hasLeftCornerCollision())
+					{
+						return CollisionObject::CollisionResult::DoNothing;
+					}
+				}
+			}
+		}
+
 		// No collision when not standing on anything
 		if (!groundBehavior->isOnGround())
 		{

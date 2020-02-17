@@ -17,6 +17,7 @@ const float EntityGroundCollisionBehavior::GroundCollisionPadding = 4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = 8.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionHeight = 32.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
+const float EntityGroundCollisionBehavior::CornerCollisionWidth = 32.0f;
 
 EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner)
 {
@@ -31,10 +32,17 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->groundCollision = nullptr;
+	this->leftCornerCollision = nullptr;
+	this->rightCornerCollision = nullptr;
+	this->detectorWidth = 0.0f;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->detectorWidth = std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f);
 	}
 
 	this->toggleQueryable(false);
@@ -49,6 +57,7 @@ void EntityGroundCollisionBehavior::onLoad()
 	this->defer([=]()
 	{
 		this->buildGroundCollisionDetector();
+		this->buildCornerCollisionDetectors();
 		this->toggleQueryable(true);
 	});
 }
@@ -70,6 +79,16 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 bool EntityGroundCollisionBehavior::isOnGround()
 {
 	return !this->groundCollision->getCurrentCollisions().empty();
+}
+
+bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
+{
+	return !this->leftCornerCollision->getCurrentCollisions().empty();
+}
+
+bool EntityGroundCollisionBehavior::hasRightCornerCollision()
+{
+	return !this->rightCornerCollision->getCurrentCollisions().empty();
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
@@ -176,7 +195,7 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 
 	this->groundCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(
-			Size(std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight)
+			Size(this->detectorWidth, EntityGroundCollisionBehavior::GroundCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
 		CollisionObject::Properties(false, false)
@@ -205,12 +224,63 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->groundCollision->whenStopsCollidingWith({ (int)EngineCollisionTypes::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Intersection }, [=](CollisionObject::CollisionData collisionData)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+}
+
+void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
+{
+	if (this->rightCornerCollision != nullptr || this->leftCornerCollision != nullptr)
+	{
+		return;
+	}
+
+	const float Buffer = 4;
+
+	this->rightCornerCollision = CollisionObject::create(
+		CollisionObject::createBox(
+			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		CollisionObject::Properties(false, false)
+	);
+
+	this->leftCornerCollision = CollisionObject::create(
+		CollisionObject::createBox(
+			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
+		),
+		(int)PlatformerCollisionType::GroundDetector,
+		CollisionObject::Properties(false, false)
+	);
+
+	Vec2 collisionOffset = this->entity->getCollisionOffset();
+
+	if (this->entity->isFlippedY())
+	{
+		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(-this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+		
+		this->rightCornerCollision->inverseGravity();
+		this->rightCornerCollision->setPosition(offset);
+		this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
+	}
+	else
+	{
+		Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
+		this->rightCornerCollision->setPosition(offset);
+		this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
+	}
+	
+	this->addChild(this->rightCornerCollision);
+	this->addChild(this->leftCornerCollision);
+
+	this->leftCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
-	this->groundCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->rightCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
 	{
 		return CollisionObject::CollisionResult::DoNothing;
 	});
