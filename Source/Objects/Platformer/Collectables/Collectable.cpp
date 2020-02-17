@@ -30,7 +30,7 @@ Collectable* Collectable::create(ValueMap& properties)
 Collectable::Collectable(ValueMap& properties) : super(properties)
 {
 	this->collectableNode = Node::create();
-	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, true, false);
+	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(true, false));
 	this->collectionEvents = std::vector<std::function<void()>>();
 	this->isCollected = false;
 

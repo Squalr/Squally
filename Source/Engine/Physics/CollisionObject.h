@@ -19,10 +19,20 @@ namespace cocos2d
 class CollisionObject : public GameObject
 {
 public:
-	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate);
-	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, std::string collisionName, bool isDynamic, bool canRotate);
-	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate);
-	static CollisionObject* create(std::vector<cocos2d::Vec2> points, std::string collisionName, bool isDynamic, bool canRotate);
+	struct Properties
+	{
+		bool isDynamic;
+		bool canRotate;
+
+		// Used in determining pushback on objects colliding. Pushing a massless object will result in no velocity loss.
+		float mass;
+
+		Properties() : isDynamic(true), canRotate(false), mass(1.0f) { }
+		Properties(bool isDynamic, bool canRotate, float mass = 1.0f) : isDynamic(isDynamic), canRotate(canRotate), mass(mass) { }
+	};
+
+	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties);
+	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties);
 	virtual ~CollisionObject();
 
 	enum class CollisionResult
@@ -91,10 +101,7 @@ public:
 	static const float CollisionZThreshold;
 
 protected:
-	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape,
-		std::string deserializedCollisionName, bool isDynamic, bool canRotate);
-	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape,
-		CollisionType collisionType, bool isDynamic, bool canRotate);
+	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, Properties collisionProperties);
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -123,10 +130,9 @@ private:
 
 	// Physics state
 	cocos2d::Vec2 velocity;
+	Properties collisionProperties;
 	float horizontalDampening;
 	float verticalDampening;
-	bool isDynamic;
-	bool canRotate;
 	bool physicsEnabled;
 	bool gravityEnabled;
 	bool gravityInversed;

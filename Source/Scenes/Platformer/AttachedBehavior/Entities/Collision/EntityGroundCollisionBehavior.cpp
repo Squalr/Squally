@@ -15,7 +15,7 @@ using namespace cocos2d;
 const std::string EntityGroundCollisionBehavior::MapKeyAttachedBehavior = "entity-ground-collisions";
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = 4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = 8.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionHeight = 16.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionHeight = 32.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
 
 EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner)
@@ -175,25 +175,24 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	}
 
 	this->groundCollision = CollisionObject::create(
-		CollisionObject::createBox(
+		CollisionObject::createCapsulePolygon(
 			Size(std::max((this->entity->getEntitySize()).width + EntityGroundCollisionBehavior::GroundCollisionPadding * 2.0f, 8.0f), EntityGroundCollisionBehavior::GroundCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 
 	if (this->entity->isFlippedY())
 	{
-		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
+		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
 		this->groundCollision->inverseGravity();
 		this->groundCollision->setPosition(offset);
 	}
 	else
 	{
-		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
+		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
 		this->groundCollision->setPosition(offset);
 	}
 	

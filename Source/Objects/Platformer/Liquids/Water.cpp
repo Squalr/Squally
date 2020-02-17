@@ -41,7 +41,7 @@ Water::Water(ValueMap& properties) : super(properties)
 	float effectiveOffset = this->waterSize.height - waterCollisionHeight;
 	Size collisionSize = Size(this->waterSize.width, waterCollisionHeight);
 
-	this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, false, false);
+	this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, CollisionObject::Properties(false, false));
 
 	this->waterCollision->setPositionY(-effectiveOffset / 2.0f);
 	this->waterCollision->setPhysicsEnabled(GameUtils::getKeyOrDefault(this->properties, Water::MapKeyPropertyDisablePhysics, Value(true)).asBool());

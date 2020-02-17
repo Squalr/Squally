@@ -49,7 +49,7 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->lightningStrike = SmartAnimationSequenceNode::create();
 	this->shipContainer = Node::create();
 	this->ship = Sprite::create(ObjectResources::Cinematic_SpaceShipSqually);
-	this->shipCollision = CollisionObject::create(CollisionObject::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, true, true);
+	this->shipCollision = CollisionObject::create(CollisionObject::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 	this->shipFireAnimation = SmartAnimationSequenceNode::create();
 	this->smokeAnimation = SmartAnimationSequenceNode::create();
 	this->fireAnimation = SmartAnimationSequenceNode::create();

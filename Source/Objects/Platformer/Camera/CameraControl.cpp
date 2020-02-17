@@ -30,7 +30,7 @@ CameraControl::CameraControl(ValueMap& properties) : super(properties)
 {
 	Size controlSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::MapPropertyTarget, Value("")).asString();
-	this->controlCollision = CollisionObject::create(CollisionObject::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->controlCollision = CollisionObject::create(CollisionObject::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->cameraTarget = nullptr;
 
 	this->addChild(this->controlCollision);

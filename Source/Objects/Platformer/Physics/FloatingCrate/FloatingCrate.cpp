@@ -41,7 +41,7 @@ FloatingCrate* FloatingCrate::create(ValueMap& properties)
 FloatingCrate::FloatingCrate(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->collision = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, false, true);
+	this->collision = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
 
 	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
 	{

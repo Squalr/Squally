@@ -37,8 +37,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int 
 	this->collisionObject = CollisionObject::create(
 		hitBox,
 		collisionType,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 	this->contentNode = Node::create();
 	this->postFXNode = Node::create();

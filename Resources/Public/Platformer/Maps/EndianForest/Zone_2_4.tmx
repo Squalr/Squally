@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1230">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1232">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -243,6 +243,7 @@
   </properties>
   <object id="955" name="Generic/Vent" type="decor" x="2102.47" y="4626.98" width="305" height="307"/>
   <object id="956" name="Generic/Vent" type="decor" x="3761.56" y="4640.86" width="305" height="307"/>
+  <object id="1230" name="Generic/Vent" type="decor" x="5165.68" y="2516.2" width="305" height="307"/>
  </objectgroup>
  <objectgroup id="19" name="terrain bg">
   <properties>

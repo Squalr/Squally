@@ -59,18 +59,22 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 		shape = CollisionObject::createBox(Size(width, height));
 	}
 
-	CollisionObject* collisionObject = CollisionObject::create(properties, shape, name, false, false);
-
-	for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
+	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(name, [&](CollisionType collisionType)
 	{
-		std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
+		CollisionObject* collisionObject = CollisionObject::create(properties, shape, collisionType, CollisionObject::Properties(false, false));
 
-		if (!key.empty())
+		for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
 		{
-			(*it)->deserializeProperties(collisionObject, properties);
-		}
-	}
+			std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
 
-	// Fire an event indicating successful deserialization
-	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(collisionObject));
+			if (!key.empty())
+			{
+				(*it)->deserializeProperties(collisionObject, properties);
+			}
+		}
+
+		// Fire an event indicating successful deserialization
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(collisionObject));
+	}));
 }

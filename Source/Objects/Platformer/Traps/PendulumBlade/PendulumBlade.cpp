@@ -48,7 +48,7 @@ PendulumBlade::PendulumBlade(ValueMap& properties) : super(properties)
 	this->pendulumBladeClippy = PendulumBladeClippy::create();
 	this->neck = Sprite::create(ObjectResources::Traps_PendulumBlade_Neck);
 	this->bladeChain = Node::create();
-	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->bladeCollision = CollisionObject::create(this->createBladeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 

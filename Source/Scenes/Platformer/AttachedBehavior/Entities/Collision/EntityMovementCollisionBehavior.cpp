@@ -175,8 +175,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		CollisionObject::createBox(this->entity->getMovementSize()),
 		// CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
 		collisionType,
-		true,
-		false
+		CollisionObject::Properties(true, false)
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -296,14 +295,12 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 	this->leftCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
 		(int)PlatformerCollisionType::WallDetector,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 	this->rightCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
 		(int)PlatformerCollisionType::WallDetector,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)

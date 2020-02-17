@@ -13,8 +13,8 @@
 using namespace cocos2d;
 
 const std::string EntityHeadCollisionBehavior::MapKeyAttachedBehavior = "entity-head-collisions";
-const float EntityHeadCollisionBehavior::HeadCollisionPadding = 8.0f;
-const float EntityHeadCollisionBehavior::HeadCollisionSize = 24.0f;
+const float EntityHeadCollisionBehavior::HeadCollisionPadding = 16.0f;
+const float EntityHeadCollisionBehavior::HeadCollisionSize = 48.0f;
 
 EntityHeadCollisionBehavior* EntityHeadCollisionBehavior::create(GameObject* owner)
 {
@@ -91,8 +91,7 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 			Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), EntityHeadCollisionBehavior::HeadCollisionSize)
 		),
 		(int)PlatformerCollisionType::HeadDetector,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	Vec2 entityCenter = this->entity->getEntityCenterPoint();

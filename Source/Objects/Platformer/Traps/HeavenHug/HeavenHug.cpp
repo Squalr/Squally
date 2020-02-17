@@ -42,7 +42,7 @@ HeavenHug::HeavenHug(ValueMap& properties) : super(properties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
-	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, false, false);
+	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->travelDistance = this->properties.at(GameObject::MapKeyHeight).asFloat();
 

@@ -445,22 +445,21 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 	objectA->velocity.y *= impactNormal.x;
 	objectB->velocity.y *= impactNormal.x;
 
-	if (objectA->isDynamic && objectB->isDynamic)
+	if (objectA->collisionProperties.isDynamic && objectB->collisionProperties.isDynamic)
 	{
-		// TODO: Instead of weighting each object equally, allow for this to be configurable (ie 75% of force to one object, 25% to other).
-		// Probably via a mass parameter.
-		correction.x /= 2.0f;
-		correction.y /= 2.0f;
+		float massSum = objectA->collisionProperties.mass + objectB->collisionProperties.mass;
+
+		massSum = massSum == 0.0f ? 1.0f : massSum;
 		
 		// Equal and opposite force on other dynamic objects
-		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction);
-		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction);
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction * (objectA->collisionProperties.mass / massSum));
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction * (objectB->collisionProperties.mass / massSum));
 	}
-	else if (objectA->isDynamic)
+	else if (objectA->collisionProperties.isDynamic)
 	{
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction);
 	}
-	else if (objectB->isDynamic)
+	else if (objectB->collisionProperties.isDynamic)
 	{
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + correction);
 	}

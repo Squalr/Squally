@@ -42,8 +42,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	this->entityCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f, 0.0f),
 		(CollisionType)this->collisionType,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();

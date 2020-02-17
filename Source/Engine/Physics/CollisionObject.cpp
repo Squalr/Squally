@@ -33,48 +33,23 @@ const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties)
 {
-	CollisionObject* instance = new CollisionObject(properties, points, collisionType, isDynamic, canRotate);
+	CollisionObject* instance = new CollisionObject(properties, points, collisionType, collisionProperties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, std::string collisionName, bool isDynamic, bool canRotate)
-{
-	CollisionObject* instance = nullptr;
-
-	// Fire event, allowing for the game to map the deserialized collision string type (ie 'solid') to a unique integer identifier for CollisionType
-	CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMappingEvents::CollisionMapRequestArgs(collisionName, [&](CollisionType collisionType)
-	{
-		instance = CollisionObject::create(properties, points, collisionType, isDynamic, canRotate);
-	}));
-
-	return instance;
-}
-
-CollisionObject* CollisionObject::create(std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate)
+CollisionObject* CollisionObject::create(std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties)
 {
 	ValueMap valueMap = ValueMap();
 
-	return CollisionObject::create(valueMap, points, collisionType, isDynamic, canRotate);
+	return CollisionObject::create(valueMap, points, collisionType, collisionProperties);
 }
 
-CollisionObject* CollisionObject::create(std::vector<Vec2> points, std::string collisionName, bool isDynamic, bool canRotate)
-{
-	ValueMap valueMap = ValueMap();
-
-	return CollisionObject::create(valueMap, points, collisionName, isDynamic, canRotate);
-}
-
-CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, std::string deserializedCollisionName, bool isDynamic, bool canRotate) :
-	CollisionObject(properties, points, (CollisionType)0, isDynamic, canRotate)
-{
-}
-
-CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, bool isDynamic, bool canRotate) :
+CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties) :
 	super(properties)
 {
 	this->collisionType = collisionType;
@@ -90,10 +65,9 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->collisionsBlack = std::set<CollisionObject*>();
 	this->currentCollisions = &this->collisionsRed;
 	this->previousCollisions = &this->collisionsBlack;
-	this->isDynamic = isDynamic;
-	this->canRotate = canRotate;
+	this->collisionProperties = collisionProperties;
 	this->physicsEnabled = true;
-	this->gravityEnabled = isDynamic;
+	this->gravityEnabled = collisionProperties.isDynamic;
 	this->gravityInversed = false;
 	this->bindTarget = nullptr;
 	this->debugDrawNode = nullptr;

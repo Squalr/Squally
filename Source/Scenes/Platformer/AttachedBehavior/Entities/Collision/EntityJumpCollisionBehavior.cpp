@@ -15,7 +15,7 @@ using namespace cocos2d;
 const std::string EntityJumpCollisionBehavior::MapKeyAttachedBehavior = "entity-jump-collisions";
 const float EntityJumpCollisionBehavior::JumpCollisionMargin = 8.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionOffset = -4.0f;
-const float EntityJumpCollisionBehavior::JumpCollisionHeight = 32.0f;
+const float EntityJumpCollisionBehavior::JumpCollisionHeight = 48.0f;
 
 EntityJumpCollisionBehavior* EntityJumpCollisionBehavior::create(GameObject* owner)
 {
@@ -79,8 +79,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		false,
-		false
+		CollisionObject::Properties(false, false)
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();

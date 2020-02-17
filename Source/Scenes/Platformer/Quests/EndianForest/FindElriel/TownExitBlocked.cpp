@@ -91,8 +91,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 		this->chironCollision = CollisionObject::create(
 			CollisionObject::createCapsulePolygon(this->chiron->getMovementSize(), 1.0f, 8.0f, 0.0f),
 			(CollisionType)PlatformerCollisionType::SolidPlayerOnly,
-			false,
-			false
+			CollisionObject::Properties(false, false)
 		);
 		this->chironCollision->setPosition(this->chiron->getCollisionOffset() + Vec2(0.0f, this->chiron->getEntitySize().height / 2.0f));
 

@@ -58,8 +58,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		this->dialogueCollision = CollisionObject::create(
 			CollisionObject::createBox(this->entity->getEntitySize()),
 			(CollisionType)PlatformerCollisionType::Trigger,
-			false,
-			false
+			CollisionObject::Properties(false, false)
 		);
 
 		this->interactMenu->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));

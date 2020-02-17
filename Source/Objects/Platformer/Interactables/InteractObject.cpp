@@ -26,7 +26,7 @@ InteractObject::InteractObject(ValueMap& properties, InteractType interactType, 
 	this->interactType = interactType;
 	this->lockButton = ClickableNode::create(UIResources::Menus_Icons_Lock, UIResources::Menus_Icons_Lock);
 	this->unlockButton = ClickableNode::create(UIResources::Menus_Icons_LockUnlocked, UIResources::Menus_Icons_LockUnlocked);
-	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, false, false);
+	this->interactCollision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->lockedMenu = InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create());
 	this->isLocked = !this->listenEvent.empty();
