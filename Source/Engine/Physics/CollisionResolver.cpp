@@ -437,32 +437,33 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 {
 	correction.x *= impactNormal.x;
 	correction.y *= impactNormal.y;
-	
+
+	// Handle dynamic <=> dynamic collisions differently
+	if (objectA->collisionProperties.isDynamic && objectB->collisionProperties.isDynamic)
+	{
+		float massSum = objectA->collisionProperties.mass + objectB->collisionProperties.mass;
+
+		massSum = massSum == 0.0f ? 1.0f : massSum;
+
+		float ratioA = (objectB->collisionProperties.mass / massSum);
+		float ratioB = (objectA->collisionProperties.mass / massSum);
+		
+		// Apply corrections proportional to object masses
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction * ratioA);
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction * ratioB);
+
+		return correction;
+	}
+
 	// If X disabled, this makes for better horizontal movement, but enabled is more realistic. Might need a compromise/toggleability
 	// objectA->velocity.x *= impactNormal.y;
 	// objectB->velocity.x *= impactNormal.y;
 
 	objectA->velocity.y *= impactNormal.x;
 	objectB->velocity.y *= impactNormal.x;
-
-	if (objectA->collisionProperties.isDynamic && objectB->collisionProperties.isDynamic)
-	{
-		float massSum = objectA->collisionProperties.mass + objectB->collisionProperties.mass;
-
-		massSum = massSum == 0.0f ? 1.0f : massSum;
-		
-		// Equal and opposite force on other dynamic objects
-		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction * (objectA->collisionProperties.mass / massSum));
-		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction * (objectB->collisionProperties.mass / massSum));
-	}
-	else if (objectA->collisionProperties.isDynamic)
-	{
-		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction);
-	}
-	else if (objectB->collisionProperties.isDynamic)
-	{
-		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + correction);
-	}
+	
+	objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
+	objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
 
 	return correction;
 }
