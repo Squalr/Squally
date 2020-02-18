@@ -315,7 +315,7 @@ CollisionType CollisionObject::getCollisionType()
 	return this->collisionType;
 }
 
-std::set<CollisionObject*> CollisionObject::getCurrentCollisions()
+const std::set<CollisionObject*>& CollisionObject::getCurrentCollisions()
 {
 	return *this->currentCollisions;
 }

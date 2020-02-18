@@ -84,7 +84,7 @@ public:
 	void setVelocityY(float velocityY);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
-	std::set<CollisionObject*> getCurrentCollisions();
+	const std::set<CollisionObject*>& getCurrentCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
 	virtual void setPhysicsEnabled(bool enabled);
 
