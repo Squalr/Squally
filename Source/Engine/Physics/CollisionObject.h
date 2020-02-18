@@ -90,7 +90,7 @@ public:
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
 	static std::vector<cocos2d::Vec2> createBox(cocos2d::Size size);
-	static std::vector<cocos2d::Vec2> createCapsulePolygon(cocos2d::Size size, float scale = 1.0f, float capsuleRadius = 8.0f, float friction = 0.5f);
+	static std::vector<cocos2d::Vec2> createCapsulePolygon(cocos2d::Size size, float capsuleRadius = 8.0f);
 
 	static const std::string MapKeyTypeCollision;
 	static const std::string MapKeyCollisionTypeNone;

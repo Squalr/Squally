@@ -404,27 +404,25 @@ std::vector<Vec2> CollisionObject::createBox(Size size)
 	});
 }
 
-std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float scale, float capsuleRadius, float friction)
+std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsuleRadius)
 {
-	Size newSize = size * scale;
-
-	newSize.height = std::max(0.0f, newSize.height - capsuleRadius * 2.0f);
+	size.height = std::max(0.0f, size.height - capsuleRadius * 2.0f);
 
 	std::vector<Vec2> points = std::vector<Vec2>();
 
 	// Right side
-	points.push_back(Vec2(newSize.width / 2.0f, newSize.height / 2.0f));
-	points.push_back(Vec2(newSize.width / 2.0f, -newSize.height / 2.0f));
+	points.push_back(Vec2(size.width / 2.0f, size.height / 2.0f));
+	points.push_back(Vec2(size.width / 2.0f, -size.height / 2.0f));
 
 	// Bottom capsule
-	points.push_back(Vec2(0.0f, -newSize.height / 2.0f - capsuleRadius));
+	points.push_back(Vec2(0.0f, -size.height / 2.0f - capsuleRadius));
 
 	// Left side
-	points.push_back(Vec2(-newSize.width / 2.0f, -newSize.height / 2.0f));
-	points.push_back(Vec2(-newSize.width / 2.0f, newSize.height / 2.0f));
+	points.push_back(Vec2(-size.width / 2.0f, -size.height / 2.0f));
+	points.push_back(Vec2(-size.width / 2.0f, size.height / 2.0f));
 
 	// Top capsule
-	points.push_back(Vec2(0.0f, newSize.height / 2.0f + capsuleRadius));
+	points.push_back(Vec2(0.0f, size.height / 2.0f + capsuleRadius));
 
 	return points; // PhysicsBody::createPolygon(points.data(), points.size(), PhysicsMaterial(0.5f, 0.0f, friction));
 }

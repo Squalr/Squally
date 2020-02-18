@@ -173,7 +173,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision = CollisionObject::create(
 		CollisionObject::createBox(this->entity->getMovementSize()),
-		// CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 1.0f, 8.0f, 0.0f),
+		// CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 8.0f),
 		collisionType,
 		CollisionObject::Properties(true, false)
 	);
@@ -333,12 +333,12 @@ void EntityMovementCollisionBehavior::buildWallDetectors()
 	const Size wallDetectorSize = Size(std::max(this->entity->getEntitySize().width / 2.0f - 8.0f, 16.0f), std::max(this->entity->getEntitySize().height - 32.0f, 16.0f));
 
 	this->leftCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);
 	this->rightCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(wallDetectorSize, 1.0f, 8.0f, 0.0f),
+		CollisionObject::createCapsulePolygon(wallDetectorSize, 8.0f),
 		(int)PlatformerCollisionType::WallDetector,
 		CollisionObject::Properties(false, false)
 	);

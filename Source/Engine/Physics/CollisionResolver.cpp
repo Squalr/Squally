@@ -451,20 +451,20 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		// Apply corrections proportional to object masses
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + correction * ratioA);
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() - correction * ratioB);
-
-		return correction;
 	}
+	else
+	{
+		// If X disabled, this makes for better horizontal movement, but enabled is more realistic. Might need a compromise/toggleability
+		// objectA->velocity.x *= impactNormal.y;
+		// objectB->velocity.x *= impactNormal.y;
 
-	// If X disabled, this makes for better horizontal movement, but enabled is more realistic. Might need a compromise/toggleability
-	// objectA->velocity.x *= impactNormal.y;
-	// objectB->velocity.x *= impactNormal.y;
+		objectA->velocity.y *= impactNormal.x;
+		objectB->velocity.y *= impactNormal.x;
 
-	objectA->velocity.y *= impactNormal.x;
-	objectB->velocity.y *= impactNormal.x;
+		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
+		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
+	}
 	
-	objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
-	objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction : Vec2::ZERO));
-
 	return correction;
 }
 

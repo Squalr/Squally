@@ -40,7 +40,7 @@ void EntityCollisionBehaviorBase::onLoad()
 void EntityCollisionBehaviorBase::buildEntityCollision()
 {
 	this->entityCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 0.9f, 8.0f, 0.0f),
+		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * 0.9f, 8.0f),
 		(CollisionType)this->collisionType,
 		CollisionObject::Properties(false, false)
 	);
