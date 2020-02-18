@@ -342,7 +342,7 @@ void TerrainObject::buildCollision()
 		
 		if ((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle)))
 		{
-			collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::PassThrough, CollisionObject::Properties(false, false));
+			collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::PassThrough, CollisionObject::Properties(false, false, 1.0f, 1.0f));
 		}
 		else if ((!this->isFlipped && this->isBottomAngle(normalAngle)) || (this->isFlipped && this->isTopAngle(normalAngle)))
 		{

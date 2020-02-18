@@ -79,7 +79,8 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 			Size(std::max((this->entity->getEntitySize()).width - EntityJumpCollisionBehavior::JumpCollisionMargin * 2.0f, 8.0f), EntityJumpCollisionBehavior::JumpCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false)
+		CollisionObject::Properties(false, false),
+		Color4F::YELLOW
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();

@@ -26,13 +26,16 @@ public:
 
 		// Used in determining pushback on objects colliding. Pushing a massless object will result in no velocity loss.
 		float mass;
+		
+		// Used in mitigating corrections applied in collisions. Helps smooth out otherwise rough collisions.
+		float softness;
 
-		Properties() : isDynamic(true), canRotate(false), mass(1.0f) { }
-		Properties(bool isDynamic, bool canRotate, float mass = 1.0f) : isDynamic(isDynamic), canRotate(canRotate), mass(mass) { }
+		Properties() : isDynamic(true), canRotate(false), mass(1.0f), softness(1.0f) { }
+		Properties(bool isDynamic, bool canRotate, float mass = 1.0f, float softness = 1.0f) : isDynamic(isDynamic), canRotate(canRotate), mass(mass), softness(softness) { }
 	};
 
-	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties);
-	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties);
+	static CollisionObject* create(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor = cocos2d::Color4F::RED);
+	static CollisionObject* create(std::vector<cocos2d::Vec2> points, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor = cocos2d::Color4F::RED);
 	virtual ~CollisionObject();
 
 	enum class CollisionResult
@@ -103,7 +106,7 @@ public:
 	static const float CollisionZThreshold;
 
 protected:
-	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, Properties collisionProperties);
+	CollisionObject(const cocos2d::ValueMap& properties, std::vector<cocos2d::Vec2> shape, CollisionType collisionType, Properties collisionProperties, cocos2d::Color4F debugColor);
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
@@ -159,6 +162,7 @@ private:
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
 
 	// Debug
+	cocos2d::Color4F debugColor;
 	bool debugInfoSpawned;
 	cocos2d::DrawNode* debugDrawNode;
 };

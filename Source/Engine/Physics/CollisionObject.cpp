@@ -33,23 +33,23 @@ const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
 
-CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties)
+CollisionObject* CollisionObject::create(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties, Color4F debugColor)
 {
-	CollisionObject* instance = new CollisionObject(properties, points, collisionType, collisionProperties);
+	CollisionObject* instance = new CollisionObject(properties, points, collisionType, collisionProperties, debugColor);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollisionObject* CollisionObject::create(std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties)
+CollisionObject* CollisionObject::create(std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties, Color4F debugColor)
 {
 	ValueMap valueMap = ValueMap();
 
-	return CollisionObject::create(valueMap, points, collisionType, collisionProperties);
+	return CollisionObject::create(valueMap, points, collisionType, collisionProperties, debugColor);
 }
 
-CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties) :
+CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> points, CollisionType collisionType, Properties collisionProperties, Color4F debugColor) :
 	super(properties)
 {
 	this->collisionType = collisionType;
@@ -70,6 +70,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->gravityEnabled = collisionProperties.isDynamic;
 	this->gravityInversed = false;
 	this->bindTarget = nullptr;
+	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
 
@@ -122,11 +123,11 @@ void CollisionObject::onDeveloperModeEnable(int debugLevel)
 		{
 			if (this->points.size() == 2)
 			{
-				this->debugDrawNode->drawSegment(this->points.front(), this->points.back(), 1.0f, Color4F::RED);
+				this->debugDrawNode->drawSegment(this->points.front(), this->points.back(), 1.0f, this->debugColor);
 			}
 			else
 			{
-				this->debugDrawNode->drawPolygon(this->points.data(), this->points.size(), Color4F(1.0f, 0.0f, 0.0f, 0.4f), 1.0f, Color4F::RED);
+				this->debugDrawNode->drawPolygon(this->points.data(), this->points.size(), Color4F(this->debugColor.r, this->debugColor.g, this->debugColor.b, 0.4f), 1.0f, this->debugColor);
 			}
 		}
 

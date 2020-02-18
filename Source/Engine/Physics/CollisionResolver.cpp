@@ -37,7 +37,15 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 		return;
 	}
 
-	if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Rectangle)
+	if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Segment)
+	{
+		CollisionResolver::rectToSegment(objectA, objectB, onCollision);
+	}
+	else if (objectA->shape == CollisionObject::Shape::Segment && objectB->shape == CollisionObject::Shape::Rectangle)
+	{
+		CollisionResolver::rectToSegment(objectB, objectA, onCollision);
+	}
+	else if (objectA->shape == CollisionObject::Shape::Rectangle && objectB->shape == CollisionObject::Shape::Rectangle)
 	{
 		CollisionResolver::rectToRect(objectA, objectB, onCollision);
 	}
@@ -74,6 +82,126 @@ bool CollisionResolver::isWithinZThreshold(CollisionObject* collisionObjectA, Co
 	}
 
 	return true;
+}
+
+void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
+{
+	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
+	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
+	
+	Rect rectA = objectA->boundsRect;
+	Rect rectB = objectB->boundsRect;
+
+	rectA.origin += coordsA;
+	rectB.origin += coordsB;
+
+	// Cheap and easy bounds check
+	if (!rectA.intersectsRect(rectB))
+	{
+		return;
+	}
+
+	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
+	bool containsA = rectA.containsPoint(std::get<0>(objectBSegment));
+	bool containsB = rectA.containsPoint(std::get<1>(objectBSegment));
+
+	// Check for rectangle <=> segment intersection criteria
+	if (!std::any_of(objectA->segments.begin(), objectA->segments.end(), [=](std::tuple<cocos2d::Vec2, cocos2d::Vec2> objectASegment)
+		{
+			objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
+
+			return AlgoUtils::doSegmentsIntersect(objectASegment, objectBSegment);
+		})
+		&& !containsA
+		&& !containsB)
+	{
+		return;
+	}
+	
+	bool adjacent = false;
+	int intersectionCount = 0;
+	Vec2 intersectionA = Vec2::ZERO;
+	Vec2 intersectionB = Vec2::ZERO;
+
+	// Case 1) Check for two intersections
+	for (auto objectASegment : objectA->segments)
+	{
+		objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
+	
+		if (AlgoUtils::doSegmentsIntersect(objectASegment, objectBSegment))
+		{
+			intersectionA = intersectionCount == 0 ? AlgoUtils::getLineIntersectionPoint(objectASegment, objectBSegment) : intersectionA;
+			intersectionB = intersectionCount == 1 ? AlgoUtils::getLineIntersectionPoint(objectASegment, objectBSegment) : intersectionB;
+
+			if (++intersectionCount == 2)
+			{
+				break;
+			}
+
+			adjacent = true;
+		}
+		else
+		{
+			adjacent = false;
+		}
+	}
+
+	auto calculateCorrection = [&](Vec2 focal, bool unidirectional)
+	{
+		float leftDist = std::abs(focal.x - rectA.getMinX());
+		float rightDist = std::abs(focal.x - rectA.getMaxX());
+		float bottomDist = std::abs(focal.y - rectA.getMinY());
+		float topDist = std::abs(focal.y - rectA.getMaxY());
+		float xDist = std::min(leftDist, rightDist);
+		float yDist = std::min(bottomDist, topDist);
+
+		if (unidirectional)
+		{
+			if (xDist < yDist)
+			{
+				return Vec2(leftDist < rightDist ? leftDist : -rightDist, 0.0f);
+			}
+			else
+			{
+				return Vec2(0.0f, bottomDist < topDist ? bottomDist : -topDist);
+			}
+		}
+		else
+		{
+			return Vec2(leftDist < rightDist ? leftDist : -rightDist, bottomDist < topDist ? bottomDist : -topDist);
+		}
+	};
+
+	if (intersectionCount == 2)
+	{
+		if (onCollision() != CollisionObject::CollisionResult::CollideWithPhysics)
+		{
+			return;
+		}
+
+		Vec2 correction = calculateCorrection((intersectionA + intersectionB) / 2.0f, !adjacent);
+		Vec2 normal = Vec2(std::abs(correction.x), std::abs(correction.y));
+
+		if (adjacent)
+		{
+			normal.x = normal.x > normal.y ? 0.0f : normal.x;
+			normal.y = normal.y > std::abs(correction.x) ? 0.0f : normal.y;
+		}
+		
+		normal.normalize();
+
+		if (normal != Vec2::ZERO)
+		{
+			CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
+		}
+
+		return;
+	}
+
+	// Case 2: Check for segment end(s) being encapsulated by rectangle
+
+	// Just fall back on poly <=> poly for now. This should be replaced by the remaning cases for rect <=> segment at some point.
+	CollisionResolver::polyToPoly(objectA, objectB, onCollision);
 }
 
 void CollisionResolver::rectToRect(CollisionObject* objectA, CollisionObject* objectB, std::function<CollisionObject::CollisionResult()> onCollision)
@@ -435,7 +563,9 @@ void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObje
 
 Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObject* objectB, Vec2 correction, Vec2 impactNormal)
 {
-	correction.x *= impactNormal.x;
+	float softness = (objectA->collisionProperties.softness + objectB->collisionProperties.softness) / 2.0f;
+
+	correction.x *= (impactNormal.x * softness);
 	correction.y *= impactNormal.y;
 
 	// Handle dynamic <=> dynamic collisions differently

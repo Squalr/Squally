@@ -198,7 +198,8 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 			Size(this->detectorWidth, EntityGroundCollisionBehavior::GroundCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false)
+		CollisionObject::Properties(false, false),
+		Color4F::GRAY
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -244,7 +245,8 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false)
+		CollisionObject::Properties(false, false),
+		Color4F::GRAY
 	);
 
 	this->leftCornerCollision = CollisionObject::create(
@@ -252,25 +254,22 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 			Size(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false)
+		CollisionObject::Properties(false, false),
+		Color4F::GRAY
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
 
+	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
+
 	if (this->entity->isFlippedY())
 	{
-		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(-this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
-		
-		this->rightCornerCollision->inverseGravity();
-		this->rightCornerCollision->setPosition(offset);
-		this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
+		offset.x *= -1.0f;
+		offset.y *= -1.0f;
 	}
-	else
-	{
-		Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
-		this->rightCornerCollision->setPosition(offset);
-		this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
-	}
+
+	this->rightCornerCollision->setPosition(offset);
+	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
 	
 	this->addChild(this->rightCornerCollision);
 	this->addChild(this->leftCornerCollision);

@@ -175,7 +175,8 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		CollisionObject::createBox(this->entity->getMovementSize()),
 		// CollisionObject::createCapsulePolygon(this->entity->getMovementSize(), 8.0f),
 		collisionType,
-		CollisionObject::Properties(true, false)
+		CollisionObject::Properties(true, false),
+		Color4F::BLUE
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -230,46 +231,6 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		if (groundBehavior == nullptr || headBehavior == nullptr)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
-		}
-
-		if (collisionData.other->getShape() == CollisionObject::Shape::Segment)
-		{
-			if (collisionData.other->getPoints()[0].x <= collisionData.other->getPoints()[1].x)
-			{
-				// High => Low slope
-				if (collisionData.other->getPoints()[0].y <= collisionData.other->getPoints()[1].y)
-				{
-					if (!groundBehavior->hasRightCornerCollision())
-					{
-						return CollisionObject::CollisionResult::DoNothing;
-					}
-				}
-				else
-				{
-					if (!groundBehavior->hasLeftCornerCollision())
-					{
-						return CollisionObject::CollisionResult::DoNothing;
-					}
-				}
-			}
-			else
-			{
-				// High => Low slope
-				if (collisionData.other->getPoints()[0].y >= collisionData.other->getPoints()[1].y)
-				{
-					if (!groundBehavior->hasRightCornerCollision())
-					{
-						return CollisionObject::CollisionResult::DoNothing;
-					}
-				}
-				else
-				{
-					if (!groundBehavior->hasLeftCornerCollision())
-					{
-						return CollisionObject::CollisionResult::DoNothing;
-					}
-				}
-			}
 		}
 
 		// No collision when not standing on anything
