@@ -58,26 +58,21 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		this->dialogueCollision = CollisionObject::create(
 			CollisionObject::createBox(this->entity->getEntitySize()),
 			(CollisionType)PlatformerCollisionType::Trigger,
-			CollisionObject::Properties(false, false)
+			CollisionObject::Properties(false, false),
+			Color4F::ORANGE
 		);
 
 		this->interactMenu->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f));
 
 		Vec2 collisionOffset = this->entity->getCollisionOffset();
+		Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
 		if (this->entity->isFlippedY())
 		{
-			Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->dialogueCollision->inverseGravity();
-			this->dialogueCollision->setPosition(offset);
-		}
-		else
-		{
-			Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-			this->dialogueCollision->setPosition(offset);
+			offset *= -1.0f;
 		}
 
-		this->dialogueCollision->setPhysicsEnabled(false);
+		this->dialogueCollision->setPosition(offset);
 
 		this->addChild(this->dialogueCollision);
 	}
@@ -250,33 +245,18 @@ void EntityDialogueBehavior::setActiveDialogueSet(DialogueSet* dialogueSet, bool
 	{
 		this->showOptions();
 	}
-
-	if (this->dialogueCollision != nullptr)
-	{
-		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
-	}
 }
 
 void EntityDialogueBehavior::addDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.push_back(dialogueSet);
 	this->dialogueSetNode->addChild(dialogueSet);
-	
-	if (this->dialogueCollision != nullptr)
-	{
-		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
-	}
 }
 
 void EntityDialogueBehavior::removeDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.erase(std::find(this->dialogueSets.begin(), this->dialogueSets.end(), dialogueSet));
 	this->dialogueSetNode->removeChild(dialogueSet);
-
-	if (this->dialogueCollision != nullptr)
-	{
-		this->dialogueCollision->setPhysicsEnabled(this->hasDialogueOptions());
-	}
 }
 
 DialogueSet* EntityDialogueBehavior::getMainDialogueSet()
@@ -307,7 +287,7 @@ void EntityDialogueBehavior::showOptions()
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
 
-	if (dialogueOptions.empty() || (this->scrappy != nullptr && this->scrappy->getStateOrDefaultBool(StateKeys::CinematicHijacked, false)))
+	if (dialogueOptions.empty())
 	{
 		return;
 	}
