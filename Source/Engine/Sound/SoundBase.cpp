@@ -3,9 +3,12 @@
 #include "cocos/audio/include/AudioEngine.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -40,6 +43,16 @@ void SoundBase::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
+}
+
+void SoundBase::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->stopAllActions();
+	}));
 }
 
 void SoundBase::update(float dt)
@@ -92,8 +105,6 @@ void SoundBase::update(float dt)
 
 void SoundBase::play(bool repeat, float startDelay)
 {
-	return;
-	
 	if (this->soundResource.empty())
 	{
 		return;

@@ -35,7 +35,7 @@ TrackDeserializer::TrackDeserializer()
 {
 	this->deserializers = std::map<std::string, std::function<Track*()>>();
 
-	// Hexus Cards
+	this->deserializers[Forgotten::TrackKey] = [=]() { return (Track*)Forgotten::create(); };
 	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Track*)Heartbeat::create(); };
 	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Track*)WeWillGetThereTogether::create(); };
 }

@@ -25,6 +25,7 @@ public:
 	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, bool addAsReentry = true, int index = -1);
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
 	static float getDepth(cocos2d::Node* node);
+	static float getRotation(cocos2d::Node* node);
 	static float getScale(cocos2d::Node* node);
 	static cocos2d::Vec2 getWorldCoords(cocos2d::Node* node);
 	static cocos2d::Vec3 getWorldCoords3D(cocos2d::Node* node);

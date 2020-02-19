@@ -73,6 +73,8 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
+	this->horizontalDampening = 1.0f;
+	this->verticalDampening = 1.0f;
 
 	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
 	this->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
@@ -196,7 +198,12 @@ void CollisionObject::runPhysics(float dt)
 		// Enforce constraints by calling setter
 		this->setVelocity(this->velocity);
 
-		positionUpdates = Vec2(this->velocity * dt);
+		const float rotationInRad = GameUtils::getRotation(this) * float(M_PI) / 180.0f;
+
+		positionUpdates = Vec2(
+			(this->velocity.x * std::cos(rotationInRad) - this->velocity.y * std::sin(rotationInRad)) * dt,
+			(this->velocity.x * std::sin(rotationInRad) + this->velocity.y * std::cos(rotationInRad)) * dt
+		);
 
 		this->setThisOrBindPosition(this->getThisOrBindPosition() + positionUpdates);
 	}

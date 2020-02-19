@@ -12,6 +12,7 @@ namespace MusicResources
 	extern const std::string Ambient_Wind;
 	extern const std::string Artrium;
 	extern const std::string BurdenOfTime;
+	extern const std::string Forgotten;
 	extern const std::string HeartBeat;
 	extern const std::string Hexus1;
 	extern const std::string Hexus2;

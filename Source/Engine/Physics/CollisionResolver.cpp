@@ -102,8 +102,10 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 	}
 
 	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
-	bool containsA = rectA.containsPoint(std::get<0>(objectBSegment));
-	bool containsB = rectA.containsPoint(std::get<1>(objectBSegment));
+	Vec2 pointB1 = std::get<0>(objectBSegment);
+	Vec2 pointB2 = std::get<1>(objectBSegment);
+	bool containsA = rectA.containsPoint(pointB1);
+	bool containsB = rectA.containsPoint(pointB2);
 
 	// Check for rectangle <=> segment intersection criteria
 	if (!std::any_of(objectA->segments.begin(), objectA->segments.end(), [=](std::tuple<cocos2d::Vec2, cocos2d::Vec2> objectASegment)
@@ -146,7 +148,7 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 		}
 	}
 
-	auto calculateCorrection = [&](Vec2 focal, bool unidirectional)
+	auto calculateCorrection = [&](const Vec2& focal, bool unidirectional)
 	{
 		float leftDist = std::abs(focal.x - rectA.getMinX());
 		float rightDist = std::abs(focal.x - rectA.getMaxX());
@@ -199,8 +201,24 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 	}
 
 	// Case 2: Check for segment end(s) being encapsulated by rectangle
+	/*
+	if (containsA || containsB)
+	{
+		Vec2 focal = (containsA && containsB)
+			? ((pointB1 + pointB2) / 2.0f)
+			: (containsA ? pointB1 : pointB2);
+		Vec2 correction = calculateCorrection(focal, true);
+		Vec2 normal = Vec2(std::abs(correction.x), std::abs(correction.y));
+		
+		normal.normalize();
 
-	// Just fall back on poly <=> poly for now. This should be replaced by the remaning cases for rect <=> segment at some point.
+		if (normal != Vec2::ZERO)
+		{
+			CollisionResolver::applyCorrection(objectA, objectB, correction, normal);
+		}
+	}*/
+
+	// Falling back on poly <=> poly, case 2 is buggy
 	CollisionResolver::polyToPoly(objectA, objectB, onCollision);
 }
 

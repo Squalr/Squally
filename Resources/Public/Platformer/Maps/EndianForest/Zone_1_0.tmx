@@ -5,7 +5,8 @@
    <property name="background" value="WaterfallSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="music" value="forgotten"/>
+   <property name="music-delay" type="float" value="17"/>
    <property name="rubber-band" type="int" value="1"/>
    <property name="type" value="meta"/>
   </properties>

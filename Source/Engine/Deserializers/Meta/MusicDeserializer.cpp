@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 const std::string MusicDeserializer::MapKeyMusicProperty = "music";
-const std::string MusicDeserializer::MapKeyDelayProperty = "delay";
+const std::string MusicDeserializer::MapKeyDelayProperty = "music-delay";
 
 MusicDeserializer* MusicDeserializer::create()
 {

@@ -230,6 +230,20 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
+float GameUtils::getRotation(cocos2d::Node* node)
+{
+	float rotation = 0.0f;
+
+	while (node != nullptr)
+	{
+		rotation += node->getRotation();
+
+		node = node->getParent();
+	}
+
+	return rotation;
+}
+
 float GameUtils::getScale(cocos2d::Node* node)
 {
 	float scale = 1.0f;

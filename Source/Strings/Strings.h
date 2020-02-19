@@ -14439,6 +14439,36 @@ namespace Strings
 		virtual ~Menus_Music_Blacksmith_Medieval2() = default;
 	};
 
+	class Menus_Music_JakobLindhagen_Forgotten : public LocalizedString
+	{
+	public:
+		static Menus_Music_JakobLindhagen_Forgotten* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_JakobLindhagen_Forgotten();
+		virtual ~Menus_Music_JakobLindhagen_Forgotten() = default;
+	};
+
+	class Menus_Music_JakobLindhagen_JakobLindhagen : public LocalizedString
+	{
+	public:
+		static Menus_Music_JakobLindhagen_JakobLindhagen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_JakobLindhagen_JakobLindhagen();
+		virtual ~Menus_Music_JakobLindhagen_JakobLindhagen() = default;
+	};
+
 	class Menus_Music_Lemmonias_Lemmonias : public LocalizedString
 	{
 	public:

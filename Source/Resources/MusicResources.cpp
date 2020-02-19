@@ -11,6 +11,7 @@ const std::string MusicResources::Ambient_Nature = "Private/Music/Ambient/Nature
 const std::string MusicResources::Ambient_Wind = "Private/Music/Ambient/Wind.mp3";
 const std::string MusicResources::Artrium = "Private/Music/Artrium.mp3";
 const std::string MusicResources::BurdenOfTime = "Private/Music/BurdenOfTime.mp3";
+const std::string MusicResources::Forgotten = "Private/Music/Forgotten.mp3";
 const std::string MusicResources::HeartBeat = "Private/Music/HeartBeat.mp3";
 const std::string MusicResources::Hexus1 = "Private/Music/Hexus1.mp3";
 const std::string MusicResources::Hexus2 = "Private/Music/Hexus2.mp3";

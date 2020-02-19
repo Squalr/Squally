@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Music.h"
@@ -42,6 +43,11 @@ void Track::initializeListeners()
 {
 	super::initializeListeners();
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->stopAllActions();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventOnMusicDestroyed, [=](EventCustom* eventCustom)
 	{
 		SoundEvents::MusicDestroyedArgs* args = static_cast<SoundEvents::MusicDestroyedArgs*>(eventCustom->getUserData());
@@ -77,11 +83,15 @@ void Track::push(float delay)
 	{
 		MusicPlayer::play(this->music, true, delay, false);
 	}
-
-	this->defer([=]()
-	{
-		SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));
-	});
+	
+	this->runAction(Sequence::create(
+		DelayTime::create(delay),
+		CallFunc::create([=]()
+		{
+			SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));
+		}),
+		nullptr
+	));
 }
 
 void Track::play(float delay)
@@ -90,11 +100,15 @@ void Track::play(float delay)
 	{
 		MusicPlayer::play(this->music, true, delay, true);
 	}
-
-	this->defer([=]()
-	{
-		SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));
-	});
+	
+	this->runAction(Sequence::create(
+		DelayTime::create(delay),
+		CallFunc::create([=]()
+		{
+			SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));
+		}),
+		nullptr
+	));
 }
 
 void Track::pop()
