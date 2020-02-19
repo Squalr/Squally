@@ -26,8 +26,13 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
+	// Player
 	this->deserializers[Squally::MapKeySqually] = [=](ValueMap properties) { return (GameObject*)Squally::deserialize(properties); };
+
+	// Critters
+	this->deserializers[Horse::MapKeyHorse] = [=](ValueMap properties) { return (GameObject*)Horse::deserialize(properties); };
 	
+	// Npcs, helpers, and enemies
 	this->deserializers[Cryogen::MapKeyCryogen] = [=](ValueMap properties) { return (GameObject*)Cryogen::deserialize(properties); };
 	this->deserializers[FrostFiend::MapKeyFrostFiend] = [=](ValueMap properties) { return (GameObject*)FrostFiend::deserialize(properties); };
 	this->deserializers[GoblinElf::MapKeyGoblinElf] = [=](ValueMap properties) { return (GameObject*)GoblinElf::deserialize(properties); };

@@ -197,7 +197,7 @@
   <object id="869" name="edge-portal" type="object" x="-19.959" y="23.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="map" value="EndianForest/Zone_2_0"/>
     <property name="transition" value="left_alt"/>
    </properties>
   </object>

@@ -186,9 +186,7 @@ void CollisionObject::runPhysics(float dt)
 			this->velocity.y += gravity.y * dt;
 		}
 	}
-
-	Vec2 positionUpdates = Vec2::ZERO;
-
+	
 	if (this->velocity != Vec2::ZERO)
 	{
 		// Apply dampening
@@ -199,8 +197,7 @@ void CollisionObject::runPhysics(float dt)
 		this->setVelocity(this->velocity);
 
 		const float rotationInRad = GameUtils::getRotation(this) * float(M_PI) / 180.0f;
-
-		positionUpdates = Vec2(
+		const Vec2 positionUpdates = Vec2(
 			(this->velocity.x * std::cos(rotationInRad) - this->velocity.y * std::sin(rotationInRad)) * dt,
 			(this->velocity.x * std::sin(rotationInRad) + this->velocity.y * std::cos(rotationInRad)) * dt
 		);

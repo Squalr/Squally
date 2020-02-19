@@ -74,15 +74,24 @@ void EntityMovementCollisionBehavior::onLoad()
 	{
 		PlatformerEvents::WarpArgs* args = static_cast<PlatformerEvents::WarpArgs*>(eventCustom->getUserData());
 		
-		if (args != nullptr && this->movementCollision != nullptr)
+		if (args != nullptr)
 		{
-			this->tryBind();
-			this->movementCollision->warpTo(args->position);
+			Vec2 position = args->position;
 
-			if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+			// Watch for own attached behavior -- this is to stall if this object is not queryable yet (and thus collision is not built yet)
+			this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* behavior)
 			{
-				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
-			}
+				if (this->movementCollision != nullptr)
+				{
+					this->tryBind();
+					this->movementCollision->warpTo(position);
+
+					if (GameCamera::getInstance()->getCurrentTrackingData()->target == this->entity)
+					{
+						GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+					}
+				}
+			});
 		}
 	}));
 }

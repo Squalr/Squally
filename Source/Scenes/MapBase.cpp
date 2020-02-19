@@ -34,6 +34,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 {
 	this->allowHackerMode = allowHackerMode;
 	this->layerDeserializers = std::vector<LayerDeserializer*>();
+	this->canPause = false;
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
@@ -53,7 +54,6 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
-
 	this->hackerModeGlow = Hud::create();
 	this->sensingGlow = Hud::create();
 	this->hackerModeRain = MatrixRain::create();

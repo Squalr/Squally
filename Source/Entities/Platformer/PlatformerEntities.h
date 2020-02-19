@@ -1,4 +1,4 @@
-
+#include "Entities/Platformer/Critters/Horse.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/Cryogen.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/FrostFiend.h"
 #include "Entities/Platformer/Enemies/BalmerPeaks/GoblinElf.h"

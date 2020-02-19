@@ -16029,6 +16029,21 @@ namespace Strings
 		virtual ~Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown() = default;
 	};
 
+	class Platformer_Entities_Names_Critters_Horse : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Horse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Horse();
+		virtual ~Platformer_Entities_Names_Critters_Horse() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_BalmerPeaks_Cryogen : public LocalizedString
 	{
 	public:
