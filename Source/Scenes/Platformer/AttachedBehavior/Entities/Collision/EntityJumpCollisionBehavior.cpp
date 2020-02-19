@@ -84,18 +84,9 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
 
-	if (this->entity->isFlippedY())
-	{
-		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityJumpCollisionBehavior::JumpCollisionOffset);
-		this->jumpCollision->inverseGravity();
-		this->jumpCollision->setPosition(offset);
-	}
-	else
-	{
-		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityJumpCollisionBehavior::JumpCollisionOffset);
-		this->jumpCollision->setPosition(offset);
-	}
+	this->jumpCollision->setPosition(offset);
 	
 	this->addChild(this->jumpCollision);
 

@@ -67,11 +67,6 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		Vec2 collisionOffset = this->entity->getCollisionOffset();
 		Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
-		if (this->entity->isFlippedY())
-		{
-			offset *= -1.0f;
-		}
-
 		this->dialogueCollision->setPosition(offset);
 
 		this->addChild(this->dialogueCollision);

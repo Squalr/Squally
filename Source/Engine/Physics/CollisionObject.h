@@ -80,7 +80,6 @@ public:
 	Shape getShape();
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
-	void inverseGravity();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);
 	void setVelocityX(float velocityX);
@@ -98,6 +97,7 @@ public:
 	static const std::string MapKeyTypeCollision;
 	static const std::string MapKeyCollisionTypeNone;
 	static const std::string MapKeyFriction;
+	static const float DefaultGravity;
 	static const float DefaultMaxHorizontalSpeed;
 	static const float DefaultMaxLaunchSpeed;
 	static const float DefaultMaxFallSpeed;
@@ -134,13 +134,13 @@ private:
 	static std::map<CollisionType, std::vector<CollisionObject*>> CollisionObjects;
 
 	// Physics state
+	cocos2d::Vec2 gravity;
 	cocos2d::Vec2 velocity;
 	Properties collisionProperties;
 	float horizontalDampening;
 	float verticalDampening;
 	bool physicsEnabled;
 	bool gravityEnabled;
-	bool gravityInversed;
 	
 	// Shape
 	Shape shape;

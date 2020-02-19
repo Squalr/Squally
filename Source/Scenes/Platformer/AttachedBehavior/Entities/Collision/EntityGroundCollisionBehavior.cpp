@@ -203,19 +203,10 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
 
-	if (this->entity->isFlippedY())
-	{
-		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f + EntityGroundCollisionBehavior::GroundCollisionOffset);
-		this->groundCollision->inverseGravity();
-		this->groundCollision->setPosition(offset);
-	}
-	else
-	{
-		Vec2 offset = collisionOffset + Vec2(0.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
-		this->groundCollision->setPosition(offset);
-	}
-	
+	this->groundCollision->setPosition(offset);
+
 	this->addChild(this->groundCollision);
 
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
@@ -259,14 +250,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
-
 	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f, -this->entity->getHoverHeight() / 2.0f - EntityGroundCollisionBehavior::GroundCollisionOffset);
-
-	if (this->entity->isFlippedY())
-	{
-		offset.x *= -1.0f;
-		offset.y *= -1.0f;
-	}
 
 	this->rightCornerCollision->setPosition(offset);
 	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));

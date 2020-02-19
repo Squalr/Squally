@@ -26,6 +26,7 @@ const std::string CollisionObject::MapKeyFriction = "friction";
 
 std::map<CollisionType, std::vector<CollisionObject*>> CollisionObject::CollisionObjects = std::map<CollisionType, std::vector<CollisionObject*>>();
 
+const float CollisionObject::DefaultGravity = -768.0f;
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
 const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
@@ -68,11 +69,12 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->collisionProperties = collisionProperties;
 	this->physicsEnabled = true;
 	this->gravityEnabled = collisionProperties.isDynamic;
-	this->gravityInversed = false;
 	this->bindTarget = nullptr;
 	this->debugColor = debugColor;
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
+	this->velocity = Vec2::ZERO;
+	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = 1.0f;
 	this->verticalDampening = 1.0f;
 
@@ -173,20 +175,9 @@ void CollisionObject::runPhysics(float dt)
 	// Apply gravity
 	if (this->gravityEnabled)
 	{
-		const Vec2 gravity = Vec2(0.0f, -768.0f);
-
-		this->velocity.x += gravity.x * dt;
-
-		if (this->gravityInversed)
-		{
-			this->velocity.y -= gravity.y * dt;
-		}
-		else
-		{
-			this->velocity.y += gravity.y * dt;
-		}
+		this->velocity += this->gravity * dt;
 	}
-	
+
 	if (this->velocity != Vec2::ZERO)
 	{
 		// Apply dampening
@@ -267,11 +258,6 @@ void CollisionObject::setPhysicsEnabled(bool enabled)
 void CollisionObject::setGravityEnabled(bool isEnabled)
 {
 	this->gravityEnabled = isEnabled;
-}
-
-void CollisionObject::inverseGravity()
-{
-	this->gravityInversed = !this->gravityInversed;
 }
 
 Vec2 CollisionObject::getVelocity()

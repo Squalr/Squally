@@ -46,18 +46,9 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
+	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
 
-	if (this->entity->isFlippedY())
-	{
-		Vec2 offset = Vec2(collisionOffset.x, -collisionOffset.y) - Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-		this->entityCollision->inverseGravity();
-		this->entityCollision->setPosition(offset);
-	}
-	else
-	{
-		Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getMovementSize().height / 2.0f);
-		this->entityCollision->setPosition(offset);
-	}
+	this->entityCollision->setPosition(offset);
 
 	this->addChild(this->entityCollision);
 

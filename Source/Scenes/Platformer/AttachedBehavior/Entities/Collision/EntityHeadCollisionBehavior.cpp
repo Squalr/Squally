@@ -95,18 +95,9 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 	);
 
 	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+	Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
-	if (this->entity->isFlippedY())
-	{
-		Vec2 offset = entityCenter - Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-		this->headCollision->inverseGravity();
-		this->headCollision->setPosition(offset);
-	}
-	else
-	{
-		Vec2 offset = entityCenter + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
-		this->headCollision->setPosition(offset);
-	}
+	this->headCollision->setPosition(offset);
 	
 	this->addChild(this->headCollision);
 

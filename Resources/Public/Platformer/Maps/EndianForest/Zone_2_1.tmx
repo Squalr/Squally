@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="885">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="907">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -34,7 +34,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks" visible="0">
+ <objectgroup id="15" name="WaterfallRocks">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround" visible="0">
+ <objectgroup id="16" name="WaterfallGround">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -68,28 +68,61 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="70" name="terrain -4">
+ <objectgroup id="72" name="terrain -4">
   <properties>
+   <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="55" name="terrain -3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain -2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="820" name="temple" type="terrain" x="4405.78" y="-184.037">
+  <object id="905" name="temple" type="terrain" x="4741.67" y="1390.33" width="574" height="398">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
-   <polygon points="4148.1,92.6631 4134,1969.56 277.127,1972.77 259.612,94.6132"/>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain -1">
+ <objectgroup id="71" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="891" name="temple" type="terrain" x="4635" y="1445" width="574" height="398">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="70" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="890" name="temple" type="terrain" x="4529.67" y="1498.33" width="574" height="398">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="55" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="889" name="temple" type="terrain" x="4453.33" y="1552.67" width="574" height="398">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="terrain bg2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="888" name="temple" type="terrain" x="4688" y="-80" width="3888" height="1864">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="58" name="terrain bg1">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -122,6 +155,12 @@
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="4806.57" y="2091.73" width="199" height="133"/>
   <object id="729" name="Forest/Flower10" type="decor" x="6824.41" y="2076.97" width="199" height="133"/>
+  <object id="894" name="torch" type="object" x="5287.91" y="687" width="42" height="130"/>
+  <object id="895" name="torch" type="object" x="6114.09" y="683" width="42" height="130"/>
+  <object id="898" name="torch" type="object" x="7039" y="687" width="42" height="130"/>
+  <object id="902" name="torch" type="object" x="6043.45" y="1701" width="42" height="130"/>
+  <object id="903" name="torch" type="object" x="6869.64" y="1697" width="42" height="130"/>
+  <object id="904" name="torch" type="object" x="7794.55" y="1701" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

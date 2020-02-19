@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="900">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="981">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -27,12 +27,10 @@
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="891" name="marble-dark" type="terrain" x="5286.88" y="28.7471">
+  <object id="979" name="marble" type="terrain" x="5290.54" y="28.3633" width="408.248" height="660.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="148" name="objects -36">
@@ -47,12 +45,10 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="marble-dark" type="terrain" x="5203.83" y="72.1597">
+  <object id="977" name="marble" type="terrain" x="5203.51" y="72.4845" width="408.248" height="662.607">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="145" name="stairs -34">
@@ -60,12 +56,10 @@
    <property name="depth" type="float" value="-2112"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="889" name="marble-dark" type="terrain" x="5118.89" y="113.685">
+  <object id="976" name="marble" type="terrain" x="5120.88" y="116.03" width="408.248" height="655.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="144" name="stairs -33">
@@ -73,12 +67,10 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="888" name="marble-dark" type="terrain" x="5041.5" y="153.322">
+  <object id="975" name="marble" type="terrain" x="5043.88" y="155.03" width="408.248" height="656.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="143" name="stairs -32">
@@ -86,12 +78,10 @@
    <property name="depth" type="float" value="-1984"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="887" name="marble-dark" type="terrain" x="4954.68" y="194.848">
+  <object id="974" name="marble" type="terrain" x="4954.54" y="193.697" width="408.248" height="660.607">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="142" name="stairs -31">
@@ -99,12 +89,10 @@
    <property name="depth" type="float" value="-1920"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="886" name="marble-dark" type="terrain" x="4862.19" y="240.148">
+  <object id="973" name="marble" type="terrain" x="4863.88" y="239.03" width="408.248" height="661.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="141" name="stairs -30">
@@ -112,12 +100,10 @@
    <property name="depth" type="float" value="-1856"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="885" name="marble-dark" type="terrain" x="4769.7" y="287.335">
+  <object id="972" name="marble" type="terrain" x="4770.54" y="288.363" width="408.248" height="657.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="139" name="stairs -29">
@@ -125,12 +111,10 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="marble-dark" type="terrain" x="4690.43" y="332.635">
+  <object id="971" name="marble" type="terrain" x="4694.54" y="336.363" width="408.248" height="657.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.28127 411.373,660.914 0.996064,664.18"/>
   </object>
  </objectgroup>
  <objectgroup id="138" name="stairs -28">
@@ -138,12 +122,10 @@
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="marble-dark" type="terrain" x="4791.46" y="385.256">
+  <object id="970" name="marble" type="terrain" x="4795.88" y="383.03" width="408.248" height="605.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.17568 411.373,606.446 0.996064,609.442"/>
   </object>
  </objectgroup>
  <objectgroup id="137" name="stairs -27 top">
@@ -151,12 +133,10 @@
    <property name="depth" type="float" value="-1664"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="marble-dark" type="terrain" x="4844.08" y="437.296">
+  <object id="969" name="marble" type="terrain" x="4847.88" y="436.363" width="408.248" height="553.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.07736 411.373,555.733 0.996064,558.48"/>
   </object>
  </objectgroup>
  <objectgroup id="136" name="stairs -26 top">
@@ -164,12 +144,10 @@
    <property name="depth" type="float" value="-1600"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="855" name="marble-dark" type="terrain" x="4955.46" y="474.168">
+  <object id="968" name="marble" type="terrain" x="4953.88" y="473.03" width="408.248" height="1317.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,2.55252 411.373,1316.66 0.996064,1323.16"/>
   </object>
  </objectgroup>
  <objectgroup id="135" name="stairs -25 top">
@@ -177,12 +155,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="854" name="marble-dark" type="terrain" x="4230.49" y="510.908">
-   <properties>
-    <property name="flip-y" type="bool" value="false"/>
-   </properties>
-   <polygon points="0,0 2029.45,2.48551 2050.7,1282.09 4.96538,1288.43"/>
-  </object>
+  <object id="967" name="marble" type="terrain" x="4235.27" y="515.03" width="2032.49" height="1279.03"/>
  </objectgroup>
  <objectgroup id="140" name="entities -25">
   <properties>
@@ -207,12 +180,10 @@
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="marble-dark" type="terrain" x="4957.09" y="548.073">
+  <object id="966" name="marble" type="terrain" x="4955.88" y="545.03" width="408.248" height="1235.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,2.3997 411.373,1237.83 0.996064,1243.94"/>
   </object>
  </objectgroup>
  <objectgroup id="133" name="stairs -23 top">
@@ -220,12 +191,10 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="852" name="marble-dark" type="terrain" x="4840.92" y="583.503">
+  <object id="965" name="marble" type="terrain" x="4841.88" y="583.03" width="408.248" height="1211.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,2.34942 411.373,1211.89 0.996064,1217.88"/>
   </object>
  </objectgroup>
  <objectgroup id="132" name="stairs -22 top">
@@ -233,12 +202,10 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="851" name="marble-dark" type="terrain" x="4716.42" y="626.955">
+  <object id="964" name="marble" type="terrain" x="4717.09" y="627.151" width="408.248" height="1163.76">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,2.2608 411.373,1166.18 0.996064,1171.94"/>
   </object>
  </objectgroup>
  <objectgroup id="131" name="stairs -21 top">
@@ -246,12 +213,10 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="850" name="marble-dark" type="terrain" x="4619.01" y="665.111">
+  <object id="963" name="marble" type="terrain" x="4619.88" y="661.03" width="408.248" height="1063.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,2.04111 411.373,1052.86 0.996064,1058.06"/>
   </object>
  </objectgroup>
  <objectgroup id="130" name="stairs -20 top">
@@ -259,12 +224,10 @@
    <property name="depth" type="float" value="-1216"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="marble-dark" type="terrain" x="4521.92" y="720.37">
+  <object id="962" name="marble" type="terrain" x="4525.88" y="723.03" width="408.248" height="921.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.81069 411.373,934.001 0.996064,938.616"/>
   </object>
  </objectgroup>
  <objectgroup id="129" name="stairs -19 top">
@@ -272,12 +235,10 @@
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="marble-dark" type="terrain" x="4444.87" y="758.371">
+  <object id="961" name="marble" type="terrain" x="4443.88" y="760.363" width="408.248" height="819.273">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.59179 411.373,821.09 0.996064,825.148"/>
   </object>
  </objectgroup>
  <objectgroup id="128" name="stairs -18 top">
@@ -285,26 +246,21 @@
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="870" name="marble-dark" type="terrain" x="1743.46" y="362.625">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
-   </properties>
-   <polygon points="0,0 246.143,0.578427 248.72,298.368 0.602229,299.842"/>
-  </object>
-  <object id="871" name="marble-dark" type="terrain" x="2049.54" y="-241.817">
+  <object id="958" name="marble" type="terrain" x="2051.88" y="-239.637" width="232.248" height="651.273">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 232.006,1.26938 234.434,654.781 0.567639,658.017"/>
   </object>
-  <object id="872" name="marble-dark" type="terrain" x="4325.02" y="799.921">
+  <object id="959" name="marble" type="terrain" x="1746.54" y="365.697" width="244.248" height="295.273">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.50838 411.373,778.064 0.996064,781.909"/>
+  </object>
+  <object id="960" name="marble" type="terrain" x="4326.54" y="801.697" width="408.248" height="773.94">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="127" name="stairs -17 top">
@@ -312,25 +268,21 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="846" name="marble-dark" type="terrain" x="1968.61" y="-283.916">
+  <object id="955" name="marble" type="terrain" x="1971.75" y="-284.243" width="408.248" height="656.607">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 407.112,1.26938 411.373,654.781 0.996064,658.017"/>
   </object>
-  <object id="857" name="marble-dark" type="terrain" x="1644.82" y="412.601">
+  <object id="956" name="marble" type="terrain" x="1646.54" y="415.03" width="408.248" height="656.607">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 407.112,1.26938 411.373,654.781 0.996064,658.017"/>
   </object>
-  <object id="873" name="marble-dark" type="terrain" x="4215.88" y="845.126">
+  <object id="957" name="marble" type="terrain" x="4218.54" y="848.363" width="408.248" height="729.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.42118 411.373,733.082 0.996064,736.705"/>
   </object>
  </objectgroup>
  <objectgroup id="126" name="stairs -16 top">
@@ -338,25 +290,21 @@
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="845" name="marble-dark" type="terrain" x="2087.93" y="-241.544">
+  <object id="952" name="marble" type="terrain" x="2086.21" y="-241.637" width="408.248" height="569.94">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 407.112,1.10817 411.373,571.627 0.996064,574.451"/>
   </object>
-  <object id="858" name="marble-dark" type="terrain" x="1542.36" y="468.221">
+  <object id="953" name="marble" type="terrain" x="1541.21" y="471.03" width="408.248" height="569.94">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 407.112,1.10817 411.373,571.627 0.996064,574.451"/>
   </object>
-  <object id="874" name="marble-dark" type="terrain" x="4118.49" y="884.746">
+  <object id="954" name="marble" type="terrain" x="4118.54" y="885.697" width="408.248" height="701.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.35359 411.373,698.219 0.996064,701.67"/>
   </object>
  </objectgroup>
  <objectgroup id="118" name="stairs -15 top">
@@ -364,25 +312,21 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="marble-dark" type="terrain" x="2211.51" y="-198.368">
+  <object id="949" name="marble" type="terrain" x="2211.54" y="-194.97" width="407.581" height="479.273">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 407.112,0.937198 411.373,483.432 0.996064,485.821"/>
   </object>
-  <object id="859" name="marble-dark" type="terrain" x="1442.83" y="512.132">
+  <object id="950" name="marble" type="terrain" x="1443.21" y="513.363" width="407.581" height="481.273">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 407.112,0.937198 411.373,483.432 0.996064,485.821"/>
   </object>
-  <object id="875" name="marble-dark" type="terrain" x="4009.44" y="928.258">
+  <object id="951" name="marble" type="terrain" x="4011.21" y="929.363" width="409.581" height="693.273">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 407.112,1.35359 411.373,698.219 0.996064,701.67"/>
   </object>
  </objectgroup>
  <objectgroup id="121" name="terrain -15">
@@ -390,9 +334,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="marble-dark" type="terrain" x="2465.46" y="1106.06">
-   <polygon points="0,0 937.372,-4.8814 937.372,410.036 2.26967,414.917"/>
-  </object>
+  <object id="948" name="marble" type="terrain" x="2466.88" y="1105.7" width="933.581" height="401.273"/>
  </objectgroup>
  <objectgroup id="122" name="entities -15">
   <properties>
@@ -411,18 +353,16 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="marble-dark" type="terrain" x="2333.37" y="-155.69">
+  <object id="946" name="marble" type="terrain" x="2331.21" y="-154.637" width="395.581" height="395.273">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 388.419,-4.74818 388.419,398.846 0.940484,403.594"/>
   </object>
-  <object id="860" name="marble-dark" type="terrain" x="1343.3" y="561.898">
+  <object id="947" name="marble" type="terrain" x="1338.21" y="559.697" width="395.581" height="395.273">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 388.419,-4.74818 388.419,398.846 0.940484,403.594"/>
   </object>
  </objectgroup>
  <objectgroup id="116" name="stairs -13 top">
@@ -430,25 +370,21 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="marble-dark" type="terrain" x="2411.59" y="-153.729">
+  <object id="942" name="marble" type="terrain" x="2414" y="-156.94" width="395.581" height="357.273">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 398.338,-4.23435 398.338,355.684 0.964501,359.918"/>
   </object>
-  <object id="861" name="marble-dark" type="terrain" x="1246.69" y="605.809">
+  <object id="943" name="marble" type="terrain" x="1248.88" y="602.697" width="395.581" height="357.273">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 398.338,-4.23435 398.338,355.684 0.964501,359.918"/>
   </object>
-  <object id="869" name="marble-dark" type="terrain" x="2226.73" y="857.09">
+  <object id="944" name="marble" type="terrain" x="2229.21" y="848.363" width="395.581" height="793.273">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 398.338,-9.39709 398.338,789.353 0.964501,798.749"/>
   </object>
  </objectgroup>
  <objectgroup id="119" name="pillar -12 top">
@@ -456,11 +392,10 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="818" name="marble" type="terrain" x="1723.27" y="-286.307">
+  <object id="940" name="marble" type="terrain" x="1725.21" y="-287.97" width="629.581" height="1839.94">
    <properties>
-    <property name="flip-y" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 627.542,-4.65213 629.311,1826.88 1.52804,1831.54"/>
   </object>
  </objectgroup>
  <objectgroup id="123" name="objects -12 top">
@@ -480,32 +415,27 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="771" name="marble-dark" type="terrain" x="2487.63" y="-190.253">
+  <object id="936" name="marble" type="terrain" x="1857.45" y="-244.758" width="389.581" height="351.94">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 388.507,-4.1434 388.507,348.044 0.940697,352.187"/>
   </object>
-  <object id="830" name="marble-dark" type="terrain" x="1855.14" y="-241.53">
+  <object id="937" name="marble" type="terrain" x="2487.21" y="-193.97" width="389.581" height="351.94">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 390.832,-4.15855 390.832,349.317 0.946328,353.476"/>
   </object>
-  <object id="863" name="marble-dark" type="terrain" x="1144.23" y="658.502">
+  <object id="938" name="marble" type="terrain" x="1143.88" y="657.363" width="389.581" height="351.94">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 388.507,-4.1434 388.507,348.044 0.940697,352.187"/>
   </object>
-  <object id="867" name="marble-dark" type="terrain" x="2325.9" y="814.871">
+  <object id="939" name="marble" type="terrain" x="2325.21" y="807.03" width="389.581" height="836.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 388.507,-9.9089 388.507,832.344 0.940697,842.252"/>
   </object>
  </objectgroup>
  <objectgroup id="98" name="stairs -11 top">
@@ -513,32 +443,27 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="773" name="marble-dark" type="terrain" x="2412.38" y="-227.058">
+  <object id="932" name="marble" type="terrain" x="1861.69" y="-253.849" width="378.914" height="331.94">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 394.37,-4.11308 394.37,345.497 0.954894,349.61"/>
   </object>
-  <object id="829" name="marble-dark" type="terrain" x="1856.79" y="-260.088">
+  <object id="933" name="marble" type="terrain" x="2413.88" y="-229.97" width="397.581" height="350.607">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 386.435,-4.05245 386.435,340.404 0.935681,344.456"/>
   </object>
-  <object id="864" name="marble-dark" type="terrain" x="1217.42" y="702.413">
+  <object id="934" name="marble" type="terrain" x="2241.54" y="772.03" width="390.914" height="867.94">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 394.37,-4.11308 394.37,345.497 0.954894,349.61"/>
   </object>
-  <object id="866" name="marble-dark" type="terrain" x="2237.95" y="780.083">
+  <object id="935" name="marble" type="terrain" x="1218.54" y="700.03" width="394.914" height="346.94">
    <properties>
     <property name="collision" value="none"/>
-    <property name="flip-y" type="bool" value="false"/>
    </properties>
-   <polygon points="0,0 394.37,-10.2979 394.37,865.018 0.954894,875.316"/>
   </object>
  </objectgroup>
  <objectgroup id="99" name="stairs -10 top">
@@ -546,33 +471,23 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="775" name="marble-dark" type="terrain" x="1853.78" y="-275.422">
+  <object id="930" name="marble" type="terrain" x="1857.24" y="-266.939" width="861.52" height="317.879">
    <properties>
     <property name="collision" value="none"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 866.024,-3.8896 866.024,326.725 2.09692,330.615"/>
   </object>
-  <object id="865" name="marble-dark" type="terrain" x="1463.32" y="743.397">
-   <polygon points="0,0 971.811,-3.8896 971.811,326.725 2.35306,330.615"/>
-  </object>
+  <object id="931" name="marble" type="terrain" x="1467.24" y="745.061" width="967.52" height="325.879"/>
  </objectgroup>
  <objectgroup id="100" name="terrain -10 top">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="776" name="marble" type="terrain" x="684.169" y="-755.659">
+  <object id="980" name="marble" type="terrain" x="691" y="-765" width="2394" height="782">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="0,0 2422.67,-9.26441 2422.67,778.208 5.86604,787.471"/>
-  </object>
-  <object id="796" name="marble-dark" type="terrain" x="684.169" y="-755.659">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-   <polygon points="0,0 2422.67,-9.26441 2422.67,778.208 5.86604,787.471"/>
   </object>
  </objectgroup>
  <objectgroup id="101" name="entities -10 top">
@@ -599,11 +514,10 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="794" name="marble" type="terrain" x="79.5612" y="-461.361">
+  <object id="903" name="marble" type="terrain" x="95" y="-489" width="1066" height="2058">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="4.39415,-17.8784 1071.93,-23.5473 1071.93,1977.98 2.59551,2001.51"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -12">
@@ -618,11 +532,10 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="792" name="marble" type="terrain" x="209.372" y="362.832">
+  <object id="928" name="marble" type="terrain" x="211.24" y="367.061" width="845.52" height="1113.88">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-13.1973 857.154,1108.57 2.07544,1121.76"/>
   </object>
  </objectgroup>
  <objectgroup id="106" name="stairs L -11">
@@ -630,11 +543,10 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="marble" type="terrain" x="346.657" y="420.065">
+  <object id="927" name="marble" type="terrain" x="345.24" y="423.061" width="845.52" height="969.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-11.4395 857.154,960.912 2.07544,972.35"/>
   </object>
  </objectgroup>
  <objectgroup id="105" name="stairs L -10">
@@ -642,11 +554,10 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="788" name="marble" type="terrain" x="513.324" y="467.284">
+  <object id="926" name="marble" type="terrain" x="519.24" y="471.061" width="845.52" height="967.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-11.5566 857.154,970.755 2.07544,982.311"/>
   </object>
  </objectgroup>
  <objectgroup id="104" name="stairs L -9">
@@ -654,11 +565,10 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="marble" type="terrain" x="681.802" y="516.402">
+  <object id="924" name="marble" type="terrain" x="681.24" y="505.061" width="841.52" height="979.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-11.7617 857.154,987.982 2.07544,999.742"/>
   </object>
  </objectgroup>
  <objectgroup id="103" name="stairs L -8 (trippy)">
@@ -666,11 +576,10 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="784" name="marble" type="terrain" x="1086.45" y="586.627">
+  <object id="923" name="marble" type="terrain" x="1087.24" y="587.061" width="607.52" height="987.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 610.367,-11.7031 610.367,983.06 1.47789,994.762"/>
   </object>
  </objectgroup>
  <objectgroup id="102" name="stairs L -7">
@@ -678,11 +587,10 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="marble" type="terrain" x="978.904" y="621.377">
+  <object id="921" name="marble" type="terrain" x="985.24" y="623.061" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-8.04101 857.154,675.443 2.07544,683.483"/>
   </object>
  </objectgroup>
  <objectgroup id="115" name="stairs L -6">
@@ -690,11 +598,10 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="811" name="marble" type="terrain" x="1116.58" y="684.783">
+  <object id="920" name="marble" type="terrain" x="1123.24" y="675.061" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-8.04101 857.154,675.443 2.07544,683.483"/>
   </object>
  </objectgroup>
  <objectgroup id="114" name="stairs L -5">
@@ -702,11 +609,10 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="marble" type="terrain" x="1265.14" y="740.942">
+  <object id="919" name="marble" type="terrain" x="1265.24" y="737.061" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.567,-7.86036 857.567,660.268 2.07644,668.128"/>
   </object>
  </objectgroup>
  <objectgroup id="113" name="stairs L -4 (trippy)">
@@ -714,11 +620,10 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="marble" type="terrain" x="1525.66" y="738.565">
+  <object id="918" name="marble" type="terrain" x="1531.24" y="737.061" width="561.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 564.557,-7.89047 564.557,662.797 1.36697,670.687"/>
   </object>
  </objectgroup>
  <objectgroup id="112" name="stairs L -3">
@@ -726,11 +631,10 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="805" name="marble" type="terrain" x="1467.55" y="876.754">
+  <object id="917" name="marble" type="terrain" x="1469.24" y="875.061" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 856.726,-8.04101 856.726,675.443 2.0744,683.483"/>
   </object>
  </objectgroup>
  <objectgroup id="111" name="stairs L -2">
@@ -738,11 +642,10 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="marble" type="terrain" x="1470.08" y="934.803">
+  <object id="915" name="marble" type="terrain" x="1475.24" y="935.06" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 855.762,-8.19156 855.762,688.088 2.07207,696.279"/>
   </object>
  </objectgroup>
  <objectgroup id="110" name="stairs L -1 (trippy)">
@@ -750,11 +653,10 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="marble" type="terrain" x="1634.24" y="896.316">
+  <object id="916" name="marble" type="terrain" x="1639.24" y="891.06" width="545.52" height="713.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-9.22403 552.718,-8.46254 552.718,710.85 1.3383,719.312"/>
   </object>
  </objectgroup>
  <objectgroup id="96" name="wall bg R -6">
@@ -762,11 +664,10 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="748" name="marble" type="terrain" x="2712.19" y="-330.073">
+  <object id="906" name="marble" type="terrain" x="2715" y="-347" width="1322" height="1762">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="flip-y" type="bool" value="true"/>
    </properties>
-   <polygon points="5.37264,-14.4928 1310.63,-19.0881 1310.63,1603.41 3.17347,1622.48"/>
   </object>
  </objectgroup>
  <objectgroup id="95" name="objects R -6">
@@ -781,11 +682,10 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="731" name="marble" type="terrain" x="2858.32" y="686.745">
+  <object id="913" name="marble" type="terrain" x="2867.24" y="683.06" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.154,-8.04101 857.154,675.443 2.07544,683.483"/>
   </object>
  </objectgroup>
  <objectgroup id="86" name="stairs R -5 (trippy)">
@@ -793,11 +693,10 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="730" name="marble" type="terrain" x="2929.68" y="736.349">
+  <object id="912" name="marble" type="terrain" x="2923.24" y="737.06" width="729.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 723.891,-7.86036 723.891,660.268 1.75277,668.128"/>
   </object>
  </objectgroup>
  <objectgroup id="85" name="stairs R -4">
@@ -805,11 +704,10 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="marble" type="terrain" x="2860.75" y="814.662">
+  <object id="911" name="marble" type="terrain" x="2871.18" y="803.606" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 856.266,-7.89047 856.266,662.797 2.07329,670.687"/>
   </object>
  </objectgroup>
  <objectgroup id="84" name="stairs R -3 (trippy)">
@@ -817,11 +715,10 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="728" name="marble" type="terrain" x="3001.88" y="792.828">
+  <object id="910" name="marble" type="terrain" x="3004.51" y="785.424" width="566.732" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 570.229,-8.04101 570.229,675.443 1.3807,683.483"/>
   </object>
  </objectgroup>
  <objectgroup id="83" name="stairs R -2">
@@ -829,11 +726,10 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="727" name="marble" type="terrain" x="2861.35" y="929.04">
+  <object id="909" name="marble" type="terrain" x="2865.12" y="918.757" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 855.762,-8.19156 855.762,688.088 2.07207,696.279"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="stairs R -1">
@@ -841,22 +737,20 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="726" name="marble" type="terrain" x="2860.29" y="988.499">
+  <object id="908" name="marble" type="terrain" x="2861.24" y="989.061" width="845.52" height="701.879">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 857.827,-8.46254 857.827,710.85 2.07707,719.312"/>
   </object>
  </objectgroup>
  <objectgroup id="16" name="Tiled bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="764" name="marble" type="terrain" x="-266.908" y="-22.0379">
+  <object id="902" name="marble" type="terrain" x="-251" y="-35" width="1234" height="1410">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="5.11103,-12.4882 1246.81,-16.4479 1242.13,1394.58 3.01894,1398.07"/>
   </object>
  </objectgroup>
  <objectgroup id="76" name="decor bg2">
@@ -880,11 +774,10 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="marble" type="terrain" x="3491.31" y="-91.5708">
+  <object id="907" name="marble" type="terrain" x="3494.27" y="-98.697" width="1317.52" height="245.879">
    <properties>
-    <property name="flip-y" type="bool" value="true"/>
+    <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 1325.98,-2.8322 1325.98,237.904 3.21062,240.737"/>
   </object>
  </objectgroup>
  <objectgroup id="125" name="entities -1">
@@ -903,9 +796,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="marble" type="terrain" x="-69.9846" y="1066.21">
-   <polygon points="0,0 4741.8,-2.8322 4741.8,237.904 11.4814,240.737"/>
-  </object>
+  <object id="905" name="marble" type="terrain" x="-101" y="1073" width="4794" height="222"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
