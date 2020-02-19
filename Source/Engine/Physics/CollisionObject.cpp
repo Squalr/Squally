@@ -75,11 +75,8 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->debugInfoSpawned = false;
 	this->velocity = Vec2::ZERO;
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
-	this->horizontalDampening = 1.0f;
-	this->verticalDampening = 1.0f;
-
-	this->setHorizontalDampening(CollisionObject::DefaultHorizontalDampening);
-	this->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
+	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
 }
 
 CollisionObject::~CollisionObject()

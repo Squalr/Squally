@@ -10,6 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -18,6 +19,7 @@
 using namespace cocos2d;
 
 const std::string SquallyMovementBehavior::MapKeyAttachedBehavior = "squally-movements";
+const float SquallyMovementBehavior::SquallyMovementAcceleration = 8000.0f;
 
 SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)
 {
@@ -106,6 +108,11 @@ void SquallyMovementBehavior::onLoad()
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}));
+
+	this->squally->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
+	{
+		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
+	});
 
 	if (!this->isPositionSavingDisabled)
 	{

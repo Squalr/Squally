@@ -34,4 +34,6 @@ private:
 
 	bool isDisposing;
 	bool isPositionSavingDisabled;
+
+	static const float SquallyMovementAcceleration;
 };

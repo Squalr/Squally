@@ -17,9 +17,9 @@
 using namespace cocos2d;
 
 const std::string EntityMovementBehavior::MapKeyAttachedBehavior = "entity-movement";
-const float EntityMovementBehavior::MoveAcceleration = 5800.0f;
-const Vec2 EntityMovementBehavior::SwimAcceleration = Vec2(8000.0f, 420.0f);
-const float EntityMovementBehavior::JumpVelocity = 7680.0f;
+const float EntityMovementBehavior::DefaultMoveAcceleration = 4800.0f;
+const Vec2 EntityMovementBehavior::DefaultSwimAcceleration = Vec2(8000.0f, 420.0f);
+const float EntityMovementBehavior::DefaultJumpVelocity = 7680.0f;
 
 EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 {
@@ -33,6 +33,9 @@ EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->moveAcceleration = EntityMovementBehavior::DefaultMoveAcceleration;
+	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
+	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
 
 	if (this->entity == nullptr)
 	{
@@ -115,12 +118,12 @@ void EntityMovementBehavior::update(float dt)
 			// Only apply movement velocity if not running into a wall. Prevents visual jitter.
 			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
 			{
-				velocity.x += movement.x * EntityMovementBehavior::MoveAcceleration * dt;
+				velocity.x += movement.x * this->moveAcceleration * dt;
 			}
 
 			if (movement.y > 0.0f && canJump)
 			{
-				velocity.y = movement.y * EntityMovementBehavior::JumpVelocity;
+				velocity.y = movement.y * this->jumpVelocity;
 
 				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
 			}
@@ -131,7 +134,7 @@ void EntityMovementBehavior::update(float dt)
 		{
 			movementCollision->enableWaterPhysics();
 
-			const float minSpeed = EntityMovementBehavior::SwimAcceleration.y;
+			const float minSpeed = this->swimAcceleration.y;
 
 			// A lil patch to reduce that "acceleraton" feel of swimming vertical, and instead make it feel more instant
 			if (velocity.y < minSpeed && movement.y > 0.0f)
@@ -143,8 +146,8 @@ void EntityMovementBehavior::update(float dt)
 				velocity.y = -minSpeed;
 			}
 
-			velocity.x += movement.x * EntityMovementBehavior::SwimAcceleration.x * dt;
-			velocity.y += movement.y * EntityMovementBehavior::SwimAcceleration.y * dt;
+			velocity.x += movement.x * this->swimAcceleration.x * dt;
+			velocity.y += movement.y * this->swimAcceleration.y * dt;
 
 			if (movement != Vec2::ZERO)
 			{
@@ -213,6 +216,21 @@ void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 			movement->x = 1.0f;
 		}
 	}
+}
+
+void EntityMovementBehavior::setMoveAcceleration(float moveAcceleration)
+{
+	this->moveAcceleration = moveAcceleration;
+}
+
+void EntityMovementBehavior::setSwimAcceleration(cocos2d::Vec2 swimAcceleration)
+{
+	this->swimAcceleration = swimAcceleration;
+}
+
+void EntityMovementBehavior::setJumpVelocity(float jumpVelocity)
+{
+	this->jumpVelocity = jumpVelocity;
 }
 
 void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
