@@ -30,6 +30,7 @@ public:
 	bool isPlayerEntry();
 
 	static const float CastPercentage;
+	static const float BaseSpeedMultiplier;
 
 protected:
 	TimelineEntry(PlatformerEntity* entity, int spawnIndex);
@@ -69,6 +70,4 @@ private:
 	float interruptBonus;
 	float progress;
 	bool isCasting;
-
-	static const float BaseSpeedMultiplier;
 };

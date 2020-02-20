@@ -2,6 +2,7 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
+class PlatformerDialogueBox;
 class TimelineEntry;
 class StatsBars;
 
@@ -25,6 +26,7 @@ private:
 	
 	cocos2d::Node* playerPartyStatsNode;
 	cocos2d::Node* enemyPartyStatsNode;
+	PlatformerDialogueBox* dialogueBox;
 
 	std::vector<StatsBars*> playerPartyStatsBars;
 	std::vector<StatsBars*> enemyPartyStatsBars;

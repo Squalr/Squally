@@ -17,6 +17,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -44,8 +45,10 @@ Timeline::Timeline()
 
 	this->swordFill = ProgressBar::create(Sprite::create(UIResources::Combat_SwordFillRed), Sprite::create(UIResources::Combat_SwordFill), Vec2::ZERO);
 	this->swordTop = Sprite::create(UIResources::Combat_SwordTop);
-	this->timelineNode = Node::create();
+	this->eventsNode = Node::create();
+	this->entriesNode = Node::create();
 	this->timelineEntries = std::vector<TimelineEntry*>();
+	this->timelineEvents = std::vector<TimelineEvent*>();
 	this->timelineWidth = this->swordFill->getContentSize().width;
 	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Wait::create());
 	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Cast::create());
@@ -60,7 +63,8 @@ Timeline::Timeline()
 
 	this->addChild(this->swordFill);
 	this->addChild(this->swordTop);
-	this->addChild(this->timelineNode);
+	this->addChild(this->eventsNode);
+	this->addChild(this->entriesNode);
 	this->addChild(this->waitLabel);
 	this->addChild(this->castLabel);
 }
@@ -93,8 +97,10 @@ void Timeline::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
-		this->timelineNode->removeAllChildren();
+		this->eventsNode->removeAllChildren();
+		this->entriesNode->removeAllChildren();
 		this->timelineEntries.clear();
+		this->timelineEvents.clear();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
@@ -122,6 +128,16 @@ void Timeline::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelineInterrupted = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRegisterTimelineEvent, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::RegisterTimelineEventArgs* args = static_cast<CombatEvents::RegisterTimelineEventArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->registerTimelineEvent(args->event);
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
@@ -216,12 +232,12 @@ void Timeline::updateTimeline(float dt)
 		this->isTimelineInterrupted = false;
 
 		// Update all timeline entries
-		for (auto it = this->timelineEntries.begin(); it != this->timelineEntries.end(); it++)
+		for (auto entry : this->timelineEntries)
 		{
-			TimelineEntry* entry = *it;
-
 			if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
+				float currentTime = entry->getProgress();
+
 				if (!this->isTimelineInterrupted)
 				{
 					entry->addTimeWithoutActions(dt);
@@ -233,6 +249,17 @@ void Timeline::updateTimeline(float dt)
 				{
 					// An entity is already performing an action during this update call -- add the time to remaining entities without doing anything yet
 					entry->addTimeWithoutActions(dt);
+				}
+
+				for (auto event : this->timelineEvents)
+				{
+					if (event->getOwner() == entry->getEntity())
+					{
+						if (event->tryUpdateEvent(currentTime, entry->getProgress()))
+						{
+							this->unregisterTimelineEvent(event);
+						}
+					}
 				}
 			}
 		}
@@ -262,7 +289,7 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFi
 		TimelineEntry* entry = TimelineEntry::create(*it, index++);
 
 		this->timelineEntries.push_back(entry);
-		this->timelineNode->addChild(entry);
+		this->entriesNode->addChild(entry);
 
 		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
 		nextPlayerBonus += 0.1f;
@@ -285,7 +312,7 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFir
 		TimelineEntry* entry = TimelineEntry::create(*it, index++);
 
 		this->timelineEntries.push_back(entry);
-		this->timelineNode->addChild(entry);
+		this->entriesNode->addChild(entry);
 
 		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
 		nextEnemyBonus += 0.1f;
@@ -294,4 +321,37 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFir
 	}
 
 	return entries;
+}
+
+void Timeline::registerTimelineEvent(TimelineEvent* timelineEvent)
+{
+	if (timelineEvent == nullptr)
+	{
+		return;
+	}
+
+	for (auto next : this->timelineEntries)
+	{
+		if (next->getEntity() == timelineEvent->getOwner())
+		{
+			timelineEvent->offsetByTimelineTime(next->getProgress());
+		}
+	}
+
+	timelineEvent->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * timelineEvent->getTime());
+
+	this->timelineEvents.push_back(timelineEvent);
+
+	this->eventsNode->addChild(timelineEvent);
+}
+
+void Timeline::unregisterTimelineEvent(TimelineEvent* timelineEvent)
+{
+	if (timelineEvent == nullptr)
+	{
+		return;
+	}
+
+	this->timelineEvents.erase(std::remove(this->timelineEvents.begin(), this->timelineEvents.end(), timelineEvent), this->timelineEvents.end());
+	this->eventsNode->removeChild(timelineEvent);
 }

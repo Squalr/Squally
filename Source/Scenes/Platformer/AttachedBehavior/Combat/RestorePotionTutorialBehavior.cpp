@@ -15,7 +15,10 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CombatEvents.h"
+#include "Events/DialogueEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealth.h"
@@ -41,6 +44,7 @@ RestorePotionTutorialBehavior::RestorePotionTutorialBehavior(GameObject* owner) 
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->scrappy = nullptr;
+	this->squally = nullptr;
 	this->hasTutorialRun = false;
 
 	if (this->entity == nullptr)
@@ -75,6 +79,11 @@ void RestorePotionTutorialBehavior::onLoad()
 			scrappyHackableCueBehavior->disable();
 		});
 	}, Scrappy::MapKeyScrappy);
+
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKeySqually);
 }
 
 void RestorePotionTutorialBehavior::runTutorial()
@@ -87,21 +96,29 @@ void RestorePotionTutorialBehavior::runTutorial()
 	this->hasTutorialRun = true;
 
 	static const float TutorialDelay = RestoreHealth::StartDelay + RestoreHealth::TimeBetweenTicks * 2.0f + 0.1f;
+	
+	CombatEvents::TriggerPauseTimeline();
 
 	this->runAction(Sequence::create(
 		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
-			HackableEvents::TriggerAllowHackerMode();
-			HackableEvents::TriggerForceHackerModeEnable();
+			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Top,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
+				),
+				[=]()
+				{
+					CombatEvents::TriggerResumeTimeline();
+				},
+				SoundResources::Platformer_Entities_Droid_DroidChatter
+			));
 
-			// Hackermode will pause scrappy and render the dialogue box inaccessible -- remedy this
-			GameUtils::resume(this->scrappy);
-			
-			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-			{
-				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(), SoundResources::Platformer_Entities_Droid_DroidChatter, 4.0f);
-			});
+			// HackableEvents::TriggerForceHackerModeEnable();
 		}),
 		nullptr
 	));

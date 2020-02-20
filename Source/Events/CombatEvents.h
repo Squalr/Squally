@@ -11,6 +11,7 @@ namespace cocos2d
 class Buff;
 class PlatformerEntity;
 class TimelineEntry;
+class TimelineEvent;
 
 class CombatEvents
 {
@@ -32,6 +33,7 @@ public:
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
 	static const std::string EventInterruptTimeline;
+	static const std::string EventRegisterTimelineEvent;
 	static const std::string EventDamageOrHealingDelt;
 	static const std::string EventDamageOrHealing;
 	static const std::string EventCastBlocked;
@@ -258,6 +260,13 @@ public:
 			bool handled;
 	};
 
+	struct RegisterTimelineEventArgs
+	{
+		TimelineEvent* event;
+
+		RegisterTimelineEventArgs(TimelineEvent* event) : event(event) { }
+	};
+
 	static void TriggerSpawn(SpawnArgs args);
 	static void TriggerGetAssociatedTimelineEntry(AssociatedEntryArgs args);
 	static void TriggerMenuGoBack();
@@ -271,6 +280,7 @@ public:
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
+	static void TriggerRegisterTimelineEvent(RegisterTimelineEventArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);

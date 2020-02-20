@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class Scrappy;
+class Squally;
 class PlatformerEntity;
 
 class RestorePotionTutorialBehavior : public AttachedBehavior
@@ -30,6 +31,7 @@ private:
 
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
+	Squally* squally;
 
 	bool hasTutorialRun;
 };

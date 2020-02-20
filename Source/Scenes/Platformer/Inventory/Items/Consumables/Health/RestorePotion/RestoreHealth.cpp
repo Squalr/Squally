@@ -19,8 +19,10 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealthClippy.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 
 #include "Resources/FXResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -135,29 +137,16 @@ void RestoreHealth::runRestoreHealth()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		this->runAction(Sequence::create(
-			DelayTime::create(RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay),
-			CallFunc::create([=]()
+		CombatEvents::TriggerRegisterTimelineEvent(CombatEvents::RegisterTimelineEventArgs(
+			TimelineEvent::create(this->target, Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2), RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
 			{
 				this->runRestoreTick();
-			}),
-			nullptr
+			})
 		));
 	}
-
-	this->runAction(Sequence::create(
-		DelayTime::create(RestoreHealth::TimeBetweenTicks * float(this->healAmount) + StartDelay),
-		CallFunc::create([=]()
-		{
-			this->healEffect->runAction(FadeTo::create(0.25f, 0));
-		}),
-		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			this->removeBuff();
-		}),
-		nullptr
-	));
+	
+	// this->healEffect->runAction(FadeTo::create(0.25f, 0));
+	// this->removeBuff();
 }
 
 NO_OPTIMIZE void RestoreHealth::runRestoreTick()
