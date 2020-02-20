@@ -91,7 +91,8 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 			Size(std::max((this->entity->getEntitySize()).width + EntityHeadCollisionBehavior::HeadCollisionPadding * 2.0f, 8.0f), EntityHeadCollisionBehavior::HeadCollisionSize)
 		),
 		(int)PlatformerCollisionType::HeadDetector,
-		CollisionObject::Properties(false, false)
+		CollisionObject::Properties(false, false),
+		Color4F::YELLOW
 	);
 
 	Vec2 entityCenter = this->entity->getEntityCenterPoint();

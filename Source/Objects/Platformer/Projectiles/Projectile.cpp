@@ -267,6 +267,11 @@ void Projectile::disable(bool setVisible)
 	this->collisionObject->setPhysicsEnabled(false);
 }
 
+void Projectile::reset()
+{
+	this->collisionObject->setPosition3D(Vec3::ZERO);
+}
+
 void Projectile::runSpawnFX()
 {
 }

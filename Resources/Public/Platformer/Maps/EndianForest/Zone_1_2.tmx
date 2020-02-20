@@ -121,7 +121,7 @@
     <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
-  <object id="674" name="pendulum-blade" type="object" x="1346.98" y="910.47" width="42.4242" height="219.569">
+  <object id="674" name="pendulum-blade" type="object" x="2246.98" y="908.47" width="42.4242" height="219.569">
    <properties>
     <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>

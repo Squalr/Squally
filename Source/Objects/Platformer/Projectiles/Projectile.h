@@ -19,6 +19,7 @@ public:
 	void setSpeedMultiplier(cocos2d::Vec3 speedMultiplier);
 	void enable(bool setVisible);
 	void disable(bool setVisible);
+	void reset();
 	virtual void runSpawnFX();
 
 	static const std::string ProjectileTag;

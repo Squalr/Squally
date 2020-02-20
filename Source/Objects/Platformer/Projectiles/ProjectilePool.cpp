@@ -56,7 +56,7 @@ Projectile* ProjectilePool::getNextProjectile()
 	this->dartIndex = MathUtils::wrappingNormalize(this->dartIndex + 1, 0, this->projectiles.size() - 1);
 
 	this->projectiles[dartIndex]->enable(true);
-	this->projectiles[dartIndex]->setPosition3D(Vec3::ZERO);
+	this->projectiles[dartIndex]->reset();
 	this->projectiles[dartIndex]->runSpawnFX();
 
 	return this->projectiles[dartIndex];
