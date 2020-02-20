@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -50,6 +51,16 @@ EntitySelectionOverlayBehavior::~EntitySelectionOverlayBehavior()
 void EntitySelectionOverlayBehavior::onLoad()
 {
 	const Vec2 LightOffset = Vec2(128.0f, -256.0f);
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		this->setVisible(false);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->setVisible(true);
+	}));
 
 	if (dynamic_cast<PlatformerEnemy*>(this->entity) != nullptr)
 	{

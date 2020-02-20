@@ -66,45 +66,43 @@ void ScrappyMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
+	if (this->scrappy == nullptr || this->squally == nullptr)
+	{
+		return;
+	}
+
 	const float NearDestTimeout = 0.75f;
 	const float NearDistanceCheck = 8.0f;
 
 	this->elapsed += dt;
 
-	if (this->squally == nullptr)
-	{
-		return;
-	}
+	Vec3 scrappyPosition = GameUtils::getWorldCoords3D(this->scrappy);
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 parentDelta = this->scrappy->getPosition3D() - scrappyPosition;
+	Vec3 destPosition = squallyPosition;
 
-	Vec2 squallyPosition = GameUtils::getWorldCoords(this->squally);
-	Vec2 destPosition = squallyPosition;
-
-	if (this->squally->getAnimations()->getFlippedX())
+	if (this->squally->isFlippedX())
 	{
-		destPosition += Vec2(
-			std::cos(ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius,
-			std::sin(ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius
-		);
+		destPosition.x += std::cos(ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius;
+		destPosition.y += std::sin(ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius;
 	}
 	else
 	{
-		destPosition += Vec2(
-			std::cos(float(M_PI) - ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius,
-			std::sin(float(M_PI) - ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius
-		);
+		destPosition.x += std::cos(float(M_PI) - ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius;
+		destPosition.y += std::sin(float(M_PI) - ScrappyMovementBehavior::FloatOffsetAngle) * ScrappyMovementBehavior::FloatOffsetRadius;
 	}
 
-	bool isLeftOfSqually = this->scrappy->getPositionX() <= squallyPosition.x;
-	bool isMovingLeft = this->scrappy->getPositionX() > destPosition.x;
-	bool isMovingUp = this->scrappy->getPositionY() > destPosition.y;
-	bool isNearDestX = std::abs(destPosition.x - this->scrappy->getPositionX()) <= NearDistanceCheck;
-	bool isNearDestY = std::abs(destPosition.y - this->scrappy->getPositionY()) <= NearDistanceCheck;
+	bool isLeftOfSqually = scrappyPosition.x <= squallyPosition.x;
+	bool isMovingLeft = scrappyPosition.x > destPosition.x;
+	bool isMovingUp = scrappyPosition.y > destPosition.y;
+	bool isNearDestX = std::abs(destPosition.x - scrappyPosition.x) <= NearDistanceCheck;
+	bool isNearDestY = std::abs(destPosition.y - scrappyPosition.y) <= NearDistanceCheck;
 	bool flipX = false;
 
 	if (isNearDestX)
 	{
 		this->timeNearDestX += dt;
-		flipX = this->squally->getAnimations()->getFlippedX();
+		flipX = this->squally->isFlippedX();
 	}
 	else
 	{
@@ -128,9 +126,9 @@ void ScrappyMovementBehavior::update(float dt)
 	this->scrappy->getAnimations()->setFlippedX(flipX);
 	this->scrappy->getFloatNode()->setPositionY(sin(2.25f * this->elapsed) * 24.0f);
 
-	float distance = destPosition.distance(this->scrappy->getPosition());
-	float squallyDistance = this->scrappy->getPosition().distance(squallyPosition);
-	float angleBetween = -std::atan2(this->scrappy->getPositionY() - destPosition.y, this->scrappy->getPositionX() - destPosition.x);
+	float distance = destPosition.distance(scrappyPosition);
+	float squallyDistance = scrappyPosition.distance(squallyPosition);
+	float angleBetween = -std::atan2(scrappyPosition.y - destPosition.y, scrappyPosition.x - destPosition.x);
 	float speedBonus = MathUtils::clamp(squallyDistance - ScrappyMovementBehavior::FloatOffsetRadius, 0.0f, 1024.0f);
 	
 	Vec2 speed = Vec2(
@@ -140,11 +138,11 @@ void ScrappyMovementBehavior::update(float dt)
 
 	if (this->timeNearDestX < NearDestTimeout)
 	{
-		this->scrappy->setPositionX(this->scrappy->getPositionX() + speed.x * dt);
+		this->scrappy->setPositionX(scrappyPosition.x + parentDelta.x + speed.x * dt);
 
 		// Overshot X -- time out instantly
-		if ((isMovingLeft && this->scrappy->getPositionX() < destPosition.x) ||
-			(!isMovingLeft && this->scrappy->getPositionX() > destPosition.x))
+		if ((isMovingLeft && scrappyPosition.x < destPosition.x) ||
+			(!isMovingLeft && scrappyPosition.x > destPosition.x))
 		{
 			this->timeNearDestX = NearDestTimeout;
 		}
@@ -152,13 +150,15 @@ void ScrappyMovementBehavior::update(float dt)
 
 	if (this->timeNearDestY < NearDestTimeout)
 	{
-		this->scrappy->setPositionY(this->scrappy->getPositionY() + speed.y * dt);
+		this->scrappy->setPositionY(scrappyPosition.y + parentDelta.y + speed.y * dt);
 
 		// Overshot Y -- time out instantly
-		if ((isMovingUp && this->scrappy->getPositionY() < destPosition.y) ||
-			(!isMovingUp && this->scrappy->getPositionY() > destPosition.y))
+		if ((isMovingUp && scrappyPosition.y < destPosition.y) ||
+			(!isMovingUp && scrappyPosition.y > destPosition.y))
 		{
 			this->timeNearDestY = NearDestTimeout;
 		}
 	}
+
+	this->scrappy->setPositionZ(squallyPosition.z + parentDelta.z);
 }

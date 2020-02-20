@@ -75,8 +75,6 @@ void RestorePotionTutorialBehavior::onLoad()
 			scrappyHackableCueBehavior->disable();
 		});
 	}, Scrappy::MapKeyScrappy);
-
-	HackableEvents::TriggerDisallowHackerMode();
 }
 
 void RestorePotionTutorialBehavior::runTutorial()

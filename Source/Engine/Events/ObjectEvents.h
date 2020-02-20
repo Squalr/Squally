@@ -66,6 +66,7 @@ public:
 
 	enum class SpawnMethod
 	{
+		LayerBelow,
 		Below,
 		Above,
 		TopMost,

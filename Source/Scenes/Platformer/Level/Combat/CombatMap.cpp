@@ -19,6 +19,7 @@
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Menus/Cards/CardsMenu.h"
@@ -89,6 +90,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
+	this->scrappy = nullptr;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -147,6 +149,11 @@ void CombatMap::onEnter()
 	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
+	
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
 
 	this->defer([=]()
 	{
@@ -250,7 +257,7 @@ void CombatMap::initializeListeners()
 					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
 
 					this->entityFocusTakeOver->repeatFocus({ entity });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry, this->scrappy });
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -296,7 +303,7 @@ void CombatMap::initializeListeners()
 					});
 
 					this->entityFocusTakeOver->repeatFocus({ focusTargets });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry, this->scrappy });
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:

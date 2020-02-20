@@ -184,6 +184,20 @@ void TerrainObject::update(float dt)
 	this->optimizationHideOffscreenTerrain();
 }
 
+void TerrainObject::onHackerModeEnable(int hackFlags)
+{
+	super::onHackerModeEnable(hackFlags);
+
+	this->setVisible(false);
+}
+
+void TerrainObject::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	this->setVisible(true);
+}
+
 void TerrainObject::initResources()
 {
 	if (!this->isFlipped)

@@ -262,7 +262,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 
 	switch (innerArgs->spawnMethod)
 	{
-		case ObjectEvents::SpawnMethod::Below:
+		case ObjectEvents::SpawnMethod::LayerBelow:
 		{
 			std::vector<MapLayer*>::iterator prevIt = this->mapLayers.end();
 
@@ -300,6 +300,17 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 			}
 			
 			break;
+		}
+		case ObjectEvents::SpawnMethod::Below:
+		{
+			for (auto layer : this->mapLayers)
+			{
+				if (layer == args->sourceLayer)
+				{
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry, 0);
+					innerArgs->handled = true;
+				}
+			}
 		}
 		default:
 		case ObjectEvents::SpawnMethod::Above:

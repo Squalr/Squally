@@ -102,7 +102,7 @@ void ScrappyManagerBehavior::spawnScrappy()
 				}
 			));
 
-			deserializeArgs.gameObject->setPosition(this->entity->getPosition());
+			deserializeArgs.gameObject->setPosition3D(this->entity->getPosition3D());
 			this->helperRef = dynamic_cast<Scrappy*>(deserializeArgs.gameObject);
 		}
 	);

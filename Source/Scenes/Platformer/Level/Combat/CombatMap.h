@@ -16,6 +16,7 @@ class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
 class RewardsMenu;
+class Scrappy;
 class TargetSelectionMenu;
 class TextOverlays;
 class Timeline;
@@ -48,6 +49,7 @@ protected:
 
 private:
 	typedef MapBase super;
+
 	void spawnEntities();
 
 	CollectablesMenu* collectablesMenu;
@@ -65,6 +67,8 @@ private:
 	CombatAIHelper* enemyAIHelper;
 	HackerModeWarningHud* hackerModeWarningHud;
 	NotificationHud* notificationHud;
+
+	Scrappy* scrappy;
 
 	FocusTakeOver* entityFocusTakeOver;
 	FocusTakeOver* focusTakeOver;

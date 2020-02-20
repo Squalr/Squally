@@ -149,6 +149,8 @@ protected:
 	void onDeveloperModeDisable() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void onHackerModeEnable(int hackFlags) override;
+	void onHackerModeDisable() override;
 	cocos2d::ValueMap transformPropertiesForTexture(cocos2d::ValueMap& properties);
 
 private:
