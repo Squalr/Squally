@@ -68,6 +68,7 @@ private:
 	ClickableTextNode* applyChangesButton;
 	cocos2d::Node* applyChangesButtonGrayed;
 	LocalizedLabel* titleLabel;
+	ClickableTextNode* stuckButton;
 	ClickableTextNode* lexiconButton;
 	Lexicon* lexicon;
 	ConfirmationMenu* confirmationMenu;

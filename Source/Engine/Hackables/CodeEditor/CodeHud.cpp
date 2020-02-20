@@ -4,6 +4,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/platform/CCApplication.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
@@ -56,6 +57,7 @@ CodeHud::CodeHud()
 {
 	this->timeSinceLastCompile = CodeHud::CompileDelayMaxSeconds;
 	this->activeHackableCode = nullptr;
+	this->lexicon = nullptr;
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
@@ -124,10 +126,19 @@ CodeHud::CodeHud()
 	lexiconLabelSelected->setTextColor(Color4B::YELLOW);
 
 	this->lexiconButton = ClickableTextNode::create(lexiconLabel, lexiconLabelSelected, UIResources::Menus_LexiconMenu_LexiconButton, UIResources::Menus_LexiconMenu_LexiconButtonSelected);
-	this->lexicon = nullptr;
+
+	LocalizedLabel*	stuckLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_CodeEditor_Stuck::create());
+	LocalizedLabel*	stuckLabelSelected = stuckLabel->clone();
+
+	stuckLabel->enableOutline(Color4B::BLACK, 2);
+	stuckLabelSelected->enableOutline(Color4B::BLACK, 2);
+	stuckLabelSelected->setTextColor(Color4B::YELLOW);
+
+	this->stuckButton = ClickableTextNode::create(stuckLabel, stuckLabelSelected, UIResources::Menus_HackerModeMenu_DiscordButton, UIResources::Menus_HackerModeMenu_DiscordButtonSelected);
 
 	this->titleLabel->enableOutline(Color4B::BLACK, 3);
 	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
+	this->stuckButton->setTextOffset(Vec2(0.0f, -56.0f));
 
 	this->statusWindow->setPadding(Size(16.0f, 0.0f));
 	this->registerWindow->setPadding(Size(16.0f, 0.0f));
@@ -154,6 +165,7 @@ CodeHud::CodeHud()
 	this->addChild(this->applyChangesButtonGrayed);
 	this->addChild(this->titleLabel);
 	this->addChild(this->lexiconButton);
+	this->addChild(this->stuckButton);
 	this->addChild(this->clippyNode);
 	this->addChild(this->confirmationMenu);
 }
@@ -193,7 +205,8 @@ void CodeHud::initializePositions()
 	this->applyChangesButtonGrayed->setPosition(this->applyChangesButton->getPosition());
 
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height - 32.0f));
-	this->lexiconButton->setPosition(Vec2(sidebarWidth / 2.0f, 88.0f));
+	this->lexiconButton->setPosition(Vec2(sidebarWidth / 2.0f + 96.0f, 88.0f));
+	this->stuckButton->setPosition(Vec2(sidebarWidth / 2.0f - 112.0f, 88.0f));
 }
 
 void CodeHud::initializeListeners()
@@ -231,6 +244,11 @@ void CodeHud::initializeListeners()
 	{
 		this->functionWindow->unfocus();
 		this->getLexicon()->open();
+	});
+	
+	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		Application::getInstance()->openURL("https://discord.gg/3maVXN5");
 	});
 }
 

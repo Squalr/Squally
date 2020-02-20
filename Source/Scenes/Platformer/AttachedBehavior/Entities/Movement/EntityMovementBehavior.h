@@ -14,7 +14,8 @@ public:
 	void setJumpVelocity(float jumpVelocity);
 
 	static const std::string MapKeyAttachedBehavior;
-	static const float DefaultMoveAcceleration;
+	static const float DefaultWalkAcceleration;
+	static const float DefaultRunAcceleration;
 	static const cocos2d::Vec2 DefaultSwimAcceleration;
 	static const float DefaultJumpVelocity;
 

@@ -17,7 +17,8 @@
 using namespace cocos2d;
 
 const std::string EntityMovementBehavior::MapKeyAttachedBehavior = "entity-movement";
-const float EntityMovementBehavior::DefaultMoveAcceleration = 4800.0f;
+const float EntityMovementBehavior::DefaultWalkAcceleration = 4800.0f;
+const float EntityMovementBehavior::DefaultRunAcceleration = 5600.0f;
 const Vec2 EntityMovementBehavior::DefaultSwimAcceleration = Vec2(8000.0f, 420.0f);
 const float EntityMovementBehavior::DefaultJumpVelocity = 7680.0f;
 
@@ -33,7 +34,7 @@ EntityMovementBehavior* EntityMovementBehavior::create(GameObject* owner)
 EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->moveAcceleration = EntityMovementBehavior::DefaultMoveAcceleration;
+	this->moveAcceleration = EntityMovementBehavior::DefaultRunAcceleration;
 	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
 	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
 
