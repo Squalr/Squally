@@ -126,6 +126,7 @@ private:
 	cocos2d::Vec2 getThisOrBindPosition();
 	void setThisOrBindPosition(cocos2d::Vec2 position);
 	Shape determineShape();
+	void propagateRotation();
 
 	static void ClearCollisionObjects();
 	static void RegisterCollisionObject(CollisionObject* collisionObject);
@@ -145,7 +146,9 @@ private:
 	// Shape
 	Shape shape;
 	std::vector<cocos2d::Vec2> points;
+	std::vector<cocos2d::Vec2> pointsRotated;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
+	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segmentsRotated;
 	cocos2d::Rect boundsRect;
 
 	CollisionType collisionType;
@@ -160,6 +163,9 @@ private:
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionStartEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionSustainEvents;
 	std::map<CollisionType, std::vector<CollisionEvent>> collisionEndEvents;
+
+	// Cache
+	float cachedRotation;
 
 	// Debug
 	cocos2d::Color4F debugColor;

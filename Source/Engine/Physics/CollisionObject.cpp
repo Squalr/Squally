@@ -55,9 +55,11 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 {
 	this->collisionType = collisionType;
 	this->points = points;
-	this->shape = this->determineShape();
+	this->pointsRotated = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-	this->boundsRect = AlgoUtils::getPolygonRect(this->points);
+	this->segmentsRotated = this->segments;
+	this->shape = this->determineShape();
+	this->boundsRect = AlgoUtils::getPolygonRect(this->pointsRotated);
 	this->collidesWithTypes = std::set<CollisionType>();
 	this->collisionStartEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
 	this->collisionSustainEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
@@ -77,6 +79,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
+	this->cachedRotation = 0.0f;
 }
 
 CollisionObject::~CollisionObject()
@@ -159,6 +162,7 @@ void CollisionObject::update(float dt)
 {
 	super::update(dt);
 
+	this->propagateRotation();
 	this->runPhysics(dt);
 }
 
@@ -184,10 +188,13 @@ void CollisionObject::runPhysics(float dt)
 		// Enforce constraints by calling setter
 		this->setVelocity(this->velocity);
 
-		const float rotationInRad = GameUtils::getRotation(this) * float(M_PI) / 180.0f;
+		const float rotationInRad = this->cachedRotation * float(M_PI) / 180.0f;
+		const float cosTheta = std::cos(rotationInRad);
+		const float sinTheta = std::sin(rotationInRad);
+
 		const Vec2 positionUpdates = Vec2(
-			(this->velocity.x * std::cos(rotationInRad) - this->velocity.y * std::sin(rotationInRad)) * dt,
-			(this->velocity.x * std::sin(rotationInRad) + this->velocity.y * std::cos(rotationInRad)) * dt
+			(this->velocity.x * cosTheta - this->velocity.y * sinTheta) * dt,
+			(this->velocity.x * sinTheta + this->velocity.y * cosTheta) * dt
 		);
 
 		this->setThisOrBindPosition(this->getThisOrBindPosition() + positionUpdates);
@@ -461,6 +468,30 @@ CollisionObject::Shape CollisionObject::determineShape()
 	}
 
 	return Shape::Polygon;
+}
+
+void CollisionObject::propagateRotation()
+{
+	float rotation = GameUtils::getRotation(this);
+
+	if (rotation == this->cachedRotation)
+	{
+		return;
+	}
+
+	this->cachedRotation = rotation;
+
+	const float rotationInRad = -this->cachedRotation * float(M_PI) / 180.0f;
+	const float cosTheta = std::cos(rotationInRad);
+	const float sinTheta = std::sin(rotationInRad);
+
+	for (int index = 0; index < int(this->points.size()); index++)
+	{
+		this->pointsRotated[index].x = this->points[index].x * cosTheta - this->points[index].y * sinTheta;
+		this->pointsRotated[index].y = this->points[index].x * sinTheta + this->points[index].y * cosTheta;
+	}
+
+	this->segmentsRotated = AlgoUtils::buildSegmentsFromPoints(this->pointsRotated);
 }
 
 void CollisionObject::ClearCollisionObjects()

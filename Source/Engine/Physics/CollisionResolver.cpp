@@ -101,14 +101,14 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 		return;
 	}
 
-	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
+	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segmentsRotated[0]), coordsB + std::get<1>(objectB->segmentsRotated[0]));
 	Vec2 pointB1 = std::get<0>(objectBSegment);
 	Vec2 pointB2 = std::get<1>(objectBSegment);
 	bool containsA = rectA.containsPoint(pointB1);
 	bool containsB = rectA.containsPoint(pointB2);
 
 	// Check for rectangle <=> segment intersection criteria
-	if (!std::any_of(objectA->segments.begin(), objectA->segments.end(), [=](std::tuple<cocos2d::Vec2, cocos2d::Vec2> objectASegment)
+	if (!std::any_of(objectA->segmentsRotated.begin(), objectA->segmentsRotated.end(), [=](std::tuple<cocos2d::Vec2, cocos2d::Vec2> objectASegment)
 		{
 			objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
 
@@ -126,7 +126,7 @@ void CollisionResolver::rectToSegment(CollisionObject* objectA, CollisionObject*
 	Vec2 intersectionB = Vec2::ZERO;
 
 	// Case 1) Check for two intersections
-	for (auto objectASegment : objectA->segments)
+	for (auto objectASegment : objectA->segmentsRotated)
 	{
 		objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
 	
@@ -272,10 +272,10 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 {
 	auto resolve = [](CollisionObject* innerObject, CollisionObject* outerObject, Vec2 innerPoint)
 	{
-		std::tuple<Vec2, Vec2> ab = std::make_tuple(outerObject->points[0], outerObject->points[1]);
-		std::tuple<Vec2, Vec2> bc = std::make_tuple(outerObject->points[1], outerObject->points[2]);
-		std::tuple<Vec2, Vec2> cd = std::make_tuple(outerObject->points[2], outerObject->points[3]);
-		std::tuple<Vec2, Vec2> da = std::make_tuple(outerObject->points[3], outerObject->points[0]);
+		std::tuple<Vec2, Vec2> ab = std::make_tuple(outerObject->pointsRotated[0], outerObject->pointsRotated[1]);
+		std::tuple<Vec2, Vec2> bc = std::make_tuple(outerObject->pointsRotated[1], outerObject->pointsRotated[2]);
+		std::tuple<Vec2, Vec2> cd = std::make_tuple(outerObject->pointsRotated[2], outerObject->pointsRotated[3]);
+		std::tuple<Vec2, Vec2> da = std::make_tuple(outerObject->pointsRotated[3], outerObject->pointsRotated[0]);
 
 		float abDist = AlgoUtils::getDistanceFromSegment(ab, innerPoint);
 		float bcDist = AlgoUtils::getDistanceFromSegment(bc, innerPoint);
@@ -325,11 +325,11 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 		return result;
 	};
 
-	for (auto point : objectA->points)
+	for (auto point : objectA->pointsRotated)
 	{
 		point += (coordsA - coordsB);
 
-		if (AlgoUtils::isPointInPolygon(objectB->points, point))
+		if (AlgoUtils::isPointInPolygon(objectB->pointsRotated, point))
 		{
 			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
 			{
@@ -338,11 +338,11 @@ void CollisionResolver::quadToQuad(CollisionObject* objectA, CollisionObject* ob
 		}
 	}
 
-	for (auto point : objectB->points)
+	for (auto point : objectB->pointsRotated)
 	{
 		point += (coordsB - coordsA);
 
-		if (AlgoUtils::isPointInPolygon(objectA->points, point))
+		if (AlgoUtils::isPointInPolygon(objectA->pointsRotated, point))
 		{
 			if (runCollisonEventsOnce() == CollisionObject::CollisionResult::CollideWithPhysics)
 			{
@@ -359,17 +359,17 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 	CollisionObject::CollisionResult result = CollisionObject::CollisionResult::DoNothing;
 
 	// Collision check by determining if any points from either polygon is contained by the other polygon
-	if (std::any_of(objectA->points.begin(), objectA->points.end(), [=](Vec2 point)
+	if (std::any_of(objectA->pointsRotated.begin(), objectA->pointsRotated.end(), [=](Vec2 point)
 		{
 			point += (coordsA - coordsB);
 
-			return AlgoUtils::isPointInPolygon(objectB->points, point);
+			return AlgoUtils::isPointInPolygon(objectB->pointsRotated, point);
 		})
-		|| std::any_of(objectB->points.begin(), objectB->points.end(), [=](Vec2 point)
+		|| std::any_of(objectB->pointsRotated.begin(), objectB->pointsRotated.end(), [=](Vec2 point)
 		{
 			point += (coordsB - coordsA);
 			
-			return AlgoUtils::isPointInPolygon(objectA->points, point);
+			return AlgoUtils::isPointInPolygon(objectA->pointsRotated, point);
 		}))
 	{
 		result = onCollision();
@@ -381,11 +381,11 @@ void CollisionResolver::polyToPoly(CollisionObject* objectA, CollisionObject* ob
 	}
 
 	// More detailed detection with collisions
-	for (auto objectASegment : objectA->segments)
+	for (auto objectASegment : objectA->segmentsRotated)
 	{
 		objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
 
-		for (auto objectBSegment : objectB->segments)
+		for (auto objectBSegment : objectB->segmentsRotated)
 		{
 			objectBSegment = std::make_tuple(coordsB + std::get<0>(objectBSegment), coordsB + std::get<1>(objectBSegment));
 
@@ -448,10 +448,10 @@ void CollisionResolver::polyToSegment(CollisionObject* objectA, CollisionObject*
 {
 	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
 	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
-	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
+	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segmentsRotated[0]), coordsB + std::get<1>(objectB->segmentsRotated[0]));
 	bool hadCollision = false;
 
-	for (auto objectASegment : objectA->segments)
+	for (auto objectASegment : objectA->segmentsRotated)
 	{
 		objectASegment = std::make_tuple(coordsA + std::get<0>(objectASegment), coordsA + std::get<1>(objectASegment));
 
@@ -524,8 +524,8 @@ void CollisionResolver::segmentToSegment(CollisionObject* objectA, CollisionObje
 	Vec2 coordsA = GameUtils::getWorldCoords(objectA);
 	Vec2 coordsB = GameUtils::getWorldCoords(objectB);
 
-	std::tuple<Vec2, Vec2> objectASegment = std::make_tuple(coordsA + std::get<0>(objectA->segments[0]), coordsA + std::get<1>(objectA->segments[0]));
-	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segments[0]), coordsB + std::get<1>(objectB->segments[0]));
+	std::tuple<Vec2, Vec2> objectASegment = std::make_tuple(coordsA + std::get<0>(objectA->segmentsRotated[0]), coordsA + std::get<1>(objectA->segmentsRotated[0]));
+	std::tuple<Vec2, Vec2> objectBSegment = std::make_tuple(coordsB + std::get<0>(objectB->segmentsRotated[0]), coordsB + std::get<1>(objectB->segmentsRotated[0]));
 	
 	if (!AlgoUtils::doSegmentsIntersect(objectASegment, objectBSegment))
 	{
@@ -667,4 +667,29 @@ void CollisionResolver::spawnDebugVector(CollisionObject* objectA, Vec2 pointA, 
 		{
 		}
 	));
+}
+
+void CollisionResolver::spawnDebugShapes(CollisionObject* objectA)
+{
+	DrawNode* dbgA = DrawNode::create();
+
+	for (auto next : objectA->segmentsRotated)
+	{
+		dbgA->drawLine(std::get<0>(next), std::get<1>(next), Color4F(Color4F::YELLOW.r, Color4F::YELLOW.g, Color4F::YELLOW.b, 0.4f));
+	}
+
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		objectA,
+		dbgA,
+		ObjectEvents::SpawnMethod::Above,
+		ObjectEvents::PositionMode::Retain,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
+
+	dbgA->setPosition3D(GameUtils::getWorldCoords3D(objectA));
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="834">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="840">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -99,7 +99,20 @@
   </object>
   <object id="831" name="solid-npc" type="collision" x="10557.7" y="1835.32" width="121.03" height="777.836"/>
   <object id="832" name="solid-npc" type="collision" x="11569.7" y="1835.32" width="121.03" height="777.836"/>
-  <object id="833" name="horse" type="entity" x="11081.5" y="2405.7" width="128" height="128">
+ </objectgroup>
+ <objectgroup id="73" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="837" name="Forest/Flower11" type="decor" x="11298" y="2426" width="92" height="116"/>
+ </objectgroup>
+ <objectgroup id="74" name="entities -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="838" name="horse" type="entity" x="11081.5" y="2405.7" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,pacing"/>
    </properties>
@@ -156,8 +169,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="1635.42" y="2437.06" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="4323.42" y="1927.06" width="199" height="133"/>
   <object id="729" name="Forest/Flower10" type="decor" x="2036.41" y="2424.97" width="199" height="133"/>
+  <object id="834" name="Forest/Flower9" type="decor" x="1730.65" y="2442.86" width="199" height="133"/>
+  <object id="835" name="Forest/Flower11" type="decor" x="8582" y="1914" width="92" height="116"/>
+  <object id="839" name="Forest/Flower9" type="decor" x="7518.68" y="1794.11" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

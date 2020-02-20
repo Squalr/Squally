@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="907">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="910">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -154,13 +154,15 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="4806.57" y="2091.73" width="199" height="133"/>
-  <object id="729" name="Forest/Flower10" type="decor" x="6824.41" y="2076.97" width="199" height="133"/>
   <object id="894" name="torch" type="object" x="5287.91" y="687" width="42" height="130"/>
   <object id="895" name="torch" type="object" x="6114.09" y="683" width="42" height="130"/>
   <object id="898" name="torch" type="object" x="7039" y="687" width="42" height="130"/>
   <object id="902" name="torch" type="object" x="6043.45" y="1701" width="42" height="130"/>
   <object id="903" name="torch" type="object" x="6869.64" y="1697" width="42" height="130"/>
   <object id="904" name="torch" type="object" x="7794.55" y="1701" width="42" height="130"/>
+  <object id="907" name="Forest/Flower11" type="decor" x="3808.79" y="2204.85" width="92" height="116"/>
+  <object id="908" name="Forest/Flower11" type="decor" x="8069.15" y="2090.48" width="92" height="116"/>
+  <object id="909" name="Forest/Flower9" type="decor" x="6812.5" y="2072.17" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

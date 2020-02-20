@@ -34,7 +34,7 @@ private:
 	void startSwing();
 	void swingToAngle(float angle);
 	void buildChain();
-	std::vector<cocos2d::Vec2>& createBladeCollision();
+	std::vector<cocos2d::Vec2> createBladeCollision();
 
 	volatile float targetAngle;
 	cocos2d::Sprite* neck;

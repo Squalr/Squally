@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="80" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="631">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="80" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -87,9 +87,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="2985.22" y="6784.4" width="199" height="133"/>
   <object id="500" name="Forest/Flower10" type="decor" x="1576.5" y="6795.6" width="199" height="133"/>
   <object id="630" name="Forest/TreeBlue5" type="decor" x="6055" y="5463" width="536" height="995"/>
+  <object id="631" name="Forest/Flower9" type="decor" x="3002.5" y="6785.5" width="199" height="133"/>
+  <object id="632" name="Forest/Flower9" type="decor" x="7173.05" y="6757.74" width="199" height="133"/>
+  <object id="633" name="Forest/Flower11" type="decor" x="6431.52" y="6355.39" width="92" height="116"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

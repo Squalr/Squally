@@ -231,10 +231,8 @@ void PendulumBlade::buildChain()
 	this->bladeChain->addChild(blade);
 }
 
-std::vector<Vec2>& PendulumBlade::createBladeCollision()
+std::vector<Vec2> PendulumBlade::createBladeCollision()
 {
-	// Polygons can't be concave, so we get around this by building the left and right sides of the blade separately
-
 	std::vector<Vec2> points = std::vector<Vec2>();
 
 	points.push_back(Vec2(0.0f, 8.0f));
