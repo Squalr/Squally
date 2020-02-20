@@ -18,13 +18,14 @@ public:
 
 protected:
 	CinematicIndicator();
-	~CinematicIndicator();
-
-private:
-	typedef SmartNode super;
+	virtual ~CinematicIndicator();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
 
 	cocos2d::Node* cinematicIndicator;
 	cocos2d::Sprite* filmProjector;

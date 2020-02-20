@@ -14,8 +14,6 @@ public:
 	static const std::string EventHackerModeToggle;
 	static const std::string EventHackerModeEnable;
 	static const std::string EventHackerModeDisable;
-	static const std::string EventSensingEnable;
-	static const std::string EventSensingDisable;
 	static const std::string EventAllowHackerMode;
 	static const std::string EventDisallowHackerMode;
 	static const std::string EventQueryHackerModeAllowed;
@@ -61,15 +59,6 @@ public:
 		}
 	};
 
-	struct SensingArgs
-	{
-		int hackFlags;
-
-		SensingArgs(int hackFlags) : hackFlags(hackFlags)
-		{
-		}
-	};
-
 	struct HackerModeQueryArgs
 	{
 		bool hackerModeAllowed;
@@ -92,8 +81,6 @@ public:
 	static void TriggerHackerModeToggle(HackToggleArgs args);
 	static void TriggerHackerModeEnable(HackToggleArgs args);
 	static void TriggerHackerModeDisable();
-	static void TriggerSensingEnable(SensingArgs args);
-	static void TriggerSensingDisable();
 	static void TriggerAllowHackerMode();
 	static void TriggerDisallowHackerMode();
 	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);

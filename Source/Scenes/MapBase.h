@@ -65,7 +65,6 @@ private:
 	void toggleHackerMode(void* userData);
 
 	Hud* hackerModeGlow;
-	Hud* sensingGlow;
 	MatrixRain* hackerModeRain;
 	CodeHud* codeHud;
 	RadialMenu* radialMenu;

@@ -15,6 +15,7 @@ const std::string UIResources::Combat_ItemsCircle = "Private/UI/Combat/ItemsCirc
 const std::string UIResources::Combat_ItemsMenu = "Private/UI/Combat/ItemsMenu.png";
 const std::string UIResources::Combat_Line = "Private/UI/Combat/Line.png";
 const std::string UIResources::Combat_PlayerCircle = "Private/UI/Combat/PlayerCircle.png";
+const std::string UIResources::Combat_RadialEye = "Private/UI/Combat/RadialEye.png";
 const std::string UIResources::Combat_RewardsSlot = "Private/UI/Combat/RewardsSlot.png";
 const std::string UIResources::Combat_SelectionLight = "Private/UI/Combat/SelectionLight.png";
 const std::string UIResources::Combat_Skull = "Private/UI/Combat/Skull.png";

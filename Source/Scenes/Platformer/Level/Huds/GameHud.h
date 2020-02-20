@@ -12,8 +12,7 @@ class GameHud : public Hud
 public:
 	static GameHud* create();
 
-private:
-	typedef Hud super;
+protected:
 	GameHud();
 	virtual ~GameHud();
 
@@ -21,6 +20,9 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef Hud super;
 
 	CurrencyDisplay* currencyDisplay;
 	StatsBars* statsBars;

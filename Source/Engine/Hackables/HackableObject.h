@@ -71,8 +71,6 @@ protected:
 	void onHackerModeEnable(int hackFlags) override;
 	void onHackerModeDisable() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
-	virtual void onSensingEnable(int hackFlags);
-	virtual void onSensingDisable();
 	virtual void registerHackables();
 	virtual cocos2d::Vec2 getButtonOffset();
 
@@ -82,10 +80,15 @@ private:
 	bool hasRelocatedUI;
 	bool isHackable;
 
-	SmartParticles* getSensingParticles();
+	void startParticleFx();
+	void createSensingParticles();
 
 	cocos2d::Node* sensingParticlesNode;
-	SmartParticles* sensingParticles;
+	SmartParticles* hackParticles1;
+	SmartParticles* hackParticles2;
+	SmartParticles* hackParticles3;
+	SmartParticles* hackParticles4;
+	SmartParticles* hackParticles5;
 	cocos2d::Node* uiElements;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;

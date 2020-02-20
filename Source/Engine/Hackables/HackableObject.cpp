@@ -41,7 +41,11 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
 	this->sensingParticlesNode = Node::create();
-	this->sensingParticles = nullptr;
+	this->hackParticles1 = nullptr;
+	this->hackParticles2 = nullptr;
+	this->hackParticles3 = nullptr;
+	this->hackParticles4 = nullptr;
+	this->hackParticles5 = nullptr;
 	this->cachedHackFlags = 0;
 
 	this->hackButton->setVisible(false);
@@ -97,21 +101,6 @@ void HackableObject::initializeListeners()
 				}
 			}
 		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingEnable, [=](EventCustom* eventCustom)
-	{
-		HackableEvents::SensingArgs* args = static_cast<HackableEvents::SensingArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->onSensingEnable(args->hackFlags);
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventSensingDisable, [=](EventCustom*)
-	{
-		this->onSensingDisable();
 	}));
 }
 
@@ -208,37 +197,32 @@ void HackableObject::rebindUIElementsTo(cocos2d::Node* newParent)
 	});
 }
 
-void HackableObject::onSensingEnable(int hackFlags)
-{
-	if (!this->isHackable)
-	{
-		return;
-	}
-
-	for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
-	{
-		if (((*it)->getRequiredHackFlag() & hackFlags) != (*it)->getRequiredHackFlag())
-		{
-			return;
-		}
-	}
-
-	if (!this->hackableList.empty())
-	{
-		this->getSensingParticles()->start();
-	}
-}
-
-void HackableObject::onSensingDisable()
-{
-	if (this->sensingParticles != nullptr)
-	{
-		this->getSensingParticles()->stop(1.5f);
-	}
-}
-
 void HackableObject::registerHackables()
 {
+}
+
+void HackableObject::startParticleFx()
+{
+	if (!this->hackableList.empty())
+	{
+		this->createSensingParticles();
+		this->hackParticles1->start();
+		this->hackParticles2->start();
+		this->hackParticles3->start();
+		this->hackParticles4->start();
+		this->hackParticles5->start();
+
+		this->hackParticles2->accelerate(1.0f);
+		this->hackParticles4->accelerate(1.0f);
+	}
+	else if (this->hackParticles1 != nullptr)
+	{
+		this->hackParticles1->stop(1.5f);
+		this->hackParticles2->stop(1.5f);
+		this->hackParticles3->stop(1.5f);
+		this->hackParticles4->stop(1.5f);
+		this->hackParticles5->stop(1.5f);
+	}
 }
 
 Vec2 HackableObject::getButtonOffset()
@@ -307,6 +291,8 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->hackablesNode->addChild(hackableCode);
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
+
+	this->startParticleFx();
 }
 
 void HackableObject::unregisterCode(HackableCode* hackableCode)
@@ -336,6 +322,8 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 		this->codeList.erase(std::remove(this->codeList.begin(), this->codeList.end(), hackableCode), this->codeList.end());
 
 		this->hackablesNode->removeChild(hackableCode);
+
+		this->startParticleFx();
 	}
 }
 
@@ -349,6 +337,8 @@ void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbil
 	this->hackablesNode->addChild(hackActivatedAbility);
 	this->hackableList.push_back(hackActivatedAbility);
 	this->hackAbilityList.push_back(hackActivatedAbility);
+	
+	this->startParticleFx();
 }
 
 void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAbility)
@@ -362,6 +352,8 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
+	
+	this->startParticleFx();
 }
 
 void HackableObject::enableAllClippy()
@@ -381,14 +373,20 @@ void HackableObject::registerClippy(Clippy* clippy)
 	}
 }
 
-SmartParticles* HackableObject::getSensingParticles()
+void HackableObject::createSensingParticles()
 {
-	if (this->sensingParticles == nullptr)
+	if (this->hackParticles1 == nullptr)
 	{
-		this->sensingParticles = SmartParticles::create(ParticleResources::HackableGlow, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles1 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain1, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles2 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain2, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles3 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain3, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles4 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain4, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+		this->hackParticles5 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain5, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
 
-		this->sensingParticlesNode->addChild(this->sensingParticles);
+		this->sensingParticlesNode->addChild(this->hackParticles1);
+		this->sensingParticlesNode->addChild(this->hackParticles2);
+		this->sensingParticlesNode->addChild(this->hackParticles3);
+		this->sensingParticlesNode->addChild(this->hackParticles4);
+		this->sensingParticlesNode->addChild(this->hackParticles5);
 	}
-	
-	return this->sensingParticles;
 }

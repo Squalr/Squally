@@ -21,16 +21,17 @@ public:
 	static NotificationHud* create();
 
 protected:
+
+	NotificationHud();
+	virtual ~NotificationHud();
+
+	void onEnter() override;
 	void update(float dt) override;
+	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef Hud super;
-	NotificationHud();
-	~NotificationHud();
-
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 	void showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource);
 	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource);

@@ -10,6 +10,7 @@ class CombatHud;
 class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
+class HackerModeWarningHud;
 class InventoryMenu;
 class NotificationHud;
 class PartyMenu;
@@ -37,16 +38,16 @@ public:
 protected:
 	CombatMap(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 		std::vector<CombatData> playerData, std::vector<CombatData> enemyData);
-	~CombatMap();
+	virtual ~CombatMap();
 
-	void update(float dt) override;
-
-private:
-	typedef MapBase super;
 	void onEnter() override;
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void update(float dt) override;
+
+private:
+	typedef MapBase super;
 	void spawnEntities();
 
 	CollectablesMenu* collectablesMenu;
@@ -62,6 +63,7 @@ private:
 	RewardsMenu* rewardsMenu;
 	Timeline* timeline;
 	CombatAIHelper* enemyAIHelper;
+	HackerModeWarningHud* hackerModeWarningHud;
 	NotificationHud* notificationHud;
 
 	FocusTakeOver* entityFocusTakeOver;

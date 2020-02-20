@@ -40,6 +40,7 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Huds/CombatHud.h"
+#include "Scenes/Platformer/Level/Huds/HackerModeWarningHud.h"
 #include "Scenes/Platformer/Level/Huds/NotificationHud.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -81,6 +82,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->defeatMenu = DefeatMenu::create();
 	this->rewardsMenu = RewardsMenu::create();
 	this->enemyAIHelper = CombatAIHelper::create();
+	this->hackerModeWarningHud = HackerModeWarningHud::create();
 	this->notificationHud = NotificationHud::create();
 	this->entityFocusTakeOver = FocusTakeOver::create();
 	this->focusTakeOver = FocusTakeOver::create();
@@ -120,6 +122,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->choicesMenu);
 	this->hud->addChild(this->entityFocusTakeOver);
 	this->hud->addChild(this->focusTakeOver);
+	this->menuHud->addChild(this->hackerModeWarningHud);
 	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
 	this->menuHud->addChild(this->rewardsMenu);
