@@ -38,6 +38,7 @@ Timeline* Timeline::create()
 Timeline::Timeline()
 {
 	this->isTimelinePaused = true;
+	this->isTimelineCinematicPaused = false;
 	this->isTimelineInterrupted = false;
 	this->isCombatComplete = false;
 	this->hasInit = false;
@@ -120,9 +121,19 @@ void Timeline::initializeListeners()
 		this->isTimelinePaused = true;
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimelineCinematic, [=](EventCustom* eventCustom)
+	{
+		this->isTimelineCinematicPaused = true;
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = false;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimelineCinematic, [=](EventCustom* eventCustom)
+	{
+		this->isTimelineCinematicPaused = false;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* eventCustom)
@@ -227,7 +238,7 @@ void Timeline::checkCombatComplete()
 
 void Timeline::updateTimeline(float dt)
 {
-	if (!this->isTimelinePaused && !isCombatComplete)
+	if (!(this->isTimelinePaused || this->isTimelineCinematicPaused) && !isCombatComplete)
 	{
 		this->isTimelineInterrupted = false;
 

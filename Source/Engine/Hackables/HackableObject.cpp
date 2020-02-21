@@ -35,12 +35,13 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->trackedAttributes = std::vector<HackableAttribute*>();
 	this->clippyList = std::vector<Clippy*>();
 	this->uiElements = Node::create();
+	this->uiElementsRain = Node::create();
 	this->hackButton = HackButton::create();
 	this->hackablesNode = Node::create();
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
-	this->sensingParticlesNode = Node::create();
+	this->hackParticlesNode = Node::create();
 	this->hackParticles1 = nullptr;
 	this->hackParticles2 = nullptr;
 	this->hackParticles3 = nullptr;
@@ -51,10 +52,11 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
 
-	this->uiElements->addChild(this->sensingParticlesNode);
 	this->uiElements->addChild(this->hackButton);
 	this->uiElements->addChild(this->timeRemainingBar);
+	this->uiElementsRain->addChild(this->hackParticlesNode);
 	this->addChild(this->hackablesNode);
+	this->addChild(this->uiElementsRain);
 	this->addChild(this->uiElements);
 }
 
@@ -121,6 +123,7 @@ void HackableObject::update(float dt)
 	super::update(dt);
 
 	this->uiElements->setPosition(this->getButtonOffset());
+	this->uiElementsRain->setPosition(this->getRainOffset());
 
 	if (!this->hackableList.empty())
 	{	
@@ -129,6 +132,7 @@ void HackableObject::update(float dt)
 		{
 			// Move the UI elements to the top-most layer
 			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElements));
+			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->uiElementsRain));
 			this->hasRelocatedUI = true;
 		}
 	}
@@ -230,6 +234,11 @@ void HackableObject::startParticleFx()
 		this->hackParticles4->stop(1.5f);
 		this->hackParticles5->stop(1.5f);
 	}
+}
+
+Vec2 HackableObject::getRainOffset()
+{
+	return Vec2::ZERO;
 }
 
 Vec2 HackableObject::getButtonOffset()
@@ -414,10 +423,15 @@ void HackableObject::createSensingParticles()
 		this->hackParticles4 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain4, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
 		this->hackParticles5 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRain5, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
 
-		this->sensingParticlesNode->addChild(this->hackParticles1);
-		this->sensingParticlesNode->addChild(this->hackParticles2);
-		this->sensingParticlesNode->addChild(this->hackParticles3);
-		this->sensingParticlesNode->addChild(this->hackParticles4);
-		this->sensingParticlesNode->addChild(this->hackParticles5);
+		this->hackParticlesNode->addChild(this->hackParticles1);
+		this->hackParticlesNode->addChild(this->hackParticles2);
+		this->hackParticlesNode->addChild(this->hackParticles3);
+		this->hackParticlesNode->addChild(this->hackParticles4);
+		this->hackParticlesNode->addChild(this->hackParticles5);
 	}
+}
+
+Node* HackableObject::getHackParticlesNode()
+{
+	return this->hackParticlesNode;
 }

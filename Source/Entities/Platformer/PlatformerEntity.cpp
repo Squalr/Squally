@@ -104,6 +104,11 @@ void PlatformerEntity::update(float dt)
 	this->optimizationHideOffscreenEntity();
 }
 
+Vec2 PlatformerEntity::getRainOffset()
+{
+	return this->getEntityCenterPoint();
+}
+
 Vec2 PlatformerEntity::getButtonOffset()
 {
 	return this->hackButtonOffset;

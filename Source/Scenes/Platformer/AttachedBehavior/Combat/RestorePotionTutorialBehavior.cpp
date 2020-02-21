@@ -95,16 +95,18 @@ void RestorePotionTutorialBehavior::runTutorial()
 
 	this->hasTutorialRun = true;
 
-	static const float TutorialDelay = RestoreHealth::StartDelay + RestoreHealth::TimeBetweenTicks * 2.0f + 0.1f;
+	static const float TutorialDelay = RestoreHealth::StartDelay /*+ RestoreHealth::TimeBetweenTicks * 2.0f*/ + 0.1f;
 	
-	CombatEvents::TriggerPauseTimeline();
+	CombatEvents::TriggerPauseTimelineCinematic();
 
 	this->runAction(Sequence::create(
 		DelayTime::create(TutorialDelay),
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create(),
+				Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create()
+					->setStringReplacementVariables(Strings::Common_Brackets::create())
+					->setStringReplacementVariables(Strings::Input_Tab::create()),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Left,
@@ -113,12 +115,10 @@ void RestorePotionTutorialBehavior::runTutorial()
 				),
 				[=]()
 				{
-					CombatEvents::TriggerResumeTimeline();
+					CombatEvents::TriggerResumeTimelineCinematic();
 				},
 				SoundResources::Platformer_Entities_Droid_DroidChatter
 			));
-
-			// HackableEvents::TriggerForceHackerModeEnable();
 		}),
 		nullptr
 	));

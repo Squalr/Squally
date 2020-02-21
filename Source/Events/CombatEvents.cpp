@@ -20,7 +20,9 @@ const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken = "EV
 const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_DELT";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_ENTITY_TIMELINE_RESET";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
+const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUSE_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMELINE";
+const std::string CombatEvents::EventResumeTimelineCinematic = "EVENT_COMBAT_RESUME_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_COMBAT_INTERRUPT_TIMELINE";
 const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_COMBAT_DAMAGE_OR_HEALING_DELT";
@@ -117,10 +119,24 @@ void CombatEvents::TriggerPauseTimeline()
 	);
 }
 
+void CombatEvents::TriggerPauseTimelineCinematic()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventPauseTimelineCinematic
+	);
+}
+
 void CombatEvents::TriggerResumeTimeline()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventResumeTimeline
+	);
+}
+
+void CombatEvents::TriggerResumeTimelineCinematic()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventResumeTimelineCinematic
 	);
 }
 

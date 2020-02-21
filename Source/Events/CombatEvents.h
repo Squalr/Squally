@@ -32,7 +32,9 @@ public:
 	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
 	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
+	static const std::string EventPauseTimelineCinematic;
 	static const std::string EventResumeTimeline;
+	static const std::string EventResumeTimelineCinematic;
 	static const std::string EventInterruptTimeline;
 	static const std::string EventRegisterTimelineEventGroup;
 	static const std::string EventDamageOrHealingDelt;
@@ -280,7 +282,9 @@ public:
 	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
 	static void TriggerPauseTimeline();
+	static void TriggerPauseTimelineCinematic();
 	static void TriggerResumeTimeline();
+	static void TriggerResumeTimelineCinematic();
 	static void TriggerInterruptTimeline();
 	static void TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);

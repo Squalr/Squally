@@ -52,6 +52,7 @@ private:
 
 	float timelineWidth;
 	bool isTimelinePaused;
+	bool isTimelineCinematicPaused;
 	bool isTimelineInterrupted;
 	bool isCombatComplete;
 	bool hasInit;

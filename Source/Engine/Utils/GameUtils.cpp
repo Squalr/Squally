@@ -148,42 +148,25 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	{
 		return node;
 	}
-
-	Vec3 newPosition = Vec3::ZERO;
-	Node* previousParent = node->getParent();
+	
+	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
 	unsigned int refIncrement = 0;
 
 	// Remove child from current parent
-	if (previousParent != nullptr)
+	if (node->getParent() != nullptr)
 	{
-		if (retainPosition && newParent != nullptr)
-		{
-			Vec3 screenPosition = previousParent->convertToWorldSpace3(node->getPosition3D());
-			newPosition = newParent->convertToNodeSpace3(screenPosition);
-		}
-		
-		if (node->getParent() != nullptr)
-		{
-			node->retain();
-			node->getParent()->removeChildNoExit(node);
-			node->softRelease();
-		}
-	}
-	else if (retainPosition)
-	{
-		newPosition = node->getPosition3D();
+		node->retain();
+		node->getParent()->removeChildNoExit(node);
+		node->softRelease();
 	}
 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		node->setPosition3D(newPosition);
 		newParent->addChildInsert(node, index, true);
 	}
 	else if (newParent != nullptr)
 	{
-		node->setPosition3D(newPosition);
-
 		if (addAsReentry)
 		{
 			newParent->addChildAsReentry(node);
@@ -192,6 +175,14 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		{
 			newParent->addChild(node);
 		}
+	}
+
+	if (retainPosition && newParent != nullptr)
+	{
+		Vec3 newCoords = GameUtils::getWorldCoords3D(node);
+		Vec3 delta = worldCoords - newCoords;
+
+		node->setPosition3D(node->getPosition3D() + delta);
 	}
 
 	while (node->getReferenceCount() > 1 && refIncrement > 0)

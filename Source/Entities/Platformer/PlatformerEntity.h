@@ -63,6 +63,7 @@ protected:
 	
 	void onEnter() override;
 	void update(float dt) override;
+	cocos2d::Vec2 getRainOffset() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	HackablePreview* createDefaultPreview() override;
 

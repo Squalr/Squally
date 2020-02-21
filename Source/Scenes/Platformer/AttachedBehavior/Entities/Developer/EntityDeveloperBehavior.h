@@ -27,5 +27,6 @@ private:
 	PlatformerEntity* entity;
 	
 	ClickableNode* resurrectButton;
+	ClickableNode* halfHealthButton;
 	ClickableNode* killButton;
 };

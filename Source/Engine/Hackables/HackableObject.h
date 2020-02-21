@@ -38,6 +38,7 @@ public:
 	void unregisterHackAbility(HackActivatedAbility* hackActivatedAbility);
 	void registerClippy(Clippy* clippy);
 	void enableAllClippy();
+	cocos2d::Node* getHackParticlesNode();
 
 	template <class T>
 	T* getClippy()
@@ -73,6 +74,7 @@ protected:
 	void onHackerModeDisable() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
 	virtual void registerHackables();
+	virtual cocos2d::Vec2 getRainOffset();
 	virtual cocos2d::Vec2 getButtonOffset();
 
 private:
@@ -85,13 +87,14 @@ private:
 	void createSensingParticles();
 	void unregisterAllHackables();
 
-	cocos2d::Node* sensingParticlesNode;
+	cocos2d::Node* hackParticlesNode;
 	SmartParticles* hackParticles1;
 	SmartParticles* hackParticles2;
 	SmartParticles* hackParticles3;
 	SmartParticles* hackParticles4;
 	SmartParticles* hackParticles5;
 	cocos2d::Node* uiElements;
+	cocos2d::Node* uiElementsRain;
 	HackButton* hackButton;
 	ProgressBar* timeRemainingBar;
 	cocos2d::Node* hackablesNode;

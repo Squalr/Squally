@@ -254,10 +254,25 @@ void CombatMap::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::AttackSelect:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ItemSelect:
 				{
+					this->entityFocusTakeOver->unfocus();
+					this->focusTakeOver->unfocus();
+					
 					PlatformerEntity* entity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+					std::vector<Node*> focusTargets = std::vector<Node*>();
 
-					this->entityFocusTakeOver->repeatFocus({ entity });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry, this->scrappy });
+					focusTargets.push_back(entity);
+
+					for (auto next : this->timeline->getEntries())
+					{
+						if (next->getEntity() != entity)
+						{
+							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+						}
+					}
+
+					this->entityFocusTakeOver->repeatFocus(focusTargets);
+					
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -275,6 +290,9 @@ void CombatMap::initializeListeners()
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget:
 				case CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget:
 				{
+					this->entityFocusTakeOver->unfocus();
+					this->focusTakeOver->unfocus();
+
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
 					for (auto entry : this->timeline->getEntries())
@@ -295,6 +313,10 @@ void CombatMap::initializeListeners()
 							entity->getAnimations()->setOpacity(255);
 							focusTargets.push_back(entity);
 						}
+						else
+						{
+							focusTargets.push_back(entity->getHackParticlesNode());
+						}
 					}
 
 					std::sort(focusTargets.begin(), focusTargets.end(), [](Node* a, Node* b)
@@ -303,7 +325,7 @@ void CombatMap::initializeListeners()
 					});
 
 					this->entityFocusTakeOver->repeatFocus({ focusTargets });
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu,  combatArgs->entry, this->scrappy });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
 					break;
 				}
 				case CombatEvents::MenuStateArgs::CurrentMenu::Closed:
