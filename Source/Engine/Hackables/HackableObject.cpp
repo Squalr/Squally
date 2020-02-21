@@ -81,6 +81,13 @@ void HackableObject::onEnterTransitionDidFinish()
 	this->registerHackables();
 }
 
+void HackableObject::onExit()
+{
+	super::onExit();
+
+	this->unregisterAllHackables();
+}
+
 void HackableObject::initializeListeners()
 {
 	super::initializeListeners();
@@ -258,6 +265,30 @@ void HackableObject::registerData(HackableData* hackableData)
 	this->hackablesNode->addChild(hackableData);
 	this->hackableList.push_back(hackableData);
 	this->dataList.push_back(hackableData);
+}
+
+void HackableObject::unregisterAllHackables()
+{
+	std::vector<HackableCode*> codeList = this->codeList;
+
+	for (auto next : codeList)
+	{
+		this->unregisterCode(next);
+	}
+
+	std::vector<HackableData*> dataList = this->dataList;
+
+	for (auto next : dataList)
+	{
+		this->unregisterData(next);
+	}
+
+	std::vector<HackActivatedAbility*> hackAbilityList = this->hackAbilityList;
+
+	for (auto next : hackAbilityList)
+	{
+		this->unregisterHackAbility(next);
+	}
 }
 
 void HackableObject::unregisterData(HackableData* hackableData)

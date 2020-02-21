@@ -32,6 +32,13 @@ void Buff::onEnter()
 	this->registerHackables();
 }
 
+void Buff::onExit()
+{
+	super::onExit();
+	
+	this->unregisterHackables();
+}
+
 void Buff::initializeListeners()
 {
 	super::initializeListeners();

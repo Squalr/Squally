@@ -32,6 +32,7 @@ protected:
 	virtual ~Buff();
 
 	void onEnter() override;
+	void onExit() override;
 	void initializeListeners() override;
 	virtual void registerHackables();
 	void registerClippy(Clippy* clippy);
