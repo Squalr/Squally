@@ -17,7 +17,7 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
-#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -48,7 +48,7 @@ Timeline::Timeline()
 	this->eventsNode = Node::create();
 	this->entriesNode = Node::create();
 	this->timelineEntries = std::vector<TimelineEntry*>();
-	this->timelineEvents = std::vector<TimelineEvent*>();
+	this->timelineEventGroups = std::vector<TimelineEventGroup*>();
 	this->timelineWidth = this->swordFill->getContentSize().width;
 	this->waitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Wait::create());
 	this->castLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Platformer_Combat_Cast::create());
@@ -100,7 +100,7 @@ void Timeline::initializeListeners()
 		this->eventsNode->removeAllChildren();
 		this->entriesNode->removeAllChildren();
 		this->timelineEntries.clear();
-		this->timelineEvents.clear();
+		this->timelineEventGroups.clear();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectCastTarget, [=](EventCustom* eventCustom)
@@ -130,13 +130,13 @@ void Timeline::initializeListeners()
 		this->isTimelineInterrupted = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRegisterTimelineEvent, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRegisterTimelineEventGroup, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::RegisterTimelineEventArgs* args = static_cast<CombatEvents::RegisterTimelineEventArgs*>(eventCustom->getUserData());
+		CombatEvents::RegisterTimelineEventGroupArgs* args = static_cast<CombatEvents::RegisterTimelineEventGroupArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr)
 		{
-			this->registerTimelineEvent(args->event);
+			this->registerTimelineEventGroup(args->eventGroup);
 		}
 	}));
 
@@ -251,13 +251,13 @@ void Timeline::updateTimeline(float dt)
 					entry->addTimeWithoutActions(dt);
 				}
 
-				for (auto event : this->timelineEvents)
+				for (auto eventGroup : this->timelineEventGroups)
 				{
-					if (event->getOwner() == entry->getEntity())
+					if (eventGroup->getOwner() == entry->getEntity())
 					{
-						if (event->tryUpdateEvent(currentTime, entry->getProgress()))
+						if (eventGroup->processEvents(currentTime, entry->getProgress()))
 						{
-							this->unregisterTimelineEvent(event);
+							this->unregisterTimelineEventGroup(eventGroup);
 						}
 					}
 				}
@@ -323,35 +323,34 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFir
 	return entries;
 }
 
-void Timeline::registerTimelineEvent(TimelineEvent* timelineEvent)
+void Timeline::registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup)
 {
-	if (timelineEvent == nullptr)
+	if (timelineEventGroup == nullptr)
 	{
 		return;
 	}
 
 	for (auto next : this->timelineEntries)
 	{
-		if (next->getEntity() == timelineEvent->getOwner())
+		if (next->getEntity() == timelineEventGroup->getOwner())
 		{
-			timelineEvent->offsetByTimelineTime(next->getProgress());
+			timelineEventGroup->offsetByTimelineTime(next->getProgress());
+			timelineEventGroup->setPositions(this->timelineWidth);
 		}
 	}
 
-	timelineEvent->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * timelineEvent->getTime());
+	this->timelineEventGroups.push_back(timelineEventGroup);
 
-	this->timelineEvents.push_back(timelineEvent);
-
-	this->eventsNode->addChild(timelineEvent);
+	this->eventsNode->addChild(timelineEventGroup);
 }
 
-void Timeline::unregisterTimelineEvent(TimelineEvent* timelineEvent)
+void Timeline::unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup)
 {
-	if (timelineEvent == nullptr)
+	if (timelineEventGroup == nullptr)
 	{
 		return;
 	}
 
-	this->timelineEvents.erase(std::remove(this->timelineEvents.begin(), this->timelineEvents.end(), timelineEvent), this->timelineEvents.end());
-	this->eventsNode->removeChild(timelineEvent);
+	this->timelineEventGroups.erase(std::remove(this->timelineEventGroups.begin(), this->timelineEventGroups.end(), timelineEventGroup), this->timelineEventGroups.end());
+	this->eventsNode->removeChild(timelineEventGroup);
 }

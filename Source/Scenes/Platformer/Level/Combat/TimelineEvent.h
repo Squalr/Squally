@@ -14,9 +14,11 @@ class TimelineEvent : public SmartNode
 public:
 	static TimelineEvent* create(PlatformerEntity* owner, cocos2d::Sprite* emblem, float offsetTime, std::function<void()> timelineEvent);
 
-	void offsetByTimelineTime(float initialTime);
 	PlatformerEntity* getOwner();
+	void setPositions(float timelineWidth);
+	void offsetByTimelineTime(float initialTime);
 	float getTime();
+	void setTime(float time);
 	bool tryUpdateEvent(float previousTime, float currentTime);
 	bool isPlayerEntry();
 

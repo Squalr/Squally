@@ -11,7 +11,7 @@ class LocalizedLabel;
 class PlatformerEntity;
 class ProgressBar;
 class TimelineEntry;
-class TimelineEvent;
+class TimelineEventGroup;
 
 class Timeline : public SmartNode
 {
@@ -38,8 +38,8 @@ private:
 
 	void checkCombatComplete();
 	void updateTimeline(float dt);
-	void registerTimelineEvent(TimelineEvent* timelineEvent);
-	void unregisterTimelineEvent(TimelineEvent* timelineEvent);
+	void registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
+	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 
 	ProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;
@@ -48,7 +48,7 @@ private:
 	LocalizedLabel* waitLabel;
 	LocalizedLabel* castLabel;
 	std::vector<TimelineEntry*> timelineEntries;
-	std::vector<TimelineEvent*> timelineEvents;
+	std::vector<TimelineEventGroup*> timelineEventGroups;
 
 	float timelineWidth;
 	bool isTimelinePaused;

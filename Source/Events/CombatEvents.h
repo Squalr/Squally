@@ -12,6 +12,7 @@ class Buff;
 class PlatformerEntity;
 class TimelineEntry;
 class TimelineEvent;
+class TimelineEventGroup;
 
 class CombatEvents
 {
@@ -33,7 +34,7 @@ public:
 	static const std::string EventPauseTimeline;
 	static const std::string EventResumeTimeline;
 	static const std::string EventInterruptTimeline;
-	static const std::string EventRegisterTimelineEvent;
+	static const std::string EventRegisterTimelineEventGroup;
 	static const std::string EventDamageOrHealingDelt;
 	static const std::string EventDamageOrHealing;
 	static const std::string EventCastBlocked;
@@ -260,11 +261,12 @@ public:
 			bool handled;
 	};
 
-	struct RegisterTimelineEventArgs
+	struct RegisterTimelineEventGroupArgs
 	{
-		TimelineEvent* event;
+		TimelineEventGroup* eventGroup;
 
-		RegisterTimelineEventArgs(TimelineEvent* event) : event(event) { }
+		RegisterTimelineEventGroupArgs() : eventGroup(nullptr) { }
+		RegisterTimelineEventGroupArgs(TimelineEventGroup* eventGroup) : eventGroup(eventGroup) { }
 	};
 
 	static void TriggerSpawn(SpawnArgs args);
@@ -280,7 +282,7 @@ public:
 	static void TriggerPauseTimeline();
 	static void TriggerResumeTimeline();
 	static void TriggerInterruptTimeline();
-	static void TriggerRegisterTimelineEvent(RegisterTimelineEventArgs args);
+	static void TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
 	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);

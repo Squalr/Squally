@@ -20,6 +20,7 @@
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -36,7 +37,7 @@ const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-
 const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
 const float RestoreHealth::TimeBetweenTicks = 0.5f;
 const int RestoreHealth::HackTicks = 5;
-const float RestoreHealth::StartDelay = 1.0f;
+const float RestoreHealth::StartDelay = 0.15f;
 
 RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 {
@@ -132,21 +133,29 @@ void RestoreHealth::registerHackables()
 
 void RestoreHealth::runRestoreHealth()
 {
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f);
 	this->impactSound->play();
+
+	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		CombatEvents::TriggerRegisterTimelineEvent(CombatEvents::RegisterTimelineEventArgs(
-			TimelineEvent::create(this->target, Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2), RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
+		timelineEvents.push_back(TimelineEvent::create(
+				this->target,
+				Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2),
+				RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
 			{
+				this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
 				this->runRestoreTick();
 			})
-		));
+		);
 	}
-	
-	// this->healEffect->runAction(FadeTo::create(0.25f, 0));
-	// this->removeBuff();
+
+	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
+		TimelineEventGroup::create(timelineEvents, this->target, [=]()
+		{
+			this->removeBuff();
+		})
+	));
 }
 
 NO_OPTIMIZE void RestoreHealth::runRestoreTick()

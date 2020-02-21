@@ -22,7 +22,7 @@ const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_ENTITY_
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMELINE";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_COMBAT_INTERRUPT_TIMELINE";
-const std::string CombatEvents::EventRegisterTimelineEvent = "EVENT_REGISTER_TIMELINE_EVENT";
+const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_COMBAT_DAMAGE_OR_HEALING_DELT";
 const std::string CombatEvents::EventDamageOrHealing = "EVENT_COMBAT_DAMAGE_OR_HEALING";
 const std::string CombatEvents::EventCastBlocked = "EVENT_COMBAT_CAST_BLOCKED";
@@ -131,10 +131,10 @@ void CombatEvents::TriggerInterruptTimeline()
 	);
 }
 
-void CombatEvents::TriggerRegisterTimelineEvent(RegisterTimelineEventArgs args)
+void CombatEvents::TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventRegisterTimelineEvent,
+		CombatEvents::EventRegisterTimelineEventGroup,
 		&args
 	);
 }

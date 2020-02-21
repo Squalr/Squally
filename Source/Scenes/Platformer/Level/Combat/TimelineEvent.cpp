@@ -68,9 +68,9 @@ void TimelineEvent::initializePositions()
 	}
 }
 
-void TimelineEvent::offsetByTimelineTime(float initialTime)
+void TimelineEvent::setPositions(float timelineWidth)
 {
-	this->time = MathUtils::wrappingNormalize(this->time * TimelineEntry::BaseSpeedMultiplier + initialTime, 0.0f, 1.0f);
+	this->setPositionX(-timelineWidth / 2.0f + timelineWidth * this->getTime());
 }
 
 PlatformerEntity* TimelineEvent::getOwner()
@@ -78,9 +78,19 @@ PlatformerEntity* TimelineEvent::getOwner()
 	return this->owner;
 }
 
+void TimelineEvent::offsetByTimelineTime(float initialTime)
+{
+	this->setTime(MathUtils::wrappingNormalize(this->getTime() * TimelineEntry::BaseSpeedMultiplier + initialTime, 0.0f, 1.0f));
+}
+
 float TimelineEvent::getTime()
 {
 	return this->time;
+}
+
+void TimelineEvent::setTime(float time)
+{
+	this->time = time;
 }
 
 bool TimelineEvent::tryUpdateEvent(float previousTime, float currentTime)
