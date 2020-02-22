@@ -14,7 +14,7 @@ public:
 
 protected:
 	GoblinShamanCombatBehavior(GameObject* owner);
-	~GoblinShamanCombatBehavior();
+	virtual ~GoblinShamanCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

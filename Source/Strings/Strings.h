@@ -17004,6 +17004,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_Undead() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_Misc_TrainingDummy : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_Misc_TrainingDummy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_Misc_TrainingDummy();
+		virtual ~Platformer_Entities_Names_Enemies_Misc_TrainingDummy() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_SeaSharpCaverns_Barbarian : public LocalizedString
 	{
 	public:

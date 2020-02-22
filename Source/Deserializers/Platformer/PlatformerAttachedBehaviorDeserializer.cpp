@@ -84,6 +84,9 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	// Helpers
 	this->attachedBehaviorDeserializers[GuanoCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoCombatBehavior::create(owner); };
 	
+	// Misc
+	this->attachedBehaviorDeserializers[TrainingDummyCombatBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingDummyCombatBehavior::create(owner); };
+
 	// Endian forest
 	this->attachedBehaviorDeserializers[LycanBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LycanBehavior::create(owner); };
 	

@@ -14,7 +14,7 @@ public:
 
 protected:
 	OrcSwordsmanCombatBehavior(GameObject* owner);
-	~OrcSwordsmanCombatBehavior();
+	virtual ~OrcSwordsmanCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

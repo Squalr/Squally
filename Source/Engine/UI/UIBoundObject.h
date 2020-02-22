@@ -12,8 +12,13 @@ public:
 	cocos2d::Node* getOriginalParent();
 	static cocos2d::Vec3 getRealCoords(UIBoundObject* uiBoundObject);
 	static float getRealScale(UIBoundObject* uiBoundObject);
+	void pushRealPosition();
+	void popRealPosition();
 
 protected:
+	UIBoundObject(cocos2d::Node* referencedObject);
+	virtual ~UIBoundObject();
+
 	void onEnter() override;
 	void initializeListeners() override;
 	void visit(cocos2d::Renderer* renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
@@ -21,8 +26,6 @@ protected:
 private:
 	typedef SmartNode super;
 
-	UIBoundObject(cocos2d::Node* referencedObject);
-	~UIBoundObject();
 	void scheduleUpdateTask();
 
 	static unsigned long long TaskId;

@@ -14,7 +14,7 @@ public:
 
 protected:
 	GoblinWarriorPigCombatBehavior(GameObject* owner);
-	~GoblinWarriorPigCombatBehavior();
+	virtual ~GoblinWarriorPigCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

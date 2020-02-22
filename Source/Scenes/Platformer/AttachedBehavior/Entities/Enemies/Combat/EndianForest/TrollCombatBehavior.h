@@ -14,7 +14,7 @@ public:
 
 protected:
 	TrollCombatBehavior(GameObject* owner);
-	~TrollCombatBehavior();
+	virtual ~TrollCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

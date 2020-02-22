@@ -14,7 +14,7 @@ public:
 
 protected:
 	GoblinGruntBoarCombatBehavior(GameObject* owner);
-	~GoblinGruntBoarCombatBehavior();
+	virtual ~GoblinGruntBoarCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

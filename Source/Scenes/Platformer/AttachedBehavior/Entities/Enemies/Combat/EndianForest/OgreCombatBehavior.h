@@ -14,7 +14,7 @@ public:
 
 protected:
 	OgreCombatBehavior(GameObject* owner);
-	~OgreCombatBehavior();
+	virtual ~OgreCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

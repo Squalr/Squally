@@ -179,10 +179,17 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 
 	if (retainPosition && newParent != nullptr)
 	{
+		node->setPosition3D(Vec3::ZERO);
+
 		Vec3 newCoords = GameUtils::getWorldCoords3D(node);
 		Vec3 delta = worldCoords - newCoords;
 
-		node->setPosition3D(node->getPosition3D() + delta);
+		node->setPosition3D(delta);
+
+		if (GameUtils::getWorldCoords3D(node).distance(worldCoords) > 1.0f)
+		{
+			int pissant = 420;
+		}
 	}
 
 	while (node->getReferenceCount() > 1 && refIncrement > 0)
@@ -294,16 +301,18 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 	// Special conditions for a ui-bound object
 	if (uiBoundObjectParent != nullptr)
 	{
-		Vec3 relativeCoords = uiBoundObjectParent->convertToWorldSpace3(resultCoords);
-		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec3 fixedCoords = realCoords + Vec3(relativeCoords.x, -resultRect.size.height / 2.0f, relativeCoords.z);
-
-		return fixedCoords;
+		uiBoundObjectParent->pushRealPosition();
 	}
 
 	if (parent != nullptr)
 	{
 		resultCoords = parent->convertToWorldSpace3(resultCoords);
+	}
+
+	// Special conditions for a ui-bound object
+	if (uiBoundObjectParent != nullptr)
+	{
+		uiBoundObjectParent->popRealPosition();
 	}
 
 	return resultCoords;

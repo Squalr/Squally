@@ -14,7 +14,7 @@ public:
 
 protected:
 	OrcBomberCombatBehavior(GameObject* owner);
-	~OrcBomberCombatBehavior();
+	virtual ~OrcBomberCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

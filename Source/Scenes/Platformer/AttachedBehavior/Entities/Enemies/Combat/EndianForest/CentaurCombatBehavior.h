@@ -14,7 +14,7 @@ public:
 
 protected:
 	CentaurCombatBehavior(GameObject* owner);
-	~CentaurCombatBehavior();
+	virtual ~CentaurCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

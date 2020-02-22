@@ -14,7 +14,7 @@ public:
 
 protected:
 	KingGroggCombatBehavior(GameObject* owner);
-	~KingGroggCombatBehavior();
+	virtual ~KingGroggCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

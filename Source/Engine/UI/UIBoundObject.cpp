@@ -140,6 +140,21 @@ cocos2d::Node* UIBoundObject::getOriginalParent()
     return this->originalParent;
 }
 
+void UIBoundObject::pushRealPosition()
+{
+    this->originalCoords = this->referencedObject->getPosition3D();
+    this->originalScale = this->referencedObject->getScale();
+    
+    this->referencedObject->setPosition3D(this->realCoords);
+    this->referencedObject->setScale(this->realScale);
+}
+
+void UIBoundObject::popRealPosition()
+{
+    this->referencedObject->setPosition3D(this->originalCoords);
+    this->referencedObject->setScale(this->originalScale);
+}
+
 void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint32_t parentFlags)
 {
     if (this->referencedObject == nullptr)
@@ -147,14 +162,9 @@ void UIBoundObject::visit(Renderer *renderer, const Mat4& parentTransform, uint3
         return;
     }
 
-    this->originalCoords = this->referencedObject->getPosition3D();
-    this->originalScale = this->referencedObject->getScale();
-    
-    this->referencedObject->setPosition3D(this->realCoords);
-    this->referencedObject->setScale(this->realScale);
+    this->pushRealPosition();
 
 	super::visit(renderer, parentTransform, parentFlags);
 
-    this->referencedObject->setPosition3D(this->originalCoords);
-    this->referencedObject->setScale(this->originalScale);
+    this->popRealPosition();
 }

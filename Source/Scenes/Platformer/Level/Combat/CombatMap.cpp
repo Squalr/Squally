@@ -266,7 +266,7 @@ void CombatMap::initializeListeners()
 					{
 						if (next->getEntity() != entity)
 						{
-							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+							// focusTargets.push_back(next->getEntity()->getHackParticlesNode());
 						}
 					}
 
@@ -315,7 +315,7 @@ void CombatMap::initializeListeners()
 						}
 						else
 						{
-							focusTargets.push_back(entity->getHackParticlesNode());
+							// focusTargets.push_back(entity->getHackParticlesNode());
 						}
 					}
 

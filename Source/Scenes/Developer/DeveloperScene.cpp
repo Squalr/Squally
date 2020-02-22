@@ -161,7 +161,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
 		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKeyGuano));
 		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKeySnowman));
-		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 		NavigationEvents::LoadScene(map);
 	});

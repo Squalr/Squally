@@ -30,7 +30,7 @@ CameraTarget::CameraTarget(ValueMap& properties) : super(properties)
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
 
-	this->debugDraw->drawSolidRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F::GREEN);
+	this->debugDraw->drawRect(-Vec2(size / 2.0f), Vec2(size / 2.0f), Color4F::BLUE);
 
 	this->addChild(this->debugDraw);
 }

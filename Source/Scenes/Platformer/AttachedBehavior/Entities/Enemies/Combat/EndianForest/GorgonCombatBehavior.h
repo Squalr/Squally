@@ -14,7 +14,7 @@ public:
 
 protected:
 	GorgonCombatBehavior(GameObject* owner);
-	~GorgonCombatBehavior();
+	virtual ~GorgonCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

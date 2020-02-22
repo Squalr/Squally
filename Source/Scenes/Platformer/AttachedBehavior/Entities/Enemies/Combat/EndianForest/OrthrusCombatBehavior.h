@@ -14,7 +14,7 @@ public:
 
 protected:
 	OrthrusCombatBehavior(GameObject* owner);
-	~OrthrusCombatBehavior();
+	virtual ~OrthrusCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
