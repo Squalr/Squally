@@ -23,6 +23,7 @@ public:
 	};
 
 	BuffData getBuffData();
+	std::string getIdentifier();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
 	void removeBuff();
 

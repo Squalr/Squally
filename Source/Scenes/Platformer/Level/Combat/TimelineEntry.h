@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class EntityCombatBehaviorBase;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -58,6 +59,7 @@ private:
 
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
+	EntityCombatBehaviorBase* combatBehavior;
 	TimelineEntry* target;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
@@ -66,7 +68,6 @@ private:
 	cocos2d::Node* orphanedAttackCache;
 
 	int spawnIndex;
-	float speed;
 	float interruptBonus;
 	float progress;
 	bool isCasting;

@@ -133,18 +133,24 @@ void TrainingHeal::registerHackables()
 
 void TrainingHeal::runTrainingHeal()
 {
-	this->impactSound->play();
-
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Heal);
+
+		icon->setScale(0.5f);
+
 		timelineEvents.push_back(TimelineEvent::create(
 				this->target,
-				Sprite::create(UIResources::Menus_Icons_Heal),
+				icon,
 				TrainingHeal::TimeBetweenTicks * float(healIndex) + TrainingHeal::StartDelay, [=]()
 			{
-				this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				if (!this->healEffect->isPlayingAnimation())
+				{
+					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				}
+				
 				this->runRestoreTick();
 			})
 		);
@@ -166,14 +172,14 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	ASM(mov ZDI, 0)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(add ZDI, 200);
+	ASM(add ZDI, 256);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(incrementAmount, ZDI);
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -200, 200);
+	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
 	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));

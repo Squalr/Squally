@@ -49,5 +49,7 @@ private:
 
 	int currentIndex;
 	bool focused;
+	bool isTimelineCinematicPaused;
+	
 	std::function<void()> backCallback;
 };

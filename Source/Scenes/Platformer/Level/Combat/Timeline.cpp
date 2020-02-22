@@ -121,14 +121,14 @@ void Timeline::initializeListeners()
 		this->isTimelinePaused = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimelineCinematic, [=](EventCustom* eventCustom)
-	{
-		this->isTimelineCinematicPaused = true;
-	}));
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = false;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimelineCinematic, [=](EventCustom* eventCustom)
+	{
+		this->isTimelineCinematicPaused = true;
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimelineCinematic, [=](EventCustom* eventCustom)

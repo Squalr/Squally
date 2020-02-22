@@ -6279,6 +6279,21 @@ namespace Strings
 		virtual ~Menus_Hacking_ClippyHelp_SpeedGainMul() = default;
 	};
 
+	class Menus_Hacking_ClippyHelp_TrainingHealAdd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_TrainingHealAdd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_TrainingHealAdd();
+		virtual ~Menus_Hacking_ClippyHelp_TrainingHealAdd() = default;
+	};
+
 	class Menus_Hacking_ClippyHelp_WindNop : public LocalizedString
 	{
 	public:

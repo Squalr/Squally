@@ -126,6 +126,11 @@ Buff::BuffData Buff::getBuffData()
 	return this->buffData;
 }
 
+std::string Buff::getIdentifier()
+{
+	return this->buffData.uniqueId;
+}
+
 void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
 {
 	this->removeBuffCallback = removeBuffCallback;

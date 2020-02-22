@@ -30,7 +30,6 @@ SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(pr
 	this->distanceMultiplier = 1.0f;
 	this->customMultiplier = 1.0f;
 	this->onFadeOutCallback = nullptr;
-	this->cachedCoords = Vec2::ZERO;
 	this->destroyOnFadeOut = false;
 }
 
@@ -260,14 +259,6 @@ void SoundBase::updateDistanceFade()
 		case AudioEngine::AudioState::PLAYING:
 		{
 			Vec2 thisCoords = GameUtils::getWorldCoords(this);
-
-			if (thisCoords == this->cachedCoords)
-			{
-				return;
-			}
-
-			this->cachedCoords = thisCoords;
-			
 			Vec2 cameraPosition = GameCamera::getInstance()->getCameraPosition();
 			Size dropOffDistance = Director::getInstance()->getVisibleSize() + Size(480.0f, 480.0f);
 

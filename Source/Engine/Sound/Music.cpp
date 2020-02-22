@@ -111,7 +111,6 @@ void Music::copyStateFrom(Music* music)
 	this->distanceMultiplier = music->distanceMultiplier;
 	this->customMultiplier = music->customMultiplier;
 	this->onFadeOutCallback = music->onFadeOutCallback;
-	this->cachedCoords = music->cachedCoords;
 	this->destroyOnFadeOut = music->destroyOnFadeOut;
 }
 
@@ -125,7 +124,6 @@ void Music::clearState()
 	this->distanceMultiplier = 1.0f;
 	this->customMultiplier = 1.0f;
 	this->onFadeOutCallback = nullptr;
-	this->cachedCoords = Vec2::ZERO;
 	this->destroyOnFadeOut = false;
 }
 

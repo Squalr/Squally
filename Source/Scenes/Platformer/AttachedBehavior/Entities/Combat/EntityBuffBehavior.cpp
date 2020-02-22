@@ -40,7 +40,7 @@ void EntityBuffBehavior::onLoad()
 
 void EntityBuffBehavior::applyBuff(Buff* buff)
 {
-	if (buff == nullptr)
+	if (this->entity == nullptr || buff == nullptr)
 	{
 		return;
 	}
@@ -51,6 +51,7 @@ void EntityBuffBehavior::applyBuff(Buff* buff)
 	}
 	
 	buff->setRemoveBuffCallback([=]() { this->removeBuff(buff); });
+	buff->setPosition(this->entity->getEntityCenterPoint());
 	this->buffs.push_back(buff);
 	this->addChild(buff);
 

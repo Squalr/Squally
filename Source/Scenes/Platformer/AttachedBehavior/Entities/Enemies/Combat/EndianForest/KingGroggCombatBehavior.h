@@ -1,11 +1,8 @@
 #pragma once
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
 
-class PlatformerAttack;
-class PlatformerEntity;
-
-class KingGroggCombatBehavior : public AttachedBehavior
+class KingGroggCombatBehavior : public EntityCombatBehaviorBase
 {
 public:
 	static KingGroggCombatBehavior* create(GameObject* owner);
@@ -20,7 +17,5 @@ protected:
 	void onLoad() override;
 
 private:
-	typedef AttachedBehavior super;
-
-	PlatformerEntity* entity;
+	typedef EntityCombatBehaviorBase super;
 };

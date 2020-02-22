@@ -144,7 +144,11 @@ void RestoreHealth::runRestoreHealth()
 				Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2),
 				RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
 			{
-				this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				if (!this->healEffect->isPlayingAnimation())
+				{
+					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				}
+				
 				this->runRestoreTick();
 			})
 		);

@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
 
 #include "Resources/UIResources.h"
 
@@ -48,8 +49,8 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
 	this->spawnIndex = spawnIndex;
+	this->combatBehavior = nullptr;
 
-	this->speed = 1.0f;
 	this->interruptBonus = 0.0f;
 	this->progress = 0.0f;
 
@@ -73,6 +74,14 @@ void TimelineEntry::onEnter()
 	this->isCasting = false;
 	this->orphanedAttackCache->removeAllChildren();
 	this->skull->setVisible(false);
+
+	if (this->entity != nullptr)
+	{
+		this->entity->watchForAttachedBehavior<EntityCombatBehaviorBase>([=](EntityCombatBehaviorBase* combatBehavior)
+		{
+			this->combatBehavior = combatBehavior;
+		});
+	}
 
 	this->scheduleUpdate();
 }
@@ -235,7 +244,9 @@ void TimelineEntry::setProgress(float progress)
 
 void TimelineEntry::addTimeWithoutActions(float dt)
 {
-	this->progress += (dt * (this->speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
+	float speed = this->combatBehavior == nullptr ? 1.0f : this->combatBehavior->getTimelineSpeed();
+
+	this->progress += (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
 }
 
 void TimelineEntry::addTime(float dt)

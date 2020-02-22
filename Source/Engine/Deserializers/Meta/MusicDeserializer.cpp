@@ -40,6 +40,6 @@ void MusicDeserializer::deserializeProperties(GameObject* owner, ValueMap proper
 	{
 		owner->addChild(track);
 
-		track->play(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.0f)).asFloat());
+		track->play(GameUtils::getKeyOrDefault(properties, MusicDeserializer::MapKeyDelayProperty, Value(0.5f)).asFloat());
 	}));
 }

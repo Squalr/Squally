@@ -85,7 +85,7 @@ void Track::push(float delay)
 	}
 	
 	this->runAction(Sequence::create(
-		DelayTime::create(delay),
+		DelayTime::create(delay + 0.5f),
 		CallFunc::create([=]()
 		{
 			SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));
@@ -102,7 +102,7 @@ void Track::play(float delay)
 	}
 	
 	this->runAction(Sequence::create(
-		DelayTime::create(delay),
+		DelayTime::create(delay + 0.5f),
 		CallFunc::create([=]()
 		{
 			SoundEvents::TriggerTrackPlayed(SoundEvents::TrackPlayedArgs(this));

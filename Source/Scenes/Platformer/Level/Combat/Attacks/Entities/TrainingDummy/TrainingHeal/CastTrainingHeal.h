@@ -21,6 +21,8 @@ protected:
 	CastTrainingHeal(float attackDuration, float recoverDuration, float priority);
 	virtual ~CastTrainingHeal();
 
+	void initializePositions() override;
+
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 

@@ -40,7 +40,6 @@ protected:
 	bool isFading;
 	bool destroyOnFadeOut;
 	std::function<void()> onFadeOutCallback;
-	cocos2d::Vec2 cachedCoords;
 	
 	static const int INVALID_ID;
 

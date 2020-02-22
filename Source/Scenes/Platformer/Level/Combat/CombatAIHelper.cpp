@@ -343,7 +343,9 @@ void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const s
 
 	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
 	{
-		return attack->getAttackType() == PlatformerAttack::AttackType::Damage || attack->getAttackType() == PlatformerAttack::AttackType::Debuff;
+		return attack->getAttackType() == PlatformerAttack::AttackType::Damage
+			|| attack->getAttackType() == PlatformerAttack::AttackType::Debuff
+			|| attack->getAttackType() == PlatformerAttack::AttackType::Buff;
 	});
 
 	this->selectedAttack = attackProbabilities.getRandomAttack();

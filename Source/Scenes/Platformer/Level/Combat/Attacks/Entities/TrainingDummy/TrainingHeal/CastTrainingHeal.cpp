@@ -26,7 +26,7 @@ CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDu
 	return instance;
 }
 
-CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
+CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, float priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
@@ -39,6 +39,13 @@ CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, 
 
 CastTrainingHeal::~CastTrainingHeal()
 {
+}
+
+void CastTrainingHeal::initializePositions()
+{
+	super::initializePositions();
+
+	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
 PlatformerAttack* CastTrainingHeal::cloneInternal()
@@ -60,15 +67,23 @@ void CastTrainingHeal::performAttack(PlatformerEntity* owner, PlatformerEntity* 
 {
 	super::performAttack(owner, target);
 
+	this->healSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 	
-	const int Ticks = 5;
+	const int Ticks = 7;
 
 	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(TrainingHeal::create(owner, target, Ticks));
 	});
+
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
 }
 
 void CastTrainingHeal::onCleanup()
