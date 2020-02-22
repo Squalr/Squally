@@ -47,6 +47,7 @@ private:
 	cocos2d::Animate* forwardsAnimation;
 	cocos2d::Animate* backwardsAnimation;
 	std::string defaultSprite;
+	bool hasPlayingAnimation;
 	int repeatIndex;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;

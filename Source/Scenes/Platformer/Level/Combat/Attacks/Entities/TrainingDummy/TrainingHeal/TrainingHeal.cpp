@@ -108,11 +108,11 @@ void TrainingHeal::registerHackables()
 			LOCAL_FUNC_ID_RESTORE,
 			HackableCode::HackableCodeInfo(
 				TrainingHeal::TrainingHealIdentifier,
-				Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
-				UIResources::Menus_Icons_ArrowUp,
+				Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth::create(),
+				UIResources::Menus_Icons_Heal,
 				TrainingHealGenericPreview::create(),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi::create() }
 				},
 				int(HackFlags::None),
 				(float(TrainingHeal::HackTicks) * TrainingHeal::TimeBetweenTicks) + 0.1f,

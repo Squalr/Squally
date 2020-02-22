@@ -6174,6 +6174,36 @@ namespace Strings
 		virtual ~Menus_HackingTutorials_Disclaimer() = default;
 	};
 
+	class Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth();
+		virtual ~Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth() = default;
+	};
+
+	class Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_WeakMinded : public LocalizedString
 	{
 	public:

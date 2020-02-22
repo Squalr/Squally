@@ -266,11 +266,11 @@ void CombatMap::initializeListeners()
 					{
 						if (next->getEntity() != entity)
 						{
-							// focusTargets.push_back(next->getEntity()->getHackParticlesNode());
+							focusTargets.push_back(next->getEntity()->getHackParticlesNode());
 						}
 					}
 
-					this->entityFocusTakeOver->repeatFocus(focusTargets);
+					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
 					
 					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
 
@@ -315,7 +315,7 @@ void CombatMap::initializeListeners()
 						}
 						else
 						{
-							// focusTargets.push_back(entity->getHackParticlesNode());
+							focusTargets.push_back(entity->getHackParticlesNode());
 						}
 					}
 
@@ -324,7 +324,7 @@ void CombatMap::initializeListeners()
 						return a->getPositionZ() < b->getPositionZ();
 					});
 
-					this->entityFocusTakeOver->repeatFocus({ focusTargets });
+					this->entityFocusTakeOver->positionFreezeFocus({ focusTargets });
 					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
 					break;
 				}

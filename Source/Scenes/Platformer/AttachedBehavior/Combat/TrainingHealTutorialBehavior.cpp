@@ -29,7 +29,7 @@
 
 using namespace cocos2d;
 
-const std::string TrainingHealTutorialBehavior::MapKeyAttachedBehavior = "restore-potion-tutorial";
+const std::string TrainingHealTutorialBehavior::MapKeyAttachedBehavior = "training-heal-tutorial";
 const int TrainingHealTutorialBehavior::HealsBeforeTutorial = 2;
 
 TrainingHealTutorialBehavior* TrainingHealTutorialBehavior::create(GameObject* owner)

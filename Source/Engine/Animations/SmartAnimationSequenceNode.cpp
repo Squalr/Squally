@@ -38,7 +38,7 @@ SmartAnimationSequenceNode::SmartAnimationSequenceNode(std::string defaultSprite
 	this->forwardsAnimation = nullptr;
 	this->backwardsAnimation = nullptr;
 	this->repeatIndex = 0;
-
+	
 	this->primeCache(this->defaultSprite);
 
 	this->addChild(this->sprite);
@@ -65,7 +65,7 @@ void SmartAnimationSequenceNode::primeCache(std::string initialSequenceResourceF
 
 bool SmartAnimationSequenceNode::isPlayingAnimation()
 {
-	return this->getNumberOfRunningActions() != 0;
+	return this->sprite != nullptr && this->sprite->getNumberOfRunningActions() != 0;
 }
 
 void SmartAnimationSequenceNode::stopAnimation()

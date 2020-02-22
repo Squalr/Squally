@@ -318,6 +318,19 @@ Vec3 GameUtils::getWorldCoords3D(Node* node)
 	return resultCoords;
 }
 
+void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	Vec3 currentCoords = GameUtils::getWorldCoords3D(node);
+	Vec3 delta = worldCoords - currentCoords;
+
+	node->setPosition3D(node->getPosition3D() + delta);
+}
+
 Rect GameUtils::getScreenBounds(Node* node)
 {
 	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)

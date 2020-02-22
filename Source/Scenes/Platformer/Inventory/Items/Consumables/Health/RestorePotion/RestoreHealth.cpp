@@ -139,9 +139,13 @@ void RestoreHealth::runRestoreHealth()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_ArrowUp);
+
+		icon->setScale(0.5f);
+
 		timelineEvents.push_back(TimelineEvent::create(
 				this->target,
-				Sprite::create(ObjectResources::Items_Consumables_Potions_HEALTH_2),
+				icon,
 				RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
 			{
 				if (!this->healEffect->isPlayingAnimation())
