@@ -33,6 +33,7 @@ public:
 	static void SetHackFlags(int hackFlags);
 	
 	void toggleHackable(bool isHackable);
+	void toggleAllowFx(bool allowFx);
 	void registerData(HackableData* hackableData);
 	void unregisterData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);
@@ -84,6 +85,7 @@ private:
 	typedef GameObject super;
 	
 	bool hasRelocatedUI;
+	bool allowFx;
 	bool isHackable;
 
 	void refreshParticleFx();

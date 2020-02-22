@@ -43,6 +43,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->timeRemainingBar = ProgressBar::create(UIResources::HUD_StatFrame, UIResources::HUD_HackBarFill);
 	this->hasRelocatedUI = false;
 	this->isHackable = true;
+	this->allowFx = true;
 	this->hackParticlesNode = Node::create();
 	this->hackParticles1 = nullptr;
 	this->hackParticles2 = nullptr;
@@ -192,6 +193,13 @@ void HackableObject::toggleHackable(bool isHackable)
 	this->isHackable = isHackable;
 }
 
+void HackableObject::toggleAllowFx(bool allowFx)
+{
+	this->allowFx = allowFx;
+
+	this->refreshParticleFx();
+}
+
 void HackableObject::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
@@ -232,7 +240,7 @@ void HackableObject::registerHackables()
 
 void HackableObject::refreshParticleFx()
 {
-	if (!this->hackableList.empty() && this->trackedAttributes.empty())
+	if (this->allowFx && !this->hackableList.empty() && this->trackedAttributes.empty())
 	{
 		this->createSensingParticles();
 		this->hackParticles1->start();

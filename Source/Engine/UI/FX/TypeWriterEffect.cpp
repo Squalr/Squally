@@ -51,19 +51,27 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 		label->_letters.clear();
 	});
 
+	// ZAC: Unicode string length fucks up with Zalgo text. Not working as intended.
+	/*
 	int strLen = StrUtils::unicodeStrLen(label->localizedString->getString());
 	int strLenEn = StrUtils::unicodeStrLen(label->localizedString->getStringByLanguage(LanguageType::ENGLISH));
 
 	// I don't know how fast characters should appear in other locales -- just normalize them to the speed of english
+	// This has the added benefit that if anybody ever speed runs this, they can do it in any language.
 	delayPerLetter = (strLen <= 0) ? delayPerLetter : (delayPerLetter * ((float)strLenEn / (float)strLen));
+	*/
 
-	for (int i = 0; i < max; i++)
+	for (int index = 0; index < max; index++)
 	{
-		if (label->getLetter(i) != nullptr)
+		Sprite* letter = label->getLetter(index);
+
+		if (letter != nullptr)
 		{
-			label->getLetter(i)->setOpacity(0);
-			label->getLetter(i)->runAction(Sequence::create(
-				DelayTime::create((float)i * delayPerLetter),
+			int realIndex = letter->getTag();
+
+			letter->setOpacity(0);
+			letter->runAction(Sequence::create(
+				DelayTime::create((float)realIndex * delayPerLetter),
 				FadeTo::create(0.1f, 255),
 				nullptr
 			));
@@ -92,11 +100,13 @@ void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
 
 	int max = label->getStringLength();
 
-	for (int i = 0; i < max; i++)
+	for (int index = 0; index < max; index++)
 	{
-		if (label->getLetter(i) != nullptr)
+		Sprite* letter = label->getLetter(index);
+
+		if (letter != nullptr)
 		{
-			label->getLetter(i)->stopAllActions();
+			letter->stopAllActions();
 		}
 	}
 	

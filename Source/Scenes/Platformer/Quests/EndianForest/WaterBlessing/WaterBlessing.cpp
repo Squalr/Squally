@@ -52,6 +52,8 @@ void WaterBlessing::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
+		this->squally->toggleAllowFx(true);
+		
 	}, Squally::MapKeySqually);
 
 	if (questState == QuestState::Complete &&

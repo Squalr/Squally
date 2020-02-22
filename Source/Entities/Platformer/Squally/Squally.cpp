@@ -64,7 +64,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 24.0f),
 	96.0f)
 {
-	this->registerHackables();
+	this->toggleAllowFx(false);
 }
 
 Squally::~Squally()

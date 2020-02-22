@@ -3,8 +3,10 @@
 #include <algorithm> 
 #include <cctype>
 #include <locale>
-#include<regex>
+#include <regex>
 #include <sstream>
+
+#include "cocos/base/ccUTF8.h"
 
 #ifndef WIN32
 extern "C" {
@@ -12,13 +14,18 @@ extern "C" {
 }
 #endif
 
+using namespace cocos2d;
+
 int StrUtils::unicodeStrLen(std::string str)
 {
 	int len = 0;
 
 	for (auto it = str.begin(); it != str.end(); it++)
 	{
-		len += (*it & 0xc0) != 0x80;
+		if (!StringUtils::isUnicodeCombine(*it))
+		{
+			len += (*it & 0xc0) != 0x80;
+		}
 	}
 
 	return len;
@@ -56,7 +63,7 @@ std::string StrUtils::toStringZeroPad(int value, int zeroCount)
 {
 	std::string result = std::to_string(value);
 
-	while (result.length() < zeroCount)
+	while (int(result.length()) < zeroCount)
 	{
 		result = "0" + result;
 	}

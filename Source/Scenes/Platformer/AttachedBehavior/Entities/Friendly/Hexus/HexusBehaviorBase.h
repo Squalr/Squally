@@ -13,6 +13,7 @@ class HexusOpponentData;
 class MinMaxPool;
 class LocalizedString;
 class PlatformerEntity;
+class SmartParticles;
 class StateOverride;
 class TutorialBase;
 
@@ -66,6 +67,12 @@ private:
 	cocos2d::Node* iconContainer;
 	cocos2d::Sprite* cardGlow;
 	cocos2d::Sprite* cardSprite;
+
+	SmartParticles* hackParticles1;
+	SmartParticles* hackParticles2;
+	SmartParticles* hackParticles3;
+	SmartParticles* hackParticles4;
+	SmartParticles* hackParticles5;
 
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;

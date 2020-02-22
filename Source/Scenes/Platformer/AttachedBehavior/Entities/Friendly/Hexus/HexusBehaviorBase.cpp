@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -24,6 +25,7 @@
 
 #include "Resources/EntityResources.h"
 #include "Resources/ObjectResources.h"
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -41,6 +43,12 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconContainer = Node::create();
 	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardSpecial);
+	this->hackParticles1 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+	this->hackParticles2 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+	this->hackParticles3 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+	this->hackParticles4 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange4, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+	this->hackParticles5 = SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange5, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
@@ -61,6 +69,11 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode->addChild(this->iconContainer);
 	this->addChild(this->dialogueStringNode);
 	this->addChild(this->iconNode);
+	this->addChild(this->hackParticles1);
+	this->addChild(this->hackParticles2);
+	this->addChild(this->hackParticles3);
+	this->addChild(this->hackParticles4);
+	this->addChild(this->hackParticles5);
 }
 
 HexusBehaviorBase::~HexusBehaviorBase()
@@ -70,6 +83,15 @@ HexusBehaviorBase::~HexusBehaviorBase()
 void HexusBehaviorBase::onEnter()
 {
 	super::onEnter();
+
+	this->hackParticles1->start();
+	this->hackParticles2->start();
+	this->hackParticles3->start();
+	this->hackParticles4->start();
+	this->hackParticles5->start();
+
+	this->hackParticles2->accelerate(1.0f);
+	this->hackParticles4->accelerate(1.0f);
 
 	if (this->getWins() > 0)
 	{
@@ -90,6 +112,14 @@ void HexusBehaviorBase::onEnter()
 void HexusBehaviorBase::initializePositions()
 {
 	super::initializePositions();
+
+	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+
+	this->hackParticles1->setPosition(entityCenter);
+	this->hackParticles2->setPosition(entityCenter);
+	this->hackParticles3->setPosition(entityCenter);
+	this->hackParticles4->setPosition(entityCenter);
+	this->hackParticles5->setPosition(entityCenter);
 
 	if (this->entity != nullptr)
 	{
