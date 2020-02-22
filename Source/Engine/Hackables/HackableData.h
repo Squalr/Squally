@@ -15,12 +15,13 @@ public:
 	void* getPointer() override;
 
 protected:
+	HackableData(void* dataAddress, int hackFlags,  float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
+	virtual ~HackableData();
+
 	void restoreState() override;
 
 private:
 	typedef HackableAttribute super;
-	HackableData(void* dataAddress, int hackFlags,  float duration, LocalizedString* variableName, const std::type_info& dataTypeInfo, std::string iconResource, HackablePreview* hackablePreview);
-	~HackableData();
 
 	void* dataPointer;
 	HackUtils::DataType dataType;

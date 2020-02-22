@@ -37,7 +37,7 @@ protected:
 	void initializeListeners() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
-	void onHackerModeEnable(int hackFlags) override;
+	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);

@@ -48,14 +48,17 @@ public:
 	void focus();
 	void unfocus();
 
-private:
-	typedef SmartNode super;
+protected:
 	CodeWindow(cocos2d::Size windowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
+
 	void setWindowTitle(std::string windowTitle);
 	void insertText(LocalizedString* text, cocos2d::Color3B color);
 	void insertNewline();

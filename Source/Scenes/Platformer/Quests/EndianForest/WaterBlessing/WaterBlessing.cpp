@@ -17,6 +17,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -68,6 +69,7 @@ void WaterBlessing::onActivate(bool isActiveThroughSkippable)
 void WaterBlessing::onComplete()
 {
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
+	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
 	// TODO: Notify user
 }

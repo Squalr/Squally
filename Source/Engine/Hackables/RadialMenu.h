@@ -25,13 +25,16 @@ class RadialMenu : public GlobalHud
 public:
 	static RadialMenu* create();
 
-private:
-	typedef SmartNode super;
+protected:
 	RadialMenu();
-	~RadialMenu();
+	virtual ~RadialMenu();
 
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef SmartNode super;
+
 	void onHackableAttributeEdit(HackableAttribute* attribute);
 	void close();
 	void buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args);
@@ -42,8 +45,6 @@ private:
 	cocos2d::Sprite* background;
 	cocos2d::Node* previewNode;
 	cocos2d::Node* radialMenuItems;
-
-	int hackFlags;
 
 	static const float Radius;
 	static const float IconRadius;

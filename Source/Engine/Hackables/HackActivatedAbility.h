@@ -23,10 +23,6 @@ public:
 	void activate();
 
 protected:
-	void restoreState() override;
-
-private:
-	typedef HackableAttribute super;
 	HackActivatedAbility(std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
 		int requiredEq, 
@@ -35,7 +31,12 @@ private:
 		LocalizedString* name,
 		HackablePreview* hackablePreview,
 		Clippy* clippy = nullptr);
-	~HackActivatedAbility();
+	virtual ~HackActivatedAbility();
+	
+	void restoreState() override;
+
+private:
+	typedef HackableAttribute super;
 
 	std::function<void()> onActivate;
 	std::function<void()> onDeactivate;

@@ -113,7 +113,7 @@ void SmartNode::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->hackFlags);
+			this->onHackerModeEnable();
 		}
 	}));
 
@@ -131,7 +131,7 @@ void SmartNode::onDeveloperModeDisable()
 {
 }
 
-void SmartNode::onHackerModeEnable(int hackFlags)
+void SmartNode::onHackerModeEnable()
 {
 	this->hackermodeEnabled = true;
 }

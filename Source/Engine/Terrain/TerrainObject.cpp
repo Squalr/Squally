@@ -184,9 +184,9 @@ void TerrainObject::update(float dt)
 	this->optimizationHideOffscreenTerrain();
 }
 
-void TerrainObject::onHackerModeEnable(int hackFlags)
+void TerrainObject::onHackerModeEnable()
 {
-	super::onHackerModeEnable(hackFlags);
+	super::onHackerModeEnable();
 
 	this->setVisible(false);
 }

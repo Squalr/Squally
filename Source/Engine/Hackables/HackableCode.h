@@ -205,12 +205,14 @@ public:
 
 	std::map<Register, LocalizedString*> registerHints;
 
-private:
-	typedef HackableAttribute super;
+protected:
 	static HackableCode* create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
 
 	HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
-	~HackableCode();
+	virtual ~HackableCode();
+
+private:
+	typedef HackableAttribute super;
 
 	typedef std::map<unsigned char, HackableCode::HackableCodeMarkers> MarkerMap;
 	typedef std::map<void*, MarkerMap> CodeMap;

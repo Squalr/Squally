@@ -22,6 +22,7 @@ public:
 	static const std::string EventHackableAttributeEdit;
 	static const std::string EventHackableAttributeEditDone;
 	static const std::string EventHackApplied;
+	static const std::string EventHackFlagsChanged;
 	static const std::string EventOpenLexiconPage;
 	static const std::string EventCloseLeftLexiconPage;
 	static const std::string EventCloseRightLexiconPage;
@@ -52,11 +53,16 @@ public:
 
 	struct HackToggleArgs
 	{
-		int hackFlags;
-
-		HackToggleArgs(int hackFlags) : hackFlags(hackFlags)
+		HackToggleArgs()
 		{
 		}
+	};
+
+	struct HackFlagsChangedArgs
+	{
+		int hackFlags;
+
+		HackFlagsChangedArgs(int hackFlags) : hackFlags(hackFlags) { }
 	};
 
 	struct HackerModeQueryArgs
@@ -89,6 +95,7 @@ public:
 	static void TriggerEditHackableAttribute(HackableObjectEditArgs args);
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerOnHackApplied(HackAppliedArgs args);
+	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);
 	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
 	static void TriggerCloseLeftLexiconPage();
 	static void TriggerCloseRightLexiconPage();

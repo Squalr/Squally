@@ -27,10 +27,8 @@ class CodeHud : public GlobalHud
 {
 public:
 	static CodeHud* create();
-
-private:
-	typedef SmartNode super;
-
+	
+protected:
 	CodeHud();
 	virtual ~CodeHud();
 
@@ -38,6 +36,10 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float) override;
+
+private:
+	typedef SmartNode super;
+
 	void open(HackableEvents::HackableObjectEditArgs* args);
 	void enableAccept();
 	void disableAccept();

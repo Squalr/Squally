@@ -21,6 +21,10 @@ HackablePreview::HackablePreview()
 	this->addChild(this->assemblyTextNode);
 }
 
+HackablePreview::~HackablePreview()
+{
+}
+
 void HackablePreview::setAssemblyTextVisible(bool isVisible)
 {
 	this->assemblyTextNode->setVisible(isVisible);

@@ -17,13 +17,14 @@ public:
 	static const std::string Identifier;
 
 protected:
+	VectorIntroPage();
+	virtual ~VectorIntroPage();
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	VectorIntroPage();
-	~VectorIntroPage();
 
 	cocos2d::Sprite* barrelSprite;
 	cocos2d::Sprite* chapterSprite;

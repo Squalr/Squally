@@ -29,7 +29,7 @@ public:
 
 protected:
 	ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect);
-	~ScriptList() = default;
+	virtual ~ScriptList();
 
 private:
 	typedef SmartNode super;

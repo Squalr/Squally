@@ -80,6 +80,10 @@ ScriptEntry::ScriptEntry(LocalizedString* scriptName, std::string script, bool i
 	this->addChild(this->copyLabel);
 }
 
+ScriptEntry::~ScriptEntry()
+{
+}
+
 void ScriptEntry::onEnter()
 {
 	super::onEnter();

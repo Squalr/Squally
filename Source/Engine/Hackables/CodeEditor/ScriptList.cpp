@@ -57,6 +57,10 @@ ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void
 	this->addChild(this->createNewScriptButton);
 }
 
+ScriptList::~ScriptList()
+{
+}
+
 void ScriptList::initializePositions()
 {
 	super::initializePositions();

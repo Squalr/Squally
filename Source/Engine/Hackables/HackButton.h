@@ -8,11 +8,12 @@ public:
 	static HackButton* create();
 
 protected:
+	HackButton();
+	virtual ~HackButton();
+	
 	void initializeListeners() override;
 	virtual void addEventListener(cocos2d::EventListener* listener) override;
 
 private:
 	typedef ClickableNode super;
-	HackButton();
-	~HackButton();
 };

@@ -18,12 +18,10 @@ enum class HackFlags
 	Gravity	 	= 1 << 9,
 };
 
-class Inventory;
-
 class HackFlagUtils
 {
 public:
-	static int GetCurrentHackFlags(Inventory* inventory);
+	static int GetCurrentHackFlags();
 
 private:
 

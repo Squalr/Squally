@@ -28,6 +28,9 @@ class HackableObject : public GameObject
 public:
 	void onHackableClick();
 	virtual HackablePreview* createDefaultPreview();
+
+	static int GetHackFlags();
+	static void SetHackFlags(int hackFlags);
 	
 	void toggleHackable(bool isHackable);
 	void registerData(HackableData* hackableData);
@@ -70,7 +73,7 @@ protected:
 	void initializeListeners() override;
 	void initializePositions() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int hackFlags) override;
+	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	void rebindUIElementsTo(cocos2d::Node* newParent);
 	virtual void registerHackables();
@@ -79,11 +82,11 @@ protected:
 
 private:
 	typedef GameObject super;
-
+	
 	bool hasRelocatedUI;
 	bool isHackable;
 
-	void startParticleFx();
+	void refreshParticleFx();
 	void createSensingParticles();
 	void unregisterAllHackables();
 
@@ -103,5 +106,5 @@ private:
 	std::vector<HackableAttribute*> trackedAttributes;
 	cocos2d::Vec2 buttonOffset;
 
-	int cachedHackFlags;
+	static int HackFlags;
 };

@@ -17,6 +17,7 @@ const std::string HackableEvents::EventHackableObjectClose = "EVENT_CLOSE_HACKAB
 const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKABLE_OBJECT";
 const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
+const std::string HackableEvents::EventHackFlagsChanged = "EVENT_HACK_FLAGS_CHANGED";
 const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
@@ -107,6 +108,14 @@ void HackableEvents::TriggerOnHackApplied(HackAppliedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackApplied,
+		&args
+	);
+}
+
+void HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventHackFlagsChanged,
 		&args
 	);
 }

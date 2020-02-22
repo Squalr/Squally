@@ -22,6 +22,8 @@
 
 using namespace cocos2d;
 
+int HackableObject::HackFlags = 0;
+
 HackableObject::HackableObject() : HackableObject(ValueMap())
 {
 }
@@ -47,7 +49,6 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackParticles3 = nullptr;
 	this->hackParticles4 = nullptr;
 	this->hackParticles5 = nullptr;
-	this->cachedHackFlags = 0;
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
@@ -111,6 +112,11 @@ void HackableObject::initializeListeners()
 			}
 		}
 	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackFlagsChanged, [=](EventCustom* eventCustom)
+	{
+		this->refreshParticleFx();
+	}));
 }
 
 void HackableObject::initializePositions()
@@ -144,6 +150,7 @@ void HackableObject::update(float dt)
 		if (!this->timeRemainingBar->isVisible())
 		{
 			this->timeRemainingBar->setVisible(true);
+			this->refreshParticleFx();
 		}
 
 		// Remove attributes that have timed out
@@ -155,6 +162,7 @@ void HackableObject::update(float dt)
 		if (this->trackedAttributes.empty())
 		{
 			this->timeRemainingBar->setVisible(false);
+			this->refreshParticleFx();
 		}
 
 		// If multiple hacks are enabled, just pick the highest ratio for now
@@ -167,14 +175,26 @@ void HackableObject::update(float dt)
 	}
 }
 
+int HackableObject::GetHackFlags()
+{
+	return HackableObject::HackFlags;
+}
+
+void HackableObject::SetHackFlags(int hackFlags)
+{
+	HackableObject::HackFlags = hackFlags;
+
+	HackableEvents::TriggerHackFlagsChanged(HackableEvents::HackFlagsChangedArgs(HackableObject::HackFlags));
+}
+
 void HackableObject::toggleHackable(bool isHackable)
 {
 	this->isHackable = isHackable;
 }
 
-void HackableObject::onHackerModeEnable(int hackFlags)
+void HackableObject::onHackerModeEnable()
 {
-	super::onHackerModeEnable(hackFlags);
+	super::onHackerModeEnable();
 
 	if (!this->isHackable)
 	{
@@ -184,13 +204,11 @@ void HackableObject::onHackerModeEnable(int hackFlags)
 	// Enable if any hackable is unlocked
 	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
 		{
-			return (attribute->getRequiredHackFlag() & hackFlags) == attribute->getRequiredHackFlag();
+			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
 		}))
 	{
 		this->hackButton->setVisible(true);
 	}
-
-	this->cachedHackFlags = hackFlags;
 }
 
 void HackableObject::onHackerModeDisable()
@@ -212,9 +230,9 @@ void HackableObject::registerHackables()
 {
 }
 
-void HackableObject::startParticleFx()
+void HackableObject::refreshParticleFx()
 {
-	if (!this->hackableList.empty())
+	if (!this->hackableList.empty() && this->trackedAttributes.empty())
 	{
 		this->createSensingParticles();
 		this->hackParticles1->start();
@@ -248,7 +266,7 @@ Vec2 HackableObject::getButtonOffset()
 
 void HackableObject::onHackableClick()
 {
-	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this, this->cachedHackFlags));
+	HackableEvents::TriggerOpenHackable(HackableEvents::HackableObjectOpenArgs(this, HackableObject::HackFlags));
 }
 
 HackablePreview* HackableObject::createDefaultPreview()
@@ -332,7 +350,7 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 	this->hackableList.push_back(hackableCode);
 	this->codeList.push_back(hackableCode);
 
-	this->startParticleFx();
+	this->refreshParticleFx();
 }
 
 void HackableObject::unregisterCode(HackableCode* hackableCode)
@@ -363,7 +381,7 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 
 		this->hackablesNode->removeChild(hackableCode);
 
-		this->startParticleFx();
+		this->refreshParticleFx();
 	}
 }
 
@@ -378,7 +396,7 @@ void HackableObject::registerHackAbility(HackActivatedAbility* hackActivatedAbil
 	this->hackableList.push_back(hackActivatedAbility);
 	this->hackAbilityList.push_back(hackActivatedAbility);
 	
-	this->startParticleFx();
+	this->refreshParticleFx();
 }
 
 void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAbility)
@@ -393,7 +411,7 @@ void HackableObject::unregisterHackAbility(HackActivatedAbility* hackActivatedAb
 	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackActivatedAbility), this->hackableList.end());
 	this->hackAbilityList.erase(std::remove(this->hackAbilityList.begin(), this->hackAbilityList.end(), hackActivatedAbility), this->hackAbilityList.end());
 	
-	this->startParticleFx();
+	this->refreshParticleFx();
 }
 
 void HackableObject::enableAllClippy()

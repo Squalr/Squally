@@ -9,7 +9,7 @@ using namespace cocos2d;
 
 std::map<std::string, int> HackFlagUtils::EssenceFlagMap = std::map<std::string, int>();
 
-int HackFlagUtils::GetCurrentHackFlags(Inventory* inventory)
+int HackFlagUtils::GetCurrentHackFlags()
 {
     static bool init = false;
 

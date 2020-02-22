@@ -32,7 +32,7 @@ public:
 
 protected:
 	ScriptEntry(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onCopyClick, std::function<void(ScriptEntry*)> onDeleteClick);
-	~ScriptEntry() = default;
+	virtual ~ScriptEntry();
 	
 	void onEnter() override;
 	void initializePositions() override;

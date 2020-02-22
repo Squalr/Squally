@@ -19,7 +19,7 @@ public:
 
 protected:
 	Clippy();
-	~Clippy();
+	virtual ~Clippy();
 
 	void initializePositions() override;
 	virtual Clippy* innerClone() = 0;

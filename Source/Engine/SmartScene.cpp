@@ -116,7 +116,7 @@ void SmartScene::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->onHackerModeEnable(args->hackFlags);
+			this->onHackerModeEnable();
 		}
 	}));
 
@@ -134,7 +134,7 @@ void SmartScene::onDeveloperModeDisable()
 {
 }
 
-void SmartScene::onHackerModeEnable(int hackFlags)
+void SmartScene::onHackerModeEnable()
 {
 	this->hackermodeEnabled = true;
 }

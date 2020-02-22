@@ -22,21 +22,18 @@ public:
 	static const std::string BattleTag;
 
 protected:
-
-	cocos2d::Vec2 getButtonOffset() override;
-
-private:
-	typedef PlatformerFriendly super;
-	
 	Squally(cocos2d::ValueMap& properties);
-	~Squally();
-	
+	virtual ~Squally();
+
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
-	void onHackerModeEnable(int hackFlags) override;
+	cocos2d::Vec2 getButtonOffset() override;
+
+private:
+	typedef PlatformerFriendly super;
 
 	static const float SquallyScale;
 };

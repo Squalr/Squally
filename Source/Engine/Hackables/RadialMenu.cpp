@@ -41,7 +41,6 @@ RadialMenu* RadialMenu::create()
 RadialMenu::RadialMenu()
 {
 	this->activeHackableObject = nullptr;
-	this->hackFlags = 0;
 
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
@@ -74,16 +73,6 @@ void RadialMenu::initializePositions()
 void RadialMenu::initializeListeners()
 {
 	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr)
-		{
-			this->hackFlags = args->hackFlags;
-		}
-	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
@@ -154,7 +143,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 	for (auto attribute : this->activeHackableObject->hackableList)
 	{
-		if ((attribute->getRequiredHackFlag() & hackFlags) == attribute->getRequiredHackFlag())
+		if ((attribute->getRequiredHackFlag() & HackableObject::GetHackFlags()) == attribute->getRequiredHackFlag())
 		{
 			filteredAttributes.push_back(attribute);
 		}

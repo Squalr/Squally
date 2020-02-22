@@ -255,9 +255,9 @@ void MapBase::onDeveloperModeDisable()
 	}
 }
 
-void MapBase::onHackerModeEnable(int hackFlags)
+void MapBase::onHackerModeEnable()
 {
-	super::onHackerModeEnable(hackFlags);
+	super::onHackerModeEnable();
 
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);

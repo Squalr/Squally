@@ -72,12 +72,11 @@ void SquallyHackingBehavior::onLoad()
 
 		this->toggleHackerMode();
 	});
+
+	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 }
 
 void SquallyHackingBehavior::toggleHackerMode()
 {
-	this->squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs(HackFlagUtils::GetCurrentHackFlags(entityInventoryBehavior->getInventory())));
-	});
+	HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs());
 }

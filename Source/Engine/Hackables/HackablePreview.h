@@ -15,7 +15,7 @@ public:
 
 protected:
 	HackablePreview();
-	~HackablePreview() = default;
+	virtual ~HackablePreview();
 
 	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, ConstantString* value);
 	LocalizedString* getRegisterString(HackableCode::Register reg);

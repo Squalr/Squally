@@ -139,8 +139,3 @@ std::string Squally::getSwimAnimation()
 
 	return swimAnimation;
 }
-
-void Squally::onHackerModeEnable(int hackFlags)
-{
-	super::onHackerModeEnable(hackFlags);
-}
