@@ -63,6 +63,25 @@ void ThrowRestorePotion::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
+bool ThrowRestorePotion::isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	const float WeakPercentage = 0.5f;
+
+	for (auto entity : sameTeam)
+	{
+		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
+		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
+
+		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
+
 void ThrowRestorePotion::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::performAttack(owner, target);

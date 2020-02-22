@@ -2,6 +2,13 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
+namespace cocos2d
+{
+	class Sprite;
+};
+
+class WorldSound;
+
 class CastTrainingHeal : public PlatformerAttack
 {
 public:
@@ -21,4 +28,7 @@ private:
 	typedef PlatformerAttack super;
 	
 	PlatformerAttack* cloneInternal() override;
+	
+	cocos2d::Sprite* spellAura;
+	WorldSound* healSound;
 };

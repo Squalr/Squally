@@ -117,6 +117,11 @@ void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* 
 {
 }
 
+bool PlatformerAttack::isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	return true;
+}
+
 void PlatformerAttack::onAttackEnd()
 {
 	for (auto it = this->attackCompleteCallbacks.begin(); it != this->attackCompleteCallbacks.end(); it++)

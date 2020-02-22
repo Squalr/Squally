@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string Medieval2::TrackKey = "medieval2";
+const std::string Medieval2::TrackKey = "medieval-2";
 
 Medieval2* Medieval2::create()
 {

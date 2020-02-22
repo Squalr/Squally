@@ -266,6 +266,16 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 		attackList.push_back(next->getAssociatedAttack(attackingEntity));
 	}
 
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	// Filter usable attacks
+	attackList.erase(std::remove_if(attackList.begin(), attackList.end(),
+		[=](PlatformerAttack* next)
+	{
+		return !next->isWorthUsing(sameTeam, otherTeam);
+	}), attackList.end());
+
 	// Prioritize resurrection > healing > damage
 	this->trySelectResurrectionSkill(attackingEntry, attackList);
 	this->trySelectHealingSkill(attackingEntry, attackList);
@@ -279,12 +289,8 @@ void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, c
 		return;
 	}
 
-	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
-	{
-		return attack->getAttackType() == PlatformerAttack::AttackType::Resurrection;
-	});
+	// TODO: Move this logic into isWorthUsing when resurrection skill added
+	/*
 	bool hasDeadAlly = false;
 
 	for (auto entity : sameTeam)
@@ -303,6 +309,12 @@ void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, c
 	{
 		return;
 	}
+	*/
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Resurrection;
+	});
 
 	this->selectedAttack = attackProbabilities.getRandomAttack();
 }
@@ -314,31 +326,10 @@ void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const 
 		return;
 	}
 
-	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
 	{
 		return attack->getAttackType() == PlatformerAttack::AttackType::Healing;
 	});
-	bool hasWeakAlly = false;
-	const float WeakPercentage = 0.5f;
-
-	for (auto entity : sameTeam)
-	{
-		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
-
-		if (isAlive && maxHealth >= 0 && std::round(float(health) / float(maxHealth)) <= WeakPercentage)
-		{
-			hasWeakAlly = true;
-		}
-	}
-
-	if (!hasWeakAlly || attackProbabilities.probabilities.empty())
-	{
-		return;
-	}
 
 	this->selectedAttack = attackProbabilities.getRandomAttack();
 }
@@ -350,8 +341,6 @@ void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const s
 		return;
 	}
 
-	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
 	{
 		return attack->getAttackType() == PlatformerAttack::AttackType::Damage || attack->getAttackType() == PlatformerAttack::AttackType::Debuff;

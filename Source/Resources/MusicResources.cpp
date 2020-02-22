@@ -17,5 +17,6 @@ const std::string MusicResources::Hexus1 = "Private/Music/Hexus1.mp3";
 const std::string MusicResources::Hexus2 = "Private/Music/Hexus2.mp3";
 const std::string MusicResources::LastMarch = "Private/Music/LastMarch.mp3";
 const std::string MusicResources::LastMarchFull = "Private/Music/LastMarchFull.mp3";
+const std::string MusicResources::Solace = "Private/Music/Solace.mp3";
 const std::string MusicResources::TrickOrTreat = "Private/Music/TrickOrTreat.mp3";
 const std::string MusicResources::WeWillGetThereTogether = "Private/Music/WeWillGetThereTogether.mp3";

@@ -18,6 +18,7 @@ namespace MusicResources
 	extern const std::string Hexus2;
 	extern const std::string LastMarch;
 	extern const std::string LastMarchFull;
+	extern const std::string Solace;
 	extern const std::string TrickOrTreat;
 	extern const std::string WeWillGetThereTogether;
 };

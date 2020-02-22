@@ -33,8 +33,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string TrainingHeal::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
-const std::string TrainingHeal::TrainingHealIdentifier = "restore-health";
+const std::string TrainingHeal::MapKeyPropertyRestorePotionTutorial = "training-heal-tutorial";
+const std::string TrainingHeal::TrainingHealIdentifier = "training-heal";
 const float TrainingHeal::TimeBetweenTicks = 0.5f;
 const int TrainingHeal::HackTicks = 5;
 const float TrainingHeal::StartDelay = 0.15f;

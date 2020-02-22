@@ -1,14 +1,11 @@
 #include "CastTrainingHeal.h"
 
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Entities/TrainingDummy/TrainingHeal/TrainingHeal.h"
 
@@ -31,6 +28,13 @@ CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDu
 
 CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
 {
+	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+
+	this->spellAura->setOpacity(0);
+
+	this->addChild(this->spellAura);
+	this->addChild(this->healSound);
 }
 
 CastTrainingHeal::~CastTrainingHeal()

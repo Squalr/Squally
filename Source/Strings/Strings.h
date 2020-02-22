@@ -14469,6 +14469,36 @@ namespace Strings
 		virtual ~Menus_Music_Blacksmith_Medieval2() = default;
 	};
 
+	class Menus_Music_GavinLuke_GavinLuke : public LocalizedString
+	{
+	public:
+		static Menus_Music_GavinLuke_GavinLuke* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_GavinLuke_GavinLuke();
+		virtual ~Menus_Music_GavinLuke_GavinLuke() = default;
+	};
+
+	class Menus_Music_GavinLuke_Solace : public LocalizedString
+	{
+	public:
+		static Menus_Music_GavinLuke_Solace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_GavinLuke_Solace();
+		virtual ~Menus_Music_GavinLuke_Solace() = default;
+	};
+
 	class Menus_Music_JakobLindhagen_Forgotten : public LocalizedString
 	{
 	public:

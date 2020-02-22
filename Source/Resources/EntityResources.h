@@ -2391,6 +2391,8 @@ namespace EntityResources
 	extern const std::string Misc_EndianForest_TrainingDummy_LEG;
 	extern const std::string Misc_EndianForest_TrainingDummy_R_ARM;
 	extern const std::string Misc_EndianForest_TrainingDummy_TORSO;
+	extern const std::string Misc_EndianForest_TrainingDummy_WEAPON_MH_PLACEHOLDER;
+	extern const std::string Misc_EndianForest_TrainingDummy_WEAPON_OH_PLACEHOLDER;
 	extern const std::string Misc_EndianForest_Wolf__FRAMES_HEAD_2;
 	extern const std::string Misc_EndianForest_Wolf__FRAMES_HEAD_3;
 	extern const std::string Misc_EndianForest_Wolf_4;
