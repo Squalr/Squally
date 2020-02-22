@@ -12,7 +12,7 @@ public:
 
 protected:
 	DragonBreath(float attackDuration, float recoverDuration, float priority);
-	~DragonBreath();
+	virtual ~DragonBreath();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;

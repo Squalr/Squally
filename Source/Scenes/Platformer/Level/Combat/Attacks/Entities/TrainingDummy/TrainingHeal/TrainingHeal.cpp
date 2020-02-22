@@ -1,0 +1,183 @@
+#include "TrainingHeal.h"
+
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
+
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
+#include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
+#include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/TrainingDummy/TrainingHeal/TrainingHealClippy.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/TrainingDummy/TrainingHeal/TrainingHealGenericPreview.h"
+#include "Scenes/Platformer/Level/Combat/CombatMap.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
+
+#include "Resources/FXResources.h"
+#include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
+
+using namespace cocos2d;
+
+#define LOCAL_FUNC_ID_RESTORE 1
+
+const std::string TrainingHeal::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
+const std::string TrainingHeal::TrainingHealIdentifier = "restore-health";
+const float TrainingHeal::TimeBetweenTicks = 0.5f;
+const int TrainingHeal::HackTicks = 5;
+const float TrainingHeal::StartDelay = 0.15f;
+
+TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+{
+	TrainingHeal* instance = new TrainingHeal(caster, target, healAmount);
+
+	instance->autorelease();
+
+	return instance;
+}
+
+TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
+{
+	this->clippy = TrainingHealClippy::create();
+	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	
+	this->registerClippy(this->clippy);
+
+	this->addChild(this->healEffect);
+	this->addChild(this->impactSound);
+	this->addChild(this->healSound);
+}
+
+TrainingHeal::~TrainingHeal()
+{
+}
+
+void TrainingHeal::onEnter()
+{
+	super::onEnter();
+
+	this->runTrainingHeal();
+
+	CombatEvents::TriggerHackableCombatCue();
+}
+
+void TrainingHeal::initializePositions()
+{
+	super::initializePositions();
+
+	this->setPosition(Vec2(0.0f, 118.0f));
+}
+
+void TrainingHeal::enableClippy()
+{
+	if (this->clippy != nullptr)
+	{
+		this->clippy->setIsEnabled(true);
+	}
+}
+
+void TrainingHeal::registerHackables()
+{
+	super::registerHackables();
+
+	if (this->target == nullptr)
+	{
+		return;
+	}
+
+	this->clippy->setIsEnabled(false);
+
+	HackableCode::CodeInfoMap codeInfoMap =
+	{
+		{
+			LOCAL_FUNC_ID_RESTORE,
+			HackableCode::HackableCodeInfo(
+				TrainingHeal::TrainingHealIdentifier,
+				Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
+				UIResources::Menus_Icons_ArrowUp,
+				TrainingHealGenericPreview::create(),
+				{
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
+				},
+				int(HackFlags::None),
+				(float(TrainingHeal::HackTicks) * TrainingHeal::TimeBetweenTicks) + 0.1f,
+				0.0f,
+				this->clippy
+			)
+		},
+	};
+
+	auto restoreFunc = &TrainingHeal::runRestoreTick;
+	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+
+	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
+	{
+		this->target->registerCode(*it);
+	}
+}
+
+void TrainingHeal::runTrainingHeal()
+{
+	this->impactSound->play();
+
+	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
+
+	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
+	{
+		timelineEvents.push_back(TimelineEvent::create(
+				this->target,
+				Sprite::create(UIResources::Menus_Icons_Heal),
+				TrainingHeal::TimeBetweenTicks * float(healIndex) + TrainingHeal::StartDelay, [=]()
+			{
+				this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				this->runRestoreTick();
+			})
+		);
+	}
+
+	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
+		TimelineEventGroup::create(timelineEvents, this->target, [=]()
+		{
+			this->removeBuff();
+		})
+	));
+}
+
+NO_OPTIMIZE void TrainingHeal::runRestoreTick()
+{
+	int incrementAmount = 0;
+
+	ASM(push ZDI);
+	ASM(mov ZDI, 0)
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
+	ASM(add ZDI, 200);
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+
+	ASM(pop ZDI);
+
+	incrementAmount = MathUtils::clamp(incrementAmount, -200, 200);
+
+	this->healSound->play();
+	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
+
+	HACKABLES_STOP_SEARCH();
+}
+END_NO_OPTIMIZE

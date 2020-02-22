@@ -12,7 +12,7 @@ public:
 
 protected:
 	ThrowWeapon(float attackDuration, float recoverDuration, float priority);
-	~ThrowWeapon();
+	virtual ~ThrowWeapon();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;

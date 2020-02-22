@@ -29,6 +29,10 @@ Slash::Slash(float attackDuration, float recoverDuration, float priority) : supe
 	this->addChild(this->hitSound);
 }
 
+Slash::~Slash()
+{
+}
+
 PlatformerAttack* Slash::cloneInternal()
 {
 	return Slash::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);

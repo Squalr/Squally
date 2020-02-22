@@ -2,17 +2,17 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class ThrowFlamingWeapon : public PlatformerAttack
+class CastTrainingHeal : public PlatformerAttack
 {
 public:
-	static ThrowFlamingWeapon* create(float attackDuration, float recoverDuration, float priority);
+	static CastTrainingHeal* create(float attackDuration, float recoverDuration, float priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	ThrowFlamingWeapon(float attackDuration, float recoverDuration, float priority);
-	virtual ~ThrowFlamingWeapon();
+	CastTrainingHeal(float attackDuration, float recoverDuration, float priority);
+	virtual ~CastTrainingHeal();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
