@@ -106,10 +106,10 @@ std::vector<std::string> StrUtils::tokenize(std::string str, std::string delimit
 	// Find first non-delimiter
 	std::string::size_type pos = str.find_first_of(delimiters, lastPos);
 
-	// Insert leading delimiter token
-	if (pos != std::string::npos && lastPos != std::string::npos && lastPos > 0)
+	// Insert leading delimiters
+	if (lastPos != std::string::npos && lastPos > 0)
 	{
-		tokens.push_back(str.substr(lastPos, pos - lastPos));
+		tokens.push_back(str.substr(0, lastPos));
 	}
 
 	while (pos != std::string::npos || pos != lastPos)
