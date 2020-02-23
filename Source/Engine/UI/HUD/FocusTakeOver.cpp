@@ -83,6 +83,11 @@ void FocusTakeOver::update(float dt)
 	}
 }
 
+void FocusTakeOver::pause()
+{
+	// Do nothing
+}
+
 void FocusTakeOver::setTakeOverOpacity(GLubyte takeOverOpacity)
 {
 	this->takeOverOpacity = takeOverOpacity;

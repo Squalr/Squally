@@ -69,7 +69,7 @@
   </properties>
   <object id="824" name="Forest/Background/Pillar1" type="decor" x="182.909" y="-26.8485" width="331" height="1209"/>
  </objectgroup>
- <objectgroup id="75" name="waterfall">
+ <objectgroup id="75" name="waterfall" visible="0">
   <properties>
    <property name="depth" type="float" value="-32"/>
    <property name="type" value="objects"/>

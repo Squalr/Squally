@@ -119,11 +119,11 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
+	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
-	this->hud->addChild(this->choicesMenu);
-	this->hud->addChild(this->entityFocusTakeOver);
 	this->hud->addChild(this->focusTakeOver);
+	this->hud->addChild(this->choicesMenu);
 	this->menuHud->addChild(this->hackerModeWarningHud);
 	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);
@@ -261,6 +261,7 @@ void CombatMap::initializeListeners()
 					std::vector<Node*> focusTargets = std::vector<Node*>();
 
 					focusTargets.push_back(entity);
+					focusTargets.push_back(this->scrappy);
 
 					for (auto next : this->timeline->getEntries())
 					{
@@ -272,7 +273,7 @@ void CombatMap::initializeListeners()
 
 					this->entityFocusTakeOver->positionFreezeFocus(focusTargets);
 					
-					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry, this->scrappy });
+					this->focusTakeOver->focus({ this->targetSelectionMenu, this->choicesMenu, combatArgs->entry });
 
 					for (auto entity : this->timeline->getEntries())
 					{
@@ -446,7 +447,6 @@ void CombatMap::spawnEntities()
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
 					{
 						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
-						entity->setLocalZOrder(int32_t(entity->getPositionZ()));
 						friendlyEntities.push_back(entity);
 					}));
 				}
@@ -493,7 +493,6 @@ void CombatMap::spawnEntities()
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
 						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
-						entity->setLocalZOrder(int32_t(entity->getPositionZ()));
 
 						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{

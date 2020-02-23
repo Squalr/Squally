@@ -41,6 +41,7 @@ protected:
 	void onEnter() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	void pause() override;
 
 	void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentFlags) override;
 

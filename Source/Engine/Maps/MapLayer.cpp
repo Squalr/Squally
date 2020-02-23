@@ -16,6 +16,7 @@ const std::string MapLayer::MapKeyPropertyValue = "value";
 const std::string MapLayer::MapKeyPropertyDepth = "depth";
 const std::string MapLayer::MapKeyPropertyIsHackable = "is-hackable";
 const std::string MapLayer::MapKeyPropertyIsElevateTarget = "is-elevate-target";
+const std::string MapLayer::MapKeyPropertyZSort = "z-sort";
 
 MapLayer* MapLayer::create(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects)
 {
@@ -39,6 +40,7 @@ MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string typ
 	this->layerName = name;
 	this->layerType = type;
 	this->properties = properties;
+	this->autoZSort = GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyZSort, Value(false)).asBool();
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyDepth, Value(0.0f)).asFloat());
 
@@ -66,6 +68,21 @@ void MapLayer::initializeListeners()
 			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args));
 		}
 	}));
+
+	this->scheduleUpdate();
+}
+
+void MapLayer::update(float dt)
+{
+	super::update(dt);
+
+	if (this->autoZSort)
+	{
+		for (auto child : this->getChildren())
+		{
+			child->setLocalZOrder(int32_t(child->getPositionZ()));	
+		}
+	}
 }
 
 bool MapLayer::isHackable()

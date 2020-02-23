@@ -127,6 +127,8 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 	sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
 	newObject->setPosition(Vec2(x, y + height));
 
+	newObject->setPositionZ(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
+
 	if (GameUtils::keyExists(properties, GameObject::MapKeyRotation))
 	{
 		float rotation = properties.at(GameObject::MapKeyRotation).asFloat();

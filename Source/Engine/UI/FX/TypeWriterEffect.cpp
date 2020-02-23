@@ -27,6 +27,7 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	}
 
 	int max = label->getStringLength();
+	int maxRealIndex = 0;
 
 	// We have to add events the old way -- LocalizedLabels inherit from a cocos label, not a SmartNode
 	label->getEventDispatcher()->addCustomEventListener(LocalizationEvents::BeforeLocaleChangeEvent, [=](EventCustom* args)
@@ -36,9 +37,9 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 			return;
 		}
 
-		for (int i = 0; i < max; i++)
+		for (int index = 0; index < max; index++)
 		{
-			Sprite* letter = label->getLetter(i);
+			Sprite* letter = label->getLetter(index);
 
 			if (letter != nullptr)
 			{
@@ -69,6 +70,8 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 		{
 			int realIndex = letter->getTag();
 
+			maxRealIndex = std::max(maxRealIndex, realIndex);
+
 			letter->setOpacity(0);
 			letter->runAction(Sequence::create(
 				DelayTime::create((float)realIndex * delayPerLetter),
@@ -81,7 +84,7 @@ void TypeWriterEffect::runTypeWriterEffect(LocalizedLabel* label, std::function<
 	if (onEffectFinishedCallback != nullptr)
 	{
 		label->runAction(Sequence::create(
-			DelayTime::create((float)max * delayPerLetter),
+			DelayTime::create((float)maxRealIndex * delayPerLetter),
 			CallFunc::create([=]()
 			{
 				onEffectFinishedCallback();

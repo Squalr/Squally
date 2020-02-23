@@ -307,6 +307,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
   </properties>
   <object id="911" name="marble" type="terrain" x="149.79" y="1784.83">
    <properties>

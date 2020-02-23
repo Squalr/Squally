@@ -24,6 +24,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
   </properties>
   <object id="554" name="combat-spawn" type="object" x="1785.34" y="1379.05" width="78.7879" height="88">
    <properties>
