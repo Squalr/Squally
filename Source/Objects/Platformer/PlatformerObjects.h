@@ -62,6 +62,8 @@
 #include "Objects/Platformer/Switches/Lever/Lever.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
 #include "Objects/Platformer/Switches/Trigger.h"
+#include "Objects/Platformer/Transportation/Airship1.h"
+#include "Objects/Platformer/Transportation/Airship2.h"
 #include "Objects/Platformer/Transportation/Ship.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"

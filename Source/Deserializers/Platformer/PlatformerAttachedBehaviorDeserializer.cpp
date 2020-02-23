@@ -23,6 +23,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers = std::map<std::string, std::function<AttachedBehavior*(GameObject*)>>();
 
 	this->attachedBehaviorDeserializers[AgroBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)AgroBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[DisabledPortal::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)DisabledPortal::create(owner); };
 	this->attachedBehaviorDeserializers[EnableAllClippyBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EnableAllClippyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBattleAllyBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBattleAllyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[EnemyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EnemyBehaviorGroup::create(owner); };
@@ -31,15 +32,15 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[EntityNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityNoCollisionBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EntityPacingBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityPacingBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[EntityPickPocketBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityPickPocketBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[DisabledPortal::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)DisabledPortal::create(owner); };
+	this->attachedBehaviorDeserializers[FriendlyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyBehaviorGroup::create(owner); };
+	this->attachedBehaviorDeserializers[FriendlyNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyNoCollisionBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[FirstIOUFound::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FirstIOUFound::create(owner); };
 	this->attachedBehaviorDeserializers[LookAtSquallyBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LookAtSquallyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LookAtSquallyBehavior::MapKeyAttachedBehaviorAlias] = [=](GameObject* owner) { return (AttachedBehavior*)LookAtSquallyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LockedPortal::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LockedPortal::create(owner); };
 	this->attachedBehaviorDeserializers[NoDefendBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)NoDefendBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[NoItemsBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)NoItemsBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[FriendlyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyBehaviorGroup::create(owner); };
-	this->attachedBehaviorDeserializers[FriendlyNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyNoCollisionBehaviorGroup::create(owner); };
+	this->attachedBehaviorDeserializers[RestorePotionTutorialBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)RestorePotionTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[ShopkeeperBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)ShopkeeperBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[SquallyCombatBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)SquallyCombatBehaviorGroup::create(owner); };

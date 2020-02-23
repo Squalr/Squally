@@ -32,6 +32,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 
 	// Custom objects
 	this->deserializers[AddDoor::MapKeyAddDoor] = [=](ValueMap properties) { return (GameObject*)AddDoor::create(properties); };
+	this->deserializers[Airship1::MapKeyAirship1] = [=](ValueMap properties) { return (GameObject*)Airship1::create(properties); };
+	this->deserializers[Airship2::MapKeyAirship2] = [=](ValueMap properties) { return (GameObject*)Airship2::create(properties); };
 	this->deserializers[Anvil::MapKeyAnvil] = [=](ValueMap properties) { return (GameObject*)Anvil::create(properties); };
 	this->deserializers[BreakableBarrel::MapKeyBreakableBarrel] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKeyBreakableCage] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };

@@ -130,6 +130,11 @@ void CameraStop::update(float dt)
 	}
 }
 
+void CameraStop::pause()
+{
+	// Ignore pause so that the update loop still works its magic
+}
+
 void CameraStop::onDeveloperModeEnable(int debugLevel)
 {
 	this->debugDraw->setVisible(true);

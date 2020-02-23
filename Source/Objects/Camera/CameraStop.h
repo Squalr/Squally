@@ -24,6 +24,7 @@ private:
 
 	void onEnter() override;
 	void update(float dt) override;
+	void pause() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 
