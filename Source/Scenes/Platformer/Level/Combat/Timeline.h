@@ -40,6 +40,7 @@ private:
 	void updateTimeline(float dt);
 	void registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
+	void onPauseStateChanged();
 
 	ProgressBar* swordFill;
 	cocos2d::Sprite* swordTop;

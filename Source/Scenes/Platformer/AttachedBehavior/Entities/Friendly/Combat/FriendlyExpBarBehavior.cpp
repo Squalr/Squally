@@ -77,8 +77,8 @@ void FriendlyExpBarBehavior::onLoad()
 
 	this->deltaLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
 	this->levelUpLabel->setPosition(entityCenter + Vec2(0.0f, offetY + 48.0f));
-	this->levelUpFx->setPosition(entityCenter + Vec2(0.0f, offetY - 16.0f));
 	this->expProgressBar->setPosition(entityCenter + Vec2(0.0f, offetY));
+	this->levelUpFx->setPosition(entityCenter + Vec2(0.0f, offetY - 16.0f));
 }
 
 void FriendlyExpBarBehavior::giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain)

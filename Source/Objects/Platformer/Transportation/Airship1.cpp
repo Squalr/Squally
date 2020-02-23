@@ -46,7 +46,7 @@ void Airship1::update(float dt)
 {
 	super::update(dt);
 
-	const float Speed = 256.0f;
+	const float Speed = 368.0f;
 
 	this->animations->setPositionX(this->animations->getPositionX() + (this->animations->getFlippedX() ? Speed : -Speed) * dt);
 }

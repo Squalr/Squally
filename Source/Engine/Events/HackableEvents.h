@@ -23,6 +23,8 @@ public:
 	static const std::string EventHackableAttributeEditDone;
 	static const std::string EventHackApplied;
 	static const std::string EventHackFlagsChanged;
+	static const std::string EventPauseHackTimers;
+	static const std::string EventResumeHackTimers;
 	static const std::string EventOpenLexiconPage;
 	static const std::string EventCloseLeftLexiconPage;
 	static const std::string EventCloseRightLexiconPage;
@@ -96,6 +98,8 @@ public:
 	static void TriggerEditHackableAttributeDone();
 	static void TriggerOnHackApplied(HackAppliedArgs args);
 	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);
+	static void TriggerPauseHackTimers();
+	static void TriggerResumeHackTimers();
 	static void TriggerOpenLexiconPage(OpenLexiconPageArgs args);
 	static void TriggerCloseLeftLexiconPage();
 	static void TriggerCloseRightLexiconPage();

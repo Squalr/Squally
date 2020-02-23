@@ -18,6 +18,8 @@ const std::string HackableEvents::EventHackableAttributeEdit = "EVENT_EDIT_HACKA
 const std::string HackableEvents::EventHackableAttributeEditDone = "EVENT_EDIT_HACKABLE_OBJECT_DONE";
 const std::string HackableEvents::EventHackApplied = "EVENT_HACK_APPLIED";
 const std::string HackableEvents::EventHackFlagsChanged = "EVENT_HACK_FLAGS_CHANGED";
+const std::string HackableEvents::EventPauseHackTimers = "EVENT_PAUSE_HACK_TIMERS";
+const std::string HackableEvents::EventResumeHackTimers = "EVENT_RESUME_HACK_TIMERS";
 const std::string HackableEvents::EventOpenLexiconPage = "EVENT_OPEN_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseLeftLexiconPage = "EVENT_CLOSE_LEFT_LEXICON_PAGE";
 const std::string HackableEvents::EventCloseRightLexiconPage = "EVENT_CLOSE_RIGHT_LEXICON_PAGE";
@@ -117,6 +119,20 @@ void HackableEvents::TriggerHackFlagsChanged(HackFlagsChangedArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		HackableEvents::EventHackFlagsChanged,
 		&args
+	);
+}
+
+void HackableEvents::TriggerPauseHackTimers()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventPauseHackTimers
+	);
+}
+
+void HackableEvents::TriggerResumeHackTimers()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		HackableEvents::EventResumeHackTimers
 	);
 }
 

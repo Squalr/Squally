@@ -3,6 +3,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackablePreview.h"
@@ -19,6 +20,7 @@ HackableAttribute::HackableAttribute(int requiredHackFlag, float duration, std::
 	this->hackablePreview = hackablePreview;
 	this->elapsedDuration = this->duration;
 	this->clippy = clippy == nullptr ? nullptr : clippy->refClone();
+	this->isTimerPaused = false;
 
 	if (this->hackablePreview != nullptr)
 	{
@@ -58,12 +60,27 @@ void HackableAttribute::onEnter()
 		this->restoreState();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
+	{
+		this->isTimerPaused = true;
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventResumeHackTimers, [=](EventCustom* eventCustom)
+	{
+		this->isTimerPaused = false;
+	}));
+
 	this->scheduleUpdate();
 }
 
 void HackableAttribute::update(float dt)
 {
 	super::update(dt);
+
+	if (this->isTimerPaused)
+	{
+		return;
+	}
 
 	if (this->elapsedDuration < this->duration)
 	{

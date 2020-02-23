@@ -8,6 +8,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -119,21 +120,29 @@ void Timeline::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = true;
+
+		this->onPauseStateChanged();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = false;
+
+		this->onPauseStateChanged();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimelineCinematic, [=](EventCustom* eventCustom)
 	{
 		this->isTimelineCinematicPaused = true;
+
+		this->onPauseStateChanged();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventResumeTimelineCinematic, [=](EventCustom* eventCustom)
 	{
 		this->isTimelineCinematicPaused = false;
+
+		this->onPauseStateChanged();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventInterruptTimeline, [=](EventCustom* eventCustom)
@@ -281,6 +290,8 @@ void Timeline::resumeTimeline()
 {
 	this->hasInit = true;
 	this->isTimelinePaused = false;
+
+	this->onPauseStateChanged();
 }
 
 std::vector<TimelineEntry*> Timeline::getEntries()
@@ -364,4 +375,16 @@ void Timeline::unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGro
 
 	this->timelineEventGroups.erase(std::remove(this->timelineEventGroups.begin(), this->timelineEventGroups.end(), timelineEventGroup), this->timelineEventGroups.end());
 	this->eventsNode->removeChild(timelineEventGroup);
+}
+
+void Timeline::onPauseStateChanged()
+{
+	if (this->isTimelinePaused || this->isTimelineCinematicPaused)
+	{
+		HackableEvents::TriggerPauseHackTimers();
+	}
+	else
+	{
+		HackableEvents::TriggerResumeHackTimers();
+	}
 }

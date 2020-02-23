@@ -34,6 +34,7 @@ private:
 	LocalizedString* name;
 	std::string iconResource;
 	HackablePreview* hackablePreview;
+	bool isTimerPaused;
 	int requiredHackFlag;
 	float duration;
 	float elapsedDuration;
