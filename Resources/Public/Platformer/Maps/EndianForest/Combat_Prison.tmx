@@ -3,7 +3,7 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
-   <property name="music" value="Music/TrickOrTreat.mp3"/>
+   <property name="music" value="trick-or-treat"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>

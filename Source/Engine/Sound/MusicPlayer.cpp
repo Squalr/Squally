@@ -12,7 +12,7 @@
 using namespace cocos2d;
 
 MusicPlayer* MusicPlayer::instance = nullptr;
-std::queue<Music*> MusicPlayer::SongQueue = std::queue<Music*>();
+std::vector<Music*> MusicPlayer::SongQueue = std::vector<Music*>();
 
 void MusicPlayer::registerGlobalNode()
 {
@@ -45,7 +45,7 @@ MusicPlayer::~MusicPlayer()
 
 Music* MusicPlayer::getCurrentSong()
 {
-	return MusicPlayer::SongQueue.empty() ? nullptr : MusicPlayer::SongQueue.front();
+	return MusicPlayer::SongQueue.empty() ? nullptr : MusicPlayer::SongQueue.back();
 }
 
 void MusicPlayer::popMusic(bool unpauseNext)
@@ -55,11 +55,11 @@ void MusicPlayer::popMusic(bool unpauseNext)
 		return;
 	}
 
-	MusicPlayer::SongQueue.pop();
+	MusicPlayer::SongQueue.pop_back();
 
 	if (unpauseNext && !MusicPlayer::SongQueue.empty())
 	{
-		MusicPlayer::SongQueue.front()->unpause();
+		MusicPlayer::SongQueue.back()->unpause();
 	}
 }
 
@@ -96,14 +96,14 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQu
 
 void MusicPlayer::pushMusic(Music* music)
 {
-	MusicPlayer::SongQueue.push(music);
+	MusicPlayer::SongQueue.push_back(music);
 }
 
 void MusicPlayer::purgueQueue()
 {
 	SoundEvents::TriggerDestroyOrphanedMusic();
 	
-	MusicPlayer::SongQueue = std::queue<Music*>();
+	MusicPlayer::SongQueue.clear();
 }
 
 void MusicPlayer::registerMusic(Music* music)

@@ -23,6 +23,7 @@ protected:
 	virtual ~Music();
 	
 	void initializeListeners() override;
+	void pause() override;
 	void play(bool repeat = true, float startDelay = 0.0f) override;
 	void copyStateFrom(Music* music);
 	void clearState();

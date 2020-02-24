@@ -15,11 +15,13 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -73,7 +75,12 @@ void WaterBlessing::onComplete()
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
-	// TODO: Notify user
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+		Strings::Platformer_Blessings_BlessingGranted::create(),
+		Strings::Platformer_Blessings_BlessingOfWater::create(),
+		ObjectResources::Items_Misc_EssenceOfFrost,
+		SoundResources::Notifications_NotificationGood1
+	));
 }
 
 void WaterBlessing::onSkipped()

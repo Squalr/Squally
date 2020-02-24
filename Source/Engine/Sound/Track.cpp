@@ -115,6 +115,6 @@ void Track::pop()
 {
 	if (this->music != nullptr && MusicPlayer::getCurrentSong() == this->music)
 	{
-		MusicPlayer::popMusic();
+		MusicPlayer::popMusic(true);
 	}
 }

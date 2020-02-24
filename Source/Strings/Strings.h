@@ -15519,6 +15519,21 @@ namespace Strings
 		virtual ~Platformer_Blessings_BlessingOfUndeath() = default;
 	};
 
+	class Platformer_Blessings_BlessingOfWater : public LocalizedString
+	{
+	public:
+		static Platformer_Blessings_BlessingOfWater* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Blessings_BlessingOfWater();
+		virtual ~Platformer_Blessings_BlessingOfWater() = default;
+	};
+
 	class Platformer_Blessings_BlessingOfWind : public LocalizedString
 	{
 	public:

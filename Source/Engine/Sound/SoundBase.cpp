@@ -56,7 +56,7 @@ void SoundBase::initializeListeners()
 
 void SoundBase::update(float dt)
 {
-	// super::update(dt);
+	super::update(dt);
 
 	this->updateDistanceFade();
 
@@ -134,6 +134,7 @@ void SoundBase::play(bool repeat, float startDelay)
 void SoundBase::unpause()
 {
 	this->fadeMultiplier = 1.0f;
+
 	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
 	AudioEngine::resume(this->activeTrackId);
 }

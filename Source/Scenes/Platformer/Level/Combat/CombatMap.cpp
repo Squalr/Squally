@@ -94,8 +94,8 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
-	this->focusTakeOver->setTakeOverOpacity(0);
-	this->entityFocusTakeOver->setTakeOverOpacity(127);
+	this->focusTakeOver->setTakeOverOpacity(127);
+	this->entityFocusTakeOver->setTakeOverOpacity(0);
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -118,12 +118,12 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
-	this->hackerModeVisibleHud->addChild(this->combatHud);
-	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
 	this->hud->addChild(this->targetSelectionMenu);
 	this->hud->addChild(this->timeline);
 	this->hud->addChild(this->focusTakeOver);
 	this->hud->addChild(this->choicesMenu);
+	this->hackerModeVisibleHud->addChild(this->combatHud);
+	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
 	this->menuHud->addChild(this->hackerModeWarningHud);
 	this->menuHud->addChild(this->firstStrikeMenu);
 	this->menuHud->addChild(this->defeatMenu);

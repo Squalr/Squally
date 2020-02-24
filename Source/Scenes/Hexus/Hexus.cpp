@@ -305,11 +305,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
 	{
-		this->musicA->play();
+		this->musicA->push();
 	}
 	else
 	{
-		this->musicB->play();
+		this->musicB->push();
 	}
 }
 

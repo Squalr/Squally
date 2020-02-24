@@ -37,5 +37,5 @@ private:
 	static void performHandoff(Music* music);
 	static bool isParentGlobal(Track* track);
 
-	static std::queue<Music*> SongQueue;
+	static std::vector<Music*> SongQueue;
 };

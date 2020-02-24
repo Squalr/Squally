@@ -43,7 +43,7 @@ void Music::initializeListeners()
 	{
 		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->trackId != this->activeTrackId && args->trackId != SoundBase::INVALID_ID)
+		if (args != nullptr && args->trackId != this->activeTrackId && args->trackId != SoundBase::INVALID_ID && this->activeTrackId != SoundBase::INVALID_ID)
 		{
 			this->stopAndFadeOut();
 		}
@@ -53,6 +53,11 @@ void Music::initializeListeners()
 	{
 		this->updateVolume();
 	}));
+}
+
+void Music::pause()
+{
+	// Do nothing -- music never gets paused via node trees (pause is an engine function -- use freeze to pause music!)
 }
 
 void Music::orphanMusic()
@@ -130,6 +135,9 @@ void Music::clearState()
 void Music::unpause()
 {
 	super::unpause();
+
+	// Unpuase seems broken, just play a new sound I guess
+	this->play();
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 }

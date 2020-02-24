@@ -5,7 +5,7 @@
    <property name="background" value="DarkForestSky"/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="2"/>
    <property name="type" value="meta"/>
   </properties>
