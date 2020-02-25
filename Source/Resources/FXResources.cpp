@@ -615,3 +615,4 @@ const std::string FXResources::WeakMinded_WeakMinded_0028 = "Private/Platformer/
 const std::string FXResources::WeakMinded_WeakMinded_0029 = "Private/Platformer/FX/WeakMinded/WeakMinded_0029.png";
 const std::string FXResources::WeakMinded_WeakMinded_0030 = "Private/Platformer/FX/WeakMinded/WeakMinded_0030.png";
 const std::string FXResources::WeakMinded_WeakMinded_0031 = "Private/Platformer/FX/WeakMinded/WeakMinded_0031.png";
+const std::string FXResources::HackerCircle = "Public/Platformer/FX/HackerCircle.png";

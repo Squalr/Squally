@@ -1,5 +1,8 @@
 #include "HackableObject.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
@@ -17,6 +20,7 @@
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -50,6 +54,7 @@ HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 	this->hackParticles3 = nullptr;
 	this->hackParticles4 = nullptr;
 	this->hackParticles5 = nullptr;
+	this->hackCircle = nullptr;
 
 	this->hackButton->setVisible(false);
 	this->timeRemainingBar->setVisible(false);
@@ -204,12 +209,21 @@ void HackableObject::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
-	if (!this->isHackable)
+	if (!this->isHackable || this->hackableList.empty())
 	{
 		return;
 	}
 
-	// Enable if any hackable is unlocked
+	// Abort if any hackable is off cooldown (Another option for future: only abort if all are off-cooldown, and have radial menu show individual cooldowns)
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+		{
+			return (!attribute->isCooldownComplete());
+		}))
+	{
+		return;
+	}
+
+	// Enable if any hackable is off cooldown and unlocked (right hack flags are set)
 	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
 		{
 			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
@@ -259,6 +273,23 @@ void HackableObject::refreshParticleFx()
 		this->hackParticles3->stop(1.5f);
 		this->hackParticles4->stop(1.5f);
 		this->hackParticles5->stop(1.5f);
+	}
+
+	if (std::any_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+		{
+			return (!attribute->isCooldownComplete());
+		}))
+	{
+		this->createHackCircle();
+		this->hackCircle->stopAllActions();
+		this->hackCircle->runAction(RepeatForever::create(RotateBy::create(5.0f, 360.0f)));
+		this->hackCircle->runAction(FadeTo::create(0.75f, 255));
+	}
+	else if (this->hackCircle != nullptr)
+	{
+		this->hackCircle->setVisible(false);
+		this->hackCircle->stopAllActions();
+		this->hackCircle->runAction(FadeTo::create(0.75f, 0));
 	}
 }
 
@@ -454,6 +485,16 @@ void HackableObject::createSensingParticles()
 		this->hackParticlesNode->addChild(this->hackParticles3);
 		this->hackParticlesNode->addChild(this->hackParticles4);
 		this->hackParticlesNode->addChild(this->hackParticles5);
+	}
+}
+
+void HackableObject::createHackCircle()
+{
+	if (this->hackCircle == nullptr)
+	{
+		this->hackCircle = Sprite::create(FXResources::HackerCircle);
+
+		this->hackParticlesNode->addChild(this->hackCircle);
 	}
 }
 

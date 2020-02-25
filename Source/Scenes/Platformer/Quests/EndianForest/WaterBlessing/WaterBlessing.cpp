@@ -78,7 +78,7 @@ void WaterBlessing::onComplete()
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Blessings_BlessingGranted::create(),
 		Strings::Platformer_Blessings_BlessingOfWater::create(),
-		ObjectResources::Items_Misc_EssenceOfFrost,
+		ObjectResources::Items_Misc_EssenceOfWater,
 		SoundResources::Notifications_NotificationGood1
 	));
 }

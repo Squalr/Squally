@@ -427,6 +427,7 @@ namespace ObjectResources
 	extern const std::string Items_Misc_EssenceOfNature;
 	extern const std::string Items_Misc_EssenceOfShadow;
 	extern const std::string Items_Misc_EssenceOfUndeath;
+	extern const std::string Items_Misc_EssenceOfWater;
 	extern const std::string Items_Misc_EssenceOfWind;
 	extern const std::string Items_Misc_Goblet;
 	extern const std::string Items_Misc_Hammer;
@@ -504,6 +505,9 @@ namespace ObjectResources
 	extern const std::string Transportation_Airship1_cannon_holder;
 	extern const std::string Transportation_Airship1_hull;
 	extern const std::string Transportation_Airship1_rope;
+	extern const std::string Transportation_Airship1_rope2;
+	extern const std::string Transportation_Airship1_rope3;
+	extern const std::string Transportation_Airship1_rope4;
 	extern const std::string Transportation_Airship1_rudder;
 	extern const std::string Transportation_Airship1_sand_bag;
 	extern const std::string Transportation_Airship1_side_air_sacks;

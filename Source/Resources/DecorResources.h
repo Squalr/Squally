@@ -32,6 +32,10 @@ namespace DecorResources
 	extern const std::string Castle_Throne1;
 	extern const std::string Castle_Throne2;
 	extern const std::string Castle_Window1;
+	extern const std::string Caverns_Background_CavernsBg1;
+	extern const std::string Caverns_Background_CavernsBg2;
+	extern const std::string Caverns_Background_CavernsBg3;
+	extern const std::string Caverns_Background_CavernsBg4;
 	extern const std::string Caverns_Background_background_1_1;
 	extern const std::string Caverns_Background_background_1_2;
 	extern const std::string Caverns_Background_background_1_3;
@@ -63,6 +67,10 @@ namespace DecorResources
 	extern const std::string Caverns_Background_middleground_3_3;
 	extern const std::string Caverns_Foreground_Pillar1;
 	extern const std::string Caverns_Foreground_Pillar2;
+	extern const std::string Caverns_Foreground_PillarBrown1;
+	extern const std::string Caverns_Foreground_PillarBrown2;
+	extern const std::string Caverns_Foreground_PillarBrownDark1;
+	extern const std::string Caverns_Foreground_PillarBrownDark2;
 	extern const std::string Caverns_Foreground_tree_branch_foreground_1;
 	extern const std::string Caverns_Foreground_tree_branch_foreground_2;
 	extern const std::string Caverns_Foreground_tree_branch_foreground_3;
@@ -285,9 +293,6 @@ namespace DecorResources
 	extern const std::string Crypts_stone_7;
 	extern const std::string Crypts_yellow_bud;
 	extern const std::string Crypts_yellow_flower_bud;
-	extern const std::string Forest_Background_BackgroundHill1;
-	extern const std::string Forest_Background_BackgroundHill2;
-	extern const std::string Forest_Background_BackgroundHill3;
 	extern const std::string Forest_Background_Clouds_01;
 	extern const std::string Forest_Background_DarkForestClouds1;
 	extern const std::string Forest_Background_DarkForestClouds2;

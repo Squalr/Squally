@@ -7,6 +7,7 @@
 
 const std::string BackgroundResources::Bliss = "Private/Platformer/Backgrounds/Bliss.png";
 const std::string BackgroundResources::BlueSky = "Private/Platformer/Backgrounds/BlueSky.png";
+const std::string BackgroundResources::Caverns = "Private/Platformer/Backgrounds/Caverns.png";
 const std::string BackgroundResources::Crypt1 = "Private/Platformer/Backgrounds/Crypt1.png";
 const std::string BackgroundResources::Crypt2 = "Private/Platformer/Backgrounds/Crypt2.png";
 const std::string BackgroundResources::Crypt3 = "Private/Platformer/Backgrounds/Crypt3.png";

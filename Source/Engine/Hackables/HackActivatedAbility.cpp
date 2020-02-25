@@ -15,7 +15,7 @@ HackActivatedAbility* HackActivatedAbility::create(std::function<void()> onActiv
 	return instance;
 }
 
-HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(requiredEq, duration, iconResource, name, hackablePreview)
+HackActivatedAbility::HackActivatedAbility(std::function<void()> onActivate, std::function<void()> onDeactivate, int requiredEq, float duration, std::string iconResource, LocalizedString* name, HackablePreview* hackablePreview, Clippy* clippy) : HackableAttribute(requiredEq, duration, 0.0f, iconResource, name, hackablePreview)
 {
 	this->onActivate = onActivate;
 	this->onDeactivate = onDeactivate;

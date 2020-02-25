@@ -616,4 +616,5 @@ namespace FXResources
 	extern const std::string WeakMinded_WeakMinded_0029;
 	extern const std::string WeakMinded_WeakMinded_0030;
 	extern const std::string WeakMinded_WeakMinded_0031;
+	extern const std::string HackerCircle;
 };

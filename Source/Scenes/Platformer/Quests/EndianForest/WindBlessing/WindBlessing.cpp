@@ -15,11 +15,13 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -69,7 +71,12 @@ void WindBlessing::onComplete()
 	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
-	// TODO: Notify user
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+		Strings::Platformer_Blessings_BlessingGranted::create(),
+		Strings::Platformer_Blessings_BlessingOfWind::create(),
+		ObjectResources::Items_Misc_EssenceOfWind,
+		SoundResources::Notifications_NotificationGood1
+	));
 }
 
 void WindBlessing::onSkipped()

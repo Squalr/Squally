@@ -8,6 +8,7 @@
 namespace cocos2d
 {
 	class Renderer;
+	class Sprite;
 	class Value;
 	typedef std::map<std::string, Value> ValueMap;
 }
@@ -90,6 +91,7 @@ private:
 
 	void refreshParticleFx();
 	void createSensingParticles();
+	void createHackCircle();
 	void unregisterAllHackables();
 
 	cocos2d::Node* hackParticlesNode;
@@ -98,6 +100,7 @@ private:
 	SmartParticles* hackParticles3;
 	SmartParticles* hackParticles4;
 	SmartParticles* hackParticles5;
+	cocos2d::Sprite* hackCircle;
 	cocos2d::Node* uiElements;
 	cocos2d::Node* uiElementsRain;
 	HackButton* hackButton;
