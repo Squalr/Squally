@@ -77,6 +77,11 @@ LocalizedString* Track::getArtistName()
 	return this->artistName == nullptr ? nullptr : this->artistName->clone();
 }
 
+std::string Track::getTrackResource()
+{
+	return this->music == nullptr ? nullptr : this->music->getSoundResource();
+}
+
 void Track::push(float delay)
 {
 	if (this->music != nullptr)

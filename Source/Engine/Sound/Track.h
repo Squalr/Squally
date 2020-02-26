@@ -15,6 +15,7 @@ public:
 
 	LocalizedString* getTrackName();
 	LocalizedString* getArtistName();
+	std::string getTrackResource();
 
 protected:
 	Track(std::string musicResource, LocalizedString* trackName, LocalizedString* artistName);

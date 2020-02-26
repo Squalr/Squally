@@ -35,5 +35,7 @@ private:
 	LocalizedString* trackString;
 	LocalizedString* artistString;
 
+	static std::string CachedLastPlayedTrack;
+
 	static const cocos2d::Vec2 ScrollOutDelta;
 };

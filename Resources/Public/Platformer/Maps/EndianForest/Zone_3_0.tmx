@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="717">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="65" nextobjectid="718">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -74,7 +74,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="630" name="dark-grass" type="terrain" x="8557.9" y="1096.87">
-   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -2278.74,1800.77 -2840.24,1301.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5709.6,321.92 -5570.03,341.611 -4909.92,334.261 -3647.9,311.43 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1686.8,227.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
+   <polygon points="424.577,927.528 436.163,627.293 -704.07,630.51 -1097.95,765.919 -1110.17,1800.21 -2278.74,1800.77 -2840.24,1301.25 -3633.47,1071.09 -4205.76,838.41 -5077.75,678.483 -5714.51,640.093 -5709.6,321.92 -5570.03,341.611 -4909.92,334.261 -3647.9,311.43 -2805.41,119.824 -2525.9,119.172 788.767,119.081 1694.8,87.829 1690.64,1333.86 1702.67,1967.05 49.3764,2141.29 -522.224,2142.07 -656.494,1861.65 -740.07,1636.59 -668.935,1142.5 -347.864,938.448"/>
   </object>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="5282.75">
    <polygon points="-2172.51,-2466.57 -1471.65,-2083.26 -1475.38,-1313.25 -319.177,-1314.27 80.8231,-1553.22 3576.95,-1551.21 3522.05,-200.696 -6846.03,-194.69 -6810.77,-2714.44 -5455.05,-2721.6 -3415.15,-2638.44 -2835.26,-2593.27"/>
@@ -150,7 +150,7 @@
     <property name="transition" value="exit"/>
    </properties>
   </object>
-  <object id="707" name="edge-portal" type="object" x="10060" y="680.574" width="199.918" height="640.851">
+  <object id="707" name="edge-portal" type="object" x="10060" y="556.574" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_2"/>
@@ -235,6 +235,11 @@
   <object id="706" name="spawn" type="object" x="3128" y="1308.73" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="717" name="spawn" type="object" x="9576" y="1040" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

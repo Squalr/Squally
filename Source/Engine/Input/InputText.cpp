@@ -122,7 +122,6 @@ void InputText::setString(const std::string& label)
 		{
 			this->setPositionY(this->initCoords.y);
 		}
-		
 	}
 }
 

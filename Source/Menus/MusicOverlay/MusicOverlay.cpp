@@ -20,6 +20,7 @@
 using namespace cocos2d;
 
 const Vec2 MusicOverlay::ScrollOutDelta = Vec2(0.0f, -128.0f);
+std::string MusicOverlay::CachedLastPlayedTrack = "";
 
 MusicOverlay* MusicOverlay::create()
 {
@@ -90,6 +91,15 @@ void MusicOverlay::showOverlayForTrack(Track* track)
 	{
 		return;
 	}
+
+	std::string trackResource = track->getTrackResource();
+
+	if (MusicOverlay::CachedLastPlayedTrack == trackResource)
+	{
+		return;
+	}
+
+	MusicOverlay::CachedLastPlayedTrack = trackResource;
 
 	this->trackLabel->setStringReplacementVariables(track->getTrackName());
 	this->artistLabel->setStringReplacementVariables(track->getArtistName());

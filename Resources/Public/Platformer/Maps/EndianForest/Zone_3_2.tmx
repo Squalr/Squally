@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="740">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="740">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -24,7 +24,7 @@
  </objectgroup>
  <objectgroup id="16" name="WaterfallGround">
   <properties>
-   <property name="depth" type="float" value="-512"/>
+   <property name="depth" type="float" value="-912"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4785.81" y="369.6" width="13257.6" height="1140">
@@ -261,7 +261,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="667" name="dark-grass" type="terrain" x="6727.16" y="4770.75">
-   <polygon points="-2627.65,-2739.26 305.553,-2711.27 1865.03,-2720.28 3600.13,-2743.7 3550.8,-659.749 -6862.03,-658.69 -6810.77,-2714.44 -5503.05,-2737.6 -5015.36,-1385.84 -4288.81,-1156.38 -3881.51,-1153.24 -3131.26,-1389.27"/>
+   <polygon points="-2627.65,-2739.26 305.553,-2711.27 1536.13,-2739.7 1542.8,-659.749 -6862.03,-658.69 -6810.77,-2714.44 -5503.05,-2737.6 -5015.36,-1385.84 -4288.81,-1156.38 -3881.51,-1153.24 -3131.26,-1389.27"/>
   </object>
   <object id="715" name="dark-grass" type="terrain" x="2321.06" y="4748">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
@@ -271,8 +271,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Forest/Flower10" type="decor" x="8283.44" y="1944.5" width="199" height="133"/>
-  <object id="500" name="Forest/Flower10" type="decor" x="7720.5" y="1943.6" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="7478.08" y="1940.57" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -286,16 +285,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="623" name="life-stone" type="object" x="6745.94" y="1642.25" width="146" height="423"/>
-  <object id="641" name="edge-portal" type="object" x="10029.3" y="1397.89" width="199.918" height="640.851">
+  <object id="641" name="edge-portal" type="object" x="7713.18" y="1413.65" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_3"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="655" name="help-totem-wind" type="object" x="8640.48" y="1804.16" width="248" height="248">
-   <properties>
-    <property name="tag" value="help-totem-wind"/>
    </properties>
   </object>
   <object id="707" name="edge-portal" type="object" x="-4" y="1420.57" width="199.918" height="640.851">
@@ -303,13 +297,6 @@
     <property name="direction" value="left"/>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="735" name="gate" type="object" x="7110.7" y="1636.48" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="EndianForest/Zone_3_5"/>
-    <property name="required-item" value="gate-key-ef"/>
-    <property name="transition" value="gate"/>
    </properties>
   </object>
   <object id="736" name="portal" type="object" x="5658.33" y="1621.81" width="450.603" height="423.038">
@@ -366,7 +353,7 @@
     <property name="attached-behavior" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="9532.02" y="1907.5" width="128" height="128">
+  <object id="650" name="spawn" type="object" x="7311.02" y="1929.5" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
    </properties>
@@ -374,11 +361,6 @@
   <object id="716" name="spawn" type="object" x="424" y="1912" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="737" name="spawn" type="object" x="7263.27" y="1926.91" width="128" height="128">
-   <properties>
-    <property name="transition" value="gate"/>
    </properties>
   </object>
   <object id="738" name="spawn" type="object" x="5820" y="1920" width="128" height="128">
@@ -391,7 +373,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="water" type="object" x="-122.5" y="2097.32" width="10501" height="2085.35"/>
+  <object id="718" name="water" type="object" x="-122.5" y="2097.32" width="8449" height="2085.35"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
@@ -423,6 +405,6 @@
   </properties>
   <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="62.81" y="1882.6" width="242" height="738"/>
   <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="6202.38" y="1937.9" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="8335.62" y="1821.8" width="242" height="738"/>
+  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="6996.23" y="2033.92" width="242" height="738"/>
  </objectgroup>
 </map>
