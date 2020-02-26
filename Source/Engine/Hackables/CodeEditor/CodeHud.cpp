@@ -213,8 +213,15 @@ void CodeHud::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->applyChangesButton->setMouseClickCallback(CC_CALLBACK_0(CodeHud::onAccept, this));
-	this->cancelButton->setMouseClickCallback(CC_CALLBACK_0(CodeHud::onCancel, this));
+	this->applyChangesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->onAccept();
+	});
+
+	this->cancelButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		this->onCancel();
+	});
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
@@ -672,6 +679,7 @@ void CodeHud::onAccept()
 		this->lexicon->close();
 	}
 
+	this->functionWindow->unfocus();
 	this->scriptList->saveScripts();
 
 	std::string scriptText = this->functionWindow->getText();
@@ -700,6 +708,7 @@ void CodeHud::onCancel()
 		this->getLexicon()->close();
 	}
 
+	this->functionWindow->unfocus();
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);

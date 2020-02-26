@@ -148,33 +148,44 @@ void HackableObject::update(float dt)
 			this->hasRelocatedUI = true;
 		}
 	}
-	
+
 	if (!this->trackedAttributes.empty())
 	{
-		float highestRatio = 0.0f;
+		// Remove attributes that have timed out and are available cooldown wise
+		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
+		{
+			return (attribute->getElapsedDuration() >= attribute->getDuration()) && attribute->isCooldownComplete();
+		}), this->trackedAttributes.end());
 
-		if (!this->timeRemainingBar->isVisible())
+		bool allComplete = std::all_of(this->trackedAttributes.begin(), this->trackedAttributes.end(), [=](HackableAttribute* attribute)
+			{
+				return (attribute->getElapsedDuration() >= attribute->getDuration());
+			});
+
+		// Show/hide progress bar depending if durations are complete
+		if (allComplete && this->timeRemainingBar->isVisible())
+		{
+			this->timeRemainingBar->setVisible(false);
+			this->refreshParticleFx();
+		}
+		else if (!allComplete && !this->timeRemainingBar->isVisible())
 		{
 			this->timeRemainingBar->setVisible(true);
 			this->refreshParticleFx();
 		}
 
-		// Remove attributes that have timed out
-		this->trackedAttributes.erase(std::remove_if(this->trackedAttributes.begin(), this->trackedAttributes.end(), [](HackableAttribute* attribute)
-		{
-			return attribute->getElapsedDuration() >= attribute->getDuration();
-		}), this->trackedAttributes.end());
-
+		// All attributes removed! Refresh PFX
 		if (this->trackedAttributes.empty())
 		{
-			this->timeRemainingBar->setVisible(false);
 			this->refreshParticleFx();
 		}
 
+		float highestRatio = 0.0f;
+
 		// If multiple hacks are enabled, just pick the highest ratio for now
-		for (auto it = this->trackedAttributes.begin(); it != this->trackedAttributes.end(); it++)
+		for (auto next : this->trackedAttributes)
 		{
-			highestRatio = std::max(highestRatio, (*it)->getElapsedDuration() / (*it)->getDuration());
+			highestRatio = std::max(highestRatio, next->getElapsedDuration() / next->getDuration());
 		}
 
 		this->timeRemainingBar->setProgress(1.0f - highestRatio);
@@ -287,8 +298,6 @@ void HackableObject::refreshParticleFx()
 	}
 	else if (this->hackCircle != nullptr)
 	{
-		this->hackCircle->setVisible(false);
-		this->hackCircle->stopAllActions();
 		this->hackCircle->runAction(FadeTo::create(0.75f, 0));
 	}
 }
