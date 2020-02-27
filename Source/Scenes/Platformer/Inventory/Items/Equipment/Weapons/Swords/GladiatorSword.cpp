@@ -20,7 +20,7 @@ GladiatorSword* GladiatorSword::create()
 	return instance;
 }
 
-GladiatorSword::GladiatorSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+GladiatorSword::GladiatorSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
 	// Health
 	0,
 	// Mana

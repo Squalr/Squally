@@ -20,7 +20,7 @@ BoneHammer* BoneHammer::create()
 	return instance;
 }
 
-BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
 	// Health
 	0,
 	// Mana

@@ -20,7 +20,7 @@ IvoryBow* IvoryBow::create()
 	return instance;
 }
 
-IvoryBow::IvoryBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+IvoryBow::IvoryBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 40, 48, ItemStats(
 	// Health
 	0,
 	// Mana

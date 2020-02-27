@@ -20,7 +20,7 @@ Gladius* Gladius::create()
 	return instance;
 }
 
-Gladius::Gladius() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Gladius::Gladius() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 10, 13, ItemStats(
 	// Health
 	0,
 	// Mana

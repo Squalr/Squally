@@ -20,7 +20,7 @@ CandySword* CandySword::create()
 	return instance;
 }
 
-CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+CandySword::CandySword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
 	// Health
 	0,
 	// Mana

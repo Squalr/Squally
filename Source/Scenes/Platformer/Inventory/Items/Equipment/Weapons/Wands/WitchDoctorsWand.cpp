@@ -20,7 +20,7 @@ WitchDoctorsWand* WitchDoctorsWand::create()
 	return instance;
 }
 
-WitchDoctorsWand::WitchDoctorsWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+WitchDoctorsWand::WitchDoctorsWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 8, ItemStats(
 	// Health
 	0,
 	// Mana

@@ -20,7 +20,7 @@ ArcaneWand* ArcaneWand::create()
 	return instance;
 }
 
-ArcaneWand::ArcaneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+ArcaneWand::ArcaneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 20, ItemStats(
 	// Health
 	0,
 	// Mana

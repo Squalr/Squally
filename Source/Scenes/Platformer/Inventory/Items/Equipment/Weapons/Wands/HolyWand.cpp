@@ -20,7 +20,7 @@ HolyWand* HolyWand::create()
 	return instance;
 }
 
-HolyWand::HolyWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+HolyWand::HolyWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 28, ItemStats(
 	// Health
 	0,
 	// Mana

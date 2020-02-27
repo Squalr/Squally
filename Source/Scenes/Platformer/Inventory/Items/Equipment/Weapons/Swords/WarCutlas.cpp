@@ -20,7 +20,7 @@ WarCutlas* WarCutlas::create()
 	return instance;
 }
 
-WarCutlas::WarCutlas() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+WarCutlas::WarCutlas() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), 8, 11, ItemStats(
 	// Health
 	0,
 	// Mana

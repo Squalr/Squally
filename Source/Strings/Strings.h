@@ -4854,6 +4854,21 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Axes_BlueAxe() = default;
 	};
 
+	class Items_Equipment_Weapons_Axes_Cleaver : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Axes_Cleaver* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Axes_Cleaver();
+		virtual ~Items_Equipment_Weapons_Axes_Cleaver() = default;
+	};
+
 	class Items_Equipment_Weapons_Axes_FireAxe : public LocalizedString
 	{
 	public:
@@ -5347,21 +5362,6 @@ namespace Strings
 	private:
 		Items_Equipment_Weapons_Swords_CandySword();
 		virtual ~Items_Equipment_Weapons_Swords_CandySword() = default;
-	};
-
-	class Items_Equipment_Weapons_Swords_Cleaver : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Swords_Cleaver* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Swords_Cleaver();
-		virtual ~Items_Equipment_Weapons_Swords_Cleaver() = default;
 	};
 
 	class Items_Equipment_Weapons_Swords_CrystalSword : public LocalizedString

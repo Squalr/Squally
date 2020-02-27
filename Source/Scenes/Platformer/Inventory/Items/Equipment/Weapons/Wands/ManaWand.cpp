@@ -20,7 +20,7 @@ ManaWand* ManaWand::create()
 	return instance;
 }
 
-ManaWand::ManaWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+ManaWand::ManaWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 12, 16, ItemStats(
 	// Health
 	0,
 	// Mana

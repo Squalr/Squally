@@ -20,7 +20,7 @@ ChieftainsWand* ChieftainsWand::create()
 	return instance;
 }
 
-ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 20, 24, ItemStats(
 	// Health
 	0,
 	// Mana

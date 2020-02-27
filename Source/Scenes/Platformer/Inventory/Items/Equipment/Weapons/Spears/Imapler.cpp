@@ -20,7 +20,7 @@ Impaler* Impaler::create()
 	return instance;
 }
 
-Impaler::Impaler() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Impaler::Impaler() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
 	// Health
 	0,
 	// Mana

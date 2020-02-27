@@ -20,7 +20,7 @@ Harbinger* Harbinger::create()
 	return instance;
 }
 
-Harbinger::Harbinger() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Harbinger::Harbinger() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 40, 48, ItemStats(
 	// Health
 	0,
 	// Mana

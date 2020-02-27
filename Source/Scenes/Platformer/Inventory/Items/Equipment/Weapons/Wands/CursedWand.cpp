@@ -20,7 +20,7 @@ CursedWand* CursedWand::create()
 	return instance;
 }
 
-CursedWand::CursedWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+CursedWand::CursedWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 12, 16, ItemStats(
 	// Health
 	0,
 	// Mana

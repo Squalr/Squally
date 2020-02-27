@@ -20,7 +20,7 @@ IronMace* IronMace::create()
 	return instance;
 }
 
-IronMace::IronMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+IronMace::IronMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 14, ItemStats(
 	// Health
 	0,
 	// Mana

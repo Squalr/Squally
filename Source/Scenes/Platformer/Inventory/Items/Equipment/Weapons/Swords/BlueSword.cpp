@@ -20,7 +20,7 @@ BlueSword* BlueSword::create()
 	return instance;
 }
 
-BlueSword::BlueSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+BlueSword::BlueSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 32, ItemStats(
 	// Health
 	0,
 	// Mana

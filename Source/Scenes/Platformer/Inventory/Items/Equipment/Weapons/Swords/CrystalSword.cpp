@@ -20,7 +20,7 @@ CrystalSword* CrystalSword::create()
 	return instance;
 }
 
-CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
 	// Health
 	0,
 	// Mana

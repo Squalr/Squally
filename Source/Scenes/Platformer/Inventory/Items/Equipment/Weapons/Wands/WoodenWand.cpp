@@ -20,7 +20,7 @@ WoodenWand* WoodenWand::create()
 	return instance;
 }
 
-WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 1, 2, ItemStats(
+WoodenWand::WoodenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 2, 4, ItemStats(
 	// Health
 	0,
 	// Mana

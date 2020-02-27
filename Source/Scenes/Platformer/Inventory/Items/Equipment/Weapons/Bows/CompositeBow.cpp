@@ -20,7 +20,7 @@ CompositeBow* CompositeBow::create()
 	return instance;
 }
 
-CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), 3, 6, ItemStats(
+CompositeBow::CompositeBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), 6, 8, ItemStats(
 	// Health
 	0,
 	// Mana

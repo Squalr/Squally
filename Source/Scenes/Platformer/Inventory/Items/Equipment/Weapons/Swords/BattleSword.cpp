@@ -20,7 +20,7 @@ BattleSword* BattleSword::create()
 	return instance;
 }
 
-BattleSword::BattleSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+BattleSword::BattleSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 32, ItemStats(
 	// Health
 	0,
 	// Mana

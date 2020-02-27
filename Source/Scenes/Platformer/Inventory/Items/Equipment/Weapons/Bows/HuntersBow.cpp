@@ -20,7 +20,7 @@ HuntersBow* HuntersBow::create()
 	return instance;
 }
 
-HuntersBow::HuntersBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+HuntersBow::HuntersBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 12, ItemStats(
 	// Health
 	0,
 	// Mana

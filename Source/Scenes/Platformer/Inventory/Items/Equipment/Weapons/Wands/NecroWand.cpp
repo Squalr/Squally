@@ -20,7 +20,7 @@ NecroWand* NecroWand::create()
 	return instance;
 }
 
-NecroWand::NecroWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+NecroWand::NecroWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 28, ItemStats(
 	// Health
 	0,
 	// Mana

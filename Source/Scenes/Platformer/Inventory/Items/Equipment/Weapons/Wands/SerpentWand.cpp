@@ -20,7 +20,7 @@ SerpentWand* SerpentWand::create()
 	return instance;
 }
 
-SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 10, 12, ItemStats(
 	// Health
 	0,
 	// Mana

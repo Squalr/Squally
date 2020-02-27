@@ -20,7 +20,7 @@ Judgement* Judgement::create()
 	return instance;
 }
 
-Judgement::Judgement() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Judgement::Judgement() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 24, ItemStats(
 	// Health
 	0,
 	// Mana

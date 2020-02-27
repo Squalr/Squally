@@ -20,7 +20,7 @@ SteelSword* SteelSword::create()
 	return instance;
 }
 
-SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+SteelSword::SteelSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 6 }}), 6, 8, ItemStats(
 	// Health
 	0,
 	// Mana

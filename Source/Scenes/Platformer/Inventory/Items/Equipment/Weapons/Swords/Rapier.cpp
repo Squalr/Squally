@@ -20,7 +20,7 @@ Rapier* Rapier::create()
 	return instance;
 }
 
-Rapier::Rapier() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Rapier::Rapier() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), 8, 11, ItemStats(
 	// Health
 	0,
 	// Mana

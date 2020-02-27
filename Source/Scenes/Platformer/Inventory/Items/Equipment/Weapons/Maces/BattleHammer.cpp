@@ -20,7 +20,7 @@ BattleHammer* BattleHammer::create()
 	return instance;
 }
 
-BattleHammer::BattleHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+BattleHammer::BattleHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 40, 48, ItemStats(
 	// Health
 	0,
 	// Mana

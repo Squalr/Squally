@@ -20,7 +20,7 @@ SpikedClub* SpikedClub::create()
 	return instance;
 }
 
-SpikedClub::SpikedClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+SpikedClub::SpikedClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 11, ItemStats(
 	// Health
 	0,
 	// Mana

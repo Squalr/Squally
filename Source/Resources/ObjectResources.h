@@ -341,6 +341,7 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Gear_Trinkets_TopazNecklace;
 	extern const std::string Items_Equipment_Weapons_Axes_BattleAxe;
 	extern const std::string Items_Equipment_Weapons_Axes_BlueAxe;
+	extern const std::string Items_Equipment_Weapons_Axes_Cleaver;
 	extern const std::string Items_Equipment_Weapons_Axes_FireAxe;
 	extern const std::string Items_Equipment_Weapons_Axes_HandAxe;
 	extern const std::string Items_Equipment_Weapons_Axes_HeadSplitter;
@@ -383,7 +384,6 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Weapons_Swords_BattleSword;
 	extern const std::string Items_Equipment_Weapons_Swords_BlueSword;
 	extern const std::string Items_Equipment_Weapons_Swords_CandySword;
-	extern const std::string Items_Equipment_Weapons_Swords_Cleaver;
 	extern const std::string Items_Equipment_Weapons_Swords_CrystalSword;
 	extern const std::string Items_Equipment_Weapons_Swords_FangBlade;
 	extern const std::string Items_Equipment_Weapons_Swords_GladiatorSword;

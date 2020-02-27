@@ -20,7 +20,7 @@ TaserRod* TaserRod::create()
 	return instance;
 }
 
-TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 20, ItemStats(
 	// Health
 	0,
 	// Mana

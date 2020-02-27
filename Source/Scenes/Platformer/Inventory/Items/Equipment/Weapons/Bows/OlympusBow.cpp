@@ -20,7 +20,7 @@ OlympusBow* OlympusBow::create()
 	return instance;
 }
 
-OlympusBow::OlympusBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+OlympusBow::OlympusBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
 	// Health
 	0,
 	// Mana

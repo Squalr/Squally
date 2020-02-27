@@ -20,7 +20,7 @@ Katana* Katana::create()
 	return instance;
 }
 
-Katana::Katana() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+Katana::Katana() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 24, ItemStats(
 	// Health
 	0,
 	// Mana

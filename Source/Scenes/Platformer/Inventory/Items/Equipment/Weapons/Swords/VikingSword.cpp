@@ -20,7 +20,7 @@ VikingSword* VikingSword::create()
 	return instance;
 }
 
-VikingSword::VikingSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 3, 6, ItemStats(
+VikingSword::VikingSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 11, ItemStats(
 	// Health
 	0,
 	// Mana
