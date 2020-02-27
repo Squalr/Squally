@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class EntityAttackBehavior;
 class PlatformerAttack;
 class Squally;
 
@@ -21,6 +22,8 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+
+	void loadWeaponAttacks(EntityAttackBehavior* attackBehavior);
 
 	Squally* squally;
 };

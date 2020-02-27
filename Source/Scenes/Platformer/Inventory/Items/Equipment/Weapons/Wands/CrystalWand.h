@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 
-class CrystalWand : public Weapon
+class CrystalWand : public Wand
 {
 public:
 	static CrystalWand* create();
@@ -21,5 +21,5 @@ protected:
 	virtual ~CrystalWand();
 
 private:
-	typedef Weapon super;
+	typedef Wand super;
 };

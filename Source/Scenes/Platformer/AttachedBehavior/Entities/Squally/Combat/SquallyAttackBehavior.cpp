@@ -5,7 +5,11 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Punch.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/BattleAxe.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Slash.h"
 
 #include "Resources/UIResources.h"
 
@@ -45,5 +49,15 @@ void SquallyAttackBehavior::onLoad()
 	this->squally->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		attackBehavior->registerAttack(Punch::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed));
+
+		this->loadWeaponAttacks(attackBehavior);
+	});
+}
+
+void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavior)
+{
+	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)
+	{
+		Weapon* weapon = inventoryBehavior->getEquipmentInventory()->getWeapon();
 	});
 }

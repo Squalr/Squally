@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
 
-class WarBow : public Weapon
+class WarBow : public Bow
 {
 public:
 	static WarBow* create();
@@ -21,5 +21,5 @@ protected:
 	virtual ~WarBow();
 
 private:
-	typedef Weapon super;
+	typedef Bow super;
 };

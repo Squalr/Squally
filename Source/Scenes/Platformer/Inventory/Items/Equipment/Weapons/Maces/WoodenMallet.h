@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/Mace.h"
 
-class WoodenMallet : public Weapon
+class WoodenMallet : public Mace
 {
 public:
 	static WoodenMallet* create();
@@ -21,5 +21,5 @@ protected:
 	virtual ~WoodenMallet();
 
 private:
-	typedef Weapon super;
+	typedef Mace super;
 };

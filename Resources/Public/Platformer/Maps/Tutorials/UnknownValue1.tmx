@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="900">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="58" nextobjectid="903">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Crypt3"/>
