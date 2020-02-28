@@ -21,6 +21,13 @@ protected:
 
 private:
 	typedef AttachedBehavior super;
+	
+	virtual void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback);
+	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
+
+	int bonusArmor;
+	int bonusAttack;
+	float bonusSpeed;
 
 	float timelineSpeed;
 };

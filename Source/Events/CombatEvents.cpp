@@ -16,8 +16,6 @@ const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAS
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
-const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_TAKEN";
-const std::string CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_OR_HEALING_DELT";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_ENTITY_TIMELINE_RESET";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUSE_TIMELINE_CINEMATIC";
@@ -25,8 +23,6 @@ const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMEL
 const std::string CombatEvents::EventResumeTimelineCinematic = "EVENT_COMBAT_RESUME_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_COMBAT_INTERRUPT_TIMELINE";
 const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
-const std::string CombatEvents::EventDamageOrHealingDelt = "EVENT_COMBAT_DAMAGE_OR_HEALING_DELT";
-const std::string CombatEvents::EventDamageOrHealing = "EVENT_COMBAT_DAMAGE_OR_HEALING";
 const std::string CombatEvents::EventCastBlocked = "EVENT_COMBAT_CAST_BLOCKED";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_COMBAT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_COMBAT_FINISHED";
@@ -34,6 +30,18 @@ const std::string CombatEvents::EventGiveExp = "EVENT_COMBAT_GIVE_EXP";
 const std::string CombatEvents::EventGiveRewards = "EVENT_COMBAT_GIVE_REWARDS";
 const std::string CombatEvents::EventReturnToMap = "EVENT_COMBAT_RETURN_TO_MAP";
 const std::string CombatEvents::EventHackableCombatCue = "EVENT_COMBAT_HACKABLE_COMBAT_CUE";
+const std::string CombatEvents::EventDamageDelt = "EVENT_COMBAT_DAMAGE_DELT";
+const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
+const std::string CombatEvents::EventHealingDelt = "EVENT_COMBAT_HEALING_DELT";
+const std::string CombatEvents::EventHealing = "EVENT_COMBAT_HEALING";
+const std::string CombatEvents::EventEntityBuffsModifyDamageTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
+const std::string CombatEvents::EventEntityBuffsModifyDamageDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
+const std::string CombatEvents::EventEntityBuffsModifyHealingTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
+const std::string CombatEvents::EventEntityBuffsModifyHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
+const std::string CombatEvents::EventEntityStatsModifyDamageTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_TAKEN";
+const std::string CombatEvents::EventEntityStatsModifyDamageDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_DELT";
+const std::string CombatEvents::EventEntityStatsModifyHealingTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_TAKEN";
+const std::string CombatEvents::EventEntityStatsModifyHealingDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_DELT";
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
@@ -163,42 +171,10 @@ void CombatEvents::TriggerBuffApplied(BuffAppliedArgs args)
 	);
 }
 
-void CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken,
-		&args
-	);
-}
-
-void CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt,
-		&args
-	);
-}
-
 void CombatEvents::TriggerEntityTimelineReset(TimelineResetArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventEntityTimelineReset,
-		&args
-	);
-}
-
-void CombatEvents::TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventDamageOrHealingDelt,
-		&args
-	);
-}
-
-void CombatEvents::TriggerDamageOrHealing(DamageOrHealingArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		CombatEvents::EventDamageOrHealing,
 		&args
 	);
 }
@@ -252,5 +228,101 @@ void CombatEvents::TriggerHackableCombatCue()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventHackableCombatCue
+	);
+}
+
+void CombatEvents::TriggerDamageDelt(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventDamageDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerHealingDelt(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventHealingDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerDamage(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventDamage,
+		&args
+	);
+}
+
+void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventHealing,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyDamageTaken,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyDamageDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyHealingTaken(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyHealingTaken,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyHealingDelt(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyHealingDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityStatsModifyDamageTaken(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityStatsModifyDamageTaken,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityStatsModifyDamageDelt(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityStatsModifyDamageDelt,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityStatsModifyHealingTaken,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealingArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityStatsModifyHealingDelt,
+		&args
 	);
 }

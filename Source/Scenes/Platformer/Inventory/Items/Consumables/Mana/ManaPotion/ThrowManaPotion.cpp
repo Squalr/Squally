@@ -79,7 +79,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, PlatformerEntity* t
 			int restore = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
 
 			// TODO: This needs to be mana based
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
+			CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

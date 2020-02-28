@@ -72,7 +72,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 
 		if (entity != nullptr)
 		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

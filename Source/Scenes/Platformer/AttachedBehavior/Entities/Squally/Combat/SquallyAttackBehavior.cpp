@@ -53,7 +53,6 @@ void SquallyAttackBehavior::onLoad()
 {
 	this->squally->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-
 		this->loadWeaponAttacks(attackBehavior);
 	});
 }
@@ -66,27 +65,27 @@ void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavi
 
 		if (static_cast<Axe*>(weapon) != nullptr)
 		{
-			this->loadAxeAttacks(attackBehavior, inventoryBehavior, static_cast<Axe*>(weapon));
+			this->loadAxeAttacks(attackBehavior, static_cast<Axe*>(weapon));
 		}
 		else if (static_cast<Bow*>(weapon) != nullptr)
 		{
-			this->loadBowAttacks(attackBehavior, inventoryBehavior, static_cast<Bow*>(weapon));
+			this->loadBowAttacks(attackBehavior, static_cast<Bow*>(weapon));
 		}
 		else if (static_cast<Mace*>(weapon) != nullptr)
 		{
-			this->loadMaceAttacks(attackBehavior, inventoryBehavior, static_cast<Mace*>(weapon));
+			this->loadMaceAttacks(attackBehavior, static_cast<Mace*>(weapon));
 		}
 		else if (static_cast<Spear*>(weapon) != nullptr)
 		{
-			this->loadSpearAttacks(attackBehavior, inventoryBehavior, static_cast<Spear*>(weapon));
+			this->loadSpearAttacks(attackBehavior, static_cast<Spear*>(weapon));
 		}
 		else if (static_cast<Sword*>(weapon) != nullptr)
 		{
-			this->loadSwordAttacks(attackBehavior, inventoryBehavior, static_cast<Sword*>(weapon));
+			this->loadSwordAttacks(attackBehavior, static_cast<Sword*>(weapon));
 		}
 		else if (static_cast<Wand*>(weapon) != nullptr)
 		{
-			this->loadWandAttacks(attackBehavior, inventoryBehavior, static_cast<Wand*>(weapon));
+			this->loadWandAttacks(attackBehavior, static_cast<Wand*>(weapon));
 		}
 		else
 		{
@@ -100,61 +99,61 @@ void SquallyAttackBehavior::loadUnarmedAttacks(EntityAttackBehavior* attackBehav
 	attackBehavior->registerAttack(Punch::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed));
 }
 
-void SquallyAttackBehavior::loadAxeAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Axe* sword)
+void SquallyAttackBehavior::loadAxeAttacks(EntityAttackBehavior* attackBehavior, Axe* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadBowAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Bow* sword)
+void SquallyAttackBehavior::loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Mace* sword)
+void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadSpearAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Spear* sword)
+void SquallyAttackBehavior::loadSpearAttacks(EntityAttackBehavior* attackBehavior, Spear* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadSwordAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Sword* sword)
+void SquallyAttackBehavior::loadSwordAttacks(EntityAttackBehavior* attackBehavior, Sword* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadWandAttacks(EntityAttackBehavior* attackBehavior,EntityInventoryBehavior* inventoryBehavior, Wand* sword)
+void SquallyAttackBehavior::loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword, inventoryBehavior);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-std::tuple<int, int> SquallyAttackBehavior::computeWeaponDamageRange(Weapon* weapon, EntityInventoryBehavior* inventoryBehavior)
+std::tuple<int, int> SquallyAttackBehavior::computeWeaponDamageRange(Weapon* weapon)
 {
 	int minAttack = 0;
 	int maxAttack = 0;
@@ -163,12 +162,6 @@ std::tuple<int, int> SquallyAttackBehavior::computeWeaponDamageRange(Weapon* wea
 	{
 		minAttack += weapon->getMinAttack();
 		maxAttack += weapon->getMaxAttack();
-	}
-
-	for (auto next : inventoryBehavior->getEquipmentInventory()->getEquipment())
-	{
-		minAttack += next->getItemStats().attackBonus;
-		maxAttack += next->getItemStats().attackBonus;
 	}
 
 	return std::make_tuple(minAttack, maxAttack);

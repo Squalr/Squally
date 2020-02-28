@@ -182,7 +182,7 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
 
 	HACKABLES_STOP_SEARCH();
 }

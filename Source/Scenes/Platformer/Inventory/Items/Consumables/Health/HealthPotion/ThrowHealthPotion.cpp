@@ -78,7 +78,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity*
 		{
 			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * HealthPotion::HealPercentage);
 
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
+			CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

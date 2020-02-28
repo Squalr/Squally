@@ -17,7 +17,8 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
-	void applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing);
+	void applyDamage(PlatformerEntity* caster, int damage);
+	void applyHealing(PlatformerEntity* caster, int healing);
 	void stageTarget(PlatformerEntity* target);
 	void stageCast(PlatformerAttack* attack);
 	PlatformerEntity* getStagedTarget();
@@ -53,7 +54,7 @@ private:
 	};
 
 	void performCast();
-	void tryInterrupt(bool blocked);
+	void tryInterrupt();
 	void resetTimeline();
 	void cameraFocusEntry();
 
@@ -71,4 +72,5 @@ private:
 	float interruptBonus;
 	float progress;
 	bool isCasting;
+	bool isBlocking;
 };

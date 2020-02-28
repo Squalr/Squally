@@ -16,6 +16,8 @@ public:
 	static int getBaseHealth(PlatformerEntity* platformerEntity);
 
 protected:
+	StatsTables();
+	virtual ~StatsTables();
 
 private:
 	typedef GlobalNode super;
@@ -33,8 +35,6 @@ private:
 	};
 
 	static StatsTables* getInstance();
-	StatsTables();
-	~StatsTables();
 
 	static StatsTables* instance;
 	static std::map<std::string, Stats> StatsTable;

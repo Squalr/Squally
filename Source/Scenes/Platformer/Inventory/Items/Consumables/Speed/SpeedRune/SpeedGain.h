@@ -29,12 +29,9 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void runSpeedGain();
-	void runRestoreTick();
 
 private:
 	typedef Buff super;
-
-	void incrementHeal();
 	
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;

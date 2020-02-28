@@ -62,7 +62,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 
 		if (entity != nullptr)
 		{
-			CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
 		}
 
 		return CollisionObject::CollisionResult::DoNothing;

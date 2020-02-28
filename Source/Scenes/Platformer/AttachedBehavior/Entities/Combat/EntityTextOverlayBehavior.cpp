@@ -89,18 +89,33 @@ void EntityTextOverlayBehavior::onLoad()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealingDelt, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingDeltArgs* args = static_cast<CombatEvents::DamageOrHealingDeltArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
 			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
-			LocalizedString* deltaString = args->damageOrHealing < 0 ? (LocalizedString*)Strings::Common_MinusConstant::create() : (LocalizedString*)Strings::Common_PlusConstant::create();
+			LocalizedString* deltaString = Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);;
 			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
 
-			deltaLabel->setTextColor(args->damageOrHealing < 0 ? Color4B::RED : Color4B::GREEN);
-			deltaString->setStringReplacementVariables(amount);
+			deltaLabel->setTextColor(Color4B::RED);
+
+			this->runLabelOverEntity(args->target, deltaLabel);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealingDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->entity)
+		{
+			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
+			LocalizedString* deltaString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount);;
+			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
+
+			deltaLabel->setTextColor(Color4B::GREEN);
 
 			this->runLabelOverEntity(args->target, deltaLabel);
 		}

@@ -38,8 +38,10 @@ protected:
 	virtual void registerHackables();
 	void registerClippy(Clippy* clippy);
 	virtual void onTimelineReset(bool wasInterrupt);
-	virtual void onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback);
+	virtual void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback);
 	virtual void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback);
+	virtual void onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback);
+	virtual void onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback);
 
 	BuffData buffData;
 	PlatformerEntity* caster;

@@ -5,7 +5,6 @@
 class Axe;
 class Bow;
 class EntityAttackBehavior;
-class EntityInventoryBehavior;
 class Mace;
 class PlatformerAttack;
 class Squally;
@@ -33,14 +32,14 @@ private:
 
 	void loadWeaponAttacks(EntityAttackBehavior* attackBehavior);
 	void loadUnarmedAttacks(EntityAttackBehavior* attackBehavior);
-	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Axe* sword);
-	void loadBowAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Bow* sword);
-	void loadMaceAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Mace* sword);
-	void loadSpearAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Spear* sword);
-	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, EntityInventoryBehavior* inventoryBehavior, Sword* sword);
-	void loadWandAttacks(EntityAttackBehavior* attackBehavior,EntityInventoryBehavior* inventoryBehavior, Wand* sword);
+	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, Axe* sword);
+	void loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* sword);
+	void loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* sword);
+	void loadSpearAttacks(EntityAttackBehavior* attackBehavior, Spear* sword);
+	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, Sword* sword);
+	void loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword);
 
-	std::tuple<int, int> computeWeaponDamageRange(Weapon* weapon, EntityInventoryBehavior* inventoryBehavior);
+	std::tuple<int, int> computeWeaponDamageRange(Weapon* weapon);
 
 	Squally* squally;
 };

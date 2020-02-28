@@ -109,7 +109,17 @@ void TimelineEntry::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamageOrHealing, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->entity)
+		{
+			this->isBlocking = true;
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamage, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
 
@@ -117,9 +127,20 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(args->caster, this->getEntity(), &args->damageOrHealing));
+				this->applyDamage(args->caster, args->damageOrHealing);
+			}
+		}
+	}));
 
-				this->applyDamageOrHealing(args->caster, args->damageOrHealing);
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealing, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
+		{
+			if (this->getEntity()->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->applyHealing(args->caster, args->damageOrHealing);
 			}
 		}
 	}));
@@ -161,28 +182,54 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
-void TimelineEntry::applyDamageOrHealing(PlatformerEntity* caster, int damageOrHealing)
+void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 {
 	if (this->getEntity() == nullptr)
 	{
 		return;
 	}
 
-	bool blocked = false;
+	damage = std::abs(damage);
 
-	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingDelt(CombatEvents::BeforeDamageOrHealingDeltArgs(caster, this->getEntity(), &damageOrHealing));
-	CombatEvents::TriggerEntityBuffsModifyDamageOrHealingTaken(CombatEvents::BeforeDamageOrHealingTakenArgs(caster, this->getEntity(), &damageOrHealing, &blocked));
+	// Modify outgoing damage
+	CombatEvents::TriggerEntityStatsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
+	CombatEvents::TriggerEntityBuffsModifyDamageDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
 
-	if (damageOrHealing < 0)
-	{
-		this->tryInterrupt(blocked);
-	}
+	// Modify incoming damage
+	CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
+	CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
+
+	this->tryInterrupt();
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + damageOrHealing));
+	this->getEntity()->setState(StateKeys::Health, Value(health - damage));
 
-	CombatEvents::TriggerDamageOrHealingDelt(CombatEvents::DamageOrHealingDeltArgs(caster, this->getEntity(), damageOrHealing));
+	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
+}
+
+void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
+{
+	if (this->getEntity() == nullptr)
+	{
+		return;
+	}
+
+	healing = std::abs(healing);
+
+	// Modify outgoing healing
+	CombatEvents::TriggerEntityStatsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+	CombatEvents::TriggerEntityBuffsModifyHealingDelt(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+
+	// Modify incoming healing
+	CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+	CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
+
+	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
+
+	this->getEntity()->setState(StateKeys::Health, Value(health + healing));
+
+	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
 }
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)
@@ -340,29 +387,30 @@ void TimelineEntry::cameraFocusEntry()
 	}), cameraTag);
 }
 
-void TimelineEntry::tryInterrupt(bool blocked)
+void TimelineEntry::tryInterrupt()
 {
-	if (blocked || this->isCasting)
-	{	
-		if (blocked)
-		{
-			CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->entity));
-
-			this->progress = this->progress / 2.0f;
-			this->interruptBonus = 0.1f;
-		}
-		else if (this->isCasting)
-		{
-			CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
-
-			this->progress = this->progress / 4.0f;
-			this->interruptBonus = 0.1f;
-		}
-		
-		this->isCasting = false;
-
-		CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
+	if (!this->isBlocking && !this->isCasting)
+	{
+		return;
 	}
+	
+	if (this->isBlocking)
+	{
+		this->progress = this->progress / 2.0f;
+		this->interruptBonus = 0.1f;
+	}
+	else if (this->isCasting)
+	{
+		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+
+		this->progress = this->progress / 4.0f;
+		this->interruptBonus = 0.1f;
+	}
+	
+	this->isCasting = false;
+	this->isBlocking = false;
+
+	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), true));
 }
 
 void TimelineEntry::resetTimeline()
@@ -370,6 +418,7 @@ void TimelineEntry::resetTimeline()
 	this->progress = std::fmod(this->progress, 1.0f);
 	this->interruptBonus = 0.0f;
 	this->isCasting = false;
+	this->isBlocking = false;
 
 	CombatEvents::TriggerEntityTimelineReset(CombatEvents::TimelineResetArgs(this->getEntity(), false));
 }

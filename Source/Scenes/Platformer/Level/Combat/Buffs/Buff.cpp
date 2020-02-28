@@ -53,9 +53,9 @@ void Buff::initializeListeners()
 		this->removeBuff();
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageOrHealingDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BeforeDamageOrHealingDeltArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingDeltArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
@@ -63,13 +63,33 @@ void Buff::initializeListeners()
 		}
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageTaken, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BeforeDamageOrHealingTakenArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingTakenArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, args->blocked, [=](){ args->handle(); });
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingDelt, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		{
+			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyHealingTaken, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->target == this->target && !args->isHandled())
+		{
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -100,11 +120,19 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
 {
 }
 
 void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+{
+}
+
+void Buff::onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback)
+{
+}
+
+void Buff::onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback)
 {
 }
 

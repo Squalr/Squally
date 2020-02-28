@@ -93,6 +93,7 @@ void SpeedGain::registerHackables()
 		return;
 	}
 	
+	/*
 	std::vector<std::string> mapArgs = std::vector<std::string>();
 
 	PlatformerEvents::TriggerQueryMapArgs(PlatformerEvents::QueryMapArgsArgs(&mapArgs));
@@ -125,7 +126,7 @@ void SpeedGain::registerHackables()
 	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
 	{
 		this->target->registerCode(*it);
-	}
+	}*/
 }
 
 void SpeedGain::runSpeedGain()
@@ -135,6 +136,7 @@ void SpeedGain::runSpeedGain()
 
 	const float StartDelay = 1.0f;
 
+	/*
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
 		this->runAction(Sequence::create(
@@ -160,28 +162,5 @@ void SpeedGain::runSpeedGain()
 		}),
 		nullptr
 	));
+	*/
 }
-
-NO_OPTIMIZE void SpeedGain::runRestoreTick()
-{
-	int incrementAmount = 0;
-
-	ASM(push ZDI);
-	ASM(mov ZDI, 0)
-
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(inc ZDI);
-	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
-
-	ASM(pop ZDI);
-
-	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
-
-	this->healSound->play();
-	CombatEvents::TriggerDamageOrHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
-
-	HACKABLES_STOP_SEARCH();
-}
-END_NO_OPTIMIZE

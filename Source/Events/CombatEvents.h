@@ -28,8 +28,6 @@ public:
 	static const std::string EventRequestAIAction;
 	static const std::string EventRequestRetargetCorrection;
 	static const std::string EventBuffApplied;
-	static const std::string EventEntityBuffsModifyDamageOrHealingTaken;
-	static const std::string EventEntityBuffsModifyDamageOrHealingDelt;
 	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
 	static const std::string EventPauseTimelineCinematic;
@@ -37,8 +35,6 @@ public:
 	static const std::string EventResumeTimelineCinematic;
 	static const std::string EventInterruptTimeline;
 	static const std::string EventRegisterTimelineEventGroup;
-	static const std::string EventDamageOrHealingDelt;
-	static const std::string EventDamageOrHealing;
 	static const std::string EventCastBlocked;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
@@ -48,6 +44,18 @@ public:
 	static const std::string EventGiveRewards;
 	static const std::string EventReturnToMap;
 	static const std::string EventHackableCombatCue;
+	static const std::string EventDamageDelt;
+	static const std::string EventHealingDelt;
+	static const std::string EventDamage;
+	static const std::string EventHealing;
+	static const std::string EventEntityBuffsModifyDamageTaken;
+	static const std::string EventEntityBuffsModifyDamageDelt;
+	static const std::string EventEntityBuffsModifyHealingTaken;
+	static const std::string EventEntityBuffsModifyHealingDelt;
+	static const std::string EventEntityStatsModifyDamageTaken;
+	static const std::string EventEntityStatsModifyDamageDelt;
+	static const std::string EventEntityStatsModifyHealingTaken;
+	static const std::string EventEntityStatsModifyHealingDelt;
 
 	struct SpawnArgs
 	{
@@ -164,26 +172,41 @@ public:
 		}
 	};
 
-	struct DamageOrHealingDeltArgs
-	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int damageOrHealing;
-
-		DamageOrHealingDeltArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing)
-		{
-		}
-	};
-
 	struct DamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		int damageOrHealing;
 
-		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing)
+		DamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int damageOrHealing)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing)
 		{
 		}
+	};
+
+	struct ModifiableDamageOrHealingArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		int* damageOrHealing;
+
+		ModifiableDamageOrHealingArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing)
+			: caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false)
+		{
+		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
 	};
 
 	struct CombatFinishedArgs
@@ -193,53 +216,6 @@ public:
 		CombatFinishedArgs(bool playerVictory) : playerVictory(playerVictory)
 		{
 		}
-	};
-
-	struct BeforeDamageOrHealingTakenArgs
-	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int* damageOrHealing;
-		bool* blocked;
-
-		BeforeDamageOrHealingTakenArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing, bool* blocked)
-			: caster(caster), target(target), damageOrHealing(damageOrHealing), blocked(blocked), handled(false) { }
-
-		void handle()
-		{
-			this->handled = true;
-		}
-
-		bool isHandled()
-		{
-			return this->handled;
-		}
-
-		private:
-			bool handled;
-	};
-
-	struct BeforeDamageOrHealingDeltArgs
-	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int* damageOrHealing;
-
-		BeforeDamageOrHealingDeltArgs(PlatformerEntity* caster, PlatformerEntity* target, int* damageOrHealing) : caster(caster), target(target), damageOrHealing(damageOrHealing), handled(false) { }
-	
-
-		void handle()
-		{
-			this->handled = true;
-		}
-
-		bool isHandled()
-		{
-			return this->handled;
-		}
-
-		private:
-			bool handled;
 	};
 
 	struct TimelineResetArgs
@@ -288,11 +264,7 @@ public:
 	static void TriggerInterruptTimeline();
 	static void TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);
-	static void TriggerEntityBuffsModifyDamageOrHealingTaken(BeforeDamageOrHealingTakenArgs args);
-	static void TriggerEntityBuffsModifyDamageOrHealingDelt(BeforeDamageOrHealingDeltArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
-	static void TriggerDamageOrHealingDelt(DamageOrHealingDeltArgs args);
-	static void TriggerDamageOrHealing(DamageOrHealingArgs args);
 	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);
 	static void TriggerCombatFinished(CombatFinishedArgs args);
@@ -300,4 +272,16 @@ public:
 	static void TriggerGiveRewards();
 	static void TriggerReturnToMap();
 	static void TriggerHackableCombatCue();
+	static void TriggerDamageDelt(DamageOrHealingArgs args);
+	static void TriggerHealingDelt(DamageOrHealingArgs args);
+	static void TriggerDamage(DamageOrHealingArgs args);
+	static void TriggerHealing(DamageOrHealingArgs args);
+	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityBuffsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityBuffsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityStatsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityStatsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityStatsModifyHealingTaken(ModifiableDamageOrHealingArgs args);
+	static void TriggerEntityStatsModifyHealingDelt(ModifiableDamageOrHealingArgs args);
 };

@@ -5,6 +5,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/CombatEvents.h"
 
 #include "Resources/FXResources.h"
 
@@ -51,12 +52,13 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
+void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
 {
-	super::onBeforeDamageTaken(damageOrHealing, blocked, handleCallback);
+	super::onBeforeDamageTaken(damageOrHealing, handleCallback);
+	
+	*damageOrHealing = int(std::round(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
 
-	*blocked = true;
-	*damageOrHealing = int(std::floor(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
+	CombatEvents::TriggerCastBlocked(CombatEvents::CastBlockedArgs(this->caster));
 
 	this->onDamageTakenOrCycle(true);
 }
