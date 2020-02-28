@@ -1,0 +1,70 @@
+#include "CowboyHat.h"
+
+#include "Engine/Inventory/CurrencyInventory.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+
+#include "Resources/ObjectResources.h"
+
+#include "Strings/Strings.h"
+
+using namespace cocos2d;
+
+const std::string CowboyHat::SaveKeyCowboyHat = "cowboy-hat";
+
+CowboyHat* CowboyHat::create()
+{
+	CowboyHat* instance = new CowboyHat();
+
+	instance->autorelease();
+
+	return instance;
+}
+
+CowboyHat::CowboyHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
+	// Health
+	0,
+	// Mana
+	0,
+	// Attack
+	0,
+	// Armor
+	0,
+	// Speed
+	0.05f
+))
+{
+}
+
+CowboyHat::~CowboyHat()
+{
+}
+
+Item* CowboyHat::clone()
+{
+	return CowboyHat::create();
+}
+
+std::string CowboyHat::getItemName()
+{
+	return CowboyHat::SaveKeyCowboyHat;
+}
+
+LocalizedString* CowboyHat::getString()
+{
+	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+}
+
+std::string CowboyHat::getIconResource()
+{
+	return ObjectResources::Items_Equipment_Gear_Hats_CowboyHat;
+}
+
+std::string CowboyHat::getSerializationKey()
+{
+	return CowboyHat::SaveKeyCowboyHat;
+}
+
+Vec2 CowboyHat::getDisplayOffset()
+{
+	return Vec2(12.0f, -24.0f);
+}
