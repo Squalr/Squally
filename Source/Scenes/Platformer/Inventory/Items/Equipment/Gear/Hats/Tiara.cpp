@@ -66,5 +66,5 @@ std::string Tiara::getSerializationKey()
 
 Vec2 Tiara::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(54.0f, -44.0f);
 }

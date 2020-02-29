@@ -66,5 +66,5 @@ std::string SnailShell::getSerializationKey()
 
 Vec2 SnailShell::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-36.0f, -34.0f);
 }

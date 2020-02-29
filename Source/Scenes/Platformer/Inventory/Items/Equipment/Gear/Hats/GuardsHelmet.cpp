@@ -66,5 +66,5 @@ std::string GuardsHelmet::getSerializationKey()
 
 Vec2 GuardsHelmet::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(0.0f, 42.0f);
 }

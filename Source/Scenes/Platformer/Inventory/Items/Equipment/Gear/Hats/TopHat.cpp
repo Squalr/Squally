@@ -66,5 +66,5 @@ std::string TopHat::getSerializationKey()
 
 Vec2 TopHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-26.0f, 10.0f);
 }

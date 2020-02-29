@@ -66,5 +66,5 @@ std::string SteelHelm::getSerializationKey()
 
 Vec2 SteelHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(4.0f, -22.0f);
 }

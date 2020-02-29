@@ -66,5 +66,5 @@ std::string ShamanTiara::getSerializationKey()
 
 Vec2 ShamanTiara::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(8.0f, -10.0f);
 }

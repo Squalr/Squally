@@ -66,5 +66,5 @@ std::string Monocle::getSerializationKey()
 
 Vec2 Monocle::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(68.0f, -94.0f);
 }

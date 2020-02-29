@@ -66,5 +66,5 @@ std::string JoustingHelmet::getSerializationKey()
 
 Vec2 JoustingHelmet::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-40.0f, 34.0f);
 }

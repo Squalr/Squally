@@ -66,5 +66,5 @@ std::string GoldenDungHelm::getSerializationKey()
 
 Vec2 GoldenDungHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(8.0f, 26.0f);
 }

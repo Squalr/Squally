@@ -66,5 +66,5 @@ std::string DepressingWig::getSerializationKey()
 
 Vec2 DepressingWig::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(18.0f, -48.0f);
 }

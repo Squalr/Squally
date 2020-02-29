@@ -66,5 +66,5 @@ std::string RoyalCrown::getSerializationKey()
 
 Vec2 RoyalCrown::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(16.0f, -16.0f);
 }

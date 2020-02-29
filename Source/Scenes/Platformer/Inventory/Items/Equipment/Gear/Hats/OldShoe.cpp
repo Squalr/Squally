@@ -66,5 +66,5 @@ std::string OldShoe::getSerializationKey()
 
 Vec2 OldShoe::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(14.0f, 8.0f);
 }

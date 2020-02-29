@@ -66,5 +66,5 @@ std::string WizardsHatArcane::getSerializationKey()
 
 Vec2 WizardsHatArcane::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-22.0f, -8.0f);
 }

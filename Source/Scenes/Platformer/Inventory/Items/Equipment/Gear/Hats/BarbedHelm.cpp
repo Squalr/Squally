@@ -66,5 +66,5 @@ std::string BarbedHelm::getSerializationKey()
 
 Vec2 BarbedHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-24.0f, -4.0f);
 }

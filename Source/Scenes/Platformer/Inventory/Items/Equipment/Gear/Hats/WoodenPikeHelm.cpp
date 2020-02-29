@@ -66,5 +66,5 @@ std::string WoodenPikeHelm::getSerializationKey()
 
 Vec2 WoodenPikeHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(22.0f, 20.0f);
 }

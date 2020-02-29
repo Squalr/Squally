@@ -66,5 +66,5 @@ std::string PriestHat::getSerializationKey()
 
 Vec2 PriestHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-10.0f, 24.0f);
 }

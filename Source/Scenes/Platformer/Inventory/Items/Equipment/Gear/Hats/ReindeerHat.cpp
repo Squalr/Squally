@@ -66,5 +66,5 @@ std::string ReindeerHat::getSerializationKey()
 
 Vec2 ReindeerHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-12.0f, 6.0f);
 }

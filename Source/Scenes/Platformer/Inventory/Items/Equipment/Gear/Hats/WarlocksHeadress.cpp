@@ -66,5 +66,5 @@ std::string WarlocksHeadress::getSerializationKey()
 
 Vec2 WarlocksHeadress::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-10.0f, 40.0f);
 }

@@ -66,5 +66,5 @@ std::string WitchesHat::getSerializationKey()
 
 Vec2 WitchesHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-38.0f, 32.0f);
 }

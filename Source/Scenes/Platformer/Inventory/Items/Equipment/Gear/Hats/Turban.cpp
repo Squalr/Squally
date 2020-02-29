@@ -66,5 +66,5 @@ std::string Turban::getSerializationKey()
 
 Vec2 Turban::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(2.0f, 6.0f);
 }

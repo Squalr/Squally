@@ -66,5 +66,5 @@ std::string NecrobatHelm::getSerializationKey()
 
 Vec2 NecrobatHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-42.0f, 22.0f);
 }

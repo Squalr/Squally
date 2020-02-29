@@ -66,5 +66,5 @@ std::string LeatherCap::getSerializationKey()
 
 Vec2 LeatherCap::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(2.0f, -38.0f);
 }

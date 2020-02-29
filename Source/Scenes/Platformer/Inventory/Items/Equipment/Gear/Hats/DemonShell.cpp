@@ -66,5 +66,5 @@ std::string DemonShell::getSerializationKey()
 
 Vec2 DemonShell::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(6.0f, -34.0f);
 }

@@ -66,5 +66,5 @@ std::string TigersBane::getSerializationKey()
 
 Vec2 TigersBane::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(12.0f, -18.0f);
 }

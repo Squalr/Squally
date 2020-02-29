@@ -66,5 +66,5 @@ std::string WizardsHatWater::getSerializationKey()
 
 Vec2 WizardsHatWater::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-20.0f, -8.0f);
 }

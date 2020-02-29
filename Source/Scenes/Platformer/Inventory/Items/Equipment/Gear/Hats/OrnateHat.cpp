@@ -66,5 +66,5 @@ std::string OrnateHat::getSerializationKey()
 
 Vec2 OrnateHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-22.0f, -6.0f);
 }

@@ -66,5 +66,5 @@ std::string ConchHelm::getSerializationKey()
 
 Vec2 ConchHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(4.0f, -6.0f);
 }

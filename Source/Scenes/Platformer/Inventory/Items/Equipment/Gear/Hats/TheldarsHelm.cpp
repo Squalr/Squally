@@ -66,5 +66,5 @@ std::string TheldarsHelm::getSerializationKey()
 
 Vec2 TheldarsHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-2.0f, 26.0f);
 }

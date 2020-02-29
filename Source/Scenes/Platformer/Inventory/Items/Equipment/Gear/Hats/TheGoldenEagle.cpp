@@ -66,5 +66,5 @@ std::string TheGoldenEagle::getSerializationKey()
 
 Vec2 TheGoldenEagle::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-42.0f, 6.0f);
 }

@@ -66,5 +66,5 @@ std::string JesterHat::getSerializationKey()
 
 Vec2 JesterHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-34.0f, 14.0f);
 }

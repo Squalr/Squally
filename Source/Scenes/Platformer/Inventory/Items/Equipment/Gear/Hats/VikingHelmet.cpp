@@ -66,5 +66,5 @@ std::string VikingHelmet::getSerializationKey()
 
 Vec2 VikingHelmet::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-2.0f, -16.0f);
 }

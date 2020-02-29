@@ -66,5 +66,5 @@ std::string GunnersHat::getSerializationKey()
 
 Vec2 GunnersHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(0.0f, -26.0f);
 }

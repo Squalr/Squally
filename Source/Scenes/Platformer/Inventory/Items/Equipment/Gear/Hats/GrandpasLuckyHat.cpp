@@ -66,5 +66,5 @@ std::string GrandpasLuckyHat::getSerializationKey()
 
 Vec2 GrandpasLuckyHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(6.0f, -26.0f);
 }

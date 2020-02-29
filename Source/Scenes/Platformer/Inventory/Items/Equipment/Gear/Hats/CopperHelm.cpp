@@ -66,5 +66,5 @@ std::string CopperHelm::getSerializationKey()
 
 Vec2 CopperHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(10.0f, -2.0f);
 }

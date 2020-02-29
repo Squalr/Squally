@@ -66,5 +66,5 @@ std::string BucketHelm::getSerializationKey()
 
 Vec2 BucketHelm::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(6.0f, -20.0f);
 }

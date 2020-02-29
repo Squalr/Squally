@@ -66,5 +66,5 @@ std::string MagesHatRed::getSerializationKey()
 
 Vec2 MagesHatRed::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-36.0f, -12.0f);
 }

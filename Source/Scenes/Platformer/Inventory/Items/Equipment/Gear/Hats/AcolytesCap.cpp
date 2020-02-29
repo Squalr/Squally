@@ -66,5 +66,5 @@ std::string AcolytesCap::getSerializationKey()
 
 Vec2 AcolytesCap::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(26.0f, -38.0f);
 }

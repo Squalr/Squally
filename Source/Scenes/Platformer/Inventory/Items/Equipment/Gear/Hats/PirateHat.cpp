@@ -66,5 +66,5 @@ std::string PirateHat::getSerializationKey()
 
 Vec2 PirateHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(-12.0f, 2.0f);
 }

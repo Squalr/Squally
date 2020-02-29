@@ -66,5 +66,5 @@ std::string ArchersHat::getSerializationKey()
 
 Vec2 ArchersHat::getDisplayOffset()
 {
-	return Vec2(12.0f, -24.0f);
+	return Vec2(2.0f, -10.0f);
 }
