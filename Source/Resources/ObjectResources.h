@@ -314,6 +314,11 @@ namespace ObjectResources
 	extern const std::string Items_Consumables_Runes_RED_RUNE;
 	extern const std::string Items_Consumables_Runes_YELLOW_RUNE;
 	extern const std::string Items_Consumables_Weapons_BOMB;
+	extern const std::string Items_Crafting_SCROLL_1;
+	extern const std::string Items_Crafting_SCROLL_2;
+	extern const std::string Items_Crafting_SCROLL_3;
+	extern const std::string Items_Crafting_SCROLL_4;
+	extern const std::string Items_Crafting_SCROLL_5;
 	extern const std::string Items_Equipment_Gear_Hats_AcolytesCap;
 	extern const std::string Items_Equipment_Gear_Hats_ArchersHat;
 	extern const std::string Items_Equipment_Gear_Hats_BarbedHelm;

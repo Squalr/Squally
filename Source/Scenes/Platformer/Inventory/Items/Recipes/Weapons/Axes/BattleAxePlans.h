@@ -12,6 +12,7 @@ public:
 	std::string getItemName() override;
 	LocalizedString* getString() override;
 	std::string getIconResource() override;
+	std::string getCraftedItemIconResource() override;
 	std::string getSerializationKey() override;
 
 	static const std::string SaveKeyBattleAxePlans;

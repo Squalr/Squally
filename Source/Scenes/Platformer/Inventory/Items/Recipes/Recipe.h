@@ -9,6 +9,7 @@ public:
 	std::map<Item*, int> getReagents();
 	
 	Item* getCraftedItemRef();
+	virtual std::string getCraftedItemIconResource() = 0;
 
 protected:
 	Recipe(CurrencyInventory* cost);

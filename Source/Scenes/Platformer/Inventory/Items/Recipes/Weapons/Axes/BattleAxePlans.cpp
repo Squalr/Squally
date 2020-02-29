@@ -60,6 +60,11 @@ LocalizedString* BattleAxePlans::getString()
 
 std::string BattleAxePlans::getIconResource()
 {
+	return ObjectResources::Items_Crafting_SCROLL_1;
+}
+
+std::string BattleAxePlans::getCraftedItemIconResource()
+{
 	return ObjectResources::Items_Equipment_Weapons_Axes_BattleAxe;
 }
 
