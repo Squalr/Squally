@@ -51,7 +51,7 @@ std::string AcolytesCap::getItemName()
 
 LocalizedString* AcolytesCap::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_AcolytesCap::create();
 }
 
 std::string AcolytesCap::getIconResource()

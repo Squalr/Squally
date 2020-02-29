@@ -51,7 +51,7 @@ std::string BucketHelm::getItemName()
 
 LocalizedString* BucketHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_BucketHelm::create();
 }
 
 std::string BucketHelm::getIconResource()

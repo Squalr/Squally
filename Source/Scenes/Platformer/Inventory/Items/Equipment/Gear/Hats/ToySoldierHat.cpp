@@ -51,7 +51,7 @@ std::string ToySoldierHat::getItemName()
 
 LocalizedString* ToySoldierHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_ToySoldierHat::create();
 }
 
 std::string ToySoldierHat::getIconResource()

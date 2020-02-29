@@ -51,7 +51,7 @@ std::string JesterHat::getItemName()
 
 LocalizedString* JesterHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_JesterHat::create();
 }
 
 std::string JesterHat::getIconResource()

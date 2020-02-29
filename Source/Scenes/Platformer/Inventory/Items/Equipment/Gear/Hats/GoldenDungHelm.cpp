@@ -51,7 +51,7 @@ std::string GoldenDungHelm::getItemName()
 
 LocalizedString* GoldenDungHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_GoldenDungHelm::create();
 }
 
 std::string GoldenDungHelm::getIconResource()

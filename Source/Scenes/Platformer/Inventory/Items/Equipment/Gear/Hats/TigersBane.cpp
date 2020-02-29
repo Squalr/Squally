@@ -51,7 +51,7 @@ std::string TigersBane::getItemName()
 
 LocalizedString* TigersBane::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_TigersBane::create();
 }
 
 std::string TigersBane::getIconResource()

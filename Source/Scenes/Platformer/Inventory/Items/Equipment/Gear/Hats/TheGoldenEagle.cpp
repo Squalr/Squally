@@ -51,7 +51,7 @@ std::string TheGoldenEagle::getItemName()
 
 LocalizedString* TheGoldenEagle::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_TheGoldenEagle::create();
 }
 
 std::string TheGoldenEagle::getIconResource()

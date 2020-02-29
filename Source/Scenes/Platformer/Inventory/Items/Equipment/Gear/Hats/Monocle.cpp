@@ -51,7 +51,7 @@ std::string Monocle::getItemName()
 
 LocalizedString* Monocle::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_Monocle::create();
 }
 
 std::string Monocle::getIconResource()

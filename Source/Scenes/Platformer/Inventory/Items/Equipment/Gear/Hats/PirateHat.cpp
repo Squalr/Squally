@@ -51,7 +51,7 @@ std::string PirateHat::getItemName()
 
 LocalizedString* PirateHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_PirateHat::create();
 }
 
 std::string PirateHat::getIconResource()

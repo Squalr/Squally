@@ -51,7 +51,7 @@ std::string MagesHatBlue::getItemName()
 
 LocalizedString* MagesHatBlue::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_MagesHatBlue::create();
 }
 
 std::string MagesHatBlue::getIconResource()

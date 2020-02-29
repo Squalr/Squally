@@ -51,7 +51,7 @@ std::string VikingHelmet::getItemName()
 
 LocalizedString* VikingHelmet::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_VikingHelmet::create();
 }
 
 std::string VikingHelmet::getIconResource()

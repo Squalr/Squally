@@ -51,7 +51,7 @@ std::string WitchesHat::getItemName()
 
 LocalizedString* WitchesHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_WitchesHat::create();
 }
 
 std::string WitchesHat::getIconResource()

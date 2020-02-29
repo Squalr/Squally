@@ -51,7 +51,7 @@ std::string BrocksHelm::getItemName()
 
 LocalizedString* BrocksHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_BrocksHelm::create();
 }
 
 std::string BrocksHelm::getIconResource()

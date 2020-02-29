@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
 
-class WarlocksHeadress : public Hat
+class WarlocksHeaddress : public Hat
 {
 public:
-	static WarlocksHeadress* create();
+	static WarlocksHeaddress* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -14,11 +14,11 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyWarlocksHeadress;
+	static const std::string SaveKeyWarlocksHeaddress;
 
 protected:
-	WarlocksHeadress();
-	virtual ~WarlocksHeadress();
+	WarlocksHeaddress();
+	virtual ~WarlocksHeaddress();
 
 private:
 	typedef Hat super;

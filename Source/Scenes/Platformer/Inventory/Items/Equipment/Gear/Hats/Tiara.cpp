@@ -51,7 +51,7 @@ std::string Tiara::getItemName()
 
 LocalizedString* Tiara::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_Tiara::create();
 }
 
 std::string Tiara::getIconResource()

@@ -51,7 +51,7 @@ std::string TopHat::getItemName()
 
 LocalizedString* TopHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_TopHat::create();
 }
 
 std::string TopHat::getIconResource()

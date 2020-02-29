@@ -51,7 +51,7 @@ std::string GardenersHat::getItemName()
 
 LocalizedString* GardenersHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_GardenersHat::create();
 }
 
 std::string GardenersHat::getIconResource()

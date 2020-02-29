@@ -4794,6 +4794,456 @@ namespace Strings
 		virtual ~Items_Currency_IOUs() = default;
 	};
 
+	class Items_Equipment_Gear_Hats_AcolytesCap : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_AcolytesCap* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_AcolytesCap();
+		virtual ~Items_Equipment_Gear_Hats_AcolytesCap() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_ArchersHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_ArchersHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_ArchersHat();
+		virtual ~Items_Equipment_Gear_Hats_ArchersHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_BarbedHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_BarbedHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_BarbedHelm();
+		virtual ~Items_Equipment_Gear_Hats_BarbedHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_BrocksHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_BrocksHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_BrocksHelm();
+		virtual ~Items_Equipment_Gear_Hats_BrocksHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_BucketHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_BucketHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_BucketHelm();
+		virtual ~Items_Equipment_Gear_Hats_BucketHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_ConchHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_ConchHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_ConchHelm();
+		virtual ~Items_Equipment_Gear_Hats_ConchHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_CopperHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_CopperHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_CopperHelm();
+		virtual ~Items_Equipment_Gear_Hats_CopperHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_CowboyHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_CowboyHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_CowboyHat();
+		virtual ~Items_Equipment_Gear_Hats_CowboyHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_DemonShell : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_DemonShell* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_DemonShell();
+		virtual ~Items_Equipment_Gear_Hats_DemonShell() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_DepressingWig : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_DepressingWig* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_DepressingWig();
+		virtual ~Items_Equipment_Gear_Hats_DepressingWig() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_DraksHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_DraksHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_DraksHelm();
+		virtual ~Items_Equipment_Gear_Hats_DraksHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_GardenersHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_GardenersHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_GardenersHat();
+		virtual ~Items_Equipment_Gear_Hats_GardenersHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_GoldenDungHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_GoldenDungHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_GoldenDungHelm();
+		virtual ~Items_Equipment_Gear_Hats_GoldenDungHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_GrandpasLuckyHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_GrandpasLuckyHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_GrandpasLuckyHat();
+		virtual ~Items_Equipment_Gear_Hats_GrandpasLuckyHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_GuardsHelmet : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_GuardsHelmet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_GuardsHelmet();
+		virtual ~Items_Equipment_Gear_Hats_GuardsHelmet() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_GunnersHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_GunnersHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_GunnersHat();
+		virtual ~Items_Equipment_Gear_Hats_GunnersHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_JesterHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_JesterHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_JesterHat();
+		virtual ~Items_Equipment_Gear_Hats_JesterHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_JoustingHelmet : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_JoustingHelmet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_JoustingHelmet();
+		virtual ~Items_Equipment_Gear_Hats_JoustingHelmet() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_LeatherCap : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_LeatherCap* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_LeatherCap();
+		virtual ~Items_Equipment_Gear_Hats_LeatherCap() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_MagesHatBlue : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_MagesHatBlue* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_MagesHatBlue();
+		virtual ~Items_Equipment_Gear_Hats_MagesHatBlue() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_MagesHatRed : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_MagesHatRed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_MagesHatRed();
+		virtual ~Items_Equipment_Gear_Hats_MagesHatRed() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_Monocle : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_Monocle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_Monocle();
+		virtual ~Items_Equipment_Gear_Hats_Monocle() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_NecrobatHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_NecrobatHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_NecrobatHelm();
+		virtual ~Items_Equipment_Gear_Hats_NecrobatHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_OldShoe : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_OldShoe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_OldShoe();
+		virtual ~Items_Equipment_Gear_Hats_OldShoe() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_OrnateHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_OrnateHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_OrnateHat();
+		virtual ~Items_Equipment_Gear_Hats_OrnateHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_PirateHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_PirateHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_PirateHat();
+		virtual ~Items_Equipment_Gear_Hats_PirateHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_PriestHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_PriestHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_PriestHat();
+		virtual ~Items_Equipment_Gear_Hats_PriestHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_ReindeerHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_ReindeerHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_ReindeerHat();
+		virtual ~Items_Equipment_Gear_Hats_ReindeerHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_RoyalCrown : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_RoyalCrown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_RoyalCrown();
+		virtual ~Items_Equipment_Gear_Hats_RoyalCrown() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_SamuraiHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_SamuraiHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_SamuraiHat();
+		virtual ~Items_Equipment_Gear_Hats_SamuraiHat() = default;
+	};
+
 	class Items_Equipment_Gear_Hats_SantaHat : public LocalizedString
 	{
 	public:
@@ -4807,6 +5257,336 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Hats_SantaHat();
 		virtual ~Items_Equipment_Gear_Hats_SantaHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_ShamanTiara : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_ShamanTiara* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_ShamanTiara();
+		virtual ~Items_Equipment_Gear_Hats_ShamanTiara() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_SnailShell : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_SnailShell* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_SnailShell();
+		virtual ~Items_Equipment_Gear_Hats_SnailShell() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_SnailShellSpiked : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_SnailShellSpiked* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_SnailShellSpiked();
+		virtual ~Items_Equipment_Gear_Hats_SnailShellSpiked() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_SteelHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_SteelHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_SteelHelm();
+		virtual ~Items_Equipment_Gear_Hats_SteelHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_TheGoldenEagle : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_TheGoldenEagle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_TheGoldenEagle();
+		virtual ~Items_Equipment_Gear_Hats_TheGoldenEagle() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_TheldarsHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_TheldarsHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_TheldarsHelm();
+		virtual ~Items_Equipment_Gear_Hats_TheldarsHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_Tiara : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_Tiara* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_Tiara();
+		virtual ~Items_Equipment_Gear_Hats_Tiara() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_TigersBane : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_TigersBane* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_TigersBane();
+		virtual ~Items_Equipment_Gear_Hats_TigersBane() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_TopHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_TopHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_TopHat();
+		virtual ~Items_Equipment_Gear_Hats_TopHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_ToySoldierHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_ToySoldierHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_ToySoldierHat();
+		virtual ~Items_Equipment_Gear_Hats_ToySoldierHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_Turban : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_Turban* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_Turban();
+		virtual ~Items_Equipment_Gear_Hats_Turban() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_VikingHelmet : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_VikingHelmet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_VikingHelmet();
+		virtual ~Items_Equipment_Gear_Hats_VikingHelmet() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WarlocksHeaddress : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WarlocksHeaddress* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WarlocksHeaddress();
+		virtual ~Items_Equipment_Gear_Hats_WarlocksHeaddress() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WitchesHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WitchesHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WitchesHat();
+		virtual ~Items_Equipment_Gear_Hats_WitchesHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WizardsHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WizardsHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WizardsHat();
+		virtual ~Items_Equipment_Gear_Hats_WizardsHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WizardsHatArcane : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WizardsHatArcane* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WizardsHatArcane();
+		virtual ~Items_Equipment_Gear_Hats_WizardsHatArcane() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WizardsHatEarth : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WizardsHatEarth* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WizardsHatEarth();
+		virtual ~Items_Equipment_Gear_Hats_WizardsHatEarth() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WizardsHatShadow : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WizardsHatShadow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WizardsHatShadow();
+		virtual ~Items_Equipment_Gear_Hats_WizardsHatShadow() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WizardsHatWater : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WizardsHatWater* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WizardsHatWater();
+		virtual ~Items_Equipment_Gear_Hats_WizardsHatWater() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WolfHat : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WolfHat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WolfHat();
+		virtual ~Items_Equipment_Gear_Hats_WolfHat() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WolfHatWhite : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WolfHatWhite* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WolfHatWhite();
+		virtual ~Items_Equipment_Gear_Hats_WolfHatWhite() = default;
+	};
+
+	class Items_Equipment_Gear_Hats_WoodenPikeHelm : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Hats_WoodenPikeHelm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_WoodenPikeHelm();
+		virtual ~Items_Equipment_Gear_Hats_WoodenPikeHelm() = default;
 	};
 
 	class Items_Equipment_Offhands_Shields_WoodenShield : public LocalizedString

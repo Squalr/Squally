@@ -51,7 +51,7 @@ std::string RoyalCrown::getItemName()
 
 LocalizedString* RoyalCrown::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_RoyalCrown::create();
 }
 
 std::string RoyalCrown::getIconResource()

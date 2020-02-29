@@ -51,7 +51,7 @@ std::string CopperHelm::getItemName()
 
 LocalizedString* CopperHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_CopperHelm::create();
 }
 
 std::string CopperHelm::getIconResource()

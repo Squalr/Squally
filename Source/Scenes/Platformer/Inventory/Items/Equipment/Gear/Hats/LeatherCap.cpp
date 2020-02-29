@@ -51,7 +51,7 @@ std::string LeatherCap::getItemName()
 
 LocalizedString* LeatherCap::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_LeatherCap::create();
 }
 
 std::string LeatherCap::getIconResource()

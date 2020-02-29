@@ -51,7 +51,7 @@ std::string DepressingWig::getItemName()
 
 LocalizedString* DepressingWig::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_DepressingWig::create();
 }
 
 std::string DepressingWig::getIconResource()

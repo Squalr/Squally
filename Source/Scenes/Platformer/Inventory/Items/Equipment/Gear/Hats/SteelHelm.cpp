@@ -51,7 +51,7 @@ std::string SteelHelm::getItemName()
 
 LocalizedString* SteelHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_SteelHelm::create();
 }
 
 std::string SteelHelm::getIconResource()

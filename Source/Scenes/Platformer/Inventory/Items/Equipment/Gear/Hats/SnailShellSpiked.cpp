@@ -51,7 +51,7 @@ std::string SnailShellSpiked::getItemName()
 
 LocalizedString* SnailShellSpiked::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_SnailShellSpiked::create();
 }
 
 std::string SnailShellSpiked::getIconResource()

@@ -51,7 +51,7 @@ std::string WoodenPikeHelm::getItemName()
 
 LocalizedString* WoodenPikeHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_WoodenPikeHelm::create();
 }
 
 std::string WoodenPikeHelm::getIconResource()

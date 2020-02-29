@@ -149,16 +149,16 @@ void ItemPreview::preview(Item* item)
 
 	this->setVisible(true);
 
-	if (static_cast<Recipe*>(item) != nullptr)
+	if (dynamic_cast<Recipe*>(item) != nullptr)
 	{
-		this->previewNode->addChild(Sprite::create(static_cast<Recipe*>(item)->getCraftedItemIconResource()));
+		this->previewNode->addChild(Sprite::create(dynamic_cast<Recipe*>(item)->getCraftedItemIconResource()));
 	}
 	else
 	{
 		this->previewNode->addChild(Sprite::create(item->getIconResource()));
 	}
 
-	if (this->equipHint != nullptr && static_cast<Equipable*>(item) != nullptr)
+	if (this->equipHint != nullptr && dynamic_cast<Equipable*>(item) != nullptr)
 	{
 		this->equipHint->setVisible(true);
 	}
@@ -169,26 +169,26 @@ void ItemPreview::preview(Item* item)
 		this->itemName->setVisible(true);
 	}
 
-	if (static_cast<Recipe*>(item) != nullptr)
+	if (dynamic_cast<Recipe*>(item) != nullptr)
 	{
-		item = static_cast<Recipe*>(item)->getCraftedItemRef();
+		item = dynamic_cast<Recipe*>(item)->getCraftedItemRef();
 	}
 
-	if (static_cast<Hat*>(item) != nullptr)
+	if (dynamic_cast<Hat*>(item) != nullptr)
 	{
-		this->setHatStatline(static_cast<Hat*>(item));
+		this->setHatStatline(dynamic_cast<Hat*>(item));
 	}
-	else if (static_cast<Offhand*>(item) != nullptr)
+	else if (dynamic_cast<Offhand*>(item) != nullptr)
 	{
-		this->setOffhandStatline(static_cast<Offhand*>(item));
+		this->setOffhandStatline(dynamic_cast<Offhand*>(item));
 	}
-	else if (static_cast<Weapon*>(item) != nullptr)
+	else if (dynamic_cast<Weapon*>(item) != nullptr)
 	{
-		this->setWeaponStatline(static_cast<Weapon*>(item));
+		this->setWeaponStatline(dynamic_cast<Weapon*>(item));
 	}
-	else if (static_cast<HexusCard*>(item) != nullptr)
+	else if (dynamic_cast<HexusCard*>(item) != nullptr)
 	{
-		this->setHexusInfo(static_cast<HexusCard*>(item));
+		this->setHexusInfo(dynamic_cast<HexusCard*>(item));
 	}
 }
 

@@ -255,6 +255,8 @@ void ItemMenu::updateAndPositionItemText()
 		return;
 	}
 
+	this->selectedItemIndex = MathUtils::clamp(this->selectedItemIndex, 0, this->visibleItems.size() - 1);
+
 	int adjustedIndex = this->selectedItemIndex - this->visibleItems.size() / 2;
 	float offset = float(adjustedIndex) * ItemMenu::LabelSpacing;
 

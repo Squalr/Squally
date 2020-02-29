@@ -51,7 +51,7 @@ std::string GunnersHat::getItemName()
 
 LocalizedString* GunnersHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_GunnersHat::create();
 }
 
 std::string GunnersHat::getIconResource()

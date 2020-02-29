@@ -51,7 +51,7 @@ std::string ConchHelm::getItemName()
 
 LocalizedString* ConchHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_ConchHelm::create();
 }
 
 std::string ConchHelm::getIconResource()

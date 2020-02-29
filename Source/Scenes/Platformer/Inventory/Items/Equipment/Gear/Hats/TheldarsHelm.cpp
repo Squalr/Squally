@@ -51,7 +51,7 @@ std::string TheldarsHelm::getItemName()
 
 LocalizedString* TheldarsHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_TheldarsHelm::create();
 }
 
 std::string TheldarsHelm::getIconResource()

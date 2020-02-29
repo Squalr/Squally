@@ -51,7 +51,7 @@ std::string NecrobatHelm::getItemName()
 
 LocalizedString* NecrobatHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_NecrobatHelm::create();
 }
 
 std::string NecrobatHelm::getIconResource()

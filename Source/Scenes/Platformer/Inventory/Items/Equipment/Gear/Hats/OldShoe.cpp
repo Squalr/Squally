@@ -51,7 +51,7 @@ std::string OldShoe::getItemName()
 
 LocalizedString* OldShoe::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_OldShoe::create();
 }
 
 std::string OldShoe::getIconResource()

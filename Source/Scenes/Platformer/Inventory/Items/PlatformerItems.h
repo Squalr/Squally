@@ -65,7 +65,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/ToySoldierHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Turban.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/VikingHelmet.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/WarlocksHeadress.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/WarlocksHeaddress.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/WitchesHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/WizardsHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/WizardsHatArcane.h"

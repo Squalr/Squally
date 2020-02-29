@@ -51,7 +51,7 @@ std::string ReindeerHat::getItemName()
 
 LocalizedString* ReindeerHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_ReindeerHat::create();
 }
 
 std::string ReindeerHat::getIconResource()

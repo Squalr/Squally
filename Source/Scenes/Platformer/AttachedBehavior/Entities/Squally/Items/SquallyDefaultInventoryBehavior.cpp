@@ -116,7 +116,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(ToySoldierHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(Turban::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(VikingHelmet::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeadress::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WitchesHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WizardsHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WizardsHatArcane::create(), false);

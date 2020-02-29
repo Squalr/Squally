@@ -51,7 +51,7 @@ std::string ShamanTiara::getItemName()
 
 LocalizedString* ShamanTiara::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_ShamanTiara::create();
 }
 
 std::string ShamanTiara::getIconResource()

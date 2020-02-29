@@ -51,7 +51,7 @@ std::string WolfHat::getItemName()
 
 LocalizedString* WolfHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_WolfHat::create();
 }
 
 std::string WolfHat::getIconResource()

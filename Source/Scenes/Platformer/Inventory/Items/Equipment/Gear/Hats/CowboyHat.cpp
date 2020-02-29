@@ -51,7 +51,7 @@ std::string CowboyHat::getItemName()
 
 LocalizedString* CowboyHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_CowboyHat::create();
 }
 
 std::string CowboyHat::getIconResource()

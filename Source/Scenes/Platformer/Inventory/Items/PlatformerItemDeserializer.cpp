@@ -251,7 +251,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[ToySoldierHat::SaveKeyToySoldierHat] = [=]() { return (Item*)ToySoldierHat::create(); };
 	this->deserializers[Turban::SaveKeyTurban] = [=]() { return (Item*)Turban::create(); };
 	this->deserializers[VikingHelmet::SaveKeyVikingHelmet] = [=]() { return (Item*)VikingHelmet::create(); };
-	this->deserializers[WarlocksHeadress::SaveKeyWarlocksHeadress] = [=]() { return (Item*)WarlocksHeadress::create(); };
+	this->deserializers[WarlocksHeaddress::SaveKeyWarlocksHeaddress] = [=]() { return (Item*)WarlocksHeaddress::create(); };
 	this->deserializers[WitchesHat::SaveKeyWitchesHat] = [=]() { return (Item*)WitchesHat::create(); };
 	this->deserializers[WizardsHat::SaveKeyWizardsHat] = [=]() { return (Item*)WizardsHat::create(); };
 	this->deserializers[WizardsHatArcane::SaveKeyWizardsHatArcane] = [=]() { return (Item*)WizardsHatArcane::create(); };

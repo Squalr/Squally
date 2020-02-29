@@ -51,7 +51,7 @@ std::string GrandpasLuckyHat::getItemName()
 
 LocalizedString* GrandpasLuckyHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_GrandpasLuckyHat::create();
 }
 
 std::string GrandpasLuckyHat::getIconResource()

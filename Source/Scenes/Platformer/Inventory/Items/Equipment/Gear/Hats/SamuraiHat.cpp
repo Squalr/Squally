@@ -51,7 +51,7 @@ std::string SamuraiHat::getItemName()
 
 LocalizedString* SamuraiHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_SamuraiHat::create();
 }
 
 std::string SamuraiHat::getIconResource()

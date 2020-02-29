@@ -51,7 +51,7 @@ std::string JoustingHelmet::getItemName()
 
 LocalizedString* JoustingHelmet::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_JoustingHelmet::create();
 }
 
 std::string JoustingHelmet::getIconResource()

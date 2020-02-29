@@ -51,7 +51,7 @@ std::string OrnateHat::getItemName()
 
 LocalizedString* OrnateHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_OrnateHat::create();
 }
 
 std::string OrnateHat::getIconResource()

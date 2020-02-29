@@ -363,7 +363,7 @@ namespace ObjectResources
 	extern const std::string Items_Equipment_Gear_Hats_ToySoldierHat;
 	extern const std::string Items_Equipment_Gear_Hats_Turban;
 	extern const std::string Items_Equipment_Gear_Hats_VikingHelmet;
-	extern const std::string Items_Equipment_Gear_Hats_WarlocksHeadress;
+	extern const std::string Items_Equipment_Gear_Hats_WarlocksHeaddress;
 	extern const std::string Items_Equipment_Gear_Hats_WitchesHat;
 	extern const std::string Items_Equipment_Gear_Hats_WizardsHat;
 	extern const std::string Items_Equipment_Gear_Hats_WizardsHatArcane;

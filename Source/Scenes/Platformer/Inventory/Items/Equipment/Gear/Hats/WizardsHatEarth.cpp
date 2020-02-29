@@ -51,7 +51,7 @@ std::string WizardsHatEarth::getItemName()
 
 LocalizedString* WizardsHatEarth::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_WizardsHatEarth::create();
 }
 
 std::string WizardsHatEarth::getIconResource()

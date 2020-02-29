@@ -51,7 +51,7 @@ std::string PriestHat::getItemName()
 
 LocalizedString* PriestHat::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_PriestHat::create();
 }
 
 std::string PriestHat::getIconResource()

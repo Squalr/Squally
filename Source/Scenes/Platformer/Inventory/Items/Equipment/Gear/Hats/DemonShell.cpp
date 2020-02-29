@@ -51,7 +51,7 @@ std::string DemonShell::getItemName()
 
 LocalizedString* DemonShell::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_DemonShell::create();
 }
 
 std::string DemonShell::getIconResource()

@@ -51,7 +51,7 @@ std::string Turban::getItemName()
 
 LocalizedString* Turban::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_Turban::create();
 }
 
 std::string Turban::getIconResource()

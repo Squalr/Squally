@@ -51,7 +51,7 @@ std::string BarbedHelm::getItemName()
 
 LocalizedString* BarbedHelm::getString()
 {
-	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
+	return Strings::Items_Equipment_Gear_Hats_BarbedHelm::create();
 }
 
 std::string BarbedHelm::getIconResource()
