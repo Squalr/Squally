@@ -126,5 +126,5 @@ StateOverride* PuzzleEBehavior::getStateOverride()
 
 std::vector<TutorialBase*> PuzzleEBehavior::getTutorials()
 {
-	return { TutorialPuzzleD::create() };
+	return { };
 }

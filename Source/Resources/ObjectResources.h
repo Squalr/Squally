@@ -171,6 +171,15 @@ namespace ObjectResources
 	extern const std::string Doors_LanternGate_LanternOrangeLeft;
 	extern const std::string Doors_LanternGate_LanternOrangeRight;
 	extern const std::string Doors_LanternGate_LanternRight;
+	extern const std::string Doors_Mayan_BlueGem;
+	extern const std::string Doors_Mayan_BlueGemDisabled;
+	extern const std::string Doors_Mayan_GemFrame;
+	extern const std::string Doors_Mayan_PurpleGem;
+	extern const std::string Doors_Mayan_PurpleGemDisabled;
+	extern const std::string Doors_Mayan_RedGem;
+	extern const std::string Doors_Mayan_RedGemDisabled;
+	extern const std::string Doors_Mayan_StoneCircleDoor;
+	extern const std::string Doors_Mayan_StoneCircleDoorInner;
 	extern const std::string Doors_OrcGate_2;
 	extern const std::string Doors_OrcGate_BACK_ORC;
 	extern const std::string Doors_OrcGate_FRONT_ORC;

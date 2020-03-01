@@ -61,6 +61,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[PuzzleCBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleCBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleDBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleDBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[PuzzleEBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleEBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[PuzzleFBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)PuzzleFBehavior::create(owner); };
 
 	// EF
 	this->attachedBehaviorDeserializers[AraHexusBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)AraHexusBehavior::create(owner); };
