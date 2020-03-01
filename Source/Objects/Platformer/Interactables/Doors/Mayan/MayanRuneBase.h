@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -9,10 +9,9 @@ namespace cocos2d
 
 class CollisionObject;
 
-class MayanRuneBase : public HackableObject
+class MayanRuneBase : public GameObject
 {
 public:
-	virtual int runGem(int currentIndex) = 0;
 	void runFX();
 	void enableGem();
 	void disableGem();
@@ -22,7 +21,7 @@ protected:
 	virtual ~MayanRuneBase();
 
 private:
-	typedef HackableObject super;
+	typedef GameObject super;
 
 	cocos2d::Sprite* emblemFrame;
 	cocos2d::Sprite* emblemDisabled;

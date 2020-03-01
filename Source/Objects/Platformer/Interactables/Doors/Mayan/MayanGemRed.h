@@ -7,13 +7,9 @@ class MayanGemRed : public MayanRuneBase
 public:
 	static MayanGemRed* create();
 
-	int runGem(int currentIndex) override;
-
 protected:
 	MayanGemRed();
 	virtual ~MayanGemRed();
-	
-	void registerHackables() override;
 
 private:
 	typedef MayanRuneBase super;

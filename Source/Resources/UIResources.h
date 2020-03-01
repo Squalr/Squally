@@ -225,6 +225,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_Question;
 	extern const std::string Menus_Icons_RainCloud;
 	extern const std::string Menus_Icons_Ring;
+	extern const std::string Menus_Icons_Ruby;
 	extern const std::string Menus_Icons_Safe;
 	extern const std::string Menus_Icons_Satchel;
 	extern const std::string Menus_Icons_Scale;

@@ -29,6 +29,7 @@ public:
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
 	static const std::string EventOpenCrafting;
+	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
 	static const std::string EventGiveCurrenciesFromPool;
@@ -117,6 +118,14 @@ public:
 		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
 	};
 
+	struct ItemDiscoveryArgs
+	{
+		Item* item;
+		LocalizedString* messageOverride;
+
+		ItemDiscoveryArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
+	};
+
 	struct GiveCurrenciesFromPoolArgs
 	{
 		CurrencyPool* pool;
@@ -149,6 +158,7 @@ public:
 	static void TriggerOpenCrafting(CraftingOpenArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
+	static void TriggerDiscoverItem(ItemDiscoveryArgs args);
 	static void TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args);
 	static void TriggerGiveCurrency(GiveCurrencyArgs args);
 	static void TriggerAllowPause();

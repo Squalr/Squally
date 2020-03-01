@@ -6,24 +6,36 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemBlue.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemPurple.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemRed.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
+#include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
+
+#define LOCAL_FUNC_ID_GEM_RED 1
+#define LOCAL_FUNC_ID_GEM_BLUE 2
+#define LOCAL_FUNC_ID_GEM_PURPLE 3
 
 const std::string MayanDoor::MapKeyMayanDoor = "mayan-door";
 const float MayanDoor::DoorOpenDelta = 320.0f;
@@ -154,6 +166,87 @@ void MayanDoor::onObjectStateLoaded()
 	}
 }
 
+void MayanDoor::registerHackables()
+{
+	super::registerHackables();
+	
+	HackableCode::CodeInfoMap codeInfoMap =
+	{
+		{
+			LOCAL_FUNC_ID_GEM_RED,
+			HackableCode::HackableCodeInfo(
+				"mayan-gem-red",
+				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				UIResources::Menus_Icons_Ruby,
+				nullptr, // PendulumBladeSetAnglePreview::create(),
+				{
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+				},
+				int(HackFlags::None),
+				15.0f,
+				0.0f,
+				nullptr // this->pendulumBladeClippy
+			)
+		},
+		{
+			LOCAL_FUNC_ID_GEM_BLUE,
+			HackableCode::HackableCodeInfo(
+				"mayan-gem-blue",
+				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				UIResources::Menus_Icons_Diamond,
+				nullptr, // PendulumBladeSetAnglePreview::create(),
+				{
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+				},
+				int(HackFlags::None),
+				15.0f,
+				0.0f,
+				nullptr // this->pendulumBladeClippy
+			)
+		},
+		{
+			LOCAL_FUNC_ID_GEM_PURPLE,
+			HackableCode::HackableCodeInfo(
+				"mayan-gem-purple",
+				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				UIResources::Menus_Icons_CrystalShard,
+				nullptr, // PendulumBladeSetAnglePreview::create(),
+				{
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+				},
+				int(HackFlags::None),
+				15.0f,
+				0.0f,
+				nullptr // this->pendulumBladeClippy
+			)
+		},
+	};
+
+	auto gemFuncRed = &MayanDoor::runGemRed;
+	std::vector<HackableCode*> hackablesRed = HackableCode::create((void*&)gemFuncRed, codeInfoMap);
+
+	for (auto next : hackablesRed)
+	{
+		this->registerCode(next);
+	}
+
+	auto gemFuncBlue = &MayanDoor::runGemBlue;
+	std::vector<HackableCode*> hackablesBlue = HackableCode::create((void*&)gemFuncBlue, codeInfoMap);
+
+	for (auto next : hackablesBlue)
+	{
+		this->registerCode(next);
+	}
+
+	auto gemFuncPurple = &MayanDoor::runGemPurple;
+	std::vector<HackableCode*> hackablesPurple = HackableCode::create((void*&)gemFuncPurple, codeInfoMap);
+
+	for (auto next : hackablesPurple)
+	{
+		this->registerCode(next);
+	}
+}
+
 void MayanDoor::tryTakeGems()
 {
 	if (this->inventory == nullptr)
@@ -164,6 +257,19 @@ void MayanDoor::tryTakeGems()
 	std::vector<MayanGemRedItem*> redGems = this->inventory->getItemsOfType<MayanGemRedItem>();
 	std::vector<MayanGemBlueItem*> blueGems = this->inventory->getItemsOfType<MayanGemBlueItem>();
 	std::vector<MayanGemPurpleItem*> purpleGems = this->inventory->getItemsOfType<MayanGemPurpleItem>();
+
+	if (!redGems.empty())
+	{
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(redGems.back()));
+	}
+	else if (!blueGems.empty())
+	{
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(blueGems.back()));
+	}
+	else if (!purpleGems.empty())
+	{
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(purpleGems.back()));
+	}
 
 	if (!redGems.empty())
 	{
@@ -200,9 +306,9 @@ void MayanDoor::tryUnlock()
 	this->isUnlocking = true;
 
 	int index = 0;
-	int indexRed = this->redGem->runGem(index);
-	int indexBlue = this->blueGem->runGem(indexRed);
-	int indexPurple = this->purpleGem->runGem(indexBlue);
+	int indexRed = this->runGemRed(index);
+	int indexBlue = this->runGemRed(indexRed);
+	int indexPurple = this->runGemPurple(indexBlue);
 
 	auto getRotation = [=](int rotationIndex)
 	{
@@ -296,3 +402,66 @@ void MayanDoor::unlock(bool animate)
 		this->door->setPosition(Vec2(0.0f, MayanDoor::DoorOpenDelta));
 	}
 }
+
+NO_OPTIMIZE int MayanDoor::runGemRed(int currentIndex)
+{
+	volatile int newIndex = currentIndex;
+
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZBX, newIndex);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_RED);
+	ASM(mov ZBX, 4);
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(newIndex, ZBX);
+
+	ASM(pop ZBX);
+
+	HACKABLES_STOP_SEARCH();
+
+	return MathUtils::clamp(newIndex, 0, 11);
+}
+END_NO_OPTIMIZE
+
+NO_OPTIMIZE int MayanDoor::runGemBlue(int currentIndex)
+{
+	volatile int newIndex = currentIndex;
+
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZBX, newIndex);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_BLUE);
+	ASM(add ZBX, 7);
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(newIndex, ZBX);
+
+	ASM(pop ZBX);
+
+	HACKABLES_STOP_SEARCH();
+
+	return MathUtils::clamp(newIndex, 0, 11);
+}
+END_NO_OPTIMIZE
+
+NO_OPTIMIZE int MayanDoor::runGemPurple(int currentIndex)
+{
+	volatile int newIndex = currentIndex;
+
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZBX, newIndex);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_PURPLE);
+	ASM(sub ZBX, 5);
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(newIndex, ZBX);
+
+	ASM(pop ZBX);
+
+	HACKABLES_STOP_SEARCH();
+
+	return MathUtils::clamp(newIndex, 0, 11);
+}
+END_NO_OPTIMIZE

@@ -32,12 +32,16 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
+	void registerHackables() override;
 
 private:
 	typedef Portal super;
 
 	void tryTakeGems();
 	void tryUnlock();
+	int runGemRed(int currentIndex);
+	int runGemBlue(int currentIndex);
+	int runGemPurple(int currentIndex);
 
 	bool isUnlocking;
 	

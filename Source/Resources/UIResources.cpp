@@ -224,6 +224,7 @@ const std::string UIResources::Menus_Icons_Punch = "Private/UI/Menus/Icons/Punch
 const std::string UIResources::Menus_Icons_Question = "Private/UI/Menus/Icons/Question.png";
 const std::string UIResources::Menus_Icons_RainCloud = "Private/UI/Menus/Icons/RainCloud.png";
 const std::string UIResources::Menus_Icons_Ring = "Private/UI/Menus/Icons/Ring.png";
+const std::string UIResources::Menus_Icons_Ruby = "Private/UI/Menus/Icons/Ruby.png";
 const std::string UIResources::Menus_Icons_Safe = "Private/UI/Menus/Icons/Safe.png";
 const std::string UIResources::Menus_Icons_Satchel = "Private/UI/Menus/Icons/Satchel.png";
 const std::string UIResources::Menus_Icons_Scale = "Private/UI/Menus/Icons/Scale.png";

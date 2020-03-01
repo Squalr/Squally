@@ -40,14 +40,12 @@ void MayanRuneBase::runFX()
 
 void MayanRuneBase::enableGem()
 {
-	this->toggleHackable(true);
 	this->emblemDisabled->setVisible(false);
 	this->emblem->setVisible(true);
 }
 
 void MayanRuneBase::disableGem()
 {
-	this->toggleHackable(false);
 	this->emblemDisabled->setVisible(true);
 	this->emblem->setVisible(false);
 }

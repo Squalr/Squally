@@ -56,6 +56,10 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_1;
 	extern const std::string EndianForest_Zone_3_2;
 	extern const std::string EndianForest_Zone_3_3;
+	extern const std::string EndianForest_Zone_3_4;
+	extern const std::string EndianForest_Zone_3_5;
+	extern const std::string EndianForest_Zone_3_6;
+	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string SeaSharpCaverns_Caverns;
 	extern const std::string TileMap;
