@@ -77,7 +77,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="484" name="Forest/Flower10" type="decor" x="6163.44" y="4144.5" width="199" height="133"/>
-  <object id="500" name="Forest/Flower10" type="decor" x="5600.5" y="4143.6" width="199" height="133"/>
+  <object id="500" name="Forest/Flower10" type="decor" x="1139.89" y="4373.9" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>

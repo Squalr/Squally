@@ -267,6 +267,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Keys
 	this->deserializers[MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
+	this->deserializers[MayanGemBlueItem::SaveKeyMayanGemBlueItem] = [=]() { return (Item*)MayanGemBlueItem::create(); };
+	this->deserializers[MayanGemPurpleItem::SaveKeyMayanGemPurpleItem] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
+	this->deserializers[MayanGemRedItem::SaveKeyMayanGemRedItem] = [=]() { return (Item*)MayanGemRedItem::create(); };
 	this->deserializers[TownKey::SaveKeyTownKey] = [=]() { return (Item*)TownKey::create(); };
 }
 

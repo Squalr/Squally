@@ -17,7 +17,7 @@ public:
 
 protected:
 	TownKey();
-	~TownKey();
+	virtual ~TownKey();
 
 private:
 	typedef Misc super;

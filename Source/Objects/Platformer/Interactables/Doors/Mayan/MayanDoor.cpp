@@ -116,21 +116,25 @@ void MayanDoor::onObjectStateLoaded()
 	{
 		this->lock(false);
 	}
+	
+	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool())
+	{
+		this->redGem->enableGem();
+	}
+
+	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool())
+	{
+		this->blueGem->enableGem();
+	}
+
+	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
+	{
+		this->purpleGem->enableGem();
+	}
 }
 
 void MayanDoor::tryUnlock()
 {
-	bool redGemFound = true; // this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGem, Value(false)).asBool();
-	bool blueGemFound = true; //this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGem, Value(false)).asBool();
-	bool purpleGemFound = true; //this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool();
-
-	// TODO: Could run not found fx on corresponding gems
-
-	if (!redGemFound || !blueGemFound || !purpleGemFound)
-	{
-		return;
-	}
-
 	if (this->isUnlocking)
 	{
 		return;

@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
 
-class MagesGuildPrisonKey : public Misc
+class MayanGemPurpleItem : public Misc
 {
 public:
-	static MagesGuildPrisonKey* create();
+	static MayanGemPurpleItem* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -13,11 +13,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyMagesGuildPrisonKey;
+	static const std::string SaveKeyMayanGemPurpleItem;
 
 protected:
-	MagesGuildPrisonKey();
-	virtual ~MagesGuildPrisonKey();
+	MayanGemPurpleItem();
+	virtual ~MayanGemPurpleItem();
 
 private:
 	typedef Misc super;
