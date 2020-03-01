@@ -28,20 +28,32 @@ protected:
 	virtual ~MayanDoor();
 
 	void initializePositions() override;
+	void initializeListeners() override;
 	void onObjectStateLoaded() override;
 
 private:
 	typedef Portal super;
+
+	void tryUnlock();
+
+	bool isUnlocking;
 	
 	MayanGemRed* redGem;
 	MayanGemBlue* blueGem;
 	MayanGemPurple* purpleGem;
+	CollisionObject* turninHitbox;
+	cocos2d::Sprite* doorArrow;
 	cocos2d::Sprite* doorFrame;
 	cocos2d::Node* doorContainer;
+	cocos2d::Node* innerContainer;
 	cocos2d::Sprite* door;
 
 	WorldSound* doorOpenSound;
 
 	static const float DoorOpenDelta;
-	static const std::string UnlockedSaveKey;
+	static const std::string EventMayanDoorUnlock;
+	static const std::string SaveKeyRedGem;
+	static const std::string SaveKeyBlueGem;
+	static const std::string SaveKeyPurpleGem;
+	static const std::string SaveKeyUnlocked;
 };

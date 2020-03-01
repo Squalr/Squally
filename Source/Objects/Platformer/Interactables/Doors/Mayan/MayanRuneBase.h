@@ -12,6 +12,8 @@ class CollisionObject;
 class MayanRuneBase : public HackableObject
 {
 public:
+	virtual int runGem(int currentIndex) = 0;
+	void runFX();
 	void enableGem();
 	void disableGem();
 

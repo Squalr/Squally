@@ -291,7 +291,8 @@ void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 
 		this->functionWindow->openScript(this->scriptList->getActiveScript());
 
-		this->titleLabel->setStringReplacementVariables(hackableCode->getName()->clone());
+		LocalizedString* functionName = hackableCode->getName();
+		this->titleLabel->setStringReplacementVariables(functionName == nullptr ? nullptr : functionName->clone());
 
 		this->setVisible(true);
 		GameUtils::focus(this);

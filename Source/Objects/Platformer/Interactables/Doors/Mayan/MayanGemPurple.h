@@ -7,13 +7,16 @@ class MayanGemPurple : public MayanRuneBase
 public:
 	static MayanGemPurple* create();
 
-	static const std::string MapKeyMayanGemPurple;
-	static const std::string RedGemEvent;
+	int runGem(int currentIndex) override;
 
 protected:
 	MayanGemPurple();
 	virtual ~MayanGemPurple();
+	
+	void registerHackables() override;
 
 private:
 	typedef MayanRuneBase super;
+
+	int runGemPurple(int currentIndex);
 };

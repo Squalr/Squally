@@ -39,7 +39,7 @@ HackableCode* HackableCode::create(void* codeStart, void* codeEnd, HackableCodeI
 
 HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo) : HackableAttribute(hackableCodeInfo.hackFlags, hackableCodeInfo.duration, hackableCodeInfo.cooldown, hackableCodeInfo.iconResource, hackableCodeInfo.functionName, hackableCodeInfo.hackablePreview, hackableCodeInfo.clippy)
 {
-	this->hackableCodeIdentifier = hackableCodeInfo.hackableObjectIdentifier + "_" + hackableCodeInfo.functionName->getStringIdentifier();
+	this->hackableCodeIdentifier = hackableCodeInfo.hackableObjectIdentifier + "_" + (hackableCodeInfo.functionName == nullptr ? "" : hackableCodeInfo.functionName->getStringIdentifier());
 	this->codePointer = (unsigned char*)codeStart;
 	this->codeEndPointer = (unsigned char*)codeEnd;
 	this->hackableCodeInfo = hackableCodeInfo;

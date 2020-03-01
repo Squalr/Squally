@@ -178,6 +178,7 @@ const std::string ObjectResources::Doors_Mayan_PurpleGemDisabled = "Private/Plat
 const std::string ObjectResources::Doors_Mayan_RedGem = "Private/Platformer/Objects/Doors/Mayan/RedGem.png";
 const std::string ObjectResources::Doors_Mayan_RedGemDisabled = "Private/Platformer/Objects/Doors/Mayan/RedGemDisabled.png";
 const std::string ObjectResources::Doors_Mayan_StoneCircleDoor = "Private/Platformer/Objects/Doors/Mayan/StoneCircleDoor.png";
+const std::string ObjectResources::Doors_Mayan_StoneCircleDoorArrow = "Private/Platformer/Objects/Doors/Mayan/StoneCircleDoorArrow.png";
 const std::string ObjectResources::Doors_Mayan_StoneCircleDoorInner = "Private/Platformer/Objects/Doors/Mayan/StoneCircleDoorInner.png";
 const std::string ObjectResources::Doors_OrcGate_2 = "Private/Platformer/Objects/Doors/OrcGate/2.jpg";
 const std::string ObjectResources::Doors_OrcGate_BACK_ORC = "Private/Platformer/Objects/Doors/OrcGate/BACK ORC.png";
