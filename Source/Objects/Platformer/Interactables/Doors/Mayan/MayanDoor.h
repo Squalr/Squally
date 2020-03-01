@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class Inventory;
 class MayanGemBlue;
 class MayanGemPurple;
 class MayanGemRed;
@@ -27,6 +28,7 @@ protected:
 	MayanDoor(cocos2d::ValueMap& properties);
 	virtual ~MayanDoor();
 
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onObjectStateLoaded() override;
@@ -34,6 +36,7 @@ protected:
 private:
 	typedef Portal super;
 
+	void tryTakeGems();
 	void tryUnlock();
 
 	bool isUnlocking;
@@ -49,6 +52,8 @@ private:
 	cocos2d::Sprite* door;
 
 	WorldSound* doorOpenSound;
+
+	Inventory* inventory;
 
 	static const float DoorOpenDelta;
 	static const std::string EventMayanDoorUnlock;

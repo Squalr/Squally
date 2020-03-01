@@ -6,6 +6,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
+#include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
@@ -13,7 +15,10 @@
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemBlue.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemPurple.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanGemRed.h"
+#include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -54,6 +59,7 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 		CollisionObject::Properties(false, false),
 		Color4F::WHITE
 	);
+	this->inventory = nullptr;
 	this->isUnlocking = false;
 
 	this->doorContainer->addChild(this->doorFrame);
@@ -70,6 +76,19 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 
 MayanDoor::~MayanDoor()
 {
+}
+
+void MayanDoor::onEnter()
+{
+	super::onEnter();
+	
+	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
+	{
+		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			this->inventory = entityInventoryBehavior->getInventory();
+		});
+	}, Squally::MapKeySqually);
 }
 
 void MayanDoor::initializePositions()
@@ -100,6 +119,8 @@ void MayanDoor::initializeListeners()
 
 	this->turninHitbox->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
+		this->tryTakeGems();
+
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
@@ -129,6 +150,42 @@ void MayanDoor::onObjectStateLoaded()
 
 	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGem, Value(false)).asBool())
 	{
+		this->purpleGem->enableGem();
+	}
+}
+
+void MayanDoor::tryTakeGems()
+{
+	if (this->inventory == nullptr)
+	{
+		return;
+	}
+
+	std::vector<MayanGemRedItem*> redGems = this->inventory->getItemsOfType<MayanGemRedItem>();
+	std::vector<MayanGemBlueItem*> blueGems = this->inventory->getItemsOfType<MayanGemBlueItem>();
+	std::vector<MayanGemPurpleItem*> purpleGems = this->inventory->getItemsOfType<MayanGemPurpleItem>();
+
+	if (!redGems.empty())
+	{
+		inventory->tryRemove(redGems.back());
+
+		this->saveObjectState(MayanDoor::SaveKeyRedGem, Value(true));
+		this->redGem->enableGem();
+	}
+
+	if (!blueGems.empty())
+	{
+		inventory->tryRemove(blueGems.back());
+
+		this->saveObjectState(MayanDoor::SaveKeyBlueGem, Value(true));
+		this->blueGem->enableGem();
+	}
+
+	if (!purpleGems.empty())
+	{
+		inventory->tryRemove(purpleGems.back());
+
+		this->saveObjectState(MayanDoor::SaveKeyPurpleGem, Value(true));
 		this->purpleGem->enableGem();
 	}
 }

@@ -40,7 +40,7 @@ std::string MayanGemBlueItem::getItemName()
 
 LocalizedString* MayanGemBlueItem::getString()
 {
-	return Strings::Items_Misc_Keys_TownKey::create();
+	return Strings::Items_Misc_Keys_BlueGem::create();
 }
 
 std::string MayanGemBlueItem::getIconResource()

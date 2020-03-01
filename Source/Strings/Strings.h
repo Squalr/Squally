@@ -6519,6 +6519,21 @@ namespace Strings
 		virtual ~Items_Error_MissingNo() = default;
 	};
 
+	class Items_Misc_Keys_BlueGem : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_BlueGem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_BlueGem();
+		virtual ~Items_Misc_Keys_BlueGem() = default;
+	};
+
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
 	{
 	public:
@@ -6532,6 +6547,36 @@ namespace Strings
 	private:
 		Items_Misc_Keys_MagesGuildPrisonKey();
 		virtual ~Items_Misc_Keys_MagesGuildPrisonKey() = default;
+	};
+
+	class Items_Misc_Keys_PurpleGem : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_PurpleGem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_PurpleGem();
+		virtual ~Items_Misc_Keys_PurpleGem() = default;
+	};
+
+	class Items_Misc_Keys_RedGem : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_RedGem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_RedGem();
+		virtual ~Items_Misc_Keys_RedGem() = default;
 	};
 
 	class Items_Misc_Keys_TownKey : public LocalizedString
