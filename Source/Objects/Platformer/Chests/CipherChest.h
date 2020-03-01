@@ -27,7 +27,6 @@ private:
 	void initializePositions() override;
 	void initializeListeners() override;
 	CipherPuzzleData* buildPuzzleData();
-	void onUnlock(CipherPuzzleData* puzzleData);
 
 	CipherPuzzleData* cipherPuzzleData;
 

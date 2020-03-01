@@ -132,6 +132,8 @@ namespace ObjectResources
 	extern const std::string Collectables_Cards_CardSpecial;
 	extern const std::string Collectables_Chests_ChestClosed;
 	extern const std::string Collectables_Chests_ChestOpen;
+	extern const std::string Collectables_Chests_MetalChestClosed;
+	extern const std::string Collectables_Chests_MetalChestOpen;
 	extern const std::string Collectables_Currency_IOU;
 	extern const std::string Decor_Torch;
 	extern const std::string Decor_TorchGlow;

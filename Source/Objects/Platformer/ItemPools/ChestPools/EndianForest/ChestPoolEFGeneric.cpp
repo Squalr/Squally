@@ -2,16 +2,10 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Input/ClickableNode.h"
-#include "Engine/Inventory/ItemChance.h"
-#include "Engine/Localization/ConstantString.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CraftingPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
-
-#include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
@@ -34,19 +28,4 @@ ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(
 
 ChestPoolEFGeneric::~ChestPoolEFGeneric()
 {
-}
-
-void ChestPoolEFGeneric::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ChestPoolEFGeneric::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ChestPoolEFGeneric::initializeListeners()
-{
-	super::initializeListeners();
 }

@@ -8,12 +8,16 @@ class CollisionObject;
 class InteractMenu;
 class MinMaxPool;
 
-class Chest : public ChestBase
+class MetalChest : public ChestBase
 {
 public:
+	static MetalChest* create(cocos2d::ValueMap& properties);
+
+	static const std::string MapKeyMetalChest;
+
 protected:
-	Chest(cocos2d::ValueMap& properties);
-	virtual ~Chest();
+	MetalChest(cocos2d::ValueMap& properties);
+	virtual ~MetalChest();
 
 private:
 	typedef ChestBase super;

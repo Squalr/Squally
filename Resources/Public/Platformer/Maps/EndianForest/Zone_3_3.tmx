@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="56" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="764">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="56" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="767">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -137,6 +137,21 @@
   <object id="763" name="lever" type="object" x="4445.5" y="4619.5" width="177" height="205">
    <properties>
     <property name="send-event" value="mayan-door-unlock"/>
+   </properties>
+  </object>
+  <object id="764" name="metal-chest" type="object" x="3002.67" y="4926.91" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ef-gem-red"/>
+   </properties>
+  </object>
+  <object id="765" name="metal-chest" type="object" x="3190.55" y="4808.73" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ef-gem-blue"/>
+   </properties>
+  </object>
+  <object id="766" name="metal-chest" type="object" x="2772.36" y="5069.33" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ef-gem-purple"/>
    </properties>
   </object>
  </objectgroup>

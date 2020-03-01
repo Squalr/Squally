@@ -11,10 +11,7 @@ public:
 
 protected:
 	ChestPoolEFGeneric(cocos2d::ValueMap& properties);
-	~ChestPoolEFGeneric();
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
+	virtual ~ChestPoolEFGeneric();
 
 private:
 	typedef MinMaxPool super;

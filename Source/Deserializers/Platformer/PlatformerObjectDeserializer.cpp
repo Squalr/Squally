@@ -126,6 +126,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[LifeStone::MapKeyLifeStone] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[MagicWall::MapKeyMagicWall] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };
 	this->deserializers[MayanDoor::MapKeyMayanDoor] = [=](ValueMap properties) { return (GameObject*)MayanDoor::create(properties); };
+	this->deserializers[MetalChest::MapKeyMetalChest] = [=](ValueMap properties) { return (GameObject*)MetalChest::create(properties); };
 	this->deserializers[MetalSpikes::MapKeyMetalSpikes] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKeyMechanicalFlail] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
 	this->deserializers[MulDoor::MapKeyMulDoor] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };

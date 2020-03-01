@@ -14,17 +14,13 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Events/CipherEvents.h"
-#include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
-#include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItemDeserializer.h"
 #include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
-
-#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -74,6 +70,8 @@ void CipherChest::initializeListeners()
 
 void CipherChest::onInteract()
 {
+	// Intentionally do not call super here. Overriding default behavior of giving items.
+
 	CipherEvents::TriggerOpenCipher(CipherEvents::CipherOpenArgs(this->cipherPuzzleData));
 }
 
@@ -147,20 +145,6 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 
 	return CipherPuzzleData::create(inputOutputMap, tokens, dataType, tutorial, [=](CipherPuzzleData* puzzleData)
 	{
-		this->onUnlock(puzzleData);
+		this->performUnlockAndGiveItems();
 	});
-}
-
-void CipherChest::onUnlock(CipherPuzzleData* puzzleData)
-{
-	this->unlock();
-	this->open();
-
-	if (this->chestPool == nullptr)
-	{
-		this->chestPool = ErrorPool::create();
-		this->addChild(this->chestPool);
-	}
-
-	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));
 }
