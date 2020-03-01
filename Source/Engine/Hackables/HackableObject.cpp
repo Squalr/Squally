@@ -207,6 +207,8 @@ void HackableObject::SetHackFlags(int hackFlags)
 void HackableObject::toggleHackable(bool isHackable)
 {
 	this->isHackable = isHackable;
+
+	this->refreshParticleFx();
 }
 
 void HackableObject::toggleAllowFx(bool allowFx)
@@ -265,7 +267,7 @@ void HackableObject::registerHackables()
 
 void HackableObject::refreshParticleFx()
 {
-	if (this->allowFx && !this->hackableList.empty() && this->trackedAttributes.empty())
+	if (this->allowFx && this->isHackable && !this->hackableList.empty() && this->trackedAttributes.empty())
 	{
 		this->createSensingParticles();
 		this->hackParticles1->start();

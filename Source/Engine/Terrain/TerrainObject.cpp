@@ -523,6 +523,7 @@ void TerrainObject::buildSurfaceTextures()
 
 		std::tuple<Vec2, Vec2> segment = *it;
 		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->segments.end() ? this->segments[0] : (*itClone);
+
 		Vec2 source = std::get<0>(segment);
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
@@ -608,12 +609,15 @@ void TerrainObject::buildSurfaceTextures()
 
 		Concavity concavity = Concavity::Standard;
 		float normalDeg = normalAngle * 180.0f / float(M_PI);
-		float nextNormalDeg = nextSegmentNormalAngle * 180.0f / float(M_PI); 
+		float nextNormalDeg = nextSegmentNormalAngle * 180.0f / float(M_PI);
 
-		if (nextNormalDeg > normalDeg)
+		// Calculate concavity, taking into account counter-clockwise terrain segment layouts
+		bool isConcave = (std::get<0>(nextSegment).x > std::get<0>(segment).x) ? (nextNormalDeg > normalDeg) : (normalDeg > nextNormalDeg);
+		
+		if (isConcave)
 		{
 			// Concave
-			float normalDelta = nextNormalDeg - normalDeg;
+			float normalDelta = std::abs(nextNormalDeg - normalDeg);
 
 			if (normalDelta <= 24.0f)
 			{
@@ -631,7 +635,7 @@ void TerrainObject::buildSurfaceTextures()
 		else
 		{
 			// Convex
-			float normalDelta = normalDeg - nextNormalDeg;
+			float normalDelta = std::abs(normalDeg - nextNormalDeg);
 
 			if (normalDelta <= 24.0f)
 			{

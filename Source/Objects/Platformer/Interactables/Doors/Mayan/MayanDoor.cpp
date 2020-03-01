@@ -48,6 +48,12 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->redGem = MayanGemRed::create();
 	this->blueGem = MayanGemBlue::create();
 	this->purpleGem = MayanGemPurple::create();
+	this->turninHitbox = CollisionObject::create(
+		CollisionObject::createBox(Size(640.0f, 256.0f)),
+		(CollisionType)PlatformerCollisionType::Trigger,
+		CollisionObject::Properties(false, false),
+		Color4F::WHITE
+	);
 	this->isUnlocking = false;
 
 	this->doorContainer->addChild(this->doorFrame);
@@ -59,6 +65,7 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	this->addChild(this->purpleGem);
 	this->addChild(this->doorContainer);
 	this->addChild(this->doorOpenSound);
+	this->addChild(this->turninHitbox);
 }
 
 MayanDoor::~MayanDoor()
@@ -78,6 +85,7 @@ void MayanDoor::initializePositions()
 	this->purpleGem->setPosition(Vec2(Radius * std::cos(PurpleGemAngle), Radius * std::sin(PurpleGemAngle)));
 	this->doorArrow->setPosition(Vec2(0.0f, 180.0f));
 	this->doorFrame->setPosition(Vec2(0.0f, 0.0f));
+	this->turninHitbox->setPosition(Vec2(0.0f, (256.0f - 478.0f) / 2.0f));
 	this->innerContainer->setPosition(Vec2(0.0f, 0.0f));
 }
 
@@ -88,6 +96,11 @@ void MayanDoor::initializeListeners()
 	this->listenForMapEvent(MayanDoor::EventMayanDoorUnlock, [=](ValueMap args)
 	{
 		this->tryUnlock();
+	});
+
+	this->turninHitbox->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	{
+		return CollisionObject::CollisionResult::DoNothing;
 	});
 }
 
