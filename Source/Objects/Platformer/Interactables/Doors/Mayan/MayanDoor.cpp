@@ -38,7 +38,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_GEM_PURPLE 3
 
 const std::string MayanDoor::MapKeyMayanDoor = "mayan-door";
-const float MayanDoor::DoorOpenDelta = 320.0f;
+const float MayanDoor::DoorOpenDelta = 420.0f;
 const std::string MayanDoor::EventMayanDoorUnlock = "mayan-door-unlock";
 const std::string MayanDoor::SaveKeyRedGem = "SAVE_KEY_RED_GEM";
 const std::string MayanDoor::SaveKeyBlueGem = "SAVE_KEY_BLUE_GEM";
@@ -117,9 +117,9 @@ void MayanDoor::initializePositions()
 	const float RedGemAngle = 5.0f * float(M_PI) / 6.0f;
 	const float PurpleGemAngle = 1.0f * float(M_PI) / 6.0f;
 
-	this->redGem->setPosition(Vec2(Radius * std::cos(RedGemAngle), Radius * std::sin(RedGemAngle)));
+	this->redGem->setPosition(Vec2(Radius * std::cos(RedGemAngle) - 64.0f, Radius * std::sin(RedGemAngle)));
 	this->blueGem->setPosition(Vec2(0.0f, Radius));
-	this->purpleGem->setPosition(Vec2(Radius * std::cos(PurpleGemAngle), Radius * std::sin(PurpleGemAngle)));
+	this->purpleGem->setPosition(Vec2(Radius * std::cos(PurpleGemAngle) + 64.0f, Radius * std::sin(PurpleGemAngle)));
 	this->doorArrow->setPosition(Vec2(0.0f, 180.0f));
 	this->doorFrame->setPosition(Vec2(0.0f, 0.0f));
 	this->turninHitbox->setPosition(Vec2(0.0f, (256.0f - 478.0f) / 2.0f));
@@ -352,28 +352,36 @@ void MayanDoor::tryUnlock()
 	float rotationPurple = getRotation(indexPurple);
 	float rotationReturn = getRotation(0);
 
-	float delayRed = std::max(float(std::min(std::abs(indexRed - 0), std::abs(indexRed - 0))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayBlue = std::max(float(std::min(std::abs(indexRed - indexBlue), std::abs(indexRed - indexBlue))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayPurple = std::max(float(std::min(std::abs(indexPurple - indexBlue), std::abs(indexBlue - indexPurple))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
-	float delayReturn = std::max(float(std::min(std::abs(indexPurple - 0), std::abs(0 - indexPurple))) * RotationSpeedPerUnitReturn, RotationSpeedPerUnitReturn);
+	auto getDist = [=](int indexFrom, int indexTo)
+	{
+		int distBetweenWrapped = ((indexFrom < 6) ? indexFrom : (12 - indexFrom)) + ((indexTo < 6) ? indexTo : (12 - indexTo));
+		int distBetween = std::abs(indexFrom - indexTo);
+		
+		return float(std::min(distBetweenWrapped, distBetween));
+	};
+
+	float delayRed = std::max(getDist(indexRed, 0) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayBlue = std::max(getDist(indexRed, indexBlue) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayPurple = std::max(getDist(indexBlue, indexPurple) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayReturn = std::max(getDist(indexPurple, 0) * RotationSpeedPerUnitReturn, RotationSpeedPerUnitReturn);
 
 	this->innerContainer->runAction(Sequence::create(
 		RotateTo::create(delayRed, rotationRed),
 		CallFunc::create([=]()
 		{
-			this->redGem->runFX();
+			// this->redGem->runFX();
 		}),
 		DelayTime::create(0.5f),
 		RotateTo::create(delayBlue, rotationBlue),
 		CallFunc::create([=]()
 		{
-			this->blueGem->runFX();
+			// this->blueGem->runFX();
 		}),
 		DelayTime::create(0.5f),
 		RotateTo::create(delayPurple, rotationPurple),
 		CallFunc::create([=]()
 		{
-			this->purpleGem->runFX();
+			// this->purpleGem->runFX();
 		}),
 		DelayTime::create(0.5f),
 		RotateTo::create(delayReturn, rotationReturn),
@@ -395,6 +403,11 @@ void MayanDoor::lock(bool animate)
 	super::lock(animate);
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(false));
+
+	this->redGem->showText();
+	this->blueGem->showText();
+	this->purpleGem->showText();
+	this->toggleHackable(true);
 	
 	float currentProgress = this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;
 
@@ -421,6 +434,11 @@ void MayanDoor::unlock(bool animate)
 	super::unlock(animate);
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(true));
+
+	this->redGem->hideText();
+	this->blueGem->hideText();
+	this->purpleGem->hideText();
+	this->toggleHackable(false);
 
 	float currentProgress = 1.0f - this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;
 
@@ -451,6 +469,7 @@ NO_OPTIMIZE int MayanDoor::runGemRed(int currentIndex)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_RED);
 	ASM(mov ZBX, 4);
+	ASM_NOP8();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(newIndex, ZBX);
@@ -472,6 +491,7 @@ NO_OPTIMIZE int MayanDoor::runGemBlue(int currentIndex)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_BLUE);
 	ASM(add ZBX, 7);
+	ASM_NOP8();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(newIndex, ZBX);
@@ -493,6 +513,7 @@ NO_OPTIMIZE int MayanDoor::runGemPurple(int currentIndex)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GEM_PURPLE);
 	ASM(sub ZBX, 5);
+	ASM_NOP8();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(newIndex, ZBX);

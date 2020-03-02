@@ -3,6 +3,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoItemsBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/RestorePotionTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/TrainingHealTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Cinematic/GorgonCinematicBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Cinematic/MageCastBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/EnemyBattleAllyBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/EnemyBehaviorGroup.h"

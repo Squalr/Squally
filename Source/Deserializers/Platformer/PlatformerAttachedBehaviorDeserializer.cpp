@@ -35,9 +35,11 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[FriendlyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[FriendlyNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyNoCollisionBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[FirstIOUFound::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FirstIOUFound::create(owner); };
+	this->attachedBehaviorDeserializers[GorgonCinematicBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)GorgonCinematicBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LookAtSquallyBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LookAtSquallyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LookAtSquallyBehavior::MapKeyAttachedBehaviorAlias] = [=](GameObject* owner) { return (AttachedBehavior*)LookAtSquallyBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LockedPortal::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)LockedPortal::create(owner); };
+	this->attachedBehaviorDeserializers[MageCastBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)MageCastBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[NoDefendBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)NoDefendBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[NoItemsBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)NoItemsBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[RestorePotionTutorialBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)RestorePotionTutorialBehavior::create(owner); };

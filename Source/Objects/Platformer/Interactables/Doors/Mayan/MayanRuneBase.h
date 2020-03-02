@@ -16,6 +16,8 @@ class MayanRuneBase : public GameObject
 public:
 	void loadAnswer(int answer);
 	void runFX();
+	void hideText();
+	void showText();
 	void enableGem();
 	void disableGem();
 

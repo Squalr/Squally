@@ -80,6 +80,16 @@ void MayanRuneBase::runFX()
 	));
 }
 
+void MayanRuneBase::hideText()
+{
+	this->answerLabel->runAction(FadeTo::create(0.25f, 0));
+}
+
+void MayanRuneBase::showText()
+{
+	this->answerLabel->runAction(FadeTo::create(0.25f, 255));
+}
+
 void MayanRuneBase::enableGem()
 {
 	this->answerLabel->setVisible(true);
