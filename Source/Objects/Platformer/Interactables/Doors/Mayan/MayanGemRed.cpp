@@ -20,3 +20,8 @@ MayanGemRed::MayanGemRed() : super(ObjectResources::Doors_Mayan_RedGem, ObjectRe
 MayanGemRed::~MayanGemRed()
 {
 }
+
+Color4B MayanGemRed::getGemFontColor()
+{
+	return Color4B::RED;
+}

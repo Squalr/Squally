@@ -17,7 +17,6 @@ class ClickableNode;
 class Clippy;
 class HackableAttribute;
 class HackableCode;
-class HackableData;
 class HackActivatedAbility;
 class HackablePreview;
 class HackButton;
@@ -35,8 +34,6 @@ public:
 	
 	void toggleHackable(bool isHackable);
 	void toggleAllowFx(bool allowFx);
-	void registerData(HackableData* hackableData);
-	void unregisterData(HackableData* hackableData);
 	void registerCode(HackableCode* hackableCode);
 	void unregisterCode(HackableCode* hackableCode);
 	void registerHackAbility(HackActivatedAbility* hackActivatedAbility);
@@ -60,7 +57,6 @@ public:
 	}
 
 	std::vector<HackableAttribute*> hackableList;
-	std::vector<HackableData*> dataList;
 	std::vector<HackableCode*> codeList;
 	std::vector<HackActivatedAbility*> hackAbilityList;
 

@@ -44,6 +44,9 @@ const std::string MayanDoor::SaveKeyRedGem = "SAVE_KEY_RED_GEM";
 const std::string MayanDoor::SaveKeyBlueGem = "SAVE_KEY_BLUE_GEM";
 const std::string MayanDoor::SaveKeyPurpleGem = "SAVE_KEY_PURPLE_GEM";
 const std::string MayanDoor::SaveKeyUnlocked = "SAVE_KEY_UNLOCKED";
+const std::string MayanDoor::SaveKeyRedGemAnswer = "SAVE_KEY_RED_GEM_ANSWER";
+const std::string MayanDoor::SaveKeyBlueGemAnswer = "SAVE_KEY_BLUE_GEM_ANSWER";
+const std::string MayanDoor::SaveKeyPurpleGemAnswer = "SAVE_KEY_PURPLE_GEM_ANSWER";
 
 MayanDoor* MayanDoor::create(ValueMap& properties)
 {
@@ -73,6 +76,9 @@ MayanDoor::MayanDoor(ValueMap& properties) : super(properties, Size(478.0f, 478.
 	);
 	this->inventory = nullptr;
 	this->isUnlocking = false;
+	this->redGemAnswer = 0;
+	this->blueGemAnswer = 0;
+	this->purpleGemAnswer = 0;
 
 	this->doorContainer->addChild(this->doorFrame);
 	this->doorContainer->addChild(this->innerContainer);
@@ -141,6 +147,30 @@ void MayanDoor::onObjectStateLoaded()
 {
 	super::onObjectStateLoaded();
 
+	int redDefault = 0;
+	int blueDefault = 0;
+	int purpleDefault = 0;
+
+	// 4, 11, 6 is the default combo. The answer can be anything except this.
+	do
+	{
+		redDefault = RandomHelper::random_int(0, 11);
+		blueDefault = RandomHelper::random_int(0, 11);
+		purpleDefault = RandomHelper::random_int(0, 11);
+	} while (redDefault == 4 && blueDefault == 11 && purpleDefault == 6);
+
+	this->redGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyRedGemAnswer, Value(redDefault)).asInt();
+	this->blueGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyBlueGemAnswer, Value(blueDefault)).asInt();
+	this->purpleGemAnswer = this->getObjectStateOrDefault(MayanDoor::SaveKeyPurpleGemAnswer, Value(purpleDefault)).asInt();
+
+	this->redGem->loadAnswer(this->redGemAnswer);
+	this->blueGem->loadAnswer(this->blueGemAnswer);
+	this->purpleGem->loadAnswer(this->purpleGemAnswer);
+
+	this->saveObjectState(MayanDoor::SaveKeyRedGemAnswer, Value(this->redGemAnswer));
+	this->saveObjectState(MayanDoor::SaveKeyBlueGemAnswer, Value(this->blueGemAnswer));
+	this->saveObjectState(MayanDoor::SaveKeyPurpleGemAnswer, Value(this->purpleGemAnswer));
+
 	if (this->getObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(false)).asBool())
 	{
 		this->unlock(false);
@@ -176,11 +206,11 @@ void MayanDoor::registerHackables()
 			LOCAL_FUNC_ID_GEM_RED,
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-red",
-				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_MayanDoor_Combination1::create(),
 				UIResources::Menus_Icons_Ruby,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
 				},
 				int(HackFlags::None),
 				15.0f,
@@ -192,11 +222,11 @@ void MayanDoor::registerHackables()
 			LOCAL_FUNC_ID_GEM_BLUE,
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-blue",
-				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_MayanDoor_Combination2::create(),
 				UIResources::Menus_Icons_Diamond,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
 				},
 				int(HackFlags::None),
 				15.0f,
@@ -208,11 +238,11 @@ void MayanDoor::registerHackables()
 			LOCAL_FUNC_ID_GEM_PURPLE,
 			HackableCode::HackableCodeInfo(
 				"mayan-gem-purple",
-				nullptr, // Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
+				Strings::Menus_Hacking_Objects_MayanDoor_Combination3::create(),
 				UIResources::Menus_Icons_CrystalShard,
 				nullptr, // PendulumBladeSetAnglePreview::create(),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx::create() }
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MayanDoor_RegisterEbx::create() }
 				},
 				int(HackFlags::None),
 				15.0f,
@@ -307,7 +337,7 @@ void MayanDoor::tryUnlock()
 
 	int index = 0;
 	int indexRed = this->runGemRed(index);
-	int indexBlue = this->runGemRed(indexRed);
+	int indexBlue = this->runGemBlue(indexRed);
 	int indexPurple = this->runGemPurple(indexBlue);
 
 	auto getRotation = [=](int rotationIndex)
@@ -322,33 +352,38 @@ void MayanDoor::tryUnlock()
 	float rotationPurple = getRotation(indexPurple);
 	float rotationReturn = getRotation(0);
 
-	float delayRed = float(std::min(std::abs(indexRed - 0), std::abs(indexRed - 0))) * RotationSpeedPerUnit;
-	float delayBlue = float(std::min(std::abs(indexRed - indexBlue), std::abs(indexRed - indexBlue))) * RotationSpeedPerUnit;
-	float delayPurple = float(std::min(std::abs(indexPurple - indexBlue), std::abs(indexBlue - indexPurple))) * RotationSpeedPerUnit;
-	float delayReturn = float(std::min(std::abs(indexPurple - 0), std::abs(0 - indexPurple))) * RotationSpeedPerUnitReturn;
+	float delayRed = std::max(float(std::min(std::abs(indexRed - 0), std::abs(indexRed - 0))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayBlue = std::max(float(std::min(std::abs(indexRed - indexBlue), std::abs(indexRed - indexBlue))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayPurple = std::max(float(std::min(std::abs(indexPurple - indexBlue), std::abs(indexBlue - indexPurple))) * RotationSpeedPerUnit, RotationSpeedPerUnit);
+	float delayReturn = std::max(float(std::min(std::abs(indexPurple - 0), std::abs(0 - indexPurple))) * RotationSpeedPerUnitReturn, RotationSpeedPerUnitReturn);
 
 	this->innerContainer->runAction(Sequence::create(
+		RotateTo::create(delayRed, rotationRed),
 		CallFunc::create([=]()
 		{
 			this->redGem->runFX();
 		}),
-		RotateTo::create(delayRed, rotationRed),
 		DelayTime::create(0.5f),
+		RotateTo::create(delayBlue, rotationBlue),
 		CallFunc::create([=]()
 		{
 			this->blueGem->runFX();
 		}),
-		RotateTo::create(delayBlue, rotationBlue),
 		DelayTime::create(0.5f),
+		RotateTo::create(delayPurple, rotationPurple),
 		CallFunc::create([=]()
 		{
 			this->purpleGem->runFX();
 		}),
-		RotateTo::create(delayPurple, rotationPurple),
 		DelayTime::create(0.5f),
 		RotateTo::create(delayReturn, rotationReturn),
 		CallFunc::create([=]()
 		{
+			if (indexRed == this->redGemAnswer && indexBlue == this->blueGemAnswer && indexPurple == this->purpleGemAnswer)
+			{
+				this->unlock(true);
+			}
+
 			this->isUnlocking = false;
 		}),
 		nullptr
@@ -361,12 +396,13 @@ void MayanDoor::lock(bool animate)
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(false));
 	
-	float currentProgress = this->door->getPositionX() / MayanDoor::DoorOpenDelta;
+	float currentProgress = this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;
 
 	if (animate)
 	{
-		this->door->stopAllActions();
-		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
+		this->doorContainer->stopAllActions();
+		this->doorContainer->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
+		this->doorContainer->runAction(RotateTo::create(5.0f * currentProgress, 0.0f));
 
 		if (this->doorOpenSound != nullptr)
 		{
@@ -375,7 +411,8 @@ void MayanDoor::lock(bool animate)
 	}
 	else
 	{
-		this->door->setPosition(Vec2::ZERO);
+		this->doorContainer->setPosition(Vec2::ZERO);
+		this->doorContainer->setRotation(0.0f);
 	}
 }
 
@@ -385,12 +422,13 @@ void MayanDoor::unlock(bool animate)
 
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(true));
 
-	float currentProgress = 1.0f - this->door->getPositionX() / MayanDoor::DoorOpenDelta;
+	float currentProgress = 1.0f - this->doorContainer->getPositionX() / MayanDoor::DoorOpenDelta;
 
 	if (animate)
 	{
-		this->door->stopAllActions();
-		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2(MayanDoor::DoorOpenDelta, 0.0f)));
+		this->doorContainer->stopAllActions();
+		this->doorContainer->runAction(MoveTo::create(5.0f * currentProgress, Vec2(MayanDoor::DoorOpenDelta, 0.0f)));
+		this->doorContainer->runAction(RotateTo::create(5.0f * currentProgress, 180.0f));
 		
 		if (this->doorOpenSound != nullptr)
 		{
@@ -399,7 +437,8 @@ void MayanDoor::unlock(bool animate)
 	}
 	else
 	{
-		this->door->setPosition(Vec2(0.0f, MayanDoor::DoorOpenDelta));
+		this->doorContainer->setPosition(Vec2(MayanDoor::DoorOpenDelta, 0.0f));
+		this->doorContainer->setRotation(180.0f);
 	}
 }
 

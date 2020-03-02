@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="56" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="767">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="56" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="768">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -152,6 +152,12 @@
   <object id="766" name="metal-chest" type="object" x="2772.36" y="5069.33" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-gem-purple"/>
+   </properties>
+  </object>
+  <object id="767" name="camera-stop" type="object" x="3976" y="4968" width="216" height="1616">
+   <properties>
+    <property name="no-x" type="bool" value="true"/>
+    <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

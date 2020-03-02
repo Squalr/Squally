@@ -10,7 +10,6 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"

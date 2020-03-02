@@ -12,7 +12,6 @@
 #include "Engine/Hackables/Clippy.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableCode.h"
-#include "Engine/Hackables/HackableData.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Hackables/HackButton.h"
 #include "Engine/Input/ClickableNode.h"
@@ -35,7 +34,6 @@ HackableObject::HackableObject() : HackableObject(ValueMap())
 HackableObject::HackableObject(const ValueMap& properties) : super(properties)
 {
 	this->hackableList = std::vector<HackableAttribute*>();
-	this->dataList = std::vector<HackableData*>();
 	this->codeList = std::vector<HackableCode*>();
 	this->hackAbilityList = std::vector<HackActivatedAbility*>();
 	this->trackedAttributes = std::vector<HackableAttribute*>();
@@ -324,26 +322,6 @@ HackablePreview* HackableObject::createDefaultPreview()
 	return nullptr;
 }
 
-void HackableObject::registerData(HackableData* hackableData)
-{
-	if (hackableData == nullptr)
-	{
-		return;
-	}
-	
-	for (auto it = this->dataList.begin(); it != this->dataList.end(); it++)
-	{
-		if ((*it)->getPointer() == hackableData->getPointer())
-		{
-			return;
-		}
-	}
-
-	this->hackablesNode->addChild(hackableData);
-	this->hackableList.push_back(hackableData);
-	this->dataList.push_back(hackableData);
-}
-
 void HackableObject::unregisterAllHackables()
 {
 	std::vector<HackableCode*> codeList = this->codeList;
@@ -353,32 +331,12 @@ void HackableObject::unregisterAllHackables()
 		this->unregisterCode(next);
 	}
 
-	std::vector<HackableData*> dataList = this->dataList;
-
-	for (auto next : dataList)
-	{
-		this->unregisterData(next);
-	}
-
 	std::vector<HackActivatedAbility*> hackAbilityList = this->hackAbilityList;
 
 	for (auto next : hackAbilityList)
 	{
 		this->unregisterHackAbility(next);
 	}
-}
-
-void HackableObject::unregisterData(HackableData* hackableData)
-{
-	if (hackableData == nullptr)
-	{
-		return;
-	}
-
-	this->hackablesNode->removeChild(hackableData);
-
-	this->hackableList.erase(std::remove(this->hackableList.begin(), this->hackableList.end(), hackableData), this->hackableList.end());
-	this->dataList.erase(std::remove(this->dataList.begin(), this->dataList.end(), hackableData), this->dataList.end());
 }
 
 void HackableObject::registerCode(HackableCode* hackableCode)

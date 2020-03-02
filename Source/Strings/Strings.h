@@ -13794,6 +13794,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown() = default;
 	};
 
+	class Menus_Hacking_Objects_MayanDoor_Combination1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MayanDoor_Combination1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MayanDoor_Combination1();
+		virtual ~Menus_Hacking_Objects_MayanDoor_Combination1() = default;
+	};
+
+	class Menus_Hacking_Objects_MayanDoor_Combination2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MayanDoor_Combination2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MayanDoor_Combination2();
+		virtual ~Menus_Hacking_Objects_MayanDoor_Combination2() = default;
+	};
+
+	class Menus_Hacking_Objects_MayanDoor_Combination3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MayanDoor_Combination3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MayanDoor_Combination3();
+		virtual ~Menus_Hacking_Objects_MayanDoor_Combination3() = default;
+	};
+
+	class Menus_Hacking_Objects_MayanDoor_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MayanDoor_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MayanDoor_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_MayanDoor_RegisterEbx() = default;
+	};
+
 	class Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax : public LocalizedString
 	{
 	public:

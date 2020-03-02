@@ -20,3 +20,8 @@ MayanGemPurple::MayanGemPurple() : super(ObjectResources::Doors_Mayan_PurpleGem,
 MayanGemPurple::~MayanGemPurple()
 {
 }
+
+Color4B MayanGemPurple::getGemFontColor()
+{
+	return Color4B::MAGENTA;
+}

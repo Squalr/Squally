@@ -159,19 +159,19 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	float currentAngle = 3.0f * float(M_PI) / 2.0f;
 
 	// Create return button
-	Vec2 nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
+	Vec2 nextDataIconPosition = Vec2(-std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 	Node* returnRadialNode = this->createRadialNode(UIResources::Menus_Icons_Cross, -1, nextDataIconPosition, currentAngle, Strings::Menus_Exit::create(), [=]() { this->close(); });
 	currentAngle = MathUtils::wrappingNormalize(currentAngle + angleStep, 0.0f, 2.0f * float(M_PI));
 
 	this->radialMenuItems->addChild(returnRadialNode);
 
-	// Draw data icons
+	// Draw icons
 	for (auto it = filteredAttributes.begin(); it != filteredAttributes.end(); it++)
 	{
 		HackableAttribute* hackable = *it;
 		LocalizedString* name = hackable->getName();
 
-		nextDataIconPosition = Vec2(std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
+		nextDataIconPosition = Vec2(-std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);
 
 		ClickableNode* menuNode = this->createRadialNode(
 			hackable->getIconResource(),
@@ -193,7 +193,6 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 	const Size padding = Size(4.0f, 0.0f);
 
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
-	//Sprite* radialNodeIcon = Sprite::create(this->hackFlags >= requiredLevel ? iconResource : (StrUtils::rtrim(iconResource, ".png", true) + "_gray.png"));
 	ClickableNode* clickableNode = ClickableNode::create(Node::create(), Node::create());
 	Node* labelNode = Node::create();
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);

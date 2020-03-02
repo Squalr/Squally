@@ -176,6 +176,7 @@ namespace ObjectResources
 	extern const std::string Doors_Mayan_BlueGem;
 	extern const std::string Doors_Mayan_BlueGemDisabled;
 	extern const std::string Doors_Mayan_GemFrame;
+	extern const std::string Doors_Mayan_GemFrameGlowing;
 	extern const std::string Doors_Mayan_PurpleGem;
 	extern const std::string Doors_Mayan_PurpleGemDisabled;
 	extern const std::string Doors_Mayan_RedGem;

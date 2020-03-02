@@ -175,6 +175,7 @@ const std::string ObjectResources::Doors_LanternGate_LanternRight = "Private/Pla
 const std::string ObjectResources::Doors_Mayan_BlueGem = "Private/Platformer/Objects/Doors/Mayan/BlueGem.png";
 const std::string ObjectResources::Doors_Mayan_BlueGemDisabled = "Private/Platformer/Objects/Doors/Mayan/BlueGemDisabled.png";
 const std::string ObjectResources::Doors_Mayan_GemFrame = "Private/Platformer/Objects/Doors/Mayan/GemFrame.png";
+const std::string ObjectResources::Doors_Mayan_GemFrameGlowing = "Private/Platformer/Objects/Doors/Mayan/GemFrameGlowing.png";
 const std::string ObjectResources::Doors_Mayan_PurpleGem = "Private/Platformer/Objects/Doors/Mayan/PurpleGem.png";
 const std::string ObjectResources::Doors_Mayan_PurpleGemDisabled = "Private/Platformer/Objects/Doors/Mayan/PurpleGemDisabled.png";
 const std::string ObjectResources::Doors_Mayan_RedGem = "Private/Platformer/Objects/Doors/Mayan/RedGem.png";

@@ -44,6 +44,9 @@ private:
 	int runGemPurple(int currentIndex);
 
 	bool isUnlocking;
+	int redGemAnswer;
+	int blueGemAnswer;
+	int purpleGemAnswer;
 	
 	MayanGemRed* redGem;
 	MayanGemBlue* blueGem;
@@ -64,5 +67,8 @@ private:
 	static const std::string SaveKeyRedGem;
 	static const std::string SaveKeyBlueGem;
 	static const std::string SaveKeyPurpleGem;
+	static const std::string SaveKeyRedGemAnswer;
+	static const std::string SaveKeyBlueGemAnswer;
+	static const std::string SaveKeyPurpleGemAnswer;
 	static const std::string SaveKeyUnlocked;
 };

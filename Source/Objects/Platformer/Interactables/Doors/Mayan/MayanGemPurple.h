@@ -11,6 +11,8 @@ protected:
 	MayanGemPurple();
 	virtual ~MayanGemPurple();
 
+	cocos2d::Color4B getGemFontColor() override;
+
 private:
 	typedef MayanRuneBase super;
 };
