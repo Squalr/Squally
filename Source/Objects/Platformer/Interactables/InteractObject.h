@@ -17,6 +17,8 @@ public:
 		Input,
 		Collision,
 	};
+
+	static InteractObject* create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO);
 	
 	void enable();
 	void disable();

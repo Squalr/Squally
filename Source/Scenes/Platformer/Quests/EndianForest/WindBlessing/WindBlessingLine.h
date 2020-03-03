@@ -13,7 +13,7 @@ public:
 
 protected:
 	WindBlessingLine();
-	~WindBlessingLine();
+	virtual ~WindBlessingLine();
 
 private:
 	typedef QuestLine super;

@@ -5,5 +5,6 @@
 #include "Scenes/Platformer/Quests/EndianForest/Intro/IntroLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/RescueGuano/RescueGuanoLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/SailForRuins/SailForRuinsLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/SaveTown/SaveTownLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WaterBlessing/WaterBlessingLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WindBlessing/WindBlessingLine.h"

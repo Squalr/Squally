@@ -46,7 +46,7 @@ public:
 
 protected:
 	QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq = nullptr);
-	~QuestLine();
+	virtual ~QuestLine();
 
 private:
 	typedef SmartNode super;

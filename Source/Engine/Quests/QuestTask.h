@@ -22,7 +22,7 @@ public:
 
 protected:
 	QuestTask(GameObject* owner, QuestLine* questLine, std::string questTask, bool skippable = false);
-	~QuestTask();
+	virtual ~QuestTask();
 
 	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;
@@ -33,6 +33,9 @@ protected:
 	virtual void onSkipped() = 0;
 	bool isActive();
 	void complete();
+
+	void saveQuestSaveState(std::string key, cocos2d::Value value);
+	cocos2d::Value getQuestSaveStateOrDefault(std::string key, cocos2d::Value value);
 	
 	QuestLine* questLine;
 

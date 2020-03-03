@@ -15,7 +15,7 @@ public:
 
 protected:
 	WindBlessing(GameObject* owner, QuestLine* questLine);
-	~WindBlessing();
+	virtual ~WindBlessing();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -6564,6 +6564,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_PurpleGem() = default;
 	};
 
+	class Items_Misc_Keys_RamWheel : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_RamWheel* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_RamWheel();
+		virtual ~Items_Misc_Keys_RamWheel() = default;
+	};
+
 	class Items_Misc_Keys_RedGem : public LocalizedString
 	{
 	public:

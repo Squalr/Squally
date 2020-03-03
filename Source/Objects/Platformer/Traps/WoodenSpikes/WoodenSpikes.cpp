@@ -24,6 +24,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
 const std::string WoodenSpikes::MapKeyWoodenSpikes = "wooden-spikes";
+const Vec2 WoodenSpikes::SpikesUpPosition = Vec2(0.0f, 32.0f);
 const Vec2 WoodenSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
 WoodenSpikes* WoodenSpikes::create(ValueMap& properties)
@@ -82,9 +83,6 @@ Vec2 WoodenSpikes::getButtonOffset()
 void WoodenSpikes::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
@@ -157,7 +155,7 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 
 		// Move collision box
 		this->spikeCollision->runAction(Sequence::create(
-			MoveTo::create(0.425f, Vec2::ZERO),
+			MoveTo::create(0.425f, WoodenSpikes::SpikesUpPosition),
 			DelayTime::create(stayUpDuration),
 			MoveTo::create(0.425f, WoodenSpikes::SpikesDownPosition),
 			nullptr

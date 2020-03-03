@@ -39,5 +39,6 @@ private:
 	float totalTimeUntilSpikesTrigger;
 	bool isRunningAnimation;
 
+	static const cocos2d::Vec2 SpikesUpPosition;
 	static const cocos2d::Vec2 SpikesDownPosition;
 };

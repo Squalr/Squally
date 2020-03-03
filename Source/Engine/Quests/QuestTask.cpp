@@ -7,6 +7,7 @@
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Quests/Quests.h"
+#include "Engine/Save/SaveManager.h"
 
 using namespace cocos2d;
 
@@ -144,4 +145,18 @@ void QuestTask::complete()
 	this->onComplete();
 
 	this->questLine->advanceNextQuest(this);
+}
+
+void QuestTask::saveQuestSaveState(std::string key, cocos2d::Value value)
+{
+	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+
+	SaveManager::SaveProfileData(combinedKey, value);
+}
+
+cocos2d::Value QuestTask::getQuestSaveStateOrDefault(std::string key, cocos2d::Value value)
+{
+	std::string combinedKey = this->questLine->getQuestLine() + "_" + this->getQuestTaskName() + "_" + key;
+
+	return SaveManager::getProfileDataOrDefault(combinedKey, value);
 }

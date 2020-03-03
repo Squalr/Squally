@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="786">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="794">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -61,10 +61,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="715" name="dark-grass" type="terrain" x="2681.72" y="10537.1">
-   <polygon points="-2813.37,-6923.3 -2809.47,-4783.87 5814.75,-4736.27 5804.91,-7990.89 863.143,-8026.55 124.557,-7605.05 -419.733,-7129.2 -813.66,-6942.79"/>
+   <polygon points="-2813.37,-6923.3 -2809.47,-4783.87 6146.75,-4732.27 6136.91,-7986.89 863.143,-8026.55 124.557,-7605.05 -419.733,-7129.2 -813.66,-6942.79"/>
   </object>
-  <object id="744" name="dark-grass" type="terrain" x="6822.3" y="2380.27">
-   <polygon points="-946.415,-874.315 -1547,-864.132 -1762.1,-677.413 -2265.23,-484.053 -2273.98,-390.114 -2046.53,-391.913 -1576.16,-549.43 -1341.96,-663.128 -771.086,-658.725 -97.3118,-478.345 1516.46,-473.806 1524.84,-1003.09 609.694,-999.276 333.682,-878.851"/>
+  <object id="744" name="dark-grass" type="terrain" x="6826.3" y="2384.27">
+   <polygon points="-946.415,-874.315 -1547,-864.132 -1762.1,-677.413 -2265.23,-484.053 -2273.98,-390.114 -2046.53,-391.913 -1576.16,-549.43 -1341.96,-663.128 -771.086,-658.725 -97.3118,-478.345 1932.46,-477.806 1940.84,-1007.09 609.694,-999.276 333.682,-878.851"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -94,37 +94,37 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="749" name="edge-portal" type="object" x="7979.17" y="734.109" width="199.918" height="640.851">
+  <object id="749" name="edge-portal" type="object" x="8495.17" y="738.109" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_4"/>
     <property name="transition" value="right-top"/>
    </properties>
   </object>
-  <object id="750" name="spawn" type="object" x="7664.79" y="1251.84" width="128" height="128">
+  <object id="750" name="spawn" type="object" x="8180.79" y="1255.84" width="128" height="128">
    <properties>
     <property name="transition" value="left-top"/>
    </properties>
   </object>
-  <object id="781" name="camera-target" type="object" x="5349.63" y="2176.22" width="128" height="128">
+  <object id="781" name="camera-target" type="object" x="5813.63" y="2164.22" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
-  <object id="782" name="camera-control" type="object" x="3910" y="1999.97" width="2416" height="636.061">
+  <object id="782" name="camera-control" type="object" x="3910" y="1999.97" width="4260" height="636.061">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="784" name="edge-portal" type="object" x="7981.23" y="1903.13" width="199.918" height="640.851">
+  <object id="784" name="edge-portal" type="object" x="8513.23" y="1915.13" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_3_4"/>
     <property name="transition" value="right-bottom"/>
    </properties>
   </object>
-  <object id="785" name="spawn" type="object" x="7714.85" y="2416.87" width="128" height="128">
+  <object id="785" name="spawn" type="object" x="8246.85" y="2428.87" width="128" height="128">
    <properties>
     <property name="transition" value="left-bottom"/>
    </properties>
@@ -168,6 +168,86 @@
   <object id="778" name="sarude" type="entity" x="5185" y="2393" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,mage-cast"/>
+   </properties>
+  </object>
+  <object id="786" name="orc-bomber" type="entity" x="6812" y="2404" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="787" name="ogre" type="entity" x="6657.21" y="2402.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="788" name="cyclops" type="entity" x="6987.52" y="2408.73" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="789" name="troll" type="entity" x="7067.58" y="2406.67" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="790" name="orc-grunt" type="entity" x="6586" y="2406" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="791" name="orc-bomber" type="entity" x="6480" y="2400" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="792" name="orc-swordsman" type="entity" x="6912" y="2408" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="793" name="orc-warrior" type="entity" x="6744" y="2406" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="empty"/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

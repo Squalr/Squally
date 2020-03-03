@@ -77,6 +77,7 @@ namespace DecorResources
 	extern const std::string Caverns_Foreground_tree_branch_foreground_4;
 	extern const std::string Caverns_Foreground_trees_foreground_1;
 	extern const std::string Caverns_Foreground_trees_foreground_2;
+	extern const std::string Caverns_TigerDoor;
 	extern const std::string Caverns_back_st_1;
 	extern const std::string Caverns_back_st_2;
 	extern const std::string Caverns_back_st_3;
@@ -532,6 +533,7 @@ namespace DecorResources
 	extern const std::string Generic_Arrow1;
 	extern const std::string Generic_Arrow2;
 	extern const std::string Generic_Arrow3;
+	extern const std::string Generic_BARRICADE;
 	extern const std::string Generic_Background_Cloud1;
 	extern const std::string Generic_Background_Cloud10;
 	extern const std::string Generic_Background_Cloud11;

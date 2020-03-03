@@ -21,6 +21,17 @@
 
 using namespace cocos2d;
 
+InteractObject* InteractObject::create(InteractType interactType, cocos2d::Size size, cocos2d::Vec2 offset)
+{
+	ValueMap properties = ValueMap();
+
+	InteractObject* instance = new InteractObject(properties, interactType, size, offset);
+
+	instance->autorelease();
+
+	return instance;
+}
+
 InteractObject::InteractObject(ValueMap& properties, InteractType interactType, Size size, Vec2 offset) : super(properties)
 {
 	this->interactType = interactType;

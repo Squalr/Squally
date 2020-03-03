@@ -748,6 +748,7 @@ namespace ObjectResources
 	extern const std::string Traps_PendulumBlade_Chain;
 	extern const std::string Traps_PendulumBlade_Neck;
 	extern const std::string Traps_PendulumBlade_PreviewBlade;
+	extern const std::string Traps_Ram_Animations;
 	extern const std::string Traps_Ram_BASE_BACK_PART;
 	extern const std::string Traps_Ram_BASE_FRONT_PART;
 	extern const std::string Traps_Ram_Base_Parts_L_ARM;
@@ -760,10 +761,11 @@ namespace ObjectResources
 	extern const std::string Traps_Ram_HEAD;
 	extern const std::string Traps_Ram_L_CHAIN;
 	extern const std::string Traps_Ram_R_CHAIN;
-	extern const std::string Traps_Ram_RAM;
 	extern const std::string Traps_Ram_ROPE;
 	extern const std::string Traps_Ram_SHADOW;
 	extern const std::string Traps_Ram_WHEEL;
+	extern const std::string Traps_Ram_WHEEL2;
+	extern const std::string Traps_Ram_WHEEL3;
 	extern const std::string Traps_SpikeBall_SpikeBall;
 	extern const std::string Traps_SpikeLogUnavoidable_Beam;
 	extern const std::string Traps_SpikeLogUnavoidable_SpikedLog_00;
