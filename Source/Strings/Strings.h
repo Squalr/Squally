@@ -21714,6 +21714,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay() = default;
 	};
 
+	class Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash() = default;
+	};
+
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt : public LocalizedString
 	{
 	public:

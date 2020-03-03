@@ -66,6 +66,7 @@ void TalkToMages::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
+		this->setPostText();
 	}, Sarude::MapKeySarude);
 }
 
@@ -159,4 +160,34 @@ void TalkToMages::runCinematicSequencePart4()
 		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 		true
 	));
+}
+
+void TalkToMages::setPostText()
+{
+	if (this->sarude == nullptr)
+	{
+		return;
+	}
+	
+	this->defer([=]()
+	{
+		this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->sarude, true)
+				),
+				[=]()
+				{
+					this->setPostText();
+				},
+				SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+				true
+			));
+		});
+	});
 }

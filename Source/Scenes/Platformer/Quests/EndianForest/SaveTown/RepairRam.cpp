@@ -70,14 +70,22 @@ void RepairRam::onLoad(QuestState questState)
 	{
 		this->ram = ram;
 
-		this->defer([=]()
+		if (questState == QuestState::Complete)
 		{
-			this->wheel1 = this->ram->getAnimations()->getAnimationPart("wheel_1");
-			this->wheel2 = this->ram->getAnimations()->getAnimationPart("wheel_2");
-			this->wheel3 = this->ram->getAnimations()->getAnimationPart("wheel_3");
+			this->ram->setVisible(false);
+			this->repairInteract->disable();
+		}
+		else
+		{
+			this->defer([=]()
+			{
+				this->wheel1 = this->ram->getAnimations()->getAnimationPart("wheel_1");
+				this->wheel2 = this->ram->getAnimations()->getAnimationPart("wheel_2");
+				this->wheel3 = this->ram->getAnimations()->getAnimationPart("wheel_3");
 
-			this->refreshWheels();
-		});
+				this->refreshWheels();
+			});
+		}
 	}, Ram::MapKeyRam);
 
 	this->repairInteract->setOpenCallback([=]()
@@ -143,6 +151,8 @@ void RepairRam::onRamInteract()
 		this->ram->getAnimations()->playAnimation("Run", SmartAnimationNode::AnimationPlayMode::Repeat);
 
 		this->wasActivated = true;
+
+		this->complete();
 	}
 }
 
@@ -192,45 +202,4 @@ void RepairRam::refreshWheels()
 
 void RepairRam::runCinematicSequence()
 {
-	/*
-	if (this->sarude == nullptr)
-	{
-		return;
-	}
-
-	this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		// Pre-text chain
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_RepairRam_Marcel_A_GoodUse::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_RepairRam_Marcel_B_Latent::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			true
-		));
-	});
-	*/
 }

@@ -94,7 +94,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	{
 		ObjectEvents::QueryObjects<PlatformerEnemy>(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemyAlly)
 		{
-			if (enemyAlly != this->enemy)
+			if (enemyAlly != this->enemy && enemyAlly->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
 				enemyCombatData.push_back(CombatMap::CombatData(enemyAlly->getEntityKey(), enemyAlly->getBattleBehavior(), enemyAlly->getDropPool()));
 			}

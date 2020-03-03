@@ -30,6 +30,7 @@ private:
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
 	void runCinematicSequencePart4();
+	void setPostText();
 
 	Sarude* sarude;
 	Scrappy* scrappy;

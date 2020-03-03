@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/TalkToMages.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/RepairRam.h"
 
@@ -21,7 +22,8 @@ SaveTownLine* SaveTownLine::create()
 SaveTownLine::SaveTownLine() : super(SaveTownLine::MapKeyQuestLine,
 	{
 		QuestData(TalkToMages::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToMages::create(owner, questLine); }),
-		QuestData(RepairRam::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return RepairRam::create(owner, questLine); }),
+		QuestData(RepairRam::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RepairRam::create(owner, questLine); }),
+		QuestData(FightGorgon::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return FightGorgon::create(owner, questLine); }),
 	}) // ,
 	// (QuestLine*)FindElrielLine::create())
 {
