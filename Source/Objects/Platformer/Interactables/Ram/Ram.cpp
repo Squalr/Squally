@@ -74,3 +74,8 @@ SmartAnimationNode* Ram::getAnimations()
 {
 	return this->ramAnimations;
 }
+
+CollisionObject* Ram::getCollision()
+{
+	return this->collision;
+}

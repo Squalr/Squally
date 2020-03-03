@@ -76,6 +76,7 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->debugDrawNode = nullptr;
 	this->debugInfoSpawned = false;
 	this->velocity = Vec2::ZERO;
+	this->acceleration = Vec2::ZERO;
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
@@ -173,11 +174,9 @@ void CollisionObject::runPhysics(float dt)
 		return;
 	}
 
-	// Apply gravity
-	if (this->gravityEnabled)
-	{
-		this->velocity += this->gravity * dt;
-	}
+	// Apply gravity & accel
+	this->velocity += this->gravityEnabled ? (this->gravity * dt) : Vec2::ZERO;
+	this->velocity += this->acceleration * dt;
 
 	if (this->velocity != Vec2::ZERO)
 	{
@@ -269,10 +268,20 @@ Vec2 CollisionObject::getVelocity()
 	return this->velocity;
 }
 
+Vec2 CollisionObject::getAcceleration()
+{
+	return this->acceleration;
+}
+
 void CollisionObject::setVelocity(Vec2 velocity)
 {
 	this->velocity.x = MathUtils::clamp(velocity.x, -CollisionObject::DefaultMaxHorizontalSpeed, CollisionObject::DefaultMaxHorizontalSpeed);
 	this->velocity.y = MathUtils::clamp(velocity.y, CollisionObject::DefaultMaxFallSpeed, CollisionObject::DefaultMaxLaunchSpeed);
+}
+
+void CollisionObject::setAcceleration(Vec2 acceleration)
+{
+	this->acceleration = acceleration;
 }
 
 void CollisionObject::setVelocityX(float velocityX)
@@ -283,6 +292,16 @@ void CollisionObject::setVelocityX(float velocityX)
 void CollisionObject::setVelocityY(float velocityY)
 {
 	this->setVelocity(Vec2(this->getVelocity().x, velocityY));
+}
+
+void CollisionObject::setAccelerationX(float accelerationX)
+{
+	this->setAcceleration(Vec2(accelerationX, this->getAcceleration().y));
+}
+
+void CollisionObject::setAccelerationY(float accelerationY)
+{
+	this->setAcceleration(Vec2(this->getAcceleration().x, accelerationY));
 }
 
 void CollisionObject::setHorizontalDampening(float horizontalDampening)

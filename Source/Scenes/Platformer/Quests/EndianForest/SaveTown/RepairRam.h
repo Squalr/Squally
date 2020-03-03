@@ -39,5 +39,7 @@ private:
 
 	Inventory* inventory;
 
+	bool wasActivated;
+
 	static const std::string WheelFoundCount;
 };

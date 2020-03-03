@@ -21714,6 +21714,66 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay() = default;
 	};
 
+	class Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow() = default;
+	};
+
 	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou : public LocalizedString
 	{
 	public:

@@ -11,6 +11,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
@@ -46,6 +47,7 @@ RepairRam::RepairRam(GameObject* owner, QuestLine* questLine) : super(owner, que
 	this->wheel3 = nullptr;
 	this->inventory = nullptr;
 	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, Size(512.0f, 288.0f));
+	this->wasActivated = false;
 
 	this->addChild(this->repairInteract);
 }
@@ -111,7 +113,7 @@ void RepairRam::onSkipped()
 
 void RepairRam::onRamInteract()
 {
-	if (this->inventory == nullptr)
+	if (this->inventory == nullptr || this->wasActivated)
 	{
 		return;
 	}
@@ -133,6 +135,15 @@ void RepairRam::onRamInteract()
 	}
 
 	this->refreshWheels();
+
+	if (wheelFoundCount >= 3)
+	{
+		this->ram->getCollision()->setAccelerationX(-9800.0f);
+		this->ram->getAnimations()->clearAnimationPriority();
+		this->ram->getAnimations()->playAnimation("Run", SmartAnimationNode::AnimationPlayMode::Repeat);
+
+		this->wasActivated = true;
+	}
 }
 
 void RepairRam::refreshWheels()

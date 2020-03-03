@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Sarude;
+class Scrappy;
 class QuestLine;
 class Squally;
 
@@ -25,8 +26,12 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePart1();
+	void runCinematicSequencePart2();
+	void runCinematicSequencePart3();
+	void runCinematicSequencePart4();
 
 	Sarude* sarude;
+	Scrappy* scrappy;
 	Squally* squally;
 };

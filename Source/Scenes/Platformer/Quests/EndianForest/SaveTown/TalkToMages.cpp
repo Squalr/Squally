@@ -13,6 +13,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
@@ -42,6 +43,7 @@ TalkToMages* TalkToMages::create(GameObject* owner, QuestLine* questLine)
 TalkToMages::TalkToMages(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToMages::MapKeyQuest, false)
 {
 	this->squally = nullptr;
+	this->scrappy = nullptr;
 	this->sarude = nullptr;
 }
 
@@ -55,6 +57,11 @@ void TalkToMages::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
+	
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
 
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
@@ -64,66 +71,92 @@ void TalkToMages::onLoad(QuestState questState)
 
 void TalkToMages::onActivate(bool isActiveThroughSkippable)
 {
+	this->listenForMapEventOnce(TalkToMages::MapKeyQuest, [=](ValueMap args)
+	{
+		this->runCinematicSequencePart1();
+	});
 }
 
 void TalkToMages::onComplete()
 {
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
-	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
-	
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-		Strings::Platformer_Blessings_BlessingGranted::create(),
-		Strings::Platformer_Blessings_BlessingOfWind::create(),
-		ObjectResources::Items_Misc_EssenceOfWind,
-		SoundResources::Notifications_NotificationGood1
-	));
 }
 
 void TalkToMages::onSkipped()
 {
 }
 
-void TalkToMages::runCinematicSequence()
+void TalkToMages::runCinematicSequencePart1()
 {
-	if (this->sarude == nullptr)
-	{
-		return;
-	}
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart2();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
+		false
+	));
+}
 
-	this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		// Pre-text chain
-		/*
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_TalkToMages_Marcel_A_GoodUse::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			false
-		));
+void TalkToMages::runCinematicSequencePart2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart3();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		false
+	));
+}
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_TalkToMages_Marcel_B_Latent::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
-			true
-		));
-		*/
-	});
+void TalkToMages::runCinematicSequencePart3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart4();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+		false
+	));
+}
+
+void TalkToMages::runCinematicSequencePart4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
+		),
+		[=]()
+		{
+			this->complete();
+		},
+		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		true
+	));
 }

@@ -12,6 +12,7 @@ public:
 	static Ram* create(cocos2d::ValueMap& properties);
 
 	SmartAnimationNode* getAnimations();
+	CollisionObject* getCollision();
 
 	static const std::string MapKeyRam;
 

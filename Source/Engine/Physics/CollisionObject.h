@@ -81,9 +81,13 @@ public:
 	CollisionType getCollisionType();
 	void setGravityEnabled(bool isEnabled);
 	cocos2d::Vec2 getVelocity();
+	cocos2d::Vec2 getAcceleration();
 	void setVelocity(cocos2d::Vec2 velocity);
 	void setVelocityX(float velocityX);
 	void setVelocityY(float velocityY);
+	void setAcceleration(cocos2d::Vec2 acceleration);
+	void setAccelerationX(float accelerationX);
+	void setAccelerationY(float accelerationY);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
 	const std::set<CollisionObject*>& getCurrentCollisions();
@@ -137,6 +141,7 @@ private:
 	// Physics state
 	cocos2d::Vec2 gravity;
 	cocos2d::Vec2 velocity;
+	cocos2d::Vec2 acceleration;
 	Properties collisionProperties;
 	float horizontalDampening;
 	float verticalDampening;
