@@ -20,6 +20,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -80,6 +81,7 @@ void TalkToMages::onActivate(bool isActiveThroughSkippable)
 
 void TalkToMages::onComplete()
 {
+	this->setPostText();
 }
 
 void TalkToMages::onSkipped()
@@ -119,7 +121,7 @@ void TalkToMages::runCinematicSequencePart2()
 		{
 			this->runCinematicSequencePart3();
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium1,
+		SoundResources::Platformer_Entities_Droid_DroidBrief2,
 		false
 	));
 }
@@ -165,6 +167,11 @@ void TalkToMages::runCinematicSequencePart4()
 void TalkToMages::setPostText()
 {
 	if (this->sarude == nullptr)
+	{
+		return;
+	}
+
+	if (QuestTask::getQuestStateForTask(this->questLine, FightGorgon::MapKeyQuest) == QuestState::Complete)
 	{
 		return;
 	}

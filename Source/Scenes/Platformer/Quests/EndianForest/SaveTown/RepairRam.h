@@ -7,6 +7,8 @@ class InteractObject;
 class Inventory;
 class QuestLine;
 class Ram;
+class Scrappy;
+class Squally;
 class Sound;
 class WorldSound;
 
@@ -29,6 +31,7 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void runDialogue();
 	void refreshWheels();
 	void onRamInteract();
 	void runCinematicSequence();
@@ -41,6 +44,8 @@ private:
 	Sound* impactSound;
 	WorldSound* rollSound;
 
+	Scrappy* scrappy;
+	Squally* squally;
 	Inventory* inventory;
 
 	bool wasActivated;

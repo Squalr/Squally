@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="801">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="803">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -90,7 +90,7 @@
   <object id="707" name="edge-portal" type="object" x="-4" y="2956.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="map" value="EndianForest/Zone_3_2"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -112,7 +112,7 @@
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
-  <object id="782" name="camera-control" type="object" x="3910" y="1999.97" width="4260" height="636.061">
+  <object id="782" name="camera-control" type="object" x="4152.42" y="1999.97" width="4017.58" height="636.061">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
@@ -148,6 +148,12 @@
   <object id="800" name="trigger" type="object" x="8171" y="1677.47" width="602" height="1105.06">
    <properties>
     <property name="send-event" value="fight-gorgon"/>
+   </properties>
+  </object>
+  <object id="802" name="cinematic-marker" type="object" x="4163.27" y="1611.76" width="128" height="128">
+   <properties>
+    <property name="quest" value="after-fight"/>
+    <property name="quest-line" value="save-town"/>
    </properties>
   </object>
  </objectgroup>
@@ -286,6 +292,13 @@
   <object id="779" name="Generic/ForceFieldDome" type="decor" x="4632" y="1907.27" width="1234" height="669">
    <properties>
     <property name="tag" value="force-field"/>
+   </properties>
+  </object>
+  <object id="801" name="frost-portal" type="object" x="5266.3" y="2265.94" width="128" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="tag" value="quest-portal"/>
+    <property name="transition" value="mage-portal"/>
    </properties>
   </object>
  </objectgroup>

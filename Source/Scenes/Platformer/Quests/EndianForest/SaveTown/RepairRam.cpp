@@ -14,7 +14,9 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
@@ -66,11 +68,18 @@ void RepairRam::onLoad(QuestState questState)
 {
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		this->squally = squally;
+
+		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
 	}, Squally::MapKeySqually);
+	
+	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
+	{
+		this->scrappy = scrappy;
+	}, Scrappy::MapKeyScrappy);
 
 	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
 	{
@@ -108,21 +117,28 @@ void RepairRam::onActivate(bool isActiveThroughSkippable)
 
 void RepairRam::onComplete()
 {
-	/*
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
-	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
-	
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-		Strings::Platformer_Blessings_BlessingGranted::create(),
-		Strings::Platformer_Blessings_BlessingOfWind::create(),
-		ObjectResources::Items_Misc_EssenceOfWind,
-		SoundResources::Notifications_NotificationGood1
-	));
-	*/
 }
 
 void RepairRam::onSkipped()
 {
+}
+
+void RepairRam::runDialogue()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+		},
+		SoundResources::Platformer_Entities_Droid_DroidChatter,
+		true
+	));
 }
 
 void RepairRam::onRamInteract()
@@ -146,6 +162,10 @@ void RepairRam::onRamInteract()
 
 		wheelFoundCount += ramWheels.size();
 		this->saveQuestSaveState(RepairRam::WheelFoundCount, Value(wheelFoundCount));
+	}
+	else if (wheelFoundCount < 3)
+	{
+		this->runDialogue();
 	}
 
 	this->refreshWheels();

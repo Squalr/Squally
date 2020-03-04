@@ -19,6 +19,7 @@ public:
 	static EntityDialogueBehavior* create(GameObject* owner);
 
 	void enqueuePretext(DialogueEvents::DialogueOpenArgs pretext);
+	void clearPretext();
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);

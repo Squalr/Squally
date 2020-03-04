@@ -44,6 +44,7 @@
 using namespace cocos2d;
 
 const std::string FightGorgon::MapKeyQuest = "fight-gorgon";
+const std::string FightGorgon::ForceFieldTag = "force-field";
 
 FightGorgon* FightGorgon::create(GameObject* owner, QuestLine* questLine)
 {
@@ -99,23 +100,55 @@ void FightGorgon::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKeySqually);
 
+	ObjectEvents::watchForObject<GameObject>(this, [=](GameObject* forceField)
+	{
+		this->forceField = forceField;
+
+		if (questState == QuestState::Complete)
+		{
+			this->forceField->setVisible(false);
+		}
+	}, FightGorgon::ForceFieldTag);
+
 	ObjectEvents::watchForObject<Gorgon>(this, [=](Gorgon* gorgon)
 	{
 		this->gorgon = gorgon;
 
-		if (questState == QuestState::Active)
+		if (this->gorgon->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
-			this->killRammedEnemies();
-
-			this->defer([=]()
+			if (questState == QuestState::Active)
 			{
-				this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
+				this->flickerOutForceField();
+
+				this->defer([=]()
+				{
+					this->killRammedEnemies();
+					this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
+				});
+			}
+			else if (questState == QuestState::ActiveThroughSkippable)
+			{
+				this->runGorgonLoop();
+			}
+
+			// Listen for non-combat death. Just a debugging tool.
+			this->gorgon->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+			{
+				if (!value.asBool())
+				{
+					this->complete();
+				}
 			});
 		}
-		else if (questState == QuestState::ActiveThroughSkippable)
+		else
 		{
-			this->runGorgonLoop();
+			// Gorgon dead! Complete quest.
+			if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+			{
+				this->complete();
+			}
 		}
+
 	}, Gorgon::MapKeyGorgon);
 
 	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
@@ -194,13 +227,31 @@ void FightGorgon::killRammedEnemies()
 	}), PlatformerEnemy::PlatformerEnemyTag);
 }
 
+void FightGorgon::flickerOutForceField()
+{
+	if (this->forceField == nullptr)
+	{
+		return;
+	}
+
+	this->forceField->runAction(Sequence::create(
+		DelayTime::create(2.25f),
+		FadeTo::create(0.25f, 0),
+		FadeTo::create(0.25f, 255),
+		FadeTo::create(0.25f, 0),
+		FadeTo::create(0.25f, 255),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
+}
+
 void FightGorgon::runMageAnims()
 {
 	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
 	{
 		this->defer([=]()
 		{
-			sarude->attachBehavior(MageCastBehavior::create(igneus));
+			igneus->attachBehavior(MageCastBehavior::create(igneus));
 		});
 	}, Igneus::MapKeyIgneus);
 

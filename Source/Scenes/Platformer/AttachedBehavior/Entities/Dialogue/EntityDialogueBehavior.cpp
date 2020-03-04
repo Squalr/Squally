@@ -205,6 +205,12 @@ void EntityDialogueBehavior::enqueuePretext(DialogueEvents::DialogueOpenArgs pre
 	}
 }
 
+void EntityDialogueBehavior::clearPretext()
+{
+	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
+	this->pretextNode->removeAllChildren();
+}
+
 void EntityDialogueBehavior::onInteract()
 {
 	if (this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))

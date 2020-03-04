@@ -35,12 +35,14 @@ private:
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
 	void killRammedEnemies();
+	void flickerOutForceField();
 	void runGorgonLoop();
 
 	Sarude* sarude;
 	Gorgon* gorgon;
 	Ram* ram;
 	Squally* squally;
+	GameObject* forceField;
 	SmartAnimationSequenceNode* shieldImpact;
 	SmartAnimationSequenceNode* swordImpact;
 	SmartAnimationSequenceNode* knifeImpact;
@@ -49,4 +51,6 @@ private:
 	WorldSound* reboundSoundShield;
 	WorldSound* reboundSoundShieldLite;
 	WorldSound* reboundSoundSword;
+
+	static const std::string ForceFieldTag;
 };

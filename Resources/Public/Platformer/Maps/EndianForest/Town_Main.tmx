@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="944">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="945">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -722,6 +722,11 @@
   <object id="943" name="spawn" type="object" x="548.121" y="2693.58" width="128" height="128">
    <properties>
     <property name="transition" value="gate"/>
+   </properties>
+  </object>
+  <object id="944" name="spawn" type="object" x="5235.76" y="2681.09" width="128" height="128">
+   <properties>
+    <property name="transition" value="mages-portal"/>
    </properties>
   </object>
  </objectgroup>

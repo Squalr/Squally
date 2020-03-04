@@ -21789,6 +21789,36 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow() = default;
 	};
 
+	class Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam() = default;
+	};
+
 	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou : public LocalizedString
 	{
 	public:
