@@ -55,6 +55,11 @@ namespace FXResources
 	extern const std::string ElectricOrb_ElectricOrb_0033;
 	extern const std::string ElectricOrb_ElectricOrb_0034;
 	extern const std::string ElectricOrb_ElectricOrb_0035;
+	extern const std::string EnergyBurst_EnergyBurst_0000;
+	extern const std::string EnergyBurst_EnergyBurst_0001;
+	extern const std::string EnergyBurst_EnergyBurst_0002;
+	extern const std::string EnergyBurst_EnergyBurst_0003;
+	extern const std::string EnergyBurst_EnergyBurst_0004;
 	extern const std::string EnergyCircle_EnergyCircle_0000;
 	extern const std::string EnergyCircle_EnergyCircle_0001;
 	extern const std::string EnergyCircle_EnergyCircle_0002;

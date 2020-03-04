@@ -158,27 +158,27 @@
   </properties>
   <object id="774" name="igneus" type="entity" x="4770" y="2395" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,mage-cast"/>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
   <object id="775" name="alder" type="entity" x="4965" y="2396" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,mage-cast"/>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
   <object id="776" name="aster" type="entity" x="5400" y="2395" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,mage-cast"/>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
   <object id="777" name="merlin" type="entity" x="5619" y="2397" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,mage-cast"/>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
   <object id="778" name="sarude" type="entity" x="5185" y="2393" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,mage-cast"/>
+    <property name="attached-behavior" value="friendly"/>
    </properties>
   </object>
   <object id="786" name="orc-bomber" type="entity" x="6812" y="2404" width="128" height="128">
@@ -283,7 +283,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="779" name="Generic/ForceFieldDome" type="decor" x="4632" y="1907.27" width="1234" height="669"/>
+  <object id="779" name="Generic/ForceFieldDome" type="decor" x="4632" y="1907.27" width="1234" height="669">
+   <properties>
+    <property name="tag" value="force-field"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

@@ -7,6 +7,8 @@ class InteractObject;
 class Inventory;
 class QuestLine;
 class Ram;
+class Sound;
+class WorldSound;
 
 class RepairRam : public QuestTask
 {
@@ -36,6 +38,8 @@ private:
 	AnimationPart* wheel1;
 	AnimationPart* wheel2;
 	AnimationPart* wheel3;
+	Sound* impactSound;
+	WorldSound* rollSound;
 
 	Inventory* inventory;
 

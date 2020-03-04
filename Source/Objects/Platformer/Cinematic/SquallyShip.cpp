@@ -58,10 +58,10 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->groundFireAnimation = SmartAnimationSequenceNode::create();
 	this->groundFireSmallAnimation = SmartAnimationSequenceNode::create();
 	this->lightningSound = WorldSound::create(SoundResources::Hexus_Attacks_Energy);
-	this->thrusterSound = WorldSound::create(SoundResources::Platformer_Objects_LowFlame);
-	this->enterAtmosphereSound = WorldSound::create(SoundResources::Platformer_Objects_WooshRough);
-	this->crashSound = WorldSound::create(SoundResources::Platformer_Objects_Crash);
-	this->fireSound = WorldSound::create(SoundResources::Platformer_Environment_Fire);
+	this->thrusterSound = WorldSound::create(SoundResources::Platformer_FX_Fire_LowFlame1);
+	this->enterAtmosphereSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshRough1);
+	this->crashSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Crash1);
+	this->fireSound = WorldSound::create(SoundResources::Platformer_FX_Fire_Fire1);
 	this->hasCrashed = false;
 	this->flightTime = 0.0f;
 

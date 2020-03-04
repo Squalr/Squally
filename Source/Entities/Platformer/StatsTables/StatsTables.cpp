@@ -139,6 +139,9 @@ StatsTables::StatsTables()
 	});
 
 	StatsTables::StatsTable[TrainingDummy::MapKeyTrainingDummy] = Stats(1024, 512, 32);
+
+	StatsTables::StatsTable[Gorgon::MapKeyGorgon] = Stats(380, 48, 224);
+	StatsTables::StatsTable[Orthrus::MapKeyOrthrus] = Stats(380, 48, 224);
 	
 	StatsTables::StatsTable[Cryogen::MapKeyCryogen] = Stats(16, 8, 32);
 	StatsTables::StatsTable[FrostFiend::MapKeyFrostFiend] = Stats(16, 8, 32);

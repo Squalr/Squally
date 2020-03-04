@@ -8,14 +8,20 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/EndianForest/Gorgon.h"
+#include "Entities/Platformer/Npcs/BalmerPeaks/Aster.h"
+#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
+#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
+#include "Entities/Platformer/Npcs/SeaSharpCaverns/Alder.h"
 #include "Entities/Platformer/Npcs/SeaSharpCaverns/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
@@ -23,11 +29,13 @@
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
@@ -49,8 +57,25 @@ FightGorgon* FightGorgon::create(GameObject* owner, QuestLine* questLine)
 FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FightGorgon::MapKeyQuest, false)
 {
 	this->gorgon = nullptr;
-	this->sarude = nullptr;
+	this->sarude = nullptr;   
 	this->ram = nullptr;
+	this->shieldImpact = SmartAnimationSequenceNode::create();
+	this->swordImpact = SmartAnimationSequenceNode::create();
+	this->knifeImpact = SmartAnimationSequenceNode::create();
+	this->backPeddleSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_BackPeddleSlow1);
+	this->runSound = WorldSound::create(SoundResources::Platformer_Entities_Generic_Movement_RunBrief1);
+	this->reboundSoundShield = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound3);
+	this->reboundSoundSword = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound1);
+	this->reboundSoundShieldLite = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Defense_Rebound2);
+
+	this->addChild(this->shieldImpact);
+	this->addChild(this->swordImpact);
+	this->addChild(this->knifeImpact);
+	this->addChild(this->backPeddleSound);
+	this->addChild(this->runSound);
+	this->addChild(this->reboundSoundShield);
+	this->addChild(this->reboundSoundSword);
+	this->addChild(this->reboundSoundShieldLite);
 }
 
 FightGorgon::~FightGorgon()
@@ -64,6 +89,11 @@ void FightGorgon::onLoad(QuestState questState)
 		this->sarude = sarude;
 	}, Sarude::MapKeySarude);
 
+	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+	{
+		this->runMageAnims();
+	}
+
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
@@ -76,7 +106,7 @@ void FightGorgon::onLoad(QuestState questState)
 		if (questState == QuestState::Active)
 		{
 			this->killRammedEnemies();
-			
+
 			this->defer([=]()
 			{
 				this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
@@ -164,6 +194,68 @@ void FightGorgon::killRammedEnemies()
 	}), PlatformerEnemy::PlatformerEnemyTag);
 }
 
+void FightGorgon::runMageAnims()
+{
+	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
+	{
+		this->defer([=]()
+		{
+			sarude->attachBehavior(MageCastBehavior::create(igneus));
+		});
+	}, Igneus::MapKeyIgneus);
+
+	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
+	{
+		this->defer([=]()
+		{
+			alder->attachBehavior(MageCastBehavior::create(alder));
+		});
+	}, Alder::MapKeyAlder);
+
+	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
+	{
+		this->defer([=]()
+		{
+			sarude->attachBehavior(MageCastBehavior::create(sarude));
+		});
+	}, Sarude::MapKeySarude);
+
+	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
+	{
+		this->defer([=]()
+		{
+			aster->attachBehavior(MageCastBehavior::create(aster));
+		});
+	}, Aster::MapKeyAster);
+
+	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
+	{
+		this->defer([=]()
+		{
+			merlin->attachBehavior(MageCastBehavior::create(merlin));
+		});
+	}, Merlin::MapKeyMerlin);
+}
+
+void FightGorgon::positionImpactFx()
+{
+	if (this->gorgon == nullptr)
+	{
+		return;
+	}
+
+	float flipMultiplier = this->gorgon->getAnimations()->getFlippedX() ? -1.0f : 1.0f;
+	Vec2 entityCenter = this->gorgon->getEntityCenterPoint();
+
+	this->shieldImpact->setPosition(entityCenter + Vec2(256.0f * flipMultiplier, 128.0f));
+	this->knifeImpact->setPosition(entityCenter + Vec2(256.0f * flipMultiplier, 144.0f));
+	this->swordImpact->setPosition(entityCenter + Vec2(420.0f * flipMultiplier, 256.0f));
+
+	this->reboundSoundShield->setPosition(this->shieldImpact->getPosition());
+	this->reboundSoundShieldLite->setPosition(this->knifeImpact->getPosition());
+	this->reboundSoundSword->setPosition(this->swordImpact->getPosition());
+}
+
 void FightGorgon::runGorgonLoop()
 {
 	if (this->gorgon == nullptr)
@@ -173,13 +265,61 @@ void FightGorgon::runGorgonLoop()
 
 	this->gorgon->getAnimations()->clearAnimationPriority();
 
+	this->runAction(Sequence::create(
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			this->positionImpactFx();
+			this->knifeImpact->playAnimation(FXResources::EnergyBurst_EnergyBurst_0000, 0.05f, true);
+			this->reboundSoundSword->play();
+		}),
+		DelayTime::create(0.5f),
+		CallFunc::create([=]()
+		{
+			this->swordImpact->playAnimation(FXResources::EnergyBurst_EnergyBurst_0000, 0.05f, true);
+			this->reboundSoundSword->play();
+		}),
+		nullptr
+	));
+
 	this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
 	{
 		this->gorgon->getAnimations()->clearAnimationPriority();
 
+		this->runAction(Sequence::create(
+			DelayTime::create(0.5f),
+			CallFunc::create([=]()
+			{
+				this->positionImpactFx();
+				this->shieldImpact->playAnimation(FXResources::EnergyBurst_EnergyBurst_0000, 0.05f, true);
+				this->reboundSoundShieldLite->play();
+			}),
+			nullptr
+		));
+
 		this->gorgon->getAnimations()->playAnimation("AttackStrongRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
 		{
 			this->gorgon->getAnimations()->clearAnimationPriority();
+			this->backPeddleSound->play();
+
+			const float BackPeddleTime = 1.75f;
+			const float TotalTime = 2.25f;
+
+			this->runAction(Sequence::create(
+				DelayTime::create(BackPeddleTime),
+				CallFunc::create([=]()
+				{
+					this->runSound->play();
+				}),
+				DelayTime::create(TotalTime - BackPeddleTime),
+				CallFunc::create([=]()
+				{
+					this->positionImpactFx();
+					this->shieldImpact->playAnimation(FXResources::EnergyBurst_EnergyBurst_0000, 0.05f, true);
+					this->reboundSoundShield->play();
+				}),
+				nullptr
+			));
 
 			this->gorgon->getAnimations()->playAnimation("AttackChargeRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
 			{

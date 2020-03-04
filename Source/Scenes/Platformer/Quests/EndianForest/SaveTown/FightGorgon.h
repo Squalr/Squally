@@ -7,6 +7,8 @@ class Ram;
 class QuestLine;
 class Sarude;
 class Squally;
+class SmartAnimationSequenceNode;
+class WorldSound;
 
 class FightGorgon : public QuestTask
 {
@@ -27,6 +29,8 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void runMageAnims();
+	void positionImpactFx();
 	void runCinematicSequencePart1();
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
@@ -37,4 +41,12 @@ private:
 	Gorgon* gorgon;
 	Ram* ram;
 	Squally* squally;
+	SmartAnimationSequenceNode* shieldImpact;
+	SmartAnimationSequenceNode* swordImpact;
+	SmartAnimationSequenceNode* knifeImpact;
+	WorldSound* backPeddleSound;
+	WorldSound* runSound;
+	WorldSound* reboundSoundShield;
+	WorldSound* reboundSoundShieldLite;
+	WorldSound* reboundSoundSword;
 };

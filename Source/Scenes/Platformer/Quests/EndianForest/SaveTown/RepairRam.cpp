@@ -12,6 +12,8 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
@@ -47,9 +49,13 @@ RepairRam::RepairRam(GameObject* owner, QuestLine* questLine) : super(owner, que
 	this->wheel3 = nullptr;
 	this->inventory = nullptr;
 	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, Size(512.0f, 288.0f));
+	this->impactSound = Sound::create(SoundResources::Platformer_Objects_Misc_BowlingStrike1);
+	this->rollSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
 	this->wasActivated = false;
 
 	this->addChild(this->repairInteract);
+	this->addChild(this->impactSound);
+	this->addChild(this->rollSound);
 }
 
 RepairRam::~RepairRam()
@@ -146,9 +152,23 @@ void RepairRam::onRamInteract()
 
 	if (wheelFoundCount >= 3)
 	{
-		this->ram->getCollision()->setAccelerationX(-9800.0f);
-		this->ram->getAnimations()->clearAnimationPriority();
-		this->ram->getAnimations()->playAnimation("Run", SmartAnimationNode::AnimationPlayMode::Repeat);
+		this->runAction(Sequence::create(
+			DelayTime::create(1.5f),
+			CallFunc::create([=]()
+			{
+				this->rollSound->play(true);
+				this->ram->getCollision()->setAccelerationX(-12800.0f);
+				this->ram->getAnimations()->clearAnimationPriority();
+				this->ram->getAnimations()->playAnimation("Run", SmartAnimationNode::AnimationPlayMode::Repeat);
+			}),
+			DelayTime::create(2.5f),
+			CallFunc::create([=]()
+			{
+				this->rollSound->stopAndFadeOut();
+				this->impactSound->play();
+			}),
+			nullptr
+		));
 
 		this->wasActivated = true;
 
