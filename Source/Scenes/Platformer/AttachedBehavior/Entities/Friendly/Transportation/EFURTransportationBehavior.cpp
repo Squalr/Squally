@@ -7,6 +7,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
@@ -18,6 +19,8 @@
 using namespace cocos2d;
 
 const std::string EFURTransportationBehavior::MapKeyAttachedBehavior = "ef-ur-transportation";
+const std::string EFURTransportationBehavior::QuestTagBackPortal = "back-portal";
+const std::string EFURTransportationBehavior::QuestTagLeavePortal = "leave-portal";
 
 EFURTransportationBehavior* EFURTransportationBehavior::create(GameObject* owner)
 {
@@ -56,6 +59,16 @@ void EFURTransportationBehavior::onLoad()
 		this->scrappy = scrappy;
 	}, Scrappy::MapKeyScrappy);
 
+	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->backPortal = portal;
+	}, EFURTransportationBehavior::QuestTagBackPortal);
+
+	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->leavePortal = portal;
+	}, EFURTransportationBehavior::QuestTagLeavePortal);
+
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		this->innerChoices = DialogueSet::create(DialogueEvents::DialogueVisualArgs(
@@ -71,7 +84,10 @@ void EFURTransportationBehavior::onLoad()
 			{
 				interactionBehavior->setActiveDialogueSet(interactionBehavior->getMainDialogueSet(), false);
 
-				// TODO: Tele player
+				if (this->leavePortal != nullptr)
+				{
+					this->leavePortal->loadMap();
+				}
 			}),
 			1.0f
 		);
@@ -108,7 +124,30 @@ void EFURTransportationBehavior::onLoad()
 			}),
 			1.0f
 		);
+
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			Strings::Platformer_Dialogue_Transportation_IForgotSomething::create(),
+			[=]()
+			{
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Dialogue_Transportation_Seriously::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+						DialogueEvents::BuildPreviewNode(&this->entity, true)
+					),
+					[=]()
+					{
+						if (this->backPortal != nullptr)
+						{
+							this->backPortal->loadMap();
+						}
+					},
+					SoundResources::Platformer_Entities_Generic_ChatterQuestion1
+				));
+			}),
+			0.9f
+		);
 	});
 }
-
-void rebuildDialogue();

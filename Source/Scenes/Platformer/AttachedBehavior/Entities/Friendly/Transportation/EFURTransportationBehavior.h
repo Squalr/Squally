@@ -4,6 +4,7 @@
 
 class DialogueSet;
 class PlatformerEntity;
+class Portal;
 class Scrappy;
 class Squally;
 
@@ -23,10 +24,14 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void rebuildDialogue();
-
 	PlatformerEntity* entity;
 	Scrappy* scrappy;
 	Squally* squally;
 	DialogueSet* innerChoices;
+
+	Portal* backPortal;
+	Portal* leavePortal;
+
+	static const std::string QuestTagBackPortal;
+	static const std::string QuestTagLeavePortal;
 };

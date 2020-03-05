@@ -10,6 +10,8 @@ class Portal : public InteractObject
 {
 public:
 	static Portal* create(cocos2d::ValueMap& properties);
+	
+	virtual void loadMap();
 
 	static const std::string MapKeyPortal;
 	static const std::string MapKeyPortalMap;
@@ -22,7 +24,6 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onInteract() override;
-	virtual void loadMap();
 
 private:
 	typedef InteractObject super;
