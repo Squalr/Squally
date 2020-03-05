@@ -86,7 +86,6 @@
     <property name="transition" value="entrance-D"/>
    </properties>
   </object>
-  <object id="954" name="help-totem-end-of-demo" type="object" x="1026.3" y="1923.76" width="256" height="256"/>
   <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>

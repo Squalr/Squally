@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Blackbeard;
+class Portal;
 class QuestLine;
 class Squally;
 
@@ -30,4 +31,7 @@ private:
 
 	Blackbeard* blackbeard;
 	Squally* squally;
+	Portal* portal;
+
+	static const std::string QuestTagShipPortal;
 };

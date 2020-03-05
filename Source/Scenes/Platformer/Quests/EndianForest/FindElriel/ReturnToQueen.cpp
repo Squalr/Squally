@@ -270,8 +270,8 @@ void ReturnToQueen::setPostText()
 		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()
-					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops::create()
+					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Marcel::create()),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,

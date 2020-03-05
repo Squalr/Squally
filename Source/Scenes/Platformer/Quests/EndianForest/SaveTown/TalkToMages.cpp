@@ -8,7 +8,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
@@ -19,6 +18,7 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"

@@ -726,7 +726,7 @@
   </object>
   <object id="944" name="spawn" type="object" x="5235.76" y="2681.09" width="128" height="128">
    <properties>
-    <property name="transition" value="mages-portal"/>
+    <property name="transition" value="mage-portal"/>
    </properties>
   </object>
  </objectgroup>

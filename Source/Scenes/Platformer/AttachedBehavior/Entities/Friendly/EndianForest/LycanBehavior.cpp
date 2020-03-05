@@ -2,11 +2,11 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"

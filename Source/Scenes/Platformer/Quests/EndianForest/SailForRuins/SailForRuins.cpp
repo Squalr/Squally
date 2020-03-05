@@ -9,14 +9,16 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Entities/Platformer/Npcs/EndianForest/Blackbeard.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Objects/DisabledPortal.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 
 #include "Resources/SoundResources.h"
 
@@ -25,6 +27,7 @@
 using namespace cocos2d;
 
 const std::string SailForRuins::MapKeyQuest = "sail-for-ruins";
+const std::string SailForRuins::QuestTagShipPortal = "ship-portal";
 
 SailForRuins* SailForRuins::create(GameObject* owner, QuestLine* questLine)
 {
@@ -51,6 +54,22 @@ void SailForRuins::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
+
+	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->portal = portal;
+
+		if (questState != QuestState::None)
+		{
+			this->portal->getAttachedBehavior<DisabledPortal>([=](DisabledPortal* disabledPortal)
+			{
+				disabledPortal->enablePortal();
+			});
+
+			this->complete();
+		}
+
+	}, SailForRuins::QuestTagShipPortal);
 
 	ObjectEvents::watchForObject<Blackbeard>(this, [=](Blackbeard* blackbeard)
 	{

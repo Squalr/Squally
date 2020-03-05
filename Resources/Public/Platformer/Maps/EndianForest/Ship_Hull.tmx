@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="714">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="IndoorHouse"/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="712" name="ship-dark" type="texture" x="-336" y="-290" width="3792" height="2688"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="713" name="ship-alt" type="terrain" x="-80" y="-68" width="820" height="1500">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="658" name="ship-alt" type="terrain" x="-35.6513" y="1165.48">
+   <polygon points="2.66667,-17.3333 929.912,-18.0415 929.246,109.247 1058.58,108.581 1057.2,237.277 1184.31,237.349 1183.11,364.406 1314.39,364.304 1314.72,492.174 3196.32,497.335 3203.91,936.693 6.85517,945.649"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="484" name="Generic/WoodDoor" type="decor" x="182.555" y="835.563" width="238.499" height="312.248"/>
+  <object id="695" name="Generic/Bed" type="decor" x="2716.72" y="1539.03" width="339.213" height="127.347"/>
+  <object id="696" name="Generic/Sack" type="decor" x="2560.85" y="1524.02" width="162" height="145">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="182.69" y="860.348" width="237.527" height="287.568">
+   <properties>
+    <property name="map" value="EndianForest/Ship_Main"/>
+    <property name="transition" value="hull"/>
+   </properties>
+  </object>
+  <object id="705" name="breakable-cage" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
+  <object id="706" name="spawn-wood-door" type="object" x="242.134" y="1019.48" width="128" height="128">
+   <properties>
+    <property name="transition" value="hull"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="617.133" y="1024.28" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

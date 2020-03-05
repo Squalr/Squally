@@ -9,6 +9,8 @@ class DisabledPortal : public AttachedBehavior
 public:
 	static DisabledPortal* create(GameObject* owner);
 
+	void enablePortal();
+
 	static const std::string MapKeyAttachedBehavior;
 
 protected:

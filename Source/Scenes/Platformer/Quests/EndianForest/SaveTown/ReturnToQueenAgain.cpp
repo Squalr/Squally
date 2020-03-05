@@ -24,7 +24,7 @@
 
 using namespace cocos2d;
 
-const std::string ReturnToQueenAgain::MapKeyQuest = "talk-to-queen";
+const std::string ReturnToQueenAgain::MapKeyQuest = "return-to-queen-again";
 
 ReturnToQueenAgain* ReturnToQueenAgain::create(GameObject* owner, QuestLine* questLine)
 {

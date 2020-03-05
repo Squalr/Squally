@@ -2,7 +2,6 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
@@ -11,6 +10,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -34,13 +34,21 @@ EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->scrappy = nullptr;
 	this->interactMenu = InteractMenu::create(ConstantString::create("[V]"));
 	this->canInteract = false;
 	this->dialogueCollision = nullptr;
+	this->scrappy = nullptr;
 	this->pretextNode = Node::create();
 	this->dialogueSetNode = Node::create();
-	this->mainDialogueSet = DialogueSet::create();
+
+	// This is just a default. Can be overriden for specific needs
+	this->mainDialogueSet = DialogueSet::create(DialogueEvents::DialogueVisualArgs(
+		DialogueBox::DialogueDock::Bottom,
+		DialogueBox::DialogueAlignment::Left,
+		DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+		DialogueEvents::BuildPreviewNode(&this->entity, true)
+	));
+
 	this->speechBubble = SpeechBubble::create();
 	this->pretextQueue = std::queue<DialogueEvents::DialogueOpenArgs>();
 	this->dialogueSets = std::vector<DialogueSet*>();
@@ -315,18 +323,14 @@ void EntityDialogueBehavior::showOptions()
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		options,
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->entity, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-		),
+		this->activeDialogueSet->getArgs(),
 		[=]()
 		{
 			this->optionsVisible = false;
 		},
 		"",
-		true
+		true,
+		false
 	));
 }
 

@@ -8,7 +8,6 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/DialogueSet.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
@@ -21,6 +20,7 @@
 #include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"

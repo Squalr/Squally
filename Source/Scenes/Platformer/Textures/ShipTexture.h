@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTextureType;
 
+protected:
+	ShipTexture(cocos2d::ValueMap& properties);
+	virtual ~ShipTexture();
+
 private:
 	typedef TextureObject super;
-
-	ShipTexture(cocos2d::ValueMap& properties);
-	~ShipTexture();
 };

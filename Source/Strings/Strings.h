@@ -17364,6 +17364,96 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Shopkeepers_Welcome() = default;
 	};
 
+	class Platformer_Dialogue_Transportation_AreWeThereYet : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_AreWeThereYet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_AreWeThereYet();
+		virtual ~Platformer_Dialogue_Transportation_AreWeThereYet() = default;
+	};
+
+	class Platformer_Dialogue_Transportation_AreYouReady : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_AreYouReady* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_AreYouReady();
+		virtual ~Platformer_Dialogue_Transportation_AreYouReady() = default;
+	};
+
+	class Platformer_Dialogue_Transportation_IForgotSomething : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_IForgotSomething* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_IForgotSomething();
+		virtual ~Platformer_Dialogue_Transportation_IForgotSomething() = default;
+	};
+
+	class Platformer_Dialogue_Transportation_No : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_No* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_No();
+		virtual ~Platformer_Dialogue_Transportation_No() = default;
+	};
+
+	class Platformer_Dialogue_Transportation_Seriously : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_Seriously* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_Seriously();
+		virtual ~Platformer_Dialogue_Transportation_Seriously() = default;
+	};
+
+	class Platformer_Dialogue_Transportation_Yes : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Transportation_Yes* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Transportation_Yes();
+		virtual ~Platformer_Dialogue_Transportation_Yes() = default;
+	};
+
 	class Platformer_Ellipses : public LocalizedString
 	{
 	public:

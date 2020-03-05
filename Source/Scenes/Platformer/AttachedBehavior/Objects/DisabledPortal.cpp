@@ -40,3 +40,8 @@ void DisabledPortal::onLoad()
 {
 	this->portal->disable();
 }
+
+void DisabledPortal::enablePortal()
+{
+	this->portal->enable();
+}

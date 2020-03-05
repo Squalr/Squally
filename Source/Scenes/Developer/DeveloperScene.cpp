@@ -53,6 +53,8 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Bounds", MapResources::Dev_Bounds));
 	this->chapterList.push_back(this->buildDebugButton("DBG Combat", MapResources::Dev_Combat));
 	this->chapterList.push_back(this->buildDebugButton("DBG Terrain", MapResources::Dev_Terrain));
+	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
+	this->chapterList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
 	this->chapterList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 	this->chapterList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
@@ -87,7 +89,6 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #4 (DEPRECATED)", MapResources::EndianForest_Mages_Gauntlet_4_deprecated));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #5 (DEPRECATED)", MapResources::EndianForest_Mages_Gauntlet_5_deprecated));
 	this->chapterList.push_back(this->buildDebugButton("Mage's Gauntlet #6", MapResources::EndianForest_Mages_Gauntlet_6));
-	this->chapterList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 	this->chapterList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 	this->chapterList.push_back(this->buildDebugButton("DBG Quests", MapResources::Dev_Quests));
 

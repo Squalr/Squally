@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="745">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="746">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -304,7 +304,8 @@
   <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
    <properties>
     <property name="attached-behavior" value="disabled-portal"/>
-    <property name="map" value="EndianForest/Town_Shack"/>
+    <property name="map" value="EndianForest/Ship_Main"/>
+    <property name="tag" value="ship-portal"/>
     <property name="transition" value="ship"/>
    </properties>
   </object>
@@ -348,6 +349,11 @@
   <object id="709" name="spawn" type="object" x="384.988" y="1562.72" width="128" height="128">
    <properties>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="745" name="spawn" type="object" x="2284" y="1548.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="ship"/>
    </properties>
   </object>
  </objectgroup>

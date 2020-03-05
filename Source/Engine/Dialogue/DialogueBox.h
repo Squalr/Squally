@@ -39,7 +39,7 @@ public:
 protected:
 
 	DialogueBox(float textWidth, float speakerOffset, float speakerWidth);
-	~DialogueBox();
+	virtual ~DialogueBox();
 
 	void initializePositions() override;
 	void initializeListeners() override;
