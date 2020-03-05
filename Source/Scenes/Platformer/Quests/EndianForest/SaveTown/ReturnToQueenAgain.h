@@ -8,16 +8,16 @@ class QuestLine;
 class Scrappy;
 class Squally;
 
-class TalkToQueen : public QuestTask
+class ReturnToQueenAgain : public QuestTask
 {
 public:
-	static TalkToQueen* create(GameObject* owner, QuestLine* questLine);
+	static ReturnToQueenAgain* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToQueen(GameObject* owner, QuestLine* questLine);
-	virtual ~TalkToQueen();
+	ReturnToQueenAgain(GameObject* owner, QuestLine* questLine);
+	virtual ~ReturnToQueenAgain();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -28,7 +28,6 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
-	void setPostText();
 
 	Guano* guano;
 	QueenLiana* queenLiana;

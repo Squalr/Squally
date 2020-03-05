@@ -4794,6 +4794,96 @@ namespace Strings
 		virtual ~Items_Currency_IOUs() = default;
 	};
 
+	class Items_Equipment_Gear_Earrings_AquaMarineEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_AquaMarineEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_AquaMarineEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_AquaMarineEarrings() = default;
+	};
+
+	class Items_Equipment_Gear_Earrings_CrystalEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_CrystalEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_CrystalEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_CrystalEarrings() = default;
+	};
+
+	class Items_Equipment_Gear_Earrings_EmeraldEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_EmeraldEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_EmeraldEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_EmeraldEarrings() = default;
+	};
+
+	class Items_Equipment_Gear_Earrings_HeartEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_HeartEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_HeartEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_HeartEarrings() = default;
+	};
+
+	class Items_Equipment_Gear_Earrings_RoseEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_RoseEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_RoseEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_RoseEarrings() = default;
+	};
+
+	class Items_Equipment_Gear_Earrings_SapphireEarrings : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Earrings_SapphireEarrings* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Earrings_SapphireEarrings();
+		virtual ~Items_Equipment_Gear_Earrings_SapphireEarrings() = default;
+	};
+
 	class Items_Equipment_Gear_Hats_AcolytesCap : public LocalizedString
 	{
 	public:
@@ -5587,6 +5677,276 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Hats_WoodenPikeHelm();
 		virtual ~Items_Equipment_Gear_Hats_WoodenPikeHelm() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_AmethystNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_AmethystNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_AmethystNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_AmethystNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_AquaMarineNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_AquaMarineNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_AquaMarineNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_AquaMarineNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_EmeraldPendant : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_EmeraldPendant* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_EmeraldPendant();
+		virtual ~Items_Equipment_Gear_Necklaces_EmeraldPendant() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_GarnetNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_GarnetNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_GarnetNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_GarnetNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_GlowingPendant : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_GlowingPendant* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_GlowingPendant();
+		virtual ~Items_Equipment_Gear_Necklaces_GlowingPendant() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_HolyNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_HolyNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_HolyNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_HolyNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_MarineNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_MarineNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_MarineNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_MarineNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_SapphireNecklace : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_SapphireNecklace* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_SapphireNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_SapphireNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_TopazPendant : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Necklaces_TopazPendant* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_TopazPendant();
+		virtual ~Items_Equipment_Gear_Necklaces_TopazPendant() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_DarkHeartBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_DarkHeartBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_DarkHeartBand();
+		virtual ~Items_Equipment_Gear_Rings_DarkHeartBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_EmeraldBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_EmeraldBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_EmeraldBand();
+		virtual ~Items_Equipment_Gear_Rings_EmeraldBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_GarnetBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_GarnetBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_GarnetBand();
+		virtual ~Items_Equipment_Gear_Rings_GarnetBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_HeartBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_HeartBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_HeartBand();
+		virtual ~Items_Equipment_Gear_Rings_HeartBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_MarineBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_MarineBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_MarineBand();
+		virtual ~Items_Equipment_Gear_Rings_MarineBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_SapphireBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_SapphireBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_SapphireBand();
+		virtual ~Items_Equipment_Gear_Rings_SapphireBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_ShellBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_ShellBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_ShellBand();
+		virtual ~Items_Equipment_Gear_Rings_ShellBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_SkullBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_SkullBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_SkullBand();
+		virtual ~Items_Equipment_Gear_Rings_SkullBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_SoulBand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Gear_Rings_SoulBand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_SoulBand();
+		virtual ~Items_Equipment_Gear_Rings_SoulBand() = default;
 	};
 
 	class Items_Equipment_Offhands_Shields_WoodenShield : public LocalizedString
@@ -21727,6 +22087,36 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash();
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Return_B_Yes : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Return_B_Yes* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Return_B_Yes();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Return_B_Yes() = default;
 	};
 
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt : public LocalizedString

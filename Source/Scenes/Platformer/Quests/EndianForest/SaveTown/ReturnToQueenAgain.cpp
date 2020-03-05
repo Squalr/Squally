@@ -13,8 +13,10 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
+#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 
 #include "Resources/SoundResources.h"
 
@@ -66,12 +68,6 @@ void ReturnToQueenAgain::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
-
-	if (questState == QuestState::Complete &&
-		QuestTask::getQuestStateForTask(this->questLine, TalkToElriel::MapKeyQuest) == QuestState::None)
-	{
-		this->setPostText();
-	}
 }
 
 void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
@@ -81,6 +77,7 @@ void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToQueenAgain::onComplete()
 {
+	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(GlowingPendant::create(), Strings::Platformer_Notifications_ItemCrafted::create()));
 }
 
 void ReturnToQueenAgain::onSkipped()
@@ -99,12 +96,12 @@ void ReturnToQueenAgain::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins::create(),
+			Strings::Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -114,110 +111,19 @@ void ReturnToQueenAgain::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterShort2,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+			Strings::Platformer_Quests_EndianForest_SaveTown_Return_B_Yes::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
-			},
-			SoundResources::Platformer_Entities_Droid_DroidChatter,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium3,
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-				this->setPostText();
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
+			SoundResources::Platformer_Entities_Generic_ChatterShort2,
 			true
 		));
-	});
-}
-
-void ReturnToQueenAgain::setPostText()
-{
-	this->defer([=]()
-	{
-		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
-					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-					DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-				),
-				[=]()
-				{
-					this->setPostText();
-				},
-				SoundResources::Platformer_Entities_Generic_ChatterMedium2,
-				true
-			));
-		});
 	});
 }

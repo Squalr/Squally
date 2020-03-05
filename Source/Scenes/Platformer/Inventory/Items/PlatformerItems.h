@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Inventory/Items/Crafting/Wood/LightWood.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Wood/Wood.h"
 #include "Scenes/Platformer/Inventory/Items/Error/MissingNo.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/GlowingPendant.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/AcolytesCap.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/ArchersHat.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/BarbedHelm.h"

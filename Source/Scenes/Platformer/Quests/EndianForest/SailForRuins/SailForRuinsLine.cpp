@@ -1,8 +1,8 @@
 #include "SailForRuinsLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/SailForRuins/SailForRuins.h"
+#include "Scenes/Platformer/Quests/EndianForest/SaveTown/SaveTownLine.h"
 
 using namespace cocos2d;
 
@@ -21,7 +21,7 @@ SailForRuinsLine::SailForRuinsLine() : super(SailForRuinsLine::MapKeyQuestLine,
 	{
 		QuestData(SailForRuins::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return SailForRuins::create(owner, questLine); }),
 	},
-	(QuestLine*)FindElrielLine::create())
+	(QuestLine*)SaveTownLine::create())
 {
 }
 

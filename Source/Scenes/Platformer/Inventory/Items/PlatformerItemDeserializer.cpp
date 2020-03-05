@@ -265,6 +265,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Offhands
 	this->deserializers[WoodenShield::SaveKeyWoodenShield] = [=]() { return (Item*)WoodenShield::create(); };
 
+	// Necklaces
+	this->deserializers[GlowingPendant::SaveKeyGlowingPendant] = [=]() { return (Item*)GlowingPendant::create(); };
+
 	// Keys
 	this->deserializers[MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
 	this->deserializers[MayanGemBlueItem::SaveKeyMayanGemBlueItem] = [=]() { return (Item*)MayanGemBlueItem::create(); };
