@@ -5,6 +5,8 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Scenes/Platformer/Terrain/PlatformerTerrain.h"
 
 using namespace cocos2d;
@@ -20,7 +22,7 @@ PlatformerTerrainDeserializer* PlatformerTerrainDeserializer::create()
 	return instance;
 }
 
-PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain)
+PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
@@ -61,7 +63,11 @@ void PlatformerTerrainDeserializer::deserialize(ObjectDeserializer::ObjectDeseri
 
 	if (this->deserializers.find(name) != this->deserializers.end())
 	{
-		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(this->deserializers[name](properties)));
+		GameObject* terrain = this->deserializers[name](properties);
+
+		this->deserializeProperties(terrain, properties);
+
+		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(terrain));
 	}
 	else
 	{

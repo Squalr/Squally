@@ -7,6 +7,8 @@
 
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
 
 using namespace cocos2d;
@@ -22,7 +24,7 @@ PlatformerDecorDeserializer* PlatformerDecorDeserializer::create()
 	return instance;
 }
 
-PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor)
+PlatformerDecorDeserializer::PlatformerDecorDeserializer() : super(PlatformerDecorDeserializer::MapKeyTypeDecor, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 }
 
@@ -177,6 +179,8 @@ void PlatformerDecorDeserializer::deserialize(ObjectDeserializer::ObjectDeserial
 		FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, -floatY)));
 		newObject->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 	}
+
+	this->deserializeProperties(newObject, properties);
 
 	args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(newObject));
 }

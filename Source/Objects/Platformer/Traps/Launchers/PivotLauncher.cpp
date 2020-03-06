@@ -141,9 +141,9 @@ void PivotLauncher::registerHackables()
 	auto swingFunc = &PivotLauncher::updateShootTimer;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 

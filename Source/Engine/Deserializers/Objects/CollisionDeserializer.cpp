@@ -64,13 +64,13 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 	{
 		CollisionObject* collisionObject = CollisionObject::create(properties, shape, collisionType, CollisionObject::Properties(false, false));
 
-		for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+		for (auto next : this->propertyDeserializers)
 		{
-			std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
+			std::string key = GameUtils::getKeyOrDefault(properties, next->getPropertyDeserializerKey(), Value("")).asString();
 
 			if (!key.empty())
 			{
-				(*it)->deserializeProperties(collisionObject, properties);
+				next->deserializeProperties(collisionObject, properties);
 			}
 		}
 

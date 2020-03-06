@@ -101,23 +101,7 @@ void InteractObject::initializeListeners()
 	{
 		this->canInteract = true;
 
-		switch(this->interactType)
-		{
-			case InteractType::None:
-			{
-				break;
-			}
-			case InteractType::Input:
-			{
-				this->updateInteractMenuVisibility();
-				break;
-			}
-			case InteractType::Collision:
-			{
-				this->tryInteractObject();
-				break;
-			}
-		}
+		this->onStateRefresh();
 		
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -153,14 +137,39 @@ void InteractObject::onDeveloperModeDisable()
 	this->unlockButton->setVisible(false);
 }
 
+void InteractObject::onStateRefresh()
+{
+	switch(this->interactType)
+	{
+		case InteractType::None:
+		{
+			break;
+		}
+		case InteractType::Input:
+		{
+			this->updateInteractMenuVisibility();
+			break;
+		}
+		case InteractType::Collision:
+		{
+			this->tryInteractObject();
+			break;
+		}
+	}
+}
+
 void InteractObject::enable()
 {
 	this->disabled = false;
+
+	this->onStateRefresh();
 }
 
 void InteractObject::disable()
 {
 	this->disabled = true;
+	
+	this->onStateRefresh();
 }
 
 void InteractObject::lock(bool animate)

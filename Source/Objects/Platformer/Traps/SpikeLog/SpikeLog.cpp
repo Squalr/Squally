@@ -104,9 +104,9 @@ void SpikeLog::registerHackables()
 	auto incrementAnimationFunc = &SpikeLog::incrementSpikeLogAnimation;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 

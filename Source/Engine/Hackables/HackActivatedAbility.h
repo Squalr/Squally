@@ -13,7 +13,7 @@ public:
 	static HackActivatedAbility* create(
 		std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
-		int requiredEq,
+		int hackFlags,
 		float duration,
 		std::string iconResource,
 		LocalizedString* name,
@@ -25,7 +25,7 @@ public:
 protected:
 	HackActivatedAbility(std::function<void()> onActivate,
 		std::function<void()> onDeactivate,
-		int requiredEq, 
+		int hackFlags, 
 		float duration,
 		std::string iconResource,
 		LocalizedString* name,

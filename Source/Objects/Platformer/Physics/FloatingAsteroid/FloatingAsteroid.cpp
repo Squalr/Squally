@@ -105,9 +105,9 @@ void FloatingAsteroid::registerHackables()
 	auto densityFunc = &FloatingAsteroid::getDensityNonVirtual;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 

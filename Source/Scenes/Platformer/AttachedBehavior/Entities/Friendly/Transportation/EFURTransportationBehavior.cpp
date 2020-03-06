@@ -103,6 +103,7 @@ void EFURTransportationBehavior::onLoad()
 
 		interactionBehavior->addDialogueSet(innerChoices);
 
+		/*
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Dialogue_Transportation_AreWeThereYet::create(),
 			[=]()
@@ -124,6 +125,7 @@ void EFURTransportationBehavior::onLoad()
 			}),
 			1.0f
 		);
+		*/
 
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Dialogue_Transportation_IForgotSomething::create(),

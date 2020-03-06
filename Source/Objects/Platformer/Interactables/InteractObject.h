@@ -52,6 +52,8 @@ protected:
 private:
 	typedef HackableObject super;
 
+	void onStateRefresh();
+
 	InteractMenu* interactMenu;
 	InteractMenu* lockedMenu;
 

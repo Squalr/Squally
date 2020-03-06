@@ -38,13 +38,14 @@ WoodenSpikes* WoodenSpikes::create(ValueMap& properties)
 
 WoodenSpikes::WoodenSpikes(ValueMap& properties) : super(properties)
 {
+	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
+	this->isFlippedY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
-	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
-
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikes->setFlippedY(this->isFlippedY);
 
 	this->addChild(this->spikeCollision);
 	this->addChild(this->spikes);
@@ -106,9 +107,9 @@ void WoodenSpikes::registerHackables()
 	auto updateSpikesFunc = &WoodenSpikes::updateSpikes;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
-	for (auto it = hackables.begin(); it != hackables.end(); it++)
+	for (auto next : hackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 
@@ -148,21 +149,29 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 
 	if (this->currentElapsedTimeForSpikeTrigger > this->totalTimeUntilSpikesTrigger)
 	{
-		const float stayUpDuration = 1.5f;
+		const float StayUpDuration = 1.5f;
 
 		this->isRunningAnimation = true;
 		this->currentElapsedTimeForSpikeTrigger = 0.0f;
 
 		// Move collision box
 		this->spikeCollision->runAction(Sequence::create(
-			MoveTo::create(0.425f, WoodenSpikes::SpikesUpPosition),
-			DelayTime::create(stayUpDuration),
-			MoveTo::create(0.425f, WoodenSpikes::SpikesDownPosition),
+			CallFunc::create([=]()
+			{
+				this->spikeCollision->setPhysicsEnabled(true);
+			}),
+			MoveTo::create(0.425f, this->isFlippedY ? -WoodenSpikes::SpikesUpPosition : WoodenSpikes::SpikesUpPosition),
+			DelayTime::create(StayUpDuration),
+			MoveTo::create(0.425f, this->isFlippedY ? -WoodenSpikes::SpikesDownPosition : WoodenSpikes::SpikesDownPosition),
+			CallFunc::create([=]()
+			{
+				this->spikeCollision->setPhysicsEnabled(false);
+			}),
 			nullptr
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, stayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

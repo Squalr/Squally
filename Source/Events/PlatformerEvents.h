@@ -36,6 +36,7 @@ public:
 	static const std::string EventGiveCurrency;
 	static const std::string EventAllowPause;
 	static const std::string EventDisallowPause;
+	static const std::string EventDispelIllusion;
 
 	struct TransitionArgs
 	{
@@ -143,6 +144,13 @@ public:
 			: currency(currency), messageOverride(messageOverride) { }
 	};
 
+	struct DispelIllusionArgs
+	{
+		std::string group;
+
+		DispelIllusionArgs(std::string group) : group(group) { }
+	};
+
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpToLocation(WarpArgs args);
 	static void TriggerBeforePlatformerMapChange();
@@ -163,4 +171,5 @@ public:
 	static void TriggerGiveCurrency(GiveCurrencyArgs args);
 	static void TriggerAllowPause();
 	static void TriggerDisallowPause();
+	static void TriggerDispelIllusion(DispelIllusionArgs args);
 };

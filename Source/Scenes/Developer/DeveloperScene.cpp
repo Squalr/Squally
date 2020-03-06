@@ -61,6 +61,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
 	this->chapterList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
 	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_7 (EF)", MapResources::EndianForest_Zone_3_7));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_6 (EF)", MapResources::EndianForest_Zone_3_6));
+	this->chapterList.push_back(this->buildDebugButton("Zone 3_5 (EF)", MapResources::EndianForest_Zone_3_5));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_4 (EF)", MapResources::EndianForest_Zone_3_4));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_3 (EF)", MapResources::EndianForest_Zone_3_3));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_2 (EF)", MapResources::EndianForest_Zone_3_2));
@@ -119,9 +122,9 @@ void DeveloperScene::initializePositions()
 
 	this->scrollPane->setPosition(Vec2(visibleSize / 2.0f));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++, index++)
+	for (auto next : this->chapterList)
 	{
-		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
+		next->setPosition(Vec2(0.0f, -128.0f - float(index++) * 180.0f));
 	}
 }
 

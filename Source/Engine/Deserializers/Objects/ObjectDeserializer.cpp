@@ -41,20 +41,25 @@ void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRe
 	{
 		GameObject* object = this->deserializers[name](properties);
 
-		for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
-		{
-			std::string key = GameUtils::getKeyOrDefault(properties, (*it)->getPropertyDeserializerKey(), Value("")).asString();
-
-			if (!key.empty())
-			{
-				(*it)->deserializeProperties(object, properties);
-			}
-		}
+		this->deserializeProperties(object, properties);
 
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(object));
 	}
 	else
 	{
 		LogUtils::logError("Unknown entity encountered: " + name);
+	}
+}
+
+void ObjectDeserializer::deserializeProperties(GameObject* object, const ValueMap& properties)
+{
+	for (auto next : this->propertyDeserializers)
+	{
+		std::string key = GameUtils::getKeyOrDefault(properties, next->getPropertyDeserializerKey(), Value("")).asString();
+
+		if (!key.empty())
+		{
+			next->deserializeProperties(object, properties);
+		}
 	}
 }
