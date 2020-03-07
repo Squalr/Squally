@@ -9,6 +9,7 @@
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialF.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/ReturnToSarude.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/TalkToSarude.h"
+#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/WelcomeToMagesGuild.h"
 
 using namespace cocos2d;
 
@@ -24,6 +25,7 @@ HexusGauntletLine* HexusGauntletLine::create()
 }
 
 HexusGauntletLine::HexusGauntletLine() : super(HexusGauntletLine::MapKeyQuestLine, {
+	QuestData(WelcomeToMagesGuild::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return WelcomeToMagesGuild::create(owner, questLine); }),
 	QuestData(TalkToSarude::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return TalkToSarude::create(owner, questLine); }),
 	QuestData(BeatTutorialA::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialA::create(owner, questLine); }),
 	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialB::create(owner, questLine); }),

@@ -59,6 +59,11 @@ void WindBlessing::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
 	{
 		this->marcel = marcel;
+
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->runCinematicSequence();
+		}
 	}, Marcel::MapKeyMarcel);
 }
 
@@ -104,7 +109,7 @@ void WindBlessing::runCinematicSequence()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 			false
 		));
 
@@ -120,7 +125,7 @@ void WindBlessing::runCinematicSequence()
 			{
 				this->complete();
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterQuestion1,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 			true
 		));
 	});

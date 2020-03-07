@@ -857,11 +857,11 @@
   </properties>
   <object id="899" name="marcel" type="entity" x="1330.12" y="935.848" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="attached-behavior" value="marcel,friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="wind-blessing"/>
-    <property name="quest-line" value="wind-blessing"/>
+    <property name="quest" value="mages-guild,wind-blessing"/>
+    <property name="quest-line" value="hexus-gauntlet,wind-blessing"/>
    </properties>
   </object>
  </objectgroup>

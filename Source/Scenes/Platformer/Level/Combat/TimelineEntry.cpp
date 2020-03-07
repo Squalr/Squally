@@ -189,6 +189,9 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 		return;
 	}
 
+	// Store the sign. Buff modifiers assume positive numbers, however hacking can cause positive damage (healing)
+	int sign = damage < 0 ? -1 : 1;
+	
 	damage = std::abs(damage);
 
 	// Modify outgoing damage
@@ -203,7 +206,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health - damage));
+	this->getEntity()->setState(StateKeys::Health, Value(health + damage * sign));
 
 	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
 }
@@ -214,6 +217,9 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 	{
 		return;
 	}
+
+	// Store the sign. Buff modifiers assume positive numbers, however hacking can cause negative healing (damage)
+	int sign = healing < 0 ? -1 : 1;
 
 	healing = std::abs(healing);
 
@@ -227,9 +233,9 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + healing));
+	this->getEntity()->setState(StateKeys::Health, Value(health + healing * sign));
 
-	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
+	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
 }
 
 void TimelineEntry::stageTarget(PlatformerEntity* target)

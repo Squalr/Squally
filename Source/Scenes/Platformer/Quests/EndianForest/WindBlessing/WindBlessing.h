@@ -24,7 +24,7 @@ protected:
 
 private:
 	typedef QuestTask super;
-
+	
 	void runCinematicSequence();
 
 	Marcel* marcel;

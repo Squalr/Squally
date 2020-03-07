@@ -21669,10 +21669,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21680,14 +21680,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_WelcomeToMagesGuild() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent* create();
+		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21695,8 +21695,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_BroadcastedAndSent() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent() = default;
+	};
+
+	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude() = default;
 	};
 
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_WeNeededSomeone : public LocalizedString

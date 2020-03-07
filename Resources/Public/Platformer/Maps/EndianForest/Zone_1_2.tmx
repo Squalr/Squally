@@ -212,7 +212,7 @@
   </object>
   <object id="774" name="orc-grunt" type="entity" x="7414.79" y="1145.09" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,pacing,disarmed"/>
+    <property name="attached-behavior" value="enemy,pacing"/>
     <property name="battle-behavior" value="restore-potion-tutorial,no-items,no-defend,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="drop-pool" value="ef-generic"/>

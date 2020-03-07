@@ -70,17 +70,17 @@ void EntityCombatBehaviorBase::onLoad()
 	});
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageTaken(int* damageOrHealing, bool* blocked, std::function<void()> handleCallback)
+void EntityCombatBehaviorBase::onBeforeDamageTaken(int* damage, bool* blocked, std::function<void()> handleCallback)
 {
-	if (damageOrHealing >= 0)
+	if (damage >= 0)
 	{
 		return;
 	}
 
-	*damageOrHealing -= this->bonusArmor;
+	*damage -= this->bonusArmor;
 }
 
-void EntityCombatBehaviorBase::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+void EntityCombatBehaviorBase::onBeforeDamageDelt(int* damage, std::function<void()> handleCallback)
 {
-	*damageOrHealing += this->bonusAttack;
+	*damage += this->bonusAttack;
 }
