@@ -9,6 +9,9 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -27,6 +30,8 @@ EntityManaBehavior* EntityManaBehavior::create(GameObject* owner)
 EntityManaBehavior::EntityManaBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->equipmentInventory = nullptr;
+	this->cachedMaxMana = 0;
 
 	if (this->entity == nullptr)
 	{
@@ -34,8 +39,8 @@ EntityManaBehavior::EntityManaBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		this->entity->setState(StateKeys::MaxMana, Value(StatsTables::getBaseMana(this->entity)), false);
 		this->entity->setState(StateKeys::Mana, Value(StatsTables::getBaseMana(this->entity)), false);
+		this->entity->setState(StateKeys::MaxMana, Value(this->getMaxMana()), false);
 	}
 }
 
@@ -45,21 +50,28 @@ EntityManaBehavior::~EntityManaBehavior()
 
 void EntityManaBehavior::onLoad()
 {
-	if (this->entity != nullptr)
+	if (this->entity == nullptr)
 	{
-		this->entity->listenForStateWrite(StateKeys::Mana, [=](Value value)
-		{
-			this->setMana(value.asInt());
-		});
-
-		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-		{
-			if (value.asBool())
-			{
-				this->onRevive();
-			}
-		});
+		return;
 	}
+
+	this->entity->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+	});
+
+	this->entity->listenForStateWrite(StateKeys::Mana, [=](Value value)
+	{
+		this->setMana(value.asInt());
+	});
+
+	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (value.asBool())
+		{
+			this->onRevive();
+		}
+	});
 }
 
 int EntityManaBehavior::getMana()
@@ -80,7 +92,23 @@ void EntityManaBehavior::setMana(int mana)
 
 int EntityManaBehavior::getMaxMana()
 {
-	return this->entity->getStateOrDefaultInt(StateKeys::MaxMana, 0);
+	int maxMana = StatsTables::getBaseHealth(this->entity);
+
+	if (this->equipmentInventory != nullptr)
+	{
+		for (auto equipment : this->equipmentInventory->getEquipment())
+		{
+			maxMana += equipment->getItemStats().manaBonus;
+		}
+	}
+
+	if (this->cachedMaxMana != maxMana)
+	{
+		this->cachedMaxMana = maxMana;
+		this->entity->setState(StateKeys::MaxMana, Value(maxMana));
+	}
+	
+	return maxMana;
 }
 
 void EntityManaBehavior::onRevive()

@@ -65,11 +65,11 @@ std::vector<Equipable*> EquipmentInventory::getEquipment()
 {
 	std::vector<Equipable*> equipment = std::vector<Equipable*>();
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Equipable*>(*it) != nullptr)
+		if (dynamic_cast<Equipable*>(next) != nullptr)
 		{
-			equipment.push_back(dynamic_cast<Equipable*>(*it));
+			equipment.push_back(dynamic_cast<Equipable*>(next));
 		}
 	}
 
@@ -78,11 +78,11 @@ std::vector<Equipable*> EquipmentInventory::getEquipment()
 
 Weapon* EquipmentInventory::getWeapon()
 {
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		if (dynamic_cast<Weapon*>(next) != nullptr)
 		{
-			return dynamic_cast<Weapon*>(*it);
+			return dynamic_cast<Weapon*>(next);
 		}
 	}
 
@@ -91,11 +91,11 @@ Weapon* EquipmentInventory::getWeapon()
 
 Offhand* EquipmentInventory::getOffhand()
 {
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Offhand*>(*it) != nullptr)
+		if (dynamic_cast<Offhand*>(next) != nullptr)
 		{
-			return dynamic_cast<Offhand*>(*it);
+			return dynamic_cast<Offhand*>(next);
 		}
 	}
 
@@ -104,11 +104,11 @@ Offhand* EquipmentInventory::getOffhand()
 
 Hat* EquipmentInventory::getHat()
 {
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Hat*>(*it) != nullptr)
+		if (dynamic_cast<Hat*>(next) != nullptr)
 		{
-			return dynamic_cast<Hat*>(*it);
+			return dynamic_cast<Hat*>(next);
 		}
 	}
 
@@ -119,11 +119,11 @@ std::vector<Gear*> EquipmentInventory::getGear()
 {
 	std::vector<Gear*> gear = std::vector<Gear*>();
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Gear*>(*it) != nullptr)
+		if (dynamic_cast<Gear*>(next) != nullptr)
 		{
-			gear.push_back(dynamic_cast<Gear*>(*it));
+			gear.push_back(dynamic_cast<Gear*>(next));
 		}
 	}
 
@@ -134,11 +134,11 @@ std::vector<HexusCard*> EquipmentInventory::getHexusCards()
 {
 	std::vector<HexusCard*> cards = std::vector<HexusCard*>();
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<HexusCard*>(*it) != nullptr)
+		if (dynamic_cast<HexusCard*>(next) != nullptr)
 		{
-			cards.push_back(dynamic_cast<HexusCard*>(*it));
+			cards.push_back(dynamic_cast<HexusCard*>(next));
 		}
 	}
 
@@ -149,11 +149,11 @@ int EquipmentInventory::getTotalMinAttack()
 {
 	int minAttack = 0;
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		if (dynamic_cast<Weapon*>(next) != nullptr)
 		{
-			minAttack += dynamic_cast<Weapon*>(*it)->getMinAttack();
+			minAttack += dynamic_cast<Weapon*>(next)->getMinAttack();
 		}
 	}
 
@@ -164,11 +164,11 @@ int EquipmentInventory::getTotalMaxAttack()
 {
 	int maxAttack = 0;
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		if (dynamic_cast<Weapon*>(*it) != nullptr)
+		if (dynamic_cast<Weapon*>(next) != nullptr)
 		{
-			maxAttack += dynamic_cast<Weapon*>(*it)->getMinAttack();
+			maxAttack += dynamic_cast<Weapon*>(next)->getMinAttack();
 		}
 	}
 

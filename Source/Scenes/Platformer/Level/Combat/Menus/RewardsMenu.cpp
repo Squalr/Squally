@@ -25,7 +25,10 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -153,6 +156,20 @@ void RewardsMenu::giveExp()
 				const float endProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
 
 				friendlyExpBarBehavior->giveExp(startProgress, endProgress, didLevelUp, adjustedGain);
+
+				if (didLevelUp)
+				{
+					entity->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+					{
+						healthBehavior->setHealth(healthBehavior->getMaxHealth());
+					});
+
+					entity->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+					{
+						manaBehavior->setMana(manaBehavior->getMaxMana());
+					});
+				}
+
 				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
 			});
 		});

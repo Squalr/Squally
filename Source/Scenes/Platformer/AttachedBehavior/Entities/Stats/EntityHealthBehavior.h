@@ -2,18 +2,22 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableNode;
+class EquipmentInventory;
 class PlatformerEntity;
 
 class EntityHealthBehavior : public AttachedBehavior
 {
 public:
 	static EntityHealthBehavior* create(GameObject* owner);
+
+	int getHealth();
+	void addHealth(int healthDelta);
+	void setHealth(int health, bool checkDeath = true);
+	int getMaxHealth();
+	bool isAlive();
+	bool isDead();
+	virtual void kill(bool loadDeadAnim = true);
+	virtual void revive();
 
 protected:
 	EntityHealthBehavior(GameObject* owner);
@@ -26,12 +30,7 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	int getHealth();
-	void addHealth(int healthDelta);
-	void setHealth(int health, bool checkDeath = true);
-	int getMaxHealth();
-	bool isAlive();
-	bool isDead();
-	virtual void kill(bool loadDeadAnim = true);
-	virtual void revive();
+	int cachedMaxHealth;
+
+	EquipmentInventory* equipmentInventory;
 };

@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class EquipmentInventory;
 class PlatformerEntity;
 
 class EntityManaBehavior : public AttachedBehavior
@@ -26,4 +27,8 @@ private:
 	typedef AttachedBehavior super;
 
 	void onRevive();
+
+	int cachedMaxMana;
+	
+	EquipmentInventory* equipmentInventory;
 };

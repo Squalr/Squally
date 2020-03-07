@@ -12,6 +12,9 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -30,6 +33,8 @@ EntityHealthBehavior* EntityHealthBehavior::create(GameObject* owner)
 EntityHealthBehavior::EntityHealthBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->equipmentInventory = nullptr;
+	this->cachedMaxHealth = 0;
 
 	if (this->entity == nullptr)
 	{
@@ -37,8 +42,8 @@ EntityHealthBehavior::EntityHealthBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		this->entity->setState(StateKeys::MaxHealth, Value(StatsTables::getBaseHealth(this->entity)), false);
 		this->entity->setState(StateKeys::Health, Value(StatsTables::getBaseHealth(this->entity)), false);
+		this->entity->setState(StateKeys::MaxHealth, Value(this->getMaxHealth()), false);
 	}
 }
 
@@ -48,25 +53,32 @@ EntityHealthBehavior::~EntityHealthBehavior()
 
 void EntityHealthBehavior::onLoad()
 {
-	if (this->entity != nullptr)
+	if (this->entity == nullptr)
 	{
-		this->entity->listenForStateWrite(StateKeys::Health, [=](Value value)
-		{
-			this->setHealth(value.asInt(), false);
-		});
-
-		this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-		{
-			if (value.asBool())
-			{
-				this->revive();
-			}
-			else
-			{
-				this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
-			}
-		});
+		return;
 	}
+
+	this->entity->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+	{
+		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
+	});
+
+	this->entity->listenForStateWrite(StateKeys::Health, [=](Value value)
+	{
+		this->setHealth(value.asInt(), false);
+	});
+
+	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	{
+		if (value.asBool())
+		{
+			this->revive();
+		}
+		else
+		{
+			this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
+		}
+	});
 }
 
 int EntityHealthBehavior::getHealth()
@@ -99,7 +111,23 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 
 int EntityHealthBehavior::getMaxHealth()
 {
-	return this->entity == nullptr ? 0 :this->entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
+	int maxHealth = StatsTables::getBaseHealth(this->entity);
+
+	if (equipmentInventory != nullptr)
+	{
+		for (auto equipment : this->equipmentInventory->getEquipment())
+		{
+			maxHealth += equipment->getItemStats().healthBonus;
+		}
+	}
+
+	if (this->cachedMaxHealth != maxHealth)
+	{
+		this->cachedMaxHealth = maxHealth;
+		this->entity->setState(StateKeys::MaxHealth, Value(maxHealth));
+	}
+	
+	return maxHealth;
 }
 
 void EntityHealthBehavior::kill(bool loadDeadAnim)
