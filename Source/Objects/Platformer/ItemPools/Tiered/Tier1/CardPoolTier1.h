@@ -9,7 +9,7 @@ public:
 
 protected:
 	CardPoolTier1(SampleMethod sampleMethod, int min, int max);
-	~CardPoolTier1();
+	virtual ~CardPoolTier1();
 
 private:
 	typedef MinMaxPool super;

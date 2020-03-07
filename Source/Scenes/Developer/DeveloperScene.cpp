@@ -60,8 +60,8 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
 	this->chapterList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
 	this->chapterList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
-	this->chapterList.push_back(this->buildDebugButton("Liana", MapResources::EndianForest_Town_Liana));
-	this->chapterList.push_back(this->buildDebugButton("Zone 3_8 (EF)", MapResources::EndianForest_Zone_3_7));
+	this->chapterList.push_back(this->buildDebugButton("Liana (EF)", MapResources::EndianForest_Town_Liana));
+	this->chapterList.push_back(this->buildDebugButton("Ara (EF)", MapResources::EndianForest_Home_Ara));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_7 (EF)", MapResources::EndianForest_Zone_3_7));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_6 (EF)", MapResources::EndianForest_Zone_3_6));
 	this->chapterList.push_back(this->buildDebugButton("Zone 3_5 (EF)", MapResources::EndianForest_Zone_3_5));

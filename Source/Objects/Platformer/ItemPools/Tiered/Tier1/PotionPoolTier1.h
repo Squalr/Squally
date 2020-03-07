@@ -9,7 +9,7 @@ public:
 
 protected:
 	PotionPoolTier1(SampleMethod sampleMethod, int min, int max);
-	~PotionPoolTier1();
+	virtual ~PotionPoolTier1();
 
 private:
 	typedef MinMaxPool super;

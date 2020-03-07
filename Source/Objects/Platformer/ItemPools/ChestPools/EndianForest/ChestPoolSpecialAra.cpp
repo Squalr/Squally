@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/WeaponPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 using namespace cocos2d;
@@ -20,9 +21,8 @@ ChestPoolSpecialAra* ChestPoolSpecialAra::create(ValueMap& properties)
 
 ChestPoolSpecialAra::ChestPoolSpecialAra(ValueMap& properties) : super(
 	properties, ChestPoolSpecialAra::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ })
+	{ WeaponPoolTier1::create(SampleMethod::Random, 1, 1) })
 {
-	this->addItemToPool(ItemChance::create(OldShoe::create(), ItemChance::Probability::Guaranteed));
 }
 
 ChestPoolSpecialAra::~ChestPoolSpecialAra()

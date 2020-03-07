@@ -19,9 +19,8 @@ WeaponPoolTier1* WeaponPoolTier1::create(SampleMethod sampleMethod, int min, int
 WeaponPoolTier1::WeaponPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "weapon-pool-t1", sampleMethod, min, max)
 {
 	this->addItemToPool(ItemChance::create(WoodenMallet::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(WoodCutter::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(IronSword::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(CompositeBow::create(), ItemChance::Probability::Legendary));
 }
 
 WeaponPoolTier1::~WeaponPoolTier1()

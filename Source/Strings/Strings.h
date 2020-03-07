@@ -22209,6 +22209,51 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide() = default;
 	};
 
+	class Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope() = default;
+	};
+
 	class Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash : public LocalizedString
 	{
 	public:

@@ -9,7 +9,7 @@ public:
 
 protected:
 	WeaponPoolTier1(SampleMethod sampleMethod, int min, int max);
-	~WeaponPoolTier1();
+	virtual ~WeaponPoolTier1();
 
 private:
 	typedef MinMaxPool super;
