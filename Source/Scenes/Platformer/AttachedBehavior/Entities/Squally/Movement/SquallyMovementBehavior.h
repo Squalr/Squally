@@ -12,6 +12,7 @@ public:
 	void disablePositionSaving();
 
 	static const std::string MapKeyAttachedBehavior;
+	static const float SquallyMovementAcceleration;
 
 protected:
 	SquallyMovementBehavior(GameObject* owner);
@@ -34,6 +35,4 @@ private:
 
 	bool isDisposing;
 	bool isPositionSavingDisabled;
-
-	static const float SquallyMovementAcceleration;
 };

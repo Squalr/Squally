@@ -7,6 +7,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -49,6 +51,11 @@ void FollowMovementBehavior::onLoad()
 	{
 		this->squally = squally;
 	}, Squally::MapKeySqually);
+	
+	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
+	{
+		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
+	});
 }
 
 void FollowMovementBehavior::update(float dt)
