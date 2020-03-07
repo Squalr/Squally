@@ -104,6 +104,11 @@ void SarudeTutorialIntroSequence::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->lossDisplayNextButton->interact();
+	});
 }
 
 void SarudeTutorialIntroSequence::runTutorialLossDisplay(GameState* gameState)

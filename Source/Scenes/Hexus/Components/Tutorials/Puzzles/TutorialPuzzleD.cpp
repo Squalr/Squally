@@ -106,6 +106,11 @@ void TutorialPuzzleD::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->introNextButton->interact();
+	});
 }
 
 void TutorialPuzzleD::runTutorialIntro(GameState* gameState)

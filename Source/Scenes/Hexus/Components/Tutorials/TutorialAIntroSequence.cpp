@@ -252,6 +252,17 @@ void TutorialAIntroSequence::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->scoreTotalsNextButton->interact();
+		this->lossDisplayNextButton->interact();
+		this->binaryCardsNextButton->interact();
+		this->decimalCardsNextButton->interact();
+		this->hexCardsNextButton->interact();
+		this->rowTotalsNextButton->interact();
+		this->handCardsNextButton->interact();
+	});
 }
 
 void TutorialAIntroSequence::runTutorialScoreTotal(GameState* gameState)

@@ -110,6 +110,11 @@ void SarudeTutorialClaimVictory::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->tutorialNextButton->interact();
+	});
 }
 
 void SarudeTutorialClaimVictory::runTutorialHandCards(GameState* gameState)

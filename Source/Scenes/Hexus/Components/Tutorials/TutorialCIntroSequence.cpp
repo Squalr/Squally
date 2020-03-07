@@ -161,6 +161,13 @@ void TutorialCIntroSequence::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->scoreTotalsNextButton->interact();
+		this->handCardsNextButton->interact();
+		this->lastStandNextButton->interact();
+	});
 }
 
 void TutorialCIntroSequence::runTutorialScoreTotal(GameState* gameState)

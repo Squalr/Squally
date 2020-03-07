@@ -109,6 +109,11 @@ void TutorialAVictory::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->lossDisplayNextButton->interact();
+	});
 }
 
 void TutorialAVictory::runTutorialLossDisplay(GameState* gameState)

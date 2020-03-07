@@ -109,6 +109,11 @@ void TutorialAWinningRound::initializeCallbacks(GameState* gameState)
 	{
 		this->tryUnHijackState(gameState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->scoreTotalsNextButton->interact();
+	});
 }
 
 void TutorialAWinningRound::runTutorialScoreTotal(GameState* gameState)
