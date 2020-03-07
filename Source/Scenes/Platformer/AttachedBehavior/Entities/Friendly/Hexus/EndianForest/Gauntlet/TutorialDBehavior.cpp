@@ -69,7 +69,7 @@ StateOverride* TutorialDBehavior::getStateOverride()
 		// Player passed
 		false,
 		// Enemy passed
-		false,
+		true,
 		// Player deck
 		std::vector<CardData*>
 		{
@@ -95,25 +95,21 @@ StateOverride* TutorialDBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 		},
 		// Enemy hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
 		},
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -122,15 +118,12 @@ StateOverride* TutorialDBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>

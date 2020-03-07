@@ -129,7 +129,7 @@ void TalkToSarude::registerDialogue()
 			[=]()
 			{
 			},
-			SoundResources::Platformer_Entities_Generic_ChatterLong1,
+			SoundResources::Platformer_Entities_Generic_ChatterMedium1,
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(

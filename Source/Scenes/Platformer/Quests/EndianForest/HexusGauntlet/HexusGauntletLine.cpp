@@ -5,8 +5,6 @@
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialB.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialC.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialD.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialE.h"
-#include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/BeatTutorialF.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/ReturnToSarude.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/TalkToSarude.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/WelcomeToMagesGuild.h"
@@ -31,8 +29,6 @@ HexusGauntletLine::HexusGauntletLine() : super(HexusGauntletLine::MapKeyQuestLin
 	QuestData(BeatTutorialB::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialB::create(owner, questLine); }),
 	QuestData(BeatTutorialC::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialC::create(owner, questLine); }),
 	QuestData(BeatTutorialD::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialD::create(owner, questLine); }),
-	QuestData(BeatTutorialE::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialE::create(owner, questLine); }),
-	QuestData(BeatTutorialF::MapKeyQuest, true, [=](GameObject* owner, QuestLine* questLine) { return BeatTutorialF::create(owner, questLine); }),
 	QuestData(ReturnToSarude::MapKeyQuest, false, [=](GameObject* owner, QuestLine* questLine) { return ReturnToSarude::create(owner, questLine); }),
 })
 {

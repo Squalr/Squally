@@ -22,7 +22,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
-	void runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label);
+	void runDelta(int delta, bool zeroAsGreen);
+	void runLabelOverEntity(LocalizedLabel* label);
 
 	PlatformerEntity* entity;
 	cocos2d::Node* contentNode;

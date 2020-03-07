@@ -4269,10 +4269,10 @@ namespace Strings
 		virtual ~Hexus_Tutorials_C_UseSurrender() = default;
 	};
 
-	class Hexus_Tutorials_D_UseShiftRight : public LocalizedString
+	class Hexus_Tutorials_D_UseMov : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_D_UseShiftRight* create();
+		static Hexus_Tutorials_D_UseMov* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4280,38 +4280,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Hexus_Tutorials_D_UseShiftRight();
-		virtual ~Hexus_Tutorials_D_UseShiftRight() = default;
-	};
-
-	class Hexus_Tutorials_E_UseShiftLeft : public LocalizedString
-	{
-	public:
-		static Hexus_Tutorials_E_UseShiftLeft* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_Tutorials_E_UseShiftLeft();
-		virtual ~Hexus_Tutorials_E_UseShiftLeft() = default;
-	};
-
-	class Hexus_Tutorials_F_UseMov : public LocalizedString
-	{
-	public:
-		static Hexus_Tutorials_F_UseMov* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_Tutorials_F_UseMov();
-		virtual ~Hexus_Tutorials_F_UseMov() = default;
+		Hexus_Tutorials_D_UseMov();
+		virtual ~Hexus_Tutorials_D_UseMov() = default;
 	};
 
 	class Hexus_Tutorials_PuzzleB_A_4Bits : public LocalizedString

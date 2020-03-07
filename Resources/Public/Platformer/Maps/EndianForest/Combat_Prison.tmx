@@ -118,19 +118,19 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="Generic/Background/Jail" type="decor" x="411.678" y="633.716" width="749.102" height="993">
+  <object id="822" name="Generic/Background/Jail" type="decor" x="411.678" y="634" width="749.102" height="993">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="838" name="Generic/Background/Jail" type="decor" x="2949.06" y="611.767" width="749.102" height="993">
+  <object id="838" name="Generic/Background/Jail" type="decor" x="2949.06" y="634" width="749.102" height="993">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="925" name="Generic/Background/Jail" type="decor" x="1641.45" y="631.5" width="749.102" height="993">
+  <object id="925" name="Generic/Background/Jail" type="decor" x="1641.45" y="634" width="749.102" height="993">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="repeat-y" type="bool" value="false"/>
@@ -154,7 +154,7 @@
   </properties>
   <object id="944" name="marble" type="terrain" x="-2.39576" y="331.771" width="440.064" height="1420.94"/>
   <object id="945" name="marble" type="terrain" x="1190.8" y="342.136" width="440.064" height="1420.94"/>
-  <object id="946" name="marble" type="terrain" x="2436.57" y="335.348" width="440.064" height="1420.94"/>
+  <object id="946" name="marble" type="terrain" x="2425.9" y="335.348" width="482.731" height="1420.94"/>
   <object id="947" name="marble" type="terrain" x="3731.48" y="316.803" width="440.064" height="1420.94"/>
  </objectgroup>
  <objectgroup id="126" name="columns 0">

@@ -113,7 +113,7 @@
   </object>
   <object id="966" name="king-grogg" type="entity" x="2610.61" y="1532.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="attached-behavior" value="enemy,agro,run"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_TempleBoss"/>
     <property name="battle-tag" value="group-a"/>

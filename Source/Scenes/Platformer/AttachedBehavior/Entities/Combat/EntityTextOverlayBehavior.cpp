@@ -70,7 +70,7 @@ void EntityTextOverlayBehavior::onLoad()
 			interruptLabel->setTextColor(Color4B::ORANGE);
 			interruptLabel->setPosition(Vec2(0.0f, 64.0f));
 
-			this->runLabelOverEntity(args->target, interruptLabel);
+			this->runLabelOverEntity(interruptLabel);
 		}
 	}));
 
@@ -85,7 +85,7 @@ void EntityTextOverlayBehavior::onLoad()
 			blockedLabel->setTextColor(Color4B::ORANGE);
 			blockedLabel->setPosition(Vec2(0.0f, 64.0f));
 
-			this->runLabelOverEntity(args->target, blockedLabel);
+			this->runLabelOverEntity(blockedLabel);
 		}
 	}));
 
@@ -95,13 +95,7 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
-			LocalizedString* deltaString = Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);;
-			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
-
-			deltaLabel->setTextColor(Color4B::RED);
-
-			this->runLabelOverEntity(args->target, deltaLabel);
+			this->runDelta(args->damageOrHealing, false);
 		}
 	}));
 
@@ -111,18 +105,25 @@ void EntityTextOverlayBehavior::onLoad()
 
 		if (args != nullptr && args->target == this->entity)
 		{
-			ConstantString* amount = ConstantString::create(std::to_string(std::abs(args->damageOrHealing)));
-			LocalizedString* deltaString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount);;
-			LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
-
-			deltaLabel->setTextColor(Color4B::GREEN);
-
-			this->runLabelOverEntity(args->target, deltaLabel);
+			this->runDelta(args->damageOrHealing, true);
 		}
 	}));
 }
 
-void EntityTextOverlayBehavior::runLabelOverEntity(PlatformerEntity* target, LocalizedLabel* label)
+void EntityTextOverlayBehavior::runDelta(int delta, bool zeroAsGreen)
+{
+	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));
+
+	ConstantString* amount = ConstantString::create(std::to_string(std::abs(delta)));
+	LocalizedString* deltaString = isGreen ? Strings::Common_PlusConstant::create()->setStringReplacementVariables(amount) : Strings::Common_MinusConstant::create()->setStringReplacementVariables(amount);
+	LocalizedLabel* deltaLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, deltaString);
+
+	deltaLabel->setTextColor(isGreen ? Color4B::GREEN : Color4B::RED);
+
+	this->runLabelOverEntity(deltaLabel);
+}
+
+void EntityTextOverlayBehavior::runLabelOverEntity(LocalizedLabel* label)
 {
 	this->contentNode->addChild(label);
 

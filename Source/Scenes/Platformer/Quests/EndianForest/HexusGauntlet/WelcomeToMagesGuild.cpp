@@ -7,19 +7,10 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Dialogue/DialogueOption.h"
-#include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
-#include "Engine/Events/QuestEvents.h"
-#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Events/NotificationEvents.h"
-#include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/Dialogue/DialogueSet.h"
-#include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -73,15 +64,6 @@ void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable)
 
 void WelcomeToMagesGuild::onComplete()
 {
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
-	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
-	
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-		Strings::Platformer_Blessings_BlessingGranted::create(),
-		Strings::Platformer_Blessings_BlessingOfWind::create(),
-		ObjectResources::Items_Misc_EssenceOfWind,
-		SoundResources::Notifications_NotificationGood1
-	));
 }
 
 void WelcomeToMagesGuild::onSkipped()

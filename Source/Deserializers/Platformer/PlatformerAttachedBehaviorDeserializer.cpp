@@ -32,6 +32,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[EntityNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityNoCollisionBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[EntityPacingBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityPacingBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[EntityPickPocketBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityPickPocketBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[EntityRunBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)EntityRunBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[DispelIllusionBehavior::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)DispelIllusionBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[FriendlyBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyBehaviorGroup::create(owner); };
 	this->attachedBehaviorDeserializers[FriendlyNoCollisionBehaviorGroup::MapKeyAttachedBehavior] = [=](GameObject* owner) { return (AttachedBehavior*)FriendlyNoCollisionBehaviorGroup::create(owner); };

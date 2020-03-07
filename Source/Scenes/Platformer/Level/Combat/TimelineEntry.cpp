@@ -202,11 +202,13 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 	CombatEvents::TriggerEntityStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
 	CombatEvents::TriggerEntityBuffsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &damage));
 
+	damage *= sign;
+
 	this->tryInterrupt();
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + damage * sign));
+	this->getEntity()->setState(StateKeys::Health, Value(health + damage));
 
 	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
 }
@@ -231,9 +233,11 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 	CombatEvents::TriggerEntityStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
 	CombatEvents::TriggerEntityBuffsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, this->getEntity(), &healing));
 
+	healing *= sign;
+
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + healing * sign));
+	this->getEntity()->setState(StateKeys::Health, Value(health + healing));
 
 	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
 }
