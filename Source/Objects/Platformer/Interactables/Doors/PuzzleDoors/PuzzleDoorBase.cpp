@@ -59,6 +59,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
 	this->doorOpenSound = nullptr;
+	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
 	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
 	this->doorClipOffset = doorClipOffset;
@@ -125,6 +126,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	}
 
 	this->addChild(this->marker);
+	this->addChild(this->electricitySound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -168,6 +170,7 @@ void PuzzleDoorBase::onEnter()
 				// Run light effect
 				if (!this->isUnlocked)
 				{
+					this->electricitySound->play();
 					this->lightLeft->setPosition(Vec2(-4.0f, 296.0f));
 					this->lightRight->setPosition(Vec2(-8.0f, 296.0f));
 

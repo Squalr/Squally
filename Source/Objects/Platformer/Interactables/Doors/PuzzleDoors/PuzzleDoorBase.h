@@ -33,7 +33,7 @@ protected:
 		cocos2d::Vec2 runeBasePosition,
 		float runeSpacing,
 		float doorOpenDelta);
-	~PuzzleDoorBase();
+	virtual ~PuzzleDoorBase();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -48,6 +48,7 @@ protected:
 	SmartClippingNode* doorClip;
 	cocos2d::Node* frontNode;
 	WorldSound* doorOpenSound;
+	WorldSound* electricitySound;
 
 	static const std::string UnlockedSaveKey;
 
