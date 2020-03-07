@@ -67,9 +67,9 @@ ValueMap Inventory::serialize()
 	ValueMap saveData = ValueMap();
 	ValueVector itemData = ValueVector();
 
-	for (auto it = this->items.begin(); it != this->items.end(); it++)
+	for (auto next : this->items)
 	{
-		itemData.push_back(Value((*it)->getSerializationKey()));
+		itemData.push_back(Value(next->getSerializationKey()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -85,9 +85,9 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
 	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
-	for (auto it = itemData.begin(); it != itemData.end(); it++)
+	for (auto next : itemData)
 	{
-		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs((*it).asString(), [=](Item* item)
+		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(next.asString(), [=](Item* item)
 		{
 			this->forceInsert(item, false);
 		}));

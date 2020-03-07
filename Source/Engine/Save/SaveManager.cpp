@@ -77,9 +77,9 @@ void SaveManager::batchSaveGlobalData(std::vector<std::tuple<std::string, cocos2
 {
 	SaveManager::initializeSaveData();
 
-	for (auto it = newData.begin(); it != newData.end(); it++)
+	for (auto next : newData)
 	{
-		SaveManager::profileSaveData[std::get<0>(*it)] = std::get<1>(*it);
+		SaveManager::profileSaveData[std::get<0>(next)] = std::get<1>(next);
 	}
 
 	SaveManager::doSave(SaveManager::globalSaveData, SaveManager::getLocalGlobalSaveFilePath(), SaveManager::getCloudGlobalSaveFilePath());
@@ -89,9 +89,9 @@ void SaveManager::batchSaveProfileData(std::vector<std::tuple<std::string, cocos
 {
 	SaveManager::initializeSaveData();
 
-	for (auto it = newData.begin(); it != newData.end(); it++)
+	for (auto next : newData)
 	{
-		SaveManager::profileSaveData[std::get<0>(*it)] = std::get<1>(*it);
+		SaveManager::profileSaveData[std::get<0>(next)] = std::get<1>(next);
 	}
 
 	SaveManager::doSave(
@@ -345,9 +345,9 @@ bool SaveManager::hasSaveProfile(int profileId)
 
 void SaveManager::batchDeleteProfileData(std::vector<std::string> keys)
 {
-	for (auto it = keys.begin(); it != keys.end(); it++)
+	for (auto next : keys)
 	{
-		SaveManager::profileSaveData.erase(*it);
+		SaveManager::profileSaveData.erase(next);
 	}
 
 	SaveManager::doSave(

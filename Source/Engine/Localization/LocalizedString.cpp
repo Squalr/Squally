@@ -48,11 +48,11 @@ std::string LocalizedString::getString()
 
 	int index = 1;
 
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it != nullptr)
+		if (next != nullptr)
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), (*it)->getString());
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), next->getString());
 		}
 		else
 		{
@@ -81,9 +81,9 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it == nullptr)
+		if (next == nullptr)
 		{
 			continue;
 		}
@@ -92,7 +92,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 
 		for (auto compareIt = stringReplacementVariables.begin(); compareIt != stringReplacementVariables.end(); compareIt++)
 		{
-			if (*it == *compareIt)
+			if (next == *compareIt)
 			{
 				isReentry = true;
 			}
@@ -101,27 +101,27 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(*it, nullptr, true, false);
+			GameUtils::changeParent(next, nullptr, true, false);
 		}
 		else
 		{
 			// Remove the child and release it
-			this->removeChild(*it);
+			this->removeChild(next);
 		}
 	}
 
 	this->stringReplacementVariables = stringReplacementVariables;
 
 	// Retain new replacement variables
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		if (*it == nullptr)
+		if (next == nullptr)
 		{
 			continue;
 		}
 
 		// Update this string if any of the replacement variables get updated
-		(*it)->setOnStringUpdateCallback([=](LocalizedString*)
+		next->setOnStringUpdateCallback([=](LocalizedString*)
 		{
 			if (this->onStringUpdate != nullptr)
 			{
@@ -129,7 +129,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 			}
 		});
 		
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
 	if (this->onStringUpdate != nullptr)
@@ -151,9 +151,9 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	std::vector<LocalizedString*> stringReplacementVariables = std::vector<LocalizedString*>();
 
-	for (auto it = this->stringReplacementVariables.begin(); it != this->stringReplacementVariables.end(); it++)
+	for (auto next : this->stringReplacementVariables)
 	{
-		stringReplacementVariables.push_back(*it == nullptr ? nullptr : (*it)->clone());
+		stringReplacementVariables.push_back(next == nullptr ? nullptr : next->clone());
 	}
 
 	localizedString->setStringReplacementVariables(stringReplacementVariables);

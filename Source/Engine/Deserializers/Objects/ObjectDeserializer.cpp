@@ -14,11 +14,11 @@ ObjectDeserializer::ObjectDeserializer(std::string objectType, std::vector<Prope
 	this->objectType = objectType;
 	this->propertyDeserializers = propertyDeserializers;
 
-	for (auto it = this->propertyDeserializers.begin(); it != this->propertyDeserializers.end(); it++)
+	for (auto next : this->propertyDeserializers)
 	{
-		if (*it != nullptr)
+		if (next != nullptr)
 		{
-			this->addChild(*it);
+			this->addChild(next);
 		}
 	}
 }

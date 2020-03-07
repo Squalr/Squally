@@ -45,11 +45,11 @@ public:
 	template <class T>
 	T* getClippy()
 	{
-		for (auto it = clippyList.begin(); it != clippyList.end(); it++)
+		for (auto next : clippyList)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr)
 			{
-				return dynamic_cast<T*>(*it);
+				return dynamic_cast<T*>(next);
 			}
 		}
 

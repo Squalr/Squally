@@ -47,9 +47,9 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
-	for (auto it = this->disposeCallbacks.begin(); it != this->disposeCallbacks.end(); it++)
+	for (auto next : this->disposeCallbacks)
 	{
-		(*it)();
+		next();
 	}
 }
 

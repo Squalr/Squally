@@ -12,9 +12,9 @@ using namespace cocos2d;
 
 AttachedBehaviorGroup::AttachedBehaviorGroup(GameObject* owner, std::vector<AttachedBehavior*> attachedBehavior) : super(owner)
 {
-	for (auto it = attachedBehavior.begin(); it != attachedBehavior.end(); it++)
+	for (auto next : attachedBehavior)
 	{
-		owner->attachBehavior(*it);
+		owner->attachBehavior(next);
 	}
 }
 

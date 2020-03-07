@@ -166,9 +166,8 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->addChild(returnRadialNode);
 
 	// Draw icons
-	for (auto it = filteredAttributes.begin(); it != filteredAttributes.end(); it++)
+	for (auto hackable : filteredAttributes)
 	{
-		HackableAttribute* hackable = *it;
 		LocalizedString* name = hackable->getName();
 
 		nextDataIconPosition = Vec2(-std::cos(currentAngle) * RadialMenu::Radius, std::sin(currentAngle) * RadialMenu::Radius);

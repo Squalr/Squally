@@ -57,9 +57,9 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
     // Return 0% if the item has hit its unique cap
     if (this->item != nullptr && uniqueCount > 0)
     {
-        for (auto it = inventories.begin(); it != inventories.end(); it++)
-        {
-            for (auto nextItem : (*it)->getItems())
+		for (auto inventory : inventories)
+		{
+            for (auto nextItem : inventory->getItems())
             {
                 if (nextItem != nullptr && nextItem->getItemName() == this->item->getItemName())
                 {

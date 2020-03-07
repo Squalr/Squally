@@ -47,11 +47,11 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 	this->originalCodeCopy = std::vector<unsigned char>();
 	this->registerHints = hackableCodeInfo.registerHints;
 
-	for (auto it = this->registerHints.begin(); it != this->registerHints.end(); it++)
+	for (auto next : this->registerHints)
 	{
-		if ((*it).second != nullptr)
+		if (next.second != nullptr)
 		{
-			this->addChild((*it).second);
+			this->addChild(next.second);
 		}
 	}
 
@@ -115,9 +115,9 @@ HackableCode* HackableCode::clone(CodeInfoMap& hackableCodeInfoMap)
 
 	clonedData.functionName = this->hackableCodeInfo.functionName->clone();
 
-	for (auto it = this->hackableCodeInfo.registerHints.begin(); it != this->hackableCodeInfo.registerHints.end(); it++)
+	for (auto next : this->hackableCodeInfo.registerHints)
 	{
-		registerHintsClone[it->first] = it->second == nullptr ? nullptr : it->second->clone();
+		registerHintsClone[next.first] = next.second == nullptr ? nullptr : next.second->clone();
 	}
 
 	clonedData.registerHints = registerHintsClone;

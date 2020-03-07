@@ -69,63 +69,10 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		// It is safe to add items to the player's inventory here for testing purposes, without fear of accidentally shipping this code live
 		if (DeveloperModeController::IsDeveloperBuild)
 		{
-			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SantaHat::create(), false);
-			entityInventoryBehavior->getEquipmentInventory()->forceInsert(SteelSword::create(), false);
-
-			entityInventoryBehavior->getInventory()->forceInsert(BattleAxePlans::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(AcolytesCap::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(ArchersHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(BarbedHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(BrocksHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(BucketHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(ConchHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(CopperHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(CowboyHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(DemonShell::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(DepressingWig::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(DraksHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(GardenersHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(GoldenDungHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(GrandpasLuckyHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(GuardsHelmet::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(GunnersHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(JoustingHelmet::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(JesterHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(LeatherCap::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(MagesHatBlue::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(MagesHatRed::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(Monocle::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(NecrobatHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(OldShoe::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(OrnateHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(PirateHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(PriestHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(ReindeerHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(RoyalCrown::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(SamuraiHat::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(SantaHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(ShamanTiara::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(SnailShell::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(SnailShellSpiked::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(SteelHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(TheGoldenEagle::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(TheldarsHelm::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(Tiara::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(TigersBane::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(TopHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(ToySoldierHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(Turban::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(VikingHelmet::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WitchesHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WizardsHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WizardsHatArcane::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WizardsHatEarth::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WizardsHatShadow::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WizardsHatWater::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WolfHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WolfHatWhite::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WoodenPikeHelm::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WoodenMallet::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(IronSword::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 
 			for (int index = 0; index < 3; index++)
 			{

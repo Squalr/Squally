@@ -281,14 +281,14 @@ void ScrollPane::resumeUpdate()
 
 float ScrollPane::getLowestChild(Vector<cocos2d::Node*>& children, float lowestItem)
 {
-	for (auto it = children.begin(); it != children.end(); it++)
+	for (auto next : children)
 	{
-		if (GameUtils::isVisibleUntil<ScrollPane>(*it))
+		if (GameUtils::isVisibleUntil<ScrollPane>(next))
 		{
-			lowestItem = std::min(lowestItem, (*it)->getBoundingBox().getMinY() - ((*it)->getContentSize().height / 2.0f * GameUtils::getScale(*it)));
+			lowestItem = std::min(lowestItem, next->getBoundingBox().getMinY() - (next->getContentSize().height / 2.0f * GameUtils::getScale(next)));
 
 			// Recurse
-			lowestItem = this->getLowestChild((*it)->getChildren(), lowestItem);
+			lowestItem = this->getLowestChild(next->getChildren(), lowestItem);
 		}
 	}
 

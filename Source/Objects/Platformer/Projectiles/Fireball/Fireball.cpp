@@ -43,8 +43,6 @@ Fireball::Fireball(PlatformerEntity* owner) : super(owner, SmartAnimationSequenc
 	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
 
-	this->toggleHackable(false);
-
 	fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 
 	this->postFXNode->addChild(this->breathSound);
@@ -77,7 +75,7 @@ void Fireball::runImpactFX()
 
 Vec2 Fireball::getButtonOffset()
 {
-	return this->getPosition();
+	return Vec2::ZERO;
 }
 
 void Fireball::registerHackables()
@@ -163,5 +161,7 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 	ASM(pop ZAX);
 
 	this->setSpeedMultiplier(Vec3(speedMultiplier, speedMultiplier, speedMultiplier));
+
+	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE

@@ -89,9 +89,9 @@ GameObject::GameObject(const ValueMap& properties) : super()
 
 	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
-	for (auto it = tags.begin(); it != tags.end(); it++)
+	for (auto tag : tags)
 	{
-		this->addTag(*it);
+		this->addTag(tag);
 	}
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
@@ -135,9 +135,9 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPoints, Value(ValueVector())).asValueVector();
 		}
 		
-		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
+		for (auto next : polygonPointsRaw)
 		{
-			ValueMap point = it->asValueMap();
+			ValueMap point = next.asValueMap();
 
 			Vec2 delta = Vec2(
 				point.at(GameObject::MapKeyXPosition).asFloat(),
@@ -180,9 +180,9 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			polygonPointsRaw = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyPoints, Value(ValueVector())).asValueVector();
 		}
 
-		for (auto it = polygonPointsRaw.begin(); it != polygonPointsRaw.end(); ++it)
+		for (auto next : polygonPointsRaw)
 		{
-			ValueMap point = it->asValueMap();
+			ValueMap point = next.asValueMap();
 
 			Vec2 delta = Vec2(
 				point.at(GameObject::MapKeyXPosition).asFloat(),
@@ -232,9 +232,9 @@ void GameObject::initializeListeners()
 		}
 	}));
 
-	for (auto it = this->tags.begin(); it != this->tags.end(); it++)
+	for (auto tag : this->tags)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + *it, [=](EventCustom* eventCustom)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + tag, [=](EventCustom* eventCustom)
 		{
 			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
 
@@ -432,9 +432,9 @@ void GameObject::onObjectStateLoaded()
 
 bool GameObject::containsAttributes()
 {
-	for (auto it = GameObject::AttributeKeys.begin(); it != GameObject::AttributeKeys.end(); it++)
+	for (auto next : GameObject::AttributeKeys)
 	{
-		if (GameUtils::keyExists(this->properties, *it))
+		if (GameUtils::keyExists(this->properties, next))
 		{
 			return true;
 		}
@@ -445,9 +445,9 @@ bool GameObject::containsAttributes()
 
 bool GameObject::containsProperties()
 {
-	for (auto it = this->properties.begin(); it != this->properties.end(); it++)
+	for (auto next : this->properties)
 	{
-		if (!GameObject::isAttributeOrHiddenProperty(it->first))
+		if (!GameObject::isAttributeOrHiddenProperty(next.first))
 		{
 			return true;
 		}

@@ -29,9 +29,9 @@ CurrencyInventory::CurrencyInventory(std::map<std::string, int> currency, std::s
 	this->currencyMap = ValueMap();
 	this->load();
 
-	for (auto it = currency.begin(); it != currency.end(); it++)
+	for (auto next : currency)
 	{
-		this->currencyMap[(*it).first] = Value((*it).second);
+		this->currencyMap[next.first] = Value(next.second);
 	}
 }
 

@@ -86,9 +86,9 @@ IsometricObjectDeserializer::IsometricObjectDeserializer() : super(IsometricObje
 		
 		auto assignKeys([=](std::vector<std::string> strs, std::function<GameObject*(ValueMap properties)> deserializer)
 		{
-			for (auto it = strs.begin(); it != strs.end(); it++)
+			for (auto str : strs)
 			{
-				assignKey(*it, deserializer);
+				assignKey(str, deserializer);
 			}
 		});
 

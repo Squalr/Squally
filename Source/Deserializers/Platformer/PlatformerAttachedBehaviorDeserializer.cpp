@@ -134,9 +134,9 @@ void PlatformerAttachedBehaviorDeserializer::deserializeProperties(GameObject* o
 	{
 		std::vector<std::string> attachedBehaviors = StrUtils::splitOn(attachedBehaviorName, ", ", false);
 		
-		for (auto it = attachedBehaviors.begin(); it != attachedBehaviors.end(); it++)
+		for (auto next : attachedBehaviors)
 		{
-			AttachedBehavior* attachedBehavior = this->deserialize(AttachedBehaviorDeserializer::AttachedBehaviorDeserializationRequestArgs(owner, *it));
+			AttachedBehavior* attachedBehavior = this->deserialize(AttachedBehaviorDeserializer::AttachedBehaviorDeserializationRequestArgs(owner, next));
 
 			if (attachedBehavior != nullptr)
 			{

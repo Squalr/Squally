@@ -22,11 +22,11 @@ public:
 	{
 		std::vector<T*> foundItems;
 
-		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		for (auto next : this->items)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr)
 			{
-				foundItems.push_back(dynamic_cast<T*>(*it));
+				foundItems.push_back(dynamic_cast<T*>(next));
 			}
 		}
 
@@ -36,11 +36,11 @@ public:
 	template<class T>
 	T* getItemOfType()
 	{
-		for (auto it = this->items.begin(); it != this->items.end(); it++)
+		for (auto next : this->items)
 		{
-			if (dynamic_cast<T*>(*it) != nullptr)
+			if (dynamic_cast<T*>(next) != nullptr)
 			{
-				return dynamic_cast<T*>(*it);
+				return dynamic_cast<T*>(next);
 			}
 		}
 

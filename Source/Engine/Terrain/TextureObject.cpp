@@ -113,10 +113,8 @@ void TextureObject::buildTextures()
 	{
 		DrawNode* stencil = DrawNode::create();
 
-		for (auto it = this->textureTriangles.begin(); it != this->textureTriangles.end(); it++)
+		for (auto triangle : this->textureTriangles)
 		{
-			AlgoUtils::Triangle triangle = *it;
-
 			stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
 		}
 

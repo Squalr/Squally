@@ -68,19 +68,19 @@ QuestTask::QuestState QuestTask::getQuestStateForTask(QuestLine* questLine, std:
 	bool isPreviousComplete = false;
 	QuestState questState = QuestState::None;
 
-	for (auto it = quests.begin(); it != quests.end(); it++)
+	for (auto next : quests)
 	{
-		if ((*it).questTask == questTask)
+		if (next.questTask == questTask)
 		{
-			if ((*it).isComplete)
+			if (next.isComplete)
 			{
 				questState = QuestState::Complete;
 			}
-			else if ((*it).isActive && (isPreviousSkippable && !isPreviousComplete))
+			else if (next.isActive && (isPreviousSkippable && !isPreviousComplete))
 			{
 				questState = QuestState::ActiveThroughSkippable;
 			}
-			else if ((*it).isActive)
+			else if (next.isActive)
 			{
 				questState = QuestState::Active;
 			}
@@ -88,8 +88,8 @@ QuestTask::QuestState QuestTask::getQuestStateForTask(QuestLine* questLine, std:
 			break;
 		}
 
-		isPreviousSkippable = (*it).isSkippable;
-		isPreviousComplete = (*it).isComplete;
+		isPreviousSkippable = next.isSkippable;
+		isPreviousComplete = next.isComplete;
 	}
 
 	return questState;

@@ -99,19 +99,19 @@ Lexicon::Lexicon()
 	this->pages.push_back(FloatingPointIntroPage::create());
 	this->pages.push_back(FloatingPointSelectPage::create());
 
-	for (auto it = this->pages.begin(); it != this->pages.end(); it++)
+	for (auto next : this->pages)
 	{
-		switch((*it)->getPageType())
+		switch(next->getPageType())
 		{
 			default:
 			case LexiconPage::PageType::Left:
 			{
-				this->leftPageNode->addChild(*it);
+				this->leftPageNode->addChild(next);
 				break;
 			}
 			case LexiconPage::PageType::Right:
 			{
-				this->rightPageNode->addChild(*it);
+				this->rightPageNode->addChild(next);
 				break;
 			}
 		}

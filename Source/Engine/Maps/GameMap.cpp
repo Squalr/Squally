@@ -37,9 +37,9 @@ GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayer
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 
-	for (auto it = this->mapLayers.begin(); it != this->mapLayers.end(); it++)
+	for (auto next : this->mapLayers)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 
 	if (this->orientation == MapOrientation::Isometric)
@@ -172,14 +172,14 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
-	for (auto it = mapRaw->getObjectGroups().begin(); it != mapRaw->getObjectGroups().end(); it++)
+	for (auto next : mapRaw->getObjectGroups())
 	{
-		std::string layerType = GameUtils::getKeyOrDefault((*it)->getProperties(), MapLayer::MapKeyType, Value("")).asString();
+		std::string layerType = GameUtils::getKeyOrDefault(next->getProperties(), MapLayer::MapKeyType, Value("")).asString();
 
 		LayerDeserializer::LayerDeserializationRequestArgs args = LayerDeserializer::LayerDeserializationRequestArgs(
-			(*it)->getProperties(),
-			(*it)->getObjects(),
-			(*it)->layerIndex,
+			next->getProperties(),
+			next->getObjects(),
+			next->layerIndex,
 			mapFileName,
 			mapSize,
 			isIsometric,
@@ -201,9 +201,9 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Pull out tile layers
-	for (auto it = mapRaw->getChildren().begin(); it != mapRaw->getChildren().end(); it++)
+	for (auto next : mapRaw->getChildren())
 	{
-		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(*it);
+		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
 
 		if (tileLayer != nullptr)
 		{
@@ -212,15 +212,15 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
-	for (auto it = tileLayers.begin(); it != tileLayers.end(); it++)
+	for (auto next : tileLayers)
 	{
-		deserializedLayerMap[(*it)->layerIndex] = TileLayer::deserialize((*it));
+		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
 	}
 
 	// Convert from map to ordered vector
-	for (auto it = deserializedLayerMap.begin(); it != deserializedLayerMap.end(); it++)
+	for (auto next : deserializedLayerMap)
 	{
-		deserializedLayers.push_back(it->second);
+		deserializedLayers.push_back(next.second);
 	}
 
 	// Create a special hud_target layer for top-level display items
@@ -476,7 +476,7 @@ void GameMap::isometricMapPreparation()
 	{
 		return;
 	}
-
+	
 	for (auto it = this->getChildren().begin(); it != this->getChildren().end(); it++)
 	{
 		// Tile layers:

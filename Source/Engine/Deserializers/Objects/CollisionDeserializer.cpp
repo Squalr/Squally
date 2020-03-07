@@ -43,9 +43,9 @@ void CollisionDeserializer::deserialize(ObjectDeserializer::ObjectDeserializatio
 
 		int index = 0;
 
-		for (auto it = polygonPoints.begin(); it != polygonPoints.end(); ++it)
+		for (auto next : polygonPoints)
 		{
-			auto point = it->asValueMap();
+			auto point = next.asValueMap();
 
 			float deltaX = GameUtils::getKeyOrDefault(point, GameObject::MapKeyXPosition, Value(0.0f)).asFloat();
 			float deltaY = GameUtils::getKeyOrDefault(point, GameObject::MapKeyYPosition, Value(0.0f)).asFloat();

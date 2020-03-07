@@ -30,11 +30,11 @@ QuestLine::~QuestLine()
 
 QuestTask* QuestLine::deserialize(GameObject* owner, std::string questTask)
 {
-	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
+	for (auto next : this->quests)
 	{
-		if ((*it).questTask == questTask)
+		if (next.questTask == questTask)
 		{
-			return (*it).deserializer(owner, this);
+			return next.deserializer(owner, this);
 		}
 	}
 	
@@ -76,14 +76,14 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 			}
 		}
 	}
-
-	for (auto it = this->quests.begin(); it != this->quests.end(); it++)
+	
+	for (auto next : this->quests)
 	{
-		bool isActive = prereqComplete && (activeThroughSkippable || (*it).questTask == currentQuestTask);
+		bool isActive = prereqComplete && (activeThroughSkippable || next.questTask == currentQuestTask);
 		bool isComplete = prereqComplete && !isActive && !hasEncounteredActive;
-		bool isSkippable = (*it).isSkippable;
+		bool isSkippable = next.isSkippable;
 
-		questData.push_back(QuestMeta((*it).questTask, isActive, isSkippable, isComplete));
+		questData.push_back(QuestMeta(next.questTask, isActive, isSkippable, isComplete));
 
 		activeThroughSkippable = (activeThroughSkippable || isActive) && isSkippable;
 		hasEncounteredActive |= isActive;

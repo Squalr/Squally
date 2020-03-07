@@ -105,9 +105,9 @@ void HackableObject::initializeListeners()
 
 		if (args != nullptr)
 		{
-			for (auto it = this->hackableList.begin(); it != this->hackableList.end(); it++)
+			for (auto next : this->hackableList)
 			{
-				if ((*it)->getPointer() == args->activeAttribute->getPointer())
+				if (next->getPointer() == args->activeAttribute->getPointer())
 				{
 					this->trackedAttributes.push_back(args->activeAttribute);
 
@@ -346,9 +346,9 @@ void HackableObject::registerCode(HackableCode* hackableCode)
 		return;
 	}
 
-	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+	for (auto next : this->codeList)
 	{
-		if ((*it)->getPointer() == hackableCode->getPointer())
+		if (next->getPointer() == hackableCode->getPointer())
 		{
 			return;
 		}
@@ -370,11 +370,11 @@ void HackableObject::unregisterCode(HackableCode* hackableCode)
 		return;
 	}
 
-	for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+	for (auto next : this->codeList)
 	{
-		if ((*it)->getPointer() == hackableCode->getPointer())
+		if (next->getPointer() == hackableCode->getPointer())
 		{
-			hackableCode = *it;
+			hackableCode = next;
 			hasHackableCode = true;
 			break;
 		}
