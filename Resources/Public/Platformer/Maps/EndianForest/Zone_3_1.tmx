@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="771">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="773">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -23,17 +23,15 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="caverns" type="terrain" x="736" y="2512">
+  <object id="771" name="caverns" type="terrain" x="-110.365" y="975.495" width="2116.73" height="2617.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-842.39,-1516.1 1246.16,-1519.41 1276.6,1062.19 -854.641,1050.44"/>
   </object>
-  <object id="757" name="caverns" type="terrain" x="7256" y="236">
+  <object id="772" name="caverns" type="terrain" x="6405.64" y="-1260.51" width="2116.73" height="2617.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-842.39,-1516.1 1246.16,-1519.41 1276.6,1062.19 -854.641,1050.44"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">

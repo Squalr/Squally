@@ -8,7 +8,7 @@ using namespace cocos2d;
 
 const std::string MetalChest::MapKeyMetalChest = "metal-chest";
 
-MetalChest* MetalChest::create(cocos2d::ValueMap& properties)
+MetalChest* MetalChest::create(ValueMap& properties)
 {
 	MetalChest* instance = new MetalChest(properties);
 
@@ -17,10 +17,10 @@ MetalChest* MetalChest::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MetalChest::MetalChest(cocos2d::ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+MetalChest::MetalChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
 {
-	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Collectables_Chests_MetalChestOpen);
-	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Collectables_Chests_MetalChestClosed);
+	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_MetalChestOpen);
+	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_MetalChestClosed);
 
 	this->chestOpen->addChild(chestOpenFrontSprite);
 	this->chestClosed->addChild(chestClosedSprite);

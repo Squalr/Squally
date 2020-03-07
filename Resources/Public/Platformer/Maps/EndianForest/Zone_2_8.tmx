@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1025">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1029">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -91,11 +91,10 @@
    </properties>
    <polygon points="0,0 5875.16,-58.392 6163.16,566.747 6324.66,1301.56 5875.16,4029.05 12.8279,4087.44"/>
   </object>
-  <object id="979" name="dark-grass" type="terrain" x="-8112" y="-744">
+  <object id="1028" name="dark-grass" type="terrain" x="-8098.86" y="-802.003" width="3820.73" height="3985.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-54.3855 3829.07,-56.0714 3829.07,3868.93 8.36042,3925"/>
   </object>
  </objectgroup>
  <objectgroup id="78" name="decor top -61">
@@ -198,11 +197,10 @@
    <property name="depth" type="float" value="-4736"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="903" name="blue-grass" type="terrain" x="-5952.05" y="1584">
+  <object id="1027" name="blue-grass" type="terrain" x="-5949.86" y="1558" width="10731.7" height="820.007">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-10.6667 10732.2,-26.2015 10727.9,811.153 8896.04,800.669 -1.3615,795.894"/>
   </object>
  </objectgroup>
  <objectgroup id="88" name="terrain -32 -1">
@@ -228,17 +226,16 @@
    </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
-  <object id="896" name="blue-grass" type="terrain" x="-5994.05" y="1778.1">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 3596.4,-11.6214 3596.4,976.195 8.70799,987.82"/>
-  </object>
   <object id="976" name="ship-alt" type="terrain" x="4134.55" y="1791.88">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,-44 61.9967,-44.0964 61.9935,3.82902 3997.13,-6.21322 3997.13,521.907 9.67826,528.124"/>
+  </object>
+  <object id="1026" name="blue-grass" type="terrain" x="-5985.36" y="1766.75" width="3587.73" height="996.007">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="71" name="entities -32">

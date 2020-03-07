@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTypeChestPool;
 
+protected:
+	ChestPoolDeserializer();
+	virtual ~ChestPoolDeserializer();
+
 private:
 	typedef ObjectDeserializer super;
-
-	ChestPoolDeserializer();
-	~ChestPoolDeserializer();
 };

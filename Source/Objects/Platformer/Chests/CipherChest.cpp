@@ -31,7 +31,7 @@ const std::string CipherChest::MapKeyPropertyDataType = "data-type";
 const std::string CipherChest::MapKeyPropertyTokens = "tokens";
 const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
 
-CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
+CipherChest* CipherChest::create(ValueMap& properties)
 {
 	CipherChest* instance = new CipherChest(properties);
 
@@ -40,10 +40,14 @@ CipherChest* CipherChest::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-CipherChest::CipherChest(cocos2d::ValueMap& properties) : super(properties)
+CipherChest::CipherChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
 {
+	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestOpened);
+	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestClosed);
 	this->cipherPuzzleData = this->buildPuzzleData();
 
+	this->chestOpen->addChild(chestOpenFrontSprite);
+	this->chestClosed->addChild(chestClosedSprite);
 	this->addChild(this->cipherPuzzleData);
 }
 

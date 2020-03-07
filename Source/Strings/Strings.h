@@ -7374,6 +7374,21 @@ namespace Strings
 		virtual ~Menus_HackingTutorials_Disclaimer() = default;
 	};
 
+	class Menus_Hacking_Abilities_DispelIllusion : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_DispelIllusion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_DispelIllusion();
+		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
+	};
+
 	class Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth : public LocalizedString
 	{
 	public:
@@ -22162,6 +22177,36 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay();
 		virtual ~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide() = default;
 	};
 
 	class Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash : public LocalizedString

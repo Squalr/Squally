@@ -20,6 +20,7 @@ namespace MapResources
 	extern const std::string EndianForest_Combat_Intro;
 	extern const std::string EndianForest_Combat_Prison;
 	extern const std::string EndianForest_Combat_TempleBoss;
+	extern const std::string EndianForest_Home_Ara;
 	extern const std::string EndianForest_Home_Hut;
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
@@ -71,5 +72,6 @@ namespace MapResources
 	extern const std::string Tutorials_UnknownValue1;
 	extern const std::string Tutorials_UnknownValue2;
 	extern const std::string UnderflowRuins_AquaticRuins;
+	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string VoidStar_VoidStar;
 };

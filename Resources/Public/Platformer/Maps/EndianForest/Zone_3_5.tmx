@@ -114,7 +114,7 @@
    </properties>
   </object>
   <object id="821" name="solid" type="collision" x="-103.439" y="1059.41" width="2270.88" height="171.48"/>
-  <object id="839" name="metal-chest" type="object" x="892.727" y="934.242" width="128" height="128">
+  <object id="839" name="chest" type="object" x="892.727" y="934.242" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-ram-wheel"/>
    </properties>

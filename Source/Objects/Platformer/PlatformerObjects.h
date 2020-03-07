@@ -10,6 +10,7 @@
 #include "Objects/Platformer/Breakables/Vase.h"
 #include "Objects/Platformer/Camera/CameraControl.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
+#include "Objects/Platformer/Chests/Chest.h"
 #include "Objects/Platformer/Chests/CipherChest.h"
 #include "Objects/Platformer/Chests/MetalChest.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"

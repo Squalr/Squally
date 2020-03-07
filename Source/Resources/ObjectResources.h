@@ -130,10 +130,6 @@ namespace ObjectResources
 	extern const std::string Collectables_Cards_CardDecimal;
 	extern const std::string Collectables_Cards_CardHex;
 	extern const std::string Collectables_Cards_CardSpecial;
-	extern const std::string Collectables_Chests_ChestClosed;
-	extern const std::string Collectables_Chests_ChestOpen;
-	extern const std::string Collectables_Chests_MetalChestClosed;
-	extern const std::string Collectables_Chests_MetalChestOpen;
 	extern const std::string Collectables_Currency_IOU;
 	extern const std::string Decor_Torch;
 	extern const std::string Decor_TorchGlow;
@@ -256,6 +252,12 @@ namespace ObjectResources
 	extern const std::string Doors_WoodStronghold_WOOD_G;
 	extern const std::string Interactive_Anvil_Anvil;
 	extern const std::string Interactive_Anvil_AnvilHammer;
+	extern const std::string Interactive_Chests_ChestClosed;
+	extern const std::string Interactive_Chests_ChestOpen;
+	extern const std::string Interactive_Chests_CipherChestClosed;
+	extern const std::string Interactive_Chests_CipherChestOpened;
+	extern const std::string Interactive_Chests_MetalChestClosed;
+	extern const std::string Interactive_Chests_MetalChestOpen;
 	extern const std::string Interactive_Help_HelpTotem;
 	extern const std::string Interactive_Help_HelpTotemDeactivated;
 	extern const std::string Interactive_Help_QuestionMark;

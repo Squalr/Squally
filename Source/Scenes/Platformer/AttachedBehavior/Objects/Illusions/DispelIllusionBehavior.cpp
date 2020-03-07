@@ -15,6 +15,8 @@
 
 #include "Resources/UIResources.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 const std::string DispelIllusionBehavior::MapKeyAttachedBehavior = "dispel-illusion";
@@ -59,12 +61,11 @@ void DispelIllusionBehavior::registerHackables()
 		},
 		[=]()
 		{
-
 		},
 		int(HackFlags::None),
 		0.0f,
 		UIResources::Menus_Icons_Eye,
-		nullptr,
+		Strings::Menus_Hacking_Abilities_DispelIllusion::create(),
 		nullptr
 	));
 }

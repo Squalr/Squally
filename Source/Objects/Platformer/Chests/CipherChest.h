@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Objects/Platformer/Chests/Chest.h"
+#include "Objects/Platformer/Chests/ChestBase.h"
 
 using namespace cocos2d;
 
@@ -8,7 +8,7 @@ class CipherPuzzleData;
 class CollisionObject;
 class InteractMenu;
 
-class CipherChest : public Chest
+class CipherChest : public ChestBase
 {
 public:
 	static CipherChest* create(cocos2d::ValueMap& properties);
@@ -16,18 +16,18 @@ public:
 	static const std::string MapKeyCipherChest;
 
 protected:
-	void onInteract() override;
-
-private:
-	typedef Chest super;
 	CipherChest(cocos2d::ValueMap& properties);
 	virtual ~CipherChest();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	CipherPuzzleData* buildPuzzleData();
+	void onInteract() override;
 
+private:
+	typedef ChestBase super;
+	
+	CipherPuzzleData* buildPuzzleData();
 	CipherPuzzleData* cipherPuzzleData;
 
 	static const std::string MapKeyPropertyInputs;

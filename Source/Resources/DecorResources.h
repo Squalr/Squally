@@ -334,6 +334,8 @@ namespace DecorResources
 	extern const std::string Forest_Background_Pillar2;
 	extern const std::string Forest_Background_PillarBack1;
 	extern const std::string Forest_Background_PillarBack2;
+	extern const std::string Forest_Background_PillarGreen1;
+	extern const std::string Forest_Background_PillarGreen2;
 	extern const std::string Forest_Background_Tree1;
 	extern const std::string Forest_Background_Tree2;
 	extern const std::string Forest_Background_Tree3;
@@ -345,6 +347,7 @@ namespace DecorResources
 	extern const std::string Forest_Background_WaterfallClouds;
 	extern const std::string Forest_Background_WaterfallClouds2;
 	extern const std::string Forest_Background_WaterfallFloor;
+	extern const std::string Forest_Background_WaterfallFloorGreen;
 	extern const std::string Forest_Background_WaterfallGround;
 	extern const std::string Forest_Background_WaterfallRocks;
 	extern const std::string Forest_Background_middle_ground_1;
@@ -622,11 +625,11 @@ namespace DecorResources
 	extern const std::string Generic_TownSmith;
 	extern const std::string Generic_TreeHome1;
 	extern const std::string Generic_Vent;
+	extern const std::string Generic_Wheel1;
 	extern const std::string Generic_WoodCaveDoor1;
 	extern const std::string Generic_WoodDoor;
 	extern const std::string Generic_WoodDoor1;
 	extern const std::string Generic_birds;
-	extern const std::string Generic_wheel;
 	extern const std::string Ruins_Background_island_1_no_trees;
 	extern const std::string Ruins_Background_island_1_with_trees;
 	extern const std::string Ruins_Background_island_2_no_trees;

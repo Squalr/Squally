@@ -138,7 +138,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="764" name="metal-chest" type="object" x="2353.09" y="506.789" width="128" height="128">
+  <object id="764" name="chest" type="object" x="2353.09" y="506.789" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-ram-wheel"/>
    </properties>
@@ -148,7 +148,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="Generic/Sword1" type="decor" x="1314.5" y="523.165" width="92" height="149"/>
+  <object id="790" name="Generic/Sword1" type="decor" x="1313.5" y="519.165" width="92" height="149"/>
   <object id="791" name="Generic/Wheel1" type="decor" x="2021.66" y="574.835" width="135" height="79"/>
   <object id="792" name="Generic/Shield1" type="decor" x="1750.5" y="582.832" width="140" height="76"/>
   <object id="793" name="Generic/Helmet1" type="decor" x="1128.5" y="607.998" width="125" height="69"/>

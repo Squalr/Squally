@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="945">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="952">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -94,17 +94,15 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="767" name="blue-grass" type="terrain" x="1729.78" y="2583.72">
+  <object id="950" name="blue-grass" type="terrain" x="1753.7" y="2584.46" width="5848.73" height="361.507">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 5875.16,-5.20891 5875.16,359.415 12.8279,364.624"/>
   </object>
-  <object id="804" name="blue-grass" type="terrain" x="-659.316" y="5667.65">
+  <object id="951" name="blue-grass" type="terrain" x="-652.365" y="5656.25" width="12312.7" height="809.507">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-10.6667 12331.9,-11.408 12331.9,787.153 -1.40714,795.894"/>
   </object>
  </objectgroup>
  <objectgroup id="72" name="decor -12">
@@ -209,17 +207,15 @@
    </properties>
    <polygon points="0,0 7987.78,-11.408 7987.78,787.153 -1.3689,797.228"/>
   </object>
-  <object id="763" name="blue-grass" type="terrain" x="1774.84" y="2726.61">
+  <object id="947" name="blue-grass" type="terrain" x="-253.88" y="2720.19" width="2072.18" height="432.355">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 5852.01,-11.408 5852.01,787.153 12.7773,798.561"/>
   </object>
-  <object id="769" name="dark-grass" type="terrain" x="-258.385" y="2723.81">
+  <object id="948" name="blue-grass" type="terrain" x="1790.3" y="2724.09" width="5836.61" height="805.083">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-5.86159 2077.07,-6.04329 2077.07,416.988 4.53509,423.031"/>
   </object>
  </objectgroup>
  <objectgroup id="69" name="decor -6">
@@ -350,15 +346,15 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="714" name="Generic/TownFence" type="decor" x="6447.59" y="4954.39" width="538" height="948"/>
-  <object id="717" name="Generic/TownFence" type="decor" x="1617.8" y="4960.26" width="538" height="948"/>
-  <object id="718" name="Generic/TownFence" type="decor" x="1150.57" y="4960.26" width="538" height="948"/>
+  <object id="717" name="Generic/TownFence" type="decor" x="1620.47" y="4973.59" width="538" height="948"/>
+  <object id="718" name="Generic/TownFence" type="decor" x="1150.57" y="4972.26" width="538" height="948"/>
   <object id="719" name="Generic/TownFence" type="decor" x="6906.12" y="4953.16" width="538" height="948"/>
   <object id="720" name="Generic/TownFence" type="decor" x="7405.42" y="4953.16" width="538" height="948"/>
   <object id="721" name="Generic/TownFence" type="decor" x="7918.78" y="4953.16" width="538" height="948"/>
   <object id="723" name="Generic/TownFence" type="decor" x="658.301" y="4967.29" width="538" height="948"/>
   <object id="727" name="Generic/TownFence" type="decor" x="1617.74" y="1862.12" width="538" height="948"/>
   <object id="729" name="Generic/TownFence" type="decor" x="-163.356" y="1875.28" width="538" height="948"/>
-  <object id="760" name="Generic/TownFence" type="decor" x="2102.96" y="4957.44" width="538" height="948"/>
+  <object id="760" name="Generic/TownFence" type="decor" x="2105.63" y="4970.77" width="538" height="948"/>
   <object id="842" name="Generic/TownFence" type="decor" x="8411.51" y="4951.33" width="538" height="948"/>
   <object id="843" name="Generic/TownFence" type="decor" x="8888.06" y="4951.33" width="538" height="948"/>
   <object id="890" name="Generic/TownFencePost" type="decor" x="256.762" y="1709.92" width="263" height="1118">
@@ -457,12 +453,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="blue-grass" type="terrain" x="-142.895" y="5921.23">
-   <polygon points="0,0 3596.4,-27.0701 3596.4,2273.88 8.70799,2300.96"/>
-  </object>
-  <object id="662" name="blue-grass" type="terrain" x="-116.844" y="2823.68">
-   <polygon points="0,0 3577.71,-4.37683 3577.71,367.653 8.66274,372.031"/>
-  </object>
+  <object id="945" name="blue-grass" type="terrain" x="-143.094" y="5919.58" width="3633.82" height="2289.81"/>
+  <object id="946" name="blue-grass" type="terrain" x="-100.91" y="2819.1" width="3557.82" height="377.81"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -686,7 +678,7 @@
     <property name="transition" value="town"/>
    </properties>
   </object>
-  <object id="913" name="life-stone" type="object" x="2315" y="5480.5" width="146" height="423"/>
+  <object id="913" name="life-stone" type="object" x="2315" y="5501.83" width="146" height="423"/>
   <object id="917" name="pass-through" type="collision" x="4449.23" y="5328.98">
    <polygon points="62.5619,-541.333 857.836,-543.706 857.999,-503.37 63.4665,-508.069"/>
   </object>
@@ -758,7 +750,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="971.817" y="5777.34" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="970.484" y="5792.01" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
     <property name="zoom" type="float" value="1.5"/>
