@@ -55,7 +55,7 @@ Hexus* Hexus::create()
 Hexus::Hexus()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
-
+	
 	this->gameBackground = Sprite::create(HexusResources::Gameboard);
 	this->gameState = GameState::create();
 	this->avatars = Avatars::create();
@@ -269,9 +269,9 @@ void Hexus::open(HexusOpponentData* opponentData)
 	this->relocateLayer->removeAllChildren();
 	this->tutorialLayer->removeAllChildren();
 
-	for (auto it = opponentData->tutorials.begin(); it != opponentData->tutorials.end(); it++)
+	for (auto next : opponentData->tutorials)
 	{
-		this->tutorialLayer->addChild(*it);
+		this->tutorialLayer->addChild(next);
 	}
 
 	this->gameState->previousStateType = GameState::StateType::EmptyState;
@@ -319,9 +319,9 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 	this->gameState->enemyDeck->style = opponentData->cardStyle;
 
-	for (auto it = enemyCards.begin(); it != enemyCards.end(); it++)
+	for (auto card : enemyCards)
 	{
-		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, (*it), false), false, 0.0f, false);
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f, false);
 	}
 }
 

@@ -44,16 +44,20 @@ public:
 	void popTarget();
 	void clearTargets();
 
-private:
-	typedef GlobalNode super;
+protected:
 	GameCamera();
 	virtual ~GameCamera();
+	
 	void onEnter() override;
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+
+private:
+	typedef GlobalNode super;
+
 	void resetCamera();
 	float getIntendedCameraDistance();
 	cocos2d::Vec2 boundCameraByEllipses(cocos2d::Vec2 cameraPosition);

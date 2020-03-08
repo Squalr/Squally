@@ -72,10 +72,8 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 	// Intelligently sort the opponent hand cards in order of descending priority (best cards first)
 	HexusAIHelper::applyIntelligentOpponentCardOrdering(gameState);
 
-	for (auto it = gameState->enemyHand->rowCards.begin(); it != gameState->enemyHand->rowCards.end(); it++)
+	for (auto card : gameState->enemyHand->rowCards)
 	{
-		Card* card = *it;
-
 		switch (card->cardData->getCardType())
 		{
 			case CardData::CardType::Binary:

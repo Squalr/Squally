@@ -215,7 +215,6 @@ float GameCamera::getCameraZoom()
 
 void GameCamera::setCameraZoom(float zoom)
 {
-
 	this->setCameraDistance(this->getIntendedCameraDistance() * zoom);
 }
 

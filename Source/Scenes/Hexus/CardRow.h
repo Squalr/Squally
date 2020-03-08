@@ -42,6 +42,7 @@ public:
 	void setRowWidth(float newRowWidth, float duration);
 	void shuffle();
 	void clear();
+	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 
 	std::vector<Card*> rowCards;
 
@@ -54,7 +55,6 @@ protected:
 
 private:
 	typedef SmartNode super;
-	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
 	void onRowSelectClick();
 
 	float rowWidth;

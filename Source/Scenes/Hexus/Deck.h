@@ -29,12 +29,15 @@ public:
 	void removeCardsWhere(std::function<bool(Card*)> predicate);
 	Card* removeCard(Card* card);
 	Card* drawCard();
+	void setCardScale(float scale, float scaleSpeed);
 	bool hasCards();
 	void shuffle();
 	void insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry = true);
 	void clear();
+	void setCardPositions(float cardRepositionDelay, float indexDelay = 0.0f);
+	
 	std::vector<Card*> deckCards;
 	Card::CardStyle style;
 

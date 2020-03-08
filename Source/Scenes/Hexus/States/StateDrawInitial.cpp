@@ -76,6 +76,10 @@ void StateDrawInitial::onStateEnter(GameState* gameState)
 	gameState->playerCardsDrawnNextRound = 0;
 	gameState->enemyCardsDrawnNextRound = 0,
 
+	gameState->playerDeck->setCardPositions(0.0f);
+	gameState->enemyDeck->setCardPositions(0.0f);
+	gameState->enemyHand->setCardPositions(0.0f);
+
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()

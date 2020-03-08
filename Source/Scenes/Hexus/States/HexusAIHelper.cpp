@@ -179,52 +179,16 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 {
 	gameState->enemyHand->shuffle();
 
-	std::vector<Card*> extractedCards = std::vector<Card*>();
-
-	// Pull out high-value cards that should be played early on
-	gameState->enemyHand->removeCardsWhere([&](Card* card)
+	std::partition(gameState->enemyHand->rowCards.begin(), gameState->enemyHand->rowCards.end(), [](Card* card) -> bool
 	{
-		bool result = false;
-
-		if (card->cardData->getCardKey() == CardKeys::Binary0)
+		if (card->cardData->getCardKey() == CardKeys::Binary0
+			|| card->cardData->getCardKey() == CardKeys::Decimal0
+			|| card->cardData->getCardKey() == CardKeys::Hex0
+			|| card->cardData->getCardKey() == CardKeys::Decimal1)
 		{
-			result = true;
-		}
-		else if (card->cardData->getCardKey() == CardKeys::Decimal0)
-		{
-			result = true;
-		}
-		else if (card->cardData->getCardKey() == CardKeys::Hex0)
-		{
-			result = true;
-		}
-		else if (card->cardData->getCardKey() == CardKeys::Decimal1)
-		{
-			result = true;
+			return true;
 		}
 
-		if (result)
-		{
-			extractedCards.push_back(card);
-		}
-
-		return result;
+		return false;
 	});
-
-	auto addBackCards = [&](std::string cardKey)
-	{
-		for (auto it = extractedCards.begin(); it != extractedCards.end(); it++)
-		{
-			if ((*it)->cardData->getCardKey() == cardKey)
-			{
-				gameState->enemyHand->insertCard(*it, 0.0f);
-			}
-		}
-	};
-
-	// Add them back in an optimal order (note this list is in reverse-priority since they are inserted at the beginning)
-	addBackCards(CardKeys::Decimal0);
-	addBackCards(CardKeys::Binary0);
-	addBackCards(CardKeys::Hex0);
-	addBackCards(CardKeys::Decimal1);
 }

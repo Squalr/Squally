@@ -73,14 +73,12 @@ void CardRow::setCardScale(float scale, float scaleSpeed)
 {
 	this->cardScale = scale;
 
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
-
 		if (scaleSpeed > 0.0f)
 		{
 			card->stopAllActions();
-			card->runAction(ScaleTo::create(scaleSpeed , this->cardScale));
+			card->runAction(ScaleTo::create(scaleSpeed, this->cardScale));
 		}
 		else
 		{
@@ -97,13 +95,11 @@ float CardRow::getCardScale()
 
 void CardRow::insertCards(std::vector<Card*> cards, float cardInsertDelay, float indexDelay, bool asReentry)
 {
-	for (auto it = cards.begin(); it != cards.end(); it++)
+	for (auto card : cards)
 	{
-		Card* card = *it;
-
 		if (card == nullptr)
 		{
-			return;
+			continue;
 		}
 
 		GameUtils::changeParent(card, this, true, asReentry);
@@ -147,13 +143,11 @@ void CardRow::insertCard(Card* card, float cardInsertDelay, bool asReentry)
 
 void CardRow::insertCardsFront(std::vector<Card*> cards, float cardInsertDelay, float indexDelay, bool asReentry)
 {
-	for (auto it = cards.begin(); it != cards.end(); it++)
+	for (auto card : cards)
 	{
-		Card* card = *it;
-
 		if (card == nullptr)
 		{
-			return;
+			continue;
 		}
 
 		GameUtils::changeParent(card, this, true, asReentry);
@@ -232,9 +226,9 @@ int CardRow::getRowAttack()
 {
 	int attack = 0;
 
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		attack += (*it)->getAttack();
+		attack += card->getAttack();
 	}
 
 	return attack;
@@ -242,13 +236,13 @@ int CardRow::getRowAttack()
 
 void CardRow::runEffect(CardEffects::CardEffect effect, std::vector<Card*> ignoreList)
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
 		bool ignoreCard = false;
 
 		for (auto ignoreIt = ignoreList.begin(); ignoreIt != ignoreList.end(); ignoreIt++)
 		{
-			if (*ignoreIt == *it)
+			if (*ignoreIt == card)
 			{
 				ignoreCard = true;
 				break;
@@ -257,16 +251,16 @@ void CardRow::runEffect(CardEffects::CardEffect effect, std::vector<Card*> ignor
 
 		if (!ignoreCard)
 		{
-			(*it)->cardEffects->runEffect(effect);
+			card->cardEffects->runEffect(effect);
 		}
 	}
 }
 
 void CardRow::clearEffects()
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		(*it)->cardEffects->clearEffects();
+		card->cardEffects->clearEffects();
 	}
 }
 
@@ -282,9 +276,8 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 	this->rowSelectSprite->runAction(Sequence::create(FadeTo::create(0.25f, 255), nullptr));
 
 	// Keep interaction so that mouseover is still possible, but set the callback to be the same as the row callback
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->enableInteraction();
 		card->setMouseClickCallback([=](Card* card) { callback(this); });
 	}
@@ -292,9 +285,8 @@ void CardRow::enableRowSelection(std::function<void(CardRow*)> callback)
 
 void CardRow::enableRowCardSelection(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->setMouseClickCallback(callback);
 		card->focus();
 	}
@@ -316,19 +308,16 @@ void CardRow::disableRowSelection()
 		nullptr
 	));
 
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->enableInteraction();
 	}
 }
 
 void CardRow::disableRowCardSelection()
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
-
 		card->setMouseClickCallback(nullptr);
 		card->unfocus();
 	}
@@ -336,18 +325,16 @@ void CardRow::disableRowCardSelection()
 
 void CardRow::disableRowCardInteraction()
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->disableInteraction();
 	}
 }
 
 void CardRow::enableRowCardInteraction()
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->enableInteraction();
 	}
 }
@@ -364,9 +351,9 @@ void CardRow::shuffle()
 
 void CardRow::clear()
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		this->removeChild(*it);
+		this->removeChild(card);
 	}
 
 	this->rowCards.clear();
@@ -375,27 +362,24 @@ void CardRow::clear()
 
 void CardRow::setMouseOverCallback(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->setMouseOverCallback(callback);
 	}
 }
 
 void CardRow::setMouseOutCallback(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->setMouseOutCallback(callback);
 	}
 }
 
 void CardRow::setMouseClickCallback(std::function<void(Card*)> callback)
 {
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		card->setMouseClickCallback(callback);
 	}
 }
@@ -417,9 +401,8 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 		spacing = cardCount == 0 ? 0.0f : (this->rowWidth / cardCount);
 	}
 
-	for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+	for (auto card : this->rowCards)
 	{
-		Card* card = *it;
 		float newX = (index * spacing) - (spacing * (cardCount - 1)) / 2.0f;
 
 		card->setLocalZOrder(index);
@@ -441,6 +424,7 @@ void CardRow::setCardPositions(float cardRepositionDelay, float indexDelay)
 		}
 		else
 		{
+			card->stopAllActions();
 			card->setPosition(card->position);
 			card->setScale(this->cardScale);
 		}
@@ -482,10 +466,8 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
-			for (auto it = this->rowCards.begin(); it != this->rowCards.end(); it++)
+			for (auto rowCard : this->rowCards)
 			{
-				Card* rowCard = *it;
-
 				Card::Operation operation = card->toOperation(rowCard->cardData->getIntrinsicImmediate());
 				int before = rowCard->getAttack();
 				int after = rowCard->simulateOperation(operation);

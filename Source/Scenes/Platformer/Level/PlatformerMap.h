@@ -23,7 +23,7 @@ public:
 
 protected:
 	PlatformerMap(std::string transition = "");
-	~PlatformerMap();
+	virtual ~PlatformerMap();
 
 private:
 	typedef MapBase super;
