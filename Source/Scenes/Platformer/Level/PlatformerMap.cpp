@@ -193,6 +193,8 @@ void PlatformerMap::initializeListeners()
 		{
 			this->cipher->setVisible(true);
 			this->mapNode->setVisible(false);
+			this->notificationHud->setVisible(false);
+			
 			this->cipher->openCipher(args->cipherPuzzleData);
 			GameUtils::focus(this->cipher);
 		}
@@ -206,6 +208,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->cipher->setVisible(false);
 			this->mapNode->setVisible(true);
+			this->notificationHud->setVisible(true);
 
 			// Reinstate this if music is ever added to Cipher:
 			// MusicPlayer::popMusic();
@@ -222,6 +225,7 @@ void PlatformerMap::initializeListeners()
 			this->hexus->setVisible(true);
 			this->hexus->open(args->opponentData);
 			this->mapNode->setVisible(false);
+			this->notificationHud->setVisible(false);
 			
 			GameUtils::focus(this->hexus);
 		}
@@ -235,6 +239,7 @@ void PlatformerMap::initializeListeners()
 		{
 			this->hexus->setVisible(false);
 			this->mapNode->setVisible(true);
+			this->notificationHud->setVisible(true);
 			
 			GameUtils::focus(this);
 		}

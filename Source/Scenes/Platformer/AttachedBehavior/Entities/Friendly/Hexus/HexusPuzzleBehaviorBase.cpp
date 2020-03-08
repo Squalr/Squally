@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-HexusPuzzleBehaviorBase::HexusPuzzleBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner, voiceResource, dialogueChoiceOverride)
+HexusPuzzleBehaviorBase::HexusPuzzleBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner, voiceResource, true, dialogueChoiceOverride)
 {
 	this->squally = nullptr;
 }

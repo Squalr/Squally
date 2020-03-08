@@ -33,7 +33,7 @@ public:
 	void removeFromDialogue();
 
 protected:
-	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
+	HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles = false, LocalizedString* dialogueChoiceOverride = nullptr);
 	virtual ~HexusBehaviorBase();
 
 	virtual MinMaxPool* generateReward() = 0;
@@ -79,4 +79,5 @@ private:
 	std::vector<std::function<void()>> drawCallbacks;
 
 	std::string voiceResource;
+	bool showParticles;
 };
