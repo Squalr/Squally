@@ -29,7 +29,7 @@ std::map<CollisionType, std::vector<CollisionObject*>> CollisionObject::Collisio
 const float CollisionObject::DefaultGravity = -768.0f;
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
-const float CollisionObject::DefaultMaxFallSpeed = -480.0f;
+const float CollisionObject::DefaultMaxFallSpeed = -720.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
