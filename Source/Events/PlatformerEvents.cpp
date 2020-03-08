@@ -28,6 +28,7 @@ const std::string PlatformerEvents::EventGiveCurrenciesFromPool = "EVENT_GIVE_CU
 const std::string PlatformerEvents::EventAllowPause = "EVENT_ALLOW_PAUSE";
 const std::string PlatformerEvents::EventDisallowPause = "EVENT_DISALLOW_PAUSE";
 const std::string PlatformerEvents::EventDispelIllusion = "EVENT_DISPEL_ILLUSION";
+const std::string PlatformerEvents::EventSavePosition = "EVENT_SAVE_POSITION";
 
 void PlatformerEvents::TriggerSpawnToTransitionLocation(TransitionArgs args)
 {
@@ -190,5 +191,12 @@ void PlatformerEvents::TriggerDispelIllusion(DispelIllusionArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		PlatformerEvents::EventDispelIllusion,
 		&args
+	);
+}
+
+void PlatformerEvents::TriggerSavePosition()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventSavePosition
 	);
 }

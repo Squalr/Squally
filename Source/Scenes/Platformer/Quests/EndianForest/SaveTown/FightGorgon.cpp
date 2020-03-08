@@ -213,6 +213,9 @@ void FightGorgon::runCinematicSequencePart2()
 
 void FightGorgon::runCinematicSequencePart3()
 {
+	// Player position does not get saved during cinematics. In this case, it would make for better gameplay to do so here.
+	PlatformerEvents::TriggerSavePosition();
+	
 	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->gorgon, true));
 }
 

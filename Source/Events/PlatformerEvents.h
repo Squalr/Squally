@@ -37,6 +37,7 @@ public:
 	static const std::string EventAllowPause;
 	static const std::string EventDisallowPause;
 	static const std::string EventDispelIllusion;
+	static const std::string EventSavePosition;
 
 	struct TransitionArgs
 	{
@@ -172,4 +173,5 @@ public:
 	static void TriggerAllowPause();
 	static void TriggerDisallowPause();
 	static void TriggerDispelIllusion(DispelIllusionArgs args);
+	static void TriggerSavePosition();
 };

@@ -109,6 +109,14 @@ void SquallyMovementBehavior::onLoad()
 		SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventSavePosition, [=](EventCustom* eventCustom)
+	{
+		const float SaveOffsetY = 32.0f;
+		Vec2 position = GameUtils::getWorldCoords(this->squally);
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionX, Value(position.x));
+		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyPositionY, Value(position.y + SaveOffsetY));
+	}));
+
 	this->squally->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* entityMovementBehavior)
 	{
 		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
