@@ -347,12 +347,12 @@ void StatePass::onAnyStateChange(GameState* gameState)
 {
 	super::onAnyStateChange(gameState);
 
-	this->lastStandParticles->stop(1.0f);
-	this->claimVictoryParticles->stop(1.0f);
-	this->passParticles->stop(1.0f);
-	this->enemyLastStandParticles->stop(1.0f);
-	this->enemyClaimVictoryParticles->stop(1.0f);
-	this->enemyPassParticles->stop(1.0f);
+	this->lastStandParticles->stop(5.0f);
+	this->claimVictoryParticles->stop(5.0f);
+	this->passParticles->stop(5.0f);
+	this->enemyLastStandParticles->stop(5.0f);
+	this->enemyClaimVictoryParticles->stop(5.0f);
+	this->enemyPassParticles->stop(5.0f);
 
 	if (gameState->playerPassed && !this->playerChoiceLocked)
 	{
