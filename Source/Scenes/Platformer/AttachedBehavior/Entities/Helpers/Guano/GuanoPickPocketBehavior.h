@@ -23,6 +23,7 @@ private:
 	typedef AttachedBehavior super;
 
 	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey);
+	void endPickPocket();
 
 	PlatformerEntity* entity;
 	bool isPickPocketing;

@@ -175,7 +175,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="754" name="brick-interior" type="texture" x="-82" y="-52" width="1492" height="1364"/>
-  <object id="755" name="brick-interior" type="texture" x="2114" y="-46" width="2564" height="1364"/>
+  <object id="755" name="brick-interior" type="texture" x="2079.33" y="-46" width="2598.67" height="1364"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>

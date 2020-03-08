@@ -207,7 +207,7 @@
    </properties>
    <polygon points="0,0 7987.78,-11.408 7987.78,787.153 -1.3689,797.228"/>
   </object>
-  <object id="947" name="blue-grass" type="terrain" x="-253.88" y="2720.19" width="2072.18" height="432.355">
+  <object id="947" name="dark-grass" type="terrain" x="-253.88" y="2720.19" width="2072.18" height="432.355">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -417,7 +417,6 @@
  </objectgroup>
  <objectgroup id="63" name="texture bg">
   <properties>
-   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="923" name="caverns" type="texture" x="3216.61" y="6271.79">

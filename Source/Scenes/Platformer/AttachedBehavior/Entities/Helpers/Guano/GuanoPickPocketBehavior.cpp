@@ -77,14 +77,14 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 	this->isPickPocketing = true;
 	this->entity->setState(StateKeys::PatrolHijacked, Value(true));
 	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
+	this->entity->setOpacity(192);
 
 	this->entity->listenForStateWriteOnce(StateKeys::PatrolDestinationReached, [=](Value value)
 	{
 		if (this->isPickPocketing)
 		{
-			this->isPickPocketing = false;
-			this->entity->clearState(StateKeys::PatrolHijacked);
-			this->entity->clearState(StateKeys::PatrolDestinationX);
+			this->stopAllActions();
+			this->endPickPocket();
 
 			PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(pocketPool));
 
@@ -92,17 +92,27 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		}
 	});
 
-	this->entity->runAction(Sequence::create(
+	this->runAction(Sequence::create(
 		DelayTime::create(5.0f),
 		CallFunc::create([=]()
 		{
 			if (this->isPickPocketing)
 			{
-				this->isPickPocketing = false;
-				this->entity->clearState(StateKeys::PatrolHijacked);
-				this->entity->clearState(StateKeys::PatrolDestinationX);
+				this->endPickPocket();
 			}
 		}),
+		nullptr
+	));
+}
+
+void GuanoPickPocketBehavior::endPickPocket()
+{
+	this->isPickPocketing = false;
+	this->entity->clearState(StateKeys::PatrolHijacked);
+	this->entity->clearState(StateKeys::PatrolDestinationX);
+	this->entity->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		FadeTo::create(0.25f, 255),
 		nullptr
 	));
 }
