@@ -60,6 +60,7 @@ const std::string SoundResources::Menus_TransactGold1 = "Private/Sounds/Menus/Tr
 const std::string SoundResources::Notifications_NotificationGood1 = "Private/Sounds/Notifications/NotificationGood1.mp3";
 const std::string SoundResources::Notifications_NotificationGood2 = "Private/Sounds/Notifications/NotificationGood2.mp3";
 const std::string SoundResources::Notifications_NotificationGood3 = "Private/Sounds/Notifications/NotificationGood3.mp3";
+const std::string SoundResources::Notifications_Reveal1 = "Private/Sounds/Notifications/Reveal1.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Defense_Rebound1 = "Private/Sounds/Platformer/Combat/Attacks/Defense/Rebound1.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Defense_Rebound2 = "Private/Sounds/Platformer/Combat/Attacks/Defense/Rebound2.mp3";
 const std::string SoundResources::Platformer_Combat_Attacks_Defense_Rebound3 = "Private/Sounds/Platformer/Combat/Attacks/Defense/Rebound3.mp3";

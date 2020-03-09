@@ -25,9 +25,7 @@ namespace MapResources
 	extern const std::string EndianForest_Mages_Gauntlet_1;
 	extern const std::string EndianForest_Mages_Gauntlet_2;
 	extern const std::string EndianForest_Mages_Gauntlet_3;
-	extern const std::string EndianForest_Mages_Gauntlet_4_deprecated;
-	extern const std::string EndianForest_Mages_Gauntlet_5_deprecated;
-	extern const std::string EndianForest_Mages_Gauntlet_6;
+	extern const std::string EndianForest_Mages_Gauntlet_4;
 	extern const std::string EndianForest_Mages_Gauntlet_Entrance;
 	extern const std::string EndianForest_Mages_Guild;
 	extern const std::string EndianForest_Mages_Prison;
@@ -39,6 +37,7 @@ namespace MapResources
 	extern const std::string EndianForest_Town_Inn;
 	extern const std::string EndianForest_Town_Inn_Upstairs;
 	extern const std::string EndianForest_Town_Liana;
+	extern const std::string EndianForest_Town_Liana_Back;
 	extern const std::string EndianForest_Town_Main;
 	extern const std::string EndianForest_Town_Shack;
 	extern const std::string EndianForest_Town_Smith;
@@ -71,7 +70,6 @@ namespace MapResources
 	extern const std::string Tutorials_Terrain;
 	extern const std::string Tutorials_UnknownValue1;
 	extern const std::string Tutorials_UnknownValue2;
-	extern const std::string UnderflowRuins_AquaticRuins;
 	extern const std::string UnderflowRuins_Town_Docks;
 	extern const std::string VoidStar_VoidStar;
 };

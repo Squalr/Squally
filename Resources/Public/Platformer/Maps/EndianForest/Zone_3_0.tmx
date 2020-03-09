@@ -122,7 +122,7 @@
     <property name="transition" value="gate"/>
    </properties>
   </object>
-  <object id="648" name="caged-monkey" type="object" x="8604.48" y="1934.79" width="78.7879" height="88"/>
+  <object id="648" name="caged-monkey" type="object" x="8596.48" y="1920.79" width="196" height="112"/>
   <object id="655" name="help-totem-wind" type="object" x="9000.48" y="3484.16" width="248" height="248">
    <properties>
     <property name="tag" value="help-totem-wind"/>

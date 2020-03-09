@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="797">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="777">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -10,83 +10,99 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="106" name="wood -5">
+ <objectgroup id="96" name="wall bg -6">
   <properties>
-   <property name="depth" type="float" value="-320"/>
+   <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="775" name="wood" type="terrain" x="503.7" y="-240.962">
+  <object id="756" name="brick-interior" type="texture" x="1162" y="-182" width="1188" height="1128"/>
+ </objectgroup>
+ <objectgroup id="95" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="746" name="Generic/MoonDoor" type="decor" x="1423.75" y="173.677" width="648" height="667"/>
+ </objectgroup>
+ <objectgroup id="87" name="stairs -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="marble" type="terrain" x="1314.52" y="837.303" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
-    <property name="depth" type="float" value="-320"/>
    </properties>
-   <polygon points="0,0 1178.48,3.21448 1178.48,1326.34 2.85349,1342.12"/>
   </object>
  </objectgroup>
- <objectgroup id="99" name="stairs -5 (4)">
+ <objectgroup id="93" name="columns -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="773" name="wood" type="terrain" x="1358.39" y="-48.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="774" name="wood" type="terrain" x="2062.39" y="-56.82" width="91.2169" height="1465.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="98" name="stairs -5 (3)">
+ <objectgroup id="86" name="stairs -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="761" name="marble" type="terrain" x="1315.52" y="900.303" width="856.967" height="139.393">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="97" name="stairs -5 (2)">
-  <properties>
-   <property name="depth" type="float" value="-320"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="111" name="columns -4">
+ <objectgroup id="92" name="columns -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="791" name="wood" type="terrain" x="795.48" y="1276.87">
+  <object id="771" name="wood" type="terrain" x="1356.39" y="-52.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
-  <object id="792" name="wood" type="terrain" x="1231.09" y="1292.65">
+  <object id="772" name="wood" type="terrain" x="2066.39" y="-54.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
  </objectgroup>
- <objectgroup id="107" name="stairs -4">
+ <objectgroup id="85" name="stairs -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="779" name="wood" type="terrain" x="666.02" y="1068.49">
+  <object id="760" name="marble" type="terrain" x="1317.18" y="964.97" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 753.075,-1.68809 753.075,141.799 1.82343,143.487"/>
   </object>
  </objectgroup>
- <objectgroup id="110" name="columns -3">
+ <objectgroup id="91" name="columns -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="789" name="wood" type="terrain" x="795.48" y="1276.87">
+  <object id="769" name="wood" type="terrain" x="1356.39" y="-44.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
-  <object id="790" name="wood" type="terrain" x="1231.09" y="1292.65">
+  <object id="770" name="wood" type="terrain" x="2062.39" y="-58.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
  </objectgroup>
  <objectgroup id="84" name="stairs -3">
@@ -94,29 +110,26 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="778" name="wood" type="terrain" x="666.02" y="1064.27">
+  <object id="759" name="marble" type="terrain" x="1317.52" y="1025.3" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 755.105,-1.68809 755.105,141.799 1.82835,143.487"/>
   </object>
  </objectgroup>
- <objectgroup id="109" name="columns -2">
+ <objectgroup id="90" name="columns -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="787" name="wood" type="terrain" x="795.48" y="1276.87">
+  <object id="767" name="wood" type="terrain" x="1354.39" y="-48.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
-  <object id="788" name="wood" type="terrain" x="1231.09" y="1292.65">
+  <object id="768" name="wood" type="terrain" x="2058.39" y="-54.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
  </objectgroup>
  <objectgroup id="83" name="stairs -2">
@@ -124,29 +137,26 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="wood" type="terrain" x="666.86" y="1059.81">
+  <object id="758" name="marble" type="terrain" x="1318.18" y="1079.64" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 758.272,-1.68809 758.272,141.799 1.83602,143.487"/>
   </object>
  </objectgroup>
- <objectgroup id="108" name="columns -1">
+ <objectgroup id="88" name="columns -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="785" name="wood" type="terrain" x="795.48" y="1276.87">
+  <object id="765" name="wood" type="terrain" x="1349.85" y="-47.9715" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
-  <object id="786" name="wood" type="terrain" x="1231.09" y="1292.65">
+  <object id="766" name="wood" type="terrain" x="2062.39" y="-56.82" width="91.2169" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 15.7557,-1365.57 115.542,-1363.33 105.038,-2.23864"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="stairs -1">
@@ -154,45 +164,47 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="726" name="wood" type="terrain" x="666.22" y="1058.78">
+  <object id="757" name="marble" type="terrain" x="1315.52" y="1140.97" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 758.272,-1.68809 758.272,141.799 1.83602,143.487"/>
   </object>
  </objectgroup>
- <objectgroup id="16" name="tiled bg">
+ <objectgroup id="16" name="Tiled bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="795" name="brick-interior" type="texture" x="-56" y="-32">
-   <polygon points="0,0 930.266,2.97636 934.06,1217.33 1.26395,1208.4"/>
-  </object>
-  <object id="796" name="brick-interior" type="texture" x="1284" y="-28">
-   <polygon points="0,0 1069.7,2.97636 1074.06,1217.33 1.45339,1208.4"/>
-  </object>
+  <object id="754" name="brick-interior" type="texture" x="-82" y="-52" width="1492" height="1364"/>
+  <object id="755" name="brick-interior" type="texture" x="2079.33" y="-46" width="2598.67" height="1364"/>
  </objectgroup>
- <objectgroup id="95" name="columns -0">
+ <objectgroup id="81" name="columns -0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="776" name="wood" type="terrain" x="864.52" y="1278.71">
+  <object id="763" name="wood" type="terrain" x="1401.09" y="-44.82" width="51.823" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 6.71592,-1365.57 49.2501,-1363.33 44.7728,-2.23864"/>
   </object>
-  <object id="777" name="wood" type="terrain" x="1227.49" y="1291.28">
+  <object id="764" name="wood" type="terrain" x="2050.09" y="-51.82" width="51.823" height="1465.64">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,0 6.71592,-1365.57 49.2501,-1363.33 44.7728,-2.23864"/>
   </object>
  </objectgroup>
- <objectgroup id="18" name="decor background 2">
+ <objectgroup id="76" name="decor bg2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="713" name="Castle/Banner2" type="decor" x="1197.45" y="451.107" width="184" height="424"/>
+  <object id="714" name="Castle/Banner2" type="decor" x="2139.6" y="435.152" width="184" height="424"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="709" name="Castle/Window1" type="decor" x="851.061" y="488" width="293" height="575"/>
+  <object id="711" name="Castle/Window1" type="decor" x="2376.07" y="481.887" width="293" height="575"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -200,12 +212,12 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="101" name="entities background">
+ <objectgroup id="57" name="terrain 3">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="102" name="decor background">
+ <objectgroup id="20" name="terrain 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -214,9 +226,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="wood" type="terrain" x="-661.158" y="1066.21">
-   <polygon points="0,0 3056.82,-2.8322 3056.82,237.904 7.40154,240.737"/>
-  </object>
+  <object id="753" name="marble" type="terrain" x="-79.5152" y="1195.09" width="4754.3" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -228,27 +238,18 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="907.21" y="690.475" width="335.878" height="375.411">
+  <object id="694" name="portal" type="object" x="1637.16" y="731.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="EndianForest/Town_Inn"/>
-    <property name="transition" value="inn-upstairs"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="liana"/>
    </properties>
   </object>
-  <object id="706" name="spawn" type="object" x="998.81" y="926.286" width="128" height="128">
+  <object id="706" name="spawn-wood-door" type="object" x="1689.46" y="1067.26" width="128" height="128">
    <properties>
-    <property name="transition" value="inn"/>
+    <property name="transition" value="main"/>
    </properties>
   </object>
-  <object id="793" name="caged-bear" type="object" x="251.273" y="976" width="78.7879" height="88"/>
-  <object id="794" name="cipher-chest" type="object" x="1804" y="936" width="128" height="128">
-   <properties>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs-easy" value="s,w,a,g"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule-easy" value="{i}"/>
-    <property name="tokens-easy" value=""/>
-   </properties>
-  </object>
+  <object id="776" name="caged-fox" type="object" x="3074.73" y="1083.39" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -266,7 +267,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="834.604" y="929.802" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="3650.95" y="1067.33" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -277,5 +278,6 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="720" name="Generic/Chandilier1" type="decor" x="2822.84" y="126.742" width="372.519" height="492.296"/>
  </objectgroup>
 </map>

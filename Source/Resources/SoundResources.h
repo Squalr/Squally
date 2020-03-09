@@ -61,6 +61,7 @@ namespace SoundResources
 	extern const std::string Notifications_NotificationGood1;
 	extern const std::string Notifications_NotificationGood2;
 	extern const std::string Notifications_NotificationGood3;
+	extern const std::string Notifications_Reveal1;
 	extern const std::string Platformer_Combat_Attacks_Defense_Rebound1;
 	extern const std::string Platformer_Combat_Attacks_Defense_Rebound2;
 	extern const std::string Platformer_Combat_Attacks_Defense_Rebound3;

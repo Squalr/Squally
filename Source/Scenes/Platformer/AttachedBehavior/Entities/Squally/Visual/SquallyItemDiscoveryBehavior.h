@@ -10,6 +10,7 @@ namespace cocos2d
 class Item;
 class Squally;
 class SmartAnimationSequenceNode;
+class Sound;
 
 class SquallyItemDiscoveryBehavior : public AttachedBehavior
 {
@@ -32,6 +33,7 @@ private:
 	cocos2d::Node* container;
 	cocos2d::Node* itemNode;
 	cocos2d::Sprite* glow;
+	Sound* discoverSound;
 
 	Squally* squally;
 };

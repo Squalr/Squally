@@ -119,7 +119,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="698" name="caged-beaver" type="object" x="1471.51" y="2310.32" width="78.7879" height="88"/>
+  <object id="698" name="caged-cow" type="object" x="1431.51" y="2286.32" width="196" height="112"/>
   <object id="771" name="edge-portal" type="object" x="4811.1" y="4836.94" width="718.1" height="174.184">
    <properties>
     <property name="direction" value="down"/>

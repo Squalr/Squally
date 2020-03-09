@@ -9,11 +9,13 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -34,6 +36,7 @@ SquallyItemDiscoveryBehavior::SquallyItemDiscoveryBehavior(GameObject* owner) : 
 	this->container = Node::create();
 	this->itemNode = Node::create();
 	this->glow = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
+	this->discoverSound = Sound::create(SoundResources::Notifications_Reveal1);
 
 	this->container->setOpacity(0);
 
@@ -45,6 +48,7 @@ SquallyItemDiscoveryBehavior::SquallyItemDiscoveryBehavior(GameObject* owner) : 
 	this->container->addChild(this->glow);
 	this->container->addChild(this->itemNode);
 	this->addChild(this->container);
+	this->addChild(this->discoverSound);
 }
 
 SquallyItemDiscoveryBehavior::~SquallyItemDiscoveryBehavior()
@@ -72,6 +76,7 @@ void SquallyItemDiscoveryBehavior::discoverItem(Item* item)
 
 	this->container->runAction(FadeTo::create(0.25f, 255));
 	this->glow->runAction(RotateBy::create(2.0f, 360.0f));
+	this->discoverSound->play();
 
 	this->itemNode->removeAllChildren();
 	this->itemNode->addChild(Sprite::create(item->getIconResource()));
