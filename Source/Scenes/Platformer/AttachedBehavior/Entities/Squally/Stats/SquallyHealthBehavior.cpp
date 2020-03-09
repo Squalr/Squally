@@ -99,7 +99,9 @@ void SquallyHealthBehavior::respawn(float duration)
 		{
 			if (this->spawnCoords != Vec2::ZERO)
 			{
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords));
+				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
+
+				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords + SpawnOffset));
 			}
 			
 			this->squally->setState(StateKeys::IsAlive, Value(true));

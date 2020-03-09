@@ -39,7 +39,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-5382.54" y="4037.32" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5366.54" y="2213.32" width="13333.3" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>

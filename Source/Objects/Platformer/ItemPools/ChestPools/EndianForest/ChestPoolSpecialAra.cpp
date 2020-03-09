@@ -21,7 +21,7 @@ ChestPoolSpecialAra* ChestPoolSpecialAra::create(ValueMap& properties)
 
 ChestPoolSpecialAra::ChestPoolSpecialAra(ValueMap& properties) : super(
 	properties, ChestPoolSpecialAra::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ WeaponPoolTier1::create(SampleMethod::Random, 1, 1) })
+	{ WeaponPoolTier1::create(SampleMethod::Guarantee, 1, 1) })
 {
 }
 

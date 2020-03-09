@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="85" nextobjectid="757">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="759">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -34,23 +34,29 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="85" name="rocks-bg">
   <properties>
-   <property name="depth" type="float" value="-2560"/>
+   <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-5371.82" y="-368.888" width="13333.3" height="1140">
+  <object id="758" name="Forest/Background/LakeSideRocks1" type="decor" x="-5323.82" y="-1824.89" width="13333.3" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="15" name="rocks">
   <properties>
-   <property name="depth" type="float" value="-512"/>
+   <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5339.82" y="-1392.89" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="water back">
   <properties>
@@ -368,7 +374,8 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="492.297" y="1192.33" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="492.297" y="1444.33" width="270" height="748"/>
+  <object id="757" name="Forest/Foreground/ForegroundTree1" type="decor" x="219" y="1575" width="242" height="738"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

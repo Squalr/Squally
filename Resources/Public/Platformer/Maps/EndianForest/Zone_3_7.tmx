@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="773">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="778">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -10,23 +10,29 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="74" name="rocks">
   <properties>
-   <property name="depth" type="float" value="-2560"/>
+   <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-3441.05" y="331.482" width="13333.3" height="1140">
+  <object id="777" name="Forest/Background/GreenForestRocks1" type="decor" x="-4781.69" y="397.3" width="13333.3" height="1140">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="15" name="trees-far1">
   <properties>
-   <property name="depth" type="float" value="-912"/>
+   <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="776" name="Forest/Background/GreenForestGround2" type="decor" x="-4789.69" y="-938.7" width="13333.3" height="1140">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="69" name="decor -14">
   <properties>
@@ -113,6 +119,18 @@
     <property name="illusion-group" value="A"/>
    </properties>
    <polygon points="0,0 346.41,-3.4924 346.41,293.36 0.838766,296.854"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="trees-mid">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="774" name="Forest/Background/GreenForestGround3" type="decor" x="-5505.81" y="609.6" width="14985.6" height="1116">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="scale" type="float" value="1.75"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="781" name="bridge -9">
@@ -301,7 +319,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="3296.08" y="1942.57" width="199" height="133"/>
-  <object id="741" name="Forest/Flower11" type="decor" x="1047" y="1950" width="92" height="116"/>
+  <object id="741" name="Forest/Flower11" type="decor" x="753.667" y="1951.33" width="92" height="116"/>
   <object id="750" name="Forest/Flower10" type="decor" x="294.888" y="1941.5" width="199" height="133"/>
   <object id="751" name="Generic/Sword2" type="decor" x="541.498" y="1955.1" width="115" height="113"/>
   <object id="752" name="Generic/Skull1" type="decor" x="1070" y="2025.6" width="66" height="44">
