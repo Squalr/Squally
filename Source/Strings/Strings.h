@@ -594,6 +594,21 @@ namespace Strings
 		virtual ~Cipher_Tutorials_Connect_B_ThisOneIsEasy() = default;
 	};
 
+	class Cipher_Tutorials_Connect_C_Unlock : public LocalizedString
+	{
+	public:
+		static Cipher_Tutorials_Connect_C_Unlock* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Cipher_Tutorials_Connect_C_Unlock();
+		virtual ~Cipher_Tutorials_Connect_C_Unlock() = default;
+	};
+
 	class Cipher_Tutorials_ExtraTokens_A_ExtraTokens : public LocalizedString
 	{
 	public:
@@ -7404,10 +7419,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_WeakMinded() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_DartNop : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_DartNop* create();
+		static Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7415,14 +7430,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_DartNop();
-		virtual ~Menus_Hacking_ClippyHelp_DartNop() = default;
+		Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal();
+		virtual ~Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_IsAliveRetVal : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_IsAliveRetVal* create();
+		static Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7430,14 +7445,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_IsAliveRetVal();
-		virtual ~Menus_Hacking_ClippyHelp_IsAliveRetVal() = default;
+		Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd();
+		virtual ~Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_MechanicalFlailMov : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_MechanicalFlailMov* create();
+		static Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7445,14 +7460,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_MechanicalFlailMov();
-		virtual ~Menus_Hacking_ClippyHelp_MechanicalFlailMov() = default;
+		Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc();
+		virtual ~Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_PendulumBladeMov : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_PendulumBladeMov* create();
+		static Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7460,14 +7475,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_PendulumBladeMov();
-		virtual ~Menus_Hacking_ClippyHelp_PendulumBladeMov() = default;
+		Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul();
+		virtual ~Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_RestoreHealthInc : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_RestoreHealthInc* create();
+		static Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7475,14 +7490,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_RestoreHealthInc();
-		virtual ~Menus_Hacking_ClippyHelp_RestoreHealthInc() = default;
+		Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_SpeedGainMul : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_SpeedGainMul* create();
+		static Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7490,14 +7505,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_SpeedGainMul();
-		virtual ~Menus_Hacking_ClippyHelp_SpeedGainMul() = default;
+		Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_TrainingHealAdd : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_TrainingHealAdd* create();
+		static Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7505,14 +7520,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_TrainingHealAdd();
-		virtual ~Menus_Hacking_ClippyHelp_TrainingHealAdd() = default;
+		Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_WindNop : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_WindNop* create();
+		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7520,8 +7535,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_WindNop();
-		virtual ~Menus_Hacking_ClippyHelp_WindNop() = default;
+		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_AddDoor_Add() = default;
+	};
+
+	class Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul() = default;
+	};
+
+	class Menus_Hacking_ClippyHelp_Objects_Wind_WindNop : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_Objects_Wind_WindNop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_Objects_Wind_WindNop();
+		virtual ~Menus_Hacking_ClippyHelp_Objects_Wind_WindNop() = default;
 	};
 
 	class Menus_Hacking_CodeEditor_Address : public LocalizedString

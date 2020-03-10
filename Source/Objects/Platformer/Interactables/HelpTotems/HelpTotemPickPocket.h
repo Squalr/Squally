@@ -11,7 +11,8 @@ public:
 
 protected:
 	HelpTotemPickPocket(cocos2d::ValueMap& properties);
-	~HelpTotemPickPocket();
+	virtual ~HelpTotemPickPocket();
+	
 	void onEnter() override;
 
 private:

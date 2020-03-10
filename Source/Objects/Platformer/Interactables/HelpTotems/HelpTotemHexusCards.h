@@ -11,7 +11,7 @@ public:
 
 protected:
 	HelpTotemHexusCards(cocos2d::ValueMap& properties);
-	~HelpTotemHexusCards();
+	virtual ~HelpTotemHexusCards();
 
 private:
 	typedef HelpTotem super;

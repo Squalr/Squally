@@ -44,7 +44,7 @@ void PendulumBladeClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	LocalizedString* localizedString = Strings::Menus_Hacking_ClippyHelp_PendulumBladeMov::create();
+	LocalizedString* localizedString = Strings::Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov::create();
 
 	if (sizeof(void*) == 8)
 	{

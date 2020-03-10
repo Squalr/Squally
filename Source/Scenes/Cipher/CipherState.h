@@ -68,6 +68,7 @@ public:
 	std::string currentOutput;
 
 	CipherLock* cipherLockPointer;
+	cocos2d::Node* unlockPointer;
 	DisplayModeToggles* displayModeTogglesPointer;
 
 protected:

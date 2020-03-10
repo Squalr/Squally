@@ -43,5 +43,5 @@ void SpeedGainClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_SpeedGainMul::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

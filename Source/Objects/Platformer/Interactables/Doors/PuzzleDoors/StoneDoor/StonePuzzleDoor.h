@@ -19,6 +19,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
+	cocos2d::Vec2 getRainOffset() override;
 	HackablePreview* createDefaultPreview() override;
 	virtual void runOperation(int puzzleIndex) override = 0;
 

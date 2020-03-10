@@ -11,7 +11,7 @@ public:
 
 protected:
 	HelpTotemHacking(cocos2d::ValueMap& properties);
-	~HelpTotemHacking();
+	virtual ~HelpTotemHacking();
 
 private:
 	typedef HelpTotem super;

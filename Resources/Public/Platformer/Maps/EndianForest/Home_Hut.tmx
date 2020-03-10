@@ -67,7 +67,8 @@
   </properties>
   <object id="692" name="matu" type="entity" x="581.14" y="938.218" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="matu-hexus,friendly"/>
+    <property name="attached-behavior" value="matu-hexus,friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
  </objectgroup>

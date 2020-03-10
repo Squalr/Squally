@@ -14,7 +14,7 @@ public:
 
 protected:
 	EnemyHealthBehavior(GameObject* owner);
-	~EnemyHealthBehavior();
+	virtual ~EnemyHealthBehavior();
 
 	void onLoad() override;
 

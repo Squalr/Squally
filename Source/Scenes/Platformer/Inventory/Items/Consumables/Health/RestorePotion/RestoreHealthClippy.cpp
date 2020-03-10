@@ -43,5 +43,5 @@ void RestoreHealthClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_RestoreHealthInc::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

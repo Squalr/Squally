@@ -14,7 +14,7 @@ public:
 
 protected:
 	EnemyCombatEngageBehavior(GameObject* owner);
-	~EnemyCombatEngageBehavior();
+	virtual ~EnemyCombatEngageBehavior();
 	
 	void onLoad() override;
 

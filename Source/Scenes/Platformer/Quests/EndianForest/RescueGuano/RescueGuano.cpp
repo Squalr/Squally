@@ -15,6 +15,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HelperEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -149,7 +150,22 @@ void RescueGuano::runRescueSequencePt3()
 				nullptr
 			));
 			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
+
 			this->complete();
+
+			LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+			LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create();
+			LocalizedString* bracketString1 = Strings::Common_Brackets::create();
+			LocalizedString* shiftString = Strings::Input_Shift::create();
+
+			bracketString1->setStringReplacementVariables(shiftString);
+			hintString->setStringReplacementVariables({ helperNameString, bracketString1 });
+			
+			NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+				Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create()),
+				hintString,
+				SoundResources::Notifications_NotificationGood1
+			));
 		},
 		SoundResources::Platformer_Entities_Generic_ChatterMedium2,
 		true

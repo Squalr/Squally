@@ -12,7 +12,7 @@ public:
 
 protected:
 	DartNopClippy();
-	~DartNopClippy();
+	virtual ~DartNopClippy();
 
 	Clippy* innerClone() override;
 

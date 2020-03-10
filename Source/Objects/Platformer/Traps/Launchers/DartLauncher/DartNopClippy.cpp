@@ -43,5 +43,5 @@ void DartNopClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_DartNop::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

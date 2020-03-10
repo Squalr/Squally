@@ -22,7 +22,8 @@ public:
 
 protected:
 	HelpTotem(cocos2d::ValueMap& properties);
-	~HelpTotem();
+	virtual ~HelpTotem();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;

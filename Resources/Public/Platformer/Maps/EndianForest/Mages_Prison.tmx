@@ -363,8 +363,9 @@
   </properties>
   <object id="817" name="merlin" type="entity" x="1494" y="935.153" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,run"/>
+    <property name="attached-behavior" value="friendly,run,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="troll-in-the-dungeon"/>
     <property name="quest-line" value="rescue-guano"/>
    </properties>

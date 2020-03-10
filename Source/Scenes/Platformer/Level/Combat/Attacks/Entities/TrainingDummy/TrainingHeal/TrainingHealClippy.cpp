@@ -43,5 +43,5 @@ void TrainingHealClippy::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_TrainingHealAdd::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

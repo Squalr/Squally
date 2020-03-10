@@ -11,7 +11,7 @@ public:
 
 protected:
 	HelpTotemEndOfDemo(cocos2d::ValueMap& properties);
-	~HelpTotemEndOfDemo();
+	virtual ~HelpTotemEndOfDemo();
 
 private:
 	typedef HelpTotem super;

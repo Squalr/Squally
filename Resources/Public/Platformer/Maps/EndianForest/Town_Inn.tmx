@@ -289,7 +289,8 @@
   </properties>
   <object id="692" name="robin" type="entity" x="2640.1" y="930.785" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,robin-hexus"/>
+    <property name="attached-behavior" value="friendly,robin-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
  </objectgroup>
