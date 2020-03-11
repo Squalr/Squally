@@ -2,6 +2,10 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+
+class EntityMovementCollisionBehavior;
+class EntityGroundCollisionBehavior;
+class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 class WorldSound;
 
@@ -46,6 +50,12 @@ private:
 
 	WorldSound* jumpSound;
 	std::vector<WorldSound*> swimSounds;
+	std::vector<WorldSound*> walkSounds;
+	
+	EntityMovementCollisionBehavior* movementCollision;
+	EntityGroundCollisionBehavior* groundCollision;
+	EntityJumpCollisionBehavior* jumpBehavior;
 
 	int swimSoundIndex;
+	int walkSoundIndex;
 };

@@ -45,8 +45,10 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	this->rightCollision = nullptr;
 	this->movementCollisionBound = false;
 	this->submergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
-	this->emergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
+	this->emergeSound = WorldSound::create(SoundResources::Platformer_Environment_Emerge1);
 	this->noEmergeSubmergeSoundCooldown = 1.0f;
+	this->groundCollision = nullptr;
+	this->headCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -102,6 +104,16 @@ void EntityMovementCollisionBehavior::onLoad()
 			});
 		}
 	}));
+
+	this->entity->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* groundCollision)
+	{
+		this->groundCollision = groundCollision;
+	});
+
+	this->entity->watchForAttachedBehavior<EntityHeadCollisionBehavior>([=](EntityHeadCollisionBehavior* headCollision)
+	{
+		this->headCollision = headCollision;
+	});
 }
 
 void EntityMovementCollisionBehavior::update(float dt)
@@ -215,20 +227,17 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionObject::CollisionData collisionData)
 	{
-		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
-		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
-
-		if (groundBehavior == nullptr || headBehavior == nullptr)
+		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		if (groundBehavior->isStandingOn(collisionData.other))
+		if (this->groundCollision->isStandingOn(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
-		if (headBehavior->hasHeadCollisionWith(collisionData.other))
+		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
@@ -238,27 +247,24 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
 	{
-		EntityGroundCollisionBehavior* groundBehavior = this->entity->getAttachedBehavior<EntityGroundCollisionBehavior>();
-		EntityHeadCollisionBehavior* headBehavior = this->entity->getAttachedBehavior<EntityHeadCollisionBehavior>();
-
-		if (groundBehavior == nullptr || headBehavior == nullptr)
+		if (this->groundCollision == nullptr || this->headCollision == nullptr)
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
 		// No collision when not standing on anything
-		if (!groundBehavior->isOnGround())
+		if (!this->groundCollision->isOnGround())
 		{
 			return CollisionObject::CollisionResult::DoNothing;
 		}
 
 		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
-		if (!groundBehavior->isStandingOnSomethingOtherThan(collisionData.other))
+		if (!this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
 
-		if (groundBehavior->isStandingOn(collisionData.other))
+		if (this->groundCollision->isStandingOn(collisionData.other))
 		{
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		}
@@ -268,7 +274,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->submergeSound->isPlaying())
+		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->submergeSound->isPlaying())
 		{
 			this->submergeSound->play();
 		}
@@ -290,7 +296,7 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
-		if (this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
+		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
 		{
 			this->emergeSound->play();
 		}

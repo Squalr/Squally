@@ -11,6 +11,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -41,7 +42,12 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
 	this->jumpSound = nullptr;
 	this->swimSounds = std::vector<WorldSound*>();
+	this->walkSounds = std::vector<WorldSound*>();
 	this->swimSoundIndex = 0;
+	this->walkSoundIndex = 0;
+	this->movementCollision = nullptr;
+	this->groundCollision = nullptr;
+	this->jumpBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -60,6 +66,17 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 			this->swimSounds.push_back(swimSound);
 
 			this->addChild(swimSound);
+		}
+
+		for (auto next : this->entity->getWalkSounds())
+		{
+			WorldSound* walkSound = WorldSound::create(next);
+
+			walkSound->setCustomMultiplier(0.25f);
+			
+			this->walkSounds.push_back(walkSound);
+
+			this->addChild(walkSound);
 		}
 
 		this->addChild(this->jumpSound);
@@ -86,16 +103,28 @@ void EntityMovementBehavior::onLoad()
 	{
 		this->prePatrolPosition = this->entity->getPosition();
 	});
+	
+	this->entity->watchForAttachedBehavior<EntityMovementCollisionBehavior>([=](EntityMovementCollisionBehavior* movementCollision)
+	{
+		this->movementCollision = movementCollision;
+	});
+
+	this->entity->watchForAttachedBehavior<EntityGroundCollisionBehavior>([=](EntityGroundCollisionBehavior* groundCollision)
+	{
+		this->groundCollision = groundCollision;
+	});
+
+	this->entity->watchForAttachedBehavior<EntityJumpCollisionBehavior>([=](EntityJumpCollisionBehavior* jumpBehavior)
+	{
+		this->jumpBehavior = jumpBehavior;
+	});
 }
 
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	EntityMovementCollisionBehavior* movementCollision = this->entity->getAttachedBehavior<EntityMovementCollisionBehavior>();
-	EntityJumpCollisionBehavior* jumpBehavior = this->entity->getAttachedBehavior<EntityJumpCollisionBehavior>();
-
-	if (movementCollision == nullptr)
+	if (this->movementCollision == nullptr || this->groundCollision == nullptr || this->jumpBehavior == nullptr)
 	{
 		return;
 	}
@@ -122,9 +151,9 @@ void EntityMovementBehavior::update(float dt)
 		this->applyCinematicMovement(&movement);
 	}
 
-	Vec2 velocity = movementCollision->getVelocity();
+	Vec2 velocity = this->movementCollision->getVelocity();
 
-	bool canJump = jumpBehavior == nullptr ? false : jumpBehavior->canJump();
+	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
 	PlatformerEntity::ControlState controlState = this->entity->getControlState();
 
 	switch (controlState)
@@ -132,9 +161,9 @@ void EntityMovementBehavior::update(float dt)
 		default:
 		case PlatformerEntity::ControlState::Normal:
 		{
-			movementCollision->enableNormalPhysics();
-			bool hasLeftCollision = movementCollision->hasLeftWallCollision();
-			bool hasRightCollision = movementCollision->hasRightWallCollision();
+			this->movementCollision->enableNormalPhysics();
+			bool hasLeftCollision = this->movementCollision->hasLeftWallCollision();
+			bool hasRightCollision = this->movementCollision->hasRightWallCollision();
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
@@ -150,7 +179,7 @@ void EntityMovementBehavior::update(float dt)
 
 				if (!this->jumpSound->isPlaying())
 				{
-					// this->jumpSound->play();
+					this->jumpSound->play();
 				}
 
 				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
@@ -161,6 +190,17 @@ void EntityMovementBehavior::update(float dt)
 				if (std::abs(movement.x) > 0.15f)
 				{
 					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.65f);
+
+					if (this->groundCollision->isOnGround()
+						&& !this->walkSounds.empty()
+						&& !std::any_of(this->walkSounds.begin(), this->walkSounds.end(), [=](WorldSound* walkSound)
+						{
+							return walkSound->isPlaying();
+						}))
+					{
+						this->walkSoundIndex = MathUtils::wrappingNormalize(this->walkSoundIndex + 1, 0, this->walkSounds.size() - 1);
+						this->walkSounds[this->walkSoundIndex]->play();
+					}
 				}
 				else
 				{
@@ -177,7 +217,7 @@ void EntityMovementBehavior::update(float dt)
 		}
 		case PlatformerEntity::ControlState::Swimming:
 		{
-			movementCollision->enableWaterPhysics();
+			this->movementCollision->enableWaterPhysics();
 
 			const float minSpeed = this->swimAcceleration.y;
 
@@ -218,7 +258,7 @@ void EntityMovementBehavior::update(float dt)
 	}
 	
 	// Save velocity
-	movementCollision->setVelocity(velocity);
+	this->movementCollision->setVelocity(velocity);
 
 	this->entity->setState(StateKeys::VelocityX, Value(velocity.x), false);
 	this->entity->setState(StateKeys::VelocityY, Value(velocity.y), false);

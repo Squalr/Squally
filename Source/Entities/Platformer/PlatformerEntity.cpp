@@ -142,12 +142,17 @@ std::string PlatformerEntity::getJumpAnimation()
 
 std::string PlatformerEntity::getJumpSound()
 {
-	return SoundResources::Platformer_Entities_Generic_Jump2;
+	return SoundResources::Platformer_Entities_Generic_Movement_Jump3;
 }
 
 std::vector<std::string> PlatformerEntity::getSwimSounds()
 {
 	return { SoundResources::Platformer_Environment_Swim1, SoundResources::Platformer_Environment_Swim2, SoundResources::Platformer_Environment_Swim3 };
+}
+
+std::vector<std::string> PlatformerEntity::getWalkSounds()
+{
+	return { SoundResources::Platformer_Entities_Generic_Movement_Steps1, SoundResources::Platformer_Entities_Generic_Movement_Steps2, SoundResources::Platformer_Entities_Generic_Movement_Steps3 };
 }
 
 PlatformerEntity::ControlState PlatformerEntity::getControlState()

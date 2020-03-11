@@ -143,5 +143,10 @@ std::string Squally::getSwimAnimation()
 
 std::string Squally::getJumpSound()
 {
-	return SoundResources::Platformer_Entities_Generic_Jump1;
+	return SoundResources::Platformer_Entities_Generic_Movement_Jump3;
+}
+
+std::vector<std::string> Squally::getWalkSounds()
+{
+	return { };
 }

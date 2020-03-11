@@ -18,6 +18,7 @@ public:
 	LocalizedString* getEntityName() override;
 	std::string getSwimAnimation() override;
 	std::string getJumpSound() override;
+	std::vector<std::string> getWalkSounds() override;
 
 	static const std::string MapKeySqually;
 	static const std::string BattleTag;

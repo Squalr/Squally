@@ -3,6 +3,8 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class CollisionObject;
+class EntityGroundCollisionBehavior;
+class EntityHeadCollisionBehavior;
 class PlatformerEntity;
 class WorldSound;
 
@@ -39,6 +41,9 @@ private:
 	void buildMovementCollision();
 	void buildWallDetectors();
 	void tryBind();
+
+	EntityGroundCollisionBehavior* groundCollision;
+	EntityHeadCollisionBehavior* headCollision;
 
 	PlatformerEntity* entity;
 

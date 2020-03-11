@@ -39,6 +39,7 @@ public:
 	virtual std::string getJumpAnimation();
 	virtual std::string getJumpSound();
 	virtual std::vector<std::string> getSwimSounds();
+	virtual std::vector<std::string> getWalkSounds();
 	PlatformerEntity::ControlState getControlState();
 	bool isFlippedX();
 	bool isFlippedY();
