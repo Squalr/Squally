@@ -15,7 +15,7 @@ public:
 
 protected:
 	BusinessHours(GameObject* owner, QuestLine* questLine);
-	~BusinessHours();
+	virtual ~BusinessHours();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

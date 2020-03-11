@@ -124,6 +124,12 @@ void CipherOverflowTutorial::initializeCallbacks(CipherState* cipherState)
 	{
 		this->tryUnHijackState(cipherState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->nextButtonIntro->interact();
+		this->nextButtonConnect->interact();
+	});
 }
 
 void CipherOverflowTutorial::runTutorialPartA(CipherState* cipherState)

@@ -14739,6 +14739,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed() = default;
 	};
 
+	class Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown();
+		virtual ~Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown() = default;
+	};
+
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
 	{
 	public:

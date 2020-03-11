@@ -143,6 +143,13 @@ void CipherConnectTutorial::initializeCallbacks(CipherState* cipherState)
 	{
 		this->tryUnHijackState(cipherState);
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->nextButtonIntro->interact();
+		this->nextButtonConnect->interact();
+		this->nextButtonUnlock->interact();
+	});
 }
 
 void CipherConnectTutorial::runTutorialPartA(CipherState* cipherState)

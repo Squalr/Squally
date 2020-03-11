@@ -23,10 +23,11 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
 	// EF pools
+	this->deserializers[ChestPoolEFEquipment::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFEquipment::create(properties); };
 	this->deserializers[ChestPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFGeneric::create(properties); };
-	this->deserializers[ChestPoolEFSpecial::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFSpecial::create(properties); };
+	this->deserializers[ChestPoolEFRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFRare::create(properties); };
+	this->deserializers[ChestPoolEFWeapon::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFWeapon::create(properties); };
 	this->deserializers[ChestPoolRamWheel::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolRamWheel::create(properties); };
-	this->deserializers[ChestPoolSpecialAra::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolSpecialAra::create(properties); };
 
 	// UR pools
 	this->deserializers[ChestPoolBlueGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolBlueGem::create(properties); };

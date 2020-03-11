@@ -455,10 +455,22 @@
    </properties>
   </object>
   <object id="917" name="wooden-crate" type="object" x="4265.7" y="4778.18" width="160" height="160"/>
-  <object id="918" name="wooden-crate" type="object" x="4623.27" y="4781.58" width="160" height="160"/>
+  <object id="918" name="wooden-crate-disabled" type="object" x="4623.27" y="4781.58" width="160" height="160">
+   <properties>
+    <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
+   </properties>
+  </object>
   <object id="919" name="wooden-crate" type="object" x="3450.31" y="4790.3" width="160" height="160"/>
-  <object id="920" name="wooden-crate" type="object" x="4679.85" y="4621.27" width="160" height="160"/>
-  <object id="921" name="wooden-crate" type="object" x="4784.3" y="4782.24" width="160" height="160"/>
+  <object id="920" name="wooden-crate-disabled" type="object" x="4679.85" y="4621.27" width="160" height="160">
+   <properties>
+    <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
+   </properties>
+  </object>
+  <object id="921" name="wooden-crate-disabled" type="object" x="4784.3" y="4782.24" width="160" height="160">
+   <properties>
+    <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
+   </properties>
+  </object>
   <object id="922" name="camera-control" type="object" x="3040.46" y="2237.94" width="316" height="792.061">
    <properties>
     <property name="target" value="target-A"/>

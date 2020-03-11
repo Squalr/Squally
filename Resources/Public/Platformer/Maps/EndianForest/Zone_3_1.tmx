@@ -23,6 +23,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="757" name="caverns" type="terrain" x="7256" y="236">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-842.39,-1516.1 1246.16,-1519.41 1276.6,1062.19 -854.641,1050.44"/>
+  </object>
   <object id="771" name="caverns" type="terrain" x="-110.365" y="975.495" width="2116.73" height="2617.01">
    <properties>
     <property name="collision" value="none"/>

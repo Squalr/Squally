@@ -13,7 +13,7 @@ public:
 
 protected:
 	BusinessHoursLine();
-	~BusinessHoursLine();
+	virtual ~BusinessHoursLine();
 
 private:
 	typedef QuestLine super;

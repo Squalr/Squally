@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="952">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="960">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -437,7 +437,7 @@
    <polygon points="0,0 1863.05,-13.8647 1864.82,354.271 0,365.991"/>
   </object>
   <object id="764" name="blue-grass" type="terrain" x="6015.74" y="1199.58">
-   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 2375.72,1594.83 2371.57,1221.15 431.5,1226.14"/>
+   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 4214.23,1608.4 4206.35,83.0295 3824.33,84.1033 3819.57,1221.15 431.5,1226.14"/>
   </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
@@ -718,6 +718,54 @@
   <object id="944" name="spawn" type="object" x="5235.76" y="2681.09" width="128" height="128">
    <properties>
     <property name="transition" value="mage-portal"/>
+   </properties>
+  </object>
+  <object id="952" name="wind" type="object" x="8388" y="2422" width="480" height="380">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="953" name="wind" type="object" x="8871.14" y="2430.35" width="480" height="380">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="954" name="wind" type="object" x="9360.86" y="2437.65" width="480" height="380">
+   <properties>
+    <property name="speed-x" type="float" value="-1"/>
+    <property name="speed-y" type="float" value="0"/>
+   </properties>
+  </object>
+  <object id="955" name="wind" type="object" x="9852" y="2326" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="956" name="wind" type="object" x="9842" y="1844" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="957" name="wind" type="object" x="9842" y="1368" width="380" height="480">
+   <properties>
+    <property name="speed-x" type="float" value="0"/>
+    <property name="speed-y" type="float" value="-1"/>
+   </properties>
+  </object>
+  <object id="958" name="edge-portal" type="object" x="9792.04" y="1222" width="488" height="200">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="EndianForest/Town_Liana_Back"/>
+    <property name="transition" value="liana-back"/>
+   </properties>
+  </object>
+  <object id="959" name="spawn" type="object" x="9974" y="1564" width="128" height="128">
+   <properties>
+    <property name="transition" value="liana-back"/>
    </properties>
   </object>
  </objectgroup>

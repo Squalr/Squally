@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="775">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="777">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -261,6 +261,19 @@
    <properties>
     <property name="quest" value="return-to-queen-again"/>
     <property name="quest-line" value="save-town"/>
+   </properties>
+  </object>
+  <object id="775" name="portal" type="object" x="1634.63" y="731.182" width="237.527" height="464.666">
+   <properties>
+    <property name="map" value="EndianForest/Town_Liana_Back"/>
+    <property name="quest" value="liana-door-locked"/>
+    <property name="quest-line" value="sneak-liana-line"/>
+    <property name="transition" value="inner"/>
+   </properties>
+  </object>
+  <object id="776" name="spawn-wood-door" type="object" x="1686.93" y="1067.25" width="128" height="128">
+   <properties>
+    <property name="transition" value="inner"/>
    </properties>
   </object>
  </objectgroup>

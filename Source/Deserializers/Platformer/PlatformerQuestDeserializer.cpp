@@ -31,6 +31,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[RescueGuanoLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RescueGuanoLine::create(); };
 	this->lineDeserializers[SailForRuinsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SailForRuinsLine::create(); };
 	this->lineDeserializers[SaveTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SaveTownLine::create(); };
+	this->lineDeserializers[SneakIntoLianasHouseLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SneakIntoLianasHouseLine::create(); };
 	this->lineDeserializers[WaterBlessingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WaterBlessingLine::create(); };
 	this->lineDeserializers[WindBlessingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindBlessingLine::create(); };
 

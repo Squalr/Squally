@@ -136,6 +136,7 @@ void RewardsMenu::giveExp()
 			{
 				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
 				const int currentLevel = eqBehavior->getEq();
+				const int levelDelta = intendedLevel - currentLevel;
 				int expGain = 0;
 				
 				ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
@@ -149,7 +150,8 @@ void RewardsMenu::giveExp()
 				// Apply rubber banding to keep the player near the intended level for the current map
 				const int adjustedGain = intendedLevel == currentLevel
 					? expGain
-					: int(float(expGain) * std::pow(GainFactor, intendedLevel - currentLevel));
+					// Exponential by gain factor, to the power of intended level delta. Cap at 3x exp gain.
+					: std::min(expGain * 3, int(float(expGain) * std::pow(GainFactor, levelDelta)));
 
 				const float startProgress = float(eqBehavior->getEqExperience()) / float(StatsTables::getExpRequiredAtLevel(entity));
 				const bool didLevelUp = eqBehavior->addEqExperience(adjustedGain);
