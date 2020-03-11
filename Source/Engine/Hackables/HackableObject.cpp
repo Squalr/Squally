@@ -265,7 +265,14 @@ void HackableObject::registerHackables()
 
 void HackableObject::refreshParticleFx()
 {
-	if (this->allowFx && this->isHackable && !this->hackableList.empty() && this->trackedAttributes.empty())
+	if (std::any_of(this->hackableList.begin(), this->hackableList.end(), [=](HackableAttribute* attribute)
+		{
+			return (attribute->getRequiredHackFlag() & HackableObject::HackFlags) == attribute->getRequiredHackFlag();
+		})
+		&& this->allowFx
+		&& this->isHackable
+		&& !this->hackableList.empty()
+		&& this->trackedAttributes.empty())
 	{
 		this->createSensingParticles();
 		this->hackParticles1->start();
