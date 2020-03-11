@@ -41,13 +41,13 @@ std::function<Node*()> DialogueEvents::BuildPreviewNode(void* entity, bool isFli
 		}
 
 		Node* wrapper = Node::create();
-		PlatformerEntity* softClone = (*entityPtr)->softClone();
+		PlatformerEntity* uiClone = (*entityPtr)->uiClone();
 
-		if (softClone != nullptr)
+		if (uiClone != nullptr)
 		{
-			softClone->getAnimations()->setFlippedX(isFlipped);
-			wrapper->addChild(softClone);
-			softClone->setPosition(softClone->getDialogueOffset() + Vec2(0.0f, offsetY));
+			uiClone->getAnimations()->setFlippedX(isFlipped);
+			wrapper->addChild(uiClone);
+			uiClone->setPosition(uiClone->getDialogueOffset() + Vec2(0.0f, offsetY));
 		}
 
 		return wrapper;

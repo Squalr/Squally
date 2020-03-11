@@ -3,6 +3,7 @@
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
 class PlatformerEntity;
+class WorldSound;
 
 class EntityMovementBehavior : public AttachedBehavior
 {
@@ -42,4 +43,9 @@ private:
 	PlatformerEntity* entity;
 	cocos2d::Vec2 preCinematicPosition;
 	cocos2d::Vec2 prePatrolPosition;
+
+	WorldSound* jumpSound;
+	std::vector<WorldSound*> swimSounds;
+
+	int swimSoundIndex;
 };

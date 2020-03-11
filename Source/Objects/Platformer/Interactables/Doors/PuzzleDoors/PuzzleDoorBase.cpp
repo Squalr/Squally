@@ -59,6 +59,8 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
 	this->doorOpenSound = nullptr;
+	this->sliderSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy1);
+	this->sliderResetSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy3);
 	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
 	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
@@ -125,8 +127,14 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		this->addChild(this->runesPassed[index]);
 	}
 
+	this->sliderSound->setCustomMultiplier(0.25f);
+	this->sliderResetSound->setCustomMultiplier(0.25f);
+	this->electricitySound->setCustomMultiplier(0.75f);
+
 	this->addChild(this->marker);
 	this->addChild(this->electricitySound);
+	this->addChild(this->sliderSound);
+	this->addChild(this->sliderResetSound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -153,6 +161,15 @@ void PuzzleDoorBase::onEnter()
 						this->puzzleIndex = MathUtils::wrappingNormalize(this->puzzleIndex + 1, 0, 3);
 						this->runesFailed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
 						this->runesPassed[this->puzzleIndex]->runAction(FadeTo::create(0.25f, 0));
+
+						if (this->puzzleIndex == 0)
+						{
+							this->sliderResetSound->play();
+						}
+						else
+						{
+							this->sliderSound->play();
+						}
 					}
 
 					this->indexString->setString(std::to_string(this->puzzleIndex));

@@ -17,6 +17,7 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 	std::string getSwimAnimation() override;
+	std::string getJumpSound() override;
 
 	static const std::string MapKeySqually;
 	static const std::string BattleTag;

@@ -9,6 +9,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -18,6 +19,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -42,6 +44,9 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	this->leftCollision = nullptr;
 	this->rightCollision = nullptr;
 	this->movementCollisionBound = false;
+	this->submergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
+	this->emergeSound = WorldSound::create(SoundResources::Platformer_Environment_Splash1);
+	this->noEmergeSubmergeSoundCooldown = 1.0f;
 
 	if (this->entity == nullptr)
 	{
@@ -49,6 +54,9 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	}
 
 	this->toggleQueryable(false);
+
+	this->addChild(this->submergeSound);
+	this->addChild(this->emergeSound);
 }
 
 EntityMovementCollisionBehavior::~EntityMovementCollisionBehavior()
@@ -99,6 +107,11 @@ void EntityMovementCollisionBehavior::onLoad()
 void EntityMovementCollisionBehavior::update(float dt)
 {
 	super::update(dt);
+
+	if (this->noEmergeSubmergeSoundCooldown > 0.0f)
+	{
+		this->noEmergeSubmergeSoundCooldown -= dt;
+	}
 
 	this->tryBind();
 }
@@ -253,6 +266,16 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
+	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->submergeSound->isPlaying())
+		{
+			this->submergeSound->play();
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Swimming;
@@ -266,6 +289,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 	this->movementCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionObject::CollisionData collisionData)
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
+
+		if (this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
+		{
+			this->emergeSound->play();
+		}
 
 		// Animate jumping out of water
 		if (this->movementCollision->getVelocity().y > 0.0f && this->entity->getStateOrDefaultFloat(StateKeys::MovementY, 0.0f) > 0.0f)

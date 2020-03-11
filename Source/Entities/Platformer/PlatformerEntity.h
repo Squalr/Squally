@@ -37,10 +37,12 @@ public:
 	virtual LocalizedString* getEntityName() = 0;
 	virtual std::string getSwimAnimation();
 	virtual std::string getJumpAnimation();
+	virtual std::string getJumpSound();
+	virtual std::vector<std::string> getSwimSounds();
 	PlatformerEntity::ControlState getControlState();
 	bool isFlippedX();
 	bool isFlippedY();
-	PlatformerEntity* softClone();
+	PlatformerEntity* uiClone();
 	std::string getBattleBehavior();
 
 	ControlState controlState;

@@ -196,6 +196,8 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Generic_ChatterQuestion1;
 	extern const std::string Platformer_Entities_Generic_ChatterShort1;
 	extern const std::string Platformer_Entities_Generic_ChatterShort2;
+	extern const std::string Platformer_Entities_Generic_Jump1;
+	extern const std::string Platformer_Entities_Generic_Jump2;
 	extern const std::string Platformer_Entities_Generic_Movement_BackPeddleSlow1;
 	extern const std::string Platformer_Entities_Generic_Movement_Footsteps1;
 	extern const std::string Platformer_Entities_Generic_Movement_RunBrief1;
@@ -236,7 +238,11 @@ namespace SoundResources
 	extern const std::string Platformer_Environment_Bubbles2;
 	extern const std::string Platformer_Environment_Bubbles3;
 	extern const std::string Platformer_Environment_Bubbles4;
-	extern const std::string Platformer_Environment_Submerge;
+	extern const std::string Platformer_Environment_Splash1;
+	extern const std::string Platformer_Environment_Submerge1;
+	extern const std::string Platformer_Environment_Swim1;
+	extern const std::string Platformer_Environment_Swim2;
+	extern const std::string Platformer_Environment_Swim3;
 	extern const std::string Platformer_FX_Explosions_Crash1;
 	extern const std::string Platformer_FX_Explosions_Explosion1;
 	extern const std::string Platformer_FX_Fire_Fire1;
@@ -254,6 +260,10 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Doors_WoodDoorOpen1;
 	extern const std::string Platformer_Objects_Machines_RollLoop1;
 	extern const std::string Platformer_Objects_Machines_StoneMechanism1;
+	extern const std::string Platformer_Objects_Machines_StoneSlideHeavy1;
+	extern const std::string Platformer_Objects_Machines_StoneSlideHeavy2;
+	extern const std::string Platformer_Objects_Machines_StoneSlideHeavy3;
+	extern const std::string Platformer_Objects_Machines_StoneSlideSmall1;
 	extern const std::string Platformer_Objects_Machines_WoodMechanism1;
 	extern const std::string Platformer_Objects_Misc_BowlingStrike1;
 	extern const std::string Platformer_Objects_PotBreak_PotSmash1;

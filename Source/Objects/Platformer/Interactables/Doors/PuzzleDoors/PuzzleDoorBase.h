@@ -48,6 +48,8 @@ protected:
 	SmartClippingNode* doorClip;
 	cocos2d::Node* frontNode;
 	WorldSound* doorOpenSound;
+	WorldSound* sliderSound;
+	WorldSound* sliderResetSound;
 	WorldSound* electricitySound;
 
 	static const std::string UnlockedSaveKey;

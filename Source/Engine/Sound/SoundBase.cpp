@@ -139,6 +139,26 @@ void SoundBase::unpause()
 	AudioEngine::resume(this->activeTrackId);
 }
 
+bool SoundBase::isPlaying()
+{
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		case AudioEngine::AudioState::PLAYING:
+		{
+			return true;
+		}
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		default:
+		{
+			return false;
+		}
+	}
+}
+
 void SoundBase::freeze()
 {
 	AudioEngine::pause(this->activeTrackId);

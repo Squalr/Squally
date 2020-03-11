@@ -7,6 +7,7 @@ class SoundBase : public GameObject
 public:
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	virtual void unpause();
+	bool isPlaying();
 	virtual void freeze();
 	virtual void stop();
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);

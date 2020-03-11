@@ -6,7 +6,9 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
@@ -37,10 +39,30 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	this->moveAcceleration = EntityMovementBehavior::DefaultRunAcceleration;
 	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
 	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
+	this->jumpSound = nullptr;
+	this->swimSounds = std::vector<WorldSound*>();
+	this->swimSoundIndex = 0;
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->jumpSound = WorldSound::create(this->entity->getJumpSound());
+
+		for (auto next : this->entity->getSwimSounds())
+		{
+			WorldSound* swimSound = WorldSound::create(next);
+
+			swimSound->setCustomMultiplier(0.25f);
+			
+			this->swimSounds.push_back(swimSound);
+
+			this->addChild(swimSound);
+		}
+
+		this->addChild(this->jumpSound);
 	}
 
 	this->preCinematicPosition = Vec2::ZERO;
@@ -126,7 +148,29 @@ void EntityMovementBehavior::update(float dt)
 			{
 				velocity.y = movement.y * this->jumpVelocity;
 
+				if (!this->jumpSound->isPlaying())
+				{
+					// this->jumpSound->play();
+				}
+
 				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+			}
+
+			if (std::abs(movement.y) < 0.15f)
+			{
+				if (std::abs(movement.x) > 0.15f)
+				{
+					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.65f);
+				}
+				else
+				{
+					if (this->entity->getAnimations()->getCurrentAnimation() == "Walk")
+					{
+						this->entity->getAnimations()->clearAnimationPriority();
+					}
+					
+					this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
+				}
 			}
 
 			break;
@@ -152,27 +196,24 @@ void EntityMovementBehavior::update(float dt)
 
 			if (movement != Vec2::ZERO)
 			{
+				if (!this->swimSounds.empty() && !std::any_of(this->swimSounds.begin(), this->swimSounds.end(), [=](WorldSound* swimSound)
+					{
+						return swimSound->isPlaying();
+					}))
+				{
+					this->swimSoundIndex = MathUtils::wrappingNormalize(this->swimSoundIndex + 1, 0, this->swimSounds.size() - 1);
+					this->swimSounds[this->swimSoundIndex]->play();
+				}
+
 				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+			}
+			else if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
+			{
+				this->entity->getAnimations()->clearAnimationPriority();
+				this->entity->getAnimations()->playAnimation();
 			}
 
 			break;
-		}
-	}
-
-	if (std::abs(movement.y) < 0.15f)
-	{
-		if (std::abs(movement.x) > 0.15f)
-		{
-			this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.65f);
-		}
-		else
-		{
-			if (this->entity->getAnimations()->getCurrentAnimation() == "Walk")
-			{
-				this->entity->getAnimations()->clearAnimationPriority();
-			}
-			
-			this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
 		}
 	}
 	

@@ -27,6 +27,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -138,4 +139,9 @@ std::string Squally::getSwimAnimation()
 	});
 
 	return swimAnimation;
+}
+
+std::string Squally::getJumpSound()
+{
+	return SoundResources::Platformer_Entities_Generic_Jump1;
 }

@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
 #include "Resources/UIResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -139,6 +140,16 @@ std::string PlatformerEntity::getJumpAnimation()
 	return "Jump";
 }
 
+std::string PlatformerEntity::getJumpSound()
+{
+	return SoundResources::Platformer_Entities_Generic_Jump2;
+}
+
+std::vector<std::string> PlatformerEntity::getSwimSounds()
+{
+	return { SoundResources::Platformer_Environment_Swim1, SoundResources::Platformer_Environment_Swim2, SoundResources::Platformer_Environment_Swim3 };
+}
+
 PlatformerEntity::ControlState PlatformerEntity::getControlState()
 {
 	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;;
@@ -220,7 +231,7 @@ bool PlatformerEntity::isFlippedY()
 	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }
 
-PlatformerEntity* PlatformerEntity::softClone()
+PlatformerEntity* PlatformerEntity::uiClone()
 {
 	PlatformerEntity* softClone = nullptr;
 	ValueMap properties = ValueMap();

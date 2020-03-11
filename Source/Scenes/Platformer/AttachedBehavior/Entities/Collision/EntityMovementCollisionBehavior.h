@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class PlatformerEntity;
+class WorldSound;
 
 class EntityMovementCollisionBehavior : public AttachedBehavior
 {
@@ -41,7 +42,11 @@ private:
 
 	PlatformerEntity* entity;
 
+	WorldSound* submergeSound;
+	WorldSound* emergeSound;
+
 	bool movementCollisionBound;
+	float noEmergeSubmergeSoundCooldown;
 
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;
