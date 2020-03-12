@@ -37,3 +37,8 @@ void SquallyHudTrackBehavior::onLoad()
 	// Request camera & hud track player
 	PlatformerEvents::TriggerHudTrackEntity(PlatformerEvents::HudTrackEntityArgs(this->squally));
 }
+
+void SquallyHudTrackBehavior::onDisable()
+{
+	super::onDisable();
+}

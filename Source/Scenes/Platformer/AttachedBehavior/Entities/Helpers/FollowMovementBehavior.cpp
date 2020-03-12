@@ -58,6 +58,11 @@ void FollowMovementBehavior::onLoad()
 	});
 }
 
+void FollowMovementBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void FollowMovementBehavior::update(float dt)
 {
 	super::update(dt);

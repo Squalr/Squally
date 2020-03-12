@@ -56,6 +56,11 @@ void EntityProjectileTargetBehavior::onLoad()
 {
 }
 
+void EntityProjectileTargetBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityProjectileTargetBehavior::initializePositions()
 {
 	super::initializePositions();

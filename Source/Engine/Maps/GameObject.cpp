@@ -272,7 +272,9 @@ void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
 	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
 	{
 		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
-		this->removeChild(attachedBehavior);
+
+		// Note: Removing children at runtime is unsafe. The best we can do is disable it.
+		attachedBehavior->onDisable();
 	}
 }
 
@@ -533,7 +535,9 @@ std::string GameObject::getSendEvent()
 
 void GameObject::despawn()
 {
-	for (auto behavior : this->attachedBehavior)
+	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
+
+	for (auto behavior : behaviorClone)
 	{
 		this->detachBehavior(behavior);
 	}

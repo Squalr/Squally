@@ -124,9 +124,9 @@
   </object>
   <object id="636" name="trigger" type="object" x="10325.7" y="1617.4" width="195.164" height="1351.51">
    <properties>
-    <property name="quest" value="spot-orc-grunt"/>
+    <property name="quest" value="spot-training-dummy"/>
     <property name="quest-line" value="intro"/>
-    <property name="send-event" value="spot-orc-grunt"/>
+    <property name="send-event" value="spot-training-dummy"/>
    </properties>
   </object>
   <object id="639" name="training-dummy" type="entity" x="11661.2" y="2864.31" width="128" height="128">

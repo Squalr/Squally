@@ -14,6 +14,7 @@ protected:
 	virtual ~SnowmanBehaviorGroup();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehaviorGroup super;

@@ -64,6 +64,11 @@ void SquallyWeaponCollisionBehavior::onLoad()
 	});
 }
 
+void SquallyWeaponCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyWeaponCollisionBehavior::onWeaponChange()
 {
 	this->squally->getAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)

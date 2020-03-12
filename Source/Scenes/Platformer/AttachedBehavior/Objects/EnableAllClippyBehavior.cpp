@@ -33,3 +33,8 @@ void EnableAllClippyBehavior::onLoad()
 {
 	this->hackableObject->enableAllClippy();
 }
+
+void EnableAllClippyBehavior::onDisable()
+{
+	super::onDisable();
+}

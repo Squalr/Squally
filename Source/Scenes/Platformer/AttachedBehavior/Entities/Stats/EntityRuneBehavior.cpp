@@ -63,6 +63,11 @@ void EntityRuneBehavior::onLoad()
 	}
 }
 
+void EntityRuneBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityRuneBehavior::update(float dt)
 {
 	super::update(dt);

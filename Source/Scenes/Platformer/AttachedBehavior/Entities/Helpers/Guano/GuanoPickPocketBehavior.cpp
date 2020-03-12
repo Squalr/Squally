@@ -105,6 +105,11 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 	));
 }
 
+void GuanoPickPocketBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void GuanoPickPocketBehavior::endPickPocket()
 {
 	this->isPickPocketing = false;

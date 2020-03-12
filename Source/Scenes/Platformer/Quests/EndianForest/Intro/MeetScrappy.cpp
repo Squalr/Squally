@@ -117,7 +117,7 @@ void MeetScrappy::runCinematicSequencePt1()
 			{
 				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), "", 2.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), SoundResources::Platformer_Entities_Droid_DroidBrief, 2.0f, [=]()
 					{
 						this->runCinematicSequencePt2();
 					});

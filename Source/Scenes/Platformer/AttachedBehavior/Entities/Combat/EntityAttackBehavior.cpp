@@ -63,6 +63,11 @@ void EntityAttackBehavior::onLoad()
 	this->buildEquipmentAttacks();
 }
 
+void EntityAttackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 std::vector<PlatformerAttack*> EntityAttackBehavior::getAttacks()
 {
 	std::vector<PlatformerAttack*> attacks = std::vector<PlatformerAttack*>();

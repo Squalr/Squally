@@ -46,6 +46,11 @@ void SquallyMouthBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
+void SquallyMouthBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyMouthBehavior::update(float dt)
 {
 	super::update(dt);

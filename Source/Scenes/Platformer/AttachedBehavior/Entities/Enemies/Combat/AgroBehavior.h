@@ -25,10 +25,11 @@ public:
 
 protected:
 	AgroBehavior(GameObject* owner);
-	~AgroBehavior();
+	virtual ~AgroBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

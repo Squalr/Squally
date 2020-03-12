@@ -19,6 +19,7 @@ protected:
 	virtual ~EnemyCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void onEntityCollisionCreated() override;
 
 private:

@@ -45,3 +45,13 @@ void DisabledPortal::enablePortal()
 {
 	this->portal->enable();
 }
+
+void DisabledPortal::onDisable()
+{
+	super::onDisable();
+	
+	if (this->portal != nullptr)
+	{
+		this->portal->enable();
+	}
+}

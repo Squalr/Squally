@@ -48,3 +48,8 @@ void SquallyNoSavePositionBehavior::onEnter()
 void SquallyNoSavePositionBehavior::onLoad()
 {
 }
+
+void SquallyNoSavePositionBehavior::onDisable()
+{
+	super::onDisable();
+}

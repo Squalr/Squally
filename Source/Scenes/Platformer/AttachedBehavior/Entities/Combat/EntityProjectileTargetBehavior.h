@@ -25,6 +25,7 @@ protected:
 	void onDeveloperModeEnable(int debugLevel) override;
 	void onDeveloperModeDisable() override;
 	void onLoad() override;
+	void onDisable() override;
 	void initializePositions() override;
 
 private:

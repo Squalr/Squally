@@ -33,6 +33,7 @@ protected:
 	virtual ~EntityMovementCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

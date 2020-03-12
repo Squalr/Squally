@@ -110,3 +110,8 @@ void EntitySelectionOverlayBehavior::onLoad()
 		}
 	}));
 }
+
+void EntitySelectionOverlayBehavior::onDisable()
+{
+	super::onDisable();
+}

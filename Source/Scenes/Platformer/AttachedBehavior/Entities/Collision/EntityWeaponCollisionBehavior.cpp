@@ -63,6 +63,16 @@ void EntityWeaponCollisionBehavior::onLoad()
 	});
 }
 
+void EntityWeaponCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->weaponCollision != nullptr)
+	{
+		this->weaponCollision->setPhysicsEnabled(false);
+	}
+}
+
 void EntityWeaponCollisionBehavior::enable()
 {
 	if (this->weaponCollision == nullptr)
@@ -95,6 +105,11 @@ void EntityWeaponCollisionBehavior::setWeaponOffset(Vec2 weaponOffset)
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision()
 {
+	if (this->isInvalidated())
+	{
+		return;
+	}
+	
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
 
 	if (mainhand == nullptr)

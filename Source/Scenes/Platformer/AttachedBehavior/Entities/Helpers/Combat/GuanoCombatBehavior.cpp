@@ -58,3 +58,8 @@ void GuanoCombatBehavior::onLoad()
 		}
 	});
 }
+
+void GuanoCombatBehavior::onDisable()
+{
+	super::onDisable();
+}

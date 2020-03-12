@@ -48,6 +48,11 @@ void SquallyDefaultInventoryBehavior::onLoad()
 	this->giveDefaultItems();
 }
 
+void SquallyDefaultInventoryBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyDefaultInventoryBehavior::giveDefaultItems()
 {
 	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHasGivenDefaultItems, Value(false)).asBool())

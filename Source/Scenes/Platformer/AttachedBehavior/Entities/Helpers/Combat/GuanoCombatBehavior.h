@@ -18,6 +18,7 @@ protected:
 
 	void initializePositions() override;
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

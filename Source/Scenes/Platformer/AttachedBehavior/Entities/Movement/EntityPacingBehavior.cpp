@@ -80,6 +80,11 @@ void EntityPacingBehavior::onLoad()
 	));
 }
 
+void EntityPacingBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityPacingBehavior::assignDestination()
 {
 	float newDelta = 0.0f;

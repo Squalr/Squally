@@ -46,3 +46,8 @@ void FriendlyPlayerCollisionBehavior::onLoad()
 		});
 	});
 }
+
+void FriendlyPlayerCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}

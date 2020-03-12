@@ -30,3 +30,8 @@ SnowmanBehaviorGroup::~SnowmanBehaviorGroup()
 void SnowmanBehaviorGroup::onLoad()
 {
 }
+
+void SnowmanBehaviorGroup::onDisable()
+{
+	super::onDisable();
+}

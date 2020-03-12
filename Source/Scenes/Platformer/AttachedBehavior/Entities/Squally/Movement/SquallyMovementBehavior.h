@@ -19,6 +19,7 @@ protected:
 	virtual ~SquallyMovementBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

@@ -95,3 +95,12 @@ void EntityDeveloperBehavior::onLoad()
 		this->entity->setState(StateKeys::IsAlive, Value(false));
 	});
 }
+
+void EntityDeveloperBehavior::onDisable()
+{
+	super::onDisable();
+	
+	this->resurrectButton->disableInteraction(0);
+	this->halfHealthButton->disableInteraction(0);
+	this->killButton->disableInteraction(0);
+}

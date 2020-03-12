@@ -115,6 +115,10 @@ void EntityPickPocketBehavior::onLoad()
 	this->pocketPoolDeserializer->deserialize(&deserializeArgs);
 }
 
+void EntityPickPocketBehavior::onDisable()
+{
+	super::onDisable();
+}
 
 void EntityPickPocketBehavior::attemptPickPocket()
 {

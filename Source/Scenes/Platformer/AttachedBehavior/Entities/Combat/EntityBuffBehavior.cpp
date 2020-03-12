@@ -38,6 +38,11 @@ void EntityBuffBehavior::onLoad()
 {
 }
 
+void EntityBuffBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityBuffBehavior::applyBuff(Buff* buff)
 {
 	if (this->entity == nullptr || buff == nullptr)

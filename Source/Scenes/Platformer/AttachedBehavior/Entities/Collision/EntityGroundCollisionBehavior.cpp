@@ -62,6 +62,26 @@ void EntityGroundCollisionBehavior::onLoad()
 	});
 }
 
+void EntityGroundCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->groundCollision != nullptr)
+	{
+		this->groundCollision->setPhysicsEnabled(false);
+	}
+	
+	if (this->leftCornerCollision != nullptr)
+	{
+		this->leftCornerCollision->setPhysicsEnabled(false);
+	}
+	
+	if (this->rightCornerCollision != nullptr)
+	{
+		this->rightCornerCollision->setPhysicsEnabled(false);
+	}
+}
+
 void EntityGroundCollisionBehavior::onCollideWithGround()
 {
 	// Clear current animation

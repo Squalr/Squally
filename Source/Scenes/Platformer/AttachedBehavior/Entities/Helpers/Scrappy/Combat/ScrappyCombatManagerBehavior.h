@@ -18,6 +18,7 @@ protected:
 	virtual ~ScrappyCombatManagerBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

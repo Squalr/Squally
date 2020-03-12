@@ -50,6 +50,11 @@ void DispelIllusionBehavior::onLoad()
 {
 }
 
+void DispelIllusionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void DispelIllusionBehavior::registerHackables()
 {
 	super::registerHackables();

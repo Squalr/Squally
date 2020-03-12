@@ -65,6 +65,11 @@ void SquallyManaBehavior::onLoad()
 	});
 }
 
+void SquallyManaBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyManaBehavior::saveState()
 {
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));

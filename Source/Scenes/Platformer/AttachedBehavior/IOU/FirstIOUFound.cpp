@@ -55,3 +55,8 @@ void FirstIOUFound::onLoad()
 		));
 	});
 }
+
+void FirstIOUFound::onDisable()
+{
+	super::onDisable();
+}

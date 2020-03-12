@@ -70,6 +70,11 @@ void WeakMindedBehavior::onLoad()
 	));
 }
 
+void WeakMindedBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void WeakMindedBehavior::onActivate()
 {
 	if (this->glowAnim != nullptr)

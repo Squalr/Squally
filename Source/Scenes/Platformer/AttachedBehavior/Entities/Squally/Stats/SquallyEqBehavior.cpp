@@ -40,3 +40,8 @@ void SquallyEqBehavior::onLoad()
 		entityEqBehavior->load(SaveKeys::SaveKeySquallyEq, SaveKeys::SaveKeySquallyEqExperience);
 	});
 }
+
+void SquallyEqBehavior::onDisable()
+{
+	super::onDisable();
+}

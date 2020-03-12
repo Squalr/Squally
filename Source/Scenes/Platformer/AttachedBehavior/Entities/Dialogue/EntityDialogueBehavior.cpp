@@ -186,6 +186,11 @@ void EntityDialogueBehavior::onLoad()
 	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 }
 
+void EntityDialogueBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()
 {
 	return this->speechBubble;

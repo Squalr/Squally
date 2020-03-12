@@ -17,6 +17,7 @@ protected:
 	virtual ~EnemyHealthBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

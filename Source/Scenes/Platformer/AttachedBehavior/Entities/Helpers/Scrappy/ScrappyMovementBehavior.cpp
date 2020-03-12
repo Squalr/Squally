@@ -62,6 +62,11 @@ void ScrappyMovementBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
+void ScrappyMovementBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void ScrappyMovementBehavior::update(float dt)
 {
 	super::update(dt);

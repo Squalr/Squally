@@ -72,3 +72,8 @@ void LycanBehavior::onLoad()
 		);
 	});
 }
+
+void LycanBehavior::onDisable()
+{
+	super::onDisable();
+}

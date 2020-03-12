@@ -47,6 +47,11 @@ void EntityDropTableBehavior::onLoad()
 {
 }
 
+void EntityDropTableBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityDropTableBehavior::setDropTable(std::string dropTable)
 {
 	if (this->dropPool != nullptr)

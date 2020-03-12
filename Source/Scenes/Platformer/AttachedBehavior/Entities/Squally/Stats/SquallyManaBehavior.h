@@ -16,6 +16,7 @@ protected:
 	virtual ~SquallyManaBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

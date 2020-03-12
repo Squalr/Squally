@@ -116,6 +116,16 @@ void EntityMovementCollisionBehavior::onLoad()
 	});
 }
 
+void EntityMovementCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->movementCollision != nullptr)
+	{
+		this->movementCollision->setPhysicsEnabled(false);
+	}
+}
+
 void EntityMovementCollisionBehavior::update(float dt)
 {
 	super::update(dt);

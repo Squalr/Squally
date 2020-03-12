@@ -22029,10 +22029,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Intro_D_TrapAhead() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_E_EnemySpotted : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_E_EnemySpotted* create();
+		static Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22040,14 +22040,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_E_EnemySpotted();
-		virtual ~Platformer_Quests_EndianForest_Intro_E_EnemySpotted() = default;
+		Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted();
+		virtual ~Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_F_HackerModeCombat : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_F_HackerModeCombat* create();
+		static Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22055,8 +22055,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_F_HackerModeCombat();
-		virtual ~Platformer_Quests_EndianForest_Intro_F_HackerModeCombat() = default;
+		Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted();
+		virtual ~Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted() = default;
+	};
+
+	class Platformer_Quests_EndianForest_Intro_G_HackerModeCombat : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_Intro_G_HackerModeCombat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Intro_G_HackerModeCombat();
+		virtual ~Platformer_Quests_EndianForest_Intro_G_HackerModeCombat() = default;
 	};
 
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString

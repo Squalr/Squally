@@ -66,6 +66,11 @@ void EnemyCombatEngageBehavior::onLoad()
 	}));
 }
 
+void EnemyCombatEngageBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EnemyCombatEngageBehavior::stopAllEntityActions()
 {
 	this->enemy->clearState(StateKeys::PatrolDestinationX);

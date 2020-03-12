@@ -42,3 +42,8 @@ void NoDefendBehavior::onLoad()
 {
 	CombatEvents::TriggerDisableDefend();
 }
+
+void NoDefendBehavior::onDisable()
+{
+	super::onDisable();
+}

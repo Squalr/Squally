@@ -63,6 +63,11 @@ void EntityInventoryBehavior::onLoad()
 {
 }
 
+void EntityInventoryBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 std::vector<Inventory*> EntityInventoryBehavior::getAllInventories()
 {
 	return { this->inventory, this->equipmentInventory };

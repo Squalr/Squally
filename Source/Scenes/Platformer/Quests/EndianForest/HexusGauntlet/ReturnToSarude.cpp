@@ -227,7 +227,7 @@ void ReturnToSarude::runDialogueOutro()
 	[=]()
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_UnknownForce::create(),
+		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
@@ -236,37 +236,9 @@ void ReturnToSarude::runDialogueOutro()
 		),
 		[=]()
 		{
-			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_OnlyYouCanDefeat::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_Q_LearnMoreOfTheseMonsters::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Top,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->sarude, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
-				),
-				[=]()
-				{
-				},
-				SoundResources::Platformer_Entities_Generic_ChatterLong1,
-				true
-				));
-			},
-			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
-			false
-			));
 		},
-		SoundResources::Platformer_Entities_Generic_ChatterMedium3,
-		false
+		SoundResources::Platformer_Entities_Generic_ChatterLong1,
+		true
 		));
 	},
 	SoundResources::Platformer_Entities_Generic_ChatterMedium2,

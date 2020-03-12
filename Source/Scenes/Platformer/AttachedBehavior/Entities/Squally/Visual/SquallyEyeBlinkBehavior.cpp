@@ -56,6 +56,11 @@ void SquallyEyeBlinkBehavior::onLoad()
 	this->runEyeBlinkLoop();
 }
 
+void SquallyEyeBlinkBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyEyeBlinkBehavior::runEyeBlinkLoop()
 {
 	const float BlinkSpeed = 0.0075f;

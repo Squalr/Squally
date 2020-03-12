@@ -49,3 +49,8 @@ void EntityCinematicHijackBehavior::onLoad()
 		this->entity->setState(StateKeys::CinematicHijacked, Value(false));
 	}));
 }
+
+void EntityCinematicHijackBehavior::onDisable()
+{
+	super::onDisable();
+}

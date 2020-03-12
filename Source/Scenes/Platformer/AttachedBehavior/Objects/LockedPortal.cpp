@@ -68,6 +68,16 @@ void LockedPortal::onLoad()
 	}, Squally::MapKeySqually);
 }
 
+void LockedPortal::onDisable()
+{
+	super::onDisable();
+	
+	if (this->portal != nullptr)
+	{
+		this->portal->unlock();
+	}
+}
+
 void LockedPortal::checkForRequiredItem()
 {
 	this->portal->lock();

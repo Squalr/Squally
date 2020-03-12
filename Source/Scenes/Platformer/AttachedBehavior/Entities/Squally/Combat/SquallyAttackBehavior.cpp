@@ -57,6 +57,11 @@ void SquallyAttackBehavior::onLoad()
 	});
 }
 
+void SquallyAttackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavior)
 {
 	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)

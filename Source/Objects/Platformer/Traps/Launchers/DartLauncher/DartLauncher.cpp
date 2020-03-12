@@ -70,3 +70,8 @@ Projectile* DartLauncher::createProjectile()
 {
 	return Dart::create(this->currentAngle, this->launchSpeed);
 }
+
+Vec2 DartLauncher::getButtonOffset()
+{
+	return super::getButtonOffset() + Vec2(0.0f, -32.0f);
+}

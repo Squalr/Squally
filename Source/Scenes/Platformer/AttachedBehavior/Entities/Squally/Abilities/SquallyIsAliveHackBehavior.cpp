@@ -89,6 +89,11 @@ void SquallyIsAliveHackBehavior::onLoad()
 	});
 }
 
+void SquallyIsAliveHackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyIsAliveHackBehavior::registerHackables()
 {
 	super::registerHackables();

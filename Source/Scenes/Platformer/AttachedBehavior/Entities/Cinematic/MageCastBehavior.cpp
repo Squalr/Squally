@@ -38,3 +38,8 @@ void MageCastBehavior::onLoad()
 {
 	this->entity->getAnimations()->playAnimation("AttackCastChannel", SmartAnimationNode::AnimationPlayMode::Repeat, 1.0f);
 }
+
+void MageCastBehavior::onDisable()
+{
+	super::onDisable();
+}

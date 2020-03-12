@@ -74,6 +74,11 @@ void SquallySwimHackBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
+void SquallySwimHackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallySwimHackBehavior::registerHackables()
 {
 	super::registerHackables();

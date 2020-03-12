@@ -35,6 +35,8 @@ public:
 protected:
 	HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles = false, LocalizedString* dialogueChoiceOverride = nullptr);
 	virtual ~HexusBehaviorBase();
+	
+	void onDisable() override;
 
 	virtual MinMaxPool* generateReward() = 0;
 	virtual std::string getWinLossSaveKey() = 0;

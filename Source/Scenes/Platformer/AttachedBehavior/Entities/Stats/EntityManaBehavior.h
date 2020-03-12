@@ -20,6 +20,7 @@ protected:
 	virtual ~EntityManaBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 	PlatformerEntity* entity;
 

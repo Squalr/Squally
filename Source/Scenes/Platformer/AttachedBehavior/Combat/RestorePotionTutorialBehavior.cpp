@@ -54,3 +54,8 @@ void RestorePotionTutorialBehavior::onLoad()
 		}
 	}));
 }
+
+void RestorePotionTutorialBehavior::onDisable()
+{
+	super::onDisable();
+}

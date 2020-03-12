@@ -26,3 +26,8 @@ HelperCollisionBehavior::~HelperCollisionBehavior()
 void HelperCollisionBehavior::onEntityCollisionCreated()
 {
 }
+
+void HelperCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}

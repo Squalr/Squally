@@ -17,6 +17,7 @@ protected:
 	virtual ~SquallyOutOfCombatAttackBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef EntityOutOfCombatAttackBehavior super;

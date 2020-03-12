@@ -49,6 +49,11 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 	});
 }
 
+void SquallyOutOfCombatAttackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 {
 	Weapon* weapon = this->getWeapon();

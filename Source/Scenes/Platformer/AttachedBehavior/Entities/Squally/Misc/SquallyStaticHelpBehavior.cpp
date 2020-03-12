@@ -67,3 +67,8 @@ void SquallyStaticHelpBehavior::onLoad()
 		SquallyStaticHelpBehavior::PositionZPtr = collisionBehavior->movementCollision->getPositionZPtr();
 	});
 }
+
+void SquallyStaticHelpBehavior::onDisable()
+{
+	super::onDisable();
+}

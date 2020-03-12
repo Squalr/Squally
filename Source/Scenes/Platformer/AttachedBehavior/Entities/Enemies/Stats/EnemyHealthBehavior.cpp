@@ -63,3 +63,8 @@ void EnemyHealthBehavior::onLoad()
 		}
 	}
 }
+
+void EnemyHealthBehavior::onDisable()
+{
+	super::onDisable();
+}

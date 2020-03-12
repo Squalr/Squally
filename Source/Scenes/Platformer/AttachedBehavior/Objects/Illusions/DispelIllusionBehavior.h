@@ -16,6 +16,7 @@ protected:
 	virtual ~DispelIllusionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void registerHackables() override;
 
 private:

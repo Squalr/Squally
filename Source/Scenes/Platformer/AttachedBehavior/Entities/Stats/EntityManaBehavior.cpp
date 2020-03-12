@@ -74,6 +74,11 @@ void EntityManaBehavior::onLoad()
 	});
 }
 
+void EntityManaBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 int EntityManaBehavior::getMana()
 {
 	return this->entity->getStateOrDefaultInt(StateKeys::Mana, 0);

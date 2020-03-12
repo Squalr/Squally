@@ -81,6 +81,11 @@ void FriendlyExpBarBehavior::onLoad()
 	this->levelUpFx->setPosition(entityCenter + Vec2(0.0f, offetY - 16.0f));
 }
 
+void FriendlyExpBarBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void FriendlyExpBarBehavior::giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain)
 {
 	this->expProgressBar->runAction(Sequence::create(

@@ -132,6 +132,11 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	this->platformerEntityDeserializer->deserialize(&args);
 }
 
+void HelperManagerBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperName)
 {
 	if (this->attachedBehaviorMap.find(helperName) != this->attachedBehaviorMap.end())

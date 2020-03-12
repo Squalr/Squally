@@ -75,3 +75,8 @@ void ScrappyHackableCueBehavior::onLoad()
 		}
 	}));
 }
+
+void ScrappyHackableCueBehavior::onDisable()
+{
+	super::onDisable();
+}

@@ -149,3 +149,8 @@ void SquallyReceiveItemBehavior::onLoad()
 		}
 	}));
 }
+
+void SquallyReceiveItemBehavior::onDisable()
+{
+	super::onDisable();
+}

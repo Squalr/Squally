@@ -16,6 +16,7 @@ protected:
 	virtual ~EntityCinematicHijackBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

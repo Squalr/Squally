@@ -37,6 +37,16 @@ void EntityCollisionBehaviorBase::onLoad()
 	});
 }
 
+void EntityCollisionBehaviorBase::onDisable()
+{
+	super::onDisable();
+	
+	if (this->entityCollision != nullptr)
+	{
+		this->entityCollision->setPhysicsEnabled(false);
+	}
+}
+
 void EntityCollisionBehaviorBase::buildEntityCollision()
 {
 	this->entityCollision = CollisionObject::create(

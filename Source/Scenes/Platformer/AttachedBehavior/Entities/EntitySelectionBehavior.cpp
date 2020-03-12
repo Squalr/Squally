@@ -53,6 +53,11 @@ void EntitySelectionBehavior::onLoad()
 {
 }
 
+void EntitySelectionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntitySelectionBehavior::setEntityClickCallbacks(std::function<void()> onClick, std::function<void()> onMouseOver, std::function<void()> onMouseOut)
 {
 	this->clickHitbox->enableInteraction();

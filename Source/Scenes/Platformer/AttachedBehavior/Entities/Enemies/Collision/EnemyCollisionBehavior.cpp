@@ -49,6 +49,11 @@ void EnemyCollisionBehavior::onLoad()
 	});
 }
 
+void EnemyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EnemyCollisionBehavior::onEntityCollisionCreated()
 {
 }

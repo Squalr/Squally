@@ -103,6 +103,11 @@ void SquallyCollisionBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
+void SquallyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyCollisionBehavior::onEntityCollisionCreated()
 {
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Enemy, (int)PlatformerCollisionType::EnemyWeapon }, [=](CollisionObject::CollisionData collisionData)

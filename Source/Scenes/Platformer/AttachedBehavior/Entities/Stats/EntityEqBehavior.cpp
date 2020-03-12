@@ -45,6 +45,11 @@ void EntityEqBehavior::onLoad()
 {
 }
 
+void EntityEqBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityEqBehavior::load(std::string saveKeyEq, std::string saveKeyExp)
 {
 	this->saveKeyEq = saveKeyEq;

@@ -89,6 +89,11 @@ void TrainingHealTutorialBehavior::onLoad()
 	HackableEvents::TriggerDisallowHackerMode();
 }
 
+void TrainingHealTutorialBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void TrainingHealTutorialBehavior::runTutorial()
 {
 	if (healCount > TrainingHealTutorialBehavior::HealsBeforeTutorial|| this->scrappy == nullptr)
@@ -107,7 +112,7 @@ void TrainingHealTutorialBehavior::runTutorial()
 				CombatEvents::TriggerPauseTimelineCinematic();
 
 				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_Intro_F_HackerModeCombat::create()
+					Strings::Platformer_Quests_EndianForest_Intro_G_HackerModeCombat::create()
 						->setStringReplacementVariables(Strings::Common_Brackets::create())
 						->setStringReplacementVariables(Strings::Input_Tab::create()),
 					DialogueEvents::DialogueVisualArgs(

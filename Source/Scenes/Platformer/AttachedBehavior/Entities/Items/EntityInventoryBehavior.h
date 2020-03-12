@@ -24,6 +24,7 @@ protected:
 	virtual ~EntityInventoryBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

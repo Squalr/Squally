@@ -16,6 +16,7 @@ protected:
 	virtual ~SquallyDefaultInventoryBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

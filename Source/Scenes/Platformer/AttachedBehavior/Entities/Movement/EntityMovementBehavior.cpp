@@ -120,6 +120,11 @@ void EntityMovementBehavior::onLoad()
 	});
 }
 
+void EntityMovementBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);

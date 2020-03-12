@@ -85,6 +85,11 @@ void UnknownValueBarBehavior::onLoad()
 	this->healthBar->setPosition(entityCenter + Vec2(0.0f, offetY));
 }
 
+void UnknownValueBarBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void UnknownValueBarBehavior::update(float dt)
 {
 	super::update(dt);

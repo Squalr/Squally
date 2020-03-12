@@ -85,8 +85,8 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->marcel, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->marcel, true)
 			),
 			[=]()
 			{
@@ -101,8 +101,8 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->marcel, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->marcel, true)
 			),
 			[=]()
 			{
@@ -117,8 +117,8 @@ void WelcomeToMagesGuild::runCinematicSequence()
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->marcel, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->marcel, true)
 			),
 			[=]()
 			{

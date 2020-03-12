@@ -45,6 +45,11 @@ void SquallyAnimationBehavior::onLoad()
 {
 }
 
+void SquallyAnimationBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyAnimationBehavior::update(float dt)
 {
 	super::update(dt);

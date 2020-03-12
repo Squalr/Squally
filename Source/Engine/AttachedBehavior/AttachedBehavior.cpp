@@ -34,9 +34,12 @@ void AttachedBehavior::onEnterTransitionDidFinish()
 	}
 }
 
-void AttachedBehavior::initializeListeners()
+void AttachedBehavior::onDisable()
 {
-	super::initializeListeners();
+	this->invalidated = true;
+
+	this->unscheduleUpdate();
+	this->removeAllListeners();
 }
 
 void AttachedBehavior::invalidate()
@@ -56,5 +59,5 @@ void AttachedBehavior::toggleQueryable(bool queryable)
 
 bool AttachedBehavior::isQueryable()
 {
-	return this->queryable;
+	return (this->queryable && !this->invalidated);
 }

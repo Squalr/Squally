@@ -28,6 +28,7 @@ protected:
 	virtual ~EntityRuneBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float) override;
 
 	PlatformerEntity* entity;

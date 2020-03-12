@@ -17,6 +17,7 @@ protected:
 	virtual ~ScrappyMovementBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void update(float dt) override;
 
 private:

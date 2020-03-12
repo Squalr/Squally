@@ -65,6 +65,11 @@ void EntityOutOfCombatAttackBehavior::onLoad()
 {
 }
 
+void EntityOutOfCombatAttackBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain)
 {
 	if (this->isPerformingOutOfCombatAttack || this->entity->getStateOrDefaultBool(StateKeys::CinematicHijacked, false))

@@ -31,3 +31,8 @@ HelperBehaviorGroup::~HelperBehaviorGroup()
 void HelperBehaviorGroup::onLoad()
 {
 }
+
+void HelperBehaviorGroup::onDisable()
+{
+	super::onDisable();
+}

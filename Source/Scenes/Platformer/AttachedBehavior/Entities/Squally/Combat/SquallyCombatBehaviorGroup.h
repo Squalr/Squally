@@ -21,6 +21,7 @@ protected:
 	virtual ~SquallyCombatBehaviorGroup();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehaviorGroup super;

@@ -24,6 +24,7 @@ protected:
 	virtual ~EntityHealthBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 	PlatformerEntity* entity;
 

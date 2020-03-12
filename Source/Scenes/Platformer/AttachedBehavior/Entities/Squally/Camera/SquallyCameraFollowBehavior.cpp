@@ -54,3 +54,8 @@ void SquallyCameraFollowBehavior::onLoad()
 	
 	GameCamera::getInstance()->setTarget(trackingData, true);
 }
+
+void SquallyCameraFollowBehavior::onDisable()
+{
+	super::onDisable();
+}

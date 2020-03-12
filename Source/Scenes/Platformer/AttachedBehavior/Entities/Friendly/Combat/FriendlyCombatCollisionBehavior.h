@@ -16,6 +16,7 @@ protected:
 	virtual ~FriendlyCombatCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 	void onEntityCollisionCreated() override;
 
 private:

@@ -244,6 +244,11 @@ void HexusBehaviorBase::onLoad()
 	});
 }
 
+void HexusBehaviorBase::onDisable()
+{
+	super::onDisable();
+}
+
 void HexusBehaviorBase::giveItems()
 {
 	if (this->rewardPool != nullptr)

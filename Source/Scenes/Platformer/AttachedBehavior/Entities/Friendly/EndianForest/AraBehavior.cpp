@@ -136,3 +136,8 @@ void AraBehavior::onLoad()
 		));
 	});
 }
+
+void AraBehavior::onDisable()
+{
+	super::onDisable();
+}

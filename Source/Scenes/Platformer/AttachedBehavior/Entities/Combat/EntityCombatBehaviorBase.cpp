@@ -70,6 +70,11 @@ void EntityCombatBehaviorBase::onLoad()
 	});
 }
 
+void EntityCombatBehaviorBase::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityCombatBehaviorBase::onBeforeDamageTaken(int* damage, bool* blocked, std::function<void()> handleCallback)
 {
 	if (damage >= 0)

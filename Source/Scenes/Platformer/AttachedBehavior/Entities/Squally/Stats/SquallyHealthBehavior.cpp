@@ -86,6 +86,11 @@ void SquallyHealthBehavior::onLoad()
 	}
 }
 
+void SquallyHealthBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyHealthBehavior::saveState()
 {
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));

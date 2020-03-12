@@ -52,3 +52,8 @@ void EnemyBattleAllyBehavior::onLoad()
 		dynamic_cast<PlatformerEnemy*>(this->entity)->setDropPool("");
 	}
 }
+
+void EnemyBattleAllyBehavior::onDisable()
+{
+	super::onDisable();
+}

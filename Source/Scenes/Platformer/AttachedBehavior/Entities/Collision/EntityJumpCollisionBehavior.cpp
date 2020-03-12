@@ -52,6 +52,16 @@ void EntityJumpCollisionBehavior::onLoad()
 	});
 }
 
+void EntityJumpCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->jumpCollision != nullptr)
+	{
+		this->jumpCollision->setPhysicsEnabled(false);
+	}
+}
+
 bool EntityJumpCollisionBehavior::canJump()
 {
 	for (auto collision : this->jumpCollision->getCurrentCollisions())

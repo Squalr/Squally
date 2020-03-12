@@ -128,6 +128,11 @@ void SquallyEquipmentVisualBehavior::onLoad()
 	}
 }
 
+void SquallyEquipmentVisualBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 {
 	if (DeveloperModeController::IsDeveloperBuild)

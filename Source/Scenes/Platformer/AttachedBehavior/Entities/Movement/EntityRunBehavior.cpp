@@ -42,3 +42,8 @@ void EntityRunBehavior::onLoad()
 		entityMovementBehavior->setMoveAcceleration(EntityRunBehavior::RunAcceleration);
 	});
 }
+
+void EntityRunBehavior::onDisable()
+{
+	super::onDisable();
+}

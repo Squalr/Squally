@@ -46,3 +46,8 @@ void EntityDisarmedBehavior::onLoad()
 		mainhand->replaceSprite(UIResources::EmptyImage);
 	}
 }
+
+void EntityDisarmedBehavior::onDisable()
+{
+	super::onDisable();
+}

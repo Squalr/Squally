@@ -35,3 +35,8 @@ ScrappyBehaviorGroup::~ScrappyBehaviorGroup()
 void ScrappyBehaviorGroup::onLoad()
 {
 }
+
+void ScrappyBehaviorGroup::onDisable()
+{
+	super::onDisable();
+}

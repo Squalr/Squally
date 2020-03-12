@@ -70,6 +70,11 @@ void SquallyItemDiscoveryBehavior::onLoad()
 	}));
 }
 
+void SquallyItemDiscoveryBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyItemDiscoveryBehavior::discoverItem(Item* item)
 {
 	PlatformerEvents::TriggerCinematicHijack();

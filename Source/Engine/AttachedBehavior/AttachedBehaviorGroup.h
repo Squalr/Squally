@@ -10,7 +10,7 @@ public:
 
 protected:
 	AttachedBehaviorGroup(GameObject* owner, std::vector<AttachedBehavior*> attachedBehavior);
-	~AttachedBehaviorGroup();
+	virtual ~AttachedBehaviorGroup();
 
 private:
 	typedef AttachedBehavior super;

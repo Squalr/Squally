@@ -40,6 +40,11 @@ void SquallyFloatBehavior::onLoad()
 	this->scheduleUpdate();
 }
 
+void SquallyFloatBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyFloatBehavior::update(float dt)
 {
 	super::update(dt);

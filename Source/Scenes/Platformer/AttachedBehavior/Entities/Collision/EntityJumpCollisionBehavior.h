@@ -21,6 +21,7 @@ protected:
 	virtual ~EntityJumpCollisionBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

@@ -140,6 +140,11 @@ void SquallyMovementBehavior::onLoad()
 	}
 }
 
+void SquallyMovementBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyMovementBehavior::update(float dt)
 {
 	// Soft save the player's position

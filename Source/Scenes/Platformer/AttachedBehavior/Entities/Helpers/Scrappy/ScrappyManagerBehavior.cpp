@@ -76,6 +76,11 @@ void ScrappyManagerBehavior::onLoad()
 	});
 }
 
+void ScrappyManagerBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void ScrappyManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();

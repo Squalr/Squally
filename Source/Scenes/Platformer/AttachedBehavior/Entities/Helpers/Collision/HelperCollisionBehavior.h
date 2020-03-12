@@ -19,6 +19,7 @@ protected:
 	virtual ~HelperCollisionBehavior();
 	
 	void onEntityCollisionCreated() override;
+	void onDisable() override;
 
 private:
 	typedef EntityCollisionBehaviorBase super;

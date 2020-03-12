@@ -76,6 +76,11 @@ void SquallyHackingBehavior::onLoad()
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 }
 
+void SquallyHackingBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyHackingBehavior::toggleHackerMode()
 {
 	HackableEvents::TriggerHackerModeToggle(HackableEvents::HackToggleArgs());

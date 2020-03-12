@@ -81,6 +81,11 @@ void EntityHealthBehavior::onLoad()
 	});
 }
 
+void EntityHealthBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 int EntityHealthBehavior::getHealth()
 {
 	return this->entity->getStateOrDefaultInt(StateKeys::Health, 0);

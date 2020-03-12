@@ -39,3 +39,8 @@ SquallyVisualBehaviorGroup::~SquallyVisualBehaviorGroup()
 void SquallyVisualBehaviorGroup::onLoad()
 {
 }
+
+void SquallyVisualBehaviorGroup::onDisable()
+{
+	super::onDisable();
+}

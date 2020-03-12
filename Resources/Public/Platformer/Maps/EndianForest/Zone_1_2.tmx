@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="76" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="777">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="76" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="778">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -186,6 +186,13 @@
   <object id="771" name="life-stone" type="object" x="5855" y="856.5" width="146" height="423"/>
   <object id="775" name="solid-npc" type="collision" x="8315.24" y="611.082" width="121.03" height="777.836"/>
   <object id="776" name="solid-npc" type="collision" x="6009.18" y="517.143" width="121.03" height="777.836"/>
+  <object id="777" name="trigger" type="object" x="6250.42" y="-47.755" width="195.164" height="1351.51">
+   <properties>
+    <property name="quest" value="spot-orc-grunt"/>
+    <property name="quest-line" value="intro"/>
+    <property name="send-event" value="spot-orc-grunt"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -212,7 +219,7 @@
   </object>
   <object id="774" name="orc-grunt" type="entity" x="7414.79" y="1145.09" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,pacing"/>
+    <property name="attached-behavior" value="enemy,pacing,agro"/>
     <property name="battle-behavior" value="restore-potion-tutorial,no-items,no-defend,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="drop-pool" value="ef-generic"/>

@@ -49,6 +49,11 @@ void FriendlyCollisionBehavior::onLoad()
 	});
 }
 
+void FriendlyCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void FriendlyCollisionBehavior::onEntityCollisionCreated()
 {
 }

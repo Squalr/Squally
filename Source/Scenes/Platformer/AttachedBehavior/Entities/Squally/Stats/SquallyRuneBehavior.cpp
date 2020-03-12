@@ -62,6 +62,11 @@ void SquallyRuneBehavior::onLoad()
 	}
 }
 
+void SquallyRuneBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void SquallyRuneBehavior::saveState()
 {
 	if (this->entityRuneBehavior != nullptr)

@@ -105,11 +105,10 @@ void PivotLauncher::update(float dt)
 
 Vec2 PivotLauncher::getButtonOffset()
 {
-	const float width = 0.0f;
-	const float height = -124.0f;
-	const float angle = float(M_PI) * this->currentAngle / 180.0f;
+	const float OffsetDistance = 124.0f;
+	const float Angle = float(M_PI) * this->currentAngle / 180.0f;
 
-	return Vec2(std::sin(angle) * width, std::cos(angle) * height);
+	return Vec2(std::cos(Angle) * OffsetDistance, std::sin(Angle) * OffsetDistance);
 }
 
 void PivotLauncher::registerHackables()

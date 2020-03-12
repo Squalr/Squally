@@ -110,6 +110,11 @@ void EntityTextOverlayBehavior::onLoad()
 	}));
 }
 
+void EntityTextOverlayBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void EntityTextOverlayBehavior::runDelta(int delta, bool zeroAsGreen)
 {
 	bool isGreen = (delta > 0 || (delta == 0 && zeroAsGreen));

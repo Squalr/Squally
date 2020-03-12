@@ -65,3 +65,8 @@ void IllusionBehavior::onLoad()
 		}
 	}));
 }
+
+void IllusionBehavior::onDisable()
+{
+	super::onDisable();
+}

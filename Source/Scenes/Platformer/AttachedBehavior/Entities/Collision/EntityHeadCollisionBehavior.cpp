@@ -51,6 +51,16 @@ void EntityHeadCollisionBehavior::onLoad()
 	});
 }
 
+void EntityHeadCollisionBehavior::onDisable()
+{
+	super::onDisable();
+	
+	if (this->headCollision != nullptr)
+	{
+		this->headCollision->setPhysicsEnabled(false);
+	}
+}
+
 bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collisonObject)
 {
 	Node* currentCollisionGroup = collisonObject->getParent();

@@ -9,11 +9,12 @@ public:
 	bool isInvalidated();
 	bool isQueryable();
 
+	virtual void onDisable();
+
 protected:
 	AttachedBehavior(GameObject* owner);
 	virtual ~AttachedBehavior();
 
-	void initializeListeners() override;
 	void onEnterTransitionDidFinish() override;
 
 	virtual void onLoad() = 0;

@@ -64,6 +64,11 @@ void ScrappyCombatManagerBehavior::onLoad()
 	});
 }
 
+void ScrappyCombatManagerBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void ScrappyCombatManagerBehavior::spawnScrappy()
 {
 	ValueMap properties = ValueMap();

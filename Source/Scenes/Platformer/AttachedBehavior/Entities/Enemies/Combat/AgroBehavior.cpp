@@ -75,6 +75,11 @@ void AgroBehavior::onLoad()
 	}, Squally::MapKeySqually);
 }
 
+void AgroBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void AgroBehavior::enable()
 {
 	this->isEnabled = true;

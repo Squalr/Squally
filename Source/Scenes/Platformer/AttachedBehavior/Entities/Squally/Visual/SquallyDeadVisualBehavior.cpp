@@ -80,3 +80,8 @@ void SquallyDeadVisualBehavior::onLoad()
 		}
 	});
 }
+
+void SquallyDeadVisualBehavior::onDisable()
+{
+	super::onDisable();
+}

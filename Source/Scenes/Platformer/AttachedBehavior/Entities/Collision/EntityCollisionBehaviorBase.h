@@ -15,6 +15,7 @@ protected:
 	virtual ~EntityCollisionBehaviorBase();
 
 	void onLoad() override;
+	void onDisable() override;
 	virtual void onEntityCollisionCreated() = 0;
 
 	PlatformerEntity* entity;

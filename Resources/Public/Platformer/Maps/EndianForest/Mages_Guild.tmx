@@ -776,7 +776,7 @@
   </properties>
   <object id="907" name="marble" type="terrain" x="3494.27" y="-98.697" width="1317.52" height="245.879">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

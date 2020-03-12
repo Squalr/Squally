@@ -19,6 +19,7 @@ protected:
 	virtual ~EntityPickPocketBehavior();
 
 	void onLoad() override;
+	void onDisable() override;
 
 private:
 	typedef AttachedBehavior super;

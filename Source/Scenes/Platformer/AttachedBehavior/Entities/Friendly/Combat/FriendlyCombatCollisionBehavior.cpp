@@ -38,6 +38,11 @@ void FriendlyCombatCollisionBehavior::onLoad()
     super::onLoad();
 }
 
+void FriendlyCombatCollisionBehavior::onDisable()
+{
+	super::onDisable();
+}
+
 void FriendlyCombatCollisionBehavior::onEntityCollisionCreated()
 {
 }
