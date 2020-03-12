@@ -81,7 +81,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->targetSelectionMenu = TargetSelectionMenu::create(this->timeline);
 	this->firstStrikeMenu = FirstStrikeMenu::create();
 	this->defeatMenu = DefeatMenu::create();
-	this->rewardsMenu = RewardsMenu::create();
+	this->rewardsMenu = RewardsMenu::create(this->timeline);
 	this->enemyAIHelper = CombatAIHelper::create();
 	this->hackerModeWarningHud = HackerModeWarningHud::create();
 	this->notificationHud = NotificationHud::create();

@@ -27,6 +27,8 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -38,21 +40,22 @@
 
 using namespace cocos2d;
 
-RewardsMenu* RewardsMenu::create()
+RewardsMenu* RewardsMenu::create(Timeline* timelineRef)
 {
-	RewardsMenu* instance = new RewardsMenu();
+	RewardsMenu* instance = new RewardsMenu(timelineRef);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RewardsMenu::RewardsMenu()
+RewardsMenu::RewardsMenu(Timeline* timelineRef)
 {
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
 	this->expNode = Node::create();
 	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
 	this->emblemCount = 0;
+	this->timelineRef = timelineRef;
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
 
@@ -139,10 +142,13 @@ void RewardsMenu::giveExp()
 				const int levelDelta = intendedLevel - currentLevel;
 				int expGain = 0;
 				
-				ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
+				for (auto next : timelineRef->getEntries())
 				{
-					expGain += StatsTables::getKillExp(enemy);
-				}), PlatformerEnemy::PlatformerEnemyTag);
+					if (!next->isPlayerEntry())
+					{
+						expGain += StatsTables::getKillExp(next->getEntity());
+					}
+				}
 
 				// This determins how drastic penalties and losses are for being outside of the intended level. Higher is more drastic.
 				static const float GainFactor = 1.25f;
