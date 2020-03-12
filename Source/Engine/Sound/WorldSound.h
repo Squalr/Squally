@@ -11,10 +11,14 @@ public:
 	static const std::string MapKeyWorldSound;
 
 protected:
+	WorldSound(cocos2d::ValueMap& properties, std::string soundResource);
+	virtual ~WorldSound();
+
+	void onEnterTransitionDidFinish() override;
+	void update(float dt) override;
 
 private:
 	typedef Sound super;
 
-	WorldSound(cocos2d::ValueMap& properties, std::string soundResource);
-	virtual ~WorldSound();
+	void updateDistanceFade();
 };

@@ -13,7 +13,6 @@ public:
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 
 	void setCustomMultiplier(float customMultiplier);
-	void toggleCameraDistanceFade(bool enableCameraDistanceFade);
 	void setSoundResource(std::string soundResource);
 	std::string getSoundResource();
 
@@ -46,8 +45,6 @@ protected:
 
 private:
 	typedef GameObject super;
-
-	void updateDistanceFade();
 
 	static const std::string KeyScheduleFadeOutAudio;
 };

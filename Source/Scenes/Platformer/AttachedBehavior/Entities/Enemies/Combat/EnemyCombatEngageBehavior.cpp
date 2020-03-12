@@ -81,6 +81,11 @@ void EnemyCombatEngageBehavior::stopAllEntityActions()
 
 void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 {
+	if (!this->canEngage)
+	{
+		return;
+	}
+
 	std::vector<CombatMap::CombatData> playerCombatData = std::vector<CombatMap::CombatData>();
 	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
 
@@ -108,7 +113,10 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 
 	PlatformerEvents::TriggerEnemyEngaged(PlatformerEvents::EnemyEngagedArgs());
 	
-	this->engageSound->play();
+	if (!this->engageSound->isPlaying())
+	{
+		this->engageSound->play();
+	}
 
 	this->runAction(Sequence::create(
 		DelayTime::create(CombatFadeInHud::AnimationTimeBudget + 0.25f),
