@@ -23,14 +23,16 @@ public:
 
 	void disableBackdrop();
 
-private:
-	typedef Hud super;
+protected:
 	ConfirmationMenu();
-	~ConfirmationMenu();
+	virtual ~ConfirmationMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+
+private:
+	typedef Hud super;
 	void confirm();
 	void close();
 

@@ -9,6 +9,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Events/NotificationEvents.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -148,6 +149,8 @@ void ConfirmationMenu::confirm()
 	{
 		this->onConfirmCallback();
 	}
+
+	NotificationEvents::TriggerConfirmationEnd();
 	
 	this->setVisible(false);
 }
@@ -158,6 +161,8 @@ void ConfirmationMenu::close()
 	{
 		this->onCancelCallback();
 	}
+	
+	NotificationEvents::TriggerConfirmationEnd();
 
 	this->setVisible(false);
 }

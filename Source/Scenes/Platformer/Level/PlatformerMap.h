@@ -34,6 +34,8 @@ private:
 	void onExit() override;
 	void update(float dt) override;
 
+	bool awaitingConfirmationEnd;
+
 	GameHud* gameHud;
 	NotificationHud* notificationHud;
 	Cipher* cipher;

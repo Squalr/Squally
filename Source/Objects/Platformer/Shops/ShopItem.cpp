@@ -13,6 +13,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/NotificationEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
@@ -20,6 +21,8 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -109,7 +112,22 @@ void ShopItem::initializeListeners()
 
 	this->itemClickHitbox->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->sellItem();
+		if (this->item == nullptr)
+		{
+			return;
+		}
+
+		NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
+			Strings::Platformer_Dialogue_Shopkeepers_DoYouWantToBuy::create()
+				->setStringReplacementVariables(this->item->getString()),
+			[=]()
+			{
+				this->sellItem();
+			},
+			[=]()
+			{
+			}
+		));
 	});
 }
 

@@ -23,7 +23,8 @@ public:
 
 protected:
 	ShopItem(cocos2d::ValueMap& properties);
-	~ShopItem();
+	virtual ~ShopItem();
+	
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;

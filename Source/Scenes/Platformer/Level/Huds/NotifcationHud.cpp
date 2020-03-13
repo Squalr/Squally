@@ -14,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Events/NotificationEvents.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
 
@@ -41,6 +42,7 @@ NotificationHud::NotificationHud()
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
 	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->confirmationMenu = ConfirmationMenu::create();
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
@@ -69,6 +71,7 @@ NotificationHud::NotificationHud()
 	this->takeoverNode->addChild(this->okButton);
 	this->addChild(this->takeoverNode);
 	this->addChild(this->notificationsNode);
+	this->addChild(this->confirmationMenu);
 	this->addChild(this->notificationSound);
 }
 
@@ -120,6 +123,16 @@ void NotificationHud::initializeListeners()
 		if (args != nullptr)
 		{
 			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
+	{
+		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
+		
+		if (args != nullptr)
+		{
+			this->confirmationMenu->showMessage(args->confirmationMessage, args->confirmCallback, args->cancelCallback);
 		}
 	}));
 

@@ -26,6 +26,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/CipherEvents.h"
 #include "Events/HexusEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
@@ -79,6 +80,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->craftingMenu = CraftingMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->canPause = true;
+	this->awaitingConfirmationEnd = false;
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create(
@@ -168,6 +170,21 @@ void PlatformerMap::initializeListeners()
 		{
 			// In the future, we can pass parameters via EnemyEngagedArgs to dictate which fade-in animation to use
 			this->combatFadeInNode->addChild(CombatFadeInHudFactory::getRandomFadeIn());
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
+	{
+		this->awaitingConfirmationEnd = true;
+
+		GameUtils::focus(this->notificationHud);
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmationEnd, [=](EventCustom* eventCustom)
+	{
+		if (this->awaitingConfirmationEnd)
+		{
+			GameUtils::focus(this);
 		}
 	}));
 
