@@ -6204,6 +6204,21 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Bows_CompositeBow() = default;
 	};
 
+	class Items_Equipment_Weapons_Bows_CrossBow : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Bows_CrossBow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Bows_CrossBow();
+		virtual ~Items_Equipment_Weapons_Bows_CrossBow() = default;
+	};
+
 	class Items_Equipment_Weapons_Bows_FrostBow : public LocalizedString
 	{
 	public:

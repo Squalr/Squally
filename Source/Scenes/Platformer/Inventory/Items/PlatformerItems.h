@@ -94,6 +94,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/ArchersBow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/BoneBow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/CompositeBow.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/CrossBow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/FrostBow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/HuntersBow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/IvoryBow.h"

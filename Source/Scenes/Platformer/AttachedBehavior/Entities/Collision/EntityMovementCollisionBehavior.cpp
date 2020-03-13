@@ -63,7 +63,7 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 
 EntityMovementCollisionBehavior::~EntityMovementCollisionBehavior()
 {
-	if (this->movementCollision->getParent() != nullptr && this->movementCollision->getParent() != this)
+	if (this->movementCollision != nullptr && this->movementCollision->getParent() != nullptr && this->movementCollision->getParent() != this)
 	{
 		this->movementCollision->getParent()->removeChild(this->movementCollision);
 	}

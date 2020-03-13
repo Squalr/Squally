@@ -14,7 +14,8 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Sword/Slash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Maces/MaceSwing.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Swords/Slash.h"
 
 #include "Resources/UIResources.h"
 
@@ -68,29 +69,29 @@ void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavi
 	{
 		Weapon* weapon = inventoryBehavior->getEquipmentInventory()->getWeapon();
 
-		if (static_cast<Axe*>(weapon) != nullptr)
+		if (dynamic_cast<Axe*>(weapon) != nullptr)
 		{
-			this->loadAxeAttacks(attackBehavior, static_cast<Axe*>(weapon));
+			this->loadAxeAttacks(attackBehavior, dynamic_cast<Axe*>(weapon));
 		}
-		else if (static_cast<Bow*>(weapon) != nullptr)
+		else if (dynamic_cast<Bow*>(weapon) != nullptr)
 		{
-			this->loadBowAttacks(attackBehavior, static_cast<Bow*>(weapon));
+			this->loadBowAttacks(attackBehavior, dynamic_cast<Bow*>(weapon));
 		}
-		else if (static_cast<Mace*>(weapon) != nullptr)
+		else if (dynamic_cast<Mace*>(weapon) != nullptr)
 		{
-			this->loadMaceAttacks(attackBehavior, static_cast<Mace*>(weapon));
+			this->loadMaceAttacks(attackBehavior, dynamic_cast<Mace*>(weapon));
 		}
-		else if (static_cast<Spear*>(weapon) != nullptr)
+		else if (dynamic_cast<Spear*>(weapon) != nullptr)
 		{
-			this->loadSpearAttacks(attackBehavior, static_cast<Spear*>(weapon));
+			this->loadSpearAttacks(attackBehavior, dynamic_cast<Spear*>(weapon));
 		}
-		else if (static_cast<Sword*>(weapon) != nullptr)
+		else if (dynamic_cast<Sword*>(weapon) != nullptr)
 		{
-			this->loadSwordAttacks(attackBehavior, static_cast<Sword*>(weapon));
+			this->loadSwordAttacks(attackBehavior, dynamic_cast<Sword*>(weapon));
 		}
-		else if (static_cast<Wand*>(weapon) != nullptr)
+		else if (dynamic_cast<Wand*>(weapon) != nullptr)
 		{
-			this->loadWandAttacks(attackBehavior, static_cast<Wand*>(weapon));
+			this->loadWandAttacks(attackBehavior, dynamic_cast<Wand*>(weapon));
 		}
 		else
 		{
@@ -128,7 +129,7 @@ void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
-	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
+	attackBehavior->registerAttack(MaceSwing::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
 void SquallyAttackBehavior::loadSpearAttacks(EntityAttackBehavior* attackBehavior, Spear* sword)
