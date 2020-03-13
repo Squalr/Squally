@@ -33,9 +33,6 @@
 
 using namespace cocos2d;
 
-const int CraftingMenu::MinHexusCards = 20;
-const int CraftingMenu::MaxHexusCards = 60;
-
 CraftingMenu* CraftingMenu::create()
 {
 	CraftingMenu* instance = new CraftingMenu();
@@ -58,6 +55,7 @@ CraftingMenu::CraftingMenu()
 	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
+	this->recipes = std::vector<Item*>();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->returnClickCallback = nullptr;
@@ -204,12 +202,10 @@ void CraftingMenu::onFilterChange()
 void CraftingMenu::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory->getItems());
+	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->recipes);
 	
-	for (auto it = items.begin(); it != items.end(); it++)
+	for (auto item : items)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
 		});
@@ -220,8 +216,9 @@ void CraftingMenu::populateItemList()
 	this->itemMenu->updateAndPositionItemText();
 }
 
-void CraftingMenu::open()
+void CraftingMenu::open(std::vector<Item*> recipes)
 {
+	this->recipes = recipes;
 	this->equipmentChanged = false;
 	this->onFilterChange();
 

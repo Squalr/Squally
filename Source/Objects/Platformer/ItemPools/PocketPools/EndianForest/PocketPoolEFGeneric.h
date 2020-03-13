@@ -11,7 +11,7 @@ public:
 
 protected:
 	PocketPoolEFGeneric(cocos2d::ValueMap& properties);
-	~PocketPoolEFGeneric();
+	virtual ~PocketPoolEFGeneric();
 
 private:
 	typedef MinMaxPool super;

@@ -11,7 +11,7 @@ public:
 
 protected:
 	PocketPoolTownGuard(cocos2d::ValueMap& properties);
-	~PocketPoolTownGuard();
+	virtual ~PocketPoolTownGuard();
 
 private:
 	typedef MinMaxPool super;

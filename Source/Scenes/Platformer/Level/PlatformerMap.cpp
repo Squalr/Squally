@@ -177,7 +177,7 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->craftingMenu->open();
+			this->craftingMenu->open(args->recipes);
 			this->craftingMenu->setVisible(true);
 
 			GameUtils::focus(this->craftingMenu);

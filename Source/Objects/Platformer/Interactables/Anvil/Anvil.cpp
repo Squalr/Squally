@@ -6,17 +6,12 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Events/ObjectEvents.h"
-#include "Engine/Localization/LocalizedString.h"
-#include "Engine/Hackables/HackableCode.h"
-#include "Engine/Physics/CollisionObject.h"
-#include "Engine/Sound/WorldSound.h"
+#include "Engine/Inventory/Item.h"
+#include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -43,11 +38,16 @@ Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractT
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->hammer = Sprite::create(ObjectResources::Interactive_Anvil_AnvilHammer);
 	this->floatContainer = Node::create();
+	this->recipes = std::vector<Item*>();
+	this->recipePoolName = GameUtils::getKeyOrDefault(this->properties, RecipePoolDeserializer::MapKeyTypeRecipePool, Value("")).asString();
+	this->recipePool = nullptr;
+	this->recipePoolDeserializer = RecipePoolDeserializer::create();
 	
 	this->floatContainer->addChild(this->shine);
 	this->floatContainer->addChild(this->hammer);
 	this->addChild(this->anvil);
 	this->addChild(this->floatContainer);
+	this->addChild(this->recipePoolDeserializer);
 }
 
 Anvil::~Anvil()
@@ -63,6 +63,8 @@ void Anvil::onEnter()
 		EaseSineInOut::create(MoveTo::create(3.0f, Vec2(0.0f, 160.0f))),
 		nullptr
 	)));
+
+	this->loadRecipePool();
 }
 
 void Anvil::initializePositions()
@@ -84,5 +86,29 @@ void Anvil::onInteract()
 {
 	super::onInteract();
 
-	PlatformerEvents::TriggerOpenCrafting(PlatformerEvents::CraftingOpenArgs());
+	PlatformerEvents::TriggerOpenCrafting(PlatformerEvents::CraftingOpenArgs(this->recipes));
+}
+
+void Anvil::loadRecipePool()
+{
+	ValueMap valueMap = ValueMap();
+
+	valueMap[GameObject::MapKeyType] = RecipePoolDeserializer::MapKeyTypeRecipePool;
+	valueMap[GameObject::MapKeyName] = this->recipePoolName;
+
+	ObjectDeserializer::ObjectDeserializationRequestArgs deserializeArgs = ObjectDeserializer::ObjectDeserializationRequestArgs(valueMap, [&](ObjectDeserializer::ObjectDeserializationArgs args)
+	{
+		this->recipePool = static_cast<MinMaxPool*>(args.gameObject);
+
+		for (auto next : this->recipePool->getItems({ }))
+		{
+			this->recipes.push_back(next);
+
+			this->addChild(next);
+		}
+
+		this->addChild(this->recipePool);
+	});
+
+	this->recipePoolDeserializer->deserialize(&deserializeArgs);
 }

@@ -12,6 +12,7 @@ class LocalizedString;
 class MinMaxPool;
 class PlatformerEntity;
 class PlatformerEnemy;
+class Recipe;
 
 class PlatformerEvents
 {
@@ -101,7 +102,9 @@ public:
 
 	struct CraftingOpenArgs
 	{
-		CraftingOpenArgs() { }
+		std::vector<Item*> recipes;
+
+		CraftingOpenArgs(std::vector<Item*> recipes) : recipes(recipes) { }
 	};
 
 	struct GiveItemsFromPoolArgs

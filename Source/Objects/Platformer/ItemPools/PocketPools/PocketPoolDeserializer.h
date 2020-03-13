@@ -9,9 +9,10 @@ public:
 
 	static const std::string MapKeyTypePocketPool;
 
+protected:
+	PocketPoolDeserializer();
+	virtual ~PocketPoolDeserializer();
+
 private:
 	typedef ObjectDeserializer super;
-
-	PocketPoolDeserializer();
-	~PocketPoolDeserializer();
 };

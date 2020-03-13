@@ -21,13 +21,14 @@ class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;
+class Recipe;
 
 class CraftingMenu : public SmartNode
 {
 public:
 	static CraftingMenu* create();
 
-	void open();
+	void open(std::vector<Item*> recipes);
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
@@ -58,12 +59,10 @@ private:
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 
+	std::vector<Item*> recipes;
 	CurrencyInventory* currencyInventory;
 	Inventory* inventory;
 
 	std::function<void()> returnClickCallback;
 	bool equipmentChanged;
-
-	static const int MinHexusCards;
-	static const int MaxHexusCards;
 };

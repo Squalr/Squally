@@ -9,7 +9,7 @@ public:
 
 protected:
 	HexusPoolSarude();
-	~HexusPoolSarude();
+	virtual ~HexusPoolSarude();
 
 private:
 	typedef MinMaxPool super;
