@@ -15,6 +15,7 @@ EntityCollisionBehaviorBase::EntityCollisionBehaviorBase(GameObject* owner, int 
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->collisionType = collisionType;
+	this->entityCollision = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -49,6 +50,11 @@ void EntityCollisionBehaviorBase::onDisable()
 
 void EntityCollisionBehaviorBase::buildEntityCollision()
 {
+	if (this->isInvalidated())
+	{
+		return;
+	}
+
 	this->entityCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * 0.9f, 8.0f),
 		(CollisionType)this->collisionType,
