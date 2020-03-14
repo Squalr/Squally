@@ -34,7 +34,7 @@ Item* ScythePlans::craft()
 	return Scythe::create();
 }
 
-std::map<Item*, int> ScythePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> ScythePlans::getReagentsInternal()
 {
 	return
 	{

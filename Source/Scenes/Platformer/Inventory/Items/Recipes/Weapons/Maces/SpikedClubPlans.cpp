@@ -34,12 +34,13 @@ Item* SpikedClubPlans::craft()
 	return SpikedClub::create();
 }
 
-std::map<Item*, int> SpikedClubPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> SpikedClubPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Copper::create(), 3 },
+		{ LightWood::create(), 10 },
+		{ Iron::create(), 2 },
 	};
 }
 

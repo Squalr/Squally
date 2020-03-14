@@ -34,12 +34,15 @@ Item* ArcaneWandPlans::craft()
 	return ArcaneWand::create();
 }
 
-std::map<Item*, int> ArcaneWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> ArcaneWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Wood::create(), 6 },
+		{ Silver::create(), 2 },
+		{ Gold::create(), 4 },
+		{ Emerald::create(), 2 },
+		{ Jade::create(), 3 },
 	};
 }
 

@@ -34,12 +34,12 @@ Item* CrystalWandPlans::craft()
 	return CrystalWand::create();
 }
 
-std::map<Item*, int> CrystalWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CrystalWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 6 },
+		{ Diamond::create(), 8 },
 	};
 }
 

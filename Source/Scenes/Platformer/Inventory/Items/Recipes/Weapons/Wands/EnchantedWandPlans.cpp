@@ -34,12 +34,12 @@ Item* EnchantedWandPlans::craft()
 	return EnchantedWand::create();
 }
 
-std::map<Item*, int> EnchantedWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> EnchantedWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ LightWood::create(), 6 },
+		{ Emerald::create(), 1 },
 	};
 }
 

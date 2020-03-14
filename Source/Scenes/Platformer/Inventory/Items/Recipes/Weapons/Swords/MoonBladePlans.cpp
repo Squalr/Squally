@@ -34,12 +34,14 @@ Item* MoonBladePlans::craft()
 	return MoonBlade::create();
 }
 
-std::map<Item*, int> MoonBladePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> MoonBladePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 8 },
+		{ Coal::create(), 4 },
+		{ Gold::create(), 2 },
+		{ Emerald::create(), 1 },
 	};
 }
 

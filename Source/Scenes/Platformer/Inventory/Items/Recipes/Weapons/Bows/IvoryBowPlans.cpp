@@ -34,7 +34,7 @@ Item* IvoryBowPlans::craft()
 	return IvoryBow::create();
 }
 
-std::map<Item*, int> IvoryBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> IvoryBowPlans::getReagentsInternal()
 {
 	return
 	{

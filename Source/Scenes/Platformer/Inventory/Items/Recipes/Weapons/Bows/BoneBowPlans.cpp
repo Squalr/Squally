@@ -34,12 +34,12 @@ Item* BoneBowPlans::craft()
 	return BoneBow::create();
 }
 
-std::map<Item*, int> BoneBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> BoneBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ DarkWood::create(), 8 },
+		{ Obsidian::create(), 4 },
 	};
 }
 

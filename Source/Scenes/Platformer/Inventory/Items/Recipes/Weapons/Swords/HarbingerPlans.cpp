@@ -34,7 +34,7 @@ Item* HarbingerPlans::craft()
 	return Harbinger::create();
 }
 
-std::map<Item*, int> HarbingerPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> HarbingerPlans::getReagentsInternal()
 {
 	return
 	{

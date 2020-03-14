@@ -34,12 +34,16 @@ Item* AshenBladePlans::craft()
 	return AshenBlade::create();
 }
 
-std::map<Item*, int> AshenBladePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> AshenBladePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Copper::create(), 8 },
+		{ Coal::create(), 4 },
+		{ Gold::create(), 4 },
+		{ Silver::create(), 4 },
+		{ Sulfur::create(), 2 },
+		{ Diamond::create(), 2 },
 	};
 }
 

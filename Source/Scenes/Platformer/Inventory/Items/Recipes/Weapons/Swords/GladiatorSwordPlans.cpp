@@ -34,12 +34,13 @@ Item* GladiatorSwordPlans::craft()
 	return GladiatorSword::create();
 }
 
-std::map<Item*, int> GladiatorSwordPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> GladiatorSwordPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 8 },
+		{ Coal::create(), 4 },
+		{ Gold::create(), 2 },
 	};
 }
 

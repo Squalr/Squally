@@ -34,12 +34,12 @@ Item* SteelSwordPlans::craft()
 	return SteelSword::create();
 }
 
-std::map<Item*, int> SteelSwordPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> SteelSwordPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 8 },
+		{ Coal::create(), 4 },
 	};
 }
 

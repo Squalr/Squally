@@ -34,7 +34,7 @@ Item* RendPlans::craft()
 	return Rend::create();
 }
 
-std::map<Item*, int> RendPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> RendPlans::getReagentsInternal()
 {
 	return
 	{

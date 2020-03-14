@@ -34,7 +34,7 @@ Item* WoodCutterPlans::craft()
 	return WoodCutter::create();
 }
 
-std::map<Item*, int> WoodCutterPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> WoodCutterPlans::getReagentsInternal()
 {
 	return
 	{

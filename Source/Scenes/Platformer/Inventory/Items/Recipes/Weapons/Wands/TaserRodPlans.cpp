@@ -34,12 +34,13 @@ Item* TaserRodPlans::craft()
 	return TaserRod::create();
 }
 
-std::map<Item*, int> TaserRodPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> TaserRodPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Silver::create(), 6 },
+		{ Jade::create(), 4 },
+		{ Sulfur::create(), 1 },
 	};
 }
 

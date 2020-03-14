@@ -34,12 +34,14 @@ Item* SkullCrusherPlans::craft()
 	return SkullCrusher::create();
 }
 
-std::map<Item*, int> SkullCrusherPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> SkullCrusherPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ LightWood::create(), 2 },
+		{ Iron::create(), 8 },
+		{ Coal::create(), 8 },
+		{ Silver::create(), 2 },
 	};
 }
 

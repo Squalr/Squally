@@ -34,7 +34,7 @@ Item* FireAxePlans::craft()
 	return FireAxe::create();
 }
 
-std::map<Item*, int> FireAxePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> FireAxePlans::getReagentsInternal()
 {
 	return
 	{

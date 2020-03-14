@@ -34,7 +34,7 @@ Item* FangBladePlans::craft()
 	return FangBlade::create();
 }
 
-std::map<Item*, int> FangBladePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> FangBladePlans::getReagentsInternal()
 {
 	return
 	{

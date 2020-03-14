@@ -34,12 +34,14 @@ Item* SerpentWandPlans::craft()
 	return SerpentWand::create();
 }
 
-std::map<Item*, int> SerpentWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Wood::create(), 6 },
+		{ Gold::create(), 1 },
+		{ Emerald::create(), 1 },
+		{ Ruby::create(), 1 },
 	};
 }
 

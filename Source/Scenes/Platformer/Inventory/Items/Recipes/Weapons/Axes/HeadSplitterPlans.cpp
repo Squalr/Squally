@@ -34,7 +34,7 @@ Item* HeadSplitterPlans::craft()
 	return HeadSplitter::create();
 }
 
-std::map<Item*, int> HeadSplitterPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> HeadSplitterPlans::getReagentsInternal()
 {
 	return
 	{

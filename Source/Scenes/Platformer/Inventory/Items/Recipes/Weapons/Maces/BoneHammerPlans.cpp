@@ -34,12 +34,12 @@ Item* BoneHammerPlans::craft()
 	return BoneHammer::create();
 }
 
-std::map<Item*, int> BoneHammerPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> BoneHammerPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ DarkWood::create(), 2 },
+		{ Obsidian::create(), 2 },
 	};
 }
 

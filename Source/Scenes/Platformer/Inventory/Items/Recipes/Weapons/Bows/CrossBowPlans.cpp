@@ -34,12 +34,12 @@ Item* CrossBowPlans::craft()
 	return CrossBow::create();
 }
 
-std::map<Item*, int> CrossBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CrossBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ LightWood::create(), 8 },
+		{ Iron::create(), 2 },
 	};
 }
 

@@ -264,7 +264,7 @@ void CraftingMenu::tryCraftItem()
 	}
 
 	Item* craftedItem = recipe->craft();
-	std::map<Item*, int> reagents = recipe->getReagents();
+	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
 	for (auto reagent : reagents)
 	{
@@ -272,11 +272,11 @@ void CraftingMenu::tryCraftItem()
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == reagent.first->getItemName())
+			if (item->getItemName() == std::get<0>(reagent)->getItemName())
 			{
 				this->inventory->tryRemove(item);
 				
-				if (++foundCount >= reagent.second)
+				if (++foundCount >= std::get<1>(reagent))
 				{
 					break;
 				}

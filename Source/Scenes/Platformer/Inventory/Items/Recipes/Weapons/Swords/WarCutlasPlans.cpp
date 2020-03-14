@@ -34,12 +34,12 @@ Item* WarCutlasPlans::craft()
 	return WarCutlas::create();
 }
 
-std::map<Item*, int> WarCutlasPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> WarCutlasPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Wood::create(), 1 },
+		{ Iron::create(), 10 },
 	};
 }
 

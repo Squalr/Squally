@@ -64,13 +64,14 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 		return false;
 	}
 
-	std::map<Item*, int> reagents = this->recipe->getReagents();
+	std::vector<std::tuple<Item*, int>> reagents = this->recipe->getReagents();
 	int index = 0;
 	bool canCraft = true;
 
 	for (auto reagent : reagents)
 	{
-		Item* next = reagent.first;
+		Item* next = std::get<0>(reagent);
+		int count = std::get<1>(reagent);
 		Sprite* icon = Sprite::create(next->getIconResource());
 		LocalizedString* counts = Strings::Common_XOverY::create();
 		LocalizedLabel* countsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, counts);
@@ -78,15 +79,15 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == reagent.first->getItemName())
+			if (item->getItemName() == next->getItemName())
 			{
 				existingCount++;
 			}
 		}
 
 		countsLabel->enableOutline(Color4B::BLACK, 2);
-		countsLabel->setTextColor(existingCount < reagent.second ? Color4B::RED : Color4B::WHITE);
-		counts->setStringReplacementVariables({ ConstantString::create(std::to_string(existingCount)), ConstantString::create(std::to_string(reagent.second)) });
+		countsLabel->setTextColor(existingCount < count ? Color4B::RED : Color4B::WHITE);
+		counts->setStringReplacementVariables({ ConstantString::create(std::to_string(existingCount)), ConstantString::create(std::to_string(count)) });
 
 		icon->setPosition(Vec2(0.0f, -64.0f * float(index)));
 		countsLabel->setPosition(Vec2(48.0f, -64.0f * float(index)));
@@ -95,7 +96,7 @@ bool CraftingPreview::preview(Recipe* recipe, Inventory* inventory)
 		this->previewNode->addChild(icon);
 		this->previewNode->addChild(countsLabel);
 
-		canCraft &= (existingCount >= reagent.second);
+		canCraft &= (existingCount >= count);
 
 		index++;
 	}

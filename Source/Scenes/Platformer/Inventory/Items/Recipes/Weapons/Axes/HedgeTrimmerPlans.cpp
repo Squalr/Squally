@@ -34,7 +34,7 @@ Item* HedgeTrimmerPlans::craft()
 	return HedgeTrimmer::create();
 }
 
-std::map<Item*, int> HedgeTrimmerPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> HedgeTrimmerPlans::getReagentsInternal()
 {
 	return
 	{

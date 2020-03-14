@@ -34,7 +34,7 @@ Item* MithrilAxePlans::craft()
 	return MithrilAxe::create();
 }
 
-std::map<Item*, int> MithrilAxePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> MithrilAxePlans::getReagentsInternal()
 {
 	return
 	{

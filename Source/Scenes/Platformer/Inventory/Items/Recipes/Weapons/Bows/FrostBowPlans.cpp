@@ -34,12 +34,15 @@ Item* FrostBowPlans::craft()
 	return FrostBow::create();
 }
 
-std::map<Item*, int> FrostBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> FrostBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ Quartz::create(), 4 },
+		{ Emerald::create(), 2 },
+		{ Jade::create(), 2 },
 		{ Iron::create(), 4 },
+		{ Coal::create(), 4 },
 	};
 }
 

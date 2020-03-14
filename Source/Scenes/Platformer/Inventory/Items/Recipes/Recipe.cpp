@@ -5,7 +5,7 @@ using namespace cocos2d;
 Recipe::Recipe(CurrencyInventory* cost) : super(cost, ItemMeta(1, 1))
 {
     this->reagentsNode = Node::create();
-    this->reagentsCache = std::map<Item*, int>();
+    this->reagentsCache = std::vector<std::tuple<Item*, int>>();
 
     this->craftedItem = nullptr;
     this->reagentsNode->setVisible(false);
@@ -17,7 +17,7 @@ Recipe::~Recipe()
 {
 }
 
-std::map<Item*, int> Recipe::getReagents()
+std::vector<std::tuple<Item*, int>> Recipe::getReagents()
 {
     if (this->reagentsCache.empty())
     {
@@ -25,7 +25,7 @@ std::map<Item*, int> Recipe::getReagents()
 
         for (auto reagent : this->reagentsCache)
         {
-            this->reagentsNode->addChild(reagent.first);
+            this->reagentsNode->addChild(std::get<0>(reagent));
         }
     }
 

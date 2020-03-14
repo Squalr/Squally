@@ -34,7 +34,7 @@ Item* IronAxePlans::craft()
 	return IronAxe::create();
 }
 
-std::map<Item*, int> IronAxePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> IronAxePlans::getReagentsInternal()
 {
 	return
 	{

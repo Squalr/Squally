@@ -34,12 +34,13 @@ Item* CursedWandPlans::craft()
 	return CursedWand::create();
 }
 
-std::map<Item*, int> CursedWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CursedWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Wood::create(), 6 },
+		{ Emerald::create(), 2 },
+		{ Jade::create(), 1 },
 	};
 }
 

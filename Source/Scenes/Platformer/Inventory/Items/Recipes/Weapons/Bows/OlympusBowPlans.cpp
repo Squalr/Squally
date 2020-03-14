@@ -34,12 +34,14 @@ Item* OlympusBowPlans::craft()
 	return OlympusBow::create();
 }
 
-std::map<Item*, int> OlympusBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> OlympusBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ Wood::create(), 6 },
 		{ Iron::create(), 4 },
+		{ Coal::create(), 4 },
+		{ Gold::create(), 4 },
 	};
 }
 

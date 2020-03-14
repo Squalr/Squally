@@ -21,7 +21,7 @@ protected:
 	SpikedClubPlans();
 	virtual ~SpikedClubPlans();
 	
-	std::map<Item*, int> getReagentsInternal() override;
+	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
 	typedef MaceRecipe super;

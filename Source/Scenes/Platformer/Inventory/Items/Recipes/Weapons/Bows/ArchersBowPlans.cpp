@@ -34,12 +34,12 @@ Item* ArchersBowPlans::craft()
 	return ArchersBow::create();
 }
 
-std::map<Item*, int> ArchersBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> ArchersBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Wood::create(), 12 },
+		{ Iron::create(), 2 },
 	};
 }
 

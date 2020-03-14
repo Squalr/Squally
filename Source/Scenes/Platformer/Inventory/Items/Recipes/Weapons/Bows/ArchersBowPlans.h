@@ -21,7 +21,7 @@ protected:
 	ArchersBowPlans();
 	virtual ~ArchersBowPlans();
 	
-	std::map<Item*, int> getReagentsInternal() override;
+	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
 	typedef BowRecipe super;

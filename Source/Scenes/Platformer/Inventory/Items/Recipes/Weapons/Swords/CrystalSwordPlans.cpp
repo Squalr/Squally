@@ -34,7 +34,7 @@ Item* CrystalSwordPlans::craft()
 	return CrystalSword::create();
 }
 
-std::map<Item*, int> CrystalSwordPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CrystalSwordPlans::getReagentsInternal()
 {
 	return
 	{

@@ -34,12 +34,13 @@ Item* NecroWandPlans::craft()
 	return NecroWand::create();
 }
 
-std::map<Item*, int> NecroWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> NecroWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ DarkWood::create(), 6 },
+		{ Sulfur::create(), 1 },
+		{ Obsidian::create(), 1 },
 	};
 }
 

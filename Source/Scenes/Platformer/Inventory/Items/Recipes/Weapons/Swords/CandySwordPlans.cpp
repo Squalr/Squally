@@ -34,7 +34,7 @@ Item* CandySwordPlans::craft()
 	return CandySword::create();
 }
 
-std::map<Item*, int> CandySwordPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CandySwordPlans::getReagentsInternal()
 {
 	return
 	{

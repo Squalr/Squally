@@ -34,12 +34,13 @@ Item* CompositeBowPlans::craft()
 	return CompositeBow::create();
 }
 
-std::map<Item*, int> CompositeBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CompositeBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ LightWood::create(), 8 },
 		{ Iron::create(), 4 },
+		{ Coal::create(), 4 },
 	};
 }
 

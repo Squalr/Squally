@@ -26,6 +26,7 @@ RecipePoolEF::RecipePoolEF(ValueMap& properties) : super(properties, RecipePoolE
 	this->addItemToPool(ItemChance::create(SpikedClubPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(WoodenWandPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(EnchantedWandPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(HandAxePlans::create(), ItemChance::Probability::Guaranteed));
 }
 
 RecipePoolEF::~RecipePoolEF()

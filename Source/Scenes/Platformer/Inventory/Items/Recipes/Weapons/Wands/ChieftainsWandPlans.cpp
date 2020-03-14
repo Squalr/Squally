@@ -34,12 +34,12 @@ Item* ChieftainsWandPlans::craft()
 	return ChieftainsWand::create();
 }
 
-std::map<Item*, int> ChieftainsWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> ChieftainsWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ DarkWood::create(), 2 },
+		{ Sulfur::create(), 4 },
 	};
 }
 

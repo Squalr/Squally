@@ -20,7 +20,7 @@ EnchantedWand* EnchantedWand::create()
 	return instance;
 }
 
-EnchantedWand::EnchantedWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 6, ItemStats(
+EnchantedWand::EnchantedWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 8, ItemStats(
 	// Health
 	0,
 	// Mana

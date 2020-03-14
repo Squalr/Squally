@@ -34,12 +34,13 @@ Item* WarBowPlans::craft()
 	return WarBow::create();
 }
 
-std::map<Item*, int> WarBowPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> WarBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 10 },
+		{ Coal::create(), 8 },
+		{ Silver::create(), 4 },
 	};
 }
 

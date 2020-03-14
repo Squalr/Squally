@@ -34,12 +34,14 @@ Item* HolyWandPlans::craft()
 	return HolyWand::create();
 }
 
-std::map<Item*, int> HolyWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> HolyWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Silver::create(), 2 },
+		{ Gold::create(), 8 },
+		{ Sulfur::create(), 4 },
+		{ Diamond::create(), 1 },
 	};
 }
 

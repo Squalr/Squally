@@ -34,7 +34,7 @@ Item* CleaverPlans::craft()
 	return Cleaver::create();
 }
 
-std::map<Item*, int> CleaverPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CleaverPlans::getReagentsInternal()
 {
 	return
 	{

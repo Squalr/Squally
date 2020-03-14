@@ -34,12 +34,13 @@ Item* HandAxePlans::craft()
 	return HandAxe::create();
 }
 
-std::map<Item*, int> HandAxePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> HandAxePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ LightWood::create(), 8 },
 		{ Iron::create(), 4 },
+		{ Coal::create(), 2 },
 	};
 }
 

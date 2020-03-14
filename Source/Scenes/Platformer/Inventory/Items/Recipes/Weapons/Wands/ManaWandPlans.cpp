@@ -34,7 +34,7 @@ Item* ManaWandPlans::craft()
 	return ManaWand::create();
 }
 
-std::map<Item*, int> ManaWandPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> ManaWandPlans::getReagentsInternal()
 {
 	return
 	{

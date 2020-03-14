@@ -34,12 +34,14 @@ Item* JudgementPlans::craft()
 	return Judgement::create();
 }
 
-std::map<Item*, int> JudgementPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> JudgementPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 6 },
+		{ Coal::create(), 6 },
+		{ Gold::create(), 4 },
+		{ Silver::create(), 2 },
 	};
 }
 

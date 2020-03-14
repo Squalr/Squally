@@ -34,12 +34,13 @@ Item* RapierPlans::craft()
 	return Rapier::create();
 }
 
-std::map<Item*, int> RapierPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> RapierPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
+		{ LightWood::create(), 4 },
 		{ Iron::create(), 4 },
+		{ Coal::create(), 4 },
 	};
 }
 

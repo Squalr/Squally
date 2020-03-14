@@ -34,12 +34,13 @@ Item* FlailPlans::craft()
 	return Flail::create();
 }
 
-std::map<Item*, int> FlailPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> FlailPlans::getReagentsInternal()
 {
 	return
 	{
 		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 10 },
+		{ Coal::create(), 4 },
 	};
 }
 

@@ -34,12 +34,14 @@ Item* CrystalMacePlans::craft()
 	return CrystalMace::create();
 }
 
-std::map<Item*, int> CrystalMacePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> CrystalMacePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Iron::create(), 6 },
+		{ Coal::create(), 4 },
+		{ Gold::create(), 4 },
+		{ Diamond::create(), 8 },
 	};
 }
 

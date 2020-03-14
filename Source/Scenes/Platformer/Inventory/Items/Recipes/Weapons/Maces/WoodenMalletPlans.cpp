@@ -34,12 +34,12 @@ Item* WoodenMalletPlans::craft()
 	return WoodenMallet::create();
 }
 
-std::map<Item*, int> WoodenMalletPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> WoodenMalletPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ LightWood::create(), 10 },
+		{ Iron::create(), 2 },
 	};
 }
 
