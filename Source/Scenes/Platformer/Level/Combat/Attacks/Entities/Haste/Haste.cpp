@@ -32,7 +32,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RESTORE 1
+#define LOCAL_FUNC_ID_HASTE 1
 
 const std::string Haste::HasteIdentifier = "haste";
 
@@ -97,13 +97,14 @@ void Haste::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RESTORE,
+			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
 				Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_Haste::create(),
 				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
+					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi::create() },
 					{ HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3::create() }
 				},
 				int(HackFlags::None),
@@ -139,21 +140,19 @@ NO_OPTIMIZE void Haste::applyHaste()
 	volatile float* speedBonusPtr = &speedBonus;
 	volatile float* incrementPtr = &increment;
 
-	ASM(push ZAX);
+	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, speedBonusPtr);
+	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
 	ASM_MOV_REG_VAR(ZBX, incrementPtr);
-	ASM(movss xmm0, [ZAX])
-	ASM(movss xmm1, [ZBX])
+	ASM(movss xmm3, [ZBX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(addps xmm0, xmm1);
-	ASM(movss [ZAX], xmm0);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	ASM(movss [ZSI], xmm3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZBX);
-	ASM(pop ZAX);
+	ASM(pop ZSI);
 
 	this->currentSpeed += MathUtils::clamp(speedBonus, -1.0f, 1.0f);
 

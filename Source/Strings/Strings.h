@@ -7404,6 +7404,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_Haste() = default;
 	};
 
+	class Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3 : public LocalizedString
 	{
 	public:
