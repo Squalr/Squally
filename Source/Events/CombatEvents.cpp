@@ -16,6 +16,7 @@ const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAS
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
+const std::string CombatEvents::EventBuffTimeElapsed = "EVENT_COMBAT_BUFF_TIME_ELAPSED";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_ENTITY_TIMELINE_RESET";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUSE_TIMELINE_CINEMATIC";
@@ -168,6 +169,14 @@ void CombatEvents::TriggerBuffApplied(BuffAppliedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventBuffApplied,
+		&args
+	);
+}
+
+void CombatEvents::TriggerBuffTimeElapsed(BuffTimeElapsedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventBuffTimeElapsed,
 		&args
 	);
 }

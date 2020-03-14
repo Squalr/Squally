@@ -28,6 +28,7 @@ public:
 	static const std::string EventRequestAIAction;
 	static const std::string EventRequestRetargetCorrection;
 	static const std::string EventBuffApplied;
+	static const std::string EventBuffTimeElapsed;
 	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
 	static const std::string EventPauseTimelineCinematic;
@@ -173,6 +174,15 @@ public:
 		}
 	};
 
+	struct BuffTimeElapsedArgs
+	{
+		float dt;
+
+		BuffTimeElapsedArgs(float dt) : dt(dt)
+		{
+		}
+	};
+
 	struct DamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
@@ -212,12 +222,11 @@ public:
 	
 	struct ModifiableTimelineSpeedArgs
 	{
-		PlatformerEntity* caster;
 		PlatformerEntity* target;
 		float* speed;
 
-		ModifiableTimelineSpeedArgs(PlatformerEntity* caster, PlatformerEntity* target, float* speed)
-			: caster(caster), target(target), speed(speed), handled(false)
+		ModifiableTimelineSpeedArgs(PlatformerEntity* target, float* speed)
+			: target(target), speed(speed), handled(false)
 		{
 		}
 
@@ -290,6 +299,7 @@ public:
 	static void TriggerInterruptTimeline();
 	static void TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);
+	static void TriggerBuffTimeElapsed(BuffTimeElapsedArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
 	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);

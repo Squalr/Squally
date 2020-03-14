@@ -302,6 +302,8 @@ void TimelineEntry::setProgress(float progress)
 void TimelineEntry::addTimeWithoutActions(float dt)
 {
 	float speed = this->combatBehavior == nullptr ? 1.0f : this->combatBehavior->getTimelineSpeed();
+	
+	CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs(this->getEntity(), &speed));
 
 	this->progress += (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
 }

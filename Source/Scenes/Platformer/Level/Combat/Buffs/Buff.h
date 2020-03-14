@@ -16,14 +16,19 @@ class Buff : public SmartNode
 public:
 	struct BuffData
 	{
+		float duration;
+		
+		// If set to non-empty string, the buff will be unique against this key.
 		std::string uniqueId;
 
-		BuffData() : uniqueId("") { }
+		BuffData() : duration(-1.0f), uniqueId("") { }
+		BuffData(float duration) : duration(duration), uniqueId("") { }
 		BuffData(std::string uniqueId) : uniqueId(uniqueId) { }
+		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
 	};
 
+	void elapse(float dt);
 	BuffData getBuffData();
-	std::string getIdentifier();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
 	void removeBuff();
 
@@ -54,5 +59,6 @@ private:
 
 	std::function<void()> removeBuffCallback;
 	
+	float elapsedTime;
 	void unregisterHackables();
 };

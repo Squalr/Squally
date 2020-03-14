@@ -48,18 +48,16 @@ TrainingHeal* TrainingHeal::create(PlatformerEntity* caster, PlatformerEntity* t
 	return instance;
 }
 
-TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
+TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(TrainingHeal::TrainingHealIdentifier))
 {
 	this->clippy = TrainingHealClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
-	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
 }
 

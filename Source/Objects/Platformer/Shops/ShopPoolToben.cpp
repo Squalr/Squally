@@ -30,7 +30,6 @@ ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolT
 {
 	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(SpeedRune::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolToben::~ShopPoolToben()

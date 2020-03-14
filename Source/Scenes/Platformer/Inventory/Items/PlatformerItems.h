@@ -2,8 +2,8 @@
 
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCards.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestorePotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ManaPotion.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Speed/SpeedRune/SpeedRune.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Ores/Coal.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Ores/Copper.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Ores/Diamond.h"

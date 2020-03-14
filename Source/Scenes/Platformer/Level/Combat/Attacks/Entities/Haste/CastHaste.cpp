@@ -26,15 +26,16 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, float 
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Health, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
-	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 
+	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellAura);
-	this->addChild(this->healSound);
+	this->addChild(this->castSound);
 }
 
 CastHaste::~CastHaste()
@@ -67,15 +68,13 @@ void CastHaste::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::performAttack(owner, target);
 
-	this->healSound->play();
+	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
-	
-	const int Ticks = 7;
 
 	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->applyBuff(Haste::create(owner, target, Ticks));
+		entityBuffBehavior->applyBuff(Haste::create(owner, target));
 	});
 
 	this->spellAura->runAction(Sequence::create(

@@ -44,6 +44,5 @@ private:
 	TrainingHealClippy* clippy;
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
-	WorldSound* impactSound;
 	WorldSound* healSound;
 };

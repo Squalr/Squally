@@ -33,34 +33,28 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string Haste::MapKeyPropertyRestorePotionTutorial = "training-heal-tutorial";
-const std::string Haste::HasteIdentifier = "training-heal";
+const std::string Haste::HasteIdentifier = "haste";
 const float Haste::TimeBetweenTicks = 0.5f;
 const int Haste::HackTicks = 5;
 const float Haste::StartDelay = 0.15f;
 
-Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	Haste* instance = new Haste(caster, target, healAmount);
+	Haste* instance = new Haste(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
+Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(5.0f, Haste::HasteIdentifier))
 {
 	this->clippy = HasteClippy::create();
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
-	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->spellEffect = SmartAnimationSequenceNode::create(FXResources::Restore_Restore_0000);
 	
 	this->registerClippy(this->clippy);
 
-	this->addChild(this->healEffect);
-	this->addChild(this->impactSound);
-	this->addChild(this->healSound);
+	this->addChild(this->spellEffect);
 }
 
 Haste::~Haste()
@@ -71,7 +65,7 @@ void Haste::onEnter()
 {
 	super::onEnter();
 
-	this->runHaste();
+	this->spellEffect->playAnimationRepeat(FXResources::Restore_Restore_0000, 0.05f, 0.0f, true);
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -109,7 +103,7 @@ void Haste::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
 				Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth::create(),
-				UIResources::Menus_Icons_Heal,
+				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi::create() }
@@ -136,42 +130,9 @@ void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> ha
 	*timelineSpeed = this->applyHaste(*timelineSpeed);
 }
 
-void Haste::runHaste()
-{
-	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
-
-	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
-	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Heal);
-
-		icon->setScale(0.5f);
-
-		timelineEvents.push_back(TimelineEvent::create(
-				this->target,
-				icon,
-				Haste::TimeBetweenTicks * float(healIndex) + Haste::StartDelay, [=]()
-			{
-				if (!this->healEffect->isPlayingAnimation())
-				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
-				}
-				
-				// this->runRestoreTick();
-			})
-		);
-	}
-
-	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, this->target, [=]()
-		{
-			this->removeBuff();
-		})
-	));
-}
-
 NO_OPTIMIZE float Haste::applyHaste(float currentSpeed)
 {
-	return currentSpeed;
+	return currentSpeed + 0.25f;
 
 	/*
 	int incrementAmount = 0;

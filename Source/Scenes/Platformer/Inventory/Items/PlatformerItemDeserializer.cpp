@@ -130,8 +130,8 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Consumables
 	this->deserializers[HealthPotion::SaveKeyHealthPotion] = [=]() { return (Item*)HealthPotion::create(); };
+	this->deserializers[RestorePotion::SaveKeyRestorePotion] = [=]() { return (Item*)RestorePotion::create(); };
 	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };
-	this->deserializers[SpeedRune::SaveKeySpeedRune] = [=]() { return (Item*)SpeedRune::create(); };
 
 	// Axes
 	this->deserializers[BattleAxe::SaveKeyBattleAxe] = [=]() { return (Item*)BattleAxe::create(); };

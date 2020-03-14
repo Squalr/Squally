@@ -19,6 +19,7 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData
 	this->target = target;
 	this->buffData = buffData;
 	this->hackables = std::vector<HackableCode*>();
+	this->elapsedTime = 0.0f;
 }
 
 Buff::~Buff()
@@ -53,11 +54,21 @@ void Buff::initializeListeners()
 		this->removeBuff();
 	}));
 
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventBuffTimeElapsed, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->elapse(args->dt);
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
 
-		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
 			this->onModifyTimelineSpeed(args->speed, [=](){ args->handle(); });
 		}
@@ -126,6 +137,19 @@ void Buff::registerClippy(Clippy* clippy)
 	}
 }
 
+void Buff::elapse(float dt)
+{
+	if (this->buffData.duration > 0.0f)
+	{
+		this->elapsedTime += dt;
+
+		if (this->elapsedTime >= this->buffData.duration)
+		{
+			this->removeBuff();
+		}
+	}
+}
+
 void Buff::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
 }
@@ -166,11 +190,6 @@ void Buff::unregisterHackables()
 Buff::BuffData Buff::getBuffData()
 {
 	return this->buffData;
-}
-
-std::string Buff::getIdentifier()
-{
-	return this->buffData.uniqueId;
 }
 
 void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)

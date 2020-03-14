@@ -32,5 +32,5 @@ private:
 	PlatformerAttack* cloneInternal() override;
 	
 	cocos2d::Sprite* spellAura;
-	WorldSound* healSound;
+	WorldSound* castSound;
 };

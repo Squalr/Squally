@@ -251,6 +251,8 @@ void Timeline::updateTimeline(float dt)
 	{
 		this->isTimelineInterrupted = false;
 
+		CombatEvents::TriggerBuffTimeElapsed(CombatEvents::BuffTimeElapsedArgs(dt));
+
 		// Update all timeline entries
 		for (auto entry : this->timelineEntries)
 		{

@@ -48,7 +48,7 @@ void RestorePotionTutorialBehavior::onLoad()
 	{
 		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getUserData());
 
-		if (args->buff != nullptr && dynamic_cast<RestoreHealth*>(args->buff) != nullptr /* && args->buff->getIdentifier() == RestoreHealth::RestoreHealthIdentifier */)
+		if (args->buff != nullptr && dynamic_cast<RestoreHealth*>(args->buff) != nullptr)
 		{
 			dynamic_cast<RestoreHealth*>(args->buff)->enableClippy();
 		}

@@ -64,7 +64,7 @@ void TrainingHealTutorialBehavior::onLoad()
 	{
 		CombatEvents::BuffAppliedArgs* args = static_cast<CombatEvents::BuffAppliedArgs*>(eventCustom->getUserData());
 
-		if (args->buff != nullptr && dynamic_cast<TrainingHeal*>(args->buff) != nullptr /* && args->buff->getIdentifier() == TrainingHeal::TrainingHealIdentifier */)
+		if (args->buff != nullptr && dynamic_cast<TrainingHeal*>(args->buff) != nullptr)
 		{
 			dynamic_cast<TrainingHeal*>(args->buff)->enableClippy();
 			this->runTutorial();
