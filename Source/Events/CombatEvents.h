@@ -48,6 +48,7 @@ public:
 	static const std::string EventHealingDelt;
 	static const std::string EventDamage;
 	static const std::string EventHealing;
+	static const std::string EventEntityBuffsModifyTimelineSpeed;
 	static const std::string EventEntityBuffsModifyDamageTaken;
 	static const std::string EventEntityBuffsModifyDamageDelt;
 	static const std::string EventEntityBuffsModifyHealingTaken;
@@ -208,6 +209,31 @@ public:
 		private:
 			bool handled;
 	};
+	
+	struct ModifiableTimelineSpeedArgs
+	{
+		PlatformerEntity* caster;
+		PlatformerEntity* target;
+		float* speed;
+
+		ModifiableTimelineSpeedArgs(PlatformerEntity* caster, PlatformerEntity* target, float* speed)
+			: caster(caster), target(target), speed(speed), handled(false)
+		{
+		}
+
+		void handle()
+		{
+			this->handled = true;
+		}
+
+		bool isHandled()
+		{
+			return this->handled;
+		}
+
+		private:
+			bool handled;
+	};
 
 	struct CombatFinishedArgs
 	{
@@ -276,6 +302,7 @@ public:
 	static void TriggerHealingDelt(DamageOrHealingArgs args);
 	static void TriggerDamage(DamageOrHealingArgs args);
 	static void TriggerHealing(DamageOrHealingArgs args);
+	static void TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerEntityBuffsModifyDamageTaken(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyDamageDelt(ModifiableDamageOrHealingArgs args);
 	static void TriggerEntityBuffsModifyHealingTaken(ModifiableDamageOrHealingArgs args);

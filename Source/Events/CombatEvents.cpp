@@ -34,14 +34,15 @@ const std::string CombatEvents::EventDamageDelt = "EVENT_COMBAT_DAMAGE_DELT";
 const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
 const std::string CombatEvents::EventHealingDelt = "EVENT_COMBAT_HEALING_DELT";
 const std::string CombatEvents::EventHealing = "EVENT_COMBAT_HEALING";
+const std::string CombatEvents::EventEntityBuffsModifyTimelineSpeed = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_TIMELINE_SPEED";
 const std::string CombatEvents::EventEntityBuffsModifyDamageTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
 const std::string CombatEvents::EventEntityBuffsModifyDamageDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
-const std::string CombatEvents::EventEntityBuffsModifyHealingTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_TAKEN";
-const std::string CombatEvents::EventEntityBuffsModifyHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_DAMAGE_DELT";
+const std::string CombatEvents::EventEntityBuffsModifyHealingTaken = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_HEALING_TAKEN";
+const std::string CombatEvents::EventEntityBuffsModifyHealingDelt = "EVENT_COMBAT_ENTITY_BUFFS_MODIFY_HEALING_DELT";
 const std::string CombatEvents::EventEntityStatsModifyDamageTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_TAKEN";
 const std::string CombatEvents::EventEntityStatsModifyDamageDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_DELT";
-const std::string CombatEvents::EventEntityStatsModifyHealingTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_TAKEN";
-const std::string CombatEvents::EventEntityStatsModifyHealingDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_DAMAGE_DELT";
+const std::string CombatEvents::EventEntityStatsModifyHealingTaken = "EVENT_COMBAT_ENTITY_STATS_MODIFY_HEALING_TAKEN";
+const std::string CombatEvents::EventEntityStatsModifyHealingDelt = "EVENT_COMBAT_ENTITY_STATS_MODIFY_HEALING_DELT";
 
 void CombatEvents::TriggerSpawn(SpawnArgs args)
 {
@@ -259,6 +260,14 @@ void CombatEvents::TriggerHealing(DamageOrHealingArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventHealing,
+		&args
+	);
+}
+
+void CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(ModifiableTimelineSpeedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventEntityBuffsModifyTimelineSpeed,
 		&args
 	);
 }

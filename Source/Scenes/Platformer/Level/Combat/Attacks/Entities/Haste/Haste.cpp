@@ -1,4 +1,4 @@
-#include "RestoreHealth.h"
+#include "Haste.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -16,8 +16,8 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealthClippy.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/RestoreHealthGenericPreview.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/HasteClippy.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/HasteGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
@@ -33,24 +33,24 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string RestoreHealth::MapKeyPropertyRestorePotionTutorial = "restore-potion-tutorial";
-const std::string RestoreHealth::RestoreHealthIdentifier = "restore-health";
-const float RestoreHealth::TimeBetweenTicks = 0.5f;
-const int RestoreHealth::HackTicks = 5;
-const float RestoreHealth::StartDelay = 0.15f;
+const std::string Haste::MapKeyPropertyRestorePotionTutorial = "training-heal-tutorial";
+const std::string Haste::HasteIdentifier = "training-heal";
+const float Haste::TimeBetweenTicks = 0.5f;
+const int Haste::HackTicks = 5;
+const float Haste::StartDelay = 0.15f;
 
-RestoreHealth* RestoreHealth::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
+Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target, int healAmount)
 {
-	RestoreHealth* instance = new RestoreHealth(caster, target, healAmount);
+	Haste* instance = new Haste(caster, target, healAmount);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
+Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target, int healAmount) : super(caster, target, BuffData(""))
 {
-	this->clippy = RestoreHealthClippy::create();
+	this->clippy = HasteClippy::create();
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal2);
@@ -63,27 +63,27 @@ RestoreHealth::RestoreHealth(PlatformerEntity* caster, PlatformerEntity* target,
 	this->addChild(this->healSound);
 }
 
-RestoreHealth::~RestoreHealth()
+Haste::~Haste()
 {
 }
 
-void RestoreHealth::onEnter()
+void Haste::onEnter()
 {
 	super::onEnter();
 
-	this->runRestoreHealth();
+	this->runHaste();
 
 	CombatEvents::TriggerHackableCombatCue();
 }
 
-void RestoreHealth::initializePositions()
+void Haste::initializePositions()
 {
 	super::initializePositions();
 
 	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
-void RestoreHealth::enableClippy()
+void Haste::enableClippy()
 {
 	if (this->clippy != nullptr)
 	{
@@ -91,7 +91,7 @@ void RestoreHealth::enableClippy()
 	}
 }
 
-void RestoreHealth::registerHackables()
+void Haste::registerHackables()
 {
 	super::registerHackables();
 
@@ -107,23 +107,23 @@ void RestoreHealth::registerHackables()
 		{
 			LOCAL_FUNC_ID_RESTORE,
 			HackableCode::HackableCodeInfo(
-				RestoreHealth::RestoreHealthIdentifier,
-				Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth::create(),
-				UIResources::Menus_Icons_ArrowUp,
-				RestoreHealthGenericPreview::create(),
+				Haste::HasteIdentifier,
+				Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth::create(),
+				UIResources::Menus_Icons_Heal,
+				HasteGenericPreview::create(),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi::create() }
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi::create() }
 				},
 				int(HackFlags::None),
-				(float(RestoreHealth::HackTicks) * RestoreHealth::TimeBetweenTicks) + 0.1f,
+				(float(Haste::HackTicks) * Haste::TimeBetweenTicks) + 0.1f,
 				0.0f,
 				this->clippy
 			)
 		},
 	};
 
-	auto restoreFunc = &RestoreHealth::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	auto hasteFunc = &Haste::applyHaste;
+	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
 
 	for (auto next : this->hackables)
 	{
@@ -131,29 +131,32 @@ void RestoreHealth::registerHackables()
 	}
 }
 
-void RestoreHealth::runRestoreHealth()
+void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
-	this->impactSound->play();
+	*timelineSpeed = this->applyHaste(*timelineSpeed);
+}
 
+void Haste::runHaste()
+{
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_ArrowUp);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Heal);
 
 		icon->setScale(0.5f);
 
 		timelineEvents.push_back(TimelineEvent::create(
 				this->target,
 				icon,
-				RestoreHealth::TimeBetweenTicks * float(healIndex) + RestoreHealth::StartDelay, [=]()
+				Haste::TimeBetweenTicks * float(healIndex) + Haste::StartDelay, [=]()
 			{
 				if (!this->healEffect->isPlayingAnimation())
 				{
 					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
 				}
 				
-				this->runRestoreTick();
+				// this->runRestoreTick();
 			})
 		);
 	}
@@ -166,26 +169,29 @@ void RestoreHealth::runRestoreHealth()
 	));
 }
 
-NO_OPTIMIZE void RestoreHealth::runRestoreTick()
+NO_OPTIMIZE float Haste::applyHaste(float currentSpeed)
 {
+	return currentSpeed;
+
+	/*
 	int incrementAmount = 0;
 
 	ASM(push ZDI);
 	ASM(mov ZDI, 0)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(inc ZDI);
+	ASM(add ZDI, 256);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(incrementAmount, ZDI);
 
 	ASM(pop ZDI);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -1, 1);
+	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
 
 	this->healSound->play();
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
-
+	*/
 	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE

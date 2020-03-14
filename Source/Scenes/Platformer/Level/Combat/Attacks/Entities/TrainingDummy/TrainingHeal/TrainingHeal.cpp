@@ -125,9 +125,9 @@ void TrainingHeal::registerHackables()
 	auto restoreFunc = &TrainingHeal::runRestoreTick;
 	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
-	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
+	for (auto next : this->hackables)
 	{
-		this->target->registerCode(*it);
+		this->target->registerCode(next);
 	}
 }
 

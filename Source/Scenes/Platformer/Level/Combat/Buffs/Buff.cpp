@@ -55,6 +55,16 @@ void Buff::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
 	{
+		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr && args->caster == this->caster && !args->isHandled())
+		{
+			this->onModifyTimelineSpeed(args->speed, [=](){ args->handle(); });
+		}
+	}));
+
+	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageDelt, [=](EventCustom* eventCustom)
+	{
 		CombatEvents::ModifiableDamageOrHealingArgs* args = static_cast<CombatEvents::ModifiableDamageOrHealingArgs*>(eventCustom->getUserData());
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
@@ -116,6 +126,10 @@ void Buff::registerClippy(Clippy* clippy)
 	}
 }
 
+void Buff::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+{
+}
+
 void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
@@ -143,9 +157,9 @@ void Buff::unregisterHackables()
 		return;
 	}
 
-	for (auto it = this->hackables.begin(); it != this->hackables.end(); it++)
+	for (auto next : this->hackables)
 	{
-		this->target->unregisterCode(*it);
+		this->target->unregisterCode(next);
 	}
 }
 

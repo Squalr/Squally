@@ -14,6 +14,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/CastHaste.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Maces/MaceSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Swords/Slash.h"
 
@@ -65,6 +66,8 @@ void SquallyAttackBehavior::onDisable()
 
 void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavior)
 {
+	attackBehavior->registerAttack(CastHaste::create(0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
+
 	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)
 	{
 		Weapon* weapon = inventoryBehavior->getEquipmentInventory()->getWeapon();
