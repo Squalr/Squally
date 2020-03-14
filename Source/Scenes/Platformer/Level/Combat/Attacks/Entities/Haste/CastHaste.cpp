@@ -26,7 +26,7 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, float 
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Health, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
@@ -56,7 +56,7 @@ PlatformerAttack* CastHaste::cloneInternal()
 
 LocalizedString* CastHaste::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	return Strings::Platformer_Combat_Attacks_Spells_Haste::create();
 }
 
 std::string CastHaste::getAttackAnimation()

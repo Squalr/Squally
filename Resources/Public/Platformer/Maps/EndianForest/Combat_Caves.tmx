@@ -16,7 +16,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="575" name="Caverns/Background/CavernsBg1" type="decor" x="-531.273" y="242.182" width="3201" height="1426.67"/>
+  <object id="575" name="Caverns/Background/CavernsBg1" type="decor" x="-531.273" y="242.182" width="3397" height="1518.67"/>
  </objectgroup>
  <objectgroup id="40" name="bg -420">
   <properties>
@@ -30,7 +30,7 @@
    <property name="depth" type="float" value="-312"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="577" name="Caverns/Background/CavernsBg3" type="decor" x="-437.091" y="1108.48" width="3210.73" height="869.515"/>
+  <object id="577" name="Caverns/Background/CavernsBg3" type="decor" x="-525.091" y="1120.48" width="3386.73" height="909.515"/>
  </objectgroup>
  <objectgroup id="42" name="bg -256">
   <properties>

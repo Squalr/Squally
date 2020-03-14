@@ -60,6 +60,7 @@ const std::string ParticleResources::MindBlast = "Public/Particles/MindBlast.pli
 const std::string ParticleResources::Objects_MagicWall = "Public/Particles/Objects/MagicWall.plist";
 const std::string ParticleResources::Objects_Smoke = "Public/Particles/Objects/Smoke.plist";
 const std::string ParticleResources::Objects_VaseBreak = "Public/Particles/Objects/VaseBreak.plist";
+const std::string ParticleResources::Platformer_Combat_Abilities_Speed = "Public/Particles/Platformer/Combat/Abilities/Speed.plist";
 const std::string ParticleResources::Platformer_Combat_LevelUp = "Public/Particles/Platformer/Combat/LevelUp.plist";
 const std::string ParticleResources::Platformer_Hacking_HackerRain1 = "Public/Particles/Platformer/Hacking/HackerRain1.plist";
 const std::string ParticleResources::Platformer_Hacking_HackerRain2 = "Public/Particles/Platformer/Hacking/HackerRain2.plist";

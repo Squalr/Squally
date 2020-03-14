@@ -61,6 +61,7 @@ namespace ParticleResources
 	extern const std::string Objects_MagicWall;
 	extern const std::string Objects_Smoke;
 	extern const std::string Objects_VaseBreak;
+	extern const std::string Platformer_Combat_Abilities_Speed;
 	extern const std::string Platformer_Combat_LevelUp;
 	extern const std::string Platformer_Hacking_HackerRain1;
 	extern const std::string Platformer_Hacking_HackerRain2;

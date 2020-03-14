@@ -7389,6 +7389,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
 	};
 
+	class Menus_Hacking_Abilities_Entities_Generic_Haste_Haste : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Entities_Generic_Haste_Haste* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Entities_Generic_Haste_Haste();
+		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_Haste() = default;
+	};
+
+	class Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3() = default;
+	};
+
 	class Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth : public LocalizedString
 	{
 	public:
@@ -16912,6 +16942,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_Slash();
 		virtual ~Platformer_Combat_Attacks_Slash() = default;
+	};
+
+	class Platformer_Combat_Attacks_Spells_Haste : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_Spells_Haste* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_Spells_Haste();
+		virtual ~Platformer_Combat_Attacks_Spells_Haste() = default;
 	};
 
 	class Platformer_Combat_Attacks_ThrowFlamingWeapon : public LocalizedString

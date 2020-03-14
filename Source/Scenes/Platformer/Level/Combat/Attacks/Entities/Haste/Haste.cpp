@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -22,8 +23,8 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
-#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -34,9 +35,6 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_RESTORE 1
 
 const std::string Haste::HasteIdentifier = "haste";
-const float Haste::TimeBetweenTicks = 0.5f;
-const int Haste::HackTicks = 5;
-const float Haste::StartDelay = 0.15f;
 
 Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -47,10 +45,10 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 	return instance;
 }
 
-Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(5.0f, Haste::HasteIdentifier))
+Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(6.0f, Haste::HasteIdentifier))
 {
 	this->clippy = HasteClippy::create();
-	this->spellEffect = SmartAnimationSequenceNode::create(FXResources::Restore_Restore_0000);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	
 	this->registerClippy(this->clippy);
 
@@ -65,7 +63,7 @@ void Haste::onEnter()
 {
 	super::onEnter();
 
-	this->spellEffect->playAnimationRepeat(FXResources::Restore_Restore_0000, 0.05f, 0.0f, true);
+	this->spellEffect->start();
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -74,7 +72,7 @@ void Haste::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f));
+	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void Haste::enableClippy()
@@ -102,14 +100,14 @@ void Haste::registerHackables()
 			LOCAL_FUNC_ID_RESTORE,
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
-				Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth::create(),
+				Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_Haste::create(),
 				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi::create() }
+					{ HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3::create() }
 				},
 				int(HackFlags::None),
-				(float(Haste::HackTicks) * Haste::TimeBetweenTicks) + 0.1f,
+				this->buffData.duration,
 				0.0f,
 				this->clippy
 			)
@@ -127,32 +125,38 @@ void Haste::registerHackables()
 
 void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
-	*timelineSpeed = this->applyHaste(*timelineSpeed);
+	this->currentSpeed = *timelineSpeed;
+
+	this->applyHaste();
+
+	*timelineSpeed = this->currentSpeed;
 }
 
-NO_OPTIMIZE float Haste::applyHaste(float currentSpeed)
+NO_OPTIMIZE void Haste::applyHaste()
 {
-	return currentSpeed + 0.25f;
+	volatile float speedBonus = 0.0f;
+	volatile float increment = 0.75f;
+	volatile float* speedBonusPtr = &speedBonus;
+	volatile float* incrementPtr = &increment;
 
-	/*
-	int incrementAmount = 0;
-
-	ASM(push ZDI);
-	ASM(mov ZDI, 0)
+	ASM(push ZAX);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZAX, speedBonusPtr);
+	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+	ASM(movss xmm0, [ZAX])
+	ASM(movss xmm1, [ZBX])
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(add ZDI, 256);
+	ASM(addps xmm0, xmm1);
+	ASM(movss [ZAX], xmm0);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(incrementAmount, ZDI);
+	ASM(pop ZBX);
+	ASM(pop ZAX);
 
-	ASM(pop ZDI);
+	this->currentSpeed += MathUtils::clamp(speedBonus, -1.0f, 1.0f);
 
-	incrementAmount = MathUtils::clamp(incrementAmount, -256, 256);
-
-	this->healSound->play();
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->target, incrementAmount));
-	*/
 	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE
