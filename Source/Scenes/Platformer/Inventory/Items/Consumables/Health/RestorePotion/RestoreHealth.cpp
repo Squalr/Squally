@@ -159,7 +159,7 @@ void RestoreHealth::runRestoreHealth()
 	}
 
 	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, this->target, [=]()
+		TimelineEventGroup::create(timelineEvents, this, this->target, [=]()
 		{
 			this->removeBuff();
 		})

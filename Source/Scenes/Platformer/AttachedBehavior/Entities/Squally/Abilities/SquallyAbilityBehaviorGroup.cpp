@@ -1,6 +1,7 @@
 #include "SquallyAbilityBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyDisableHackFxBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyIsAliveHackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyOutOfCombatAttackBehavior.h"
@@ -20,7 +21,7 @@ SquallyAbilityBehaviorGroup* SquallyAbilityBehaviorGroup::create(GameObject* own
 }
 
 SquallyAbilityBehaviorGroup::SquallyAbilityBehaviorGroup(GameObject* owner) : super(owner, {
-	SquallyIsAliveHackBehavior::create(owner),
+	SquallyDisableHackFxBehavior::create(owner),
 	SquallyIsAliveHackBehavior::create(owner),
 	SquallyHackingBehavior::create(owner),
 	SquallyOutOfCombatAttackBehavior::create(owner),

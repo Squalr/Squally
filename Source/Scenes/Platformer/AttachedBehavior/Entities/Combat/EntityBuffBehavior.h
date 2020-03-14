@@ -13,6 +13,7 @@ public:
 	void applyBuff(Buff* buff);
 	void removeBuff(Buff* buff);
 	void removeBuffsById(std::string buffId);
+	void removeAllBuffs();
 
 	static const std::string MapKeyAttachedBehavior;
 
@@ -26,6 +27,8 @@ protected:
 private:
 	typedef AttachedBehavior super;
 
+	cocos2d::Node* buffNode;
+	
 	PlatformerEntity* entity;
 
 	std::vector<Buff*> buffs;

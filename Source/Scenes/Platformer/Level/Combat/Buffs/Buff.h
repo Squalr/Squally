@@ -59,6 +59,7 @@ private:
 
 	std::function<void()> removeBuffCallback;
 	
+	bool wasRemoved;
 	float elapsedTime;
 	void unregisterHackables();
 };

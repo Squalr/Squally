@@ -27,7 +27,9 @@ public:
 	static const std::string EventSelectCastTarget;
 	static const std::string EventRequestAIAction;
 	static const std::string EventRequestRetargetCorrection;
+	static const std::string EventRegisterTimelineEventGroup;
 	static const std::string EventBuffApplied;
+	static const std::string EventBuffRemoved;
 	static const std::string EventBuffTimeElapsed;
 	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
@@ -35,7 +37,6 @@ public:
 	static const std::string EventResumeTimeline;
 	static const std::string EventResumeTimelineCinematic;
 	static const std::string EventInterruptTimeline;
-	static const std::string EventRegisterTimelineEventGroup;
 	static const std::string EventCastBlocked;
 	static const std::string EventCastInterrupt;
 	static const std::string EventCombatFinished;
@@ -174,6 +175,16 @@ public:
 		}
 	};
 
+	struct BuffRemovedArgs
+	{
+		PlatformerEntity* target;
+		Buff* buff;
+
+		BuffRemovedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
+		{
+		}
+	};
+
 	struct BuffTimeElapsedArgs
 	{
 		float dt;
@@ -299,6 +310,7 @@ public:
 	static void TriggerInterruptTimeline();
 	static void TriggerRegisterTimelineEventGroup(RegisterTimelineEventGroupArgs args);
 	static void TriggerBuffApplied(BuffAppliedArgs args);
+	static void TriggerBuffRemoved(BuffRemovedArgs args);
 	static void TriggerBuffTimeElapsed(BuffTimeElapsedArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
 	static void TriggerCastBlocked(CastBlockedArgs args);

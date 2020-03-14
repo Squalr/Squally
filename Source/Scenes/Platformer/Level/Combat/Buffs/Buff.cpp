@@ -20,6 +20,7 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, BuffData buffData
 	this->buffData = buffData;
 	this->hackables = std::vector<HackableCode*>();
 	this->elapsedTime = 0.0f;
+	this->wasRemoved = false;
 }
 
 Buff::~Buff()
@@ -199,6 +200,15 @@ void Buff::setRemoveBuffCallback(std::function<void()> removeBuffCallback)
 
 void Buff::removeBuff()
 {
+	if (this->wasRemoved)
+	{
+		return;
+	}
+	
+	this->wasRemoved = true;
+	
+	CombatEvents::TriggerBuffRemoved(CombatEvents::BuffRemovedArgs(this->target, this));
+
 	if (this->removeBuffCallback != nullptr)
 	{
 		this->removeBuffCallback();

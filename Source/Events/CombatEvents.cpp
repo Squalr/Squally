@@ -15,7 +15,9 @@ const std::string CombatEvents::EventSelectionChanged = "EVENT_COMBAT_SELECTION_
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
+const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
+const std::string CombatEvents::EventBuffRemoved = "EVENT_COMBAT_BUFF_REMOVED";
 const std::string CombatEvents::EventBuffTimeElapsed = "EVENT_COMBAT_BUFF_TIME_ELAPSED";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_ENTITY_TIMELINE_RESET";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
@@ -23,7 +25,6 @@ const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUS
 const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMELINE";
 const std::string CombatEvents::EventResumeTimelineCinematic = "EVENT_COMBAT_RESUME_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventInterruptTimeline = "EVENT_COMBAT_INTERRUPT_TIMELINE";
-const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventCastBlocked = "EVENT_COMBAT_CAST_BLOCKED";
 const std::string CombatEvents::EventCastInterrupt = "EVENT_COMBAT_CAST_INTERRUPT";
 const std::string CombatEvents::EventCombatFinished = "EVENT_COMBAT_COMBAT_FINISHED";
@@ -169,6 +170,14 @@ void CombatEvents::TriggerBuffApplied(BuffAppliedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
 		CombatEvents::EventBuffApplied,
+		&args
+	);
+}
+
+void CombatEvents::TriggerBuffRemoved(BuffRemovedArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		CombatEvents::EventBuffRemoved,
 		&args
 	);
 }
