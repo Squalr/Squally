@@ -6,8 +6,8 @@
 #include "Engine/Physics/EngineCollisionTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -82,17 +82,26 @@ void EntityDeveloperBehavior::onLoad()
 {
 	this->resurrectButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->setState(StateKeys::IsAlive, Value(true));
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->revive();
+		});
 	});
 
 	this->halfHealthButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->setState(StateKeys::Health, Value((this->entity->getStateOrDefault(StateKeys::Health, Value(1)).asInt() + 1) / 2));
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->setHealth((healthBehavior->getHealth() + 1) / 2);
+		});
 	});
 
 	this->killButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		this->entity->setState(StateKeys::IsAlive, Value(false));
+		this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->kill();
+		});
 	});
 }
 

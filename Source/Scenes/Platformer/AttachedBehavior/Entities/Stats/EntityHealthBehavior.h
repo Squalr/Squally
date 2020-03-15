@@ -16,7 +16,7 @@ public:
 	int getMaxHealth();
 	bool isAlive();
 	bool isDead();
-	virtual void kill(bool loadDeadAnim = true);
+	virtual void kill(bool playAnimation = true);
 	virtual void revive();
 
 protected:

@@ -39,8 +39,8 @@ EntityManaBehavior::EntityManaBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		this->entity->setState(StateKeys::Mana, Value(StatsTables::getBaseMana(this->entity)), false);
 		this->entity->setState(StateKeys::MaxMana, Value(this->getMaxMana()), false);
+		this->entity->setState(StateKeys::Mana, Value(this->getMaxMana()), false);
 	}
 }
 

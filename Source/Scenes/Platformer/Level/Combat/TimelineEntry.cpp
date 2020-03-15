@@ -208,7 +208,10 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage)
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + damage));
+	this->getEntity()->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(health + damage);
+	});
 
 	CombatEvents::TriggerDamageDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), damage));
 }
@@ -237,7 +240,10 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 
 	int health = this->getEntity()->getStateOrDefaultInt(StateKeys::Health, 0);
 
-	this->getEntity()->setState(StateKeys::Health, Value(health + healing));
+	this->getEntity()->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(health + healing);
+	});
 
 	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
 }

@@ -14,6 +14,7 @@
 #include "Entities/Platformer/EntityPreview.h"
 #include "Entities/Platformer/Squally/IsAliveClippy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -68,7 +69,11 @@ void SquallyIsAliveHackBehavior::update(float dt)
 	else if (!this->isSquallyAliveHack())
 	{
 		// Check for player suicide
-		this->squally->setState(StateKeys::IsAlive, Value(false));
+		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->kill();
+		});
+		
 		this->cooldown = 3.0f;
 	}
 }

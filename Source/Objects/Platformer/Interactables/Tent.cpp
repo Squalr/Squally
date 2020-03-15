@@ -17,6 +17,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyHealthBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -101,7 +102,10 @@ void Tent::initializeListeners()
 
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
-			squally->setState(StateKeys::Health, squally->getStateOrDefault(StateKeys::MaxHealth, Value(0)));
+			squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->setHealth(healthBehavior->getMaxHealth());
+			});
 		}), Squally::MapKeySqually);
 
 		return CollisionObject::CollisionResult::DoNothing;

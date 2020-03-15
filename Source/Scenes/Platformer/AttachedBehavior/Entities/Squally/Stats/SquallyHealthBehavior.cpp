@@ -59,19 +59,11 @@ void SquallyHealthBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* entityHealthBehavior)
+	this->squally->watchForAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		this->recalculateMaxHealth([=]()
-		{
-			int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(777)).asInt();
+		int health = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
-			this->squally->setState(StateKeys::Health, Value(health));
-
-			if (health <= 0)
-			{
-				this->respawn(0.1f);
-			}
-		});
+		healthBehavior->setHealth(health);
 	});
 
 	if (this->squally != nullptr)
@@ -109,25 +101,12 @@ void SquallyHealthBehavior::respawn(float duration)
 				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords + SpawnOffset));
 			}
 			
-			this->squally->setState(StateKeys::IsAlive, Value(true));
+			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->revive();
+			});
 		}),
 		nullptr
 	));
 }
 
-void SquallyHealthBehavior::recalculateMaxHealth(std::function<void()> onCalculated)
-{
-	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		int maxHealth = StatsTables::getBaseHealth(this->squally);
-
-		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
-		{
-			maxHealth += item->getItemStats().healthBonus;
-		}
-
-		this->squally->setState(StateKeys::MaxHealth, Value(maxHealth));
-
-		onCalculated();
-	});
-}

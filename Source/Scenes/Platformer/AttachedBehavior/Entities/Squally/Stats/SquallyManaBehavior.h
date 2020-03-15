@@ -22,7 +22,6 @@ private:
 	typedef AttachedBehavior super;
 	
 	void saveState();
-	void recalculateMaxMana(std::function<void()> onCalculated);
 
 	Squally* squally;
 };

@@ -51,17 +51,11 @@ void SquallyManaBehavior::onLoad()
 		this->saveState();
 	}));
 	
-	this->defer([=]()
+	this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		this->squally->watchForAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* entityManaBehavior)
-		{
-			this->recalculateMaxMana([=]()
-			{
-				int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(777)).asInt();
+		int mana = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyMana, Value(manaBehavior->getMaxMana())).asInt();
 
-				this->squally->setState(StateKeys::Mana, Value(mana));
-			});
-		});
+		manaBehavior->setMana(mana);
 	});
 }
 
@@ -74,21 +68,3 @@ void SquallyManaBehavior::saveState()
 {
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyMana, this->squally->getStateOrDefault(StateKeys::Mana, Value(0)));
 }
-
-void SquallyManaBehavior::recalculateMaxMana(std::function<void()> onCalculated)
-{
-	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-	{
-		int maxMana = StatsTables::getBaseMana(this->squally);
-
-		for (auto item : entityInventoryBehavior->getEquipmentInventory()->getEquipment())
-		{
-			maxMana += item->getItemStats().manaBonus;
-		}
-
-		this->squally->setState(StateKeys::MaxMana, Value(maxMana));
-
-		onCalculated();
-	});
-}
-

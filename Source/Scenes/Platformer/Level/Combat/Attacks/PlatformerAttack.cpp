@@ -10,6 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
@@ -81,8 +82,10 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 {
 	this->onAttackTelegraphBegin();
 
-	int mana = std::max(0, owner->getStateOrDefaultInt(StateKeys::Mana, 0) - this->getSpecialCost());
-	owner->setState(StateKeys::Mana, Value(mana));
+	owner->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	{
+		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
+	});
 
 	this->runAction(Sequence::create(
 		DelayTime::create(this->getAttackDuration()),

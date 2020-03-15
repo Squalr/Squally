@@ -21,6 +21,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -238,7 +239,11 @@ void SquallyShip::onCrash()
 		{
 			squally->setPosition(crashCoords);
 			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
-			squally->setState(StateKeys::Health, Value(1));
+
+			squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->setHealth(1);
+			});
 		},
 		[&]()
 		{

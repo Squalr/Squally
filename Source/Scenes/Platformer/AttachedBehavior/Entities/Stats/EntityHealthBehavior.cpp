@@ -42,8 +42,8 @@ EntityHealthBehavior::EntityHealthBehavior(GameObject* owner) : super(owner)
 	}
 	else
 	{
-		this->entity->setState(StateKeys::Health, Value(StatsTables::getBaseHealth(this->entity)), false);
 		this->entity->setState(StateKeys::MaxHealth, Value(this->getMaxHealth()), false);
+		this->entity->setState(StateKeys::Health, Value(this->getMaxHealth()), false);
 	}
 }
 
@@ -63,11 +63,6 @@ void EntityHealthBehavior::onLoad()
 		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 	});
 
-	this->entity->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->setHealth(value.asInt(), false);
-	});
-
 	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{
 		if (value.asBool())
@@ -76,7 +71,7 @@ void EntityHealthBehavior::onLoad()
 		}
 		else
 		{
-			this->kill(this->entity->getStateOrDefaultBool(StateKeys::SkipDeathAnimation, false));
+			this->kill(false);
 		}
 	});
 }
@@ -98,19 +93,25 @@ void EntityHealthBehavior::addHealth(int healthDelta)
 
 void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 {
-	if (checkDeath && this->isDead())
+	if (this->entity == nullptr || (checkDeath && this->isDead()))
 	{
 		return;
 	}
 
+	bool wasAlive = this->isAlive();
+
 	health = MathUtils::clamp(health, 0, this->getMaxHealth());
 	this->entity->setState(StateKeys::Health, Value(health), false);
-	this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), false);
 
-	if (this->entity != nullptr && this->entity->getStateOrDefaultInt(StateKeys::Health, 0) <= 0)
+	if (!this->isAlive())
 	{
 		this->entity->getAnimations()->clearAnimationPriority();
 		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
+	}
+
+	if (this->isAlive() != wasAlive)
+	{
+		this->entity->setState(StateKeys::IsAlive, Value(this->isAlive()), true);
 	}
 }
 
@@ -135,12 +136,21 @@ int EntityHealthBehavior::getMaxHealth()
 	return maxHealth;
 }
 
-void EntityHealthBehavior::kill(bool loadDeadAnim)
+void EntityHealthBehavior::kill(bool playAnimation)
 {
-	this->setHealth(0, false);
-	this->entity->clearState(StateKeys::SkipDeathAnimation);
+	if (this->entity == nullptr)
+	{
+		return;
+	}
 
-	if (loadDeadAnim && this->entity != nullptr)
+	this->setHealth(0, false);
+
+	if (playAnimation)
+	{
+		this->entity->getAnimations()->clearAnimationPriority();
+		this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
+	}
+	else
 	{
 		this->entity->getAnimations()->clearAnimationPriority();
 		this->entity->getAnimations()->playAnimation("Dead", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
@@ -149,13 +159,15 @@ void EntityHealthBehavior::kill(bool loadDeadAnim)
 
 void EntityHealthBehavior::revive()
 {
+	if (this->entity == nullptr)
+	{
+		return;
+	}
+
 	this->setHealth(this->getMaxHealth(), false);
 
-	if (this->entity != nullptr)
-	{
-		this->entity->getAnimations()->clearAnimationPriority();
-		this->entity->getAnimations()->playAnimation();
-	}
+	this->entity->getAnimations()->clearAnimationPriority();
+	this->entity->getAnimations()->playAnimation();
 }
 
 bool EntityHealthBehavior::isAlive()

@@ -15,6 +15,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityMovementCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -91,10 +92,10 @@ void SquallyCollisionBehavior::onLoad()
 
 		collisionBehavior->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
 		{
-			if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
-				this->squally->setState(StateKeys::IsAlive, Value(false));
-			}
+				healthBehavior->kill();
+			});
 
 			return CollisionObject::CollisionResult::CollideWithPhysics;
 		});
@@ -132,20 +133,20 @@ void SquallyCollisionBehavior::onEntityCollisionCreated()
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::KillPlane, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
-			this->squally->setState(StateKeys::IsAlive, Value(false));
-		}
+			healthBehavior->kill();
+		});
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
 
 	this->entityCollision->whenCollidesWith({ (int)PlatformerCollisionType::Damage, }, [=](CollisionObject::CollisionData collisionData)
 	{
-		if (this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
-			this->squally->setState(StateKeys::IsAlive, Value(false));
-		}
+			healthBehavior->kill();
+		});
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

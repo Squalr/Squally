@@ -9,6 +9,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -58,8 +59,10 @@ void EnemyHealthBehavior::onLoad()
 
 		if (this->entity->getObjectStateOrDefault(EnemyHealthBehavior::SaveKeyIsDead, Value(false)).asBool())
 		{
-			this->entity->setState(StateKeys::SkipDeathAnimation, Value(true));
-			this->entity->setState(StateKeys::IsAlive, Value(false));
+			this->entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->kill(false);
+			});
 		}
 	}
 }
