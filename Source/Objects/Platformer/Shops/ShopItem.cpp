@@ -15,9 +15,10 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
-#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -82,6 +83,8 @@ void ShopItem::onEnterTransitionDidFinish()
 			this->setVisible(true);
 			this->itemNode->addChild(this->item);
 			this->itemPreview->preview(this->item);
+
+			this->itemPreview->toggleShowItemName(dynamic_cast<HexusCard*>(this->item) == nullptr);
 
 			CurrencyInventory* cost = item->getCost();
 

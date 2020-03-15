@@ -19,6 +19,7 @@ public:
 	
 	void focus();
 	void unfocus();
+	void addFilter(CraftFilterEntry* entry);
 	CraftFilterEntry* getActiveFilter();
 
 protected:

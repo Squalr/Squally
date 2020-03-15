@@ -23,38 +23,38 @@ class Inventory;
 class LocalizedLabel;
 class Recipe;
 
-class CraftingMenu : public SmartNode
+class CraftingMenuBase : public SmartNode
 {
 public:
-	static CraftingMenu* create();
-
 	void open(std::vector<Item*> recipes);
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
-	CraftingMenu();
-	virtual ~CraftingMenu();
-
-private:
-	typedef SmartNode super;
+	CraftingMenuBase();
+	virtual ~CraftingMenuBase();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	virtual void onCraftPreview(Item* item);
+	void tryCraftItem();
+	
+	CraftFilterMenu* filterMenu;
+	cocos2d::Node* backDecorNode;
+
+	bool canCraft;
+
+private:
+	typedef SmartNode super;
+
 	void onFilterChange();
 	void populateItemList();
-	void onCraftPreview(Item* item);
-	void tryCraftItem();
 	void close();
 
 	cocos2d::LayerColor* backdrop;
 	cocos2d::Sprite* craftingWindow;
-	cocos2d::Sprite* anvil;
 	LocalizedLabel* craftingLabel;
 	CraftingPreview* craftingPreview;
-	cocos2d::Sprite* craftButtonDisabled;
-	ClickableNode* craftButton;
-	CraftFilterMenu* filterMenu;
 	ItemMenu* itemMenu;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
@@ -64,5 +64,4 @@ private:
 	Inventory* inventory;
 
 	std::function<void()> returnClickCallback;
-	bool equipmentChanged;
 };

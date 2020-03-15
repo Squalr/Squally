@@ -30,7 +30,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
-#include "Menus/Crafting/CraftingMenu.h"
+#include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Party/PartyMenu.h"
@@ -77,7 +77,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
-	this->craftingMenu = CraftingMenu::create();
+	this->blacksmithingMenu = BlacksmithingMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->canPause = true;
 	this->awaitingConfirmationEnd = false;
@@ -110,7 +110,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
 	this->menuHud->addChild(this->combatFadeInNode);
-	this->topMenuHud->addChild(this->craftingMenu);
+	this->topMenuHud->addChild(this->blacksmithingMenu);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
@@ -130,7 +130,7 @@ void PlatformerMap::onEnter()
 	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
-	this->craftingMenu->setVisible(false);
+	this->blacksmithingMenu->setVisible(false);
 
 	this->scheduleUpdate();
 }
@@ -194,10 +194,10 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->craftingMenu->open(args->recipes);
-			this->craftingMenu->setVisible(true);
+			this->blacksmithingMenu->open(args->recipes);
+			this->blacksmithingMenu->setVisible(true);
 
-			GameUtils::focus(this->craftingMenu);
+			GameUtils::focus(this->blacksmithingMenu);
 			GameUtils::resume(this->notificationHud);
 		}
 	}));
@@ -345,9 +345,9 @@ void PlatformerMap::initializeListeners()
 		GameUtils::focus(this->ingameMenu);
 	});
 
-	this->craftingMenu->setReturnClickCallback([=]()
+	this->blacksmithingMenu->setReturnClickCallback([=]()
 	{
-		this->craftingMenu->setVisible(false);
+		this->blacksmithingMenu->setVisible(false);
 		GameUtils::focus(this);
 	});
 }

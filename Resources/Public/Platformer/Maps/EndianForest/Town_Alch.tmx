@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="886">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="887">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -224,6 +224,11 @@
    <properties>
     <property name="map" value="EndianForest/Town_Alch"/>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
+   <properties>
+    <property name="recipe-pool" value="recipe-pool-ef"/>
    </properties>
   </object>
  </objectgroup>

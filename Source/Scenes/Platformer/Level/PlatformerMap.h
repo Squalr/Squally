@@ -2,10 +2,10 @@
 
 #include "Scenes/MapBase.h"
 
+class BlacksmithingMenu;
 class Cipher;
 class ClickableTextNode;
 class CollectablesMenu;
-class CraftingMenu;
 class GameHud;
 class Hexus;
 class InventoryMenu;
@@ -44,7 +44,7 @@ private:
 	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
-	CraftingMenu* craftingMenu;
+	BlacksmithingMenu* blacksmithingMenu;
 	cocos2d::Node* combatFadeInNode;
 
 	std::string transition;

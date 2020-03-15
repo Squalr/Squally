@@ -1,4 +1,4 @@
-#include "CraftingMenu.h"
+#include "CraftingMenuBase.h"
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
@@ -33,33 +33,22 @@
 
 using namespace cocos2d;
 
-CraftingMenu* CraftingMenu::create()
-{
-	CraftingMenu* instance = new CraftingMenu();
-
-	instance->autorelease();
-
-	return instance;
-}
-
-CraftingMenu::CraftingMenu()
+CraftingMenuBase::CraftingMenuBase()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 	this->currencyInventory = nullptr;
 	this->inventory = nullptr;
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->craftingPreview = CraftingPreview::create();
-	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
-	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->recipes = std::vector<Item*>();
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->backDecorNode = Node::create();
 	this->returnClickCallback = nullptr;
-	this->equipmentChanged = false;
+	this->canCraft = false;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -83,10 +72,8 @@ CraftingMenu::CraftingMenu()
 	
 	this->addChild(this->backdrop);
 	this->addChild(this->craftingWindow);
-	this->addChild(this->anvil);
+	this->addChild(this->backDecorNode);
 	this->addChild(this->craftingPreview);
-	this->addChild(this->craftButtonDisabled);
-	this->addChild(this->craftButton);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
 	this->addChild(this->craftingLabel);
@@ -94,11 +81,11 @@ CraftingMenu::CraftingMenu()
 	this->addChild(this->returnButton);
 }
 
-CraftingMenu::~CraftingMenu()
+CraftingMenuBase::~CraftingMenuBase()
 {
 }
 
-void CraftingMenu::onEnter()
+void CraftingMenuBase::onEnter()
 {
 	super::onEnter();
 
@@ -120,7 +107,7 @@ void CraftingMenu::onEnter()
 	}, Squally::MapKeySqually);
 }
 
-void CraftingMenu::initializePositions()
+void CraftingMenuBase::initializePositions()
 {
 	super::initializePositions();
 
@@ -131,17 +118,14 @@ void CraftingMenu::initializePositions()
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->itemMenu->setPreviewOffset(ItemMenu::DefaultPreviewOffset + AnvilOffset);
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
-	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset);
-	this->craftButton->setPosition(Vec2(visibleSize.width / 2.0f + 456.0f, visibleSize.height / 2.0f - 288.0f));
-	this->craftButtonDisabled->setPosition(this->craftButton->getPosition());
-	this->craftingPreview->setPosition(this->anvil->getPosition() + Vec2(128.0f, 64.0f));
+	this->craftingPreview->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset + Vec2(128.0f, 64.0f));
 	this->craftingWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->craftingLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 }
 
-void CraftingMenu::initializeListeners()
+void CraftingMenuBase::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -160,11 +144,6 @@ void CraftingMenu::initializeListeners()
 	this->itemMenu->setPreviewCallback([=](Item* item)
 	{
 		this->onCraftPreview(item);
-	});
-
-	this->craftButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
-	{
-		this->tryCraftItem();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -192,14 +171,14 @@ void CraftingMenu::initializeListeners()
 	});
 }
 
-void CraftingMenu::onFilterChange()
+void CraftingMenuBase::onFilterChange()
 {
 	this->populateItemList();
 	this->itemMenu->clearPreview();
 	this->craftingPreview->clearPreview();
 }
 
-void CraftingMenu::populateItemList()
+void CraftingMenuBase::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
 	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->recipes);
@@ -216,45 +195,31 @@ void CraftingMenu::populateItemList()
 	this->itemMenu->updateAndPositionItemText();
 }
 
-void CraftingMenu::open(std::vector<Item*> recipes)
+void CraftingMenuBase::open(std::vector<Item*> recipes)
 {
 	this->recipes = recipes;
-	this->equipmentChanged = false;
 	this->onFilterChange();
 
 	this->filterMenu->focus();
 	this->itemMenu->unfocus();
 }
 
-void CraftingMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
+void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickCallback)
 {
 	this->returnClickCallback = returnClickCallback;
 }
 
-void CraftingMenu::onCraftPreview(Item* item)
+void CraftingMenuBase::onCraftPreview(Item* item)
 {
 	if (dynamic_cast<Recipe*>(item) == nullptr)
 	{
 		return;
 	}
 
-	bool canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
-
-	if (canCraft)
-	{
-		this->craftButton->enableInteraction();
-		this->craftButton->setVisible(true);
-		this->craftButtonDisabled->setVisible(false);
-	}
-	else
-	{
-		this->craftButton->disableInteraction();
-		this->craftButton->setVisible(false);
-		this->craftButtonDisabled->setVisible(true);
-	}
+	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
 }
 
-void CraftingMenu::tryCraftItem()
+void CraftingMenuBase::tryCraftItem()
 {
 	Recipe* recipe = this->craftingPreview->getCurrentRecipe();
 
@@ -290,13 +255,8 @@ void CraftingMenu::tryCraftItem()
 	this->craftingPreview->refresh();
 }
 
-void CraftingMenu::close()
+void CraftingMenuBase::close()
 {
-	if (this->equipmentChanged)
-	{
-		PlatformerEvents::TriggerEquippedItemsChanged();
-	}
-	
 	if (this->returnClickCallback != nullptr)
 	{
 		this->returnClickCallback();

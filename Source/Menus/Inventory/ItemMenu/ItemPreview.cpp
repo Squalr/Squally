@@ -49,10 +49,12 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 	dashStr->setStringReplacementVariables({ bracketStr, equipStr });
 
 	this->equipHint = allowEquipHint ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr) : nullptr;
-	this->itemName = showItemName ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create()) : nullptr;
+	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
 	
+	this->itemName->enableOutline(Color4B::BLACK, 2);
+	this->itemName->setVisible(showItemName);
 	this->cardLabel->setVisible(false);
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
 
@@ -76,11 +78,7 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 		this->addChild(this->equipHint);
 	}
 
-	if (this->itemName != nullptr)
-	{
-		this->itemName->enableOutline(Color4B::BLACK, 2);
-		this->addChild(this->itemName);
-	}
+	this->addChild(this->itemName);
 
 	for (auto statline : this->statlines)
 	{
@@ -104,11 +102,6 @@ void ItemPreview::onEnter()
 	{
 		this->equipHint->setVisible(false);
 	}
-
-	if (this->itemName != nullptr)
-	{
-		this->itemName->setVisible(false);
-	}
 }
 
 void ItemPreview::initializePositions()
@@ -120,10 +113,7 @@ void ItemPreview::initializePositions()
 		this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
 	}
 
-	if (this->itemName != nullptr)
-	{
-		this->itemName->setPosition(Vec2(0.0f, -72.0f));
-	}
+	this->itemName->setPosition(Vec2(0.0f, -72.0f));
 	
 	const float OffsetX = -112.0f;
 	const float OffsetY = -160.0f;
@@ -135,6 +125,11 @@ void ItemPreview::initializePositions()
 	}
 	
 	this->cardLabel->setPosition(Vec2(-6.0f, -72.0f));
+}
+
+void ItemPreview::toggleShowItemName(bool showItemName)
+{
+	this->itemName->setVisible(showItemName);
 }
 
 void ItemPreview::preview(Item* item)
@@ -163,11 +158,7 @@ void ItemPreview::preview(Item* item)
 		this->equipHint->setVisible(true);
 	}
 
-	if (this->itemName != nullptr)
-	{
-		this->itemName->setStringReplacementVariables(item->getString());
-		this->itemName->setVisible(true);
-	}
+	this->itemName->setStringReplacementVariables(item->getString());
 
 	if (dynamic_cast<Recipe*>(item) != nullptr)
 	{
@@ -334,10 +325,5 @@ void ItemPreview::clearPreview()
 	if (this->equipHint != nullptr)
 	{
 		this->equipHint->setVisible(false);
-	}
-
-	if (this->itemName != nullptr)
-	{
-		this->itemName->setVisible(false);
 	}
 }

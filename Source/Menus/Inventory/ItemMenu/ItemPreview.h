@@ -16,6 +16,7 @@ class ItemPreview : public SmartNode
 public:
 	static ItemPreview* create(bool allowEquipHint = true, bool showItemName = false);
 
+	void toggleShowItemName(bool showItemName);
 	void preview(Item* item);
 	void clearPreview();
 

@@ -8,12 +8,12 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
-#include "Menus/Crafting/CraftFilterMenu/AllWeaponsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/AxesFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/BowsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/MacesFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/SpearsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/SwordsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/AllWeaponsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/AxesFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/BowsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/MacesFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/SpearsFilter.h"
+#include "Menus/Crafting/CraftFilterMenu/Smithing/SwordsFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 #include "Resources/UIResources.h"
@@ -41,18 +41,6 @@ CraftFilterMenu::CraftFilterMenu(std::function<void()> onFilterChange)
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
-
-	this->filters.push_back(AllWeaponsFilter::create());
-	this->filters.push_back(AxesFilter::create());
-	this->filters.push_back(BowsFilter::create());
-	this->filters.push_back(MacesFilter::create());
-	this->filters.push_back(SpearsFilter::create());
-	this->filters.push_back(SwordsFilter::create());
-
-	for (auto it = this->filters.begin(); it != this->filters.end(); it++)
-	{
-		this->filterNodeContent->addChild(*it);
-	}
 
 	this->addChild(this->selectedFilterRowActive);
 	this->addChild(this->selectedFilterRowInactive);
@@ -92,6 +80,13 @@ void CraftFilterMenu::initializeListeners()
 	{
 		this->scrollFilterDown();
 	});
+}
+
+void CraftFilterMenu::addFilter(CraftFilterEntry* entry)
+{
+	this->filters.push_back(entry);
+
+	this->filterNodeContent->addChild(entry);
 }
 
 void CraftFilterMenu::focus()
