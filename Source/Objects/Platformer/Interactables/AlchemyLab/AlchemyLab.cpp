@@ -86,7 +86,7 @@ void AlchemyLab::onInteract()
 {
 	super::onInteract();
 
-	PlatformerEvents::TriggerOpenCrafting(PlatformerEvents::CraftingOpenArgs(this->recipes));
+	PlatformerEvents::TriggerOpenAlchemy(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }
 
 void AlchemyLab::loadRecipePool()

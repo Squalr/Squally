@@ -11,6 +11,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -33,6 +34,8 @@
 
 using namespace cocos2d;
 
+const float CraftingMenuBase::CraftDuration = 1.5f;
+
 CraftingMenuBase::CraftingMenuBase()
 {
 	Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -44,11 +47,16 @@ CraftingMenuBase::CraftingMenuBase()
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->recipes = std::vector<Item*>();
+	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
+	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
+	this->craftIconNode = Node::create();
+	this->cancelIcon = Sprite::create(UIResources::Menus_CraftingMenu_CancelIcon);
+	this->craftProgress = ProgressBar::create(Sprite::create(UIResources::Menus_CraftingMenu_CraftFrame), Sprite::create(UIResources::Menus_CraftingMenu_CraftBarFill));
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
 	this->backDecorNode = Node::create();
 	this->returnClickCallback = nullptr;
-	this->canCraft = false;
+	this->isCrafting = 0.0f;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -74,6 +82,11 @@ CraftingMenuBase::CraftingMenuBase()
 	this->addChild(this->craftingWindow);
 	this->addChild(this->backDecorNode);
 	this->addChild(this->craftingPreview);
+	this->addChild(this->craftButton);
+	this->addChild(this->craftButtonDisabled);
+	this->addChild(this->craftIconNode);
+	this->addChild(this->cancelIcon);
+	this->addChild(this->craftProgress);
 	this->addChild(this->filterMenu);
 	this->addChild(this->itemMenu);
 	this->addChild(this->craftingLabel);
@@ -96,6 +109,9 @@ void CraftingMenuBase::onEnter()
 	GameUtils::fadeInObject(this->craftingLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+
+	this->cancelIcon->setVisible(false);
+	this->craftProgress->setVisible(false);
 	
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -105,6 +121,8 @@ void CraftingMenuBase::onEnter()
 			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
 		});
 	}, Squally::MapKeySqually);
+
+	this->scheduleUpdate();
 }
 
 void CraftingMenuBase::initializePositions()
@@ -119,6 +137,11 @@ void CraftingMenuBase::initializePositions()
 	this->itemMenu->setPreviewOffset(ItemMenu::DefaultPreviewOffset + AnvilOffset);
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
 	this->craftingPreview->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset + Vec2(128.0f, 64.0f));
+	this->craftButton->setPosition(Vec2(visibleSize.width / 2.0f + 456.0f, visibleSize.height / 2.0f - 288.0f));
+	this->craftButtonDisabled->setPosition(this->craftButton->getPosition());
+	this->craftIconNode->setPosition(this->craftButton->getPosition());
+	this->cancelIcon->setPosition(this->craftButton->getPosition());
+	this->craftProgress->setPosition(Vec2(visibleSize.width / 2.0f + 288.0f, visibleSize.height / 2.0f - 288.0f));
 	this->craftingWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->craftingLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 580.0f, visibleSize.height / 2.0f + 368.0f));
@@ -128,6 +151,13 @@ void CraftingMenuBase::initializePositions()
 void CraftingMenuBase::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
+
+	this->itemMenu->setPreviewCallback([=](Item* item)
+	{
+		this->onCraftPreview(item);
+	});
 
 	this->returnButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
@@ -139,11 +169,14 @@ void CraftingMenuBase::initializeListeners()
 		this->close();
 	});
 
-	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
-
-	this->itemMenu->setPreviewCallback([=](Item* item)
+	this->craftButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		this->onCraftPreview(item);
+		this->onCraftInteract();
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	{
+		this->onCraftInteract();
 	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
@@ -169,6 +202,26 @@ void CraftingMenuBase::initializeListeners()
 		this->itemMenu->unfocus();
 		this->craftingPreview->clearPreview();
 	});
+}
+
+void CraftingMenuBase::update(float dt)
+{
+	super::update(dt);
+
+	if (!this->isCrafting)
+	{
+		return;
+	}
+
+	this->craftElapsedTime += dt;
+
+	this->craftProgress->setProgress(this->craftElapsedTime / CraftingMenuBase::CraftDuration);
+
+	if (this->craftElapsedTime >= CraftingMenuBase::CraftDuration)
+	{
+		this->craftItem();
+		this->stopCraft();
+	}
 }
 
 void CraftingMenuBase::onFilterChange()
@@ -217,9 +270,57 @@ void CraftingMenuBase::onCraftPreview(Item* item)
 	}
 
 	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
+	
+	if (this->canCraft)
+	{
+		this->craftButton->enableInteraction();
+		this->craftButton->setVisible(true);
+		this->craftButtonDisabled->setVisible(false);
+	}
+	else
+	{
+		this->craftButton->disableInteraction();
+		this->craftButton->setVisible(false);
+		this->craftButtonDisabled->setVisible(true);
+	}
 }
 
-void CraftingMenuBase::tryCraftItem()
+void CraftingMenuBase::onCraftInteract()
+{
+	if (!this->canCraft)
+	{
+		// TODO: Err sound here.
+
+		return;
+	}
+	
+	if (!this->isCrafting)
+	{
+		this->startCraft();
+	}
+	else
+	{
+		this->stopCraft();
+	}
+}
+
+void CraftingMenuBase::startCraft()
+{
+	if (!this->canCraft || this->isCrafting)
+	{
+		return;
+	}
+
+	this->isCrafting = true;
+	this->craftElapsedTime = 0.0f;
+	this->cancelIcon->setVisible(true);
+	this->craftIconNode->setVisible(false);
+	this->craftProgress->setVisible(true);
+
+	// TODO: play craft SFX repeat (or match craft duration)
+}
+
+void CraftingMenuBase::craftItem()
 {
 	Recipe* recipe = this->craftingPreview->getCurrentRecipe();
 
@@ -253,6 +354,15 @@ void CraftingMenuBase::tryCraftItem()
 
 	this->populateItemList();
 	this->craftingPreview->refresh();
+}
+
+void CraftingMenuBase::stopCraft()
+{
+	this->isCrafting = false;
+
+	this->cancelIcon->setVisible(false);
+	this->craftIconNode->setVisible(true);
+	this->craftProgress->setVisible(false);
 }
 
 void CraftingMenuBase::close()

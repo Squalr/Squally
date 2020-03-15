@@ -19,7 +19,8 @@ const std::string PlatformerEvents::EventEngageEnemy = "EVENT_ENGAGE_ENEMY";
 const std::string PlatformerEvents::EventEnemyEngaged = "EVENT_ENEMY_ENGAGED";
 const std::string PlatformerEvents::EventHudTrackEntity = "EVENT_HUD_TRACK_ENTITY";
 const std::string PlatformerEvents::EventHudUntrackEntity = "EVENT_HUD_UNTRACK_ENTITY";
-const std::string PlatformerEvents::EventOpenCrafting = "EVENT_OPEN_CRAFTING";
+const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
+const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventGiveItem = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
@@ -124,10 +125,18 @@ void PlatformerEvents::TriggerHudUntrackEntity(HudTrackEntityArgs args)
 	);
 }
 
-void PlatformerEvents::TriggerOpenCrafting(CraftingOpenArgs args)
+void PlatformerEvents::TriggerOpenAlchemy(CraftingOpenArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		PlatformerEvents::EventOpenCrafting,
+		PlatformerEvents::EventOpenAlchemy,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenSmithing(CraftingOpenArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+		PlatformerEvents::EventOpenSmithing,
 		&args
 	);
 }

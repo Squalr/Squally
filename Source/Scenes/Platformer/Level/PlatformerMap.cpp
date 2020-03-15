@@ -30,6 +30,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Crafting/AlchemyMenu.h"
 #include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Ingame/IngameMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
@@ -77,6 +78,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->collectablesMenu = CollectablesMenu::create();
 	this->cardsMenu = CardsMenu::create();
 	this->partyMenu = PartyMenu::create();
+	this->alchemyMenu = AlchemyMenu::create();
 	this->blacksmithingMenu = BlacksmithingMenu::create();
 	this->inventoryMenu = InventoryMenu::create();
 	this->canPause = true;
@@ -110,6 +112,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
 	this->menuHud->addChild(this->combatFadeInNode);
+	this->topMenuHud->addChild(this->alchemyMenu);
 	this->topMenuHud->addChild(this->blacksmithingMenu);
 	this->topMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
@@ -130,6 +133,7 @@ void PlatformerMap::onEnter()
 	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
+	this->alchemyMenu->setVisible(false);
 	this->blacksmithingMenu->setVisible(false);
 
 	this->scheduleUpdate();
@@ -188,7 +192,21 @@ void PlatformerMap::initializeListeners()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenCrafting, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
+
+		if (args != nullptr)
+		{
+			this->alchemyMenu->open(args->recipes);
+			this->alchemyMenu->setVisible(true);
+
+			GameUtils::focus(this->alchemyMenu);
+			GameUtils::resume(this->notificationHud);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenSmithing, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::CraftingOpenArgs* args = static_cast<PlatformerEvents::CraftingOpenArgs*>(eventCustom->getUserData());
 
@@ -343,6 +361,12 @@ void PlatformerMap::initializeListeners()
 		this->ingameMenu->setVisible(true);
 		this->inventoryMenu->setVisible(false);
 		GameUtils::focus(this->ingameMenu);
+	});
+
+	this->alchemyMenu->setReturnClickCallback([=]()
+	{
+		this->alchemyMenu->setVisible(false);
+		GameUtils::focus(this);
 	});
 
 	this->blacksmithingMenu->setReturnClickCallback([=]()

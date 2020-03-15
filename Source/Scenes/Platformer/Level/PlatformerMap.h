@@ -2,6 +2,7 @@
 
 #include "Scenes/MapBase.h"
 
+class AlchemyMenu;
 class BlacksmithingMenu;
 class Cipher;
 class ClickableTextNode;
@@ -44,6 +45,7 @@ private:
 	CardsMenu* cardsMenu;
 	PartyMenu* partyMenu;
 	InventoryMenu* inventoryMenu;
+	AlchemyMenu* alchemyMenu;
 	BlacksmithingMenu* blacksmithingMenu;
 	cocos2d::Node* combatFadeInNode;
 

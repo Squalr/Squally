@@ -32,8 +32,7 @@ BlacksmithingMenu* BlacksmithingMenu::create()
 BlacksmithingMenu::BlacksmithingMenu()
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
-	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
-	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
+	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_AnvilIcon);
 
 	this->filterMenu->addFilter(AllWeaponsFilter::create());
 	this->filterMenu->addFilter(AxesFilter::create());
@@ -43,8 +42,7 @@ BlacksmithingMenu::BlacksmithingMenu()
 	this->filterMenu->addFilter(SwordsFilter::create());
 
 	this->backDecorNode->addChild(this->anvil);
-	this->addChild(this->craftButton);
-	this->addChild(this->craftButtonDisabled);
+	this->craftIconNode->addChild(this->icon);
 }
 
 BlacksmithingMenu::~BlacksmithingMenu()
@@ -60,34 +58,4 @@ void BlacksmithingMenu::initializePositions()
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 
 	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset);
-	this->craftButton->setPosition(Vec2(visibleSize.width / 2.0f + 456.0f, visibleSize.height / 2.0f - 288.0f));
-	this->craftButtonDisabled->setPosition(this->craftButton->getPosition());
-}
-
-void BlacksmithingMenu::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->craftButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
-	{
-		this->tryCraftItem();
-	});
-}
-
-void BlacksmithingMenu::onCraftPreview(Item* item)
-{
-	super::onCraftPreview(item);
-	
-	if (this->canCraft)
-	{
-		this->craftButton->enableInteraction();
-		this->craftButton->setVisible(true);
-		this->craftButtonDisabled->setVisible(false);
-	}
-	else
-	{
-		this->craftButton->disableInteraction();
-		this->craftButton->setVisible(false);
-		this->craftButtonDisabled->setVisible(true);
-	}
 }

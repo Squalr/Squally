@@ -5,16 +5,16 @@
 class Item;
 class LocalizedLabel;
 
-class SpearsFilter : public CraftFilterEntry
+class AllAlchemyFilter : public CraftFilterEntry
 {
 public:
-	static SpearsFilter* create();
+	static AllAlchemyFilter* create();
 
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
 protected:
-	SpearsFilter();
-	virtual ~SpearsFilter();
+	AllAlchemyFilter();
+	virtual ~AllAlchemyFilter();
 	
 	void onEnter() override;
 	void initializePositions() override;

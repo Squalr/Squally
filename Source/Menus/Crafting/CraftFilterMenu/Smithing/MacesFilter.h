@@ -13,11 +13,12 @@ public:
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
 protected:
+	MacesFilter();
+	virtual ~MacesFilter();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef CraftFilterEntry super;
-	MacesFilter();
-	virtual ~MacesFilter();
 };

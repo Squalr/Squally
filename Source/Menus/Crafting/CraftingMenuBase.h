@@ -21,6 +21,7 @@ class Item;
 class ItemMenu;
 class Inventory;
 class LocalizedLabel;
+class ProgressBar;
 class Recipe;
 
 class CraftingMenuBase : public SmartNode
@@ -36,17 +37,20 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	virtual void onCraftPreview(Item* item);
-	void tryCraftItem();
+	void update(float dt) override;
+	void startCraft();
+	void craftItem();
 	
 	CraftFilterMenu* filterMenu;
 	cocos2d::Node* backDecorNode;
-
-	bool canCraft;
+	cocos2d::Node* craftIconNode;
 
 private:
 	typedef SmartNode super;
 
+	void onCraftPreview(Item* item);
+	void onCraftInteract();
+	void stopCraft();
 	void onFilterChange();
 	void populateItemList();
 	void close();
@@ -56,6 +60,10 @@ private:
 	LocalizedLabel* craftingLabel;
 	CraftingPreview* craftingPreview;
 	ItemMenu* itemMenu;
+	ClickableNode* craftButton;
+	cocos2d::Sprite* craftButtonDisabled;
+	cocos2d::Sprite* cancelIcon;
+	ProgressBar* craftProgress;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
 
@@ -63,5 +71,11 @@ private:
 	CurrencyInventory* currencyInventory;
 	Inventory* inventory;
 
+	bool canCraft;
+	bool isCrafting;
+	float craftElapsedTime;
+
 	std::function<void()> returnClickCallback;
+
+	static const float CraftDuration;
 };

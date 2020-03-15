@@ -8,14 +8,14 @@ namespace cocos2d
 	class Sprite;
 };
 
-class BlacksmithingMenu : public CraftingMenuBase
+class AlchemyMenu : public CraftingMenuBase
 {
 public:
-	static BlacksmithingMenu* create();
+	static AlchemyMenu* create();
 
 protected:
-	BlacksmithingMenu();
-	virtual ~BlacksmithingMenu();
+	AlchemyMenu();
+	virtual ~AlchemyMenu();
 
 	void initializePositions() override;
 

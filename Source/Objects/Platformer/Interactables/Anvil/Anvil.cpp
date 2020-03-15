@@ -86,7 +86,7 @@ void Anvil::onInteract()
 {
 	super::onInteract();
 
-	PlatformerEvents::TriggerOpenCrafting(PlatformerEvents::CraftingOpenArgs(this->recipes));
+	PlatformerEvents::TriggerOpenSmithing(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }
 
 void Anvil::loadRecipePool()

@@ -29,7 +29,8 @@ public:
 	static const std::string EventEnemyEngaged;
 	static const std::string EventHudTrackEntity;
 	static const std::string EventHudUntrackEntity;
-	static const std::string EventOpenCrafting;
+	static const std::string EventOpenAlchemy;
+	static const std::string EventOpenSmithing;
 	static const std::string EventDiscoverItem;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItem;
@@ -167,7 +168,8 @@ public:
 	static void TriggerEnemyEngaged(EnemyEngagedArgs args);
 	static void TriggerHudTrackEntity(HudTrackEntityArgs args);
 	static void TriggerHudUntrackEntity(HudTrackEntityArgs args);
-	static void TriggerOpenCrafting(CraftingOpenArgs args);
+	static void TriggerOpenAlchemy(CraftingOpenArgs args);
+	static void TriggerOpenSmithing(CraftingOpenArgs args);
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItem(GiveItemArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);

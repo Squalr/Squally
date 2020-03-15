@@ -13,11 +13,12 @@ public:
 	std::vector<Item*> filter(std::vector<Item*> itemList) override;
 
 protected:
+	SwordsFilter();
+	virtual ~SwordsFilter();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef CraftFilterEntry super;
-	SwordsFilter();
-	virtual ~SwordsFilter();
 };
