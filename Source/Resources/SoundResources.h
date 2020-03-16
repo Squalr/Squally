@@ -53,6 +53,8 @@ namespace SoundResources
 	extern const std::string Menus_ButtonRollover1;
 	extern const std::string Menus_ClickBack1;
 	extern const std::string Menus_ClickBack2;
+	extern const std::string Menus_Crafting_Alchemy;
+	extern const std::string Menus_Crafting_Blacksmithing;
 	extern const std::string Menus_Error1;
 	extern const std::string Menus_MapOpen1;
 	extern const std::string Menus_Special1;

@@ -11,6 +11,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ProgressBar.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -54,6 +55,7 @@ CraftingMenuBase::CraftingMenuBase()
 	this->craftProgress = ProgressBar::create(Sprite::create(UIResources::Menus_CraftingMenu_CraftFrame), Sprite::create(UIResources::Menus_CraftingMenu_CraftBarFill));
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->backDecorNode = Node::create();
 	this->returnClickCallback = nullptr;
 	this->isCrafting = 0.0f;
@@ -92,6 +94,7 @@ CraftingMenuBase::CraftingMenuBase()
 	this->addChild(this->craftingLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
+	this->addChild(this->errorSound);
 }
 
 CraftingMenuBase::~CraftingMenuBase()
@@ -220,7 +223,7 @@ void CraftingMenuBase::update(float dt)
 	if (this->craftElapsedTime >= CraftingMenuBase::CraftDuration)
 	{
 		this->craftItem();
-		this->stopCraft();
+		this->stopCraft(false);
 	}
 }
 
@@ -289,8 +292,7 @@ void CraftingMenuBase::onCraftInteract()
 {
 	if (!this->canCraft)
 	{
-		// TODO: Err sound here.
-
+		this->errorSound->play();
 		return;
 	}
 	
@@ -300,7 +302,7 @@ void CraftingMenuBase::onCraftInteract()
 	}
 	else
 	{
-		this->stopCraft();
+		this->stopCraft(true);
 	}
 }
 
@@ -317,7 +319,7 @@ void CraftingMenuBase::startCraft()
 	this->craftIconNode->setVisible(false);
 	this->craftProgress->setVisible(true);
 
-	// TODO: play craft SFX repeat (or match craft duration)
+	this->onCraftStart();
 }
 
 void CraftingMenuBase::craftItem()
@@ -356,13 +358,15 @@ void CraftingMenuBase::craftItem()
 	this->craftingPreview->refresh();
 }
 
-void CraftingMenuBase::stopCraft()
+void CraftingMenuBase::stopCraft(bool viaCancel)
 {
 	this->isCrafting = false;
 
 	this->cancelIcon->setVisible(false);
 	this->craftIconNode->setVisible(true);
 	this->craftProgress->setVisible(false);
+
+	this->onCraftEnd(viaCancel);
 }
 
 void CraftingMenuBase::close()

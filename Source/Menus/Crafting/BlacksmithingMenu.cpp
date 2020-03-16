@@ -4,6 +4,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Sound/Sound.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterMenu.h"
 #include "Menus/Crafting/CraftFilterMenu/Smithing/AllWeaponsFilter.h"
@@ -33,6 +34,7 @@ BlacksmithingMenu::BlacksmithingMenu()
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_AnvilIcon);
+	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Blacksmithing);
 
 	this->filterMenu->addFilter(AllWeaponsFilter::create());
 	this->filterMenu->addFilter(AxesFilter::create());
@@ -43,6 +45,7 @@ BlacksmithingMenu::BlacksmithingMenu()
 
 	this->backDecorNode->addChild(this->anvil);
 	this->craftIconNode->addChild(this->icon);
+	this->addChild(this->craftSound);
 }
 
 BlacksmithingMenu::~BlacksmithingMenu()
@@ -58,4 +61,18 @@ void BlacksmithingMenu::initializePositions()
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 
 	this->anvil->setPosition(Vec2(visibleSize.width / 2.0f + 359.0f, visibleSize.height / 2.0f + 54.0f) + AnvilOffset);
+}
+
+void BlacksmithingMenu::onCraftStart()
+{
+	this->craftSound->stop();
+	this->craftSound->play();
+}
+
+void BlacksmithingMenu::onCraftEnd(bool viaCancel)
+{
+	if (viaCancel)
+	{
+		this->craftSound->stop();
+	}
 }

@@ -23,6 +23,7 @@ class Inventory;
 class LocalizedLabel;
 class ProgressBar;
 class Recipe;
+class Sound;
 
 class CraftingMenuBase : public SmartNode
 {
@@ -38,6 +39,8 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
+	virtual void onCraftStart() = 0;
+	virtual void onCraftEnd(bool viaCancel) = 0;
 	void startCraft();
 	void craftItem();
 	
@@ -50,7 +53,7 @@ private:
 
 	void onCraftPreview(Item* item);
 	void onCraftInteract();
-	void stopCraft();
+	void stopCraft(bool viaCancel);
 	void onFilterChange();
 	void populateItemList();
 	void close();
@@ -66,6 +69,8 @@ private:
 	ProgressBar* craftProgress;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
+
+	Sound* errorSound;
 
 	std::vector<Item*> recipes;
 	CurrencyInventory* currencyInventory;
