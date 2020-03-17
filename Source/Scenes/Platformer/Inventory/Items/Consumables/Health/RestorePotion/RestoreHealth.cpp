@@ -23,7 +23,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
 #include "Resources/FXResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 

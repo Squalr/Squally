@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* Diamond::getString()
 
 std::string Diamond::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Diamond;
+	return ItemResources::Crafting_Ores_Diamond;
 }
 
 std::string Diamond::getSerializationKey()

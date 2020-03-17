@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* ConchHelm::getString()
 
 std::string ConchHelm::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Gear_Hats_ConchHelm;
+	return ItemResources::Equipment_Gear_Hats_ConchHelm;
 }
 
 std::string ConchHelm::getSerializationKey()

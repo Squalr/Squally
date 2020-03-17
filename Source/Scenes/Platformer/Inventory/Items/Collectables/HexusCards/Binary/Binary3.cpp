@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -46,7 +46,7 @@ LocalizedString* Binary3::getString()
 
 std::string Binary3::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardBinary;
+	return ItemResources::Collectables_Cards_CardBinary;
 }
 
 std::string Binary3::getSerializationKey()

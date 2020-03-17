@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -46,7 +46,7 @@ LocalizedString* SpecialFlip2::getString()
 
 std::string SpecialFlip2::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardSpecial;
+	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
 std::string SpecialFlip2::getSerializationKey()

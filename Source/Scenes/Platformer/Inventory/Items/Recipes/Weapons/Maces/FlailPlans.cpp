@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -61,12 +61,12 @@ LocalizedString* FlailPlans::getString()
 
 std::string FlailPlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string FlailPlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Maces_Flail;
+	return ItemResources::Equipment_Weapons_Maces_Flail;
 }
 
 std::string FlailPlans::getSerializationKey()

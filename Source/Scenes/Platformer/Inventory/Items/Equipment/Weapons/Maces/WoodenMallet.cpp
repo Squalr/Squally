@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* WoodenMallet::getString()
 
 std::string WoodenMallet::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Maces_WoodenMallet;
+	return ItemResources::Equipment_Weapons_Maces_WoodenMallet;
 }
 
 std::string WoodenMallet::getSerializationKey()

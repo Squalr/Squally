@@ -5,7 +5,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 using namespace cocos2d;
 

@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* TownKey::getString()
 
 std::string TownKey::getIconResource()
 {
-	return ObjectResources::Items_Misc_KEY_1;
+	return ItemResources::Keys_KEY_1;
 }
 
 std::string TownKey::getSerializationKey()

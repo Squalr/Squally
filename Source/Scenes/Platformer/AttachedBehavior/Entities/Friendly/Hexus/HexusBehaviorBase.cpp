@@ -24,7 +24,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -43,7 +43,7 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode = Node::create();
 	this->iconContainer = Node::create();
 	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
-	this->cardSprite = Sprite::create(ObjectResources::Collectables_Cards_CardSpecial);
+	this->cardSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
 	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
 	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;
 	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(Size(128.0f, 128.0f))) : nullptr;

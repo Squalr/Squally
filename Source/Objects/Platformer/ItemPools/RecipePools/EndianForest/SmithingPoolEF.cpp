@@ -1,4 +1,4 @@
-#include "RecipePoolEF.h"
+#include "SmithingPoolEF.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -7,18 +7,18 @@
 
 using namespace cocos2d;
 
-const std::string RecipePoolEF::PoolName = "recipe-pool-ef";
+const std::string SmithingPoolEF::PoolName = "smithing-pool-ef";
 
-RecipePoolEF* RecipePoolEF::create(ValueMap& properties)
+SmithingPoolEF* SmithingPoolEF::create(ValueMap& properties)
 {
-	RecipePoolEF* instance = new RecipePoolEF(properties);
+	SmithingPoolEF* instance = new SmithingPoolEF(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RecipePoolEF::RecipePoolEF(ValueMap& properties) : super(properties, RecipePoolEF::PoolName, SampleMethod::Unbounded, 1, 1)
+SmithingPoolEF::SmithingPoolEF(ValueMap& properties) : super(properties, SmithingPoolEF::PoolName, SampleMethod::Unbounded, 1, 1)
 {
 	this->addItemToPool(ItemChance::create(IronSwordPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(RapierPlans::create(), ItemChance::Probability::Guaranteed));
@@ -29,6 +29,6 @@ RecipePoolEF::RecipePoolEF(ValueMap& properties) : super(properties, RecipePoolE
 	this->addItemToPool(ItemChance::create(HandAxePlans::create(), ItemChance::Probability::Guaranteed));
 }
 
-RecipePoolEF::~RecipePoolEF()
+SmithingPoolEF::~SmithingPoolEF()
 {
 }

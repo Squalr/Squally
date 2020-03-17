@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* MagesGuildPrisonKey::getString()
 
 std::string MagesGuildPrisonKey::getIconResource()
 {
-	return ObjectResources::Items_Misc_KEY_2;
+	return ItemResources::Keys_KEY_2;
 }
 
 std::string MagesGuildPrisonKey::getSerializationKey()

@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ThrowManaPotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -48,7 +48,7 @@ LocalizedString* ManaPotion::getString()
 
 std::string ManaPotion::getIconResource()
 {
-	return ObjectResources::Items_Consumables_Potions_MANA_5;
+	return ItemResources::Consumables_Potions_MANA_5;
 }
 
 std::string ManaPotion::getSerializationKey()

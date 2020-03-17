@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -60,12 +60,12 @@ LocalizedString* BlueSwordPlans::getString()
 
 std::string BlueSwordPlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string BlueSwordPlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_BlueSword;
+	return ItemResources::Equipment_Weapons_Swords_BlueSword;
 }
 
 std::string BlueSwordPlans::getSerializationKey()

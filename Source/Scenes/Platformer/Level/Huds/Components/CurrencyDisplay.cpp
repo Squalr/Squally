@@ -7,7 +7,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 using namespace cocos2d;
 
@@ -24,7 +24,7 @@ CurrencyDisplay* CurrencyDisplay::create()
 
 CurrencyDisplay::CurrencyDisplay()
 {
-	this->emblem = Sprite::create(ObjectResources::Collectables_Currency_IOU);
+	this->emblem = Sprite::create(ItemResources::Collectables_Currency_IOU);
 	this->value = ConstantString::create("0");
 	this->label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->value);
 	this->inventory = nullptr;

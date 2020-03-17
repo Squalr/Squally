@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* IvoryBow::getString()
 
 std::string IvoryBow::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Bows_IvoryBow;
+	return ItemResources::Equipment_Weapons_Bows_IvoryBow;
 }
 
 std::string IvoryBow::getSerializationKey()

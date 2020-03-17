@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -62,12 +62,12 @@ LocalizedString* MoonBladePlans::getString()
 
 std::string MoonBladePlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string MoonBladePlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Swords_MoonBlade;
+	return ItemResources::Equipment_Weapons_Swords_MoonBlade;
 }
 
 std::string MoonBladePlans::getSerializationKey()

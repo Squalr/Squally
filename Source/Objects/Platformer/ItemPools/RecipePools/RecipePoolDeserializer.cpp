@@ -23,7 +23,8 @@ RecipePoolDeserializer::RecipePoolDeserializer() : super(RecipePoolDeserializer:
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 
 	// Endian forest pocket pools
-	this->deserializers[RecipePoolEF::PoolName] = [=](ValueMap properties) { return (GameObject*)RecipePoolEF::create(properties); };
+	this->deserializers[AlchemyPoolEF::PoolName] = [=](ValueMap properties) { return (GameObject*)AlchemyPoolEF::create(properties); };
+	this->deserializers[SmithingPoolEF::PoolName] = [=](ValueMap properties) { return (GameObject*)SmithingPoolEF::create(properties); };
 }
 
 RecipePoolDeserializer::~RecipePoolDeserializer()

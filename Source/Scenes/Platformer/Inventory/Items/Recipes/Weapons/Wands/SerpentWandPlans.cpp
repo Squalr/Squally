@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -62,12 +62,12 @@ LocalizedString* SerpentWandPlans::getString()
 
 std::string SerpentWandPlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string SerpentWandPlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_SerpentWand;
+	return ItemResources::Equipment_Weapons_Wands_SerpentWand;
 }
 
 std::string SerpentWandPlans::getSerializationKey()

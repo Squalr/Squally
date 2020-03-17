@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -60,12 +60,12 @@ LocalizedString* CrossBowPlans::getString()
 
 std::string CrossBowPlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string CrossBowPlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Bows_CrossBow;
+	return ItemResources::Equipment_Weapons_Bows_CrossBow;
 }
 
 std::string CrossBowPlans::getSerializationKey()

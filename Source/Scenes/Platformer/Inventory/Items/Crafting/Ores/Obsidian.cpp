@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* Obsidian::getString()
 
 std::string Obsidian::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Obsidian;
+	return ItemResources::Crafting_Ores_Obsidian;
 }
 
 std::string Obsidian::getSerializationKey()

@@ -186,7 +186,7 @@
   <object id="801" name="shop-pool-minos" type="object" x="404.409" y="310.893" width="64" height="64"/>
   <object id="804" name="anvil" type="object" x="1901.36" y="960.879" width="249" height="106">
    <properties>
-    <property name="recipe-pool" value="recipe-pool-ef"/>
+    <property name="recipe-pool" value="smithing-pool-ef"/>
    </properties>
   </object>
  </objectgroup>

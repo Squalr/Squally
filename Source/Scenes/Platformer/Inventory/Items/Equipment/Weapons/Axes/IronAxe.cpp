@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* IronAxe::getString()
 
 std::string IronAxe::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Axes_IronAxe;
+	return ItemResources::Equipment_Weapons_Axes_IronAxe;
 }
 
 std::string IronAxe::getSerializationKey()

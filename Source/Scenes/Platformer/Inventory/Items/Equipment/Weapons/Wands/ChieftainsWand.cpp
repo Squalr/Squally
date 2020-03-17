@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* ChieftainsWand::getString()
 
 std::string ChieftainsWand::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Wands_ChieftainsWand;
+	return ItemResources::Equipment_Weapons_Wands_ChieftainsWand;
 }
 
 std::string ChieftainsWand::getSerializationKey()

@@ -1,6 +1,6 @@
 #include "IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ std::string IOU::getIOUIdentifier()
 
 std::string IOU::getIOUIconResource()
 {
-	return ObjectResources::Collectables_Currency_IOU;
+	return ItemResources::Collectables_Currency_IOU;
 }
 
 LocalizedString* IOU::getIOUString()

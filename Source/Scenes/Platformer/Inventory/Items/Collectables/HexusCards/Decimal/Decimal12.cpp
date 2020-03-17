@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -46,7 +46,7 @@ LocalizedString* Decimal12::getString()
 
 std::string Decimal12::getIconResource()
 {
-	return ObjectResources::Collectables_Cards_CardDecimal;
+	return ItemResources::Collectables_Cards_CardDecimal;
 }
 
 std::string Decimal12::getSerializationKey()

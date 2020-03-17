@@ -5,7 +5,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/RestorePotion/ThrowRestorePotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -47,7 +47,7 @@ LocalizedString* MissingNo::getString()
 
 std::string MissingNo::getIconResource()
 {
-	return ObjectResources::Items_Error_MissingNo;
+	return ItemResources::Error_MissingNo;
 }
 
 std::string MissingNo::getSerializationKey()

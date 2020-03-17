@@ -13,7 +13,7 @@
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -29,7 +29,7 @@ ThrowHealthPotion* ThrowHealthPotion::create()
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Healing, ObjectResources::Items_Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Healing, ItemResources::Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -66,7 +66,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity*
 {
 	super::performAttack(owner, target);
 	
-	ThrownObject* potion = ThrownObject::create(owner, ObjectResources::Items_Consumables_Potions_HEALTH_2, Size(64.0f, 64.0f));
+	ThrownObject* potion = ThrownObject::create(owner, ItemResources::Consumables_Potions_HEALTH_2, Size(64.0f, 64.0f));
 	
 	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{

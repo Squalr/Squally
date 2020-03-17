@@ -1,5 +1,6 @@
 #include "MayanGemRed.h"
 
+#include "Resources/ItemResources.h"
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -13,7 +14,7 @@ MayanGemRed* MayanGemRed::create()
 	return instance;
 }
 
-MayanGemRed::MayanGemRed() : super(ObjectResources::Doors_Mayan_RedGem, ObjectResources::Doors_Mayan_RedGemDisabled)
+MayanGemRed::MayanGemRed() : super(ItemResources::Keys_RedGem, ObjectResources::Doors_Mayan_RedGemDisabled)
 {
 }
 

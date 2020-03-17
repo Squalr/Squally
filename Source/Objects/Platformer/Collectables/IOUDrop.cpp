@@ -8,7 +8,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -27,7 +27,7 @@ IOUDrop* IOUDrop::create(ValueMap& properties)
 
 IOUDrop::IOUDrop(ValueMap& properties) : super(properties)
 {
-	this->iou = Sprite::create(ObjectResources::Collectables_Currency_IOU);
+	this->iou = Sprite::create(ItemResources::Collectables_Currency_IOU);
 
 	this->onCollected([=]()
 	{

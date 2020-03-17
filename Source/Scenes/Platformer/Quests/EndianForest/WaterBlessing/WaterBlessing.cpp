@@ -21,7 +21,7 @@
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -78,7 +78,7 @@ void WaterBlessing::onComplete()
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Blessings_BlessingGranted::create(),
 		Strings::Platformer_Blessings_BlessingOfWater::create(),
-		ObjectResources::Items_Misc_EssenceOfWater,
+		ItemResources::Essences_EssenceOfWater,
 		SoundResources::Notifications_NotificationGood1
 	));
 }

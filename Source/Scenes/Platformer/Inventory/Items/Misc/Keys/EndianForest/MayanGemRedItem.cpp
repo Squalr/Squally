@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* MayanGemRedItem::getString()
 
 std::string MayanGemRedItem::getIconResource()
 {
-	return ObjectResources::Doors_Mayan_RedGem;
+	return ItemResources::Keys_RedGem;
 }
 
 std::string MayanGemRedItem::getSerializationKey()

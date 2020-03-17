@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/ThrowHealthPotion.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -47,7 +47,7 @@ LocalizedString* HealthPotion::getString()
 
 std::string HealthPotion::getIconResource()
 {
-	return ObjectResources::Items_Consumables_Potions_HEALTH_2;
+	return ItemResources::Consumables_Potions_HEALTH_2;
 }
 
 std::string HealthPotion::getSerializationKey()

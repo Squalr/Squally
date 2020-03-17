@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* Quartz::getString()
 
 std::string Quartz::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Quartz;
+	return ItemResources::Crafting_Ores_Quartz;
 }
 
 std::string Quartz::getSerializationKey()

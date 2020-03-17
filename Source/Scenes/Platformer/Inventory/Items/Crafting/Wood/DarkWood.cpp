@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* DarkWood::getString()
 
 std::string DarkWood::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Wood_DarkWood;
+	return ItemResources::Crafting_Wood_DarkWood;
 }
 
 std::string DarkWood::getSerializationKey()

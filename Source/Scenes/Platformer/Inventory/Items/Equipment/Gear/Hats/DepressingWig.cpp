@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -56,7 +56,7 @@ LocalizedString* DepressingWig::getString()
 
 std::string DepressingWig::getIconResource()
 {
-	return ObjectResources::Items_Equipment_Gear_Hats_DepressingWig;
+	return ItemResources::Equipment_Gear_Hats_DepressingWig;
 }
 
 std::string DepressingWig::getSerializationKey()

@@ -27,7 +27,7 @@ AlchemyMenu* AlchemyMenu::create()
 
 AlchemyMenu::AlchemyMenu()
 {
-	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
+	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Table);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_PlantIcon);
 	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Alchemy);
 

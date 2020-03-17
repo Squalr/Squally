@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* RamWheel::getString()
 
 std::string RamWheel::getIconResource()
 {
-	return ObjectResources::Traps_Ram_WHEEL;
+	return ItemResources::Keys_RamWheel;
 }
 
 std::string RamWheel::getSerializationKey()

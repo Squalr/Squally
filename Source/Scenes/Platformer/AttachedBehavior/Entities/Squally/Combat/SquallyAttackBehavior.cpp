@@ -14,9 +14,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/CastHaste.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Maces/MaceSwing.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Swords/Slash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttacks.h"
 
 #include "Resources/UIResources.h"
 
@@ -151,6 +149,7 @@ void SquallyAttackBehavior::loadSwordAttacks(EntityAttackBehavior* attackBehavio
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
+	attackBehavior->registerAttack(Execute::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
 void SquallyAttackBehavior::loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword)

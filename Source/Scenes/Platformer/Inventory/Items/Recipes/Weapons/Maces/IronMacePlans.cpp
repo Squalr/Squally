@@ -4,7 +4,7 @@
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -61,12 +61,12 @@ LocalizedString* IronMacePlans::getString()
 
 std::string IronMacePlans::getIconResource()
 {
-	return ObjectResources::Items_Crafting_SCROLL_1;
+	return ItemResources::Misc_SCROLL_1;
 }
 
 std::string IronMacePlans::getCraftedItemIconResource()
 {
-	return ObjectResources::Items_Equipment_Weapons_Maces_IronMace;
+	return ItemResources::Equipment_Weapons_Maces_IronMace;
 }
 
 std::string IronMacePlans::getSerializationKey()

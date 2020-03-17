@@ -3,7 +3,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 
 #include "Strings/Strings.h"
 
@@ -45,7 +45,7 @@ LocalizedString* Stone::getString()
 
 std::string Stone::getIconResource()
 {
-	return ObjectResources::Items_Reagents_Ores_Stone;
+	return ItemResources::Crafting_Ores_Stone;
 }
 
 std::string Stone::getSerializationKey()

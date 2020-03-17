@@ -144,6 +144,8 @@
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MayanGemRedItem.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/RamWheel.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/TownKey.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/CopperToQuartzPlans.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/AxeRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/BattleAxePlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/BlueAxePlans.h"

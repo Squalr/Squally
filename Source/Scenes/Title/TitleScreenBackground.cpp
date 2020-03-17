@@ -17,7 +17,7 @@
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/EntityResources.h"
-#include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/UIResources.h"
 
@@ -58,7 +58,7 @@ TitleScreenBackground::TitleScreenBackground()
 
 	if (this->mainhand != nullptr)
 	{
-		this->mainhand->replaceSprite(ObjectResources::Items_Equipment_Weapons_Wands_WoodenWand);
+		this->mainhand->replaceSprite(ItemResources::Equipment_Weapons_Wands_WoodenWand);
 		this->mainhand->setOffset(Vec2(0.0f, -16.0f));
 	}
 
