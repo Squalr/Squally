@@ -20,7 +20,9 @@ AlchemyPoolEF* AlchemyPoolEF::create(ValueMap& properties)
 
 AlchemyPoolEF::AlchemyPoolEF(ValueMap& properties) : super(properties, AlchemyPoolEF::PoolName, SampleMethod::Unbounded, 1, 1)
 {
-	this->addItemToPool(ItemChance::create(CopperToQuartzPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(IncrementHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(ManaPotionRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(TransmuteCopperToQuartzRecipe::create(), ItemChance::Probability::Guaranteed));
 }
 
 AlchemyPoolEF::~AlchemyPoolEF()

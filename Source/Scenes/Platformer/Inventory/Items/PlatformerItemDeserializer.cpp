@@ -130,7 +130,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Consumables
 	this->deserializers[HealthPotion::SaveKeyHealthPotion] = [=]() { return (Item*)HealthPotion::create(); };
-	this->deserializers[RestorePotion::SaveKeyRestorePotion] = [=]() { return (Item*)RestorePotion::create(); };
+	this->deserializers[IncrementHealthFlask::SaveKeyIncrementHealthFlask] = [=]() { return (Item*)IncrementHealthFlask::create(); };
 	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };
 
 	// Axes

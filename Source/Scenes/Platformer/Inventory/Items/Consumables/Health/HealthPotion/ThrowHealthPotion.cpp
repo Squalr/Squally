@@ -20,18 +20,19 @@
 
 using namespace cocos2d;
 
-ThrowHealthPotion* ThrowHealthPotion::create()
+ThrowHealthPotion* ThrowHealthPotion::create(float healPercentage, std::string iconResource)
 {
-	ThrowHealthPotion* instance = new ThrowHealthPotion();
+	ThrowHealthPotion* instance = new ThrowHealthPotion(healPercentage, iconResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion() : super(AttackType::Healing, ItemResources::Consumables_Potions_HEALTH_2, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion(float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, 0.5f, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
+	this->healPercentage = healPercentage;
 
 	this->addChild(this->throwSound);
 }
@@ -42,7 +43,7 @@ ThrowHealthPotion::~ThrowHealthPotion()
 
 PlatformerAttack* ThrowHealthPotion::cloneInternal()
 {
-	return ThrowHealthPotion::create();
+	return ThrowHealthPotion::create(this->healPercentage, this->getIconResource());
 }
 
 LocalizedString* ThrowHealthPotion::getString()
@@ -66,7 +67,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity*
 {
 	super::performAttack(owner, target);
 	
-	ThrownObject* potion = ThrownObject::create(owner, ItemResources::Consumables_Potions_HEALTH_2, Size(64.0f, 64.0f));
+	ThrownObject* potion = ThrownObject::create(owner, this->getIconResource(), Size(64.0f, 64.0f));
 	
 	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -76,7 +77,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, PlatformerEntity*
 
 		if (entity != nullptr)
 		{
-			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * HealthPotion::HealPercentage);
+			int healing = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0))) * this->healPercentage);
 
 			CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing));
 		}

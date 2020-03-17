@@ -47,7 +47,7 @@ LocalizedString* HealthPotion::getString()
 
 std::string HealthPotion::getIconResource()
 {
-	return ItemResources::Consumables_Potions_HEALTH_2;
+	return ItemResources::Consumables_Potions_HealthPotion;
 }
 
 std::string HealthPotion::getSerializationKey()
@@ -57,5 +57,5 @@ std::string HealthPotion::getSerializationKey()
 
 PlatformerAttack* HealthPotion::createAssociatedAttack()
 {
-	return ThrowHealthPotion::create();
+	return ThrowHealthPotion::create(HealthPotion::HealPercentage, this->getIconResource());
 }

@@ -48,7 +48,7 @@ LocalizedString* ManaPotion::getString()
 
 std::string ManaPotion::getIconResource()
 {
-	return ItemResources::Consumables_Potions_MANA_5;
+	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
 std::string ManaPotion::getSerializationKey()

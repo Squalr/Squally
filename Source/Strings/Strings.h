@@ -4434,6 +4434,36 @@ namespace Strings
 		virtual ~Input_Tab() = default;
 	};
 
+	class Items_Consumables_Health_AddHealthFlask : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Health_AddHealthFlask* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Health_AddHealthFlask();
+		virtual ~Items_Consumables_Health_AddHealthFlask() = default;
+	};
+
+	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Health_GreaterHealthPotion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Health_GreaterHealthPotion();
+		virtual ~Items_Consumables_Health_GreaterHealthPotion() = default;
+	};
+
 	class Items_Consumables_Health_HealthPotion : public LocalizedString
 	{
 	public:
@@ -4449,10 +4479,10 @@ namespace Strings
 		virtual ~Items_Consumables_Health_HealthPotion() = default;
 	};
 
-	class Items_Consumables_Health_RestorePotion : public LocalizedString
+	class Items_Consumables_Health_IncrementHealthFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_RestorePotion* create();
+		static Items_Consumables_Health_IncrementHealthFlask* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4460,8 +4490,53 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Consumables_Health_RestorePotion();
-		virtual ~Items_Consumables_Health_RestorePotion() = default;
+		Items_Consumables_Health_IncrementHealthFlask();
+		virtual ~Items_Consumables_Health_IncrementHealthFlask() = default;
+	};
+
+	class Items_Consumables_Mana_AddManaFlask : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Mana_AddManaFlask* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Mana_AddManaFlask();
+		virtual ~Items_Consumables_Mana_AddManaFlask() = default;
+	};
+
+	class Items_Consumables_Mana_GreaterManaPotion : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Mana_GreaterManaPotion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Mana_GreaterManaPotion();
+		virtual ~Items_Consumables_Mana_GreaterManaPotion() = default;
+	};
+
+	class Items_Consumables_Mana_IncrementManaFlask : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Mana_IncrementManaFlask* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Mana_IncrementManaFlask();
+		virtual ~Items_Consumables_Mana_IncrementManaFlask() = default;
 	};
 
 	class Items_Consumables_Mana_ManaPotion : public LocalizedString
@@ -7179,6 +7254,21 @@ namespace Strings
 		virtual ~Menus_Crafting_Maces() = default;
 	};
 
+	class Menus_Crafting_Potions : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Potions* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Potions();
+		virtual ~Menus_Crafting_Potions() = default;
+	};
+
 	class Menus_Crafting_Spears : public LocalizedString
 	{
 	public:
@@ -7207,6 +7297,21 @@ namespace Strings
 	private:
 		Menus_Crafting_Swords();
 		virtual ~Menus_Crafting_Swords() = default;
+	};
+
+	class Menus_Crafting_Transmutes : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Transmutes* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Transmutes();
+		virtual ~Menus_Crafting_Transmutes() = default;
 	};
 
 	class Menus_Crafting_Wands : public LocalizedString
@@ -7509,10 +7614,10 @@ namespace Strings
 		virtual ~Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd() = default;
 	};
 
-	class Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc : public LocalizedString
+	class Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc* create();
+		static Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7520,8 +7625,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc();
-		virtual ~Menus_Hacking_ClippyHelp_Items_RestorePotion_RestoreHealthInc() = default;
+		Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc();
+		virtual ~Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc() = default;
 	};
 
 	class Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul : public LocalizedString
@@ -14229,6 +14334,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth();
+		virtual ~Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth() = default;
+	};
+
+	class Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0 : public LocalizedString
 	{
 	public:
@@ -14692,36 +14827,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_RegisterRspWarning();
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
-	};
-
-	class Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth();
-		virtual ~Menus_Hacking_Objects_RestorePotion_IncrementHealth_IncrementHealth() = default;
-	};
-
-	class Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi();
-		virtual ~Menus_Hacking_Objects_RestorePotion_IncrementHealth_RegisterEdi() = default;
 	};
 
 	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
