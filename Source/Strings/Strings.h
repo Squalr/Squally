@@ -17064,6 +17064,21 @@ namespace Strings
 		virtual ~Platformer_Combat_ChooseATarget() = default;
 	};
 
+	class Platformer_Combat_Cost : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Cost* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Cost();
+		virtual ~Platformer_Combat_Cost() = default;
+	};
+
 	class Platformer_Combat_Defeat : public LocalizedString
 	{
 	public:

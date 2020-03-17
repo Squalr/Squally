@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -64,7 +65,10 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 
 		for (auto attack : attackBehavior->getAttacks())
 		{
-			this->addEntry(attack->getString(), attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
+			int cost = attack->getSpecialCost();
+			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
+
+			this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
 				this->scrollTo(index);
 

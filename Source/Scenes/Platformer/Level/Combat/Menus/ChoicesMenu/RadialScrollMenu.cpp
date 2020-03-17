@@ -148,18 +148,36 @@ void RadialScrollMenu::clearItems()
 	this->currentIndex = 0;
 }
 
-RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
+RadialEntry* RadialScrollMenu::addEntry(LocalizedString* labelStr, LocalizedString* lowerLabelStr, std::string iconResource, std::string backgroundResource, std::function<void()> callback)
 {
-	LocalizedLabel* attackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
-	LocalizedLabel* attackLabelSelected = attackLabel->clone();
+	LocalizedLabel* entryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, labelStr);
+	LocalizedLabel* entryLabelSelected = entryLabel->clone();
 
-	attackLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	attackLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
-	attackLabel->enableOutline(Color4B::BLACK, 2);
-	attackLabelSelected->enableOutline(Color4B::BLACK, 2);
-	attackLabelSelected->setTextColor(Color4B::YELLOW);
+	entryLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+	entryLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+	entryLabel->enableOutline(Color4B::BLACK, 2);
+	entryLabelSelected->enableOutline(Color4B::BLACK, 2);
+	entryLabelSelected->setTextColor(Color4B::YELLOW);
 
-	RadialEntry* entry = RadialEntry::create(attackLabel, attackLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
+	if (lowerLabelStr != nullptr)
+	{
+		LocalizedLabel* lowerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::Small, lowerLabelStr);
+		LocalizedLabel* lowerLabelSelected = lowerLabel->clone();
+
+		lowerLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
+		lowerLabelSelected->setAnchorPoint(Vec2(0.0f, 0.5f));
+		lowerLabel->enableOutline(Color4B::BLACK, 2);
+		lowerLabelSelected->enableOutline(Color4B::BLACK, 2);
+		lowerLabelSelected->setTextColor(Color4B::YELLOW);
+
+		lowerLabel->setPosition(Vec2(0.0f, -16.0f));
+		lowerLabelSelected->setPosition(Vec2(0.0f, -16.0f));
+
+		entryLabel->addChild(lowerLabel);
+		entryLabelSelected->addChild(lowerLabelSelected);
+	}
+
+	RadialEntry* entry = RadialEntry::create(entryLabel, entryLabelSelected, Sprite::create(backgroundResource), Sprite::create(backgroundResource));
 
 	entry->setTextOffset(Vec2(48.0f, 0.0f));
 	entry->addIcon(iconResource);
