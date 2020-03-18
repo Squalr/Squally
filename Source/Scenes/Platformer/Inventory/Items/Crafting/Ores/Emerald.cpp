@@ -45,7 +45,7 @@ LocalizedString* Emerald::getString()
 
 std::string Emerald::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Emerald;
+	return ItemResources::Crafting_Smithing_Emerald;
 }
 
 std::string Emerald::getSerializationKey()

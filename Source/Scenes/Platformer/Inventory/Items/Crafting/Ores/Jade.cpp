@@ -45,7 +45,7 @@ LocalizedString* Jade::getString()
 
 std::string Jade::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Jade;
+	return ItemResources::Crafting_Smithing_Jade;
 }
 
 std::string Jade::getSerializationKey()

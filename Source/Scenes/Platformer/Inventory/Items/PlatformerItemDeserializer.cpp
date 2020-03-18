@@ -109,10 +109,10 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SpecialXor::SaveKeySpecialXor] = [=]() { return (Item*)SpecialXor::create(); };
 
 	// Crafting
+	this->deserializers[Adamantite::SaveKeyAdamantite] = [=]() { return (Item*)Adamantite::create(); };
 	this->deserializers[Coal::SaveKeyCoal] = [=]() { return (Item*)Coal::create(); };
 	this->deserializers[Copper::SaveKeyCopper] = [=]() { return (Item*)Copper::create(); };
 	this->deserializers[Diamond::SaveKeyDiamond] = [=]() { return (Item*)Diamond::create(); };
-	this->deserializers[Dirt::SaveKeyDirt] = [=]() { return (Item*)Dirt::create(); };
 	this->deserializers[Emerald::SaveKeyEmerald] = [=]() { return (Item*)Emerald::create(); };
 	this->deserializers[Gold::SaveKeyGold] = [=]() { return (Item*)Gold::create(); };
 	this->deserializers[Iron::SaveKeyIron] = [=]() { return (Item*)Iron::create(); };
@@ -120,9 +120,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[Obsidian::SaveKeyObsidian] = [=]() { return (Item*)Obsidian::create(); };
 	this->deserializers[Quartz::SaveKeyQuartz] = [=]() { return (Item*)Quartz::create(); };
 	this->deserializers[Ruby::SaveKeyRuby] = [=]() { return (Item*)Ruby::create(); };
-	this->deserializers[Silver::SaveKeySilver] = [=]() { return (Item*)Silver::create(); };
-	this->deserializers[Stone::SaveKeyStone] = [=]() { return (Item*)Stone::create(); };
+	this->deserializers[Rune::SaveKeyRune] = [=]() { return (Item*)Rune::create(); };
 	this->deserializers[Sulfur::SaveKeySulfur] = [=]() { return (Item*)Sulfur::create(); };
+	this->deserializers[Tin::SaveKeyTin] = [=]() { return (Item*)Tin::create(); };
 	
 	this->deserializers[DarkWood::SaveKeyDarkWood] = [=]() { return (Item*)DarkWood::create(); };
 	this->deserializers[LightWood::SaveKeyLightWood] = [=]() { return (Item*)LightWood::create(); };

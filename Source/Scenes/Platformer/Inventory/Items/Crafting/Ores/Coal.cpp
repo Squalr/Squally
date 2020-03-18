@@ -45,7 +45,7 @@ LocalizedString* Coal::getString()
 
 std::string Coal::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Coal;
+	return ItemResources::Crafting_Smithing_Coal;
 }
 
 std::string Coal::getSerializationKey()

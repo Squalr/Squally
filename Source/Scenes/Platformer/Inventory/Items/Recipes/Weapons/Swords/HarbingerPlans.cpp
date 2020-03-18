@@ -1,4 +1,4 @@
-#include "HarbingerPlans.h"
+#include "MithrilSwordPlans.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
@@ -10,31 +10,31 @@
 
 using namespace cocos2d;
 
-const std::string HarbingerPlans::SaveKeyHarbingerPlans = "harbinger-plans";
+const std::string MithrilSwordPlans::SaveKeyMithrilSwordPlans = "mithril-sword-plans";
 
-HarbingerPlans* HarbingerPlans::create()
+MithrilSwordPlans* MithrilSwordPlans::create()
 {
-	HarbingerPlans* instance = new HarbingerPlans();
+	MithrilSwordPlans* instance = new MithrilSwordPlans();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HarbingerPlans::HarbingerPlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
+MithrilSwordPlans::MithrilSwordPlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
 {
 }
 
-HarbingerPlans::~HarbingerPlans()
+MithrilSwordPlans::~MithrilSwordPlans()
 {
 }
 
-Item* HarbingerPlans::craft()
+Item* MithrilSwordPlans::craft()
 {
-	return Harbinger::create();
+	return MithrilSword::create();
 }
 
-std::vector<std::tuple<Item*, int>> HarbingerPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> MithrilSwordPlans::getReagentsInternal()
 {
 	return
 	{
@@ -43,32 +43,32 @@ std::vector<std::tuple<Item*, int>> HarbingerPlans::getReagentsInternal()
 	};
 }
 
-Item* HarbingerPlans::clone()
+Item* MithrilSwordPlans::clone()
 {
-	return HarbingerPlans::create();
+	return MithrilSwordPlans::create();
 }
 
-std::string HarbingerPlans::getItemName()
+std::string MithrilSwordPlans::getItemName()
 {
-	return HarbingerPlans::SaveKeyHarbingerPlans;
+	return MithrilSwordPlans::SaveKeyMithrilSwordPlans;
 }
 
-LocalizedString* HarbingerPlans::getString()
+LocalizedString* MithrilSwordPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Swords_Harbinger::create();
+	return Strings::Items_Equipment_Weapons_Swords_MithrilSword::create();
 }
 
-std::string HarbingerPlans::getIconResource()
+std::string MithrilSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
 
-std::string HarbingerPlans::getCraftedItemIconResource()
+std::string MithrilSwordPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_Harbinger;
+	return ItemResources::Equipment_Weapons_Swords_MithrilSword;
 }
 
-std::string HarbingerPlans::getSerializationKey()
+std::string MithrilSwordPlans::getSerializationKey()
 {
-	return HarbingerPlans::SaveKeyHarbingerPlans;
+	return MithrilSwordPlans::SaveKeyMithrilSwordPlans;
 }

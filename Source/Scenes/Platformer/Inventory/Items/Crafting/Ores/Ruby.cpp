@@ -45,7 +45,7 @@ LocalizedString* Ruby::getString()
 
 std::string Ruby::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Ruby;
+	return ItemResources::Crafting_Smithing_Ruby;
 }
 
 std::string Ruby::getSerializationKey()

@@ -30,12 +30,10 @@ CraftingPoolTier3::CraftingPoolTier3(SampleMethod sampleMethod, int min, int max
 	// Metals
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(Silver::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Epic));
 
 	// Materials
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Dirt::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Stone::create(), ItemChance::Probability::Common));
 }
 
 CraftingPoolTier3::~CraftingPoolTier3()

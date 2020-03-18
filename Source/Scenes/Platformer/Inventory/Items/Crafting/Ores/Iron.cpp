@@ -45,7 +45,7 @@ LocalizedString* Iron::getString()
 
 std::string Iron::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Iron;
+	return ItemResources::Crafting_Smithing_Iron;
 }
 
 std::string Iron::getSerializationKey()

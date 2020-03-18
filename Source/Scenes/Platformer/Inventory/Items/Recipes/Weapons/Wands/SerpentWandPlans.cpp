@@ -31,17 +31,16 @@ SerpentWandPlans::~SerpentWandPlans()
 
 Item* SerpentWandPlans::craft()
 {
-	return SerpentWand::create();
+	return TaserRod::create();
 }
 
 std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 6 },
-		{ Gold::create(), 1 },
-		{ Emerald::create(), 1 },
-		{ Ruby::create(), 1 },
+		{ Tin::create(), 6 },
+		{ Jade::create(), 4 },
+		{ Sulfur::create(), 1 },
 	};
 }
 
@@ -57,7 +56,7 @@ std::string SerpentWandPlans::getItemName()
 
 LocalizedString* SerpentWandPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Wands_SerpentWand::create();
+	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();
 }
 
 std::string SerpentWandPlans::getIconResource()
@@ -67,7 +66,7 @@ std::string SerpentWandPlans::getIconResource()
 
 std::string SerpentWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_SerpentWand;
+	return ItemResources::Equipment_Weapons_Wands_TaserRod;
 }
 
 std::string SerpentWandPlans::getSerializationKey()

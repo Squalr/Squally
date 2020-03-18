@@ -45,7 +45,7 @@ LocalizedString* Quartz::getString()
 
 std::string Quartz::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Quartz;
+	return ItemResources::Crafting_Smithing_Quartz;
 }
 
 std::string Quartz::getSerializationKey()

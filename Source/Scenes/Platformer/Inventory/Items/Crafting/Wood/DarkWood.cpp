@@ -45,7 +45,7 @@ LocalizedString* DarkWood::getString()
 
 std::string DarkWood::getIconResource()
 {
-	return ItemResources::Crafting_Wood_DarkWood;
+	return ItemResources::Crafting_Smithing_WoodDark;
 }
 
 std::string DarkWood::getSerializationKey()

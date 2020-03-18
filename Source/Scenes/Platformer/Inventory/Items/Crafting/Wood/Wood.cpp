@@ -45,7 +45,7 @@ LocalizedString* Wood::getString()
 
 std::string Wood::getIconResource()
 {
-	return ItemResources::Crafting_Wood_Wood;
+	return ItemResources::Crafting_Smithing_Wood;
 }
 
 std::string Wood::getSerializationKey()

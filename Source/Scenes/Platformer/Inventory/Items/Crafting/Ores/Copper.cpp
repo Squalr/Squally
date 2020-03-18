@@ -45,7 +45,7 @@ LocalizedString* Copper::getString()
 
 std::string Copper::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Copper;
+	return ItemResources::Crafting_Smithing_Copper;
 }
 
 std::string Copper::getSerializationKey()

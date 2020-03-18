@@ -371,6 +371,8 @@ void CraftingMenuBase::stopCraft(bool viaCancel)
 
 void CraftingMenuBase::close()
 {
+	this->stopCraft(true);
+
 	if (this->returnClickCallback != nullptr)
 	{
 		this->returnClickCallback();

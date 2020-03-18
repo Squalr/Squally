@@ -45,7 +45,7 @@ LocalizedString* Obsidian::getString()
 
 std::string Obsidian::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Obsidian;
+	return ItemResources::Crafting_Smithing_Obsidian;
 }
 
 std::string Obsidian::getSerializationKey()

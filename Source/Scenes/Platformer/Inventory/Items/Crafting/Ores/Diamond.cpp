@@ -45,7 +45,7 @@ LocalizedString* Diamond::getString()
 
 std::string Diamond::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Diamond;
+	return ItemResources::Crafting_Smithing_Diamond;
 }
 
 std::string Diamond::getSerializationKey()

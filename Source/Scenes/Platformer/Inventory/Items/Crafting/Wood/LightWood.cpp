@@ -45,7 +45,7 @@ LocalizedString* LightWood::getString()
 
 std::string LightWood::getIconResource()
 {
-	return ItemResources::Crafting_Wood_LightWood;
+	return ItemResources::Crafting_Smithing_WoodLight;
 }
 
 std::string LightWood::getSerializationKey()

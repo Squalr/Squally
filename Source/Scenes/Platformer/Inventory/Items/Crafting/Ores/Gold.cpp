@@ -45,7 +45,7 @@ LocalizedString* Gold::getString()
 
 std::string Gold::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Gold;
+	return ItemResources::Crafting_Smithing_Gold;
 }
 
 std::string Gold::getSerializationKey()

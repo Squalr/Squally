@@ -45,7 +45,7 @@ LocalizedString* Sulfur::getString()
 
 std::string Sulfur::getIconResource()
 {
-	return ItemResources::Crafting_Ores_Sulfur;
+	return ItemResources::Crafting_Smithing_Sulfur;
 }
 
 std::string Sulfur::getSerializationKey()

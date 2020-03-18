@@ -64,7 +64,7 @@ std::string TransmuteCopperToQuartzRecipe::getIconResource()
 
 std::string TransmuteCopperToQuartzRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Ores_Quartz;
+	return ItemResources::Crafting_Smithing_Quartz;
 }
 
 std::string TransmuteCopperToQuartzRecipe::getSerializationKey()
