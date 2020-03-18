@@ -56,7 +56,7 @@ LocalizedString* Scythe::getString()
 
 std::string Scythe::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Axes_Scythe;
+	return ItemResources::Equipment_Weapons_Special_Scythe;
 }
 
 std::string Scythe::getSerializationKey()

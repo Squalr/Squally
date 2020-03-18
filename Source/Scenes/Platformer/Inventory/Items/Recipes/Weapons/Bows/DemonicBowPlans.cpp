@@ -40,7 +40,7 @@ std::vector<std::tuple<Item*, int>> DemonicBowPlans::getReagentsInternal()
 	{
 		{ Quartz::create(), 4 },
 		{ Emerald::create(), 2 },
-		{ Jade::create(), 2 },
+		{ Sapphire::create(), 2 },
 		{ Iron::create(), 4 },
 		{ Coal::create(), 4 },
 	};

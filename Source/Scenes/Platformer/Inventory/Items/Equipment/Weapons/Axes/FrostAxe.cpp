@@ -56,7 +56,7 @@ LocalizedString* FrostAxe::getString()
 
 std::string FrostAxe::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Axes_FrostAxe;
+	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
 std::string FrostAxe::getSerializationKey()

@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> TaserRodPlans::getReagentsInternal()
 	return
 	{
 		{ Tin::create(), 6 },
-		{ Jade::create(), 4 },
+		{ Sapphire::create(), 4 },
 		{ Sulfur::create(), 1 },
 	};
 }
@@ -66,7 +66,7 @@ std::string TaserRodPlans::getIconResource()
 
 std::string TaserRodPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
 std::string TaserRodPlans::getSerializationKey()

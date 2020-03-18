@@ -56,7 +56,7 @@ LocalizedString* ChieftainsWand::getString()
 
 std::string ChieftainsWand::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_ChieftainsWand;
+	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
 std::string ChieftainsWand::getSerializationKey()

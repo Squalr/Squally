@@ -56,7 +56,7 @@ LocalizedString* WitchesWand::getString()
 
 std::string WitchesWand::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_WitchesWand;
+	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
 std::string WitchesWand::getSerializationKey()

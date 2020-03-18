@@ -4,10 +4,10 @@
 
 class LocalizedString;
 
-class Adamantite : public Crafting
+class VoidCrystal : public Crafting
 {
 public:
-	static Adamantite* create();
+	static VoidCrystal* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -15,11 +15,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyAdamantite;
+	static const std::string SaveKeyVoidCrystal;
 
 protected:
-	Adamantite();
-	virtual ~Adamantite();
+	VoidCrystal();
+	virtual ~VoidCrystal();
 
 private:
 	typedef Crafting super;

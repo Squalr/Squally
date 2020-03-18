@@ -66,7 +66,7 @@ std::string FrostbanePlans::getIconResource()
 
 std::string FrostbanePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_Frostbane;
+	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
 std::string FrostbanePlans::getSerializationKey()

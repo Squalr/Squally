@@ -65,7 +65,7 @@ std::string ChieftainsWandPlans::getIconResource()
 
 std::string ChieftainsWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_ChieftainsWand;
+	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
 std::string ChieftainsWandPlans::getSerializationKey()

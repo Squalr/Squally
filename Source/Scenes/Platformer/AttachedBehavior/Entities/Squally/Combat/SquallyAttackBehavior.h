@@ -36,7 +36,6 @@ private:
 	void loadAxeAttacks(EntityAttackBehavior* attackBehavior, Axe* sword);
 	void loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* sword);
 	void loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* sword);
-	void loadSpearAttacks(EntityAttackBehavior* attackBehavior, Spear* sword);
 	void loadSwordAttacks(EntityAttackBehavior* attackBehavior, Sword* sword);
 	void loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword);
 

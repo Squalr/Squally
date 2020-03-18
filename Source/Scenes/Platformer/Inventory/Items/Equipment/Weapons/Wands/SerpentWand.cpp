@@ -56,7 +56,7 @@ LocalizedString* SerpentWand::getString()
 
 std::string SerpentWand::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_SerpentWand;
+	return ItemResources::Equipment_Weapons_Special_SerpentWand;
 }
 
 std::string SerpentWand::getSerializationKey()

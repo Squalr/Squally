@@ -31,7 +31,7 @@ CopperMalletPlans::~CopperMalletPlans()
 
 Item* CopperMalletPlans::craft()
 {
-	return IronMace::create();
+	return CopperMallet::create();
 }
 
 std::vector<std::tuple<Item*, int>> CopperMalletPlans::getReagentsInternal()
@@ -56,7 +56,7 @@ std::string CopperMalletPlans::getItemName()
 
 LocalizedString* CopperMalletPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_IronMace::create();
+	return Strings::Items_Equipment_Weapons_Maces_CopperMallet::create();
 }
 
 std::string CopperMalletPlans::getIconResource()
@@ -66,7 +66,7 @@ std::string CopperMalletPlans::getIconResource()
 
 std::string CopperMalletPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_IronMace;
+	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
 std::string CopperMalletPlans::getSerializationKey()

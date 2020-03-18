@@ -56,7 +56,7 @@ LocalizedString* Bludgeon::getString()
 
 std::string Bludgeon::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_Bludgeon;
+	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
 std::string Bludgeon::getSerializationKey()

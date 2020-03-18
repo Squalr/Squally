@@ -4,10 +4,10 @@
 
 class LocalizedString;
 
-class Jade : public Crafting
+class Sapphire : public Crafting
 {
 public:
-	static Jade* create();
+	static Sapphire* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -15,11 +15,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyJade;
+	static const std::string SaveKeySapphire;
 
 protected:
-	Jade();
-	virtual ~Jade();
+	Sapphire();
+	virtual ~Sapphire();
 
 private:
 	typedef Crafting super;

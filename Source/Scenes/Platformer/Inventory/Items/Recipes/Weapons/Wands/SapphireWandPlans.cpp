@@ -57,7 +57,7 @@ std::string SapphireWandPlans::getItemName()
 
 LocalizedString* SapphireWandPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Wands_SerpentWand::create();
+	return Strings::Items_Equipment_Weapons_Wands_SapphireWand::create();
 }
 
 std::string SapphireWandPlans::getIconResource()
@@ -67,7 +67,7 @@ std::string SapphireWandPlans::getIconResource()
 
 std::string SapphireWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_SerpentWand;
+	return ItemResources::Equipment_Weapons_Wands_SapphireWand;
 }
 
 std::string SapphireWandPlans::getSerializationKey()

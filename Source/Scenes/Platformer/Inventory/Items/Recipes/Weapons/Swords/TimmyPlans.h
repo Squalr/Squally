@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/SwordRecipe.h"
 
-class TimmyPlansPlans : public SwordRecipe
+class TimmyPlans : public SwordRecipe
 {
 public:
-	static TimmyPlansPlans* create();
+	static TimmyPlans* create();
 
 	Item* craft() override;
 	Item* clone() override;
@@ -15,11 +15,11 @@ public:
 	std::string getCraftedItemIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyTimmyPlansPlans;
+	static const std::string SaveKeyTimmyPlans;
 
 protected:
-	TimmyPlansPlans();
-	virtual ~TimmyPlansPlans();
+	TimmyPlans();
+	virtual ~TimmyPlans();
 	
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 

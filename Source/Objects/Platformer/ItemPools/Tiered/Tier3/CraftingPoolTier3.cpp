@@ -21,7 +21,7 @@ CraftingPoolTier3::CraftingPoolTier3(SampleMethod sampleMethod, int min, int max
 	// Gems
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Jade::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Legendary));
 
 	// Gems (phasing out)
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Epic));

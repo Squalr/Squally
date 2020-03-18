@@ -56,7 +56,7 @@ LocalizedString* WoodenShield::getString()
 
 std::string WoodenShield::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Axes_Rend;
+	return ItemResources::Equipment_Gear_Hats_WoodenPikeHelm;
 }
 
 std::string WoodenShield::getSerializationKey()

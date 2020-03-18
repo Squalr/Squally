@@ -11,7 +11,6 @@
 #include "Menus/Crafting/CraftFilterMenu/Smithing/AxesFilter.h"
 #include "Menus/Crafting/CraftFilterMenu/Smithing/BowsFilter.h"
 #include "Menus/Crafting/CraftFilterMenu/Smithing/MacesFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/SpearsFilter.h"
 #include "Menus/Crafting/CraftFilterMenu/Smithing/SwordsFilter.h"
 
 #include "Resources/SoundResources.h"
@@ -40,7 +39,6 @@ BlacksmithingMenu::BlacksmithingMenu()
 	this->filterMenu->addFilter(AxesFilter::create());
 	this->filterMenu->addFilter(BowsFilter::create());
 	this->filterMenu->addFilter(MacesFilter::create());
-	this->filterMenu->addFilter(SpearsFilter::create());
 	this->filterMenu->addFilter(SwordsFilter::create());
 
 	this->backDecorNode->addChild(this->anvil);

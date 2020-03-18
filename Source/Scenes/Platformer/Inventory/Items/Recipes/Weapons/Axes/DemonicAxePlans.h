@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/AxeRecipe.h"
 
-class FireAxePlans : public AxeRecipe
+class DemonicAxePlans : public AxeRecipe
 {
 public:
-	static FireAxePlans* create();
+	static DemonicAxePlans* create();
 
 	Item* craft() override;
 	Item* clone() override;
@@ -15,11 +15,11 @@ public:
 	std::string getCraftedItemIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyFireAxePlans;
+	static const std::string SaveKeyDemonicAxePlans;
 
 protected:
-	FireAxePlans();
-	virtual ~FireAxePlans();
+	DemonicAxePlans();
+	virtual ~DemonicAxePlans();
 	
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 

@@ -56,7 +56,7 @@ LocalizedString* Frostbane::getString()
 
 std::string Frostbane::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_Frostbane;
+	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
 std::string Frostbane::getSerializationKey()

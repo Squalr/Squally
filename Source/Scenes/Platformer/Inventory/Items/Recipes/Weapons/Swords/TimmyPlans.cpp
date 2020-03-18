@@ -1,4 +1,4 @@
-#include "TimmyPlansPlans.h"
+#include "TimmyPlans.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
@@ -10,31 +10,31 @@
 
 using namespace cocos2d;
 
-const std::string TimmyPlansPlans::SaveKeyTimmyPlansPlans = "timmy-plans";
+const std::string TimmyPlans::SaveKeyTimmyPlans = "timmy-plans";
 
-TimmyPlansPlans* TimmyPlansPlans::create()
+TimmyPlans* TimmyPlans::create()
 {
-	TimmyPlansPlans* instance = new TimmyPlansPlans();
+	TimmyPlans* instance = new TimmyPlans();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TimmyPlansPlans::TimmyPlansPlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
+TimmyPlans::TimmyPlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
 {
 }
 
-TimmyPlansPlans::~TimmyPlansPlans()
+TimmyPlans::~TimmyPlans()
 {
 }
 
-Item* TimmyPlansPlans::craft()
+Item* TimmyPlans::craft()
 {
-	return TimmyPlans::create();
+	return Timmy::create();
 }
 
-std::vector<std::tuple<Item*, int>> TimmyPlansPlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> TimmyPlans::getReagentsInternal()
 {
 	return
 	{
@@ -43,32 +43,32 @@ std::vector<std::tuple<Item*, int>> TimmyPlansPlans::getReagentsInternal()
 	};
 }
 
-Item* TimmyPlansPlans::clone()
+Item* TimmyPlans::clone()
 {
-	return TimmyPlansPlans::create();
+	return TimmyPlans::create();
 }
 
-std::string TimmyPlansPlans::getItemName()
+std::string TimmyPlans::getItemName()
 {
-	return TimmyPlansPlans::SaveKeyTimmyPlansPlans;
+	return TimmyPlans::SaveKeyTimmyPlans;
 }
 
-LocalizedString* TimmyPlansPlans::getString()
+LocalizedString* TimmyPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Swords_TimmyPlans::create();
+	return Strings::Items_Equipment_Weapons_Maces_Timmy::create();
 }
 
-std::string TimmyPlansPlans::getIconResource()
+std::string TimmyPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
 
-std::string TimmyPlansPlans::getCraftedItemIconResource()
+std::string TimmyPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_TimmyPlans;
+	return ItemResources::Equipment_Weapons_Special_Timmy;
 }
 
-std::string TimmyPlansPlans::getSerializationKey()
+std::string TimmyPlans::getSerializationKey()
 {
-	return TimmyPlansPlans::SaveKeyTimmyPlansPlans;
+	return TimmyPlans::SaveKeyTimmyPlans;
 }

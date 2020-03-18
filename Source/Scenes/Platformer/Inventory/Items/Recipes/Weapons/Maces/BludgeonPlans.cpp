@@ -31,7 +31,7 @@ BludgeonPlans::~BludgeonPlans()
 
 Item* BludgeonPlans::craft()
 {
-	return SpikedClub::create();
+	return Bludgeon::create();
 }
 
 std::vector<std::tuple<Item*, int>> BludgeonPlans::getReagentsInternal()
@@ -56,7 +56,7 @@ std::string BludgeonPlans::getItemName()
 
 LocalizedString* BludgeonPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_SpikedClub::create();
+	return Strings::Items_Equipment_Weapons_Maces_Bludgeon::create();
 }
 
 std::string BludgeonPlans::getIconResource()
@@ -66,7 +66,7 @@ std::string BludgeonPlans::getIconResource()
 
 std::string BludgeonPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_SpikedClub;
+	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
 std::string BludgeonPlans::getSerializationKey()

@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()
 	return
 	{
 		{ Tin::create(), 6 },
-		{ Jade::create(), 4 },
+		{ Sapphire::create(), 4 },
 		{ Sulfur::create(), 1 },
 	};
 }
@@ -66,7 +66,7 @@ std::string SerpentWandPlans::getIconResource()
 
 std::string SerpentWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
 std::string SerpentWandPlans::getSerializationKey()

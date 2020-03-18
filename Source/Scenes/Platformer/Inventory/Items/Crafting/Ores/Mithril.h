@@ -4,10 +4,10 @@
 
 class LocalizedString;
 
-class Rune : public Crafting
+class Mithril : public Crafting
 {
 public:
-	static Rune* create();
+	static Mithril* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -15,11 +15,11 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyRune;
+	static const std::string SaveKeyMithril;
 
 protected:
-	Rune();
-	virtual ~Rune();
+	Mithril();
+	virtual ~Mithril();
 
 private:
 	typedef Crafting super;

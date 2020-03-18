@@ -9,7 +9,6 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Axes/Axe.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Maces/Mace.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Spears/Spear.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Swords/Sword.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
@@ -82,10 +81,6 @@ void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavi
 		{
 			this->loadMaceAttacks(attackBehavior, dynamic_cast<Mace*>(weapon));
 		}
-		else if (dynamic_cast<Spear*>(weapon) != nullptr)
-		{
-			this->loadSpearAttacks(attackBehavior, dynamic_cast<Spear*>(weapon));
-		}
 		else if (dynamic_cast<Sword*>(weapon) != nullptr)
 		{
 			this->loadSwordAttacks(attackBehavior, dynamic_cast<Sword*>(weapon));
@@ -115,31 +110,22 @@ void SquallyAttackBehavior::loadAxeAttacks(EntityAttackBehavior* attackBehavior,
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* sword)
+void SquallyAttackBehavior::loadBowAttacks(EntityAttackBehavior* attackBehavior, Bow* bow)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(bow);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* sword)
+void SquallyAttackBehavior::loadMaceAttacks(EntityAttackBehavior* attackBehavior, Mace* mace)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(mace);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 
 	attackBehavior->registerAttack(MaceSwing::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
-}
-
-void SquallyAttackBehavior::loadSpearAttacks(EntityAttackBehavior* attackBehavior, Spear* sword)
-{
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
-	int minAttack = std::get<0>(attackRange);
-	int maxAttack = std::get<1>(attackRange);
-
-	attackBehavior->registerAttack(Slash::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
 void SquallyAttackBehavior::loadSwordAttacks(EntityAttackBehavior* attackBehavior, Sword* sword)
@@ -152,9 +138,9 @@ void SquallyAttackBehavior::loadSwordAttacks(EntityAttackBehavior* attackBehavio
 	attackBehavior->registerAttack(Execute::create(minAttack, maxAttack, 0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 }
 
-void SquallyAttackBehavior::loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* sword)
+void SquallyAttackBehavior::loadWandAttacks(EntityAttackBehavior* attackBehavior, Wand* wand)
 {
-	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(sword);
+	std::tuple<int, int> attackRange = this->computeWeaponDamageRange(wand);
 	int minAttack = std::get<0>(attackRange);
 	int maxAttack = std::get<1>(attackRange);
 

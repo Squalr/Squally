@@ -66,7 +66,7 @@ std::string FireSwordPlans::getIconResource()
 
 std::string FireSwordPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_FireSword;
+	return ItemResources::Equipment_Weapons_Special_FireSword;
 }
 
 std::string FireSwordPlans::getSerializationKey()

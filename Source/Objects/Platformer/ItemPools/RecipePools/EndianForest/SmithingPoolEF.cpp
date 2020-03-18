@@ -20,13 +20,7 @@ SmithingPoolEF* SmithingPoolEF::create(ValueMap& properties)
 
 SmithingPoolEF::SmithingPoolEF(ValueMap& properties) : super(properties, SmithingPoolEF::PoolName, SampleMethod::Unbounded, 1, 1)
 {
-	this->addItemToPool(ItemChance::create(IronSwordPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(RapierPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(WoodenMalletPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(SpikedClubPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(WoodenWandPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(EnchantedWandPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(HandAxePlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(WoodenRapierPlans::create(), ItemChance::Probability::Guaranteed));
 }
 
 SmithingPoolEF::~SmithingPoolEF()

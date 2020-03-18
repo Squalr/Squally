@@ -4569,21 +4569,6 @@ namespace Strings
 		virtual ~Items_Consumables_Speed_SpeedRune() = default;
 	};
 
-	class Items_Crafting_Ore_Adamantite : public LocalizedString
-	{
-	public:
-		static Items_Crafting_Ore_Adamantite* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Crafting_Ore_Adamantite();
-		virtual ~Items_Crafting_Ore_Adamantite() = default;
-	};
-
 	class Items_Crafting_Ore_Coal : public LocalizedString
 	{
 	public:
@@ -4674,10 +4659,10 @@ namespace Strings
 		virtual ~Items_Crafting_Ore_Iron() = default;
 	};
 
-	class Items_Crafting_Ore_Jade : public LocalizedString
+	class Items_Crafting_Ore_Mithril : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Jade* create();
+		static Items_Crafting_Ore_Mithril* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4685,8 +4670,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Crafting_Ore_Jade();
-		virtual ~Items_Crafting_Ore_Jade() = default;
+		Items_Crafting_Ore_Mithril();
+		virtual ~Items_Crafting_Ore_Mithril() = default;
 	};
 
 	class Items_Crafting_Ore_Obsidian : public LocalizedString
@@ -4734,10 +4719,10 @@ namespace Strings
 		virtual ~Items_Crafting_Ore_Ruby() = default;
 	};
 
-	class Items_Crafting_Ore_Rune : public LocalizedString
+	class Items_Crafting_Ore_Sapphire : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Rune* create();
+		static Items_Crafting_Ore_Sapphire* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4745,8 +4730,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Crafting_Ore_Rune();
-		virtual ~Items_Crafting_Ore_Rune() = default;
+		Items_Crafting_Ore_Sapphire();
+		virtual ~Items_Crafting_Ore_Sapphire() = default;
 	};
 
 	class Items_Crafting_Ore_Sulfur : public LocalizedString
@@ -4777,6 +4762,21 @@ namespace Strings
 	private:
 		Items_Crafting_Ore_Tin();
 		virtual ~Items_Crafting_Ore_Tin() = default;
+	};
+
+	class Items_Crafting_Ore_VoidCrystal : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Ore_VoidCrystal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Ore_VoidCrystal();
+		virtual ~Items_Crafting_Ore_VoidCrystal() = default;
 	};
 
 	class Items_Crafting_Wood_DarkWood : public LocalizedString
@@ -6024,10 +6024,10 @@ namespace Strings
 		virtual ~Items_Equipment_Offhands_Shields_WoodenShield() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_BattleAxe : public LocalizedString
+	class Items_Equipment_Weapons_Axes_BoneAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_BattleAxe* create();
+		static Items_Equipment_Weapons_Axes_BoneAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6035,14 +6035,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_BattleAxe();
-		virtual ~Items_Equipment_Weapons_Axes_BattleAxe() = default;
+		Items_Equipment_Weapons_Axes_BoneAxe();
+		virtual ~Items_Equipment_Weapons_Axes_BoneAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_BlueAxe : public LocalizedString
+	class Items_Equipment_Weapons_Axes_CopperAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_BlueAxe* create();
+		static Items_Equipment_Weapons_Axes_CopperAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6050,14 +6050,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_BlueAxe();
-		virtual ~Items_Equipment_Weapons_Axes_BlueAxe() = default;
+		Items_Equipment_Weapons_Axes_CopperAxe();
+		virtual ~Items_Equipment_Weapons_Axes_CopperAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_Cleaver : public LocalizedString
+	class Items_Equipment_Weapons_Axes_CrystalAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_Cleaver* create();
+		static Items_Equipment_Weapons_Axes_CrystalAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6065,14 +6065,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_Cleaver();
-		virtual ~Items_Equipment_Weapons_Axes_Cleaver() = default;
+		Items_Equipment_Weapons_Axes_CrystalAxe();
+		virtual ~Items_Equipment_Weapons_Axes_CrystalAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_FireAxe : public LocalizedString
+	class Items_Equipment_Weapons_Axes_DemonicAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_FireAxe* create();
+		static Items_Equipment_Weapons_Axes_DemonicAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6080,14 +6080,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_FireAxe();
-		virtual ~Items_Equipment_Weapons_Axes_FireAxe() = default;
+		Items_Equipment_Weapons_Axes_DemonicAxe();
+		virtual ~Items_Equipment_Weapons_Axes_DemonicAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_HandAxe : public LocalizedString
+	class Items_Equipment_Weapons_Axes_FrostAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_HandAxe* create();
+		static Items_Equipment_Weapons_Axes_FrostAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6095,14 +6095,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_HandAxe();
-		virtual ~Items_Equipment_Weapons_Axes_HandAxe() = default;
+		Items_Equipment_Weapons_Axes_FrostAxe();
+		virtual ~Items_Equipment_Weapons_Axes_FrostAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_HeadSplitter : public LocalizedString
+	class Items_Equipment_Weapons_Axes_GoldenAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_HeadSplitter* create();
+		static Items_Equipment_Weapons_Axes_GoldenAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6110,38 +6110,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_HeadSplitter();
-		virtual ~Items_Equipment_Weapons_Axes_HeadSplitter() = default;
-	};
-
-	class Items_Equipment_Weapons_Axes_HedgeTrimmer : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Axes_HedgeTrimmer* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Axes_HedgeTrimmer();
-		virtual ~Items_Equipment_Weapons_Axes_HedgeTrimmer() = default;
-	};
-
-	class Items_Equipment_Weapons_Axes_IronAxe : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Axes_IronAxe* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Axes_IronAxe();
-		virtual ~Items_Equipment_Weapons_Axes_IronAxe() = default;
+		Items_Equipment_Weapons_Axes_GoldenAxe();
+		virtual ~Items_Equipment_Weapons_Axes_GoldenAxe() = default;
 	};
 
 	class Items_Equipment_Weapons_Axes_MithrilAxe : public LocalizedString
@@ -6159,21 +6129,6 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Axes_MithrilAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_Rend : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Axes_Rend* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Axes_Rend();
-		virtual ~Items_Equipment_Weapons_Axes_Rend() = default;
-	};
-
 	class Items_Equipment_Weapons_Axes_Scythe : public LocalizedString
 	{
 	public:
@@ -6187,21 +6142,6 @@ namespace Strings
 	private:
 		Items_Equipment_Weapons_Axes_Scythe();
 		virtual ~Items_Equipment_Weapons_Axes_Scythe() = default;
-	};
-
-	class Items_Equipment_Weapons_Axes_StarAxe : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Axes_StarAxe* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Axes_StarAxe();
-		virtual ~Items_Equipment_Weapons_Axes_StarAxe() = default;
 	};
 
 	class Items_Equipment_Weapons_Axes_SteelAxe : public LocalizedString
@@ -6219,10 +6159,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Axes_SteelAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Axes_WoodCutter : public LocalizedString
+	class Items_Equipment_Weapons_Axes_VoidAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_WoodCutter* create();
+		static Items_Equipment_Weapons_Axes_VoidAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6230,14 +6170,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Axes_WoodCutter();
-		virtual ~Items_Equipment_Weapons_Axes_WoodCutter() = default;
+		Items_Equipment_Weapons_Axes_VoidAxe();
+		virtual ~Items_Equipment_Weapons_Axes_VoidAxe() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_ArchersBow : public LocalizedString
+	class Items_Equipment_Weapons_Axes_WoodenAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_ArchersBow* create();
+		static Items_Equipment_Weapons_Axes_WoodenAxe* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6245,8 +6185,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_ArchersBow();
-		virtual ~Items_Equipment_Weapons_Bows_ArchersBow() = default;
+		Items_Equipment_Weapons_Axes_WoodenAxe();
+		virtual ~Items_Equipment_Weapons_Axes_WoodenAxe() = default;
 	};
 
 	class Items_Equipment_Weapons_Bows_BoneBow : public LocalizedString
@@ -6264,10 +6204,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Bows_BoneBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_CompositeBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_CrystalBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_CompositeBow* create();
+		static Items_Equipment_Weapons_Bows_CrystalBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6275,14 +6215,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_CompositeBow();
-		virtual ~Items_Equipment_Weapons_Bows_CompositeBow() = default;
+		Items_Equipment_Weapons_Bows_CrystalBow();
+		virtual ~Items_Equipment_Weapons_Bows_CrystalBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_CrossBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_DemonicBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_CrossBow* create();
+		static Items_Equipment_Weapons_Bows_DemonicBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6290,14 +6230,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_CrossBow();
-		virtual ~Items_Equipment_Weapons_Bows_CrossBow() = default;
+		Items_Equipment_Weapons_Bows_DemonicBow();
+		virtual ~Items_Equipment_Weapons_Bows_DemonicBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_FrostBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_GoldenBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_FrostBow* create();
+		static Items_Equipment_Weapons_Bows_GoldenBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6305,8 +6245,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_FrostBow();
-		virtual ~Items_Equipment_Weapons_Bows_FrostBow() = default;
+		Items_Equipment_Weapons_Bows_GoldenBow();
+		virtual ~Items_Equipment_Weapons_Bows_GoldenBow() = default;
 	};
 
 	class Items_Equipment_Weapons_Bows_HuntersBow : public LocalizedString
@@ -6324,10 +6264,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Bows_HuntersBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_IvoryBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_IvyBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_IvoryBow* create();
+		static Items_Equipment_Weapons_Bows_IvyBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6335,14 +6275,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_IvoryBow();
-		virtual ~Items_Equipment_Weapons_Bows_IvoryBow() = default;
+		Items_Equipment_Weapons_Bows_IvyBow();
+		virtual ~Items_Equipment_Weapons_Bows_IvyBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_OlympusBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_SteelBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_OlympusBow* create();
+		static Items_Equipment_Weapons_Bows_SteelBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6350,14 +6290,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_OlympusBow();
-		virtual ~Items_Equipment_Weapons_Bows_OlympusBow() = default;
+		Items_Equipment_Weapons_Bows_SteelBow();
+		virtual ~Items_Equipment_Weapons_Bows_SteelBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Bows_WarBow : public LocalizedString
+	class Items_Equipment_Weapons_Bows_VoidBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_WarBow* create();
+		static Items_Equipment_Weapons_Bows_VoidBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6365,14 +6305,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Bows_WarBow();
-		virtual ~Items_Equipment_Weapons_Bows_WarBow() = default;
+		Items_Equipment_Weapons_Bows_VoidBow();
+		virtual ~Items_Equipment_Weapons_Bows_VoidBow() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_BattleHammer : public LocalizedString
+	class Items_Equipment_Weapons_Bows_WoodenBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_BattleHammer* create();
+		static Items_Equipment_Weapons_Bows_WoodenBow* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6380,8 +6320,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_BattleHammer();
-		virtual ~Items_Equipment_Weapons_Maces_BattleHammer() = default;
+		Items_Equipment_Weapons_Bows_WoodenBow();
+		virtual ~Items_Equipment_Weapons_Bows_WoodenBow() = default;
+	};
+
+	class Items_Equipment_Weapons_Maces_Bludgeon : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Maces_Bludgeon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Maces_Bludgeon();
+		virtual ~Items_Equipment_Weapons_Maces_Bludgeon() = default;
 	};
 
 	class Items_Equipment_Weapons_Maces_BoneHammer : public LocalizedString
@@ -6399,6 +6354,21 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Maces_BoneHammer() = default;
 	};
 
+	class Items_Equipment_Weapons_Maces_CopperMallet : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Maces_CopperMallet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Maces_CopperMallet();
+		virtual ~Items_Equipment_Weapons_Maces_CopperMallet() = default;
+	};
+
 	class Items_Equipment_Weapons_Maces_CrystalMace : public LocalizedString
 	{
 	public:
@@ -6414,10 +6384,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Maces_CrystalMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_Flail : public LocalizedString
+	class Items_Equipment_Weapons_Maces_DemonicMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_Flail* create();
+		static Items_Equipment_Weapons_Maces_DemonicMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6425,14 +6395,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_Flail();
-		virtual ~Items_Equipment_Weapons_Maces_Flail() = default;
+		Items_Equipment_Weapons_Maces_DemonicMace();
+		virtual ~Items_Equipment_Weapons_Maces_DemonicMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_IronMace : public LocalizedString
+	class Items_Equipment_Weapons_Maces_GoldenMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_IronMace* create();
+		static Items_Equipment_Weapons_Maces_GoldenMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6440,14 +6410,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_IronMace();
-		virtual ~Items_Equipment_Weapons_Maces_IronMace() = default;
+		Items_Equipment_Weapons_Maces_GoldenMace();
+		virtual ~Items_Equipment_Weapons_Maces_GoldenMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_Judgement : public LocalizedString
+	class Items_Equipment_Weapons_Maces_MithrilMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_Judgement* create();
+		static Items_Equipment_Weapons_Maces_MithrilMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6455,14 +6425,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_Judgement();
-		virtual ~Items_Equipment_Weapons_Maces_Judgement() = default;
+		Items_Equipment_Weapons_Maces_MithrilMace();
+		virtual ~Items_Equipment_Weapons_Maces_MithrilMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_SkullCrusher : public LocalizedString
+	class Items_Equipment_Weapons_Maces_SteelMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_SkullCrusher* create();
+		static Items_Equipment_Weapons_Maces_SteelMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6470,14 +6440,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_SkullCrusher();
-		virtual ~Items_Equipment_Weapons_Maces_SkullCrusher() = default;
+		Items_Equipment_Weapons_Maces_SteelMace();
+		virtual ~Items_Equipment_Weapons_Maces_SteelMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_SpikedClub : public LocalizedString
+	class Items_Equipment_Weapons_Maces_Timmy : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_SpikedClub* create();
+		static Items_Equipment_Weapons_Maces_Timmy* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6485,14 +6455,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_SpikedClub();
-		virtual ~Items_Equipment_Weapons_Maces_SpikedClub() = default;
+		Items_Equipment_Weapons_Maces_Timmy();
+		virtual ~Items_Equipment_Weapons_Maces_Timmy() = default;
 	};
 
-	class Items_Equipment_Weapons_Maces_WoodenMallet : public LocalizedString
+	class Items_Equipment_Weapons_Maces_VoidMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_WoodenMallet* create();
+		static Items_Equipment_Weapons_Maces_VoidMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6500,14 +6470,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Maces_WoodenMallet();
-		virtual ~Items_Equipment_Weapons_Maces_WoodenMallet() = default;
+		Items_Equipment_Weapons_Maces_VoidMace();
+		virtual ~Items_Equipment_Weapons_Maces_VoidMace() = default;
 	};
 
-	class Items_Equipment_Weapons_Spears_Impaler : public LocalizedString
+	class Items_Equipment_Weapons_Maces_WitchingMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Spears_Impaler* create();
+		static Items_Equipment_Weapons_Maces_WitchingMace* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6515,8 +6485,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Spears_Impaler();
-		virtual ~Items_Equipment_Weapons_Spears_Impaler() = default;
+		Items_Equipment_Weapons_Maces_WitchingMace();
+		virtual ~Items_Equipment_Weapons_Maces_WitchingMace() = default;
+	};
+
+	class Items_Equipment_Weapons_Maces_WoodenClub : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Maces_WoodenClub* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Maces_WoodenClub();
+		virtual ~Items_Equipment_Weapons_Maces_WoodenClub() = default;
 	};
 
 	class Items_Equipment_Weapons_Swords_AshenBlade : public LocalizedString
@@ -6534,10 +6519,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Swords_AshenBlade() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_BattleSword : public LocalizedString
+	class Items_Equipment_Weapons_Swords_BoneSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_BattleSword* create();
+		static Items_Equipment_Weapons_Swords_BoneSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6545,23 +6530,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_BattleSword();
-		virtual ~Items_Equipment_Weapons_Swords_BattleSword() = default;
-	};
-
-	class Items_Equipment_Weapons_Swords_BlueSword : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Swords_BlueSword* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Swords_BlueSword();
-		virtual ~Items_Equipment_Weapons_Swords_BlueSword() = default;
+		Items_Equipment_Weapons_Swords_BoneSword();
+		virtual ~Items_Equipment_Weapons_Swords_BoneSword() = default;
 	};
 
 	class Items_Equipment_Weapons_Swords_CandySword : public LocalizedString
@@ -6579,6 +6549,21 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Swords_CandySword() = default;
 	};
 
+	class Items_Equipment_Weapons_Swords_CopperSword : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Swords_CopperSword* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Swords_CopperSword();
+		virtual ~Items_Equipment_Weapons_Swords_CopperSword() = default;
+	};
+
 	class Items_Equipment_Weapons_Swords_CrystalSword : public LocalizedString
 	{
 	public:
@@ -6594,10 +6579,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Swords_CrystalSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_FangBlade : public LocalizedString
+	class Items_Equipment_Weapons_Swords_DemonicSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_FangBlade* create();
+		static Items_Equipment_Weapons_Swords_DemonicSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6605,14 +6590,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_FangBlade();
-		virtual ~Items_Equipment_Weapons_Swords_FangBlade() = default;
+		Items_Equipment_Weapons_Swords_DemonicSword();
+		virtual ~Items_Equipment_Weapons_Swords_DemonicSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_GladiatorSword : public LocalizedString
+	class Items_Equipment_Weapons_Swords_Dreadmourn : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_GladiatorSword* create();
+		static Items_Equipment_Weapons_Swords_Dreadmourn* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6620,14 +6605,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_GladiatorSword();
-		virtual ~Items_Equipment_Weapons_Swords_GladiatorSword() = default;
+		Items_Equipment_Weapons_Swords_Dreadmourn();
+		virtual ~Items_Equipment_Weapons_Swords_Dreadmourn() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_Gladius : public LocalizedString
+	class Items_Equipment_Weapons_Swords_FireSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_Gladius* create();
+		static Items_Equipment_Weapons_Swords_FireSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6635,14 +6620,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_Gladius();
-		virtual ~Items_Equipment_Weapons_Swords_Gladius() = default;
+		Items_Equipment_Weapons_Swords_FireSword();
+		virtual ~Items_Equipment_Weapons_Swords_FireSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_Harbinger : public LocalizedString
+	class Items_Equipment_Weapons_Swords_Frostbane : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_Harbinger* create();
+		static Items_Equipment_Weapons_Swords_Frostbane* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6650,14 +6635,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_Harbinger();
-		virtual ~Items_Equipment_Weapons_Swords_Harbinger() = default;
+		Items_Equipment_Weapons_Swords_Frostbane();
+		virtual ~Items_Equipment_Weapons_Swords_Frostbane() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_IronSword : public LocalizedString
+	class Items_Equipment_Weapons_Swords_GoldenSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_IronSword* create();
+		static Items_Equipment_Weapons_Swords_GoldenSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6665,14 +6650,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_IronSword();
-		virtual ~Items_Equipment_Weapons_Swords_IronSword() = default;
+		Items_Equipment_Weapons_Swords_GoldenSword();
+		virtual ~Items_Equipment_Weapons_Swords_GoldenSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_Katana : public LocalizedString
+	class Items_Equipment_Weapons_Swords_MithrilSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_Katana* create();
+		static Items_Equipment_Weapons_Swords_MithrilSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6680,38 +6665,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_Katana();
-		virtual ~Items_Equipment_Weapons_Swords_Katana() = default;
-	};
-
-	class Items_Equipment_Weapons_Swords_MoonBlade : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Swords_MoonBlade* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Swords_MoonBlade();
-		virtual ~Items_Equipment_Weapons_Swords_MoonBlade() = default;
-	};
-
-	class Items_Equipment_Weapons_Swords_Rapier : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Swords_Rapier* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Swords_Rapier();
-		virtual ~Items_Equipment_Weapons_Swords_Rapier() = default;
+		Items_Equipment_Weapons_Swords_MithrilSword();
+		virtual ~Items_Equipment_Weapons_Swords_MithrilSword() = default;
 	};
 
 	class Items_Equipment_Weapons_Swords_SteelSword : public LocalizedString
@@ -6729,10 +6684,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Swords_SteelSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_VikingSword : public LocalizedString
+	class Items_Equipment_Weapons_Swords_TheButcher : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_VikingSword* create();
+		static Items_Equipment_Weapons_Swords_TheButcher* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6740,14 +6695,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_VikingSword();
-		virtual ~Items_Equipment_Weapons_Swords_VikingSword() = default;
+		Items_Equipment_Weapons_Swords_TheButcher();
+		virtual ~Items_Equipment_Weapons_Swords_TheButcher() = default;
 	};
 
-	class Items_Equipment_Weapons_Swords_WarCutlas : public LocalizedString
+	class Items_Equipment_Weapons_Swords_VoidSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_WarCutlas* create();
+		static Items_Equipment_Weapons_Swords_VoidSword* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6755,14 +6710,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Swords_WarCutlas();
-		virtual ~Items_Equipment_Weapons_Swords_WarCutlas() = default;
+		Items_Equipment_Weapons_Swords_VoidSword();
+		virtual ~Items_Equipment_Weapons_Swords_VoidSword() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_ArcaneWand : public LocalizedString
+	class Items_Equipment_Weapons_Swords_WoodenRapier : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_ArcaneWand* create();
+		static Items_Equipment_Weapons_Swords_WoodenRapier* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6770,8 +6725,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Wands_ArcaneWand();
-		virtual ~Items_Equipment_Weapons_Wands_ArcaneWand() = default;
+		Items_Equipment_Weapons_Swords_WoodenRapier();
+		virtual ~Items_Equipment_Weapons_Swords_WoodenRapier() = default;
+	};
+
+	class Items_Equipment_Weapons_Wands_BoneWand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Wands_BoneWand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Wands_BoneWand();
+		virtual ~Items_Equipment_Weapons_Wands_BoneWand() = default;
 	};
 
 	class Items_Equipment_Weapons_Wands_ChieftainsWand : public LocalizedString
@@ -6804,10 +6774,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Wands_CrystalWand() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_CursedWand : public LocalizedString
+	class Items_Equipment_Weapons_Wands_DemonicWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_CursedWand* create();
+		static Items_Equipment_Weapons_Wands_DemonicWand* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6815,14 +6785,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Wands_CursedWand();
-		virtual ~Items_Equipment_Weapons_Wands_CursedWand() = default;
+		Items_Equipment_Weapons_Wands_DemonicWand();
+		virtual ~Items_Equipment_Weapons_Wands_DemonicWand() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_EnchantedWand : public LocalizedString
+	class Items_Equipment_Weapons_Wands_EmeraldWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_EnchantedWand* create();
+		static Items_Equipment_Weapons_Wands_EmeraldWand* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6830,14 +6800,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Wands_EnchantedWand();
-		virtual ~Items_Equipment_Weapons_Wands_EnchantedWand() = default;
+		Items_Equipment_Weapons_Wands_EmeraldWand();
+		virtual ~Items_Equipment_Weapons_Wands_EmeraldWand() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_HolyWand : public LocalizedString
+	class Items_Equipment_Weapons_Wands_GoldenWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_HolyWand* create();
+		static Items_Equipment_Weapons_Wands_GoldenWand* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6845,23 +6815,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Wands_HolyWand();
-		virtual ~Items_Equipment_Weapons_Wands_HolyWand() = default;
-	};
-
-	class Items_Equipment_Weapons_Wands_ManaWand : public LocalizedString
-	{
-	public:
-		static Items_Equipment_Weapons_Wands_ManaWand* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Wands_ManaWand();
-		virtual ~Items_Equipment_Weapons_Wands_ManaWand() = default;
+		Items_Equipment_Weapons_Wands_GoldenWand();
+		virtual ~Items_Equipment_Weapons_Wands_GoldenWand() = default;
 	};
 
 	class Items_Equipment_Weapons_Wands_NecroWand : public LocalizedString
@@ -6877,6 +6832,36 @@ namespace Strings
 	private:
 		Items_Equipment_Weapons_Wands_NecroWand();
 		virtual ~Items_Equipment_Weapons_Wands_NecroWand() = default;
+	};
+
+	class Items_Equipment_Weapons_Wands_QuartzWand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Wands_QuartzWand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Wands_QuartzWand();
+		virtual ~Items_Equipment_Weapons_Wands_QuartzWand() = default;
+	};
+
+	class Items_Equipment_Weapons_Wands_SapphireWand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Wands_SapphireWand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Wands_SapphireWand();
+		virtual ~Items_Equipment_Weapons_Wands_SapphireWand() = default;
 	};
 
 	class Items_Equipment_Weapons_Wands_SerpentWand : public LocalizedString
@@ -6909,10 +6894,10 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Wands_TaserRod() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_WitchDoctorsWand : public LocalizedString
+	class Items_Equipment_Weapons_Wands_VoidWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_WitchDoctorsWand* create();
+		static Items_Equipment_Weapons_Wands_VoidWand* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6920,8 +6905,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Equipment_Weapons_Wands_WitchDoctorsWand();
-		virtual ~Items_Equipment_Weapons_Wands_WitchDoctorsWand() = default;
+		Items_Equipment_Weapons_Wands_VoidWand();
+		virtual ~Items_Equipment_Weapons_Wands_VoidWand() = default;
+	};
+
+	class Items_Equipment_Weapons_Wands_WitchesWand : public LocalizedString
+	{
+	public:
+		static Items_Equipment_Weapons_Wands_WitchesWand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Wands_WitchesWand();
+		virtual ~Items_Equipment_Weapons_Wands_WitchesWand() = default;
 	};
 
 	class Items_Equipment_Weapons_Wands_WoodenWand : public LocalizedString

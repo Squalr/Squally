@@ -56,7 +56,7 @@ LocalizedString* AshenBlade::getString()
 
 std::string AshenBlade::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_AshenBlade;
+	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
 std::string AshenBlade::getSerializationKey()

@@ -1,4 +1,4 @@
-#include "FireAxePlans.h"
+#include "DemonicAxePlans.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
@@ -10,31 +10,31 @@
 
 using namespace cocos2d;
 
-const std::string FireAxePlans::SaveKeyFireAxePlans = "fire-axe-plans";
+const std::string DemonicAxePlans::SaveKeyDemonicAxePlans = "demonic-axe-plans";
 
-FireAxePlans* FireAxePlans::create()
+DemonicAxePlans* DemonicAxePlans::create()
 {
-	FireAxePlans* instance = new FireAxePlans();
+	DemonicAxePlans* instance = new DemonicAxePlans();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-FireAxePlans::FireAxePlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
+DemonicAxePlans::DemonicAxePlans() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
 {
 }
 
-FireAxePlans::~FireAxePlans()
+DemonicAxePlans::~DemonicAxePlans()
 {
 }
 
-Item* FireAxePlans::craft()
+Item* DemonicAxePlans::craft()
 {
-	return FireAxe::create();
+	return DemonicAxe::create();
 }
 
-std::vector<std::tuple<Item*, int>> FireAxePlans::getReagentsInternal()
+std::vector<std::tuple<Item*, int>> DemonicAxePlans::getReagentsInternal()
 {
 	return
 	{
@@ -43,32 +43,32 @@ std::vector<std::tuple<Item*, int>> FireAxePlans::getReagentsInternal()
 	};
 }
 
-Item* FireAxePlans::clone()
+Item* DemonicAxePlans::clone()
 {
-	return FireAxePlans::create();
+	return DemonicAxePlans::create();
 }
 
-std::string FireAxePlans::getItemName()
+std::string DemonicAxePlans::getItemName()
 {
-	return FireAxePlans::SaveKeyFireAxePlans;
+	return DemonicAxePlans::SaveKeyDemonicAxePlans;
 }
 
-LocalizedString* FireAxePlans::getString()
+LocalizedString* DemonicAxePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Axes_FireAxe::create();
+	return Strings::Items_Equipment_Weapons_Axes_DemonicAxe::create();
 }
 
-std::string FireAxePlans::getIconResource()
+std::string DemonicAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
 
-std::string FireAxePlans::getCraftedItemIconResource()
+std::string DemonicAxePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Axes_FireAxe;
+	return ItemResources::Equipment_Weapons_Axes_DemonicAxe;
 }
 
-std::string FireAxePlans::getSerializationKey()
+std::string DemonicAxePlans::getSerializationKey()
 {
-	return FireAxePlans::SaveKeyFireAxePlans;
+	return DemonicAxePlans::SaveKeyDemonicAxePlans;
 }

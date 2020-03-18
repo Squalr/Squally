@@ -56,7 +56,7 @@ LocalizedString* Dreadmourn::getString()
 
 std::string Dreadmourn::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_Dreadmourn;
+	return ItemResources::Equipment_Weapons_Special_Dreadmourn;
 }
 
 std::string Dreadmourn::getSerializationKey()

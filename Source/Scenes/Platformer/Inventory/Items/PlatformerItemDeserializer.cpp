@@ -109,20 +109,20 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SpecialXor::SaveKeySpecialXor] = [=]() { return (Item*)SpecialXor::create(); };
 
 	// Crafting
-	this->deserializers[Adamantite::SaveKeyAdamantite] = [=]() { return (Item*)Adamantite::create(); };
 	this->deserializers[Coal::SaveKeyCoal] = [=]() { return (Item*)Coal::create(); };
 	this->deserializers[Copper::SaveKeyCopper] = [=]() { return (Item*)Copper::create(); };
 	this->deserializers[Diamond::SaveKeyDiamond] = [=]() { return (Item*)Diamond::create(); };
 	this->deserializers[Emerald::SaveKeyEmerald] = [=]() { return (Item*)Emerald::create(); };
 	this->deserializers[Gold::SaveKeyGold] = [=]() { return (Item*)Gold::create(); };
 	this->deserializers[Iron::SaveKeyIron] = [=]() { return (Item*)Iron::create(); };
-	this->deserializers[Jade::SaveKeyJade] = [=]() { return (Item*)Jade::create(); };
+	this->deserializers[Mithril::SaveKeyMithril] = [=]() { return (Item*)Mithril::create(); };
 	this->deserializers[Obsidian::SaveKeyObsidian] = [=]() { return (Item*)Obsidian::create(); };
 	this->deserializers[Quartz::SaveKeyQuartz] = [=]() { return (Item*)Quartz::create(); };
 	this->deserializers[Ruby::SaveKeyRuby] = [=]() { return (Item*)Ruby::create(); };
-	this->deserializers[Rune::SaveKeyRune] = [=]() { return (Item*)Rune::create(); };
+	this->deserializers[Sapphire::SaveKeySapphire] = [=]() { return (Item*)Sapphire::create(); };
 	this->deserializers[Sulfur::SaveKeySulfur] = [=]() { return (Item*)Sulfur::create(); };
 	this->deserializers[Tin::SaveKeyTin] = [=]() { return (Item*)Tin::create(); };
+	this->deserializers[VoidCrystal::SaveKeyVoidCrystal] = [=]() { return (Item*)VoidCrystal::create(); };
 	
 	this->deserializers[DarkWood::SaveKeyDarkWood] = [=]() { return (Item*)DarkWood::create(); };
 	this->deserializers[LightWood::SaveKeyLightWood] = [=]() { return (Item*)LightWood::create(); };
@@ -134,77 +134,75 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[ManaPotion::SaveKeyManaPotion] = [=]() { return (Item*)ManaPotion::create(); };
 
 	// Axes
-	this->deserializers[BattleAxe::SaveKeyBattleAxe] = [=]() { return (Item*)BattleAxe::create(); };
-	this->deserializers[BlueAxe::SaveKeyBlueAxe] = [=]() { return (Item*)BlueAxe::create(); };
-	this->deserializers[FireAxe::SaveKeyFireAxe] = [=]() { return (Item*)FireAxe::create(); };
-	this->deserializers[HandAxe::SaveKeyHandAxe] = [=]() { return (Item*)HandAxe::create(); };
-	this->deserializers[HeadSplitter::SaveKeyHeadSplitter] = [=]() { return (Item*)HeadSplitter::create(); };
-	this->deserializers[HedgeTrimmer::SaveKeyHedgeTrimmer] = [=]() { return (Item*)HedgeTrimmer::create(); };
-	this->deserializers[IronAxe::SaveKeyIronAxe] = [=]() { return (Item*)IronAxe::create(); };
+	this->deserializers[BoneAxe::SaveKeyBoneAxe] = [=]() { return (Item*)BoneAxe::create(); };
+	this->deserializers[CopperAxe::SaveKeyCopperAxe] = [=]() { return (Item*)CopperAxe::create(); };
+	this->deserializers[CrystalAxe::SaveKeyCrystalAxe] = [=]() { return (Item*)CrystalAxe::create(); };
+	this->deserializers[DemonicAxe::SaveKeyDemonicAxe] = [=]() { return (Item*)DemonicAxe::create(); };
+	this->deserializers[FrostAxe::SaveKeyFrostAxe] = [=]() { return (Item*)FrostAxe::create(); };
+	this->deserializers[GoldenAxe::SaveKeyGoldenAxe] = [=]() { return (Item*)GoldenAxe::create(); };
 	this->deserializers[MithrilAxe::SaveKeyMithrilAxe] = [=]() { return (Item*)MithrilAxe::create(); };
-	this->deserializers[Rend::SaveKeyRend] = [=]() { return (Item*)Rend::create(); };
 	this->deserializers[Scythe::SaveKeyScythe] = [=]() { return (Item*)Scythe::create(); };
-	this->deserializers[StarAxe::SaveKeyStarAxe] = [=]() { return (Item*)StarAxe::create(); };
 	this->deserializers[SteelAxe::SaveKeySteelAxe] = [=]() { return (Item*)SteelAxe::create(); };
-	this->deserializers[WoodCutter::SaveKeyWoodCutter] = [=]() { return (Item*)WoodCutter::create(); };
-
-	this->deserializers[BattleAxePlans::SaveKeyBattleAxePlans] = [=]() { return (Item*)BattleAxePlans::create(); };
+	this->deserializers[Scythe::SaveKeyScythe] = [=]() { return (Item*)Scythe::create(); };
+	this->deserializers[VoidAxe::SaveKeyVoidAxe] = [=]() { return (Item*)VoidAxe::create(); };
+	this->deserializers[WoodenAxe::SaveKeyWoodenAxe] = [=]() { return (Item*)WoodenAxe::create(); };
 
 	// Bows
-	this->deserializers[ArchersBow::SaveKeyArchersBow] = [=]() { return (Item*)ArchersBow::create(); };
 	this->deserializers[BoneBow::SaveKeyBoneBow] = [=]() { return (Item*)BoneBow::create(); };
-	this->deserializers[CompositeBow::SaveKeyCompositeBow] = [=]() { return (Item*)CompositeBow::create(); };
-	this->deserializers[FrostBow::SaveKeyFrostBow] = [=]() { return (Item*)FrostBow::create(); };
+	this->deserializers[CrystalBow::SaveKeyCrystalBow] = [=]() { return (Item*)CrystalBow::create(); };
+	this->deserializers[DemonicBow::SaveKeyDemonicBow] = [=]() { return (Item*)DemonicBow::create(); };
+	this->deserializers[GoldenBow::SaveKeyGoldenBow] = [=]() { return (Item*)GoldenBow::create(); };
 	this->deserializers[HuntersBow::SaveKeyHuntersBow] = [=]() { return (Item*)HuntersBow::create(); };
-	this->deserializers[IvoryBow::SaveKeyIvoryBow] = [=]() { return (Item*)IvoryBow::create(); };
-	this->deserializers[OlympusBow::SaveKeyOlympusBow] = [=]() { return (Item*)OlympusBow::create(); };
-	this->deserializers[WarBow::SaveKeyWarBow] = [=]() { return (Item*)WarBow::create(); };
+	this->deserializers[IvyBow::SaveKeyIvyBow] = [=]() { return (Item*)IvyBow::create(); };
+	this->deserializers[SteelBow::SaveKeySteelBow] = [=]() { return (Item*)SteelBow::create(); };
+	this->deserializers[VoidBow::SaveKeyVoidBow] = [=]() { return (Item*)VoidBow::create(); };
+	this->deserializers[WoodenBow::SaveKeyWoodenBow] = [=]() { return (Item*)WoodenBow::create(); };
 
 	// Maces
-	this->deserializers[BattleHammer::SaveKeyBattleHammer] = [=]() { return (Item*)BattleHammer::create(); };
+	this->deserializers[Bludgeon::SaveKeyBludgeon] = [=]() { return (Item*)Bludgeon::create(); };
 	this->deserializers[BoneHammer::SaveKeyBoneHammer] = [=]() { return (Item*)BoneHammer::create(); };
+	this->deserializers[CopperMallet::SaveKeyCopperMallet] = [=]() { return (Item*)CopperMallet::create(); };
 	this->deserializers[CrystalMace::SaveKeyCrystalMace] = [=]() { return (Item*)CrystalMace::create(); };
-	this->deserializers[Flail::SaveKeyFlail] = [=]() { return (Item*)Flail::create(); };
-	this->deserializers[IronMace::SaveKeyIronMace] = [=]() { return (Item*)IronMace::create(); };
-	this->deserializers[Judgement::SaveKeyJudgement] = [=]() { return (Item*)Judgement::create(); };
-	this->deserializers[SkullCrusher::SaveKeySkullCrusher] = [=]() { return (Item*)SkullCrusher::create(); };
-	this->deserializers[SpikedClub::SaveKeySpikedClub] = [=]() { return (Item*)SpikedClub::create(); };
-	this->deserializers[WoodenMallet::SaveKeyWoodenMallet] = [=]() { return (Item*)WoodenMallet::create(); };
-
-	// Spears
-	this->deserializers[Impaler::SaveKeyImpaler] = [=]() { return (Item*)Impaler::create(); };
+	this->deserializers[CopperMallet::SaveKeyCopperMallet] = [=]() { return (Item*)CopperMallet::create(); };
+	this->deserializers[DemonicMace::SaveKeyDemonicMace] = [=]() { return (Item*)DemonicMace::create(); };
+	this->deserializers[GoldenMace::SaveKeyGoldenMace] = [=]() { return (Item*)GoldenMace::create(); };
+	this->deserializers[MithrilMace::SaveKeyMithrilMace] = [=]() { return (Item*)MithrilMace::create(); };
+	this->deserializers[SteelMace::SaveKeySteelMace] = [=]() { return (Item*)SteelMace::create(); };
+	this->deserializers[Timmy::SaveKeyTimmy] = [=]() { return (Item*)Timmy::create(); };
+	this->deserializers[VoidMace::SaveKeyVoidMace] = [=]() { return (Item*)VoidMace::create(); };
+	this->deserializers[WitchingMace::SaveKeyWitchingMace] = [=]() { return (Item*)WitchingMace::create(); };
+	this->deserializers[WoodenClub::SaveKeyWoodenClub] = [=]() { return (Item*)WoodenClub::create(); };
 
 	// Swords
 	this->deserializers[AshenBlade::SaveKeyAshenBlade] = [=]() { return (Item*)AshenBlade::create(); };
-	this->deserializers[BattleSword::SaveKeyBattleSword] = [=]() { return (Item*)BattleSword::create(); };
-	this->deserializers[BlueSword::SaveKeyBlueSword] = [=]() { return (Item*)BlueSword::create(); };
+	this->deserializers[BoneSword::SaveKeyBoneSword] = [=]() { return (Item*)BoneSword::create(); };
 	this->deserializers[CandySword::SaveKeyCandySword] = [=]() { return (Item*)CandySword::create(); };
-	this->deserializers[Cleaver::SaveKeyCleaver] = [=]() { return (Item*)Cleaver::create(); };
+	this->deserializers[CopperSword::SaveKeyCopperSword] = [=]() { return (Item*)CopperSword::create(); };
 	this->deserializers[CrystalSword::SaveKeyCrystalSword] = [=]() { return (Item*)CrystalSword::create(); };
-	this->deserializers[FangBlade::SaveKeyFangBlade] = [=]() { return (Item*)FangBlade::create(); };
-	this->deserializers[GladiatorSword::SaveKeyGladiatorSword] = [=]() { return (Item*)GladiatorSword::create(); };
-	this->deserializers[Gladius::SaveKeyGladius] = [=]() { return (Item*)Gladius::create(); };
-	this->deserializers[Harbinger::SaveKeyHarbinger] = [=]() { return (Item*)Harbinger::create(); };
-	this->deserializers[IronSword::SaveKeyIronSword] = [=]() { return (Item*)IronSword::create(); };
-	this->deserializers[Katana::SaveKeyKatana] = [=]() { return (Item*)Katana::create(); };
-	this->deserializers[MoonBlade::SaveKeyMoonBlade] = [=]() { return (Item*)MoonBlade::create(); };
-	this->deserializers[Rapier::SaveKeyRapier] = [=]() { return (Item*)Rapier::create(); };
+	this->deserializers[DemonicSword::SaveKeyDemonicSword] = [=]() { return (Item*)DemonicSword::create(); };
+	this->deserializers[Dreadmourn::SaveKeyDreadmourn] = [=]() { return (Item*)Dreadmourn::create(); };
+	this->deserializers[FireSword::SaveKeyFireSword] = [=]() { return (Item*)FireSword::create(); };
+	this->deserializers[Frostbane::SaveKeyFrostbane] = [=]() { return (Item*)Frostbane::create(); };
+	this->deserializers[GoldenSword::SaveKeyGoldenSword] = [=]() { return (Item*)GoldenSword::create(); };
+	this->deserializers[MithrilSword::SaveKeyMithrilSword] = [=]() { return (Item*)MithrilSword::create(); };
 	this->deserializers[SteelSword::SaveKeySteelSword] = [=]() { return (Item*)SteelSword::create(); };
-	this->deserializers[VikingSword::SaveKeyVikingSword] = [=]() { return (Item*)VikingSword::create(); };
-	this->deserializers[WarCutlas::SaveKeyWarCutlas] = [=]() { return (Item*)WarCutlas::create(); };
+	this->deserializers[TheButcher::SaveKeyTheButcher] = [=]() { return (Item*)TheButcher::create(); };
+	this->deserializers[VoidSword::SaveKeyVoidSword] = [=]() { return (Item*)VoidSword::create(); };
+	this->deserializers[WoodenRapier::SaveKeyWoodenRapier] = [=]() { return (Item*)WoodenRapier::create(); };
 
 	// Wands
-	this->deserializers[ArcaneWand::SaveKeyArcaneWand] = [=]() { return (Item*)ArcaneWand::create(); };
+	this->deserializers[BoneWand::SaveKeyBoneWand] = [=]() { return (Item*)BoneWand::create(); };
 	this->deserializers[ChieftainsWand::SaveKeyChieftainsWand] = [=]() { return (Item*)ChieftainsWand::create(); };
 	this->deserializers[CrystalWand::SaveKeyCrystalWand] = [=]() { return (Item*)CrystalWand::create(); };
-	this->deserializers[CursedWand::SaveKeyCursedWand] = [=]() { return (Item*)CursedWand::create(); };
-	this->deserializers[EnchantedWand::SaveKeyEnchantedWand] = [=]() { return (Item*)EnchantedWand::create(); };
-	this->deserializers[HolyWand::SaveKeyHolyWand] = [=]() { return (Item*)HolyWand::create(); };
-	this->deserializers[ManaWand::SaveKeyManaWand] = [=]() { return (Item*)ManaWand::create(); };
-	this->deserializers[NecroWand::SaveKeyNecroWand] = [=]() { return (Item*)NecroWand::create(); };
+	this->deserializers[DemonicWand::SaveKeyDemonicWand] = [=]() { return (Item*)DemonicWand::create(); };
+	this->deserializers[EmeraldWand::SaveKeyEmeraldWand] = [=]() { return (Item*)EmeraldWand::create(); };
+	this->deserializers[GoldenWand::SaveKeyGoldenWand] = [=]() { return (Item*)GoldenWand::create(); };
+	this->deserializers[QuartzWand::SaveKeyQuartzWand] = [=]() { return (Item*)QuartzWand::create(); };
+	this->deserializers[SapphireWand::SaveKeySapphireWand] = [=]() { return (Item*)SapphireWand::create(); };
 	this->deserializers[SerpentWand::SaveKeySerpentWand] = [=]() { return (Item*)SerpentWand::create(); };
 	this->deserializers[TaserRod::SaveKeyTaserRod] = [=]() { return (Item*)TaserRod::create(); };
-	this->deserializers[WitchDoctorsWand::SaveKeyWitchDoctorsWand] = [=]() { return (Item*)WitchDoctorsWand::create(); };
+	this->deserializers[VoidWand::SaveKeyVoidWand] = [=]() { return (Item*)VoidWand::create(); };
+	this->deserializers[WitchesWand::SaveKeyWitchesWand] = [=]() { return (Item*)WitchesWand::create(); };
 	this->deserializers[WoodenWand::SaveKeyWoodenWand] = [=]() { return (Item*)WoodenWand::create(); };
 
 	// Hats

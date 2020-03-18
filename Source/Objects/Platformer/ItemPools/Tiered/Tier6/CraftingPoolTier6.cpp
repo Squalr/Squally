@@ -28,7 +28,7 @@ CraftingPoolTier6::CraftingPoolTier6(SampleMethod sampleMethod, int min, int max
 	// this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Legendary));
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
 	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Jade::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
 
 	// Metals
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Uncommon));

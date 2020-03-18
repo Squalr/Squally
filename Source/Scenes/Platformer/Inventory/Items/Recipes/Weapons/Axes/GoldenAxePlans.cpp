@@ -31,7 +31,7 @@ GoldenAxePlans::~GoldenAxePlans()
 
 Item* GoldenAxePlans::craft()
 {
-	return HeadSplitter::create();
+	return GoldenAxe::create();
 }
 
 std::vector<std::tuple<Item*, int>> GoldenAxePlans::getReagentsInternal()
@@ -55,7 +55,7 @@ std::string GoldenAxePlans::getItemName()
 
 LocalizedString* GoldenAxePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Axes_HeadSplitter::create();
+	return Strings::Items_Equipment_Weapons_Axes_GoldenAxe::create();
 }
 
 std::string GoldenAxePlans::getIconResource()
@@ -65,7 +65,7 @@ std::string GoldenAxePlans::getIconResource()
 
 std::string GoldenAxePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Axes_HeadSplitter;
+	return ItemResources::Equipment_Weapons_Axes_GoldenAxe;
 }
 
 std::string GoldenAxePlans::getSerializationKey()

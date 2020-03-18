@@ -31,7 +31,7 @@ VoidWandPlans::~VoidWandPlans()
 
 Item* VoidWandPlans::craft()
 {
-	return WitchDoctorsWand::create();
+	return VoidWand::create();
 }
 
 std::vector<std::tuple<Item*, int>> VoidWandPlans::getReagentsInternal()
@@ -55,7 +55,7 @@ std::string VoidWandPlans::getItemName()
 
 LocalizedString* VoidWandPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Wands_WitchDoctorsWand::create();
+	return Strings::Items_Equipment_Weapons_Wands_VoidWand::create();
 }
 
 std::string VoidWandPlans::getIconResource()
@@ -65,7 +65,7 @@ std::string VoidWandPlans::getIconResource()
 
 std::string VoidWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_WitchDoctorsWand;
+	return ItemResources::Equipment_Weapons_Wands_VoidWand;
 }
 
 std::string VoidWandPlans::getSerializationKey()

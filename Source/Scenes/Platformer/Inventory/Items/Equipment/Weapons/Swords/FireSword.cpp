@@ -56,7 +56,7 @@ LocalizedString* FireSword::getString()
 
 std::string FireSword::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_FireSword;
+	return ItemResources::Equipment_Weapons_Special_FireSword;
 }
 
 std::string FireSword::getSerializationKey()

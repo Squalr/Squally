@@ -56,7 +56,7 @@ LocalizedString* Timmy::getString()
 
 std::string Timmy::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_Timmy;
+	return ItemResources::Equipment_Weapons_Special_Timmy;
 }
 
 std::string Timmy::getSerializationKey()

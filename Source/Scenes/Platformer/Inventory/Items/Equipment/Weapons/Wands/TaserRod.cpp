@@ -56,7 +56,7 @@ LocalizedString* TaserRod::getString()
 
 std::string TaserRod::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_TaserRod;
+	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
 std::string TaserRod::getSerializationKey()

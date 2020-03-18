@@ -31,7 +31,7 @@ VoidMacePlans::~VoidMacePlans()
 
 Item* VoidMacePlans::craft()
 {
-	return SkullCrusher::create();
+	return VoidMace::create();
 }
 
 std::vector<std::tuple<Item*, int>> VoidMacePlans::getReagentsInternal()
@@ -57,7 +57,7 @@ std::string VoidMacePlans::getItemName()
 
 LocalizedString* VoidMacePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_SkullCrusher::create();
+	return Strings::Items_Equipment_Weapons_Maces_VoidMace::create();
 }
 
 std::string VoidMacePlans::getIconResource()
@@ -67,7 +67,7 @@ std::string VoidMacePlans::getIconResource()
 
 std::string VoidMacePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_SkullCrusher;
+	return ItemResources::Equipment_Weapons_Maces_VoidMace;
 }
 
 std::string VoidMacePlans::getSerializationKey()

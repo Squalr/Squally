@@ -31,7 +31,7 @@ WoodenClubPlans::~WoodenClubPlans()
 
 Item* WoodenClubPlans::craft()
 {
-	return SpikedClub::create();
+	return WoodenClub::create();
 }
 
 std::vector<std::tuple<Item*, int>> WoodenClubPlans::getReagentsInternal()
@@ -56,7 +56,7 @@ std::string WoodenClubPlans::getItemName()
 
 LocalizedString* WoodenClubPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_SpikedClub::create();
+	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();
 }
 
 std::string WoodenClubPlans::getIconResource()
@@ -66,7 +66,7 @@ std::string WoodenClubPlans::getIconResource()
 
 std::string WoodenClubPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_SpikedClub;
+	return ItemResources::Equipment_Weapons_Maces_WoodenClub;
 }
 
 std::string WoodenClubPlans::getSerializationKey()

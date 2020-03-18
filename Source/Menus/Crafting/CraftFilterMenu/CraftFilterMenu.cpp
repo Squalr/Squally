@@ -8,12 +8,6 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Menus/Crafting/CraftFilterMenu/CraftFilterEntry.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/AllWeaponsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/AxesFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/BowsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/MacesFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/SpearsFilter.h"
-#include "Menus/Crafting/CraftFilterMenu/Smithing/SwordsFilter.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 #include "Resources/UIResources.h"

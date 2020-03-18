@@ -31,7 +31,7 @@ DemonicWandPlans::~DemonicWandPlans()
 
 Item* DemonicWandPlans::craft()
 {
-	return ArcaneWand::create();
+	return DemonicWand::create();
 }
 
 std::vector<std::tuple<Item*, int>> DemonicWandPlans::getReagentsInternal()
@@ -42,7 +42,7 @@ std::vector<std::tuple<Item*, int>> DemonicWandPlans::getReagentsInternal()
 		{ Tin::create(), 2 },
 		{ Gold::create(), 4 },
 		{ Emerald::create(), 2 },
-		{ Jade::create(), 3 },
+		{ Sapphire::create(), 3 },
 	};
 }
 
@@ -58,7 +58,7 @@ std::string DemonicWandPlans::getItemName()
 
 LocalizedString* DemonicWandPlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Wands_ArcaneWand::create();
+	return Strings::Items_Equipment_Weapons_Wands_DemonicWand::create();
 }
 
 std::string DemonicWandPlans::getIconResource()
@@ -68,7 +68,7 @@ std::string DemonicWandPlans::getIconResource()
 
 std::string DemonicWandPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Wands_ArcaneWand;
+	return ItemResources::Equipment_Weapons_Wands_DemonicWand;
 }
 
 std::string DemonicWandPlans::getSerializationKey()

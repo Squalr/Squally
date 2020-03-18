@@ -69,7 +69,7 @@ std::string AshenBladePlans::getIconResource()
 
 std::string AshenBladePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_AshenBlade;
+	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
 std::string AshenBladePlans::getSerializationKey()

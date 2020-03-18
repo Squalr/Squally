@@ -65,7 +65,7 @@ std::string TheButcherPlans::getIconResource()
 
 std::string TheButcherPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_TheButcher;
+	return ItemResources::Equipment_Weapons_Special_TheButcher;
 }
 
 std::string TheButcherPlans::getSerializationKey()

@@ -8,7 +8,6 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/HexusResources.h"

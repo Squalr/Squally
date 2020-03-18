@@ -31,7 +31,7 @@ SteelMacePlans::~SteelMacePlans()
 
 Item* SteelMacePlans::craft()
 {
-	return Flail::create();
+	return SteelMace::create();
 }
 
 std::vector<std::tuple<Item*, int>> SteelMacePlans::getReagentsInternal()
@@ -56,7 +56,7 @@ std::string SteelMacePlans::getItemName()
 
 LocalizedString* SteelMacePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_Flail::create();
+	return Strings::Items_Equipment_Weapons_Maces_SteelMace::create();
 }
 
 std::string SteelMacePlans::getIconResource()
@@ -66,7 +66,7 @@ std::string SteelMacePlans::getIconResource()
 
 std::string SteelMacePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_Flail;
+	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
 std::string SteelMacePlans::getSerializationKey()

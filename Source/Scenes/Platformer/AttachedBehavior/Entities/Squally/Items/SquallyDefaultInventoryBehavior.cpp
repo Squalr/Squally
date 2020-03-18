@@ -75,8 +75,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 		if (DeveloperModeController::IsDeveloperBuild)
 		{
 			entityInventoryBehavior->getInventory()->forceInsert(SantaHat::create(), false);
-			entityInventoryBehavior->getInventory()->forceInsert(WoodenMallet::create(), false);
-			entityInventoryBehavior->getEquipmentInventory()->forceInsert(IronSword::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WoodenClub::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WoodenAxe::create(), false);
+			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenRapier::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 
 			for (int index = 0; index < 3; index++)

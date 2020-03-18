@@ -56,7 +56,7 @@ LocalizedString* CandySword::getString()
 
 std::string CandySword::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Swords_CandySword;
+	return ItemResources::Equipment_Weapons_Special_CandySword;
 }
 
 std::string CandySword::getSerializationKey()

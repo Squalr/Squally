@@ -31,7 +31,7 @@ WitchingMacePlans::~WitchingMacePlans()
 
 Item* WitchingMacePlans::craft()
 {
-	return SpikedClub::create();
+	return WitchingMace::create();
 }
 
 std::vector<std::tuple<Item*, int>> WitchingMacePlans::getReagentsInternal()
@@ -56,7 +56,7 @@ std::string WitchingMacePlans::getItemName()
 
 LocalizedString* WitchingMacePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_SpikedClub::create();
+	return Strings::Items_Equipment_Weapons_Maces_WitchingMace::create();
 }
 
 std::string WitchingMacePlans::getIconResource()
@@ -66,7 +66,7 @@ std::string WitchingMacePlans::getIconResource()
 
 std::string WitchingMacePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_SpikedClub;
+	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
 std::string WitchingMacePlans::getSerializationKey()

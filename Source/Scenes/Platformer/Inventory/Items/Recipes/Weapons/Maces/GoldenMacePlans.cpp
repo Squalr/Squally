@@ -31,7 +31,7 @@ GoldenMacePlans::~GoldenMacePlans()
 
 Item* GoldenMacePlans::craft()
 {
-	return Judgement::create();
+	return GoldenMace::create();
 }
 
 std::vector<std::tuple<Item*, int>> GoldenMacePlans::getReagentsInternal()
@@ -57,7 +57,7 @@ std::string GoldenMacePlans::getItemName()
 
 LocalizedString* GoldenMacePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_Judgement::create();
+	return Strings::Items_Equipment_Weapons_Maces_GoldenMace::create();
 }
 
 std::string GoldenMacePlans::getIconResource()
@@ -67,7 +67,7 @@ std::string GoldenMacePlans::getIconResource()
 
 std::string GoldenMacePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_Judgement;
+	return ItemResources::Equipment_Weapons_Maces_GoldenMace;
 }
 
 std::string GoldenMacePlans::getSerializationKey()

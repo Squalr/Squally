@@ -56,7 +56,7 @@ LocalizedString* WitchingMace::getString()
 
 std::string WitchingMace::getIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_WitchingMace;
+	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
 std::string WitchingMace::getSerializationKey()

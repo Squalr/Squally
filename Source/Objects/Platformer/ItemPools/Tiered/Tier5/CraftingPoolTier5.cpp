@@ -19,7 +19,7 @@ CraftingPoolTier5* CraftingPoolTier5::create(SampleMethod sampleMethod, int min,
 CraftingPoolTier5::CraftingPoolTier5(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "crafting-pool-t5", sampleMethod, min, max)
 {
 	// Gems
-	this->addItemToPool(ItemChance::create(Jade::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Sulfur::create(), ItemChance::Probability::Epic));
 	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Legendary));
 

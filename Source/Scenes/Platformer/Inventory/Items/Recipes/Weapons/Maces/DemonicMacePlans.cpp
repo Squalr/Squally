@@ -31,7 +31,7 @@ DemonicMacePlans::~DemonicMacePlans()
 
 Item* DemonicMacePlans::craft()
 {
-	return BattleHammer::create();
+	return DemonicMace::create();
 }
 
 std::vector<std::tuple<Item*, int>> DemonicMacePlans::getReagentsInternal()
@@ -58,7 +58,7 @@ std::string DemonicMacePlans::getItemName()
 
 LocalizedString* DemonicMacePlans::getString()
 {
-	return Strings::Items_Equipment_Weapons_Maces_BattleHammer::create();
+	return Strings::Items_Equipment_Weapons_Maces_DemonicMace::create();
 }
 
 std::string DemonicMacePlans::getIconResource()
@@ -68,7 +68,7 @@ std::string DemonicMacePlans::getIconResource()
 
 std::string DemonicMacePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Weapons_Maces_BattleHammer;
+	return ItemResources::Equipment_Weapons_Maces_DemonicMace;
 }
 
 std::string DemonicMacePlans::getSerializationKey()

@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 
-class WoodBow : public Bow
+class EmeraldWand : public Wand
 {
 public:
-	static WoodBow* create();
+	static EmeraldWand* create();
 
 	Item* clone() override;
 	std::string getItemName() override;
@@ -14,12 +14,12 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyWoodBow;
+	static const std::string SaveKeyEmeraldWand;
 
 protected:
-	WoodBow();
-	virtual ~WoodBow();
+	EmeraldWand();
+	virtual ~EmeraldWand();
 
 private:
-	typedef Bow super;
+	typedef Wand super;
 };
