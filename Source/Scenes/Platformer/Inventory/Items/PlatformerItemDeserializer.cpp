@@ -109,6 +109,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SpecialXor::SaveKey] = [=]() { return (Item*)SpecialXor::create(); };
 
 	// Crafting
+	this->deserializers[Bone::SaveKey] = [=]() { return (Item*)Bone::create(); };
 	this->deserializers[Coal::SaveKey] = [=]() { return (Item*)Coal::create(); };
 	this->deserializers[Copper::SaveKey] = [=]() { return (Item*)Copper::create(); };
 	this->deserializers[Diamond::SaveKey] = [=]() { return (Item*)Diamond::create(); };
@@ -127,6 +128,25 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[DarkWood::SaveKey] = [=]() { return (Item*)DarkWood::create(); };
 	this->deserializers[LightWood::SaveKey] = [=]() { return (Item*)LightWood::create(); };
 	this->deserializers[Wood::SaveKey] = [=]() { return (Item*)Wood::create(); };
+
+	this->deserializers[Clover::SaveKey] = [=]() { return (Item*)Clover::create(); };
+	this->deserializers[DarkSeed::SaveKey] = [=]() { return (Item*)DarkSeed::create(); };
+	this->deserializers[DemonRoot::SaveKey] = [=]() { return (Item*)DemonRoot::create(); };
+	this->deserializers[FrostBerries::SaveKey] = [=]() { return (Item*)FrostBerries::create(); };
+	this->deserializers[GoldWeed::SaveKey] = [=]() { return (Item*)GoldWeed::create(); };
+	this->deserializers[Mandrake::SaveKey] = [=]() { return (Item*)Mandrake::create(); };
+	this->deserializers[PoisonMushroom::SaveKey] = [=]() { return (Item*)PoisonMushroom::create(); };
+	this->deserializers[SandRoot::SaveKey] = [=]() { return (Item*)SandRoot::create(); };
+	this->deserializers[VoidFlower::SaveKey] = [=]() { return (Item*)VoidFlower::create(); };
+
+	this->deserializers[BlackBlood::SaveKey] = [=]() { return (Item*)BlackBlood::create(); };
+	this->deserializers[DemonSkull::SaveKey] = [=]() { return (Item*)DemonSkull::create(); };
+	this->deserializers[Egg::SaveKey] = [=]() { return (Item*)Egg::create(); };
+	this->deserializers[Eggplant::SaveKey] = [=]() { return (Item*)Eggplant::create(); };
+	this->deserializers[Feather::SaveKey] = [=]() { return (Item*)Feather::create(); };
+	this->deserializers[Honey::SaveKey] = [=]() { return (Item*)Honey::create(); };
+	this->deserializers[PhoenixFeather::SaveKey] = [=]() { return (Item*)PhoenixFeather::create(); };
+	this->deserializers[Snowball::SaveKey] = [=]() { return (Item*)Snowball::create(); };
 
 	// Consumables
 	this->deserializers[HealthPotion::SaveKey] = [=]() { return (Item*)HealthPotion::create(); };

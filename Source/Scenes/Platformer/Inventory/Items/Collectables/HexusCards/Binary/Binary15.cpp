@@ -21,7 +21,7 @@ Binary15* Binary15::create()
 	return instance;
 }
 
-Binary15::Binary15() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(3, 3))
+Binary15::Binary15() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 20 }}), ItemMeta(3, 3))
 {
 }
 

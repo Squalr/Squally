@@ -20,7 +20,7 @@ Diamond* Diamond::create()
 	return instance;
 }
 
-Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Diamond::Diamond() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 91 }}), ItemMeta(20000))
 {
 }
 

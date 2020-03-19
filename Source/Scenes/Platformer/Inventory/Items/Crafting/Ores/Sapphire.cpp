@@ -20,7 +20,7 @@ Sapphire* Sapphire::create()
 	return instance;
 }
 
-Sapphire::Sapphire() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Sapphire::Sapphire() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 68 }}), ItemMeta(20000))
 {
 }
 

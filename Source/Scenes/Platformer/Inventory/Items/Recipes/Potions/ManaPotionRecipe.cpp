@@ -21,7 +21,7 @@ ManaPotionRecipe* ManaPotionRecipe::create()
 	return instance;
 }
 
-ManaPotionRecipe::ManaPotionRecipe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}))
+ManaPotionRecipe::ManaPotionRecipe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}))
 {
 }
 
@@ -31,14 +31,15 @@ ManaPotionRecipe::~ManaPotionRecipe()
 
 Item* ManaPotionRecipe::craft()
 {
-	return Quartz::create();
+	return ManaPotion::create();
 }
 
 std::vector<std::tuple<Item*, int>> ManaPotionRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 2 },
+		{ Clover::create(), 4 },
+		{ Feather::create(), 2 },
 	};
 }
 

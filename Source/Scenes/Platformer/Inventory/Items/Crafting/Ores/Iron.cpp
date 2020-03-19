@@ -20,7 +20,7 @@ Iron* Iron::create()
 	return instance;
 }
 
-Iron::Iron() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Iron::Iron() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(20000))
 {
 }
 

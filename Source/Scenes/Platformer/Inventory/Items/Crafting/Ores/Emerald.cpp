@@ -20,7 +20,7 @@ Emerald* Emerald::create()
 	return instance;
 }
 
-Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Emerald::Emerald() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 48 }}), ItemMeta(20000))
 {
 }
 

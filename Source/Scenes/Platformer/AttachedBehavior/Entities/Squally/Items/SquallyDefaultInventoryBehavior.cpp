@@ -89,8 +89,19 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			for (int index = 0; index < 20; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(Wood::create(), false);
-				entityInventoryBehavior->getInventory()->forceInsert(LightWood::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Tin::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Copper::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(Iron::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Gold::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Quartz::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Emerald::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Sapphire::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Diamond::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Ruby::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Mithril::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Sulfur::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(Obsidian::create(), false);
+				entityInventoryBehavior->getInventory()->forceInsert(VoidCrystal::create(), false);
 			}
 
 			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 420);

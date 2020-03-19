@@ -26,10 +26,12 @@ ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
 }
 
 ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName,
-	{ CardPoolTier1::create(SampleMethod::Guarantee, 3, 3) })
+	{ CardPoolTier1::create(SampleMethod::Guarantee, 2, 2) })
 {
-	this->addItemToPool(ItemChance::create(HealthPotion::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(ManaPotion::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolToben::~ShopPoolToben()

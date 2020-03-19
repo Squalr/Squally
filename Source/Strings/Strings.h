@@ -4569,6 +4569,21 @@ namespace Strings
 		virtual ~Items_Consumables_Speed_SpeedRune() = default;
 	};
 
+	class Items_Crafting_Ore_Bone : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Ore_Bone* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Ore_Bone();
+		virtual ~Items_Crafting_Ore_Bone() = default;
+	};
+
 	class Items_Crafting_Ore_Coal : public LocalizedString
 	{
 	public:
@@ -4777,6 +4792,261 @@ namespace Strings
 	private:
 		Items_Crafting_Ore_VoidCrystal();
 		virtual ~Items_Crafting_Ore_VoidCrystal() = default;
+	};
+
+	class Items_Crafting_Plants_Clover : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_Clover* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_Clover();
+		virtual ~Items_Crafting_Plants_Clover() = default;
+	};
+
+	class Items_Crafting_Plants_DarkSeed : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_DarkSeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_DarkSeed();
+		virtual ~Items_Crafting_Plants_DarkSeed() = default;
+	};
+
+	class Items_Crafting_Plants_DemonRoot : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_DemonRoot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_DemonRoot();
+		virtual ~Items_Crafting_Plants_DemonRoot() = default;
+	};
+
+	class Items_Crafting_Plants_FrostBerries : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_FrostBerries* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_FrostBerries();
+		virtual ~Items_Crafting_Plants_FrostBerries() = default;
+	};
+
+	class Items_Crafting_Plants_GoldWeed : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_GoldWeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_GoldWeed();
+		virtual ~Items_Crafting_Plants_GoldWeed() = default;
+	};
+
+	class Items_Crafting_Plants_Mandrake : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_Mandrake* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_Mandrake();
+		virtual ~Items_Crafting_Plants_Mandrake() = default;
+	};
+
+	class Items_Crafting_Plants_PoisonMushroom : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_PoisonMushroom* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_PoisonMushroom();
+		virtual ~Items_Crafting_Plants_PoisonMushroom() = default;
+	};
+
+	class Items_Crafting_Plants_SandRoot : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_SandRoot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_SandRoot();
+		virtual ~Items_Crafting_Plants_SandRoot() = default;
+	};
+
+	class Items_Crafting_Plants_VoidFlower : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Plants_VoidFlower* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Plants_VoidFlower();
+		virtual ~Items_Crafting_Plants_VoidFlower() = default;
+	};
+
+	class Items_Crafting_Reagents_BlackBlood : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_BlackBlood* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_BlackBlood();
+		virtual ~Items_Crafting_Reagents_BlackBlood() = default;
+	};
+
+	class Items_Crafting_Reagents_DemonSkull : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_DemonSkull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_DemonSkull();
+		virtual ~Items_Crafting_Reagents_DemonSkull() = default;
+	};
+
+	class Items_Crafting_Reagents_Egg : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_Egg* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_Egg();
+		virtual ~Items_Crafting_Reagents_Egg() = default;
+	};
+
+	class Items_Crafting_Reagents_Eggplant : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_Eggplant* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_Eggplant();
+		virtual ~Items_Crafting_Reagents_Eggplant() = default;
+	};
+
+	class Items_Crafting_Reagents_Feather : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_Feather* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_Feather();
+		virtual ~Items_Crafting_Reagents_Feather() = default;
+	};
+
+	class Items_Crafting_Reagents_Honey : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_Honey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_Honey();
+		virtual ~Items_Crafting_Reagents_Honey() = default;
+	};
+
+	class Items_Crafting_Reagents_PhoenixFeather : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_PhoenixFeather* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_PhoenixFeather();
+		virtual ~Items_Crafting_Reagents_PhoenixFeather() = default;
+	};
+
+	class Items_Crafting_Reagents_Snowball : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Reagents_Snowball* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Reagents_Snowball();
+		virtual ~Items_Crafting_Reagents_Snowball() = default;
 	};
 
 	class Items_Crafting_Wood_DarkWood : public LocalizedString

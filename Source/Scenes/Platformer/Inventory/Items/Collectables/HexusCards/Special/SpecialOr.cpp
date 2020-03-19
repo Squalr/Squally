@@ -21,7 +21,7 @@ SpecialOr* SpecialOr::create()
 	return instance;
 }
 
-SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
 {
 }
 

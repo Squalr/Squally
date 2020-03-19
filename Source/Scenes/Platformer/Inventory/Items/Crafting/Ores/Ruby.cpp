@@ -20,7 +20,7 @@ Ruby* Ruby::create()
 	return instance;
 }
 
-Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Ruby::Ruby() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 133 }}), ItemMeta(20000))
 {
 }
 

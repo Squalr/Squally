@@ -20,7 +20,7 @@ Mithril* Mithril::create()
 	return instance;
 }
 
-Mithril::Mithril() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Mithril::Mithril() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 44 }}), ItemMeta(20000))
 {
 }
 

@@ -20,7 +20,7 @@ DarkWood* DarkWood::create()
 	return instance;
 }
 
-DarkWood::DarkWood() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+DarkWood::DarkWood() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 40 }}), ItemMeta(20000))
 {
 }
 

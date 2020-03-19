@@ -38,8 +38,7 @@ std::vector<std::tuple<Item*, int>> WoodenWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ LightWood::create(), 6 },
-		{ Quartz::create(), 1 },
+		{ Wood::create(), 6 },
 	};
 }
 

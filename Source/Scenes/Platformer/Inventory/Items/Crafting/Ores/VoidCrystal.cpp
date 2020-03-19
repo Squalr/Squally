@@ -20,7 +20,7 @@ VoidCrystal* VoidCrystal::create()
 	return instance;
 }
 
-VoidCrystal::VoidCrystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+VoidCrystal::VoidCrystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 212 }}), ItemMeta(20000))
 {
 }
 

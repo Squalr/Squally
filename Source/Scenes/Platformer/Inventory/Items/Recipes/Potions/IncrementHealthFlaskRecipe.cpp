@@ -38,7 +38,9 @@ std::vector<std::tuple<Item*, int>> IncrementHealthFlaskRecipe::getReagentsInter
 {
 	return
 	{
-		{ Iron::create(), 2 },
+		{ Clover::create(), 2 },
+		{ DarkSeed::create(), 2 },
+		{ Honey::create(), 1 },
 	};
 }
 

@@ -21,7 +21,7 @@ SpecialShrCircular* SpecialShrCircular::create()
 	return instance;
 }
 
-SpecialShrCircular::SpecialShrCircular() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialShrCircular::SpecialShrCircular() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
 {
 }
 

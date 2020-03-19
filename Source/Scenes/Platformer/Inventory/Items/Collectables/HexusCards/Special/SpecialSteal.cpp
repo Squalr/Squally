@@ -21,7 +21,7 @@ SpecialSteal* SpecialSteal::create()
 	return instance;
 }
 
-SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemMeta(3, 3))
 {
 }
 

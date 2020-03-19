@@ -20,7 +20,7 @@ Tin* Tin::create()
 	return instance;
 }
 
-Tin::Tin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Tin::Tin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(20000))
 {
 }
 

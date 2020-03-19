@@ -21,7 +21,7 @@ SpecialAbsorb* SpecialAbsorb::create()
 	return instance;
 }
 
-SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(3, 3))
 {
 }
 

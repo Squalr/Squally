@@ -20,7 +20,7 @@ Obsidian* Obsidian::create()
 	return instance;
 }
 
-Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(20000))
+Obsidian::Obsidian() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 94 }}), ItemMeta(20000))
 {
 }
 
