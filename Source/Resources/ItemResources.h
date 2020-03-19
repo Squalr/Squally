@@ -246,7 +246,7 @@ namespace ItemResources
 	extern const std::string Equipment_Weapons_Swords_MithrilSword;
 	extern const std::string Equipment_Weapons_Swords_SteelSword;
 	extern const std::string Equipment_Weapons_Swords_VoidSword;
-	extern const std::string Equipment_Weapons_Swords_WoodenRapier;
+	extern const std::string Equipment_Weapons_Swords_WoodenSword;
 	extern const std::string Equipment_Weapons_Wands_BoneWand;
 	extern const std::string Equipment_Weapons_Wands_CrystalWand;
 	extern const std::string Equipment_Weapons_Wands_DemonicWand;

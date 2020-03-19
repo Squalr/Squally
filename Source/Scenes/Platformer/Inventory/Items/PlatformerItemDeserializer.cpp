@@ -188,7 +188,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[SteelSword::SaveKey] = [=]() { return (Item*)SteelSword::create(); };
 	this->deserializers[TheButcher::SaveKey] = [=]() { return (Item*)TheButcher::create(); };
 	this->deserializers[VoidSword::SaveKey] = [=]() { return (Item*)VoidSword::create(); };
-	this->deserializers[WoodenRapier::SaveKey] = [=]() { return (Item*)WoodenRapier::create(); };
+	this->deserializers[WoodenSword::SaveKey] = [=]() { return (Item*)WoodenSword::create(); };
 
 	// Wands
 	this->deserializers[BoneWand::SaveKey] = [=]() { return (Item*)BoneWand::create(); };
