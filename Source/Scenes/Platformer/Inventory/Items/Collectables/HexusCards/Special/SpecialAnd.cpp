@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialAnd::SaveKeySpecialAnd = "special-and";
+const std::string SpecialAnd::SaveKey = "special-and";
 
 SpecialAnd* SpecialAnd::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialAnd::clone()
 
 std::string SpecialAnd::getItemName()
 {
-	return SpecialAnd::SaveKeySpecialAnd;
+	return SpecialAnd::SaveKey;
 }
 
 LocalizedString* SpecialAnd::getString()
@@ -51,7 +51,7 @@ std::string SpecialAnd::getIconResource()
 
 std::string SpecialAnd::getSerializationKey()
 {
-	return SpecialAnd::SaveKeySpecialAnd;
+	return SpecialAnd::SaveKey;
 }
 
 std::string SpecialAnd::getCardKey()

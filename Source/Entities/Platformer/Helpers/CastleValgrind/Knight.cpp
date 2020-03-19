@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Knight::MapKeyKnight = "knight";
+const std::string Knight::MapKey = "knight";
 HexusOpponentData* Knight::HexusOpponentDataInstance = nullptr;
 const std::string Knight::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KNIGHT";
 
@@ -31,7 +31,7 @@ Knight* Knight::deserialize(ValueMap& properties)
 }
 
 Knight::Knight(ValueMap& properties) : super(properties,
-	Knight::MapKeyKnight,
+	Knight::MapKey,
 	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,
 	Size(224.0f, 440.0f),

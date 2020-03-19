@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TheldarsHelm::SaveKeyTheldarsHelm = "theldars-helm";
+const std::string TheldarsHelm::SaveKey = "theldars-helm";
 
 TheldarsHelm* TheldarsHelm::create()
 {
@@ -46,7 +46,7 @@ Item* TheldarsHelm::clone()
 
 std::string TheldarsHelm::getItemName()
 {
-	return TheldarsHelm::SaveKeyTheldarsHelm;
+	return TheldarsHelm::SaveKey;
 }
 
 LocalizedString* TheldarsHelm::getString()
@@ -61,7 +61,7 @@ std::string TheldarsHelm::getIconResource()
 
 std::string TheldarsHelm::getSerializationKey()
 {
-	return TheldarsHelm::SaveKeyTheldarsHelm;
+	return TheldarsHelm::SaveKey;
 }
 
 Vec2 TheldarsHelm::getDisplayOffset()

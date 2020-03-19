@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Hunter::MapKeyHunter = "hunter";
+const std::string Hunter::MapKey = "hunter";
 HexusOpponentData* Hunter::HexusOpponentDataInstance = nullptr;
 const std::string Hunter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HUNTER";
 
@@ -31,7 +31,7 @@ Hunter* Hunter::deserialize(ValueMap& properties)
 }
 
 Hunter::Hunter(ValueMap& properties) : super(properties,
-	Hunter::MapKeyHunter,
+	Hunter::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
 	Size(112.0f, 596.0f),

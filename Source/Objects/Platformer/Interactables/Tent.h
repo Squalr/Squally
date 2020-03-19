@@ -16,7 +16,7 @@ class Tent : public HackableObject
 public:
 	static Tent* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTent;
+	static const std::string MapKey;
 
 protected:
 	Tent(cocos2d::ValueMap& properties);

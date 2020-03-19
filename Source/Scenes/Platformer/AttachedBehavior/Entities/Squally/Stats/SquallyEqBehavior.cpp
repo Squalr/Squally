@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyEqBehavior::MapKeyAttachedBehavior = "squally-eq";
+const std::string SquallyEqBehavior::MapKey = "squally-eq";
 
 SquallyEqBehavior* SquallyEqBehavior::create(GameObject* owner)
 {

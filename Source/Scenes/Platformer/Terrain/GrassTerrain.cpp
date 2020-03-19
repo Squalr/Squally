@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GrassTerrain::MapKeyTerrainType = "grass";
+const std::string GrassTerrain::MapKey = "grass";
 
 GrassTerrain* GrassTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ GrassTerrain::GrassTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return GrassTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		GrassTerrain::MapKeyTerrainType,
+		GrassTerrain::MapKey,
 		TextureResources::GrassTexture,
 		TerrainResources::Grass_Top,
 		TerrainResources::Grass_TopLeft,

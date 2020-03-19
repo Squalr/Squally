@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string AshenBladePlans::SaveKeyAshenBladePlans = "ashen-blade-plans";
+const std::string AshenBladePlans::SaveKey = "ashen-blade-plans";
 
 AshenBladePlans* AshenBladePlans::create()
 {
@@ -54,7 +54,7 @@ Item* AshenBladePlans::clone()
 
 std::string AshenBladePlans::getItemName()
 {
-	return AshenBladePlans::SaveKeyAshenBladePlans;
+	return AshenBladePlans::SaveKey;
 }
 
 LocalizedString* AshenBladePlans::getString()
@@ -74,5 +74,5 @@ std::string AshenBladePlans::getCraftedItemIconResource()
 
 std::string AshenBladePlans::getSerializationKey()
 {
-	return AshenBladePlans::SaveKeyAshenBladePlans;
+	return AshenBladePlans::SaveKey;
 }

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GunnersHat::SaveKeyGunnersHat = "gunners-hat";
+const std::string GunnersHat::SaveKey = "gunners-hat";
 
 GunnersHat* GunnersHat::create()
 {
@@ -46,7 +46,7 @@ Item* GunnersHat::clone()
 
 std::string GunnersHat::getItemName()
 {
-	return GunnersHat::SaveKeyGunnersHat;
+	return GunnersHat::SaveKey;
 }
 
 LocalizedString* GunnersHat::getString()
@@ -61,7 +61,7 @@ std::string GunnersHat::getIconResource()
 
 std::string GunnersHat::getSerializationKey()
 {
-	return GunnersHat::SaveKeyGunnersHat;
+	return GunnersHat::SaveKey;
 }
 
 Vec2 GunnersHat::getDisplayOffset()

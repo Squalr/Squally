@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Jasper::MapKeyJasper = "jasper";
+const std::string Jasper::MapKey = "jasper";
 HexusOpponentData* Jasper::HexusOpponentDataInstance = nullptr;
 const std::string Jasper::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JASPER";
 
@@ -31,7 +31,7 @@ Jasper* Jasper::deserialize(ValueMap& properties)
 }
 
 Jasper::Jasper(ValueMap& properties) : super(properties,
-	Jasper::MapKeyJasper,
+	Jasper::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Jasper_Emblem,
 	Size(112.0f, 160.0f),

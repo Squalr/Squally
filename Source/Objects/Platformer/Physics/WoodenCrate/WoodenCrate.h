@@ -14,7 +14,7 @@ class WoodenCrate : public HackableObject
 public:
 	static WoodenCrate* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWoodenCrate;
+	static const std::string MapKey;
 
 protected:
 	WoodenCrate(cocos2d::ValueMap& properties);

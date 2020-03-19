@@ -16,7 +16,7 @@ class TrapDoor : public HackableObject
 public:
 	static TrapDoor* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTrapDoor;
+	static const std::string MapKey;
 
 protected:
 	TrapDoor(cocos2d::ValueMap& properties);

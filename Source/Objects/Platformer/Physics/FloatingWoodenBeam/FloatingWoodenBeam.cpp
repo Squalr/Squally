@@ -26,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_GET_DENSITY 1
 
-const std::string FloatingWoodenBeam::MapKeyFloatingWoodenBeam = "floating-wooden-beam";
+const std::string FloatingWoodenBeam::MapKey = "floating-wooden-beam";
 
 FloatingWoodenBeam* FloatingWoodenBeam::create(ValueMap& properties)
 {
@@ -86,7 +86,7 @@ void FloatingWoodenBeam::registerHackables()
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::HackableCodeInfo(
-				FloatingWoodenBeam::MapKeyFloatingWoodenBeam,
+				FloatingWoodenBeam::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingWoodenBeamGetDensityPreview::create(),

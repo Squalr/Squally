@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string QuartzWand::SaveKeyQuartzWand = "mana-wand";
+const std::string QuartzWand::SaveKey = "mana-wand";
 
 QuartzWand* QuartzWand::create()
 {
@@ -46,7 +46,7 @@ Item* QuartzWand::clone()
 
 std::string QuartzWand::getItemName()
 {
-	return QuartzWand::SaveKeyQuartzWand;
+	return QuartzWand::SaveKey;
 }
 
 LocalizedString* QuartzWand::getString()
@@ -61,7 +61,7 @@ std::string QuartzWand::getIconResource()
 
 std::string QuartzWand::getSerializationKey()
 {
-	return QuartzWand::SaveKeyQuartzWand;
+	return QuartzWand::SaveKey;
 }
 
 Vec2 QuartzWand::getDisplayOffset()

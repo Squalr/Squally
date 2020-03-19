@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Blackbeard::MapKeyBlackbeard = "blackbeard";
+const std::string Blackbeard::MapKey = "blackbeard";
 HexusOpponentData* Blackbeard::HexusOpponentDataInstance = nullptr;
 const std::string Blackbeard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BLACKBEARD";
 
@@ -31,7 +31,7 @@ Blackbeard* Blackbeard::deserialize(ValueMap& properties)
 }
 
 Blackbeard::Blackbeard(ValueMap& properties) : super(properties,
-	Blackbeard::MapKeyBlackbeard,
+	Blackbeard::MapKey,
 	EntityResources::Npcs_EndianForest_Blackbeard_Animations,
 	EntityResources::Npcs_EndianForest_Blackbeard_Emblem,
 	Size(112.0f, 160.0f),

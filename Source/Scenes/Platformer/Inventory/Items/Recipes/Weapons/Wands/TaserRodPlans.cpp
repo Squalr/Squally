@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string TaserRodPlans::SaveKeyTaserRodPlans = "taser-rod-plans";
+const std::string TaserRodPlans::SaveKey = "taser-rod-plans";
 
 TaserRodPlans* TaserRodPlans::create()
 {
@@ -51,7 +51,7 @@ Item* TaserRodPlans::clone()
 
 std::string TaserRodPlans::getItemName()
 {
-	return TaserRodPlans::SaveKeyTaserRodPlans;
+	return TaserRodPlans::SaveKey;
 }
 
 LocalizedString* TaserRodPlans::getString()
@@ -71,5 +71,5 @@ std::string TaserRodPlans::getCraftedItemIconResource()
 
 std::string TaserRodPlans::getSerializationKey()
 {
-	return TaserRodPlans::SaveKeyTaserRodPlans;
+	return TaserRodPlans::SaveKey;
 }

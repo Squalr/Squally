@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VikingHelmet::SaveKeyVikingHelmet = "viking-helmet";
+const std::string VikingHelmet::SaveKey = "viking-helmet";
 
 VikingHelmet* VikingHelmet::create()
 {
@@ -46,7 +46,7 @@ Item* VikingHelmet::clone()
 
 std::string VikingHelmet::getItemName()
 {
-	return VikingHelmet::SaveKeyVikingHelmet;
+	return VikingHelmet::SaveKey;
 }
 
 LocalizedString* VikingHelmet::getString()
@@ -61,7 +61,7 @@ std::string VikingHelmet::getIconResource()
 
 std::string VikingHelmet::getSerializationKey()
 {
-	return VikingHelmet::SaveKeyVikingHelmet;
+	return VikingHelmet::SaveKey;
 }
 
 Vec2 VikingHelmet::getDisplayOffset()

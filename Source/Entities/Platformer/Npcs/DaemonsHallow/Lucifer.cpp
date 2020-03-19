@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Lucifer::MapKeyLucifer = "lucifer";
+const std::string Lucifer::MapKey = "lucifer";
 HexusOpponentData* Lucifer::HexusOpponentDataInstance = nullptr;
 const std::string Lucifer::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LUCIFER";
 
@@ -31,7 +31,7 @@ Lucifer* Lucifer::deserialize(ValueMap& properties)
 }
 
 Lucifer::Lucifer(ValueMap& properties) : super(properties,
-	Lucifer::MapKeyLucifer,
+	Lucifer::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Animations,
 	EntityResources::Npcs_DaemonsHallow_Lucifer_Emblem,
 	Size(112.0f, 160.0f),

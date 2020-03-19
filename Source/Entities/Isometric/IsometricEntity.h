@@ -13,7 +13,7 @@ protected:
 		float scale = 1.0f,
 		cocos2d::Vec2 offset = cocos2d::Vec2(0.0f, 0.0f),
 		cocos2d::Size size = cocos2d::Size(256.0f, 128.0f));
-	~IsometricEntity();
+	virtual ~IsometricEntity();
 
 	void onEnter() override;
 	void update(float) override;

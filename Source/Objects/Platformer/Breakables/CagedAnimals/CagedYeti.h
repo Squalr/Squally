@@ -12,11 +12,11 @@ class CagedYeti : public CagedAnimal
 public:
 	static CagedYeti* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedYeti;
+	static const std::string MapKey;
 
 protected:
 	CagedYeti(cocos2d::ValueMap& properties);
-	~CagedYeti();
+	virtual ~CagedYeti();
 
 	void initializePositions() override;
 

@@ -18,7 +18,7 @@ class Anvil : public InteractObject
 public:
 	static Anvil* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyAnvil;
+	static const std::string MapKey;
 
 protected:
 	Anvil(cocos2d::ValueMap& properties);

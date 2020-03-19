@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string PlatformerRubberbandingDeserializer::MapPropertyRubberBand = "rubber-band";
+const std::string PlatformerRubberbandingDeserializer::PropertyRubberBand = "rubber-band";
 
 PlatformerRubberbandingDeserializer* PlatformerRubberbandingDeserializer::create()
 {
@@ -30,9 +30,9 @@ PlatformerRubberbandingDeserializer::~PlatformerRubberbandingDeserializer()
 
 void PlatformerRubberbandingDeserializer::deserializeProperties(GameObject* owner, ValueMap properties)
 {
-	if (GameUtils::keyExists(properties, PlatformerRubberbandingDeserializer::MapPropertyRubberBand))
+	if (GameUtils::keyExists(properties, PlatformerRubberbandingDeserializer::PropertyRubberBand))
 	{
-		const int rubberBand = GameUtils::getKeyOrDefault(properties, PlatformerRubberbandingDeserializer::MapPropertyRubberBand, Value(1)).asInt();
+		const int rubberBand = GameUtils::getKeyOrDefault(properties, PlatformerRubberbandingDeserializer::PropertyRubberBand, Value(1)).asInt();
 		
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyLevelRubberband, Value(rubberBand));
 	}

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ReindeerHat::SaveKeyReindeerHat = "reindeer-hat";
+const std::string ReindeerHat::SaveKey = "reindeer-hat";
 
 ReindeerHat* ReindeerHat::create()
 {
@@ -46,7 +46,7 @@ Item* ReindeerHat::clone()
 
 std::string ReindeerHat::getItemName()
 {
-	return ReindeerHat::SaveKeyReindeerHat;
+	return ReindeerHat::SaveKey;
 }
 
 LocalizedString* ReindeerHat::getString()
@@ -61,7 +61,7 @@ std::string ReindeerHat::getIconResource()
 
 std::string ReindeerHat::getSerializationKey()
 {
-	return ReindeerHat::SaveKeyReindeerHat;
+	return ReindeerHat::SaveKey;
 }
 
 Vec2 ReindeerHat::getDisplayOffset()

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidSword::SaveKeyVoidSword = "void-sword";
+const std::string VoidSword::SaveKey = "void-sword";
 
 VoidSword* VoidSword::create()
 {
@@ -46,7 +46,7 @@ Item* VoidSword::clone()
 
 std::string VoidSword::getItemName()
 {
-	return VoidSword::SaveKeyVoidSword;
+	return VoidSword::SaveKey;
 }
 
 LocalizedString* VoidSword::getString()
@@ -61,5 +61,5 @@ std::string VoidSword::getIconResource()
 
 std::string VoidSword::getSerializationKey()
 {
-	return VoidSword::SaveKeyVoidSword;
+	return VoidSword::SaveKey;
 }

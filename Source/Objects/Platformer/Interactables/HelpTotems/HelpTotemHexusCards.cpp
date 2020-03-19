@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string HelpTotemHexusCards::MapKeyHelpTotemHexusCards = "help-totem-hexus-cards";
+const std::string HelpTotemHexusCards::MapKey = "help-totem-hexus-cards";
 
 HelpTotemHexusCards* HelpTotemHexusCards::create(ValueMap& properties)
 {

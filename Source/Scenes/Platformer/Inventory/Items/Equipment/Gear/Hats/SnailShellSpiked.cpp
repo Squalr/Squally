@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SnailShellSpiked::SaveKeySnailShellSpiked = "snail-shell-spiked";
+const std::string SnailShellSpiked::SaveKey = "snail-shell-spiked";
 
 SnailShellSpiked* SnailShellSpiked::create()
 {
@@ -46,7 +46,7 @@ Item* SnailShellSpiked::clone()
 
 std::string SnailShellSpiked::getItemName()
 {
-	return SnailShellSpiked::SaveKeySnailShellSpiked;
+	return SnailShellSpiked::SaveKey;
 }
 
 LocalizedString* SnailShellSpiked::getString()
@@ -61,7 +61,7 @@ std::string SnailShellSpiked::getIconResource()
 
 std::string SnailShellSpiked::getSerializationKey()
 {
-	return SnailShellSpiked::SaveKeySnailShellSpiked;
+	return SnailShellSpiked::SaveKey;
 }
 
 Vec2 SnailShellSpiked::getDisplayOffset()

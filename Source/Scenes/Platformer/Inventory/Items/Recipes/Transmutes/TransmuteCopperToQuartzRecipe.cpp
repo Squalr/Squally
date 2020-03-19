@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string TransmuteCopperToQuartzRecipe::SaveKeyTransmuteCopperToQuartzRecipe = "copper-to-quartz-recipe";
+const std::string TransmuteCopperToQuartzRecipe::SaveKey = "copper-to-quartz-recipe";
 
 TransmuteCopperToQuartzRecipe* TransmuteCopperToQuartzRecipe::create()
 {
@@ -49,7 +49,7 @@ Item* TransmuteCopperToQuartzRecipe::clone()
 
 std::string TransmuteCopperToQuartzRecipe::getItemName()
 {
-	return TransmuteCopperToQuartzRecipe::SaveKeyTransmuteCopperToQuartzRecipe;
+	return TransmuteCopperToQuartzRecipe::SaveKey;
 }
 
 LocalizedString* TransmuteCopperToQuartzRecipe::getString()
@@ -69,5 +69,5 @@ std::string TransmuteCopperToQuartzRecipe::getCraftedItemIconResource()
 
 std::string TransmuteCopperToQuartzRecipe::getSerializationKey()
 {
-	return TransmuteCopperToQuartzRecipe::SaveKeyTransmuteCopperToQuartzRecipe;
+	return TransmuteCopperToQuartzRecipe::SaveKey;
 }

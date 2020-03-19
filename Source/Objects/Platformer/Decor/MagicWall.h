@@ -12,7 +12,7 @@ class MagicWall : public GameObject
 public:
 	static MagicWall* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyMagicWall;
+	static const std::string MapKey;
 
 protected:
 	MagicWall(cocos2d::ValueMap& properties);

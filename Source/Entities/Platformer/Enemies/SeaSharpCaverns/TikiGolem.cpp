@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string TikiGolem::MapKeyTikiGolem = "tiki-golem";
+const std::string TikiGolem::MapKey = "tiki-golem";
 HexusOpponentData* TikiGolem::HexusOpponentDataInstance = nullptr;
 const std::string TikiGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIKI_GOLEM";
 
@@ -31,7 +31,7 @@ TikiGolem* TikiGolem::deserialize(ValueMap& properties)
 }
 
 TikiGolem::TikiGolem(ValueMap& properties) : super(properties,
-	TikiGolem::MapKeyTikiGolem,
+	TikiGolem::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_TikiGolem_Emblem,
 	Size(284.0f, 256.0f),

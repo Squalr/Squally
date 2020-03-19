@@ -16,7 +16,7 @@ class PendulumBlade : public HackableObject
 public:
 	static PendulumBlade* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyPendulumBlade;
+	static const std::string MapKey;
 
 protected:
 	PendulumBlade(cocos2d::ValueMap& properties);

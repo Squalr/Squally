@@ -5,7 +5,7 @@
 
 using namespace cocos2d;
 
-const std::string SnowmanBehaviorGroup::MapKeyAttachedBehavior = "snowman";
+const std::string SnowmanBehaviorGroup::MapKey = "snowman";
 
 SnowmanBehaviorGroup* SnowmanBehaviorGroup::create(GameObject* owner)
 {

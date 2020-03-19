@@ -8,7 +8,7 @@ class Warp : public Portal
 public:
 	static Warp* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWarp;
+	static const std::string MapKey;
 	static const std::string MapKeyWarpFrom;
 	static const std::string MapKeyWarpTo;
 

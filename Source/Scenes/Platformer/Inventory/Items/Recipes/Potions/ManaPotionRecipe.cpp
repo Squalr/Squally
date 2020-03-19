@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string ManaPotionRecipe::SaveKeyManaPotionRecipe = "mana-potion-recipe";
+const std::string ManaPotionRecipe::SaveKey = "mana-potion-recipe";
 
 ManaPotionRecipe* ManaPotionRecipe::create()
 {
@@ -49,7 +49,7 @@ Item* ManaPotionRecipe::clone()
 
 std::string ManaPotionRecipe::getItemName()
 {
-	return ManaPotionRecipe::SaveKeyManaPotionRecipe;
+	return ManaPotionRecipe::SaveKey;
 }
 
 LocalizedString* ManaPotionRecipe::getString()
@@ -69,5 +69,5 @@ std::string ManaPotionRecipe::getCraftedItemIconResource()
 
 std::string ManaPotionRecipe::getSerializationKey()
 {
-	return ManaPotionRecipe::SaveKeyManaPotionRecipe;
+	return ManaPotionRecipe::SaveKey;
 }

@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyHackableCueBehavior::MapKeyAttachedBehavior = "scrappy-movement";
+const std::string ScrappyHackableCueBehavior::MapKey = "scrappy-movement";
 
 ScrappyHackableCueBehavior* ScrappyHackableCueBehavior::create(GameObject* owner)
 {

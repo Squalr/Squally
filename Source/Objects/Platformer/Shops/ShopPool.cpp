@@ -46,7 +46,7 @@ void ShopPool::onEnter()
 			// Re-enable querying. This prevents a race-scenario where an object queries this one before items are built.
 			this->properties[GameObject::MapKeyQueryable] = true;
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void ShopPool::initializePositions()

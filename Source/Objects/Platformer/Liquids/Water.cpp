@@ -14,8 +14,8 @@
 
 using namespace cocos2d;
 
-const std::string Water::MapKeyWater = "water";
-const std::string Water::MapKeyPropertyDisablePhysics = "disable-physics";
+const std::string Water::MapKey = "water";
+const std::string Water::PropertyDisablePhysics = "disable-physics";
 const float Water::SplashSpacing = 192.0f;
 const float Water::WaterGravity = 0.0f;
 const float Water::WaterCollisionOffset = 128.0f;
@@ -44,7 +44,7 @@ Water::Water(ValueMap& properties) : super(properties)
 	this->waterCollision = CollisionObject::create(CollisionObject::createBox(collisionSize), (CollisionType)PlatformerCollisionType::Water, CollisionObject::Properties(false, false));
 
 	this->waterCollision->setPositionY(-effectiveOffset / 2.0f);
-	this->waterCollision->setPhysicsEnabled(GameUtils::getKeyOrDefault(this->properties, Water::MapKeyPropertyDisablePhysics, Value(true)).asBool());
+	this->waterCollision->setPhysicsEnabled(GameUtils::getKeyOrDefault(this->properties, Water::PropertyDisablePhysics, Value(true)).asBool());
 	
 	this->addChild(this->water);
 	this->addChild(this->waterCollision);

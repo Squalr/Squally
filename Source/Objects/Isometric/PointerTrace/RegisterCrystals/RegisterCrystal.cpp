@@ -25,10 +25,10 @@
 
 using namespace cocos2d;
 
-const std::string RegisterCrystal::MapKeyRegisterInstruction = "instruction";
-const std::string RegisterCrystal::MapKeyRegisterIsPointer = "is-pointer";
-const std::string RegisterCrystal::MapKeyRegisterValue = "value";
-const std::string RegisterCrystal::MapKeyRegisterOffset = "offset";
+const std::string RegisterCrystal::PropertyRegisterInstruction = "instruction";
+const std::string RegisterCrystal::PropertyRegisterIsPointer = "is-pointer";
+const std::string RegisterCrystal::PropertyRegisterValue = "value";
+const std::string RegisterCrystal::PropertyRegisterOffset = "offset";
 
 RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 {
@@ -41,10 +41,10 @@ RegisterCrystal::RegisterCrystal(ValueMap& properties) : super(properties)
 
 	this->setZSorted(true);
 
-	this->instruction = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterInstruction, Value("mov")).asString();
-	this->isPointer = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterIsPointer, Value(false)).asBool();
-	this->value = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterValue, Value(0)).asInt();
-	this->offset = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::MapKeyRegisterOffset, Value(0)).asInt();
+	this->instruction = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::PropertyRegisterInstruction, Value("mov")).asString();
+	this->isPointer = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::PropertyRegisterIsPointer, Value(false)).asBool();
+	this->value = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::PropertyRegisterValue, Value(0)).asInt();
+	this->offset = GameUtils::getKeyOrDefault(this->properties, RegisterCrystal::PropertyRegisterOffset, Value(0)).asInt();
 
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 

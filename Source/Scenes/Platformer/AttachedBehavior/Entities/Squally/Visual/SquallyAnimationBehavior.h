@@ -10,7 +10,7 @@ class SquallyAnimationBehavior : public AttachedBehavior
 public:
 	static SquallyAnimationBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyAnimationBehavior(GameObject* owner);

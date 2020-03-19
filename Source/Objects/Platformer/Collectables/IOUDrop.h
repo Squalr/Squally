@@ -15,7 +15,7 @@ class IOUDrop : public Collectable
 public:
 	static IOUDrop* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyIOUDrop;
+	static const std::string MapKey;
 
 protected:
 	IOUDrop(cocos2d::ValueMap& properties);

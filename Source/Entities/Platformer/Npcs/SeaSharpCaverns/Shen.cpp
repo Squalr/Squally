@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Shen::MapKeyShen = "shen";
+const std::string Shen::MapKey = "shen";
 HexusOpponentData* Shen::HexusOpponentDataInstance = nullptr;
 const std::string Shen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SHEN";
 
@@ -31,7 +31,7 @@ Shen* Shen::deserialize(ValueMap& properties)
 }
 
 Shen::Shen(ValueMap& properties) : super(properties,
-	Shen::MapKeyShen,
+	Shen::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Shen_Emblem,
 	Size(112.0f, 160.0f),

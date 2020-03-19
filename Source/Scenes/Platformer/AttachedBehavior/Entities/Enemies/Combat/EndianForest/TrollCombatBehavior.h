@@ -7,7 +7,7 @@ class TrollCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static TrollCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	TrollCombatBehavior(GameObject* owner);

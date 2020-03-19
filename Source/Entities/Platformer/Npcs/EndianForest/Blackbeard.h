@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyBlackbeard;
+	static const std::string MapKey;
+
+protected:
+	Blackbeard(cocos2d::ValueMap& properties);
+	virtual ~Blackbeard();
 
 private:
 	typedef PlatformerFriendly super;
-	Blackbeard(cocos2d::ValueMap& properties);
-	~Blackbeard();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

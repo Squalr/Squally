@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Ogre::MapKeyOgre = "ogre";
+const std::string Ogre::MapKey = "ogre";
 
 Ogre* Ogre::deserialize(ValueMap& properties)
 {
@@ -22,7 +22,7 @@ Ogre* Ogre::deserialize(ValueMap& properties)
 }
 
 Ogre::Ogre(ValueMap& properties) : super(properties,
-	Ogre::MapKeyOgre,
+	Ogre::MapKey,
 	EntityResources::Enemies_EndianForest_Ogre_Animations,
 	EntityResources::Enemies_EndianForest_Ogre_Emblem,
 	Size(256.0f, 248.0f),

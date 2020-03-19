@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string NoDefendBehavior::MapKeyAttachedBehavior = "no-defend";
+const std::string NoDefendBehavior::MapKey = "no-defend";
 
 NoDefendBehavior* NoDefendBehavior::create(GameObject* owner)
 {

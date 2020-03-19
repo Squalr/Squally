@@ -9,7 +9,7 @@ class SquallyCollisionBehavior : public EntityCollisionBehaviorBase
 public:
 	static SquallyCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyCollisionBehavior(GameObject* owner);

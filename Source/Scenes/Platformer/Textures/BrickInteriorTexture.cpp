@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string BrickInteriorTexture::MapKeyTextureType = "brick-interior";
+const std::string BrickInteriorTexture::MapKey = "brick-interior";
 
 BrickInteriorTexture* BrickInteriorTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ BrickInteriorTexture* BrickInteriorTexture::create(ValueMap& properties)
 BrickInteriorTexture::BrickInteriorTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		BrickInteriorTexture::MapKeyTextureType,
+		BrickInteriorTexture::MapKey,
 		TextureResources::BrickInteriorTexture,
 		Color4B(11, 30, 39, 255)))
 {

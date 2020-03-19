@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenRapier::SaveKeyWoodenRapier = "wooden-rapier";
+const std::string WoodenRapier::SaveKey = "wooden-rapier";
 
 WoodenRapier* WoodenRapier::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenRapier::clone()
 
 std::string WoodenRapier::getItemName()
 {
-	return WoodenRapier::SaveKeyWoodenRapier;
+	return WoodenRapier::SaveKey;
 }
 
 LocalizedString* WoodenRapier::getString()
@@ -61,5 +61,5 @@ std::string WoodenRapier::getIconResource()
 
 std::string WoodenRapier::getSerializationKey()
 {
-	return WoodenRapier::SaveKeyWoodenRapier;
+	return WoodenRapier::SaveKey;
 }

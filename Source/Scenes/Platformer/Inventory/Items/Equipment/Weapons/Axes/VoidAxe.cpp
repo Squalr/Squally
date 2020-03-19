@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidAxe::SaveKeyVoidAxe = "void-axe";
+const std::string VoidAxe::SaveKey = "void-axe";
 
 VoidAxe* VoidAxe::create()
 {
@@ -46,7 +46,7 @@ Item* VoidAxe::clone()
 
 std::string VoidAxe::getItemName()
 {
-	return VoidAxe::SaveKeyVoidAxe;
+	return VoidAxe::SaveKey;
 }
 
 LocalizedString* VoidAxe::getString()
@@ -61,7 +61,7 @@ std::string VoidAxe::getIconResource()
 
 std::string VoidAxe::getSerializationKey()
 {
-	return VoidAxe::SaveKeyVoidAxe;
+	return VoidAxe::SaveKey;
 }
 
 Size VoidAxe::getWeaponCollisionSize()

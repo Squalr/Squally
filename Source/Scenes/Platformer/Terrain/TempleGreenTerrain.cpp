@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TempleGreenTerrain::MapKeyTerrainType = "temple-green";
+const std::string TempleGreenTerrain::MapKey = "temple-green";
 
 TempleGreenTerrain* TempleGreenTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ TempleGreenTerrain::TempleGreenTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return TempleGreenTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		TempleGreenTerrain::MapKeyTerrainType,
+		TempleGreenTerrain::MapKey,
 		TextureResources::TempleGreenTexture,
 		TerrainResources::TempleGreen_Top,
 		TerrainResources::TempleGreen_TopLeft,

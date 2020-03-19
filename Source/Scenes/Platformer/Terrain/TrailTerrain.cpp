@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TrailTerrain::MapKeyTerrainType = "trail";
+const std::string TrailTerrain::MapKey = "trail";
 
 TrailTerrain* TrailTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ TrailTerrain::TrailTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return TrailTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		TrailTerrain::MapKeyTerrainType,
+		TrailTerrain::MapKey,
 		TextureResources::TrailTexture,
 		TerrainResources::Trail_Top,
 		TerrainResources::Trail_TopLeft,

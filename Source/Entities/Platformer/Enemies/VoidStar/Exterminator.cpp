@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Exterminator::MapKeyExterminator = "exterminator";
+const std::string Exterminator::MapKey = "exterminator";
 HexusOpponentData* Exterminator::HexusOpponentDataInstance = nullptr;
 const std::string Exterminator::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EXTERMINATOR";
 
@@ -31,7 +31,7 @@ Exterminator* Exterminator::deserialize(ValueMap& properties)
 }
 
 Exterminator::Exterminator(ValueMap& properties) : super(properties,
-	Exterminator::MapKeyExterminator,
+	Exterminator::MapKey,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	Size(320.0f, 278.0f),

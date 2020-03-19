@@ -11,7 +11,7 @@ class ScrappyManagerBehavior : public AttachedBehavior
 public:
 	static ScrappyManagerBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyManagerBehavior(GameObject* owner);

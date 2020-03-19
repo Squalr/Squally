@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WitchesWand::SaveKeyWitchesWand = "witches-wand";
+const std::string WitchesWand::SaveKey = "witches-wand";
 
 WitchesWand* WitchesWand::create()
 {
@@ -46,7 +46,7 @@ Item* WitchesWand::clone()
 
 std::string WitchesWand::getItemName()
 {
-	return WitchesWand::SaveKeyWitchesWand;
+	return WitchesWand::SaveKey;
 }
 
 LocalizedString* WitchesWand::getString()
@@ -61,7 +61,7 @@ std::string WitchesWand::getIconResource()
 
 std::string WitchesWand::getSerializationKey()
 {
-	return WitchesWand::SaveKeyWitchesWand;
+	return WitchesWand::SaveKey;
 }
 
 Vec2 WitchesWand::getDisplayOffset()

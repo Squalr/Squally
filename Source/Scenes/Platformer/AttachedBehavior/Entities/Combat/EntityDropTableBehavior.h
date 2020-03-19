@@ -14,7 +14,7 @@ public:
 	void setDropTable(std::string dropTable);
 	DropPool* getDropPool();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityDropTableBehavior(GameObject* owner);

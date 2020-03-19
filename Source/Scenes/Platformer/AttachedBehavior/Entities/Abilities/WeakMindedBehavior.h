@@ -10,7 +10,7 @@ class WeakMindedBehavior : public AttachedBehavior
 public:
 	static WeakMindedBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	WeakMindedBehavior(GameObject* owner);

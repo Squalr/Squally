@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneWand::SaveKeyBoneWand = "bone-wand";
+const std::string BoneWand::SaveKey = "bone-wand";
 
 BoneWand* BoneWand::create()
 {
@@ -46,7 +46,7 @@ Item* BoneWand::clone()
 
 std::string BoneWand::getItemName()
 {
-	return BoneWand::SaveKeyBoneWand;
+	return BoneWand::SaveKey;
 }
 
 LocalizedString* BoneWand::getString()
@@ -61,7 +61,7 @@ std::string BoneWand::getIconResource()
 
 std::string BoneWand::getSerializationKey()
 {
-	return BoneWand::SaveKeyBoneWand;
+	return BoneWand::SaveKey;
 }
 
 Vec2 BoneWand::getDisplayOffset()

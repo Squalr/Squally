@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string LeafTerrain::MapKeyTerrainType = "leaf";
+const std::string LeafTerrain::MapKey = "leaf";
 
 LeafTerrain* LeafTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return LeafTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		LeafTerrain::MapKeyTerrainType,
+		LeafTerrain::MapKey,
 		TextureResources::LeafTexture,
 		TerrainResources::Leaf_Top,
 		TerrainResources::Leaf_TopLeft,

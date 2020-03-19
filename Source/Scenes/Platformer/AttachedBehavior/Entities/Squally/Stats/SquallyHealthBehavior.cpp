@@ -24,7 +24,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyHealthBehavior::MapKeyAttachedBehavior = "squally-health";
+const std::string SquallyHealthBehavior::MapKey = "squally-health";
 
 SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner)
 {

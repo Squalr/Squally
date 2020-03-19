@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cryogen::MapKeyCryogen = "cryogen";
+const std::string Cryogen::MapKey = "cryogen";
 HexusOpponentData* Cryogen::HexusOpponentDataInstance = nullptr;
 const std::string Cryogen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CYROGEN";
 
@@ -31,7 +31,7 @@ Cryogen* Cryogen::deserialize(ValueMap& properties)
 }
 
 Cryogen::Cryogen(ValueMap& properties) : super(properties,
-	Cryogen::MapKeyCryogen,
+	Cryogen::MapKey,
 	EntityResources::Enemies_BalmerPeaks_Cryogen_Animations,
 	EntityResources::Enemies_BalmerPeaks_Cryogen_Emblem,
 	Size(420.0f, 420.0f),

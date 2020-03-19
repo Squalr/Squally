@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string IvyBow::SaveKeyIvyBow = "ivy-bow";
+const std::string IvyBow::SaveKey = "ivy-bow";
 
 IvyBow* IvyBow::create()
 {
@@ -46,7 +46,7 @@ Item* IvyBow::clone()
 
 std::string IvyBow::getItemName()
 {
-	return IvyBow::SaveKeyIvyBow;
+	return IvyBow::SaveKey;
 }
 
 LocalizedString* IvyBow::getString()
@@ -61,7 +61,7 @@ std::string IvyBow::getIconResource()
 
 std::string IvyBow::getSerializationKey()
 {
-	return IvyBow::SaveKeyIvyBow;
+	return IvyBow::SaveKey;
 }
 
 Vec2 IvyBow::getDisplayOffset()

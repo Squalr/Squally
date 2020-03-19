@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Scarecrow::MapKeyScarecrow = "scarecrow";
+const std::string Scarecrow::MapKey = "scarecrow";
 HexusOpponentData* Scarecrow::HexusOpponentDataInstance = nullptr;
 const std::string Scarecrow::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCARECROW";
 
@@ -31,7 +31,7 @@ Scarecrow* Scarecrow::deserialize(ValueMap& properties)
 }
 
 Scarecrow::Scarecrow(ValueMap& properties) : super(properties,
-	Scarecrow::MapKeyScarecrow,
+	Scarecrow::MapKey,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Animations,
 	EntityResources::Enemies_CastleValgrind_Scarecrow_Emblem,
 	Size(196.0f, 512.0f),

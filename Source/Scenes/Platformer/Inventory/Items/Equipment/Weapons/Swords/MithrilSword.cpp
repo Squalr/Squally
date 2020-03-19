@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MithrilSword::SaveKeyMithrilSword = "mithril-sword";
+const std::string MithrilSword::SaveKey = "mithril-sword";
 
 MithrilSword* MithrilSword::create()
 {
@@ -46,7 +46,7 @@ Item* MithrilSword::clone()
 
 std::string MithrilSword::getItemName()
 {
-	return MithrilSword::SaveKeyMithrilSword;
+	return MithrilSword::SaveKey;
 }
 
 LocalizedString* MithrilSword::getString()
@@ -61,5 +61,5 @@ std::string MithrilSword::getIconResource()
 
 std::string MithrilSword::getSerializationKey()
 {
-	return MithrilSword::SaveKeyMithrilSword;
+	return MithrilSword::SaveKey;
 }

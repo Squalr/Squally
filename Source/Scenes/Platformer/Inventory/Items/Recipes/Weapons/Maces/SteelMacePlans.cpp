@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelMacePlans::SaveKeySteelMacePlans = "steel-mace-plans";
+const std::string SteelMacePlans::SaveKey = "steel-mace-plans";
 
 SteelMacePlans* SteelMacePlans::create()
 {
@@ -51,7 +51,7 @@ Item* SteelMacePlans::clone()
 
 std::string SteelMacePlans::getItemName()
 {
-	return SteelMacePlans::SaveKeySteelMacePlans;
+	return SteelMacePlans::SaveKey;
 }
 
 LocalizedString* SteelMacePlans::getString()
@@ -71,5 +71,5 @@ std::string SteelMacePlans::getCraftedItemIconResource()
 
 std::string SteelMacePlans::getSerializationKey()
 {
-	return SteelMacePlans::SaveKeySteelMacePlans;
+	return SteelMacePlans::SaveKey;
 }

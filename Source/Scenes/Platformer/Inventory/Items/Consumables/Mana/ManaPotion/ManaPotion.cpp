@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string ManaPotion::SaveKeyManaPotion = "mana-potion";
+const std::string ManaPotion::SaveKey = "mana-potion";
 const float ManaPotion::RestorePercentage = 0.4f;
 
 ManaPotion* ManaPotion::create()
@@ -38,7 +38,7 @@ Item* ManaPotion::clone()
 
 std::string ManaPotion::getItemName()
 {
-	return ManaPotion::SaveKeyManaPotion;
+	return ManaPotion::SaveKey;
 }
 
 LocalizedString* ManaPotion::getString()
@@ -53,7 +53,7 @@ std::string ManaPotion::getIconResource()
 
 std::string ManaPotion::getSerializationKey()
 {
-	return ManaPotion::SaveKeyManaPotion;
+	return ManaPotion::SaveKey;
 }
 
 PlatformerAttack* ManaPotion::createAssociatedAttack()

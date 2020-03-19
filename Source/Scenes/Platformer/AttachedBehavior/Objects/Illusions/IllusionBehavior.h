@@ -9,7 +9,7 @@ class IllusionBehavior : public AttachedBehavior
 public:
 	static IllusionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	IllusionBehavior(GameObject* owner);
@@ -25,5 +25,5 @@ private:
 	GameObject* object;
 	std::string group;
 
-	static const std::string MapPropertyGroup;
+	static const std::string PropertyGroup;
 };

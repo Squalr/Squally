@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialShl::SaveKeySpecialShl = "special-shl";
+const std::string SpecialShl::SaveKey = "special-shl";
 
 SpecialShl* SpecialShl::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialShl::clone()
 
 std::string SpecialShl::getItemName()
 {
-	return SpecialShl::SaveKeySpecialShl;
+	return SpecialShl::SaveKey;
 }
 
 LocalizedString* SpecialShl::getString()
@@ -51,7 +51,7 @@ std::string SpecialShl::getIconResource()
 
 std::string SpecialShl::getSerializationKey()
 {
-	return SpecialShl::SaveKeySpecialShl;
+	return SpecialShl::SaveKey;
 }
 
 std::string SpecialShl::getCardKey()

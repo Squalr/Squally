@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidPortal::MapKeyVoidPortal = "void-portal";
+const std::string VoidPortal::MapKey = "void-portal";
 
 VoidPortal* VoidPortal::create(ValueMap& properties)
 {

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string NecrobatHelm::SaveKeyNecrobatHelm = "necrobat-helm";
+const std::string NecrobatHelm::SaveKey = "necrobat-helm";
 
 NecrobatHelm* NecrobatHelm::create()
 {
@@ -46,7 +46,7 @@ Item* NecrobatHelm::clone()
 
 std::string NecrobatHelm::getItemName()
 {
-	return NecrobatHelm::SaveKeyNecrobatHelm;
+	return NecrobatHelm::SaveKey;
 }
 
 LocalizedString* NecrobatHelm::getString()
@@ -61,7 +61,7 @@ std::string NecrobatHelm::getIconResource()
 
 std::string NecrobatHelm::getSerializationKey()
 {
-	return NecrobatHelm::SaveKeyNecrobatHelm;
+	return NecrobatHelm::SaveKey;
 }
 
 Vec2 NecrobatHelm::getDisplayOffset()

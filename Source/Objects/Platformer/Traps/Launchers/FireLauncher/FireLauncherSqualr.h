@@ -17,7 +17,7 @@ class FireLauncherSqualr : public PivotLauncher
 public:
 	static FireLauncherSqualr* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyFireLauncherSqualr;
+	static const std::string MapKey;
 
 protected:
 	FireLauncherSqualr(cocos2d::ValueMap& properties);

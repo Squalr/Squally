@@ -7,7 +7,7 @@ class ShipTerrain : public TerrainObject
 public:
 	static ShipTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
 
 protected:
 	ShipTerrain(cocos2d::ValueMap& properties);

@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyStaticHelpBehavior::MapKeyAttachedBehavior = "squally-static-help";
+const std::string SquallyStaticHelpBehavior::MapKey = "squally-static-help";
 
 float* SquallyStaticHelpBehavior::PositionXPtr = nullptr;
 float* SquallyStaticHelpBehavior::PositionYPtr = nullptr;

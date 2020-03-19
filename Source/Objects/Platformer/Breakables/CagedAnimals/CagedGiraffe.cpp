@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedGiraffe::MapKeyCagedGiraffe = "caged-giraffe";
+const std::string CagedGiraffe::MapKey = "caged-giraffe";
 
 CagedGiraffe* CagedGiraffe::create(ValueMap& properties)
 {

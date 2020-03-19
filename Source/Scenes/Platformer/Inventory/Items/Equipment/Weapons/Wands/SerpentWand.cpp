@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SerpentWand::SaveKeySerpentWand = "serpent-wand";
+const std::string SerpentWand::SaveKey = "serpent-wand";
 
 SerpentWand* SerpentWand::create()
 {
@@ -46,7 +46,7 @@ Item* SerpentWand::clone()
 
 std::string SerpentWand::getItemName()
 {
-	return SerpentWand::SaveKeySerpentWand;
+	return SerpentWand::SaveKey;
 }
 
 LocalizedString* SerpentWand::getString()
@@ -61,7 +61,7 @@ std::string SerpentWand::getIconResource()
 
 std::string SerpentWand::getSerializationKey()
 {
-	return SerpentWand::SaveKeySerpentWand;
+	return SerpentWand::SaveKey;
 }
 
 Vec2 SerpentWand::getDisplayOffset()

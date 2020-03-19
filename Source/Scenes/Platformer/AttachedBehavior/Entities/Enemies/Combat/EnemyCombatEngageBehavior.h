@@ -10,7 +10,7 @@ class EnemyCombatEngageBehavior : public AttachedBehavior
 public:
 	static EnemyCombatEngageBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EnemyCombatEngageBehavior(GameObject* owner);

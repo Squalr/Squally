@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string MummyWarrior::MapKeyMummyWarrior = "mummy-warrior";
+const std::string MummyWarrior::MapKey = "mummy-warrior";
 HexusOpponentData* MummyWarrior::HexusOpponentDataInstance = nullptr;
 const std::string MummyWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MUMMY_WARRIOR";
 
@@ -31,7 +31,7 @@ MummyWarrior* MummyWarrior::deserialize(ValueMap& properties)
 }
 
 MummyWarrior::MummyWarrior(ValueMap& properties) : super(properties,
-	MummyWarrior::MapKeyMummyWarrior,
+	MummyWarrior::MapKey,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Animations,
 	EntityResources::Enemies_UnderflowRuins_MummyWarrior_Emblem,
 	Size(128.0f, 256.0f),

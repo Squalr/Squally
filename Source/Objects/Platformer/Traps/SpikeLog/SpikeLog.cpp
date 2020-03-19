@@ -25,7 +25,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string SpikeLog::MapKeySpikeLog = "spiked-log";
+const std::string SpikeLog::MapKey = "spiked-log";
 
 SpikeLog* SpikeLog::create(ValueMap& properties)
 {
@@ -87,7 +87,7 @@ void SpikeLog::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				SpikeLog::MapKeySpikeLog,
+				SpikeLog::MapKey,
 				Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				SpikeLogSetRotationPreview::create(),

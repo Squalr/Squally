@@ -63,9 +63,9 @@ const std::vector<std::string> GameObject::AttributeKeys =
 	GameObject::MapKeyRotation,
 };
 
-const std::string GameObject::MapKeyPropertyName = "name";
-const std::string GameObject::MapKeyPropertyType = "type";
-const std::string GameObject::MapKeyPropertyValue = "value";
+const std::string GameObject::PropertyName = "name";
+const std::string GameObject::PropertyType = "type";
+const std::string GameObject::PropertyValue = "value";
 unsigned long long GameObject::WatchId = 0;
 
 GameObject::GameObject() : GameObject(ValueMap())

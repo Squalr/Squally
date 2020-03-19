@@ -16,7 +16,7 @@ class IncrementHealthFlaskTutorialBehavior : public AttachedBehavior
 public:
 	static IncrementHealthFlaskTutorialBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	IncrementHealthFlaskTutorialBehavior(GameObject* owner);

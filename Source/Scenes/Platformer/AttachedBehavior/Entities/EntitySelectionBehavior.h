@@ -14,7 +14,7 @@ public:
 	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
 	void clearEntityClickCallbacks();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntitySelectionBehavior(GameObject* owner);

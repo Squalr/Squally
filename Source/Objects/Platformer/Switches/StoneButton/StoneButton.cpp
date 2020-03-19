@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string StoneButton::MapKeyStoneButton = "stone-button";
+const std::string StoneButton::MapKey = "stone-button";
 const float StoneButton::ButtonPressureSpeed = 32.0f;
 const float StoneButton::ButtonPressureOffsetMin = 8.0f;
 

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string QueenLiana::MapKeyQueenLiana = "queen-liana";
+const std::string QueenLiana::MapKey = "queen-liana";
 HexusOpponentData* QueenLiana::HexusOpponentDataInstance = nullptr;
 const std::string QueenLiana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_QUEEN_LIANA";
 
@@ -31,7 +31,7 @@ QueenLiana* QueenLiana::deserialize(ValueMap& properties)
 }
 
 QueenLiana::QueenLiana(ValueMap& properties) : super(properties,
-	QueenLiana::MapKeyQueenLiana,
+	QueenLiana::MapKey,
 	EntityResources::Npcs_EndianForest_QueenLiana_Animations,
 	EntityResources::Npcs_EndianForest_QueenLiana_Emblem,
 	Size(112.0f, 160.0f),

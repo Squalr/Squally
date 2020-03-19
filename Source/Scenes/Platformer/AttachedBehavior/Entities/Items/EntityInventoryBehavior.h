@@ -17,7 +17,7 @@ public:
 	EquipmentInventory* getEquipmentInventory();
 	CurrencyInventory* getCurrencyInventory();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityInventoryBehavior(GameObject* owner);

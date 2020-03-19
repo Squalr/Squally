@@ -16,5 +16,5 @@ protected:
 private:
 	typedef PropertyDeserializer super;
 
-	static const std::string MapPropertyRubberBand;
+	static const std::string PropertyRubberBand;
 };

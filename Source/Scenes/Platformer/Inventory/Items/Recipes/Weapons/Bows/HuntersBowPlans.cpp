@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string HuntersBowPlans::SaveKeyHuntersBowPlans = "hunters-bow-plans";
+const std::string HuntersBowPlans::SaveKey = "hunters-bow-plans";
 
 HuntersBowPlans* HuntersBowPlans::create()
 {
@@ -50,7 +50,7 @@ Item* HuntersBowPlans::clone()
 
 std::string HuntersBowPlans::getItemName()
 {
-	return HuntersBowPlans::SaveKeyHuntersBowPlans;
+	return HuntersBowPlans::SaveKey;
 }
 
 LocalizedString* HuntersBowPlans::getString()
@@ -70,5 +70,5 @@ std::string HuntersBowPlans::getCraftedItemIconResource()
 
 std::string HuntersBowPlans::getSerializationKey()
 {
-	return HuntersBowPlans::SaveKeyHuntersBowPlans;
+	return HuntersBowPlans::SaveKey;
 }

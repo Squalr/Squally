@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ghost::MapKeyGhost = "ghost";
+const std::string Ghost::MapKey = "ghost";
 HexusOpponentData* Ghost::HexusOpponentDataInstance = nullptr;
 const std::string Ghost::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GHOST";
 
@@ -31,7 +31,7 @@ Ghost* Ghost::deserialize(ValueMap& properties)
 }
 
 Ghost::Ghost(ValueMap& properties) : super(properties,
-	Ghost::MapKeyGhost,
+	Ghost::MapKey,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
 	Size(224.0f, 440.0f),

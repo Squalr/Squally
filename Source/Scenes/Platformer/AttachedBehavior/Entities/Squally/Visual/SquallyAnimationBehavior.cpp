@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyAnimationBehavior::MapKeyAttachedBehavior = "squally-animations";
+const std::string SquallyAnimationBehavior::MapKey = "squally-animations";
 
 SquallyAnimationBehavior* SquallyAnimationBehavior::create(GameObject* owner)
 {

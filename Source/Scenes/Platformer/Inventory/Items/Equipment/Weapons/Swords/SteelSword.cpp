@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelSword::SaveKeySteelSword = "steel-sword";
+const std::string SteelSword::SaveKey = "steel-sword";
 
 SteelSword* SteelSword::create()
 {
@@ -46,7 +46,7 @@ Item* SteelSword::clone()
 
 std::string SteelSword::getItemName()
 {
-	return SteelSword::SaveKeySteelSword;
+	return SteelSword::SaveKey;
 }
 
 LocalizedString* SteelSword::getString()
@@ -61,5 +61,5 @@ std::string SteelSword::getIconResource()
 
 std::string SteelSword::getSerializationKey()
 {
-	return SteelSword::SaveKeySteelSword;
+	return SteelSword::SaveKey;
 }

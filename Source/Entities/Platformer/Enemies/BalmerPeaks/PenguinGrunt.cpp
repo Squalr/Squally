@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string PenguinGrunt::MapKeyPenguinGrunt = "penguin-grunt";
+const std::string PenguinGrunt::MapKey = "penguin-grunt";
 HexusOpponentData* PenguinGrunt::HexusOpponentDataInstance = nullptr;
 const std::string PenguinGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PENGUIN_GRUNT";
 
@@ -31,7 +31,7 @@ PenguinGrunt* PenguinGrunt::deserialize(ValueMap& properties)
 }
 
 PenguinGrunt::PenguinGrunt(ValueMap& properties) : super(properties,
-	PenguinGrunt::MapKeyPenguinGrunt,
+	PenguinGrunt::MapKey,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Animations,
 	EntityResources::Enemies_BalmerPeaks_PenguinGrunt_Emblem,
 	Size(212.0f, 296.0f),

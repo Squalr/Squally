@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string PrincessMittens::MapKeyPrincessMittens = "princess-mittens";
+const std::string PrincessMittens::MapKey = "princess-mittens";
 HexusOpponentData* PrincessMittens::HexusOpponentDataInstance = nullptr;
 const std::string PrincessMittens::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_MITTENS";
 
@@ -31,7 +31,7 @@ PrincessMittens* PrincessMittens::deserialize(ValueMap& properties)
 }
 
 PrincessMittens::PrincessMittens(ValueMap& properties) : super(properties,
-	PrincessMittens::MapKeyPrincessMittens,
+	PrincessMittens::MapKey,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Animations,
 	EntityResources::Npcs_DaemonsHallow_PrincessMittens_Emblem,
 	Size(112.0f, 160.0f),

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ShamanTiara::SaveKeyShamanTiara = "shaman-tiara";
+const std::string ShamanTiara::SaveKey = "shaman-tiara";
 
 ShamanTiara* ShamanTiara::create()
 {
@@ -46,7 +46,7 @@ Item* ShamanTiara::clone()
 
 std::string ShamanTiara::getItemName()
 {
-	return ShamanTiara::SaveKeyShamanTiara;
+	return ShamanTiara::SaveKey;
 }
 
 LocalizedString* ShamanTiara::getString()
@@ -61,7 +61,7 @@ std::string ShamanTiara::getIconResource()
 
 std::string ShamanTiara::getSerializationKey()
 {
-	return ShamanTiara::SaveKeyShamanTiara;
+	return ShamanTiara::SaveKey;
 }
 
 Vec2 ShamanTiara::getDisplayOffset()

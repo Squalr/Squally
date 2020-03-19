@@ -14,7 +14,7 @@ public:
 	
 	CollisionObject* headCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityHeadCollisionBehavior(GameObject* owner);

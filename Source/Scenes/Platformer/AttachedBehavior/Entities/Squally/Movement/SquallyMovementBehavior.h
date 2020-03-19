@@ -11,7 +11,7 @@ public:
 
 	void disablePositionSaving();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 	static const float SquallyMovementAcceleration;
 
 protected:

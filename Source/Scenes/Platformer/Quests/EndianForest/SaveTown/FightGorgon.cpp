@@ -88,7 +88,7 @@ void FightGorgon::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
-	}, Sarude::MapKeySarude);
+	}, Sarude::MapKey);
 
 	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 	{
@@ -98,7 +98,7 @@ void FightGorgon::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<GameObject>(this, [=](GameObject* forceField)
 	{
@@ -149,14 +149,14 @@ void FightGorgon::onLoad(QuestState questState)
 			}
 		}
 
-	}, Gorgon::MapKeyGorgon);
+	}, Gorgon::MapKey);
 
 	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
 	{
 		this->ram = ram;
 		this->ram->setVisible(questState == QuestState::Active);
 		this->ram->getAnimations()->playAnimation("Broken", SmartAnimationNode::AnimationPlayMode::Repeat);
-	}, Ram::MapKeyRam);
+	}, Ram::MapKey);
 
 	if (questState == QuestState::Active)
 	{
@@ -256,7 +256,7 @@ void FightGorgon::runMageAnims()
 		{
 			igneus->attachBehavior(MageCastBehavior::create(igneus));
 		});
-	}, Igneus::MapKeyIgneus);
+	}, Igneus::MapKey);
 
 	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
 	{
@@ -264,7 +264,7 @@ void FightGorgon::runMageAnims()
 		{
 			alder->attachBehavior(MageCastBehavior::create(alder));
 		});
-	}, Alder::MapKeyAlder);
+	}, Alder::MapKey);
 
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
@@ -272,7 +272,7 @@ void FightGorgon::runMageAnims()
 		{
 			sarude->attachBehavior(MageCastBehavior::create(sarude));
 		});
-	}, Sarude::MapKeySarude);
+	}, Sarude::MapKey);
 
 	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
 	{
@@ -280,7 +280,7 @@ void FightGorgon::runMageAnims()
 		{
 			aster->attachBehavior(MageCastBehavior::create(aster));
 		});
-	}, Aster::MapKeyAster);
+	}, Aster::MapKey);
 
 	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
 	{
@@ -288,7 +288,7 @@ void FightGorgon::runMageAnims()
 		{
 			merlin->attachBehavior(MageCastBehavior::create(merlin));
 		});
-	}, Merlin::MapKeyMerlin);
+	}, Merlin::MapKey);
 }
 
 void FightGorgon::positionImpactFx()

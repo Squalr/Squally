@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Jack::MapKeyJack = "jack";
+const std::string Jack::MapKey = "jack";
 HexusOpponentData* Jack::HexusOpponentDataInstance = nullptr;
 const std::string Jack::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JACK";
 
@@ -31,7 +31,7 @@ Jack* Jack::deserialize(ValueMap& properties)
 }
 
 Jack::Jack(ValueMap& properties) : super(properties,
-	Jack::MapKeyJack,
+	Jack::MapKey,
 	EntityResources::Enemies_CastleValgrind_Jack_Animations,
 	EntityResources::Enemies_CastleValgrind_Jack_Emblem,
 	Size(432.0f, 768.0f),

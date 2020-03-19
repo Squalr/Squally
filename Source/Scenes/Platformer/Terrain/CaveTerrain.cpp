@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CaveTerrain::MapKeyTerrainType = "cave";
+const std::string CaveTerrain::MapKey = "cave";
 
 CaveTerrain* CaveTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return CaveTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		CaveTerrain::MapKeyTerrainType,
+		CaveTerrain::MapKey,
 		TextureResources::CaveTexture,
 		TerrainResources::Cave_Top,
 		TerrainResources::Cave_TopLeft,

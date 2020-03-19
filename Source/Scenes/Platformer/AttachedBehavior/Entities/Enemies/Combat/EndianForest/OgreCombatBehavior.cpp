@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string OgreCombatBehavior::MapKeyAttachedBehavior = "ogre-combat";
+const std::string OgreCombatBehavior::MapKey = "ogre-combat";
 
 OgreCombatBehavior* OgreCombatBehavior::create(GameObject* owner)
 {

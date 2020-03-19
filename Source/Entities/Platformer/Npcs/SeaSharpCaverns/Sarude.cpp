@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Sarude::MapKeySarude = "sarude";
+const std::string Sarude::MapKey = "sarude";
 HexusOpponentData* Sarude::HexusOpponentDataInstance = nullptr;
 const std::string Sarude::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SARUDE";
 
@@ -31,7 +31,7 @@ Sarude* Sarude::deserialize(ValueMap& properties)
 }
 
 Sarude::Sarude(ValueMap& properties) : super(properties,
-	Sarude::MapKeySarude,
+	Sarude::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Sarude_Emblem,
 	Size(112.0f, 160.0f),

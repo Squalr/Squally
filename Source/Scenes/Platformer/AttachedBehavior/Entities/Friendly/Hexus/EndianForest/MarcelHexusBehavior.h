@@ -12,7 +12,7 @@ class MarcelHexusBehavior : public HexusBehaviorBase
 public:
 	static MarcelHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	MarcelHexusBehavior(GameObject* owner);

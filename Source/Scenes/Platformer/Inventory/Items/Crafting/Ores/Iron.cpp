@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Iron::SaveKeyIron = "iron";
+const std::string Iron::SaveKey = "iron";
 
 Iron* Iron::create()
 {
@@ -35,7 +35,7 @@ Item* Iron::clone()
 
 std::string Iron::getItemName()
 {
-	return Iron::SaveKeyIron;
+	return Iron::SaveKey;
 }
 
 LocalizedString* Iron::getString()
@@ -50,5 +50,5 @@ std::string Iron::getIconResource()
 
 std::string Iron::getSerializationKey()
 {
-	return Iron::SaveKeyIron;
+	return Iron::SaveKey;
 }

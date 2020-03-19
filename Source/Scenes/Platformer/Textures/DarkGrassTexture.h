@@ -7,11 +7,12 @@ class DarkGrassTexture : public TextureObject
 public:
 	static DarkGrassTexture* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTextureType;
+	static const std::string MapKey;
+
+protected:
+	DarkGrassTexture(cocos2d::ValueMap& properties);
+	virtual ~DarkGrassTexture();
 
 private:
 	typedef TextureObject super;
-
-	DarkGrassTexture(cocos2d::ValueMap& properties);
-	~DarkGrassTexture();
 };

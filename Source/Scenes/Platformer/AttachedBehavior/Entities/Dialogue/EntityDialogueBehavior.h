@@ -26,7 +26,7 @@ public:
 	DialogueSet* getMainDialogueSet();
 	SpeechBubble* getSpeechBubble();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityDialogueBehavior(GameObject* owner);

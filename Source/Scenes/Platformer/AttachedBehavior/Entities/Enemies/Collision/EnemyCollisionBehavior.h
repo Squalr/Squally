@@ -12,7 +12,7 @@ public:
 
 	CollisionObject* entityCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EnemyCollisionBehavior(GameObject* owner);

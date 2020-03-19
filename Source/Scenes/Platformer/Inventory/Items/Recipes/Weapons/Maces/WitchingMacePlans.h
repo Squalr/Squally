@@ -15,7 +15,7 @@ public:
 	std::string getCraftedItemIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyWitchingMacePlans;
+	static const std::string SaveKey;
 
 protected:
 	WitchingMacePlans();

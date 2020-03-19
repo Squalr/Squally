@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDeveloperBehavior::MapKeyAttachedBehavior = "entity-debug";
+const std::string EntityDeveloperBehavior::MapKey = "entity-debug";
 
 EntityDeveloperBehavior* EntityDeveloperBehavior::create(GameObject* owner)
 {

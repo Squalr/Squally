@@ -16,7 +16,7 @@ public:
 
 	cocos2d::Node* getTarget();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityProjectileTargetBehavior(GameObject* owner);

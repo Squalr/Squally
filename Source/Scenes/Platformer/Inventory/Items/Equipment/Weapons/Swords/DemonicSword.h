@@ -13,7 +13,7 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyDemonicSword;
+	static const std::string SaveKey;
 
 protected:
 	DemonicSword();

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodTerrain::MapKeyTerrainType = "wood";
+const std::string WoodTerrain::MapKey = "wood";
 
 WoodTerrain* WoodTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return WoodTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		WoodTerrain::MapKeyTerrainType,
+		WoodTerrain::MapKey,
 		TextureResources::WoodTexture,
 		TerrainResources::Wood_Top,
 		TerrainResources::Wood_TopLeft,

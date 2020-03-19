@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Troll::MapKeyTroll = "troll";
+const std::string Troll::MapKey = "troll";
 
 Troll* Troll::deserialize(ValueMap& properties)
 {
@@ -22,7 +22,7 @@ Troll* Troll::deserialize(ValueMap& properties)
 }
 
 Troll::Troll(ValueMap& properties) : super(properties,
-	Troll::MapKeyTroll,
+	Troll::MapKey,
 	EntityResources::Enemies_EndianForest_Troll_Animations,
 	EntityResources::Enemies_EndianForest_Troll_Emblem,
 	Size(256.0f, 248.0f),

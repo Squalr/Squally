@@ -13,7 +13,7 @@ class Wind : public HackableObject
 public:
 	static Wind* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWind;
+	static const std::string MapKey;
 
 protected:
 	Wind(cocos2d::ValueMap& properties);
@@ -47,7 +47,7 @@ private:
 	bool isUniform;
 
 	static const float BaseWindSpeed;
-	static const std::string MapPropertyUniform;
-	static const std::string MapPropertySpeedX;
-	static const std::string MapPropertySpeedY;
+	static const std::string PropertyUniform;
+	static const std::string PropertySpeedX;
+	static const std::string PropertySpeedY;
 };

@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string TobenHexusBehavior::MapKeyAttachedBehavior = "toben-hexus";
+const std::string TobenHexusBehavior::MapKey = "toben-hexus";
 
 TobenHexusBehavior* TobenHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* TobenHexusBehavior::generateReward()
 
 std::string TobenHexusBehavior::getWinLossSaveKey()
 {
-	return TobenHexusBehavior::MapKeyAttachedBehavior;
+	return TobenHexusBehavior::MapKey;
 }
 
 std::string TobenHexusBehavior::getBackgroundResource()

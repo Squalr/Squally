@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EntitySelectionOverlayBehavior::MapKeyAttachedBehavior = "combat-selection-overlays";
+const std::string EntitySelectionOverlayBehavior::MapKey = "combat-selection-overlays";
 
 EntitySelectionOverlayBehavior* EntitySelectionOverlayBehavior::create(GameObject* owner)
 {

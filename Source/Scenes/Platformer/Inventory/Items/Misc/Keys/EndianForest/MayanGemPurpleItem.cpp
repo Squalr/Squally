@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MayanGemPurpleItem::SaveKeyMayanGemPurpleItem = "mayan-gem-purple";
+const std::string MayanGemPurpleItem::SaveKey = "mayan-gem-purple";
 
 MayanGemPurpleItem* MayanGemPurpleItem::create()
 {
@@ -35,7 +35,7 @@ Item* MayanGemPurpleItem::clone()
 
 std::string MayanGemPurpleItem::getItemName()
 {
-	return MayanGemPurpleItem::SaveKeyMayanGemPurpleItem;
+	return MayanGemPurpleItem::SaveKey;
 }
 
 LocalizedString* MayanGemPurpleItem::getString()
@@ -50,6 +50,6 @@ std::string MayanGemPurpleItem::getIconResource()
 
 std::string MayanGemPurpleItem::getSerializationKey()
 {
-	return MayanGemPurpleItem::SaveKeyMayanGemPurpleItem;
+	return MayanGemPurpleItem::SaveKey;
 }
 

@@ -12,7 +12,7 @@ class GatePuzzleDoor : public PuzzleDoorBase
 public:
 protected:
 	GatePuzzleDoor(cocos2d::ValueMap& properties);
-	~GatePuzzleDoor();
+	virtual ~GatePuzzleDoor();
 
 	void onEnter() override;
 	void initializePositions() override;

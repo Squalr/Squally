@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Gold::SaveKeyGold = "gold";
+const std::string Gold::SaveKey = "gold";
 
 Gold* Gold::create()
 {
@@ -35,7 +35,7 @@ Item* Gold::clone()
 
 std::string Gold::getItemName()
 {
-	return Gold::SaveKeyGold;
+	return Gold::SaveKey;
 }
 
 LocalizedString* Gold::getString()
@@ -50,5 +50,5 @@ std::string Gold::getIconResource()
 
 std::string Gold::getSerializationKey()
 {
-	return Gold::SaveKeyGold;
+	return Gold::SaveKey;
 }

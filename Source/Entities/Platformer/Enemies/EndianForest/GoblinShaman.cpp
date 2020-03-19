@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string GoblinShaman::MapKeyGoblinShaman = "goblin-shaman";
+const std::string GoblinShaman::MapKey = "goblin-shaman";
 
 GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ GoblinShaman* GoblinShaman::deserialize(ValueMap& properties)
 }
 
 GoblinShaman::GoblinShaman(ValueMap& properties) : super(properties,
-	GoblinShaman::MapKeyGoblinShaman,
+	GoblinShaman::MapKey,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Animations,
 	EntityResources::Enemies_EndianForest_GoblinShaman_Emblem,
 	Size(96.0f, 204.0f),

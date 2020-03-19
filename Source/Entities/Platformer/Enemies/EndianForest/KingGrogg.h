@@ -13,10 +13,12 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyKingGrogg;
+	static const std::string MapKey;
+	
+protected:
+	KingGrogg(cocos2d::ValueMap& properties);
+	virtual ~KingGrogg();
 
 private:
 	typedef PlatformerEnemy super;
-	KingGrogg(cocos2d::ValueMap& properties);
-	~KingGrogg();
 };

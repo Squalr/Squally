@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityBuffBehavior::MapKeyAttachedBehavior = "entity-buff";
+const std::string EntityBuffBehavior::MapKey = "entity-buff";
 
 EntityBuffBehavior* EntityBuffBehavior::create(GameObject* owner)
 {

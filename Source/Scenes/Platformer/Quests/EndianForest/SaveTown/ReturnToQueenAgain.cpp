@@ -52,22 +52,22 @@ void ReturnToQueenAgain::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
-	}, Guano::MapKeyGuano);
+	}, Guano::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
-	}, QueenLiana::MapKeyQueenLiana);
+	}, QueenLiana::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)

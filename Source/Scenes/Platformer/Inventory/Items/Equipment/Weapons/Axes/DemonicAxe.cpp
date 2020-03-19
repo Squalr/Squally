@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicAxe::SaveKeyDemonicAxe = "demonic-axe";
+const std::string DemonicAxe::SaveKey = "demonic-axe";
 
 DemonicAxe* DemonicAxe::create()
 {
@@ -46,7 +46,7 @@ Item* DemonicAxe::clone()
 
 std::string DemonicAxe::getItemName()
 {
-	return DemonicAxe::SaveKeyDemonicAxe;
+	return DemonicAxe::SaveKey;
 }
 
 LocalizedString* DemonicAxe::getString()
@@ -61,7 +61,7 @@ std::string DemonicAxe::getIconResource()
 
 std::string DemonicAxe::getSerializationKey()
 {
-	return DemonicAxe::SaveKeyDemonicAxe;
+	return DemonicAxe::SaveKey;
 }
 
 Size DemonicAxe::getWeaponCollisionSize()

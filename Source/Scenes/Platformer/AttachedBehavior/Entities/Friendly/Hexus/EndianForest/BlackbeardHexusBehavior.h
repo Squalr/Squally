@@ -12,7 +12,7 @@ class BlackbeardHexusBehavior : public HexusBehaviorBase
 public:
 	static BlackbeardHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	BlackbeardHexusBehavior(GameObject* owner);

@@ -7,7 +7,7 @@ class SnowmanBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static SnowmanBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SnowmanBehaviorGroup(GameObject* owner);

@@ -21,7 +21,7 @@
 
 using namespace cocos2d;
 
-const std::string Anvil::MapKeyAnvil = "anvil";
+const std::string Anvil::MapKey = "anvil";
 
 Anvil* Anvil::create(ValueMap& properties)
 {

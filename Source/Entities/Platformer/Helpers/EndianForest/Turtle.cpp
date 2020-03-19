@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Turtle::MapKeyTurtle = "turtle";
+const std::string Turtle::MapKey = "turtle";
 HexusOpponentData* Turtle::HexusOpponentDataInstance = nullptr;
 const std::string Turtle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TURTLE";
 
@@ -31,7 +31,7 @@ Turtle* Turtle::deserialize(ValueMap& properties)
 }
 
 Turtle::Turtle(ValueMap& properties) : super(properties,
-	Turtle::MapKeyTurtle,
+	Turtle::MapKey,
 	EntityResources::Helpers_EndianForest_Turtle_Animations,
 	EntityResources::Helpers_EndianForest_Turtle_Emblem,
 	Size(224.0f, 440.0f),

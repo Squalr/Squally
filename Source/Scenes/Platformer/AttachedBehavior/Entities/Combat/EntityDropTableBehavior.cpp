@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDropTableBehavior::MapKeyAttachedBehavior = "drop-table";
+const std::string EntityDropTableBehavior::MapKey = "drop-table";
 
 EntityDropTableBehavior* EntityDropTableBehavior::create(GameObject* owner)
 {

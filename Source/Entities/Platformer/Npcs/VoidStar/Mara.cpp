@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Mara::MapKeyMara = "mara";
+const std::string Mara::MapKey = "mara";
 HexusOpponentData* Mara::HexusOpponentDataInstance = nullptr;
 const std::string Mara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MARA";
 
@@ -31,7 +31,7 @@ Mara* Mara::deserialize(ValueMap& properties)
 }
 
 Mara::Mara(ValueMap& properties) : super(properties,
-	Mara::MapKeyMara,
+	Mara::MapKey,
 	EntityResources::Npcs_VoidStar_Mara_Animations,
 	EntityResources::Npcs_VoidStar_Mara_Emblem,
 	Size(112.0f, 160.0f),

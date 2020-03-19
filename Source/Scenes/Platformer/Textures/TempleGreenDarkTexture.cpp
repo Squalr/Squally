@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string TempleGreenDarkTexture::MapKeyTextureType = "temple-green-dark";
+const std::string TempleGreenDarkTexture::MapKey = "temple-green-dark";
 
 TempleGreenDarkTexture* TempleGreenDarkTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ TempleGreenDarkTexture* TempleGreenDarkTexture::create(ValueMap& properties)
 TempleGreenDarkTexture::TempleGreenDarkTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		TempleGreenDarkTexture::MapKeyTextureType,
+		TempleGreenDarkTexture::MapKey,
 		TextureResources::TempleGreenDarkTexture,
 		Color4B(11, 30, 39, 255)))
 {

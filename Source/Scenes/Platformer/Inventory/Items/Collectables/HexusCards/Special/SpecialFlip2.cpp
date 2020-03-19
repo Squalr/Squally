@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialFlip2::SaveKeySpecialFlip2 = "special-flip2";
+const std::string SpecialFlip2::SaveKey = "special-flip2";
 
 SpecialFlip2* SpecialFlip2::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialFlip2::clone()
 
 std::string SpecialFlip2::getItemName()
 {
-	return SpecialFlip2::SaveKeySpecialFlip2;
+	return SpecialFlip2::SaveKey;
 }
 
 LocalizedString* SpecialFlip2::getString()
@@ -51,7 +51,7 @@ std::string SpecialFlip2::getIconResource()
 
 std::string SpecialFlip2::getSerializationKey()
 {
-	return SpecialFlip2::SaveKeySpecialFlip2;
+	return SpecialFlip2::SaveKey;
 }
 
 std::string SpecialFlip2::getCardKey()

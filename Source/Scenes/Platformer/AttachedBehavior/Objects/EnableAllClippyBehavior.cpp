@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EnableAllClippyBehavior::MapKeyAttachedBehavior = "enable-all-clippy";
+const std::string EnableAllClippyBehavior::MapKey = "enable-all-clippy";
 
 EnableAllClippyBehavior* EnableAllClippyBehavior::create(GameObject* owner)
 {

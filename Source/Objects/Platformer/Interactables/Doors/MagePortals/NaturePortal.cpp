@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string NaturePortal::MapKeyNaturePortal = "nature-portal";
+const std::string NaturePortal::MapKey = "nature-portal";
 
 NaturePortal* NaturePortal::create(ValueMap& properties)
 {

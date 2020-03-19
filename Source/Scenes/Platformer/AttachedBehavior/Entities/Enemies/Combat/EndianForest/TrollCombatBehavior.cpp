@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string TrollCombatBehavior::MapKeyAttachedBehavior = "troll-combat";
+const std::string TrollCombatBehavior::MapKey = "troll-combat";
 
 TrollCombatBehavior* TrollCombatBehavior::create(GameObject* owner)
 {

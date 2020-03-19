@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string GreaterHealthPotion::SaveKeyGreaterHealthPotion = "greater-health-potion";
+const std::string GreaterHealthPotion::SaveKey = "greater-health-potion";
 const float GreaterHealthPotion::HealPercentage = 0.4f;
 
 GreaterHealthPotion* GreaterHealthPotion::create()
@@ -38,7 +38,7 @@ Item* GreaterHealthPotion::clone()
 
 std::string GreaterHealthPotion::getItemName()
 {
-	return GreaterHealthPotion::SaveKeyGreaterHealthPotion;
+	return GreaterHealthPotion::SaveKey;
 }
 
 LocalizedString* GreaterHealthPotion::getString()
@@ -53,7 +53,7 @@ std::string GreaterHealthPotion::getIconResource()
 
 std::string GreaterHealthPotion::getSerializationKey()
 {
-	return GreaterHealthPotion::SaveKeyGreaterHealthPotion;
+	return GreaterHealthPotion::SaveKey;
 }
 
 PlatformerAttack* GreaterHealthPotion::createAssociatedAttack()

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Binary10::SaveKeyBinary10 = "binary-10";
+const std::string Binary10::SaveKey = "binary-10";
 
 Binary10* Binary10::create()
 {
@@ -36,7 +36,7 @@ Item* Binary10::clone()
 
 std::string Binary10::getItemName()
 {
-	return Binary10::SaveKeyBinary10;
+	return Binary10::SaveKey;
 }
 
 LocalizedString* Binary10::getString()
@@ -51,7 +51,7 @@ std::string Binary10::getIconResource()
 
 std::string Binary10::getSerializationKey()
 {
-	return Binary10::SaveKeyBinary10;
+	return Binary10::SaveKey;
 }
 
 std::string Binary10::getCardKey()

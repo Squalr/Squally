@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string KingGrogg::MapKeyKingGrogg = "king-grogg";
+const std::string KingGrogg::MapKey = "king-grogg";
 
 KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ KingGrogg* KingGrogg::deserialize(ValueMap& properties)
 }
 
 KingGrogg::KingGrogg(ValueMap& properties) : super(properties,
-	KingGrogg::MapKeyKingGrogg,
+	KingGrogg::MapKey,
 	EntityResources::Enemies_EndianForest_KingGrogg_Animations,
 	EntityResources::Enemies_EndianForest_KingGrogg_Emblem,
 	Size(412.0f, 412.0f),

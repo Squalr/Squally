@@ -9,7 +9,7 @@ class SquallyCameraFollowBehavior : public AttachedBehavior
 public:
 	static SquallyCameraFollowBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyCameraFollowBehavior(GameObject* owner);

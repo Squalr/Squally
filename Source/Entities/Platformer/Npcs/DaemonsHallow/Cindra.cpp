@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cindra::MapKeyCindra = "cindra";
+const std::string Cindra::MapKey = "cindra";
 HexusOpponentData* Cindra::HexusOpponentDataInstance = nullptr;
 const std::string Cindra::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CINDRA";
 
@@ -31,7 +31,7 @@ Cindra* Cindra::deserialize(ValueMap& properties)
 }
 
 Cindra::Cindra(ValueMap& properties) : super(properties,
-	Cindra::MapKeyCindra,
+	Cindra::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Animations,
 	EntityResources::Npcs_DaemonsHallow_Cindra_Emblem,
 	Size(112.0f, 160.0f),

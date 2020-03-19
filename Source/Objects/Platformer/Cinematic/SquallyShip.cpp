@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyShip::MapKeySquallyShip = "squally-ship";
+const std::string SquallyShip::MapKey = "squally-ship";
 
 SquallyShip* SquallyShip::create(ValueMap& properties)
 {

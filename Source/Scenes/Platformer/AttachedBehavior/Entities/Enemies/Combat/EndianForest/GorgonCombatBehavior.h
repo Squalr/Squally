@@ -7,7 +7,7 @@ class GorgonCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static GorgonCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	GorgonCombatBehavior(GameObject* owner);

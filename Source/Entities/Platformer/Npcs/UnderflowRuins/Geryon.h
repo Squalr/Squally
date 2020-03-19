@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyGeryon;
+	static const std::string MapKey;
+
+protected:
 
 private:
 	typedef PlatformerFriendly super;
 	Geryon(cocos2d::ValueMap& properties);
-	~Geryon();
+	virtual ~Geryon();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

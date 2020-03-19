@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string FireTiger::MapKeyFireTiger = "fire-tiger";
+const std::string FireTiger::MapKey = "fire-tiger";
 HexusOpponentData* FireTiger::HexusOpponentDataInstance = nullptr;
 const std::string FireTiger::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FIRE_TIGER";
 
@@ -31,7 +31,7 @@ FireTiger* FireTiger::deserialize(ValueMap& properties)
 }
 
 FireTiger::FireTiger(ValueMap& properties) : super(properties,
-	FireTiger::MapKeyFireTiger,
+	FireTiger::MapKey,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireTiger_Emblem,
 	Size(256.0f, 320.0f),

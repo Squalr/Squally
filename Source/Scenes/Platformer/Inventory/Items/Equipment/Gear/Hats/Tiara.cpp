@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Tiara::SaveKeyTiara = "tiara";
+const std::string Tiara::SaveKey = "tiara";
 
 Tiara* Tiara::create()
 {
@@ -46,7 +46,7 @@ Item* Tiara::clone()
 
 std::string Tiara::getItemName()
 {
-	return Tiara::SaveKeyTiara;
+	return Tiara::SaveKey;
 }
 
 LocalizedString* Tiara::getString()
@@ -61,7 +61,7 @@ std::string Tiara::getIconResource()
 
 std::string Tiara::getSerializationKey()
 {
-	return Tiara::SaveKeyTiara;
+	return Tiara::SaveKey;
 }
 
 Vec2 Tiara::getDisplayOffset()

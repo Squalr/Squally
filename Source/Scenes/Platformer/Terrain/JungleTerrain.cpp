@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string JungleTerrain::MapKeyTerrainType = "jungle";
+const std::string JungleTerrain::MapKey = "jungle";
 
 JungleTerrain* JungleTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return JungleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		JungleTerrain::MapKeyTerrainType,
+		JungleTerrain::MapKey,
 		TextureResources::JungleTexture,
 		TerrainResources::Jungle_Top,
 		TerrainResources::Jungle_TopLeft,

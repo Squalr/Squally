@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedMouse::MapKeyCagedMouse = "caged-mouse";
+const std::string CagedMouse::MapKey = "caged-mouse";
 
 CagedMouse* CagedMouse::create(ValueMap& properties)
 {

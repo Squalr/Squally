@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WindPortal::MapKeyWindPortal = "wind-portal";
+const std::string WindPortal::MapKey = "wind-portal";
 
 WindPortal* WindPortal::create(ValueMap& properties)
 {

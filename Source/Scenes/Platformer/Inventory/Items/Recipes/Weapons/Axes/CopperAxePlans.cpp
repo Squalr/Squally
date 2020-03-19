@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CopperAxePlans::SaveKeyCopperAxePlans = "copper-axe-plans";
+const std::string CopperAxePlans::SaveKey = "copper-axe-plans";
 
 CopperAxePlans* CopperAxePlans::create()
 {
@@ -50,7 +50,7 @@ Item* CopperAxePlans::clone()
 
 std::string CopperAxePlans::getItemName()
 {
-	return CopperAxePlans::SaveKeyCopperAxePlans;
+	return CopperAxePlans::SaveKey;
 }
 
 LocalizedString* CopperAxePlans::getString()
@@ -70,5 +70,5 @@ std::string CopperAxePlans::getCraftedItemIconResource()
 
 std::string CopperAxePlans::getSerializationKey()
 {
-	return CopperAxePlans::SaveKeyCopperAxePlans;
+	return CopperAxePlans::SaveKey;
 }

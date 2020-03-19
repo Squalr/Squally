@@ -15,7 +15,7 @@ class LifeStone : public InteractObject
 public:
 	static LifeStone* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyLifeStone;
+	static const std::string MapKey;
 
 protected:
 	LifeStone(cocos2d::ValueMap& properties);

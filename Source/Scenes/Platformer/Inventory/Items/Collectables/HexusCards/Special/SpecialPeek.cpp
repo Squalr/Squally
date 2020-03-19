@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialPeek::SaveKeySpecialPeek = "special-peek";
+const std::string SpecialPeek::SaveKey = "special-peek";
 
 SpecialPeek* SpecialPeek::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialPeek::clone()
 
 std::string SpecialPeek::getItemName()
 {
-	return SpecialPeek::SaveKeySpecialPeek;
+	return SpecialPeek::SaveKey;
 }
 
 LocalizedString* SpecialPeek::getString()
@@ -51,7 +51,7 @@ std::string SpecialPeek::getIconResource()
 
 std::string SpecialPeek::getSerializationKey()
 {
-	return SpecialPeek::SaveKeySpecialPeek;
+	return SpecialPeek::SaveKey;
 }
 
 std::string SpecialPeek::getCardKey()

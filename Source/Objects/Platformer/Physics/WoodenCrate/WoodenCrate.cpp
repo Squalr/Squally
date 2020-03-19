@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenCrate::MapKeyWoodenCrate = "wooden-crate";
+const std::string WoodenCrate::MapKey = "wooden-crate";
 
 WoodenCrate* WoodenCrate::create(ValueMap& properties)
 {

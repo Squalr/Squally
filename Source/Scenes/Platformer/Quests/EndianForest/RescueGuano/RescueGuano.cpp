@@ -62,12 +62,12 @@ void RescueGuano::onLoad(QuestState questState)
 				this->guano->despawn();
 			});
 		}
-	}, Guano::MapKeyGuano);
+	}, Guano::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void RescueGuano::onActivate(bool isActiveThroughSkippable)
@@ -149,7 +149,7 @@ void RescueGuano::runRescueSequencePt3()
 				}),
 				nullptr
 			));
-			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKeyGuano));
+			this->squally->setState(StateKeys::CurrentHelper, Value(Guano::MapKey));
 
 			this->complete();
 

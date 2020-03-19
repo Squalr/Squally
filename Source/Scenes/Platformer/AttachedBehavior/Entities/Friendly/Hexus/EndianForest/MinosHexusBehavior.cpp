@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string MinosHexusBehavior::MapKeyAttachedBehavior = "minos-hexus";
+const std::string MinosHexusBehavior::MapKey = "minos-hexus";
 
 MinosHexusBehavior* MinosHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* MinosHexusBehavior::generateReward()
 
 std::string MinosHexusBehavior::getWinLossSaveKey()
 {
-	return MinosHexusBehavior::MapKeyAttachedBehavior;
+	return MinosHexusBehavior::MapKey;
 }
 
 std::string MinosHexusBehavior::getBackgroundResource()

@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 const float WoodenGate::DoorOpenDelta = 320.0f;
 
-const std::string WoodenGate::MapKeyWoodenGate = "wooden-gate";
+const std::string WoodenGate::MapKey = "wooden-gate";
 
 WoodenGate* WoodenGate::create(ValueMap& properties)
 {

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Azmus::MapKeyAzmus = "azmus";
+const std::string Azmus::MapKey = "azmus";
 HexusOpponentData* Azmus::HexusOpponentDataInstance = nullptr;
 const std::string Azmus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AZMUS";
 
@@ -31,7 +31,7 @@ Azmus* Azmus::deserialize(ValueMap& properties)
 }
 
 Azmus::Azmus(ValueMap& properties) : super(properties,
-	Azmus::MapKeyAzmus,
+	Azmus::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Animations,
 	EntityResources::Npcs_LambdaCrypts_Azmus_Emblem,
 	Size(112.0f, 160.0f),

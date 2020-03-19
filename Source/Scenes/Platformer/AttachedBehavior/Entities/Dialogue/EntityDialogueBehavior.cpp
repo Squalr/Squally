@@ -20,7 +20,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityDialogueBehavior::MapKeyAttachedBehavior = "entity-dialogue";
+const std::string EntityDialogueBehavior::MapKey = "entity-dialogue";
 
 EntityDialogueBehavior* EntityDialogueBehavior::create(GameObject* owner)
 {
@@ -109,7 +109,7 @@ void EntityDialogueBehavior::onLoad()
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{

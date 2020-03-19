@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityHeadCollisionBehavior::MapKeyAttachedBehavior = "entity-head-collisions";
+const std::string EntityHeadCollisionBehavior::MapKey = "entity-head-collisions";
 const float EntityHeadCollisionBehavior::HeadCollisionPadding = 16.0f;
 const float EntityHeadCollisionBehavior::HeadCollisionSize = 48.0f;
 

@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-const std::string LycanBehavior::MapKeyAttachedBehavior = "lycan";
+const std::string LycanBehavior::MapKey = "lycan";
 
 LycanBehavior* LycanBehavior::create(GameObject* owner)
 {
@@ -45,7 +45,7 @@ void LycanBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{

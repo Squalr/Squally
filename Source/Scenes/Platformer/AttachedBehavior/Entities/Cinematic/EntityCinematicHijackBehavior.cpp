@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityCinematicHijackBehavior::MapKeyAttachedBehavior = "entity-cinematic-hijack";
+const std::string EntityCinematicHijackBehavior::MapKey = "entity-cinematic-hijack";
 
 EntityCinematicHijackBehavior* EntityCinematicHijackBehavior::create(GameObject* owner)
 {

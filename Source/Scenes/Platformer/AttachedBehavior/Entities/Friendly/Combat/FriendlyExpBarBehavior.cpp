@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyExpBarBehavior::MapKeyAttachedBehavior = "friendly-exp-bars";
+const std::string FriendlyExpBarBehavior::MapKey = "friendly-exp-bars";
 
 FriendlyExpBarBehavior* FriendlyExpBarBehavior::create(GameObject* owner)
 {

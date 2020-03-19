@@ -27,7 +27,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityTextOverlayBehavior::MapKeyAttachedBehavior = "combat-text-overlays";
+const std::string EntityTextOverlayBehavior::MapKey = "combat-text-overlays";
 
 EntityTextOverlayBehavior* EntityTextOverlayBehavior::create(GameObject* owner)
 {

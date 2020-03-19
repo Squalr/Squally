@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Undead::MapKeyUndead = "undead";
+const std::string Undead::MapKey = "undead";
 HexusOpponentData* Undead::HexusOpponentDataInstance = nullptr;
 const std::string Undead::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_UNDEAD";
 
@@ -31,7 +31,7 @@ Undead* Undead::deserialize(ValueMap& properties)
 }
 
 Undead::Undead(ValueMap& properties) : super(properties,
-	Undead::MapKeyUndead,
+	Undead::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Undead_Animations,
 	EntityResources::Enemies_LambdaCrypts_Undead_Emblem,
 	Size(146.0f, 248.0f),

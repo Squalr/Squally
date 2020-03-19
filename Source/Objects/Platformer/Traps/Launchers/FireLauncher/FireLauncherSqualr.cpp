@@ -27,7 +27,7 @@
 
 using namespace cocos2d;
 
-const std::string FireLauncherSqualr::MapKeyFireLauncherSqualr = "fire-launcher-squalr";
+const std::string FireLauncherSqualr::MapKey = "fire-launcher-squalr";
 
 FireLauncherSqualr* FireLauncherSqualr::create(ValueMap& properties)
 {

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string BludgeonPlans::SaveKeyBludgeonPlans = "bludgeon-plans";
+const std::string BludgeonPlans::SaveKey = "bludgeon-plans";
 
 BludgeonPlans* BludgeonPlans::create()
 {
@@ -51,7 +51,7 @@ Item* BludgeonPlans::clone()
 
 std::string BludgeonPlans::getItemName()
 {
-	return BludgeonPlans::SaveKeyBludgeonPlans;
+	return BludgeonPlans::SaveKey;
 }
 
 LocalizedString* BludgeonPlans::getString()
@@ -71,5 +71,5 @@ std::string BludgeonPlans::getCraftedItemIconResource()
 
 std::string BludgeonPlans::getSerializationKey()
 {
-	return BludgeonPlans::SaveKeyBludgeonPlans;
+	return BludgeonPlans::SaveKey;
 }

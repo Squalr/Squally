@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string OrnateHat::SaveKeyOrnateHat = "ornate-hat";
+const std::string OrnateHat::SaveKey = "ornate-hat";
 
 OrnateHat* OrnateHat::create()
 {
@@ -46,7 +46,7 @@ Item* OrnateHat::clone()
 
 std::string OrnateHat::getItemName()
 {
-	return OrnateHat::SaveKeyOrnateHat;
+	return OrnateHat::SaveKey;
 }
 
 LocalizedString* OrnateHat::getString()
@@ -61,7 +61,7 @@ std::string OrnateHat::getIconResource()
 
 std::string OrnateHat::getSerializationKey()
 {
-	return OrnateHat::SaveKeyOrnateHat;
+	return OrnateHat::SaveKey;
 }
 
 Vec2 OrnateHat::getDisplayOffset()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string IceGolem::MapKeyIceGolem = "ice-golem";
+const std::string IceGolem::MapKey = "ice-golem";
 HexusOpponentData* IceGolem::HexusOpponentDataInstance = nullptr;
 const std::string IceGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ICE_GOLEM";
 
@@ -31,7 +31,7 @@ IceGolem* IceGolem::deserialize(ValueMap& properties)
 }
 
 IceGolem::IceGolem(ValueMap& properties) : super(properties,
-	IceGolem::MapKeyIceGolem,
+	IceGolem::MapKey,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Animations,
 	EntityResources::Enemies_BalmerPeaks_IceGolem_Emblem,
 	Size(256.0f, 224.0f),

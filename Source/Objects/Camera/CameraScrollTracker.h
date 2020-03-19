@@ -9,7 +9,7 @@ class CameraScrollTracker : public GameObject
 public:
 	static CameraScrollTracker* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCameraScrollTracker;
+	static const std::string MapKey;
 	static const std::string MapKeyZoom;
 	static const std::string MapKeyScrollSpeed;
 

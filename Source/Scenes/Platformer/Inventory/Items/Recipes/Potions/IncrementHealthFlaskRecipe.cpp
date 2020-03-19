@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string IncrementHealthFlaskRecipe::SaveKeyIncrementHealthFlaskRecipe = "increment-health-flask-recipe";
+const std::string IncrementHealthFlaskRecipe::SaveKey = "increment-health-flask-recipe";
 
 IncrementHealthFlaskRecipe* IncrementHealthFlaskRecipe::create()
 {
@@ -49,7 +49,7 @@ Item* IncrementHealthFlaskRecipe::clone()
 
 std::string IncrementHealthFlaskRecipe::getItemName()
 {
-	return IncrementHealthFlaskRecipe::SaveKeyIncrementHealthFlaskRecipe;
+	return IncrementHealthFlaskRecipe::SaveKey;
 }
 
 LocalizedString* IncrementHealthFlaskRecipe::getString()
@@ -69,5 +69,5 @@ std::string IncrementHealthFlaskRecipe::getCraftedItemIconResource()
 
 std::string IncrementHealthFlaskRecipe::getSerializationKey()
 {
-	return IncrementHealthFlaskRecipe::SaveKeyIncrementHealthFlaskRecipe;
+	return IncrementHealthFlaskRecipe::SaveKey;
 }

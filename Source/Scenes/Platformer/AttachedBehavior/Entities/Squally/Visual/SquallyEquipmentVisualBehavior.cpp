@@ -28,7 +28,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyEquipmentVisualBehavior::MapKeyAttachedBehavior = "squally-equipment-visuals";
+const std::string SquallyEquipmentVisualBehavior::MapKey = "squally-equipment-visuals";
 
 SquallyEquipmentVisualBehavior* SquallyEquipmentVisualBehavior::create(GameObject* owner)
 {

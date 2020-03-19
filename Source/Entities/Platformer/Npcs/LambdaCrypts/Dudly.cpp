@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Dudly::MapKeyDudly = "dudly";
+const std::string Dudly::MapKey = "dudly";
 HexusOpponentData* Dudly::HexusOpponentDataInstance = nullptr;
 const std::string Dudly::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DUDLY";
 
@@ -31,7 +31,7 @@ Dudly* Dudly::deserialize(ValueMap& properties)
 }
 
 Dudly::Dudly(ValueMap& properties) : super(properties,
-	Dudly::MapKeyDudly,
+	Dudly::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Animations,
 	EntityResources::Npcs_LambdaCrypts_Dudly_Emblem,
 	Size(112.0f, 160.0f),

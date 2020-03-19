@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyItemDiscoveryBehavior::MapKeyAttachedBehavior = "squally-item-discovery";
+const std::string SquallyItemDiscoveryBehavior::MapKey = "squally-item-discovery";
 
 SquallyItemDiscoveryBehavior* SquallyItemDiscoveryBehavior::create(GameObject* owner)
 {

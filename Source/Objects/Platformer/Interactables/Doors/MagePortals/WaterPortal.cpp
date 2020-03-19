@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WaterPortal::MapKeyWaterPortal = "water-portal";
+const std::string WaterPortal::MapKey = "water-portal";
 
 WaterPortal* WaterPortal::create(ValueMap& properties)
 {

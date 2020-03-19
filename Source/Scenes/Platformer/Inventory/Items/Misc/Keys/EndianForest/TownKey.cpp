@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TownKey::SaveKeyTownKey = "town-key";
+const std::string TownKey::SaveKey = "town-key";
 
 TownKey* TownKey::create()
 {
@@ -35,7 +35,7 @@ Item* TownKey::clone()
 
 std::string TownKey::getItemName()
 {
-	return TownKey::SaveKeyTownKey;
+	return TownKey::SaveKey;
 }
 
 LocalizedString* TownKey::getString()
@@ -50,6 +50,6 @@ std::string TownKey::getIconResource()
 
 std::string TownKey::getSerializationKey()
 {
-	return TownKey::SaveKeyTownKey;
+	return TownKey::SaveKey;
 }
 

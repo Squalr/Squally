@@ -12,7 +12,7 @@ class CagedMountainLion : public CagedAnimal
 public:
 	static CagedMountainLion* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedMountainLion;
+	static const std::string MapKey;
 
 protected:
 	CagedMountainLion(cocos2d::ValueMap& properties);

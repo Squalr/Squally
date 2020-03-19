@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Sapphire::SaveKeySapphire = "sapphire";
+const std::string Sapphire::SaveKey = "sapphire";
 
 Sapphire* Sapphire::create()
 {
@@ -35,7 +35,7 @@ Item* Sapphire::clone()
 
 std::string Sapphire::getItemName()
 {
-	return Sapphire::SaveKeySapphire;
+	return Sapphire::SaveKey;
 }
 
 LocalizedString* Sapphire::getString()
@@ -50,5 +50,5 @@ std::string Sapphire::getIconResource()
 
 std::string Sapphire::getSerializationKey()
 {
-	return Sapphire::SaveKeySapphire;
+	return Sapphire::SaveKey;
 }

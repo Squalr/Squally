@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Theldar::MapKeyTheldar = "theldar";
+const std::string Theldar::MapKey = "theldar";
 HexusOpponentData* Theldar::HexusOpponentDataInstance = nullptr;
 const std::string Theldar::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THELDAR";
 
@@ -31,7 +31,7 @@ Theldar* Theldar::deserialize(ValueMap& properties)
 }
 
 Theldar::Theldar(ValueMap& properties) : super(properties,
-	Theldar::MapKeyTheldar,
+	Theldar::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Animations,
 	EntityResources::Npcs_BalmerPeaks_Theldar_Emblem,
 	Size(112.0f, 160.0f),

@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyMouthBehavior::MapKeyAttachedBehavior = "squally-mouth";
+const std::string SquallyMouthBehavior::MapKey = "squally-mouth";
 
 SquallyMouthBehavior* SquallyMouthBehavior::create(GameObject* owner)
 {

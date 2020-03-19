@@ -16,7 +16,7 @@ class SpikeLog : public HackableObject
 public:
 	static SpikeLog* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeySpikeLog;
+	static const std::string MapKey;
 
 protected:
 	SpikeLog(cocos2d::ValueMap& properties);

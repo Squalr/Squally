@@ -11,7 +11,7 @@ public:
 
 protected:
 	Shopkeeper();
-	~Shopkeeper();
+	virtual ~Shopkeeper();
 
 private:
 	typedef SmartNode super;

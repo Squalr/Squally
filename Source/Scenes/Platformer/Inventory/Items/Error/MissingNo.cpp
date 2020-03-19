@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string MissingNo::SaveKeyMissingNo = "missing-no";
+const std::string MissingNo::SaveKey = "missing-no";
 
 MissingNo* MissingNo::create()
 {
@@ -36,7 +36,7 @@ Item* MissingNo::clone()
 
 std::string MissingNo::getItemName()
 {
-	return MissingNo::SaveKeyMissingNo;
+	return MissingNo::SaveKey;
 }
 
 LocalizedString* MissingNo::getString()
@@ -51,7 +51,7 @@ std::string MissingNo::getIconResource()
 
 std::string MissingNo::getSerializationKey()
 {
-	return MissingNo::SaveKeyMissingNo;
+	return MissingNo::SaveKey;
 }
 
 PlatformerAttack* MissingNo::createAssociatedAttack()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Cookie::MapKeyCookie = "cookie";
+const std::string Cookie::MapKey = "cookie";
 HexusOpponentData* Cookie::HexusOpponentDataInstance = nullptr;
 const std::string Cookie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_COOKIE";
 
@@ -31,7 +31,7 @@ Cookie* Cookie::deserialize(ValueMap& properties)
 }
 
 Cookie::Cookie(ValueMap& properties) : super(properties,
-	Cookie::MapKeyCookie,
+	Cookie::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Animations,
 	EntityResources::Npcs_BalmerPeaks_Cookie_Emblem,
 	Size(112.0f, 160.0f),

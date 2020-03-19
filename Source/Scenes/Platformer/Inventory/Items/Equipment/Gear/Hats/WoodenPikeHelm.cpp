@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenPikeHelm::SaveKeyWoodenPikeHelm = "wooden-pike-helm";
+const std::string WoodenPikeHelm::SaveKey = "wooden-pike-helm";
 
 WoodenPikeHelm* WoodenPikeHelm::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenPikeHelm::clone()
 
 std::string WoodenPikeHelm::getItemName()
 {
-	return WoodenPikeHelm::SaveKeyWoodenPikeHelm;
+	return WoodenPikeHelm::SaveKey;
 }
 
 LocalizedString* WoodenPikeHelm::getString()
@@ -61,7 +61,7 @@ std::string WoodenPikeHelm::getIconResource()
 
 std::string WoodenPikeHelm::getSerializationKey()
 {
-	return WoodenPikeHelm::SaveKeyWoodenPikeHelm;
+	return WoodenPikeHelm::SaveKey;
 }
 
 Vec2 WoodenPikeHelm::getDisplayOffset()

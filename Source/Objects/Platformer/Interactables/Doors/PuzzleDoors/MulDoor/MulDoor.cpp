@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string MulDoor::MapKeyMulDoor = "mul-door";
+const std::string MulDoor::MapKey = "mul-door";
 
 MulDoor* MulDoor::create(ValueMap& properties)
 {
@@ -50,7 +50,7 @@ void MulDoor::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				MulDoor::MapKeyMulDoor,
+				MulDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
 				UIResources::Menus_Icons_Pearls,
 				MulDoorPreview::create(),

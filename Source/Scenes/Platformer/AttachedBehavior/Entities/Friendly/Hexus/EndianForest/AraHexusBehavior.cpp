@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string AraHexusBehavior::MapKeyAttachedBehavior = "ara-hexus";
+const std::string AraHexusBehavior::MapKey = "ara-hexus";
 
 AraHexusBehavior* AraHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* AraHexusBehavior::generateReward()
 
 std::string AraHexusBehavior::getWinLossSaveKey()
 {
-	return AraHexusBehavior::MapKeyAttachedBehavior;
+	return AraHexusBehavior::MapKey;
 }
 
 std::string AraHexusBehavior::getBackgroundResource()

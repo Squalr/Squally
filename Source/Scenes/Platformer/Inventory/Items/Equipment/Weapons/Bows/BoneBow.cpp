@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneBow::SaveKeyBoneBow = "bone-bow";
+const std::string BoneBow::SaveKey = "bone-bow";
 
 BoneBow* BoneBow::create()
 {
@@ -46,7 +46,7 @@ Item* BoneBow::clone()
 
 std::string BoneBow::getItemName()
 {
-	return BoneBow::SaveKeyBoneBow;
+	return BoneBow::SaveKey;
 }
 
 LocalizedString* BoneBow::getString()
@@ -61,7 +61,7 @@ std::string BoneBow::getIconResource()
 
 std::string BoneBow::getSerializationKey()
 {
-	return BoneBow::SaveKeyBoneBow;
+	return BoneBow::SaveKey;
 }
 
 Vec2 BoneBow::getDisplayOffset()

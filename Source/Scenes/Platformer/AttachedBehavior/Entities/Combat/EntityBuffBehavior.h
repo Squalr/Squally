@@ -15,7 +15,7 @@ public:
 	void removeBuffsById(std::string buffId);
 	void removeAllBuffs();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityBuffBehavior(GameObject* owner);

@@ -12,7 +12,7 @@ public:
 
 protected:
 	IsAliveClippy();
-	~IsAliveClippy();
+	virtual ~IsAliveClippy();
 
 	Clippy* innerClone() override;
 

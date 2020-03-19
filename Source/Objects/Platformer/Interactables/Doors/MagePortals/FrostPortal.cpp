@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string FrostPortal::MapKeyFrostPortal = "frost-portal";
+const std::string FrostPortal::MapKey = "frost-portal";
 
 FrostPortal* FrostPortal::create(ValueMap& properties)
 {

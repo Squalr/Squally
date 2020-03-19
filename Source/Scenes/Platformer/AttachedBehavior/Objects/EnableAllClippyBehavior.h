@@ -9,7 +9,7 @@ class EnableAllClippyBehavior : public AttachedBehavior
 public:
 	static EnableAllClippyBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EnableAllClippyBehavior(GameObject* owner);

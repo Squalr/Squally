@@ -25,7 +25,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
+const std::string SquallyCollisionBehavior::MapKey = "squally-collisions";
 const float SquallyCollisionBehavior::DefaultNoCombatDuration = 2.0f;
 
 SquallyCollisionBehavior* SquallyCollisionBehavior::create(GameObject* owner)

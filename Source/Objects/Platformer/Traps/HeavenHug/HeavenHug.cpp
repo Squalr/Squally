@@ -25,7 +25,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
 
-const std::string HeavenHug::MapKeyHeavenHug = "heaven-hug";
+const std::string HeavenHug::MapKey = "heaven-hug";
 const float HeavenHug::SpeedPer480Px = 2.0f;
 
 HeavenHug* HeavenHug::create(ValueMap& properties)
@@ -77,16 +77,13 @@ Vec2 HeavenHug::getButtonOffset()
 void HeavenHug::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
+	
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
 			HackableCode::HackableCodeInfo(
-				HeavenHug::MapKeyHeavenHug,
+				HeavenHug::MapKey,
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				UIResources::Menus_Icons_BleedingLimb,
 				HeavenHugSetSpeedPreview::create(),

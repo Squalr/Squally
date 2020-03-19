@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ReanimatedFighter::MapKeyReanimatedFighter = "reanimated-fighter";
+const std::string ReanimatedFighter::MapKey = "reanimated-fighter";
 HexusOpponentData* ReanimatedFighter::HexusOpponentDataInstance = nullptr;
 const std::string ReanimatedFighter::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_REANIMATED_FIGHTER";
 
@@ -31,7 +31,7 @@ ReanimatedFighter* ReanimatedFighter::deserialize(ValueMap& properties)
 }
 
 ReanimatedFighter::ReanimatedFighter(ValueMap& properties) : super(properties,
-	ReanimatedFighter::MapKeyReanimatedFighter,
+	ReanimatedFighter::MapKey,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedFighter_Emblem,
 	Size(256.0f, 248.0f),

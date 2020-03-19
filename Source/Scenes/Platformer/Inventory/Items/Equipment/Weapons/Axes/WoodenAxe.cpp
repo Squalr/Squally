@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenAxe::SaveKeyWoodenAxe = "wooden-axe";
+const std::string WoodenAxe::SaveKey = "wooden-axe";
 
 WoodenAxe* WoodenAxe::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenAxe::clone()
 
 std::string WoodenAxe::getItemName()
 {
-	return WoodenAxe::SaveKeyWoodenAxe;
+	return WoodenAxe::SaveKey;
 }
 
 LocalizedString* WoodenAxe::getString()
@@ -61,7 +61,7 @@ std::string WoodenAxe::getIconResource()
 
 std::string WoodenAxe::getSerializationKey()
 {
-	return WoodenAxe::SaveKeyWoodenAxe;
+	return WoodenAxe::SaveKey;
 }
 
 Size WoodenAxe::getWeaponCollisionSize()

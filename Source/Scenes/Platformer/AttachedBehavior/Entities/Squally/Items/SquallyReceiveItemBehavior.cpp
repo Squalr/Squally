@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyReceiveItemBehavior::MapKeyAttachedBehavior = "squally-receive-item";
+const std::string SquallyReceiveItemBehavior::MapKey = "squally-receive-item";
 
 SquallyReceiveItemBehavior* SquallyReceiveItemBehavior::create(GameObject* owner)
 {

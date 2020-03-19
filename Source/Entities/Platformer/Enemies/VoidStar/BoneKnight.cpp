@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneKnight::MapKeyBoneKnight = "bone-knight";
+const std::string BoneKnight::MapKey = "bone-knight";
 HexusOpponentData* BoneKnight::HexusOpponentDataInstance = nullptr;
 const std::string BoneKnight::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_KNIGHT";
 
@@ -31,7 +31,7 @@ BoneKnight* BoneKnight::deserialize(ValueMap& properties)
 }
 
 BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
-	BoneKnight::MapKeyBoneKnight,
+	BoneKnight::MapKey,
 	EntityResources::Enemies_VoidStar_BoneKnight_Animations,
 	EntityResources::Enemies_VoidStar_BoneKnight_Emblem,
 	Size(540.0f, 340.0f),

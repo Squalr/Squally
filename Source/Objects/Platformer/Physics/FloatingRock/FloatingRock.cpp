@@ -26,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_GET_DENSITY 1
 
-const std::string FloatingRock::MapKeyFloatingRock = "floating-rock";
+const std::string FloatingRock::MapKey = "floating-rock";
 
 FloatingRock* FloatingRock::create(ValueMap& properties)
 {
@@ -86,7 +86,7 @@ void FloatingRock::registerHackables()
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::HackableCodeInfo(
-				FloatingRock::MapKeyFloatingRock,
+				FloatingRock::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingRockGetDensityPreview::create(),

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Raven::MapKeyRaven = "raven";
+const std::string Raven::MapKey = "raven";
 HexusOpponentData* Raven::HexusOpponentDataInstance = nullptr;
 const std::string Raven::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAVEN";
 
@@ -31,7 +31,7 @@ Raven* Raven::deserialize(ValueMap& properties)
 }
 
 Raven::Raven(ValueMap& properties) : super(properties,
-	Raven::MapKeyRaven,
+	Raven::MapKey,
 	EntityResources::Npcs_CastleValgrind_Raven_Animations,
 	EntityResources::Npcs_CastleValgrind_Raven_Emblem,
 	Size(112.0f, 160.0f),

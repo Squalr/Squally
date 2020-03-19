@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Jingles::MapKeyJingles = "jingles";
+const std::string Jingles::MapKey = "jingles";
 HexusOpponentData* Jingles::HexusOpponentDataInstance = nullptr;
 const std::string Jingles::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_JINGLES";
 
@@ -31,7 +31,7 @@ Jingles* Jingles::deserialize(ValueMap& properties)
 }
 
 Jingles::Jingles(ValueMap& properties) : super(properties,
-	Jingles::MapKeyJingles,
+	Jingles::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Animations,
 	EntityResources::Npcs_BalmerPeaks_Jingles_Emblem,
 	Size(112.0f, 160.0f),

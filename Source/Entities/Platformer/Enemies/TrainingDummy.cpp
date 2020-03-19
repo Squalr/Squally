@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string TrainingDummy::MapKeyTrainingDummy = "training-dummy";
+const std::string TrainingDummy::MapKey = "training-dummy";
 
 TrainingDummy* TrainingDummy::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ TrainingDummy* TrainingDummy::deserialize(ValueMap& properties)
 }
 
 TrainingDummy::TrainingDummy(ValueMap& properties) : super(properties,
-	TrainingDummy::MapKeyTrainingDummy,
+	TrainingDummy::MapKey,
 	EntityResources::Misc_EndianForest_TrainingDummy_Animations,
 	EntityResources::Misc_EndianForest_TrainingDummy_Emblem,
 	Size(256.0f, 218.0f),

@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyNoSavePositionBehavior::MapKeyAttachedBehavior = "no-position-save";
+const std::string SquallyNoSavePositionBehavior::MapKey = "no-position-save";
 
 SquallyNoSavePositionBehavior* SquallyNoSavePositionBehavior::create(GameObject* owner)
 {

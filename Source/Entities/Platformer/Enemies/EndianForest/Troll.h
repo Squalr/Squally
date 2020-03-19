@@ -13,10 +13,12 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyTroll;
+	static const std::string MapKey;
+	
+protected:
+	Troll(cocos2d::ValueMap& properties);
+	virtual ~Troll();
 
 private:
 	typedef PlatformerEnemy super;
-	Troll(cocos2d::ValueMap& properties);
-	~Troll();
 };

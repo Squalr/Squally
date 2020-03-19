@@ -115,7 +115,7 @@ void CardsMenu::onEnter()
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void CardsMenu::initializePositions()

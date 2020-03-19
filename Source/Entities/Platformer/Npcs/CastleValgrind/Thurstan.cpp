@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Thurstan::MapKeyThurstan = "thurstan";
+const std::string Thurstan::MapKey = "thurstan";
 HexusOpponentData* Thurstan::HexusOpponentDataInstance = nullptr;
 const std::string Thurstan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THURSTAN";
 
@@ -31,7 +31,7 @@ Thurstan* Thurstan::deserialize(ValueMap& properties)
 }
 
 Thurstan::Thurstan(ValueMap& properties) : super(properties,
-	Thurstan::MapKeyThurstan,
+	Thurstan::MapKey,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	Size(124.0f, 160.0f),

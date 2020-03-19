@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BarbedHelm::SaveKeyBarbedHelm = "barbed-helm";
+const std::string BarbedHelm::SaveKey = "barbed-helm";
 
 BarbedHelm* BarbedHelm::create()
 {
@@ -46,7 +46,7 @@ Item* BarbedHelm::clone()
 
 std::string BarbedHelm::getItemName()
 {
-	return BarbedHelm::SaveKeyBarbedHelm;
+	return BarbedHelm::SaveKey;
 }
 
 LocalizedString* BarbedHelm::getString()
@@ -61,7 +61,7 @@ std::string BarbedHelm::getIconResource()
 
 std::string BarbedHelm::getSerializationKey()
 {
-	return BarbedHelm::SaveKeyBarbedHelm;
+	return BarbedHelm::SaveKey;
 }
 
 Vec2 BarbedHelm::getDisplayOffset()

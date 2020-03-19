@@ -7,7 +7,7 @@ class GuanoBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static GuanoBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	GuanoBehaviorGroup(GameObject* owner);

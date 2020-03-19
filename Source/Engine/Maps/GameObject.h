@@ -143,9 +143,9 @@ public:
 
 	static const std::vector<std::string> AttributeKeys;
 
-	static const std::string MapKeyPropertyName;
-	static const std::string MapKeyPropertyType;
-	static const std::string MapKeyPropertyValue;
+	static const std::string PropertyName;
+	static const std::string PropertyType;
+	static const std::string PropertyValue;
 
 	cocos2d::ValueMap properties;
 	

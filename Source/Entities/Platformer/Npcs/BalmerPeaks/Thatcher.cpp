@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Thatcher::MapKeyThatcher = "thatcher";
+const std::string Thatcher::MapKey = "thatcher";
 HexusOpponentData* Thatcher::HexusOpponentDataInstance = nullptr;
 const std::string Thatcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THATCHER";
 
@@ -31,7 +31,7 @@ Thatcher* Thatcher::deserialize(ValueMap& properties)
 }
 
 Thatcher::Thatcher(ValueMap& properties) : super(properties,
-	Thatcher::MapKeyThatcher,
+	Thatcher::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Animations,
 	EntityResources::Npcs_BalmerPeaks_Thatcher_Emblem,
 	Size(112.0f, 160.0f),

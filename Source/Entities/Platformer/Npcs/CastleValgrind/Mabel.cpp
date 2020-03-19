@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Mabel::MapKeyMabel = "mabel";
+const std::string Mabel::MapKey = "mabel";
 HexusOpponentData* Mabel::HexusOpponentDataInstance = nullptr;
 const std::string Mabel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MABEL";
 
@@ -31,7 +31,7 @@ Mabel* Mabel::deserialize(ValueMap& properties)
 }
 
 Mabel::Mabel(ValueMap& properties) : super(properties,
-	Mabel::MapKeyMabel,
+	Mabel::MapKey,
 	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
 	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
 	Size(112.0f, 160.0f),

@@ -19,12 +19,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyScrappy;
+	static const std::string MapKey;
+	
+protected:
+	Scrappy(cocos2d::ValueMap& properties);
+	virtual ~Scrappy();
 
 private:
 	typedef PlatformerFriendly super;
-	Scrappy(cocos2d::ValueMap& properties);
-	~Scrappy();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

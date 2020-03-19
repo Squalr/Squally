@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string GoblinWarriorPigCombatBehavior::MapKeyAttachedBehavior = "goblin-warrior-pig-combat";
+const std::string GoblinWarriorPigCombatBehavior::MapKey = "goblin-warrior-pig-combat";
 
 GoblinWarriorPigCombatBehavior* GoblinWarriorPigCombatBehavior::create(GameObject* owner)
 {

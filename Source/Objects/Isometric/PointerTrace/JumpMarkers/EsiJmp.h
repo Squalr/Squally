@@ -12,11 +12,11 @@ class EsiJmp : public JmpMarker
 public:
 	static EsiJmp* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEsiJmp;
+	static const std::string MapKey;
 
 protected:
 	EsiJmp(cocos2d::ValueMap& properties);
-	~EsiJmp();
+	virtual ~EsiJmp();
 
 	void onEnter() override;
 	void initializePositions() override;

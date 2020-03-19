@@ -49,7 +49,7 @@ void BusinessHours::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	if (this->portal != nullptr)
 	{

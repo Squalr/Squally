@@ -16,7 +16,7 @@ public:
 
 	void trySelect(PlatformerEntity* entity);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntitySelectionOverlayBehavior(GameObject* owner);

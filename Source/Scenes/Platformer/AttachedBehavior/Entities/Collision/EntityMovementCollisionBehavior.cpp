@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityMovementCollisionBehavior::MapKeyAttachedBehavior = "entity-movement-collisions";
+const std::string EntityMovementCollisionBehavior::MapKey = "entity-movement-collisions";
 const float EntityMovementCollisionBehavior::WaterJumpVelocity = 7680.0f;
 const float EntityMovementCollisionBehavior::SwimVerticalDrag = 0.93f;
 const float EntityMovementCollisionBehavior::StaticFriction = 256.0f;

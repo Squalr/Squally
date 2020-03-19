@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TigersBane::SaveKeyTigersBane = "tigers-bane";
+const std::string TigersBane::SaveKey = "tigers-bane";
 
 TigersBane* TigersBane::create()
 {
@@ -46,7 +46,7 @@ Item* TigersBane::clone()
 
 std::string TigersBane::getItemName()
 {
-	return TigersBane::SaveKeyTigersBane;
+	return TigersBane::SaveKey;
 }
 
 LocalizedString* TigersBane::getString()
@@ -61,7 +61,7 @@ std::string TigersBane::getIconResource()
 
 std::string TigersBane::getSerializationKey()
 {
-	return TigersBane::SaveKeyTigersBane;
+	return TigersBane::SaveKey;
 }
 
 Vec2 TigersBane::getDisplayOffset()

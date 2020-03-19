@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-const std::string EbxPtrJmp::MapKeyEbxPtrJmp = "[ebx]-jmp";
+const std::string EbxPtrJmp::MapKey = "[ebx]-jmp";
 
 EbxPtrJmp* EbxPtrJmp::create(ValueMap& properties)
 {

@@ -9,7 +9,7 @@ class SquallyDisableHackFxBehavior : public AttachedBehavior
 public:
 	static SquallyDisableHackFxBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyDisableHackFxBehavior(GameObject* owner);

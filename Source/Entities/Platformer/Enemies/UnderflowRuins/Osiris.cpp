@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Osiris::MapKeyOsiris = "osiris";
+const std::string Osiris::MapKey = "osiris";
 HexusOpponentData* Osiris::HexusOpponentDataInstance = nullptr;
 const std::string Osiris::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OSIRIS";
 
@@ -31,7 +31,7 @@ Osiris* Osiris::deserialize(ValueMap& properties)
 }
 
 Osiris::Osiris(ValueMap& properties) : super(properties,
-	Osiris::MapKeyOsiris,
+	Osiris::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	Size(324.0f, 316.0f),

@@ -14,7 +14,7 @@ class SquallyCombatBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static SquallyCombatBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyCombatBehaviorGroup(GameObject* owner);

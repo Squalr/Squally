@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelBow::SaveKeySteelBow = "steel-bow";
+const std::string SteelBow::SaveKey = "steel-bow";
 
 SteelBow* SteelBow::create()
 {
@@ -46,7 +46,7 @@ Item* SteelBow::clone()
 
 std::string SteelBow::getItemName()
 {
-	return SteelBow::SaveKeySteelBow;
+	return SteelBow::SaveKey;
 }
 
 LocalizedString* SteelBow::getString()
@@ -61,7 +61,7 @@ std::string SteelBow::getIconResource()
 
 std::string SteelBow::getSerializationKey()
 {
-	return SteelBow::SaveKeySteelBow;
+	return SteelBow::SaveKey;
 }
 
 Vec2 SteelBow::getDisplayOffset()

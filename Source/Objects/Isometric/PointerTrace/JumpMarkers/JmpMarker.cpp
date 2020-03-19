@@ -23,14 +23,14 @@
 
 using namespace cocos2d;
 
-const std::string JmpMarker::MapKeyOffset = "offset";
+const std::string JmpMarker::PropertyOffset = "offset";
 
 JmpMarker::JmpMarker(ValueMap& properties) : super(properties)
 {
 	this->markerNode = Node::create();
 	this->assemblyString = Strings::Common_Constant::create();
 	this->assemblyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, this->assemblyString);
-	this->offset = GameUtils::getKeyOrDefault(properties, JmpMarker::MapKeyOffset, Value(0)).asInt();
+	this->offset = GameUtils::getKeyOrDefault(properties, JmpMarker::PropertyOffset, Value(0)).asInt();
 	this->assemblyLabel->enableOutline(Color4B::BLACK, 4);
 
 	this->setZSorted(true);

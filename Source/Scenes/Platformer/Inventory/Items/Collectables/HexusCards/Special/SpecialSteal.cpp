@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialSteal::SaveKeySpecialSteal = "special-steal";
+const std::string SpecialSteal::SaveKey = "special-steal";
 
 SpecialSteal* SpecialSteal::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialSteal::clone()
 
 std::string SpecialSteal::getItemName()
 {
-	return SpecialSteal::SaveKeySpecialSteal;
+	return SpecialSteal::SaveKey;
 }
 
 LocalizedString* SpecialSteal::getString()
@@ -51,7 +51,7 @@ std::string SpecialSteal::getIconResource()
 
 std::string SpecialSteal::getSerializationKey()
 {
-	return SpecialSteal::SaveKeySpecialSteal;
+	return SpecialSteal::SaveKey;
 }
 
 std::string SpecialSteal::getCardKey()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonSwordsman::MapKeyDemonSwordsman = "demon-swordsman";
+const std::string DemonSwordsman::MapKey = "demon-swordsman";
 HexusOpponentData* DemonSwordsman::HexusOpponentDataInstance = nullptr;
 const std::string DemonSwordsman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_SWORDSMAN";
 
@@ -31,7 +31,7 @@ DemonSwordsman* DemonSwordsman::deserialize(ValueMap& properties)
 }
 
 DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
-	DemonSwordsman::MapKeyDemonSwordsman,
+	DemonSwordsman::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonSwordsman_Emblem,
 	Size(212.0f, 268.0f),

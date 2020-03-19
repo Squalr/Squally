@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string ElrielHexusBehavior::MapKeyAttachedBehavior = "elriel-hexus";
+const std::string ElrielHexusBehavior::MapKey = "elriel-hexus";
 
 ElrielHexusBehavior* ElrielHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* ElrielHexusBehavior::generateReward()
 
 std::string ElrielHexusBehavior::getWinLossSaveKey()
 {
-	return ElrielHexusBehavior::MapKeyAttachedBehavior;
+	return ElrielHexusBehavior::MapKey;
 }
 
 std::string ElrielHexusBehavior::getBackgroundResource()

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string IceTerrain::MapKeyTerrainType = "ice";
+const std::string IceTerrain::MapKey = "ice";
 
 IceTerrain* IceTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ IceTerrain::IceTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return IceTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		IceTerrain::MapKeyTerrainType,
+		IceTerrain::MapKey,
 		TextureResources::IceTexture,
 		TerrainResources::Ice_Top,
 		TerrainResources::Ice_TopLeft,

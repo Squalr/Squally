@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 
-const std::string Torch::MapKeyTorch = "torch";
+const std::string Torch::MapKey = "torch";
 
 Torch* Torch::create(ValueMap& properties)
 {

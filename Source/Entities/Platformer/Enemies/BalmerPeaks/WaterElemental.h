@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyWaterElemental;
+	static const std::string MapKey;
+	
+protected:
+	WaterElemental(cocos2d::ValueMap& properties);
+	virtual ~WaterElemental();
 
 private:
 	typedef PlatformerEnemy super;
-	WaterElemental(cocos2d::ValueMap& properties);
-	~WaterElemental();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

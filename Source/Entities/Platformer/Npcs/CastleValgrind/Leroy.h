@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyLeroy;
+	static const std::string MapKey;
+
+protected:
+	Leroy(cocos2d::ValueMap& properties);
+	virtual ~Leroy();
 
 private:
 	typedef PlatformerFriendly super;
-	Leroy(cocos2d::ValueMap& properties);
-	~Leroy();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

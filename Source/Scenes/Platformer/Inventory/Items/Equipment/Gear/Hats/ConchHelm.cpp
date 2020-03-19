@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ConchHelm::SaveKeyConchHelm = "conch-helm";
+const std::string ConchHelm::SaveKey = "conch-helm";
 
 ConchHelm* ConchHelm::create()
 {
@@ -46,7 +46,7 @@ Item* ConchHelm::clone()
 
 std::string ConchHelm::getItemName()
 {
-	return ConchHelm::SaveKeyConchHelm;
+	return ConchHelm::SaveKey;
 }
 
 LocalizedString* ConchHelm::getString()
@@ -61,7 +61,7 @@ std::string ConchHelm::getIconResource()
 
 std::string ConchHelm::getSerializationKey()
 {
-	return ConchHelm::SaveKeyConchHelm;
+	return ConchHelm::SaveKey;
 }
 
 Vec2 ConchHelm::getDisplayOffset()

@@ -28,7 +28,7 @@
 
 using namespace cocos2d;
 
-const std::string LifeStone::MapKeyLifeStone = "life-stone";
+const std::string LifeStone::MapKey = "life-stone";
 
 LifeStone* LifeStone::create(ValueMap& properties)
 {
@@ -103,7 +103,7 @@ void LifeStone::onInteract()
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth());
 		});
-	}), Squally::MapKeySqually);
+	}), Squally::MapKey);
 }
 
 void LifeStone::onEndCollision()

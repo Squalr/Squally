@@ -15,7 +15,7 @@ class StoneButton : public HackableObject
 public:
 	static StoneButton* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyStoneButton;
+	static const std::string MapKey;
 
 protected:
 	StoneButton(cocos2d::ValueMap& properties);

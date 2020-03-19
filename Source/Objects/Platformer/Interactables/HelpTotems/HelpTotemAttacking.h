@@ -7,7 +7,7 @@ class HelpTotemAttacking : public HelpTotem
 public:
 	static HelpTotemAttacking* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyHelpTotemAttacking;
+	static const std::string MapKey;
 
 protected:
 	HelpTotemAttacking(cocos2d::ValueMap& properties);

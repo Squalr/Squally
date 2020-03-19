@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CrystalWand::SaveKeyCrystalWand = "crystal-wand";
+const std::string CrystalWand::SaveKey = "crystal-wand";
 
 CrystalWand* CrystalWand::create()
 {
@@ -46,7 +46,7 @@ Item* CrystalWand::clone()
 
 std::string CrystalWand::getItemName()
 {
-	return CrystalWand::SaveKeyCrystalWand;
+	return CrystalWand::SaveKey;
 }
 
 LocalizedString* CrystalWand::getString()
@@ -61,7 +61,7 @@ std::string CrystalWand::getIconResource()
 
 std::string CrystalWand::getSerializationKey()
 {
-	return CrystalWand::SaveKeyCrystalWand;
+	return CrystalWand::SaveKey;
 }
 
 Vec2 CrystalWand::getDisplayOffset()

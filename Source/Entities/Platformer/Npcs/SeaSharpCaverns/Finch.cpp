@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Finch::MapKeyFinch = "finch";
+const std::string Finch::MapKey = "finch";
 HexusOpponentData* Finch::HexusOpponentDataInstance = nullptr;
 const std::string Finch::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FINCH";
 
@@ -31,7 +31,7 @@ Finch* Finch::deserialize(ValueMap& properties)
 }
 
 Finch::Finch(ValueMap& properties) : super(properties,
-	Finch::MapKeyFinch,
+	Finch::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Finch_Emblem,
 	Size(112.0f, 160.0f),

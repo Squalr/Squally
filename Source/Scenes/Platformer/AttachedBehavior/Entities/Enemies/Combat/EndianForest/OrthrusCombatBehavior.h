@@ -7,7 +7,7 @@ class OrthrusCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static OrthrusCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	OrthrusCombatBehavior(GameObject* owner);

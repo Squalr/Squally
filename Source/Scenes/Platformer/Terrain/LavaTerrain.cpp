@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string LavaTerrain::MapKeyTerrainType = "lava";
+const std::string LavaTerrain::MapKey = "lava";
 
 LavaTerrain* LavaTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return LavaTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		LavaTerrain::MapKeyTerrainType,
+		LavaTerrain::MapKey,
 		TextureResources::LavaTexture,
 		TerrainResources::Lava_Top,
 		TerrainResources::Lava_TopLeft,

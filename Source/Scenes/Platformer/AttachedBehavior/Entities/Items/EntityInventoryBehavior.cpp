@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityInventoryBehavior::MapKeyAttachedBehavior = "entity-inventory";
+const std::string EntityInventoryBehavior::MapKey = "entity-inventory";
 
 EntityInventoryBehavior* EntityInventoryBehavior::create(GameObject* owner)
 {

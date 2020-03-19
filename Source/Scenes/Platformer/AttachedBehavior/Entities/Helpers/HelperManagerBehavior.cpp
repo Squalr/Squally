@@ -27,7 +27,7 @@
 
 using namespace cocos2d;
 
-const std::string HelperManagerBehavior::MapKeyAttachedBehavior = "entity-helper-manager";
+const std::string HelperManagerBehavior::MapKey = "entity-helper-manager";
 
 HelperManagerBehavior* HelperManagerBehavior::create(GameObject* owner)
 {
@@ -149,6 +149,6 @@ std::string HelperManagerBehavior::getHelperAttachedBehavior(std::string helperN
 
 void HelperManagerBehavior::buildAttachedBehaviorMap()
 {
-	this->attachedBehaviorMap[Guano::MapKeyGuano] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
-	this->attachedBehaviorMap[Snowman::MapKeySnowman] = GuanoBehaviorGroup::MapKeyAttachedBehavior;
+	this->attachedBehaviorMap[Guano::MapKey] = GuanoBehaviorGroup::MapKey;
+	this->attachedBehaviorMap[Snowman::MapKey] = GuanoBehaviorGroup::MapKey;
 }

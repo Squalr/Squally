@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Gaunt::MapKeyGaunt = "gaunt";
+const std::string Gaunt::MapKey = "gaunt";
 HexusOpponentData* Gaunt::HexusOpponentDataInstance = nullptr;
 const std::string Gaunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GAUNT";
 
@@ -31,7 +31,7 @@ Gaunt* Gaunt::deserialize(ValueMap& properties)
 }
 
 Gaunt::Gaunt(ValueMap& properties) : super(properties,
-	Gaunt::MapKeyGaunt,
+	Gaunt::MapKey,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Animations,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Emblem,
 	Size(112.0f, 160.0f),

@@ -15,7 +15,7 @@ class SquallySwimHackBehavior : public AttachedBehavior
 public:
 	static SquallySwimHackBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallySwimHackBehavior(GameObject* owner);

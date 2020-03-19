@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenBow::SaveKeyWoodenBow = "wooden-bow";
+const std::string WoodenBow::SaveKey = "wooden-bow";
 
 WoodenBow* WoodenBow::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenBow::clone()
 
 std::string WoodenBow::getItemName()
 {
-	return WoodenBow::SaveKeyWoodenBow;
+	return WoodenBow::SaveKey;
 }
 
 LocalizedString* WoodenBow::getString()
@@ -61,7 +61,7 @@ std::string WoodenBow::getIconResource()
 
 std::string WoodenBow::getSerializationKey()
 {
-	return WoodenBow::SaveKeyWoodenBow;
+	return WoodenBow::SaveKey;
 }
 
 Vec2 WoodenBow::getDisplayOffset()

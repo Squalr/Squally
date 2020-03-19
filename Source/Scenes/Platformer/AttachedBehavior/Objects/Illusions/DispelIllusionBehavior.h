@@ -9,7 +9,7 @@ class DispelIllusionBehavior : public AttachedBehavior
 public:
 	static DispelIllusionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	DispelIllusionBehavior(GameObject* owner);
@@ -28,5 +28,5 @@ private:
 	GameObject* object;
 	std::string group;
 
-	static const std::string MapPropertyGroup;
+	static const std::string PropertyGroup;
 };

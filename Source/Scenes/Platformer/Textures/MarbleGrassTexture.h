@@ -7,11 +7,12 @@ class MarbleGrassTexture : public TextureObject
 public:
 	static MarbleGrassTexture* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTextureType;
+	static const std::string MapKey;
+
+protected:
+	MarbleGrassTexture(cocos2d::ValueMap& properties);
+	virtual ~MarbleGrassTexture();
 
 private:
 	typedef TextureObject super;
-
-	MarbleGrassTexture(cocos2d::ValueMap& properties);
-	~MarbleGrassTexture();
 };

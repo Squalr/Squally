@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 const float CastleGate::DoorOpenDelta = 320.0f;
 
-const std::string CastleGate::MapKeyCastleGate = "castle-gate";
+const std::string CastleGate::MapKey = "castle-gate";
 
 CastleGate* CastleGate::create(ValueMap& properties)
 {

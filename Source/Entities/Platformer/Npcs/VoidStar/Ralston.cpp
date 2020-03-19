@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ralston::MapKeyRalston = "ralston";
+const std::string Ralston::MapKey = "ralston";
 HexusOpponentData* Ralston::HexusOpponentDataInstance = nullptr;
 const std::string Ralston::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RALSTON";
 
@@ -31,7 +31,7 @@ Ralston* Ralston::deserialize(ValueMap& properties)
 }
 
 Ralston::Ralston(ValueMap& properties) : super(properties,
-	Ralston::MapKeyRalston,
+	Ralston::MapKey,
 	EntityResources::Npcs_VoidStar_Ralston_Animations,
 	EntityResources::Npcs_VoidStar_Ralston_Emblem,
 	Size(112.0f, 160.0f),

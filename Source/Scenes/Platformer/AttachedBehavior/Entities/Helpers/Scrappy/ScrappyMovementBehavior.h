@@ -10,7 +10,7 @@ class ScrappyMovementBehavior : public AttachedBehavior
 public:
 	static ScrappyMovementBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyMovementBehavior(GameObject* owner);

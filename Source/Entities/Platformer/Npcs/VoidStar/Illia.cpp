@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Illia::MapKeyIllia = "illia";
+const std::string Illia::MapKey = "illia";
 HexusOpponentData* Illia::HexusOpponentDataInstance = nullptr;
 const std::string Illia::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ILLIA";
 
@@ -31,7 +31,7 @@ Illia* Illia::deserialize(ValueMap& properties)
 }
 
 Illia::Illia(ValueMap& properties) : super(properties,
-	Illia::MapKeyIllia,
+	Illia::MapKey,
 	EntityResources::Npcs_VoidStar_Illia_Animations,
 	EntityResources::Npcs_VoidStar_Illia_Emblem,
 	Size(112.0f, 160.0f),

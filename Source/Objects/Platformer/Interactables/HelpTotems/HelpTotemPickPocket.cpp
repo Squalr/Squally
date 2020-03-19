@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string HelpTotemPickPocket::MapKeyHelpTotemPickPocket = "help-totem-pick-pocket";
+const std::string HelpTotemPickPocket::MapKey = "help-totem-pick-pocket";
 
 HelpTotemPickPocket* HelpTotemPickPocket::create(ValueMap& properties)
 {
@@ -48,7 +48,7 @@ void HelpTotemPickPocket::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKeyGuano)
+	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKey)
 	{
 		this->deactivate();
 	}

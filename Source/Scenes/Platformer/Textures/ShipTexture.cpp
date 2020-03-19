@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string ShipTexture::MapKeyTextureType = "ship";
+const std::string ShipTexture::MapKey = "ship";
 
 ShipTexture* ShipTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ ShipTexture* ShipTexture::create(ValueMap& properties)
 ShipTexture::ShipTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		ShipTexture::MapKeyTextureType,
+		ShipTexture::MapKey,
 		TextureResources::ShipTexture,
 		Color4B(11, 30, 39, 255)))
 {

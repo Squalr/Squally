@@ -12,12 +12,12 @@
 
 using namespace cocos2d;
 
-const std::string CombatSpawn::MapKeyCombatSpawn = "combat-spawn";
+const std::string CombatSpawn::MapKey = "combat-spawn";
 const std::string CombatSpawn::MapKeySpawnType = "spawn-type";
 const std::string CombatSpawn::MapKeySpawnOrder = "spawn-order";
 const std::string CombatSpawn::MapKeyPlayerSpawn = "player";
 const std::string CombatSpawn::MapKeyEnemySpawn = "enemy";
-const std::string CombatSpawn::MapKeyPropertyZoom = "zoom";
+const std::string CombatSpawn::PropertyZoom = "zoom";
 
 CombatSpawn* CombatSpawn::create(ValueMap& properties)
 {
@@ -31,7 +31,7 @@ CombatSpawn* CombatSpawn::create(ValueMap& properties)
 CombatSpawn::CombatSpawn(ValueMap& properties) : super(properties)
 {
 	this->spawnType = SpawnType::Player;
-	this->zoom = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeyPropertyZoom, Value(1.0f)).asFloat();
+	this->zoom = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::PropertyZoom, Value(1.0f)).asFloat();
 	this->spawnOrder = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeySpawnOrder, Value(0)).asInt();
 
 	std::string spawnKey = GameUtils::getKeyOrDefault(this->properties, CombatSpawn::MapKeySpawnType, Value("")).asString();

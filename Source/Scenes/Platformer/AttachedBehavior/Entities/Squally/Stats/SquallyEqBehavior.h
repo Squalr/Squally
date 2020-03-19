@@ -9,7 +9,7 @@ class SquallyEqBehavior : public AttachedBehavior
 public:
 	static SquallyEqBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyEqBehavior(GameObject* owner);

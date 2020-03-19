@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CagedBeaver::MapKeyCagedBeaver = "caged-beaver";
+const std::string CagedBeaver::MapKey = "caged-beaver";
 
 CagedBeaver* CagedBeaver::create(ValueMap& properties)
 {

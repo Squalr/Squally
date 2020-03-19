@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicMace::SaveKeyDemonicMace = "demonic-mace";
+const std::string DemonicMace::SaveKey = "demonic-mace";
 
 DemonicMace* DemonicMace::create()
 {
@@ -46,7 +46,7 @@ Item* DemonicMace::clone()
 
 std::string DemonicMace::getItemName()
 {
-	return DemonicMace::SaveKeyDemonicMace;
+	return DemonicMace::SaveKey;
 }
 
 LocalizedString* DemonicMace::getString()
@@ -61,7 +61,7 @@ std::string DemonicMace::getIconResource()
 
 std::string DemonicMace::getSerializationKey()
 {
-	return DemonicMace::SaveKeyDemonicMace;
+	return DemonicMace::SaveKey;
 }
 
 Vec2 DemonicMace::getDisplayOffset()

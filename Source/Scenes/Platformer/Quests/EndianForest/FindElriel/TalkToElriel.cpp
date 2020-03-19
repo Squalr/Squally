@@ -58,17 +58,17 @@ void TalkToElriel::onLoad(QuestState questState)
 		{
 			this->elriel->despawn();
 		}
-	}, Elriel::MapKeyElriel);
+	}, Elriel::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void TalkToElriel::onActivate(bool isActiveThroughSkippable)

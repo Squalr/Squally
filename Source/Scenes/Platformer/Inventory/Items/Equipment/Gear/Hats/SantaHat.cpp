@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SantaHat::SaveKeySantaHat = "santa-hat";
+const std::string SantaHat::SaveKey = "santa-hat";
 
 SantaHat* SantaHat::create()
 {
@@ -46,7 +46,7 @@ Item* SantaHat::clone()
 
 std::string SantaHat::getItemName()
 {
-	return SantaHat::SaveKeySantaHat;
+	return SantaHat::SaveKey;
 }
 
 LocalizedString* SantaHat::getString()
@@ -61,7 +61,7 @@ std::string SantaHat::getIconResource()
 
 std::string SantaHat::getSerializationKey()
 {
-	return SantaHat::SaveKeySantaHat;
+	return SantaHat::SaveKey;
 }
 
 Vec2 SantaHat::getDisplayOffset()

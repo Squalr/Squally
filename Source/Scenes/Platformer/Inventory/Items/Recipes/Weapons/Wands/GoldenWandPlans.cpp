@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenWandPlans::SaveKeyGoldenWandPlans = "golden-wand-plans";
+const std::string GoldenWandPlans::SaveKey = "golden-wand-plans";
 
 GoldenWandPlans* GoldenWandPlans::create()
 {
@@ -52,7 +52,7 @@ Item* GoldenWandPlans::clone()
 
 std::string GoldenWandPlans::getItemName()
 {
-	return GoldenWandPlans::SaveKeyGoldenWandPlans;
+	return GoldenWandPlans::SaveKey;
 }
 
 LocalizedString* GoldenWandPlans::getString()
@@ -72,5 +72,5 @@ std::string GoldenWandPlans::getCraftedItemIconResource()
 
 std::string GoldenWandPlans::getSerializationKey()
 {
-	return GoldenWandPlans::SaveKeyGoldenWandPlans;
+	return GoldenWandPlans::SaveKey;
 }

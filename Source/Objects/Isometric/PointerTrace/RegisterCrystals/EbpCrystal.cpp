@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EbpCrystal::MapKeyEbpCrystal = "ebp-crystal";
+const std::string EbpCrystal::MapKey = "ebp-crystal";
 
 EbpCrystal* EbpCrystal::create(ValueMap& properties)
 {

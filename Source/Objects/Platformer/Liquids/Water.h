@@ -17,7 +17,7 @@ class Water : public GameObject
 public:
 	static Water* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWater;
+	static const std::string MapKey;
 
 protected:
 	Water(cocos2d::ValueMap& properties);
@@ -45,5 +45,5 @@ private:
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
 
-	static const std::string MapKeyPropertyDisablePhysics;
+	static const std::string PropertyDisablePhysics;
 };

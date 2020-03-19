@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodDoorSpawn::MapKeyWoodDoorSpawn = "spawn-wood-door";
+const std::string WoodDoorSpawn::MapKey = "spawn-wood-door";
 
 WoodDoorSpawn* WoodDoorSpawn::create(ValueMap& properties)
 {

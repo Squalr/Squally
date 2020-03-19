@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Agnes::MapKeyAgnes = "agnes";
+const std::string Agnes::MapKey = "agnes";
 HexusOpponentData* Agnes::HexusOpponentDataInstance = nullptr;
 const std::string Agnes::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AGNES";
 
@@ -31,7 +31,7 @@ Agnes* Agnes::deserialize(ValueMap& properties)
 }
 
 Agnes::Agnes(ValueMap& properties) : super(properties,
-	Agnes::MapKeyAgnes,
+	Agnes::MapKey,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
 	Size(360.0f, 420.0f),

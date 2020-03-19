@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string CameraFocus::MapKeyCameraFocus = "camera-focus";
+const std::string CameraFocus::MapKey = "camera-focus";
 const std::string CameraFocus::MapKeyZoom = "zoom";
 const std::string CameraFocus::MapKeyScrollBoundsX = "scroll-bounds-x";
 const std::string CameraFocus::MapKeyScrollBoundsY = "scroll-bounds-y";

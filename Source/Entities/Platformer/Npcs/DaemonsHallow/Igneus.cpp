@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Igneus::MapKeyIgneus = "igneus";
+const std::string Igneus::MapKey = "igneus";
 HexusOpponentData* Igneus::HexusOpponentDataInstance = nullptr;
 const std::string Igneus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_IGNEUS";
 
@@ -31,7 +31,7 @@ Igneus* Igneus::deserialize(ValueMap& properties)
 }
 
 Igneus::Igneus(ValueMap& properties) : super(properties,
-	Igneus::MapKeyIgneus,
+	Igneus::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Igneus_Emblem,
 	Size(112.0f, 160.0f),

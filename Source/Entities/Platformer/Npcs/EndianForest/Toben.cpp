@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Toben::MapKeyToben = "toben";
+const std::string Toben::MapKey = "toben";
 HexusOpponentData* Toben::HexusOpponentDataInstance = nullptr;
 const std::string Toben::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TOBEN";
 
@@ -31,7 +31,7 @@ Toben* Toben::deserialize(ValueMap& properties)
 }
 
 Toben::Toben(ValueMap& properties) : super(properties,
-	Toben::MapKeyToben,
+	Toben::MapKey,
 	EntityResources::Npcs_EndianForest_Toben_Animations,
 	EntityResources::Npcs_EndianForest_Toben_Emblem,
 	Size(112.0f, 160.0f),

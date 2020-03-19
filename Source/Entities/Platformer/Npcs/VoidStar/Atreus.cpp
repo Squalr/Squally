@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Atreus::MapKeyAtreus = "atreus";
+const std::string Atreus::MapKey = "atreus";
 HexusOpponentData* Atreus::HexusOpponentDataInstance = nullptr;
 const std::string Atreus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ATREUS";
 
@@ -31,7 +31,7 @@ Atreus* Atreus::deserialize(ValueMap& properties)
 }
 
 Atreus::Atreus(ValueMap& properties) : super(properties,
-	Atreus::MapKeyAtreus,
+	Atreus::MapKey,
 	EntityResources::Npcs_VoidStar_Atreus_Animations,
 	EntityResources::Npcs_VoidStar_Atreus_Emblem,
 	Size(112.0f, 160.0f),

@@ -31,5 +31,5 @@ private:
 	cocos2d::Sprite* front;
 
 	static const cocos2d::Vec2 Offset;
-	static const std::string MapPropertyColor;
+	static const std::string PropertyColor;
 };

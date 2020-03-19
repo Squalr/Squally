@@ -18,7 +18,7 @@ class MulDoor : public GatePuzzleDoor
 public:
 	static MulDoor* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyMulDoor;
+	static const std::string MapKey;
 
 protected:
 	MulDoor(cocos2d::ValueMap& properties);

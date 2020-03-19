@@ -10,7 +10,7 @@ class Lever : public InteractObject
 public:
 	static Lever* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyLever;
+	static const std::string MapKey;
 
 protected:
 	Lever(cocos2d::ValueMap& properties);

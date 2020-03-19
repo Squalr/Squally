@@ -13,7 +13,7 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyTrainingDummy;
+	static const std::string MapKey;
 
 protected:
 	TrainingDummy(cocos2d::ValueMap& properties);

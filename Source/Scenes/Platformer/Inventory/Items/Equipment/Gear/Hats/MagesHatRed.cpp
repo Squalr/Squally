@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MagesHatRed::SaveKeyMagesHatRed = "mages-hat-red";
+const std::string MagesHatRed::SaveKey = "mages-hat-red";
 
 MagesHatRed* MagesHatRed::create()
 {
@@ -46,7 +46,7 @@ Item* MagesHatRed::clone()
 
 std::string MagesHatRed::getItemName()
 {
-	return MagesHatRed::SaveKeyMagesHatRed;
+	return MagesHatRed::SaveKey;
 }
 
 LocalizedString* MagesHatRed::getString()
@@ -61,7 +61,7 @@ std::string MagesHatRed::getIconResource()
 
 std::string MagesHatRed::getSerializationKey()
 {
-	return MagesHatRed::SaveKeyMagesHatRed;
+	return MagesHatRed::SaveKey;
 }
 
 Vec2 MagesHatRed::getDisplayOffset()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Aster::MapKeyAster = "aster";
+const std::string Aster::MapKey = "aster";
 HexusOpponentData* Aster::HexusOpponentDataInstance = nullptr;
 const std::string Aster::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASTER";
 
@@ -31,7 +31,7 @@ Aster* Aster::deserialize(ValueMap& properties)
 }
 
 Aster::Aster(ValueMap& properties) : super(properties,
-	Aster::MapKeyAster,
+	Aster::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Aster_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aster_Emblem,
 	Size(112.0f, 160.0f),

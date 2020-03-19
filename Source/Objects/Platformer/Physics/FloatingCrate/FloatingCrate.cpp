@@ -26,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_GET_DENSITY 1
 
-const std::string FloatingCrate::MapKeyFloatingCrate = "floating-crate";
+const std::string FloatingCrate::MapKey = "floating-crate";
 
 FloatingCrate* FloatingCrate::create(ValueMap& properties)
 {
@@ -86,7 +86,7 @@ void FloatingCrate::registerHackables()
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::HackableCodeInfo(
-				FloatingCrate::MapKeyFloatingCrate,
+				FloatingCrate::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingCrateGetDensityPreview::create(),

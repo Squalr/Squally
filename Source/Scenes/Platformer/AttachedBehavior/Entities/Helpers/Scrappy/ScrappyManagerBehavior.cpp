@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyManagerBehavior::MapKeyAttachedBehavior = "scrappy-manager";
+const std::string ScrappyManagerBehavior::MapKey = "scrappy-manager";
 
 ScrappyManagerBehavior* ScrappyManagerBehavior::create(GameObject* owner)
 {
@@ -86,8 +86,8 @@ void ScrappyManagerBehavior::spawnScrappy()
 	ValueMap properties = ValueMap();
 
 	properties[GameObject::MapKeyType] = Value(PlatformerEntityDeserializer::MapKeyTypeEntity);
-	properties[GameObject::MapKeyName] = Value(Scrappy::MapKeyScrappy);
-	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKeyAttachedBehavior);
+	properties[GameObject::MapKeyName] = Value(Scrappy::MapKey);
+	properties[GameObject::MapKeyAttachedBehavior] = Value(ScrappyBehaviorGroup::MapKey);
 	properties[GameObject::MapKeyFlipX] = Value(true);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(

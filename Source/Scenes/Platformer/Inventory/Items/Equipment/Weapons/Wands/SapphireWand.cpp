@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SapphireWand::SaveKeySapphireWand = "sapphire-wand";
+const std::string SapphireWand::SaveKey = "sapphire-wand";
 
 SapphireWand* SapphireWand::create()
 {
@@ -46,7 +46,7 @@ Item* SapphireWand::clone()
 
 std::string SapphireWand::getItemName()
 {
-	return SapphireWand::SaveKeySapphireWand;
+	return SapphireWand::SaveKey;
 }
 
 LocalizedString* SapphireWand::getString()
@@ -61,7 +61,7 @@ std::string SapphireWand::getIconResource()
 
 std::string SapphireWand::getSerializationKey()
 {
-	return SapphireWand::SaveKeySapphireWand;
+	return SapphireWand::SaveKey;
 }
 
 Vec2 SapphireWand::getDisplayOffset()

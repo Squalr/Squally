@@ -11,7 +11,7 @@ class SquallyEquipmentVisualBehavior : public AttachedBehavior
 public:
 	static SquallyEquipmentVisualBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyEquipmentVisualBehavior(GameObject* owner);

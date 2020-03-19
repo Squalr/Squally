@@ -11,7 +11,7 @@ class AraBehavior : public AttachedBehavior
 public:
 	static AraBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	AraBehavior(GameObject* owner);

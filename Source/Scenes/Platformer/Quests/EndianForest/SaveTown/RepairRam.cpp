@@ -74,12 +74,12 @@ void RepairRam::onLoad(QuestState questState)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 	
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Ram>(this, [=](Ram* ram)
 	{
@@ -101,7 +101,7 @@ void RepairRam::onLoad(QuestState questState)
 				this->refreshWheels();
 			});
 		}
-	}, Ram::MapKeyRam);
+	}, Ram::MapKey);
 
 	this->repairInteract->setOpenCallback([=]()
 	{

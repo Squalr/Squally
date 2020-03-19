@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CastleTerrain::MapKeyTerrainType = "castle";
+const std::string CastleTerrain::MapKey = "castle";
 
 CastleTerrain* CastleTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return CastleTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		CastleTerrain::MapKeyTerrainType,
+		CastleTerrain::MapKey,
 		TextureResources::CastleTexture,
 		TerrainResources::Castle_Top,
 		TerrainResources::Castle_TopLeft,

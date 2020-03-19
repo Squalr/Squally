@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Assassin::MapKeyAssassin = "assassin";
+const std::string Assassin::MapKey = "assassin";
 HexusOpponentData* Assassin::HexusOpponentDataInstance = nullptr;
 const std::string Assassin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASSASSIN";
 
@@ -31,7 +31,7 @@ Assassin* Assassin::deserialize(ValueMap& properties)
 }
 
 Assassin::Assassin(ValueMap& properties) : super(properties,
-	Assassin::MapKeyAssassin,
+	Assassin::MapKey,
 	EntityResources::Enemies_VoidStar_Assassin_Animations,
 	EntityResources::Enemies_VoidStar_Assassin_Emblem,
 	Size(278.0f, 288.0f),

@@ -20,7 +20,7 @@ public:
 
 	void enableClippy();
 
-	static const std::string MapKeyPropertyRestorePotionTutorial;
+	static const std::string PropertyRestorePotionTutorial;
 	static const std::string HasteIdentifier;
 
 protected:

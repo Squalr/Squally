@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenWand::SaveKeyGoldenWand = "golden-wand";
+const std::string GoldenWand::SaveKey = "golden-wand";
 
 GoldenWand* GoldenWand::create()
 {
@@ -46,7 +46,7 @@ Item* GoldenWand::clone()
 
 std::string GoldenWand::getItemName()
 {
-	return GoldenWand::SaveKeyGoldenWand;
+	return GoldenWand::SaveKey;
 }
 
 LocalizedString* GoldenWand::getString()
@@ -61,7 +61,7 @@ std::string GoldenWand::getIconResource()
 
 std::string GoldenWand::getSerializationKey()
 {
-	return GoldenWand::SaveKeyGoldenWand;
+	return GoldenWand::SaveKey;
 }
 
 Vec2 GoldenWand::getDisplayOffset()

@@ -10,7 +10,7 @@ class EnemyCombatCollisionBehavior : public EntityCollisionBehaviorBase
 public:
 	static EnemyCombatCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EnemyCombatCollisionBehavior(GameObject* owner);

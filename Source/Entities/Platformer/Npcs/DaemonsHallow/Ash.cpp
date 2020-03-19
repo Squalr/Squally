@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ash::MapKeyAsh = "ash";
+const std::string Ash::MapKey = "ash";
 HexusOpponentData* Ash::HexusOpponentDataInstance = nullptr;
 const std::string Ash::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASH";
 
@@ -31,7 +31,7 @@ Ash* Ash::deserialize(ValueMap& properties)
 }
 
 Ash::Ash(ValueMap& properties) : super(properties,
-	Ash::MapKeyAsh,
+	Ash::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Ash_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ash_Emblem,
 	Size(112.0f, 160.0f),

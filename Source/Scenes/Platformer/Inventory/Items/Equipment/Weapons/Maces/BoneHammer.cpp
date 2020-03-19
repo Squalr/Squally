@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneHammer::SaveKeyBoneHammer = "bone-hammer";
+const std::string BoneHammer::SaveKey = "bone-hammer";
 
 BoneHammer* BoneHammer::create()
 {
@@ -46,7 +46,7 @@ Item* BoneHammer::clone()
 
 std::string BoneHammer::getItemName()
 {
-	return BoneHammer::SaveKeyBoneHammer;
+	return BoneHammer::SaveKey;
 }
 
 LocalizedString* BoneHammer::getString()
@@ -61,7 +61,7 @@ std::string BoneHammer::getIconResource()
 
 std::string BoneHammer::getSerializationKey()
 {
-	return BoneHammer::SaveKeyBoneHammer;
+	return BoneHammer::SaveKey;
 }
 
 Vec2 BoneHammer::getDisplayOffset()

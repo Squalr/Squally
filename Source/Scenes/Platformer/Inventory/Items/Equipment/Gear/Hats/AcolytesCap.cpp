@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string AcolytesCap::SaveKeyAcolytesCap = "acolytes-cap";
+const std::string AcolytesCap::SaveKey = "acolytes-cap";
 
 AcolytesCap* AcolytesCap::create()
 {
@@ -46,7 +46,7 @@ Item* AcolytesCap::clone()
 
 std::string AcolytesCap::getItemName()
 {
-	return AcolytesCap::SaveKeyAcolytesCap;
+	return AcolytesCap::SaveKey;
 }
 
 LocalizedString* AcolytesCap::getString()
@@ -61,7 +61,7 @@ std::string AcolytesCap::getIconResource()
 
 std::string AcolytesCap::getSerializationKey()
 {
-	return AcolytesCap::SaveKeyAcolytesCap;
+	return AcolytesCap::SaveKey;
 }
 
 Vec2 AcolytesCap::getDisplayOffset()

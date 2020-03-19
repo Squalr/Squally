@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string GuanoPickPocketBehavior::MapKeyAttachedBehavior = "pick-pocketer";
+const std::string GuanoPickPocketBehavior::MapKey = "pick-pocketer";
 
 GuanoPickPocketBehavior* GuanoPickPocketBehavior::create(GameObject* owner)
 {

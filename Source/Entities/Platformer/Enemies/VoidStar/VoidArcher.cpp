@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidArcher::MapKeyVoidArcher = "void-archer";
+const std::string VoidArcher::MapKey = "void-archer";
 HexusOpponentData* VoidArcher::HexusOpponentDataInstance = nullptr;
 const std::string VoidArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VOID_ARCHER";
 
@@ -31,7 +31,7 @@ VoidArcher* VoidArcher::deserialize(ValueMap& properties)
 }
 
 VoidArcher::VoidArcher(ValueMap& properties) : super(properties,
-	VoidArcher::MapKeyVoidArcher,
+	VoidArcher::MapKey,
 	EntityResources::Enemies_VoidStar_VoidArcher_Animations,
 	EntityResources::Enemies_VoidStar_VoidArcher_Emblem,
 	Size(196.0f, 348.0f),

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SamuraiHat::SaveKeySamuraiHat = "samurai-hat";
+const std::string SamuraiHat::SaveKey = "samurai-hat";
 
 SamuraiHat* SamuraiHat::create()
 {
@@ -46,7 +46,7 @@ Item* SamuraiHat::clone()
 
 std::string SamuraiHat::getItemName()
 {
-	return SamuraiHat::SaveKeySamuraiHat;
+	return SamuraiHat::SaveKey;
 }
 
 LocalizedString* SamuraiHat::getString()
@@ -61,7 +61,7 @@ std::string SamuraiHat::getIconResource()
 
 std::string SamuraiHat::getSerializationKey()
 {
-	return SamuraiHat::SaveKeySamuraiHat;
+	return SamuraiHat::SaveKey;
 }
 
 Vec2 SamuraiHat::getDisplayOffset()

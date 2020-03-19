@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string ChestBase::MapKeyPropertyRewardPool = "reward-pool";
+const std::string ChestBase::PropertyRewardPool = "reward-pool";
 const std::string ChestBase::SaveKeyIsOpen = "SAVE_KEY_IS_OPEN";
 
 ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties)
@@ -43,7 +43,7 @@ ChestBase::ChestBase(ValueMap& properties, Size interactSize) : super(properties
 	ValueMap valueMap = ValueMap();
 
 	valueMap[GameObject::MapKeyType] = ChestPoolDeserializer::MapKeyTypeChestPool;
-	valueMap[GameObject::MapKeyName] = GameUtils::getKeyOrDefault(this->properties, ChestBase::MapKeyPropertyRewardPool, Value("")).asString();
+	valueMap[GameObject::MapKeyName] = GameUtils::getKeyOrDefault(this->properties, ChestBase::PropertyRewardPool, Value("")).asString();
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs deserializeArgs = ObjectDeserializer::ObjectDeserializationRequestArgs(valueMap, [=](ObjectDeserializer::ObjectDeserializationArgs args)
 	{

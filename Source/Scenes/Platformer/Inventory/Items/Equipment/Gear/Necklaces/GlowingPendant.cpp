@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GlowingPendant::SaveKeyGlowingPendant = "glowing-pendant";
+const std::string GlowingPendant::SaveKey = "glowing-pendant";
 
 GlowingPendant* GlowingPendant::create()
 {
@@ -46,7 +46,7 @@ Item* GlowingPendant::clone()
 
 std::string GlowingPendant::getItemName()
 {
-	return GlowingPendant::SaveKeyGlowingPendant;
+	return GlowingPendant::SaveKey;
 }
 
 LocalizedString* GlowingPendant::getString()
@@ -61,5 +61,5 @@ std::string GlowingPendant::getIconResource()
 
 std::string GlowingPendant::getSerializationKey()
 {
-	return GlowingPendant::SaveKeyGlowingPendant;
+	return GlowingPendant::SaveKey;
 }

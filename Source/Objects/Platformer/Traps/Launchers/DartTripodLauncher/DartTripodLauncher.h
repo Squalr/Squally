@@ -12,7 +12,7 @@ class DartTripodLauncher : public PivotLauncher
 public:
 	static DartTripodLauncher* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyDartTripodLauncher;
+	static const std::string MapKey;
 
 protected:
 	DartTripodLauncher(cocos2d::ValueMap& properties);

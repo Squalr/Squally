@@ -7,11 +7,12 @@ class BrickInteriorTexture : public TextureObject
 public:
 	static BrickInteriorTexture* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTextureType;
+	static const std::string MapKey;
+
+protected:
+	BrickInteriorTexture(cocos2d::ValueMap& properties);
+	virtual ~BrickInteriorTexture();
 
 private:
 	typedef TextureObject super;
-
-	BrickInteriorTexture(cocos2d::ValueMap& properties);
-	~BrickInteriorTexture();
 };

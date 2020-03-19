@@ -14,7 +14,7 @@ class FloatingAsteroid : public DensityObject
 public:
 	static FloatingAsteroid* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyFloatingAsteroid;
+	static const std::string MapKey;
 
 protected:
 	FloatingAsteroid(cocos2d::ValueMap& properties);

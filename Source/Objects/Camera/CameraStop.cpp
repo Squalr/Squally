@@ -10,10 +10,10 @@
 
 using namespace cocos2d;
 
-const std::string CameraStop::MapKeyCameraStop = "camera-stop";
-const std::string CameraStop::MapKeyPropertySoft = "soft";
-const std::string CameraStop::MapKeyPropertyNoX = "no-x";
-const std::string CameraStop::MapKeyPropertyNoY = "no-y";
+const std::string CameraStop::MapKey = "camera-stop";
+const std::string CameraStop::PropertySoft = "soft";
+const std::string CameraStop::PropertyNoX = "no-x";
+const std::string CameraStop::PropertyNoY = "no-y";
 
 CameraStop* CameraStop::create(ValueMap& properties)
 {
@@ -26,9 +26,9 @@ CameraStop* CameraStop::create(ValueMap& properties)
 
 CameraStop::CameraStop(ValueMap& properties) : super(properties)
 {
-	this->soft = GameUtils::getKeyOrDefault(this->properties, CameraStop::MapKeyPropertySoft, Value(false)).asBool();
-	this->noX = GameUtils::getKeyOrDefault(this->properties, CameraStop::MapKeyPropertyNoX, Value(false)).asBool();
-	this->noY = GameUtils::getKeyOrDefault(this->properties, CameraStop::MapKeyPropertyNoY, Value(false)).asBool();
+	this->soft = GameUtils::getKeyOrDefault(this->properties, CameraStop::PropertySoft, Value(false)).asBool();
+	this->noX = GameUtils::getKeyOrDefault(this->properties, CameraStop::PropertyNoX, Value(false)).asBool();
+	this->noY = GameUtils::getKeyOrDefault(this->properties, CameraStop::PropertyNoY, Value(false)).asBool();
 	this->debugDraw = DrawNode::create();
 	this->stopSize = Size(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),

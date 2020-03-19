@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeySkeletalArcher;
+	static const std::string MapKey;
+	
+protected:
+	SkeletalArcher(cocos2d::ValueMap& properties);
+	virtual ~SkeletalArcher();
 
 private:
 	typedef PlatformerEnemy super;
-	SkeletalArcher(cocos2d::ValueMap& properties);
-	~SkeletalArcher();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

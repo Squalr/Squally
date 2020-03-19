@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalArcher::MapKeySkeletalArcher = "skeletal-archer";
+const std::string SkeletalArcher::MapKey = "skeletal-archer";
 HexusOpponentData* SkeletalArcher::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalArcher::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_ARCHER";
 
@@ -31,7 +31,7 @@ SkeletalArcher* SkeletalArcher::deserialize(ValueMap& properties)
 }
 
 SkeletalArcher::SkeletalArcher(ValueMap& properties) : super(properties,
-	SkeletalArcher::MapKeySkeletalArcher,
+	SkeletalArcher::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalArcher_Emblem,
 	Size(128.0f, 216.0f),

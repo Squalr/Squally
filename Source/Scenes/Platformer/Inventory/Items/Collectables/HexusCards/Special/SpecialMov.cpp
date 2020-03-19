@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialMov::SaveKeySpecialMov = "special-mov";
+const std::string SpecialMov::SaveKey = "special-mov";
 
 SpecialMov* SpecialMov::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialMov::clone()
 
 std::string SpecialMov::getItemName()
 {
-	return SpecialMov::SaveKeySpecialMov;
+	return SpecialMov::SaveKey;
 }
 
 LocalizedString* SpecialMov::getString()
@@ -51,7 +51,7 @@ std::string SpecialMov::getIconResource()
 
 std::string SpecialMov::getSerializationKey()
 {
-	return SpecialMov::SaveKeySpecialMov;
+	return SpecialMov::SaveKey;
 }
 
 std::string SpecialMov::getCardKey()

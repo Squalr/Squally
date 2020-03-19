@@ -9,7 +9,7 @@ class Airship2 : public HackableObject
 public:
 	static Airship2* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyAirship2;
+	static const std::string MapKey;
 
 protected:
 	Airship2(cocos2d::ValueMap& properties);

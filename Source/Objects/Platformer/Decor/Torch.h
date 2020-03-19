@@ -18,11 +18,11 @@ public:
 	void torchOn();
 	void torchOff();
 
-	static const std::string MapKeyTorch;
+	static const std::string MapKey;
 
 protected:
 	Torch(cocos2d::ValueMap& properties);
-	~Torch();
+	virtual ~Torch();
 
 	void onEnter() override;
 	void initializePositions() override;

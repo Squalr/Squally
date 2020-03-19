@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string PolyphemusHexusBehavior::MapKeyAttachedBehavior = "polyphemus-hexus";
+const std::string PolyphemusHexusBehavior::MapKey = "polyphemus-hexus";
 
 PolyphemusHexusBehavior* PolyphemusHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* PolyphemusHexusBehavior::generateReward()
 
 std::string PolyphemusHexusBehavior::getWinLossSaveKey()
 {
-	return PolyphemusHexusBehavior::MapKeyAttachedBehavior;
+	return PolyphemusHexusBehavior::MapKey;
 }
 
 std::string PolyphemusHexusBehavior::getBackgroundResource()

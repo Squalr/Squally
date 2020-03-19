@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Chiron::MapKeyChiron = "chiron";
+const std::string Chiron::MapKey = "chiron";
 HexusOpponentData* Chiron::HexusOpponentDataInstance = nullptr;
 const std::string Chiron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CHIRON";
 
@@ -31,7 +31,7 @@ Chiron* Chiron::deserialize(ValueMap& properties)
 }
 
 Chiron::Chiron(ValueMap& properties) : super(properties,
-	Chiron::MapKeyChiron,
+	Chiron::MapKey,
 	EntityResources::Npcs_EndianForest_Chiron_Animations,
 	EntityResources::Npcs_EndianForest_Chiron_Emblem,
 	Size(160.0f, 224.0f),

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Wood::SaveKeyWood = "wood";
+const std::string Wood::SaveKey = "wood";
 
 Wood* Wood::create()
 {
@@ -35,7 +35,7 @@ Item* Wood::clone()
 
 std::string Wood::getItemName()
 {
-	return Wood::SaveKeyWood;
+	return Wood::SaveKey;
 }
 
 LocalizedString* Wood::getString()
@@ -50,5 +50,5 @@ std::string Wood::getIconResource()
 
 std::string Wood::getSerializationKey()
 {
-	return Wood::SaveKeyWood;
+	return Wood::SaveKey;
 }

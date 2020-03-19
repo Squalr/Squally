@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string DreadmournPlans::SaveKeyDreadmournPlans = "dread-mourn-plans";
+const std::string DreadmournPlans::SaveKey = "dread-mourn-plans";
 
 DreadmournPlans* DreadmournPlans::create()
 {
@@ -52,7 +52,7 @@ Item* DreadmournPlans::clone()
 
 std::string DreadmournPlans::getItemName()
 {
-	return DreadmournPlans::SaveKeyDreadmournPlans;
+	return DreadmournPlans::SaveKey;
 }
 
 LocalizedString* DreadmournPlans::getString()
@@ -72,5 +72,5 @@ std::string DreadmournPlans::getCraftedItemIconResource()
 
 std::string DreadmournPlans::getSerializationKey()
 {
-	return DreadmournPlans::SaveKeyDreadmournPlans;
+	return DreadmournPlans::SaveKey;
 }

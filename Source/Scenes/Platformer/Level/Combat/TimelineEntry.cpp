@@ -343,7 +343,7 @@ void TimelineEntry::tryPerformActions()
 		ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
 		{
 			GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-		}), CameraFocus::MapKeyCameraFocus);
+		}), CameraFocus::MapKey);
 	}
 	// Progress complete, do the cast
 	else if (this->progress > 1.0f)

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialXor::SaveKeySpecialXor = "special-xor";
+const std::string SpecialXor::SaveKey = "special-xor";
 
 SpecialXor* SpecialXor::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialXor::clone()
 
 std::string SpecialXor::getItemName()
 {
-	return SpecialXor::SaveKeySpecialXor;
+	return SpecialXor::SaveKey;
 }
 
 LocalizedString* SpecialXor::getString()
@@ -51,7 +51,7 @@ std::string SpecialXor::getIconResource()
 
 std::string SpecialXor::getSerializationKey()
 {
-	return SpecialXor::SaveKeySpecialXor;
+	return SpecialXor::SaveKey;
 }
 
 std::string SpecialXor::getCardKey()

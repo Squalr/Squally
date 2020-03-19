@@ -12,7 +12,7 @@ class Ship : public HackableObject
 public:
 	static Ship* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyShip;
+	static const std::string MapKey;
 
 protected:
 	Ship(cocos2d::ValueMap& properties);

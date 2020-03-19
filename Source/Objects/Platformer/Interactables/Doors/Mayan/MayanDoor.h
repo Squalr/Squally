@@ -22,7 +22,7 @@ public:
 	void lock(bool animate = true) override;
 	void unlock(bool animate = true) override;
 
-	static const std::string MapKeyMayanDoor;
+	static const std::string MapKey;
 
 protected:
 	MayanDoor(cocos2d::ValueMap& properties);

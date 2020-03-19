@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Appolo::MapKeyAppolo = "appolo";
+const std::string Appolo::MapKey = "appolo";
 HexusOpponentData* Appolo::HexusOpponentDataInstance = nullptr;
 const std::string Appolo::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APPOLO";
 
@@ -31,7 +31,7 @@ Appolo* Appolo::deserialize(ValueMap& properties)
 }
 
 Appolo::Appolo(ValueMap& properties) : super(properties,
-	Appolo::MapKeyAppolo,
+	Appolo::MapKey,
 	EntityResources::Npcs_VoidStar_Appolo_Animations,
 	EntityResources::Npcs_VoidStar_Appolo_Emblem,
 	Size(112.0f, 160.0f),

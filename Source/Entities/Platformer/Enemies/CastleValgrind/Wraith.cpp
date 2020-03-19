@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Wraith::MapKeyWraith = "wraith";
+const std::string Wraith::MapKey = "wraith";
 HexusOpponentData* Wraith::HexusOpponentDataInstance = nullptr;
 const std::string Wraith::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WRAITH";
 
@@ -31,7 +31,7 @@ Wraith* Wraith::deserialize(ValueMap& properties)
 }
 
 Wraith::Wraith(ValueMap& properties) : super(properties,
-	Wraith::MapKeyWraith,
+	Wraith::MapKey,
 	EntityResources::Enemies_CastleValgrind_Wraith_Animations,
 	EntityResources::Enemies_CastleValgrind_Wraith_Emblem,
 	Size(142.0f, 400.0f),

@@ -7,7 +7,7 @@ class FriendlyNoCollisionBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static FriendlyNoCollisionBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyNoCollisionBehaviorGroup(GameObject* owner);

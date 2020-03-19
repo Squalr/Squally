@@ -4,7 +4,7 @@
 
 using namespace cocos2d;
 
-const std::string EspInitializer::MapKeyEspInitializer = "esp";
+const std::string EspInitializer::MapKey = "esp";
 
 EspInitializer* EspInitializer::create(ValueMap& properties)
 {

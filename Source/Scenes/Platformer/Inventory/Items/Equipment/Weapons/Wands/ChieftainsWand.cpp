@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ChieftainsWand::SaveKeyChieftainsWand = "chieftains-wand";
+const std::string ChieftainsWand::SaveKey = "chieftains-wand";
 
 ChieftainsWand* ChieftainsWand::create()
 {
@@ -46,7 +46,7 @@ Item* ChieftainsWand::clone()
 
 std::string ChieftainsWand::getItemName()
 {
-	return ChieftainsWand::SaveKeyChieftainsWand;
+	return ChieftainsWand::SaveKey;
 }
 
 LocalizedString* ChieftainsWand::getString()
@@ -61,7 +61,7 @@ std::string ChieftainsWand::getIconResource()
 
 std::string ChieftainsWand::getSerializationKey()
 {
-	return ChieftainsWand::SaveKeyChieftainsWand;
+	return ChieftainsWand::SaveKey;
 }
 
 Vec2 ChieftainsWand::getDisplayOffset()

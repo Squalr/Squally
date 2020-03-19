@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonGrunt::MapKeyDemonGrunt = "demon-grunt";
+const std::string DemonGrunt::MapKey = "demon-grunt";
 HexusOpponentData* DemonGrunt::HexusOpponentDataInstance = nullptr;
 const std::string DemonGrunt::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_GRUNT";
 
@@ -31,7 +31,7 @@ DemonGrunt* DemonGrunt::deserialize(ValueMap& properties)
 }
 
 DemonGrunt::DemonGrunt(ValueMap& properties) : super(properties,
-	DemonGrunt::MapKeyDemonGrunt,
+	DemonGrunt::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonGrunt_Emblem,
 	Size(312.0f, 372.0f),

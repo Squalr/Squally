@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string Orthrus::MapKeyOrthrus = "orthrus";
+const std::string Orthrus::MapKey = "orthrus";
 
 Orthrus* Orthrus::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ Orthrus* Orthrus::deserialize(ValueMap& properties)
 }
 
 Orthrus::Orthrus(ValueMap& properties) : super(properties,
-	Orthrus::MapKeyOrthrus,
+	Orthrus::MapKey,
 	EntityResources::Enemies_EndianForest_Orthrus_Animations,
 	EntityResources::Enemies_EndianForest_Orthrus_Emblem,
 	Size(412.0f, 412.0f),

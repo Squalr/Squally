@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Viking::MapKeyViking = "viking";
+const std::string Viking::MapKey = "viking";
 HexusOpponentData* Viking::HexusOpponentDataInstance = nullptr;
 const std::string Viking::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VIKING";
 
@@ -31,7 +31,7 @@ Viking* Viking::deserialize(ValueMap& properties)
 }
 
 Viking::Viking(ValueMap& properties) : super(properties,
-	Viking::MapKeyViking,
+	Viking::MapKey,
 	EntityResources::Enemies_BalmerPeaks_Viking_Animations,
 	EntityResources::Enemies_BalmerPeaks_Viking_Emblem,
 	Size(980.0f, 1200.0f),

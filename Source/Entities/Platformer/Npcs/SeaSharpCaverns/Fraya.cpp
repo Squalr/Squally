@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Fraya::MapKeyFraya = "fraya";
+const std::string Fraya::MapKey = "fraya";
 HexusOpponentData* Fraya::HexusOpponentDataInstance = nullptr;
 const std::string Fraya::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FRAYA";
 
@@ -31,7 +31,7 @@ Fraya* Fraya::deserialize(ValueMap& properties)
 }
 
 Fraya::Fraya(ValueMap& properties) : super(properties,
-	Fraya::MapKeyFraya,
+	Fraya::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Fraya_Emblem,
 	Size(112.0f, 160.0f),

@@ -13,7 +13,7 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-const std::string Sound::MapKeySound = "sound";
+const std::string Sound::MapKey = "sound";
 const std::string Sound::PropertyKeyResource = "resource";
 
 Sound* Sound::create(std::string soundResource)

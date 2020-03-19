@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ragnis::MapKeyRagnis = "ragnis";
+const std::string Ragnis::MapKey = "ragnis";
 HexusOpponentData* Ragnis::HexusOpponentDataInstance = nullptr;
 const std::string Ragnis::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAGNIS";
 
@@ -31,7 +31,7 @@ Ragnis* Ragnis::deserialize(ValueMap& properties)
 }
 
 Ragnis::Ragnis(ValueMap& properties) : super(properties,
-	Ragnis::MapKeyRagnis,
+	Ragnis::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Animations,
 	EntityResources::Npcs_DaemonsHallow_Ragnis_Emblem,
 	Size(112.0f, 160.0f),

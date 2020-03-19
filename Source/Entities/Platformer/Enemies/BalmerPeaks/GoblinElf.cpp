@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string GoblinElf::MapKeyGoblinElf = "goblin-elf";
+const std::string GoblinElf::MapKey = "goblin-elf";
 HexusOpponentData* GoblinElf::HexusOpponentDataInstance = nullptr;
 const std::string GoblinElf::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GOBLIN_ELF";
 
@@ -31,7 +31,7 @@ GoblinElf* GoblinElf::deserialize(ValueMap& properties)
 }
 
 GoblinElf::GoblinElf(ValueMap& properties) : super(properties,
-	GoblinElf::MapKeyGoblinElf,
+	GoblinElf::MapKey,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BalmerPeaks_GoblinElf_Emblem,
 	Size(140.0f, 296.0f),

@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string GorgonCombatBehavior::MapKeyAttachedBehavior = "gorgon-combat";
+const std::string GorgonCombatBehavior::MapKey = "gorgon-combat";
 
 GorgonCombatBehavior* GorgonCombatBehavior::create(GameObject* owner)
 {

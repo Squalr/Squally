@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string Chest::MapKeyChest = "chest";
+const std::string Chest::MapKey = "chest";
 
 Chest* Chest::create(cocos2d::ValueMap& properties)
 {

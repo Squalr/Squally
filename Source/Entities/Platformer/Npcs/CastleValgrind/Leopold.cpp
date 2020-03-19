@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Leopold::MapKeyLeopold = "leopold";
+const std::string Leopold::MapKey = "leopold";
 HexusOpponentData* Leopold::HexusOpponentDataInstance = nullptr;
 const std::string Leopold::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEOPOLD";
 
@@ -31,7 +31,7 @@ Leopold* Leopold::deserialize(ValueMap& properties)
 }
 
 Leopold::Leopold(ValueMap& properties) : super(properties,
-	Leopold::MapKeyLeopold,
+	Leopold::MapKey,
 	EntityResources::Npcs_CastleValgrind_Leopold_Animations,
 	EntityResources::Npcs_CastleValgrind_Leopold_Emblem,
 	Size(112.0f, 160.0f),

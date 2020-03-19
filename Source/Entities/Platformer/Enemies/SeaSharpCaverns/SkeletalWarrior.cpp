@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalWarrior::MapKeySkeletalWarrior = "skeletal-warrior";
+const std::string SkeletalWarrior::MapKey = "skeletal-warrior";
 HexusOpponentData* SkeletalWarrior::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalWarrior::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_WARRIOR";
 
@@ -31,7 +31,7 @@ SkeletalWarrior* SkeletalWarrior::deserialize(ValueMap& properties)
 }
 
 SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : super(properties,
-	SkeletalWarrior::MapKeySkeletalWarrior,
+	SkeletalWarrior::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_SkeletalWarrior_Emblem,
 	Size(128.0f, 216.0f),

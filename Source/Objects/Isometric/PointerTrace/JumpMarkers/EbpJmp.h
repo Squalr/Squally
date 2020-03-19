@@ -12,11 +12,11 @@ class EbpJmp : public JmpMarker
 public:
 	static EbpJmp* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEbpJmp;
+	static const std::string MapKey;
 
 protected:
 	EbpJmp(cocos2d::ValueMap& properties);
-	~EbpJmp();
+	virtual ~EbpJmp();
 
 	void onEnter() override;
 	void initializePositions() override;

@@ -7,7 +7,7 @@ class GoblinGruntBoarCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static GoblinGruntBoarCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	GoblinGruntBoarCombatBehavior(GameObject* owner);

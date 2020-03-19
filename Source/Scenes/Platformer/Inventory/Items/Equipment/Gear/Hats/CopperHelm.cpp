@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CopperHelm::SaveKeyCopperHelm = "copper-helm";
+const std::string CopperHelm::SaveKey = "copper-helm";
 
 CopperHelm* CopperHelm::create()
 {
@@ -46,7 +46,7 @@ Item* CopperHelm::clone()
 
 std::string CopperHelm::getItemName()
 {
-	return CopperHelm::SaveKeyCopperHelm;
+	return CopperHelm::SaveKey;
 }
 
 LocalizedString* CopperHelm::getString()
@@ -61,7 +61,7 @@ std::string CopperHelm::getIconResource()
 
 std::string CopperHelm::getSerializationKey()
 {
-	return CopperHelm::SaveKeyCopperHelm;
+	return CopperHelm::SaveKey;
 }
 
 Vec2 CopperHelm::getDisplayOffset()

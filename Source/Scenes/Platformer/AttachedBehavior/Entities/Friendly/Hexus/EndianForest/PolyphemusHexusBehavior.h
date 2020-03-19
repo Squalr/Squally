@@ -12,7 +12,7 @@ class PolyphemusHexusBehavior : public HexusBehaviorBase
 public:
 	static PolyphemusHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	PolyphemusHexusBehavior(GameObject* owner);

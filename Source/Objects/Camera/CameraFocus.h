@@ -10,7 +10,7 @@ public:
 
 	CameraTrackingData getTrackingData();
 
-	static const std::string MapKeyCameraFocus;
+	static const std::string MapKey;
 	static const std::string MapKeyZoom;
 	static const std::string MapKeyScrollBoundsX;
 	static const std::string MapKeyScrollBoundsY;

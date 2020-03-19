@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Thor::MapKeyThor = "thor";
+const std::string Thor::MapKey = "thor";
 HexusOpponentData* Thor::HexusOpponentDataInstance = nullptr;
 const std::string Thor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THOR";
 
@@ -31,7 +31,7 @@ Thor* Thor::deserialize(ValueMap& properties)
 }
 
 Thor::Thor(ValueMap& properties) : super(properties,
-	Thor::MapKeyThor,
+	Thor::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Thor_Animations,
 	EntityResources::Npcs_UnderflowRuins_Thor_Emblem,
 	Size(112.0f, 160.0f),

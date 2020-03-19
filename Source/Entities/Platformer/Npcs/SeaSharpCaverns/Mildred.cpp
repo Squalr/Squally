@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Mildred::MapKeyMildred = "mildred";
+const std::string Mildred::MapKey = "mildred";
 HexusOpponentData* Mildred::HexusOpponentDataInstance = nullptr;
 const std::string Mildred::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MILDRED";
 
@@ -31,7 +31,7 @@ Mildred* Mildred::deserialize(ValueMap& properties)
 }
 
 Mildred::Mildred(ValueMap& properties) : super(properties,
-	Mildred::MapKeyMildred,
+	Mildred::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Mildred_Emblem,
 	Size(112.0f, 160.0f),

@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyWerewolf;
+	static const std::string MapKey;
+	
+protected:
+	Werewolf(cocos2d::ValueMap& properties);
+	virtual ~Werewolf();
 
 private:
 	typedef PlatformerEnemy super;
-	Werewolf(cocos2d::ValueMap& properties);
-	~Werewolf();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

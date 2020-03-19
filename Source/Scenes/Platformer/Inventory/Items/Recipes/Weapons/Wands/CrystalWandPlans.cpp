@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CrystalWandPlans::SaveKeyCrystalWandPlans = "crystal-wand-plans";
+const std::string CrystalWandPlans::SaveKey = "crystal-wand-plans";
 
 CrystalWandPlans* CrystalWandPlans::create()
 {
@@ -50,7 +50,7 @@ Item* CrystalWandPlans::clone()
 
 std::string CrystalWandPlans::getItemName()
 {
-	return CrystalWandPlans::SaveKeyCrystalWandPlans;
+	return CrystalWandPlans::SaveKey;
 }
 
 LocalizedString* CrystalWandPlans::getString()
@@ -70,5 +70,5 @@ std::string CrystalWandPlans::getCraftedItemIconResource()
 
 std::string CrystalWandPlans::getSerializationKey()
 {
-	return CrystalWandPlans::SaveKeyCrystalWandPlans;
+	return CrystalWandPlans::SaveKey;
 }

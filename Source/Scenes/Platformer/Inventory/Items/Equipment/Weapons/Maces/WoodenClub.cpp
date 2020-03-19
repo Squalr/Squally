@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenClub::SaveKeyWoodenClub = "wooden-club";
+const std::string WoodenClub::SaveKey = "wooden-club";
 
 WoodenClub* WoodenClub::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenClub::clone()
 
 std::string WoodenClub::getItemName()
 {
-	return WoodenClub::SaveKeyWoodenClub;
+	return WoodenClub::SaveKey;
 }
 
 LocalizedString* WoodenClub::getString()
@@ -61,7 +61,7 @@ std::string WoodenClub::getIconResource()
 
 std::string WoodenClub::getSerializationKey()
 {
-	return WoodenClub::SaveKeyWoodenClub;
+	return WoodenClub::SaveKey;
 }
 
 Vec2 WoodenClub::getDisplayOffset()

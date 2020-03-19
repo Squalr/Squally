@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyVisualBehaviorGroup::MapKeyAttachedBehavior = "squally-visual-group";
+const std::string SquallyVisualBehaviorGroup::MapKey = "squally-visual-group";
 
 SquallyVisualBehaviorGroup* SquallyVisualBehaviorGroup::create(GameObject* owner)
 {

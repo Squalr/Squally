@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyBehaviorGroup::MapKeyAttachedBehavior = "enemy";
+const std::string EnemyBehaviorGroup::MapKey = "enemy";
 
 EnemyBehaviorGroup* EnemyBehaviorGroup::create(GameObject* owner)
 {

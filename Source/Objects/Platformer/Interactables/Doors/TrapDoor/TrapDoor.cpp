@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 const float TrapDoor::DoorOpenDelta = 320.0f;
 
-const std::string TrapDoor::MapKeyTrapDoor = "trap-door";
+const std::string TrapDoor::MapKey = "trap-door";
 
 TrapDoor* TrapDoor::create(ValueMap& properties)
 {

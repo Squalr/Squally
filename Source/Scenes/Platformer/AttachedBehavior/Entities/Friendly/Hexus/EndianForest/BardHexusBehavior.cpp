@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string BardHexusBehavior::MapKeyAttachedBehavior = "bard-hexus";
+const std::string BardHexusBehavior::MapKey = "bard-hexus";
 
 BardHexusBehavior* BardHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* BardHexusBehavior::generateReward()
 
 std::string BardHexusBehavior::getWinLossSaveKey()
 {
-	return BardHexusBehavior::MapKeyAttachedBehavior;
+	return BardHexusBehavior::MapKey;
 }
 
 std::string BardHexusBehavior::getBackgroundResource()

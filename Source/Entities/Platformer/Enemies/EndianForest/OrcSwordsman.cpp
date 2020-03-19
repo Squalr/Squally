@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string OrcSwordsman::MapKeyOrcSwordsman = "orc-swordsman";
+const std::string OrcSwordsman::MapKey = "orc-swordsman";
 
 OrcSwordsman* OrcSwordsman::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ OrcSwordsman* OrcSwordsman::deserialize(ValueMap& properties)
 }
 
 OrcSwordsman::OrcSwordsman(ValueMap& properties) : super(properties,
-	OrcSwordsman::MapKeyOrcSwordsman,
+	OrcSwordsman::MapKey,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Animations,
 	EntityResources::Enemies_EndianForest_OrcSwordsman_Emblem,
 	Size(256.0f, 228.0f),

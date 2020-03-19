@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TheButcher::SaveKeyTheButcher = "the-butcher";
+const std::string TheButcher::SaveKey = "the-butcher";
 
 TheButcher* TheButcher::create()
 {
@@ -46,7 +46,7 @@ Item* TheButcher::clone()
 
 std::string TheButcher::getItemName()
 {
-	return TheButcher::SaveKeyTheButcher;
+	return TheButcher::SaveKey;
 }
 
 LocalizedString* TheButcher::getString()
@@ -61,5 +61,5 @@ std::string TheButcher::getIconResource()
 
 std::string TheButcher::getSerializationKey()
 {
-	return TheButcher::SaveKeyTheButcher;
+	return TheButcher::SaveKey;
 }

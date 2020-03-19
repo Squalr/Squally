@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string GoblinGruntBoar::MapKeyGoblinGruntBoar = "goblin-grunt-boar";
+const std::string GoblinGruntBoar::MapKey = "goblin-grunt-boar";
 
 GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ GoblinGruntBoar* GoblinGruntBoar::deserialize(ValueMap& properties)
 }
 
 GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
-	GoblinGruntBoar::MapKeyGoblinGruntBoar,
+	GoblinGruntBoar::MapKey,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
 	Size(128.0f, 296.0f),

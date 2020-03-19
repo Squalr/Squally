@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GuardsHelmet::SaveKeyGuardsHelmet = "guards-helmet";
+const std::string GuardsHelmet::SaveKey = "guards-helmet";
 
 GuardsHelmet* GuardsHelmet::create()
 {
@@ -46,7 +46,7 @@ Item* GuardsHelmet::clone()
 
 std::string GuardsHelmet::getItemName()
 {
-	return GuardsHelmet::SaveKeyGuardsHelmet;
+	return GuardsHelmet::SaveKey;
 }
 
 LocalizedString* GuardsHelmet::getString()
@@ -61,7 +61,7 @@ std::string GuardsHelmet::getIconResource()
 
 std::string GuardsHelmet::getSerializationKey()
 {
-	return GuardsHelmet::SaveKeyGuardsHelmet;
+	return GuardsHelmet::SaveKey;
 }
 
 Vec2 GuardsHelmet::getDisplayOffset()

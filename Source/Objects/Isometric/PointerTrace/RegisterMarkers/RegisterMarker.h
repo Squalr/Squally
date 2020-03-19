@@ -18,7 +18,7 @@ public:
 
 protected:
 	RegisterMarker();
-	~RegisterMarker();
+	virtual ~RegisterMarker();
 
 	virtual int getRegisterIndex() = 0;
 	void onEnter() override;

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 	
-const std::string TrainingDummyCombatBehavior::MapKeyAttachedBehavior = "training-dummy-combat";
+const std::string TrainingDummyCombatBehavior::MapKey = "training-dummy-combat";
 
 TrainingDummyCombatBehavior* TrainingDummyCombatBehavior::create(GameObject* owner)
 {

@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string Lever::MapKeyLever = "lever";
+const std::string Lever::MapKey = "lever";
 
 Lever* Lever::create(ValueMap& properties)
 {

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenMace::SaveKeyGoldenMace = "golden-mace";
+const std::string GoldenMace::SaveKey = "golden-mace";
 
 GoldenMace* GoldenMace::create()
 {
@@ -46,7 +46,7 @@ Item* GoldenMace::clone()
 
 std::string GoldenMace::getItemName()
 {
-	return GoldenMace::SaveKeyGoldenMace;
+	return GoldenMace::SaveKey;
 }
 
 LocalizedString* GoldenMace::getString()
@@ -61,7 +61,7 @@ std::string GoldenMace::getIconResource()
 
 std::string GoldenMace::getSerializationKey()
 {
-	return GoldenMace::SaveKeyGoldenMace;
+	return GoldenMace::SaveKey;
 }
 
 Vec2 GoldenMace::getDisplayOffset()

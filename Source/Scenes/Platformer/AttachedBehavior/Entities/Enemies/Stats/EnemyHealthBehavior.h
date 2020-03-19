@@ -9,7 +9,7 @@ class EnemyHealthBehavior : public AttachedBehavior
 public:
 	static EnemyHealthBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 	static const std::string SaveKeyIsDead;
 
 protected:

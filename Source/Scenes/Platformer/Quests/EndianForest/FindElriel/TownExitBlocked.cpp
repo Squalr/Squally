@@ -72,7 +72,7 @@ void TownExitBlocked::onLoad(QuestState questState)
 		ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 		{
 			this->squally = squally;
-		}, Squally::MapKeySqually);
+		}, Squally::MapKey);
 
 		ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
 		{

@@ -64,17 +64,17 @@ void AfterFight::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 	
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
 		this->sarude = sarude;
-	}, Sarude::MapKeySarude);
+	}, Sarude::MapKey);
 
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* magePortal)
 	{
@@ -148,7 +148,7 @@ void AfterFight::runCinematicSequencePart2()
 			{
 				igneus->runAction(FadeTo::create(0.25f, 0));
 			});
-		}, Igneus::MapKeyIgneus);
+		}, Igneus::MapKey);
 
 		ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
 		{
@@ -158,7 +158,7 @@ void AfterFight::runCinematicSequencePart2()
 			{
 				alder->runAction(FadeTo::create(0.25f, 0));
 			});
-		}, Alder::MapKeyAlder);
+		}, Alder::MapKey);
 
 		ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 		{
@@ -173,7 +173,7 @@ void AfterFight::runCinematicSequencePart2()
 			{
 				interactionBehavior->clearPretext();
 			});
-		}, Sarude::MapKeySarude);
+		}, Sarude::MapKey);
 
 		ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
 		{
@@ -183,7 +183,7 @@ void AfterFight::runCinematicSequencePart2()
 			{
 				aster->runAction(FadeTo::create(0.25f, 0));
 			});
-		}, Aster::MapKeyAster);
+		}, Aster::MapKey);
 
 		ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
 		{
@@ -193,7 +193,7 @@ void AfterFight::runCinematicSequencePart2()
 			{
 				merlin->runAction(FadeTo::create(0.25f, 0));
 			});
-		}, Merlin::MapKeyMerlin);
+		}, Merlin::MapKey);
 	}
 }
 
@@ -202,12 +202,12 @@ void AfterFight::despawnMages()
 	ObjectEvents::watchForObject<Igneus>(this, [=](Igneus* igneus)
 	{
 		igneus->setOpacity(0);
-	}, Igneus::MapKeyIgneus);
+	}, Igneus::MapKey);
 
 	ObjectEvents::watchForObject<Alder>(this, [=](Alder* alder)
 	{
 		alder->setOpacity(0);
-	}, Alder::MapKeyAlder);
+	}, Alder::MapKey);
 
 	ObjectEvents::watchForObject<Sarude>(this, [=](Sarude* sarude)
 	{
@@ -217,15 +217,15 @@ void AfterFight::despawnMages()
 		{
 			interactionBehavior->clearPretext();
 		});
-	}, Sarude::MapKeySarude);
+	}, Sarude::MapKey);
 
 	ObjectEvents::watchForObject<Aster>(this, [=](Aster* aster)
 	{
 		aster->setOpacity(0);
-	}, Aster::MapKeyAster);
+	}, Aster::MapKey);
 
 	ObjectEvents::watchForObject<Merlin>(this, [=](Merlin* merlin)
 	{
 		merlin->setOpacity(0);
-	}, Merlin::MapKeyMerlin);
+	}, Merlin::MapKey);
 }

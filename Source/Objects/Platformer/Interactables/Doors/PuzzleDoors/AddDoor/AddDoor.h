@@ -18,7 +18,7 @@ class AddDoor : public StonePuzzleDoor
 public:
 	static AddDoor* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyAddDoor;
+	static const std::string MapKey;
 
 protected:
 	AddDoor(cocos2d::ValueMap& properties);

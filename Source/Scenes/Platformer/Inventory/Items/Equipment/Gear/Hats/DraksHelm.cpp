@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DraksHelm::SaveKeyDraksHelm = "draks-helm";
+const std::string DraksHelm::SaveKey = "draks-helm";
 
 DraksHelm* DraksHelm::create()
 {
@@ -46,7 +46,7 @@ Item* DraksHelm::clone()
 
 std::string DraksHelm::getItemName()
 {
-	return DraksHelm::SaveKeyDraksHelm;
+	return DraksHelm::SaveKey;
 }
 
 LocalizedString* DraksHelm::getString()
@@ -61,7 +61,7 @@ std::string DraksHelm::getIconResource()
 
 std::string DraksHelm::getSerializationKey()
 {
-	return DraksHelm::SaveKeyDraksHelm;
+	return DraksHelm::SaveKey;
 }
 
 Vec2 DraksHelm::getDisplayOffset()

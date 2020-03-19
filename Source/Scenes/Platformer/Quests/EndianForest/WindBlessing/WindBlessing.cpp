@@ -54,7 +54,7 @@ void WindBlessing::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
 	{
@@ -64,7 +64,7 @@ void WindBlessing::onLoad(QuestState questState)
 		{
 			this->runCinematicSequence();
 		}
-	}, Marcel::MapKeyMarcel);
+	}, Marcel::MapKey);
 }
 
 void WindBlessing::onActivate(bool isActiveThroughSkippable)

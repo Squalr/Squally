@@ -14,7 +14,7 @@ public:
 	std::string getSerializationKey() override;
 	cocos2d::Vec2 getDisplayOffset() override;
 
-	static const std::string SaveKeyBoneHammer;
+	static const std::string SaveKey;
 
 protected:
 	BoneHammer();

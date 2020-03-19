@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicBow::SaveKeyDemonicBow = "demonic-bow";
+const std::string DemonicBow::SaveKey = "demonic-bow";
 
 DemonicBow* DemonicBow::create()
 {
@@ -46,7 +46,7 @@ Item* DemonicBow::clone()
 
 std::string DemonicBow::getItemName()
 {
-	return DemonicBow::SaveKeyDemonicBow;
+	return DemonicBow::SaveKey;
 }
 
 LocalizedString* DemonicBow::getString()
@@ -61,7 +61,7 @@ std::string DemonicBow::getIconResource()
 
 std::string DemonicBow::getSerializationKey()
 {
-	return DemonicBow::SaveKeyDemonicBow;
+	return DemonicBow::SaveKey;
 }
 
 Vec2 DemonicBow::getDisplayOffset()

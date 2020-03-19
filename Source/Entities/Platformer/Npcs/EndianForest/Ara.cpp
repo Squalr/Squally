@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ara::MapKeyAra = "ara";
+const std::string Ara::MapKey = "ara";
 HexusOpponentData* Ara::HexusOpponentDataInstance = nullptr;
 const std::string Ara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ARA";
 
@@ -31,7 +31,7 @@ Ara* Ara::deserialize(ValueMap& properties)
 }
 
 Ara::Ara(ValueMap& properties) : super(properties,
-	Ara::MapKeyAra,
+	Ara::MapKey,
 	EntityResources::Npcs_EndianForest_Ara_Animations,
 	EntityResources::Npcs_EndianForest_Ara_Emblem,
 	Size(112.0f, 160.0f),

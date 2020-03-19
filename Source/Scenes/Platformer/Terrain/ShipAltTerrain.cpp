@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ShipAltTerrain::MapKeyTerrainType = "ship-alt";
+const std::string ShipAltTerrain::MapKey = "ship-alt";
 
 ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return ShipAltTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		ShipAltTerrain::MapKeyTerrainType,
+		ShipAltTerrain::MapKey,
 		TextureResources::ShipAltTexture,
 		TerrainResources::ShipAlt_Top,
 		TerrainResources::ShipAlt_TopLeft,

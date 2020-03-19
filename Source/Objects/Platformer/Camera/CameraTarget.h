@@ -17,7 +17,7 @@ public:
 
 	CameraTrackingData getTrackingData();
 
-	static const std::string MapKeyCameraTarget;
+	static const std::string MapKey;
 
 private:
 	typedef GameObject super;
@@ -31,5 +31,5 @@ private:
 	cocos2d::DrawNode* debugDraw;
 	float zoom;
 
-	static const std::string MapPropertyZoom;
+	static const std::string PropertyZoom;
 };

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ysara::MapKeyYsara = "ysara";
+const std::string Ysara::MapKey = "ysara";
 HexusOpponentData* Ysara::HexusOpponentDataInstance = nullptr;
 const std::string Ysara::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YSARA";
 
@@ -31,7 +31,7 @@ Ysara* Ysara::deserialize(ValueMap& properties)
 }
 
 Ysara::Ysara(ValueMap& properties) : super(properties,
-	Ysara::MapKeyYsara,
+	Ysara::MapKey,
 	EntityResources::Npcs_VoidStar_Ysara_Animations,
 	EntityResources::Npcs_VoidStar_Ysara_Emblem,
 	Size(112.0f, 160.0f),

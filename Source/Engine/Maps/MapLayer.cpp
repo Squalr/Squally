@@ -11,12 +11,12 @@
 using namespace cocos2d;
 
 const std::string MapLayer::MapKeyType = "type";
-const std::string MapLayer::MapKeyPropertyName = "name";
-const std::string MapLayer::MapKeyPropertyValue = "value";
-const std::string MapLayer::MapKeyPropertyDepth = "depth";
-const std::string MapLayer::MapKeyPropertyIsHackable = "is-hackable";
-const std::string MapLayer::MapKeyPropertyIsElevateTarget = "is-elevate-target";
-const std::string MapLayer::MapKeyPropertyZSort = "z-sort";
+const std::string MapLayer::PropertyName = "name";
+const std::string MapLayer::PropertyValue = "value";
+const std::string MapLayer::PropertyDepth = "depth";
+const std::string MapLayer::PropertyIsHackable = "is-hackable";
+const std::string MapLayer::PropertyIsElevateTarget = "is-elevate-target";
+const std::string MapLayer::PropertyZSort = "z-sort";
 
 MapLayer* MapLayer::create(const ValueMap& properties, std::string name, std::string type, const std::vector<GameObject*>& objects)
 {
@@ -40,9 +40,9 @@ MapLayer::MapLayer(const ValueMap& properties, std::string name, std::string typ
 	this->layerName = name;
 	this->layerType = type;
 	this->properties = properties;
-	this->autoZSort = GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyZSort, Value(false)).asBool();
+	this->autoZSort = GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyZSort, Value(false)).asBool();
 
-	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyDepth, Value(0.0f)).asFloat());
+	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyDepth, Value(0.0f)).asFloat());
 
 	for (auto object : objects)
 	{
@@ -87,12 +87,12 @@ void MapLayer::update(float dt)
 
 bool MapLayer::isHackable()
 {
-	return GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyIsHackable, Value(false)).asBool();
+	return GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyIsHackable, Value(false)).asBool();
 }
 
 bool MapLayer::isElevateTarget()
 {
-	return GameUtils::getKeyOrDefault(this->properties, MapLayer::MapKeyPropertyIsElevateTarget, Value(false)).asBool();
+	return GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyIsElevateTarget, Value(false)).asBool();
 }
 
 std::string MapLayer::getLayerType()

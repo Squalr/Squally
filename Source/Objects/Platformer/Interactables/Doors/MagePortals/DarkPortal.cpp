@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DarkPortal::MapKeyDarkPortal = "dark-portal";
+const std::string DarkPortal::MapKey = "dark-portal";
 
 DarkPortal* DarkPortal::create(ValueMap& properties)
 {

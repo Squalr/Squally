@@ -53,7 +53,7 @@ void SailForRuins::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
 	{
@@ -100,7 +100,7 @@ void SailForRuins::onLoad(QuestState questState)
 				0.5f
 			);
 		});
-	}, Blackbeard::MapKeyBlackbeard);
+	}, Blackbeard::MapKey);
 }
 
 void SailForRuins::onActivate(bool isActiveThroughSkippable)

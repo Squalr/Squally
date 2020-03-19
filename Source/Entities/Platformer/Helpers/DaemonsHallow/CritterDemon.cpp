@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string CritterDemon::MapKeyCritterDemon = "critter-demon";
+const std::string CritterDemon::MapKey = "critter-demon";
 HexusOpponentData* CritterDemon::HexusOpponentDataInstance = nullptr;
 const std::string CritterDemon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_CRITTER_DEMON";
 
@@ -31,7 +31,7 @@ CritterDemon* CritterDemon::deserialize(ValueMap& properties)
 }
 
 CritterDemon::CritterDemon(ValueMap& properties) : super(properties,
-	CritterDemon::MapKeyCritterDemon,
+	CritterDemon::MapKey,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Animations,
 	EntityResources::Helpers_DaemonsHallow_CritterDemon_Emblem,
 	Size(188.0f, 160.0f),

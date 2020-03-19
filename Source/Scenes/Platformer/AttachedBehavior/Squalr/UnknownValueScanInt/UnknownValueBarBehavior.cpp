@@ -26,7 +26,7 @@ using namespace cocos2d;
 int UnknownValueBarBehavior::Health = 0;
 const int UnknownValueBarBehavior::MaxHealth = 58;
 
-const std::string UnknownValueBarBehavior::MapKeyAttachedBehavior = "squalr-unknown-int";
+const std::string UnknownValueBarBehavior::MapKey = "squalr-unknown-int";
 
 UnknownValueBarBehavior* UnknownValueBarBehavior::create(GameObject* owner)
 {

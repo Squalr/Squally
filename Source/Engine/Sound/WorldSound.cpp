@@ -11,7 +11,7 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-const std::string WorldSound::MapKeyWorldSound = "world-sound";
+const std::string WorldSound::MapKey = "world-sound";
 
 WorldSound* WorldSound::create(std::string soundResource)
 {

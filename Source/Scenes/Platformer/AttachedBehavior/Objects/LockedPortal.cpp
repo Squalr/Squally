@@ -21,8 +21,8 @@
 
 using namespace cocos2d;
 
-const std::string LockedPortal::MapKeyAttachedBehavior = "locked-portal";
-const std::string LockedPortal::MapKeyPropertyItemRequired = "item-required";
+const std::string LockedPortal::MapKey = "locked-portal";
+const std::string LockedPortal::PropertyItemRequired = "item-required";
 
 LockedPortal* LockedPortal::create(GameObject* owner)
 {
@@ -56,7 +56,7 @@ void LockedPortal::onLoad()
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->playerInventory = entityInventoryBehavior->getInventory();
-			this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::MapKeyPropertyItemRequired, Value("")).asString();
+			this->requiredItemName = this->portal->getPropertyOrDefault(LockedPortal::PropertyItemRequired, Value("")).asString();
 
 			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->playerInventory->getSaveKey(), [=](EventCustom* eventCustom)
 			{
@@ -65,7 +65,7 @@ void LockedPortal::onLoad()
 
 			this->checkForRequiredItem();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void LockedPortal::onDisable()

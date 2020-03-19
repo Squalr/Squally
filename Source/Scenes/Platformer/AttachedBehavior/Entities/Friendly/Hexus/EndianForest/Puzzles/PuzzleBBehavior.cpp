@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string PuzzleBBehavior::MapKeyAttachedBehavior = "puzzle-B";
+const std::string PuzzleBBehavior::MapKey = "puzzle-B";
 
 PuzzleBBehavior* PuzzleBBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* PuzzleBBehavior::generateReward()
 
 std::string PuzzleBBehavior::getWinLossSaveKey()
 {
-	return PuzzleBBehavior::MapKeyAttachedBehavior;
+	return PuzzleBBehavior::MapKey;
 }
 
 std::string PuzzleBBehavior::getBackgroundResource()

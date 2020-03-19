@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WizardsHatArcane::SaveKeyWizardsHatArcane = "wizards-hat-arcane";
+const std::string WizardsHatArcane::SaveKey = "wizards-hat-arcane";
 
 WizardsHatArcane* WizardsHatArcane::create()
 {
@@ -46,7 +46,7 @@ Item* WizardsHatArcane::clone()
 
 std::string WizardsHatArcane::getItemName()
 {
-	return WizardsHatArcane::SaveKeyWizardsHatArcane;
+	return WizardsHatArcane::SaveKey;
 }
 
 LocalizedString* WizardsHatArcane::getString()
@@ -61,7 +61,7 @@ std::string WizardsHatArcane::getIconResource()
 
 std::string WizardsHatArcane::getSerializationKey()
 {
-	return WizardsHatArcane::SaveKeyWizardsHatArcane;
+	return WizardsHatArcane::SaveKey;
 }
 
 Vec2 WizardsHatArcane::getDisplayOffset()

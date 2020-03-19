@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Poseidon::MapKeyPoseidon = "poseidon";
+const std::string Poseidon::MapKey = "poseidon";
 HexusOpponentData* Poseidon::HexusOpponentDataInstance = nullptr;
 const std::string Poseidon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_POSEIDON";
 
@@ -31,7 +31,7 @@ Poseidon* Poseidon::deserialize(ValueMap& properties)
 }
 
 Poseidon::Poseidon(ValueMap& properties) : super(properties,
-	Poseidon::MapKeyPoseidon,
+	Poseidon::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Poseidon_Emblem,
 	Size(112.0f, 160.0f),

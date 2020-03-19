@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CopperMallet::SaveKeyCopperMallet = "copper-mallet";
+const std::string CopperMallet::SaveKey = "copper-mallet";
 
 CopperMallet* CopperMallet::create()
 {
@@ -46,7 +46,7 @@ Item* CopperMallet::clone()
 
 std::string CopperMallet::getItemName()
 {
-	return CopperMallet::SaveKeyCopperMallet;
+	return CopperMallet::SaveKey;
 }
 
 LocalizedString* CopperMallet::getString()
@@ -61,7 +61,7 @@ std::string CopperMallet::getIconResource()
 
 std::string CopperMallet::getSerializationKey()
 {
-	return CopperMallet::SaveKeyCopperMallet;
+	return CopperMallet::SaveKey;
 }
 
 Vec2 CopperMallet::getDisplayOffset()

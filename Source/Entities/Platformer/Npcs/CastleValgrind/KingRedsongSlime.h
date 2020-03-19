@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyKingRedsongSlime;
+	static const std::string MapKey;
+
+protected:
+	KingRedsongSlime(cocos2d::ValueMap& properties);
+	virtual ~KingRedsongSlime();
 
 private:
 	typedef PlatformerFriendly super;
-	KingRedsongSlime(cocos2d::ValueMap& properties);
-	~KingRedsongSlime();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

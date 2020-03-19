@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Frostbane::SaveKeyFrostbane = "frost-bane";
+const std::string Frostbane::SaveKey = "frost-bane";
 
 Frostbane* Frostbane::create()
 {
@@ -46,7 +46,7 @@ Item* Frostbane::clone()
 
 std::string Frostbane::getItemName()
 {
-	return Frostbane::SaveKeyFrostbane;
+	return Frostbane::SaveKey;
 }
 
 LocalizedString* Frostbane::getString()
@@ -61,5 +61,5 @@ std::string Frostbane::getIconResource()
 
 std::string Frostbane::getSerializationKey()
 {
-	return Frostbane::SaveKeyFrostbane;
+	return Frostbane::SaveKey;
 }

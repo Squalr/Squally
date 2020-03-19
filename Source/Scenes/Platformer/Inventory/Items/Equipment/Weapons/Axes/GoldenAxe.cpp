@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenAxe::SaveKeyGoldenAxe = "golden-axe";
+const std::string GoldenAxe::SaveKey = "golden-axe";
 
 GoldenAxe* GoldenAxe::create()
 {
@@ -46,7 +46,7 @@ Item* GoldenAxe::clone()
 
 std::string GoldenAxe::getItemName()
 {
-	return GoldenAxe::SaveKeyGoldenAxe;
+	return GoldenAxe::SaveKey;
 }
 
 LocalizedString* GoldenAxe::getString()
@@ -61,7 +61,7 @@ std::string GoldenAxe::getIconResource()
 
 std::string GoldenAxe::getSerializationKey()
 {
-	return GoldenAxe::SaveKeyGoldenAxe;
+	return GoldenAxe::SaveKey;
 }
 
 Size GoldenAxe::getWeaponCollisionSize()

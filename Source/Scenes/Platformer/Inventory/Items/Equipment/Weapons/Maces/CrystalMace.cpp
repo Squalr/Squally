@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CrystalMace::SaveKeyCrystalMace = "crystal-mace";
+const std::string CrystalMace::SaveKey = "crystal-mace";
 
 CrystalMace* CrystalMace::create()
 {
@@ -46,7 +46,7 @@ Item* CrystalMace::clone()
 
 std::string CrystalMace::getItemName()
 {
-	return CrystalMace::SaveKeyCrystalMace;
+	return CrystalMace::SaveKey;
 }
 
 LocalizedString* CrystalMace::getString()
@@ -61,7 +61,7 @@ std::string CrystalMace::getIconResource()
 
 std::string CrystalMace::getSerializationKey()
 {
-	return CrystalMace::SaveKeyCrystalMace;
+	return CrystalMace::SaveKey;
 }
 
 Vec2 CrystalMace::getDisplayOffset()

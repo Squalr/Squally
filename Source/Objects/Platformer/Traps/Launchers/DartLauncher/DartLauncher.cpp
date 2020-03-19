@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SHOOT 1
 
-const std::string DartLauncher::MapKeyDartLauncher = "dart-launcher";
+const std::string DartLauncher::MapKey = "dart-launcher";
 
 DartLauncher* DartLauncher::create(ValueMap& properties)
 {

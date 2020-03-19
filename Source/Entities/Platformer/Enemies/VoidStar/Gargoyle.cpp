@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Gargoyle::MapKeyGargoyle = "gargoyle";
+const std::string Gargoyle::MapKey = "gargoyle";
 HexusOpponentData* Gargoyle::HexusOpponentDataInstance = nullptr;
 const std::string Gargoyle::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARGOYLE";
 
@@ -31,7 +31,7 @@ Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 }
 
 Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
-	Gargoyle::MapKeyGargoyle,
+	Gargoyle::MapKey,
 	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
 	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
 	Size(256.0f, 256.0f),

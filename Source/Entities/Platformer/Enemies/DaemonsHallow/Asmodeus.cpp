@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Asmodeus::MapKeyAsmodeus = "asmodeus";
+const std::string Asmodeus::MapKey = "asmodeus";
 HexusOpponentData* Asmodeus::HexusOpponentDataInstance = nullptr;
 const std::string Asmodeus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASMODEUS";
 
@@ -31,7 +31,7 @@ Asmodeus* Asmodeus::deserialize(ValueMap& properties)
 }
 
 Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
-	Asmodeus::MapKeyAsmodeus,
+	Asmodeus::MapKey,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Animations,
 	EntityResources::Enemies_DaemonsHallow_Asmodeus_Emblem,
 	Size(480.0f, 480.0f),

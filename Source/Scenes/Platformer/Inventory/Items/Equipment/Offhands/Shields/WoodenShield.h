@@ -13,7 +13,7 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyWoodenShield;
+	static const std::string SaveKey;
 
 protected:
 	WoodenShield();

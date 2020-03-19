@@ -8,7 +8,7 @@ public:
 	static Sound* create(std::string soundResource = "");
 	static Sound* create(cocos2d::ValueMap& properties, std::string soundResource = "");
 
-	static const std::string MapKeySound;
+	static const std::string MapKey;
 
 protected:
 	Sound(cocos2d::ValueMap& properties, std::string soundResource);

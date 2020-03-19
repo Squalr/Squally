@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyNoCollisionBehaviorGroup::MapKeyAttachedBehavior = "friendly-no-collision";
+const std::string FriendlyNoCollisionBehaviorGroup::MapKey = "friendly-no-collision";
 
 FriendlyNoCollisionBehaviorGroup* FriendlyNoCollisionBehaviorGroup::create(GameObject* owner)
 {

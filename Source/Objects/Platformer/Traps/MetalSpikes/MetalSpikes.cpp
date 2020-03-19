@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string MetalSpikes::MapKeyMetalSpikes = "metal-spikes";
+const std::string MetalSpikes::MapKey = "metal-spikes";
 const Vec2 MetalSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
 MetalSpikes* MetalSpikes::create(ValueMap& properties)
@@ -82,16 +82,13 @@ Vec2 MetalSpikes::getButtonOffset()
 void MetalSpikes::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
+	
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				MetalSpikes::MapKeyMetalSpikes,
+				MetalSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
 				MetalSpikesUpdateTimerPreview::create(),

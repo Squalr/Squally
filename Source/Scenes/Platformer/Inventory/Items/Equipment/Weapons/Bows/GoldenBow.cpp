@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenBow::SaveKeyGoldenBow = "golden-bow";
+const std::string GoldenBow::SaveKey = "golden-bow";
 
 GoldenBow* GoldenBow::create()
 {
@@ -46,7 +46,7 @@ Item* GoldenBow::clone()
 
 std::string GoldenBow::getItemName()
 {
-	return GoldenBow::SaveKeyGoldenBow;
+	return GoldenBow::SaveKey;
 }
 
 LocalizedString* GoldenBow::getString()
@@ -61,7 +61,7 @@ std::string GoldenBow::getIconResource()
 
 std::string GoldenBow::getSerializationKey()
 {
-	return GoldenBow::SaveKeyGoldenBow;
+	return GoldenBow::SaveKey;
 }
 
 Vec2 GoldenBow::getDisplayOffset()

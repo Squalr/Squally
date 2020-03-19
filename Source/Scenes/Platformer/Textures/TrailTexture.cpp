@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string TrailTexture::MapKeyTextureType = "trail";
+const std::string TrailTexture::MapKey = "trail";
 
 TrailTexture* TrailTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ TrailTexture* TrailTexture::create(ValueMap& properties)
 TrailTexture::TrailTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		TrailTexture::MapKeyTextureType,
+		TrailTexture::MapKey,
 		TextureResources::TrailTexture,
 		Color4B(11, 30, 39, 255)))
 {

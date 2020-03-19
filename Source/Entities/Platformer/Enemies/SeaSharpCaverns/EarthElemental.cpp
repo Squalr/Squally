@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EarthElemental::MapKeyEarthElemental = "earth-elemental";
+const std::string EarthElemental::MapKey = "earth-elemental";
 HexusOpponentData* EarthElemental::HexusOpponentDataInstance = nullptr;
 const std::string EarthElemental::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EARTH_ELEMENTAL";
 
@@ -31,7 +31,7 @@ EarthElemental* EarthElemental::deserialize(ValueMap& properties)
 }
 
 EarthElemental::EarthElemental(ValueMap& properties) : super(properties,
-	EarthElemental::MapKeyEarthElemental,
+	EarthElemental::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_EarthElemental_Emblem,
 	Size(820.0f, 1480.0f),

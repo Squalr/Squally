@@ -21,7 +21,7 @@
 
 using namespace cocos2d;
 
-const std::string CinematicMarker::MapKeyCinematicMarker = "cinematic-marker";
+const std::string CinematicMarker::MapKey = "cinematic-marker";
 
 CinematicMarker* CinematicMarker::create(ValueMap& properties)
 {

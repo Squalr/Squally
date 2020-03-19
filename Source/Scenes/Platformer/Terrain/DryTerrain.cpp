@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DryTerrain::MapKeyTerrainType = "dry";
+const std::string DryTerrain::MapKey = "dry";
 
 DryTerrain* DryTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ DryTerrain::DryTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return DryTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		DryTerrain::MapKeyTerrainType,
+		DryTerrain::MapKey,
 		TextureResources::DryTexture,
 		TerrainResources::Dry_Top,
 		TerrainResources::Dry_TopLeft,

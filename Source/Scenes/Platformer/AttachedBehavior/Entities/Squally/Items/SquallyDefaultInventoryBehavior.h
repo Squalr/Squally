@@ -9,7 +9,7 @@ class SquallyDefaultInventoryBehavior : public AttachedBehavior
 public:
 	static SquallyDefaultInventoryBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyDefaultInventoryBehavior(GameObject* owner);

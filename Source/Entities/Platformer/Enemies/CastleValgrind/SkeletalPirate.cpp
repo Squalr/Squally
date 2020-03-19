@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalPirate::MapKeySkeletalPirate = "skeletal-pirate";
+const std::string SkeletalPirate::MapKey = "skeletal-pirate";
 HexusOpponentData* SkeletalPirate::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalPirate::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PIRATE";
 
@@ -31,7 +31,7 @@ SkeletalPirate* SkeletalPirate::deserialize(ValueMap& properties)
 }
 
 SkeletalPirate::SkeletalPirate(ValueMap& properties) : super(properties,
-	SkeletalPirate::MapKeySkeletalPirate,
+	SkeletalPirate::MapKey,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Animations,
 	EntityResources::Enemies_CastleValgrind_SkeletalPirate_Emblem,
 	Size(112.0f, 820.0f),

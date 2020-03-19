@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyMovementBehavior::MapKeyAttachedBehavior = "squally-movements";
+const std::string SquallyMovementBehavior::MapKey = "squally-movements";
 const float SquallyMovementBehavior::SquallyMovementAcceleration = 8000.0f;
 
 SquallyMovementBehavior* SquallyMovementBehavior::create(GameObject* owner)

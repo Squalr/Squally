@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyHealthBehavior::MapKeyAttachedBehavior = "enemy-health";
+const std::string EnemyHealthBehavior::MapKey = "enemy-health";
 const std::string EnemyHealthBehavior::SaveKeyIsDead = "is-dead";
 
 EnemyHealthBehavior* EnemyHealthBehavior::create(GameObject* owner)

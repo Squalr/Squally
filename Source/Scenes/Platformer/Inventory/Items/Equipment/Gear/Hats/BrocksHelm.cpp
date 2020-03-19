@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BrocksHelm::SaveKeyBrocksHelm = "brocks-helm";
+const std::string BrocksHelm::SaveKey = "brocks-helm";
 
 BrocksHelm* BrocksHelm::create()
 {
@@ -46,7 +46,7 @@ Item* BrocksHelm::clone()
 
 std::string BrocksHelm::getItemName()
 {
-	return BrocksHelm::SaveKeyBrocksHelm;
+	return BrocksHelm::SaveKey;
 }
 
 LocalizedString* BrocksHelm::getString()
@@ -61,7 +61,7 @@ std::string BrocksHelm::getIconResource()
 
 std::string BrocksHelm::getSerializationKey()
 {
-	return BrocksHelm::SaveKeyBrocksHelm;
+	return BrocksHelm::SaveKey;
 }
 
 Vec2 BrocksHelm::getDisplayOffset()

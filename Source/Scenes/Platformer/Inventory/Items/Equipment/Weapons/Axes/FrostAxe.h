@@ -15,7 +15,7 @@ public:
 	cocos2d::Size getWeaponCollisionSize() override;
 	cocos2d::Vec2 getWeaponOffset() override;
 
-	static const std::string SaveKeyFrostAxe;
+	static const std::string SaveKey;
 
 protected:
 	FrostAxe();

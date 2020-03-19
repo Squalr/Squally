@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CandySword::SaveKeyCandySword = "candy-sword";
+const std::string CandySword::SaveKey = "candy-sword";
 
 CandySword* CandySword::create()
 {
@@ -46,7 +46,7 @@ Item* CandySword::clone()
 
 std::string CandySword::getItemName()
 {
-	return CandySword::SaveKeyCandySword;
+	return CandySword::SaveKey;
 }
 
 LocalizedString* CandySword::getString()
@@ -61,5 +61,5 @@ std::string CandySword::getIconResource()
 
 std::string CandySword::getSerializationKey()
 {
-	return CandySword::SaveKeyCandySword;
+	return CandySword::SaveKey;
 }

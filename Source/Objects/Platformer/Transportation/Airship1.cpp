@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Airship1::MapKeyAirship1 = "airship-1";
+const std::string Airship1::MapKey = "airship-1";
 
 Airship1* Airship1::create(ValueMap& properties)
 {

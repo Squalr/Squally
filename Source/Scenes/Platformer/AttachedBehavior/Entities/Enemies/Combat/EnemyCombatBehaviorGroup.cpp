@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyCombatBehaviorGroup::MapKeyAttachedBehavior = "enemy-combat-group";
+const std::string EnemyCombatBehaviorGroup::MapKey = "enemy-combat-group";
 
 EnemyCombatBehaviorGroup* EnemyCombatBehaviorGroup::create(GameObject* owner)
 {

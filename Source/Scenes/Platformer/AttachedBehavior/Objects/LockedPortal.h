@@ -10,8 +10,8 @@ class LockedPortal : public AttachedBehavior
 public:
 	static LockedPortal* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
-	static const std::string MapKeyPropertyItemRequired;
+	static const std::string MapKey;
+	static const std::string PropertyItemRequired;
 
 protected:
 	LockedPortal(GameObject* owner);

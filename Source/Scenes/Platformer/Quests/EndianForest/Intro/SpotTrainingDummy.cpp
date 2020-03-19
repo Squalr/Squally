@@ -47,7 +47,7 @@ void SpotTrainingDummy::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 }
 
 void SpotTrainingDummy::onActivate(bool isActiveThroughSkippable)

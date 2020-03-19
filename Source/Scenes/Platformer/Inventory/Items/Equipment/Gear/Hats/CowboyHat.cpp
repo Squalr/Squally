@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CowboyHat::SaveKeyCowboyHat = "cowboy-hat";
+const std::string CowboyHat::SaveKey = "cowboy-hat";
 
 CowboyHat* CowboyHat::create()
 {
@@ -46,7 +46,7 @@ Item* CowboyHat::clone()
 
 std::string CowboyHat::getItemName()
 {
-	return CowboyHat::SaveKeyCowboyHat;
+	return CowboyHat::SaveKey;
 }
 
 LocalizedString* CowboyHat::getString()
@@ -61,7 +61,7 @@ std::string CowboyHat::getIconResource()
 
 std::string CowboyHat::getSerializationKey()
 {
-	return CowboyHat::SaveKeyCowboyHat;
+	return CowboyHat::SaveKey;
 }
 
 Vec2 CowboyHat::getDisplayOffset()

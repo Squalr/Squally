@@ -21,7 +21,7 @@
 
 using namespace cocos2d;
 
-const std::string Trigger::MapKeyTrigger = "trigger";
+const std::string Trigger::MapKey = "trigger";
 const std::string Trigger::PropertySaveState = "save-state";
 
 Trigger* Trigger::create(ValueMap& properties)

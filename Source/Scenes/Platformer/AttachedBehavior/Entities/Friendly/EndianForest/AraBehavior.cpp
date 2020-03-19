@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string AraBehavior::MapKeyAttachedBehavior = "ara";
+const std::string AraBehavior::MapKey = "ara";
 
 AraBehavior* AraBehavior::create(GameObject* owner)
 {
@@ -46,12 +46,12 @@ void AraBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{

@@ -26,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_GET_DENSITY 1
 
-const std::string FloatingAsteroid::MapKeyFloatingAsteroid = "floating-asteroid";
+const std::string FloatingAsteroid::MapKey = "floating-asteroid";
 
 FloatingAsteroid* FloatingAsteroid::create(ValueMap& properties)
 {
@@ -86,7 +86,7 @@ void FloatingAsteroid::registerHackables()
 		{
 			LOCAL_FUNC_ID_GET_DENSITY,
 			HackableCode::HackableCodeInfo(
-				FloatingAsteroid::MapKeyFloatingAsteroid,
+				FloatingAsteroid::MapKey,
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				UIResources::Menus_Icons_Anvil,
 				FloatingAsteroidGetDensityPreview::create(),

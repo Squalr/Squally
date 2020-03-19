@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string ScythePlans::SaveKeyScythePlans = "scythe-plans";
+const std::string ScythePlans::SaveKey = "scythe-plans";
 
 ScythePlans* ScythePlans::create()
 {
@@ -50,7 +50,7 @@ Item* ScythePlans::clone()
 
 std::string ScythePlans::getItemName()
 {
-	return ScythePlans::SaveKeyScythePlans;
+	return ScythePlans::SaveKey;
 }
 
 LocalizedString* ScythePlans::getString()
@@ -70,5 +70,5 @@ std::string ScythePlans::getCraftedItemIconResource()
 
 std::string ScythePlans::getSerializationKey()
 {
-	return ScythePlans::SaveKeyScythePlans;
+	return ScythePlans::SaveKey;
 }

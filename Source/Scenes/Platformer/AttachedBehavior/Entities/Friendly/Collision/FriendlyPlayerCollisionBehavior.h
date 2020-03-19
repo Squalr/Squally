@@ -9,7 +9,7 @@ class FriendlyPlayerCollisionBehavior : public AttachedBehavior
 public:
 	static FriendlyPlayerCollisionBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyPlayerCollisionBehavior(GameObject* owner);

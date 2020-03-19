@@ -41,7 +41,6 @@
 #include "Objects/Platformer/Interactables/Doors/TrapDoor/TrapDoorFrame.h"
 #include "Objects/Platformer/Interactables/Doors/Warp.h"
 #include "Objects/Platformer/Interactables/Doors/WoodenGate/WoodenGate.h"
-#include "Objects/Platformer/Interactables/HackableHint.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemAttacking.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemEndOfDemo.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"

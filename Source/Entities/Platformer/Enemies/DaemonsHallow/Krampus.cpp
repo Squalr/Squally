@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Krampus::MapKeyKrampus = "krampus";
+const std::string Krampus::MapKey = "krampus";
 HexusOpponentData* Krampus::HexusOpponentDataInstance = nullptr;
 const std::string Krampus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KRAMPUS";
 
@@ -31,7 +31,7 @@ Krampus* Krampus::deserialize(ValueMap& properties)
 }
 
 Krampus::Krampus(ValueMap& properties) : super(properties,
-	Krampus::MapKeyKrampus,
+	Krampus::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Krampus_Emblem,
 	Size(396.0f, 412.0f),

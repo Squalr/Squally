@@ -123,7 +123,7 @@ void CraftingMenuBase::onEnter()
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	this->scheduleUpdate();
 }

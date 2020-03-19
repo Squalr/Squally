@@ -24,10 +24,10 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_WIND_SPEED 1
 
-const std::string Wind::MapKeyWind = "wind";
-const std::string Wind::MapPropertyUniform = "uniform";
-const std::string Wind::MapPropertySpeedX = "speed-x";
-const std::string Wind::MapPropertySpeedY = "speed-y";
+const std::string Wind::MapKey = "wind";
+const std::string Wind::PropertyUniform = "uniform";
+const std::string Wind::PropertySpeedX = "speed-x";
+const std::string Wind::PropertySpeedY = "speed-y";
 const float Wind::BaseWindSpeed = 10240.0f;
 
 Wind* Wind::create(ValueMap& properties)
@@ -42,9 +42,9 @@ Wind* Wind::create(ValueMap& properties)
 Wind::Wind(ValueMap& properties) : super(properties)
 {
 	this->windClippy = WindClippy::create();
-	this->isUniform = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertyUniform, Value(false)).asBool();
-	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertySpeedX, Value(0.0f)).asFloat();
-	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::MapPropertySpeedY, Value(0.0f)).asFloat();
+	this->isUniform = GameUtils::getKeyOrDefault(this->properties, Wind::PropertyUniform, Value(false)).asBool();
+	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedX, Value(0.0f)).asFloat();
+	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedY, Value(0.0f)).asFloat();
 
 	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
@@ -131,7 +131,7 @@ void Wind::registerHackables()
 		{
 			LOCAL_FUNC_ID_WIND_SPEED,
 			HackableCode::HackableCodeInfo(
-				Wind::MapKeyWind,
+				Wind::MapKey,
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
 				UIResources::Menus_Icons_Spell,
 				WindSetSpeedPreview::create(),

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Aphrodite::MapKeyAphrodite = "aphrodite";
+const std::string Aphrodite::MapKey = "aphrodite";
 HexusOpponentData* Aphrodite::HexusOpponentDataInstance = nullptr;
 const std::string Aphrodite::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_APHRODITE";
 
@@ -31,7 +31,7 @@ Aphrodite* Aphrodite::deserialize(ValueMap& properties)
 }
 
 Aphrodite::Aphrodite(ValueMap& properties) : super(properties,
-	Aphrodite::MapKeyAphrodite,
+	Aphrodite::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Animations,
 	EntityResources::Npcs_UnderflowRuins_Aphrodite_Emblem,
 	Size(112.0f, 160.0f),

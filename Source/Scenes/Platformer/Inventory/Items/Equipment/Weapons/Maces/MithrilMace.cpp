@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MithrilMace::SaveKeyMithrilMace = "mithril-mace";
+const std::string MithrilMace::SaveKey = "mithril-mace";
 
 MithrilMace* MithrilMace::create()
 {
@@ -46,7 +46,7 @@ Item* MithrilMace::clone()
 
 std::string MithrilMace::getItemName()
 {
-	return MithrilMace::SaveKeyMithrilMace;
+	return MithrilMace::SaveKey;
 }
 
 LocalizedString* MithrilMace::getString()
@@ -61,7 +61,7 @@ std::string MithrilMace::getIconResource()
 
 std::string MithrilMace::getSerializationKey()
 {
-	return MithrilMace::SaveKeyMithrilMace;
+	return MithrilMace::SaveKey;
 }
 
 Vec2 MithrilMace::getDisplayOffset()

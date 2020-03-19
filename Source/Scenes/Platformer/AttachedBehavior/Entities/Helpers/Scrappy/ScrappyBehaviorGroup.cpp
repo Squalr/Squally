@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string ScrappyBehaviorGroup::MapKeyAttachedBehavior = "scrappy";
+const std::string ScrappyBehaviorGroup::MapKey = "scrappy";
 
 ScrappyBehaviorGroup* ScrappyBehaviorGroup::create(GameObject* owner)
 {

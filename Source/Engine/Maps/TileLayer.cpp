@@ -12,12 +12,12 @@
 using namespace cocos2d;
 
 const std::string TileLayer::MapKeyTilemapType = "tilemap";
-const std::string TileLayer::MapKeyPropertyWidth = "width";
-const std::string TileLayer::MapKeyPropertyHeight = "height";
-const std::string TileLayer::MapKeyPropertyType = "type";
-const std::string TileLayer::MapKeyPropertyObjectify = "objectify";
-const std::string TileLayer::MapKeyPropertyEncoding = "encoding";
-const std::string TileLayer::MapKeyPropertyEncodingValue = "csv";
+const std::string TileLayer::PropertyWidth = "width";
+const std::string TileLayer::PropertyHeight = "height";
+const std::string TileLayer::PropertyType = "type";
+const std::string TileLayer::PropertyObjectify = "objectify";
+const std::string TileLayer::PropertyEncoding = "encoding";
+const std::string TileLayer::PropertyEncodingValue = "csv";
 
 TileLayer* TileLayer::deserialize(cocos_experimental::TMXLayer* initTileLayer)
 {
@@ -31,13 +31,13 @@ TileLayer* TileLayer::deserialize(cocos_experimental::TMXLayer* initTileLayer)
 TileLayer::TileLayer(cocos_experimental::TMXLayer* initTileLayer) : MapLayer(initTileLayer->getProperties(), initTileLayer->getLayerName(), TileLayer::MapKeyTilemapType)
 {
 	this->tileLayer = initTileLayer;
-	this->objectified = GameUtils::getKeyOrDefault(this->properties, TileLayer::MapKeyPropertyObjectify, Value(false)).asBool();
+	this->objectified = GameUtils::getKeyOrDefault(this->properties, TileLayer::PropertyObjectify, Value(false)).asBool();
 
 	// Can be a nullptr if the layer is empty
 	if (this->tileLayer != nullptr)
 	{
 		// Layer name is not intrinsically in properties -- manually add it
-		this->properties[TileLayer::MapKeyPropertyName] = Value(this->tileLayer->getLayerName());
+		this->properties[TileLayer::PropertyName] = Value(this->tileLayer->getLayerName());
 
 		// Check for the objectify flag. This basically converts all tiles in the layer into individual sprites. Cocos2d-x is garbage and does not allow
 		// for dynamic Z sorting on a tile layer, because the tiles are sprite batch rendered instead of as individual sprites.
@@ -77,7 +77,7 @@ TileLayer::~TileLayer()
 
 std::string TileLayer::getType()
 {
-	return GameUtils::getKeyOrDefault(this->properties, TileLayer::MapKeyPropertyType, Value("")).asString();
+	return GameUtils::getKeyOrDefault(this->properties, TileLayer::PropertyType, Value("")).asString();
 }
 
 std::vector<std::vector<int>> TileLayer::getGidMap()

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialSub::SaveKeySpecialSub = "special-sub";
+const std::string SpecialSub::SaveKey = "special-sub";
 
 SpecialSub* SpecialSub::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialSub::clone()
 
 std::string SpecialSub::getItemName()
 {
-	return SpecialSub::SaveKeySpecialSub;
+	return SpecialSub::SaveKey;
 }
 
 LocalizedString* SpecialSub::getString()
@@ -51,7 +51,7 @@ std::string SpecialSub::getIconResource()
 
 std::string SpecialSub::getSerializationKey()
 {
-	return SpecialSub::SaveKeySpecialSub;
+	return SpecialSub::SaveKey;
 }
 
 std::string SpecialSub::getCardKey()

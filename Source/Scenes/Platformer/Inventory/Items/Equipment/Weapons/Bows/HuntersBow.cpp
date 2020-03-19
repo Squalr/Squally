@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string HuntersBow::SaveKeyHuntersBow = "hunters-bow";
+const std::string HuntersBow::SaveKey = "hunters-bow";
 
 HuntersBow* HuntersBow::create()
 {
@@ -46,7 +46,7 @@ Item* HuntersBow::clone()
 
 std::string HuntersBow::getItemName()
 {
-	return HuntersBow::SaveKeyHuntersBow;
+	return HuntersBow::SaveKey;
 }
 
 LocalizedString* HuntersBow::getString()
@@ -61,7 +61,7 @@ std::string HuntersBow::getIconResource()
 
 std::string HuntersBow::getSerializationKey()
 {
-	return HuntersBow::SaveKeyHuntersBow;
+	return HuntersBow::SaveKey;
 }
 
 Vec2 HuntersBow::getDisplayOffset()

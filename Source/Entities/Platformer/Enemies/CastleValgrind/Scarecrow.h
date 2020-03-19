@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyScarecrow;
+	static const std::string MapKey;
+	
+protected:
+	Scarecrow(cocos2d::ValueMap& properties);
+	virtual ~Scarecrow();
 
 private:
 	typedef PlatformerEnemy super;
-	Scarecrow(cocos2d::ValueMap& properties);
-	~Scarecrow();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

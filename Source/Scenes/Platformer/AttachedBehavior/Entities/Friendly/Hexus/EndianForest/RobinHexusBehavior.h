@@ -12,7 +12,7 @@ class RobinHexusBehavior : public HexusBehaviorBase
 public:
 	static RobinHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	RobinHexusBehavior(GameObject* owner);

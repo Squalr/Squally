@@ -9,7 +9,7 @@ class EntityCinematicHijackBehavior : public AttachedBehavior
 public:
 	static EntityCinematicHijackBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityCinematicHijackBehavior(GameObject* owner);

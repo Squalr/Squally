@@ -13,8 +13,8 @@
 
 using namespace cocos2d;
 
-const std::string IllusionBehavior::MapKeyAttachedBehavior = "illusion";
-const std::string IllusionBehavior::MapPropertyGroup = "illusion-group";
+const std::string IllusionBehavior::MapKey = "illusion";
+const std::string IllusionBehavior::PropertyGroup = "illusion-group";
 
 IllusionBehavior* IllusionBehavior::create(GameObject* owner)
 {
@@ -29,7 +29,7 @@ IllusionBehavior::IllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->object = owner;
-	this->group = GameUtils::getKeyOrDefault(this->properties, IllusionBehavior::MapPropertyGroup, Value("")).asString();
+	this->group = GameUtils::getKeyOrDefault(this->properties, IllusionBehavior::PropertyGroup, Value("")).asString();
 
 	if (this->object == nullptr)
 	{

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MageCastBehavior::MapKeyAttachedBehavior = "mage-cast";
+const std::string MageCastBehavior::MapKey = "mage-cast";
 
 MageCastBehavior* MageCastBehavior::create(GameObject* owner)
 {

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidCrystal::SaveKeyVoidCrystal = "void-crystal";
+const std::string VoidCrystal::SaveKey = "void-crystal";
 
 VoidCrystal* VoidCrystal::create()
 {
@@ -35,7 +35,7 @@ Item* VoidCrystal::clone()
 
 std::string VoidCrystal::getItemName()
 {
-	return VoidCrystal::SaveKeyVoidCrystal;
+	return VoidCrystal::SaveKey;
 }
 
 LocalizedString* VoidCrystal::getString()
@@ -50,5 +50,5 @@ std::string VoidCrystal::getIconResource()
 
 std::string VoidCrystal::getSerializationKey()
 {
-	return VoidCrystal::SaveKeyVoidCrystal;
+	return VoidCrystal::SaveKey;
 }

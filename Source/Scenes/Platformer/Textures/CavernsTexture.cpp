@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string CavernsTexture::MapKeyTextureType = "caverns";
+const std::string CavernsTexture::MapKey = "caverns";
 
 CavernsTexture* CavernsTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ CavernsTexture* CavernsTexture::create(ValueMap& properties)
 CavernsTexture::CavernsTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		CavernsTexture::MapKeyTextureType,
+		CavernsTexture::MapKey,
 		TextureResources::CavernsTexture,
 		Color4B(11, 30, 39, 255)))
 {

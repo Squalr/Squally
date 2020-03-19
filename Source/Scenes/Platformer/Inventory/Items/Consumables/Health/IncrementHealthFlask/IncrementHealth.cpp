@@ -33,7 +33,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RESTORE 1
 
-const std::string IncrementHealth::MapKeyPropertyIncrementHealthTutorial = "increment-health-tutorial";
+const std::string IncrementHealth::PropertyIncrementHealthTutorial = "increment-health-tutorial";
 const std::string IncrementHealth::IncrementHealthIdentifier = "increment-health";
 const float IncrementHealth::TimeBetweenTicks = 0.5f;
 const int IncrementHealth::HackTicks = 5;

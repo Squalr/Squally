@@ -15,7 +15,7 @@ class CinematicMarker : public HackableObject
 public:
 	static CinematicMarker* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCinematicMarker;
+	static const std::string MapKey;
 
 protected:
 	CinematicMarker(cocos2d::ValueMap& properties);

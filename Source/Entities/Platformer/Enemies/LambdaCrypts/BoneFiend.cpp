@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneFiend::MapKeyBoneFiend = "bone-fiend";
+const std::string BoneFiend::MapKey = "bone-fiend";
 HexusOpponentData* BoneFiend::HexusOpponentDataInstance = nullptr;
 const std::string BoneFiend::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONE_FIEND";
 
@@ -31,7 +31,7 @@ BoneFiend* BoneFiend::deserialize(ValueMap& properties)
 }
 
 BoneFiend::BoneFiend(ValueMap& properties) : super(properties,
-	BoneFiend::MapKeyBoneFiend,
+	BoneFiend::MapKey,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneFiend_Emblem,
 	Size(224.0f, 278.0f),

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TheGoldenEagle::SaveKeyTheGoldenEagle = "the-golden-eagle";
+const std::string TheGoldenEagle::SaveKey = "the-golden-eagle";
 
 TheGoldenEagle* TheGoldenEagle::create()
 {
@@ -46,7 +46,7 @@ Item* TheGoldenEagle::clone()
 
 std::string TheGoldenEagle::getItemName()
 {
-	return TheGoldenEagle::SaveKeyTheGoldenEagle;
+	return TheGoldenEagle::SaveKey;
 }
 
 LocalizedString* TheGoldenEagle::getString()
@@ -61,7 +61,7 @@ std::string TheGoldenEagle::getIconResource()
 
 std::string TheGoldenEagle::getSerializationKey()
 {
-	return TheGoldenEagle::SaveKeyTheGoldenEagle;
+	return TheGoldenEagle::SaveKey;
 }
 
 Vec2 TheGoldenEagle::getDisplayOffset()

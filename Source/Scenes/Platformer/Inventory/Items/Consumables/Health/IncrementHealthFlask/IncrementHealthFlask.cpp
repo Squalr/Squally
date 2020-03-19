@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string IncrementHealthFlask::SaveKeyIncrementHealthFlask = "increment-health-flask";
+const std::string IncrementHealthFlask::SaveKey = "increment-health-flask";
 const int IncrementHealthFlask::HealTicks = 8;
 
 IncrementHealthFlask* IncrementHealthFlask::create()
@@ -37,7 +37,7 @@ Item* IncrementHealthFlask::clone()
 
 std::string IncrementHealthFlask::getItemName()
 {
-	return IncrementHealthFlask::SaveKeyIncrementHealthFlask;
+	return IncrementHealthFlask::SaveKey;
 }
 
 LocalizedString* IncrementHealthFlask::getString()
@@ -52,7 +52,7 @@ std::string IncrementHealthFlask::getIconResource()
 
 std::string IncrementHealthFlask::getSerializationKey()
 {
-	return IncrementHealthFlask::SaveKeyIncrementHealthFlask;
+	return IncrementHealthFlask::SaveKey;
 }
 
 PlatformerAttack* IncrementHealthFlask::createAssociatedAttack()

@@ -24,12 +24,12 @@
 
 using namespace cocos2d;
 
-const std::string CipherChest::MapKeyCipherChest = "cipher-chest";
-const std::string CipherChest::MapKeyPropertyInputs = "inputs";
-const std::string CipherChest::MapKeyPropertyRule = "rule";
-const std::string CipherChest::MapKeyPropertyDataType = "data-type";
-const std::string CipherChest::MapKeyPropertyTokens = "tokens";
-const std::string CipherChest::MapKeyPropertyTutorial = "tutorial";
+const std::string CipherChest::MapKey = "cipher-chest";
+const std::string CipherChest::PropertyInputs = "inputs";
+const std::string CipherChest::PropertyRule = "rule";
+const std::string CipherChest::PropertyDataType = "data-type";
+const std::string CipherChest::PropertyTokens = "tokens";
+const std::string CipherChest::PropertyTutorial = "tutorial";
 
 CipherChest* CipherChest::create(ValueMap& properties)
 {
@@ -127,16 +127,16 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 		return (unsigned char)(MathUtils::resolveBinaryMathExpression(expression));
 	};
 
-	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyRule, Value("")).asString();
-	std::string dataType = StrUtils::toLower(GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyDataType, Value("ascii")).asString());
+	std::string rule = GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyRule, Value("")).asString();
+	std::string dataType = StrUtils::toLower(GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyDataType, Value("ascii")).asString());
 	std::vector<std::string> inputs = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyInputs, Value("")).asString(), ", ", false
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyInputs, Value("")).asString(), ", ", false
 	);
 	std::vector<std::string> tokens = StrUtils::splitOn(
-		GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTokens, Value("")).asString(), ", ", false
+		GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyTokens, Value("")).asString(), ", ", false
 	);
 
-	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::MapKeyPropertyTutorial, Value("")).asString();
+	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyTutorial, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap = std::vector<std::tuple<unsigned char, unsigned char>>();
 
 	for (auto it = inputs.begin(); it != inputs.end(); it++)

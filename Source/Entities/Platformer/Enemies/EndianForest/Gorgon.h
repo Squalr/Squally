@@ -13,10 +13,12 @@ public:
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 
-	static const std::string MapKeyGorgon;
+	static const std::string MapKey;
+	
+protected:
+	Gorgon(cocos2d::ValueMap& properties);
+	virtual ~Gorgon();
 
 private:
 	typedef PlatformerEnemy super;
-	Gorgon(cocos2d::ValueMap& properties);
-	~Gorgon();
 };

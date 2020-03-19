@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Monocle::SaveKeyMonocle = "monocle";
+const std::string Monocle::SaveKey = "monocle";
 
 Monocle* Monocle::create()
 {
@@ -46,7 +46,7 @@ Item* Monocle::clone()
 
 std::string Monocle::getItemName()
 {
-	return Monocle::SaveKeyMonocle;
+	return Monocle::SaveKey;
 }
 
 LocalizedString* Monocle::getString()
@@ -61,7 +61,7 @@ std::string Monocle::getIconResource()
 
 std::string Monocle::getSerializationKey()
 {
-	return Monocle::SaveKeyMonocle;
+	return Monocle::SaveKey;
 }
 
 Vec2 Monocle::getDisplayOffset()

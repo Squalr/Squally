@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string DryTexture::MapKeyTextureType = "dry";
+const std::string DryTexture::MapKey = "dry";
 
 DryTexture* DryTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ DryTexture* DryTexture::create(ValueMap& properties)
 DryTexture::DryTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		DryTexture::MapKeyTextureType,
+		DryTexture::MapKey,
 		TextureResources::DryTexture,
 		Color4B(11, 30, 39, 255)))
 {

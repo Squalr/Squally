@@ -224,7 +224,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Create a special hud_target layer for top-level display items
-	deserializedLayers.push_back(MapLayer::create({ { MapLayer::MapKeyPropertyIsHackable, Value(true) }}, "hud_target"));
+	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
 
 	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation());
 

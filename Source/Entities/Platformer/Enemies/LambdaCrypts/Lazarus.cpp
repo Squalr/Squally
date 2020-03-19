@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Lazarus::MapKeyLazarus = "lazarus";
+const std::string Lazarus::MapKey = "lazarus";
 HexusOpponentData* Lazarus::HexusOpponentDataInstance = nullptr;
 const std::string Lazarus::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LAZARUS";
 
@@ -31,7 +31,7 @@ Lazarus* Lazarus::deserialize(ValueMap& properties)
 }
 
 Lazarus::Lazarus(ValueMap& properties) : super(properties,
-	Lazarus::MapKeyLazarus,
+	Lazarus::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Lazarus_Animations,
 	EntityResources::Enemies_LambdaCrypts_Lazarus_Emblem,
 	Size(196.0f, 320.0f),

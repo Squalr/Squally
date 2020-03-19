@@ -9,7 +9,7 @@ class NoDefendBehavior : public AttachedBehavior
 public:
 	static NoDefendBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	NoDefendBehavior(GameObject* owner);

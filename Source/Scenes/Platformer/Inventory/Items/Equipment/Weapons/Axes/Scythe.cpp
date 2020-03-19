@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Scythe::SaveKeyScythe = "scythe";
+const std::string Scythe::SaveKey = "scythe";
 
 Scythe* Scythe::create()
 {
@@ -46,7 +46,7 @@ Item* Scythe::clone()
 
 std::string Scythe::getItemName()
 {
-	return Scythe::SaveKeyScythe;
+	return Scythe::SaveKey;
 }
 
 LocalizedString* Scythe::getString()
@@ -61,7 +61,7 @@ std::string Scythe::getIconResource()
 
 std::string Scythe::getSerializationKey()
 {
-	return Scythe::SaveKeyScythe;
+	return Scythe::SaveKey;
 }
 
 Size Scythe::getWeaponCollisionSize()

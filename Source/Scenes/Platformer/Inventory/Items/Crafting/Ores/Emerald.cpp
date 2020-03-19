@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Emerald::SaveKeyEmerald = "emerald";
+const std::string Emerald::SaveKey = "emerald";
 
 Emerald* Emerald::create()
 {
@@ -35,7 +35,7 @@ Item* Emerald::clone()
 
 std::string Emerald::getItemName()
 {
-	return Emerald::SaveKeyEmerald;
+	return Emerald::SaveKey;
 }
 
 LocalizedString* Emerald::getString()
@@ -50,5 +50,5 @@ std::string Emerald::getIconResource()
 
 std::string Emerald::getSerializationKey()
 {
-	return Emerald::SaveKeyEmerald;
+	return Emerald::SaveKey;
 }

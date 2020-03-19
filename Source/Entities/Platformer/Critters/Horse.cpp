@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string Horse::MapKeyHorse = "horse";
+const std::string Horse::MapKey = "horse";
 
 Horse* Horse::deserialize(ValueMap& properties)
 {
@@ -24,7 +24,7 @@ Horse* Horse::deserialize(ValueMap& properties)
 }
 
 Horse::Horse(ValueMap& properties) : super(properties,
-	Horse::MapKeyHorse,
+	Horse::MapKey,
 	EntityResources::Misc_EndianForest_Horse_Animations,
 	EntityResources::Misc_EndianForest_Horse_Emblem,
 	Size(192.0f, 160.0f),

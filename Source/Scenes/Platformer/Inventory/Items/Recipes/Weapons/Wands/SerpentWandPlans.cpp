@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SerpentWandPlans::SaveKeySerpentWandPlans = "serpent-wand-plans";
+const std::string SerpentWandPlans::SaveKey = "serpent-wand-plans";
 
 SerpentWandPlans* SerpentWandPlans::create()
 {
@@ -51,7 +51,7 @@ Item* SerpentWandPlans::clone()
 
 std::string SerpentWandPlans::getItemName()
 {
-	return SerpentWandPlans::SaveKeySerpentWandPlans;
+	return SerpentWandPlans::SaveKey;
 }
 
 LocalizedString* SerpentWandPlans::getString()
@@ -71,5 +71,5 @@ std::string SerpentWandPlans::getCraftedItemIconResource()
 
 std::string SerpentWandPlans::getSerializationKey()
 {
-	return SerpentWandPlans::SaveKeySerpentWandPlans;
+	return SerpentWandPlans::SaveKey;
 }

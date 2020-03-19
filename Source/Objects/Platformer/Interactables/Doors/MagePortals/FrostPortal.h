@@ -18,7 +18,7 @@ public:
 	void closePortal(bool instant) override;
 	void openPortal(bool instant) override;
 
-	static const std::string MapKeyFrostPortal;
+	static const std::string MapKey;
 
 protected:
 	FrostPortal(cocos2d::ValueMap& properties);

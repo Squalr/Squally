@@ -13,7 +13,7 @@ public:
 	
 	virtual void loadMap();
 
-	static const std::string MapKeyPortal;
+	static const std::string MapKey;
 	static const std::string MapKeyPortalMap;
 	static const std::string MapKeyPortalTransition;
 

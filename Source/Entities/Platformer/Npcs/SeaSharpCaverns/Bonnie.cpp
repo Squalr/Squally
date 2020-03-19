@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Bonnie::MapKeyBonnie = "bonnie";
+const std::string Bonnie::MapKey = "bonnie";
 HexusOpponentData* Bonnie::HexusOpponentDataInstance = nullptr;
 const std::string Bonnie::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BONNIE";
 
@@ -31,7 +31,7 @@ Bonnie* Bonnie::deserialize(ValueMap& properties)
 }
 
 Bonnie::Bonnie(ValueMap& properties) : super(properties,
-	Bonnie::MapKeyBonnie,
+	Bonnie::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Bonnie_Emblem,
 	Size(112.0f, 160.0f),

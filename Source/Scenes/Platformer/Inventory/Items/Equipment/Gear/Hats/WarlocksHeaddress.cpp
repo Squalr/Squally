@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WarlocksHeaddress::SaveKeyWarlocksHeaddress = "warlocks-headress";
+const std::string WarlocksHeaddress::SaveKey = "warlocks-headress";
 
 WarlocksHeaddress* WarlocksHeaddress::create()
 {
@@ -46,7 +46,7 @@ Item* WarlocksHeaddress::clone()
 
 std::string WarlocksHeaddress::getItemName()
 {
-	return WarlocksHeaddress::SaveKeyWarlocksHeaddress;
+	return WarlocksHeaddress::SaveKey;
 }
 
 LocalizedString* WarlocksHeaddress::getString()
@@ -61,7 +61,7 @@ std::string WarlocksHeaddress::getIconResource()
 
 std::string WarlocksHeaddress::getSerializationKey()
 {
-	return WarlocksHeaddress::SaveKeyWarlocksHeaddress;
+	return WarlocksHeaddress::SaveKey;
 }
 
 Vec2 WarlocksHeaddress::getDisplayOffset()

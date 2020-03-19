@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Rhinoman::MapKeyRhinoman = "rhinoman";
+const std::string Rhinoman::MapKey = "rhinoman";
 HexusOpponentData* Rhinoman::HexusOpponentDataInstance = nullptr;
 const std::string Rhinoman::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RHINOMAN";
 
@@ -31,7 +31,7 @@ Rhinoman* Rhinoman::deserialize(ValueMap& properties)
 }
 
 Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
-	Rhinoman::MapKeyRhinoman,
+	Rhinoman::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Rhinoman_Emblem,
 	Size(592.0f, 592.0f),

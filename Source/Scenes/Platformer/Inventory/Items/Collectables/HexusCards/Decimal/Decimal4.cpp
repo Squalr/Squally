@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Decimal4::SaveKeyDecimal4 = "decimal-4";
+const std::string Decimal4::SaveKey = "decimal-4";
 
 Decimal4* Decimal4::create()
 {
@@ -36,7 +36,7 @@ Item* Decimal4::clone()
 
 std::string Decimal4::getItemName()
 {
-	return Decimal4::SaveKeyDecimal4;
+	return Decimal4::SaveKey;
 }
 
 LocalizedString* Decimal4::getString()
@@ -51,7 +51,7 @@ std::string Decimal4::getIconResource()
 
 std::string Decimal4::getSerializationKey()
 {
-	return Decimal4::SaveKeyDecimal4;
+	return Decimal4::SaveKey;
 }
 
 std::string Decimal4::getCardKey()

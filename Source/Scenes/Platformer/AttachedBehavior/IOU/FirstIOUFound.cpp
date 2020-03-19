@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string FirstIOUFound::MapKeyAttachedBehavior = "first-iou-found";
+const std::string FirstIOUFound::MapKey = "first-iou-found";
 
 FirstIOUFound* FirstIOUFound::create(GameObject* owner)
 {

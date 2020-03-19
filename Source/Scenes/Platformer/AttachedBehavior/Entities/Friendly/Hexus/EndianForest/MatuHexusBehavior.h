@@ -12,7 +12,7 @@ class MatuHexusBehavior : public HexusBehaviorBase
 public:
 	static MatuHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	MatuHexusBehavior(GameObject* owner);

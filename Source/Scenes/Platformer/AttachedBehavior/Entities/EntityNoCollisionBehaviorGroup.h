@@ -14,7 +14,7 @@ class EntityNoCollisionBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static EntityNoCollisionBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityNoCollisionBehaviorGroup(GameObject* owner);

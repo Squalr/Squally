@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Aspen::MapKeyAspen = "aspen";
+const std::string Aspen::MapKey = "aspen";
 HexusOpponentData* Aspen::HexusOpponentDataInstance = nullptr;
 const std::string Aspen::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ASPEN";
 
@@ -31,7 +31,7 @@ Aspen* Aspen::deserialize(ValueMap& properties)
 }
 
 Aspen::Aspen(ValueMap& properties) : super(properties,
-	Aspen::MapKeyAspen,
+	Aspen::MapKey,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Animations,
 	EntityResources::Npcs_BalmerPeaks_Aspen_Emblem,
 	Size(112.0f, 160.0f),

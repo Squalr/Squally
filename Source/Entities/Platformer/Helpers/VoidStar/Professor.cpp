@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Professor::MapKeyProfessor = "professor";
+const std::string Professor::MapKey = "professor";
 HexusOpponentData* Professor::HexusOpponentDataInstance = nullptr;
 const std::string Professor::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PROFESSOR";
 
@@ -31,7 +31,7 @@ Professor* Professor::deserialize(ValueMap& properties)
 }
 
 Professor::Professor(ValueMap& properties) : super(properties,
-	Professor::MapKeyProfessor,
+	Professor::MapKey,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
 	Size(224.0f, 440.0f),

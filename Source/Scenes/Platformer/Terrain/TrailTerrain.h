@@ -7,7 +7,7 @@ class TrailTerrain : public TerrainObject
 public:
 	static TrailTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
 
 protected:
 	TrailTerrain(cocos2d::ValueMap& properties);

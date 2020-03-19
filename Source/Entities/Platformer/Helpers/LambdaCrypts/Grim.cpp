@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Grim::MapKeyGrim = "grim";
+const std::string Grim::MapKey = "grim";
 HexusOpponentData* Grim::HexusOpponentDataInstance = nullptr;
 const std::string Grim::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRIM";
 
@@ -31,7 +31,7 @@ Grim* Grim::deserialize(ValueMap& properties)
 }
 
 Grim::Grim(ValueMap& properties) : super(properties,
-	Grim::MapKeyGrim,
+	Grim::MapKey,
 	EntityResources::Helpers_LambdaCrypts_Grim_Animations,
 	EntityResources::Helpers_LambdaCrypts_Grim_Emblem,
 	Size(224.0f, 440.0f),

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicSword::SaveKeyDemonicSword = "demonic-sword";
+const std::string DemonicSword::SaveKey = "demonic-sword";
 
 DemonicSword* DemonicSword::create()
 {
@@ -46,7 +46,7 @@ Item* DemonicSword::clone()
 
 std::string DemonicSword::getItemName()
 {
-	return DemonicSword::SaveKeyDemonicSword;
+	return DemonicSword::SaveKey;
 }
 
 LocalizedString* DemonicSword::getString()
@@ -61,5 +61,5 @@ std::string DemonicSword::getIconResource()
 
 std::string DemonicSword::getSerializationKey()
 {
-	return DemonicSword::SaveKeyDemonicSword;
+	return DemonicSword::SaveKey;
 }

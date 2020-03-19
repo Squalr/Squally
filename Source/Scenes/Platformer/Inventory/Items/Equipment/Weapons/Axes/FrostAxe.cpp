@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string FrostAxe::SaveKeyFrostAxe = "frost-axe";
+const std::string FrostAxe::SaveKey = "frost-axe";
 
 FrostAxe* FrostAxe::create()
 {
@@ -46,7 +46,7 @@ Item* FrostAxe::clone()
 
 std::string FrostAxe::getItemName()
 {
-	return FrostAxe::SaveKeyFrostAxe;
+	return FrostAxe::SaveKey;
 }
 
 LocalizedString* FrostAxe::getString()
@@ -61,7 +61,7 @@ std::string FrostAxe::getIconResource()
 
 std::string FrostAxe::getSerializationKey()
 {
-	return FrostAxe::SaveKeyFrostAxe;
+	return FrostAxe::SaveKey;
 }
 
 Size FrostAxe::getWeaponCollisionSize()

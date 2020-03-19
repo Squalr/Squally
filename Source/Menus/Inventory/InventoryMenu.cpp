@@ -107,7 +107,7 @@ void InventoryMenu::onEnter()
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void InventoryMenu::initializePositions()

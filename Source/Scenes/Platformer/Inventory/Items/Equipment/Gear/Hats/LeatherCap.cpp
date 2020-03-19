@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string LeatherCap::SaveKeyLeatherCap = "leather-cap";
+const std::string LeatherCap::SaveKey = "leather-cap";
 
 LeatherCap* LeatherCap::create()
 {
@@ -46,7 +46,7 @@ Item* LeatherCap::clone()
 
 std::string LeatherCap::getItemName()
 {
-	return LeatherCap::SaveKeyLeatherCap;
+	return LeatherCap::SaveKey;
 }
 
 LocalizedString* LeatherCap::getString()
@@ -61,7 +61,7 @@ std::string LeatherCap::getIconResource()
 
 std::string LeatherCap::getSerializationKey()
 {
-	return LeatherCap::SaveKeyLeatherCap;
+	return LeatherCap::SaveKey;
 }
 
 Vec2 LeatherCap::getDisplayOffset()

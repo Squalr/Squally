@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyAbilityBehaviorGroup::MapKeyAttachedBehavior = "squally-ability-group";
+const std::string SquallyAbilityBehaviorGroup::MapKey = "squally-ability-group";
 
 SquallyAbilityBehaviorGroup* SquallyAbilityBehaviorGroup::create(GameObject* owner)
 {

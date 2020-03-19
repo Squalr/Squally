@@ -9,7 +9,7 @@ class EntityRunBehavior : public AttachedBehavior
 public:
 	static EntityRunBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityRunBehavior(GameObject* owner);

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialShlCircular::SaveKeySpecialShlCircular = "special-shl-circular";
+const std::string SpecialShlCircular::SaveKey = "special-shl-circular";
 
 SpecialShlCircular* SpecialShlCircular::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialShlCircular::clone()
 
 std::string SpecialShlCircular::getItemName()
 {
-	return SpecialShlCircular::SaveKeySpecialShlCircular;
+	return SpecialShlCircular::SaveKey;
 }
 
 LocalizedString* SpecialShlCircular::getString()
@@ -51,7 +51,7 @@ std::string SpecialShlCircular::getIconResource()
 
 std::string SpecialShlCircular::getSerializationKey()
 {
-	return SpecialShlCircular::SaveKeySpecialShlCircular;
+	return SpecialShlCircular::SaveKey;
 }
 
 std::string SpecialShlCircular::getCardKey()

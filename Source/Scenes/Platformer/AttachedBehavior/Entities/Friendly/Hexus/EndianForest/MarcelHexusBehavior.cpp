@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string MarcelHexusBehavior::MapKeyAttachedBehavior = "marcel-hexus";
+const std::string MarcelHexusBehavior::MapKey = "marcel-hexus";
 
 MarcelHexusBehavior* MarcelHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* MarcelHexusBehavior::generateReward()
 
 std::string MarcelHexusBehavior::getWinLossSaveKey()
 {
-	return MarcelHexusBehavior::MapKeyAttachedBehavior;
+	return MarcelHexusBehavior::MapKey;
 }
 
 std::string MarcelHexusBehavior::getBackgroundResource()

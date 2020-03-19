@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string LightWood::SaveKeyLightWood = "light-wood";
+const std::string LightWood::SaveKey = "light-wood";
 
 LightWood* LightWood::create()
 {
@@ -35,7 +35,7 @@ Item* LightWood::clone()
 
 std::string LightWood::getItemName()
 {
-	return LightWood::SaveKeyLightWood;
+	return LightWood::SaveKey;
 }
 
 LocalizedString* LightWood::getString()
@@ -50,5 +50,5 @@ std::string LightWood::getIconResource()
 
 std::string LightWood::getSerializationKey()
 {
-	return LightWood::SaveKeyLightWood;
+	return LightWood::SaveKey;
 }

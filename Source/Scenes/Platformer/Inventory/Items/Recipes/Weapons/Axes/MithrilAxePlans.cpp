@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string MithrilAxePlans::SaveKeyMithrilAxePlans = "mithril-axe-plans";
+const std::string MithrilAxePlans::SaveKey = "mithril-axe-plans";
 
 MithrilAxePlans* MithrilAxePlans::create()
 {
@@ -50,7 +50,7 @@ Item* MithrilAxePlans::clone()
 
 std::string MithrilAxePlans::getItemName()
 {
-	return MithrilAxePlans::SaveKeyMithrilAxePlans;
+	return MithrilAxePlans::SaveKey;
 }
 
 LocalizedString* MithrilAxePlans::getString()
@@ -70,5 +70,5 @@ std::string MithrilAxePlans::getCraftedItemIconResource()
 
 std::string MithrilAxePlans::getSerializationKey()
 {
-	return MithrilAxePlans::SaveKeyMithrilAxePlans;
+	return MithrilAxePlans::SaveKey;
 }

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Raka::MapKeyRaka = "raka";
+const std::string Raka::MapKey = "raka";
 HexusOpponentData* Raka::HexusOpponentDataInstance = nullptr;
 const std::string Raka::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_RAKA";
 
@@ -31,7 +31,7 @@ Raka* Raka::deserialize(ValueMap& properties)
 }
 
 Raka::Raka(ValueMap& properties) : super(properties,
-	Raka::MapKeyRaka,
+	Raka::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Raka_Emblem,
 	Size(112.0f, 160.0f),

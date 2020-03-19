@@ -11,7 +11,7 @@ class EntityTextOverlayBehavior : public AttachedBehavior
 public:
 	static EntityTextOverlayBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityTextOverlayBehavior(GameObject* owner);

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityAttackBehavior::MapKeyAttachedBehavior = "entity-attacks";
+const std::string EntityAttackBehavior::MapKey = "entity-attacks";
 const float EntityAttackBehavior::DefaultRecoverSpeed = 1.0f;
 const float EntityAttackBehavior::DefaultRecoverSpeedSlow = 1.5f;
 const float EntityAttackBehavior::DefaultRecoverSpeedVerySlow = 2.0f;

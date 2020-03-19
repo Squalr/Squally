@@ -10,7 +10,7 @@ class SquallyOutOfCombatAttackBehavior : public EntityOutOfCombatAttackBehavior
 public:
 	static SquallyOutOfCombatAttackBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyOutOfCombatAttackBehavior(GameObject* owner);

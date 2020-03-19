@@ -56,7 +56,7 @@ void WaterBlessing::onLoad(QuestState questState)
 		this->squally = squally;
 		this->squally->toggleAllowFx(true);
 		
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	if (questState == QuestState::Complete &&
 		QuestTask::getQuestStateForTask(this->questLine, WaterBlessing::MapKeyQuest) == QuestState::None)

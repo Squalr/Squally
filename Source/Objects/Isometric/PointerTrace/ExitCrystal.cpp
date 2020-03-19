@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string ExitCrystal::MapKeyExitCrystal = "exit-crystal";
+const std::string ExitCrystal::MapKey = "exit-crystal";
 
 ExitCrystal* ExitCrystal::create(ValueMap& properties)
 {

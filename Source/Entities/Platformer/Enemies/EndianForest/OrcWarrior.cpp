@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string OrcWarrior::MapKeyOrcWarrior = "orc-warrior";
+const std::string OrcWarrior::MapKey = "orc-warrior";
 
 OrcWarrior* OrcWarrior::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ OrcWarrior* OrcWarrior::deserialize(ValueMap& properties)
 }
 
 OrcWarrior::OrcWarrior(ValueMap& properties) : super(properties,
-	OrcWarrior::MapKeyOrcWarrior,
+	OrcWarrior::MapKey,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Animations,
 	EntityResources::Enemies_EndianForest_OrcWarrior_Emblem,
 	Size(256.0f, 228.0f),

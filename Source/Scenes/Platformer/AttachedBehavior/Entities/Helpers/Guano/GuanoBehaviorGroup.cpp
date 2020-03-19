@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string GuanoBehaviorGroup::MapKeyAttachedBehavior = "guano";
+const std::string GuanoBehaviorGroup::MapKey = "guano";
 
 GuanoBehaviorGroup* GuanoBehaviorGroup::create(GameObject* owner)
 {

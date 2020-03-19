@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Bludgeon::SaveKeyBludgeon = "bludgeon";
+const std::string Bludgeon::SaveKey = "bludgeon";
 
 Bludgeon* Bludgeon::create()
 {
@@ -46,7 +46,7 @@ Item* Bludgeon::clone()
 
 std::string Bludgeon::getItemName()
 {
-	return Bludgeon::SaveKeyBludgeon;
+	return Bludgeon::SaveKey;
 }
 
 LocalizedString* Bludgeon::getString()
@@ -61,7 +61,7 @@ std::string Bludgeon::getIconResource()
 
 std::string Bludgeon::getSerializationKey()
 {
-	return Bludgeon::SaveKeyBludgeon;
+	return Bludgeon::SaveKey;
 }
 
 Vec2 Bludgeon::getDisplayOffset()

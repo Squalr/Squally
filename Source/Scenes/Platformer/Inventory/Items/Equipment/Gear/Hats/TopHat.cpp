@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string TopHat::SaveKeyTopHat = "top-hat";
+const std::string TopHat::SaveKey = "top-hat";
 
 TopHat* TopHat::create()
 {
@@ -46,7 +46,7 @@ Item* TopHat::clone()
 
 std::string TopHat::getItemName()
 {
-	return TopHat::SaveKeyTopHat;
+	return TopHat::SaveKey;
 }
 
 LocalizedString* TopHat::getString()
@@ -61,7 +61,7 @@ std::string TopHat::getIconResource()
 
 std::string TopHat::getSerializationKey()
 {
-	return TopHat::SaveKeyTopHat;
+	return TopHat::SaveKey;
 }
 
 Vec2 TopHat::getDisplayOffset()

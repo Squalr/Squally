@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyDeadVisualBehavior::MapKeyAttachedBehavior = "squally-dead-visuals";
+const std::string SquallyDeadVisualBehavior::MapKey = "squally-dead-visuals";
 
 SquallyDeadVisualBehavior* SquallyDeadVisualBehavior::create(GameObject* owner)
 {

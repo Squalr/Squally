@@ -18,7 +18,7 @@ public:
 	void closePortal(bool instant) override;
 	void openPortal(bool instant) override;
 
-	static const std::string MapKeyDarkPortal;
+	static const std::string MapKey;
 
 protected:
 	DarkPortal(cocos2d::ValueMap& properties);

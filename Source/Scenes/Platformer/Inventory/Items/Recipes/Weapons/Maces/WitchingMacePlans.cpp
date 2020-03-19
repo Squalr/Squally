@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string WitchingMacePlans::SaveKeyWitchingMacePlans = "witching-mace-plans";
+const std::string WitchingMacePlans::SaveKey = "witching-mace-plans";
 
 WitchingMacePlans* WitchingMacePlans::create()
 {
@@ -51,7 +51,7 @@ Item* WitchingMacePlans::clone()
 
 std::string WitchingMacePlans::getItemName()
 {
-	return WitchingMacePlans::SaveKeyWitchingMacePlans;
+	return WitchingMacePlans::SaveKey;
 }
 
 LocalizedString* WitchingMacePlans::getString()
@@ -71,5 +71,5 @@ std::string WitchingMacePlans::getCraftedItemIconResource()
 
 std::string WitchingMacePlans::getSerializationKey()
 {
-	return WitchingMacePlans::SaveKeyWitchingMacePlans;
+	return WitchingMacePlans::SaveKey;
 }

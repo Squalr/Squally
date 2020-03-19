@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string JoustingHelmet::SaveKeyJoustingHelmet = "jousting-helmet";
+const std::string JoustingHelmet::SaveKey = "jousting-helmet";
 
 JoustingHelmet* JoustingHelmet::create()
 {
@@ -46,7 +46,7 @@ Item* JoustingHelmet::clone()
 
 std::string JoustingHelmet::getItemName()
 {
-	return JoustingHelmet::SaveKeyJoustingHelmet;
+	return JoustingHelmet::SaveKey;
 }
 
 LocalizedString* JoustingHelmet::getString()
@@ -61,7 +61,7 @@ std::string JoustingHelmet::getIconResource()
 
 std::string JoustingHelmet::getSerializationKey()
 {
-	return JoustingHelmet::SaveKeyJoustingHelmet;
+	return JoustingHelmet::SaveKey;
 }
 
 Vec2 JoustingHelmet::getDisplayOffset()

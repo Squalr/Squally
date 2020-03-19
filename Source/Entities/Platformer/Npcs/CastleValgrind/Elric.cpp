@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Elric::MapKeyElric = "elric";
+const std::string Elric::MapKey = "elric";
 HexusOpponentData* Elric::HexusOpponentDataInstance = nullptr;
 const std::string Elric::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ELRIC";
 
@@ -31,7 +31,7 @@ Elric* Elric::deserialize(ValueMap& properties)
 }
 
 Elric::Elric(ValueMap& properties) : super(properties,
-	Elric::MapKeyElric,
+	Elric::MapKey,
 	EntityResources::Npcs_CastleValgrind_Elric_Animations,
 	EntityResources::Npcs_CastleValgrind_Elric_Emblem,
 	Size(112.0f, 160.0f),

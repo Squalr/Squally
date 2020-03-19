@@ -46,12 +46,12 @@ void TalkToChiron::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Chiron>(this, [=](Chiron* chiron)
 	{
 		this->chiron = chiron;
-	}, Chiron::MapKeyChiron);
+	}, Chiron::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void TalkToChiron::onActivate(bool isActiveThroughSkippable)

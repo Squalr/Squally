@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolToben::MapKeyShopPoolToben = "shop-pool-toben";
+const std::string ShopPoolToben::MapKey = "shop-pool-toben";
 const std::string ShopPoolToben::PoolName = "shop-pool-toben";
 
 ShopPoolToben* ShopPoolToben::create(ValueMap& properties)

@@ -27,8 +27,8 @@
 
 using namespace cocos2d;
 
-const std::string ShopItem::MapKeyShopItem = "shop-item";
-const std::string ShopItem::MapKeyPropertyShopPool = "pool";
+const std::string ShopItem::MapKey = "shop-item";
+const std::string ShopItem::PropertyShopPool = "pool";
 
 ShopItem* ShopItem::create(ValueMap& properties)
 {
@@ -45,7 +45,7 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->itemPreview = ItemPreview::create(false, true);
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
-	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::MapKeyPropertyShopPool, Value("")).asString();
+	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::PropertyShopPool, Value("")).asString();
 	this->currencySprite = Sprite::create(IOU::getIOUIconResource());
 	this->itemCostString = ConstantString::create(std::to_string(0));
 	this->itemCostLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->itemCostString);
@@ -167,5 +167,5 @@ void ShopItem::sellItem()
 				});
 			}
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GrandpasLuckyHat::SaveKeyGrandpasLuckyHat = "grandpas-lucky-hat";
+const std::string GrandpasLuckyHat::SaveKey = "grandpas-lucky-hat";
 
 GrandpasLuckyHat* GrandpasLuckyHat::create()
 {
@@ -46,7 +46,7 @@ Item* GrandpasLuckyHat::clone()
 
 std::string GrandpasLuckyHat::getItemName()
 {
-	return GrandpasLuckyHat::SaveKeyGrandpasLuckyHat;
+	return GrandpasLuckyHat::SaveKey;
 }
 
 LocalizedString* GrandpasLuckyHat::getString()
@@ -61,7 +61,7 @@ std::string GrandpasLuckyHat::getIconResource()
 
 std::string GrandpasLuckyHat::getSerializationKey()
 {
-	return GrandpasLuckyHat::SaveKeyGrandpasLuckyHat;
+	return GrandpasLuckyHat::SaveKey;
 }
 
 Vec2 GrandpasLuckyHat::getDisplayOffset()

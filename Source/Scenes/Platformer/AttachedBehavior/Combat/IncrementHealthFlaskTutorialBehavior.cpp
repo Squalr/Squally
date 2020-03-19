@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string IncrementHealthFlaskTutorialBehavior::MapKeyAttachedBehavior = "increment-health-tutorial";
+const std::string IncrementHealthFlaskTutorialBehavior::MapKey = "increment-health-tutorial";
 
 IncrementHealthFlaskTutorialBehavior* IncrementHealthFlaskTutorialBehavior::create(GameObject* owner)
 {

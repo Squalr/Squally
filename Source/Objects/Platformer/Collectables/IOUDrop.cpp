@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string IOUDrop::MapKeyIOUDrop = "iou";
+const std::string IOUDrop::MapKey = "iou";
 
 IOUDrop* IOUDrop::create(ValueMap& properties)
 {
@@ -37,7 +37,7 @@ IOUDrop::IOUDrop(ValueMap& properties) : super(properties)
 			{
 				entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 1);
 			});
-		}, Squally::MapKeySqually);
+		}, Squally::MapKey);
 	});
 
 	this->collectableNode->addChild(this->iou);

@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EcxCrystal::MapKeyEcxCrystal = "ecx-crystal";
+const std::string EcxCrystal::MapKey = "ecx-crystal";
 
 EcxCrystal* EcxCrystal::create(ValueMap& properties)
 {

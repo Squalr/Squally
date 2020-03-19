@@ -12,7 +12,7 @@ public:
 
 protected:
 	GridObject(const cocos2d::ValueMap& properties);
-	~GridObject();
+	virtual ~GridObject();
 
 private:
 	typedef HackableObject super;

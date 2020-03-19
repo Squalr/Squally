@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Medusa::MapKeyMedusa = "medusa";
+const std::string Medusa::MapKey = "medusa";
 HexusOpponentData* Medusa::HexusOpponentDataInstance = nullptr;
 const std::string Medusa::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MEDUSA";
 
@@ -31,7 +31,7 @@ Medusa* Medusa::deserialize(ValueMap& properties)
 }
 
 Medusa::Medusa(ValueMap& properties) : super(properties,
-	Medusa::MapKeyMedusa,
+	Medusa::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	Size(224.0f, 304.0f),

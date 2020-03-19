@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Warlock::MapKeyWarlock = "warlock";
+const std::string Warlock::MapKey = "warlock";
 HexusOpponentData* Warlock::HexusOpponentDataInstance = nullptr;
 const std::string Warlock::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_WARLOCK";
 
@@ -31,7 +31,7 @@ Warlock* Warlock::deserialize(ValueMap& properties)
 }
 
 Warlock::Warlock(ValueMap& properties) : super(properties,
-	Warlock::MapKeyWarlock,
+	Warlock::MapKey,
 	EntityResources::Enemies_VoidStar_Warlock_Animations,
 	EntityResources::Enemies_VoidStar_Warlock_Emblem,
 	Size(284.0f, 256.0f),

@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string OrthrusCombatBehavior::MapKeyAttachedBehavior = "orthrus-combat";
+const std::string OrthrusCombatBehavior::MapKey = "orthrus-combat";
 
 OrthrusCombatBehavior* OrthrusCombatBehavior::create(GameObject* owner)
 {

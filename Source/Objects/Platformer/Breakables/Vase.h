@@ -17,7 +17,7 @@ class Vase : public BreakableBase
 public:
 	static Vase* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyVase;
+	static const std::string MapKey;
 
 protected:
 	Vase(cocos2d::ValueMap& properties, int requiredHits = 1);
@@ -38,5 +38,5 @@ private:
 	SmartParticles* shardParticles;
 	std::string color;
 
-	static const std::string MapPropertyColor;
+	static const std::string PropertyColor;
 };

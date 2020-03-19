@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Quartz::SaveKeyQuartz = "quartz";
+const std::string Quartz::SaveKey = "quartz";
 
 Quartz* Quartz::create()
 {
@@ -35,7 +35,7 @@ Item* Quartz::clone()
 
 std::string Quartz::getItemName()
 {
-	return Quartz::SaveKeyQuartz;
+	return Quartz::SaveKey;
 }
 
 LocalizedString* Quartz::getString()
@@ -50,5 +50,5 @@ std::string Quartz::getIconResource()
 
 std::string Quartz::getSerializationKey()
 {
-	return Quartz::SaveKeyQuartz;
+	return Quartz::SaveKey;
 }

@@ -10,7 +10,7 @@ class SquallyRuneBehavior : public AttachedBehavior
 public:
 	static SquallyRuneBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyRuneBehavior(GameObject* owner);

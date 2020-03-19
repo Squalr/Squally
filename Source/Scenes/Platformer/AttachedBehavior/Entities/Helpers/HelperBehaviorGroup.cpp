@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string HelperBehaviorGroup::MapKeyAttachedBehavior = "helper";
+const std::string HelperBehaviorGroup::MapKey = "helper";
 
 HelperBehaviorGroup* HelperBehaviorGroup::create(GameObject* owner)
 {

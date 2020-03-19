@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 	
-const std::string SquallyAttackBehavior::MapKeyAttachedBehavior = "squally-attacks";
+const std::string SquallyAttackBehavior::MapKey = "squally-attacks";
 
 SquallyAttackBehavior* SquallyAttackBehavior::create(GameObject* owner)
 {

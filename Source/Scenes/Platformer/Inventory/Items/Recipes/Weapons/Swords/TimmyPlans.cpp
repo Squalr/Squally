@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string TimmyPlans::SaveKeyTimmyPlans = "timmy-plans";
+const std::string TimmyPlans::SaveKey = "timmy-plans";
 
 TimmyPlans* TimmyPlans::create()
 {
@@ -50,7 +50,7 @@ Item* TimmyPlans::clone()
 
 std::string TimmyPlans::getItemName()
 {
-	return TimmyPlans::SaveKeyTimmyPlans;
+	return TimmyPlans::SaveKey;
 }
 
 LocalizedString* TimmyPlans::getString()
@@ -70,5 +70,5 @@ std::string TimmyPlans::getCraftedItemIconResource()
 
 std::string TimmyPlans::getSerializationKey()
 {
-	return TimmyPlans::SaveKeyTimmyPlans;
+	return TimmyPlans::SaveKey;
 }

@@ -69,7 +69,7 @@ void MeetScrappy::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void MeetScrappy::onActivate(bool isActiveThroughSkippable)
@@ -179,7 +179,7 @@ void MeetScrappy::runCinematicSequencePt4()
 				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
 				{
 					positionB = GameUtils::getWorldCoords(squally);
-				}), Squally::MapKeySqually);
+				}), Squally::MapKey);
 
 				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),

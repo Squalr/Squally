@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DepressingWig::SaveKeyDepressingWig = "depressing-wig";
+const std::string DepressingWig::SaveKey = "depressing-wig";
 
 DepressingWig* DepressingWig::create()
 {
@@ -46,7 +46,7 @@ Item* DepressingWig::clone()
 
 std::string DepressingWig::getItemName()
 {
-	return DepressingWig::SaveKeyDepressingWig;
+	return DepressingWig::SaveKey;
 }
 
 LocalizedString* DepressingWig::getString()
@@ -61,7 +61,7 @@ std::string DepressingWig::getIconResource()
 
 std::string DepressingWig::getSerializationKey()
 {
-	return DepressingWig::SaveKeyDepressingWig;
+	return DepressingWig::SaveKey;
 }
 
 Vec2 DepressingWig::getDisplayOffset()

@@ -16,7 +16,7 @@ public:
 	std::string getSerializationKey() override;
 	std::string getCardKey() override;
 
-	static const std::string SaveKeySpecialOr;
+	static const std::string SaveKey;
 
 protected:
 	SpecialOr();

@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolMinos::MapKeyShopPoolMinos = "shop-pool-minos";
+const std::string ShopPoolMinos::MapKey = "shop-pool-minos";
 const std::string ShopPoolMinos::PoolName = "shop-pool-minos";
 
 ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)

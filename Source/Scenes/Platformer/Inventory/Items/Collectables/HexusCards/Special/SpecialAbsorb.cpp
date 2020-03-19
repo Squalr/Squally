@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialAbsorb::SaveKeySpecialAbsorb = "special-absorb";
+const std::string SpecialAbsorb::SaveKey = "special-absorb";
 
 SpecialAbsorb* SpecialAbsorb::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialAbsorb::clone()
 
 std::string SpecialAbsorb::getItemName()
 {
-	return SpecialAbsorb::SaveKeySpecialAbsorb;
+	return SpecialAbsorb::SaveKey;
 }
 
 LocalizedString* SpecialAbsorb::getString()
@@ -51,7 +51,7 @@ std::string SpecialAbsorb::getIconResource()
 
 std::string SpecialAbsorb::getSerializationKey()
 {
-	return SpecialAbsorb::SaveKeySpecialAbsorb;
+	return SpecialAbsorb::SaveKey;
 }
 
 std::string SpecialAbsorb::getCardKey()

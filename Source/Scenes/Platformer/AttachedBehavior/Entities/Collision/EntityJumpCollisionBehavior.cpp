@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityJumpCollisionBehavior::MapKeyAttachedBehavior = "entity-jump-collisions";
+const std::string EntityJumpCollisionBehavior::MapKey = "entity-jump-collisions";
 const float EntityJumpCollisionBehavior::JumpCollisionMargin = 24.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionOffset = -4.0f;
 const float EntityJumpCollisionBehavior::JumpCollisionHeight = 48.0f;

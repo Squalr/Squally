@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonShell::SaveKeyDemonShell = "demon-shell";
+const std::string DemonShell::SaveKey = "demon-shell";
 
 DemonShell* DemonShell::create()
 {
@@ -46,7 +46,7 @@ Item* DemonShell::clone()
 
 std::string DemonShell::getItemName()
 {
-	return DemonShell::SaveKeyDemonShell;
+	return DemonShell::SaveKey;
 }
 
 LocalizedString* DemonShell::getString()
@@ -61,7 +61,7 @@ std::string DemonShell::getIconResource()
 
 std::string DemonShell::getSerializationKey()
 {
-	return DemonShell::SaveKeyDemonShell;
+	return DemonShell::SaveKey;
 }
 
 Vec2 DemonShell::getDisplayOffset()

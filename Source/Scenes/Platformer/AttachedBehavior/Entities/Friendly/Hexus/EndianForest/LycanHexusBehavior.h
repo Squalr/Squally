@@ -12,7 +12,7 @@ class LycanHexusBehavior : public HexusBehaviorBase
 public:
 	static LycanHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	LycanHexusBehavior(GameObject* owner);

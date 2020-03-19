@@ -15,7 +15,7 @@ public:
 
 protected:
 	CagedAnimal(cocos2d::ValueMap& properties, std::string saveKey);
-	~CagedAnimal();
+	virtual ~CagedAnimal();
 
 	void onEnter() override;
 	void initializePositions() override;

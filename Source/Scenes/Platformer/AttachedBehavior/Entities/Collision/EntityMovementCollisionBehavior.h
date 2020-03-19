@@ -26,7 +26,7 @@ public:
 	CollisionObject* leftCollision;
 	CollisionObject* rightCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityMovementCollisionBehavior(GameObject* owner);

@@ -7,7 +7,7 @@ class TrainingDummyCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static TrainingDummyCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	TrainingDummyCombatBehavior(GameObject* owner);

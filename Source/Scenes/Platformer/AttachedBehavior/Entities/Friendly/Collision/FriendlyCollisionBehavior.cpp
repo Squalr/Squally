@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyCollisionBehavior::MapKeyAttachedBehavior = "friendly-collisions";
+const std::string FriendlyCollisionBehavior::MapKey = "friendly-collisions";
 
 FriendlyCollisionBehavior* FriendlyCollisionBehavior::create(GameObject* owner)
 {

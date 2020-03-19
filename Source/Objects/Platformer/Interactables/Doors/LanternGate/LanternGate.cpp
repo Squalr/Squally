@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string LanternGate::MapKeyLanternGate = "lantern-gate";
+const std::string LanternGate::MapKey = "lantern-gate";
 
 LanternGate* LanternGate::create(ValueMap& properties)
 {

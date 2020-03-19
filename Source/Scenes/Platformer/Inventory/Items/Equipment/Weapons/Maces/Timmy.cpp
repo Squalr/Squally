@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Timmy::SaveKeyTimmy = "timmy";
+const std::string Timmy::SaveKey = "timmy";
 
 Timmy* Timmy::create()
 {
@@ -46,7 +46,7 @@ Item* Timmy::clone()
 
 std::string Timmy::getItemName()
 {
-	return Timmy::SaveKeyTimmy;
+	return Timmy::SaveKey;
 }
 
 LocalizedString* Timmy::getString()
@@ -61,7 +61,7 @@ std::string Timmy::getIconResource()
 
 std::string Timmy::getSerializationKey()
 {
-	return Timmy::SaveKeyTimmy;
+	return Timmy::SaveKey;
 }
 
 Vec2 Timmy::getDisplayOffset()

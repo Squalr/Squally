@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EsiCrystal::MapKeyEsiCrystal = "esi-crystal";
+const std::string EsiCrystal::MapKey = "esi-crystal";
 
 EsiCrystal* EsiCrystal::create(ValueMap& properties)
 {

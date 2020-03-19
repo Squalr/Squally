@@ -18,7 +18,7 @@ public:
 	void closePortal(bool instant) override;
 	void openPortal(bool instant) override;
 
-	static const std::string MapKeyFirePortal;
+	static const std::string MapKey;
 
 protected:
 	FirePortal(cocos2d::ValueMap& properties);

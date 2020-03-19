@@ -12,7 +12,7 @@ class LianaHexusBehavior : public HexusBehaviorBase
 public:
 	static LianaHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	LianaHexusBehavior(GameObject* owner);

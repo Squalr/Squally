@@ -9,7 +9,7 @@ class FirstIOUFound : public AttachedBehavior
 public:
 	static FirstIOUFound* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FirstIOUFound(GameObject* owner);

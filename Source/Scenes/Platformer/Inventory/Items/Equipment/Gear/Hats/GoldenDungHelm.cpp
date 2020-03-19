@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string GoldenDungHelm::SaveKeyGoldenDungHelm = "golden-dung-helm";
+const std::string GoldenDungHelm::SaveKey = "golden-dung-helm";
 
 GoldenDungHelm* GoldenDungHelm::create()
 {
@@ -46,7 +46,7 @@ Item* GoldenDungHelm::clone()
 
 std::string GoldenDungHelm::getItemName()
 {
-	return GoldenDungHelm::SaveKeyGoldenDungHelm;
+	return GoldenDungHelm::SaveKey;
 }
 
 LocalizedString* GoldenDungHelm::getString()
@@ -61,7 +61,7 @@ std::string GoldenDungHelm::getIconResource()
 
 std::string GoldenDungHelm::getSerializationKey()
 {
-	return GoldenDungHelm::SaveKeyGoldenDungHelm;
+	return GoldenDungHelm::SaveKey;
 }
 
 Vec2 GoldenDungHelm::getDisplayOffset()

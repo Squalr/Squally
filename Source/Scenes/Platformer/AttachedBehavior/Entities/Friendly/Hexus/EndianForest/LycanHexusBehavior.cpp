@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string LycanHexusBehavior::MapKeyAttachedBehavior = "lycan-hexus";
+const std::string LycanHexusBehavior::MapKey = "lycan-hexus";
 
 LycanHexusBehavior* LycanHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* LycanHexusBehavior::generateReward()
 
 std::string LycanHexusBehavior::getWinLossSaveKey()
 {
-	return LycanHexusBehavior::MapKeyAttachedBehavior;
+	return LycanHexusBehavior::MapKey;
 }
 
 std::string LycanHexusBehavior::getBackgroundResource()

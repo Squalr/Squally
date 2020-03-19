@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Tin::SaveKeyTin = "tin";
+const std::string Tin::SaveKey = "tin";
 
 Tin* Tin::create()
 {
@@ -35,7 +35,7 @@ Item* Tin::clone()
 
 std::string Tin::getItemName()
 {
-	return Tin::SaveKeyTin;
+	return Tin::SaveKey;
 }
 
 LocalizedString* Tin::getString()
@@ -50,5 +50,5 @@ std::string Tin::getIconResource()
 
 std::string Tin::getSerializationKey()
 {
-	return Tin::SaveKeyTin;
+	return Tin::SaveKey;
 }

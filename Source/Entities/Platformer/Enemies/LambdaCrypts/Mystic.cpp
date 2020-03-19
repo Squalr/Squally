@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Mystic::MapKeyMystic = "mystic";
+const std::string Mystic::MapKey = "mystic";
 HexusOpponentData* Mystic::HexusOpponentDataInstance = nullptr;
 const std::string Mystic::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MYSTIC";
 
@@ -31,7 +31,7 @@ Mystic* Mystic::deserialize(ValueMap& properties)
 }
 
 Mystic::Mystic(ValueMap& properties) : super(properties,
-	Mystic::MapKeyMystic,
+	Mystic::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Animations,
 	EntityResources::Enemies_LambdaCrypts_Mystic_Emblem,
 	Size(420.0f, 296.0f),

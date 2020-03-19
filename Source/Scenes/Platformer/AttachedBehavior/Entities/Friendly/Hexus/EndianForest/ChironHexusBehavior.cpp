@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKeyAttachedBehavior = "chiron-hexus";
+const std::string ChironHexusBehavior::MapKey = "chiron-hexus";
 
 ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* ChironHexusBehavior::generateReward()
 
 std::string ChironHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKeyAttachedBehavior;
+	return ChironHexusBehavior::MapKey;
 }
 
 std::string ChironHexusBehavior::getBackgroundResource()

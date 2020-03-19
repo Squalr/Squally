@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string BreakableBarrel::MapKeyBreakableBarrel = "breakable-barrel";
+const std::string BreakableBarrel::MapKey = "breakable-barrel";
 
 BreakableBarrel* BreakableBarrel::create(ValueMap& properties)
 {

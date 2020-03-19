@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string Laser::MapKeyLaser = "laser";
+const std::string Laser::MapKey = "laser";
 
 Laser* Laser::create(ValueMap& properties)
 {
@@ -82,16 +82,13 @@ Vec2 Laser::getButtonOffset()
 void Laser::registerHackables()
 {
 	super::registerHackables();
-
-	// this->hackableDataTargetAngle = HackableData::create("Target Angle", &this->targetAngle, typeid(this->targetAngle), UIResources::Menus_Icons_AxeSlash);
-	// this->registerData(this->hackableDataTargetAngle);
-
+	
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				Laser::MapKeyLaser,
+				Laser::MapKey,
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				UIResources::Menus_Icons_SpellImpactWhite,
 				LaserCountDownPreview::create(),

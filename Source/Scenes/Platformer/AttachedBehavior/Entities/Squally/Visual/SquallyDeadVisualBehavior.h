@@ -10,7 +10,7 @@ class SquallyDeadVisualBehavior : public AttachedBehavior
 public:
 	static SquallyDeadVisualBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	SquallyDeadVisualBehavior(GameObject* owner);

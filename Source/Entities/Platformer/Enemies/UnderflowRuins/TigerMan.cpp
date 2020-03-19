@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string TigerMan::MapKeyTigerMan = "tiger-man";
+const std::string TigerMan::MapKey = "tiger-man";
 HexusOpponentData* TigerMan::HexusOpponentDataInstance = nullptr;
 const std::string TigerMan::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIGER_MAN";
 
@@ -31,7 +31,7 @@ TigerMan* TigerMan::deserialize(ValueMap& properties)
 }
 
 TigerMan::TigerMan(ValueMap& properties) : super(properties,
-	TigerMan::MapKeyTigerMan,
+	TigerMan::MapKey,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
 	Size(256.0f, 308.0f),

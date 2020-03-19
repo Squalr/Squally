@@ -7,7 +7,7 @@ class TempleDarkTerrain : public TerrainObject
 public:
 	static TempleDarkTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
 
 protected:
 	TempleDarkTerrain(cocos2d::ValueMap& properties);

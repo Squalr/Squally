@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicBowPlans::SaveKeyDemonicBowPlans = "demonic-bow-plans";
+const std::string DemonicBowPlans::SaveKey = "demonic-bow-plans";
 
 DemonicBowPlans* DemonicBowPlans::create()
 {
@@ -53,7 +53,7 @@ Item* DemonicBowPlans::clone()
 
 std::string DemonicBowPlans::getItemName()
 {
-	return DemonicBowPlans::SaveKeyDemonicBowPlans;
+	return DemonicBowPlans::SaveKey;
 }
 
 LocalizedString* DemonicBowPlans::getString()
@@ -73,5 +73,5 @@ std::string DemonicBowPlans::getCraftedItemIconResource()
 
 std::string DemonicBowPlans::getSerializationKey()
 {
-	return DemonicBowPlans::SaveKeyDemonicBowPlans;
+	return DemonicBowPlans::SaveKey;
 }

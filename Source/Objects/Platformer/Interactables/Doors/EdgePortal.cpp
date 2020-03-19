@@ -17,9 +17,9 @@
 
 using namespace cocos2d;
 
-const std::string EdgePortal::MapKeyEdgePortal = "edge-portal";
+const std::string EdgePortal::MapKey = "edge-portal";
 const int EdgePortal::ArrowCount = 5;
-const std::string EdgePortal::MapPropertyDirection = "direction";
+const std::string EdgePortal::PropertyDirection = "direction";
 
 EdgePortal* EdgePortal::create(ValueMap& properties)
 {
@@ -36,7 +36,7 @@ EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties
 	this->edgeArrows = std::vector<Sprite*>();
 	this->setInteractType(InteractType::Collision);
 	this->arrowHintCollision = CollisionObject::create(CollisionObject::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
-	this->direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::MapPropertyDirection, Value("right")).asString();
+	this->direction = GameUtils::getKeyOrDefault(this->properties, EdgePortal::PropertyDirection, Value("right")).asString();
 
 	for (int index = 0; index < EdgePortal::ArrowCount; index++)
 	{

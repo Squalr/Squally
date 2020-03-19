@@ -31,7 +31,7 @@
 
 using namespace cocos2d;
 
-const std::string Scrappy::MapKeyScrappy = "scrappy";
+const std::string Scrappy::MapKey = "scrappy";
 HexusOpponentData* Scrappy::HexusOpponentDataInstance = nullptr;
 
 const std::string Scrappy::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SCRAPPY";
@@ -46,7 +46,7 @@ Scrappy* Scrappy::deserialize(ValueMap& properties)
 }
 
 Scrappy::Scrappy(ValueMap& properties) : super(properties,
-	Scrappy::MapKeyScrappy,
+	Scrappy::MapKey,
 	EntityResources::Helpers_EndianForest_Scrappy_Animations,
 	EntityResources::Helpers_EndianForest_Scrappy_Emblem,
 	Size(112.0f, 160.0f),

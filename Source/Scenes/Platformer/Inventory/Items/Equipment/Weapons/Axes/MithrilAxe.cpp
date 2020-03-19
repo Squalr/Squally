@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MithrilAxe::SaveKeyMithrilAxe = "mithril-axe";
+const std::string MithrilAxe::SaveKey = "mithril-axe";
 
 MithrilAxe* MithrilAxe::create()
 {
@@ -46,7 +46,7 @@ Item* MithrilAxe::clone()
 
 std::string MithrilAxe::getItemName()
 {
-	return MithrilAxe::SaveKeyMithrilAxe;
+	return MithrilAxe::SaveKey;
 }
 
 LocalizedString* MithrilAxe::getString()
@@ -61,7 +61,7 @@ std::string MithrilAxe::getIconResource()
 
 std::string MithrilAxe::getSerializationKey()
 {
-	return MithrilAxe::SaveKeyMithrilAxe;
+	return MithrilAxe::SaveKey;
 }
 
 Size MithrilAxe::getWeaponCollisionSize()

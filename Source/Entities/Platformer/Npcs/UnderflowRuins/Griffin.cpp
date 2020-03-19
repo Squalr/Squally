@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Griffin::MapKeyGriffin = "griffin";
+const std::string Griffin::MapKey = "griffin";
 HexusOpponentData* Griffin::HexusOpponentDataInstance = nullptr;
 const std::string Griffin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GRIFFIN";
 
@@ -31,7 +31,7 @@ Griffin* Griffin::deserialize(ValueMap& properties)
 }
 
 Griffin::Griffin(ValueMap& properties) : super(properties,
-	Griffin::MapKeyGriffin,
+	Griffin::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Animations,
 	EntityResources::Npcs_UnderflowRuins_Griffin_Emblem,
 	Size(112.0f, 160.0f),

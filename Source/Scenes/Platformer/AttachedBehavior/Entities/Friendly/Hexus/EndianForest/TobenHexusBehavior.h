@@ -12,7 +12,7 @@ class TobenHexusBehavior : public HexusBehaviorBase
 public:
 	static TobenHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	TobenHexusBehavior(GameObject* owner);

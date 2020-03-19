@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string GrampsHexusBehavior::MapKeyAttachedBehavior = "gramps-hexus";
+const std::string GrampsHexusBehavior::MapKey = "gramps-hexus";
 
 GrampsHexusBehavior* GrampsHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* GrampsHexusBehavior::generateReward()
 
 std::string GrampsHexusBehavior::getWinLossSaveKey()
 {
-	return GrampsHexusBehavior::MapKeyAttachedBehavior;
+	return GrampsHexusBehavior::MapKey;
 }
 
 std::string GrampsHexusBehavior::getBackgroundResource()

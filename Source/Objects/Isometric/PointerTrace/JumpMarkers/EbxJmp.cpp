@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string EbxJmp::MapKeyEbxJmp = "ebx-jmp";
+const std::string EbxJmp::MapKey = "ebx-jmp";
 
 EbxJmp* EbxJmp::create(ValueMap& properties)
 {

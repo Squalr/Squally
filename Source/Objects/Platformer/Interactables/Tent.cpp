@@ -28,7 +28,7 @@
 
 using namespace cocos2d;
 
-const std::string Tent::MapKeyTent = "tent";
+const std::string Tent::MapKey = "tent";
 
 Tent* Tent::create(ValueMap& properties)
 {
@@ -106,7 +106,7 @@ void Tent::initializeListeners()
 			{
 				healthBehavior->setHealth(healthBehavior->getMaxHealth());
 			});
-		}), Squally::MapKeySqually);
+		}), Squally::MapKey);
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});

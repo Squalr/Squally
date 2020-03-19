@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 	
-const std::string KingGroggCombatBehavior::MapKeyAttachedBehavior = "king-grogg-combat";
+const std::string KingGroggCombatBehavior::MapKey = "king-grogg-combat";
 
 KingGroggCombatBehavior* KingGroggCombatBehavior::create(GameObject* owner)
 {

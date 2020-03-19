@@ -17,7 +17,7 @@ class MechanicalFlail : public HackableObject
 public:
 	static MechanicalFlail* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyMechanicalFlail;
+	static const std::string MapKey;
 
 protected:
 	MechanicalFlail(cocos2d::ValueMap& properties);

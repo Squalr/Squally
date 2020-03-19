@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Tigress::MapKeyTigress = "tigress";
+const std::string Tigress::MapKey = "tigress";
 HexusOpponentData* Tigress::HexusOpponentDataInstance = nullptr;
 const std::string Tigress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_TIGRESS";
 
@@ -31,7 +31,7 @@ Tigress* Tigress::deserialize(ValueMap& properties)
 }
 
 Tigress::Tigress(ValueMap& properties) : super(properties,
-	Tigress::MapKeyTigress,
+	Tigress::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Animations,
 	EntityResources::Enemies_UnderflowRuins_Tigress_Emblem,
 	Size(128.0f, 256.0f),

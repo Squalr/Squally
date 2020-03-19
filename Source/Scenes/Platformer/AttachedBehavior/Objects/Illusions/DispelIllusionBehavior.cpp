@@ -19,8 +19,8 @@
 
 using namespace cocos2d;
 
-const std::string DispelIllusionBehavior::MapKeyAttachedBehavior = "dispel-illusion";
-const std::string DispelIllusionBehavior::MapPropertyGroup = "illusion-group";
+const std::string DispelIllusionBehavior::MapKey = "dispel-illusion";
+const std::string DispelIllusionBehavior::PropertyGroup = "illusion-group";
 
 DispelIllusionBehavior* DispelIllusionBehavior::create(GameObject* owner)
 {
@@ -34,7 +34,7 @@ DispelIllusionBehavior* DispelIllusionBehavior::create(GameObject* owner)
 DispelIllusionBehavior::DispelIllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->object = owner;
-	this->group = GameUtils::getKeyOrDefault(this->properties, DispelIllusionBehavior::MapPropertyGroup, Value("")).asString();
+	this->group = GameUtils::getKeyOrDefault(this->properties, DispelIllusionBehavior::PropertyGroup, Value("")).asString();
 
 	if (this->object == nullptr)
 	{

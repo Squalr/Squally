@@ -12,7 +12,7 @@ class GrampsHexusBehavior : public HexusBehaviorBase
 public:
 	static GrampsHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	GrampsHexusBehavior(GameObject* owner);

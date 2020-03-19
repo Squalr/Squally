@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelMace::SaveKeySteelMace = "steel-mace";
+const std::string SteelMace::SaveKey = "steel-mace";
 
 SteelMace* SteelMace::create()
 {
@@ -46,7 +46,7 @@ Item* SteelMace::clone()
 
 std::string SteelMace::getItemName()
 {
-	return SteelMace::SaveKeySteelMace;
+	return SteelMace::SaveKey;
 }
 
 LocalizedString* SteelMace::getString()
@@ -61,7 +61,7 @@ std::string SteelMace::getIconResource()
 
 std::string SteelMace::getSerializationKey()
 {
-	return SteelMace::SaveKeySteelMace;
+	return SteelMace::SaveKey;
 }
 
 Vec2 SteelMace::getDisplayOffset()

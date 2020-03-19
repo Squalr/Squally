@@ -45,7 +45,7 @@ void WelcomeToMagesGuild::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Marcel>(this, [=](Marcel* marcel)
 	{
@@ -55,7 +55,7 @@ void WelcomeToMagesGuild::onLoad(QuestState questState)
 		{
 			this->runCinematicSequence();
 		}
-	}, Marcel::MapKeyMarcel);
+	}, Marcel::MapKey);
 }
 
 void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable)

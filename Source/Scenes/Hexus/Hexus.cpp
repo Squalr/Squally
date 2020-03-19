@@ -353,5 +353,5 @@ void Hexus::buildPlayerDeck()
 				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
 			}
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }

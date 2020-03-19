@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string EvilEye::MapKeyEvilEye = "evil-eye";
+const std::string EvilEye::MapKey = "evil-eye";
 HexusOpponentData* EvilEye::HexusOpponentDataInstance = nullptr;
 const std::string EvilEye::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_EVIL_EYE";
 
@@ -31,7 +31,7 @@ EvilEye* EvilEye::deserialize(ValueMap& properties)
 }
 
 EvilEye::EvilEye(ValueMap& properties) : super(properties,
-	EvilEye::MapKeyEvilEye,
+	EvilEye::MapKey,
 	EntityResources::Enemies_VoidStar_EvilEye_Animations,
 	EntityResources::Enemies_VoidStar_EvilEye_Emblem,
 	Size(720.0f, 840.0f),

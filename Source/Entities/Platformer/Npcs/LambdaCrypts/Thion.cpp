@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Thion::MapKeyThion = "thion";
+const std::string Thion::MapKey = "thion";
 HexusOpponentData* Thion::HexusOpponentDataInstance = nullptr;
 const std::string Thion::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THION";
 
@@ -31,7 +31,7 @@ Thion* Thion::deserialize(ValueMap& properties)
 }
 
 Thion::Thion(ValueMap& properties) : super(properties,
-	Thion::MapKeyThion,
+	Thion::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Thion_Animations,
 	EntityResources::Npcs_LambdaCrypts_Thion_Emblem,
 	Size(112.0f, 160.0f),

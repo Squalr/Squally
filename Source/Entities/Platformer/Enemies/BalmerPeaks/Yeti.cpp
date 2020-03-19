@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Yeti::MapKeyYeti = "yeti";
+const std::string Yeti::MapKey = "yeti";
 HexusOpponentData* Yeti::HexusOpponentDataInstance = nullptr;
 const std::string Yeti::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_YETI";
 
@@ -31,7 +31,7 @@ Yeti* Yeti::deserialize(ValueMap& properties)
 }
 
 Yeti::Yeti(ValueMap& properties) : super(properties,
-	Yeti::MapKeyYeti,
+	Yeti::MapKey,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BalmerPeaks_Yeti_Emblem,
 	Size(380.0f, 572.0f),

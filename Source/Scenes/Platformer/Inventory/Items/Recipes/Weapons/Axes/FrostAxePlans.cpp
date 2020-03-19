@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string FrostAxePlans::SaveKeyFrostAxePlans = "frost-axe-plans";
+const std::string FrostAxePlans::SaveKey = "frost-axe-plans";
 
 FrostAxePlans* FrostAxePlans::create()
 {
@@ -50,7 +50,7 @@ Item* FrostAxePlans::clone()
 
 std::string FrostAxePlans::getItemName()
 {
-	return FrostAxePlans::SaveKeyFrostAxePlans;
+	return FrostAxePlans::SaveKey;
 }
 
 LocalizedString* FrostAxePlans::getString()
@@ -70,5 +70,5 @@ std::string FrostAxePlans::getCraftedItemIconResource()
 
 std::string FrostAxePlans::getSerializationKey()
 {
-	return FrostAxePlans::SaveKeyFrostAxePlans;
+	return FrostAxePlans::SaveKey;
 }

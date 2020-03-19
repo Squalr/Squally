@@ -9,7 +9,7 @@ class MageCastBehavior : public AttachedBehavior
 public:
 	static MageCastBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	MageCastBehavior(GameObject* owner);

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyEyeBlinkBehavior::MapKeyAttachedBehavior = "squally-eye-blink";
+const std::string SquallyEyeBlinkBehavior::MapKey = "squally-eye-blink";
 
 SquallyEyeBlinkBehavior* SquallyEyeBlinkBehavior::create(GameObject* owner)
 {

@@ -10,7 +10,7 @@ class CameraControl : public GameObject
 public:
 	static CameraControl* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCameraControl;
+	static const std::string MapKey;
 
 private:
 	typedef GameObject super;
@@ -25,5 +25,5 @@ private:
 	CameraTarget* cameraTarget;
 	std::string targetTag;
 
-	static const std::string MapPropertyTarget;
+	static const std::string PropertyTarget;
 };

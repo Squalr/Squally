@@ -9,7 +9,7 @@ class EntityPacingBehavior : public AttachedBehavior
 public:
 	static EntityPacingBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityPacingBehavior(GameObject* owner);

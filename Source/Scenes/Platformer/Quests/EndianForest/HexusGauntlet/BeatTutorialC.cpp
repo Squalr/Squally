@@ -62,7 +62,7 @@ void BeatTutorialC::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{

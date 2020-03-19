@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityRunBehavior::MapKeyAttachedBehavior = "run";
+const std::string EntityRunBehavior::MapKey = "run";
 const float EntityRunBehavior::RunAcceleration = 9200.0f;
 
 EntityRunBehavior* EntityRunBehavior::create(GameObject* owner)

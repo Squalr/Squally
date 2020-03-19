@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Mermaid::MapKeyMermaid = "mermaid";
+const std::string Mermaid::MapKey = "mermaid";
 HexusOpponentData* Mermaid::HexusOpponentDataInstance = nullptr;
 const std::string Mermaid::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MERMAID";
 
@@ -31,7 +31,7 @@ Mermaid* Mermaid::deserialize(ValueMap& properties)
 }
 
 Mermaid::Mermaid(ValueMap& properties) : super(properties,
-	Mermaid::MapKeyMermaid,
+	Mermaid::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
 	Size(172.0f, 296.0f),

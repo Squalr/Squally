@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelAxe::SaveKeySteelAxe = "steel-axe";
+const std::string SteelAxe::SaveKey = "steel-axe";
 
 SteelAxe* SteelAxe::create()
 {
@@ -46,7 +46,7 @@ Item* SteelAxe::clone()
 
 std::string SteelAxe::getItemName()
 {
-	return SteelAxe::SaveKeySteelAxe;
+	return SteelAxe::SaveKey;
 }
 
 LocalizedString* SteelAxe::getString()
@@ -61,7 +61,7 @@ std::string SteelAxe::getIconResource()
 
 std::string SteelAxe::getSerializationKey()
 {
-	return SteelAxe::SaveKeySteelAxe;
+	return SteelAxe::SaveKey;
 }
 
 Size SteelAxe::getWeaponCollisionSize()

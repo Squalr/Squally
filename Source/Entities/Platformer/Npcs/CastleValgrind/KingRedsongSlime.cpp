@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string KingRedsongSlime::MapKeyKingRedsongSlime = "king-redsong-slime";
+const std::string KingRedsongSlime::MapKey = "king-redsong-slime";
 HexusOpponentData* KingRedsongSlime::HexusOpponentDataInstance = nullptr;
 const std::string KingRedsongSlime::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_KING_REDSONG_SLIME";
 
@@ -31,7 +31,7 @@ KingRedsongSlime* KingRedsongSlime::deserialize(ValueMap& properties)
 }
 
 KingRedsongSlime::KingRedsongSlime(ValueMap& properties) : super(properties,
-	KingRedsongSlime::MapKeyKingRedsongSlime,
+	KingRedsongSlime::MapKey,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsongSlime_Emblem,
 	Size(112.0f, 160.0f),

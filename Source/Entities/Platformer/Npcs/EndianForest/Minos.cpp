@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Minos::MapKeyMinos = "minos";
+const std::string Minos::MapKey = "minos";
 HexusOpponentData* Minos::HexusOpponentDataInstance = nullptr;
 const std::string Minos::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_MINOS";
 
@@ -31,7 +31,7 @@ Minos* Minos::deserialize(ValueMap& properties)
 }
 
 Minos::Minos(ValueMap& properties) : super(properties,
-	Minos::MapKeyMinos,
+	Minos::MapKey,
 	EntityResources::Npcs_EndianForest_Minos_Animations,
 	EntityResources::Npcs_EndianForest_Minos_Emblem,
 	Size(112.0f, 160.0f),

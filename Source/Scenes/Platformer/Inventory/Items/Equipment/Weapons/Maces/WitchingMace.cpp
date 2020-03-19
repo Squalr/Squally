@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WitchingMace::SaveKeyWitchingMace = "witching-mace";
+const std::string WitchingMace::SaveKey = "witching-mace";
 
 WitchingMace* WitchingMace::create()
 {
@@ -46,7 +46,7 @@ Item* WitchingMace::clone()
 
 std::string WitchingMace::getItemName()
 {
-	return WitchingMace::SaveKeyWitchingMace;
+	return WitchingMace::SaveKey;
 }
 
 LocalizedString* WitchingMace::getString()
@@ -61,7 +61,7 @@ std::string WitchingMace::getIconResource()
 
 std::string WitchingMace::getSerializationKey()
 {
-	return WitchingMace::SaveKeyWitchingMace;
+	return WitchingMace::SaveKey;
 }
 
 Vec2 WitchingMace::getDisplayOffset()

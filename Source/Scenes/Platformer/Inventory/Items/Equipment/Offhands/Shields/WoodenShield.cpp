@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WoodenShield::SaveKeyWoodenShield = "wooden-shield";
+const std::string WoodenShield::SaveKey = "wooden-shield";
 
 WoodenShield* WoodenShield::create()
 {
@@ -46,7 +46,7 @@ Item* WoodenShield::clone()
 
 std::string WoodenShield::getItemName()
 {
-	return WoodenShield::SaveKeyWoodenShield;
+	return WoodenShield::SaveKey;
 }
 
 LocalizedString* WoodenShield::getString()
@@ -61,5 +61,5 @@ std::string WoodenShield::getIconResource()
 
 std::string WoodenShield::getSerializationKey()
 {
-	return WoodenShield::SaveKeyWoodenShield;
+	return WoodenShield::SaveKey;
 }

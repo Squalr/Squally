@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyCryogen;
+	static const std::string MapKey;
+
+protected:
+	Cryogen(cocos2d::ValueMap& properties);
+	virtual ~Cryogen();
 
 private:
 	typedef PlatformerEnemy super;
-	Cryogen(cocos2d::ValueMap& properties);
-	~Cryogen();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

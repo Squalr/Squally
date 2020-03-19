@@ -23,7 +23,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string WoodenSpikes::MapKeyWoodenSpikes = "wooden-spikes";
+const std::string WoodenSpikes::MapKey = "wooden-spikes";
 const Vec2 WoodenSpikes::SpikesUpPosition = Vec2(0.0f, 32.0f);
 const Vec2 WoodenSpikes::SpikesDownPosition = Vec2(0.0f, -64.0f);
 
@@ -90,7 +90,7 @@ void WoodenSpikes::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				WoodenSpikes::MapKeyWoodenSpikes,
+				WoodenSpikes::MapKey,
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				UIResources::Menus_Icons_Clock,
 				WoodenSpikesUpdateTimerPreview::create(),

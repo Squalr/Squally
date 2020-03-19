@@ -29,7 +29,7 @@
 
 using namespace cocos2d;
 
-const std::string TrainingHealTutorialBehavior::MapKeyAttachedBehavior = "training-heal-tutorial";
+const std::string TrainingHealTutorialBehavior::MapKey = "training-heal-tutorial";
 const int TrainingHealTutorialBehavior::HealsBeforeTutorial = 2;
 
 TrainingHealTutorialBehavior* TrainingHealTutorialBehavior::create(GameObject* owner)
@@ -79,12 +79,12 @@ void TrainingHealTutorialBehavior::onLoad()
 		{
 			scrappyHackableCueBehavior->disable();
 		});
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	HackableEvents::TriggerDisallowHackerMode();
 }

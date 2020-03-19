@@ -7,7 +7,7 @@ class FriendlyCombatBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static FriendlyCombatBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyCombatBehaviorGroup(GameObject* owner);

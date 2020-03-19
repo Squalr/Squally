@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 
-const std::string HelpTotemAttacking::MapKeyHelpTotemAttacking = "help-totem-attacking";
+const std::string HelpTotemAttacking::MapKey = "help-totem-attacking";
 
 HelpTotemAttacking* HelpTotemAttacking::create(ValueMap& properties)
 {

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Zana::MapKeyZana = "zana";
+const std::string Zana::MapKey = "zana";
 HexusOpponentData* Zana::HexusOpponentDataInstance = nullptr;
 const std::string Zana::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZANA";
 
@@ -31,7 +31,7 @@ Zana* Zana::deserialize(ValueMap& properties)
 }
 
 Zana::Zana(ValueMap& properties) : super(properties,
-	Zana::MapKeyZana,
+	Zana::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Zana_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zana_Emblem,
 	Size(112.0f, 160.0f),

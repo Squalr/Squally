@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Leon::MapKeyLeon = "leon";
+const std::string Leon::MapKey = "leon";
 HexusOpponentData* Leon::HexusOpponentDataInstance = nullptr;
 const std::string Leon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LEON";
 
@@ -31,7 +31,7 @@ Leon* Leon::deserialize(ValueMap& properties)
 }
 
 Leon::Leon(ValueMap& properties) : super(properties,
-	Leon::MapKeyLeon,
+	Leon::MapKey,
 	EntityResources::Npcs_VoidStar_Leon_Animations,
 	EntityResources::Npcs_VoidStar_Leon_Emblem,
 	Size(112.0f, 160.0f),

@@ -13,7 +13,7 @@ class Chest : public ChestBase
 public:
 	static Chest* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyChest;
+	static const std::string MapKey;
 
 protected:
 	Chest(cocos2d::ValueMap& properties);

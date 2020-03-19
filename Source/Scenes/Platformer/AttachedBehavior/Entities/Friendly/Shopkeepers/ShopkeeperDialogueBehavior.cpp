@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string ShopkeeperDialogueBehavior::MapKeyAttachedBehavior = "shopkeeper";
+const std::string ShopkeeperDialogueBehavior::MapKey = "shopkeeper";
 
 ShopkeeperDialogueBehavior* ShopkeeperDialogueBehavior::create(GameObject* owner)
 {
@@ -47,7 +47,7 @@ void ShopkeeperDialogueBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	this->entity->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{

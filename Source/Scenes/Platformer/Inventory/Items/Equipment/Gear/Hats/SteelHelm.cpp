@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string SteelHelm::SaveKeySteelHelm = "steel-helm";
+const std::string SteelHelm::SaveKey = "steel-helm";
 
 SteelHelm* SteelHelm::create()
 {
@@ -46,7 +46,7 @@ Item* SteelHelm::clone()
 
 std::string SteelHelm::getItemName()
 {
-	return SteelHelm::SaveKeySteelHelm;
+	return SteelHelm::SaveKey;
 }
 
 LocalizedString* SteelHelm::getString()
@@ -61,7 +61,7 @@ std::string SteelHelm::getIconResource()
 
 std::string SteelHelm::getSerializationKey()
 {
-	return SteelHelm::SaveKeySteelHelm;
+	return SteelHelm::SaveKey;
 }
 
 Vec2 SteelHelm::getDisplayOffset()

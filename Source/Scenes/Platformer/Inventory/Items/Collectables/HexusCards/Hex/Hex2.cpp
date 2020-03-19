@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Hex2::SaveKeyHex2 = "hex-2";
+const std::string Hex2::SaveKey = "hex-2";
 
 Hex2* Hex2::create()
 {
@@ -36,7 +36,7 @@ Item* Hex2::clone()
 
 std::string Hex2::getItemName()
 {
-	return Hex2::SaveKeyHex2;
+	return Hex2::SaveKey;
 }
 
 LocalizedString* Hex2::getString()
@@ -51,7 +51,7 @@ std::string Hex2::getIconResource()
 
 std::string Hex2::getSerializationKey()
 {
-	return Hex2::SaveKeyHex2;
+	return Hex2::SaveKey;
 }
 
 std::string Hex2::getCardKey()

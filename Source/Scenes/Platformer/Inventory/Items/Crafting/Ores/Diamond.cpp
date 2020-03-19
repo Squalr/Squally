@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Diamond::SaveKeyDiamond = "diamond";
+const std::string Diamond::SaveKey = "diamond";
 
 Diamond* Diamond::create()
 {
@@ -35,7 +35,7 @@ Item* Diamond::clone()
 
 std::string Diamond::getItemName()
 {
-	return Diamond::SaveKeyDiamond;
+	return Diamond::SaveKey;
 }
 
 LocalizedString* Diamond::getString()
@@ -50,5 +50,5 @@ std::string Diamond::getIconResource()
 
 std::string Diamond::getSerializationKey()
 {
-	return Diamond::SaveKeyDiamond;
+	return Diamond::SaveKey;
 }

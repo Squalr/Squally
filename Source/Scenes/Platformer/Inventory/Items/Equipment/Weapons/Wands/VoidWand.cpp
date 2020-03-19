@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidWand::SaveKeyVoidWand = "void-wand";
+const std::string VoidWand::SaveKey = "void-wand";
 
 VoidWand* VoidWand::create()
 {
@@ -46,7 +46,7 @@ Item* VoidWand::clone()
 
 std::string VoidWand::getItemName()
 {
-	return VoidWand::SaveKeyVoidWand;
+	return VoidWand::SaveKey;
 }
 
 LocalizedString* VoidWand::getString()
@@ -61,7 +61,7 @@ std::string VoidWand::getIconResource()
 
 std::string VoidWand::getSerializationKey()
 {
-	return VoidWand::SaveKeyVoidWand;
+	return VoidWand::SaveKey;
 }
 
 Vec2 VoidWand::getDisplayOffset()

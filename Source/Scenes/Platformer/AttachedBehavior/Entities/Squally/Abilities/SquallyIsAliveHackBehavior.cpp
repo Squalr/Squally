@@ -27,7 +27,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_IS_ALIVE 1
 
-const std::string SquallyIsAliveHackBehavior::MapKeyAttachedBehavior = "squally-is-alive-hack";
+const std::string SquallyIsAliveHackBehavior::MapKey = "squally-is-alive-hack";
 const std::string SquallyIsAliveHackBehavior::IdentifierIsAlive = "is-alive";
 const std::string SquallyIsAliveHackBehavior::EventSquallyTrapped = "event-squally-trapped";
 

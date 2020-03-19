@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialOr::SaveKeySpecialOr = "special-or";
+const std::string SpecialOr::SaveKey = "special-or";
 
 SpecialOr* SpecialOr::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialOr::clone()
 
 std::string SpecialOr::getItemName()
 {
-	return SpecialOr::SaveKeySpecialOr;
+	return SpecialOr::SaveKey;
 }
 
 LocalizedString* SpecialOr::getString()
@@ -51,7 +51,7 @@ std::string SpecialOr::getIconResource()
 
 std::string SpecialOr::getSerializationKey()
 {
-	return SpecialOr::SaveKeySpecialOr;
+	return SpecialOr::SaveKey;
 }
 
 std::string SpecialOr::getCardKey()

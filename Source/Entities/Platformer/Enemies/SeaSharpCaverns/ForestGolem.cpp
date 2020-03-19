@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string ForestGolem::MapKeyForestGolem = "forest-golem";
+const std::string ForestGolem::MapKey = "forest-golem";
 HexusOpponentData* ForestGolem::HexusOpponentDataInstance = nullptr;
 const std::string ForestGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_FOREST_GOLEM";
 
@@ -31,7 +31,7 @@ ForestGolem* ForestGolem::deserialize(ValueMap& properties)
 }
 
 ForestGolem::ForestGolem(ValueMap& properties) : super(properties,
-	ForestGolem::MapKeyForestGolem,
+	ForestGolem::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_ForestGolem_Emblem,
 	Size(768.0f, 840.0f),

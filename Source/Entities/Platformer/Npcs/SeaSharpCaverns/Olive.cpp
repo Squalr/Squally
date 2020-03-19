@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Olive::MapKeyOlive = "olive";
+const std::string Olive::MapKey = "olive";
 HexusOpponentData* Olive::HexusOpponentDataInstance = nullptr;
 const std::string Olive::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_OLIVE";
 
@@ -31,7 +31,7 @@ Olive* Olive::deserialize(ValueMap& properties)
 }
 
 Olive::Olive(ValueMap& properties) : super(properties,
-	Olive::MapKeyOlive,
+	Olive::MapKey,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Animations,
 	EntityResources::Npcs_SeaSharpCaverns_Olive_Emblem,
 	Size(112.0f, 160.0f),

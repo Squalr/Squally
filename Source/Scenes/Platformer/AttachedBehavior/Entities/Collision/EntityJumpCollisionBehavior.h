@@ -14,7 +14,7 @@ public:
 	
 	CollisionObject* jumpCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityJumpCollisionBehavior(GameObject* owner);

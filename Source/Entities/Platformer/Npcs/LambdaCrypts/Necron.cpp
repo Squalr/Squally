@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Necron::MapKeyNecron = "necron";
+const std::string Necron::MapKey = "necron";
 HexusOpponentData* Necron::HexusOpponentDataInstance = nullptr;
 const std::string Necron::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_NECRON";
 
@@ -31,7 +31,7 @@ Necron* Necron::deserialize(ValueMap& properties)
 }
 
 Necron::Necron(ValueMap& properties) : super(properties,
-	Necron::MapKeyNecron,
+	Necron::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Necron_Animations,
 	EntityResources::Npcs_LambdaCrypts_Necron_Emblem,
 	Size(112.0f, 160.0f),

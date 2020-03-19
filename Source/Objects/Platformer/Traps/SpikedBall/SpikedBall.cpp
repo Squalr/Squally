@@ -21,7 +21,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string SpikedBall::MapKeySpikedBall = "spiked-ball";
+const std::string SpikedBall::MapKey = "spiked-ball";
 
 SpikedBall* SpikedBall::create(ValueMap& properties)
 {

@@ -7,7 +7,7 @@ class WoodTerrain : public TerrainObject
 public:
 	static WoodTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
 
 protected:
 	WoodTerrain(cocos2d::ValueMap& properties);

@@ -20,7 +20,7 @@ public:
 
 	void enableClippy();
 
-	static const std::string MapKeyPropertyIncrementHealthTutorial;
+	static const std::string PropertyIncrementHealthTutorial;
 	static const std::string IncrementHealthIdentifier;
 	static const float TimeBetweenTicks;
 	static const int HackTicks;

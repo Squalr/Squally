@@ -10,7 +10,7 @@ class FollowMovementBehavior : public AttachedBehavior
 public:
 	static FollowMovementBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FollowMovementBehavior(GameObject* owner);

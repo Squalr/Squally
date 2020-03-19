@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string IvyBowPlans::SaveKeyIvyBowPlans = "ivy-bow-plans";
+const std::string IvyBowPlans::SaveKey = "ivy-bow-plans";
 
 IvyBowPlans* IvyBowPlans::create()
 {
@@ -50,7 +50,7 @@ Item* IvyBowPlans::clone()
 
 std::string IvyBowPlans::getItemName()
 {
-	return IvyBowPlans::SaveKeyIvyBowPlans;
+	return IvyBowPlans::SaveKey;
 }
 
 LocalizedString* IvyBowPlans::getString()
@@ -70,5 +70,5 @@ std::string IvyBowPlans::getCraftedItemIconResource()
 
 std::string IvyBowPlans::getSerializationKey()
 {
-	return IvyBowPlans::SaveKeyIvyBowPlans;
+	return IvyBowPlans::SaveKey;
 }

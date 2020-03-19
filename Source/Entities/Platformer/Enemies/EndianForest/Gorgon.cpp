@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string Gorgon::MapKeyGorgon = "gorgon";
+const std::string Gorgon::MapKey = "gorgon";
 
 Gorgon* Gorgon::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ Gorgon* Gorgon::deserialize(ValueMap& properties)
 }
 
 Gorgon::Gorgon(ValueMap& properties) : super(properties,
-	Gorgon::MapKeyGorgon,
+	Gorgon::MapKey,
 	EntityResources::Enemies_EndianForest_Gorgon_Animations,
 	EntityResources::Enemies_EndianForest_Gorgon_Emblem,
 	Size(512.0f, 512.0f),

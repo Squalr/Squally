@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string FireSwordPlans::SaveKeyFireSwordPlans = "fire-sword-plans";
+const std::string FireSwordPlans::SaveKey = "fire-sword-plans";
 
 FireSwordPlans* FireSwordPlans::create()
 {
@@ -51,7 +51,7 @@ Item* FireSwordPlans::clone()
 
 std::string FireSwordPlans::getItemName()
 {
-	return FireSwordPlans::SaveKeyFireSwordPlans;
+	return FireSwordPlans::SaveKey;
 }
 
 LocalizedString* FireSwordPlans::getString()
@@ -71,5 +71,5 @@ std::string FireSwordPlans::getCraftedItemIconResource()
 
 std::string FireSwordPlans::getSerializationKey()
 {
-	return FireSwordPlans::SaveKeyFireSwordPlans;
+	return FireSwordPlans::SaveKey;
 }

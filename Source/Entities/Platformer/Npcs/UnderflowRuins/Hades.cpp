@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Hades::MapKeyHades = "hades";
+const std::string Hades::MapKey = "hades";
 HexusOpponentData* Hades::HexusOpponentDataInstance = nullptr;
 const std::string Hades::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_HADES";
 
@@ -31,7 +31,7 @@ Hades* Hades::deserialize(ValueMap& properties)
 }
 
 Hades::Hades(ValueMap& properties) : super(properties,
-	Hades::MapKeyHades,
+	Hades::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Hades_Animations,
 	EntityResources::Npcs_UnderflowRuins_Hades_Emblem,
 	Size(112.0f, 160.0f),

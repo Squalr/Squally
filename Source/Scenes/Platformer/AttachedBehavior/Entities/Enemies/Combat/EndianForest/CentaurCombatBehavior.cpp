@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 	
-const std::string CentaurCombatBehavior::MapKeyAttachedBehavior = "centaur-combat";
+const std::string CentaurCombatBehavior::MapKey = "centaur-combat";
 
 CentaurCombatBehavior* CentaurCombatBehavior::create(GameObject* owner)
 {

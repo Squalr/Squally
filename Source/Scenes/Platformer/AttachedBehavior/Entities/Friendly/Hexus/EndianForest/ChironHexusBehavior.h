@@ -12,7 +12,7 @@ class ChironHexusBehavior : public HexusBehaviorBase
 public:
 	static ChironHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ChironHexusBehavior(GameObject* owner);

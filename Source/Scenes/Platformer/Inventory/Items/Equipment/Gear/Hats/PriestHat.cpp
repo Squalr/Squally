@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string PriestHat::SaveKeyPriestHat = "priest-hat";
+const std::string PriestHat::SaveKey = "priest-hat";
 
 PriestHat* PriestHat::create()
 {
@@ -46,7 +46,7 @@ Item* PriestHat::clone()
 
 std::string PriestHat::getItemName()
 {
-	return PriestHat::SaveKeyPriestHat;
+	return PriestHat::SaveKey;
 }
 
 LocalizedString* PriestHat::getString()
@@ -61,7 +61,7 @@ std::string PriestHat::getIconResource()
 
 std::string PriestHat::getSerializationKey()
 {
-	return PriestHat::SaveKeyPriestHat;
+	return PriestHat::SaveKey;
 }
 
 Vec2 PriestHat::getDisplayOffset()

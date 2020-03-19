@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CrystalAxe::SaveKeyCrystalAxe = "crystal-axe";
+const std::string CrystalAxe::SaveKey = "crystal-axe";
 
 CrystalAxe* CrystalAxe::create()
 {
@@ -46,7 +46,7 @@ Item* CrystalAxe::clone()
 
 std::string CrystalAxe::getItemName()
 {
-	return CrystalAxe::SaveKeyCrystalAxe;
+	return CrystalAxe::SaveKey;
 }
 
 LocalizedString* CrystalAxe::getString()
@@ -61,7 +61,7 @@ std::string CrystalAxe::getIconResource()
 
 std::string CrystalAxe::getSerializationKey()
 {
-	return CrystalAxe::SaveKeyCrystalAxe;
+	return CrystalAxe::SaveKey;
 }
 
 Size CrystalAxe::getWeaponCollisionSize()

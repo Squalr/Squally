@@ -19,7 +19,7 @@ class SquallyShip : public HackableObject
 public:
 	static SquallyShip* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeySquallyShip;
+	static const std::string MapKey;
 
 protected:
 	SquallyShip(cocos2d::ValueMap& properties);

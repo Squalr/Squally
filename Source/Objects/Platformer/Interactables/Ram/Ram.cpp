@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-const std::string Ram::MapKeyRam = "ram";
+const std::string Ram::MapKey = "ram";
 const float Ram::AnimOffset = -144.0f - 16.0f;
 
 Ram* Ram::create(ValueMap& properties)

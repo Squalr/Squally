@@ -15,7 +15,7 @@ public:
 	std::string getIconResource() override;
 	std::string getSerializationKey() override;
 
-	static const std::string SaveKeyGreaterHealthPotion;
+	static const std::string SaveKey;
 	static const float HealPercentage;
 
 protected:

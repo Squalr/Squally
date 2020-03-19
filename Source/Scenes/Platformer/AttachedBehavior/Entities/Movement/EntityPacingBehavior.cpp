@@ -15,7 +15,7 @@
 
 using namespace cocos2d;
 	
-const std::string EntityPacingBehavior::MapKeyAttachedBehavior = "pacing";
+const std::string EntityPacingBehavior::MapKey = "pacing";
 const float EntityPacingBehavior::TravelDistanceMax = 512.0f;
 const float EntityPacingBehavior::TravelDistanceMin = 96.0f;
 

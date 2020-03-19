@@ -13,7 +13,7 @@
 
 using namespace cocos2d;
 	
-const std::string EnemyBattleAllyBehavior::MapKeyAttachedBehavior = "ally";
+const std::string EnemyBattleAllyBehavior::MapKey = "ally";
 
 EnemyBattleAllyBehavior* EnemyBattleAllyBehavior::create(GameObject* owner)
 {

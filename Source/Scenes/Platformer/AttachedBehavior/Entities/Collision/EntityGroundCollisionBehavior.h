@@ -21,7 +21,7 @@ public:
 	CollisionObject* rightCornerCollision;
 	CollisionObject* groundCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityGroundCollisionBehavior(GameObject* owner);

@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string GuanoCombatBehavior::MapKeyAttachedBehavior = "guano-combat";
+const std::string GuanoCombatBehavior::MapKey = "guano-combat";
 
 GuanoCombatBehavior* GuanoCombatBehavior::create(GameObject* owner)
 {

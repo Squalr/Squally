@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string BlackbeardHexusBehavior::MapKeyAttachedBehavior = "blackbeard-hexus";
+const std::string BlackbeardHexusBehavior::MapKey = "blackbeard-hexus";
 
 BlackbeardHexusBehavior* BlackbeardHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* BlackbeardHexusBehavior::generateReward()
 
 std::string BlackbeardHexusBehavior::getWinLossSaveKey()
 {
-	return BlackbeardHexusBehavior::MapKeyAttachedBehavior;
+	return BlackbeardHexusBehavior::MapKey;
 }
 
 std::string BlackbeardHexusBehavior::getBackgroundResource()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyRuneBehavior::MapKeyAttachedBehavior = "squally-rune";
+const std::string SquallyRuneBehavior::MapKey = "squally-rune";
 
 SquallyRuneBehavior* SquallyRuneBehavior::create(GameObject* owner)
 {

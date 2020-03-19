@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Xenon::MapKeyXenon = "xenon";
+const std::string Xenon::MapKey = "xenon";
 HexusOpponentData* Xenon::HexusOpponentDataInstance = nullptr;
 const std::string Xenon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_XENON";
 
@@ -31,7 +31,7 @@ Xenon* Xenon::deserialize(ValueMap& properties)
 }
 
 Xenon::Xenon(ValueMap& properties) : super(properties,
-	Xenon::MapKeyXenon,
+	Xenon::MapKey,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	Size(112.0f, 160.0f),

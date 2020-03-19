@@ -29,7 +29,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string DartTripodLauncher::MapKeyDartTripodLauncher = "dart-tripod-launcher";
+const std::string DartTripodLauncher::MapKey = "dart-tripod-launcher";
 
 DartTripodLauncher* DartTripodLauncher::create(ValueMap& properties)
 {

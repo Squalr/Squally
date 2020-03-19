@@ -10,7 +10,7 @@ class LycanBehavior : public AttachedBehavior
 public:
 	static LycanBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	LycanBehavior(GameObject* owner);

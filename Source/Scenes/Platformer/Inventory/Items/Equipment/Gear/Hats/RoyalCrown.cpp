@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string RoyalCrown::SaveKeyRoyalCrown = "royal-crown";
+const std::string RoyalCrown::SaveKey = "royal-crown";
 
 RoyalCrown* RoyalCrown::create()
 {
@@ -46,7 +46,7 @@ Item* RoyalCrown::clone()
 
 std::string RoyalCrown::getItemName()
 {
-	return RoyalCrown::SaveKeyRoyalCrown;
+	return RoyalCrown::SaveKey;
 }
 
 LocalizedString* RoyalCrown::getString()
@@ -61,7 +61,7 @@ std::string RoyalCrown::getIconResource()
 
 std::string RoyalCrown::getSerializationKey()
 {
-	return RoyalCrown::SaveKeyRoyalCrown;
+	return RoyalCrown::SaveKey;
 }
 
 Vec2 RoyalCrown::getDisplayOffset()

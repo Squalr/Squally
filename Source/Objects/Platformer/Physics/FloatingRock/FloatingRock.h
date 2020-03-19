@@ -14,7 +14,7 @@ class FloatingRock : public DensityObject
 public:
 	static FloatingRock* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyFloatingRock;
+	static const std::string MapKey;
 
 protected:
 	FloatingRock(cocos2d::ValueMap& properties);

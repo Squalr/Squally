@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyAphrodite;
+	static const std::string MapKey;
+
+protected:
 
 private:
 	typedef PlatformerFriendly super;
 	Aphrodite(cocos2d::ValueMap& properties);
-	~Aphrodite();
+	virtual ~Aphrodite();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

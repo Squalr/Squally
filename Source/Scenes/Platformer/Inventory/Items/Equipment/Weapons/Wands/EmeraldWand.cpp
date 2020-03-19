@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string EmeraldWand::SaveKeyEmeraldWand = "emerald-wand";
+const std::string EmeraldWand::SaveKey = "emerald-wand";
 
 EmeraldWand* EmeraldWand::create()
 {
@@ -46,7 +46,7 @@ Item* EmeraldWand::clone()
 
 std::string EmeraldWand::getItemName()
 {
-	return EmeraldWand::SaveKeyEmeraldWand;
+	return EmeraldWand::SaveKey;
 }
 
 LocalizedString* EmeraldWand::getString()
@@ -61,7 +61,7 @@ std::string EmeraldWand::getIconResource()
 
 std::string EmeraldWand::getSerializationKey()
 {
-	return EmeraldWand::SaveKeyEmeraldWand;
+	return EmeraldWand::SaveKey;
 }
 
 Vec2 EmeraldWand::getDisplayOffset()

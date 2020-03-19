@@ -12,7 +12,7 @@ class PortalSpawn : public HackableObject
 public:
 	static PortalSpawn* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyPortalSpawn;
+	static const std::string MapKey;
 
 protected:
 	PortalSpawn(cocos2d::ValueMap& properties);

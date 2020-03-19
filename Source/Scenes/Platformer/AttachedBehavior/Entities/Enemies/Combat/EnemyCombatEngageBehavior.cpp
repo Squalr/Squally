@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyCombatEngageBehavior::MapKeyAttachedBehavior = "enemy-combat-engage";
+const std::string EnemyCombatEngageBehavior::MapKey = "enemy-combat-engage";
 
 EnemyCombatEngageBehavior* EnemyCombatEngageBehavior::create(GameObject* owner)
 {
@@ -90,7 +90,7 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 	std::vector<CombatMap::CombatData> enemyCombatData = std::vector<CombatMap::CombatData>();
 
 	// Build player team
-	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKeySqually, SquallyCombatBehaviorGroup::MapKeyAttachedBehavior));
+	playerCombatData.push_back(CombatMap::CombatData(Squally::MapKey, SquallyCombatBehaviorGroup::MapKey));
 	
 	ObjectEvents::QueryObjects<PlatformerHelper>(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* helper)
 	{

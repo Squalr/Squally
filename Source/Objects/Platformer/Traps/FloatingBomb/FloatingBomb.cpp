@@ -21,7 +21,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string FloatingBomb::MapKeyFloatingBomb = "floating-bomb";
+const std::string FloatingBomb::MapKey = "floating-bomb";
 
 FloatingBomb* FloatingBomb::create(ValueMap& properties)
 {

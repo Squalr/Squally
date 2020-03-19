@@ -11,7 +11,7 @@ public:
 
 	void enablePortal();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	DisabledPortal(GameObject* owner);

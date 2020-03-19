@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyBoneFiend;
+	static const std::string MapKey;
+	
+protected:
+	BoneFiend(cocos2d::ValueMap& properties);
+	virtual ~BoneFiend();
 
 private:
 	typedef PlatformerEnemy super;
-	BoneFiend(cocos2d::ValueMap& properties);
-	~BoneFiend();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

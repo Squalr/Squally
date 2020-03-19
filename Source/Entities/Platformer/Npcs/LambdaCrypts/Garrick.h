@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyGarrick;
+	static const std::string MapKey;
+
+protected:
+	Garrick(cocos2d::ValueMap& properties);
+	virtual ~Garrick();
 
 private:
 	typedef PlatformerFriendly super;
-	Garrick(cocos2d::ValueMap& properties);
-	~Garrick();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

@@ -12,7 +12,7 @@ class ElrielHexusBehavior : public HexusBehaviorBase
 public:
 	static ElrielHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ElrielHexusBehavior(GameObject* owner);

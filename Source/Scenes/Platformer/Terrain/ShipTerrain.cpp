@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ShipTerrain::MapKeyTerrainType = "ship";
+const std::string ShipTerrain::MapKey = "ship";
 
 ShipTerrain* ShipTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ ShipTerrain::ShipTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return ShipTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		ShipTerrain::MapKeyTerrainType,
+		ShipTerrain::MapKey,
 		TextureResources::ShipTexture,
 		TerrainResources::Ship_Top,
 		TerrainResources::Ship_TopLeft,

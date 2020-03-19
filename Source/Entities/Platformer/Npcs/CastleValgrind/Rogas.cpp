@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Rogas::MapKeyRogas = "rogas";
+const std::string Rogas::MapKey = "rogas";
 HexusOpponentData* Rogas::HexusOpponentDataInstance = nullptr;
 const std::string Rogas::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROGAS";
 
@@ -31,7 +31,7 @@ Rogas* Rogas::deserialize(ValueMap& properties)
 }
 
 Rogas::Rogas(ValueMap& properties) : super(properties,
-	Rogas::MapKeyRogas,
+	Rogas::MapKey,
 	EntityResources::Npcs_CastleValgrind_Rogas_Animations,
 	EntityResources::Npcs_CastleValgrind_Rogas_Emblem,
 	Size(112.0f, 160.0f),

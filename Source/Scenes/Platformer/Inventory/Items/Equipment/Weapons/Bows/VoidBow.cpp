@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidBow::SaveKeyVoidBow = "void-bow";
+const std::string VoidBow::SaveKey = "void-bow";
 
 VoidBow* VoidBow::create()
 {
@@ -46,7 +46,7 @@ Item* VoidBow::clone()
 
 std::string VoidBow::getItemName()
 {
-	return VoidBow::SaveKeyVoidBow;
+	return VoidBow::SaveKey;
 }
 
 LocalizedString* VoidBow::getString()
@@ -61,7 +61,7 @@ std::string VoidBow::getIconResource()
 
 std::string VoidBow::getSerializationKey()
 {
-	return VoidBow::SaveKeyVoidBow;
+	return VoidBow::SaveKey;
 }
 
 Vec2 VoidBow::getDisplayOffset()

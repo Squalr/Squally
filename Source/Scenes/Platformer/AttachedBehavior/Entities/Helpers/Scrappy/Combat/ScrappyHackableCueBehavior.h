@@ -12,7 +12,7 @@ public:
 
 	void disable();
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	ScrappyHackableCueBehavior(GameObject* owner);

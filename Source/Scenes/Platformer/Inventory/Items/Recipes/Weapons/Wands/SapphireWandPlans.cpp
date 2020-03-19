@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SapphireWandPlans::SaveKeySapphireWandPlans = "serpent-wand-plans";
+const std::string SapphireWandPlans::SaveKey = "serpent-wand-plans";
 
 SapphireWandPlans* SapphireWandPlans::create()
 {
@@ -52,7 +52,7 @@ Item* SapphireWandPlans::clone()
 
 std::string SapphireWandPlans::getItemName()
 {
-	return SapphireWandPlans::SaveKeySapphireWandPlans;
+	return SapphireWandPlans::SaveKey;
 }
 
 LocalizedString* SapphireWandPlans::getString()
@@ -72,5 +72,5 @@ std::string SapphireWandPlans::getCraftedItemIconResource()
 
 std::string SapphireWandPlans::getSerializationKey()
 {
-	return SapphireWandPlans::SaveKeySapphireWandPlans;
+	return SapphireWandPlans::SaveKey;
 }

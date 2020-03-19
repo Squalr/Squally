@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyDefaultInventoryBehavior::MapKeyAttachedBehavior = "squally-equipment-visuals";
+const std::string SquallyDefaultInventoryBehavior::MapKey = "squally-equipment-visuals";
 
 SquallyDefaultInventoryBehavior* SquallyDefaultInventoryBehavior::create(GameObject* owner)
 {

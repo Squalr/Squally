@@ -15,7 +15,7 @@ class HeavenHug : public HackableObject
 public:
 	static HeavenHug* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyHeavenHug;
+	static const std::string MapKey;
 
 protected:
 	HeavenHug(cocos2d::ValueMap& properties);

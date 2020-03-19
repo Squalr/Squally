@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string QuartzWandPlans::SaveKeyQuartzWandPlans = "quartz-wand-plans";
+const std::string QuartzWandPlans::SaveKey = "quartz-wand-plans";
 
 QuartzWandPlans* QuartzWandPlans::create()
 {
@@ -50,7 +50,7 @@ Item* QuartzWandPlans::clone()
 
 std::string QuartzWandPlans::getItemName()
 {
-	return QuartzWandPlans::SaveKeyQuartzWandPlans;
+	return QuartzWandPlans::SaveKey;
 }
 
 LocalizedString* QuartzWandPlans::getString()
@@ -70,5 +70,5 @@ std::string QuartzWandPlans::getCraftedItemIconResource()
 
 std::string QuartzWandPlans::getSerializationKey()
 {
-	return QuartzWandPlans::SaveKeyQuartzWandPlans;
+	return QuartzWandPlans::SaveKey;
 }

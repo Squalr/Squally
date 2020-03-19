@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Brine::MapKeyBrine = "brine";
+const std::string Brine::MapKey = "brine";
 HexusOpponentData* Brine::HexusOpponentDataInstance = nullptr;
 const std::string Brine::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BRINE";
 
@@ -31,7 +31,7 @@ Brine* Brine::deserialize(ValueMap& properties)
 }
 
 Brine::Brine(ValueMap& properties) : super(properties,
-	Brine::MapKeyBrine,
+	Brine::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Brine_Animations,
 	EntityResources::Npcs_DaemonsHallow_Brine_Emblem,
 	Size(112.0f, 160.0f),

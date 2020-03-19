@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityProjectileTargetBehavior::MapKeyAttachedBehavior = "entity-projectile-target";
+const std::string EntityProjectileTargetBehavior::MapKey = "entity-projectile-target";
 
 EntityProjectileTargetBehavior* EntityProjectileTargetBehavior::create(GameObject* owner)
 {

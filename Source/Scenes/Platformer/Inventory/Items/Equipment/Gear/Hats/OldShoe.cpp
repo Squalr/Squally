@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string OldShoe::SaveKeyOldShoe = "old-shoe";
+const std::string OldShoe::SaveKey = "old-shoe";
 
 OldShoe* OldShoe::create()
 {
@@ -46,7 +46,7 @@ Item* OldShoe::clone()
 
 std::string OldShoe::getItemName()
 {
-	return OldShoe::SaveKeyOldShoe;
+	return OldShoe::SaveKey;
 }
 
 LocalizedString* OldShoe::getString()
@@ -61,7 +61,7 @@ std::string OldShoe::getIconResource()
 
 std::string OldShoe::getSerializationKey()
 {
-	return OldShoe::SaveKeyOldShoe;
+	return OldShoe::SaveKey;
 }
 
 Vec2 OldShoe::getDisplayOffset()

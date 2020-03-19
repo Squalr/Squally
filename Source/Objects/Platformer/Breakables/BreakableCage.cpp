@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string BreakableCage::MapKeyBreakableCage = "breakable-cage";
+const std::string BreakableCage::MapKey = "breakable-cage";
 
 BreakableCage* BreakableCage::create(ValueMap& properties)
 {

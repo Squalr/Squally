@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Gorilla::MapKeyGorilla = "gorilla";
+const std::string Gorilla::MapKey = "gorilla";
 HexusOpponentData* Gorilla::HexusOpponentDataInstance = nullptr;
 const std::string Gorilla::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GORILLA";
 
@@ -31,7 +31,7 @@ Gorilla* Gorilla::deserialize(ValueMap& properties)
 }
 
 Gorilla::Gorilla(ValueMap& properties) : super(properties,
-	Gorilla::MapKeyGorilla,
+	Gorilla::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Gorilla_Emblem,
 	Size(512.0f, 1126.0f),

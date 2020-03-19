@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyPolyphemus;
+	static const std::string MapKey;
+
+protected:
+	Polyphemus(cocos2d::ValueMap& properties);
+	virtual ~Polyphemus();
 
 private:
 	typedef PlatformerFriendly super;
-	Polyphemus(cocos2d::ValueMap& properties);
-	~Polyphemus();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

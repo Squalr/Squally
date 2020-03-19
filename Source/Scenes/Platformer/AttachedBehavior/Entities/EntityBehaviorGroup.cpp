@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityBehaviorGroup::MapKeyAttachedBehavior = "entity";
+const std::string EntityBehaviorGroup::MapKey = "entity";
 
 EntityBehaviorGroup* EntityBehaviorGroup::create(GameObject* owner)
 {

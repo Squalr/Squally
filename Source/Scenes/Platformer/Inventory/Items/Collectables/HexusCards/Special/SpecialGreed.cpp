@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string SpecialGreed::SaveKeySpecialGreed = "special-greed";
+const std::string SpecialGreed::SaveKey = "special-greed";
 
 SpecialGreed* SpecialGreed::create()
 {
@@ -36,7 +36,7 @@ Item* SpecialGreed::clone()
 
 std::string SpecialGreed::getItemName()
 {
-	return SpecialGreed::SaveKeySpecialGreed;
+	return SpecialGreed::SaveKey;
 }
 
 LocalizedString* SpecialGreed::getString()
@@ -51,7 +51,7 @@ std::string SpecialGreed::getIconResource()
 
 std::string SpecialGreed::getSerializationKey()
 {
-	return SpecialGreed::SaveKeySpecialGreed;
+	return SpecialGreed::SaveKey;
 }
 
 std::string SpecialGreed::getCardKey()

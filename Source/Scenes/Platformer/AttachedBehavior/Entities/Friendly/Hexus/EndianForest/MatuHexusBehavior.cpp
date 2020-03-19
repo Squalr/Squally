@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string MatuHexusBehavior::MapKeyAttachedBehavior = "matu-hexus";
+const std::string MatuHexusBehavior::MapKey = "matu-hexus";
 
 MatuHexusBehavior* MatuHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* MatuHexusBehavior::generateReward()
 
 std::string MatuHexusBehavior::getWinLossSaveKey()
 {
-	return MatuHexusBehavior::MapKeyAttachedBehavior;
+	return MatuHexusBehavior::MapKey;
 }
 
 std::string MatuHexusBehavior::getBackgroundResource()

@@ -12,7 +12,7 @@ class AraHexusBehavior : public HexusBehaviorBase
 public:
 	static AraHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	AraHexusBehavior(GameObject* owner);

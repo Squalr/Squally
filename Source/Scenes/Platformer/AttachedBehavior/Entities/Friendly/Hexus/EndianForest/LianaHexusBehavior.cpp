@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string LianaHexusBehavior::MapKeyAttachedBehavior = "liana-hexus";
+const std::string LianaHexusBehavior::MapKey = "liana-hexus";
 
 LianaHexusBehavior* LianaHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* LianaHexusBehavior::generateReward()
 
 std::string LianaHexusBehavior::getWinLossSaveKey()
 {
-	return LianaHexusBehavior::MapKeyAttachedBehavior;
+	return LianaHexusBehavior::MapKey;
 }
 
 std::string LianaHexusBehavior::getBackgroundResource()

@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string PirateHat::SaveKeyPirateHat = "pirate-hat";
+const std::string PirateHat::SaveKey = "pirate-hat";
 
 PirateHat* PirateHat::create()
 {
@@ -46,7 +46,7 @@ Item* PirateHat::clone()
 
 std::string PirateHat::getItemName()
 {
-	return PirateHat::SaveKeyPirateHat;
+	return PirateHat::SaveKey;
 }
 
 LocalizedString* PirateHat::getString()
@@ -61,7 +61,7 @@ std::string PirateHat::getIconResource()
 
 std::string PirateHat::getSerializationKey()
 {
-	return PirateHat::SaveKeyPirateHat;
+	return PirateHat::SaveKey;
 }
 
 Vec2 PirateHat::getDisplayOffset()

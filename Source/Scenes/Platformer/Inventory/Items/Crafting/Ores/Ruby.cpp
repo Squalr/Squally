@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Ruby::SaveKeyRuby = "ruby";
+const std::string Ruby::SaveKey = "ruby";
 
 Ruby* Ruby::create()
 {
@@ -35,7 +35,7 @@ Item* Ruby::clone()
 
 std::string Ruby::getItemName()
 {
-	return Ruby::SaveKeyRuby;
+	return Ruby::SaveKey;
 }
 
 LocalizedString* Ruby::getString()
@@ -50,5 +50,5 @@ std::string Ruby::getIconResource()
 
 std::string Ruby::getSerializationKey()
 {
-	return Ruby::SaveKeyRuby;
+	return Ruby::SaveKey;
 }

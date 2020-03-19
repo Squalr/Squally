@@ -16,7 +16,7 @@ public:
 
 	void giveExp(float startProgress, float endProgress, bool didLevelUp, int expGain);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	FriendlyExpBarBehavior(GameObject* owner);

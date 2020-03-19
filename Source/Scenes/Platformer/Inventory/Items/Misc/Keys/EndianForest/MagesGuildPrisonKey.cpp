@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey = "mages-guild-prison-key";
+const std::string MagesGuildPrisonKey::SaveKey = "mages-guild-prison-key";
 
 MagesGuildPrisonKey* MagesGuildPrisonKey::create()
 {
@@ -35,7 +35,7 @@ Item* MagesGuildPrisonKey::clone()
 
 std::string MagesGuildPrisonKey::getItemName()
 {
-	return MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey;
+	return MagesGuildPrisonKey::SaveKey;
 }
 
 LocalizedString* MagesGuildPrisonKey::getString()
@@ -50,6 +50,6 @@ std::string MagesGuildPrisonKey::getIconResource()
 
 std::string MagesGuildPrisonKey::getSerializationKey()
 {
-	return MagesGuildPrisonKey::SaveKeyMagesGuildPrisonKey;
+	return MagesGuildPrisonKey::SaveKey;
 }
 

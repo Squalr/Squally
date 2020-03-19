@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-const std::string AlchemyLab::MapKeyAlchemyLab = "alchemy-lab";
+const std::string AlchemyLab::MapKey = "alchemy-lab";
 
 AlchemyLab* AlchemyLab::create(ValueMap& properties)
 {

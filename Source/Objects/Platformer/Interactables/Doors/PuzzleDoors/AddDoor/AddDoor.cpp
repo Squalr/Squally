@@ -22,7 +22,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME 1
 
-const std::string AddDoor::MapKeyAddDoor = "add-door";
+const std::string AddDoor::MapKey = "add-door";
 
 AddDoor* AddDoor::create(ValueMap& properties)
 {
@@ -50,7 +50,7 @@ void AddDoor::registerHackables()
 		{
 			LOCAL_FUNC_ID_INCREMENT_ANIMATION_FRAME,
 			HackableCode::HackableCodeInfo(
-				AddDoor::MapKeyAddDoor,
+				AddDoor::MapKey,
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Addition_Addition::create(),
 				UIResources::Menus_Icons_Heal,
 				AddDoorPreview::create(),

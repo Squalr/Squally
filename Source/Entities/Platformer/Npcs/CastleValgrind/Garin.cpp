@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Garin::MapKeyGarin = "garin";
+const std::string Garin::MapKey = "garin";
 HexusOpponentData* Garin::HexusOpponentDataInstance = nullptr;
 const std::string Garin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GARIN";
 
@@ -31,7 +31,7 @@ Garin* Garin::deserialize(ValueMap& properties)
 }
 
 Garin::Garin(ValueMap& properties) : super(properties,
-	Garin::MapKeyGarin,
+	Garin::MapKey,
 	EntityResources::Npcs_CastleValgrind_Garin_Animations,
 	EntityResources::Npcs_CastleValgrind_Garin_Emblem,
 	Size(112.0f, 160.0f),

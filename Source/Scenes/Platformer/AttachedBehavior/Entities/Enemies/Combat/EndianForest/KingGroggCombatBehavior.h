@@ -7,7 +7,7 @@ class KingGroggCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static KingGroggCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	KingGroggCombatBehavior(GameObject* owner);

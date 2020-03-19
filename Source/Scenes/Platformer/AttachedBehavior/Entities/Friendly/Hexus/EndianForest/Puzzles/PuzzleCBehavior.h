@@ -12,7 +12,7 @@ class PuzzleCBehavior : public HexusPuzzleBehaviorBase
 public:
 	static PuzzleCBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	PuzzleCBehavior(GameObject* owner);

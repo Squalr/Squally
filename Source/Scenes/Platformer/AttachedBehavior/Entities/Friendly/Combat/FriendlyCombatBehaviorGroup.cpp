@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string FriendlyCombatBehaviorGroup::MapKeyAttachedBehavior = "friendly-combat-group";
+const std::string FriendlyCombatBehaviorGroup::MapKey = "friendly-combat-group";
 
 FriendlyCombatBehaviorGroup* FriendlyCombatBehaviorGroup::create(GameObject* owner)
 {

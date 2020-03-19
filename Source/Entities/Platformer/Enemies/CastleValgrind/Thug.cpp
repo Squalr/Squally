@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Thug::MapKeyThug = "thug";
+const std::string Thug::MapKey = "thug";
 HexusOpponentData* Thug::HexusOpponentDataInstance = nullptr;
 const std::string Thug::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_THUG";
 
@@ -31,7 +31,7 @@ Thug* Thug::deserialize(ValueMap& properties)
 }
 
 Thug::Thug(ValueMap& properties) : super(properties,
-	Thug::MapKeyThug,
+	Thug::MapKey,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
 	Size(112.0f, 160.0f),

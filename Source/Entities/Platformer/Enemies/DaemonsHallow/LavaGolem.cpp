@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string LavaGolem::MapKeyLavaGolem = "lava-golem";
+const std::string LavaGolem::MapKey = "lava-golem";
 HexusOpponentData* LavaGolem::HexusOpponentDataInstance = nullptr;
 const std::string LavaGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LAVA_GOLEM";
 
@@ -31,7 +31,7 @@ LavaGolem* LavaGolem::deserialize(ValueMap& properties)
 }
 
 LavaGolem::LavaGolem(ValueMap& properties) : super(properties,
-	LavaGolem::MapKeyLavaGolem,
+	LavaGolem::MapKey,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Animations,
 	EntityResources::Enemies_DaemonsHallow_LavaGolem_Emblem,
 	Size(980.0f, 1200.0f),

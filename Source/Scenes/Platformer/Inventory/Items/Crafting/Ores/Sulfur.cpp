@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Sulfur::SaveKeySulfur = "sulfur";
+const std::string Sulfur::SaveKey = "sulfur";
 
 Sulfur* Sulfur::create()
 {
@@ -35,7 +35,7 @@ Item* Sulfur::clone()
 
 std::string Sulfur::getItemName()
 {
-	return Sulfur::SaveKeySulfur;
+	return Sulfur::SaveKey;
 }
 
 LocalizedString* Sulfur::getString()
@@ -50,5 +50,5 @@ std::string Sulfur::getIconResource()
 
 std::string Sulfur::getSerializationKey()
 {
-	return Sulfur::SaveKeySulfur;
+	return Sulfur::SaveKey;
 }

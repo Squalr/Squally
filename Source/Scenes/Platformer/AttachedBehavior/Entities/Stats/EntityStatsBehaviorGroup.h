@@ -14,7 +14,7 @@ class EntityStatsBehaviorGroup : public AttachedBehaviorGroup
 public:
 	static EntityStatsBehaviorGroup* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityStatsBehaviorGroup(GameObject* owner);

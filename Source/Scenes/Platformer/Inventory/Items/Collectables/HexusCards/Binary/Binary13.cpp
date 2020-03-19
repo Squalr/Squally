@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string Binary13::SaveKeyBinary13 = "binary-13";
+const std::string Binary13::SaveKey = "binary-13";
 
 Binary13* Binary13::create()
 {
@@ -36,7 +36,7 @@ Item* Binary13::clone()
 
 std::string Binary13::getItemName()
 {
-	return Binary13::SaveKeyBinary13;
+	return Binary13::SaveKey;
 }
 
 LocalizedString* Binary13::getString()
@@ -51,7 +51,7 @@ std::string Binary13::getIconResource()
 
 std::string Binary13::getSerializationKey()
 {
-	return Binary13::SaveKeyBinary13;
+	return Binary13::SaveKey;
 }
 
 std::string Binary13::getCardKey()

@@ -80,6 +80,6 @@ private:
 
 	PlatformerEntityDeserializer* platformerEntityDeserializer;
 
-	static const std::string MapPropertyPlayerFirstStrike;
-	static const std::string MapPropertyEnemyFirstStrike;
+	static const std::string PropertyPlayerFirstStrike;
+	static const std::string PropertyEnemyFirstStrike;
 };

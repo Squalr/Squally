@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyShen;
+	static const std::string MapKey;
+
+protected:
+	Shen(cocos2d::ValueMap& properties);
+	virtual ~Shen();
 
 private:
 	typedef PlatformerFriendly super;
-	Shen(cocos2d::ValueMap& properties);
-	~Shen();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

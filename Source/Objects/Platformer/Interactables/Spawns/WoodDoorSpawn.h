@@ -10,7 +10,7 @@ class WoodDoorSpawn : public PortalSpawn
 public:
 	static WoodDoorSpawn* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyWoodDoorSpawn;
+	static const std::string MapKey;
 
 protected:
 	WoodDoorSpawn(cocos2d::ValueMap& properties);

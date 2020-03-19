@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Obsidian::SaveKeyObsidian = "obsidian";
+const std::string Obsidian::SaveKey = "obsidian";
 
 Obsidian* Obsidian::create()
 {
@@ -35,7 +35,7 @@ Item* Obsidian::clone()
 
 std::string Obsidian::getItemName()
 {
-	return Obsidian::SaveKeyObsidian;
+	return Obsidian::SaveKey;
 }
 
 LocalizedString* Obsidian::getString()
@@ -50,5 +50,5 @@ std::string Obsidian::getIconResource()
 
 std::string Obsidian::getSerializationKey()
 {
-	return Obsidian::SaveKeyObsidian;
+	return Obsidian::SaveKey;
 }

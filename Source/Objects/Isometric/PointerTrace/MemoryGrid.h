@@ -28,11 +28,11 @@ public:
 	int worldCoordsToGridIndex(cocos2d::Vec2 worldCoordinates);
 	cocos2d::Vec2 gridIndexToWorldPosition(int gridIndex);
 
-	static const std::string MapKeyMemoryGrid;
+	static const std::string MapKey;
 
 protected:
 	MemoryGrid(const cocos2d::ValueMap& properties);
-	~MemoryGrid();
+	virtual ~MemoryGrid();
 
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;

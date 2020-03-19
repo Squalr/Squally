@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Lioness::MapKeyLioness = "lioness";
+const std::string Lioness::MapKey = "lioness";
 HexusOpponentData* Lioness::HexusOpponentDataInstance = nullptr;
 const std::string Lioness::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIONESS";
 
@@ -31,7 +31,7 @@ Lioness* Lioness::deserialize(ValueMap& properties)
 }
 
 Lioness::Lioness(ValueMap& properties) : super(properties,
-	Lioness::MapKeyLioness,
+	Lioness::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Animations,
 	EntityResources::Enemies_UnderflowRuins_Lioness_Emblem,
 	Size(128.0f, 278.0f),

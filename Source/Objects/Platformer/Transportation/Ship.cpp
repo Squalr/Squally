@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string Ship::MapKeyShip = "ship";
+const std::string Ship::MapKey = "ship";
 
 Ship* Ship::create(ValueMap& properties)
 {

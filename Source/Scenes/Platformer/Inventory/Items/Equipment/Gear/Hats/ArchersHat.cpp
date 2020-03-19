@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string ArchersHat::SaveKeyArchersHat = "archers-hat";
+const std::string ArchersHat::SaveKey = "archers-hat";
 
 ArchersHat* ArchersHat::create()
 {
@@ -46,7 +46,7 @@ Item* ArchersHat::clone()
 
 std::string ArchersHat::getItemName()
 {
-	return ArchersHat::SaveKeyArchersHat;
+	return ArchersHat::SaveKey;
 }
 
 LocalizedString* ArchersHat::getString()
@@ -61,7 +61,7 @@ std::string ArchersHat::getIconResource()
 
 std::string ArchersHat::getSerializationKey()
 {
-	return ArchersHat::SaveKeyArchersHat;
+	return ArchersHat::SaveKey;
 }
 
 Vec2 ArchersHat::getDisplayOffset()

@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Geryon::MapKeyGeryon = "geryon";
+const std::string Geryon::MapKey = "geryon";
 HexusOpponentData* Geryon::HexusOpponentDataInstance = nullptr;
 const std::string Geryon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_GERYON";
 
@@ -31,7 +31,7 @@ Geryon* Geryon::deserialize(ValueMap& properties)
 }
 
 Geryon::Geryon(ValueMap& properties) : super(properties,
-	Geryon::MapKeyGeryon,
+	Geryon::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Animations,
 	EntityResources::Npcs_UnderflowRuins_Geryon_Emblem,
 	Size(112.0f, 160.0f),

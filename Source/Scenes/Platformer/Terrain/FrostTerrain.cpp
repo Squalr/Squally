@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string FrostTerrain::MapKeyTerrainType = "frost";
+const std::string FrostTerrain::MapKey = "frost";
 
 FrostTerrain* FrostTerrain::create(ValueMap& properties)
 {
@@ -25,7 +25,7 @@ FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap& properties) { return FrostTexture::create(this->transformPropertiesForTexture(properties)); },
 		0.5f,
-		FrostTerrain::MapKeyTerrainType,
+		FrostTerrain::MapKey,
 		TextureResources::FrostTexture,
 		TerrainResources::Frost_Top,
 		TerrainResources::Frost_TopLeft,

@@ -10,7 +10,7 @@ class EntityDeveloperBehavior : public AttachedBehavior
 public:
 	static EntityDeveloperBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityDeveloperBehavior(GameObject* owner);

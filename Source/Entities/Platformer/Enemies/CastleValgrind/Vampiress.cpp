@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Vampiress::MapKeyVampiress = "vampiress";
+const std::string Vampiress::MapKey = "vampiress";
 HexusOpponentData* Vampiress::HexusOpponentDataInstance = nullptr;
 const std::string Vampiress::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_VAMPIRESS";
 
@@ -31,7 +31,7 @@ Vampiress* Vampiress::deserialize(ValueMap& properties)
 }
 
 Vampiress::Vampiress(ValueMap& properties) : super(properties,
-	Vampiress::MapKeyVampiress,
+	Vampiress::MapKey,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	Size(96.0f, 236.0f),

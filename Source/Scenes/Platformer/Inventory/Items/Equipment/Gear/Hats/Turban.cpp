@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Turban::SaveKeyTurban = "turban";
+const std::string Turban::SaveKey = "turban";
 
 Turban* Turban::create()
 {
@@ -46,7 +46,7 @@ Item* Turban::clone()
 
 std::string Turban::getItemName()
 {
-	return Turban::SaveKeyTurban;
+	return Turban::SaveKey;
 }
 
 LocalizedString* Turban::getString()
@@ -61,7 +61,7 @@ std::string Turban::getIconResource()
 
 std::string Turban::getSerializationKey()
 {
-	return Turban::SaveKeyTurban;
+	return Turban::SaveKey;
 }
 
 Vec2 Turban::getDisplayOffset()

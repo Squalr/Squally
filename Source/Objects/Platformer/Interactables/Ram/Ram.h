@@ -14,7 +14,7 @@ public:
 	SmartAnimationNode* getAnimations();
 	CollisionObject* getCollision();
 
-	static const std::string MapKeyRam;
+	static const std::string MapKey;
 
 protected:
 	Ram(cocos2d::ValueMap& properties);

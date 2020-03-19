@@ -48,8 +48,8 @@
 
 using namespace cocos2d;
 
-const std::string CombatMap::MapPropertyPlayerFirstStrike = "player-first-strike";
-const std::string CombatMap::MapPropertyEnemyFirstStrike = "enemy-first-strike";
+const std::string CombatMap::PropertyPlayerFirstStrike = "player-first-strike";
+const std::string CombatMap::PropertyEnemyFirstStrike = "enemy-first-strike";
 
 CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std::string enemyIdentifier,
 	std::vector<CombatData> playerData, std::vector<CombatData> enemyData)
@@ -153,7 +153,7 @@ void CombatMap::onEnter()
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	this->defer([=]()
 	{
@@ -474,12 +474,12 @@ void CombatMap::spawnEntities()
 
 			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
 
-			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyEnemyFirstStrike) != behavior.end())
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::PropertyEnemyFirstStrike) != behavior.end())
 			{
 				this->playerFirstStrike = false;
 			}
 
-			if (std::find(behavior.begin(), behavior.end(), CombatMap::MapPropertyPlayerFirstStrike) != behavior.end())
+			if (std::find(behavior.begin(), behavior.end(), CombatMap::PropertyPlayerFirstStrike) != behavior.end())
 			{
 				this->playerFirstStrike = true;
 			}

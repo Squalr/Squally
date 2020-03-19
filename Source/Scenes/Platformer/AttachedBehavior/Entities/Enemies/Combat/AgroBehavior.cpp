@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string AgroBehavior::MapKeyAttachedBehavior = "agro";
+const std::string AgroBehavior::MapKey = "agro";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
 const float AgroBehavior::EngageCooldownMax = 1.0f;
@@ -72,7 +72,7 @@ void AgroBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void AgroBehavior::onDisable()

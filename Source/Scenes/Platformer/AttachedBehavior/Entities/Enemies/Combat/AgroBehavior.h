@@ -21,7 +21,7 @@ public:
 	void setAgroRangeX(float agroRange);
 	void setAgroRangeY(float agroRange);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	AgroBehavior(GameObject* owner);

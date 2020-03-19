@@ -23,7 +23,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyWeaponCollisionBehavior::MapKeyAttachedBehavior = "squally-collisions";
+const std::string SquallyWeaponCollisionBehavior::MapKey = "squally-collisions";
 
 SquallyWeaponCollisionBehavior* SquallyWeaponCollisionBehavior::create(GameObject* owner)
 {

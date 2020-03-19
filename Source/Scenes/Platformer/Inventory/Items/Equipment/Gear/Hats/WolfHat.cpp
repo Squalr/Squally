@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string WolfHat::SaveKeyWolfHat = "wolf-hat";
+const std::string WolfHat::SaveKey = "wolf-hat";
 
 WolfHat* WolfHat::create()
 {
@@ -46,7 +46,7 @@ Item* WolfHat::clone()
 
 std::string WolfHat::getItemName()
 {
-	return WolfHat::SaveKeyWolfHat;
+	return WolfHat::SaveKey;
 }
 
 LocalizedString* WolfHat::getString()
@@ -61,7 +61,7 @@ std::string WolfHat::getIconResource()
 
 std::string WolfHat::getSerializationKey()
 {
-	return WolfHat::SaveKeyWolfHat;
+	return WolfHat::SaveKey;
 }
 
 Vec2 WolfHat::getDisplayOffset()

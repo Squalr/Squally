@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string Coal::SaveKeyCoal = "coal";
+const std::string Coal::SaveKey = "coal";
 
 Coal* Coal::create()
 {
@@ -35,7 +35,7 @@ Item* Coal::clone()
 
 std::string Coal::getItemName()
 {
-	return Coal::SaveKeyCoal;
+	return Coal::SaveKey;
 }
 
 LocalizedString* Coal::getString()
@@ -50,5 +50,5 @@ std::string Coal::getIconResource()
 
 std::string Coal::getSerializationKey()
 {
-	return Coal::SaveKeyCoal;
+	return Coal::SaveKey;
 }

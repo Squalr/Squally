@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 	
-const std::string OrcWarriorCombatBehavior::MapKeyAttachedBehavior = "orc-warrior-combat";
+const std::string OrcWarriorCombatBehavior::MapKey = "orc-warrior-combat";
 
 OrcWarriorCombatBehavior* OrcWarriorCombatBehavior::create(GameObject* owner)
 {

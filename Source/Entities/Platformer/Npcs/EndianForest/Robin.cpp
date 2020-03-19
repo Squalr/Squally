@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Robin::MapKeyRobin = "robin";
+const std::string Robin::MapKey = "robin";
 HexusOpponentData* Robin::HexusOpponentDataInstance = nullptr;
 const std::string Robin::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ROBIN";
 
@@ -31,7 +31,7 @@ Robin* Robin::deserialize(ValueMap& properties)
 }
 
 Robin::Robin(ValueMap& properties) : super(properties,
-	Robin::MapKeyRobin,
+	Robin::MapKey,
 	EntityResources::Npcs_EndianForest_Robin_Animations,
 	EntityResources::Npcs_EndianForest_Robin_Emblem,
 	Size(112.0f, 160.0f),

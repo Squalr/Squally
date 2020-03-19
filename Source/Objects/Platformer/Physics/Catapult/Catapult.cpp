@@ -30,7 +30,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_APPLY_POWER 1
 
-const std::string Catapult::MapKeyCatapult = "catapult";
+const std::string Catapult::MapKey = "catapult";
 const float Catapult::InteractCooldown = 3.0f;
 const float Catapult::LaunchPowerDefault = 0.90f;
 const Vec2 Catapult::LaunchVelocityBase = Vec2(1200.0f, 1200.0f);
@@ -136,7 +136,7 @@ void Catapult::registerHackables()
 		{
 			LOCAL_FUNC_ID_APPLY_POWER,
 			HackableCode::HackableCodeInfo(
-				Catapult::MapKeyCatapult,
+				Catapult::MapKey,
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				UIResources::Menus_Icons_Meteor,
 				CatapultApplyPowerPreview::create(),

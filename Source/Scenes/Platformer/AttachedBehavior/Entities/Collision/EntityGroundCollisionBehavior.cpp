@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityGroundCollisionBehavior::MapKeyAttachedBehavior = "entity-ground-collisions";
+const std::string EntityGroundCollisionBehavior::MapKey = "entity-ground-collisions";
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = 4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = 8.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionHeight = 48.0f;

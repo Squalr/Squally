@@ -20,7 +20,7 @@ public:
 	static const float DefaultRecoverSpeed;
 	static const float DefaultRecoverSpeedSlow;
 	static const float DefaultRecoverSpeedVerySlow;
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityAttackBehavior(GameObject* owner);

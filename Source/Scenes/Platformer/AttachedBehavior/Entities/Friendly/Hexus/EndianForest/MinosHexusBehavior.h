@@ -12,7 +12,7 @@ class MinosHexusBehavior : public HexusBehaviorBase
 public:
 	static MinosHexusBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	MinosHexusBehavior(GameObject* owner);

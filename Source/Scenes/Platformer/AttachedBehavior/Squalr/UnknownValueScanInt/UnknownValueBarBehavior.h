@@ -18,7 +18,7 @@ class UnknownValueBarBehavior : public AttachedBehavior
 public:
 	static UnknownValueBarBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	UnknownValueBarBehavior(GameObject* owner);

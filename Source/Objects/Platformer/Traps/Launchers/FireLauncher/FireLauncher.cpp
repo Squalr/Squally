@@ -26,7 +26,7 @@
 
 using namespace cocos2d;
 
-const std::string FireLauncher::MapKeyFireLauncher = "fire-launcher";
+const std::string FireLauncher::MapKey = "fire-launcher";
 
 FireLauncher* FireLauncher::create(ValueMap& properties)
 {

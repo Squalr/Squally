@@ -27,7 +27,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string MechanicalFlail::MapKeyMechanicalFlail = "mechanical-flail";
+const std::string MechanicalFlail::MapKey = "mechanical-flail";
 
 const float MechanicalFlail::DefaultAngle = 90.0f;
 const float MechanicalFlail::SwingsPerSecondAt480Length = 1.5f;
@@ -109,7 +109,7 @@ void MechanicalFlail::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::HackableCodeInfo(
-				MechanicalFlail::MapKeyMechanicalFlail,
+				MechanicalFlail::MapKey,
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				MechanicalFlailSetAnglePreview::create(),

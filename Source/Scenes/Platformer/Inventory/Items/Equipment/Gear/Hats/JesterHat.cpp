@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string JesterHat::SaveKeyJesterHat = "jester-hat";
+const std::string JesterHat::SaveKey = "jester-hat";
 
 JesterHat* JesterHat::create()
 {
@@ -46,7 +46,7 @@ Item* JesterHat::clone()
 
 std::string JesterHat::getItemName()
 {
-	return JesterHat::SaveKeyJesterHat;
+	return JesterHat::SaveKey;
 }
 
 LocalizedString* JesterHat::getString()
@@ -61,7 +61,7 @@ std::string JesterHat::getIconResource()
 
 std::string JesterHat::getSerializationKey()
 {
-	return JesterHat::SaveKeyJesterHat;
+	return JesterHat::SaveKey;
 }
 
 Vec2 JesterHat::getDisplayOffset()

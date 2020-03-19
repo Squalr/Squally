@@ -7,7 +7,7 @@ class MarbleGrassTerrain : public TerrainObject
 public:
 	static MarbleGrassTerrain* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyTerrainType;
+	static const std::string MapKey;
 
 protected:
 	MarbleGrassTerrain(cocos2d::ValueMap& properties);

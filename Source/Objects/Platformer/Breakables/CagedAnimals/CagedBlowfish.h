@@ -12,11 +12,11 @@ class CagedBlowfish : public CagedAnimal
 public:
 	static CagedBlowfish* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyCagedBlowfish;
+	static const std::string MapKey;
 
 protected:
 	CagedBlowfish(cocos2d::ValueMap& properties);
-	~CagedBlowfish();
+	virtual ~CagedBlowfish();
 
 	void initializePositions() override;
 

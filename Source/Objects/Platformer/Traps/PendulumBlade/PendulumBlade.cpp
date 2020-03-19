@@ -26,7 +26,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_SWING 1
 
-const std::string PendulumBlade::MapKeyPendulumBlade = "pendulum-blade";
+const std::string PendulumBlade::MapKey = "pendulum-blade";
 
 const float PendulumBlade::DefaultAngle = 270.0f;
 const float PendulumBlade::SwingsPerSecondAt480Length = 1.5f;
@@ -109,7 +109,7 @@ void PendulumBlade::registerHackables()
 		{
 			LOCAL_FUNC_ID_SWING,
 			HackableCode::HackableCodeInfo(
-				PendulumBlade::MapKeyPendulumBlade,
+				PendulumBlade::MapKey,
 				Strings::Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle::create(),
 				UIResources::Menus_Icons_CrossHair,
 				PendulumBladeSetAnglePreview::create(),

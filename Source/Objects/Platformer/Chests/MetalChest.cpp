@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string MetalChest::MapKeyMetalChest = "metal-chest";
+const std::string MetalChest::MapKey = "metal-chest";
 
 MetalChest* MetalChest::create(ValueMap& properties)
 {

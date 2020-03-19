@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string EFURTransportationBehavior::MapKeyAttachedBehavior = "ef-ur-transportation";
+const std::string EFURTransportationBehavior::MapKey = "ef-ur-transportation";
 const std::string EFURTransportationBehavior::QuestTagBackPortal = "back-portal";
 const std::string EFURTransportationBehavior::QuestTagLeavePortal = "leave-portal";
 
@@ -52,12 +52,12 @@ void EFURTransportationBehavior::onLoad()
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
-	}, Scrappy::MapKeyScrappy);
+	}, Scrappy::MapKey);
 
 	ObjectEvents::watchForObject<Portal>(this, [=](Portal* portal)
 	{

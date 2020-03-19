@@ -18,7 +18,7 @@
 
 using namespace cocos2d;
 
-const std::string PortalSpawn::MapKeyPortalSpawn = "spawn";
+const std::string PortalSpawn::MapKey = "spawn";
 const std::string PortalSpawn::MapKeyPortalSpawnTransition = "transition";
 const std::string PortalSpawn::MapKeyMapBanner = "map-banner";
 
@@ -79,7 +79,7 @@ void PortalSpawn::onPlayerSpawn()
 			squally->getAnimations()->setFlippedX(this->flipX);
 		}
 
-	}), Squally::MapKeySqually);
+	}), Squally::MapKey);
 }
 
 void PortalSpawn::tryShowBanner()

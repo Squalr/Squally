@@ -18,7 +18,7 @@ public:
 
 	CollisionObject* weaponCollision;
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	EntityWeaponCollisionBehavior(GameObject* owner);

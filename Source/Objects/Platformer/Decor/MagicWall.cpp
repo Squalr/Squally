@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const std::string MagicWall::MapKeyMagicWall = "magic-wall";
+const std::string MagicWall::MapKey = "magic-wall";
 
 MagicWall* MagicWall::create(ValueMap& properties)
 {

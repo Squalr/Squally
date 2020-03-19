@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Barbarian::MapKeyBarbarian = "barbarian";
+const std::string Barbarian::MapKey = "barbarian";
 HexusOpponentData* Barbarian::HexusOpponentDataInstance = nullptr;
 const std::string Barbarian::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BARBARIAN";
 
@@ -31,7 +31,7 @@ Barbarian* Barbarian::deserialize(ValueMap& properties)
 }
 
 Barbarian::Barbarian(ValueMap& properties) : super(properties,
-	Barbarian::MapKeyBarbarian,
+	Barbarian::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_Barbarian_Emblem,
 	Size(1280.0f, 920.0f),

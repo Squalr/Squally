@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string RamWheel::SaveKeyRamWheel = "ram-wheel";
+const std::string RamWheel::SaveKey = "ram-wheel";
 
 RamWheel* RamWheel::create()
 {
@@ -35,7 +35,7 @@ Item* RamWheel::clone()
 
 std::string RamWheel::getItemName()
 {
-	return RamWheel::SaveKeyRamWheel;
+	return RamWheel::SaveKey;
 }
 
 LocalizedString* RamWheel::getString()
@@ -50,6 +50,6 @@ std::string RamWheel::getIconResource()
 
 std::string RamWheel::getSerializationKey()
 {
-	return RamWheel::SaveKeyRamWheel;
+	return RamWheel::SaveKey;
 }
 

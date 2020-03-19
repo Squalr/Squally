@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonicWand::SaveKeyDemonicWand = "demonic-wand";
+const std::string DemonicWand::SaveKey = "demonic-wand";
 
 DemonicWand* DemonicWand::create()
 {
@@ -46,7 +46,7 @@ Item* DemonicWand::clone()
 
 std::string DemonicWand::getItemName()
 {
-	return DemonicWand::SaveKeyDemonicWand;
+	return DemonicWand::SaveKey;
 }
 
 LocalizedString* DemonicWand::getString()
@@ -61,7 +61,7 @@ std::string DemonicWand::getIconResource()
 
 std::string DemonicWand::getSerializationKey()
 {
-	return DemonicWand::SaveKeyDemonicWand;
+	return DemonicWand::SaveKey;
 }
 
 Vec2 DemonicWand::getDisplayOffset()

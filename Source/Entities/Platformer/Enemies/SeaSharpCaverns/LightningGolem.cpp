@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string LightningGolem::MapKeyLightningGolem = "lightning-golem";
+const std::string LightningGolem::MapKey = "lightning-golem";
 HexusOpponentData* LightningGolem::HexusOpponentDataInstance = nullptr;
 const std::string LightningGolem::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_LIGHTNING_GOLEM";
 
@@ -31,7 +31,7 @@ LightningGolem* LightningGolem::deserialize(ValueMap& properties)
 }
 
 LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
-	LightningGolem::MapKeyLightningGolem,
+	LightningGolem::MapKey,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Animations,
 	EntityResources::Enemies_SeaSharpCaverns_LightningGolem_Emblem,
 	Size(768.0f, 840.0f),

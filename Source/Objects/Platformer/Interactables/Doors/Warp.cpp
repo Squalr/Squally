@@ -19,7 +19,7 @@
 
 using namespace cocos2d;
 
-const std::string Warp::MapKeyWarp = "warp";
+const std::string Warp::MapKey = "warp";
 const std::string Warp::MapKeyWarpFrom = "from";
 const std::string Warp::MapKeyWarpTo = "to";
 const std::string Warp::EventWarpToPrefix = "EVENT_WARP_TO_";
@@ -62,7 +62,7 @@ void Warp::initializeListeners()
 		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
 		{
 			PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(squally, this->getPosition()));
-		}), Squally::MapKeySqually);
+		}), Squally::MapKey);
 	});
 }
 

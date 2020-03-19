@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string CrystalBow::SaveKeyCrystalBow = "crystal-bow";
+const std::string CrystalBow::SaveKey = "crystal-bow";
 
 CrystalBow* CrystalBow::create()
 {
@@ -46,7 +46,7 @@ Item* CrystalBow::clone()
 
 std::string CrystalBow::getItemName()
 {
-	return CrystalBow::SaveKeyCrystalBow;
+	return CrystalBow::SaveKey;
 }
 
 LocalizedString* CrystalBow::getString()
@@ -61,7 +61,7 @@ std::string CrystalBow::getIconResource()
 
 std::string CrystalBow::getSerializationKey()
 {
-	return CrystalBow::SaveKeyCrystalBow;
+	return CrystalBow::SaveKey;
 }
 
 Vec2 CrystalBow::getDisplayOffset()

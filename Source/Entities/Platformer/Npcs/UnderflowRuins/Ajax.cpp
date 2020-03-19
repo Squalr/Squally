@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Ajax::MapKeyAjax = "ajax";
+const std::string Ajax::MapKey = "ajax";
 HexusOpponentData* Ajax::HexusOpponentDataInstance = nullptr;
 const std::string Ajax::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_AJAX";
 
@@ -31,7 +31,7 @@ Ajax* Ajax::deserialize(ValueMap& properties)
 }
 
 Ajax::Ajax(ValueMap& properties) : super(properties,
-	Ajax::MapKeyAjax,
+	Ajax::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Animations,
 	EntityResources::Npcs_UnderflowRuins_Ajax_Emblem,
 	Size(112.0f, 160.0f),

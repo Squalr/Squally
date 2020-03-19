@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string EnemyCombatCollisionBehavior::MapKeyAttachedBehavior = "enemy-combat-collisions";
+const std::string EnemyCombatCollisionBehavior::MapKey = "enemy-combat-collisions";
 
 EnemyCombatCollisionBehavior* EnemyCombatCollisionBehavior::create(GameObject* owner)
 {

@@ -7,7 +7,7 @@ class OrcSwordsmanCombatBehavior : public EntityCombatBehaviorBase
 public:
 	static OrcSwordsmanCombatBehavior* create(GameObject* owner);
 
-	static const std::string MapKeyAttachedBehavior;
+	static const std::string MapKey;
 
 protected:
 	OrcSwordsmanCombatBehavior(GameObject* owner);

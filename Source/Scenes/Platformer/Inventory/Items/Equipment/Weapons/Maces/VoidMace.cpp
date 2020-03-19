@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidMace::SaveKeyVoidMace = "void-mace";
+const std::string VoidMace::SaveKey = "void-mace";
 
 VoidMace* VoidMace::create()
 {
@@ -46,7 +46,7 @@ Item* VoidMace::clone()
 
 std::string VoidMace::getItemName()
 {
-	return VoidMace::SaveKeyVoidMace;
+	return VoidMace::SaveKey;
 }
 
 LocalizedString* VoidMace::getString()
@@ -61,7 +61,7 @@ std::string VoidMace::getIconResource()
 
 std::string VoidMace::getSerializationKey()
 {
-	return VoidMace::SaveKeyVoidMace;
+	return VoidMace::SaveKey;
 }
 
 Vec2 VoidMace::getDisplayOffset()

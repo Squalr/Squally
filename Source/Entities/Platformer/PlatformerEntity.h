@@ -50,7 +50,7 @@ public:
 	ControlState controlStateOverride;
 
 	static const std::string PlatformerEntityTag;
-	static const std::string MapKeyBattleAttachedBehavior;
+	static const std::string PropertyBattleBehavior;
 
 protected:
 	PlatformerEntity(
@@ -78,7 +78,7 @@ protected:
 
 	HexusOpponentData* hexusOpponentData;
 
-	static const std::string MapKeyPropertyState;
+	static const std::string PropertyState;
 
 private:
 	typedef HackableObject super;

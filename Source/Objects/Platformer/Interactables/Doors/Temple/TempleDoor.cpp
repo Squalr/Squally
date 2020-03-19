@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string TempleDoor::MapKeyTempleDoor = "temple-door";
+const std::string TempleDoor::MapKey = "temple-door";
 const std::string TempleDoor::MapKeyColor = "color";
 const float TempleDoor::DoorOpenDelta = 320.0f;
 const std::string TempleDoor::UnlockedSaveKey = "TEMPLE_DOOR_UNLOCKED";

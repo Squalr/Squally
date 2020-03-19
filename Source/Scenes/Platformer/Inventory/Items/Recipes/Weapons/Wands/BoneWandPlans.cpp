@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string BoneWandPlans::SaveKeyBoneWandPlans = "bone-wand-plans";
+const std::string BoneWandPlans::SaveKey = "bone-wand-plans";
 
 BoneWandPlans* BoneWandPlans::create()
 {
@@ -51,7 +51,7 @@ Item* BoneWandPlans::clone()
 
 std::string BoneWandPlans::getItemName()
 {
-	return BoneWandPlans::SaveKeyBoneWandPlans;
+	return BoneWandPlans::SaveKey;
 }
 
 LocalizedString* BoneWandPlans::getString()
@@ -71,5 +71,5 @@ std::string BoneWandPlans::getCraftedItemIconResource()
 
 std::string BoneWandPlans::getSerializationKey()
 {
-	return BoneWandPlans::SaveKeyBoneWandPlans;
+	return BoneWandPlans::SaveKey;
 }

@@ -16,11 +16,11 @@
 
 using namespace cocos2d;
 
-const std::string LevelNode::MapKeyLevelNode = "level-node";
-const std::string LevelNode::MapKeyMapFile = "map-file";
-const std::string LevelNode::MapKeyLevelIndex = "level-index";
-const std::string LevelNode::MapKeyGroupIndex = "group-index";
-const std::string LevelNode::MapKeyGroupFinale = "group-finale";
+const std::string LevelNode::MapKey = "level-node";
+const std::string LevelNode::PropertyMapFile = "map-file";
+const std::string LevelNode::PropertyLevelIndex = "level-index";
+const std::string LevelNode::PropertyGroupIndex = "group-index";
+const std::string LevelNode::PropertyGroupFinale = "group-finale";
 const std::string LevelNode::SaveKeyPrefix = "POINTER_TRACE_LEVEL_";
 
 LevelNode* LevelNode::create(const cocos2d::ValueMap& properties)
@@ -34,10 +34,10 @@ LevelNode* LevelNode::create(const cocos2d::ValueMap& properties)
 
 LevelNode::LevelNode(const cocos2d::ValueMap& properties) : super(properties)
 {
-	this->nodeMapFile = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyMapFile, Value("")).asString();
-	this->levelIndex = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyLevelIndex, Value(0)).asInt();
-	this->groupIndex = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyGroupIndex, Value(0)).asInt();
-	this->isGroupFinale = GameUtils::getKeyOrDefault(this->properties, LevelNode::MapKeyGroupFinale, Value(false)).asBool();
+	this->nodeMapFile = GameUtils::getKeyOrDefault(this->properties, LevelNode::PropertyMapFile, Value("")).asString();
+	this->levelIndex = GameUtils::getKeyOrDefault(this->properties, LevelNode::PropertyLevelIndex, Value(0)).asInt();
+	this->groupIndex = GameUtils::getKeyOrDefault(this->properties, LevelNode::PropertyGroupIndex, Value(0)).asInt();
+	this->isGroupFinale = GameUtils::getKeyOrDefault(this->properties, LevelNode::PropertyGroupFinale, Value(false)).asBool();
 	this->disabledSprite = Sprite::create(UIResources::Menus_WorldMap_MarkerCompleted);
 	this->sprite = ClickableNode::create(UIResources::Menus_WorldMap_MarkerCurrent, UIResources::Menus_WorldMap_MarkerCurrentSelected);
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::M3, ConstantString::create(std::to_string(this->levelIndex)));

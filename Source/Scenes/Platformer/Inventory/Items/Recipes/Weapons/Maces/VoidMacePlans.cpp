@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string VoidMacePlans::SaveKeyVoidMacePlans = "void-mace-plans";
+const std::string VoidMacePlans::SaveKey = "void-mace-plans";
 
 VoidMacePlans* VoidMacePlans::create()
 {
@@ -52,7 +52,7 @@ Item* VoidMacePlans::clone()
 
 std::string VoidMacePlans::getItemName()
 {
-	return VoidMacePlans::SaveKeyVoidMacePlans;
+	return VoidMacePlans::SaveKey;
 }
 
 LocalizedString* VoidMacePlans::getString()
@@ -72,5 +72,5 @@ std::string VoidMacePlans::getCraftedItemIconResource()
 
 std::string VoidMacePlans::getSerializationKey()
 {
-	return VoidMacePlans::SaveKeyVoidMacePlans;
+	return VoidMacePlans::SaveKey;
 }

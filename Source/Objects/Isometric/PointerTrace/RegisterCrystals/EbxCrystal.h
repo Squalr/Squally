@@ -12,11 +12,11 @@ class EbxCrystal : public RegisterCrystal
 public:
 	static EbxCrystal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEbxCrystal;
+	static const std::string MapKey;
 
 protected:
 	EbxCrystal(cocos2d::ValueMap& properties);
-	~EbxCrystal();
+	virtual ~EbxCrystal();
 
 	void onEnter() override;
 	void initializePositions() override;

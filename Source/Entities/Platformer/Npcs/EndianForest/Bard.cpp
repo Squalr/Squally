@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Bard::MapKeyBard = "bard";
+const std::string Bard::MapKey = "bard";
 HexusOpponentData* Bard::HexusOpponentDataInstance = nullptr;
 const std::string Bard::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_BARD";
 
@@ -31,7 +31,7 @@ Bard* Bard::deserialize(ValueMap& properties)
 }
 
 Bard::Bard(ValueMap& properties) : super(properties,
-	Bard::MapKeyBard,
+	Bard::MapKey,
 	EntityResources::Npcs_EndianForest_Bard_Animations,
 	EntityResources::Npcs_EndianForest_Bard_Emblem,
 	Size(112.0f, 160.0f),

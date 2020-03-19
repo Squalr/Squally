@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string PrincessOpal::MapKeyPrincessOpal = "princess-opal";
+const std::string PrincessOpal::MapKey = "princess-opal";
 HexusOpponentData* PrincessOpal::HexusOpponentDataInstance = nullptr;
 const std::string PrincessOpal::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_PRINCESS_OPAL";
 
@@ -31,7 +31,7 @@ PrincessOpal* PrincessOpal::deserialize(ValueMap& properties)
 }
 
 PrincessOpal::PrincessOpal(ValueMap& properties) : super(properties,
-	PrincessOpal::MapKeyPrincessOpal,
+	PrincessOpal::MapKey,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Animations,
 	EntityResources::Npcs_CastleValgrind_PrincessOpal_Emblem,
 	Size(112.0f, 160.0f),

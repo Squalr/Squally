@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Angel::MapKeyAngel = "angel";
+const std::string Angel::MapKey = "angel";
 HexusOpponentData* Angel::HexusOpponentDataInstance = nullptr;
 const std::string Angel::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ANGEL";
 
@@ -31,7 +31,7 @@ Angel* Angel::deserialize(ValueMap& properties)
 }
 
 Angel::Angel(ValueMap& properties) : super(properties,
-	Angel::MapKeyAngel,
+	Angel::MapKey,
 	EntityResources::Npcs_UnderflowRuins_Angel_Animations,
 	EntityResources::Npcs_UnderflowRuins_Angel_Emblem,
 	Size(112.0f, 160.0f),

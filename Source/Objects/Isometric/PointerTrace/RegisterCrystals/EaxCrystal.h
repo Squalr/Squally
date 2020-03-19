@@ -12,11 +12,11 @@ class EaxCrystal : public RegisterCrystal
 public:
 	static EaxCrystal* create(cocos2d::ValueMap& properties);
 
-	static const std::string MapKeyEaxCrystal;
+	static const std::string MapKey;
 
 protected:
 	EaxCrystal(cocos2d::ValueMap& properties);
-	~EaxCrystal();
+	virtual ~EaxCrystal();
 
 	void onEnter() override;
 	void initializePositions() override;

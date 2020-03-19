@@ -37,7 +37,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_GEM_BLUE 2
 #define LOCAL_FUNC_ID_GEM_PURPLE 3
 
-const std::string MayanDoor::MapKeyMayanDoor = "mayan-door";
+const std::string MayanDoor::MapKey = "mayan-door";
 const float MayanDoor::DoorOpenDelta = 420.0f;
 const std::string MayanDoor::EventMayanDoorUnlock = "mayan-door-unlock";
 const std::string MayanDoor::SaveKeyRedGem = "SAVE_KEY_RED_GEM";
@@ -106,7 +106,7 @@ void MayanDoor::onEnter()
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
-	}, Squally::MapKeySqually);
+	}, Squally::MapKey);
 }
 
 void MayanDoor::initializePositions()

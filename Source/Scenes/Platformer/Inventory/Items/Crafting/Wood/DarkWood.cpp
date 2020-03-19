@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string DarkWood::SaveKeyDarkWood = "dark-wood";
+const std::string DarkWood::SaveKey = "dark-wood";
 
 DarkWood* DarkWood::create()
 {
@@ -35,7 +35,7 @@ Item* DarkWood::clone()
 
 std::string DarkWood::getItemName()
 {
-	return DarkWood::SaveKeyDarkWood;
+	return DarkWood::SaveKey;
 }
 
 LocalizedString* DarkWood::getString()
@@ -50,5 +50,5 @@ std::string DarkWood::getIconResource()
 
 std::string DarkWood::getSerializationKey()
 {
-	return DarkWood::SaveKeyDarkWood;
+	return DarkWood::SaveKey;
 }

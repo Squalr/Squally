@@ -8,7 +8,7 @@
 
 using namespace cocos2d;
 
-const std::string OrcBomber::MapKeyOrcBomber = "orc-bomber";
+const std::string OrcBomber::MapKey = "orc-bomber";
 
 OrcBomber* OrcBomber::deserialize(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ OrcBomber* OrcBomber::deserialize(ValueMap& properties)
 }
 
 OrcBomber::OrcBomber(ValueMap& properties) : super(properties,
-	OrcBomber::MapKeyOrcBomber,
+	OrcBomber::MapKey,
 	EntityResources::Enemies_EndianForest_OrcBomber_Animations,
 	EntityResources::Enemies_EndianForest_OrcBomber_Emblem,
 	Size(256.0f, 218.0f),

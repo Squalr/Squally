@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string FirePortal::MapKeyFirePortal = "fire-portal";
+const std::string FirePortal::MapKey = "fire-portal";
 
 FirePortal* FirePortal::create(ValueMap& properties)
 {

@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string FrostTexture::MapKeyTextureType = "frost";
+const std::string FrostTexture::MapKey = "frost";
 
 FrostTexture* FrostTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ FrostTexture* FrostTexture::create(ValueMap& properties)
 FrostTexture::FrostTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		FrostTexture::MapKeyTextureType,
+		FrostTexture::MapKey,
 		TextureResources::FrostTexture,
 		Color4B(11, 30, 39, 255)))
 {

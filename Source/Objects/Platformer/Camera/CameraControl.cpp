@@ -14,8 +14,8 @@
 
 using namespace cocos2d;
 
-const std::string CameraControl::MapKeyCameraControl = "camera-control";
-const std::string CameraControl::MapPropertyTarget = "target";
+const std::string CameraControl::MapKey = "camera-control";
+const std::string CameraControl::PropertyTarget = "target";
 
 CameraControl* CameraControl::create(ValueMap& properties)
 {
@@ -29,7 +29,7 @@ CameraControl* CameraControl::create(ValueMap& properties)
 CameraControl::CameraControl(ValueMap& properties) : super(properties)
 {
 	Size controlSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
-	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::MapPropertyTarget, Value("")).asString();
+	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::PropertyTarget, Value("")).asString();
 	this->controlCollision = CollisionObject::create(CollisionObject::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->cameraTarget = nullptr;
 

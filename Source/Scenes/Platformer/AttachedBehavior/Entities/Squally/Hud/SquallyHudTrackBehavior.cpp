@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string SquallyHudTrackBehavior::MapKeyAttachedBehavior = "squally-hud-track";
+const std::string SquallyHudTrackBehavior::MapKey = "squally-hud-track";
 
 SquallyHudTrackBehavior* SquallyHudTrackBehavior::create(GameObject* owner)
 {

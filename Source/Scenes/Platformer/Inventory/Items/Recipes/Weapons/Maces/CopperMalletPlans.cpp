@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string CopperMalletPlans::SaveKeyCopperMalletPlans = "copper-mallet-plans";
+const std::string CopperMalletPlans::SaveKey = "copper-mallet-plans";
 
 CopperMalletPlans* CopperMalletPlans::create()
 {
@@ -51,7 +51,7 @@ Item* CopperMalletPlans::clone()
 
 std::string CopperMalletPlans::getItemName()
 {
-	return CopperMalletPlans::SaveKeyCopperMalletPlans;
+	return CopperMalletPlans::SaveKey;
 }
 
 LocalizedString* CopperMalletPlans::getString()
@@ -71,5 +71,5 @@ std::string CopperMalletPlans::getCraftedItemIconResource()
 
 std::string CopperMalletPlans::getSerializationKey()
 {
-	return CopperMalletPlans::SaveKeyCopperMalletPlans;
+	return CopperMalletPlans::SaveKey;
 }

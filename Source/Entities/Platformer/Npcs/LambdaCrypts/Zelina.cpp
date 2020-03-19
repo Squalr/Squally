@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string Zelina::MapKeyZelina = "zelina";
+const std::string Zelina::MapKey = "zelina";
 HexusOpponentData* Zelina::HexusOpponentDataInstance = nullptr;
 const std::string Zelina::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_ZELINA";
 
@@ -31,7 +31,7 @@ Zelina* Zelina::deserialize(ValueMap& properties)
 }
 
 Zelina::Zelina(ValueMap& properties) : super(properties,
-	Zelina::MapKeyZelina,
+	Zelina::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
 	Size(112.0f, 160.0f),

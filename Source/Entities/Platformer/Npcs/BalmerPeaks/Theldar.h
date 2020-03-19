@@ -15,12 +15,14 @@ public:
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();
 
-	static const std::string MapKeyTheldar;
+	static const std::string MapKey;
+
+protected:
+	Theldar(cocos2d::ValueMap& properties);
+	virtual ~Theldar();
 
 private:
 	typedef PlatformerFriendly super;
-	Theldar(cocos2d::ValueMap& properties);
-	~Theldar();
 
 	static HexusOpponentData* HexusOpponentDataInstance;
 	static const std::string HexusSaveKey;

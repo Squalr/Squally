@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DemonDragon::MapKeyDemonDragon = "demon-dragon";
+const std::string DemonDragon::MapKey = "demon-dragon";
 HexusOpponentData* DemonDragon::HexusOpponentDataInstance = nullptr;
 const std::string DemonDragon::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_DEMON_DRAGON";
 
@@ -31,7 +31,7 @@ DemonDragon* DemonDragon::deserialize(ValueMap& properties)
 }
 
 DemonDragon::DemonDragon(ValueMap& properties) : super(properties,
-	DemonDragon::MapKeyDemonDragon,
+	DemonDragon::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
 	Size(340.0f, 360.0f),

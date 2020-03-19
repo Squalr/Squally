@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-const std::string RobinHexusBehavior::MapKeyAttachedBehavior = "robin-hexus";
+const std::string RobinHexusBehavior::MapKey = "robin-hexus";
 
 RobinHexusBehavior* RobinHexusBehavior::create(GameObject* owner)
 {
@@ -40,7 +40,7 @@ MinMaxPool* RobinHexusBehavior::generateReward()
 
 std::string RobinHexusBehavior::getWinLossSaveKey()
 {
-	return RobinHexusBehavior::MapKeyAttachedBehavior;
+	return RobinHexusBehavior::MapKey;
 }
 
 std::string RobinHexusBehavior::getBackgroundResource()

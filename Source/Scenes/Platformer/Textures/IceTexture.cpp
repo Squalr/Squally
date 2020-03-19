@@ -6,7 +6,7 @@
 
 using namespace cocos2d;
 
-const std::string IceTexture::MapKeyTextureType = "ice";
+const std::string IceTexture::MapKey = "ice";
 
 IceTexture* IceTexture::create(ValueMap& properties)
 {
@@ -20,7 +20,7 @@ IceTexture* IceTexture::create(ValueMap& properties)
 IceTexture::IceTexture(ValueMap& properties) : super(
 	properties,
 	TextureObject::TextureData(
-		IceTexture::MapKeyTextureType,
+		IceTexture::MapKey,
 		TextureResources::IceTexture,
 		Color4B(11, 30, 39, 255)))
 {

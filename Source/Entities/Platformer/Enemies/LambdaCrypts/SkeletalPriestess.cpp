@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string SkeletalPriestess::MapKeySkeletalPriestess = "skeletal-priestess";
+const std::string SkeletalPriestess::MapKey = "skeletal-priestess";
 HexusOpponentData* SkeletalPriestess::HexusOpponentDataInstance = nullptr;
 const std::string SkeletalPriestess::HexusSaveKey = "HEXUS_OPPONENT_SAVE_KEY_SKELETAL_PRIESTESS";
 
@@ -31,7 +31,7 @@ SkeletalPriestess* SkeletalPriestess::deserialize(ValueMap& properties)
 }
 
 SkeletalPriestess::SkeletalPriestess(ValueMap& properties) : super(properties,
-	SkeletalPriestess::MapKeySkeletalPriestess,
+	SkeletalPriestess::MapKey,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalPriestess_Emblem,
 	Size(196.0f, 312.0f),

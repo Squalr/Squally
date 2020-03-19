@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string BucketHelm::SaveKeyBucketHelm = "bucket-helm";
+const std::string BucketHelm::SaveKey = "bucket-helm";
 
 BucketHelm* BucketHelm::create()
 {
@@ -46,7 +46,7 @@ Item* BucketHelm::clone()
 
 std::string BucketHelm::getItemName()
 {
-	return BucketHelm::SaveKeyBucketHelm;
+	return BucketHelm::SaveKey;
 }
 
 LocalizedString* BucketHelm::getString()
@@ -61,7 +61,7 @@ std::string BucketHelm::getIconResource()
 
 std::string BucketHelm::getSerializationKey()
 {
-	return BucketHelm::SaveKeyBucketHelm;
+	return BucketHelm::SaveKey;
 }
 
 Vec2 BucketHelm::getDisplayOffset()
