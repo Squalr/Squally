@@ -289,14 +289,16 @@
   </properties>
   <object id="692" name="queen-liana" type="entity" x="2704.53" y="1060.38" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="attached-behavior" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="talk-to-queen,return-to-queen"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
   <object id="751" name="elriel" type="entity" x="2363.54" y="1061.87" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,face-squally,elriel-hexus"/>
+    <property name="attached-behavior" value="friendly,face-squally,elriel-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
  </objectgroup>

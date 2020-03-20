@@ -20,7 +20,7 @@
 
 #include "Strings/Strings.h"
 
-const int NotificationHud::SlotCount = 6;
+const int NotificationHud::SlotCount = 12;
 const float NotificationHud::FadeInDuration = 0.35f;
 const float NotificationHud::SustainDuration = 4.0f;
 const float NotificationHud::FadeOutDuration = 0.5f;
@@ -125,7 +125,7 @@ void NotificationHud::initializeListeners()
 		
 		if (args != nullptr)
 		{
-			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource);
+			this->pushNotification(args->title, args->description, args->iconResource, args->soundResource, args->keepOpen);
 		}
 	}));
 
@@ -175,15 +175,31 @@ void NotificationHud::update(float dt)
 				static const Size visibleSize = Director::getInstance()->getVisibleSize();
 				static const Vec2 LeftPositionBase = Vec2(256.0f, 128.0f);
 				static const Vec2 RightPositionBase = Vec2(visibleSize.width - 256.0f, 128.0f);
+				int halfCount = int(this->slotCooldowns.size() / 2);
+				Vec2 basePosition = index < halfCount ? RightPositionBase : LeftPositionBase;
 
-				notification->setPosition(RightPositionBase + Vec2(0.0f, float(index) * 160.0f));
+				notification->setPosition(basePosition + Vec2(0.0f, float(index % halfCount) * 160.0f));
 				
-				notification->runAction(Sequence::create(
-					FadeTo::create(FadeInDuration, 255),
-					DelayTime::create(SustainDuration),
-					FadeTo::create(FadeOutDuration, 0),
-					nullptr
-				));
+				if (bool(notification->getTag()))
+				{
+					// Slight hack. If the keep open flag is set on the object, just never hide the notification.
+					// This is used in situations like combat, where we do not expect to exhaust the full # of possible notifications shown,
+					// So keeping them always visible is fine. This HUD will get disposed when they leave combat anyhow.
+					notification->runAction(Sequence::create(
+						FadeTo::create(FadeInDuration, 255),
+						DelayTime::create(SustainDuration),
+						nullptr
+					));
+				}
+				else
+				{
+					notification->runAction(Sequence::create(
+						FadeTo::create(FadeInDuration, 255),
+						DelayTime::create(SustainDuration),
+						FadeTo::create(FadeOutDuration, 0),
+						nullptr
+					));
+				}
 
 				this->slotCooldowns[index] = 0.0f;
 			}
@@ -207,7 +223,7 @@ void NotificationHud::showNotificationTakeover(LocalizedString* title, Localized
 	}
 }
 
-void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
+void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen)
 {
 	Node* notification = Node::create();
 	Sprite* itemFrame = Sprite::create(UIResources::Menus_NotificationMenu_NotificationFrame);
@@ -222,7 +238,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 
 	notificationIcon->setPosition(Vec2(-144.0f, 0.0f));
 	descriptionLabel->setPosition(Vec2(32.0f, 0.0f));
-	titleLabel->setPosition(Vec2(0.0f, 96.0f));
+	titleLabel->setPosition(Vec2(0.0f, 72.0f));
 
 	notification->setOpacity(0);
 
@@ -236,6 +252,8 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	{
 		this->notificationSound->play();
 	}
+
+	notification->setTag(int(keepOpen));
 
 	this->toProcess.push(notification);
 }

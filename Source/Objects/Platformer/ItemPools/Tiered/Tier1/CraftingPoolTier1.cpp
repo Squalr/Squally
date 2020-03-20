@@ -18,18 +18,17 @@ CraftingPoolTier1* CraftingPoolTier1::create(SampleMethod sampleMethod, int min,
 
 CraftingPoolTier1::CraftingPoolTier1(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "crafting-pool-t1", sampleMethod, min, max)
 {
-	// Gems
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Epic));
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
+	// Alchemy
+	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Reasonable));
 
-	// Metals
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Uncommon));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Epic));
-
-	// Materials
+	// Smithing
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Rare));
 }
 
 CraftingPoolTier1::~CraftingPoolTier1()

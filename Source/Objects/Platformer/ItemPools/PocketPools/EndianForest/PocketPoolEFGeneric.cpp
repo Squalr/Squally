@@ -27,7 +27,7 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 }
 
 PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 1, 1) })
+	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
 {
 }
 

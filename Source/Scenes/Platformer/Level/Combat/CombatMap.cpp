@@ -206,7 +206,7 @@ void CombatMap::initializeListeners()
 				CombatEvents::TriggerGiveExp();
 
 				this->runAction(Sequence::create(
-					DelayTime::create(3.5f),
+					DelayTime::create(1.5f),
 					CallFunc::create([=]()
 					{
 						CombatEvents::TriggerGiveRewards();

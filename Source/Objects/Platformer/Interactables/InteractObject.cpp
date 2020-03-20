@@ -117,7 +117,20 @@ void InteractObject::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
 	{
-		this->tryInteractObject();
+		switch(this->interactType)
+		{
+			case InteractType::Input:
+			{
+				this->tryInteractObject();
+				break;
+			}
+			case InteractType::None:
+			case InteractType::Collision:
+			default:
+			{
+				break;
+			}
+		}
 	});
 }
 

@@ -62,18 +62,6 @@ void EntityHealthBehavior::onLoad()
 	{
 		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 	});
-
-	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-	{
-		if (value.asBool())
-		{
-			this->revive();
-		}
-		else
-		{
-			this->kill(false);
-		}
-	});
 }
 
 void EntityHealthBehavior::onDisable()

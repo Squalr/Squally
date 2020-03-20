@@ -33,9 +33,10 @@ public:
 		LocalizedString* description;
 		std::string iconResource;
 		std::string soundResource;
+		bool keepOpen;
 
-		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
-			: title(title), description(description), iconResource(iconResource), soundResource(soundResource)
+		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen = false)
+			: title(title), description(description), iconResource(iconResource), soundResource(soundResource), keepOpen(keepOpen)
 		{
 		}
 	};

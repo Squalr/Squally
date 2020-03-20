@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="840">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="841">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -153,8 +153,8 @@
   <object id="805" name="blue-grass" type="terrain" x="6382" y="222">
    <polygon points="7973.06,5228.97 1086.01,5229.36 1091.93,2248 988.017,2034.56 773.812,1966.75 241.908,1940.48 -210.417,1992.35 -208.78,1892.73 228.602,1786.73 1242,1678.03 2037.99,1789.11 2898,1784.75 3765.08,2199.7 4590.62,2775.09 5366.43,3518 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4"/>
   </object>
-  <object id="811" name="blue-grass" type="terrain" x="11655.8" y="1897.77">
-   <polygon points="651.47,1359.08 312.133,1275.41 34.7012,1111.81 -10.2366,878.236 32.8401,632.424 970.196,643.337 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
+  <object id="811" name="blue-grass" type="terrain" x="11657.8" y="1961.77">
+   <polygon points="651.47,1359.08 312.133,1275.41 34.7012,1111.81 -10.2366,878.236 32.8401,632.424 970.196,633.337 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
   </object>
   <object id="812" name="blue-grass" type="terrain" x="13282.9" y="1349.97">
    <polygon points="760.85,2549.11 223.608,2491.8 22.2118,1633.28 95.5581,825.772 -46.5197,643.653 -391.877,604.581 -389.598,386.92 -19.3093,267.511 262.973,90.025 1291.52,82.1046 1296.61,2569.23"/>
@@ -234,7 +234,7 @@
    </properties>
   </object>
   <object id="817" name="iou" type="object" x="7271.17" y="4726.32" width="87" height="87"/>
-  <object id="818" name="iou" type="object" x="12285.5" y="2448.5" width="87" height="87"/>
+  <object id="818" name="iou" type="object" x="12285.5" y="2508.5" width="87" height="87"/>
   <object id="819" name="edge-portal" type="object" x="14145.6" y="795.696" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -251,7 +251,7 @@
   <object id="822" name="cipher-chest" type="object" x="1624" y="1912" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
-    <property name="inputs" value="l,o,c,k,e,d"/>
+    <property name="inputs" value="l,o,c,k"/>
     <property name="reward-pool" value="ef-generic"/>
     <property name="rule" value="{i}+1"/>
     <property name="tokens" value="+,1"/>
@@ -259,8 +259,8 @@
    </properties>
   </object>
   <object id="823" name="life-stone" type="object" x="4175" y="1624.5" width="146" height="423"/>
-  <object id="824" name="solid-npc" type="collision" x="11583.5" y="1903.08" width="121.03" height="777.836"/>
-  <object id="825" name="solid-npc" type="collision" x="12595.5" y="1903.08" width="121.03" height="777.836"/>
+  <object id="824" name="solid-npc" type="collision" x="11585.5" y="1967.08" width="121.03" height="777.836"/>
+  <object id="825" name="solid-npc" type="collision" x="12597.5" y="1967.08" width="121.03" height="777.836"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -272,7 +272,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="727" name="orc-grunt" type="entity" x="12099.2" y="2408.74" width="128" height="128">
+  <object id="727" name="orc-grunt" type="entity" x="12099.2" y="2468.74" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,disarmed,puzzle-A"/>
     <property name="scale" type="float" value="0.75"/>
@@ -301,6 +301,13 @@
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
     <property name="battle-tag" value="group-b"/>
     <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="840" name="orc-swordsman" type="entity" x="8811.76" y="1608.73" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
    </properties>
   </object>
  </objectgroup>

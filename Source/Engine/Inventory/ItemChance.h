@@ -11,12 +11,28 @@ class ItemChance : public SmartNode
 public:
 	enum class Probability
 	{
+		// 100%
 		Guaranteed,
+
+		// 75%
 		VeryCommon,
+
+		// 50%
 		Common,
+
+		// 25%
+		Reasonable,
+
+		// 15%
 		Uncommon,
+
+		// 8%
 		Rare,
+
+		// 4%
 		Epic,
+
+		// 1%
 		Legendary,
 	};
 

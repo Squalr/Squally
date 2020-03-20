@@ -112,41 +112,50 @@ public:
 	{
 		MinMaxPool* pool;
 		LocalizedString* messageOverride;
+		bool keepOpen;
 
-		GiveItemsFromPoolArgs(MinMaxPool* pool, LocalizedString* messageOverride = nullptr) : pool(pool), messageOverride(messageOverride) { }
+		GiveItemsFromPoolArgs(MinMaxPool* pool, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: pool(pool), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct GiveItemArgs
 	{
 		Item* item;
 		LocalizedString* messageOverride;
+		bool keepOpen;
 
-		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
+		GiveItemArgs(Item* item, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: item(item), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct ItemDiscoveryArgs
 	{
 		Item* item;
 		LocalizedString* messageOverride;
+		bool keepOpen;
 
-		ItemDiscoveryArgs(Item* item, LocalizedString* messageOverride = nullptr) : item(item), messageOverride(messageOverride) { }
+		ItemDiscoveryArgs(Item* item, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: item(item), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct GiveCurrenciesFromPoolArgs
 	{
 		CurrencyPool* pool;
 		LocalizedString* messageOverride;
+		bool keepOpen;
 
-		GiveCurrenciesFromPoolArgs(CurrencyPool* pool, LocalizedString* messageOverride = nullptr) : pool(pool), messageOverride(messageOverride) { }
+		GiveCurrenciesFromPoolArgs(CurrencyPool* pool, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: pool(pool), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct GiveCurrencyArgs
 	{
 		Currency* currency;
 		LocalizedString* messageOverride;
+		bool keepOpen;
 
-		GiveCurrencyArgs(Currency* currency, LocalizedString* messageOverride = nullptr)
-			: currency(currency), messageOverride(messageOverride) { }
+		GiveCurrencyArgs(Currency* currency, LocalizedString* messageOverride = nullptr, bool keepOpen = false)
+			: currency(currency), messageOverride(messageOverride), keepOpen(keepOpen) { }
 	};
 
 	struct DispelIllusionArgs

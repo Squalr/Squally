@@ -23,7 +23,7 @@ public:
 
 		BuffData() : duration(-1.0f), uniqueId("") { }
 		BuffData(float duration) : duration(duration), uniqueId("") { }
-		BuffData(std::string uniqueId) : uniqueId(uniqueId) { }
+		BuffData(std::string uniqueId) : duration(-1.0f), uniqueId(uniqueId) { }
 		BuffData(float duration, std::string uniqueId) : duration(duration), uniqueId(uniqueId) { }
 	};
 

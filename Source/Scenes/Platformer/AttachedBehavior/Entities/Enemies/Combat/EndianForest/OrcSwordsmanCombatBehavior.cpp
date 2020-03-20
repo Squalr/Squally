@@ -46,8 +46,8 @@ void OrcSwordsmanCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityCommon));
 		attackBehavior->registerAttack(ThrowWeapon::create(0.55f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::PriorityCommon));
+		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::PriorityUncommon));
 	});
 	
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)

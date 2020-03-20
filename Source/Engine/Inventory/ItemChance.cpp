@@ -91,8 +91,14 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
         }
         case Probability::Common:
         {
-            // 40%
-            chance = 0.40f;
+            // 50%
+            chance = 0.50f;
+            break;
+        }
+        case Probability::Reasonable:
+        {
+            // 25%
+            chance = 0.25f;
             break;
         }
         case Probability::Uncommon:
@@ -109,8 +115,8 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
         }
         case Probability::Epic:
         {
-            // 2%
-            chance = 0.02f;
+            // 4%
+            chance = 0.04f;
             break;
         }
         case Probability::Legendary:
