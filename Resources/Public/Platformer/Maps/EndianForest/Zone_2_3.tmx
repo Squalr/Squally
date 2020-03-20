@@ -106,8 +106,8 @@
   <object id="835" name="merlin" type="entity" x="1182.91" y="1061.94" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="friendly,face-squally"/>
-    <property name="quest" value="water-blessing"/>
-    <property name="quest-line" value="water-blessing"/>
+    <property name="quest" value="water-spellbook"/>
+    <property name="quest-line" value="water-spellbook"/>
    </properties>
   </object>
  </objectgroup>

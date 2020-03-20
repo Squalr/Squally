@@ -25,8 +25,9 @@ CraftingPoolTier1::CraftingPoolTier1(SampleMethod sampleMethod, int min, int max
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Reasonable));
 
 	// Smithing
-	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Uncommon));
 	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Rare));
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Rare));
 }

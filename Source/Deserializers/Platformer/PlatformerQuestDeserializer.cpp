@@ -32,8 +32,8 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[SailForRuinsLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SailForRuinsLine::create(); };
 	this->lineDeserializers[SaveTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SaveTownLine::create(); };
 	this->lineDeserializers[SneakIntoLianasHouseLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SneakIntoLianasHouseLine::create(); };
-	this->lineDeserializers[WaterBlessingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WaterBlessingLine::create(); };
-	this->lineDeserializers[WindBlessingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindBlessingLine::create(); };
+	this->lineDeserializers[WaterSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WaterSpellbookLine::create(); };
+	this->lineDeserializers[WindSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindSpellbookLine::create(); };
 
 	// UNDERFLOW RUINS QUESTS
 }
@@ -66,7 +66,7 @@ void PlatformerQuestDeserializer::deserializeProperties(GameObject* owner, Value
 		questLines.push_back(questLines.front());
 	}
 
-	for (int index = 0; index < questTasks.size(); index++)
+	for (int index = 0; index < int(questTasks.size()); index++)
 	{
 		QuestTask* quest = this->deserialize(QuestDeserializer::QuestDeserializationRequestArgs(owner, questLines[index], questTasks[index]));
 

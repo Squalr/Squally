@@ -7,5 +7,5 @@
 #include "Scenes/Platformer/Quests/EndianForest/SailForRuins/SailForRuinsLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/SaveTownLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/SneakIntoLianasHouse/SneakIntoLianasHouseLine.h"
-#include "Scenes/Platformer/Quests/EndianForest/WaterBlessing/WaterBlessingLine.h"
-#include "Scenes/Platformer/Quests/EndianForest/WindBlessing/WindBlessingLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/WaterSpellbook/WaterSpellbookLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/WindSpellbook/WindSpellbookLine.h"

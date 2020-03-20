@@ -860,8 +860,8 @@
     <property name="attached-behavior" value="marcel,friendly,pacing,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
-    <property name="quest" value="mages-guild,wind-blessing"/>
-    <property name="quest-line" value="hexus-gauntlet,wind-blessing"/>
+    <property name="quest" value="mages-guild,wind-spellbook"/>
+    <property name="quest-line" value="hexus-gauntlet,wind-spellbook"/>
    </properties>
   </object>
  </objectgroup>

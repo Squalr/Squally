@@ -17124,156 +17124,6 @@ namespace Strings
 		virtual ~Menus_Tutorials() = default;
 	};
 
-	class Platformer_Blessings_BlessingGranted : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingGranted* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingGranted();
-		virtual ~Platformer_Blessings_BlessingGranted() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfFire : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfFire* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfFire();
-		virtual ~Platformer_Blessings_BlessingOfFire() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfFrost : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfFrost* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfFrost();
-		virtual ~Platformer_Blessings_BlessingOfFrost() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfLight : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfLight* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfLight();
-		virtual ~Platformer_Blessings_BlessingOfLight() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfLightning : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfLightning* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfLightning();
-		virtual ~Platformer_Blessings_BlessingOfLightning() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfNature : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfNature* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfNature();
-		virtual ~Platformer_Blessings_BlessingOfNature() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfShadow : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfShadow* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfShadow();
-		virtual ~Platformer_Blessings_BlessingOfShadow() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfUndeath : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfUndeath* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfUndeath();
-		virtual ~Platformer_Blessings_BlessingOfUndeath() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfWater : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfWater* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfWater();
-		virtual ~Platformer_Blessings_BlessingOfWater() = default;
-	};
-
-	class Platformer_Blessings_BlessingOfWind : public LocalizedString
-	{
-	public:
-		static Platformer_Blessings_BlessingOfWind* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Blessings_BlessingOfWind();
-		virtual ~Platformer_Blessings_BlessingOfWind() = default;
-	};
-
 	class Platformer_Combat_Attack : public LocalizedString
 	{
 	public:
@@ -22929,10 +22779,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou : public LocalizedString
+	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou* create();
+		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22940,14 +22790,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou();
-		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_A_ThankYou() = default;
+		Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou();
+		virtual ~Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers : public LocalizedString
+	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers* create();
+		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22955,14 +22805,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers();
-		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_B_GraspPowers() = default;
+		Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers();
+		virtual ~Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing : public LocalizedString
+	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing* create();
+		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22970,14 +22820,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing();
-		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_C_GrantBlessing() = default;
+		Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing();
+		virtual ~Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers : public LocalizedString
+	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers* create();
+		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22985,14 +22835,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers();
-		virtual ~Platformer_Quests_EndianForest_WaterBlessing_Merlin_D_UseYourPowers() = default;
+		Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers();
+		virtual ~Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse : public LocalizedString
+	class Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse* create();
+		static Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23000,14 +22850,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse();
-		virtual ~Platformer_Quests_EndianForest_WindBlessing_Marcel_A_GoodUse() = default;
+		Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse();
+		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse() = default;
 	};
 
-	class Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent : public LocalizedString
+	class Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent* create();
+		static Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23015,8 +22865,158 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent();
-		virtual ~Platformer_Quests_EndianForest_WindBlessing_Marcel_B_Latent() = default;
+		Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent();
+		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookAcquired : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookAcquired* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookAcquired();
+		virtual ~Platformer_Spellbooks_SpellbookAcquired() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookFrost : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookFrost* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookFrost();
+		virtual ~Platformer_Spellbooks_SpellbookFrost() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookLight : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookLight* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookLight();
+		virtual ~Platformer_Spellbooks_SpellbookLight() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookLightning : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookLightning* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookLightning();
+		virtual ~Platformer_Spellbooks_SpellbookLightning() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookNature : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookNature* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookNature();
+		virtual ~Platformer_Spellbooks_SpellbookNature() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookOfFire : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookOfFire* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookOfFire();
+		virtual ~Platformer_Spellbooks_SpellbookOfFire() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookOfWater : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookOfWater* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookOfWater();
+		virtual ~Platformer_Spellbooks_SpellbookOfWater() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookOfWind : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookOfWind* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookOfWind();
+		virtual ~Platformer_Spellbooks_SpellbookOfWind() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookShadow : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookShadow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookShadow();
+		virtual ~Platformer_Spellbooks_SpellbookShadow() = default;
+	};
+
+	class Platformer_Spellbooks_SpellbookUndeath : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookUndeath* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookUndeath();
+		virtual ~Platformer_Spellbooks_SpellbookUndeath() = default;
 	};
 
 	class PointerTrace_Assembly_Add : public LocalizedString
