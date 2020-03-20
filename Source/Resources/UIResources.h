@@ -395,6 +395,7 @@ namespace UIResources
 	extern const std::string Menus_MinigamesMenu_BannerGray;
 	extern const std::string Menus_MinigamesMenu_BannerHover;
 	extern const std::string Menus_MusicOverlay_Note;
+	extern const std::string Menus_NotificationMenu_NotificationFrame;
 	extern const std::string Menus_OptionsMenu_CheckboxEmpty;
 	extern const std::string Menus_OptionsMenu_CheckboxHover;
 	extern const std::string Menus_OptionsMenu_CheckboxSelected;

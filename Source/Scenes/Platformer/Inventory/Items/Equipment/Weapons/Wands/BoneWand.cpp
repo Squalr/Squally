@@ -30,7 +30,7 @@ BoneWand::BoneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

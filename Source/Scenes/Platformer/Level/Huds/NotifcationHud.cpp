@@ -20,7 +20,11 @@
 
 #include "Strings/Strings.h"
 
-const int NotificationHud::SlotCount = 3;
+const int NotificationHud::SlotCount = 6;
+const float NotificationHud::FadeInDuration = 0.35f;
+const float NotificationHud::SustainDuration = 4.0f;
+const float NotificationHud::FadeOutDuration = 0.5f;
+const float NotificationHud::Cooldown = NotificationHud::FadeInDuration + NotificationHud::SustainDuration + NotificationHud::FadeOutDuration;
 
 using namespace cocos2d;
 
@@ -61,7 +65,7 @@ NotificationHud::NotificationHud()
 
 	for (int index = 0; index < NotificationHud::SlotCount; index++)
 	{
-		this->slotCooldowns.push_back(0.0f);
+		this->slotCooldowns.push_back(NotificationHud::Cooldown);
 	}
 
 	this->takeoverNode->addChild(this->backdrop);
@@ -91,7 +95,7 @@ void NotificationHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	static const Size visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->menuBack->setPosition(Vec2(0.0f, 0.0f));
@@ -99,7 +103,6 @@ void NotificationHud::initializePositions()
 	this->title->setPosition(Vec2(0.0f, 204.0f));
 	this->description->setPosition(Vec2(0.0f, 32.0f));
 	this->takeoverNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->notificationsNode->setPosition(Vec2(visibleSize.width - 256.0f, 128.0f));
 }
 
 void NotificationHud::initializeListeners()
@@ -157,13 +160,6 @@ void NotificationHud::initializeListeners()
 void NotificationHud::update(float dt)
 {
 	super::update(dt);
-	
-	const int SlotCount = 4;
-	const float OnsetDuration = 0.5f;
-	const float FadeInDuration = 0.35f;
-	const float SustainDuration = 2.0f;
-	const float FadeOutDuration = 0.5f;
-	const float Cooldown = FadeInDuration + SustainDuration + FadeOutDuration;
 
 	for (int index = 0; index < int(this->slotCooldowns.size()); index++)
 	{
@@ -176,7 +172,11 @@ void NotificationHud::update(float dt)
 				Node* notification = this->toProcess.front();
 				this->toProcess.pop();
 
-				notification->setPosition(Vec2(0.0f, float(index) * 256.0f));
+				static const Size visibleSize = Director::getInstance()->getVisibleSize();
+				static const Vec2 LeftPositionBase = Vec2(256.0f, 128.0f);
+				static const Vec2 RightPositionBase = Vec2(visibleSize.width - 256.0f, 128.0f);
+
+				notification->setPosition(RightPositionBase + Vec2(0.0f, float(index) * 160.0f));
 				
 				notification->runAction(Sequence::create(
 					FadeTo::create(FadeInDuration, 255),
@@ -200,13 +200,17 @@ void NotificationHud::showNotificationTakeover(LocalizedString* title, Localized
 	
 	this->previousFocus = GameUtils::getFocusedNode();
 	GameUtils::focus(this);
-	this->notificationSound->play();
+
+	if (!this->notificationSound->isPlaying())
+	{
+		this->notificationSound->play();
+	}
 }
 
 void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource)
 {
 	Node* notification = Node::create();
-	Sprite* itemFrame = Sprite::create(UIResources::Combat_ItemFrame);
+	Sprite* itemFrame = Sprite::create(UIResources::Menus_NotificationMenu_NotificationFrame);
 	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
 	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
@@ -216,8 +220,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	titleLabel->enableOutline(Color4B::BLACK, 2);
 	descriptionLabel->enableOutline(Color4B::BLACK, 2);
 
-	notificationIcon->setAnchorPoint(Vec2(0.0f, 0.5f));
-	notificationIcon->setPosition(Vec2(-160.0f, 0.0f));
+	notificationIcon->setPosition(Vec2(-144.0f, 0.0f));
 	descriptionLabel->setPosition(Vec2(32.0f, 0.0f));
 	titleLabel->setPosition(Vec2(0.0f, 96.0f));
 
@@ -228,7 +231,11 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	notification->addChild(descriptionLabel);
 	notification->addChild(titleLabel);
 	this->notificationsNode->addChild(notification);
-	this->notificationSound->play();
+
+	if (!this->notificationSound->isPlaying())
+	{
+		this->notificationSound->play();
+	}
 
 	this->toProcess.push(notification);
 }

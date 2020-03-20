@@ -394,6 +394,7 @@ const std::string UIResources::Menus_MinigamesMenu_Banner = "Private/UI/Menus/Mi
 const std::string UIResources::Menus_MinigamesMenu_BannerGray = "Private/UI/Menus/MinigamesMenu/BannerGray.png";
 const std::string UIResources::Menus_MinigamesMenu_BannerHover = "Private/UI/Menus/MinigamesMenu/BannerHover.png";
 const std::string UIResources::Menus_MusicOverlay_Note = "Private/UI/Menus/MusicOverlay/Note.png";
+const std::string UIResources::Menus_NotificationMenu_NotificationFrame = "Private/UI/Menus/NotificationMenu/NotificationFrame.png";
 const std::string UIResources::Menus_OptionsMenu_CheckboxEmpty = "Private/UI/Menus/OptionsMenu/CheckboxEmpty.png";
 const std::string UIResources::Menus_OptionsMenu_CheckboxHover = "Private/UI/Menus/OptionsMenu/CheckboxHover.png";
 const std::string UIResources::Menus_OptionsMenu_CheckboxSelected = "Private/UI/Menus/OptionsMenu/CheckboxSelected.png";

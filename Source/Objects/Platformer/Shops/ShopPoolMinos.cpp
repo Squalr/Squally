@@ -26,6 +26,7 @@ ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
 
 ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName, { })
 {
+	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));

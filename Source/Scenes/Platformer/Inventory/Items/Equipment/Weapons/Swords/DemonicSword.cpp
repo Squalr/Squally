@@ -30,7 +30,7 @@ DemonicSword::DemonicSword() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

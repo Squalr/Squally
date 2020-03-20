@@ -143,12 +143,12 @@ bool SoundBase::isPlaying()
 
 	switch (state)
 	{
+		case AudioEngine::AudioState::INITIALIZING:
 		case AudioEngine::AudioState::PLAYING:
 		{
 			return true;
 		}
 		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
 		case AudioEngine::AudioState::PAUSED:
 		default:
 		{

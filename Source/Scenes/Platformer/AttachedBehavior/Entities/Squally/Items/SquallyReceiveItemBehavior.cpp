@@ -56,7 +56,7 @@ void SquallyReceiveItemBehavior::onLoad()
 		if (args != nullptr && args->item != nullptr)
 		{
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-				args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+				args->messageOverride,
 				args->item->getString(),
 				args->item->getIconResource(),
 				SoundResources::Notifications_NotificationGood3
@@ -87,7 +87,7 @@ void SquallyReceiveItemBehavior::onLoad()
 					}
 
 					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-						args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+						args->messageOverride,
 						item->getString(),
 						item->getIconResource(),
 						SoundResources::Notifications_NotificationGood3
@@ -106,7 +106,7 @@ void SquallyReceiveItemBehavior::onLoad()
 		if (args != nullptr && args->currency != nullptr && args->currency->getCount() > 0)
 		{
 			NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-				args->messageOverride == nullptr ? Strings::Platformer_Notifications_ItemFound::create() : args->messageOverride,
+				args->messageOverride,
 				Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(args->currency->getCount()))),
 				args->currency->getIconResource(),
 				SoundResources::Notifications_NotificationGood3

@@ -163,7 +163,7 @@ void ChestBase::performUnlockAndGiveItems()
 		this->addChild(this->chestPool);
 	}
 
-	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool, Strings::Platformer_Notifications_ItemFound::create()));
+	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->chestPool));
 }
 
 void ChestBase::toggleInteractMenu()

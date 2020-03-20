@@ -53,5 +53,8 @@ private:
 	std::vector<float> slotCooldowns;
 
 	static const int SlotCount;
-	static const int SfxCooldown;
+	static const float FadeInDuration;
+	static const float SustainDuration;
+	static const float FadeOutDuration;
+	static const float Cooldown;
 };

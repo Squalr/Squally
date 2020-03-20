@@ -30,7 +30,7 @@ IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.25f
 ))
 {
 }

@@ -30,7 +30,7 @@ GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.25f
 ))
 {
 }

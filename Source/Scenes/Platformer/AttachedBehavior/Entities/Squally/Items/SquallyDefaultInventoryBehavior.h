@@ -24,4 +24,6 @@ private:
 	void giveDefaultItems();
 
 	Squally* squally;
+
+	static bool GiveDeveloperItems;
 };

@@ -30,7 +30,7 @@ ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIO
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

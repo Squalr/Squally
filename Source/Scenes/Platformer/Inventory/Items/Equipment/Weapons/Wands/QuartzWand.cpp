@@ -24,13 +24,13 @@ QuartzWand::QuartzWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Health
 	0,
 	// Mana
-	0,
+	8,
 	// Attack
 	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

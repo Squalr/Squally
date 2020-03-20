@@ -3,6 +3,7 @@
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolEFWeapon.h"
 #include "Objects/Platformer/ItemPools/ChestPools/EndianForest/ChestPoolRamWheel.h"
+#include "Objects/Platformer/ItemPools/ChestPools/Special/ChestPoolPinata.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolBlueGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolPurpleGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolRedGem.h"

@@ -20,7 +20,7 @@ WoodenBow* WoodenBow::create()
 	return instance;
 }
 
-WoodenBow::WoodenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 8, ItemStats(
+WoodenBow::WoodenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 6, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -30,7 +30,7 @@ WoodenBow::WoodenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.25f
 ))
 {
 }

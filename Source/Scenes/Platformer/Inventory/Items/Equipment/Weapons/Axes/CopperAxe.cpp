@@ -20,9 +20,9 @@ CopperAxe* CopperAxe::create()
 	return instance;
 }
 
-CopperAxe::CopperAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+CopperAxe::CopperAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 9, ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
 	0,
 	// Attack
@@ -30,7 +30,7 @@ CopperAxe::CopperAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.10f
 ))
 {
 }
@@ -73,5 +73,5 @@ Size CopperAxe::getWeaponCollisionSize()
 Vec2 CopperAxe::getWeaponOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 212.0f);
 }

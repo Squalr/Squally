@@ -30,7 +30,7 @@ SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

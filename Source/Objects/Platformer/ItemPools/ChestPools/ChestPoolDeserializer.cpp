@@ -21,6 +21,9 @@ ChestPoolDeserializer* ChestPoolDeserializer::create()
 ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::MapKeyTypeChestPool)
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
+	
+	// Testing
+	this->deserializers[ChestPoolPinata::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolPinata::create(properties); };
 
 	// EF pools
 	this->deserializers[ChestPoolEFEquipment::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolEFEquipment::create(properties); };

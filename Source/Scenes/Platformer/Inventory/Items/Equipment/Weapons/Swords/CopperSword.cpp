@@ -20,9 +20,9 @@ CopperSword* CopperSword::create()
 	return instance;
 }
 
-CopperSword::CopperSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 6, 8, ItemStats(
+CopperSword::CopperSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), 6, 9, ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
 	0,
 	// Attack
@@ -30,7 +30,7 @@ CopperSword::CopperSword() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.15f
 ))
 {
 }

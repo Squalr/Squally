@@ -30,7 +30,7 @@ MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.10f
 ))
 {
 }
