@@ -30,8 +30,6 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 
 	this->shineFx->setOpacity(0);
 
-	this->animalNode->setScale(0.75f);
-
 	this->animalNode->addChild(this->shineFx);
 	this->contentNode->addChild(this->animalNode);
 }

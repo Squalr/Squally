@@ -12,7 +12,8 @@ public:
 		std::string lockedResource;
 		std::string saveKey;
 
-		CollectableData(std::string unlockedResource, std::string lockedResource, std::string saveKey) { }
+		CollectableData(std::string unlockedResource, std::string lockedResource, std::string saveKey)
+		: unlockedResource(unlockedResource), lockedResource(lockedResource), saveKey(saveKey) { }
 	};
 
 	static int getCollectedAnimalTotal();

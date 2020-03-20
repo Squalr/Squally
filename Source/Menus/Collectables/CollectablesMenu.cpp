@@ -182,9 +182,6 @@ void CollectablesMenu::registerCollectableAnimal(std::string resource, std::stri
 	Sprite* next = Sprite::create(resource);
 	Sprite* nextLocked = Sprite::create(resourceLocked);
 
-	next->setScale(0.75f);
-	nextLocked->setScale(0.75f);
-
 	this->contentPane->addChild(next);
 	this->contentPane->addChild(nextLocked);
 

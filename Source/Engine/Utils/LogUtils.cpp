@@ -9,18 +9,37 @@ const std::string LogUtils::errorFileName = "SquallyErrors.txt";
 
 bool LogUtils::redirectStandardOutputToFile()
 {
-	return (stdout == freopen(LogUtils::getLogFilePath().c_str(), "w", stdout))
-		&& (stderr == freopen(LogUtils::getErrorFilePath().c_str(), "w", stderr));
+	try
+	{
+		return (stdout == freopen(LogUtils::getLogFilePath().c_str(), "w", stdout))
+			&& (stderr == freopen(LogUtils::getErrorFilePath().c_str(), "w", stderr));
+	}
+	catch (...)
+	{
+		return false;
+	}
 }
 
 void LogUtils::log(std::string info)
 {
-	std::cout << info << std::endl;
+	try
+	{
+		std::cout << info << std::endl;
+	}
+	catch (...)
+	{
+	}
 }
 
 void LogUtils::logError(std::string errorInfo)
 {
-	std::cerr << errorInfo << std::endl;
+	try
+	{
+		std::cerr << errorInfo << std::endl;
+	}
+	catch (...)
+	{
+	}
 }
 
 std::string LogUtils::getLogFilePath()
