@@ -2,16 +2,7 @@
 
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/StoneDoor/StonePuzzleDoor.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class CollisionObject;
-class ConstantString;
-class HackableData;
-class LocalizedLabel;
-class SmartAnimationSequenceNode;
+class AddDoorClippy;
 
 class AddDoor : public StonePuzzleDoor
 {
@@ -29,6 +20,9 @@ protected:
 
 private:
 	typedef StonePuzzleDoor super;
+
 	void showActiveHackableCrystal();
 	void AddDoorTransform(int puzzleIndex);
+
+	AddDoorClippy* clippy;
 };

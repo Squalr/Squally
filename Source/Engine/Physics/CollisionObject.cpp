@@ -29,7 +29,7 @@ std::map<CollisionType, std::vector<CollisionObject*>> CollisionObject::Collisio
 const float CollisionObject::DefaultGravity = -768.0f;
 const float CollisionObject::DefaultMaxHorizontalSpeed = 600.0f;
 const float CollisionObject::DefaultMaxLaunchSpeed = 720.0f;
-const float CollisionObject::DefaultMaxFallSpeed = -480.0f; // -720.0f; // TODO: Restore this cap once the collision system is less janky.
+const float CollisionObject::DefaultMaxFallSpeed = -840.0f;
 const float CollisionObject::DefaultHorizontalDampening = 0.75f;
 const float CollisionObject::DefaultVerticalDampening = 1.0f;
 const float CollisionObject::CollisionZThreshold = 20.0f;
@@ -164,7 +164,7 @@ void CollisionObject::update(float dt)
 	super::update(dt);
 
 	this->propagateRotation();
-	this->runPhysics(dt);
+	this->runPhysics(1.0f / 60.0f);
 }
 
 void CollisionObject::runPhysics(float dt)

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -35,6 +36,9 @@ MulDoor* MulDoor::create(ValueMap& properties)
 
 MulDoor::MulDoor(ValueMap& properties) : super(properties)
 {
+	this->clippy = MulDoorClippy::create();
+
+	this->registerClippy(this->clippy);
 }
 
 MulDoor::~MulDoor()
@@ -60,7 +64,7 @@ void MulDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				nullptr,
+				this->clippy,
 				{
 					// The disassembler produces the equivalent imul 'rcx, rcx, 1', which is confusing to noobs, so we override that
 					HackableCode::ReadOnlyScript(nullptr, "imul ecx, 1", "imul rcx, 1"),

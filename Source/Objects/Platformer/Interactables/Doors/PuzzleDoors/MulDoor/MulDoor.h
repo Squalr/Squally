@@ -2,16 +2,7 @@
 
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/GatePuzzleDoor.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class CollisionObject;
-class ConstantString;
-class HackableData;
-class LocalizedLabel;
-class SmartAnimationSequenceNode;
+class MulDoorClippy;
 
 class MulDoor : public GatePuzzleDoor
 {
@@ -29,6 +20,9 @@ protected:
 
 private:
 	typedef GatePuzzleDoor super;
+
 	void showActiveHackableCrystal();
 	void mulDoorTransform(int puzzleIndex);
+
+	MulDoorClippy* clippy;
 };

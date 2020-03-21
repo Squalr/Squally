@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorClippy.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoorPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -35,6 +36,9 @@ AddDoor* AddDoor::create(ValueMap& properties)
 
 AddDoor::AddDoor(ValueMap& properties) : super(properties)
 {
+	this->clippy = AddDoorClippy::create();
+
+	this->registerClippy(this->clippy);
 }
 
 AddDoor::~AddDoor()
@@ -60,7 +64,7 @@ void AddDoor::registerHackables()
 				int(HackFlags::None),
 				14.0f,
 				0.0f,
-				nullptr
+				this->clippy
 			)
 		},
 	};
