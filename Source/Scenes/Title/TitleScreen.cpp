@@ -221,9 +221,40 @@ void TitleScreen::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->storyModeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(SaveSelectMenu::getInstance()); });
-	this->tutorialsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(TutorialSelectMenu::getInstance()); });
-	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(OptionsScene::getInstance()); });
-	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { Director::getInstance()->end(); });
-	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args) { NavigationEvents::LoadScene(DeveloperScene::getInstance()); });
+	this->storyModeButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			return SaveSelectMenu::getInstance();
+		}));
+	});
+
+	this->tutorialsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			return TutorialSelectMenu::getInstance();
+		}));
+	});
+	
+	this->optionsButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			return OptionsScene::getInstance();
+		}));
+	});
+
+	this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		Director::getInstance()->end();
+	});
+	
+	this->debugButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			return DeveloperScene::getInstance();
+		}));
+	});
 }

@@ -12,5 +12,5 @@ const std::string NavigationEvents::EventNavigateScene = "EVENT_LOAD_SCENE";
 
 void NavigationEvents::LoadScene(LoadSceneArgs args)
 {
-	GlobalDirector::loadScene(args.scene);
+	GlobalDirector::loadScene(args.sceneCreator);
 }

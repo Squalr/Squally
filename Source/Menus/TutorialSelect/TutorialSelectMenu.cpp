@@ -112,7 +112,7 @@ void TutorialSelectMenu::initializeListeners()
 		}
 		args->handle();
 		
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }
 
@@ -128,18 +128,21 @@ ClickableTextNode* TutorialSelectMenu::buildTutorialButton(std::string displayNa
 
 	clickableTextNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		const int UNUSED_SAVE_PROFILE = 99;
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
-		PlatformerMap* map = PlatformerMap::create(mapResource);
+			SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
+			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+			PlatformerMap* map = PlatformerMap::create(mapResource);
 
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
-		// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
-		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
-		NavigationEvents::LoadScene(map);
+			return map;
+		}));
 	});
 
 	return clickableTextNode;

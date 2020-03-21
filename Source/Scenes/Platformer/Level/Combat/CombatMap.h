@@ -45,7 +45,6 @@ protected:
 	void onExit() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 private:
 	typedef MapBase super;
@@ -67,6 +66,8 @@ private:
 	CombatAIHelper* enemyAIHelper;
 	HackerModeWarningHud* hackerModeWarningHud;
 	NotificationHud* notificationHud;
+
+	Hud* combatEndBackdrop;
 
 	Scrappy* scrappy;
 

@@ -90,12 +90,15 @@ void LevelNode::initializeListeners()
 
 	this->sprite->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
-		PointerTraceMap* map = PointerTraceMap::create(this->nodeMapFile, [=]()
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
-			SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
-		});
+			PointerTraceMap* map = PointerTraceMap::create(this->nodeMapFile, [=]()
+			{
+				SaveManager::saveGlobalData(this->getSaveKey(), Value(true));
+			});
 
-		NavigationEvents::LoadScene(map);
+			return map;
+		}));
 	});
 }
 

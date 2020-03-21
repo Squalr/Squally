@@ -2,6 +2,7 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
@@ -87,6 +88,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->notificationHud = NotificationHud::create();
 	this->entityFocusTakeOver = FocusTakeOver::create();
 	this->focusTakeOver = FocusTakeOver::create();
+	this->combatEndBackdrop = Hud::create();
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
@@ -116,6 +118,10 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 		}
 	);
 
+	Size visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->combatEndBackdrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
+
 	this->addChild(this->platformerEntityDeserializer);
 	this->addChild(this->enemyAIHelper);
 	this->hud->addChild(this->targetSelectionMenu);
@@ -124,11 +130,12 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 	this->hud->addChild(this->choicesMenu);
 	this->hackerModeVisibleHud->addChild(this->combatHud);
 	this->hackerModeVisibleHud->addChild(this->entityFocusTakeOver);
-	this->menuHud->addChild(this->hackerModeWarningHud);
-	this->menuHud->addChild(this->firstStrikeMenu);
-	this->menuHud->addChild(this->defeatMenu);
-	this->menuHud->addChild(this->rewardsMenu);
-	this->topMenuHud->addChild(this->notificationHud);
+	this->backMenuHud->addChild(this->hackerModeWarningHud);
+	this->backMenuHud->addChild(this->firstStrikeMenu);
+	this->backMenuHud->addChild(this->combatEndBackdrop);
+	this->backMenuHud->addChild(this->defeatMenu);
+	this->backMenuHud->addChild(this->rewardsMenu);
+	this->backMenuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -149,6 +156,7 @@ void CombatMap::onEnter()
 	this->cardsMenu->setVisible(false);
 	this->partyMenu->setVisible(false);
 	this->inventoryMenu->setVisible(false);
+	this->combatEndBackdrop->setOpacity(0);
 	
 	ObjectEvents::watchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
@@ -160,8 +168,6 @@ void CombatMap::onEnter()
 		this->spawnEntities();
 		this->timeline->resumeTimeline();
 	});
-
-	this->scheduleUpdate();
 }
 
 void CombatMap::onExit()
@@ -169,11 +175,6 @@ void CombatMap::onExit()
 	// Zac: Optimization! This recurses through EVERY object in the map. Stop the call early since the map is being disposed anyways.
 	// Any disposing should be done in the destructor anyways, not onExit().
 	// super::onExit();
-}
-
-void CombatMap::update(float dt)
-{
-	super::update(dt);
 }
 
 void CombatMap::initializePositions()
@@ -216,7 +217,7 @@ void CombatMap::initializeListeners()
 			}
 			else
 			{
-				this->menuBackDrop->setOpacity(196);
+				this->combatEndBackdrop->setOpacity(196);
 				this->defeatMenu->show();
 			}
 		}
@@ -224,17 +225,20 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGiveRewards, [=](EventCustom* eventCustom)
 	{
-		this->menuBackDrop->setOpacity(196);
+		this->combatEndBackdrop->setOpacity(196);
 		this->rewardsMenu->show();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMap, [=](EventCustom* eventCustom)
 	{
-		std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+		{
+			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-		PlatformerMap* map = PlatformerMap::create(mapResource, { });
+			PlatformerMap* map = PlatformerMap::create(mapResource, { });
 
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
+			return map;
+		}));
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)

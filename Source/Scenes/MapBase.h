@@ -47,6 +47,7 @@ protected:
 	Hud* hud;
 	Hud* hackerModeVisibleHud;
 	Hud* miniGameHud;
+	Hud* backMenuHud;
 	Hud* menuBackDrop;
 	Hud* menuHud;
 	Hud* topMenuHud;

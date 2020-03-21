@@ -33,7 +33,6 @@ private:
 	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
-	void update(float dt) override;
 
 	bool awaitingConfirmationEnd;
 

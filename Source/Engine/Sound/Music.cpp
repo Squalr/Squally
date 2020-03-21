@@ -92,8 +92,11 @@ void Music::play(bool repeat, float startDelay)
 		case AudioEngine::AudioState::PLAYING:
 		{
 			this->stop();
+
 			super::play(repeat, startDelay);
+			
 			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+
 			break;
 		}
 		case AudioEngine::AudioState::PAUSED:

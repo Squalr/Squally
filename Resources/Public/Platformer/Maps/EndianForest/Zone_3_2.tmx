@@ -369,7 +369,7 @@
   </object>
   <object id="650" name="spawn" type="object" x="7311.02" y="1929.5" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="716" name="spawn" type="object" x="424" y="1912" width="128" height="128">

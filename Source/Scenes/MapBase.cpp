@@ -51,6 +51,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
 	this->miniGameHud = Hud::create();
+	this->backMenuHud = Hud::create();
 	this->menuBackDrop = Hud::create();
 	this->menuHud = Hud::create();
 	this->topMenuHud = Hud::create();
@@ -85,6 +86,7 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->addChild(this->hackerModeGlow);
 	this->addChild(this->miniGameHud);
 	this->addChild(this->musicOverlay);
+	this->addChild(this->backMenuHud);
 	this->addChild(this->menuBackDrop);
 	this->addChild(this->menuHud);
 	this->addChild(this->topMenuHud);
@@ -200,7 +202,8 @@ void MapBase::initializeListeners()
 	{
 		this->menuBackDrop->setOpacity(0);
 		this->pauseMenu->setVisible(false);
-		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+		
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 	});
 }
 

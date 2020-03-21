@@ -123,15 +123,18 @@ void EnemyCombatEngageBehavior::engageEnemy(bool firstStrike)
 		CallFunc::create([=]()
 		{
 			// Start combat
-			CombatMap* combatMap = CombatMap::create(
-				this->enemy->getBattleMapResource(),
-				firstStrike,
-				this->enemy->getUniqueIdentifier(),
-				playerCombatData,
-				enemyCombatData
-			);
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				CombatMap* combatMap = CombatMap::create(
+					this->enemy->getBattleMapResource(),
+					firstStrike,
+					this->enemy->getUniqueIdentifier(),
+					playerCombatData,
+					enemyCombatData
+				);
 
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(combatMap));
+				return combatMap;
+			}));
 		}),
 		nullptr
 	));

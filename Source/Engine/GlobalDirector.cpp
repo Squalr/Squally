@@ -36,12 +36,14 @@ GlobalDirector::~GlobalDirector()
 {
 }
 
-void GlobalDirector::loadScene(Scene* scene)
+void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 {
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
 
 	CollisionObject::ClearCollisionObjects();
+
+	SmartScene* scene = sceneCreator();
 
 	if (GlobalDirector::getInstance()->activeScene == nullptr)
 	{

@@ -320,17 +320,20 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 
 void SaveSelectMenu::loadSave()
 {
-	bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
-	std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
-	
-	PlatformerMap* map = PlatformerMap::create(mapFile);
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+	{
+		bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
+		std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
+		
+		PlatformerMap* map = PlatformerMap::create(mapFile);
 
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
+		return map;
+	}));
 }
 
 void SaveSelectMenu::goBack()
 {
-	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(TitleScreen::getInstance()));
+	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 }
 
 Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdjustment, int eq)

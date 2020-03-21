@@ -112,9 +112,9 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true, true)
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
 	this->menuHud->addChild(this->combatFadeInNode);
-	this->topMenuHud->addChild(this->alchemyMenu);
-	this->topMenuHud->addChild(this->blacksmithingMenu);
-	this->topMenuHud->addChild(this->notificationHud);
+	this->menuHud->addChild(this->alchemyMenu);
+	this->menuHud->addChild(this->blacksmithingMenu);
+	this->menuHud->addChild(this->notificationHud);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->partyMenu);
@@ -135,8 +135,6 @@ void PlatformerMap::onEnter()
 	this->inventoryMenu->setVisible(false);
 	this->alchemyMenu->setVisible(false);
 	this->blacksmithingMenu->setVisible(false);
-
-	this->scheduleUpdate();
 }
 
 void PlatformerMap::onEnterTransitionDidFinish()
@@ -374,15 +372,6 @@ void PlatformerMap::initializeListeners()
 		this->blacksmithingMenu->setVisible(false);
 		GameUtils::focus(this);
 	});
-}
-
-void PlatformerMap::update(float dt)
-{
-	super::update(dt);
-
-	// Fixed step seems to prevent some really obnoxious bugs where a poor frame-rate can cause the time delta to build up, causing objects to go flying
-	// ZAC: Nevermind. This does not seem to be an issue, and auto-step seems to make the game run much smoother in debug/slow PCs.
-	// this->getPhysicsWorld()->step(1.0f / 60.0f);
 }
 
 bool PlatformerMap::loadMap(std::string mapResource)

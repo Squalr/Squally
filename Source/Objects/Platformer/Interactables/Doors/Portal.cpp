@@ -96,9 +96,13 @@ void Portal::loadMap()
 		DelayTime::create(0.1f),
 		CallFunc::create([=]()
 		{
-			PlatformerEvents::TriggerBeforePlatformerMapChange();
-			PlatformerMap* map = PlatformerMap::create("Public/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
-			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs(map));
+			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
+			{
+				PlatformerEvents::TriggerBeforePlatformerMapChange();
+				PlatformerMap* map = PlatformerMap::create("Public/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
+
+				return map;
+			}));
 		}),
 		nullptr
 	));
