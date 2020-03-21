@@ -44,6 +44,7 @@ private:
 	void chooseOption(int option);
 	void showOptions();
 	bool hasDialogueOptions();
+	void updateInteractVisibility();
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 
 	PlatformerEntity* entity;

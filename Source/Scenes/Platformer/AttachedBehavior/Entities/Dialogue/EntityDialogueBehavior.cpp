@@ -124,8 +124,9 @@ void EntityDialogueBehavior::onLoad()
 		if (this->hasDialogueOptions() || !this->pretextQueue.empty())
 		{
 			this->canInteract = true;
-			this->interactMenu->show();
 		}
+
+		this->updateInteractVisibility();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -133,7 +134,8 @@ void EntityDialogueBehavior::onLoad()
 	this->dialogueCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
 	{
 		this->canInteract = false;
-		this->interactMenu->hide();
+
+		this->updateInteractVisibility();
 
 		return CollisionObject::CollisionResult::DoNothing;
 	});
@@ -238,6 +240,8 @@ void EntityDialogueBehavior::progressDialogue()
 {
 	if (this->pretextQueue.empty())
 	{
+		this->updateInteractVisibility();
+
 		if (this->hasDialogueOptions())
 		{
 			this->setActiveDialogueSet(this->getMainDialogueSet());
@@ -354,6 +358,23 @@ bool EntityDialogueBehavior::hasDialogueOptions()
 	}
 
 	return std::get<0>(dialogueOptions[0])->isShownIfUnique();
+}
+
+void EntityDialogueBehavior::updateInteractVisibility()
+{
+	if (!(this->hasDialogueOptions() || !this->pretextQueue.empty()))
+	{
+		this->canInteract = false;
+	}
+	
+	if (this->canInteract)
+	{
+		this->interactMenu->show();
+	}
+	else
+	{
+		this->interactMenu->hide();
+	}
 }
 
 LocalizedString* EntityDialogueBehavior::getOptionString(int index, LocalizedString* optionText)
