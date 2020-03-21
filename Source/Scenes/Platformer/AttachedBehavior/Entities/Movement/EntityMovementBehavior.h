@@ -18,6 +18,8 @@ public:
 	void setSwimAcceleration(cocos2d::Vec2 swimAcceleration);
 	void setJumpVelocity(float jumpVelocity);
 
+	void cancelWaterSfx();
+
 	static const std::string MapKey;
 	static const float DefaultWalkAcceleration;
 	static const float DefaultRunAcceleration;

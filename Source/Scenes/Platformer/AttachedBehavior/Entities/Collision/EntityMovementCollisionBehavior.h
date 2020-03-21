@@ -5,6 +5,7 @@
 class CollisionObject;
 class EntityGroundCollisionBehavior;
 class EntityHeadCollisionBehavior;
+class EntityMovementBehavior;
 class PlatformerEntity;
 class WorldSound;
 
@@ -45,6 +46,7 @@ private:
 
 	EntityGroundCollisionBehavior* groundCollision;
 	EntityHeadCollisionBehavior* headCollision;
+	EntityMovementBehavior* movementBehavior;
 
 	PlatformerEntity* entity;
 

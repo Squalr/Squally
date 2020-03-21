@@ -320,6 +320,14 @@ void EntityMovementBehavior::setJumpVelocity(float jumpVelocity)
 	this->jumpVelocity = jumpVelocity;
 }
 
+void EntityMovementBehavior::cancelWaterSfx()
+{
+	for (auto next : this->swimSounds)
+	{
+		next->stop();
+	}
+}
+
 void EntityMovementBehavior::applyPatrolMovement(Vec2* movement)
 {
 	bool hasCinematicMovement = this->entity->hasState(StateKeys::CinematicDestinationX);

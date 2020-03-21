@@ -15,6 +15,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityHeadCollisionBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -49,6 +50,7 @@ EntityMovementCollisionBehavior::EntityMovementCollisionBehavior(GameObject* own
 	this->noEmergeSubmergeSoundCooldown = 1.0f;
 	this->groundCollision = nullptr;
 	this->headCollision = nullptr;
+	this->movementBehavior = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -76,6 +78,11 @@ void EntityMovementCollisionBehavior::onLoad()
 		this->buildMovementCollision();
 		this->buildWallDetectors();
 		this->toggleQueryable(true);
+	});
+	
+	this->entity->watchForAttachedBehavior<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		this->movementBehavior = movementBehavior;
 	});
 	
 	const std::string identifier = std::to_string((unsigned long long)(this->entity));
@@ -309,6 +316,11 @@ void EntityMovementCollisionBehavior::buildMovementCollision()
 		if (this->groundCollision != nullptr && !this->groundCollision->isOnGround() && this->noEmergeSubmergeSoundCooldown <= 0.0f && !this->emergeSound->isPlaying())
 		{
 			this->emergeSound->play();
+		}
+
+		if (this->movementBehavior != nullptr)
+		{
+			this->movementBehavior->cancelWaterSfx();
 		}
 
 		// Animate jumping out of water
