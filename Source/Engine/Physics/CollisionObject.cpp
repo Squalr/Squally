@@ -164,11 +164,7 @@ void CollisionObject::update(float dt)
 	super::update(dt);
 
 	this->propagateRotation();
-<<<<<<< Updated upstream
 	this->runPhysics(1.0f / 60.0f);
-=======
-	this->runPhysics(2.0f/60.0f);
->>>>>>> Stashed changes
 }
 
 void CollisionObject::runPhysics(float dt)
