@@ -11,16 +11,16 @@ class MechanicalFlailClippy : public Clippy
 public:
 	static MechanicalFlailClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	MechanicalFlailClippy();
-	~MechanicalFlailClippy();
+	virtual ~MechanicalFlailClippy();
 
 	Clippy* innerClone() override;
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

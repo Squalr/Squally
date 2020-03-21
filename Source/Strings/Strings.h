@@ -7749,10 +7749,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
 	};
 
-	class Menus_Hacking_Abilities_Entities_Generic_Haste_Haste : public LocalizedString
+	class Menus_Hacking_Abilities_Haste_Haste : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Entities_Generic_Haste_Haste* create();
+		static Menus_Hacking_Abilities_Haste_Haste* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7760,14 +7760,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Entities_Generic_Haste_Haste();
-		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_Haste() = default;
+		Menus_Hacking_Abilities_Haste_Haste();
+		virtual ~Menus_Hacking_Abilities_Haste_Haste() = default;
 	};
 
-	class Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi : public LocalizedString
+	class Menus_Hacking_Abilities_Haste_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi* create();
+		static Menus_Hacking_Abilities_Haste_RegisterEsi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7775,14 +7775,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi() = default;
+		Menus_Hacking_Abilities_Haste_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Haste_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3 : public LocalizedString
+	class Menus_Hacking_Abilities_Haste_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3* create();
+		static Menus_Hacking_Abilities_Haste_RegisterXmm3* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7790,14 +7790,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3() = default;
+		Menus_Hacking_Abilities_Haste_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_Haste_RegisterXmm3() = default;
 	};
 
-	class Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth : public LocalizedString
+	class Menus_Hacking_Abilities_Squally_IsAlive : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth* create();
+		static Menus_Hacking_Abilities_Squally_IsAlive* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7805,14 +7805,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth();
-		virtual ~Menus_Hacking_Abilities_Entities_TrainingDummy_AddHealth() = default;
+		Menus_Hacking_Abilities_Squally_IsAlive();
+		virtual ~Menus_Hacking_Abilities_Squally_IsAlive() = default;
 	};
 
-	class Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi : public LocalizedString
+	class Menus_Hacking_Abilities_Squally_IsSwimming : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi* create();
+		static Menus_Hacking_Abilities_Squally_IsSwimming* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7820,8 +7820,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi();
-		virtual ~Menus_Hacking_Abilities_Entities_TrainingDummy_RegisterEdi() = default;
+		Menus_Hacking_Abilities_Squally_IsSwimming();
+		virtual ~Menus_Hacking_Abilities_Squally_IsSwimming() = default;
+	};
+
+	class Menus_Hacking_Abilities_TrainingDummy_AddHealth : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_TrainingDummy_AddHealth* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_TrainingDummy_AddHealth();
+		virtual ~Menus_Hacking_Abilities_TrainingDummy_AddHealth() = default;
+	};
+
+	class Menus_Hacking_Abilities_TrainingDummy_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_TrainingDummy_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_TrainingDummy_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_TrainingDummy_RegisterEdi() = default;
 	};
 
 	class Menus_Hacking_Abilities_WeakMinded : public LocalizedString
@@ -7852,6 +7882,36 @@ namespace Strings
 	private:
 		Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal();
 		virtual ~Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal() = default;
+	};
+
+	class Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal();
+		virtual ~Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal() = default;
+	};
+
+	class Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax();
+		virtual ~Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd : public LocalizedString
@@ -9892,36 +9952,6 @@ namespace Strings
 	private:
 		Menus_Hacking_CodeEditor_YourScripts();
 		virtual ~Menus_Hacking_CodeEditor_YourScripts() = default;
-	};
-
-	class Menus_Hacking_Entities_Squally_IsAlive_IsAlive : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Entities_Squally_IsAlive_IsAlive* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Entities_Squally_IsAlive_IsAlive();
-		virtual ~Menus_Hacking_Entities_Squally_IsAlive_IsAlive() = default;
-	};
-
-	class Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming();
-		virtual ~Menus_Hacking_Entities_Squally_IsSwimming_IsSwimming() = default;
 	};
 
 	class Menus_Hacking_Lexicon_Assembly_Add : public LocalizedString

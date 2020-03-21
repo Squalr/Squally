@@ -17,6 +17,7 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -55,6 +56,11 @@ void WaterSpellbook::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 		this->squally->toggleAllowFx(true);
+
+		this->squally->getAttachedBehavior<SquallySwimHackBehavior>([=](SquallySwimHackBehavior* squallySwimHackBehavior)
+		{
+			squallySwimHackBehavior->enableAllClippy();
+		});
 		
 	}, Squally::MapKey);
 

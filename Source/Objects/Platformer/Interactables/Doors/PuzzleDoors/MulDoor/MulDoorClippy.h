@@ -10,6 +10,8 @@ class MulDoorClippy : public Clippy
 public:
 	static MulDoorClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	MulDoorClippy();
 	virtual ~MulDoorClippy();
@@ -18,8 +20,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

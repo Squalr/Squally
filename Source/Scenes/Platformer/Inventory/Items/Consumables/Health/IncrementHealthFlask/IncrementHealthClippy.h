@@ -11,6 +11,8 @@ class IncrementHealthClippy : public Clippy
 public:
 	static IncrementHealthClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	IncrementHealthClippy();
 	virtual ~IncrementHealthClippy();
@@ -19,8 +21,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

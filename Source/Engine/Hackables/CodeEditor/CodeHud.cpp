@@ -285,6 +285,7 @@ void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 			Clippy* clippy = hackableCode->getClippy()->clone();
 
 			clippy->setVisible(true);
+			clippy->startDialogue();
 
 			this->clippyNode->addChild(clippy);
 		}

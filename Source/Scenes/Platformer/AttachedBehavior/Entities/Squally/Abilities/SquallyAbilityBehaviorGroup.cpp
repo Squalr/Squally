@@ -1,11 +1,11 @@
 #include "SquallyAbilityBehaviorGroup.h"
 
 #include "Engine/Maps/GameObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsAlive/SquallyIsAliveHackBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/IsSwimming/SquallySwimHackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyDisableHackFxBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyIsAliveHackBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyHackingBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallyOutOfCombatAttackBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Abilities/SquallySwimHackBehavior.h"
 
 using namespace cocos2d;
 

@@ -17,6 +17,8 @@ public:
 	void setIsEnabled(bool isEnabled);
 	bool getIsEnabled();
 
+	virtual void startDialogue() = 0;
+
 protected:
 	Clippy();
 	virtual ~Clippy();

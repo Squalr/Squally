@@ -39,9 +39,7 @@ Clippy* DartNopClippy::innerClone()
 	return DartNopClippy::create();
 }
 
-void DartNopClippy::onEnterTransitionDidFinish()
+void DartNopClippy::startDialogue()
 {
-	super::onEnterTransitionDidFinish();
-
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

@@ -39,9 +39,7 @@ Clippy* TrainingHealClippy::innerClone()
 	return TrainingHealClippy::create();
 }
 
-void TrainingHealClippy::onEnterTransitionDidFinish()
+void TrainingHealClippy::startDialogue()
 {
-	super::onEnterTransitionDidFinish();
-
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

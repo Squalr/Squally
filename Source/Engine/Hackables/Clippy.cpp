@@ -51,7 +51,7 @@ void Clippy::runDialogue(LocalizedString* localizedString, std::string soundReso
 {
 	if (this->isEnabled)
 	{
-		this->speechBubble->runDialogue(localizedString, soundResource, SpeechBubble::InfiniteDuration);
+		this->speechBubble->runDialogue(localizedString, soundResource, SpeechBubble::InfiniteDuration, nullptr, SpeechBubble::Direction::ExpandLeft);
 	}
 }
 

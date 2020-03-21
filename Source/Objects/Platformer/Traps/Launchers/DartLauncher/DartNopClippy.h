@@ -10,6 +10,8 @@ class DartNopClippy : public Clippy
 public:
 	static DartNopClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	DartNopClippy();
 	virtual ~DartNopClippy();
@@ -18,8 +20,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

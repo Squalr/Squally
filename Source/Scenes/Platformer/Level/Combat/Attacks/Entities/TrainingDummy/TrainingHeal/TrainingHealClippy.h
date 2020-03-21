@@ -11,6 +11,8 @@ class TrainingHealClippy : public Clippy
 public:
 	static TrainingHealClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	TrainingHealClippy();
 	virtual ~TrainingHealClippy();
@@ -19,8 +21,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

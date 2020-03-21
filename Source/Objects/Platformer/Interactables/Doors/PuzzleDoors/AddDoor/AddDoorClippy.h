@@ -10,6 +10,8 @@ class AddDoorClippy : public Clippy
 public:
 	static AddDoorClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	AddDoorClippy();
 	virtual ~AddDoorClippy();
@@ -18,8 +20,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

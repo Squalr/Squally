@@ -11,6 +11,8 @@ class HasteClippy : public Clippy
 public:
 	static HasteClippy* create();
 
+	void startDialogue() override;
+
 protected:
 	HasteClippy();
 	virtual ~HasteClippy();
@@ -19,8 +21,6 @@ protected:
 
 private:
 	typedef Clippy super;
-
-	void onEnterTransitionDidFinish() override;
 
 	SmartAnimationNode* clippyAnimations;
 };

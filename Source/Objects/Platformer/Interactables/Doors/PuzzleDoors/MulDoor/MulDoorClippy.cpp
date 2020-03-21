@@ -39,9 +39,7 @@ Clippy* MulDoorClippy::innerClone()
 	return MulDoorClippy::create();
 }
 
-void MulDoorClippy::onEnterTransitionDidFinish()
+void MulDoorClippy::startDialogue()
 {
-	super::onEnterTransitionDidFinish();
-
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Objects_PuzzleDoors_MulDoor_IMul::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

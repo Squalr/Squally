@@ -39,9 +39,7 @@ Clippy* IncrementHealthClippy::innerClone()
 	return IncrementHealthClippy::create();
 }
 
-void IncrementHealthClippy::onEnterTransitionDidFinish()
+void IncrementHealthClippy::startDialogue()
 {
-	super::onEnterTransitionDidFinish();
-
 	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
 }

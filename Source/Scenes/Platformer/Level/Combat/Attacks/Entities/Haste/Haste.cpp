@@ -100,12 +100,12 @@ void Haste::registerHackables()
 			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
-				Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_Haste::create(),
+				Strings::Menus_Hacking_Abilities_Haste_Haste::create(),
 				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterEsi::create() },
-					{ HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Entities_Generic_Haste_RegisterXmm3::create() }
+					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Haste_RegisterEsi::create() },
+					{ HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Haste_RegisterXmm3::create() }
 				},
 				int(HackFlags::None),
 				this->buffData.duration,
