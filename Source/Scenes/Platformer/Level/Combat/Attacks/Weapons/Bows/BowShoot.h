@@ -4,18 +4,18 @@
 
 class WorldSound;
 
-class Slash : public PlatformerAttack
+class BowShoot : public PlatformerAttack
 {
 public:
-	static Slash* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	static BowShoot* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	Slash(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
-	virtual ~Slash();
+	BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	virtual ~BowShoot();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
