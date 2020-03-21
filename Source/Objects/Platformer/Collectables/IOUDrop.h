@@ -7,8 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class LocalizedString;
-class SmartAnimationSequenceNode;
+class WorldSound;
 
 class IOUDrop : public Collectable
 {
@@ -21,8 +20,12 @@ protected:
 	IOUDrop(cocos2d::ValueMap& properties);
 	virtual ~IOUDrop();
 
+	void initializeListeners() override;
+
 private:
 	typedef Collectable super;
 
 	cocos2d::Sprite* iou;
+
+	WorldSound* collectSound;
 };
