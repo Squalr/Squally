@@ -44,19 +44,6 @@ void SoundBase::onEnter()
 	this->scheduleUpdate();
 }
 
-void SoundBase::initializeListeners()
-{
-	super::initializeListeners();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
-	{
-		// Let the audio play out -- cancel looping if it loops
-		AudioEngine::setLoop(this->activeTrackId, false);
-
-		this->stopAllActions();
-	}));
-}
-
 void SoundBase::update(float dt)
 {
 	super::update(dt);

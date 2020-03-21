@@ -60,6 +60,14 @@ void Sound::initializeListeners()
 		// this->stop();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		// Let the audio play out -- cancel looping if it loops
+		AudioEngine::setLoop(this->activeTrackId, false);
+
+		this->stopAllActions();
+	}));
+
 	if (!this->getListenEvent().empty())
 	{
 		this->listenForMapEvent(this->getListenEvent(), [=](ValueMap valueMap)

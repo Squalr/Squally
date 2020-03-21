@@ -21,7 +21,6 @@ protected:
 	virtual ~SoundBase();
 
 	void onEnter() override;
-	void initializeListeners() override;
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
