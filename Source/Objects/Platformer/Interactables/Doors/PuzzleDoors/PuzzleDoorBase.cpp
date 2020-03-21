@@ -58,7 +58,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->indexLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->indexString);
 	this->truthLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->truthString);
 	this->hackableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M3, this->hackableString);
-	this->doorOpenSound = nullptr;
+	this->doorOpenSound = WorldSound::create();
 	this->sliderSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy1);
 	this->sliderResetSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy3);
 	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
@@ -135,6 +135,7 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->addChild(this->electricitySound);
 	this->addChild(this->sliderSound);
 	this->addChild(this->sliderResetSound);
+	this->addChild(this->doorOpenSound);
 }
 
 PuzzleDoorBase::~PuzzleDoorBase()
@@ -332,10 +333,7 @@ void PuzzleDoorBase::lock(bool animate)
 		this->doorNode->stopAllActions();
 		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
 
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{
@@ -368,10 +366,7 @@ void PuzzleDoorBase::unlock(bool animate)
 		this->doorNode->stopAllActions();
 		this->doorNode->runAction(MoveTo::create(5.0f * currentProgress, Vec2(0.0f, this->doorOpenDelta)));
 		
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{

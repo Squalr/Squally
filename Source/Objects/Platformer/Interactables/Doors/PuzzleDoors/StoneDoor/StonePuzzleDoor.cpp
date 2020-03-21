@@ -53,12 +53,11 @@ StonePuzzleDoor::StonePuzzleDoor(ValueMap& properties) : super(properties,
 		this->front = Sprite::create(ObjectResources::Doors_PuzzleDoor_YellowStone_Front);
 	}
 
-	this->doorOpenSound = WorldSound::create();
+	this->doorOpenSound->setSoundResource(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
 	this->backNode->addChild(this->back);
 	this->doorNode->addChild(this->door);
 	this->frontNode->addChild(this->front);
-	this->addChild(this->doorOpenSound);
 }
 
 StonePuzzleDoor::~StonePuzzleDoor()
