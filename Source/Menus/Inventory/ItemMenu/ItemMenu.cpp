@@ -139,6 +139,11 @@ void ItemMenu::clearVisibleItems()
 	this->visibleItems.clear();
 }
 
+ItemPreview* ItemMenu::getItemPreview()
+{
+	return this->itemPreview;
+}
+
 void ItemMenu::setPreviewCallback(std::function<void(Item*)> previewCallback)
 {
 	this->previewCallback = previewCallback;

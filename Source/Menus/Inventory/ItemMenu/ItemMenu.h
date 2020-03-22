@@ -31,6 +31,7 @@ public:
 
 	void clearPreview();
 	void clearVisibleItems();
+	ItemPreview* getItemPreview();
 	void setPreviewCallback(std::function<void(Item*)> previewCallback);
 	ItemEntry* pushVisibleItem(Item* visibleItem, std::function<void()> onToggle);
 	void setPreviewOffset(cocos2d::Vec2 previewOffset);

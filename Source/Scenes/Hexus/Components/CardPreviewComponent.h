@@ -3,6 +3,7 @@
 #include "Scenes/Hexus/Components/ComponentBase.h"
 
 class Card;
+class CardData;
 class CardPreview;
 
 class CardPreviewComponent : public ComponentBase
@@ -10,7 +11,7 @@ class CardPreviewComponent : public ComponentBase
 public:
 	static CardPreviewComponent* create();
 	
-	void setHelpClickCallback(std::function<void(Card* card)> onHelpClick);
+	void setHelpClickCallback(std::function<void(CardData*)> onHelpClick);
 
 protected:
 	CardPreviewComponent();

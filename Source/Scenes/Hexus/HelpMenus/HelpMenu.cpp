@@ -1,4 +1,4 @@
-#include "HelpMenuComponent.h"
+#include "HelpMenu.h"
 
 #include "cocos/2d/CCLayer.h"
 #include "cocos/base/CCDirector.h"
@@ -31,16 +31,16 @@
 
 using namespace cocos2d;
 
-HelpMenuComponent* HelpMenuComponent::create()
+HelpMenu* HelpMenu::create()
 {
-    HelpMenuComponent* instance = new HelpMenuComponent();
+	HelpMenu* instance = new HelpMenu();
 
-    instance->autorelease();
+	instance->autorelease();
 
-    return instance;
+	return instance;
 }
 
-HelpMenuComponent::HelpMenuComponent()
+HelpMenu::HelpMenu()
 {
     LocalizedLabel* exitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Exit::create());
     LocalizedLabel* exitLabelSelect = exitLabel->clone();
@@ -66,7 +66,7 @@ HelpMenuComponent::HelpMenuComponent()
     this->shrHelpMenu = ShrHelpMenu::create();
     this->subHelpMenu = SubHelpMenu::create();
     this->xorHelpMenu = XorHelpMenu::create();
-    this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_GenericButton, UIResources::Menus_Buttons_GenericButtonHover);
+    this->exitButton = ClickableTextNode::create(exitLabel, exitLabelSelect, UIResources::Menus_Buttons_WoodButton, UIResources::Menus_Buttons_WoodButtonSelected);
     this->onExit = nullptr;
 
     this->addChild(this->background);
@@ -90,11 +90,11 @@ HelpMenuComponent::HelpMenuComponent()
     this->addChild(this->exitButton);
 }
 
-HelpMenuComponent::~HelpMenuComponent()
+HelpMenu::~HelpMenu()
 {
 }
 
-void HelpMenuComponent::onEnter()
+void HelpMenu::onEnter()
 {
     super::onEnter();
 
@@ -102,7 +102,7 @@ void HelpMenuComponent::onEnter()
     this->setVisible(false);
 }
 
-void HelpMenuComponent::initializePositions()
+void HelpMenu::initializePositions()
 {
     super::initializePositions();
 
@@ -113,7 +113,7 @@ void HelpMenuComponent::initializePositions()
     this->exitButton->setPosition(Vec2(0.0f, -356.0f));
 }
 
-void HelpMenuComponent::setExitCallback(std::function<void()> onExit)
+void HelpMenu::setExitCallback(std::function<void()> onExit)
 {
     this->onExit = onExit;
 
@@ -126,7 +126,7 @@ void HelpMenuComponent::setExitCallback(std::function<void()> onExit)
     });
 }
 
-void HelpMenuComponent::openMenu(Card* card)
+void HelpMenu::openMenu(CardData* cardData)
 {
     this->setVisible(true);
     this->addHelpMenu->setVisible(false);
@@ -146,18 +146,18 @@ void HelpMenuComponent::openMenu(Card* card)
     this->subHelpMenu->setVisible(false);
     this->xorHelpMenu->setVisible(false);
 
-    if (card == nullptr)
+    if (cardData == nullptr)
     {
         return;
     }
 
-    switch (card->cardData->getCardType())
+    switch (cardData->getCardType())
     {
         case CardData::CardType::Binary:
         case CardData::CardType::Decimal:
         case CardData::CardType::Hexidecimal:
         {
-            this->binDecHexHelpMenu->open(card);
+            this->binDecHexHelpMenu->open(cardData);
             break;
         }
         case CardData::CardType::Special_MOV:

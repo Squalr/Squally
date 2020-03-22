@@ -93,11 +93,11 @@ void BinDecHexHelpMenu::initializeListeners()
 	super::initializeListeners();
 }
 
-void BinDecHexHelpMenu::open(Card* card)
+void BinDecHexHelpMenu::open(CardData* cardData)
 {
 	this->setVisible(true);
 
-	this->binCard->setAttack(card->getOriginalAttack());
-	this->decCard->setAttack(card->getOriginalAttack());
-	this->hexCard->setAttack(card->getOriginalAttack());
+	this->binCard->setAttack(cardData->getAttack());
+	this->decCard->setAttack(cardData->getAttack());
+	this->hexCard->setAttack(cardData->getAttack());
 }

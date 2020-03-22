@@ -7,13 +7,16 @@
 
 namespace cocos2d
 {
+	class LayerColor;
 	class Sprite;
 }
 
+class CardData;
 class ClickableNode;
 class ClickableTextNode;
 class CurrencyInventory;
 class EquipmentInventory;
+class HelpMenu;
 class HexusCard;
 class HexusFilter;
 class Item;
@@ -42,6 +45,7 @@ private:
 	void populateItemList();
 	void equipHexusCard(HexusCard* card);
 	void unequipHexusCard(HexusCard* card);
+	void showHelpMenu(CardData* cardData);
 	void close();
 
 	cocos2d::Sprite* cardsWindow;
@@ -50,6 +54,8 @@ private:
 	ItemMenu* unequippedCardsMenu;
 	ClickableTextNode* returnButton;
 	ClickableNode* closeButton;
+	cocos2d::LayerColor* backdrop;
+	HelpMenu* helpMenu;
 
 	EquipmentInventory* equipmentInventory;
 	Inventory* inventory;

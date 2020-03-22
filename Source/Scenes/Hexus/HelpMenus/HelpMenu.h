@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Scenes/Hexus/Components/ComponentBase.h"
+#include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
@@ -11,7 +11,7 @@ namespace cocos2d
 class AddHelpMenu;
 class AndHelpMenu;
 class BinDecHexHelpMenu;
-class Card;
+class CardData;
 class ClickableNode;
 class Flip1HelpMenu;
 class Flip2HelpMenu;
@@ -27,23 +27,23 @@ class ShrHelpMenu;
 class SubHelpMenu;
 class XorHelpMenu;
 
-class HelpMenuComponent : public ComponentBase
+class HelpMenu : public SmartNode
 {
 public:
-	static HelpMenuComponent* create();
+	static HelpMenu* create();
 
-	void openMenu(Card* card);
+	void openMenu(CardData* cardData);
 	void setExitCallback(std::function<void()> onExit);
 
 protected:
-	HelpMenuComponent();
-	virtual ~HelpMenuComponent();
-
+	HelpMenu();
+	virtual ~HelpMenu();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
-	typedef ComponentBase super;
+	typedef SmartNode super;
 
 	cocos2d::Sprite* background;
 	cocos2d::LayerColor* textPanel;

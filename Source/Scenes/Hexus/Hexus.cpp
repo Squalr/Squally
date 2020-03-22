@@ -29,7 +29,7 @@
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/Components/Components.h"
-#include "Scenes/Hexus/HelpMenus/HelpMenuComponent.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Hexus/States/States.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -113,7 +113,7 @@ Hexus::Hexus()
 	this->debugDisplay = DebugDisplay::create();
 	this->tutorialLayer = Node::create();
 	this->relocateLayer = Node::create();
-	this->helpMenuComponent = HelpMenuComponent::create();
+	this->helpMenu = HelpMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->musicA = Medieval::create();
 	this->musicB = Medieval2::create();
@@ -194,7 +194,7 @@ Hexus::Hexus()
 	this->addChild(this->defeatBanner);
 	this->addChild(this->drawBanner);
 	this->addChild(this->menuBackDrop);
-	this->addChild(this->helpMenuComponent);
+	this->addChild(this->helpMenu);
 	this->addChild(this->musicA);
 	this->addChild(this->musicB);
 }
@@ -224,17 +224,17 @@ void Hexus::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->cardPreviewComponent->setHelpClickCallback([=](Card* card)
+	this->cardPreviewComponent->setHelpClickCallback([=](CardData* cardData)
 	{
 		this->menuBackDrop->setOpacity(196);
-		this->helpMenuComponent->openMenu(card);
-		GameUtils::focus(this->helpMenuComponent);
+		this->helpMenu->openMenu(cardData);
+		GameUtils::focus(this->helpMenu);
 	});
 
-	this->helpMenuComponent->setExitCallback([=]()
+	this->helpMenu->setExitCallback([=]()
 	{
 		this->menuBackDrop->setOpacity(0);
-		this->helpMenuComponent->setVisible(false);
+		this->helpMenu->setVisible(false);
 		GameUtils::focus(this);
 	});
 

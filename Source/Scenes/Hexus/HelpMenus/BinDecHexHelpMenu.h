@@ -8,7 +8,7 @@ namespace cocos2d
 }
 
 class AutoCard;
-class Card;
+class CardData;
 class LocalizedLabel;
 
 class BinDecHexHelpMenu : public SmartNode
@@ -16,7 +16,7 @@ class BinDecHexHelpMenu : public SmartNode
 public:
 	static BinDecHexHelpMenu* create();
 
-	void open(Card* card);
+	void open(CardData* cardData);
 
 protected:
 	BinDecHexHelpMenu();

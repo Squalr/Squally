@@ -33,7 +33,7 @@ CardPreview::CardPreview()
 {
 	this->cardPad = Sprite::create(HexusResources::CardPad);
 	this->previewPanel = Node::create();
-	this->currentPreviewData = PreviewData(nullptr, nullptr);
+	this->currentPreviewData = PreviewData();
 	this->previewCache = std::map<std::string, PreviewData>();
 
 	LocalizedLabel* helpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Help::create());
@@ -72,7 +72,7 @@ void CardPreview::initializePositions()
 	this->helpButton->setPosition(Vec2(0.0f, -212.0f));
 }
 
-void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpClick)
+void CardPreview::setHelpClickCallback(std::function<void(CardData*)> onHelpClick)
 {
 	this->onHelpClick = onHelpClick;
 
@@ -80,7 +80,7 @@ void CardPreview::setHelpClickCallback(std::function<void(Card* card)> onHelpCli
 	{
 		if (this->onHelpClick != nullptr)
 		{
-			this->onHelpClick(this->currentPreviewData.previewCard);
+			this->onHelpClick(this->currentPreviewData.cardData);
 		}
 	});
 }
@@ -163,7 +163,7 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 {
 	if (cardData == nullptr)
 	{
-		return PreviewData(nullptr, nullptr);
+		return PreviewData();
 	}
 
 	Node* preview = Node::create();
@@ -392,5 +392,5 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 		}
 	}
 
-	return PreviewData(card, preview);
+	return PreviewData(card, cardData, preview);
 }

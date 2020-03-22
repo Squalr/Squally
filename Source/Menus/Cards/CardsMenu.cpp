@@ -20,6 +20,8 @@
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardPreview.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
@@ -55,6 +57,7 @@ CardsMenu::CardsMenu()
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->helpMenu = HelpMenu::create();
 	this->inventory = nullptr;
 	this->equipmentInventory = nullptr;
 	this->returnClickCallback = nullptr;
@@ -90,6 +93,7 @@ CardsMenu::CardsMenu()
 	this->addChild(this->cardsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
+	this->addChild(this->helpMenu);
 }
 
 CardsMenu::~CardsMenu()
@@ -107,6 +111,8 @@ void CardsMenu::onEnter()
 	GameUtils::fadeInObject(this->cardsLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
+
+	this->helpMenu->setVisible(false);
 	
 	ObjectEvents::watchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -147,6 +153,26 @@ void CardsMenu::initializeListeners()
 		this->close();
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
+
+	this->equippedCardsMenu->getItemPreview()->getCardPreview()->setHelpClickCallback([=](CardData* cardData)
+	{
+		this->showHelpMenu(cardData);
+	});
+
+	this->unequippedCardsMenu->getItemPreview()->getCardPreview()->setHelpClickCallback([=](CardData* cardData)
+	{
+		this->showHelpMenu(cardData);
+	});
+
+	this->helpMenu->setExitCallback([=]()
+	{
+		this->helpMenu->setVisible(false);
+		this->cardsWindow->setVisible(true);
+		this->returnButton->setVisible(true);
+		this->closeButton->setVisible(true);
+
+		GameUtils::focus(this);
+	});
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
@@ -335,6 +361,17 @@ void CardsMenu::unequipHexusCard(HexusCard* card)
 			LogUtils::logError(otherItem->getName());
 		}
 	});
+}
+
+void CardsMenu::showHelpMenu(CardData* cardData)
+{
+	this->helpMenu->openMenu(cardData);
+
+	this->cardsWindow->setVisible(false);
+	this->returnButton->setVisible(false);
+	this->closeButton->setVisible(false);
+
+	GameUtils::focus(this->helpMenu);
 }
 
 void CardsMenu::close()

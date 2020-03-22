@@ -27,6 +27,7 @@ public:
 	void toggleShowItemName(bool showItemName);
 	void preview(EquipHintMode equipHintMode, Item* item);
 	void clearPreview();
+	CardPreview* getCardPreview();
 
 protected:
 	ItemPreview(bool showItemName, bool allowCardPreview);

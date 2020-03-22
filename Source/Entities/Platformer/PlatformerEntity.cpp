@@ -228,12 +228,12 @@ std::string PlatformerEntity::getEmblemResource()
 
 bool PlatformerEntity::isFlippedX()
 {
-	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool();
+	return this->getAnimations()->getFlippedX();
 }
 
 bool PlatformerEntity::isFlippedY()
 {
-	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
+	return this->getAnimations()->getFlippedY();
 }
 
 PlatformerEntity* PlatformerEntity::uiClone()

@@ -360,3 +360,8 @@ void ItemPreview::clearPreview()
 		this->equipHint->setVisible(false);
 	}
 }
+
+CardPreview* ItemPreview::getCardPreview()
+{
+	return this->cardPreview;
+}
