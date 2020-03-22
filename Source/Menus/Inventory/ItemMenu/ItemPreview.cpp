@@ -27,16 +27,16 @@ using namespace cocos2d;
 
 const int ItemPreview::MaxStatlines = 16;
 
-ItemPreview* ItemPreview::create(bool allowEquipHint, bool showItemName, bool allowCardPreview)
+ItemPreview* ItemPreview::create(bool showItemName, bool allowCardPreview)
 {
-	ItemPreview* itemPreview = new ItemPreview(allowEquipHint, showItemName, allowCardPreview);
+	ItemPreview* itemPreview = new ItemPreview(showItemName, allowCardPreview);
 
 	itemPreview->autorelease();
 
 	return itemPreview;
 }
 
-ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardPreview)
+ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 {
 	this->previewNode = Node::create();
 	this->nextStatline = 0;
@@ -50,7 +50,18 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardP
 	bracketStr->setStringReplacementVariables(spacebarStr);
 	dashStr->setStringReplacementVariables({ bracketStr, equipStr });
 
-	this->equipHint = allowEquipHint ? LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr) : nullptr;
+	this->equipHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr);
+
+	LocalizedString* dashStr2 = Strings::Common_Dash::create();
+	LocalizedString* bracketStr2 = Strings::Common_Brackets::create();
+	LocalizedString* spacebarStr2 = Strings::Menus_ItemPreview_Spacebar::create();
+	LocalizedString* unequipStr = Strings::Menus_ItemPreview_Unequip::create();
+
+	bracketStr2->setStringReplacementVariables(spacebarStr2);
+	dashStr2->setStringReplacementVariables({ bracketStr2, unequipStr });
+
+	this->unequipHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, dashStr2);
+	
 	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
@@ -61,6 +72,11 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardP
 	this->cardPreview->setVisible(false);
 	this->cardLabel->setVisible(false);
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
+
+	this->equipHint->enableOutline(Color4B::BLACK, 2);
+	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
+	this->unequipHint->enableOutline(Color4B::BLACK, 2);
+	this->unequipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)
 	{
@@ -74,14 +90,8 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardP
 	}
 
 	this->addChild(this->previewNode);
-
-	if (this->equipHint != nullptr)
-	{
-		this->equipHint->enableOutline(Color4B::BLACK, 2);
-		this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
-		this->addChild(this->equipHint);
-	}
-
+	this->addChild(this->equipHint);
+	this->addChild(this->unequipHint);
 	this->addChild(this->itemName);
 
 	for (auto statline : this->statlines)
@@ -92,7 +102,7 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardP
 	this->addChild(cardLabel);
 	this->addChild(cardPreview);
 
-	this->preview(nullptr);
+	this->preview(EquipHintMode::None, nullptr);
 }
 
 ItemPreview::~ItemPreview()
@@ -102,21 +112,14 @@ ItemPreview::~ItemPreview()
 void ItemPreview::onEnter()
 {
 	super::onEnter();
-
-	if (this->equipHint != nullptr)
-	{
-		this->equipHint->setVisible(false);
-	}
 }
 
 void ItemPreview::initializePositions()
 {
 	super::initializePositions();
 
-	if (this->equipHint != nullptr)
-	{
-		this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
-	}
+	this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
+	this->unequipHint->setPosition(Vec2(-172.0f, 160.0f));
 
 	this->cardPreview->setPosition(Vec2(0.0f, -72.0f));
 	this->itemName->setPosition(Vec2(0.0f, -72.0f));
@@ -138,7 +141,7 @@ void ItemPreview::toggleShowItemName(bool showItemName)
 	this->itemName->setVisible(showItemName);
 }
 
-void ItemPreview::preview(Item* item)
+void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 {
 	this->clearPreview();
 
@@ -159,9 +162,26 @@ void ItemPreview::preview(Item* item)
 		this->previewNode->addChild(Sprite::create(item->getIconResource()));
 	}
 
-	if (this->equipHint != nullptr && dynamic_cast<Equipable*>(item) != nullptr)
+	this->equipHint->setVisible(false);
+	this->unequipHint->setVisible(false);
+
+	switch(equipHintMode)
 	{
-		this->equipHint->setVisible(true);
+		case EquipHintMode::Equip:
+		{
+			this->equipHint->setVisible(dynamic_cast<Equipable*>(item) != nullptr || dynamic_cast<HexusCard*>(item) != nullptr);
+			break;
+		}
+		case EquipHintMode::Unequip:
+		{
+			this->unequipHint->setVisible(dynamic_cast<Equipable*>(item) != nullptr || dynamic_cast<HexusCard*>(item) != nullptr);
+			break;
+		}
+		default:
+		case EquipHintMode::None:
+		{
+			break;
+		}
 	}
 
 	this->itemName->setStringReplacementVariables(item->getString());

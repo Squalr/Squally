@@ -175,27 +175,25 @@ void InventoryMenu::populateItemList()
 	std::vector<Item*> equipment = this->filterMenu->getActiveFilter()->filter(this->equipmentInventory == nullptr ? std::vector<Item*>() : this->equipmentInventory->getItems());
 	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->inventory == nullptr ? std::vector<Item*>() : this->inventory->getItems());
 	
-	for (auto it = equipment.begin(); it != equipment.end(); it++)
+	for (auto item : equipment)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
 			this->performEquipmentAction(item);
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Unequip);
 		entry->showIcon();
 	}
 	
-	for (auto it = items.begin(); it != items.end(); it++)
+	for (auto item : items)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
 		{
 			this->performInventoryAction(item);
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Equip);
 		entry->hideIcon();
 	}
 

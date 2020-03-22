@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Menus/Inventory/MenuEntry.h"
+#include "Menus/Inventory/ItemMenu/ItemPreview.h"
 
 namespace cocos2d
 {
@@ -20,6 +21,8 @@ public:
 	Item* getAssociatedItem();
 	int getStackSize();
 	void setStackSize(int stackSize);
+	void setEquipHintMode(ItemPreview::EquipHintMode equipHintMode);
+	ItemPreview::EquipHintMode getEquipHintMode();
 
 protected:
 	ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource);
@@ -31,6 +34,7 @@ private:
 	ConstantString* stackString;
 	Item* associatedItem;
 	int stackSize;
+	ItemPreview::EquipHintMode equipHintMode;
 	
 	std::function<void()> onToggle;
 };

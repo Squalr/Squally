@@ -223,10 +223,8 @@ void CardsMenu::populateItemList()
 	std::sort(equipment.begin(), equipment.end(), sortLambda);
 	std::sort(items.begin(), items.end(), sortLambda);
 	
-	for (auto it = equipment.begin(); it != equipment.end(); it++)
+	for (auto item : equipment)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->equippedCardsMenu->pushVisibleItem(item, [=]()
 		{
 			if (dynamic_cast<HexusCard*>(item) != nullptr)
@@ -235,13 +233,12 @@ void CardsMenu::populateItemList()
 			}
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Unequip);
 		entry->showIcon();
 	}
 	
-	for (auto it = items.begin(); it != items.end(); it++)
+	for (auto item : items)
 	{
-		Item* item = *it;
-
 		ItemEntry* entry = this->unequippedCardsMenu->pushVisibleItem(item, [=]()
 		{
 			if (dynamic_cast<HexusCard*>(item) != nullptr)
@@ -250,6 +247,7 @@ void CardsMenu::populateItemList()
 			}
 		});
 
+		entry->setEquipHintMode(ItemPreview::EquipHintMode::Equip);
 		entry->hideIcon();
 	}
 

@@ -50,7 +50,7 @@ ItemMenu::ItemMenu()
 	this->isFocused = false;
 	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
 	this->visibleItems = std::vector<ItemEntry*>();
-	this->itemPreview = ItemPreview::create(true, false, true);
+	this->itemPreview = ItemPreview::create(false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
 	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
@@ -125,7 +125,7 @@ void ItemMenu::initializeListeners()
 
 void ItemMenu::clearPreview()
 {
-	this->itemPreview->preview(nullptr);
+	this->itemPreview->preview(ItemPreview::EquipHintMode::None, nullptr);
 }
 
 void ItemMenu::clearVisibleItems()
@@ -265,16 +265,16 @@ void ItemMenu::updateAndPositionItemText()
 	const float OffsetY = ItemMenu::LabelSpacing * float(this->visibleItems.size() / 2);
 	int index = 0;
 
-	for (auto it = this->visibleItems.begin(); it != this->visibleItems.end(); it++, index++)
+	for (auto next : this->visibleItems)
 	{
-		(*it)->setPositionX(0.0f);
-		(*it)->setPositionY(float(index) * -ItemMenu::LabelSpacing + OffsetY);
-		(*it)->setPositionZ(0.0f);
+		next->setPositionX(0.0f);
+		next->setPositionY(float(index++) * -ItemMenu::LabelSpacing + OffsetY);
+		next->setPositionZ(0.0f);
 	}
 	
 	if (this->isFocused)
 	{
-		this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
+		this->itemPreview->preview(this->visibleItems[this->selectedItemIndex]->getEquipHintMode(), this->visibleItems[this->selectedItemIndex]->getAssociatedItem());
 
 		if (this->previewCallback != nullptr)
 		{

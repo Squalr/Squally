@@ -15,14 +15,21 @@ class Weapon;
 class ItemPreview : public SmartNode
 {
 public:
-	static ItemPreview* create(bool allowEquipHint = true, bool showItemName = false, bool allowCardPreview = false);
+	enum EquipHintMode
+	{
+		None,
+		Equip,
+		Unequip,
+	};
+	
+	static ItemPreview* create(bool showItemName = false, bool allowCardPreview = false);
 
 	void toggleShowItemName(bool showItemName);
-	void preview(Item* item);
+	void preview(EquipHintMode equipHintMode, Item* item);
 	void clearPreview();
 
 protected:
-	ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardPreview);
+	ItemPreview(bool showItemName, bool allowCardPreview);
 	virtual ~ItemPreview();
 
 	void onEnter() override;
@@ -47,6 +54,7 @@ private:
 	ConstantString* cardString;
 	LocalizedLabel* cardLabel;
 	LocalizedLabel* equipHint;
+	LocalizedLabel* unequipHint;
 	LocalizedLabel* itemName;
 
 	int nextStatline;

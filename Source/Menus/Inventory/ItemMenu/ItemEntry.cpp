@@ -28,6 +28,7 @@ ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string sp
     this->onToggle = nullptr;
     this->stackSize = 1;
     this->stackString = ConstantString::create();
+    this->equipHintMode = ItemPreview::EquipHintMode::None;
 
     this->label->setStringReplacementVariables({ text, this->stackString });
 
@@ -70,4 +71,14 @@ void ItemEntry::setStackSize(int stackSize)
     {
         this->stackString->setString("(x" + std::to_string(this->stackSize) + ")");
     }
+}
+
+void ItemEntry::setEquipHintMode(ItemPreview::EquipHintMode equipHintMode)
+{
+    this->equipHintMode = equipHintMode;
+}
+
+ItemPreview::EquipHintMode ItemEntry::getEquipHintMode()
+{
+    return this->equipHintMode;
 }

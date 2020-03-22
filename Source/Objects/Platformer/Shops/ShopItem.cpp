@@ -42,7 +42,7 @@ ShopItem* ShopItem::create(ValueMap& properties)
 ShopItem::ShopItem(ValueMap& properties) : super(properties)
 {
 	this->item = nullptr;
-	this->itemPreview = ItemPreview::create(false, true, false);
+	this->itemPreview = ItemPreview::create(true, false);
 	this->itemNode = Node::create();
 	this->itemClickHitbox = ClickableNode::create();
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, ShopItem::PropertyShopPool, Value("")).asString();
@@ -82,7 +82,7 @@ void ShopItem::onEnterTransitionDidFinish()
 		{
 			this->setVisible(true);
 			this->itemNode->addChild(this->item);
-			this->itemPreview->preview(this->item);
+			this->itemPreview->preview(ItemPreview::EquipHintMode::None, this->item);
 
 			this->itemPreview->toggleShowItemName(dynamic_cast<HexusCard*>(this->item) == nullptr);
 
@@ -155,7 +155,7 @@ void ShopItem::sellItem()
 				{
 					this->available = false;
 					playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
-					this->itemPreview->preview(nullptr);
+					this->itemPreview->preview(ItemPreview::EquipHintMode::None, nullptr);
 					this->currencySprite->setVisible(false);
 					this->itemCostLabel->setVisible(false);
 					this->itemClickHitbox->setMouseClickCallback(nullptr);
