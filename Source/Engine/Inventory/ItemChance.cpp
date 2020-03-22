@@ -54,8 +54,7 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
     int currentCount = 0;
     float chance = 0.0f;
 
-    // Return 0% if the item has hit its unique cap
-    if (this->item != nullptr && uniqueCount > 0)
+    if (this->item != nullptr && ((this->probability != Probability::Guaranteed && rubberBand >= 0) || uniqueCount > 0))
     {
 		for (auto inventory : inventories)
 		{
@@ -65,7 +64,8 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
                 {
                     currentCount++;
 
-                    if (currentCount >= uniqueCount)
+                    // Return 0% if the item has hit its unique cap
+                    if (uniqueCount > 0 && currentCount >= uniqueCount)
                     {
                         return 0.0f;
                     }
@@ -135,14 +135,13 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
     // If they currently have 3 potions: (no changes, 15%)
     // If they currently have 4 potions: rubberBand - currentCount = -1 => 15% + (-1 * 0.05f) => 10%
     // If they currently have 5 potions: rubberBand - currentCount = -2 => 15% + (-2 * 0.05f) => 5%
-    // If they currently have 6 potions: rubberBand - currentCount = -3 => 15% + (-3 * 0.05f) => MIN_CAP
+    // If they currently have 6 potions: rubberBand - currentCount = -3 => 15% + (-3 * 0.05f) => MIN_CAP (chance / 8.0f)
     if (this->probability != Probability::Guaranteed && rubberBand >= 0)
     {
-        const float MinRubberBand = chance / 10.0f;
+        const float MinRubberBand = chance / 8.0f;
+        const float adjustment = rubberBandFactor * float(rubberBand - currentCount);
 
-        chance += rubberBandFactor * float(rubberBand - currentCount);
-
-        chance = MathUtils::clamp(chance, MinRubberBand, 1.0f);
+        chance = MathUtils::clamp(chance + adjustment, MinRubberBand, 1.0f);
     }
 
     return MathUtils::clamp(chance, 0.0f, 1.0f);
