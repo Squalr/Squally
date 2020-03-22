@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class Card;
+class CardData;
 class ClickableTextNode;
 
 class CardPreview : public SmartNode
@@ -16,6 +17,7 @@ public:
 	static CardPreview* create();
 	
 	void previewCard(Card* card);
+	void previewCardData(CardData* cardData, Card* card = nullptr);
 	void clearPreview();
 	void setHelpClickCallback(std::function<void(Card* card)> onHelpClick);
 
@@ -38,7 +40,7 @@ private:
 		PreviewData(Card* previewCard, cocos2d::Node* previewNode) : previewCard(previewCard), previewNode(previewNode) { }
 	};
 
-	CardPreview::PreviewData constructPreview(Card* card);
+	CardPreview::PreviewData constructPreview(CardData* cardData, Card* card);
 
 	cocos2d::Sprite* cardPad;
 	PreviewData currentPreviewData;

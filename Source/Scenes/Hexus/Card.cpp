@@ -291,9 +291,9 @@ unsigned int Card::getAttack()
 {
 	unsigned int attack = this->cardData->getAttack();
 
-	for (auto it = this->operations.begin(); it != this->operations.end(); it++)
+	for (auto next : this->operations)
 	{
-		Operation operation = *it;
+		Operation operation = next;
 		attack = this->applyOperation(attack, operation);
 	}
 

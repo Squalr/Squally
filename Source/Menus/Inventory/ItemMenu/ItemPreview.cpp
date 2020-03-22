@@ -13,6 +13,7 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardList.h"
+#include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -26,19 +27,20 @@ using namespace cocos2d;
 
 const int ItemPreview::MaxStatlines = 16;
 
-ItemPreview* ItemPreview::create(bool allowEquipHint, bool showItemName)
+ItemPreview* ItemPreview::create(bool allowEquipHint, bool showItemName, bool allowCardPreview)
 {
-	ItemPreview* itemPreview = new ItemPreview(allowEquipHint, showItemName);
+	ItemPreview* itemPreview = new ItemPreview(allowEquipHint, showItemName, allowCardPreview);
 
 	itemPreview->autorelease();
 
 	return itemPreview;
 }
 
-ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
+ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName, bool allowCardPreview)
 {
 	this->previewNode = Node::create();
 	this->nextStatline = 0;
+	this->allowCardPreview = allowCardPreview;
 
 	LocalizedString* dashStr = Strings::Common_Dash::create();
 	LocalizedString* bracketStr = Strings::Common_Brackets::create();
@@ -52,9 +54,11 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
+	this->cardPreview = CardPreview::create();
 	
 	this->itemName->enableOutline(Color4B::BLACK, 2);
 	this->itemName->setVisible(showItemName);
+	this->cardPreview->setVisible(false);
 	this->cardLabel->setVisible(false);
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
 
@@ -86,6 +90,7 @@ ItemPreview::ItemPreview(bool allowEquipHint, bool showItemName)
 	}
 	
 	this->addChild(cardLabel);
+	this->addChild(cardPreview);
 
 	this->preview(nullptr);
 }
@@ -113,6 +118,7 @@ void ItemPreview::initializePositions()
 		this->equipHint->setPosition(Vec2(-172.0f, 160.0f));
 	}
 
+	this->cardPreview->setPosition(Vec2(0.0f, -72.0f));
 	this->itemName->setPosition(Vec2(0.0f, -72.0f));
 	
 	const float OffsetX = -112.0f;
@@ -249,6 +255,12 @@ void ItemPreview::setHexusInfo(HexusCard* hexusCard)
 		}
 	}
 
+	if (this->allowCardPreview)
+	{
+		this->cardPreview->previewCardData(CardList::getInstance()->cardListByName[hexusCard->getCardKey()]);
+		this->cardPreview->setVisible(true);
+	}
+	
 	this->cardLabel->setVisible(true);
 }
 
@@ -316,6 +328,7 @@ void ItemPreview::clearPreview()
 	this->nextStatline = 0;
 	this->previewNode->removeAllChildren();
 	this->cardLabel->setVisible(false);
+	this->cardPreview->setVisible(false);
 
 	for (auto statline : this->statlines)
 	{

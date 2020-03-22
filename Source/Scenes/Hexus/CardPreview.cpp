@@ -104,20 +104,30 @@ void CardPreview::previewCard(Card* card)
 		return;
 	}
 
-	if (this->previewCache.find(card->cardData->getCardKey()) != this->previewCache.end())
+	this->previewCardData(card->cardData, card);
+}
+
+void CardPreview::previewCardData(CardData* cardData, Card* card)
+{
+	if (this->currentPreviewData.previewNode != nullptr)
 	{
-		this->currentPreviewData = this->previewCache[card->cardData->getCardKey()];
+		this->currentPreviewData.previewNode->setVisible(false);
+	}
+
+	if (this->previewCache.find(cardData->getCardKey()) != this->previewCache.end())
+	{
+		this->currentPreviewData = this->previewCache[cardData->getCardKey()];
 	}
 	else
 	{
-		this->currentPreviewData = this->constructPreview(card);
-		this->previewCache[card->cardData->getCardKey()] = this->currentPreviewData;
+		this->currentPreviewData = this->constructPreview(cardData, card);
+		this->previewCache[cardData->getCardKey()] = this->currentPreviewData;
 		this->previewPanel->addChild(this->currentPreviewData.previewNode);
 	}
 
 	this->currentPreviewData.previewNode->setVisible(true);
 	
-	switch (card->cardData->getCardType())
+	switch (cardData->getCardType())
 	{
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Binary:
@@ -143,57 +153,58 @@ void CardPreview::previewCard(Card* card)
 		}
 		default:
 		{
+			this->helpButton->setVisible(false);
 			break;
 		}
 	}
 }
 
-CardPreview::PreviewData CardPreview::constructPreview(Card* card)
+CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card* card)
 {
-	if (card == nullptr)
+	if (cardData == nullptr)
 	{
 		return PreviewData(nullptr, nullptr);
 	}
 
 	Node* preview = Node::create();
-	Sprite* previewSprite = Sprite::create(card->cardData->getCardResourceFile());
+	Sprite* previewSprite = Sprite::create(cardData->getCardResourceFile());
 
 	preview->addChild(previewSprite);
 
-	switch (card->cardData->getCardType())
+	switch (cardData->getCardType())
 	{
 		case CardData::CardType::Decimal:
 		case CardData::CardType::Binary:
 		case CardData::CardType::Hexidecimal:
 		{
-			int attack = card->getAttack();
+			int attack = card == nullptr ? cardData->getAttack() : card->getAttack();
 
 			// Show special effects
-			if (card->cardData->getCardKey() == CardKeys::Binary0 
-			|| card->cardData->getCardKey() == CardKeys::Decimal0 
-			|| card->cardData->getCardKey() == CardKeys::Hex0
-			|| card->cardData->getCardKey() == CardKeys::Decimal1
-			|| card->cardData->getCardKey() == CardKeys::Hex1)
+			if (cardData->getCardKey() == CardKeys::Binary0 
+				|| cardData->getCardKey() == CardKeys::Decimal0 
+				|| cardData->getCardKey() == CardKeys::Hex0
+				|| cardData->getCardKey() == CardKeys::Decimal1
+				|| cardData->getCardKey() == CardKeys::Hex1)
 			{
 				LocalizedLabel* specialLabel = nullptr;
 				
-				if (card->cardData->getCardKey() == CardKeys::Binary0)
+				if (cardData->getCardKey() == CardKeys::Binary0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_NoDestroyEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Decimal0)
+				else if (cardData->getCardKey() == CardKeys::Decimal0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_DrawEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Hex0)
+				else if (cardData->getCardKey() == CardKeys::Hex0)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_TurnGainsEffect::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Decimal1)
+				else if (cardData->getCardKey() == CardKeys::Decimal1)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_ReturnAfterRound::create());
 				}
-				else if (card->cardData->getCardKey() == CardKeys::Hex1)
+				else if (cardData->getCardKey() == CardKeys::Hex1)
 				{
 					specialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_CardDescriptions_Horde::create());
 				}
@@ -253,7 +264,7 @@ CardPreview::PreviewData CardPreview::constructPreview(Card* card)
 			specialLabel->setPosition(Vec2(-previewSprite->getContentSize().width / 2.0f + 8.0f, -160.0f));
 			specialLabel->setDimensions(previewSprite->getContentSize().width - 16.0f, 0.0f);
 
-			switch (card->cardData->getCardType())
+			switch (cardData->getCardType())
 			{
 				case CardData::CardType::Special_MOV:
 				{

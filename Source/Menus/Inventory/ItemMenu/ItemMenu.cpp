@@ -50,7 +50,7 @@ ItemMenu::ItemMenu()
 	this->isFocused = false;
 	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
 	this->visibleItems = std::vector<ItemEntry*>();
-	this->itemPreview = ItemPreview::create();
+	this->itemPreview = ItemPreview::create(true, false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
 	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
@@ -130,10 +130,10 @@ void ItemMenu::clearPreview()
 
 void ItemMenu::clearVisibleItems()
 {
-	for (auto it = this->itemEntryMapping.begin(); it != itemEntryMapping.end(); it++)
+	for (auto next : itemEntryMapping)
 	{
-		(*it).second->setVisible(false);
-		(*it).second->setStackSize(1);
+		next.second->setVisible(false);
+		next.second->setStackSize(1);
 	}
 
 	this->visibleItems.clear();
