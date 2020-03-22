@@ -7,7 +7,7 @@ namespace cocos2d
 	class Node;
 }
 
-class AutoCard;
+class ToggleCard;
 class CardData;
 class LocalizedLabel;
 
@@ -30,9 +30,9 @@ private:
 	typedef SmartNode super;
 
 	LocalizedLabel* description;
-	AutoCard* binCard;
-	AutoCard* decCard;
-	AutoCard* hexCard;
+	ToggleCard* binCard;
+	ToggleCard* decCard;
+	ToggleCard* hexCard;
 	LocalizedLabel* equalsLabelLeft;
 	LocalizedLabel* equalsLabelRight;
 	LocalizedLabel* binHeader;

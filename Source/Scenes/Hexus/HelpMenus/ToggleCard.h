@@ -32,6 +32,9 @@ public:
 	void setDisplayType(AutoCard::DisplayType displayType, bool triggerCallback = true);
 	void toggleNextDisplayType();
 	void togglePreviousDisplayType();
+	void setAttack(int attack);
+	int getAttack();
+	void setCardScale(float cardScale);
 
 	AutoCard* autoCard;
 

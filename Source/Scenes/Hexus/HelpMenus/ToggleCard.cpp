@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
+ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown)
 {
     ToggleCard* instance = new ToggleCard(toggleModeLeftRight, toggleModeUpDown);
 
@@ -19,7 +19,7 @@ ToggleCard* ToggleCard::create(ToggleModeLeftRight toggleModeLeftRight,  ToggleM
     return instance;
 }
 
-ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight,  ToggleModeUpDown toggleModeUpDown)
+ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown toggleModeUpDown)
 {
     this->autoCard = AutoCard::create();
 	this->upToggle = ClickableNode::create(UIResources::Menus_Buttons_ArrowUp, UIResources::Menus_Buttons_ArrowUpSelected);
@@ -354,4 +354,19 @@ void ToggleCard::togglePreviousDisplayType()
     {
         this->onToggleDisplayTypeChange();
     }
+}
+
+void ToggleCard::setAttack(int attack)
+{
+    this->autoCard->setAttack(attack);
+}
+
+int ToggleCard::getAttack()
+{
+    return this->autoCard->getAttack();
+}
+
+void ToggleCard::setCardScale(float cardScale)
+{
+    this->autoCard->setCardScale(cardScale);
 }
