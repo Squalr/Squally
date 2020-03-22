@@ -27,8 +27,6 @@ private:
 	Squally* squally;
 
 	float elapsed;
-	float timeNearDestX;
-	float timeNearDestY;
 
 	static const float FloatOffsetRadius;
 	static const float FloatOffsetAngle;

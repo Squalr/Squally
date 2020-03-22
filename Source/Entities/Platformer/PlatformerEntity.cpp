@@ -74,7 +74,7 @@ PlatformerEntity::PlatformerEntity(
 	this->animationNode->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-	this->animationNode->setFlippedX(this->isFlippedX());
+	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 
 	if (this->isFlippedY())
 	{
