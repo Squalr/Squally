@@ -27,6 +27,8 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 
 	// Endian forest drop pools
 	this->deserializers[DropPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGeneric::create(properties); };
+	this->deserializers[DropPoolEFGorgon::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGorgon::create(properties); };
+	this->deserializers[DropPoolEFGrogg::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGrogg::create(properties); };
 }
 
 DropPoolDeserializer::~DropPoolDeserializer()

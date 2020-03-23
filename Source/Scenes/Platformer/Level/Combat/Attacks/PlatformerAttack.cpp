@@ -39,9 +39,9 @@ PlatformerAttack* PlatformerAttack::clone()
 
 	if (attack != nullptr)
 	{
-		for (auto it = this->attackCompleteCallbacks.begin(); it != attackCompleteCallbacks.end(); it++)
+		for (auto next : this->attackCompleteCallbacks)
 		{
-			attack->registerAttackCompleteCallback(*it);
+			attack->registerAttackCompleteCallback(next);
 		}
 	}
 

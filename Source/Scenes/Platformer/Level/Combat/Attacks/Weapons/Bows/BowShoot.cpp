@@ -46,7 +46,7 @@ LocalizedString* BowShoot::getString()
 
 std::string BowShoot::getAttackAnimation()
 {
-	return "AttackSlash"; // Keep this the same for now
+	return "AttackShoot";
 }
 
 void BowShoot::onAttackTelegraphBegin()

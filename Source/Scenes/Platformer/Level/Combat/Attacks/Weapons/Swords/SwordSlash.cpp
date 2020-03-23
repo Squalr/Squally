@@ -46,7 +46,7 @@ LocalizedString* SwordSlash::getString()
 
 std::string SwordSlash::getAttackAnimation()
 {
-	return "AttackSwordSlash";
+	return "AttackSlash";
 }
 
 void SwordSlash::onAttackTelegraphBegin()

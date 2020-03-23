@@ -56,7 +56,7 @@ private:
 			{
 				attack = next.attack;
 
-				if (rng >= next.cumulativeProbability)
+				if (rng <= next.cumulativeProbability)
 				{
 					break;
 				}

@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -142,17 +143,17 @@ void HexusBehaviorBase::initializePositions()
 
 int HexusBehaviorBase::getWins()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getLosses()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 int HexusBehaviorBase::getDraws()
 {
-	return this->entity->getObjectStateOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
+	return SaveManager::getProfileDataOrDefault("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(0)).asInt();
 }
 
 void HexusBehaviorBase::addWin()
@@ -164,17 +165,19 @@ void HexusBehaviorBase::addWin()
 		this->giveItems();
 	}
 
-	this->entity->saveObjectState("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
+	this->iconContainer->setVisible(false);
+
+	SaveManager::SaveProfileData("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
 }
 
 void HexusBehaviorBase::addLoss()
 {
-	this->entity->saveObjectState("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
+	SaveManager::SaveProfileData("HEXUS_LOSSES_" + this->getWinLossSaveKey(), Value(this->getLosses() + 1));
 }
 
 void HexusBehaviorBase::addDraw()
 {
-	this->entity->saveObjectState("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
+	SaveManager::SaveProfileData("HEXUS_DRAWS_" + this->getWinLossSaveKey(), Value(this->getDraws() + 1));
 }
 
 void HexusBehaviorBase::registerWinCallback(std::function<void()> winCallback)
@@ -289,9 +292,9 @@ void HexusBehaviorBase::onWin()
 
 	this->addWin();
 
-	for (auto it = this->winCallbacks.begin(); it != this->winCallbacks.end(); it++)
+	for (auto callback : this->winCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 

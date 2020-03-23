@@ -46,14 +46,13 @@ LocalizedString* AxeSwing::getString()
 
 std::string AxeSwing::getAttackAnimation()
 {
-	return "AttackSlash"; // Keep this the same for now
+	return "AttackSlash";
 }
 
 void AxeSwing::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 	
-	// Sound will be changed out later
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
