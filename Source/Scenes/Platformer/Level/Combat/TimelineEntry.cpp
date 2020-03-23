@@ -48,6 +48,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->skull = Sprite::create(UIResources::Combat_Skull);
 	this->orphanedAttackCache = Node::create();
 	this->isCasting = false;
+	this->isBlocking = false;
 	this->spawnIndex = spawnIndex;
 	this->combatBehavior = nullptr;
 

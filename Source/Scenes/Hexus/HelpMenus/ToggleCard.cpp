@@ -6,6 +6,7 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -29,6 +30,11 @@ ToggleCard::ToggleCard(ToggleModeLeftRight toggleModeLeftRight, ToggleModeUpDown
     this->toggleModeLeftRight = toggleModeLeftRight;
     this->toggleModeUpDown = toggleModeUpDown;
     this->onToggleAttackChange = nullptr;
+
+    this->upToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->downToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->leftToggle->setClickSound(SoundResources::Menus_ButtonClick4);
+    this->rightToggle->setClickSound(SoundResources::Menus_ButtonClick4);
 
     this->addChild(this->upToggle);
     this->addChild(this->downToggle);

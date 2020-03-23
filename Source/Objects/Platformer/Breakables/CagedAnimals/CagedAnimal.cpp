@@ -85,7 +85,18 @@ void CagedAnimal::onBreak()
 		SoundResources::Notifications_NotificationGood1
 	));
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->animalNode));
+	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		this,
+		this->animalNode,
+		ObjectEvents::SpawnMethod::TopMost,
+		ObjectEvents::PositionMode::Retain,
+		[&]()
+		{
+		},
+		[&]()
+		{
+		}
+	));
 
 	this->shineFx->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),

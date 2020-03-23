@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="836">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="837">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
@@ -101,7 +101,6 @@
     <property name="transition" value="down"/>
    </properties>
   </object>
-  <object id="821" name="solid" type="collision" x="-103.439" y="1187.41" width="2270.88" height="171.48"/>
   <object id="834" name="solid" type="collision" x="-111.198" y="183.957" width="2270.88" height="171.48"/>
   <object id="835" name="merlin" type="entity" x="1182.91" y="1061.94" width="128" height="128">
    <properties>
@@ -110,6 +109,7 @@
     <property name="quest-line" value="water-spellbook"/>
    </properties>
   </object>
+  <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
