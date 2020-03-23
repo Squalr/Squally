@@ -13,6 +13,8 @@
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLiana.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/SoundResources.h"
@@ -34,11 +36,16 @@ ReturnToQueen* ReturnToQueen::create(GameObject* owner, QuestLine* questLine)
 
 ReturnToQueen::ReturnToQueen(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToQueen::MapKeyQuest, false)
 {
+	ValueMap props = ValueMap();
+
 	this->elriel = nullptr;
 	this->guano = nullptr;
 	this->queenLiana = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
+	this->rewardPool = RewardPoolLiana::create(props);
+
+	this->addChild(this->rewardPool);
 }
 
 ReturnToQueen::~ReturnToQueen()
@@ -133,6 +140,9 @@ void ReturnToQueen::runCinematicSequence()
 			),
 			[=]()
 			{
+				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
+
+				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterShort2,
 			false
@@ -217,7 +227,7 @@ void ReturnToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->elriel, false),
 				DialogueEvents::BuildPreviewNode(&this->guano, true)
 			),
@@ -255,7 +265,6 @@ void ReturnToQueen::runCinematicSequence()
 			[=]()
 			{
 				this->setPostText();
-				this->complete();
 			},
 			SoundResources::Platformer_Entities_Generic_ChatterMedium4,
 			true

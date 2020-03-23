@@ -6,8 +6,9 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CraftingPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolT1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -27,7 +28,7 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 }
 
 PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), CraftingPoolTier1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), AlchemyPoolT1::create(SampleMethod::Random, 1, 2), SmithingPoolT1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
 {
 }
 

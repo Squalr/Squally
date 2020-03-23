@@ -7,8 +7,9 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/EndianForest/CurrencyPoolEFGeneric.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CraftingPoolTier1.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolT1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -28,7 +29,7 @@ DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 }
 
 DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
-	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), CraftingPoolTier1::create(SampleMethod::Random, 1, 2), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), AlchemyPoolT1::create(SampleMethod::Random, 1, 2), SmithingPoolT1::create(SampleMethod::Random, 1, 2), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
 {
 }
 

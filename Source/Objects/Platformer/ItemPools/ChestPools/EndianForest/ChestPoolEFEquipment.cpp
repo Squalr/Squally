@@ -2,9 +2,6 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/CraftingPoolTier1.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier1/PotionPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/EquipmentPoolTier1.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 

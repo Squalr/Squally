@@ -463,7 +463,7 @@
   </object>
   <object id="1024" name="portal" type="object" x="1260.98" y="1190.81" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-port"/>
+    <property name="attached-behavior" value="disabled-portal"/>
     <property name="map" value="EndianForest/Town_Liana"/>
     <property name="transition" value="main"/>
    </properties>

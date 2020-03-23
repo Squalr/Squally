@@ -6,6 +6,7 @@ class Elriel;
 class Guano;
 class QueenLiana;
 class QuestLine;
+class RewardPoolLiana;
 class Scrappy;
 class Squally;
 
@@ -30,6 +31,8 @@ private:
 
 	void runCinematicSequence();
 	void setPostText();
+
+	RewardPoolLiana* rewardPool;
 
 	Elriel* elriel;
 	Guano* guano;

@@ -235,3 +235,4 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/TaserRodPlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/VoidWandPlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/WandRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/WoodenWandPlans.h"
