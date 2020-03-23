@@ -135,6 +135,7 @@ Hexus::Hexus()
 	this->gameState->passButtonPointer = this->statePass->passButton;
 	this->gameState->lastStandButtonPointer = this->statePass->lastStandButton;
 	this->gameState->claimVictoryButtonPointer = this->statePass->claimVictoryButton;
+	this->gameState->cardPreviewPointer = this->cardPreviewComponent;
 
 	this->addChild(this->gameBackground);
 	this->addChild(this->boardSelection);

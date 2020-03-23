@@ -11,6 +11,8 @@
 #include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/CardPreview.h"
+#include "Scenes/Hexus/Components/CardPreviewComponent.h"
 #include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/StateOverride.h"
@@ -35,35 +37,30 @@ TutorialPuzzleB::TutorialPuzzleB() : super(GameState::StateType::Neutral)
 	this->focusTakeOver = FocusTakeOver::create();
 	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_A_4Bits::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->decimalCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_B_Overflow::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->helpTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleB_C_HelpMenu::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
+	this->introNextButton = this->createNextButton();
+	this->decimalCardsNextButton = this->createNextButton();
+	this->helpNextButton = this->createNextButton();
+	this->helpArrow = HelpArrow::create();
 
-	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();
-
-	introNextLabel->enableOutline(Color4B::BLACK, 2);
-	introNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->introNextButton = ClickableTextNode::create(introNextLabel, introNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
-	
-	LocalizedLabel* decimalCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* decimalCardsNextLabelSelected = decimalCardsNextLabel->clone();
-
-	decimalCardsNextLabel->enableOutline(Color4B::BLACK, 2);
-	decimalCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->decimalCardsNextButton = ClickableTextNode::create(decimalCardsNextLabel, decimalCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->helpArrow->setRotation(270.0f);
 
 	this->introTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->decimalCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
+	this->helpTutorialLabel->enableOutline(Color4B::BLACK, 2);
 
 	this->introTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->decimalCardsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->helpTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->focusTakeOver);
 	this->addChild(this->introTutorialLabel);
 	this->addChild(this->decimalCardsTutorialLabel);
-
+	this->addChild(this->helpTutorialLabel);
 	this->addChild(this->introNextButton);
 	this->addChild(this->decimalCardsNextButton);
+	this->addChild(this->helpNextButton);
+	this->addChild(this->helpArrow);
 }
 
 TutorialPuzzleB::~TutorialPuzzleB()
@@ -76,9 +73,11 @@ void TutorialPuzzleB::onEnter()
 
 	this->introTutorialLabel->setOpacity(0);
 	this->decimalCardsTutorialLabel->setOpacity(0);
+	this->helpTutorialLabel->setOpacity(0);
 
 	this->introNextButton->disableInteraction(0);
 	this->decimalCardsNextButton->disableInteraction(0);
+	this->helpNextButton->disableInteraction(0);
 }
 
 void TutorialPuzzleB::initializePositions()
@@ -89,9 +88,13 @@ void TutorialPuzzleB::initializePositions()
 
 	this->introTutorialLabel->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 32.0f);
 	this->decimalCardsTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
+	this->helpTutorialLabel->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 32.0f);
 	
 	this->introNextButton->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 32.0f);
 	this->decimalCardsNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
+	this->helpNextButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 32.0f);
+
+	this->helpArrow->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter - 224.0f, visibleSize.height / 2.0f - 188.0f);
 }
 
 void TutorialPuzzleB::initializeListeners()
@@ -124,6 +127,10 @@ void TutorialPuzzleB::initializeCallbacks(GameState* gameState)
 		this->runTutorialDecimalCards(gameState);
 	});
 	this->decimalCardsNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
+	{
+		this->runTutorialHelp(gameState);
+	});
+	this->helpNextButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->tryUnHijackState(gameState);
 	});
@@ -162,10 +169,33 @@ void TutorialPuzzleB::runTutorialDecimalCards(GameState* gameState)
 	this->focusTakeOver->focus(focusTargets);
 }
 
-void TutorialPuzzleB::unHijackState(GameState* gameState)
+void TutorialPuzzleB::runTutorialHelp(GameState* gameState)
 {
 	this->decimalCardsNextButton->disableInteraction();
 	this->decimalCardsNextButton->runAction(FadeTo::create(0.25f, 0));
 	this->decimalCardsTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->helpNextButton->enableInteraction(0);
+	this->helpNextButton->runAction(FadeTo::create(0.25f, 255));
+	this->helpTutorialLabel->runAction(FadeTo::create(0.25f, 255));
+	this->helpArrow->showPointer();
+
+	std::vector<Node*> focusTargets = std::vector<Node*>();
+
+	if (!gameState->playerHand->rowCards.empty())
+	{
+		gameState->cardPreviewPointer->getCardPreview()->previewCard(gameState->playerHand->rowCards[0]);
+	}
+
+	focusTargets.push_back(gameState->cardPreviewPointer);
+
+	this->focusTakeOver->focus(focusTargets);
+}
+
+void TutorialPuzzleB::unHijackState(GameState* gameState)
+{
+	this->helpNextButton->disableInteraction();
+	this->helpNextButton->runAction(FadeTo::create(0.25f, 0));
+	this->helpTutorialLabel->runAction(FadeTo::create(0.25f, 0));
+	this->helpArrow->hidePointer();
 	this->focusTakeOver->unfocus();
 }

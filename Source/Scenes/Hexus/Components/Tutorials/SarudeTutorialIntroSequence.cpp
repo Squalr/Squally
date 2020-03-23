@@ -32,18 +32,10 @@ SarudeTutorialIntroSequence::SarudeTutorialIntroSequence() : super(GameState::St
 	this->focusTakeOver = FocusTakeOver::create();
 	this->lossDisplayTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_Sarude_RealMatch::create(), Size(420.0f, 0.0f));
 	this->helpArrowLossDisplay = HelpArrow::create();
-
-	LocalizedLabel* lossesDisplayNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-	LocalizedLabel* lossesDisplayNextLabelSelected = lossesDisplayNextLabel->clone();
-
-	lossesDisplayNextLabel->enableOutline(Color4B::BLACK, 2);
-	lossesDisplayNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->lossDisplayNextButton = ClickableTextNode::create(lossesDisplayNextLabel, lossesDisplayNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
+	this->lossDisplayNextButton = this->createNextButton();
 
 	this->lossDisplayTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->lossDisplayTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
-
 	this->helpArrowLossDisplay->setRotation(0.0f);
 
 	this->addChild(this->focusTakeOver);

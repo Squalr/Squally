@@ -33,15 +33,8 @@ TutorialDIntroSequence::TutorialDIntroSequence() : super(GameState::StateType::N
 	this->focusTakeOver = FocusTakeOver::create();
 	this->handCardsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_D_UseMov::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
-
-	LocalizedLabel* handCardsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-	LocalizedLabel* handCardsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-
-	handCardsNextLabel->enableOutline(Color4B::BLACK, 2);
-	handCardsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->handCardsNextButton = ClickableTextNode::create(handCardsNextLabel, handCardsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
-
+	this->handCardsNextButton = this->createNextButton();
+	
 	this->handCardsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->handCardsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->helpArrowHandCards->setRotation(0.0f);

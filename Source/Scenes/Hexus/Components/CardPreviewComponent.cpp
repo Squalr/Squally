@@ -46,6 +46,11 @@ void CardPreviewComponent::initializePositions()
 	this->cardPreview->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
 }
 
+CardPreview* CardPreviewComponent::getCardPreview()
+{
+	return this->cardPreview;
+}
+
 void CardPreviewComponent::setHelpClickCallback(std::function<void(CardData*)> onHelpClick)
 {
 	this->cardPreview->setHelpClickCallback(onHelpClick);

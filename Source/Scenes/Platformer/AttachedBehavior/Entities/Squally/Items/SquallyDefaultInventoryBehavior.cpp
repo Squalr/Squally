@@ -7,6 +7,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
+#include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
@@ -107,6 +108,8 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			}
 
 			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 420);
+
+			PlatformerEvents::TriggerEquippedItemsChanged();
 		}
 
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);

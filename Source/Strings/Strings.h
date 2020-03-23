@@ -4329,6 +4329,21 @@ namespace Strings
 		virtual ~Hexus_Tutorials_PuzzleB_B_Overflow() = default;
 	};
 
+	class Hexus_Tutorials_PuzzleB_C_HelpMenu : public LocalizedString
+	{
+	public:
+		static Hexus_Tutorials_PuzzleB_C_HelpMenu* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_Tutorials_PuzzleB_C_HelpMenu();
+		virtual ~Hexus_Tutorials_PuzzleB_C_HelpMenu() = default;
+	};
+
 	class Hexus_Tutorials_PuzzleC_A_Overflow : public LocalizedString
 	{
 	public:

@@ -66,6 +66,23 @@ GameState::GameState()
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
 
+	this->lossesDisplayPointer = nullptr;
+	this->playerBinaryRowTotalPointer = nullptr;
+	this->playerDecimalRowTotalPointer = nullptr;
+	this->playerHexRowTotalPointer = nullptr;
+	this->enemyBinaryRowTotalPointer = nullptr;
+	this->enemyDecimalRowTotalPointer = nullptr;
+	this->enemyHexRowTotalPointer = nullptr;
+	this->scoreTotalPointer = nullptr;
+	this->deckCardCountDisplayPointer = nullptr;
+	this->handCardCountDisplayPointer = nullptr;
+	this->remainingCardDisplayPointer = nullptr;
+	this->drawCountDisplayPointer = nullptr;
+	this->passButtonPointer = nullptr;
+	this->lastStandButtonPointer = nullptr;
+	this->claimVictoryButtonPointer = nullptr;
+	this->cardPreviewPointer = nullptr;
+
 	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
 	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
 

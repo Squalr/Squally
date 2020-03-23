@@ -11,6 +11,7 @@ class CardPreviewComponent : public ComponentBase
 public:
 	static CardPreviewComponent* create();
 	
+	CardPreview* getCardPreview();
 	void setHelpClickCallback(std::function<void(CardData*)> onHelpClick);
 
 protected:

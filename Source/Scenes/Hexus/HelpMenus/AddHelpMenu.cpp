@@ -236,7 +236,7 @@ void AddHelpMenu::runAnimationLoop()
 
 						if (attackSum >= 16)
 						{
-							this->previewCardB->autoCard->activeCard->runUnderflowEffect();
+							this->previewCardB->autoCard->activeCard->runOverflowEffect();
 							this->animatedLabelC->setColor(Color3B::RED);
 						}
 						

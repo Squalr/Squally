@@ -32,15 +32,8 @@ TutorialAWinningRound::TutorialAWinningRound() : super(GameState::StateType::Tur
 	this->focusTakeOver = FocusTakeOver::create();
 	this->scoreTotalsTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_A_WinningRound::create(), Size(420.0f, 0.0f));
 	this->helpArrowScoreTotals = HelpArrow::create();
-
-	LocalizedLabel* scoreTotalsNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* scoreTotalsNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-
-	scoreTotalsNextLabel->enableOutline(Color4B::BLACK, 2);
-	scoreTotalsNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->scoreTotalsNextButton = ClickableTextNode::create(scoreTotalsNextLabel, scoreTotalsNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
-
+	this->scoreTotalsNextButton = this->createNextButton();
+	
 	this->scoreTotalsTutorialLabel->enableOutline(Color4B::BLACK, 2);
 	this->scoreTotalsTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->helpArrowScoreTotals->setRotation(-90.0f);

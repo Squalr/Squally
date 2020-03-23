@@ -33,15 +33,8 @@ SarudeTutorialClaimVictory::SarudeTutorialClaimVictory() : super(GameState::Stat
 	this->focusTakeOver = FocusTakeOver::create();
 	this->claimVictoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_Sarude_ClaimWin::create(), Size(640.0f, 0.0f), TextHAlignment::CENTER);
 	this->helpArrowHandCards = HelpArrow::create();
-
-	LocalizedLabel* tutorialNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-	LocalizedLabel* tutorialNextLabelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_GotIt::create());
-
-	tutorialNextLabel->enableOutline(Color4B::BLACK, 2);
-	tutorialNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->tutorialNextButton = ClickableTextNode::create(tutorialNextLabel, tutorialNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
-
+	this->tutorialNextButton = this->createNextButton();
+	
 	this->claimVictoryLabel->enableOutline(Color4B::BLACK, 2);
 	this->claimVictoryLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 	this->helpArrowHandCards->setRotation(0.0f);

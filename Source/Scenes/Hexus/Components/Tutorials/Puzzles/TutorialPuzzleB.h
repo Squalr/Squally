@@ -30,10 +30,15 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialIntro(GameState* gameState);
 	void runTutorialDecimalCards(GameState* gameState);
-\
+	void runTutorialHelp(GameState* gameState);
+
 	FocusTakeOver* focusTakeOver;
 	LocalizedLabel* introTutorialLabel;
 	LocalizedLabel* decimalCardsTutorialLabel;
+	LocalizedLabel* helpTutorialLabel;
 	ClickableTextNode* introNextButton;
 	ClickableTextNode* decimalCardsNextButton;
+	ClickableTextNode* helpNextButton;
+
+	HelpArrow* helpArrow;
 };

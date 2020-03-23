@@ -34,22 +34,13 @@ TutorialPuzzleD::TutorialPuzzleD() : super(GameState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
 	this->introTutorialLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Hexus_Tutorials_PuzzleD_A_Order::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()), Size(640.0f, 0.0f), TextHAlignment::CENTER);
-	
-	LocalizedLabel* introNextLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Next::create());
-	LocalizedLabel* introNextLabelSelected = introNextLabel->clone();
+	this->introNextButton = this->createNextButton();
 
-	introNextLabel->enableOutline(Color4B::BLACK, 2);
-	introNextLabelSelected->enableOutline(Color4B::BLACK, 2);
-
-	this->introNextButton = ClickableTextNode::create(introNextLabel, introNextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
-	
 	this->introTutorialLabel->enableOutline(Color4B::BLACK, 2);
-
 	this->introTutorialLabel->setAnchorPoint(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->focusTakeOver);
 	this->addChild(this->introTutorialLabel);
-
 	this->addChild(this->introNextButton);
 }
 
