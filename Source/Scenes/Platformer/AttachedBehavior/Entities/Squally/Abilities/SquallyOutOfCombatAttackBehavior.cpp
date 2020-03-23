@@ -7,6 +7,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -58,13 +59,17 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 {
 	Weapon* weapon = this->getWeapon();
 
-	if (weapon != nullptr)
+	if (weapon == nullptr)
 	{
-		return "AttackFast";
+		return "AttackOverworldPunchFast";
+	}
+	else if (dynamic_cast<Bow*>(weapon))
+	{
+		return "AttackOverworldShoot";
 	}
 	else
 	{
-		return "AttackPunchFast";
+		return "AttackOverworldSlash";
 	}
 }
 

@@ -66,5 +66,5 @@ std::string CrystalBow::getSerializationKey()
 
 Vec2 CrystalBow::getDisplayOffset()
 {
-	return Vec2(-10.0f, -50.0f);
+	return Vec2(-10.0f, -74.0f);
 }
