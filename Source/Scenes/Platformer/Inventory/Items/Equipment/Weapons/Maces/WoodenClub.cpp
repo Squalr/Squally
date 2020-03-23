@@ -66,5 +66,5 @@ std::string WoodenClub::getSerializationKey()
 
 Vec2 WoodenClub::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-4.0f, -2.0f);
 }

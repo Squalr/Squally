@@ -28,6 +28,8 @@
 
 using namespace cocos2d;
 
+const bool SquallyEquipmentVisualBehavior::InvertDebugControls = true;
+
 const std::string SquallyEquipmentVisualBehavior::MapKey = "squally-equipment-visuals";
 
 SquallyEquipmentVisualBehavior* SquallyEquipmentVisualBehavior::create(GameObject* owner)
@@ -87,14 +89,22 @@ void SquallyEquipmentVisualBehavior::onLoad()
 
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
-		// Enable to debug hat visual offsets:
-		// this->debugHud->setVisible(true);
+		// Enable to debug weapon/hat visual offsets:
+		this->debugHud->setVisible(true);
 
 		this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_J }, [=](InputEvents::InputArgs* args)
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
-				this->debugOffset.x -= 2.0f;
+				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
+				{
+					this->debugOffset.y -= 2.0f;
+				}
+				else
+				{
+					this->debugOffset.x -= 2.0f;
+				}
+
 				this->updateEquipmentVisual();
 			}
 		});
@@ -103,7 +113,15 @@ void SquallyEquipmentVisualBehavior::onLoad()
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
-				this->debugOffset.x += 2.0f;
+				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
+				{
+					this->debugOffset.y += 2.0f;
+				}
+				else
+				{
+					this->debugOffset.x += 2.0f;
+				}
+
 				this->updateEquipmentVisual();
 			}
 		});
@@ -112,7 +130,15 @@ void SquallyEquipmentVisualBehavior::onLoad()
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
-				this->debugOffset.y -= 2.0f;
+				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
+				{
+					this->debugOffset.x += 2.0f;
+				}
+				else
+				{
+					this->debugOffset.y -= 2.0f;
+				}
+				
 				this->updateEquipmentVisual();
 			}
 		});
@@ -121,7 +147,15 @@ void SquallyEquipmentVisualBehavior::onLoad()
 		{
 			if (Input::isPressed(EventKeyboard::KeyCode::KEY_ALT))
 			{
-				this->debugOffset.y += 2.0f;
+				if (SquallyEquipmentVisualBehavior::InvertDebugControls)
+				{
+					this->debugOffset.x -= 2.0f;
+				}
+				else
+				{
+					this->debugOffset.y += 2.0f;
+				}
+
 				this->updateEquipmentVisual();
 			}
 		});
@@ -176,7 +210,7 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 			if (offhand != nullptr)
 			{
 				offhandAnim->replaceSprite(offhand->getIconResource());
-				offhandAnim->setOffset(offhand->getDisplayOffset());
+				offhandAnim->setOffset(offhand->getDisplayOffset() + this->debugOffset);
 			}
 			else
 			{
@@ -192,7 +226,7 @@ void SquallyEquipmentVisualBehavior::updateEquipmentVisual()
 			if (weapon != nullptr)
 			{
 				mainhand->replaceSprite(weapon->getIconResource());
-				mainhand->setOffset(weapon->getDisplayOffset());
+				mainhand->setOffset(weapon->getDisplayOffset() + this->debugOffset);
 			}
 			else
 			{

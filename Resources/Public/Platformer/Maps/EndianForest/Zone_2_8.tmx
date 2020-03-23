@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1030">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1032">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -455,7 +455,7 @@
     <property name="no-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1003" name="solid" type="collision" x="700.319" y="25.6523" width="126.878" height="1843.48"/>
+  <object id="1003" name="solid" type="collision" x="154.864" y="-16.7719" width="126.878" height="1843.48"/>
   <object id="1022" name="cinematic-marker" type="object" x="2992.57" y="1790.97" width="78.7879" height="88">
    <properties>
     <property name="tag" value="elriel-exit"/>
@@ -466,6 +466,13 @@
     <property name="attached-behavior" value="disabled-portal"/>
     <property name="map" value="EndianForest/Town_Liana"/>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="1031" name="edge-portal" type="object" x="275.515" y="1442.42" width="552" height="200">
+   <properties>
+    <property name="direction" value="down"/>
+    <property name="map" value="EndianForest/Zone_2_1"/>
+    <property name="transition" value="fall"/>
    </properties>
   </object>
  </objectgroup>

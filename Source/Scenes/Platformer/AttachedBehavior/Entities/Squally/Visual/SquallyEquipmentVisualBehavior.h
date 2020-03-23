@@ -35,4 +35,6 @@ private:
 	LocalizedLabel* debugOffsetYLabel;
 
 	Squally* squally;
+
+	static const bool InvertDebugControls;
 };

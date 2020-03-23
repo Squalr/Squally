@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="910">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="911">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -224,14 +224,9 @@
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="840" name="cipher-chest" type="object" x="1118.24" y="535.21" width="128" height="128">
+  <object id="840" name="chest" type="object" x="1118.24" y="535.21" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="0"/>
-    <property name="reward-pool" value=""/>
-    <property name="rule" value="{i}"/>
-    <property name="tokens" value=""/>
-    <property name="tutorial" value=""/>
+    <property name="reward-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="868" name="iou" type="object" x="7208.26" y="2102.32" width="87" height="87"/>
@@ -257,6 +252,11 @@
   <object id="884" name="spawn" type="object" x="8671.55" y="2065.87" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="910" name="spawn" type="object" x="2432" y="132" width="128" height="128">
+   <properties>
+    <property name="transition" value="fall"/>
    </properties>
   </object>
  </objectgroup>

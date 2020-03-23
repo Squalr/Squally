@@ -22,9 +22,9 @@ GlowingPendant* GlowingPendant::create()
 
 GlowingPendant::GlowingPendant() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	4,
+	2,
 	// Mana
-	4,
+	2,
 	// Attack
 	1,
 	// Armor

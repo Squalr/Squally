@@ -673,7 +673,7 @@
   </object>
   <object id="911" name="portal" type="object" x="125.333" y="5667.03" width="256" height="256">
    <properties>
-    <property name="map" value="EndianForest/Zone_1_2"/>
+    <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="town"/>
    </properties>
   </object>

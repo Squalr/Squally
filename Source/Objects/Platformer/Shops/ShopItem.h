@@ -33,6 +33,7 @@ private:
 	typedef GameObject super;
 
 	void sellItem();
+	void removeShopItem();
 
 	ItemPreview* itemPreview;
 	Item* item;

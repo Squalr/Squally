@@ -127,6 +127,18 @@ void ConfirmationMenu::initializeListeners()
 
 		this->close();
 	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+
+		args->handle();
+
+		this->confirm();
+	});
 }
 
 void ConfirmationMenu::disableBackdrop()

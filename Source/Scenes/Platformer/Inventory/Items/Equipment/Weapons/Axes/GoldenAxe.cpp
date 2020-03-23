@@ -75,3 +75,8 @@ Vec2 GoldenAxe::getWeaponOffset()
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
 }
+
+Vec2 GoldenAxe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
+}

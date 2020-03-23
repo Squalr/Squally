@@ -75,3 +75,8 @@ Vec2 CrystalAxe::getWeaponOffset()
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
 }
+
+Vec2 CrystalAxe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
+}

@@ -75,3 +75,8 @@ Vec2 BoneAxe::getWeaponOffset()
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
 	return Vec2(0.0f, 212.0f);
 }
+
+Vec2 BoneAxe::getDisplayOffset()
+{
+	return Vec2(28.0f, -4.0f);
+}

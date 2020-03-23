@@ -76,7 +76,7 @@ PlatformerEntity::PlatformerEntity(
 
 	this->animationNode->setFlippedX(GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipX, Value(false)).asBool());
 
-	if (this->isFlippedY())
+	if (GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool())
 	{
 		this->setRotation(180.0f);
 	}
@@ -233,7 +233,9 @@ bool PlatformerEntity::isFlippedX()
 
 bool PlatformerEntity::isFlippedY()
 {
-	return this->getAnimations()->getFlippedY();
+	// Flipped Y actually involves in rotating the entire entity. This is to properly position collision boxes (flipping the anims wouldnt do this)
+	// As of now, this value doesn't change at run-time, so just read it from properties.
+	return GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::MapKeyFlipY, Value(false)).asBool();
 }
 
 PlatformerEntity* PlatformerEntity::uiClone()

@@ -40,6 +40,7 @@ public:
 
 	Item* getItem();
 	float calculateProbability(std::vector<Inventory*> inventories);
+	Probability getProbability();
 
 protected:
 	ItemChance(Item* item, Probability probability);

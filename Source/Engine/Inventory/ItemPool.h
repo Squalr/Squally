@@ -13,7 +13,7 @@ public:
 protected:
 	ItemPool(const cocos2d::ValueMap& properties, std::string poolName = "");
 	ItemPool(std::string poolName = "");
-	~ItemPool();
+	virtual ~ItemPool();
 
 	void initializeListeners() override;
 
@@ -38,6 +38,8 @@ private:
 
 		ProbabilityData(ItemChance* itemChance, float probability) : itemChance(itemChance), probability(probability) { }
 	};
+
+	void shuffleItems();
 
 	cocos2d::Node* itemsNode;
 

@@ -146,3 +146,8 @@ float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
 
     return MathUtils::clamp(chance, 0.0f, 1.0f);
 }
+
+ItemChance::Probability ItemChance::getProbability()
+{
+    return this->probability;
+}

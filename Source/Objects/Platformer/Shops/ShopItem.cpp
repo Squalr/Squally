@@ -14,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
+#include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
@@ -146,26 +147,29 @@ void ShopItem::sellItem()
 		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
+
 			int playerCurrency = playerCurrencyInventory->getCurrencyCount(IOU::getIOUIdentifier());
 			
 			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
 			{
-				entityInventoryBehavior->getInventory()->tryInsert(this->item->clone(),
-				[=](Item*)
+				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+				playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
+
+				if (dynamic_cast<HexusCard*>(this->item) != nullptr)
 				{
-					this->available = false;
-					playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
-					this->itemPreview->preview(ItemPreview::EquipHintMode::None, nullptr);
-					this->currencySprite->setVisible(false);
-					this->itemCostLabel->setVisible(false);
-					this->itemClickHitbox->setMouseClickCallback(nullptr);
-					this->itemClickHitbox->disableInteraction(0);
-				},
-				[=](Item*)
-				{
-					// Failure!
-				});
+					this->removeShopItem();
+				}
 			}
 		});
 	}, Squally::MapKey);
+}
+
+void ShopItem::removeShopItem()
+{
+	this->available = false;
+	this->itemPreview->preview(ItemPreview::EquipHintMode::None, nullptr);
+	this->currencySprite->setVisible(false);
+	this->itemCostLabel->setVisible(false);
+	this->itemClickHitbox->setMouseClickCallback(nullptr);
+	this->itemClickHitbox->disableInteraction(0);
 }
