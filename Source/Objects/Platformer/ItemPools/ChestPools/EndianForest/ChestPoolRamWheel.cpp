@@ -20,7 +20,8 @@ ChestPoolRamWheel* ChestPoolRamWheel::create(ValueMap& properties)
 
 ChestPoolRamWheel::ChestPoolRamWheel(ValueMap& properties) : super(
 	properties, ChestPoolRamWheel::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ })
+	{
+	})
 {
 	this->addItemToPool(ItemChance::create(RamWheel::create(), ItemChance::Probability::Guaranteed));
 }

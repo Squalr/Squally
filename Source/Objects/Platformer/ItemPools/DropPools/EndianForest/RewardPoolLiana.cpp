@@ -24,7 +24,8 @@ RewardPoolLiana* RewardPoolLiana::create(ValueMap& properties)
 }
 
 RewardPoolLiana::RewardPoolLiana(ValueMap& properties) : super(properties, RewardPoolLiana::PoolName, SampleMethod::Guarantee, 2, 2, nullptr,
-	{ })
+	{
+	})
 {
 	this->addItemToPool(ItemChance::create(WoodenSword::create(), ItemChance::Probability::VeryCommon));
 	this->addItemToPool(ItemChance::create(WoodenAxe::create(), ItemChance::Probability::VeryCommon));

@@ -37,6 +37,7 @@ public:
 	};
 
 	static ItemChance* create(Item* item, Probability probability);
+	ItemChance* clone();
 
 	Item* getItem();
 	float calculateProbability(std::vector<Inventory*> inventories);

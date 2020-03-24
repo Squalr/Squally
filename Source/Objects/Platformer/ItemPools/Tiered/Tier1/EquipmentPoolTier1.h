@@ -5,7 +5,7 @@
 class EquipmentPoolTier1 : public MinMaxPool
 {
 public:
-	static EquipmentPoolTier1* create(SampleMethod sampleMethod, int min = 1, int max = 1);
+	static EquipmentPoolTier1* create(SampleMethod sampleMethod = SampleMethod::Random, int min = 1, int max = 1);
 
 protected:
 	EquipmentPoolTier1(SampleMethod sampleMethod, int min, int max);

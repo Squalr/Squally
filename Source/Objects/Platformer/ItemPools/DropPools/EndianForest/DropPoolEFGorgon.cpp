@@ -29,7 +29,10 @@ DropPoolEFGorgon* DropPoolEFGorgon::create(ValueMap& properties)
 }
 
 DropPoolEFGorgon::DropPoolEFGorgon(ValueMap& properties) : super(properties, DropPoolEFGorgon::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolEFGeneric::create(properties),
-	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{
+		CardPoolTier1::create(SampleMethod::Random, 0, 1),
+		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
+	})
 {
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));

@@ -40,15 +40,18 @@ void ItemPool::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
+	if (!this->poolName.empty())
 	{
-		ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
 		{
-			args->callback(this->getItemFromPool(true, args->inventories));
-		}
-	}));
+			ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
+			
+			if (args != nullptr)
+			{
+				args->callback(this->getItemFromPool(true, args->inventories));
+			}
+		}));
+	}
 }
 
 int ItemPool::getPoolSize()

@@ -6,11 +6,14 @@ class Item;
 class ItemChance;
 class Inventory;
 
+// Defines a pool of items that can be randomly sampled.
 class ItemPool : public GameObject
 {
 public:
 
 protected:
+	friend class MergePool;
+	
 	ItemPool(const cocos2d::ValueMap& properties, std::string poolName = "");
 	ItemPool(std::string poolName = "");
 	virtual ~ItemPool();

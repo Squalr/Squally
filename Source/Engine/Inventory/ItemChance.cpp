@@ -41,6 +41,11 @@ ItemChance::~ItemChance()
 {
 }
 
+ItemChance* ItemChance::clone()
+{
+    return ItemChance::create(this->item == nullptr ? nullptr : this->item->clone(), this->probability);
+}
+
 Item* ItemChance::getItem()
 {
     return this->item;

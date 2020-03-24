@@ -20,7 +20,8 @@ ChestPoolBlueGem* ChestPoolBlueGem::create(ValueMap& properties)
 
 ChestPoolBlueGem::ChestPoolBlueGem(ValueMap& properties) : super(
 	properties, ChestPoolBlueGem::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ })
+	{
+	})
 {
 	this->addItemToPool(ItemChance::create(MayanGemBlueItem::create(), ItemChance::Probability::Guaranteed));
 }

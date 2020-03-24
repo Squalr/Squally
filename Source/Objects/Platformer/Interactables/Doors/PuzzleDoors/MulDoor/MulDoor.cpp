@@ -45,6 +45,13 @@ MulDoor::~MulDoor()
 {
 }
 
+void MulDoor::onEnter()
+{
+	super::onEnter();
+
+	this->enableAllClippy();
+}
+
 void MulDoor::registerHackables()
 {
 	super::registerHackables();

@@ -20,7 +20,9 @@ ChestPoolEFEquipment* ChestPoolEFEquipment::create(ValueMap& properties)
 
 ChestPoolEFEquipment::ChestPoolEFEquipment(ValueMap& properties) : super(
 	properties, ChestPoolEFEquipment::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ EquipmentPoolTier1::create(SampleMethod::Guarantee, 1, 1) })
+	{
+		EquipmentPoolTier1::create(SampleMethod::Guarantee, 1, 1)
+	})
 {
 }
 

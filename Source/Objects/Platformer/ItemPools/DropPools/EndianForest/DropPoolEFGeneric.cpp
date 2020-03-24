@@ -29,7 +29,12 @@ DropPoolEFGeneric* DropPoolEFGeneric::create(ValueMap& properties)
 }
 
 DropPoolEFGeneric::DropPoolEFGeneric(ValueMap& properties) : super(properties, DropPoolEFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolEFGeneric::create(properties),
-	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), AlchemyPoolT1::create(SampleMethod::Random, 1, 2), SmithingPoolT1::create(SampleMethod::Random, 1, 2), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{
+		CardPoolTier1::create(SampleMethod::Random, 0, 1),
+		AlchemyPoolT1::create(SampleMethod::Random, 1, 2),
+		SmithingPoolT1::create(SampleMethod::Random, 1, 2),
+		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
+	})
 {
 }
 

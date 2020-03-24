@@ -61,7 +61,7 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 
 	if (weapon == nullptr)
 	{
-		return "AttackOverworldPunchFast";
+		return "AttackOverworldPunch";
 	}
 	else if (dynamic_cast<Bow*>(weapon))
 	{

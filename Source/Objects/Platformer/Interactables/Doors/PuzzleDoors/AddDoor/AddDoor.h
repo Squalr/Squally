@@ -15,6 +15,7 @@ protected:
 	AddDoor(cocos2d::ValueMap& properties);
 	virtual ~AddDoor();
 
+	void onEnter() override;
 	void registerHackables() override;
 	void runOperation(int puzzleIndex) override;
 

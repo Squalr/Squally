@@ -29,7 +29,10 @@ DropPoolEFGrogg* DropPoolEFGrogg::create(ValueMap& properties)
 }
 
 DropPoolEFGrogg::DropPoolEFGrogg(ValueMap& properties) : super(properties, DropPoolEFGrogg::PoolName, SampleMethod::Unbounded, 1, 2, CurrencyPoolEFGeneric::create(properties),
-	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{
+		CardPoolTier1::create(SampleMethod::Random, 0, 1),
+		PotionPoolTier1::create(SampleMethod::Random, 0, 1)
+	})
 {
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));

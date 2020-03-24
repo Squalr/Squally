@@ -21,7 +21,9 @@ ChestPoolEFWeapon* ChestPoolEFWeapon::create(ValueMap& properties)
 
 ChestPoolEFWeapon::ChestPoolEFWeapon(ValueMap& properties) : super(
 	properties, ChestPoolEFWeapon::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ WeaponPoolTier1::create(SampleMethod::Guarantee, 1, 1) })
+	{
+		WeaponPoolTier1::create(SampleMethod::Guarantee, 1, 1)
+	})
 {
 }
 

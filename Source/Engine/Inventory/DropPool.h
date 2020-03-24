@@ -4,6 +4,7 @@
 
 class CurrencyPool;
 
+// Drop pools combine a MinMaxPool with a CurrencyPool
 class DropPool : public MinMaxPool
 {
 public:

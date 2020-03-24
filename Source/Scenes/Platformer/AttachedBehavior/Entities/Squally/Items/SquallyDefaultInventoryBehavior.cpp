@@ -109,7 +109,10 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 
 			entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 420);
 
-			PlatformerEvents::TriggerEquippedItemsChanged();
+			this->defer([=]()
+			{
+				PlatformerEvents::TriggerEquippedItemsChanged();
+			});
 		}
 
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);

@@ -20,7 +20,9 @@ ChestPoolEFRare* ChestPoolEFRare::create(ValueMap& properties)
 
 ChestPoolEFRare::ChestPoolEFRare(ValueMap& properties) : super(
 	properties, ChestPoolEFRare::PoolName, SampleMethod::Guarantee, 2, 3,
-	{ CraftingPoolTier2::create(SampleMethod::Guarantee, 2, 3) })
+	{
+		CraftingPoolTier2::create(SampleMethod::Guarantee, 2, 3)
+	})
 {
 }
 

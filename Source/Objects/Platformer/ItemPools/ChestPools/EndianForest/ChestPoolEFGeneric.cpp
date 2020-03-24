@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Inventory/MergePool.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/CardPoolTier1.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/SmithingPoolT1.h"
@@ -23,7 +24,15 @@ ChestPoolEFGeneric* ChestPoolEFGeneric::create(ValueMap& properties)
 
 ChestPoolEFGeneric::ChestPoolEFGeneric(ValueMap& properties) : super(
 	properties, ChestPoolEFGeneric::PoolName, SampleMethod::Guarantee, 2, 3,
-	{ CardPoolTier1::create(SampleMethod::Random, 1, 1), AlchemyPoolT1::create(SampleMethod::Random, 1, 2), SmithingPoolT1::create(SampleMethod::Guarantee, 2, 3), PotionPoolTier1::create(SampleMethod::Random, 1, 1) })
+	{
+		CardPoolTier1::create(SampleMethod::Random, 1, 1),
+		MergePool::create(SampleMethod::Random, 3, 5,
+		{
+			AlchemyPoolT1::create(),
+			SmithingPoolT1::create(),
+			PotionPoolTier1::create()
+		})
+	})
 {
 }
 

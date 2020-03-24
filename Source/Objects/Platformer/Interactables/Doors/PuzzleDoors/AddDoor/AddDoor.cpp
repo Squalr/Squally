@@ -45,6 +45,13 @@ AddDoor::~AddDoor()
 {
 }
 
+void AddDoor::onEnter()
+{
+	super::onEnter();
+
+	this->enableAllClippy();
+}
+
 void AddDoor::registerHackables()
 {
 	super::registerHackables();
