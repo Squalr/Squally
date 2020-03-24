@@ -17,7 +17,7 @@ protected:
 	ThrowIncrementHealthFlask();
 	virtual ~ThrowIncrementHealthFlask();
 
-	bool isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
+	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void onCleanup() override;
 

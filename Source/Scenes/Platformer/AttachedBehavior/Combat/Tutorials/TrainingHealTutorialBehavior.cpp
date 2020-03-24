@@ -103,7 +103,7 @@ void TrainingHealTutorialBehavior::runTutorial()
 
 	if (++this->healCount == TrainingHealTutorialBehavior::HealsBeforeTutorial)
 	{
-		static const float TutorialDelay = /*TrainingHeal::StartDelay + TrainingHeal::TimeBetweenTicks * 2.0f +*/ 0.1f;
+		static const float TutorialDelay = 0.1f;
 
 		this->runAction(Sequence::create(
 			DelayTime::create(TutorialDelay),

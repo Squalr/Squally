@@ -42,9 +42,9 @@ LanguageTab::LanguageTab()
 		this->languageButtons.push_back(button);
 	}
 
-	for (auto it = this->languageButtons.begin(); it != this->languageButtons.end(); it++)
+	for (auto next : this->languageButtons)
 	{
-		this->addChild(*it);
+		this->addChild(next);
 	}
 }
 
@@ -73,12 +73,12 @@ void LanguageTab::initializePositions()
 	const Vec2 spacing = Vec2(224.0f, 56.0f);
 	int index = 0;
 
-	for (auto it = this->languageButtons.begin(); it != this->languageButtons.end(); it++)
+	for (auto next : this->languageButtons)
 	{
 		float x = (float)(index / 10) * spacing.x + offset.x;
 		float y = -(float)(index % 10) * spacing.y + offset.y;
 
-		(*it)->setPosition(Vec2(x, y));
+		next->setPosition(Vec2(x, y));
 
 		index++;
 	}

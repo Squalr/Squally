@@ -106,7 +106,7 @@ void FireballTutorialBehavior::onDisable()
 
 void FireballTutorialBehavior::runTutorial()
 {
-	if (this->scrappy == nullptr)
+	if (this->hasRunTutorial || this->scrappy == nullptr)
 	{
 		return;
 	}
@@ -128,7 +128,7 @@ void FireballTutorialBehavior::runTutorial()
 			HackableEvents::TriggerDisallowHackerMode();
 
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_FireballWarning::create(),
+				Strings::Menus_Hacking_HackWarning::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Left,

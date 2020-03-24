@@ -4,26 +4,27 @@
 
 namespace cocos2d
 {
-	class Label;
 	class Node;
 }
+
+class LocalizedLabel;
 
 class ClickableTextNode : public ClickableNode
 {
 public:
 	static ClickableTextNode* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected,
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected,
 		std::string spriteResource,
 		std::string spriteSelectedResource);
 	static ClickableTextNode* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected,
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected,
 		cocos2d::Node* spriteResource,
 		std::string spriteSelectedResource);
 	static ClickableTextNode* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected, 
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected, 
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 
@@ -32,14 +33,14 @@ public:
 
 protected:
 	ClickableTextNode(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected,
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected,
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 	virtual ~ClickableTextNode();
 
-	cocos2d::Label* label;
-	cocos2d::Label* labelSelected;
+	LocalizedLabel* label;
+	LocalizedLabel* labelSelected;
 
 private:
 	typedef ClickableNode super;

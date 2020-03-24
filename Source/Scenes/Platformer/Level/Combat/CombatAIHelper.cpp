@@ -194,15 +194,15 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Healing:
 		{
 			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
+			for (auto next : sameTeam)
 			{
-				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
-				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+				bool isAlive = next == nullptr ? false : next->getStateOrDefaultBool(StateKeys::IsAlive, true);
+				int health = next == nullptr ? 0 : next->getStateOrDefaultInt(StateKeys::Health, 0);
 				int targetHealth = target == nullptr ? health : target->getStateOrDefaultInt(StateKeys::Health, 0);
 				
 				if (isAlive && health <= targetHealth)
 				{
-					target = *it;
+					target = next;
 				}
 			}
 
@@ -210,13 +210,13 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 		}
 		case PlatformerAttack::AttackType::Resurrection:
 		{
-			for (auto it = sameTeam.begin(); it != sameTeam.end(); it++)
+			for (auto next : sameTeam)
 			{
-				bool isAlive = (*it) == nullptr ? false : (*it)->getStateOrDefaultBool(StateKeys::IsAlive, true);
+				bool isAlive = next == nullptr ? false : next->getStateOrDefaultBool(StateKeys::IsAlive, true);
 				
 				if (!isAlive)
 				{
-					target = *it;
+					target = next;
 				}
 			}
 
@@ -230,14 +230,14 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 		default:
 		{
 			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto it = otherTeam.begin(); it != otherTeam.end(); it++)
+			for (auto next : otherTeam)
 			{
-				int health = (*it) == nullptr ? 0 : (*it)->getStateOrDefaultInt(StateKeys::Health, 0);
+				int health = next == nullptr ? 0 : next->getStateOrDefaultInt(StateKeys::Health, 0);
 				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
 				
 				if (health >= targetHealth)
 				{
-					target = *it;
+					target = next;
 				}
 			}
 
@@ -273,7 +273,7 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	attackList.erase(std::remove_if(attackList.begin(), attackList.end(),
 		[=](PlatformerAttack* next)
 	{
-		return !next->isWorthUsing(sameTeam, otherTeam);
+		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
 	}), attackList.end());
 
 	// Prioritize resurrection > healing > damage

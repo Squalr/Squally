@@ -15,6 +15,7 @@ LocalizedString::LocalizedString()
 	this->onStringUpdate = nullptr;
 	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
+	this->runOnce = false;
 }
 
 LocalizedString::~LocalizedString()
@@ -29,17 +30,25 @@ void LocalizedString::onEnter()
 
 	if (this->currentLanguage != Localization::getLanguage())
 	{
-		this->onStringUpdate(this);
-	}
-
-	// This needs to be done here since we side-step SmartNode functions
-	this->addEventListenerIgnorePause(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-	{
 		if (this->onStringUpdate != nullptr)
 		{
 			this->onStringUpdate(this);
 		}
-	}));
+	}
+
+	if (!this->runOnce)
+	{
+		this->runOnce = true;
+
+		// This needs to be done here since we side-step SmartNode functions
+		this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+		{
+			if (this->onStringUpdate != nullptr)
+			{
+				this->onStringUpdate(this);
+			}
+		}));
+	}
 }
 
 std::string LocalizedString::getString()

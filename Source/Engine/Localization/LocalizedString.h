@@ -20,7 +20,7 @@ public:
 
 protected:
 	LocalizedString();
-	~LocalizedString();
+	virtual ~LocalizedString();
 
 	void onEnter() override;
 
@@ -35,4 +35,6 @@ protected:
 private:
 	typedef SmartNode super;
 	friend class TypeWriterEffect; // I dont care if this is bad practice
+
+	bool runOnce;
 };

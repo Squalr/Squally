@@ -212,7 +212,7 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 
 	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
 	{
-		if (GameUtils::isInRunningScene(this))
+		if (listener->isGlobal() || GameUtils::isInRunningScene(this))
 		{
 			listener->invoke(eventCustom);
 		}
@@ -227,6 +227,18 @@ void SmartNode::addEventListenerIgnorePause(EventListener* listener)
 
 	this->addEventListener(wrapper);
 	this->addEventListener(listener);
+}
+
+void SmartNode::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->addEventListenerIgnorePause(listener);
 }
 
 void SmartNode::defer(std::function<void()> task)

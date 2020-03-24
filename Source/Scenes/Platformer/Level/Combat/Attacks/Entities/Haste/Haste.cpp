@@ -10,6 +10,7 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -35,6 +36,9 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_HASTE 1
 
 const std::string Haste::HasteIdentifier = "haste";
+const float Haste::MinSpeed = -1.0f;
+const float Haste::DefaultSpeed = 1.75f;
+const float Haste::MaxSpeed = 2.25f;
 
 Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -104,8 +108,14 @@ void Haste::registerHackables()
 				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Haste_RegisterEsi::create() },
-					{ HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Haste_RegisterXmm3::create() }
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Haste_RegisterEsi::create()
+							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed), ConstantFloat::create(Haste::MaxSpeed) })
+					},
+					{
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Haste_RegisterXmm3::create()
+							->setStringReplacementVariables(ConstantFloat::create(Haste::DefaultSpeed))
+					}
 				},
 				int(HackFlags::None),
 				this->buffData.duration,
@@ -136,7 +146,7 @@ void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> ha
 NO_OPTIMIZE void Haste::applyHaste()
 {
 	volatile float speedBonus = 0.0f;
-	volatile float increment = 0.75f;
+	volatile float increment = Haste::DefaultSpeed;
 	volatile float* speedBonusPtr = &speedBonus;
 	volatile float* incrementPtr = &increment;
 
@@ -154,7 +164,7 @@ NO_OPTIMIZE void Haste::applyHaste()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, -1.0f, 1.0f);
+	this->currentSpeed += MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

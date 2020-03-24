@@ -9969,6 +9969,21 @@ namespace Strings
 		virtual ~Menus_Hacking_CodeEditor_YourScripts() = default;
 	};
 
+	class Menus_Hacking_HackWarning : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_HackWarning* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_HackWarning();
+		virtual ~Menus_Hacking_HackWarning() = default;
+	};
+
 	class Menus_Hacking_Lexicon_Assembly_Add : public LocalizedString
 	{
 	public:
@@ -14497,21 +14512,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_Fireball_ApplySpeed_FireballClippy();
 		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_FireballClippy() = default;
-	};
-
-	class Menus_Hacking_Objects_Fireball_ApplySpeed_FireballWarning : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_Fireball_ApplySpeed_FireballWarning* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_Fireball_ApplySpeed_FireballWarning();
-		virtual ~Menus_Hacking_Objects_Fireball_ApplySpeed_FireballWarning() = default;
 	};
 
 	class Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax : public LocalizedString

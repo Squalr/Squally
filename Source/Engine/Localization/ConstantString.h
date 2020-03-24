@@ -6,17 +6,17 @@
 class ConstantString : public LocalizedString
 {
 public:
-	static ConstantString* create();
-	static ConstantString* create(std::string constantString);
+	static ConstantString* create(std::string constantString = "");
 	LocalizedString* clone() override;
 	void setString(std::string newString);
 	std::string getStringIdentifier() override;
 
+protected:
+	ConstantString(std::string constantString);
+	virtual ~ConstantString();
+
 private:
 	typedef LocalizedString super;
-
-	ConstantString(std::string constantString);
-	~ConstantString() = default;
 
 	std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 

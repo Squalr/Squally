@@ -84,7 +84,7 @@ void Projectile::update(float dt)
 {
 	super::update(dt);
 
-	if (!this->canUpdate || !this->enabled)
+	if (!this->canUpdate || !this->contentNode->isVisible())
 	{
 		return;
 	}

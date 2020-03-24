@@ -2,15 +2,16 @@
 
 #include <typeinfo>
 
-#include "cocos/2d/CCLabel.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/2d/CCSprite.h"
+
+#include "Engine/Localization/LocalizedLabel.h"
 
 using namespace cocos2d;
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* label,
-	Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	std::string spriteResource,
 	std::string spriteSelectedResource)
 {
@@ -23,8 +24,8 @@ ClickableTextNode* ClickableTextNode::create(
 }
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* label,
-	Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	Node* spriteResource,
 	std::string spriteSelectedResource)
 {
@@ -41,8 +42,8 @@ ClickableTextNode* ClickableTextNode::create(
 }
 
 ClickableTextNode* ClickableTextNode::create(
-	Label* label,
-	Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	Node* content, 
 	Node* contentSelected)
 {
@@ -58,8 +59,8 @@ ClickableTextNode* ClickableTextNode::create(
 }
 
 ClickableTextNode::ClickableTextNode(
-	Label* label,
-	Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	Node* content,
 	Node* contentSelected) : ClickableNode(content, contentSelected)
 {

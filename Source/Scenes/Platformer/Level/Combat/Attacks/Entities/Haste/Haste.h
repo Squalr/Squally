@@ -41,4 +41,8 @@ private:
 	
 	HasteClippy* clippy;
 	SmartParticles* spellEffect;
+
+	static const float MinSpeed;
+	static const float DefaultSpeed;
+	static const float MaxSpeed;
 };

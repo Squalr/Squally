@@ -20,6 +20,7 @@ public:
 	virtual void removeEventListener(cocos2d::EventListener* listener);
 	virtual void removeEventListenerByTag(std::string tag);
 	void addEventListenerIgnorePause(cocos2d::EventListener* listener);
+	void addGlobalEventListener(cocos2d::EventListener* listener);
 	cocos2d::EventListener* whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);
 	cocos2d::EventListener* whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible = true);

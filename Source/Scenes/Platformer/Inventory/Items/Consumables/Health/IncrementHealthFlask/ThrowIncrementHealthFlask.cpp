@@ -63,7 +63,7 @@ void ThrowIncrementHealthFlask::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-bool ThrowIncrementHealthFlask::isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+bool ThrowIncrementHealthFlask::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
 	const float WeakPercentage = 0.5f;
 

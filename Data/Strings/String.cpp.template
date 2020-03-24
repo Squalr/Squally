@@ -30,8 +30,8 @@
 			case LanguageType::CHINESE_SIMPLIFIED:		{ return "{{zh-CN}}"; }
 			case LanguageType::CHINESE_TRADITIONAL:		{ return "{{zh-TW}}"; }
 			case LanguageType::CZECH:					{ return "{{cs}}"; }
-			case LanguageType::DANISH:					{ return "{{nl}}"; }
-			case LanguageType::DUTCH:					{ return "{{ar}}"; }
+			case LanguageType::DANISH:					{ return "{{da}}"; }
+			case LanguageType::DUTCH:					{ return "{{nl}}"; }
 			case LanguageType::FINNISH:					{ return "{{fi}}"; }
 			case LanguageType::FRENCH:					{ return "{{fr}}"; }
 			case LanguageType::GERMAN:					{ return "{{de}}"; }

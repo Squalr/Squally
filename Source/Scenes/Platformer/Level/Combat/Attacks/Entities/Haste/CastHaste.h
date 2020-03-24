@@ -24,6 +24,7 @@ protected:
 	void initializePositions() override;
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	void onCleanup() override;
 
 private:

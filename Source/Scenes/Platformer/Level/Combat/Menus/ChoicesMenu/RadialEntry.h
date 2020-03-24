@@ -5,29 +5,25 @@
 #include "Engine/SmartNode.h"
 #include "Engine/Events/InputEvents.h"
 
-namespace cocos2d
-{
-	class Label;
-}
-
 class ClickableTextNode;
+class LocalizedLabel;
 
 class RadialEntry : public SmartNode
 {
 public:
 	static RadialEntry* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected,
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected,
 		std::string spriteResource,
 		std::string spriteSelectedResource);
 	static RadialEntry* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected,
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected,
 		cocos2d::Node* spriteResource,
 		std::string spriteSelectedResource);
 	static RadialEntry* create(
-		cocos2d::Label* label,
-		cocos2d::Label* labelSelected, 
+		LocalizedLabel* label,
+		LocalizedLabel* labelSelected, 
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 

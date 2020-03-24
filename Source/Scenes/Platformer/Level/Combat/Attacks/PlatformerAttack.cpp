@@ -16,8 +16,14 @@
 using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
+
+// 50%
 const float PlatformerAttack::PriorityCommon = 0.5f;
+
+// 20%
 const float PlatformerAttack::PriorityUncommon = 0.2f;
+
+// 10%
 const float PlatformerAttack::PriorityRare = 0.1f;
 
 PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
@@ -120,16 +126,16 @@ void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* 
 {
 }
 
-bool PlatformerAttack::isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+bool PlatformerAttack::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
 	return true;
 }
 
 void PlatformerAttack::onAttackEnd()
 {
-	for (auto it = this->attackCompleteCallbacks.begin(); it != this->attackCompleteCallbacks.end(); it++)
+	for (auto callback : this->attackCompleteCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 

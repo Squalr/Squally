@@ -88,3 +88,18 @@ void CastHaste::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 void CastHaste::onCleanup()
 {
 }
+
+bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	bool hasSpeedBuff = false;
+
+	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		{
+			hasSpeedBuff = true;
+		});
+	});
+
+	return !hasSpeedBuff;
+}

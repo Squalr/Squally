@@ -15,7 +15,7 @@ public:
 	virtual ~GlobalHud();
 
 	void pause() override;
-	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
+
 private:
 	typedef Hud super;
 };

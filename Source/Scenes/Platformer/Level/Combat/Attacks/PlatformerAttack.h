@@ -31,7 +31,7 @@ public:
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
 	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
-	virtual bool isWorthUsing(const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam);
+	virtual bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam);
 	virtual void onAttackEnd();
 	virtual void onCleanup();
 	int getRandomDamage();

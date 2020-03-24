@@ -15,7 +15,6 @@ public:
 	virtual ~GlobalNode();
 
 	virtual void pause() override;
-	virtual void addGlobalEventListener(cocos2d::EventListener* listener);
 	
 private:
 	typedef SmartNode super;

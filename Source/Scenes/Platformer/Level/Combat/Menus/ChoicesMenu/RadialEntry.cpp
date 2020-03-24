@@ -7,8 +7,8 @@
 using namespace cocos2d;
 
 RadialEntry* RadialEntry::create(
-	cocos2d::Label* label,
-	cocos2d::Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	std::string spriteResource,
 	std::string spriteSelectedResource)
 {
@@ -20,8 +20,8 @@ RadialEntry* RadialEntry::create(
 }
 
 RadialEntry* RadialEntry::create(
-	cocos2d::Label* label,
-	cocos2d::Label* labelSelected,
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected,
 	cocos2d::Node* spriteResource,
 	std::string spriteSelectedResource)
 {
@@ -33,8 +33,8 @@ RadialEntry* RadialEntry::create(
 }
 
 RadialEntry* RadialEntry::create(
-	cocos2d::Label* label,
-	cocos2d::Label* labelSelected, 
+	LocalizedLabel* label,
+	LocalizedLabel* labelSelected, 
 	cocos2d::Node* content,
 	cocos2d::Node* contentSelected)
 {

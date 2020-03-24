@@ -2,11 +2,6 @@
 
 using namespace cocos2d;
 
-ConstantString* ConstantString::create()
-{
-	return ConstantString::create("");
-}
-
 ConstantString* ConstantString::create(std::string constantString)
 {
 	ConstantString* instance = new ConstantString(constantString);
@@ -19,6 +14,10 @@ ConstantString* ConstantString::create(std::string constantString)
 ConstantString::ConstantString(std::string constantString)
 {
 	this->constantString = constantString;
+}
+
+ConstantString::~ConstantString()
+{
 }
 
 LocalizedString* ConstantString::clone()

@@ -20,15 +20,3 @@ GlobalScene::GlobalScene()
 GlobalScene::~GlobalScene()
 {
 }
-
-void GlobalScene::addGlobalEventListener(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	listener->setIsGlobal(true);
-
-	super::addEventListener(listener);
-}

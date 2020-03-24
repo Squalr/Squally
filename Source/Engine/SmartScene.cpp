@@ -206,6 +206,18 @@ void SmartScene::addEventListenerIgnorePause(EventListener* listener)
 	this->addEventListener(listener);
 }
 
+void SmartScene::addGlobalEventListener(EventListener* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	listener->setIsGlobal(true);
+
+	this->addEventListenerIgnorePause(listener);
+}
+
 void SmartScene::setFadeSpeed(float newFadeSpeed)
 {
 	this->fadeSpeed = newFadeSpeed;
