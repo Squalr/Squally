@@ -7764,6 +7764,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
 	};
 
+	class Menus_Hacking_Abilities_Enrage_Enrage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Enrage_Enrage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Enrage_Enrage();
+		virtual ~Menus_Hacking_Abilities_Enrage_Enrage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Enrage_EnrageClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Enrage_EnrageClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Enrage_EnrageClippy();
+		virtual ~Menus_Hacking_Abilities_Enrage_EnrageClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_Enrage_ReduceEnrage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Enrage_ReduceEnrage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Enrage_ReduceEnrage();
+		virtual ~Menus_Hacking_Abilities_Enrage_ReduceEnrage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Enrage_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Enrage_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Enrage_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Enrage_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Enrage_RegisterXmm3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Enrage_RegisterXmm3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Enrage_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_Enrage_RegisterXmm3() = default;
+	};
+
 	class Menus_Hacking_Abilities_Haste_Haste : public LocalizedString
 	{
 	public:
@@ -7777,6 +7852,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Haste_Haste();
 		virtual ~Menus_Hacking_Abilities_Haste_Haste() = default;
+	};
+
+	class Menus_Hacking_Abilities_Haste_HasteClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Haste_HasteClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Haste_HasteClippy();
+		virtual ~Menus_Hacking_Abilities_Haste_HasteClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_Haste_ReduceHaste : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Haste_ReduceHaste* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Haste_ReduceHaste();
+		virtual ~Menus_Hacking_Abilities_Haste_ReduceHaste() = default;
 	};
 
 	class Menus_Hacking_Abilities_Haste_RegisterEsi : public LocalizedString
@@ -7809,6 +7914,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Haste_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_LesserStrength_LesserStrength : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_LesserStrength_LesserStrength* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_LesserStrength_LesserStrength();
+		virtual ~Menus_Hacking_Abilities_LesserStrength_LesserStrength() = default;
+	};
+
+	class Menus_Hacking_Abilities_LesserStrength_LesserStrengthClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_LesserStrength_LesserStrengthClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_LesserStrength_LesserStrengthClippy();
+		virtual ~Menus_Hacking_Abilities_LesserStrength_LesserStrengthClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_LesserStrength_ReduceLesserStrength : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_LesserStrength_ReduceLesserStrength* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_LesserStrength_ReduceLesserStrength();
+		virtual ~Menus_Hacking_Abilities_LesserStrength_ReduceLesserStrength() = default;
+	};
+
+	class Menus_Hacking_Abilities_LesserStrength_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_LesserStrength_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_LesserStrength_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_LesserStrength_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_LesserStrength_RegisterXmm3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_LesserStrength_RegisterXmm3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_LesserStrength_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_LesserStrength_RegisterXmm3() = default;
+	};
+
 	class Menus_Hacking_Abilities_Squally_IsAlive : public LocalizedString
 	{
 	public:
@@ -7837,6 +8017,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Squally_IsSwimming();
 		virtual ~Menus_Hacking_Abilities_Squally_IsSwimming() = default;
+	};
+
+	class Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin();
+		virtual ~Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin() = default;
+	};
+
+	class Menus_Hacking_Abilities_StoneSkin_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_StoneSkin_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_StoneSkin_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_StoneSkin_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_StoneSkin_RegisterXmm3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_StoneSkin_RegisterXmm3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_StoneSkin_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_StoneSkin_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_StoneSkin_StoneSkin : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_StoneSkin_StoneSkin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_StoneSkin_StoneSkin();
+		virtual ~Menus_Hacking_Abilities_StoneSkin_StoneSkin() = default;
+	};
+
+	class Menus_Hacking_Abilities_StoneSkin_StoneSkinClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_StoneSkin_StoneSkinClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_StoneSkin_StoneSkinClippy();
+		virtual ~Menus_Hacking_Abilities_StoneSkin_StoneSkinClippy() = default;
 	};
 
 	class Menus_Hacking_Abilities_TrainingDummy_AddHealth : public LocalizedString

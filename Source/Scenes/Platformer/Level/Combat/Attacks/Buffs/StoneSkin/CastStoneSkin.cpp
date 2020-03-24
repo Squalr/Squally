@@ -1,4 +1,4 @@
-#include "CastHaste.h"
+#include "CastStoneSkin.h"
 
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/Haste.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/StoneSkin/StoneSkin.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -17,16 +17,16 @@
 
 using namespace cocos2d;
 
-CastHaste* CastHaste::create(float attackDuration, float recoverDuration, float priority)
+CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration, float priority)
 {
-	CastHaste* instance = new CastHaste(attackDuration, recoverDuration, priority);
+	CastStoneSkin* instance = new CastStoneSkin(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
@@ -38,33 +38,33 @@ CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority
 	this->addChild(this->castSound);
 }
 
-CastHaste::~CastHaste()
+CastStoneSkin::~CastStoneSkin()
 {
 }
 
-void CastHaste::initializePositions()
+void CastStoneSkin::initializePositions()
 {
 	super::initializePositions();
 
 	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
-PlatformerAttack* CastHaste::cloneInternal()
+PlatformerAttack* CastStoneSkin::cloneInternal()
 {
-	return CastHaste::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
+	return CastStoneSkin::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
-LocalizedString* CastHaste::getString()
+LocalizedString* CastStoneSkin::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Spells_Haste::create();
+	return Strings::Menus_Hacking_Abilities_StoneSkin_StoneSkin::create();
 }
 
-std::string CastHaste::getAttackAnimation()
+std::string CastStoneSkin::getAttackAnimation()
 {
 	return "AttackCast";
 }
 
-void CastHaste::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastStoneSkin::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 {
 	super::performAttack(owner, target);
 
@@ -74,7 +74,7 @@ void CastHaste::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 
 	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->applyBuff(Haste::create(owner, target));
+		entityBuffBehavior->applyBuff(StoneSkin::create(owner, target));
 	});
 
 	this->spellAura->runAction(Sequence::create(
@@ -85,17 +85,17 @@ void CastHaste::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
 	));
 }
 
-void CastHaste::onCleanup()
+void CastStoneSkin::onCleanup()
 {
 }
 
-bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+bool CastStoneSkin::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
 	bool hasSpeedBuff = false;
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
+		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* haste)
 		{
 			hasSpeedBuff = true;
 		});

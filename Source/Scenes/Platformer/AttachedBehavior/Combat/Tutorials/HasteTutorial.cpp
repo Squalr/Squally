@@ -21,7 +21,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/Scrappy/Combat/ScrappyHackableCueBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/Haste.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/Haste.h"
 
 #include "Resources/SoundResources.h"
 
@@ -45,6 +45,8 @@ HasteTutorial::HasteTutorial(GameObject* owner) : super(owner)
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->scrappy = nullptr;
 	this->squally = nullptr;
+	this->hasRunTutorial = false;
+	this->tutorialInterrupt = false;
 
 	if (this->entity == nullptr)
 	{
@@ -66,6 +68,14 @@ void HasteTutorial::onLoad()
 		{
 			dynamic_cast<Haste*>(args->buff)->enableClippy();
 			this->runTutorial();
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		if (this->hasRunTutorial)
+		{
+			this->tutorialInterrupt = true;
 		}
 	}));
 
@@ -99,7 +109,7 @@ void HasteTutorial::runTutorial()
 		return;
 	}
 
-	static const float TutorialDelay = 0.25f;
+	static const float TutorialDelay = 0.75f;
 
 	this->hasRunTutorial = true;
 

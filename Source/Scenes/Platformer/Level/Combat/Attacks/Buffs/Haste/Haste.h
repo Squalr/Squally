@@ -45,4 +45,5 @@ private:
 	static const float MinSpeed;
 	static const float DefaultSpeed;
 	static const float MaxSpeed;
+	static const float Duration;
 };

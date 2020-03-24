@@ -158,7 +158,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="702" name="troll" type="entity" x="2641" y="2948.91" width="128" height="128">
+  <object id="702" name="ogre" type="entity" x="2638" y="2956.91" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -167,7 +167,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="703" name="goblin-warrior-pig" type="entity" x="2642.6" y="2680.48" width="128" height="128">
+  <object id="703" name="troll" type="entity" x="2642.6" y="2680.48" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
@@ -186,7 +186,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="688.08" y="2949.03" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="686.08" y="2964.03" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
    </properties>
@@ -252,7 +252,7 @@
   <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="496.987" y="2802.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1819.03" y="2906.5" width="270" height="748"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="2448.81" y="2879" width="270" height="748"/>
-  <object id="691" name="spawn" type="object" x="656.86" y="2951.5" width="128" height="128">
+  <object id="691" name="spawn" type="object" x="654.86" y="2966.5" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>

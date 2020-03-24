@@ -1,4 +1,4 @@
-#include "Haste.h"
+#include "LesserStrength.h"
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
@@ -18,8 +18,8 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/HasteClippy.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Entities/Haste/HasteGenericPreview.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/LesserStrength/LesserStrengthClippy.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/LesserStrength/LesserStrengthGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
@@ -35,23 +35,26 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HASTE 1
 
-const std::string Haste::HasteIdentifier = "haste";
-const float Haste::MinSpeed = -1.0f;
-const float Haste::DefaultSpeed = 1.75f;
-const float Haste::MaxSpeed = 2.25f;
+const std::string LesserStrength::LesserStrengthIdentifier = "haste";
 
-Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
+// Note: UI sets precision on these to 1 digit
+const float LesserStrength::MinSpeed = -1.0f;
+const float LesserStrength::DefaultSpeed = 2.0f;
+const float LesserStrength::MaxSpeed = 2.5f;
+const float LesserStrength::Duration = 6.0f;
+
+LesserStrength* LesserStrength::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	Haste* instance = new Haste(caster, target);
+	LesserStrength* instance = new LesserStrength(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(6.0f, Haste::HasteIdentifier))
+LesserStrength::LesserStrength(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(LesserStrength::Duration, LesserStrength::LesserStrengthIdentifier))
 {
-	this->clippy = HasteClippy::create();
+	this->clippy = LesserStrengthClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	
 	this->registerClippy(this->clippy);
@@ -59,11 +62,11 @@ Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target) : super(caster,
 	this->addChild(this->spellEffect);
 }
 
-Haste::~Haste()
+LesserStrength::~LesserStrength()
 {
 }
 
-void Haste::onEnter()
+void LesserStrength::onEnter()
 {
 	super::onEnter();
 
@@ -72,14 +75,14 @@ void Haste::onEnter()
 	CombatEvents::TriggerHackableCombatCue();
 }
 
-void Haste::initializePositions()
+void LesserStrength::initializePositions()
 {
 	super::initializePositions();
 
 	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
-void Haste::enableClippy()
+void LesserStrength::enableClippy()
 {
 	if (this->clippy != nullptr)
 	{
@@ -87,7 +90,7 @@ void Haste::enableClippy()
 	}
 }
 
-void Haste::registerHackables()
+void LesserStrength::registerHackables()
 {
 	super::registerHackables();
 
@@ -103,29 +106,38 @@ void Haste::registerHackables()
 		{
 			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
-				Haste::HasteIdentifier,
-				Strings::Menus_Hacking_Abilities_Haste_Haste::create(),
+				LesserStrength::LesserStrengthIdentifier,
+				Strings::Menus_Hacking_Abilities_LesserStrength_LesserStrength::create(),
 				UIResources::Menus_Icons_Clock,
-				HasteGenericPreview::create(),
+				LesserStrengthGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Haste_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed), ConstantFloat::create(Haste::MaxSpeed) })
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_LesserStrength_RegisterEsi::create()
+							->setStringReplacementVariables({ ConstantFloat::create(LesserStrength::MinSpeed, 1), ConstantFloat::create(LesserStrength::MaxSpeed, 1) })
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Haste_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(Haste::DefaultSpeed))
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_LesserStrength_RegisterXmm3::create()
+							->setStringReplacementVariables(ConstantFloat::create(LesserStrength::DefaultSpeed, 1))
 					}
 				},
 				int(HackFlags::None),
 				this->buffData.duration,
 				0.0f,
-				this->clippy
+				this->clippy,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_Abilities_LesserStrength_ReduceLesserStrength::create(),
+						// x86
+						"mov dword ptr [esi], 0.0",
+						// x64
+						"mov dword ptr [rsi], 0.0"
+					)
+				}
 			)
 		},
 	};
 
-	auto hasteFunc = &Haste::applyHaste;
+	auto hasteFunc = &LesserStrength::applyLesserStrength;
 	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
 
 	for (auto next : this->hackables)
@@ -134,19 +146,19 @@ void Haste::registerHackables()
 	}
 }
 
-void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void LesserStrength::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
 	this->currentSpeed = *timelineSpeed;
 
-	this->applyHaste();
+	this->applyLesserStrength();
 
 	*timelineSpeed = this->currentSpeed;
 }
 
-NO_OPTIMIZE void Haste::applyHaste()
+NO_OPTIMIZE void LesserStrength::applyLesserStrength()
 {
 	volatile float speedBonus = 0.0f;
-	volatile float increment = Haste::DefaultSpeed;
+	volatile float increment = LesserStrength::DefaultSpeed;
 	volatile float* speedBonusPtr = &speedBonus;
 	volatile float* incrementPtr = &increment;
 
@@ -164,7 +176,7 @@ NO_OPTIMIZE void Haste::applyHaste()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
+	this->currentSpeed += MathUtils::clamp(speedBonus, LesserStrength::MinSpeed, LesserStrength::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

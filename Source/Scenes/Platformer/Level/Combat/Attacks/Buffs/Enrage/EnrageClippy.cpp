@@ -1,4 +1,4 @@
-#include "HasteClippy.h"
+#include "EnrageClippy.h"
 
 #include "cocos/2d/CCSprite.h"
 
@@ -12,16 +12,16 @@
 
 using namespace cocos2d;
 
-HasteClippy* HasteClippy::create()
+EnrageClippy* EnrageClippy::create()
 {
-	HasteClippy* instance = new HasteClippy();
+	EnrageClippy* instance = new EnrageClippy();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HasteClippy::HasteClippy() : super()
+EnrageClippy::EnrageClippy() : super()
 {
 	this->clippyAnimations = SmartAnimationNode::create(EntityResources::Helpers_EndianForest_Scrappy_Animations);
 
@@ -30,16 +30,20 @@ HasteClippy::HasteClippy() : super()
 	this->animationNode->addChild(this->clippyAnimations);
 }
 
-HasteClippy::~HasteClippy()
+EnrageClippy::~EnrageClippy()
 {
 }
 
-Clippy* HasteClippy::innerClone()
+Clippy* EnrageClippy::innerClone()
 {
-	return HasteClippy::create();
+	return EnrageClippy::create();
 }
 
-void HasteClippy::startDialogue()
+void EnrageClippy::startDialogue()
 {
-	this->runDialogue(Strings::Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+	this->runDialogue(
+		Strings::Menus_Hacking_Abilities_Enrage_EnrageClippy::create()
+			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Enrage_ReduceEnrage::create()),
+		SoundResources::Platformer_Entities_Droid_DroidChatter
+	);
 }
