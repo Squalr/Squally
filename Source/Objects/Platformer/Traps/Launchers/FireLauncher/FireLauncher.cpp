@@ -14,7 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Objects/Platformer/Projectiles/Fireball/Fireball.h"
+#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
@@ -54,7 +54,7 @@ void FireLauncher::initializePositions()
 
 Projectile* FireLauncher::createProjectile()
 {
-	Fireball* fireball = Fireball::create(nullptr);
+	Fireball* fireball = Fireball::create(nullptr, nullptr);
 	
 	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
 	{

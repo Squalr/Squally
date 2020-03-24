@@ -10,6 +10,7 @@ namespace cocos2d
 
 class Buff;
 class PlatformerEntity;
+class Projectile;
 class TimelineEntry;
 class TimelineEvent;
 class TimelineEventGroup;
@@ -31,6 +32,7 @@ public:
 	static const std::string EventBuffApplied;
 	static const std::string EventBuffRemoved;
 	static const std::string EventBuffTimeElapsed;
+	static const std::string EventProjectileSpawned;
 	static const std::string EventEntityTimelineReset;
 	static const std::string EventPauseTimeline;
 	static const std::string EventPauseTimelineCinematic;
@@ -194,6 +196,17 @@ public:
 		}
 	};
 
+	struct ProjectileSpawnedArgs
+	{
+		PlatformerEntity* owner;
+		PlatformerEntity* target;
+		Projectile* projectile;
+
+		ProjectileSpawnedArgs(PlatformerEntity* owner, PlatformerEntity* target, Projectile* projectile) : owner(owner), target(target), projectile(projectile)
+		{
+		}
+	};
+
 	struct DamageOrHealingArgs
 	{
 		PlatformerEntity* caster;
@@ -312,6 +325,7 @@ public:
 	static void TriggerBuffApplied(BuffAppliedArgs args);
 	static void TriggerBuffRemoved(BuffRemovedArgs args);
 	static void TriggerBuffTimeElapsed(BuffTimeElapsedArgs args);
+	static void TriggerProjectileSpawned(ProjectileSpawnedArgs args);
 	static void TriggerEntityTimelineReset(TimelineResetArgs args);
 	static void TriggerCastBlocked(CastBlockedArgs args);
 	static void TriggerCastInterrupt(CastInterruptArgs args);

@@ -9,8 +9,8 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/Fireball/Fireball.h"
-#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/Fireball/Fireball.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
@@ -59,7 +59,7 @@ void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	super::performAttack(owner, target);
 
 	SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
-	Fireball* fireball = Fireball::create(owner);
+	Fireball* fireball = Fireball::create(owner, target);
 
 	fireball->runSpawnFX();
 

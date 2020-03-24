@@ -10,7 +10,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
@@ -42,6 +41,8 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int 
 	this->contentNode = Node::create();
 	this->postFXNode = Node::create();
 	this->ownerCollisionRef = nullptr;
+	this->enabled = true;
+	this->canUpdate = true;
 
 	this->addTag(Projectile::ProjectileTag);
 
@@ -83,8 +84,7 @@ void Projectile::update(float dt)
 {
 	super::update(dt);
 
-	// Should prolly have another boolean for this, but whatever
-	if (!this->contentNode->isVisible())
+	if (!this->canUpdate || !this->enabled)
 	{
 		return;
 	}
@@ -253,18 +253,35 @@ void Projectile::setSpeedMultiplier(Vec3 speedMultiplier)
 	this->speedMultiplier.z = MathUtils::clamp(speedMultiplier.z, -1.0f, 1.0f);
 }
 
+bool Projectile::isEnabled()
+{
+	return this->enabled;
+}
+
 void Projectile::enable(bool setVisible)
 {
 	this->contentNode->setVisible(setVisible);
-
+	this->enabled = true;
+	
 	this->collisionObject->setPhysicsEnabled(true);
 }
 
 void Projectile::disable(bool setVisible)
 {
 	this->contentNode->setVisible(setVisible);
+	this->enabled = false;
 
 	this->collisionObject->setPhysicsEnabled(false);
+}
+
+void Projectile::enableUpdate()
+{
+	this->canUpdate = true;
+}
+
+void Projectile::disableUpdate()
+{
+	this->canUpdate = false;
 }
 
 void Projectile::reset()

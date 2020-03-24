@@ -6,7 +6,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealth.h"
@@ -86,7 +86,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, Platforme
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* potion = ThrownObject::create(owner, ItemResources::Consumables_Potions_HealthFlaskIncrement, Size(64.0f, 64.0f));
+	ThrownObject* potion = ThrownObject::create(owner, target, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, Size(64.0f, 64.0f));
 	
 	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{

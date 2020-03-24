@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Mana/ManaPotion/ManaPotion.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
@@ -66,7 +66,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, PlatformerEntity* t
 {
 	super::performAttack(owner, target);
 	
-	ThrownObject* potion = ThrownObject::create(owner, ItemResources::Consumables_Potions_ManaPotion, Size(64.0f, 64.0f));
+	ThrownObject* potion = ThrownObject::create(owner, target, false, ItemResources::Consumables_Potions_ManaPotion, Size(64.0f, 64.0f));
 	
 	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{

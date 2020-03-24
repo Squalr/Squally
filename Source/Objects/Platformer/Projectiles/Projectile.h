@@ -17,6 +17,7 @@ public:
 	cocos2d::Vec3 getLaunchVelocity();
 	cocos2d::Vec3 getLaunchAcceleration();
 	void setSpeedMultiplier(cocos2d::Vec3 speedMultiplier);
+	bool isEnabled();
 	void enable(bool setVisible);
 	void disable(bool setVisible);
 	void reset();
@@ -36,6 +37,8 @@ protected:
 	HackablePreview* createDefaultPreview() override;
 	virtual HackablePreview* createVelocityPreview();
 	virtual HackablePreview* createAccelerationPreview();
+	void enableUpdate();
+	void disableUpdate();
 	
 	PlatformerEntity* caster;
 
@@ -47,6 +50,8 @@ private:
 
 	CollisionObject* collisionObject;
 	CollisionObject* ownerCollisionRef;
+	bool canUpdate;
+	bool enabled;
 	float spinSpeed;
 	bool allowHacking;
 	cocos2d::Vec3 launchVelocity;

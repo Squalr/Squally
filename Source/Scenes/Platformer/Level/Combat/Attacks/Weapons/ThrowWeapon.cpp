@@ -6,7 +6,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
@@ -52,7 +52,7 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+	ThrownObject* weapon = ThrownObject::create(owner, target, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
 	
 	weapon->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 	{
@@ -74,6 +74,8 @@ void ThrowWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 	{
 		weapon->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 2.0f, Vec3(0.5f, 0.5f, 0.5f));
 	});
+
+	CombatEvents::TriggerProjectileSpawned(CombatEvents::ProjectileSpawnedArgs(owner, target, weapon));
 }
 
 void ThrowWeapon::onCleanup()

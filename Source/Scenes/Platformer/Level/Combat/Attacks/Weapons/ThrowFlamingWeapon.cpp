@@ -7,7 +7,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Objects/Platformer/Projectiles/ThrownObject/ThrownObject.h"
+#include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
@@ -54,7 +54,7 @@ void ThrowFlamingWeapon::performAttack(PlatformerEntity* owner, PlatformerEntity
 {
 	super::performAttack(owner, target);
 
-	ThrownObject* weapon = ThrownObject::create(owner, this->getMainhandResource(owner), Size(64.0f, 128.0f));
+	ThrownObject* weapon = ThrownObject::create(owner, target, false, this->getMainhandResource(owner), Size(64.0f, 128.0f));
 	SmartAnimationSequenceNode* fire = SmartAnimationSequenceNode::create(FXResources::TorchFire_TorchFire_0000);
 
 	weapon->addChild(fire);

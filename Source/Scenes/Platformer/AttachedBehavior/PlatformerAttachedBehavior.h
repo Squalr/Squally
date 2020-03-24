@@ -1,8 +1,9 @@
 #pragma once
-#include "Scenes/Platformer/AttachedBehavior/Combat/IncrementHealthFlaskTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoDefendBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoItemsBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Combat/TrainingHealTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/FireballTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/IncrementHealthFlaskTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/TrainingHealTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/EnemyBattleAllyBehavior.h"
