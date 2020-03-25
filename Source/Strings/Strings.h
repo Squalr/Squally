@@ -759,6 +759,21 @@ namespace Strings
 		virtual ~Common_Constant() = default;
 	};
 
+	class Common_ConstantTimes : public LocalizedString
+	{
+	public:
+		static Common_ConstantTimes* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConstantTimes();
+		virtual ~Common_ConstantTimes() = default;
+	};
+
 	class Common_Count : public LocalizedString
 	{
 	public:
@@ -7822,6 +7837,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3();
 		virtual ~Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_FortitudeClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Haste_Haste : public LocalizedString

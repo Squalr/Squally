@@ -53,6 +53,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	    Combat
 	*********************/
 	this->attachedBehaviorDeserializers[FireballTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FireballTutorialBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[FortitudeTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)FortitudeTutorial::create(owner); };
 	this->attachedBehaviorDeserializers[HasteTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HasteTutorial::create(owner); };
 	this->attachedBehaviorDeserializers[IncrementHealthFlaskTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IncrementHealthFlaskTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrainingHealTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingHealTutorialBehavior::create(owner); };

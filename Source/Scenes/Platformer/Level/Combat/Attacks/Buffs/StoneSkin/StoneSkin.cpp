@@ -38,7 +38,7 @@ using namespace cocos2d;
 const std::string StoneSkin::StoneSkinIdentifier = "stone-skin";
 
 const int StoneSkin::MaxMultiplier = 4;
-const float StoneSkin::Duration = 12.0f;
+const float StoneSkin::Duration = 16.0f;
 
 StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -152,7 +152,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
 	ASM(DIV_CONVERT);
-	ASM(mov ZCX, 3)
+	ASM(mov ZCX, 4)
 	ASM(idiv ZCX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

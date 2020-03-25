@@ -2,6 +2,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoDefendBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/NoItemsBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/FireballTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/FortitudeTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/HasteTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/IncrementHealthFlaskTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/TrainingHealTutorialBehavior.h"
