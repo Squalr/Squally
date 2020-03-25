@@ -13,7 +13,7 @@ using namespace cocos2d;
 
 const float SwordExecute::SwordExecuteBonus = 1.4f;
 
-SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	SwordExecute* instance = new SwordExecute(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -22,7 +22,7 @@ SwordExecute* SwordExecute::create(int damageMin, int damageMax, float attackDur
 	return instance;
 }
 
-SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_BleedingLimb, priority, int(float(damageMin) * SwordExecute::SwordExecuteBonus), int(float(damageMax) * SwordExecute::SwordExecuteBonus), 4, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-MaceSwing* MaceSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+MaceSwing* MaceSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	MaceSwing* instance = new MaceSwing(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ MaceSwing* MaceSwing::create(int damageMin, int damageMax, float attackDuration,
 	return instance;
 }
 
-MaceSwing::MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+MaceSwing::MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_Hammer, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

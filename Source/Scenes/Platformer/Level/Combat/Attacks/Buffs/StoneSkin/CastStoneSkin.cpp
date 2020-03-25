@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration, float priority)
+CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	CastStoneSkin* instance = new CastStoneSkin(attackDuration, recoverDuration, priority);
 
@@ -26,7 +26,7 @@ CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration
 	return instance;
 }
 
-CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);

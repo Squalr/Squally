@@ -7,14 +7,14 @@ class WorldSound;
 class ThrowManaPotion : public PlatformerAttack
 {
 public:
-	static ThrowManaPotion* create();
+	static ThrowManaPotion* create(Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	ThrowManaPotion();
+	ThrowManaPotion(Priority priority);
 	virtual ~ThrowManaPotion();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;

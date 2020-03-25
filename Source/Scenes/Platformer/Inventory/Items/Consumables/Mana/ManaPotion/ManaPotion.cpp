@@ -58,5 +58,5 @@ std::string ManaPotion::getSerializationKey()
 
 PlatformerAttack* ManaPotion::createAssociatedAttack()
 {
-	return ThrowManaPotion::create();
+	return ThrowManaPotion::create(PlatformerAttack::Priority::Common);
 }

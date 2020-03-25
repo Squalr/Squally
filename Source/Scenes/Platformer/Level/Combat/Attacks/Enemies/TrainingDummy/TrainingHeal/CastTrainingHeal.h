@@ -12,13 +12,13 @@ class WorldSound;
 class CastTrainingHeal : public PlatformerAttack
 {
 public:
-	static CastTrainingHeal* create(float attackDuration, float recoverDuration, float priority);
+	static CastTrainingHeal* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	CastTrainingHeal(float attackDuration, float recoverDuration, float priority);
+	CastTrainingHeal(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~CastTrainingHeal();
 
 	void initializePositions() override;

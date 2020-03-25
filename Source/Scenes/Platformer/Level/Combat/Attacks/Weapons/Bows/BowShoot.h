@@ -7,14 +7,14 @@ class WorldSound;
 class BowShoot : public PlatformerAttack
 {
 public:
-	static BowShoot* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	static BowShoot* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 	virtual ~BowShoot();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;

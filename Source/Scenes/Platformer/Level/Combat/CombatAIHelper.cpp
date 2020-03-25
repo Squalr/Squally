@@ -361,7 +361,40 @@ CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(con
 		// Only build an attack probability map for attacks that match the given predicate
 		if (predicate(attack))
 		{
-			cumulativeProbability += attack->getPriority();
+			switch(attack->getPriority())
+			{
+				case PlatformerAttack::Priority::Guaranteed:
+				{
+					cumulativeProbability += 1.0f;
+					break;
+				}
+				case PlatformerAttack::Priority::VeryCommon:
+				{
+					cumulativeProbability += 0.75f;
+					break;
+				}
+				case PlatformerAttack::Priority::Common:
+				{
+					cumulativeProbability += 0.5f;
+					break;
+				}
+				case PlatformerAttack::Priority::Reasonable:
+				{
+					cumulativeProbability += 0.25f;
+					break;
+				}
+				case PlatformerAttack::Priority::Uncommon:
+				{
+					cumulativeProbability += 0.15f;
+					break;
+				}
+				case PlatformerAttack::Priority::Rare:
+				{
+					cumulativeProbability += 0.8f;
+					break;
+				}
+			}
+
 			probabilities.push_back(AttackProbability(attack, cumulativeProbability));
 		}
 	}

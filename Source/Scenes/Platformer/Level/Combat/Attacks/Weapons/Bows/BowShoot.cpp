@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-BowShoot* BowShoot::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+BowShoot* BowShoot::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	BowShoot* instance = new BowShoot(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ BowShoot* BowShoot::create(int damageMin, int damageMax, float attackDuration, f
 	return instance;
 }
 
-BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+BowShoot::BowShoot(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_ArcheryTarget, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

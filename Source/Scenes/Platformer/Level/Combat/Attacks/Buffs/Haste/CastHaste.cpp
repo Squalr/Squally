@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-CastHaste* CastHaste::create(float attackDuration, float recoverDuration, float priority)
+CastHaste* CastHaste::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	CastHaste* instance = new CastHaste(attackDuration, recoverDuration, priority);
 
@@ -26,7 +26,7 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, float 
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);

@@ -22,7 +22,7 @@
 
 using namespace cocos2d;
 
-DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, float priority)
+DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	DragonBreath* instance = new DragonBreath(attackDuration, recoverDuration, priority);
 
@@ -31,7 +31,7 @@ DragonBreath* DragonBreath::create(float attackDuration, float recoverDuration, 
 	return instance;
 }
 
-DragonBreath::DragonBreath(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 7, 9, 12, attackDuration, recoverDuration)
+DragonBreath::DragonBreath(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_FireBalls, priority, 7, 9, 12, attackDuration, recoverDuration)
 {
 }
 

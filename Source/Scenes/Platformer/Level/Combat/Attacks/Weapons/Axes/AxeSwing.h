@@ -7,14 +7,14 @@ class WorldSound;
 class AxeSwing : public PlatformerAttack
 {
 public:
-	static AxeSwing* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	static AxeSwing* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	AxeSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	AxeSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 	virtual ~AxeSwing();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;

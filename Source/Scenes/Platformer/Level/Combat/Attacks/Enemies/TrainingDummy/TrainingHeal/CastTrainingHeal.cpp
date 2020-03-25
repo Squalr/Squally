@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDuration, float priority)
+CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	CastTrainingHeal* instance = new CastTrainingHeal(attackDuration, recoverDuration, priority);
 
@@ -26,7 +26,7 @@ CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDu
 	return instance;
 }
 
-CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, float priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
+CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);

@@ -20,16 +20,16 @@
 
 using namespace cocos2d;
 
-ThrowHealthPotion* ThrowHealthPotion::create(float healPercentage, std::string iconResource)
+ThrowHealthPotion* ThrowHealthPotion::create(Priority priority, float healPercentage, std::string iconResource)
 {
-	ThrowHealthPotion* instance = new ThrowHealthPotion(healPercentage, iconResource);
+	ThrowHealthPotion* instance = new ThrowHealthPotion(priority, healPercentage, iconResource);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowHealthPotion::ThrowHealthPotion(float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowHealthPotion::ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource) : super(AttackType::Healing, iconResource, priority, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 	this->healPercentage = healPercentage;
@@ -43,7 +43,7 @@ ThrowHealthPotion::~ThrowHealthPotion()
 
 PlatformerAttack* ThrowHealthPotion::cloneInternal()
 {
-	return ThrowHealthPotion::create(this->healPercentage, this->getIconResource());
+	return ThrowHealthPotion::create(this->priority, this->healPercentage, this->getIconResource());
 }
 
 LocalizedString* ThrowHealthPotion::getString()

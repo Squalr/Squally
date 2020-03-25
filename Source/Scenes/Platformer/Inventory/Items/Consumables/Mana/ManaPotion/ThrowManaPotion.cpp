@@ -20,16 +20,16 @@
 
 using namespace cocos2d;
 
-ThrowManaPotion* ThrowManaPotion::create()
+ThrowManaPotion* ThrowManaPotion::create(Priority priority)
 {
-	ThrowManaPotion* instance = new ThrowManaPotion();
+	ThrowManaPotion* instance = new ThrowManaPotion(priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowManaPotion::ThrowManaPotion() : super(AttackType::Healing, ItemResources::Consumables_Potions_ManaPotion, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowManaPotion::ThrowManaPotion(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_ManaPotion, priority, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -42,7 +42,7 @@ ThrowManaPotion::~ThrowManaPotion()
 
 PlatformerAttack* ThrowManaPotion::cloneInternal()
 {
-	return ThrowManaPotion::create();
+	return ThrowManaPotion::create(this->priority);
 }
 
 LocalizedString* ThrowManaPotion::getString()

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-AxeSwing* AxeSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+AxeSwing* AxeSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	AxeSwing* instance = new AxeSwing(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ AxeSwing* AxeSwing::create(int damageMin, int damageMax, float attackDuration, f
 	return instance;
 }
 
-AxeSwing::AxeSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+AxeSwing::AxeSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_Axe, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

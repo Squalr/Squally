@@ -9,13 +9,23 @@ class Projectile;
 class PlatformerAttack : public SmartNode
 {
 public:
-	enum AttackType
+	enum class AttackType
 	{
 		Damage,
 		Healing,
 		Buff,
 		Debuff,
 		Resurrection,
+	};
+
+	enum class Priority
+	{
+		Guaranteed,	// 100% (not weighted against other attacks, this gets priority)
+		VeryCommon,	// 75%
+		Common,		// 50%
+		Reasonable,	// 25%
+		Uncommon,	// 15%
+		Rare,		// 8%
 	};
 
 	PlatformerAttack* clone();
@@ -25,7 +35,7 @@ public:
 	std::string getIconResource();
 	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 
-	float getPriority();
+	Priority getPriority();
 	int getSpecialCost();
 	AttackType getAttackType();
 	virtual void onAttackTelegraphBegin();
@@ -36,13 +46,9 @@ public:
 	virtual void onCleanup();
 	int getRandomDamage();
 
-	static const float PriorityCommon;
-	static const float PriorityUncommon;
-	static const float PriorityRare;
-
 protected:
-	PlatformerAttack(AttackType attackType, std::string iconResource, float probabilityWeight, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
-	~PlatformerAttack() = default;
+	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
+	virtual ~PlatformerAttack();
 
 	int getBaseDamageMin();
 	int getBaseDamageMax();
@@ -58,7 +64,7 @@ protected:
 
 	float attackDuration;
 	float recoverDuration;
-	float priority;
+	Priority priority;
 	
 	static const float DefaultCleanupDuration;
 

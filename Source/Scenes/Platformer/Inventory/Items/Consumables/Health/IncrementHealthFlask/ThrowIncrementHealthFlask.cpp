@@ -21,16 +21,16 @@
 
 using namespace cocos2d;
 
-ThrowIncrementHealthFlask* ThrowIncrementHealthFlask::create()
+ThrowIncrementHealthFlask* ThrowIncrementHealthFlask::create(Priority priority)
 {
-	ThrowIncrementHealthFlask* instance = new ThrowIncrementHealthFlask();
+	ThrowIncrementHealthFlask* instance = new ThrowIncrementHealthFlask(priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowIncrementHealthFlask::ThrowIncrementHealthFlask() : super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, 0.5f, 10, 15, 0, 0.2f, 1.5f)
+ThrowIncrementHealthFlask::ThrowIncrementHealthFlask(Priority priority) : super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskIncrement, priority, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ItemThrow1);
 
@@ -43,7 +43,7 @@ ThrowIncrementHealthFlask::~ThrowIncrementHealthFlask()
 
 PlatformerAttack* ThrowIncrementHealthFlask::cloneInternal()
 {
-	return ThrowIncrementHealthFlask::create();
+	return ThrowIncrementHealthFlask::create(this->priority);
 }
 
 LocalizedString* ThrowIncrementHealthFlask::getString()

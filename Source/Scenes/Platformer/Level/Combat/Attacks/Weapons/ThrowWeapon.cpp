@@ -16,7 +16,7 @@
 
 using namespace cocos2d;
 
-ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, float priority)
+ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	ThrowWeapon* instance = new ThrowWeapon(attackDuration, recoverDuration, priority);
 
@@ -25,7 +25,7 @@ ThrowWeapon* ThrowWeapon::create(float attackDuration, float recoverDuration, fl
 	return instance;
 }
 
-ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, 5, 7, 4, attackDuration, recoverDuration)
+ThrowWeapon::ThrowWeapon(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordStrike, priority, 5, 7, 4, attackDuration, recoverDuration)
 {
 }
 

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-BasicSlash* BasicSlash::create(float attackDuration, float recoverDuration, float priority)
+BasicSlash* BasicSlash::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	BasicSlash* instance = new BasicSlash(attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ BasicSlash* BasicSlash::create(float attackDuration, float recoverDuration, floa
 	return instance;
 }
 
-BasicSlash::BasicSlash(float attackDuration, float recoverDuration, float priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration)
+BasicSlash::BasicSlash(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);

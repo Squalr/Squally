@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-SwordSlash* SwordSlash::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+SwordSlash* SwordSlash::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	SwordSlash* instance = new SwordSlash(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ SwordSlash* SwordSlash::create(int damageMin, int damageMax, float attackDuratio
 	return instance;
 }
 
-SwordSlash::SwordSlash(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+SwordSlash::SwordSlash(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->SwordSlashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

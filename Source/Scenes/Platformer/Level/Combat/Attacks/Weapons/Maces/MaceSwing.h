@@ -7,14 +7,14 @@ class WorldSound;
 class MaceSwing : public PlatformerAttack
 {
 public:
-	static MaceSwing* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	static MaceSwing* create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority);
+	MaceSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 	virtual ~MaceSwing();
 
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;

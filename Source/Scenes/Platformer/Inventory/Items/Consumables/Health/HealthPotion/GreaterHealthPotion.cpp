@@ -58,5 +58,5 @@ std::string GreaterHealthPotion::getSerializationKey()
 
 PlatformerAttack* GreaterHealthPotion::createAssociatedAttack()
 {
-	return ThrowHealthPotion::create(GreaterHealthPotion::HealPercentage, this->getIconResource());
+	return ThrowHealthPotion::create(PlatformerAttack::Priority::Common, GreaterHealthPotion::HealPercentage, this->getIconResource());
 }

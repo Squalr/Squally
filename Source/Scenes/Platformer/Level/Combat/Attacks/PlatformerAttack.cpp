@@ -17,16 +17,7 @@ using namespace cocos2d;
 
 const float PlatformerAttack::DefaultCleanupDuration = 5.0f;
 
-// 50%
-const float PlatformerAttack::PriorityCommon = 0.5f;
-
-// 20%
-const float PlatformerAttack::PriorityUncommon = 0.2f;
-
-// 10%
-const float PlatformerAttack::PriorityRare = 0.1f;
-
-PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, float priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
+PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration)
 {
 	this->attackType = attackType;
 	this->iconResource = iconResource;
@@ -37,6 +28,10 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
+}
+
+PlatformerAttack::~PlatformerAttack()
+{
 }
 
 PlatformerAttack* PlatformerAttack::clone()
@@ -69,7 +64,7 @@ std::string PlatformerAttack::getIconResource()
 	return this->iconResource;
 }
 
-float PlatformerAttack::getPriority()
+PlatformerAttack::Priority PlatformerAttack::getPriority()
 {
 	return this->priority;
 }

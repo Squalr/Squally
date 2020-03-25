@@ -7,14 +7,14 @@ class WorldSound;
 class ThrowIncrementHealthFlask : public PlatformerAttack
 {
 public:
-	static ThrowIncrementHealthFlask* create();
+	static ThrowIncrementHealthFlask* create(Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	ThrowIncrementHealthFlask();
+	ThrowIncrementHealthFlask(Priority priority);
 	virtual ~ThrowIncrementHealthFlask();
 
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;

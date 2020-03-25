@@ -12,13 +12,13 @@ class WorldSound;
 class CastLesserStrength : public PlatformerAttack
 {
 public:
-	static CastLesserStrength* create(float attackDuration, float recoverDuration, float priority);
+	static CastLesserStrength* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	CastLesserStrength(float attackDuration, float recoverDuration, float priority);
+	CastLesserStrength(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~CastLesserStrength();
 
 	void initializePositions() override;

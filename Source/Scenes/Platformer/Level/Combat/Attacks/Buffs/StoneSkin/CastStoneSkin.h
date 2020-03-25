@@ -12,13 +12,13 @@ class WorldSound;
 class CastStoneSkin : public PlatformerAttack
 {
 public:
-	static CastStoneSkin* create(float attackDuration, float recoverDuration, float priority);
+	static CastStoneSkin* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	CastStoneSkin(float attackDuration, float recoverDuration, float priority);
+	CastStoneSkin(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~CastStoneSkin();
 
 	void initializePositions() override;

@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-WandSwing* WandSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+WandSwing* WandSwing::create(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 {
 	WandSwing* instance = new WandSwing(damageMin, damageMax, attackDuration, recoverDuration, priority);
 
@@ -20,7 +20,7 @@ WandSwing* WandSwing::create(int damageMin, int damageMax, float attackDuration,
 	return instance;
 }
 
-WandSwing::WandSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, float priority)
+WandSwing::WandSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_Wand, priority, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_Swing1);

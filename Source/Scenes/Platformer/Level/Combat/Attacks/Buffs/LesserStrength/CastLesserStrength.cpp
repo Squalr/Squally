@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-CastLesserStrength* CastLesserStrength::create(float attackDuration, float recoverDuration, float priority)
+CastLesserStrength* CastLesserStrength::create(float attackDuration, float recoverDuration, Priority priority)
 {
 	CastLesserStrength* instance = new CastLesserStrength(attackDuration, recoverDuration, priority);
 
@@ -26,7 +26,7 @@ CastLesserStrength* CastLesserStrength::create(float attackDuration, float recov
 	return instance;
 }
 
-CastLesserStrength::CastLesserStrength(float attackDuration, float recoverDuration, float priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastLesserStrength::CastLesserStrength(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);

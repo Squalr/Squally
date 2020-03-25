@@ -3,6 +3,7 @@
 #include "cocos/base/ccRandom.h"
 
 #include "Engine/SmartNode.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
 class PlatformerAttack;
 class PlatformerEntity;
@@ -49,9 +50,19 @@ private:
 
 		PlatformerAttack* getRandomAttack()
 		{
+			// Short circuit for guaranteed attacks
+			for (auto next : probabilities)
+			{
+				if (next.attack->getPriority() == PlatformerAttack::Priority::Guaranteed)
+				{
+					return next.attack;
+				}
+			}
+
 			PlatformerAttack* attack = nullptr;
 			float rng = cocos2d::RandomHelper::random_real(0.0f, sum);
 
+			// Choose ability randomly
 			for (auto next : probabilities)
 			{
 				attack = next.attack;

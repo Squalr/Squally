@@ -11,29 +11,14 @@ class ItemChance : public SmartNode
 public:
 	enum class Probability
 	{
-		// 100%
-		Guaranteed,
-
-		// 75%
-		VeryCommon,
-
-		// 50%
-		Common,
-
-		// 25%
-		Reasonable,
-
-		// 15%
-		Uncommon,
-
-		// 8%
-		Rare,
-
-		// 4%
-		Epic,
-
-		// 1%
-		Legendary,
+		Guaranteed,	// 100%
+		VeryCommon,	// 75%
+		Common,		// 50%
+		Reasonable,	// 25%
+		Uncommon,	// 15%
+		Rare,		// 8%
+		Epic,		// 4%
+		Legendary,	// 1%
 	};
 
 	static ItemChance* create(Item* item, Probability probability);
@@ -45,7 +30,7 @@ public:
 
 protected:
 	ItemChance(Item* item, Probability probability);
-	~ItemChance();
+	virtual ~ItemChance();
 
 private:
 	typedef SmartNode super;

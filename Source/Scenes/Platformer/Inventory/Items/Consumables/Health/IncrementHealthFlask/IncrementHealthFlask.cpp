@@ -57,5 +57,5 @@ std::string IncrementHealthFlask::getSerializationKey()
 
 PlatformerAttack* IncrementHealthFlask::createAssociatedAttack()
 {
-	return ThrowIncrementHealthFlask::create();
+	return ThrowIncrementHealthFlask::create(PlatformerAttack::Priority::Common);
 }
