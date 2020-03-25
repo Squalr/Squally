@@ -315,11 +315,12 @@ void TutorialAIntroSequence::runTutorialBinaryCards(GameState* gameState)
 	std::vector<Node*> focusTargets = std::vector<Node*>();
 	focusTargets.push_back(gameState->enemyBinaryCards);
 	focusTargets.push_back(gameState->playerBinaryCards);
-	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
+
+	for (auto next : gameState->playerHand->rowCards)
 	{
-		if ((*it)->cardData->getCardType() == CardData::CardType::Binary)
+		if (next->cardData->getCardType() == CardData::CardType::Binary)
 		{
-			focusTargets.push_back((*it));
+			focusTargets.push_back(next);
 		}
 	}
 	this->focusTakeOver->focus(focusTargets);
@@ -337,11 +338,12 @@ void TutorialAIntroSequence::runTutorialDecimalCards(GameState* gameState)
 	std::vector<Node*> focusTargets = std::vector<Node*>();
 	focusTargets.push_back(gameState->enemyDecimalCards);
 	focusTargets.push_back(gameState->playerDecimalCards);
-	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
+
+	for (auto next : gameState->playerHand->rowCards)
 	{
-		if ((*it)->cardData->getCardType() == CardData::CardType::Decimal)
+		if (next->cardData->getCardType() == CardData::CardType::Decimal)
 		{
-			focusTargets.push_back((*it));
+			focusTargets.push_back(next);
 		}
 	}
 	this->focusTakeOver->focus(focusTargets);
@@ -360,11 +362,12 @@ void TutorialAIntroSequence::runTutorialHexCards(GameState* gameState)
 	std::vector<Node*> focusTargets = std::vector<Node*>();
 	focusTargets.push_back(gameState->enemyHexCards);
 	focusTargets.push_back(gameState->playerHexCards);
-	for (auto it = gameState->playerHand->rowCards.begin(); it != gameState->playerHand->rowCards.end(); it++)
+	
+	for (auto next : gameState->playerHand->rowCards)
 	{
-		if ((*it)->cardData->getCardType() == CardData::CardType::Hexidecimal)
+		if (next->cardData->getCardType() == CardData::CardType::Hexidecimal)
 		{
-			focusTargets.push_back((*it));
+			focusTargets.push_back(next);
 		}
 	}
 	this->focusTakeOver->focus(focusTargets);

@@ -75,9 +75,9 @@ HexusOpponentData::HexusOpponentData(
 		this->stateOverride->retain();
 	}
 
-	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	for (auto next : this->tutorials)
 	{
-		(*it)->retain();
+		next->retain();
 	}
 }
 
@@ -88,9 +88,9 @@ HexusOpponentData::~HexusOpponentData()
 		this->stateOverride->release();
 	}
 
-	for (auto it = this->tutorials.begin(); it != this->tutorials.end(); it++)
+	for (auto next : this->tutorials)
 	{
-		(*it)->release();
+		next->release();
 	}
 }
 
@@ -103,11 +103,11 @@ CardData* HexusOpponentData::getStrongestCard()
 {
 	CardData* best = nullptr;
 
-	for (auto it = this->cards.begin(); it != this->cards.end(); it++)
+	for (auto card : this->cards)
 	{
-		if (best == nullptr || (*it)->getAttack() > best->getAttack())
+		if (best == nullptr || card->getAttack() > best->getAttack())
 		{
-			best = *it;
+			best = card;
 		}
 	}
 
@@ -124,9 +124,9 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
 
-	for (auto it = guaranteedCards.begin(); it != guaranteedCards.end(); it++)
+	for (auto card : guaranteedCards)
 	{
-		deck.push_back(*it);
+		deck.push_back(card);
 		deckSize--;
 	}
 
@@ -153,10 +153,8 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 	std::vector<int> deckCards = AlgoUtils::subsetSum(possibleCards, generatedDeckAttack, deckSize);
 	std::map<int, int> addedCards = std::map<int, int>();
 
-	for (auto it = deckCards.begin(); it != deckCards.end(); it++)
+	for (auto attack : deckCards)
 	{
-		int attack = *it;
-
 		if (addedCards.find(attack) == addedCards.end())
 		{
 			// Start zero-indexed counter

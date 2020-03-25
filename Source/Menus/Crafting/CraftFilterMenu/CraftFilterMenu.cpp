@@ -146,13 +146,12 @@ void CraftFilterMenu::positionFilterText()
 	this->filterNodeContent->setPositionY(offset);
 
 	const float offsetY = CraftFilterMenu::LabelSpacing * float(this->filters.size() / 2);
-	int index = 0;
 
-	for (auto it = this->filters.begin(); it != this->filters.end(); it++, index++)
+	for (int index = 0; index < int(this->filters.size()); index++)
 	{
-		(*it)->setPositionX(0.0f);
-		(*it)->setPositionY(float(index) * -CraftFilterMenu::LabelSpacing + offsetY);
-		(*it)->setPositionZ(0.0f);
+		this->filters[index]->setPositionX(0.0f);
+		this->filters[index]->setPositionY(float(index) * -CraftFilterMenu::LabelSpacing + offsetY);
+		this->filters[index]->setPositionZ(0.0f);
 	}
 
 	const float XOffset = 64.0f;

@@ -122,22 +122,20 @@ void GameUtils::flattenNode(Node* parent)
 
 	Vector<Node*> children = parent->getChildren();
 
-	for (auto it = children.begin(); it != children.end(); it++)
+	for (auto child : children)
 	{
 		// Depth first recursion
-		GameUtils::flattenNode(*it);
+		GameUtils::flattenNode(child);
 	}
 
 	children = parent->getChildren();
 
-	for (auto it = children.begin(); it != children.end(); it++)
+	for (auto child : children)
 	{
-		Vector<Node*> childChildren = (*it)->getChildren();
-
 		// Make the child's children siblings
-		for (auto childIt = childChildren.begin(); childIt != childChildren.end(); childIt++)
+		for (auto childChild : (child)->getChildren())
 		{
-			GameUtils::changeParent(*childIt, parent, true);
+			GameUtils::changeParent(childChild, parent, true);
 		}
 	}
 }

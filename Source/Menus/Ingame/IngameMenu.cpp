@@ -103,9 +103,9 @@ void IngameMenu::onEnter()
 	float delay = 0.1f;
 	float duration = 0.25f;
 
-	for (auto it = this->addedButtons.begin(); it != this->addedButtons.end(); it++)
+	for (auto next : this->addedButtons)
 	{
-		GameUtils::fadeInObject(*it, delay, duration);
+		GameUtils::fadeInObject(next, delay, duration);
 	}
 }
 

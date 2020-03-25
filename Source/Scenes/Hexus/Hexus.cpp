@@ -337,9 +337,9 @@ void Hexus::buildPlayerDeck()
 			std::vector<HexusCard*> cards = equipmentInventory->getHexusCards();
 			std::map<std::string, CardData*> cardList = CardList::getInstance()->cardListByName;
 
-			for (auto it = cards.begin(); it != cards.end(); it++)
+			for (auto card : cards)
 			{
-				std::string key = (*it)->getCardKey();
+				std::string key = card->getCardKey();
 
 				if (cardList.find(key) != cardList.end())
 				{
@@ -349,9 +349,9 @@ void Hexus::buildPlayerDeck()
 
 			this->gameState->playerDeck->style = Card::CardStyle::Earth;
 
-			for (auto it = cardData.begin(); it != cardData.end(); it++)
+			for (auto next : cardData)
 			{
-				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, (*it), true), false, 0.0f, false);
+				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
 			}
 		});
 	}, Squally::MapKey);

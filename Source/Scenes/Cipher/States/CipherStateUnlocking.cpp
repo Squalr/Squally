@@ -36,16 +36,16 @@ void CipherStateUnlocking::onStateEnter(CipherState* cipherState)
 	std::vector<BlockBase*> inputBlocks = std::vector<BlockBase*>();
 	std::vector<BlockBase*> immediateBlocks = std::vector<BlockBase*>();
 
-	for (auto it = cipherState->inputBlocks.begin(); it != cipherState->inputBlocks.end(); it++)
+	for (auto next : cipherState->inputBlocks)
 	{
-		inputBlocks.push_back(*it);
+		inputBlocks.push_back(next);
 	}
 
-	for (auto it = cipherState->userBlocks.begin(); it != cipherState->userBlocks.end(); it++)
+	for (auto next : cipherState->userBlocks)
 	{
-		if (dynamic_cast<ImmediateBlock*>(*it) != nullptr)
+		if (dynamic_cast<ImmediateBlock*>(next) != nullptr)
 		{
-			immediateBlocks.push_back(*it);
+			immediateBlocks.push_back(next);
 		}
 	}
 
@@ -104,9 +104,9 @@ void CipherStateUnlocking::performUnlockLoop(CipherState* cipherState, std::vect
 			{
 				bool currentUnlockSuccessful = true;
 				
-				for (auto it = cipherState->outputBlocks.begin(); it != cipherState->outputBlocks.end(); it++)
+				for (auto next : cipherState->outputBlocks)
 				{
-					currentUnlockSuccessful &= (*it)->isMatchedValues();
+					currentUnlockSuccessful &= next->isMatchedValues();
 				}
 
 				CipherEvents::TriggerTryUnlockCurrentCipher(CipherEvents::UnlockArgs(index, currentUnlockSuccessful, [=]()

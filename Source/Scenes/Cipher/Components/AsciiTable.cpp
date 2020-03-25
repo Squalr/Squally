@@ -94,10 +94,10 @@ AsciiTable::AsciiTable()
 		verticies.push_back(Vec2(totalSize.width, CornerSize));
 		verticies.push_back(Vec2(totalSize.width - CornerSizeInner, 0.0f));
 
-		for (auto it = verticies.begin(); it != verticies.end(); it++)
+		for (auto next : verticies)
 		{
-			it->x += (28.0f - paddingSize.width - marginSize.width);
-			it->y += (24.0f - paddingSize.height - marginSize.height);
+			next.x += (28.0f - paddingSize.width - marginSize.width);
+			next.y += (24.0f - paddingSize.height - marginSize.height);
 		}
 
 		customBackground->drawSolidPoly(verticies.data(), verticies.size(), Color4F(Color4B(0, 0, 0, 128)));
@@ -110,9 +110,9 @@ AsciiTable::AsciiTable()
 
 	this->scrollPane->suspendUpdate();
 
-	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
+	for (auto next : this->asciiLetters)
 	{
-		this->scrollPane->addChild(*it);
+		this->scrollPane->addChild(next);
 	}
 	
 	this->scrollPane->addChild(this->selectionSprite);
@@ -142,12 +142,10 @@ void AsciiTable::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	int index = 0;
-
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->scrollPane->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 52.0f + 24.0f));
 
-	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++, index++)
+	for (int index = 0; index < int(this->asciiLetters.size()); index++)
 	{
 		const int GridWidth = 8;
 		const int GridHeight = 32;
@@ -155,7 +153,7 @@ void AsciiTable::initializePositions()
 		int x = index / GridHeight;
 		int y = index % GridHeight;
 
-		(*it)->setPosition(Vec2(32.0f + (float(x - GridWidth / 2) + 0.5f) * 160.0f, float(-y) * 80.0f));
+		this->asciiLetters[index]->setPosition(Vec2(32.0f + (float(x - GridWidth / 2) + 0.5f) * 160.0f, float(-y) * 80.0f));
 	}
 
 	this->frame->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -169,10 +167,8 @@ void AsciiTable::initializeListeners()
 {
 	super::initializeListeners();
 
-	for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
+	for (auto block : this->asciiLetters)
 	{
-		ImmediateBlock* block = *it;
-
 		block->getBlock()->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 		{
 			this->select(block);
@@ -204,9 +200,9 @@ void AsciiTable::open(ImmediateBlock* immediateBlock, std::function<void()> onCl
 		this->chooseANewValueTitle->setVisible(false);
 		this->selectionSprite->setVisible(false);
 
-		for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
+		for (auto next : this->asciiLetters)
 		{
-			(*it)->getBlock()->disableInteraction();
+			next->getBlock()->disableInteraction();
 		}
 	}
 	else
@@ -215,9 +211,9 @@ void AsciiTable::open(ImmediateBlock* immediateBlock, std::function<void()> onCl
 		this->chooseANewValueTitle->setVisible(true);
 		this->selectionSprite->setVisible(true);
 
-		for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
+		for (auto next : this->asciiLetters)
 		{
-			(*it)->getBlock()->enableInteraction();
+			next->getBlock()->enableInteraction();
 		}
 	}
 	
@@ -230,11 +226,11 @@ void AsciiTable::select(ImmediateBlock* block)
 
 	if (block != nullptr)
 	{
-		for (auto it = this->asciiLetters.begin(); it != this->asciiLetters.end(); it++)
+		for (auto next : this->asciiLetters)
 		{
-			if ((*it)->getValue() == block->getValue())
+			if (next->getValue() == block->getValue())
 			{
-				this->selectedBlock = *it;
+				this->selectedBlock = next;
 			}
 		}
 		

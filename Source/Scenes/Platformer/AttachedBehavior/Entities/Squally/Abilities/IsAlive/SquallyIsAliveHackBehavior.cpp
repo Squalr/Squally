@@ -84,11 +84,11 @@ void SquallyIsAliveHackBehavior::onLoad()
 
 	this->listenForMapEvent(SquallyIsAliveHackBehavior::EventSquallyTrapped, [=](ValueMap args)
 	{
-		for (auto it = this->codeList.begin(); it != this->codeList.end(); it++)
+		for (auto next : this->codeList)
 		{
-			if ((*it)->getHackableCodeIdentifier() == SquallyIsAliveHackBehavior::IdentifierIsAlive)
+			if (next->getHackableCodeIdentifier() == SquallyIsAliveHackBehavior::IdentifierIsAlive)
 			{
-				(*it)->getClippy()->setIsEnabled(true);
+				next->getClippy()->setIsEnabled(true);
 			}
 		}
 	});

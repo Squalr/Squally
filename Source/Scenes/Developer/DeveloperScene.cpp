@@ -96,9 +96,9 @@ DeveloperScene::DeveloperScene()
 	this->chapterList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 	this->chapterList.push_back(this->buildDebugButton("DBG Quests", MapResources::Dev_Quests));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
+	for (auto next : this->chapterList)
 	{
-		this->scrollPane->addChild(*it);
+		this->scrollPane->addChild(next);
 	}
 
 	this->addChild(this->scrollPane);

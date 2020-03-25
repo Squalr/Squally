@@ -190,17 +190,17 @@ void Projectile::registerHackables()
 	auto velocityFunc = &Projectile::getLaunchVelocity;
 	std::vector<HackableCode*> velocityHackables = HackableCode::create((void*&)velocityFunc, codeInfoMap);
 
-	for (auto it = velocityHackables.begin(); it != velocityHackables.end(); it++)
+	for (auto next : velocityHackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 
 	auto accelerationFunc = &Projectile::getLaunchAcceleration;
 	std::vector<HackableCode*> accelerationHackables = HackableCode::create((void*&)accelerationFunc, codeInfoMap);
 
-	for (auto it = accelerationHackables.begin(); it != accelerationHackables.end(); it++)
+	for (auto next : accelerationHackables)
 	{
-		this->registerCode(*it);
+		this->registerCode(next);
 	}
 }
 

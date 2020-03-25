@@ -55,14 +55,14 @@ CipherState::CipherState()
 		this->outputBlocks.push_back(DestinationBlock::create(index));
 	}
 
-	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++)
+	for (auto next : this->inputBlocks)
 	{
-		this->inputContent->addChild(*it);
+		this->inputContent->addChild(next);
 	}
 
-	for (auto it = this->outputBlocks.begin(); it != this->outputBlocks.end(); it++)
+	for (auto next : this->outputBlocks)
 	{
-		this->outputContent->addChild(*it);
+		this->outputContent->addChild(next);
 	}
 
 	this->addChild(this->gameAreaDebug);

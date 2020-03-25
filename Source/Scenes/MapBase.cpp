@@ -141,9 +141,9 @@ void MapBase::initializeListeners()
 
 		if (args != nullptr && args->argRef != nullptr)
 		{
-			for (auto it = this->mapArgs.begin(); it != this->mapArgs.end(); it++)
+			for (auto next : this->mapArgs)
 			{
-				args->argRef->push_back(*it);
+				args->argRef->push_back(next);
 			}
 		}
 	}));
@@ -215,10 +215,10 @@ void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
 
 void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers)
 {
-	for (auto it = layerDeserializers.begin(); it != layerDeserializers.end(); it++)
+	for (auto next : layerDeserializers)
 	{
-		this->addChild(*it);
-		this->layerDeserializers.push_back(*it);
+		this->addChild(next);
+		this->layerDeserializers.push_back(next);
 	}
 }
 

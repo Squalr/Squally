@@ -139,9 +139,9 @@ CipherPuzzleData* CipherChest::buildPuzzleData()
 	std::string tutorial = GameUtils::getKeyOrDefault(this->properties, CipherChest::PropertyTutorial, Value("")).asString();
 	std::vector<std::tuple<unsigned char, unsigned char>> inputOutputMap = std::vector<std::tuple<unsigned char, unsigned char>>();
 
-	for (auto it = inputs.begin(); it != inputs.end(); it++)
+	for (auto next : inputs)
 	{
-		unsigned char input = getChar(*it, dataType);
+		unsigned char input = getChar(next, dataType);
 		unsigned char output = applyRule(input, rule);
 
 		inputOutputMap.push_back(std::tuple<unsigned char, unsigned char>(input, output));

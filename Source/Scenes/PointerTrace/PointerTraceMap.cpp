@@ -406,21 +406,19 @@ void PointerTraceMap::buildCollisionMaps()
 	std::vector<TileLayer*> collisionLayers = this->map->getCollisionLayers();
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	for (auto it = collisionLayers.begin(); it != collisionLayers.end(); it++)
+	for (auto layer : collisionLayers)
 	{
-		std::vector<std::vector<int>> gidMap = (*it)->getGidMap();
+		std::vector<std::vector<int>> gidMap = layer->getGidMap();
 
 		int width = gidMap.empty() ? 0 : gidMap[0].size();
 		int height = gidMap.size();
 		int y = 0;
 
-		for (auto yIt = gidMap.begin(); yIt != gidMap.end(); y++, yIt++)
+		for (int y = 0; y < int(gidMap.size()); y++)
 		{
-			int x = 0;
-
-			for (auto xIt = (*yIt).begin(); xIt != (*yIt).end(); x++, xIt++)
+			for (int x = 0; x < int(gidMap[y].size()); x++)
 			{
-				int gid = *xIt;
+				int gid = gidMap[y][x];
 
 				// Janky garbage math. Seems to work, whatever
 				float newX = float(width - y) * 128.0f;

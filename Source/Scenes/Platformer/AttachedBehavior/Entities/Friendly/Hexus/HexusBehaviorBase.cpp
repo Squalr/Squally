@@ -315,9 +315,9 @@ void HexusBehaviorBase::onLoss()
 
 	this->addLoss();
 
-	for (auto it = this->lossCallbacks.begin(); it != this->lossCallbacks.end(); it++)
+	for (auto callback : this->lossCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 
@@ -338,9 +338,9 @@ void HexusBehaviorBase::onDraw()
 
 	this->addDraw();
 
-	for (auto it = this->drawCallbacks.begin(); it != this->drawCallbacks.end(); it++)
+	for (auto callback : this->drawCallbacks)
 	{
-		(*it)();
+		callback();
 	}
 }
 

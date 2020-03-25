@@ -96,9 +96,9 @@ void StateAIDecideCardReplace::replaceCard(Card* cardToReplace, GameState* gameS
 		});
 
 		// Insert removed cards at the bottom of the deck
-		for (auto it = this->removedCards.begin(); it != this->removedCards.end(); it++)
+		for (auto card : this->removedCards)
 		{
-			gameState->playerDeck->insertCardBottom(*it, false, 0.5f);
+			gameState->playerDeck->insertCardBottom(card, false, 0.5f);
 		}
 
 		// Get Our Replacement Card

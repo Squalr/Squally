@@ -124,9 +124,9 @@ void PauseMenu::onEnter()
 	GameUtils::fadeInObject(this->optionsButton, delay, duration);
 	GameUtils::fadeInObject(this->quitToTitleButton, delay, duration);
 
-	for (auto it = this->addedButtons.begin(); it != this->addedButtons.end(); it++)
+	for (auto next : this->addedButtons)
 	{
-		GameUtils::fadeInObject(*it, delay, duration);
+		GameUtils::fadeInObject(next, delay, duration);
 	}
 }
 

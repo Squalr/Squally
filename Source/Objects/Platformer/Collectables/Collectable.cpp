@@ -67,9 +67,9 @@ void Collectable::initializeListeners()
 		{
 			this->disableCollection();
 
-			for (auto it = this->collectionEvents.begin(); it != this->collectionEvents.end(); it++)
+			for (auto callback : this->collectionEvents)
 			{
-				(*it)();
+				callback();
 			}
 
 			this->saveObjectState(Collectable::SaveKeyIsCollected, Value(true));

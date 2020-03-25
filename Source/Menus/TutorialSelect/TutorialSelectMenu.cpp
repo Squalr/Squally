@@ -61,9 +61,9 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->chapterList.push_back(this->buildTutorialButton("Tutorial III - Unknown Value Scans Int32", MapResources::Tutorials_UnknownValue1));
 	this->chapterList.push_back(this->buildTutorialButton("Tutorial IV - Unknown Value Scans Float", MapResources::Tutorials_UnknownValue2));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++)
+	for (auto next : this->chapterList)
 	{
-		this->scrollPane->addChild(*it);
+		this->scrollPane->addChild(next);
 	}
 
 	this->addChild(this->scrollPane);
@@ -86,13 +86,11 @@ void TutorialSelectMenu::initializePositions()
 
 	Size visibleSize = Director::getInstance()->getVisibleSize();
 
-	int index = 0;
-
 	this->scrollPane->setPosition(Vec2(visibleSize / 2.0f));
 
-	for (auto it = this->chapterList.begin(); it != this->chapterList.end(); it++, index++)
+	for (int index = 0; index < int(this->chapterList.size()); index++)
 	{
-		(*it)->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
+		this->chapterList[index]->setPosition(Vec2(0.0f, -128.0f - float(index) * 180.0f));
 	}
 
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 480.0f));

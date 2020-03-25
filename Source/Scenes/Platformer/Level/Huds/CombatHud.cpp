@@ -55,19 +55,19 @@ void CombatHud::initializePositions()
 
 	int index = 0;
 
-	for (auto it = this->playerPartyStatsBars.begin(); it != this->playerPartyStatsBars.end(); it++)
+	for (auto next : this->playerPartyStatsBars)
 	{
-		(*it)->setPositionY((float)index * -160.0f);
+		next->setPositionY((float)index * -160.0f);
 
 		index++;
 	}
 	
 	index = 0;
 
-	for (auto it = this->enemyPartyStatsBars.begin(); it != this->enemyPartyStatsBars.end(); it++)
+	for (auto next : this->enemyPartyStatsBars)
 	{
-		(*it)->setAnchorPoint(Vec2(1.0f, 0.5f));
-		(*it)->setPositionY((float)index * -160.0f);
+		next->setAnchorPoint(Vec2(1.0f, 0.5f));
+		next->setPositionY((float)index * -160.0f);
 
 		index++;
 	}
@@ -85,21 +85,21 @@ void CombatHud::bindStatsBars(std::vector<TimelineEntry*> friendlyEntries, std::
 	this->playerPartyStatsBars.clear();
 	this->enemyPartyStatsBars.clear();
 
-	for (auto it = friendlyEntries.begin(); it != friendlyEntries.end(); it++)
+	for (auto next : friendlyEntries)
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
-		statsBars->setStatsTarget((*it)->getEntity());
+		statsBars->setStatsTarget(next->getEntity());
 		
 		this->playerPartyStatsBars.push_back(statsBars);
 		this->playerPartyStatsNode->addChild(statsBars);
 	}
 
-	for (auto it = enemyEntries.begin(); it != enemyEntries.end(); it++)
+	for (auto next : enemyEntries)
 	{
 		StatsBars* statsBars = StatsBars::create();
 		
-		statsBars->setStatsTarget((*it)->getEntity());
+		statsBars->setStatsTarget(next->getEntity());
 		
 		this->enemyPartyStatsBars.push_back(statsBars);
 		this->enemyPartyStatsNode->addChild(statsBars);

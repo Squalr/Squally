@@ -246,7 +246,7 @@ StatsTables::StatsTables()
 	************/
 	StatsTables::StatsTable[TrainingDummy::MapKey] = Stats(1000, 500, 32);
 	StatsTables::StatsTable[Centaur::MapKey] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Cyclops::MapKey] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 32);
 	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 32);
