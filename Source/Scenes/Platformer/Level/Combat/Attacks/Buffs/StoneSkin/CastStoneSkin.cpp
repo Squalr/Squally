@@ -26,7 +26,7 @@ CastStoneSkin* CastStoneSkin::create(float attackDuration, float recoverDuration
 	return instance;
 }
 
-CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastStoneSkin::CastStoneSkin(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_ShieldBroken, priority, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
@@ -56,7 +56,7 @@ PlatformerAttack* CastStoneSkin::cloneInternal()
 
 LocalizedString* CastStoneSkin::getString()
 {
-	return Strings::Menus_Hacking_Abilities_StoneSkin_StoneSkin::create();
+	return Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create();
 }
 
 std::string CastStoneSkin::getAttackAnimation()
@@ -91,15 +91,15 @@ void CastStoneSkin::onCleanup()
 
 bool CastStoneSkin::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasSpeedBuff = false;
+	bool hasBuff = false;
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<StoneSkin>([&](StoneSkin* haste)
 		{
-			hasSpeedBuff = true;
+			hasBuff = true;
 		});
 	});
 
-	return !hasSpeedBuff;
+	return !hasBuff;
 }

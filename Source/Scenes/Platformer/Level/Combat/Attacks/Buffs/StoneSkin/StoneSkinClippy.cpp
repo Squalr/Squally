@@ -42,8 +42,8 @@ Clippy* StoneSkinClippy::innerClone()
 void StoneSkinClippy::startDialogue()
 {
 	this->runDialogue(
-		Strings::Menus_Hacking_Abilities_StoneSkin_StoneSkinClippy::create()
-			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin::create()),
+		Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy::create()
+			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }

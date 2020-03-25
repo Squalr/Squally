@@ -28,6 +28,7 @@ public:
 	};
 
 	void elapse(float dt);
+	float getRemainingDuration();
 	BuffData getBuffData();
 	void setRemoveBuffCallback(std::function<void()> removeBuffCallback);
 	void removeBuff();

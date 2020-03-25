@@ -26,7 +26,7 @@ CastHaste* CastHaste::create(float attackDuration, float recoverDuration, Priori
 	return instance;
 }
 
-CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastHaste::CastHaste(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 8, attackDuration, recoverDuration)
 {
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
@@ -56,7 +56,7 @@ PlatformerAttack* CastHaste::cloneInternal()
 
 LocalizedString* CastHaste::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Spells_Haste::create();
+	return Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create();
 }
 
 std::string CastHaste::getAttackAnimation()
@@ -91,15 +91,15 @@ void CastHaste::onCleanup()
 
 bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasSpeedBuff = false;
+	bool hasBuff = false;
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Haste>([&](Haste* haste)
 		{
-			hasSpeedBuff = true;
+			hasBuff = true;
 		});
 	});
 
-	return !hasSpeedBuff;
+	return !hasBuff;
 }

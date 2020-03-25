@@ -56,7 +56,7 @@ PlatformerAttack* CastEnrage::cloneInternal()
 
 LocalizedString* CastEnrage::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Enrage_Enrage::create();
+	return Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create();
 }
 
 std::string CastEnrage::getAttackAnimation()
@@ -91,15 +91,15 @@ void CastEnrage::onCleanup()
 
 bool CastEnrage::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasSpeedBuff = false;
+	bool hasBuff = false;
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Enrage>([&](Enrage* haste)
 		{
-			hasSpeedBuff = true;
+			hasBuff = true;
 		});
 	});
 
-	return !hasSpeedBuff;
+	return !hasBuff;
 }

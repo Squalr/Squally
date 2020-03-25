@@ -42,8 +42,8 @@ Clippy* EnrageClippy::innerClone()
 void EnrageClippy::startDialogue()
 {
 	this->runDialogue(
-		Strings::Menus_Hacking_Abilities_Enrage_EnrageClippy::create()
-			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Enrage_ReduceEnrage::create()),
+		Strings::Menus_Hacking_Abilities_Buffs_Enrage_EnrageClippy::create()
+			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }

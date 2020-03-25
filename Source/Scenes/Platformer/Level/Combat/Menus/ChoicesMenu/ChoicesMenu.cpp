@@ -97,7 +97,7 @@ void ChoicesMenu::initializeListeners()
 		this->noDefend = true;
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableDefend, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDisableItems, [=](EventCustom* eventCustom)
 	{
 		this->noItems = true;
 	}));

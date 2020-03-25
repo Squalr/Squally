@@ -9,6 +9,7 @@
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 
 using namespace cocos2d;
@@ -101,7 +102,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeHealingDelt(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -111,7 +112,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeHealingTaken(args->damageOrHealing, [=](){ args->handle(); });
 		}
 	}));
 
@@ -149,6 +150,11 @@ void Buff::elapse(float dt)
 			this->removeBuff();
 		}
 	}
+}
+
+float Buff::getRemainingDuration()
+{
+	return MathUtils::clamp(this->buffData.duration - this->elapsedTime, 0.0f, this->buffData.duration);
 }
 
 void Buff::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)

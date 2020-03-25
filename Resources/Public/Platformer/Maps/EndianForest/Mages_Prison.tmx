@@ -373,7 +373,7 @@
   <object id="892" name="troll" type="entity" x="2881.84" y="928.803" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro,run"/>
-    <property name="battle-behavior" value="haste-tutorial,no-items,no-defend"/>
+    <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Prison"/>
     <property name="battle-tag" value="prison"/>
     <property name="drop-pool" value="ef-generic"/>

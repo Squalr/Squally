@@ -107,26 +107,26 @@ void Enrage::registerHackables()
 			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
 				Enrage::EnrageIdentifier,
-				Strings::Menus_Hacking_Abilities_Enrage_Enrage::create(),
+				Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create(),
 				UIResources::Menus_Icons_Clock,
 				EnrageGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Enrage_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi::create()
 							->setStringReplacementVariables({ ConstantFloat::create(Enrage::MinSpeed, 1), ConstantFloat::create(Enrage::MaxSpeed, 1) })
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Enrage_RegisterXmm3::create()
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3::create()
 							->setStringReplacementVariables(ConstantFloat::create(Enrage::DefaultSpeed, 1))
 					}
 				},
 				int(HackFlags::None),
-				this->buffData.duration,
+				this->getRemainingDuration(),
 				0.0f,
 				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_Enrage_ReduceEnrage::create(),
+						Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create(),
 						// x86
 						"mov dword ptr [esi], 0.0",
 						// x64
@@ -137,7 +137,7 @@ void Enrage::registerHackables()
 		},
 	};
 
-	auto hasteFunc = &Enrage::applyEnrage;
+	auto hasteFunc = &Enrage::applyEnrageSpeed;
 	this->hackables = HackableCode::create((void*&)hasteFunc, codeInfoMap);
 
 	for (auto next : this->hackables)
@@ -150,12 +150,74 @@ void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> h
 {
 	this->currentSpeed = *timelineSpeed;
 
-	this->applyEnrage();
+	this->applyEnrageSpeed();
 
 	*timelineSpeed = this->currentSpeed;
 }
 
-NO_OPTIMIZE void Enrage::applyEnrage()
+void Enrage::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+{
+}
+
+void Enrage::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+{
+}
+
+NO_OPTIMIZE void Enrage::applyEnrageSpeed()
+{
+	volatile float speedBonus = 0.0f;
+	volatile float increment = Enrage::DefaultSpeed;
+	volatile float* speedBonusPtr = &speedBonus;
+	volatile float* incrementPtr = &increment;
+
+	ASM(push ZSI);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+	ASM(movss xmm3, [ZBX]);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	ASM(movss [ZSI], xmm3);
+	ASM_NOP16();
+	HACKABLE_CODE_END();
+
+	ASM(pop ZBX);
+	ASM(pop ZSI);
+
+	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+
+	HACKABLES_STOP_SEARCH();
+}
+END_NO_OPTIMIZE
+
+NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDelt()
+{
+	volatile float speedBonus = 0.0f;
+	volatile float increment = Enrage::DefaultSpeed;
+	volatile float* speedBonusPtr = &speedBonus;
+	volatile float* incrementPtr = &increment;
+
+	ASM(push ZSI);
+	ASM(push ZBX);
+	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_VAR(ZBX, incrementPtr);
+	ASM(movss xmm3, [ZBX]);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	ASM(movss [ZSI], xmm3);
+	ASM_NOP16();
+	HACKABLE_CODE_END();
+
+	ASM(pop ZBX);
+	ASM(pop ZSI);
+
+	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+
+	HACKABLES_STOP_SEARCH();
+}
+END_NO_OPTIMIZE
+
+NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageTaken()
 {
 	volatile float speedBonus = 0.0f;
 	volatile float increment = Enrage::DefaultSpeed;

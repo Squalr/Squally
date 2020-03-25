@@ -24,6 +24,7 @@
 	#define ZDI rdi
 	#define ZBP rbp
 	#define ZSP rsp
+	#define DIV_CONVERT cqo
 #else
 	#define ZAX eax
 	#define ZBX ebx
@@ -33,6 +34,7 @@
 	#define ZDI edi
 	#define ZBP ebp
 	#define ZSP esp
+	#define DIV_CONVERT cdq
 #endif
 
 // Define macros for inlining x86 assembly in a compiler-independent way

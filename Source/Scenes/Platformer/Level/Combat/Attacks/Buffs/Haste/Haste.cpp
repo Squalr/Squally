@@ -107,26 +107,26 @@ void Haste::registerHackables()
 			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
-				Strings::Menus_Hacking_Abilities_Haste_Haste::create(),
+				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
 				UIResources::Menus_Icons_Clock,
 				HasteGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Haste_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi::create()
 							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed, 1), ConstantFloat::create(Haste::MaxSpeed, 1) })
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Haste_RegisterXmm3::create()
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3::create()
 							->setStringReplacementVariables(ConstantFloat::create(Haste::DefaultSpeed, 1))
 					}
 				},
 				int(HackFlags::None),
-				this->buffData.duration,
+				this->getRemainingDuration(),
 				0.0f,
 				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_Haste_ReduceHaste::create(),
+						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
 						"mov dword ptr [esi], 0.0",
 						// x64

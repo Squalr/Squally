@@ -35,13 +35,10 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HASTE 1
 
-const std::string StoneSkin::StoneSkinIdentifier = "haste";
+const std::string StoneSkin::StoneSkinIdentifier = "stone-skin";
 
-// Note: UI sets precision on these to 1 digit
-const float StoneSkin::MinSpeed = -1.0f;
-const float StoneSkin::DefaultSpeed = 2.0f;
-const float StoneSkin::MaxSpeed = 2.5f;
-const float StoneSkin::Duration = 6.0f;
+const int StoneSkin::MaxMultiplier = 4;
+const float StoneSkin::Duration = 12.0f;
 
 StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -107,31 +104,19 @@ void StoneSkin::registerHackables()
 			LOCAL_FUNC_ID_HASTE,
 			HackableCode::HackableCodeInfo(
 				StoneSkin::StoneSkinIdentifier,
-				Strings::Menus_Hacking_Abilities_StoneSkin_StoneSkin::create(),
-				UIResources::Menus_Icons_Clock,
+				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
+				UIResources::Menus_Icons_ShieldBroken,
 				StoneSkinGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_StoneSkin_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(StoneSkin::MinSpeed, 1), ConstantFloat::create(StoneSkin::MaxSpeed, 1) })
-					},
-					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_StoneSkin_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(StoneSkin::DefaultSpeed, 1))
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi::create()
 					}
 				},
 				int(HackFlags::None),
-				this->buffData.duration,
+				this->getRemainingDuration(),
 				0.0f,
 				this->clippy,
 				{
-					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_StoneSkin_ReduceStoneSkin::create(),
-						// x86
-						"mov dword ptr [esi], 0.0",
-						// x64
-						"mov dword ptr [rsi], 0.0"
-					)
 				}
 			)
 		},
@@ -146,37 +131,40 @@ void StoneSkin::registerHackables()
 	}
 }
 
-void StoneSkin::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
+void StoneSkin::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
 {
-	this->currentSpeed = *timelineSpeed;
+	this->currentDamageTaken = *damageOrHealing;
 
 	this->applyStoneSkin();
 
-	*timelineSpeed = this->currentSpeed;
+	*damageOrHealing = this->currentDamageTaken;
 }
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 {
-	volatile float speedBonus = 0.0f;
-	volatile float increment = StoneSkin::DefaultSpeed;
-	volatile float* speedBonusPtr = &speedBonus;
-	volatile float* incrementPtr = &increment;
+	volatile int originalDamage = this->currentDamageTaken;
+	volatile int damageTaken = this->currentDamageTaken;
 
-	ASM(push ZSI);
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_VAR(ZBX, incrementPtr);
-	ASM(movss xmm3, [ZBX]);
+	ASM(push ZAX);
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM_MOV_REG_VAR(ZAX, damageTaken);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
-	ASM(movss [ZSI], xmm3);
+	ASM(DIV_CONVERT);
+	ASM(mov ZCX, 3)
+	ASM(idiv ZCX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZBX);
-	ASM(pop ZSI);
+	ASM_MOV_VAR_REG(damageTaken, ZAX);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, StoneSkin::MinSpeed, StoneSkin::MaxSpeed);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
+	ASM(pop ZAX);
+
+	// Bound multiplier in either direction
+	this->currentDamageTaken = MathUtils::clamp(damageTaken, -std::abs(originalDamage) * StoneSkin::MaxMultiplier, std::abs(originalDamage) * StoneSkin::MaxMultiplier);
 
 	HACKABLES_STOP_SEARCH();
 }

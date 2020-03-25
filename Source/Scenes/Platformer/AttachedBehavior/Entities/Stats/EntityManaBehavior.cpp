@@ -97,7 +97,7 @@ void EntityManaBehavior::setMana(int mana)
 
 int EntityManaBehavior::getMaxMana()
 {
-	int maxMana = StatsTables::getBaseHealth(this->entity);
+	int maxMana = StatsTables::getBaseMana(this->entity);
 
 	if (this->equipmentInventory != nullptr)
 	{

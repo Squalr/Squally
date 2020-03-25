@@ -31,11 +31,15 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
+	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback) override;
+	void onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback) override;
 
 private:
 	typedef Buff super;
 
-	void applyEnrage();
+	void applyEnrageSpeed();
+	void applyEnrageIncreaseDamageDelt();
+	void applyEnrageIncreaseDamageTaken();
 	
 	volatile float currentSpeed;
 	

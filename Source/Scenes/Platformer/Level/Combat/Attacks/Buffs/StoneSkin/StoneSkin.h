@@ -30,20 +30,18 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback) override;
+	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback) override;
 
 private:
 	typedef Buff super;
 
 	void applyStoneSkin();
 	
-	volatile float currentSpeed;
+	volatile int currentDamageTaken;
 	
 	StoneSkinClippy* clippy;
 	SmartParticles* spellEffect;
-
-	static const float MinSpeed;
-	static const float DefaultSpeed;
-	static const float MaxSpeed;
+	
+	static const int MaxMultiplier;
 	static const float Duration;
 };

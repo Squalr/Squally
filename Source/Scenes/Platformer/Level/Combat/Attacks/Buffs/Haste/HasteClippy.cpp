@@ -42,8 +42,8 @@ Clippy* HasteClippy::innerClone()
 void HasteClippy::startDialogue()
 {
 	this->runDialogue(
-		Strings::Menus_Hacking_Abilities_Haste_HasteClippy::create()
-			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Haste_ReduceHaste::create()),
+		Strings::Menus_Hacking_Abilities_Buffs_Haste_HasteClippy::create()
+			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }
