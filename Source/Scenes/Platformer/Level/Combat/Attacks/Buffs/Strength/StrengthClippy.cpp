@@ -42,8 +42,7 @@ Clippy* StrengthClippy::innerClone()
 void StrengthClippy::startDialogue()
 {
 	this->runDialogue(
-		Strings::Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy::create()
-			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Buffs_Strength_ReduceStrength::create()),
+		Strings::Menus_Hacking_Abilities_Buffs_Strength_StrengthClippy::create(),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }

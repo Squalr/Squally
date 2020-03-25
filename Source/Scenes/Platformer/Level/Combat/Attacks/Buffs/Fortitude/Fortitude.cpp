@@ -33,7 +33,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_FORTITUDE 1
 
 const std::string Fortitude::FortitudeIdentifier = "fortitude";
 
@@ -101,7 +101,7 @@ void Fortitude::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_FORTITUDE,
 			HackableCode::HackableCodeInfo(
 				Fortitude::FortitudeIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
@@ -111,7 +111,7 @@ void Fortitude::registerHackables()
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(
 							{
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Fortitude::MaxMultiplier))),
+								ConstantString::create(std::to_string(0)),
 								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::MaxMultiplier)))
 							})
 					}
@@ -152,7 +152,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ZBX, damageTaken);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
 	ASM(sub ZBX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

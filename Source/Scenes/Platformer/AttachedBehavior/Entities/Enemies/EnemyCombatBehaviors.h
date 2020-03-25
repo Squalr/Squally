@@ -1,5 +1,6 @@
 #pragma once
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/CentaurCombatBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/CyclopsCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/GoblinGruntBoarCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/GoblinShamanCombatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EndianForest/GoblinWarriorPigCombatBehavior.h"

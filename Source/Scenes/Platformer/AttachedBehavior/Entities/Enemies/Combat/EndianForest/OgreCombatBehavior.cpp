@@ -5,8 +5,8 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Enemies/BasicSlash.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
 
@@ -45,6 +45,7 @@ void OgreCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
+		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
@@ -54,7 +55,6 @@ void OgreCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

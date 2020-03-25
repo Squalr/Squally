@@ -8034,10 +8034,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Strength_ReduceStrength : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_ReduceStrength* create();
+		static Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8045,38 +8045,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Strength_ReduceStrength();
-		virtual ~Menus_Hacking_Abilities_Buffs_Strength_ReduceStrength() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Strength_RegisterEsi : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_RegisterEsi* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Strength_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Buffs_Strength_RegisterEsi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Strength_RegisterXmm3 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_RegisterXmm3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Strength_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Buffs_Strength_RegisterXmm3() = default;
+		Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Strength_Strength : public LocalizedString

@@ -245,12 +245,12 @@ StatsTables::StatsTables()
 		EF
 	************/
 	StatsTables::StatsTable[TrainingDummy::MapKey] = Stats(1000, 500, 32);
-	StatsTables::StatsTable[Centaur::MapKey] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 32);
 	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 32);
 	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Ogre::MapKey] = Stats(16, 8, 32);
+	StatsTables::StatsTable[Ogre::MapKey] = Stats(28, 9, 32);
 	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[OrcGrunt::MapKey] = Stats(11, 8, 32);
 	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(21, 8, 32);

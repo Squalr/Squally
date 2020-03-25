@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="911">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="912">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -259,6 +259,7 @@
     <property name="transition" value="fall"/>
    </properties>
   </object>
+  <object id="911" name="life-stone" type="object" x="7399" y="1772.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="objects +1">
   <properties>

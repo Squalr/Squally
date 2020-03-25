@@ -10,7 +10,7 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/HackablePreview.h"
 #include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantFloat.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -33,11 +33,12 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_STRENGTH 1
 
-const std::string Strength::StrengthIdentifier = "stone-skin";
+const std::string Strength::StrengthIdentifier = "strength";
 
-const int Strength::MaxMultiplier = 3;
+const int Strength::MinMultiplier = -1;
+const int Strength::MaxMultiplier = 2;
 const float Strength::Duration = 12.0f;
 
 Strength* Strength::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -101,7 +102,7 @@ void Strength::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_STRENGTH,
 			HackableCode::HackableCodeInfo(
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
@@ -109,7 +110,11 @@ void Strength::registerHackables()
 				StrengthGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEsi::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()->setStringReplacementVariables(
+							{
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MinMultiplier))),
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MaxMultiplier))),
+							})
 					}
 				},
 				int(HackFlags::None),
@@ -145,20 +150,20 @@ NO_OPTIMIZE void Strength::applyStrength()
 	volatile int originalDamage = this->currentDamageDelt;
 	volatile int damageDelt = this->currentDamageDelt;
 
-	ASM(push ZAX);
-	ASM_MOV_REG_VAR(ZAX, damageDelt);
+	ASM(push ZCX);
+	ASM_MOV_REG_VAR(ZCX, damageDelt);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
-	ASM(add ZAX, 4);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
+	ASM(add ZCX, 3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDelt, ZAX);
+	ASM_MOV_VAR_REG(damageDelt, ZCX);
 
-	ASM(pop ZAX);
+	ASM(pop ZCX);
 
 	// Bound multiplier in either direction
-	this->currentDamageDelt = MathUtils::clamp(damageDelt, -std::abs(originalDamage) * Strength::MaxMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
+	this->currentDamageDelt = MathUtils::clamp(damageDelt, std::abs(originalDamage) * Strength::MinMultiplier, std::abs(originalDamage) * Strength::MaxMultiplier);
 
 	HACKABLES_STOP_SEARCH();
 }

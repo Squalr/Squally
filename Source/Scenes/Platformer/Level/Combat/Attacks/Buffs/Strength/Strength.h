@@ -42,6 +42,7 @@ private:
 	StrengthClippy* clippy;
 	SmartParticles* spellEffect;
 	
+	static const int MinMultiplier;
 	static const int MaxMultiplier;
 	static const float Duration;
 };

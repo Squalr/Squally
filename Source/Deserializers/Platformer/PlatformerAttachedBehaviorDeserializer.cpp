@@ -57,6 +57,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[HasteTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)HasteTutorial::create(owner); };
 	this->attachedBehaviorDeserializers[IncrementHealthFlaskTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)IncrementHealthFlaskTutorialBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[TrainingHealTutorialBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingHealTutorialBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[StrengthTutorial::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)StrengthTutorial::create(owner); };
 	
 	/*********************
 	    Transportation
@@ -96,12 +97,16 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[TobenHexusBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TobenHexusBehavior::create(owner); };
 		
 	/*********************
-		COMBAT / OUT-OF-COMBAT
+		ENTITIES / OVERWORLD
 	*********************/
 
 	// Endian forest
 	this->attachedBehaviorDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AraBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LycanBehavior::create(owner); };
+
+	/*********************
+		COMBAT / IN-COMBAT
+	*********************/
 
 	// Helpers
 	this->attachedBehaviorDeserializers[GuanoCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GuanoCombatBehavior::create(owner); };
@@ -110,6 +115,7 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 	this->attachedBehaviorDeserializers[TrainingDummyCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)TrainingDummyCombatBehavior::create(owner); };
 	
 	this->attachedBehaviorDeserializers[CentaurCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CentaurCombatBehavior::create(owner); };
+	this->attachedBehaviorDeserializers[CyclopsCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)CyclopsCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GoblinGruntBoarCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinGruntBoarCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GoblinShamanCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinShamanCombatBehavior::create(owner); };
 	this->attachedBehaviorDeserializers[GoblinWarriorPigCombatBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)GoblinWarriorPigCombatBehavior::create(owner); };

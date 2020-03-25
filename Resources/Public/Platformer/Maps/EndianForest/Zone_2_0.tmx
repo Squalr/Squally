@@ -278,7 +278,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="809" name="goblin-warrior-pig" type="entity" x="4581.21" y="1914.22" width="128" height="128">
+  <object id="809" name="ogre" type="entity" x="4581.21" y="1914.22" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -303,7 +303,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="840" name="orc-swordsman" type="entity" x="8811.76" y="1608.73" width="128" height="128">
+  <object id="840" name="troll" type="entity" x="8811.76" y="1608.73" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
