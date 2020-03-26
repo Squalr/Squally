@@ -52,9 +52,9 @@ void Defend::initializePositions()
 	)));
 }
 
-void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Defend::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
-	super::onBeforeDamageTaken(damageOrHealing, handleCallback);
+	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 	
 	*damageOrHealing = int(std::round(float(*damageOrHealing) * (1.0f - Defend::DamageReduction)));
 

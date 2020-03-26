@@ -148,6 +148,8 @@ void Haste::registerHackables()
 
 void Haste::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
+	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+
 	this->currentSpeed = *timelineSpeed;
 
 	this->applyHaste();

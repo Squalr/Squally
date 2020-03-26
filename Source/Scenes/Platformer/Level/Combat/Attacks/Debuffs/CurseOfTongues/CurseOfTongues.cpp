@@ -148,6 +148,8 @@ void CurseOfTongues::registerHackables()
 
 void CurseOfTongues::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> handleCallback)
 {
+	super::onModifyTimelineSpeed(timelineSpeed, handleCallback);
+	
 	this->currentSpeed = *timelineSpeed;
 
 	this->applyCurseOfTongues();

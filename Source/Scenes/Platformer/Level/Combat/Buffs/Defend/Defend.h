@@ -21,7 +21,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback) override;
+	void onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target) override;
 	void onTimelineReset(bool wasInterrupt) override;
 
 private:

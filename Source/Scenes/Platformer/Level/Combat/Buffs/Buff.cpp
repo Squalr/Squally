@@ -82,7 +82,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
 		}
 	}));
 
@@ -92,7 +92,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeDamageTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
 		}
 	}));
 
@@ -102,7 +102,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->caster == this->caster && !args->isHandled())
 		{
-			this->onBeforeHealingDelt(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeHealingDelt(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
 		}
 	}));
 
@@ -112,7 +112,7 @@ void Buff::initializeListeners()
 
 		if (args != nullptr && args->target == this->target && !args->isHandled())
 		{
-			this->onBeforeHealingTaken(args->damageOrHealing, [=](){ args->handle(); });
+			this->onBeforeHealingTaken(args->damageOrHealing, [=](){ args->handle(); }, args->caster, args->target);
 		}
 	}));
 
@@ -165,19 +165,19 @@ void Buff::onTimelineReset(bool wasInterrupt)
 {
 }
 
-void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 
-void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 
-void Buff::onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeHealingTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 
-void Buff::onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback)
+void Buff::onBeforeHealingDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
 }
 

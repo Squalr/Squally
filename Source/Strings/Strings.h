@@ -7959,6 +7959,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Reflect_Reflect : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Reflect_Reflect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Reflect_Reflect();
+		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_Reflect() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Reflect_ReflectClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Reflect_ReflectClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Reflect_ReflectClippy();
+		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_ReflectClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin : public LocalizedString
 	{
 	public:

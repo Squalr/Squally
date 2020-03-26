@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1232">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1237">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -511,6 +511,20 @@
   </object>
   <object id="1030" name="solid-npc" type="collision" x="3118.27" y="1065.63" width="121.03" height="777.836"/>
   <object id="1031" name="solid-npc" type="collision" x="5009.18" y="1117.14" width="121.03" height="777.836"/>
+  <object id="1233" name="warp" type="object" x="4641.7" y="1426.55" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="end"/>
+    <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="1234" name="warp" type="object" x="4714.42" y="2772" width="256" height="256">
+   <properties>
+    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="from" value="start"/>
+    <property name="to" value="end"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>
@@ -569,6 +583,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1235" name="goblin-warrior-pig" type="entity" x="1594.24" y="4816.22" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value="reflect-tutorial"/>
+    <property name="battle-map" value="EndianForest/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1236" name="orc-grunt" type="entity" x="1589.76" y="4491.78" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

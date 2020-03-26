@@ -155,12 +155,14 @@ void Enrage::onModifyTimelineSpeed(float* timelineSpeed, std::function<void()> h
 	*timelineSpeed = this->currentSpeed;
 }
 
-void Enrage::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback)
+void Enrage::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
+	super::onBeforeDamageTaken(damageOrHealing, handleCallback, caster, target);
 }
 
-void Enrage::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback)
+void Enrage::onBeforeDamageDelt(int* damageOrHealing, std::function<void()> handleCallback, PlatformerEntity* caster, PlatformerEntity* target)
 {
+	super::onBeforeDamageDelt(damageOrHealing, handleCallback, caster, target);
 }
 
 NO_OPTIMIZE void Enrage::applyEnrageSpeed()

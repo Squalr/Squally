@@ -512,8 +512,10 @@ void CombatMap::spawnEntities()
 		}
 	}
 
-	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(this->playerFirstStrike, friendlyEntities);
-	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(this->playerFirstStrike, enemyEntities);
+	std::vector<TimelineEntry*> friendlyEntries = this->timeline->initializeTimelineFriendly(friendlyEntities);
+	std::vector<TimelineEntry*> enemyEntries = this->timeline->initializeTimelineEnemies(enemyEntities);
+
+	this->timeline->initializeStartingProgress(this->playerFirstStrike);
 
 	this->firstStrikeMenu->show(this->playerFirstStrike);
 	this->enemyAIHelper->initializeEntities(friendlyEntities, enemyEntities);

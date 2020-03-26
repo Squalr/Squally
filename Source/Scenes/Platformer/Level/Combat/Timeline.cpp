@@ -301,11 +301,9 @@ std::vector<TimelineEntry*> Timeline::getEntries()
 	return this->timelineEntries;
 }
 
-std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities)
+std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly( const std::vector<PlatformerEntity*>& friendlyEntities)
 {
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
-	float playerFirstStrikeBonus = isPlayerFirstStrike ? 0.5f : 0.35f;
-	float nextPlayerBonus = 0.0f;
 	int index = 0;
 
 	for (auto next : friendlyEntities)
@@ -315,20 +313,15 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineFriendly(bool isPlayerFi
 		this->timelineEntries.push_back(entry);
 		this->entriesNode->addChild(entry);
 
-		entry->setProgress(playerFirstStrikeBonus + nextPlayerBonus);
-		nextPlayerBonus += 0.1f;
-
 		entries.push_back(entry);
 	}
 
 	return entries;
 }
 
-std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities)
+std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(const std::vector<PlatformerEntity*>& enemyEntities)
 {
 	std::vector<TimelineEntry*> entries = std::vector<TimelineEntry*>();
-	float nextEnemyBonus = 0.0f;
-	float enemyFirstStrikeBonus = !isPlayerFirstStrike ? 0.5f : 0.35f;
 	int index = 0;
 
 	for (auto next : enemyEntities)
@@ -337,14 +330,40 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(bool isPlayerFir
 
 		this->timelineEntries.push_back(entry);
 		this->entriesNode->addChild(entry);
-
-		entry->setProgress(enemyFirstStrikeBonus + nextEnemyBonus);
-		nextEnemyBonus += 0.1f;
 		
 		entries.push_back(entry);
 	}
 
 	return entries;
+}
+
+void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
+{
+	const float DefaultPosition = 0.35f;
+	const float FirstStrikePosition = DefaultPosition + 0.15f;
+	const float IndexBonus = 0.1f;
+	int friendlyIndex = 0;
+	int enemyIndex = 0;
+	
+	for (auto entry : this->timelineEntries)
+	{
+		if (entry->isPlayerEntry())
+		{
+			float startPosition = isPlayerFirstStrike ? FirstStrikePosition : DefaultPosition;
+
+			startPosition += float(friendlyIndex++) * IndexBonus;
+
+			entry->setProgress(startPosition);
+		}
+		else
+		{
+			float startPosition = !isPlayerFirstStrike ? FirstStrikePosition : DefaultPosition;
+
+			startPosition += float(enemyIndex++) * IndexBonus;
+
+			entry->setProgress(startPosition);
+		}
+	}
 }
 
 void Timeline::registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup)

@@ -48,17 +48,6 @@ float EntityCombatBehaviorBase::getTimelineSpeed()
 
 void EntityCombatBehaviorBase::onLoad()
 {
-	/*
-	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityBuffsModifyDamageOrHealingTaken, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::BeforeDamageOrHealingTakenArgs* args = static_cast<CombatEvents::BeforeDamageOrHealingTakenArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && args->target == this->entity && !args->isHandled())
-		{
-			this->onBeforeDamageTaken(args->damageOrHealing, args->blocked, [=](){ args->handle(); });
-		}
-	}));*/
-
 	this->entity->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)
 	{
 		for (auto next : inventoryBehavior->getEquipmentInventory()->getEquipment())

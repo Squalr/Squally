@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/FortitudeTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/HasteTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/IncrementHealthFlaskTutorialBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/ReflectTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/StrengthTutorial.h"
 #include "Scenes/Platformer/AttachedBehavior/Combat/Tutorials/TrainingHealTutorialBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"

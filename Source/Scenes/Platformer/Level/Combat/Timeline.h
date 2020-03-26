@@ -19,8 +19,9 @@ public:
 	static Timeline* create();
 	
 	std::vector<TimelineEntry*> getEntries();
-	std::vector<TimelineEntry*> initializeTimelineFriendly(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> friendlyEntities);
-	std::vector<TimelineEntry*> initializeTimelineEnemies(bool isPlayerFirstStrike, std::vector<PlatformerEntity*> enemyEntities);
+	std::vector<TimelineEntry*> initializeTimelineFriendly(const std::vector<PlatformerEntity*>& friendlyEntities);
+	std::vector<TimelineEntry*> initializeTimelineEnemies(const std::vector<PlatformerEntity*>& enemyEntities);
+	void initializeStartingProgress(bool isPlayerFirstStrike);
 
 	void resumeTimeline();
 
