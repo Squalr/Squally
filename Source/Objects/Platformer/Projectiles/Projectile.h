@@ -40,6 +40,8 @@ protected:
 	void enableUpdate();
 	void disableUpdate();
 	
+	bool canUpdate;
+	
 	PlatformerEntity* caster;
 
 	cocos2d::Node* contentNode;
@@ -50,7 +52,6 @@ private:
 
 	CollisionObject* collisionObject;
 	CollisionObject* ownerCollisionRef;
-	bool canUpdate;
 	bool enabled;
 	float spinSpeed;
 	bool allowHacking;

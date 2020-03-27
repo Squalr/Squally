@@ -61,6 +61,11 @@ void Fireball::update(float dt)
 {
 	super::update(dt);
 
+	if (!this->canUpdate)
+	{
+		return;
+	}
+
 	this->setFireballSpeed();
 }
 

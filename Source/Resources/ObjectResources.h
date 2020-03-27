@@ -508,6 +508,8 @@ namespace ObjectResources
 	extern const std::string Traps_TNTBarrel_FULL_BARREL;
 	extern const std::string Traps_TNTBarrel_STONES;
 	extern const std::string Traps_TNTBarrel_TNT;
+	extern const std::string Traps_TimeBomb_BOMB;
+	extern const std::string Traps_TimeBomb_TimerPlate;
 	extern const std::string Traps_WOODEN_BALL;
 	extern const std::string Traps_WaterLauncher_Animations;
 	extern const std::string Traps_WaterLauncher_BODY;

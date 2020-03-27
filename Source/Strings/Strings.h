@@ -939,6 +939,21 @@ namespace Strings
 		virtual ~Common_Triconcat() = default;
 	};
 
+	class Common_XColonY : public LocalizedString
+	{
+	public:
+		static Common_XColonY* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XColonY();
+		virtual ~Common_XColonY() = default;
+	};
+
 	class Common_XEqualsY : public LocalizedString
 	{
 	public:
