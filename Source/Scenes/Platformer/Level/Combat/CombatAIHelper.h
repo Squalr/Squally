@@ -31,6 +31,7 @@ private:
 	void performAIActions(TimelineEntry* attackingEntry);
 	void selectTarget(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
+	void shuffleEntities();
 
 	struct AttackProbability
 	{

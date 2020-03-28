@@ -11,7 +11,9 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBomb.h"
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/Bombed.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/FXResources.h"
@@ -58,7 +60,10 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 {
 	super::performAttack(owner, target);
 
-	TimeBomb* timeBomb = TimeBomb::create(owner, target);
+	TimeBomb* timeBomb = TimeBomb::create(owner, target, [=]()
+	{
+		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
+	});
 
 	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 		owner,
@@ -75,6 +80,44 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 
 	timeBomb->runSpawnFX();
 	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3((target->isFlippedX() ? -96.0f : 96.0f), 0.0f, 0.0f));
+	
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->applyBuff(Bombed::create(owner, target));
+	});
+}
+
+bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	int buffCount = 0;
+
+	for (auto next : otherTeam)
+	{
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
+			{
+				buffCount++;
+			});
+		});
+	}
+
+	return buffCount != otherTeam.size();
+}
+
+float DropTimeBomb::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	float utility = 1.0f;
+
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
+		{
+			utility = 0.0f;
+		});
+	});
+
+	return utility;
 }
 
 void DropTimeBomb::onCleanup()

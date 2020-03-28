@@ -13,6 +13,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyMovementBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Squally/Visual/SquallyVisualBehaviorGroup.h"
 
@@ -39,6 +40,7 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyReceiveItemBehavior::create(owner),
 	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
+	SquallyRespawnBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),
 	SquallyVisualBehaviorGroup::create(owner),
 	ScrappyManagerBehavior::create(owner),

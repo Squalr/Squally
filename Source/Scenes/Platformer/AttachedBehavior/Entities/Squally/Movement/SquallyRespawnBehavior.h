@@ -4,16 +4,16 @@
 
 class Squally;
 
-class SquallyHealthBehavior : public AttachedBehavior
+class SquallyRespawnBehavior : public AttachedBehavior
 {
 public:
-	static SquallyHealthBehavior* create(GameObject* owner);
+	static SquallyRespawnBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	SquallyHealthBehavior(GameObject* owner);
-	virtual ~SquallyHealthBehavior();
+	SquallyRespawnBehavior(GameObject* owner);
+	virtual ~SquallyRespawnBehavior();
 
 	void onLoad() override;
 	void onDisable() override;
@@ -21,7 +21,9 @@ protected:
 private:
 	typedef AttachedBehavior super;
 	
-	void saveState();
+	void respawn(float delay);
+
+	cocos2d::Vec2 spawnCoords;
 
 	Squally* squally;
 };

@@ -91,15 +91,15 @@ void CastCurseOfTongues::onCleanup()
 
 bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasSpeedBuff = false;
+	bool hasBuff = false;
 
 	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* haste)
 		{
-			hasSpeedBuff = true;
+			hasBuff = true;
 		});
 	});
 
-	return !hasSpeedBuff;
+	return !hasBuff;
 }

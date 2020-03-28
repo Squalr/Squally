@@ -35,16 +35,16 @@ const float TimeBomb::HackDuration = 3.1f;
 const int TimeBomb::TimerInitial = 7;
 const int TimeBomb::TimerMax = 90;
 
-TimeBomb* TimeBomb::create(PlatformerEntity* owner, PlatformerEntity* target)
+TimeBomb* TimeBomb::create(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode)
 {
-	TimeBomb* instance = new TimeBomb(owner, target);
+	TimeBomb* instance = new TimeBomb(owner, target, onExplode);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target)
+TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode)
 	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_TimeBomb_BOMB);
@@ -59,8 +59,9 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target)
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->tickSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
-	this->explodeSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
+	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->clippy = TimeBombClippy::create();
+	this->onExplode = onExplode;
 	this->bombTick = TimeBomb::TimerInitial;
 	this->hasExploded = false;
 	this->elapsed = 0.0f;
@@ -90,6 +91,8 @@ void TimeBomb::onEnter()
 void TimeBomb::initializePositions()
 {
 	super::initializePositions();
+
+	this->explosionAnim->setPosition(Vec2(0.0f, 96.0f));
 }
 
 void TimeBomb::update(float dt)
@@ -206,6 +209,14 @@ void TimeBomb::explode()
 	}
 
 	this->hasExploded = true;
+
+	this->bomb->setVisible(false);
+	this->timerPlate->setVisible(false);
+	this->timerLabel->setVisible(false);
+	this->explosionAnim->playAnimation(FXResources::ExplosionGround_ExplosionGround_0000, 0.05f, true);
+	this->explodeSound->play();
+
+	this->onExplode();
 }
 
 NO_OPTIMIZE void TimeBomb::tickTimeBomb()

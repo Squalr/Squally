@@ -126,6 +126,42 @@ bool PlatformerAttack::isWorthUsing(PlatformerEntity* caster, const std::vector<
 	return true;
 }
 
+float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	// Generic utility function
+	switch(this->getAttackType())
+	{
+		case AttackType::Buff:
+		case AttackType::Debuff:
+		{
+			// Equal priority. For more nuanced behavior, this function must be overridden.
+			return 1.0f;
+		}
+		case AttackType::Damage:
+		{
+			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+
+			return hp / (hpMax <= 0.0f ? 1.0f : hpMax);
+		}
+		case AttackType::Healing:
+		{
+			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
+			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
+
+			return 1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
+		}
+		case AttackType::Resurrection:
+		{
+			return target->getStateOrDefaultBool(StateKeys::IsAlive, 0) ? 1.0f : 0.0f;
+		}
+		default:
+		{
+			return 0.0f;
+		}
+	}
+}
+
 void PlatformerAttack::onAttackEnd()
 {
 	for (auto callback : this->attackCompleteCallbacks)

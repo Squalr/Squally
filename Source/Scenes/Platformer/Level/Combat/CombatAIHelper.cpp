@@ -150,6 +150,8 @@ void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
 	this->selectedTarget = nullptr;
 	this->selectedAttack = nullptr;
 
+	this->shuffleEntities();
+
 	attackingEntry->stageCast(nullptr);
 	attackingEntry->stageTarget(nullptr);
 
@@ -181,71 +183,19 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 
-	PlatformerEntity* target = nullptr;
+	PlatformerEntity* caster = attackingEntry->getEntity();
 	
-	switch(this->selectedAttack->getAttackType())
+	float bestUtility = std::numeric_limits<float>().min();
+
+	for (auto next : otherTeam)
 	{
-		case PlatformerAttack::AttackType::Buff:
-		{
-			target = attackingEntry->getEntity();
+		float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
 
-			break;
-		}
-		case PlatformerAttack::AttackType::Healing:
+		if (utility > bestUtility)
 		{
-			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto next : sameTeam)
-			{
-				bool isAlive = next == nullptr ? false : next->getStateOrDefaultBool(StateKeys::IsAlive, true);
-				int health = next == nullptr ? 0 : next->getStateOrDefaultInt(StateKeys::Health, 0);
-				int targetHealth = target == nullptr ? health : target->getStateOrDefaultInt(StateKeys::Health, 0);
-				
-				if (isAlive && health <= targetHealth)
-				{
-					target = next;
-				}
-			}
-
-			break;
-		}
-		case PlatformerAttack::AttackType::Resurrection:
-		{
-			for (auto next : sameTeam)
-			{
-				bool isAlive = next == nullptr ? false : next->getStateOrDefaultBool(StateKeys::IsAlive, true);
-				
-				if (!isAlive)
-				{
-					target = next;
-				}
-			}
-
-			break;
-		}
-		case PlatformerAttack::AttackType::Debuff:
-		{
-			break;
-		}
-		case PlatformerAttack::AttackType::Damage:
-		default:
-		{
-			// Currently just picking the highest health target. This is a user-friendly AI strategy.
-			for (auto next : otherTeam)
-			{
-				int health = next == nullptr ? 0 : next->getStateOrDefaultInt(StateKeys::Health, 0);
-				int targetHealth = target == nullptr ? 0 : target->getStateOrDefaultInt(StateKeys::Health, 0);
-				
-				if (health >= targetHealth)
-				{
-					target = next;
-				}
-			}
-
-			break;
+			this->selectedTarget = next;
 		}
 	}
-
-	this->selectedTarget = target;
 }
 
 void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
@@ -282,34 +232,25 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	this->trySelectDamageSkill(attackingEntry, attackList);
 }
 
+void CombatAIHelper::shuffleEntities()
+{
+	std::random_device rd1;
+	std::mt19937 g1(rd1());
+
+	std::shuffle(this->playerEntities.begin(), this->playerEntities.end(), g1);
+
+	std::random_device rd2;
+	std::mt19937 g2(rd2());
+
+	std::shuffle(this->enemyEntities.begin(), this->enemyEntities.end(), g2);
+}
+
 void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
 	if (this->selectedAttack != nullptr)
 	{
 		return;
 	}
-
-	// TODO: Move this logic into isWorthUsing when resurrection skill added
-	/*
-	bool hasDeadAlly = false;
-
-	for (auto entity : sameTeam)
-	{
-		int health = entity->getStateOrDefaultInt(StateKeys::Health, 0);
-		int maxHealth = entity->getStateOrDefaultInt(StateKeys::MaxHealth, 0);
-		bool isAlive = entity->getStateOrDefaultBool(StateKeys::IsAlive, true);
-
-		if (!isAlive)
-		{
-			hasDeadAlly = true;
-		}
-	}
-
-	if (!hasDeadAlly || attackProbabilities.probabilities.empty())
-	{
-		return;
-	}
-	*/
 
 	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
 	{
@@ -390,7 +331,7 @@ CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(con
 				}
 				case PlatformerAttack::Priority::Rare:
 				{
-					cumulativeProbability += 0.8f;
+					cumulativeProbability += 0.08f;
 					break;
 				}
 			}

@@ -18,12 +18,12 @@ protected:
 
 	void onEnter() override;
 
+	PlatformerEntity* target;
+
 private:
 	typedef Projectile super;
 	
 	void updateProjectileCanUpdate();
-
-	PlatformerEntity* target;
 
 	bool onTimeline;
 	bool timelinePaused;

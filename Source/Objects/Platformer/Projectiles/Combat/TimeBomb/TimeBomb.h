@@ -14,14 +14,14 @@ class WorldSound;
 class TimeBomb : public ThrownObject
 {
 public:
-	static TimeBomb* create(PlatformerEntity* owner, PlatformerEntity* target);
+	static TimeBomb* create(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode);
 	
 	void enableClippy();
 	void runSpawnFX() override;
 	void runImpactFX();
 
 protected:
-	TimeBomb(PlatformerEntity* owner, PlatformerEntity* target);
+	TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode);
 	virtual ~TimeBomb();
 
 	void onEnter() override;
@@ -47,6 +47,7 @@ private:
 	WorldSound* spawnSound;
 	WorldSound* tickSound;
 	WorldSound* explodeSound;
+	std::function<void()> onExplode;
 
 	cocos2d::Sprite* bomb;
 	cocos2d::Sprite* timerPlate;

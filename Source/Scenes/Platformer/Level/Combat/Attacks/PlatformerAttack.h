@@ -41,7 +41,18 @@ public:
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
 	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
+
+	/*
+		Determines if an ability is even worth using -- if it has any utility at all.
+	*/
 	virtual bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam);
+
+	/*
+		Determines how valuable it is to use the attack from caster => target. For example, healing a low HP target is higher utility than healing a high HP target.
+		The value returned is NOT used to compare different spells, only the relative utility of casting the same spell on different targets.
+	*/
+	virtual float getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam);
+
 	virtual void onAttackEnd();
 	virtual void onCleanup();
 	int getRandomDamage();

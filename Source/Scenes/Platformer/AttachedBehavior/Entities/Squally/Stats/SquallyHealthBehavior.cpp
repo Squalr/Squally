@@ -38,7 +38,6 @@ SquallyHealthBehavior* SquallyHealthBehavior::create(GameObject* owner)
 SquallyHealthBehavior::SquallyHealthBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
-	this->spawnCoords = Vec2::ZERO;
 
 	if (this->squally == nullptr)
 	{
@@ -52,8 +51,6 @@ SquallyHealthBehavior::~SquallyHealthBehavior()
 
 void SquallyHealthBehavior::onLoad()
 {
-	this->spawnCoords = GameUtils::getWorldCoords(this->squally);
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SaveEvents::EventSoftSaveGameState, [=](EventCustom* eventCustom)
 	{
 		this->saveState();
@@ -65,17 +62,6 @@ void SquallyHealthBehavior::onLoad()
 
 		healthBehavior->setHealth(health);
 	});
-
-	if (this->squally != nullptr)
-	{
-		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
-		{
-			if (!value.asBool())
-			{
-				this->respawn(1.5f);
-			}
-		});
-	}
 }
 
 void SquallyHealthBehavior::onDisable()
@@ -87,26 +73,3 @@ void SquallyHealthBehavior::saveState()
 {
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyHealth, this->squally->getStateOrDefault(StateKeys::Health, Value(0)));
 }
-
-void SquallyHealthBehavior::respawn(float duration)
-{
-	this->runAction(Sequence::create(
-		DelayTime::create(duration),
-		CallFunc::create([=]()
-		{
-			if (this->spawnCoords != Vec2::ZERO)
-			{
-				const Vec2 SpawnOffset = Vec2(0.0f, 64.0f);
-
-				PlatformerEvents::TriggerWarpToLocation(PlatformerEvents::WarpArgs(this->squally, this->spawnCoords + SpawnOffset));
-			}
-			
-			this->squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
-			{
-				healthBehavior->revive();
-			});
-		}),
-		nullptr
-	));
-}
-
