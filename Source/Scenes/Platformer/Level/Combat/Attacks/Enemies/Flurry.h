@@ -17,6 +17,7 @@ protected:
 	Flurry(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~Flurry();
 
+	void registerHackables() override;
 	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
@@ -24,7 +25,14 @@ private:
 	typedef PlatformerAttack super;
 	
 	PlatformerAttack* cloneInternal() override;
+	void setRandomHits();
 
-	WorldSound* slashSound;
-	WorldSound* hitSound;
+	int hits;
+
+	std::vector<WorldSound*> slashSounds;
+	std::vector<WorldSound*> hitSounds;
+
+	static const int LowerBoundHits;
+	static const int MinHits;
+	static const int MaxHits;
 };

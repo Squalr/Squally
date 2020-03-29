@@ -31,6 +31,7 @@ private:
 	typedef ThrownObject super;
 
 	Clippy* reverseClippy;
+	SmartAnimationSequenceNode* fireballAnim;
 	SmartAnimationSequenceNode* explosionAnim;
 	WorldSound* breathSound;
 	WorldSound* impactSound;

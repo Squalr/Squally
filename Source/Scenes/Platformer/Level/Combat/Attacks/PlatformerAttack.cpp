@@ -28,6 +28,7 @@ PlatformerAttack::PlatformerAttack(AttackType attackType, std::string iconResour
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
+	this->owner = nullptr;
 }
 
 PlatformerAttack::~PlatformerAttack()

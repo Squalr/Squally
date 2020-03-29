@@ -36,21 +36,22 @@ Fireball* Fireball::create(PlatformerEntity* owner, PlatformerEntity* target)
 }
 
 Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
-	: super(owner, target, true, SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000), Size(32.0f, 32.0f))
+	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
 {
-	SmartAnimationSequenceNode* fireballAnim = dynamic_cast<SmartAnimationSequenceNode*>(this->object);
+	this->fireballAnim = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
 
 	this->explosionAnim = SmartAnimationSequenceNode::create();
 	this->breathSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_FireHit1);
 	this->reverseClippy = FireballClippy::create();
 
-	fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
+	this->fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
 
 	this->registerClippy(this->reverseClippy);
 	this->postFXNode->addChild(this->breathSound);
 	this->postFXNode->addChild(this->impactSound);
 	this->postFXNode->addChild(this->explosionAnim);
+	this->object->addChild(this->fireballAnim);
 }
 
 Fireball::~Fireball()

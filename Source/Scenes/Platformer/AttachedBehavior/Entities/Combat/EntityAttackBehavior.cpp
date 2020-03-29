@@ -126,6 +126,8 @@ void EntityAttackBehavior::registerAttack(PlatformerAttack* attack)
 	{
 		return;
 	}
+
+	attack->owner = this->entity;
 	
 	this->attacksNode->addChild(attack);
 	this->registeredAttacks.push_back(attack);

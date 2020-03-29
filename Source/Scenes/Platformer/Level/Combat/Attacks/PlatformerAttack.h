@@ -1,12 +1,12 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "Engine/Hackables/HackableObject.h"
 
 class LocalizedString;
 class PlatformerEntity;
 class Projectile;
 
-class PlatformerAttack : public SmartNode
+class PlatformerAttack : public HackableObject
 {
 public:
 	enum class AttackType
@@ -26,6 +26,7 @@ public:
 		Reasonable,	// 25%
 		Uncommon,	// 15%
 		Rare,		// 8%
+		IfNecessary // 0% (Will still get selected if no other choices)
 	};
 
 	PlatformerAttack* clone();
@@ -58,6 +59,8 @@ public:
 	int getRandomDamage();
 
 protected:
+	friend class EntityAttackBehavior;
+	
 	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
 	virtual ~PlatformerAttack();
 
@@ -73,6 +76,7 @@ protected:
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
+	PlatformerEntity* owner;
 	float attackDuration;
 	float recoverDuration;
 	Priority priority;
@@ -80,7 +84,7 @@ protected:
 	static const float DefaultCleanupDuration;
 
 private:
-	typedef SmartNode super;
+	typedef HackableObject super;
 
 	void replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile);
 	virtual PlatformerAttack* cloneInternal() = 0;

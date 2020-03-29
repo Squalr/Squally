@@ -334,6 +334,11 @@ CombatAIHelper::ProbabilityMap CombatAIHelper::buildCumulativeProbabilityMap(con
 					cumulativeProbability += 0.08f;
 					break;
 				}
+				case PlatformerAttack::Priority::IfNecessary:
+				{
+					cumulativeProbability += 0.0f;
+					break;
+				}
 			}
 
 			probabilities.push_back(AttackProbability(attack, cumulativeProbability));
