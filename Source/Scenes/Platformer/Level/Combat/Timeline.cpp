@@ -339,30 +339,30 @@ std::vector<TimelineEntry*> Timeline::initializeTimelineEnemies(const std::vecto
 
 void Timeline::initializeStartingProgress(bool isPlayerFirstStrike)
 {
-	const float DefaultPosition = 0.35f;
-	const float FirstStrikePosition = DefaultPosition + 0.15f;
-	const float IndexBonus = 0.1f;
+	const float RootPosition = 0.70f;
+	const float IndexBonus = 0.25f;
 	int friendlyIndex = 0;
 	int enemyIndex = 0;
 	
 	for (auto entry : this->timelineEntries)
 	{
-		if (entry->isPlayerEntry())
-		{
-			float startPosition = isPlayerFirstStrike ? FirstStrikePosition : DefaultPosition;
+		bool isSameTeamFirstStrike = (isPlayerFirstStrike && entry->isPlayerEntry()) || (!isPlayerFirstStrike && !entry->isPlayerEntry());
+		int* indexPtr = entry->isPlayerEntry() ? &friendlyIndex : &enemyIndex;
 
-			startPosition += float(friendlyIndex++) * IndexBonus;
+		if (*indexPtr < 3)
+		{
+			float startPosition = RootPosition - (isSameTeamFirstStrike ? 0.0f : (IndexBonus / 2.0f));
+
+			startPosition -= float(*indexPtr) * IndexBonus;
 
 			entry->setProgress(startPosition);
 		}
 		else
 		{
-			float startPosition = !isPlayerFirstStrike ? FirstStrikePosition : DefaultPosition;
-
-			startPosition += float(enemyIndex++) * IndexBonus;
-
-			entry->setProgress(startPosition);
+			entry->setProgress(RandomHelper::random_real(0.0f, 0.325f));
 		}
+
+		(*indexPtr)++;
 	}
 }
 

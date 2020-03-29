@@ -79,7 +79,7 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	));
 
 	timeBomb->runSpawnFX();
-	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3((target->isFlippedX() ? -96.0f : 96.0f), 0.0f, 0.0f));
+	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3(RandomHelper::random_real(-96.0f, 96.0f), 0.0f, 0.0f));
 	
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

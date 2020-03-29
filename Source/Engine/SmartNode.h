@@ -48,6 +48,7 @@ protected:
 	virtual void removeAllListeners();
 	virtual void removeNonGlobalListeners();
 	void defer(std::function<void()> task);
+	void scheduleEvery(std::function<void()> task, float seconds);
 
 	bool hackermodeEnabled;
 	

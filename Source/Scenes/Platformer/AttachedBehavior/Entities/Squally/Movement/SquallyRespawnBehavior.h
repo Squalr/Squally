@@ -23,6 +23,7 @@ private:
 	
 	void respawn(float delay);
 
+	bool isRespawning;
 	cocos2d::Vec2 spawnCoords;
 
 	Squally* squally;

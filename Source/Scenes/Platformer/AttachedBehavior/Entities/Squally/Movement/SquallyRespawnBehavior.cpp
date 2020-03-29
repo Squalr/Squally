@@ -39,6 +39,7 @@ SquallyRespawnBehavior::SquallyRespawnBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->spawnCoords = Vec2::ZERO;
+	this->isRespawning = false;
 
 	if (this->squally == nullptr)
 	{
@@ -64,6 +65,14 @@ void SquallyRespawnBehavior::onLoad()
 			}
 		});
 	}
+
+	this->scheduleEvery([=]()
+	{
+		if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			this->respawn(1.5f);
+		}
+	}, 1.0f / 15.0f);
 }
 
 void SquallyRespawnBehavior::onDisable()
@@ -73,6 +82,13 @@ void SquallyRespawnBehavior::onDisable()
 
 void SquallyRespawnBehavior::respawn(float duration)
 {
+	if (this->isRespawning)
+	{
+		return;
+	}
+
+	this->isRespawning = true;
+	
 	this->runAction(Sequence::create(
 		DelayTime::create(duration),
 		CallFunc::create([=]()
@@ -88,6 +104,8 @@ void SquallyRespawnBehavior::respawn(float duration)
 			{
 				healthBehavior->revive();
 			});
+
+			this->isRespawning = false;
 		}),
 		nullptr
 	));
