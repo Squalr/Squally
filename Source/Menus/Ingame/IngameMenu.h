@@ -18,6 +18,7 @@ class IngameMenu : public PauseMenu
 public:
 	static IngameMenu* create();
 
+	void disableInventory();
 	void setInventoryClickCallback(std::function<void()> inventoryClickCallback);
 	void setPartyClickCallback(std::function<void()> partyClickCallback);
 	void setCardsClickCallback(std::function<void()> cardsClickCallback);

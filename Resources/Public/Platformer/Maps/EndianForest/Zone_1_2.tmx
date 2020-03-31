@@ -89,13 +89,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="725" name="blue-grass" type="terrain" x="-761.41" y="1999.69">
-   <polygon points="736.172,-622.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 6714.45,-728.14 7597.41,-734.156 9129.42,-710.645 9053.5,-8.94882 9025.23,899.126 10583.9,916.29 10580.5,1885.9 7530.26,1881.26 6472.28,1027.39 735.81,1039.18"/>
+   <polygon points="736.172,-622.079 1308.65,-607.708 3588.41,-594.783 4252.4,-736.854 5567.27,-733.434 6714.45,-728.14 7225.42,-730.645 7149.5,-28.9488 7121.23,879.126 10583.9,916.29 10580.5,1885.9 6534.26,1889.26 5476.28,1035.39 735.81,1039.18"/>
   </object>
   <object id="766" name="blue-grass" type="terrain" x="574.44" y="466.57">
    <polygon points="161.562,-606.63 4891.39,-588.296 4865.18,-158.44 4827.39,213.54 4518.19,463.04 3179.6,432.95 664.241,443.347 206.805,66.9616"/>
   </object>
-  <object id="772" name="blue-grass" type="terrain" x="8146.13" y="-1176">
-   <polygon points="867.44,2549.11 588.109,1912 470.934,1124.17 2814.7,1131.52 2599.3,2059.78 2220.53,2359.82 1478.26,2569.23"/>
+  <object id="772" name="blue-grass" type="terrain" x="6146.13" y="-1229.34">
+   <polygon points="867.44,2633.78 588.109,1975.51 470.934,1161.51 2814.7,1169.11 2599.3,2128.2 2220.53,2438.21 1478.26,2654.57"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -108,7 +108,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="729" name="Forest/Flower10" type="decor" x="1841.38" y="1294.61" width="199" height="133"/>
-  <object id="730" name="Forest/Flower10" type="decor" x="6641.83" y="1156.3" width="199" height="133"/>
+  <object id="730" name="Forest/Flower10" type="decor" x="6909.83" y="2766.3" width="199" height="133"/>
   <object id="773" name="Forest/Flower11" type="decor" x="748.667" y="1292.67" width="92" height="116"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -183,10 +183,8 @@
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="771" name="life-stone" type="object" x="5855" y="856.5" width="146" height="423"/>
-  <object id="775" name="solid-npc" type="collision" x="8315.24" y="611.082" width="121.03" height="777.836"/>
-  <object id="776" name="solid-npc" type="collision" x="6009.18" y="517.143" width="121.03" height="777.836"/>
-  <object id="777" name="trigger" type="object" x="6250.42" y="-47.755" width="195.164" height="1351.51">
+  <object id="771" name="life-stone" type="object" x="5791" y="848.5" width="146" height="423"/>
+  <object id="777" name="trigger" type="object" x="7010.42" y="1410.24" width="195.164" height="1493.51">
    <properties>
     <property name="quest" value="spot-orc-grunt"/>
     <property name="quest-line" value="intro"/>
@@ -206,6 +204,7 @@
   </properties>
   <object id="619" name="edge-lantern-gate" type="object" x="9376.73" y="2594.81" width="356" height="320">
    <properties>
+    <property name="listen-event" value="event-door-open"/>
     <property name="map" value="EndianForest/Zone_1_3"/>
     <property name="transition" value="right"/>
    </properties>
@@ -217,7 +216,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="774" name="orc-grunt" type="entity" x="7414.79" y="1145.09" width="128" height="128">
+  <object id="774" name="orc-grunt" type="entity" x="8176.79" y="2775.09" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,pacing,agro"/>
     <property name="battle-behavior" value="increment-health-tutorial,player-first-strike"/>
@@ -278,7 +277,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="6500.99" y="1186.9" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="6848.99" y="2978.9" width="270" height="748"/>
   <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="8819.03" y="2662.5" width="270" height="748"/>
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="3727.11" y="1171.37" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1783.44" y="1317.7" width="242" height="738"/>
@@ -288,8 +287,8 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="5907" y="1063" width="242" height="738"/>
-  <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6621" y="1178" width="270" height="748"/>
+  <object id="759" name="Forest/Foreground/ForegroundTree1" type="decor" x="6128.21" y="2887.24" width="242" height="738"/>
+  <object id="760" name="Forest/Foreground/ForegroundTree2" type="decor" x="6969" y="2970" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

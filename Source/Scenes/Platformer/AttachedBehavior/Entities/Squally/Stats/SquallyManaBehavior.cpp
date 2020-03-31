@@ -57,6 +57,11 @@ void SquallyManaBehavior::onLoad()
 
 		manaBehavior->setMana(mana);
 	});
+
+	this->squally->listenForStateWrite(StateKeys::Mana, [=](Value value)
+	{
+		this->saveState();
+	});
 }
 
 void SquallyManaBehavior::onDisable()

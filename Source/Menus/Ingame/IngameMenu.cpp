@@ -162,6 +162,11 @@ void IngameMenu::initializeListeners()
 	});
 }
 
+void IngameMenu::disableInventory()
+{
+	this->inventoryButton->disableInteraction(128);
+}
+
 void IngameMenu::setInventoryClickCallback(std::function<void()> inventoryClickCallback)
 {
 	this->inventoryClickCallback = inventoryClickCallback;

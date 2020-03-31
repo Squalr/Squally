@@ -62,6 +62,11 @@ void SquallyHealthBehavior::onLoad()
 
 		healthBehavior->setHealth(health);
 	});
+
+	this->squally->listenForStateWrite(StateKeys::Health, [=](Value value)
+	{
+		this->saveState();
+	});
 }
 
 void SquallyHealthBehavior::onDisable()

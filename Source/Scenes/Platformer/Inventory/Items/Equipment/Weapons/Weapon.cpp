@@ -1,5 +1,7 @@
 #include "Weapon.h"
 
+#include "Resources/SoundResources.h"
+
 using namespace cocos2d;
 
 Weapon::Weapon(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats) : super(cost, itemStats)
@@ -46,5 +48,5 @@ Vec2 Weapon::getWeaponOffset()
 
 std::string Weapon::getWeaponAttackSound()
 {
-	return "";
+	return SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingWeakHybrid1;
 }

@@ -5,6 +5,8 @@
 class Sword : public Weapon
 {
 public:
+	std::string getWeaponAttackSound() override;
+	
 protected:
 	Sword(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);
 	virtual ~Sword();

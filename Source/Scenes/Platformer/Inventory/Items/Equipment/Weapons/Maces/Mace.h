@@ -5,6 +5,8 @@
 class Mace : public Weapon
 {
 public:
+	std::string getWeaponAttackSound() override;
+	
 protected:
 	Mace(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);
 	virtual ~Mace();

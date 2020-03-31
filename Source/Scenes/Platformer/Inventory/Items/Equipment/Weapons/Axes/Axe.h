@@ -5,6 +5,8 @@
 class Axe : public Weapon
 {
 public:
+	std::string getWeaponAttackSound() override;
+	
 protected:
 	Axe(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);
 	virtual ~Axe();

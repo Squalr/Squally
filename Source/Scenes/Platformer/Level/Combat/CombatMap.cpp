@@ -98,6 +98,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::string 
 
 	this->focusTakeOver->setTakeOverOpacity(127);
 	this->entityFocusTakeOver->setTakeOverOpacity(0);
+	this->ingameMenu->disableInventory();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
