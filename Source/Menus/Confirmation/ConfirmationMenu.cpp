@@ -118,7 +118,7 @@ void ConfirmationMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this))
+		if (!GameUtils::isVisible(this))
 		{
 			return;
 		}
@@ -130,7 +130,7 @@ void ConfirmationMenu::initializeListeners()
 
 	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
 	{
-		if (!GameUtils::isFocused(this))
+		if (!GameUtils::isVisible(this))
 		{
 			return;
 		}

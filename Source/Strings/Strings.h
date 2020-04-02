@@ -5094,6 +5094,36 @@ namespace Strings
 		virtual ~Items_Crafting_Reagents_Snowball() = default;
 	};
 
+	class Items_Crafting_Recipes_TransmuteCopperToQuartz : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Recipes_TransmuteCopperToQuartz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Recipes_TransmuteCopperToQuartz();
+		virtual ~Items_Crafting_Recipes_TransmuteCopperToQuartz() = default;
+	};
+
+	class Items_Crafting_Recipes_TransmuteWoodToCoal : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Recipes_TransmuteWoodToCoal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Recipes_TransmuteWoodToCoal();
+		virtual ~Items_Crafting_Recipes_TransmuteWoodToCoal() = default;
+	};
+
 	class Items_Crafting_Wood_DarkWood : public LocalizedString
 	{
 	public:

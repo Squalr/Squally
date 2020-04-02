@@ -46,7 +46,6 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	this->ingameMenu = useIngameMenu ? IngameMenu::create() : nullptr;
 	this->pauseMenu = useIngameMenu ? (PauseMenu*)this->ingameMenu : PauseMenu::create();
 	this->optionsMenu = OptionsMenu::create();
-	this->confirmationMenu = ConfirmationMenu::create();
 	this->hudNode = Node::create();
 	this->hud = Hud::create();
 	this->hackerModeVisibleHud = Hud::create();
@@ -77,7 +76,6 @@ MapBase::MapBase(bool useIngameMenu, bool allowHackerMode)
 	
 	this->topMenuHud->addChild(this->pauseMenu);
 	this->topMenuHud->addChild(this->optionsMenu);
-	this->topMenuHud->addChild(this->confirmationMenu);
 	this->addChild(this->hackerModeRain);
 	this->addChild(this->mapNode);
 	this->addChild(this->hudNode);
@@ -103,7 +101,6 @@ void MapBase::onEnter()
 	this->menuBackDrop->setOpacity(0);
 	this->pauseMenu->setVisible(false);
 	this->optionsMenu->setVisible(false);
-	this->confirmationMenu->setVisible(false);
 
 	if (this->map != nullptr)
 	{

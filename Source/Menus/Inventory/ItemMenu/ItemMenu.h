@@ -74,4 +74,6 @@ private:
 
 	static const float LabelSpacing;
 	static const cocos2d::Size LabelSize;
+	static const cocos2d::Size ClipSize;
+	static const float ClipRightBuffer;
 };

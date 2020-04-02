@@ -54,7 +54,7 @@ std::string TransmuteWoodToCoalRecipe::getItemName()
 
 LocalizedString* TransmuteWoodToCoalRecipe::getString()
 {
-	return Strings::Items_Crafting_Ore_Coal::create();
+	return Strings::Items_Crafting_Recipes_TransmuteWoodToCoal::create();
 }
 
 std::string TransmuteWoodToCoalRecipe::getIconResource()

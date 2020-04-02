@@ -54,7 +54,7 @@ std::string TransmuteCopperToQuartzRecipe::getItemName()
 
 LocalizedString* TransmuteCopperToQuartzRecipe::getString()
 {
-	return Strings::Items_Crafting_Ore_Quartz::create();
+	return Strings::Items_Crafting_Recipes_TransmuteCopperToQuartz::create();
 }
 
 std::string TransmuteCopperToQuartzRecipe::getIconResource()

@@ -22,6 +22,7 @@ public:
 protected:
 	MenuEntry(LocalizedString* text, std::string iconResource);
 	virtual ~MenuEntry();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
@@ -30,6 +31,8 @@ protected:
 
 private:
 	typedef SmartNode super;
+
+	void sizeFont();
 
 	static const cocos2d::Size LabelSize;
 };

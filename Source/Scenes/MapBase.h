@@ -10,7 +10,6 @@ namespace cocos2d
 }
 
 class CodeHud;
-class ConfirmationMenu;
 class DeveloperHud;
 class GameMap;
 class Hud;
@@ -70,7 +69,6 @@ private:
 	CodeHud* codeHud;
 	RadialMenu* radialMenu;
 	OptionsMenu* optionsMenu;
-	ConfirmationMenu* confirmationMenu;
 	MusicOverlay* musicOverlay;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
