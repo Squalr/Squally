@@ -46,37 +46,37 @@ SmartAnimationNode* SmartAnimationNode::clone()
 	return SmartAnimationNode::create(this->animationResource, this->entityName);
 }
 
-void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
+void SmartAnimationNode::playAnimation(AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
 {
-	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, priority, blendTime, callback);
+	this->playAnimation(SmartAnimationNode::DefaultAnimationName, animationPlayMode, animParams, callback);
 }
 
-void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
+void SmartAnimationNode::playAnimation(const char* animationName, AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
 {
-	this->playAnimation(std::string(animationName), animationPlayMode, priority, blendTime, callback);
+	this->playAnimation(std::string(animationName), animationPlayMode, animParams, callback);
 }
 
-void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, float priority, float blendTime, std::function<void()> callback)
+void SmartAnimationNode::playAnimation(std::string animationName, AnimationPlayMode animationPlayMode, AnimParams animParams, std::function<void()> callback)
 {
 	if (this->entity == nullptr)
 	{
 		return;
 	}
 
-	if (priority <= this->currentAnimationPriority)
+	if (animParams.priority <= this->currentAnimationPriority)
 	{
 		return;
 	}
 
-	this->currentAnimationPriority = priority;
+	this->currentAnimationPriority = animParams.priority;
 	
 	if (this->entity->hasAnimation(animationName))
 	{
-		if (!this->initialized || this->entity->currentAnimationName() != animationName)
+		if (!this->initialized || animParams.cancelAnim || this->entity->currentAnimationName() != animationName)
 		{
 			this->initialized = true;
 			this->entity->setCurrentTime(0.0f);
-			this->entity->setCurrentAnimation(animationName, blendTime);
+			this->entity->setCurrentAnimation(animationName, animParams.blendTime);
 			this->currentAnimation = animationName;
 		}
 

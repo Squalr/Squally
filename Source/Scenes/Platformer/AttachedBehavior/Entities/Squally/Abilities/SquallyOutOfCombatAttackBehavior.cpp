@@ -4,12 +4,18 @@
 
 #include "Engine/Input/Input.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Projectiles/Arrows/CrystalArrow.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Bows/Bow.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -29,6 +35,7 @@ SquallyOutOfCombatAttackBehavior* SquallyOutOfCombatAttackBehavior::create(GameO
 SquallyOutOfCombatAttackBehavior::SquallyOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->squally = dynamic_cast<Squally*>(owner);
+	this->projectile = nullptr;
 
 	if (this->squally == nullptr)
 	{
@@ -63,7 +70,7 @@ std::string SquallyOutOfCombatAttackBehavior::getOutOfCombatAttackAnimation()
 	{
 		return "AttackOverworldPunch";
 	}
-	else if (dynamic_cast<Bow*>(weapon))
+	else if (dynamic_cast<Bow*>(weapon) != nullptr)
 	{
 		return "AttackOverworldShoot";
 	}
@@ -125,4 +132,46 @@ Weapon* SquallyOutOfCombatAttackBehavior::getWeapon()
 	});
 
 	return weapon;
+}
+
+Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
+{
+	Weapon* weapon = this->getWeapon();
+
+	if (weapon == nullptr)
+	{
+		return nullptr;
+	}
+	
+	if (dynamic_cast<CrystalBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<CrystalArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return CrystalArrow::create(); });
+	}
+
+	return nullptr;
+}
+
+Projectile* SquallyOutOfCombatAttackBehavior::createProjectile(std::function<Projectile*()> createFunc)
+{
+	Projectile* projectile = createFunc();
+
+	projectile->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	{
+		if (!this->squally->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			return CollisionObject::CollisionResult::DoNothing;
+		}
+
+		PlatformerEnemy* enemy = GameUtils::getFirstParentOfType<PlatformerEnemy>(collisionData.other);
+
+		if (enemy != nullptr && enemy->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			// Encountered enemy w/ first-strike
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(enemy, true));
+		}
+
+		return CollisionObject::CollisionResult::DoNothing;
+	});
+
+	return projectile;
 }

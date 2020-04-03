@@ -336,7 +336,7 @@ void FightGorgon::runGorgonLoop()
 		nullptr
 	));
 
-	this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+	this->gorgon->getAnimations()->playAnimation("AttackRebound", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.25f), [=]()
 	{
 		this->gorgon->getAnimations()->clearAnimationPriority();
 
@@ -351,7 +351,7 @@ void FightGorgon::runGorgonLoop()
 			nullptr
 		));
 
-		this->gorgon->getAnimations()->playAnimation("AttackStrongRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+		this->gorgon->getAnimations()->playAnimation("AttackStrongRebound", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.25f), [=]()
 		{
 			this->gorgon->getAnimations()->clearAnimationPriority();
 			this->backPeddleSound->play();
@@ -375,7 +375,7 @@ void FightGorgon::runGorgonLoop()
 				nullptr
 			));
 
-			this->gorgon->getAnimations()->playAnimation("AttackChargeRebound", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+			this->gorgon->getAnimations()->playAnimation("AttackChargeRebound", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.25f), [=]()
 			{
 				this->runGorgonLoop();
 			});

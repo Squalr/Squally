@@ -125,7 +125,7 @@ void UnknownValueBarBehavior::setHealth(int newHealth)
 {
 	if (newHealth <= UnknownValueBarBehavior::MaxHealth / 2)
 	{
-		this->entity->getAnimations()->playAnimation("AttackCastSpell1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
+		this->entity->getAnimations()->playAnimation("AttackCastSpell1", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		
 		this->addHealth(UnknownValueBarBehavior::MaxHealth - UnknownValueBarBehavior::Health);
 		this->spellAura->runAction(Sequence::create(
@@ -145,5 +145,5 @@ void UnknownValueBarBehavior::setHealth(int newHealth)
 
 void UnknownValueBarBehavior::onDeath()
 {
-	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, 1.0f);
+	this->entity->getAnimations()->playAnimation("Death", SmartAnimationNode::AnimationPlayMode::PauseOnAnimationComplete, SmartAnimationNode::AnimParams(1.0f));
 }

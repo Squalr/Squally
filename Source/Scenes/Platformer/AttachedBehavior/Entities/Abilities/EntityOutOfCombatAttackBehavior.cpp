@@ -9,11 +9,14 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityWeaponCollisionBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -28,6 +31,7 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 	this->outOfCombatAttackDebug = Sprite::create(UIResources::Menus_Icons_Swords);
 	this->weaponSound = WorldSound::create();
 	this->isPerformingOutOfCombatAttack = false;
+	this->cachedProjectile = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -40,6 +44,11 @@ EntityOutOfCombatAttackBehavior::EntityOutOfCombatAttackBehavior(GameObject* own
 
 EntityOutOfCombatAttackBehavior::~EntityOutOfCombatAttackBehavior()
 {
+}
+
+void EntityOutOfCombatAttackBehavior::onEnter()
+{
+	super::onEnter();
 }
 
 void EntityOutOfCombatAttackBehavior::initializePositions()
@@ -80,7 +89,7 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 	this->isPerformingOutOfCombatAttack = true;
 
 	this->entity->getAnimations()->clearAnimationPriority();
-	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 1.0f);
+	this->entity->getAnimations()->playAnimation(attackAnimation, SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 	this->entity->watchForAttachedBehavior<EntityWeaponCollisionBehavior>([=](EntityWeaponCollisionBehavior* weaponBehavior)
 	{
 		this->runAction(Sequence::create(
@@ -95,6 +104,8 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 				this->weaponSound->setSoundResource(soundResource);
 				this->weaponSound->play();
 
+				this->tryPerformShootProjectile();
+
 				weaponBehavior->enable();
 			}),
 			DelayTime::create(sustain),
@@ -107,4 +118,52 @@ void EntityOutOfCombatAttackBehavior::doOutOfCombatAttack(std::string attackAnim
 			nullptr
 		));
 	});
+}
+
+void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
+{
+	Projectile* projectile = this->createProjectile();
+
+	if (projectile == nullptr)
+	{
+		return;
+	}
+
+	if (projectile != this->cachedProjectile)
+	{
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			this,
+			projectile,
+			ObjectEvents::SpawnMethod::LayerBelow,
+			ObjectEvents::PositionMode::SetToOwner,
+			[&]()
+			{
+				this->cachedProjectile = projectile;
+			},
+			[&]()
+			{
+				this->cachedProjectile = nullptr;
+				projectile = nullptr;
+			}
+		));
+	}
+
+	projectile->setProjectileRotation(this->entity->isFlippedX() ? 180.0f : 0.0f);
+
+	const Vec2 FixedOffset = Vec2(64.0f, -32.0f);
+
+	Vec2 entityCenter = this->entity->getEntityCenterPoint();
+	Vec2 spawnOffset = Vec2(entityCenter.x + (this->entity->isFlippedX() ? -FixedOffset.x : FixedOffset.x), entityCenter.y + FixedOffset.y) + this->getProjectileSpawnOffset();
+
+	GameUtils::setWorldCoords3D(projectile, GameUtils::getWorldCoords3D(this) + Vec3(spawnOffset.x, spawnOffset.y, 0.0f));
+}
+
+Projectile* EntityOutOfCombatAttackBehavior::createProjectile()
+{
+	return nullptr;
+}
+
+Vec2 EntityOutOfCombatAttackBehavior::getProjectileSpawnOffset()
+{
+	return Vec2::ZERO;
 }

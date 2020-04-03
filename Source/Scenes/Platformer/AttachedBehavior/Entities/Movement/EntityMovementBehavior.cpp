@@ -187,14 +187,14 @@ void EntityMovementBehavior::update(float dt)
 					this->jumpSound->play();
 				}
 
-				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.85f);
+				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.85f));
 			}
 
 			if (std::abs(movement.y) < 0.15f)
 			{
 				if (std::abs(movement.x) > 0.15f)
 				{
-					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, 0.65f);
+					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.65f));
 
 					if (this->groundCollision->isOnGround()
 						&& !this->walkSounds.empty()
@@ -214,7 +214,7 @@ void EntityMovementBehavior::update(float dt)
 						this->entity->getAnimations()->clearAnimationPriority();
 					}
 					
-					this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, 0.5f);
+					this->entity->getAnimations()->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.5f));
 				}
 			}
 
@@ -250,7 +250,7 @@ void EntityMovementBehavior::update(float dt)
 					this->swimSounds[this->swimSoundIndex]->play();
 				}
 
-				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat, 0.75f);
+				this->entity->getAnimations()->playAnimation(this->entity->getSwimAnimation(), SmartAnimationNode::AnimationPlayMode::Repeat,SmartAnimationNode::AnimParams(0.75f));
 			}
 			else if (this->entity->getAnimations()->getCurrentAnimation() == this->entity->getSwimAnimation())
 			{

@@ -43,6 +43,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int 
 	this->ownerCollisionRef = nullptr;
 	this->enabled = true;
 	this->canUpdate = true;
+	this->projectileRotation = 0.0f;
 
 	this->addTag(Projectile::ProjectileTag);
 
@@ -108,6 +109,11 @@ void Projectile::update(float dt)
 	velocity.x *= this->speedMultiplier.x;
 	velocity.y *= this->speedMultiplier.y;
 	velocity.z *= this->speedMultiplier.z;
+
+	const float rotationInRad = this->projectileRotation * float(M_PI) / 180.0f;
+
+	velocity.x *= std::cos(rotationInRad);
+	velocity.y *= std::sin(rotationInRad);
 
 	this->setPosition3D(this->getPosition3D() + velocity);
 }
@@ -244,6 +250,18 @@ void Projectile::setLaunchVelocity(cocos2d::Vec3 velocity)
 void Projectile::setLaunchAcceleration(cocos2d::Vec3 acceleration)
 {
 	this->launchAcceleration = acceleration;
+}
+
+void Projectile::setProjectileRotation(float projectileRotation)
+{
+	this->projectileRotation = projectileRotation;
+
+	this->contentNode->setRotation(this->projectileRotation);
+}
+
+float Projectile::getProjectileRotation()
+{
+	return this->projectileRotation;
 }
 
 void Projectile::setSpeedMultiplier(Vec3 speedMultiplier)

@@ -9,14 +9,14 @@ namespace cocos2d
 
 class CollisionObject;
 
-class Dart : public Projectile
+class CrystalArrow : public Projectile
 {
 public:
-	static Dart* create(float dartRotation, float speed);
+	static CrystalArrow* create();
 
 protected:
-	Dart(float dartRotation, float speed);
-	virtual ~Dart();
+	CrystalArrow();
+	virtual ~CrystalArrow();
 
 	void onEnter() override;
 
@@ -24,5 +24,4 @@ private:
 	typedef Projectile super;
 
 	cocos2d::Sprite* sprite;
-	float dartSpeed;
 };

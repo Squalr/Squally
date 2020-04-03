@@ -2,6 +2,7 @@
 
 #include "Scenes/Platformer/AttachedBehavior/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
 
+class Projectile;
 class Squally;
 class Weapon;
 
@@ -18,6 +19,7 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
+	Projectile* createProjectile() override;
 
 private:
 	typedef EntityOutOfCombatAttackBehavior super;
@@ -27,6 +29,9 @@ private:
 	float getOutOfCombatAttackOnset();
 	float getOutOfCombatAttackSustain();
 	Weapon* getWeapon();
+	Projectile* createProjectile(std::function<Projectile*()> createFunc);
+
+	Projectile* projectile;
 
 	Squally* squally;
 };

@@ -53,7 +53,7 @@ TitleScreenBackground::TitleScreenBackground()
 	this->slime = SmartAnimationSequenceNode::create(UIResources::Menus_TitleScreen_Slime_Slime_0000);
 
 	this->squally->setFlippedX(true);
-	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, 0.5f);
+	this->squally->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f));
 	this->mainhand = this->squally->getAnimationPart("mainhand");
 
 	if (this->mainhand != nullptr)
@@ -123,7 +123,7 @@ void TitleScreenBackground::onEnter()
 
 	CallFunc* pokeSlime = CallFunc::create([=]
 	{
-		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle,  1.0f);
+		this->squally->playAnimation("AttackStabLite", SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
 		this->slime->playAnimation(UIResources::Menus_TitleScreen_Slime_Slime_0000, 0.035f);
 	});
 	

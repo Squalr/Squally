@@ -27,13 +27,13 @@ Dart* Dart::create(float dartRotation, float dartSpeed)
 
 Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject::createBox(Size(64.0f, 16.0f)), (int)PlatformerCollisionType::Damage, false)
 {
-	this->dartRotation = dartRotation;
 	this->dartSpeed = dartSpeed;
-	this->dartSprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
+	this->sprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 
-	this->setRotation(-this->dartRotation);
+	this->sprite->setRotation(270.0f);
+	this->setProjectileRotation(dartRotation);
 
-	this->contentNode->addChild(this->dartSprite);
+	this->contentNode->addChild(this->sprite);
 }
 
 Dart::~Dart()
@@ -43,8 +43,6 @@ Dart::~Dart()
 void Dart::onEnter()
 {
 	super::onEnter();
-
-	const float rotationInRad = this->dartRotation * float(M_PI) / 180.0f;
 	
-	this->getCollision()->setVelocity(Vec2(this->dartSpeed * std::cos(rotationInRad), this->dartSpeed * std::sin(rotationInRad)));
+	this->getCollision()->setVelocity(Vec2(this->dartSpeed, this->dartSpeed));
 }

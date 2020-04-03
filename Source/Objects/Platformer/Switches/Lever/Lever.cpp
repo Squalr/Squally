@@ -68,12 +68,12 @@ void Lever::onInteract()
 	this->lever->clearAnimationPriority();
 	this->leverSound->play();
 	
-	this->lever->playAnimation("PullBack", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+	this->lever->playAnimation("PullBack", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.25f), [=]()
 	{
 		this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 		
 		this->lever->clearAnimationPriority();
-		this->lever->playAnimation("Reset", SmartAnimationNode::AnimationPlayMode::Callback, 1.0f, 0.25f, [=]()
+		this->lever->playAnimation("Reset", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(1.0f, 0.25f), [=]()
 		{
 			this->canPull = true;
 			this->lever->clearAnimationPriority();
