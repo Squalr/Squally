@@ -117,6 +117,11 @@ void Timeline::initializeListeners()
 		CombatEvents::TriggerResumeTimeline();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventEntityTimelineReset, [=](EventCustom* eventCustom)
+	{
+		this->refreshTimelinePositions();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventPauseTimeline, [=](EventCustom* eventCustom)
 	{
 		this->isTimelinePaused = true;
@@ -284,6 +289,17 @@ void Timeline::updateTimeline(float dt)
 					}
 				}
 			}
+		}
+	}
+}
+
+void Timeline::refreshTimelinePositions()
+{
+	for (auto entry : this->timelineEntries)
+	{
+		if (entry->getEntity()->getStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			entry->setPositionX(-this->timelineWidth / 2.0f + this->timelineWidth * entry->getProgress());
 		}
 	}
 }

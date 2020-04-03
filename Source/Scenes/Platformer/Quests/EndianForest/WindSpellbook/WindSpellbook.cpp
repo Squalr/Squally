@@ -73,7 +73,7 @@ void WindSpellbook::onActivate(bool isActiveThroughSkippable)
 
 void WindSpellbook::onComplete()
 {
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(

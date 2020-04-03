@@ -15,15 +15,15 @@ int HackFlagUtils::GetCurrentHackFlags()
 
     if (!init)
     {
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfFire] = int(HackFlags::Fire);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfFrost] = int(HackFlags::Frost);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfLight] = int(HackFlags::Light);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfLightning] = int(HackFlags::Lightning);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfNature] = int(HackFlags::Nature);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfShadow] = int(HackFlags::Shadow);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfUndeath] = int(HackFlags::Undeath);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfWater] = int(HackFlags::Water);
-        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeyBlessingOfWind] = int(HackFlags::Wind);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookArcane] = int(HackFlags::Arcane);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookFire] = int(HackFlags::Fire);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookFrost] = int(HackFlags::Frost);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookHoly] = int(HackFlags::Light);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookLightning] = int(HackFlags::Lightning);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookNature] = int(HackFlags::Nature);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookShadow] = int(HackFlags::Shadow);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookWater] = int(HackFlags::Water);
+        HackFlagUtils::EssenceFlagMap[SaveKeys::SaveKeySpellBookWind] = int(HackFlags::Wind);
 
         init = true;
     }

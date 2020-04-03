@@ -12,9 +12,9 @@ enum class HackFlags
 	Lightning	= 1 << 3,
 	Nature	 	= 1 << 4,
 	Shadow	 	= 1 << 5,
-	Undeath	 	= 1 << 6,
-	Water	 	= 1 << 7,
-	Wind	 	= 1 << 8,
+	Water	 	= 1 << 6,
+	Wind	 	= 1 << 7,
+	Arcane	 	= 1 << 8,
 	Gravity	 	= 1 << 9,
 };
 

@@ -134,7 +134,7 @@ ClickableTextNode* TutorialSelectMenu::buildTutorialButton(std::string displayNa
 			SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
 			PlatformerMap* map = PlatformerMap::create(mapResource);
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyBlessingOfWind, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Snowman::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));

@@ -78,7 +78,7 @@ void WaterSpellbook::onActivate(bool isActiveThroughSkippable)
 
 void WaterSpellbook::onComplete()
 {
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(

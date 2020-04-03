@@ -53,7 +53,7 @@ TalkToGrogg::~TalkToGrogg()
 void TalkToGrogg::onLoad(QuestState questState)
 {
 	// Ret-con to allow players to hack water stuff TODO: Delete after 4/x/2020
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyBlessingOfWater, Value(true));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 
 	ObjectEvents::watchForObject<Guano>(this, [=](Guano* guano)
 	{

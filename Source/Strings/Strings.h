@@ -15759,6 +15759,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterEax();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm0 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm0* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm0();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm0() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm1();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm1() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ShadowBoltClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ShadowBoltClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ShadowBoltClippy();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ShadowBoltClippy() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_StopShadowBolt : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_StopShadowBolt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_StopShadowBolt();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_StopShadowBolt() = default;
+	};
+
 	class Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:

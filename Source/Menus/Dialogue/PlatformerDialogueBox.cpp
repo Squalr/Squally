@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
@@ -156,6 +157,18 @@ void PlatformerDialogueBox::initializeListeners()
 			args->handle();
 
 			this->hideDialogue();
+		}
+	});
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	{
+		if (this->allowSpace && this->isDialogueEffectComplete() && this->isDialogueFocused)
+		{
+			args->handle();
+
+			// Allow tab-cancel dialogue into hacker mode
+			this->hideDialogue();
+			HackableEvents::TriggerHackerModeEnable(HackableEvents::HackToggleArgs());
 		}
 	});
 }

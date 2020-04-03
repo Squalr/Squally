@@ -20,15 +20,15 @@ const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DE
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
 
-const std::string SaveKeys::SaveKeyBlessingOfFire = "SAVE_KEY_BLESSING_OF_FIRE";
-const std::string SaveKeys::SaveKeyBlessingOfFrost = "SAVE_KEY_BLESSING_OF_FROST";
-const std::string SaveKeys::SaveKeyBlessingOfLight = "SAVE_KEY_BLESSING_OF_LIGHT";
-const std::string SaveKeys::SaveKeyBlessingOfLightning = "SAVE_KEY_BLESSING_OF_LIGHTNING";
-const std::string SaveKeys::SaveKeyBlessingOfNature = "SAVE_KEY_BLESSING_OF_NATURE";
-const std::string SaveKeys::SaveKeyBlessingOfShadow = "SAVE_KEY_BLESSING_OF_SHADOW";
-const std::string SaveKeys::SaveKeyBlessingOfUndeath = "SAVE_KEY_BLESSING_OF_UNDEATH";
-const std::string SaveKeys::SaveKeyBlessingOfWater = "SAVE_KEY_BLESSING_OF_WATER";
-const std::string SaveKeys::SaveKeyBlessingOfWind = "SAVE_KEY_BLESSING_OF_WIND";
+const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
+const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";
+const std::string SaveKeys::SaveKeySpellBookFrost = "SAVE_KEY_SPELLBOOK_FROST";
+const std::string SaveKeys::SaveKeySpellBookHoly = "SAVE_KEY_SPELLBOOK_HOLY";
+const std::string SaveKeys::SaveKeySpellBookLightning = "SAVE_KEY_SPELLBOOK_LIGHTNING";
+const std::string SaveKeys::SaveKeySpellBookNature = "SAVE_KEY_SPELLBOOK_NATURE";
+const std::string SaveKeys::SaveKeySpellBookShadow = "SAVE_KEY_SPELLBOOK_SHADOW";
+const std::string SaveKeys::SaveKeySpellBookWater = "SAVE_KEY_SPELLBOOK_WATER";
+const std::string SaveKeys::SaveKeySpellBookWind = "SAVE_KEY_SPELLBOOK_WIND";
 
 const std::string SaveKeys::SaveKeyCollectableAnimalBat = "SAVE_KEY_ANIMAL_BAT";
 const std::string SaveKeys::SaveKeyCollectableAnimalBear = "SAVE_KEY_ANIMAL_BEAR";

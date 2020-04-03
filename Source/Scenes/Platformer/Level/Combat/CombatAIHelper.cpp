@@ -185,15 +185,41 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 
 	PlatformerEntity* caster = attackingEntry->getEntity();
 	
-	float bestUtility = std::numeric_limits<float>().min();
+	float bestUtility = std::numeric_limits<float>().lowest();
 
-	for (auto next : otherTeam)
+	switch (this->selectedAttack->getAttackType())
 	{
-		float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
-
-		if (utility > bestUtility)
+		case PlatformerAttack::AttackType::Buff:
+		case PlatformerAttack::AttackType::Healing:
+		case PlatformerAttack::AttackType::Resurrection:
 		{
-			this->selectedTarget = next;
+			for (auto next : sameTeam)
+			{
+				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				if (utility > bestUtility)
+				{
+					this->selectedTarget = next;
+				}
+			}
+
+			break;
+		}
+		default:
+		case PlatformerAttack::AttackType::Damage:
+		case PlatformerAttack::AttackType::Debuff:
+		{
+			for (auto next : otherTeam)
+			{
+				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				if (utility > bestUtility)
+				{
+					this->selectedTarget = next;
+				}
+			}
+
+			break;
 		}
 	}
 }

@@ -39,6 +39,7 @@ private:
 
 	void checkCombatComplete();
 	void updateTimeline(float dt);
+	void refreshTimelinePositions();
 	void registerTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void unregisterTimelineEventGroup(TimelineEventGroup* timelineEventGroup);
 	void onPauseStateChanged();

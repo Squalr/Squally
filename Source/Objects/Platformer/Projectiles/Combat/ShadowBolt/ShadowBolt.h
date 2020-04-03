@@ -14,6 +14,7 @@ class ShadowBolt : public ThrownObject
 public:
 	static ShadowBolt* create(PlatformerEntity* owner, PlatformerEntity* target);
 	
+	void enableClippy();
 	void runSpawnFX() override;
 	void runImpactFX();
 
@@ -22,12 +23,18 @@ protected:
 	virtual ~ShadowBolt();
 
 	void update(float dt) override;
+	cocos2d::Vec2 getButtonOffset() override;
+	void registerHackables() override;
+	HackablePreview* createDefaultPreview() override;
 
 private:
 	typedef ThrownObject super;
 
+	Clippy* reverseClippy;
 	SmartAnimationSequenceNode* shadowBoltAnim;
 	SmartAnimationSequenceNode* explosionAnim;
 	WorldSound* launchSound;
 	WorldSound* impactSound;
+
+	void setShadowBoltSpeed();
 };

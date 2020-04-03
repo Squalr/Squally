@@ -18,6 +18,7 @@ protected:
 
 private:
 	typedef DialogueBox super;
+	
 	PlatformerDialogueBox();
 	virtual ~PlatformerDialogueBox();
 

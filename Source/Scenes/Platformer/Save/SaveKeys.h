@@ -25,15 +25,15 @@ public:
 
 	static const std::string SaveKeyLevelRubberband;
 	
-	static const std::string SaveKeyBlessingOfFire;
-	static const std::string SaveKeyBlessingOfFrost;
-	static const std::string SaveKeyBlessingOfLight;
-	static const std::string SaveKeyBlessingOfLightning;
-	static const std::string SaveKeyBlessingOfNature;
-	static const std::string SaveKeyBlessingOfShadow;
-	static const std::string SaveKeyBlessingOfUndeath;
-	static const std::string SaveKeyBlessingOfWater;
-	static const std::string SaveKeyBlessingOfWind;
+	static const std::string SaveKeySpellBookArcane;
+	static const std::string SaveKeySpellBookFire;
+	static const std::string SaveKeySpellBookFrost;
+	static const std::string SaveKeySpellBookHoly;
+	static const std::string SaveKeySpellBookLightning;
+	static const std::string SaveKeySpellBookNature;
+	static const std::string SaveKeySpellBookShadow;
+	static const std::string SaveKeySpellBookWater;
+	static const std::string SaveKeySpellBookWind;
 
 	static const std::string SaveKeyCollectableAnimalBat;
 	static const std::string SaveKeyCollectableAnimalBear;
