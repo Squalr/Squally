@@ -21,6 +21,7 @@ protected:
 	void doOutOfCombatAttack(std::string attackAnimation, std::string soundResource, float onset, float sustain);
 	virtual Projectile* createProjectile();
 	virtual cocos2d::Vec2 getProjectileSpawnOffset();
+	virtual float getProjectileLifetime();
 
 	Projectile* cachedProjectile;
 

@@ -131,6 +131,12 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 
 	if (projectile != this->cachedProjectile)
 	{
+		if (this->cachedProjectile != nullptr && this->cachedProjectile->getParent() != nullptr)
+		{
+			this->cachedProjectile->getParent()->removeChild(this->cachedProjectile);
+			this->cachedProjectile = nullptr;
+		}
+
 		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
 			this,
 			projectile,
@@ -142,13 +148,14 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 			},
 			[&]()
 			{
-				this->cachedProjectile = nullptr;
 				projectile = nullptr;
 			}
 		));
 	}
 
 	projectile->setProjectileRotation(this->entity->isFlippedX() ? 180.0f : 0.0f);
+	projectile->enable(true);
+	projectile->stopAllActions();
 
 	const Vec2 FixedOffset = Vec2(64.0f, -32.0f);
 
@@ -156,6 +163,15 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 	Vec2 spawnOffset = Vec2(entityCenter.x + (this->entity->isFlippedX() ? -FixedOffset.x : FixedOffset.x), entityCenter.y + FixedOffset.y) + this->getProjectileSpawnOffset();
 
 	GameUtils::setWorldCoords3D(projectile, GameUtils::getWorldCoords3D(this) + Vec3(spawnOffset.x, spawnOffset.y, 0.0f));
+
+	projectile->runAction(Sequence::create(
+		DelayTime::create(this->getProjectileLifetime()),
+		CallFunc::create([=]()
+		{
+			projectile->disable(false);
+		}),
+		nullptr
+	));
 }
 
 Projectile* EntityOutOfCombatAttackBehavior::createProjectile()
@@ -166,4 +182,9 @@ Projectile* EntityOutOfCombatAttackBehavior::createProjectile()
 Vec2 EntityOutOfCombatAttackBehavior::getProjectileSpawnOffset()
 {
 	return Vec2::ZERO;
+}
+
+float EntityOutOfCombatAttackBehavior::getProjectileLifetime()
+{
+	return 0.5f;
 }
