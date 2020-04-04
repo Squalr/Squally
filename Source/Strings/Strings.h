@@ -8109,6 +8109,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin : public LocalizedString
 	{
 	public:
@@ -8124,10 +8184,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi* create();
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8135,14 +8195,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi() = default;
+		Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterXmm3 : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterXmm3* create();
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8150,8 +8210,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterXmm3() = default;
+		Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin : public LocalizedString
@@ -8167,21 +8242,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin();
 		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy();
-		virtual ~Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkinClippy() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx : public LocalizedString
@@ -8302,6 +8362,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues : public LocalizedString

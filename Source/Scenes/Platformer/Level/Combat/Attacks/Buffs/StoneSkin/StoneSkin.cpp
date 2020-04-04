@@ -18,7 +18,6 @@
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/StoneSkin/StoneSkinClippy.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/StoneSkin/StoneSkinGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -51,10 +50,7 @@ StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 
 StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
 {
-	this->clippy = StoneSkinClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	
-	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
 }
@@ -79,14 +75,6 @@ void StoneSkin::initializePositions()
 	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
-void StoneSkin::enableClippy()
-{
-	if (this->clippy != nullptr)
-	{
-		this->clippy->setIsEnabled(true);
-	}
-}
-
 void StoneSkin::registerHackables()
 {
 	super::registerHackables();
@@ -95,8 +83,6 @@ void StoneSkin::registerHackables()
 	{
 		return;
 	}
-
-	this->clippy->setIsEnabled(false);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
@@ -109,15 +95,69 @@ void StoneSkin::registerHackables()
 				StoneSkinGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEsi::create()
-					}
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx::create()
+					},
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx::create()
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
+				nullptr,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
+						"cdq\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
+						"mov ecx, 4\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
+						"idiv ecx\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+						"cqo\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
+						"mov rcx, 4\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
+						"idiv rcx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply::create())
+					),
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
+						"// cdq\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
+						"// mov ecx, 4\n" +
+						"\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) + 
+						"// idiv ecx\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivPrep::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+						"// cqo\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()) + 
+						"// mov rcx, 4\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) + 
+						"// idiv rcx\n" +
+						"\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiply::create()) +
+						"imul eax, 0\n"
+					)
+				},
+				true
 			)
 		},
 	};

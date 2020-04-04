@@ -47,8 +47,8 @@ void GoblinShamanCombatBehavior::onLoad()
 {
 	this->entity->watchForAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		// attackBehavior->registerAttack(CastShadowBolt::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeedVerySlow, PlatformerAttack::Priority::Common));
 		attackBehavior->registerAttack(CastCurseOfTongues::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(CastShadowBolt::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeedVerySlow, PlatformerAttack::Priority::Reasonable));
 		attackBehavior->registerAttack(BasicSlash::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
 	});
 	

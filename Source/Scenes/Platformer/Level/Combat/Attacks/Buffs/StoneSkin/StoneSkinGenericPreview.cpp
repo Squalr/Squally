@@ -20,9 +20,6 @@ StoneSkinGenericPreview* StoneSkinGenericPreview::create()
 
 StoneSkinGenericPreview::StoneSkinGenericPreview()
 {
-	this->healEffect = SmartAnimationSequenceNode::create();
-
-	this->previewNode->addChild(this->healEffect);
 }
 
 StoneSkinGenericPreview::~StoneSkinGenericPreview()
@@ -37,13 +34,9 @@ HackablePreview* StoneSkinGenericPreview::clone()
 void StoneSkinGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->healEffect->playAnimationRepeat(FXResources::Heal_Heal_0000, 0.05f, 1.5f);
 }
 
 void StoneSkinGenericPreview::initializePositions()
 {
 	super::initializePositions();
-
-	this->healEffect->setPosition(Vec2(0.0f, 0.0f));
 }

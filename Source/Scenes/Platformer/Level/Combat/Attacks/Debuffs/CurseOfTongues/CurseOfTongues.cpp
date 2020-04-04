@@ -56,7 +56,7 @@ CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntit
 CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(CurseOfTongues::Duration, CurseOfTongues::CurseOfTonguesIdentifier))
 {
 	this->clippy = CurseOfTonguesClippy::create();
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
 	this->spellAura->setColor(Color3B::PURPLE);
@@ -141,11 +141,11 @@ void CurseOfTongues::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [esi], -0.15",
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
+						"mov dword ptr [esi], -0.5",
 						// x64
-						COMMENT(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [rsi], -0.15"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()) + 
+						"mov dword ptr [rsi], -0.5"
 					)
 				}
 			)

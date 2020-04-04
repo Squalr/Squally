@@ -380,7 +380,8 @@ void TimelineEntry::performCast()
 		CallFunc::create([=]()
 		{
 			this->isCasting = false;
-			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f));
+			this->entity->getAnimations()->clearAnimationPriority();
+			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 
 			this->currentCast->execute(
 				this->entity,

@@ -9,7 +9,6 @@ namespace cocos2d
 
 class HackablePreview;
 class PlatformerEntity;
-class StoneSkinClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -17,8 +16,6 @@ class StoneSkin : public Buff
 {
 public:
 	static StoneSkin* create(PlatformerEntity* caster, PlatformerEntity* target);
-
-	void enableClippy();
 
 	static const std::string PropertyRestorePotionTutorial;
 	static const std::string StoneSkinIdentifier;
@@ -39,7 +36,6 @@ private:
 	
 	volatile int currentDamageTaken;
 	
-	StoneSkinClippy* clippy;
 	SmartParticles* spellEffect;
 	
 	static const int MaxMultiplier;

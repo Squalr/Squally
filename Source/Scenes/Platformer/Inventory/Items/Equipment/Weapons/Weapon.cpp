@@ -26,7 +26,7 @@ int Weapon::getMaxAttack()
 
 float Weapon::getAttackOnset()
 {
-	return 0.1f;
+	return 0.05f;
 }
 
 float Weapon::getAttackSustain()

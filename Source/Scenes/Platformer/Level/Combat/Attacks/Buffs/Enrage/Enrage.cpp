@@ -35,7 +35,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HASTE 1
 
-const std::string Enrage::EnrageIdentifier = "haste";
+const std::string Enrage::EnrageIdentifier = "enrage";
 
 // Note: UI sets precision on these to 1 digit
 const float Enrage::MinSpeed = -1.0f;
@@ -55,7 +55,7 @@ Enrage* Enrage::create(PlatformerEntity* caster, PlatformerEntity* target)
 Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(Enrage::Duration, Enrage::EnrageIdentifier))
 {
 	this->clippy = EnrageClippy::create();
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	
 	this->registerClippy(this->clippy);
 
