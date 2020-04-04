@@ -28,6 +28,7 @@ ShadowBoltSpeedPreview::ShadowBoltSpeedPreview()
 	this->xmm1Left = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("1.0f"));
 	this->xmm1Right = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("-1.0f"));
 
+	this->shadowBolt->setFlippedX(true);
 	this->shadowBolt->setScale(0.35f);
 
 	this->previewNode->addChild(this->shadowBolt);

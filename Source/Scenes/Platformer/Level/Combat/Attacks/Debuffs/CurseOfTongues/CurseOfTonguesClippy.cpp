@@ -43,7 +43,7 @@ void CurseOfTonguesClippy::startDialogue()
 {
 	this->runDialogue(
 		Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy::create()
-			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues::create()),
+			->setStringReplacementVariables(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }

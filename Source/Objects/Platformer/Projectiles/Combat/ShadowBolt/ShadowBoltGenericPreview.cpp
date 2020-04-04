@@ -20,9 +20,11 @@ ShadowBoltGenericPreview* ShadowBoltGenericPreview::create()
 
 ShadowBoltGenericPreview::ShadowBoltGenericPreview()
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::ShadowBolt_ShadowBolt_0000);
+	this->shadowBolt = SmartAnimationSequenceNode::create(FXResources::ShadowBolt_ShadowBolt_0000);
 
-	this->previewNode->addChild(this->fireball);
+	this->shadowBolt->setFlippedX(true);
+
+	this->previewNode->addChild(this->shadowBolt);
 }
 
 ShadowBoltGenericPreview::~ShadowBoltGenericPreview()
@@ -38,7 +40,7 @@ void ShadowBoltGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->fireball->playAnimationRepeat(FXResources::ShadowBolt_ShadowBolt_0000, 0.085f);
+	this->shadowBolt->playAnimationRepeat(FXResources::ShadowBolt_ShadowBolt_0000, 0.085f);
 }
 
 void ShadowBoltGenericPreview::initializePositions()

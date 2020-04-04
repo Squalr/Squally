@@ -312,7 +312,7 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 	
 	CombatEvents::TriggerEntityBuffsModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs(this->getEntity(), &speed));
 
-	this->progress += (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier);
+	this->setProgress(this->progress + (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier));
 }
 
 void TimelineEntry::addTime(float dt)
@@ -347,7 +347,7 @@ void TimelineEntry::tryPerformActions()
 		}), CameraFocus::MapKey);
 	}
 	// Progress complete, do the cast
-	else if (this->progress > 1.0f)
+	else if (this->progress >= 1.0f)
 	{
 		CombatEvents::TriggerInterruptTimeline();
 
@@ -415,14 +415,14 @@ void TimelineEntry::tryInterrupt()
 	
 	if (this->isBlocking)
 	{
-		this->progress = this->progress / 2.0f;
+		this->setProgress(this->progress / 2.0f);
 		this->interruptBonus = 0.1f;
 	}
 	else if (this->isCasting)
 	{
 		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
 
-		this->progress = this->progress / 4.0f;
+		this->setProgress(this->progress / 4.0f);
 		this->interruptBonus = 0.1f;
 	}
 	

@@ -42,8 +42,8 @@ void Defend::onEnter()
 void Defend::initializePositions()
 {
 	super::initializePositions();
-
-	this->defendEffect->setPosition(this->caster->getEntityCenterPoint());
+	
+	this->defendEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 
 	this->defendEffect->runAction(RepeatForever::create(Sequence::create(
 		ScaleTo::create(0.5f, 0.95f),

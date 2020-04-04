@@ -8289,10 +8289,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTonguesClippy() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues* create();
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8300,8 +8300,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues() = default;
+		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi : public LocalizedString

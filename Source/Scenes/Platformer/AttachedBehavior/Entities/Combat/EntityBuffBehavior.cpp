@@ -49,6 +49,8 @@ void EntityBuffBehavior::onLoad()
 			this->removeAllBuffs();
 		}
 	});
+	
+	this->setPosition(this->entity->getEntityCenterPoint());
 }
 
 void EntityBuffBehavior::onDisable()
@@ -74,7 +76,6 @@ void EntityBuffBehavior::applyBuff(Buff* buff)
 	}
 	
 	buff->setRemoveBuffCallback([=]() { this->removeBuff(buff); });
-	buff->setPosition(this->entity->getEntityCenterPoint());
 	this->buffs.push_back(buff);
 	this->buffNode->addChild(buff);
 

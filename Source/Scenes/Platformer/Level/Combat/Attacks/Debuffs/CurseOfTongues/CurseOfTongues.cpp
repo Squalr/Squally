@@ -24,6 +24,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
@@ -35,12 +36,12 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HASTE 1
 
-const std::string CurseOfTongues::CurseOfTonguesIdentifier = "haste";
+const std::string CurseOfTongues::CurseOfTonguesIdentifier = "curse-of-tongues";
 
 // Note: UI sets precision on these to 1 digit
-const float CurseOfTongues::MinSpeed = -1.0f;
-const float CurseOfTongues::DefaultSpeed = 2.0f;
-const float CurseOfTongues::MaxSpeed = 2.5f;
+const float CurseOfTongues::MinSpeed = -1.25f;
+const float CurseOfTongues::DefaultSpeed = -1.25f;
+const float CurseOfTongues::MaxSpeed = 1.0f;
 const float CurseOfTongues::Duration = 6.0f;
 
 CurseOfTongues* CurseOfTongues::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -56,10 +57,15 @@ CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* targe
 {
 	this->clippy = CurseOfTonguesClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
+
+	this->spellAura->setColor(Color3B::PURPLE);
+	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->spellAura);
 }
 
 CurseOfTongues::~CurseOfTongues()
@@ -71,6 +77,13 @@ void CurseOfTongues::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
+
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -108,7 +121,7 @@ void CurseOfTongues::registerHackables()
 			HackableCode::HackableCodeInfo(
 				CurseOfTongues::CurseOfTonguesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
-				UIResources::Menus_Icons_Clock,
+				UIResources::Menus_Icons_Voodoo,
 				CurseOfTonguesGenericPreview::create(),
 				{
 					{
@@ -126,11 +139,11 @@ void CurseOfTongues::registerHackables()
 				this->clippy,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurseOfTongues::create(),
+						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
-						"mov dword ptr [esi], 0.0",
+						"mov dword ptr [esi], -0.15",
 						// x64
-						"mov dword ptr [rsi], 0.0"
+						"mov dword ptr [rsi], -0.15"
 					)
 				}
 			)

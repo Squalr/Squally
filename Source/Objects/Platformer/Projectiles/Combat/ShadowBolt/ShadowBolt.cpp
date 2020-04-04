@@ -112,7 +112,7 @@ void ShadowBolt::registerHackables()
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm0::create() },
 					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterXmm1::create() }
 				},
-				int(HackFlags::None),
+				int(HackFlags::Shadow),
 				5.0f,
 				0.0f,
 				this->reverseClippy,

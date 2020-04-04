@@ -26,15 +26,11 @@ CastCurseOfTongues* CastCurseOfTongues::create(float attackDuration, float recov
 	return instance;
 }
 
-CastCurseOfTongues::CastCurseOfTongues(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Debuff, UIResources::Menus_Icons_Clock, priority, 0, 0, 2, attackDuration, recoverDuration)
+CastCurseOfTongues::CastCurseOfTongues(float attackDuration, float recoverDuration, Priority priority)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Voodoo, priority, 0, 0, 6, attackDuration, recoverDuration)
 {
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
+	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Curse1);
 
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
-
-	this->addChild(this->spellAura);
 	this->addChild(this->castSound);
 }
 
@@ -72,17 +68,10 @@ void CastCurseOfTongues::performAttack(PlatformerEntity* owner, PlatformerEntity
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(CurseOfTongues::create(owner, target));
 	});
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 }
 
 void CastCurseOfTongues::onCleanup()
