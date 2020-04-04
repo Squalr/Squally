@@ -729,6 +729,36 @@ namespace Strings
 		virtual ~Common_Brackets() = default;
 	};
 
+	class Common_Comment : public LocalizedString
+	{
+	public:
+		static Common_Comment* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_Comment();
+		virtual ~Common_Comment() = default;
+	};
+
+	class Common_CommentAsm : public LocalizedString
+	{
+	public:
+		static Common_CommentAsm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_CommentAsm();
+		virtual ~Common_CommentAsm() = default;
+	};
+
 	class Common_Concat : public LocalizedString
 	{
 	public:
@@ -757,6 +787,21 @@ namespace Strings
 	private:
 		Common_Constant();
 		virtual ~Common_Constant() = default;
+	};
+
+	class Common_ConstantNewline : public LocalizedString
+	{
+	public:
+		static Common_ConstantNewline* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConstantNewline();
+		virtual ~Common_ConstantNewline() = default;
 	};
 
 	class Common_ConstantTimes : public LocalizedString
@@ -15772,6 +15817,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed();
 		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ApplySpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed();
+		virtual ~Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed() = default;
 	};
 
 	class Menus_Hacking_Objects_ShadowBolt_ApplySpeed_RegisterEax : public LocalizedString

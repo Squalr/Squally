@@ -405,7 +405,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 			isJoiningComment = false;
 			currentString = "";
 		}
-		else if (next == ";" || isJoiningComment)
+		else if (next == ";" || next == "//" || isJoiningComment)
 		{
 			isJoiningComment = true;
 			currentString += next;
@@ -427,7 +427,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 		std::vector<std::string> tokenStrings;
 
 		// Tokenize the string if it isn't a comment -- otherwise treat it as one token
-		if (!StrUtils::startsWith(text, ";", false))
+		if (!StrUtils::startsWith(text, ";", false) && !StrUtils::startsWith(text, "//", false))
 		{
 			tokenStrings = StrUtils::tokenize(text, CodeWindow::Delimiters);
 		}
@@ -450,7 +450,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 			{
 				color = CodeWindow::NumberColor;
 			}
-			else if (StrUtils::startsWith(token, ";", false))
+			else if (StrUtils::startsWith(token, ";", false) || StrUtils::startsWith(token, "//", false))
 			{
 				color = CodeWindow::CommentColor;
 			}

@@ -200,6 +200,7 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 				if (utility > bestUtility)
 				{
 					this->selectedTarget = next;
+					bestUtility = utility;
 				}
 			}
 
@@ -216,6 +217,7 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 				if (utility > bestUtility)
 				{
 					this->selectedTarget = next;
+					bestUtility = utility;
 				}
 			}
 

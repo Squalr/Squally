@@ -15,6 +15,9 @@
 #define QUOTE(str) #str
 #define EXPAND_AND_QUOTE(str) QUOTE(str)
 
+#define COMMENT(str) Strings::Common_ConstantNewline::create()->setStringReplacementVariables( \
+	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
+
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
 	#define ZAX rax
 	#define ZBX rbx

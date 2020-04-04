@@ -135,8 +135,8 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		case AttackType::Buff:
 		case AttackType::Debuff:
 		{
-			// Equal priority. For more nuanced behavior, this function must be overridden.
-			return 1.0f;
+			// Priority based on whether the entity is alive or not. For more nuanced behavior, this function must be overridden.
+			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
 		}
 		case AttackType::Damage:
 		{
@@ -154,7 +154,7 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		}
 		case AttackType::Resurrection:
 		{
-			return target->getStateOrDefaultBool(StateKeys::IsAlive, 0) ? 1.0f : 0.0f;
+			return target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : 1.0f;
 		}
 		default:
 		{

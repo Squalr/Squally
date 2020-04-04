@@ -324,7 +324,7 @@ void TimelineEntry::addTime(float dt)
 void TimelineEntry::tryPerformActions()
 {
 	// Cast started
-	if (this->progress > TimelineEntry::CastPercentage && !this->isCasting)
+	if (this->progress >= TimelineEntry::CastPercentage && !this->isCasting)
 	{
 		CombatEvents::TriggerInterruptTimeline();
 
@@ -361,6 +361,11 @@ void TimelineEntry::tryPerformActions()
 		{
 			this->resetTimeline();
 		}
+	}
+	else if (this->progress < TimelineEntry::CastPercentage)
+	{
+		// This is necessary if the entity drifts backwards due to a debuff (thus casting is canceled)
+		this->isCasting = false;
 	}
 }
 

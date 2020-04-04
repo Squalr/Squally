@@ -47,7 +47,7 @@ void HackUtils::writeMemory(void* to, void* from, int length)
 
 std::string HackUtils::preProcessAssembly(std::string assembly)
 {
-	std::string processedAssembly;
+	std::string processedAssembly = "";
 
 	auto floatParser = [&](std::string const& match) {
         std::istringstream iss(match);
@@ -67,6 +67,9 @@ std::string HackUtils::preProcessAssembly(std::string assembly)
     std::regex reg("[-]?[0-9]*\\.[0-9]+");
     std::sregex_token_iterator begin(assembly.begin(), assembly.end(), reg, {-1, 0}), end;
     std::for_each(begin, end, floatParser);
+
+	// Convert to normalized comment formats
+	processedAssembly = StrUtils::replaceAll(processedAssembly, "//", ";");
 
     return processedAssembly;
 }
@@ -561,7 +564,7 @@ void* HackUtils::intToPointer(std::string intString, void* fallback)
 	std::stringstream ss;
 
 	ss << std::hex << std::stoull(intString);
-	std::string watson = ss.str();
+	std::string str = ss.str();
 	ss >> address;
 
 	return address;

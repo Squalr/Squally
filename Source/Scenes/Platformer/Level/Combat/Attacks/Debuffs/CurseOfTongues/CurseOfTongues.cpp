@@ -141,8 +141,10 @@ void CurseOfTongues::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
+						COMMENT(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
 						"mov dword ptr [esi], -0.15",
 						// x64
+						COMMENT(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
 						"mov dword ptr [rsi], -0.15"
 					)
 				}
