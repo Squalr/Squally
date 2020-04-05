@@ -102,13 +102,13 @@ void Fireball::registerHackables()
 			LOCAL_FUNC_ID_FIREBALL_SPEED,
 			HackableCode::HackableCodeInfo(
 				"Fireball",
-				Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed::create(),
+				Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_ApplySpeed::create(),
 				UIResources::Menus_Icons_FireBalls,
 				FireballSpeedPreview::create(),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterXmm1::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterEax::create() },
+					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm0::create() },
+					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_RegisterXmm1::create() }
 				},
 				int(HackFlags::None),
 				5.0f,
@@ -116,7 +116,7 @@ void Fireball::registerHackables()
 				this->reverseClippy,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball::create(),
+						Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create(),
 						// x86
 						"mov dword ptr [eax], 0.0\n"
 						"movss xmm1, dword ptr [eax]\n\n"

@@ -41,8 +41,8 @@ Clippy* ShadowBoltClippy::innerClone()
 
 void ShadowBoltClippy::startDialogue()
 {
-	this->runDialogue(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_ShadowBoltClippy::create()
-		->setStringReplacementVariables(Strings::Menus_Hacking_Objects_ShadowBolt_ApplySpeed_StopShadowBolt::create()),
+	this->runDialogue(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_ShadowBoltClippy::create()
+		->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_ShadowBolt_ApplySpeed_StopShadowBolt::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }

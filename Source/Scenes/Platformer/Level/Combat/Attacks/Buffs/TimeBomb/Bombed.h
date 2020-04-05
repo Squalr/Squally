@@ -7,7 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
+class HackablePreview;
 class PlatformerEntity;
+class BombedClippy;
 class SmartParticles;
 class WorldSound;
 
@@ -16,14 +18,9 @@ class Bombed : public Buff
 public:
 	static Bombed* create(PlatformerEntity* caster, PlatformerEntity* target);
 
-	static const std::string BombedIdentifier;
-
 protected:
 	Bombed(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~Bombed();
-
-	void onEnter() override;
-	void initializePositions() override;
 
 private:
 	typedef Buff super;

@@ -5,7 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 
-#include "Resources/FXResources.h"
+#include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
 
@@ -20,9 +20,9 @@ TimeBombGenericPreview* TimeBombGenericPreview::create()
 
 TimeBombGenericPreview::TimeBombGenericPreview()
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
+	this->timeBomb = Sprite::create(ObjectResources::Traps_TimeBomb_BOMB);
 
-	this->previewNode->addChild(this->fireball);
+	this->previewNode->addChild(this->timeBomb);
 }
 
 TimeBombGenericPreview::~TimeBombGenericPreview()
@@ -37,8 +37,6 @@ HackablePreview* TimeBombGenericPreview::clone()
 void TimeBombGenericPreview::onEnter()
 {
 	super::onEnter();
-
-	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
 }
 
 void TimeBombGenericPreview::initializePositions()

@@ -15,7 +15,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombClippy.h"
 #include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombGenericPreview.h"
-#include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombSpeedPreview.h"
+#include "Objects/Platformer/Projectiles/Combat/TimeBomb/TimeBombTickPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
@@ -159,15 +159,11 @@ void TimeBomb::registerHackables()
 			LOCAL_FUNC_ID_TIME_BOMB_TICK,
 			HackableCode::HackableCodeInfo(
 				"TimeBomb",
-				Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed::create(),
+				Strings::Menus_Hacking_Objects_Combat_TimeBomb_TimeBombTick::create(),
 				UIResources::Menus_Icons_Clock,
-				TimeBombSpeedPreview::create(),
+				TimeBombTickPreview::create(),
 				{
-					/*
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_TimeBomb_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_TimeBomb_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Objects_TimeBomb_ApplySpeed_RegisterXmm1::create() }
-					*/
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Combat_TimeBomb_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				TimeBomb::HackDuration,

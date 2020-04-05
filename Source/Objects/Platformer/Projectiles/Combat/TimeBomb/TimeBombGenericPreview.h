@@ -2,7 +2,10 @@
 
 #include "Engine/Hackables/HackablePreview.h"
 
-class SmartAnimationSequenceNode;
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class TimeBombGenericPreview : public HackablePreview
 {
@@ -21,5 +24,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* fireball;
+	cocos2d::Sprite* timeBomb;
 };

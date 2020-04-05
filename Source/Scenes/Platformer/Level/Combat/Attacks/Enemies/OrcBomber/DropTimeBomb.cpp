@@ -13,7 +13,7 @@
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/Bombed.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/TimeBomb.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/FXResources.h"
@@ -83,7 +83,7 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->applyBuff(Bombed::create(owner, target));
+		entityBuffBehavior->applyBuff(TimeBomb::create(owner, target));
 	});
 }
 
@@ -95,7 +95,7 @@ bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 	{
 		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
+			entityBuffBehavior->getBuff<TimeBomb>([&](TimeBomb* bombed)
 			{
 				buffCount++;
 			});
@@ -111,7 +111,7 @@ float DropTimeBomb::getUseUtility(PlatformerEntity* caster, PlatformerEntity* ta
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
+		entityBuffBehavior->getBuff<TimeBomb>([&](TimeBomb* bombed)
 		{
 			utility = 0.0f;
 		});

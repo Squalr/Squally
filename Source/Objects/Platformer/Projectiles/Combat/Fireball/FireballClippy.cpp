@@ -41,8 +41,8 @@ Clippy* FireballClippy::innerClone()
 
 void FireballClippy::startDialogue()
 {
-	this->runDialogue(Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_FireballClippy::create()
-		->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_StopFireball::create()),
+	this->runDialogue(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_FireballClippy::create()
+		->setStringReplacementVariables(Strings::Menus_Hacking_Objects_Combat_Projectiles_Fireball_ApplySpeed_StopFireball::create()),
 		SoundResources::Platformer_Entities_Droid_DroidChatter
 	);
 }
