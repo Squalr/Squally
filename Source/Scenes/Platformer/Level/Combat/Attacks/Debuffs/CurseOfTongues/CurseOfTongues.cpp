@@ -59,7 +59,7 @@ CurseOfTongues::CurseOfTongues(PlatformerEntity* caster, PlatformerEntity* targe
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
-	this->spellAura->setColor(Color3B::PURPLE);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
@@ -91,8 +91,6 @@ void CurseOfTongues::onEnter()
 void CurseOfTongues::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void CurseOfTongues::enableClippy()

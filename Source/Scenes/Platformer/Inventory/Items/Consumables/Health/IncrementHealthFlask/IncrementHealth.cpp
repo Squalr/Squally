@@ -80,7 +80,7 @@ void IncrementHealth::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f));
+	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
 }
 
 void IncrementHealth::enableClippy()

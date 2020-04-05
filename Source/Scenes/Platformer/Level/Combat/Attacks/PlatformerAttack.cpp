@@ -149,8 +149,9 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 		{
 			float hp = float(target->getStateOrDefaultInt(StateKeys::Health, 0));
 			float hpMax = float(target->getStateOrDefaultInt(StateKeys::MaxHealth, 0));
-
-			return 1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
+			
+			// Rank by lowest health first (except if dead)
+			return !target->getStateOrDefaultBool(StateKeys::IsAlive, true) ? 0.0f : (1.0f - (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Resurrection:
 		{

@@ -41,8 +41,6 @@ CastCurseOfTongues::~CastCurseOfTongues()
 void CastCurseOfTongues::initializePositions()
 {
 	super::initializePositions();
-
-	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
 PlatformerAttack* CastCurseOfTongues::cloneInternal()

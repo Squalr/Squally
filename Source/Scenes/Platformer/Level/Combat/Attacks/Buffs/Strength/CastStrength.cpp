@@ -9,7 +9,6 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/Strength.h"
 
-#include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -28,13 +27,8 @@ CastStrength* CastStrength::create(float attackDuration, float recoverDuration, 
 
 CastStrength::CastStrength(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Buff, UIResources::Menus_Icons_Clock, priority, 0, 0, 3, attackDuration, recoverDuration)
 {
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->castSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal5);
 
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
-
-	this->addChild(this->spellAura);
 	this->addChild(this->castSound);
 }
 
@@ -45,8 +39,6 @@ CastStrength::~CastStrength()
 void CastStrength::initializePositions()
 {
 	super::initializePositions();
-
-	this->setPosition(Vec2(0.0f, 118.0f));
 }
 
 PlatformerAttack* CastStrength::cloneInternal()
@@ -76,13 +68,6 @@ void CastStrength::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	{
 		entityBuffBehavior->applyBuff(Strength::create(owner, target));
 	});
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 }
 
 void CastStrength::onCleanup()

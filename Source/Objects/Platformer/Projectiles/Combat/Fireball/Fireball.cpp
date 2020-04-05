@@ -103,7 +103,7 @@ void Fireball::registerHackables()
 			HackableCode::HackableCodeInfo(
 				"Fireball",
 				Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_ApplySpeed::create(),
-				UIResources::Menus_Icons_CrossHair,
+				UIResources::Menus_Icons_FireBalls,
 				FireballSpeedPreview::create(),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Fireball_ApplySpeed_RegisterEax::create() },

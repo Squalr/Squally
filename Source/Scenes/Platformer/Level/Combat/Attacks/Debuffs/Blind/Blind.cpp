@@ -24,6 +24,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
@@ -56,10 +57,15 @@ Blind::Blind(PlatformerEntity* caster, PlatformerEntity* target) : super(caster,
 {
 	this->clippy = BlindClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+
+	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->spellAura);
 }
 
 Blind::~Blind()
@@ -72,14 +78,19 @@ void Blind::onEnter()
 
 	this->spellEffect->start();
 
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
+
 	CombatEvents::TriggerHackableCombatCue();
 }
 
 void Blind::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void Blind::enableClippy()

@@ -34,6 +34,8 @@ MagePortal::MagePortal(ValueMap& properties, float portalRadius, Color4B portalB
 	this->portalBase->setScaleX(0.5f);
 	this->drawEdge(Color4F::BLACK, this->edge, portalRadius, 8);
 
+	this->openPortal(true);
+
 	this->contentNode->addChild(this->background);
 	this->contentNode->addChild(this->portalEffectNode);
 	this->contentNode->addChild(this->edge);

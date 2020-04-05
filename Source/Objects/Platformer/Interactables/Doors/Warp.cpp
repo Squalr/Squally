@@ -37,6 +37,8 @@ Warp::Warp(ValueMap& properties) : super(properties, Size(properties.at(GameObje
 {
 	this->from = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpFrom, Value("")).asString();
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::MapKeyWarpTo, Value("")).asString();
+
+	this->setInteractType(InteractType::Input);
 }
 
 Warp::~Warp()

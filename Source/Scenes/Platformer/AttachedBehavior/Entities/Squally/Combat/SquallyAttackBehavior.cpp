@@ -63,7 +63,7 @@ void SquallyAttackBehavior::onDisable()
 
 void SquallyAttackBehavior::loadWeaponAttacks(EntityAttackBehavior* attackBehavior)
 {
-	attackBehavior->registerAttack(CastHaste::create(0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+	// attackBehavior->registerAttack(CastHaste::create(0.35f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 
 	this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* inventoryBehavior)
 	{

@@ -25,7 +25,7 @@
 
 using namespace cocos2d;
 
-const std::string TalkToSarude::MapKeyQuest = "talk-to-marcel"; // Keep as marcel until April 2020
+const std::string TalkToSarude::MapKeyQuest = "talk-to-sarude";
 const std::string TalkToSarude::QuestPortalTag = "quest-portal";
 
 TalkToSarude* TalkToSarude::create(GameObject* owner, QuestLine* questLine)

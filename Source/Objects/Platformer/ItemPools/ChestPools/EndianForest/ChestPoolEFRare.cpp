@@ -2,6 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/CraftingPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
@@ -21,9 +22,11 @@ ChestPoolEFRare* ChestPoolEFRare::create(ValueMap& properties)
 ChestPoolEFRare::ChestPoolEFRare(ValueMap& properties) : super(
 	properties, ChestPoolEFRare::PoolName, SampleMethod::Guarantee, 2, 3,
 	{
-		CraftingPoolTier2::create(SampleMethod::Guarantee, 2, 3)
 	})
 {
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 }
 
 ChestPoolEFRare::~ChestPoolEFRare()

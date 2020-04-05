@@ -28,7 +28,7 @@ BucketHelm::BucketHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Attack
 	0,
 	// Armor
-	0,
+	1,
 	// Speed
 	0.05f
 ))

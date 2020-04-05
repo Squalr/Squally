@@ -61,4 +61,6 @@ private:
 	cocos2d::Vec3 launchAcceleration;
 	cocos2d::Vec3 speedMultiplier;
 	float noOwnerCollideDuration;
+
+	cocos2d::Node* spinNode;
 };

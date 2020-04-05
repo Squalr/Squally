@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
@@ -52,7 +53,12 @@ StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target) : super
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setOpacity(0);
+
 	this->addChild(this->spellEffect);
+	this->addChild(this->spellAura);
 }
 
 StoneSkin::~StoneSkin()
@@ -65,14 +71,19 @@ void StoneSkin::onEnter()
 
 	this->spellEffect->start();
 
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
+
 	CombatEvents::TriggerHackableCombatCue();
 }
 
 void StoneSkin::initializePositions()
 {
 	super::initializePositions();
-
-	this->spellEffect->setPositionY(-this->target->getEntityCenterPoint().y / 2.0f);
 }
 
 void StoneSkin::registerHackables()

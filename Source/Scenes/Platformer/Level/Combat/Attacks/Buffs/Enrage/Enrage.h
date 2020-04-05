@@ -45,6 +45,7 @@ private:
 	
 	EnrageClippy* clippy;
 	SmartParticles* spellEffect;
+	cocos2d::Sprite* spellAura;
 
 	static const float MinSpeed;
 	static const float DefaultSpeed;

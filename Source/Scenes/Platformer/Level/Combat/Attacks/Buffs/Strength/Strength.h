@@ -41,6 +41,7 @@ private:
 	
 	StrengthClippy* clippy;
 	SmartParticles* spellEffect;
+	cocos2d::Sprite* spellAura;
 	
 	static const int MinMultiplier;
 	static const int MaxMultiplier;

@@ -41,6 +41,7 @@ private:
 	
 	FortitudeClippy* clippy;
 	SmartParticles* spellEffect;
+	cocos2d::Sprite* spellAura;
 	
 	static const int MaxMultiplier;
 	static const float Duration;

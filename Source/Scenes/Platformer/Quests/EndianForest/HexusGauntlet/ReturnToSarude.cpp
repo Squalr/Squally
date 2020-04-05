@@ -28,7 +28,7 @@
 
 using namespace cocos2d;
 
-const std::string ReturnToSarude::MapKeyQuest = "return-to-marcel";  // Keep as marcel until April 2020
+const std::string ReturnToSarude::MapKeyQuest = "return-to-sarude";
 const std::string ReturnToSarude::QuestPortalTag = "quest-portal";
 
 ReturnToSarude* ReturnToSarude::create(GameObject* owner, QuestLine* questLine)
@@ -67,7 +67,7 @@ void ReturnToSarude::onLoad(QuestState questState)
 	{
 		this->portal = portal;
 		
-		if (questState != QuestState::Complete)
+		if (questState == QuestState::Active || questState == QuestState::Complete)
 		{
 			this->portal->closePortal(true);
 		}
@@ -153,6 +153,7 @@ void ReturnToSarude::onHexusLoss()
 		{
 			hexusBehavior->giveItems();
 
+			this->complete();
 			this->runPostHexusMatchCleanup();
 			this->runDialogueIntroLoss();
 		}
