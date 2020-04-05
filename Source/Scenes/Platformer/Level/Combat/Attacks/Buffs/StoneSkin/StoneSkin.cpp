@@ -50,7 +50,7 @@ StoneSkin* StoneSkin::create(PlatformerEntity* caster, PlatformerEntity* target)
 
 StoneSkin::StoneSkin(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, BuffData(StoneSkin::Duration, StoneSkin::StoneSkinIdentifier))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 
 	this->addChild(this->spellEffect);
 }

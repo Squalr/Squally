@@ -30,8 +30,9 @@ Dart::Dart(float dartRotation, float dartSpeed) : super(nullptr, CollisionObject
 	this->dartSpeed = dartSpeed;
 	this->sprite = Sprite::create(ObjectResources::Traps_DartTripodLauncher_DART);
 
-	this->sprite->setRotation(270.0f);
+	this->sprite->setRotation(180.0f);
 	this->setProjectileRotation(dartRotation);
+	this->setLaunchVelocity(Vec3(this->dartSpeed, 0.0f, 0.0f));
 
 	this->contentNode->addChild(this->sprite);
 }
@@ -43,6 +44,4 @@ Dart::~Dart()
 void Dart::onEnter()
 {
 	super::onEnter();
-	
-	this->getCollision()->setVelocity(Vec2(this->dartSpeed, this->dartSpeed));
 }

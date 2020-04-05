@@ -13,22 +13,23 @@
 
 using namespace cocos2d;
 
-const int ProjectilePool::PoolCapacity = 16;
+const int ProjectilePool::DefaultPoolCapacity = 16;
 
-ProjectilePool* ProjectilePool::create(std::function<Projectile*()> projectileFactory)
+ProjectilePool* ProjectilePool::create(std::function<Projectile*()> projectileFactory, int projectilePoolCapacity)
 {
-	ProjectilePool* instance = new ProjectilePool(projectileFactory);
+	ProjectilePool* instance = new ProjectilePool(projectileFactory, projectilePoolCapacity);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ProjectilePool::ProjectilePool(std::function<Projectile*()> projectileFactory) : super()
+ProjectilePool::ProjectilePool(std::function<Projectile*()> projectileFactory, int projectilePoolCapacity) : super()
 {
 	this->projectileFactory = projectileFactory;
 	this->projectiles = std::vector<Projectile*>();
 	this->dartIndex = -1;
+	this->projectilePoolCapacity = projectilePoolCapacity;
 }
 
 ProjectilePool::~ProjectilePool()
@@ -37,7 +38,7 @@ ProjectilePool::~ProjectilePool()
 
 Projectile* ProjectilePool::getNextProjectile()
 {
-	if (this->projectiles.size() < ProjectilePool::PoolCapacity)
+	if (int(this->projectiles.size()) < this->projectilePoolCapacity)
 	{
 		if (projectileFactory != nullptr)
 		{
@@ -56,7 +57,7 @@ Projectile* ProjectilePool::getNextProjectile()
 	this->dartIndex = MathUtils::wrappingNormalize(this->dartIndex + 1, 0, this->projectiles.size() - 1);
 
 	this->projectiles[dartIndex]->enable(true);
-	this->projectiles[dartIndex]->reset();
+	GameUtils::setWorldCoords3D(this->projectiles[dartIndex], GameUtils::getWorldCoords3D(this));
 	this->projectiles[dartIndex]->runSpawnFX();
 
 	return this->projectiles[dartIndex];

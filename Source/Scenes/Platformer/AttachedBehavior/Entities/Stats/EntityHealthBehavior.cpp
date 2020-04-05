@@ -89,7 +89,7 @@ void EntityHealthBehavior::setHealth(int health, bool checkDeath)
 	bool wasAlive = this->isAlive();
 
 	health = MathUtils::clamp(health, 0, this->getMaxHealth());
-	this->entity->setState(StateKeys::Health, Value(health), false);
+	this->entity->setState(StateKeys::Health, Value(health), true);
 
 	if (!this->isAlive())
 	{

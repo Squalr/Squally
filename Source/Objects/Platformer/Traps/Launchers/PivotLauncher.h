@@ -21,7 +21,7 @@ public:
 	void setAutoLaunch(bool isAutoLaunch);
 
 protected:
-	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource);
+	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, int projectilePoolCapacity);
 	virtual ~PivotLauncher();
 
 	void onEnter() override;
@@ -53,7 +53,7 @@ private:
 
 	PlatformerEntity* target;
 	std::string targetQueryKey;
-
+	
 	float fixedAngle;
 	bool isFixed;
 	bool isAutoLaunch;

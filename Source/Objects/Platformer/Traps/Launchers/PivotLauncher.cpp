@@ -37,11 +37,11 @@ const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
 
-PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource) : super(properties)
+PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource, int projectilePoolCapacity) : super(properties)
 {
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
-	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); });
+	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); }, projectilePoolCapacity);
 	this->launchTimer = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();

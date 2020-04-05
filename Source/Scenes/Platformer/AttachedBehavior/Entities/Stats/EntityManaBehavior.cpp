@@ -60,11 +60,6 @@ void EntityManaBehavior::onLoad()
 		this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 	});
 
-	this->entity->listenForStateWrite(StateKeys::Mana, [=](Value value)
-	{
-		this->setMana(value.asInt());
-	});
-
 	this->entity->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{
 		if (value.asBool())
@@ -92,7 +87,7 @@ void EntityManaBehavior::addMana(int manaDelta)
 void EntityManaBehavior::setMana(int mana)
 {
 	mana = MathUtils::clamp(mana, 0, this->getMaxMana());
-	this->entity->setState(StateKeys::Mana, Value(mana), false);
+	this->entity->setState(StateKeys::Mana, Value(mana), true);
 }
 
 int EntityManaBehavior::getMaxMana()

@@ -37,7 +37,7 @@ FireLauncher* FireLauncher::create(ValueMap& properties)
 	return instance;
 }
 
-FireLauncher::FireLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations)
+FireLauncher::FireLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, 2)
 {
 }
 

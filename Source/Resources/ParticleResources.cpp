@@ -63,6 +63,7 @@ const std::string ParticleResources::Objects_VaseBreak = "Public/Particles/Objec
 const std::string ParticleResources::Platformer_Combat_Abilities_Blue = "Public/Particles/Platformer/Combat/Abilities/Blue.plist";
 const std::string ParticleResources::Platformer_Combat_Abilities_Curse = "Public/Particles/Platformer/Combat/Abilities/Curse.plist";
 const std::string ParticleResources::Platformer_Combat_Abilities_Enrage = "Public/Particles/Platformer/Combat/Abilities/Enrage.plist";
+const std::string ParticleResources::Platformer_Combat_Abilities_Gray = "Public/Particles/Platformer/Combat/Abilities/Gray.plist";
 const std::string ParticleResources::Platformer_Combat_Abilities_Heal = "Public/Particles/Platformer/Combat/Abilities/Heal.plist";
 const std::string ParticleResources::Platformer_Combat_Abilities_Speed = "Public/Particles/Platformer/Combat/Abilities/Speed.plist";
 const std::string ParticleResources::Platformer_Combat_LevelUp = "Public/Particles/Platformer/Combat/LevelUp.plist";

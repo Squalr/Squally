@@ -284,7 +284,7 @@
   <object id="691" name="dart-launcher" type="object" x="5244.97" y="2179.76" width="86" height="155">
    <properties>
     <property name="attached-behavior" value="enable-all-clippy"/>
-    <property name="fixed" type="float" value="-90"/>
+    <property name="fixed" type="float" value="-135"/>
     <property name="speed" type="float" value="360"/>
    </properties>
   </object>

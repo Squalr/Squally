@@ -99,7 +99,7 @@ void Projectile::update(float dt)
 
 	if (this->spinSpeed != 0.0f)
 	{
-		this->setRotation(this->getRotation() + this->spinSpeed * dt);
+		this->setProjectileRotation(this->projectileRotation + this->spinSpeed * dt);
 	}
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
@@ -110,10 +110,14 @@ void Projectile::update(float dt)
 	velocity.y *= this->speedMultiplier.y;
 	velocity.z *= this->speedMultiplier.z;
 
-	const float rotationInRad = this->projectileRotation * float(M_PI) / 180.0f;
+	// If rotation is set, switch from standard kinematics (x/y velocity) to vector + direction based velocity.
+	if (this->projectileRotation != 0.0f)
+	{
+		const float rotationInRad = this->projectileRotation * float(M_PI) / 180.0f;
 
-	velocity.x *= std::cos(rotationInRad);
-	velocity.y *= std::sin(rotationInRad);
+		velocity.y = velocity.x * std::sin(rotationInRad);
+		velocity.x *= std::cos(rotationInRad);
+	}
 
 	this->setPosition3D(this->getPosition3D() + velocity);
 }
@@ -255,8 +259,8 @@ void Projectile::setLaunchAcceleration(cocos2d::Vec3 acceleration)
 void Projectile::setProjectileRotation(float projectileRotation)
 {
 	this->projectileRotation = projectileRotation;
-
-	this->contentNode->setRotation(this->projectileRotation);
+	
+	this->collisionObject->setRotation(180.0f - this->projectileRotation);
 }
 
 float Projectile::getProjectileRotation()
@@ -300,11 +304,6 @@ void Projectile::enableUpdate()
 void Projectile::disableUpdate()
 {
 	this->canUpdate = false;
-}
-
-void Projectile::reset()
-{
-	this->collisionObject->setPosition3D(Vec3::ZERO);
 }
 
 void Projectile::runSpawnFX()

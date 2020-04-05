@@ -12,12 +12,14 @@ class Projectile;
 class ProjectilePool : public SmartNode
 {
 public:
-	static ProjectilePool* create(std::function<Projectile*()> projectileFactory);
+	static ProjectilePool* create(std::function<Projectile*()> projectileFactory, int projectilePoolCapacity = ProjectilePool::DefaultPoolCapacity);
 
 	Projectile* getNextProjectile();
 
+	static const int DefaultPoolCapacity;
+
 protected:
-	ProjectilePool(std::function<Projectile*()> projectileFactory);
+	ProjectilePool(std::function<Projectile*()> projectileFactory, int projectilePoolCapacity);
 	virtual ~ProjectilePool();
 
 private:
@@ -27,6 +29,5 @@ private:
 	std::function<Projectile*()> projectileFactory;
 
 	int dartIndex;
-
-	static const int PoolCapacity;
+	int projectilePoolCapacity;
 };

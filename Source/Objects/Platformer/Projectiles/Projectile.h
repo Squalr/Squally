@@ -22,7 +22,6 @@ public:
 	bool isEnabled();
 	void enable(bool setVisible);
 	void disable(bool setVisible);
-	void reset();
 	virtual void runSpawnFX();
 
 	static const std::string ProjectileTag;
