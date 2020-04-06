@@ -86,11 +86,6 @@ void Scrappy::initializeListeners()
 	super::initializeListeners();
 }
 
-float Scrappy::getFloatHeight()
-{
-	return 64.0f;
-}
-
 Vec2 Scrappy::getDialogueOffset()
 {
 	return Vec2(0.0f, 48.0f);

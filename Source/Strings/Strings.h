@@ -18264,6 +18264,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Defend() = default;
 	};
 
+	class Platformer_Combat_ExpGain : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_ExpGain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_ExpGain();
+		virtual ~Platformer_Combat_ExpGain() = default;
+	};
+
 	class Platformer_Combat_FirstStrike : public LocalizedString
 	{
 	public:

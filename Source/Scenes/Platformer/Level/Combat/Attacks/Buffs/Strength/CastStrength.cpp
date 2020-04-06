@@ -64,7 +64,7 @@ void CastStrength::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(Strength::create(owner, target));
 	});

@@ -24,6 +24,7 @@ protected:
 	virtual float getProjectileLifetime();
 
 	Projectile* cachedProjectile;
+	WorldSound* weaponSound;
 
 private:
 	typedef AttachedBehavior super;
@@ -33,6 +34,5 @@ private:
 	bool isPerformingOutOfCombatAttack;
 
 	PlatformerEntity* entity;
-	WorldSound* weaponSound;
 	cocos2d::Sprite* outOfCombatAttackDebug;
 };

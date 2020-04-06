@@ -31,6 +31,7 @@ WorldSound* WorldSound::create(ValueMap& properties, std::string soundResource)
 
 WorldSound::WorldSound(ValueMap& properties, std::string soundResource) : super(properties, soundResource)
 {
+	this->zDepthEnabled = false;
 }
 
 WorldSound::~WorldSound()
@@ -47,6 +48,16 @@ void WorldSound::update(float dt)
 	super::update(dt);
 
 	this->updateDistanceFade();
+}
+
+void WorldSound::disableZDepth()
+{
+	this->zDepthEnabled = false;
+}
+
+void WorldSound::enableZDepth()
+{
+	this->zDepthEnabled = true;
 }
 
 void WorldSound::updateDistanceFade()
@@ -73,7 +84,7 @@ void WorldSound::updateDistanceFade()
 			Vec3 thisCoords = GameUtils::getWorldCoords3D(this);
 			Vec3 cameraPosition = GameCamera::getInstance()->getCameraPosition3();
 			Size visibleSize = Director::getInstance()->getVisibleSize();
-			float distance = thisCoords.distance(cameraPosition);
+			float distance = this->zDepthEnabled ? thisCoords.distance(cameraPosition) : Vec2(thisCoords.x, thisCoords.y).distance(Vec2(cameraPosition.x, cameraPosition.y));
 			float dropOffDistance = 1080.0f;
 			float adjustedDistance = distance - dropOffDistance;
 

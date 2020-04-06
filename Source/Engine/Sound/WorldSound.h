@@ -8,6 +8,9 @@ public:
 	static WorldSound* create(std::string soundResource = "");
 	static WorldSound* create(cocos2d::ValueMap& properties, std::string soundResource = "");
 
+	void disableZDepth();
+	void enableZDepth();
+
 	static const std::string MapKey;
 
 protected:
@@ -19,6 +22,8 @@ protected:
 
 private:
 	typedef Sound super;
+
+	bool zDepthEnabled;
 
 	void updateDistanceFade();
 };

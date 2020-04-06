@@ -64,7 +64,7 @@ void CastReflect::performAttack(PlatformerEntity* owner, PlatformerEntity* targe
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(Reflect::create(owner, target));
 	});

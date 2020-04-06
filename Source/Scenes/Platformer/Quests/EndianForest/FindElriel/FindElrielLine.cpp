@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/ReturnToQueen.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/SneakPastLycan.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToGrogg.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToQueen.h"
@@ -23,6 +24,7 @@ FindElrielLine* FindElrielLine::create()
 }
 
 FindElrielLine::FindElrielLine() : super(FindElrielLine::MapKeyQuestLine, {
+	QuestData(SneakPastLycan::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return SneakPastLycan::create(owner, questLine); }),
 	QuestData(TownArrival::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TownArrival::create(owner, questLine); }),
 	QuestData(TownExitBlocked::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TownExitBlocked::create(owner, questLine); }),
 	QuestData(TalkToQueen::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToQueen::create(owner, questLine); }),

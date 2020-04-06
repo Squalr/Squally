@@ -38,6 +38,7 @@ GuanoPickPocketBehavior::GuanoPickPocketBehavior(GameObject* owner) : super(owne
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->isPickPocketing = false;
+	this->target = nullptr;
 
 	if (this->entity == nullptr)
 	{
@@ -60,6 +61,18 @@ void GuanoPickPocketBehavior::onLoad()
 			this->tryPickPocket(args->target, args->pocketPool, args->saveKeyPickPocketed);
 		}
 	}));
+
+	this->scheduleUpdate();
+}
+
+void GuanoPickPocketBehavior::update(float dt)
+{
+	super::update(dt);
+
+	if (this->isPickPocketing)
+	{
+		this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
+	}
 }
 
 void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::string pickPocketSaveKey)
@@ -75,6 +88,7 @@ void GuanoPickPocketBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 	}
 	
 	this->isPickPocketing = true;
+	this->target = target;
 	this->entity->setState(StateKeys::PatrolHijacked, Value(true));
 	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
 	this->entity->setOpacity(192);

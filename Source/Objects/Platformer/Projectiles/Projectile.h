@@ -45,13 +45,13 @@ protected:
 	
 	PlatformerEntity* caster;
 
+	CollisionObject* collisionObject;
 	cocos2d::Node* contentNode;
 	cocos2d::Node* postFXNode;
 
 private:
 	typedef HackableObject super;
 
-	CollisionObject* collisionObject;
 	CollisionObject* ownerCollisionRef;
 	bool enabled;
 	float spinSpeed;

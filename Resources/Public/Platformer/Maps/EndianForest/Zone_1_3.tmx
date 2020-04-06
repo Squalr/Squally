@@ -263,9 +263,11 @@
   </object>
   <object id="768" name="lycan" type="entity" x="3992.31" y="1540.99" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="lycan,friendly,pick-pocket"/>
+    <property name="attached-behavior" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="town-guard"/>
+    <property name="quest" value="sneak-past-lycan"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
   <object id="773" name="help-totem-pick-pocket" type="object" x="3379.93" y="1413.88" width="248" height="248"/>

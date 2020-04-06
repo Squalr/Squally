@@ -64,7 +64,7 @@ void CastStoneSkin::performAttack(PlatformerEntity* owner, PlatformerEntity* tar
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(StoneSkin::create(owner, target));
 	});

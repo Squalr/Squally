@@ -103,7 +103,6 @@ PlatformerAttachedBehaviorDeserializer::PlatformerAttachedBehaviorDeserializer()
 
 	// Endian forest
 	this->attachedBehaviorDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)AraBehavior::create(owner); };
-	this->attachedBehaviorDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (AttachedBehavior*)LycanBehavior::create(owner); };
 
 	/*********************
 		COMBAT / IN-COMBAT

@@ -21,7 +21,6 @@ public:
 	};
 
 	std::string getEntityKey();
-	virtual float getFloatHeight();
 
 	float getScale();
 	std::string getAnimationResource();
@@ -32,6 +31,7 @@ public:
 	cocos2d::Size getMovementSize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
+	cocos2d::Vec2 getEntityBottomPoint();
 	float getHoverHeight();
 	virtual cocos2d::Vec2 getDialogueOffset() = 0;
 	virtual LocalizedString* getEntityName() = 0;

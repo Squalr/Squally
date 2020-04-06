@@ -36,7 +36,7 @@ TempleDoor::TempleDoor(ValueMap& properties) : super(properties, Size(420.0f, 52
 	this->topCollision = CollisionObject::create(CollisionObject::createBox(Size(420.0f, 32.0f)), (CollisionType)PlatformerCollisionType::PassThrough, CollisionObject::Properties(false, false));
 	this->emblem = nullptr;
 	this->emblemOffset = Vec2::ZERO;
-	this->doorOpenSound = WorldSound::create();
+	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 
 	std::string color = GameUtils::getKeyOrDefault(this->properties, TempleDoor::MapKeyColor, Value("")).asString();
 
@@ -124,10 +124,7 @@ void TempleDoor::lock(bool animate)
 		this->door->stopAllActions();
 		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
 
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{
@@ -147,11 +144,7 @@ void TempleDoor::unlock(bool animate)
 	{
 		this->door->stopAllActions();
 		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2(0.0f, TempleDoor::DoorOpenDelta)));
-		
-		if (this->doorOpenSound != nullptr)
-		{
-			this->doorOpenSound->play();
-		}
+		this->doorOpenSound->play();
 	}
 	else
 	{

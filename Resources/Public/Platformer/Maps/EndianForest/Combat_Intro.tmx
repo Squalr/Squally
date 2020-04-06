@@ -84,7 +84,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="518" name="combat-spawn" type="object" x="2075.27" y="1708.67" width="78.7879" height="88">
+  <object id="518" name="combat-spawn" type="object" x="2101.27" y="1718" width="64" height="64">
    <properties>
     <property name="spawn-order" type="int" value="2"/>
     <property name="spawn-type" value="enemy"/>
@@ -96,16 +96,16 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="554" name="combat-spawn" type="object" x="1701.34" y="1551.05" width="78.7879" height="88">
+  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="477.4" y="1641.7" width="78.7879" height="88">
+  <object id="555" name="combat-spawn" type="object" x="476.067" y="1666.37" width="64" height="64">
    <properties>
-    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
@@ -122,14 +122,14 @@
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="723.61" y="1440.66" width="78.7879" height="88">
+  <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
-    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="559" name="combat-spawn" type="object" x="2135.61" y="1411.34" width="78.7879" height="88">
+  <object id="559" name="combat-spawn" type="object" x="2136.28" y="1438.01" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>

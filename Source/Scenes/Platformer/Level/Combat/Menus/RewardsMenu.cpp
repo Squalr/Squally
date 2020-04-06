@@ -209,14 +209,16 @@ void RewardsMenu::clearEmblems()
 
 void RewardsMenu::addExpEmblem(std::string emblemResource, int gain)
 {
+	const float LeftShift = -16.0f;
+
 	Sprite* emblem = Sprite::create(emblemResource);
-	LocalizedString* expGainString = Strings::Common_PlusConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(gain)));
+	LocalizedString* expGainString = Strings::Platformer_Combat_ExpGain::create()->setStringReplacementVariables(ConstantString::create(std::to_string(gain)));
 	LocalizedLabel* expGainLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, expGainString);
 
 	const Vec2 offset = Vec2(-64.0f, 48.0f);
 
-	emblem->setPosition(Vec2(0.0f, -64.0f * float(this->emblemCount)) + offset);
-	expGainLabel->setPosition(Vec2(48.0f, -64.0f * float(this->emblemCount)) + offset);
+	emblem->setPosition(Vec2(LeftShift, -64.0f * float(this->emblemCount)) + offset);
+	expGainLabel->setPosition(Vec2(LeftShift + 48.0f, -64.0f * float(this->emblemCount)) + offset);
 	expGainLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	expGainLabel->enableOutline(Color4B::BLACK, 2);
 

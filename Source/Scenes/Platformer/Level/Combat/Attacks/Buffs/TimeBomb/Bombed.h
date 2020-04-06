@@ -18,6 +18,8 @@ class Bombed : public Buff
 public:
 	static Bombed* create(PlatformerEntity* caster, PlatformerEntity* target);
 
+	static const std::string BombedIdentifier;
+
 protected:
 	Bombed(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~Bombed();

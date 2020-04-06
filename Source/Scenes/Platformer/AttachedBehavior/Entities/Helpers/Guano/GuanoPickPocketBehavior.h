@@ -18,6 +18,7 @@ protected:
 	virtual ~GuanoPickPocketBehavior();
 
 	void onLoad() override;
+	void update(float dt) override;
 	void onDisable() override;
 
 private:
@@ -27,5 +28,6 @@ private:
 	void endPickPocket();
 
 	PlatformerEntity* entity;
+	PlatformerEntity* target;
 	bool isPickPocketing;
 };

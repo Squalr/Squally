@@ -13,8 +13,6 @@ class Scrappy : public PlatformerFriendly
 public:
 	static Scrappy* deserialize(cocos2d::ValueMap& properties);
 
-	float getFloatHeight() override;
-
 	cocos2d::Vec2 getDialogueOffset() override;
 	LocalizedString* getEntityName() override;
 	static HexusOpponentData* getHexusOpponentData();

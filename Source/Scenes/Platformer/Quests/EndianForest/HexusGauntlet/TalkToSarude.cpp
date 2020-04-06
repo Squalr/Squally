@@ -63,6 +63,12 @@ void TalkToSarude::onLoad(QuestState questState)
 	ObjectEvents::watchForObject<MagePortal>(this, [=](MagePortal* portal)
 	{
 		this->portal = portal;
+
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->portal->closePortal(true);
+		}
+
 	}, TalkToSarude::QuestPortalTag);
 }
 

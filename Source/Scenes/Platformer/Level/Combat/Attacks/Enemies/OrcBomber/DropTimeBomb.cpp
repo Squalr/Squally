@@ -13,7 +13,7 @@
 #include "Objects/Platformer/Projectiles/Combat/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityProjectileTargetBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/TimeBomb.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/TimeBomb/Bombed.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 
 #include "Resources/FXResources.h"
@@ -78,12 +78,16 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* targ
 		}
 	));
 
+	const float BombHeightHalf = 133.0f / 2.0f;
+
+	Vec2 offset = target->getEntityBottomPoint() + Vec2(RandomHelper::random_real(-96.0f, 96.0f), BombHeightHalf);
+
 	timeBomb->runSpawnFX();
-	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3(RandomHelper::random_real(-96.0f, 96.0f), 0.0f, 0.0f));
+	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f));
 	
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->applyBuff(TimeBomb::create(owner, target));
+		entityBuffBehavior->applyBuff(Bombed::create(owner, target));
 	});
 }
 
@@ -111,7 +115,7 @@ float DropTimeBomb::getUseUtility(PlatformerEntity* caster, PlatformerEntity* ta
 
 	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<TimeBomb>([&](TimeBomb* bombed)
+		entityBuffBehavior->getBuff<Bombed>([&](Bombed* bombed)
 		{
 			utility = 0.0f;
 		});

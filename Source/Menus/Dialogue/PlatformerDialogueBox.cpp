@@ -168,7 +168,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 			// Allow tab-cancel dialogue into hacker mode
 			this->hideDialogue();
-			HackableEvents::TriggerHackerModeEnable(HackableEvents::HackToggleArgs());
+			HackableEvents::TriggerForceUseHackerMode();
 		}
 	});
 }

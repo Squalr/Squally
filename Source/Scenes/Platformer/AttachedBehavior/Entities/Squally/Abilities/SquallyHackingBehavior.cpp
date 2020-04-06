@@ -41,7 +41,7 @@ void SquallyHackingBehavior::onLoad()
 {
 	this->squally->watchForAttachedBehavior<EntityRuneBehavior>([=](EntityRuneBehavior* runeBehavior)
 	{
-		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceUseHackerMode, [=](EventCustom*)
 		{
 			runeBehavior->tryUseRune();
 		}));
@@ -61,7 +61,7 @@ void SquallyHackingBehavior::onLoad()
 		});
 	});
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceHackerModeEnable, [=](EventCustom*)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventForceUseHackerMode, [=](EventCustom*)
 	{
 		this->toggleHackerMode();
 	}));

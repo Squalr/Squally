@@ -28,6 +28,7 @@ private:
 
 	SpawnType spawnType;
 	int spawnOrder;
+	float spawnObjectHeight;
 	float zoom;
 
 	static const std::string MapKeySpawnType;

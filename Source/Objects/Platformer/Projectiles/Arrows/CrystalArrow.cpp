@@ -29,7 +29,7 @@ CrystalArrow::CrystalArrow() : super(nullptr, CollisionObject::createBox(Size(12
 {
 	this->sprite = Sprite::create(ItemResources::Equipment_Weapons_Bows_CrystalArrow);
 
-	this->sprite->setRotation(90.0f);
+	this->sprite->setRotation(270.0f);
 
 	this->contentNode->addChild(this->sprite);
 }

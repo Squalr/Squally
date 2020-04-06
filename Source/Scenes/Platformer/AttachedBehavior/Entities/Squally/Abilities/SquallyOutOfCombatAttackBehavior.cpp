@@ -8,7 +8,15 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Projectiles/Arrows/BoneArrow.h"
 #include "Objects/Platformer/Projectiles/Arrows/CrystalArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/DemonicArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/GoldenArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/HuntersArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/IvyArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/SteelArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/VoidArrow.h"
+#include "Objects/Platformer/Projectiles/Arrows/WoodenArrow.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -143,9 +151,41 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 	
-	if (dynamic_cast<CrystalBow*>(weapon) != nullptr)
+	if (dynamic_cast<BoneBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<BoneArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return BoneArrow::create(); });
+	}
+	else if (dynamic_cast<CrystalBow*>(weapon) != nullptr)
 	{
 		return dynamic_cast<CrystalArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return CrystalArrow::create(); });
+	}
+	else if (dynamic_cast<DemonicBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<DemonicArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return DemonicArrow::create(); });
+	}
+	else if (dynamic_cast<GoldenBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<GoldenArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return GoldenArrow::create(); });
+	}
+	else if (dynamic_cast<HuntersBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<HuntersArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return HuntersArrow::create(); });
+	}
+	else if (dynamic_cast<IvyBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<IvyArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return IvyArrow::create(); });
+	}
+	else if (dynamic_cast<SteelBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<SteelArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return SteelArrow::create(); });
+	}
+	else if (dynamic_cast<VoidBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<VoidArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return VoidArrow::create(); });
+	}
+	else if (dynamic_cast<WoodenBow*>(weapon) != nullptr)
+	{
+		return dynamic_cast<WoodenArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return WoodenArrow::create(); });
 	}
 
 	return nullptr;

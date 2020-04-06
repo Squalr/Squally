@@ -125,11 +125,6 @@ std::string PlatformerEntity::getEntityKey()
 	return this->entityName;
 }
 
-float PlatformerEntity::getFloatHeight()
-{
-	return 0.0f;
-}
-
 std::string PlatformerEntity::getSwimAnimation()
 {
 	return "Swim";
@@ -201,6 +196,22 @@ Vec2 PlatformerEntity::getEntityCenterPoint()
 	else
 	{
 		offset = offset + Vec2(0.0f, this->getMovementSize().height / 2.0f);
+	}
+
+	return offset;
+}
+
+Vec2 PlatformerEntity::getEntityBottomPoint()
+{
+	Vec2 offset = this->getEntityCenterPoint();
+
+	if (this->isFlippedY())
+	{
+		offset += Vec2(0.0f, this->getEntitySize().height / 2.0f + this->getHoverHeight());
+	}
+	else
+	{
+		offset += Vec2(0.0f, -this->getEntitySize().height / 2.0f - this->getHoverHeight());
 	}
 
 	return offset;
