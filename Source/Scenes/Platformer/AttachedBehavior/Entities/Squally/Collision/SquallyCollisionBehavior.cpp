@@ -52,16 +52,6 @@ SquallyCollisionBehavior::~SquallyCollisionBehavior()
 {
 }
 
-void SquallyCollisionBehavior::update(float dt)
-{
-	super::update(dt);
-
-	if (this->noCombatDuration > 0.0f)
-	{
-		this->noCombatDuration -= dt;
-	}
-}
-
 void SquallyCollisionBehavior::onLoad()
 {
 	super::onLoad();
@@ -102,6 +92,16 @@ void SquallyCollisionBehavior::onLoad()
 	});
 
 	this->scheduleUpdate();
+}
+
+void SquallyCollisionBehavior::update(float dt)
+{
+	super::update(dt);
+
+	if (this->noCombatDuration > 0.0f)
+	{
+		this->noCombatDuration -= dt;
+	}
 }
 
 void SquallyCollisionBehavior::onDisable()

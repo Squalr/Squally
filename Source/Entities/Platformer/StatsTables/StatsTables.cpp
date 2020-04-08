@@ -257,7 +257,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 24);
 	StatsTables::StatsTable[Troll::MapKey] = Stats(34, 8, 20);
 	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 64);
-	StatsTables::StatsTable[Gorgon::MapKey] = Stats(175, 48, 80);
+	StatsTables::StatsTable[Gorgon::MapKey] = Stats(220, 48, 80);
 	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 80);
 
 	StatsTables::StatsTable[Ara::MapKey] = Stats(16, 8, 32);

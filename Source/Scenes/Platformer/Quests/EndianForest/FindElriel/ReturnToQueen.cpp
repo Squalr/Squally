@@ -8,6 +8,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Quests/QuestLine.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/EndianForest/Elriel.h"
@@ -274,6 +275,11 @@ void ReturnToQueen::runCinematicSequence()
 
 void ReturnToQueen::setPostText()
 {
+	if (this->questLine->isComplete())
+	{
+		return;
+	}
+
 	this->defer([=]()
 	{
 		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)

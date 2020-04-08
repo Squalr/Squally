@@ -31,6 +31,7 @@ protected:
 	virtual void onActivate(bool isActiveThroughSkippable) = 0;
 	virtual void onComplete() = 0;
 	virtual void onSkipped() = 0;
+	void waiveQuestPrereq();
 	bool isActive();
 	void complete();
 

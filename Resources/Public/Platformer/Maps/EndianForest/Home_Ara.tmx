@@ -166,11 +166,6 @@
     <property name="reward-pool" value="ef-rare"/>
    </properties>
   </object>
-  <object id="762" name="metal-chest" type="object" x="549.333" y="1066.67" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ef-weapon"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

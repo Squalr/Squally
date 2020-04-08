@@ -56,6 +56,8 @@ void FollowMovementBehavior::onLoad()
 	{
 		entityMovementBehavior->setMoveAcceleration(SquallyMovementBehavior::SquallyMovementAcceleration);
 	});
+	
+	this->scheduleUpdate();
 }
 
 void FollowMovementBehavior::onDisable()

@@ -14,6 +14,7 @@
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolElriel.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
@@ -37,10 +38,15 @@ ReturnToQueenAgain* ReturnToQueenAgain::create(GameObject* owner, QuestLine* que
 
 ReturnToQueenAgain::ReturnToQueenAgain(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToQueenAgain::MapKeyQuest, false)
 {
+	ValueMap props = ValueMap();
+	
 	this->guano = nullptr;
 	this->queenLiana = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
+	this->rewardPool = RewardPoolElriel::create(props);
+
+	this->addChild(this->rewardPool);
 }
 
 ReturnToQueenAgain::~ReturnToQueenAgain()
@@ -77,7 +83,7 @@ void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
 
 void ReturnToQueenAgain::onComplete()
 {
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(GlowingPendant::create(), Strings::Platformer_Notifications_ItemCrafted::create()));
+	PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
 }
 
 void ReturnToQueenAgain::onSkipped()

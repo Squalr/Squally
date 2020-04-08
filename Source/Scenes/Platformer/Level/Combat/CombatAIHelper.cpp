@@ -192,9 +192,40 @@ void CombatAIHelper::selectTargets(TimelineEntry* attackingEntry)
 
 	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
-
 	PlatformerEntity* caster = attackingEntry->getEntity();
 	PlatformerEntity* target = nullptr;
+
+	// Multi target skills do not rely on utility. Just target everything possible.
+	if (this->selectedAttack->isMultiTarget())
+	{
+		switch (this->selectedAttack->getAttackType())
+		{
+			case PlatformerAttack::AttackType::Buff:
+			case PlatformerAttack::AttackType::Healing:
+			case PlatformerAttack::AttackType::Resurrection:
+			{
+				for (auto next : sameTeam)
+				{
+					this->selectedTargets.push_back(next);
+				}
+
+				break;
+			}
+			default:
+			case PlatformerAttack::AttackType::Damage:
+			case PlatformerAttack::AttackType::Debuff:
+			{
+				for (auto next : otherTeam)
+				{
+					this->selectedTargets.push_back(next);
+				}
+
+				break;
+			}
+		}
+
+		return;
+	}
 
 	float bestUtility = std::numeric_limits<float>().lowest();
 

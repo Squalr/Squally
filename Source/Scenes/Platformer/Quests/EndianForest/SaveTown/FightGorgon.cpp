@@ -167,6 +167,8 @@ void FightGorgon::onActivate(bool isActiveThroughSkippable)
 
 void FightGorgon::onComplete()
 {
+	// Might not be set yet due to potential timing race
+	this->forceField->setVisible(false);
 }
 
 void FightGorgon::onSkipped()
@@ -175,15 +177,22 @@ void FightGorgon::onSkipped()
 
 void FightGorgon::runCinematicSequencePart1()
 {
-	ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
-	{
-		this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
-	}, "walk-to");
+	this->runAction(Sequence::create(
+		DelayTime::create(0.25f),
+		CallFunc::create([=]()
+		{
+			ObjectEvents::watchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+			{
+				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
+			}, "walk-to");
 
-	this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
-	{
-		this->runCinematicSequencePart2();
-	});
+			this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+			{
+				this->runCinematicSequencePart2();
+			});
+		}),
+		nullptr
+	));
 }
 
 void FightGorgon::runCinematicSequencePart2()

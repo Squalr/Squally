@@ -266,7 +266,7 @@
   <object id="754" name="portal" type="object" x="3441.17" y="933.99" width="256.687" height="341.919">
    <properties>
     <property name="map" value="EndianForest/Ship_Captain"/>
-    <property name="transition" value="hull"/>
+    <property name="transition" value="captain"/>
    </properties>
   </object>
  </objectgroup>

@@ -11,7 +11,7 @@
 using namespace cocos2d;
 
 const std::string GreaterHealthPotion::SaveKey = "greater-health-potion";
-const float GreaterHealthPotion::HealPercentage = 0.4f;
+const float GreaterHealthPotion::HealPercentage = 1.0f;
 
 GreaterHealthPotion* GreaterHealthPotion::create()
 {

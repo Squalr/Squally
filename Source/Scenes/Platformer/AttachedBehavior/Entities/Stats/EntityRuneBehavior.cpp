@@ -61,6 +61,8 @@ void EntityRuneBehavior::onLoad()
 			}
 		});
 	}
+
+	this->scheduleUpdate();
 }
 
 void EntityRuneBehavior::onDisable()

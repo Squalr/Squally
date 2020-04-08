@@ -3,11 +3,14 @@
 #include "Objects/Platformer/Projectiles/Projectile.h"
 
 class SmartAnimationSequenceNode;
+class WorldSound;
 
 class EnergyBolt : public Projectile
 {
 public:
 	static EnergyBolt* create();
+
+	void runSpawnFX() override;
 
 protected:
 	EnergyBolt();
@@ -17,6 +20,8 @@ protected:
 
 private:
 	typedef Projectile super;
+
+	WorldSound* energySfx;
 
 	SmartAnimationSequenceNode* energyBolt;
 };

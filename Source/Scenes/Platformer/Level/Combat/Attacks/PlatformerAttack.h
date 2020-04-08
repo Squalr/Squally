@@ -35,7 +35,7 @@ public:
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();
 	void execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
-
+	bool isMultiTarget();
 	Priority getPriority();
 	int getSpecialCost();
 	AttackType getAttackType();
@@ -61,7 +61,7 @@ public:
 protected:
 	friend class EntityAttackBehavior;
 	
-	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, float cleanupDuration = PlatformerAttack::DefaultCleanupDuration);
+	PlatformerAttack(AttackType attackType, std::string iconResource, Priority priority, int baseDamageOrHealingMin, int baseDamageOrHealingMax, int specialCost, float attackDuration, float recoverDuration, bool multiTarget = false);
 	virtual ~PlatformerAttack();
 
 	int getBaseDamageMin();
@@ -94,6 +94,7 @@ private:
 	int baseDamageOrHealingMin;
 	int baseDamageOrHealingMax;
 	int specialCost;
+	bool multiTarget;
 
 	std::vector<std::function<void()>> attackCompleteCallbacks;
 };

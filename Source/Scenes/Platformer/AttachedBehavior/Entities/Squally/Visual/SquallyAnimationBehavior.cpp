@@ -43,6 +43,7 @@ SquallyAnimationBehavior::~SquallyAnimationBehavior()
 
 void SquallyAnimationBehavior::onLoad()
 {
+	this->scheduleUpdate();
 }
 
 void SquallyAnimationBehavior::onDisable()

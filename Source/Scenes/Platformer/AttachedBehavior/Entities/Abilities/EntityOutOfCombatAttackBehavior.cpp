@@ -156,6 +156,7 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 	projectile->setProjectileRotation(this->entity->isFlippedX() ? 180.0f : 0.0f);
 	projectile->enable(true);
 	projectile->stopAllActions();
+	projectile->runSpawnFX();
 
 	const Vec2 FixedOffset = Vec2(64.0f, -32.0f);
 

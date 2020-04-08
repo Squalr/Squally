@@ -63,44 +63,72 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 	{
 		int index = 0;
 
-		for (auto attack : attackBehavior->getAttacks())
+		for (auto attack : attackBehavior->getAvailableAttacks())
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));
 
 			this->addEntry(attack->getString(), costString, attack->getIconResource(), UIResources::Combat_AttackCircle, [=]()
 			{
-				this->scrollTo(index);
-
-				entry->stageCast(attack);
-
-				switch (attack->getAttackType())
-				{
-					case PlatformerAttack::AttackType::Healing:
-					case PlatformerAttack::AttackType::Buff:
-					case PlatformerAttack::AttackType::Resurrection:
-					{
-						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
-						break;
-					}
-					case PlatformerAttack::AttackType::Damage:
-					case PlatformerAttack::AttackType::Debuff:
-					{
-						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
-						break;
-					}
-					default:
-					{
-						auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
-						CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
-						break;
-					}
-				}
+				this->selectAttack(entry, attack, index);
 			});
 			
 			index++;
 		}
 	});
+}
+
+void AttackMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, int index)
+{
+	this->scrollTo(index);
+
+	entry->stageCast(attack);
+
+	if (attack->isMultiTarget())
+	{
+		switch (attack->getAttackType())
+		{
+			case PlatformerAttack::AttackType::Buff:
+			case PlatformerAttack::AttackType::Healing:
+			case PlatformerAttack::AttackType::Resurrection:
+			{
+				// TODO: Auto select same team
+				break;
+			}
+			default:
+			case PlatformerAttack::AttackType::Damage:
+			case PlatformerAttack::AttackType::Debuff:
+			{
+				// TODO: Auto select other team
+				break;
+			}
+		}
+
+		return;
+	}
+
+	switch (attack->getAttackType())
+	{
+		case PlatformerAttack::AttackType::Healing:
+		case PlatformerAttack::AttackType::Buff:
+		case PlatformerAttack::AttackType::Resurrection:
+		{
+			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseBuffTarget, entry, meta));
+			break;
+		}
+		case PlatformerAttack::AttackType::Damage:
+		case PlatformerAttack::AttackType::Debuff:
+		{
+			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAttackTarget, entry, meta));
+			break;
+		}
+		default:
+		{
+			auto meta = CombatEvents::MenuStateArgs::SelectionMeta(CombatEvents::MenuStateArgs::SelectionMeta::Choice::Attack, attack->getIconResource());
+			CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::ChooseAnyTarget, entry, meta));
+			break;
+		}
+	}
 }

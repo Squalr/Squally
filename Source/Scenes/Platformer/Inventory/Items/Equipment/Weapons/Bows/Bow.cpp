@@ -14,5 +14,5 @@ Bow::~Bow()
 
 std::string Bow::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_ArrowFly1;
+	return SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_WeaponThrow2;
 }

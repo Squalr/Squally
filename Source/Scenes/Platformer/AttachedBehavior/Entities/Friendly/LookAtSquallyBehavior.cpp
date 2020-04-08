@@ -45,6 +45,8 @@ void LookAtSquallyBehavior::onLoad()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	this->scheduleUpdate();
 }
 
 void LookAtSquallyBehavior::update(float dt)

@@ -84,7 +84,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1838.01" y="1415.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="2015.34" y="1415.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -100,7 +100,7 @@
   <object id="556" name="dark-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
     <property name="collision" value="none"/>
-    <property name="depth" type="float" value="0"/>
+    <property name="depth" type="float" value="-64"/>
    </properties>
    <polygon points="0,0 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711"/>
   </object>

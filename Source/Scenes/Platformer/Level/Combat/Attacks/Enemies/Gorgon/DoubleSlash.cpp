@@ -24,7 +24,7 @@ DoubleSlash* DoubleSlash::create(float attackDuration, float recoverDuration, Pr
 	return instance;
 }
 
-DoubleSlash::DoubleSlash(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration)
+DoubleSlash::DoubleSlash(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, 3, 5, 0, attackDuration, recoverDuration, true)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Swings_SwingBlade1);
 	this->hitSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Impact_HitSoft1);
@@ -66,7 +66,7 @@ void DoubleSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 	for (int index = 0; index < int(targets.size()); index++)
 	{
 		this->runAction(Sequence::create(
-			DelayTime::create(float(index) * 1.0f),
+			DelayTime::create(float(index) * 0.25f),
 			CallFunc::create([=]()
 			{
 				this->doDamageOrHealing(owner, targets[index]);

@@ -125,6 +125,14 @@ void QuestTask::updateState()
 	}
 }
 
+void QuestTask::waiveQuestPrereq()
+{
+	if (this->questLine != nullptr)
+	{
+		this->questLine->waiveQuestPrereq();
+	}
+}
+
 bool QuestTask::isActive()
 {
 	return this->questState == QuestState::Active || this->questState == QuestState::ActiveThroughSkippable;
@@ -145,6 +153,9 @@ void QuestTask::complete()
 	this->onComplete();
 
 	this->questLine->advanceNextQuest(this);
+
+	// Mostly for debugging purposes / a fail safe for patches. If the user completes a quest before its prereq, complete the prereq too.
+	this->waiveQuestPrereq();
 }
 
 void QuestTask::saveQuestSaveState(std::string key, cocos2d::Value value)

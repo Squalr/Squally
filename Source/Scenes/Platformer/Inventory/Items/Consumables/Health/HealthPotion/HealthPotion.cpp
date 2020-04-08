@@ -11,7 +11,7 @@
 using namespace cocos2d;
 
 const std::string HealthPotion::SaveKey = "health-potion";
-const float HealthPotion::HealPercentage = 0.4f;
+const float HealthPotion::HealPercentage = 0.75f;
 
 HealthPotion* HealthPotion::create()
 {

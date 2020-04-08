@@ -5,6 +5,7 @@
 class Guano;
 class QueenLiana;
 class QuestLine;
+class RewardPoolElriel;
 class Scrappy;
 class Squally;
 
@@ -28,6 +29,8 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+
+	RewardPoolElriel* rewardPool;
 
 	Guano* guano;
 	QueenLiana* queenLiana;

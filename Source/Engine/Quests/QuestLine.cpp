@@ -151,3 +151,16 @@ void QuestLine::advanceNextQuest(QuestTask* currentQuest)
 	
 	QuestEvents::TriggerQuestTaskComplete(QuestEvents::QuestTaskCompleteArgs(this->questLine, currentQuest));
 }
+
+void QuestLine::waiveQuestPrereq()
+{
+	if (this->prereq != nullptr)
+	{
+		std::vector<QuestLine::QuestMeta> quests = this->prereq->getQuests();
+
+		if (!quests.empty() && !quests.back().isComplete)
+		{
+			Quests::saveQuestLineProgress(this->prereq->getQuestLine(), QuestLine::QuestLineSaveKeyComplete + quests.back().questTask);
+		}
+	}
+}

@@ -39,6 +39,7 @@ public:
 	const std::vector<QuestMeta> getQuests();
 	std::string getQuestLine();
 	void advanceNextQuest(QuestTask* currentQuest);
+	void waiveQuestPrereq();
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 	bool isComplete();
@@ -57,4 +58,3 @@ private:
 
 	static const std::string QuestLineSaveKeyComplete;
 };
-

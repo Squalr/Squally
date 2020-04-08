@@ -81,11 +81,12 @@ void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		));
 
 		const float BombHeightHalf = 133.0f / 2.0f;
+		const float ZDrawDepthOffset = 1.0f;
 
 		Vec2 offset = next->getEntityBottomPoint() + Vec2(RandomHelper::random_real(-96.0f, 96.0f), BombHeightHalf);
 
 		timeBomb->runSpawnFX();
-		timeBomb->setPosition3D(GameUtils::getWorldCoords3D(next) + Vec3(offset.x, offset.y, 0.0f));
+		timeBomb->setPosition3D(GameUtils::getWorldCoords3D(next) + Vec3(offset.x, offset.y, ZDrawDepthOffset));
 		
 		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{

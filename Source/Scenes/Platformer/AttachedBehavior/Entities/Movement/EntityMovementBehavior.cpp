@@ -92,8 +92,6 @@ EntityMovementBehavior::~EntityMovementBehavior()
 
 void EntityMovementBehavior::onLoad()
 {
-	this->scheduleUpdate();
-
 	this->entity->listenForStateWrite(StateKeys::CinematicDestinationX, [=](Value value)
 	{
 		this->preCinematicPosition = this->entity->getPosition();
@@ -118,6 +116,8 @@ void EntityMovementBehavior::onLoad()
 	{
 		this->jumpBehavior = jumpBehavior;
 	});
+
+	this->scheduleUpdate();
 }
 
 void EntityMovementBehavior::onDisable()

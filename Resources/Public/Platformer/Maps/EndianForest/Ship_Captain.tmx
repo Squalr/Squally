@@ -48,7 +48,7 @@
   <object id="694" name="portal" type="object" x="202.69" y="1068.95" width="237.527" height="326.962">
    <properties>
     <property name="map" value="EndianForest/Ship_Main"/>
-    <property name="transition" value="hull"/>
+    <property name="transition" value="captain"/>
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>

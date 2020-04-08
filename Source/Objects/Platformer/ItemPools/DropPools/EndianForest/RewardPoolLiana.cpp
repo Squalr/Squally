@@ -23,7 +23,7 @@ RewardPoolLiana* RewardPoolLiana::create(ValueMap& properties)
 	return instance;
 }
 
-RewardPoolLiana::RewardPoolLiana(ValueMap& properties) : super(properties, RewardPoolLiana::PoolName, SampleMethod::Guarantee, 2, 2, nullptr,
+RewardPoolLiana::RewardPoolLiana(ValueMap& properties) : super(properties, RewardPoolLiana::PoolName, SampleMethod::Guarantee, 1, 1, nullptr,
 	{
 	})
 {
@@ -31,8 +31,6 @@ RewardPoolLiana::RewardPoolLiana(ValueMap& properties) : super(properties, Rewar
 	this->addItemToPool(ItemChance::create(WoodenAxe::create(), ItemChance::Probability::VeryCommon));
 	this->addItemToPool(ItemChance::create(WoodenClub::create(), ItemChance::Probability::VeryCommon));
 	this->addItemToPool(ItemChance::create(WoodenWand::create(), ItemChance::Probability::VeryCommon));
-
-	this->addItemToPool(ItemChance::create(GlowingPendant::create(), ItemChance::Probability::Guaranteed));
 }
 
 RewardPoolLiana::~RewardPoolLiana()

@@ -57,8 +57,8 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 		Strings::Common_XColonY::create()->setStringReplacementVariables({ this->minutesString, this->secondsString })
 	);
 	this->explosionAnim = SmartAnimationSequenceNode::create();
-	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Fireball2);
-	this->tickSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->spawnSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Physical_Projectiles_Spawn1);
+	this->tickSound = WorldSound::create(SoundResources::Platformer_Objects_Traps_Tick1);
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->clippy = TimeBombClippy::create();
 	this->onExplode = onExplode;

@@ -2,6 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
 
+class PlatformerAttack;
 class TimelineEntry;
 
 class AttackMenu : public RadialScrollMenu
@@ -17,6 +18,8 @@ protected:
 
 private:
 	typedef RadialScrollMenu super;
+
+	void selectAttack(TimelineEntry* entry, PlatformerAttack* attack, int index);
 
 	static const float Radius;
 };

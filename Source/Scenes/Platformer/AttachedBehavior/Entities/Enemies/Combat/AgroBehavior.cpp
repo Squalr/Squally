@@ -73,6 +73,8 @@ void AgroBehavior::onLoad()
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+	
+	this->scheduleUpdate();
 }
 
 void AgroBehavior::onDisable()

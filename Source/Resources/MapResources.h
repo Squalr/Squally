@@ -17,9 +17,13 @@ namespace MapResources
 	extern const std::string Dev_PositionBug;
 	extern const std::string Dev_Quests;
 	extern const std::string Dev_Terrain;
+	extern const std::string EndianForest_Combat_BlueGrass;
 	extern const std::string EndianForest_Combat_Caves;
+	extern const std::string EndianForest_Combat_DarkGrass;
+	extern const std::string EndianForest_Combat_Gorgon;
 	extern const std::string EndianForest_Combat_Intro;
 	extern const std::string EndianForest_Combat_Prison;
+	extern const std::string EndianForest_Combat_Temple;
 	extern const std::string EndianForest_Combat_TempleBoss;
 	extern const std::string EndianForest_Home_Ara;
 	extern const std::string EndianForest_Home_Hut;
@@ -64,6 +68,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_5;
 	extern const std::string EndianForest_Zone_3_6;
 	extern const std::string EndianForest_Zone_3_7;
+	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string SeaSharpCaverns_Caverns;
 	extern const std::string SeaSharpCaverns_Zone_x_y;
