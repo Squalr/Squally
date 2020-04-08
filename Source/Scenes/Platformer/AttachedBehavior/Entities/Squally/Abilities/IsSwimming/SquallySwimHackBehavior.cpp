@@ -72,9 +72,8 @@ void SquallySwimHackBehavior::update(float dt)
 
 void SquallySwimHackBehavior::onLoad()
 {
-	this->scheduleUpdate();
-
 	this->registerHackables();
+	this->scheduleUpdate();
 }
 
 void SquallySwimHackBehavior::onDisable()

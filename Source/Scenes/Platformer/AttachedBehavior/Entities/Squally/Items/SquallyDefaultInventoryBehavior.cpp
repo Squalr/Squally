@@ -20,7 +20,7 @@
 using namespace cocos2d;
 
 const std::string SquallyDefaultInventoryBehavior::MapKey = "squally-equipment-visuals";
-bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = false;
+bool SquallyDefaultInventoryBehavior::GiveDeveloperItems = true;
 
 SquallyDefaultInventoryBehavior* SquallyDefaultInventoryBehavior::create(GameObject* owner)
 {
@@ -66,7 +66,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	{
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
 
-		// Because the save key was patched in later, we need this code here until.... let's say April 2020
+		// Because the save key was patched in later, we need this code here until.... let's say June 2020
 		// Alternatively, we can add logic to detect exceeding the max unique on cards, as those are the only items given
 		if (!entityInventoryBehavior->getInventory()->getItems().empty() || !entityInventoryBehavior->getEquipmentInventory()->getItems().empty())
 		{
@@ -82,6 +82,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(CrystalBow::create(), false);
 			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenSword::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
 
 			for (int index = 0; index < 3; index++)
 			{

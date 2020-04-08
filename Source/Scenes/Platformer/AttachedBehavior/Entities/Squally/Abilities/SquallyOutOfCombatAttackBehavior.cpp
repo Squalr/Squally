@@ -17,9 +17,11 @@
 #include "Objects/Platformer/Projectiles/Arrows/SteelArrow.h"
 #include "Objects/Platformer/Projectiles/Arrows/VoidArrow.h"
 #include "Objects/Platformer/Projectiles/Arrows/WoodenArrow.h"
+#include "Objects/Platformer/Projectiles/WandSpells/EnergyBolt.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Items/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -150,7 +152,8 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 	{
 		return nullptr;
 	}
-	
+
+	// Bows
 	if (dynamic_cast<BoneBow*>(weapon) != nullptr)
 	{
 		return dynamic_cast<BoneArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return BoneArrow::create(); });
@@ -186,6 +189,11 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 	else if (dynamic_cast<WoodenBow*>(weapon) != nullptr)
 	{
 		return dynamic_cast<WoodenArrow*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return WoodenArrow::create(); });
+	}
+	// Wands
+	else if (dynamic_cast<Wand*>(weapon) != nullptr)
+	{
+		return dynamic_cast<Wand*>(this->cachedProjectile) != nullptr ? this->cachedProjectile : this->createProjectile([](){ return EnergyBolt::create(); });
 	}
 
 	return nullptr;

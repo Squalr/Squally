@@ -138,6 +138,8 @@ void SquallyMovementBehavior::onLoad()
 	{
 		GameCamera::getInstance()->setCameraPositionToTrackedTarget();
 	}
+	
+	this->scheduleUpdate();
 }
 
 void SquallyMovementBehavior::onDisable()

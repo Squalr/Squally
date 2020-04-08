@@ -121,6 +121,8 @@ void EntityMovementCollisionBehavior::onLoad()
 	{
 		this->headCollision = headCollision;
 	});
+
+	this->scheduleUpdate();
 }
 
 void EntityMovementCollisionBehavior::onDisable()
