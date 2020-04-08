@@ -29,7 +29,7 @@ private:
 
 	void performRetargetCorrections(TimelineEntry* attackingEntry);
 	void performAIActions(TimelineEntry* attackingEntry);
-	void selectTarget(TimelineEntry* attackingEntry);
+	void selectTargets(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
 	void shuffleEntities();
 
@@ -85,6 +85,6 @@ private:
 
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;
-	PlatformerEntity* selectedTarget;
+	std::vector<PlatformerEntity*> selectedTargets;
 	PlatformerAttack* selectedAttack;
 };

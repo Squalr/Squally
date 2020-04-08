@@ -17,7 +17,7 @@ protected:
 	Punch(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~Punch();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

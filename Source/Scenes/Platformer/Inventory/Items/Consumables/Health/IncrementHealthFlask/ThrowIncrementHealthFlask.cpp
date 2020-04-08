@@ -82,42 +82,45 @@ bool ThrowIncrementHealthFlask::isWorthUsing(PlatformerEntity* caster, const std
 	return false;
 }
 
-void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
-	ThrownObject* potion = ThrownObject::create(owner, target, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, Size(64.0f, 64.0f));
-	
-	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	for (auto next : targets)
 	{
-		potion->disable(true);
-
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
+		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, Size(64.0f, 64.0f));
+		
+		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+			potion->disable(true);
+
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+			if (entity != nullptr)
 			{
-				entityBuffBehavior->applyBuff(IncrementHealth::create(owner, entity, IncrementHealthFlask::HealTicks));
-			});
-		}
+				entity->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+				{
+					entityBuffBehavior->applyBuff(IncrementHealth::create(owner, entity, IncrementHealthFlask::HealTicks));
+				});
+			}
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+			return CollisionObject::CollisionResult::DoNothing;
+		});
 
-	this->replaceOffhandWithProjectile(owner, potion);
+		this->replaceOffhandWithProjectile(owner, potion);
 
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
-	{
-		if (owner == target)
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
-		}
-		else
-		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
-		}
-	});
+			if (owner == next)
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			}
+			else
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			}
+		});
+	}
 }
 
 void ThrowIncrementHealthFlask::onCleanup()

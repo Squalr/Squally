@@ -17,7 +17,7 @@ protected:
 	ThrowHealthPotion(Priority priority, float healPercentage, std::string iconResource);
 	virtual ~ThrowHealthPotion();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:

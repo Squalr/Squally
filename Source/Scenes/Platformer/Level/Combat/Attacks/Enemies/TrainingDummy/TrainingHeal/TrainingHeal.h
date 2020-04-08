@@ -45,4 +45,5 @@ private:
 	int healAmount;
 	SmartAnimationSequenceNode* healEffect;
 	WorldSound* healSound;
+	cocos2d::Sprite* spellAura;
 };

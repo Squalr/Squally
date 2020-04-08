@@ -62,42 +62,45 @@ void ThrowManaPotion::onAttackTelegraphBegin()
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowManaPotion::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 	
-	ThrownObject* potion = ThrownObject::create(owner, target, false, ItemResources::Consumables_Potions_ManaPotion, Size(64.0f, 64.0f));
-	
-	potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+	for (auto next : targets)
 	{
-		potion->disable(true);
+		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_ManaPotion, Size(64.0f, 64.0f));
 		
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
+		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
 		{
-			int restore = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
+			potion->disable(true);
+			
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
-			// TODO: This needs to be mana based
-			CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
-		}
+			if (entity != nullptr)
+			{
+				int restore = int(std::round(float(entity->getStateOrDefaultInt(StateKeys::MaxMana, 0))) * ManaPotion::RestorePercentage);
 
-		return CollisionObject::CollisionResult::DoNothing;
-	});
+				// TODO: This needs to be mana based
+				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, restore));
+			}
 
-	this->replaceOffhandWithProjectile(owner, potion);
+			return CollisionObject::CollisionResult::DoNothing;
+		});
 
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
-	{
-		if (owner == target)
+		this->replaceOffhandWithProjectile(owner, potion);
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
-		}
-		else
-		{
-			potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
-		}
-	});
+			if (owner == next)
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+			}
+			else
+			{
+				potion->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+			}
+		});
+	}
 }
 
 void ThrowManaPotion::onCleanup()

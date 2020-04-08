@@ -9,18 +9,18 @@ namespace cocos2d
 
 class WorldSound;
 
-class CastEnrage : public PlatformerAttack
+class CastStoneSkinHaste : public PlatformerAttack
 {
 public:
-	static CastEnrage* create(float attackDuration, float recoverDuration, Priority priority);
+	static CastStoneSkinHaste* create(float attackDuration, float recoverDuration, Priority priority);
 
 	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	CastEnrage(float attackDuration, float recoverDuration, Priority priority);
-	virtual ~CastEnrage();
+	CastStoneSkinHaste(float attackDuration, float recoverDuration, Priority priority);
+	virtual ~CastStoneSkinHaste();
 
 	void initializePositions() override;
 

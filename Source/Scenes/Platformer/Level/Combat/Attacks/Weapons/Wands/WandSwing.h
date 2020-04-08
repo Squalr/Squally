@@ -17,7 +17,7 @@ protected:
 	WandSwing(int damageMin, int damageMax, float attackDuration, float recoverDuration, Priority priority);
 	virtual ~WandSwing();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

@@ -4,27 +4,27 @@
 
 class WorldSound;
 
-class ThrowIncrementHealthFlask : public PlatformerAttack
+class DoubleSlash : public PlatformerAttack
 {
 public:
-	static ThrowIncrementHealthFlask* create(Priority priority);
+	static DoubleSlash* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	std::string getAttackAnimation() override;
 	void onAttackTelegraphBegin() override;
 
 protected:
-	ThrowIncrementHealthFlask(Priority priority);
-	virtual ~ThrowIncrementHealthFlask();
+	DoubleSlash(float attackDuration, float recoverDuration, Priority priority);
+	virtual ~DoubleSlash();
 
-	bool isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam) override;
 	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
-	void onCleanup() override;
+	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:
 	typedef PlatformerAttack super;
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* throwSound;
+	WorldSound* slashSound;
+	WorldSound* hitSound;
 };

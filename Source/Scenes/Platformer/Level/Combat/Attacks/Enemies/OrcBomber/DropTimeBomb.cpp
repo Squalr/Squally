@@ -56,39 +56,42 @@ std::string DropTimeBomb::getAttackAnimation()
 	return "DropTimeBomb";
 }
 
-void DropTimeBomb::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void DropTimeBomb::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
-	TimeBomb* timeBomb = TimeBomb::create(owner, target, [=]()
+	for (auto next : targets)
 	{
-		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, this->getRandomDamage()));
-	});
-
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		timeBomb,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
-		[&]()
+		TimeBomb* timeBomb = TimeBomb::create(owner, next, [=]()
 		{
-		},
-		[&]()
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, next, this->getRandomDamage()));
+		});
+
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			owner,
+			timeBomb,
+			ObjectEvents::SpawnMethod::Above,
+			ObjectEvents::PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
+
+		const float BombHeightHalf = 133.0f / 2.0f;
+
+		Vec2 offset = next->getEntityBottomPoint() + Vec2(RandomHelper::random_real(-96.0f, 96.0f), BombHeightHalf);
+
+		timeBomb->runSpawnFX();
+		timeBomb->setPosition3D(GameUtils::getWorldCoords3D(next) + Vec3(offset.x, offset.y, 0.0f));
+		
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-		}
-	));
-
-	const float BombHeightHalf = 133.0f / 2.0f;
-
-	Vec2 offset = target->getEntityBottomPoint() + Vec2(RandomHelper::random_real(-96.0f, 96.0f), BombHeightHalf);
-
-	timeBomb->runSpawnFX();
-	timeBomb->setPosition3D(GameUtils::getWorldCoords3D(target) + Vec3(offset.x, offset.y, 0.0f));
-	
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
-	{
-		entityBuffBehavior->applyBuff(Bombed::create(owner, target));
-	});
+			entityBuffBehavior->applyBuff(Bombed::create(owner, next));
+		});
+	}
 }
 
 bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)

@@ -54,65 +54,68 @@ std::string CastShadowBolt::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastShadowBolt::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
-
-	SmartAnimationSequenceNode* launchFx = SmartAnimationSequenceNode::create();
-	ShadowBolt* shadowBolt = ShadowBolt::create(owner, target);
-
-	shadowBolt->runSpawnFX();
-
-	shadowBolt->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
-	{
-		shadowBolt->disable(false);
-		shadowBolt->runImpactFX();
-
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
-		{
-			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	launchFx->playAnimation(FXResources::ShadowRing_ShadowRing_0000, 0.05f, true);
-	launchFx->setFlippedX(owner->isFlippedX());
-
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		shadowBolt,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
-		[&]()
-		{
-		},
-		[&]()
-		{
-		}
-	));
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		launchFx,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
-		[&]()
-		{
-		},
-		[&]()
-		{
-		}
-	));
+	super::performAttack(owner, targets);
 	
-	shadowBolt->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
-	launchFx->setPosition3D(GameUtils::getWorldCoords3D(shadowBolt) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
-
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	for (auto next : targets)
 	{
-		shadowBolt->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
-	});
+		SmartAnimationSequenceNode* launchFx = SmartAnimationSequenceNode::create();
+		ShadowBolt* shadowBolt = ShadowBolt::create(owner, next);
+
+		shadowBolt->runSpawnFX();
+
+		shadowBolt->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+		{
+			shadowBolt->disable(false);
+			shadowBolt->runImpactFX();
+
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+			if (entity != nullptr)
+			{
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			}
+
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		launchFx->playAnimation(FXResources::ShadowRing_ShadowRing_0000, 0.05f, true);
+		launchFx->setFlippedX(owner->isFlippedX());
+
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			owner,
+			shadowBolt,
+			ObjectEvents::SpawnMethod::Above,
+			ObjectEvents::PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			owner,
+			launchFx,
+			ObjectEvents::SpawnMethod::Above,
+			ObjectEvents::PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
+		
+		shadowBolt->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
+		launchFx->setPosition3D(GameUtils::getWorldCoords3D(shadowBolt) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		{
+			shadowBolt->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+		});
+	}
 }
 
 void CastShadowBolt::onCleanup()

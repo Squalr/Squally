@@ -57,9 +57,14 @@ void WandSwing::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void WandSwing::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void WandSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	this->doDamageOrHealing(owner, target);
+	super::performAttack(owner, targets);
+	
+	for (auto next : targets)
+	{
+		this->doDamageOrHealing(owner, next);
+	}
 }
 
 void WandSwing::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

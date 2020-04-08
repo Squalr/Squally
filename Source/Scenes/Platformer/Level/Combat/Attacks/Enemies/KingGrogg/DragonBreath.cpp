@@ -54,65 +54,68 @@ std::string DragonBreath::getAttackAnimation()
 	return "AttackDragon";
 }
 
-void DragonBreath::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void DragonBreath::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
-
-	SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
-	Fireball* fireball = Fireball::create(owner, target);
-
-	fireball->runSpawnFX();
-
-	fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
-	{
-		fireball->disable(false);
-		fireball->runImpactFX();
-
-		PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
-
-		if (entity != nullptr)
-		{
-			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
-		}
-
-		return CollisionObject::CollisionResult::DoNothing;
-	});
-
-	fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
-	fireBreath->setFlippedX(owner->isFlippedX());
-
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		fireball,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
-		[&]()
-		{
-		},
-		[&]()
-		{
-		}
-	));
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
-		owner,
-		fireBreath,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
-		[&]()
-		{
-		},
-		[&]()
-		{
-		}
-	));
+	super::performAttack(owner, targets);
 	
-	fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
-	fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
-
-	target->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+	for (auto next : targets)
 	{
-		fireball->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
-	});
+		SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
+		Fireball* fireball = Fireball::create(owner, next);
+
+		fireball->runSpawnFX();
+
+		fireball->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionObject::CollisionData collisionData)
+		{
+			fireball->disable(false);
+			fireball->runImpactFX();
+
+			PlatformerEntity* entity = GameUtils::getFirstParentOfType<PlatformerEntity>(collisionData.other, true);
+
+			if (entity != nullptr)
+			{
+				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, this->getRandomDamage()));
+			}
+
+			return CollisionObject::CollisionResult::DoNothing;
+		});
+
+		fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
+		fireBreath->setFlippedX(owner->isFlippedX());
+
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			owner,
+			fireball,
+			ObjectEvents::SpawnMethod::Above,
+			ObjectEvents::PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
+		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+			owner,
+			fireBreath,
+			ObjectEvents::SpawnMethod::Above,
+			ObjectEvents::PositionMode::Discard,
+			[&]()
+			{
+			},
+			[&]()
+			{
+			}
+		));
+		
+		fireball->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3((owner->isFlippedX() ? -96.0f : 96.0f), 96.0f, 0.0f));
+		fireBreath->setPosition3D(GameUtils::getWorldCoords3D(fireball) + Vec3((owner->isFlippedX() ? -180.0f : 180.0f), 0.0f, 0.0f));
+
+		next->getAttachedBehavior<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
+		{
+			fireball->launchTowardsTarget(behavior->getTarget(), Vec2::ZERO, 0.0f, Vec3(0.3f, 0.3f, 0.3f), Vec3(0.0f, -64.0f, 0.0f));
+		});
+	}
 }
 
 void DragonBreath::onCleanup()

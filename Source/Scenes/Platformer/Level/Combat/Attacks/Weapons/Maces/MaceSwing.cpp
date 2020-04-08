@@ -57,9 +57,14 @@ void MaceSwing::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void MaceSwing::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void MaceSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	this->doDamageOrHealing(owner, target);
+	super::performAttack(owner, targets);
+	
+	for (auto next : targets)
+	{
+		this->doDamageOrHealing(owner, next);
+	}
 }
 
 void MaceSwing::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

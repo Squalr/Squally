@@ -54,11 +54,15 @@ TrainingHeal::TrainingHeal(PlatformerEntity* caster, PlatformerEntity* target, i
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = MathUtils::clamp(healAmount, 1, 255);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Ding1);
+	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
+
+	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->healSound);
+	this->addChild(this->spellAura);
 }
 
 TrainingHeal::~TrainingHeal()
@@ -68,6 +72,13 @@ TrainingHeal::~TrainingHeal()
 void TrainingHeal::onEnter()
 {
 	super::onEnter();
+
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
 
 	this->runTrainingHeal();
 

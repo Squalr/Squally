@@ -55,9 +55,14 @@ void BasicSlash::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void BasicSlash::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void BasicSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	this->doDamageOrHealing(owner, target);
+	super::performAttack(owner, targets);
+
+	for (auto next : targets)
+	{
+		this->doDamageOrHealing(owner, next);
+	}
 }
 
 void BasicSlash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

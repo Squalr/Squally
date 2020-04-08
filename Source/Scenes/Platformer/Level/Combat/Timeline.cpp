@@ -111,7 +111,7 @@ void Timeline::initializeListeners()
 
 		if (this->timelineEntryAwaitingUserAction != nullptr)
 		{
-			this->timelineEntryAwaitingUserAction->stageTarget(args->target);
+			this->timelineEntryAwaitingUserAction->stageTargets({ args->target });
 		}
 
 		CombatEvents::TriggerResumeTimeline();
@@ -181,7 +181,7 @@ void Timeline::initializeListeners()
 					{
 						this->timelineEntryAwaitingUserAction->defend();
 						this->timelineEntryAwaitingUserAction->stageCast(nullptr);
-						this->timelineEntryAwaitingUserAction->stageTarget(nullptr);
+						this->timelineEntryAwaitingUserAction->stageTargets({ });
 					}
 					
 					CombatEvents::TriggerMenuStateChange(CombatEvents::MenuStateArgs(CombatEvents::MenuStateArgs::CurrentMenu::Closed, nullptr));

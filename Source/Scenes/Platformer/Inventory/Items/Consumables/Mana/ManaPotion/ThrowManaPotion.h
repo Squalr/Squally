@@ -17,7 +17,7 @@ protected:
 	ThrowManaPotion(Priority priority);
 	virtual ~ThrowManaPotion();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:

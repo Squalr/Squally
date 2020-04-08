@@ -34,14 +34,14 @@ public:
 	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
 	std::string getIconResource();
-	void execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
+	void execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 
 	Priority getPriority();
 	int getSpecialCost();
 	AttackType getAttackType();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
-	virtual void performAttack(PlatformerEntity* owner, PlatformerEntity* target) = 0;
+	virtual void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) = 0;
 
 	/*
 		Determines if an ability is even worth using -- if it has any utility at all.

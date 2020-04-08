@@ -56,18 +56,21 @@ std::string CastFortitude::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastFortitude::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastFortitude::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : targets)
 	{
-		entityBuffBehavior->applyBuff(Fortitude::create(owner, target));
-	});
+		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(Fortitude::create(owner, next));
+		});
+	}
 }
 
 void CastFortitude::onCleanup()

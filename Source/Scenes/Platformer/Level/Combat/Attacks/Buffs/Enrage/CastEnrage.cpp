@@ -55,18 +55,21 @@ std::string CastEnrage::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastEnrage::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastEnrage::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : targets)
 	{
-		entityBuffBehavior->applyBuff(Enrage::create(owner, target));
-	});
+		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(Enrage::create(owner, next));
+		});
+	}
 }
 
 void CastEnrage::onCleanup()

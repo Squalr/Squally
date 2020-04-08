@@ -19,9 +19,9 @@ public:
 	PlatformerEntity* getEntity();
 	void applyDamage(PlatformerEntity* caster, int damage);
 	void applyHealing(PlatformerEntity* caster, int healing);
-	void stageTarget(PlatformerEntity* target);
+	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
-	PlatformerEntity* getStagedTarget();
+	std::vector<PlatformerEntity*> getStagedTargets();
 	PlatformerAttack* getStagedCast();
 	void defend();
 	float getProgress();
@@ -61,7 +61,8 @@ private:
 	PlatformerAttack* currentCast;
 	PlatformerEntity* entity;
 	EntityCombatBehaviorBase* combatBehavior;
-	TimelineEntry* target;
+	std::vector<PlatformerEntity*> targets;
+	std::vector<TimelineEntry*> targetsAsEntries;
 	cocos2d::Sprite* line;
 	cocos2d::Sprite* circle;
 	cocos2d::Sprite* emblem;

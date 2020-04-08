@@ -126,19 +126,24 @@ void Flurry::onAttackTelegraphBegin()
 	}
 }
 
-void Flurry::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void Flurry::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
+	super::performAttack(owner, targets);
+
 	for (int index = 0; index < this->hits; index++)
 	{
-		this->runAction(Sequence::create(
-			DelayTime::create(float(index) * this->attackDuration),
-			CallFunc::create([=]()
-			{
-				this->hitSounds[index]->play(false);
-				this->doDamageOrHealing(owner, target);
-			}),
-			nullptr
-		));
+		for (auto next : targets)
+		{
+			this->runAction(Sequence::create(
+				DelayTime::create(float(index) * this->attackDuration),
+				CallFunc::create([=]()
+				{
+					this->hitSounds[index]->play(false);
+					this->doDamageOrHealing(owner, next);
+				}),
+				nullptr
+			));
+		}
 	}
 }
 

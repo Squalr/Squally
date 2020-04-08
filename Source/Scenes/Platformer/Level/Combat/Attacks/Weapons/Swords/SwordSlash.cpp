@@ -56,9 +56,14 @@ void SwordSlash::onAttackTelegraphBegin()
 	this->SwordSlashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void SwordSlash::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void SwordSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	this->doDamageOrHealing(owner, target);
+	super::performAttack(owner, targets);
+	
+	for (auto next : targets)
+	{
+		this->doDamageOrHealing(owner, next);
+	}
 }
 
 void SwordSlash::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

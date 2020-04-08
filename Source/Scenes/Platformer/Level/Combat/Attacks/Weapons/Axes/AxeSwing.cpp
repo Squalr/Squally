@@ -56,9 +56,14 @@ void AxeSwing::onAttackTelegraphBegin()
 	this->slashSound->play(false, this->attackDuration / 2.0f);
 }
 
-void AxeSwing::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void AxeSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	this->doDamageOrHealing(owner, target);
+	super::performAttack(owner, targets);
+	
+	for (auto next : targets)
+	{
+		this->doDamageOrHealing(owner, next);
+	}
 }
 
 void AxeSwing::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target)

@@ -18,7 +18,7 @@ protected:
 	virtual ~Flurry();
 
 	void registerHackables() override;
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target) override;
 
 private:

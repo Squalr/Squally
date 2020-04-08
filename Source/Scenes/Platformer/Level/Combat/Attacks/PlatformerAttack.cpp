@@ -80,7 +80,7 @@ PlatformerAttack::AttackType PlatformerAttack::getAttackType()
 	return this->attackType;
 }
 
-void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete)
+void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete)
 {
 	this->onAttackTelegraphBegin();
 
@@ -96,7 +96,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, PlatformerEntity* target
 			onCastComplete();
 			
 			// Damage/healing is applied at this stage. For projectiles, they are spawned here.
-			this->performAttack(owner, target);
+			this->performAttack(owner, targets);
 		}),
 		// The recover duration gives the camera time to focus the entity that took damage, and for projectiles to run their course.
 		DelayTime::create(this->getRecoverDuration()),
@@ -118,7 +118,7 @@ void PlatformerAttack::doDamageOrHealing(PlatformerEntity* owner, PlatformerEnti
 {
 }
 
-void PlatformerAttack::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void PlatformerAttack::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 }
 

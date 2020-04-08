@@ -14,7 +14,7 @@ protected:
 	CastShadowBolt(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~CastShadowBolt();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:

@@ -28,12 +28,8 @@ CastTrainingHeal* CastTrainingHeal::create(float attackDuration, float recoverDu
 
 CastTrainingHeal::CastTrainingHeal(float attackDuration, float recoverDuration, Priority priority) : super(AttackType::Healing, UIResources::Menus_Icons_Health, priority, 0, 0, 1, attackDuration, recoverDuration)
 {
-	this->spellAura = Sprite::create(FXResources::Auras_RuneAura3);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Combat_Attacks_Spells_Heal1);
-
-	this->spellAura->setOpacity(0);
-
-	this->addChild(this->spellAura);
+	
 	this->addChild(this->healSound);
 }
 
@@ -63,27 +59,23 @@ std::string CastTrainingHeal::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastTrainingHeal::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastTrainingHeal::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
 	this->healSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
-	
+
 	const int Ticks = 7;
 
-	owner->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : targets)
 	{
-		entityBuffBehavior->applyBuff(TrainingHeal::create(owner, target, Ticks));
-	});
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
+		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(TrainingHeal::create(owner, next, Ticks));
+		});
+	}
 }
 
 void CastTrainingHeal::onCleanup()

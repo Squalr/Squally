@@ -28,7 +28,7 @@ CombatAIHelper* CombatAIHelper::create()
 
 CombatAIHelper::CombatAIHelper()
 {
-	this->selectedTarget = nullptr;
+	this->selectedTargets = std::vector<PlatformerEntity*>();
 	this->selectedAttack = nullptr;
 }
 
@@ -86,80 +86,90 @@ void CombatAIHelper::performRetargetCorrections(TimelineEntry* attackingEntry)
 		return;
 	}
 
-	this->selectedTarget = attackingEntry->getStagedTarget();
+	this->selectedTargets = attackingEntry->getStagedTargets();
 	this->selectedAttack = attackingEntry->getStagedCast();
 
-	if (this->selectedTarget == nullptr || this->selectedAttack == nullptr)
+	if (this->selectedTargets.empty() || this->selectedTargets.size() > 1 || this->selectedAttack == nullptr)
 	{
+		// Abort if multi-target or if no attack is selected (error state)
 		return;
 	}
+
+	PlatformerEntity* singleTarget = this->selectedTargets[0];
 
 	// Clear target entity if invalid
-	switch(this->selectedAttack->getAttackType())
+	if (singleTarget != nullptr)
 	{
-		case PlatformerAttack::AttackType::Resurrection:
+		switch(this->selectedAttack->getAttackType())
 		{
-			if (this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			case PlatformerAttack::AttackType::Resurrection:
 			{
-				this->selectedTarget = nullptr;
+				if (singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+				{
+					singleTarget = nullptr;
+				}
+				break;
 			}
-			break;
-		}
-		case PlatformerAttack::AttackType::Damage:
-		case PlatformerAttack::AttackType::Debuff:
-		case PlatformerAttack::AttackType::Buff:
-		case PlatformerAttack::AttackType::Healing:
-		{
-			if (!this->selectedTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			case PlatformerAttack::AttackType::Damage:
+			case PlatformerAttack::AttackType::Debuff:
+			case PlatformerAttack::AttackType::Buff:
+			case PlatformerAttack::AttackType::Healing:
 			{
-				this->selectedTarget = nullptr;
+				if (!singleTarget->getStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+				{
+					singleTarget = nullptr;
+				}
+				break;
 			}
-			break;
-		}
-		default:
-		{
-			break;
+			default:
+			{
+				break;
+			}
 		}
 	}
 
-	if (this->selectedTarget != nullptr)
+	if (singleTarget != nullptr)
 	{
+		// No retarget needed, all is good.
 		return;
 	}
+
+	// Clear existing targets, as they are invalid if we have gotten this far
+	this->selectedTargets.clear();
 	
 	// Use AI to auto-choose attack and entity. Start by just trying to re-target.
-	this->selectTarget(attackingEntry);
+	this->selectTargets(attackingEntry);
 	
-	attackingEntry->stageTarget(this->selectedTarget);
-
-	if (this->selectedTarget != nullptr)
+	if (!this->selectedTargets.empty())
 	{
+		// Retarget successful
+		attackingEntry->stageTargets(this->selectedTargets);
 		return;
 	}
 	
 	// Retarget failed. We'll just have to pick an attack/target at random then.
 	this->selectAttack(attackingEntry);
-	this->selectTarget(attackingEntry);
+	this->selectTargets(attackingEntry);
 
 	attackingEntry->stageCast(this->selectedAttack);
-	attackingEntry->stageTarget(this->selectedTarget);
+	attackingEntry->stageTargets(this->selectedTargets);
 }
 
 void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
 {
-	this->selectedTarget = nullptr;
+	this->selectedTargets.clear();
 	this->selectedAttack = nullptr;
 
 	this->shuffleEntities();
 
 	attackingEntry->stageCast(nullptr);
-	attackingEntry->stageTarget(nullptr);
+	attackingEntry->stageTargets({ });
 
 	this->selectAttack(attackingEntry);
-	this->selectTarget(attackingEntry);
+	this->selectTargets(attackingEntry);
 
 	// Error!
-	if (attackingEntry == nullptr || this->selectedTarget == nullptr || this->selectedAttack == nullptr)
+	if (attackingEntry == nullptr || this->selectedTargets.empty() || this->selectedAttack == nullptr)
 	{
 		CombatEvents::TriggerResumeTimeline();
 
@@ -167,13 +177,13 @@ void CombatAIHelper::performAIActions(TimelineEntry* attackingEntry)
 	}
 
 	attackingEntry->stageCast(this->selectedAttack);
-	attackingEntry->stageTarget(this->selectedTarget);
+	attackingEntry->stageTargets(this->selectedTargets);
 
 	// Choices made, resume timeline
 	CombatEvents::TriggerResumeTimeline();
 }
 
-void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
+void CombatAIHelper::selectTargets(TimelineEntry* attackingEntry)
 {
 	if (attackingEntry == nullptr || this->selectedAttack == nullptr)
 	{
@@ -184,7 +194,8 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
 
 	PlatformerEntity* caster = attackingEntry->getEntity();
-	
+	PlatformerEntity* target = nullptr;
+
 	float bestUtility = std::numeric_limits<float>().lowest();
 
 	switch (this->selectedAttack->getAttackType())
@@ -199,7 +210,7 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 
 				if (utility > bestUtility)
 				{
-					this->selectedTarget = next;
+					target = next;
 					bestUtility = utility;
 				}
 			}
@@ -216,13 +227,18 @@ void CombatAIHelper::selectTarget(TimelineEntry* attackingEntry)
 
 				if (utility > bestUtility)
 				{
-					this->selectedTarget = next;
+					target = next;
 					bestUtility = utility;
 				}
 			}
 
 			break;
 		}
+	}
+
+	if (target != nullptr)
+	{
+		this->selectedTargets.push_back(target);
 	}
 }
 

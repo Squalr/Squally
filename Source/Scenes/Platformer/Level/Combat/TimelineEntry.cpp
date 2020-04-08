@@ -71,7 +71,8 @@ void TimelineEntry::onEnter()
 	super::onEnter();
 
 	this->currentCast = nullptr;
-	this->target = nullptr;
+	this->targets = std::vector<PlatformerEntity*>();
+	this->targetsAsEntries = std::vector<TimelineEntry*>();
 	this->isCasting = false;
 	this->orphanedAttackCache->removeAllChildren();
 	this->skull->setVisible(false);
@@ -249,15 +250,21 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing)
 	CombatEvents::TriggerHealingDelt(CombatEvents::DamageOrHealingArgs(caster, this->getEntity(), healing));
 }
 
-void TimelineEntry::stageTarget(PlatformerEntity* target)
+void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
 {
-	this->target = nullptr;
+	this->targets.clear();
 
-	if (target != nullptr)
+	for (auto next : targets)
 	{
-		CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(target, [=](TimelineEntry* timelineEntry)
+		if (next == nullptr)
 		{
-			this->target = timelineEntry;
+			continue;
+		}
+
+		CombatEvents::TriggerGetAssociatedTimelineEntry(CombatEvents::AssociatedEntryArgs(next, [=](TimelineEntry* timelineEntry)
+		{
+			this->targets.push_back(next);
+			this->targetsAsEntries.push_back(timelineEntry);
 		}));
 	}
 }
@@ -273,9 +280,9 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 	this->currentCast = attack;
 }
 
-PlatformerEntity* TimelineEntry::getStagedTarget()
+std::vector<PlatformerEntity*> TimelineEntry::getStagedTargets()
 {
-	return this->target == nullptr ? nullptr : this->target->getEntity();
+	return this->targets;
 }
 
 PlatformerAttack* TimelineEntry::getStagedCast()
@@ -351,7 +358,7 @@ void TimelineEntry::tryPerformActions()
 	{
 		CombatEvents::TriggerInterruptTimeline();
 
-		if (this->entity != nullptr && this->currentCast != nullptr && this->target != nullptr)
+		if (this->entity != nullptr && this->currentCast != nullptr && !this->targets.empty())
 		{
 			CombatEvents::TriggerPauseTimeline();
 
@@ -379,17 +386,23 @@ void TimelineEntry::performCast()
 		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
+			if (this->targets.empty())
+			{
+				this->resetTimeline();
+				return;
+			}
+
 			this->isCasting = false;
 			this->entity->getAnimations()->clearAnimationPriority();
 			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 
 			this->currentCast->execute(
 				this->entity,
-				this->target->entity,
+				this->targets,
 				[=]()
 				{
 					// Attack complete -- camera focus target
-					this->target->cameraFocusEntry();
+					this->targetsAsEntries[0]->cameraFocusEntry();
 				},
 				[=]()
 				{

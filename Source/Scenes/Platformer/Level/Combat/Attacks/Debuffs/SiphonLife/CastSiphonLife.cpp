@@ -56,18 +56,21 @@ std::string CastSiphonLife::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastSiphonLife::performAttack(PlatformerEntity* owner, PlatformerEntity* target)
+void CastSiphonLife::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
-	super::performAttack(owner, target);
+	super::performAttack(owner, targets);
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	target->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : targets)
 	{
-		entityBuffBehavior->applyBuff(SiphonLife::create(owner, target));
-	});
+		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(SiphonLife::create(owner, next));
+		});
+	}
 }
 
 void CastSiphonLife::onCleanup()

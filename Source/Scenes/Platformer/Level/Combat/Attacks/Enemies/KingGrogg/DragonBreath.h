@@ -14,7 +14,7 @@ protected:
 	DragonBreath(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~DragonBreath();
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:

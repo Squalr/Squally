@@ -2,11 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-namespace cocos2d
-{
-	class Sprite;
-};
-
 class WorldSound;
 
 class CastTrainingHeal : public PlatformerAttack
@@ -23,7 +18,7 @@ protected:
 
 	void initializePositions() override;
 
-	void performAttack(PlatformerEntity* owner, PlatformerEntity* target) override;
+	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
 	void onCleanup() override;
 
 private:
@@ -31,6 +26,5 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 	
-	cocos2d::Sprite* spellAura;
 	WorldSound* healSound;
 };
