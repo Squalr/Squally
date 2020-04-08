@@ -33,12 +33,16 @@ DispelIllusionBehavior* DispelIllusionBehavior::create(GameObject* owner)
 
 DispelIllusionBehavior::DispelIllusionBehavior(GameObject* owner) : super(owner)
 {
-	this->object = owner;
-	this->group = GameUtils::getKeyOrDefault(this->properties, DispelIllusionBehavior::PropertyGroup, Value("")).asString();
+	this->object = dynamic_cast<HackableObject*>(owner);
+	this->group = "";
 
 	if (this->object == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->group = GameUtils::getKeyOrDefault(this->object->properties, DispelIllusionBehavior::PropertyGroup, Value("")).asString();
 	}
 }
 
@@ -48,6 +52,7 @@ DispelIllusionBehavior::~DispelIllusionBehavior()
 
 void DispelIllusionBehavior::onLoad()
 {
+	this->registerHackables();
 }
 
 void DispelIllusionBehavior::onDisable()
@@ -57,9 +62,7 @@ void DispelIllusionBehavior::onDisable()
 
 void DispelIllusionBehavior::registerHackables()
 {
-	super::registerHackables();
-
-	this->registerHackAbility(HackActivatedAbility::create(
+	this->object->registerHackAbility(HackActivatedAbility::create(
 		[=]()
 		{
 			this->onDispelActivated();
@@ -77,7 +80,7 @@ void DispelIllusionBehavior::registerHackables()
 
 void DispelIllusionBehavior::onDispelActivated()
 {
-	this->toggleHackable(false);
+	this->object->toggleHackable(false);
 
 	PlatformerEvents::TriggerDispelIllusion(PlatformerEvents::DispelIllusionArgs(this->group));
 

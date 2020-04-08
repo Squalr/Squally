@@ -1,9 +1,11 @@
 
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/SmartNode.h"
 
-class AttachedBehavior : public HackableObject
+class GameObject;
+
+class AttachedBehavior : public SmartNode
 {
 public:
 	bool isInvalidated();
@@ -22,7 +24,7 @@ protected:
 	void toggleQueryable(bool queryable);
 
 private:
-	typedef HackableObject super;
+	typedef SmartNode super;
 	
 	void updateState();
 

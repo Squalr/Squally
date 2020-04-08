@@ -23,7 +23,12 @@ TempleGreenTerrain* TempleGreenTerrain::create(ValueMap& properties)
 TempleGreenTerrain::TempleGreenTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return TempleGreenTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return TempleGreenTexture::create(transformedProps);
+		},
 		0.5f,
 		TempleGreenTerrain::MapKey,
 		TextureResources::TempleGreenTexture,

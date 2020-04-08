@@ -23,7 +23,12 @@ CavernsTerrain* CavernsTerrain::create(ValueMap& properties)
 CavernsTerrain::CavernsTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return CavernsTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return CavernsTexture::create(transformedProps);
+		},
 		0.5f,
 		CavernsTerrain::MapKey,
 		TextureResources::CavernsTexture,

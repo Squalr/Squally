@@ -2,6 +2,11 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class Projectile;
 class PlatformerEntity;
 class WorldSound;

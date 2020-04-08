@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-CombatProjectile::CombatProjectile(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::vector<cocos2d::Vec2>& hitBox, int collisionType, bool allowHacking)
+CombatProjectile::CombatProjectile(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::vector<cocos2d::Vec2> hitBox, int collisionType, bool allowHacking)
 	: super(caster, hitBox, collisionType, allowHacking)
 {
 	this->target = target;

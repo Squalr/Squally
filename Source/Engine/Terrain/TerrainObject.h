@@ -19,7 +19,7 @@ class TerrainObject : public HackableObject
 public:
 	struct TerrainData
 	{
-		std::function<TextureObject*(cocos2d::ValueMap&)> textureFactory;
+		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory;
 		float friction;
 		std::string textureMapKeyValue;
 		std::string textureResource;
@@ -56,7 +56,7 @@ public:
 		cocos2d::Color4B infillColor;
 
 		TerrainData(
-			std::function<TextureObject*(cocos2d::ValueMap&)> textureFactory,
+			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,
 			float friction,
 			std::string textureMapKeyValue,
 			std::string textureResource,
@@ -151,7 +151,7 @@ protected:
 	void update(float dt) override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
-	cocos2d::ValueMap transformPropertiesForTexture(cocos2d::ValueMap& properties);
+	cocos2d::ValueMap transformPropertiesForTexture(cocos2d::ValueMap properties);
 
 private:
 	typedef HackableObject super;

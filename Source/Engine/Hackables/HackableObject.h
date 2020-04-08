@@ -9,8 +9,6 @@ namespace cocos2d
 {
 	class Renderer;
 	class Sprite;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
 }
 
 class ClickableNode;

@@ -23,7 +23,12 @@ GrassTerrain* GrassTerrain::create(ValueMap& properties)
 GrassTerrain::GrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return GrassTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return GrassTexture::create(transformedProps);
+		},
 		0.5f,
 		GrassTerrain::MapKey,
 		TextureResources::GrassTexture,

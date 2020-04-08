@@ -22,7 +22,7 @@ protected:
 	virtual ~SquallyIsAliveHackBehavior();
 
 	void update(float dt) override;
-	void registerHackables() override;
+	void registerHackables();
 	void onLoad() override;
 	void onDisable() override;
 

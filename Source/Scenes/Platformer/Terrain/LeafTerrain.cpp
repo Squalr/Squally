@@ -23,7 +23,12 @@ LeafTerrain* LeafTerrain::create(ValueMap& properties)
 LeafTerrain::LeafTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return LeafTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return LeafTexture::create(transformedProps);
+		},
 		0.5f,
 		LeafTerrain::MapKey,
 		TextureResources::LeafTexture,

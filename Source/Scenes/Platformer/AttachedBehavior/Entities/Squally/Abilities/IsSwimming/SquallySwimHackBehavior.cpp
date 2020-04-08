@@ -42,11 +42,13 @@ SquallySwimHackBehavior::SquallySwimHackBehavior(GameObject* owner) : super(owne
 	this->clippy = IsSwimmingClippy::create();
 	this->squally = dynamic_cast<Squally*>(owner);
 
-	this->registerClippy(this->clippy);
-
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->squally->registerClippy(this->clippy);
 	}
 }
 
@@ -71,6 +73,8 @@ void SquallySwimHackBehavior::update(float dt)
 void SquallySwimHackBehavior::onLoad()
 {
 	this->scheduleUpdate();
+
+	this->registerHackables();
 }
 
 void SquallySwimHackBehavior::onDisable()
@@ -80,8 +84,6 @@ void SquallySwimHackBehavior::onDisable()
 
 void SquallySwimHackBehavior::registerHackables()
 {
-	super::registerHackables();
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -103,7 +105,7 @@ void SquallySwimHackBehavior::registerHackables()
 	};
 
 	auto canSwimHackFunc = &SquallySwimHackBehavior::canSwimHack;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)canSwimHackFunc, codeInfoMap);
+	this->hackables = HackableCode::create((void*&)canSwimHackFunc, codeInfoMap);
 
 	for (auto next : hackables)
 	{
@@ -129,3 +131,14 @@ NO_OPTIMIZE bool SquallySwimHackBehavior::canSwimHack()
 	return canSwim;
 }
 END_NO_OPTIMIZE
+
+void SquallySwimHackBehavior::enableAllClippy()
+{
+	for (auto next : this->hackables)
+	{
+		if (next->getClippy() != nullptr)
+		{
+			next->getClippy()->setIsEnabled(true);
+		}
+	}
+}

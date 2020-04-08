@@ -23,7 +23,12 @@ CastleTerrain* CastleTerrain::create(ValueMap& properties)
 CastleTerrain::CastleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return CastleTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return CastleTexture::create(transformedProps);
+		},
 		0.5f,
 		CastleTerrain::MapKey,
 		TextureResources::CastleTexture,

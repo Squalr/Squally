@@ -23,7 +23,12 @@ ShipAltTerrain* ShipAltTerrain::create(ValueMap& properties)
 ShipAltTerrain::ShipAltTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return ShipAltTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return ShipAltTexture::create(transformedProps);
+		},
 		0.5f,
 		ShipAltTerrain::MapKey,
 		TextureResources::ShipAltTexture,

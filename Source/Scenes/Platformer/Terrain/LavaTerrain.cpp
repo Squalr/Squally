@@ -23,7 +23,12 @@ LavaTerrain* LavaTerrain::create(ValueMap& properties)
 LavaTerrain::LavaTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return LavaTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return LavaTexture::create(transformedProps);
+		},
 		0.5f,
 		LavaTerrain::MapKey,
 		TextureResources::LavaTexture,

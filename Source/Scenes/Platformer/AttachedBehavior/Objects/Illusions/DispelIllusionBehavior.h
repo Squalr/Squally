@@ -2,6 +2,7 @@
 
 #include "Engine/AttachedBehavior/AttachedBehavior.h"
 
+class HackableObject;
 class Portal;
 
 class DispelIllusionBehavior : public AttachedBehavior
@@ -17,7 +18,7 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
-	void registerHackables() override;
+	void registerHackables();
 
 private:
 	typedef AttachedBehavior super;
@@ -25,7 +26,7 @@ private:
 	void onDispelActivated();
 
 	Portal* portal;
-	GameObject* object;
+	HackableObject* object;
 	std::string group;
 
 	static const std::string PropertyGroup;

@@ -27,7 +27,7 @@ public:
 	static const std::string ProjectileTag;
 	
 protected:
-	Projectile(PlatformerEntity* caster, std::vector<cocos2d::Vec2>& hitBox, int collisionType, bool allowHacking);
+	Projectile(PlatformerEntity* caster, std::vector<cocos2d::Vec2> hitBox, int collisionType, bool allowHacking);
 	virtual	~Projectile();
 
 	void onEnter() override;

@@ -23,7 +23,12 @@ WoodTerrain* WoodTerrain::create(ValueMap& properties)
 WoodTerrain::WoodTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return WoodTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return WoodTexture::create(transformedProps);
+		},
 		0.5f,
 		WoodTerrain::MapKey,
 		TextureResources::WoodTexture,

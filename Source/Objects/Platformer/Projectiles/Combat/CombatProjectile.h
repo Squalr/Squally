@@ -13,7 +13,7 @@ class CombatProjectile : public Projectile
 {
 public:
 protected:
-	CombatProjectile(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::vector<cocos2d::Vec2>& hitBox, int collisionType, bool allowHacking);
+	CombatProjectile(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::vector<cocos2d::Vec2> hitBox, int collisionType, bool allowHacking);
 	virtual ~CombatProjectile();
 
 	void onEnter() override;

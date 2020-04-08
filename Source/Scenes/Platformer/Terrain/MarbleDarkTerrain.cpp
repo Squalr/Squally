@@ -23,7 +23,12 @@ MarbleDarkTerrain* MarbleDarkTerrain::create(ValueMap& properties)
 MarbleDarkTerrain::MarbleDarkTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return MarbleDarkTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return MarbleDarkTexture::create(transformedProps);
+		},
 		0.5f,
 		MarbleDarkTerrain::MapKey,
 		TextureResources::MarbleDarkTexture,

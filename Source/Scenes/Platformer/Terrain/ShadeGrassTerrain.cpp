@@ -23,7 +23,12 @@ ShadeGrassTerrain* ShadeGrassTerrain::create(ValueMap& properties)
 ShadeGrassTerrain::ShadeGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return ShadeGrassTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return ShadeGrassTexture::create(transformedProps);
+		},
 		0.5f,
 		ShadeGrassTerrain::MapKey,
 		TextureResources::ShadeGrassTexture,

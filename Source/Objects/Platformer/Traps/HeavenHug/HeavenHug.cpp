@@ -160,7 +160,7 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 }
 END_NO_OPTIMIZE
 
-std::vector<Vec2>& HeavenHug::createSpikeCollision()
+std::vector<Vec2> HeavenHug::createSpikeCollision()
 {
 	return std::vector<Vec2>();
 }

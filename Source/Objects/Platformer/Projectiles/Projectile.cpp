@@ -24,7 +24,7 @@ using namespace cocos2d;
 
 const std::string Projectile::ProjectileTag = "projectile";
 
-Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int collisionType, bool allowHacking) : super(ValueMap())
+Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int collisionType, bool allowHacking) : super(ValueMap())
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;

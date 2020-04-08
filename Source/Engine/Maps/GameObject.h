@@ -3,16 +3,15 @@
 
 #include "cocos/math/CCGeometry.h"
 
+#include "Engine/AttachedBehavior/AttachedBehavior.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
 	class EventListener;
 	class Value;
-	typedef std::map<std::string, Value> ValueMap;
+	typedef std::map<std::string, cocos2d::Value> ValueMap;
 }
-
-class AttachedBehavior;
 
 class GameObject : public SmartNode
 {

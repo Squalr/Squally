@@ -288,7 +288,7 @@ void TerrainObject::cullCollision()
 	}
 
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
-	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> usedCollisionSegments;
+	std::vector<std::tuple<Vec2, Vec2>> usedCollisionSegments;
 	
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
@@ -848,7 +848,7 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 		return;
 	}
 
-	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> rebuiltSegments = std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>();
+	std::vector<std::tuple<Vec2, Vec2>> rebuiltSegments = std::vector<std::tuple<Vec2, Vec2>>();
 	
 	for (auto it = this->collisionSegments.begin(); it != this->collisionSegments.end(); it++)
 	{
@@ -891,8 +891,8 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 			for (auto segmentIt = other->segments.begin(); segmentIt != other->segments.end(); segmentIt++)
 			{
 				float otherNormalAngle = AlgoUtils::getSegmentNormalAngle(*segmentIt, other->textureTriangles);
-				cocos2d::Vec2 p1 = std::get<0>(*segmentIt);
-				cocos2d::Vec2 p2 = std::get<1>(*segmentIt);
+				Vec2 p1 = std::get<0>(*segmentIt);
+				Vec2 p2 = std::get<1>(*segmentIt);
 
 				p1 += other->getPosition();
 				p2 += other->getPosition();
@@ -976,7 +976,7 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 	return false;
 }
 
-ValueMap TerrainObject::transformPropertiesForTexture(cocos2d::ValueMap& properties)
+ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 {
 	ValueMap textureProperties = properties;
 

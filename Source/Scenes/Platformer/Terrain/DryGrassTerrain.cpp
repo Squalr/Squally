@@ -23,7 +23,12 @@ DryGrassTerrain* DryGrassTerrain::create(ValueMap& properties)
 DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return DryGrassTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return DryGrassTexture::create(transformedProps);
+		},
 		0.5f,
 		DryGrassTerrain::MapKey,
 		TextureResources::DryGrassTexture,

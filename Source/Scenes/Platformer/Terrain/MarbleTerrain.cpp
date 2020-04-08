@@ -23,7 +23,12 @@ MarbleTerrain* MarbleTerrain::create(ValueMap& properties)
 MarbleTerrain::MarbleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return MarbleTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return MarbleTexture::create(transformedProps);
+		},
 		0.5f,
 		MarbleTerrain::MapKey,
 		TextureResources::MarbleTexture,

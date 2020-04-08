@@ -23,7 +23,12 @@ IceTerrain* IceTerrain::create(ValueMap& properties)
 IceTerrain::IceTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return IceTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return IceTexture::create(transformedProps);
+		},
 		0.5f,
 		IceTerrain::MapKey,
 		TextureResources::IceTexture,

@@ -29,11 +29,15 @@ IllusionBehavior::IllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->portal = dynamic_cast<Portal*>(owner);
 	this->object = owner;
-	this->group = GameUtils::getKeyOrDefault(this->properties, IllusionBehavior::PropertyGroup, Value("")).asString();
+	this->group = "";
 
 	if (this->object == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->group = GameUtils::getKeyOrDefault(this->object->properties, IllusionBehavior::PropertyGroup, Value("")).asString();
 	}
 }
 

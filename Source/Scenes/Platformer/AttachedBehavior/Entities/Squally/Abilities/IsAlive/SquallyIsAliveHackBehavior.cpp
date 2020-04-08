@@ -46,11 +46,13 @@ SquallyIsAliveHackBehavior::SquallyIsAliveHackBehavior(GameObject* owner) : supe
 	this->squally = dynamic_cast<Squally*>(owner);
 	this->cooldown = 0.0f;
 
-	this->registerClippy(this->clippy);
-
 	if (this->squally == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->squally->registerClippy(this->clippy);
 	}
 }
 
@@ -80,9 +82,8 @@ void SquallyIsAliveHackBehavior::update(float dt)
 
 void SquallyIsAliveHackBehavior::onLoad()
 {
-	this->scheduleUpdate();
-
-	this->listenForMapEvent(SquallyIsAliveHackBehavior::EventSquallyTrapped, [=](ValueMap args)
+	/*
+	this->squally->listenForMapEvent(SquallyIsAliveHackBehavior::EventSquallyTrapped, [=](ValueMap args)
 	{
 		for (auto next : this->codeList)
 		{
@@ -92,6 +93,10 @@ void SquallyIsAliveHackBehavior::onLoad()
 			}
 		}
 	});
+	*/
+
+	this->registerHackables();
+	this->scheduleUpdate();
 }
 
 void SquallyIsAliveHackBehavior::onDisable()
@@ -101,8 +106,6 @@ void SquallyIsAliveHackBehavior::onDisable()
 
 void SquallyIsAliveHackBehavior::registerHackables()
 {
-	super::registerHackables();
-
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{

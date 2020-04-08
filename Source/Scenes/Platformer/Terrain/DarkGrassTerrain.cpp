@@ -23,7 +23,12 @@ DarkGrassTerrain* DarkGrassTerrain::create(ValueMap& properties)
 DarkGrassTerrain::DarkGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return DarkGrassTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return DarkGrassTexture::create(transformedProps);
+		},
 		0.5f,
 		DarkGrassTerrain::MapKey,
 		TextureResources::DarkGrassTexture,

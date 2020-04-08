@@ -23,7 +23,12 @@ DryTerrain* DryTerrain::create(ValueMap& properties)
 DryTerrain::DryTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return DryTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return DryTexture::create(transformedProps);
+		},
 		0.5f,
 		DryTerrain::MapKey,
 		TextureResources::DryTexture,

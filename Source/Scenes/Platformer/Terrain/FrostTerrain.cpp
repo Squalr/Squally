@@ -23,7 +23,12 @@ FrostTerrain* FrostTerrain::create(ValueMap& properties)
 FrostTerrain::FrostTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return FrostTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return FrostTexture::create(transformedProps);
+		},
 		0.5f,
 		FrostTerrain::MapKey,
 		TextureResources::FrostTexture,

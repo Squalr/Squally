@@ -23,7 +23,12 @@ BlueGrassTerrain* BlueGrassTerrain::create(ValueMap& properties)
 BlueGrassTerrain::BlueGrassTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return BlueGrassTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return BlueGrassTexture::create(transformedProps);
+		},
 		0.5f,
 		BlueGrassTerrain::MapKey,
 		TextureResources::BlueGrassTexture,

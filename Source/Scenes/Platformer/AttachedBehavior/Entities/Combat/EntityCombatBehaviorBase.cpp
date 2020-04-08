@@ -66,7 +66,7 @@ void EntityCombatBehaviorBase::onDisable()
 
 void EntityCombatBehaviorBase::onBeforeDamageTaken(int* damage, bool* blocked, std::function<void()> handleCallback)
 {
-	if (damage >= 0)
+	if (*damage >= 0)
 	{
 		return;
 	}

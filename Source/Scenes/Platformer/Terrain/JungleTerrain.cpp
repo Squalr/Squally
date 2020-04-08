@@ -23,7 +23,12 @@ JungleTerrain* JungleTerrain::create(ValueMap& properties)
 JungleTerrain::JungleTerrain(ValueMap& properties) : super(
 	properties,
 	TerrainObject::TerrainData(
-		[=](ValueMap& properties) { return JungleTexture::create(this->transformPropertiesForTexture(properties)); },
+		[=](ValueMap props)
+		{
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return JungleTexture::create(transformedProps);
+		},
 		0.5f,
 		JungleTerrain::MapKey,
 		TextureResources::JungleTexture,
