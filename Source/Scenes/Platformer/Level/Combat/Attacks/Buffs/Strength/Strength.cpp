@@ -119,7 +119,7 @@ void Strength::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Strength::StrengthIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
-				UIResources::Menus_Icons_Clock,
+				UIResources::Menus_Icons_Strength,
 				StrengthGenericPreview::create(),
 				{
 					{

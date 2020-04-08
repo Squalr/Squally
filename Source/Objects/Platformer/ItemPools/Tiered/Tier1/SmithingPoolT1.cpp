@@ -21,7 +21,6 @@ SmithingPoolT1::SmithingPoolT1(SampleMethod sampleMethod, int min, int max) : su
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Tin::create(), ItemChance::Probability::Epic));
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Epic));
 }
 
