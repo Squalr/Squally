@@ -38,7 +38,7 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int 
 		collisionType,
 		CollisionObject::Properties(false, false)
 	);
-	this->spinNode = Node::create();
+	this->rotationNode = Node::create();
 	this->contentNode = Node::create();
 	this->postFXNode = Node::create();
 	this->ownerCollisionRef = nullptr;
@@ -50,8 +50,8 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2>& hitBox, int 
 
 	this->collisionObject->addChild(this->contentNode);
 	this->collisionObject->addChild(this->postFXNode);
-	this->spinNode->addChild(this->collisionObject);
-	this->addChild(this->spinNode);
+	this->rotationNode->addChild(this->collisionObject);
+	this->addChild(this->rotationNode);
 }
 
 Projectile::~Projectile()
@@ -101,7 +101,7 @@ void Projectile::update(float dt)
 
 	if (this->spinSpeed != 0.0f)
 	{
-		this->spinNode->setRotation(this->spinNode->getRotation() + this->spinSpeed * dt);
+		this->setRotation(this->getRotation() + this->spinSpeed * dt);
 	}
 
 	this->setLaunchVelocity(this->launchVelocity + this->getLaunchAcceleration() * dt);
@@ -262,7 +262,7 @@ void Projectile::setProjectileRotation(float projectileRotation)
 {
 	this->projectileRotation = projectileRotation;
 	
-	this->collisionObject->setRotation(180.0f - this->projectileRotation);
+	this->rotationNode->setRotation(180.0f - this->projectileRotation);
 }
 
 float Projectile::getProjectileRotation()

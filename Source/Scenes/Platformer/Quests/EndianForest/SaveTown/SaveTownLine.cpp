@@ -28,8 +28,8 @@ SaveTownLine::SaveTownLine() : super(SaveTownLine::MapKeyQuestLine,
 		QuestData(FightGorgon::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return FightGorgon::create(owner, questLine); }),
 		QuestData(AfterFight::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return AfterFight::create(owner, questLine); }),
 		QuestData(ReturnToQueenAgain::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return ReturnToQueenAgain::create(owner, questLine); }),
-	}) // ,
-	// (QuestLine*)FindElrielLine::create())
+	},
+	(QuestLine*)FindElrielLine::create())
 {
 }
 

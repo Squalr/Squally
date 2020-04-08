@@ -587,7 +587,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value="reflect-tutorial"/>
-    <property name="battle-map" value="EndianForest/Combat_Caves"/>
+    <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>

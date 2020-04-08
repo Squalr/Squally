@@ -92,7 +92,7 @@ void TimeBomb::initializePositions()
 {
 	super::initializePositions();
 	
-	this->explosionAnim->setPosition(Vec2(0.0f, 96.0f));
+	this->explosionAnim->setPosition(Vec2(0.0f, 48.0f));
 }
 
 void TimeBomb::update(float dt)

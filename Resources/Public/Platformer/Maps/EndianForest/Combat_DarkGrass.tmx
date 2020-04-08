@@ -84,6 +84,18 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
+  <object id="518" name="combat-spawn" type="object" x="2101.27" y="1718" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="553" name="dark-grass" type="terrain" x="1836.17" y="1782.68">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
   <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
@@ -97,14 +109,14 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="556" name="blue-grass" type="terrain" x="1450.36" y="1645.46">
+  <object id="556" name="dark-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
-   <polygon points="0,0 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711"/>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="557" name="blue-grass" type="terrain" x="260.91" y="1731.43">
+  <object id="557" name="dark-grass" type="terrain" x="260.91" y="1731.43">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -117,7 +129,21 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="561" name="blue-grass" type="terrain" x="482" y="1534">
+  <object id="559" name="combat-spawn" type="object" x="2136.28" y="1438.01" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="560" name="dark-grass" type="terrain" x="1897.84" y="1503.35">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="561" name="dark-grass" type="terrain" x="482" y="1534">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
@@ -140,6 +166,12 @@
     <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
+  <object id="563" name="camera-target" type="object" x="1770" y="1272" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
   <object id="564" name="camera-target" type="object" x="810" y="1398" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-0"/>
@@ -150,6 +182,12 @@
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="1730" y="1442" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-2"/>
+    <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
  </objectgroup>
@@ -175,7 +213,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="1944.97" y="1541.64" width="270" height="748"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="1912.97" y="1543.64" width="270" height="748"/>
   <object id="494" name="Forest/Foreground/ShadowTreeTop8" type="decor" x="-724.47" y="743.136" width="3959" height="265">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>

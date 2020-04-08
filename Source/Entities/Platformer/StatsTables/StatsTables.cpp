@@ -248,7 +248,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 32);
 	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 32);
 	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 32);
-	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(20, 37, 32);
+	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(30, 37, 32);
 	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Ogre::MapKey] = Stats(28, 9, 32);
 	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(24, 22, 32);

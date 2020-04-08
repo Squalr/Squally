@@ -30,6 +30,7 @@
 #include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"
 #include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -123,6 +124,7 @@ void FightGorgon::onLoad(QuestState questState)
 				this->defer([=]()
 				{
 					this->killRammedEnemies();
+					this->runCinematicSequencePart1();
 					this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
 				});
 			}
@@ -157,14 +159,6 @@ void FightGorgon::onLoad(QuestState questState)
 		this->ram->setVisible(questState == QuestState::Active);
 		this->ram->getAnimations()->playAnimation("Broken", SmartAnimationNode::AnimationPlayMode::Repeat);
 	}, Ram::MapKey);
-
-	if (questState == QuestState::Active)
-	{
-		this->listenForMapEventOnce(FightGorgon::MapKeyQuest, [=](ValueMap args)
-		{
-			this->runCinematicSequencePart1();
-		});
-	}
 }
 
 void FightGorgon::onActivate(bool isActiveThroughSkippable)
@@ -225,7 +219,10 @@ void FightGorgon::killRammedEnemies()
 	{
 		if (enemy != this->gorgon)
 		{
-			enemy->setState(StateKeys::IsAlive, Value(false));
+			enemy->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->kill();
+			});
 		}
 	}), PlatformerEnemy::PlatformerEnemyTag);
 }

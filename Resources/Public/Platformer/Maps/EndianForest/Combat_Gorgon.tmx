@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="572">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="36" nextobjectid="582">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -84,7 +84,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1838.01" y="1415.05" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
@@ -97,14 +97,14 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="556" name="blue-grass" type="terrain" x="1450.36" y="1645.46">
+  <object id="556" name="dark-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
     <property name="collision" value="none"/>
-    <property name="depth" type="float" value="-128"/>
+    <property name="depth" type="float" value="0"/>
    </properties>
    <polygon points="0,0 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711"/>
   </object>
-  <object id="557" name="blue-grass" type="terrain" x="260.91" y="1731.43">
+  <object id="557" name="dark-grass" type="terrain" x="260.91" y="1731.43">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -117,12 +117,82 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="561" name="blue-grass" type="terrain" x="482" y="1534">
+  <object id="561" name="dark-grass" type="terrain" x="482" y="1534">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="572" name="dark-grass" type="terrain" x="1596" y="1480">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="0,0 1057.05,-2.14915 1043.56,444.874 1043.9,1142.16 580.252,1194.93 26.9885,984.311 30.533,498.711"/>
+  </object>
+  <object id="573" name="combat-spawn" type="object" x="1570" y="1582" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="574" name="combat-spawn" type="object" x="1935.33" y="1581" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="575" name="combat-spawn" type="object" x="2074.67" y="1584" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="3"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="576" name="combat-spawn" type="object" x="1685.33" y="1582.67" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="4"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="577" name="combat-spawn" type="object" x="1808.67" y="1582" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="5"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="578" name="combat-spawn" type="object" x="1632" y="1582.67" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="6"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="579" name="combat-spawn" type="object" x="1748" y="1584" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="7"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="580" name="combat-spawn" type="object" x="1866.67" y="1581.33" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="8"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="581" name="combat-spawn" type="object" x="2002.67" y="1578.67" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
+    <property name="spawn-order" type="int" value="9"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -146,7 +216,7 @@
     <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
-  <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
+  <object id="565" name="camera-target" type="object" x="1588" y="1300" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
     <property name="zoom" type="float" value="1.1"/>
@@ -170,7 +240,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="27" name="decor 256">
+ <objectgroup id="27" name="decor 256" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

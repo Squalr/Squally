@@ -58,7 +58,7 @@ void OrcBomberCombatBehavior::onLoad()
 
 		if (inventory != nullptr)
 		{
-			inventory->forceInsert(IncrementHealthFlask::create());
+			// inventory->forceInsert(IncrementHealthFlask::create());
 		}
 	});
 }

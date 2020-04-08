@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="914">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="71" nextobjectid="916">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -174,14 +174,9 @@
     <property name="to" value="start"/>
    </properties>
   </object>
-  <object id="886" name="cipher-chest" type="object" x="1516" y="684" width="128" height="128">
+  <object id="886" name="chest" type="object" x="1516" y="684" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="0"/>
-    <property name="reward-pool" value=""/>
-    <property name="rule" value="{i}"/>
-    <property name="tokens" value=""/>
-    <property name="tutorial" value=""/>
+    <property name="reward-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="903" name="vase" type="object" x="976.833" y="653.333" width="113" height="160">
@@ -189,7 +184,7 @@
     <property name="color" value="clay"/>
    </properties>
   </object>
-  <object id="909" name="breakable-cage" type="object" x="1491.09" y="1792.48" width="196" height="112"/>
+  <object id="909" name="breakable-cage" type="object" x="1754.73" y="1795.51" width="196" height="112"/>
   <object id="910" name="vase" type="object" x="2595.02" y="1750.3" width="113" height="160">
    <properties>
     <property name="color" value="gray"/>
@@ -209,6 +204,22 @@
   <object id="890" name="squally" type="entity" x="1018.46" y="1778.75" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="squally"/>
+   </properties>
+  </object>
+  <object id="914" name="goblin-warrior-pig" type="entity" x="1481.58" y="1783.39" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="battle-behavior" value="reflect-tutorial"/>
+    <property name="battle-map" value="EndianForest/Combat_Temple"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="915" name="ogre" type="entity" x="1488" y="1528" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="806">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="809">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -244,7 +244,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="791" name="orc-bomber" type="entity" x="6480" y="2400" width="128" height="128">
+  <object id="791" name="orc-bomber" type="entity" x="6488" y="2404" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
@@ -277,8 +277,8 @@
   <object id="796" name="gorgon" type="entity" x="5970.67" y="2400" width="128" height="128">
    <properties>
     <property name="attached-behavior" value="enemy"/>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-behavior" value="ram-weakened"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="ef-gorgon"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -289,6 +289,20 @@
   <object id="797" name="ram" type="object" x="6182" y="2246" width="512" height="288">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="807" name="orc-bomber" type="entity" x="5736" y="1928" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value="ram-weakened"/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="808" name="orc-bomber" type="entity" x="5956" y="1926" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value="ram-weakened"/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>

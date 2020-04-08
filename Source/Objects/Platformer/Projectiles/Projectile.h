@@ -62,5 +62,5 @@ private:
 	cocos2d::Vec3 speedMultiplier;
 	float noOwnerCollideDuration;
 
-	cocos2d::Node* spinNode;
+	cocos2d::Node* rotationNode;
 };
