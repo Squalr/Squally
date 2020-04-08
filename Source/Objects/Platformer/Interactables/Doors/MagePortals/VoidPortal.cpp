@@ -23,6 +23,8 @@ VoidPortal* VoidPortal::create(ValueMap& properties)
 VoidPortal::VoidPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
 {
 	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalVoid, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->portalParticles);
 }

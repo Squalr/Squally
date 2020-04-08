@@ -4,6 +4,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Inventory/ItemChance.h"
+#include "Engine/Inventory/MergePool.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier1/AlchemyPoolT1.h"
@@ -28,7 +29,15 @@ PocketPoolEFGeneric* PocketPoolEFGeneric::create(ValueMap& properties)
 }
 
 PocketPoolEFGeneric::PocketPoolEFGeneric(ValueMap& properties) : super(properties, PocketPoolEFGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
-	{ CardPoolTier1::create(SampleMethod::Random, 0, 1), AlchemyPoolT1::create(SampleMethod::Random, 1, 2), SmithingPoolT1::create(SampleMethod::Guarantee, 1, 1), PotionPoolTier1::create(SampleMethod::Random, 0, 1) })
+	{
+		CardPoolTier1::create(SampleMethod::Random, 1, 1),
+		MergePool::create(SampleMethod::Guarantee, 1, 2,
+		{
+			AlchemyPoolT1::create(),
+			SmithingPoolT1::create(),
+			PotionPoolTier1::create()
+		})
+	})
 {
 }
 

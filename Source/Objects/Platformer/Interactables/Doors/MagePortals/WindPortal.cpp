@@ -24,6 +24,9 @@ WindPortal::WindPortal(ValueMap& properties) : super(properties, 96.0f, Color4B:
 {
 	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalWind, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);

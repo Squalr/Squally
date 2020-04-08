@@ -23,6 +23,8 @@ DarkPortal* DarkPortal::create(ValueMap& properties)
 DarkPortal::DarkPortal(ValueMap& properties) : super(properties, 96.0f, Color4B::BLACK)
 {
 	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalSand, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->portalParticles);
 }

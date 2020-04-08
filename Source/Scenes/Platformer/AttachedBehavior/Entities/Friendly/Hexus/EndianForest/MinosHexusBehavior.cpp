@@ -57,6 +57,11 @@ std::vector<CardData*> MinosHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
+		
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 	});
 }
 

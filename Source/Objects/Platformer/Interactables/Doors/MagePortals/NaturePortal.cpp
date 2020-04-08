@@ -24,6 +24,9 @@ NaturePortal::NaturePortal(ValueMap& properties) : super(properties, 96.0f, Colo
 {
 	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalNature, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
 	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalNatureEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	
+	this->edgeParticles->start();
+	this->portalParticles->start();
 
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);

@@ -141,6 +141,7 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 
 void ReturnToSarude::onHexusWin()
 {
+	this->complete();
 	this->runPostHexusMatchCleanup();
 	this->runDialogueIntroWin();
 }

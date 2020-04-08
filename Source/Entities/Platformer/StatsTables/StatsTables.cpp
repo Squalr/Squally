@@ -257,8 +257,8 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 24);
 	StatsTables::StatsTable[Troll::MapKey] = Stats(34, 8, 20);
 	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 64);
-	StatsTables::StatsTable[Gorgon::MapKey] = Stats(220, 48, 80);
-	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 80);
+	StatsTables::StatsTable[Gorgon::MapKey] = Stats(220, 48, 88);
+	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 88);
 
 	StatsTables::StatsTable[Ara::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Bard::MapKey] = Stats(16, 8, 32);
@@ -521,7 +521,7 @@ int StatsTables::getExpRequiredAtLevel(PlatformerEntity* platformerEntity)
 
 		for (int index = 0; index < levelIndex; index++)
 		{
-			exp += std::get<0>(stats.increments[index]);	
+			exp += std::get<2>(stats.increments[index]);	
 		}
 
 		return exp;

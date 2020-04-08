@@ -150,7 +150,7 @@ void RewardsMenu::giveExp()
 					}
 				}
 
-				// This determins how drastic penalties and losses are for being outside of the intended level. Higher is more drastic.
+				// This determines how drastic penalties and losses are for being outside of the intended level. Higher is more drastic.
 				static const float GainFactor = 1.25f;
 
 				// Apply rubber banding to keep the player near the intended level for the current map

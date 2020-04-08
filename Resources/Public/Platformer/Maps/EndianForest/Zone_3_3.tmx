@@ -362,11 +362,11 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="8010.39" y="2454.93" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="5131.03" y="2466.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="7259.62" y="2391.9" width="242" height="738"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="8002.39" y="2710.93" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="5123.03" y="2722.5" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="7251.62" y="2683.9" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="277.57" y="3426.1" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="5760.81" y="2439" width="270" height="748"/>
+  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="5752.81" y="2743" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor 512">
   <properties>

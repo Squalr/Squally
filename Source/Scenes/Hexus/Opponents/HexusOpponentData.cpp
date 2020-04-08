@@ -116,7 +116,7 @@ CardData* HexusOpponentData::getStrongestCard()
 
 std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckStrength, std::vector<CardData*> guaranteedCards)
 {
-	deckSize = MathUtils::clamp(deckSize, 20, 60);
+	deckSize = MathUtils::clamp(deckSize + int(guaranteedCards.size()), 20, 60);
 	deckStrength = MathUtils::clamp(deckStrength, 0.0f, 1.0f);
 
 	// Formula: Best possible card attack for a single card = (DeckStrength + 10%) * 15 (min: 3)
