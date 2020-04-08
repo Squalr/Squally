@@ -79,15 +79,33 @@ void CastSiphonLife::onCleanup()
 
 bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int debuffCount = 0;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* haste)
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			hasBuff = true;
+			entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* debuff)
+			{
+				debuffCount++;
+			});
+		});
+	}
+
+	return debuffCount != int(otherTeam.size());
+}
+
+float CastSiphonLife::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	float utility = 1.0f;
+
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<SiphonLife>([&](SiphonLife* debuff)
+		{
+			utility = 0.0f;
 		});
 	});
-
-	return !hasBuff;
+	
+	return utility;
 }

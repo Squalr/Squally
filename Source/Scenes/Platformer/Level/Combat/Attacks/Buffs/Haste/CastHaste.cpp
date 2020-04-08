@@ -91,3 +91,9 @@ bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<Platfor
 
 	return !hasBuff;
 }
+
+float CastHaste::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	// Prioritize self-cast
+	return target == this->owner ? 1.0f : 0.0f;
+}

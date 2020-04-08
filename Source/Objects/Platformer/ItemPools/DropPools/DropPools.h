@@ -1,5 +1,6 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGeneric.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGorgon.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGrogg.h"
+#include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFWeak.h"
 #include "Objects/Platformer/ItemPools/DropPools/ErrorDropPool.h"
 #include "Objects/Platformer/ItemPools/DropPools/EmptyDropPool.h"

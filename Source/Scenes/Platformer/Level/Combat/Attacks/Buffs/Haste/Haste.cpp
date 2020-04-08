@@ -38,8 +38,8 @@ using namespace cocos2d;
 
 const std::string Haste::HasteIdentifier = "haste";
 
-// Note: UI sets precision on these to 1 digit
-const float Haste::MinSpeed = -1.0f;
+// Note: UI sets precision on these to 1 digit unless otherwise specified
+const float Haste::MinSpeed = -0.75f;
 const float Haste::DefaultSpeed = 2.0f;
 const float Haste::MaxSpeed = 2.5f;
 const float Haste::Duration = 6.0f;
@@ -124,7 +124,7 @@ void Haste::registerHackables()
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed, 1), ConstantFloat::create(Haste::MaxSpeed, 1) })
+							->setStringReplacementVariables({ ConstantFloat::create(Haste::MinSpeed, 2), ConstantFloat::create(Haste::MaxSpeed, 1) })
 					},
 					{
 						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3::create()

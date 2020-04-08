@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/SmartScene.h"
 #include "Engine/Sound/MusicPlayer.h"
@@ -38,6 +39,12 @@ Music::~Music()
 void Music::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		// Cancel the track if it was still waiting for its start delay before the scene changed
+		this->cancelIfDelayed();
+	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
 	{
@@ -143,4 +150,27 @@ void Music::unpause()
 	this->play();
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+}
+
+void Music::cancelIfDelayed()
+{
+	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+
+	switch (state)
+	{
+		default:
+		case AudioEngine::AudioState::ERROR:
+		case AudioEngine::AudioState::INITIALIZING:
+		case AudioEngine::AudioState::PAUSED:
+		{
+			this->stopAllActions();
+			this->stop();
+
+			break;
+		}
+		case AudioEngine::AudioState::PLAYING:
+		{
+			break;
+		}
+	}
 }

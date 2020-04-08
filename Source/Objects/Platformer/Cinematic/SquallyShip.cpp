@@ -191,7 +191,7 @@ void SquallyShip::runShipSequence()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
-			this->shipCollision->setVelocity(Vec2(-2048.0f, -2048.0f));
+			this->shipCollision->setVelocity(Vec2(-2048.0f, -512.0f));
 			this->shipContainer->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
 			this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);

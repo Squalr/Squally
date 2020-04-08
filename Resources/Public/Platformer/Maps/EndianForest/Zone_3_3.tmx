@@ -198,7 +198,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -208,7 +208,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -218,7 +218,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -228,7 +228,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -238,7 +238,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -248,7 +248,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -258,7 +258,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -268,7 +268,7 @@
    <properties>
     <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_Intro"/>
+    <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
     <property name="drop-pool" value="empty"/>
     <property name="flip-x" type="bool" value="true"/>

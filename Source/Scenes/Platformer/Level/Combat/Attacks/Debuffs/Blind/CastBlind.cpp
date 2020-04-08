@@ -79,15 +79,33 @@ void CastBlind::onCleanup()
 
 bool CastBlind::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int debuffCount = 0;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<Blind>([&](Blind* haste)
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			hasBuff = true;
+			entityBuffBehavior->getBuff<Blind>([&](Blind* debuff)
+			{
+				debuffCount++;
+			});
+		});
+	}
+
+	return debuffCount != int(otherTeam.size());
+}
+
+float CastBlind::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	float utility = 1.0f;
+
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Blind>([&](Blind* debuff)
+		{
+			utility = 0.0f;
 		});
 	});
-
-	return !hasBuff;
+	
+	return utility;
 }

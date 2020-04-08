@@ -34,6 +34,8 @@ protected:
 private:
 	typedef SoundBase super;
 
+	void cancelIfDelayed();
+
 	bool orphaned;
 
 	Track* owner;

@@ -242,7 +242,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="955" name="Generic/Vent" type="decor" x="2102.47" y="4626.98" width="305" height="307"/>
-  <object id="956" name="Generic/Vent" type="decor" x="3761.56" y="4640.86" width="305" height="307"/>
+  <object id="956" name="Generic/Vent" type="decor" x="3749.56" y="4392.86" width="305" height="307"/>
   <object id="1230" name="Generic/Vent" type="decor" x="5165.68" y="2516.2" width="305" height="307"/>
  </objectgroup>
  <objectgroup id="19" name="terrain bg">
@@ -276,11 +276,12 @@
    <polygon points="6418.73,39.1782 6412,748.596 -66.181,755.116 -79.698,36.4566"/>
   </object>
   <object id="842" name="temple" type="terrain" x="2441.66" y="2886.77">
-   <polygon points="1275.64,16.3061 1272.75,233.805 42.4806,235.93 43.0234,11.4512 503.345,11.743 540.341,58.7656 599.348,97.8553 921.344,99.8886 968.345,65.2348 1015.35,14.9765"/>
+   <polygon points="1275.64,16.3061 1272.75,233.805 42.4806,235.93 43.0234,11.4512 503.345,11.743 1015.35,14.9765"/>
   </object>
-  <object id="843" name="stone-button" type="object" x="3072.39" y="2901.68" width="258.367" height="85.7283">
+  <object id="843" name="stone-button" type="object" x="3033.72" y="4863.01" width="258.367" height="85.7283">
    <properties>
     <property name="send-event" value="door-open"/>
+    <property name="switch" type="bool" value="true"/>
    </properties>
   </object>
   <object id="924" name="temple" type="terrain" x="4074.7" y="3016">
@@ -341,25 +342,25 @@
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="893" name="wind" type="object" x="3725.64" y="4379.33" width="380" height="480">
+  <object id="893" name="wind" type="object" x="3713.64" y="4131.33" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="894" name="wind" type="object" x="3732.85" y="3896.83" width="380" height="480">
+  <object id="894" name="wind" type="object" x="3720.85" y="3648.83" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="895" name="wind" type="object" x="3731.75" y="3434.48" width="380" height="480">
+  <object id="895" name="wind" type="object" x="3719.75" y="3186.48" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
-  <object id="896" name="wind" type="object" x="3736.25" y="2949.58" width="380" height="480">
+  <object id="896" name="wind" type="object" x="3724.25" y="2701.58" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
@@ -378,12 +379,6 @@
    </properties>
   </object>
   <object id="908" name="wind" type="object" x="5125.94" y="1280" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="930" name="wind" type="object" x="3742" y="2466" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
     <property name="speed-y" type="float" value="1"/>
@@ -454,13 +449,13 @@
     <property name="listen-event" value="door-open"/>
    </properties>
   </object>
-  <object id="917" name="wooden-crate" type="object" x="4265.7" y="4778.18" width="160" height="160"/>
+  <object id="917" name="wooden-crate-disabled" type="object" x="4265.7" y="4778.18" width="160" height="160"/>
   <object id="918" name="wooden-crate-disabled" type="object" x="4623.27" y="4781.58" width="160" height="160">
    <properties>
     <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
    </properties>
   </object>
-  <object id="919" name="wooden-crate" type="object" x="3450.31" y="4790.3" width="160" height="160"/>
+  <object id="919" name="wooden-crate-disabled" type="object" x="3450.31" y="4790.3" width="160" height="160"/>
   <object id="920" name="wooden-crate-disabled" type="object" x="4679.85" y="4621.27" width="160" height="160">
    <properties>
     <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
@@ -471,7 +466,7 @@
     <property name="note" value="disabled due to bad physics implementation. Can re-enable if fixed"/>
    </properties>
   </object>
-  <object id="922" name="camera-control" type="object" x="3040.46" y="2237.94" width="316" height="792.061">
+  <object id="922" name="camera-control-disabled" type="object" x="2948.46" y="2105.94" width="316" height="792.061">
    <properties>
     <property name="target" value="target-A"/>
    </properties>
@@ -494,7 +489,7 @@
     <property name="color" value="yellow"/>
    </properties>
   </object>
-  <object id="983" name="vase" type="object" x="3123.5" y="4788" width="113" height="160">
+  <object id="983" name="vase" type="object" x="3468.83" y="4789.33" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
    </properties>
@@ -549,7 +544,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="943" name="iou" type="object" x="2903.05" y="4857.71" width="87" height="87"/>
+  <object id="943" name="iou" type="object" x="3337.72" y="4857.71" width="87" height="87"/>
   <object id="945" name="iou" type="object" x="4480.5" y="2928.5" width="87" height="87"/>
   <object id="947" name="iou" type="object" x="984.5" y="1024.5" width="87" height="87"/>
   <object id="987" name="vase" type="object" x="4288.5" y="1518" width="113" height="160">

@@ -81,15 +81,33 @@ void CastCurseOfTongues::onCleanup()
 
 bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int debuffCount = 0;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* haste)
+		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			hasBuff = true;
+			entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
+			{
+				debuffCount++;
+			});
+		});
+	}
+
+	return debuffCount != int(otherTeam.size());
+}
+
+float CastCurseOfTongues::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	float utility = 1.0f;
+
+	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
+		{
+			utility = 0.0f;
 		});
 	});
-
-	return !hasBuff;
+	
+	return utility;
 }

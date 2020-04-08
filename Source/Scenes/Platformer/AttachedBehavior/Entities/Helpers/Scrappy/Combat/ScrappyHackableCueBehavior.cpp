@@ -45,9 +45,27 @@ ScrappyHackableCueBehavior::~ScrappyHackableCueBehavior()
 {
 }
 
-void ScrappyHackableCueBehavior::disable()
+void ScrappyHackableCueBehavior::onLoad()
 {
-	this->disabled = true;
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHackableCombatCue, [=](EventCustom* eventCustom)
+	{
+		if (!this->disabled && this->cueCooldown <= 0.0f)
+		{
+			this->cueCooldown = 2.0f;
+
+			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			{
+				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Dialogue_Combat_Help_UseYourAbilities::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
+			});
+		}
+	}));
+
+	this->scheduleUpdate();
+}
+
+void ScrappyHackableCueBehavior::onDisable()
+{
+	super::onDisable();
 }
 
 void ScrappyHackableCueBehavior::update(float dt)
@@ -60,23 +78,7 @@ void ScrappyHackableCueBehavior::update(float dt)
 	}
 }
 
-void ScrappyHackableCueBehavior::onLoad()
+void ScrappyHackableCueBehavior::disable()
 {
-	this->scheduleUpdate();
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHackableCombatCue, [=](EventCustom* eventCustom)
-	{
-		if (!this->disabled && this->cueCooldown <= 0.0f)
-		{
-			this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-			{
-				interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Dialogue_Combat_Help_UseYourAbilities::create(), SoundResources::Platformer_Entities_Droid_DroidChatter);
-			});
-		}
-	}));
-}
-
-void ScrappyHackableCueBehavior::onDisable()
-{
-	super::onDisable();
+	this->disabled = true;
 }

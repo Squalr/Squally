@@ -76,6 +76,12 @@ void MusicPlayer::play(Music* music, bool repeat, float startDelay, bool purgeQu
 	if (currentMusic != nullptr && music != nullptr && currentMusic->getSoundResource() == music->getSoundResource())
 	{
 		MusicPlayer::performHandoff(music);
+
+		if (!music->isPlaying())
+		{
+			music->play(repeat, startDelay);
+		}
+
 		return;
 	}
 

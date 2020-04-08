@@ -131,7 +131,7 @@
    </properties>
    <polygon points="0,0 1057.05,-2.14915 1043.56,444.874 1043.9,1142.16 580.252,1194.93 26.9885,984.311 30.533,498.711"/>
   </object>
-  <object id="573" name="combat-spawn" type="object" x="1570" y="1582" width="64" height="64">
+  <object id="573" name="combat-spawn" type="object" x="1687" y="1585" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="1"/>
@@ -152,7 +152,7 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="576" name="combat-spawn" type="object" x="1685.33" y="1582.67" width="64" height="64">
+  <object id="576" name="combat-spawn" type="object" x="1568.33" y="1583.67" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="4"/>

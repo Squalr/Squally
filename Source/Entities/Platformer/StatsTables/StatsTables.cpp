@@ -244,21 +244,21 @@ StatsTables::StatsTables()
 	/***********
 		EF
 	************/
-	StatsTables::StatsTable[TrainingDummy::MapKey] = Stats(1000, 500, 32);
-	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 32);
-	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 32);
-	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 32);
-	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(30, 37, 32);
-	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 32);
-	StatsTables::StatsTable[Ogre::MapKey] = Stats(28, 9, 32);
-	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(24, 22, 32);
-	StatsTables::StatsTable[OrcGrunt::MapKey] = Stats(11, 8, 32);
-	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(21, 8, 32);
-	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 32);
-	StatsTables::StatsTable[Troll::MapKey] = Stats(34, 8, 32);
-	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 128);
-	StatsTables::StatsTable[Gorgon::MapKey] = Stats(380, 48, 224);
-	StatsTables::StatsTable[Orthrus::MapKey] = Stats(380, 48, 224);
+	StatsTables::StatsTable[TrainingDummy::MapKey] = Stats(1000, 500, 16);
+	StatsTables::StatsTable[Centaur::MapKey] = Stats(300, 200, 24);
+	StatsTables::StatsTable[Cyclops::MapKey] = Stats(58, 8, 22);
+	StatsTables::StatsTable[GoblinGruntBoar::MapKey] = Stats(16, 8, 20);
+	StatsTables::StatsTable[GoblinShaman::MapKey] = Stats(30, 37, 24);
+	StatsTables::StatsTable[GoblinWarriorPig::MapKey] = Stats(16, 8, 20);
+	StatsTables::StatsTable[Ogre::MapKey] = Stats(28, 9, 18);
+	StatsTables::StatsTable[OrcBomber::MapKey] = Stats(24, 22, 26);
+	StatsTables::StatsTable[OrcGrunt::MapKey] = Stats(11, 8, 16);
+	StatsTables::StatsTable[OrcSwordsman::MapKey] = Stats(21, 8, 24);
+	StatsTables::StatsTable[OrcWarrior::MapKey] = Stats(23, 5, 24);
+	StatsTables::StatsTable[Troll::MapKey] = Stats(34, 8, 20);
+	StatsTables::StatsTable[KingGrogg::MapKey] = Stats(58, 36, 64);
+	StatsTables::StatsTable[Gorgon::MapKey] = Stats(175, 48, 80);
+	StatsTables::StatsTable[Orthrus::MapKey] = Stats(175, 48, 80);
 
 	StatsTables::StatsTable[Ara::MapKey] = Stats(16, 8, 32);
 	StatsTables::StatsTable[Bard::MapKey] = Stats(16, 8, 32);

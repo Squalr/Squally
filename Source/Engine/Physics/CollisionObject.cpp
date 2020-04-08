@@ -279,6 +279,11 @@ void CollisionObject::setVelocity(Vec2 velocity)
 	this->velocity.y = MathUtils::clamp(velocity.y, CollisionObject::DefaultMaxFallSpeed, CollisionObject::DefaultMaxLaunchSpeed);
 }
 
+void CollisionObject::setGravity(cocos2d::Vec2 gravity)
+{
+	this->gravity = gravity;
+}
+
 void CollisionObject::setAcceleration(Vec2 acceleration)
 {
 	this->acceleration = acceleration;

@@ -89,7 +89,7 @@ void TrainingHeal::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f));
+	this->setPosition(Vec2(0.0f, 118.0f - this->target->getEntityCenterPoint().y));
 }
 
 void TrainingHeal::enableClippy()

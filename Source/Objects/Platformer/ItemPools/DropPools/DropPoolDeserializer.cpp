@@ -29,6 +29,7 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 	this->deserializers[DropPoolEFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGeneric::create(properties); };
 	this->deserializers[DropPoolEFGorgon::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGorgon::create(properties); };
 	this->deserializers[DropPoolEFGrogg::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFGrogg::create(properties); };
+	this->deserializers[DropPoolEFWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolEFWeak::create(properties); };
 }
 
 DropPoolDeserializer::~DropPoolDeserializer()
