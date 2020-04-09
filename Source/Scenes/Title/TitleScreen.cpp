@@ -175,6 +175,9 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
+	// Disabled until this is further in development
+	this->tutorialsButton->setVisible(false);
+
 	this->music->play();
 
 	this->etherParticles->accelerate(5.0f);
