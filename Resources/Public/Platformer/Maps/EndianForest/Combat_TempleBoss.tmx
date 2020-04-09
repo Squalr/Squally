@@ -26,69 +26,69 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1783.67" y="1402.72" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1789.67" y="1248.72" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-256"/>
+    <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="555" name="combat-spawn" type="object" x="520.4" y="1639.2" width="64" height="64">
+  <object id="555" name="combat-spawn" type="object" x="422.4" y="1645.2" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="556" name="temple" type="terrain" x="1528.36" y="1465.46">
+  <object id="556" name="temple" type="terrain" x="1534.36" y="1311.46">
    <properties>
     <property name="collision" value="none"/>
-    <property name="depth" type="float" value="-256"/>
+    <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 519.718,1.85085 519.305,142.53 649.655,142.551 647.95,275.518 777.151,273.063 777.935,403.076 901.94,403.024 898.962,1197.8 -373.105,1200.31 -374.044,377.027 -247.91,376.915 -249.314,257.13 -116.669,255.415 -118.551,134.529 3.6594,132.54"/>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="750.11" y="1559.16" width="64" height="64">
+  <object id="558" name="combat-spawn" type="object" x="652.11" y="1565.16" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="571" name="temple" type="terrain" x="323.167" y="1704" width="501.333" height="1050.67">
+  <object id="571" name="temple" type="terrain" x="225.167" y="1710" width="501.333" height="1050.67">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
-  <object id="572" name="temple" type="terrain" x="559.333" y="1625.66" width="501.333" height="1198.67">
+  <object id="572" name="temple" type="terrain" x="461.333" y="1631.66" width="501.333" height="1198.67">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
-  <object id="573" name="temple" type="terrain" x="1355.49" y="1806.28" width="501.333" height="1050.67">
+  <object id="573" name="temple" type="terrain" x="1305.49" y="1606.28" width="501.333" height="1050.67">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
-  <object id="574" name="temple" type="terrain" x="1658.33" y="1664.3" width="501.333" height="1198.67">
+  <object id="574" name="temple" type="terrain" x="1658.33" y="1678.3" width="501.333" height="1198.67">
    <properties>
     <property name="collision" value="none"/>
-    <property name="depth" type="float" value="-128"/>
+    <property name="depth" type="float" value="0"/>
    </properties>
   </object>
-  <object id="577" name="combat-spawn" type="object" x="1876" y="1600" width="64" height="64">
+  <object id="577" name="combat-spawn" type="object" x="1876" y="1614" width="64" height="64">
    <properties>
-    <property name="depth" type="float" value="-128"/>
-    <property name="spawn-order" type="int" value="1"/>
+    <property name="depth" type="float" value="0"/>
+    <property name="spawn-order" type="int" value="2"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="578" name="combat-spawn" type="object" x="1564" y="1744" width="64" height="64">
+  <object id="578" name="combat-spawn" type="object" x="1514" y="1544" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
-    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-order" type="int" value="1"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>

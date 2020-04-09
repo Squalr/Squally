@@ -119,7 +119,7 @@ void Haste::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Haste::HasteIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
-				UIResources::Menus_Icons_Clock,
+				UIResources::Menus_Icons_HourGlass,
 				HasteGenericPreview::create(),
 				{
 					{

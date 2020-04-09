@@ -61,7 +61,7 @@ Enrage::Enrage(PlatformerEntity* caster, PlatformerEntity* target) : super(caste
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Enrage);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);

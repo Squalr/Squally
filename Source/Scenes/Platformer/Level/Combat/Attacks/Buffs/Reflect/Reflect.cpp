@@ -55,14 +55,17 @@ Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target) : super(cas
 {
 	this->clippy = ReflectClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->bubble->setOpacity(0);
+	this->spellAura->setColor(Color3B::BLUE);
 	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -75,6 +78,12 @@ void Reflect::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
+
+	this->bubble->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		nullptr
+	));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -156,18 +165,11 @@ void Reflect::onBeforeDamageTaken(int* damageOrHealing, std::function<void()> ha
 
 	this->damageReflected = *damageOrHealing;
 
-	this->applyReflect();
-	
 	*damageOrHealing = 0;
 
-	if (this->damageReflected >= 0)
-	{
-		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, -this->damageReflected));
-	}
-	else
-	{
-		CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected));
-	}
+	this->applyReflect();
+
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(target, caster, this->damageReflected >= 0 ? -this->damageReflected : this->damageReflected));
 }
 
 NO_OPTIMIZE void Reflect::applyReflect()

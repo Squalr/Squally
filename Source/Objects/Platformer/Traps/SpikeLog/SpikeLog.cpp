@@ -89,7 +89,7 @@ void SpikeLog::registerHackables()
 			HackableCode::HackableCodeInfo(
 				SpikeLog::MapKey,
 				Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
-				UIResources::Menus_Icons_BleedingLimb,
+				UIResources::Menus_Icons_Banner,
 				SpikeLogSetRotationPreview::create(),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikeLog_IncrementAnimationFrame_RegisterEcx::create() },

@@ -4,6 +4,7 @@
 
 class QuestLine;
 
+// Empty quest! Allows for easier detection if "Find Elriel" is complete, but the next questline chain is not started yet.
 class FindElrielTelomere : public QuestTask
 {
 public:

@@ -1,8 +1,9 @@
 #include "BusinessHoursLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/BusinessHours/BusinessHours.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
+#include "Scenes/Platformer/Quests/EndianForest/FindElriel/ReturnToQueen.h"
 
 using namespace cocos2d;
 
@@ -21,7 +22,7 @@ BusinessHoursLine::BusinessHoursLine() : super(BusinessHoursLine::MapKeyQuestLin
 	{
 		QuestData(BusinessHours::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return BusinessHours::create(owner, questLine); }),
 	},
-	(QuestLine*)FindElrielLine::create())
+	(QuestLine*)FindElrielLine::create(), ReturnToQueen::MapKeyQuest)
 {
 }
 

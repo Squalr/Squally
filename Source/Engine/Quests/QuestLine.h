@@ -43,10 +43,11 @@ public:
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 	bool isComplete();
+	bool isCompleteUpTo(std::string questTask);
 	virtual QuestLine* clone() = 0;
 
 protected:
-	QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq = nullptr);
+	QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq = nullptr, std::string prereqTask = "");
 	virtual ~QuestLine();
 
 private:
@@ -55,6 +56,7 @@ private:
 	std::string questLine;
 	std::vector<QuestData> quests;
 	QuestLine* prereq;
+	std::string prereqTask = "";
 
 	static const std::string QuestLineSaveKeyComplete;
 };

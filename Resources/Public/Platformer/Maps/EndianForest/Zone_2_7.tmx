@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="970">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="973">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -122,6 +122,20 @@
     <property name="quest" value="talk-to-grogg"/>
     <property name="quest-line" value="find-elriel"/>
     <property name="send-event" value="grogg-dead"/>
+   </properties>
+  </object>
+  <object id="971" name="troll" type="entity" x="2682" y="1138" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+   </properties>
+  </object>
+  <object id="972" name="ogre" type="entity" x="2508" y="1140" width="128" height="128">
+   <properties>
+    <property name="attached-behavior" value="ally"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
    </properties>
   </object>
  </objectgroup>

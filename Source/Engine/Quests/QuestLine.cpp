@@ -12,11 +12,12 @@ using namespace cocos2d;
 
 const std::string QuestLine::QuestLineSaveKeyComplete = "COMPLETE_";
 
-QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq)
+QuestLine::QuestLine(std::string questLine, const std::vector<QuestData> quests, QuestLine* prereq, std::string prereqTask)
 {
 	this->questLine = questLine;
 	this->quests = quests;
 	this->prereq = prereq;
+	this->prereqTask = prereqTask;
 
 	if (this->prereq != nullptr)
 	{
@@ -47,7 +48,7 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
 	bool hasEncounteredActive = false;
 	bool activeThroughSkippable = false;
-	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isComplete();
+	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isCompleteUpTo(this->prereqTask);
 
 	if (currentQuestTask.empty() && !this->quests.empty())
 	{
@@ -117,6 +118,26 @@ bool QuestLine::isComplete()
 	}
 
 	return questMeta.back().isComplete;
+}
+
+bool QuestLine::isCompleteUpTo(std::string questTask)
+{
+	if (questTask.empty())
+	{
+		return this->isComplete();
+	}
+
+	const std::vector<QuestMeta> questMeta = this->getQuests();
+
+	for (auto next : questMeta)
+	{
+		if (next.isComplete && next.questTask == questTask)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 void QuestLine::advanceNextQuest(QuestTask* currentQuest)

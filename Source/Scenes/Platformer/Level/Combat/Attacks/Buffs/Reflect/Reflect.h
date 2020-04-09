@@ -41,6 +41,7 @@ private:
 	
 	ReflectClippy* clippy;
 	SmartParticles* spellEffect;
+	cocos2d::Sprite* bubble;
 	cocos2d::Sprite* spellAura;
 	
 	static const int MinReflect;
