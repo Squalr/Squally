@@ -39,6 +39,7 @@ using namespace cocos2d;
 const std::string Fortitude::FortitudeIdentifier = "fortitude";
 
 const int Fortitude::MaxMultiplier = 4;
+const int Fortitude::DamageReduction = 3; // Keep in sync with asm
 const float Fortitude::Duration = 12.0f;
 
 Fortitude* Fortitude::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -54,14 +55,17 @@ Fortitude::Fortitude(PlatformerEntity* caster, PlatformerEntity* target) : super
 {
 	this->clippy = FortitudeClippy::create();
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
+	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 	
 	this->registerClippy(this->clippy);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -74,6 +78,8 @@ void Fortitude::onEnter()
 	super::onEnter();
 
 	this->spellEffect->start();
+
+	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -120,19 +126,39 @@ void Fortitude::registerHackables()
 				FortitudeGenericPreview::create(),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(
 							{
 								ConstantString::create(std::to_string(0)),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::MaxMultiplier)))
+								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Fortitude::MaxMultiplier)))
 							})
 					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
-				this->clippy,
+				nullptr, // this->clippy,
 				{
-				}
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
+						"sub ebx, 3\n",
+						// x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Fortitude::DamageReduction)))) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging::create()) + 
+						"sub rbx, 3\n"
+					),
+				},
+				true
 			)
 		},
 	};

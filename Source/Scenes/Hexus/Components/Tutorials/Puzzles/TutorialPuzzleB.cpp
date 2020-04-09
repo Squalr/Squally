@@ -139,6 +139,7 @@ void TutorialPuzzleB::initializeCallbacks(GameState* gameState)
 	{
 		this->introNextButton->interact();
 		this->decimalCardsNextButton->interact();
+		this->helpNextButton->interact();
 	});
 }
 

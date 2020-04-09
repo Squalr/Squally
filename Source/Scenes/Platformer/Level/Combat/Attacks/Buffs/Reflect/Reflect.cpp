@@ -79,11 +79,7 @@ void Reflect::onEnter()
 
 	this->spellEffect->start();
 
-	this->bubble->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		nullptr
-	));
+	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),

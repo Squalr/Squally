@@ -40,9 +40,11 @@ private:
 	volatile int currentDamageTaken;
 	
 	FortitudeClippy* clippy;
+	cocos2d::Sprite* bubble;
 	SmartParticles* spellEffect;
 	cocos2d::Sprite* spellAura;
 	
 	static const int MaxMultiplier;
+	static const int DamageReduction;
 	static const float Duration;
 };

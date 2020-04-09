@@ -161,7 +161,7 @@
     <property name="attached-behavior" value="enable-all-clippy"/>
    </properties>
   </object>
-  <object id="746" name="camera-stop" type="object" x="671.01" y="1640.04" width="6744" height="2848">
+  <object id="746" name="camera-stop" type="object" x="671.01" y="1640.04" width="5352" height="2848">
    <properties>
     <property name="no-x" type="bool" value="true"/>
     <property name="no-y" type="bool" value="false"/>

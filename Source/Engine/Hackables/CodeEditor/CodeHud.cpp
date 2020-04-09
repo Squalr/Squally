@@ -38,7 +38,7 @@ using namespace cocos2d::ui;
 const float CodeHud::CompileDelayMaxSeconds = 0.1f;
 const float CodeHud::LineNumberMargin = 32.0f;
 const Size CodeHud::StatusSize = Size(420.0f, 1080.0f);
-const Size CodeHud::FunctionSize = Size(640.0f, 640.0f);
+const Size CodeHud::FunctionSize = Size(768.0f, 640.0f);
 const Color4B CodeHud::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeHud::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeHud::ErrorColor = Color4B(196, 82, 82, 255);

@@ -68,6 +68,13 @@ void StateGameEnd::onEnter()
 void StateGameEnd::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	{
+		args->handle();
+
+		this->backButton->interact();
+	});
 }
 
 void StateGameEnd::initializePositions()

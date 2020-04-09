@@ -7929,6 +7929,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude : public LocalizedString
 	{
 	public:
